@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/CPatchedControlComboBox.cpp`.
 
 **`22dcf2bb87e4`** · `WindowsClient/src/CPatchedControlComboBox.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CPatchedControlComboBox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/WindowsClient/src/CPatchedControlComboBox.cpp)
 - public · colingsnyder2-ux · [src/CPatchedControlComboBox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/WindowsClient/src/CPatchedControlComboBox.cpp)
 - public · colingsnyder2-ux · [src/CPatchedControlComboBox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/WindowsClient/src/CPatchedControlComboBox.cpp)
 - public · colingsnyder2-ux · [src/CPatchedControlComboBox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/WindowsClient/src/CPatchedControlComboBox.cpp)
@@ -46,6 +47,7 @@ Earlier paths and their donor versions: `native-classes/CPatchedControlComboBox.
 </details>
 
 **`def33cb4dc22`** · `WindowsClient/src/CPatchedControlComboBox.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CPatchedControlComboBox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/WindowsClient/src/CPatchedControlComboBox.cpp)
 - canonical · colingsnyder2-ux · [src/CPatchedControlComboBox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/WindowsClient/src/CPatchedControlComboBox.cpp)
 - canonical · colingsnyder2-ux · [src/CPatchedControlComboBox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/WindowsClient/src/CPatchedControlComboBox.cpp)
 - canonical · colingsnyder2-ux · [src/CPatchedControlComboBox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/WindowsClient/src/CPatchedControlComboBox.cpp)
@@ -161,6 +163,8 @@ Earlier paths and their donor versions: `native-classes/CPatchedControlComboBox.
 </details>
 
 **`e069a89e591a`** · `native-classes/CPatchedControlComboBox.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CPatchedControlComboBox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/CPatchedControlComboBox.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CPatchedControlComboBox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/CPatchedControlComboBox.cpp)
 - public · colingsnyder2-ux · [native-classes/CPatchedControlComboBox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/CPatchedControlComboBox.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CPatchedControlComboBox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/CPatchedControlComboBox.cpp)
 - public · colingsnyder2-ux · [native-classes/CPatchedControlComboBox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/CPatchedControlComboBox.cpp)
@@ -271,6 +275,7 @@ Earlier paths and their donor versions: `native-classes/CPropGrid.cpp`.
 - public · colingsnyder2-ux · [src/CPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/src/CPropGrid.cpp)
 
 **`1abae8a2c017`** · `WindowsClient/src/CPropGrid.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/WindowsClient/src/CPropGrid.cpp)
 - canonical · colingsnyder2-ux · [src/CPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/WindowsClient/src/CPropGrid.cpp)
 - canonical · colingsnyder2-ux · [src/CPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/WindowsClient/src/CPropGrid.cpp)
 - canonical · colingsnyder2-ux · [src/CPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/WindowsClient/src/CPropGrid.cpp)
@@ -312,6 +317,7 @@ Earlier paths and their donor versions: `native-classes/CPropGrid.cpp`.
 </details>
 
 **`50f3cb25c02f`** · `WindowsClient/src/CPropGrid.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/WindowsClient/src/CPropGrid.cpp)
 - public · colingsnyder2-ux · [src/CPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/WindowsClient/src/CPropGrid.cpp)
 
 **`b61bbb300bec`** · `WindowsClient/src/CPropGrid.cpp` · proof not assessed
@@ -441,6 +447,8 @@ Earlier paths and their donor versions: `native-classes/CPropGrid.cpp`.
 </details>
 
 **`a4f1bc57cd67`** · `native-classes/CPropGrid.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/CPropGrid.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/CPropGrid.cpp)
 - public · colingsnyder2-ux · [native-classes/CPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/CPropGrid.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/CPropGrid.cpp)
 - public · colingsnyder2-ux · [native-classes/CPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/CPropGrid.cpp)
@@ -600,9 +608,11 @@ Earlier paths and their donor versions: `native-classes/CPropGridCategory.cpp`.
 - public · colingsnyder2-ux · [src/CPropGridCategory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/src/CPropGridCategory.cpp)
 
 **`1dbcedbc9c62`** · `WindowsClient/src/CPropGridCategory.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CPropGridCategory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/WindowsClient/src/CPropGridCategory.cpp)
 - public · colingsnyder2-ux · [src/CPropGridCategory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/WindowsClient/src/CPropGridCategory.cpp)
 
 **`2d3b9453b879`** · `WindowsClient/src/CPropGridCategory.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CPropGridCategory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/WindowsClient/src/CPropGridCategory.cpp)
 - canonical · colingsnyder2-ux · [src/CPropGridCategory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/WindowsClient/src/CPropGridCategory.cpp)
 - canonical · colingsnyder2-ux · [src/CPropGridCategory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/WindowsClient/src/CPropGridCategory.cpp)
 - canonical · colingsnyder2-ux · [src/CPropGridCategory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/WindowsClient/src/CPropGridCategory.cpp)
@@ -717,6 +727,8 @@ Earlier paths and their donor versions: `native-classes/CPropGridCategory.cpp`.
 </details>
 
 **`7b650786bddc`** · `native-classes/CPropGridCategory.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CPropGridCategory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/CPropGridCategory.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CPropGridCategory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/CPropGridCategory.cpp)
 - public · colingsnyder2-ux · [native-classes/CPropGridCategory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/CPropGridCategory.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CPropGridCategory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/CPropGridCategory.cpp)
 - public · colingsnyder2-ux · [native-classes/CPropGridCategory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/CPropGridCategory.cpp)
@@ -870,6 +882,7 @@ Earlier paths and their donor versions: `native-classes/CPropGridCategory.cpp`.
 Earlier paths and their donor versions: `native-classes/CPropGridEvents.cpp`.
 
 **`11579b1305ec`** · `WindowsClient/src/CPropGridEvents.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/WindowsClient/src/CPropGridEvents.cpp)
 - public · colingsnyder2-ux · [src/CPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/WindowsClient/src/CPropGridEvents.cpp)
 
 **`4e33c28b5446`** · `WindowsClient/src/CPropGridEvents.cpp` · proof not assessed
@@ -915,6 +928,7 @@ Earlier paths and their donor versions: `native-classes/CPropGridEvents.cpp`.
 - public · colingsnyder2-ux · [src/CPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/src/CPropGridEvents.cpp)
 
 **`94d22fe2364f`** · `WindowsClient/src/CPropGridEvents.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/WindowsClient/src/CPropGridEvents.cpp)
 - canonical · colingsnyder2-ux · [src/CPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/WindowsClient/src/CPropGridEvents.cpp)
 - canonical · colingsnyder2-ux · [src/CPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/WindowsClient/src/CPropGridEvents.cpp)
 - canonical · colingsnyder2-ux · [src/CPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/WindowsClient/src/CPropGridEvents.cpp)
@@ -1056,6 +1070,8 @@ Earlier paths and their donor versions: `native-classes/CPropGridEvents.cpp`.
 - public · colingsnyder2-ux · [native-classes/CPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/CPropGridEvents.cpp)
 
 **`887544974e10`** · `native-classes/CPropGridEvents.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/CPropGridEvents.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/CPropGridEvents.cpp)
 - public · colingsnyder2-ux · [native-classes/CPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/CPropGridEvents.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/CPropGridEvents.cpp)
 - public · colingsnyder2-ux · [native-classes/CPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/CPropGridEvents.cpp)

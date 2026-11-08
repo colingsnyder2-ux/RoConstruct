@@ -8,6 +8,8 @@
 Earlier paths and their donor versions: `native-classes/CMainFrameXtp.cpp`.
 
 **`45503cf6e74c`** · `WindowsClient/src/CMainFrameXtp.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CMainFrameXtp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/WindowsClient/src/CMainFrameXtp.cpp)
+- canonical · colingsnyder2-ux · [src/CMainFrameXtp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/WindowsClient/src/CMainFrameXtp.cpp)
 - public · colingsnyder2-ux · [src/CMainFrameXtp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/WindowsClient/src/CMainFrameXtp.cpp)
 - canonical · colingsnyder2-ux · [src/CMainFrameXtp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/WindowsClient/src/CMainFrameXtp.cpp)
 - public · colingsnyder2-ux · [src/CMainFrameXtp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/WindowsClient/src/CMainFrameXtp.cpp)
@@ -114,6 +116,8 @@ Earlier paths and their donor versions: `native-classes/CMainFrameXtp.cpp`.
 </details>
 
 **`1fdaf6394075`** · `native-classes/CMainFrameXtp.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CMainFrameXtp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/CMainFrameXtp.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameXtp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/CMainFrameXtp.cpp)
 - public · colingsnyder2-ux · [native-classes/CMainFrameXtp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/CMainFrameXtp.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CMainFrameXtp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/CMainFrameXtp.cpp)
 - public · colingsnyder2-ux · [native-classes/CMainFrameXtp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/CMainFrameXtp.cpp)
@@ -243,6 +247,7 @@ Earlier paths and their donor versions: `native-classes/CMainFrameXtp.cpp`.
 </details>
 
 **`8e1c5dc8bfd3`** · `native-classes/CMainFrameXtp.cpp` · proof not assessed
+- archive · colingsnyder2-ux · [native-classes/CMainFrameXtp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/CMainFrameXtp.cpp)
 - archive · colingsnyder2-ux · [native-classes/CMainFrameXtp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/CMainFrameXtp.cpp)
 - archive · colingsnyder2-ux · [native-classes/CMainFrameXtp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/CMainFrameXtp.cpp)
 - archive · colingsnyder2-ux · [native-classes/CMainFrameXtp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/CMainFrameXtp.cpp)
@@ -295,6 +300,7 @@ Earlier paths and their donor versions: `native-classes/CMainFrameXtp.cpp`.
 Earlier paths and their donor versions: `native-classes/CMemberTreeView.cpp`.
 
 **`26750845dc80`** · `WindowsClient/src/CMemberTreeView.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CMemberTreeView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/WindowsClient/src/CMemberTreeView.cpp)
 - public · colingsnyder2-ux · [src/CMemberTreeView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/WindowsClient/src/CMemberTreeView.cpp)
 - public · colingsnyder2-ux · [src/CMemberTreeView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/WindowsClient/src/CMemberTreeView.cpp)
 - public · colingsnyder2-ux · [src/CMemberTreeView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/WindowsClient/src/CMemberTreeView.cpp)
@@ -324,6 +330,7 @@ Earlier paths and their donor versions: `native-classes/CMemberTreeView.cpp`.
 - public · colingsnyder2-ux · [src/CMemberTreeView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/src/CMemberTreeView.cpp)
 
 **`86da4a6fa66a`** · `WindowsClient/src/CMemberTreeView.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CMemberTreeView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/WindowsClient/src/CMemberTreeView.cpp)
 - canonical · colingsnyder2-ux · [src/CMemberTreeView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/WindowsClient/src/CMemberTreeView.cpp)
 - canonical · colingsnyder2-ux · [src/CMemberTreeView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/WindowsClient/src/CMemberTreeView.cpp)
 - canonical · colingsnyder2-ux · [src/CMemberTreeView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/WindowsClient/src/CMemberTreeView.cpp)
@@ -368,6 +375,8 @@ Earlier paths and their donor versions: `native-classes/CMemberTreeView.cpp`.
 </details>
 
 **`053f67d97fe4`** · `native-classes/CMemberTreeView.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CMemberTreeView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/CMemberTreeView.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMemberTreeView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/CMemberTreeView.cpp)
 - public · colingsnyder2-ux · [native-classes/CMemberTreeView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/CMemberTreeView.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CMemberTreeView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/CMemberTreeView.cpp)
 - public · colingsnyder2-ux · [native-classes/CMemberTreeView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/CMemberTreeView.cpp)
@@ -534,6 +543,7 @@ Earlier paths and their donor versions: `native-classes/CMultiPlayerPane.cpp`.
 </details>
 
 **`5f7301a13c32`** · `WindowsClient/src/CMultiPlayerPane.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CMultiPlayerPane.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/WindowsClient/src/CMultiPlayerPane.cpp)
 - public · colingsnyder2-ux · [src/CMultiPlayerPane.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/WindowsClient/src/CMultiPlayerPane.cpp)
 - public · colingsnyder2-ux · [src/CMultiPlayerPane.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/WindowsClient/src/CMultiPlayerPane.cpp)
 - public · colingsnyder2-ux · [src/CMultiPlayerPane.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/WindowsClient/src/CMultiPlayerPane.cpp)
@@ -547,6 +557,7 @@ Earlier paths and their donor versions: `native-classes/CMultiPlayerPane.cpp`.
 - public · colingsnyder2-ux · [src/CMultiPlayerPane.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/src/CMultiPlayerPane.cpp)
 
 **`6012b69986d1`** · `WindowsClient/src/CMultiPlayerPane.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CMultiPlayerPane.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/WindowsClient/src/CMultiPlayerPane.cpp)
 - canonical · colingsnyder2-ux · [src/CMultiPlayerPane.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/WindowsClient/src/CMultiPlayerPane.cpp)
 - canonical · colingsnyder2-ux · [src/CMultiPlayerPane.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/WindowsClient/src/CMultiPlayerPane.cpp)
 - canonical · colingsnyder2-ux · [src/CMultiPlayerPane.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/WindowsClient/src/CMultiPlayerPane.cpp)
@@ -776,6 +787,8 @@ Earlier paths and their donor versions: `native-classes/CMultiPlayerPane.cpp`.
 </details>
 
 **`977fca1bfefd`** · `native-classes/CMultiPlayerPane.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CMultiPlayerPane.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/CMultiPlayerPane.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMultiPlayerPane.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/CMultiPlayerPane.cpp)
 - public · colingsnyder2-ux · [native-classes/CMultiPlayerPane.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/CMultiPlayerPane.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CMultiPlayerPane.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/CMultiPlayerPane.cpp)
 - public · colingsnyder2-ux · [native-classes/CMultiPlayerPane.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/CMultiPlayerPane.cpp)

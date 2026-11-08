@@ -8,9 +8,11 @@
 Earlier paths and their donor versions: `native-headers/script-file-load/security/SecurityContext.h`.
 
 **`0410e1e44eb6`** · `Unclassified/include/script-file-load/security/SecurityContext.h` · proof not assessed
+- public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
 - public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
 
 **`0f8e19d45605`** · `Unclassified/include/script-file-load/security/SecurityContext.h` · proof not assessed
+- canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
 - canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
 - canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
 - canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Unclassified/include/script-file-load/security/SecurityContext.h)
@@ -180,6 +182,8 @@ Earlier paths and their donor versions: `native-headers/script-file-load/securit
 </details>
 
 **`af4afc914898`** · `native-headers/script-file-load/security/SecurityContext.h` · proof not assessed
+- public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/script-file-load/security/SecurityContext.h)
+- canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/script-file-load/security/SecurityContext.h)
 - public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/script-file-load/security/SecurityContext.h)
 - canonical · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-headers/script-file-load/security/SecurityContext.h)
 - public · colingsnyder2-ux · [security/SecurityContext.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/script-file-load/security/SecurityContext.h)
@@ -318,6 +322,8 @@ Earlier paths and their donor versions: `native-headers/script-file-load/securit
 Earlier paths and their donor versions: `native-headers/serializer-load/reflection/function.h`.
 
 **`2318a4caad41`** · `Unclassified/include/serializer-load/reflection/function.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/serializer-load/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/serializer-load/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/serializer-load/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/include/serializer-load/reflection/function.h)
@@ -474,6 +480,8 @@ Earlier paths and their donor versions: `native-headers/serializer-load/reflecti
 </details>
 
 **`439f090fcc1f`** · `native-headers/serializer-load/reflection/function.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/serializer-load/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/serializer-load/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/serializer-load/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-headers/serializer-load/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/serializer-load/reflection/function.h)
@@ -571,6 +579,8 @@ Earlier paths and their donor versions: `native-headers/serializer-load/reflecti
 Earlier paths and their donor versions: `native-headers/serializer-load/util/Name.h`.
 
 **`e307ecb78073`** · `Unclassified/include/serializer-load/util/Name.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/serializer-load/util/Name.h)
+- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h)
 - public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/serializer-load/util/Name.h)
 - canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/serializer-load/util/Name.h)
 - public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/include/serializer-load/util/Name.h)
@@ -667,6 +677,8 @@ Earlier paths and their donor versions: `native-headers/serializer-load/util/Nam
 </details>
 
 **`0f4862d43899`** · `native-headers/serializer-load/util/Name.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/serializer-load/util/Name.h)
+- canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/serializer-load/util/Name.h)
 - public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/serializer-load/util/Name.h)
 - canonical · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-headers/serializer-load/util/Name.h)
 - public · colingsnyder2-ux · [util/Name.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/serializer-load/util/Name.h)

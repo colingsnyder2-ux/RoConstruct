@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/axis-vector-negation/G3D/Vector3.h`.
 
 **`15229453e1dc`** · `Unclassified/include/axis-vector-negation/G3D/Vector3.h` · proof not assessed
+- canonical · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h)
 - canonical · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h)
 - canonical · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h)
 - canonical · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h)
@@ -75,6 +76,7 @@ Earlier paths and their donor versions: `native-headers/axis-vector-negation/G3D
 </details>
 
 **`5babe76e1cd6`** · `Unclassified/include/axis-vector-negation/G3D/Vector3.h` · proof not assessed
+- public · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h)
 - public · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.h)
 
 **`84b49fcb9145`** · `Unclassified/include/axis-vector-negation/G3D/Vector3.h` · proof not assessed
@@ -160,6 +162,8 @@ Earlier paths and their donor versions: `native-headers/axis-vector-negation/G3D
 </details>
 
 **`73b5f2c012b4`** · `native-headers/axis-vector-negation/G3D/Vector3.h` · proof not assessed
+- public · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h)
+- canonical · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h)
 - public · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h)
 - canonical · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h)
 - public · colingsnyder2-ux · [G3D/Vector3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/axis-vector-negation/G3D/Vector3.h)
@@ -290,6 +294,7 @@ Earlier paths and their donor versions: `native-headers/axis-vector-negation/G3D
 Earlier paths and their donor versions: `native-headers/axis-vector-negation/G3D/Vector3.inl`.
 
 **`07d06b685c04`** · `Unclassified/include/axis-vector-negation/G3D/Vector3.inl` · proof not assessed
+- public · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.inl)
 - public · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.inl)
 - public · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.inl)
 - public · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.inl)
@@ -314,6 +319,7 @@ Earlier paths and their donor versions: `native-headers/axis-vector-negation/G3D
 - public · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.inl)
 
 **`0f1229abd593`** · `Unclassified/include/axis-vector-negation/G3D/Vector3.inl` · proof not assessed
+- canonical · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.inl)
 - canonical · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.inl)
 - canonical · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.inl)
 - canonical · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.inl)
@@ -457,6 +463,8 @@ Earlier paths and their donor versions: `native-headers/axis-vector-negation/G3D
 </details>
 
 **`987ef4ed8633`** · `native-headers/axis-vector-negation/G3D/Vector3.inl` · proof not assessed
+- public · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl)
+- canonical · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl)
 - public · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl)
 - canonical · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl)
 - public · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl)
@@ -554,6 +562,8 @@ Earlier paths and their donor versions: `native-headers/axis-vector-negation/G3D
 Earlier paths and their donor versions: `native-headers/axis-vector-negation/reflection/function.h`.
 
 **`2318a4caad41`** · `Unclassified/include/axis-vector-negation/reflection/function.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/axis-vector-negation/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/axis-vector-negation/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/include/axis-vector-negation/reflection/function.h)
@@ -708,6 +718,8 @@ Earlier paths and their donor versions: `native-headers/axis-vector-negation/ref
 </details>
 
 **`417e2d805591`** · `native-headers/axis-vector-negation/reflection/function.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/axis-vector-negation/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/axis-vector-negation/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/axis-vector-negation/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-headers/axis-vector-negation/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/axis-vector-negation/reflection/function.h)

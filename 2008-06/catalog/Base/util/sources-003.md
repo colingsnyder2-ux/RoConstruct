@@ -42,6 +42,7 @@ Earlier paths and their donor versions: `native-headers/util/GuidRegistry.h`.
 </details>
 
 **`d7118c5b23c9`** · `Base/include/util/GuidRegistry.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Base/include/util/GuidRegistry.h)
 - canonical · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Base/include/util/GuidRegistry.h)
 - canonical · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Base/include/util/GuidRegistry.h)
 - canonical · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Base/include/util/GuidRegistry.h)
@@ -113,6 +114,7 @@ Earlier paths and their donor versions: `native-headers/util/GuidRegistry.h`.
 </details>
 
 **`e62fe071bc05`** · `Base/include/util/GuidRegistry.h` · proof not assessed
+- public · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Base/include/util/GuidRegistry.h)
 - public · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Base/include/util/GuidRegistry.h)
 
 **`0a9ecb96adae`** · `native-headers/util/GuidRegistry.h` · proof not assessed
@@ -156,6 +158,8 @@ Earlier paths and their donor versions: `native-headers/util/GuidRegistry.h`.
 - public · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/util/GuidRegistry.h)
 
 **`90ec0e179be0`** · `native-headers/util/GuidRegistry.h` · proof not assessed
+- public · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/util/GuidRegistry.h)
+- canonical · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/util/GuidRegistry.h)
 - public · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/util/GuidRegistry.h)
 - canonical · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-headers/util/GuidRegistry.h)
 - public · colingsnyder2-ux · [util/GuidRegistry.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/util/GuidRegistry.h)
@@ -378,6 +382,7 @@ Earlier paths and their donor versions: `native-headers/util/IRenderable.h`.
 </details>
 
 **`9cf83575ada4`** · `Base/include/util/IRenderable.h` · proof not assessed
+- public · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Base/include/util/IRenderable.h)
 - public · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Base/include/util/IRenderable.h)
 
 **`c35e9ced485d`** · `Base/include/util/IRenderable.h` · proof not assessed
@@ -406,6 +411,7 @@ Earlier paths and their donor versions: `native-headers/util/IRenderable.h`.
 - public · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Base/include/util/IRenderable.h)
 
 **`fc1b5c5ae26a`** · `Base/include/util/IRenderable.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Base/include/util/IRenderable.h)
 - canonical · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Base/include/util/IRenderable.h)
 - canonical · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Base/include/util/IRenderable.h)
 - canonical · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Base/include/util/IRenderable.h)
@@ -562,6 +568,8 @@ Earlier paths and their donor versions: `native-headers/util/IRenderable.h`.
 </details>
 
 **`c0892ad70b1a`** · `native-headers/util/IRenderable.h` · proof not assessed
+- public · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/util/IRenderable.h)
+- canonical · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/util/IRenderable.h)
 - public · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/util/IRenderable.h)
 - canonical · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-headers/util/IRenderable.h)
 - public · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/util/IRenderable.h)
@@ -737,6 +745,7 @@ Earlier paths and their donor versions: `native-headers/util/IRenderable.h`.
 Earlier paths and their donor versions: `native-headers/util/ImageContent.h`.
 
 **`6f5e23f5b14b`** · `Base/include/util/ImageContent.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/ImageContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Base/include/util/ImageContent.h)
 - canonical · colingsnyder2-ux · [util/ImageContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Base/include/util/ImageContent.h)
 - canonical · colingsnyder2-ux · [util/ImageContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Base/include/util/ImageContent.h)
 - canonical · colingsnyder2-ux · [util/ImageContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Base/include/util/ImageContent.h)
@@ -808,6 +817,7 @@ Earlier paths and their donor versions: `native-headers/util/ImageContent.h`.
 </details>
 
 **`779a0618ff3e`** · `Base/include/util/ImageContent.h` · proof not assessed
+- public · colingsnyder2-ux · [util/ImageContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Base/include/util/ImageContent.h)
 - public · colingsnyder2-ux · [util/ImageContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Base/include/util/ImageContent.h)
 
 **`9210a729a835`** · `Base/include/util/ImageContent.h` · proof not assessed
@@ -928,6 +938,8 @@ Earlier paths and their donor versions: `native-headers/util/ImageContent.h`.
 - public · colingsnyder2-ux · [util/ImageContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/util/ImageContent.h)
 
 **`b3efc5f459fb`** · `native-headers/util/ImageContent.h` · proof not assessed
+- public · colingsnyder2-ux · [util/ImageContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/util/ImageContent.h)
+- canonical · colingsnyder2-ux · [util/ImageContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/util/ImageContent.h)
 - public · colingsnyder2-ux · [util/ImageContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/util/ImageContent.h)
 - canonical · colingsnyder2-ux · [util/ImageContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-headers/util/ImageContent.h)
 - public · colingsnyder2-ux · [util/ImageContent.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/util/ImageContent.h)

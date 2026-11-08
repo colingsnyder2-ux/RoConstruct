@@ -17,6 +17,7 @@ Earlier paths and their donor versions: `native-headers/boost-count-copy/boost/d
 </details>
 
 **`74c63fc9e343`** · `Unclassified/include/boost-count-copy/boost/detail/shared_count.hpp` · proof not assessed
+- public · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/boost-count-copy/boost/detail/shared_count.hpp)
 - public · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/boost-count-copy/boost/detail/shared_count.hpp)
 
 **`c280ed25f19f`** · `Unclassified/include/boost-count-copy/boost/detail/shared_count.hpp` · proof not assessed
@@ -42,6 +43,7 @@ Earlier paths and their donor versions: `native-headers/boost-count-copy/boost/d
 - public · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/include/boost-count-copy/boost/detail/shared_count.hpp)
 
 **`d1f7a5090238`** · `Unclassified/include/boost-count-copy/boost/detail/shared_count.hpp` · proof not assessed
+- canonical · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/boost-count-copy/boost/detail/shared_count.hpp)
 - canonical · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/boost-count-copy/boost/detail/shared_count.hpp)
 - canonical · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/boost-count-copy/boost/detail/shared_count.hpp)
 - canonical · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Unclassified/include/boost-count-copy/boost/detail/shared_count.hpp)
@@ -104,6 +106,8 @@ Earlier paths and their donor versions: `native-headers/boost-count-copy/boost/d
 </details>
 
 **`0b88246e71ef`** · `native-headers/boost-count-copy/boost/detail/shared_count.hpp` · proof not assessed
+- public · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
+- canonical · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
 - public · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
 - canonical · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
 - public · colingsnyder2-ux · [detail/shared_count.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/boost-count-copy/boost/detail/shared_count.hpp)
@@ -317,6 +321,7 @@ Earlier paths and their donor versions: `native-headers/boost-count-copy/boost/d
 Earlier paths and their donor versions: `native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp`.
 
 **`4fa1af3c5276`** · `Unclassified/include/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · proof not assessed
+- public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
 
 **`a223e6eea3a6`** · `Unclassified/include/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · proof not assessed
@@ -351,6 +356,7 @@ Earlier paths and their donor versions: `native-headers/boost-explicit-shared-as
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/include/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
 
 **`f320574d323c`** · `Unclassified/include/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · proof not assessed
+- canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Unclassified/include/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
@@ -483,6 +489,8 @@ Earlier paths and their donor versions: `native-headers/boost-explicit-shared-as
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/3a3ce428bb03790e37affe9a0c2001c3db03aed3/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
 
 **`ce027f2d46e7`** · `native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp` · proof not assessed
+- public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
+- canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
 - canonical · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
 - public · colingsnyder2-ux · [boost/shared_ptr.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/boost-explicit-shared-assignment/boost/shared_ptr.hpp)
@@ -626,6 +634,7 @@ Earlier paths and their donor versions: `native-headers/boost-explicit-shared-as
 Earlier paths and their donor versions: `native-headers/boost-function-pod-vtable/boost/function/function_base.hpp`.
 
 **`45e09d236498`** · `Unclassified/include/boost-function-pod-vtable/boost/function/function_base.hpp` · proof not assessed
+- public · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_base.hpp)
 - public · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_base.hpp)
 
 **`ac25b6c31594`** · `Unclassified/include/boost-function-pod-vtable/boost/function/function_base.hpp` · proof not assessed
@@ -661,6 +670,7 @@ Earlier paths and their donor versions: `native-headers/boost-function-pod-vtabl
 - public · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_base.hpp)
 
 **`d841405ac75b`** · `Unclassified/include/boost-function-pod-vtable/boost/function/function_base.hpp` · proof not assessed
+- canonical · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_base.hpp)
 - canonical · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_base.hpp)
 - canonical · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_base.hpp)
 - canonical · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Unclassified/include/boost-function-pod-vtable/boost/function/function_base.hpp)
@@ -842,6 +852,8 @@ Earlier paths and their donor versions: `native-headers/boost-function-pod-vtabl
 </details>
 
 **`ee1527669324`** · `native-headers/boost-function-pod-vtable/boost/function/function_base.hpp` · proof not assessed
+- public · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
+- canonical · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
 - public · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
 - canonical · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)
 - public · colingsnyder2-ux · [function/function_base.hpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/boost-function-pod-vtable/boost/function/function_base.hpp)

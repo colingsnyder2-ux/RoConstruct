@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/gui/Gui.h`.
 
 **`1bd195e78b99`** · `App/include/gui/Gui.h` · proof not assessed
+- public · colingsnyder2-ux · [gui/Gui.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/include/gui/Gui.h)
 - public · colingsnyder2-ux · [gui/Gui.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/include/gui/Gui.h)
 
 **`5d4d445d23dc`** · `App/include/gui/Gui.h` · proof not assessed
@@ -43,6 +44,7 @@ Earlier paths and their donor versions: `native-headers/gui/Gui.h`.
 </details>
 
 **`b44fa877b939`** · `App/include/gui/Gui.h` · proof not assessed
+- canonical · colingsnyder2-ux · [gui/Gui.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/include/gui/Gui.h)
 - canonical · colingsnyder2-ux · [gui/Gui.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/include/gui/Gui.h)
 - canonical · colingsnyder2-ux · [gui/Gui.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/include/gui/Gui.h)
 - canonical · colingsnyder2-ux · [gui/Gui.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/App/include/gui/Gui.h)
@@ -112,6 +114,8 @@ Earlier paths and their donor versions: `native-headers/gui/Gui.h`.
 - fork · mewpokemons · [gui/Gui.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/gui/Gui.h)
 
 **`401f40e84c29`** · `native-headers/gui/Gui.h` · proof not assessed
+- public · colingsnyder2-ux · [gui/Gui.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/gui/Gui.h)
+- canonical · colingsnyder2-ux · [gui/Gui.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/gui/Gui.h)
 - public · colingsnyder2-ux · [gui/Gui.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/gui/Gui.h)
 - canonical · colingsnyder2-ux · [gui/Gui.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-headers/gui/Gui.h)
 - public · colingsnyder2-ux · [gui/Gui.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/gui/Gui.h)
@@ -481,6 +485,7 @@ Earlier paths and their donor versions: `native-headers/gui/HealthHud.h`.
 </details>
 
 **`a3d5a034aaf4`** · `App/include/gui/HealthHud.h` · proof not assessed
+- public · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/include/gui/HealthHud.h)
 - public · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/include/gui/HealthHud.h)
 
 **`c3afd10122ef`** · `App/include/gui/HealthHud.h` · proof not assessed
@@ -507,6 +512,7 @@ Earlier paths and their donor versions: `native-headers/gui/HealthHud.h`.
 - public · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/gui/HealthHud.h)
 
 **`c8025463ceb6`** · `App/include/gui/HealthHud.h` · proof not assessed
+- canonical · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/include/gui/HealthHud.h)
 - canonical · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/include/gui/HealthHud.h)
 - canonical · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/include/gui/HealthHud.h)
 - canonical · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/App/include/gui/HealthHud.h)
@@ -572,6 +578,8 @@ Earlier paths and their donor versions: `native-headers/gui/HealthHud.h`.
 </details>
 
 **`1ef5af5fcbce`** · `native-headers/gui/HealthHud.h` · proof not assessed
+- public · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/gui/HealthHud.h)
+- canonical · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h)
 - public · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/gui/HealthHud.h)
 - canonical · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-headers/gui/HealthHud.h)
 - public · colingsnyder2-ux · [gui/HealthHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/gui/HealthHud.h)
@@ -791,9 +799,11 @@ Earlier paths and their donor versions: `native-headers/gui/ScoreHud.h`.
 </details>
 
 **`b3d2e84f62f9`** · `App/include/gui/ScoreHud.h` · proof not assessed
+- public · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/include/gui/ScoreHud.h)
 - public · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/include/gui/ScoreHud.h)
 
 **`e64f8b21c3ae`** · `App/include/gui/ScoreHud.h` · proof not assessed
+- canonical · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/include/gui/ScoreHud.h)
 - canonical · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/include/gui/ScoreHud.h)
 - canonical · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/include/gui/ScoreHud.h)
 - canonical · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/App/include/gui/ScoreHud.h)
@@ -882,6 +892,8 @@ Earlier paths and their donor versions: `native-headers/gui/ScoreHud.h`.
 - public · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/gui/ScoreHud.h)
 
 **`1093821a61fa`** · `native-headers/gui/ScoreHud.h` · proof not assessed
+- public · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/gui/ScoreHud.h)
+- canonical · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h)
 - public · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/gui/ScoreHud.h)
 - canonical · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-headers/gui/ScoreHud.h)
 - public · colingsnyder2-ux · [gui/ScoreHud.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/gui/ScoreHud.h)

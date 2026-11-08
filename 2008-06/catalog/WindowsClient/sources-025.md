@@ -17,6 +17,7 @@ Earlier paths and their donor versions: `native-headers/ViewNew/QuadVolume.h`.
 </details>
 
 **`33c99bdc88be`** · `WindowsClient/include/ViewNew/QuadVolume.h` · proof not assessed
+- canonical · colingsnyder2-ux · [ViewNew/QuadVolume.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/WindowsClient/include/ViewNew/QuadVolume.h)
 - canonical · colingsnyder2-ux · [ViewNew/QuadVolume.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/WindowsClient/include/ViewNew/QuadVolume.h)
 - canonical · colingsnyder2-ux · [ViewNew/QuadVolume.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/WindowsClient/include/ViewNew/QuadVolume.h)
 - canonical · colingsnyder2-ux · [ViewNew/QuadVolume.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/WindowsClient/include/ViewNew/QuadVolume.h)
@@ -105,6 +106,7 @@ Earlier paths and their donor versions: `native-headers/ViewNew/QuadVolume.h`.
 - public · colingsnyder2-ux · [ViewNew/QuadVolume.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/include/ViewNew/QuadVolume.h)
 
 **`ac38706da94b`** · `WindowsClient/include/ViewNew/QuadVolume.h` · proof not assessed
+- public · colingsnyder2-ux · [ViewNew/QuadVolume.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/WindowsClient/include/ViewNew/QuadVolume.h)
 - public · colingsnyder2-ux · [ViewNew/QuadVolume.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/WindowsClient/include/ViewNew/QuadVolume.h)
 
 **`230ab585d878`** · `native-headers/ViewNew/QuadVolume.h` · proof not assessed
@@ -131,6 +133,7 @@ Earlier paths and their donor versions: `native-headers/ViewNew/QuadVolume.h`.
 </details>
 
 **`32b8b4062539`** · `native-headers/ViewNew/QuadVolume.h` · proof not assessed
+- draft · colingsnyder2-ux · [ViewNew/QuadVolume.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/ViewNew/QuadVolume.h)
 - draft · colingsnyder2-ux · [ViewNew/QuadVolume.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/ViewNew/QuadVolume.h)
 - draft · colingsnyder2-ux · [ViewNew/QuadVolume.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/ViewNew/QuadVolume.h)
 - draft · colingsnyder2-ux · [ViewNew/QuadVolume.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/ViewNew/QuadVolume.h)
@@ -232,6 +235,8 @@ Earlier paths and their donor versions: `native-headers/ViewNew/QuadVolume.h`.
 </details>
 
 **`39b50325ddde`** · `native-headers/ViewNew/QuadVolume.h` · proof not assessed
+- public · colingsnyder2-ux · [ViewNew/QuadVolume.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/ViewNew/QuadVolume.h)
+- canonical · colingsnyder2-ux · [ViewNew/QuadVolume.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/ViewNew/QuadVolume.h)
 - public · colingsnyder2-ux · [ViewNew/QuadVolume.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/ViewNew/QuadVolume.h)
 - canonical · colingsnyder2-ux · [ViewNew/QuadVolume.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-headers/ViewNew/QuadVolume.h)
 - public · colingsnyder2-ux · [ViewNew/QuadVolume.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/ViewNew/QuadVolume.h)
@@ -339,6 +344,7 @@ Earlier paths and their donor versions: `native-headers/ViewNew/QuadVolume.h`.
 - public · colingsnyder2-ux · [ViewNew/QuadVolume.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/ViewNew/QuadVolume.h)
 
 **`7206285f5b4a`** · `native-headers/ViewNew/QuadVolume.h` · proof not assessed
+- draft · colingsnyder2-ux · [ViewNew/QuadVolume.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/ViewNew/QuadVolume.h)
 - draft · colingsnyder2-ux · [ViewNew/QuadVolume.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/ViewNew/QuadVolume.h)
 - draft · colingsnyder2-ux · [ViewNew/QuadVolume.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/ViewNew/QuadVolume.h)
 - draft · colingsnyder2-ux · [ViewNew/QuadVolume.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/ViewNew/QuadVolume.h)
@@ -408,6 +414,7 @@ Earlier paths and their donor versions: `native-headers/ViewNew/QuadVolume.h`.
 Earlier paths and their donor versions: `native-headers/ViewNew/RenderBaseMesh.h`.
 
 **`5ab15f2f4630`** · `WindowsClient/include/ViewNew/RenderBaseMesh.h` · proof not assessed
+- public · colingsnyder2-ux · [ViewNew/RenderBaseMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/WindowsClient/include/ViewNew/RenderBaseMesh.h)
 - public · colingsnyder2-ux · [ViewNew/RenderBaseMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/WindowsClient/include/ViewNew/RenderBaseMesh.h)
 
 **`92187467a425`** · `WindowsClient/include/ViewNew/RenderBaseMesh.h` · proof not assessed
@@ -420,6 +427,7 @@ Earlier paths and their donor versions: `native-headers/ViewNew/RenderBaseMesh.h
 </details>
 
 **`af7b5e781572`** · `WindowsClient/include/ViewNew/RenderBaseMesh.h` · proof not assessed
+- canonical · colingsnyder2-ux · [ViewNew/RenderBaseMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/WindowsClient/include/ViewNew/RenderBaseMesh.h)
 - canonical · colingsnyder2-ux · [ViewNew/RenderBaseMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/WindowsClient/include/ViewNew/RenderBaseMesh.h)
 - canonical · colingsnyder2-ux · [ViewNew/RenderBaseMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/WindowsClient/include/ViewNew/RenderBaseMesh.h)
 - canonical · colingsnyder2-ux · [ViewNew/RenderBaseMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/WindowsClient/include/ViewNew/RenderBaseMesh.h)
@@ -508,6 +516,8 @@ Earlier paths and their donor versions: `native-headers/ViewNew/RenderBaseMesh.h
 - public · colingsnyder2-ux · [ViewNew/RenderBaseMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/include/ViewNew/RenderBaseMesh.h)
 
 **`2213dc1e7f89`** · `native-headers/ViewNew/RenderBaseMesh.h` · proof not assessed
+- public · colingsnyder2-ux · [ViewNew/RenderBaseMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/ViewNew/RenderBaseMesh.h)
+- canonical · colingsnyder2-ux · [ViewNew/RenderBaseMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/ViewNew/RenderBaseMesh.h)
 - public · colingsnyder2-ux · [ViewNew/RenderBaseMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/ViewNew/RenderBaseMesh.h)
 - canonical · colingsnyder2-ux · [ViewNew/RenderBaseMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-headers/ViewNew/RenderBaseMesh.h)
 - public · colingsnyder2-ux · [ViewNew/RenderBaseMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/ViewNew/RenderBaseMesh.h)
@@ -598,6 +608,7 @@ Earlier paths and their donor versions: `native-headers/ViewNew/RenderBaseMesh.h
 </details>
 
 **`72f487676e18`** · `native-headers/ViewNew/RenderBaseMesh.h` · proof not assessed
+- draft · colingsnyder2-ux · [ViewNew/RenderBaseMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/ViewNew/RenderBaseMesh.h)
 - draft · colingsnyder2-ux · [ViewNew/RenderBaseMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/ViewNew/RenderBaseMesh.h)
 - draft · colingsnyder2-ux · [ViewNew/RenderBaseMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/ViewNew/RenderBaseMesh.h)
 - draft · colingsnyder2-ux · [ViewNew/RenderBaseMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/ViewNew/RenderBaseMesh.h)
@@ -763,6 +774,7 @@ Earlier paths and their donor versions: `native-headers/ViewNew/RenderBaseMesh.h
 Earlier paths and their donor versions: `native-headers/ViewNew/SphereMesh.h`.
 
 **`58f27d97e264`** · `WindowsClient/include/ViewNew/SphereMesh.h` · proof not assessed
+- public · colingsnyder2-ux · [ViewNew/SphereMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/WindowsClient/include/ViewNew/SphereMesh.h)
 - public · colingsnyder2-ux · [ViewNew/SphereMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/WindowsClient/include/ViewNew/SphereMesh.h)
 
 **`5be3e5b6b1da`** · `WindowsClient/include/ViewNew/SphereMesh.h` · proof not assessed
@@ -798,6 +810,7 @@ Earlier paths and their donor versions: `native-headers/ViewNew/SphereMesh.h`.
 </details>
 
 **`b9ff9cc3c40a`** · `WindowsClient/include/ViewNew/SphereMesh.h` · proof not assessed
+- canonical · colingsnyder2-ux · [ViewNew/SphereMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/WindowsClient/include/ViewNew/SphereMesh.h)
 - canonical · colingsnyder2-ux · [ViewNew/SphereMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/WindowsClient/include/ViewNew/SphereMesh.h)
 - canonical · colingsnyder2-ux · [ViewNew/SphereMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/WindowsClient/include/ViewNew/SphereMesh.h)
 - canonical · colingsnyder2-ux · [ViewNew/SphereMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/WindowsClient/include/ViewNew/SphereMesh.h)
@@ -897,6 +910,8 @@ Earlier paths and their donor versions: `native-headers/ViewNew/SphereMesh.h`.
 </details>
 
 **`95155b0515e3`** · `native-headers/ViewNew/SphereMesh.h` · proof not assessed
+- public · colingsnyder2-ux · [ViewNew/SphereMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/ViewNew/SphereMesh.h)
+- canonical · colingsnyder2-ux · [ViewNew/SphereMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/ViewNew/SphereMesh.h)
 - public · colingsnyder2-ux · [ViewNew/SphereMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/ViewNew/SphereMesh.h)
 - canonical · colingsnyder2-ux · [ViewNew/SphereMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-headers/ViewNew/SphereMesh.h)
 - public · colingsnyder2-ux · [ViewNew/SphereMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/ViewNew/SphereMesh.h)

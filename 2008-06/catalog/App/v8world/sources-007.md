@@ -17,6 +17,7 @@ Earlier paths and their donor versions: `native-classes/WorldJoint.cpp`.
 </details>
 
 **`70846e7f3b38`** · `App/src/v8world/WorldJoint.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8world/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/src/v8world/WorldJoint.cpp)
 - canonical · colingsnyder2-ux · [v8world/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/src/v8world/WorldJoint.cpp)
 - canonical · colingsnyder2-ux · [v8world/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/src/v8world/WorldJoint.cpp)
 - canonical · colingsnyder2-ux · [v8world/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/App/src/v8world/WorldJoint.cpp)
@@ -78,6 +79,7 @@ Earlier paths and their donor versions: `native-classes/WorldJoint.cpp`.
 - public · colingsnyder2-ux · [v8world/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8world/WorldJoint.cpp)
 
 **`a472f36560a1`** · `App/src/v8world/WorldJoint.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8world/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/src/v8world/WorldJoint.cpp)
 - public · colingsnyder2-ux · [v8world/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/src/v8world/WorldJoint.cpp)
 
 **`20ee5012db77`** · `native-classes/WorldJoint.cpp` · proof not assessed
@@ -89,6 +91,8 @@ Earlier paths and their donor versions: `native-classes/WorldJoint.cpp`.
 </details>
 
 **`2cea1fbf9de4`** · `native-classes/WorldJoint.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/62c1359b08847ee6025560fb8c3e955aca73ec104418ee887fba9bf0b21cb536/rebuild/2008-06/native-classes/WorldJoint.cpp)
+- draft · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/7d094b3d6c334ec9ab0bb8a63a47f8f43a9a85762ebd4cb2fee1c60c89a6c2e6/rebuild/2008-06/native-classes/WorldJoint.cpp)
 - draft · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/62c1359b08847ee6025560fb8c3e955aca73ec104418ee887fba9bf0b21cb536/rebuild/2008-06/native-classes/WorldJoint.cpp)
 - draft · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/7d094b3d6c334ec9ab0bb8a63a47f8f43a9a85762ebd4cb2fee1c60c89a6c2e6/rebuild/2008-06/native-classes/WorldJoint.cpp)
 - draft · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/62c1359b08847ee6025560fb8c3e955aca73ec104418ee887fba9bf0b21cb536/rebuild/2008-06/native-classes/WorldJoint.cpp)
@@ -173,6 +177,7 @@ Earlier paths and their donor versions: `native-classes/WorldJoint.cpp`.
 </details>
 
 **`3343c997d564`** · `native-classes/WorldJoint.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/5a153687cd36aa33874fe99eb6d3cde20172efab6d2cbdd31a880a7ac72e09a2/rebuild/2008-06/native-classes/WorldJoint.cpp)
 - draft · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/5a153687cd36aa33874fe99eb6d3cde20172efab6d2cbdd31a880a7ac72e09a2/rebuild/2008-06/native-classes/WorldJoint.cpp)
 - draft · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/5a153687cd36aa33874fe99eb6d3cde20172efab6d2cbdd31a880a7ac72e09a2/rebuild/2008-06/native-classes/WorldJoint.cpp)
 - draft · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/5a153687cd36aa33874fe99eb6d3cde20172efab6d2cbdd31a880a7ac72e09a2/rebuild/2008-06/native-classes/WorldJoint.cpp)
@@ -219,6 +224,7 @@ Earlier paths and their donor versions: `native-classes/WorldJoint.cpp`.
 </details>
 
 **`49a79072616d`** · `native-classes/WorldJoint.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/88ca4e3370a74a109e49cb4251d94a44f04b1723a7bda1112e4600c0d519e2cd/rebuild/2008-06/native-classes/WorldJoint.cpp)
 - draft · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/88ca4e3370a74a109e49cb4251d94a44f04b1723a7bda1112e4600c0d519e2cd/rebuild/2008-06/native-classes/WorldJoint.cpp)
 - draft · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/88ca4e3370a74a109e49cb4251d94a44f04b1723a7bda1112e4600c0d519e2cd/rebuild/2008-06/native-classes/WorldJoint.cpp)
 - draft · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/88ca4e3370a74a109e49cb4251d94a44f04b1723a7bda1112e4600c0d519e2cd/rebuild/2008-06/native-classes/WorldJoint.cpp)
@@ -308,6 +314,8 @@ Earlier paths and their donor versions: `native-classes/WorldJoint.cpp`.
 </details>
 
 **`9703a7fafa61`** · `native-classes/WorldJoint.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/WorldJoint.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/WorldJoint.cpp)
 - public · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/WorldJoint.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/WorldJoint.cpp)
 - public · colingsnyder2-ux · [native-classes/WorldJoint.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/WorldJoint.cpp)
@@ -397,6 +405,7 @@ Earlier paths and their donor versions: `native-classes/WorldJoint.cpp`.
 Earlier paths and their donor versions: `native-classes/WorldJointGlue.cpp`.
 
 **`234b4f70276a`** · `App/src/v8world/WorldJointGlue.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8world/WorldJointGlue.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/src/v8world/WorldJointGlue.cpp)
 - canonical · colingsnyder2-ux · [v8world/WorldJointGlue.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/src/v8world/WorldJointGlue.cpp)
 - canonical · colingsnyder2-ux · [v8world/WorldJointGlue.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/src/v8world/WorldJointGlue.cpp)
 - canonical · colingsnyder2-ux · [v8world/WorldJointGlue.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/App/src/v8world/WorldJointGlue.cpp)
@@ -431,6 +440,7 @@ Earlier paths and their donor versions: `native-classes/WorldJointGlue.cpp`.
 </details>
 
 **`b3fa42bd917b`** · `App/src/v8world/WorldJointGlue.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8world/WorldJointGlue.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/src/v8world/WorldJointGlue.cpp)
 - public · colingsnyder2-ux · [v8world/WorldJointGlue.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/src/v8world/WorldJointGlue.cpp)
 
 **`bbf316abfd9d`** · `App/src/v8world/WorldJointGlue.cpp` · proof not assessed
@@ -544,6 +554,8 @@ Earlier paths and their donor versions: `native-classes/WorldJointGlue.cpp`.
 </details>
 
 **`fb73189e211c`** · `native-classes/WorldJointGlue.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/WorldJointGlue.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/WorldJointGlue.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorldJointGlue.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/WorldJointGlue.cpp)
 - public · colingsnyder2-ux · [native-classes/WorldJointGlue.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/WorldJointGlue.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WorldJointGlue.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/WorldJointGlue.cpp)
 - public · colingsnyder2-ux · [native-classes/WorldJointGlue.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/WorldJointGlue.cpp)

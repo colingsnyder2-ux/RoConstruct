@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/CObjectBrowser.cpp`.
 
 **`05206da686d9`** · `WindowsClient/src/CObjectBrowser.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/WindowsClient/src/CObjectBrowser.cpp)
 - canonical · colingsnyder2-ux · [src/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/WindowsClient/src/CObjectBrowser.cpp)
 - canonical · colingsnyder2-ux · [src/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/WindowsClient/src/CObjectBrowser.cpp)
 - canonical · colingsnyder2-ux · [src/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/WindowsClient/src/CObjectBrowser.cpp)
@@ -58,6 +59,7 @@ Earlier paths and their donor versions: `native-classes/CObjectBrowser.cpp`.
 </details>
 
 **`4836f1bbef96`** · `WindowsClient/src/CObjectBrowser.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/WindowsClient/src/CObjectBrowser.cpp)
 - public · colingsnyder2-ux · [src/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/WindowsClient/src/CObjectBrowser.cpp)
 - public · colingsnyder2-ux · [src/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/WindowsClient/src/CObjectBrowser.cpp)
 - public · colingsnyder2-ux · [src/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/WindowsClient/src/CObjectBrowser.cpp)
@@ -114,6 +116,8 @@ Earlier paths and their donor versions: `native-classes/CObjectBrowser.cpp`.
 </details>
 
 **`0cef98da5b92`** · `native-classes/CObjectBrowser.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/16f002ebbc907cdc31770e6dba3063a0aad90721f45f9b3dd4e44b545cb777c3/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
+- draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/d39272889f217a674d465200e5f29828a937a79fe53bfd7ef10e6a49ed7db69c/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
 - draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/16f002ebbc907cdc31770e6dba3063a0aad90721f45f9b3dd4e44b545cb777c3/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
 - draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/d39272889f217a674d465200e5f29828a937a79fe53bfd7ef10e6a49ed7db69c/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
 - draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/16f002ebbc907cdc31770e6dba3063a0aad90721f45f9b3dd4e44b545cb777c3/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
@@ -207,6 +211,8 @@ Earlier paths and their donor versions: `native-classes/CObjectBrowser.cpp`.
 </details>
 
 **`25fd6952953d`** · `native-classes/CObjectBrowser.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/1b1d93072d137eb6ad0823c4c29d9854b452fe6c5edaed7b78663c798ce9fdbc/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
+- draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/73b6f2a24d9dabf695fb68e209034c19737cc17bf69c4ff6e59bba973c422dfa/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
 - draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/1b1d93072d137eb6ad0823c4c29d9854b452fe6c5edaed7b78663c798ce9fdbc/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
 - draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/73b6f2a24d9dabf695fb68e209034c19737cc17bf69c4ff6e59bba973c422dfa/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
 - draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/1b1d93072d137eb6ad0823c4c29d9854b452fe6c5edaed7b78663c798ce9fdbc/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
@@ -300,6 +306,8 @@ Earlier paths and their donor versions: `native-classes/CObjectBrowser.cpp`.
 - public · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/CObjectBrowser.cpp)
 
 **`6c702ebda787`** · `native-classes/CObjectBrowser.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/CObjectBrowser.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
 - public · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/CObjectBrowser.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
 - public · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/CObjectBrowser.cpp)
@@ -382,6 +390,7 @@ Earlier paths and their donor versions: `native-classes/CObjectBrowser.cpp`.
 </details>
 
 **`df4b6ecab129`** · `native-classes/CObjectBrowser.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/949ee0cd2d064a7a1ed61052c9431247cf4296059235b9026797fbfd379d3e70/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
 - draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/949ee0cd2d064a7a1ed61052c9431247cf4296059235b9026797fbfd379d3e70/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
 - draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/949ee0cd2d064a7a1ed61052c9431247cf4296059235b9026797fbfd379d3e70/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
 - draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/949ee0cd2d064a7a1ed61052c9431247cf4296059235b9026797fbfd379d3e70/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
@@ -443,6 +452,7 @@ Earlier paths and their donor versions: `native-classes/CObjectBrowser.cpp`.
 </details>
 
 **`ecb3f54e96e6`** · `native-classes/CObjectBrowser.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/1f36e89c2fd4d45e5927708a754603429226d14cd5d2f86b346053b9de2ff49d/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
 - draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/1f36e89c2fd4d45e5927708a754603429226d14cd5d2f86b346053b9de2ff49d/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
 - draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/1f36e89c2fd4d45e5927708a754603429226d14cd5d2f86b346053b9de2ff49d/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
 - draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/1f36e89c2fd4d45e5927708a754603429226d14cd5d2f86b346053b9de2ff49d/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
@@ -488,6 +498,8 @@ Earlier paths and their donor versions: `native-classes/CObjectBrowser.cpp`.
 </details>
 
 **`f841255086f2`** · `native-classes/CObjectBrowser.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/32e731867b812c14d30c0b776977faf273805d6c504692dbf51781c776af60cb/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
+- draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/433e58151e8b440924163864162b843f05ef5324587e2861f24ad6ceb12e60f4/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
 - draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/32e731867b812c14d30c0b776977faf273805d6c504692dbf51781c776af60cb/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
 - draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/433e58151e8b440924163864162b843f05ef5324587e2861f24ad6ceb12e60f4/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
 - draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/32e731867b812c14d30c0b776977faf273805d6c504692dbf51781c776af60cb/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
@@ -579,6 +591,7 @@ Earlier paths and their donor versions: `native-classes/CObjectBrowser.cpp`.
 Earlier paths and their donor versions: `native-classes/COutputView.cpp`.
 
 **`72a1d60acaef`** · `WindowsClient/src/COutputView.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/COutputView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/WindowsClient/src/COutputView.cpp)
 - public · colingsnyder2-ux · [src/COutputView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/WindowsClient/src/COutputView.cpp)
 - public · colingsnyder2-ux · [src/COutputView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/WindowsClient/src/COutputView.cpp)
 - public · colingsnyder2-ux · [src/COutputView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/WindowsClient/src/COutputView.cpp)
@@ -617,6 +630,7 @@ Earlier paths and their donor versions: `native-classes/COutputView.cpp`.
 </details>
 
 **`daf41f800289`** · `WindowsClient/src/COutputView.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/COutputView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/WindowsClient/src/COutputView.cpp)
 - canonical · colingsnyder2-ux · [src/COutputView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/WindowsClient/src/COutputView.cpp)
 - canonical · colingsnyder2-ux · [src/COutputView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/WindowsClient/src/COutputView.cpp)
 - canonical · colingsnyder2-ux · [src/COutputView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/WindowsClient/src/COutputView.cpp)
@@ -652,6 +666,8 @@ Earlier paths and their donor versions: `native-classes/COutputView.cpp`.
 </details>
 
 **`026f47651aa4`** · `native-classes/COutputView.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/COutputView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/COutputView.cpp)
+- canonical · colingsnyder2-ux · [native-classes/COutputView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/COutputView.cpp)
 - public · colingsnyder2-ux · [native-classes/COutputView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/COutputView.cpp)
 - canonical · colingsnyder2-ux · [native-classes/COutputView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/COutputView.cpp)
 - public · colingsnyder2-ux · [native-classes/COutputView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/COutputView.cpp)

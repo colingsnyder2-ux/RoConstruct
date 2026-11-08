@@ -8,9 +8,11 @@
 Earlier paths and their donor versions: `native-classes/CFileVersionInfo.cpp`.
 
 **`7739bddfe6a3`** · `WindowsClient/src/CFileVersionInfo.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CFileVersionInfo.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/WindowsClient/src/CFileVersionInfo.cpp)
 - public · colingsnyder2-ux · [src/CFileVersionInfo.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/WindowsClient/src/CFileVersionInfo.cpp)
 
 **`984765e1947c`** · `WindowsClient/src/CFileVersionInfo.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CFileVersionInfo.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/WindowsClient/src/CFileVersionInfo.cpp)
 - canonical · colingsnyder2-ux · [src/CFileVersionInfo.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/WindowsClient/src/CFileVersionInfo.cpp)
 - canonical · colingsnyder2-ux · [src/CFileVersionInfo.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/WindowsClient/src/CFileVersionInfo.cpp)
 - canonical · colingsnyder2-ux · [src/CFileVersionInfo.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/WindowsClient/src/CFileVersionInfo.cpp)
@@ -262,6 +264,8 @@ Earlier paths and their donor versions: `native-classes/CFileVersionInfo.cpp`.
 </details>
 
 **`adb56cc6996d`** · `native-classes/CFileVersionInfo.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CFileVersionInfo.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/CFileVersionInfo.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CFileVersionInfo.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/CFileVersionInfo.cpp)
 - public · colingsnyder2-ux · [native-classes/CFileVersionInfo.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/CFileVersionInfo.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CFileVersionInfo.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/CFileVersionInfo.cpp)
 - public · colingsnyder2-ux · [native-classes/CFileVersionInfo.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/CFileVersionInfo.cpp)
@@ -365,6 +369,7 @@ Earlier paths and their donor versions: `native-classes/CFileVersionInfo.cpp`.
 Earlier paths and their donor versions: `native-classes/CInsertObjectDialog.cpp`.
 
 **`2a47b4217b71`** · `WindowsClient/src/CInsertObjectDialog.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CInsertObjectDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/WindowsClient/src/CInsertObjectDialog.cpp)
 - public · colingsnyder2-ux · [src/CInsertObjectDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/WindowsClient/src/CInsertObjectDialog.cpp)
 - public · colingsnyder2-ux · [src/CInsertObjectDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/WindowsClient/src/CInsertObjectDialog.cpp)
 - public · colingsnyder2-ux · [src/CInsertObjectDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/WindowsClient/src/CInsertObjectDialog.cpp)
@@ -394,6 +399,7 @@ Earlier paths and their donor versions: `native-classes/CInsertObjectDialog.cpp`
 - public · colingsnyder2-ux · [src/CInsertObjectDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/src/CInsertObjectDialog.cpp)
 
 **`4820fcbfd40b`** · `WindowsClient/src/CInsertObjectDialog.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CInsertObjectDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/WindowsClient/src/CInsertObjectDialog.cpp)
 - canonical · colingsnyder2-ux · [src/CInsertObjectDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/WindowsClient/src/CInsertObjectDialog.cpp)
 - canonical · colingsnyder2-ux · [src/CInsertObjectDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/WindowsClient/src/CInsertObjectDialog.cpp)
 - canonical · colingsnyder2-ux · [src/CInsertObjectDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/WindowsClient/src/CInsertObjectDialog.cpp)
@@ -524,6 +530,8 @@ Earlier paths and their donor versions: `native-classes/CInsertObjectDialog.cpp`
 </details>
 
 **`a0a8bd6886ae`** · `native-classes/CInsertObjectDialog.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CInsertObjectDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/CInsertObjectDialog.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CInsertObjectDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/CInsertObjectDialog.cpp)
 - public · colingsnyder2-ux · [native-classes/CInsertObjectDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/CInsertObjectDialog.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CInsertObjectDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/CInsertObjectDialog.cpp)
 - public · colingsnyder2-ux · [native-classes/CInsertObjectDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/CInsertObjectDialog.cpp)
@@ -618,6 +626,7 @@ Earlier paths and their donor versions: `native-classes/CInsertObjectDialogActio
 </details>
 
 **`0a8b05418820`** · `WindowsClient/src/CInsertObjectDialogAction.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CInsertObjectDialogAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/WindowsClient/src/CInsertObjectDialogAction.cpp)
 - public · colingsnyder2-ux · [src/CInsertObjectDialogAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/WindowsClient/src/CInsertObjectDialogAction.cpp)
 
 **`403e945253c2`** · `WindowsClient/src/CInsertObjectDialogAction.cpp` · proof not assessed
@@ -649,6 +658,7 @@ Earlier paths and their donor versions: `native-classes/CInsertObjectDialogActio
 - public · colingsnyder2-ux · [src/CInsertObjectDialogAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/src/CInsertObjectDialogAction.cpp)
 
 **`fa25cf1ccae9`** · `WindowsClient/src/CInsertObjectDialogAction.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CInsertObjectDialogAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/WindowsClient/src/CInsertObjectDialogAction.cpp)
 - canonical · colingsnyder2-ux · [src/CInsertObjectDialogAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/WindowsClient/src/CInsertObjectDialogAction.cpp)
 - canonical · colingsnyder2-ux · [src/CInsertObjectDialogAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/WindowsClient/src/CInsertObjectDialogAction.cpp)
 - canonical · colingsnyder2-ux · [src/CInsertObjectDialogAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/WindowsClient/src/CInsertObjectDialogAction.cpp)
@@ -725,6 +735,8 @@ Earlier paths and their donor versions: `native-classes/CInsertObjectDialogActio
 </details>
 
 **`867969167466`** · `native-classes/CInsertObjectDialogAction.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CInsertObjectDialogAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/CInsertObjectDialogAction.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CInsertObjectDialogAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/CInsertObjectDialogAction.cpp)
 - public · colingsnyder2-ux · [native-classes/CInsertObjectDialogAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/CInsertObjectDialogAction.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CInsertObjectDialogAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/CInsertObjectDialogAction.cpp)
 - public · colingsnyder2-ux · [native-classes/CInsertObjectDialogAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/CInsertObjectDialogAction.cpp)
@@ -865,6 +877,7 @@ Earlier paths and their donor versions: `native-classes/CInsertObjectDialogCore.
 - public · colingsnyder2-ux · [src/CInsertObjectDialogCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/src/CInsertObjectDialogCore.cpp)
 
 **`1bb515331127`** · `WindowsClient/src/CInsertObjectDialogCore.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CInsertObjectDialogCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/WindowsClient/src/CInsertObjectDialogCore.cpp)
 - canonical · colingsnyder2-ux · [src/CInsertObjectDialogCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/WindowsClient/src/CInsertObjectDialogCore.cpp)
 - canonical · colingsnyder2-ux · [src/CInsertObjectDialogCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/WindowsClient/src/CInsertObjectDialogCore.cpp)
 - canonical · colingsnyder2-ux · [src/CInsertObjectDialogCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/WindowsClient/src/CInsertObjectDialogCore.cpp)
@@ -909,9 +922,12 @@ Earlier paths and their donor versions: `native-classes/CInsertObjectDialogCore.
 </details>
 
 **`b971d0eb5016`** · `WindowsClient/src/CInsertObjectDialogCore.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CInsertObjectDialogCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/WindowsClient/src/CInsertObjectDialogCore.cpp)
 - public · colingsnyder2-ux · [src/CInsertObjectDialogCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/WindowsClient/src/CInsertObjectDialogCore.cpp)
 
 **`00d26d9dec03`** · `native-classes/CInsertObjectDialogCore.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CInsertObjectDialogCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/CInsertObjectDialogCore.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CInsertObjectDialogCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/CInsertObjectDialogCore.cpp)
 - public · colingsnyder2-ux · [native-classes/CInsertObjectDialogCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/CInsertObjectDialogCore.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CInsertObjectDialogCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/CInsertObjectDialogCore.cpp)
 - public · colingsnyder2-ux · [native-classes/CInsertObjectDialogCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/CInsertObjectDialogCore.cpp)

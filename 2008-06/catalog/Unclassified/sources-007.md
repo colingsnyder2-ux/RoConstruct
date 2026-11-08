@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/metadata-load/v8xml/SerializerV2.h`.
 
 **`2cf757d43b45`** · `Unclassified/include/metadata-load/v8xml/SerializerV2.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
 - canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
 - canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
 - canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
@@ -96,6 +97,7 @@ Earlier paths and their donor versions: `native-headers/metadata-load/v8xml/Seri
 - public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
 
 **`c2f2d55ce886`** · `Unclassified/include/metadata-load/v8xml/SerializerV2.h` · proof not assessed
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
 - public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/metadata-load/v8xml/SerializerV2.h)
 
 **`f540dd93e683`** · `Unclassified/include/metadata-load/v8xml/SerializerV2.h` · proof not assessed
@@ -171,6 +173,8 @@ Earlier paths and their donor versions: `native-headers/metadata-load/v8xml/Seri
 </details>
 
 **`6045ca18c6ce`** · `native-headers/metadata-load/v8xml/SerializerV2.h` · proof not assessed
+- public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h)
+- canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h)
 - public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h)
 - canonical · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h)
 - public · colingsnyder2-ux · [v8xml/SerializerV2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/metadata-load/v8xml/SerializerV2.h)
@@ -330,6 +334,7 @@ Earlier paths and their donor versions: `native-headers/mfc-metadata/atlsimpstr.
 </details>
 
 **`42aab33e9945`** · `Unclassified/include/mfc-metadata/atlsimpstr.h` · proof not assessed
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
 - public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
 
 **`89fe2de963d0`** · `Unclassified/include/mfc-metadata/atlsimpstr.h` · proof not assessed
@@ -356,6 +361,7 @@ Earlier paths and their donor versions: `native-headers/mfc-metadata/atlsimpstr.
 - public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
 
 **`c16fa7c691f4`** · `Unclassified/include/mfc-metadata/atlsimpstr.h` · proof not assessed
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
 - canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
 - canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
 - canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Unclassified/include/mfc-metadata/atlsimpstr.h)
@@ -537,6 +543,8 @@ Earlier paths and their donor versions: `native-headers/mfc-metadata/atlsimpstr.
 </details>
 
 **`f0064c28d63e`** · `native-headers/mfc-metadata/atlsimpstr.h` · proof not assessed
+- public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/mfc-metadata/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h)
 - public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/mfc-metadata/atlsimpstr.h)
 - canonical · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-headers/mfc-metadata/atlsimpstr.h)
 - public · colingsnyder2-ux · [mfc-metadata/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/mfc-metadata/atlsimpstr.h)
@@ -666,6 +674,7 @@ Earlier paths and their donor versions: `native-headers/mfc-noinline-pcxstr/atls
 </details>
 
 **`c2a57e7aa27e`** · `Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · proof not assessed
+- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
 - canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
 - canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
 - canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
@@ -731,6 +740,7 @@ Earlier paths and their donor versions: `native-headers/mfc-noinline-pcxstr/atls
 </details>
 
 **`fb9324ad0ec8`** · `Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h` · proof not assessed
+- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
 - public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/mfc-noinline-pcxstr/atlsimpstr.h)
 
 **`09e845d6c2d7`** · `native-headers/mfc-noinline-pcxstr/atlsimpstr.h` · proof not assessed
@@ -751,6 +761,8 @@ Earlier paths and their donor versions: `native-headers/mfc-noinline-pcxstr/atls
 - public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h)
 
 **`27ba77c5e419`** · `native-headers/mfc-noinline-pcxstr/atlsimpstr.h` · proof not assessed
+- public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h)
+- canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h)
 - public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h)
 - canonical · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h)
 - public · colingsnyder2-ux · [mfc-noinline-pcxstr/atlsimpstr.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/mfc-noinline-pcxstr/atlsimpstr.h)

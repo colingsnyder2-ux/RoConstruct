@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/CSaveToRobloxDialog.cpp`.
 
 **`25626479c5d1`** · `WindowsClient/src/CSaveToRobloxDialog.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CSaveToRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/WindowsClient/src/CSaveToRobloxDialog.cpp)
 - canonical · colingsnyder2-ux · [src/CSaveToRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/WindowsClient/src/CSaveToRobloxDialog.cpp)
 - canonical · colingsnyder2-ux · [src/CSaveToRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/WindowsClient/src/CSaveToRobloxDialog.cpp)
 - canonical · colingsnyder2-ux · [src/CSaveToRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/WindowsClient/src/CSaveToRobloxDialog.cpp)
@@ -80,6 +81,7 @@ Earlier paths and their donor versions: `native-classes/CSaveToRobloxDialog.cpp`
 </details>
 
 **`d70721c67eaa`** · `WindowsClient/src/CSaveToRobloxDialog.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CSaveToRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/WindowsClient/src/CSaveToRobloxDialog.cpp)
 - public · colingsnyder2-ux · [src/CSaveToRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/WindowsClient/src/CSaveToRobloxDialog.cpp)
 
 **`1e5826e83ab0`** · `native-classes/CSaveToRobloxDialog.cpp` · proof not assessed
@@ -153,6 +155,8 @@ Earlier paths and their donor versions: `native-classes/CSaveToRobloxDialog.cpp`
 </details>
 
 **`a896c6efd66f`** · `native-classes/CSaveToRobloxDialog.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CSaveToRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/CSaveToRobloxDialog.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CSaveToRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/CSaveToRobloxDialog.cpp)
 - public · colingsnyder2-ux · [native-classes/CSaveToRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/CSaveToRobloxDialog.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CSaveToRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/CSaveToRobloxDialog.cpp)
 - public · colingsnyder2-ux · [native-classes/CSaveToRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/CSaveToRobloxDialog.cpp)
@@ -293,6 +297,7 @@ Earlier paths and their donor versions: `native-classes/CSaveToRobloxDialog.cpp`
 Earlier paths and their donor versions: `native-classes/CScriptDoc.cpp`.
 
 **`a892c0c14c20`** · `WindowsClient/src/CScriptDoc.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CScriptDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/WindowsClient/src/CScriptDoc.cpp)
 - public · colingsnyder2-ux · [src/CScriptDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/WindowsClient/src/CScriptDoc.cpp)
 
 **`bba3cebe90b2`** · `WindowsClient/src/CScriptDoc.cpp` · proof not assessed
@@ -338,6 +343,7 @@ Earlier paths and their donor versions: `native-classes/CScriptDoc.cpp`.
 </details>
 
 **`f380d8ae1a0f`** · `WindowsClient/src/CScriptDoc.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CScriptDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/WindowsClient/src/CScriptDoc.cpp)
 - canonical · colingsnyder2-ux · [src/CScriptDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/WindowsClient/src/CScriptDoc.cpp)
 - canonical · colingsnyder2-ux · [src/CScriptDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/WindowsClient/src/CScriptDoc.cpp)
 - canonical · colingsnyder2-ux · [src/CScriptDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/WindowsClient/src/CScriptDoc.cpp)
@@ -412,6 +418,7 @@ Earlier paths and their donor versions: `native-classes/CScriptDoc.cpp`.
 - public · colingsnyder2-ux · [native-classes/CScriptDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/CScriptDoc.cpp)
 
 **`c6eb5eeef4d6`** · `native-classes/CScriptDoc.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/CScriptDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CScriptDoc.cpp)
 - draft · colingsnyder2-ux · [native-classes/CScriptDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CScriptDoc.cpp)
 - draft · colingsnyder2-ux · [native-classes/CScriptDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CScriptDoc.cpp)
 - draft · colingsnyder2-ux · [native-classes/CScriptDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CScriptDoc.cpp)
@@ -499,6 +506,8 @@ Earlier paths and their donor versions: `native-classes/CScriptDoc.cpp`.
 </details>
 
 **`f72c6810defa`** · `native-classes/CScriptDoc.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CScriptDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/CScriptDoc.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CScriptDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/CScriptDoc.cpp)
 - public · colingsnyder2-ux · [native-classes/CScriptDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/CScriptDoc.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CScriptDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/CScriptDoc.cpp)
 - public · colingsnyder2-ux · [native-classes/CScriptDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/CScriptDoc.cpp)
@@ -579,12 +588,14 @@ Earlier paths and their donor versions: `native-classes/CScriptDoc.cpp`.
 Earlier paths and their donor versions: `native-classes/CScriptEditor.cpp`.
 
 **`511f002ae14b`** · `WindowsClient/src/CScriptEditor.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CScriptEditor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/WindowsClient/src/CScriptEditor.cpp)
 - canonical · colingsnyder2-ux · [src/CScriptEditor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/WindowsClient/src/CScriptEditor.cpp)
 - canonical · colingsnyder2-ux · [src/CScriptEditor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/WindowsClient/src/CScriptEditor.cpp)
 - canonical · colingsnyder2-ux · [src/CScriptEditor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/WindowsClient/src/CScriptEditor.cpp)
 - canonical · colingsnyder2-ux · [src/CScriptEditor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/WindowsClient/src/CScriptEditor.cpp)
 
 **`824750f294ec`** · `WindowsClient/src/CScriptEditor.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CScriptEditor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/WindowsClient/src/CScriptEditor.cpp)
 - public · colingsnyder2-ux · [src/CScriptEditor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/WindowsClient/src/CScriptEditor.cpp)
 - public · colingsnyder2-ux · [src/CScriptEditor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/WindowsClient/src/CScriptEditor.cpp)
 - public · colingsnyder2-ux · [src/CScriptEditor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/WindowsClient/src/CScriptEditor.cpp)
@@ -600,6 +611,7 @@ Earlier paths and their donor versions: `native-classes/CScriptEditor.cpp`.
 </details>
 
 **`31364bc289c2`** · `native-classes/CScriptEditor.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/CScriptEditor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/089566fe87ab0e6afe4decf985f8cac5bf76e85bd830ae154cbbdd40a030ad13/rebuild/2008-06/native-classes/CScriptEditor.cpp)
 - draft · colingsnyder2-ux · [native-classes/CScriptEditor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/089566fe87ab0e6afe4decf985f8cac5bf76e85bd830ae154cbbdd40a030ad13/rebuild/2008-06/native-classes/CScriptEditor.cpp)
 - draft · colingsnyder2-ux · [native-classes/CScriptEditor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/089566fe87ab0e6afe4decf985f8cac5bf76e85bd830ae154cbbdd40a030ad13/rebuild/2008-06/native-classes/CScriptEditor.cpp)
 - draft · colingsnyder2-ux · [native-classes/CScriptEditor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/089566fe87ab0e6afe4decf985f8cac5bf76e85bd830ae154cbbdd40a030ad13/rebuild/2008-06/native-classes/CScriptEditor.cpp)
@@ -697,6 +709,8 @@ Earlier paths and their donor versions: `native-classes/CScriptEditor.cpp`.
 </details>
 
 **`79c98ebf76e5`** · `native-classes/CScriptEditor.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CScriptEditor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/CScriptEditor.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CScriptEditor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp)
 - public · colingsnyder2-ux · [native-classes/CScriptEditor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/CScriptEditor.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CScriptEditor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/CScriptEditor.cpp)
 - public · colingsnyder2-ux · [native-classes/CScriptEditor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/CScriptEditor.cpp)
@@ -813,6 +827,7 @@ Earlier paths and their donor versions: `native-classes/CSecureHtmlView.cpp`.
 </details>
 
 **`0ccb0a4f6561`** · `WindowsClient/src/CSecureHtmlView.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CSecureHtmlView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/WindowsClient/src/CSecureHtmlView.cpp)
 - public · colingsnyder2-ux · [src/CSecureHtmlView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/WindowsClient/src/CSecureHtmlView.cpp)
 
 **`27ed8dd6145a`** · `WindowsClient/src/CSecureHtmlView.cpp` · proof not assessed
@@ -849,6 +864,7 @@ Earlier paths and their donor versions: `native-classes/CSecureHtmlView.cpp`.
 - public · colingsnyder2-ux · [src/CSecureHtmlView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/src/CSecureHtmlView.cpp)
 
 **`e1735a32799c`** · `WindowsClient/src/CSecureHtmlView.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CSecureHtmlView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/WindowsClient/src/CSecureHtmlView.cpp)
 - canonical · colingsnyder2-ux · [src/CSecureHtmlView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/WindowsClient/src/CSecureHtmlView.cpp)
 - canonical · colingsnyder2-ux · [src/CSecureHtmlView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/WindowsClient/src/CSecureHtmlView.cpp)
 - canonical · colingsnyder2-ux · [src/CSecureHtmlView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/WindowsClient/src/CSecureHtmlView.cpp)
@@ -944,6 +960,8 @@ Earlier paths and their donor versions: `native-classes/CSecureHtmlView.cpp`.
 </details>
 
 **`c5edfc37b6a3`** · `native-classes/CSecureHtmlView.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CSecureHtmlView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/CSecureHtmlView.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CSecureHtmlView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/CSecureHtmlView.cpp)
 - public · colingsnyder2-ux · [native-classes/CSecureHtmlView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/CSecureHtmlView.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CSecureHtmlView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/CSecureHtmlView.cpp)
 - public · colingsnyder2-ux · [native-classes/CSecureHtmlView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/CSecureHtmlView.cpp)

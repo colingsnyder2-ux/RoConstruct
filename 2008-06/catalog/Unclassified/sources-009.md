@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/part-embedded/v8world/Primitive.h`.
 
 **`9f2c3a69dc2b`** · `Unclassified/include/part-embedded/v8world/Primitive.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h)
 - canonical · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h)
 - canonical · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h)
 - canonical · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h)
@@ -73,6 +74,7 @@ Earlier paths and their donor versions: `native-headers/part-embedded/v8world/Pr
 </details>
 
 **`b7fe33fb0f3a`** · `Unclassified/include/part-embedded/v8world/Primitive.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h)
 - public · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/part-embedded/v8world/Primitive.h)
 
 **`c2204c7dff22`** · `Unclassified/include/part-embedded/v8world/Primitive.h` · proof not assessed
@@ -117,6 +119,8 @@ Earlier paths and their donor versions: `native-headers/part-embedded/v8world/Pr
 </details>
 
 **`53a15d42d594`** · `native-headers/part-embedded/v8world/Primitive.h` · proof not assessed
+- public · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/part-embedded/v8world/Primitive.h)
+- canonical · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h)
 - public · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/part-embedded/v8world/Primitive.h)
 - canonical · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-headers/part-embedded/v8world/Primitive.h)
 - public · colingsnyder2-ux · [v8world/Primitive.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/part-embedded/v8world/Primitive.h)
@@ -321,6 +325,8 @@ Earlier paths and their donor versions: `native-headers/part-embedded/v8world/Pr
 Earlier paths and their donor versions: `native-headers/part-resize/G3D/Matrix3.h`.
 
 **`5698a18cad6f`** · `Unclassified/include/part-resize/G3D/Matrix3.h` · proof not assessed
+- public · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/part-resize/G3D/Matrix3.h)
+- canonical · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/part-resize/G3D/Matrix3.h)
 - public · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/part-resize/G3D/Matrix3.h)
 - canonical · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/part-resize/G3D/Matrix3.h)
 - public · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/include/part-resize/G3D/Matrix3.h)
@@ -531,6 +537,7 @@ Earlier paths and their donor versions: `native-headers/part-resize/G3D/Matrix3.
 </details>
 
 **`e0d1989387ba`** · `native-headers/part-resize/G3D/Matrix3.h` · proof not assessed
+- archive · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/archive/source-snapshots/20261107-prior-local/2008-06/native-headers/part-resize/G3D/Matrix3.h)
 - archive · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/archive/source-snapshots/20261107-prior-local/2008-06/native-headers/part-resize/G3D/Matrix3.h)
 - archive · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/archive/source-snapshots/20261107-prior-local/2008-06/native-headers/part-resize/G3D/Matrix3.h)
 - archive · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/archive/source-snapshots/20261107-prior-local/2008-06/native-headers/part-resize/G3D/Matrix3.h)
@@ -576,6 +583,8 @@ Earlier paths and their donor versions: `native-headers/part-resize/G3D/Matrix3.
 </details>
 
 **`e2f42b1cec09`** · `native-headers/part-resize/G3D/Matrix3.h` · proof not assessed
+- public · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/part-resize/G3D/Matrix3.h)
+- canonical · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h)
 - public · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/part-resize/G3D/Matrix3.h)
 - canonical · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-headers/part-resize/G3D/Matrix3.h)
 - public · colingsnyder2-ux · [G3D/Matrix3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/part-resize/G3D/Matrix3.h)
@@ -678,6 +687,7 @@ Earlier paths and their donor versions: `native-headers/part-resize/v8datamodel/
 </details>
 
 **`6b8d8b8bd130`** · `Unclassified/include/part-resize/v8datamodel/PartInstance.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
 - public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
 
 **`9122d76c94b2`** · `Unclassified/include/part-resize/v8datamodel/PartInstance.h` · proof not assessed
@@ -703,6 +713,7 @@ Earlier paths and their donor versions: `native-headers/part-resize/v8datamodel/
 - public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
 
 **`f991ba5336a0`** · `Unclassified/include/part-resize/v8datamodel/PartInstance.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
 - canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
 - canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
 - canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Unclassified/include/part-resize/v8datamodel/PartInstance.h)
@@ -773,6 +784,8 @@ Earlier paths and their donor versions: `native-headers/part-resize/v8datamodel/
 </details>
 
 **`297b1dd81662`** · `native-headers/part-resize/v8datamodel/PartInstance.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/part-resize/v8datamodel/PartInstance.h)
+- canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/part-resize/v8datamodel/PartInstance.h)
 - public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/part-resize/v8datamodel/PartInstance.h)
 - canonical · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-headers/part-resize/v8datamodel/PartInstance.h)
 - public · colingsnyder2-ux · [v8datamodel/PartInstance.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/part-resize/v8datamodel/PartInstance.h)

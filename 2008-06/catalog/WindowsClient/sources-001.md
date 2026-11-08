@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/ActiveDocView.h`.
 
 **`32e77635bcee`** · `WindowsClient/include/ActiveDocView.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/ActiveDocView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/WindowsClient/include/ActiveDocView.h)
 - canonical · colingsnyder2-ux · [include/ActiveDocView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/WindowsClient/include/ActiveDocView.h)
 - canonical · colingsnyder2-ux · [include/ActiveDocView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/WindowsClient/include/ActiveDocView.h)
 - canonical · colingsnyder2-ux · [include/ActiveDocView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/WindowsClient/include/ActiveDocView.h)
@@ -85,6 +86,7 @@ Earlier paths and their donor versions: `native-headers/ActiveDocView.h`.
 </details>
 
 **`7553c7ce91e1`** · `WindowsClient/include/ActiveDocView.h` · proof not assessed
+- public · colingsnyder2-ux · [include/ActiveDocView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/WindowsClient/include/ActiveDocView.h)
 - public · colingsnyder2-ux · [include/ActiveDocView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/WindowsClient/include/ActiveDocView.h)
 
 **`c5f9f96ddf69`** · `WindowsClient/include/ActiveDocView.h` · proof not assessed
@@ -326,6 +328,8 @@ Earlier paths and their donor versions: `native-headers/ActiveDocView.h`.
 </details>
 
 **`ae4dbe996278`** · `native-headers/ActiveDocView.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/ActiveDocView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/ActiveDocView.h)
+- canonical · colingsnyder2-ux · [native-headers/ActiveDocView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/ActiveDocView.h)
 - public · colingsnyder2-ux · [native-headers/ActiveDocView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/ActiveDocView.h)
 - canonical · colingsnyder2-ux · [native-headers/ActiveDocView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-headers/ActiveDocView.h)
 - public · colingsnyder2-ux · [native-headers/ActiveDocView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/ActiveDocView.h)
@@ -460,6 +464,7 @@ Earlier paths and their donor versions: `native-headers/ActiveDocView.h`.
 Earlier paths and their donor versions: `native-headers/CAboutRobloxDialog.h`.
 
 **`3134a3ed862e`** · `WindowsClient/include/CAboutRobloxDialog.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CAboutRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/WindowsClient/include/CAboutRobloxDialog.h)
 - canonical · colingsnyder2-ux · [include/CAboutRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/WindowsClient/include/CAboutRobloxDialog.h)
 - canonical · colingsnyder2-ux · [include/CAboutRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/WindowsClient/include/CAboutRobloxDialog.h)
 - canonical · colingsnyder2-ux · [include/CAboutRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/WindowsClient/include/CAboutRobloxDialog.h)
@@ -528,6 +533,7 @@ Earlier paths and their donor versions: `native-headers/CAboutRobloxDialog.h`.
 </details>
 
 **`650372d4fe30`** · `WindowsClient/include/CAboutRobloxDialog.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CAboutRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/WindowsClient/include/CAboutRobloxDialog.h)
 - public · colingsnyder2-ux · [include/CAboutRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/WindowsClient/include/CAboutRobloxDialog.h)
 
 **`e8880431c6aa`** · `WindowsClient/include/CAboutRobloxDialog.h` · proof not assessed
@@ -710,6 +716,8 @@ Earlier paths and their donor versions: `native-headers/CAboutRobloxDialog.h`.
 </details>
 
 **`584222dd205a`** · `native-headers/CAboutRobloxDialog.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CAboutRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-headers/CAboutRobloxDialog.h)
+- canonical · colingsnyder2-ux · [native-headers/CAboutRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-headers/CAboutRobloxDialog.h)
 - public · colingsnyder2-ux · [native-headers/CAboutRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/CAboutRobloxDialog.h)
 - canonical · colingsnyder2-ux · [native-headers/CAboutRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-headers/CAboutRobloxDialog.h)
 - public · colingsnyder2-ux · [native-headers/CAboutRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/CAboutRobloxDialog.h)

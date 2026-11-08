@@ -17,6 +17,7 @@ Earlier paths and their donor versions: `native-classes/LDrawPartParent.cpp`.
 </details>
 
 **`59c79131d00e`** · `Unclassified/src/LDrawPartParent.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/LDrawPartParent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/LDrawPartParent.cpp)
 - canonical · colingsnyder2-ux · [src/LDrawPartParent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/LDrawPartParent.cpp)
 - canonical · colingsnyder2-ux · [src/LDrawPartParent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/LDrawPartParent.cpp)
 - canonical · colingsnyder2-ux · [src/LDrawPartParent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Unclassified/src/LDrawPartParent.cpp)
@@ -51,6 +52,7 @@ Earlier paths and their donor versions: `native-classes/LDrawPartParent.cpp`.
 </details>
 
 **`bbb4a71cb301`** · `Unclassified/src/LDrawPartParent.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/LDrawPartParent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/LDrawPartParent.cpp)
 - public · colingsnyder2-ux · [src/LDrawPartParent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/LDrawPartParent.cpp)
 
 **`c9aaa23d79a3`** · `Unclassified/src/LDrawPartParent.cpp` · proof not assessed
@@ -81,6 +83,8 @@ Earlier paths and their donor versions: `native-classes/LDrawPartParent.cpp`.
 - public · colingsnyder2-ux · [src/LDrawPartParent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/LDrawPartParent.cpp)
 
 **`0126d7e985f4`** · `native-classes/LDrawPartParent.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LDrawPartParent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/LDrawPartParent.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LDrawPartParent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/LDrawPartParent.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawPartParent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/LDrawPartParent.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LDrawPartParent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/LDrawPartParent.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawPartParent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/LDrawPartParent.cpp)
@@ -261,9 +265,11 @@ Earlier paths and their donor versions: `native-classes/LDrawPartShape.cpp`.
 - public · colingsnyder2-ux · [src/LDrawPartShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/LDrawPartShape.cpp)
 
 **`7860b8c1d984`** · `Unclassified/src/LDrawPartShape.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/LDrawPartShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/LDrawPartShape.cpp)
 - public · colingsnyder2-ux · [src/LDrawPartShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/LDrawPartShape.cpp)
 
 **`89691cda208e`** · `Unclassified/src/LDrawPartShape.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/LDrawPartShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/LDrawPartShape.cpp)
 - canonical · colingsnyder2-ux · [src/LDrawPartShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/LDrawPartShape.cpp)
 - canonical · colingsnyder2-ux · [src/LDrawPartShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/LDrawPartShape.cpp)
 - canonical · colingsnyder2-ux · [src/LDrawPartShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Unclassified/src/LDrawPartShape.cpp)
@@ -315,6 +321,8 @@ Earlier paths and their donor versions: `native-classes/LDrawPartShape.cpp`.
 </details>
 
 **`49bc5d32b70c`** · `native-classes/LDrawPartShape.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LDrawPartShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/LDrawPartShape.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LDrawPartShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/LDrawPartShape.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawPartShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/LDrawPartShape.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LDrawPartShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/LDrawPartShape.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawPartShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/LDrawPartShape.cpp)
@@ -469,9 +477,11 @@ Earlier paths and their donor versions: `native-classes/LDrawPartTransform.cpp`.
 </details>
 
 **`2d9e62676e05`** · `Unclassified/src/LDrawPartTransform.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/LDrawPartTransform.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/LDrawPartTransform.cpp)
 - public · colingsnyder2-ux · [src/LDrawPartTransform.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/LDrawPartTransform.cpp)
 
 **`6ac493bceb7c`** · `Unclassified/src/LDrawPartTransform.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/LDrawPartTransform.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/LDrawPartTransform.cpp)
 - canonical · colingsnyder2-ux · [src/LDrawPartTransform.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/LDrawPartTransform.cpp)
 - canonical · colingsnyder2-ux · [src/LDrawPartTransform.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/LDrawPartTransform.cpp)
 - canonical · colingsnyder2-ux · [src/LDrawPartTransform.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Unclassified/src/LDrawPartTransform.cpp)
@@ -550,6 +560,8 @@ Earlier paths and their donor versions: `native-classes/LDrawPartTransform.cpp`.
 </details>
 
 **`5f5664b010c4`** · `native-classes/LDrawPartTransform.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LDrawPartTransform.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/LDrawPartTransform.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LDrawPartTransform.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/LDrawPartTransform.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawPartTransform.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/LDrawPartTransform.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LDrawPartTransform.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/LDrawPartTransform.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawPartTransform.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/LDrawPartTransform.cpp)
@@ -695,6 +707,7 @@ Earlier paths and their donor versions: `native-classes/LDrawPartWrite.cpp`.
 </details>
 
 **`d08ac862c495`** · `Unclassified/src/LDrawPartWrite.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/LDrawPartWrite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/LDrawPartWrite.cpp)
 - public · colingsnyder2-ux · [src/LDrawPartWrite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/LDrawPartWrite.cpp)
 
 **`d40ae2a19a03`** · `Unclassified/src/LDrawPartWrite.cpp` · proof not assessed
@@ -725,6 +738,7 @@ Earlier paths and their donor versions: `native-classes/LDrawPartWrite.cpp`.
 - public · colingsnyder2-ux · [src/LDrawPartWrite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/LDrawPartWrite.cpp)
 
 **`eccf83c9acec`** · `Unclassified/src/LDrawPartWrite.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/LDrawPartWrite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/LDrawPartWrite.cpp)
 - canonical · colingsnyder2-ux · [src/LDrawPartWrite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/LDrawPartWrite.cpp)
 - canonical · colingsnyder2-ux · [src/LDrawPartWrite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/LDrawPartWrite.cpp)
 - canonical · colingsnyder2-ux · [src/LDrawPartWrite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Unclassified/src/LDrawPartWrite.cpp)
@@ -794,6 +808,8 @@ Earlier paths and their donor versions: `native-classes/LDrawPartWrite.cpp`.
 </details>
 
 **`80b66d709849`** · `native-classes/LDrawPartWrite.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LDrawPartWrite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/LDrawPartWrite.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LDrawPartWrite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/LDrawPartWrite.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawPartWrite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/LDrawPartWrite.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LDrawPartWrite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/LDrawPartWrite.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawPartWrite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/LDrawPartWrite.cpp)
@@ -948,6 +964,7 @@ Earlier paths and their donor versions: `native-classes/LDrawPath.cpp`.
 - public · colingsnyder2-ux · [src/LDrawPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/LDrawPath.cpp)
 
 **`c485adb10a9e`** · `Unclassified/src/LDrawPath.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/LDrawPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/LDrawPath.cpp)
 - canonical · colingsnyder2-ux · [src/LDrawPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/LDrawPath.cpp)
 - canonical · colingsnyder2-ux · [src/LDrawPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/LDrawPath.cpp)
 - canonical · colingsnyder2-ux · [src/LDrawPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Unclassified/src/LDrawPath.cpp)
@@ -982,6 +999,7 @@ Earlier paths and their donor versions: `native-classes/LDrawPath.cpp`.
 </details>
 
 **`d2d127b4baa1`** · `Unclassified/src/LDrawPath.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/LDrawPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/LDrawPath.cpp)
 - public · colingsnyder2-ux · [src/LDrawPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/LDrawPath.cpp)
 
 **`177e235e8b2f`** · `native-classes/LDrawPath.cpp` · proof not assessed
@@ -1019,6 +1037,8 @@ Earlier paths and their donor versions: `native-classes/LDrawPath.cpp`.
 </details>
 
 **`6e5e1ac4e6bd`** · `native-classes/LDrawPath.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LDrawPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/LDrawPath.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LDrawPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/LDrawPath.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/LDrawPath.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LDrawPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/LDrawPath.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawPath.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/LDrawPath.cpp)
