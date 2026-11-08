@@ -114,6 +114,51 @@ class RunnerTests(unittest.TestCase):
             self.assertFalse(runner.check_calls(raw, '?caller@@', b'\xff\xd0', b'\xff\xd0', 0x500000, [])['passed'])
             self.assertTrue(runner.check_calls(raw, '?caller@@', b'\xc3', b'\xc3', 0x500000, [])['passed'])
 
+    def test_explicit_crt_import_requires_iat_and_library_identity(self):
+        raw = struct.pack('<IIH', 2, 0, 6)
+        table = [0] * 8
+        table[7] = 1
+        symbol = '__imp___invalid_parameter_noinfo'
+        index = ({1: table}, [(symbol,)], {'?caller@@': (0, 1)}, {})
+        original = b'\xff\x15\x90\x28\x80\x00\xc3'
+        candidate = b'\xff\x15\x00\x00\x00\x00\xc3'
+        expected = {'kind': 'import', 'offset': 0, 'target': '00802890',
+                    'symbol': symbol, 'import': 'MSVCR90.dll!_invalid_parameter_noinfo'}
+        evidence = ({0x802890: 'MSVCR90.dll!_invalid_parameter_noinfo'},
+                    {('msvcr90.dll', '_invalid_parameter_noinfo'): {symbol}}, {})
+        with patch.object(runner.match, '_coff_data_index', return_value=index), \
+             patch.object(runner, 'import_evidence', return_value=evidence):
+            def check(row=expected, body=candidate):
+                return runner.check_calls(raw, '?caller@@', body, original, 0x500000, [row])
+            self.assertTrue(check()['passed'])
+            self.assertEqual(check()['calls'][0]['status'], 'verified_import')
+            for change in ({'target': '00802894'}, {'symbol': '__imp_wrong'},
+                           {'import': 'MSVCR90.dll!wrong'}, {'import': 'wrong.dll!_invalid_parameter_noinfo'},
+                           {'offset': 1}):
+                self.assertFalse(check(dict(expected, **change))['passed'])
+            self.assertFalse(check(body=b'\xff\x15\x01\x00\x00\x00\xc3')['passed'])
+            self.assertFalse(check(dict(expected, kind='direct'))['passed'])
+            self.assertFalse(runner.check_calls(raw, '?caller@@', b'\xff\xd0', b'\xff\xd0',
+                                                0x500000, [])['passed'])
+        with patch.object(runner.match, '_coff_data_index', return_value=index), \
+             patch.object(runner, 'import_evidence', return_value=(evidence[0], {}, {})):
+            self.assertFalse(runner.check_calls(raw, '?caller@@', candidate, original,
+                                                0x500000, [expected])['passed'])
+
+    def test_strict_proof_rechecks_import_evidence_inputs(self):
+        with tempfile.TemporaryDirectory() as folder:
+            source = Path(folder) / 'msvcrt.lib'
+            source.write_bytes(b'captured')
+            row = {'status': 'exact', 'data_errors': [], 'call_identity': {
+                'passed': True, 'import_evidence_inputs': {str(source): runner.sha(source)}}}
+            runner.require_proof([{'checks': [row]}])
+            source.write_bytes(b'changed')
+            with self.assertRaises(SystemExit):
+                runner.require_proof([{'checks': [row]}])
+            source.unlink()
+            with self.assertRaises(SystemExit):
+                runner.require_proof([{'checks': [row]}])
+
     def test_strict_proof_rejects_missing_calls_data_and_stale_inputs(self):
         row = {'status': 'exact', 'data_errors': [], 'call_identity': {'passed': True}}
         runner.require_proof([{'status': 'complete', 'checks': [row]}])

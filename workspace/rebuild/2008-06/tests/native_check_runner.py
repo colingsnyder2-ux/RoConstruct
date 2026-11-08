@@ -101,14 +101,65 @@ def compiler_flags(source, override=None):
     return flags + ['/D_XTP_STATICLINK', '/D_XTPLIB_NOAUTOLINK', '/I' + str(ROOT / 'tools/libs/xtp-11.2.2/Source')]
 
 
-def check_calls(raw, symbol, body, target, address, expected):
-    """Assert reviewed direct-call bindings; indirect calls remain explicit blockers.
+def import_evidence():
+    """Read actual PE import names and trusted VC9 CRT import-library aliases."""
+    from roc import clients
+    import pefile
+    image = clients.exe_path('2008-06', clients.load()['2008-06'])
+    image_data = image.read_bytes()
+    hashes = {str(image): hashlib.sha256(image_data).hexdigest()}
+    pe = pefile.PE(data=image_data, fast_load=True)
+    pe.parse_data_directories(directories=[pefile.DIRECTORY_ENTRY['IMAGE_DIRECTORY_ENTRY_IMPORT']])
+    labels = {}
+    for descriptor in getattr(pe, 'DIRECTORY_ENTRY_IMPORT', []):
+        dll = descriptor.dll.decode('ascii')
+        for entry in descriptor.imports:
+            if entry.name is None:
+                continue  # Ordinal imports need their own independent proof.
+            if entry.address in labels:
+                raise ValueError('Duplicate PE import address')
+            labels[entry.address] = dll + '!' + entry.name.decode('ascii')
+    pe.close()
+    aliases = {}
+    directory = ROOT / 'tools/vc2008rtm/Program Files/Microsoft Visual Studio 9.0/VC/lib'
+    for name in ('msvcrt.lib', 'msvcprt.lib'):
+        path = directory / name
+        data = path.read_bytes()
+        hashes[str(path)] = hashlib.sha256(data).hexdigest()
+        if not data.startswith(b'!<arch>\n'):
+            raise ValueError('Invalid CRT import library: ' + str(path))
+        offset = 8
+        while offset + 60 <= len(data):
+            size = int(data[offset + 48:offset + 58])
+            member = data[offset + 60:offset + 60 + size]
+            offset += 60 + size + (size & 1)
+            if member[:4] != b'\0\0\xff\xff':
+                continue
+            symbol, dll = member[20:].split(b'\0')[:2]
+            symbol, dll = symbol.decode('ascii'), dll.decode('ascii').lower()
+            name_type = (struct.unpack_from('<H', member, 18)[0] >> 2) & 7
+            if name_type == 1:
+                export = symbol
+            elif name_type in (2, 3):
+                export = symbol[1:] if symbol[:1] in ('_', '@', '?') else symbol
+                if name_type == 3:
+                    export = export.split('@', 1)[0]
+            else:
+                continue
+            aliases.setdefault((dll, export), set()).add('__imp_' + symbol)
+    return labels, aliases, hashes
 
-    Expected rows are {offset: instruction offset, target: original hex VA,
-    symbol: exact decorated COFF name}. This proves bindings, not callee ABI.
+
+def check_calls(raw, symbol, body, target, address, expected):
+    """Check reviewed direct calls and explicitly identified CRT IAT calls.
+
+    Direct rows specify offset, original target and exact COFF symbol. Import
+    rows additionally specify kind=import and the original DLL!export. Their
+    PE IAT address and CRT import-library alias must both agree. Dynamic or
+    virtual calls, final provider selection and callee ABI remain unproven.
     """
     from capstone import Cs, CS_ARCH_X86, CS_MODE_32, CS_GRP_CALL
-    from capstone.x86 import X86_OP_IMM
+    from capstone.x86 import X86_OP_IMM, X86_OP_MEM
     sections, symbols, definitions, _ = match._coff_data_index(raw)
     start, section = definitions[symbol]
     table = sections[section]
@@ -122,25 +173,52 @@ def check_calls(raw, symbol, body, target, address, expected):
     declarations = {row['offset']: row for row in expected}
     if len(declarations) != len(expected):
         raise ValueError('duplicate call expectation offset')
+    imports = import_evidence() if any(row.get('kind') == 'import' for row in expected) else None
     rows = []
     for instruction in decoder.disasm(target, address):
         if not instruction.group(CS_GRP_CALL):
             continue
         offset = instruction.address - address
+        wanted = declarations.pop(offset, None)
         direct = instruction.operands[0].type == X86_OP_IMM
         destination = instruction.operands[0].imm if direct else None
         binding = refs.get(offset + 1)
-        wanted = declarations.pop(offset, None)
-        ok = bool(direct and instruction.bytes[0] == 0xe8 and binding and binding[1] == 20
+        ok = bool(direct and (not wanted or wanted.get('kind', 'direct') == 'direct')
+                  and instruction.bytes[0] == 0xe8 and binding and binding[1] == 20
                   and wanted and binding[0] == wanted['symbol']
                   and destination == int(wanted['target'], 16)
                   and body[offset + 1:offset + 5] == b'\0\0\0\0')
-        rows.append({'offset': offset, 'target': f'{destination:08x}' if direct else None,
-                     'symbol': binding[0] if binding else None,
-                     'status': 'verified_binding' if ok else 'unresolved_or_wrong_binding'})
-    return {'passed': not declarations and all(row['status'] == 'verified_binding' for row in rows),
+        kind = 'direct'
+        if wanted and wanted.get('kind') == 'import':
+            kind = 'import'
+            binding = refs.get(offset + 2)
+            op = instruction.operands[0]
+            absolute = (op.type == X86_OP_MEM and op.mem.base == 0 and op.mem.index == 0)
+            destination = op.mem.disp & 0xffffffff if absolute else None
+            label = imports[0].get(destination) if absolute else None
+            expected_label = wanted.get('import', '')
+            dll, separator, export = expected_label.partition('!')
+            actual_dll, actual_separator, actual_export = (label or '').partition('!')
+            ok = bool(absolute and bytes(instruction.bytes[:2]) == b'\xff\x15'
+                      and body[offset:offset + 2] == b'\xff\x15'
+                      and body[offset + 2:offset + 6] == b'\0\0\0\0'
+                      and binding and binding[1] == 6 and binding[0] == wanted['symbol']
+                      and destination == int(wanted['target'], 16)
+                      and separator and actual_separator and dll.lower() == actual_dll.lower()
+                      and export == actual_export
+                      and binding[0] in imports[1].get((dll.lower(), export), set()))
+        rows.append({'offset': offset, 'target': f'{destination:08x}' if destination is not None else None,
+                     'symbol': binding[0] if binding else None, 'kind': kind,
+                     'status': ('verified_import' if kind == 'import' else 'verified_binding') if ok
+                               else 'unresolved_or_wrong_binding'})
+    if imports:
+        for file, digest in imports[2].items():
+            if sha(Path(file)) != digest:
+                raise ValueError('CRT import library changed during analysis: ' + file)
+    return {'passed': not declarations and all(row['status'] in ('verified_binding', 'verified_import') for row in rows),
             'calls': rows, 'unused_expectations': list(declarations.values()),
-            'scope': 'Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof.'}
+            'import_evidence_inputs': imports[2] if imports else {},
+            'scope': 'Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof.'}
 
 
 def analyze_object(job, obj):
@@ -472,6 +550,13 @@ def main():
 
 def require_proof(results):
     checks = [row for result in results for row in result.get('checks', [])]
+    for row in checks:
+        for name, digest in row.get('call_identity', {}).get('import_evidence_inputs', {}).items():
+            try:
+                if sha(Path(name)) != digest:
+                    raise SystemExit('import proof input changed: ' + name)
+            except OSError:
+                raise SystemExit('import proof input unavailable: ' + name)
     if (not checks or any(result.get('status', 'complete') != 'complete' or result.get('changed_inputs') for result in results)
             or any(row['status'] != 'exact' or 'data_errors' not in row or row['data_errors']
                    or not row.get('call_identity', {}).get('passed', False) for row in checks)):
