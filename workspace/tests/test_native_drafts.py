@@ -377,6 +377,8 @@ def test_triage_includes_organized_fork_paths(tmp_path, prefix):
     canonical = root / 'workspace' / name
     canonical.parent.mkdir(parents=True)
     canonical.write_text('old body\n')
+    other = canonical.with_name('Existing.cpp')
+    other.write_text('new body\n')
     public = root / name.removeprefix('rebuild/')
     public.parent.mkdir(parents=True)
     public.write_text('public body\n')
@@ -396,6 +398,8 @@ def test_triage_includes_organized_fork_paths(tmp_path, prefix):
     assert len(report['variants']) == 1
     assert report['variants'][0]['path'] == name
     assert report['variants'][0]['public_path'] == name.removeprefix('rebuild/')
+    assert report['variants'][0]['canonical_identical_paths'] == [
+        'rebuild/2008-06/App/src/v8tree/Existing.cpp']
     assert report['variants'][0]['public_relation'] == 'different'
     assert '-public body' in report['variants'][0]['public_diff']
     assert '+new body' in report['variants'][0]['public_diff']

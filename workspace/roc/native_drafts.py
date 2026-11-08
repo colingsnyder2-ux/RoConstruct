@@ -567,7 +567,7 @@ def triage(root, ref='refs/remotes/findings/work', after=0, forks=(), include_di
             if old != tip and not any(f[0] == label and tuple(f[1:]) == (old, tip) for f in forks):
                 forks.append((label, old, tip))
 
-    from roc.native_files_notify import NATIVE_DIRS, native_path
+    from roc.native_files_notify import NATIVE_DIRS, native_path, is_native
     native_dirs = NATIVE_DIRS
     for label, old, new in forks:
         if not re.fullmatch(r'[0-9a-f]{40}', old) or not re.fullmatch(r'[0-9a-f]{40}', new):
@@ -597,8 +597,12 @@ def triage(root, ref='refs/remotes/findings/work', after=0, forks=(), include_di
                             'source': {'kind': 'fork', 'label': label, 'old': old, 'new': new,
                                        'fork_path': fork_path}})
 
+    # Index exact native content across the canonical tree, including moved paths.
+    native_entries = {name.removeprefix('workspace/'): entry for name, entry in current_tree.items()
+                      if name.startswith('workspace/') and is_native(name)
+                      and entry[0] in ('100644', '100755') and entry[1] == 'blob'}
     # Read each required blob once. Never read or alter the shared working tree.
-    wanted = set()
+    wanted = {entry[2] for entry in native_entries.values()}
     for row in records:
         name = row['path']
         public_path = name.removeprefix('rebuild/') if name.startswith('rebuild/2008-06/') else None
@@ -616,6 +620,10 @@ def triage(root, ref='refs/remotes/findings/work', after=0, forks=(), include_di
             if len(header) != 3 or header[0].decode() != oid or header[1] != b'blob':
                 raise ValueError('Git blob identity mismatch')
             blobs[oid] = stream.read(int(header[2])); stream.read(1)
+
+    content_paths = {}
+    for name, entry in native_entries.items():
+        content_paths.setdefault(hashlib.sha256(blobs[entry[2]]).hexdigest(), []).append(name)
 
     leases = None
     try:
@@ -682,6 +690,7 @@ def triage(root, ref='refs/remotes/findings/work', after=0, forks=(), include_di
                         public_path=public_path if public is not None else None,
                         public_sha256=hashlib.sha256(public_bytes).hexdigest() if public_bytes is not None else None,
                         public_relation=public_relation,
+                        canonical_identical_paths=sorted(content_paths.get(identity, [])) if identity else [],
                         leases=covering, sources=[])
             if include_diff:
                 try:
