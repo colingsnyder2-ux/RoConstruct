@@ -5,21 +5,22 @@ Grouping is navigation only. Candidate proof/runtime status remains unknown.
 
 | Project | Native paths |
 | --- | ---: |
-| [App/v8tree](App/v8tree/README.md) | 48 |
-| [App/v8xml](App/v8xml/README.md) | 5 |
-| [App/reflection](App/reflection/README.md) | 14 |
+| [App/v8tree](App/v8tree/README.md) | 53 |
+| [App/v8xml](App/v8xml/README.md) | 9 |
+| [App/reflection](App/reflection/README.md) | 33 |
+| [App/tool](App/tool/README.md) | 77 |
 | [Studio](Studio/README.md) | 0 |
-| [WindowsClient](WindowsClient/README.md) | 387 |
-| [App/v8datamodel](App/v8datamodel/README.md) | 232 |
-| [App/v8world](App/v8world/README.md) | 107 |
+| [WindowsClient](WindowsClient/README.md) | 432 |
+| [App/v8datamodel](App/v8datamodel/README.md) | 317 |
+| [App/v8world](App/v8world/README.md) | 115 |
 | [Network](Network/README.md) | 56 |
 | [Rendering](Rendering/README.md) | 59 |
 | [Base/util](Base/util/README.md) | 67 |
-| [Other](Other/README.md) | 359 |
+| [Other](Other/README.md) | 345 |
 
 ## Coverage
 
-63 sources checked; 0 errors.
+64 sources checked; 0 errors.
 
 See [source-map.json](../source-map.json) for revisions, hashes, origins, errors and exclusions.
 Local-only candidates have no public code URL until separately reviewed and published.
