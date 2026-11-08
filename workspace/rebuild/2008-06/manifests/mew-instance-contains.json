@@ -1,0 +1,140 @@
+{
+  "scope": "Inactive source, compatibility and test fixture only. Original bytes/data, no-call identity, and Instance size/parent offset compile checked. No linked selection, complete class ABI, P5/P6 runtime or server credit claim.",
+  "origin": {
+    "fork": "mewpokemons/RoConstruct",
+    "commit": "a355381b778e8cc23e4be927223d55d9662bd60f",
+    "path": "rebuild/2008-06/native-classes/AppUnit558_2008Instance.cpp",
+    "source_sha256": "f0ef843d70e47f0016b80642c146afaa2b1dd3cf6cdf4ed91d71cd9acf247106",
+    "candidate_sha256": "5a10acf298ae54c2ae4209c6f1271fd46ba5e70af91c22d75ad3f61c5dfb1785"
+  },
+  "original_address": "005574b0",
+  "original_identity_evidence": {
+    "historical_map_sha256": "464fa534a5855772dedea88a01a73f94c0c63759215ef37818d3fd74c961f387",
+    "matched_symbol": "?contains@Instance@RBX@@QBE_NPBV12@@Z"
+  },
+  "layout_assertions": [
+    "sizeof(RBX::Instance)==0x130",
+    "offsetof(RBX::Instance,parent)==0x104"
+  ],
+  "runs": [
+    {
+      "source": "App\\src\\v8tree\\InstanceContains.cpp",
+      "source_sha256": "0cd1d1798b03e31d5d041b2daa12d68844ef322d6481aa6e9c81c18cb46b339e",
+      "object_sha256": "262b3ff63eefce169abb76239074597dd103ca352126ccd709a8760b318cedec",
+      "checks": [
+        {
+          "addr": "005574b0",
+          "requested_symbol": "?contains@Instance@RBX@@",
+          "status": "exact",
+          "symbol": "?contains@Instance@RBX@@QBE_NPBV12@@Z",
+          "score": 100,
+          "target_size": 32,
+          "object_size": 32,
+          "target_sha256": "66825b36a657f989e88f33c7557d4e67b6d328cc50f18c327bcfa0fca4a4b2c8",
+          "first_byte_difference": null,
+          "data_matches": [],
+          "data_errors": [],
+          "call_identity": {
+            "passed": true,
+            "calls": [],
+            "unused_expectations": [],
+            "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
+          },
+          "check_seconds": 2.719
+        }
+      ]
+    },
+    {
+      "source": "native-classes\\InstanceContains.cpp",
+      "source_sha256": "d2474a900d5284cc23f65b4ba1b2c44ca4def59736160c200632be4bf173b39a",
+      "object_sha256": "5f24a09cfa5ba76323b5aaea24a2884a35f9537f139ba20b7908913495d93ebb",
+      "checks": [
+        {
+          "addr": "005574b0",
+          "requested_symbol": "?contains@Instance@RBX@@",
+          "status": "exact",
+          "symbol": "?contains@Instance@RBX@@QBE_NPBV12@@Z",
+          "score": 100,
+          "target_size": 32,
+          "object_size": 32,
+          "target_sha256": "66825b36a657f989e88f33c7557d4e67b6d328cc50f18c327bcfa0fca4a4b2c8",
+          "first_byte_difference": null,
+          "data_matches": [],
+          "data_errors": [],
+          "call_identity": {
+            "passed": true,
+            "calls": [],
+            "unused_expectations": [],
+            "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
+          },
+          "check_seconds": 2.719
+        }
+      ]
+    },
+    {
+      "source": "tests\\NativeInstanceLayout.cpp",
+      "source_sha256": "a405f2915f135583d7ae60512308b109e8fc569b7887dd1a0c1f2d3ee9c776c6",
+      "object_sha256": "fb3da97797d5cf2161f32be01acfbac663f110de1b583c4cd1dc5501f2cf01fc",
+      "checks": []
+    },
+    {
+      "source": "tests\\NativeInstanceContainsWorker.cpp",
+      "source_sha256": "d2474a900d5284cc23f65b4ba1b2c44ca4def59736160c200632be4bf173b39a",
+      "object_sha256": "09d7fa2b6d4db42f196553ca43465d11565637db61c9741faae7e5f9484ea74e",
+      "checks": [
+        {
+          "addr": "005574b0",
+          "requested_symbol": "?contains@Instance@RBX@@",
+          "status": "exact",
+          "symbol": "?contains@Instance@RBX@@QBE_NPBV12@@Z",
+          "score": 100,
+          "target_size": 32,
+          "object_size": 32,
+          "target_sha256": "66825b36a657f989e88f33c7557d4e67b6d328cc50f18c327bcfa0fca4a4b2c8",
+          "first_byte_difference": null,
+          "data_matches": [],
+          "data_errors": [],
+          "call_identity": {
+            "passed": true,
+            "calls": [],
+            "unused_expectations": [],
+            "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
+          },
+          "check_seconds": 1.812
+        }
+      ]
+    }
+  ],
+  "canonical_dependency_paths": [
+    "App/include/reflection/descriptor.h",
+    "App/include/reflection/enumconverter.h",
+    "App/include/reflection/member.h",
+    "App/include/reflection/property.h",
+    "App/include/reflection/reflection.h",
+    "App/include/reflection/signal.h",
+    "App/include/reflection/type.h",
+    "App/include/v8tree/Instance.h",
+    "App/include/v8xml/XmlElement.h",
+    "Base/include/util/Events.h",
+    "Base/include/util/GuidItem.h",
+    "Base/include/util/Name.h",
+    "Base/include/util/Object.h",
+    "native-headers/reflection/descriptor.h",
+    "native-headers/reflection/enumconverter.h",
+    "native-headers/reflection/member.h",
+    "native-headers/reflection/property.h",
+    "native-headers/reflection/reflection.h",
+    "native-headers/reflection/signal.h",
+    "native-headers/reflection/type.h",
+    "native-headers/util/Events.h",
+    "native-headers/util/GuidItem.h",
+    "native-headers/util/Name.h",
+    "native-headers/util/Object.h",
+    "native-headers/v8tree/Instance.h",
+    "native-headers/v8xml/XmlElement.h",
+    "tests/NativeInstanceLayout.cpp"
+  ],
+  "parked_siblings": [
+    "removeAllChildren and remove need reviewed indirect-call/provider binding and independent acceptance gates."
+  ]
+}
