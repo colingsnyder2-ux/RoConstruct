@@ -1,0 +1,562 @@
+{
+  "scope": "Inactive experiment only: no linked selection, whole-class ABI, P5/P6/runtime gate or server credit.",
+  "original_source": "RbxgsApp overlay/App/v8tree/Instance.cpp",
+  "source_sha256": "a35fa6896612631b8de8d47a7f252aeaff9c9f10b7fd2b4d4c4545f5b8681840",
+  "candidate_sha256": "d01af53fa167e9cf9ced5d1ebe6e062cff768dfb33f4ecce8a733d8b004b0c40",
+  "candidate_change": "Five method definitions conditionally excluded; original bodies retained in source.",
+  "original_provider_methods": [
+    {
+      "address": "00458e90",
+      "symbol": "?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z",
+      "original_bytes": true,
+      "data_errors": [],
+      "donor_relocations_match": true
+    },
+    {
+      "address": "0055af90",
+      "symbol": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "original_bytes": true,
+      "data_errors": [],
+      "donor_relocations_match": true
+    },
+    {
+      "address": "0055a470",
+      "symbol": "?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z",
+      "original_bytes": true,
+      "data_errors": [],
+      "donor_relocations_match": true
+    },
+    {
+      "address": "00558110",
+      "symbol": "?writeChildren@Instance@RBX@@QAEXPAVXmlElement@@@Z",
+      "original_bytes": true,
+      "data_errors": [],
+      "donor_relocations_match": true
+    },
+    {
+      "address": "00558c50",
+      "symbol": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ",
+      "original_bytes": true,
+      "data_errors": [],
+      "donor_relocations_match": true
+    }
+  ],
+  "baseline_functions": 2139,
+  "baseline_data_symbols": 1538,
+  "removed_functions": 131,
+  "removed_data_symbols": 24,
+  "equivalent_provider_coverage": {
+    "??1XmlNameValuePair@@QAE@XZ": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "?setNextSibling@?$Sibling@VXmlElement@@@RBX@@AAEXPAVXmlElement@@@Z": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "?pushBackChild@?$Parent@VXmlElement@@@RBX@@QAEXPAVXmlElement@@@Z": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "?addChild@XmlElement@@QAEPAV1@PAV1@@Z": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "??8const_iterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QBE_NABV012@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??R?$less@PBVName@RBX@@@std@@QBE_NABQBVName@RBX@@0@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?_Mynode@const_iterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@3@XZ": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?_Myval@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@KAAAU?$pair@QBVName@RBX@@PBVICreator@2@@2@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?_Kfn@?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@SAABQBVName@RBX@@ABU?$pair@QBVName@RBX@@PBVICreator@2@@2@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??1?$_Container_base_aux_alloc_real@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@std@@@std@@IAE@XZ": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??0?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@std@@QAE@XZ": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??Dconst_iterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QBEABU?$pair@QBVName@RBX@@PBVICreator@2@@2@XZ": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??0?$_Iterator_with_base@Ubidirectional_iterator_tag@std@@U?$pair@QBVName@RBX@@PBVICreator@2@@2@HPBU32@ABU32@V_Iterator_base_aux@2@@std@@QAE@XZ": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?_Isnil@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@KAAADPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?_Left@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@KAAAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@PAU342@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?_Parent@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@KAAAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@PAU342@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?_Right@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@KAAAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@PAU342@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?_Root@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@IBEAAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@XZ": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??0?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@std@@QAE@ABV01@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?deallocate@?$allocator@U_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@@std@@QAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@I@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?_Lmost@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@IBEAAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@XZ": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?_Rmost@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@IBEAAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@XZ": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??9const_iterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QBE_NABV012@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?_Color@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@KAAADPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?_Lrotate@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?_Max@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@PAU342@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?_Min@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@PAU342@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?_Rrotate@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAEXXZ": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??$_Destroy@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@@std@@YAXPAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@0@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??$?0U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@?$allocator@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@@std@@QAE@ABV?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@1@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??$?0U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@?$allocator@U_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@@std@@QAE@ABV?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@1@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??$_Allocate@U_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@@std@@YAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@0@IPAU120@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??$_Destroy@U_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@@std@@YAXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@0@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??$_Construct@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@PAU123@@std@@YAXPAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@0@ABQAU120@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??$?0U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@?$allocator@V_Aux_cont@std@@@std@@QAE@ABV?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@1@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??1?$shared_ptr@VObject@RBX@@@boost@@QAE@XZ": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?_Key@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@KAABQBVName@RBX@@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??Diterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QBEAAU?$pair@QBVName@RBX@@PBVICreator@2@@2@XZ": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??1?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@QAE@XZ": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?_Lbound@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@ABQBVName@RBX@@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??0?$_Bidit@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@HPBU12@ABU12@@std@@QAE@XZ": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?destroy@?$allocator@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@@std@@QAEXPAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?allocate@?$allocator@U_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@@std@@QAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@I@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?destroy@?$allocator@U_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@@std@@QAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?construct@?$allocator@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@@std@@QAEXPAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@ABQAU342@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??Econst_iterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAEAAV012@XZ": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??0?$_Container_base_aux_alloc_real@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@std@@@std@@IAE@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@1@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??$?0VObject@RBX@@@?$shared_ptr@VInstance@RBX@@@boost@@QAE@ABV?$shared_ptr@VObject@RBX@@@1@Udynamic_cast_tag@detail@1@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "__unwindfunclet$??$?0VObject@RBX@@@?$shared_ptr@VInstance@RBX@@@boost@@QAE@ABV?$shared_ptr@VObject@RBX@@@1@Udynamic_cast_tag@detail@1@@Z$1": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "__unwindfunclet$??$?0VObject@RBX@@@?$shared_ptr@VInstance@RBX@@@boost@@QAE@ABV?$shared_ptr@VObject@RBX@@@1@Udynamic_cast_tag@detail@1@@Z$0": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "__ehhandler$??$?0VObject@RBX@@@?$shared_ptr@VInstance@RBX@@@boost@@QAE@ABV?$shared_ptr@VObject@RBX@@@1@Udynamic_cast_tag@detail@1@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??Citerator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QBEPAU?$pair@QBVName@RBX@@PBVICreator@2@@2@XZ": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??1?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE@XZ": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??0const_iterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@PBV12@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?_Buynode@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@XZ": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??Econst_iterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE?AV012@H@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?_Erase@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??0?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@QAE@U?$less@PBVName@RBX@@@1@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@1@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??$shared_dynamic_cast@VInstance@RBX@@VObject@2@@boost@@YA?AV?$shared_ptr@VInstance@RBX@@@0@ABV?$shared_ptr@VObject@RBX@@@0@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??0iterator@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE@PAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@2@PBV12@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??1?$_Tree_ptr@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE@XZ": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?begin@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@XZ": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?_Init@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@IAEXXZ": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?_Make_iter@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QBE?AViterator@12@Vconst_iterator@12@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?erase@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "__unwindfunclet$?erase@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z$2": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "__unwindfunclet$?erase@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z$0": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "__ehhandler$?erase@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?clear@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAEXXZ": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??0?$_Tree_nod@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@IAE@ABU?$less@PBVName@RBX@@@1@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@1@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?end@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@XZ": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?lower_bound@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@ABQBVName@RBX@@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??1?$_Tree_val@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE@XZ": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?erase@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@0@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??0?$_Tree_ptr@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@IAE@ABU?$less@PBVName@RBX@@@1@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@1@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?find@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@ABQBVName@RBX@@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?_Tidy@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@IAEXXZ": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??0?$_Tree_val@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@IAE@ABU?$less@PBVName@RBX@@@1@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@1@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??1?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE@XZ": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "__unwindfunclet$??1?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE@XZ$0": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "__ehhandler$??1?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE@XZ": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??0?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE@ABU?$less@PBVName@RBX@@@1@ABV?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@1@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "__unwindfunclet$??0?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE@ABU?$less@PBVName@RBX@@@1@ABV?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@1@@Z$0": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "__ehhandler$??0?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE@ABU?$less@PBVName@RBX@@@1@ABV?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@1@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??1?$map@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@@std@@QAE@XZ": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??0?$map@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@@std@@QAE@XZ": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?getCreators@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@KAAAV?$map@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@@std@@XZ": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "__unwindfunclet$?getCreators@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@KAAAV?$map@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@@std@@XZ$0": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "__ehhandler$?getCreators@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@KAAAV?$map@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@@std@@XZ": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?create@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "__unwindfunclet$?create@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z$1": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "__unwindfunclet$?create@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z$0": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "__ehhandler$?create@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??__Fcreators@?1??getCreators@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@KAAAV?$map@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@@std@@XZ@YAXXZ": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "__ehfuncinfo$??$?0VObject@RBX@@@?$shared_ptr@VInstance@RBX@@@boost@@QAE@ABV?$shared_ptr@VObject@RBX@@@1@Udynamic_cast_tag@detail@1@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "__unwindtable$??$?0VObject@RBX@@@?$shared_ptr@VInstance@RBX@@@boost@@QAE@ABV?$shared_ptr@VObject@RBX@@@1@Udynamic_cast_tag@detail@1@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "__ehfuncinfo$?erase@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "__unwindtable$?erase@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "__ehfuncinfo$??1?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE@XZ": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "__unwindtable$??1?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE@XZ": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "__ehfuncinfo$??0?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE@ABU?$less@PBVName@RBX@@@1@ABV?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@1@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "__unwindtable$??0?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE@ABU?$less@PBVName@RBX@@@1@ABV?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@1@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?creators@?1??getCreators@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@KAAAV?$map@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@@std@@XZ@4V45@A": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "??_B?1??getCreators@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@KAAAV?$map@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@@std@@XZ@51": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "__ehfuncinfo$?getCreators@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@KAAAV?$map@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@@std@@XZ": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "__unwindtable$?getCreators@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@KAAAV?$map@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@@std@@XZ": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "__ehfuncinfo$?create@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "__unwindtable$?create@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z": [
+      "NativeInstanceLifetimeFull.obj"
+    ],
+    "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": [
+      "NativeInstanceCallbacksFull.obj"
+    ],
+    "?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z": [
+      "NativeInstanceCallbacksFull.obj"
+    ],
+    "??9Name@RBX@@QBE_NABV01@@Z": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "??1InstanceHandle@RBX@@QAE@XZ": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "??0XmlNameValuePair@@QAE@ABVName@RBX@@PBV12@@Z": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "??0XmlNameValuePair@@QAE@ABVName@RBX@@@Z": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "??0?$Sibling@VXmlElement@@@RBX@@IAE@XZ": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "??0?$Parent@VXmlElement@@@RBX@@QAE@XZ": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "??0?$Parent@VXmlAttribute@@@RBX@@QAE@XZ": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "?setNextSibling@?$Sibling@VXmlAttribute@@@RBX@@AAEXPAVXmlAttribute@@@Z": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "??0?$Sibling@VXmlAttribute@@@RBX@@IAE@XZ": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "??0XmlElement@@QAE@ABVName@RBX@@@Z": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "?pushBackChild@?$Parent@VXmlAttribute@@@RBX@@QAEXPAVXmlAttribute@@@Z": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "??$?0PBVName@RBX@@@XmlAttribute@@QAE@ABVName@RBX@@PBV12@@Z": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "??0InstanceHandle@RBX@@QAE@ABV01@@Z": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "??0XmlNameValuePair@@QAE@ABVName@RBX@@VInstanceHandle@2@@Z": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "__unwindfunclet$??0XmlNameValuePair@@QAE@ABVName@RBX@@VInstanceHandle@2@@Z$0": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "__ehhandler$??0XmlNameValuePair@@QAE@ABVName@RBX@@VInstanceHandle@2@@Z": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "?addAttribute@XmlElement@@IAEXPAVXmlAttribute@@@Z": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "??$addAttribute@PBVName@RBX@@@XmlElement@@QAEXABVName@RBX@@PBV12@@Z": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "??$?0VInstanceHandle@RBX@@@XmlElement@@QAE@ABVName@RBX@@VInstanceHandle@2@@Z": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "__unwindfunclet$??$?0VInstanceHandle@RBX@@@XmlElement@@QAE@ABVName@RBX@@VInstanceHandle@2@@Z$0": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "__ehhandler$??$?0VInstanceHandle@RBX@@@XmlElement@@QAE@ABVName@RBX@@VInstanceHandle@2@@Z": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "??$?0VInstanceHandle@RBX@@@XmlAttribute@@QAE@ABVName@RBX@@VInstanceHandle@2@@Z": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "__unwindfunclet$??$?0VInstanceHandle@RBX@@@XmlAttribute@@QAE@ABVName@RBX@@VInstanceHandle@2@@Z$0": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "__ehhandler$??$?0VInstanceHandle@RBX@@@XmlAttribute@@QAE@ABVName@RBX@@VInstanceHandle@2@@Z": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "?addChild@XmlElement@@QAEPAV1@ABVName@RBX@@@Z": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "??$addAttribute@VInstanceHandle@RBX@@@XmlElement@@QAEXABVName@RBX@@VInstanceHandle@2@@Z": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "__unwindfunclet$??$addAttribute@VInstanceHandle@RBX@@@XmlElement@@QAEXABVName@RBX@@VInstanceHandle@2@@Z$1": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "__unwindfunclet$??$addAttribute@VInstanceHandle@RBX@@@XmlElement@@QAEXABVName@RBX@@VInstanceHandle@2@@Z$0": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "__ehhandler$??$addAttribute@VInstanceHandle@RBX@@@XmlElement@@QAEXABVName@RBX@@VInstanceHandle@2@@Z": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "?writeChildren@Instance@RBX@@QAEXPAVXmlElement@@@Z": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "?write@Instance@RBX@@UAEPAVXmlElement@@XZ": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "__unwindfunclet$?write@Instance@RBX@@UAEPAVXmlElement@@XZ$2": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "__ehhandler$?write@Instance@RBX@@UAEPAVXmlElement@@XZ": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "__ehfuncinfo$??0XmlNameValuePair@@QAE@ABVName@RBX@@VInstanceHandle@2@@Z": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "__unwindtable$??0XmlNameValuePair@@QAE@ABVName@RBX@@VInstanceHandle@2@@Z": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "__ehfuncinfo$??$?0VInstanceHandle@RBX@@@XmlElement@@QAE@ABVName@RBX@@VInstanceHandle@2@@Z": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "__unwindtable$??$?0VInstanceHandle@RBX@@@XmlElement@@QAE@ABVName@RBX@@VInstanceHandle@2@@Z": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "__ehfuncinfo$??$?0VInstanceHandle@RBX@@@XmlAttribute@@QAE@ABVName@RBX@@VInstanceHandle@2@@Z": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "__unwindtable$??$?0VInstanceHandle@RBX@@@XmlAttribute@@QAE@ABVName@RBX@@VInstanceHandle@2@@Z": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "__ehfuncinfo$??$addAttribute@VInstanceHandle@RBX@@@XmlElement@@QAEXABVName@RBX@@VInstanceHandle@2@@Z": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "__unwindtable$??$addAttribute@VInstanceHandle@RBX@@@XmlElement@@QAEXABVName@RBX@@VInstanceHandle@2@@Z": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "__ehfuncinfo$?write@Instance@RBX@@UAEPAVXmlElement@@XZ": [
+      "NativeInstanceSerializationFull.obj"
+    ],
+    "__unwindtable$?write@Instance@RBX@@UAEPAVXmlElement@@XZ": [
+      "NativeInstanceSerializationFull.obj"
+    ]
+  },
+  "native_objects": {
+    "NativeInstanceLifetimeFull.obj": "49395565f0391650b3a0261e0f273941a4daf46bbdbd0eeb76109407b526d4a8",
+    "NativeInstanceCallbacksFull.obj": "6d3c1cdf2d410ee9c2d4717f62a8bc17071092285df138e354ca07f1177f0fbd",
+    "NativeInstanceSerializationFull.obj": "395aeff5c685e6df666cce1252098bf4509ea852eb6d7284a3b64fb2880a7e92"
+  },
+  "original_archive_sha256": "21e44d8cac6d3f14850180ccb2f8d5ed618fe129c9d5c1632186b78d52d03519",
+  "candidate_archive_sha256": "c466e0e286a389b1bfd33c90cf2a476be576b6b2919a0cbe10e1490d8e8beda0",
+  "unchanged_archive_members": 317,
+  "instance_write_eh_events": [
+    {
+      "symbol": "__ehhandler$?write@Instance@RBX@@UAEPAVXmlElement@@XZ",
+      "original": "0x7bf52b",
+      "kind": "cleanup/handler code",
+      "size": 10,
+      "exact": true
+    },
+    {
+      "symbol": "__ehfuncinfo$?write@Instance@RBX@@UAEPAVXmlElement@@XZ",
+      "original": "0x8d5440",
+      "kind": "EH data",
+      "size": 36,
+      "exact": true,
+      "original_bytes": "220593190100000038548d00000000000000000000000000000000000000000001000000",
+      "native_bytes": "220593190100000000000000000000000000000000000000000000000000000001000000"
+    },
+    {
+      "symbol": "__unwindtable$?write@Instance@RBX@@UAEPAVXmlElement@@XZ",
+      "original": "0x8d5438",
+      "kind": "EH data",
+      "size": 8,
+      "exact": true,
+      "original_bytes": "ffffffff20f57b00",
+      "native_bytes": "ffffffff00000000"
+    },
+    {
+      "symbol": "__unwindfunclet$?write@Instance@RBX@@UAEPAVXmlElement@@XZ$2",
+      "original": "0x7bf520",
+      "kind": "cleanup/handler code",
+      "size": 11,
+      "exact": true
+    }
+  ],
+  "blockers": [
+    "Prove final archive extraction and unique linked providers with current build inputs.",
+    "Prove class-wide ABI, callee selection and remaining exception/lifetime obligations.",
+    "Doc executable selection is blocked by CWorkspace::write lifetime/EH; pass required P5/P6 and runtime gates before activation."
+  ]
+}
