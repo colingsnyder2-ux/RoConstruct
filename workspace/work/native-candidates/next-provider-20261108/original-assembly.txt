@@ -1,0 +1,381 @@
+== 0044f500 148 bytes unit=CRobloxDoc
+0044f500  push -1
+0044f502  push 0x7c16d2  ; fn_007c16d2 [unit? seg_007c0000]
+0044f507  mov eax, dword ptr fs:[0]
+0044f50d  push eax
+0044f50e  mov dword ptr fs:[0], esp
+0044f515  sub esp, 8
+0044f518  push esi
+0044f519  lea eax, [esp + 8]
+0044f51d  push eax
+0044f51e  mov esi, ecx
+0044f520  call 0x4060d0  ; fn_004060d0 [unit? RBX::VRunService::?$FactoryProduct::Creator]
+0044f525  push 0x817538
+0044f52a  push eax
+0044f52b  lea ecx, [esp + 0x10]
+0044f52f  push ecx
+0044f530  mov dword ptr [esp + 0x24], 0
+0044f538  call 0x40e160  ; fn_0040e160 [unit? CBrowserView]
+0044f53d  add esp, 0x10
+0044f540  mov edx, dword ptr [esp + 0x20]
+0044f544  push edx
+0044f545  mov ecx, eax
+0044f547  mov byte ptr [esp + 0x18], 1
+0044f54c  call dword ptr [0x803ee0]  ; mfc90.dll!#910
+0044f552  push eax
+0044f553  mov eax, dword ptr [esp + 0x24]
+0044f557  push eax
+0044f558  mov ecx, esi
+0044f55a  call 0x45fe80  ; fn_0045fe80 [unit? CPublishAsPlaceDialog]
+0044f55f  lea ecx, [esp + 4]
+0044f563  call dword ptr [0x803f14]  ; mfc90.dll!#601
+0044f569  lea ecx, [esp + 8]
+0044f56d  call dword ptr [0x803f14]  ; mfc90.dll!#601
+0044f573  mov ecx, dword ptr [esp + 0xc]
+0044f577  mov dword ptr [esi], 0x81737c
+0044f57d  mov dword ptr [esi + 0x74], 0x817350
+0044f584  mov eax, esi
+0044f586  pop esi
+0044f587  mov dword ptr fs:[0], ecx
+0044f58e  add esp, 0x14
+0044f591  ret 8
+== 0044f660 148 bytes unit=CPublishAsPlaceDialog
+0044f660  push -1
+0044f662  push 0x7c16d2  ; fn_007c16d2 [unit? seg_007c0000]
+0044f667  mov eax, dword ptr fs:[0]
+0044f66d  push eax
+0044f66e  mov dword ptr fs:[0], esp
+0044f675  sub esp, 8
+0044f678  push esi
+0044f679  lea eax, [esp + 8]
+0044f67d  push eax
+0044f67e  mov esi, ecx
+0044f680  call 0x4060d0  ; fn_004060d0 [unit? RBX::VRunService::?$FactoryProduct::Creator]
+0044f685  push 0x817938
+0044f68a  push eax
+0044f68b  lea ecx, [esp + 0x10]
+0044f68f  push ecx
+0044f690  mov dword ptr [esp + 0x24], 0
+0044f698  call 0x40e160  ; fn_0040e160 [unit? CBrowserView]
+0044f69d  add esp, 0x10
+0044f6a0  mov edx, dword ptr [esp + 0x20]
+0044f6a4  push edx
+0044f6a5  mov ecx, eax
+0044f6a7  mov byte ptr [esp + 0x18], 1
+0044f6ac  call dword ptr [0x803ee0]  ; mfc90.dll!#910
+0044f6b2  push eax
+0044f6b3  mov eax, dword ptr [esp + 0x24]
+0044f6b7  push eax
+0044f6b8  mov ecx, esi
+0044f6ba  call 0x45fe80  ; fn_0045fe80 [unit? CPublishAsPlaceDialog]
+0044f6bf  lea ecx, [esp + 4]
+0044f6c3  call dword ptr [0x803f14]  ; mfc90.dll!#601
+0044f6c9  lea ecx, [esp + 8]
+0044f6cd  call dword ptr [0x803f14]  ; mfc90.dll!#601
+0044f6d3  mov ecx, dword ptr [esp + 0xc]
+0044f6d7  mov dword ptr [esi], 0x81777c
+0044f6dd  mov dword ptr [esi + 0x74], 0x817750
+0044f6e4  mov eax, esi
+0044f6e6  pop esi
+0044f6e7  mov dword ptr fs:[0], ecx
+0044f6ee  add esp, 0x14
+0044f6f1  ret 8
+== 0045fe20 18 bytes unit=CRobloxWnd
+0045fe20  mov dword ptr [ecx], 0x81a564
+0045fe26  mov dword ptr [ecx + 0x74], 0x81a538
+0045fe2d  jmp 0x401050  ; fn_00401050 [unit? CAboutRobloxDialog]
+== 00428850 146 bytes unit=MainLogManager
+00428850  push -1
+00428852  push 0x7d9168  ; fn_007d9168 [unit? seg_007d0000]
+00428857  mov eax, dword ptr fs:[0]
+0042885d  push eax
+0042885e  mov dword ptr fs:[0], esp
+00428865  sub esp, 8
+00428868  lea eax, [esp]
+0042886b  push esi
+0042886c  push eax
+0042886d  call 0x569620  ; fn_00569620 [unit? RBX::ServiceProvider]
+00428872  add esp, 4
+00428875  mov ecx, dword ptr [esp + 0x1c]
+00428879  mov edx, dword ptr [ecx]
+0042887b  mov esi, dword ptr [eax]
+0042887d  mov eax, dword ptr [edx + 4]
+00428880  mov dword ptr [esp + 0x14], 0
+00428888  call eax
+0042888a  push eax
+0042888b  push 3
+0042888d  push esi
+0042888e  call 0x5693a0  ; fn_005693a0 [unit? RBX::ServiceProvider]
+00428893  mov eax, dword ptr [esp + 0x14]
+00428897  add esp, 0xc
+0042889a  mov dword ptr [esp + 0x14], 0xffffffff
+004288a2  test eax, eax
+004288a4  je 0x4288d2
+004288a6  mov esi, eax
+004288a8  add eax, 4
+004288ab  or ecx, 0xffffffff
+004288ae  lock xadd dword ptr [eax], ecx
+004288b2  jne 0x4288d2
+004288b4  mov edx, dword ptr [esi]
+004288b6  mov eax, dword ptr [edx + 4]
+004288b9  mov ecx, esi
+004288bb  call eax
+004288bd  lea ecx, [esi + 8]
+004288c0  or edx, 0xffffffff
+004288c3  lock xadd dword ptr [ecx], edx
+004288c7  jne 0x4288d2
+004288c9  mov eax, dword ptr [esi]
+004288cb  mov edx, dword ptr [eax + 8]
+004288ce  mov ecx, esi
+004288d0  call edx
+004288d2  mov ecx, dword ptr [esp + 0xc]
+004288d6  pop esi
+004288d7  mov dword ptr fs:[0], ecx
+004288de  add esp, 0x14
+004288e1  ret 
+== 00413c20 235 bytes unit=CopyVerb
+00413c20  push -1
+00413c22  push 0x7bd909  ; fn_007bd909 [unit? CSpinButtonCtrl]
+00413c27  mov eax, dword ptr fs:[0]
+00413c2d  push eax
+00413c2e  mov dword ptr fs:[0], esp
+00413c35  sub esp, 8
+00413c38  push ebx
+00413c39  xor ebx, ebx
+00413c3b  mov dword ptr [esp + 4], ebx
+00413c3f  push esi
+00413c40  mov esi, dword ptr [ecx + 0x154]
+00413c46  mov eax, dword ptr [esi + 0x10]
+00413c49  sub eax, dword ptr [esi + 0xc]
+00413c4c  push edi
+00413c4d  sar eax, 3
+00413c50  test eax, eax
+00413c52  jbe 0x413c81
+00413c54  mov edi, dword ptr [esi + 0xc]
+00413c57  push ebp
+00413c58  mov ebp, dword ptr [0x802890]  ; MSVCR90.dll!_invalid_parameter_noinfo
+00413c5e  cmp edi, dword ptr [esi + 0x10]
+00413c61  jbe 0x413c65
+00413c63  call ebp
+00413c65  mov esi, dword ptr [esi]
+00413c67  test esi, esi
+00413c69  jne 0x413c7d
+00413c6b  call ebp
+00413c6d  cmp edi, dword ptr [esi + 0x10]
+00413c70  jb 0x413c74
+00413c72  call ebp
+00413c74  mov esi, dword ptr [esp + 0x14]
+00413c78  mov eax, edi
+00413c7a  pop ebp
+00413c7b  jmp 0x413c92
+00413c7d  mov esi, dword ptr [esi]
+00413c7f  jmp 0x413c6d
+00413c81  xor esi, esi
+00413c83  mov dword ptr [esp + 0xc], ebx
+00413c87  mov dword ptr [esp + 0x10], esi
+00413c8b  lea eax, [esp + 0xc]
+00413c8f  lea ebx, [esi + 1]
+00413c92  mov ecx, dword ptr [eax]
+00413c94  mov edi, dword ptr [esp + 0x24]
+00413c98  mov dword ptr [edi], ecx
+00413c9a  mov eax, dword ptr [eax + 4]
+00413c9d  mov dword ptr [edi + 4], eax
+00413ca0  test eax, eax
+00413ca2  je 0x413cb0
+00413ca4  add eax, 4
+00413ca7  mov edx, 1
+00413cac  lock xadd dword ptr [eax], edx
+00413cb0  or ebx, 2
+00413cb3  mov dword ptr [esp + 0x1c], 0
+00413cbb  test bl, 1
+00413cbe  je 0x413cf5
+00413cc0  and ebx, 0xfffffffe
+00413cc3  mov dword ptr [esp + 0xc], ebx
+00413cc7  test esi, esi
+00413cc9  je 0x413cf5
+00413ccb  lea eax, [esi + 4]
+00413cce  or ecx, 0xffffffff
+00413cd1  lock xadd dword ptr [eax], ecx
+00413cd5  jne 0x413cf5
+00413cd7  mov edx, dword ptr [esi]
+00413cd9  mov eax, dword ptr [edx + 4]
+00413cdc  mov ecx, esi
+00413cde  call eax
+00413ce0  lea ecx, [esi + 8]
+00413ce3  or edx, 0xffffffff
+00413ce6  lock xadd dword ptr [ecx], edx
+00413cea  jne 0x413cf5
+00413cec  mov eax, dword ptr [esi]
+00413cee  mov edx, dword ptr [eax + 8]
+00413cf1  mov ecx, esi
+00413cf3  call edx
+00413cf5  mov ecx, dword ptr [esp + 0x14]
+00413cf9  mov eax, edi
+00413cfb  pop edi
+00413cfc  pop esi
+00413cfd  pop ebx
+00413cfe  mov dword ptr fs:[0], ecx
+00413d05  add esp, 0x14
+00413d08  ret 4
+== 005bd820 98 bytes unit=RBX::VNetworkSettings::?$BoundPropGetSet
+005bd820  sub esp, 8
+005bd823  push ebx
+005bd824  push ebp
+005bd825  push esi
+005bd826  push edi
+005bd827  lea esi, [ecx + 0x13c]
+005bd82d  lea eax, [esp + 0x1c]
+005bd831  push eax
+005bd832  lea ecx, [esp + 0x14]
+005bd836  push ecx
+005bd837  mov ecx, esi
+005bd839  call 0x5b99a0  ; fn_005b99a0 [unit? RBX::Soundscape::SoundChannel]
+005bd83e  mov edi, dword ptr [esp + 0x10]
+005bd842  mov ebx, dword ptr [esi + 0x18]
+005bd845  mov esi, dword ptr [esi]
+005bd847  mov ebp, dword ptr [0x802890]  ; MSVCR90.dll!_invalid_parameter_noinfo
+005bd84d  test edi, edi
+005bd84f  je 0x5bd855
+005bd851  cmp edi, esi
+005bd853  je 0x5bd857
+005bd855  call ebp
+005bd857  mov esi, dword ptr [esp + 0x14]
+005bd85b  cmp esi, ebx
+005bd85d  je 0x5bd874
+005bd85f  test edi, edi
+005bd861  jne 0x5bd87e
+005bd863  call ebp
+005bd865  cmp esi, dword ptr [edi + 0x18]
+005bd868  jne 0x5bd86c
+005bd86a  call ebp
+005bd86c  mov ecx, dword ptr [esi + 0x10]
+005bd86f  call 0x5bd4f0  ; fn_005bd4f0 [unit? VStockSound::?$FactoryProduct]
+005bd874  pop edi
+005bd875  pop esi
+005bd876  pop ebp
+005bd877  pop ebx
+005bd878  add esp, 8
+005bd87b  ret 4
+005bd87e  mov edi, dword ptr [edi]
+005bd880  jmp 0x5bd865
+== 00618a40 364 bytes unit=RBX::VFlag::?$FactoryProduct
+00618a40  push -1
+00618a42  push 0x7c7bfb  ; fn_007c7bfb [unit? seg_007c0000]
+00618a47  mov eax, dword ptr fs:[0]
+00618a4d  push eax
+00618a4e  mov dword ptr fs:[0], esp
+00618a55  sub esp, 0x18
+00618a58  mov eax, dword ptr [esp + 0x2c]
+00618a5c  push ebx
+00618a5d  push esi
+00618a5e  push edi
+00618a5f  mov dword ptr [esp + 0xc], 0
+00618a67  test eax, eax
+00618a69  je 0x618a9c
+00618a6b  lea ecx, [esp + 0x1c]
+00618a6f  push ecx
+00618a70  lea ecx, [eax + 0xe4]
+00618a76  call 0x42af90  ; ?shared_from_this@?$enable_shared_from_this@VInstance@RBX@@@boost@@QAE?AV?$shared_ptr@VInstance@RBX@@@2@XZ
+00618a7b  push eax
+00618a7c  lea edx, [esp + 0x18]
+00618a80  push edx
+00618a81  call 0x4a2070  ; ??$shared_static_cast@VPartInstance@RBX@@VInstance@2@@boost@@YA?AV?$shared_ptr@VPartInstance@RBX@@@0@ABV?$shared_ptr@VInstance@RBX@@@0@@Z
+00618a86  add esp, 8
+00618a89  mov esi, dword ptr [esp + 0x10]
+00618a8d  mov dword ptr [esp + 0x2c], 2
+00618a95  mov ebx, 3
+00618a9a  jmp 0x618ab1
+00618a9c  xor esi, esi
+00618a9e  mov dword ptr [esp + 0xc], 0
+00618aa6  mov dword ptr [esp + 0x10], esi
+00618aaa  lea eax, [esp + 0xc]
+00618aae  lea ebx, [esi + 4]
+00618ab1  mov ecx, dword ptr [eax]
+00618ab3  mov edi, dword ptr [esp + 0x34]
+00618ab7  mov dword ptr [edi], ecx
+00618ab9  mov eax, dword ptr [eax + 4]
+00618abc  mov dword ptr [edi + 4], eax
+00618abf  test eax, eax
+00618ac1  je 0x618acf
+00618ac3  add eax, 4
+00618ac6  mov edx, 1
+00618acb  lock xadd dword ptr [eax], edx
+00618acf  or ebx, 8
+00618ad2  test bl, 4
+00618ad5  je 0x618b0c
+00618ad7  and ebx, 0xfffffffb
+00618ada  mov dword ptr [esp + 0xc], ebx
+00618ade  test esi, esi
+00618ae0  je 0x618b0c
+00618ae2  lea eax, [esi + 4]
+00618ae5  or ecx, 0xffffffff
+00618ae8  lock xadd dword ptr [eax], ecx
+00618aec  jne 0x618b0c
+00618aee  mov edx, dword ptr [esi]
+00618af0  mov eax, dword ptr [edx + 4]
+00618af3  mov ecx, esi
+00618af5  call eax
+00618af7  lea ecx, [esi + 8]
+00618afa  or edx, 0xffffffff
+00618afd  lock xadd dword ptr [ecx], edx
+00618b01  jne 0x618b0c
+00618b03  mov eax, dword ptr [esi]
+00618b05  mov edx, dword ptr [eax + 8]
+00618b08  mov ecx, esi
+00618b0a  call edx
+00618b0c  mov dword ptr [esp + 0x2c], 1
+00618b14  test bl, 2
+00618b17  je 0x618b52
+00618b19  mov esi, dword ptr [esp + 0x18]
+00618b1d  and ebx, 0xfffffffd
+00618b20  mov dword ptr [esp + 0xc], ebx
+00618b24  test esi, esi
+00618b26  je 0x618b52
+00618b28  lea eax, [esi + 4]
+00618b2b  or ecx, 0xffffffff
+00618b2e  lock xadd dword ptr [eax], ecx
+00618b32  jne 0x618b52
+00618b34  mov edx, dword ptr [esi]
+00618b36  mov eax, dword ptr [edx + 4]
+00618b39  mov ecx, esi
+00618b3b  call eax
+00618b3d  lea ecx, [esi + 8]
+00618b40  or edx, 0xffffffff
+00618b43  lock xadd dword ptr [ecx], edx
+00618b47  jne 0x618b52
+00618b49  mov eax, dword ptr [esi]
+00618b4b  mov edx, dword ptr [eax + 8]
+00618b4e  mov ecx, esi
+00618b50  call edx
+00618b52  mov dword ptr [esp + 0x2c], 0
+00618b5a  test bl, 1
+00618b5d  je 0x618b98
+00618b5f  mov esi, dword ptr [esp + 0x20]
+00618b63  and ebx, 0xfffffffe
+00618b66  mov dword ptr [esp + 0xc], ebx
+00618b6a  test esi, esi
+00618b6c  je 0x618b98
+00618b6e  lea eax, [esi + 4]
+00618b71  or ecx, 0xffffffff
+00618b74  lock xadd dword ptr [eax], ecx
+00618b78  jne 0x618b98
+00618b7a  mov edx, dword ptr [esi]
+00618b7c  mov eax, dword ptr [edx + 4]
+00618b7f  mov ecx, esi
+00618b81  call eax
+00618b83  lea ecx, [esi + 8]
+00618b86  or edx, 0xffffffff
+00618b89  lock xadd dword ptr [ecx], edx
+00618b8d  jne 0x618b98
+00618b8f  mov eax, dword ptr [esi]
+00618b91  mov edx, dword ptr [eax + 8]
+00618b94  mov ecx, esi
+00618b96  call edx
+00618b98  mov ecx, dword ptr [esp + 0x24]
+00618b9c  mov eax, edi
+00618b9e  pop edi
+00618b9f  pop esi
+00618ba0  pop ebx
+00618ba1  mov dword ptr fs:[0], ecx
+00618ba8  add esp, 0x24
+00618bab  ret 

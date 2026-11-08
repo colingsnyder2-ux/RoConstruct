@@ -1,0 +1,16 @@
+{
+  "analysis.json": "ea4ff6eb99ab4bad39d702aa1c685cb6e2b6c295b8b21864301dc1a2d5ec3755",
+  "baseline-link-log.txt": "134c639179f1c00b2dc4c216500e4fd2c33ceb3fe241a8b90a6c9946d16f585a",
+  "compile-results.json": "f819cc290df33ed0aeb7fa1caa5cc43a07d785b58f861c62da343e6c76c4291e",
+  "compile-summary.json": "fd00f335c51312c072b4872b48f6925693238dfe3286eb42f91282da4b4c09a1",
+  "historical-hypotheses.json": "9186b86434d1a012dd4382321ff5f997c4f8b2cac46e0cbf447d801c3e663f62",
+  "link-log.txt": "8baa00c38ed45c67b639960e9fb5dc68ecfd20ffd57819d63748a9cf2c48812b",
+  "link-receipt.json": "6d13558810ec7cc2524492efe6ad02e78d188a3b75cc5afe55d48a70ceed0a00",
+  "original-assembly.txt": "ac3bfb92c6b42f3cae6f91773d58072ee394f958135ae63165ad926902bad0fb",
+  "README.md": "0593ad4839af315de04e3646c933b46e31d3862b1e42911e0c58e18089513017",
+  "candidate/CSaveToRobloxDialog.cpp": "c9aa424fa5dbc86dcbb3c21696f67124af58fa5bcf99699664cf05ebf0bfa7b7",
+  "candidate/DocumentException.cpp": "68baf0f412651705688def4f00136e5e6cdf16adbe7156f032dbbb5fa92c3412",
+  "candidate/SelectionFront.cpp": "2aa88ff08298e9ac2990091e30c1a90acd45e633682c1d2f78f74c4f4c5c1da1",
+  "candidate/SoundServicePlay.cpp": "e9898e9d2d8a30c54bef8ff6d1c8931d2c6f5d0da831206892bd388875c20e23",
+  "candidate/WorkspaceSharedFrom.cpp": "584c0c179ca081cccc6d5489736f8605a8912905d2e4579e05594ad2fb2fa58f"
+}

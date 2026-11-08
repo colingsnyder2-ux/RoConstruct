@@ -1,0 +1,44 @@
+{
+  "exit_code": 1120,
+  "before": 118,
+  "after": 111,
+  "resolved": [
+    "class boost::shared_ptr<class RBX::Workspace> __cdecl RBX::shared_from<class RBX::Workspace>(class RBX::Workspace *)",
+    "public: __thiscall CPublishAsPlaceDialog::CPublishAsPlaceDialog(struct IDispatch *,class CWnd *)",
+    "public: __thiscall CSaveModelToRobloxDialog::CSaveModelToRobloxDialog(struct IDispatch *,class CWnd *)",
+    "public: class boost::shared_ptr<class RBX::Instance> __thiscall RBX::Selection::front(void)const ",
+    "public: virtual __thiscall CSaveToRobloxDialog::~CSaveToRobloxDialog(void)",
+    "public: void __thiscall RBX::Soundscape::SoundService::playSound(enum RBX::SoundType)",
+    "void __cdecl reportDocumentException(class std::exception const &)"
+  ],
+  "introduced": [],
+  "duplicates": [],
+  "provider_objects": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\next-providers-fresh-20261108\\source\\WindowsClient\\src\\CSaveToRobloxDialog.cpp",
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-081922-3715d537\\unit-000\\candidate.obj",
+      "sha256": "f8b5f863bfc9cf5f874686b41f2fbc3cae292d604d8d454eac94afdf36997220"
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\next-providers-fresh-20261108\\source\\WindowsClient\\src\\DocumentException.cpp",
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-081922-3715d537\\unit-001\\candidate.obj",
+      "sha256": "dfd89d8e0b5a23c7d25d9e1a71a639e3d346e5f6978342d2421fa51b6f2be400"
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\next-providers-fresh-20261108\\source\\App\\src\\v8datamodel\\SelectionFront.cpp",
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-081922-3715d537\\unit-002\\candidate.obj",
+      "sha256": "eefd75b27855dc21ef57640a2793eea6bd4b18b0da41620fdd14e0ffc3972df7"
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\next-providers-fresh-20261108\\source\\Base\\src\\util\\SoundServicePlay.cpp",
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-081922-3715d537\\unit-003\\candidate.obj",
+      "sha256": "94ac6da99d74e986c4ec1499902331bf9197443b3fedc3a0a2de3aad1e2fea99"
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\next-providers-fresh-20261108\\source\\App\\src\\v8datamodel\\WorkspaceSharedFrom.cpp",
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-081922-3715d537\\unit-004\\candidate.obj",
+      "sha256": "a60a906a26f7985dd8ce3161b3ac4bb2a29ae0e0f05f543160553719b34a4516"
+    }
+  ],
+  "scope": "Fresh candidate link-only diagnostic; call bindings, ABI, EH, runtime, original selection and server credit unproven. Do not run."
+}

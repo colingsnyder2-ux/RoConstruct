@@ -1,0 +1,185 @@
+[
+  {
+    "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\next-providers-fresh-20261108\\source\\WindowsClient\\src\\CSaveToRobloxDialog.cpp",
+    "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-081922-3715d537\\unit-000\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "0044f500",
+        "requested_symbol": "??0CPublishAsPlaceDialog@@",
+        "status": "exact",
+        "symbol": "??0CPublishAsPlaceDialog@@QAE@PAUIDispatch@@PAVCWnd@@@Z",
+        "score": 100,
+        "target_size": 148,
+        "object_size": 148,
+        "target_sha256": "40c2ad4645c77bd0ebbcd61cfcad87004440af6ce0defe97b124f0dcd74e68a4",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8484152,
+            17
+          ],
+          [
+            8483708,
+            444
+          ],
+          [
+            8483664,
+            40
+          ]
+        ],
+        "data_errors": [],
+        "check_seconds": 1.969
+      },
+      {
+        "addr": "0044f660",
+        "requested_symbol": "??0CSaveModelToRobloxDialog@@",
+        "status": "exact",
+        "symbol": "??0CSaveModelToRobloxDialog@@QAE@PAUIDispatch@@PAVCWnd@@@Z",
+        "score": 100,
+        "target_size": 148,
+        "object_size": 148,
+        "target_sha256": "fd80d86970da086dac6d53ef6c929d20325f41136217a947cd0ba07c349d50be",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8485176,
+            25
+          ],
+          [
+            8484732,
+            444
+          ],
+          [
+            8484688,
+            40
+          ]
+        ],
+        "data_errors": [],
+        "check_seconds": 0.0
+      },
+      {
+        "addr": "0045fe20",
+        "requested_symbol": "??1CSaveToRobloxDialog@@",
+        "status": "exact",
+        "symbol": "??1CSaveToRobloxDialog@@UAE@XZ",
+        "score": 100,
+        "target_size": 18,
+        "object_size": 18,
+        "target_sha256": "c5e0dbcf102e19df25b59344c120cf2ab383787d95c0fa088fea09fa4c7c90a8",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8496484,
+            444
+          ],
+          [
+            8496440,
+            40
+          ]
+        ],
+        "data_errors": [],
+        "check_seconds": 0.0
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  },
+  {
+    "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\next-providers-fresh-20261108\\source\\WindowsClient\\src\\DocumentException.cpp",
+    "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-081922-3715d537\\unit-001\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "00428850",
+        "requested_symbol": "?reportDocumentException@@",
+        "status": "exact",
+        "symbol": "?reportDocumentException@@YAXABVexception@std@@@Z",
+        "score": 100,
+        "target_size": 146,
+        "object_size": 146,
+        "target_sha256": "1f653ebbb73a64749131db16a3182e8e73b89eaf4c8bae4865b54e492204fc4a",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "check_seconds": 0.0
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  },
+  {
+    "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\next-providers-fresh-20261108\\source\\App\\src\\v8datamodel\\SelectionFront.cpp",
+    "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-081922-3715d537\\unit-002\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "00413c20",
+        "requested_symbol": "?front@Selection@RBX@@",
+        "status": "exact",
+        "symbol": "?front@Selection@RBX@@QBE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ",
+        "score": 100,
+        "target_size": 235,
+        "object_size": 235,
+        "target_sha256": "6283e7735e24f9f9a52ee9dff18c97251fb6337347fc473428c984474ef03027",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "check_seconds": 0.0
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  },
+  {
+    "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\next-providers-fresh-20261108\\source\\Base\\src\\util\\SoundServicePlay.cpp",
+    "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-081922-3715d537\\unit-003\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "005bd820",
+        "requested_symbol": "?playSound@SoundService@Soundscape@RBX@@",
+        "status": "exact",
+        "symbol": "?playSound@SoundService@Soundscape@RBX@@QAEXW4SoundType@3@@Z",
+        "score": 100,
+        "target_size": 98,
+        "object_size": 98,
+        "target_sha256": "c0e7ce3389b726dfea2bca353bb5e69b0ef87680bc261be1f2ef0a48eaf5cbf8",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "check_seconds": 0.016
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  },
+  {
+    "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\next-providers-fresh-20261108\\source\\App\\src\\v8datamodel\\WorkspaceSharedFrom.cpp",
+    "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-081922-3715d537\\unit-004\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "00618a40",
+        "requested_symbol": "??$shared_from@VWorkspace@RBX@@",
+        "status": "exact",
+        "symbol": "??$shared_from@VWorkspace@RBX@@@RBX@@YA?AV?$shared_ptr@VWorkspace@RBX@@@boost@@PAVWorkspace@0@@Z",
+        "score": 100,
+        "target_size": 364,
+        "object_size": 364,
+        "target_sha256": "5736f018b9d054745fd3f29fd85258f5f0667fd278d46ca690f06a6881d9a84e",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "check_seconds": 0.0
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  }
+]
