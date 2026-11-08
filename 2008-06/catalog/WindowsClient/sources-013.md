@@ -3,6 +3,245 @@
 [Project index](README.md) · [Previous](sources-012.md) · [Next](sources-014.md)
 
 <details>
+<summary>native-classes/CMainFrameNewDocument.cpp — equivalent; 6 content versions</summary>
+
+Compatibility path for `WindowsClient/src/CMainFrameNewDocument.cpp`; compile either path, never both.
+
+**`047fc04bd611`** · `native-classes/CMainFrameNewDocument.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `local/findings/2008-06/native-classes/CMainFrameNewDocument.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`46fc51c5c614`** · `native-classes/CMainFrameNewDocument.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-classes/CMainFrameNewDocument.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`582631500952`** · `native-classes/CMainFrameNewDocument.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CMainFrameNewDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/CMainFrameNewDocument.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameNewDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/CMainFrameNewDocument.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameNewDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/CMainFrameNewDocument.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameNewDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/CMainFrameNewDocument.cpp)
+
+**`6505013df71b`** · `native-classes/CMainFrameNewDocument.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-classes/CMainFrameNewDocument.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`cb9cd1c4a19c`** · `native-classes/CMainFrameNewDocument.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameNewDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/CMainFrameNewDocument.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameNewDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/CMainFrameNewDocument.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameNewDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/CMainFrameNewDocument.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameNewDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/CMainFrameNewDocument.cpp)
+
+**`d90df31c12a8`** · `native-classes/CMainFrameNewDocument.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CMainFrameNewDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/CMainFrameNewDocument.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameNewDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-classes/CMainFrameNewDocument.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameNewDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/CMainFrameNewDocument.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameNewDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/CMainFrameNewDocument.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameNewDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/CMainFrameNewDocument.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameNewDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-classes/CMainFrameNewDocument.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameNewDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/CMainFrameNewDocument.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameNewDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-classes/CMainFrameNewDocument.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameNewDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-classes/CMainFrameNewDocument.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameNewDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-classes/CMainFrameNewDocument.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameNewDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/CMainFrameNewDocument.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameNewDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-classes/CMainFrameNewDocument.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameNewDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/CMainFrameNewDocument.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameNewDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-classes/CMainFrameNewDocument.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameNewDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/CMainFrameNewDocument.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameNewDocument.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/CMainFrameNewDocument.cpp)
+
+</details>
+
+<details>
+<summary>native-classes/CMainFramePropertyGrid.cpp — public-only; 4 content versions</summary>
+
+**`03be75b09c64`** · `native-classes/CMainFramePropertyGrid.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `local/findings/2008-06/native-classes/CMainFramePropertyGrid.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`84be13c21b08`** · `native-classes/CMainFramePropertyGrid.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-classes/CMainFramePropertyGrid.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`c44fb591602a`** · `native-classes/CMainFramePropertyGrid.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CMainFramePropertyGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/CMainFramePropertyGrid.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFramePropertyGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/CMainFramePropertyGrid.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFramePropertyGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/CMainFramePropertyGrid.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFramePropertyGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/CMainFramePropertyGrid.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFramePropertyGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/CMainFramePropertyGrid.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFramePropertyGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/CMainFramePropertyGrid.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFramePropertyGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/CMainFramePropertyGrid.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFramePropertyGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/CMainFramePropertyGrid.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFramePropertyGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-classes/CMainFramePropertyGrid.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFramePropertyGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/CMainFramePropertyGrid.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFramePropertyGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/CMainFramePropertyGrid.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFramePropertyGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/CMainFramePropertyGrid.cpp)
+
+**`e1c45e19a6ac`** · `native-classes/CMainFramePropertyGrid.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-classes/CMainFramePropertyGrid.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>native-classes/CMainFrameSettingsCommand.cpp — equivalent; 6 content versions</summary>
+
+Compatibility path for `WindowsClient/src/CMainFrameSettingsCommand.cpp`; compile either path, never both.
+
+**`50a15d81a822`** · `native-classes/CMainFrameSettingsCommand.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-classes/CMainFrameSettingsCommand.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`64eaeade03f5`** · `native-classes/CMainFrameSettingsCommand.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CMainFrameSettingsCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/CMainFrameSettingsCommand.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameSettingsCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/CMainFrameSettingsCommand.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameSettingsCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/CMainFrameSettingsCommand.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameSettingsCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/CMainFrameSettingsCommand.cpp)
+
+**`702ebd87f273`** · `native-classes/CMainFrameSettingsCommand.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `local/findings/2008-06/native-classes/CMainFrameSettingsCommand.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`758799685095`** · `native-classes/CMainFrameSettingsCommand.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameSettingsCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/CMainFrameSettingsCommand.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameSettingsCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/CMainFrameSettingsCommand.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameSettingsCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/CMainFrameSettingsCommand.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameSettingsCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/CMainFrameSettingsCommand.cpp)
+
+**`b98a7fa48dcf`** · `native-classes/CMainFrameSettingsCommand.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-classes/CMainFrameSettingsCommand.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`bd5308a610f6`** · `native-classes/CMainFrameSettingsCommand.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CMainFrameSettingsCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/CMainFrameSettingsCommand.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameSettingsCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-classes/CMainFrameSettingsCommand.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameSettingsCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/CMainFrameSettingsCommand.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameSettingsCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/CMainFrameSettingsCommand.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameSettingsCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/CMainFrameSettingsCommand.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameSettingsCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-classes/CMainFrameSettingsCommand.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameSettingsCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/CMainFrameSettingsCommand.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameSettingsCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-classes/CMainFrameSettingsCommand.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameSettingsCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-classes/CMainFrameSettingsCommand.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameSettingsCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-classes/CMainFrameSettingsCommand.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameSettingsCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/CMainFrameSettingsCommand.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameSettingsCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-classes/CMainFrameSettingsCommand.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameSettingsCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/CMainFrameSettingsCommand.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameSettingsCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-classes/CMainFrameSettingsCommand.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameSettingsCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/CMainFrameSettingsCommand.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameSettingsCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/CMainFrameSettingsCommand.cpp)
+
+</details>
+
+<details>
+<summary>native-classes/CMainFrameShow.cpp — equivalent; 6 content versions</summary>
+
+Compatibility path for `WindowsClient/src/CMainFrameShow.cpp`; compile either path, never both.
+
+**`479110ed9434`** · `native-classes/CMainFrameShow.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CMainFrameShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/CMainFrameShow.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-classes/CMainFrameShow.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/CMainFrameShow.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/CMainFrameShow.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/CMainFrameShow.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-classes/CMainFrameShow.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/CMainFrameShow.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-classes/CMainFrameShow.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-classes/CMainFrameShow.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-classes/CMainFrameShow.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/CMainFrameShow.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-classes/CMainFrameShow.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/CMainFrameShow.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-classes/CMainFrameShow.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/CMainFrameShow.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/CMainFrameShow.cpp)
+
+**`829fc8e627d3`** · `native-classes/CMainFrameShow.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `local/findings/2008-06/native-classes/CMainFrameShow.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`8d3fe9083ef6`** · `native-classes/CMainFrameShow.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-classes/CMainFrameShow.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`aacbf3e1c7b4`** · `native-classes/CMainFrameShow.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CMainFrameShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/CMainFrameShow.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/CMainFrameShow.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/CMainFrameShow.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/CMainFrameShow.cpp)
+
+**`bf362540d3e1`** · `native-classes/CMainFrameShow.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/CMainFrameShow.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/CMainFrameShow.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/CMainFrameShow.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/CMainFrameShow.cpp)
+
+**`e8665a1d115a`** · `native-classes/CMainFrameShow.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-classes/CMainFrameShow.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>native-classes/CMainFrameTemp.cpp — candidate-only; 1 content versions</summary>
+
+**`88547af5b91c`** · `native-classes/CMainFrameTemp.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/CMainFrameTemp.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
 <summary>native-classes/CMainFrameToolbars.cpp — equivalent; 7 content versions</summary>
 
 Compatibility path for `WindowsClient/src/CMainFrameToolbars.cpp`; compile either path, never both.
@@ -186,6 +425,8 @@ Compatibility path for `WindowsClient/src/CMainFrameToolbars.cpp`; compile eithe
 - canonical · colingsnyder2-ux · [native-classes/CMainFrameToolbars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-classes/CMainFrameToolbars.cpp)
 - public · colingsnyder2-ux · [native-classes/CMainFrameToolbars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/CMainFrameToolbars.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CMainFrameToolbars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-classes/CMainFrameToolbars.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameToolbars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/CMainFrameToolbars.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameToolbars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/CMainFrameToolbars.cpp)
 
 **`ae454866d355`** · `native-classes/CMainFrameToolbars.cpp` · proof not assessed
 
@@ -231,6 +472,8 @@ Compatibility path for `WindowsClient/src/CMainFrameWindow.cpp`; compile either 
 - canonical · colingsnyder2-ux · [native-classes/CMainFrameWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-classes/CMainFrameWindow.cpp)
 - public · colingsnyder2-ux · [native-classes/CMainFrameWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/CMainFrameWindow.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CMainFrameWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-classes/CMainFrameWindow.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/CMainFrameWindow.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/CMainFrameWindow.cpp)
 
 **`1c390c821e36`** · `native-classes/CMainFrameWindow.cpp` · proof not assessed
 
@@ -351,6 +594,8 @@ Compatibility path for `WindowsClient/src/CMainFrameXtp.cpp`; compile either pat
 - canonical · colingsnyder2-ux · [native-classes/CMainFrameXtp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-classes/CMainFrameXtp.cpp)
 - public · colingsnyder2-ux · [native-classes/CMainFrameXtp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/CMainFrameXtp.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CMainFrameXtp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-classes/CMainFrameXtp.cpp)
+- public · colingsnyder2-ux · [native-classes/CMainFrameXtp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/CMainFrameXtp.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMainFrameXtp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/CMainFrameXtp.cpp)
 
 **`45503cf6e74c`** · `native-classes/CMainFrameXtp.cpp` · proof not assessed
 - public · colingsnyder2-ux · [native-classes/CMainFrameXtp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/CMainFrameXtp.cpp)
@@ -409,6 +654,7 @@ Compatibility path for `WindowsClient/src/CMainFrameXtp.cpp`; compile either pat
 - archive · colingsnyder2-ux · [native-classes/CMainFrameXtp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/CMainFrameXtp.cpp)
 - archive · colingsnyder2-ux · [native-classes/CMainFrameXtp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/CMainFrameXtp.cpp)
 - archive · colingsnyder2-ux · [native-classes/CMainFrameXtp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/CMainFrameXtp.cpp)
+- archive · colingsnyder2-ux · [native-classes/CMainFrameXtp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/CMainFrameXtp.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -504,6 +750,8 @@ Compatibility path for `WindowsClient/src/CMemberTreeView.cpp`; compile either p
 **`053f67d97fe4`** · `native-classes/CMemberTreeView.cpp` · proof not assessed
 - public · colingsnyder2-ux · [native-classes/CMemberTreeView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/CMemberTreeView.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CMemberTreeView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-classes/CMemberTreeView.cpp)
+- public · colingsnyder2-ux · [native-classes/CMemberTreeView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/CMemberTreeView.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMemberTreeView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/CMemberTreeView.cpp)
 
 </details>
 
@@ -523,6 +771,7 @@ Compatibility path for `WindowsClient/src/CMemberTreeView.cpp`; compile either p
 - draft · colingsnyder2-ux · [native-classes/CNullDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CNullDoc.cpp)
 - draft · colingsnyder2-ux · [native-classes/CNullDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CNullDoc.cpp)
 - draft · colingsnyder2-ux · [native-classes/CNullDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CNullDoc.cpp)
+- draft · colingsnyder2-ux · [native-classes/CNullDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CNullDoc.cpp)
 
 <details><summary>2 retained local origins</summary>
 
@@ -582,6 +831,8 @@ Compatibility path for `WindowsClient/src/CObjectBrowser.cpp`; compile either pa
 - draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/d39272889f217a674d465200e5f29828a937a79fe53bfd7ef10e6a49ed7db69c/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
 - draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/16f002ebbc907cdc31770e6dba3063a0aad90721f45f9b3dd4e44b545cb777c3/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
 - draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/d39272889f217a674d465200e5f29828a937a79fe53bfd7ef10e6a49ed7db69c/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
+- draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/16f002ebbc907cdc31770e6dba3063a0aad90721f45f9b3dd4e44b545cb777c3/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
+- draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/d39272889f217a674d465200e5f29828a937a79fe53bfd7ef10e6a49ed7db69c/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
 
 <details><summary>3 retained local origins</summary>
 
@@ -623,6 +874,8 @@ Compatibility path for `WindowsClient/src/CObjectBrowser.cpp`; compile either pa
 - draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/73b6f2a24d9dabf695fb68e209034c19737cc17bf69c4ff6e59bba973c422dfa/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
 - draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/1b1d93072d137eb6ad0823c4c29d9854b452fe6c5edaed7b78663c798ce9fdbc/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
 - draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/73b6f2a24d9dabf695fb68e209034c19737cc17bf69c4ff6e59bba973c422dfa/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
+- draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/1b1d93072d137eb6ad0823c4c29d9854b452fe6c5edaed7b78663c798ce9fdbc/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
+- draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/73b6f2a24d9dabf695fb68e209034c19737cc17bf69c4ff6e59bba973c422dfa/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
 
 <details><summary>5 retained local origins</summary>
 
@@ -654,6 +907,8 @@ Compatibility path for `WindowsClient/src/CObjectBrowser.cpp`; compile either pa
 - canonical · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
 - public · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/CObjectBrowser.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
+- public · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/CObjectBrowser.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
 
 **`df4b6ecab129`** · `native-classes/CObjectBrowser.cpp` · proof not assessed
 - draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/949ee0cd2d064a7a1ed61052c9431247cf4296059235b9026797fbfd379d3e70/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
@@ -667,6 +922,7 @@ Compatibility path for `WindowsClient/src/CObjectBrowser.cpp`; compile either pa
 - draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/949ee0cd2d064a7a1ed61052c9431247cf4296059235b9026797fbfd379d3e70/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
 - draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/949ee0cd2d064a7a1ed61052c9431247cf4296059235b9026797fbfd379d3e70/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
 - draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/949ee0cd2d064a7a1ed61052c9431247cf4296059235b9026797fbfd379d3e70/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
+- draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/949ee0cd2d064a7a1ed61052c9431247cf4296059235b9026797fbfd379d3e70/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -702,6 +958,7 @@ Compatibility path for `WindowsClient/src/CObjectBrowser.cpp`; compile either pa
 - draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/1f36e89c2fd4d45e5927708a754603429226d14cd5d2f86b346053b9de2ff49d/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
 - draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/1f36e89c2fd4d45e5927708a754603429226d14cd5d2f86b346053b9de2ff49d/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
 - draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/1f36e89c2fd4d45e5927708a754603429226d14cd5d2f86b346053b9de2ff49d/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
+- draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/1f36e89c2fd4d45e5927708a754603429226d14cd5d2f86b346053b9de2ff49d/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -732,6 +989,8 @@ Compatibility path for `WindowsClient/src/CObjectBrowser.cpp`; compile either pa
 - draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/433e58151e8b440924163864162b843f05ef5324587e2861f24ad6ceb12e60f4/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
 - draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/32e731867b812c14d30c0b776977faf273805d6c504692dbf51781c776af60cb/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
 - draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/433e58151e8b440924163864162b843f05ef5324587e2861f24ad6ceb12e60f4/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
+- draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/32e731867b812c14d30c0b776977faf273805d6c504692dbf51781c776af60cb/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
+- draft · colingsnyder2-ux · [native-classes/CObjectBrowser.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/433e58151e8b440924163864162b843f05ef5324587e2861f24ad6ceb12e60f4/rebuild/2008-06/native-classes/CObjectBrowser.cpp)
 
 <details><summary>3 retained local origins</summary>
 
@@ -829,6 +1088,8 @@ Compatibility path for `WindowsClient/src/COutputView.cpp`; compile either path,
 **`026f47651aa4`** · `native-classes/COutputView.cpp` · proof not assessed
 - public · colingsnyder2-ux · [native-classes/COutputView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/COutputView.cpp)
 - canonical · colingsnyder2-ux · [native-classes/COutputView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-classes/COutputView.cpp)
+- public · colingsnyder2-ux · [native-classes/COutputView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/COutputView.cpp)
+- canonical · colingsnyder2-ux · [native-classes/COutputView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/COutputView.cpp)
 
 </details>
 
@@ -957,6 +1218,8 @@ Compatibility path for `WindowsClient/src/CPropGrid.cpp`; compile either path, n
 - canonical · colingsnyder2-ux · [native-classes/CPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-classes/CPropGrid.cpp)
 - public · colingsnyder2-ux · [native-classes/CPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/CPropGrid.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-classes/CPropGrid.cpp)
+- public · colingsnyder2-ux · [native-classes/CPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/CPropGrid.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CPropGrid.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/CPropGrid.cpp)
 
 **`b1c6344dcb5f`** · `native-classes/CPropGrid.cpp` · proof not assessed
 
@@ -1026,322 +1289,12 @@ Compatibility path for `WindowsClient/src/CPropGrid.cpp`; compile either path, n
 - draft · colingsnyder2-ux · [native-classes/CPropGridAddProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/9e810316a515a9174e801d1de3780784dea2ab08f0efa6994433c40a0d3eac1e/rebuild/2008-06/native-classes/CPropGridAddProperty.cpp)
 - draft · colingsnyder2-ux · [native-classes/CPropGridAddProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/9e810316a515a9174e801d1de3780784dea2ab08f0efa6994433c40a0d3eac1e/rebuild/2008-06/native-classes/CPropGridAddProperty.cpp)
 - draft · colingsnyder2-ux · [native-classes/CPropGridAddProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/9e810316a515a9174e801d1de3780784dea2ab08f0efa6994433c40a0d3eac1e/rebuild/2008-06/native-classes/CPropGridAddProperty.cpp)
+- draft · colingsnyder2-ux · [native-classes/CPropGridAddProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/9e810316a515a9174e801d1de3780784dea2ab08f0efa6994433c40a0d3eac1e/rebuild/2008-06/native-classes/CPropGridAddProperty.cpp)
 
 <details><summary>2 retained local origins</summary>
 
 - draft-upload · `drafts/files/9e810316a515a9174e801d1de3780784dea2ab08f0efa6994433c40a0d3eac1e/rebuild/2008-06/native-classes/CPropGridAddProperty.cpp`
 - local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/CPropGridAddProperty.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>native-classes/CPropGridCategory.cpp — equivalent; 7 content versions</summary>
-
-Compatibility path for `WindowsClient/src/CPropGridCategory.cpp`; compile either path, never both.
-
-**`11c9e62cc0f0`** · `native-classes/CPropGridCategory.cpp` · proof not assessed
-- public · colingsnyder2-ux · [native-classes/CPropGridCategory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/CPropGridCategory.cpp)
-- public · colingsnyder2-ux · [native-classes/CPropGridCategory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/CPropGridCategory.cpp)
-- public · colingsnyder2-ux · [native-classes/CPropGridCategory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/CPropGridCategory.cpp)
-- public · colingsnyder2-ux · [native-classes/CPropGridCategory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/CPropGridCategory.cpp)
-- public · colingsnyder2-ux · [native-classes/CPropGridCategory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/CPropGridCategory.cpp)
-- public · colingsnyder2-ux · [native-classes/CPropGridCategory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/CPropGridCategory.cpp)
-- public · colingsnyder2-ux · [native-classes/CPropGridCategory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/CPropGridCategory.cpp)
-- public · colingsnyder2-ux · [native-classes/CPropGridCategory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/CPropGridCategory.cpp)
-- public · colingsnyder2-ux · [native-classes/CPropGridCategory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-classes/CPropGridCategory.cpp)
-- public · colingsnyder2-ux · [native-classes/CPropGridCategory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/CPropGridCategory.cpp)
-
-**`2d3b9453b879`** · `native-classes/CPropGridCategory.cpp` · proof not assessed
-- canonical · colingsnyder2-ux · [native-classes/CPropGridCategory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/CPropGridCategory.cpp)
-- fork · coldek · [native-classes/CPropGridCategory.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-classes/CPropGridCategory.cpp)
-- fork · mewpokemons · [native-classes/CPropGridCategory.cpp](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-classes/CPropGridCategory.cpp)
-- fork · mewpokemons · [native-classes/CPropGridCategory.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/CPropGridCategory.cpp)
-- fork · mewpokemons · [native-classes/CPropGridCategory.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/CPropGridCategory.cpp)
-- canonical · colingsnyder2-ux · [native-classes/CPropGridCategory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/CPropGridCategory.cpp)
-- canonical · colingsnyder2-ux · [native-classes/CPropGridCategory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/CPropGridCategory.cpp)
-- canonical · colingsnyder2-ux · [native-classes/CPropGridCategory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/CPropGridCategory.cpp)
-- canonical · colingsnyder2-ux · [native-classes/CPropGridCategory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-classes/CPropGridCategory.cpp)
-- canonical · colingsnyder2-ux · [native-classes/CPropGridCategory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/CPropGridCategory.cpp)
-- canonical · colingsnyder2-ux · [native-classes/CPropGridCategory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-classes/CPropGridCategory.cpp)
-- canonical · colingsnyder2-ux · [native-classes/CPropGridCategory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-classes/CPropGridCategory.cpp)
-- canonical · colingsnyder2-ux · [native-classes/CPropGridCategory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-classes/CPropGridCategory.cpp)
-- canonical · colingsnyder2-ux · [native-classes/CPropGridCategory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-classes/CPropGridCategory.cpp)
-
-<details><summary>10 retained local origins</summary>
-
-- local-branch refs/heads/codex/worker-copy-paste@dd86b261e5b6 · `rebuild/2008-06/native-classes/CPropGridCategory.cpp`
-- local-branch refs/heads/codex/worker-insert-verbs@2c26b8c8bf40 · `rebuild/2008-06/native-classes/CPropGridCategory.cpp`
-- local-branch refs/heads/codex/worker-selection-verbs@dd86b261e5b6 · `rebuild/2008-06/native-classes/CPropGridCategory.cpp`
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-merge/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`353c323d2966`** · `native-classes/CPropGridCategory.cpp` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-classes/CPropGridCategory.cpp`
-- local · `local/findings/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`6c26375c501e`** · `native-classes/CPropGridCategory.cpp` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`90e6346a364e`** · `native-classes/CPropGridCategory.cpp` · proof not assessed
-
-<details><summary>69 retained local origins</summary>
-
-- local · `local/integrators/0328757c82f5413b9533f7b9790bb1cf/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `local/integrators/1c8dbb0c65904ffb87b50e428b665158/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `local/integrators/c04edabd3584470b83db1a7f578a6df9/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `local/integrators/c04edabd3584470b83db1a7f578a6df9/work/native-linked-preflight/8e9fcab8892f714812de/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `local/integrators/de0395a5614e4d45acd95c6be4c4ff97/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `local/integrators/f15e3506f2fc4f0ea72b5ecc48ac8c84/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `local/integrators/feadfc23b6094d429dcfce099f0daf1c/work/frontier-sources/802551008982f4f8a1edb71c6ee9f2c28a89205c7ddd2cecd034410ec76f466b/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `local/integrators/feadfc23b6094d429dcfce099f0daf1c/work/frontier-sources/a7a5d67e893c6f2b003f1cc600069b21b7753d7bd34c0170c8bfafc78a4c4711/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `local/integrators/feadfc23b6094d429dcfce099f0daf1c/work/frontier-sources/cd14486b36f9542f6db419acfb0986a86d31560be808b3dd0fd3ba6bfd8856ea/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/crobloxview-20261102/t/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/frontier32/sources/b76888298c47a3ce6e3586e0ce5a161ebbe2a424f2598b955b2b31156ea4682a/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/frontier32b/sources/422dbed0f612931d7674b22d903e61e2ee654fb1eb3bd971f6cbd83fb5e8f0d9/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/instance-accessors/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/label2d-probes/dimensions/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/label2d-probes/dimensions-fast/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/label2d-probes/double-center/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/label2d-probes/double-center-fast/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/label2d-probes/double-direct/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/label2d-probes/double-direct-fast/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/label2d-probes/float-center/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/label2d-probes/float-center-fast/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/label2d-probes/float-direct/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/label2d-probes/float-direct-fast/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/label2d-probes/inline-width/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/label2d-probes/inline-width-fast/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/mfc-family36/native/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/mfc-profile36/native/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/mfc36-verified/native/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/integration/baselines/a5e043cd4bc7e9c50ec0dd0b048c6dc2bbe34680fc5a1cd409fd64fcebce4cdd/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/integration/baselines/c5a365706c8e899051a53cf4289533e736abdf4322c1b531cdb6c57815c9b2cb/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/0009c278d03e44329a509d3dabe8b870/fresh/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/01fcaea6f458429ea23a1a352fa78420/baseline/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/0af2f3561a1c44c38332053e7e767bc2/fresh/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/0f078522dc5d4dacaa29b995091945b2/fresh/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/1ea4b9b1e55f48df88a82b90bce02d25/baseline/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/2ff48b0946f24cfa884f5c460ea42cc6/fresh/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/31c53bb11920499fb14ddd67eab86efd/baseline/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/3a14c94022cf4d628f4af900f83330c3/fresh/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/404207f3dd994afea90c21faab1bb40f/baseline/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/5c32d39045af41858cf137b8819e4ae5/fresh/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/5e7b8b517dcf47c7a3849ae74dbcc1e9/fresh/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/6bf1db4db2c441a696d96d3788df0b4d/fresh/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/6e8152cfcc714356b9f3c387a179bbc8/baseline/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/79bc7d7cb8ad45a79e802e2bce046b15/baseline/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/81ffdb19a75c46e7b336ae0d0590b9f6/fresh/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/9c3f5c68e9d841c6a6e5713ef7ea9c30/baseline/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/a1874d20df534725989e50ff79e51134/baseline/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/b5d1820eb523462cadc9851a09d7750f/fresh/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/cbeba8a70d344a2d92df5f30594aaadb/baseline/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/cdf37903cca64c0a863e72838810d45f/baseline/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/eba92580a2604fab9ae8cfbe179709eb/baseline/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/eecb7fb8989948e398d817d2f6d5ed98/fresh/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/f1e2aa567d13498daabcabda8b0dd77a/fresh/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/fe24b1df657942b9b9250095cc272863/fresh/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/isolated-shared/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/agents/214e357ba17c4ac6917a7659fbf5ebc1/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/agents/466271fd73b04d98b6ab25de7157cd99/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/agents/7775a876ba004a8c8bc0a9a2c0b49899/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/agents/d1691806d60f4c859f52cd53ed27c9f4/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/agents/d17290f6ed374eab91f15e00713e9ed0/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/server-sources/932c654cf0dfd88cece9fae6cacdd1d3378274f6d3dd0988c7b5cf4a62ba61b6/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/snapshots/9ee4d7199524430889c270df6f00680b/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/script-context/snapshot/d28939faef5424a478f22570af009465f94e3dd76fad26484c9c2818f16acc85/rebuild/2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`f61f7454dfb1`** · `native-classes/CPropGridCategory.cpp` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-classes/CPropGridCategory.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`7b650786bddc`** · `native-classes/CPropGridCategory.cpp` · proof not assessed
-- public · colingsnyder2-ux · [native-classes/CPropGridCategory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/CPropGridCategory.cpp)
-- canonical · colingsnyder2-ux · [native-classes/CPropGridCategory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-classes/CPropGridCategory.cpp)
-
-</details>
-
-<details>
-<summary>native-classes/CPropGridEvents.cpp — equivalent; 7 content versions</summary>
-
-Compatibility path for `WindowsClient/src/CPropGridEvents.cpp`; compile either path, never both.
-
-**`1fb7148b0908`** · `native-classes/CPropGridEvents.cpp` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`398bc4b06b64`** · `native-classes/CPropGridEvents.cpp` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`4e33c28b5446`** · `native-classes/CPropGridEvents.cpp` · proof not assessed
-
-<details><summary>70 retained local origins</summary>
-
-- local · `local/integrators/0328757c82f5413b9533f7b9790bb1cf/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `local/integrators/1c8dbb0c65904ffb87b50e428b665158/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `local/integrators/c04edabd3584470b83db1a7f578a6df9/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `local/integrators/c04edabd3584470b83db1a7f578a6df9/work/native-linked-preflight/8e9fcab8892f714812de/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `local/integrators/de0395a5614e4d45acd95c6be4c4ff97/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `local/integrators/f15e3506f2fc4f0ea72b5ecc48ac8c84/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `local/integrators/feadfc23b6094d429dcfce099f0daf1c/work/frontier-sources/802551008982f4f8a1edb71c6ee9f2c28a89205c7ddd2cecd034410ec76f466b/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `local/integrators/feadfc23b6094d429dcfce099f0daf1c/work/frontier-sources/a7a5d67e893c6f2b003f1cc600069b21b7753d7bd34c0170c8bfafc78a4c4711/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `local/integrators/feadfc23b6094d429dcfce099f0daf1c/work/frontier-sources/cd14486b36f9542f6db419acfb0986a86d31560be808b3dd0fd3ba6bfd8856ea/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/crobloxview-20261102/t/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/frontier32/sources/b76888298c47a3ce6e3586e0ce5a161ebbe2a424f2598b955b2b31156ea4682a/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/frontier32b/sources/422dbed0f612931d7674b22d903e61e2ee654fb1eb3bd971f6cbd83fb5e8f0d9/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/instance-accessors/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/label2d-probes/dimensions/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/label2d-probes/dimensions-fast/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/label2d-probes/double-center/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/label2d-probes/double-center-fast/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/label2d-probes/double-direct/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/label2d-probes/double-direct-fast/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/label2d-probes/float-center/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/label2d-probes/float-center-fast/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/label2d-probes/float-direct/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/label2d-probes/float-direct-fast/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/label2d-probes/inline-width/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/label2d-probes/inline-width-fast/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/mfc-family36/native/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/mfc-profile36/native/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/mfc36-verified/native/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/gui-live-validation/world-layout-audit/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/integration/baselines/a5e043cd4bc7e9c50ec0dd0b048c6dc2bbe34680fc5a1cd409fd64fcebce4cdd/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/integration/baselines/c5a365706c8e899051a53cf4289533e736abdf4322c1b531cdb6c57815c9b2cb/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/0009c278d03e44329a509d3dabe8b870/fresh/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/01fcaea6f458429ea23a1a352fa78420/baseline/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/0af2f3561a1c44c38332053e7e767bc2/fresh/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/0f078522dc5d4dacaa29b995091945b2/fresh/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/1ea4b9b1e55f48df88a82b90bce02d25/baseline/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/2ff48b0946f24cfa884f5c460ea42cc6/fresh/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/31c53bb11920499fb14ddd67eab86efd/baseline/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/3a14c94022cf4d628f4af900f83330c3/fresh/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/404207f3dd994afea90c21faab1bb40f/baseline/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/5c32d39045af41858cf137b8819e4ae5/fresh/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/5e7b8b517dcf47c7a3849ae74dbcc1e9/fresh/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/6bf1db4db2c441a696d96d3788df0b4d/fresh/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/6e8152cfcc714356b9f3c387a179bbc8/baseline/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/79bc7d7cb8ad45a79e802e2bce046b15/baseline/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/81ffdb19a75c46e7b336ae0d0590b9f6/fresh/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/9c3f5c68e9d841c6a6e5713ef7ea9c30/baseline/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/a1874d20df534725989e50ff79e51134/baseline/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/b5d1820eb523462cadc9851a09d7750f/fresh/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/cbeba8a70d344a2d92df5f30594aaadb/baseline/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/cdf37903cca64c0a863e72838810d45f/baseline/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/eba92580a2604fab9ae8cfbe179709eb/baseline/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/eecb7fb8989948e398d817d2f6d5ed98/fresh/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/f1e2aa567d13498daabcabda8b0dd77a/fresh/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-recovery-server/fe24b1df657942b9b9250095cc272863/fresh/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/isolated-shared/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/agents/214e357ba17c4ac6917a7659fbf5ebc1/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/agents/466271fd73b04d98b6ab25de7157cd99/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/agents/7775a876ba004a8c8bc0a9a2c0b49899/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/agents/d1691806d60f4c859f52cd53ed27c9f4/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/agents/d17290f6ed374eab91f15e00713e9ed0/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/server-sources/932c654cf0dfd88cece9fae6cacdd1d3378274f6d3dd0988c7b5cf4a62ba61b6/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/gui-five/proofs/snapshots/9ee4d7199524430889c270df6f00680b/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-throughput-20261102/script-context/snapshot/d28939faef5424a478f22570af009465f94e3dd76fad26484c9c2818f16acc85/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`8805281405ae`** · `native-classes/CPropGridEvents.cpp` · proof not assessed
-- public · colingsnyder2-ux · [native-classes/CPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/CPropGridEvents.cpp)
-- public · colingsnyder2-ux · [native-classes/CPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/CPropGridEvents.cpp)
-- public · colingsnyder2-ux · [native-classes/CPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/CPropGridEvents.cpp)
-- public · colingsnyder2-ux · [native-classes/CPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/CPropGridEvents.cpp)
-- public · colingsnyder2-ux · [native-classes/CPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/CPropGridEvents.cpp)
-
-**`887544974e10`** · `native-classes/CPropGridEvents.cpp` · proof not assessed
-- public · colingsnyder2-ux · [native-classes/CPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/CPropGridEvents.cpp)
-- canonical · colingsnyder2-ux · [native-classes/CPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/CPropGridEvents.cpp)
-- public · colingsnyder2-ux · [native-classes/CPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/CPropGridEvents.cpp)
-- canonical · colingsnyder2-ux · [native-classes/CPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-classes/CPropGridEvents.cpp)
-- public · colingsnyder2-ux · [native-classes/CPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/CPropGridEvents.cpp)
-- canonical · colingsnyder2-ux · [native-classes/CPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-classes/CPropGridEvents.cpp)
-- public · colingsnyder2-ux · [native-classes/CPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-classes/CPropGridEvents.cpp)
-- canonical · colingsnyder2-ux · [native-classes/CPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-classes/CPropGridEvents.cpp)
-- public · colingsnyder2-ux · [native-classes/CPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/CPropGridEvents.cpp)
-- canonical · colingsnyder2-ux · [native-classes/CPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-classes/CPropGridEvents.cpp)
-- public · colingsnyder2-ux · [native-classes/CPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/CPropGridEvents.cpp)
-- canonical · colingsnyder2-ux · [native-classes/CPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-classes/CPropGridEvents.cpp)
-
-**`94d22fe2364f`** · `native-classes/CPropGridEvents.cpp` · proof not assessed
-- canonical · colingsnyder2-ux · [native-classes/CPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/CPropGridEvents.cpp)
-- fork · coldek · [native-classes/CPropGridEvents.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-classes/CPropGridEvents.cpp)
-- fork · mewpokemons · [native-classes/CPropGridEvents.cpp](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-classes/CPropGridEvents.cpp)
-- fork · mewpokemons · [native-classes/CPropGridEvents.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/CPropGridEvents.cpp)
-- fork · mewpokemons · [native-classes/CPropGridEvents.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/CPropGridEvents.cpp)
-- canonical · colingsnyder2-ux · [native-classes/CPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/CPropGridEvents.cpp)
-- canonical · colingsnyder2-ux · [native-classes/CPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/CPropGridEvents.cpp)
-- canonical · colingsnyder2-ux · [native-classes/CPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/CPropGridEvents.cpp)
-- canonical · colingsnyder2-ux · [native-classes/CPropGridEvents.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-classes/CPropGridEvents.cpp)
-
-<details><summary>10 retained local origins</summary>
-
-- local-branch refs/heads/codex/worker-copy-paste@dd86b261e5b6 · `rebuild/2008-06/native-classes/CPropGridEvents.cpp`
-- local-branch refs/heads/codex/worker-insert-verbs@2c26b8c8bf40 · `rebuild/2008-06/native-classes/CPropGridEvents.cpp`
-- local-branch refs/heads/codex/worker-selection-verbs@dd86b261e5b6 · `rebuild/2008-06/native-classes/CPropGridEvents.cpp`
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-merge/rebuild/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`ba27d4237adc`** · `native-classes/CPropGridEvents.cpp` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-classes/CPropGridEvents.cpp`
-- local · `local/findings/2008-06/native-classes/CPropGridEvents.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 

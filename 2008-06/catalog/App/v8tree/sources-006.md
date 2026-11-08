@@ -192,6 +192,7 @@
 - public · colingsnyder2-ux · [v8tree/Verb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-headers/v8tree/Verb.h)
 - public · colingsnyder2-ux · [v8tree/Verb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-headers/v8tree/Verb.h)
 - public · colingsnyder2-ux · [v8tree/Verb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-headers/v8tree/Verb.h)
+- public · colingsnyder2-ux · [v8tree/Verb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/v8tree/Verb.h)
 
 **`ab72e7106ece`** · `native-headers/v8tree/Verb.h` · proof not assessed
 
@@ -226,6 +227,7 @@
 - canonical · colingsnyder2-ux · [v8tree/Verb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-headers/v8tree/Verb.h)
 - canonical · colingsnyder2-ux · [v8tree/Verb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-headers/v8tree/Verb.h)
 - canonical · colingsnyder2-ux · [v8tree/Verb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-headers/v8tree/Verb.h)
+- canonical · colingsnyder2-ux · [v8tree/Verb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/v8tree/Verb.h)
 
 <details><summary>13 retained local origins</summary>
 
@@ -307,6 +309,7 @@
 - public · colingsnyder2-ux · [v8tree/VerbContainer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-headers/v8tree/VerbContainer.h)
 - public · colingsnyder2-ux · [v8tree/VerbContainer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-headers/v8tree/VerbContainer.h)
 - public · colingsnyder2-ux · [v8tree/VerbContainer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-headers/v8tree/VerbContainer.h)
+- public · colingsnyder2-ux · [v8tree/VerbContainer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/v8tree/VerbContainer.h)
 
 **`60755fee1c3c`** · `native-headers/v8tree/VerbContainer.h` · proof not assessed
 
@@ -334,6 +337,7 @@
 - canonical · colingsnyder2-ux · [v8tree/VerbContainer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-headers/v8tree/VerbContainer.h)
 - canonical · colingsnyder2-ux · [v8tree/VerbContainer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-headers/v8tree/VerbContainer.h)
 - canonical · colingsnyder2-ux · [v8tree/VerbContainer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-headers/v8tree/VerbContainer.h)
+- canonical · colingsnyder2-ux · [v8tree/VerbContainer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/v8tree/VerbContainer.h)
 
 <details><summary>13 retained local origins</summary>
 

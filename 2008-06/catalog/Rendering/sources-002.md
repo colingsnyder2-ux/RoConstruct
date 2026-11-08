@@ -3,6 +3,119 @@
 [Project index](README.md) · [Previous](sources-001.md)
 
 <details>
+<summary>native-classes/TextureProxyRenderNew.cpp — diverged; 6 content versions</summary>
+
+**`1ecce911df18`** · `native-classes/TextureProxyRenderNew.cpp` · proof not assessed
+- fork · mewpokemons · [native-classes/TextureProxyRenderNew.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp)
+
+**`3c5c8b6fde5c`** · `native-classes/TextureProxyRenderNew.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/TextureProxyRenderNew.cpp)
+- public · colingsnyder2-ux · [native-classes/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/TextureProxyRenderNew.cpp)
+- public · colingsnyder2-ux · [native-classes/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/TextureProxyRenderNew.cpp)
+- public · colingsnyder2-ux · [native-classes/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/TextureProxyRenderNew.cpp)
+- public · colingsnyder2-ux · [native-classes/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/TextureProxyRenderNew.cpp)
+- public · colingsnyder2-ux · [native-classes/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/TextureProxyRenderNew.cpp)
+- public · colingsnyder2-ux · [native-classes/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/TextureProxyRenderNew.cpp)
+- public · colingsnyder2-ux · [native-classes/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/TextureProxyRenderNew.cpp)
+- public · colingsnyder2-ux · [native-classes/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-classes/TextureProxyRenderNew.cpp)
+- public · colingsnyder2-ux · [native-classes/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/TextureProxyRenderNew.cpp)
+- public · colingsnyder2-ux · [native-classes/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/TextureProxyRenderNew.cpp)
+- public · colingsnyder2-ux · [native-classes/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/TextureProxyRenderNew.cpp)
+
+**`4a22da44add9`** · `native-classes/TextureProxyRenderNew.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [native-classes/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp)
+- fork · mewpokemons · [native-classes/TextureProxyRenderNew.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp)
+- canonical · colingsnyder2-ux · [native-classes/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp)
+- canonical · colingsnyder2-ux · [native-classes/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp)
+- canonical · colingsnyder2-ux · [native-classes/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp)
+- canonical · colingsnyder2-ux · [native-classes/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp)
+- canonical · colingsnyder2-ux · [native-classes/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp)
+- canonical · colingsnyder2-ux · [native-classes/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp)
+- canonical · colingsnyder2-ux · [native-classes/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp)
+- canonical · colingsnyder2-ux · [native-classes/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp)
+- canonical · colingsnyder2-ux · [native-classes/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp)
+- canonical · colingsnyder2-ux · [native-classes/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp)
+- canonical · colingsnyder2-ux · [native-classes/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp)
+
+<details><summary>7 retained local origins</summary>
+
+- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-merge/merge/mewpokemons/claude_optimistic-shannon-0xccuy/rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`9495dc3ca009`** · `native-classes/TextureProxyRenderNew.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-classes/TextureProxyRenderNew.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`ebc9db824b41`** · `native-classes/TextureProxyRenderNew.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`f658d61e44f5`** · `native-classes/TextureProxyRenderNew.cpp` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp`
+- local · `local/findings/2008-06/native-classes/TextureProxyRenderNew.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>native-classes/custommesh.cpp — candidate-only; 1 content versions</summary>
+
+**`cf3a2b4caf52`** · `native-classes/custommesh.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/custommesh.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>native-classes/hdr2008/RbxGraphics/TextureProxyBase.h — candidate-only; 1 content versions</summary>
+
+**`30ffeb63a559`** · `native-classes/hdr2008/RbxGraphics/TextureProxyBase.h` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/hdr2008/RbxGraphics/TextureProxyBase.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>native-classes/hdr2008/RenderLib/TextureProxy.h — candidate-only; 1 content versions</summary>
+
+**`2218687c0c56`** · `native-classes/hdr2008/RenderLib/TextureProxy.h` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/hdr2008/RenderLib/TextureProxy.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
 <summary>native-headers/CClassImages.h — diverged; 6 content versions</summary>
 
 **`2c6c87dc1da4`** · `native-headers/CClassImages.h` · proof not assessed
@@ -57,6 +170,7 @@
 - public · colingsnyder2-ux · [native-headers/CClassImages.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-headers/CClassImages.h)
 - public · colingsnyder2-ux · [native-headers/CClassImages.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-headers/CClassImages.h)
 - public · colingsnyder2-ux · [native-headers/CClassImages.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-headers/CClassImages.h)
+- public · colingsnyder2-ux · [native-headers/CClassImages.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/CClassImages.h)
 
 **`9c363c60befc`** · `native-headers/CClassImages.h` · proof not assessed
 
@@ -83,6 +197,7 @@
 - canonical · colingsnyder2-ux · [native-headers/CClassImages.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-headers/CClassImages.h)
 - canonical · colingsnyder2-ux · [native-headers/CClassImages.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-headers/CClassImages.h)
 - canonical · colingsnyder2-ux · [native-headers/CClassImages.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-headers/CClassImages.h)
+- canonical · colingsnyder2-ux · [native-headers/CClassImages.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/CClassImages.h)
 
 <details><summary>9 retained local origins</summary>
 
@@ -139,6 +254,7 @@
 - public · colingsnyder2-ux · [GLG3D/RenderDevice.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-headers/GLG3D/RenderDevice.h)
 - public · colingsnyder2-ux · [GLG3D/RenderDevice.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-headers/GLG3D/RenderDevice.h)
 - public · colingsnyder2-ux · [GLG3D/RenderDevice.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-headers/GLG3D/RenderDevice.h)
+- public · colingsnyder2-ux · [GLG3D/RenderDevice.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/GLG3D/RenderDevice.h)
 
 **`e61404db816f`** · `native-headers/GLG3D/RenderDevice.h` · proof not assessed
 
@@ -167,6 +283,7 @@
 - canonical · colingsnyder2-ux · [native-headers/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-headers/InsertDecal.h)
 - canonical · colingsnyder2-ux · [native-headers/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-headers/InsertDecal.h)
 - canonical · colingsnyder2-ux · [native-headers/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-headers/InsertDecal.h)
+- canonical · colingsnyder2-ux · [native-headers/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/InsertDecal.h)
 
 <details><summary>12 retained local origins</summary>
 
@@ -228,6 +345,7 @@
 - public · colingsnyder2-ux · [native-headers/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-headers/InsertDecal.h)
 - public · colingsnyder2-ux · [native-headers/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-headers/InsertDecal.h)
 - public · colingsnyder2-ux · [native-headers/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-headers/InsertDecal.h)
+- public · colingsnyder2-ux · [native-headers/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/InsertDecal.h)
 
 **`e7d3115f7a31`** · `native-headers/InsertDecal.h` · proof not assessed
 
@@ -267,6 +385,7 @@
 - draft · colingsnyder2-ux · [OgreRbx/RbxSceneManager2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbx/RbxSceneManager2008.h)
 - draft · colingsnyder2-ux · [OgreRbx/RbxSceneManager2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbx/RbxSceneManager2008.h)
 - draft · colingsnyder2-ux · [OgreRbx/RbxSceneManager2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbx/RbxSceneManager2008.h)
+- draft · colingsnyder2-ux · [OgreRbx/RbxSceneManager2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbx/RbxSceneManager2008.h)
 
 <details><summary>1 retained local origins</summary>
 
@@ -310,6 +429,7 @@
 - draft · colingsnyder2-ux · [OgreRbxNode/RbxSceneNode2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbxNode/RbxSceneNode2008.h)
 - draft · colingsnyder2-ux · [OgreRbxNode/RbxSceneNode2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbxNode/RbxSceneNode2008.h)
 - draft · colingsnyder2-ux · [OgreRbxNode/RbxSceneNode2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbxNode/RbxSceneNode2008.h)
+- draft · colingsnyder2-ux · [OgreRbxNode/RbxSceneNode2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbxNode/RbxSceneNode2008.h)
 
 <details><summary>1 retained local origins</summary>
 
@@ -336,6 +456,7 @@
 - draft · colingsnyder2-ux · [OgreRbxNode/TwoDManager2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbxNode/TwoDManager2008.h)
 - draft · colingsnyder2-ux · [OgreRbxNode/TwoDManager2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbxNode/TwoDManager2008.h)
 - draft · colingsnyder2-ux · [OgreRbxNode/TwoDManager2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbxNode/TwoDManager2008.h)
+- draft · colingsnyder2-ux · [OgreRbxNode/TwoDManager2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/OgreRbxNode/TwoDManager2008.h)
 
 <details><summary>1 retained local origins</summary>
 
@@ -379,6 +500,7 @@
 - canonical · colingsnyder2-ux · [RbxGraphics/Adorn.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h)
 - canonical · colingsnyder2-ux · [RbxGraphics/Adorn.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h)
 - canonical · colingsnyder2-ux · [RbxGraphics/Adorn.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h)
+- canonical · colingsnyder2-ux · [RbxGraphics/Adorn.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h)
 
 <details><summary>7 retained local origins</summary>
 
@@ -404,6 +526,7 @@
 - draft · colingsnyder2-ux · [RbxGraphics/Adorn.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/2c5e113dad3c82e7db4966aadbc48fc5807c21f8fd8c75a810dddcd8fad0fc2d/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h)
 - draft · colingsnyder2-ux · [RbxGraphics/Adorn.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/2c5e113dad3c82e7db4966aadbc48fc5807c21f8fd8c75a810dddcd8fad0fc2d/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h)
 - draft · colingsnyder2-ux · [RbxGraphics/Adorn.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/2c5e113dad3c82e7db4966aadbc48fc5807c21f8fd8c75a810dddcd8fad0fc2d/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h)
+- draft · colingsnyder2-ux · [RbxGraphics/Adorn.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/2c5e113dad3c82e7db4966aadbc48fc5807c21f8fd8c75a810dddcd8fad0fc2d/rebuild/2008-06/native-headers/RbxGraphics/Adorn.h)
 
 <details><summary>2 retained local origins</summary>
 
@@ -424,6 +547,7 @@
 - public · colingsnyder2-ux · [RbxGraphics/Adorn.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-headers/RbxGraphics/Adorn.h)
 - public · colingsnyder2-ux · [RbxGraphics/Adorn.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-headers/RbxGraphics/Adorn.h)
 - public · colingsnyder2-ux · [RbxGraphics/Adorn.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-headers/RbxGraphics/Adorn.h)
+- public · colingsnyder2-ux · [RbxGraphics/Adorn.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/RbxGraphics/Adorn.h)
 
 **`dbc70c345b7f`** · `native-headers/RbxGraphics/Adorn.h` · proof not assessed
 
@@ -488,6 +612,7 @@
 - draft · colingsnyder2-ux · [RbxGraphics/Adorn2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RbxGraphics/Adorn2008.h)
 - draft · colingsnyder2-ux · [RbxGraphics/Adorn2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RbxGraphics/Adorn2008.h)
 - draft · colingsnyder2-ux · [RbxGraphics/Adorn2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RbxGraphics/Adorn2008.h)
+- draft · colingsnyder2-ux · [RbxGraphics/Adorn2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RbxGraphics/Adorn2008.h)
 
 <details><summary>2 retained local origins</summary>
 
@@ -515,6 +640,7 @@
 - draft · colingsnyder2-ux · [RbxGraphics/AdornRbxGfx2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RbxGraphics/AdornRbxGfx2008.h)
 - draft · colingsnyder2-ux · [RbxGraphics/AdornRbxGfx2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RbxGraphics/AdornRbxGfx2008.h)
 - draft · colingsnyder2-ux · [RbxGraphics/AdornRbxGfx2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RbxGraphics/AdornRbxGfx2008.h)
+- draft · colingsnyder2-ux · [RbxGraphics/AdornRbxGfx2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RbxGraphics/AdornRbxGfx2008.h)
 
 <details><summary>2 retained local origins</summary>
 
@@ -557,6 +683,7 @@
 - public · colingsnyder2-ux · [RbxGraphics/TextureProxyBase2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-headers/RbxGraphics/TextureProxyBase2008.h)
 - public · colingsnyder2-ux · [RbxGraphics/TextureProxyBase2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-headers/RbxGraphics/TextureProxyBase2008.h)
 - public · colingsnyder2-ux · [RbxGraphics/TextureProxyBase2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-headers/RbxGraphics/TextureProxyBase2008.h)
+- public · colingsnyder2-ux · [RbxGraphics/TextureProxyBase2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/RbxGraphics/TextureProxyBase2008.h)
 
 **`9daa9d3277bf`** · `native-headers/RbxGraphics/TextureProxyBase2008.h` · proof not assessed
 
@@ -601,6 +728,7 @@
 - canonical · colingsnyder2-ux · [RbxGraphics/TextureProxyBase2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-headers/RbxGraphics/TextureProxyBase2008.h)
 - canonical · colingsnyder2-ux · [RbxGraphics/TextureProxyBase2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-headers/RbxGraphics/TextureProxyBase2008.h)
 - canonical · colingsnyder2-ux · [RbxGraphics/TextureProxyBase2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-headers/RbxGraphics/TextureProxyBase2008.h)
+- canonical · colingsnyder2-ux · [RbxGraphics/TextureProxyBase2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/RbxGraphics/TextureProxyBase2008.h)
 
 <details><summary>10 retained local origins</summary>
 
@@ -636,6 +764,7 @@
 - draft · colingsnyder2-ux · [RenderLib/AggregateChunk2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RenderLib/AggregateChunk2008.h)
 - draft · colingsnyder2-ux · [RenderLib/AggregateChunk2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RenderLib/AggregateChunk2008.h)
 - draft · colingsnyder2-ux · [RenderLib/AggregateChunk2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RenderLib/AggregateChunk2008.h)
+- draft · colingsnyder2-ux · [RenderLib/AggregateChunk2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RenderLib/AggregateChunk2008.h)
 
 <details><summary>2 retained local origins</summary>
 
@@ -701,6 +830,7 @@
 - canonical · colingsnyder2-ux · [RenderLib/Material2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-headers/RenderLib/Material2008.h)
 - canonical · colingsnyder2-ux · [RenderLib/Material2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-headers/RenderLib/Material2008.h)
 - canonical · colingsnyder2-ux · [RenderLib/Material2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-headers/RenderLib/Material2008.h)
+- canonical · colingsnyder2-ux · [RenderLib/Material2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/RenderLib/Material2008.h)
 
 <details><summary>10 retained local origins</summary>
 
@@ -737,6 +867,7 @@
 - public · colingsnyder2-ux · [RenderLib/Material2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-headers/RenderLib/Material2008.h)
 - public · colingsnyder2-ux · [RenderLib/Material2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-headers/RenderLib/Material2008.h)
 - public · colingsnyder2-ux · [RenderLib/Material2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-headers/RenderLib/Material2008.h)
+- public · colingsnyder2-ux · [RenderLib/Material2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/RenderLib/Material2008.h)
 
 </details>
 
@@ -771,6 +902,7 @@
 - public · colingsnyder2-ux · [RenderLib/Profiler.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-headers/RenderLib/Profiler.h)
 - public · colingsnyder2-ux · [RenderLib/Profiler.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-headers/RenderLib/Profiler.h)
 - public · colingsnyder2-ux · [RenderLib/Profiler.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-headers/RenderLib/Profiler.h)
+- public · colingsnyder2-ux · [RenderLib/Profiler.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/RenderLib/Profiler.h)
 
 **`e90f516f17a9`** · `native-headers/RenderLib/Profiler.h` · proof not assessed
 
@@ -799,6 +931,7 @@
 - draft · colingsnyder2-ux · [RenderLib/RenderScene2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/RenderLib/RenderScene2008.h)
 - draft · colingsnyder2-ux · [RenderLib/RenderScene2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/RenderLib/RenderScene2008.h)
 - draft · colingsnyder2-ux · [RenderLib/RenderScene2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/RenderLib/RenderScene2008.h)
+- draft · colingsnyder2-ux · [RenderLib/RenderScene2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/RenderLib/RenderScene2008.h)
 
 <details><summary>1 retained local origins</summary>
 
@@ -818,6 +951,7 @@
 - draft · colingsnyder2-ux · [RenderLib/RenderScene2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RenderLib/RenderScene2008.h)
 - draft · colingsnyder2-ux · [RenderLib/RenderScene2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RenderLib/RenderScene2008.h)
 - draft · colingsnyder2-ux · [RenderLib/RenderScene2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RenderLib/RenderScene2008.h)
+- draft · colingsnyder2-ux · [RenderLib/RenderScene2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RenderLib/RenderScene2008.h)
 
 <details><summary>2 retained local origins</summary>
 
@@ -847,6 +981,7 @@
 - draft · colingsnyder2-ux · [RenderLib/RenderSceneNew2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/RenderLib/RenderSceneNew2008.h)
 - draft · colingsnyder2-ux · [RenderLib/RenderSceneNew2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/RenderLib/RenderSceneNew2008.h)
 - draft · colingsnyder2-ux · [RenderLib/RenderSceneNew2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/RenderLib/RenderSceneNew2008.h)
+- draft · colingsnyder2-ux · [RenderLib/RenderSceneNew2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/RenderLib/RenderSceneNew2008.h)
 
 <details><summary>1 retained local origins</summary>
 
@@ -873,6 +1008,7 @@
 - draft · colingsnyder2-ux · [RenderLib/RenderSceneRender2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/RenderLib/RenderSceneRender2008.h)
 - draft · colingsnyder2-ux · [RenderLib/RenderSceneRender2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/RenderLib/RenderSceneRender2008.h)
 - draft · colingsnyder2-ux · [RenderLib/RenderSceneRender2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/RenderLib/RenderSceneRender2008.h)
+- draft · colingsnyder2-ux · [RenderLib/RenderSceneRender2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/RenderLib/RenderSceneRender2008.h)
 
 <details><summary>1 retained local origins</summary>
 
@@ -897,6 +1033,7 @@
 - draft · colingsnyder2-ux · [RenderLib/SceneManager2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RenderLib/SceneManager2008.h)
 - draft · colingsnyder2-ux · [RenderLib/SceneManager2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RenderLib/SceneManager2008.h)
 - draft · colingsnyder2-ux · [RenderLib/SceneManager2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RenderLib/SceneManager2008.h)
+- draft · colingsnyder2-ux · [RenderLib/SceneManager2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/RenderLib/SceneManager2008.h)
 
 <details><summary>2 retained local origins</summary>
 
@@ -919,6 +1056,7 @@
 - draft · colingsnyder2-ux · [RenderLib/SceneManager2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/RenderLib/SceneManager2008.h)
 - draft · colingsnyder2-ux · [RenderLib/SceneManager2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/RenderLib/SceneManager2008.h)
 - draft · colingsnyder2-ux · [RenderLib/SceneManager2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/RenderLib/SceneManager2008.h)
+- draft · colingsnyder2-ux · [RenderLib/SceneManager2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-headers/RenderLib/SceneManager2008.h)
 
 <details><summary>1 retained local origins</summary>
 
@@ -972,6 +1110,7 @@
 - canonical · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h)
 - canonical · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h)
 - canonical · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h)
+- canonical · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h)
 
 <details><summary>10 retained local origins</summary>
 
@@ -1021,6 +1160,7 @@
 - public · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-headers/RenderLib/TextureProxy2008.h)
 - public · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-headers/RenderLib/TextureProxy2008.h)
 - public · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-headers/RenderLib/TextureProxy2008.h)
+- public · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/RenderLib/TextureProxy2008.h)
 
 </details>
 
@@ -1133,6 +1273,7 @@
 - public · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-headers/util/IRenderable.h)
 - public · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-headers/util/IRenderable.h)
 - public · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-headers/util/IRenderable.h)
+- public · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-headers/util/IRenderable.h)
 
 **`d915c165a8e0`** · `native-headers/util/IRenderable.h` · proof not assessed
 
@@ -1158,6 +1299,7 @@
 - canonical · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-headers/util/IRenderable.h)
 - canonical · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-headers/util/IRenderable.h)
 - canonical · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-headers/util/IRenderable.h)
+- canonical · colingsnyder2-ux · [util/IRenderable.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-headers/util/IRenderable.h)
 
 <details><summary>12 retained local origins</summary>
 

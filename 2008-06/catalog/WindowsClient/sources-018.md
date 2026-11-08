@@ -3,6 +3,492 @@
 [Project index](README.md) · [Previous](sources-017.md) · [Next](sources-019.md)
 
 <details>
+<summary>native-classes/DuplicateSelectionVerb.cpp — diverged; 6 content versions</summary>
+
+**`5097b1352ca0`** · `native-classes/DuplicateSelectionVerb.cpp` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp`
+- local · `local/findings/2008-06/native-classes/DuplicateSelectionVerb.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`71fc2ae602cf`** · `native-classes/DuplicateSelectionVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/DuplicateSelectionVerb.cpp)
+- public · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/DuplicateSelectionVerb.cpp)
+- public · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/DuplicateSelectionVerb.cpp)
+- public · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/DuplicateSelectionVerb.cpp)
+- public · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/DuplicateSelectionVerb.cpp)
+- public · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/DuplicateSelectionVerb.cpp)
+- public · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/DuplicateSelectionVerb.cpp)
+- public · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/DuplicateSelectionVerb.cpp)
+- public · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-classes/DuplicateSelectionVerb.cpp)
+- public · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/DuplicateSelectionVerb.cpp)
+- public · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/DuplicateSelectionVerb.cpp)
+- public · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/DuplicateSelectionVerb.cpp)
+
+**`80c8ffcb18ba`** · `native-classes/DuplicateSelectionVerb.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp)
+- fork · coldek · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp)
+- fork · mewpokemons · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp)
+- fork · mewpokemons · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp)
+- fork · mewpokemons · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp)
+
+<details><summary>10 retained local origins</summary>
+
+- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-merge/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`854ecf816f41`** · `native-classes/DuplicateSelectionVerb.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-classes/DuplicateSelectionVerb.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`dfae0bfcc28e`** · `native-classes/DuplicateSelectionVerb.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`e1f06bffabdd`** · `native-classes/DuplicateSelectionVerb.cpp` · proof not assessed
+
+<details><summary>3 retained local origins</summary>
+
+- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>native-classes/EditSelectionVerbConstructor.cpp — equivalent; 7 content versions</summary>
+
+Compatibility path for `App/src/v8datamodel/EditSelectionVerbConstructor.cpp`; compile either path, never both.
+
+**`1d64968275a1`** · `native-classes/EditSelectionVerbConstructor.cpp` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp`
+- local · `local/findings/2008-06/native-classes/EditSelectionVerbConstructor.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`49dab23b22e4`** · `native-classes/EditSelectionVerbConstructor.cpp` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`6377d3926981`** · `native-classes/EditSelectionVerbConstructor.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
+- fork · mewpokemons · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
+- fork · mewpokemons · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
+- canonical · colingsnyder2-ux · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
+- canonical · colingsnyder2-ux · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
+- canonical · colingsnyder2-ux · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
+- canonical · colingsnyder2-ux · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
+- canonical · colingsnyder2-ux · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
+- canonical · colingsnyder2-ux · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
+- canonical · colingsnyder2-ux · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
+- canonical · colingsnyder2-ux · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
+- canonical · colingsnyder2-ux · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
+
+<details><summary>9 retained local origins</summary>
+
+- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`68b85e6ce480`** · `native-classes/EditSelectionVerbConstructor.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
+- public · colingsnyder2-ux · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
+- public · colingsnyder2-ux · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
+- public · colingsnyder2-ux · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
+- public · colingsnyder2-ux · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
+- public · colingsnyder2-ux · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
+- public · colingsnyder2-ux · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
+- public · colingsnyder2-ux · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
+- public · colingsnyder2-ux · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
+- public · colingsnyder2-ux · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
+
+**`6c6720193673`** · `native-classes/EditSelectionVerbConstructor.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`c832131870ed`** · `native-classes/EditSelectionVerbConstructor.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-classes/EditSelectionVerbConstructor.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`edd35cf363d3`** · `native-classes/EditSelectionVerbConstructor.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
+- canonical · colingsnyder2-ux · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
+- public · colingsnyder2-ux · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
+- canonical · colingsnyder2-ux · [native-classes/EditSelectionVerbConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp)
+
+</details>
+
+<details>
+<summary>native-classes/ExitCommand.cpp — equivalent; 7 content versions</summary>
+
+Compatibility path for `Unclassified/src/ExitCommand.cpp`; compile either path, never both.
+
+**`1dd511cc2e06`** · `native-classes/ExitCommand.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/ExitCommand.cpp)
+- public · colingsnyder2-ux · [native-classes/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/ExitCommand.cpp)
+- public · colingsnyder2-ux · [native-classes/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/ExitCommand.cpp)
+- public · colingsnyder2-ux · [native-classes/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/ExitCommand.cpp)
+- public · colingsnyder2-ux · [native-classes/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/ExitCommand.cpp)
+- public · colingsnyder2-ux · [native-classes/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/ExitCommand.cpp)
+- public · colingsnyder2-ux · [native-classes/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/ExitCommand.cpp)
+- public · colingsnyder2-ux · [native-classes/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/ExitCommand.cpp)
+- public · colingsnyder2-ux · [native-classes/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-classes/ExitCommand.cpp)
+- public · colingsnyder2-ux · [native-classes/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/ExitCommand.cpp)
+- public · colingsnyder2-ux · [native-classes/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/ExitCommand.cpp)
+
+**`985303cea55b`** · `native-classes/ExitCommand.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [native-classes/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/ExitCommand.cpp)
+- fork · coldek · [native-classes/ExitCommand.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-classes/ExitCommand.cpp)
+- fork · mewpokemons · [native-classes/ExitCommand.cpp](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-classes/ExitCommand.cpp)
+- fork · mewpokemons · [native-classes/ExitCommand.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/ExitCommand.cpp)
+- fork · mewpokemons · [native-classes/ExitCommand.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/ExitCommand.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/ExitCommand.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/ExitCommand.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/ExitCommand.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-classes/ExitCommand.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/ExitCommand.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-classes/ExitCommand.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-classes/ExitCommand.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-classes/ExitCommand.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-classes/ExitCommand.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-classes/ExitCommand.cpp)
+
+<details><summary>10 retained local origins</summary>
+
+- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-classes/ExitCommand.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/ExitCommand.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/ExitCommand.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-classes/ExitCommand.cpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-classes/ExitCommand.cpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-classes/ExitCommand.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-classes/ExitCommand.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-classes/ExitCommand.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-classes/ExitCommand.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-merge/rebuild/2008-06/native-classes/ExitCommand.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`9ef2f0710acc`** · `native-classes/ExitCommand.cpp` · proof not assessed
+
+<details><summary>3 retained local origins</summary>
+
+- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-classes/ExitCommand.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-classes/ExitCommand.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-classes/ExitCommand.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`c70e6e53cf5d`** · `native-classes/ExitCommand.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-classes/ExitCommand.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`d55d631f0332`** · `native-classes/ExitCommand.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-classes/ExitCommand.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`edbc58fb402d`** · `native-classes/ExitCommand.cpp` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-classes/ExitCommand.cpp`
+- local · `local/findings/2008-06/native-classes/ExitCommand.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`182e8346e2ca`** · `native-classes/ExitCommand.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/ExitCommand.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/ExitCommand.cpp)
+
+</details>
+
+<details>
+<summary>native-classes/GroupSelectionVerb.cpp — equivalent; 7 content versions</summary>
+
+Compatibility path for `App/src/v8datamodel/GroupSelectionVerb.cpp`; compile either path, never both.
+
+**`3a605f3737d2`** · `native-classes/GroupSelectionVerb.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-classes/GroupSelectionVerb.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`6bb225641bf5`** · `native-classes/GroupSelectionVerb.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-classes/GroupSelectionVerb.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`a336fe2c6b3c`** · `native-classes/GroupSelectionVerb.cpp` · proof not assessed
+
+<details><summary>3 retained local origins</summary>
+
+- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`a653979e1737`** · `native-classes/GroupSelectionVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/GroupSelectionVerb.cpp)
+- public · colingsnyder2-ux · [native-classes/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/GroupSelectionVerb.cpp)
+- public · colingsnyder2-ux · [native-classes/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/GroupSelectionVerb.cpp)
+- public · colingsnyder2-ux · [native-classes/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/GroupSelectionVerb.cpp)
+- public · colingsnyder2-ux · [native-classes/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/GroupSelectionVerb.cpp)
+- public · colingsnyder2-ux · [native-classes/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/GroupSelectionVerb.cpp)
+- public · colingsnyder2-ux · [native-classes/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/GroupSelectionVerb.cpp)
+- public · colingsnyder2-ux · [native-classes/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/GroupSelectionVerb.cpp)
+- public · colingsnyder2-ux · [native-classes/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-classes/GroupSelectionVerb.cpp)
+- public · colingsnyder2-ux · [native-classes/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/GroupSelectionVerb.cpp)
+
+**`c126640556d3`** · `native-classes/GroupSelectionVerb.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [native-classes/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp)
+- fork · coldek · [native-classes/GroupSelectionVerb.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp)
+- fork · mewpokemons · [native-classes/GroupSelectionVerb.cpp](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp)
+- fork · mewpokemons · [native-classes/GroupSelectionVerb.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp)
+- fork · mewpokemons · [native-classes/GroupSelectionVerb.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp)
+
+<details><summary>10 retained local origins</summary>
+
+- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-merge/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`ef856983d1a6`** · `native-classes/GroupSelectionVerb.cpp` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-classes/GroupSelectionVerb.cpp`
+- local · `local/findings/2008-06/native-classes/GroupSelectionVerb.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`a2386edb9dcc`** · `native-classes/GroupSelectionVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/GroupSelectionVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp)
+- public · colingsnyder2-ux · [native-classes/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/GroupSelectionVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp)
+
+</details>
+
+<details>
+<summary>native-classes/HttpScriptCheck.cpp — public-only; 4 content versions</summary>
+
+**`004f7658da37`** · `native-classes/HttpScriptCheck.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-classes/HttpScriptCheck.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`32d0c382b683`** · `native-classes/HttpScriptCheck.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HttpScriptCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/HttpScriptCheck.cpp)
+- public · colingsnyder2-ux · [native-classes/HttpScriptCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/HttpScriptCheck.cpp)
+- public · colingsnyder2-ux · [native-classes/HttpScriptCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/HttpScriptCheck.cpp)
+- public · colingsnyder2-ux · [native-classes/HttpScriptCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/HttpScriptCheck.cpp)
+- public · colingsnyder2-ux · [native-classes/HttpScriptCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/HttpScriptCheck.cpp)
+- public · colingsnyder2-ux · [native-classes/HttpScriptCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/HttpScriptCheck.cpp)
+- public · colingsnyder2-ux · [native-classes/HttpScriptCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/HttpScriptCheck.cpp)
+- public · colingsnyder2-ux · [native-classes/HttpScriptCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/HttpScriptCheck.cpp)
+- public · colingsnyder2-ux · [native-classes/HttpScriptCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-classes/HttpScriptCheck.cpp)
+- public · colingsnyder2-ux · [native-classes/HttpScriptCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/HttpScriptCheck.cpp)
+- public · colingsnyder2-ux · [native-classes/HttpScriptCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/HttpScriptCheck.cpp)
+- public · colingsnyder2-ux · [native-classes/HttpScriptCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/HttpScriptCheck.cpp)
+
+**`9a85b56e5abf`** · `native-classes/HttpScriptCheck.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `local/findings/2008-06/native-classes/HttpScriptCheck.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`d74b0b5e0a2f`** · `native-classes/HttpScriptCheck.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-classes/HttpScriptCheck.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>native-classes/InsertModelFromRobloxVerb.cpp — diverged; 6 content versions</summary>
+
+**`2972794546a9`** · `native-classes/InsertModelFromRobloxVerb.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
+- fork · coldek · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
+- fork · mewpokemons · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
+- fork · mewpokemons · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
+- fork · mewpokemons · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
+
+<details><summary>10 retained local origins</summary>
+
+- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-merge/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`4bd1d904c1b6`** · `native-classes/InsertModelFromRobloxVerb.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `2008-06/native-classes/InsertModelFromRobloxVerb.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`a60dd413cfc2`** · `native-classes/InsertModelFromRobloxVerb.cpp` · proof not assessed
+
+<details><summary>3 retained local origins</summary>
+
+- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`bafa0115dda2`** · `native-classes/InsertModelFromRobloxVerb.cpp` · proof not assessed
+
+<details><summary>1 retained local origins</summary>
+
+- local · `rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`e57999b381f9`** · `native-classes/InsertModelFromRobloxVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
+- public · colingsnyder2-ux · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
+- public · colingsnyder2-ux · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
+- public · colingsnyder2-ux · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
+- public · colingsnyder2-ux · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
+- public · colingsnyder2-ux · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
+- public · colingsnyder2-ux · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
+- public · colingsnyder2-ux · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
+- public · colingsnyder2-ux · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
+- public · colingsnyder2-ux · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
+- public · colingsnyder2-ux · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
+- public · colingsnyder2-ux · [native-classes/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/InsertModelFromRobloxVerb.cpp)
+
+**`f69b40cd3cf6`** · `native-classes/InsertModelFromRobloxVerb.cpp` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp`
+- local · `local/findings/2008-06/native-classes/InsertModelFromRobloxVerb.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
 <summary>native-classes/JoinCommand.cpp — equivalent; 7 content versions</summary>
 
 Compatibility path for `App/src/v8datamodel/JoinCommand.cpp`; compile either path, never both.
@@ -84,6 +570,8 @@ Compatibility path for `App/src/v8datamodel/JoinCommand.cpp`; compile either pat
 **`ac6ad75726ce`** · `native-classes/JoinCommand.cpp` · proof not assessed
 - public · colingsnyder2-ux · [native-classes/JoinCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/JoinCommand.cpp)
 - canonical · colingsnyder2-ux · [native-classes/JoinCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-classes/JoinCommand.cpp)
+- public · colingsnyder2-ux · [native-classes/JoinCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/JoinCommand.cpp)
+- canonical · colingsnyder2-ux · [native-classes/JoinCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/JoinCommand.cpp)
 
 </details>
 
@@ -110,6 +598,7 @@ Compatibility path for `App/src/v8datamodel/JoinCommand.cpp`; compile either pat
 - public · colingsnyder2-ux · [native-classes/MetadataExplorerOrder.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-classes/MetadataExplorerOrder.cpp)
 - public · colingsnyder2-ux · [native-classes/MetadataExplorerOrder.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/MetadataExplorerOrder.cpp)
 - public · colingsnyder2-ux · [native-classes/MetadataExplorerOrder.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/MetadataExplorerOrder.cpp)
+- public · colingsnyder2-ux · [native-classes/MetadataExplorerOrder.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/MetadataExplorerOrder.cpp)
 
 **`aa999f4e6635`** · `native-classes/MetadataExplorerOrder.cpp` · proof not assessed
 
@@ -146,6 +635,7 @@ Compatibility path for `App/src/v8datamodel/MotorFeatureCommands.cpp`; compile e
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/267fd9cce038f5e7d761f56bf657654e030ec7c1b05af7fd97bd2763dd4012a7/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/267fd9cce038f5e7d761f56bf657654e030ec7c1b05af7fd97bd2763dd4012a7/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/267fd9cce038f5e7d761f56bf657654e030ec7c1b05af7fd97bd2763dd4012a7/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
+- draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/267fd9cce038f5e7d761f56bf657654e030ec7c1b05af7fd97bd2763dd4012a7/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -211,6 +701,7 @@ Compatibility path for `App/src/v8datamodel/MotorFeatureCommands.cpp`; compile e
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/9ac04684ecbde8401dc8bd97d7f4e1a7289c596516023dc1c0c98490ebf9cbb7/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/9ac04684ecbde8401dc8bd97d7f4e1a7289c596516023dc1c0c98490ebf9cbb7/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/9ac04684ecbde8401dc8bd97d7f4e1a7289c596516023dc1c0c98490ebf9cbb7/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
+- draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/9ac04684ecbde8401dc8bd97d7f4e1a7289c596516023dc1c0c98490ebf9cbb7/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -241,6 +732,8 @@ Compatibility path for `App/src/v8datamodel/MotorFeatureCommands.cpp`; compile e
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/50de12c6510030746de6abf7287c5011fe69ac7445fc16fd3293c2a0b3c29a44/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/08eac4126f9ec0e8cb192e68ad21220b148d681a1af1538d19c36ae533aa6148/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/50de12c6510030746de6abf7287c5011fe69ac7445fc16fd3293c2a0b3c29a44/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
+- draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/08eac4126f9ec0e8cb192e68ad21220b148d681a1af1538d19c36ae533aa6148/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
+- draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/50de12c6510030746de6abf7287c5011fe69ac7445fc16fd3293c2a0b3c29a44/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 
 <details><summary>3 retained local origins</summary>
 
@@ -262,6 +755,7 @@ Compatibility path for `App/src/v8datamodel/MotorFeatureCommands.cpp`; compile e
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/f4b98f15f11d0070683cdf59b8556c61c47862670da3076ec25ba7d2c5748976/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/f4b98f15f11d0070683cdf59b8556c61c47862670da3076ec25ba7d2c5748976/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/f4b98f15f11d0070683cdf59b8556c61c47862670da3076ec25ba7d2c5748976/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
+- draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/f4b98f15f11d0070683cdf59b8556c61c47862670da3076ec25ba7d2c5748976/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -297,6 +791,7 @@ Compatibility path for `App/src/v8datamodel/MotorFeatureCommands.cpp`; compile e
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/358bc2cec98d554cae4badca2d802a0d4bb6fb22bd4d9145d1b65fdd612602ee/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/358bc2cec98d554cae4badca2d802a0d4bb6fb22bd4d9145d1b65fdd612602ee/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/358bc2cec98d554cae4badca2d802a0d4bb6fb22bd4d9145d1b65fdd612602ee/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
+- draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/358bc2cec98d554cae4badca2d802a0d4bb6fb22bd4d9145d1b65fdd612602ee/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -316,6 +811,7 @@ Compatibility path for `App/src/v8datamodel/MotorFeatureCommands.cpp`; compile e
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/d740395c5a5be097e4bc18f518c598dc62fe88f3c960b167d697c51af3e2ccb4/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/d740395c5a5be097e4bc18f518c598dc62fe88f3c960b167d697c51af3e2ccb4/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/d740395c5a5be097e4bc18f518c598dc62fe88f3c960b167d697c51af3e2ccb4/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
+- draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/d740395c5a5be097e4bc18f518c598dc62fe88f3c960b167d697c51af3e2ccb4/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -344,6 +840,7 @@ Compatibility path for `App/src/v8datamodel/MotorFeatureCommands.cpp`; compile e
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/3a1ee5f0cabebe5c4608b41316c9579aa648656d4046c2987ad37e2f342d8ba1/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/3a1ee5f0cabebe5c4608b41316c9579aa648656d4046c2987ad37e2f342d8ba1/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/3a1ee5f0cabebe5c4608b41316c9579aa648656d4046c2987ad37e2f342d8ba1/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
+- draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/3a1ee5f0cabebe5c4608b41316c9579aa648656d4046c2987ad37e2f342d8ba1/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -363,6 +860,7 @@ Compatibility path for `App/src/v8datamodel/MotorFeatureCommands.cpp`; compile e
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/0d5986dbb3fdb1ce4bedb309618739c7a84e69ad8e3d7db6a8b41c92be65bb26/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/0d5986dbb3fdb1ce4bedb309618739c7a84e69ad8e3d7db6a8b41c92be65bb26/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/0d5986dbb3fdb1ce4bedb309618739c7a84e69ad8e3d7db6a8b41c92be65bb26/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
+- draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/0d5986dbb3fdb1ce4bedb309618739c7a84e69ad8e3d7db6a8b41c92be65bb26/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -382,6 +880,7 @@ Compatibility path for `App/src/v8datamodel/MotorFeatureCommands.cpp`; compile e
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/f5436dcc4c2cd445f45dda5a5932f87eff85b7f3f6ce254443030643cb0e3aee/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/f5436dcc4c2cd445f45dda5a5932f87eff85b7f3f6ce254443030643cb0e3aee/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/f5436dcc4c2cd445f45dda5a5932f87eff85b7f3f6ce254443030643cb0e3aee/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
+- draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/f5436dcc4c2cd445f45dda5a5932f87eff85b7f3f6ce254443030643cb0e3aee/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -401,6 +900,7 @@ Compatibility path for `App/src/v8datamodel/MotorFeatureCommands.cpp`; compile e
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/3836df8b82ac7a72fa49562596435f59142794e9f57e0cba4485cd5a32f5dc97/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/3836df8b82ac7a72fa49562596435f59142794e9f57e0cba4485cd5a32f5dc97/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/3836df8b82ac7a72fa49562596435f59142794e9f57e0cba4485cd5a32f5dc97/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
+- draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/3836df8b82ac7a72fa49562596435f59142794e9f57e0cba4485cd5a32f5dc97/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -420,6 +920,7 @@ Compatibility path for `App/src/v8datamodel/MotorFeatureCommands.cpp`; compile e
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/d39e2201582eb3331f4c9dc638af95357a32650d5323cc65e7f74077173c9c74/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/d39e2201582eb3331f4c9dc638af95357a32650d5323cc65e7f74077173c9c74/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/d39e2201582eb3331f4c9dc638af95357a32650d5323cc65e7f74077173c9c74/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
+- draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/d39e2201582eb3331f4c9dc638af95357a32650d5323cc65e7f74077173c9c74/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -439,6 +940,7 @@ Compatibility path for `App/src/v8datamodel/MotorFeatureCommands.cpp`; compile e
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/17b3ac7405463fb012f53a9cffd8bda93911af1cfcbebb3dc23f746954616289/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/17b3ac7405463fb012f53a9cffd8bda93911af1cfcbebb3dc23f746954616289/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/17b3ac7405463fb012f53a9cffd8bda93911af1cfcbebb3dc23f746954616289/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
+- draft · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/17b3ac7405463fb012f53a9cffd8bda93911af1cfcbebb3dc23f746954616289/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -451,6 +953,8 @@ Compatibility path for `App/src/v8datamodel/MotorFeatureCommands.cpp`; compile e
 - canonical · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 - public · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/MotorFeatureCommands.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
+- public · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/MotorFeatureCommands.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MotorFeatureCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/MotorFeatureCommands.cpp)
 
 </details>
 
@@ -545,6 +1049,8 @@ Compatibility path for `App/src/v8datamodel/MouseCommand.cpp`; compile either pa
 - canonical · colingsnyder2-ux · [native-classes/MouseCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-classes/MouseCommand.cpp)
 - public · colingsnyder2-ux · [native-classes/MouseCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/MouseCommand.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MouseCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-classes/MouseCommand.cpp)
+- public · colingsnyder2-ux · [native-classes/MouseCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/MouseCommand.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MouseCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/MouseCommand.cpp)
 
 </details>
 
@@ -630,6 +1136,8 @@ Compatibility path for `App/src/v8datamodel/MouseCommandCapture.cpp`; compile ei
 - canonical · colingsnyder2-ux · [native-classes/MouseCommandCapture.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-classes/MouseCommandCapture.cpp)
 - public · colingsnyder2-ux · [native-classes/MouseCommandCapture.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/MouseCommandCapture.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MouseCommandCapture.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-classes/MouseCommandCapture.cpp)
+- public · colingsnyder2-ux · [native-classes/MouseCommandCapture.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/MouseCommandCapture.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MouseCommandCapture.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/MouseCommandCapture.cpp)
 
 </details>
 
@@ -724,6 +1232,8 @@ Compatibility path for `App/src/v8datamodel/MouseCommandDistance.cpp`; compile e
 - canonical · colingsnyder2-ux · [native-classes/MouseCommandDistance.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-classes/MouseCommandDistance.cpp)
 - public · colingsnyder2-ux · [native-classes/MouseCommandDistance.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/MouseCommandDistance.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MouseCommandDistance.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-classes/MouseCommandDistance.cpp)
+- public · colingsnyder2-ux · [native-classes/MouseCommandDistance.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/MouseCommandDistance.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MouseCommandDistance.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/MouseCommandDistance.cpp)
 
 </details>
 
@@ -816,6 +1326,8 @@ Compatibility path for `App/src/v8datamodel/MouseCommandLifetime.cpp`; compile e
 - canonical · colingsnyder2-ux · [native-classes/MouseCommandLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-classes/MouseCommandLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/MouseCommandLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/MouseCommandLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MouseCommandLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-classes/MouseCommandLifetime.cpp)
+- public · colingsnyder2-ux · [native-classes/MouseCommandLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/MouseCommandLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MouseCommandLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/MouseCommandLifetime.cpp)
 
 </details>
 
@@ -863,6 +1375,7 @@ Compatibility path for `App/src/v8datamodel/MoveDownSelectionVerb.cpp`; compile 
 - draft · colingsnyder2-ux · [native-classes/MoveDownSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/146b6a504cb1b062bfc608a194bb1c8c7d6ed9bdd8f12625a48f1d57fc0b843b/rebuild/2008-06/native-classes/MoveDownSelectionVerb.cpp)
 - draft · colingsnyder2-ux · [native-classes/MoveDownSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/146b6a504cb1b062bfc608a194bb1c8c7d6ed9bdd8f12625a48f1d57fc0b843b/rebuild/2008-06/native-classes/MoveDownSelectionVerb.cpp)
 - draft · colingsnyder2-ux · [native-classes/MoveDownSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/146b6a504cb1b062bfc608a194bb1c8c7d6ed9bdd8f12625a48f1d57fc0b843b/rebuild/2008-06/native-classes/MoveDownSelectionVerb.cpp)
+- draft · colingsnyder2-ux · [native-classes/MoveDownSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/drafts/files/146b6a504cb1b062bfc608a194bb1c8c7d6ed9bdd8f12625a48f1d57fc0b843b/rebuild/2008-06/native-classes/MoveDownSelectionVerb.cpp)
 
 <details><summary>1 retained local origins</summary>
 
@@ -924,251 +1437,7 @@ Compatibility path for `App/src/v8datamodel/MoveDownSelectionVerb.cpp`; compile 
 **`426db48de6ea`** · `native-classes/MoveDownSelectionVerb.cpp` · proof not assessed
 - public · colingsnyder2-ux · [native-classes/MoveDownSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/MoveDownSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MoveDownSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-classes/MoveDownSelectionVerb.cpp)
-
-</details>
-
-<details>
-<summary>native-classes/MoveUpSelectionVerb.cpp — diverged; 6 content versions</summary>
-
-**`19f61afc5e19`** · `native-classes/MoveUpSelectionVerb.cpp` · proof not assessed
-- public · colingsnyder2-ux · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/MoveUpSelectionVerb.cpp)
-- public · colingsnyder2-ux · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/MoveUpSelectionVerb.cpp)
-- public · colingsnyder2-ux · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/MoveUpSelectionVerb.cpp)
-- public · colingsnyder2-ux · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/MoveUpSelectionVerb.cpp)
-- public · colingsnyder2-ux · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/MoveUpSelectionVerb.cpp)
-- public · colingsnyder2-ux · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/MoveUpSelectionVerb.cpp)
-- public · colingsnyder2-ux · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/MoveUpSelectionVerb.cpp)
-- public · colingsnyder2-ux · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/MoveUpSelectionVerb.cpp)
-- public · colingsnyder2-ux · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-classes/MoveUpSelectionVerb.cpp)
-- public · colingsnyder2-ux · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/MoveUpSelectionVerb.cpp)
-- public · colingsnyder2-ux · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/MoveUpSelectionVerb.cpp)
-
-**`22ed895e8d2a`** · `native-classes/MoveUpSelectionVerb.cpp` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`4cb1bbed908d`** · `native-classes/MoveUpSelectionVerb.cpp` · proof not assessed
-- canonical · colingsnyder2-ux · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp)
-- fork · coldek · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp)
-- fork · mewpokemons · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/mewpokemons/RoConstruct/blob/96ddc80766be85d2a3861e51bbf1fedeaa4f725a/rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp)
-- fork · mewpokemons · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp)
-- fork · mewpokemons · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp)
-- canonical · colingsnyder2-ux · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp)
-- canonical · colingsnyder2-ux · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp)
-- canonical · colingsnyder2-ux · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp)
-- canonical · colingsnyder2-ux · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp)
-- canonical · colingsnyder2-ux · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp)
-- canonical · colingsnyder2-ux · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp)
-- canonical · colingsnyder2-ux · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp)
-- canonical · colingsnyder2-ux · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp)
-- canonical · colingsnyder2-ux · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp)
-- canonical · colingsnyder2-ux · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp)
-
-<details><summary>10 retained local origins</summary>
-
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-candidate/rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-current/rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/native-regression-final/rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-merge/rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`7027d561506d`** · `native-classes/MoveUpSelectionVerb.cpp` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-classes/MoveUpSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`931008724c90`** · `native-classes/MoveUpSelectionVerb.cpp` · proof not assessed
-
-<details><summary>3 retained local origins</summary>
-
-- local · `work/fork-integration/mew-deps-e8b248bf/rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/snapshot/rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-- local · `work/fork-integration/mew-rest-world-20261104/viewnew-snapshot/rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`c797f47bf525`** · `native-classes/MoveUpSelectionVerb.cpp` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local-branch refs/heads/codex/native-partial-search-20261029@c9a075722a0c · `rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp`
-- local · `local/findings/2008-06/native-classes/MoveUpSelectionVerb.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>native-classes/MoveUpVerbConstructors.cpp — equivalent; 3 content versions</summary>
-
-**`2e4cb20e6625`** · `native-classes/MoveUpVerbConstructors.cpp` · proof not assessed
-- public · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- canonical · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/workspace/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- public · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- canonical · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/workspace/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- public · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- canonical · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/workspace/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- public · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- canonical · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/workspace/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- public · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- canonical · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/workspace/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- public · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- canonical · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/workspace/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- public · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- canonical · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/workspace/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- public · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- canonical · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/workspace/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- public · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- canonical · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/workspace/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- public · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- canonical · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- public · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- canonical · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-
-<details><summary>4 retained local origins</summary>
-
-- local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp` · root `b52aa15feaea5a0c`
-- local · `RoConstruct-Native-4392ac45a8054297a434c6899a0e473c/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-now/frozen/workspace/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp` · root `b52aa15feaea5a0c`
-- local · `work/integration-pass-20261106-now/validated/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`6146e0b0f881`** · `native-classes/MoveUpVerbConstructors.cpp` · proof not assessed
-
-<details><summary>1 retained local origins</summary>
-
-- local · `2008-06/native-classes/MoveUpVerbConstructors.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`ec51c970db9f`** · `native-classes/MoveUpVerbConstructors.cpp` · proof not assessed
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/0543b68e898a5fc160358627b014c451b279dad5b07ec1be5bf1f001d4850324/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/080454c957fcbbe235b1b2aed4486ceeb53884eb34c5800f9e8b739aca6b8624/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/107b42d791e2c9fc2741f54915477f705b06b966e8718521ec67c296085d9a5d/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/11f98fda8667a05d3444ced3886056a7f805ef60eb13bcbecf840988a7328bfe/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/4b519e9b7a1c1a2d949df3ba0e544fec298887fd132f50d2a85fea3b48570e4b/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/74620bd0c4d2c5cda9623be393544abb77fe43b3741d9d463e7e25e7f9e6046e/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/8c45830dc143c29edc8546c8255c4c44ed6946ac9ef46016217041b320347464/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/979c73bed37b7bcbc7fdbaea79f65e1c6165fbd8b953d1a2fd033518e59c047c/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5998a27f24cf87502af81f230c6c677d236ae186/drafts/files/9eea5432ef08d5d7e3f3e67d3f84b07c47df9c46d79223ecedd1271fd7f485ff/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/drafts/files/0543b68e898a5fc160358627b014c451b279dad5b07ec1be5bf1f001d4850324/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/drafts/files/080454c957fcbbe235b1b2aed4486ceeb53884eb34c5800f9e8b739aca6b8624/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/drafts/files/107b42d791e2c9fc2741f54915477f705b06b966e8718521ec67c296085d9a5d/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/drafts/files/11f98fda8667a05d3444ced3886056a7f805ef60eb13bcbecf840988a7328bfe/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/drafts/files/4b519e9b7a1c1a2d949df3ba0e544fec298887fd132f50d2a85fea3b48570e4b/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/drafts/files/74620bd0c4d2c5cda9623be393544abb77fe43b3741d9d463e7e25e7f9e6046e/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/drafts/files/8c45830dc143c29edc8546c8255c4c44ed6946ac9ef46016217041b320347464/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/drafts/files/979c73bed37b7bcbc7fdbaea79f65e1c6165fbd8b953d1a2fd033518e59c047c/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/77cb028e5dee0bfdc559dc9557e165c1f39083d8/drafts/files/9eea5432ef08d5d7e3f3e67d3f84b07c47df9c46d79223ecedd1271fd7f485ff/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/drafts/files/0543b68e898a5fc160358627b014c451b279dad5b07ec1be5bf1f001d4850324/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/drafts/files/080454c957fcbbe235b1b2aed4486ceeb53884eb34c5800f9e8b739aca6b8624/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/drafts/files/107b42d791e2c9fc2741f54915477f705b06b966e8718521ec67c296085d9a5d/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/drafts/files/11f98fda8667a05d3444ced3886056a7f805ef60eb13bcbecf840988a7328bfe/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/drafts/files/4b519e9b7a1c1a2d949df3ba0e544fec298887fd132f50d2a85fea3b48570e4b/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/drafts/files/74620bd0c4d2c5cda9623be393544abb77fe43b3741d9d463e7e25e7f9e6046e/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/drafts/files/8c45830dc143c29edc8546c8255c4c44ed6946ac9ef46016217041b320347464/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/drafts/files/979c73bed37b7bcbc7fdbaea79f65e1c6165fbd8b953d1a2fd033518e59c047c/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ffea3f0c9df7746a6dd09af60cf171fa6e0bec4c/drafts/files/9eea5432ef08d5d7e3f3e67d3f84b07c47df9c46d79223ecedd1271fd7f485ff/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/drafts/files/0543b68e898a5fc160358627b014c451b279dad5b07ec1be5bf1f001d4850324/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/drafts/files/080454c957fcbbe235b1b2aed4486ceeb53884eb34c5800f9e8b739aca6b8624/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/drafts/files/107b42d791e2c9fc2741f54915477f705b06b966e8718521ec67c296085d9a5d/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/drafts/files/11f98fda8667a05d3444ced3886056a7f805ef60eb13bcbecf840988a7328bfe/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/drafts/files/4b519e9b7a1c1a2d949df3ba0e544fec298887fd132f50d2a85fea3b48570e4b/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/drafts/files/74620bd0c4d2c5cda9623be393544abb77fe43b3741d9d463e7e25e7f9e6046e/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/drafts/files/8c45830dc143c29edc8546c8255c4c44ed6946ac9ef46016217041b320347464/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/drafts/files/979c73bed37b7bcbc7fdbaea79f65e1c6165fbd8b953d1a2fd033518e59c047c/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1befd5c7fcba49733fcddae7164677b94cf6994c/drafts/files/9eea5432ef08d5d7e3f3e67d3f84b07c47df9c46d79223ecedd1271fd7f485ff/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/drafts/files/0543b68e898a5fc160358627b014c451b279dad5b07ec1be5bf1f001d4850324/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/drafts/files/080454c957fcbbe235b1b2aed4486ceeb53884eb34c5800f9e8b739aca6b8624/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/drafts/files/107b42d791e2c9fc2741f54915477f705b06b966e8718521ec67c296085d9a5d/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/drafts/files/11f98fda8667a05d3444ced3886056a7f805ef60eb13bcbecf840988a7328bfe/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/drafts/files/4b519e9b7a1c1a2d949df3ba0e544fec298887fd132f50d2a85fea3b48570e4b/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/drafts/files/74620bd0c4d2c5cda9623be393544abb77fe43b3741d9d463e7e25e7f9e6046e/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/drafts/files/8c45830dc143c29edc8546c8255c4c44ed6946ac9ef46016217041b320347464/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/drafts/files/979c73bed37b7bcbc7fdbaea79f65e1c6165fbd8b953d1a2fd033518e59c047c/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12ad990d7923ed7bb1247f05071c98d1456d9887/drafts/files/9eea5432ef08d5d7e3f3e67d3f84b07c47df9c46d79223ecedd1271fd7f485ff/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/drafts/files/0543b68e898a5fc160358627b014c451b279dad5b07ec1be5bf1f001d4850324/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/drafts/files/080454c957fcbbe235b1b2aed4486ceeb53884eb34c5800f9e8b739aca6b8624/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/drafts/files/107b42d791e2c9fc2741f54915477f705b06b966e8718521ec67c296085d9a5d/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/drafts/files/11f98fda8667a05d3444ced3886056a7f805ef60eb13bcbecf840988a7328bfe/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/drafts/files/4b519e9b7a1c1a2d949df3ba0e544fec298887fd132f50d2a85fea3b48570e4b/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/drafts/files/74620bd0c4d2c5cda9623be393544abb77fe43b3741d9d463e7e25e7f9e6046e/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/drafts/files/8c45830dc143c29edc8546c8255c4c44ed6946ac9ef46016217041b320347464/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/drafts/files/979c73bed37b7bcbc7fdbaea79f65e1c6165fbd8b953d1a2fd033518e59c047c/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4744087b07f614bc7cba7f2018dcb2229b5349c0/drafts/files/9eea5432ef08d5d7e3f3e67d3f84b07c47df9c46d79223ecedd1271fd7f485ff/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/drafts/files/0543b68e898a5fc160358627b014c451b279dad5b07ec1be5bf1f001d4850324/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/drafts/files/080454c957fcbbe235b1b2aed4486ceeb53884eb34c5800f9e8b739aca6b8624/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/drafts/files/107b42d791e2c9fc2741f54915477f705b06b966e8718521ec67c296085d9a5d/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/drafts/files/11f98fda8667a05d3444ced3886056a7f805ef60eb13bcbecf840988a7328bfe/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/drafts/files/4b519e9b7a1c1a2d949df3ba0e544fec298887fd132f50d2a85fea3b48570e4b/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/drafts/files/74620bd0c4d2c5cda9623be393544abb77fe43b3741d9d463e7e25e7f9e6046e/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/drafts/files/8c45830dc143c29edc8546c8255c4c44ed6946ac9ef46016217041b320347464/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/drafts/files/979c73bed37b7bcbc7fdbaea79f65e1c6165fbd8b953d1a2fd033518e59c047c/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63df9581084c0c0e5e4c5f4e9903fccf41920dca/drafts/files/9eea5432ef08d5d7e3f3e67d3f84b07c47df9c46d79223ecedd1271fd7f485ff/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/drafts/files/0543b68e898a5fc160358627b014c451b279dad5b07ec1be5bf1f001d4850324/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/drafts/files/080454c957fcbbe235b1b2aed4486ceeb53884eb34c5800f9e8b739aca6b8624/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/drafts/files/107b42d791e2c9fc2741f54915477f705b06b966e8718521ec67c296085d9a5d/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/drafts/files/11f98fda8667a05d3444ced3886056a7f805ef60eb13bcbecf840988a7328bfe/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/drafts/files/4b519e9b7a1c1a2d949df3ba0e544fec298887fd132f50d2a85fea3b48570e4b/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/drafts/files/74620bd0c4d2c5cda9623be393544abb77fe43b3741d9d463e7e25e7f9e6046e/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/drafts/files/8c45830dc143c29edc8546c8255c4c44ed6946ac9ef46016217041b320347464/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/drafts/files/979c73bed37b7bcbc7fdbaea79f65e1c6165fbd8b953d1a2fd033518e59c047c/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/drafts/files/9eea5432ef08d5d7e3f3e67d3f84b07c47df9c46d79223ecedd1271fd7f485ff/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/0543b68e898a5fc160358627b014c451b279dad5b07ec1be5bf1f001d4850324/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/080454c957fcbbe235b1b2aed4486ceeb53884eb34c5800f9e8b739aca6b8624/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/107b42d791e2c9fc2741f54915477f705b06b966e8718521ec67c296085d9a5d/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/11f98fda8667a05d3444ced3886056a7f805ef60eb13bcbecf840988a7328bfe/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/4b519e9b7a1c1a2d949df3ba0e544fec298887fd132f50d2a85fea3b48570e4b/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/74620bd0c4d2c5cda9623be393544abb77fe43b3741d9d463e7e25e7f9e6046e/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/8c45830dc143c29edc8546c8255c4c44ed6946ac9ef46016217041b320347464/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/979c73bed37b7bcbc7fdbaea79f65e1c6165fbd8b953d1a2fd033518e59c047c/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/drafts/files/9eea5432ef08d5d7e3f3e67d3f84b07c47df9c46d79223ecedd1271fd7f485ff/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/0543b68e898a5fc160358627b014c451b279dad5b07ec1be5bf1f001d4850324/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/080454c957fcbbe235b1b2aed4486ceeb53884eb34c5800f9e8b739aca6b8624/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/107b42d791e2c9fc2741f54915477f705b06b966e8718521ec67c296085d9a5d/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/11f98fda8667a05d3444ced3886056a7f805ef60eb13bcbecf840988a7328bfe/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/4b519e9b7a1c1a2d949df3ba0e544fec298887fd132f50d2a85fea3b48570e4b/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/74620bd0c4d2c5cda9623be393544abb77fe43b3741d9d463e7e25e7f9e6046e/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/8c45830dc143c29edc8546c8255c4c44ed6946ac9ef46016217041b320347464/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/979c73bed37b7bcbc7fdbaea79f65e1c6165fbd8b953d1a2fd033518e59c047c/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/drafts/files/9eea5432ef08d5d7e3f3e67d3f84b07c47df9c46d79223ecedd1271fd7f485ff/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/0543b68e898a5fc160358627b014c451b279dad5b07ec1be5bf1f001d4850324/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/080454c957fcbbe235b1b2aed4486ceeb53884eb34c5800f9e8b739aca6b8624/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/107b42d791e2c9fc2741f54915477f705b06b966e8718521ec67c296085d9a5d/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/11f98fda8667a05d3444ced3886056a7f805ef60eb13bcbecf840988a7328bfe/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/4b519e9b7a1c1a2d949df3ba0e544fec298887fd132f50d2a85fea3b48570e4b/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/74620bd0c4d2c5cda9623be393544abb77fe43b3741d9d463e7e25e7f9e6046e/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/8c45830dc143c29edc8546c8255c4c44ed6946ac9ef46016217041b320347464/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/979c73bed37b7bcbc7fdbaea79f65e1c6165fbd8b953d1a2fd033518e59c047c/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/drafts/files/9eea5432ef08d5d7e3f3e67d3f84b07c47df9c46d79223ecedd1271fd7f485ff/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
-
-<details><summary>9 retained local origins</summary>
-
-- draft-upload · `drafts/files/74620bd0c4d2c5cda9623be393544abb77fe43b3741d9d463e7e25e7f9e6046e/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp`
-- draft-upload · `drafts/files/979c73bed37b7bcbc7fdbaea79f65e1c6165fbd8b953d1a2fd033518e59c047c/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp`
-- draft-upload · `drafts/files/107b42d791e2c9fc2741f54915477f705b06b966e8718521ec67c296085d9a5d/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp`
-- draft-upload · `drafts/files/8c45830dc143c29edc8546c8255c4c44ed6946ac9ef46016217041b320347464/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp`
-- draft-upload · `drafts/files/4b519e9b7a1c1a2d949df3ba0e544fec298887fd132f50d2a85fea3b48570e4b/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp`
-- draft-upload · `drafts/files/9eea5432ef08d5d7e3f3e67d3f84b07c47df9c46d79223ecedd1271fd7f485ff/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp`
-- draft-upload · `drafts/files/0543b68e898a5fc160358627b014c451b279dad5b07ec1be5bf1f001d4850324/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp`
-- draft-upload · `drafts/files/080454c957fcbbe235b1b2aed4486ceeb53884eb34c5800f9e8b739aca6b8624/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp`
-- draft-upload · `drafts/files/11f98fda8667a05d3444ced3886056a7f805ef60eb13bcbecf840988a7328bfe/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp`
-
-</details>
+- public · colingsnyder2-ux · [native-classes/MoveDownSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/2008-06/native-classes/MoveDownSelectionVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MoveDownSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/b7176523ae9b4519992845fd5b281c222513b072/workspace/rebuild/2008-06/native-classes/MoveDownSelectionVerb.cpp)
 
 </details>
