@@ -1,9 +1,2 @@
-#pragma once
-#include <afxwin.h>
-
-class CIDEDocManager : public CDocManager {
-    friend class CRobloxApp;
-    CDocTemplate* templates[4];
-public:
-    CIDEDocManager(bool);
-};
+// Compatibility header; declarations live at the organized path.
+#include "../WindowsClient/include/CIDEDocManager.h"

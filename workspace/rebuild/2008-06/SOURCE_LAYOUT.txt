@@ -76,3 +76,5 @@ Unclassified/src holds code awaiting project identification; no runtime claim is
 Seven leaf headers live under project include/ paths; native-headers/ retains include shims.
 
 Project include/ paths also hold the reviewed bulk header batch; native-headers/ retains compatibility includes.
+
+Project include/ paths also hold the reviewed root header batch; native-headers/ retains compatibility includes.
