@@ -72,3 +72,5 @@ Preservation-only moves retain previous proof status and do not prove original i
 
 The second mass batch preserves divergent public originals at their old paths.
 Unclassified/src holds code awaiting project identification; no runtime claim is implied.
+
+Seven leaf headers live under project include/ paths; native-headers/ retains include shims.
