@@ -74,3 +74,5 @@ The second mass batch preserves divergent public originals at their old paths.
 Unclassified/src holds code awaiting project identification; no runtime claim is implied.
 
 Seven leaf headers live under project include/ paths; native-headers/ retains include shims.
+
+Project include/ paths also hold the reviewed bulk header batch; native-headers/ retains compatibility includes.
