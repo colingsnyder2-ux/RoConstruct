@@ -1,8 +1,6 @@
+// Compatibility translation unit; compile this file or the organized source, not both.
 // >>> native-status (generated) -- do not edit >>>
-// PeerUpdate | 2008-06 | inactive
-// unmapped (no indexed address) | unmapped (no binary link) | by -
-// <<< native-status | src 88737e13 | roc native-status --write
-#include "Replicator.h"
-namespace RBX { namespace Network {
-void Peer::Update(RakPeerInterface*) {}
-}}
+// PeerUpdate | 2008-06 | selection unverified
+// unmapped (no indexed address) | by -
+// <<< native-status | src 1912a7b2 | roc native-status --write
+#include "../../Network/src/PeerUpdate.cpp"

@@ -1,10 +1,6 @@
+// Compatibility translation unit; compile this file or the organized source, not both.
 // >>> native-status (generated) -- do not edit >>>
-// RakPeerBandwidth | 2008-06 | inactive
-// unmapped (no indexed address) | unmapped (no binary link) | by -
-// <<< native-status | src 9df4c67f | roc native-status --write
-#include "RakPeer.h"
-
-void RakPeer::SetPerConnectionOutgoingBandwidthLimit(unsigned maxBitsPerSecond)
-{
-    maxOutgoingBPS = maxBitsPerSecond;
-}
+// RakPeerBandwidth | 2008-06 | selection unverified
+// unmapped (no indexed address) | by -
+// <<< native-status | src f2c6a7ed | roc native-status --write
+#include "../../Network/src/RakPeerBandwidth.cpp"
