@@ -1,16 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// Compatibility translation unit; compile this file or the organized source, not both.
 // >>> native-status (generated) -- do not edit >>>
-// LDrawMapRootLifetime | 2008-06 | inactive
-// unmapped (no indexed address) | unmapped (no binary link) | by -
-// <<< native-status | src b05fde40 | roc native-status --write
-#include "util/LDrawMapRoot.h"
-
-namespace RBX { namespace LDraw2Lua {
-LDraw2RobloxMapRoot::~LDraw2RobloxMapRoot()
-{
-    std::map<int, LDraw2RobloxColorMap*>::iterator color;
-    for (color = colors.begin(); color != colors.end(); ++color) delete color->second;
-    std::map<std::string, LDraw2RobloxPartMap*>::iterator part;
-    for (part = parts.begin(); part != parts.end(); ++part) delete part->second;
-}
-} }
+// LDrawMapRootLifetime | 2008-06 | selection unverified
+// unmapped (no indexed address) | by -
+// <<< native-status | src e2118ffa | roc native-status --write
+#include "../../Base/src/util/LDrawMapRootLifetime.cpp"

@@ -1,11 +1,6 @@
+// Compatibility translation unit; compile this file or the organized source, not both.
 // >>> native-status (generated) -- do not edit >>>
-// AppDocumentStartup | 2008-06 | inactive
-// unmapped (no indexed address) | unmapped (no binary link) | by -
-// <<< native-status | src a3b980f3 | roc native-status --write
-#include "CRobloxApp.h"
-#include "CIDEDocManager.h"
-
-void CRobloxApp::initializeEmptyDocument()
-{
-    static_cast<CIDEDocManager*>(m_pDocManager)->templates[0]->OpenDocumentFile(NULL, TRUE);
-}
+// AppDocumentStartup | 2008-06 | selection unverified
+// unmapped (no indexed address) | by -
+// <<< native-status | src d9b80fef | roc native-status --write
+#include "../../WindowsClient/src/AppDocumentStartup.cpp"

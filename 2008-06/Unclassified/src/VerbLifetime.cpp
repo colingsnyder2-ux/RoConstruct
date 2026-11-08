@@ -1,8 +1,6 @@
+// Compatibility translation unit; compile this file or the organized source, not both.
 // >>> native-status (generated) -- do not edit >>>
-// VerbLifetime | 2008-06 | inactive
-// unmapped (no indexed address) | unmapped (no binary link) | by -
-// <<< native-status | src 7678e97a | roc native-status --write
-#include "StandardVerbs.h"
-
-RBX::RunStateVerb::~RunStateVerb() {}
-RBX::EditSelectionVerb::~EditSelectionVerb() {}
+// VerbLifetime | 2008-06 | selection unverified
+// unmapped (no indexed address) | by -
+// <<< native-status | src 3543ad48 | roc native-status --write
+#include "../../WindowsClient/src/VerbLifetime.cpp"
