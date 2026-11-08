@@ -18,7 +18,7 @@
     {
       "address": "0055afd0",
       "method": "Instance::removeAllChildren",
-      "blocker": "Verify imported indirect call and linked setParent provider/ABI before integration."
+      "blocker": "Current donor setParent body differs from the original; select and verify a compatible provider and full ABI before executable use."
     },
     {
       "address": "0055b4a0",
@@ -74,5 +74,72 @@
     "primary_body_exact": true,
     "event_count": 5,
     "errors": []
+  },
+  "remove_all_progress": {
+    "scope": "Inactive byte/data, explicit PE IAT import and CRT alias, direct-call and layout checks; not executable selection or runtime proof.",
+    "address": "0055afd0",
+    "body_exact": true,
+    "call_checks": [
+      {
+        "offset": 27,
+        "target": "00802890",
+        "symbol": "__imp___invalid_parameter_noinfo",
+        "kind": "import",
+        "status": "verified_import"
+      },
+      {
+        "offset": 45,
+        "target": "00802890",
+        "symbol": "__imp___invalid_parameter_noinfo",
+        "kind": "import",
+        "status": "verified_import"
+      },
+      {
+        "offset": 80,
+        "target": "00802890",
+        "symbol": "__imp___invalid_parameter_noinfo",
+        "kind": "import",
+        "status": "verified_import"
+      },
+      {
+        "offset": 93,
+        "target": "00802890",
+        "symbol": "__imp___invalid_parameter_noinfo",
+        "kind": "import",
+        "status": "verified_import"
+      },
+      {
+        "offset": 106,
+        "target": "00802890",
+        "symbol": "__imp___invalid_parameter_noinfo",
+        "kind": "import",
+        "status": "verified_import"
+      },
+      {
+        "offset": 116,
+        "target": "0055a8f0",
+        "symbol": "?setParent@Instance@RBX@@QAEXPAV12@@Z",
+        "kind": "direct",
+        "status": "verified_binding"
+      }
+    ],
+    "evidence_sha256": {
+      "Roblox.exe": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "msvcrt.lib": "96602e3dd433237d178bd64d02de4efb8981e3c66a24535278b3897a2ac4f9e8",
+      "msvcprt.lib": "6bedbd9c1bddf28a984a58e4548ffa9286f172e55fb5dd2af0b1a1a34d81b020"
+    },
+    "instance_children_offset": "0x108",
+    "layout_object_sha256": "5766f2a6426cb848b28596bd126cfe9449d2191b0204d801055f47eb338c6740",
+    "dependency_drift": [],
+    "set_parent_donor": {
+      "archive_sha256": "21e44d8cac6d3f14850180ccb2f8d5ed618fe129c9d5c1632186b78d52d03519",
+      "member_sha256": "f41959efdd601b24faf9a841d656f5e52b99e1963a400678ff0e697c72c19dd1",
+      "symbol": "?setParent@Instance@RBX@@QAEXPAV12@@Z",
+      "address": "0055a8f0",
+      "donor_body_size": 814,
+      "original_body_size": 967,
+      "original_exact": false
+    },
+    "blocker": "Current donor setParent body differs from the original; select and verify a compatible provider and full ABI before executable use."
   }
 }
