@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/RenderLib/TextureProxy2008.h`.
 
 **`90a832fe7b7b`** · `Rendering/include/RenderLib/TextureProxy2008.h` · proof not assessed
+- public · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Rendering/include/RenderLib/TextureProxy2008.h)
 - public · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Rendering/include/RenderLib/TextureProxy2008.h)
 - public · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Rendering/include/RenderLib/TextureProxy2008.h)
 - public · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Rendering/include/RenderLib/TextureProxy2008.h)
@@ -20,6 +21,7 @@ Earlier paths and their donor versions: `native-headers/RenderLib/TextureProxy20
 </details>
 
 **`deac1eb3ebe1`** · `Rendering/include/RenderLib/TextureProxy2008.h` · proof not assessed
+- canonical · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Rendering/include/RenderLib/TextureProxy2008.h)
 - canonical · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Rendering/include/RenderLib/TextureProxy2008.h)
 - canonical · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Rendering/include/RenderLib/TextureProxy2008.h)
 - canonical · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Rendering/include/RenderLib/TextureProxy2008.h)
@@ -44,7 +46,7 @@ Earlier paths and their donor versions: `native-headers/RenderLib/TextureProxy20
 - canonical · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Rendering/include/RenderLib/TextureProxy2008.h)
 - canonical · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Rendering/include/RenderLib/TextureProxy2008.h)
 
-<details><summary>39 retained local origins</summary>
+<details><summary>43 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Rendering/include/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Rendering/include/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
@@ -77,6 +79,10 @@ Earlier paths and their donor versions: `native-headers/RenderLib/TextureProxy20
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/Rendering/include/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/Rendering/include/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Rendering/include/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Rendering/include/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/Rendering/include/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Rendering/include/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Rendering/include/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Rendering/include/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Rendering/include/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/Rendering/include/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
@@ -131,6 +137,8 @@ Earlier paths and their donor versions: `native-headers/RenderLib/TextureProxy20
 - fork · mewpokemons · [RenderLib/TextureProxy2008.h](https://github.com/mewpokemons/RoConstruct/blob/ce03c4889cffa5b0d956cb5eea53154e2377d984/rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h)
 
 **`5521ecebd1bf`** · `native-headers/RenderLib/TextureProxy2008.h` · proof not assessed
+- public · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/RenderLib/TextureProxy2008.h)
+- canonical · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h)
 - public · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/RenderLib/TextureProxy2008.h)
 - canonical · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h)
 - public · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/RenderLib/TextureProxy2008.h)
@@ -178,7 +186,7 @@ Earlier paths and their donor versions: `native-headers/RenderLib/TextureProxy20
 - public · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/RenderLib/TextureProxy2008.h)
 - canonical · colingsnyder2-ux · [RenderLib/TextureProxy2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h)
 
-<details><summary>42 retained local origins</summary>
+<details><summary>46 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
@@ -212,6 +220,10 @@ Earlier paths and their donor versions: `native-headers/RenderLib/TextureProxy20
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/RenderLib/TextureProxy2008.h` · root `b52aa15feaea5a0c`
@@ -381,6 +393,8 @@ Earlier paths and their donor versions: `native-headers/RenderLib/TextureProxy20
 Compatibility path for `App/src/tool/AxisMoveToolRender.cpp`; compile either path, never both.
 
 **`0bfc9131ba65`** · `native-classes/AxisMoveToolRender.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/AxisMoveToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/AxisMoveToolRender.cpp)
+- canonical · colingsnyder2-ux · [native-classes/AxisMoveToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-classes/AxisMoveToolRender.cpp)
 - public · colingsnyder2-ux · [native-classes/AxisMoveToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/AxisMoveToolRender.cpp)
 - canonical · colingsnyder2-ux · [native-classes/AxisMoveToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/AxisMoveToolRender.cpp)
 - public · colingsnyder2-ux · [native-classes/AxisMoveToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/AxisMoveToolRender.cpp)
@@ -442,8 +456,10 @@ Compatibility path for `App/src/tool/AxisMoveToolRender.cpp`; compile either pat
 - public · colingsnyder2-ux · [native-classes/AxisMoveToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/AxisMoveToolRender.cpp)
 - canonical · colingsnyder2-ux · [native-classes/AxisMoveToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/AxisMoveToolRender.cpp)
 
-<details><summary>1 retained local origins</summary>
+<details><summary>3 retained local origins</summary>
 
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-classes/AxisMoveToolRender.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-classes/AxisMoveToolRender.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/provider-source-guard-20261107/actual/rebuild/2008-06/native-classes/AxisMoveToolRender.cpp` · root `b52aa15feaea5a0c`
 
 </details>
@@ -479,6 +495,7 @@ Compatibility path for `App/src/tool/AxisMoveToolRender.cpp`; compile either pat
 </details>
 
 **`71c0ff47fb93`** · `native-classes/AxisMoveToolRender.cpp` · proof not assessed
+- archive · colingsnyder2-ux · [native-classes/AxisMoveToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/AxisMoveToolRender.cpp)
 - archive · colingsnyder2-ux · [native-classes/AxisMoveToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/AxisMoveToolRender.cpp)
 - archive · colingsnyder2-ux · [native-classes/AxisMoveToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/AxisMoveToolRender.cpp)
 - archive · colingsnyder2-ux · [native-classes/AxisMoveToolRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/AxisMoveToolRender.cpp)
@@ -640,6 +657,8 @@ Compatibility path for `WindowsClient/src/CClassImages.cpp`; compile either path
 </details>
 
 **`5b727de81687`** · `native-classes/CClassImages.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CClassImages.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/CClassImages.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CClassImages.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-classes/CClassImages.cpp)
 - public · colingsnyder2-ux · [native-classes/CClassImages.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/CClassImages.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CClassImages.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/CClassImages.cpp)
 - public · colingsnyder2-ux · [native-classes/CClassImages.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/CClassImages.cpp)
@@ -701,8 +720,10 @@ Compatibility path for `WindowsClient/src/CClassImages.cpp`; compile either path
 - public · colingsnyder2-ux · [native-classes/CClassImages.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/CClassImages.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CClassImages.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/CClassImages.cpp)
 
-<details><summary>1 retained local origins</summary>
+<details><summary>3 retained local origins</summary>
 
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-classes/CClassImages.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-classes/CClassImages.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/provider-source-guard-20261107/actual/rebuild/2008-06/native-classes/CClassImages.cpp` · root `b52aa15feaea5a0c`
 
 </details>
@@ -807,6 +828,8 @@ Compatibility path for `App/src/v8datamodel/DecalBases.cpp`; compile either path
 </details>
 
 **`9025fdaf48bb`** · `native-classes/DecalBases.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/DecalBases.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/DecalBases.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DecalBases.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-classes/DecalBases.cpp)
 - public · colingsnyder2-ux · [native-classes/DecalBases.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/DecalBases.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DecalBases.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/DecalBases.cpp)
 - public · colingsnyder2-ux · [native-classes/DecalBases.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/DecalBases.cpp)
@@ -868,8 +891,10 @@ Compatibility path for `App/src/v8datamodel/DecalBases.cpp`; compile either path
 - public · colingsnyder2-ux · [native-classes/DecalBases.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/DecalBases.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DecalBases.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/DecalBases.cpp)
 
-<details><summary>1 retained local origins</summary>
+<details><summary>3 retained local origins</summary>
 
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-classes/DecalBases.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-classes/DecalBases.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/provider-source-guard-20261107/actual/rebuild/2008-06/native-classes/DecalBases.cpp` · root `b52aa15feaea5a0c`
 
 </details>
@@ -1019,6 +1044,8 @@ Compatibility path for `App/src/v8datamodel/DecalLifetime.cpp`; compile either p
 </details>
 
 **`c8e86ce81397`** · `native-classes/DecalLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/DecalLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/DecalLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DecalLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-classes/DecalLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/DecalLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/DecalLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DecalLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/DecalLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/DecalLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/DecalLifetime.cpp)
@@ -1080,8 +1107,10 @@ Compatibility path for `App/src/v8datamodel/DecalLifetime.cpp`; compile either p
 - public · colingsnyder2-ux · [native-classes/DecalLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/DecalLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DecalLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/DecalLifetime.cpp)
 
-<details><summary>1 retained local origins</summary>
+<details><summary>3 retained local origins</summary>
 
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-classes/DecalLifetime.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-classes/DecalLifetime.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/provider-source-guard-20261107/actual/rebuild/2008-06/native-classes/DecalLifetime.cpp` · root `b52aa15feaea5a0c`
 
 </details>
@@ -1152,6 +1181,7 @@ Compatibility path for `App/src/v8datamodel/DecalLifetime.cpp`; compile either p
 <summary>native-classes/IRenderableLifetime.cpp — candidate-only; 1 content versions</summary>
 
 **`3322d64fb40c`** · `native-classes/IRenderableLifetime.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/IRenderableLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/drafts/files/f35dc00415455d4d843b5b75b5104f5360755fb22b74f0900441e592ab060937/rebuild/2008-06/native-classes/IRenderableLifetime.cpp)
 - draft · colingsnyder2-ux · [native-classes/IRenderableLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/drafts/files/f35dc00415455d4d843b5b75b5104f5360755fb22b74f0900441e592ab060937/rebuild/2008-06/native-classes/IRenderableLifetime.cpp)
 - draft · colingsnyder2-ux · [native-classes/IRenderableLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/f35dc00415455d4d843b5b75b5104f5360755fb22b74f0900441e592ab060937/rebuild/2008-06/native-classes/IRenderableLifetime.cpp)
 - draft · colingsnyder2-ux · [native-classes/IRenderableLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/f35dc00415455d4d843b5b75b5104f5360755fb22b74f0900441e592ab060937/rebuild/2008-06/native-classes/IRenderableLifetime.cpp)

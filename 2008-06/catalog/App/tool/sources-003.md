@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/tool/MegaDragger.h`.
 
 **`18a745cd4569`** · `App/include/tool/MegaDragger.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/include/tool/MegaDragger.h)
 - public · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/include/tool/MegaDragger.h)
 - public · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/include/tool/MegaDragger.h)
 - public · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/include/tool/MegaDragger.h)
@@ -20,6 +21,7 @@ Earlier paths and their donor versions: `native-headers/tool/MegaDragger.h`.
 </details>
 
 **`2f4a05ab5827`** · `App/include/tool/MegaDragger.h` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/include/tool/MegaDragger.h)
 - canonical · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/include/tool/MegaDragger.h)
 - canonical · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/include/tool/MegaDragger.h)
 - canonical · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/include/tool/MegaDragger.h)
@@ -48,7 +50,7 @@ Earlier paths and their donor versions: `native-headers/tool/MegaDragger.h`.
 - canonical · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/tool/MegaDragger.h)
 - canonical · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/tool/MegaDragger.h)
 
-<details><summary>46 retained local origins</summary>
+<details><summary>50 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
@@ -88,6 +90,10 @@ Earlier paths and their donor versions: `native-headers/tool/MegaDragger.h`.
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/App/include/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/App/include/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/App/include/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/App/include/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/App/include/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/App/include/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/App/include/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/App/include/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
@@ -250,6 +256,8 @@ Earlier paths and their donor versions: `native-headers/tool/MegaDragger.h`.
 </details>
 
 **`ef815671980a`** · `native-headers/tool/MegaDragger.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/tool/MegaDragger.h)
+- canonical · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h)
 - public · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/tool/MegaDragger.h)
 - canonical · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h)
 - public · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/tool/MegaDragger.h)
@@ -305,7 +313,7 @@ Earlier paths and their donor versions: `native-headers/tool/MegaDragger.h`.
 - public · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/tool/MegaDragger.h)
 - canonical · colingsnyder2-ux · [tool/MegaDragger.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h)
 
-<details><summary>49 retained local origins</summary>
+<details><summary>53 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
@@ -346,6 +354,10 @@ Earlier paths and their donor versions: `native-headers/tool/MegaDragger.h`.
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/tool/MegaDragger.h` · root `b52aa15feaea5a0c`
@@ -367,6 +379,7 @@ Earlier paths and their donor versions: `native-headers/tool/MegaDragger.h`.
 Earlier paths and their donor versions: `native-headers/tool/ModelTool.h`.
 
 **`72d3dde8c13e`** · `App/include/tool/ModelTool.h` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/ModelTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/include/tool/ModelTool.h)
 - canonical · colingsnyder2-ux · [tool/ModelTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/include/tool/ModelTool.h)
 - canonical · colingsnyder2-ux · [tool/ModelTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/include/tool/ModelTool.h)
 - canonical · colingsnyder2-ux · [tool/ModelTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/include/tool/ModelTool.h)
@@ -395,7 +408,7 @@ Earlier paths and their donor versions: `native-headers/tool/ModelTool.h`.
 - canonical · colingsnyder2-ux · [tool/ModelTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/tool/ModelTool.h)
 - canonical · colingsnyder2-ux · [tool/ModelTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/tool/ModelTool.h)
 
-<details><summary>46 retained local origins</summary>
+<details><summary>50 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/tool/ModelTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/tool/ModelTool.h` · root `b52aa15feaea5a0c`
@@ -435,6 +448,10 @@ Earlier paths and their donor versions: `native-headers/tool/ModelTool.h`.
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/App/include/tool/ModelTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/App/include/tool/ModelTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/App/include/tool/ModelTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/App/include/tool/ModelTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/App/include/tool/ModelTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/App/include/tool/ModelTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/App/include/tool/ModelTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/tool/ModelTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/tool/ModelTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/App/include/tool/ModelTool.h` · root `b52aa15feaea5a0c`
@@ -447,6 +464,7 @@ Earlier paths and their donor versions: `native-headers/tool/ModelTool.h`.
 </details>
 
 **`aea7ec1b9277`** · `App/include/tool/ModelTool.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/ModelTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/include/tool/ModelTool.h)
 - public · colingsnyder2-ux · [tool/ModelTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/include/tool/ModelTool.h)
 - public · colingsnyder2-ux · [tool/ModelTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/include/tool/ModelTool.h)
 - public · colingsnyder2-ux · [tool/ModelTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/include/tool/ModelTool.h)
@@ -554,6 +572,8 @@ Earlier paths and their donor versions: `native-headers/tool/ModelTool.h`.
 </details>
 
 **`77b30e58b4b4`** · `native-headers/tool/ModelTool.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/ModelTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/tool/ModelTool.h)
+- canonical · colingsnyder2-ux · [tool/ModelTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/tool/ModelTool.h)
 - public · colingsnyder2-ux · [tool/ModelTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/tool/ModelTool.h)
 - canonical · colingsnyder2-ux · [tool/ModelTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/tool/ModelTool.h)
 - public · colingsnyder2-ux · [tool/ModelTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/tool/ModelTool.h)
@@ -609,7 +629,7 @@ Earlier paths and their donor versions: `native-headers/tool/ModelTool.h`.
 - public · colingsnyder2-ux · [tool/ModelTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/tool/ModelTool.h)
 - canonical · colingsnyder2-ux · [tool/ModelTool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/tool/ModelTool.h)
 
-<details><summary>49 retained local origins</summary>
+<details><summary>53 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/tool/ModelTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/tool/ModelTool.h` · root `b52aa15feaea5a0c`
@@ -650,6 +670,10 @@ Earlier paths and their donor versions: `native-headers/tool/ModelTool.h`.
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/tool/ModelTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/tool/ModelTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/tool/ModelTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/tool/ModelTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/tool/ModelTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/tool/ModelTool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/tool/ModelTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/ModelTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/tool/ModelTool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/tool/ModelTool.h` · root `b52aa15feaea5a0c`
@@ -726,6 +750,7 @@ Earlier paths and their donor versions: `native-headers/tool/ModelTool.h`.
 Earlier paths and their donor versions: `native-headers/tool/ModelTools.h`.
 
 **`5558e8b25ee5`** · `App/include/tool/ModelTools.h` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/include/tool/ModelTools.h)
 - canonical · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/include/tool/ModelTools.h)
 - canonical · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/include/tool/ModelTools.h)
 - canonical · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/include/tool/ModelTools.h)
@@ -754,7 +779,7 @@ Earlier paths and their donor versions: `native-headers/tool/ModelTools.h`.
 - canonical · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/tool/ModelTools.h)
 - canonical · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/tool/ModelTools.h)
 
-<details><summary>46 retained local origins</summary>
+<details><summary>50 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/tool/ModelTools.h` · root `b52aa15feaea5a0c`
@@ -794,6 +819,10 @@ Earlier paths and their donor versions: `native-headers/tool/ModelTools.h`.
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/App/include/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/App/include/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/App/include/tool/ModelTools.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/App/include/tool/ModelTools.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/App/include/tool/ModelTools.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/App/include/tool/ModelTools.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/App/include/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/App/include/tool/ModelTools.h` · root `b52aa15feaea5a0c`
@@ -840,6 +869,7 @@ Earlier paths and their donor versions: `native-headers/tool/ModelTools.h`.
 - public · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/tool/ModelTools.h)
 
 **`dedc5124a3d6`** · `App/include/tool/ModelTools.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/include/tool/ModelTools.h)
 - public · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/include/tool/ModelTools.h)
 - public · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/include/tool/ModelTools.h)
 - public · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/include/tool/ModelTools.h)
@@ -960,6 +990,8 @@ Earlier paths and their donor versions: `native-headers/tool/ModelTools.h`.
 - public · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/tool/ModelTools.h)
 
 **`d1a7fc63545a`** · `native-headers/tool/ModelTools.h` · proof not assessed
+- public · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/tool/ModelTools.h)
+- canonical · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/tool/ModelTools.h)
 - public · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/tool/ModelTools.h)
 - canonical · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/tool/ModelTools.h)
 - public · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/tool/ModelTools.h)
@@ -1015,7 +1047,7 @@ Earlier paths and their donor versions: `native-headers/tool/ModelTools.h`.
 - public · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/tool/ModelTools.h)
 - canonical · colingsnyder2-ux · [tool/ModelTools.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/tool/ModelTools.h)
 
-<details><summary>49 retained local origins</summary>
+<details><summary>53 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/tool/ModelTools.h` · root `b52aa15feaea5a0c`
@@ -1056,6 +1088,10 @@ Earlier paths and their donor versions: `native-headers/tool/ModelTools.h`.
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/tool/ModelTools.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/tool/ModelTools.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/tool/ModelTools.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/tool/ModelTools.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/tool/ModelTools.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/tool/ModelTools.h` · root `b52aa15feaea5a0c`

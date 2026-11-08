@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/gui/ArrowPanel.h`.
 
 **`095b55f913d6`** · `App/include/gui/ArrowPanel.h` · proof not assessed
+- canonical · colingsnyder2-ux · [gui/ArrowPanel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/include/gui/ArrowPanel.h)
 - canonical · colingsnyder2-ux · [gui/ArrowPanel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/include/gui/ArrowPanel.h)
 - canonical · colingsnyder2-ux · [gui/ArrowPanel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/include/gui/ArrowPanel.h)
 - canonical · colingsnyder2-ux · [gui/ArrowPanel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/include/gui/ArrowPanel.h)
@@ -34,7 +35,7 @@ Earlier paths and their donor versions: `native-headers/gui/ArrowPanel.h`.
 - canonical · colingsnyder2-ux · [gui/ArrowPanel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/gui/ArrowPanel.h)
 - canonical · colingsnyder2-ux · [gui/ArrowPanel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/gui/ArrowPanel.h)
 
-<details><summary>42 retained local origins</summary>
+<details><summary>46 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
@@ -70,6 +71,10 @@ Earlier paths and their donor versions: `native-headers/gui/ArrowPanel.h`.
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/App/include/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/App/include/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/App/include/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/App/include/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/App/include/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/App/include/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/App/include/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/App/include/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
@@ -82,6 +87,7 @@ Earlier paths and their donor versions: `native-headers/gui/ArrowPanel.h`.
 </details>
 
 **`349e9d5732ff`** · `App/include/gui/ArrowPanel.h` · proof not assessed
+- public · colingsnyder2-ux · [gui/ArrowPanel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/include/gui/ArrowPanel.h)
 - public · colingsnyder2-ux · [gui/ArrowPanel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/include/gui/ArrowPanel.h)
 - public · colingsnyder2-ux · [gui/ArrowPanel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/include/gui/ArrowPanel.h)
 - public · colingsnyder2-ux · [gui/ArrowPanel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/include/gui/ArrowPanel.h)
@@ -218,6 +224,8 @@ Earlier paths and their donor versions: `native-headers/gui/ArrowPanel.h`.
 </details>
 
 **`cfbcdac0a7fb`** · `native-headers/gui/ArrowPanel.h` · proof not assessed
+- public · colingsnyder2-ux · [gui/ArrowPanel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/gui/ArrowPanel.h)
+- canonical · colingsnyder2-ux · [gui/ArrowPanel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/gui/ArrowPanel.h)
 - public · colingsnyder2-ux · [gui/ArrowPanel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/gui/ArrowPanel.h)
 - canonical · colingsnyder2-ux · [gui/ArrowPanel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/gui/ArrowPanel.h)
 - public · colingsnyder2-ux · [gui/ArrowPanel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/gui/ArrowPanel.h)
@@ -269,7 +277,7 @@ Earlier paths and their donor versions: `native-headers/gui/ArrowPanel.h`.
 - public · colingsnyder2-ux · [gui/ArrowPanel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/gui/ArrowPanel.h)
 - canonical · colingsnyder2-ux · [gui/ArrowPanel.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/gui/ArrowPanel.h)
 
-<details><summary>45 retained local origins</summary>
+<details><summary>49 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
@@ -306,6 +314,10 @@ Earlier paths and their donor versions: `native-headers/gui/ArrowPanel.h`.
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/gui/ArrowPanel.h` · root `b52aa15feaea5a0c`
@@ -348,6 +360,7 @@ Earlier paths and their donor versions: `native-headers/gui/ArrowPanel.h`.
 Earlier paths and their donor versions: `native-headers/gui/ChatOutput.h`.
 
 **`6985adc9b3cd`** · `App/include/gui/ChatOutput.h` · proof not assessed
+- public · colingsnyder2-ux · [gui/ChatOutput.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/include/gui/ChatOutput.h)
 - public · colingsnyder2-ux · [gui/ChatOutput.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/include/gui/ChatOutput.h)
 - public · colingsnyder2-ux · [gui/ChatOutput.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/include/gui/ChatOutput.h)
 - public · colingsnyder2-ux · [gui/ChatOutput.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/include/gui/ChatOutput.h)
@@ -392,6 +405,7 @@ Earlier paths and their donor versions: `native-headers/gui/ChatOutput.h`.
 </details>
 
 **`c1d831969a62`** · `App/include/gui/ChatOutput.h` · proof not assessed
+- canonical · colingsnyder2-ux · [gui/ChatOutput.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/include/gui/ChatOutput.h)
 - canonical · colingsnyder2-ux · [gui/ChatOutput.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/include/gui/ChatOutput.h)
 - canonical · colingsnyder2-ux · [gui/ChatOutput.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/include/gui/ChatOutput.h)
 - canonical · colingsnyder2-ux · [gui/ChatOutput.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/include/gui/ChatOutput.h)
@@ -418,7 +432,7 @@ Earlier paths and their donor versions: `native-headers/gui/ChatOutput.h`.
 - canonical · colingsnyder2-ux · [gui/ChatOutput.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/gui/ChatOutput.h)
 - canonical · colingsnyder2-ux · [gui/ChatOutput.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/gui/ChatOutput.h)
 
-<details><summary>42 retained local origins</summary>
+<details><summary>46 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
@@ -454,6 +468,10 @@ Earlier paths and their donor versions: `native-headers/gui/ChatOutput.h`.
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/App/include/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/App/include/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/App/include/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/App/include/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/App/include/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/App/include/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/App/include/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/App/include/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
@@ -520,6 +538,8 @@ Earlier paths and their donor versions: `native-headers/gui/ChatOutput.h`.
 </details>
 
 **`bed0a2f3ed2f`** · `native-headers/gui/ChatOutput.h` · proof not assessed
+- public · colingsnyder2-ux · [gui/ChatOutput.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/gui/ChatOutput.h)
+- canonical · colingsnyder2-ux · [gui/ChatOutput.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/gui/ChatOutput.h)
 - public · colingsnyder2-ux · [gui/ChatOutput.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/gui/ChatOutput.h)
 - canonical · colingsnyder2-ux · [gui/ChatOutput.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/gui/ChatOutput.h)
 - public · colingsnyder2-ux · [gui/ChatOutput.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/gui/ChatOutput.h)
@@ -571,7 +591,7 @@ Earlier paths and their donor versions: `native-headers/gui/ChatOutput.h`.
 - public · colingsnyder2-ux · [gui/ChatOutput.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/gui/ChatOutput.h)
 - canonical · colingsnyder2-ux · [gui/ChatOutput.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/gui/ChatOutput.h)
 
-<details><summary>45 retained local origins</summary>
+<details><summary>49 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
@@ -608,6 +628,10 @@ Earlier paths and their donor versions: `native-headers/gui/ChatOutput.h`.
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/gui/ChatOutput.h` · root `b52aa15feaea5a0c`
@@ -688,6 +712,7 @@ Earlier paths and their donor versions: `native-headers/gui/ChatOutput.h`.
 Earlier paths and their donor versions: `native-headers/gui/EquationDisplay.h`.
 
 **`0bdf4798fe08`** · `App/include/gui/EquationDisplay.h` · proof not assessed
+- public · colingsnyder2-ux · [gui/EquationDisplay.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/include/gui/EquationDisplay.h)
 - public · colingsnyder2-ux · [gui/EquationDisplay.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/include/gui/EquationDisplay.h)
 - public · colingsnyder2-ux · [gui/EquationDisplay.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/include/gui/EquationDisplay.h)
 - public · colingsnyder2-ux · [gui/EquationDisplay.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/include/gui/EquationDisplay.h)
@@ -732,6 +757,7 @@ Earlier paths and their donor versions: `native-headers/gui/EquationDisplay.h`.
 - public · colingsnyder2-ux · [gui/EquationDisplay.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/gui/EquationDisplay.h)
 
 **`de2062619c02`** · `App/include/gui/EquationDisplay.h` · proof not assessed
+- canonical · colingsnyder2-ux · [gui/EquationDisplay.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/include/gui/EquationDisplay.h)
 - canonical · colingsnyder2-ux · [gui/EquationDisplay.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/include/gui/EquationDisplay.h)
 - canonical · colingsnyder2-ux · [gui/EquationDisplay.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/include/gui/EquationDisplay.h)
 - canonical · colingsnyder2-ux · [gui/EquationDisplay.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/include/gui/EquationDisplay.h)
@@ -758,7 +784,7 @@ Earlier paths and their donor versions: `native-headers/gui/EquationDisplay.h`.
 - canonical · colingsnyder2-ux · [gui/EquationDisplay.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/gui/EquationDisplay.h)
 - canonical · colingsnyder2-ux · [gui/EquationDisplay.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/gui/EquationDisplay.h)
 
-<details><summary>42 retained local origins</summary>
+<details><summary>46 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
@@ -794,6 +820,10 @@ Earlier paths and their donor versions: `native-headers/gui/EquationDisplay.h`.
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/App/include/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/App/include/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/App/include/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/App/include/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/App/include/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/App/include/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/App/include/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/App/include/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
@@ -835,6 +865,8 @@ Earlier paths and their donor versions: `native-headers/gui/EquationDisplay.h`.
 </details>
 
 **`a014cf282cb3`** · `native-headers/gui/EquationDisplay.h` · proof not assessed
+- public · colingsnyder2-ux · [gui/EquationDisplay.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/gui/EquationDisplay.h)
+- canonical · colingsnyder2-ux · [gui/EquationDisplay.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/gui/EquationDisplay.h)
 - public · colingsnyder2-ux · [gui/EquationDisplay.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/gui/EquationDisplay.h)
 - canonical · colingsnyder2-ux · [gui/EquationDisplay.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/gui/EquationDisplay.h)
 - public · colingsnyder2-ux · [gui/EquationDisplay.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/gui/EquationDisplay.h)
@@ -886,7 +918,7 @@ Earlier paths and their donor versions: `native-headers/gui/EquationDisplay.h`.
 - public · colingsnyder2-ux · [gui/EquationDisplay.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/gui/EquationDisplay.h)
 - canonical · colingsnyder2-ux · [gui/EquationDisplay.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/gui/EquationDisplay.h)
 
-<details><summary>45 retained local origins</summary>
+<details><summary>49 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
@@ -923,6 +955,10 @@ Earlier paths and their donor versions: `native-headers/gui/EquationDisplay.h`.
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/gui/EquationDisplay.h` · root `b52aa15feaea5a0c`

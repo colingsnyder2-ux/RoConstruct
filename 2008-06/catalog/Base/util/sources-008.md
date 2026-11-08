@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/util/NativeContentProvider.h`.
 
 **`3ded6610fea4`** · `Base/include/util/NativeContentProvider.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Base/include/util/NativeContentProvider.h)
 - canonical · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Base/include/util/NativeContentProvider.h)
 - canonical · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Base/include/util/NativeContentProvider.h)
 - canonical · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Base/include/util/NativeContentProvider.h)
@@ -36,7 +37,7 @@ Earlier paths and their donor versions: `native-headers/util/NativeContentProvid
 - canonical · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Base/include/util/NativeContentProvider.h)
 - canonical · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Base/include/util/NativeContentProvider.h)
 
-<details><summary>46 retained local origins</summary>
+<details><summary>50 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Base/include/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Base/include/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
@@ -76,6 +77,10 @@ Earlier paths and their donor versions: `native-headers/util/NativeContentProvid
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/Base/include/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/Base/include/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Base/include/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Base/include/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/Base/include/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Base/include/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Base/include/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Base/include/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Base/include/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/Base/include/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
@@ -88,6 +93,7 @@ Earlier paths and their donor versions: `native-headers/util/NativeContentProvid
 </details>
 
 **`4674f3056b3e`** · `Base/include/util/NativeContentProvider.h` · proof not assessed
+- public · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Base/include/util/NativeContentProvider.h)
 - public · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Base/include/util/NativeContentProvider.h)
 - public · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Base/include/util/NativeContentProvider.h)
 - public · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Base/include/util/NativeContentProvider.h)
@@ -210,6 +216,8 @@ Earlier paths and their donor versions: `native-headers/util/NativeContentProvid
 </details>
 
 **`735f79ece100`** · `native-headers/util/NativeContentProvider.h` · proof not assessed
+- public · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/util/NativeContentProvider.h)
+- canonical · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/util/NativeContentProvider.h)
 - public · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/util/NativeContentProvider.h)
 - canonical · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/util/NativeContentProvider.h)
 - public · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/util/NativeContentProvider.h)
@@ -265,7 +273,7 @@ Earlier paths and their donor versions: `native-headers/util/NativeContentProvid
 - public · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/util/NativeContentProvider.h)
 - canonical · colingsnyder2-ux · [util/NativeContentProvider.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/util/NativeContentProvider.h)
 
-<details><summary>49 retained local origins</summary>
+<details><summary>53 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
@@ -306,6 +314,10 @@ Earlier paths and their donor versions: `native-headers/util/NativeContentProvid
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/util/NativeContentProvider.h` · root `b52aa15feaea5a0c`
@@ -393,6 +405,7 @@ Earlier paths and their donor versions: `native-headers/util/Object.h`.
 - public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Base/include/util/Object.h)
 
 **`e6e253dd98ae`** · `Base/include/util/Object.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Base/include/util/Object.h)
 - canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Base/include/util/Object.h)
 - canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Base/include/util/Object.h)
 - canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Base/include/util/Object.h)
@@ -421,7 +434,7 @@ Earlier paths and their donor versions: `native-headers/util/Object.h`.
 - canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Base/include/util/Object.h)
 - canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Base/include/util/Object.h)
 
-<details><summary>46 retained local origins</summary>
+<details><summary>50 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Base/include/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Base/include/util/Object.h` · root `b52aa15feaea5a0c`
@@ -461,6 +474,10 @@ Earlier paths and their donor versions: `native-headers/util/Object.h`.
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/Base/include/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/Base/include/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Base/include/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Base/include/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/Base/include/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Base/include/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Base/include/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Base/include/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Base/include/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/Base/include/util/Object.h` · root `b52aa15feaea5a0c`
@@ -473,6 +490,7 @@ Earlier paths and their donor versions: `native-headers/util/Object.h`.
 </details>
 
 **`e6eb9b75f648`** · `Base/include/util/Object.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Base/include/util/Object.h)
 - public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Base/include/util/Object.h)
 - public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Base/include/util/Object.h)
 - public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Base/include/util/Object.h)
@@ -510,6 +528,8 @@ Earlier paths and their donor versions: `native-headers/util/Object.h`.
 </details>
 
 **`55f58488c7a0`** · `native-headers/util/Object.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/util/Object.h)
+- canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/util/Object.h)
 - public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/util/Object.h)
 - canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/util/Object.h)
 - public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/util/Object.h)
@@ -565,7 +585,7 @@ Earlier paths and their donor versions: `native-headers/util/Object.h`.
 - public · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/util/Object.h)
 - canonical · colingsnyder2-ux · [util/Object.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/util/Object.h)
 
-<details><summary>49 retained local origins</summary>
+<details><summary>53 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/util/Object.h` · root `b52aa15feaea5a0c`
@@ -606,6 +626,10 @@ Earlier paths and their donor versions: `native-headers/util/Object.h`.
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/util/Object.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/util/Object.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/util/Object.h` · root `b52aa15feaea5a0c`
@@ -778,6 +802,7 @@ Earlier paths and their donor versions: `native-headers/util/Object.h`.
 Earlier paths and their donor versions: `native-headers/util/Profiling.h`.
 
 **`54ac6c70ad16`** · `Base/include/util/Profiling.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Profiling.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Base/include/util/Profiling.h)
 - public · colingsnyder2-ux · [util/Profiling.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Base/include/util/Profiling.h)
 - public · colingsnyder2-ux · [util/Profiling.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Base/include/util/Profiling.h)
 - public · colingsnyder2-ux · [util/Profiling.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Base/include/util/Profiling.h)
@@ -790,6 +815,7 @@ Earlier paths and their donor versions: `native-headers/util/Profiling.h`.
 </details>
 
 **`8a23728d5270`** · `Base/include/util/Profiling.h` · proof not assessed
+- canonical · colingsnyder2-ux · [util/Profiling.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Base/include/util/Profiling.h)
 - canonical · colingsnyder2-ux · [util/Profiling.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Base/include/util/Profiling.h)
 - canonical · colingsnyder2-ux · [util/Profiling.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Base/include/util/Profiling.h)
 - canonical · colingsnyder2-ux · [util/Profiling.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Base/include/util/Profiling.h)
@@ -818,7 +844,7 @@ Earlier paths and their donor versions: `native-headers/util/Profiling.h`.
 - canonical · colingsnyder2-ux · [util/Profiling.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Base/include/util/Profiling.h)
 - canonical · colingsnyder2-ux · [util/Profiling.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Base/include/util/Profiling.h)
 
-<details><summary>46 retained local origins</summary>
+<details><summary>50 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/Base/include/util/Profiling.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/Base/include/util/Profiling.h` · root `b52aa15feaea5a0c`
@@ -858,6 +884,10 @@ Earlier paths and their donor versions: `native-headers/util/Profiling.h`.
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/Base/include/util/Profiling.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/Base/include/util/Profiling.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Base/include/util/Profiling.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Base/include/util/Profiling.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/Base/include/util/Profiling.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Base/include/util/Profiling.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Base/include/util/Profiling.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/Base/include/util/Profiling.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/Base/include/util/Profiling.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/Base/include/util/Profiling.h` · root `b52aa15feaea5a0c`
@@ -904,6 +934,8 @@ Earlier paths and their donor versions: `native-headers/util/Profiling.h`.
 </details>
 
 **`1d91beb7eaf5`** · `native-headers/util/Profiling.h` · proof not assessed
+- public · colingsnyder2-ux · [util/Profiling.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/util/Profiling.h)
+- canonical · colingsnyder2-ux · [util/Profiling.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/util/Profiling.h)
 - public · colingsnyder2-ux · [util/Profiling.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/util/Profiling.h)
 - canonical · colingsnyder2-ux · [util/Profiling.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/util/Profiling.h)
 - public · colingsnyder2-ux · [util/Profiling.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/util/Profiling.h)
@@ -959,7 +991,7 @@ Earlier paths and their donor versions: `native-headers/util/Profiling.h`.
 - public · colingsnyder2-ux · [util/Profiling.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/util/Profiling.h)
 - canonical · colingsnyder2-ux · [util/Profiling.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/util/Profiling.h)
 
-<details><summary>49 retained local origins</summary>
+<details><summary>53 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/util/Profiling.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/util/Profiling.h` · root `b52aa15feaea5a0c`
@@ -1000,6 +1032,10 @@ Earlier paths and their donor versions: `native-headers/util/Profiling.h`.
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/util/Profiling.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/util/Profiling.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/util/Profiling.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/util/Profiling.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/util/Profiling.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/util/Profiling.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/util/Profiling.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/util/Profiling.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/util/Profiling.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/util/Profiling.h` · root `b52aa15feaea5a0c`

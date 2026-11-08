@@ -71,6 +71,8 @@ Compatibility path for `App/src/tool/MegaDraggerMovement.cpp`; compile either pa
 </details>
 
 **`96b5348257ea`** · `native-classes/MegaDraggerMovement.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MegaDraggerMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/MegaDraggerMovement.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MegaDraggerMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-classes/MegaDraggerMovement.cpp)
 - public · colingsnyder2-ux · [native-classes/MegaDraggerMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/MegaDraggerMovement.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MegaDraggerMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/MegaDraggerMovement.cpp)
 - public · colingsnyder2-ux · [native-classes/MegaDraggerMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/MegaDraggerMovement.cpp)
@@ -132,8 +134,10 @@ Compatibility path for `App/src/tool/MegaDraggerMovement.cpp`; compile either pa
 - public · colingsnyder2-ux · [native-classes/MegaDraggerMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/MegaDraggerMovement.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MegaDraggerMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/MegaDraggerMovement.cpp)
 
-<details><summary>1 retained local origins</summary>
+<details><summary>3 retained local origins</summary>
 
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-classes/MegaDraggerMovement.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-classes/MegaDraggerMovement.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/provider-source-guard-20261107/actual/rebuild/2008-06/native-classes/MegaDraggerMovement.cpp` · root `b52aa15feaea5a0c`
 
 </details>
@@ -165,6 +169,8 @@ Compatibility path for `App/src/tool/MegaDraggerMovement.cpp`; compile either pa
 <summary>native-classes/MenuSpacer.cpp — candidate-only; 1 content versions</summary>
 
 **`f914c31ed678`** · `native-classes/MenuSpacer.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/MenuSpacer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/drafts/files/5ffcb4abdce10dd9139a9a1e1593d66996a40e47058d0083e8ebf98a26107d59/rebuild/2008-06/native-classes/MenuSpacer.cpp)
+- draft · colingsnyder2-ux · [native-classes/MenuSpacer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/drafts/files/ca804816996c34856987bd13d98f2bd3de599b3dfed573d77fe641674880ee5d/rebuild/2008-06/native-classes/MenuSpacer.cpp)
 - draft · colingsnyder2-ux · [native-classes/MenuSpacer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/drafts/files/5ffcb4abdce10dd9139a9a1e1593d66996a40e47058d0083e8ebf98a26107d59/rebuild/2008-06/native-classes/MenuSpacer.cpp)
 - draft · colingsnyder2-ux · [native-classes/MenuSpacer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/drafts/files/ca804816996c34856987bd13d98f2bd3de599b3dfed573d77fe641674880ee5d/rebuild/2008-06/native-classes/MenuSpacer.cpp)
 - draft · colingsnyder2-ux · [native-classes/MenuSpacer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/5ffcb4abdce10dd9139a9a1e1593d66996a40e47058d0083e8ebf98a26107d59/rebuild/2008-06/native-classes/MenuSpacer.cpp)
@@ -260,10 +266,11 @@ Compatibility path for `App/src/tool/MegaDraggerMovement.cpp`; compile either pa
 <summary>native-classes/MergeBinder.cpp — candidate-only; 1 content versions</summary>
 
 **`728793ffcfc0`** · `native-classes/MergeBinder.cpp` · proof not assessed
-- draft · colingsnyder2-ux · [native-classes/MergeBinder.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/MergeBinder.cpp)
-- draft · colingsnyder2-ux · [native-classes/MergeBinder.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/MergeBinder.cpp)
+- draft · colingsnyder2-ux · [native-classes/MergeBinder.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/MergeBinder.cpp)
 - fork · mewpokemons · [native-classes/MergeBinder.cpp](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-classes/MergeBinder.cpp)
 - fork · mewpokemons · [native-classes/MergeBinder.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/MergeBinder.cpp)
+- draft · colingsnyder2-ux · [native-classes/MergeBinder.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/MergeBinder.cpp)
+- draft · colingsnyder2-ux · [native-classes/MergeBinder.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/MergeBinder.cpp)
 - draft · colingsnyder2-ux · [native-classes/MergeBinder.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/MergeBinder.cpp)
 - draft · colingsnyder2-ux · [native-classes/MergeBinder.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/MergeBinder.cpp)
 - draft · colingsnyder2-ux · [native-classes/MergeBinder.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/MergeBinder.cpp)
@@ -392,6 +399,8 @@ Compatibility path for `App/src/v8datamodel/Message.cpp`; compile either path, n
 </details>
 
 **`9d6a3c91c119`** · `native-classes/Message.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/Message.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/Message.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Message.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-classes/Message.cpp)
 - public · colingsnyder2-ux · [native-classes/Message.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/Message.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Message.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/Message.cpp)
 - public · colingsnyder2-ux · [native-classes/Message.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/Message.cpp)
@@ -453,8 +462,10 @@ Compatibility path for `App/src/v8datamodel/Message.cpp`; compile either path, n
 - public · colingsnyder2-ux · [native-classes/Message.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/Message.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Message.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/Message.cpp)
 
-<details><summary>1 retained local origins</summary>
+<details><summary>3 retained local origins</summary>
 
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-classes/Message.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-classes/Message.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/provider-source-guard-20261107/actual/rebuild/2008-06/native-classes/Message.cpp` · root `b52aa15feaea5a0c`
 
 </details>
@@ -570,6 +581,8 @@ Compatibility path for `App/src/reflection/MetadataClass.cpp`; compile either pa
 </details>
 
 **`6f1d5f8eefb5`** · `native-classes/MetadataClass.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MetadataClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/MetadataClass.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MetadataClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-classes/MetadataClass.cpp)
 - public · colingsnyder2-ux · [native-classes/MetadataClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/MetadataClass.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MetadataClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/MetadataClass.cpp)
 - public · colingsnyder2-ux · [native-classes/MetadataClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/MetadataClass.cpp)
@@ -631,8 +644,10 @@ Compatibility path for `App/src/reflection/MetadataClass.cpp`; compile either pa
 - public · colingsnyder2-ux · [native-classes/MetadataClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/MetadataClass.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MetadataClass.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/MetadataClass.cpp)
 
-<details><summary>1 retained local origins</summary>
+<details><summary>3 retained local origins</summary>
 
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-classes/MetadataClass.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-classes/MetadataClass.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/provider-source-guard-20261107/actual/rebuild/2008-06/native-classes/MetadataClass.cpp` · root `b52aa15feaea5a0c`
 
 </details>
@@ -673,6 +688,8 @@ Compatibility path for `App/src/reflection/MetadataClassNames.cpp`; compile eith
 </details>
 
 **`64f4f6958850`** · `native-classes/MetadataClassNames.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MetadataClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/MetadataClassNames.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MetadataClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-classes/MetadataClassNames.cpp)
 - public · colingsnyder2-ux · [native-classes/MetadataClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/MetadataClassNames.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MetadataClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/MetadataClassNames.cpp)
 - public · colingsnyder2-ux · [native-classes/MetadataClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/MetadataClassNames.cpp)
@@ -734,8 +751,10 @@ Compatibility path for `App/src/reflection/MetadataClassNames.cpp`; compile eith
 - public · colingsnyder2-ux · [native-classes/MetadataClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/MetadataClassNames.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MetadataClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/MetadataClassNames.cpp)
 
-<details><summary>1 retained local origins</summary>
+<details><summary>3 retained local origins</summary>
 
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-classes/MetadataClassNames.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-classes/MetadataClassNames.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/provider-source-guard-20261107/actual/rebuild/2008-06/native-classes/MetadataClassNames.cpp` · root `b52aa15feaea5a0c`
 
 </details>
@@ -862,6 +881,8 @@ Compatibility path for `App/src/reflection/MetadataClassesLookup.cpp`; compile e
 </details>
 
 **`844cdc13281c`** · `native-classes/MetadataClassesLookup.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MetadataClassesLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/MetadataClassesLookup.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MetadataClassesLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-classes/MetadataClassesLookup.cpp)
 - public · colingsnyder2-ux · [native-classes/MetadataClassesLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/MetadataClassesLookup.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MetadataClassesLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/MetadataClassesLookup.cpp)
 - public · colingsnyder2-ux · [native-classes/MetadataClassesLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/MetadataClassesLookup.cpp)
@@ -923,8 +944,10 @@ Compatibility path for `App/src/reflection/MetadataClassesLookup.cpp`; compile e
 - public · colingsnyder2-ux · [native-classes/MetadataClassesLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/MetadataClassesLookup.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MetadataClassesLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/MetadataClassesLookup.cpp)
 
-<details><summary>1 retained local origins</summary>
+<details><summary>3 retained local origins</summary>
 
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-classes/MetadataClassesLookup.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-classes/MetadataClassesLookup.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/provider-source-guard-20261107/actual/rebuild/2008-06/native-classes/MetadataClassesLookup.cpp` · root `b52aa15feaea5a0c`
 
 </details>
@@ -1029,6 +1052,8 @@ Compatibility path for `App/src/reflection/MetadataClassesRegister.cpp`; compile
 </details>
 
 **`8123d9aa4059`** · `native-classes/MetadataClassesRegister.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MetadataClassesRegister.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/MetadataClassesRegister.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MetadataClassesRegister.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-classes/MetadataClassesRegister.cpp)
 - public · colingsnyder2-ux · [native-classes/MetadataClassesRegister.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/MetadataClassesRegister.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MetadataClassesRegister.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/MetadataClassesRegister.cpp)
 - public · colingsnyder2-ux · [native-classes/MetadataClassesRegister.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/MetadataClassesRegister.cpp)
@@ -1090,8 +1115,10 @@ Compatibility path for `App/src/reflection/MetadataClassesRegister.cpp`; compile
 - public · colingsnyder2-ux · [native-classes/MetadataClassesRegister.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/MetadataClassesRegister.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MetadataClassesRegister.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/MetadataClassesRegister.cpp)
 
-<details><summary>1 retained local origins</summary>
+<details><summary>3 retained local origins</summary>
 
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-classes/MetadataClassesRegister.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-classes/MetadataClassesRegister.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/provider-source-guard-20261107/actual/rebuild/2008-06/native-classes/MetadataClassesRegister.cpp` · root `b52aa15feaea5a0c`
 
 </details>

@@ -85,6 +85,8 @@ Compatibility path for `Unclassified/src/NameNull.cpp`; compile either path, nev
 </details>
 
 **`e307d11ac3d1`** · `native-classes/NameNull.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/NameNull.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/NameNull.cpp)
+- canonical · colingsnyder2-ux · [native-classes/NameNull.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-classes/NameNull.cpp)
 - public · colingsnyder2-ux · [native-classes/NameNull.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/NameNull.cpp)
 - canonical · colingsnyder2-ux · [native-classes/NameNull.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/NameNull.cpp)
 - public · colingsnyder2-ux · [native-classes/NameNull.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/NameNull.cpp)
@@ -144,8 +146,10 @@ Compatibility path for `Unclassified/src/NameNull.cpp`; compile either path, nev
 - public · colingsnyder2-ux · [native-classes/NameNull.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/NameNull.cpp)
 - canonical · colingsnyder2-ux · [native-classes/NameNull.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/NameNull.cpp)
 
-<details><summary>1 retained local origins</summary>
+<details><summary>3 retained local origins</summary>
 
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-classes/NameNull.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-classes/NameNull.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/provider-source-guard-20261107/actual/rebuild/2008-06/native-classes/NameNull.cpp` · root `b52aa15feaea5a0c`
 
 </details>
@@ -227,6 +231,8 @@ Compatibility path for `Unclassified/src/NativeClassNames.cpp`; compile either p
 </details>
 
 **`61893c1c3484`** · `native-classes/NativeClassNames.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/NativeClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/NativeClassNames.cpp)
+- canonical · colingsnyder2-ux · [native-classes/NativeClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-classes/NativeClassNames.cpp)
 - public · colingsnyder2-ux · [native-classes/NativeClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/NativeClassNames.cpp)
 - canonical · colingsnyder2-ux · [native-classes/NativeClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/NativeClassNames.cpp)
 - public · colingsnyder2-ux · [native-classes/NativeClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/NativeClassNames.cpp)
@@ -286,8 +292,10 @@ Compatibility path for `Unclassified/src/NativeClassNames.cpp`; compile either p
 - public · colingsnyder2-ux · [native-classes/NativeClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/NativeClassNames.cpp)
 - canonical · colingsnyder2-ux · [native-classes/NativeClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/NativeClassNames.cpp)
 
-<details><summary>1 retained local origins</summary>
+<details><summary>3 retained local origins</summary>
 
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-classes/NativeClassNames.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-classes/NativeClassNames.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/provider-source-guard-20261107/actual/rebuild/2008-06/native-classes/NativeClassNames.cpp` · root `b52aa15feaea5a0c`
 
 </details>
@@ -352,10 +360,11 @@ Compatibility path for `Unclassified/src/NativeClassNames.cpp`; compile either p
 </details>
 
 **`552cbdcccdb7`** · `native-classes/NewNullTool.cpp` · proof not assessed
-- canonical · colingsnyder2-ux · [native-classes/NewNullTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/NewNullTool.cpp)
-- canonical · colingsnyder2-ux · [native-classes/NewNullTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/NewNullTool.cpp)
+- canonical · colingsnyder2-ux · [native-classes/NewNullTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-classes/NewNullTool.cpp)
 - fork · mewpokemons · [native-classes/NewNullTool.cpp](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-classes/NewNullTool.cpp)
 - fork · mewpokemons · [native-classes/NewNullTool.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/NewNullTool.cpp)
+- canonical · colingsnyder2-ux · [native-classes/NewNullTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/NewNullTool.cpp)
+- canonical · colingsnyder2-ux · [native-classes/NewNullTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/native-classes/NewNullTool.cpp)
 - canonical · colingsnyder2-ux · [native-classes/NewNullTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/native-classes/NewNullTool.cpp)
 - canonical · colingsnyder2-ux · [native-classes/NewNullTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/NewNullTool.cpp)
 - canonical · colingsnyder2-ux · [native-classes/NewNullTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/NewNullTool.cpp)
@@ -396,7 +405,7 @@ Compatibility path for `Unclassified/src/NativeClassNames.cpp`; compile either p
 - canonical · colingsnyder2-ux · [native-classes/NewNullTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-classes/NewNullTool.cpp)
 - canonical · colingsnyder2-ux · [native-classes/NewNullTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/NewNullTool.cpp)
 
-<details><summary>7 retained local origins</summary>
+<details><summary>9 retained local origins</summary>
 
 - local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-classes/NewNullTool.cpp` · root `b52aa15feaea5a0c`
 - local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-classes/NewNullTool.cpp` · root `b52aa15feaea5a0c`
@@ -404,6 +413,8 @@ Compatibility path for `Unclassified/src/NativeClassNames.cpp`; compile either p
 - local · `RoConstruct-Native-ab95e336bec94483bf0c4a25d3dee24f/rebuild/2008-06/native-classes/NewNullTool.cpp` · root `b52aa15feaea5a0c`
 - local · `work/draft-migration-20261104/contributor-clean/rebuild/2008-06/native-classes/NewNullTool.cpp` · root `b52aa15feaea5a0c`
 - local · `work/draft-migration-20261104/main-client/local/workers/f28de37c7b70-975bd7a8/rebuild/2008-06/native-classes/NewNullTool.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-classes/NewNullTool.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-classes/NewNullTool.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/provider-source-guard-20261107/actual/rebuild/2008-06/native-classes/NewNullTool.cpp` · root `b52aa15feaea5a0c`
 
 </details>
@@ -455,6 +466,7 @@ Compatibility path for `Unclassified/src/NativeClassNames.cpp`; compile either p
 - public · colingsnyder2-ux · [native-classes/NewNullTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/NewNullTool.cpp)
 
 **`e3a65b180751`** · `native-classes/NewNullTool.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/NewNullTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/NewNullTool.cpp)
 - public · colingsnyder2-ux · [native-classes/NewNullTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/NewNullTool.cpp)
 - public · colingsnyder2-ux · [native-classes/NewNullTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/NewNullTool.cpp)
 - public · colingsnyder2-ux · [native-classes/NewNullTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/NewNullTool.cpp)
@@ -560,6 +572,8 @@ Compatibility path for `App/src/tool/NullTool.cpp`; compile either path, never b
 </details>
 
 **`e025300283bf`** · `native-classes/NullTool.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/NullTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/NullTool.cpp)
+- canonical · colingsnyder2-ux · [native-classes/NullTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-classes/NullTool.cpp)
 - public · colingsnyder2-ux · [native-classes/NullTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/NullTool.cpp)
 - canonical · colingsnyder2-ux · [native-classes/NullTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/NullTool.cpp)
 - public · colingsnyder2-ux · [native-classes/NullTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/NullTool.cpp)
@@ -621,8 +635,10 @@ Compatibility path for `App/src/tool/NullTool.cpp`; compile either path, never b
 - public · colingsnyder2-ux · [native-classes/NullTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/NullTool.cpp)
 - canonical · colingsnyder2-ux · [native-classes/NullTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/NullTool.cpp)
 
-<details><summary>1 retained local origins</summary>
+<details><summary>3 retained local origins</summary>
 
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-classes/NullTool.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-classes/NullTool.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/provider-source-guard-20261107/actual/rebuild/2008-06/native-classes/NullTool.cpp` · root `b52aa15feaea5a0c`
 
 </details>
@@ -682,6 +698,8 @@ Compatibility path for `App/src/tool/NullToolFactory.cpp`; compile either path, 
 </details>
 
 **`9f83fa203880`** · `native-classes/NullToolFactory.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/NullToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/NullToolFactory.cpp)
+- canonical · colingsnyder2-ux · [native-classes/NullToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-classes/NullToolFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/NullToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/NullToolFactory.cpp)
 - canonical · colingsnyder2-ux · [native-classes/NullToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/NullToolFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/NullToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/NullToolFactory.cpp)
@@ -743,8 +761,10 @@ Compatibility path for `App/src/tool/NullToolFactory.cpp`; compile either path, 
 - public · colingsnyder2-ux · [native-classes/NullToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/NullToolFactory.cpp)
 - canonical · colingsnyder2-ux · [native-classes/NullToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/NullToolFactory.cpp)
 
-<details><summary>1 retained local origins</summary>
+<details><summary>3 retained local origins</summary>
 
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-classes/NullToolFactory.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-classes/NullToolFactory.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/provider-source-guard-20261107/actual/rebuild/2008-06/native-classes/NullToolFactory.cpp` · root `b52aa15feaea5a0c`
 
 </details>

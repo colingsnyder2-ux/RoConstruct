@@ -86,6 +86,8 @@ Compatibility path for `Unclassified/src/Profiling.cpp`; compile either path, ne
 </details>
 
 **`c96ec8ba2b9d`** · `native-classes/Profiling.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/Profiling.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/Profiling.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Profiling.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-classes/Profiling.cpp)
 - public · colingsnyder2-ux · [native-classes/Profiling.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/Profiling.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Profiling.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/Profiling.cpp)
 - public · colingsnyder2-ux · [native-classes/Profiling.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/Profiling.cpp)
@@ -145,8 +147,10 @@ Compatibility path for `Unclassified/src/Profiling.cpp`; compile either path, ne
 - public · colingsnyder2-ux · [native-classes/Profiling.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/Profiling.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Profiling.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/Profiling.cpp)
 
-<details><summary>1 retained local origins</summary>
+<details><summary>3 retained local origins</summary>
 
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-classes/Profiling.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-classes/Profiling.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/provider-source-guard-20261107/actual/rebuild/2008-06/native-classes/Profiling.cpp` · root `b52aa15feaea5a0c`
 
 </details>
@@ -186,6 +190,7 @@ Compatibility path for `Unclassified/src/Profiling.cpp`; compile either path, ne
 </details>
 
 **`1c1ff3ee12ed`** · `native-classes/RaiseRange.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/RaiseRange.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/RaiseRange.cpp)
 - public · colingsnyder2-ux · [native-classes/RaiseRange.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/RaiseRange.cpp)
 - public · colingsnyder2-ux · [native-classes/RaiseRange.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/RaiseRange.cpp)
 - public · colingsnyder2-ux · [native-classes/RaiseRange.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/native-classes/RaiseRange.cpp)
@@ -334,6 +339,8 @@ Compatibility path for `App/src/tool/ResizeToolCore.cpp`; compile either path, n
 </details>
 
 **`d636468adc00`** · `native-classes/ResizeToolCore.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ResizeToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/ResizeToolCore.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ResizeToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-classes/ResizeToolCore.cpp)
 - public · colingsnyder2-ux · [native-classes/ResizeToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/ResizeToolCore.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ResizeToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/ResizeToolCore.cpp)
 - public · colingsnyder2-ux · [native-classes/ResizeToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/ResizeToolCore.cpp)
@@ -395,8 +402,10 @@ Compatibility path for `App/src/tool/ResizeToolCore.cpp`; compile either path, n
 - public · colingsnyder2-ux · [native-classes/ResizeToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/ResizeToolCore.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ResizeToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/ResizeToolCore.cpp)
 
-<details><summary>1 retained local origins</summary>
+<details><summary>3 retained local origins</summary>
 
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-classes/ResizeToolCore.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-classes/ResizeToolCore.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/provider-source-guard-20261107/actual/rebuild/2008-06/native-classes/ResizeToolCore.cpp` · root `b52aa15feaea5a0c`
 
 </details>
@@ -473,6 +482,8 @@ Compatibility path for `App/src/tool/ResizeToolDrag.cpp`; compile either path, n
 - public · colingsnyder2-ux · [native-classes/ResizeToolDrag.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/ResizeToolDrag.cpp)
 
 **`b8872bc6d09f`** · `native-classes/ResizeToolDrag.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ResizeToolDrag.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/ResizeToolDrag.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ResizeToolDrag.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-classes/ResizeToolDrag.cpp)
 - public · colingsnyder2-ux · [native-classes/ResizeToolDrag.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/ResizeToolDrag.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ResizeToolDrag.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/ResizeToolDrag.cpp)
 - public · colingsnyder2-ux · [native-classes/ResizeToolDrag.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/ResizeToolDrag.cpp)
@@ -534,8 +545,10 @@ Compatibility path for `App/src/tool/ResizeToolDrag.cpp`; compile either path, n
 - public · colingsnyder2-ux · [native-classes/ResizeToolDrag.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/ResizeToolDrag.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ResizeToolDrag.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/ResizeToolDrag.cpp)
 
-<details><summary>1 retained local origins</summary>
+<details><summary>3 retained local origins</summary>
 
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-classes/ResizeToolDrag.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-classes/ResizeToolDrag.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/provider-source-guard-20261107/actual/rebuild/2008-06/native-classes/ResizeToolDrag.cpp` · root `b52aa15feaea5a0c`
 
 </details>
@@ -652,6 +665,8 @@ Compatibility path for `App/src/tool/ResizeToolFind.cpp`; compile either path, n
 </details>
 
 **`fca008d14a35`** · `native-classes/ResizeToolFind.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ResizeToolFind.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/ResizeToolFind.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ResizeToolFind.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-classes/ResizeToolFind.cpp)
 - public · colingsnyder2-ux · [native-classes/ResizeToolFind.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/ResizeToolFind.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ResizeToolFind.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/ResizeToolFind.cpp)
 - public · colingsnyder2-ux · [native-classes/ResizeToolFind.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/ResizeToolFind.cpp)
@@ -713,8 +728,10 @@ Compatibility path for `App/src/tool/ResizeToolFind.cpp`; compile either path, n
 - public · colingsnyder2-ux · [native-classes/ResizeToolFind.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/ResizeToolFind.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ResizeToolFind.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/ResizeToolFind.cpp)
 
-<details><summary>1 retained local origins</summary>
+<details><summary>3 retained local origins</summary>
 
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-classes/ResizeToolFind.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-classes/ResizeToolFind.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/provider-source-guard-20261107/actual/rebuild/2008-06/native-classes/ResizeToolFind.cpp` · root `b52aa15feaea5a0c`
 
 </details>
@@ -800,6 +817,8 @@ Compatibility path for `App/src/tool/ResizeToolMethods.cpp`; compile either path
 </details>
 
 **`e21095e8f506`** · `native-classes/ResizeToolMethods.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ResizeToolMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/ResizeToolMethods.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ResizeToolMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-classes/ResizeToolMethods.cpp)
 - public · colingsnyder2-ux · [native-classes/ResizeToolMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/ResizeToolMethods.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ResizeToolMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/ResizeToolMethods.cpp)
 - public · colingsnyder2-ux · [native-classes/ResizeToolMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/ResizeToolMethods.cpp)
@@ -861,8 +880,10 @@ Compatibility path for `App/src/tool/ResizeToolMethods.cpp`; compile either path
 - public · colingsnyder2-ux · [native-classes/ResizeToolMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/ResizeToolMethods.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ResizeToolMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/ResizeToolMethods.cpp)
 
-<details><summary>1 retained local origins</summary>
+<details><summary>3 retained local origins</summary>
 
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-classes/ResizeToolMethods.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-classes/ResizeToolMethods.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/provider-source-guard-20261107/actual/rebuild/2008-06/native-classes/ResizeToolMethods.cpp` · root `b52aa15feaea5a0c`
 
 </details>
@@ -950,6 +971,8 @@ Compatibility path for `App/src/tool/ResizeToolMove.cpp`; compile either path, n
 </details>
 
 **`c321fcdec6a0`** · `native-classes/ResizeToolMove.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ResizeToolMove.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/ResizeToolMove.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ResizeToolMove.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-classes/ResizeToolMove.cpp)
 - public · colingsnyder2-ux · [native-classes/ResizeToolMove.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/ResizeToolMove.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ResizeToolMove.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/ResizeToolMove.cpp)
 - public · colingsnyder2-ux · [native-classes/ResizeToolMove.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/ResizeToolMove.cpp)
@@ -1011,8 +1034,10 @@ Compatibility path for `App/src/tool/ResizeToolMove.cpp`; compile either path, n
 - public · colingsnyder2-ux · [native-classes/ResizeToolMove.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/ResizeToolMove.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ResizeToolMove.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/ResizeToolMove.cpp)
 
-<details><summary>1 retained local origins</summary>
+<details><summary>3 retained local origins</summary>
 
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-classes/ResizeToolMove.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-classes/ResizeToolMove.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/provider-source-guard-20261107/actual/rebuild/2008-06/native-classes/ResizeToolMove.cpp` · root `b52aa15feaea5a0c`
 
 </details>
@@ -1074,6 +1099,8 @@ Compatibility path for `App/src/tool/ResizeToolMove.cpp`; compile either path, n
 Compatibility path for `App/src/v8datamodel/Rocket.cpp`; compile either path, never both.
 
 **`12c9fd49059b`** · `native-classes/Rocket.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/Rocket.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-classes/Rocket.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Rocket.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-classes/Rocket.cpp)
 - public · colingsnyder2-ux · [native-classes/Rocket.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-classes/Rocket.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Rocket.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-classes/Rocket.cpp)
 - public · colingsnyder2-ux · [native-classes/Rocket.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-classes/Rocket.cpp)
@@ -1135,8 +1162,10 @@ Compatibility path for `App/src/v8datamodel/Rocket.cpp`; compile either path, ne
 - public · colingsnyder2-ux · [native-classes/Rocket.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/Rocket.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Rocket.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-classes/Rocket.cpp)
 
-<details><summary>1 retained local origins</summary>
+<details><summary>3 retained local origins</summary>
 
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-classes/Rocket.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-classes/Rocket.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/provider-source-guard-20261107/actual/rebuild/2008-06/native-classes/Rocket.cpp` · root `b52aa15feaea5a0c`
 
 </details>
@@ -1216,6 +1245,7 @@ Compatibility path for `App/src/v8datamodel/Rocket.cpp`; compile either path, ne
 </details>
 
 **`80b9c8fcf6ce`** · `native-classes/Rocket.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/Rocket.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/drafts/files/2515748194edc6a1cbed49fc53a9bd30a6d598cd98ff2a8f0c2156c640049e14/rebuild/2008-06/native-classes/Rocket.cpp)
 - draft · colingsnyder2-ux · [native-classes/Rocket.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/drafts/files/2515748194edc6a1cbed49fc53a9bd30a6d598cd98ff2a8f0c2156c640049e14/rebuild/2008-06/native-classes/Rocket.cpp)
 - draft · colingsnyder2-ux · [native-classes/Rocket.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/drafts/files/2515748194edc6a1cbed49fc53a9bd30a6d598cd98ff2a8f0c2156c640049e14/rebuild/2008-06/native-classes/Rocket.cpp)
 - draft · colingsnyder2-ux · [native-classes/Rocket.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/drafts/files/2515748194edc6a1cbed49fc53a9bd30a6d598cd98ff2a8f0c2156c640049e14/rebuild/2008-06/native-classes/Rocket.cpp)

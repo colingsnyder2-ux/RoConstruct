@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/CMultiPlayerPane.h`.
 
 **`11b536c4dd8e`** · `WindowsClient/include/CMultiPlayerPane.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/WindowsClient/include/CMultiPlayerPane.h)
 - public · colingsnyder2-ux · [include/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/WindowsClient/include/CMultiPlayerPane.h)
 - public · colingsnyder2-ux · [include/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/WindowsClient/include/CMultiPlayerPane.h)
 - public · colingsnyder2-ux · [include/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/WindowsClient/include/CMultiPlayerPane.h)
@@ -51,6 +52,7 @@ Earlier paths and their donor versions: `native-headers/CMultiPlayerPane.h`.
 </details>
 
 **`e58c531535e1`** · `WindowsClient/include/CMultiPlayerPane.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/WindowsClient/include/CMultiPlayerPane.h)
 - canonical · colingsnyder2-ux · [include/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/WindowsClient/include/CMultiPlayerPane.h)
 - canonical · colingsnyder2-ux · [include/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/WindowsClient/include/CMultiPlayerPane.h)
 - canonical · colingsnyder2-ux · [include/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/WindowsClient/include/CMultiPlayerPane.h)
@@ -76,7 +78,7 @@ Earlier paths and their donor versions: `native-headers/CMultiPlayerPane.h`.
 - canonical · colingsnyder2-ux · [include/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/CMultiPlayerPane.h)
 - canonical · colingsnyder2-ux · [include/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/CMultiPlayerPane.h)
 
-<details><summary>40 retained local origins</summary>
+<details><summary>44 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/CMultiPlayerPane.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/CMultiPlayerPane.h` · root `b52aa15feaea5a0c`
@@ -110,6 +112,10 @@ Earlier paths and their donor versions: `native-headers/CMultiPlayerPane.h`.
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/WindowsClient/include/CMultiPlayerPane.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/WindowsClient/include/CMultiPlayerPane.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/WindowsClient/include/CMultiPlayerPane.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/WindowsClient/include/CMultiPlayerPane.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/WindowsClient/include/CMultiPlayerPane.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/WindowsClient/include/CMultiPlayerPane.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/WindowsClient/include/CMultiPlayerPane.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/CMultiPlayerPane.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/WindowsClient/include/CMultiPlayerPane.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/CMultiPlayerPane.h` · root `b52aa15feaea5a0c`
@@ -156,6 +162,8 @@ Earlier paths and their donor versions: `native-headers/CMultiPlayerPane.h`.
 </details>
 
 **`79d2001ab148`** · `native-headers/CMultiPlayerPane.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/CMultiPlayerPane.h)
+- canonical · colingsnyder2-ux · [native-headers/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/CMultiPlayerPane.h)
 - public · colingsnyder2-ux · [native-headers/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/CMultiPlayerPane.h)
 - canonical · colingsnyder2-ux · [native-headers/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/CMultiPlayerPane.h)
 - public · colingsnyder2-ux · [native-headers/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/CMultiPlayerPane.h)
@@ -205,7 +213,7 @@ Earlier paths and their donor versions: `native-headers/CMultiPlayerPane.h`.
 - public · colingsnyder2-ux · [native-headers/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CMultiPlayerPane.h)
 - canonical · colingsnyder2-ux · [native-headers/CMultiPlayerPane.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CMultiPlayerPane.h)
 
-<details><summary>43 retained local origins</summary>
+<details><summary>47 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CMultiPlayerPane.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CMultiPlayerPane.h` · root `b52aa15feaea5a0c`
@@ -240,6 +248,10 @@ Earlier paths and their donor versions: `native-headers/CMultiPlayerPane.h`.
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/CMultiPlayerPane.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/CMultiPlayerPane.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/CMultiPlayerPane.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/CMultiPlayerPane.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/CMultiPlayerPane.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/CMultiPlayerPane.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/CMultiPlayerPane.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/CMultiPlayerPane.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/CMultiPlayerPane.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CMultiPlayerPane.h` · root `b52aa15feaea5a0c`
@@ -498,6 +510,7 @@ Earlier paths and their donor versions: `native-headers/CObjectBrowser.h`.
 - public · colingsnyder2-ux · [include/CObjectBrowser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/include/CObjectBrowser.h)
 
 **`51dd6a8d681e`** · `WindowsClient/include/CObjectBrowser.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CObjectBrowser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/WindowsClient/include/CObjectBrowser.h)
 - canonical · colingsnyder2-ux · [include/CObjectBrowser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/WindowsClient/include/CObjectBrowser.h)
 - canonical · colingsnyder2-ux · [include/CObjectBrowser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/WindowsClient/include/CObjectBrowser.h)
 - canonical · colingsnyder2-ux · [include/CObjectBrowser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/WindowsClient/include/CObjectBrowser.h)
@@ -524,7 +537,7 @@ Earlier paths and their donor versions: `native-headers/CObjectBrowser.h`.
 - canonical · colingsnyder2-ux · [include/CObjectBrowser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/CObjectBrowser.h)
 - canonical · colingsnyder2-ux · [include/CObjectBrowser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/CObjectBrowser.h)
 
-<details><summary>42 retained local origins</summary>
+<details><summary>46 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/CObjectBrowser.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/CObjectBrowser.h` · root `b52aa15feaea5a0c`
@@ -560,6 +573,10 @@ Earlier paths and their donor versions: `native-headers/CObjectBrowser.h`.
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/WindowsClient/include/CObjectBrowser.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/WindowsClient/include/CObjectBrowser.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/WindowsClient/include/CObjectBrowser.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/WindowsClient/include/CObjectBrowser.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/WindowsClient/include/CObjectBrowser.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/WindowsClient/include/CObjectBrowser.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/WindowsClient/include/CObjectBrowser.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/CObjectBrowser.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/WindowsClient/include/CObjectBrowser.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/CObjectBrowser.h` · root `b52aa15feaea5a0c`
@@ -581,6 +598,7 @@ Earlier paths and their donor versions: `native-headers/CObjectBrowser.h`.
 </details>
 
 **`f4cd43ddf70a`** · `WindowsClient/include/CObjectBrowser.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CObjectBrowser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/WindowsClient/include/CObjectBrowser.h)
 - public · colingsnyder2-ux · [include/CObjectBrowser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/WindowsClient/include/CObjectBrowser.h)
 - public · colingsnyder2-ux · [include/CObjectBrowser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/WindowsClient/include/CObjectBrowser.h)
 - public · colingsnyder2-ux · [include/CObjectBrowser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/WindowsClient/include/CObjectBrowser.h)
@@ -676,6 +694,8 @@ Earlier paths and their donor versions: `native-headers/CObjectBrowser.h`.
 </details>
 
 **`add3e8f87dae`** · `native-headers/CObjectBrowser.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CObjectBrowser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/CObjectBrowser.h)
+- canonical · colingsnyder2-ux · [native-headers/CObjectBrowser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/CObjectBrowser.h)
 - public · colingsnyder2-ux · [native-headers/CObjectBrowser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/CObjectBrowser.h)
 - canonical · colingsnyder2-ux · [native-headers/CObjectBrowser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/CObjectBrowser.h)
 - public · colingsnyder2-ux · [native-headers/CObjectBrowser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/CObjectBrowser.h)
@@ -727,7 +747,7 @@ Earlier paths and their donor versions: `native-headers/CObjectBrowser.h`.
 - public · colingsnyder2-ux · [native-headers/CObjectBrowser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CObjectBrowser.h)
 - canonical · colingsnyder2-ux · [native-headers/CObjectBrowser.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CObjectBrowser.h)
 
-<details><summary>45 retained local origins</summary>
+<details><summary>49 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CObjectBrowser.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CObjectBrowser.h` · root `b52aa15feaea5a0c`
@@ -764,6 +784,10 @@ Earlier paths and their donor versions: `native-headers/CObjectBrowser.h`.
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/CObjectBrowser.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/CObjectBrowser.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/CObjectBrowser.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/CObjectBrowser.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/CObjectBrowser.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/CObjectBrowser.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/CObjectBrowser.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/CObjectBrowser.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/CObjectBrowser.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CObjectBrowser.h` · root `b52aa15feaea5a0c`
@@ -823,6 +847,7 @@ Earlier paths and their donor versions: `native-headers/CObjectBrowser.h`.
 Earlier paths and their donor versions: `native-headers/COutputView.h`.
 
 **`18a34454990d`** · `WindowsClient/include/COutputView.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/COutputView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/WindowsClient/include/COutputView.h)
 - canonical · colingsnyder2-ux · [include/COutputView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/WindowsClient/include/COutputView.h)
 - canonical · colingsnyder2-ux · [include/COutputView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/WindowsClient/include/COutputView.h)
 - canonical · colingsnyder2-ux · [include/COutputView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/WindowsClient/include/COutputView.h)
@@ -850,7 +875,7 @@ Earlier paths and their donor versions: `native-headers/COutputView.h`.
 - canonical · colingsnyder2-ux · [include/COutputView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/COutputView.h)
 - canonical · colingsnyder2-ux · [include/COutputView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/COutputView.h)
 
-<details><summary>44 retained local origins</summary>
+<details><summary>48 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/COutputView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/COutputView.h` · root `b52aa15feaea5a0c`
@@ -888,6 +913,10 @@ Earlier paths and their donor versions: `native-headers/COutputView.h`.
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/WindowsClient/include/COutputView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/WindowsClient/include/COutputView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/WindowsClient/include/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/WindowsClient/include/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/WindowsClient/include/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/WindowsClient/include/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/WindowsClient/include/COutputView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/COutputView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/WindowsClient/include/COutputView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/COutputView.h` · root `b52aa15feaea5a0c`
@@ -933,6 +962,7 @@ Earlier paths and their donor versions: `native-headers/COutputView.h`.
 </details>
 
 **`cc27b0ae266b`** · `WindowsClient/include/COutputView.h` · proof not assessed
+- public · colingsnyder2-ux · [include/COutputView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/WindowsClient/include/COutputView.h)
 - public · colingsnyder2-ux · [include/COutputView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/WindowsClient/include/COutputView.h)
 - public · colingsnyder2-ux · [include/COutputView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/WindowsClient/include/COutputView.h)
 - public · colingsnyder2-ux · [include/COutputView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/WindowsClient/include/COutputView.h)
@@ -1025,6 +1055,8 @@ Earlier paths and their donor versions: `native-headers/COutputView.h`.
 </details>
 
 **`7c8e9c7ecfd1`** · `native-headers/COutputView.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/COutputView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/COutputView.h)
+- canonical · colingsnyder2-ux · [native-headers/COutputView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/COutputView.h)
 - public · colingsnyder2-ux · [native-headers/COutputView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/COutputView.h)
 - canonical · colingsnyder2-ux · [native-headers/COutputView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/COutputView.h)
 - public · colingsnyder2-ux · [native-headers/COutputView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/COutputView.h)
@@ -1078,7 +1110,7 @@ Earlier paths and their donor versions: `native-headers/COutputView.h`.
 - public · colingsnyder2-ux · [native-headers/COutputView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/COutputView.h)
 - canonical · colingsnyder2-ux · [native-headers/COutputView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/COutputView.h)
 
-<details><summary>47 retained local origins</summary>
+<details><summary>51 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
@@ -1117,6 +1149,10 @@ Earlier paths and their donor versions: `native-headers/COutputView.h`.
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/COutputView.h` · root `b52aa15feaea5a0c`

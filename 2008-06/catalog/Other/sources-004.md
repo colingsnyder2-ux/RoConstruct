@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/gui/WidgetMenuItem.h`.
 
 **`1084b28a8738`** · `App/include/gui/WidgetMenuItem.h` · proof not assessed
+- canonical · colingsnyder2-ux · [gui/WidgetMenuItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/include/gui/WidgetMenuItem.h)
 - canonical · colingsnyder2-ux · [gui/WidgetMenuItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/include/gui/WidgetMenuItem.h)
 - canonical · colingsnyder2-ux · [gui/WidgetMenuItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/include/gui/WidgetMenuItem.h)
 - canonical · colingsnyder2-ux · [gui/WidgetMenuItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/include/gui/WidgetMenuItem.h)
@@ -34,7 +35,7 @@ Earlier paths and their donor versions: `native-headers/gui/WidgetMenuItem.h`.
 - canonical · colingsnyder2-ux · [gui/WidgetMenuItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/gui/WidgetMenuItem.h)
 - canonical · colingsnyder2-ux · [gui/WidgetMenuItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/gui/WidgetMenuItem.h)
 
-<details><summary>42 retained local origins</summary>
+<details><summary>46 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
@@ -70,6 +71,10 @@ Earlier paths and their donor versions: `native-headers/gui/WidgetMenuItem.h`.
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/App/include/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/App/include/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/App/include/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/App/include/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/App/include/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/App/include/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/App/include/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/App/include/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
@@ -114,6 +119,7 @@ Earlier paths and their donor versions: `native-headers/gui/WidgetMenuItem.h`.
 </details>
 
 **`f506eb965ca9`** · `App/include/gui/WidgetMenuItem.h` · proof not assessed
+- public · colingsnyder2-ux · [gui/WidgetMenuItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/include/gui/WidgetMenuItem.h)
 - public · colingsnyder2-ux · [gui/WidgetMenuItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/include/gui/WidgetMenuItem.h)
 - public · colingsnyder2-ux · [gui/WidgetMenuItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/include/gui/WidgetMenuItem.h)
 - public · colingsnyder2-ux · [gui/WidgetMenuItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/include/gui/WidgetMenuItem.h)
@@ -202,6 +208,8 @@ Earlier paths and their donor versions: `native-headers/gui/WidgetMenuItem.h`.
 - public · colingsnyder2-ux · [gui/WidgetMenuItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/30ef49738a0c80e0c028661a936ad011be30e2b9/2008-06/native-headers/gui/WidgetMenuItem.h)
 
 **`419ff5b763e9`** · `native-headers/gui/WidgetMenuItem.h` · proof not assessed
+- public · colingsnyder2-ux · [gui/WidgetMenuItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/gui/WidgetMenuItem.h)
+- canonical · colingsnyder2-ux · [gui/WidgetMenuItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h)
 - public · colingsnyder2-ux · [gui/WidgetMenuItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/gui/WidgetMenuItem.h)
 - canonical · colingsnyder2-ux · [gui/WidgetMenuItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h)
 - public · colingsnyder2-ux · [gui/WidgetMenuItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/gui/WidgetMenuItem.h)
@@ -253,7 +261,7 @@ Earlier paths and their donor versions: `native-headers/gui/WidgetMenuItem.h`.
 - public · colingsnyder2-ux · [gui/WidgetMenuItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/gui/WidgetMenuItem.h)
 - canonical · colingsnyder2-ux · [gui/WidgetMenuItem.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h)
 
-<details><summary>45 retained local origins</summary>
+<details><summary>49 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
@@ -290,6 +298,10 @@ Earlier paths and their donor versions: `native-headers/gui/WidgetMenuItem.h`.
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/gui/WidgetMenuItem.h` · root `b52aa15feaea5a0c`
@@ -348,6 +360,7 @@ Earlier paths and their donor versions: `native-headers/gui/WidgetMenuItem.h`.
 Earlier paths and their donor versions: `native-headers/humanoid/Humanoid.h`.
 
 **`58b45a3adc14`** · `App/include/humanoid/Humanoid.h` · proof not assessed
+- canonical · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/include/humanoid/Humanoid.h)
 - canonical · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/include/humanoid/Humanoid.h)
 - canonical · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/include/humanoid/Humanoid.h)
 - canonical · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/include/humanoid/Humanoid.h)
@@ -374,7 +387,7 @@ Earlier paths and their donor versions: `native-headers/humanoid/Humanoid.h`.
 - canonical · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/humanoid/Humanoid.h)
 - canonical · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/humanoid/Humanoid.h)
 
-<details><summary>42 retained local origins</summary>
+<details><summary>46 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/humanoid/Humanoid.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/humanoid/Humanoid.h` · root `b52aa15feaea5a0c`
@@ -410,6 +423,10 @@ Earlier paths and their donor versions: `native-headers/humanoid/Humanoid.h`.
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/App/include/humanoid/Humanoid.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/App/include/humanoid/Humanoid.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/App/include/humanoid/Humanoid.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/App/include/humanoid/Humanoid.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/App/include/humanoid/Humanoid.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/App/include/humanoid/Humanoid.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/App/include/humanoid/Humanoid.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/humanoid/Humanoid.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/humanoid/Humanoid.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/App/include/humanoid/Humanoid.h` · root `b52aa15feaea5a0c`
@@ -422,6 +439,7 @@ Earlier paths and their donor versions: `native-headers/humanoid/Humanoid.h`.
 </details>
 
 **`94c580ab83e5`** · `App/include/humanoid/Humanoid.h` · proof not assessed
+- public · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/include/humanoid/Humanoid.h)
 - public · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/include/humanoid/Humanoid.h)
 - public · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/include/humanoid/Humanoid.h)
 - public · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/include/humanoid/Humanoid.h)
@@ -466,6 +484,8 @@ Earlier paths and their donor versions: `native-headers/humanoid/Humanoid.h`.
 </details>
 
 **`518f2945063a`** · `native-headers/humanoid/Humanoid.h` · proof not assessed
+- public · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/humanoid/Humanoid.h)
+- canonical · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/humanoid/Humanoid.h)
 - public · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/humanoid/Humanoid.h)
 - canonical · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/humanoid/Humanoid.h)
 - public · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/humanoid/Humanoid.h)
@@ -517,7 +537,7 @@ Earlier paths and their donor versions: `native-headers/humanoid/Humanoid.h`.
 - public · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/humanoid/Humanoid.h)
 - canonical · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/humanoid/Humanoid.h)
 
-<details><summary>45 retained local origins</summary>
+<details><summary>49 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/humanoid/Humanoid.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/humanoid/Humanoid.h` · root `b52aa15feaea5a0c`
@@ -554,6 +574,10 @@ Earlier paths and their donor versions: `native-headers/humanoid/Humanoid.h`.
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/humanoid/Humanoid.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/humanoid/Humanoid.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/humanoid/Humanoid.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/humanoid/Humanoid.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/humanoid/Humanoid.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/humanoid/Humanoid.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/humanoid/Humanoid.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/humanoid/Humanoid.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/humanoid/Humanoid.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/humanoid/Humanoid.h` · root `b52aa15feaea5a0c`
@@ -722,6 +746,7 @@ Earlier paths and their donor versions: `native-headers/humanoid/HumanoidFloorFi
 - public · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/humanoid/HumanoidFloorFields.h)
 
 **`aaa7b9ac7462`** · `App/include/humanoid/HumanoidFloorFields.h` · proof not assessed
+- canonical · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h)
@@ -747,7 +772,7 @@ Earlier paths and their donor versions: `native-headers/humanoid/HumanoidFloorFi
 - canonical · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h)
 
-<details><summary>40 retained local origins</summary>
+<details><summary>44 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
@@ -781,6 +806,10 @@ Earlier paths and their donor versions: `native-headers/humanoid/HumanoidFloorFi
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
@@ -793,6 +822,7 @@ Earlier paths and their donor versions: `native-headers/humanoid/HumanoidFloorFi
 </details>
 
 **`be4c115a5fff`** · `App/include/humanoid/HumanoidFloorFields.h` · proof not assessed
+- public · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/App/include/humanoid/HumanoidFloorFields.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/App/include/humanoid/HumanoidFloorFields.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/App/include/humanoid/HumanoidFloorFields.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/App/include/humanoid/HumanoidFloorFields.h)
@@ -830,6 +860,8 @@ Earlier paths and their donor versions: `native-headers/humanoid/HumanoidFloorFi
 </details>
 
 **`5c44809b6a15`** · `native-headers/humanoid/HumanoidFloorFields.h` · proof not assessed
+- public · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
+- canonical · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
@@ -879,7 +911,7 @@ Earlier paths and their donor versions: `native-headers/humanoid/HumanoidFloorFi
 - public · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
 
-<details><summary>43 retained local origins</summary>
+<details><summary>47 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
@@ -914,6 +946,10 @@ Earlier paths and their donor versions: `native-headers/humanoid/HumanoidFloorFi
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h` · root `b52aa15feaea5a0c`

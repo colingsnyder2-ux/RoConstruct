@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/ActiveDocView.h`.
 
 **`32e77635bcee`** · `WindowsClient/include/ActiveDocView.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/ActiveDocView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/WindowsClient/include/ActiveDocView.h)
 - canonical · colingsnyder2-ux · [include/ActiveDocView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/WindowsClient/include/ActiveDocView.h)
 - canonical · colingsnyder2-ux · [include/ActiveDocView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/WindowsClient/include/ActiveDocView.h)
 - canonical · colingsnyder2-ux · [include/ActiveDocView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/WindowsClient/include/ActiveDocView.h)
@@ -35,7 +36,7 @@ Earlier paths and their donor versions: `native-headers/ActiveDocView.h`.
 - canonical · colingsnyder2-ux · [include/ActiveDocView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/ActiveDocView.h)
 - canonical · colingsnyder2-ux · [include/ActiveDocView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/ActiveDocView.h)
 
-<details><summary>44 retained local origins</summary>
+<details><summary>48 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/ActiveDocView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/ActiveDocView.h` · root `b52aa15feaea5a0c`
@@ -73,6 +74,10 @@ Earlier paths and their donor versions: `native-headers/ActiveDocView.h`.
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/WindowsClient/include/ActiveDocView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/WindowsClient/include/ActiveDocView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/WindowsClient/include/ActiveDocView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/WindowsClient/include/ActiveDocView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/WindowsClient/include/ActiveDocView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/WindowsClient/include/ActiveDocView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/WindowsClient/include/ActiveDocView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/ActiveDocView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/WindowsClient/include/ActiveDocView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/ActiveDocView.h` · root `b52aa15feaea5a0c`
@@ -94,6 +99,7 @@ Earlier paths and their donor versions: `native-headers/ActiveDocView.h`.
 </details>
 
 **`7553c7ce91e1`** · `WindowsClient/include/ActiveDocView.h` · proof not assessed
+- public · colingsnyder2-ux · [include/ActiveDocView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/WindowsClient/include/ActiveDocView.h)
 - public · colingsnyder2-ux · [include/ActiveDocView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/WindowsClient/include/ActiveDocView.h)
 - public · colingsnyder2-ux · [include/ActiveDocView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/WindowsClient/include/ActiveDocView.h)
 - public · colingsnyder2-ux · [include/ActiveDocView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/WindowsClient/include/ActiveDocView.h)
@@ -344,6 +350,8 @@ Earlier paths and their donor versions: `native-headers/ActiveDocView.h`.
 </details>
 
 **`ae4dbe996278`** · `native-headers/ActiveDocView.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/ActiveDocView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/ActiveDocView.h)
+- canonical · colingsnyder2-ux · [native-headers/ActiveDocView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/ActiveDocView.h)
 - public · colingsnyder2-ux · [native-headers/ActiveDocView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/ActiveDocView.h)
 - canonical · colingsnyder2-ux · [native-headers/ActiveDocView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/ActiveDocView.h)
 - public · colingsnyder2-ux · [native-headers/ActiveDocView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/ActiveDocView.h)
@@ -397,7 +405,7 @@ Earlier paths and their donor versions: `native-headers/ActiveDocView.h`.
 - public · colingsnyder2-ux · [native-headers/ActiveDocView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/ActiveDocView.h)
 - canonical · colingsnyder2-ux · [native-headers/ActiveDocView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/ActiveDocView.h)
 
-<details><summary>47 retained local origins</summary>
+<details><summary>51 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/ActiveDocView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/ActiveDocView.h` · root `b52aa15feaea5a0c`
@@ -436,6 +444,10 @@ Earlier paths and their donor versions: `native-headers/ActiveDocView.h`.
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/ActiveDocView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/ActiveDocView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/ActiveDocView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/ActiveDocView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/ActiveDocView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/ActiveDocView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/ActiveDocView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/ActiveDocView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/ActiveDocView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/ActiveDocView.h` · root `b52aa15feaea5a0c`
@@ -490,6 +502,7 @@ Earlier paths and their donor versions: `native-headers/ActiveDocView.h`.
 Earlier paths and their donor versions: `native-headers/CAboutRobloxDialog.h`.
 
 **`3134a3ed862e`** · `WindowsClient/include/CAboutRobloxDialog.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/CAboutRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/WindowsClient/include/CAboutRobloxDialog.h)
 - canonical · colingsnyder2-ux · [include/CAboutRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/WindowsClient/include/CAboutRobloxDialog.h)
 - canonical · colingsnyder2-ux · [include/CAboutRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/WindowsClient/include/CAboutRobloxDialog.h)
 - canonical · colingsnyder2-ux · [include/CAboutRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/WindowsClient/include/CAboutRobloxDialog.h)
@@ -517,7 +530,7 @@ Earlier paths and their donor versions: `native-headers/CAboutRobloxDialog.h`.
 - canonical · colingsnyder2-ux · [include/CAboutRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/CAboutRobloxDialog.h)
 - canonical · colingsnyder2-ux · [include/CAboutRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/CAboutRobloxDialog.h)
 
-<details><summary>44 retained local origins</summary>
+<details><summary>48 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/CAboutRobloxDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/CAboutRobloxDialog.h` · root `b52aa15feaea5a0c`
@@ -555,6 +568,10 @@ Earlier paths and their donor versions: `native-headers/CAboutRobloxDialog.h`.
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/WindowsClient/include/CAboutRobloxDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/WindowsClient/include/CAboutRobloxDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/WindowsClient/include/CAboutRobloxDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/WindowsClient/include/CAboutRobloxDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/WindowsClient/include/CAboutRobloxDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/WindowsClient/include/CAboutRobloxDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/WindowsClient/include/CAboutRobloxDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/CAboutRobloxDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/WindowsClient/include/CAboutRobloxDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/CAboutRobloxDialog.h` · root `b52aa15feaea5a0c`
@@ -567,6 +584,7 @@ Earlier paths and their donor versions: `native-headers/CAboutRobloxDialog.h`.
 </details>
 
 **`650372d4fe30`** · `WindowsClient/include/CAboutRobloxDialog.h` · proof not assessed
+- public · colingsnyder2-ux · [include/CAboutRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/WindowsClient/include/CAboutRobloxDialog.h)
 - public · colingsnyder2-ux · [include/CAboutRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/WindowsClient/include/CAboutRobloxDialog.h)
 - public · colingsnyder2-ux · [include/CAboutRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/WindowsClient/include/CAboutRobloxDialog.h)
 - public · colingsnyder2-ux · [include/CAboutRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/WindowsClient/include/CAboutRobloxDialog.h)
@@ -758,6 +776,8 @@ Earlier paths and their donor versions: `native-headers/CAboutRobloxDialog.h`.
 </details>
 
 **`584222dd205a`** · `native-headers/CAboutRobloxDialog.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CAboutRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/native-headers/CAboutRobloxDialog.h)
+- canonical · colingsnyder2-ux · [native-headers/CAboutRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/native-headers/CAboutRobloxDialog.h)
 - public · colingsnyder2-ux · [native-headers/CAboutRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/native-headers/CAboutRobloxDialog.h)
 - canonical · colingsnyder2-ux · [native-headers/CAboutRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/native-headers/CAboutRobloxDialog.h)
 - public · colingsnyder2-ux · [native-headers/CAboutRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/native-headers/CAboutRobloxDialog.h)
@@ -811,7 +831,7 @@ Earlier paths and their donor versions: `native-headers/CAboutRobloxDialog.h`.
 - public · colingsnyder2-ux · [native-headers/CAboutRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CAboutRobloxDialog.h)
 - canonical · colingsnyder2-ux · [native-headers/CAboutRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CAboutRobloxDialog.h)
 
-<details><summary>47 retained local origins</summary>
+<details><summary>51 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CAboutRobloxDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CAboutRobloxDialog.h` · root `b52aa15feaea5a0c`
@@ -850,6 +870,10 @@ Earlier paths and their donor versions: `native-headers/CAboutRobloxDialog.h`.
 - local · `work/native-candidates/layout-trials-with-headers-20261108/frozen/rebuild/2008-06/native-headers/CAboutRobloxDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/log-overlay-alias-20261108/frozen/rebuild/2008-06/native-headers/CAboutRobloxDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/native-headers/CAboutRobloxDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/native-headers/CAboutRobloxDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-layout-fullpass-20261108/original/rebuild/2008-06/native-headers/CAboutRobloxDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/native-headers/CAboutRobloxDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/native-headers/CAboutRobloxDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/pv-frame-move-20261107/batch/frozen/rebuild/2008-06/native-headers/CAboutRobloxDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/CAboutRobloxDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CAboutRobloxDialog.h` · root `b52aa15feaea5a0c`
