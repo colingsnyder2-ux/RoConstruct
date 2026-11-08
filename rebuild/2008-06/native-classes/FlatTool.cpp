@@ -2,8 +2,12 @@
 #include "tool/FlatTool.h"
 #include "v8datamodel/Surface.h"
 #include "v8datamodel/PartInstance.h"
+#include "v8datamodel/DataModel.h"
+#include "v8datamodel/Workspace.h"
+#include "StandardVerbs.h"
 
 namespace RBX {
+char sFlatTool[] = "FlatTool";
 const std::string FlatTool::getCursorName() const { return "FlatCursor"; }
 MouseCommand* FlatTool::isSticky() const { return new FlatTool(workspace); }
 void FlatTool::applyToSurface(Surface* surface) {

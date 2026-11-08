@@ -15,7 +15,6 @@ template<> MouseCommand* TToolVerb<GameTool, RunStateVerb>::newMouseCommand()
 {
     return new GameTool(dataModel->getWorkspace());
 }
-}
 
 MouseCommand* GameTool::isSticky() const { return new GameTool(workspace); }
 void GameTool::onMouseIdle(const UIEvent& event) { onMouseHover(event); }
@@ -38,4 +37,5 @@ MouseCommand* GameTool::onMouseDown(const UIEvent& event)
     if (part && !part->getPartLocked() && !part->lockedInPlace() && characterCanReach(point))
         return (new PartDragTool(part, point, workspace, boost::shared_ptr<Instance>()))->onMouseDown(event);
     return NULL;
+}
 }
