@@ -20,6 +20,7 @@ Select providers through existing module recipes and patch manifests; do not
 infer executable selection from a file's location. In particular, similarly
 named definitions can conflict even when object file names differ.
 
+  build/         build, diagnostics and source-view setup tools
   modules/       build recipes
   patches/       native selection and ABI changes
   manifests/     layout and proof inventories
