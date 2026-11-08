@@ -1,5 +1,2 @@
-#include <RakPeer.h>
-#include "Replicator.h"
-namespace RBX { namespace Network {
-Peer::~Peer() { rakPeer->DetachPlugin(this); }
-}}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../Unclassified/src/PeerLifetime.cpp"
