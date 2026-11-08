@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/InsertDecal.h`.
 
 **`078899fe9ca4`** · `WindowsClient/include/InsertDecal.h` · proof not assessed
+- public · colingsnyder2-ux · [include/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/include/InsertDecal.h)
 - public · colingsnyder2-ux · [include/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/include/InsertDecal.h)
 - public · colingsnyder2-ux · [include/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/include/InsertDecal.h)
 - public · colingsnyder2-ux · [include/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/include/InsertDecal.h)
@@ -28,6 +29,7 @@ Earlier paths and their donor versions: `native-headers/InsertDecal.h`.
 </details>
 
 **`3654b0afd63e`** · `WindowsClient/include/InsertDecal.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/include/InsertDecal.h)
 - canonical · colingsnyder2-ux · [include/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/include/InsertDecal.h)
 - canonical · colingsnyder2-ux · [include/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/include/InsertDecal.h)
 - canonical · colingsnyder2-ux · [include/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/include/InsertDecal.h)
@@ -58,7 +60,7 @@ Earlier paths and their donor versions: `native-headers/InsertDecal.h`.
 - canonical · colingsnyder2-ux · [include/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/InsertDecal.h)
 - canonical · colingsnyder2-ux · [include/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/InsertDecal.h)
 
-<details><summary>56 retained local origins</summary>
+<details><summary>57 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/InsertDecal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/InsertDecal.h` · root `b52aa15feaea5a0c`
@@ -100,6 +102,7 @@ Earlier paths and their donor versions: `native-headers/InsertDecal.h`.
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/WindowsClient/include/InsertDecal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/WindowsClient/include/InsertDecal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/WindowsClient/include/InsertDecal.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/WindowsClient/include/InsertDecal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/InsertDecal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/WindowsClient/include/InsertDecal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/InsertDecal.h` · root `b52aa15feaea5a0c`
@@ -242,6 +245,8 @@ Earlier paths and their donor versions: `native-headers/InsertDecal.h`.
 </details>
 
 **`b92208e42884`** · `native-headers/InsertDecal.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/InsertDecal.h)
+- canonical · colingsnyder2-ux · [native-headers/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/InsertDecal.h)
 - public · colingsnyder2-ux · [native-headers/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/InsertDecal.h)
 - canonical · colingsnyder2-ux · [native-headers/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/InsertDecal.h)
 - public · colingsnyder2-ux · [native-headers/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/InsertDecal.h)
@@ -301,7 +306,7 @@ Earlier paths and their donor versions: `native-headers/InsertDecal.h`.
 - public · colingsnyder2-ux · [native-headers/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/InsertDecal.h)
 - canonical · colingsnyder2-ux · [native-headers/InsertDecal.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/InsertDecal.h)
 
-<details><summary>59 retained local origins</summary>
+<details><summary>60 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/InsertDecal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/InsertDecal.h` · root `b52aa15feaea5a0c`
@@ -344,6 +349,7 @@ Earlier paths and their donor versions: `native-headers/InsertDecal.h`.
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/InsertDecal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/InsertDecal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/InsertDecal.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/InsertDecal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/InsertDecal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/InsertDecal.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/native-headers/InsertDecal.h` · root `b52aa15feaea5a0c`
@@ -411,6 +417,7 @@ Earlier paths and their donor versions: `native-headers/InsertDecal.h`.
 Earlier paths and their donor versions: `native-headers/InsertModelFromRobloxVerb.h`.
 
 **`12a574f49962`** · `WindowsClient/include/InsertModelFromRobloxVerb.h` · proof not assessed
+- public · colingsnyder2-ux · [include/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/include/InsertModelFromRobloxVerb.h)
 - public · colingsnyder2-ux · [include/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/include/InsertModelFromRobloxVerb.h)
 - public · colingsnyder2-ux · [include/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/include/InsertModelFromRobloxVerb.h)
 - public · colingsnyder2-ux · [include/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/include/InsertModelFromRobloxVerb.h)
@@ -458,6 +465,7 @@ Earlier paths and their donor versions: `native-headers/InsertModelFromRobloxVer
 </details>
 
 **`c141ab7ad064`** · `WindowsClient/include/InsertModelFromRobloxVerb.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/include/InsertModelFromRobloxVerb.h)
 - canonical · colingsnyder2-ux · [include/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/include/InsertModelFromRobloxVerb.h)
 - canonical · colingsnyder2-ux · [include/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/include/InsertModelFromRobloxVerb.h)
 - canonical · colingsnyder2-ux · [include/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/include/InsertModelFromRobloxVerb.h)
@@ -487,7 +495,7 @@ Earlier paths and their donor versions: `native-headers/InsertModelFromRobloxVer
 - canonical · colingsnyder2-ux · [include/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/InsertModelFromRobloxVerb.h)
 - canonical · colingsnyder2-ux · [include/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/InsertModelFromRobloxVerb.h)
 
-<details><summary>54 retained local origins</summary>
+<details><summary>55 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
@@ -527,6 +535,7 @@ Earlier paths and their donor versions: `native-headers/InsertModelFromRobloxVer
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/WindowsClient/include/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/WindowsClient/include/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/WindowsClient/include/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/WindowsClient/include/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/WindowsClient/include/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
@@ -691,6 +700,8 @@ Earlier paths and their donor versions: `native-headers/InsertModelFromRobloxVer
 </details>
 
 **`ea13606b884c`** · `native-headers/InsertModelFromRobloxVerb.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/InsertModelFromRobloxVerb.h)
+- canonical · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h)
 - public · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/InsertModelFromRobloxVerb.h)
 - canonical · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h)
 - public · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/InsertModelFromRobloxVerb.h)
@@ -748,7 +759,7 @@ Earlier paths and their donor versions: `native-headers/InsertModelFromRobloxVer
 - public · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/InsertModelFromRobloxVerb.h)
 - canonical · colingsnyder2-ux · [native-headers/InsertModelFromRobloxVerb.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h)
 
-<details><summary>57 retained local origins</summary>
+<details><summary>58 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
@@ -789,6 +800,7 @@ Earlier paths and their donor versions: `native-headers/InsertModelFromRobloxVer
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/native-headers/InsertModelFromRobloxVerb.h` · root `b52aa15feaea5a0c`

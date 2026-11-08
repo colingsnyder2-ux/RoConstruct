@@ -36,6 +36,7 @@ Earlier paths and their donor versions: `native-classes/CRobloxDocCommands.cpp`.
 - public · colingsnyder2-ux · [src/CRobloxDocCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/src/CRobloxDocCommands.cpp)
 
 **`53bbb5f7716c`** · `WindowsClient/src/CRobloxDocCommands.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CRobloxDocCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/CRobloxDocCommands.cpp)
 - public · colingsnyder2-ux · [src/CRobloxDocCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/CRobloxDocCommands.cpp)
 - public · colingsnyder2-ux · [src/CRobloxDocCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/CRobloxDocCommands.cpp)
 - public · colingsnyder2-ux · [src/CRobloxDocCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/CRobloxDocCommands.cpp)
@@ -65,6 +66,7 @@ Earlier paths and their donor versions: `native-classes/CRobloxDocCommands.cpp`.
 </details>
 
 **`b116ca09ed89`** · `WindowsClient/src/CRobloxDocCommands.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CRobloxDocCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/CRobloxDocCommands.cpp)
 - canonical · colingsnyder2-ux · [src/CRobloxDocCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/CRobloxDocCommands.cpp)
 - canonical · colingsnyder2-ux · [src/CRobloxDocCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/CRobloxDocCommands.cpp)
 - canonical · colingsnyder2-ux · [src/CRobloxDocCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/CRobloxDocCommands.cpp)
@@ -135,6 +137,8 @@ Earlier paths and their donor versions: `native-classes/CRobloxDocCommands.cpp`.
 - public · colingsnyder2-ux · [native-classes/CRobloxDocCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/CRobloxDocCommands.cpp)
 
 **`2f17be9be5ef`** · `native-classes/CRobloxDocCommands.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CRobloxDocCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/CRobloxDocCommands.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CRobloxDocCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/CRobloxDocCommands.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxDocCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/CRobloxDocCommands.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CRobloxDocCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/CRobloxDocCommands.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxDocCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CRobloxDocCommands.cpp)
@@ -305,6 +309,7 @@ Earlier paths and their donor versions: `native-classes/CRobloxDocCommands.cpp`.
 </details>
 
 **`b5d5fd7eef7d`** · `native-classes/CRobloxDocCommands.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/CRobloxDocCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/36edb51a905b80b2d0b79c77a412e7d1508df22c8e654473de79b8683b7a1256/rebuild/2008-06/native-classes/CRobloxDocCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/CRobloxDocCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/36edb51a905b80b2d0b79c77a412e7d1508df22c8e654473de79b8683b7a1256/rebuild/2008-06/native-classes/CRobloxDocCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/CRobloxDocCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/36edb51a905b80b2d0b79c77a412e7d1508df22c8e654473de79b8683b7a1256/rebuild/2008-06/native-classes/CRobloxDocCommands.cpp)
 - draft · colingsnyder2-ux · [native-classes/CRobloxDocCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/36edb51a905b80b2d0b79c77a412e7d1508df22c8e654473de79b8683b7a1256/rebuild/2008-06/native-classes/CRobloxDocCommands.cpp)
@@ -385,6 +390,7 @@ Earlier paths and their donor versions: `native-classes/CRobloxDocCommands.cpp`.
 Earlier paths and their donor versions: `native-classes/CRobloxReportSubViews.cpp`.
 
 **`7b1b6446a325`** · `WindowsClient/src/CRobloxReportSubViews.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CRobloxReportSubViews.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/CRobloxReportSubViews.cpp)
 - canonical · colingsnyder2-ux · [src/CRobloxReportSubViews.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/CRobloxReportSubViews.cpp)
 - canonical · colingsnyder2-ux · [src/CRobloxReportSubViews.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/CRobloxReportSubViews.cpp)
 - canonical · colingsnyder2-ux · [src/CRobloxReportSubViews.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/CRobloxReportSubViews.cpp)
@@ -443,6 +449,7 @@ Earlier paths and their donor versions: `native-classes/CRobloxReportSubViews.cp
 </details>
 
 **`c9daec9fd49f`** · `WindowsClient/src/CRobloxReportSubViews.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CRobloxReportSubViews.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/CRobloxReportSubViews.cpp)
 - public · colingsnyder2-ux · [src/CRobloxReportSubViews.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/CRobloxReportSubViews.cpp)
 - public · colingsnyder2-ux · [src/CRobloxReportSubViews.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/CRobloxReportSubViews.cpp)
 - public · colingsnyder2-ux · [src/CRobloxReportSubViews.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/CRobloxReportSubViews.cpp)
@@ -500,6 +507,8 @@ Earlier paths and their donor versions: `native-classes/CRobloxReportSubViews.cp
 </details>
 
 **`3f01312cc9e9`** · `native-classes/CRobloxReportSubViews.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CRobloxReportSubViews.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/CRobloxReportSubViews.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CRobloxReportSubViews.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/CRobloxReportSubViews.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxReportSubViews.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/CRobloxReportSubViews.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CRobloxReportSubViews.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/CRobloxReportSubViews.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxReportSubViews.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CRobloxReportSubViews.cpp)
@@ -681,6 +690,7 @@ Earlier paths and their donor versions: `native-classes/CRobloxReportSubViews.cp
 Earlier paths and their donor versions: `native-classes/CRobloxReportView.cpp`.
 
 **`08ad1210b0d1`** · `WindowsClient/src/CRobloxReportView.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CRobloxReportView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/CRobloxReportView.cpp)
 - canonical · colingsnyder2-ux · [src/CRobloxReportView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/CRobloxReportView.cpp)
 - canonical · colingsnyder2-ux · [src/CRobloxReportView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/CRobloxReportView.cpp)
 - canonical · colingsnyder2-ux · [src/CRobloxReportView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/CRobloxReportView.cpp)
@@ -784,6 +794,7 @@ Earlier paths and their donor versions: `native-classes/CRobloxReportView.cpp`.
 - public · colingsnyder2-ux · [src/CRobloxReportView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/src/CRobloxReportView.cpp)
 
 **`cbe1a8cff884`** · `WindowsClient/src/CRobloxReportView.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CRobloxReportView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/CRobloxReportView.cpp)
 - public · colingsnyder2-ux · [src/CRobloxReportView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/CRobloxReportView.cpp)
 - public · colingsnyder2-ux · [src/CRobloxReportView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/CRobloxReportView.cpp)
 - public · colingsnyder2-ux · [src/CRobloxReportView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/CRobloxReportView.cpp)
@@ -859,6 +870,8 @@ Earlier paths and their donor versions: `native-classes/CRobloxReportView.cpp`.
 </details>
 
 **`a17da3aa98c7`** · `native-classes/CRobloxReportView.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CRobloxReportView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/CRobloxReportView.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CRobloxReportView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/CRobloxReportView.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxReportView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/CRobloxReportView.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CRobloxReportView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/CRobloxReportView.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxReportView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CRobloxReportView.cpp)

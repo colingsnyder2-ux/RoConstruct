@@ -147,6 +147,8 @@ Compatibility path for `WindowsClient/include/CDataModelPropGrid.h`; compile eit
 </details>
 
 **`3640a5a06045`** · `native-headers/CDataModelPropGrid.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CDataModelPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/CDataModelPropGrid.h)
+- canonical · colingsnyder2-ux · [native-headers/CDataModelPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/CDataModelPropGrid.h)
 - public · colingsnyder2-ux · [native-headers/CDataModelPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/CDataModelPropGrid.h)
 - canonical · colingsnyder2-ux · [native-headers/CDataModelPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/CDataModelPropGrid.h)
 - public · colingsnyder2-ux · [native-headers/CDataModelPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/CDataModelPropGrid.h)
@@ -206,7 +208,7 @@ Compatibility path for `WindowsClient/include/CDataModelPropGrid.h`; compile eit
 - public · colingsnyder2-ux · [native-headers/CDataModelPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CDataModelPropGrid.h)
 - canonical · colingsnyder2-ux · [native-headers/CDataModelPropGrid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CDataModelPropGrid.h)
 
-<details><summary>59 retained local origins</summary>
+<details><summary>60 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CDataModelPropGrid.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CDataModelPropGrid.h` · root `b52aa15feaea5a0c`
@@ -249,6 +251,7 @@ Compatibility path for `WindowsClient/include/CDataModelPropGrid.h`; compile eit
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/CDataModelPropGrid.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/CDataModelPropGrid.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/CDataModelPropGrid.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/CDataModelPropGrid.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CDataModelPropGrid.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CDataModelPropGrid.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/native-headers/CDataModelPropGrid.h` · root `b52aa15feaea5a0c`
@@ -385,6 +388,8 @@ Compatibility path for `WindowsClient/include/CDeclarationView.h`; compile eithe
 - public · colingsnyder2-ux · [native-headers/CDeclarationView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/CDeclarationView.h)
 
 **`67f1b73b914f`** · `native-headers/CDeclarationView.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CDeclarationView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/CDeclarationView.h)
+- canonical · colingsnyder2-ux · [native-headers/CDeclarationView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/CDeclarationView.h)
 - public · colingsnyder2-ux · [native-headers/CDeclarationView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/CDeclarationView.h)
 - canonical · colingsnyder2-ux · [native-headers/CDeclarationView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/CDeclarationView.h)
 - public · colingsnyder2-ux · [native-headers/CDeclarationView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/CDeclarationView.h)
@@ -454,7 +459,7 @@ Compatibility path for `WindowsClient/include/CDeclarationView.h`; compile eithe
 - public · colingsnyder2-ux · [native-headers/CDeclarationView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CDeclarationView.h)
 - canonical · colingsnyder2-ux · [native-headers/CDeclarationView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CDeclarationView.h)
 
-<details><summary>68 retained local origins</summary>
+<details><summary>69 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CDeclarationView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CDeclarationView.h` · root `b52aa15feaea5a0c`
@@ -505,6 +510,7 @@ Compatibility path for `WindowsClient/include/CDeclarationView.h`; compile eithe
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/CDeclarationView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/CDeclarationView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/CDeclarationView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/CDeclarationView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/CDeclarationView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CDeclarationView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CDeclarationView.h` · root `b52aa15feaea5a0c`
@@ -640,6 +646,8 @@ Compatibility path for `WindowsClient/include/CDeclarationView.h`; compile eithe
 Compatibility path for `WindowsClient/include/CIDEDocManager.h`; compile either path, never both.
 
 **`1ec2b6db8dbf`** · `native-headers/CIDEDocManager.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CIDEDocManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/CIDEDocManager.h)
+- canonical · colingsnyder2-ux · [native-headers/CIDEDocManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/CIDEDocManager.h)
 - public · colingsnyder2-ux · [native-headers/CIDEDocManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/CIDEDocManager.h)
 - canonical · colingsnyder2-ux · [native-headers/CIDEDocManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/CIDEDocManager.h)
 - public · colingsnyder2-ux · [native-headers/CIDEDocManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/CIDEDocManager.h)
@@ -709,7 +717,7 @@ Compatibility path for `WindowsClient/include/CIDEDocManager.h`; compile either 
 - public · colingsnyder2-ux · [native-headers/CIDEDocManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CIDEDocManager.h)
 - canonical · colingsnyder2-ux · [native-headers/CIDEDocManager.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CIDEDocManager.h)
 
-<details><summary>68 retained local origins</summary>
+<details><summary>69 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CIDEDocManager.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CIDEDocManager.h` · root `b52aa15feaea5a0c`
@@ -760,6 +768,7 @@ Compatibility path for `WindowsClient/include/CIDEDocManager.h`; compile either 
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/CIDEDocManager.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/CIDEDocManager.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/CIDEDocManager.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/CIDEDocManager.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/CIDEDocManager.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CIDEDocManager.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CIDEDocManager.h` · root `b52aa15feaea5a0c`
@@ -1009,6 +1018,8 @@ Compatibility path for `WindowsClient/include/CInsertObjectDialog.h`; compile ei
 </details>
 
 **`c22c4cda4d26`** · `native-headers/CInsertObjectDialog.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/CInsertObjectDialog.h)
+- canonical · colingsnyder2-ux · [native-headers/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/CInsertObjectDialog.h)
 - public · colingsnyder2-ux · [native-headers/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/CInsertObjectDialog.h)
 - canonical · colingsnyder2-ux · [native-headers/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/CInsertObjectDialog.h)
 - public · colingsnyder2-ux · [native-headers/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/CInsertObjectDialog.h)
@@ -1078,7 +1089,7 @@ Compatibility path for `WindowsClient/include/CInsertObjectDialog.h`; compile ei
 - public · colingsnyder2-ux · [native-headers/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CInsertObjectDialog.h)
 - canonical · colingsnyder2-ux · [native-headers/CInsertObjectDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CInsertObjectDialog.h)
 
-<details><summary>68 retained local origins</summary>
+<details><summary>69 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
@@ -1129,6 +1140,7 @@ Compatibility path for `WindowsClient/include/CInsertObjectDialog.h`; compile ei
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CInsertObjectDialog.h` · root `b52aa15feaea5a0c`

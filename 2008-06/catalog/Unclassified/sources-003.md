@@ -123,6 +123,8 @@ Earlier paths and their donor versions: `native-headers/axis-vector-negation/G3D
 </details>
 
 **`51ebc848acc3`** · `Unclassified/include/axis-vector-negation/G3D/Vector3.inl` · proof not assessed
+- public · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.inl)
+- canonical · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.inl)
 - public · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.inl)
 - canonical · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.inl)
 - public · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.inl)
@@ -138,7 +140,7 @@ Earlier paths and their donor versions: `native-headers/axis-vector-negation/G3D
 - public · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.inl)
 - canonical · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.inl)
 
-<details><summary>14 retained local origins</summary>
+<details><summary>15 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-final-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.inl` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.inl` · root `b52aa15feaea5a0c`
@@ -147,6 +149,7 @@ Earlier paths and their donor versions: `native-headers/axis-vector-negation/G3D
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.inl` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.inl` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.inl` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.inl` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u/frozen/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.inl` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u2/frozen/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.inl` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/Unclassified/include/axis-vector-negation/G3D/Vector3.inl` · root `b52aa15feaea5a0c`
@@ -234,6 +237,8 @@ Earlier paths and their donor versions: `native-headers/axis-vector-negation/G3D
 </details>
 
 **`987ef4ed8633`** · `native-headers/axis-vector-negation/G3D/Vector3.inl` · proof not assessed
+- public · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl)
+- canonical · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl)
 - public · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl)
 - canonical · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl)
 - public · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl)
@@ -301,7 +306,7 @@ Earlier paths and their donor versions: `native-headers/axis-vector-negation/G3D
 - public · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl)
 - canonical · colingsnyder2-ux · [G3D/Vector3.inl](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl)
 
-<details><summary>66 retained local origins</summary>
+<details><summary>67 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl` · root `b52aa15feaea5a0c`
@@ -350,6 +355,7 @@ Earlier paths and their donor versions: `native-headers/axis-vector-negation/G3D
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/axis-vector-negation/G3D/Vector3.inl` · root `b52aa15feaea5a0c`
@@ -493,6 +499,7 @@ Earlier paths and their donor versions: `native-headers/axis-vector-negation/ref
 </details>
 
 **`51bb50d6f2a8`** · `Unclassified/include/axis-vector-negation/reflection/function.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/include/axis-vector-negation/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/include/axis-vector-negation/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/include/axis-vector-negation/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/include/axis-vector-negation/reflection/function.h)
@@ -502,6 +509,7 @@ Earlier paths and their donor versions: `native-headers/axis-vector-negation/ref
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/Unclassified/include/axis-vector-negation/reflection/function.h)
 
 **`e37baa58149b`** · `Unclassified/include/axis-vector-negation/reflection/function.h` · proof not assessed
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/reflection/function.h)
@@ -510,7 +518,7 @@ Earlier paths and their donor versions: `native-headers/axis-vector-negation/ref
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Unclassified/include/axis-vector-negation/reflection/function.h)
 
-<details><summary>14 retained local origins</summary>
+<details><summary>15 retained local origins</summary>
 
 - local · `work/native-candidates/overlay-final-fullpass-20261108/prepared/canonical/rebuild/2008-06/Unclassified/include/axis-vector-negation/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/overlay-layout-fullpass-20261108/candidate/rebuild/2008-06/Unclassified/include/axis-vector-negation/reflection/function.h` · root `b52aa15feaea5a0c`
@@ -519,6 +527,7 @@ Earlier paths and their donor versions: `native-headers/axis-vector-negation/ref
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/Unclassified/include/axis-vector-negation/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/Unclassified/include/axis-vector-negation/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/Unclassified/include/axis-vector-negation/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/Unclassified/include/axis-vector-negation/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u/frozen/rebuild/2008-06/Unclassified/include/axis-vector-negation/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/u2/frozen/rebuild/2008-06/Unclassified/include/axis-vector-negation/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/o28/c/rebuild/2008-06/Unclassified/include/axis-vector-negation/reflection/function.h` · root `b52aa15feaea5a0c`
@@ -595,6 +604,8 @@ Earlier paths and their donor versions: `native-headers/axis-vector-negation/ref
 </details>
 
 **`417e2d805591`** · `native-headers/axis-vector-negation/reflection/function.h` · proof not assessed
+- public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/axis-vector-negation/reflection/function.h)
+- canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/axis-vector-negation/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/axis-vector-negation/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/axis-vector-negation/reflection/function.h)
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/axis-vector-negation/reflection/function.h)
@@ -662,7 +673,7 @@ Earlier paths and their donor versions: `native-headers/axis-vector-negation/ref
 - public · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/axis-vector-negation/reflection/function.h)
 - canonical · colingsnyder2-ux · [reflection/function.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/axis-vector-negation/reflection/function.h)
 
-<details><summary>66 retained local origins</summary>
+<details><summary>67 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/axis-vector-negation/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/axis-vector-negation/reflection/function.h` · root `b52aa15feaea5a0c`
@@ -711,6 +722,7 @@ Earlier paths and their donor versions: `native-headers/axis-vector-negation/ref
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/axis-vector-negation/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/axis-vector-negation/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/axis-vector-negation/reflection/function.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/axis-vector-negation/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/axis-vector-negation/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/axis-vector-negation/reflection/function.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/axis-vector-negation/reflection/function.h` · root `b52aa15feaea5a0c`

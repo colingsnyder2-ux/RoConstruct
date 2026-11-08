@@ -46,6 +46,7 @@ Earlier paths and their donor versions: `native-classes/ServiceSelection.cpp`.
 </details>
 
 **`6410db81df6d`** · `App/src/v8datamodel/ServiceSelection.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/ServiceSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/ServiceSelection.cpp)
 - public · colingsnyder2-ux · [v8datamodel/ServiceSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/ServiceSelection.cpp)
 - public · colingsnyder2-ux · [v8datamodel/ServiceSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/ServiceSelection.cpp)
 - public · colingsnyder2-ux · [v8datamodel/ServiceSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/ServiceSelection.cpp)
@@ -66,6 +67,7 @@ Earlier paths and their donor versions: `native-classes/ServiceSelection.cpp`.
 </details>
 
 **`c37804174e13`** · `App/src/v8datamodel/ServiceSelection.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/ServiceSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/ServiceSelection.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/ServiceSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/ServiceSelection.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/ServiceSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/ServiceSelection.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/ServiceSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/ServiceSelection.cpp)
@@ -262,6 +264,8 @@ Earlier paths and their donor versions: `native-classes/ServiceSelection.cpp`.
 </details>
 
 **`f04c7d034ca9`** · `native-classes/ServiceSelection.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ServiceSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/ServiceSelection.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ServiceSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/ServiceSelection.cpp)
 - public · colingsnyder2-ux · [native-classes/ServiceSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/ServiceSelection.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ServiceSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/ServiceSelection.cpp)
 - public · colingsnyder2-ux · [native-classes/ServiceSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/ServiceSelection.cpp)
@@ -403,6 +407,7 @@ Earlier paths and their donor versions: `native-classes/SettingsDialogShow.cpp`.
 - public · colingsnyder2-ux · [v8datamodel/SettingsDialogShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/SettingsDialogShow.cpp)
 
 **`6e44b6d02454`** · `App/src/v8datamodel/SettingsDialogShow.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/SettingsDialogShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/SettingsDialogShow.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SettingsDialogShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/SettingsDialogShow.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SettingsDialogShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/SettingsDialogShow.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SettingsDialogShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/SettingsDialogShow.cpp)
@@ -461,6 +466,7 @@ Earlier paths and their donor versions: `native-classes/SettingsDialogShow.cpp`.
 </details>
 
 **`b89978da9f00`** · `App/src/v8datamodel/SettingsDialogShow.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/SettingsDialogShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/SettingsDialogShow.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SettingsDialogShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/SettingsDialogShow.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SettingsDialogShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/SettingsDialogShow.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SettingsDialogShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/SettingsDialogShow.cpp)
@@ -539,6 +545,8 @@ Earlier paths and their donor versions: `native-classes/SettingsDialogShow.cpp`.
 - canonical · colingsnyder2-ux · [native-classes/SettingsDialogShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/workspace/rebuild/2008-06/native-classes/SettingsDialogShow.cpp)
 
 **`8f46d38a7970`** · `native-classes/SettingsDialogShow.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SettingsDialogShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/SettingsDialogShow.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SettingsDialogShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/SettingsDialogShow.cpp)
 - public · colingsnyder2-ux · [native-classes/SettingsDialogShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/SettingsDialogShow.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SettingsDialogShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/SettingsDialogShow.cpp)
 - public · colingsnyder2-ux · [native-classes/SettingsDialogShow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/SettingsDialogShow.cpp)
@@ -650,6 +658,7 @@ Earlier paths and their donor versions: `native-classes/SettingsDialogShow.cpp`.
 Earlier paths and their donor versions: `native-classes/Sky.cpp`.
 
 **`433e30a39f97`** · `App/src/v8datamodel/Sky.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/Sky.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/Sky.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/Sky.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/Sky.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/Sky.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/Sky.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/Sky.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/Sky.cpp)
@@ -708,6 +717,7 @@ Earlier paths and their donor versions: `native-classes/Sky.cpp`.
 </details>
 
 **`5ef90db52c88`** · `App/src/v8datamodel/Sky.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/Sky.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/Sky.cpp)
 - public · colingsnyder2-ux · [v8datamodel/Sky.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/Sky.cpp)
 - public · colingsnyder2-ux · [v8datamodel/Sky.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/Sky.cpp)
 - public · colingsnyder2-ux · [v8datamodel/Sky.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/Sky.cpp)
@@ -795,6 +805,8 @@ Earlier paths and their donor versions: `native-classes/Sky.cpp`.
 </details>
 
 **`53206cab92c5`** · `native-classes/Sky.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/Sky.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/Sky.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Sky.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/Sky.cpp)
 - public · colingsnyder2-ux · [native-classes/Sky.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/Sky.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Sky.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/Sky.cpp)
 - public · colingsnyder2-ux · [native-classes/Sky.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/Sky.cpp)
@@ -922,6 +934,7 @@ Earlier paths and their donor versions: `native-classes/Sky.cpp`.
 </details>
 
 **`d774e440b146`** · `native-classes/Sky.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/Sky.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/ee3664589525214ee032ef9f71f03de0e55c4d07b715372ac9d163628098f24f/rebuild/2008-06/native-classes/Sky.cpp)
 - draft · colingsnyder2-ux · [native-classes/Sky.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/ee3664589525214ee032ef9f71f03de0e55c4d07b715372ac9d163628098f24f/rebuild/2008-06/native-classes/Sky.cpp)
 - draft · colingsnyder2-ux · [native-classes/Sky.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/ee3664589525214ee032ef9f71f03de0e55c4d07b715372ac9d163628098f24f/rebuild/2008-06/native-classes/Sky.cpp)
 - draft · colingsnyder2-ux · [native-classes/Sky.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/ee3664589525214ee032ef9f71f03de0e55c4d07b715372ac9d163628098f24f/rebuild/2008-06/native-classes/Sky.cpp)
@@ -1002,16 +1015,19 @@ Earlier paths and their donor versions: `native-classes/Sky.cpp`.
 Earlier paths and their donor versions: `Unclassified/src/SoundClassNames.cpp`.
 
 **`47db9ba3cb33`** · `App/src/v8datamodel/SoundClassNames.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/SoundClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/SoundClassNames.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SoundClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/SoundClassNames.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SoundClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/SoundClassNames.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SoundClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/SoundClassNames.cpp)
 
 **`ee9c00c48018`** · `App/src/v8datamodel/SoundClassNames.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/SoundClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/SoundClassNames.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SoundClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/SoundClassNames.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SoundClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/SoundClassNames.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SoundClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/SoundClassNames.cpp)
 
 **`0b077c160a85`** · `Unclassified/src/SoundClassNames.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/SoundClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/SoundClassNames.cpp)
 - public · colingsnyder2-ux · [src/SoundClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/SoundClassNames.cpp)
 - public · colingsnyder2-ux · [src/SoundClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/SoundClassNames.cpp)
 - public · colingsnyder2-ux · [src/SoundClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/SoundClassNames.cpp)
@@ -1097,6 +1113,7 @@ Earlier paths and their donor versions: `Unclassified/src/SoundClassNames.cpp`.
 </details>
 
 **`e7b3c947cbaf`** · `Unclassified/src/SoundClassNames.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/SoundClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/SoundClassNames.cpp)
 - canonical · colingsnyder2-ux · [src/SoundClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/SoundClassNames.cpp)
 - canonical · colingsnyder2-ux · [src/SoundClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/SoundClassNames.cpp)
 - canonical · colingsnyder2-ux · [src/SoundClassNames.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/SoundClassNames.cpp)

@@ -36,6 +36,7 @@ Earlier paths and their donor versions: `native-headers/InsertObject.h`.
 - public · colingsnyder2-ux · [include/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/include/InsertObject.h)
 
 **`dccc8ba7ca6c`** · `WindowsClient/include/InsertObject.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/include/InsertObject.h)
 - canonical · colingsnyder2-ux · [include/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/include/InsertObject.h)
 - canonical · colingsnyder2-ux · [include/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/include/InsertObject.h)
 - canonical · colingsnyder2-ux · [include/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/include/InsertObject.h)
@@ -66,7 +67,7 @@ Earlier paths and their donor versions: `native-headers/InsertObject.h`.
 - canonical · colingsnyder2-ux · [include/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/InsertObject.h)
 - canonical · colingsnyder2-ux · [include/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/InsertObject.h)
 
-<details><summary>56 retained local origins</summary>
+<details><summary>57 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/InsertObject.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/InsertObject.h` · root `b52aa15feaea5a0c`
@@ -108,6 +109,7 @@ Earlier paths and their donor versions: `native-headers/InsertObject.h`.
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/WindowsClient/include/InsertObject.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/WindowsClient/include/InsertObject.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/WindowsClient/include/InsertObject.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/WindowsClient/include/InsertObject.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/InsertObject.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/WindowsClient/include/InsertObject.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/InsertObject.h` · root `b52aa15feaea5a0c`
@@ -128,6 +130,7 @@ Earlier paths and their donor versions: `native-headers/InsertObject.h`.
 </details>
 
 **`f9354a348d4e`** · `WindowsClient/include/InsertObject.h` · proof not assessed
+- public · colingsnyder2-ux · [include/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/include/InsertObject.h)
 - public · colingsnyder2-ux · [include/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/include/InsertObject.h)
 - public · colingsnyder2-ux · [include/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/include/InsertObject.h)
 - public · colingsnyder2-ux · [include/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/include/InsertObject.h)
@@ -179,6 +182,8 @@ Earlier paths and their donor versions: `native-headers/InsertObject.h`.
 </details>
 
 **`67b464537b52`** · `native-headers/InsertObject.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/InsertObject.h)
+- canonical · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/InsertObject.h)
 - public · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/InsertObject.h)
 - canonical · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/InsertObject.h)
 - public · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/InsertObject.h)
@@ -238,7 +243,7 @@ Earlier paths and their donor versions: `native-headers/InsertObject.h`.
 - public · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/InsertObject.h)
 - canonical · colingsnyder2-ux · [native-headers/InsertObject.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/InsertObject.h)
 
-<details><summary>59 retained local origins</summary>
+<details><summary>60 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
@@ -281,6 +286,7 @@ Earlier paths and their donor versions: `native-headers/InsertObject.h`.
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/native-headers/InsertObject.h` · root `b52aa15feaea5a0c`
@@ -411,6 +417,7 @@ Earlier paths and their donor versions: `native-headers/InsertObject.h`.
 Earlier paths and their donor versions: `native-headers/LoginRenewer.h`.
 
 **`7d21f553e663`** · `WindowsClient/include/LoginRenewer.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/include/LoginRenewer.h)
 - canonical · colingsnyder2-ux · [include/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/include/LoginRenewer.h)
 - canonical · colingsnyder2-ux · [include/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/include/LoginRenewer.h)
 - canonical · colingsnyder2-ux · [include/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/include/LoginRenewer.h)
@@ -446,7 +453,7 @@ Earlier paths and their donor versions: `native-headers/LoginRenewer.h`.
 - canonical · colingsnyder2-ux · [include/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/LoginRenewer.h)
 - canonical · colingsnyder2-ux · [include/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/LoginRenewer.h)
 
-<details><summary>65 retained local origins</summary>
+<details><summary>66 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/LoginRenewer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/LoginRenewer.h` · root `b52aa15feaea5a0c`
@@ -496,6 +503,7 @@ Earlier paths and their donor versions: `native-headers/LoginRenewer.h`.
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/WindowsClient/include/LoginRenewer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/WindowsClient/include/LoginRenewer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/WindowsClient/include/LoginRenewer.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/WindowsClient/include/LoginRenewer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/WindowsClient/include/LoginRenewer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/LoginRenewer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/WindowsClient/include/LoginRenewer.h` · root `b52aa15feaea5a0c`
@@ -517,6 +525,7 @@ Earlier paths and their donor versions: `native-headers/LoginRenewer.h`.
 </details>
 
 **`a3a99ac34ff4`** · `WindowsClient/include/LoginRenewer.h` · proof not assessed
+- public · colingsnyder2-ux · [include/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/include/LoginRenewer.h)
 - public · colingsnyder2-ux · [include/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/include/LoginRenewer.h)
 - public · colingsnyder2-ux · [include/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/include/LoginRenewer.h)
 - public · colingsnyder2-ux · [include/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/include/LoginRenewer.h)
@@ -811,6 +820,8 @@ Earlier paths and their donor versions: `native-headers/LoginRenewer.h`.
 </details>
 
 **`fe4fcea04f27`** · `native-headers/LoginRenewer.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/LoginRenewer.h)
+- canonical · colingsnyder2-ux · [native-headers/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/LoginRenewer.h)
 - public · colingsnyder2-ux · [native-headers/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/LoginRenewer.h)
 - canonical · colingsnyder2-ux · [native-headers/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/LoginRenewer.h)
 - public · colingsnyder2-ux · [native-headers/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/LoginRenewer.h)
@@ -880,7 +891,7 @@ Earlier paths and their donor versions: `native-headers/LoginRenewer.h`.
 - public · colingsnyder2-ux · [native-headers/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/LoginRenewer.h)
 - canonical · colingsnyder2-ux · [native-headers/LoginRenewer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/LoginRenewer.h)
 
-<details><summary>68 retained local origins</summary>
+<details><summary>69 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/LoginRenewer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/LoginRenewer.h` · root `b52aa15feaea5a0c`
@@ -931,6 +942,7 @@ Earlier paths and their donor versions: `native-headers/LoginRenewer.h`.
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/LoginRenewer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/LoginRenewer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/LoginRenewer.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/LoginRenewer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/LoginRenewer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/LoginRenewer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/LoginRenewer.h` · root `b52aa15feaea5a0c`

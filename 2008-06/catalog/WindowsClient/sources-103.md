@@ -107,6 +107,8 @@ Compatibility path for `Unclassified/src/MoveUpSelectionVerb.cpp`; compile eithe
 </details>
 
 **`5433a614b25e`** · `native-classes/MoveUpSelectionVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/MoveUpSelectionVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp)
 - public · colingsnyder2-ux · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/MoveUpSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/MoveUpSelectionVerb.cpp)
 - public · colingsnyder2-ux · [native-classes/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/MoveUpSelectionVerb.cpp)

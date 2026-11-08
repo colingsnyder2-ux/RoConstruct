@@ -6,11 +6,12 @@
 <summary>native-classes/accepted/App/v8kernel/Link.cpp — diverged; 7 content versions</summary>
 
 **`1e2247389cb2`** · `native-classes/accepted/App/v8kernel/Link.cpp` · proof not assessed
-- canonical · colingsnyder2-ux · [v8kernel/Link.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/accepted/App/v8kernel/Link.cpp)
+- canonical · colingsnyder2-ux · [v8kernel/Link.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/accepted/App/v8kernel/Link.cpp)
 - fork · coldek · [v8kernel/Link.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-classes/accepted/App/v8kernel/Link.cpp)
 - fork · mewpokemons · [v8kernel/Link.cpp](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-classes/accepted/App/v8kernel/Link.cpp)
 - fork · mewpokemons · [v8kernel/Link.cpp](https://github.com/mewpokemons/RoConstruct/blob/5fe2214e131d164c737320c28bdd4f3b53c40cb1/rebuild/2008-06/native-classes/accepted/App/v8kernel/Link.cpp)
 - fork · mewpokemons · [v8kernel/Link.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/accepted/App/v8kernel/Link.cpp)
+- canonical · colingsnyder2-ux · [v8kernel/Link.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/accepted/App/v8kernel/Link.cpp)
 - canonical · colingsnyder2-ux · [v8kernel/Link.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-classes/accepted/App/v8kernel/Link.cpp)
 - canonical · colingsnyder2-ux · [v8kernel/Link.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-classes/accepted/App/v8kernel/Link.cpp)
 - canonical · colingsnyder2-ux · [v8kernel/Link.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-classes/accepted/App/v8kernel/Link.cpp)
@@ -125,6 +126,7 @@
 - public · colingsnyder2-ux · [v8kernel/Link.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/accepted/App/v8kernel/Link.cpp)
 
 **`456c5fc9fe66`** · `native-classes/accepted/App/v8kernel/Link.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8kernel/Link.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/accepted/App/v8kernel/Link.cpp)
 - public · colingsnyder2-ux · [v8kernel/Link.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/accepted/App/v8kernel/Link.cpp)
 - public · colingsnyder2-ux · [v8kernel/Link.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/accepted/App/v8kernel/Link.cpp)
 - public · colingsnyder2-ux · [v8kernel/Link.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/accepted/App/v8kernel/Link.cpp)
@@ -444,6 +446,8 @@ Compatibility path for `WindowsClient/include/ActiveDocView.h`; compile either p
 </details>
 
 **`ae4dbe996278`** · `native-headers/ActiveDocView.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/ActiveDocView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/ActiveDocView.h)
+- canonical · colingsnyder2-ux · [native-headers/ActiveDocView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/ActiveDocView.h)
 - public · colingsnyder2-ux · [native-headers/ActiveDocView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/ActiveDocView.h)
 - canonical · colingsnyder2-ux · [native-headers/ActiveDocView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/ActiveDocView.h)
 - public · colingsnyder2-ux · [native-headers/ActiveDocView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/ActiveDocView.h)
@@ -513,7 +517,7 @@ Compatibility path for `WindowsClient/include/ActiveDocView.h`; compile either p
 - public · colingsnyder2-ux · [native-headers/ActiveDocView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/ActiveDocView.h)
 - canonical · colingsnyder2-ux · [native-headers/ActiveDocView.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/ActiveDocView.h)
 
-<details><summary>68 retained local origins</summary>
+<details><summary>69 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/ActiveDocView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/ActiveDocView.h` · root `b52aa15feaea5a0c`
@@ -564,6 +568,7 @@ Compatibility path for `WindowsClient/include/ActiveDocView.h`; compile either p
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/ActiveDocView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/ActiveDocView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/ActiveDocView.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/ActiveDocView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/ActiveDocView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/ActiveDocView.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/ActiveDocView.h` · root `b52aa15feaea5a0c`
@@ -625,10 +630,11 @@ Compatibility path for `WindowsClient/include/ActiveDocView.h`; compile either p
 <summary>native-headers/AppDraw/AdornG3D2008.h — candidate-only; 1 content versions</summary>
 
 **`f93a768ea32e`** · `native-headers/AppDraw/AdornG3D2008.h` · proof not assessed
-- draft · colingsnyder2-ux · [AppDraw/AdornG3D2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/AppDraw/AdornG3D2008.h)
+- draft · colingsnyder2-ux · [AppDraw/AdornG3D2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/AppDraw/AdornG3D2008.h)
 - fork · mewpokemons · [AppDraw/AdornG3D2008.h](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-headers/AppDraw/AdornG3D2008.h)
 - fork · mewpokemons · [AppDraw/AdornG3D2008.h](https://github.com/mewpokemons/RoConstruct/blob/5fe2214e131d164c737320c28bdd4f3b53c40cb1/rebuild/2008-06/native-headers/AppDraw/AdornG3D2008.h)
 - fork · mewpokemons · [AppDraw/AdornG3D2008.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/AppDraw/AdornG3D2008.h)
+- draft · colingsnyder2-ux · [AppDraw/AdornG3D2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/AppDraw/AdornG3D2008.h)
 - draft · colingsnyder2-ux · [AppDraw/AdornG3D2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/AppDraw/AdornG3D2008.h)
 - draft · colingsnyder2-ux · [AppDraw/AdornG3D2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/AppDraw/AdornG3D2008.h)
 - draft · colingsnyder2-ux · [AppDraw/AdornG3D2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/AppDraw/AdornG3D2008.h)
@@ -1007,6 +1013,8 @@ Compatibility path for `WindowsClient/include/CAboutRobloxDialog.h`; compile eit
 </details>
 
 **`584222dd205a`** · `native-headers/CAboutRobloxDialog.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CAboutRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/CAboutRobloxDialog.h)
+- canonical · colingsnyder2-ux · [native-headers/CAboutRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/CAboutRobloxDialog.h)
 - public · colingsnyder2-ux · [native-headers/CAboutRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/CAboutRobloxDialog.h)
 - canonical · colingsnyder2-ux · [native-headers/CAboutRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/CAboutRobloxDialog.h)
 - public · colingsnyder2-ux · [native-headers/CAboutRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/CAboutRobloxDialog.h)
@@ -1076,7 +1084,7 @@ Compatibility path for `WindowsClient/include/CAboutRobloxDialog.h`; compile eit
 - public · colingsnyder2-ux · [native-headers/CAboutRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CAboutRobloxDialog.h)
 - canonical · colingsnyder2-ux · [native-headers/CAboutRobloxDialog.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CAboutRobloxDialog.h)
 
-<details><summary>68 retained local origins</summary>
+<details><summary>69 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CAboutRobloxDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CAboutRobloxDialog.h` · root `b52aa15feaea5a0c`
@@ -1127,6 +1135,7 @@ Compatibility path for `WindowsClient/include/CAboutRobloxDialog.h`; compile eit
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/CAboutRobloxDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/CAboutRobloxDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/CAboutRobloxDialog.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/CAboutRobloxDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/CAboutRobloxDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CAboutRobloxDialog.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CAboutRobloxDialog.h` · root `b52aa15feaea5a0c`

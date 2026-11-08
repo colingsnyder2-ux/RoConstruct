@@ -8,6 +8,8 @@
 Compatibility path for `Unclassified/src/VerbContainer.cpp`; compile either path, never both.
 
 **`045b6456aa94`** · `native-classes/VerbContainer.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/VerbContainer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/VerbContainer.cpp)
+- canonical · colingsnyder2-ux · [native-classes/VerbContainer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/VerbContainer.cpp)
 - public · colingsnyder2-ux · [native-classes/VerbContainer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/VerbContainer.cpp)
 - canonical · colingsnyder2-ux · [native-classes/VerbContainer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/VerbContainer.cpp)
 - public · colingsnyder2-ux · [native-classes/VerbContainer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/VerbContainer.cpp)
@@ -366,6 +368,8 @@ Compatibility path for `Unclassified/src/VerbContainer.cpp`; compile either path
 Compatibility path for `Unclassified/src/VerbLifetime.cpp`; compile either path, never both.
 
 **`088dd42c77af`** · `native-classes/VerbLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/VerbLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/VerbLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/VerbLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/VerbLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/VerbLifetime.cpp)
@@ -681,6 +685,8 @@ Compatibility path for `App/src/v8datamodel/VerbQueries.cpp`; compile either pat
 </details>
 
 **`7bb6cdcaad96`** · `native-classes/VerbQueries.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/VerbQueries.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/VerbQueries.cpp)
+- canonical · colingsnyder2-ux · [native-classes/VerbQueries.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/VerbQueries.cpp)
 - public · colingsnyder2-ux · [native-classes/VerbQueries.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/VerbQueries.cpp)
 - canonical · colingsnyder2-ux · [native-classes/VerbQueries.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/VerbQueries.cpp)
 - public · colingsnyder2-ux · [native-classes/VerbQueries.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/VerbQueries.cpp)
@@ -832,6 +838,8 @@ Compatibility path for `Unclassified/src/ViewCommandRouting.cpp`; compile either
 </details>
 
 **`3c3c2d14b9b7`** · `native-classes/ViewCommandRouting.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/ViewCommandRouting.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/ViewCommandRouting.cpp)
 - public · colingsnyder2-ux · [native-classes/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/ViewCommandRouting.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/ViewCommandRouting.cpp)
 - public · colingsnyder2-ux · [native-classes/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/ViewCommandRouting.cpp)
@@ -1042,6 +1050,8 @@ Compatibility path for `Unclassified/src/ViewNewBevelMesh.cpp`; compile either p
 </details>
 
 **`2dfb1baffcec`** · `native-classes/ViewNewBevelMesh.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ViewNewBevelMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/ViewNewBevelMesh.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ViewNewBevelMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/ViewNewBevelMesh.cpp)
 - public · colingsnyder2-ux · [native-classes/ViewNewBevelMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/ViewNewBevelMesh.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ViewNewBevelMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/ViewNewBevelMesh.cpp)
 - public · colingsnyder2-ux · [native-classes/ViewNewBevelMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/ViewNewBevelMesh.cpp)

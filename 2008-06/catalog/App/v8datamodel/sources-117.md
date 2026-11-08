@@ -8,6 +8,8 @@
 Compatibility path for `App/include/v8datamodel/Tool.h`; compile either path, never both.
 
 **`4120a2ce931c`** · `native-headers/v8datamodel/Tool.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/Tool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/v8datamodel/Tool.h)
+- canonical · colingsnyder2-ux · [v8datamodel/Tool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/v8datamodel/Tool.h)
 - public · colingsnyder2-ux · [v8datamodel/Tool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/v8datamodel/Tool.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Tool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/v8datamodel/Tool.h)
 - public · colingsnyder2-ux · [v8datamodel/Tool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/v8datamodel/Tool.h)
@@ -79,7 +81,7 @@ Compatibility path for `App/include/v8datamodel/Tool.h`; compile either path, ne
 - public · colingsnyder2-ux · [v8datamodel/Tool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/Tool.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Tool.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/Tool.h)
 
-<details><summary>70 retained local origins</summary>
+<details><summary>71 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Tool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Tool.h` · root `b52aa15feaea5a0c`
@@ -132,6 +134,7 @@ Compatibility path for `App/include/v8datamodel/Tool.h`; compile either path, ne
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/v8datamodel/Tool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/v8datamodel/Tool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/v8datamodel/Tool.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/v8datamodel/Tool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8datamodel/Tool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/Tool.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/Tool.h` · root `b52aa15feaea5a0c`
@@ -319,6 +322,8 @@ Compatibility path for `App/include/v8datamodel/ToolsPart.h`; compile either pat
 - public · colingsnyder2-ux · [v8datamodel/ToolsPart.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/v8datamodel/ToolsPart.h)
 
 **`2e2e14782b81`** · `native-headers/v8datamodel/ToolsPart.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/ToolsPart.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/v8datamodel/ToolsPart.h)
+- canonical · colingsnyder2-ux · [v8datamodel/ToolsPart.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/v8datamodel/ToolsPart.h)
 - public · colingsnyder2-ux · [v8datamodel/ToolsPart.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/v8datamodel/ToolsPart.h)
 - canonical · colingsnyder2-ux · [v8datamodel/ToolsPart.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/v8datamodel/ToolsPart.h)
 - public · colingsnyder2-ux · [v8datamodel/ToolsPart.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/v8datamodel/ToolsPart.h)
@@ -390,7 +395,7 @@ Compatibility path for `App/include/v8datamodel/ToolsPart.h`; compile either pat
 - public · colingsnyder2-ux · [v8datamodel/ToolsPart.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/ToolsPart.h)
 - canonical · colingsnyder2-ux · [v8datamodel/ToolsPart.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/ToolsPart.h)
 
-<details><summary>70 retained local origins</summary>
+<details><summary>71 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/ToolsPart.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/ToolsPart.h` · root `b52aa15feaea5a0c`
@@ -443,6 +448,7 @@ Compatibility path for `App/include/v8datamodel/ToolsPart.h`; compile either pat
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/v8datamodel/ToolsPart.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/v8datamodel/ToolsPart.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/v8datamodel/ToolsPart.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/v8datamodel/ToolsPart.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8datamodel/ToolsPart.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/ToolsPart.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/ToolsPart.h` · root `b52aa15feaea5a0c`
@@ -628,6 +634,8 @@ Compatibility path for `App/include/v8datamodel/UserController.h`; compile eithe
 - public · colingsnyder2-ux · [v8datamodel/UserController.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/v8datamodel/UserController.h)
 
 **`7f1f6e075939`** · `native-headers/v8datamodel/UserController.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/UserController.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/v8datamodel/UserController.h)
+- canonical · colingsnyder2-ux · [v8datamodel/UserController.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/v8datamodel/UserController.h)
 - public · colingsnyder2-ux · [v8datamodel/UserController.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/v8datamodel/UserController.h)
 - canonical · colingsnyder2-ux · [v8datamodel/UserController.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/v8datamodel/UserController.h)
 - public · colingsnyder2-ux · [v8datamodel/UserController.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/v8datamodel/UserController.h)
@@ -699,7 +707,7 @@ Compatibility path for `App/include/v8datamodel/UserController.h`; compile eithe
 - public · colingsnyder2-ux · [v8datamodel/UserController.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/UserController.h)
 - canonical · colingsnyder2-ux · [v8datamodel/UserController.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/UserController.h)
 
-<details><summary>70 retained local origins</summary>
+<details><summary>71 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/UserController.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/UserController.h` · root `b52aa15feaea5a0c`
@@ -752,6 +760,7 @@ Compatibility path for `App/include/v8datamodel/UserController.h`; compile eithe
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/v8datamodel/UserController.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/v8datamodel/UserController.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/v8datamodel/UserController.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/v8datamodel/UserController.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8datamodel/UserController.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/UserController.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/UserController.h` · root `b52aa15feaea5a0c`
@@ -938,6 +947,8 @@ Compatibility path for `App/include/v8datamodel/Value.h`; compile either path, n
 </details>
 
 **`d37aaae825ee`** · `native-headers/v8datamodel/Value.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/Value.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/v8datamodel/Value.h)
+- canonical · colingsnyder2-ux · [v8datamodel/Value.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/v8datamodel/Value.h)
 - public · colingsnyder2-ux · [v8datamodel/Value.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/v8datamodel/Value.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Value.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/v8datamodel/Value.h)
 - public · colingsnyder2-ux · [v8datamodel/Value.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/v8datamodel/Value.h)
@@ -1003,7 +1014,7 @@ Compatibility path for `App/include/v8datamodel/Value.h`; compile either path, n
 - public · colingsnyder2-ux · [v8datamodel/Value.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/Value.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Value.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/Value.h)
 
-<details><summary>64 retained local origins</summary>
+<details><summary>65 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
@@ -1050,6 +1061,7 @@ Compatibility path for `App/include/v8datamodel/Value.h`; compile either path, n
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/Value.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/Value.h` · root `b52aa15feaea5a0c`

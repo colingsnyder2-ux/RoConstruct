@@ -46,6 +46,7 @@ Earlier paths and their donor versions: `native-classes/VisitFactory.cpp`.
 </details>
 
 **`a1f78f98e4f6`** · `App/src/v8datamodel/VisitFactory.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/VisitFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/VisitFactory.cpp)
 - public · colingsnyder2-ux · [v8datamodel/VisitFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/VisitFactory.cpp)
 - public · colingsnyder2-ux · [v8datamodel/VisitFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/VisitFactory.cpp)
 - public · colingsnyder2-ux · [v8datamodel/VisitFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/VisitFactory.cpp)
@@ -66,6 +67,7 @@ Earlier paths and their donor versions: `native-classes/VisitFactory.cpp`.
 </details>
 
 **`d61e3e651bef`** · `App/src/v8datamodel/VisitFactory.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/VisitFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/VisitFactory.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/VisitFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/VisitFactory.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/VisitFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/VisitFactory.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/VisitFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/VisitFactory.cpp)
@@ -166,6 +168,8 @@ Earlier paths and their donor versions: `native-classes/VisitFactory.cpp`.
 </details>
 
 **`6930c6aa7c48`** · `native-classes/VisitFactory.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/VisitFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/VisitFactory.cpp)
+- canonical · colingsnyder2-ux · [native-classes/VisitFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/VisitFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/VisitFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/VisitFactory.cpp)
 - canonical · colingsnyder2-ux · [native-classes/VisitFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/VisitFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/VisitFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/VisitFactory.cpp)
@@ -315,6 +319,7 @@ Earlier paths and their donor versions: `native-classes/VisitFactory.cpp`.
 Earlier paths and their donor versions: `native-classes/VisitServiceLookup.cpp`.
 
 **`2e332a984916`** · `App/src/v8datamodel/VisitServiceLookup.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/VisitServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/VisitServiceLookup.cpp)
 - public · colingsnyder2-ux · [v8datamodel/VisitServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/VisitServiceLookup.cpp)
 - public · colingsnyder2-ux · [v8datamodel/VisitServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/VisitServiceLookup.cpp)
 - public · colingsnyder2-ux · [v8datamodel/VisitServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/VisitServiceLookup.cpp)
@@ -344,6 +349,7 @@ Earlier paths and their donor versions: `native-classes/VisitServiceLookup.cpp`.
 </details>
 
 **`802555c4c063`** · `App/src/v8datamodel/VisitServiceLookup.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/VisitServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/VisitServiceLookup.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/VisitServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/VisitServiceLookup.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/VisitServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/VisitServiceLookup.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/VisitServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/VisitServiceLookup.cpp)
@@ -432,6 +438,8 @@ Earlier paths and their donor versions: `native-classes/VisitServiceLookup.cpp`.
 - public · colingsnyder2-ux · [v8datamodel/VisitServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/VisitServiceLookup.cpp)
 
 **`0c68858e284a`** · `native-classes/VisitServiceLookup.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/VisitServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/VisitServiceLookup.cpp)
+- canonical · colingsnyder2-ux · [native-classes/VisitServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/VisitServiceLookup.cpp)
 - public · colingsnyder2-ux · [native-classes/VisitServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/VisitServiceLookup.cpp)
 - canonical · colingsnyder2-ux · [native-classes/VisitServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/VisitServiceLookup.cpp)
 - public · colingsnyder2-ux · [native-classes/VisitServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/VisitServiceLookup.cpp)
@@ -622,6 +630,8 @@ Earlier paths and their donor versions: `native-classes/VisitServiceLookup.cpp`.
 Earlier paths and their donor versions: `native-classes/WorkspaceCamera.cpp`.
 
 **`ac1b5d10d407`** · `App/src/v8datamodel/WorkspaceCamera.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/WorkspaceCamera.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/WorkspaceCamera.cpp)
+- canonical · colingsnyder2-ux · [v8datamodel/WorkspaceCamera.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/WorkspaceCamera.cpp)
 - public · colingsnyder2-ux · [v8datamodel/WorkspaceCamera.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/WorkspaceCamera.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/WorkspaceCamera.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/WorkspaceCamera.cpp)
 - public · colingsnyder2-ux · [v8datamodel/WorkspaceCamera.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/WorkspaceCamera.cpp)
@@ -760,6 +770,8 @@ Earlier paths and their donor versions: `native-classes/WorkspaceCamera.cpp`.
 </details>
 
 **`de38943af520`** · `native-classes/WorkspaceCamera.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/WorkspaceCamera.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/WorkspaceCamera.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorkspaceCamera.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/WorkspaceCamera.cpp)
 - public · colingsnyder2-ux · [native-classes/WorkspaceCamera.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/WorkspaceCamera.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WorkspaceCamera.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/WorkspaceCamera.cpp)
 - public · colingsnyder2-ux · [native-classes/WorkspaceCamera.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/WorkspaceCamera.cpp)

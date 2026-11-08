@@ -16,6 +16,8 @@ Compatibility path for `Unclassified/src/ViewNewCylinderMesh.cpp`; compile eithe
 </details>
 
 **`4222bd5c2939`** · `native-classes/ViewNewCylinderMesh.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ViewNewCylinderMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/ViewNewCylinderMesh.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ViewNewCylinderMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/ViewNewCylinderMesh.cpp)
 - public · colingsnyder2-ux · [native-classes/ViewNewCylinderMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/ViewNewCylinderMesh.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ViewNewCylinderMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/ViewNewCylinderMesh.cpp)
 - public · colingsnyder2-ux · [native-classes/ViewNewCylinderMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/ViewNewCylinderMesh.cpp)
@@ -136,10 +138,11 @@ Compatibility path for `Unclassified/src/ViewNewCylinderMesh.cpp`; compile eithe
 </details>
 
 **`a4184c73d8aa`** · `native-classes/ViewNewCylinderMesh.cpp` · proof not assessed
-- draft · colingsnyder2-ux · [native-classes/ViewNewCylinderMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/ViewNewCylinderMesh.cpp)
+- draft · colingsnyder2-ux · [native-classes/ViewNewCylinderMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/ViewNewCylinderMesh.cpp)
 - fork · mewpokemons · [native-classes/ViewNewCylinderMesh.cpp](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-classes/ViewNewCylinderMesh.cpp)
 - fork · mewpokemons · [native-classes/ViewNewCylinderMesh.cpp](https://github.com/mewpokemons/RoConstruct/blob/5fe2214e131d164c737320c28bdd4f3b53c40cb1/rebuild/2008-06/native-classes/ViewNewCylinderMesh.cpp)
 - fork · mewpokemons · [native-classes/ViewNewCylinderMesh.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/ViewNewCylinderMesh.cpp)
+- draft · colingsnyder2-ux · [native-classes/ViewNewCylinderMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/ViewNewCylinderMesh.cpp)
 - draft · colingsnyder2-ux · [native-classes/ViewNewCylinderMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/ViewNewCylinderMesh.cpp)
 - draft · colingsnyder2-ux · [native-classes/ViewNewCylinderMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/ViewNewCylinderMesh.cpp)
 - draft · colingsnyder2-ux · [native-classes/ViewNewCylinderMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/ViewNewCylinderMesh.cpp)
@@ -269,10 +272,11 @@ Compatibility path for `Unclassified/src/ViewNewHeadMesh.cpp`; compile either pa
 </details>
 
 **`190087e5d652`** · `native-classes/ViewNewHeadMesh.cpp` · proof not assessed
-- draft · colingsnyder2-ux · [native-classes/ViewNewHeadMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/ViewNewHeadMesh.cpp)
+- draft · colingsnyder2-ux · [native-classes/ViewNewHeadMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/ViewNewHeadMesh.cpp)
 - fork · mewpokemons · [native-classes/ViewNewHeadMesh.cpp](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-classes/ViewNewHeadMesh.cpp)
 - fork · mewpokemons · [native-classes/ViewNewHeadMesh.cpp](https://github.com/mewpokemons/RoConstruct/blob/5fe2214e131d164c737320c28bdd4f3b53c40cb1/rebuild/2008-06/native-classes/ViewNewHeadMesh.cpp)
 - fork · mewpokemons · [native-classes/ViewNewHeadMesh.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/ViewNewHeadMesh.cpp)
+- draft · colingsnyder2-ux · [native-classes/ViewNewHeadMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/ViewNewHeadMesh.cpp)
 - draft · colingsnyder2-ux · [native-classes/ViewNewHeadMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/ViewNewHeadMesh.cpp)
 - draft · colingsnyder2-ux · [native-classes/ViewNewHeadMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/ViewNewHeadMesh.cpp)
 - draft · colingsnyder2-ux · [native-classes/ViewNewHeadMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/ViewNewHeadMesh.cpp)
@@ -329,6 +333,8 @@ Compatibility path for `Unclassified/src/ViewNewHeadMesh.cpp`; compile either pa
 </details>
 
 **`3d894d475f54`** · `native-classes/ViewNewHeadMesh.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ViewNewHeadMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/ViewNewHeadMesh.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ViewNewHeadMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/ViewNewHeadMesh.cpp)
 - public · colingsnyder2-ux · [native-classes/ViewNewHeadMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/ViewNewHeadMesh.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ViewNewHeadMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/ViewNewHeadMesh.cpp)
 - public · colingsnyder2-ux · [native-classes/ViewNewHeadMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/ViewNewHeadMesh.cpp)
@@ -499,6 +505,7 @@ Compatibility path for `Unclassified/src/ViewNewHeadMesh.cpp`; compile either pa
 <summary>native-classes/ViewNewPBBMesh.cpp — candidate-only; 3 content versions</summary>
 
 **`17b342ac3745`** · `native-classes/ViewNewPBBMesh.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/ViewNewPBBMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/ViewNewPBBMesh.cpp)
 - draft · colingsnyder2-ux · [native-classes/ViewNewPBBMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/ViewNewPBBMesh.cpp)
 - draft · colingsnyder2-ux · [native-classes/ViewNewPBBMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/ViewNewPBBMesh.cpp)
 - draft · colingsnyder2-ux · [native-classes/ViewNewPBBMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/ViewNewPBBMesh.cpp)
@@ -556,6 +563,7 @@ Compatibility path for `Unclassified/src/ViewNewHeadMesh.cpp`; compile either pa
 </details>
 
 **`96a31ac74bbc`** · `native-classes/ViewNewPBBMesh.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/ViewNewPBBMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/ViewNewPBBMesh.cpp)
 - draft · colingsnyder2-ux · [native-classes/ViewNewPBBMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/ViewNewPBBMesh.cpp)
 - draft · colingsnyder2-ux · [native-classes/ViewNewPBBMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/ViewNewPBBMesh.cpp)
 - draft · colingsnyder2-ux · [native-classes/ViewNewPBBMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/ViewNewPBBMesh.cpp)
@@ -623,8 +631,9 @@ Compatibility path for `Unclassified/src/ViewNewHeadMesh.cpp`; compile either pa
 <summary>native-classes/ViewNewPart.cpp — candidate-only; 2 content versions</summary>
 
 **`0b413c3c776e`** · `native-classes/ViewNewPart.cpp` · proof not assessed
-- draft · colingsnyder2-ux · [native-classes/ViewNewPart.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/ViewNewPart.cpp)
+- draft · colingsnyder2-ux · [native-classes/ViewNewPart.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/ViewNewPart.cpp)
 - fork · mewpokemons · [native-classes/ViewNewPart.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/ViewNewPart.cpp)
+- draft · colingsnyder2-ux · [native-classes/ViewNewPart.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/ViewNewPart.cpp)
 - draft · colingsnyder2-ux · [native-classes/ViewNewPart.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/ViewNewPart.cpp)
 - draft · colingsnyder2-ux · [native-classes/ViewNewPart.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/ViewNewPart.cpp)
 - draft · colingsnyder2-ux · [native-classes/ViewNewPart.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/ViewNewPart.cpp)
@@ -691,10 +700,11 @@ Compatibility path for `Unclassified/src/ViewNewHeadMesh.cpp`; compile either pa
 <summary>native-classes/ViewNewPartChunk.cpp — candidate-only; 1 content versions</summary>
 
 **`e909e703affb`** · `native-classes/ViewNewPartChunk.cpp` · proof not assessed
-- draft · colingsnyder2-ux · [native-classes/ViewNewPartChunk.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/ViewNewPartChunk.cpp)
+- draft · colingsnyder2-ux · [native-classes/ViewNewPartChunk.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/ViewNewPartChunk.cpp)
 - fork · mewpokemons · [native-classes/ViewNewPartChunk.cpp](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-classes/ViewNewPartChunk.cpp)
 - fork · mewpokemons · [native-classes/ViewNewPartChunk.cpp](https://github.com/mewpokemons/RoConstruct/blob/5fe2214e131d164c737320c28bdd4f3b53c40cb1/rebuild/2008-06/native-classes/ViewNewPartChunk.cpp)
 - fork · mewpokemons · [native-classes/ViewNewPartChunk.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/ViewNewPartChunk.cpp)
+- draft · colingsnyder2-ux · [native-classes/ViewNewPartChunk.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/ViewNewPartChunk.cpp)
 - draft · colingsnyder2-ux · [native-classes/ViewNewPartChunk.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/ViewNewPartChunk.cpp)
 - draft · colingsnyder2-ux · [native-classes/ViewNewPartChunk.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/ViewNewPartChunk.cpp)
 - draft · colingsnyder2-ux · [native-classes/ViewNewPartChunk.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/ViewNewPartChunk.cpp)
@@ -801,6 +811,8 @@ Compatibility path for `Unclassified/src/ViewNewQuadVolume.cpp`; compile either 
 - public · colingsnyder2-ux · [native-classes/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/ViewNewQuadVolume.cpp)
 
 **`603db68e4341`** · `native-classes/ViewNewQuadVolume.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/ViewNewQuadVolume.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/ViewNewQuadVolume.cpp)
 - public · colingsnyder2-ux · [native-classes/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/ViewNewQuadVolume.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/ViewNewQuadVolume.cpp)
 - public · colingsnyder2-ux · [native-classes/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/ViewNewQuadVolume.cpp)

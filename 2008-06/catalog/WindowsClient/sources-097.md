@@ -8,6 +8,7 @@
 Compatibility path for `WindowsClient/src/CWebToolbox.cpp`; compile either path, never both.
 
 **`23af85bb801e`** · `native-classes/CWebToolbox.cpp` · proof not assessed
+- archive · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/CWebToolbox.cpp)
 - archive · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/CWebToolbox.cpp)
 - archive · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/CWebToolbox.cpp)
 - archive · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/CWebToolbox.cpp)
@@ -126,6 +127,8 @@ Compatibility path for `WindowsClient/src/CWebToolbox.cpp`; compile either path,
 </details>
 
 **`b4c4d39b17de`** · `native-classes/CWebToolbox.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/CWebToolbox.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/CWebToolbox.cpp)
 - public · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/CWebToolbox.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/CWebToolbox.cpp)
 - public · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CWebToolbox.cpp)
@@ -240,6 +243,7 @@ Compatibility path for `WindowsClient/src/CWebToolbox.cpp`; compile either path,
 </details>
 
 **`e49294627330`** · `native-classes/CWebToolbox.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/924f4bbf9ae79da4295ce56ce82d7556e0d5ff8954549f84f77d5715c47eae6f/rebuild/2008-06/native-classes/CWebToolbox.cpp)
 - draft · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/924f4bbf9ae79da4295ce56ce82d7556e0d5ff8954549f84f77d5715c47eae6f/rebuild/2008-06/native-classes/CWebToolbox.cpp)
 - draft · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/924f4bbf9ae79da4295ce56ce82d7556e0d5ff8954549f84f77d5715c47eae6f/rebuild/2008-06/native-classes/CWebToolbox.cpp)
 - draft · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/924f4bbf9ae79da4295ce56ce82d7556e0d5ff8954549f84f77d5715c47eae6f/rebuild/2008-06/native-classes/CWebToolbox.cpp)
@@ -357,6 +361,7 @@ Compatibility path for `WindowsClient/src/CWebToolbox.cpp`; compile either path,
 - public · colingsnyder2-ux · [native-classes/CWebToolboxPage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/CWebToolboxPage.cpp)
 
 **`b981eca5c26d`** · `native-classes/CWebToolboxPage.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CWebToolboxPage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/CWebToolboxPage.cpp)
 - public · colingsnyder2-ux · [native-classes/CWebToolboxPage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/CWebToolboxPage.cpp)
 - public · colingsnyder2-ux · [native-classes/CWebToolboxPage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CWebToolboxPage.cpp)
 - public · colingsnyder2-ux · [native-classes/CWebToolboxPage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CWebToolboxPage.cpp)
@@ -456,6 +461,8 @@ Compatibility path for `WindowsClient/src/CWorkspaceExecScript.cpp`; compile eit
 </details>
 
 **`99bf449a9cbf`** · `native-classes/CWorkspaceExecScript.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CWorkspaceExecScript.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/CWorkspaceExecScript.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CWorkspaceExecScript.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/CWorkspaceExecScript.cpp)
 - public · colingsnyder2-ux · [native-classes/CWorkspaceExecScript.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/CWorkspaceExecScript.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CWorkspaceExecScript.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/CWorkspaceExecScript.cpp)
 - public · colingsnyder2-ux · [native-classes/CWorkspaceExecScript.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CWorkspaceExecScript.cpp)
@@ -717,6 +724,8 @@ Compatibility path for `WindowsClient/src/CWorkspaceExecScriptHelper.cpp`; compi
 </details>
 
 **`94685e35fdba`** · `native-classes/CWorkspaceExecScriptHelper.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CWorkspaceExecScriptHelper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/CWorkspaceExecScriptHelper.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CWorkspaceExecScriptHelper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/CWorkspaceExecScriptHelper.cpp)
 - public · colingsnyder2-ux · [native-classes/CWorkspaceExecScriptHelper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/CWorkspaceExecScriptHelper.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CWorkspaceExecScriptHelper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/CWorkspaceExecScriptHelper.cpp)
 - public · colingsnyder2-ux · [native-classes/CWorkspaceExecScriptHelper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CWorkspaceExecScriptHelper.cpp)
@@ -901,6 +910,8 @@ Compatibility path for `App/src/v8datamodel/CameraCenterCommand.cpp`; compile ei
 </details>
 
 **`8ec8be7b09ab`** · `native-classes/CameraCenterCommand.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CameraCenterCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/CameraCenterCommand.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CameraCenterCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/CameraCenterCommand.cpp)
 - public · colingsnyder2-ux · [native-classes/CameraCenterCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/CameraCenterCommand.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CameraCenterCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/CameraCenterCommand.cpp)
 - public · colingsnyder2-ux · [native-classes/CameraCenterCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CameraCenterCommand.cpp)

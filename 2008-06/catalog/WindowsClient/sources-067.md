@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/CWorkspace.cpp`.
 
 **`28da0e8c7ff7`** · `WindowsClient/src/CWorkspace.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CWorkspace.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/CWorkspace.cpp)
 - public · colingsnyder2-ux · [src/CWorkspace.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/CWorkspace.cpp)
 - public · colingsnyder2-ux · [src/CWorkspace.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/CWorkspace.cpp)
 - public · colingsnyder2-ux · [src/CWorkspace.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/CWorkspace.cpp)
@@ -41,6 +42,7 @@ Earlier paths and their donor versions: `native-classes/CWorkspace.cpp`.
 </details>
 
 **`ffbb3fa8abd0`** · `WindowsClient/src/CWorkspace.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CWorkspace.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/CWorkspace.cpp)
 - canonical · colingsnyder2-ux · [src/CWorkspace.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/CWorkspace.cpp)
 - canonical · colingsnyder2-ux · [src/CWorkspace.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/CWorkspace.cpp)
 - canonical · colingsnyder2-ux · [src/CWorkspace.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/CWorkspace.cpp)
@@ -149,6 +151,8 @@ Earlier paths and their donor versions: `native-classes/CWorkspace.cpp`.
 </details>
 
 **`41404ba57463`** · `native-classes/CWorkspace.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CWorkspace.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/CWorkspace.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CWorkspace.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/CWorkspace.cpp)
 - public · colingsnyder2-ux · [native-classes/CWorkspace.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/CWorkspace.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CWorkspace.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/CWorkspace.cpp)
 - public · colingsnyder2-ux · [native-classes/CWorkspace.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CWorkspace.cpp)
@@ -460,6 +464,7 @@ Earlier paths and their donor versions: `native-classes/CWorkspace.cpp`.
 Earlier paths and their donor versions: `native-classes/CWorkspaceExecScript.cpp`.
 
 **`4b721f1d3d18`** · `WindowsClient/src/CWorkspaceExecScript.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CWorkspaceExecScript.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/CWorkspaceExecScript.cpp)
 - canonical · colingsnyder2-ux · [src/CWorkspaceExecScript.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/CWorkspaceExecScript.cpp)
 - canonical · colingsnyder2-ux · [src/CWorkspaceExecScript.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/CWorkspaceExecScript.cpp)
 - canonical · colingsnyder2-ux · [src/CWorkspaceExecScript.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/CWorkspaceExecScript.cpp)
@@ -527,6 +532,7 @@ Earlier paths and their donor versions: `native-classes/CWorkspaceExecScript.cpp
 </details>
 
 **`ef90c7927013`** · `WindowsClient/src/CWorkspaceExecScript.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CWorkspaceExecScript.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/CWorkspaceExecScript.cpp)
 - public · colingsnyder2-ux · [src/CWorkspaceExecScript.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/CWorkspaceExecScript.cpp)
 - public · colingsnyder2-ux · [src/CWorkspaceExecScript.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/CWorkspaceExecScript.cpp)
 - public · colingsnyder2-ux · [src/CWorkspaceExecScript.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/CWorkspaceExecScript.cpp)
@@ -623,6 +629,8 @@ Earlier paths and their donor versions: `native-classes/CWorkspaceExecScript.cpp
 </details>
 
 **`99bf449a9cbf`** · `native-classes/CWorkspaceExecScript.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CWorkspaceExecScript.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/CWorkspaceExecScript.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CWorkspaceExecScript.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/CWorkspaceExecScript.cpp)
 - public · colingsnyder2-ux · [native-classes/CWorkspaceExecScript.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/CWorkspaceExecScript.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CWorkspaceExecScript.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/CWorkspaceExecScript.cpp)
 - public · colingsnyder2-ux · [native-classes/CWorkspaceExecScript.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CWorkspaceExecScript.cpp)
@@ -796,6 +804,7 @@ Earlier paths and their donor versions: `native-classes/CWorkspaceExecScriptHelp
 </details>
 
 **`8d6a6056c149`** · `WindowsClient/src/CWorkspaceExecScriptHelper.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CWorkspaceExecScriptHelper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/CWorkspaceExecScriptHelper.cpp)
 - canonical · colingsnyder2-ux · [src/CWorkspaceExecScriptHelper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/CWorkspaceExecScriptHelper.cpp)
 - canonical · colingsnyder2-ux · [src/CWorkspaceExecScriptHelper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/CWorkspaceExecScriptHelper.cpp)
 - canonical · colingsnyder2-ux · [src/CWorkspaceExecScriptHelper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/CWorkspaceExecScriptHelper.cpp)
@@ -882,6 +891,7 @@ Earlier paths and their donor versions: `native-classes/CWorkspaceExecScriptHelp
 - public · colingsnyder2-ux · [src/CWorkspaceExecScriptHelper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/src/CWorkspaceExecScriptHelper.cpp)
 
 **`f6169da857a4`** · `WindowsClient/src/CWorkspaceExecScriptHelper.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CWorkspaceExecScriptHelper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/CWorkspaceExecScriptHelper.cpp)
 - public · colingsnyder2-ux · [src/CWorkspaceExecScriptHelper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/CWorkspaceExecScriptHelper.cpp)
 - public · colingsnyder2-ux · [src/CWorkspaceExecScriptHelper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/CWorkspaceExecScriptHelper.cpp)
 - public · colingsnyder2-ux · [src/CWorkspaceExecScriptHelper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/CWorkspaceExecScriptHelper.cpp)
@@ -999,6 +1009,8 @@ Earlier paths and their donor versions: `native-classes/CWorkspaceExecScriptHelp
 </details>
 
 **`94685e35fdba`** · `native-classes/CWorkspaceExecScriptHelper.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CWorkspaceExecScriptHelper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/CWorkspaceExecScriptHelper.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CWorkspaceExecScriptHelper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/CWorkspaceExecScriptHelper.cpp)
 - public · colingsnyder2-ux · [native-classes/CWorkspaceExecScriptHelper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/CWorkspaceExecScriptHelper.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CWorkspaceExecScriptHelper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/CWorkspaceExecScriptHelper.cpp)
 - public · colingsnyder2-ux · [native-classes/CWorkspaceExecScriptHelper.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CWorkspaceExecScriptHelper.cpp)

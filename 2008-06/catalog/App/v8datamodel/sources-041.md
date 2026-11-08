@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/DataModelDutyCycle.cpp`.
 
 **`40047be70e07`** · `App/src/v8datamodel/DataModelDutyCycle.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/DataModelDutyCycle.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/DataModelDutyCycle.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/DataModelDutyCycle.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/DataModelDutyCycle.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/DataModelDutyCycle.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/DataModelDutyCycle.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/DataModelDutyCycle.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/DataModelDutyCycle.cpp)
@@ -98,6 +99,7 @@ Earlier paths and their donor versions: `native-classes/DataModelDutyCycle.cpp`.
 - public · colingsnyder2-ux · [v8datamodel/DataModelDutyCycle.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/DataModelDutyCycle.cpp)
 
 **`854f04322bd6`** · `App/src/v8datamodel/DataModelDutyCycle.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/DataModelDutyCycle.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/DataModelDutyCycle.cpp)
 - public · colingsnyder2-ux · [v8datamodel/DataModelDutyCycle.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/DataModelDutyCycle.cpp)
 - public · colingsnyder2-ux · [v8datamodel/DataModelDutyCycle.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/DataModelDutyCycle.cpp)
 - public · colingsnyder2-ux · [v8datamodel/DataModelDutyCycle.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/DataModelDutyCycle.cpp)
@@ -245,6 +247,8 @@ Earlier paths and their donor versions: `native-classes/DataModelDutyCycle.cpp`.
 - public · colingsnyder2-ux · [native-classes/DataModelDutyCycle.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/DataModelDutyCycle.cpp)
 
 **`79bdc7182d3c`** · `native-classes/DataModelDutyCycle.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/DataModelDutyCycle.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/DataModelDutyCycle.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DataModelDutyCycle.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/DataModelDutyCycle.cpp)
 - public · colingsnyder2-ux · [native-classes/DataModelDutyCycle.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/DataModelDutyCycle.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DataModelDutyCycle.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/DataModelDutyCycle.cpp)
 - public · colingsnyder2-ux · [native-classes/DataModelDutyCycle.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/DataModelDutyCycle.cpp)
@@ -373,6 +377,7 @@ Earlier paths and their donor versions: `native-classes/DataModelDutyCycle.cpp`.
 Earlier paths and their donor versions: `Unclassified/src/DataModelLock.cpp`.
 
 **`35c26620d666`** · `App/src/v8datamodel/DataModelLock.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/DataModelLock.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/DataModelLock.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/DataModelLock.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/DataModelLock.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/DataModelLock.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/DataModelLock.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/DataModelLock.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/DataModelLock.cpp)
@@ -387,6 +392,7 @@ Earlier paths and their donor versions: `Unclassified/src/DataModelLock.cpp`.
 </details>
 
 **`e490f3cdc6c1`** · `App/src/v8datamodel/DataModelLock.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/DataModelLock.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/DataModelLock.cpp)
 - public · colingsnyder2-ux · [v8datamodel/DataModelLock.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/DataModelLock.cpp)
 - public · colingsnyder2-ux · [v8datamodel/DataModelLock.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/DataModelLock.cpp)
 - public · colingsnyder2-ux · [v8datamodel/DataModelLock.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/DataModelLock.cpp)
@@ -435,6 +441,7 @@ Earlier paths and their donor versions: `Unclassified/src/DataModelLock.cpp`.
 </details>
 
 **`651cc907ea15`** · `Unclassified/src/DataModelLock.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/DataModelLock.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/DataModelLock.cpp)
 - public · colingsnyder2-ux · [src/DataModelLock.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/DataModelLock.cpp)
 - public · colingsnyder2-ux · [src/DataModelLock.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/DataModelLock.cpp)
 - public · colingsnyder2-ux · [src/DataModelLock.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/DataModelLock.cpp)
@@ -469,6 +476,7 @@ Earlier paths and their donor versions: `Unclassified/src/DataModelLock.cpp`.
 - public · colingsnyder2-ux · [src/DataModelLock.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/DataModelLock.cpp)
 
 **`b1aaf5a80777`** · `Unclassified/src/DataModelLock.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/DataModelLock.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/DataModelLock.cpp)
 - canonical · colingsnyder2-ux · [src/DataModelLock.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/DataModelLock.cpp)
 - canonical · colingsnyder2-ux · [src/DataModelLock.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/DataModelLock.cpp)
 - canonical · colingsnyder2-ux · [src/DataModelLock.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/DataModelLock.cpp)
@@ -529,6 +537,7 @@ Earlier paths and their donor versions: `native-classes/DataModelTiming.cpp`.
 - public · colingsnyder2-ux · [v8datamodel/DataModelTiming.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/DataModelTiming.cpp)
 
 **`37961e8a2a7a`** · `App/src/v8datamodel/DataModelTiming.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/DataModelTiming.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/DataModelTiming.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/DataModelTiming.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/DataModelTiming.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/DataModelTiming.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/DataModelTiming.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/DataModelTiming.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/DataModelTiming.cpp)
@@ -598,6 +607,7 @@ Earlier paths and their donor versions: `native-classes/DataModelTiming.cpp`.
 </details>
 
 **`d9d4eb752683`** · `App/src/v8datamodel/DataModelTiming.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/DataModelTiming.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/DataModelTiming.cpp)
 - public · colingsnyder2-ux · [v8datamodel/DataModelTiming.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/DataModelTiming.cpp)
 - public · colingsnyder2-ux · [v8datamodel/DataModelTiming.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/DataModelTiming.cpp)
 - public · colingsnyder2-ux · [v8datamodel/DataModelTiming.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/DataModelTiming.cpp)
@@ -733,6 +743,8 @@ Earlier paths and their donor versions: `native-classes/DataModelTiming.cpp`.
 </details>
 
 **`8eb5e3e297b6`** · `native-classes/DataModelTiming.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/DataModelTiming.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/DataModelTiming.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DataModelTiming.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/DataModelTiming.cpp)
 - public · colingsnyder2-ux · [native-classes/DataModelTiming.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/DataModelTiming.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DataModelTiming.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/DataModelTiming.cpp)
 - public · colingsnyder2-ux · [native-classes/DataModelTiming.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/DataModelTiming.cpp)

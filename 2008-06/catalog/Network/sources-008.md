@@ -6,6 +6,10 @@
 <summary>native-classes/FilePacketLogger.cpp — candidate-only; 2 content versions</summary>
 
 **`140f97cbc1ed`** · `native-classes/FilePacketLogger.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/FilePacketLogger.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/4180944e2b2573198702173e6d0ae92004aec4cdc342719426efb99afdccac90/rebuild/2008-06/native-classes/FilePacketLogger.cpp)
+- draft · colingsnyder2-ux · [native-classes/FilePacketLogger.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/9e304e3f0338d916caf7d99436ba36c1efe6d01dc5f35be35f1bc0f5df2eb590/rebuild/2008-06/native-classes/FilePacketLogger.cpp)
+- draft · colingsnyder2-ux · [native-classes/FilePacketLogger.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/a99ddb356dac24eba49aef9ea54b2d59d637703fc0242490c5945d64edca7a89/rebuild/2008-06/native-classes/FilePacketLogger.cpp)
+- draft · colingsnyder2-ux · [native-classes/FilePacketLogger.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/a9dcc3db0f0240f324e65b4664b0fbf83fa46377b1598ecc56117de1950b8f01/rebuild/2008-06/native-classes/FilePacketLogger.cpp)
 - draft · colingsnyder2-ux · [native-classes/FilePacketLogger.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/4180944e2b2573198702173e6d0ae92004aec4cdc342719426efb99afdccac90/rebuild/2008-06/native-classes/FilePacketLogger.cpp)
 - draft · colingsnyder2-ux · [native-classes/FilePacketLogger.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/9e304e3f0338d916caf7d99436ba36c1efe6d01dc5f35be35f1bc0f5df2eb590/rebuild/2008-06/native-classes/FilePacketLogger.cpp)
 - draft · colingsnyder2-ux · [native-classes/FilePacketLogger.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/a99ddb356dac24eba49aef9ea54b2d59d637703fc0242490c5945d64edca7a89/rebuild/2008-06/native-classes/FilePacketLogger.cpp)
@@ -210,6 +214,7 @@
 </details>
 
 **`225fe6d3f256`** · `native-classes/FilePacketLogger.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/FilePacketLogger.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/65bc6543bf7166c46bd60acde44c698d3d72d8406d72c63cd2800343a2542c4b/rebuild/2008-06/native-classes/FilePacketLogger.cpp)
 - draft · colingsnyder2-ux · [native-classes/FilePacketLogger.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/65bc6543bf7166c46bd60acde44c698d3d72d8406d72c63cd2800343a2542c4b/rebuild/2008-06/native-classes/FilePacketLogger.cpp)
 - draft · colingsnyder2-ux · [native-classes/FilePacketLogger.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/65bc6543bf7166c46bd60acde44c698d3d72d8406d72c63cd2800343a2542c4b/rebuild/2008-06/native-classes/FilePacketLogger.cpp)
 - draft · colingsnyder2-ux · [native-classes/FilePacketLogger.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/65bc6543bf7166c46bd60acde44c698d3d72d8406d72c63cd2800343a2542c4b/rebuild/2008-06/native-classes/FilePacketLogger.cpp)
@@ -284,6 +289,7 @@
 <summary>native-classes/HttpLifetime.cpp — public-only; 2 content versions</summary>
 
 **`3fe36138b478`** · `native-classes/HttpLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HttpLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/HttpLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/HttpLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/HttpLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/HttpLifetime.cpp)
@@ -353,6 +359,7 @@
 <summary>native-classes/HttpResultCheck.cpp — public-only; 5 content versions</summary>
 
 **`039181588ea8`** · `native-classes/HttpResultCheck.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HttpResultCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/HttpResultCheck.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpResultCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/HttpResultCheck.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpResultCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/HttpResultCheck.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpResultCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/HttpResultCheck.cpp)
@@ -494,6 +501,7 @@
 </details>
 
 **`d0147a09cf3d`** · `native-classes/HttpRobloxSite.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HttpRobloxSite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/HttpRobloxSite.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpRobloxSite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/HttpRobloxSite.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpRobloxSite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/HttpRobloxSite.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpRobloxSite.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/HttpRobloxSite.cpp)
@@ -589,6 +597,7 @@
 - public · colingsnyder2-ux · [native-classes/HttpTransport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/HttpTransport.cpp)
 
 **`f528884fe641`** · `native-classes/HttpTransport.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HttpTransport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/HttpTransport.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTransport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/HttpTransport.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTransport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/HttpTransport.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTransport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/HttpTransport.cpp)
@@ -668,6 +677,7 @@
 </details>
 
 **`9bd2637aead1`** · `native-classes/HttpTransportState.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HttpTransportState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/HttpTransportState.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTransportState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/HttpTransportState.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTransportState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/HttpTransportState.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTransportState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/HttpTransportState.cpp)
@@ -725,6 +735,7 @@
 </details>
 
 **`db80f080caf2`** · `native-classes/HttpTrustCheck.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HttpTrustCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/HttpTrustCheck.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTrustCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/HttpTrustCheck.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTrustCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/HttpTrustCheck.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTrustCheck.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/HttpTrustCheck.cpp)
@@ -788,6 +799,7 @@
 <summary>native-classes/HttpTrustInitialize.cpp — public-only; 5 content versions</summary>
 
 **`0da41f5aee1a`** · `native-classes/HttpTrustInitialize.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HttpTrustInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/HttpTrustInitialize.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTrustInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/HttpTrustInitialize.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTrustInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/HttpTrustInitialize.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTrustInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/HttpTrustInitialize.cpp)
@@ -891,6 +903,7 @@
 </details>
 
 **`891eb31d6825`** · `native-classes/HttpTrustState.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HttpTrustState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/HttpTrustState.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTrustState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/HttpTrustState.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTrustState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/HttpTrustState.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpTrustState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/HttpTrustState.cpp)
@@ -1000,6 +1013,7 @@
 - public · colingsnyder2-ux · [native-classes/HttpWinHttp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/HttpWinHttp.cpp)
 
 **`6571f3261140`** · `native-classes/HttpWinHttp.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HttpWinHttp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/HttpWinHttp.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpWinHttp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/HttpWinHttp.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpWinHttp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/HttpWinHttp.cpp)
 - public · colingsnyder2-ux · [native-classes/HttpWinHttp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/HttpWinHttp.cpp)

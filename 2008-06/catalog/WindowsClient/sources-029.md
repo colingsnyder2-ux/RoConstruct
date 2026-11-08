@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/MyXTPCommandBars.h`.
 
 **`167bd43d75b7`** · `WindowsClient/include/MyXTPCommandBars.h` · proof not assessed
+- public · colingsnyder2-ux · [include/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/include/MyXTPCommandBars.h)
 - public · colingsnyder2-ux · [include/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/include/MyXTPCommandBars.h)
 - public · colingsnyder2-ux · [include/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/include/MyXTPCommandBars.h)
 - public · colingsnyder2-ux · [include/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/include/MyXTPCommandBars.h)
@@ -28,6 +29,7 @@ Earlier paths and their donor versions: `native-headers/MyXTPCommandBars.h`.
 </details>
 
 **`234396e760f4`** · `WindowsClient/include/MyXTPCommandBars.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/include/MyXTPCommandBars.h)
 - canonical · colingsnyder2-ux · [include/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/include/MyXTPCommandBars.h)
 - canonical · colingsnyder2-ux · [include/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/include/MyXTPCommandBars.h)
 - canonical · colingsnyder2-ux · [include/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/include/MyXTPCommandBars.h)
@@ -63,7 +65,7 @@ Earlier paths and their donor versions: `native-headers/MyXTPCommandBars.h`.
 - canonical · colingsnyder2-ux · [include/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/MyXTPCommandBars.h)
 - canonical · colingsnyder2-ux · [include/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/MyXTPCommandBars.h)
 
-<details><summary>65 retained local origins</summary>
+<details><summary>66 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/MyXTPCommandBars.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/MyXTPCommandBars.h` · root `b52aa15feaea5a0c`
@@ -113,6 +115,7 @@ Earlier paths and their donor versions: `native-headers/MyXTPCommandBars.h`.
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/WindowsClient/include/MyXTPCommandBars.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/WindowsClient/include/MyXTPCommandBars.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/WindowsClient/include/MyXTPCommandBars.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/WindowsClient/include/MyXTPCommandBars.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/WindowsClient/include/MyXTPCommandBars.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/MyXTPCommandBars.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/WindowsClient/include/MyXTPCommandBars.h` · root `b52aa15feaea5a0c`
@@ -218,6 +221,8 @@ Earlier paths and their donor versions: `native-headers/MyXTPCommandBars.h`.
 </details>
 
 **`55bea8260b23`** · `native-headers/MyXTPCommandBars.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/MyXTPCommandBars.h)
+- canonical · colingsnyder2-ux · [native-headers/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/MyXTPCommandBars.h)
 - public · colingsnyder2-ux · [native-headers/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/MyXTPCommandBars.h)
 - canonical · colingsnyder2-ux · [native-headers/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/MyXTPCommandBars.h)
 - public · colingsnyder2-ux · [native-headers/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/MyXTPCommandBars.h)
@@ -287,7 +292,7 @@ Earlier paths and their donor versions: `native-headers/MyXTPCommandBars.h`.
 - public · colingsnyder2-ux · [native-headers/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/MyXTPCommandBars.h)
 - canonical · colingsnyder2-ux · [native-headers/MyXTPCommandBars.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/MyXTPCommandBars.h)
 
-<details><summary>68 retained local origins</summary>
+<details><summary>69 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/MyXTPCommandBars.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/MyXTPCommandBars.h` · root `b52aa15feaea5a0c`
@@ -338,6 +343,7 @@ Earlier paths and their donor versions: `native-headers/MyXTPCommandBars.h`.
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/MyXTPCommandBars.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/MyXTPCommandBars.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/MyXTPCommandBars.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/MyXTPCommandBars.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/MyXTPCommandBars.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/MyXTPCommandBars.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/MyXTPCommandBars.h` · root `b52aa15feaea5a0c`
@@ -558,6 +564,7 @@ Earlier paths and their donor versions: `native-headers/MyXTPCommandBars.h`.
 Earlier paths and their donor versions: `native-headers/NativeCameraCommands.h`.
 
 **`0cf4192ea982`** · `WindowsClient/include/NativeCameraCommands.h` · proof not assessed
+- public · colingsnyder2-ux · [include/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/include/NativeCameraCommands.h)
 - public · colingsnyder2-ux · [include/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/include/NativeCameraCommands.h)
 - public · colingsnyder2-ux · [include/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/include/NativeCameraCommands.h)
 - public · colingsnyder2-ux · [include/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/include/NativeCameraCommands.h)
@@ -613,6 +620,7 @@ Earlier paths and their donor versions: `native-headers/NativeCameraCommands.h`.
 </details>
 
 **`922fb973709e`** · `WindowsClient/include/NativeCameraCommands.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/include/NativeCameraCommands.h)
 - canonical · colingsnyder2-ux · [include/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/include/NativeCameraCommands.h)
 - canonical · colingsnyder2-ux · [include/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/include/NativeCameraCommands.h)
 - canonical · colingsnyder2-ux · [include/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/include/NativeCameraCommands.h)
@@ -650,7 +658,7 @@ Earlier paths and their donor versions: `native-headers/NativeCameraCommands.h`.
 - canonical · colingsnyder2-ux · [include/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/NativeCameraCommands.h)
 - canonical · colingsnyder2-ux · [include/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/NativeCameraCommands.h)
 
-<details><summary>69 retained local origins</summary>
+<details><summary>70 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/NativeCameraCommands.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/NativeCameraCommands.h` · root `b52aa15feaea5a0c`
@@ -704,6 +712,7 @@ Earlier paths and their donor versions: `native-headers/NativeCameraCommands.h`.
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/WindowsClient/include/NativeCameraCommands.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/WindowsClient/include/NativeCameraCommands.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/WindowsClient/include/NativeCameraCommands.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/WindowsClient/include/NativeCameraCommands.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/WindowsClient/include/NativeCameraCommands.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/NativeCameraCommands.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/WindowsClient/include/NativeCameraCommands.h` · root `b52aa15feaea5a0c`
@@ -725,6 +734,8 @@ Earlier paths and their donor versions: `native-headers/NativeCameraCommands.h`.
 </details>
 
 **`130d6780159f`** · `native-headers/NativeCameraCommands.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/NativeCameraCommands.h)
+- canonical · colingsnyder2-ux · [native-headers/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/NativeCameraCommands.h)
 - public · colingsnyder2-ux · [native-headers/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/NativeCameraCommands.h)
 - canonical · colingsnyder2-ux · [native-headers/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/NativeCameraCommands.h)
 - public · colingsnyder2-ux · [native-headers/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/NativeCameraCommands.h)
@@ -798,7 +809,7 @@ Earlier paths and their donor versions: `native-headers/NativeCameraCommands.h`.
 - public · colingsnyder2-ux · [native-headers/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/NativeCameraCommands.h)
 - canonical · colingsnyder2-ux · [native-headers/NativeCameraCommands.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/NativeCameraCommands.h)
 
-<details><summary>72 retained local origins</summary>
+<details><summary>73 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/NativeCameraCommands.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/NativeCameraCommands.h` · root `b52aa15feaea5a0c`
@@ -853,6 +864,7 @@ Earlier paths and their donor versions: `native-headers/NativeCameraCommands.h`.
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/NativeCameraCommands.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/NativeCameraCommands.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/NativeCameraCommands.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/NativeCameraCommands.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/NativeCameraCommands.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/NativeCameraCommands.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/NativeCameraCommands.h` · root `b52aa15feaea5a0c`

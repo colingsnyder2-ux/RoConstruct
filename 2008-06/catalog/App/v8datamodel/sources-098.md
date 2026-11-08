@@ -138,6 +138,8 @@ Compatibility path for `WindowsClient/include/CSelectionCaption.h`; compile eith
 </details>
 
 **`8e9d890b8b77`** · `native-headers/CSelectionCaption.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CSelectionCaption.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/CSelectionCaption.h)
+- canonical · colingsnyder2-ux · [native-headers/CSelectionCaption.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/CSelectionCaption.h)
 - public · colingsnyder2-ux · [native-headers/CSelectionCaption.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/CSelectionCaption.h)
 - canonical · colingsnyder2-ux · [native-headers/CSelectionCaption.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/CSelectionCaption.h)
 - public · colingsnyder2-ux · [native-headers/CSelectionCaption.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/CSelectionCaption.h)
@@ -197,7 +199,7 @@ Compatibility path for `WindowsClient/include/CSelectionCaption.h`; compile eith
 - public · colingsnyder2-ux · [native-headers/CSelectionCaption.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CSelectionCaption.h)
 - canonical · colingsnyder2-ux · [native-headers/CSelectionCaption.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CSelectionCaption.h)
 
-<details><summary>59 retained local origins</summary>
+<details><summary>60 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CSelectionCaption.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CSelectionCaption.h` · root `b52aa15feaea5a0c`
@@ -240,6 +242,7 @@ Compatibility path for `WindowsClient/include/CSelectionCaption.h`; compile eith
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/CSelectionCaption.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/CSelectionCaption.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/CSelectionCaption.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/CSelectionCaption.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CSelectionCaption.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CSelectionCaption.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/native-headers/CSelectionCaption.h` · root `b52aa15feaea5a0c`
@@ -519,6 +522,8 @@ Compatibility path for `WindowsClient/include/CSelectionTreeCtrl.h`; compile eit
 - public · colingsnyder2-ux · [native-headers/CSelectionTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-headers/CSelectionTreeCtrl.h)
 
 **`c9de44fab720`** · `native-headers/CSelectionTreeCtrl.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CSelectionTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/CSelectionTreeCtrl.h)
+- canonical · colingsnyder2-ux · [native-headers/CSelectionTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/CSelectionTreeCtrl.h)
 - public · colingsnyder2-ux · [native-headers/CSelectionTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/CSelectionTreeCtrl.h)
 - canonical · colingsnyder2-ux · [native-headers/CSelectionTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/CSelectionTreeCtrl.h)
 - public · colingsnyder2-ux · [native-headers/CSelectionTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/CSelectionTreeCtrl.h)
@@ -578,7 +583,7 @@ Compatibility path for `WindowsClient/include/CSelectionTreeCtrl.h`; compile eit
 - public · colingsnyder2-ux · [native-headers/CSelectionTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CSelectionTreeCtrl.h)
 - canonical · colingsnyder2-ux · [native-headers/CSelectionTreeCtrl.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CSelectionTreeCtrl.h)
 
-<details><summary>59 retained local origins</summary>
+<details><summary>60 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CSelectionTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CSelectionTreeCtrl.h` · root `b52aa15feaea5a0c`
@@ -621,6 +626,7 @@ Compatibility path for `WindowsClient/include/CSelectionTreeCtrl.h`; compile eit
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/CSelectionTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/CSelectionTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/CSelectionTreeCtrl.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/CSelectionTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CSelectionTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CSelectionTreeCtrl.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/native-headers/CSelectionTreeCtrl.h` · root `b52aa15feaea5a0c`
@@ -747,6 +753,8 @@ Compatibility path for `Network/include/Network/NetworkSettings.h`; compile eith
 </details>
 
 **`59b95939bbe3`** · `native-headers/Network/NetworkSettings.h` · proof not assessed
+- public · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/Network/NetworkSettings.h)
+- canonical · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/Network/NetworkSettings.h)
 - public · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/Network/NetworkSettings.h)
 - canonical · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/Network/NetworkSettings.h)
 - public · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/Network/NetworkSettings.h)
@@ -818,7 +826,7 @@ Compatibility path for `Network/include/Network/NetworkSettings.h`; compile eith
 - public · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/Network/NetworkSettings.h)
 - canonical · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/Network/NetworkSettings.h)
 
-<details><summary>70 retained local origins</summary>
+<details><summary>71 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
@@ -871,6 +879,7 @@ Compatibility path for `Network/include/Network/NetworkSettings.h`; compile eith
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/Network/NetworkSettings.h` · root `b52aa15feaea5a0c`
@@ -1007,10 +1016,11 @@ Compatibility path for `Network/include/Network/NetworkSettings.h`; compile eith
 </details>
 
 **`ba9c20d8c334`** · `native-headers/NetworkSettings.h` · proof not assessed
-- canonical · colingsnyder2-ux · [native-headers/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/NetworkSettings.h)
+- canonical · colingsnyder2-ux · [native-headers/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/NetworkSettings.h)
 - fork · mewpokemons · [native-headers/NetworkSettings.h](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-headers/NetworkSettings.h)
 - fork · mewpokemons · [native-headers/NetworkSettings.h](https://github.com/mewpokemons/RoConstruct/blob/5fe2214e131d164c737320c28bdd4f3b53c40cb1/rebuild/2008-06/native-headers/NetworkSettings.h)
 - fork · mewpokemons · [native-headers/NetworkSettings.h](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-headers/NetworkSettings.h)
+- canonical · colingsnyder2-ux · [native-headers/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/NetworkSettings.h)
 - canonical · colingsnyder2-ux · [native-headers/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/native-headers/NetworkSettings.h)
 - canonical · colingsnyder2-ux · [native-headers/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/native-headers/NetworkSettings.h)
 - canonical · colingsnyder2-ux · [native-headers/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/native-headers/NetworkSettings.h)
@@ -1060,7 +1070,7 @@ Compatibility path for `Network/include/Network/NetworkSettings.h`; compile eith
 - canonical · colingsnyder2-ux · [native-headers/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/native-headers/NetworkSettings.h)
 - canonical · colingsnyder2-ux · [native-headers/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/NetworkSettings.h)
 
-<details><summary>83 retained local origins</summary>
+<details><summary>84 retained local origins</summary>
 
 - local · `local/reference-worker-bb23cfb35a/rebuild/2008-06/native-headers/NetworkSettings.h` · root `b52aa15feaea5a0c`
 - local · `RoConstruct-Native-426da6c8c18b41199ec38e26f59e0e6a/rebuild/2008-06/native-headers/NetworkSettings.h` · root `b52aa15feaea5a0c`
@@ -1126,6 +1136,7 @@ Compatibility path for `Network/include/Network/NetworkSettings.h`; compile eith
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/NetworkSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/NetworkSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/NetworkSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/NetworkSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/NetworkSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/native-headers/NetworkSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/native-headers/NetworkSettings.h` · root `b52aa15feaea5a0c`
@@ -1149,6 +1160,7 @@ Compatibility path for `Network/include/Network/NetworkSettings.h`; compile eith
 </details>
 
 **`baa41a12c349`** · `native-headers/NetworkSettings.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/NetworkSettings.h)
 - public · colingsnyder2-ux · [native-headers/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/NetworkSettings.h)
 - public · colingsnyder2-ux · [native-headers/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/NetworkSettings.h)
 - public · colingsnyder2-ux · [native-headers/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-headers/NetworkSettings.h)

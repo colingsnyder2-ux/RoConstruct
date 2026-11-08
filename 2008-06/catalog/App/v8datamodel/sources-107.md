@@ -8,8 +8,9 @@
 Compatibility path for `App/include/v8datamodel/ForceField.h`; compile either path, never both.
 
 **`5e46e577e16f`** · `native-headers/v8datamodel/ForceField.h` · proof not assessed
-- draft · colingsnyder2-ux · [v8datamodel/ForceField.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/ForceField.h)
+- draft · colingsnyder2-ux · [v8datamodel/ForceField.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/ForceField.h)
 - fork · coldek · [v8datamodel/ForceField.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/v8datamodel/ForceField.h)
+- draft · colingsnyder2-ux · [v8datamodel/ForceField.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/ForceField.h)
 - draft · colingsnyder2-ux · [v8datamodel/ForceField.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/ForceField.h)
 - draft · colingsnyder2-ux · [v8datamodel/ForceField.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/ForceField.h)
 - draft · colingsnyder2-ux · [v8datamodel/ForceField.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/ForceField.h)
@@ -144,6 +145,8 @@ Compatibility path for `App/include/v8datamodel/ForceField.h`; compile either pa
 </details>
 
 **`d88f7ed76cd1`** · `native-headers/v8datamodel/ForceField.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/ForceField.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/v8datamodel/ForceField.h)
+- canonical · colingsnyder2-ux · [v8datamodel/ForceField.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/v8datamodel/ForceField.h)
 - public · colingsnyder2-ux · [v8datamodel/ForceField.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/v8datamodel/ForceField.h)
 - canonical · colingsnyder2-ux · [v8datamodel/ForceField.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/v8datamodel/ForceField.h)
 - public · colingsnyder2-ux · [v8datamodel/ForceField.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/v8datamodel/ForceField.h)
@@ -215,7 +218,7 @@ Compatibility path for `App/include/v8datamodel/ForceField.h`; compile either pa
 - public · colingsnyder2-ux · [v8datamodel/ForceField.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/ForceField.h)
 - canonical · colingsnyder2-ux · [v8datamodel/ForceField.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/ForceField.h)
 
-<details><summary>70 retained local origins</summary>
+<details><summary>71 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/ForceField.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/ForceField.h` · root `b52aa15feaea5a0c`
@@ -268,6 +271,7 @@ Compatibility path for `App/include/v8datamodel/ForceField.h`; compile either pa
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/v8datamodel/ForceField.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/v8datamodel/ForceField.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/v8datamodel/ForceField.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/v8datamodel/ForceField.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8datamodel/ForceField.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/ForceField.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/ForceField.h` · root `b52aa15feaea5a0c`
@@ -330,8 +334,9 @@ Compatibility path for `App/include/v8datamodel/ForceField.h`; compile either pa
 Compatibility path for `App/include/v8datamodel/GameSettings.h`; compile either path, never both.
 
 **`9657dcfd2cd7`** · `native-headers/v8datamodel/GameSettings.h` · proof not assessed
-- draft · colingsnyder2-ux · [v8datamodel/GameSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/GameSettings.h)
+- draft · colingsnyder2-ux · [v8datamodel/GameSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/GameSettings.h)
 - fork · coldek · [v8datamodel/GameSettings.h](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-headers/v8datamodel/GameSettings.h)
+- draft · colingsnyder2-ux · [v8datamodel/GameSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/GameSettings.h)
 - draft · colingsnyder2-ux · [v8datamodel/GameSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/GameSettings.h)
 - draft · colingsnyder2-ux · [v8datamodel/GameSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/GameSettings.h)
 - draft · colingsnyder2-ux · [v8datamodel/GameSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-headers/v8datamodel/GameSettings.h)
@@ -403,6 +408,8 @@ Compatibility path for `App/include/v8datamodel/GameSettings.h`; compile either 
 - public · colingsnyder2-ux · [v8datamodel/GameSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/v8datamodel/GameSettings.h)
 
 **`acc5685499a0`** · `native-headers/v8datamodel/GameSettings.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/GameSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/v8datamodel/GameSettings.h)
+- canonical · colingsnyder2-ux · [v8datamodel/GameSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/v8datamodel/GameSettings.h)
 - public · colingsnyder2-ux · [v8datamodel/GameSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/v8datamodel/GameSettings.h)
 - canonical · colingsnyder2-ux · [v8datamodel/GameSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/v8datamodel/GameSettings.h)
 - public · colingsnyder2-ux · [v8datamodel/GameSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/v8datamodel/GameSettings.h)
@@ -474,7 +481,7 @@ Compatibility path for `App/include/v8datamodel/GameSettings.h`; compile either 
 - public · colingsnyder2-ux · [v8datamodel/GameSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/GameSettings.h)
 - canonical · colingsnyder2-ux · [v8datamodel/GameSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/GameSettings.h)
 
-<details><summary>70 retained local origins</summary>
+<details><summary>71 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/GameSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/GameSettings.h` · root `b52aa15feaea5a0c`
@@ -527,6 +534,7 @@ Compatibility path for `App/include/v8datamodel/GameSettings.h`; compile either 
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/v8datamodel/GameSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/v8datamodel/GameSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/v8datamodel/GameSettings.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/v8datamodel/GameSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8datamodel/GameSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/GameSettings.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/GameSettings.h` · root `b52aa15feaea5a0c`
@@ -759,6 +767,8 @@ Compatibility path for `App/include/v8datamodel/GeometryService.h`; compile eith
 - public · colingsnyder2-ux · [v8datamodel/GeometryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/v8datamodel/GeometryService.h)
 
 **`d2968b81c5e4`** · `native-headers/v8datamodel/GeometryService.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/GeometryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/v8datamodel/GeometryService.h)
+- canonical · colingsnyder2-ux · [v8datamodel/GeometryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/v8datamodel/GeometryService.h)
 - public · colingsnyder2-ux · [v8datamodel/GeometryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/v8datamodel/GeometryService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/GeometryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/v8datamodel/GeometryService.h)
 - public · colingsnyder2-ux · [v8datamodel/GeometryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/v8datamodel/GeometryService.h)
@@ -830,7 +840,7 @@ Compatibility path for `App/include/v8datamodel/GeometryService.h`; compile eith
 - public · colingsnyder2-ux · [v8datamodel/GeometryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/GeometryService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/GeometryService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/GeometryService.h)
 
-<details><summary>70 retained local origins</summary>
+<details><summary>71 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/GeometryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/GeometryService.h` · root `b52aa15feaea5a0c`
@@ -883,6 +893,7 @@ Compatibility path for `App/include/v8datamodel/GeometryService.h`; compile eith
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/v8datamodel/GeometryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/v8datamodel/GeometryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/v8datamodel/GeometryService.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/v8datamodel/GeometryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8datamodel/GeometryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/GeometryService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/GeometryService.h` · root `b52aa15feaea5a0c`

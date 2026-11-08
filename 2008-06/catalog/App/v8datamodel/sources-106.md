@@ -61,6 +61,8 @@ Compatibility path for `App/include/v8datamodel/Filters2008.h`; compile either p
 </details>
 
 **`8167e8dbd52f`** · `native-headers/v8datamodel/Filters2008.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/Filters2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/v8datamodel/Filters2008.h)
+- canonical · colingsnyder2-ux · [v8datamodel/Filters2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/v8datamodel/Filters2008.h)
 - public · colingsnyder2-ux · [v8datamodel/Filters2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/v8datamodel/Filters2008.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Filters2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/v8datamodel/Filters2008.h)
 - public · colingsnyder2-ux · [v8datamodel/Filters2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/v8datamodel/Filters2008.h)
@@ -132,7 +134,7 @@ Compatibility path for `App/include/v8datamodel/Filters2008.h`; compile either p
 - public · colingsnyder2-ux · [v8datamodel/Filters2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/Filters2008.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Filters2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/Filters2008.h)
 
-<details><summary>70 retained local origins</summary>
+<details><summary>71 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Filters2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Filters2008.h` · root `b52aa15feaea5a0c`
@@ -185,6 +187,7 @@ Compatibility path for `App/include/v8datamodel/Filters2008.h`; compile either p
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/v8datamodel/Filters2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/v8datamodel/Filters2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/v8datamodel/Filters2008.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/v8datamodel/Filters2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8datamodel/Filters2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/Filters2008.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/Filters2008.h` · root `b52aa15feaea5a0c`
@@ -387,6 +390,8 @@ Compatibility path for `App/include/v8datamodel/Flag.h`; compile either path, ne
 </details>
 
 **`d4ff1aa82d95`** · `native-headers/v8datamodel/Flag.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/Flag.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/v8datamodel/Flag.h)
+- canonical · colingsnyder2-ux · [v8datamodel/Flag.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/v8datamodel/Flag.h)
 - public · colingsnyder2-ux · [v8datamodel/Flag.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/v8datamodel/Flag.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Flag.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/v8datamodel/Flag.h)
 - public · colingsnyder2-ux · [v8datamodel/Flag.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/v8datamodel/Flag.h)
@@ -458,7 +463,7 @@ Compatibility path for `App/include/v8datamodel/Flag.h`; compile either path, ne
 - public · colingsnyder2-ux · [v8datamodel/Flag.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/Flag.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Flag.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/Flag.h)
 
-<details><summary>70 retained local origins</summary>
+<details><summary>71 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Flag.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Flag.h` · root `b52aa15feaea5a0c`
@@ -511,6 +516,7 @@ Compatibility path for `App/include/v8datamodel/Flag.h`; compile either path, ne
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/v8datamodel/Flag.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/v8datamodel/Flag.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/v8datamodel/Flag.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/v8datamodel/Flag.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8datamodel/Flag.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/Flag.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/Flag.h` · root `b52aa15feaea5a0c`
@@ -587,6 +593,8 @@ Compatibility path for `App/include/v8datamodel/FlagStand.h`; compile either pat
 </details>
 
 **`15561e83bda9`** · `native-headers/v8datamodel/FlagStand.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/FlagStand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/v8datamodel/FlagStand.h)
+- canonical · colingsnyder2-ux · [v8datamodel/FlagStand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/v8datamodel/FlagStand.h)
 - public · colingsnyder2-ux · [v8datamodel/FlagStand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/v8datamodel/FlagStand.h)
 - canonical · colingsnyder2-ux · [v8datamodel/FlagStand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/v8datamodel/FlagStand.h)
 - public · colingsnyder2-ux · [v8datamodel/FlagStand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/v8datamodel/FlagStand.h)
@@ -658,7 +666,7 @@ Compatibility path for `App/include/v8datamodel/FlagStand.h`; compile either pat
 - public · colingsnyder2-ux · [v8datamodel/FlagStand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/FlagStand.h)
 - canonical · colingsnyder2-ux · [v8datamodel/FlagStand.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/FlagStand.h)
 
-<details><summary>70 retained local origins</summary>
+<details><summary>71 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/FlagStand.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/FlagStand.h` · root `b52aa15feaea5a0c`
@@ -711,6 +719,7 @@ Compatibility path for `App/include/v8datamodel/FlagStand.h`; compile either pat
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/v8datamodel/FlagStand.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/v8datamodel/FlagStand.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/v8datamodel/FlagStand.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/v8datamodel/FlagStand.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8datamodel/FlagStand.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/FlagStand.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/FlagStand.h` · root `b52aa15feaea5a0c`
@@ -894,6 +903,8 @@ Compatibility path for `App/include/v8datamodel/FlagStandService.h`; compile eit
 </details>
 
 **`878539bed15c`** · `native-headers/v8datamodel/FlagStandService.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/FlagStandService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/v8datamodel/FlagStandService.h)
+- canonical · colingsnyder2-ux · [v8datamodel/FlagStandService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/v8datamodel/FlagStandService.h)
 - public · colingsnyder2-ux · [v8datamodel/FlagStandService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/v8datamodel/FlagStandService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/FlagStandService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/v8datamodel/FlagStandService.h)
 - public · colingsnyder2-ux · [v8datamodel/FlagStandService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/v8datamodel/FlagStandService.h)
@@ -965,7 +976,7 @@ Compatibility path for `App/include/v8datamodel/FlagStandService.h`; compile eit
 - public · colingsnyder2-ux · [v8datamodel/FlagStandService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/FlagStandService.h)
 - canonical · colingsnyder2-ux · [v8datamodel/FlagStandService.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/FlagStandService.h)
 
-<details><summary>70 retained local origins</summary>
+<details><summary>71 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/FlagStandService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/FlagStandService.h` · root `b52aa15feaea5a0c`
@@ -1018,6 +1029,7 @@ Compatibility path for `App/include/v8datamodel/FlagStandService.h`; compile eit
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/v8datamodel/FlagStandService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/v8datamodel/FlagStandService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/v8datamodel/FlagStandService.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/v8datamodel/FlagStandService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8datamodel/FlagStandService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/FlagStandService.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/FlagStandService.h` · root `b52aa15feaea5a0c`

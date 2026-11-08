@@ -6,6 +6,14 @@
 <summary>native-classes/CSettingsExplorer.cpp — candidate-only; 2 content versions</summary>
 
 **`545b1c2673de`** · `native-classes/CSettingsExplorer.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/CSettingsExplorer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/16f002ebbc907cdc31770e6dba3063a0aad90721f45f9b3dd4e44b545cb777c3/rebuild/2008-06/native-classes/CSettingsExplorer.cpp)
+- draft · colingsnyder2-ux · [native-classes/CSettingsExplorer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/1b1d93072d137eb6ad0823c4c29d9854b452fe6c5edaed7b78663c798ce9fdbc/rebuild/2008-06/native-classes/CSettingsExplorer.cpp)
+- draft · colingsnyder2-ux · [native-classes/CSettingsExplorer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/1f36e89c2fd4d45e5927708a754603429226d14cd5d2f86b346053b9de2ff49d/rebuild/2008-06/native-classes/CSettingsExplorer.cpp)
+- draft · colingsnyder2-ux · [native-classes/CSettingsExplorer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/32e731867b812c14d30c0b776977faf273805d6c504692dbf51781c776af60cb/rebuild/2008-06/native-classes/CSettingsExplorer.cpp)
+- draft · colingsnyder2-ux · [native-classes/CSettingsExplorer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/73b6f2a24d9dabf695fb68e209034c19737cc17bf69c4ff6e59bba973c422dfa/rebuild/2008-06/native-classes/CSettingsExplorer.cpp)
+- draft · colingsnyder2-ux · [native-classes/CSettingsExplorer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/949ee0cd2d064a7a1ed61052c9431247cf4296059235b9026797fbfd379d3e70/rebuild/2008-06/native-classes/CSettingsExplorer.cpp)
+- draft · colingsnyder2-ux · [native-classes/CSettingsExplorer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/cb4020c26e008a9e68f3538ec9656e1a499c2cfa4fefaea8784484d8e1fae512/rebuild/2008-06/native-classes/CSettingsExplorer.cpp)
+- draft · colingsnyder2-ux · [native-classes/CSettingsExplorer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/d39272889f217a674d465200e5f29828a937a79fe53bfd7ef10e6a49ed7db69c/rebuild/2008-06/native-classes/CSettingsExplorer.cpp)
 - draft · colingsnyder2-ux · [native-classes/CSettingsExplorer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/16f002ebbc907cdc31770e6dba3063a0aad90721f45f9b3dd4e44b545cb777c3/rebuild/2008-06/native-classes/CSettingsExplorer.cpp)
 - draft · colingsnyder2-ux · [native-classes/CSettingsExplorer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/1b1d93072d137eb6ad0823c4c29d9854b452fe6c5edaed7b78663c798ce9fdbc/rebuild/2008-06/native-classes/CSettingsExplorer.cpp)
 - draft · colingsnyder2-ux · [native-classes/CSettingsExplorer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/1f36e89c2fd4d45e5927708a754603429226d14cd5d2f86b346053b9de2ff49d/rebuild/2008-06/native-classes/CSettingsExplorer.cpp)
@@ -519,6 +527,8 @@ Compatibility path for `WindowsClient/src/CUploadPlaceDialog.cpp`; compile eithe
 </details>
 
 **`c68ffe13687f`** · `native-classes/CUploadPlaceDialog.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CUploadPlaceDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/CUploadPlaceDialog.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CUploadPlaceDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/CUploadPlaceDialog.cpp)
 - public · colingsnyder2-ux · [native-classes/CUploadPlaceDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/CUploadPlaceDialog.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CUploadPlaceDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/CUploadPlaceDialog.cpp)
 - public · colingsnyder2-ux · [native-classes/CUploadPlaceDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CUploadPlaceDialog.cpp)

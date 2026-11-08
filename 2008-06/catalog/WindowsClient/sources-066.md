@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/CUploadPlaceDialog.cpp`.
 
 **`1c79b2259873`** · `WindowsClient/src/CUploadPlaceDialog.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CUploadPlaceDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/CUploadPlaceDialog.cpp)
 - public · colingsnyder2-ux · [src/CUploadPlaceDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/CUploadPlaceDialog.cpp)
 - public · colingsnyder2-ux · [src/CUploadPlaceDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/CUploadPlaceDialog.cpp)
 - public · colingsnyder2-ux · [src/CUploadPlaceDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/CUploadPlaceDialog.cpp)
@@ -57,6 +58,7 @@ Earlier paths and their donor versions: `native-classes/CUploadPlaceDialog.cpp`.
 </details>
 
 **`3bf5c1055ebc`** · `WindowsClient/src/CUploadPlaceDialog.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CUploadPlaceDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/CUploadPlaceDialog.cpp)
 - canonical · colingsnyder2-ux · [src/CUploadPlaceDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/CUploadPlaceDialog.cpp)
 - canonical · colingsnyder2-ux · [src/CUploadPlaceDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/CUploadPlaceDialog.cpp)
 - canonical · colingsnyder2-ux · [src/CUploadPlaceDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/CUploadPlaceDialog.cpp)
@@ -200,6 +202,8 @@ Earlier paths and their donor versions: `native-classes/CUploadPlaceDialog.cpp`.
 </details>
 
 **`c68ffe13687f`** · `native-classes/CUploadPlaceDialog.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CUploadPlaceDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/CUploadPlaceDialog.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CUploadPlaceDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/CUploadPlaceDialog.cpp)
 - public · colingsnyder2-ux · [native-classes/CUploadPlaceDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/CUploadPlaceDialog.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CUploadPlaceDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/CUploadPlaceDialog.cpp)
 - public · colingsnyder2-ux · [native-classes/CUploadPlaceDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CUploadPlaceDialog.cpp)
@@ -321,6 +325,8 @@ Earlier paths and their donor versions: `native-classes/CUploadPlaceDialog.cpp`.
 Earlier paths and their donor versions: `native-classes/CWebToolbox.cpp`.
 
 **`6b795bb6dbe6`** · `WindowsClient/src/CWebToolbox.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/CWebToolbox.cpp)
+- canonical · colingsnyder2-ux · [src/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/CWebToolbox.cpp)
 - public · colingsnyder2-ux · [src/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/CWebToolbox.cpp)
 - canonical · colingsnyder2-ux · [src/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/CWebToolbox.cpp)
 - public · colingsnyder2-ux · [src/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/CWebToolbox.cpp)
@@ -427,6 +433,7 @@ Earlier paths and their donor versions: `native-classes/CWebToolbox.cpp`.
 </details>
 
 **`23af85bb801e`** · `native-classes/CWebToolbox.cpp` · proof not assessed
+- archive · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/CWebToolbox.cpp)
 - archive · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/CWebToolbox.cpp)
 - archive · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/CWebToolbox.cpp)
 - archive · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/CWebToolbox.cpp)
@@ -545,6 +552,8 @@ Earlier paths and their donor versions: `native-classes/CWebToolbox.cpp`.
 </details>
 
 **`b4c4d39b17de`** · `native-classes/CWebToolbox.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/CWebToolbox.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/CWebToolbox.cpp)
 - public · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/CWebToolbox.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/CWebToolbox.cpp)
 - public · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CWebToolbox.cpp)
@@ -659,6 +668,7 @@ Earlier paths and their donor versions: `native-classes/CWebToolbox.cpp`.
 </details>
 
 **`e49294627330`** · `native-classes/CWebToolbox.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/924f4bbf9ae79da4295ce56ce82d7556e0d5ff8954549f84f77d5715c47eae6f/rebuild/2008-06/native-classes/CWebToolbox.cpp)
 - draft · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/924f4bbf9ae79da4295ce56ce82d7556e0d5ff8954549f84f77d5715c47eae6f/rebuild/2008-06/native-classes/CWebToolbox.cpp)
 - draft · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/924f4bbf9ae79da4295ce56ce82d7556e0d5ff8954549f84f77d5715c47eae6f/rebuild/2008-06/native-classes/CWebToolbox.cpp)
 - draft · colingsnyder2-ux · [native-classes/CWebToolbox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/924f4bbf9ae79da4295ce56ce82d7556e0d5ff8954549f84f77d5715c47eae6f/rebuild/2008-06/native-classes/CWebToolbox.cpp)

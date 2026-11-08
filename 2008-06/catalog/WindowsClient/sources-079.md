@@ -59,6 +59,8 @@ Compatibility path for `Unclassified/src/BasicVerbConstructors.cpp`; compile eit
 </details>
 
 **`26e53db60f0a`** · `native-classes/BasicVerbConstructors.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/BasicVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/BasicVerbConstructors.cpp)
+- canonical · colingsnyder2-ux · [native-classes/BasicVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/BasicVerbConstructors.cpp)
 - public · colingsnyder2-ux · [native-classes/BasicVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/BasicVerbConstructors.cpp)
 - canonical · colingsnyder2-ux · [native-classes/BasicVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/BasicVerbConstructors.cpp)
 - public · colingsnyder2-ux · [native-classes/BasicVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/BasicVerbConstructors.cpp)
@@ -206,6 +208,8 @@ Compatibility path for `Unclassified/src/BasicVerbConstructors.cpp`; compile eit
 Compatibility path for `Unclassified/src/BoolPropertyVerb.cpp`; compile either path, never both.
 
 **`11b7c126c92c`** · `native-classes/BoolPropertyVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/BoolPropertyVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/BoolPropertyVerb.cpp)
 - public · colingsnyder2-ux · [native-classes/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/BoolPropertyVerb.cpp)
 - canonical · colingsnyder2-ux · [native-classes/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/BoolPropertyVerb.cpp)
 - public · colingsnyder2-ux · [native-classes/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/BoolPropertyVerb.cpp)
@@ -461,6 +465,7 @@ Compatibility path for `Unclassified/src/BoolPropertyVerb.cpp`; compile either p
 - public · colingsnyder2-ux · [native-classes/BrickColorMapPopulation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/BrickColorMapPopulation.cpp)
 
 **`85a45bcfbba5`** · `native-classes/BrickColorMapPopulation.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/BrickColorMapPopulation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/BrickColorMapPopulation.cpp)
 - public · colingsnyder2-ux · [native-classes/BrickColorMapPopulation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/BrickColorMapPopulation.cpp)
 - public · colingsnyder2-ux · [native-classes/BrickColorMapPopulation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/BrickColorMapPopulation.cpp)
 - public · colingsnyder2-ux · [native-classes/BrickColorMapPopulation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/BrickColorMapPopulation.cpp)
@@ -564,6 +569,7 @@ Compatibility path for `Unclassified/src/BoolPropertyVerb.cpp`; compile either p
 </details>
 
 **`edbd33d02941`** · `native-classes/BrowserPopup.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/BrowserPopup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/BrowserPopup.cpp)
 - public · colingsnyder2-ux · [native-classes/BrowserPopup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/BrowserPopup.cpp)
 - public · colingsnyder2-ux · [native-classes/BrowserPopup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/BrowserPopup.cpp)
 - public · colingsnyder2-ux · [native-classes/BrowserPopup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/BrowserPopup.cpp)
@@ -643,6 +649,7 @@ Compatibility path for `Unclassified/src/BoolPropertyVerb.cpp`; compile either p
 </details>
 
 **`c6595fe17af4`** · `native-classes/BrowserViewExternalFactory.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/BrowserViewExternalFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/BrowserViewExternalFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/BrowserViewExternalFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/BrowserViewExternalFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/BrowserViewExternalFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/BrowserViewExternalFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/BrowserViewExternalFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/BrowserViewExternalFactory.cpp)
@@ -676,6 +683,7 @@ Compatibility path for `Unclassified/src/BoolPropertyVerb.cpp`; compile either p
 <summary>native-classes/BrowserViewExternalGetApp.cpp — public-only; 5 content versions</summary>
 
 **`79f40f2eb9f4`** · `native-classes/BrowserViewExternalGetApp.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/BrowserViewExternalGetApp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/BrowserViewExternalGetApp.cpp)
 - public · colingsnyder2-ux · [native-classes/BrowserViewExternalGetApp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/BrowserViewExternalGetApp.cpp)
 - public · colingsnyder2-ux · [native-classes/BrowserViewExternalGetApp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/BrowserViewExternalGetApp.cpp)
 - public · colingsnyder2-ux · [native-classes/BrowserViewExternalGetApp.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/BrowserViewExternalGetApp.cpp)
@@ -815,6 +823,8 @@ Compatibility path for `Unclassified/src/BrowserViewExternalMethods.cpp`; compil
 - canonical · colingsnyder2-ux · [native-classes/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/native-classes/BrowserViewExternalMethods.cpp)
 
 **`e605cf23f0e7`** · `native-classes/BrowserViewExternalMethods.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/BrowserViewExternalMethods.cpp)
+- canonical · colingsnyder2-ux · [native-classes/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/BrowserViewExternalMethods.cpp)
 - public · colingsnyder2-ux · [native-classes/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/BrowserViewExternalMethods.cpp)
 - canonical · colingsnyder2-ux · [native-classes/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/BrowserViewExternalMethods.cpp)
 - public · colingsnyder2-ux · [native-classes/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/BrowserViewExternalMethods.cpp)

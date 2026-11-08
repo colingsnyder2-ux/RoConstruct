@@ -34,6 +34,7 @@ Compatibility path for `WindowsClient/src/CAboutRobloxDialog.cpp`; compile eithe
 </details>
 
 **`43443c86a82c`** · `native-classes/CAboutRobloxDialog.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/CAboutRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/8f65d6b6b08b3e16b3fe1bcbe387041a554ca6aa7b91c16cd881a78916da79de/rebuild/2008-06/native-classes/CAboutRobloxDialog.cpp)
 - draft · colingsnyder2-ux · [native-classes/CAboutRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/8f65d6b6b08b3e16b3fe1bcbe387041a554ca6aa7b91c16cd881a78916da79de/rebuild/2008-06/native-classes/CAboutRobloxDialog.cpp)
 - draft · colingsnyder2-ux · [native-classes/CAboutRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/8f65d6b6b08b3e16b3fe1bcbe387041a554ca6aa7b91c16cd881a78916da79de/rebuild/2008-06/native-classes/CAboutRobloxDialog.cpp)
 - draft · colingsnyder2-ux · [native-classes/CAboutRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/8f65d6b6b08b3e16b3fe1bcbe387041a554ca6aa7b91c16cd881a78916da79de/rebuild/2008-06/native-classes/CAboutRobloxDialog.cpp)
@@ -117,6 +118,8 @@ Compatibility path for `WindowsClient/src/CAboutRobloxDialog.cpp`; compile eithe
 </details>
 
 **`670b45531c6b`** · `native-classes/CAboutRobloxDialog.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CAboutRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/CAboutRobloxDialog.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CAboutRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/CAboutRobloxDialog.cpp)
 - public · colingsnyder2-ux · [native-classes/CAboutRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/CAboutRobloxDialog.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CAboutRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/CAboutRobloxDialog.cpp)
 - public · colingsnyder2-ux · [native-classes/CAboutRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CAboutRobloxDialog.cpp)
@@ -221,6 +224,7 @@ Compatibility path for `WindowsClient/src/CAboutRobloxDialog.cpp`; compile eithe
 </details>
 
 **`a5bf04a571c5`** · `native-classes/CAboutRobloxDialog.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/CAboutRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/c52716aa208e898dc6886c487926198796069a6406729d9bf41b67d9c269f5d5/rebuild/2008-06/native-classes/CAboutRobloxDialog.cpp)
 - draft · colingsnyder2-ux · [native-classes/CAboutRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/c52716aa208e898dc6886c487926198796069a6406729d9bf41b67d9c269f5d5/rebuild/2008-06/native-classes/CAboutRobloxDialog.cpp)
 - draft · colingsnyder2-ux · [native-classes/CAboutRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/c52716aa208e898dc6886c487926198796069a6406729d9bf41b67d9c269f5d5/rebuild/2008-06/native-classes/CAboutRobloxDialog.cpp)
 - draft · colingsnyder2-ux · [native-classes/CAboutRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/c52716aa208e898dc6886c487926198796069a6406729d9bf41b67d9c269f5d5/rebuild/2008-06/native-classes/CAboutRobloxDialog.cpp)
@@ -590,6 +594,8 @@ Compatibility path for `WindowsClient/src/CAboutRobloxDialogData.cpp`; compile e
 </details>
 
 **`e4df2e0bad50`** · `native-classes/CAboutRobloxDialogData.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CAboutRobloxDialogData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/CAboutRobloxDialogData.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CAboutRobloxDialogData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/CAboutRobloxDialogData.cpp)
 - public · colingsnyder2-ux · [native-classes/CAboutRobloxDialogData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/CAboutRobloxDialogData.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CAboutRobloxDialogData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/CAboutRobloxDialogData.cpp)
 - public · colingsnyder2-ux · [native-classes/CAboutRobloxDialogData.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CAboutRobloxDialogData.cpp)
@@ -724,8 +730,9 @@ Compatibility path for `WindowsClient/src/CAboutRobloxDialogData.cpp`; compile e
 <summary>native-classes/CBrowserDoc.cpp — public-only; 7 content versions</summary>
 
 **`1f35c20866a7`** · `native-classes/CBrowserDoc.cpp` · proof not assessed
-- draft · colingsnyder2-ux · [native-classes/CBrowserDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CBrowserDoc.cpp)
+- draft · colingsnyder2-ux · [native-classes/CBrowserDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CBrowserDoc.cpp)
 - fork · coldek · [native-classes/CBrowserDoc.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-classes/CBrowserDoc.cpp)
+- draft · colingsnyder2-ux · [native-classes/CBrowserDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CBrowserDoc.cpp)
 - draft · colingsnyder2-ux · [native-classes/CBrowserDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CBrowserDoc.cpp)
 - draft · colingsnyder2-ux · [native-classes/CBrowserDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CBrowserDoc.cpp)
 - draft · colingsnyder2-ux · [native-classes/CBrowserDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/CBrowserDoc.cpp)
@@ -836,6 +843,7 @@ Compatibility path for `WindowsClient/src/CAboutRobloxDialogData.cpp`; compile e
 - public · colingsnyder2-ux · [native-classes/CBrowserDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/CBrowserDoc.cpp)
 
 **`78953ac8e2a2`** · `native-classes/CBrowserDoc.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CBrowserDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/CBrowserDoc.cpp)
 - public · colingsnyder2-ux · [native-classes/CBrowserDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/CBrowserDoc.cpp)
 - public · colingsnyder2-ux · [native-classes/CBrowserDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CBrowserDoc.cpp)
 - public · colingsnyder2-ux · [native-classes/CBrowserDoc.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CBrowserDoc.cpp)
@@ -893,6 +901,7 @@ Compatibility path for `WindowsClient/src/CAboutRobloxDialogData.cpp`; compile e
 </details>
 
 **`602a92707273`** · `native-classes/CBrowserDocManager.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CBrowserDocManager.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/CBrowserDocManager.cpp)
 - public · colingsnyder2-ux · [native-classes/CBrowserDocManager.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/CBrowserDocManager.cpp)
 - public · colingsnyder2-ux · [native-classes/CBrowserDocManager.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CBrowserDocManager.cpp)
 - public · colingsnyder2-ux · [native-classes/CBrowserDocManager.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/CBrowserDocManager.cpp)

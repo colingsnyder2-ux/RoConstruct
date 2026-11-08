@@ -17,6 +17,7 @@ Earlier paths and their donor versions: `native-classes/SpawnLocation.cpp`.
 </details>
 
 **`cc99357e3842`** · `App/src/v8datamodel/SpawnLocation.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/SpawnLocation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/SpawnLocation.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SpawnLocation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/SpawnLocation.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SpawnLocation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/SpawnLocation.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SpawnLocation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/SpawnLocation.cpp)
@@ -75,6 +76,7 @@ Earlier paths and their donor versions: `native-classes/SpawnLocation.cpp`.
 </details>
 
 **`fa586dabe0a8`** · `App/src/v8datamodel/SpawnLocation.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/SpawnLocation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/SpawnLocation.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SpawnLocation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/SpawnLocation.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SpawnLocation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/SpawnLocation.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SpawnLocation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/SpawnLocation.cpp)
@@ -140,6 +142,8 @@ Earlier paths and their donor versions: `native-classes/SpawnLocation.cpp`.
 </details>
 
 **`3b2d268f698f`** · `native-classes/SpawnLocation.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SpawnLocation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/SpawnLocation.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SpawnLocation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/SpawnLocation.cpp)
 - public · colingsnyder2-ux · [native-classes/SpawnLocation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/SpawnLocation.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SpawnLocation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/SpawnLocation.cpp)
 - public · colingsnyder2-ux · [native-classes/SpawnLocation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/SpawnLocation.cpp)
@@ -311,6 +315,7 @@ Earlier paths and their donor versions: `native-classes/SpawnLocation.cpp`.
 Earlier paths and their donor versions: `native-classes/SpecialShape.cpp`.
 
 **`27ad66f3f590`** · `App/src/v8datamodel/SpecialShape.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/SpecialShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/SpecialShape.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SpecialShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/SpecialShape.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SpecialShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/SpecialShape.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SpecialShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/SpecialShape.cpp)
@@ -351,6 +356,7 @@ Earlier paths and their donor versions: `native-classes/SpecialShape.cpp`.
 - public · colingsnyder2-ux · [v8datamodel/SpecialShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/SpecialShape.cpp)
 
 **`5a0a4e5bd16e`** · `App/src/v8datamodel/SpecialShape.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/SpecialShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/SpecialShape.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SpecialShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/SpecialShape.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SpecialShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/SpecialShape.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SpecialShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/SpecialShape.cpp)
@@ -467,8 +473,9 @@ Earlier paths and their donor versions: `native-classes/SpecialShape.cpp`.
 </details>
 
 **`8d9cec38f04e`** · `native-classes/SpecialShape.cpp` · proof not assessed
-- draft · colingsnyder2-ux · [native-classes/SpecialShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/SpecialShape.cpp)
+- draft · colingsnyder2-ux · [native-classes/SpecialShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/SpecialShape.cpp)
 - fork · coldek · [native-classes/SpecialShape.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-classes/SpecialShape.cpp)
+- draft · colingsnyder2-ux · [native-classes/SpecialShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/SpecialShape.cpp)
 - draft · colingsnyder2-ux · [native-classes/SpecialShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/SpecialShape.cpp)
 - draft · colingsnyder2-ux · [native-classes/SpecialShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/SpecialShape.cpp)
 - draft · colingsnyder2-ux · [native-classes/SpecialShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/SpecialShape.cpp)
@@ -526,6 +533,8 @@ Earlier paths and their donor versions: `native-classes/SpecialShape.cpp`.
 </details>
 
 **`a1a0560ae719`** · `native-classes/SpecialShape.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SpecialShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/SpecialShape.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SpecialShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/SpecialShape.cpp)
 - public · colingsnyder2-ux · [native-classes/SpecialShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/SpecialShape.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SpecialShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/SpecialShape.cpp)
 - public · colingsnyder2-ux · [native-classes/SpecialShape.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/SpecialShape.cpp)
@@ -664,6 +673,7 @@ Earlier paths and their donor versions: `native-classes/SpecialShape.cpp`.
 Earlier paths and their donor versions: `native-classes/StatsClassName.cpp`.
 
 **`16f321b52a0c`** · `App/src/v8datamodel/StatsClassName.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/StatsClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/StatsClassName.cpp)
 - public · colingsnyder2-ux · [v8datamodel/StatsClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/StatsClassName.cpp)
 - public · colingsnyder2-ux · [v8datamodel/StatsClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/StatsClassName.cpp)
 - public · colingsnyder2-ux · [v8datamodel/StatsClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/StatsClassName.cpp)
@@ -693,6 +703,7 @@ Earlier paths and their donor versions: `native-classes/StatsClassName.cpp`.
 </details>
 
 **`62e190959b40`** · `App/src/v8datamodel/StatsClassName.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/StatsClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/StatsClassName.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/StatsClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/StatsClassName.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/StatsClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/StatsClassName.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/StatsClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/StatsClassName.cpp)
@@ -850,6 +861,8 @@ Earlier paths and their donor versions: `native-classes/StatsClassName.cpp`.
 </details>
 
 **`6f93636698a2`** · `native-classes/StatsClassName.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/StatsClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/StatsClassName.cpp)
+- canonical · colingsnyder2-ux · [native-classes/StatsClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/StatsClassName.cpp)
 - public · colingsnyder2-ux · [native-classes/StatsClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/StatsClassName.cpp)
 - canonical · colingsnyder2-ux · [native-classes/StatsClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/StatsClassName.cpp)
 - public · colingsnyder2-ux · [native-classes/StatsClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/StatsClassName.cpp)

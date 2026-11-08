@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/GroupSelectionVerb.cpp`.
 
 **`80cc0f913450`** · `App/src/v8datamodel/GroupSelectionVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/GroupSelectionVerb.cpp)
 - public · colingsnyder2-ux · [v8datamodel/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/GroupSelectionVerb.cpp)
 - public · colingsnyder2-ux · [v8datamodel/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/GroupSelectionVerb.cpp)
 - public · colingsnyder2-ux · [v8datamodel/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/GroupSelectionVerb.cpp)
@@ -65,6 +66,7 @@ Earlier paths and their donor versions: `native-classes/GroupSelectionVerb.cpp`.
 - public · colingsnyder2-ux · [v8datamodel/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/GroupSelectionVerb.cpp)
 
 **`c126640556d3`** · `App/src/v8datamodel/GroupSelectionVerb.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/GroupSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/GroupSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/GroupSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/GroupSelectionVerb.cpp)
@@ -148,6 +150,8 @@ Earlier paths and their donor versions: `native-classes/GroupSelectionVerb.cpp`.
 </details>
 
 **`a2386edb9dcc`** · `native-classes/GroupSelectionVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/GroupSelectionVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp)
 - public · colingsnyder2-ux · [native-classes/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/GroupSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [native-classes/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/GroupSelectionVerb.cpp)
 - public · colingsnyder2-ux · [native-classes/GroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/GroupSelectionVerb.cpp)
@@ -345,6 +349,7 @@ Earlier paths and their donor versions: `native-classes/HistoryItemCaptureProper
 - public · colingsnyder2-ux · [v8datamodel/HistoryItemCaptureProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/HistoryItemCaptureProperty.cpp)
 
 **`14eee7338c6c`** · `App/src/v8datamodel/HistoryItemCaptureProperty.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/HistoryItemCaptureProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/HistoryItemCaptureProperty.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/HistoryItemCaptureProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/HistoryItemCaptureProperty.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/HistoryItemCaptureProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/HistoryItemCaptureProperty.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/HistoryItemCaptureProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/HistoryItemCaptureProperty.cpp)
@@ -414,6 +419,7 @@ Earlier paths and their donor versions: `native-classes/HistoryItemCaptureProper
 </details>
 
 **`e71487fd2aa3`** · `App/src/v8datamodel/HistoryItemCaptureProperty.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/HistoryItemCaptureProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/HistoryItemCaptureProperty.cpp)
 - public · colingsnyder2-ux · [v8datamodel/HistoryItemCaptureProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/HistoryItemCaptureProperty.cpp)
 - public · colingsnyder2-ux · [v8datamodel/HistoryItemCaptureProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/HistoryItemCaptureProperty.cpp)
 - public · colingsnyder2-ux · [v8datamodel/HistoryItemCaptureProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/HistoryItemCaptureProperty.cpp)
@@ -472,6 +478,8 @@ Earlier paths and their donor versions: `native-classes/HistoryItemCaptureProper
 </details>
 
 **`1501578839d3`** · `native-classes/HistoryItemCaptureProperty.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HistoryItemCaptureProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/HistoryItemCaptureProperty.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HistoryItemCaptureProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/HistoryItemCaptureProperty.cpp)
 - public · colingsnyder2-ux · [native-classes/HistoryItemCaptureProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/HistoryItemCaptureProperty.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HistoryItemCaptureProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/HistoryItemCaptureProperty.cpp)
 - public · colingsnyder2-ux · [native-classes/HistoryItemCaptureProperty.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/HistoryItemCaptureProperty.cpp)
@@ -622,6 +630,7 @@ Earlier paths and their donor versions: `native-classes/HistoryItemCaptureProper
 Earlier paths and their donor versions: `native-classes/HistoryItemPlayback.cpp`.
 
 **`2088cdcb6826`** · `App/src/v8datamodel/HistoryItemPlayback.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/HistoryItemPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/HistoryItemPlayback.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/HistoryItemPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/HistoryItemPlayback.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/HistoryItemPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/HistoryItemPlayback.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/HistoryItemPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/HistoryItemPlayback.cpp)
@@ -717,6 +726,7 @@ Earlier paths and their donor versions: `native-classes/HistoryItemPlayback.cpp`
 - public · colingsnyder2-ux · [v8datamodel/HistoryItemPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/HistoryItemPlayback.cpp)
 
 **`425fcb1f4d10`** · `App/src/v8datamodel/HistoryItemPlayback.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/HistoryItemPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/HistoryItemPlayback.cpp)
 - public · colingsnyder2-ux · [v8datamodel/HistoryItemPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/HistoryItemPlayback.cpp)
 - public · colingsnyder2-ux · [v8datamodel/HistoryItemPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/HistoryItemPlayback.cpp)
 - public · colingsnyder2-ux · [v8datamodel/HistoryItemPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/HistoryItemPlayback.cpp)
@@ -836,6 +846,8 @@ Earlier paths and their donor versions: `native-classes/HistoryItemPlayback.cpp`
 - public · colingsnyder2-ux · [native-classes/HistoryItemPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/HistoryItemPlayback.cpp)
 
 **`649117941dfc`** · `native-classes/HistoryItemPlayback.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HistoryItemPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/HistoryItemPlayback.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HistoryItemPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/HistoryItemPlayback.cpp)
 - public · colingsnyder2-ux · [native-classes/HistoryItemPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/HistoryItemPlayback.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HistoryItemPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/HistoryItemPlayback.cpp)
 - public · colingsnyder2-ux · [native-classes/HistoryItemPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/HistoryItemPlayback.cpp)

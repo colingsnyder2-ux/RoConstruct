@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/ViewNew/SphereMesh.h`.
 
 **`58f27d97e264`** · `WindowsClient/include/ViewNew/SphereMesh.h` · proof not assessed
+- public · colingsnyder2-ux · [ViewNew/SphereMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/include/ViewNew/SphereMesh.h)
 - public · colingsnyder2-ux · [ViewNew/SphereMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/include/ViewNew/SphereMesh.h)
 - public · colingsnyder2-ux · [ViewNew/SphereMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/include/ViewNew/SphereMesh.h)
 - public · colingsnyder2-ux · [ViewNew/SphereMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/include/ViewNew/SphereMesh.h)
@@ -60,6 +61,7 @@ Earlier paths and their donor versions: `native-headers/ViewNew/SphereMesh.h`.
 </details>
 
 **`b9ff9cc3c40a`** · `WindowsClient/include/ViewNew/SphereMesh.h` · proof not assessed
+- canonical · colingsnyder2-ux · [ViewNew/SphereMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/include/ViewNew/SphereMesh.h)
 - canonical · colingsnyder2-ux · [ViewNew/SphereMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/include/ViewNew/SphereMesh.h)
 - canonical · colingsnyder2-ux · [ViewNew/SphereMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/include/ViewNew/SphereMesh.h)
 - canonical · colingsnyder2-ux · [ViewNew/SphereMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/include/ViewNew/SphereMesh.h)
@@ -94,7 +96,7 @@ Earlier paths and their donor versions: `native-headers/ViewNew/SphereMesh.h`.
 - canonical · colingsnyder2-ux · [ViewNew/SphereMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/ViewNew/SphereMesh.h)
 - canonical · colingsnyder2-ux · [ViewNew/SphereMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/ViewNew/SphereMesh.h)
 
-<details><summary>63 retained local origins</summary>
+<details><summary>64 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/ViewNew/SphereMesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/ViewNew/SphereMesh.h` · root `b52aa15feaea5a0c`
@@ -142,6 +144,7 @@ Earlier paths and their donor versions: `native-headers/ViewNew/SphereMesh.h`.
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/WindowsClient/include/ViewNew/SphereMesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/WindowsClient/include/ViewNew/SphereMesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/WindowsClient/include/ViewNew/SphereMesh.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/WindowsClient/include/ViewNew/SphereMesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/WindowsClient/include/ViewNew/SphereMesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/ViewNew/SphereMesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/WindowsClient/include/ViewNew/SphereMesh.h` · root `b52aa15feaea5a0c`
@@ -197,6 +200,8 @@ Earlier paths and their donor versions: `native-headers/ViewNew/SphereMesh.h`.
 </details>
 
 **`95155b0515e3`** · `native-headers/ViewNew/SphereMesh.h` · proof not assessed
+- public · colingsnyder2-ux · [ViewNew/SphereMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/ViewNew/SphereMesh.h)
+- canonical · colingsnyder2-ux · [ViewNew/SphereMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/ViewNew/SphereMesh.h)
 - public · colingsnyder2-ux · [ViewNew/SphereMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/ViewNew/SphereMesh.h)
 - canonical · colingsnyder2-ux · [ViewNew/SphereMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/ViewNew/SphereMesh.h)
 - public · colingsnyder2-ux · [ViewNew/SphereMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/ViewNew/SphereMesh.h)
@@ -264,7 +269,7 @@ Earlier paths and their donor versions: `native-headers/ViewNew/SphereMesh.h`.
 - public · colingsnyder2-ux · [ViewNew/SphereMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/ViewNew/SphereMesh.h)
 - canonical · colingsnyder2-ux · [ViewNew/SphereMesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/ViewNew/SphereMesh.h)
 
-<details><summary>66 retained local origins</summary>
+<details><summary>67 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/ViewNew/SphereMesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/ViewNew/SphereMesh.h` · root `b52aa15feaea5a0c`
@@ -313,6 +318,7 @@ Earlier paths and their donor versions: `native-headers/ViewNew/SphereMesh.h`.
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/ViewNew/SphereMesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/ViewNew/SphereMesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/ViewNew/SphereMesh.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/ViewNew/SphereMesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/ViewNew/SphereMesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/ViewNew/SphereMesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/ViewNew/SphereMesh.h` · root `b52aa15feaea5a0c`
@@ -441,6 +447,7 @@ Earlier paths and their donor versions: `native-headers/ViewVerbs.h`.
 - public · colingsnyder2-ux · [include/ViewVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/include/ViewVerbs.h)
 
 **`684383374f36`** · `WindowsClient/include/ViewVerbs.h` · proof not assessed
+- public · colingsnyder2-ux · [include/ViewVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/include/ViewVerbs.h)
 - public · colingsnyder2-ux · [include/ViewVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/include/ViewVerbs.h)
 - public · colingsnyder2-ux · [include/ViewVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/include/ViewVerbs.h)
 - public · colingsnyder2-ux · [include/ViewVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/include/ViewVerbs.h)
@@ -461,6 +468,7 @@ Earlier paths and their donor versions: `native-headers/ViewVerbs.h`.
 </details>
 
 **`9d12dd82d753`** · `WindowsClient/include/ViewVerbs.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/ViewVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/include/ViewVerbs.h)
 - canonical · colingsnyder2-ux · [include/ViewVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/include/ViewVerbs.h)
 - canonical · colingsnyder2-ux · [include/ViewVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/include/ViewVerbs.h)
 - canonical · colingsnyder2-ux · [include/ViewVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/include/ViewVerbs.h)
@@ -490,7 +498,7 @@ Earlier paths and their donor versions: `native-headers/ViewVerbs.h`.
 - canonical · colingsnyder2-ux · [include/ViewVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/ViewVerbs.h)
 - canonical · colingsnyder2-ux · [include/ViewVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/ViewVerbs.h)
 
-<details><summary>54 retained local origins</summary>
+<details><summary>55 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/ViewVerbs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/ViewVerbs.h` · root `b52aa15feaea5a0c`
@@ -530,6 +538,7 @@ Earlier paths and their donor versions: `native-headers/ViewVerbs.h`.
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/WindowsClient/include/ViewVerbs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/WindowsClient/include/ViewVerbs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/WindowsClient/include/ViewVerbs.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/WindowsClient/include/ViewVerbs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/ViewVerbs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/WindowsClient/include/ViewVerbs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/ViewVerbs.h` · root `b52aa15feaea5a0c`
@@ -703,6 +712,8 @@ Earlier paths and their donor versions: `native-headers/ViewVerbs.h`.
 </details>
 
 **`ef707ce8a3a9`** · `native-headers/ViewVerbs.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/ViewVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/ViewVerbs.h)
+- canonical · colingsnyder2-ux · [native-headers/ViewVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/ViewVerbs.h)
 - public · colingsnyder2-ux · [native-headers/ViewVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/ViewVerbs.h)
 - canonical · colingsnyder2-ux · [native-headers/ViewVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/ViewVerbs.h)
 - public · colingsnyder2-ux · [native-headers/ViewVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/ViewVerbs.h)
@@ -760,7 +771,7 @@ Earlier paths and their donor versions: `native-headers/ViewVerbs.h`.
 - public · colingsnyder2-ux · [native-headers/ViewVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/ViewVerbs.h)
 - canonical · colingsnyder2-ux · [native-headers/ViewVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/ViewVerbs.h)
 
-<details><summary>57 retained local origins</summary>
+<details><summary>58 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/ViewVerbs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/ViewVerbs.h` · root `b52aa15feaea5a0c`
@@ -801,6 +812,7 @@ Earlier paths and their donor versions: `native-headers/ViewVerbs.h`.
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/ViewVerbs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/ViewVerbs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/ViewVerbs.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/ViewVerbs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/ViewVerbs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/ViewVerbs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/native-headers/ViewVerbs.h` · root `b52aa15feaea5a0c`
@@ -830,6 +842,7 @@ Earlier paths and their donor versions: `native-headers/ViewVerbs.h`.
 Earlier paths and their donor versions: `Unclassified/src/ActiveDocView.cpp`.
 
 **`1cdfb9bb8c07`** · `WindowsClient/src/ActiveDocView.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/ActiveDocView.cpp)
 - public · colingsnyder2-ux · [src/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/ActiveDocView.cpp)
 - public · colingsnyder2-ux · [src/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/ActiveDocView.cpp)
 - public · colingsnyder2-ux · [src/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/ActiveDocView.cpp)
@@ -838,6 +851,7 @@ Earlier paths and their donor versions: `Unclassified/src/ActiveDocView.cpp`.
 - public · colingsnyder2-ux · [src/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/WindowsClient/src/ActiveDocView.cpp)
 
 **`358bb1fbd1db`** · `WindowsClient/src/ActiveDocView.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/ActiveDocView.cpp)
 - canonical · colingsnyder2-ux · [src/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/ActiveDocView.cpp)
 - canonical · colingsnyder2-ux · [src/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/ActiveDocView.cpp)
 - canonical · colingsnyder2-ux · [src/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/ActiveDocView.cpp)
@@ -903,6 +917,7 @@ Earlier paths and their donor versions: `Unclassified/src/ActiveDocView.cpp`.
 </details>
 
 **`6607e94dbfcd`** · `Unclassified/src/ActiveDocView.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/ActiveDocView.cpp)
 - public · colingsnyder2-ux · [src/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/ActiveDocView.cpp)
 - public · colingsnyder2-ux · [src/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/ActiveDocView.cpp)
 - public · colingsnyder2-ux · [src/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/ActiveDocView.cpp)
@@ -911,6 +926,7 @@ Earlier paths and their donor versions: `Unclassified/src/ActiveDocView.cpp`.
 - public · colingsnyder2-ux · [src/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Unclassified/src/ActiveDocView.cpp)
 
 **`6987fedc30a7`** · `Unclassified/src/ActiveDocView.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/ActiveDocView.cpp)
 - canonical · colingsnyder2-ux · [src/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/ActiveDocView.cpp)
 - canonical · colingsnyder2-ux · [src/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/ActiveDocView.cpp)
 - canonical · colingsnyder2-ux · [src/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/ActiveDocView.cpp)

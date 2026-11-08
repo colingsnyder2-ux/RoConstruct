@@ -33,6 +33,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/custommesh.h
 - public · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/v8datamodel/custommesh.h)
 
 **`4efca610d3b4`** · `App/include/v8datamodel/custommesh.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/include/v8datamodel/custommesh.h)
 - canonical · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/include/v8datamodel/custommesh.h)
 - canonical · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/include/v8datamodel/custommesh.h)
 - canonical · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/include/v8datamodel/custommesh.h)
@@ -69,7 +70,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/custommesh.h
 - canonical · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/App/include/v8datamodel/custommesh.h)
 - canonical · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/App/include/v8datamodel/custommesh.h)
 
-<details><summary>67 retained local origins</summary>
+<details><summary>68 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/App/include/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
@@ -121,6 +122,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/custommesh.h
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/App/include/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/App/include/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/App/include/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/App/include/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/App/include/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/App/include/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/App/include/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
@@ -151,6 +153,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/custommesh.h
 </details>
 
 **`f2b2e0822c02`** · `App/include/v8datamodel/custommesh.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/include/v8datamodel/custommesh.h)
 - public · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/include/v8datamodel/custommesh.h)
 - public · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/include/v8datamodel/custommesh.h)
 - public · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/include/v8datamodel/custommesh.h)
@@ -253,6 +256,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/custommesh.h
 </details>
 
 **`6b16c553b4a8`** · `native-headers/v8datamodel/custommesh.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/v8datamodel/custommesh.h)
+- canonical · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/v8datamodel/custommesh.h)
 - public · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/v8datamodel/custommesh.h)
 - canonical · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/v8datamodel/custommesh.h)
 - public · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/v8datamodel/custommesh.h)
@@ -324,7 +329,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/custommesh.h
 - public · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/custommesh.h)
 - canonical · colingsnyder2-ux · [v8datamodel/custommesh.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/custommesh.h)
 
-<details><summary>70 retained local origins</summary>
+<details><summary>71 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
@@ -377,6 +382,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/custommesh.h
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/custommesh.h` · root `b52aa15feaea5a0c`
@@ -434,6 +440,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/custommesh.h
 Earlier paths and their donor versions: `native-classes/Accoutrement.cpp`.
 
 **`19668bdd02b3`** · `App/src/v8datamodel/Accoutrement.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/Accoutrement.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/Accoutrement.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/Accoutrement.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/Accoutrement.cpp)
@@ -545,6 +552,7 @@ Earlier paths and their donor versions: `native-classes/Accoutrement.cpp`.
 </details>
 
 **`bfaefb76a4b1`** · `App/src/v8datamodel/Accoutrement.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/Accoutrement.cpp)
 - public · colingsnyder2-ux · [v8datamodel/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/Accoutrement.cpp)
 - public · colingsnyder2-ux · [v8datamodel/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/Accoutrement.cpp)
 - public · colingsnyder2-ux · [v8datamodel/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/Accoutrement.cpp)
@@ -627,6 +635,8 @@ Earlier paths and their donor versions: `native-classes/Accoutrement.cpp`.
 </details>
 
 **`b21287866b02`** · `native-classes/Accoutrement.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/Accoutrement.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/Accoutrement.cpp)
 - public · colingsnyder2-ux · [native-classes/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/Accoutrement.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/Accoutrement.cpp)
 - public · colingsnyder2-ux · [native-classes/Accoutrement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/Accoutrement.cpp)
@@ -755,11 +765,13 @@ Earlier paths and their donor versions: `native-classes/Accoutrement.cpp`.
 Earlier paths and their donor versions: `Unclassified/src/AuthoringSettings.cpp`.
 
 **`193764570df5`** · `App/src/v8datamodel/AuthoringSettings.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/AuthoringSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/AuthoringSettings.cpp)
 - public · colingsnyder2-ux · [v8datamodel/AuthoringSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/AuthoringSettings.cpp)
 - public · colingsnyder2-ux · [v8datamodel/AuthoringSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/AuthoringSettings.cpp)
 - public · colingsnyder2-ux · [v8datamodel/AuthoringSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/AuthoringSettings.cpp)
 
 **`67a408f84acc`** · `App/src/v8datamodel/AuthoringSettings.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/AuthoringSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/AuthoringSettings.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/AuthoringSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/AuthoringSettings.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/AuthoringSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/AuthoringSettings.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/AuthoringSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/AuthoringSettings.cpp)
@@ -828,11 +840,13 @@ Earlier paths and their donor versions: `Unclassified/src/AuthoringSettings.cpp`
 </details>
 
 **`d611e5819657`** · `Unclassified/src/AuthoringSettings.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/AuthoringSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/AuthoringSettings.cpp)
 - public · colingsnyder2-ux · [src/AuthoringSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/AuthoringSettings.cpp)
 - public · colingsnyder2-ux · [src/AuthoringSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/AuthoringSettings.cpp)
 - public · colingsnyder2-ux · [src/AuthoringSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/AuthoringSettings.cpp)
 
 **`da56ad956a38`** · `Unclassified/src/AuthoringSettings.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/AuthoringSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/AuthoringSettings.cpp)
 - canonical · colingsnyder2-ux · [src/AuthoringSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/AuthoringSettings.cpp)
 - canonical · colingsnyder2-ux · [src/AuthoringSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/AuthoringSettings.cpp)
 - canonical · colingsnyder2-ux · [src/AuthoringSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/AuthoringSettings.cpp)

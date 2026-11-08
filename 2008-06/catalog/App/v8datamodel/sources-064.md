@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/Rocket.cpp`.
 
 **`1c531ce3fc4c`** · `App/src/v8datamodel/Rocket.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/Rocket.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/Rocket.cpp)
 - public · colingsnyder2-ux · [v8datamodel/Rocket.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/Rocket.cpp)
 - public · colingsnyder2-ux · [v8datamodel/Rocket.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/Rocket.cpp)
 - public · colingsnyder2-ux · [v8datamodel/Rocket.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/Rocket.cpp)
@@ -48,6 +49,7 @@ Earlier paths and their donor versions: `native-classes/Rocket.cpp`.
 - public · colingsnyder2-ux · [v8datamodel/Rocket.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/Rocket.cpp)
 
 **`3aed6a27a543`** · `App/src/v8datamodel/Rocket.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/Rocket.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/Rocket.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/Rocket.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/Rocket.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/Rocket.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/Rocket.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/Rocket.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/Rocket.cpp)
@@ -115,6 +117,8 @@ Earlier paths and their donor versions: `native-classes/Rocket.cpp`.
 </details>
 
 **`12c9fd49059b`** · `native-classes/Rocket.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/Rocket.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/Rocket.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Rocket.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/Rocket.cpp)
 - public · colingsnyder2-ux · [native-classes/Rocket.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/Rocket.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Rocket.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/Rocket.cpp)
 - public · colingsnyder2-ux · [native-classes/Rocket.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/Rocket.cpp)
@@ -286,6 +290,7 @@ Earlier paths and their donor versions: `native-classes/Rocket.cpp`.
 </details>
 
 **`80b9c8fcf6ce`** · `native-classes/Rocket.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/Rocket.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/2515748194edc6a1cbed49fc53a9bd30a6d598cd98ff2a8f0c2156c640049e14/rebuild/2008-06/native-classes/Rocket.cpp)
 - draft · colingsnyder2-ux · [native-classes/Rocket.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/2515748194edc6a1cbed49fc53a9bd30a6d598cd98ff2a8f0c2156c640049e14/rebuild/2008-06/native-classes/Rocket.cpp)
 - draft · colingsnyder2-ux · [native-classes/Rocket.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/2515748194edc6a1cbed49fc53a9bd30a6d598cd98ff2a8f0c2156c640049e14/rebuild/2008-06/native-classes/Rocket.cpp)
 - draft · colingsnyder2-ux · [native-classes/Rocket.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/2515748194edc6a1cbed49fc53a9bd30a6d598cd98ff2a8f0c2156c640049e14/rebuild/2008-06/native-classes/Rocket.cpp)
@@ -403,6 +408,7 @@ Earlier paths and their donor versions: `native-classes/RotateAxisAction.cpp`.
 </details>
 
 **`6610112446c9`** · `App/src/v8datamodel/RotateAxisAction.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/RotateAxisAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/RotateAxisAction.cpp)
 - public · colingsnyder2-ux · [v8datamodel/RotateAxisAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/RotateAxisAction.cpp)
 - public · colingsnyder2-ux · [v8datamodel/RotateAxisAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/RotateAxisAction.cpp)
 - public · colingsnyder2-ux · [v8datamodel/RotateAxisAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/RotateAxisAction.cpp)
@@ -423,6 +429,7 @@ Earlier paths and their donor versions: `native-classes/RotateAxisAction.cpp`.
 </details>
 
 **`fbace037fb69`** · `App/src/v8datamodel/RotateAxisAction.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/RotateAxisAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/RotateAxisAction.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/RotateAxisAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/RotateAxisAction.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/RotateAxisAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/RotateAxisAction.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/RotateAxisAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/RotateAxisAction.cpp)
@@ -509,6 +516,8 @@ Earlier paths and their donor versions: `native-classes/RotateAxisAction.cpp`.
 </details>
 
 **`4467989179a7`** · `native-classes/RotateAxisAction.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/RotateAxisAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/RotateAxisAction.cpp)
+- canonical · colingsnyder2-ux · [native-classes/RotateAxisAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/RotateAxisAction.cpp)
 - public · colingsnyder2-ux · [native-classes/RotateAxisAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/RotateAxisAction.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RotateAxisAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/RotateAxisAction.cpp)
 - public · colingsnyder2-ux · [native-classes/RotateAxisAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/RotateAxisAction.cpp)
@@ -669,6 +678,7 @@ Earlier paths and their donor versions: `native-classes/RotateAxisAction.cpp`.
 Earlier paths and their donor versions: `Unclassified/src/RunService.cpp`.
 
 **`99b9e709e487`** · `App/src/v8datamodel/RunService.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/RunService.cpp)
 - public · colingsnyder2-ux · [v8datamodel/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/RunService.cpp)
 - public · colingsnyder2-ux · [v8datamodel/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/RunService.cpp)
 - public · colingsnyder2-ux · [v8datamodel/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/RunService.cpp)
@@ -676,6 +686,7 @@ Earlier paths and their donor versions: `Unclassified/src/RunService.cpp`.
 - public · colingsnyder2-ux · [v8datamodel/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/src/v8datamodel/RunService.cpp)
 
 **`bdcf1ea6c97d`** · `App/src/v8datamodel/RunService.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/RunService.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/RunService.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/RunService.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/RunService.cpp)
@@ -699,6 +710,7 @@ Earlier paths and their donor versions: `Unclassified/src/RunService.cpp`.
 </details>
 
 **`7f10af3803d3`** · `Unclassified/src/RunService.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/RunService.cpp)
 - canonical · colingsnyder2-ux · [src/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/RunService.cpp)
 - canonical · colingsnyder2-ux · [src/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/RunService.cpp)
 - canonical · colingsnyder2-ux · [src/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/RunService.cpp)
@@ -796,6 +808,7 @@ Earlier paths and their donor versions: `Unclassified/src/RunService.cpp`.
 </details>
 
 **`e098a031cc64`** · `Unclassified/src/RunService.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/RunService.cpp)
 - public · colingsnyder2-ux · [src/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/RunService.cpp)
 - public · colingsnyder2-ux · [src/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/RunService.cpp)
 - public · colingsnyder2-ux · [src/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/RunService.cpp)
@@ -810,6 +823,7 @@ Earlier paths and their donor versions: `Unclassified/src/RunService.cpp`.
 Earlier paths and their donor versions: `Unclassified/src/RunServiceClassName.cpp`.
 
 **`4ea26ea15c6d`** · `App/src/v8datamodel/RunServiceClassName.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/RunServiceClassName.cpp)
 - public · colingsnyder2-ux · [v8datamodel/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/RunServiceClassName.cpp)
 - public · colingsnyder2-ux · [v8datamodel/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/RunServiceClassName.cpp)
 - public · colingsnyder2-ux · [v8datamodel/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/RunServiceClassName.cpp)
@@ -817,6 +831,7 @@ Earlier paths and their donor versions: `Unclassified/src/RunServiceClassName.cp
 - public · colingsnyder2-ux · [v8datamodel/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/src/v8datamodel/RunServiceClassName.cpp)
 
 **`dfac8a7babc8`** · `App/src/v8datamodel/RunServiceClassName.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/RunServiceClassName.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/RunServiceClassName.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/RunServiceClassName.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/RunServiceClassName.cpp)
@@ -873,6 +888,7 @@ Earlier paths and their donor versions: `Unclassified/src/RunServiceClassName.cp
 - public · colingsnyder2-ux · [src/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/RunServiceClassName.cpp)
 
 **`d7bc497d94b6`** · `Unclassified/src/RunServiceClassName.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/RunServiceClassName.cpp)
 - canonical · colingsnyder2-ux · [src/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/RunServiceClassName.cpp)
 - canonical · colingsnyder2-ux · [src/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/RunServiceClassName.cpp)
 - canonical · colingsnyder2-ux · [src/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/RunServiceClassName.cpp)
@@ -938,6 +954,7 @@ Earlier paths and their donor versions: `Unclassified/src/RunServiceClassName.cp
 </details>
 
 **`f2e1cb7a95a7`** · `Unclassified/src/RunServiceClassName.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/RunServiceClassName.cpp)
 - public · colingsnyder2-ux · [src/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/RunServiceClassName.cpp)
 - public · colingsnyder2-ux · [src/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/RunServiceClassName.cpp)
 - public · colingsnyder2-ux · [src/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/RunServiceClassName.cpp)

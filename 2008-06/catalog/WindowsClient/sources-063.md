@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/CSelectionCaptionText.cpp`.
 
 **`174c2a634d65`** · `WindowsClient/src/CSelectionCaptionText.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CSelectionCaptionText.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/CSelectionCaptionText.cpp)
 - canonical · colingsnyder2-ux · [src/CSelectionCaptionText.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/CSelectionCaptionText.cpp)
 - canonical · colingsnyder2-ux · [src/CSelectionCaptionText.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/CSelectionCaptionText.cpp)
 - canonical · colingsnyder2-ux · [src/CSelectionCaptionText.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/CSelectionCaptionText.cpp)
@@ -103,6 +104,7 @@ Earlier paths and their donor versions: `native-classes/CSelectionCaptionText.cp
 </details>
 
 **`e71f8dba368d`** · `WindowsClient/src/CSelectionCaptionText.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CSelectionCaptionText.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/CSelectionCaptionText.cpp)
 - public · colingsnyder2-ux · [src/CSelectionCaptionText.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/CSelectionCaptionText.cpp)
 - public · colingsnyder2-ux · [src/CSelectionCaptionText.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/CSelectionCaptionText.cpp)
 - public · colingsnyder2-ux · [src/CSelectionCaptionText.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/CSelectionCaptionText.cpp)
@@ -285,6 +287,8 @@ Earlier paths and their donor versions: `native-classes/CSelectionCaptionText.cp
 </details>
 
 **`93bdd620156e`** · `native-classes/CSelectionCaptionText.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CSelectionCaptionText.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/CSelectionCaptionText.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CSelectionCaptionText.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/CSelectionCaptionText.cpp)
 - public · colingsnyder2-ux · [native-classes/CSelectionCaptionText.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/CSelectionCaptionText.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CSelectionCaptionText.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/CSelectionCaptionText.cpp)
 - public · colingsnyder2-ux · [native-classes/CSelectionCaptionText.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CSelectionCaptionText.cpp)
@@ -397,6 +401,7 @@ Earlier paths and their donor versions: `native-classes/CSelectionCaptionText.cp
 Earlier paths and their donor versions: `native-classes/CSelectionCaptionUpdate.cpp`.
 
 **`60fa74ba1c31`** · `WindowsClient/src/CSelectionCaptionUpdate.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CSelectionCaptionUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/CSelectionCaptionUpdate.cpp)
 - canonical · colingsnyder2-ux · [src/CSelectionCaptionUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/CSelectionCaptionUpdate.cpp)
 - canonical · colingsnyder2-ux · [src/CSelectionCaptionUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/CSelectionCaptionUpdate.cpp)
 - canonical · colingsnyder2-ux · [src/CSelectionCaptionUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/CSelectionCaptionUpdate.cpp)
@@ -461,6 +466,7 @@ Earlier paths and their donor versions: `native-classes/CSelectionCaptionUpdate.
 </details>
 
 **`7874710049c5`** · `WindowsClient/src/CSelectionCaptionUpdate.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CSelectionCaptionUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/CSelectionCaptionUpdate.cpp)
 - public · colingsnyder2-ux · [src/CSelectionCaptionUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/CSelectionCaptionUpdate.cpp)
 - public · colingsnyder2-ux · [src/CSelectionCaptionUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/CSelectionCaptionUpdate.cpp)
 - public · colingsnyder2-ux · [src/CSelectionCaptionUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/CSelectionCaptionUpdate.cpp)
@@ -523,6 +529,8 @@ Earlier paths and their donor versions: `native-classes/CSelectionCaptionUpdate.
 - public · colingsnyder2-ux · [src/CSelectionCaptionUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/src/CSelectionCaptionUpdate.cpp)
 
 **`0cf76510cd06`** · `native-classes/CSelectionCaptionUpdate.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CSelectionCaptionUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/CSelectionCaptionUpdate.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CSelectionCaptionUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/CSelectionCaptionUpdate.cpp)
 - public · colingsnyder2-ux · [native-classes/CSelectionCaptionUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/CSelectionCaptionUpdate.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CSelectionCaptionUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/CSelectionCaptionUpdate.cpp)
 - public · colingsnyder2-ux · [native-classes/CSelectionCaptionUpdate.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/CSelectionCaptionUpdate.cpp)

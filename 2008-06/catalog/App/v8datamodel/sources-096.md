@@ -8,6 +8,8 @@
 Compatibility path for `App/src/v8datamodel/TiltSelectionAxis.cpp`; compile either path, never both.
 
 **`0f4316754a1a`** · `native-classes/TiltSelectionAxis.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/TiltSelectionAxis.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/TiltSelectionAxis.cpp)
+- canonical · colingsnyder2-ux · [native-classes/TiltSelectionAxis.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/TiltSelectionAxis.cpp)
 - public · colingsnyder2-ux · [native-classes/TiltSelectionAxis.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/TiltSelectionAxis.cpp)
 - canonical · colingsnyder2-ux · [native-classes/TiltSelectionAxis.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/TiltSelectionAxis.cpp)
 - public · colingsnyder2-ux · [native-classes/TiltSelectionAxis.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/TiltSelectionAxis.cpp)
@@ -196,6 +198,8 @@ Compatibility path for `App/src/v8datamodel/TiltSelectionAxis.cpp`; compile eith
 Compatibility path for `App/src/v8datamodel/TimerService.cpp`; compile either path, never both.
 
 **`0db7b1f863b7`** · `native-classes/TimerService.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/TimerService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/TimerService.cpp)
+- canonical · colingsnyder2-ux · [native-classes/TimerService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/TimerService.cpp)
 - public · colingsnyder2-ux · [native-classes/TimerService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/TimerService.cpp)
 - canonical · colingsnyder2-ux · [native-classes/TimerService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/TimerService.cpp)
 - public · colingsnyder2-ux · [native-classes/TimerService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/TimerService.cpp)
@@ -385,6 +389,8 @@ Compatibility path for `App/src/v8datamodel/TimerService.cpp`; compile either pa
 Compatibility path for `App/src/v8datamodel/VisitServiceLookup.cpp`; compile either path, never both.
 
 **`0c68858e284a`** · `native-classes/VisitServiceLookup.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/VisitServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/VisitServiceLookup.cpp)
+- canonical · colingsnyder2-ux · [native-classes/VisitServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/VisitServiceLookup.cpp)
 - public · colingsnyder2-ux · [native-classes/VisitServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/VisitServiceLookup.cpp)
 - canonical · colingsnyder2-ux · [native-classes/VisitServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/VisitServiceLookup.cpp)
 - public · colingsnyder2-ux · [native-classes/VisitServiceLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/VisitServiceLookup.cpp)
@@ -575,6 +581,8 @@ Compatibility path for `App/src/v8datamodel/VisitServiceLookup.cpp`; compile eit
 Compatibility path for `App/src/v8datamodel/WorkspaceFindTopInstance.cpp`; compile either path, never both.
 
 **`418b57fe7ff1`** · `native-classes/WorkspaceFindTopInstance.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/WorkspaceFindTopInstance.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/WorkspaceFindTopInstance.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorkspaceFindTopInstance.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/WorkspaceFindTopInstance.cpp)
 - public · colingsnyder2-ux · [native-classes/WorkspaceFindTopInstance.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/WorkspaceFindTopInstance.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WorkspaceFindTopInstance.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/WorkspaceFindTopInstance.cpp)
 - public · colingsnyder2-ux · [native-classes/WorkspaceFindTopInstance.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/WorkspaceFindTopInstance.cpp)
@@ -761,6 +769,8 @@ Compatibility path for `App/src/v8datamodel/WorkspaceFindTopInstance.cpp`; compi
 <summary>native-classes/WorkspaceServiceFactory.cpp — candidate-only; 2 content versions</summary>
 
 **`44a076b848d0`** · `native-classes/WorkspaceServiceFactory.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/WorkspaceServiceFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/04cfed0ee71bfe9effa7d1fa15a36a100c0c1f6d5787c79e39128ded2fd6ca45/rebuild/2008-06/native-classes/WorkspaceServiceFactory.cpp)
+- draft · colingsnyder2-ux · [native-classes/WorkspaceServiceFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/a0cd29b50231a461f47c31f0357531012f1ec0572803888606925276f3f97978/rebuild/2008-06/native-classes/WorkspaceServiceFactory.cpp)
 - draft · colingsnyder2-ux · [native-classes/WorkspaceServiceFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/04cfed0ee71bfe9effa7d1fa15a36a100c0c1f6d5787c79e39128ded2fd6ca45/rebuild/2008-06/native-classes/WorkspaceServiceFactory.cpp)
 - draft · colingsnyder2-ux · [native-classes/WorkspaceServiceFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/a0cd29b50231a461f47c31f0357531012f1ec0572803888606925276f3f97978/rebuild/2008-06/native-classes/WorkspaceServiceFactory.cpp)
 - draft · colingsnyder2-ux · [native-classes/WorkspaceServiceFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/04cfed0ee71bfe9effa7d1fa15a36a100c0c1f6d5787c79e39128ded2fd6ca45/rebuild/2008-06/native-classes/WorkspaceServiceFactory.cpp)
@@ -866,6 +876,7 @@ Compatibility path for `App/src/v8datamodel/WorkspaceFindTopInstance.cpp`; compi
 </details>
 
 **`ad8474813c36`** · `native-classes/WorkspaceServiceFactory.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/WorkspaceServiceFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/0e2be92db98e7097a2a13147fc31cfd472bfbb20bc92800c672ed4f50ff25b76/rebuild/2008-06/native-classes/WorkspaceServiceFactory.cpp)
 - draft · colingsnyder2-ux · [native-classes/WorkspaceServiceFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/0e2be92db98e7097a2a13147fc31cfd472bfbb20bc92800c672ed4f50ff25b76/rebuild/2008-06/native-classes/WorkspaceServiceFactory.cpp)
 - draft · colingsnyder2-ux · [native-classes/WorkspaceServiceFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/0e2be92db98e7097a2a13147fc31cfd472bfbb20bc92800c672ed4f50ff25b76/rebuild/2008-06/native-classes/WorkspaceServiceFactory.cpp)
 - draft · colingsnyder2-ux · [native-classes/WorkspaceServiceFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/0e2be92db98e7097a2a13147fc31cfd472bfbb20bc92800c672ed4f50ff25b76/rebuild/2008-06/native-classes/WorkspaceServiceFactory.cpp)

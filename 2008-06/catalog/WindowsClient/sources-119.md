@@ -116,6 +116,8 @@ Compatibility path for `WindowsClient/include/CInstanceExplorer.h`; compile eith
 </details>
 
 **`be500eedb05c`** · `native-headers/CInstanceExplorer.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/CInstanceExplorer.h)
+- canonical · colingsnyder2-ux · [native-headers/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/CInstanceExplorer.h)
 - public · colingsnyder2-ux · [native-headers/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/CInstanceExplorer.h)
 - canonical · colingsnyder2-ux · [native-headers/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/CInstanceExplorer.h)
 - public · colingsnyder2-ux · [native-headers/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/CInstanceExplorer.h)
@@ -175,7 +177,7 @@ Compatibility path for `WindowsClient/include/CInstanceExplorer.h`; compile eith
 - public · colingsnyder2-ux · [native-headers/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CInstanceExplorer.h)
 - canonical · colingsnyder2-ux · [native-headers/CInstanceExplorer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CInstanceExplorer.h)
 
-<details><summary>59 retained local origins</summary>
+<details><summary>60 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
@@ -218,6 +220,7 @@ Compatibility path for `WindowsClient/include/CInstanceExplorer.h`; compile eith
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/native-headers/CInstanceExplorer.h` · root `b52aa15feaea5a0c`
@@ -330,6 +333,8 @@ Compatibility path for `WindowsClient/include/CMainFrame.h`; compile either path
 </details>
 
 **`292ec6eb6467`** · `native-headers/CMainFrame.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CMainFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/CMainFrame.h)
+- canonical · colingsnyder2-ux · [native-headers/CMainFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/CMainFrame.h)
 - public · colingsnyder2-ux · [native-headers/CMainFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/CMainFrame.h)
 - canonical · colingsnyder2-ux · [native-headers/CMainFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/CMainFrame.h)
 - public · colingsnyder2-ux · [native-headers/CMainFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/CMainFrame.h)
@@ -389,7 +394,7 @@ Compatibility path for `WindowsClient/include/CMainFrame.h`; compile either path
 - public · colingsnyder2-ux · [native-headers/CMainFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CMainFrame.h)
 - canonical · colingsnyder2-ux · [native-headers/CMainFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CMainFrame.h)
 
-<details><summary>59 retained local origins</summary>
+<details><summary>60 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CMainFrame.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CMainFrame.h` · root `b52aa15feaea5a0c`
@@ -432,6 +437,7 @@ Compatibility path for `WindowsClient/include/CMainFrame.h`; compile either path
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/CMainFrame.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/CMainFrame.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/CMainFrame.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/CMainFrame.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CMainFrame.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CMainFrame.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/native-headers/CMainFrame.h` · root `b52aa15feaea5a0c`
@@ -586,6 +592,7 @@ Compatibility path for `WindowsClient/include/CMainFrame.h`; compile either path
 </details>
 
 **`8dd841c2cbf6`** · `native-headers/CMainFrame.h` · proof not assessed
+- archive · colingsnyder2-ux · [native-headers/CMainFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/archive/source-snapshots/20261107-prior-local/2008-06/native-headers/CMainFrame.h)
 - archive · colingsnyder2-ux · [native-headers/CMainFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/archive/source-snapshots/20261107-prior-local/2008-06/native-headers/CMainFrame.h)
 - archive · colingsnyder2-ux · [native-headers/CMainFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/archive/source-snapshots/20261107-prior-local/2008-06/native-headers/CMainFrame.h)
 - archive · colingsnyder2-ux · [native-headers/CMainFrame.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/archive/source-snapshots/20261107-prior-local/2008-06/native-headers/CMainFrame.h)
@@ -795,6 +802,8 @@ Compatibility path for `WindowsClient/include/CMainFrameBases.h`; compile either
 - public · colingsnyder2-ux · [native-headers/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/c9c6470f15f182de4eae5bcfaa93381399a13b86/2008-06/native-headers/CMainFrameBases.h)
 
 **`3f4c2af5d10e`** · `native-headers/CMainFrameBases.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/CMainFrameBases.h)
+- canonical · colingsnyder2-ux · [native-headers/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/CMainFrameBases.h)
 - public · colingsnyder2-ux · [native-headers/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/CMainFrameBases.h)
 - canonical · colingsnyder2-ux · [native-headers/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/CMainFrameBases.h)
 - public · colingsnyder2-ux · [native-headers/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/CMainFrameBases.h)
@@ -854,7 +863,7 @@ Compatibility path for `WindowsClient/include/CMainFrameBases.h`; compile either
 - public · colingsnyder2-ux · [native-headers/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/CMainFrameBases.h)
 - canonical · colingsnyder2-ux · [native-headers/CMainFrameBases.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/CMainFrameBases.h)
 
-<details><summary>59 retained local origins</summary>
+<details><summary>60 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/CMainFrameBases.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/CMainFrameBases.h` · root `b52aa15feaea5a0c`
@@ -897,6 +906,7 @@ Compatibility path for `WindowsClient/include/CMainFrameBases.h`; compile either
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/CMainFrameBases.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/CMainFrameBases.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/CMainFrameBases.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/CMainFrameBases.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/CMainFrameBases.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/CMainFrameBases.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/native-headers/CMainFrameBases.h` · root `b52aa15feaea5a0c`

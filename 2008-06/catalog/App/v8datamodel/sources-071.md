@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/Teams.cpp`.
 
 **`0f0f3a5ceea7`** · `App/src/v8datamodel/Teams.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/Teams.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/Teams.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/Teams.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/Teams.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/Teams.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/Teams.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/Teams.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/Teams.cpp)
@@ -75,6 +76,7 @@ Earlier paths and their donor versions: `native-classes/Teams.cpp`.
 </details>
 
 **`ea9ecf018339`** · `App/src/v8datamodel/Teams.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/Teams.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/Teams.cpp)
 - public · colingsnyder2-ux · [v8datamodel/Teams.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/Teams.cpp)
 - public · colingsnyder2-ux · [v8datamodel/Teams.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/Teams.cpp)
 - public · colingsnyder2-ux · [v8datamodel/Teams.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/Teams.cpp)
@@ -164,6 +166,8 @@ Earlier paths and their donor versions: `native-classes/Teams.cpp`.
 </details>
 
 **`6c02d138f933`** · `native-classes/Teams.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/Teams.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/Teams.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Teams.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/Teams.cpp)
 - public · colingsnyder2-ux · [native-classes/Teams.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/Teams.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Teams.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/Teams.cpp)
 - public · colingsnyder2-ux · [native-classes/Teams.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/Teams.cpp)
@@ -269,6 +273,7 @@ Earlier paths and their donor versions: `native-classes/Teams.cpp`.
 </details>
 
 **`bae6952d8f72`** · `native-classes/Teams.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/Teams.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/d4308c8ec5ccac3ce2196710389f4634be0c443c69ac1d4a637ee7287b797b7a/rebuild/2008-06/native-classes/Teams.cpp)
 - draft · colingsnyder2-ux · [native-classes/Teams.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/d4308c8ec5ccac3ce2196710389f4634be0c443c69ac1d4a637ee7287b797b7a/rebuild/2008-06/native-classes/Teams.cpp)
 - draft · colingsnyder2-ux · [native-classes/Teams.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/d4308c8ec5ccac3ce2196710389f4634be0c443c69ac1d4a637ee7287b797b7a/rebuild/2008-06/native-classes/Teams.cpp)
 - draft · colingsnyder2-ux · [native-classes/Teams.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/d4308c8ec5ccac3ce2196710389f4634be0c443c69ac1d4a637ee7287b797b7a/rebuild/2008-06/native-classes/Teams.cpp)
@@ -370,6 +375,7 @@ Earlier paths and their donor versions: `native-classes/Teams.cpp`.
 Earlier paths and their donor versions: `native-classes/TiltSelectionAxis.cpp`.
 
 **`131b5ef89c03`** · `App/src/v8datamodel/TiltSelectionAxis.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/TiltSelectionAxis.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/TiltSelectionAxis.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/TiltSelectionAxis.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/TiltSelectionAxis.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/TiltSelectionAxis.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/TiltSelectionAxis.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/TiltSelectionAxis.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/TiltSelectionAxis.cpp)
@@ -456,6 +462,7 @@ Earlier paths and their donor versions: `native-classes/TiltSelectionAxis.cpp`.
 - public · colingsnyder2-ux · [v8datamodel/TiltSelectionAxis.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/TiltSelectionAxis.cpp)
 
 **`8fdf2daeff57`** · `App/src/v8datamodel/TiltSelectionAxis.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/TiltSelectionAxis.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/TiltSelectionAxis.cpp)
 - public · colingsnyder2-ux · [v8datamodel/TiltSelectionAxis.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/TiltSelectionAxis.cpp)
 - public · colingsnyder2-ux · [v8datamodel/TiltSelectionAxis.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/TiltSelectionAxis.cpp)
 - public · colingsnyder2-ux · [v8datamodel/TiltSelectionAxis.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/TiltSelectionAxis.cpp)
@@ -485,6 +492,8 @@ Earlier paths and their donor versions: `native-classes/TiltSelectionAxis.cpp`.
 </details>
 
 **`0f4316754a1a`** · `native-classes/TiltSelectionAxis.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/TiltSelectionAxis.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/TiltSelectionAxis.cpp)
+- canonical · colingsnyder2-ux · [native-classes/TiltSelectionAxis.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/TiltSelectionAxis.cpp)
 - public · colingsnyder2-ux · [native-classes/TiltSelectionAxis.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/TiltSelectionAxis.cpp)
 - canonical · colingsnyder2-ux · [native-classes/TiltSelectionAxis.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/TiltSelectionAxis.cpp)
 - public · colingsnyder2-ux · [native-classes/TiltSelectionAxis.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/TiltSelectionAxis.cpp)
@@ -682,6 +691,7 @@ Earlier paths and their donor versions: `native-classes/TimerService.cpp`.
 </details>
 
 **`2d5056cd936f`** · `App/src/v8datamodel/TimerService.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/TimerService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/TimerService.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/TimerService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/TimerService.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/TimerService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/TimerService.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/TimerService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/TimerService.cpp)
@@ -740,6 +750,7 @@ Earlier paths and their donor versions: `native-classes/TimerService.cpp`.
 </details>
 
 **`38afdb753087`** · `App/src/v8datamodel/TimerService.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/TimerService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/TimerService.cpp)
 - public · colingsnyder2-ux · [v8datamodel/TimerService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/TimerService.cpp)
 - public · colingsnyder2-ux · [v8datamodel/TimerService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/TimerService.cpp)
 - public · colingsnyder2-ux · [v8datamodel/TimerService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/TimerService.cpp)
@@ -788,6 +799,8 @@ Earlier paths and their donor versions: `native-classes/TimerService.cpp`.
 - public · colingsnyder2-ux · [v8datamodel/TimerService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/TimerService.cpp)
 
 **`0db7b1f863b7`** · `native-classes/TimerService.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/TimerService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/TimerService.cpp)
+- canonical · colingsnyder2-ux · [native-classes/TimerService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/TimerService.cpp)
 - public · colingsnyder2-ux · [native-classes/TimerService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/TimerService.cpp)
 - canonical · colingsnyder2-ux · [native-classes/TimerService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/TimerService.cpp)
 - public · colingsnyder2-ux · [native-classes/TimerService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/TimerService.cpp)

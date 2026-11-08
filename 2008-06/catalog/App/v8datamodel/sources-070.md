@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/StatsCommands.cpp`.
 
 **`0052f664f894`** · `App/src/v8datamodel/StatsCommands.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/StatsCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/StatsCommands.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/StatsCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/StatsCommands.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/StatsCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/StatsCommands.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/StatsCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/StatsCommands.cpp)
@@ -103,6 +104,7 @@ Earlier paths and their donor versions: `native-classes/StatsCommands.cpp`.
 - public · colingsnyder2-ux · [v8datamodel/StatsCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/StatsCommands.cpp)
 
 **`8de96fe1b4ad`** · `App/src/v8datamodel/StatsCommands.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/StatsCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/StatsCommands.cpp)
 - public · colingsnyder2-ux · [v8datamodel/StatsCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/StatsCommands.cpp)
 - public · colingsnyder2-ux · [v8datamodel/StatsCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/StatsCommands.cpp)
 - public · colingsnyder2-ux · [v8datamodel/StatsCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/StatsCommands.cpp)
@@ -195,6 +197,8 @@ Earlier paths and their donor versions: `native-classes/StatsCommands.cpp`.
 </details>
 
 **`c7a46c0eede2`** · `native-classes/StatsCommands.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/StatsCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/StatsCommands.cpp)
+- canonical · colingsnyder2-ux · [native-classes/StatsCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/StatsCommands.cpp)
 - public · colingsnyder2-ux · [native-classes/StatsCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/StatsCommands.cpp)
 - canonical · colingsnyder2-ux · [native-classes/StatsCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/StatsCommands.cpp)
 - public · colingsnyder2-ux · [native-classes/StatsCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/StatsCommands.cpp)
@@ -315,6 +319,7 @@ Earlier paths and their donor versions: `native-classes/StatsCommands.cpp`.
 Earlier paths and their donor versions: `native-classes/SurfaceFlat.cpp`.
 
 **`10c9581babb0`** · `App/src/v8datamodel/SurfaceFlat.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/SurfaceFlat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/SurfaceFlat.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SurfaceFlat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/SurfaceFlat.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SurfaceFlat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/SurfaceFlat.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SurfaceFlat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/SurfaceFlat.cpp)
@@ -364,6 +369,7 @@ Earlier paths and their donor versions: `native-classes/SurfaceFlat.cpp`.
 - public · colingsnyder2-ux · [v8datamodel/SurfaceFlat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/SurfaceFlat.cpp)
 
 **`7da3841a0d41`** · `App/src/v8datamodel/SurfaceFlat.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/SurfaceFlat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/SurfaceFlat.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SurfaceFlat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/SurfaceFlat.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SurfaceFlat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/SurfaceFlat.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SurfaceFlat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/SurfaceFlat.cpp)
@@ -452,6 +458,8 @@ Earlier paths and their donor versions: `native-classes/SurfaceFlat.cpp`.
 - public · colingsnyder2-ux · [native-classes/SurfaceFlat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-classes/SurfaceFlat.cpp)
 
 **`6d47bbd02460`** · `native-classes/SurfaceFlat.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SurfaceFlat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/SurfaceFlat.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SurfaceFlat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/SurfaceFlat.cpp)
 - public · colingsnyder2-ux · [native-classes/SurfaceFlat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/SurfaceFlat.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SurfaceFlat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/SurfaceFlat.cpp)
 - public · colingsnyder2-ux · [native-classes/SurfaceFlat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/SurfaceFlat.cpp)
@@ -629,6 +637,7 @@ Earlier paths and their donor versions: `native-classes/Team.cpp`.
 </details>
 
 **`291289272ebd`** · `App/src/v8datamodel/Team.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/Team.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/Team.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/Team.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/Team.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/Team.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/Team.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/Team.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/Team.cpp)
@@ -687,6 +696,7 @@ Earlier paths and their donor versions: `native-classes/Team.cpp`.
 </details>
 
 **`a0690cf76e7f`** · `App/src/v8datamodel/Team.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/Team.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/Team.cpp)
 - public · colingsnyder2-ux · [v8datamodel/Team.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/Team.cpp)
 - public · colingsnyder2-ux · [v8datamodel/Team.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/Team.cpp)
 - public · colingsnyder2-ux · [v8datamodel/Team.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/Team.cpp)
@@ -813,6 +823,8 @@ Earlier paths and their donor versions: `native-classes/Team.cpp`.
 </details>
 
 **`f751c13489e0`** · `native-classes/Team.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/Team.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/Team.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Team.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/Team.cpp)
 - public · colingsnyder2-ux · [native-classes/Team.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/Team.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Team.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/Team.cpp)
 - public · colingsnyder2-ux · [native-classes/Team.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/Team.cpp)

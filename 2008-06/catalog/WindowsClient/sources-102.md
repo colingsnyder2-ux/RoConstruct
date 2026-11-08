@@ -45,6 +45,8 @@ Compatibility path for `App/src/v8datamodel/MouseCommand.cpp`; compile either pa
 - public · colingsnyder2-ux · [native-classes/MouseCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/1ea310ee7a87e4f0f8174baa8505bbfd4eb4158a/2008-06/native-classes/MouseCommand.cpp)
 
 **`58a8b34881b0`** · `native-classes/MouseCommand.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MouseCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/MouseCommand.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MouseCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/MouseCommand.cpp)
 - public · colingsnyder2-ux · [native-classes/MouseCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/MouseCommand.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MouseCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/MouseCommand.cpp)
 - public · colingsnyder2-ux · [native-classes/MouseCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/MouseCommand.cpp)
@@ -268,6 +270,8 @@ Compatibility path for `App/src/v8datamodel/MouseCommandCapture.cpp`; compile ei
 </details>
 
 **`e04b60a287fa`** · `native-classes/MouseCommandCapture.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MouseCommandCapture.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/MouseCommandCapture.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MouseCommandCapture.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/MouseCommandCapture.cpp)
 - public · colingsnyder2-ux · [native-classes/MouseCommandCapture.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/MouseCommandCapture.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MouseCommandCapture.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/MouseCommandCapture.cpp)
 - public · colingsnyder2-ux · [native-classes/MouseCommandCapture.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/MouseCommandCapture.cpp)
@@ -413,6 +417,8 @@ Compatibility path for `App/src/v8datamodel/MouseCommandDistance.cpp`; compile e
 </details>
 
 **`46b8e9ce897a`** · `native-classes/MouseCommandDistance.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MouseCommandDistance.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/MouseCommandDistance.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MouseCommandDistance.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/MouseCommandDistance.cpp)
 - public · colingsnyder2-ux · [native-classes/MouseCommandDistance.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/MouseCommandDistance.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MouseCommandDistance.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/MouseCommandDistance.cpp)
 - public · colingsnyder2-ux · [native-classes/MouseCommandDistance.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/MouseCommandDistance.cpp)
@@ -590,6 +596,8 @@ Compatibility path for `App/src/v8datamodel/MouseCommandDistance.cpp`; compile e
 Compatibility path for `App/src/v8datamodel/MouseCommandLifetime.cpp`; compile either path, never both.
 
 **`1342bfb58c83`** · `native-classes/MouseCommandLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MouseCommandLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/MouseCommandLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MouseCommandLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/MouseCommandLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/MouseCommandLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/MouseCommandLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MouseCommandLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/MouseCommandLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/MouseCommandLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/MouseCommandLifetime.cpp)
@@ -812,6 +820,8 @@ Compatibility path for `App/src/v8datamodel/MoveDownSelectionVerb.cpp`; compile 
 </details>
 
 **`426db48de6ea`** · `native-classes/MoveDownSelectionVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MoveDownSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/MoveDownSelectionVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MoveDownSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/MoveDownSelectionVerb.cpp)
 - public · colingsnyder2-ux · [native-classes/MoveDownSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/MoveDownSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MoveDownSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/MoveDownSelectionVerb.cpp)
 - public · colingsnyder2-ux · [native-classes/MoveDownSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/MoveDownSelectionVerb.cpp)
@@ -908,6 +918,7 @@ Compatibility path for `App/src/v8datamodel/MoveDownSelectionVerb.cpp`; compile 
 </details>
 
 **`47d6ec530ea1`** · `native-classes/MoveDownSelectionVerb.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/MoveDownSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/146b6a504cb1b062bfc608a194bb1c8c7d6ed9bdd8f12625a48f1d57fc0b843b/rebuild/2008-06/native-classes/MoveDownSelectionVerb.cpp)
 - draft · colingsnyder2-ux · [native-classes/MoveDownSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/146b6a504cb1b062bfc608a194bb1c8c7d6ed9bdd8f12625a48f1d57fc0b843b/rebuild/2008-06/native-classes/MoveDownSelectionVerb.cpp)
 - draft · colingsnyder2-ux · [native-classes/MoveDownSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/146b6a504cb1b062bfc608a194bb1c8c7d6ed9bdd8f12625a48f1d57fc0b843b/rebuild/2008-06/native-classes/MoveDownSelectionVerb.cpp)
 - draft · colingsnyder2-ux · [native-classes/MoveDownSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/146b6a504cb1b062bfc608a194bb1c8c7d6ed9bdd8f12625a48f1d57fc0b843b/rebuild/2008-06/native-classes/MoveDownSelectionVerb.cpp)

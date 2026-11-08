@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/SelectionFront.cpp`.
 
 **`223190331031`** · `App/src/v8datamodel/SelectionFront.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/SelectionFront.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/SelectionFront.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SelectionFront.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/SelectionFront.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SelectionFront.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/SelectionFront.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SelectionFront.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/SelectionFront.cpp)
@@ -103,6 +104,7 @@ Earlier paths and their donor versions: `native-classes/SelectionFront.cpp`.
 </details>
 
 **`f82cb6053215`** · `App/src/v8datamodel/SelectionFront.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/SelectionFront.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/SelectionFront.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SelectionFront.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/SelectionFront.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SelectionFront.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/SelectionFront.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SelectionFront.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/SelectionFront.cpp)
@@ -194,6 +196,8 @@ Earlier paths and their donor versions: `native-classes/SelectionFront.cpp`.
 </details>
 
 **`8a7041c2bb25`** · `native-classes/SelectionFront.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SelectionFront.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/SelectionFront.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SelectionFront.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/SelectionFront.cpp)
 - public · colingsnyder2-ux · [native-classes/SelectionFront.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/SelectionFront.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SelectionFront.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/SelectionFront.cpp)
 - public · colingsnyder2-ux · [native-classes/SelectionFront.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/SelectionFront.cpp)
@@ -360,6 +364,7 @@ Earlier paths and their donor versions: `native-classes/SelectionFront.cpp`.
 Earlier paths and their donor versions: `native-classes/SelectionVerbStates.cpp`.
 
 **`6ee2005ddc23`** · `App/src/v8datamodel/SelectionVerbStates.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/SelectionVerbStates.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/SelectionVerbStates.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SelectionVerbStates.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/SelectionVerbStates.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SelectionVerbStates.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/SelectionVerbStates.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SelectionVerbStates.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/SelectionVerbStates.cpp)
@@ -455,6 +460,7 @@ Earlier paths and their donor versions: `native-classes/SelectionVerbStates.cpp`
 - public · colingsnyder2-ux · [v8datamodel/SelectionVerbStates.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/SelectionVerbStates.cpp)
 
 **`ce401dd660b2`** · `App/src/v8datamodel/SelectionVerbStates.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/SelectionVerbStates.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/SelectionVerbStates.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SelectionVerbStates.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/SelectionVerbStates.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SelectionVerbStates.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/SelectionVerbStates.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SelectionVerbStates.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/SelectionVerbStates.cpp)
@@ -484,6 +490,8 @@ Earlier paths and their donor versions: `native-classes/SelectionVerbStates.cpp`
 </details>
 
 **`22e604e7625a`** · `native-classes/SelectionVerbStates.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SelectionVerbStates.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/SelectionVerbStates.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SelectionVerbStates.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/SelectionVerbStates.cpp)
 - public · colingsnyder2-ux · [native-classes/SelectionVerbStates.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/SelectionVerbStates.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SelectionVerbStates.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/SelectionVerbStates.cpp)
 - public · colingsnyder2-ux · [native-classes/SelectionVerbStates.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/SelectionVerbStates.cpp)
@@ -706,6 +714,7 @@ Earlier paths and their donor versions: `native-classes/ServiceChangeHistory.cpp
 - public · colingsnyder2-ux · [v8datamodel/ServiceChangeHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/ServiceChangeHistory.cpp)
 
 **`feaa9ebeaa3e`** · `App/src/v8datamodel/ServiceChangeHistory.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/ServiceChangeHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/ServiceChangeHistory.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/ServiceChangeHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/ServiceChangeHistory.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/ServiceChangeHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/ServiceChangeHistory.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/ServiceChangeHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/ServiceChangeHistory.cpp)
@@ -766,6 +775,7 @@ Earlier paths and their donor versions: `native-classes/ServiceChangeHistory.cpp
 </details>
 
 **`ff7e8971ced1`** · `App/src/v8datamodel/ServiceChangeHistory.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/ServiceChangeHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/ServiceChangeHistory.cpp)
 - public · colingsnyder2-ux · [v8datamodel/ServiceChangeHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/ServiceChangeHistory.cpp)
 - public · colingsnyder2-ux · [v8datamodel/ServiceChangeHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/ServiceChangeHistory.cpp)
 - public · colingsnyder2-ux · [v8datamodel/ServiceChangeHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/ServiceChangeHistory.cpp)
@@ -794,6 +804,8 @@ Earlier paths and their donor versions: `native-classes/ServiceChangeHistory.cpp
 </details>
 
 **`15dfff493881`** · `native-classes/ServiceChangeHistory.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ServiceChangeHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/ServiceChangeHistory.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ServiceChangeHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/ServiceChangeHistory.cpp)
 - public · colingsnyder2-ux · [native-classes/ServiceChangeHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/ServiceChangeHistory.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ServiceChangeHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/ServiceChangeHistory.cpp)
 - public · colingsnyder2-ux · [native-classes/ServiceChangeHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/ServiceChangeHistory.cpp)
@@ -1040,6 +1052,7 @@ Earlier paths and their donor versions: `native-classes/ServiceChangeHistory.cpp
 Earlier paths and their donor versions: `Unclassified/src/ServiceProvider.cpp`.
 
 **`6a921d17c748`** · `App/src/v8datamodel/ServiceProvider.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/ServiceProvider.cpp)
 - public · colingsnyder2-ux · [v8datamodel/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/ServiceProvider.cpp)
 - public · colingsnyder2-ux · [v8datamodel/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/ServiceProvider.cpp)
 - public · colingsnyder2-ux · [v8datamodel/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/ServiceProvider.cpp)
@@ -1047,6 +1060,7 @@ Earlier paths and their donor versions: `Unclassified/src/ServiceProvider.cpp`.
 - public · colingsnyder2-ux · [v8datamodel/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/src/v8datamodel/ServiceProvider.cpp)
 
 **`f4081eeed6ca`** · `App/src/v8datamodel/ServiceProvider.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/ServiceProvider.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/ServiceProvider.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/ServiceProvider.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/ServiceProvider.cpp)
@@ -1080,6 +1094,7 @@ Earlier paths and their donor versions: `Unclassified/src/ServiceProvider.cpp`.
 - public · colingsnyder2-ux · [src/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/ServiceProvider.cpp)
 
 **`37280e28e71d`** · `Unclassified/src/ServiceProvider.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/ServiceProvider.cpp)
 - public · colingsnyder2-ux · [src/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/ServiceProvider.cpp)
 - public · colingsnyder2-ux · [src/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/ServiceProvider.cpp)
 - public · colingsnyder2-ux · [src/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/ServiceProvider.cpp)
@@ -1137,6 +1152,7 @@ Earlier paths and their donor versions: `Unclassified/src/ServiceProvider.cpp`.
 </details>
 
 **`9690dd985693`** · `Unclassified/src/ServiceProvider.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/ServiceProvider.cpp)
 - canonical · colingsnyder2-ux · [src/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/ServiceProvider.cpp)
 - canonical · colingsnyder2-ux · [src/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/ServiceProvider.cpp)
 - canonical · colingsnyder2-ux · [src/ServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/ServiceProvider.cpp)

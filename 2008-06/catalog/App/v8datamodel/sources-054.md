@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/InsertObjectAction.cpp`.
 
 **`539b51aab2fb`** · `App/src/v8datamodel/InsertObjectAction.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/InsertObjectAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/InsertObjectAction.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/InsertObjectAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/InsertObjectAction.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/InsertObjectAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/InsertObjectAction.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/InsertObjectAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/InsertObjectAction.cpp)
@@ -103,6 +104,7 @@ Earlier paths and their donor versions: `native-classes/InsertObjectAction.cpp`.
 </details>
 
 **`a761e540de62`** · `App/src/v8datamodel/InsertObjectAction.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/InsertObjectAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/InsertObjectAction.cpp)
 - public · colingsnyder2-ux · [v8datamodel/InsertObjectAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/InsertObjectAction.cpp)
 - public · colingsnyder2-ux · [v8datamodel/InsertObjectAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/InsertObjectAction.cpp)
 - public · colingsnyder2-ux · [v8datamodel/InsertObjectAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/InsertObjectAction.cpp)
@@ -199,6 +201,8 @@ Earlier paths and their donor versions: `native-classes/InsertObjectAction.cpp`.
 </details>
 
 **`df66bfae2411`** · `native-classes/InsertObjectAction.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/InsertObjectAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/InsertObjectAction.cpp)
+- canonical · colingsnyder2-ux · [native-classes/InsertObjectAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/InsertObjectAction.cpp)
 - public · colingsnyder2-ux · [native-classes/InsertObjectAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/InsertObjectAction.cpp)
 - canonical · colingsnyder2-ux · [native-classes/InsertObjectAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/InsertObjectAction.cpp)
 - public · colingsnyder2-ux · [native-classes/InsertObjectAction.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/InsertObjectAction.cpp)
@@ -311,6 +315,7 @@ Earlier paths and their donor versions: `native-classes/InsertObjectAction.cpp`.
 Earlier paths and their donor versions: `native-classes/JoinCommand.cpp`.
 
 **`51315d0aa5e1`** · `App/src/v8datamodel/JoinCommand.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/JoinCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/JoinCommand.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/JoinCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/JoinCommand.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/JoinCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/JoinCommand.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/JoinCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/JoinCommand.cpp)
@@ -378,6 +383,7 @@ Earlier paths and their donor versions: `native-classes/JoinCommand.cpp`.
 </details>
 
 **`8ea398c62652`** · `App/src/v8datamodel/JoinCommand.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/JoinCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/JoinCommand.cpp)
 - public · colingsnyder2-ux · [v8datamodel/JoinCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/JoinCommand.cpp)
 - public · colingsnyder2-ux · [v8datamodel/JoinCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/JoinCommand.cpp)
 - public · colingsnyder2-ux · [v8datamodel/JoinCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/JoinCommand.cpp)
@@ -490,6 +496,8 @@ Earlier paths and their donor versions: `native-classes/JoinCommand.cpp`.
 </details>
 
 **`ac6ad75726ce`** · `native-classes/JoinCommand.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/JoinCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/JoinCommand.cpp)
+- canonical · colingsnyder2-ux · [native-classes/JoinCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/JoinCommand.cpp)
 - public · colingsnyder2-ux · [native-classes/JoinCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/JoinCommand.cpp)
 - canonical · colingsnyder2-ux · [native-classes/JoinCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/JoinCommand.cpp)
 - public · colingsnyder2-ux · [native-classes/JoinCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/JoinCommand.cpp)
@@ -623,6 +631,7 @@ Earlier paths and their donor versions: `native-classes/JointsService.cpp`.
 </details>
 
 **`3f1d3df3289b`** · `App/src/v8datamodel/JointsService.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/JointsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/JointsService.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/JointsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/JointsService.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/JointsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/JointsService.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/JointsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/JointsService.cpp)
@@ -681,6 +690,7 @@ Earlier paths and their donor versions: `native-classes/JointsService.cpp`.
 </details>
 
 **`d4e141eb6759`** · `App/src/v8datamodel/JointsService.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/JointsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/JointsService.cpp)
 - public · colingsnyder2-ux · [v8datamodel/JointsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/JointsService.cpp)
 - public · colingsnyder2-ux · [v8datamodel/JointsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/JointsService.cpp)
 - public · colingsnyder2-ux · [v8datamodel/JointsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/JointsService.cpp)
@@ -784,8 +794,9 @@ Earlier paths and their donor versions: `native-classes/JointsService.cpp`.
 </details>
 
 **`4d6752f3c515`** · `native-classes/JointsService.cpp` · proof not assessed
-- draft · colingsnyder2-ux · [native-classes/JointsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/JointsService.cpp)
+- draft · colingsnyder2-ux · [native-classes/JointsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/JointsService.cpp)
 - fork · coldek · [native-classes/JointsService.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-classes/JointsService.cpp)
+- draft · colingsnyder2-ux · [native-classes/JointsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/JointsService.cpp)
 - draft · colingsnyder2-ux · [native-classes/JointsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/JointsService.cpp)
 - draft · colingsnyder2-ux · [native-classes/JointsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/JointsService.cpp)
 - draft · colingsnyder2-ux · [native-classes/JointsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/JointsService.cpp)
@@ -842,6 +853,8 @@ Earlier paths and their donor versions: `native-classes/JointsService.cpp`.
 </details>
 
 **`612a155bd4cd`** · `native-classes/JointsService.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/JointsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/JointsService.cpp)
+- canonical · colingsnyder2-ux · [native-classes/JointsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/JointsService.cpp)
 - public · colingsnyder2-ux · [native-classes/JointsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/JointsService.cpp)
 - canonical · colingsnyder2-ux · [native-classes/JointsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/JointsService.cpp)
 - public · colingsnyder2-ux · [native-classes/JointsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/JointsService.cpp)

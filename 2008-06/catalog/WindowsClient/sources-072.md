@@ -17,6 +17,7 @@ Earlier paths and their donor versions: `native-classes/DocumentLDraw.cpp`.
 </details>
 
 **`8f4fadd94934`** · `WindowsClient/src/DocumentLDraw.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/DocumentLDraw.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/DocumentLDraw.cpp)
 - public · colingsnyder2-ux · [src/DocumentLDraw.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/DocumentLDraw.cpp)
 - public · colingsnyder2-ux · [src/DocumentLDraw.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/DocumentLDraw.cpp)
 - public · colingsnyder2-ux · [src/DocumentLDraw.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/DocumentLDraw.cpp)
@@ -65,6 +66,7 @@ Earlier paths and their donor versions: `native-classes/DocumentLDraw.cpp`.
 - public · colingsnyder2-ux · [src/DocumentLDraw.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/src/DocumentLDraw.cpp)
 
 **`c9487821a2d6`** · `WindowsClient/src/DocumentLDraw.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/DocumentLDraw.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/DocumentLDraw.cpp)
 - canonical · colingsnyder2-ux · [src/DocumentLDraw.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/DocumentLDraw.cpp)
 - canonical · colingsnyder2-ux · [src/DocumentLDraw.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/DocumentLDraw.cpp)
 - canonical · colingsnyder2-ux · [src/DocumentLDraw.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/DocumentLDraw.cpp)
@@ -140,6 +142,8 @@ Earlier paths and their donor versions: `native-classes/DocumentLDraw.cpp`.
 </details>
 
 **`362f0c138006`** · `native-classes/DocumentLDraw.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/DocumentLDraw.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/DocumentLDraw.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DocumentLDraw.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/DocumentLDraw.cpp)
 - public · colingsnyder2-ux · [native-classes/DocumentLDraw.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/DocumentLDraw.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DocumentLDraw.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/DocumentLDraw.cpp)
 - public · colingsnyder2-ux · [native-classes/DocumentLDraw.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/DocumentLDraw.cpp)
@@ -311,6 +315,7 @@ Earlier paths and their donor versions: `native-classes/DocumentLDraw.cpp`.
 Earlier paths and their donor versions: `Unclassified/src/DocumentLaunch.cpp`.
 
 **`4fdafff98dfd`** · `WindowsClient/src/DocumentLaunch.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/DocumentLaunch.cpp)
 - canonical · colingsnyder2-ux · [src/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/DocumentLaunch.cpp)
 - canonical · colingsnyder2-ux · [src/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/DocumentLaunch.cpp)
 - canonical · colingsnyder2-ux · [src/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/DocumentLaunch.cpp)
@@ -325,6 +330,7 @@ Earlier paths and their donor versions: `Unclassified/src/DocumentLaunch.cpp`.
 </details>
 
 **`d22385f8baae`** · `WindowsClient/src/DocumentLaunch.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/DocumentLaunch.cpp)
 - public · colingsnyder2-ux · [src/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/DocumentLaunch.cpp)
 - public · colingsnyder2-ux · [src/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/DocumentLaunch.cpp)
 - public · colingsnyder2-ux · [src/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/DocumentLaunch.cpp)
@@ -332,6 +338,7 @@ Earlier paths and their donor versions: `Unclassified/src/DocumentLaunch.cpp`.
 - public · colingsnyder2-ux · [src/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/src/DocumentLaunch.cpp)
 
 **`21b80d96e42c`** · `Unclassified/src/DocumentLaunch.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/DocumentLaunch.cpp)
 - canonical · colingsnyder2-ux · [src/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/DocumentLaunch.cpp)
 - canonical · colingsnyder2-ux · [src/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/DocumentLaunch.cpp)
 - canonical · colingsnyder2-ux · [src/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/DocumentLaunch.cpp)
@@ -421,6 +428,7 @@ Earlier paths and their donor versions: `Unclassified/src/DocumentLaunch.cpp`.
 </details>
 
 **`84fbef2c4708`** · `Unclassified/src/DocumentLaunch.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/DocumentLaunch.cpp)
 - public · colingsnyder2-ux · [src/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/DocumentLaunch.cpp)
 - public · colingsnyder2-ux · [src/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/DocumentLaunch.cpp)
 - public · colingsnyder2-ux · [src/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/DocumentLaunch.cpp)
@@ -471,6 +479,7 @@ Earlier paths and their donor versions: `native-classes/DocumentLoadFile.cpp`.
 </details>
 
 **`cdc15bbe1078`** · `WindowsClient/src/DocumentLoadFile.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/DocumentLoadFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/DocumentLoadFile.cpp)
 - canonical · colingsnyder2-ux · [src/DocumentLoadFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/DocumentLoadFile.cpp)
 - canonical · colingsnyder2-ux · [src/DocumentLoadFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/DocumentLoadFile.cpp)
 - canonical · colingsnyder2-ux · [src/DocumentLoadFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/DocumentLoadFile.cpp)
@@ -529,6 +538,7 @@ Earlier paths and their donor versions: `native-classes/DocumentLoadFile.cpp`.
 </details>
 
 **`d429ae454283`** · `WindowsClient/src/DocumentLoadFile.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/DocumentLoadFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/DocumentLoadFile.cpp)
 - public · colingsnyder2-ux · [src/DocumentLoadFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/DocumentLoadFile.cpp)
 - public · colingsnyder2-ux · [src/DocumentLoadFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/DocumentLoadFile.cpp)
 - public · colingsnyder2-ux · [src/DocumentLoadFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/DocumentLoadFile.cpp)
@@ -614,6 +624,8 @@ Earlier paths and their donor versions: `native-classes/DocumentLoadFile.cpp`.
 </details>
 
 **`951a9484ce52`** · `native-classes/DocumentLoadFile.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/DocumentLoadFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/DocumentLoadFile.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DocumentLoadFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/DocumentLoadFile.cpp)
 - public · colingsnyder2-ux · [native-classes/DocumentLoadFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/DocumentLoadFile.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DocumentLoadFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/DocumentLoadFile.cpp)
 - public · colingsnyder2-ux · [native-classes/DocumentLoadFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/DocumentLoadFile.cpp)
@@ -816,6 +828,7 @@ Earlier paths and their donor versions: `native-classes/DocumentLoadFromString.c
 </details>
 
 **`ba210b6ce3d7`** · `WindowsClient/src/DocumentLoadFromString.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/DocumentLoadFromString.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/DocumentLoadFromString.cpp)
 - public · colingsnyder2-ux · [src/DocumentLoadFromString.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/DocumentLoadFromString.cpp)
 - public · colingsnyder2-ux · [src/DocumentLoadFromString.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/DocumentLoadFromString.cpp)
 - public · colingsnyder2-ux · [src/DocumentLoadFromString.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/DocumentLoadFromString.cpp)
@@ -856,6 +869,7 @@ Earlier paths and their donor versions: `native-classes/DocumentLoadFromString.c
 - public · colingsnyder2-ux · [src/DocumentLoadFromString.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/src/DocumentLoadFromString.cpp)
 
 **`f52fa698812d`** · `WindowsClient/src/DocumentLoadFromString.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/DocumentLoadFromString.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/DocumentLoadFromString.cpp)
 - canonical · colingsnyder2-ux · [src/DocumentLoadFromString.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/DocumentLoadFromString.cpp)
 - canonical · colingsnyder2-ux · [src/DocumentLoadFromString.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/DocumentLoadFromString.cpp)
 - canonical · colingsnyder2-ux · [src/DocumentLoadFromString.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/DocumentLoadFromString.cpp)
@@ -982,6 +996,8 @@ Earlier paths and their donor versions: `native-classes/DocumentLoadFromString.c
 </details>
 
 **`a04a067f6487`** · `native-classes/DocumentLoadFromString.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/DocumentLoadFromString.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/DocumentLoadFromString.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DocumentLoadFromString.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp)
 - public · colingsnyder2-ux · [native-classes/DocumentLoadFromString.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/DocumentLoadFromString.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DocumentLoadFromString.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/DocumentLoadFromString.cpp)
 - public · colingsnyder2-ux · [native-classes/DocumentLoadFromString.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/DocumentLoadFromString.cpp)

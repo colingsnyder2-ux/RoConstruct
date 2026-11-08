@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/SelectionGroup.h`.
 
 **`6e818109efc9`** · `WindowsClient/include/SelectionGroup.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/include/SelectionGroup.h)
 - canonical · colingsnyder2-ux · [include/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/include/SelectionGroup.h)
 - canonical · colingsnyder2-ux · [include/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/include/SelectionGroup.h)
 - canonical · colingsnyder2-ux · [include/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/include/SelectionGroup.h)
@@ -43,7 +44,7 @@ Earlier paths and their donor versions: `native-headers/SelectionGroup.h`.
 - canonical · colingsnyder2-ux · [include/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/SelectionGroup.h)
 - canonical · colingsnyder2-ux · [include/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/SelectionGroup.h)
 
-<details><summary>65 retained local origins</summary>
+<details><summary>66 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/SelectionGroup.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/SelectionGroup.h` · root `b52aa15feaea5a0c`
@@ -93,6 +94,7 @@ Earlier paths and their donor versions: `native-headers/SelectionGroup.h`.
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/WindowsClient/include/SelectionGroup.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/WindowsClient/include/SelectionGroup.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/WindowsClient/include/SelectionGroup.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/WindowsClient/include/SelectionGroup.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/WindowsClient/include/SelectionGroup.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/SelectionGroup.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/WindowsClient/include/SelectionGroup.h` · root `b52aa15feaea5a0c`
@@ -114,6 +116,7 @@ Earlier paths and their donor versions: `native-headers/SelectionGroup.h`.
 </details>
 
 **`9b2e6fb374b9`** · `WindowsClient/include/SelectionGroup.h` · proof not assessed
+- public · colingsnyder2-ux · [include/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/include/SelectionGroup.h)
 - public · colingsnyder2-ux · [include/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/include/SelectionGroup.h)
 - public · colingsnyder2-ux · [include/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/include/SelectionGroup.h)
 - public · colingsnyder2-ux · [include/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/include/SelectionGroup.h)
@@ -175,6 +178,8 @@ Earlier paths and their donor versions: `native-headers/SelectionGroup.h`.
 </details>
 
 **`532bb8fdde08`** · `native-headers/SelectionGroup.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/SelectionGroup.h)
+- canonical · colingsnyder2-ux · [native-headers/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/SelectionGroup.h)
 - public · colingsnyder2-ux · [native-headers/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/SelectionGroup.h)
 - canonical · colingsnyder2-ux · [native-headers/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/SelectionGroup.h)
 - public · colingsnyder2-ux · [native-headers/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/SelectionGroup.h)
@@ -244,7 +249,7 @@ Earlier paths and their donor versions: `native-headers/SelectionGroup.h`.
 - public · colingsnyder2-ux · [native-headers/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/SelectionGroup.h)
 - canonical · colingsnyder2-ux · [native-headers/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/SelectionGroup.h)
 
-<details><summary>68 retained local origins</summary>
+<details><summary>69 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/SelectionGroup.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/SelectionGroup.h` · root `b52aa15feaea5a0c`
@@ -295,6 +300,7 @@ Earlier paths and their donor versions: `native-headers/SelectionGroup.h`.
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/SelectionGroup.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/SelectionGroup.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/SelectionGroup.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/SelectionGroup.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/SelectionGroup.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/SelectionGroup.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/SelectionGroup.h` · root `b52aa15feaea5a0c`
@@ -521,6 +527,7 @@ Earlier paths and their donor versions: `native-headers/StandardVerbs.h`.
 </details>
 
 **`73ade740dca3`** · `WindowsClient/include/StandardVerbs.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/include/StandardVerbs.h)
 - canonical · colingsnyder2-ux · [include/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/include/StandardVerbs.h)
 - canonical · colingsnyder2-ux · [include/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/include/StandardVerbs.h)
 - canonical · colingsnyder2-ux · [include/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/include/StandardVerbs.h)
@@ -551,7 +558,7 @@ Earlier paths and their donor versions: `native-headers/StandardVerbs.h`.
 - canonical · colingsnyder2-ux · [include/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/WindowsClient/include/StandardVerbs.h)
 - canonical · colingsnyder2-ux · [include/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/WindowsClient/include/StandardVerbs.h)
 
-<details><summary>56 retained local origins</summary>
+<details><summary>57 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/WindowsClient/include/StandardVerbs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/WindowsClient/include/StandardVerbs.h` · root `b52aa15feaea5a0c`
@@ -593,6 +600,7 @@ Earlier paths and their donor versions: `native-headers/StandardVerbs.h`.
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/WindowsClient/include/StandardVerbs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/WindowsClient/include/StandardVerbs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/WindowsClient/include/StandardVerbs.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/WindowsClient/include/StandardVerbs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/WindowsClient/include/StandardVerbs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/before/rebuild/2008-06/WindowsClient/include/StandardVerbs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/source-final-profiles-20261107/batch/frozen/rebuild/2008-06/WindowsClient/include/StandardVerbs.h` · root `b52aa15feaea5a0c`
@@ -632,6 +640,7 @@ Earlier paths and their donor versions: `native-headers/StandardVerbs.h`.
 - public · colingsnyder2-ux · [include/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/include/StandardVerbs.h)
 
 **`f8e1e3e1c36b`** · `WindowsClient/include/StandardVerbs.h` · proof not assessed
+- public · colingsnyder2-ux · [include/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/include/StandardVerbs.h)
 - public · colingsnyder2-ux · [include/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/include/StandardVerbs.h)
 - public · colingsnyder2-ux · [include/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/include/StandardVerbs.h)
 - public · colingsnyder2-ux · [include/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/include/StandardVerbs.h)
@@ -785,6 +794,8 @@ Earlier paths and their donor versions: `native-headers/StandardVerbs.h`.
 </details>
 
 **`866ad2982076`** · `native-headers/StandardVerbs.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/StandardVerbs.h)
+- canonical · colingsnyder2-ux · [native-headers/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/StandardVerbs.h)
 - public · colingsnyder2-ux · [native-headers/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/StandardVerbs.h)
 - canonical · colingsnyder2-ux · [native-headers/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/StandardVerbs.h)
 - public · colingsnyder2-ux · [native-headers/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/StandardVerbs.h)
@@ -844,7 +855,7 @@ Earlier paths and their donor versions: `native-headers/StandardVerbs.h`.
 - public · colingsnyder2-ux · [native-headers/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/StandardVerbs.h)
 - canonical · colingsnyder2-ux · [native-headers/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/StandardVerbs.h)
 
-<details><summary>59 retained local origins</summary>
+<details><summary>60 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/StandardVerbs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/StandardVerbs.h` · root `b52aa15feaea5a0c`
@@ -887,6 +898,7 @@ Earlier paths and their donor versions: `native-headers/StandardVerbs.h`.
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/StandardVerbs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/StandardVerbs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/StandardVerbs.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/StandardVerbs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/StandardVerbs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/StandardVerbs.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/native-headers/StandardVerbs.h` · root `b52aa15feaea5a0c`

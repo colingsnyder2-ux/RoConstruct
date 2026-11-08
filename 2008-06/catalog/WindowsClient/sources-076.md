@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `Unclassified/src/WorkspaceStatus.cpp`.
 
 **`51c7eceeed97`** · `WindowsClient/src/WorkspaceStatus.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/WorkspaceStatus.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/WorkspaceStatus.cpp)
 - canonical · colingsnyder2-ux · [src/WorkspaceStatus.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/WorkspaceStatus.cpp)
 - canonical · colingsnyder2-ux · [src/WorkspaceStatus.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/WorkspaceStatus.cpp)
 - canonical · colingsnyder2-ux · [src/WorkspaceStatus.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/WorkspaceStatus.cpp)
@@ -22,6 +23,7 @@ Earlier paths and their donor versions: `Unclassified/src/WorkspaceStatus.cpp`.
 </details>
 
 **`a6cda778d434`** · `WindowsClient/src/WorkspaceStatus.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/WorkspaceStatus.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/WorkspaceStatus.cpp)
 - public · colingsnyder2-ux · [src/WorkspaceStatus.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/WorkspaceStatus.cpp)
 - public · colingsnyder2-ux · [src/WorkspaceStatus.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/WorkspaceStatus.cpp)
 - public · colingsnyder2-ux · [src/WorkspaceStatus.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/WorkspaceStatus.cpp)
@@ -29,6 +31,7 @@ Earlier paths and their donor versions: `Unclassified/src/WorkspaceStatus.cpp`.
 - public · colingsnyder2-ux · [src/WorkspaceStatus.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/src/WorkspaceStatus.cpp)
 
 **`158fa2a0410e`** · `Unclassified/src/WorkspaceStatus.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/WorkspaceStatus.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/WorkspaceStatus.cpp)
 - public · colingsnyder2-ux · [src/WorkspaceStatus.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/WorkspaceStatus.cpp)
 - public · colingsnyder2-ux · [src/WorkspaceStatus.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/WorkspaceStatus.cpp)
 - public · colingsnyder2-ux · [src/WorkspaceStatus.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/WorkspaceStatus.cpp)
@@ -87,6 +90,7 @@ Earlier paths and their donor versions: `Unclassified/src/WorkspaceStatus.cpp`.
 </details>
 
 **`712249985a20`** · `Unclassified/src/WorkspaceStatus.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/WorkspaceStatus.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/WorkspaceStatus.cpp)
 - canonical · colingsnyder2-ux · [src/WorkspaceStatus.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/WorkspaceStatus.cpp)
 - canonical · colingsnyder2-ux · [src/WorkspaceStatus.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/WorkspaceStatus.cpp)
 - canonical · colingsnyder2-ux · [src/WorkspaceStatus.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/WorkspaceStatus.cpp)
@@ -168,6 +172,7 @@ Earlier paths and their donor versions: `native-classes/WorkspaceXmlWriter.cpp`.
 </details>
 
 **`8dce4afb8c00`** · `WindowsClient/src/WorkspaceXmlWriter.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/WorkspaceXmlWriter.cpp)
 - public · colingsnyder2-ux · [src/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/WorkspaceXmlWriter.cpp)
 - public · colingsnyder2-ux · [src/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/WorkspaceXmlWriter.cpp)
 - public · colingsnyder2-ux · [src/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/WorkspaceXmlWriter.cpp)
@@ -188,6 +193,7 @@ Earlier paths and their donor versions: `native-classes/WorkspaceXmlWriter.cpp`.
 </details>
 
 **`f3c3a1ef5fc7`** · `WindowsClient/src/WorkspaceXmlWriter.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/WorkspaceXmlWriter.cpp)
 - canonical · colingsnyder2-ux · [src/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/WorkspaceXmlWriter.cpp)
 - canonical · colingsnyder2-ux · [src/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/WorkspaceXmlWriter.cpp)
 - canonical · colingsnyder2-ux · [src/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/WorkspaceXmlWriter.cpp)
@@ -253,6 +259,7 @@ Earlier paths and their donor versions: `native-classes/WorkspaceXmlWriter.cpp`.
 </details>
 
 **`813f9736b8d4`** · `native-classes/WorkspaceXmlWriter.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-classes/WorkspaceXmlWriter.cpp)
 - draft · colingsnyder2-ux · [native-classes/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-classes/WorkspaceXmlWriter.cpp)
 - draft · colingsnyder2-ux · [native-classes/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-classes/WorkspaceXmlWriter.cpp)
 - draft · colingsnyder2-ux · [native-classes/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-classes/WorkspaceXmlWriter.cpp)
@@ -317,6 +324,8 @@ Earlier paths and their donor versions: `native-classes/WorkspaceXmlWriter.cpp`.
 </details>
 
 **`e05708b554e3`** · `native-classes/WorkspaceXmlWriter.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/WorkspaceXmlWriter.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/WorkspaceXmlWriter.cpp)
 - public · colingsnyder2-ux · [native-classes/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/WorkspaceXmlWriter.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/WorkspaceXmlWriter.cpp)
 - public · colingsnyder2-ux · [native-classes/WorkspaceXmlWriter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/WorkspaceXmlWriter.cpp)
@@ -626,6 +635,8 @@ Compatibility path for `Unclassified/src/ActiveDocView.cpp`; compile either path
 - public · colingsnyder2-ux · [native-classes/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/ActiveDocView.cpp)
 
 **`a74e324a3838`** · `native-classes/ActiveDocView.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/ActiveDocView.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/ActiveDocView.cpp)
 - public · colingsnyder2-ux · [native-classes/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/ActiveDocView.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/ActiveDocView.cpp)
 - public · colingsnyder2-ux · [native-classes/ActiveDocView.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/ActiveDocView.cpp)
@@ -779,6 +790,8 @@ Compatibility path for `Unclassified/src/ActiveDocView.cpp`; compile either path
 Compatibility path for `WindowsClient/src/ActiveDocViewRefresh.cpp`; compile either path, never both.
 
 **`17e5c746c93d`** · `native-classes/ActiveDocViewRefresh.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ActiveDocViewRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/ActiveDocViewRefresh.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ActiveDocViewRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/ActiveDocViewRefresh.cpp)
 - public · colingsnyder2-ux · [native-classes/ActiveDocViewRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/ActiveDocViewRefresh.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ActiveDocViewRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/ActiveDocViewRefresh.cpp)
 - public · colingsnyder2-ux · [native-classes/ActiveDocViewRefresh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/ActiveDocViewRefresh.cpp)

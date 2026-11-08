@@ -18,10 +18,10 @@ canonical authority remains `workspace/rebuild/2008-06` on `work`.
 | App/v8world | 133 | 80 | 29 | 2 | 0 | 22 |
 | Network | 86 | 27 | 30 | 15 | 0 | 14 |
 | Rendering | 75 | 22 | 16 | 4 | 0 | 33 |
-| Base/util | 142 | 51 | 76 | 11 | 0 | 4 |
+| Base/util | 144 | 51 | 78 | 11 | 0 | 4 |
 | Other | 385 | 217 | 41 | 37 | 0 | 90 |
 
-Byte differences include **998 banner-only**, **1 line-ending-only**, and
+Byte differences include **1000 banner-only**, **1 line-ending-only**, and
 **2 requiring method review**. 1 header aliases match their target content.
 Content equality is not ABI, selection or runtime proof.
 

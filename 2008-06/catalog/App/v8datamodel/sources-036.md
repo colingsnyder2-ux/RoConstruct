@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/ChangeHistoryReset.cpp`.
 
 **`7f8dcc8ee348`** · `App/src/v8datamodel/ChangeHistoryReset.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/ChangeHistoryReset.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/ChangeHistoryReset.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/ChangeHistoryReset.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/ChangeHistoryReset.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/ChangeHistoryReset.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/ChangeHistoryReset.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/ChangeHistoryReset.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/ChangeHistoryReset.cpp)
@@ -66,6 +67,7 @@ Earlier paths and their donor versions: `native-classes/ChangeHistoryReset.cpp`.
 </details>
 
 **`98c3bed4d0ab`** · `App/src/v8datamodel/ChangeHistoryReset.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/ChangeHistoryReset.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/ChangeHistoryReset.cpp)
 - public · colingsnyder2-ux · [v8datamodel/ChangeHistoryReset.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/ChangeHistoryReset.cpp)
 - public · colingsnyder2-ux · [v8datamodel/ChangeHistoryReset.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/ChangeHistoryReset.cpp)
 - public · colingsnyder2-ux · [v8datamodel/ChangeHistoryReset.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/ChangeHistoryReset.cpp)
@@ -123,6 +125,8 @@ Earlier paths and their donor versions: `native-classes/ChangeHistoryReset.cpp`.
 - public · colingsnyder2-ux · [v8datamodel/ChangeHistoryReset.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/ChangeHistoryReset.cpp)
 
 **`67be7f880c78`** · `native-classes/ChangeHistoryReset.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ChangeHistoryReset.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/ChangeHistoryReset.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ChangeHistoryReset.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/ChangeHistoryReset.cpp)
 - public · colingsnyder2-ux · [native-classes/ChangeHistoryReset.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/ChangeHistoryReset.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ChangeHistoryReset.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/ChangeHistoryReset.cpp)
 - public · colingsnyder2-ux · [native-classes/ChangeHistoryReset.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/ChangeHistoryReset.cpp)
@@ -351,6 +355,7 @@ Earlier paths and their donor versions: `native-classes/ChangeHistoryReset.cpp`.
 Earlier paths and their donor versions: `native-classes/ChangeHistoryStart.cpp`.
 
 **`56d215624fe8`** · `App/src/v8datamodel/ChangeHistoryStart.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/ChangeHistoryStart.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/ChangeHistoryStart.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/ChangeHistoryStart.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/ChangeHistoryStart.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/ChangeHistoryStart.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/ChangeHistoryStart.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/ChangeHistoryStart.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/ChangeHistoryStart.cpp)
@@ -420,6 +425,7 @@ Earlier paths and their donor versions: `native-classes/ChangeHistoryStart.cpp`.
 </details>
 
 **`cc45f2b11779`** · `App/src/v8datamodel/ChangeHistoryStart.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/ChangeHistoryStart.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/ChangeHistoryStart.cpp)
 - public · colingsnyder2-ux · [v8datamodel/ChangeHistoryStart.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/ChangeHistoryStart.cpp)
 - public · colingsnyder2-ux · [v8datamodel/ChangeHistoryStart.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/ChangeHistoryStart.cpp)
 - public · colingsnyder2-ux · [v8datamodel/ChangeHistoryStart.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/ChangeHistoryStart.cpp)
@@ -551,6 +557,8 @@ Earlier paths and their donor versions: `native-classes/ChangeHistoryStart.cpp`.
 - public · colingsnyder2-ux · [native-classes/ChangeHistoryStart.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/8a73eccc237519962608be443a8515ce51bc316c/2008-06/native-classes/ChangeHistoryStart.cpp)
 
 **`f7d52e411509`** · `native-classes/ChangeHistoryStart.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ChangeHistoryStart.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/ChangeHistoryStart.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ChangeHistoryStart.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/ChangeHistoryStart.cpp)
 - public · colingsnyder2-ux · [native-classes/ChangeHistoryStart.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/ChangeHistoryStart.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ChangeHistoryStart.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/ChangeHistoryStart.cpp)
 - public · colingsnyder2-ux · [native-classes/ChangeHistoryStart.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/ChangeHistoryStart.cpp)
@@ -658,6 +666,7 @@ Earlier paths and their donor versions: `native-classes/ChangeHistoryStart.cpp`.
 Earlier paths and their donor versions: `native-classes/ClearBackpack.cpp`.
 
 **`021042bbb213`** · `App/src/v8datamodel/ClearBackpack.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/ClearBackpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/ClearBackpack.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/ClearBackpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/ClearBackpack.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/ClearBackpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/ClearBackpack.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/ClearBackpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/ClearBackpack.cpp)
@@ -744,6 +753,7 @@ Earlier paths and their donor versions: `native-classes/ClearBackpack.cpp`.
 - public · colingsnyder2-ux · [v8datamodel/ClearBackpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/ClearBackpack.cpp)
 
 **`b5bb9565bd68`** · `App/src/v8datamodel/ClearBackpack.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/ClearBackpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/ClearBackpack.cpp)
 - public · colingsnyder2-ux · [v8datamodel/ClearBackpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/ClearBackpack.cpp)
 - public · colingsnyder2-ux · [v8datamodel/ClearBackpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/ClearBackpack.cpp)
 - public · colingsnyder2-ux · [v8datamodel/ClearBackpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/ClearBackpack.cpp)
@@ -842,6 +852,8 @@ Earlier paths and their donor versions: `native-classes/ClearBackpack.cpp`.
 </details>
 
 **`b62c99741618`** · `native-classes/ClearBackpack.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ClearBackpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/ClearBackpack.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ClearBackpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/ClearBackpack.cpp)
 - public · colingsnyder2-ux · [native-classes/ClearBackpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/ClearBackpack.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ClearBackpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/ClearBackpack.cpp)
 - public · colingsnyder2-ux · [native-classes/ClearBackpack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/ClearBackpack.cpp)

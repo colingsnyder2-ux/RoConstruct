@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/GameSettingsSingleton.cpp`.
 
 **`6b1dc8fae6b8`** · `App/src/v8datamodel/GameSettingsSingleton.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/GameSettingsSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/GameSettingsSingleton.cpp)
 - public · colingsnyder2-ux · [v8datamodel/GameSettingsSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/GameSettingsSingleton.cpp)
 - public · colingsnyder2-ux · [v8datamodel/GameSettingsSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/GameSettingsSingleton.cpp)
 - public · colingsnyder2-ux · [v8datamodel/GameSettingsSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/GameSettingsSingleton.cpp)
@@ -65,6 +66,7 @@ Earlier paths and their donor versions: `native-classes/GameSettingsSingleton.cp
 - public · colingsnyder2-ux · [v8datamodel/GameSettingsSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/GameSettingsSingleton.cpp)
 
 **`e06350368a5d`** · `App/src/v8datamodel/GameSettingsSingleton.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/GameSettingsSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/GameSettingsSingleton.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/GameSettingsSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/GameSettingsSingleton.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/GameSettingsSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/GameSettingsSingleton.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/GameSettingsSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/GameSettingsSingleton.cpp)
@@ -123,6 +125,8 @@ Earlier paths and their donor versions: `native-classes/GameSettingsSingleton.cp
 </details>
 
 **`0364fb0c731c`** · `native-classes/GameSettingsSingleton.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/GameSettingsSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/GameSettingsSingleton.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GameSettingsSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/GameSettingsSingleton.cpp)
 - public · colingsnyder2-ux · [native-classes/GameSettingsSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/GameSettingsSingleton.cpp)
 - canonical · colingsnyder2-ux · [native-classes/GameSettingsSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/GameSettingsSingleton.cpp)
 - public · colingsnyder2-ux · [native-classes/GameSettingsSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/GameSettingsSingleton.cpp)
@@ -318,6 +322,7 @@ Earlier paths and their donor versions: `native-classes/GameSettingsSingleton.cp
 Earlier paths and their donor versions: `native-classes/GameSettingsStorage.cpp`.
 
 **`06a24bfe0a24`** · `App/src/v8datamodel/GameSettingsStorage.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/GameSettingsStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/GameSettingsStorage.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/GameSettingsStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/GameSettingsStorage.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/GameSettingsStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/GameSettingsStorage.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/GameSettingsStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/GameSettingsStorage.cpp)
@@ -404,6 +409,7 @@ Earlier paths and their donor versions: `native-classes/GameSettingsStorage.cpp`
 - public · colingsnyder2-ux · [v8datamodel/GameSettingsStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/GameSettingsStorage.cpp)
 
 **`5bd4d8fa86d1`** · `App/src/v8datamodel/GameSettingsStorage.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/GameSettingsStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/GameSettingsStorage.cpp)
 - public · colingsnyder2-ux · [v8datamodel/GameSettingsStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/GameSettingsStorage.cpp)
 - public · colingsnyder2-ux · [v8datamodel/GameSettingsStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/GameSettingsStorage.cpp)
 - public · colingsnyder2-ux · [v8datamodel/GameSettingsStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/GameSettingsStorage.cpp)
@@ -515,6 +521,8 @@ Earlier paths and their donor versions: `native-classes/GameSettingsStorage.cpp`
 </details>
 
 **`d0e80f7c4085`** · `native-classes/GameSettingsStorage.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/GameSettingsStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/GameSettingsStorage.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GameSettingsStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/GameSettingsStorage.cpp)
 - public · colingsnyder2-ux · [native-classes/GameSettingsStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/GameSettingsStorage.cpp)
 - canonical · colingsnyder2-ux · [native-classes/GameSettingsStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/GameSettingsStorage.cpp)
 - public · colingsnyder2-ux · [native-classes/GameSettingsStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/GameSettingsStorage.cpp)
@@ -636,6 +644,7 @@ Earlier paths and their donor versions: `native-classes/GeometryService.cpp`.
 </details>
 
 **`8733f503a442`** · `App/src/v8datamodel/GeometryService.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/GeometryService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/GeometryService.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/GeometryService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/GeometryService.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/GeometryService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/App/src/v8datamodel/GeometryService.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/GeometryService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/App/src/v8datamodel/GeometryService.cpp)
@@ -722,6 +731,7 @@ Earlier paths and their donor versions: `native-classes/GeometryService.cpp`.
 - public · colingsnyder2-ux · [v8datamodel/GeometryService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/GeometryService.cpp)
 
 **`ff26c114c904`** · `App/src/v8datamodel/GeometryService.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/GeometryService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/GeometryService.cpp)
 - public · colingsnyder2-ux · [v8datamodel/GeometryService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/GeometryService.cpp)
 - public · colingsnyder2-ux · [v8datamodel/GeometryService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/App/src/v8datamodel/GeometryService.cpp)
 - public · colingsnyder2-ux · [v8datamodel/GeometryService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/App/src/v8datamodel/GeometryService.cpp)
@@ -750,6 +760,7 @@ Earlier paths and their donor versions: `native-classes/GeometryService.cpp`.
 </details>
 
 **`3543bf538b20`** · `native-classes/GeometryService.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/GeometryService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/a1e65dc747c3d2e2a5837a8098b4cdbeaa46c35f0e5af698c40f046f7ed31c5d/rebuild/2008-06/native-classes/GeometryService.cpp)
 - draft · colingsnyder2-ux · [native-classes/GeometryService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/a1e65dc747c3d2e2a5837a8098b4cdbeaa46c35f0e5af698c40f046f7ed31c5d/rebuild/2008-06/native-classes/GeometryService.cpp)
 - draft · colingsnyder2-ux · [native-classes/GeometryService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/a1e65dc747c3d2e2a5837a8098b4cdbeaa46c35f0e5af698c40f046f7ed31c5d/rebuild/2008-06/native-classes/GeometryService.cpp)
 - draft · colingsnyder2-ux · [native-classes/GeometryService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/a1e65dc747c3d2e2a5837a8098b4cdbeaa46c35f0e5af698c40f046f7ed31c5d/rebuild/2008-06/native-classes/GeometryService.cpp)
@@ -849,6 +860,8 @@ Earlier paths and their donor versions: `native-classes/GeometryService.cpp`.
 </details>
 
 **`dbf84412d5d1`** · `native-classes/GeometryService.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/GeometryService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/GeometryService.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GeometryService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/GeometryService.cpp)
 - public · colingsnyder2-ux · [native-classes/GeometryService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/GeometryService.cpp)
 - canonical · colingsnyder2-ux · [native-classes/GeometryService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/GeometryService.cpp)
 - public · colingsnyder2-ux · [native-classes/GeometryService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/GeometryService.cpp)

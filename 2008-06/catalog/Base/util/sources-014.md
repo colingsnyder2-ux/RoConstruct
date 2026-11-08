@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `Unclassified/src/ContentProviderCacheSupport.cpp`.
 
 **`0a9ee7d6a2b2`** · `Base/src/util/ContentProviderCacheSupport.cpp` · proof not assessed
+- public · colingsnyder2-ux · [util/ContentProviderCacheSupport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Base/src/util/ContentProviderCacheSupport.cpp)
 - public · colingsnyder2-ux · [util/ContentProviderCacheSupport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Base/src/util/ContentProviderCacheSupport.cpp)
 - public · colingsnyder2-ux · [util/ContentProviderCacheSupport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Base/src/util/ContentProviderCacheSupport.cpp)
 - public · colingsnyder2-ux · [util/ContentProviderCacheSupport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Base/src/util/ContentProviderCacheSupport.cpp)
@@ -15,6 +16,7 @@ Earlier paths and their donor versions: `Unclassified/src/ContentProviderCacheSu
 - public · colingsnyder2-ux · [util/ContentProviderCacheSupport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Base/src/util/ContentProviderCacheSupport.cpp)
 
 **`a883e0293c1c`** · `Base/src/util/ContentProviderCacheSupport.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [util/ContentProviderCacheSupport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Base/src/util/ContentProviderCacheSupport.cpp)
 - canonical · colingsnyder2-ux · [util/ContentProviderCacheSupport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Base/src/util/ContentProviderCacheSupport.cpp)
 - canonical · colingsnyder2-ux · [util/ContentProviderCacheSupport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Base/src/util/ContentProviderCacheSupport.cpp)
 - canonical · colingsnyder2-ux · [util/ContentProviderCacheSupport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Base/src/util/ContentProviderCacheSupport.cpp)
@@ -29,6 +31,7 @@ Earlier paths and their donor versions: `Unclassified/src/ContentProviderCacheSu
 </details>
 
 **`18062568a439`** · `Unclassified/src/ContentProviderCacheSupport.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ContentProviderCacheSupport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/ContentProviderCacheSupport.cpp)
 - canonical · colingsnyder2-ux · [src/ContentProviderCacheSupport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/ContentProviderCacheSupport.cpp)
 - canonical · colingsnyder2-ux · [src/ContentProviderCacheSupport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/ContentProviderCacheSupport.cpp)
 - canonical · colingsnyder2-ux · [src/ContentProviderCacheSupport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/ContentProviderCacheSupport.cpp)
@@ -148,6 +151,7 @@ Earlier paths and their donor versions: `Unclassified/src/ContentProviderCacheSu
 </details>
 
 **`bc8b3a35c6cb`** · `Unclassified/src/ContentProviderCacheSupport.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ContentProviderCacheSupport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/ContentProviderCacheSupport.cpp)
 - public · colingsnyder2-ux · [src/ContentProviderCacheSupport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/ContentProviderCacheSupport.cpp)
 - public · colingsnyder2-ux · [src/ContentProviderCacheSupport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/ContentProviderCacheSupport.cpp)
 - public · colingsnyder2-ux · [src/ContentProviderCacheSupport.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/ContentProviderCacheSupport.cpp)
@@ -162,6 +166,7 @@ Earlier paths and their donor versions: `Unclassified/src/ContentProviderCacheSu
 Earlier paths and their donor versions: `Unclassified/src/ContentProviderGetFile.cpp`.
 
 **`5a64f92bbf12`** · `Base/src/util/ContentProviderGetFile.cpp` · proof not assessed
+- public · colingsnyder2-ux · [util/ContentProviderGetFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Base/src/util/ContentProviderGetFile.cpp)
 - public · colingsnyder2-ux · [util/ContentProviderGetFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Base/src/util/ContentProviderGetFile.cpp)
 - public · colingsnyder2-ux · [util/ContentProviderGetFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Base/src/util/ContentProviderGetFile.cpp)
 - public · colingsnyder2-ux · [util/ContentProviderGetFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Base/src/util/ContentProviderGetFile.cpp)
@@ -169,6 +174,7 @@ Earlier paths and their donor versions: `Unclassified/src/ContentProviderGetFile
 - public · colingsnyder2-ux · [util/ContentProviderGetFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Base/src/util/ContentProviderGetFile.cpp)
 
 **`bf15a515435c`** · `Base/src/util/ContentProviderGetFile.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [util/ContentProviderGetFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Base/src/util/ContentProviderGetFile.cpp)
 - canonical · colingsnyder2-ux · [util/ContentProviderGetFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Base/src/util/ContentProviderGetFile.cpp)
 - canonical · colingsnyder2-ux · [util/ContentProviderGetFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Base/src/util/ContentProviderGetFile.cpp)
 - canonical · colingsnyder2-ux · [util/ContentProviderGetFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Base/src/util/ContentProviderGetFile.cpp)
@@ -234,6 +240,7 @@ Earlier paths and their donor versions: `Unclassified/src/ContentProviderGetFile
 </details>
 
 **`ad1d1dcd28dd`** · `Unclassified/src/ContentProviderGetFile.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ContentProviderGetFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/ContentProviderGetFile.cpp)
 - public · colingsnyder2-ux · [src/ContentProviderGetFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/ContentProviderGetFile.cpp)
 - public · colingsnyder2-ux · [src/ContentProviderGetFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/ContentProviderGetFile.cpp)
 - public · colingsnyder2-ux · [src/ContentProviderGetFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/ContentProviderGetFile.cpp)
@@ -292,6 +299,7 @@ Earlier paths and their donor versions: `Unclassified/src/ContentProviderGetFile
 </details>
 
 **`d47a34bbaa8f`** · `Unclassified/src/ContentProviderGetFile.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ContentProviderGetFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/ContentProviderGetFile.cpp)
 - canonical · colingsnyder2-ux · [src/ContentProviderGetFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/ContentProviderGetFile.cpp)
 - canonical · colingsnyder2-ux · [src/ContentProviderGetFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/ContentProviderGetFile.cpp)
 - canonical · colingsnyder2-ux · [src/ContentProviderGetFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/ContentProviderGetFile.cpp)
@@ -313,6 +321,7 @@ Earlier paths and their donor versions: `Unclassified/src/ContentProviderGetFile
 Earlier paths and their donor versions: `Unclassified/src/ContentProviderLoadContent.cpp`.
 
 **`62669cf893d2`** · `Base/src/util/ContentProviderLoadContent.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [util/ContentProviderLoadContent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Base/src/util/ContentProviderLoadContent.cpp)
 - canonical · colingsnyder2-ux · [util/ContentProviderLoadContent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Base/src/util/ContentProviderLoadContent.cpp)
 - canonical · colingsnyder2-ux · [util/ContentProviderLoadContent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Base/src/util/ContentProviderLoadContent.cpp)
 - canonical · colingsnyder2-ux · [util/ContentProviderLoadContent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Base/src/util/ContentProviderLoadContent.cpp)
@@ -327,6 +336,7 @@ Earlier paths and their donor versions: `Unclassified/src/ContentProviderLoadCon
 </details>
 
 **`7bad311b9b9e`** · `Base/src/util/ContentProviderLoadContent.cpp` · proof not assessed
+- public · colingsnyder2-ux · [util/ContentProviderLoadContent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Base/src/util/ContentProviderLoadContent.cpp)
 - public · colingsnyder2-ux · [util/ContentProviderLoadContent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Base/src/util/ContentProviderLoadContent.cpp)
 - public · colingsnyder2-ux · [util/ContentProviderLoadContent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Base/src/util/ContentProviderLoadContent.cpp)
 - public · colingsnyder2-ux · [util/ContentProviderLoadContent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Base/src/util/ContentProviderLoadContent.cpp)
@@ -334,6 +344,7 @@ Earlier paths and their donor versions: `Unclassified/src/ContentProviderLoadCon
 - public · colingsnyder2-ux · [util/ContentProviderLoadContent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Base/src/util/ContentProviderLoadContent.cpp)
 
 **`0dc22d5ac495`** · `Unclassified/src/ContentProviderLoadContent.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ContentProviderLoadContent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/ContentProviderLoadContent.cpp)
 - canonical · colingsnyder2-ux · [src/ContentProviderLoadContent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/ContentProviderLoadContent.cpp)
 - canonical · colingsnyder2-ux · [src/ContentProviderLoadContent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/ContentProviderLoadContent.cpp)
 - canonical · colingsnyder2-ux · [src/ContentProviderLoadContent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/ContentProviderLoadContent.cpp)
@@ -348,6 +359,7 @@ Earlier paths and their donor versions: `Unclassified/src/ContentProviderLoadCon
 </details>
 
 **`15d6e3455e0a`** · `Unclassified/src/ContentProviderLoadContent.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ContentProviderLoadContent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/ContentProviderLoadContent.cpp)
 - public · colingsnyder2-ux · [src/ContentProviderLoadContent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/ContentProviderLoadContent.cpp)
 - public · colingsnyder2-ux · [src/ContentProviderLoadContent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/ContentProviderLoadContent.cpp)
 - public · colingsnyder2-ux · [src/ContentProviderLoadContent.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/ContentProviderLoadContent.cpp)
@@ -467,6 +479,7 @@ Earlier paths and their donor versions: `Unclassified/src/ContentProviderLoadCon
 Earlier paths and their donor versions: `Unclassified/src/ContentProviderRegisterFile.cpp`.
 
 **`65014b19a325`** · `Base/src/util/ContentProviderRegisterFile.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [util/ContentProviderRegisterFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Base/src/util/ContentProviderRegisterFile.cpp)
 - canonical · colingsnyder2-ux · [util/ContentProviderRegisterFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Base/src/util/ContentProviderRegisterFile.cpp)
 - canonical · colingsnyder2-ux · [util/ContentProviderRegisterFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Base/src/util/ContentProviderRegisterFile.cpp)
 - canonical · colingsnyder2-ux · [util/ContentProviderRegisterFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Base/src/util/ContentProviderRegisterFile.cpp)
@@ -481,6 +494,7 @@ Earlier paths and their donor versions: `Unclassified/src/ContentProviderRegiste
 </details>
 
 **`8b11e8b63034`** · `Base/src/util/ContentProviderRegisterFile.cpp` · proof not assessed
+- public · colingsnyder2-ux · [util/ContentProviderRegisterFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Base/src/util/ContentProviderRegisterFile.cpp)
 - public · colingsnyder2-ux · [util/ContentProviderRegisterFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Base/src/util/ContentProviderRegisterFile.cpp)
 - public · colingsnyder2-ux · [util/ContentProviderRegisterFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Base/src/util/ContentProviderRegisterFile.cpp)
 - public · colingsnyder2-ux · [util/ContentProviderRegisterFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Base/src/util/ContentProviderRegisterFile.cpp)
@@ -497,6 +511,7 @@ Earlier paths and their donor versions: `Unclassified/src/ContentProviderRegiste
 </details>
 
 **`301d549c2244`** · `Unclassified/src/ContentProviderRegisterFile.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ContentProviderRegisterFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/ContentProviderRegisterFile.cpp)
 - canonical · colingsnyder2-ux · [src/ContentProviderRegisterFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/ContentProviderRegisterFile.cpp)
 - canonical · colingsnyder2-ux · [src/ContentProviderRegisterFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/ContentProviderRegisterFile.cpp)
 - canonical · colingsnyder2-ux · [src/ContentProviderRegisterFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/ContentProviderRegisterFile.cpp)
@@ -562,6 +577,7 @@ Earlier paths and their donor versions: `Unclassified/src/ContentProviderRegiste
 </details>
 
 **`b74ef4b5640b`** · `Unclassified/src/ContentProviderRegisterFile.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ContentProviderRegisterFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/ContentProviderRegisterFile.cpp)
 - public · colingsnyder2-ux · [src/ContentProviderRegisterFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/ContentProviderRegisterFile.cpp)
 - public · colingsnyder2-ux · [src/ContentProviderRegisterFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/ContentProviderRegisterFile.cpp)
 - public · colingsnyder2-ux · [src/ContentProviderRegisterFile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/ContentProviderRegisterFile.cpp)
@@ -618,6 +634,7 @@ Earlier paths and their donor versions: `Unclassified/src/ContentProviderRegiste
 Earlier paths and their donor versions: `Unclassified/src/ContentProviderUrl.cpp`.
 
 **`054e9b44b5cb`** · `Base/src/util/ContentProviderUrl.cpp` · proof not assessed
+- public · colingsnyder2-ux · [util/ContentProviderUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Base/src/util/ContentProviderUrl.cpp)
 - public · colingsnyder2-ux · [util/ContentProviderUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Base/src/util/ContentProviderUrl.cpp)
 - public · colingsnyder2-ux · [util/ContentProviderUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Base/src/util/ContentProviderUrl.cpp)
 - public · colingsnyder2-ux · [util/ContentProviderUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Base/src/util/ContentProviderUrl.cpp)
@@ -625,6 +642,7 @@ Earlier paths and their donor versions: `Unclassified/src/ContentProviderUrl.cpp
 - public · colingsnyder2-ux · [util/ContentProviderUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Base/src/util/ContentProviderUrl.cpp)
 
 **`74952ee6f800`** · `Base/src/util/ContentProviderUrl.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [util/ContentProviderUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Base/src/util/ContentProviderUrl.cpp)
 - canonical · colingsnyder2-ux · [util/ContentProviderUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Base/src/util/ContentProviderUrl.cpp)
 - canonical · colingsnyder2-ux · [util/ContentProviderUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Base/src/util/ContentProviderUrl.cpp)
 - canonical · colingsnyder2-ux · [util/ContentProviderUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Base/src/util/ContentProviderUrl.cpp)
@@ -717,6 +735,7 @@ Earlier paths and their donor versions: `Unclassified/src/ContentProviderUrl.cpp
 - public · colingsnyder2-ux · [src/ContentProviderUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/ContentProviderUrl.cpp)
 
 **`c3b4bef6ae8a`** · `Unclassified/src/ContentProviderUrl.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ContentProviderUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/ContentProviderUrl.cpp)
 - canonical · colingsnyder2-ux · [src/ContentProviderUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/ContentProviderUrl.cpp)
 - canonical · colingsnyder2-ux · [src/ContentProviderUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/ContentProviderUrl.cpp)
 - canonical · colingsnyder2-ux · [src/ContentProviderUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/ContentProviderUrl.cpp)
@@ -755,6 +774,7 @@ Earlier paths and their donor versions: `Unclassified/src/ContentProviderUrl.cpp
 </details>
 
 **`fabbf9787b53`** · `Unclassified/src/ContentProviderUrl.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ContentProviderUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/ContentProviderUrl.cpp)
 - public · colingsnyder2-ux · [src/ContentProviderUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/ContentProviderUrl.cpp)
 - public · colingsnyder2-ux · [src/ContentProviderUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/ContentProviderUrl.cpp)
 - public · colingsnyder2-ux · [src/ContentProviderUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/ContentProviderUrl.cpp)
@@ -769,6 +789,7 @@ Earlier paths and their donor versions: `Unclassified/src/ContentProviderUrl.cpp
 Earlier paths and their donor versions: `Unclassified/src/ContentProviderWorkerBinding.cpp`.
 
 **`aec935d18c2d`** · `Base/src/util/ContentProviderWorkerBinding.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [util/ContentProviderWorkerBinding.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Base/src/util/ContentProviderWorkerBinding.cpp)
 - canonical · colingsnyder2-ux · [util/ContentProviderWorkerBinding.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Base/src/util/ContentProviderWorkerBinding.cpp)
 - canonical · colingsnyder2-ux · [util/ContentProviderWorkerBinding.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Base/src/util/ContentProviderWorkerBinding.cpp)
 - canonical · colingsnyder2-ux · [util/ContentProviderWorkerBinding.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Base/src/util/ContentProviderWorkerBinding.cpp)
@@ -783,6 +804,7 @@ Earlier paths and their donor versions: `Unclassified/src/ContentProviderWorkerB
 </details>
 
 **`f2213be04979`** · `Base/src/util/ContentProviderWorkerBinding.cpp` · proof not assessed
+- public · colingsnyder2-ux · [util/ContentProviderWorkerBinding.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Base/src/util/ContentProviderWorkerBinding.cpp)
 - public · colingsnyder2-ux · [util/ContentProviderWorkerBinding.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Base/src/util/ContentProviderWorkerBinding.cpp)
 - public · colingsnyder2-ux · [util/ContentProviderWorkerBinding.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Base/src/util/ContentProviderWorkerBinding.cpp)
 - public · colingsnyder2-ux · [util/ContentProviderWorkerBinding.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Base/src/util/ContentProviderWorkerBinding.cpp)
@@ -805,6 +827,7 @@ Earlier paths and their donor versions: `Unclassified/src/ContentProviderWorkerB
 </details>
 
 **`1bbafe240a76`** · `Unclassified/src/ContentProviderWorkerBinding.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ContentProviderWorkerBinding.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/ContentProviderWorkerBinding.cpp)
 - public · colingsnyder2-ux · [src/ContentProviderWorkerBinding.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/ContentProviderWorkerBinding.cpp)
 - public · colingsnyder2-ux · [src/ContentProviderWorkerBinding.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/ContentProviderWorkerBinding.cpp)
 - public · colingsnyder2-ux · [src/ContentProviderWorkerBinding.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/ContentProviderWorkerBinding.cpp)
@@ -812,6 +835,7 @@ Earlier paths and their donor versions: `Unclassified/src/ContentProviderWorkerB
 - public · colingsnyder2-ux · [src/ContentProviderWorkerBinding.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/ContentProviderWorkerBinding.cpp)
 
 **`9106496e98c9`** · `Unclassified/src/ContentProviderWorkerBinding.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ContentProviderWorkerBinding.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/ContentProviderWorkerBinding.cpp)
 - canonical · colingsnyder2-ux · [src/ContentProviderWorkerBinding.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/ContentProviderWorkerBinding.cpp)
 - canonical · colingsnyder2-ux · [src/ContentProviderWorkerBinding.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/ContentProviderWorkerBinding.cpp)
 - canonical · colingsnyder2-ux · [src/ContentProviderWorkerBinding.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/ContentProviderWorkerBinding.cpp)
@@ -923,6 +947,7 @@ Earlier paths and their donor versions: `Unclassified/src/ContentProviderWorkerB
 Earlier paths and their donor versions: `Unclassified/src/ContentRead.cpp`.
 
 **`536b68043e18`** · `Base/src/util/ContentRead.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [util/ContentRead.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Base/src/util/ContentRead.cpp)
 - canonical · colingsnyder2-ux · [util/ContentRead.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Base/src/util/ContentRead.cpp)
 - canonical · colingsnyder2-ux · [util/ContentRead.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Base/src/util/ContentRead.cpp)
 - canonical · colingsnyder2-ux · [util/ContentRead.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Base/src/util/ContentRead.cpp)
@@ -937,6 +962,7 @@ Earlier paths and their donor versions: `Unclassified/src/ContentRead.cpp`.
 </details>
 
 **`dee47f2e6b4c`** · `Base/src/util/ContentRead.cpp` · proof not assessed
+- public · colingsnyder2-ux · [util/ContentRead.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Base/src/util/ContentRead.cpp)
 - public · colingsnyder2-ux · [util/ContentRead.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Base/src/util/ContentRead.cpp)
 - public · colingsnyder2-ux · [util/ContentRead.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Base/src/util/ContentRead.cpp)
 - public · colingsnyder2-ux · [util/ContentRead.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Base/src/util/ContentRead.cpp)
@@ -1004,6 +1030,7 @@ Earlier paths and their donor versions: `Unclassified/src/ContentRead.cpp`.
 </details>
 
 **`9c423fcb3830`** · `Unclassified/src/ContentRead.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ContentRead.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/ContentRead.cpp)
 - canonical · colingsnyder2-ux · [src/ContentRead.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/ContentRead.cpp)
 - canonical · colingsnyder2-ux · [src/ContentRead.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/ContentRead.cpp)
 - canonical · colingsnyder2-ux · [src/ContentRead.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/ContentRead.cpp)
@@ -1052,6 +1079,7 @@ Earlier paths and their donor versions: `Unclassified/src/ContentRead.cpp`.
 - public · colingsnyder2-ux · [src/ContentRead.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/ContentRead.cpp)
 
 **`bb9c3a7b6834`** · `Unclassified/src/ContentRead.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ContentRead.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/ContentRead.cpp)
 - public · colingsnyder2-ux · [src/ContentRead.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/ContentRead.cpp)
 - public · colingsnyder2-ux · [src/ContentRead.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/ContentRead.cpp)
 - public · colingsnyder2-ux · [src/ContentRead.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/ContentRead.cpp)

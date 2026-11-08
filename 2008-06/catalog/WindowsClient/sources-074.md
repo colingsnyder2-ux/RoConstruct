@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `Unclassified/src/PropertyGridNumericValues.cpp`.
 
 **`18a517aaae43`** · `WindowsClient/src/PropertyGridNumericValues.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/PropertyGridNumericValues.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/PropertyGridNumericValues.cpp)
 - public · colingsnyder2-ux · [src/PropertyGridNumericValues.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/PropertyGridNumericValues.cpp)
 - public · colingsnyder2-ux · [src/PropertyGridNumericValues.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/PropertyGridNumericValues.cpp)
 - public · colingsnyder2-ux · [src/PropertyGridNumericValues.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/PropertyGridNumericValues.cpp)
@@ -16,6 +17,7 @@ Earlier paths and their donor versions: `Unclassified/src/PropertyGridNumericVal
 - public · colingsnyder2-ux · [src/PropertyGridNumericValues.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/WindowsClient/src/PropertyGridNumericValues.cpp)
 
 **`39677dd2da0e`** · `WindowsClient/src/PropertyGridNumericValues.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/PropertyGridNumericValues.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/PropertyGridNumericValues.cpp)
 - canonical · colingsnyder2-ux · [src/PropertyGridNumericValues.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/PropertyGridNumericValues.cpp)
 - canonical · colingsnyder2-ux · [src/PropertyGridNumericValues.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/PropertyGridNumericValues.cpp)
 - canonical · colingsnyder2-ux · [src/PropertyGridNumericValues.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/PropertyGridNumericValues.cpp)
@@ -95,6 +97,7 @@ Earlier paths and their donor versions: `Unclassified/src/PropertyGridNumericVal
 </details>
 
 **`3fe617b6980b`** · `Unclassified/src/PropertyGridNumericValues.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/PropertyGridNumericValues.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/PropertyGridNumericValues.cpp)
 - public · colingsnyder2-ux · [src/PropertyGridNumericValues.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/PropertyGridNumericValues.cpp)
 - public · colingsnyder2-ux · [src/PropertyGridNumericValues.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/PropertyGridNumericValues.cpp)
 - public · colingsnyder2-ux · [src/PropertyGridNumericValues.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/PropertyGridNumericValues.cpp)
@@ -139,6 +142,7 @@ Earlier paths and their donor versions: `Unclassified/src/PropertyGridNumericVal
 - public · colingsnyder2-ux · [src/PropertyGridNumericValues.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/PropertyGridNumericValues.cpp)
 
 **`fa3b1249c875`** · `Unclassified/src/PropertyGridNumericValues.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/PropertyGridNumericValues.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/PropertyGridNumericValues.cpp)
 - canonical · colingsnyder2-ux · [src/PropertyGridNumericValues.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/PropertyGridNumericValues.cpp)
 - canonical · colingsnyder2-ux · [src/PropertyGridNumericValues.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/PropertyGridNumericValues.cpp)
 - canonical · colingsnyder2-ux · [src/PropertyGridNumericValues.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/PropertyGridNumericValues.cpp)
@@ -163,6 +167,7 @@ Earlier paths and their donor versions: `Unclassified/src/PropertyGridNumericVal
 Earlier paths and their donor versions: `Unclassified/src/RunStateCommands.cpp`.
 
 **`71a10a5cd185`** · `WindowsClient/src/RunStateCommands.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/RunStateCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/RunStateCommands.cpp)
 - public · colingsnyder2-ux · [src/RunStateCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/RunStateCommands.cpp)
 - public · colingsnyder2-ux · [src/RunStateCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/RunStateCommands.cpp)
 - public · colingsnyder2-ux · [src/RunStateCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/RunStateCommands.cpp)
@@ -170,6 +175,7 @@ Earlier paths and their donor versions: `Unclassified/src/RunStateCommands.cpp`.
 - public · colingsnyder2-ux · [src/RunStateCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/src/RunStateCommands.cpp)
 
 **`acffdc353bb4`** · `WindowsClient/src/RunStateCommands.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/RunStateCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/RunStateCommands.cpp)
 - canonical · colingsnyder2-ux · [src/RunStateCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/RunStateCommands.cpp)
 - canonical · colingsnyder2-ux · [src/RunStateCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/RunStateCommands.cpp)
 - canonical · colingsnyder2-ux · [src/RunStateCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/RunStateCommands.cpp)
@@ -193,6 +199,7 @@ Earlier paths and their donor versions: `Unclassified/src/RunStateCommands.cpp`.
 </details>
 
 **`715b1cad57fa`** · `Unclassified/src/RunStateCommands.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/RunStateCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/RunStateCommands.cpp)
 - public · colingsnyder2-ux · [src/RunStateCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/RunStateCommands.cpp)
 - public · colingsnyder2-ux · [src/RunStateCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/RunStateCommands.cpp)
 - public · colingsnyder2-ux · [src/RunStateCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/RunStateCommands.cpp)
@@ -262,6 +269,7 @@ Earlier paths and their donor versions: `Unclassified/src/RunStateCommands.cpp`.
 - public · colingsnyder2-ux · [src/RunStateCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/RunStateCommands.cpp)
 
 **`f459102eaa85`** · `Unclassified/src/RunStateCommands.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/RunStateCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/RunStateCommands.cpp)
 - canonical · colingsnyder2-ux · [src/RunStateCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/RunStateCommands.cpp)
 - canonical · colingsnyder2-ux · [src/RunStateCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/RunStateCommands.cpp)
 - canonical · colingsnyder2-ux · [src/RunStateCommands.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/RunStateCommands.cpp)
@@ -283,6 +291,7 @@ Earlier paths and their donor versions: `Unclassified/src/RunStateCommands.cpp`.
 Earlier paths and their donor versions: `Unclassified/src/SelectionVerbConstructors.cpp`.
 
 **`05df2127aac5`** · `WindowsClient/src/SelectionVerbConstructors.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/SelectionVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/SelectionVerbConstructors.cpp)
 - canonical · colingsnyder2-ux · [src/SelectionVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/SelectionVerbConstructors.cpp)
 - canonical · colingsnyder2-ux · [src/SelectionVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/SelectionVerbConstructors.cpp)
 - canonical · colingsnyder2-ux · [src/SelectionVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/SelectionVerbConstructors.cpp)
@@ -300,6 +309,7 @@ Earlier paths and their donor versions: `Unclassified/src/SelectionVerbConstruct
 </details>
 
 **`9b92d31b01b1`** · `WindowsClient/src/SelectionVerbConstructors.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/SelectionVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/SelectionVerbConstructors.cpp)
 - public · colingsnyder2-ux · [src/SelectionVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/SelectionVerbConstructors.cpp)
 - public · colingsnyder2-ux · [src/SelectionVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/SelectionVerbConstructors.cpp)
 - public · colingsnyder2-ux · [src/SelectionVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/SelectionVerbConstructors.cpp)
@@ -356,6 +366,7 @@ Earlier paths and their donor versions: `Unclassified/src/SelectionVerbConstruct
 </details>
 
 **`0dcceef1fbfb`** · `Unclassified/src/SelectionVerbConstructors.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/SelectionVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/SelectionVerbConstructors.cpp)
 - public · colingsnyder2-ux · [src/SelectionVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/SelectionVerbConstructors.cpp)
 - public · colingsnyder2-ux · [src/SelectionVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/SelectionVerbConstructors.cpp)
 - public · colingsnyder2-ux · [src/SelectionVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/SelectionVerbConstructors.cpp)
@@ -414,6 +425,7 @@ Earlier paths and their donor versions: `Unclassified/src/SelectionVerbConstruct
 - public · colingsnyder2-ux · [src/SelectionVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/SelectionVerbConstructors.cpp)
 
 **`d0d6fbd561c6`** · `Unclassified/src/SelectionVerbConstructors.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/SelectionVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/SelectionVerbConstructors.cpp)
 - canonical · colingsnyder2-ux · [src/SelectionVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/SelectionVerbConstructors.cpp)
 - canonical · colingsnyder2-ux · [src/SelectionVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/SelectionVerbConstructors.cpp)
 - canonical · colingsnyder2-ux · [src/SelectionVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/SelectionVerbConstructors.cpp)
@@ -438,6 +450,7 @@ Earlier paths and their donor versions: `Unclassified/src/SelectionVerbConstruct
 Earlier paths and their donor versions: `Unclassified/src/StandardVerbs.cpp`.
 
 **`03cabd56bb0c`** · `WindowsClient/src/StandardVerbs.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/StandardVerbs.cpp)
 - public · colingsnyder2-ux · [src/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/StandardVerbs.cpp)
 - public · colingsnyder2-ux · [src/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/StandardVerbs.cpp)
 - public · colingsnyder2-ux · [src/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/StandardVerbs.cpp)
@@ -445,6 +458,7 @@ Earlier paths and their donor versions: `Unclassified/src/StandardVerbs.cpp`.
 - public · colingsnyder2-ux · [src/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/src/StandardVerbs.cpp)
 
 **`4c81cba772d1`** · `WindowsClient/src/StandardVerbs.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/StandardVerbs.cpp)
 - canonical · colingsnyder2-ux · [src/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/StandardVerbs.cpp)
 - canonical · colingsnyder2-ux · [src/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/StandardVerbs.cpp)
 - canonical · colingsnyder2-ux · [src/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/StandardVerbs.cpp)
@@ -459,6 +473,7 @@ Earlier paths and their donor versions: `Unclassified/src/StandardVerbs.cpp`.
 </details>
 
 **`03545d3c839e`** · `Unclassified/src/StandardVerbs.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/StandardVerbs.cpp)
 - public · colingsnyder2-ux · [src/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/StandardVerbs.cpp)
 - public · colingsnyder2-ux · [src/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/StandardVerbs.cpp)
 - public · colingsnyder2-ux · [src/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/StandardVerbs.cpp)
@@ -535,6 +550,7 @@ Earlier paths and their donor versions: `Unclassified/src/StandardVerbs.cpp`.
 - public · colingsnyder2-ux · [src/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/StandardVerbs.cpp)
 
 **`cc960de1e182`** · `Unclassified/src/StandardVerbs.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/StandardVerbs.cpp)
 - canonical · colingsnyder2-ux · [src/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/StandardVerbs.cpp)
 - canonical · colingsnyder2-ux · [src/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/StandardVerbs.cpp)
 - canonical · colingsnyder2-ux · [src/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/StandardVerbs.cpp)
@@ -556,6 +572,7 @@ Earlier paths and their donor versions: `Unclassified/src/StandardVerbs.cpp`.
 Earlier paths and their donor versions: `Unclassified/src/StandardVerbsConstructor.cpp`.
 
 **`6b1e06e87305`** · `WindowsClient/src/StandardVerbsConstructor.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/StandardVerbsConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/StandardVerbsConstructor.cpp)
 - canonical · colingsnyder2-ux · [src/StandardVerbsConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/StandardVerbsConstructor.cpp)
 - canonical · colingsnyder2-ux · [src/StandardVerbsConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/StandardVerbsConstructor.cpp)
 - canonical · colingsnyder2-ux · [src/StandardVerbsConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/StandardVerbsConstructor.cpp)
@@ -573,6 +590,7 @@ Earlier paths and their donor versions: `Unclassified/src/StandardVerbsConstruct
 </details>
 
 **`de1eac55be76`** · `WindowsClient/src/StandardVerbsConstructor.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/StandardVerbsConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/StandardVerbsConstructor.cpp)
 - public · colingsnyder2-ux · [src/StandardVerbsConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/StandardVerbsConstructor.cpp)
 - public · colingsnyder2-ux · [src/StandardVerbsConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/StandardVerbsConstructor.cpp)
 - public · colingsnyder2-ux · [src/StandardVerbsConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/StandardVerbsConstructor.cpp)
@@ -590,6 +608,7 @@ Earlier paths and their donor versions: `Unclassified/src/StandardVerbsConstruct
 </details>
 
 **`5ab1df0a0f2d`** · `Unclassified/src/StandardVerbsConstructor.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/StandardVerbsConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/StandardVerbsConstructor.cpp)
 - canonical · colingsnyder2-ux · [src/StandardVerbsConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/StandardVerbsConstructor.cpp)
 - canonical · colingsnyder2-ux · [src/StandardVerbsConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/StandardVerbsConstructor.cpp)
 - canonical · colingsnyder2-ux · [src/StandardVerbsConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/StandardVerbsConstructor.cpp)
@@ -696,6 +715,7 @@ Earlier paths and their donor versions: `Unclassified/src/StandardVerbsConstruct
 </details>
 
 **`bc256c8187c5`** · `Unclassified/src/StandardVerbsConstructor.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/StandardVerbsConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/StandardVerbsConstructor.cpp)
 - public · colingsnyder2-ux · [src/StandardVerbsConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/StandardVerbsConstructor.cpp)
 - public · colingsnyder2-ux · [src/StandardVerbsConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/StandardVerbsConstructor.cpp)
 - public · colingsnyder2-ux · [src/StandardVerbsConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/StandardVerbsConstructor.cpp)
@@ -711,6 +731,7 @@ Earlier paths and their donor versions: `Unclassified/src/StandardVerbsConstruct
 Earlier paths and their donor versions: `Unclassified/src/UngroupOperation.cpp`.
 
 **`072cc31c476e`** · `WindowsClient/src/UngroupOperation.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/UngroupOperation.cpp)
 - canonical · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/UngroupOperation.cpp)
 - canonical · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/UngroupOperation.cpp)
 - canonical · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/UngroupOperation.cpp)
@@ -725,6 +746,7 @@ Earlier paths and their donor versions: `Unclassified/src/UngroupOperation.cpp`.
 </details>
 
 **`1c106a913faf`** · `WindowsClient/src/UngroupOperation.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/UngroupOperation.cpp)
 - public · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/UngroupOperation.cpp)
 - public · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/UngroupOperation.cpp)
 - public · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/UngroupOperation.cpp)
@@ -781,6 +803,7 @@ Earlier paths and their donor versions: `Unclassified/src/UngroupOperation.cpp`.
 - public · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/UngroupOperation.cpp)
 
 **`9f3047629921`** · `Unclassified/src/UngroupOperation.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/UngroupOperation.cpp)
 - public · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/UngroupOperation.cpp)
 - public · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/UngroupOperation.cpp)
 - public · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/UngroupOperation.cpp)
@@ -788,6 +811,7 @@ Earlier paths and their donor versions: `Unclassified/src/UngroupOperation.cpp`.
 - public · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/UngroupOperation.cpp)
 
 **`d132f68a2c0f`** · `Unclassified/src/UngroupOperation.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/UngroupOperation.cpp)
 - canonical · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/UngroupOperation.cpp)
 - canonical · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/UngroupOperation.cpp)
 - canonical · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/UngroupOperation.cpp)
@@ -833,6 +857,7 @@ Earlier paths and their donor versions: `Unclassified/src/UngroupOperation.cpp`.
 Earlier paths and their donor versions: `Unclassified/src/VerbLifetime.cpp`.
 
 **`14ad8da3e74f`** · `WindowsClient/src/VerbLifetime.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/VerbLifetime.cpp)
 - canonical · colingsnyder2-ux · [src/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/VerbLifetime.cpp)
 - canonical · colingsnyder2-ux · [src/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/VerbLifetime.cpp)
 - canonical · colingsnyder2-ux · [src/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/VerbLifetime.cpp)
@@ -850,6 +875,7 @@ Earlier paths and their donor versions: `Unclassified/src/VerbLifetime.cpp`.
 </details>
 
 **`6b1700a13f10`** · `WindowsClient/src/VerbLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/VerbLifetime.cpp)
 - public · colingsnyder2-ux · [src/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/VerbLifetime.cpp)
 - public · colingsnyder2-ux · [src/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/VerbLifetime.cpp)
 - public · colingsnyder2-ux · [src/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/VerbLifetime.cpp)
@@ -956,6 +982,7 @@ Earlier paths and their donor versions: `Unclassified/src/VerbLifetime.cpp`.
 - public · colingsnyder2-ux · [src/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/VerbLifetime.cpp)
 
 **`b2086c1a2367`** · `Unclassified/src/VerbLifetime.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/VerbLifetime.cpp)
 - canonical · colingsnyder2-ux · [src/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/VerbLifetime.cpp)
 - canonical · colingsnyder2-ux · [src/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/VerbLifetime.cpp)
 - canonical · colingsnyder2-ux · [src/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/VerbLifetime.cpp)
@@ -973,6 +1000,7 @@ Earlier paths and their donor versions: `Unclassified/src/VerbLifetime.cpp`.
 </details>
 
 **`be1cf5985652`** · `Unclassified/src/VerbLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/VerbLifetime.cpp)
 - public · colingsnyder2-ux · [src/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/VerbLifetime.cpp)
 - public · colingsnyder2-ux · [src/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/VerbLifetime.cpp)
 - public · colingsnyder2-ux · [src/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/VerbLifetime.cpp)
@@ -988,6 +1016,7 @@ Earlier paths and their donor versions: `Unclassified/src/VerbLifetime.cpp`.
 Earlier paths and their donor versions: `Unclassified/src/ViewCommandRouting.cpp`.
 
 **`66f8501fc870`** · `WindowsClient/src/ViewCommandRouting.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/ViewCommandRouting.cpp)
 - canonical · colingsnyder2-ux · [src/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/ViewCommandRouting.cpp)
 - canonical · colingsnyder2-ux · [src/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/ViewCommandRouting.cpp)
 - canonical · colingsnyder2-ux · [src/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/ViewCommandRouting.cpp)
@@ -1002,6 +1031,7 @@ Earlier paths and their donor versions: `Unclassified/src/ViewCommandRouting.cpp
 </details>
 
 **`74bfde1c4c48`** · `WindowsClient/src/ViewCommandRouting.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/ViewCommandRouting.cpp)
 - public · colingsnyder2-ux · [src/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/ViewCommandRouting.cpp)
 - public · colingsnyder2-ux · [src/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/ViewCommandRouting.cpp)
 - public · colingsnyder2-ux · [src/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/ViewCommandRouting.cpp)
@@ -1021,6 +1051,7 @@ Earlier paths and their donor versions: `Unclassified/src/ViewCommandRouting.cpp
 - public · colingsnyder2-ux · [src/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/ViewCommandRouting.cpp)
 
 **`50cd30d2a1e0`** · `Unclassified/src/ViewCommandRouting.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/ViewCommandRouting.cpp)
 - canonical · colingsnyder2-ux · [src/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/ViewCommandRouting.cpp)
 - canonical · colingsnyder2-ux · [src/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/ViewCommandRouting.cpp)
 - canonical · colingsnyder2-ux · [src/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/ViewCommandRouting.cpp)
@@ -1100,6 +1131,7 @@ Earlier paths and their donor versions: `Unclassified/src/ViewCommandRouting.cpp
 </details>
 
 **`e44898196fc5`** · `Unclassified/src/ViewCommandRouting.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/ViewCommandRouting.cpp)
 - public · colingsnyder2-ux · [src/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/ViewCommandRouting.cpp)
 - public · colingsnyder2-ux · [src/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/ViewCommandRouting.cpp)
 - public · colingsnyder2-ux · [src/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/ViewCommandRouting.cpp)
@@ -1114,6 +1146,7 @@ Earlier paths and their donor versions: `Unclassified/src/ViewCommandRouting.cpp
 Earlier paths and their donor versions: `Unclassified/src/ViewVerbs.cpp`.
 
 **`4b056fcd8f5e`** · `WindowsClient/src/ViewVerbs.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/ViewVerbs.cpp)
 - canonical · colingsnyder2-ux · [src/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/ViewVerbs.cpp)
 - canonical · colingsnyder2-ux · [src/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/ViewVerbs.cpp)
 - canonical · colingsnyder2-ux · [src/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/ViewVerbs.cpp)
@@ -1128,6 +1161,7 @@ Earlier paths and their donor versions: `Unclassified/src/ViewVerbs.cpp`.
 </details>
 
 **`eac0bdb07856`** · `WindowsClient/src/ViewVerbs.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/ViewVerbs.cpp)
 - public · colingsnyder2-ux · [src/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/ViewVerbs.cpp)
 - public · colingsnyder2-ux · [src/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/ViewVerbs.cpp)
 - public · colingsnyder2-ux · [src/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/ViewVerbs.cpp)
@@ -1180,6 +1214,7 @@ Earlier paths and their donor versions: `Unclassified/src/ViewVerbs.cpp`.
 </details>
 
 **`73abbda22fa2`** · `Unclassified/src/ViewVerbs.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/ViewVerbs.cpp)
 - canonical · colingsnyder2-ux · [src/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/ViewVerbs.cpp)
 - canonical · colingsnyder2-ux · [src/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/ViewVerbs.cpp)
 - canonical · colingsnyder2-ux · [src/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/ViewVerbs.cpp)
@@ -1209,6 +1244,7 @@ Earlier paths and their donor versions: `Unclassified/src/ViewVerbs.cpp`.
 </details>
 
 **`adbe4002b432`** · `Unclassified/src/ViewVerbs.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/ViewVerbs.cpp)
 - public · colingsnyder2-ux · [src/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/ViewVerbs.cpp)
 - public · colingsnyder2-ux · [src/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/ViewVerbs.cpp)
 - public · colingsnyder2-ux · [src/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/ViewVerbs.cpp)

@@ -145,6 +145,8 @@ Compatibility path for `App/src/v8datamodel/ServiceSelection.cpp`; compile eithe
 </details>
 
 **`f04c7d034ca9`** · `native-classes/ServiceSelection.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ServiceSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/ServiceSelection.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ServiceSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/ServiceSelection.cpp)
 - public · colingsnyder2-ux · [native-classes/ServiceSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/ServiceSelection.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ServiceSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/ServiceSelection.cpp)
 - public · colingsnyder2-ux · [native-classes/ServiceSelection.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/ServiceSelection.cpp)
@@ -310,6 +312,7 @@ Compatibility path for `App/src/v8datamodel/ServiceSelection.cpp`; compile eithe
 </details>
 
 **`5fcb0dcda412`** · `native-classes/SoundServiceFind.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SoundServiceFind.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/SoundServiceFind.cpp)
 - public · colingsnyder2-ux · [native-classes/SoundServiceFind.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/SoundServiceFind.cpp)
 - public · colingsnyder2-ux · [native-classes/SoundServiceFind.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/SoundServiceFind.cpp)
 - public · colingsnyder2-ux · [native-classes/SoundServiceFind.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/native-classes/SoundServiceFind.cpp)
@@ -362,6 +365,8 @@ Compatibility path for `Unclassified/src/SoundServicePlay.cpp`; compile either p
 </details>
 
 **`6416f50f5e9c`** · `native-classes/SoundServicePlay.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SoundServicePlay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/SoundServicePlay.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SoundServicePlay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/SoundServicePlay.cpp)
 - public · colingsnyder2-ux · [native-classes/SoundServicePlay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/SoundServicePlay.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SoundServicePlay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/SoundServicePlay.cpp)
 - public · colingsnyder2-ux · [native-classes/SoundServicePlay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/SoundServicePlay.cpp)
@@ -608,6 +613,8 @@ Compatibility path for `App/src/v8datamodel/SoundServiceProvider.cpp`; compile e
 </details>
 
 **`74bff14df037`** · `native-classes/SoundServiceProvider.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SoundServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/SoundServiceProvider.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SoundServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/SoundServiceProvider.cpp)
 - public · colingsnyder2-ux · [native-classes/SoundServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/SoundServiceProvider.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SoundServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/SoundServiceProvider.cpp)
 - public · colingsnyder2-ux · [native-classes/SoundServiceProvider.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/SoundServiceProvider.cpp)
@@ -750,8 +757,9 @@ Compatibility path for `App/src/v8datamodel/SoundServiceProvider.cpp`; compile e
 <summary>native-classes/StarterPackService.cpp — candidate-only; 1 content versions</summary>
 
 **`6a490f4f7b8d`** · `native-classes/StarterPackService.cpp` · proof not assessed
-- draft · colingsnyder2-ux · [native-classes/StarterPackService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/StarterPackService.cpp)
+- draft · colingsnyder2-ux · [native-classes/StarterPackService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/StarterPackService.cpp)
 - fork · coldek · [native-classes/StarterPackService.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-classes/StarterPackService.cpp)
+- draft · colingsnyder2-ux · [native-classes/StarterPackService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/StarterPackService.cpp)
 - draft · colingsnyder2-ux · [native-classes/StarterPackService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/StarterPackService.cpp)
 - draft · colingsnyder2-ux · [native-classes/StarterPackService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/StarterPackService.cpp)
 - draft · colingsnyder2-ux · [native-classes/StarterPackService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/StarterPackService.cpp)
@@ -868,6 +876,8 @@ Compatibility path for `Unclassified/src/StatsService.cpp`; compile either path,
 </details>
 
 **`33f27b1512c9`** · `native-classes/StatsService.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/StatsService.cpp)
+- canonical · colingsnyder2-ux · [native-classes/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/StatsService.cpp)
 - public · colingsnyder2-ux · [native-classes/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/StatsService.cpp)
 - canonical · colingsnyder2-ux · [native-classes/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/StatsService.cpp)
 - public · colingsnyder2-ux · [native-classes/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/StatsService.cpp)
@@ -971,6 +981,7 @@ Compatibility path for `Unclassified/src/StatsService.cpp`; compile either path,
 </details>
 
 **`7ed436e5381c`** · `native-classes/StatsService.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/c2aa85fb8b8f48a6859252177543062796be9cb6a16034dc964d91021f26d396/rebuild/2008-06/native-classes/StatsService.cpp)
 - draft · colingsnyder2-ux · [native-classes/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/c2aa85fb8b8f48a6859252177543062796be9cb6a16034dc964d91021f26d396/rebuild/2008-06/native-classes/StatsService.cpp)
 - draft · colingsnyder2-ux · [native-classes/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/c2aa85fb8b8f48a6859252177543062796be9cb6a16034dc964d91021f26d396/rebuild/2008-06/native-classes/StatsService.cpp)
 - draft · colingsnyder2-ux · [native-classes/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/drafts/files/c2aa85fb8b8f48a6859252177543062796be9cb6a16034dc964d91021f26d396/rebuild/2008-06/native-classes/StatsService.cpp)

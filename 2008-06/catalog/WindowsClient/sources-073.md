@@ -36,6 +36,7 @@ Earlier paths and their donor versions: `native-classes/DocumentUrl.cpp`.
 - public · colingsnyder2-ux · [src/DocumentUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/src/DocumentUrl.cpp)
 
 **`633fffaf93fe`** · `WindowsClient/src/DocumentUrl.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/DocumentUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/DocumentUrl.cpp)
 - canonical · colingsnyder2-ux · [src/DocumentUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/DocumentUrl.cpp)
 - canonical · colingsnyder2-ux · [src/DocumentUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/DocumentUrl.cpp)
 - canonical · colingsnyder2-ux · [src/DocumentUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/DocumentUrl.cpp)
@@ -94,6 +95,7 @@ Earlier paths and their donor versions: `native-classes/DocumentUrl.cpp`.
 </details>
 
 **`a5d477f101b3`** · `WindowsClient/src/DocumentUrl.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/DocumentUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/DocumentUrl.cpp)
 - public · colingsnyder2-ux · [src/DocumentUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/DocumentUrl.cpp)
 - public · colingsnyder2-ux · [src/DocumentUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/DocumentUrl.cpp)
 - public · colingsnyder2-ux · [src/DocumentUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/DocumentUrl.cpp)
@@ -182,6 +184,8 @@ Earlier paths and their donor versions: `native-classes/DocumentUrl.cpp`.
 </details>
 
 **`c186664c84d3`** · `native-classes/DocumentUrl.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/DocumentUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/DocumentUrl.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DocumentUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-classes/DocumentUrl.cpp)
 - public · colingsnyder2-ux · [native-classes/DocumentUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-classes/DocumentUrl.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DocumentUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-classes/DocumentUrl.cpp)
 - public · colingsnyder2-ux · [native-classes/DocumentUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-classes/DocumentUrl.cpp)
@@ -311,6 +315,7 @@ Earlier paths and their donor versions: `native-classes/DocumentUrl.cpp`.
 Earlier paths and their donor versions: `Unclassified/src/DuplicateSelectionVerb.cpp`.
 
 **`1b9cd6379371`** · `WindowsClient/src/DuplicateSelectionVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/DuplicateSelectionVerb.cpp)
 - public · colingsnyder2-ux · [src/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/DuplicateSelectionVerb.cpp)
 - public · colingsnyder2-ux · [src/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/DuplicateSelectionVerb.cpp)
 - public · colingsnyder2-ux · [src/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/DuplicateSelectionVerb.cpp)
@@ -318,6 +323,7 @@ Earlier paths and their donor versions: `Unclassified/src/DuplicateSelectionVerb
 - public · colingsnyder2-ux · [src/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/src/DuplicateSelectionVerb.cpp)
 
 **`31fa45cdb478`** · `WindowsClient/src/DuplicateSelectionVerb.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/DuplicateSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [src/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/DuplicateSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [src/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/DuplicateSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [src/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/DuplicateSelectionVerb.cpp)
@@ -371,6 +377,7 @@ Earlier paths and their donor versions: `Unclassified/src/DuplicateSelectionVerb
 </details>
 
 **`78d6b8082be8`** · `Unclassified/src/DuplicateSelectionVerb.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/DuplicateSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [src/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/DuplicateSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [src/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/DuplicateSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [src/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/DuplicateSelectionVerb.cpp)
@@ -394,6 +401,7 @@ Earlier paths and their donor versions: `Unclassified/src/DuplicateSelectionVerb
 </details>
 
 **`a8733b8673bb`** · `Unclassified/src/DuplicateSelectionVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/DuplicateSelectionVerb.cpp)
 - public · colingsnyder2-ux · [src/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/DuplicateSelectionVerb.cpp)
 - public · colingsnyder2-ux · [src/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/DuplicateSelectionVerb.cpp)
 - public · colingsnyder2-ux · [src/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/DuplicateSelectionVerb.cpp)
@@ -433,6 +441,7 @@ Earlier paths and their donor versions: `Unclassified/src/DuplicateSelectionVerb
 Earlier paths and their donor versions: `Unclassified/src/ExitCommand.cpp`.
 
 **`79138a16ade7`** · `WindowsClient/src/ExitCommand.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/ExitCommand.cpp)
 - public · colingsnyder2-ux · [src/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/ExitCommand.cpp)
 - public · colingsnyder2-ux · [src/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/ExitCommand.cpp)
 - public · colingsnyder2-ux · [src/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/ExitCommand.cpp)
@@ -441,6 +450,7 @@ Earlier paths and their donor versions: `Unclassified/src/ExitCommand.cpp`.
 - public · colingsnyder2-ux · [src/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/WindowsClient/src/ExitCommand.cpp)
 
 **`985303cea55b`** · `WindowsClient/src/ExitCommand.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/ExitCommand.cpp)
 - canonical · colingsnyder2-ux · [src/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/ExitCommand.cpp)
 - canonical · colingsnyder2-ux · [src/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/ExitCommand.cpp)
 - canonical · colingsnyder2-ux · [src/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/ExitCommand.cpp)
@@ -499,6 +509,7 @@ Earlier paths and their donor versions: `Unclassified/src/ExitCommand.cpp`.
 </details>
 
 **`909409460ab3`** · `Unclassified/src/ExitCommand.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/ExitCommand.cpp)
 - public · colingsnyder2-ux · [src/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/ExitCommand.cpp)
 - public · colingsnyder2-ux · [src/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/ExitCommand.cpp)
 - public · colingsnyder2-ux · [src/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/ExitCommand.cpp)
@@ -564,6 +575,7 @@ Earlier paths and their donor versions: `Unclassified/src/ExitCommand.cpp`.
 </details>
 
 **`f4f14d11501e`** · `Unclassified/src/ExitCommand.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/ExitCommand.cpp)
 - canonical · colingsnyder2-ux · [src/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/ExitCommand.cpp)
 - canonical · colingsnyder2-ux · [src/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/ExitCommand.cpp)
 - canonical · colingsnyder2-ux · [src/ExitCommand.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/ExitCommand.cpp)
@@ -588,6 +600,7 @@ Earlier paths and their donor versions: `Unclassified/src/ExitCommand.cpp`.
 Earlier paths and their donor versions: `Unclassified/src/InsertModelFromRobloxVerb.cpp`.
 
 **`27247132a091`** · `WindowsClient/src/InsertModelFromRobloxVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/InsertModelFromRobloxVerb.cpp)
 - public · colingsnyder2-ux · [src/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/InsertModelFromRobloxVerb.cpp)
 - public · colingsnyder2-ux · [src/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/InsertModelFromRobloxVerb.cpp)
 - public · colingsnyder2-ux · [src/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/InsertModelFromRobloxVerb.cpp)
@@ -595,6 +608,7 @@ Earlier paths and their donor versions: `Unclassified/src/InsertModelFromRobloxV
 - public · colingsnyder2-ux · [src/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/src/InsertModelFromRobloxVerb.cpp)
 
 **`91b267436512`** · `WindowsClient/src/InsertModelFromRobloxVerb.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/InsertModelFromRobloxVerb.cpp)
 - canonical · colingsnyder2-ux · [src/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/InsertModelFromRobloxVerb.cpp)
 - canonical · colingsnyder2-ux · [src/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/InsertModelFromRobloxVerb.cpp)
 - canonical · colingsnyder2-ux · [src/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/InsertModelFromRobloxVerb.cpp)
@@ -632,6 +646,7 @@ Earlier paths and their donor versions: `Unclassified/src/InsertModelFromRobloxV
 </details>
 
 **`8e7ced526a72`** · `Unclassified/src/InsertModelFromRobloxVerb.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/InsertModelFromRobloxVerb.cpp)
 - canonical · colingsnyder2-ux · [src/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/InsertModelFromRobloxVerb.cpp)
 - canonical · colingsnyder2-ux · [src/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/InsertModelFromRobloxVerb.cpp)
 - canonical · colingsnyder2-ux · [src/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/InsertModelFromRobloxVerb.cpp)
@@ -682,6 +697,7 @@ Earlier paths and their donor versions: `Unclassified/src/InsertModelFromRobloxV
 </details>
 
 **`a5f958f77e21`** · `Unclassified/src/InsertModelFromRobloxVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/InsertModelFromRobloxVerb.cpp)
 - public · colingsnyder2-ux · [src/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/InsertModelFromRobloxVerb.cpp)
 - public · colingsnyder2-ux · [src/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/InsertModelFromRobloxVerb.cpp)
 - public · colingsnyder2-ux · [src/InsertModelFromRobloxVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/InsertModelFromRobloxVerb.cpp)
@@ -705,6 +721,7 @@ Earlier paths and their donor versions: `Unclassified/src/InsertModelFromRobloxV
 Earlier paths and their donor versions: `Unclassified/src/LoginRenewer.cpp`.
 
 **`52ebd23cab57`** · `WindowsClient/src/LoginRenewer.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/LoginRenewer.cpp)
 - canonical · colingsnyder2-ux · [src/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/LoginRenewer.cpp)
 - canonical · colingsnyder2-ux · [src/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/LoginRenewer.cpp)
 - canonical · colingsnyder2-ux · [src/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/LoginRenewer.cpp)
@@ -722,6 +739,7 @@ Earlier paths and their donor versions: `Unclassified/src/LoginRenewer.cpp`.
 </details>
 
 **`a52b8e5f0a3c`** · `WindowsClient/src/LoginRenewer.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/LoginRenewer.cpp)
 - public · colingsnyder2-ux · [src/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/LoginRenewer.cpp)
 - public · colingsnyder2-ux · [src/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/LoginRenewer.cpp)
 - public · colingsnyder2-ux · [src/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/LoginRenewer.cpp)
@@ -778,6 +796,7 @@ Earlier paths and their donor versions: `Unclassified/src/LoginRenewer.cpp`.
 </details>
 
 **`5797bfd3a95d`** · `Unclassified/src/LoginRenewer.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/LoginRenewer.cpp)
 - public · colingsnyder2-ux · [src/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/LoginRenewer.cpp)
 - public · colingsnyder2-ux · [src/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/LoginRenewer.cpp)
 - public · colingsnyder2-ux · [src/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/LoginRenewer.cpp)
@@ -827,6 +846,7 @@ Earlier paths and their donor versions: `Unclassified/src/LoginRenewer.cpp`.
 </details>
 
 **`a42335289240`** · `Unclassified/src/LoginRenewer.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/LoginRenewer.cpp)
 - canonical · colingsnyder2-ux · [src/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/LoginRenewer.cpp)
 - canonical · colingsnyder2-ux · [src/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/LoginRenewer.cpp)
 - canonical · colingsnyder2-ux · [src/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/LoginRenewer.cpp)
@@ -860,6 +880,7 @@ Earlier paths and their donor versions: `Unclassified/src/LoginRenewer.cpp`.
 Earlier paths and their donor versions: `Unclassified/src/MoveUpSelectionVerb.cpp`.
 
 **`765d30f2a811`** · `WindowsClient/src/MoveUpSelectionVerb.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/MoveUpSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [src/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/MoveUpSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [src/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/MoveUpSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [src/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/MoveUpSelectionVerb.cpp)
@@ -874,6 +895,7 @@ Earlier paths and their donor versions: `Unclassified/src/MoveUpSelectionVerb.cp
 </details>
 
 **`e55d44f08662`** · `WindowsClient/src/MoveUpSelectionVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/MoveUpSelectionVerb.cpp)
 - public · colingsnyder2-ux · [src/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/MoveUpSelectionVerb.cpp)
 - public · colingsnyder2-ux · [src/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/MoveUpSelectionVerb.cpp)
 - public · colingsnyder2-ux · [src/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/MoveUpSelectionVerb.cpp)
@@ -905,6 +927,7 @@ Earlier paths and their donor versions: `Unclassified/src/MoveUpSelectionVerb.cp
 </details>
 
 **`5ddfedc6f0ae`** · `Unclassified/src/MoveUpSelectionVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/MoveUpSelectionVerb.cpp)
 - public · colingsnyder2-ux · [src/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/MoveUpSelectionVerb.cpp)
 - public · colingsnyder2-ux · [src/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/MoveUpSelectionVerb.cpp)
 - public · colingsnyder2-ux · [src/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/MoveUpSelectionVerb.cpp)
@@ -951,6 +974,7 @@ Earlier paths and their donor versions: `Unclassified/src/MoveUpSelectionVerb.cp
 </details>
 
 **`7f311f47a9c7`** · `Unclassified/src/MoveUpSelectionVerb.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/MoveUpSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [src/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/MoveUpSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [src/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/MoveUpSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [src/MoveUpSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/MoveUpSelectionVerb.cpp)
@@ -982,6 +1006,7 @@ Earlier paths and their donor versions: `Unclassified/src/MoveUpSelectionVerb.cp
 Earlier paths and their donor versions: `Unclassified/src/MoveUpVerbConstructors.cpp`.
 
 **`4eca9d37f6a2`** · `WindowsClient/src/MoveUpVerbConstructors.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/MoveUpVerbConstructors.cpp)
 - canonical · colingsnyder2-ux · [src/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/MoveUpVerbConstructors.cpp)
 - canonical · colingsnyder2-ux · [src/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/MoveUpVerbConstructors.cpp)
 - canonical · colingsnyder2-ux · [src/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/MoveUpVerbConstructors.cpp)
@@ -996,6 +1021,7 @@ Earlier paths and their donor versions: `Unclassified/src/MoveUpVerbConstructors
 </details>
 
 **`d1bea4528689`** · `WindowsClient/src/MoveUpVerbConstructors.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/MoveUpVerbConstructors.cpp)
 - public · colingsnyder2-ux · [src/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/MoveUpVerbConstructors.cpp)
 - public · colingsnyder2-ux · [src/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/MoveUpVerbConstructors.cpp)
 - public · colingsnyder2-ux · [src/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/MoveUpVerbConstructors.cpp)
@@ -1003,6 +1029,7 @@ Earlier paths and their donor versions: `Unclassified/src/MoveUpVerbConstructors
 - public · colingsnyder2-ux · [src/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/src/MoveUpVerbConstructors.cpp)
 
 **`2c5a12615995`** · `Unclassified/src/MoveUpVerbConstructors.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/MoveUpVerbConstructors.cpp)
 - canonical · colingsnyder2-ux · [src/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/MoveUpVerbConstructors.cpp)
 - canonical · colingsnyder2-ux · [src/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/MoveUpVerbConstructors.cpp)
 - canonical · colingsnyder2-ux · [src/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/MoveUpVerbConstructors.cpp)
@@ -1082,6 +1109,7 @@ Earlier paths and their donor versions: `Unclassified/src/MoveUpVerbConstructors
 </details>
 
 **`a537652363fe`** · `Unclassified/src/MoveUpVerbConstructors.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/MoveUpVerbConstructors.cpp)
 - public · colingsnyder2-ux · [src/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/MoveUpVerbConstructors.cpp)
 - public · colingsnyder2-ux · [src/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/MoveUpVerbConstructors.cpp)
 - public · colingsnyder2-ux · [src/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/MoveUpVerbConstructors.cpp)
@@ -1096,6 +1124,7 @@ Earlier paths and their donor versions: `Unclassified/src/MoveUpVerbConstructors
 Earlier paths and their donor versions: `Unclassified/src/MyXTPCommandBars.cpp`.
 
 **`2923a26995b0`** · `WindowsClient/src/MyXTPCommandBars.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/MyXTPCommandBars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/MyXTPCommandBars.cpp)
 - public · colingsnyder2-ux · [src/MyXTPCommandBars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/MyXTPCommandBars.cpp)
 - public · colingsnyder2-ux · [src/MyXTPCommandBars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/MyXTPCommandBars.cpp)
 - public · colingsnyder2-ux · [src/MyXTPCommandBars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/MyXTPCommandBars.cpp)
@@ -1104,6 +1133,7 @@ Earlier paths and their donor versions: `Unclassified/src/MyXTPCommandBars.cpp`.
 - public · colingsnyder2-ux · [src/MyXTPCommandBars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/WindowsClient/src/MyXTPCommandBars.cpp)
 
 **`35f1f6399b30`** · `WindowsClient/src/MyXTPCommandBars.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/MyXTPCommandBars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/MyXTPCommandBars.cpp)
 - canonical · colingsnyder2-ux · [src/MyXTPCommandBars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/MyXTPCommandBars.cpp)
 - canonical · colingsnyder2-ux · [src/MyXTPCommandBars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/MyXTPCommandBars.cpp)
 - canonical · colingsnyder2-ux · [src/MyXTPCommandBars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/MyXTPCommandBars.cpp)
@@ -1196,6 +1226,7 @@ Earlier paths and their donor versions: `Unclassified/src/MyXTPCommandBars.cpp`.
 </details>
 
 **`377182038d3f`** · `Unclassified/src/MyXTPCommandBars.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/MyXTPCommandBars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/MyXTPCommandBars.cpp)
 - canonical · colingsnyder2-ux · [src/MyXTPCommandBars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/MyXTPCommandBars.cpp)
 - canonical · colingsnyder2-ux · [src/MyXTPCommandBars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/MyXTPCommandBars.cpp)
 - canonical · colingsnyder2-ux · [src/MyXTPCommandBars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/MyXTPCommandBars.cpp)
@@ -1213,6 +1244,7 @@ Earlier paths and their donor versions: `Unclassified/src/MyXTPCommandBars.cpp`.
 </details>
 
 **`5021fd464911`** · `Unclassified/src/MyXTPCommandBars.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/MyXTPCommandBars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/MyXTPCommandBars.cpp)
 - public · colingsnyder2-ux · [src/MyXTPCommandBars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/MyXTPCommandBars.cpp)
 - public · colingsnyder2-ux · [src/MyXTPCommandBars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/MyXTPCommandBars.cpp)
 - public · colingsnyder2-ux · [src/MyXTPCommandBars.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/MyXTPCommandBars.cpp)

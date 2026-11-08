@@ -8,6 +8,8 @@
 Compatibility path for `App/include/v8datamodel/Seat.h`; compile either path, never both.
 
 **`63462a114081`** · `native-headers/v8datamodel/Seat.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/Seat.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/v8datamodel/Seat.h)
+- canonical · colingsnyder2-ux · [v8datamodel/Seat.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/v8datamodel/Seat.h)
 - public · colingsnyder2-ux · [v8datamodel/Seat.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/v8datamodel/Seat.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Seat.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/v8datamodel/Seat.h)
 - public · colingsnyder2-ux · [v8datamodel/Seat.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/v8datamodel/Seat.h)
@@ -79,7 +81,7 @@ Compatibility path for `App/include/v8datamodel/Seat.h`; compile either path, ne
 - public · colingsnyder2-ux · [v8datamodel/Seat.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/Seat.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Seat.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/Seat.h)
 
-<details><summary>70 retained local origins</summary>
+<details><summary>71 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Seat.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Seat.h` · root `b52aa15feaea5a0c`
@@ -132,6 +134,7 @@ Compatibility path for `App/include/v8datamodel/Seat.h`; compile either path, ne
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/v8datamodel/Seat.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/v8datamodel/Seat.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/v8datamodel/Seat.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/v8datamodel/Seat.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8datamodel/Seat.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/Seat.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/Seat.h` · root `b52aa15feaea5a0c`
@@ -495,6 +498,8 @@ Compatibility path for `App/include/v8datamodel/Selection.h`; compile either pat
 </details>
 
 **`c5b811eb72a5`** · `native-headers/v8datamodel/Selection.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/Selection.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/v8datamodel/Selection.h)
+- canonical · colingsnyder2-ux · [v8datamodel/Selection.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/v8datamodel/Selection.h)
 - public · colingsnyder2-ux · [v8datamodel/Selection.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/v8datamodel/Selection.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Selection.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/v8datamodel/Selection.h)
 - public · colingsnyder2-ux · [v8datamodel/Selection.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/v8datamodel/Selection.h)
@@ -566,7 +571,7 @@ Compatibility path for `App/include/v8datamodel/Selection.h`; compile either pat
 - public · colingsnyder2-ux · [v8datamodel/Selection.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/Selection.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Selection.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/Selection.h)
 
-<details><summary>70 retained local origins</summary>
+<details><summary>71 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Selection.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/Selection.h` · root `b52aa15feaea5a0c`
@@ -619,6 +624,7 @@ Compatibility path for `App/include/v8datamodel/Selection.h`; compile either pat
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/v8datamodel/Selection.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/v8datamodel/Selection.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/v8datamodel/Selection.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/v8datamodel/Selection.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8datamodel/Selection.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/Selection.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/Selection.h` · root `b52aa15feaea5a0c`
@@ -760,6 +766,8 @@ Compatibility path for `App/include/v8datamodel/SelectionChanged.h`; compile eit
 - public · colingsnyder2-ux · [v8datamodel/SelectionChanged.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/cf722085e758b596d253e3376a4f0209a7d4117e/2008-06/native-headers/v8datamodel/SelectionChanged.h)
 
 **`5aa106908823`** · `native-headers/v8datamodel/SelectionChanged.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/SelectionChanged.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/v8datamodel/SelectionChanged.h)
+- canonical · colingsnyder2-ux · [v8datamodel/SelectionChanged.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/native-headers/v8datamodel/SelectionChanged.h)
 - public · colingsnyder2-ux · [v8datamodel/SelectionChanged.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/native-headers/v8datamodel/SelectionChanged.h)
 - canonical · colingsnyder2-ux · [v8datamodel/SelectionChanged.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/native-headers/v8datamodel/SelectionChanged.h)
 - public · colingsnyder2-ux · [v8datamodel/SelectionChanged.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/native-headers/v8datamodel/SelectionChanged.h)
@@ -831,7 +839,7 @@ Compatibility path for `App/include/v8datamodel/SelectionChanged.h`; compile eit
 - public · colingsnyder2-ux · [v8datamodel/SelectionChanged.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-headers/v8datamodel/SelectionChanged.h)
 - canonical · colingsnyder2-ux · [v8datamodel/SelectionChanged.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/native-headers/v8datamodel/SelectionChanged.h)
 
-<details><summary>70 retained local origins</summary>
+<details><summary>71 retained local origins</summary>
 
 - local · `work/native-candidates/fork-accoutrement-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/SelectionChanged.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/full-test-cpp-pass-20261108/frozen/rebuild/2008-06/native-headers/v8datamodel/SelectionChanged.h` · root `b52aa15feaea5a0c`
@@ -884,6 +892,7 @@ Compatibility path for `App/include/v8datamodel/SelectionChanged.h`; compile eit
 - local · `work/native-candidates/r4/frozen/rebuild/2008-06/native-headers/v8datamodel/SelectionChanged.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r5/frozen/rebuild/2008-06/native-headers/v8datamodel/SelectionChanged.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/r6/frozen/rebuild/2008-06/native-headers/v8datamodel/SelectionChanged.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/r7/frozen/rebuild/2008-06/native-headers/v8datamodel/SelectionChanged.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/rakpeer-header-move-20261107/after/rebuild/2008-06/native-headers/v8datamodel/SelectionChanged.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/SelectionChanged.h` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/native-headers/v8datamodel/SelectionChanged.h` · root `b52aa15feaea5a0c`
