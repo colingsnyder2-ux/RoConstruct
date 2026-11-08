@@ -2,6 +2,7 @@
 #include "tool/BasicMouseTools.h"
 #include "tool/DragTool.h"
 #include "v8datamodel/Workspace.h"
+#include "v8datamodel/DataModel.h"
 #include "StandardVerbs.h"
 
 namespace RBX {

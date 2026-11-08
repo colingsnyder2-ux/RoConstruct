@@ -4,6 +4,7 @@
 #include "v8datamodel/Workspace.h"
 #include "util/Sound.h"
 #include "util/InsertMode.h"
+#include "v8datamodel/DataModel.h"
 #include "StandardVerbs.h"
 
 namespace RBX {

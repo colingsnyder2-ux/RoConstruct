@@ -4,6 +4,7 @@
 #include "v8datamodel/Explosion.h"
 #include "humanoid/Humanoid.h"
 #include "util/Sound.h"
+#include "v8datamodel/DataModel.h"
 #include "StandardVerbs.h"
 
 namespace RBX {

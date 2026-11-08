@@ -3,6 +3,7 @@
 #include "v8datamodel/Workspace.h"
 #include "v8datamodel/Explosion.h"
 #include "util/Sound.h"
+#include "v8datamodel/DataModel.h"
 #include "StandardVerbs.h"
 
 namespace RBX {
