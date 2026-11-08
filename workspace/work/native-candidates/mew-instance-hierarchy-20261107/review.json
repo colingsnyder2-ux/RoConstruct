@@ -1,0 +1,78 @@
+{
+  "scope": "Inactive fork proposal; original code/data exact checks only, not selection, complete ABI or runtime.",
+  "origin": {
+    "fork": "mewpokemons/RoConstruct",
+    "commit": "a355381b778e8cc23e4be927223d55d9662bd60f",
+    "path": "rebuild/2008-06/native-classes/AppUnit558_2008Instance.cpp",
+    "source_sha256": "f0ef843d70e47f0016b80642c146afaa2b1dd3cf6cdf4ed91d71cd9acf247106",
+    "candidate_sha256": "5a10acf298ae54c2ae4209c6f1271fd46ba5e70af91c22d75ad3f61c5dfb1785"
+  },
+  "candidate_sha256": "5a10acf298ae54c2ae4209c6f1271fd46ba5e70af91c22d75ad3f61c5dfb1785",
+  "object_sha256": "3c19a7edad8f82482597dbe5b1b412ef97a90f091dba5415a693a7c00a0162d0",
+  "canonical_inactive_method": {
+    "address": "005574b0",
+    "path": "rebuild/2008-06/App/src/v8tree/InstanceContains.cpp",
+    "commit": "c646f6c77bc63e3c70ca5af02fc6b562ad981ed4"
+  },
+  "remaining": [
+    {
+      "address": "0055afd0",
+      "method": "Instance::removeAllChildren",
+      "blocker": "Verify imported indirect call and linked setParent provider/ABI before integration."
+    },
+    {
+      "address": "0055b4a0",
+      "method": "Instance::remove",
+      "blocker": "Verify indirect virtual calls, linked CopyOnWrite/for_each and setParent providers, full ABI before integration."
+    }
+  ],
+  "checks": [
+    {
+      "addr": "005574b0",
+      "requested_symbol": "?contains@Instance@RBX@@",
+      "status": "exact",
+      "symbol": "?contains@Instance@RBX@@QBE_NPBV12@@Z",
+      "score": 100,
+      "target_size": 32,
+      "object_size": 32,
+      "target_sha256": "66825b36a657f989e88f33c7557d4e67b6d328cc50f18c327bcfa0fca4a4b2c8",
+      "first_byte_difference": null,
+      "data_matches": [],
+      "data_errors": [],
+      "check_seconds": 1.828
+    },
+    {
+      "addr": "0055afd0",
+      "requested_symbol": "?removeAllChildren@Instance@RBX@@",
+      "status": "exact",
+      "symbol": "?removeAllChildren@Instance@RBX@@QAEXXZ",
+      "score": 100,
+      "target_size": 143,
+      "object_size": 143,
+      "target_sha256": "c31a74bd47fad50c4951ab3bedc79850558535f6970ba48c6300cddaa064dce5",
+      "first_byte_difference": null,
+      "data_matches": [],
+      "data_errors": [],
+      "check_seconds": 0.0
+    },
+    {
+      "addr": "0055b4a0",
+      "requested_symbol": "?remove@Instance@RBX@@",
+      "status": "exact",
+      "symbol": "?remove@Instance@RBX@@QAEXXZ",
+      "score": 100,
+      "target_size": 246,
+      "object_size": 246,
+      "target_sha256": "665bf62e35318fe26ba55959f2a7d37e98e9aaa49674c936362a44cecc219dba",
+      "first_byte_difference": null,
+      "data_matches": [],
+      "data_errors": [],
+      "check_seconds": 0.0
+    }
+  ],
+  "remove_eh": {
+    "primary_body_exact": true,
+    "event_count": 5,
+    "errors": []
+  }
+}
