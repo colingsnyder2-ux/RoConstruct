@@ -334,7 +334,7 @@ if NATIVE_DOC:
                         ('NativeMouseCommandFull.obj', ROOT / 'rebuild/2008-06/native-classes/MouseCommand.cpp'),
                         ('NativeMouseCommandDistanceFull.obj', ROOT / 'rebuild/2008-06/native-classes/MouseCommandDistance.cpp'),
                         ('NativeModelToolFull.obj', ROOT / 'rebuild/2008-06/native-classes/ModelTool.cpp'),
-                        ('NativeAxisMoveToolCoreFull.obj', 'NativeModelToolFactoriesFull.obj', ROOT / 'rebuild/2008-06/native-classes/ModelToolFactories.cpp'),
+                        ('NativeModelToolFactoriesFull.obj', ROOT / 'rebuild/2008-06/native-classes/ModelToolFactories.cpp'),
                         ('NativeAxisMoveToolCoreFull.obj', ROOT / 'rebuild/2008-06/native-classes/AxisMoveToolCore.cpp'),
                         ('NativeModelToolNamesFull.obj', ROOT / 'rebuild/2008-06/native-classes/ModelToolNames.cpp'),
                         ('NativeModelToolActionsFull.obj', ROOT / 'rebuild/2008-06/native-classes/ModelToolActions.cpp'),
