@@ -48,8 +48,9 @@ def compatibility_shim(old, new, native):
 
 
 def snapshot_headers(root, base, output):
-    prefix = 'workspace/rebuild/2008-06/native-headers/'
-    listing = git(root, 'ls-tree', '-rz', base, '--', prefix).split(b'\0')
+    prefix = 'workspace/rebuild/2008-06/'
+    roots = ['native-headers'] + [project + '/include' for project in PROJECTS]
+    listing = git(root, 'ls-tree', '-rz', base, '--', *(prefix + path for path in roots)).split(b'\0')
     entries = []
     for line in listing:
         if not line:
@@ -74,7 +75,7 @@ def snapshot_headers(root, base, output):
         blobs[blob] = stream.read(int(head[2]))
         stream.read(1)
     for relative, blob in entries:
-        target = output.joinpath(*relative.parts)
+        target = output.parent.joinpath(*relative.parts)
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes(blobs[blob])
 
@@ -230,16 +231,17 @@ def verify(root, out, run):
     runner = git(root, 'show', plan['base'] + ':workspace/rebuild/2008-06/tests/native_check_runner.py')
     if summary.get('observer_sha256') != sha(runner):
         raise ValueError('Runner differs from reviewed canonical version')
-    prefix = 'workspace/rebuild/2008-06/native-headers/'
+    prefix = 'workspace/rebuild/2008-06/'
+    roots = ['native-headers'] + [project + '/include' for project in PROJECTS]
     header_blobs = {}
-    for line in git(root, 'ls-tree', '-rz', plan['base'], '--', prefix).split(b'\0'):
+    for line in git(root, 'ls-tree', '-rz', plan['base'], '--', *(prefix + path for path in roots)).split(b'\0'):
         if line:
             meta, path = line.split(b'\t', 1)
             mode, kind, blob = meta.split()
             if mode not in (b'100644', b'100755') or kind != b'blob':
                 raise ValueError('Non-regular canonical header')
             header_blobs[path.decode()[len(prefix):]] = blob.decode()
-    frozen = (out / 'frozen/rebuild/2008-06/native-headers').resolve()
+    frozen = (out / 'frozen/rebuild/2008-06').resolve()
     index = {str(Path(r['source']).resolve()).casefold(): r for r in results}
     if len(index) != len(results):
         raise ValueError('Duplicate runner source')
@@ -279,7 +281,7 @@ def verify(root, out, run):
                         relative = dependency.relative_to(frozen).as_posix()
                         if header_blobs.get(relative) != dependency_blob:
                             raise ValueError('Frozen header differs from canonical base: ' + path)
-                    elif dependency.is_relative_to((root / 'rebuild/2008-06/native-headers').resolve()):
+                    elif any(dependency.is_relative_to((root / 'rebuild/2008-06' / header_root).resolve()) for header_root in roots):
                         raise ValueError('Unfrozen native header: ' + path)
                 if not result['build_inputs'].get('compiler'):
                     raise ValueError('Compiler identity missing')

@@ -18,7 +18,8 @@ def source_repo(tmp_path):
     for path, data in {
         'workspace/rebuild/2008-06/native-classes/Thing.cpp': b'// native-flags: /O2\nint thing() { return 1; }\n',
         '2008-06/native-classes/Thing.cpp': b'// native-flags: /O2\nint thing() { return 1; }\n',
-        'workspace/rebuild/2008-06/native-headers/thing.h': b'#pragma once\n',
+        'workspace/rebuild/2008-06/native-headers/thing.h': b'#include \"../App/include/thing.h\"\n',
+        'workspace/rebuild/2008-06/App/include/thing.h': b'#pragma once\n',
         'workspace/rebuild/2008-06/tests/native_check_runner.py': b'# reviewed runner\n',
     }.items():
         target = tmp_path / path
@@ -40,7 +41,8 @@ def test_prepare_preserves_bytes_and_refuses_existing_output(source_repo):
     assert plan['moves'][0]['source'] == 'native-classes/Thing.cpp'
     assert (out / 'candidate/WindowsClient/src/Thing.cpp').read_bytes() == (root / 'workspace/rebuild/2008-06/native-classes/Thing.cpp').read_bytes()
     assert (out / 'candidate/native-classes/Thing.cpp').read_bytes().startswith(b'// native-flags: /O2\n')
-    assert (out / 'frozen/rebuild/2008-06/native-headers/thing.h').read_bytes() == b'#pragma once\n'
+    assert (out / 'frozen/rebuild/2008-06/native-headers/thing.h').read_bytes() == b'#include \"../App/include/thing.h\"\n'
+    assert (out / 'frozen/rebuild/2008-06/App/include/thing.h').read_bytes() == b'#pragma once\n'
     with pytest.raises(FileExistsError):
         source_layout.prepare(root, spec, out)
 
@@ -323,3 +325,20 @@ def test_incomplete_failed_batch_is_not_accepted(source_repo):
     (run / 'summary.json').write_text(json.dumps(summary))
     with pytest.raises(ValueError, match='Runner incomplete'):
         source_layout.verify(root, out, run)
+
+
+def test_verify_rejects_tampered_organized_header(source_repo, monkeypatch):
+    root, spec = source_repo
+    out = root / 'work/native-candidates/test'
+    source_layout.prepare(root, spec, out)
+    run = make_run(root, out)
+    header = out / 'frozen/rebuild/2008-06/App/include/thing.h'
+    header.write_bytes(b'tampered')
+    rows = json.loads((run / 'results.json').read_text())
+    for row in rows:
+        row['dependencies'][str(header)] = digest(header)
+    (run / 'results.json').write_text(json.dumps(rows))
+    monkeypatch.setattr(source_layout, 'object_identity', lambda raw: raw)
+    result = source_layout.verify(root, out, run)
+    assert not result['accepted']
+    assert 'Frozen header differs from canonical base' in result['skipped'][0]['reason']
