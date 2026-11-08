@@ -1431,3 +1431,28 @@ Next: derive the receivePacket modifier type, to get modify_ 004c8010 / 004c8b70
     - v8datamodel/PartInstance.h (owner): sizeof(PartInstance) is 0x404 in 2008-06, but the header compiles to 0x2ec. Evidence: create<PartInstance> 0041e9c0 pushes 0x404 to malloc and then calls PartInstance() 0059d4d0, whose `ret 4` pops the virtual-base flag 1. No field is proposed. Once the fields past the embedded Primitive (+0x228..+0x324) up to 0x404 are derived from ctor 0059d4d0 / dtor 0059b970, 0041e9c0 and its Creator 0041ea40 (vtable 0080f1c4) can be counted.
     - util/Object.h (core owner, FYI, no edit): FactoryProduct<C,D,N>::Creator::create() const is still declared without a body. AppUnit418_2008Creators.cpp repeats the out-of-class definition `return Creatable<Instance>::create<Class>();`, as app-unit400/40c/4b0/48c/5bc do. With it, the DHTMLWindowService Creator 0041ceb0 (listed as not attempted by app-leaves2008-dhtml and -services) and the Decal, Texture and SpecialShape Creators are exact. A shared definitions header could replace these copies.
     - Integration note: AppUnit418_2008Creators.cpp defines that same generic Creator::create template member. If it is merged into one TU with another unit that defines it, keep a single definition.
+
+- 2026-11-08 Claude (w2, batch 28, lease 'RBX::app unit 00454000 2008'; globs AppUnit454_2008*.cpp, AppUnit454_2008/*, record_native_app_unit454_2008.py), inactive. Mapped 00454000..00460000: 298 rows of every kind, 96 already counted elsewhere. The unit_map / unit_blocks in app-unit454-2008-working.json are backed by asserted string, vtable-RTTI and message-map evidence:
+  - CRobloxDoc unit tail ..00455d3f (message map 00817f0c; excluded);
+  - CRobloxReportView unit 00455d40..;
+  - CRobloxView unit 00458e70.. (excluded; its verbs are leased by codex-layout);
+  - CRobloxWnd unit 0045afd0.. (RenderStatsItem pending in render-stats-item2008);
+  - save-to-Roblox dialog unit 0045fe20..;
+  - Scintilla MFC library 0045ffd0.., which continues past the range.
+  New AppUnit454_2008ReportStats.cpp and AppUnit454_2008WndServices.cpp (RTM 21022, document-swap flags, /fp:fast) build against current headers only, with no new header and no shadowing.
+  - PASS with 21 counted rows, every call/data target verified:
+    - StatsService: doGetClassIndex / callDoGetClassIndex / find / create / Creatable create / shared_ptr (00455ea0 00456400 00457b60 00458610 00458590 00456f10);
+    - shared_dynamic_cast<Stats::Item> 00456ee0 and its dynamic_cast_tag constructor 00456360;
+    - Name::doDeclare / callDoDeclare<sCamera> 0045b240 / 0045b6f0;
+    - ControllerService: doGetClassIndex / callDoGetClassIndex / find / create 0045b2b0 / 0045b820 / 0045dce0 / 0045de20, plus Creatable create / shared_ptr / Creator 0045c580 / 0045c1a0 / 0045d950;
+    - Camera: Creatable create / shared_ptr / Creator 0045db40 / 0045da90 / 0045dbc0;
+    - Instance::for_eachChild<void(*)(Instance*)> 0045c470.
+  - Checks: both one-slot Creator vtables 00819d8c / 00819d94 are checked by RTTI. Malloc sizes match the native headers: StatsService 0x130, ControllerService 0x144, Camera 0x1e8.
+  - Both find rows are exact only from a second build with native-headers/boost-noinline-shared-destructor first (the original calls ~shared_ptr<Instance> at 00600660 out of line).
+  - Rejected: building the whole unit with that profile (create rows drop to 187 vs 228 B, Creator rows to 132 vs 175 B).
+  - Coverage of the range goes from 96 to 117 of 298 rows.
+  - The bare-address recorders are unchanged (85/29/126) and their receipts were restored.
+  - Next: the CRobloxWnd members need the CRobloxView.h owner, and 0045c600 is a file-local visitor with no declaration.
+  - Proposals:
+    - util/UserInputBase.h (core owner), FYI only: ctrlKeyDown 0x45aec0 (48 B: keyDown(0x131 RCTRL) || keyDown(0x132 LCTRL) through vtable slot 5) is an out-of-line copy emitted among CRobloxView-unit COMDATs, which is the pattern of an inline header member. The user-controller receipt makes the same point for altKeyDown. Declaring it inline in the header would let the first unit that uses it emit it; this unit does not define it.
+    - util/Object.h / v8tree/Service.h (core owners), informational, no edit needed: AppUnit454 repeats the FactoryProduct::className / Creator::create, NonFactoryProduct::className and ServiceProvider doGetClassIndex / getClassIndex / find / create template definitions from AppUnit48C_2008Services.cpp and AppUnit400_2008Creators.cpp. A shared definitions header could replace the copies. find<C>() const matches only when ~shared_ptr<Instance> stays out of line (0x600660); create<C>() const and Creator::create need it inlined.
