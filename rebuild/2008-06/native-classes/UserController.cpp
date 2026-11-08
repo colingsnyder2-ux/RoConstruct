@@ -2,10 +2,6 @@
 // native-headers/v8datamodel/UserController.h. Verified by tests/record_native_user_controller.py.
 // Unit profile: document-swap flags plus /fp:fast (x87 constant folding in chaseTarget/updateTarget and the keyboard
 // getValue bodies).
-// >>> native-status (generated) -- do not edit >>>
-// UserController | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 48cf0cc6 | roc native-status --write
 #include "v8datamodel/UserController.h"
 #include "v8datamodel/PVInstance.h"
 #include "util/Math.h"
@@ -308,7 +304,7 @@ namespace RBX
 		}
 	}
 
-	// 005cb0e0 is not exact: the original negates and stores x, y, z in order; this compiles y and z first.
+	// 005cb0e0 (exact under the unit profile /fp:fast; /fp:precise breaks chaseTarget 005ca430).
 	void AIFleeController::updateBuffer(float time)
 	{
 		updateTarget(Controller::AI_FLEE_CONTROLLER, time);

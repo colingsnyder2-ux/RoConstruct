@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// FeatureLifetime | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 3b71432d | roc native-status --write
 #include "v8datamodel/Feature.h"
 namespace RBX {
 extern const char sFeature[] = "Feature";

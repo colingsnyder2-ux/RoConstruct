@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// ModelInstance | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src d0105b54 | roc native-status --write
 #include "v8datamodel/ModelInstance.h"
 namespace RBX {
 void ModelInstance::onDescendentAdded(Instance* instance) {

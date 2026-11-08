@@ -1,8 +1,4 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/content-cache-inline
-// >>> native-status (generated) -- do not edit >>>
-// ContentProviderCacheSupport | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 654d5abd | roc native-status --write
 #include "util/NativeContentProvider.h"
 
 namespace RBX {

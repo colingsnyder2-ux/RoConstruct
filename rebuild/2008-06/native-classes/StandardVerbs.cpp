@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// StandardVerbs | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src c601bf31 | roc native-status --write
 #include "../native-headers/StandardVerbs.h"
 
 // Recovered 00450450: member destruction follows the native 0x704 composition.

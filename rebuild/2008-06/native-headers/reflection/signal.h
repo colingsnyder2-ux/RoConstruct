@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// signal | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src e8f76a9b | roc native-status --write
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/noncopyable.hpp>

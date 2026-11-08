@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// CWorkspaceSelection | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 34b8d98d | roc native-status --write
 #include <afxwin.h>
 #include <algorithm>
 #include <boost/bind.hpp>

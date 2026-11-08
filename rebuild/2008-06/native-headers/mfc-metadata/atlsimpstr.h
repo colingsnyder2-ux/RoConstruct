@@ -11,10 +11,6 @@
 // See these sources for detailed information regarding the
 // Active Template Library product.
 
-// >>> native-status (generated) -- do not edit >>>
-// atlsimpstr | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 61dfbe9d | roc native-status --write
 #ifndef __ATLSIMPSTR_H__
 #define __ATLSIMPSTR_H__
 

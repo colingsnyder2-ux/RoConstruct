@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// HumanoidStates2 | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src ced97750 | roc native-status --write
 #include "humanoid/HumanoidStates1.h"
 #include "util/Name.h"
 #include <G3D/Vector3.h>

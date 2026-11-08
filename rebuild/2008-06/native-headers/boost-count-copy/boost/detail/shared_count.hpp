@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// shared_count | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src cebf0384 | roc native-status --write
 #ifndef BOOST_DETAIL_SHARED_COUNT_HPP_INCLUDED
 #define BOOST_DETAIL_SHARED_COUNT_HPP_INCLUDED
 

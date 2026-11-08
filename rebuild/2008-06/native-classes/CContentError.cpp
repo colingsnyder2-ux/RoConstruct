@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// CContentError | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src a440c4de | roc native-status --write
 #include <afxwin.h>
 #include <exception>
 

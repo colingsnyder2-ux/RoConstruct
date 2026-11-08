@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// InsertModelFromRobloxVerb | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 8fd194a3 | roc native-status --write
 #include "../native-headers/InsertModelFromRobloxVerb.h"
 #include "../native-headers/CRobloxView.h"
 #include "../native-headers/v8datamodel/DataModel.h"

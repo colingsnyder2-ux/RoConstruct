@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// TextureProxy2008 | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 32d428c1 | roc native-status --write
 // RBX::Render::TextureProxy / MegaTextureProxy and RBX::RenderNew::TextureProxy / MegaTextureProxy / BadConversion as
 // compiled into the June 2008 client (inactive native recovery).
 //
@@ -23,6 +19,9 @@
 //     +0x38 = 0, +0x40 = root (setPointer), +0x44 = 0, filename = "" (operator=(const char*) import).
 //   * Render::TextureProxy has no user destructor: 00551db0 (reached through ??_G 00551d80 and MegaTextureProxy ??_G
 //     007b9350) releases +0x44 / +0x40 / +0x30 and calls ~TextureProxyBase 00551cf0 without a vptr store.
+//   * RenderNew::TextureProxy(const std::string&) 0066ffb0 (out of line; called by AdornRbxGfx::createTextureProxy
+//     00670380 after new(0x60)): TextureProxyBase() 00551bf0, vptr 0082d18c, +0x30 / +0x40 / +0x44 = 0, +0x34 = false,
+//     TexturePtr() at +0x54, then filename = name (basic_string::operator= import); +0x38 / +0x3c / +0x48 untouched.
 //   * RenderNew::TextureProxy adds Ogre::TexturePtr at +0x54 (ctor 00551e30 calls the rgmain import at +0x54; getSize
 //     007adb70 reads its pRep at +0x58) and declares a destructor 007ae3b0 (vptr store, ~TexturePtr, +0x44 / +0x40 /
 //     +0x30 released, inlined ~TextureProxyBase).
@@ -118,6 +117,7 @@ namespace RBX
 
 		public:
 			TextureProxy(G3D::TextureManager& textureManager, const std::string& filename, bool tiled);   // 00551e30
+			TextureProxy(const std::string& name);                                                       // 0066ffb0
 		protected:
 			TextureProxy(G3D::ReferenceCountedPointer<TextureProxy> root);                               // 007ade10
 		public:

@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// DataModelLock | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 8edb2527 | roc native-status --write
 #include "../native-headers/v8datamodel/DataModel.h"
 
 namespace RBX {

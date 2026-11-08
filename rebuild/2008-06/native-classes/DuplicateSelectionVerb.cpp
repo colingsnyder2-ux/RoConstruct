@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// DuplicateSelectionVerb | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src b99b65c9 | roc native-status --write
 #include "../native-headers/StandardVerbs.h"
 #include "../native-headers/v8datamodel/Workspace.h"
 #include "../native-headers/util/RunStateOwner.h"

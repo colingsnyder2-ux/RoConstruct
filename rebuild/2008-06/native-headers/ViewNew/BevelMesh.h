@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// BevelMesh | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 2599de38 | roc native-status --write
 // 2008-06 native RBX::ViewNew::BevelMesh / BevelMesh::Builder (inactive).
 //   BevelMesh  RTTI base of WedgeMesh 008270e8 and TorsoMesh 00827124 (-> RenderBase::Mesh -> ReferenceCountedObject,
 //              all mdisp 0); no vtable of its own is referenced (never constructed as a complete object).
@@ -32,6 +28,21 @@ namespace RBX
 				}
 			public:
 				virtual void build(Purpose purpose); // 00501040
+
+				// The builder as its own vertex function (the builder-as-functor grid instances 004f6fa0 / 004f7390 /
+				// 004fa190 pass a copy of it): inline, no out-of-line copy in the image (the strips 004f66d0.. compare
+				// x and y with 0 and step them towards the centre by bevel).
+				void operator()(G3D::Vector3& vertex, G3D::Vector3&, G3D::Vector2&, const G3D::Vector3&, const G3D::Vector2int16&)
+				{
+					if (vertex.x > 0)
+						vertex.x -= bevel;
+					else
+						vertex.x += bevel;
+					if (vertex.y > 0)
+						vertex.y -= bevel;
+					else
+						vertex.y += bevel;
+				}
 			};
 		};
 	}

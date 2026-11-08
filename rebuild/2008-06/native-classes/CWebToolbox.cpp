@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// CWebToolbox | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src f110b756 | roc native-status --write
 #include "CWebToolbox.h"
 
 // Original 004060d0 returns the application-owned base URL CString.

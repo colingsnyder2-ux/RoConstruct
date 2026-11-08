@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// RunStateCommands | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 995261ec | roc native-status --write
 #include "../native-headers/StandardVerbs.h"
 #include "../native-headers/v8datamodel/Workspace.h"
 #include "../native-headers/util/RunStateOwner.h"

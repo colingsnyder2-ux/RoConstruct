@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// WorkspaceLifetime | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 8baffef7 | roc native-status --write
 #include "v8datamodel/Workspace.h"
 #include "v8datamodel/Camera.h"
 #include "v8datamodel/MouseCommand.h"

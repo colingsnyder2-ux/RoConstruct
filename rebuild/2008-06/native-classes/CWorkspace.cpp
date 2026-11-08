@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// CWorkspace | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 56bb74a3 | roc native-status --write
 #include <afxwin.h>
 #include "../native-headers/CWorkspace.h"
 #include "../native-headers/v8datamodel/DataModel.h"

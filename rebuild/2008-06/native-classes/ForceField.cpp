@@ -1,21 +1,14 @@
 // 2008-06 native RBX::ForceField (inactive); evidence in native-headers/v8datamodel/ForceField.h.
 // Verified by tests/record_native_debris_forcefield.py (built with /fp:fast: renderPart 0062d200 reuses the 0.0f of
 // the transparency compare as the green channel).
-// NATIVE_FORCEFIELD_PENDING bodies need declarations the shared headers do not have yet: a complete RBX::Workspace
-// (dynamic_cast in askSetParent 0062d090 and the ancestor walk 0062d380) and Instance::visitDescendents
-// (0062d400, used by render3dAdorn 0062d570). The recorder builds them against generated copies under
-// out/native-layouts/debris-forcefield-pending/.
-// >>> native-status (generated) -- do not edit >>>
-// ForceField | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 2968fa49 | roc native-status --write
+// askSetParent 0062d090 and the ancestor walk 0062d380 dynamic_cast to the native RBX::Workspace; render3dAdorn
+// 0062d570 uses the native Instance::visitDescendents (0062d400). renderPart 0062d200 is compiled but not exact
+// (2008 PartInstance float at +0x328).
 #include "v8datamodel/ForceField.h"
 #include "v8datamodel/PartInstance.h"
 #include "AppDraw/Draw.h"
 #include <boost/bind.hpp>
-#ifdef NATIVE_FORCEFIELD_PENDING
 #include "v8datamodel/Workspace.h"
-#endif
 
 namespace RBX
 {
@@ -66,7 +59,6 @@ namespace RBX
 		return false;
 	}
 
-#ifdef NATIVE_FORCEFIELD_PENDING
 	// 0062d380: second half of the 0062d310 row; the tail recursion is a loop in the original.
 	bool ForceField::isProtectedRecursive(Instance* instance)
 	{
@@ -79,7 +71,6 @@ namespace RBX
 
 		return false;
 	}
-#endif
 
 	ForceField::ForceField()
 		: rendered(false),
@@ -88,7 +79,6 @@ namespace RBX
 		setName("ForceField");
 	}
 
-#ifdef NATIVE_FORCEFIELD_PENDING
 	bool ForceField::isProtected(Instance* instance)
 	{
 		return isProtectedRecursive(instance);
@@ -112,5 +102,4 @@ namespace RBX
 
 		rendered = true;
 	}
-#endif
 }

@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// CPropGridRefresh | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src aee678aa | roc native-status --write
 #include "CPropGrid.h"
 #include "v8datamodel/DataModel.h"
 #include <algorithm>

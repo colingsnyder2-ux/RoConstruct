@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// InstanceChildListener | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 5c7f98b6 | roc native-status --write
 #include "v8tree/InstanceEvents.h"
 
 namespace RBX {

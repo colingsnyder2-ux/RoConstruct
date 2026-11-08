@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// ClipboardVerbs | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src eb0bba7c | roc native-status --write
 #include <afxwin.h>
 #include "StandardVerbs.h"
 

@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// PVFrameOps | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 0c25851a | roc native-status --write
 #pragma float_control(precise, off)
 #include "PVFrameOps.h"
 

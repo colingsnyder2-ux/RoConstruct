@@ -1,8 +1,4 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string
-// >>> native-status (generated) -- do not edit >>>
-// CMainFrameXtp | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src b1f4166d | roc native-status --write
 #include "CMainFrame.h"
 #include "CPatchedControlComboBox.h"
 #include "CRobloxControlColorSelector.h"

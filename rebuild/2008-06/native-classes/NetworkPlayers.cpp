@@ -2,10 +2,6 @@
 // Verified by tests/record_native_network_players.py. Network::Client and Network::Server do not compile
 // against the 2008 const-char-array DescribedCreatable; the recorder supplies declaration-only stand-ins
 // for "Client.h" / "Server.h" (tests/NativeNetworkPlayersPeers.h).
-// >>> native-status (generated) -- do not edit >>>
-// NetworkPlayers | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 81b70e08 | roc native-status --write
 #include <RakPeer.h>
 #include <PluginInterface.h>
 #include "Client.h"
@@ -14,9 +10,7 @@
 #include "v8datamodel/ModelInstance.h"
 #include "v8tree/PropertyChanged.h"
 #include "security/SecurityContext.h"
-#ifdef NATIVE_NETWORK_PLAYERS_PENDING
 #include "v8datamodel/Teams.h"
-#endif
 
 template<class Class>
 class PluginInterfaceAdapter : public PluginInterface
@@ -136,11 +130,6 @@ namespace RBX
 			return Server::serverIsPresent(context, testInDatamodel);
 		}
 
-#ifdef NATIVE_NETWORK_PLAYERS_PENDING
-		// The bodies under NATIVE_NETWORK_PLAYERS_PENDING need declarations other owners' headers lack
-		// (proposals in tests/record_native_network_players.py):
-		//   v8tree/Service.h   static const ServiceProvider* findServiceProvider(const Instance*) (out of line, 004898d0)
-		//   Network/Player.h   void rebuildBackpack() (004925c0)
 		bool Players::frontendProcessing(const Instance* context, bool testInDatamodel)
 		{
 			const ServiceProvider* sp = ServiceProvider::findServiceProvider(context);
@@ -200,7 +189,6 @@ namespace RBX
 
 			Notifier<Player, CharacterAdded>::disconnect(player, this);
 		}
-#endif
 
 		bool Players::askAddChild(const Instance* instance) const
 		{

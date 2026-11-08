@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// LDrawMapRoot | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src c09845f1 | roc native-status --write
 #include <map>
 #include <string>
 #include <vector>

@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// CPropGridEvents | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 840200f3 | roc native-status --write
 #include "CPropGrid.h"
 #include "v8tree/PropertyChanged.h"
 

@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// Flag | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src daf0cb3e | roc native-status --write
 // 2008-06 native RBX::Flag (inactive). Shape after the donor tools/rbxgs Flag.h; every base, field and descriptor
 // below is read from the 2008-06 binary:
 //   RTTI       vtable 00843eb4 .?AVFlag@RBX@@ -> DescribedCreatable<Flag, Tool, sFlag> -> Tool ->

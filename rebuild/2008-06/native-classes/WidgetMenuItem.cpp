@@ -1,9 +1,5 @@
 // 2008-06 native gui MenuItem unit (inactive): 0064ebf0..0064ef90.
 // Layout and addresses in native-headers/gui/WidgetMenuItem.h; verified by tests/record_native_widget.py.
-// >>> native-status (generated) -- do not edit >>>
-// WidgetMenuItem | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 1994490b | roc native-status --write
 #include "gui/WidgetMenuItem.h"
 
 namespace RBX

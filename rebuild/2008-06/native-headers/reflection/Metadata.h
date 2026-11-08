@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// Metadata | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 3a42e7a6 | roc native-status --write
 #include <boost/shared_ptr.hpp>
 #include <string>
 #include "v8tree/Instance.h"

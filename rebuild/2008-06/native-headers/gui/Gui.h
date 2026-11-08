@@ -1,9 +1,5 @@
 // Inactive native candidate; getChildPosition follows original 00411810.
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// Gui | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src f0e69edf | roc native-status --write
 #include "RbxGraphics/Adorn.h"
 #include "v8tree/Instance.h"
 #include "gui/GuiEvent.h"
@@ -185,9 +181,21 @@ namespace RBX
 		TextDisplay();
 		virtual void render2d(Adorn*);
 		void setLabel(const std::string&);
-		void setFontSize(int);
-		void setFontColor(const G3D::Color4&);
-		void setBorderColor(const G3D::Color4&);
+		// Inline in 2008-06: the GuiBuilder stats hud loops store fontSize +0x160, guiSize +0x13c/+0x140 (fontSize * 10,
+		// fontSize * 2), fontColor +0x164 and borderColor +0x174 directly (00604dd8..00604e4e).
+		void setFontSize(int fontSize)
+		{
+			this->fontSize = fontSize;
+			setGuiSize(G3D::Vector2(this->fontSize * 10.0f, this->fontSize * 2.0f));
+		}
+		void setFontColor(const G3D::Color4& fontColor)
+		{
+			this->fontColor = fontColor;
+		}
+		void setBorderColor(const G3D::Color4& borderColor)
+		{
+			this->borderColor = borderColor;
+		}
 		void setAlign(Adorn::XAlign);
 	};
 
@@ -204,7 +212,7 @@ namespace RBX
 		virtual G3D::Vector2 getChildPosition(const GuiItem* child) const;
 	public:
 		TopMenuBar(const std::string&, Layout::Style, G3D::Color4);
-		TopMenuBar(const std::string&, Layout::Style, bool);
+		TopMenuBar(const std::string&, Layout::Style, bool = false);   // create<TopMenuBar>(name, style) 00601fd0 pushes 0 (00602027)
 		TopMenuBar()
 		{
 			init();

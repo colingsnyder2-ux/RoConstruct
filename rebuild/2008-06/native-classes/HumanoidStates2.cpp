@@ -1,10 +1,6 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
 // Inactive native Freefall/Flying/Jumping/GettingUp methods (2008-06). Not in any build list.
 // Bodies that read the stored humanoid call the out-of-line getter 00793d50 (HumanoidState::getHumanoid).
-// >>> native-status (generated) -- do not edit >>>
-// HumanoidStates2 | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 55a5a81c | roc native-status --write
 #include "humanoid/HumanoidStates2.h"
 #include "humanoid/Humanoid.h"
 #include "v8datamodel/PartInstance.h"

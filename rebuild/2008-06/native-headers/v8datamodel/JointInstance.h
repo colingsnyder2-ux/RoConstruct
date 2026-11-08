@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// JointInstance | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 31f13819 | roc native-status --write
 #include <boost/shared_ptr.hpp>
 #include "v8world/Joint.h"
 #include "v8tree/Instance.h"

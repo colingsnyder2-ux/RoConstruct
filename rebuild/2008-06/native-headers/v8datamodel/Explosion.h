@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// Explosion | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src b08d85b5 | roc native-status --write
 #include "util/RunStateOwner.h"
 #include "util/IRenderable.h"
 

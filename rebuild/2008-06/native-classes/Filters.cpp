@@ -1,19 +1,12 @@
 // 2008-06 native hit-test filters (inactive); evidence in native-headers/v8datamodel/Filters2008.h.
 // Verified by tests/record_native_hit_filters.py. The original unit is 006601c0..00660544 (the inline
-// PartInstance::getIsTransparent 006601c0 is emitted first). The PartByLocalCharacter constructor needs a
-// Humanoid::getHeadFromCharacter declaration that no native header provides yet, so it compiles only under
-// NATIVE_HIT_FILTERS_PENDING against the declaration-only overlay tests/NativeHitTestFilterPendingHumanoid.h.
-// >>> native-status (generated) -- do not edit >>>
-// Filters | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 8d72c974 | roc native-status --write
+// PartInstance::getIsTransparent 006601c0 is emitted first). The PartByLocalCharacter constructor uses
+// Humanoid::getHeadFromCharacter (005d75a0) from the native humanoid/Humanoid.h.
 #include "v8datamodel/Filters2008.h"
 #include "v8datamodel/PartInstance.h"
 #include "v8datamodel/ModelInstance.h"
 #include "Network/Players.h"
-#ifdef NATIVE_HIT_FILTERS_PENDING
-#include "humanoid/Humanoid.h"
-#endif
+#include "humanoid/Humanoid.h" // native Humanoid::getHeadFromCharacter 005d75a0 (PartByLocalCharacter 00660380)
 
 namespace RBX
 {
@@ -78,14 +71,12 @@ namespace RBX
 		return HitTestFilter::INCLUDE_PRIM;
 	}
 
-#ifdef NATIVE_HIT_FILTERS_PENDING
 	// 00660380
 	PartByLocalCharacter::PartByLocalCharacter(Instance* root)
 	{
 		character = shared_from(Network::Players::findLocalCharacter(root));
 		head = shared_from(Humanoid::getHeadFromCharacter(character.get()));
 	}
-#endif
 
 	// 006604a0
 	FilterStairs::FilterStairs(Instance* model)

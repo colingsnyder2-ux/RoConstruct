@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// CMainFrameColor | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 412aa694 | roc native-status --write
 #include "CMainFrame.h"
 #include "CRobloxControlColorSelector.h"
 #include "v8datamodel/BrickColor.h"

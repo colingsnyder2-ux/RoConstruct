@@ -1,8 +1,4 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
-// >>> native-status (generated) -- do not edit >>>
-// LDrawMapRootLifetime | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src b05fde40 | roc native-status --write
 #include "util/LDrawMapRoot.h"
 
 namespace RBX { namespace LDraw2Lua {

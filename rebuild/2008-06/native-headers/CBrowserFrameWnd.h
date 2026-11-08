@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// CBrowserFrameWnd | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 8dff816b | roc native-status --write
 #include <XTToolkitPro.h>
 
 // Inactive layout/lifecycle recovery of the browser shell frame.

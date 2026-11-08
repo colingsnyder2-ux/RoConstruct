@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// PropertyChanged | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src b0fcf29e | roc native-status --write
 #include "reflection/property.h"
 
 namespace RBX {

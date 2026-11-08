@@ -1,8 +1,4 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string
-// >>> native-status (generated) -- do not edit >>>
-// ToolVerbCheckedResize | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src f968bcc7 | roc native-status --write
 #undef _RELEASEASSERT
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Workspace.h"

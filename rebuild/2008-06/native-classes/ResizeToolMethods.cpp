@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// ResizeToolMethods | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 75192014 | roc native-status --write
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Workspace.h"
 #include "tool/ResizeTool.h"

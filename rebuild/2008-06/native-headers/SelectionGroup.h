@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// SelectionGroup | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 422dd290 | roc native-status --write
 #include <map>
 #include <vector>
 #include <boost/shared_ptr.hpp>

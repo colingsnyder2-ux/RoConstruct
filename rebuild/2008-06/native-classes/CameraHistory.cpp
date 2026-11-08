@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// CameraHistory | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 80007491 | roc native-status --write
 #include "v8datamodel/ChangeHistoryService.h"
 
 namespace RBX {

@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// GameSettingsSingleton | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 244fec12 | roc native-status --write
 #include "v8datamodel/GameSettings.h"
 #include <boost/thread/recursive_mutex.hpp>
 namespace RBX {

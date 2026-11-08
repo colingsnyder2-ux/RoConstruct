@@ -1,10 +1,6 @@
 // 2008-06 override of tools/rbxgs/Client/App/include/v8datamodel/PVInstance.h: class names are .data
 // char arrays passed directly as template arguments (see native-headers/util/Name.h).
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// PVInstance | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 4bfc2162 | roc native-status --write
 #include <g3d/vector3.h>
 #include <g3d/coordinateframe.h>
 #include <g3d/ray.h>

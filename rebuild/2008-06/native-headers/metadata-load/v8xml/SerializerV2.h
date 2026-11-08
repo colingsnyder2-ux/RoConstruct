@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// SerializerV2 | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 9f44b778 | roc native-status --write
 #include "v8xml/XmlSerializer.h"
 #include "v8tree/Instance.h"
 

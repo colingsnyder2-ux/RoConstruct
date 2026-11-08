@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// CSelectionTreeCtrl | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 1938dc3f | roc native-status --write
 #include "CSelectionTreeCtrl.h"
 #include "CRobloxDoc.h"
 #include "v8tree/Instance.h"

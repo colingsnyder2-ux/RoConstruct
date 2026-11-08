@@ -1,8 +1,4 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/boost-explicit-shared-assignment
-// >>> native-status (generated) -- do not edit >>>
-// ArrowToolBase | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 9ac22ea5 | roc native-status --write
 #undef _RELEASEASSERT
 #include "tool/ToolsArrow.h"
 #include "tool/DragTool.h"

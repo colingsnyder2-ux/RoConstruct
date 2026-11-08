@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// ServiceProvider | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 9d5cf03b | roc native-status --write
 #include <boost/thread/once.hpp>
 #include "../native-headers/v8datamodel/Selection.h"
 #include "util/RunStateOwner.h"

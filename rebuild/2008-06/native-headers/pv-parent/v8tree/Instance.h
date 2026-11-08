@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// Instance | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 9807fef6 | roc native-status --write
 #include <boost/enable_shared_from_this.hpp>
 #include <boost/noncopyable.hpp>
 #include <boost/shared_ptr.hpp>

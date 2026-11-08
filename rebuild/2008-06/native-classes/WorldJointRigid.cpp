@@ -3,10 +3,6 @@
 // 00645930 (CoordinateFrame::inverse 00478330, CoordinateFrame::operator* 00476700). isAligned 00645870, align
 // 006458d0 and faceIdToCoords 00645980 read the native Primitive (coordinate frame, face coordinates) and are not part
 // of this unit yet.
-// >>> native-status (generated) -- do not edit >>>
-// WorldJointRigid | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 02872e08 | roc native-status --write
 #include "v8world/Joints2008.h"
 
 namespace RBX

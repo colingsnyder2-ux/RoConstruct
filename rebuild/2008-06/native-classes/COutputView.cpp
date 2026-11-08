@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// COutputView | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 3fefa867 | roc native-status --write
 #include "COutputView.h"
 #include <atlenc.h>
 #include <time.h>

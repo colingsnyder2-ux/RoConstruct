@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// CSelectionCaption | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 9f8154f9 | roc native-status --write
 #include <XTToolkitPro.h>
 #include "ActiveDocView.h"
 #include "util/MarshaledListener.h"

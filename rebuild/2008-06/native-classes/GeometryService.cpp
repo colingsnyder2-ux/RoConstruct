@@ -1,21 +1,18 @@
 // 2008-06 native RBX::GeometryService (inactive); evidence in native-headers/v8datamodel/GeometryService.h.
 // Verified by tests/record_native_geometry_service.py. Unit 0062d8f0..0062e070 plus class descriptor 005c0470 and
-// doDeclare 005bfa30 / callDoDeclare 005bffc0. getPartsTouchingExtents 0062db60 and getHitLocationFilterStairs
-// 0062dc10 read the Workspace world (+0x2e4), which no native header declares yet, so they compile only under
-// NATIVE_GEOMETRYSERVICE_PENDING against the generated overlay of tests/NativeGeometryServicePendingWorkspace.h
-// (proposal in the recorder). 0062dc10 also constructs RBX::FilterStairs, declared by the native
-// v8datamodel/Filters2008.h (tests/record_native_hit_filters.py).
-// >>> native-status (generated) -- do not edit >>>
-// GeometryService | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src f1ef3c80 | roc native-status --write
+// doDeclare 005bfa30 / callDoDeclare 005bffc0. getPartsTouchingExtents 0062db60 reads the Workspace world (+0x2e4)
+// through the native Workspace.h and World::getContactManager through native-headers/engine-world (World +0x84; the
+// recorder puts that directory first, as record_native_humanoid2008.py does). getHitLocationFilterStairs 0062dc10
+// still compiles only under NATIVE_GEOMETRYSERVICE_PENDING against the generated overlay of
+// tests/NativeGeometryServicePendingWorkspace.h (proposal in the recorder); it also constructs RBX::FilterStairs,
+// declared by the native v8datamodel/Filters2008.h (tests/record_native_hit_filters.py).
 #include "v8datamodel/GeometryService.h"
-#ifdef NATIVE_GEOMETRYSERVICE_PENDING
 #include "v8datamodel/Workspace.h"
-#include "v8datamodel/Filters2008.h"
 #include "v8datamodel/PartInstance.h"
 #include "v8world/World.h"
 #include "v8world/ContactManager.h"
+#ifdef NATIVE_GEOMETRYSERVICE_PENDING
+#include "v8datamodel/Filters2008.h"
 #include <vector>
 #endif
 
@@ -50,7 +47,6 @@ namespace RBX
 			workspace = newProvider->create<Workspace>();
 	}
 
-#ifdef NATIVE_GEOMETRYSERVICE_PENDING
 	// 0062db60
 	void GeometryService::getPartsTouchingExtents(const Extents& extents, const Primitive* ignore, G3D::Array<PartInstance*>& result)
 	{
@@ -64,6 +60,7 @@ namespace RBX
 		}
 	}
 
+#ifdef NATIVE_GEOMETRYSERVICE_PENDING
 	// 0062dc10
 	G3D::Vector3 GeometryService::getHitLocationFilterStairs(Instance* filterModel, G3D::Ray ray)
 	{

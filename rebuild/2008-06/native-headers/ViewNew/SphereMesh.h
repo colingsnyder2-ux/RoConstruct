@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// SphereMesh | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src bee2d269 | roc native-status --write
 // 2008-06 native RBX::ViewNew::SphereBuilder / SphereMesh (inactive).
 //   SphereBuilder  vtable 00827134 .?AVSphereBuilder@ViewNew@RBX@@ -> LevelBuilder (mdisp 0); slots 0 build 00500d30
 //                  (inherited), 1 buildTop 004fcec0, 2 buildBottom 004fcf50, 3 buildLeft 004fcf20, 4 buildRight 004fce90,

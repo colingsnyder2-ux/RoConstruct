@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// Profiling | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 8f1c6f1c | roc native-status --write
 #include "util/Profiling.h"
 
 namespace RBX

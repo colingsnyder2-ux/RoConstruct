@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// ScriptContext | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 67b4f724 | roc native-status --write
 #include "script/ScriptContext.h"
 #include "script/Script.h"
 #include "script/ScriptEvent.h"

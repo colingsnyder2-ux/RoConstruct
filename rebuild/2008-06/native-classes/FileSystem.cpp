@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// FileSystem | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 51b0f57f | roc native-status --write
 #include <atlpath.h>
 #include "util/FileSystem.h"
 

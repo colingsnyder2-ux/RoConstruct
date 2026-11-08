@@ -1,10 +1,6 @@
 // 2008-06 override of Source/App/include/v8datamodel/GlobalSettings.h: class-name template parameters take the
 // char array itself (const char*), as the 2008 binary pushes .data name arrays directly.
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// GlobalSettings | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src a51f9ca2 | roc native-status --write
 #include "reflection/reflection.h"
 #include "v8tree/Instance.h"
 #include "v8tree/Service.h"

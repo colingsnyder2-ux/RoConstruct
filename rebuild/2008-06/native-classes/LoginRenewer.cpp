@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// LoginRenewer | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src d093e4f5 | roc native-status --write
 #include "LoginRenewer.h"
 #include <boost/bind.hpp>
 #include <string>

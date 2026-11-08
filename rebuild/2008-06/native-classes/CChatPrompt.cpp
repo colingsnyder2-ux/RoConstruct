@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// CChatPrompt | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 79ddb860 | roc native-status --write
 #include "../native-headers/CChatPrompt.h"
 #include "../native-headers/ChatEnter.h"
 #include "../native-headers/v8datamodel/DataModel.h"

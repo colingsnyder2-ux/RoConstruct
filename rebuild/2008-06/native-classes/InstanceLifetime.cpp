@@ -1,8 +1,4 @@
 // Inactive candidate: lifetime bodies match; dependent ABI and linkage remain open.
-// >>> native-status (generated) -- do not edit >>>
-// InstanceLifetime | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 67be2023 | roc native-status --write
 #include "v8tree/Instance.h"
 #include <windows.h>
 namespace RBX {

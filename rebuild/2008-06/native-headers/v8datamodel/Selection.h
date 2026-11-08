@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// Selection | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src e733b74c | roc native-status --write
 #include "v8tree/Service.h"
 #include "v8world/Controller.h"
 #include "v8datamodel/SelectionChanged.h"

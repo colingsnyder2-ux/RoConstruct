@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// InstanceBaseCallbacks | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src baa292c7 | roc native-status --write
 #include "v8tree/Instance.h"
 
 #ifndef NATIVE_INSTANCE_EXTERNAL_BASE_CALLBACKS

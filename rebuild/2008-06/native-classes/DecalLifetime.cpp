@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// DecalLifetime | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 967d3293 | roc native-status --write
 #include "v8datamodel/Decal.h"
 
 namespace RBX {

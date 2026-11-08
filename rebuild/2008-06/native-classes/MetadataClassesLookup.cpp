@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// MetadataClassesLookup | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src a615dbe9 | roc native-status --write
 #include "reflection/Metadata.h"
 #include "reflection/reflection.h"
 namespace RBX { namespace Reflection { namespace Metadata {

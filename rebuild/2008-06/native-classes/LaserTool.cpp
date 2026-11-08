@@ -1,8 +1,4 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
-// >>> native-status (generated) -- do not edit >>>
-// LaserTool | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 755c0937 | roc native-status --write
 #include "tool/BasicMouseTools.h"
 #include "v8datamodel/Workspace.h"
 #include "v8datamodel/Explosion.h"

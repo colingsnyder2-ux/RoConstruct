@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// DocumentInitialize | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 115ecfd3 | roc native-status --write
 #include <afxwin.h>
 #include <boost/scoped_ptr.hpp>
 #include <stdexcept>

@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// ShootTool | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 73682e99 | roc native-status --write
 
 #include "v8datamodel/MouseCommand.h"
 #include "v8datamodel/PartInstance.h"

@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// CMainFrameToolbars | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 53d8fd43 | roc native-status --write
 #include "CMainFrame.h"
 
 // Hidden-command table recovered from original data.

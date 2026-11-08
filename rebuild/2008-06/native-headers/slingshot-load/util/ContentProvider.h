@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// ContentProvider | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src df184f7a | roc native-status --write
 #include "util/Name.h"
 #include "util/boost.hpp"
 #include <string>

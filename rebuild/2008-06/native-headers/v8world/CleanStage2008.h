@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// CleanStage2008 | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src b5aa2692 | roc native-status --write
 // 2008-06 native RBX::CleanStage (inactive): the first world stage in 2008 (no donor class; the donor pipeline starts
 // at JointStage). Declared under a non-colliding name next to JointStage2008.h / SimJobStage2008.h; it does not shadow
 // any donor header. The bases IStage / IWorldStage come from the donor v8kernel/IStage.h / v8world/IWorldStage.h

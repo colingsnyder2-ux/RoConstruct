@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// Team | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src f1c34dd4 | roc native-status --write
 #include "v8datamodel/Team.h"
 #include "v8datamodel/Teams.h"
 

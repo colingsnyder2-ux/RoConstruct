@@ -2,10 +2,6 @@
 // Inactive native RunningBase methods (2008-06). Not in any build list.
 // Balancing's constructor is in HumanoidStates1Leaves.cpp: RunningBase(Humanoid*) 00666980 calls
 // Balancing(Humanoid*, float, float) 0066e660 out of line, so its body is not visible here.
-// >>> native-status (generated) -- do not edit >>>
-// HumanoidStates1 | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src a1b60095 | roc native-status --write
 #include "humanoid/HumanoidStates1.h"
 #include "humanoid/Humanoid.h"
 

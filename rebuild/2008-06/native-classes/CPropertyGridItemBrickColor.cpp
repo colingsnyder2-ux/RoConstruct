@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// CPropertyGridItemBrickColor | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 2b4d3866 | roc native-status --write
 #include "CPropertyGridItemBrickColor.h"
 #include "CRobloxControlColorSelector.h"
 #include "v8datamodel/BrickColor.h"

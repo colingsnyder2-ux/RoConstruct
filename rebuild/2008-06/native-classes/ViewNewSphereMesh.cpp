@@ -1,9 +1,6 @@
 // 2008-06 native RBX::ViewNew::SphereBuilder / SphereMesh (inactive): the unit 004fce90..004fd40f.
-// >>> native-status (generated) -- do not edit >>>
-// ViewNewSphereMesh | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 8d2274e7 | roc native-status --write
 #include "ViewNew/SphereMesh.h"
+#include "ViewNew/QuadVolumeFace.h"
 
 namespace RBX
 {

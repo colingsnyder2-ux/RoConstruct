@@ -1,8 +1,4 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string
-// >>> native-status (generated) -- do not edit >>>
-// CMainFrameConstructor | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 37c5515d | roc native-status --write
 #include "CMainFrame.h"
 #include "v8datamodel/BrickColor.h"
 #include "v8datamodel/ToolsPart.h"

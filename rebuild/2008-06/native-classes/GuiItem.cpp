@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// GuiItem | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src dd633a53 | roc native-status --write
 #include "gui/Gui.h"
 namespace RBX {
 GuiItem::GuiItem() : guiSize(0, 0) { setName("Unnamed GuiItem"); }

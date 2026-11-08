@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// WorkspaceSiteTrust | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 37260412 | roc native-status --write
 #include <afxwin.h>
 #include "util/Http.h"
 #include <urlmon.h>

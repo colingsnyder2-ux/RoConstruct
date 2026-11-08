@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// Vector6 | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src daea199c | roc native-status --write
 
 template <typename T>
 class Vector6

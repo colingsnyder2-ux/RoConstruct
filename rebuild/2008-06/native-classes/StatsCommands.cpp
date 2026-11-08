@@ -1,8 +1,4 @@
 // Native StatsCommand methods: 0057d9f0, 0057db00, 0057db90.
-// >>> native-status (generated) -- do not edit >>>
-// StatsCommands | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 43b29c4e | roc native-status --write
 #include "v8datamodel/DataModel.h"
 #include "StandardVerbs.h"
 #include "gui/Gui.h"

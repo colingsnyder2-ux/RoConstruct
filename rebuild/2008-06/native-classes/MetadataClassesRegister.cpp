@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// MetadataClassesRegister | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 4bfa3926 | roc native-status --write
 #include "reflection/Metadata.h"
 namespace RBX {
 template<typename C, typename B, const char* N>

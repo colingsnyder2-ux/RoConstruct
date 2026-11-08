@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// SecurityContext | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 5377c718 | roc native-status --write
 #include <boost/thread/tss.hpp>
 #include <G3D/format.h>
 

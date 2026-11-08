@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// type | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 94de0f25 | roc native-status --write
 #include <boost/any.hpp>
 #include <typeinfo>
 #include <list>

@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// ToolsArrow | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 16ff0c8f | roc native-status --write
 #include <G3D/Vector2int16.h>
 #include <set>
 #include "v8datamodel/MouseCommand.h"

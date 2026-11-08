@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// CMultiPlayerPane | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src aa4d590f | roc native-status --write
 #include <afxwin.h>
 
 class CChatPrompt;

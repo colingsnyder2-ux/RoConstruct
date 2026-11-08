@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// MarshalWindowRegistry | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 0c1a580d | roc native-status --write
 #include "util/MarshaledListener.h"
 #include <map>
 

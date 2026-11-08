@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// CMainFrameWindow | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 4e60f154 | roc native-status --write
 #include "CMainFrame.h"
 
 extern bool nativeLockA, nativeLockB, nativeLockC;

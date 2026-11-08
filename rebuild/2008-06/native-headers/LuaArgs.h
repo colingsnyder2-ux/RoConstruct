@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// LuaArgs | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 912a23a6 | roc native-status --write
 #include <atlbase.h>
 #include "reflection/type.h"
 

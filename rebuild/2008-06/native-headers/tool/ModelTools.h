@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// ModelTools | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 4240446e | roc native-status --write
 
 #include "tool/ModelTool.h"
 

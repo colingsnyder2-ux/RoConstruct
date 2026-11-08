@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// NativeContentProvider | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 83483d57 | roc native-status --write
 #include "util/ContentRequest.h"
 
 #define ContentProvider DonorContentProvider

@@ -1,10 +1,6 @@
 // 2008-06 native gui ChatWidget unit (inactive): ChatWidget 0064e8a0..0064ea70, UnifiedImageWidget::render2dMe
 // 0064e840, and the UnifiedImageWidget / ChatButton constructors 00601c50 / 00601d00.
 // Layout and addresses in native-headers/gui/WidgetChat.h; verified by tests/record_native_widget.py.
-// >>> native-status (generated) -- do not edit >>>
-// WidgetChat | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src cb61a1ed | roc native-status --write
 #include "gui/WidgetChat.h"
 
 namespace RBX

@@ -1,8 +1,4 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS
-// >>> native-status (generated) -- do not edit >>>
-// MathClosestRay | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 33e9a137 | roc native-status --write
 #include "util/Math.h"
 namespace RBX {
 G3D::Vector3 Math::closestPointOnRay(const G3D::Ray& pointOnRay, const G3D::Ray& otherRay) {

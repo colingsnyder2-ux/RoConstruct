@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// CRobloxControlColorSelector | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 16c76398 | roc native-status --write
 #include "CRobloxControlColorSelector.h"
 #include "v8datamodel/BrickColor.h"
 #include <G3D/Color3uint8.h>

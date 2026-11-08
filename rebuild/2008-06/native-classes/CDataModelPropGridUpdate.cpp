@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// CDataModelPropGridUpdate | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 1254405e | roc native-status --write
 #include "CDataModelPropGrid.h"
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Selection.h"

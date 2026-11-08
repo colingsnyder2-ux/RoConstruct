@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// MarshaledListener | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src be70aacb | roc native-status --write
 #include "util/Events.h"
 #include "util/MarshalWindow.h"
 #include "util/EventDataBase.h"

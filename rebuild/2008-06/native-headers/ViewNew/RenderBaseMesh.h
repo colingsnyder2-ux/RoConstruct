@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// RenderBaseMesh | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src cd3617d0 | roc native-status --write
 // 2008-06 native RBX::RenderBase::Mesh / Mesh::Level (inactive; base declarations for the ViewNew meshes).
 // The RenderBase library bodies themselves (00547f60..0054c...) are compiled /Od and are not recovered here.
 //   Mesh     vtable 0082d028 .?AVMesh@RenderBase@RBX@@ -> G3D::ReferenceCountedObject (mdisp 0); one slot (??_G 0054a9c0).
@@ -98,6 +94,9 @@ namespace RBX
 			virtual ~Mesh();                                          // 00548a90
 
 			static unsigned int allocVertex(unsigned int i, unsigned int count);   // 00547fc0
+			// cdecl statics the LevelBuilder grid template calls (004fac10..: push 4 arguments, add esp 0x10 / 4)
+			static unsigned int allocVertex(const G3D::Vector3& vertex, const G3D::Vector3& normal, const G3D::Vector2& tex, bool share); // 00548000
+			static void freeVertex(unsigned int index);                               // 00548640
 		};
 	}
 }

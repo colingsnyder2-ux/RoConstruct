@@ -1,8 +1,4 @@
 // native-flags: /O2 /Ob1 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS
-// >>> native-status (generated) -- do not edit >>>
-// DraggerPlacement | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src dbf34372 | roc native-status --write
 #include "tool/Dragger.h"
 #include "util/Math.h"
 namespace RBX {

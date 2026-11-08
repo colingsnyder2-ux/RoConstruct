@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// BodyMovers | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 63c7bf7f | roc native-status --write
 // 2008-06 native RBX::BodyMover family (inactive): BodyGyro, BodyPosition, BodyVelocity, BodyAngularVelocity,
 // BodyForce, BodyThrust; Rocket (same original unit) is in v8datamodel/Rocket.h. Shape after the donor tools/rbxgs v8datamodel/Gyro.h; every field, virtual,
 // default and descriptor below is read from the 2008-06 binary (unit 0062e090..00633101, dynamic initializers

@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// VerbBinder | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src cb7a85be | roc native-status --write
 #include <afxwin.h>
 #include <map>
 

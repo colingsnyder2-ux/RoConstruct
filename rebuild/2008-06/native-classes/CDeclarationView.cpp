@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// CDeclarationView | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 4f0dc92a | roc native-status --write
 #include "CDeclarationView.h"
 #include "reflection/function.h"
 #include "reflection/property.h"

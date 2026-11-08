@@ -2,10 +2,6 @@
 // Verified by tests/record_native_network_player.py. Network/Players.h and v8datamodel/ModelInstance.h
 // do not compile against the 2008 const-char-array DescribedCreatable; the recorder supplies
 // declaration-only stand-ins (tests/NativeNetworkPlayerPlayers.h, tests/NativeTeamPendingModel.h).
-// >>> native-status (generated) -- do not edit >>>
-// NetworkPlayer | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 3ccdfe1f | roc native-status --write
 #include "Network/Player.h"
 #include "Network/Players.h"
 #include "v8datamodel/ModelInstance.h"

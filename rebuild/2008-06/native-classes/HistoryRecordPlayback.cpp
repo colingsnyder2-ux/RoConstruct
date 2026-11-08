@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// HistoryRecordPlayback | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 19b6e512 | roc native-status --write
 #include "v8datamodel/HistoryRecord.h"
 #include "v8tree/Instance.h"
 #include <boost/bind.hpp>

@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// Matrix3 | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 825c61dd | roc native-status --write
 /**
   @file Matrix3.h
  
@@ -248,7 +244,7 @@ public:
     // "You might be tempted to write [...] them as inline functions 
     // inside their respective header files, but this is something you 
     // must definitely not do. An inline function can be duplicated 
-    // in every file in which it appears ï¿½ and this duplication 
+    // in every file in which it appears – and this duplication 
     // includes the static object definition. Because inline functions 
     // automatically default to internal linkage, this would result in 
     // having multiple static objects across the various translation 

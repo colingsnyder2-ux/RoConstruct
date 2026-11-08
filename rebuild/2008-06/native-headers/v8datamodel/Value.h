@@ -1,10 +1,6 @@
 // 2008-06 override of Source/App/include/v8datamodel/Value.h: class-name template parameters take the
 // char array itself (const char*), as the 2008 binary pushes .data name arrays directly.
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// Value | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 404da56e | roc native-status --write
 #include "v8tree/Instance.h"
 #include "v8datamodel/BrickColor.h"
 #include <G3D/CoordinateFrame.h>
@@ -19,6 +15,7 @@ namespace RBX
 	extern char sBrickColorValue[];
 	extern char sStringValue[];
 	extern char sCFrameValue[];
+	extern char sDoubleValue[];	// 0095d9f0 "NumberValue"; RTTI .?AV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@ (vtable 0084948c)
 
 	template<typename ValueType, const char* ClassName>
 	class Value : public DescribedCreatable<Value<ValueType, ClassName>, Instance, ClassName>
@@ -49,6 +46,7 @@ namespace RBX
 	typedef Value<BrickColor,	sBrickColorValue>	BrickColorValue;
 	typedef Value<std::string,	sStringValue>		StringValue;
 	typedef Value<G3D::CoordinateFrame, sCFrameValue> CFrameValue;
+	typedef Value<double,		sDoubleValue>		DoubleValue;	// 2008-06: the only Value<double>; no Value<float> RTTI exists
 
 	extern char sObjectValue[];
 	

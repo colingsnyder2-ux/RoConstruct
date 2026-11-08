@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// SoundServiceProvider | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 09d8ccf4 | roc native-status --write
 #include <boost/thread/once.hpp>
 
 #include "v8datamodel/Selection.h"

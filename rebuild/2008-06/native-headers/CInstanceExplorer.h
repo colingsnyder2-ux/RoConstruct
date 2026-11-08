@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// CInstanceExplorer | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 1c0bb087 | roc native-status --write
 #include <XTToolkitPro.h>
 #include <boost/shared_ptr.hpp>
 #include "util/MarshaledListener.h"

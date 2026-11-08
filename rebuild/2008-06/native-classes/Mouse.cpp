@@ -7,10 +7,6 @@
 // Unit profile: document-swap flags plus /fp:fast (getOrigin 0064e050 keeps ray.origin + ray.direction in x87
 // registers). cacheUIEvent is the inline donor member: defined out of line in this file it is compiled before update,
 // whose register allocation then relies on it preserving ecx, unlike the original 0064e660.
-// >>> native-status (generated) -- do not edit >>>
-// Mouse | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 41002f5f | roc native-status --write
 #include "v8datamodel/Mouse.h"
 #include "v8datamodel/MouseCommand.h"
 #include "v8datamodel/PartInstance.h"

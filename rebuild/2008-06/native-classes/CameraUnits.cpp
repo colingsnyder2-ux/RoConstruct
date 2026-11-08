@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// CameraUnits | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 9bb19220 | roc native-status --write
 #include "v8datamodel/Camera.h"
 #include "util/Math.h"
 #include "G3D/g3dmath.h"

@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// CRobloxControlColorSelector | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src c7b05cec | roc native-status --write
 #include <XTToolkitPro.h>
 #include <vector>
 

@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// GuidRegistryInitialize | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 7650686e | roc native-status --write
 #include "util/GuidRegistry.h"
 #include <boost/thread/once.hpp>
 

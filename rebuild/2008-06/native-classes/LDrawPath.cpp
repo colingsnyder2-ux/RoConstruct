@@ -1,8 +1,4 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
-// >>> native-status (generated) -- do not edit >>>
-// LDrawPath | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 63c12814 | roc native-status --write
 #include <string>
 #include <boost/thread/once.hpp>
 

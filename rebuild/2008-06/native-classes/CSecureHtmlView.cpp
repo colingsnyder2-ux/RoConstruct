@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// CSecureHtmlView | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src d99ee39f | roc native-status --write
 #include "CSecureHtmlView.h"
 #include <mshtmdid.h>
 

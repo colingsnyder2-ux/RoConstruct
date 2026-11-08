@@ -1,8 +1,4 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
-// >>> native-status (generated) -- do not edit >>>
-// GameToolEvents | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src a0939e6a | roc native-status --write
 #include "tool/BasicMouseTools.h"
 #include "tool/PartDragTool.h"
 #include "v8datamodel/Workspace.h"

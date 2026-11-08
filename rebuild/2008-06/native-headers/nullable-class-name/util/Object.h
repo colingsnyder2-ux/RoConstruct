@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// Object | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 2b7de4dd | roc native-status --write
 #include <boost/shared_ptr.hpp>
 #include <map>
 #include "util/Name.h"

@@ -1,8 +1,4 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
-// >>> native-status (generated) -- do not edit >>>
-// LDrawMapRootConstructor | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src f19416d7 | roc native-status --write
 #include "util/LDrawMapRoot.h"
 #include "v8xml/XmlSerializer.h"
 #include <fstream>

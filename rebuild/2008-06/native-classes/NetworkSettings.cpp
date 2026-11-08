@@ -1,9 +1,5 @@
 // 2008-06 native RBX::NetworkSettings (inactive); evidence in native-headers/Network/NetworkSettings.h.
 // Verified by tests/record_native_services.py (unit profile: document-swap flags).
-// >>> native-status (generated) -- do not edit >>>
-// NetworkSettings | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 2ae8bcd6 | roc native-status --write
 #include "Network/NetworkSettings.h"
 #include "reflection/enumconverter.h"
 #include <G3D/format.h>

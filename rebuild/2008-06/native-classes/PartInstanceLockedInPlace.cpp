@@ -1,8 +1,4 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/part-embedded
-// >>> native-status (generated) -- do not edit >>>
-// PartInstanceLockedInPlace | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 575ce7ed | roc native-status --write
 #undef _RELEASEASSERT
 #include "v8datamodel/PartInstance.h"
 

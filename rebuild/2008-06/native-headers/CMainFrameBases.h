@@ -1,8 +1,4 @@
 #pragma once
-// >>> native-status (generated) -- do not edit >>>
-// CMainFrameBases | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src ba6da74d | roc native-status --write
 #include <afxwin.h>
 #include <afxole.h>
 #include <afxcmn.h>

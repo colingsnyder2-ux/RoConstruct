@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// CMultiPlayerPane | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 9cb453fd | roc native-status --write
 #include "../native-headers/CMultiPlayerPane.h"
 #include "../native-headers/CChatPrompt.h"
 

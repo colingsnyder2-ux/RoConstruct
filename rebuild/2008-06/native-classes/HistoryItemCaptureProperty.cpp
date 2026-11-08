@@ -1,7 +1,3 @@
-// >>> native-status (generated) -- do not edit >>>
-// HistoryItemCaptureProperty | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src c798e0a5 | roc native-status --write
 #include "v8datamodel/HistoryRecord.h"
 #include "v8datamodel/ChangeHistoryService.h"
 #include "v8tree/Instance.h"

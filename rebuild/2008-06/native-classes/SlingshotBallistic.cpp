@@ -1,8 +1,4 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS
-// >>> native-status (generated) -- do not edit >>>
-// SlingshotBallistic | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 91eb77aa | roc native-status --write
 #include <math.h>
 #pragma float_control(precise, off)
 #pragma intrinsic(fabs, sqrt, atan)
