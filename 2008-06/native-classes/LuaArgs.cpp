@@ -1,27 +1,3 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string
-// >>> native-status (generated) -- do not edit >>>
-// LuaArgs | 2008-06 | inactive
-// unmapped (no binary link) | unmapped (no binary link) | by -
-// <<< native-status | src 05025c66 | roc native-status --write
-#include <afxwin.h>
-#include <atlbase.h>
-#include <stdexcept>
-#include <G3D/format.h>
-#include "LuaArgs.h"
-
-void LuaArgs::push(ATL::CComVariant value) {
-    switch (value.vt) {
-    case VT_R4: add(value.fltVal); break;
-    case VT_R8: addv((float)value.dblVal); break;
-    case VT_BSTR: add(std::string(CStringA(value.bstrVal))); break;
-    case VT_BOOL: add(value.boolVal == VARIANT_TRUE); break;
-    case VT_I2: addv((int)value.iVal); break;
-    case VT_I4: addv((int)value.lVal); break;
-    case VT_NULL: values.push_back(RBX::Reflection::Value()); break;
-    case VT_EMPTY:
-    case VT_ERROR: break;
-    default:
-        std::string msg = G3D::format("Invalid argument %d VT_TYPE=%d", values.size() + 1, value.vt);
-        throw std::runtime_error(msg);
-    }
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../Unclassified/src/LuaArgs.cpp"
