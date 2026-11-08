@@ -19,6 +19,7 @@ Earlier paths and their donor versions: `native-classes/RunService.cpp`.
 </details>
 
 **`7f10af3803d3`** · `Unclassified/src/RunService.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/RunService.cpp)
 - canonical · colingsnyder2-ux · [src/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/RunService.cpp)
 - canonical · colingsnyder2-ux · [src/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/RunService.cpp)
 - canonical · colingsnyder2-ux · [src/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/RunService.cpp)
@@ -118,6 +119,7 @@ Earlier paths and their donor versions: `native-classes/RunService.cpp`.
 </details>
 
 **`e098a031cc64`** · `Unclassified/src/RunService.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/RunService.cpp)
 - public · colingsnyder2-ux · [src/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/RunService.cpp)
 - public · colingsnyder2-ux · [src/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/RunService.cpp)
 - public · colingsnyder2-ux · [src/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/RunService.cpp)
@@ -127,6 +129,7 @@ Earlier paths and their donor versions: `native-classes/RunService.cpp`.
 - public · colingsnyder2-ux · [src/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/RunService.cpp)
 
 **`0176535763a3`** · `native-classes/RunService.cpp` · proof not assessed
+- archive · colingsnyder2-ux · [native-classes/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/RunService.cpp)
 - archive · colingsnyder2-ux · [native-classes/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/RunService.cpp)
 - archive · colingsnyder2-ux · [native-classes/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/RunService.cpp)
 - archive · colingsnyder2-ux · [native-classes/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/archive/source-snapshots/20261107-prior-local/2008-06/native-classes/RunService.cpp)
@@ -304,6 +307,7 @@ Earlier paths and their donor versions: `native-classes/RunService.cpp`.
 </details>
 
 **`379cdc054acb`** · `native-classes/RunService.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-classes/RunService.cpp)
 - draft · colingsnyder2-ux · [native-classes/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-classes/RunService.cpp)
 - draft · colingsnyder2-ux · [native-classes/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-classes/RunService.cpp)
 - draft · colingsnyder2-ux · [native-classes/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/ea16dd1c69c28d14de072def5a5db35732c7ef6313b215d6753fd7ba3cd00d11/work/2008-06/shared-layouts/mobile-donor-measurement/baseline-inputs/rebuild/2008-06/native-classes/RunService.cpp)
@@ -478,6 +482,8 @@ Earlier paths and their donor versions: `native-classes/RunService.cpp`.
 </details>
 
 **`a390d9e80048`** · `native-classes/RunService.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/RunService.cpp)
+- canonical · colingsnyder2-ux · [native-classes/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/RunService.cpp)
 - public · colingsnyder2-ux · [native-classes/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/RunService.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/RunService.cpp)
 - public · colingsnyder2-ux · [native-classes/RunService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/RunService.cpp)
@@ -651,6 +657,7 @@ Earlier paths and their donor versions: `native-classes/RunServiceClassName.cpp`
 - public · colingsnyder2-ux · [src/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/RunServiceClassName.cpp)
 
 **`d7bc497d94b6`** · `Unclassified/src/RunServiceClassName.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/RunServiceClassName.cpp)
 - canonical · colingsnyder2-ux · [src/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/RunServiceClassName.cpp)
 - canonical · colingsnyder2-ux · [src/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/RunServiceClassName.cpp)
 - canonical · colingsnyder2-ux · [src/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/RunServiceClassName.cpp)
@@ -718,6 +725,7 @@ Earlier paths and their donor versions: `native-classes/RunServiceClassName.cpp`
 </details>
 
 **`f2e1cb7a95a7`** · `Unclassified/src/RunServiceClassName.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/RunServiceClassName.cpp)
 - public · colingsnyder2-ux · [src/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/RunServiceClassName.cpp)
 - public · colingsnyder2-ux · [src/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/RunServiceClassName.cpp)
 - public · colingsnyder2-ux · [src/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/RunServiceClassName.cpp)
@@ -761,6 +769,8 @@ Earlier paths and their donor versions: `native-classes/RunServiceClassName.cpp`
 </details>
 
 **`533f5379708c`** · `native-classes/RunServiceClassName.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/RunServiceClassName.cpp)
+- canonical · colingsnyder2-ux · [native-classes/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/RunServiceClassName.cpp)
 - public · colingsnyder2-ux · [native-classes/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/RunServiceClassName.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/RunServiceClassName.cpp)
 - public · colingsnyder2-ux · [native-classes/RunServiceClassName.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/RunServiceClassName.cpp)

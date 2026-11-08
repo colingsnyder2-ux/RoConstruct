@@ -84,6 +84,7 @@ Earlier paths and their donor versions: `native-classes/TextureProxyRender.cpp`.
 </details>
 
 **`68a595ef4677`** · `Unclassified/src/TextureProxyRender.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/TextureProxyRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/TextureProxyRender.cpp)
 - canonical · colingsnyder2-ux · [src/TextureProxyRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/TextureProxyRender.cpp)
 - canonical · colingsnyder2-ux · [src/TextureProxyRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/TextureProxyRender.cpp)
 - canonical · colingsnyder2-ux · [src/TextureProxyRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/TextureProxyRender.cpp)
@@ -101,6 +102,7 @@ Earlier paths and their donor versions: `native-classes/TextureProxyRender.cpp`.
 </details>
 
 **`dc44c2db53f4`** · `Unclassified/src/TextureProxyRender.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/TextureProxyRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/TextureProxyRender.cpp)
 - public · colingsnyder2-ux · [src/TextureProxyRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/TextureProxyRender.cpp)
 - public · colingsnyder2-ux · [src/TextureProxyRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/TextureProxyRender.cpp)
 - public · colingsnyder2-ux · [src/TextureProxyRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/TextureProxyRender.cpp)
@@ -190,6 +192,8 @@ Earlier paths and their donor versions: `native-classes/TextureProxyRender.cpp`.
 </details>
 
 **`7786af5d7ff1`** · `native-classes/TextureProxyRender.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/TextureProxyRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/TextureProxyRender.cpp)
+- canonical · colingsnyder2-ux · [native-classes/TextureProxyRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/TextureProxyRender.cpp)
 - public · colingsnyder2-ux · [native-classes/TextureProxyRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/TextureProxyRender.cpp)
 - canonical · colingsnyder2-ux · [native-classes/TextureProxyRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/TextureProxyRender.cpp)
 - public · colingsnyder2-ux · [native-classes/TextureProxyRender.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/TextureProxyRender.cpp)
@@ -358,6 +362,7 @@ Earlier paths and their donor versions: `native-classes/TextureProxyRenderNew.cp
 </details>
 
 **`52f2ac25c846`** · `Unclassified/src/TextureProxyRenderNew.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/TextureProxyRenderNew.cpp)
 - canonical · colingsnyder2-ux · [src/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/TextureProxyRenderNew.cpp)
 - canonical · colingsnyder2-ux · [src/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/TextureProxyRenderNew.cpp)
 - canonical · colingsnyder2-ux · [src/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/TextureProxyRenderNew.cpp)
@@ -366,6 +371,7 @@ Earlier paths and their donor versions: `native-classes/TextureProxyRenderNew.cp
 - canonical · colingsnyder2-ux · [src/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/TextureProxyRenderNew.cpp)
 
 **`6a6d5f5a9ac2`** · `Unclassified/src/TextureProxyRenderNew.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/TextureProxyRenderNew.cpp)
 - public · colingsnyder2-ux · [src/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/TextureProxyRenderNew.cpp)
 - public · colingsnyder2-ux · [src/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/TextureProxyRenderNew.cpp)
 - public · colingsnyder2-ux · [src/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/TextureProxyRenderNew.cpp)
@@ -458,6 +464,8 @@ Earlier paths and their donor versions: `native-classes/TextureProxyRenderNew.cp
 </details>
 
 **`5acf3363371d`** · `native-classes/TextureProxyRenderNew.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/TextureProxyRenderNew.cpp)
+- canonical · colingsnyder2-ux · [native-classes/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp)
 - public · colingsnyder2-ux · [native-classes/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/TextureProxyRenderNew.cpp)
 - canonical · colingsnyder2-ux · [native-classes/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/TextureProxyRenderNew.cpp)
 - public · colingsnyder2-ux · [native-classes/TextureProxyRenderNew.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/TextureProxyRenderNew.cpp)
@@ -646,6 +654,7 @@ Earlier paths and their donor versions: `native-classes/ToolVerbChecked.cpp`.
 - public · colingsnyder2-ux · [src/ToolVerbChecked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/ToolVerbChecked.cpp)
 
 **`ac2f58b03d4e`** · `Unclassified/src/ToolVerbChecked.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ToolVerbChecked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/ToolVerbChecked.cpp)
 - canonical · colingsnyder2-ux · [src/ToolVerbChecked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/ToolVerbChecked.cpp)
 - canonical · colingsnyder2-ux · [src/ToolVerbChecked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/ToolVerbChecked.cpp)
 - canonical · colingsnyder2-ux · [src/ToolVerbChecked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/ToolVerbChecked.cpp)
@@ -668,6 +677,7 @@ Earlier paths and their donor versions: `native-classes/ToolVerbChecked.cpp`.
 - public · colingsnyder2-ux · [src/ToolVerbChecked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/Unclassified/src/ToolVerbChecked.cpp)
 
 **`e259b16c8799`** · `Unclassified/src/ToolVerbChecked.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ToolVerbChecked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/ToolVerbChecked.cpp)
 - public · colingsnyder2-ux · [src/ToolVerbChecked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/ToolVerbChecked.cpp)
 - public · colingsnyder2-ux · [src/ToolVerbChecked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/ToolVerbChecked.cpp)
 - public · colingsnyder2-ux · [src/ToolVerbChecked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/ToolVerbChecked.cpp)
@@ -706,6 +716,8 @@ Earlier paths and their donor versions: `native-classes/ToolVerbChecked.cpp`.
 - public · colingsnyder2-ux · [native-classes/ToolVerbChecked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-classes/ToolVerbChecked.cpp)
 
 **`4585a5de85fb`** · `native-classes/ToolVerbChecked.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ToolVerbChecked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/ToolVerbChecked.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbChecked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/ToolVerbChecked.cpp)
 - public · colingsnyder2-ux · [native-classes/ToolVerbChecked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/ToolVerbChecked.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ToolVerbChecked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/ToolVerbChecked.cpp)
 - public · colingsnyder2-ux · [native-classes/ToolVerbChecked.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/ToolVerbChecked.cpp)
@@ -930,6 +942,7 @@ Earlier paths and their donor versions: `native-classes/UngroupOperation.cpp`.
 - public · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/UngroupOperation.cpp)
 
 **`9f3047629921`** · `Unclassified/src/UngroupOperation.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/UngroupOperation.cpp)
 - public · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/UngroupOperation.cpp)
 - public · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/UngroupOperation.cpp)
 - public · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/UngroupOperation.cpp)
@@ -939,6 +952,7 @@ Earlier paths and their donor versions: `native-classes/UngroupOperation.cpp`.
 - public · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/UngroupOperation.cpp)
 
 **`d132f68a2c0f`** · `Unclassified/src/UngroupOperation.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/UngroupOperation.cpp)
 - canonical · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/UngroupOperation.cpp)
 - canonical · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/UngroupOperation.cpp)
 - canonical · colingsnyder2-ux · [src/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/UngroupOperation.cpp)
@@ -1005,6 +1019,8 @@ Earlier paths and their donor versions: `native-classes/UngroupOperation.cpp`.
 </details>
 
 **`7e04682211d6`** · `native-classes/UngroupOperation.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/UngroupOperation.cpp)
+- canonical · colingsnyder2-ux · [native-classes/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/UngroupOperation.cpp)
 - public · colingsnyder2-ux · [native-classes/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/UngroupOperation.cpp)
 - canonical · colingsnyder2-ux · [native-classes/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/UngroupOperation.cpp)
 - public · colingsnyder2-ux · [native-classes/UngroupOperation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/UngroupOperation.cpp)

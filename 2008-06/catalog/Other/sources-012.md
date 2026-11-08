@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `Unclassified/src/EquationDisplay.cpp`.
 
 **`abf86339953a`** · `App/src/gui/EquationDisplay.cpp` · proof not assessed
+- public · colingsnyder2-ux · [gui/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/gui/EquationDisplay.cpp)
 - public · colingsnyder2-ux · [gui/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/gui/EquationDisplay.cpp)
 - public · colingsnyder2-ux · [gui/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/gui/EquationDisplay.cpp)
 - public · colingsnyder2-ux · [gui/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/gui/EquationDisplay.cpp)
@@ -18,6 +19,7 @@ Earlier paths and their donor versions: `Unclassified/src/EquationDisplay.cpp`.
 - public · colingsnyder2-ux · [gui/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/gui/EquationDisplay.cpp)
 
 **`e99dfb17b287`** · `App/src/gui/EquationDisplay.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [gui/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/gui/EquationDisplay.cpp)
 - canonical · colingsnyder2-ux · [gui/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/gui/EquationDisplay.cpp)
 - canonical · colingsnyder2-ux · [gui/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/gui/EquationDisplay.cpp)
 - canonical · colingsnyder2-ux · [gui/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/gui/EquationDisplay.cpp)
@@ -37,6 +39,7 @@ Earlier paths and their donor versions: `Unclassified/src/EquationDisplay.cpp`.
 </details>
 
 **`535341ffb1e9`** · `Unclassified/src/EquationDisplay.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/EquationDisplay.cpp)
 - public · colingsnyder2-ux · [src/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/EquationDisplay.cpp)
 - public · colingsnyder2-ux · [src/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/EquationDisplay.cpp)
 - public · colingsnyder2-ux · [src/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/EquationDisplay.cpp)
@@ -56,6 +59,7 @@ Earlier paths and their donor versions: `Unclassified/src/EquationDisplay.cpp`.
 </details>
 
 **`d3ef1062d2cf`** · `Unclassified/src/EquationDisplay.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/EquationDisplay.cpp)
 - canonical · colingsnyder2-ux · [src/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/EquationDisplay.cpp)
 - canonical · colingsnyder2-ux · [src/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/EquationDisplay.cpp)
 - canonical · colingsnyder2-ux · [src/EquationDisplay.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/EquationDisplay.cpp)
@@ -163,6 +167,7 @@ Earlier paths and their donor versions: `Unclassified/src/EquationDisplay.cpp`.
 Earlier paths and their donor versions: `Unclassified/src/GuiItem.cpp`.
 
 **`b330f009874f`** · `App/src/gui/GuiItem.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [gui/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/gui/GuiItem.cpp)
 - canonical · colingsnyder2-ux · [gui/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/gui/GuiItem.cpp)
 - canonical · colingsnyder2-ux · [gui/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/gui/GuiItem.cpp)
 - canonical · colingsnyder2-ux · [gui/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/gui/GuiItem.cpp)
@@ -182,6 +187,7 @@ Earlier paths and their donor versions: `Unclassified/src/GuiItem.cpp`.
 </details>
 
 **`f8cc580b38d5`** · `App/src/gui/GuiItem.cpp` · proof not assessed
+- public · colingsnyder2-ux · [gui/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/gui/GuiItem.cpp)
 - public · colingsnyder2-ux · [gui/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/gui/GuiItem.cpp)
 - public · colingsnyder2-ux · [gui/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/gui/GuiItem.cpp)
 - public · colingsnyder2-ux · [gui/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/gui/GuiItem.cpp)
@@ -206,6 +212,7 @@ Earlier paths and their donor versions: `Unclassified/src/GuiItem.cpp`.
 </details>
 
 **`168988e8a7b5`** · `Unclassified/src/GuiItem.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/GuiItem.cpp)
 - canonical · colingsnyder2-ux · [src/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/GuiItem.cpp)
 - canonical · colingsnyder2-ux · [src/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/GuiItem.cpp)
 - canonical · colingsnyder2-ux · [src/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/GuiItem.cpp)
@@ -225,6 +232,7 @@ Earlier paths and their donor versions: `Unclassified/src/GuiItem.cpp`.
 </details>
 
 **`7beda929a26f`** · `Unclassified/src/GuiItem.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/GuiItem.cpp)
 - public · colingsnyder2-ux · [src/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/GuiItem.cpp)
 - public · colingsnyder2-ux · [src/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/GuiItem.cpp)
 - public · colingsnyder2-ux · [src/GuiItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/GuiItem.cpp)
@@ -326,6 +334,7 @@ Earlier paths and their donor versions: `Unclassified/src/GuiItem.cpp`.
 Earlier paths and their donor versions: `Unclassified/src/HealthHud.cpp`.
 
 **`90addb559ab4`** · `App/src/gui/HealthHud.cpp` · proof not assessed
+- public · colingsnyder2-ux · [gui/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/gui/HealthHud.cpp)
 - public · colingsnyder2-ux · [gui/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/gui/HealthHud.cpp)
 - public · colingsnyder2-ux · [gui/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/gui/HealthHud.cpp)
 - public · colingsnyder2-ux · [gui/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/gui/HealthHud.cpp)
@@ -336,6 +345,7 @@ Earlier paths and their donor versions: `Unclassified/src/HealthHud.cpp`.
 - public · colingsnyder2-ux · [gui/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/gui/HealthHud.cpp)
 
 **`dac2a8916cb1`** · `App/src/gui/HealthHud.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [gui/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/gui/HealthHud.cpp)
 - canonical · colingsnyder2-ux · [gui/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/gui/HealthHud.cpp)
 - canonical · colingsnyder2-ux · [gui/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/gui/HealthHud.cpp)
 - canonical · colingsnyder2-ux · [gui/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/gui/HealthHud.cpp)
@@ -355,6 +365,7 @@ Earlier paths and their donor versions: `Unclassified/src/HealthHud.cpp`.
 </details>
 
 **`6dd7ade84e7d`** · `Unclassified/src/HealthHud.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/HealthHud.cpp)
 - public · colingsnyder2-ux · [src/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/HealthHud.cpp)
 - public · colingsnyder2-ux · [src/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/HealthHud.cpp)
 - public · colingsnyder2-ux · [src/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/HealthHud.cpp)
@@ -365,6 +376,7 @@ Earlier paths and their donor versions: `Unclassified/src/HealthHud.cpp`.
 - public · colingsnyder2-ux · [src/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Unclassified/src/HealthHud.cpp)
 
 **`7a2a66bcdb2c`** · `Unclassified/src/HealthHud.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/HealthHud.cpp)
 - canonical · colingsnyder2-ux · [src/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/HealthHud.cpp)
 - canonical · colingsnyder2-ux · [src/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/HealthHud.cpp)
 - canonical · colingsnyder2-ux · [src/HealthHud.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/HealthHud.cpp)
@@ -481,6 +493,7 @@ Earlier paths and their donor versions: `Unclassified/src/HealthHud.cpp`.
 Earlier paths and their donor versions: `Unclassified/src/Widget.cpp`.
 
 **`2a71763608ca`** · `App/src/gui/Widget.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [gui/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/gui/Widget.cpp)
 - canonical · colingsnyder2-ux · [gui/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/gui/Widget.cpp)
 - canonical · colingsnyder2-ux · [gui/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/gui/Widget.cpp)
 - canonical · colingsnyder2-ux · [gui/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/gui/Widget.cpp)
@@ -500,6 +513,7 @@ Earlier paths and their donor versions: `Unclassified/src/Widget.cpp`.
 </details>
 
 **`94117d15f7cb`** · `App/src/gui/Widget.cpp` · proof not assessed
+- public · colingsnyder2-ux · [gui/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/gui/Widget.cpp)
 - public · colingsnyder2-ux · [gui/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/gui/Widget.cpp)
 - public · colingsnyder2-ux · [gui/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/gui/Widget.cpp)
 - public · colingsnyder2-ux · [gui/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/gui/Widget.cpp)
@@ -600,6 +614,7 @@ Earlier paths and their donor versions: `Unclassified/src/Widget.cpp`.
 - public · colingsnyder2-ux · [src/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/Widget.cpp)
 
 **`82bf1eee33ea`** · `Unclassified/src/Widget.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/Widget.cpp)
 - public · colingsnyder2-ux · [src/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/Widget.cpp)
 - public · colingsnyder2-ux · [src/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/Widget.cpp)
 - public · colingsnyder2-ux · [src/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/Widget.cpp)
@@ -610,6 +625,7 @@ Earlier paths and their donor versions: `Unclassified/src/Widget.cpp`.
 - public · colingsnyder2-ux · [src/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Unclassified/src/Widget.cpp)
 
 **`eec56f6fa6f0`** · `Unclassified/src/Widget.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/Widget.cpp)
 - canonical · colingsnyder2-ux · [src/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/Widget.cpp)
 - canonical · colingsnyder2-ux · [src/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/Widget.cpp)
 - canonical · colingsnyder2-ux · [src/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/Widget.cpp)
@@ -636,6 +652,7 @@ Earlier paths and their donor versions: `Unclassified/src/Widget.cpp`.
 Earlier paths and their donor versions: `Unclassified/src/WidgetButtons.cpp`.
 
 **`e5b341d17807`** · `App/src/gui/WidgetButtons.cpp` · proof not assessed
+- public · colingsnyder2-ux · [gui/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/gui/WidgetButtons.cpp)
 - public · colingsnyder2-ux · [gui/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/gui/WidgetButtons.cpp)
 - public · colingsnyder2-ux · [gui/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/gui/WidgetButtons.cpp)
 - public · colingsnyder2-ux · [gui/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/gui/WidgetButtons.cpp)
@@ -646,6 +663,7 @@ Earlier paths and their donor versions: `Unclassified/src/WidgetButtons.cpp`.
 - public · colingsnyder2-ux · [gui/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/gui/WidgetButtons.cpp)
 
 **`e6600180b5e7`** · `App/src/gui/WidgetButtons.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [gui/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/gui/WidgetButtons.cpp)
 - canonical · colingsnyder2-ux · [gui/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/gui/WidgetButtons.cpp)
 - canonical · colingsnyder2-ux · [gui/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/gui/WidgetButtons.cpp)
 - canonical · colingsnyder2-ux · [gui/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/gui/WidgetButtons.cpp)
@@ -707,6 +725,7 @@ Earlier paths and their donor versions: `Unclassified/src/WidgetButtons.cpp`.
 - public · colingsnyder2-ux · [src/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/WidgetButtons.cpp)
 
 **`d259542b7363`** · `Unclassified/src/WidgetButtons.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/WidgetButtons.cpp)
 - public · colingsnyder2-ux · [src/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/WidgetButtons.cpp)
 - public · colingsnyder2-ux · [src/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/WidgetButtons.cpp)
 - public · colingsnyder2-ux · [src/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/WidgetButtons.cpp)
@@ -765,6 +784,7 @@ Earlier paths and their donor versions: `Unclassified/src/WidgetButtons.cpp`.
 </details>
 
 **`eb394e033ab1`** · `Unclassified/src/WidgetButtons.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/WidgetButtons.cpp)
 - canonical · colingsnyder2-ux · [src/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/WidgetButtons.cpp)
 - canonical · colingsnyder2-ux · [src/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/WidgetButtons.cpp)
 - canonical · colingsnyder2-ux · [src/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/WidgetButtons.cpp)
@@ -791,6 +811,7 @@ Earlier paths and their donor versions: `Unclassified/src/WidgetButtons.cpp`.
 Earlier paths and their donor versions: `Unclassified/src/WidgetChat.cpp`.
 
 **`70049c75e33c`** · `App/src/gui/WidgetChat.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [gui/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/gui/WidgetChat.cpp)
 - canonical · colingsnyder2-ux · [gui/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/gui/WidgetChat.cpp)
 - canonical · colingsnyder2-ux · [gui/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/gui/WidgetChat.cpp)
 - canonical · colingsnyder2-ux · [gui/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/gui/WidgetChat.cpp)
@@ -810,6 +831,7 @@ Earlier paths and their donor versions: `Unclassified/src/WidgetChat.cpp`.
 </details>
 
 **`b64bfce27300`** · `App/src/gui/WidgetChat.cpp` · proof not assessed
+- public · colingsnyder2-ux · [gui/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/gui/WidgetChat.cpp)
 - public · colingsnyder2-ux · [gui/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/gui/WidgetChat.cpp)
 - public · colingsnyder2-ux · [gui/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/gui/WidgetChat.cpp)
 - public · colingsnyder2-ux · [gui/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/gui/WidgetChat.cpp)
@@ -820,6 +842,7 @@ Earlier paths and their donor versions: `Unclassified/src/WidgetChat.cpp`.
 - public · colingsnyder2-ux · [gui/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/gui/WidgetChat.cpp)
 
 **`427cfc817882`** · `Unclassified/src/WidgetChat.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/WidgetChat.cpp)
 - canonical · colingsnyder2-ux · [src/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/WidgetChat.cpp)
 - canonical · colingsnyder2-ux · [src/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/WidgetChat.cpp)
 - canonical · colingsnyder2-ux · [src/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/WidgetChat.cpp)
@@ -929,6 +952,7 @@ Earlier paths and their donor versions: `Unclassified/src/WidgetChat.cpp`.
 </details>
 
 **`9cdb4d0b8d21`** · `Unclassified/src/WidgetChat.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/WidgetChat.cpp)
 - public · colingsnyder2-ux · [src/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/WidgetChat.cpp)
 - public · colingsnyder2-ux · [src/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/WidgetChat.cpp)
 - public · colingsnyder2-ux · [src/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/WidgetChat.cpp)
@@ -946,6 +970,7 @@ Earlier paths and their donor versions: `Unclassified/src/WidgetChat.cpp`.
 Earlier paths and their donor versions: `Unclassified/src/WidgetMenuItem.cpp`.
 
 **`79e229d3ef74`** · `App/src/gui/WidgetMenuItem.cpp` · proof not assessed
+- public · colingsnyder2-ux · [gui/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/gui/WidgetMenuItem.cpp)
 - public · colingsnyder2-ux · [gui/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/gui/WidgetMenuItem.cpp)
 - public · colingsnyder2-ux · [gui/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/gui/WidgetMenuItem.cpp)
 - public · colingsnyder2-ux · [gui/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/gui/WidgetMenuItem.cpp)
@@ -956,6 +981,7 @@ Earlier paths and their donor versions: `Unclassified/src/WidgetMenuItem.cpp`.
 - public · colingsnyder2-ux · [gui/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/App/src/gui/WidgetMenuItem.cpp)
 
 **`ef92ed2b0593`** · `App/src/gui/WidgetMenuItem.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [gui/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/gui/WidgetMenuItem.cpp)
 - canonical · colingsnyder2-ux · [gui/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/gui/WidgetMenuItem.cpp)
 - canonical · colingsnyder2-ux · [gui/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/gui/WidgetMenuItem.cpp)
 - canonical · colingsnyder2-ux · [gui/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/gui/WidgetMenuItem.cpp)
@@ -975,6 +1001,7 @@ Earlier paths and their donor versions: `Unclassified/src/WidgetMenuItem.cpp`.
 </details>
 
 **`399aed0a9246`** · `Unclassified/src/WidgetMenuItem.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/WidgetMenuItem.cpp)
 - canonical · colingsnyder2-ux · [src/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/WidgetMenuItem.cpp)
 - canonical · colingsnyder2-ux · [src/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/WidgetMenuItem.cpp)
 - canonical · colingsnyder2-ux · [src/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/WidgetMenuItem.cpp)
@@ -1036,6 +1063,7 @@ Earlier paths and their donor versions: `Unclassified/src/WidgetMenuItem.cpp`.
 - public · colingsnyder2-ux · [src/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/WidgetMenuItem.cpp)
 
 **`bf671af58dda`** · `Unclassified/src/WidgetMenuItem.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/WidgetMenuItem.cpp)
 - public · colingsnyder2-ux · [src/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/WidgetMenuItem.cpp)
 - public · colingsnyder2-ux · [src/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/WidgetMenuItem.cpp)
 - public · colingsnyder2-ux · [src/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/WidgetMenuItem.cpp)
@@ -1101,9 +1129,11 @@ Earlier paths and their donor versions: `Unclassified/src/WidgetMenuItem.cpp`.
 Earlier paths and their donor versions: `Unclassified/src/HumanoidState.cpp`.
 
 **`73ffa7b3ce36`** · `App/src/humanoid/HumanoidState.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [humanoid/HumanoidState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/humanoid/HumanoidState.cpp)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/humanoid/HumanoidState.cpp)
 
 **`784dfa3cb23b`** · `App/src/humanoid/HumanoidState.cpp` · proof not assessed
+- public · colingsnyder2-ux · [humanoid/HumanoidState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/humanoid/HumanoidState.cpp)
 - public · colingsnyder2-ux · [humanoid/HumanoidState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/humanoid/HumanoidState.cpp)
 
 **`42902d5747c0`** · `Unclassified/src/HumanoidState.cpp` · proof not assessed
@@ -1166,9 +1196,11 @@ Earlier paths and their donor versions: `Unclassified/src/HumanoidState.cpp`.
 </details>
 
 **`ce76bdd630db`** · `Unclassified/src/HumanoidState.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/HumanoidState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/HumanoidState.cpp)
 - canonical · colingsnyder2-ux · [src/HumanoidState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/HumanoidState.cpp)
 
 **`e749fe1013c4`** · `Unclassified/src/HumanoidState.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/HumanoidState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/HumanoidState.cpp)
 - public · colingsnyder2-ux · [src/HumanoidState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/HumanoidState.cpp)
 
 **`f1dd5bcdc3fc`** · `Unclassified/src/HumanoidState.cpp` · proof not assessed

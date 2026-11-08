@@ -81,6 +81,7 @@ Earlier paths and their donor versions: `native-classes/SoundStringConverter.cpp
 </details>
 
 **`b7def139fa3c`** · `Unclassified/src/SoundStringConverter.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/SoundStringConverter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/SoundStringConverter.cpp)
 - canonical · colingsnyder2-ux · [src/SoundStringConverter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/SoundStringConverter.cpp)
 - canonical · colingsnyder2-ux · [src/SoundStringConverter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/SoundStringConverter.cpp)
 - canonical · colingsnyder2-ux · [src/SoundStringConverter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/SoundStringConverter.cpp)
@@ -127,6 +128,7 @@ Earlier paths and their donor versions: `native-classes/SoundStringConverter.cpp
 - public · colingsnyder2-ux · [src/SoundStringConverter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/SoundStringConverter.cpp)
 
 **`ece1af38f5dc`** · `Unclassified/src/SoundStringConverter.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/SoundStringConverter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/SoundStringConverter.cpp)
 - public · colingsnyder2-ux · [src/SoundStringConverter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/SoundStringConverter.cpp)
 - public · colingsnyder2-ux · [src/SoundStringConverter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/SoundStringConverter.cpp)
 - public · colingsnyder2-ux · [src/SoundStringConverter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/SoundStringConverter.cpp)
@@ -202,6 +204,8 @@ Earlier paths and their donor versions: `native-classes/SoundStringConverter.cpp
 </details>
 
 **`6d0067842bdb`** · `native-classes/SoundStringConverter.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SoundStringConverter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/SoundStringConverter.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SoundStringConverter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/SoundStringConverter.cpp)
 - public · colingsnyder2-ux · [native-classes/SoundStringConverter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/SoundStringConverter.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SoundStringConverter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/SoundStringConverter.cpp)
 - public · colingsnyder2-ux · [native-classes/SoundStringConverter.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/SoundStringConverter.cpp)
@@ -331,6 +335,7 @@ Compatibility path for `WindowsClient/src/StandardVerbs.cpp`; compile either pat
 Earlier paths and their donor versions: `native-classes/StandardVerbs.cpp`.
 
 **`03545d3c839e`** · `Unclassified/src/StandardVerbs.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/StandardVerbs.cpp)
 - public · colingsnyder2-ux · [src/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/StandardVerbs.cpp)
 - public · colingsnyder2-ux · [src/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/StandardVerbs.cpp)
 - public · colingsnyder2-ux · [src/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/StandardVerbs.cpp)
@@ -409,6 +414,7 @@ Earlier paths and their donor versions: `native-classes/StandardVerbs.cpp`.
 - public · colingsnyder2-ux · [src/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/StandardVerbs.cpp)
 
 **`cc960de1e182`** · `Unclassified/src/StandardVerbs.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/StandardVerbs.cpp)
 - canonical · colingsnyder2-ux · [src/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/StandardVerbs.cpp)
 - canonical · colingsnyder2-ux · [src/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/StandardVerbs.cpp)
 - canonical · colingsnyder2-ux · [src/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/StandardVerbs.cpp)
@@ -633,6 +639,8 @@ Earlier paths and their donor versions: `native-classes/StandardVerbs.cpp`.
 - public · colingsnyder2-ux · [native-classes/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-classes/StandardVerbs.cpp)
 
 **`44720b1056e7`** · `native-classes/StandardVerbs.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/StandardVerbs.cpp)
+- canonical · colingsnyder2-ux · [native-classes/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/StandardVerbs.cpp)
 - public · colingsnyder2-ux · [native-classes/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/StandardVerbs.cpp)
 - canonical · colingsnyder2-ux · [native-classes/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/StandardVerbs.cpp)
 - public · colingsnyder2-ux · [native-classes/StandardVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/StandardVerbs.cpp)
@@ -798,6 +806,7 @@ Earlier paths and their donor versions: `native-classes/StandardVerbsConstructor
 </details>
 
 **`5ab1df0a0f2d`** · `Unclassified/src/StandardVerbsConstructor.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/StandardVerbsConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/StandardVerbsConstructor.cpp)
 - canonical · colingsnyder2-ux · [src/StandardVerbsConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/StandardVerbsConstructor.cpp)
 - canonical · colingsnyder2-ux · [src/StandardVerbsConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/StandardVerbsConstructor.cpp)
 - canonical · colingsnyder2-ux · [src/StandardVerbsConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/StandardVerbsConstructor.cpp)
@@ -906,6 +915,7 @@ Earlier paths and their donor versions: `native-classes/StandardVerbsConstructor
 </details>
 
 **`bc256c8187c5`** · `Unclassified/src/StandardVerbsConstructor.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/StandardVerbsConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/StandardVerbsConstructor.cpp)
 - public · colingsnyder2-ux · [src/StandardVerbsConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/StandardVerbsConstructor.cpp)
 - public · colingsnyder2-ux · [src/StandardVerbsConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/StandardVerbsConstructor.cpp)
 - public · colingsnyder2-ux · [src/StandardVerbsConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/StandardVerbsConstructor.cpp)
@@ -924,6 +934,8 @@ Earlier paths and their donor versions: `native-classes/StandardVerbsConstructor
 </details>
 
 **`4d251fab9837`** · `native-classes/StandardVerbsConstructor.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/StandardVerbsConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/StandardVerbsConstructor.cpp)
+- canonical · colingsnyder2-ux · [native-classes/StandardVerbsConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/StandardVerbsConstructor.cpp)
 - public · colingsnyder2-ux · [native-classes/StandardVerbsConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/StandardVerbsConstructor.cpp)
 - canonical · colingsnyder2-ux · [native-classes/StandardVerbsConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/StandardVerbsConstructor.cpp)
 - public · colingsnyder2-ux · [native-classes/StandardVerbsConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/StandardVerbsConstructor.cpp)

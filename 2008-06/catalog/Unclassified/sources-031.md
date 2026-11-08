@@ -34,6 +34,7 @@ Earlier paths and their donor versions: `native-classes/DocumentException.cpp`.
 </details>
 
 **`7de543974a95`** · `Unclassified/src/DocumentException.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/DocumentException.cpp)
 - canonical · colingsnyder2-ux · [src/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/DocumentException.cpp)
 - canonical · colingsnyder2-ux · [src/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/DocumentException.cpp)
 - canonical · colingsnyder2-ux · [src/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/DocumentException.cpp)
@@ -128,6 +129,7 @@ Earlier paths and their donor versions: `native-classes/DocumentException.cpp`.
 </details>
 
 **`fb20dd87a488`** · `Unclassified/src/DocumentException.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/DocumentException.cpp)
 - public · colingsnyder2-ux · [src/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/DocumentException.cpp)
 - public · colingsnyder2-ux · [src/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/DocumentException.cpp)
 - public · colingsnyder2-ux · [src/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/DocumentException.cpp)
@@ -146,6 +148,8 @@ Earlier paths and their donor versions: `native-classes/DocumentException.cpp`.
 </details>
 
 **`2c3dd47d53bb`** · `native-classes/DocumentException.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/DocumentException.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/DocumentException.cpp)
 - public · colingsnyder2-ux · [native-classes/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/DocumentException.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/DocumentException.cpp)
 - public · colingsnyder2-ux · [native-classes/DocumentException.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/DocumentException.cpp)
@@ -371,6 +375,7 @@ Compatibility path for `WindowsClient/src/DocumentLaunch.cpp`; compile either pa
 Earlier paths and their donor versions: `native-classes/DocumentLaunch.cpp`.
 
 **`21b80d96e42c`** · `Unclassified/src/DocumentLaunch.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/DocumentLaunch.cpp)
 - canonical · colingsnyder2-ux · [src/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/DocumentLaunch.cpp)
 - canonical · colingsnyder2-ux · [src/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/DocumentLaunch.cpp)
 - canonical · colingsnyder2-ux · [src/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/DocumentLaunch.cpp)
@@ -462,6 +467,7 @@ Earlier paths and their donor versions: `native-classes/DocumentLaunch.cpp`.
 </details>
 
 **`84fbef2c4708`** · `Unclassified/src/DocumentLaunch.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/DocumentLaunch.cpp)
 - public · colingsnyder2-ux · [src/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/DocumentLaunch.cpp)
 - public · colingsnyder2-ux · [src/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/DocumentLaunch.cpp)
 - public · colingsnyder2-ux · [src/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/DocumentLaunch.cpp)
@@ -498,6 +504,8 @@ Earlier paths and their donor versions: `native-classes/DocumentLaunch.cpp`.
 - public · colingsnyder2-ux · [src/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/DocumentLaunch.cpp)
 
 **`066a6c952150`** · `native-classes/DocumentLaunch.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/DocumentLaunch.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/DocumentLaunch.cpp)
 - public · colingsnyder2-ux · [native-classes/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/DocumentLaunch.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/DocumentLaunch.cpp)
 - public · colingsnyder2-ux · [native-classes/DocumentLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/DocumentLaunch.cpp)
@@ -771,6 +779,7 @@ Earlier paths and their donor versions: `native-classes/DuplicateSelectionVerb.c
 </details>
 
 **`78d6b8082be8`** · `Unclassified/src/DuplicateSelectionVerb.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/DuplicateSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [src/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/DuplicateSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [src/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/DuplicateSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [src/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/DuplicateSelectionVerb.cpp)
@@ -796,6 +805,7 @@ Earlier paths and their donor versions: `native-classes/DuplicateSelectionVerb.c
 </details>
 
 **`a8733b8673bb`** · `Unclassified/src/DuplicateSelectionVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/DuplicateSelectionVerb.cpp)
 - public · colingsnyder2-ux · [src/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/DuplicateSelectionVerb.cpp)
 - public · colingsnyder2-ux · [src/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/DuplicateSelectionVerb.cpp)
 - public · colingsnyder2-ux · [src/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/DuplicateSelectionVerb.cpp)
@@ -929,6 +939,8 @@ Earlier paths and their donor versions: `native-classes/DuplicateSelectionVerb.c
 </details>
 
 **`abe52b7f4d60`** · `native-classes/DuplicateSelectionVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/DuplicateSelectionVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp)
 - public · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/DuplicateSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/DuplicateSelectionVerb.cpp)
 - public · colingsnyder2-ux · [native-classes/DuplicateSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/DuplicateSelectionVerb.cpp)

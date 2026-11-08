@@ -38,6 +38,7 @@ Earlier paths and their donor versions: `native-classes/FilteredSelectionMethods
 - public · colingsnyder2-ux · [v8datamodel/FilteredSelectionMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/FilteredSelectionMethods.cpp)
 
 **`a5d7bea8a196`** · `App/src/v8datamodel/FilteredSelectionMethods.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/FilteredSelectionMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/v8datamodel/FilteredSelectionMethods.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/FilteredSelectionMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/v8datamodel/FilteredSelectionMethods.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/FilteredSelectionMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/FilteredSelectionMethods.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/FilteredSelectionMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/FilteredSelectionMethods.cpp)
@@ -109,6 +110,7 @@ Earlier paths and their donor versions: `native-classes/FilteredSelectionMethods
 </details>
 
 **`ec175ab9ca74`** · `App/src/v8datamodel/FilteredSelectionMethods.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/FilteredSelectionMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/v8datamodel/FilteredSelectionMethods.cpp)
 - public · colingsnyder2-ux · [v8datamodel/FilteredSelectionMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/v8datamodel/FilteredSelectionMethods.cpp)
 - public · colingsnyder2-ux · [v8datamodel/FilteredSelectionMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/FilteredSelectionMethods.cpp)
 - public · colingsnyder2-ux · [v8datamodel/FilteredSelectionMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/FilteredSelectionMethods.cpp)
@@ -206,6 +208,8 @@ Earlier paths and their donor versions: `native-classes/FilteredSelectionMethods
 </details>
 
 **`c4c004f34745`** · `native-classes/FilteredSelectionMethods.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/FilteredSelectionMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/FilteredSelectionMethods.cpp)
+- canonical · colingsnyder2-ux · [native-classes/FilteredSelectionMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/FilteredSelectionMethods.cpp)
 - public · colingsnyder2-ux · [native-classes/FilteredSelectionMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/FilteredSelectionMethods.cpp)
 - canonical · colingsnyder2-ux · [native-classes/FilteredSelectionMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/FilteredSelectionMethods.cpp)
 - public · colingsnyder2-ux · [native-classes/FilteredSelectionMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/FilteredSelectionMethods.cpp)
@@ -327,6 +331,7 @@ Earlier paths and their donor versions: `native-classes/FilteredSelectionMethods
 Earlier paths and their donor versions: `native-classes/FilteredSelectionService.cpp`.
 
 **`18c2d2de2350`** · `App/src/v8datamodel/FilteredSelectionService.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/FilteredSelectionService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/v8datamodel/FilteredSelectionService.cpp)
 - public · colingsnyder2-ux · [v8datamodel/FilteredSelectionService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/v8datamodel/FilteredSelectionService.cpp)
 - public · colingsnyder2-ux · [v8datamodel/FilteredSelectionService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/FilteredSelectionService.cpp)
 - public · colingsnyder2-ux · [v8datamodel/FilteredSelectionService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/FilteredSelectionService.cpp)
@@ -386,6 +391,7 @@ Earlier paths and their donor versions: `native-classes/FilteredSelectionService
 - public · colingsnyder2-ux · [v8datamodel/FilteredSelectionService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/FilteredSelectionService.cpp)
 
 **`afacf2301074`** · `App/src/v8datamodel/FilteredSelectionService.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/FilteredSelectionService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/v8datamodel/FilteredSelectionService.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/FilteredSelectionService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/v8datamodel/FilteredSelectionService.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/FilteredSelectionService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/FilteredSelectionService.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/FilteredSelectionService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/FilteredSelectionService.cpp)
@@ -540,6 +546,8 @@ Earlier paths and their donor versions: `native-classes/FilteredSelectionService
 </details>
 
 **`c7db9176bc00`** · `native-classes/FilteredSelectionService.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/FilteredSelectionService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/FilteredSelectionService.cpp)
+- canonical · colingsnyder2-ux · [native-classes/FilteredSelectionService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/FilteredSelectionService.cpp)
 - public · colingsnyder2-ux · [native-classes/FilteredSelectionService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/FilteredSelectionService.cpp)
 - canonical · colingsnyder2-ux · [native-classes/FilteredSelectionService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/FilteredSelectionService.cpp)
 - public · colingsnyder2-ux · [native-classes/FilteredSelectionService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/FilteredSelectionService.cpp)

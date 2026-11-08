@@ -35,6 +35,7 @@ Earlier paths and their donor versions: `native-classes/RakPeerBitStreamRPC.cpp`
 </details>
 
 **`5b27fe6ac203`** · `Unclassified/src/RakPeerBitStreamRPC.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/RakPeerBitStreamRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/RakPeerBitStreamRPC.cpp)
 - canonical · colingsnyder2-ux · [src/RakPeerBitStreamRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/RakPeerBitStreamRPC.cpp)
 - canonical · colingsnyder2-ux · [src/RakPeerBitStreamRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/RakPeerBitStreamRPC.cpp)
 - canonical · colingsnyder2-ux · [src/RakPeerBitStreamRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/RakPeerBitStreamRPC.cpp)
@@ -43,6 +44,7 @@ Earlier paths and their donor versions: `native-classes/RakPeerBitStreamRPC.cpp`
 - canonical · colingsnyder2-ux · [src/RakPeerBitStreamRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/RakPeerBitStreamRPC.cpp)
 
 **`7e003cece213`** · `Unclassified/src/RakPeerBitStreamRPC.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/RakPeerBitStreamRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/RakPeerBitStreamRPC.cpp)
 - public · colingsnyder2-ux · [src/RakPeerBitStreamRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/RakPeerBitStreamRPC.cpp)
 - public · colingsnyder2-ux · [src/RakPeerBitStreamRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/RakPeerBitStreamRPC.cpp)
 - public · colingsnyder2-ux · [src/RakPeerBitStreamRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/RakPeerBitStreamRPC.cpp)
@@ -171,6 +173,8 @@ Earlier paths and their donor versions: `native-classes/RakPeerBitStreamRPC.cpp`
 - public · colingsnyder2-ux · [native-classes/RakPeerBitStreamRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/RakPeerBitStreamRPC.cpp)
 
 **`8ee0efe5bd14`** · `native-classes/RakPeerBitStreamRPC.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/RakPeerBitStreamRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/RakPeerBitStreamRPC.cpp)
+- canonical · colingsnyder2-ux · [native-classes/RakPeerBitStreamRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/RakPeerBitStreamRPC.cpp)
 - public · colingsnyder2-ux · [native-classes/RakPeerBitStreamRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/RakPeerBitStreamRPC.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RakPeerBitStreamRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/RakPeerBitStreamRPC.cpp)
 - public · colingsnyder2-ux · [native-classes/RakPeerBitStreamRPC.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/RakPeerBitStreamRPC.cpp)
@@ -344,6 +348,7 @@ Earlier paths and their donor versions: `native-classes/RakPeerCompression.cpp`.
 </details>
 
 **`3457480b6c98`** · `Unclassified/src/RakPeerCompression.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/RakPeerCompression.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/RakPeerCompression.cpp)
 - public · colingsnyder2-ux · [src/RakPeerCompression.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/RakPeerCompression.cpp)
 - public · colingsnyder2-ux · [src/RakPeerCompression.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/RakPeerCompression.cpp)
 - public · colingsnyder2-ux · [src/RakPeerCompression.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/RakPeerCompression.cpp)
@@ -367,6 +372,7 @@ Earlier paths and their donor versions: `native-classes/RakPeerCompression.cpp`.
 - public · colingsnyder2-ux · [src/RakPeerCompression.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/RakPeerCompression.cpp)
 
 **`641725db590c`** · `Unclassified/src/RakPeerCompression.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/RakPeerCompression.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/RakPeerCompression.cpp)
 - canonical · colingsnyder2-ux · [src/RakPeerCompression.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/RakPeerCompression.cpp)
 - canonical · colingsnyder2-ux · [src/RakPeerCompression.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/RakPeerCompression.cpp)
 - canonical · colingsnyder2-ux · [src/RakPeerCompression.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/RakPeerCompression.cpp)
@@ -449,6 +455,8 @@ Earlier paths and their donor versions: `native-classes/RakPeerCompression.cpp`.
 </details>
 
 **`3f0ef96ff0a6`** · `native-classes/RakPeerCompression.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/RakPeerCompression.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/RakPeerCompression.cpp)
+- canonical · colingsnyder2-ux · [native-classes/RakPeerCompression.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/RakPeerCompression.cpp)
 - public · colingsnyder2-ux · [native-classes/RakPeerCompression.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/RakPeerCompression.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RakPeerCompression.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/RakPeerCompression.cpp)
 - public · colingsnyder2-ux · [native-classes/RakPeerCompression.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/RakPeerCompression.cpp)
@@ -654,6 +662,7 @@ Earlier paths and their donor versions: `native-classes/RakPeerLifetime.cpp`.
 </details>
 
 **`66f44bba0f1a`** · `Unclassified/src/RakPeerLifetime.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/RakPeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/RakPeerLifetime.cpp)
 - canonical · colingsnyder2-ux · [src/RakPeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/RakPeerLifetime.cpp)
 - canonical · colingsnyder2-ux · [src/RakPeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/RakPeerLifetime.cpp)
 - canonical · colingsnyder2-ux · [src/RakPeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/RakPeerLifetime.cpp)
@@ -678,6 +687,7 @@ Earlier paths and their donor versions: `native-classes/RakPeerLifetime.cpp`.
 </details>
 
 **`7e920042bf3f`** · `Unclassified/src/RakPeerLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/RakPeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/RakPeerLifetime.cpp)
 - public · colingsnyder2-ux · [src/RakPeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/RakPeerLifetime.cpp)
 - public · colingsnyder2-ux · [src/RakPeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/RakPeerLifetime.cpp)
 - public · colingsnyder2-ux · [src/RakPeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/RakPeerLifetime.cpp)
@@ -751,6 +761,8 @@ Earlier paths and their donor versions: `native-classes/RakPeerLifetime.cpp`.
 </details>
 
 **`2512fc276588`** · `native-classes/RakPeerLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/RakPeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/RakPeerLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/RakPeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/RakPeerLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/RakPeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/RakPeerLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RakPeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/RakPeerLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/RakPeerLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/RakPeerLifetime.cpp)
@@ -894,6 +906,7 @@ Compatibility path for `Network/src/RakPeerNetworkLoop.cpp`; compile either path
 Earlier paths and their donor versions: `native-classes/RakPeerNetworkLoop.cpp`.
 
 **`005602fe0b26`** · `Unclassified/src/RakPeerNetworkLoop.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/RakPeerNetworkLoop.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/RakPeerNetworkLoop.cpp)
 - public · colingsnyder2-ux · [src/RakPeerNetworkLoop.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/RakPeerNetworkLoop.cpp)
 - public · colingsnyder2-ux · [src/RakPeerNetworkLoop.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/RakPeerNetworkLoop.cpp)
 - public · colingsnyder2-ux · [src/RakPeerNetworkLoop.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/RakPeerNetworkLoop.cpp)
@@ -902,6 +915,7 @@ Earlier paths and their donor versions: `native-classes/RakPeerNetworkLoop.cpp`.
 - public · colingsnyder2-ux · [src/RakPeerNetworkLoop.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/RakPeerNetworkLoop.cpp)
 
 **`224d60b39437`** · `Unclassified/src/RakPeerNetworkLoop.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/RakPeerNetworkLoop.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/RakPeerNetworkLoop.cpp)
 - canonical · colingsnyder2-ux · [src/RakPeerNetworkLoop.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/RakPeerNetworkLoop.cpp)
 - canonical · colingsnyder2-ux · [src/RakPeerNetworkLoop.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/RakPeerNetworkLoop.cpp)
 - canonical · colingsnyder2-ux · [src/RakPeerNetworkLoop.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/RakPeerNetworkLoop.cpp)
@@ -1085,6 +1099,8 @@ Earlier paths and their donor versions: `native-classes/RakPeerNetworkLoop.cpp`.
 - public · colingsnyder2-ux · [native-classes/RakPeerNetworkLoop.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/32cca27da7febd118f779bd346ab6e082c2246f8/2008-06/native-classes/RakPeerNetworkLoop.cpp)
 
 **`cce8fddff3f9`** · `native-classes/RakPeerNetworkLoop.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/RakPeerNetworkLoop.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/RakPeerNetworkLoop.cpp)
+- canonical · colingsnyder2-ux · [native-classes/RakPeerNetworkLoop.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/RakPeerNetworkLoop.cpp)
 - public · colingsnyder2-ux · [native-classes/RakPeerNetworkLoop.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/RakPeerNetworkLoop.cpp)
 - canonical · colingsnyder2-ux · [native-classes/RakPeerNetworkLoop.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/RakPeerNetworkLoop.cpp)
 - public · colingsnyder2-ux · [native-classes/RakPeerNetworkLoop.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/RakPeerNetworkLoop.cpp)

@@ -36,6 +36,7 @@ Earlier paths and their donor versions: `native-classes/SelectionBack.cpp`.
 - public · colingsnyder2-ux · [v8datamodel/SelectionBack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/SelectionBack.cpp)
 
 **`40da1879fa72`** · `App/src/v8datamodel/SelectionBack.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/SelectionBack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/v8datamodel/SelectionBack.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SelectionBack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/v8datamodel/SelectionBack.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SelectionBack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/SelectionBack.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SelectionBack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/SelectionBack.cpp)
@@ -67,6 +68,7 @@ Earlier paths and their donor versions: `native-classes/SelectionBack.cpp`.
 </details>
 
 **`764e99b9d6d2`** · `App/src/v8datamodel/SelectionBack.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/SelectionBack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/v8datamodel/SelectionBack.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SelectionBack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/v8datamodel/SelectionBack.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SelectionBack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/SelectionBack.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SelectionBack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/SelectionBack.cpp)
@@ -156,6 +158,8 @@ Earlier paths and their donor versions: `native-classes/SelectionBack.cpp`.
 - public · colingsnyder2-ux · [native-classes/SelectionBack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/SelectionBack.cpp)
 
 **`29ade0e258dc`** · `native-classes/SelectionBack.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SelectionBack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/SelectionBack.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SelectionBack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/SelectionBack.cpp)
 - public · colingsnyder2-ux · [native-classes/SelectionBack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/SelectionBack.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SelectionBack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/SelectionBack.cpp)
 - public · colingsnyder2-ux · [native-classes/SelectionBack.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/SelectionBack.cpp)
@@ -326,6 +330,7 @@ Earlier paths and their donor versions: `native-classes/SelectionBack.cpp`.
 Earlier paths and their donor versions: `native-classes/SelectionFront.cpp`.
 
 **`223190331031`** · `App/src/v8datamodel/SelectionFront.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/SelectionFront.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/v8datamodel/SelectionFront.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SelectionFront.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/v8datamodel/SelectionFront.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SelectionFront.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/SelectionFront.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SelectionFront.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/SelectionFront.cpp)
@@ -423,6 +428,7 @@ Earlier paths and their donor versions: `native-classes/SelectionFront.cpp`.
 </details>
 
 **`f82cb6053215`** · `App/src/v8datamodel/SelectionFront.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/SelectionFront.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/v8datamodel/SelectionFront.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SelectionFront.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/v8datamodel/SelectionFront.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SelectionFront.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/SelectionFront.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SelectionFront.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/SelectionFront.cpp)
@@ -516,6 +522,8 @@ Earlier paths and their donor versions: `native-classes/SelectionFront.cpp`.
 </details>
 
 **`8a7041c2bb25`** · `native-classes/SelectionFront.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SelectionFront.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/SelectionFront.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SelectionFront.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/SelectionFront.cpp)
 - public · colingsnyder2-ux · [native-classes/SelectionFront.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/SelectionFront.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SelectionFront.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/SelectionFront.cpp)
 - public · colingsnyder2-ux · [native-classes/SelectionFront.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/SelectionFront.cpp)
@@ -686,6 +694,7 @@ Earlier paths and their donor versions: `native-classes/SelectionFront.cpp`.
 Earlier paths and their donor versions: `native-classes/SelectionVerbStates.cpp`.
 
 **`6ee2005ddc23`** · `App/src/v8datamodel/SelectionVerbStates.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/SelectionVerbStates.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/v8datamodel/SelectionVerbStates.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SelectionVerbStates.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/v8datamodel/SelectionVerbStates.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SelectionVerbStates.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/SelectionVerbStates.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SelectionVerbStates.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/SelectionVerbStates.cpp)
@@ -783,6 +792,7 @@ Earlier paths and their donor versions: `native-classes/SelectionVerbStates.cpp`
 - public · colingsnyder2-ux · [v8datamodel/SelectionVerbStates.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/SelectionVerbStates.cpp)
 
 **`ce401dd660b2`** · `App/src/v8datamodel/SelectionVerbStates.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/SelectionVerbStates.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/v8datamodel/SelectionVerbStates.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SelectionVerbStates.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/v8datamodel/SelectionVerbStates.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SelectionVerbStates.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/SelectionVerbStates.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SelectionVerbStates.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/SelectionVerbStates.cpp)
@@ -814,6 +824,8 @@ Earlier paths and their donor versions: `native-classes/SelectionVerbStates.cpp`
 </details>
 
 **`22e604e7625a`** · `native-classes/SelectionVerbStates.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SelectionVerbStates.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/SelectionVerbStates.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SelectionVerbStates.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/SelectionVerbStates.cpp)
 - public · colingsnyder2-ux · [native-classes/SelectionVerbStates.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/SelectionVerbStates.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SelectionVerbStates.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/SelectionVerbStates.cpp)
 - public · colingsnyder2-ux · [native-classes/SelectionVerbStates.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/SelectionVerbStates.cpp)

@@ -19,6 +19,7 @@ Earlier paths and their donor versions: `native-classes/WeldSnapActions.cpp`.
 - public · colingsnyder2-ux · [src/WeldSnapActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/WeldSnapActions.cpp)
 
 **`1e7dae103c10`** · `Unclassified/src/WeldSnapActions.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/WeldSnapActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/WeldSnapActions.cpp)
 - canonical · colingsnyder2-ux · [src/WeldSnapActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/WeldSnapActions.cpp)
 - canonical · colingsnyder2-ux · [src/WeldSnapActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/WeldSnapActions.cpp)
 - canonical · colingsnyder2-ux · [src/WeldSnapActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/WeldSnapActions.cpp)
@@ -97,6 +98,7 @@ Earlier paths and their donor versions: `native-classes/WeldSnapActions.cpp`.
 </details>
 
 **`f0b341f4ae21`** · `Unclassified/src/WeldSnapActions.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/WeldSnapActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/WeldSnapActions.cpp)
 - public · colingsnyder2-ux · [src/WeldSnapActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/WeldSnapActions.cpp)
 - public · colingsnyder2-ux · [src/WeldSnapActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/WeldSnapActions.cpp)
 - public · colingsnyder2-ux · [src/WeldSnapActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/WeldSnapActions.cpp)
@@ -215,6 +217,8 @@ Earlier paths and their donor versions: `native-classes/WeldSnapActions.cpp`.
 </details>
 
 **`d70d155af13f`** · `native-classes/WeldSnapActions.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/WeldSnapActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/WeldSnapActions.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WeldSnapActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/WeldSnapActions.cpp)
 - public · colingsnyder2-ux · [native-classes/WeldSnapActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/WeldSnapActions.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WeldSnapActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/WeldSnapActions.cpp)
 - public · colingsnyder2-ux · [native-classes/WeldSnapActions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/WeldSnapActions.cpp)
@@ -400,6 +404,7 @@ Earlier paths and their donor versions: `native-classes/Widget.cpp`.
 - public · colingsnyder2-ux · [src/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/Widget.cpp)
 
 **`82bf1eee33ea`** · `Unclassified/src/Widget.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/Widget.cpp)
 - public · colingsnyder2-ux · [src/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/Widget.cpp)
 - public · colingsnyder2-ux · [src/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/Widget.cpp)
 - public · colingsnyder2-ux · [src/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/Widget.cpp)
@@ -410,6 +415,7 @@ Earlier paths and their donor versions: `native-classes/Widget.cpp`.
 - public · colingsnyder2-ux · [src/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Unclassified/src/Widget.cpp)
 
 **`eec56f6fa6f0`** · `Unclassified/src/Widget.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/Widget.cpp)
 - canonical · colingsnyder2-ux · [src/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/Widget.cpp)
 - canonical · colingsnyder2-ux · [src/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/Widget.cpp)
 - canonical · colingsnyder2-ux · [src/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/Widget.cpp)
@@ -437,6 +443,8 @@ Earlier paths and their donor versions: `native-classes/Widget.cpp`.
 </details>
 
 **`09d416f50899`** · `native-classes/Widget.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/Widget.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/Widget.cpp)
 - public · colingsnyder2-ux · [native-classes/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/Widget.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/Widget.cpp)
 - public · colingsnyder2-ux · [native-classes/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/Widget.cpp)
@@ -595,6 +603,7 @@ Earlier paths and their donor versions: `native-classes/Widget.cpp`.
 </details>
 
 **`86565c4d946e`** · `native-classes/Widget.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/drafts/files/ecacb66069eaed65ee025854c099922c06e4da13c05748ea9cf966c64cbf5a16/rebuild/2008-06/native-classes/Widget.cpp)
 - draft · colingsnyder2-ux · [native-classes/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/drafts/files/ecacb66069eaed65ee025854c099922c06e4da13c05748ea9cf966c64cbf5a16/rebuild/2008-06/native-classes/Widget.cpp)
 - draft · colingsnyder2-ux · [native-classes/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/ecacb66069eaed65ee025854c099922c06e4da13c05748ea9cf966c64cbf5a16/rebuild/2008-06/native-classes/Widget.cpp)
 - draft · colingsnyder2-ux · [native-classes/Widget.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/ecacb66069eaed65ee025854c099922c06e4da13c05748ea9cf966c64cbf5a16/rebuild/2008-06/native-classes/Widget.cpp)
@@ -713,6 +722,7 @@ Earlier paths and their donor versions: `native-classes/WidgetButtons.cpp`.
 - public · colingsnyder2-ux · [src/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/WidgetButtons.cpp)
 
 **`d259542b7363`** · `Unclassified/src/WidgetButtons.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/WidgetButtons.cpp)
 - public · colingsnyder2-ux · [src/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/WidgetButtons.cpp)
 - public · colingsnyder2-ux · [src/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/WidgetButtons.cpp)
 - public · colingsnyder2-ux · [src/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/WidgetButtons.cpp)
@@ -771,6 +781,7 @@ Earlier paths and their donor versions: `native-classes/WidgetButtons.cpp`.
 </details>
 
 **`eb394e033ab1`** · `Unclassified/src/WidgetButtons.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/WidgetButtons.cpp)
 - canonical · colingsnyder2-ux · [src/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/WidgetButtons.cpp)
 - canonical · colingsnyder2-ux · [src/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/WidgetButtons.cpp)
 - canonical · colingsnyder2-ux · [src/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/WidgetButtons.cpp)
@@ -808,6 +819,7 @@ Earlier paths and their donor versions: `native-classes/WidgetButtons.cpp`.
 </details>
 
 **`8df09f685399`** · `native-classes/WidgetButtons.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/drafts/files/605888022c35d2b0c3add8ddd3550bb9f21e847819195ea1a0baf3c06055273e/rebuild/2008-06/native-classes/WidgetButtons.cpp)
 - draft · colingsnyder2-ux · [native-classes/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/drafts/files/605888022c35d2b0c3add8ddd3550bb9f21e847819195ea1a0baf3c06055273e/rebuild/2008-06/native-classes/WidgetButtons.cpp)
 - draft · colingsnyder2-ux · [native-classes/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/605888022c35d2b0c3add8ddd3550bb9f21e847819195ea1a0baf3c06055273e/rebuild/2008-06/native-classes/WidgetButtons.cpp)
 - draft · colingsnyder2-ux · [native-classes/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/605888022c35d2b0c3add8ddd3550bb9f21e847819195ea1a0baf3c06055273e/rebuild/2008-06/native-classes/WidgetButtons.cpp)
@@ -925,6 +937,8 @@ Earlier paths and their donor versions: `native-classes/WidgetButtons.cpp`.
 </details>
 
 **`e73a7d4fd541`** · `native-classes/WidgetButtons.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/WidgetButtons.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/WidgetButtons.cpp)
 - public · colingsnyder2-ux · [native-classes/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/WidgetButtons.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/WidgetButtons.cpp)
 - public · colingsnyder2-ux · [native-classes/WidgetButtons.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/WidgetButtons.cpp)

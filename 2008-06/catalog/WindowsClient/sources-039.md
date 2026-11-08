@@ -3,11 +3,148 @@
 [Project index](README.md) · [Previous](sources-038.md) · [Next](sources-040.md)
 
 <details>
+<summary>WindowsClient/src/BoolPropertyVerb.cpp — diverged; 8 content versions</summary>
+
+Earlier paths and their donor versions: `Unclassified/src/BoolPropertyVerb.cpp`.
+
+**`22c9523d6cf1`** · `WindowsClient/src/BoolPropertyVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/WindowsClient/src/BoolPropertyVerb.cpp)
+- public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/WindowsClient/src/BoolPropertyVerb.cpp)
+- public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/BoolPropertyVerb.cpp)
+- public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/BoolPropertyVerb.cpp)
+- public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/WindowsClient/src/BoolPropertyVerb.cpp)
+- public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/WindowsClient/src/BoolPropertyVerb.cpp)
+- public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/WindowsClient/src/BoolPropertyVerb.cpp)
+- public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/WindowsClient/src/BoolPropertyVerb.cpp)
+
+**`e56c799b995d`** · `WindowsClient/src/BoolPropertyVerb.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/WindowsClient/src/BoolPropertyVerb.cpp)
+- canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/WindowsClient/src/BoolPropertyVerb.cpp)
+- canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/BoolPropertyVerb.cpp)
+- canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/BoolPropertyVerb.cpp)
+- canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/WindowsClient/src/BoolPropertyVerb.cpp)
+- canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/WindowsClient/src/BoolPropertyVerb.cpp)
+- canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/WindowsClient/src/BoolPropertyVerb.cpp)
+- canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/WindowsClient/src/BoolPropertyVerb.cpp)
+
+<details><summary>2 retained local origins</summary>
+
+- local · `work/native-candidates/r2/prepared/canonical/rebuild/2008-06/WindowsClient/src/BoolPropertyVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/WindowsClient/src/BoolPropertyVerb.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`2a329c516f22`** · `Unclassified/src/BoolPropertyVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+
+<details><summary>1 retained local origins</summary>
+
+- local · `work/native-candidates/status-labels-20261108/public/2008-06/Unclassified/src/BoolPropertyVerb.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`7223efb56f06`** · `Unclassified/src/BoolPropertyVerb.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+
+<details><summary>2 retained local origins</summary>
+
+- local · `work/native-candidates/r2/prepared/canonical/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`88196ef0af47`** · `Unclassified/src/BoolPropertyVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ba839eed7b78cb34b6cc92f913d3bf44e6e795a5/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/4353a1a300c0c962718cdb02f33c91a397458216/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+
+**`9c2550971a2f`** · `Unclassified/src/BoolPropertyVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- public · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+
+**`c0e3cd396113`** · `Unclassified/src/BoolPropertyVerb.cpp` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`e56c799b995d`** · `Unclassified/src/BoolPropertyVerb.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/e3a4373616d9f1cb104a4a31fc0763f62c013309/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/bf818bb365ae290e852917cbcfb683865140f730/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/dda70d189617ae4809992e6795236cacc64baeed/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aca3e2d2000054b8c11bf990944e203ca57ca22d/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7f4ee995c093dd60c5715cf1761eb5676cf6e5bc/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/c367aa4ad20fe49ac25b1ffd680112d1a9d5ac80/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/63b0354dee1ddd740ce552635816b2e00ee6a4bb/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+- canonical · colingsnyder2-ux · [src/BoolPropertyVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp)
+
+<details><summary>17 retained local origins</summary>
+
+- local · `work/native-candidates/instance-owner-frozen-20261107/native/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/instance-parent-current-20261108/source/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/mew-instance-hierarchy-20261107/source/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/provider-source-guard-20261107/actual/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/relative-source-pass-20261107/after/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/toolverb-real-headers-20261107/candidate/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/Unclassified/src/BoolPropertyVerb.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
 <summary>WindowsClient/src/BrowserViewExternalMethods.cpp — diverged; 8 content versions</summary>
 
 Earlier paths and their donor versions: `Unclassified/src/BrowserViewExternalMethods.cpp`.
 
 **`603427829e53`** · `WindowsClient/src/BrowserViewExternalMethods.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/WindowsClient/src/BrowserViewExternalMethods.cpp)
 - public · colingsnyder2-ux · [src/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/WindowsClient/src/BrowserViewExternalMethods.cpp)
 - public · colingsnyder2-ux · [src/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/BrowserViewExternalMethods.cpp)
 - public · colingsnyder2-ux · [src/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/BrowserViewExternalMethods.cpp)
@@ -18,6 +155,7 @@ Earlier paths and their donor versions: `Unclassified/src/BrowserViewExternalMet
 - public · colingsnyder2-ux · [src/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/WindowsClient/src/BrowserViewExternalMethods.cpp)
 
 **`aaf8fa7deb66`** · `WindowsClient/src/BrowserViewExternalMethods.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/WindowsClient/src/BrowserViewExternalMethods.cpp)
 - canonical · colingsnyder2-ux · [src/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/WindowsClient/src/BrowserViewExternalMethods.cpp)
 - canonical · colingsnyder2-ux · [src/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/BrowserViewExternalMethods.cpp)
 - canonical · colingsnyder2-ux · [src/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/BrowserViewExternalMethods.cpp)
@@ -78,6 +216,7 @@ Earlier paths and their donor versions: `Unclassified/src/BrowserViewExternalMet
 </details>
 
 **`5a4654a81ada`** · `Unclassified/src/BrowserViewExternalMethods.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/BrowserViewExternalMethods.cpp)
 - canonical · colingsnyder2-ux · [src/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/BrowserViewExternalMethods.cpp)
 - canonical · colingsnyder2-ux · [src/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/BrowserViewExternalMethods.cpp)
 - canonical · colingsnyder2-ux · [src/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/BrowserViewExternalMethods.cpp)
@@ -97,6 +236,7 @@ Earlier paths and their donor versions: `Unclassified/src/BrowserViewExternalMet
 </details>
 
 **`67bf76985877`** · `Unclassified/src/BrowserViewExternalMethods.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/BrowserViewExternalMethods.cpp)
 - public · colingsnyder2-ux · [src/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/BrowserViewExternalMethods.cpp)
 - public · colingsnyder2-ux · [src/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/BrowserViewExternalMethods.cpp)
 - public · colingsnyder2-ux · [src/BrowserViewExternalMethods.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/BrowserViewExternalMethods.cpp)
@@ -180,6 +320,7 @@ Earlier paths and their donor versions: `native-classes/CAboutRobloxDialog.cpp`.
 </details>
 
 **`82671348ed58`** · `WindowsClient/src/CAboutRobloxDialog.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/CAboutRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/WindowsClient/src/CAboutRobloxDialog.cpp)
 - public · colingsnyder2-ux · [src/CAboutRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/WindowsClient/src/CAboutRobloxDialog.cpp)
 - public · colingsnyder2-ux · [src/CAboutRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/src/CAboutRobloxDialog.cpp)
 - public · colingsnyder2-ux · [src/CAboutRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/src/CAboutRobloxDialog.cpp)
@@ -202,6 +343,7 @@ Earlier paths and their donor versions: `native-classes/CAboutRobloxDialog.cpp`.
 </details>
 
 **`d8aeb3c98c75`** · `WindowsClient/src/CAboutRobloxDialog.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/CAboutRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/WindowsClient/src/CAboutRobloxDialog.cpp)
 - canonical · colingsnyder2-ux · [src/CAboutRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/WindowsClient/src/CAboutRobloxDialog.cpp)
 - canonical · colingsnyder2-ux · [src/CAboutRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/src/CAboutRobloxDialog.cpp)
 - canonical · colingsnyder2-ux · [src/CAboutRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/src/CAboutRobloxDialog.cpp)
@@ -316,6 +458,7 @@ Earlier paths and their donor versions: `native-classes/CAboutRobloxDialog.cpp`.
 </details>
 
 **`43443c86a82c`** · `native-classes/CAboutRobloxDialog.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/CAboutRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/drafts/files/8f65d6b6b08b3e16b3fe1bcbe387041a554ca6aa7b91c16cd881a78916da79de/rebuild/2008-06/native-classes/CAboutRobloxDialog.cpp)
 - draft · colingsnyder2-ux · [native-classes/CAboutRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/drafts/files/8f65d6b6b08b3e16b3fe1bcbe387041a554ca6aa7b91c16cd881a78916da79de/rebuild/2008-06/native-classes/CAboutRobloxDialog.cpp)
 - draft · colingsnyder2-ux · [native-classes/CAboutRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/8f65d6b6b08b3e16b3fe1bcbe387041a554ca6aa7b91c16cd881a78916da79de/rebuild/2008-06/native-classes/CAboutRobloxDialog.cpp)
 - draft · colingsnyder2-ux · [native-classes/CAboutRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/8f65d6b6b08b3e16b3fe1bcbe387041a554ca6aa7b91c16cd881a78916da79de/rebuild/2008-06/native-classes/CAboutRobloxDialog.cpp)
@@ -401,6 +544,8 @@ Earlier paths and their donor versions: `native-classes/CAboutRobloxDialog.cpp`.
 </details>
 
 **`670b45531c6b`** · `native-classes/CAboutRobloxDialog.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CAboutRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/CAboutRobloxDialog.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CAboutRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/CAboutRobloxDialog.cpp)
 - public · colingsnyder2-ux · [native-classes/CAboutRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/CAboutRobloxDialog.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CAboutRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/CAboutRobloxDialog.cpp)
 - public · colingsnyder2-ux · [native-classes/CAboutRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/CAboutRobloxDialog.cpp)
@@ -509,6 +654,7 @@ Earlier paths and their donor versions: `native-classes/CAboutRobloxDialog.cpp`.
 </details>
 
 **`a5bf04a571c5`** · `native-classes/CAboutRobloxDialog.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/CAboutRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/drafts/files/c52716aa208e898dc6886c487926198796069a6406729d9bf41b67d9c269f5d5/rebuild/2008-06/native-classes/CAboutRobloxDialog.cpp)
 - draft · colingsnyder2-ux · [native-classes/CAboutRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/drafts/files/c52716aa208e898dc6886c487926198796069a6406729d9bf41b67d9c269f5d5/rebuild/2008-06/native-classes/CAboutRobloxDialog.cpp)
 - draft · colingsnyder2-ux · [native-classes/CAboutRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/c52716aa208e898dc6886c487926198796069a6406729d9bf41b67d9c269f5d5/rebuild/2008-06/native-classes/CAboutRobloxDialog.cpp)
 - draft · colingsnyder2-ux · [native-classes/CAboutRobloxDialog.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/c52716aa208e898dc6886c487926198796069a6406729d9bf41b67d9c269f5d5/rebuild/2008-06/native-classes/CAboutRobloxDialog.cpp)

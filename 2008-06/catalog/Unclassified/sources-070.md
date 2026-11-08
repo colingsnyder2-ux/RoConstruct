@@ -19,6 +19,7 @@ Earlier paths and their donor versions: `native-classes/VerbContainer.cpp`.
 </details>
 
 **`58f6e43b6170`** · `Unclassified/src/VerbContainer.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/VerbContainer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/VerbContainer.cpp)
 - canonical · colingsnyder2-ux · [src/VerbContainer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/VerbContainer.cpp)
 - canonical · colingsnyder2-ux · [src/VerbContainer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/VerbContainer.cpp)
 - canonical · colingsnyder2-ux · [src/VerbContainer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/VerbContainer.cpp)
@@ -35,6 +36,7 @@ Earlier paths and their donor versions: `native-classes/VerbContainer.cpp`.
 </details>
 
 **`9b22940d2077`** · `Unclassified/src/VerbContainer.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/VerbContainer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/VerbContainer.cpp)
 - public · colingsnyder2-ux · [src/VerbContainer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/VerbContainer.cpp)
 - public · colingsnyder2-ux · [src/VerbContainer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/VerbContainer.cpp)
 - public · colingsnyder2-ux · [src/VerbContainer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/VerbContainer.cpp)
@@ -112,6 +114,8 @@ Earlier paths and their donor versions: `native-classes/VerbContainer.cpp`.
 - public · colingsnyder2-ux · [src/VerbContainer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/VerbContainer.cpp)
 
 **`045b6456aa94`** · `native-classes/VerbContainer.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/VerbContainer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/VerbContainer.cpp)
+- canonical · colingsnyder2-ux · [native-classes/VerbContainer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/VerbContainer.cpp)
 - public · colingsnyder2-ux · [native-classes/VerbContainer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/VerbContainer.cpp)
 - canonical · colingsnyder2-ux · [native-classes/VerbContainer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/VerbContainer.cpp)
 - public · colingsnyder2-ux · [native-classes/VerbContainer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/VerbContainer.cpp)
@@ -574,6 +578,7 @@ Earlier paths and their donor versions: `native-classes/VerbLifetime.cpp`.
 - public · colingsnyder2-ux · [src/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/VerbLifetime.cpp)
 
 **`b2086c1a2367`** · `Unclassified/src/VerbLifetime.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/VerbLifetime.cpp)
 - canonical · colingsnyder2-ux · [src/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/VerbLifetime.cpp)
 - canonical · colingsnyder2-ux · [src/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/VerbLifetime.cpp)
 - canonical · colingsnyder2-ux · [src/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/VerbLifetime.cpp)
@@ -593,6 +598,7 @@ Earlier paths and their donor versions: `native-classes/VerbLifetime.cpp`.
 </details>
 
 **`be1cf5985652`** · `Unclassified/src/VerbLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/VerbLifetime.cpp)
 - public · colingsnyder2-ux · [src/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/VerbLifetime.cpp)
 - public · colingsnyder2-ux · [src/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/VerbLifetime.cpp)
 - public · colingsnyder2-ux · [src/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/VerbLifetime.cpp)
@@ -603,6 +609,8 @@ Earlier paths and their donor versions: `native-classes/VerbLifetime.cpp`.
 - public · colingsnyder2-ux · [src/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Unclassified/src/VerbLifetime.cpp)
 
 **`088dd42c77af`** · `native-classes/VerbLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/VerbLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/VerbLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/VerbLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/VerbLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/VerbLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/VerbLifetime.cpp)
@@ -849,6 +857,7 @@ Earlier paths and their donor versions: `native-classes/ViewCommandRouting.cpp`.
 - public · colingsnyder2-ux · [src/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/ViewCommandRouting.cpp)
 
 **`50cd30d2a1e0`** · `Unclassified/src/ViewCommandRouting.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/ViewCommandRouting.cpp)
 - canonical · colingsnyder2-ux · [src/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/ViewCommandRouting.cpp)
 - canonical · colingsnyder2-ux · [src/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/ViewCommandRouting.cpp)
 - canonical · colingsnyder2-ux · [src/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/ViewCommandRouting.cpp)
@@ -930,6 +939,7 @@ Earlier paths and their donor versions: `native-classes/ViewCommandRouting.cpp`.
 </details>
 
 **`e44898196fc5`** · `Unclassified/src/ViewCommandRouting.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/ViewCommandRouting.cpp)
 - public · colingsnyder2-ux · [src/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/ViewCommandRouting.cpp)
 - public · colingsnyder2-ux · [src/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/ViewCommandRouting.cpp)
 - public · colingsnyder2-ux · [src/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/ViewCommandRouting.cpp)
@@ -949,6 +959,8 @@ Earlier paths and their donor versions: `native-classes/ViewCommandRouting.cpp`.
 </details>
 
 **`3c3c2d14b9b7`** · `native-classes/ViewCommandRouting.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/ViewCommandRouting.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/ViewCommandRouting.cpp)
 - public · colingsnyder2-ux · [native-classes/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/ViewCommandRouting.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/ViewCommandRouting.cpp)
 - public · colingsnyder2-ux · [native-classes/ViewCommandRouting.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/ViewCommandRouting.cpp)

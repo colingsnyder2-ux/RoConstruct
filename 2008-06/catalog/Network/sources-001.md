@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/Network/IdSerializer.h`.
 
 **`5119044b58a9`** · `Network/include/Network/IdSerializer.h` · proof not assessed
+- public · colingsnyder2-ux · [Network/IdSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Network/include/Network/IdSerializer.h)
 - public · colingsnyder2-ux · [Network/IdSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Network/include/Network/IdSerializer.h)
 - public · colingsnyder2-ux · [Network/IdSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Network/include/Network/IdSerializer.h)
 - public · colingsnyder2-ux · [Network/IdSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Network/include/Network/IdSerializer.h)
@@ -39,6 +40,7 @@ Earlier paths and their donor versions: `native-headers/Network/IdSerializer.h`.
 </details>
 
 **`d1508651db8c`** · `Network/include/Network/IdSerializer.h` · proof not assessed
+- canonical · colingsnyder2-ux · [Network/IdSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Network/include/Network/IdSerializer.h)
 - canonical · colingsnyder2-ux · [Network/IdSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Network/include/Network/IdSerializer.h)
 - canonical · colingsnyder2-ux · [Network/IdSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Network/include/Network/IdSerializer.h)
 - canonical · colingsnyder2-ux · [Network/IdSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Network/include/Network/IdSerializer.h)
@@ -220,6 +222,8 @@ Earlier paths and their donor versions: `native-headers/Network/IdSerializer.h`.
 </details>
 
 **`cd0e7289c8c1`** · `native-headers/Network/IdSerializer.h` · proof not assessed
+- public · colingsnyder2-ux · [Network/IdSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-headers/Network/IdSerializer.h)
+- canonical · colingsnyder2-ux · [Network/IdSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-headers/Network/IdSerializer.h)
 - public · colingsnyder2-ux · [Network/IdSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-headers/Network/IdSerializer.h)
 - canonical · colingsnyder2-ux · [Network/IdSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-headers/Network/IdSerializer.h)
 - public · colingsnyder2-ux · [Network/IdSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/Network/IdSerializer.h)
@@ -452,6 +456,7 @@ Earlier paths and their donor versions: `native-headers/Network/IdSerializer.h`.
 Earlier paths and their donor versions: `native-headers/Network/NetworkSettings.h`.
 
 **`00a18186ef87`** · `Network/include/Network/NetworkSettings.h` · proof not assessed
+- canonical · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Network/include/Network/NetworkSettings.h)
 - canonical · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Network/include/Network/NetworkSettings.h)
 - canonical · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Network/include/Network/NetworkSettings.h)
 - canonical · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Network/include/Network/NetworkSettings.h)
@@ -579,6 +584,7 @@ Earlier paths and their donor versions: `native-headers/Network/NetworkSettings.
 </details>
 
 **`8ed8d07e6161`** · `Network/include/Network/NetworkSettings.h` · proof not assessed
+- public · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Network/include/Network/NetworkSettings.h)
 - public · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Network/include/Network/NetworkSettings.h)
 - public · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Network/include/Network/NetworkSettings.h)
 - public · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Network/include/Network/NetworkSettings.h)
@@ -704,6 +710,8 @@ Earlier paths and their donor versions: `native-headers/Network/NetworkSettings.
 </details>
 
 **`59b95939bbe3`** · `native-headers/Network/NetworkSettings.h` · proof not assessed
+- public · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-headers/Network/NetworkSettings.h)
+- canonical · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-headers/Network/NetworkSettings.h)
 - public · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-headers/Network/NetworkSettings.h)
 - canonical · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-headers/Network/NetworkSettings.h)
 - public · colingsnyder2-ux · [Network/NetworkSettings.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/Network/NetworkSettings.h)

@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/CameraFirstPerson.cpp`.
 
 **`4b2709a8527a`** · `App/src/v8datamodel/CameraFirstPerson.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/CameraFirstPerson.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/v8datamodel/CameraFirstPerson.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/CameraFirstPerson.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/v8datamodel/CameraFirstPerson.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/CameraFirstPerson.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/CameraFirstPerson.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/CameraFirstPerson.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/CameraFirstPerson.cpp)
@@ -96,6 +97,7 @@ Earlier paths and their donor versions: `native-classes/CameraFirstPerson.cpp`.
 - public · colingsnyder2-ux · [v8datamodel/CameraFirstPerson.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/CameraFirstPerson.cpp)
 
 **`bb0c3f47c218`** · `App/src/v8datamodel/CameraFirstPerson.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/CameraFirstPerson.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/v8datamodel/CameraFirstPerson.cpp)
 - public · colingsnyder2-ux · [v8datamodel/CameraFirstPerson.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/v8datamodel/CameraFirstPerson.cpp)
 - public · colingsnyder2-ux · [v8datamodel/CameraFirstPerson.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/CameraFirstPerson.cpp)
 - public · colingsnyder2-ux · [v8datamodel/CameraFirstPerson.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/CameraFirstPerson.cpp)
@@ -188,6 +190,8 @@ Earlier paths and their donor versions: `native-classes/CameraFirstPerson.cpp`.
 - public · colingsnyder2-ux · [native-classes/CameraFirstPerson.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/CameraFirstPerson.cpp)
 
 **`892bd5e65d64`** · `native-classes/CameraFirstPerson.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CameraFirstPerson.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/CameraFirstPerson.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CameraFirstPerson.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/CameraFirstPerson.cpp)
 - public · colingsnyder2-ux · [native-classes/CameraFirstPerson.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/CameraFirstPerson.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CameraFirstPerson.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/CameraFirstPerson.cpp)
 - public · colingsnyder2-ux · [native-classes/CameraFirstPerson.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/CameraFirstPerson.cpp)
@@ -323,6 +327,7 @@ Earlier paths and their donor versions: `native-classes/CameraFirstPerson.cpp`.
 Earlier paths and their donor versions: `native-classes/CameraHistory.cpp`.
 
 **`31b1f4ef20f7`** · `App/src/v8datamodel/CameraHistory.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/CameraHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/v8datamodel/CameraHistory.cpp)
 - public · colingsnyder2-ux · [v8datamodel/CameraHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/v8datamodel/CameraHistory.cpp)
 - public · colingsnyder2-ux · [v8datamodel/CameraHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/CameraHistory.cpp)
 - public · colingsnyder2-ux · [v8datamodel/CameraHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/CameraHistory.cpp)
@@ -382,6 +387,7 @@ Earlier paths and their donor versions: `native-classes/CameraHistory.cpp`.
 </details>
 
 **`f589a66f5eb5`** · `App/src/v8datamodel/CameraHistory.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/CameraHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/v8datamodel/CameraHistory.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/CameraHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/v8datamodel/CameraHistory.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/CameraHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/CameraHistory.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/CameraHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/CameraHistory.cpp)
@@ -442,6 +448,8 @@ Earlier paths and their donor versions: `native-classes/CameraHistory.cpp`.
 </details>
 
 **`136fcde4abbb`** · `native-classes/CameraHistory.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CameraHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/CameraHistory.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CameraHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/CameraHistory.cpp)
 - public · colingsnyder2-ux · [native-classes/CameraHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/CameraHistory.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CameraHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/CameraHistory.cpp)
 - public · colingsnyder2-ux · [native-classes/CameraHistory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/CameraHistory.cpp)
@@ -652,6 +660,7 @@ Earlier paths and their donor versions: `native-classes/CameraHistory.cpp`.
 Earlier paths and their donor versions: `native-classes/CameraUnits.cpp`.
 
 **`17906058c9d0`** · `App/src/v8datamodel/CameraUnits.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/CameraUnits.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/v8datamodel/CameraUnits.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/CameraUnits.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/v8datamodel/CameraUnits.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/CameraUnits.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/CameraUnits.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/CameraUnits.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/CameraUnits.cpp)
@@ -712,6 +721,7 @@ Earlier paths and their donor versions: `native-classes/CameraUnits.cpp`.
 </details>
 
 **`4077e47e1b07`** · `App/src/v8datamodel/CameraUnits.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/CameraUnits.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/v8datamodel/CameraUnits.cpp)
 - public · colingsnyder2-ux · [v8datamodel/CameraUnits.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/v8datamodel/CameraUnits.cpp)
 - public · colingsnyder2-ux · [v8datamodel/CameraUnits.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/CameraUnits.cpp)
 - public · colingsnyder2-ux · [v8datamodel/CameraUnits.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/CameraUnits.cpp)
@@ -817,6 +827,8 @@ Earlier paths and their donor versions: `native-classes/CameraUnits.cpp`.
 </details>
 
 **`3e5b375d0a2b`** · `native-classes/CameraUnits.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CameraUnits.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/CameraUnits.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CameraUnits.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/CameraUnits.cpp)
 - public · colingsnyder2-ux · [native-classes/CameraUnits.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/CameraUnits.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CameraUnits.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/CameraUnits.cpp)
 - public · colingsnyder2-ux · [native-classes/CameraUnits.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/CameraUnits.cpp)

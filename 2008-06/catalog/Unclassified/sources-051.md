@@ -10,6 +10,7 @@ Compatibility path for `WindowsClient/src/MoveUpVerbConstructors.cpp`; compile e
 Earlier paths and their donor versions: `native-classes/MoveUpVerbConstructors.cpp`.
 
 **`2c5a12615995`** · `Unclassified/src/MoveUpVerbConstructors.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/MoveUpVerbConstructors.cpp)
 - canonical · colingsnyder2-ux · [src/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/MoveUpVerbConstructors.cpp)
 - canonical · colingsnyder2-ux · [src/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/MoveUpVerbConstructors.cpp)
 - canonical · colingsnyder2-ux · [src/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/MoveUpVerbConstructors.cpp)
@@ -91,6 +92,7 @@ Earlier paths and their donor versions: `native-classes/MoveUpVerbConstructors.c
 </details>
 
 **`a537652363fe`** · `Unclassified/src/MoveUpVerbConstructors.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/MoveUpVerbConstructors.cpp)
 - public · colingsnyder2-ux · [src/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/MoveUpVerbConstructors.cpp)
 - public · colingsnyder2-ux · [src/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/MoveUpVerbConstructors.cpp)
 - public · colingsnyder2-ux · [src/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/MoveUpVerbConstructors.cpp)
@@ -183,6 +185,8 @@ Earlier paths and their donor versions: `native-classes/MoveUpVerbConstructors.c
 </details>
 
 **`e2379477b82a`** · `native-classes/MoveUpVerbConstructors.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/MoveUpVerbConstructors.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
 - public · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/MoveUpVerbConstructors.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
 - public · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/MoveUpVerbConstructors.cpp)
@@ -254,6 +258,15 @@ Earlier paths and their donor versions: `native-classes/MoveUpVerbConstructors.c
 </details>
 
 **`ec51c970db9f`** · `native-classes/MoveUpVerbConstructors.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/drafts/files/0543b68e898a5fc160358627b014c451b279dad5b07ec1be5bf1f001d4850324/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
+- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/drafts/files/080454c957fcbbe235b1b2aed4486ceeb53884eb34c5800f9e8b739aca6b8624/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
+- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/drafts/files/107b42d791e2c9fc2741f54915477f705b06b966e8718521ec67c296085d9a5d/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
+- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/drafts/files/11f98fda8667a05d3444ced3886056a7f805ef60eb13bcbecf840988a7328bfe/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
+- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/drafts/files/4b519e9b7a1c1a2d949df3ba0e544fec298887fd132f50d2a85fea3b48570e4b/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
+- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/drafts/files/74620bd0c4d2c5cda9623be393544abb77fe43b3741d9d463e7e25e7f9e6046e/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
+- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/drafts/files/8c45830dc143c29edc8546c8255c4c44ed6946ac9ef46016217041b320347464/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
+- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/drafts/files/979c73bed37b7bcbc7fdbaea79f65e1c6165fbd8b953d1a2fd033518e59c047c/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
+- draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/drafts/files/9eea5432ef08d5d7e3f3e67d3f84b07c47df9c46d79223ecedd1271fd7f485ff/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
 - draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/drafts/files/0543b68e898a5fc160358627b014c451b279dad5b07ec1be5bf1f001d4850324/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
 - draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/drafts/files/080454c957fcbbe235b1b2aed4486ceeb53884eb34c5800f9e8b739aca6b8624/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)
 - draft · colingsnyder2-ux · [native-classes/MoveUpVerbConstructors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/drafts/files/107b42d791e2c9fc2741f54915477f705b06b966e8718521ec67c296085d9a5d/rebuild/2008-06/native-classes/MoveUpVerbConstructors.cpp)

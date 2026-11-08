@@ -43,6 +43,7 @@ Earlier paths and their donor versions: `native-classes/GuidRegistryInitialize.c
 - public · colingsnyder2-ux · [src/GuidRegistryInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/GuidRegistryInitialize.cpp)
 
 **`3e633a20f4a9`** · `Unclassified/src/GuidRegistryInitialize.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/GuidRegistryInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/GuidRegistryInitialize.cpp)
 - public · colingsnyder2-ux · [src/GuidRegistryInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/GuidRegistryInitialize.cpp)
 - public · colingsnyder2-ux · [src/GuidRegistryInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/GuidRegistryInitialize.cpp)
 - public · colingsnyder2-ux · [src/GuidRegistryInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/GuidRegistryInitialize.cpp)
@@ -101,6 +102,7 @@ Earlier paths and their donor versions: `native-classes/GuidRegistryInitialize.c
 </details>
 
 **`55d4ae38b68a`** · `Unclassified/src/GuidRegistryInitialize.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/GuidRegistryInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/GuidRegistryInitialize.cpp)
 - canonical · colingsnyder2-ux · [src/GuidRegistryInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/GuidRegistryInitialize.cpp)
 - canonical · colingsnyder2-ux · [src/GuidRegistryInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/GuidRegistryInitialize.cpp)
 - canonical · colingsnyder2-ux · [src/GuidRegistryInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/GuidRegistryInitialize.cpp)
@@ -213,6 +215,8 @@ Earlier paths and their donor versions: `native-classes/GuidRegistryInitialize.c
 </details>
 
 **`7ca2d64f21b7`** · `native-classes/GuidRegistryInitialize.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/GuidRegistryInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/GuidRegistryInitialize.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GuidRegistryInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/GuidRegistryInitialize.cpp)
 - public · colingsnyder2-ux · [native-classes/GuidRegistryInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/GuidRegistryInitialize.cpp)
 - canonical · colingsnyder2-ux · [native-classes/GuidRegistryInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/GuidRegistryInitialize.cpp)
 - public · colingsnyder2-ux · [native-classes/GuidRegistryInitialize.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/GuidRegistryInitialize.cpp)
@@ -359,6 +363,7 @@ Compatibility path for `Base/src/util/GuidRegistryMutex.cpp`; compile either pat
 Earlier paths and their donor versions: `native-classes/GuidRegistryMutex.cpp`.
 
 **`19ae99729c6c`** · `Unclassified/src/GuidRegistryMutex.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/GuidRegistryMutex.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/GuidRegistryMutex.cpp)
 - canonical · colingsnyder2-ux · [src/GuidRegistryMutex.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/GuidRegistryMutex.cpp)
 - canonical · colingsnyder2-ux · [src/GuidRegistryMutex.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/GuidRegistryMutex.cpp)
 - canonical · colingsnyder2-ux · [src/GuidRegistryMutex.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/GuidRegistryMutex.cpp)
@@ -426,6 +431,7 @@ Earlier paths and their donor versions: `native-classes/GuidRegistryMutex.cpp`.
 </details>
 
 **`62c68b180feb`** · `Unclassified/src/GuidRegistryMutex.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/GuidRegistryMutex.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/GuidRegistryMutex.cpp)
 - public · colingsnyder2-ux · [src/GuidRegistryMutex.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/GuidRegistryMutex.cpp)
 - public · colingsnyder2-ux · [src/GuidRegistryMutex.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/GuidRegistryMutex.cpp)
 - public · colingsnyder2-ux · [src/GuidRegistryMutex.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/GuidRegistryMutex.cpp)
@@ -570,6 +576,8 @@ Earlier paths and their donor versions: `native-classes/GuidRegistryMutex.cpp`.
 </details>
 
 **`877ac26d8cbe`** · `native-classes/GuidRegistryMutex.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/GuidRegistryMutex.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/GuidRegistryMutex.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GuidRegistryMutex.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/GuidRegistryMutex.cpp)
 - public · colingsnyder2-ux · [native-classes/GuidRegistryMutex.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/GuidRegistryMutex.cpp)
 - canonical · colingsnyder2-ux · [native-classes/GuidRegistryMutex.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/GuidRegistryMutex.cpp)
 - public · colingsnyder2-ux · [native-classes/GuidRegistryMutex.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/GuidRegistryMutex.cpp)
@@ -758,6 +766,7 @@ Earlier paths and their donor versions: `native-classes/HandleHitTest.cpp`.
 - public · colingsnyder2-ux · [src/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/HandleHitTest.cpp)
 
 **`b36ad78b17c2`** · `Unclassified/src/HandleHitTest.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/HandleHitTest.cpp)
 - public · colingsnyder2-ux · [src/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/HandleHitTest.cpp)
 - public · colingsnyder2-ux · [src/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/HandleHitTest.cpp)
 - public · colingsnyder2-ux · [src/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/HandleHitTest.cpp)
@@ -827,6 +836,7 @@ Earlier paths and their donor versions: `native-classes/HandleHitTest.cpp`.
 </details>
 
 **`e76d6e616783`** · `Unclassified/src/HandleHitTest.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/HandleHitTest.cpp)
 - canonical · colingsnyder2-ux · [src/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/HandleHitTest.cpp)
 - canonical · colingsnyder2-ux · [src/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/HandleHitTest.cpp)
 - canonical · colingsnyder2-ux · [src/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/HandleHitTest.cpp)
@@ -921,6 +931,8 @@ Earlier paths and their donor versions: `native-classes/HandleHitTest.cpp`.
 </details>
 
 **`e2f0c1cd2125`** · `native-classes/HandleHitTest.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/HandleHitTest.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/HandleHitTest.cpp)
 - public · colingsnyder2-ux · [native-classes/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/HandleHitTest.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/HandleHitTest.cpp)
 - public · colingsnyder2-ux · [native-classes/HandleHitTest.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/HandleHitTest.cpp)

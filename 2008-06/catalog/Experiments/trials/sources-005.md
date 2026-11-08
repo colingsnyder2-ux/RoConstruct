@@ -3,9 +3,769 @@
 [Project index](README.md) · [Previous](sources-004.md) · [Next](sources-006.md)
 
 <details>
+<summary>experiments/trials/NativeModelToolsTrial.cpp — equivalent; 2 content versions</summary>
+
+**`6dfe116bdc2f`** · `experiments/trials/NativeModelToolsTrial.cpp` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`88dd30ceccc0`** · `experiments/trials/NativeModelToolsTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativeModelToolsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativeModelToolsTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeModelToolsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeModelToolsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeModelToolsTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeModelToolsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeModelToolsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeModelToolsTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeModelToolsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeModelToolsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeModelToolsTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeModelToolsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.cpp)
+
+<details><summary>12 retained local origins</summary>
+
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>experiments/trials/NativeModelToolsTrial.h — equivalent; 1 content versions</summary>
+
+**`aaf4e3b45191`** · `experiments/trials/NativeModelToolsTrial.h` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativeModelToolsTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativeModelToolsTrial.h)
+- canonical · colingsnyder2-ux · [trials/NativeModelToolsTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.h)
+- public · colingsnyder2-ux · [trials/NativeModelToolsTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeModelToolsTrial.h)
+- canonical · colingsnyder2-ux · [trials/NativeModelToolsTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.h)
+- public · colingsnyder2-ux · [trials/NativeModelToolsTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeModelToolsTrial.h)
+- canonical · colingsnyder2-ux · [trials/NativeModelToolsTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.h)
+- public · colingsnyder2-ux · [trials/NativeModelToolsTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeModelToolsTrial.h)
+- canonical · colingsnyder2-ux · [trials/NativeModelToolsTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.h)
+
+<details><summary>14 retained local origins</summary>
+
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeModelToolsTrial.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>experiments/trials/NativeMotorFeatureTrial.cpp — equivalent; 2 content versions</summary>
+
+**`7f39bccc648f`** · `experiments/trials/NativeMotorFeatureTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativeMotorFeatureTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativeMotorFeatureTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeMotorFeatureTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativeMotorFeatureTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeMotorFeatureTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeMotorFeatureTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeMotorFeatureTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeMotorFeatureTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeMotorFeatureTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeMotorFeatureTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeMotorFeatureTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeMotorFeatureTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeMotorFeatureTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeMotorFeatureTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeMotorFeatureTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeMotorFeatureTrial.cpp)
+
+<details><summary>12 retained local origins</summary>
+
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeMotorFeatureTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeMotorFeatureTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeMotorFeatureTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeMotorFeatureTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeMotorFeatureTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeMotorFeatureTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeMotorFeatureTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeMotorFeatureTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeMotorFeatureTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeMotorFeatureTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeMotorFeatureTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeMotorFeatureTrial.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`8e8c50fe78aa`** · `experiments/trials/NativeMotorFeatureTrial.cpp` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeMotorFeatureTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeMotorFeatureTrial.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>experiments/trials/NativeMouseCommandLifetimeTrial.cpp — equivalent; 2 content versions</summary>
+
+**`1b5897b03a8c`** · `experiments/trials/NativeMouseCommandLifetimeTrial.cpp` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeMouseCommandLifetimeTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeMouseCommandLifetimeTrial.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`b03fd0099730`** · `experiments/trials/NativeMouseCommandLifetimeTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativeMouseCommandLifetimeTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativeMouseCommandLifetimeTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeMouseCommandLifetimeTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativeMouseCommandLifetimeTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeMouseCommandLifetimeTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeMouseCommandLifetimeTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeMouseCommandLifetimeTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeMouseCommandLifetimeTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeMouseCommandLifetimeTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeMouseCommandLifetimeTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeMouseCommandLifetimeTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeMouseCommandLifetimeTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeMouseCommandLifetimeTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeMouseCommandLifetimeTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeMouseCommandLifetimeTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeMouseCommandLifetimeTrial.cpp)
+
+<details><summary>12 retained local origins</summary>
+
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeMouseCommandLifetimeTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeMouseCommandLifetimeTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeMouseCommandLifetimeTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeMouseCommandLifetimeTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeMouseCommandLifetimeTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeMouseCommandLifetimeTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeMouseCommandLifetimeTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeMouseCommandLifetimeTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeMouseCommandLifetimeTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeMouseCommandLifetimeTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeMouseCommandLifetimeTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeMouseCommandLifetimeTrial.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>experiments/trials/NativeMouseGetSurfaceTrial.cpp — equivalent; 2 content versions</summary>
+
+**`069a70edbd5b`** · `experiments/trials/NativeMouseGetSurfaceTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativeMouseGetSurfaceTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativeMouseGetSurfaceTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeMouseGetSurfaceTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativeMouseGetSurfaceTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeMouseGetSurfaceTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeMouseGetSurfaceTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeMouseGetSurfaceTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeMouseGetSurfaceTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeMouseGetSurfaceTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeMouseGetSurfaceTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeMouseGetSurfaceTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeMouseGetSurfaceTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeMouseGetSurfaceTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeMouseGetSurfaceTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeMouseGetSurfaceTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeMouseGetSurfaceTrial.cpp)
+
+<details><summary>12 retained local origins</summary>
+
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeMouseGetSurfaceTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeMouseGetSurfaceTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeMouseGetSurfaceTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeMouseGetSurfaceTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeMouseGetSurfaceTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeMouseGetSurfaceTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeMouseGetSurfaceTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeMouseGetSurfaceTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeMouseGetSurfaceTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeMouseGetSurfaceTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeMouseGetSurfaceTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeMouseGetSurfaceTrial.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`5a094bdc731d`** · `experiments/trials/NativeMouseGetSurfaceTrial.cpp` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeMouseGetSurfaceTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeMouseGetSurfaceTrial.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>experiments/trials/NativeMouseUnlockedTrial.cpp — equivalent; 2 content versions</summary>
+
+**`7efa93400b68`** · `experiments/trials/NativeMouseUnlockedTrial.cpp` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeMouseUnlockedTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeMouseUnlockedTrial.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`b40872227a43`** · `experiments/trials/NativeMouseUnlockedTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativeMouseUnlockedTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativeMouseUnlockedTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeMouseUnlockedTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativeMouseUnlockedTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeMouseUnlockedTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeMouseUnlockedTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeMouseUnlockedTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeMouseUnlockedTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeMouseUnlockedTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeMouseUnlockedTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeMouseUnlockedTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeMouseUnlockedTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeMouseUnlockedTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeMouseUnlockedTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeMouseUnlockedTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeMouseUnlockedTrial.cpp)
+
+<details><summary>12 retained local origins</summary>
+
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeMouseUnlockedTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeMouseUnlockedTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeMouseUnlockedTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeMouseUnlockedTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeMouseUnlockedTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeMouseUnlockedTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeMouseUnlockedTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeMouseUnlockedTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeMouseUnlockedTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeMouseUnlockedTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeMouseUnlockedTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeMouseUnlockedTrial.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>experiments/trials/NativeMoveGridTrial.h — equivalent; 1 content versions</summary>
+
+**`12923c47e5f7`** · `experiments/trials/NativeMoveGridTrial.h` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativeMoveGridTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativeMoveGridTrial.h)
+- canonical · colingsnyder2-ux · [trials/NativeMoveGridTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativeMoveGridTrial.h)
+- public · colingsnyder2-ux · [trials/NativeMoveGridTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeMoveGridTrial.h)
+- canonical · colingsnyder2-ux · [trials/NativeMoveGridTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeMoveGridTrial.h)
+- public · colingsnyder2-ux · [trials/NativeMoveGridTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeMoveGridTrial.h)
+- canonical · colingsnyder2-ux · [trials/NativeMoveGridTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeMoveGridTrial.h)
+- public · colingsnyder2-ux · [trials/NativeMoveGridTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeMoveGridTrial.h)
+- canonical · colingsnyder2-ux · [trials/NativeMoveGridTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeMoveGridTrial.h)
+
+<details><summary>14 retained local origins</summary>
+
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeMoveGridTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeMoveGridTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeMoveGridTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeMoveGridTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeMoveGridTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeMoveGridTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeMoveGridTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeMoveGridTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeMoveGridTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeMoveGridTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeMoveGridTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeMoveGridTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeMoveGridTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeMoveGridTrial.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>experiments/trials/NativeMovePartTrial.cpp — equivalent; 2 content versions</summary>
+
+**`036072a01bb3`** · `experiments/trials/NativeMovePartTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativeMovePartTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativeMovePartTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeMovePartTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativeMovePartTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeMovePartTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeMovePartTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeMovePartTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeMovePartTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeMovePartTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeMovePartTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeMovePartTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeMovePartTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeMovePartTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeMovePartTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeMovePartTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeMovePartTrial.cpp)
+
+<details><summary>12 retained local origins</summary>
+
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeMovePartTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeMovePartTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeMovePartTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeMovePartTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeMovePartTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeMovePartTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeMovePartTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeMovePartTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeMovePartTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeMovePartTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeMovePartTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeMovePartTrial.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`dbb1fc4899bb`** · `experiments/trials/NativeMovePartTrial.cpp` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeMovePartTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeMovePartTrial.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>experiments/trials/NativeMoveUpActionTrial.cpp — equivalent; 2 content versions</summary>
+
+**`75cffbc76c1f`** · `experiments/trials/NativeMoveUpActionTrial.cpp` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeMoveUpActionTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeMoveUpActionTrial.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`c35c7739936d`** · `experiments/trials/NativeMoveUpActionTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativeMoveUpActionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativeMoveUpActionTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeMoveUpActionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativeMoveUpActionTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeMoveUpActionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeMoveUpActionTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeMoveUpActionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeMoveUpActionTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeMoveUpActionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeMoveUpActionTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeMoveUpActionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeMoveUpActionTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeMoveUpActionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeMoveUpActionTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeMoveUpActionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeMoveUpActionTrial.cpp)
+
+<details><summary>12 retained local origins</summary>
+
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeMoveUpActionTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeMoveUpActionTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeMoveUpActionTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeMoveUpActionTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeMoveUpActionTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeMoveUpActionTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeMoveUpActionTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeMoveUpActionTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeMoveUpActionTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeMoveUpActionTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeMoveUpActionTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeMoveUpActionTrial.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>experiments/trials/NativeMoveUpConstructorsTrial.cpp — equivalent; 2 content versions</summary>
+
+**`5602d5cc1020`** · `experiments/trials/NativeMoveUpConstructorsTrial.cpp` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeMoveUpConstructorsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeMoveUpConstructorsTrial.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`ca4700517bfd`** · `experiments/trials/NativeMoveUpConstructorsTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativeMoveUpConstructorsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativeMoveUpConstructorsTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeMoveUpConstructorsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativeMoveUpConstructorsTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeMoveUpConstructorsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeMoveUpConstructorsTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeMoveUpConstructorsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeMoveUpConstructorsTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeMoveUpConstructorsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeMoveUpConstructorsTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeMoveUpConstructorsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeMoveUpConstructorsTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeMoveUpConstructorsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeMoveUpConstructorsTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeMoveUpConstructorsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeMoveUpConstructorsTrial.cpp)
+
+<details><summary>12 retained local origins</summary>
+
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeMoveUpConstructorsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeMoveUpConstructorsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeMoveUpConstructorsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeMoveUpConstructorsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeMoveUpConstructorsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeMoveUpConstructorsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeMoveUpConstructorsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeMoveUpConstructorsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeMoveUpConstructorsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeMoveUpConstructorsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeMoveUpConstructorsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeMoveUpConstructorsTrial.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>experiments/trials/NativeNullToolFactoryTrial.cpp — equivalent; 2 content versions</summary>
+
+**`4170fdc2e788`** · `experiments/trials/NativeNullToolFactoryTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativeNullToolFactoryTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativeNullToolFactoryTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeNullToolFactoryTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativeNullToolFactoryTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeNullToolFactoryTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeNullToolFactoryTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeNullToolFactoryTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeNullToolFactoryTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeNullToolFactoryTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeNullToolFactoryTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeNullToolFactoryTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeNullToolFactoryTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeNullToolFactoryTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeNullToolFactoryTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeNullToolFactoryTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeNullToolFactoryTrial.cpp)
+
+<details><summary>12 retained local origins</summary>
+
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeNullToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeNullToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeNullToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeNullToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeNullToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeNullToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeNullToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeNullToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeNullToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeNullToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeNullToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeNullToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`964c23b77ef7`** · `experiments/trials/NativeNullToolFactoryTrial.cpp` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeNullToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeNullToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>experiments/trials/NativeOscillateMotorToolFactoryTrial.cpp — equivalent; 2 content versions</summary>
+
+**`271d5d924162`** · `experiments/trials/NativeOscillateMotorToolFactoryTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativeOscillateMotorToolFactoryTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativeOscillateMotorToolFactoryTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeOscillateMotorToolFactoryTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolFactoryTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeOscillateMotorToolFactoryTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeOscillateMotorToolFactoryTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeOscillateMotorToolFactoryTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolFactoryTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeOscillateMotorToolFactoryTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeOscillateMotorToolFactoryTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeOscillateMotorToolFactoryTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolFactoryTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeOscillateMotorToolFactoryTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeOscillateMotorToolFactoryTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeOscillateMotorToolFactoryTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolFactoryTrial.cpp)
+
+<details><summary>12 retained local origins</summary>
+
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`658e1c5ec7b4`** · `experiments/trials/NativeOscillateMotorToolFactoryTrial.cpp` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>experiments/trials/NativeOscillateMotorToolMethodsTrial.cpp — equivalent; 2 content versions</summary>
+
+**`05aefdd00249`** · `experiments/trials/NativeOscillateMotorToolMethodsTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativeOscillateMotorToolMethodsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativeOscillateMotorToolMethodsTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeOscillateMotorToolMethodsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolMethodsTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeOscillateMotorToolMethodsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeOscillateMotorToolMethodsTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeOscillateMotorToolMethodsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolMethodsTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeOscillateMotorToolMethodsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeOscillateMotorToolMethodsTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeOscillateMotorToolMethodsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolMethodsTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeOscillateMotorToolMethodsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeOscillateMotorToolMethodsTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeOscillateMotorToolMethodsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolMethodsTrial.cpp)
+
+<details><summary>12 retained local origins</summary>
+
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolMethodsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolMethodsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolMethodsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolMethodsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolMethodsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolMethodsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolMethodsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolMethodsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolMethodsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolMethodsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolMethodsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolMethodsTrial.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`374730b4c6c7`** · `experiments/trials/NativeOscillateMotorToolMethodsTrial.cpp` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolMethodsTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeOscillateMotorToolMethodsTrial.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>experiments/trials/NativeParentDescriptorTrial.cpp — equivalent; 2 content versions</summary>
+
+**`9364dc065b66`** · `experiments/trials/NativeParentDescriptorTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativeParentDescriptorTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativeParentDescriptorTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeParentDescriptorTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativeParentDescriptorTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeParentDescriptorTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeParentDescriptorTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeParentDescriptorTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeParentDescriptorTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeParentDescriptorTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeParentDescriptorTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeParentDescriptorTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeParentDescriptorTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativeParentDescriptorTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeParentDescriptorTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeParentDescriptorTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeParentDescriptorTrial.cpp)
+
+<details><summary>12 retained local origins</summary>
+
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeParentDescriptorTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeParentDescriptorTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeParentDescriptorTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeParentDescriptorTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeParentDescriptorTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeParentDescriptorTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeParentDescriptorTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeParentDescriptorTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeParentDescriptorTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeParentDescriptorTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeParentDescriptorTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeParentDescriptorTrial.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`e8000a03d65b`** · `experiments/trials/NativeParentDescriptorTrial.cpp` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeParentDescriptorTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeParentDescriptorTrial.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>experiments/trials/NativePartDragLifetimeTrial.cpp — equivalent; 2 content versions</summary>
+
+**`4801ef263bd0`** · `experiments/trials/NativePartDragLifetimeTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativePartDragLifetimeTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativePartDragLifetimeTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativePartDragLifetimeTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativePartDragLifetimeTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativePartDragLifetimeTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativePartDragLifetimeTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativePartDragLifetimeTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativePartDragLifetimeTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativePartDragLifetimeTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativePartDragLifetimeTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativePartDragLifetimeTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativePartDragLifetimeTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativePartDragLifetimeTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativePartDragLifetimeTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativePartDragLifetimeTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativePartDragLifetimeTrial.cpp)
+
+<details><summary>12 retained local origins</summary>
+
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativePartDragLifetimeTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativePartDragLifetimeTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativePartDragLifetimeTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativePartDragLifetimeTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativePartDragLifetimeTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativePartDragLifetimeTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativePartDragLifetimeTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativePartDragLifetimeTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativePartDragLifetimeTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativePartDragLifetimeTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativePartDragLifetimeTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativePartDragLifetimeTrial.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`ea2f61f52c4d`** · `experiments/trials/NativePartDragLifetimeTrial.cpp` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativePartDragLifetimeTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativePartDragLifetimeTrial.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>experiments/trials/NativePartDragNameTrial.cpp — equivalent; 2 content versions</summary>
+
+**`a01036bb766c`** · `experiments/trials/NativePartDragNameTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativePartDragNameTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativePartDragNameTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativePartDragNameTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativePartDragNameTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativePartDragNameTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativePartDragNameTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativePartDragNameTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativePartDragNameTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativePartDragNameTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativePartDragNameTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativePartDragNameTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativePartDragNameTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativePartDragNameTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativePartDragNameTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativePartDragNameTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativePartDragNameTrial.cpp)
+
+<details><summary>12 retained local origins</summary>
+
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativePartDragNameTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativePartDragNameTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativePartDragNameTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativePartDragNameTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativePartDragNameTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativePartDragNameTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativePartDragNameTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativePartDragNameTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativePartDragNameTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativePartDragNameTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativePartDragNameTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativePartDragNameTrial.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`e8457fb7f4b7`** · `experiments/trials/NativePartDragNameTrial.cpp` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativePartDragNameTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativePartDragNameTrial.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>experiments/trials/NativePartDragToolTrial.h — equivalent; 1 content versions</summary>
+
+**`79d6d3441cca`** · `experiments/trials/NativePartDragToolTrial.h` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativePartDragToolTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativePartDragToolTrial.h)
+- canonical · colingsnyder2-ux · [trials/NativePartDragToolTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativePartDragToolTrial.h)
+- public · colingsnyder2-ux · [trials/NativePartDragToolTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativePartDragToolTrial.h)
+- canonical · colingsnyder2-ux · [trials/NativePartDragToolTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativePartDragToolTrial.h)
+- public · colingsnyder2-ux · [trials/NativePartDragToolTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativePartDragToolTrial.h)
+- canonical · colingsnyder2-ux · [trials/NativePartDragToolTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativePartDragToolTrial.h)
+- public · colingsnyder2-ux · [trials/NativePartDragToolTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativePartDragToolTrial.h)
+- canonical · colingsnyder2-ux · [trials/NativePartDragToolTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativePartDragToolTrial.h)
+
+<details><summary>14 retained local origins</summary>
+
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativePartDragToolTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativePartDragToolTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativePartDragToolTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativePartDragToolTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativePartDragToolTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativePartDragToolTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativePartDragToolTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativePartDragToolTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativePartDragToolTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativePartDragToolTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativePartDragToolTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativePartDragToolTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativePartDragToolTrial.h` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativePartDragToolTrial.h` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>experiments/trials/NativePartGetSurfaceTrial.cpp — equivalent; 2 content versions</summary>
+
+**`56609e67f1a6`** · `experiments/trials/NativePartGetSurfaceTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativePartGetSurfaceTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativePartGetSurfaceTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativePartGetSurfaceTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativePartGetSurfaceTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativePartGetSurfaceTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativePartGetSurfaceTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativePartGetSurfaceTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativePartGetSurfaceTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativePartGetSurfaceTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativePartGetSurfaceTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativePartGetSurfaceTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativePartGetSurfaceTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativePartGetSurfaceTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativePartGetSurfaceTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativePartGetSurfaceTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativePartGetSurfaceTrial.cpp)
+
+<details><summary>12 retained local origins</summary>
+
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativePartGetSurfaceTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativePartGetSurfaceTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativePartGetSurfaceTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativePartGetSurfaceTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativePartGetSurfaceTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativePartGetSurfaceTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativePartGetSurfaceTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativePartGetSurfaceTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativePartGetSurfaceTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativePartGetSurfaceTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativePartGetSurfaceTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativePartGetSurfaceTrial.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`e13aa464b83e`** · `experiments/trials/NativePartGetSurfaceTrial.cpp` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativePartGetSurfaceTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativePartGetSurfaceTrial.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
+<summary>experiments/trials/NativePartSetLockedCompactTrial.cpp — equivalent; 2 content versions</summary>
+
+**`4cd2399d3642`** · `experiments/trials/NativePartSetLockedCompactTrial.cpp` · proof not assessed
+
+<details><summary>2 retained local origins</summary>
+
+- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativePartSetLockedCompactTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativePartSetLockedCompactTrial.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+**`5c31c737f8c9`** · `experiments/trials/NativePartSetLockedCompactTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativePartSetLockedCompactTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativePartSetLockedCompactTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativePartSetLockedCompactTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativePartSetLockedCompactTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativePartSetLockedCompactTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativePartSetLockedCompactTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativePartSetLockedCompactTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativePartSetLockedCompactTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativePartSetLockedCompactTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativePartSetLockedCompactTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativePartSetLockedCompactTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativePartSetLockedCompactTrial.cpp)
+- public · colingsnyder2-ux · [trials/NativePartSetLockedCompactTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativePartSetLockedCompactTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativePartSetLockedCompactTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativePartSetLockedCompactTrial.cpp)
+
+<details><summary>12 retained local origins</summary>
+
+- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativePartSetLockedCompactTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativePartSetLockedCompactTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativePartSetLockedCompactTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativePartSetLockedCompactTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativePartSetLockedCompactTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativePartSetLockedCompactTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativePartSetLockedCompactTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativePartSetLockedCompactTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativePartSetLockedCompactTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativePartSetLockedCompactTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativePartSetLockedCompactTrial.cpp` · root `b52aa15feaea5a0c`
+- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativePartSetLockedCompactTrial.cpp` · root `b52aa15feaea5a0c`
+
+</details>
+
+</details>
+
+<details>
 <summary>experiments/trials/NativePartToolMethodsTrial.cpp — equivalent; 2 content versions</summary>
 
 **`ce94453a2c2d`** · `experiments/trials/NativePartToolMethodsTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativePartToolMethodsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativePartToolMethodsTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativePartToolMethodsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativePartToolMethodsTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativePartToolMethodsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativePartToolMethodsTrial.cpp)
 - canonical · colingsnyder2-ux · [trials/NativePartToolMethodsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativePartToolMethodsTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativePartToolMethodsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativePartToolMethodsTrial.cpp)
@@ -45,6 +805,8 @@
 <summary>experiments/trials/NativePartToolNamesTrial.cpp — equivalent; 2 content versions</summary>
 
 **`5a77dbf33899`** · `experiments/trials/NativePartToolNamesTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativePartToolNamesTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativePartToolNamesTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativePartToolNamesTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativePartToolNamesTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativePartToolNamesTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativePartToolNamesTrial.cpp)
 - canonical · colingsnyder2-ux · [trials/NativePartToolNamesTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativePartToolNamesTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativePartToolNamesTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativePartToolNamesTrial.cpp)
@@ -84,6 +846,8 @@
 <summary>experiments/trials/NativePartToolTrial.cpp — equivalent; 2 content versions</summary>
 
 **`b149ac2a50c0`** · `experiments/trials/NativePartToolTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativePartToolTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativePartToolTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativePartToolTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativePartToolTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativePartToolTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativePartToolTrial.cpp)
 - canonical · colingsnyder2-ux · [trials/NativePartToolTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativePartToolTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativePartToolTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativePartToolTrial.cpp)
@@ -123,6 +887,8 @@
 <summary>experiments/trials/NativePartToolsFactoriesTrial.cpp — equivalent; 2 content versions</summary>
 
 **`1838287f0667`** · `experiments/trials/NativePartToolsFactoriesTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativePartToolsFactoriesTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativePartToolsFactoriesTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativePartToolsFactoriesTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativePartToolsFactoriesTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativePartToolsFactoriesTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativePartToolsFactoriesTrial.cpp)
 - canonical · colingsnyder2-ux · [trials/NativePartToolsFactoriesTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativePartToolsFactoriesTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativePartToolsFactoriesTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativePartToolsFactoriesTrial.cpp)
@@ -171,6 +937,8 @@
 </details>
 
 **`c062f28a40c7`** · `experiments/trials/NativeResizeToolDragTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativeResizeToolDragTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativeResizeToolDragTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeResizeToolDragTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativeResizeToolDragTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativeResizeToolDragTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeResizeToolDragTrial.cpp)
 - canonical · colingsnyder2-ux · [trials/NativeResizeToolDragTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeResizeToolDragTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativeResizeToolDragTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeResizeToolDragTrial.cpp)
@@ -210,6 +978,8 @@
 </details>
 
 **`5c1bf3796663`** · `experiments/trials/NativeResizeToolFactoryTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativeResizeToolFactoryTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativeResizeToolFactoryTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeResizeToolFactoryTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativeResizeToolFactoryTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativeResizeToolFactoryTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeResizeToolFactoryTrial.cpp)
 - canonical · colingsnyder2-ux · [trials/NativeResizeToolFactoryTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeResizeToolFactoryTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativeResizeToolFactoryTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeResizeToolFactoryTrial.cpp)
@@ -240,6 +1010,8 @@
 <summary>experiments/trials/NativeResizeToolFindTrial.cpp — equivalent; 2 content versions</summary>
 
 **`2b0b5c78d177`** · `experiments/trials/NativeResizeToolFindTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativeResizeToolFindTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativeResizeToolFindTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeResizeToolFindTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativeResizeToolFindTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativeResizeToolFindTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeResizeToolFindTrial.cpp)
 - canonical · colingsnyder2-ux · [trials/NativeResizeToolFindTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeResizeToolFindTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativeResizeToolFindTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeResizeToolFindTrial.cpp)
@@ -288,6 +1060,8 @@
 </details>
 
 **`52b7c2d17215`** · `experiments/trials/NativeResizeToolMethodsTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativeResizeToolMethodsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativeResizeToolMethodsTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeResizeToolMethodsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativeResizeToolMethodsTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativeResizeToolMethodsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeResizeToolMethodsTrial.cpp)
 - canonical · colingsnyder2-ux · [trials/NativeResizeToolMethodsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeResizeToolMethodsTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativeResizeToolMethodsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeResizeToolMethodsTrial.cpp)
@@ -327,6 +1101,8 @@
 </details>
 
 **`3483cf0e0c75`** · `experiments/trials/NativeResizeToolMoveTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativeResizeToolMoveTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativeResizeToolMoveTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeResizeToolMoveTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativeResizeToolMoveTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativeResizeToolMoveTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeResizeToolMoveTrial.cpp)
 - canonical · colingsnyder2-ux · [trials/NativeResizeToolMoveTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeResizeToolMoveTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativeResizeToolMoveTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeResizeToolMoveTrial.cpp)
@@ -366,6 +1142,8 @@
 </details>
 
 **`f546341d0ace`** · `experiments/trials/NativeResizeToolNameTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativeResizeToolNameTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativeResizeToolNameTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeResizeToolNameTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativeResizeToolNameTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativeResizeToolNameTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeResizeToolNameTrial.cpp)
 - canonical · colingsnyder2-ux · [trials/NativeResizeToolNameTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeResizeToolNameTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativeResizeToolNameTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeResizeToolNameTrial.cpp)
@@ -396,6 +1174,8 @@
 <summary>experiments/trials/NativeResizeToolTrial.cpp — equivalent; 2 content versions</summary>
 
 **`98471bdfd0ce`** · `experiments/trials/NativeResizeToolTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativeResizeToolTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativeResizeToolTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeResizeToolTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativeResizeToolTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativeResizeToolTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeResizeToolTrial.cpp)
 - canonical · colingsnyder2-ux · [trials/NativeResizeToolTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeResizeToolTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativeResizeToolTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeResizeToolTrial.cpp)
@@ -435,6 +1215,8 @@
 <summary>experiments/trials/NativeResizeToolTrial.h — equivalent; 1 content versions</summary>
 
 **`88a9e974499f`** · `experiments/trials/NativeResizeToolTrial.h` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativeResizeToolTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativeResizeToolTrial.h)
+- canonical · colingsnyder2-ux · [trials/NativeResizeToolTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativeResizeToolTrial.h)
 - public · colingsnyder2-ux · [trials/NativeResizeToolTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeResizeToolTrial.h)
 - canonical · colingsnyder2-ux · [trials/NativeResizeToolTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeResizeToolTrial.h)
 - public · colingsnyder2-ux · [trials/NativeResizeToolTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeResizeToolTrial.h)
@@ -476,6 +1258,8 @@
 </details>
 
 **`a3ead50df6b7`** · `experiments/trials/NativeRightMotorToolFactoryTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativeRightMotorToolFactoryTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativeRightMotorToolFactoryTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeRightMotorToolFactoryTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativeRightMotorToolFactoryTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativeRightMotorToolFactoryTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeRightMotorToolFactoryTrial.cpp)
 - canonical · colingsnyder2-ux · [trials/NativeRightMotorToolFactoryTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeRightMotorToolFactoryTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativeRightMotorToolFactoryTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeRightMotorToolFactoryTrial.cpp)
@@ -506,6 +1290,8 @@
 <summary>experiments/trials/NativeRightMotorToolMethodsTrial.cpp — equivalent; 2 content versions</summary>
 
 **`92c3b235d27d`** · `experiments/trials/NativeRightMotorToolMethodsTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativeRightMotorToolMethodsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativeRightMotorToolMethodsTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeRightMotorToolMethodsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativeRightMotorToolMethodsTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativeRightMotorToolMethodsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeRightMotorToolMethodsTrial.cpp)
 - canonical · colingsnyder2-ux · [trials/NativeRightMotorToolMethodsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeRightMotorToolMethodsTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativeRightMotorToolMethodsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeRightMotorToolMethodsTrial.cpp)
@@ -545,6 +1331,8 @@
 <summary>experiments/trials/NativeRocketLaunchWorkerTrial.cpp — equivalent; 2 content versions</summary>
 
 **`3040ee67fab0`** · `experiments/trials/NativeRocketLaunchWorkerTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativeRocketLaunchWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativeRocketLaunchWorkerTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeRocketLaunchWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativeRocketLaunchWorkerTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativeRocketLaunchWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeRocketLaunchWorkerTrial.cpp)
 - canonical · colingsnyder2-ux · [trials/NativeRocketLaunchWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeRocketLaunchWorkerTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativeRocketLaunchWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeRocketLaunchWorkerTrial.cpp)
@@ -593,6 +1381,8 @@
 </details>
 
 **`d3e1e1c0483c`** · `experiments/trials/NativeRocketWorkerTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativeRocketWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativeRocketWorkerTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeRocketWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativeRocketWorkerTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativeRocketWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeRocketWorkerTrial.cpp)
 - canonical · colingsnyder2-ux · [trials/NativeRocketWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeRocketWorkerTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativeRocketWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeRocketWorkerTrial.cpp)
@@ -623,6 +1413,8 @@
 <summary>experiments/trials/NativeRocketWorkerTrial.h — equivalent; 1 content versions</summary>
 
 **`058e6974c9d5`** · `experiments/trials/NativeRocketWorkerTrial.h` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativeRocketWorkerTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativeRocketWorkerTrial.h)
+- canonical · colingsnyder2-ux · [trials/NativeRocketWorkerTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativeRocketWorkerTrial.h)
 - public · colingsnyder2-ux · [trials/NativeRocketWorkerTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeRocketWorkerTrial.h)
 - canonical · colingsnyder2-ux · [trials/NativeRocketWorkerTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeRocketWorkerTrial.h)
 - public · colingsnyder2-ux · [trials/NativeRocketWorkerTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeRocketWorkerTrial.h)
@@ -664,6 +1456,8 @@
 </details>
 
 **`91190b0e7693`** · `experiments/trials/NativeRotateActionTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativeRotateActionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativeRotateActionTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeRotateActionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativeRotateActionTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativeRotateActionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeRotateActionTrial.cpp)
 - canonical · colingsnyder2-ux · [trials/NativeRotateActionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeRotateActionTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativeRotateActionTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeRotateActionTrial.cpp)
@@ -703,6 +1497,8 @@
 </details>
 
 **`de67d22260bf`** · `experiments/trials/NativeRotateAxisTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativeRotateAxisTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativeRotateAxisTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeRotateAxisTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativeRotateAxisTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativeRotateAxisTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeRotateAxisTrial.cpp)
 - canonical · colingsnyder2-ux · [trials/NativeRotateAxisTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeRotateAxisTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativeRotateAxisTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeRotateAxisTrial.cpp)
@@ -742,6 +1538,8 @@
 </details>
 
 **`b334c5b40f5a`** · `experiments/trials/NativeRunStateVerbConstructorTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativeRunStateVerbConstructorTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativeRunStateVerbConstructorTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeRunStateVerbConstructorTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativeRunStateVerbConstructorTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativeRunStateVerbConstructorTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeRunStateVerbConstructorTrial.cpp)
 - canonical · colingsnyder2-ux · [trials/NativeRunStateVerbConstructorTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeRunStateVerbConstructorTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativeRunStateVerbConstructorTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeRunStateVerbConstructorTrial.cpp)
@@ -772,6 +1570,8 @@
 <summary>experiments/trials/NativeSafeArrayTrial.cpp — equivalent; 2 content versions</summary>
 
 **`42049511b298`** · `experiments/trials/NativeSafeArrayTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativeSafeArrayTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativeSafeArrayTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeSafeArrayTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativeSafeArrayTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativeSafeArrayTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeSafeArrayTrial.cpp)
 - canonical · colingsnyder2-ux · [trials/NativeSafeArrayTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeSafeArrayTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativeSafeArrayTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeSafeArrayTrial.cpp)
@@ -811,6 +1611,8 @@
 <summary>experiments/trials/NativeSelectionBackTrial.cpp — equivalent; 2 content versions</summary>
 
 **`0a45013d8bd4`** · `experiments/trials/NativeSelectionBackTrial.cpp` · proof not assessed
+- public · colingsnyder2-ux · [trials/NativeSelectionBackTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/experiments/trials/NativeSelectionBackTrial.cpp)
+- canonical · colingsnyder2-ux · [trials/NativeSelectionBackTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/experiments/trials/NativeSelectionBackTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativeSelectionBackTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeSelectionBackTrial.cpp)
 - canonical · colingsnyder2-ux · [trials/NativeSelectionBackTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeSelectionBackTrial.cpp)
 - public · colingsnyder2-ux · [trials/NativeSelectionBackTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeSelectionBackTrial.cpp)
@@ -841,921 +1643,6 @@
 
 - local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSelectionBackTrial.cpp` · root `b52aa15feaea5a0c`
 - local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSelectionBackTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>experiments/trials/NativeSelectionCommandsTrial.cpp — equivalent; 2 content versions</summary>
-
-**`9aba469f2b9d`** · `experiments/trials/NativeSelectionCommandsTrial.cpp` · proof not assessed
-- public · colingsnyder2-ux · [trials/NativeSelectionCommandsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeSelectionCommandsTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSelectionCommandsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeSelectionCommandsTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeSelectionCommandsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeSelectionCommandsTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSelectionCommandsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeSelectionCommandsTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeSelectionCommandsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeSelectionCommandsTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSelectionCommandsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeSelectionCommandsTrial.cpp)
-
-<details><summary>12 retained local origins</summary>
-
-- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeSelectionCommandsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeSelectionCommandsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeSelectionCommandsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeSelectionCommandsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeSelectionCommandsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeSelectionCommandsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeSelectionCommandsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeSelectionCommandsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeSelectionCommandsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeSelectionCommandsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeSelectionCommandsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeSelectionCommandsTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`fecc6e3dc8f3`** · `experiments/trials/NativeSelectionCommandsTrial.cpp` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSelectionCommandsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSelectionCommandsTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>experiments/trials/NativeShootWorkerTrial.cpp — equivalent; 2 content versions</summary>
-
-**`8220b97b034d`** · `experiments/trials/NativeShootWorkerTrial.cpp` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeShootWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeShootWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`96c39073782b`** · `experiments/trials/NativeShootWorkerTrial.cpp` · proof not assessed
-- public · colingsnyder2-ux · [trials/NativeShootWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeShootWorkerTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeShootWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeShootWorkerTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeShootWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeShootWorkerTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeShootWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeShootWorkerTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeShootWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeShootWorkerTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeShootWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeShootWorkerTrial.cpp)
-
-<details><summary>12 retained local origins</summary>
-
-- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeShootWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeShootWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeShootWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeShootWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeShootWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeShootWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeShootWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeShootWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeShootWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeShootWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeShootWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeShootWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>experiments/trials/NativeSlingshotBallisticWorkerTrial.cpp — equivalent; 2 content versions</summary>
-
-**`8170aa248d6b`** · `experiments/trials/NativeSlingshotBallisticWorkerTrial.cpp` · proof not assessed
-- public · colingsnyder2-ux · [trials/NativeSlingshotBallisticWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeSlingshotBallisticWorkerTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSlingshotBallisticWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotBallisticWorkerTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeSlingshotBallisticWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeSlingshotBallisticWorkerTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSlingshotBallisticWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotBallisticWorkerTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeSlingshotBallisticWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeSlingshotBallisticWorkerTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSlingshotBallisticWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotBallisticWorkerTrial.cpp)
-
-<details><summary>12 retained local origins</summary>
-
-- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotBallisticWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotBallisticWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotBallisticWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotBallisticWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeSlingshotBallisticWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeSlingshotBallisticWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeSlingshotBallisticWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeSlingshotBallisticWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeSlingshotBallisticWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeSlingshotBallisticWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeSlingshotBallisticWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeSlingshotBallisticWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`cb128fce5e42`** · `experiments/trials/NativeSlingshotBallisticWorkerTrial.cpp` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSlingshotBallisticWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSlingshotBallisticWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>experiments/trials/NativeSlingshotContentIdWorkerTrial.cpp — equivalent; 2 content versions</summary>
-
-**`2e0cfb9fd750`** · `experiments/trials/NativeSlingshotContentIdWorkerTrial.cpp` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSlingshotContentIdWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSlingshotContentIdWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`58669569c7b3`** · `experiments/trials/NativeSlingshotContentIdWorkerTrial.cpp` · proof not assessed
-- public · colingsnyder2-ux · [trials/NativeSlingshotContentIdWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeSlingshotContentIdWorkerTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSlingshotContentIdWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotContentIdWorkerTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeSlingshotContentIdWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeSlingshotContentIdWorkerTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSlingshotContentIdWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotContentIdWorkerTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeSlingshotContentIdWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeSlingshotContentIdWorkerTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSlingshotContentIdWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotContentIdWorkerTrial.cpp)
-
-<details><summary>12 retained local origins</summary>
-
-- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotContentIdWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotContentIdWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotContentIdWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotContentIdWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeSlingshotContentIdWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeSlingshotContentIdWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeSlingshotContentIdWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeSlingshotContentIdWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeSlingshotContentIdWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeSlingshotContentIdWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeSlingshotContentIdWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeSlingshotContentIdWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>experiments/trials/NativeSlingshotLaunchWorkerTrial.cpp — equivalent; 2 content versions</summary>
-
-**`408b1eb6f678`** · `experiments/trials/NativeSlingshotLaunchWorkerTrial.cpp` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSlingshotLaunchWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSlingshotLaunchWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`b42df8460ece`** · `experiments/trials/NativeSlingshotLaunchWorkerTrial.cpp` · proof not assessed
-- public · colingsnyder2-ux · [trials/NativeSlingshotLaunchWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeSlingshotLaunchWorkerTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSlingshotLaunchWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotLaunchWorkerTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeSlingshotLaunchWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeSlingshotLaunchWorkerTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSlingshotLaunchWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotLaunchWorkerTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeSlingshotLaunchWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeSlingshotLaunchWorkerTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSlingshotLaunchWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotLaunchWorkerTrial.cpp)
-
-<details><summary>12 retained local origins</summary>
-
-- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotLaunchWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotLaunchWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotLaunchWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotLaunchWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeSlingshotLaunchWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeSlingshotLaunchWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeSlingshotLaunchWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeSlingshotLaunchWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeSlingshotLaunchWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeSlingshotLaunchWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeSlingshotLaunchWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeSlingshotLaunchWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>experiments/trials/NativeSlingshotMethodsWorkerTrial.cpp — equivalent; 2 content versions</summary>
-
-**`6d4f0e8c4657`** · `experiments/trials/NativeSlingshotMethodsWorkerTrial.cpp` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSlingshotMethodsWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSlingshotMethodsWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`872f847afa8d`** · `experiments/trials/NativeSlingshotMethodsWorkerTrial.cpp` · proof not assessed
-- public · colingsnyder2-ux · [trials/NativeSlingshotMethodsWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeSlingshotMethodsWorkerTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSlingshotMethodsWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotMethodsWorkerTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeSlingshotMethodsWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeSlingshotMethodsWorkerTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSlingshotMethodsWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotMethodsWorkerTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeSlingshotMethodsWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeSlingshotMethodsWorkerTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSlingshotMethodsWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotMethodsWorkerTrial.cpp)
-
-<details><summary>12 retained local origins</summary>
-
-- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotMethodsWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotMethodsWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotMethodsWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotMethodsWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeSlingshotMethodsWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeSlingshotMethodsWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeSlingshotMethodsWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeSlingshotMethodsWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeSlingshotMethodsWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeSlingshotMethodsWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeSlingshotMethodsWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeSlingshotMethodsWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>experiments/trials/NativeSlingshotWorkerTrial.cpp — equivalent; 2 content versions</summary>
-
-**`408dac2186f2`** · `experiments/trials/NativeSlingshotWorkerTrial.cpp` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSlingshotWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSlingshotWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`53c62c143a12`** · `experiments/trials/NativeSlingshotWorkerTrial.cpp` · proof not assessed
-- public · colingsnyder2-ux · [trials/NativeSlingshotWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeSlingshotWorkerTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSlingshotWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotWorkerTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeSlingshotWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeSlingshotWorkerTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSlingshotWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotWorkerTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeSlingshotWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeSlingshotWorkerTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSlingshotWorkerTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotWorkerTrial.cpp)
-
-<details><summary>12 retained local origins</summary>
-
-- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeSlingshotWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeSlingshotWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeSlingshotWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeSlingshotWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeSlingshotWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeSlingshotWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeSlingshotWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeSlingshotWorkerTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>experiments/trials/NativeSlingshotWorkerTrial.h — equivalent; 1 content versions</summary>
-
-**`3b567c4f50ef`** · `experiments/trials/NativeSlingshotWorkerTrial.h` · proof not assessed
-- public · colingsnyder2-ux · [trials/NativeSlingshotWorkerTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeSlingshotWorkerTrial.h)
-- canonical · colingsnyder2-ux · [trials/NativeSlingshotWorkerTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotWorkerTrial.h)
-- public · colingsnyder2-ux · [trials/NativeSlingshotWorkerTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeSlingshotWorkerTrial.h)
-- canonical · colingsnyder2-ux · [trials/NativeSlingshotWorkerTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotWorkerTrial.h)
-- public · colingsnyder2-ux · [trials/NativeSlingshotWorkerTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeSlingshotWorkerTrial.h)
-- canonical · colingsnyder2-ux · [trials/NativeSlingshotWorkerTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotWorkerTrial.h)
-
-<details><summary>14 retained local origins</summary>
-
-- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotWorkerTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotWorkerTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotWorkerTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeSlingshotWorkerTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSlingshotWorkerTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSlingshotWorkerTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeSlingshotWorkerTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeSlingshotWorkerTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeSlingshotWorkerTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeSlingshotWorkerTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeSlingshotWorkerTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeSlingshotWorkerTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeSlingshotWorkerTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeSlingshotWorkerTrial.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>experiments/trials/NativeSpatialStatsTrial.cpp — equivalent; 2 content versions</summary>
-
-**`13f19b688e3b`** · `experiments/trials/NativeSpatialStatsTrial.cpp` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSpatialStatsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSpatialStatsTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`e673a07c86db`** · `experiments/trials/NativeSpatialStatsTrial.cpp` · proof not assessed
-- public · colingsnyder2-ux · [trials/NativeSpatialStatsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeSpatialStatsTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSpatialStatsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeSpatialStatsTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeSpatialStatsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeSpatialStatsTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSpatialStatsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeSpatialStatsTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeSpatialStatsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeSpatialStatsTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSpatialStatsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeSpatialStatsTrial.cpp)
-
-<details><summary>12 retained local origins</summary>
-
-- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeSpatialStatsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeSpatialStatsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeSpatialStatsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeSpatialStatsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeSpatialStatsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeSpatialStatsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeSpatialStatsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeSpatialStatsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeSpatialStatsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeSpatialStatsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeSpatialStatsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeSpatialStatsTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>experiments/trials/NativeStandardVerbsConstructorTrial.cpp — equivalent; 2 content versions</summary>
-
-**`7df4cb37cd73`** · `experiments/trials/NativeStandardVerbsConstructorTrial.cpp` · proof not assessed
-- public · colingsnyder2-ux · [trials/NativeStandardVerbsConstructorTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeStandardVerbsConstructorTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeStandardVerbsConstructorTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeStandardVerbsConstructorTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeStandardVerbsConstructorTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeStandardVerbsConstructorTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeStandardVerbsConstructorTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeStandardVerbsConstructorTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeStandardVerbsConstructorTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeStandardVerbsConstructorTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeStandardVerbsConstructorTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeStandardVerbsConstructorTrial.cpp)
-
-<details><summary>12 retained local origins</summary>
-
-- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeStandardVerbsConstructorTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeStandardVerbsConstructorTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeStandardVerbsConstructorTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeStandardVerbsConstructorTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeStandardVerbsConstructorTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeStandardVerbsConstructorTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeStandardVerbsConstructorTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeStandardVerbsConstructorTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeStandardVerbsConstructorTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeStandardVerbsConstructorTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeStandardVerbsConstructorTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeStandardVerbsConstructorTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`ccd0b9f4b0cc`** · `experiments/trials/NativeStandardVerbsConstructorTrial.cpp` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeStandardVerbsConstructorTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeStandardVerbsConstructorTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>experiments/trials/NativeStatsCommandsTrial.cpp — equivalent; 2 content versions</summary>
-
-**`632d65718d74`** · `experiments/trials/NativeStatsCommandsTrial.cpp` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeStatsCommandsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeStatsCommandsTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`afbdab092c59`** · `experiments/trials/NativeStatsCommandsTrial.cpp` · proof not assessed
-- public · colingsnyder2-ux · [trials/NativeStatsCommandsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeStatsCommandsTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeStatsCommandsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeStatsCommandsTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeStatsCommandsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeStatsCommandsTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeStatsCommandsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeStatsCommandsTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeStatsCommandsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeStatsCommandsTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeStatsCommandsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeStatsCommandsTrial.cpp)
-
-<details><summary>12 retained local origins</summary>
-
-- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeStatsCommandsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeStatsCommandsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeStatsCommandsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeStatsCommandsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeStatsCommandsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeStatsCommandsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeStatsCommandsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeStatsCommandsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeStatsCommandsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeStatsCommandsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeStatsCommandsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeStatsCommandsTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>experiments/trials/NativeStudsToolFactoryTrial.cpp — equivalent; 2 content versions</summary>
-
-**`736f0bde4546`** · `experiments/trials/NativeStudsToolFactoryTrial.cpp` · proof not assessed
-- public · colingsnyder2-ux · [trials/NativeStudsToolFactoryTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeStudsToolFactoryTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeStudsToolFactoryTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeStudsToolFactoryTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeStudsToolFactoryTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeStudsToolFactoryTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeStudsToolFactoryTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeStudsToolFactoryTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeStudsToolFactoryTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeStudsToolFactoryTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeStudsToolFactoryTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeStudsToolFactoryTrial.cpp)
-
-<details><summary>12 retained local origins</summary>
-
-- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeStudsToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeStudsToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeStudsToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeStudsToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeStudsToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeStudsToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeStudsToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeStudsToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeStudsToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeStudsToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeStudsToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeStudsToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`8513aa402468`** · `experiments/trials/NativeStudsToolFactoryTrial.cpp` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeStudsToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeStudsToolFactoryTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>experiments/trials/NativeStudsToolMethodsTrial.cpp — equivalent; 2 content versions</summary>
-
-**`432fa94385d2`** · `experiments/trials/NativeStudsToolMethodsTrial.cpp` · proof not assessed
-- public · colingsnyder2-ux · [trials/NativeStudsToolMethodsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeStudsToolMethodsTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeStudsToolMethodsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeStudsToolMethodsTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeStudsToolMethodsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeStudsToolMethodsTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeStudsToolMethodsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeStudsToolMethodsTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeStudsToolMethodsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeStudsToolMethodsTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeStudsToolMethodsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeStudsToolMethodsTrial.cpp)
-
-<details><summary>12 retained local origins</summary>
-
-- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeStudsToolMethodsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeStudsToolMethodsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeStudsToolMethodsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeStudsToolMethodsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeStudsToolMethodsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeStudsToolMethodsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeStudsToolMethodsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeStudsToolMethodsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeStudsToolMethodsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeStudsToolMethodsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeStudsToolMethodsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeStudsToolMethodsTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`a29f6e77e244`** · `experiments/trials/NativeStudsToolMethodsTrial.cpp` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeStudsToolMethodsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeStudsToolMethodsTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>experiments/trials/NativeSubdivideMoveTrial.cpp — equivalent; 2 content versions</summary>
-
-**`0bd9918f2f14`** · `experiments/trials/NativeSubdivideMoveTrial.cpp` · proof not assessed
-- public · colingsnyder2-ux · [trials/NativeSubdivideMoveTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeSubdivideMoveTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSubdivideMoveTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeSubdivideMoveTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeSubdivideMoveTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeSubdivideMoveTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSubdivideMoveTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeSubdivideMoveTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeSubdivideMoveTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeSubdivideMoveTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSubdivideMoveTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeSubdivideMoveTrial.cpp)
-
-<details><summary>12 retained local origins</summary>
-
-- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeSubdivideMoveTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeSubdivideMoveTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeSubdivideMoveTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeSubdivideMoveTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeSubdivideMoveTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeSubdivideMoveTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeSubdivideMoveTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeSubdivideMoveTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeSubdivideMoveTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeSubdivideMoveTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeSubdivideMoveTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeSubdivideMoveTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`bd1dc22d2010`** · `experiments/trials/NativeSubdivideMoveTrial.cpp` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSubdivideMoveTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSubdivideMoveTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>experiments/trials/NativeSurfaceChangedTrial.cpp — equivalent; 2 content versions</summary>
-
-**`3511ace349ee`** · `experiments/trials/NativeSurfaceChangedTrial.cpp` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSurfaceChangedTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSurfaceChangedTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`5ef1f318e3b6`** · `experiments/trials/NativeSurfaceChangedTrial.cpp` · proof not assessed
-- public · colingsnyder2-ux · [trials/NativeSurfaceChangedTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeSurfaceChangedTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSurfaceChangedTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceChangedTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeSurfaceChangedTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeSurfaceChangedTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSurfaceChangedTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceChangedTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeSurfaceChangedTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeSurfaceChangedTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSurfaceChangedTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceChangedTrial.cpp)
-
-<details><summary>12 retained local origins</summary>
-
-- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceChangedTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceChangedTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceChangedTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceChangedTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeSurfaceChangedTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeSurfaceChangedTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeSurfaceChangedTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeSurfaceChangedTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeSurfaceChangedTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeSurfaceChangedTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeSurfaceChangedTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeSurfaceChangedTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>experiments/trials/NativeSurfaceDownTrial.cpp — equivalent; 2 content versions</summary>
-
-**`6c49e9cbe9a4`** · `experiments/trials/NativeSurfaceDownTrial.cpp` · proof not assessed
-- public · colingsnyder2-ux · [trials/NativeSurfaceDownTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeSurfaceDownTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSurfaceDownTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceDownTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeSurfaceDownTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeSurfaceDownTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSurfaceDownTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceDownTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeSurfaceDownTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeSurfaceDownTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSurfaceDownTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceDownTrial.cpp)
-
-<details><summary>12 retained local origins</summary>
-
-- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceDownTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceDownTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceDownTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceDownTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeSurfaceDownTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeSurfaceDownTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeSurfaceDownTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeSurfaceDownTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeSurfaceDownTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeSurfaceDownTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeSurfaceDownTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeSurfaceDownTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`87712b04dbfe`** · `experiments/trials/NativeSurfaceDownTrial.cpp` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSurfaceDownTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSurfaceDownTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>experiments/trials/NativeSurfaceFlatTrial.cpp — equivalent; 2 content versions</summary>
-
-**`51854d734d71`** · `experiments/trials/NativeSurfaceFlatTrial.cpp` · proof not assessed
-- public · colingsnyder2-ux · [trials/NativeSurfaceFlatTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeSurfaceFlatTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSurfaceFlatTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceFlatTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeSurfaceFlatTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeSurfaceFlatTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSurfaceFlatTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceFlatTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeSurfaceFlatTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeSurfaceFlatTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSurfaceFlatTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceFlatTrial.cpp)
-
-<details><summary>12 retained local origins</summary>
-
-- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceFlatTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceFlatTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceFlatTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceFlatTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeSurfaceFlatTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeSurfaceFlatTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeSurfaceFlatTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeSurfaceFlatTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeSurfaceFlatTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeSurfaceFlatTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeSurfaceFlatTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeSurfaceFlatTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`a36036e635a1`** · `experiments/trials/NativeSurfaceFlatTrial.cpp` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSurfaceFlatTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSurfaceFlatTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>experiments/trials/NativeSurfaceHoverTrial.cpp — equivalent; 2 content versions</summary>
-
-**`116b50e4ae7d`** · `experiments/trials/NativeSurfaceHoverTrial.cpp` · proof not assessed
-- public · colingsnyder2-ux · [trials/NativeSurfaceHoverTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeSurfaceHoverTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSurfaceHoverTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceHoverTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeSurfaceHoverTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeSurfaceHoverTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSurfaceHoverTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceHoverTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeSurfaceHoverTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeSurfaceHoverTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSurfaceHoverTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceHoverTrial.cpp)
-
-<details><summary>12 retained local origins</summary>
-
-- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceHoverTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceHoverTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceHoverTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceHoverTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeSurfaceHoverTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeSurfaceHoverTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeSurfaceHoverTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeSurfaceHoverTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeSurfaceHoverTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeSurfaceHoverTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeSurfaceHoverTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeSurfaceHoverTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`465170f173c2`** · `experiments/trials/NativeSurfaceHoverTrial.cpp` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSurfaceHoverTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSurfaceHoverTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>experiments/trials/NativeSurfaceRenderTrial.cpp — equivalent; 2 content versions</summary>
-
-**`37a9c1bf0eb8`** · `experiments/trials/NativeSurfaceRenderTrial.cpp` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSurfaceRenderTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSurfaceRenderTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`56f2672176fe`** · `experiments/trials/NativeSurfaceRenderTrial.cpp` · proof not assessed
-- public · colingsnyder2-ux · [trials/NativeSurfaceRenderTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeSurfaceRenderTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSurfaceRenderTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceRenderTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeSurfaceRenderTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeSurfaceRenderTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSurfaceRenderTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceRenderTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeSurfaceRenderTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeSurfaceRenderTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSurfaceRenderTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceRenderTrial.cpp)
-
-<details><summary>12 retained local origins</summary>
-
-- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceRenderTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceRenderTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceRenderTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceRenderTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeSurfaceRenderTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeSurfaceRenderTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeSurfaceRenderTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeSurfaceRenderTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeSurfaceRenderTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeSurfaceRenderTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeSurfaceRenderTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeSurfaceRenderTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>experiments/trials/NativeSurfaceSiblingsTrial.cpp — equivalent; 2 content versions</summary>
-
-**`1caec7c5d1fe`** · `experiments/trials/NativeSurfaceSiblingsTrial.cpp` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`8db39556cf31`** · `experiments/trials/NativeSurfaceSiblingsTrial.cpp` · proof not assessed
-- public · colingsnyder2-ux · [trials/NativeSurfaceSiblingsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSurfaceSiblingsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeSurfaceSiblingsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSurfaceSiblingsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeSurfaceSiblingsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSurfaceSiblingsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.cpp)
-
-<details><summary>12 retained local origins</summary>
-
-- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>experiments/trials/NativeSurfaceSiblingsTrial.h — equivalent; 1 content versions</summary>
-
-**`2cb0be186722`** · `experiments/trials/NativeSurfaceSiblingsTrial.h` · proof not assessed
-- public · colingsnyder2-ux · [trials/NativeSurfaceSiblingsTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.h)
-- canonical · colingsnyder2-ux · [trials/NativeSurfaceSiblingsTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.h)
-- public · colingsnyder2-ux · [trials/NativeSurfaceSiblingsTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.h)
-- canonical · colingsnyder2-ux · [trials/NativeSurfaceSiblingsTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.h)
-- public · colingsnyder2-ux · [trials/NativeSurfaceSiblingsTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.h)
-- canonical · colingsnyder2-ux · [trials/NativeSurfaceSiblingsTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.h)
-
-<details><summary>14 retained local origins</summary>
-
-- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeSurfaceSiblingsTrial.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>experiments/trials/NativeSurfaceToolTrial.cpp — equivalent; 2 content versions</summary>
-
-**`13b1077f0dc4`** · `experiments/trials/NativeSurfaceToolTrial.cpp` · proof not assessed
-- public · colingsnyder2-ux · [trials/NativeSurfaceToolTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeSurfaceToolTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSurfaceToolTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceToolTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeSurfaceToolTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeSurfaceToolTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSurfaceToolTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceToolTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeSurfaceToolTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeSurfaceToolTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSurfaceToolTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceToolTrial.cpp)
-
-<details><summary>12 retained local origins</summary>
-
-- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceToolTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceToolTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceToolTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceToolTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeSurfaceToolTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeSurfaceToolTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeSurfaceToolTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeSurfaceToolTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeSurfaceToolTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeSurfaceToolTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeSurfaceToolTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeSurfaceToolTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`67b1f6be9f23`** · `experiments/trials/NativeSurfaceToolTrial.cpp` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSurfaceToolTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSurfaceToolTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>experiments/trials/NativeSurfaceToolTrial.h — equivalent; 1 content versions</summary>
-
-**`3c5c24d700b6`** · `experiments/trials/NativeSurfaceToolTrial.h` · proof not assessed
-- public · colingsnyder2-ux · [trials/NativeSurfaceToolTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeSurfaceToolTrial.h)
-- canonical · colingsnyder2-ux · [trials/NativeSurfaceToolTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceToolTrial.h)
-- public · colingsnyder2-ux · [trials/NativeSurfaceToolTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeSurfaceToolTrial.h)
-- canonical · colingsnyder2-ux · [trials/NativeSurfaceToolTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceToolTrial.h)
-- public · colingsnyder2-ux · [trials/NativeSurfaceToolTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeSurfaceToolTrial.h)
-- canonical · colingsnyder2-ux · [trials/NativeSurfaceToolTrial.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceToolTrial.h)
-
-<details><summary>14 retained local origins</summary>
-
-- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceToolTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceToolTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceToolTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceToolTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSurfaceToolTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSurfaceToolTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeSurfaceToolTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeSurfaceToolTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeSurfaceToolTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeSurfaceToolTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeSurfaceToolTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeSurfaceToolTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeSurfaceToolTrial.h` · root `b52aa15feaea5a0c`
-- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeSurfaceToolTrial.h` · root `b52aa15feaea5a0c`
-
-</details>
-
-</details>
-
-<details>
-<summary>experiments/trials/NativeSurfaceVisitorsTrial.cpp — equivalent; 2 content versions</summary>
-
-**`705490cbaedd`** · `experiments/trials/NativeSurfaceVisitorsTrial.cpp` · proof not assessed
-- public · colingsnyder2-ux · [trials/NativeSurfaceVisitorsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/experiments/trials/NativeSurfaceVisitorsTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSurfaceVisitorsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceVisitorsTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeSurfaceVisitorsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/experiments/trials/NativeSurfaceVisitorsTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSurfaceVisitorsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceVisitorsTrial.cpp)
-- public · colingsnyder2-ux · [trials/NativeSurfaceVisitorsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/experiments/trials/NativeSurfaceVisitorsTrial.cpp)
-- canonical · colingsnyder2-ux · [trials/NativeSurfaceVisitorsTrial.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceVisitorsTrial.cpp)
-
-<details><summary>12 retained local origins</summary>
-
-- local · `work/native-candidates/overlay-prior-consumers-20261108/before/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceVisitorsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-prior-consumers-20261108/current/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceVisitorsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/candidate/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceVisitorsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/overlay-referenced-fullpass-20261108/original/workspace/rebuild/2008-06/experiments/trials/NativeSurfaceVisitorsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/b/rebuild/2008-06/experiments/trials/NativeSurfaceVisitorsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o26/c/rebuild/2008-06/experiments/trials/NativeSurfaceVisitorsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/b/rebuild/2008-06/experiments/trials/NativeSurfaceVisitorsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o28/c/rebuild/2008-06/experiments/trials/NativeSurfaceVisitorsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/b/rebuild/2008-06/experiments/trials/NativeSurfaceVisitorsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o29/c/rebuild/2008-06/experiments/trials/NativeSurfaceVisitorsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/b/rebuild/2008-06/experiments/trials/NativeSurfaceVisitorsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/o30/c/rebuild/2008-06/experiments/trials/NativeSurfaceVisitorsTrial.cpp` · root `b52aa15feaea5a0c`
-
-</details>
-
-**`feba33f9c92d`** · `experiments/trials/NativeSurfaceVisitorsTrial.cpp` · proof not assessed
-
-<details><summary>2 retained local origins</summary>
-
-- local · `work/native-candidates/real-provider-isolated-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSurfaceVisitorsTrial.cpp` · root `b52aa15feaea5a0c`
-- local · `work/native-candidates/real-provider-isolated-fast-20261108/checkout/rebuild/2008-06/experiments/trials/NativeSurfaceVisitorsTrial.cpp` · root `b52aa15feaea5a0c`
 
 </details>
 

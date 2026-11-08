@@ -45,6 +45,7 @@ Earlier paths and their donor versions: `native-classes/HistoryRecordLifetime.cp
 - public · colingsnyder2-ux · [v8datamodel/HistoryRecordLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/HistoryRecordLifetime.cpp)
 
 **`d4167eaf5fea`** · `App/src/v8datamodel/HistoryRecordLifetime.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/HistoryRecordLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/v8datamodel/HistoryRecordLifetime.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/HistoryRecordLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/v8datamodel/HistoryRecordLifetime.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/HistoryRecordLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/HistoryRecordLifetime.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/HistoryRecordLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/HistoryRecordLifetime.cpp)
@@ -105,6 +106,7 @@ Earlier paths and their donor versions: `native-classes/HistoryRecordLifetime.cp
 </details>
 
 **`e93503b66747`** · `App/src/v8datamodel/HistoryRecordLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/HistoryRecordLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/v8datamodel/HistoryRecordLifetime.cpp)
 - public · colingsnyder2-ux · [v8datamodel/HistoryRecordLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/v8datamodel/HistoryRecordLifetime.cpp)
 - public · colingsnyder2-ux · [v8datamodel/HistoryRecordLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/HistoryRecordLifetime.cpp)
 - public · colingsnyder2-ux · [v8datamodel/HistoryRecordLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/HistoryRecordLifetime.cpp)
@@ -243,6 +245,8 @@ Earlier paths and their donor versions: `native-classes/HistoryRecordLifetime.cp
 </details>
 
 **`dfa20400194a`** · `native-classes/HistoryRecordLifetime.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HistoryRecordLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/HistoryRecordLifetime.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HistoryRecordLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/HistoryRecordLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/HistoryRecordLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/HistoryRecordLifetime.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HistoryRecordLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/HistoryRecordLifetime.cpp)
 - public · colingsnyder2-ux · [native-classes/HistoryRecordLifetime.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/HistoryRecordLifetime.cpp)
@@ -399,6 +403,7 @@ Earlier paths and their donor versions: `native-classes/HistoryRecordLookup.cpp`
 </details>
 
 **`bfbdc61f0303`** · `App/src/v8datamodel/HistoryRecordLookup.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/HistoryRecordLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/v8datamodel/HistoryRecordLookup.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/HistoryRecordLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/v8datamodel/HistoryRecordLookup.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/HistoryRecordLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/HistoryRecordLookup.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/HistoryRecordLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/HistoryRecordLookup.cpp)
@@ -462,6 +467,7 @@ Earlier paths and their donor versions: `native-classes/HistoryRecordLookup.cpp`
 </details>
 
 **`c087ac2263b5`** · `App/src/v8datamodel/HistoryRecordLookup.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/HistoryRecordLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/v8datamodel/HistoryRecordLookup.cpp)
 - public · colingsnyder2-ux · [v8datamodel/HistoryRecordLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/v8datamodel/HistoryRecordLookup.cpp)
 - public · colingsnyder2-ux · [v8datamodel/HistoryRecordLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/HistoryRecordLookup.cpp)
 - public · colingsnyder2-ux · [v8datamodel/HistoryRecordLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/HistoryRecordLookup.cpp)
@@ -524,6 +530,8 @@ Earlier paths and their donor versions: `native-classes/HistoryRecordLookup.cpp`
 </details>
 
 **`9f6324bf03a2`** · `native-classes/HistoryRecordLookup.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HistoryRecordLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/HistoryRecordLookup.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HistoryRecordLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/HistoryRecordLookup.cpp)
 - public · colingsnyder2-ux · [native-classes/HistoryRecordLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/HistoryRecordLookup.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HistoryRecordLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/HistoryRecordLookup.cpp)
 - public · colingsnyder2-ux · [native-classes/HistoryRecordLookup.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/HistoryRecordLookup.cpp)
@@ -715,6 +723,7 @@ Earlier paths and their donor versions: `native-classes/HistoryRecordLookup.cpp`
 Earlier paths and their donor versions: `native-classes/HistoryRecordPlayback.cpp`.
 
 **`0dd3d74fab5a`** · `App/src/v8datamodel/HistoryRecordPlayback.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/HistoryRecordPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/v8datamodel/HistoryRecordPlayback.cpp)
 - public · colingsnyder2-ux · [v8datamodel/HistoryRecordPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/v8datamodel/HistoryRecordPlayback.cpp)
 - public · colingsnyder2-ux · [v8datamodel/HistoryRecordPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/HistoryRecordPlayback.cpp)
 - public · colingsnyder2-ux · [v8datamodel/HistoryRecordPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/HistoryRecordPlayback.cpp)
@@ -774,6 +783,7 @@ Earlier paths and their donor versions: `native-classes/HistoryRecordPlayback.cp
 </details>
 
 **`d574502131bd`** · `App/src/v8datamodel/HistoryRecordPlayback.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/HistoryRecordPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/v8datamodel/HistoryRecordPlayback.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/HistoryRecordPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/v8datamodel/HistoryRecordPlayback.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/HistoryRecordPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/HistoryRecordPlayback.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/HistoryRecordPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/HistoryRecordPlayback.cpp)
@@ -863,6 +873,8 @@ Earlier paths and their donor versions: `native-classes/HistoryRecordPlayback.cp
 - public · colingsnyder2-ux · [native-classes/HistoryRecordPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/13a80464c230d1e0b11d81a22a5b4623208f595a/2008-06/native-classes/HistoryRecordPlayback.cpp)
 
 **`922dfb3d43ec`** · `native-classes/HistoryRecordPlayback.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/HistoryRecordPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/HistoryRecordPlayback.cpp)
+- canonical · colingsnyder2-ux · [native-classes/HistoryRecordPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/HistoryRecordPlayback.cpp)
 - public · colingsnyder2-ux · [native-classes/HistoryRecordPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/HistoryRecordPlayback.cpp)
 - canonical · colingsnyder2-ux · [native-classes/HistoryRecordPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/HistoryRecordPlayback.cpp)
 - public · colingsnyder2-ux · [native-classes/HistoryRecordPlayback.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/HistoryRecordPlayback.cpp)

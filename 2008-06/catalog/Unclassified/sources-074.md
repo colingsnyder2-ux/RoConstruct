@@ -10,6 +10,7 @@ Compatibility path for `App/src/gui/WidgetChat.cpp`; compile either path, never 
 Earlier paths and their donor versions: `native-classes/WidgetChat.cpp`.
 
 **`427cfc817882`** · `Unclassified/src/WidgetChat.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/WidgetChat.cpp)
 - canonical · colingsnyder2-ux · [src/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/WidgetChat.cpp)
 - canonical · colingsnyder2-ux · [src/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/WidgetChat.cpp)
 - canonical · colingsnyder2-ux · [src/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/WidgetChat.cpp)
@@ -119,6 +120,7 @@ Earlier paths and their donor versions: `native-classes/WidgetChat.cpp`.
 </details>
 
 **`9cdb4d0b8d21`** · `Unclassified/src/WidgetChat.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/WidgetChat.cpp)
 - public · colingsnyder2-ux · [src/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/WidgetChat.cpp)
 - public · colingsnyder2-ux · [src/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/WidgetChat.cpp)
 - public · colingsnyder2-ux · [src/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/WidgetChat.cpp)
@@ -205,6 +207,7 @@ Earlier paths and their donor versions: `native-classes/WidgetChat.cpp`.
 </details>
 
 **`ab1887e09fc7`** · `native-classes/WidgetChat.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/drafts/files/7805b2c81b2646cd49aa8b24704c11b91b78b46244c035c7c080d81cdc931883/rebuild/2008-06/native-classes/WidgetChat.cpp)
 - draft · colingsnyder2-ux · [native-classes/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/drafts/files/7805b2c81b2646cd49aa8b24704c11b91b78b46244c035c7c080d81cdc931883/rebuild/2008-06/native-classes/WidgetChat.cpp)
 - draft · colingsnyder2-ux · [native-classes/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/7805b2c81b2646cd49aa8b24704c11b91b78b46244c035c7c080d81cdc931883/rebuild/2008-06/native-classes/WidgetChat.cpp)
 - draft · colingsnyder2-ux · [native-classes/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/7805b2c81b2646cd49aa8b24704c11b91b78b46244c035c7c080d81cdc931883/rebuild/2008-06/native-classes/WidgetChat.cpp)
@@ -264,6 +267,8 @@ Earlier paths and their donor versions: `native-classes/WidgetChat.cpp`.
 </details>
 
 **`afbd55060897`** · `native-classes/WidgetChat.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/WidgetChat.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/WidgetChat.cpp)
 - public · colingsnyder2-ux · [native-classes/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/WidgetChat.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/WidgetChat.cpp)
 - public · colingsnyder2-ux · [native-classes/WidgetChat.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/WidgetChat.cpp)
@@ -371,6 +376,7 @@ Compatibility path for `App/src/gui/WidgetMenuItem.cpp`; compile either path, ne
 Earlier paths and their donor versions: `native-classes/WidgetMenuItem.cpp`.
 
 **`399aed0a9246`** · `Unclassified/src/WidgetMenuItem.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/WidgetMenuItem.cpp)
 - canonical · colingsnyder2-ux · [src/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/WidgetMenuItem.cpp)
 - canonical · colingsnyder2-ux · [src/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/WidgetMenuItem.cpp)
 - canonical · colingsnyder2-ux · [src/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/WidgetMenuItem.cpp)
@@ -432,6 +438,7 @@ Earlier paths and their donor versions: `native-classes/WidgetMenuItem.cpp`.
 - public · colingsnyder2-ux · [src/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/WidgetMenuItem.cpp)
 
 **`bf671af58dda`** · `Unclassified/src/WidgetMenuItem.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/WidgetMenuItem.cpp)
 - public · colingsnyder2-ux · [src/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/WidgetMenuItem.cpp)
 - public · colingsnyder2-ux · [src/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/WidgetMenuItem.cpp)
 - public · colingsnyder2-ux · [src/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/WidgetMenuItem.cpp)
@@ -537,6 +544,8 @@ Earlier paths and their donor versions: `native-classes/WidgetMenuItem.cpp`.
 </details>
 
 **`d7fd15361280`** · `native-classes/WidgetMenuItem.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/WidgetMenuItem.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/WidgetMenuItem.cpp)
 - public · colingsnyder2-ux · [native-classes/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/WidgetMenuItem.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/WidgetMenuItem.cpp)
 - public · colingsnyder2-ux · [native-classes/WidgetMenuItem.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/WidgetMenuItem.cpp)
@@ -688,6 +697,7 @@ Earlier paths and their donor versions: `native-classes/WorkspaceClose.cpp`.
 </details>
 
 **`69acb6057474`** · `Unclassified/src/WorkspaceClose.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/WorkspaceClose.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/WorkspaceClose.cpp)
 - public · colingsnyder2-ux · [src/WorkspaceClose.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/WorkspaceClose.cpp)
 - public · colingsnyder2-ux · [src/WorkspaceClose.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/WorkspaceClose.cpp)
 - public · colingsnyder2-ux · [src/WorkspaceClose.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/WorkspaceClose.cpp)
@@ -746,6 +756,7 @@ Earlier paths and their donor versions: `native-classes/WorkspaceClose.cpp`.
 </details>
 
 **`c2cfd7ae3325`** · `Unclassified/src/WorkspaceClose.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/WorkspaceClose.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/WorkspaceClose.cpp)
 - canonical · colingsnyder2-ux · [src/WorkspaceClose.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/WorkspaceClose.cpp)
 - canonical · colingsnyder2-ux · [src/WorkspaceClose.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/WorkspaceClose.cpp)
 - canonical · colingsnyder2-ux · [src/WorkspaceClose.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/WorkspaceClose.cpp)
@@ -879,6 +890,8 @@ Earlier paths and their donor versions: `native-classes/WorkspaceClose.cpp`.
 - public · colingsnyder2-ux · [native-classes/WorkspaceClose.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/WorkspaceClose.cpp)
 
 **`fdb0d7d95f93`** · `native-classes/WorkspaceClose.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/WorkspaceClose.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/WorkspaceClose.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorkspaceClose.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/WorkspaceClose.cpp)
 - public · colingsnyder2-ux · [native-classes/WorkspaceClose.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/WorkspaceClose.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WorkspaceClose.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/WorkspaceClose.cpp)
 - public · colingsnyder2-ux · [native-classes/WorkspaceClose.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/WorkspaceClose.cpp)

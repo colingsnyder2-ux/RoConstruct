@@ -17,6 +17,7 @@ Earlier paths and their donor versions: `native-classes/LaserToolFactory.cpp`.
 </details>
 
 **`98ddd0ff39f9`** · `App/src/tool/LaserToolFactory.cpp` · proof not assessed
+- public · colingsnyder2-ux · [tool/LaserToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/tool/LaserToolFactory.cpp)
 - public · colingsnyder2-ux · [tool/LaserToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/tool/LaserToolFactory.cpp)
 - public · colingsnyder2-ux · [tool/LaserToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/tool/LaserToolFactory.cpp)
 - public · colingsnyder2-ux · [tool/LaserToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/tool/LaserToolFactory.cpp)
@@ -39,6 +40,7 @@ Earlier paths and their donor versions: `native-classes/LaserToolFactory.cpp`.
 </details>
 
 **`be5a581ee270`** · `App/src/tool/LaserToolFactory.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/LaserToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/tool/LaserToolFactory.cpp)
 - canonical · colingsnyder2-ux · [tool/LaserToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/tool/LaserToolFactory.cpp)
 - canonical · colingsnyder2-ux · [tool/LaserToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/tool/LaserToolFactory.cpp)
 - canonical · colingsnyder2-ux · [tool/LaserToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/tool/LaserToolFactory.cpp)
@@ -161,6 +163,8 @@ Earlier paths and their donor versions: `native-classes/LaserToolFactory.cpp`.
 </details>
 
 **`792f3c9b8c31`** · `native-classes/LaserToolFactory.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LaserToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/LaserToolFactory.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LaserToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/LaserToolFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/LaserToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/LaserToolFactory.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LaserToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/LaserToolFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/LaserToolFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/LaserToolFactory.cpp)
@@ -328,6 +332,7 @@ Earlier paths and their donor versions: `native-classes/MegaDraggerMovement.cpp`
 </details>
 
 **`72fd6e329f15`** · `App/src/tool/MegaDraggerMovement.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/MegaDraggerMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/tool/MegaDraggerMovement.cpp)
 - canonical · colingsnyder2-ux · [tool/MegaDraggerMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/tool/MegaDraggerMovement.cpp)
 - canonical · colingsnyder2-ux · [tool/MegaDraggerMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/tool/MegaDraggerMovement.cpp)
 - canonical · colingsnyder2-ux · [tool/MegaDraggerMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/tool/MegaDraggerMovement.cpp)
@@ -416,6 +421,7 @@ Earlier paths and their donor versions: `native-classes/MegaDraggerMovement.cpp`
 - public · colingsnyder2-ux · [tool/MegaDraggerMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/tool/MegaDraggerMovement.cpp)
 
 **`fb96ecf8381c`** · `App/src/tool/MegaDraggerMovement.cpp` · proof not assessed
+- public · colingsnyder2-ux · [tool/MegaDraggerMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/tool/MegaDraggerMovement.cpp)
 - public · colingsnyder2-ux · [tool/MegaDraggerMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/tool/MegaDraggerMovement.cpp)
 - public · colingsnyder2-ux · [tool/MegaDraggerMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/tool/MegaDraggerMovement.cpp)
 - public · colingsnyder2-ux · [tool/MegaDraggerMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/tool/MegaDraggerMovement.cpp)
@@ -502,6 +508,8 @@ Earlier paths and their donor versions: `native-classes/MegaDraggerMovement.cpp`
 </details>
 
 **`96b5348257ea`** · `native-classes/MegaDraggerMovement.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MegaDraggerMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/MegaDraggerMovement.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MegaDraggerMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/MegaDraggerMovement.cpp)
 - public · colingsnyder2-ux · [native-classes/MegaDraggerMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/MegaDraggerMovement.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MegaDraggerMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/MegaDraggerMovement.cpp)
 - public · colingsnyder2-ux · [native-classes/MegaDraggerMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/MegaDraggerMovement.cpp)
@@ -667,6 +675,7 @@ Earlier paths and their donor versions: `native-classes/ModelSetFrontTool.cpp`.
 - public · colingsnyder2-ux · [tool/ModelSetFrontTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/tool/ModelSetFrontTool.cpp)
 
 **`7328f41070a6`** · `App/src/tool/ModelSetFrontTool.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/ModelSetFrontTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/tool/ModelSetFrontTool.cpp)
 - canonical · colingsnyder2-ux · [tool/ModelSetFrontTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/tool/ModelSetFrontTool.cpp)
 - canonical · colingsnyder2-ux · [tool/ModelSetFrontTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/tool/ModelSetFrontTool.cpp)
 - canonical · colingsnyder2-ux · [tool/ModelSetFrontTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/tool/ModelSetFrontTool.cpp)
@@ -727,6 +736,7 @@ Earlier paths and their donor versions: `native-classes/ModelSetFrontTool.cpp`.
 </details>
 
 **`cd6ed4178872`** · `App/src/tool/ModelSetFrontTool.cpp` · proof not assessed
+- public · colingsnyder2-ux · [tool/ModelSetFrontTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/tool/ModelSetFrontTool.cpp)
 - public · colingsnyder2-ux · [tool/ModelSetFrontTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/tool/ModelSetFrontTool.cpp)
 - public · colingsnyder2-ux · [tool/ModelSetFrontTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/tool/ModelSetFrontTool.cpp)
 - public · colingsnyder2-ux · [tool/ModelSetFrontTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/tool/ModelSetFrontTool.cpp)
@@ -809,6 +819,8 @@ Earlier paths and their donor versions: `native-classes/ModelSetFrontTool.cpp`.
 </details>
 
 **`884dd34bac0c`** · `native-classes/ModelSetFrontTool.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ModelSetFrontTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/ModelSetFrontTool.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ModelSetFrontTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/ModelSetFrontTool.cpp)
 - public · colingsnyder2-ux · [native-classes/ModelSetFrontTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/ModelSetFrontTool.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ModelSetFrontTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/ModelSetFrontTool.cpp)
 - public · colingsnyder2-ux · [native-classes/ModelSetFrontTool.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/ModelSetFrontTool.cpp)

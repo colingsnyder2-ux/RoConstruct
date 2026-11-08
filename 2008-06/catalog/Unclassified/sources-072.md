@@ -10,6 +10,7 @@ Compatibility path for `Rendering/src/ViewNew/ViewNewQuadVolume.cpp`; compile ei
 Earlier paths and their donor versions: `native-classes/ViewNewQuadVolume.cpp`.
 
 **`3b69e5bc86a5`** · `Unclassified/src/ViewNewQuadVolume.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/ViewNewQuadVolume.cpp)
 - public · colingsnyder2-ux · [src/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/ViewNewQuadVolume.cpp)
 - public · colingsnyder2-ux · [src/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/ViewNewQuadVolume.cpp)
 - public · colingsnyder2-ux · [src/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/ViewNewQuadVolume.cpp)
@@ -109,6 +110,7 @@ Earlier paths and their donor versions: `native-classes/ViewNewQuadVolume.cpp`.
 </details>
 
 **`e83655c26f72`** · `Unclassified/src/ViewNewQuadVolume.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/ViewNewQuadVolume.cpp)
 - canonical · colingsnyder2-ux · [src/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/ViewNewQuadVolume.cpp)
 - canonical · colingsnyder2-ux · [src/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/ViewNewQuadVolume.cpp)
 - canonical · colingsnyder2-ux · [src/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/ViewNewQuadVolume.cpp)
@@ -159,6 +161,8 @@ Earlier paths and their donor versions: `native-classes/ViewNewQuadVolume.cpp`.
 - public · colingsnyder2-ux · [native-classes/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/ViewNewQuadVolume.cpp)
 
 **`603db68e4341`** · `native-classes/ViewNewQuadVolume.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/ViewNewQuadVolume.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/ViewNewQuadVolume.cpp)
 - public · colingsnyder2-ux · [native-classes/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/ViewNewQuadVolume.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/ViewNewQuadVolume.cpp)
 - public · colingsnyder2-ux · [native-classes/ViewNewQuadVolume.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/ViewNewQuadVolume.cpp)
@@ -369,6 +373,7 @@ Earlier paths and their donor versions: `native-classes/ViewNewSphereMesh.cpp`.
 </details>
 
 **`8913ecd0df11`** · `Unclassified/src/ViewNewSphereMesh.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/ViewNewSphereMesh.cpp)
 - canonical · colingsnyder2-ux · [src/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/ViewNewSphereMesh.cpp)
 - canonical · colingsnyder2-ux · [src/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/ViewNewSphereMesh.cpp)
 - canonical · colingsnyder2-ux · [src/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/ViewNewSphereMesh.cpp)
@@ -445,6 +450,7 @@ Earlier paths and their donor versions: `native-classes/ViewNewSphereMesh.cpp`.
 </details>
 
 **`c78d7825175c`** · `Unclassified/src/ViewNewSphereMesh.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/ViewNewSphereMesh.cpp)
 - public · colingsnyder2-ux · [src/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/ViewNewSphereMesh.cpp)
 - public · colingsnyder2-ux · [src/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/ViewNewSphereMesh.cpp)
 - public · colingsnyder2-ux · [src/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/ViewNewSphereMesh.cpp)
@@ -484,10 +490,11 @@ Earlier paths and their donor versions: `native-classes/ViewNewSphereMesh.cpp`.
 </details>
 
 **`734fd8024ef8`** · `native-classes/ViewNewSphereMesh.cpp` · proof not assessed
-- draft · colingsnyder2-ux · [native-classes/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/ViewNewSphereMesh.cpp)
+- draft · colingsnyder2-ux · [native-classes/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/ViewNewSphereMesh.cpp)
 - fork · mewpokemons · [native-classes/ViewNewSphereMesh.cpp](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-classes/ViewNewSphereMesh.cpp)
 - fork · mewpokemons · [native-classes/ViewNewSphereMesh.cpp](https://github.com/mewpokemons/RoConstruct/blob/5fe2214e131d164c737320c28bdd4f3b53c40cb1/rebuild/2008-06/native-classes/ViewNewSphereMesh.cpp)
 - fork · mewpokemons · [native-classes/ViewNewSphereMesh.cpp](https://github.com/mewpokemons/RoConstruct/blob/90fb25e4a68ee99a8e6af33adce1b4d192e52a32/rebuild/2008-06/native-classes/ViewNewSphereMesh.cpp)
+- draft · colingsnyder2-ux · [native-classes/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/ViewNewSphereMesh.cpp)
 - draft · colingsnyder2-ux · [native-classes/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/ViewNewSphereMesh.cpp)
 - draft · colingsnyder2-ux · [native-classes/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/ViewNewSphereMesh.cpp)
 - draft · colingsnyder2-ux · [native-classes/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/992d7218c9453a3f2b20e144a115f1403397860d2dd22998984bbf0c69e3f0c2/rebuild/2008-06/native-classes/ViewNewSphereMesh.cpp)
@@ -563,6 +570,8 @@ Earlier paths and their donor versions: `native-classes/ViewNewSphereMesh.cpp`.
 </details>
 
 **`a12e117656ba`** · `native-classes/ViewNewSphereMesh.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/ViewNewSphereMesh.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/ViewNewSphereMesh.cpp)
 - public · colingsnyder2-ux · [native-classes/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/ViewNewSphereMesh.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/ViewNewSphereMesh.cpp)
 - public · colingsnyder2-ux · [native-classes/ViewNewSphereMesh.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/ViewNewSphereMesh.cpp)
@@ -749,6 +758,7 @@ Earlier paths and their donor versions: `native-classes/ViewVerbs.cpp`.
 </details>
 
 **`73abbda22fa2`** · `Unclassified/src/ViewVerbs.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/ViewVerbs.cpp)
 - canonical · colingsnyder2-ux · [src/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/ViewVerbs.cpp)
 - canonical · colingsnyder2-ux · [src/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/ViewVerbs.cpp)
 - canonical · colingsnyder2-ux · [src/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/ViewVerbs.cpp)
@@ -780,6 +790,7 @@ Earlier paths and their donor versions: `native-classes/ViewVerbs.cpp`.
 </details>
 
 **`adbe4002b432`** · `Unclassified/src/ViewVerbs.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/ViewVerbs.cpp)
 - public · colingsnyder2-ux · [src/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/ViewVerbs.cpp)
 - public · colingsnyder2-ux · [src/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/ViewVerbs.cpp)
 - public · colingsnyder2-ux · [src/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/ViewVerbs.cpp)
@@ -912,6 +923,8 @@ Earlier paths and their donor versions: `native-classes/ViewVerbs.cpp`.
 </details>
 
 **`b7c2d0f9244e`** · `native-classes/ViewVerbs.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/ViewVerbs.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/ViewVerbs.cpp)
 - public · colingsnyder2-ux · [native-classes/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/ViewVerbs.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/ViewVerbs.cpp)
 - public · colingsnyder2-ux · [native-classes/ViewVerbs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/ViewVerbs.cpp)

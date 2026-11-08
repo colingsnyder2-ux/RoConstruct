@@ -17,6 +17,7 @@ Earlier paths and their donor versions: `native-classes/GameSettings.cpp`.
 </details>
 
 **`9c185b1a8409`** · `App/src/v8datamodel/GameSettings.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/GameSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/v8datamodel/GameSettings.cpp)
 - public · colingsnyder2-ux · [v8datamodel/GameSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/v8datamodel/GameSettings.cpp)
 - public · colingsnyder2-ux · [v8datamodel/GameSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/GameSettings.cpp)
 - public · colingsnyder2-ux · [v8datamodel/GameSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/GameSettings.cpp)
@@ -59,6 +60,7 @@ Earlier paths and their donor versions: `native-classes/GameSettings.cpp`.
 - public · colingsnyder2-ux · [v8datamodel/GameSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/GameSettings.cpp)
 
 **`b230833817d4`** · `App/src/v8datamodel/GameSettings.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/GameSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/v8datamodel/GameSettings.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/GameSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/v8datamodel/GameSettings.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/GameSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/GameSettings.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/GameSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/GameSettings.cpp)
@@ -136,8 +138,9 @@ Earlier paths and their donor versions: `native-classes/GameSettings.cpp`.
 </details>
 
 **`51562c8d5f53`** · `native-classes/GameSettings.cpp` · proof not assessed
-- draft · colingsnyder2-ux · [native-classes/GameSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/GameSettings.cpp)
+- draft · colingsnyder2-ux · [native-classes/GameSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/GameSettings.cpp)
 - fork · coldek · [native-classes/GameSettings.cpp](https://github.com/coldek/RoConstruct/blob/0698f03e6ac3846ebf558bc10dabcb03b8536c1c/rebuild/2008-06/native-classes/GameSettings.cpp)
+- draft · colingsnyder2-ux · [native-classes/GameSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/GameSettings.cpp)
 - draft · colingsnyder2-ux · [native-classes/GameSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/GameSettings.cpp)
 - draft · colingsnyder2-ux · [native-classes/GameSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/GameSettings.cpp)
 - draft · colingsnyder2-ux · [native-classes/GameSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/5f65e976c1e52d2f97484910820f0bb552b34f9d/drafts/files/9494f4ff054e9aa19aa92ab228959b2fa2ba3f7ac568c30b90e12cb8d5de61a7/rebuild/2008-06/native-classes/GameSettings.cpp)
@@ -196,6 +199,8 @@ Earlier paths and their donor versions: `native-classes/GameSettings.cpp`.
 </details>
 
 **`63b4b75d0d55`** · `native-classes/GameSettings.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/GameSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/GameSettings.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GameSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/GameSettings.cpp)
 - public · colingsnyder2-ux · [native-classes/GameSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/GameSettings.cpp)
 - canonical · colingsnyder2-ux · [native-classes/GameSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/GameSettings.cpp)
 - public · colingsnyder2-ux · [native-classes/GameSettings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/GameSettings.cpp)
@@ -371,6 +376,7 @@ Earlier paths and their donor versions: `native-classes/GameSettings.cpp`.
 Earlier paths and their donor versions: `native-classes/GameSettingsSingleton.cpp`.
 
 **`6b1dc8fae6b8`** · `App/src/v8datamodel/GameSettingsSingleton.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/GameSettingsSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/v8datamodel/GameSettingsSingleton.cpp)
 - public · colingsnyder2-ux · [v8datamodel/GameSettingsSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/v8datamodel/GameSettingsSingleton.cpp)
 - public · colingsnyder2-ux · [v8datamodel/GameSettingsSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/GameSettingsSingleton.cpp)
 - public · colingsnyder2-ux · [v8datamodel/GameSettingsSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/GameSettingsSingleton.cpp)
@@ -430,6 +436,7 @@ Earlier paths and their donor versions: `native-classes/GameSettingsSingleton.cp
 - public · colingsnyder2-ux · [v8datamodel/GameSettingsSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/GameSettingsSingleton.cpp)
 
 **`e06350368a5d`** · `App/src/v8datamodel/GameSettingsSingleton.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/GameSettingsSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/v8datamodel/GameSettingsSingleton.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/GameSettingsSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/v8datamodel/GameSettingsSingleton.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/GameSettingsSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/GameSettingsSingleton.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/GameSettingsSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/GameSettingsSingleton.cpp)
@@ -490,6 +497,8 @@ Earlier paths and their donor versions: `native-classes/GameSettingsSingleton.cp
 </details>
 
 **`0364fb0c731c`** · `native-classes/GameSettingsSingleton.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/GameSettingsSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/GameSettingsSingleton.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GameSettingsSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/GameSettingsSingleton.cpp)
 - public · colingsnyder2-ux · [native-classes/GameSettingsSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/GameSettingsSingleton.cpp)
 - canonical · colingsnyder2-ux · [native-classes/GameSettingsSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/GameSettingsSingleton.cpp)
 - public · colingsnyder2-ux · [native-classes/GameSettingsSingleton.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/GameSettingsSingleton.cpp)
@@ -689,6 +698,7 @@ Earlier paths and their donor versions: `native-classes/GameSettingsSingleton.cp
 Earlier paths and their donor versions: `native-classes/GameSettingsStorage.cpp`.
 
 **`06a24bfe0a24`** · `App/src/v8datamodel/GameSettingsStorage.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/GameSettingsStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/v8datamodel/GameSettingsStorage.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/GameSettingsStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/v8datamodel/GameSettingsStorage.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/GameSettingsStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/GameSettingsStorage.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/GameSettingsStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/GameSettingsStorage.cpp)
@@ -777,6 +787,7 @@ Earlier paths and their donor versions: `native-classes/GameSettingsStorage.cpp`
 - public · colingsnyder2-ux · [v8datamodel/GameSettingsStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/GameSettingsStorage.cpp)
 
 **`5bd4d8fa86d1`** · `App/src/v8datamodel/GameSettingsStorage.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/GameSettingsStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/v8datamodel/GameSettingsStorage.cpp)
 - public · colingsnyder2-ux · [v8datamodel/GameSettingsStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/v8datamodel/GameSettingsStorage.cpp)
 - public · colingsnyder2-ux · [v8datamodel/GameSettingsStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/GameSettingsStorage.cpp)
 - public · colingsnyder2-ux · [v8datamodel/GameSettingsStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/GameSettingsStorage.cpp)
@@ -890,6 +901,8 @@ Earlier paths and their donor versions: `native-classes/GameSettingsStorage.cpp`
 </details>
 
 **`d0e80f7c4085`** · `native-classes/GameSettingsStorage.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/GameSettingsStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/GameSettingsStorage.cpp)
+- canonical · colingsnyder2-ux · [native-classes/GameSettingsStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/GameSettingsStorage.cpp)
 - public · colingsnyder2-ux · [native-classes/GameSettingsStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/GameSettingsStorage.cpp)
 - canonical · colingsnyder2-ux · [native-classes/GameSettingsStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/GameSettingsStorage.cpp)
 - public · colingsnyder2-ux · [native-classes/GameSettingsStorage.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/GameSettingsStorage.cpp)

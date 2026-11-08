@@ -95,6 +95,7 @@ Earlier paths and their donor versions: `native-classes/StatsService.cpp`.
 </details>
 
 **`50299d315ecd`** · `Unclassified/src/StatsService.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/StatsService.cpp)
 - canonical · colingsnyder2-ux · [src/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/StatsService.cpp)
 - canonical · colingsnyder2-ux · [src/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/StatsService.cpp)
 - canonical · colingsnyder2-ux · [src/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/StatsService.cpp)
@@ -111,6 +112,7 @@ Earlier paths and their donor versions: `native-classes/StatsService.cpp`.
 </details>
 
 **`91a248e93649`** · `Unclassified/src/StatsService.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/StatsService.cpp)
 - public · colingsnyder2-ux · [src/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/StatsService.cpp)
 - public · colingsnyder2-ux · [src/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/StatsService.cpp)
 - public · colingsnyder2-ux · [src/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/StatsService.cpp)
@@ -182,6 +184,8 @@ Earlier paths and their donor versions: `native-classes/StatsService.cpp`.
 </details>
 
 **`33f27b1512c9`** · `native-classes/StatsService.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/StatsService.cpp)
+- canonical · colingsnyder2-ux · [native-classes/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/StatsService.cpp)
 - public · colingsnyder2-ux · [native-classes/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/StatsService.cpp)
 - canonical · colingsnyder2-ux · [native-classes/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/StatsService.cpp)
 - public · colingsnyder2-ux · [native-classes/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/StatsService.cpp)
@@ -289,6 +293,7 @@ Earlier paths and their donor versions: `native-classes/StatsService.cpp`.
 </details>
 
 **`7ed436e5381c`** · `native-classes/StatsService.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/drafts/files/c2aa85fb8b8f48a6859252177543062796be9cb6a16034dc964d91021f26d396/rebuild/2008-06/native-classes/StatsService.cpp)
 - draft · colingsnyder2-ux · [native-classes/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/drafts/files/c2aa85fb8b8f48a6859252177543062796be9cb6a16034dc964d91021f26d396/rebuild/2008-06/native-classes/StatsService.cpp)
 - draft · colingsnyder2-ux · [native-classes/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/c2aa85fb8b8f48a6859252177543062796be9cb6a16034dc964d91021f26d396/rebuild/2008-06/native-classes/StatsService.cpp)
 - draft · colingsnyder2-ux · [native-classes/StatsService.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/c2aa85fb8b8f48a6859252177543062796be9cb6a16034dc964d91021f26d396/rebuild/2008-06/native-classes/StatsService.cpp)
@@ -384,6 +389,7 @@ Compatibility path for `App/src/tool/SurfaceVisitors.cpp`; compile either path, 
 Earlier paths and their donor versions: `native-classes/SurfaceVisitors.cpp`.
 
 **`2b4d73da00b5`** · `Unclassified/src/SurfaceVisitors.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/SurfaceVisitors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/SurfaceVisitors.cpp)
 - public · colingsnyder2-ux · [src/SurfaceVisitors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/SurfaceVisitors.cpp)
 - public · colingsnyder2-ux · [src/SurfaceVisitors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/SurfaceVisitors.cpp)
 - public · colingsnyder2-ux · [src/SurfaceVisitors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/SurfaceVisitors.cpp)
@@ -427,6 +433,7 @@ Earlier paths and their donor versions: `native-classes/SurfaceVisitors.cpp`.
 </details>
 
 **`f5513765f74a`** · `Unclassified/src/SurfaceVisitors.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/SurfaceVisitors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/SurfaceVisitors.cpp)
 - canonical · colingsnyder2-ux · [src/SurfaceVisitors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/SurfaceVisitors.cpp)
 - canonical · colingsnyder2-ux · [src/SurfaceVisitors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/SurfaceVisitors.cpp)
 - canonical · colingsnyder2-ux · [src/SurfaceVisitors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/SurfaceVisitors.cpp)
@@ -591,6 +598,8 @@ Earlier paths and their donor versions: `native-classes/SurfaceVisitors.cpp`.
 - public · colingsnyder2-ux · [native-classes/SurfaceVisitors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/native-classes/SurfaceVisitors.cpp)
 
 **`754867d54da0`** · `native-classes/SurfaceVisitors.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SurfaceVisitors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/SurfaceVisitors.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SurfaceVisitors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/SurfaceVisitors.cpp)
 - public · colingsnyder2-ux · [native-classes/SurfaceVisitors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/SurfaceVisitors.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SurfaceVisitors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/SurfaceVisitors.cpp)
 - public · colingsnyder2-ux · [native-classes/SurfaceVisitors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/SurfaceVisitors.cpp)
@@ -686,6 +695,7 @@ Compatibility path for `Rendering/src/RenderLib/TextureProxyBase2008.cpp`; compi
 Earlier paths and their donor versions: `native-classes/TextureProxyBase2008.cpp`.
 
 **`6d9b4b553998`** · `Unclassified/src/TextureProxyBase2008.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/TextureProxyBase2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/TextureProxyBase2008.cpp)
 - public · colingsnyder2-ux · [src/TextureProxyBase2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/TextureProxyBase2008.cpp)
 - public · colingsnyder2-ux · [src/TextureProxyBase2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/TextureProxyBase2008.cpp)
 - public · colingsnyder2-ux · [src/TextureProxyBase2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/TextureProxyBase2008.cpp)
@@ -758,6 +768,7 @@ Earlier paths and their donor versions: `native-classes/TextureProxyBase2008.cpp
 - public · colingsnyder2-ux · [src/TextureProxyBase2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/TextureProxyBase2008.cpp)
 
 **`c39e55c985bd`** · `Unclassified/src/TextureProxyBase2008.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/TextureProxyBase2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/TextureProxyBase2008.cpp)
 - canonical · colingsnyder2-ux · [src/TextureProxyBase2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/TextureProxyBase2008.cpp)
 - canonical · colingsnyder2-ux · [src/TextureProxyBase2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/TextureProxyBase2008.cpp)
 - canonical · colingsnyder2-ux · [src/TextureProxyBase2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/TextureProxyBase2008.cpp)
@@ -792,6 +803,8 @@ Earlier paths and their donor versions: `native-classes/TextureProxyBase2008.cpp
 </details>
 
 **`2f053bacbdb8`** · `native-classes/TextureProxyBase2008.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/TextureProxyBase2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/TextureProxyBase2008.cpp)
+- canonical · colingsnyder2-ux · [native-classes/TextureProxyBase2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/TextureProxyBase2008.cpp)
 - public · colingsnyder2-ux · [native-classes/TextureProxyBase2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/TextureProxyBase2008.cpp)
 - canonical · colingsnyder2-ux · [native-classes/TextureProxyBase2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/TextureProxyBase2008.cpp)
 - public · colingsnyder2-ux · [native-classes/TextureProxyBase2008.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/TextureProxyBase2008.cpp)

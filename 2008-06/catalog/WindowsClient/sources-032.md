@@ -32,6 +32,7 @@ Earlier paths and their donor versions: `native-headers/VerbBinder.h`.
 - public · colingsnyder2-ux · [include/VerbBinder.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/include/VerbBinder.h)
 
 **`a95054cd89b7`** · `WindowsClient/include/VerbBinder.h` · proof not assessed
+- public · colingsnyder2-ux · [include/VerbBinder.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/WindowsClient/include/VerbBinder.h)
 - public · colingsnyder2-ux · [include/VerbBinder.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/WindowsClient/include/VerbBinder.h)
 - public · colingsnyder2-ux · [include/VerbBinder.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/include/VerbBinder.h)
 - public · colingsnyder2-ux · [include/VerbBinder.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/include/VerbBinder.h)
@@ -54,6 +55,7 @@ Earlier paths and their donor versions: `native-headers/VerbBinder.h`.
 </details>
 
 **`b007b8792596`** · `WindowsClient/include/VerbBinder.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/VerbBinder.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/WindowsClient/include/VerbBinder.h)
 - canonical · colingsnyder2-ux · [include/VerbBinder.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/WindowsClient/include/VerbBinder.h)
 - canonical · colingsnyder2-ux · [include/VerbBinder.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/include/VerbBinder.h)
 - canonical · colingsnyder2-ux · [include/VerbBinder.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/include/VerbBinder.h)
@@ -436,6 +438,8 @@ Earlier paths and their donor versions: `native-headers/VerbBinder.h`.
 </details>
 
 **`b1b77cb90f8b`** · `native-headers/VerbBinder.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/VerbBinder.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-headers/VerbBinder.h)
+- canonical · colingsnyder2-ux · [native-headers/VerbBinder.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-headers/VerbBinder.h)
 - public · colingsnyder2-ux · [native-headers/VerbBinder.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-headers/VerbBinder.h)
 - canonical · colingsnyder2-ux · [native-headers/VerbBinder.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-headers/VerbBinder.h)
 - public · colingsnyder2-ux · [native-headers/VerbBinder.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/VerbBinder.h)
@@ -682,6 +686,7 @@ Earlier paths and their donor versions: `native-headers/VersionInfo.h`.
 - public · colingsnyder2-ux · [include/VersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/include/VersionInfo.h)
 
 **`5fa6b03cf265`** · `WindowsClient/include/VersionInfo.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/VersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/WindowsClient/include/VersionInfo.h)
 - canonical · colingsnyder2-ux · [include/VersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/WindowsClient/include/VersionInfo.h)
 - canonical · colingsnyder2-ux · [include/VersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/include/VersionInfo.h)
 - canonical · colingsnyder2-ux · [include/VersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/include/VersionInfo.h)
@@ -806,6 +811,7 @@ Earlier paths and their donor versions: `native-headers/VersionInfo.h`.
 </details>
 
 **`833a8ece869f`** · `WindowsClient/include/VersionInfo.h` · proof not assessed
+- public · colingsnyder2-ux · [include/VersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/WindowsClient/include/VersionInfo.h)
 - public · colingsnyder2-ux · [include/VersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/WindowsClient/include/VersionInfo.h)
 - public · colingsnyder2-ux · [include/VersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/include/VersionInfo.h)
 - public · colingsnyder2-ux · [include/VersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/include/VersionInfo.h)
@@ -844,6 +850,8 @@ Earlier paths and their donor versions: `native-headers/VersionInfo.h`.
 - public · colingsnyder2-ux · [native-headers/VersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/native-headers/VersionInfo.h)
 
 **`0af10f714ec2`** · `native-headers/VersionInfo.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/VersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-headers/VersionInfo.h)
+- canonical · colingsnyder2-ux · [native-headers/VersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-headers/VersionInfo.h)
 - public · colingsnyder2-ux · [native-headers/VersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-headers/VersionInfo.h)
 - canonical · colingsnyder2-ux · [native-headers/VersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-headers/VersionInfo.h)
 - public · colingsnyder2-ux · [native-headers/VersionInfo.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/VersionInfo.h)

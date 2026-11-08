@@ -17,6 +17,7 @@ Earlier paths and their donor versions: `native-classes/Sparkles.cpp`.
 </details>
 
 **`7d38fa623ca9`** · `App/src/v8datamodel/Sparkles.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/Sparkles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/v8datamodel/Sparkles.cpp)
 - public · colingsnyder2-ux · [v8datamodel/Sparkles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/v8datamodel/Sparkles.cpp)
 - public · colingsnyder2-ux · [v8datamodel/Sparkles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/Sparkles.cpp)
 - public · colingsnyder2-ux · [v8datamodel/Sparkles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/Sparkles.cpp)
@@ -59,6 +60,7 @@ Earlier paths and their donor versions: `native-classes/Sparkles.cpp`.
 - public · colingsnyder2-ux · [v8datamodel/Sparkles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/Sparkles.cpp)
 
 **`ad0dbc918a93`** · `App/src/v8datamodel/Sparkles.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/Sparkles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/v8datamodel/Sparkles.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/Sparkles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/v8datamodel/Sparkles.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/Sparkles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/Sparkles.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/Sparkles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/Sparkles.cpp)
@@ -129,6 +131,8 @@ Earlier paths and their donor versions: `native-classes/Sparkles.cpp`.
 </details>
 
 **`3fe697da9a82`** · `native-classes/Sparkles.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/Sparkles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/Sparkles.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Sparkles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/Sparkles.cpp)
 - public · colingsnyder2-ux · [native-classes/Sparkles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/Sparkles.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Sparkles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/Sparkles.cpp)
 - public · colingsnyder2-ux · [native-classes/Sparkles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/Sparkles.cpp)
@@ -237,6 +241,7 @@ Earlier paths and their donor versions: `native-classes/Sparkles.cpp`.
 </details>
 
 **`645035a10a34`** · `native-classes/Sparkles.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/Sparkles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/drafts/files/2c5e113dad3c82e7db4966aadbc48fc5807c21f8fd8c75a810dddcd8fad0fc2d/rebuild/2008-06/native-classes/Sparkles.cpp)
 - draft · colingsnyder2-ux · [native-classes/Sparkles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/drafts/files/2c5e113dad3c82e7db4966aadbc48fc5807c21f8fd8c75a810dddcd8fad0fc2d/rebuild/2008-06/native-classes/Sparkles.cpp)
 - draft · colingsnyder2-ux · [native-classes/Sparkles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/drafts/files/2c5e113dad3c82e7db4966aadbc48fc5807c21f8fd8c75a810dddcd8fad0fc2d/rebuild/2008-06/native-classes/Sparkles.cpp)
 - draft · colingsnyder2-ux · [native-classes/Sparkles.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/drafts/files/2c5e113dad3c82e7db4966aadbc48fc5807c21f8fd8c75a810dddcd8fad0fc2d/rebuild/2008-06/native-classes/Sparkles.cpp)
@@ -379,6 +384,7 @@ Earlier paths and their donor versions: `native-classes/SparklesEffect.cpp`.
 </details>
 
 **`7ce211a9ead5`** · `App/src/v8datamodel/SparklesEffect.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/SparklesEffect.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/v8datamodel/SparklesEffect.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SparklesEffect.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/v8datamodel/SparklesEffect.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SparklesEffect.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/SparklesEffect.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SparklesEffect.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/SparklesEffect.cpp)
@@ -421,6 +427,7 @@ Earlier paths and their donor versions: `native-classes/SparklesEffect.cpp`.
 - public · colingsnyder2-ux · [v8datamodel/SparklesEffect.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/SparklesEffect.cpp)
 
 **`8c91540e6720`** · `App/src/v8datamodel/SparklesEffect.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/SparklesEffect.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/v8datamodel/SparklesEffect.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SparklesEffect.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/v8datamodel/SparklesEffect.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SparklesEffect.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/SparklesEffect.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SparklesEffect.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/SparklesEffect.cpp)
@@ -550,6 +557,8 @@ Earlier paths and their donor versions: `native-classes/SparklesEffect.cpp`.
 </details>
 
 **`97af209f38a2`** · `native-classes/SparklesEffect.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SparklesEffect.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/SparklesEffect.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SparklesEffect.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/SparklesEffect.cpp)
 - public · colingsnyder2-ux · [native-classes/SparklesEffect.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/SparklesEffect.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SparklesEffect.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/SparklesEffect.cpp)
 - public · colingsnyder2-ux · [native-classes/SparklesEffect.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/SparklesEffect.cpp)
@@ -683,6 +692,7 @@ Earlier paths and their donor versions: `native-classes/SpawnLocation.cpp`.
 </details>
 
 **`cc99357e3842`** · `App/src/v8datamodel/SpawnLocation.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/SpawnLocation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/v8datamodel/SpawnLocation.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SpawnLocation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/v8datamodel/SpawnLocation.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SpawnLocation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/SpawnLocation.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/SpawnLocation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/SpawnLocation.cpp)
@@ -743,6 +753,7 @@ Earlier paths and their donor versions: `native-classes/SpawnLocation.cpp`.
 </details>
 
 **`fa586dabe0a8`** · `App/src/v8datamodel/SpawnLocation.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/SpawnLocation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/v8datamodel/SpawnLocation.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SpawnLocation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/v8datamodel/SpawnLocation.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SpawnLocation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/SpawnLocation.cpp)
 - public · colingsnyder2-ux · [v8datamodel/SpawnLocation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/SpawnLocation.cpp)
@@ -810,6 +821,8 @@ Earlier paths and their donor versions: `native-classes/SpawnLocation.cpp`.
 </details>
 
 **`3b2d268f698f`** · `native-classes/SpawnLocation.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SpawnLocation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/SpawnLocation.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SpawnLocation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/SpawnLocation.cpp)
 - public · colingsnyder2-ux · [native-classes/SpawnLocation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/SpawnLocation.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SpawnLocation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/SpawnLocation.cpp)
 - public · colingsnyder2-ux · [native-classes/SpawnLocation.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/SpawnLocation.cpp)

@@ -17,6 +17,7 @@ Earlier paths and their donor versions: `native-classes/ToolVerbCore.cpp`.
 </details>
 
 **`40cddfcc72f0`** · `App/src/v8datamodel/ToolVerbCore.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/ToolVerbCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/v8datamodel/ToolVerbCore.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/ToolVerbCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/v8datamodel/ToolVerbCore.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/ToolVerbCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/ToolVerbCore.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/ToolVerbCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/ToolVerbCore.cpp)
@@ -103,6 +104,7 @@ Earlier paths and their donor versions: `native-classes/ToolVerbCore.cpp`.
 - public · colingsnyder2-ux · [v8datamodel/ToolVerbCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/ToolVerbCore.cpp)
 
 **`d9d0bca0d91e`** · `App/src/v8datamodel/ToolVerbCore.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/ToolVerbCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/v8datamodel/ToolVerbCore.cpp)
 - public · colingsnyder2-ux · [v8datamodel/ToolVerbCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/v8datamodel/ToolVerbCore.cpp)
 - public · colingsnyder2-ux · [v8datamodel/ToolVerbCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/ToolVerbCore.cpp)
 - public · colingsnyder2-ux · [v8datamodel/ToolVerbCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/ToolVerbCore.cpp)
@@ -134,6 +136,8 @@ Earlier paths and their donor versions: `native-classes/ToolVerbCore.cpp`.
 </details>
 
 **`0dfc3221f454`** · `native-classes/ToolVerbCore.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/ToolVerbCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/ToolVerbCore.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ToolVerbCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/ToolVerbCore.cpp)
 - public · colingsnyder2-ux · [native-classes/ToolVerbCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/ToolVerbCore.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ToolVerbCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/ToolVerbCore.cpp)
 - public · colingsnyder2-ux · [native-classes/ToolVerbCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/ToolVerbCore.cpp)
@@ -348,6 +352,7 @@ Earlier paths and their donor versions: `native-classes/UngroupSelectionVerb.cpp
 - public · colingsnyder2-ux · [v8datamodel/UngroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/v8datamodel/UngroupSelectionVerb.cpp)
 
 **`10da4d186e61`** · `App/src/v8datamodel/UngroupSelectionVerb.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/UngroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/v8datamodel/UngroupSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/UngroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/v8datamodel/UngroupSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/UngroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/v8datamodel/UngroupSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [v8datamodel/UngroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/v8datamodel/UngroupSelectionVerb.cpp)
@@ -407,6 +412,7 @@ Earlier paths and their donor versions: `native-classes/UngroupSelectionVerb.cpp
 </details>
 
 **`c8ec57f56314`** · `App/src/v8datamodel/UngroupSelectionVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/UngroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/v8datamodel/UngroupSelectionVerb.cpp)
 - public · colingsnyder2-ux · [v8datamodel/UngroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/v8datamodel/UngroupSelectionVerb.cpp)
 - public · colingsnyder2-ux · [v8datamodel/UngroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/v8datamodel/UngroupSelectionVerb.cpp)
 - public · colingsnyder2-ux · [v8datamodel/UngroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/v8datamodel/UngroupSelectionVerb.cpp)
@@ -511,6 +517,8 @@ Earlier paths and their donor versions: `native-classes/UngroupSelectionVerb.cpp
 </details>
 
 **`981f2f5c373e`** · `native-classes/UngroupSelectionVerb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/UngroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/UngroupSelectionVerb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/UngroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/UngroupSelectionVerb.cpp)
 - public · colingsnyder2-ux · [native-classes/UngroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/UngroupSelectionVerb.cpp)
 - canonical · colingsnyder2-ux · [native-classes/UngroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/UngroupSelectionVerb.cpp)
 - public · colingsnyder2-ux · [native-classes/UngroupSelectionVerb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/UngroupSelectionVerb.cpp)

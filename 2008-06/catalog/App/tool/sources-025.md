@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-classes/SlingshotToolCore.cpp`.
 
 **`39aec4ece1f1`** · `App/src/tool/SlingshotToolCore.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/SlingshotToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/tool/SlingshotToolCore.cpp)
 - canonical · colingsnyder2-ux · [tool/SlingshotToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/tool/SlingshotToolCore.cpp)
 - canonical · colingsnyder2-ux · [tool/SlingshotToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/tool/SlingshotToolCore.cpp)
 - canonical · colingsnyder2-ux · [tool/SlingshotToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/tool/SlingshotToolCore.cpp)
@@ -68,6 +69,7 @@ Earlier paths and their donor versions: `native-classes/SlingshotToolCore.cpp`.
 </details>
 
 **`3a9123e6b3fe`** · `App/src/tool/SlingshotToolCore.cpp` · proof not assessed
+- public · colingsnyder2-ux · [tool/SlingshotToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/tool/SlingshotToolCore.cpp)
 - public · colingsnyder2-ux · [tool/SlingshotToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/tool/SlingshotToolCore.cpp)
 - public · colingsnyder2-ux · [tool/SlingshotToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/tool/SlingshotToolCore.cpp)
 - public · colingsnyder2-ux · [tool/SlingshotToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/tool/SlingshotToolCore.cpp)
@@ -171,6 +173,8 @@ Earlier paths and their donor versions: `native-classes/SlingshotToolCore.cpp`.
 </details>
 
 **`4ceac90b9298`** · `native-classes/SlingshotToolCore.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SlingshotToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/SlingshotToolCore.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SlingshotToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/SlingshotToolCore.cpp)
 - public · colingsnyder2-ux · [native-classes/SlingshotToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/SlingshotToolCore.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SlingshotToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/SlingshotToolCore.cpp)
 - public · colingsnyder2-ux · [native-classes/SlingshotToolCore.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/SlingshotToolCore.cpp)
@@ -328,6 +332,7 @@ Earlier paths and their donor versions: `native-classes/SlingshotToolLaunch.cpp`
 </details>
 
 **`30a3a838c980`** · `App/src/tool/SlingshotToolLaunch.cpp` · proof not assessed
+- public · colingsnyder2-ux · [tool/SlingshotToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/tool/SlingshotToolLaunch.cpp)
 - public · colingsnyder2-ux · [tool/SlingshotToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/tool/SlingshotToolLaunch.cpp)
 - public · colingsnyder2-ux · [tool/SlingshotToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/tool/SlingshotToolLaunch.cpp)
 - public · colingsnyder2-ux · [tool/SlingshotToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/tool/SlingshotToolLaunch.cpp)
@@ -350,6 +355,7 @@ Earlier paths and their donor versions: `native-classes/SlingshotToolLaunch.cpp`
 </details>
 
 **`40dfe9328e7b`** · `App/src/tool/SlingshotToolLaunch.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/SlingshotToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/tool/SlingshotToolLaunch.cpp)
 - canonical · colingsnyder2-ux · [tool/SlingshotToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/tool/SlingshotToolLaunch.cpp)
 - canonical · colingsnyder2-ux · [tool/SlingshotToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/tool/SlingshotToolLaunch.cpp)
 - canonical · colingsnyder2-ux · [tool/SlingshotToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/tool/SlingshotToolLaunch.cpp)
@@ -503,6 +509,8 @@ Earlier paths and their donor versions: `native-classes/SlingshotToolLaunch.cpp`
 </details>
 
 **`66335e6e8b15`** · `native-classes/SlingshotToolLaunch.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SlingshotToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/SlingshotToolLaunch.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SlingshotToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/SlingshotToolLaunch.cpp)
 - public · colingsnyder2-ux · [native-classes/SlingshotToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/SlingshotToolLaunch.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SlingshotToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/SlingshotToolLaunch.cpp)
 - public · colingsnyder2-ux · [native-classes/SlingshotToolLaunch.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/SlingshotToolLaunch.cpp)
@@ -630,6 +638,7 @@ Earlier paths and their donor versions: `native-classes/SlingshotToolLaunch.cpp`
 Earlier paths and their donor versions: `native-classes/SlingshotToolProjectile.cpp`.
 
 **`362c9a662950`** · `App/src/tool/SlingshotToolProjectile.cpp` · proof not assessed
+- public · colingsnyder2-ux · [tool/SlingshotToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/tool/SlingshotToolProjectile.cpp)
 - public · colingsnyder2-ux · [tool/SlingshotToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/tool/SlingshotToolProjectile.cpp)
 - public · colingsnyder2-ux · [tool/SlingshotToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/tool/SlingshotToolProjectile.cpp)
 - public · colingsnyder2-ux · [tool/SlingshotToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/tool/SlingshotToolProjectile.cpp)
@@ -652,6 +661,7 @@ Earlier paths and their donor versions: `native-classes/SlingshotToolProjectile.
 </details>
 
 **`3c2ebf5cca1c`** · `App/src/tool/SlingshotToolProjectile.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/SlingshotToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/tool/SlingshotToolProjectile.cpp)
 - canonical · colingsnyder2-ux · [tool/SlingshotToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/tool/SlingshotToolProjectile.cpp)
 - canonical · colingsnyder2-ux · [tool/SlingshotToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/tool/SlingshotToolProjectile.cpp)
 - canonical · colingsnyder2-ux · [tool/SlingshotToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/tool/SlingshotToolProjectile.cpp)
@@ -749,6 +759,8 @@ Earlier paths and their donor versions: `native-classes/SlingshotToolProjectile.
 - public · colingsnyder2-ux · [tool/SlingshotToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/tool/SlingshotToolProjectile.cpp)
 
 **`012b188c52f7`** · `native-classes/SlingshotToolProjectile.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SlingshotToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/SlingshotToolProjectile.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SlingshotToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/SlingshotToolProjectile.cpp)
 - public · colingsnyder2-ux · [native-classes/SlingshotToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/SlingshotToolProjectile.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SlingshotToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/SlingshotToolProjectile.cpp)
 - public · colingsnyder2-ux · [native-classes/SlingshotToolProjectile.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/SlingshotToolProjectile.cpp)

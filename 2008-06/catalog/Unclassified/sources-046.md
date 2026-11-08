@@ -112,6 +112,7 @@ Earlier paths and their donor versions: `native-classes/LDrawStringCompare.cpp`.
 </details>
 
 **`f39327183d75`** · `Unclassified/src/LDrawStringCompare.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/LDrawStringCompare.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/LDrawStringCompare.cpp)
 - canonical · colingsnyder2-ux · [src/LDrawStringCompare.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/LDrawStringCompare.cpp)
 - canonical · colingsnyder2-ux · [src/LDrawStringCompare.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/LDrawStringCompare.cpp)
 - canonical · colingsnyder2-ux · [src/LDrawStringCompare.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/LDrawStringCompare.cpp)
@@ -128,6 +129,7 @@ Earlier paths and their donor versions: `native-classes/LDrawStringCompare.cpp`.
 </details>
 
 **`fee36d6031ac`** · `Unclassified/src/LDrawStringCompare.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/LDrawStringCompare.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/LDrawStringCompare.cpp)
 - public · colingsnyder2-ux · [src/LDrawStringCompare.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/LDrawStringCompare.cpp)
 - public · colingsnyder2-ux · [src/LDrawStringCompare.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/LDrawStringCompare.cpp)
 - public · colingsnyder2-ux · [src/LDrawStringCompare.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/LDrawStringCompare.cpp)
@@ -168,6 +170,8 @@ Earlier paths and their donor versions: `native-classes/LDrawStringCompare.cpp`.
 - public · colingsnyder2-ux · [native-classes/LDrawStringCompare.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/LDrawStringCompare.cpp)
 
 **`628cc6a1f736`** · `native-classes/LDrawStringCompare.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LDrawStringCompare.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/LDrawStringCompare.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LDrawStringCompare.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/LDrawStringCompare.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawStringCompare.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/LDrawStringCompare.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LDrawStringCompare.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/LDrawStringCompare.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawStringCompare.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/LDrawStringCompare.cpp)
@@ -402,6 +406,7 @@ Earlier paths and their donor versions: `native-classes/LogFormatMemory.cpp`.
 </details>
 
 **`8529be04dfe9`** · `Unclassified/src/LogFormatMemory.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/LogFormatMemory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/LogFormatMemory.cpp)
 - public · colingsnyder2-ux · [src/LogFormatMemory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/LogFormatMemory.cpp)
 - public · colingsnyder2-ux · [src/LogFormatMemory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/LogFormatMemory.cpp)
 - public · colingsnyder2-ux · [src/LogFormatMemory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/LogFormatMemory.cpp)
@@ -412,6 +417,7 @@ Earlier paths and their donor versions: `native-classes/LogFormatMemory.cpp`.
 - public · colingsnyder2-ux · [src/LogFormatMemory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Unclassified/src/LogFormatMemory.cpp)
 
 **`b5b8a7904c78`** · `Unclassified/src/LogFormatMemory.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/LogFormatMemory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/LogFormatMemory.cpp)
 - canonical · colingsnyder2-ux · [src/LogFormatMemory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/LogFormatMemory.cpp)
 - canonical · colingsnyder2-ux · [src/LogFormatMemory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/LogFormatMemory.cpp)
 - canonical · colingsnyder2-ux · [src/LogFormatMemory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/LogFormatMemory.cpp)
@@ -488,6 +494,8 @@ Earlier paths and their donor versions: `native-classes/LogFormatMemory.cpp`.
 </details>
 
 **`1623621c4783`** · `native-classes/LogFormatMemory.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LogFormatMemory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/LogFormatMemory.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LogFormatMemory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/LogFormatMemory.cpp)
 - public · colingsnyder2-ux · [native-classes/LogFormatMemory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/LogFormatMemory.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LogFormatMemory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/LogFormatMemory.cpp)
 - public · colingsnyder2-ux · [native-classes/LogFormatMemory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/LogFormatMemory.cpp)
@@ -672,6 +680,7 @@ Earlier paths and their donor versions: `native-classes/LoginRenewer.cpp`.
 </details>
 
 **`5797bfd3a95d`** · `Unclassified/src/LoginRenewer.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/LoginRenewer.cpp)
 - public · colingsnyder2-ux · [src/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/LoginRenewer.cpp)
 - public · colingsnyder2-ux · [src/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/LoginRenewer.cpp)
 - public · colingsnyder2-ux · [src/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/LoginRenewer.cpp)
@@ -723,6 +732,7 @@ Earlier paths and their donor versions: `native-classes/LoginRenewer.cpp`.
 </details>
 
 **`a42335289240`** · `Unclassified/src/LoginRenewer.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/LoginRenewer.cpp)
 - canonical · colingsnyder2-ux · [src/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/LoginRenewer.cpp)
 - canonical · colingsnyder2-ux · [src/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/LoginRenewer.cpp)
 - canonical · colingsnyder2-ux · [src/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/LoginRenewer.cpp)
@@ -962,6 +972,8 @@ Earlier paths and their donor versions: `native-classes/LoginRenewer.cpp`.
 </details>
 
 **`dda2f583fd5d`** · `native-classes/LoginRenewer.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/LoginRenewer.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/LoginRenewer.cpp)
 - public · colingsnyder2-ux · [native-classes/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/LoginRenewer.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/LoginRenewer.cpp)
 - public · colingsnyder2-ux · [native-classes/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/LoginRenewer.cpp)

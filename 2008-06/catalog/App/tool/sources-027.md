@@ -45,6 +45,7 @@ Earlier paths and their donor versions: `native-classes/SurfaceToolInteractions.
 - public · colingsnyder2-ux · [tool/SurfaceToolInteractions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/src/tool/SurfaceToolInteractions.cpp)
 
 **`31fd11180d50`** · `App/src/tool/SurfaceToolInteractions.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/SurfaceToolInteractions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/tool/SurfaceToolInteractions.cpp)
 - canonical · colingsnyder2-ux · [tool/SurfaceToolInteractions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/tool/SurfaceToolInteractions.cpp)
 - canonical · colingsnyder2-ux · [tool/SurfaceToolInteractions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/tool/SurfaceToolInteractions.cpp)
 - canonical · colingsnyder2-ux · [tool/SurfaceToolInteractions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/tool/SurfaceToolInteractions.cpp)
@@ -105,6 +106,7 @@ Earlier paths and their donor versions: `native-classes/SurfaceToolInteractions.
 </details>
 
 **`fe72e0a9eced`** · `App/src/tool/SurfaceToolInteractions.cpp` · proof not assessed
+- public · colingsnyder2-ux · [tool/SurfaceToolInteractions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/tool/SurfaceToolInteractions.cpp)
 - public · colingsnyder2-ux · [tool/SurfaceToolInteractions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/tool/SurfaceToolInteractions.cpp)
 - public · colingsnyder2-ux · [tool/SurfaceToolInteractions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/tool/SurfaceToolInteractions.cpp)
 - public · colingsnyder2-ux · [tool/SurfaceToolInteractions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/tool/SurfaceToolInteractions.cpp)
@@ -212,6 +214,8 @@ Earlier paths and their donor versions: `native-classes/SurfaceToolInteractions.
 </details>
 
 **`f026a7d3806f`** · `native-classes/SurfaceToolInteractions.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SurfaceToolInteractions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/SurfaceToolInteractions.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SurfaceToolInteractions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/SurfaceToolInteractions.cpp)
 - public · colingsnyder2-ux · [native-classes/SurfaceToolInteractions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/SurfaceToolInteractions.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SurfaceToolInteractions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/SurfaceToolInteractions.cpp)
 - public · colingsnyder2-ux · [native-classes/SurfaceToolInteractions.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/SurfaceToolInteractions.cpp)
@@ -328,6 +332,7 @@ Earlier paths and their donor versions: `native-classes/SurfaceToolMouseDown.cpp
 </details>
 
 **`aac22f997ced`** · `App/src/tool/SurfaceToolMouseDown.cpp` · proof not assessed
+- public · colingsnyder2-ux · [tool/SurfaceToolMouseDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/tool/SurfaceToolMouseDown.cpp)
 - public · colingsnyder2-ux · [tool/SurfaceToolMouseDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/tool/SurfaceToolMouseDown.cpp)
 - public · colingsnyder2-ux · [tool/SurfaceToolMouseDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/tool/SurfaceToolMouseDown.cpp)
 - public · colingsnyder2-ux · [tool/SurfaceToolMouseDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/tool/SurfaceToolMouseDown.cpp)
@@ -350,6 +355,7 @@ Earlier paths and their donor versions: `native-classes/SurfaceToolMouseDown.cpp
 </details>
 
 **`b1516108953c`** · `App/src/tool/SurfaceToolMouseDown.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/SurfaceToolMouseDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/tool/SurfaceToolMouseDown.cpp)
 - canonical · colingsnyder2-ux · [tool/SurfaceToolMouseDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/tool/SurfaceToolMouseDown.cpp)
 - canonical · colingsnyder2-ux · [tool/SurfaceToolMouseDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/tool/SurfaceToolMouseDown.cpp)
 - canonical · colingsnyder2-ux · [tool/SurfaceToolMouseDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/tool/SurfaceToolMouseDown.cpp)
@@ -464,6 +470,8 @@ Earlier paths and their donor versions: `native-classes/SurfaceToolMouseDown.cpp
 </details>
 
 **`4199700c9330`** · `native-classes/SurfaceToolMouseDown.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SurfaceToolMouseDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/SurfaceToolMouseDown.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SurfaceToolMouseDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/SurfaceToolMouseDown.cpp)
 - public · colingsnyder2-ux · [native-classes/SurfaceToolMouseDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/SurfaceToolMouseDown.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SurfaceToolMouseDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/SurfaceToolMouseDown.cpp)
 - public · colingsnyder2-ux · [native-classes/SurfaceToolMouseDown.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/SurfaceToolMouseDown.cpp)
@@ -630,6 +638,7 @@ Earlier paths and their donor versions: `native-classes/SurfaceToolMouseDown.cpp
 Earlier paths and their donor versions: `native-classes/SurfaceToolSiblings.cpp`.
 
 **`03269f1cf069`** · `App/src/tool/SurfaceToolSiblings.cpp` · proof not assessed
+- public · colingsnyder2-ux · [tool/SurfaceToolSiblings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/tool/SurfaceToolSiblings.cpp)
 - public · colingsnyder2-ux · [tool/SurfaceToolSiblings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/tool/SurfaceToolSiblings.cpp)
 - public · colingsnyder2-ux · [tool/SurfaceToolSiblings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/tool/SurfaceToolSiblings.cpp)
 - public · colingsnyder2-ux · [tool/SurfaceToolSiblings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/tool/SurfaceToolSiblings.cpp)
@@ -652,6 +661,7 @@ Earlier paths and their donor versions: `native-classes/SurfaceToolSiblings.cpp`
 </details>
 
 **`4e3d012e016e`** · `App/src/tool/SurfaceToolSiblings.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/SurfaceToolSiblings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/tool/SurfaceToolSiblings.cpp)
 - canonical · colingsnyder2-ux · [tool/SurfaceToolSiblings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/tool/SurfaceToolSiblings.cpp)
 - canonical · colingsnyder2-ux · [tool/SurfaceToolSiblings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/tool/SurfaceToolSiblings.cpp)
 - canonical · colingsnyder2-ux · [tool/SurfaceToolSiblings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/tool/SurfaceToolSiblings.cpp)
@@ -807,6 +817,8 @@ Earlier paths and their donor versions: `native-classes/SurfaceToolSiblings.cpp`
 </details>
 
 **`d7acb9382a99`** · `native-classes/SurfaceToolSiblings.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/SurfaceToolSiblings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/SurfaceToolSiblings.cpp)
+- canonical · colingsnyder2-ux · [native-classes/SurfaceToolSiblings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/SurfaceToolSiblings.cpp)
 - public · colingsnyder2-ux · [native-classes/SurfaceToolSiblings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/SurfaceToolSiblings.cpp)
 - canonical · colingsnyder2-ux · [native-classes/SurfaceToolSiblings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/SurfaceToolSiblings.cpp)
 - public · colingsnyder2-ux · [native-classes/SurfaceToolSiblings.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/SurfaceToolSiblings.cpp)
@@ -945,6 +957,7 @@ Earlier paths and their donor versions: `native-classes/SurfaceToolSiblings.cpp`
 Earlier paths and their donor versions: `Unclassified/src/SurfaceVisitors.cpp`.
 
 **`b1ccaae65172`** · `App/src/tool/SurfaceVisitors.cpp` · proof not assessed
+- public · colingsnyder2-ux · [tool/SurfaceVisitors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/src/tool/SurfaceVisitors.cpp)
 - public · colingsnyder2-ux · [tool/SurfaceVisitors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/src/tool/SurfaceVisitors.cpp)
 - public · colingsnyder2-ux · [tool/SurfaceVisitors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/src/tool/SurfaceVisitors.cpp)
 - public · colingsnyder2-ux · [tool/SurfaceVisitors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/src/tool/SurfaceVisitors.cpp)
@@ -954,6 +967,7 @@ Earlier paths and their donor versions: `Unclassified/src/SurfaceVisitors.cpp`.
 - public · colingsnyder2-ux · [tool/SurfaceVisitors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a43902953edfa0b894f377dd5f046607516c9b5f/2008-06/App/src/tool/SurfaceVisitors.cpp)
 
 **`bd7effea774a`** · `App/src/tool/SurfaceVisitors.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [tool/SurfaceVisitors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/src/tool/SurfaceVisitors.cpp)
 - canonical · colingsnyder2-ux · [tool/SurfaceVisitors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/src/tool/SurfaceVisitors.cpp)
 - canonical · colingsnyder2-ux · [tool/SurfaceVisitors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/src/tool/SurfaceVisitors.cpp)
 - canonical · colingsnyder2-ux · [tool/SurfaceVisitors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/src/tool/SurfaceVisitors.cpp)
@@ -970,6 +984,7 @@ Earlier paths and their donor versions: `Unclassified/src/SurfaceVisitors.cpp`.
 </details>
 
 **`2b4d73da00b5`** · `Unclassified/src/SurfaceVisitors.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/SurfaceVisitors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/SurfaceVisitors.cpp)
 - public · colingsnyder2-ux · [src/SurfaceVisitors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/SurfaceVisitors.cpp)
 - public · colingsnyder2-ux · [src/SurfaceVisitors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/SurfaceVisitors.cpp)
 - public · colingsnyder2-ux · [src/SurfaceVisitors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/SurfaceVisitors.cpp)
@@ -1013,6 +1028,7 @@ Earlier paths and their donor versions: `Unclassified/src/SurfaceVisitors.cpp`.
 </details>
 
 **`f5513765f74a`** · `Unclassified/src/SurfaceVisitors.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/SurfaceVisitors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/SurfaceVisitors.cpp)
 - canonical · colingsnyder2-ux · [src/SurfaceVisitors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/SurfaceVisitors.cpp)
 - canonical · colingsnyder2-ux · [src/SurfaceVisitors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/SurfaceVisitors.cpp)
 - canonical · colingsnyder2-ux · [src/SurfaceVisitors.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/SurfaceVisitors.cpp)

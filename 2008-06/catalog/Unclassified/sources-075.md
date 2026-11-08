@@ -33,6 +33,7 @@ Earlier paths and their donor versions: `native-classes/WorkspaceFactory.cpp`.
 </details>
 
 **`53add66fc229`** · `Unclassified/src/WorkspaceFactory.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/WorkspaceFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/WorkspaceFactory.cpp)
 - public · colingsnyder2-ux · [src/WorkspaceFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/WorkspaceFactory.cpp)
 - public · colingsnyder2-ux · [src/WorkspaceFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/WorkspaceFactory.cpp)
 - public · colingsnyder2-ux · [src/WorkspaceFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/WorkspaceFactory.cpp)
@@ -118,6 +119,7 @@ Earlier paths and their donor versions: `native-classes/WorkspaceFactory.cpp`.
 </details>
 
 **`f3366b8c4fb8`** · `Unclassified/src/WorkspaceFactory.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/WorkspaceFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/WorkspaceFactory.cpp)
 - canonical · colingsnyder2-ux · [src/WorkspaceFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/WorkspaceFactory.cpp)
 - canonical · colingsnyder2-ux · [src/WorkspaceFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/WorkspaceFactory.cpp)
 - canonical · colingsnyder2-ux · [src/WorkspaceFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/WorkspaceFactory.cpp)
@@ -193,6 +195,8 @@ Earlier paths and their donor versions: `native-classes/WorkspaceFactory.cpp`.
 - public · colingsnyder2-ux · [native-classes/WorkspaceFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/native-classes/WorkspaceFactory.cpp)
 
 **`c16781fe0c14`** · `native-classes/WorkspaceFactory.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/WorkspaceFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/WorkspaceFactory.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorkspaceFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/WorkspaceFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/WorkspaceFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/WorkspaceFactory.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WorkspaceFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/WorkspaceFactory.cpp)
 - public · colingsnyder2-ux · [native-classes/WorkspaceFactory.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/WorkspaceFactory.cpp)
@@ -340,6 +344,7 @@ Earlier paths and their donor versions: `native-classes/WorkspaceGuids.cpp`.
 </details>
 
 **`a3a4230c6278`** · `Unclassified/src/WorkspaceGuids.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/WorkspaceGuids.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/WorkspaceGuids.cpp)
 - public · colingsnyder2-ux · [src/WorkspaceGuids.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/WorkspaceGuids.cpp)
 - public · colingsnyder2-ux · [src/WorkspaceGuids.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/WorkspaceGuids.cpp)
 - public · colingsnyder2-ux · [src/WorkspaceGuids.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/WorkspaceGuids.cpp)
@@ -442,6 +447,7 @@ Earlier paths and their donor versions: `native-classes/WorkspaceGuids.cpp`.
 </details>
 
 **`f8341c2110ab`** · `Unclassified/src/WorkspaceGuids.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/WorkspaceGuids.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/WorkspaceGuids.cpp)
 - canonical · colingsnyder2-ux · [src/WorkspaceGuids.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/WorkspaceGuids.cpp)
 - canonical · colingsnyder2-ux · [src/WorkspaceGuids.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/WorkspaceGuids.cpp)
 - canonical · colingsnyder2-ux · [src/WorkspaceGuids.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/WorkspaceGuids.cpp)
@@ -484,6 +490,8 @@ Earlier paths and their donor versions: `native-classes/WorkspaceGuids.cpp`.
 </details>
 
 **`82216ea7dd9d`** · `native-classes/WorkspaceGuids.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/WorkspaceGuids.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/WorkspaceGuids.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorkspaceGuids.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/WorkspaceGuids.cpp)
 - public · colingsnyder2-ux · [native-classes/WorkspaceGuids.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/WorkspaceGuids.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WorkspaceGuids.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/WorkspaceGuids.cpp)
 - public · colingsnyder2-ux · [native-classes/WorkspaceGuids.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/WorkspaceGuids.cpp)
@@ -676,6 +684,7 @@ Earlier paths and their donor versions: `native-classes/WorkspaceHResult.cpp`.
 </details>
 
 **`7961d97af85d`** · `Unclassified/src/WorkspaceHResult.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/WorkspaceHResult.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/WorkspaceHResult.cpp)
 - public · colingsnyder2-ux · [src/WorkspaceHResult.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/WorkspaceHResult.cpp)
 - public · colingsnyder2-ux · [src/WorkspaceHResult.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/WorkspaceHResult.cpp)
 - public · colingsnyder2-ux · [src/WorkspaceHResult.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/WorkspaceHResult.cpp)
@@ -763,6 +772,7 @@ Earlier paths and their donor versions: `native-classes/WorkspaceHResult.cpp`.
 </details>
 
 **`cfb9da1acd47`** · `Unclassified/src/WorkspaceHResult.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/WorkspaceHResult.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/WorkspaceHResult.cpp)
 - canonical · colingsnyder2-ux · [src/WorkspaceHResult.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/WorkspaceHResult.cpp)
 - canonical · colingsnyder2-ux · [src/WorkspaceHResult.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/WorkspaceHResult.cpp)
 - canonical · colingsnyder2-ux · [src/WorkspaceHResult.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/WorkspaceHResult.cpp)
@@ -873,6 +883,8 @@ Earlier paths and their donor versions: `native-classes/WorkspaceHResult.cpp`.
 </details>
 
 **`b969cb4aeacb`** · `native-classes/WorkspaceHResult.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/WorkspaceHResult.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/WorkspaceHResult.cpp)
+- canonical · colingsnyder2-ux · [native-classes/WorkspaceHResult.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/WorkspaceHResult.cpp)
 - public · colingsnyder2-ux · [native-classes/WorkspaceHResult.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/WorkspaceHResult.cpp)
 - canonical · colingsnyder2-ux · [native-classes/WorkspaceHResult.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/WorkspaceHResult.cpp)
 - public · colingsnyder2-ux · [native-classes/WorkspaceHResult.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/WorkspaceHResult.cpp)

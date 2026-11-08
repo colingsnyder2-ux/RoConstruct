@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/SelectionGroup.h`.
 
 **`6e818109efc9`** · `WindowsClient/include/SelectionGroup.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/WindowsClient/include/SelectionGroup.h)
 - canonical · colingsnyder2-ux · [include/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/WindowsClient/include/SelectionGroup.h)
 - canonical · colingsnyder2-ux · [include/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/include/SelectionGroup.h)
 - canonical · colingsnyder2-ux · [include/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/include/SelectionGroup.h)
@@ -123,6 +124,7 @@ Earlier paths and their donor versions: `native-headers/SelectionGroup.h`.
 </details>
 
 **`9b2e6fb374b9`** · `WindowsClient/include/SelectionGroup.h` · proof not assessed
+- public · colingsnyder2-ux · [include/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/WindowsClient/include/SelectionGroup.h)
 - public · colingsnyder2-ux · [include/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/WindowsClient/include/SelectionGroup.h)
 - public · colingsnyder2-ux · [include/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/include/SelectionGroup.h)
 - public · colingsnyder2-ux · [include/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/include/SelectionGroup.h)
@@ -186,6 +188,8 @@ Earlier paths and their donor versions: `native-headers/SelectionGroup.h`.
 </details>
 
 **`532bb8fdde08`** · `native-headers/SelectionGroup.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-headers/SelectionGroup.h)
+- canonical · colingsnyder2-ux · [native-headers/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-headers/SelectionGroup.h)
 - public · colingsnyder2-ux · [native-headers/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-headers/SelectionGroup.h)
 - canonical · colingsnyder2-ux · [native-headers/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-headers/SelectionGroup.h)
 - public · colingsnyder2-ux · [native-headers/SelectionGroup.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/SelectionGroup.h)
@@ -543,6 +547,7 @@ Earlier paths and their donor versions: `native-headers/StandardVerbs.h`.
 </details>
 
 **`73ade740dca3`** · `WindowsClient/include/StandardVerbs.h` · proof not assessed
+- canonical · colingsnyder2-ux · [include/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/WindowsClient/include/StandardVerbs.h)
 - canonical · colingsnyder2-ux · [include/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/WindowsClient/include/StandardVerbs.h)
 - canonical · colingsnyder2-ux · [include/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/WindowsClient/include/StandardVerbs.h)
 - canonical · colingsnyder2-ux · [include/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/WindowsClient/include/StandardVerbs.h)
@@ -663,6 +668,7 @@ Earlier paths and their donor versions: `native-headers/StandardVerbs.h`.
 - public · colingsnyder2-ux · [include/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/WindowsClient/include/StandardVerbs.h)
 
 **`f8e1e3e1c36b`** · `WindowsClient/include/StandardVerbs.h` · proof not assessed
+- public · colingsnyder2-ux · [include/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/WindowsClient/include/StandardVerbs.h)
 - public · colingsnyder2-ux · [include/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/WindowsClient/include/StandardVerbs.h)
 - public · colingsnyder2-ux · [include/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/WindowsClient/include/StandardVerbs.h)
 - public · colingsnyder2-ux · [include/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/WindowsClient/include/StandardVerbs.h)
@@ -818,6 +824,8 @@ Earlier paths and their donor versions: `native-headers/StandardVerbs.h`.
 </details>
 
 **`866ad2982076`** · `native-headers/StandardVerbs.h` · proof not assessed
+- public · colingsnyder2-ux · [native-headers/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-headers/StandardVerbs.h)
+- canonical · colingsnyder2-ux · [native-headers/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-headers/StandardVerbs.h)
 - public · colingsnyder2-ux · [native-headers/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-headers/StandardVerbs.h)
 - canonical · colingsnyder2-ux · [native-headers/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-headers/StandardVerbs.h)
 - public · colingsnyder2-ux · [native-headers/StandardVerbs.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/StandardVerbs.h)

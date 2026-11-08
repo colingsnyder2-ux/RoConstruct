@@ -10,6 +10,7 @@ Compatibility path for `Base/src/util/MathTiltQuadrant.cpp`; compile either path
 Earlier paths and their donor versions: `native-classes/MathTiltQuadrant.cpp`.
 
 **`3af528d3e8a2`** · `Unclassified/src/MathTiltQuadrant.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/MathTiltQuadrant.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/MathTiltQuadrant.cpp)
 - public · colingsnyder2-ux · [src/MathTiltQuadrant.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/MathTiltQuadrant.cpp)
 - public · colingsnyder2-ux · [src/MathTiltQuadrant.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/MathTiltQuadrant.cpp)
 - public · colingsnyder2-ux · [src/MathTiltQuadrant.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/MathTiltQuadrant.cpp)
@@ -61,6 +62,7 @@ Earlier paths and their donor versions: `native-classes/MathTiltQuadrant.cpp`.
 </details>
 
 **`65b61a1f02ad`** · `Unclassified/src/MathTiltQuadrant.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/MathTiltQuadrant.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/MathTiltQuadrant.cpp)
 - canonical · colingsnyder2-ux · [src/MathTiltQuadrant.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/MathTiltQuadrant.cpp)
 - canonical · colingsnyder2-ux · [src/MathTiltQuadrant.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/MathTiltQuadrant.cpp)
 - canonical · colingsnyder2-ux · [src/MathTiltQuadrant.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/MathTiltQuadrant.cpp)
@@ -137,6 +139,8 @@ Earlier paths and their donor versions: `native-classes/MathTiltQuadrant.cpp`.
 </details>
 
 **`06053e3ac139`** · `native-classes/MathTiltQuadrant.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MathTiltQuadrant.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/MathTiltQuadrant.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MathTiltQuadrant.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/MathTiltQuadrant.cpp)
 - public · colingsnyder2-ux · [native-classes/MathTiltQuadrant.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/MathTiltQuadrant.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MathTiltQuadrant.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/MathTiltQuadrant.cpp)
 - public · colingsnyder2-ux · [native-classes/MathTiltQuadrant.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/MathTiltQuadrant.cpp)
@@ -355,6 +359,7 @@ Earlier paths and their donor versions: `native-classes/MoveHandleHit.cpp`.
 </details>
 
 **`bad02661fad7`** · `Unclassified/src/MoveHandleHit.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/MoveHandleHit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/MoveHandleHit.cpp)
 - public · colingsnyder2-ux · [src/MoveHandleHit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/MoveHandleHit.cpp)
 - public · colingsnyder2-ux · [src/MoveHandleHit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/MoveHandleHit.cpp)
 - public · colingsnyder2-ux · [src/MoveHandleHit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/MoveHandleHit.cpp)
@@ -391,6 +396,7 @@ Earlier paths and their donor versions: `native-classes/MoveHandleHit.cpp`.
 - public · colingsnyder2-ux · [src/MoveHandleHit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/MoveHandleHit.cpp)
 
 **`cb88266b3e0d`** · `Unclassified/src/MoveHandleHit.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/MoveHandleHit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/MoveHandleHit.cpp)
 - canonical · colingsnyder2-ux · [src/MoveHandleHit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/MoveHandleHit.cpp)
 - canonical · colingsnyder2-ux · [src/MoveHandleHit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/MoveHandleHit.cpp)
 - canonical · colingsnyder2-ux · [src/MoveHandleHit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/MoveHandleHit.cpp)
@@ -475,6 +481,8 @@ Earlier paths and their donor versions: `native-classes/MoveHandleHit.cpp`.
 </details>
 
 **`4b638ef89043`** · `native-classes/MoveHandleHit.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MoveHandleHit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/MoveHandleHit.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MoveHandleHit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/MoveHandleHit.cpp)
 - public · colingsnyder2-ux · [native-classes/MoveHandleHit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/MoveHandleHit.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MoveHandleHit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/MoveHandleHit.cpp)
 - public · colingsnyder2-ux · [native-classes/MoveHandleHit.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/MoveHandleHit.cpp)
@@ -652,6 +660,7 @@ Compatibility path for `App/src/tool/MoveHandleRadius.cpp`; compile either path,
 Earlier paths and their donor versions: `native-classes/MoveHandleRadius.cpp`.
 
 **`3e4d40ce91ad`** · `Unclassified/src/MoveHandleRadius.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/MoveHandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/MoveHandleRadius.cpp)
 - public · colingsnyder2-ux · [src/MoveHandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/MoveHandleRadius.cpp)
 - public · colingsnyder2-ux · [src/MoveHandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/MoveHandleRadius.cpp)
 - public · colingsnyder2-ux · [src/MoveHandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/MoveHandleRadius.cpp)
@@ -763,6 +772,7 @@ Earlier paths and their donor versions: `native-classes/MoveHandleRadius.cpp`.
 </details>
 
 **`fce2fe4b098f`** · `Unclassified/src/MoveHandleRadius.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/MoveHandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/MoveHandleRadius.cpp)
 - canonical · colingsnyder2-ux · [src/MoveHandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/MoveHandleRadius.cpp)
 - canonical · colingsnyder2-ux · [src/MoveHandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/MoveHandleRadius.cpp)
 - canonical · colingsnyder2-ux · [src/MoveHandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/MoveHandleRadius.cpp)
@@ -779,6 +789,8 @@ Earlier paths and their donor versions: `native-classes/MoveHandleRadius.cpp`.
 </details>
 
 **`1ace2769d000`** · `native-classes/MoveHandleRadius.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MoveHandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/MoveHandleRadius.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MoveHandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/MoveHandleRadius.cpp)
 - public · colingsnyder2-ux · [native-classes/MoveHandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/MoveHandleRadius.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MoveHandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/MoveHandleRadius.cpp)
 - public · colingsnyder2-ux · [native-classes/MoveHandleRadius.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/MoveHandleRadius.cpp)

@@ -8,6 +8,7 @@
 Earlier paths and their donor versions: `native-headers/v8datamodel/Sparkles.h`.
 
 **`1b489e9c0e40`** · `App/include/v8datamodel/Sparkles.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/Sparkles.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/include/v8datamodel/Sparkles.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Sparkles.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/include/v8datamodel/Sparkles.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Sparkles.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/include/v8datamodel/Sparkles.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Sparkles.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/include/v8datamodel/Sparkles.h)
@@ -126,6 +127,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Sparkles.h`.
 </details>
 
 **`2ad7851aa6f6`** · `App/include/v8datamodel/Sparkles.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/Sparkles.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/include/v8datamodel/Sparkles.h)
 - public · colingsnyder2-ux · [v8datamodel/Sparkles.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/include/v8datamodel/Sparkles.h)
 - public · colingsnyder2-ux · [v8datamodel/Sparkles.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/include/v8datamodel/Sparkles.h)
 - public · colingsnyder2-ux · [v8datamodel/Sparkles.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/include/v8datamodel/Sparkles.h)
@@ -296,6 +298,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Sparkles.h`.
 </details>
 
 **`f67a2380a711`** · `native-headers/v8datamodel/Sparkles.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/Sparkles.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-headers/v8datamodel/Sparkles.h)
+- canonical · colingsnyder2-ux · [v8datamodel/Sparkles.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-headers/v8datamodel/Sparkles.h)
 - public · colingsnyder2-ux · [v8datamodel/Sparkles.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-headers/v8datamodel/Sparkles.h)
 - canonical · colingsnyder2-ux · [v8datamodel/Sparkles.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-headers/v8datamodel/Sparkles.h)
 - public · colingsnyder2-ux · [v8datamodel/Sparkles.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/v8datamodel/Sparkles.h)
@@ -461,6 +465,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/Sparkles.h`.
 Earlier paths and their donor versions: `native-headers/v8datamodel/SpawnLocation.h`.
 
 **`518634079570`** · `App/include/v8datamodel/SpawnLocation.h` · proof not assessed
+- canonical · colingsnyder2-ux · [v8datamodel/SpawnLocation.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/App/include/v8datamodel/SpawnLocation.h)
 - canonical · colingsnyder2-ux · [v8datamodel/SpawnLocation.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/App/include/v8datamodel/SpawnLocation.h)
 - canonical · colingsnyder2-ux · [v8datamodel/SpawnLocation.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/App/include/v8datamodel/SpawnLocation.h)
 - canonical · colingsnyder2-ux · [v8datamodel/SpawnLocation.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/App/include/v8datamodel/SpawnLocation.h)
@@ -613,6 +618,7 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/SpawnLocatio
 - public · colingsnyder2-ux · [v8datamodel/SpawnLocation.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/v8datamodel/SpawnLocation.h)
 
 **`7b6d4a4775bc`** · `App/include/v8datamodel/SpawnLocation.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/SpawnLocation.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/App/include/v8datamodel/SpawnLocation.h)
 - public · colingsnyder2-ux · [v8datamodel/SpawnLocation.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/App/include/v8datamodel/SpawnLocation.h)
 - public · colingsnyder2-ux · [v8datamodel/SpawnLocation.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/App/include/v8datamodel/SpawnLocation.h)
 - public · colingsnyder2-ux · [v8datamodel/SpawnLocation.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/App/include/v8datamodel/SpawnLocation.h)
@@ -635,6 +641,8 @@ Earlier paths and their donor versions: `native-headers/v8datamodel/SpawnLocatio
 </details>
 
 **`1c7fcc7798fb`** · `native-headers/v8datamodel/SpawnLocation.h` · proof not assessed
+- public · colingsnyder2-ux · [v8datamodel/SpawnLocation.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-headers/v8datamodel/SpawnLocation.h)
+- canonical · colingsnyder2-ux · [v8datamodel/SpawnLocation.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-headers/v8datamodel/SpawnLocation.h)
 - public · colingsnyder2-ux · [v8datamodel/SpawnLocation.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-headers/v8datamodel/SpawnLocation.h)
 - canonical · colingsnyder2-ux · [v8datamodel/SpawnLocation.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-headers/v8datamodel/SpawnLocation.h)
 - public · colingsnyder2-ux · [v8datamodel/SpawnLocation.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-headers/v8datamodel/SpawnLocation.h)

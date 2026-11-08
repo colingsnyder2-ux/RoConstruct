@@ -10,6 +10,7 @@ Compatibility path for `App/src/script/LuaAllocatorStats.cpp`; compile either pa
 Earlier paths and their donor versions: `native-classes/LuaAllocatorStats.cpp`.
 
 **`530dbefb5341`** · `Unclassified/src/LuaAllocatorStats.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/LuaAllocatorStats.cpp)
 - canonical · colingsnyder2-ux · [src/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/LuaAllocatorStats.cpp)
 - canonical · colingsnyder2-ux · [src/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/LuaAllocatorStats.cpp)
 - canonical · colingsnyder2-ux · [src/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/LuaAllocatorStats.cpp)
@@ -128,6 +129,7 @@ Earlier paths and their donor versions: `native-classes/LuaAllocatorStats.cpp`.
 </details>
 
 **`d261362c3ec3`** · `Unclassified/src/LuaAllocatorStats.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/LuaAllocatorStats.cpp)
 - public · colingsnyder2-ux · [src/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/LuaAllocatorStats.cpp)
 - public · colingsnyder2-ux · [src/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/LuaAllocatorStats.cpp)
 - public · colingsnyder2-ux · [src/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/LuaAllocatorStats.cpp)
@@ -247,6 +249,8 @@ Earlier paths and their donor versions: `native-classes/LuaAllocatorStats.cpp`.
 </details>
 
 **`b9b55529efb3`** · `native-classes/LuaAllocatorStats.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/LuaAllocatorStats.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/LuaAllocatorStats.cpp)
 - public · colingsnyder2-ux · [native-classes/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/LuaAllocatorStats.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/LuaAllocatorStats.cpp)
 - public · colingsnyder2-ux · [native-classes/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/LuaAllocatorStats.cpp)
@@ -376,6 +380,7 @@ Earlier paths and their donor versions: `native-classes/LuaArgs.cpp`.
 - public · colingsnyder2-ux · [src/LuaArgs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/2008-06/Unclassified/src/LuaArgs.cpp)
 
 **`333f5ca10306`** · `Unclassified/src/LuaArgs.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/LuaArgs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/LuaArgs.cpp)
 - canonical · colingsnyder2-ux · [src/LuaArgs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/LuaArgs.cpp)
 - canonical · colingsnyder2-ux · [src/LuaArgs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/LuaArgs.cpp)
 - canonical · colingsnyder2-ux · [src/LuaArgs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/LuaArgs.cpp)
@@ -409,6 +414,7 @@ Earlier paths and their donor versions: `native-classes/LuaArgs.cpp`.
 </details>
 
 **`733d800a2ce9`** · `Unclassified/src/LuaArgs.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/LuaArgs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/LuaArgs.cpp)
 - public · colingsnyder2-ux · [src/LuaArgs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/LuaArgs.cpp)
 - public · colingsnyder2-ux · [src/LuaArgs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/LuaArgs.cpp)
 - public · colingsnyder2-ux · [src/LuaArgs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/LuaArgs.cpp)
@@ -447,6 +453,8 @@ Earlier paths and their donor versions: `native-classes/LuaArgs.cpp`.
 </details>
 
 **`05c439900526`** · `native-classes/LuaArgs.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LuaArgs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/LuaArgs.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LuaArgs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/LuaArgs.cpp)
 - public · colingsnyder2-ux · [native-classes/LuaArgs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/LuaArgs.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LuaArgs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/LuaArgs.cpp)
 - public · colingsnyder2-ux · [native-classes/LuaArgs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/LuaArgs.cpp)
@@ -673,6 +681,7 @@ Compatibility path for `Base/src/util/MD5Hasher.cpp`; compile either path, never
 Earlier paths and their donor versions: `native-classes/MD5Hasher.cpp`.
 
 **`0b32f3c31b94`** · `Unclassified/src/MD5Hasher.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/MD5Hasher.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/MD5Hasher.cpp)
 - public · colingsnyder2-ux · [src/MD5Hasher.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/MD5Hasher.cpp)
 - public · colingsnyder2-ux · [src/MD5Hasher.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/MD5Hasher.cpp)
 - public · colingsnyder2-ux · [src/MD5Hasher.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/MD5Hasher.cpp)
@@ -773,6 +782,7 @@ Earlier paths and their donor versions: `native-classes/MD5Hasher.cpp`.
 </details>
 
 **`dda793da9d47`** · `Unclassified/src/MD5Hasher.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/MD5Hasher.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/MD5Hasher.cpp)
 - canonical · colingsnyder2-ux · [src/MD5Hasher.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/MD5Hasher.cpp)
 - canonical · colingsnyder2-ux · [src/MD5Hasher.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/MD5Hasher.cpp)
 - canonical · colingsnyder2-ux · [src/MD5Hasher.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/MD5Hasher.cpp)
@@ -860,6 +870,8 @@ Earlier paths and their donor versions: `native-classes/MD5Hasher.cpp`.
 </details>
 
 **`8d2f75f2be72`** · `native-classes/MD5Hasher.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MD5Hasher.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/MD5Hasher.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MD5Hasher.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/MD5Hasher.cpp)
 - public · colingsnyder2-ux · [native-classes/MD5Hasher.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/MD5Hasher.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MD5Hasher.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/MD5Hasher.cpp)
 - public · colingsnyder2-ux · [native-classes/MD5Hasher.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/MD5Hasher.cpp)

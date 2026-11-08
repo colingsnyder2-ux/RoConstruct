@@ -108,6 +108,7 @@ Earlier paths and their donor versions: `native-classes/UserInputMovement.cpp`.
 </details>
 
 **`981269764b60`** · `Unclassified/src/UserInputMovement.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/UserInputMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/UserInputMovement.cpp)
 - public · colingsnyder2-ux · [src/UserInputMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/UserInputMovement.cpp)
 - public · colingsnyder2-ux · [src/UserInputMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/UserInputMovement.cpp)
 - public · colingsnyder2-ux · [src/UserInputMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/UserInputMovement.cpp)
@@ -118,6 +119,7 @@ Earlier paths and their donor versions: `native-classes/UserInputMovement.cpp`.
 - public · colingsnyder2-ux · [src/UserInputMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2027065ff4347dc975e158a51530ba2e31f86d7c/2008-06/Unclassified/src/UserInputMovement.cpp)
 
 **`acc3bf4f2568`** · `Unclassified/src/UserInputMovement.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/UserInputMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/UserInputMovement.cpp)
 - canonical · colingsnyder2-ux · [src/UserInputMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/UserInputMovement.cpp)
 - canonical · colingsnyder2-ux · [src/UserInputMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/UserInputMovement.cpp)
 - canonical · colingsnyder2-ux · [src/UserInputMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/UserInputMovement.cpp)
@@ -224,6 +226,8 @@ Earlier paths and their donor versions: `native-classes/UserInputMovement.cpp`.
 </details>
 
 **`ecb25ce4bb3f`** · `native-classes/UserInputMovement.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/UserInputMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/UserInputMovement.cpp)
+- canonical · colingsnyder2-ux · [native-classes/UserInputMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/UserInputMovement.cpp)
 - public · colingsnyder2-ux · [native-classes/UserInputMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/UserInputMovement.cpp)
 - canonical · colingsnyder2-ux · [native-classes/UserInputMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/UserInputMovement.cpp)
 - public · colingsnyder2-ux · [native-classes/UserInputMovement.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/UserInputMovement.cpp)
@@ -377,6 +381,7 @@ Earlier paths and their donor versions: `native-classes/Vector3Subtract.cpp`.
 - public · colingsnyder2-ux · [src/Vector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/Vector3Subtract.cpp)
 
 **`36c453ea04a7`** · `Unclassified/src/Vector3Subtract.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/Vector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/Vector3Subtract.cpp)
 - public · colingsnyder2-ux · [src/Vector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/Vector3Subtract.cpp)
 - public · colingsnyder2-ux · [src/Vector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/Vector3Subtract.cpp)
 - public · colingsnyder2-ux · [src/Vector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/Vector3Subtract.cpp)
@@ -447,6 +452,7 @@ Earlier paths and their donor versions: `native-classes/Vector3Subtract.cpp`.
 </details>
 
 **`8ef2112d2bf3`** · `Unclassified/src/Vector3Subtract.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/Vector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/Vector3Subtract.cpp)
 - canonical · colingsnyder2-ux · [src/Vector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/Vector3Subtract.cpp)
 - canonical · colingsnyder2-ux · [src/Vector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/Vector3Subtract.cpp)
 - canonical · colingsnyder2-ux · [src/Vector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/Vector3Subtract.cpp)
@@ -535,6 +541,8 @@ Earlier paths and their donor versions: `native-classes/Vector3Subtract.cpp`.
 </details>
 
 **`c78753a047e0`** · `native-classes/Vector3Subtract.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/Vector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/Vector3Subtract.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Vector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/Vector3Subtract.cpp)
 - public · colingsnyder2-ux · [native-classes/Vector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/Vector3Subtract.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Vector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/Vector3Subtract.cpp)
 - public · colingsnyder2-ux · [native-classes/Vector3Subtract.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/Vector3Subtract.cpp)
@@ -650,6 +658,7 @@ Compatibility path for `App/src/v8tree/Verb.cpp`; compile either path, never bot
 Earlier paths and their donor versions: `native-classes/Verb.cpp`.
 
 **`210b859e5a63`** · `Unclassified/src/Verb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [src/Verb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/Unclassified/src/Verb.cpp)
 - public · colingsnyder2-ux · [src/Verb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/Unclassified/src/Verb.cpp)
 - public · colingsnyder2-ux · [src/Verb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/Unclassified/src/Verb.cpp)
 - public · colingsnyder2-ux · [src/Verb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/2008-06/Unclassified/src/Verb.cpp)
@@ -677,6 +686,7 @@ Earlier paths and their donor versions: `native-classes/Verb.cpp`.
 - public · colingsnyder2-ux · [src/Verb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/Unclassified/src/Verb.cpp)
 
 **`a417f04e601b`** · `Unclassified/src/Verb.cpp` · proof not assessed
+- canonical · colingsnyder2-ux · [src/Verb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/Unclassified/src/Verb.cpp)
 - canonical · colingsnyder2-ux · [src/Verb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/Unclassified/src/Verb.cpp)
 - canonical · colingsnyder2-ux · [src/Verb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/workspace/rebuild/2008-06/Unclassified/src/Verb.cpp)
 - canonical · colingsnyder2-ux · [src/Verb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/a6891138bffc6540029eb459b314ba1edcc32651/workspace/rebuild/2008-06/Unclassified/src/Verb.cpp)
@@ -994,6 +1004,8 @@ Earlier paths and their donor versions: `native-classes/Verb.cpp`.
 </details>
 
 **`fd7d5db6dadb`** · `native-classes/Verb.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/Verb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/2008-06/native-classes/Verb.cpp)
+- canonical · colingsnyder2-ux · [native-classes/Verb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/ed9cd517f2971cd92bff6ca000fe110bfec84c8f/workspace/rebuild/2008-06/native-classes/Verb.cpp)
 - public · colingsnyder2-ux · [native-classes/Verb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/2008-06/native-classes/Verb.cpp)
 - canonical · colingsnyder2-ux · [native-classes/Verb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/aa2fe5d05f2c01726823d60f0f3800c7267f02e7/workspace/rebuild/2008-06/native-classes/Verb.cpp)
 - public · colingsnyder2-ux · [native-classes/Verb.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/353ed7a0450d74131d086fadb3498da7c8a89122/2008-06/native-classes/Verb.cpp)
