@@ -133,6 +133,8 @@ Compatibility path for `App/include/humanoid/Humanoid.h`; compile either path, n
 - canonical · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/humanoid/Humanoid.h)
 - public · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-headers/humanoid/Humanoid.h)
 - canonical · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-headers/humanoid/Humanoid.h)
+- public · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/native-headers/humanoid/Humanoid.h)
+- canonical · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/native-headers/humanoid/Humanoid.h)
 
 </details>
 
@@ -169,6 +171,7 @@ Compatibility path for `App/include/humanoid/Humanoid.h`; compile either path, n
 - draft · colingsnyder2-ux · [humanoid/Humanoid2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/humanoid/Humanoid2008.h)
 - draft · colingsnyder2-ux · [humanoid/Humanoid2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/humanoid/Humanoid2008.h)
 - draft · colingsnyder2-ux · [humanoid/Humanoid2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/humanoid/Humanoid2008.h)
+- draft · colingsnyder2-ux · [humanoid/Humanoid2008.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-headers/humanoid/Humanoid2008.h)
 
 <details><summary>2 retained local origins</summary>
 
@@ -440,6 +443,8 @@ Compatibility path for `App/include/humanoid/HumanoidFloorFields.h`; compile eit
 - canonical · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
+- public · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
+- canonical · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
 
 </details>
 
@@ -718,6 +723,8 @@ Compatibility path for `App/include/humanoid/HumanoidState.h`; compile either pa
 - canonical · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidState.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-headers/humanoid/HumanoidState.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidState.h)
+- public · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/native-headers/humanoid/HumanoidState.h)
+- canonical · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidState.h)
 
 </details>
 
@@ -857,6 +864,8 @@ Compatibility path for `App/include/humanoid/HumanoidStates1.h`; compile either 
 - canonical · colingsnyder2-ux · [humanoid/HumanoidStates1.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidStates1.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidStates1.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-headers/humanoid/HumanoidStates1.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidStates1.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidStates1.h)
+- public · colingsnyder2-ux · [humanoid/HumanoidStates1.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/native-headers/humanoid/HumanoidStates1.h)
+- canonical · colingsnyder2-ux · [humanoid/HumanoidStates1.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidStates1.h)
 
 </details>
 
@@ -996,6 +1005,8 @@ Compatibility path for `App/include/humanoid/HumanoidStates2.h`; compile either 
 - canonical · colingsnyder2-ux · [humanoid/HumanoidStates2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidStates2.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidStates2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-headers/humanoid/HumanoidStates2.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidStates2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidStates2.h)
+- public · colingsnyder2-ux · [humanoid/HumanoidStates2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/native-headers/humanoid/HumanoidStates2.h)
+- canonical · colingsnyder2-ux · [humanoid/HumanoidStates2.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidStates2.h)
 
 </details>
 
@@ -1142,6 +1153,8 @@ Compatibility path for `App/include/humanoid/HumanoidStates3.h`; compile either 
 - canonical · colingsnyder2-ux · [humanoid/HumanoidStates3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidStates3.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidStates3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-headers/humanoid/HumanoidStates3.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidStates3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidStates3.h)
+- public · colingsnyder2-ux · [humanoid/HumanoidStates3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/native-headers/humanoid/HumanoidStates3.h)
+- canonical · colingsnyder2-ux · [humanoid/HumanoidStates3.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidStates3.h)
 
 </details>
 
@@ -1176,6 +1189,7 @@ Compatibility path for `App/include/humanoid/HumanoidStates3.h`; compile either 
 - public · colingsnyder2-ux · [humanoid/HumanoidStates3SimJob.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/native-headers/humanoid/HumanoidStates3SimJob.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidStates3SimJob.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/native-headers/humanoid/HumanoidStates3SimJob.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidStates3SimJob.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-headers/humanoid/HumanoidStates3SimJob.h)
+- public · colingsnyder2-ux · [humanoid/HumanoidStates3SimJob.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/native-headers/humanoid/HumanoidStates3SimJob.h)
 
 **`0a5f3cf72cf5`** · `native-headers/humanoid/HumanoidStates3SimJob.h` · proof not assessed
 

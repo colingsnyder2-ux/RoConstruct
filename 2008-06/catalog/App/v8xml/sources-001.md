@@ -22,6 +22,7 @@ Earlier paths and their donor versions: `native-headers/v8xml/XmlElement.h`.
 - canonical · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/App/include/v8xml/XmlElement.h)
 - canonical · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/App/include/v8xml/XmlElement.h)
 - canonical · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/App/include/v8xml/XmlElement.h)
+- canonical · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/App/include/v8xml/XmlElement.h)
 
 **`d99a08534aeb`** · `App/include/v8xml/XmlElement.h` · proof not assessed
 - public · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/App/include/v8xml/XmlElement.h)
@@ -38,6 +39,7 @@ Earlier paths and their donor versions: `native-headers/v8xml/XmlElement.h`.
 - public · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/App/include/v8xml/XmlElement.h)
 - public · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/App/include/v8xml/XmlElement.h)
 - public · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/App/include/v8xml/XmlElement.h)
+- public · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/App/include/v8xml/XmlElement.h)
 
 **`2f33c6f12ea3`** · `native-headers/v8xml/XmlElement.h` · proof not assessed
 
@@ -319,6 +321,8 @@ Earlier paths and their donor versions: `native-headers/v8xml/XmlElement.h`.
 - canonical · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/v8xml/XmlElement.h)
 - public · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-headers/v8xml/XmlElement.h)
 - canonical · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-headers/v8xml/XmlElement.h)
+- public · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/native-headers/v8xml/XmlElement.h)
+- canonical · colingsnyder2-ux · [v8xml/XmlElement.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/native-headers/v8xml/XmlElement.h)
 
 </details>
 
@@ -342,6 +346,7 @@ Earlier paths and their donor versions: `native-headers/v8xml/XmlSerializer.h`.
 - canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/App/include/v8xml/XmlSerializer.h)
 - canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/App/include/v8xml/XmlSerializer.h)
 - canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/App/include/v8xml/XmlSerializer.h)
+- canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/App/include/v8xml/XmlSerializer.h)
 
 **`9708b0ce7da5`** · `App/include/v8xml/XmlSerializer.h` · proof not assessed
 - public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/eea923745b4177e35abc4a7b01f57a291a998e8c/2008-06/App/include/v8xml/XmlSerializer.h)
@@ -358,6 +363,7 @@ Earlier paths and their donor versions: `native-headers/v8xml/XmlSerializer.h`.
 - public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/App/include/v8xml/XmlSerializer.h)
 - public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/App/include/v8xml/XmlSerializer.h)
 - public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/App/include/v8xml/XmlSerializer.h)
+- public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/App/include/v8xml/XmlSerializer.h)
 
 **`29ab2608baaf`** · `native-headers/v8xml/XmlSerializer.h` · proof not assessed
 
@@ -532,6 +538,8 @@ Earlier paths and their donor versions: `native-headers/v8xml/XmlSerializer.h`.
 - canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h)
 - public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-headers/v8xml/XmlSerializer.h)
 - canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h)
+- public · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/native-headers/v8xml/XmlSerializer.h)
+- canonical · colingsnyder2-ux · [v8xml/XmlSerializer.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/native-headers/v8xml/XmlSerializer.h)
 
 </details>
 
@@ -558,6 +566,7 @@ Earlier paths and their donor versions: `native-classes/ContentProviderLoad.cpp`
 - public · colingsnyder2-ux · [v8xml/ContentProviderLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/App/src/v8xml/ContentProviderLoad.cpp)
 - public · colingsnyder2-ux · [v8xml/ContentProviderLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/App/src/v8xml/ContentProviderLoad.cpp)
 - public · colingsnyder2-ux · [v8xml/ContentProviderLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/App/src/v8xml/ContentProviderLoad.cpp)
+- public · colingsnyder2-ux · [v8xml/ContentProviderLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/App/src/v8xml/ContentProviderLoad.cpp)
 
 **`784ce3952830`** · `App/src/v8xml/ContentProviderLoad.cpp` · proof not assessed
 - canonical · colingsnyder2-ux · [v8xml/ContentProviderLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/workspace/rebuild/2008-06/App/src/v8xml/ContentProviderLoad.cpp)
@@ -577,6 +586,7 @@ Earlier paths and their donor versions: `native-classes/ContentProviderLoad.cpp`
 - canonical · colingsnyder2-ux · [v8xml/ContentProviderLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/App/src/v8xml/ContentProviderLoad.cpp)
 - canonical · colingsnyder2-ux · [v8xml/ContentProviderLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/App/src/v8xml/ContentProviderLoad.cpp)
 - canonical · colingsnyder2-ux · [v8xml/ContentProviderLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/App/src/v8xml/ContentProviderLoad.cpp)
+- canonical · colingsnyder2-ux · [v8xml/ContentProviderLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/App/src/v8xml/ContentProviderLoad.cpp)
 
 **`01265bbd701a`** · `native-classes/ContentProviderLoad.cpp` · proof not assessed
 
@@ -687,6 +697,8 @@ Earlier paths and their donor versions: `native-classes/ContentProviderLoad.cpp`
 - canonical · colingsnyder2-ux · [native-classes/ContentProviderLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/ContentProviderLoad.cpp)
 - public · colingsnyder2-ux · [native-classes/ContentProviderLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-classes/ContentProviderLoad.cpp)
 - canonical · colingsnyder2-ux · [native-classes/ContentProviderLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-classes/ContentProviderLoad.cpp)
+- public · colingsnyder2-ux · [native-classes/ContentProviderLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/native-classes/ContentProviderLoad.cpp)
+- canonical · colingsnyder2-ux · [native-classes/ContentProviderLoad.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/native-classes/ContentProviderLoad.cpp)
 
 </details>
 
@@ -713,6 +725,7 @@ Earlier paths and their donor versions: `native-classes/LDrawMapRootConstructor.
 - canonical · colingsnyder2-ux · [v8xml/LDrawMapRootConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/App/src/v8xml/LDrawMapRootConstructor.cpp)
 - canonical · colingsnyder2-ux · [v8xml/LDrawMapRootConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/App/src/v8xml/LDrawMapRootConstructor.cpp)
 - canonical · colingsnyder2-ux · [v8xml/LDrawMapRootConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/App/src/v8xml/LDrawMapRootConstructor.cpp)
+- canonical · colingsnyder2-ux · [v8xml/LDrawMapRootConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/App/src/v8xml/LDrawMapRootConstructor.cpp)
 
 **`5d236ec00f42`** · `App/src/v8xml/LDrawMapRootConstructor.cpp` · proof not assessed
 - public · colingsnyder2-ux · [v8xml/LDrawMapRootConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/App/src/v8xml/LDrawMapRootConstructor.cpp)
@@ -732,6 +745,7 @@ Earlier paths and their donor versions: `native-classes/LDrawMapRootConstructor.
 - public · colingsnyder2-ux · [v8xml/LDrawMapRootConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/App/src/v8xml/LDrawMapRootConstructor.cpp)
 - public · colingsnyder2-ux · [v8xml/LDrawMapRootConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/App/src/v8xml/LDrawMapRootConstructor.cpp)
 - public · colingsnyder2-ux · [v8xml/LDrawMapRootConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/App/src/v8xml/LDrawMapRootConstructor.cpp)
+- public · colingsnyder2-ux · [v8xml/LDrawMapRootConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/App/src/v8xml/LDrawMapRootConstructor.cpp)
 
 **`1e50f20964fd`** · `native-classes/LDrawMapRootConstructor.cpp` · proof not assessed
 
@@ -842,6 +856,8 @@ Earlier paths and their donor versions: `native-classes/LDrawMapRootConstructor.
 - canonical · colingsnyder2-ux · [native-classes/LDrawMapRootConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/LDrawMapRootConstructor.cpp)
 - public · colingsnyder2-ux · [native-classes/LDrawMapRootConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-classes/LDrawMapRootConstructor.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LDrawMapRootConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-classes/LDrawMapRootConstructor.cpp)
+- public · colingsnyder2-ux · [native-classes/LDrawMapRootConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/native-classes/LDrawMapRootConstructor.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LDrawMapRootConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/native-classes/LDrawMapRootConstructor.cpp)
 
 </details>
 
@@ -868,6 +884,7 @@ Earlier paths and their donor versions: `native-classes/MetadataMergeBinderConst
 - canonical · colingsnyder2-ux · [v8xml/MetadataMergeBinderConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/workspace/rebuild/2008-06/App/src/v8xml/MetadataMergeBinderConstructor.cpp)
 - canonical · colingsnyder2-ux · [v8xml/MetadataMergeBinderConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/App/src/v8xml/MetadataMergeBinderConstructor.cpp)
 - canonical · colingsnyder2-ux · [v8xml/MetadataMergeBinderConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/App/src/v8xml/MetadataMergeBinderConstructor.cpp)
+- canonical · colingsnyder2-ux · [v8xml/MetadataMergeBinderConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/App/src/v8xml/MetadataMergeBinderConstructor.cpp)
 
 **`ff3b1cd8d08e`** · `App/src/v8xml/MetadataMergeBinderConstructor.cpp` · proof not assessed
 - public · colingsnyder2-ux · [v8xml/MetadataMergeBinderConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/2f1437995c664cd170f3c16e164066e8ac3d9465/2008-06/App/src/v8xml/MetadataMergeBinderConstructor.cpp)
@@ -887,6 +904,7 @@ Earlier paths and their donor versions: `native-classes/MetadataMergeBinderConst
 - public · colingsnyder2-ux · [v8xml/MetadataMergeBinderConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/55e9c584c36673302fdfcaacd1a74cdd29d0555f/2008-06/App/src/v8xml/MetadataMergeBinderConstructor.cpp)
 - public · colingsnyder2-ux · [v8xml/MetadataMergeBinderConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/2008-06/App/src/v8xml/MetadataMergeBinderConstructor.cpp)
 - public · colingsnyder2-ux · [v8xml/MetadataMergeBinderConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/App/src/v8xml/MetadataMergeBinderConstructor.cpp)
+- public · colingsnyder2-ux · [v8xml/MetadataMergeBinderConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/App/src/v8xml/MetadataMergeBinderConstructor.cpp)
 
 **`502f1f402fd5`** · `native-classes/MetadataMergeBinderConstructor.cpp` · proof not assessed
 
@@ -997,5 +1015,7 @@ Earlier paths and their donor versions: `native-classes/MetadataMergeBinderConst
 - canonical · colingsnyder2-ux · [native-classes/MetadataMergeBinderConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/437bb0d62205061000f115528fa584d4bcca35e0/workspace/rebuild/2008-06/native-classes/MetadataMergeBinderConstructor.cpp)
 - public · colingsnyder2-ux · [native-classes/MetadataMergeBinderConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/2008-06/native-classes/MetadataMergeBinderConstructor.cpp)
 - canonical · colingsnyder2-ux · [native-classes/MetadataMergeBinderConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/59047b1cc260353347222913d8f1f7ed5b9e44ce/workspace/rebuild/2008-06/native-classes/MetadataMergeBinderConstructor.cpp)
+- public · colingsnyder2-ux · [native-classes/MetadataMergeBinderConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/2008-06/native-classes/MetadataMergeBinderConstructor.cpp)
+- canonical · colingsnyder2-ux · [native-classes/MetadataMergeBinderConstructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/7a3b79fd032c0b4a462494b8391cc3e870f5cb1d/workspace/rebuild/2008-06/native-classes/MetadataMergeBinderConstructor.cpp)
 
 </details>
