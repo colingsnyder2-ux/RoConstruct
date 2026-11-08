@@ -1,14 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS
+// Compatibility translation unit; compile this file or the organized source, not both.
 // >>> native-status (generated) -- do not edit >>>
-// HandleRadius | 2008-06 | inactive
-// unmapped (no indexed address) | unmapped (no binary link) | by -
-// <<< native-status | src 731688a5 | roc native-status --write
-#include <AppDraw/HitTest.h>
-namespace RBX {
-float HitTest::distanceToHandleRadius(const G3D::Vector3& a, const G3D::Vector3& b) {
-    float distance = (a - b).magnitude();
-    float result = 0.5f;
-    if (distance > 28.66242027282715f) result = distance * 0.017444444820284843f;
-    return result;
-}
-}
+// HandleRadius | 2008-06 | selection unverified
+// unmapped (no indexed address) | by -
+// <<< native-status | src 090cb9db | roc native-status --write
+#include "../../Rendering/src/AppDraw/HandleRadius.cpp"

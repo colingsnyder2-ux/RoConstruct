@@ -1,31 +1,6 @@
+// Compatibility translation unit; compile this file or the organized source, not both.
 // >>> native-status (generated) -- do not edit >>>
-// InstanceSerialization | 2008-06 | inactive
-// unmapped (no indexed address) | unmapped (no binary link) | by -
-// <<< native-status | src e51748a5 | roc native-status --write
-#include "../../native-headers/v8tree/Instance.h"
-#include "../../native-headers/v8xml/XmlElement.h"
-
-namespace RBX {
-XmlElement* Instance::write() {
-    if (archivable && getClassName() != Name::getNullName()) {
-        XmlElement* element = new XmlElement(tag_Item);
-        element->addAttribute(tag_class, &getClassName());
-        element->addAttribute(name_referent, InstanceHandle(this));
-        writeProperties(element->addChild(tag_Properties));
-        writeChildren(element);
-        return element;
-    }
-    return new XmlElement(tag_External, InstanceHandle(this));
-}
-
-// 00558110: serialize each child that returns an XML element.
-void Instance::writeChildren(XmlElement* container) {
-    if (children) {
-        const std::vector<boost::shared_ptr<Instance> >& list = *children;
-        for (std::vector<boost::shared_ptr<Instance> >::const_iterator it = list.begin(); it != list.end(); ++it) {
-            XmlElement* element = (*it)->write();
-            if (element) container->pushBackChild(element);
-        }
-    }
-}
-}
+// InstanceSerialization | 2008-06 | selection unverified
+// unmapped (no indexed address) | by -
+// <<< native-status | src 7eabd7d9 | roc native-status --write
+#include "../../App/src/v8tree/InstanceSerialization.cpp"

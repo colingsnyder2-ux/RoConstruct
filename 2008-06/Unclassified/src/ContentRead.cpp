@@ -1,20 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// Compatibility translation unit; compile this file or the organized source, not both.
 // >>> native-status (generated) -- do not edit >>>
-// ContentRead | 2008-06 | inactive
-// 0/1 exact by name (0%) | 0/1 exact bodies | no strings | verified 2026-11-07| by Espeon (roc repair)
-// <<< native-status | src 715b6cb2 | roc native-status --write
-#include "util/ContentRequest.h"
-#include "util/StandardOut.h"
-#include <sstream>
-
-namespace RBX {
-void readContent(RequestCallback callback, RequestResult result, boost::shared_ptr<const std::string> text)
-{
-    try {
-        std::istringstream input(*text);
-        callback(result, input);
-    } catch (std::exception& error) {
-        StandardOut::singleton()->print(MESSAGE_ERROR, "ContentProvider callback exception: %s", error.what());
-    }
-}
-}
+// ContentRead | 2008-06 | selection unverified
+// unmapped (no indexed address) | by -
+// <<< native-status | src 4430e62d | roc native-status --write
+#include "../../Base/src/util/ContentRead.cpp"

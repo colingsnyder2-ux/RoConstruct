@@ -1,29 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// Compatibility translation unit; compile this file or the organized source, not both.
 // >>> native-status (generated) -- do not edit >>>
-// ContentProviderRegisterFile | 2008-06 | inactive
-// unmapped (no indexed address) | unmapped (no binary link) | by -
-// <<< native-status | src b4b80688 | roc native-status --write
-#include "util/NativeContentProvider.h"
-#include "util/ImageContent.h"
-#include <sstream>
-
-namespace RBX {
-bool ContentProvider::registerFile(CachedContent* item)
-{
-    CachedContent temp;
-    {
-        boost::mutex::scoped_lock lock(contentCacheMutex);
-        temp = *item;
-    }
-    if (!temp.filename) {
-        std::istringstream stream(*temp.data);
-        ContentId hash = registerImageContent(stream, Name::getNullName());
-        std::string filename = findHashFile(hash);
-        if (filename.empty()) return false;
-        temp.filename.reset(new std::string(filename));
-        boost::mutex::scoped_lock lock(contentCacheMutex);
-        *item = temp;
-    }
-    return true;
-}
-}
+// ContentProviderRegisterFile | 2008-06 | selection unverified
+// unmapped (no indexed address) | by -
+// <<< native-status | src 2ff95e7f | roc native-status --write
+#include "../../Base/src/util/ContentProviderRegisterFile.cpp"

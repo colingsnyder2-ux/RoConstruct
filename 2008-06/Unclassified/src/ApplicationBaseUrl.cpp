@@ -1,13 +1,6 @@
+// Compatibility translation unit; compile this file or the organized source, not both.
 // >>> native-status (generated) -- do not edit >>>
-// ApplicationBaseUrl | 2008-06 | inactive
-// unmapped (no indexed address) | unmapped (no binary link) | by -
-// <<< native-status | src 80b442d2 | roc native-status --write
-#include <afxwin.h>
-
-// Original 0096dcf0, populated by application registry/settings startup.
-CString applicationBaseUrlText;
-
-CString applicationBaseUrl()
-{
-    return applicationBaseUrlText;
-}
+// ApplicationBaseUrl | 2008-06 | selection unverified
+// unmapped (no indexed address) | by -
+// <<< native-status | src 315f3c9a | roc native-status --write
+#include "../../WindowsClient/src/ApplicationBaseUrl.cpp"
