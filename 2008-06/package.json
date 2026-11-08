@@ -10301,7 +10301,7 @@
     "tests/NativeWeldToolFactoryTrial.cpp": "5497f0e669b48886ce97b74d4a77707b487b0abd26e3e02e6c66c44223b05624",
     "tests/NativeWeldToolMethodsTrial.cpp": "feb155ef8f0a0954ba1ede5d4a48d809ae1a31d079c4bffb401804ff74e54d4f",
     "tests/NativeWidgetLayout.cpp": "b77957916edc294973f718255d58658a5b4e345b05424d6c776c68b36774d4d8",
-    "tests/NativeWindowBases.cpp": "8f71cbb90a8bd13b265d300a73e58dd36aba9bcab1f80014084e9e4cf9583cba",
+    "tests/NativeWindowBases.cpp": "a2e7d2f0360fd4e160b6354bcd898f8ea7d4fe8e1669e82a4125ea599bb927d5",
     "tests/NativeWorkerThread.cpp": "8419c3b0a0dc0652cdb433dbff580f2246052127970122cd8f9b0da881661139",
     "tests/NativeWorkspaceBaseOffsetsTrial.cpp": "c7f383db204168fa43edb848225bd2e1573bffe8cf449015e6019c5178c6f0a0",
     "tests/NativeWorkspaceClassNameProviderWorker.cpp": "4d95eacb9f0fd891edabdc6fd7e0fe0cd299a076096bf7322659c7cb13658155",
@@ -12022,7 +12022,8 @@
     "tests/matching/record_native_tool_lifetime_evidence.py": "9419e4bd82c57995108ccbe8172517f1a269f67d4f886ef2f98c7eff724bbb34",
     "tests/matching/record_native_workspace_error_trial.py": "4c144309dc7f757100272ebf13ba2e92149b163f9271c256f0143fb3c34c7a60",
     "tests/matching/record_native_workspace_status_trial.py": "e37d723a31b072567b70396a24c1f5513c3a03fda183bb78c150fc2aad4b2c77",
-    "manifests/python-root-referenced-layout-20261108.json": "45a36ba5fa224df1442b8c30a427aac14ca010a0a6d04befe68d390d4d573693"
+    "manifests/python-root-referenced-layout-20261108.json": "45a36ba5fa224df1442b8c30a427aac14ca010a0a6d04befe68d390d4d573693",
+    "tests/regression/NativeWindowBases.cpp": "8f71cbb90a8bd13b265d300a73e58dd36aba9bcab1f80014084e9e4cf9583cba"
   },
   "format": 1,
   "large_files": {},
