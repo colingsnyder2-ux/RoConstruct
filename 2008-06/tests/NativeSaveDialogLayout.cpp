@@ -1,2 +1,2 @@
-#include "CSaveToRobloxDialog.h"
-typedef char SaveDialogSize[sizeof(CSaveToRobloxDialog) == 0x130 ? 1 : -1];
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "abi/NativeSaveDialogLayout.cpp"

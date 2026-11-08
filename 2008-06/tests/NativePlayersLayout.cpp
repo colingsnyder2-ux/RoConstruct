@@ -1,2 +1,2 @@
-#include "Network/Players.h"
-typedef char PlayersSize[sizeof(RBX::Network::Players) == 0x1b0 ? 1 : -1];
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "abi/NativePlayersLayout.cpp"
