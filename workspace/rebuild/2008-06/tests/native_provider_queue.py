@@ -83,25 +83,36 @@ def inventory(log, object_dirs, source_dirs):
                                                       'member_sha256': hashlib.sha256(data).hexdigest()})
         except (OSError, ValueError, libs.match.CompileError) as error:
             errors.append({'path': str(path), 'error': str(error)})
-    sources = []
-    for path in sorted({p for folder in source_dirs for p in folder.rglob('*') if p.suffix in ('.cpp', '.h')}):
-        sources.append((path, path.read_text(encoding='utf-8-sig', errors='replace').splitlines()))
-    for row in rows:
+    # Index row patterns by class token, then scan each source line once.
+    # Keep the original row/path/line order and exact-symbol priority.
+    sources = sorted({p for folder in source_dirs for p in folder.rglob('*') if p.suffix in ('.cpp', '.h')})
+    by_class, patterns, leads = {}, [], [[] for _ in rows]
+    for i, row in enumerate(rows):
         terms = source_terms(row['display'])
-        patterns = [re.compile(r'\b' + re.escape(cls) + r'\s*(?:<[^;]*?>)?\s*::\s*' + re.escape(method) + r'\s*(?:<.*>)?\(') for cls, method in terms]
-        leads = []
-        for path, lines in sources:
-            for number, line in enumerate(lines, 1):
+        patterns.append([re.compile(r'\b' + re.escape(cls) + r'\s*(?:<[^;]*?>)?\s*::\s*' + re.escape(method) + r'\s*(?:<.*>)?\(') for cls, method in terms])
+        for cls, method in terms:
+            by_class.setdefault(cls, set()).add(i)
+    bare_symbols = [(i, row['symbol']) for i, row in enumerate(rows) if '?' not in row['symbol']]
+    for path in sources:
+        for number, line in enumerate(path.read_text(encoding='utf-8-sig', errors='replace').splitlines(), 1):
+            candidates = set()
+            for token in re.findall(r'[A-Za-z_]\w*', line):
+                candidates.update(by_class.get(token, ()))
+            if '?' in line:
+                candidates.update(i for i, row in enumerate(rows) if row['symbol'] in line)
+            candidates.update(i for i, symbol in bare_symbols if symbol in line)
+            for i in candidates:
+                row = rows[i]
                 exact = row['symbol'] in line
-                member = any(pattern.search(line) for pattern in patterns)
-                if exact or member:
-                    leads.append({'path': str(path), 'line': number,
-                                  'evidence': 'symbol_text' if exact else 'qualified_member_text',
-                                  'text': line.strip()[:240]})
+                if exact or any(pattern.search(line) for pattern in patterns[i]):
+                    leads[i].append({'path': str(path), 'line': number,
+                                     'evidence': 'symbol_text' if exact else 'qualified_member_text',
+                                     'text': line.strip()[:240]})
+    for i, row in enumerate(rows):
         row['object_definitions'] = providers[row['symbol']]
         row['library_definitions'] = library_providers[row['symbol']]
-        row['source_leads'] = leads
-        row['status'] = 'object_definition_found' if row['object_definitions'] else 'library_definition_found' if row['library_definitions'] else 'source_lead_only' if leads else 'no_provider_found'
+        row['source_leads'] = leads[i]
+        row['status'] = 'object_definition_found' if row['object_definitions'] else 'library_definition_found' if row['library_definitions'] else 'source_lead_only' if leads[i] else 'no_provider_found'
         row['next_action'] = {
             'object_definition_found': 'Check source freshness, compile profile and link inclusion; do not auto-add object.',
             'library_definition_found': 'Check archive member selection, source freshness and ABI; do not auto-add library.',

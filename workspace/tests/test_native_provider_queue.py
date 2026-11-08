@@ -91,6 +91,21 @@ class ProviderQueueTests(unittest.TestCase):
         self.assertEqual(row['symbol'], '_missing')
         self.assertEqual(row['requesters'], ['main.obj'])
 
+    def test_source_scan_finds_bare_and_multiple_member_symbols(self):
+        with tempfile.TemporaryDirectory() as folder:
+            base = Path(folder)
+            log = base / 'link.log'
+            log.write_text(error() + '\n'
+                           'x.obj : error LNK2001: unresolved external symbol _missing\n'
+                           'y.obj : error LNK2001: unresolved external symbol "void RBX::Service::stop(void)" (?stop@Service@RBX@@QAEXXZ)\n')
+            (base / 'a.cpp').write_text('void Service::start() {} void Service::stop() {}\n'
+                                        '// _missing\n// ?start@Service@RBX@@QAEXXZ\n')
+            rows = {row['symbol']: row for row in queue.inventory(log, [], [base])['queue']}
+            self.assertEqual([lead['line'] for lead in rows[SYMBOL]['source_leads']], [1, 3])
+            self.assertEqual(rows[SYMBOL]['source_leads'][1]['evidence'], 'symbol_text')
+            self.assertEqual(rows['_missing']['source_leads'][0]['line'], 2)
+            self.assertEqual(rows['?stop@Service@RBX@@QAEXXZ']['source_leads'][0]['line'], 1)
+
     def test_template_member(self):
         self.assertIn(('TToolVerb', 'newMouseCommand'), queue.source_terms('RBX::TToolVerb<class RBX::ArrowTool,class RBX::RunStateVerb>::newMouseCommand(void)'))
 
