@@ -112,3 +112,30 @@ def test_tracking_snapshot_cannot_delete_previous_bot_sources_or_proofs(tmp_path
     assert all((clone / rel).is_file() for rel in paths)
     assert git(repo, 'rev-parse', 'HEAD') == bad
     assert any('refused tracking snapshot' in line for line in logs)
+
+
+def test_organized_and_public_subtrees_reject_losses(tmp_path):
+    git(tmp_path, 'init', '-q')
+    git(tmp_path, 'config', 'user.name', 'test')
+    git(tmp_path, 'config', 'user.email', 'test@example.invalid')
+    rels = ['rebuild/2008-06/App/src/tool/Foo.cpp',
+            'rebuild/2008-06/Network/include/net/Foo.h',
+            '2008-06/App/src/tool/Foo.cpp',
+            '2008-06/native-headers/tool/Foo.h']
+    for rel in rels:
+        path = tmp_path / rel
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text('recovered source\n')
+    (tmp_path / '2008-06/README.md').write_text('keep subtree\n')
+    git(tmp_path, 'add', '.')
+    git(tmp_path, 'commit', '-qm', 'base')
+    base = git(tmp_path, 'rev-parse', 'HEAD')
+    for rel in rels:
+        (tmp_path / rel).unlink()
+    git(tmp_path, 'add', '-A')
+    tree = git(tmp_path, 'write-tree')
+    assert {row['path'] for row in preservation_losses(tmp_path, base, tree)} == set(rels)
+    public_base = git(tmp_path, 'rev-parse', base + ':2008-06')
+    public_tree = git(tmp_path, 'rev-parse', tree + ':2008-06')
+    assert {row['path'] for row in preservation_losses(tmp_path, public_base, public_tree)} == {
+        'App/src/tool/Foo.cpp', 'native-headers/tool/Foo.h'}
