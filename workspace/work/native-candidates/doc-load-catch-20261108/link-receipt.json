@@ -1,0 +1,18 @@
+{
+  "exit_code": 1120,
+  "before": 102,
+  "after": 101,
+  "resolved": [
+    "public: int __thiscall CRobloxDoc::loadFromString(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)"
+  ],
+  "introduced": [],
+  "duplicates": [],
+  "provider_objects": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\third-providers-fresh-20261108\\source\\WindowsClient\\src\\DocumentLoadFromString.cpp",
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261108-082247-0a5fbceb\\unit-003\\candidate.obj",
+      "sha256": "c2d727ca2a61fc04b9f1477a4f5743446d3637c3b0064492b5524f807bf5feb6"
+    }
+  ],
+  "scope": "Fresh candidate link-only diagnostic; call bindings, ABI, EH, runtime, original selection and server credit unproven. Do not run."
+}

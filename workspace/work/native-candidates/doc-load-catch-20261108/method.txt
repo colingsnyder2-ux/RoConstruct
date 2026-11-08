@@ -1,0 +1,18 @@
+from pathlib import Path
+import sys,json,hashlib,struct,pefile
+root=Path.cwd();sys.path.insert(0,str(root));from roc import match
+run=root/'work/2008-06/native-check-runs/20261108-082247-0a5fbceb';rows=json.loads((run/'results.json').read_text());row=next(x for x in rows if x['source'].endswith('DocumentLoadFromString.cpp'));sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest();assert row['status']=='complete' and sha(row['object'])==row['object_sha256']
+for p,h in row['dependencies'].items():assert sha(p)==h,p
+raw=Path(row['object']).read_bytes();name,body,refs=next(x for x in match.coff_functions(raw) if x[0].startswith('?loadFromString@CRobloxDoc'));target,targetrefs,_=match.target('2008-06','00454ac0');pepath=root/'work/2008-06/original-p4-reference/Roblox.exe';pe=pefile.PE(str(pepath));full=pe.get_data(0x454ac0-pe.OPTIONAL_HEADER.ImageBase,len(body));extra=[x-0x454ac0 for x in match._base_relocs('2008-06') if 0x454ac0+len(target)<=x<0x454ac0+len(body)];print('lengths',len(target),len(body),'extra',extra);assert len(target)==385 and len(body)==459 and extra==[0x189,0x1b2] and 0x454ac0+len(body)<=0x454c90
+exact=match.exact_match(full,targetrefs+extra,body,refs);print('full code and catch match:',exact);data_matches,data_errors=match.data_check('2008-06','00454ac0',full,match.coff_data_refs(raw,name));print('data errors',data_errors);assert exact and not data_errors
+imports={entry.address:entry.name.decode('ascii') for dll in pe.DIRECTORY_ENTRY_IMPORT for entry in dll.imports if entry.name};sections,symbols,definitions,_=match._coff_data_index(raw);expected={'?getDataModel@CRobloxDoc@@':0x403040,'??0Lock@DataModel@':0x411b40,'??2@':0x6a0920,'??$create@VScriptContext@':0x42dfd0,'?executeInNewThread@ScriptContext@':0x5b0480,'??1?$vector@VValue@':0x42d630,'??3@':0x6a067a,'??1Lock@DataModel@':0x5773c0,'??_C@':0x817ee8,'$LN14':0x454c4e};start,index=definitions[name];section=sections[index];found,api={},[]
+for i in range(section[7]):
+ off,idx,kind=struct.unpack_from('<IIH',raw,section[5]+10*i);off-=start
+ if not 0<=off<len(body)-3:continue
+ sym=symbols[idx][0];value=struct.unpack_from('<I',full,off)[0]
+ if kind==20:value=(0x454ac0+off+4+struct.unpack_from('<i',full,off)[0])&0xffffffff
+ for prefix,want in expected.items():
+  if sym.startswith(prefix):assert value==want,(sym,hex(value),hex(want));found.setdefault(prefix,[]).append(hex(value))
+ if sym.startswith('__imp_'):assert sym[6:]==imports[value],(sym,imports.get(value));api.append(imports[value])
+assert set(found)==set(expected) and len(api)==3;assert pe.get_string_at_rva(0x817ee8-pe.OPTIONAL_HEADER.ImageBase)==b'Doc script'
+out=root/'work/native-candidates/doc-load-catch-proof-20261108';out.mkdir(exist_ok=False);receipt={'source':row['source'],'source_sha256':row['source_sha256'],'object':row['object'],'object_sha256':row['object_sha256'],'pe':str(pepath),'pe_sha256':sha(pepath),'target_sha256':hashlib.sha256(full).hexdigest(),'target_indexed_size':len(target),'full_body_size':len(body),'extra_relocations':extra,'byte_match':exact,'data_matches':data_matches,'data_errors':data_errors,'reviewed_bindings':found,'imports':api,'dependencies':row['dependencies'],'build_inputs':row['build_inputs'],'scope':'Full code and adjacent catch continuation exact with reviewed selected bindings. EH metadata, all call identities, callee ABI, linked selection and runtime remain unproven.'};(out/'proof.json').write_text(json.dumps(receipt,indent=2)+'\n',encoding='utf-8');print('selected bindings:',len(found),'imports:',len(api))

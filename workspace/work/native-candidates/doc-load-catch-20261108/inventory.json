@@ -1,0 +1,12 @@
+{
+  "baseline-link-log.txt": "e949989d53c59f82955342ffd1dfc2b4488e07f7a3ed8ea0cba3cf7fd4131a90",
+  "compile-results.json": "b502707a7cb5b1f3e9bba07ace425bc2cfb6ddc3759b019c2b40e16f60e75cfd",
+  "compile-summary.json": "3e0f2b184d288dcbc435afcf23b544d8f4099fecba20718d7a4fa1a4e6c7199b",
+  "full-body-proof.json": "b871be576777e0b04dfaecf60f679a70c2526d1029048b5ee64554568dfcca9a",
+  "link-log.txt": "94d1c0492ef64f7fe312f3c4f170211e94152298d6981aa51a0af72562890bf7",
+  "link-receipt.json": "790638a42ac1e8bb8f7c4062f239cecfe71d33f5ce6462226782bb2d3fa967f7",
+  "method.txt": "6decdb388e899041114e7118e150a52ae609ffb41e4a413316025a20336e7de1",
+  "original-assembly.txt": "bb858c1f1f9c02046bcc89cf23a453517e282f9563762fe23411055aa16e3180",
+  "README.md": "4bbf0785f45e8fa38b6d045711220809a03ad9d257a58b3c6dd43ff1f95a114f",
+  "candidate/DocumentLoadFromString.cpp": "878ca781408b0fba0f34c583e8c5bed9503a0ed8c85769e5b78b6e6bace59db9"
+}
