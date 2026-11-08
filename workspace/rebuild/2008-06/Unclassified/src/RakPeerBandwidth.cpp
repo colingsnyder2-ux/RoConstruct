@@ -1,6 +1,2 @@
-#include "RakPeer.h"
-
-void RakPeer::SetPerConnectionOutgoingBandwidthLimit(unsigned maxBitsPerSecond)
-{
-    maxOutgoingBPS = maxBitsPerSecond;
-}
+// Compatibility translation unit; compile this file or the organized source, not both.
+#include "../../Network/src/RakPeerBandwidth.cpp"
