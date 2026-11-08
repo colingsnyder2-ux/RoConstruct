@@ -4,5 +4,5 @@
 
 Expand a native path for every distinct content version. No candidate is auto-promoted.
 
-- [native-classes/AdornG3DTextureTrioTrial.cpp → native-classes/TextureProxyRender.cpp](sources-001.md)
-- [native-classes/TextureProxyRenderNew.cpp → native-headers/util/IRenderable.h](sources-002.md)
+- [native-classes/AdornG3DTextureTrioTrial.cpp → native-classes/TextureProxyBase2008.cpp](sources-001.md)
+- [native-classes/TextureProxyRender.cpp → native-headers/util/IRenderable.h](sources-002.md)
