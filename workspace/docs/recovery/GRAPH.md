@@ -117,7 +117,7 @@ native snapshots. Queries reuse it until an input or engine changes. A per-sourc
 re-parses only changed source files during incremental rebuilds. `graph build`
 forces rebuilding. Unchanged export files retain their bytes and timestamps.
 
-Public data is deterministic gzip-compressed JSON under `docs/graph-data/<client>`:
+Public data is deterministic gzip-compressed JSON under `site/graph-data/<client>`:
 `index.json.gz` contains the searchable labels, provenance dictionary and queue;
 address-prefix shards contain small node neighborhoods and compact edge records.
 Each compact edge is `[source, target, kind, evidenceIndex, confidence]`.

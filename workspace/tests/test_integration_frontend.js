@@ -1,6 +1,6 @@
 "use strict";
 const assert = require("node:assert/strict"), fs = require("node:fs"), vm = require("node:vm");
-const html = fs.readFileSync("docs/index.html", "utf8");
+const html = fs.readFileSync("site/index.html", "utf8");
 const context = {
   fmt: n => String(n), pct: (n, total) => (total ? 100 * n / total : 0).toFixed(2) + "%",
   esc: s => String(s).replaceAll("<", "&lt;"), hex: n => n.toString(16).padStart(8, "0"),

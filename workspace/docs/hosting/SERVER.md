@@ -33,7 +33,7 @@ deleted) prevents concurrent publishes.
 ## Rebuild progress
 
 `roc rebuild CLIENT progress` summarizes `rebuild/<client>/out/*/report.json` and
-`closure.json` into `docs/rebuild-progress.json`. The site shows this under each
+`closure.json` into `site/rebuild-progress.json`. The site shows this under each
 client as simple progress bars: modules reporting, modules linked, byte-exact
 functions, unresolved symbols, temporary stubs and runtime milestones.
 
@@ -181,3 +181,13 @@ The host seeds that file exclusively from the selected canonical source, preserv
 existing edits. It publishes immutable accepted headers separately from current owner
 headers; only updated Workers may claim this profile. Body merges and ordinary independent
 integration gates still apply. No new declarations, fields, or player swaps are inferred.
+
+
+## Website files
+
+Website files and generated page data live under `site/`; guides remain under
+`docs/`. Publishing still uses the same public page paths. On an older host,
+legacy `docs/history.json` snapshots are merged into site history without
+removing the old file. Integration and native-status readers use the old
+`docs/` snapshots until the corresponding site data is generated. Stop the
+old host before switching an installation to the new layout.

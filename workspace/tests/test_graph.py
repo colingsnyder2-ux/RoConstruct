@@ -172,7 +172,7 @@ def test_claim_exclusion_and_failed_attempts(tmp_path):
 
 def test_native_baseline_reuses_existing_public_evidence(tmp_path):
     root=fixture(tmp_path)
-    p=root/'docs/integration.json';p.parent.mkdir()
+    p=root/'site/integration.json';p.parent.mkdir()
     p.write_text(json.dumps(dict(client='test',native=['00401000'],sources={'00401000':{'path':'native.cpp','line':3}})))
     g=graph.build('test',root)
     n=g.nodes['00401000']
@@ -180,6 +180,9 @@ def test_native_baseline_reuses_existing_public_evidence(tmp_path):
     assert n['native_source']['path']=='native.cpp'
     assert n['states']['LINKED'] and not n['states']['RUNTIME_VERIFIED']
     assert '00401000' not in [r['addr'] for r in g.rank()]
+    legacy=root/'docs/integration.json';legacy.parent.mkdir()
+    legacy.write_bytes(p.read_bytes());p.unlink()
+    assert graph.build('test',root).nodes['00401000']['states']['LINKED']
 
 
 def test_helpers_remain_searchable_but_not_work_candidates(tmp_path):

@@ -191,3 +191,16 @@ def test_path_filter_accepts_documented_relative_and_full_paths():
     assert module._matches('App/src/tool/*.cpp', key)
     assert module._matches('rebuild/2008-06/App/src/tool/*.cpp', key)
     assert not module._matches('Network/src/*.cpp', key)
+
+
+def test_status_uses_legacy_snapshot_until_site_is_ready(tmp_path, monkeypatch):
+    from roc import native_status as module
+    legacy = tmp_path / 'docs/integration.json'
+    legacy.parent.mkdir()
+    legacy.write_text('{"marker": "old"}')
+    monkeypatch.setattr(module, 'ROOT', tmp_path)
+    assert module.load_integration()['marker'] == 'old'
+    current = tmp_path / 'site/integration.json'
+    current.parent.mkdir()
+    current.write_text('{"marker": "new"}')
+    assert module.load_integration()['marker'] == 'new'

@@ -1,6 +1,6 @@
 "use strict";
 const assert = require("node:assert/strict"), fs = require("node:fs"), vm = require("node:vm");
-const html = fs.readFileSync("docs/index.html", "utf8");
+const html = fs.readFileSync("site/index.html", "utf8");
 const c = {fmt:String, pct:(n,t)=>(100*n/t).toFixed(2)+"%", mb:n=>`${n} B`,
   hex:n=>n.toString(16).padStart(8,"0"), esc:String,
   classify:d=>d.funcs.map(()=>["Roblox","Core"]),
@@ -20,11 +20,11 @@ assert.match(daily, /<th>Inactive native<\/th><th>Draft native<\/th>/);
 assert.match(daily, /<td>2026-11-04<\/td><td>1<\/td><td>1<\/td><td>1<\/td><td>1<\/td><td>0<\/td>/);
 assert.match(daily, /60.00%/);
 c.integrationData = data;
-vm.runInContext(fs.readFileSync("docs/library-coverage.js","utf8"),c);
+vm.runInContext(fs.readFileSync("site/library-coverage.js","utf8"),c);
 const library = c.libraryTable({name:data.client,units:["Core"],funcs:[[1,20,100,0],[2,40,100,0],[3,10,50,0],[4,30,100,0]]},true);
 assert.match(library, /<td>1 \/ 4<\/td><td>1<\/td><td>1<\/td>/);
 assert.match(library, /60.00%/);
 assert.doesNotMatch(html,/Every class and function in this client|id="tree-filter"|href="graph.html"/);
-assert.doesNotMatch(fs.readFileSync("docs/graph.html","utf8"),/<script/);
+assert.doesNotMatch(fs.readFileSync("site/graph.html","utf8"),/<script/);
 assert.doesNotMatch(fs.readFileSync("README.md","utf8"),/RoConstruct-findings/);
 console.log("Native site progress: union coverage, inactive/draft history, library breakdown and disabled graph passed.");

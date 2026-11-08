@@ -2,9 +2,9 @@
 """native-status banner generator for RoConstruct native classes/headers/world.
 
 Reads:
-  docs/native-source-links.json        addr -> {path, line}
+  site/native-source-links.json        addr -> {path, line}
   rebuild/2008-06/out/native-names.json addr -> {symbol, score, strings}
-  docs/integration.json                inactive[addr]=[name, exact, receipt],
+  site/integration.json                inactive[addr]=[name, exact, receipt],
                                        names[addr]=[pretty, mangled, score]
   work/server.db                       funcs (addr,score,user), integration_credit (addr,user,model)
 
@@ -57,7 +57,7 @@ def load_json(path):
 
 
 def load_links():
-    d = load_json(ROOT / "docs/native-source-links.json")
+    d = load_json(ROOT / "site/native-source-links.json" if (ROOT / "site/native-source-links.json").exists() else ROOT / "docs/native-source-links.json")
     sources = d.get("sources", d) if isinstance(d, dict) else {}
     out = {}
     for addr, info in sources.items():
@@ -72,7 +72,7 @@ def load_names():
 
 
 def load_integration():
-    return load_json(ROOT / "docs/integration.json")
+    return load_json(ROOT / "site/integration.json" if (ROOT / "site/integration.json").exists() else ROOT / "docs/integration.json")
 
 
 def load_db():

@@ -1,6 +1,6 @@
 "use strict";
 const assert = require("node:assert/strict"), fs = require("node:fs"), vm = require("node:vm");
-const html = fs.readFileSync("docs/index.html", "utf8");
+const html = fs.readFileSync("site/index.html", "utf8");
 let requested = [], updates = 0;
 const snapshot = {updated: "2026-10-20 23:00:00 UTC", clients: [
   {name: "C", functions: 3, matched: 1, partial: 1},

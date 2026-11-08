@@ -216,8 +216,8 @@ def test_webhook_uses_fresh_progress_each_delivery(monkeypatch, tmp_path):
     import json
     from roc import integration_site, reports
     monkeypatch.setattr(nf, 'ROOT', tmp_path)
-    (tmp_path/'docs').mkdir()
-    (tmp_path/'docs/integration.json').write_text('{}')  # Stale site data must be ignored.
+    (tmp_path/'site').mkdir()
+    (tmp_path/'site/integration.json').write_text('{}')  # Stale site data must be ignored.
     monkeypatch.setattr(reports, 'server_mines_webhook', lambda: 'https://example.invalid/webhook')
     monkeypatch.setattr(nf.time, 'sleep', lambda _: None)
     monkeypatch.setattr(integration_site, 'integration_rate', lambda *a: 'rate')

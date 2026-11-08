@@ -18,7 +18,7 @@ from roc import match, setup
 
 ROOT = Path(__file__).resolve().parent.parent
 TOOLS = ROOT / "tools"
-DOCS = ROOT / "docs"
+DOCS = ROOT / "site"
 BUILD = 21022  # the 2008-06 client's compiler (VS2008 RTM)
 
 
@@ -1421,7 +1421,7 @@ import hashlib
 import time
 
 def progress(client="2008-06", log=print, notify=True):
-    """Summarize rebuild module reports into docs/rebuild-progress.json."""
+    """Summarize rebuild module reports into site/rebuild-progress.json."""
     if os.environ.get('ROC_INTEGRATOR_PRIVATE') == '1':
         return None  # private builds retain module receipts, not public site aggregates
     module_dir = ROOT / "rebuild" / client / "modules"

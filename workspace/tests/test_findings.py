@@ -29,7 +29,7 @@ def test_findings_source_expands_recipe_only_wrappers(tmp_path):
 def test_progress_build_reads_local_sources_without_shadowing_clients(tmp_path, monkeypatch):
     from roc import progress
     monkeypatch.setattr(progress, "ROOT", tmp_path)
-    monkeypatch.setattr(progress, "DOCS", tmp_path / "docs")
+    monkeypatch.setattr(progress, "DOCS", tmp_path / "site")
     monkeypatch.setattr(progress.clients, "load", lambda: {"test": {"compiler": "test compiler"}})
     monkeypatch.setattr(progress, "library_meta", lambda: {})
     monkeypatch.setattr(progress, "landmarks", lambda *a: [])
@@ -44,7 +44,7 @@ def test_progress_build_reads_local_sources_without_shadowing_clients(tmp_path, 
     (sources / "00401000.cpp").write_text("int f() { return 1; }")
     result = progress.build()
     assert result["clients"][0]["partial"] == 1
-    data = json.loads((tmp_path / "docs/data/test.json").read_text())
+    data = json.loads((tmp_path / "site/data/test.json").read_text())
     assert data["funcs"][0][4] is True
 
 
@@ -92,7 +92,7 @@ class FindingsTests(unittest.TestCase):
              patch.object(progress, "build"), patch.object(setup, "refresh_path"), \
              patch.object(setup, "find_exe", return_value="git"), \
              patch.object(server.subprocess, "run", return_value=Mock(returncode=0)) as git:
-            path = Path(folder) / "docs/progress.json"
+            path = Path(folder) / "site/progress.json"
             path.parent.mkdir()
             path.write_text('{"server":"https://old.example","clients":[]}')
             sync.side_effect = lambda _: self.assertEqual(
@@ -189,14 +189,14 @@ def test_site_publish_preserves_host_head_and_unrelated_index(tmp_path):
         pytest.skip("git not installed")
     run = lambda *a: subprocess.run([git, *a], cwd=tmp_path, check=True, capture_output=True, text=True).stdout
     run("init", "-q", "-b", "work")
-    (tmp_path / "docs" / "data").mkdir(parents=True)
-    (tmp_path / "docs" / "progress.json").write_text("{}")
+    (tmp_path / "site" / "data").mkdir(parents=True)
+    (tmp_path / "site" / "progress.json").write_text("{}")
     for name in ("data/2008-06.json", "source-links.json"):
-        (tmp_path / "docs" / name).write_text("{}")
+        (tmp_path / "site" / name).write_text("{}")
     (tmp_path / "other.py").write_text("x = 1\n")
     run("add", ".")
     run("-c", "user.name=t", "-c", "user.email=t@t", "commit", "-qm", "seed")
-    (tmp_path / "docs" / "history.json").write_text("[]")
+    (tmp_path / "site" / "history.json").write_text("[]")
     (tmp_path / "other.py").write_text("x = 2\n")
     run("add", "other.py")  # a maintainer's staged work-in-progress
     head_before = run("rev-parse", "HEAD")
@@ -233,16 +233,16 @@ def test_pages_publish_is_one_parentless_commit_and_skips_guides(tmp_path):
     root = tmp_path / "root"
     run(tmp_path, "init", "-q", str(root))
     run(root, "remote", "add", "origin", str(remote))
-    (root / "docs" / "data").mkdir(parents=True)
-    (root / "docs" / "index.html").write_text("<html>")
-    (root / "docs" / "data" / "2008-06.json").write_text("{}")
-    (root / "docs" / "SETUP.md").write_text("guide")
+    (root / "site" / "data").mkdir(parents=True)
+    (root / "site" / "index.html").write_text("<html>")
+    (root / "site" / "data" / "2008-06.json").write_text("{}")
+    (root / "site" / "SETUP.md").write_text("guide")
     (root / "work").mkdir()
     logs = []
     env = {"GIT_AUTHOR_NAME": "t", "GIT_AUTHOR_EMAIL": "t@t", "GIT_COMMITTER_NAME": "t", "GIT_COMMITTER_EMAIL": "t@t"}
     with patch.object(server, "ROOT", root), patch.dict(os.environ, env):
         server.publish_pages(git, logs.append)
-        (root / "docs" / "data" / "2008-06.json").write_text('{"changed": 1}')
+        (root / "site" / "data" / "2008-06.json").write_text('{"changed": 1}')
         server.publish_pages(git, logs.append)
         server.publish_pages(git, logs.append)  # unchanged: no new commit
     assert logs == ["Website published.", "Website published.", "Website unchanged."]
@@ -250,3 +250,11 @@ def test_pages_publish_is_one_parentless_commit_and_skips_guides(tmp_path):
     assert files == {"index.html", "data/2008-06.json", ".nojekyll"}  # guides stay on main
     assert run(tmp_path, "--git-dir", str(remote), "rev-list", "--count", "gh-pages").strip() == "1"
     assert not list((root / "work").glob("pages-index-*"))
+
+
+def test_site_publish_refuses_missing_index(tmp_path, monkeypatch):
+    monkeypatch.setattr(server, 'ROOT', tmp_path)
+    monkeypatch.setattr(server.subprocess, 'run', lambda *a, **k: (_ for _ in ()).throw(AssertionError('must not invoke git')))
+    messages = []
+    server.publish_pages('git', messages.append)
+    assert messages == ['Website publishing skipped: site/index.html missing.']

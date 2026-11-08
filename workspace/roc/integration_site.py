@@ -1,4 +1,4 @@
-"""docs/integration.json: native integration progress for the website (2008-06 rbxgs rebuild).
+"""site/integration.json: native integration progress for the website (2008-06 rbxgs rebuild).
 Same four groups as the Discord digest: integrated (linked rebuild reproduces it), exact waiting (mined 100%,
 not yet integrated), partial, unmined. Per-function data is published on gh-pages only (see server.publish_pages)."""
 import json
@@ -409,15 +409,18 @@ def build(root=ROOT, log=print, output=None, extra_reports=()):
         hits = [functions[a] for a, v in data["inactive"].items() if v[1] == exact and a in functions]
         # separate from "groups": groups partition the code and are summed by the site
         data.setdefault("native_code", {})[key[7:]] = {"functions": len(hits), "bytes": sum(f["size"] for f in hits)}
-    path = output or root / "docs/integration.json"
-    previous = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+    path = output or root / "site/integration.json"
+    previous_path = path
+    if output is None and not path.exists() and (root / "docs/integration.json").exists():
+        previous_path = root / "docs/integration.json"
+    previous = json.loads(previous_path.read_text(encoding="utf-8")) if previous_path.exists() else {}
     history = {row["day"]: row for row in previous.get("history", [])} if previous.get("client") == CLIENT else {}
     day = datetime.now(ZoneInfo("America/New_York")).strftime("%Y-%m-%d")
     history[day] = {"day": day, "groups": data["groups"], "native_code": data.get("native_code", {})}
     data["history"] = [history[day] for day in sorted(history)]
     atomic_json(path, data)
     if output is None:
-        atomic_json(root / "docs/native-source-links.json", {"client": CLIENT, "sources": data["inactive_sources"]})
+        atomic_json(root / "site/native-source-links.json", {"client": CLIENT, "sources": data["inactive_sources"]})
     if output is None and "inactive" in previous:  # first build has no baseline: don't announce everything
         announce_inactive(previous["inactive"], data["inactive"], log)
     log("Integration site data: %d integrated, %d named" % (len(native), len(data["names"])))

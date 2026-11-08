@@ -1,7 +1,7 @@
 > Maintained native source/tools: [RoConstruct work/workspace](https://github.com/colingsnyder2-ux/RoConstruct/tree/work/workspace). For an agent, use the [native prompt](https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/data/NATIVE_AGENT.md). A branch ZIP contains a `workspace` folder; enter it before running tools.
 
 <p align="center">
-  <img src="docs/logo.png" alt="RoConstruct" width="560">
+  <img src="site/logo.png" alt="RoConstruct" width="560">
 </p>
 
 <p align="center">

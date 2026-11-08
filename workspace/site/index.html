@@ -530,7 +530,7 @@ function codeBar(source, mined, partial, total) {
 }
 
 /* Native integration: mined functions placed into the real rebuilt source tree, reproduced byte-exact by the
-   linked rebuild (docs/integration.json, published hourly). Same groups as the Discord integration digest. */
+   linked rebuild (site/integration.json, published hourly). Same groups as the Discord integration digest. */
 function integrationBar(i, name) {
   if (!i || i.client !== name) return "";
   const g = i.groups, nearly = g.owned_waiting || {functions:0,bytes:0}, total = Object.values(g).reduce((a, x) => a + x.bytes, 0) || 1;

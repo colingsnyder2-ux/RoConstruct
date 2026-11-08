@@ -405,3 +405,9 @@ def test_triage_includes_organized_fork_paths(tmp_path, prefix):
     assert '+new body' in report['variants'][0]['public_diff']
     assert report['variants'][0]['public_sha256'] == hashlib.sha256(b'public body\n').hexdigest()
     assert report['variants'][0]['sources'][0]['fork_path'] == prefix + name
+
+
+def test_site_text_is_a_valid_draft_scope():
+    assert d.safe_path('site/index.html') == 'site/index.html'
+    with pytest.raises(ValueError):
+        d.safe_path('site/config/secrets.json')

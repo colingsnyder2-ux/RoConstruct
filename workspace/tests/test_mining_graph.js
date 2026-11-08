@@ -1,6 +1,6 @@
 "use strict";
 const assert = require("node:assert/strict"), fs = require("node:fs"), vm = require("node:vm");
-const html = fs.readFileSync("docs/index.html", "utf8");
+const html = fs.readFileSync("site/index.html", "utf8");
 const context = {history: [], progress: {updated: "2026-10-20 17:00 UTC"}, fmt: n => String(n)};
 vm.createContext(context);
 vm.runInContext(html.slice(html.indexOf("function miningDays("), html.indexOf("function bar(")), context);
@@ -52,7 +52,7 @@ assert.equal(interpolated[1].estimated, true);
 assert.equal(interpolated[0].estimated, undefined);
 assert.equal(interpolated[2].estimated, undefined);
 // Published history must contain actual category counts, not only today's dots.
-context.history = JSON.parse(fs.readFileSync("docs/history.json", "utf8"));
+context.history = JSON.parse(fs.readFileSync("site/history.json", "utf8"));
 for (const name of new Set(context.history.flatMap(s => Object.keys(s.clients)))) {
   const snapshots = context.history.filter(s => s.clients[name]?.functions);
   const latest = snapshots.at(-1).clients[name];

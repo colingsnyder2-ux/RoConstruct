@@ -43,6 +43,8 @@ dist/
 # Website data: published to the gh-pages branch, never committed to main
 docs/data/
 docs/integration.json
+site/data/
+site/integration.json
 
 # Native rebuild build output stays local; the mined Source tree is published in RoConstruct-findings.
 /rebuild/*/out/

@@ -17,11 +17,11 @@ class FunctionDataTests(unittest.TestCase):
     def test_scoped_publish_preserves_other_clients(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
-            (root / "docs/data").mkdir(parents=True)
+            (root / "site/data").mkdir(parents=True)
             old = dict(name="other", started=True, **progress.summarize([[1, 42, 100]]))
-            (root / "docs/progress.json").write_text(json.dumps({"clients": [old]}))
-            (root / "docs/data/other.json").write_text("unchanged")
-            with patch.object(progress, "ROOT", root), patch.object(progress, "DOCS", root / "docs"), \
+            (root / "site/progress.json").write_text(json.dumps({"clients": [old]}))
+            (root / "site/data/other.json").write_text("unchanged")
+            with patch.object(progress, "ROOT", root), patch.object(progress, "DOCS", root / "site"), \
                  patch.object(progress.clients, "load", return_value={
                      "other": {"compiler": "test"}, "2008-06": {"compiler": "test"}}), \
                  patch.object(progress, "library_meta", return_value={}), \
@@ -29,7 +29,7 @@ class FunctionDataTests(unittest.TestCase):
                  patch.object(progress, "head_commit", return_value=("test", "test")):
                 result = progress.build(remote={"scores": {}, "leaderboard": []}, client="2008-06")
             self.assertEqual(next(r for r in result["clients"] if r["name"] == "other"), old)
-            self.assertEqual((root / "docs/data/other.json").read_text(), "unchanged")
+            self.assertEqual((root / "site/data/other.json").read_text(), "unchanged")
 
     def test_data_is_not_disassembled_or_promoted_by_old_exact(self):
         va = 0x401000
@@ -85,7 +85,7 @@ class FunctionDataTests(unittest.TestCase):
                         store.submit("2008-06", "00402000", "test", 100, "fake source")
                 finally:
                     store.db.close()
-            with patch.object(progress, "ROOT", root), patch.object(progress, "DOCS", root / "docs"), \
+            with patch.object(progress, "ROOT", root), patch.object(progress, "DOCS", root / "site"), \
                  patch.object(progress.clients, "load", return_value={"2008-06": {"compiler": "test"}}), \
                  patch.object(progress, "library_meta", return_value={}), \
                  patch.object(progress, "source_links", return_value={}), \
@@ -94,7 +94,7 @@ class FunctionDataTests(unittest.TestCase):
                 result = progress.build(remote={"scores": {"2008-06": {"00402000": 100}}, "leaderboard": []})
             row = result["clients"][0]
             self.assertEqual((row["functions"], row["bytes"], row["matched_bytes"]), (1, 8, 0))
-            site = json.loads((root / "docs/data/2008-06.json").read_text())
+            site = json.loads((root / "site/data/2008-06.json").read_text())
             self.assertEqual(site["units"], ["Real"])
             self.assertEqual([r[0] for r in site["funcs"]], [0x401000])
 

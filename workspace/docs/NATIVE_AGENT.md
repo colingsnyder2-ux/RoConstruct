@@ -63,7 +63,7 @@ Read current `AGENTS.md`, `CLAUDE.md` and `docs/NATIVE_SWAP_BATCH.md`. Use:
   unleased missing/partial class supported by original source/assembly evidence;
   it need not wait for an owner swap target.
 - Dependency graph: local `work/2008-06/graph.json`, or the packaged snapshot under
-  `docs/graph-data/2008-06/`. After missing-input setup, inspect focused evidence
+  `site/graph-data/2008-06/`. After missing-input setup, inspect focused evidence
   with `roc graph 2008-06 --focus ADDRESS --depth 1 --json`; refresh only when
   needed with `roc graph build 2008-06`. Graph hints are not ABI/layout proof.
 - Research: `research/log.jsonl`, `research/lessons.json` and existing trials in

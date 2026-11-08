@@ -60,7 +60,7 @@ COMMON_FILES = [".gitattributes", "roc.py", "roc.cmd", "roc.sh", "install.cmd", 
                 "README.md", "packaging/requirements-chatgpt.txt", "docs/providers.example.json",
                 "roc/web/index.html", "roc/web/style.css", "roc/web/app.js", "roc/web/fonts.css",
                 *sorted(p.relative_to(ROOT).as_posix() for p in (ROOT / "roc" / "web" / "fonts").iterdir()),
-                "docs/logo.png", "docs/favicon.png",
+                "site/logo.png", "site/favicon.png",
                 "clients/clients.json", "clients/sources.json", "clients/donor.json"]
 # Native contributors need trusted recipes/generator, never private vendor trees.
 COMMON_FILES += ["docs/INTEGRATION.md", "docs/INTEGRATOR_PERFORMANCE.md", "benchmarks/native_compile_batches.py", "benchmarks/native_matcher.py", "docs/NATIVE_AGENT.md", "docs/MATCHING_AGENT.md", "research/libs-bundle.json", "research/native-units.json", "research/native-source-lock.json"]
@@ -133,7 +133,7 @@ Local models use your GPU and CPU heavily: fans, heat and power draw.
         "name": "RoConstruct Server",
         "tagline": "Maintainer-only: the group server and website publishing.",
         "files": COMMON_FILES + [".gitignore",
-                                 "docs/progress.json", "docs/history.json",
+                                 "site/progress.json", "site/history.json",
                                  ],
         "modules": WORKER_MODULES + SERVER_MODULES,
         "docs": {
@@ -146,7 +146,7 @@ command from a Worker install says so instead of crashing.
 
     roc.cmd host             start the server (tunnel, publishing, auto-restart)
     py -3.12 roc.py server --help
-    py -3.12 roc.py progress          write docs/ for the website
+    py -3.12 roc.py progress          write site/ for the website
     py -3.12 roc.py server --startup  start `roc host` at logon
 
 Hosting, publishing, private CPU sharing and failover: docs/SERVER.md
@@ -168,6 +168,27 @@ def version():
         return "dev"
 
 
+def stage_site(root, out):
+    """Include the website and its public graph assets in the server package."""
+    site = root / 'site'
+    names = ('index.html', 'graph.html', 'sources.html', 'findings.html', 'graph.css',
+             'graph.js', 'library-coverage.js', 'logo.png', 'favicon.png', 'favicon.ico',
+             'apple-touch-icon.png', 'progress.json', 'history.json', 'rebuild-progress.json',
+             'source-links.json')
+    paths = [site / name for name in names]
+    for folder in ('graph-data', 'vendor'):
+        directory = site / folder
+        if not directory.is_dir() or directory.is_symlink():
+            raise SystemExit('missing website directory: ' + str(directory))
+        paths.extend(path for path in directory.rglob('*') if path.is_file())
+    for source in paths:
+        if not source.is_file() or source.is_symlink():
+            raise SystemExit('missing or linked website file: ' + str(source))
+        target = out / 'site' / source.relative_to(site)
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(source, target)
+
+
 def stage(slug, spec, out):
     """Copy one package into out/ so it can be imported and zipped."""
     from roc.rebuild_install import ensure_abi
@@ -184,6 +205,8 @@ def stage(slug, spec, out):
         target = out / relative
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(source, target)
+    if slug == 'server':
+        stage_site(ROOT, out)
     target = out / 'rebuild/2008-06/manifests/abi-evidence.json'
     target.parent.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(abi, target)

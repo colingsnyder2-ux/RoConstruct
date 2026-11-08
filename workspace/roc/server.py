@@ -1295,7 +1295,7 @@ def start_tunnel(port, log=print):
 
 
 def publish_once(store, public_url, log=print, findings_only=False):
-    """Rebuild docs/ from the live database and push it, if anything changed."""
+    """Rebuild site/ from the live database and push it, if anything changed."""
     lock = ROOT / "work" / "publish.lock"
     lock.parent.mkdir(parents=True, exist_ok=True)
     handle = lock.open("a+b")
@@ -1333,9 +1333,9 @@ def _publish_once(store, public_url, log=print):
     if not git_exe:
         sync_findings(store)
         progress.build(public_server=public_url, remote=export(store))
-        return log("git not found, so site and findings were not published. docs/ is updated locally.")
+        return log("git not found, so site and findings were not published. site/ is updated locally.")
     # Workers need the new address before the potentially slow findings export.
-    address_file = ROOT / "docs" / "progress.json"
+    address_file = ROOT / "site" / "progress.json"
     if address_file.exists():
         snapshot = json.loads(address_file.read_text())
         if snapshot.get("server") != public_url:
@@ -1353,7 +1353,7 @@ def _publish_once(store, public_url, log=print):
         log("Rebuild progress update failed: %s" % error)
     try:
         from roc import integration_site
-        integration_site.build(log=log)  # docs/integration.json: gh-pages only, like per-function data
+        integration_site.build(log=log)  # site/integration.json: gh-pages only, like per-function data
     except Exception as error:  # reporting only; never fail a publish
         log("Integration site update failed: %s" % error)
     publish_pages(git_exe, log)
@@ -1361,12 +1361,14 @@ def _publish_once(store, public_url, log=print):
 
 
 def publish_pages(git_exe, log=print):
-    """Overwrite the gh-pages branch with the whole website (docs/ minus guides) as one
+    """Overwrite the gh-pages branch with the whole website (site/ minus guides) as one
     parentless commit: the hourly 20+ MB of function data never accumulates in any history."""
     index = ROOT / "work" / ("pages-index-" + uuid.uuid4().hex)
     env = dict(os.environ, GIT_INDEX_FILE=str(index))
     git = lambda *a, **kw: subprocess.run([git_exe, *a], cwd=ROOT, env=env, capture_output=True, text=True, **kw)
-    docs = ROOT / "docs"
+    docs = ROOT / "site"
+    if not (docs / "index.html").is_file():
+        return log("Website publishing skipped: site/index.html missing.")
     try:
         if git("read-tree", "--empty").returncode:
             return log("Pages staging failed.")
@@ -1578,7 +1580,7 @@ def run_publisher(every=3600, parent_pid=None, log=print):
                 atomic_json(state_path, state)
                 try:
                     _publish_findings_only(store, log)
-                    existing = ROOT / 'docs/progress.json'
+                    existing = ROOT / 'site/progress.json'
                     public = json.loads(existing.read_text()).get('server') if existing.exists() else None
                     progress.build(public_server=public, remote=export(store))
                     integration_site.build(root=ROOT, log=log)

@@ -41,10 +41,14 @@ def test_site_groups_and_merged_receipts(tmp_path):
     assert data['jobs'][0]['distinct_gains'] == 1
     assert data['daily'] == [{'day': '1969-12-31', 'gains': 1, 'jobs': 1, 'models': {'model': {'gains': 1, 'jobs': 1}}}]
     assert data['leaderboard'][0]['native_credits'] == 1
-    assert json.loads((tmp_path / 'docs/integration.json').read_text()) == data
+    assert json.loads((tmp_path / 'site/integration.json').read_text()) == data
     recorded = {'day': '2020-01-01', 'groups': data['groups']}
     data['history'].insert(0, recorded)
-    (tmp_path / 'docs/integration.json').write_text(json.dumps(data))
+    (tmp_path / 'site/integration.json').write_text(json.dumps(data))
+    legacy = tmp_path / 'docs/integration.json'
+    legacy.parent.mkdir()
+    legacy.write_bytes((tmp_path / 'site/integration.json').read_bytes())
+    (tmp_path / 'site/integration.json').unlink()
     with (work / '2008-06/functions.jsonl').open('a') as handle:
         handle.write('\n' + json.dumps({'addr': '00900000', 'size': 1000, 'kind': 'thunk'}))
     refreshed = integration_site.build(tmp_path, log=lambda _: None)

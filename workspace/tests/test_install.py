@@ -873,7 +873,7 @@ def test_website_starts_the_worker_with_one_click():
     The protocol handler does the fetching, analysing and running, so a click on
     the page is the whole setup. The knobs stay available in `roc launch`.
     """
-    page = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
+    page = (ROOT / "site" / "index.html").read_text(encoding="utf-8")
     flat = " ".join(page.split())
     assert 'id="app"' in page, "the page needs its main container"
     # the links are built from the live client list and the published server
@@ -1121,3 +1121,27 @@ def test_external_sdk_is_visible_to_prepare_and_compiler_discovery(tmp_path, mon
     assert rebuild.toolchain()['sdk_lib'] == sdk/'Lib'
     (sdk/'Lib/Kernel32.Lib').unlink()
     assert libs.winsdk_include() == ''
+
+
+def test_server_package_stages_site_without_private_generated_data(tmp_path):
+    import pytest
+    build = load_build()
+    site = tmp_path / 'site'
+    for name in ('index.html', 'graph.html', 'sources.html', 'findings.html', 'graph.css',
+                 'graph.js', 'library-coverage.js', 'logo.png', 'favicon.png', 'favicon.ico',
+                 'apple-touch-icon.png', 'progress.json', 'history.json', 'rebuild-progress.json',
+                 'source-links.json', 'graph-data/clients.json', 'vendor/lib.js',
+                 'data/private.json', 'integration.json'):
+        path = site / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(name)
+    out = tmp_path / 'stage'
+    build.stage_site(tmp_path, out)
+    assert (out / 'site/index.html').read_text() == 'index.html'
+    assert (out / 'site/graph-data/clients.json').is_file()
+    assert (out / 'site/vendor/lib.js').is_file()
+    assert not (out / 'site/data/private.json').exists()
+    assert not (out / 'site/integration.json').exists()
+    (site / 'index.html').unlink()
+    with pytest.raises(SystemExit, match='missing or linked website file'):
+        build.stage_site(tmp_path, tmp_path / 'other')

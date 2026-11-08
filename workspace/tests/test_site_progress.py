@@ -12,7 +12,7 @@ def test_native_digest_uses_shared_progress_without_credit(monkeypatch, tmp_path
         'exact_waiting': {'functions': 1, 'bytes': 30}},
         'native_code': {'inactive': {'functions': 1, 'bytes': 40},
                         'draft': {'functions': 1, 'bytes': 10}}}
-    folder = tmp_path / 'docs'
+    folder = tmp_path / 'site'
     folder.mkdir()
     (folder / 'integration.json').write_text(json.dumps(snapshot))
     monkeypatch.setattr(files, 'ROOT', tmp_path)
@@ -67,3 +67,29 @@ def test_integration_rate_uses_only_integrated_history(tmp_path):
     data['groups']['integrated']['functions'] = 9
     assert 'second progress sample' in integration_rate(data, tmp_path, now)
     assert 'fresh progress' in integration_rate(data, tmp_path, now + 7 * 3600)
+
+
+def test_legacy_history_is_merged_without_losing_new_site_history(tmp_path, monkeypatch):
+    from roc import progress
+    old = tmp_path / 'docs/history.json'
+    new = tmp_path / 'site/history.json'
+    old.parent.mkdir()
+    new.parent.mkdir()
+    earlier = {'date': '2026-01-01', 'clients': {'C': {'matched': 1}}}
+    later = {'date': '2026-01-02', 'clients': {'C': {'matched': 2}}}
+    old.write_text(json.dumps([earlier]))
+    new.write_text(json.dumps([later]))
+    monkeypatch.setattr(progress, 'ROOT', tmp_path)
+    monkeypatch.setattr(progress, 'DOCS', new.parent)
+    progress.add_history(later['clients'], '2026-01-03')
+    assert json.loads(new.read_text()) == [earlier, later]
+    progress.add_history(later['clients'], '2026-01-03')
+    assert json.loads(new.read_text()) == [earlier, later]
+    assert json.loads(old.read_text()) == [earlier]
+
+
+def test_source_page_links_to_maintained_work_tree():
+    from pathlib import Path
+    text = (Path(__file__).resolve().parents[1] / 'site/sources.html').read_text(encoding='utf-8')
+    assert '/blob/work/workspace/docs/recovery/SOURCES.md' in text
+    assert '/blob/work/workspace/roc/libs.py' in text
