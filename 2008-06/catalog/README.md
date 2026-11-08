@@ -21,7 +21,7 @@ Grouping is navigation only. Candidate proof/runtime status remains unknown.
 
 ## Coverage
 
-94 sources checked; 0 errors.
+95 sources checked; 0 errors.
 
 See [source-map.json](../source-map.json) for revisions, hashes, origins, errors and exclusions.
 Local-only candidates have no public code URL until separately reviewed and published.

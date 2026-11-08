@@ -6,6 +6,7 @@
 <summary>native-classes/Leaves2008StandardOut.cpp — candidate-only; 2 content versions</summary>
 
 **`2df99bff5b24`** · `native-classes/Leaves2008StandardOut.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/Leaves2008StandardOut.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Leaves2008StandardOut.cpp)
 - draft · colingsnyder2-ux · [native-classes/Leaves2008StandardOut.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Leaves2008StandardOut.cpp)
 - draft · colingsnyder2-ux · [native-classes/Leaves2008StandardOut.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Leaves2008StandardOut.cpp)
 - draft · colingsnyder2-ux · [native-classes/Leaves2008StandardOut.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/drafts/files/fd3a561fd36d76844a954a81f7800a4f2eaeae828f53a451588a9f402327378e/rebuild/2008-06/native-classes/Leaves2008StandardOut.cpp)
@@ -51,6 +52,7 @@
 </details>
 
 **`e9f34546863e`** · `native-classes/Leaves2008StandardOut.cpp` · proof not assessed
+- draft · colingsnyder2-ux · [native-classes/Leaves2008StandardOut.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/drafts/files/84a9f579e447fdb0adb8b2f61aa379a70b4d7cbc56af062bbb185ea264971d21/rebuild/2008-06/native-classes/Leaves2008StandardOut.cpp)
 - draft · colingsnyder2-ux · [native-classes/Leaves2008StandardOut.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/drafts/files/84a9f579e447fdb0adb8b2f61aa379a70b4d7cbc56af062bbb185ea264971d21/rebuild/2008-06/native-classes/Leaves2008StandardOut.cpp)
 - draft · colingsnyder2-ux · [native-classes/Leaves2008StandardOut.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/drafts/files/84a9f579e447fdb0adb8b2f61aa379a70b4d7cbc56af062bbb185ea264971d21/rebuild/2008-06/native-classes/Leaves2008StandardOut.cpp)
 - fork · mewpokemons · [native-classes/Leaves2008StandardOut.cpp](https://github.com/mewpokemons/RoConstruct/blob/a355381b778e8cc23e4be927223d55d9662bd60f/rebuild/2008-06/native-classes/Leaves2008StandardOut.cpp)
@@ -122,7 +124,7 @@
 </details>
 
 <details>
-<summary>native-classes/LogArchive.cpp — public-only; 4 content versions</summary>
+<summary>native-classes/LogArchive.cpp — public-only; 5 content versions</summary>
 
 **`190eca7f38a9`** · `native-classes/LogArchive.cpp` · proof not assessed
 - public · colingsnyder2-ux · [native-classes/LogArchive.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/LogArchive.cpp)
@@ -170,6 +172,9 @@
 
 </details>
 
+**`691dcec7e0ef`** · `native-classes/LogArchive.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LogArchive.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/LogArchive.cpp)
+
 **`ab9e716e9524`** · `native-classes/LogArchive.cpp` · proof not assessed
 
 <details><summary>1 retained local origins</summary>
@@ -189,7 +194,7 @@
 </details>
 
 <details>
-<summary>native-classes/LogManagerDestructor.cpp — public-only; 4 content versions</summary>
+<summary>native-classes/LogManagerDestructor.cpp — public-only; 5 content versions</summary>
 
 **`2c61c487653b`** · `native-classes/LogManagerDestructor.cpp` · proof not assessed
 
@@ -206,6 +211,9 @@
 - local · `2008-06/native-classes/LogManagerDestructor.cpp` · root `b52aa15feaea5a0c`
 
 </details>
+
+**`8b8a3d02a778`** · `native-classes/LogManagerDestructor.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LogManagerDestructor.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/LogManagerDestructor.cpp)
 
 **`d7f839fe981a`** · `native-classes/LogManagerDestructor.cpp` · proof not assessed
 
@@ -256,7 +264,7 @@
 </details>
 
 <details>
-<summary>native-classes/LogManagerGet.cpp — public-only; 4 content versions</summary>
+<summary>native-classes/LogManagerGet.cpp — public-only; 5 content versions</summary>
 
 **`468ec9caf67c`** · `native-classes/LogManagerGet.cpp` · proof not assessed
 
@@ -273,6 +281,9 @@
 - local · `local/findings/2008-06/native-classes/LogManagerGet.cpp` · root `b52aa15feaea5a0c`
 
 </details>
+
+**`7086ee0b04fa`** · `native-classes/LogManagerGet.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LogManagerGet.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/LogManagerGet.cpp)
 
 **`a38d50baa3f7`** · `native-classes/LogManagerGet.cpp` · proof not assessed
 
@@ -323,7 +334,7 @@
 </details>
 
 <details>
-<summary>native-classes/LogManagerState.cpp — public-only; 4 content versions</summary>
+<summary>native-classes/LogManagerState.cpp — public-only; 5 content versions</summary>
 
 **`89beb2c65c08`** · `native-classes/LogManagerState.cpp` · proof not assessed
 
@@ -387,10 +398,13 @@
 
 </details>
 
+**`fac16c297b78`** · `native-classes/LogManagerState.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LogManagerState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/LogManagerState.cpp)
+
 </details>
 
 <details>
-<summary>native-classes/LogWriteEntry.cpp — public-only; 4 content versions</summary>
+<summary>native-classes/LogWriteEntry.cpp — public-only; 5 content versions</summary>
 
 **`09f0f5337a9f`** · `native-classes/LogWriteEntry.cpp` · proof not assessed
 
@@ -454,10 +468,16 @@
 
 </details>
 
+**`95a3562b0a69`** · `native-classes/LogWriteEntry.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LogWriteEntry.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/LogWriteEntry.cpp)
+
 </details>
 
 <details>
-<summary>native-classes/LoginRenewalUrl.cpp — public-only; 4 content versions</summary>
+<summary>native-classes/LoginRenewalUrl.cpp — public-only; 5 content versions</summary>
+
+**`13e08a5ba64a`** · `native-classes/LoginRenewalUrl.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LoginRenewalUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/LoginRenewalUrl.cpp)
 
 **`2a430e7f7956`** · `native-classes/LoginRenewalUrl.cpp` · proof not assessed
 - public · colingsnyder2-ux · [native-classes/LoginRenewalUrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/LoginRenewalUrl.cpp)
@@ -739,6 +759,8 @@ Compatibility path for `Unclassified/src/LoginRenewer.cpp`; compile either path,
 </details>
 
 **`dda2f583fd5d`** · `native-classes/LoginRenewer.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/LoginRenewer.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/LoginRenewer.cpp)
 - public · colingsnyder2-ux · [native-classes/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/LoginRenewer.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/LoginRenewer.cpp)
 - public · colingsnyder2-ux · [native-classes/LoginRenewer.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/LoginRenewer.cpp)
@@ -913,6 +935,8 @@ Compatibility path for `Unclassified/src/LuaAllocatorStats.cpp`; compile either 
 </details>
 
 **`b9b55529efb3`** · `native-classes/LuaAllocatorStats.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/LuaAllocatorStats.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/LuaAllocatorStats.cpp)
 - public · colingsnyder2-ux · [native-classes/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/LuaAllocatorStats.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/LuaAllocatorStats.cpp)
 - public · colingsnyder2-ux · [native-classes/LuaAllocatorStats.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/LuaAllocatorStats.cpp)
@@ -995,6 +1019,8 @@ Compatibility path for `Unclassified/src/LuaAllocatorStats.cpp`; compile either 
 Compatibility path for `Unclassified/src/LuaArgs.cpp`; compile either path, never both.
 
 **`05c439900526`** · `native-classes/LuaArgs.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/LuaArgs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/LuaArgs.cpp)
+- canonical · colingsnyder2-ux · [native-classes/LuaArgs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/LuaArgs.cpp)
 - public · colingsnyder2-ux · [native-classes/LuaArgs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/LuaArgs.cpp)
 - canonical · colingsnyder2-ux · [native-classes/LuaArgs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/LuaArgs.cpp)
 - public · colingsnyder2-ux · [native-classes/LuaArgs.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/LuaArgs.cpp)
@@ -1207,7 +1233,7 @@ Compatibility path for `Unclassified/src/LuaArgs.cpp`; compile either path, neve
 </details>
 
 <details>
-<summary>native-classes/MainLogManagerState.cpp — public-only; 4 content versions</summary>
+<summary>native-classes/MainLogManagerState.cpp — public-only; 5 content versions</summary>
 
 **`0facf8decc38`** · `native-classes/MainLogManagerState.cpp` · proof not assessed
 
@@ -1262,6 +1288,9 @@ Compatibility path for `Unclassified/src/LuaArgs.cpp`; compile either path, neve
 - public · colingsnyder2-ux · [native-classes/MainLogManagerState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d9afc2f076adbb6e6f4f320d81ce55cee9e453b5/2008-06/native-classes/MainLogManagerState.cpp)
 - public · colingsnyder2-ux · [native-classes/MainLogManagerState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/d5aa6463c37b6e7219c7a737b9bbcd965d91f138/2008-06/native-classes/MainLogManagerState.cpp)
 - public · colingsnyder2-ux · [native-classes/MainLogManagerState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/native-classes/MainLogManagerState.cpp)
+
+**`b105c115c080`** · `native-classes/MainLogManagerState.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/MainLogManagerState.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/MainLogManagerState.cpp)
 
 **`edecb1e37979`** · `native-classes/MainLogManagerState.cpp` · proof not assessed
 

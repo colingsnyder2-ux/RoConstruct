@@ -3,11 +3,12 @@
 [Project index](README.md) · [Previous](sources-003.md) · [Next](sources-005.md)
 
 <details>
-<summary>App/include/humanoid/Humanoid.h — diverged; 10 content versions</summary>
+<summary>App/include/humanoid/Humanoid.h — diverged; 11 content versions</summary>
 
 Earlier paths and their donor versions: `native-headers/humanoid/Humanoid.h`.
 
 **`58b45a3adc14`** · `App/include/humanoid/Humanoid.h` · proof not assessed
+- canonical · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/include/humanoid/Humanoid.h)
 - canonical · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/include/humanoid/Humanoid.h)
 - canonical · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/App/include/humanoid/Humanoid.h)
 - canonical · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/App/include/humanoid/Humanoid.h)
@@ -71,6 +72,9 @@ Earlier paths and their donor versions: `native-headers/humanoid/Humanoid.h`.
 
 </details>
 
+**`94c580ab83e5`** · `App/include/humanoid/Humanoid.h` · proof not assessed
+- public · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/include/humanoid/Humanoid.h)
+
 **`bdb086333a2f`** · `App/include/humanoid/Humanoid.h` · proof not assessed
 - public · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/App/include/humanoid/Humanoid.h)
 - public · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/App/include/humanoid/Humanoid.h)
@@ -104,6 +108,8 @@ Earlier paths and their donor versions: `native-headers/humanoid/Humanoid.h`.
 </details>
 
 **`518f2945063a`** · `native-headers/humanoid/Humanoid.h` · proof not assessed
+- public · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/humanoid/Humanoid.h)
+- canonical · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-headers/humanoid/Humanoid.h)
 - public · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/humanoid/Humanoid.h)
 - canonical · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/humanoid/Humanoid.h)
 - public · colingsnyder2-ux · [humanoid/Humanoid.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/humanoid/Humanoid.h)
@@ -310,7 +316,7 @@ Earlier paths and their donor versions: `native-headers/humanoid/Humanoid.h`.
 </details>
 
 <details>
-<summary>App/include/humanoid/HumanoidFloorFields.h — diverged; 11 content versions</summary>
+<summary>App/include/humanoid/HumanoidFloorFields.h — diverged; 12 content versions</summary>
 
 Earlier paths and their donor versions: `native-headers/humanoid/HumanoidFloorFields.h`.
 
@@ -346,6 +352,7 @@ Earlier paths and their donor versions: `native-headers/humanoid/HumanoidFloorFi
 - public · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/12e4113a42a144fc58fa17a150ffdb7b242e3445/2008-06/App/include/humanoid/HumanoidFloorFields.h)
 
 **`aaa7b9ac7462`** · `App/include/humanoid/HumanoidFloorFields.h` · proof not assessed
+- canonical · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/App/include/humanoid/HumanoidFloorFields.h)
@@ -406,6 +413,9 @@ Earlier paths and their donor versions: `native-headers/humanoid/HumanoidFloorFi
 
 </details>
 
+**`be4c115a5fff`** · `App/include/humanoid/HumanoidFloorFields.h` · proof not assessed
+- public · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/include/humanoid/HumanoidFloorFields.h)
+
 **`239940db0bd8`** · `native-headers/humanoid/HumanoidFloorFields.h` · proof not assessed
 
 <details><summary>1 retained local origins</summary>
@@ -432,6 +442,8 @@ Earlier paths and their donor versions: `native-headers/humanoid/HumanoidFloorFi
 </details>
 
 **`5c44809b6a15`** · `native-headers/humanoid/HumanoidFloorFields.h` · proof not assessed
+- public · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
+- canonical · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidFloorFields.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/humanoid/HumanoidFloorFields.h)
@@ -743,11 +755,12 @@ Earlier paths and their donor versions: `native-headers/humanoid/HumanoidFloorFi
 </details>
 
 <details>
-<summary>App/include/humanoid/HumanoidState.h — diverged; 13 content versions</summary>
+<summary>App/include/humanoid/HumanoidState.h — diverged; 14 content versions</summary>
 
 Earlier paths and their donor versions: `native-headers/humanoid/HumanoidState.h`.
 
 **`33a9fac17d36`** · `App/include/humanoid/HumanoidState.h` · proof not assessed
+- canonical · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/App/include/humanoid/HumanoidState.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/App/include/humanoid/HumanoidState.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/workspace/rebuild/2008-06/App/include/humanoid/HumanoidState.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/110c08c7fcc7b2de1191d9bf353710db7017f83b/workspace/rebuild/2008-06/App/include/humanoid/HumanoidState.h)
@@ -811,6 +824,9 @@ Earlier paths and their donor versions: `native-headers/humanoid/HumanoidState.h
 
 </details>
 
+**`4d49da00face`** · `App/include/humanoid/HumanoidState.h` · proof not assessed
+- public · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/App/include/humanoid/HumanoidState.h)
+
 **`960b136aafa1`** · `App/include/humanoid/HumanoidState.h` · proof not assessed
 
 <details><summary>2 retained local origins</summary>
@@ -852,6 +868,8 @@ Earlier paths and their donor versions: `native-headers/humanoid/HumanoidState.h
 </details>
 
 **`1d0757782e03`** · `native-headers/humanoid/HumanoidState.h` · proof not assessed
+- public · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-headers/humanoid/HumanoidState.h)
+- canonical · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidState.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-headers/humanoid/HumanoidState.h)
 - canonical · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-headers/humanoid/HumanoidState.h)
 - public · colingsnyder2-ux · [humanoid/HumanoidState.h](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-headers/humanoid/HumanoidState.h)

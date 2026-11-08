@@ -25,6 +25,8 @@ Compatibility path for `WindowsClient/src/CChatPrompt.cpp`; compile either path,
 </details>
 
 **`a976894abe80`** · `native-classes/CChatPrompt.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CChatPrompt.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/CChatPrompt.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CChatPrompt.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/CChatPrompt.cpp)
 - public · colingsnyder2-ux · [native-classes/CChatPrompt.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/CChatPrompt.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CChatPrompt.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/CChatPrompt.cpp)
 - public · colingsnyder2-ux · [native-classes/CChatPrompt.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/CChatPrompt.cpp)
@@ -291,7 +293,7 @@ Compatibility path for `WindowsClient/src/CChatPrompt.cpp`; compile either path,
 </details>
 
 <details>
-<summary>native-classes/CChatPromptWindow.cpp — public-only; 4 content versions</summary>
+<summary>native-classes/CChatPromptWindow.cpp — public-only; 5 content versions</summary>
 
 **`06ea76c9d788`** · `native-classes/CChatPromptWindow.cpp` · proof not assessed
 - public · colingsnyder2-ux · [native-classes/CChatPromptWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/CChatPromptWindow.cpp)
@@ -347,6 +349,9 @@ Compatibility path for `WindowsClient/src/CChatPrompt.cpp`; compile either path,
 
 </details>
 
+**`7f64abc4b4a3`** · `native-classes/CChatPromptWindow.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CChatPromptWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/CChatPromptWindow.cpp)
+
 **`ddf32dab37fe`** · `native-classes/CChatPromptWindow.cpp` · proof not assessed
 
 <details><summary>1 retained local origins</summary>
@@ -363,6 +368,8 @@ Compatibility path for `WindowsClient/src/CChatPrompt.cpp`; compile either path,
 Compatibility path for `Unclassified/src/CMarshalWindow.cpp`; compile either path, never both.
 
 **`26ac07539470`** · `native-classes/CMarshalWindow.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CMarshalWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/CMarshalWindow.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CMarshalWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/CMarshalWindow.cpp)
 - public · colingsnyder2-ux · [native-classes/CMarshalWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/CMarshalWindow.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CMarshalWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/CMarshalWindow.cpp)
 - public · colingsnyder2-ux · [native-classes/CMarshalWindow.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/CMarshalWindow.cpp)
@@ -727,6 +734,8 @@ Compatibility path for `WindowsClient/src/CPatchedControlComboBox.cpp`; compile 
 </details>
 
 **`e069a89e591a`** · `native-classes/CPatchedControlComboBox.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CPatchedControlComboBox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/CPatchedControlComboBox.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CPatchedControlComboBox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/CPatchedControlComboBox.cpp)
 - public · colingsnyder2-ux · [native-classes/CPatchedControlComboBox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/CPatchedControlComboBox.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CPatchedControlComboBox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/CPatchedControlComboBox.cpp)
 - public · colingsnyder2-ux · [native-classes/CPatchedControlComboBox.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/CPatchedControlComboBox.cpp)
@@ -810,6 +819,8 @@ Compatibility path for `WindowsClient/src/CRobloxControlColorSelector.cpp`; comp
 </details>
 
 **`525b627a8c9c`** · `native-classes/CRobloxControlColorSelector.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CRobloxControlColorSelector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/CRobloxControlColorSelector.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CRobloxControlColorSelector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/CRobloxControlColorSelector.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxControlColorSelector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/CRobloxControlColorSelector.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CRobloxControlColorSelector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/CRobloxControlColorSelector.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxControlColorSelector.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/CRobloxControlColorSelector.cpp)
@@ -978,6 +989,8 @@ Compatibility path for `WindowsClient/src/CRobloxTreeCtrl.cpp`; compile either p
 </details>
 
 **`4179095d6d62`** · `native-classes/CRobloxTreeCtrl.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CRobloxTreeCtrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/CRobloxTreeCtrl.cpp)
+- canonical · colingsnyder2-ux · [native-classes/CRobloxTreeCtrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/workspace/rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxTreeCtrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/CRobloxTreeCtrl.cpp)
 - canonical · colingsnyder2-ux · [native-classes/CRobloxTreeCtrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/workspace/rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp)
 - public · colingsnyder2-ux · [native-classes/CRobloxTreeCtrl.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/42b63acfd3df63baed4d83ae0d07db6c47b21169/2008-06/native-classes/CRobloxTreeCtrl.cpp)
@@ -1102,7 +1115,7 @@ Compatibility path for `WindowsClient/src/CRobloxTreeCtrl.cpp`; compile either p
 </details>
 
 <details>
-<summary>native-classes/CRobloxWndActive.cpp — public-only; 4 content versions</summary>
+<summary>native-classes/CRobloxWndActive.cpp — public-only; 5 content versions</summary>
 
 **`08aa640d3b33`** · `native-classes/CRobloxWndActive.cpp` · proof not assessed
 
@@ -1119,6 +1132,9 @@ Compatibility path for `WindowsClient/src/CRobloxTreeCtrl.cpp`; compile either p
 - local · `local/findings/2008-06/native-classes/CRobloxWndActive.cpp` · root `b52aa15feaea5a0c`
 
 </details>
+
+**`839a2579ae85`** · `native-classes/CRobloxWndActive.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CRobloxWndActive.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/CRobloxWndActive.cpp)
 
 **`c61d0e9ea2d0`** · `native-classes/CRobloxWndActive.cpp` · proof not assessed
 
@@ -1169,7 +1185,7 @@ Compatibility path for `WindowsClient/src/CRobloxTreeCtrl.cpp`; compile either p
 </details>
 
 <details>
-<summary>native-classes/CRobloxWndFinishAttach.cpp — public-only; 4 content versions</summary>
+<summary>native-classes/CRobloxWndFinishAttach.cpp — public-only; 5 content versions</summary>
 
 **`125fff47cd42`** · `native-classes/CRobloxWndFinishAttach.cpp` · proof not assessed
 
@@ -1186,6 +1202,9 @@ Compatibility path for `WindowsClient/src/CRobloxTreeCtrl.cpp`; compile either p
 - local · `local/findings/2008-06/native-classes/CRobloxWndFinishAttach.cpp` · root `b52aa15feaea5a0c`
 
 </details>
+
+**`4303ec8a0d4c`** · `native-classes/CRobloxWndFinishAttach.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CRobloxWndFinishAttach.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/CRobloxWndFinishAttach.cpp)
 
 **`645273f12c50`** · `native-classes/CRobloxWndFinishAttach.cpp` · proof not assessed
 - public · colingsnyder2-ux · [native-classes/CRobloxWndFinishAttach.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/93fbfa75558872dcc8297ecb37e8b041898036e7/2008-06/native-classes/CRobloxWndFinishAttach.cpp)
@@ -1236,7 +1255,7 @@ Compatibility path for `WindowsClient/src/CRobloxTreeCtrl.cpp`; compile either p
 </details>
 
 <details>
-<summary>native-classes/CRobloxWndThrottle.cpp — public-only; 4 content versions</summary>
+<summary>native-classes/CRobloxWndThrottle.cpp — public-only; 5 content versions</summary>
 
 **`131c229594bc`** · `native-classes/CRobloxWndThrottle.cpp` · proof not assessed
 
@@ -1299,5 +1318,8 @@ Compatibility path for `WindowsClient/src/CRobloxTreeCtrl.cpp`; compile either p
 - local · `2008-06/native-classes/CRobloxWndThrottle.cpp` · root `b52aa15feaea5a0c`
 
 </details>
+
+**`f912c9e64af0`** · `native-classes/CRobloxWndThrottle.cpp` · proof not assessed
+- public · colingsnyder2-ux · [native-classes/CRobloxWndThrottle.cpp](https://github.com/colingsnyder2-ux/RoConstruct/blob/240ca81bae389a0b0397c7ffdb8f514721017b88/2008-06/native-classes/CRobloxWndThrottle.cpp)
 
 </details>
