@@ -1,0 +1,10 @@
+{
+  "recorded": "2026-11-08T12:32:07",
+  "findings_commit": "4f91cf6f6d50979afe97bcf58c50bee1d61ac0e6",
+  "base": "2da654506111296a9f85e38b18500710df5dd5c3",
+  "expected_workspace": "f5f808063368a6a50888e1d01172c6a5a720e491",
+  "workspace": "5f320d2e44707652d910cbaf757f2d9ff51bfe15",
+  "status": "workspace-mismatch",
+  "preservation_receipt": "preservation-4f91cf6f6d50979afe97bcf58c50bee1d61ac0e6.json",
+  "losses": 0
+}
