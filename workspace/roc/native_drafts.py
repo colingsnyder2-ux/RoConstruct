@@ -567,8 +567,8 @@ def triage(root, ref='refs/remotes/findings/work', after=0, forks=(), include_di
             if old != tip and not any(f[0] == label and tuple(f[1:]) == (old, tip) for f in forks):
                 forks.append((label, old, tip))
 
-    native_dirs = ('rebuild/2008-06/native-classes/', 'rebuild/2008-06/native-headers/',
-                   'rebuild/2008-06/native-world/')
+    from roc.native_files_notify import NATIVE_DIRS, native_path
+    native_dirs = NATIVE_DIRS
     for label, old, new in forks:
         if not re.fullmatch(r'[0-9a-f]{40}', old) or not re.fullmatch(r'[0-9a-f]{40}', new):
             errors.append({'fork': label, 'error': 'Fork comparison requires full lowercase commit IDs'}); continue
@@ -585,15 +585,17 @@ def triage(root, ref='refs/remotes/findings/work', after=0, forks=(), include_di
             if not raw:
                 continue
             try:
-                name = raw.decode('utf-8')
+                fork_path = raw.decode('utf-8')
+                name = native_path(fork_path)
             except UnicodeDecodeError:
                 errors.append({'fork': label, 'error': 'Non-UTF-8 fork path', 'path_bytes': raw.hex()}); continue
             try:
                 safe_path(name)
             except ValueError as error:
                 errors.append({'fork': label, 'path': name, 'error': str(error)}); continue
-            records.append({'path': name, 'fork_new': new_tree.get(name), 'fork_old': old_tree.get(name),
-                            'source': {'kind': 'fork', 'label': label, 'old': old, 'new': new}})
+            records.append({'path': name, 'fork_new': new_tree.get(fork_path), 'fork_old': old_tree.get(fork_path),
+                            'source': {'kind': 'fork', 'label': label, 'old': old, 'new': new,
+                                       'fork_path': fork_path}})
 
     # Read each required blob once. Never read or alter the shared working tree.
     wanted = set()

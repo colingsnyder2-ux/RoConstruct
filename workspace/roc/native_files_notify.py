@@ -20,6 +20,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 STATE = ROOT / 'work' / 'native-files-state.json'
 NATIVE_DIRS = ('rebuild/2008-06/native-classes/', 'rebuild/2008-06/native-headers/', 'rebuild/2008-06/native-world/')
+NATIVE_DIRS += tuple('rebuild/2008-06/' + project + '/' + area + '/'
+                     for project in ('App', 'Base', 'Network', 'Rendering', 'WindowsClient', 'Studio', 'Unclassified')
+                     for area in ('src', 'include'))
 NATIVE_DIRS += tuple('workspace/' + path for path in NATIVE_DIRS)
 EXTENSIONS = ('.cpp', '.h', '.hpp', '.inc', '.c')
 MAX_LINES = 25          # links per embed field
@@ -46,7 +49,7 @@ def native_path(path):
 
 
 def is_native(path):
-    return native_path(path).startswith(NATIVE_DIRS[:3]) and path.endswith(EXTENSIONS)
+    return native_path(path).startswith(NATIVE_DIRS) and path.endswith(EXTENSIONS)
 
 
 def load_state():

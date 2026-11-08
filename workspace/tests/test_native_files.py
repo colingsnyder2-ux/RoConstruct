@@ -236,3 +236,14 @@ def test_webhook_uses_fresh_progress_each_delivery(monkeypatch, tmp_path):
     current['count'] = 2
     assert nf.post_files([row], log=lambda _: None)
     assert [body['embeds'][0]['description'] for body in bodies] == ['fresh 1','fresh 2']
+
+
+def test_organized_native_paths_and_drafts_are_detected():
+    path = 'rebuild/2008-06/App/src/v8tree/Instance.cpp'
+    header = 'rebuild/2008-06/Network/include/net/Packet.h'
+    assert nf.is_native(path) and nf.is_native('workspace/' + path)
+    assert nf.is_native('drafts/files/' + 'b' * 64 + '/' + path)
+    assert nf.is_native(header)
+    assert not nf.is_native('rebuild/2008-06/App/tests/Trial.cpp')
+    assert not nf.is_native('2008-06/App/src/v8tree/Instance.cpp')
+    assert nf.native_path('workspace/' + path) == nf.native_path('drafts/files/' + 'b' * 64 + '/' + path)

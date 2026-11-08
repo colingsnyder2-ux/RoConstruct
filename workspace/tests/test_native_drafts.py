@@ -361,3 +361,34 @@ def test_scoped_package_port_and_live_watcher_final_receipt(tmp_path, receiver):
         assert packet['files']['docs/Native.cpp']['text']=='final edit after watcher milestone'
     finally:
         d.stop(root,session,wait=True,timeout=10)
+
+
+@pytest.mark.parametrize('prefix', ['', 'workspace/'])
+def test_triage_includes_organized_fork_paths(tmp_path, prefix):
+    import subprocess
+    root = tmp_path
+    def git(*args):
+        return subprocess.check_output(['git', *args], cwd=root).decode().strip()
+    git('init', '-q')
+    git('config', 'user.name', 'test')
+    git('config', 'user.email', 'test@example.invalid')
+    name = 'rebuild/2008-06/App/src/v8tree/Instance.cpp'
+    canonical = root / 'workspace' / name
+    canonical.parent.mkdir(parents=True)
+    canonical.write_text('old body\n')
+    fork = root / (prefix + name)
+    fork.parent.mkdir(parents=True, exist_ok=True)
+    fork.write_text('old body\n')
+    git('add', '.')
+    git('commit', '-qm', 'base')
+    old = git('rev-parse', 'HEAD')
+    git('update-ref', 'refs/remotes/findings/work', old)
+    fork.write_text('new body\n')
+    git('add', prefix + name)
+    git('commit', '-qm', 'fork')
+    new = git('rev-parse', 'HEAD')
+    report = d.triage(root, forks=[('contributor', old, new)])
+    assert not report['errors']
+    assert len(report['variants']) == 1
+    assert report['variants'][0]['path'] == name
+    assert report['variants'][0]['sources'][0]['fork_path'] == prefix + name
