@@ -11,4 +11,10 @@ void FlatTool::applyToSurface(Surface* surface) {
     surface->flat();
     surface->getPartInstance()->join();
 }
+template<> MouseCommand* TToolVerb<FlatTool, RunStateVerb>::newMouseCommand() {
+    return new FlatTool(dataModel->getWorkspace());
+}
+template<> const Name& Named<SurfaceTool, sFlatTool>::getName() const {
+    return NativeToolName<FlatTool>::get();
+}
 }

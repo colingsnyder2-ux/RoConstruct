@@ -39,4 +39,8 @@ template<> const Name& Named<MouseCommand, sGrabTool>::getName() const
 {
     return NativeToolName<GrabTool>::get();
 }
+template<> MouseCommand* TToolVerb<GrabTool, RunStateVerb>::newMouseCommand()
+{
+    return new GrabTool(dataModel->getWorkspace());
+}
 }

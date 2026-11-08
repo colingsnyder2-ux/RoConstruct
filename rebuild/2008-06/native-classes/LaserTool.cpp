@@ -45,4 +45,8 @@ template<> const Name& Named<MouseCommand, sLaserTool>::getName() const
 {
     return NativeToolName<LaserTool>::get();
 }
+template<> MouseCommand* TToolVerb<LaserTool, RunStateVerb>::newMouseCommand()
+{
+    return new LaserTool(dataModel->getWorkspace());
+}
 }

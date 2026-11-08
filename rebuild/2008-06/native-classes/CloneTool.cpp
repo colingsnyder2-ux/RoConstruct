@@ -42,4 +42,8 @@ template<> const Name& Named<MouseCommand, sCloneTool>::getName() const
 {
     return NativeToolName<CloneTool>::get();
 }
+template<> MouseCommand* TToolVerb<CloneTool, RunStateVerb>::newMouseCommand()
+{
+    return new CloneTool(dataModel->getWorkspace());
+}
 }

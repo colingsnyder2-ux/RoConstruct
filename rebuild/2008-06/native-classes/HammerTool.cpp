@@ -41,4 +41,8 @@ template<> const Name& Named<MouseCommand, sHammerTool>::getName() const
 {
     return NativeToolName<HammerTool>::get();
 }
+template<> MouseCommand* TToolVerb<HammerTool, RunStateVerb>::newMouseCommand()
+{
+    return new HammerTool(dataModel->getWorkspace());
+}
 }

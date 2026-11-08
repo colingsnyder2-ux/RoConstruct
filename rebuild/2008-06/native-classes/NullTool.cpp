@@ -19,4 +19,8 @@ template<> const Name& Named<MouseCommand, sNullTool>::getName() const
 {
     return NativeToolName<NullTool>::get();
 }
+template<> MouseCommand* TToolVerb<NullTool, RunStateVerb>::newMouseCommand()
+{
+    return new NullTool(dataModel->getWorkspace());
+}
 }
