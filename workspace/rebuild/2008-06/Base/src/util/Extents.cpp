@@ -1,6 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // 2008-06 Extents methods recovered from Mew fork 5fe2214e131d.
 #include "util/Extents.h"
+#include "util/Math.h"
 namespace RBX
 {
 	NormalId Extents::closestFace(const G3D::Vector3& point)
@@ -83,5 +84,48 @@ namespace RBX
 		result.high = v0.max(v1);
 
 		return result;
+	}
+
+	bool Extents::containedByFrustum(const G3D::GCamera::Frustum& frustum) const
+	{
+		for (int i = 0; i < frustum.faceArray.size(); i++)
+		{
+			const G3D::Plane& plane = (frustum.faceArray.getCArray() + i)->plane;
+			for (int j = 0; j < 8; j++)
+			{
+				G3D::Vector3 corner = getCorner(j);
+				if (!plane.halfSpaceContains(corner))
+				{
+					return false;
+				}
+			}
+		}
+
+		return true;
+	}
+
+	Extents Extents::toWorldSpace(const G3D::CoordinateFrame& localCoord)
+	{
+		G3D::Vector3 minC(Math::inf(), Math::inf(), Math::inf());
+		G3D::Vector3 maxC(-Math::inf(), -Math::inf(), -Math::inf());
+
+		for (int i = 0; i < 8; i++)
+		{
+			G3D::Vector3 corner = getCorner(i);
+			G3D::Vector3 world = localCoord.pointToWorldSpace(corner);
+
+			minC = minC.min(world);
+			maxC = maxC.max(world);
+		}
+
+		return vv(minC, maxC);
+	}
+
+	G3D::Plane Extents::getPlane(NormalId normalId) const
+	{
+		G3D::Vector3 point = faceCenter(normalId);
+		G3D::Vector3 normal = normalIdToVector3(normalId);
+
+		return G3D::Plane(normal, point);
 	}
 }
