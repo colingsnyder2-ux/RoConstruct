@@ -40,7 +40,7 @@ namespace RBX
 		Lighting();
 	public:
 		void replaceSky(Sky* newSky);
-		bool isSkySuppressed() const;
+		bool isSkySuppressed() const { return !hasSky; } // OpenRBX v8datamodel/Lighting.h
 		void suppressSky(const bool);
 
 		const G3D::LightingParameters& getSkyParameters() const

@@ -7,6 +7,10 @@
 #include "v8datamodel/PartInstance.h"
 #include "v8datamodel/Camera.h"
 #include "RbxView/View.h"
+#include "renderlib/RenderStats.h"
+#include "util/ContentProvider.h"
+#include <cstdlib>
+#include <string>
 #include <GLG3D/RenderDevice.h>
 #include <G3D/GImage.h>
 #include <cstdio>
@@ -50,6 +54,15 @@ int main()
     if (!rd->init(settings)) { std::printf("render device init failed\n"); return 1; }
 
     std::printf("device ok\n"); std::fflush(stdout);
+    // the client's content folder (textures, sky, fonts): ROC_CONTENT=<install>\content
+    if (const char* content = std::getenv("ROC_CONTENT"))
+    {
+        std::string folder(content);
+        if (!folder.empty() && folder[folder.size() - 1] != '\\')
+            folder += '\\';
+        RBX::ContentProvider::singleton().setAssetFolder(folder.c_str());
+        std::printf("content %s\n", folder.c_str());
+    }
     boost::shared_ptr<RBX::DataModel> dataModel = RBX::DataModel::createDataModel();
     {
         RBX::DataModel::Lock lock(dataModel);
@@ -69,17 +82,22 @@ int main()
     {
         RBX::View::View view(dataModel);
         view.suppressSkybox();
-        rd->beginFrame();
-        rd->setColorClearValue(G3D::Color4(0.6f, 0.75f, 1.0f, 1.0f));
-        rd->clear();
-        {
-            RBX::DataModel::Lock lock(dataModel);
-            view.render(rd);
-        }
-        rd->endFrame();
         G3D::GImage frame;
+        for (int pass = 0; pass < 3; ++pass)   // meshes are built lazily; later frames draw them
+        {
+            rd->beginFrame();
+            rd->setColorClearValue(G3D::Color4(0.6f, 0.75f, 1.0f, 1.0f));
+            rd->clear();
+            {
+                RBX::DataModel::Lock lock(dataModel);
+                view.render(rd);
+            }
+            rd->endFrame();
+            RenderStats& st = view.getRenderStats();
+            std::printf("frame %d: chunks=%d triangles=%d proxies=%d\n", pass, RenderStats::chunkCount, st.totalTriangles, st.diffuseProxyCount);
+            std::fflush(stdout);
+        }
         rd->screenshotPic(frame, true);
-        std::printf("rendered\n"); std::fflush(stdout);
         frame.save("m4_snapshot.png");
         std::printf("saved m4_snapshot.png %dx%d\n", frame.width, frame.height);
     }

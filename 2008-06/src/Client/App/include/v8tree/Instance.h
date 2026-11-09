@@ -493,8 +493,18 @@ protected:
 			return NULL;
 		}
 
+		// body: Dec 2007 client (OpenRBX v8tree/Instance.h; ROBLOX 0x00479c30 for the PartChunk instantiation)
 		template<typename Function>
-		void visitChildren(Function func) const;
+		void visitChildren(Function func) const
+		{
+			if (children)
+			{
+				boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> c = children.read();
+				std::vector<boost::shared_ptr<Instance>>::const_iterator end = c->end();
+				for (std::vector<boost::shared_ptr<Instance>>::const_iterator iter = c->begin(); iter != end; ++iter)
+					func(*iter);
+			}
+		}
 
 		template<typename Function>
 		void visitDescendents(Function func) const

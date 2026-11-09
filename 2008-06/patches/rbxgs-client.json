@@ -141,6 +141,10 @@
   [
    "\t\tCopyOnWrite<std::vector<boost::shared_ptr<Instance>>> children;",
    "\tpublic: // 2008 header declares it public (native-headers/v8tree/Instance.h); access only, layout unchanged\n\t\tCopyOnWrite<std::vector<boost::shared_ptr<Instance>>> children;\n\tprivate:"
+  ],
+  [
+   "\t\ttemplate<typename Function>\n\t\tvoid visitChildren(Function func) const;\n",
+   "\t\t// body: Dec 2007 client (OpenRBX v8tree/Instance.h; ROBLOX 0x00479c30 for the PartChunk instantiation)\n\t\ttemplate<typename Function>\n\t\tvoid visitChildren(Function func) const\n\t\t{\n\t\t\tif (children)\n\t\t\t{\n\t\t\t\tboost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> c = children.read();\n\t\t\t\tstd::vector<boost::shared_ptr<Instance>>::const_iterator end = c->end();\n\t\t\t\tfor (std::vector<boost::shared_ptr<Instance>>::const_iterator iter = c->begin(); iter != end; ++iter)\n\t\t\t\t\tfunc(*iter);\n\t\t\t}\n\t\t}\n"
   ]
  ],
  "App/include/v8datamodel/MouseCommand.h": [
@@ -1325,6 +1329,10 @@
   [
    "\t\tboost::posix_time::time_duration timeOfDay;\n\t\t// Names are placeholders from the 100% codegen proof for the 2008 ctor;\n\t\t// the types and stores are what the target bytes prove (0x270..0x2d3).\n\t\tG3D::Vector3 v0;\n\t\tG3D::Vector3 v1;\n\t\tfloat f0;\n\t\tG3D::Color3 c0;\n\t\tG3D::Color3 c1;\n",
    "\t\tboost::posix_time::time_duration timeOfDay;\n\t\t// Names are placeholders from the 100% codegen proof for the 2008 ctor;\n\t\t// the types and stores are what the target bytes prove (0x270..0x2d3).\n\t\tG3D::Color3 v0;\t// ColorShift_Top (2008 PropDescriptor<Lighting, Color3>)\n\t\tG3D::Color3 v1;\t// ColorShift_Bottom (2008 PropDescriptor<Lighting, Color3>)\n\t\tfloat f0;\n\t\tG3D::Color3 c0;\n\t\tG3D::Color3 c1;\n"
+  ],
+  [
+   "\t\tbool isSkySuppressed() const;\n",
+   "\t\tbool isSkySuppressed() const { return !hasSky; } // OpenRBX v8datamodel/Lighting.h\n"
   ]
  ],
  "App/v8datamodel/DataModel.cpp": [
@@ -3484,6 +3492,22 @@
   [
    "\ttemplate<NormalId faceId>\n\tG3D::Vector3 uvwToObject(const G3D::Vector3& v);",
    "\t// int parameter as in the Dec 2007 renderer (OpenRBX QuadVolume.h); mangles identically ($0n)\n\ttemplate<int faceId>\n\tG3D::Vector3 uvwToObject(const G3D::Vector3& v);"
+  ]
+ ],
+ "App/include/v8datamodel/Decal.h": [
+  [
+   "\t\tconst G3D::Vector2& getStudsPerTile();\n",
+   "\t\tconst G3D::Vector2& getStudsPerTile() { return studsPerTile; } // OpenRBX v8datamodel/Decal.h\n"
+  ]
+ ],
+ "App/v8datamodel/Sky.cpp": [
+  [
+   "\t\tskyDn = ContentId::fromAssets(\"Sky\\\\null_plainsky512_dn.jpg\");\n\t}\n}",
+   "\t\tskyDn = ContentId::fromAssets(\"Sky\\\\null_plainsky512_dn.jpg\");\n\t}\n\n\t// Dec 2007 client (OpenRBX v8datamodel/Sky.cpp; ROBLOX 0x005dd020)\n\tG3D::ReferenceCountedPointer<G3D::Sky> Sky::getG3DSky(Sky* sky)\n\t{\n\t\tif (sky)\n\t\t{\n\t\t\ttry\n\t\t\t{\n\t\t\t\tstd::string filenames[6];\n\t\t\t\t{\n\t\t\t\t\tfilenames[0] = ContentProvider::singleton().getFile(sky->skyFt);\n\t\t\t\t\tG3D::GImage image;\n\t\t\t\t\timage.load(filenames[0]);\n\t\t\t\t\tfilenames[1] = testImage(ContentProvider::singleton().getFile(sky->skyBk), image);\n\t\t\t\t\tfilenames[2] = testImage(ContentProvider::singleton().getFile(sky->skyUp), image);\n\t\t\t\t\tfilenames[3] = testImage(ContentProvider::singleton().getFile(sky->skyDn), image);\n\t\t\t\t\tfilenames[4] = testImage(ContentProvider::singleton().getFile(sky->skyRt), image);\n\t\t\t\t\tfilenames[5] = testImage(ContentProvider::singleton().getFile(sky->skyLf), image);\n\t\t\t\t}\n\t\t\t\tstd::string directory = ContentProvider::singleton().assetFolder() + \"Sky\\\\\";\n\t\t\t\tG3D::ReferenceCountedPointer<G3D::Sky> g3dSky = G3D::Sky::fromFile(NULL, directory, filenames, sky->drawCelestialBodies, 1.0);\n\t\t\t\t// setNumStars(sky->numStars): not in this G3D build (6.x); star count stays at G3D's default\n\t\t\t\treturn g3dSky;\n\t\t\t}\n\t\t\tcatch (std::exception& e)\n\t\t\t{\n\t\t\t\tStandardOut::singleton()->print(MESSAGE_WARNING, e);\n\t\t\t}\n\t\t\tcatch (G3D::GImage::Error& e)\n\t\t\t{\n\t\t\t\tStandardOut::singleton()->print(MESSAGE_WARNING, e.reason.c_str());\n\t\t\t}\n\t\t}\n\t\treturn G3D::Sky::fromFile(NULL, ContentProvider::singleton().assetFolder() + \"Sky\\\\\", \"null_plainsky512_*.jpg\");\n\t}\n}"
+  ],
+  [
+   "#include \"v8datamodel/Sky.h\"\n",
+   "#include \"v8datamodel/Sky.h\"\n#include \"util/ContentProvider.h\"\n#include \"util/standardout.h\"\n"
   ]
  ]
 }

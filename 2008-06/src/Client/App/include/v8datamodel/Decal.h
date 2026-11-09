@@ -54,7 +54,7 @@ namespace RBX
 
 	public:
 		Texture();
-		const G3D::Vector2& getStudsPerTile();
+		const G3D::Vector2& getStudsPerTile() { return studsPerTile; } // OpenRBX v8datamodel/Decal.h
 
 		float getStudsPerTileU() const
 		{
