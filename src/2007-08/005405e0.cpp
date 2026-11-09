@@ -1,4 +1,5 @@
-// from server: 97% by EspClaude
+// from server: 98% by Intel
+﻿// from server: 97% by EspClaude
 // roc-flags: /O2 /GS- /EHsc /MD
 // roc-cl: 21022
 // from server: 100% by EspClaude
@@ -69,6 +70,7 @@ struct Instance {
     virtual void slot11();
     virtual void slot12();
     virtual void slot13();
+    virtual void slot14();
     virtual Node* makeNode();
 
     Result build();

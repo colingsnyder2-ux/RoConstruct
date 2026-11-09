@@ -1,4 +1,5 @@
-// from server: 89% by EspClaude
+// from server: 100% by Intel
+﻿// from server: 89% by EspClaude
 // roc-cl: 50727
 // from server: 100% by king_originala
 // roc 2008-06 0044fcc0  unit: CRobloxDoc  size: 104 bytes
@@ -37,7 +38,7 @@ struct Dialog
 
 struct CRobloxDoc
 {
-    char padding[0x94];
+    char padding[0x78];
     void* owner;
 
     void func_0044fcc0();
@@ -48,3 +49,4 @@ void CRobloxDoc::func_0044fcc0()
     Dialog dialog(owner, 0);
     dialog.run();
 }
+

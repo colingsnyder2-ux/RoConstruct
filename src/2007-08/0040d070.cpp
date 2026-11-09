@@ -1,5 +1,7 @@
-// from server: 93% by EspClaude
+// from server: 95% by Intel
+﻿// from server: 93% by EspClaude
 // roc-cl: 50727
+// 2007-08 hand variant: PaintManager::font offset is 0xe0 here (0xf8 in the 2008-06 original)
 // from server: 100% by king_originala
 // roc 2008-06 00411640  unit: CBrush  size: 118 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00411640
@@ -56,7 +58,7 @@ struct Handle {
 };
 
 struct PaintManager {
-    char padding[0xf8];
+    char padding[0xe0];
     Handle font;
 };
 
@@ -87,9 +89,11 @@ int CBrush::Initialize(void* argument)
         InitializePaintManager(0);
 
     Handle* font = &paintManager->font;
-    void* fontHandle = font;
+    void* fontHandle;
     if (font)
         fontHandle = font->handle;
+    else
+        fontHandle = 0;
 
     SendMessageA(window, 0x30, (unsigned int)fontHandle, 1);
     SetResource(resource);
