@@ -37,12 +37,13 @@ void apply(Ogre::SceneManager& manager,const G3D::LightingRef& lighting,const Se
     for(i=0;i<lighting->shadowedLightArray.size();++i){
         const G3D::GLight& source=lighting->shadowedLightArray[i];
         std::string name="rbxlight"+Ogre::StringConverter::toString(i);
-        Ogre::Light* light;
+        Ogre::Light* light=0;
         if(!manager.hasLight(name)){
             light=manager.createLight(name);
             if(light)Ogre::LogManager::getSingleton().logMessage("RbxGfx: created light"+name);
-            else Ogre::LogManager::getSingleton().logMessage("RbxGfx : FAILED to create light"+name);
+            else {Ogre::LogManager::getSingleton().logMessage("RbxGfx : FAILED to create light"+name); continue;}
         }else light=manager.getLight(name);
+        if(!light) continue;
         light->setCastShadows(shadows);
         if(bounds && !bounds->isNull()){
             Ogre::Vector3 size=bounds->getSize();
@@ -73,18 +74,22 @@ void apply(Ogre::SceneManager& manager,const G3D::LightingRef& lighting,const Se
     }
     if(lighting->shadowedLightArray.size()==1){
         const G3D::GLight& source=lighting->shadowedLightArray[0];
-        Ogre::Light* primary=manager.getLight("rbxlight0");
-        Ogre::Vector3 position=primary->getType()==Ogre::Light::LT_DIRECTIONAL?-primary->getDirection()*2000:primary->getPosition();
-        Ogre::Light* light;
-        if(manager.hasLight("rbxfl"))light=manager.getLight("rbxfl");
-        else{light=manager.createLight("rbxfl");light->setCastShadows(false);light->setType(Ogre::Light::LT_POINT);}
-        light->setPosition(center*2-position);
-        G3D::Color3 diffuse=source.color*intensity;
-        diffuse=diffuse*.4f*G3D::Color3(settings.fillDiffuse)*G3D::Color3(settings.fillScale);
-        float length=diffuse.length();diffuse+=bottom*length;
-        light->setDiffuseColour(Ogre::ColourValue(diffuse.r,diffuse.g,diffuse.b));
-        G3D::Color3 specular=G3D::Color3(settings.fillSpecular)*diffuse;
-        light->setSpecularColour(specular.r,specular.g,specular.b);
+        Ogre::Light* primary=manager.hasLight("rbxlight0")?manager.getLight("rbxlight0"):0;
+        if(primary){
+            Ogre::Vector3 position=primary->getType()==Ogre::Light::LT_DIRECTIONAL?-primary->getDirection()*2000:primary->getPosition();
+            Ogre::Light* light=0;
+            if(manager.hasLight("rbxfl"))light=manager.getLight("rbxfl");
+            else{light=manager.createLight("rbxfl"); if(light){light->setCastShadows(false);light->setType(Ogre::Light::LT_POINT);} }
+            if(light){
+                light->setPosition(center*2-position);
+                G3D::Color3 diffuse=source.color*intensity;
+                diffuse=diffuse*.4f*G3D::Color3(settings.fillDiffuse)*G3D::Color3(settings.fillScale);
+                float length=diffuse.length();diffuse+=bottom*length;
+                light->setDiffuseColour(Ogre::ColourValue(diffuse.r,diffuse.g,diffuse.b));
+                G3D::Color3 specular=G3D::Color3(settings.fillSpecular)*diffuse;
+                light->setSpecularColour(specular.r,specular.g,specular.b);
+            }
+        }
     }
 }
 }

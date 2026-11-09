@@ -9,7 +9,7 @@
 #pragma comment(linker,"/alternatename:_FMOD_Channel_GetUserData@8=_FMOD_Channel_GetUserData")
 
 namespace FFlag { extern bool SoundDisabled; }
-char sStockSound[] = "StockSound";
+const char* sStockSound = "StockSound";
 static void channelCheck(FMOD_RESULT result){
     if(result!=FMOD_OK){
         RBX::StandardOut::singleton()->print(RBX::MESSAGE_WARNING,"FMOD %d: %s",result,FMOD_ErrorString(result));

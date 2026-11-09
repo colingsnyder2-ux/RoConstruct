@@ -836,10 +836,10 @@ int main(int argc, char** argv)
     if(ConfigureContentRoot(contentRoot.c_str()))return 1;
     if(demo && placePath.empty())placePath=moduleRoot+"/Places/default.rbxl";
 
-    if (selftest)
+    if (selftest || placePath.empty())
         placeText = kPartPlace;
     else
-        placeText = placePath.empty() ? "" : readPlace(placePath.c_str());
+        placeText = readPlace(placePath.c_str());
     if(cachetest && placeText.empty()){std::printf("cachetest requires readable fixture\n");return 1;}
     if(lifetest && placeText.empty()){std::printf("p3test requires readable lifetime fixture\n");return 1;}
     if (!selftest && placeText.empty())

@@ -47,8 +47,6 @@ namespace RBX
 		G3D::ToneMap* EffectSettings::getToneMap() { static G3D::ToneMap t; return &t; }
 		DepthBlur* EffectSettings::getDepthBlur() { return NULL; }
 
-		void Mesh::makeVAR() {}
-		void Mesh::initStatics() {}
 
 		void Mesh::computeDirectionalShadowVolume(const G3D::CoordinateFrame& cframe, const G3D::Vector3& wsLightVector,
 			G3D::Array<unsigned>& indexArray, G3D::Array<G3D::Vector3>& shadowVertex, bool generateLightCap) const {}
