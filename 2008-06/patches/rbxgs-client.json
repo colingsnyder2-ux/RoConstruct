@@ -137,6 +137,10 @@
   [
    "\t\ttemplate<typename Type>\n\t\tconst Type* getTypedRoot() const\n\t\t{\n\t\t\tRBXASSERT(dynamic_cast<const Type*>(this));\n\t\t\tconst Type* typedParent = dynamic_cast<const Type*>(parent);\n\t\t\tif (typedParent)\n\t\t\t\treturn typedParent->getTypedRoot<Type>();\n",
    "\t\ttemplate<typename Type>\n\t\tconst Type* getTypedRoot() const\n\t\t{\n\t\t\tconst Type* typedParent = dynamic_cast<const Type*>(parent);\n\t\t\tif (typedParent)\n\t\t\t\treturn typedParent->getTypedRoot<Type>();\n"
+  ],
+  [
+   "\t\tCopyOnWrite<std::vector<boost::shared_ptr<Instance>>> children;",
+   "\tpublic: // 2008 header declares it public (native-headers/v8tree/Instance.h); access only, layout unchanged\n\t\tCopyOnWrite<std::vector<boost::shared_ptr<Instance>>> children;\n\tprivate:"
   ]
  ],
  "App/include/v8datamodel/MouseCommand.h": [
@@ -721,6 +725,10 @@
   [
    "\t\tfloat getSimTime() const;\n\t\tTimeState* getTimeState();\n\t\tvirtual std::string evaluate(const std::string& valueName) const;\n",
    "\t\tfloat getSimTime() const;\n\t\tTimeState* getTimeState() const; // rebuild shim (glue_timestate_registry.cpp)\n\t\tvirtual std::string evaluate(const std::string& valueName) const;\n"
+  ],
+  [
+   "\t\tboost::shared_ptr<GuiRoot> guiHooks;",
+   "\tpublic: // 2008 header declares it public (native-headers/v8datamodel/DataModel.h); access only, layout unchanged\n\t\tboost::shared_ptr<GuiRoot> guiHooks;\n\tprivate:"
   ]
  ],
  "App/include/v8world/Edge.h": [
@@ -2577,6 +2585,10 @@
   [
    "\t\t{\n\t\t\treturn !listeners.empty();\n\t\t}\n",
    "\t\t{\n\t\t\treturn listeners.size() > 0;\n\t\t}\n"
+  ],
+  [
+   "\t\t\tif (notifier)\n\t\t\t\tnotifier->Notifier<Class, Event>::removeListener(listener);\n\t\t}\n\t};\n}\n\n#endif // EVENTS_H",
+   "\t\t\tif (notifier)\n\t\t\t\tnotifier->Notifier<Class, Event>::removeListener(listener);\n\t\t}\n\t};\n\n\t// Dec 2007 free helpers (OpenRBX util/Events.h), used by the renderer's View/Part listeners\n\ttemplate <class Source, class Event, class SourcePtr>\n\tvoid startListening(const SourcePtr& source, Listener<Source, Event>* listener)\n\t{\n\t\tif (source)\n\t\t\tsource->Notifier<Source, Event>::addListener(listener);\n\t}\n\n\ttemplate <class Source, class Event, class SourcePtr>\n\tvoid stopListening(const SourcePtr& source, Listener<Source, Event>* listener)\n\t{\n\t\tif (source)\n\t\t\tsource->Notifier<Source, Event>::removeListener(listener);\n\t}\n}\n\n#endif // EVENTS_H"
   ]
  ],
  "App/include/util/boost.hpp": [
@@ -3462,6 +3474,16 @@
   [
    "\t\t\tInstance* c = event.addedItem.get();\n\t\t\tif (c)\n\t\t\t\tfilteredSelection.push_back(c);\n",
    "\t\t\tInstance* c = event.addedItem.get();\n\t\t\tif (Class* cc = dynamic_cast<Class*>(c))\n\t\t\t\tfilteredSelection.push_back(cc);\n"
+  ],
+  [
+   "\t\tCopyOnWrite<std::vector<boost::shared_ptr<Instance>>> selection;",
+   "\tpublic: // 2008 header declares it public (native-headers/v8datamodel/Selection.h); access only, layout unchanged\n\t\tCopyOnWrite<std::vector<boost::shared_ptr<Instance>>> selection;\n\tprivate:"
+  ]
+ ],
+ "App/include/util/NormalId.h": [
+  [
+   "\ttemplate<NormalId faceId>\n\tG3D::Vector3 uvwToObject(const G3D::Vector3& v);",
+   "\t// int parameter as in the Dec 2007 renderer (OpenRBX QuadVolume.h); mangles identically ($0n)\n\ttemplate<int faceId>\n\tG3D::Vector3 uvwToObject(const G3D::Vector3& v);"
   ]
  ]
 }

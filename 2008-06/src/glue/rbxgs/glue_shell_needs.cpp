@@ -67,3 +67,16 @@ namespace RBX
 		return Name::declare(filename, -1);
 	}
 }
+
+// uvwToObject<face> specializations, from the Dec 2007 client (OpenRBX App/util/NormalId.cpp,
+// ROBLOX 0x005e0b00..0x005e0ba0); rbxgs NormalId.cpp lacks them and the renderer layer calls them.
+#include "util/NormalId.h"
+namespace RBX
+{
+	template <> G3D::Vector3 uvwToObject<NORM_X>(const G3D::Vector3& v)     { return G3D::Vector3(v.z, v.y, -v.x); }
+	template <> G3D::Vector3 uvwToObject<NORM_Y>(const G3D::Vector3& v)     { return G3D::Vector3(-v.x, v.z, v.y); }
+	template <> G3D::Vector3 uvwToObject<NORM_Z>(const G3D::Vector3& v)     { return G3D::Vector3(v.x, v.y, v.z); }
+	template <> G3D::Vector3 uvwToObject<NORM_X_NEG>(const G3D::Vector3& v) { return G3D::Vector3(-v.z, v.y, v.x); }
+	template <> G3D::Vector3 uvwToObject<NORM_Y_NEG>(const G3D::Vector3& v) { return G3D::Vector3(v.x, -v.z, v.y); }
+	template <> G3D::Vector3 uvwToObject<NORM_Z_NEG>(const G3D::Vector3& v) { return G3D::Vector3(-v.x, v.y, -v.z); }
+}

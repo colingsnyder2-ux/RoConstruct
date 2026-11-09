@@ -32,7 +32,8 @@ namespace RBX
 
 	G3D::Vector3 uvwToObject(const G3D::Vector3& uvwPt, NormalId faceId);
 
-	template<NormalId faceId>
+	// int parameter as in the Dec 2007 renderer (OpenRBX QuadVolume.h); mangles identically ($0n)
+	template<int faceId>
 	G3D::Vector3 uvwToObject(const G3D::Vector3& v);
 
 	G3D::Vector3 objectToUvw(const G3D::Vector3& objectPt, NormalId faceId);

@@ -168,7 +168,9 @@ protected:
 	private:
 		Association<Instance> assoc;
 		Instance* parent;
+	public: // 2008 header declares it public (native-headers/v8tree/Instance.h); access only, layout unchanged
 		CopyOnWrite<std::vector<boost::shared_ptr<Instance>>> children;
+	private:
 		std::string name;
 		bool archivable;
 

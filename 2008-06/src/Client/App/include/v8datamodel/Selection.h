@@ -100,7 +100,9 @@ namespace RBX
 		};
 
 	private:
+	public: // 2008 header declares it public (native-headers/v8datamodel/Selection.h); access only, layout unchanged
 		CopyOnWrite<std::vector<boost::shared_ptr<Instance>>> selection;
+	private:
 		std::vector<ISelectionBase*> filteredSelections;
 
 	public:

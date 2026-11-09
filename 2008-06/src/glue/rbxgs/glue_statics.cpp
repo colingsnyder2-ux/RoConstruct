@@ -22,7 +22,7 @@
 namespace RBX
 {
 	G3D::GFontRef Fonts::fontRef;
-	bool Render::AggregateChunk::randomColors = false;
+	// Render::AggregateChunk::randomColors: defined by the OpenRBX renderer layer (Chunk.cpp)
 
 	namespace Stats
 	{

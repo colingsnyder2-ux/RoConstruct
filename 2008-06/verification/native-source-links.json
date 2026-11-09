@@ -48,7 +48,7 @@
   "path": "2008-06/src/Client/App/include/reflection/object.h"
  },
  "0040db00": {
-  "line": 366,
+  "line": 368,
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "00411160": {
@@ -56,7 +56,7 @@
   "path": "2008-06/src/Client/boost_1_34_1/src/boost/detail/bad_weak_ptr.hpp"
  },
  "004117b0": {
-  "line": 232,
+  "line": 234,
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "004117c0": {
@@ -112,15 +112,15 @@
   "path": "2008-06/src/Client/boost_1_34_1/src/boost/function/function_base.hpp"
  },
  "0041f2b0": {
-  "line": 222,
+  "line": 224,
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "0041f340": {
-  "line": 295,
+  "line": 297,
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "0041f390": {
-  "line": 311,
+  "line": 313,
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "00420190": {
@@ -136,7 +136,7 @@
   "path": "2008-06/src/Client/Rendering/g3d/include/GLG3D/Texture.h"
  },
  "00422ae0": {
-  "line": 256,
+  "line": 258,
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "00427410": {
@@ -248,7 +248,7 @@
   "path": "2008-06/src/Client/App/include/v8datamodel/Camera.h"
  },
  "0045c470": {
-  "line": 385,
+  "line": 387,
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "0045c660": {
@@ -352,7 +352,7 @@
   "path": "2008-06/src/Client/Network/Player.cpp"
  },
  "0048ae20": {
-  "line": 267,
+  "line": 269,
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "0048bd70": {
@@ -648,7 +648,7 @@
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "004a27e0": {
-  "line": 498,
+  "line": 500,
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "004a2c20": {
@@ -724,7 +724,7 @@
   "path": "2008-06/src/Client/Network/Replicator.cpp"
  },
  "004ab530": {
-  "line": 227,
+  "line": 229,
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "004ab5d0": {
@@ -804,7 +804,7 @@
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "004c9c50": {
-  "line": 237,
+  "line": 239,
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "004dc3d0": {
@@ -1016,11 +1016,11 @@
   "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
  },
  "00557640": {
-  "line": 248,
+  "line": 250,
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "00557890": {
-  "line": 252,
+  "line": 254,
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "00557920": {
@@ -1036,7 +1036,7 @@
   "path": "2008-06/src/Client/App/include/v8xml/XmlElement.h"
  },
  "005580e0": {
-  "line": 290,
+  "line": 292,
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "00558110": {
@@ -1060,7 +1060,7 @@
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "00558970": {
-  "line": 282,
+  "line": 284,
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "00558b80": {
@@ -1072,7 +1072,7 @@
   "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
  },
  "00558ff0": {
-  "line": 385,
+  "line": 387,
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "00559170": {
@@ -1120,7 +1120,7 @@
   "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
  },
  "0055b4a0": {
-  "line": 204,
+  "line": 206,
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "0055b5a0": {
@@ -1292,7 +1292,7 @@
   "path": "2008-06/src/Client/App/include/v8datamodel/Selection.h"
  },
  "00566a80": {
-  "line": 143,
+  "line": 145,
   "path": "2008-06/src/Client/App/include/v8datamodel/Selection.h"
  },
  "00566b80": {
@@ -1532,7 +1532,7 @@
   "path": "2008-06/src/Client/App/gui/GUI.cpp"
  },
  "00574f10": {
-  "line": 108,
+  "line": 110,
   "path": "2008-06/src/Client/App/include/v8datamodel/DataModel.h"
  },
  "00574fb0": {
@@ -1584,23 +1584,23 @@
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "0057b020": {
-  "line": 86,
+  "line": 88,
   "path": "2008-06/src/Client/App/include/v8datamodel/DataModel.h"
  },
  "0057b030": {
-  "line": 91,
+  "line": 93,
   "path": "2008-06/src/Client/App/include/v8datamodel/DataModel.h"
  },
  "0057b040": {
-  "line": 134,
+  "line": 136,
   "path": "2008-06/src/Client/App/include/v8datamodel/DataModel.h"
  },
  "0057b070": {
-  "line": 140,
+  "line": 142,
   "path": "2008-06/src/Client/App/include/v8datamodel/DataModel.h"
  },
  "0057b630": {
-  "line": 128,
+  "line": 130,
   "path": "2008-06/src/Client/App/include/v8datamodel/DataModel.h"
  },
  "0057b9f0": {
@@ -2380,11 +2380,11 @@
   "path": "2008-06/src/Client/App/include/v8datamodel/MouseCommand.h"
  },
  "005a16b0": {
-  "line": 456,
+  "line": 458,
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "005a1750": {
-  "line": 456,
+  "line": 458,
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "005a17f0": {
@@ -3096,7 +3096,7 @@
   "path": "2008-06/src/Client/App/v8datamodel/CharacterAppearance.cpp"
  },
  "005d41a0": {
-  "line": 456,
+  "line": 458,
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "005d4240": {
@@ -3292,7 +3292,7 @@
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d8540": {
-  "line": 498,
+  "line": 500,
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "005d8a10": {
@@ -3556,7 +3556,7 @@
   "path": "2008-06/src/Client/boost_1_34_1/src/boost/token_iterator.hpp"
  },
  "005e04c0": {
-  "line": 456,
+  "line": 458,
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "005e0650": {
@@ -4420,7 +4420,7 @@
   "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
  },
  "005fdf00": {
-  "line": 456,
+  "line": 458,
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "005fdfe0": {
@@ -7808,7 +7808,7 @@
   "path": "2008-06/src/Client/App/reflection/reflection_property.cpp"
  },
  "0077d6c0": {
-  "line": 315,
+  "line": 317,
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "0078c540": {

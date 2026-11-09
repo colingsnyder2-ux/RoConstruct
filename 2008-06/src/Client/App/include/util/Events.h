@@ -152,6 +152,21 @@ namespace RBX
 				notifier->Notifier<Class, Event>::removeListener(listener);
 		}
 	};
+
+	// Dec 2007 free helpers (OpenRBX util/Events.h), used by the renderer's View/Part listeners
+	template <class Source, class Event, class SourcePtr>
+	void startListening(const SourcePtr& source, Listener<Source, Event>* listener)
+	{
+		if (source)
+			source->Notifier<Source, Event>::addListener(listener);
+	}
+
+	template <class Source, class Event, class SourcePtr>
+	void stopListening(const SourcePtr& source, Listener<Source, Event>* listener)
+	{
+		if (source)
+			source->Notifier<Source, Event>::removeListener(listener);
+	}
 }
 
 #endif // EVENTS_H

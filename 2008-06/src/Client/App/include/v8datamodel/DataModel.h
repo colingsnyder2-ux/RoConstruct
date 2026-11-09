@@ -48,7 +48,9 @@ namespace RBX
 		boost::shared_ptr<RunService> runService;
 		boost::shared_ptr<StarterPackService> starterPackService;
 		boost::shared_ptr<GuiRoot> guiRoot;
+	public: // 2008 header declares it public (native-headers/v8datamodel/DataModel.h); access only, layout unchanged
 		boost::shared_ptr<GuiRoot> guiHooks;
+	private:
 		GuiTarget* guiTarget;
 		bool forceArrowCursor;
 		std::string uiMessage;
