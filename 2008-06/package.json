@@ -9073,6 +9073,7 @@
     "src/glue/rbxgs/glue_property_strings.cpp": "9f9c2d1312151d9719b5f62ed0119937afba815761c8fda5c38f080af962e991",
     "src/glue/rbxgs/glue_reflection_refs.cpp": "5cca1ed624c978a8f4caf501fbb29ebf45ecbca56f03cd87e2f2527f69d8dc35",
     "src/glue/rbxgs/glue_reflection_types.cpp": "e148033bcaf6a9da9c15953a30c1e403e8e53843d885195d264176bb2c1b8e02",
+    "src/glue/rbxgs/glue_render_m4b.cpp": "bec4f62a346cc59b0c47bc511e41078ecd9c5a4733ca833c8ac11e4bdfaecbfc",
     "src/glue/rbxgs/glue_replication.cpp": "79a02b152fa12b9fb7212d73f424275f36aa588ea1b782e1727c5060f5cd6fbe",
     "src/glue/rbxgs/glue_replicator.cpp": "4bc9c633d061b859c0b9624a65a142a33c283fec204c3e9c9cf5702564398474",
     "src/glue/rbxgs/glue_runtime.cpp": "014e72a6516ca57acbb873fc2b02d1d14f482b631bf4bfbdc6cdc7b22ff3301e",
@@ -10524,7 +10525,7 @@
     "verification/manifests/original-pe.json": "1aa2d645f4359aa03e5e8de875467e8a2399d7997c1f450bca309b7dcb1fcef2",
     "verification/manifests/tu-coverage.json": "a2fc877e5f5ca017bde4dc78f9421d1338f00c9fb2b67e04687a9ef25f8c734c",
     "verification/native-credit.json": "ea338dbd7d15f5d8f253abed764674638cd2975edc63a8262c477134ebcdbafc",
-    "verification/native-source-links.json": "5830501e56780f36e38280af76e052e0a1d2ffa424d4117f44d635e689115e91",
+    "verification/native-source-links.json": "e2630c371673bc57ff2cad91dc76f1a11d748799236bf1430384c78bb7e52650",
     "verification/runtime-tests.json": "f6a1bff3c090c9433d2d87bd53e19dcfc4d17a8fdd6671457ca67a3e5eec2f09"
   },
   "format": 1,
