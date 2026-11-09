@@ -1,10 +1,10 @@
 {
-  "updated": "2026-11-09 04:22 UTC",
+  "updated": "2026-11-09 05:32 UTC",
   "clients": {
     "2008-06": {
       "phase": "6",
       "phaseLabel": "Link closure",
-      "overall": 0.1405,
+      "overall": 0.1401,
       "bars": {
         "compiled": {
           "value": 35,
@@ -12,12 +12,12 @@
           "label": "Modules reporting"
         },
         "linked": {
-          "value": 30,
+          "value": 31,
           "total": 35,
           "label": "Modules linked"
         },
         "exact": {
-          "value": 5789,
+          "value": 5771,
           "total": 41196,
           "label": "Byte-exact functions"
         },
@@ -80,9 +80,9 @@
           "name": "G3D",
           "linked": true,
           "test": 0,
-          "exact": 906,
+          "exact": 687,
           "compileErrors": 0,
-          "objectFunctions": 6594,
+          "objectFunctions": 5976,
           "unresolved": 0
         },
         {
@@ -163,7 +163,7 @@
           "test": 0,
           "exact": 29,
           "compileErrors": 0,
-          "objectFunctions": 81,
+          "objectFunctions": 82,
           "unresolved": 0
         },
         {
@@ -208,7 +208,7 @@
           "test": 0,
           "exact": 340,
           "compileErrors": 0,
-          "objectFunctions": 4277,
+          "objectFunctions": 4275,
           "unresolved": 0
         },
         {
@@ -258,11 +258,11 @@
         },
         {
           "name": "P4SoundAsset",
-          "linked": false,
-          "test": null,
-          "exact": 0,
-          "compileErrors": 1,
-          "objectFunctions": 0,
+          "linked": true,
+          "test": 0,
+          "exact": 202,
+          "compileErrors": 0,
+          "objectFunctions": 2378,
           "unresolved": 0
         },
         {
@@ -280,7 +280,7 @@
           "test": 0,
           "exact": 340,
           "compileErrors": 0,
-          "objectFunctions": 4277,
+          "objectFunctions": 4275,
           "unresolved": 0
         },
         {
@@ -316,7 +316,7 @@
           "test": 0,
           "exact": 3860,
           "compileErrors": 0,
-          "objectFunctions": 98708,
+          "objectFunctions": 98706,
           "unresolved": 0
         },
         {
