@@ -11,7 +11,7 @@ namespace RBX
 	class ModelInstance;
 	class PartInstance;
 
-	extern const char* sAccoutrement;
+	extern const char* const sAccoutrement;
 
 	class Accoutrement : public DescribedCreatable<Accoutrement, Instance, &sAccoutrement>,
 						 public IEquipable,
@@ -57,7 +57,7 @@ namespace RBX
 		void downFrom_HasHandle();
 		void onChildAdded();
 		void onChildRemoved();
-		virtual void onAncestorChanged(const AncestorChanged&);
+		virtual void onAncestorChanged(const AncestorChanged& event);
 
 		virtual bool askSetParent(const Instance* instance) const
 		{
@@ -102,10 +102,10 @@ namespace RBX
 		const G3D::Vector3 getAttachmentForward() const;
 		const G3D::Vector3 getAttachmentUp() const;
 		const G3D::Vector3 getAttachmentRight() const;
-		void setAttachmentPos(const G3D::Vector3&);
-		void setAttachmentForward(const G3D::Vector3&);
-		void setAttachmentUp(const G3D::Vector3&);
-		void setAttachmentRight(const G3D::Vector3&);
+		void setAttachmentPos(const G3D::Vector3& v);
+		void setAttachmentForward(const G3D::Vector3& v);
+		void setAttachmentUp(const G3D::Vector3& v);
+		void setAttachmentRight(const G3D::Vector3& v);
 
 	protected:
 		static AccoutrementState characterCanPickUpAccoutrement(Instance*);
@@ -115,7 +115,7 @@ namespace RBX
 		static void dropAllOthers(ModelInstance*, Accoutrement*);
 	};
 
-	extern const char* sHat;
+	extern const char* const sHat;
 
 	class Hat : public DescribedCreatable<Hat, Accoutrement, &sHat>
 	{

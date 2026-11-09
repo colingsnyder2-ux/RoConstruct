@@ -4,7 +4,7 @@
 
 namespace RBX
 {
-	extern const char* sFlying;
+	extern const char* const sFlying;
 
 	class Flying : public Named<Balancing, &sFlying>
 	{
@@ -18,7 +18,7 @@ namespace RBX
 
 	protected:
 		virtual Humanoid::State* onStep(const float stepDt, Controller& controller);
-		virtual void onComputeForce(const float);
+		virtual void onComputeForce(const float dt);
 
 		virtual bool canSleep() const
 		{

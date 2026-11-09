@@ -2,6 +2,8 @@
 
 namespace RBX
 {
+	const char* const sNetworkSettings = "NetworkSettings";
+
 	Reflection::BoundProp<bool, 1> prop_LogPackets("LogPackets", "Diagnostics", &NetworkSettings::logPackets, Reflection::PropertyDescriptor::STANDARD);
 	Reflection::BoundProp<bool, 1> prop_PrintInstances("PrintInstances", "Diagnostics", &NetworkSettings::printInstances, Reflection::PropertyDescriptor::STANDARD);
 	Reflection::BoundProp<bool, 1> prop_PrintProperties("PrintProperties", "Diagnostics", &NetworkSettings::printProperties, Reflection::PropertyDescriptor::STANDARD);
@@ -15,6 +17,8 @@ namespace RBX
 	Reflection::BoundProp<int, 1> prop_MaxDataModelSendBuffer("MaxDataModelSendBuffer", "Replication", &NetworkSettings::maxDataModelSendBuffer, Reflection::PropertyDescriptor::STANDARD);
 	Reflection::BoundProp<float, 1> prop_DataPacketSize("DataPacketSize", "Replication", &NetworkSettings::dataPacketSize, Reflection::PropertyDescriptor::STANDARD);
 	Reflection::BoundProp<float, 1> prop_SendRate("SendRate", "Replication", &NetworkSettings::sendRate, Reflection::PropertyDescriptor::STANDARD);
+
+	GlobalSettingsItem<NetworkSettings, &sNetworkSettings>* NetworkSettings::sing = NULL;
 
 	NetworkSettings::NetworkSettings()
 		: clientPhysicsSpeed(1.0f),

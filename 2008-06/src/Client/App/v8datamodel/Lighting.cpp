@@ -4,7 +4,7 @@
 
 namespace RBX
 {
-	const char* sLighting = "Lighting";
+	char* sLighting = "Lighting";
 
 	static Reflection::PropDescriptor<Lighting, G3D::Color3> desc_AmbientTop("TopAmbientV9", "Appearance", &Lighting::getAmbientTop, &Lighting::setAmbientTop, Reflection::PropertyDescriptor::STANDARD);
 	static Reflection::PropDescriptor<Lighting, G3D::Color3> desc_AmbientBottom("BottomAmbientV9", "Appearance", &Lighting::getAmbientBottom, &Lighting::setAmbientBottom, Reflection::PropertyDescriptor::STANDARD);
@@ -22,6 +22,8 @@ namespace RBX
 	static Reflection::PropDescriptor<Lighting, G3D::Color3> prop_ColorShift_Top("ColorShift_Top", "Appearance", &Lighting::getColorShift_Top, &Lighting::setColorShift_Top, Reflection::PropertyDescriptor::STANDARD);
 	static Reflection::PropDescriptor<Lighting, G3D::Color3> prop_ColorShift_Bottom("ColorShift_Bottom", "Appearance", &Lighting::getColorShift_Bottom, &Lighting::setColorShift_Bottom, Reflection::PropertyDescriptor::STANDARD);
 	static Reflection::PropDescriptor<Lighting, G3D::Color3> prop_Ambient("Ambient", "Appearance", &Lighting::getAmbient, &Lighting::setAmbient, Reflection::PropertyDescriptor::STANDARD);
+
+	Reflection::SignalDesc<Lighting, void(bool)> Lighting::event_LightingChanged("LightingChanged", "skyboxChanged");
 
 	Lighting::Lighting()
 		: Base(),

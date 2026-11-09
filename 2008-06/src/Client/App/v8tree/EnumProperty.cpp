@@ -4,6 +4,7 @@
 #include <boost/shared_ptr.hpp>
 #include "v8tree/Instance.h"
 #include "v8datamodel/BrickColor.h"
+#include "util/NormalId.h"
 
 namespace RBX
 {
@@ -97,8 +98,242 @@ namespace RBX
 		template<>
 		const Type& Type::singleton<BrickColor>()
 		{
-			static Type type("BrickColor", typeid(BrickColor));
+			static Type type("BrickColor", typeid(BrickColor), "int");
 			return type;
+		}
+
+		template<>
+		EnumDesc<NormalId>::EnumDesc()
+			: EnumDescriptor("NormalId", typeid(NormalId))
+		{
+			addPair(NORM_Y, "Top"),
+			addPair(NORM_Y_NEG, "Bottom");
+			addPair(NORM_Z, "Back");
+			addPair(NORM_Z_NEG, "Front");
+			addPair(NORM_X, "Right");
+			addPair(NORM_X_NEG, "Left");
+		}
+
+		template<>
+		boost::shared_ptr<Instances>& Value::convert<boost::shared_ptr<Instances>>()
+		{
+			boost::shared_ptr<Instances>* val = boost::any_cast<boost::shared_ptr<Instances>>(&value);
+			if (!val)
+				throw std::runtime_error("Unable to cast value to Objects");
+
+			return *val;
+		}
+
+		template<>
+		std::vector<Value>& Value::convert<std::vector<Value>>()
+		{
+			std::vector<Value>* val = boost::any_cast<std::vector<Value>>(&value);
+			if (!val)
+				throw std::runtime_error("Unable to cast value to ValueCollection");
+
+			return *val;
+		}
+
+		template<>
+		int& Value::convert<int>()
+		{
+			if (isType<float>())
+			{
+				value = G3D::iRound(boost::any_cast<float>(value));
+				_type = &Type::singleton<int>();
+			}
+			if (isType<double>())
+			{
+				value = G3D::iRound(boost::any_cast<double>(value));
+				_type = &Type::singleton<int>();
+			}
+			if (isType<bool>())
+			{
+				value = boost::any_cast<bool>(value) ? 1 : 0;
+				_type = &Type::singleton<int>();
+			}
+
+			return genericConvert<int>();
+		}
+		
+		template<>
+		bool& Value::convert<bool>()
+		{
+			if (isType<int>())
+			{
+				value = boost::any_cast<int>(value) != 0;
+				_type = &Type::singleton<bool>();
+			}
+			if (isType<float>())
+			{
+				value = boost::any_cast<float>(value) != 0.0f;
+				_type = &Type::singleton<bool>();
+			}
+			if (isType<double>())
+			{
+				value = boost::any_cast<double>(value) != 0.0;
+				_type = &Type::singleton<bool>();
+			}
+
+			return genericConvert<bool>();
+		}
+
+		template<>
+		double& Value::convert<double>()
+		{
+			if (isType<int>())
+			{
+				value = (double)boost::any_cast<int>(value);
+				_type = &Type::singleton<double>();
+			}
+			if (isType<bool>())
+			{
+				value = (double)(boost::any_cast<bool>(value) ? 1 : 0);
+				_type = &Type::singleton<double>();
+			}
+			if (isType<float>())
+			{
+				value = (double)boost::any_cast<float>(value);
+				_type = &Type::singleton<double>();
+			}
+
+			return genericConvert<double>();
+		}
+
+		template<>
+		G3D::Vector3& Value::convert<G3D::Vector3>()
+		{
+			return genericConvert<G3D::Vector3>();
+		}
+
+		template<>
+		ContentId& Value::convert<ContentId>()
+		{
+			if (isType<std::string>())
+			{
+				value = ContentId(boost::any_cast<std::string>(value));
+				_type = &Type::singleton<ContentId>();
+			}
+
+			return genericConvert<ContentId>();
+		}
+
+		template<>
+		std::string& Value::convert<std::string>()
+		{
+			if (isType<bool>())
+			{
+				value = StringConverter<bool>::convertToString(boost::any_cast<bool>(value));
+				_type = &Type::singleton<bool>();
+			}
+			if (isType<int>())
+			{
+				value = StringConverter<int>::convertToString(boost::any_cast<int>(value));
+				_type = &Type::singleton<int>();
+			}
+			if (isType<float>())
+			{
+				value = StringConverter<float>::convertToString(boost::any_cast<float>(value));
+				_type = &Type::singleton<float>();
+			}
+			if (isType<double>())
+			{
+				value = StringConverter<double>::convertToString(boost::any_cast<double>(value));
+				_type = &Type::singleton<double>();
+			}
+			if (isType<G3D::Vector3>())
+			{
+				value = StringConverter<G3D::Vector3>::convertToString(boost::any_cast<G3D::Vector3>(value));
+				_type = &Type::singleton<G3D::Vector3>();
+			}
+
+			std::string* val = boost::any_cast<std::string>(&value);
+			if (!val)
+				throw std::runtime_error("Unable to cast value to std::string");
+
+			return *val;
+		}
+
+		template<>
+		boost::shared_ptr<Instance>& Value::convert<boost::shared_ptr<Instance>>()
+		{
+			if (isType<void>())
+			{
+				value = boost::shared_ptr<Instance>();
+				_type = &Type::singleton<boost::shared_ptr<Instance>>();
+			}
+			if (isType<boost::shared_ptr<DescribedBase>>())
+			{
+				boost::shared_ptr<DescribedBase>* base = boost::any_cast<boost::shared_ptr<DescribedBase>>(&value);
+				if (base)
+				{
+					Instance* instance = dynamic_cast<Instance*>(base->get());
+					if (!instance)
+						throw std::runtime_error("Unable to cast value to Object");
+
+					value = shared_from(instance);
+				}
+				else
+				{
+					value = boost::shared_ptr<Instance>();
+				}
+
+				_type = &Type::singleton<boost::shared_ptr<Instance>>();
+			}
+
+			boost::shared_ptr<Instance>* val = boost::any_cast<boost::shared_ptr<Instance>>(&value);
+			if (!val)
+				throw std::runtime_error("Unable to cast value to Object");
+				
+			return *val;
+		}
+
+		template<>
+		bool TypedPropertyDescriptor<std::string>::hasStringValue() const
+		{
+			return true;
+		}
+
+		template<>
+		bool TypedPropertyDescriptor<bool>::hasStringValue() const
+		{
+			return true;
+		}
+
+		template<>
+		bool TypedPropertyDescriptor<float>::hasStringValue() const
+		{
+			return true;
+		}
+
+		template<>
+		bool TypedPropertyDescriptor<int>::hasStringValue() const
+		{
+			return true;
+		}
+
+		template<>
+		bool TypedPropertyDescriptor<G3D::Vector3>::hasStringValue() const
+		{
+			return true;
+		}
+
+		template<>
+		bool TypedPropertyDescriptor<G3D::Color3>::hasStringValue() const
+		{
+			return true;
+		}
+
+		template<>
+		bool TypedPropertyDescriptor<ContentId>::hasStringValue() const
+		{
+			return true;
+		}
+
+		template<>
+		bool TypedPropertyDescriptor<BrickColor>::hasStringValue() const
+		{
+			return false;
 		}
 
 		template<>
@@ -141,6 +376,12 @@ namespace RBX
 		std::string TypedPropertyDescriptor<ContentId>::getStringValue(const DescribedBase* instance) const
 		{
 			return StringConverter<ContentId>::convertToString(getValue(instance));
+		}
+
+		template<>
+		std::string TypedPropertyDescriptor<BrickColor>::getStringValue(const DescribedBase* instance) const
+		{
+			return PropertyDescriptor::getStringValue(instance);
 		}
 
 		template<>
@@ -225,6 +466,13 @@ namespace RBX
 				return true;
 			}
 
+			return false;
+		}
+
+		template<>
+		bool TypedPropertyDescriptor<BrickColor>::setStringValue(DescribedBase* instance, const std::string& text) const
+		{
+			PropertyDescriptor::setStringValue(instance, text);
 			return false;
 		}
 
@@ -369,16 +617,16 @@ namespace RBX
 		template<>
 		void TypedPropertyDescriptor<G3D::Vector3>::writeValue(const DescribedBase* instance, XmlElement* element) const
 		{
-			const Name* xName = &tag_X;
-			XmlElement* xElement = new XmlElement(*xName);
+			const Name& xName = tag_X;
+			XmlElement* xElement = new XmlElement(xName);
 			element->pushBackChild(xElement);
 
-			const Name* yName = &tag_Y;
-			XmlElement* yElement = new XmlElement(*yName);
+			const Name& yName = tag_Y;
+			XmlElement* yElement = new XmlElement(yName);
 			element->pushBackChild(yElement);
 
-			const Name* zName = &tag_Z;
-			XmlElement* zElement = new XmlElement(*zName);
+			const Name& zName = tag_Z;
+			XmlElement* zElement = new XmlElement(zName);
 			element->pushBackChild(zElement);
 
 			G3D::Vector3 value = getValue(instance);

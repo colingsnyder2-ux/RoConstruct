@@ -92,8 +92,20 @@ public:
 	{
 	}
 
-	XmlNameValuePair(const RBX::Name&, float);
-	XmlNameValuePair(const RBX::Name&, bool);
+	XmlNameValuePair(const RBX::Name& tag, float value)
+		: tag(tag),
+		  valueType(FLOAT),
+		  floatValue(value)
+	{
+	}
+
+	XmlNameValuePair(const RBX::Name& tag, bool value)
+		: tag(tag),
+		  valueType(BOOL),
+		  boolValue(value)
+	{
+	}
+
 	XmlNameValuePair(const RBX::Name& tag, const RBX::Name* name)
 		: tag(tag),
 		  valueType(NAME),
@@ -101,7 +113,13 @@ public:
 	{
 	}
 
-	XmlNameValuePair(const RBX::Name&, const unsigned);
+	XmlNameValuePair(const RBX::Name& tag, const unsigned value)
+		: tag(tag),
+		  valueType(UINT),
+		  uintValue(value)
+	{
+	}
+
 	XmlNameValuePair(const RBX::Name& tag, const int value)
 		: tag(tag),
 		  valueType(INT),
@@ -109,7 +127,13 @@ public:
 	{
 	}
 
-	XmlNameValuePair(const RBX::Name&, RBX::ContentId);
+	XmlNameValuePair(const RBX::Name& tag, RBX::ContentId value)
+		: tag(tag),
+		  valueType(CONTENTID),
+		  contentIdValue(new RBX::ContentId(value))
+	{
+	}
+
 	XmlNameValuePair::XmlNameValuePair(const RBX::Name& tag, const char* text)
 		: tag(tag),
 		  valueType(STRING),

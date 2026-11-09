@@ -4,7 +4,7 @@
 
 namespace RBX
 {
-    extern const char* sFeature;
+    extern const char* const sFeature;
     class Feature : public DescribedNonCreatable<Feature, Instance, &sFeature>,
                     public IRenderable
     {
@@ -43,13 +43,22 @@ namespace RBX
         InOut inOut;
 
     private:
-        virtual bool askSetParent(const Instance*) const;
-        virtual bool shouldRender3dAdorn() const;
+        virtual bool askSetParent(const Instance* instance) const
+		{
+			return true;
+		}
+        virtual bool shouldRender3dAdorn() const
+		{
+			return true;
+		}
         virtual void render3dSelect(Adorn* adorn, SelectState selectState);
 
     protected:
         bool getRenderCoord(G3D::CoordinateFrame& c) const;
-        virtual Feature::InOutZ getCoordOrientation() const;
+        virtual Feature::InOutZ getCoordOrientation() const
+		{
+			return Z_OUT;
+		}
 
     public:
         Feature();
@@ -82,19 +91,21 @@ namespace RBX
         G3D::CoordinateFrame computeLocalCoordinateFrame() const;
     };
 
-    extern const char* sHole;
+    extern const char* const sHole;
     class Hole : public DescribedCreatable<Hole, Feature, &sHole>
     {
     private:
         virtual void render3dAdorn(Adorn* adorn);
-        virtual Feature::InOutZ getCoordOrientation() const;
+        virtual Feature::InOutZ getCoordOrientation() const
+		{
+			return Z_IN;
+		}
 
     public:
         Hole();
-        virtual ~Hole();
     };
 
-    extern const char* sMotorFeature;
+    extern const char* const sMotorFeature;
     class MotorFeature : public DescribedCreatable<MotorFeature, Feature, &sMotorFeature>
     {
     private:
@@ -103,13 +114,12 @@ namespace RBX
 
     public:
         MotorFeature();
-        virtual ~MotorFeature();
 
         static bool canJoin(Instance*, Instance*);
         static void join(Instance*, Instance*);
     };
 
-    extern const char* sVelocityMotor;
+    extern const char* const sVelocityMotor;
     class VelocityMotor : public DescribedCreatable<VelocityMotor, JointInstance, &sVelocityMotor>
     {
     private:
@@ -128,7 +138,10 @@ namespace RBX
         void onEvent_HoleAncestorChanged();
         void setPart(int i, Feature* feature);
 
-        virtual bool askSetParent(const Instance*) const;
+        virtual bool askSetParent(const Instance* instance) const
+		{
+			return true;
+		}
         virtual void onAncestorChanged(const AncestorChanged& event);
 
     public:

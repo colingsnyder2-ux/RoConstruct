@@ -6,6 +6,7 @@
 #include "v8datamodel/Teams.h"
 #include "v8datamodel/JointsService.h"
 #include "v8datamodel/LocalBackpack.h"
+#include "v8datamodel/GuiBuilder.h"
 #include "script/ScriptContext.h"
 #include "gui/GUI.h"
 #include "util/Log.h"
@@ -16,6 +17,8 @@
 
 namespace RBX
 {
+	const char* const sDataModel = "DataModel";
+
 	static Reflection::BoundFuncDesc<DataModel, boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>>(ContentId), 1> getContentFunctionOld(&DataModel::get, "get", "url", Reflection::FunctionDescriptor::AnyCaller);
 	static Reflection::BoundFuncDesc<DataModel, boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>>(ContentId), 1> getContentFunction(&DataModel::get, "GetObjects", "url", Reflection::FunctionDescriptor::AnyCaller);
 	static Reflection::BoundFuncDesc<DataModel, void(ContentId), 1> loadFunction(&DataModel::loadContent, "Load", "url", Reflection::FunctionDescriptor::NeedTrustedCaller);
@@ -170,6 +173,12 @@ namespace RBX
 
 			return "";
 		}
+	}
+
+	void DataModel::buildGui(Adorn* adorn)
+	{
+		RBXASSERT(guiRoot->numChildren() == 0);
+		GuiBuilder().buildGui(adorn, this, workspace.get());
 	}
 
 	void DataModel::clearContents()
@@ -377,6 +386,81 @@ namespace RBX
 		{
 			return "?";
 		}
+	}
+
+	void DataModel::initializeContents()
+	{
+		workspace->setParent(this);
+		guiRoot->setParent(this);
+		guiHooks->setParent(this);
+
+		localBackpack = shared_from(ServiceProvider::create<LocalBackpack>());
+		starterPackService = shared_from(ServiceProvider::create<StarterPackService>());
+		runService = shared_from(ServiceProvider::create<RunService>());
+		ServiceProvider::create<Soundscape::SoundService>();
+
+		workspace->setDefaultMouseCommand();
+		workspace->setVerbParent(this);
+
+		runService->start();
+		Notifier<RunService, RunTransition>::connect(runService, this);
+
+		ServiceProvider::create<JointsService>();
+	}
+
+	float DataModel::step(float timeInterval)
+	{
+		Profiling::Mark mark = Profiling::Mark(*workspace->profileWorkspaceStep.get(), true);
+
+		getTimeState()->fpsStopwatch.tick();
+		getTimeState()->fpsStopwatch.tock();
+
+		if (runService->isRunState())
+		{
+			getTimeState()->simulationStopwatch.tick();
+			timeInterval = workspace->step(timeInterval);
+			getTimeState()->simulationStopwatch.tock();
+
+			getTimeState()->totalVirtualTime += timeInterval;
+
+			Profiling::Mark mark = Profiling::Mark(*workspace->profileRunServiceStepped.get(), true);
+
+			float totalVirtualTime = getTimeState()->totalVirtualTime;
+			runService->raiseStepped(totalVirtualTime, timeInterval);
+		}
+
+		{
+			Profiling::Mark mark = Profiling::Mark(*workspace->profileRunServiceHeartbeat.get(), true);
+
+			float totalVirtualTime = getTimeState()->totalVirtualTime;
+			runService->raiseHeartbeat(totalVirtualTime, timeInterval);
+		}
+
+		workspace->getCamera()->onHeartbeat();
+		localBackpack->onHeartbeat();
+
+		return timeInterval;
+	}
+
+	void DataModel::closeDataModel(boost::shared_ptr<DataModel> dataModel, bool joinRunThread)
+	{
+		boost::shared_ptr<RunService> runService;
+		{
+			DataModel::Lock lock(dataModel);
+			runService = dataModel->runService;
+		}
+
+		if (runService)
+			runService->endRunThread(joinRunThread);
+
+		DataModel::Lock lock(dataModel);
+
+		dataModel->Notifier<ServiceProvider, Closing>::raise(Closing());
+		event_Closing.fire(dataModel.get());
+
+		dataModel->clearContents();
+		dataModel->removeAllChildren();
+		dataModel->clearServices();
 	}
 
 	void DataModel::Lock::doLock(const DataModel* dataModel)

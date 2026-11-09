@@ -233,9 +233,13 @@ namespace RBX
 		const SurfaceData& getSurfaceData(NormalId id) const
 		{
 			if (!surfaceData[id])
+			{
 				return SurfaceData::empty();
+			}
 			else
+			{
 				return *surfaceData[id];
+			}
 		}
 		void setController(Controller* _controller);
 		Controller* getController()

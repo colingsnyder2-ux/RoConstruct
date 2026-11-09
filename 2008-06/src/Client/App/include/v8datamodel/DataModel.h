@@ -13,7 +13,7 @@ namespace RBX
 	class TimeState;
 	class IMetric;
 
-	extern const char* sDataModel;
+	extern const char* const sDataModel;
 
 	class DataModel : public DescribedNonCreatable<DataModel, ServiceProvider, &sDataModel>,
 					  public VerbContainer,
@@ -31,8 +31,14 @@ namespace RBX
 		private:
 			void doLock(const DataModel* dataModel);
 		public:
-			Lock(const DataModel* dataModel);
-			Lock(boost::shared_ptr<const DataModel> dataModel);
+			Lock(const DataModel* dataModel) //havent checked if matching
+			{
+				doLock(dataModel);
+			}
+			Lock(boost::shared_ptr<const DataModel> dataModel) //havent checked if matching
+			{
+				doLock(dataModel.get());
+			}
 			~Lock();
 		};
 
@@ -69,9 +75,12 @@ namespace RBX
 		boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> get(ContentId contentId);
 		void raiseClose();
 		int numChatOptions();
-		void buildGui(Adorn*);
+		void buildGui(Adorn* adorn);
 		void processGui(const UIEvent&);
-		GuiRoot* getGuiRoot() const;
+		GuiRoot* getGuiRoot() const
+		{
+			return guiRoot.get();
+		}
 		GuiRoot* getGuiHooks() const;
 
 		virtual void setDirty(bool dirty)
@@ -89,7 +98,7 @@ namespace RBX
 			return workspace.get();
 		}
 
-		float step(float);
+		float step(float timeInterval);
 		float getSimTime() const;
 		TimeState* getTimeState() const; // rebuild shim (glue_timestate_registry.cpp)
 		virtual std::string evaluate(const std::string& valueName) const;

@@ -44,7 +44,7 @@ namespace RBX
 			};
 
 		public:
-			class Iterator : public std::iterator<std::forward_iterator_tag, typename TheDescriptor::Describing, void>
+			class Iterator : public std::iterator<std::forward_iterator_tag, typename TheDescriptor::Member, void>
 			{
 			private:
 				DescribedBase* instance;
@@ -58,9 +58,9 @@ namespace RBX
 				}
 
 			public:
-				typename TheDescriptor::Describing operator*() const
+				typename TheDescriptor::Member operator*() const
 				{
-					return TheDescriptor::Describing(**iter, instance);
+					return TheDescriptor::Member(**iter, instance);
 				}
 				bool operator==(const Iterator& other) const
 				{
@@ -70,12 +70,21 @@ namespace RBX
 				{
 					return iter != other.iter;
 				}
-				Iterator operator++(int);
-				Iterator& operator++();
+				Iterator operator++(int) // Guess based on how this operator is commonly implemented
+				{
+					Iterator old = *this;
+					++*this;
+					return old;
+				}
+				Iterator& operator++()
+				{
+					++iter;
+					return *this;
+				}
 			};
 
 		public:
-			class ConstIterator : public std::iterator<std::forward_iterator_tag, typename TheDescriptor::Describing, void>
+			class ConstIterator : public std::iterator<std::forward_iterator_tag, typename TheDescriptor::Member, void>
 			{
 			private:
 				const DescribedBase* instance;
@@ -88,9 +97,9 @@ namespace RBX
 				{
 				}
 			public:
-				typename TheDescriptor::Describing operator*() const
+				typename TheDescriptor::ConstMember operator*() const
 				{
-					return TheDescriptor::Describing(getDescriptor(), instance);
+					return TheDescriptor::ConstMember(getDescriptor(), instance);
 				}
 				bool operator==(const ConstIterator& other) const
 				{
@@ -100,8 +109,17 @@ namespace RBX
 				{
 					return iter != other.iter;
 				}
-				ConstIterator operator++(int);
-				ConstIterator& operator++();
+				ConstIterator operator++(int) // Guess based on how this operator is commonly implemented
+				{
+					ConstIterator old = *this;
+					++*this;
+					return old;
+				}
+				ConstIterator& operator++()
+				{
+					++iter;
+					return *this;
+				}
 				const TheDescriptor& getDescriptor() const
 				{
 					return **iter;
@@ -155,44 +173,30 @@ namespace RBX
 				size_t posStart = 0;
 				size_t posEnd = descriptors.size();
 
-				if (posEnd)
+				if (posEnd != 0)
 				{
 					size_t i;
-					bool found = false;
 
 					do
 					{
 						i = (posStart+posEnd)/2;
 
-						const Name& descName = descriptors[i]->name;
-
-						if (name == descName)
-						{
-							found = true;
-							break;
-						}
-						
-						int compare = name.compare(descName);
+						int compare = name.compare(descriptors[i]->name);
 
 						if (compare < 0)
 						{
 							posEnd = i;	
 						}
+						else if (compare > 0)
+						{
+							posStart = i+1;
+						}
 						else
 						{
-							if (compare <= 0)
-							{
-								found = true;
-								break;
-							}
-
-							posStart = i+1;
+							return descriptors.begin()+i;
 						}
 					}
 					while (posStart < posEnd);
-
-					if (found)
-						return descriptors.begin()+i;
 				}
 
 				return descriptors.end();

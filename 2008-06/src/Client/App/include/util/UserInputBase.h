@@ -34,10 +34,16 @@ namespace RBX
 		virtual WrapMode getWrapMode() const = 0;
 		virtual void centerCursor() = 0;
 		virtual bool keyDown(SDLKey) const = 0;
-		bool altKeyDown() const;
+		bool altKeyDown() const
+		{
+			return keyDown(SDLK_RALT) || keyDown(SDLK_LALT);
+		}
 		bool shiftKeyDown() const;
-		bool ctrlKeyDown() const;
-		virtual void setKeyState(SDLKey, bool) = 0;
+		bool ctrlKeyDown() const
+		{
+			return keyDown(SDLK_RCTRL) || keyDown(SDLK_LCTRL);
+		}
+		virtual void setKeyState(SDLKey key, bool down) = 0;
 		virtual void setCursorId(Adorn*, const TextureId&);
 		void renderGameCursor(Adorn*);
 	};

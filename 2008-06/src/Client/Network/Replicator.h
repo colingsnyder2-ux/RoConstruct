@@ -26,7 +26,7 @@ namespace RBX
 
 	namespace Network
 	{
-		extern const char* sMarker;
+		extern const char* const sMarker;
 
 		class Marker : public DescribedNonCreatable<Marker, Reflection::DescribedBase, &sMarker>, private boost::noncopyable
 		{
@@ -63,11 +63,11 @@ namespace RBX
 			static Marker* fromId(long);
 		};
 
-		extern const char* sReplicator;
+		extern const char* const sReplicator;
 
 		class Replicator : public DescribedNonCreatable<Replicator, IdSerializer, &sReplicator>, public PluginInterface
 		{
-			class Item : private boost::noncopyable
+			class __declspec(novtable) Item : private boost::noncopyable
 			{
 			public:
 				enum ItemType
@@ -88,7 +88,9 @@ namespace RBX
 				{
 				}
 			public:
-				virtual ~Item();
+				virtual ~Item()
+				{
+				}
 				virtual void write(RakNet::BitStream& bitStream) = 0;
 				
 			public:
@@ -148,7 +150,11 @@ namespace RBX
 				int id;
 
 			public:
-				MarkerItem(Replicator&, int);
+				MarkerItem(Replicator& replicator, int id)
+					: Item(replicator),
+					  id(id)
+				{
+				}
 				virtual void write(RakNet::BitStream& bitStream);
 			};
 
@@ -158,7 +164,7 @@ namespace RBX
 				boost::shared_ptr<Instance> instance;
 
 			public:
-				NewInstanceItem(Replicator&, const boost::shared_ptr<Instance>&);
+				NewInstanceItem(Replicator& replicator, const boost::shared_ptr<Instance>& instance);
 				virtual void write(RakNet::BitStream&);
 			};
 
@@ -173,8 +179,8 @@ namespace RBX
 				const boost::shared_ptr<Replicator> replicator;
 				const RakNetStatistics* statistics;
 			public:
-				size_t instanceCount;
-				size_t instanceBits;
+				unsigned instanceCount;
+				unsigned instanceBits;
 
 			public:
 				ReplicatorStatsItem(const boost::shared_ptr<Replicator>& replicator, const RakNetStatistics* statistics);
@@ -252,19 +258,22 @@ namespace RBX
 				return shared_from(findTargetPlayer());
 			}
 			virtual void Update(RakPeerInterface* peer);
-			virtual PluginReceiveResult OnReceive(RakPeerInterface*, Packet*);
+			virtual PluginReceiveResult OnReceive(RakPeerInterface* peer, Packet* packet);
 			virtual const Name& getClassName() const
 			{
 				return Name::getNullName();
 			}
-			virtual XmlElement* write();
+			virtual XmlElement* write()
+			{
+				return NULL;
+			}
 			boost::shared_ptr<Reflection::DescribedBase> sendMarker();
 			bool isSerializePending(const Instance* instance) const;
 			bool isPropertyChangedPending(const Reflection::Property&) const;
 			void requestCharacter();
 			void closeConnection();
 		protected:
-			virtual void onServiceProvider(const ServiceProvider*, const ServiceProvider*);
+			virtual void onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider);
 			void onDescendentAdded(boost::shared_ptr<Instance>);
 			void onDescendentRemoving(boost::shared_ptr<Instance>);
 			void onPropertyChanged(boost::shared_ptr<Instance> instance, const Reflection::PropertyDescriptor* descriptor);
@@ -273,7 +282,10 @@ namespace RBX
 			void connectPropertyChanged(boost::shared_ptr<Instance> instance);
 			void disconnectPropertyChanged(boost::shared_ptr<Instance> instance);
 			virtual bool wantReplicate(const Instance* source) const;
-			virtual void onSentMarker(long);
+			virtual void onSentMarker(long id)
+			{
+				return;
+			}
 		private:
 			void disconnectAllPropertyChangedConnections();
 			void connectToReplicationContainers();
@@ -288,8 +300,8 @@ namespace RBX
 			void sendPhysicsData(RakNet::BitStream&, const Assembly&);
 			void createStatsItems(Stats::StatsService* stats);
 			virtual bool remoteDeleteOnDisconnect(const Instance* instance) const;
-			void serializeValue(const Reflection::ConstProperty&, bool, RakNet::BitStream&);
-			void deserializeValue(RakNet::BitStream&, bool, Reflection::Property&);
+			void serializeValue(const Reflection::ConstProperty& property, bool includeLength, RakNet::BitStream& outBitStream);
+			void deserializeValue(RakNet::BitStream& inBitStream, bool lengthIncluded, Reflection::Property& property);
 			void skipValue(RakNet::BitStream&);
 			void receiveData(Packet* packet);
 			void readInstanceNew(RakNet::BitStream&);
@@ -303,7 +315,7 @@ namespace RBX
 			virtual bool canSendItems();
 		};
 
-		extern const char* sPeer;
+		extern const char* const sPeer;
 
 		class Peer : public Reflection::Described<Peer, &sPeer, Instance>, public PluginInterface, public Listener<RunService, Heartbeat>
 		{

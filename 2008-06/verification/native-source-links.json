@@ -8,11 +8,11 @@
   "path": "2008-06/src/Client/boost_1_34_1/src/boost/detail/shared_count.hpp"
  },
  "00405da0": {
-  "line": 103,
+  "line": 117,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "00407be0": {
-  "line": 75,
+  "line": 58,
   "path": "2008-06/src/Client/App/include/v8datamodel/GlobalSettings.h"
  },
  "00409e60": {
@@ -24,7 +24,7 @@
   "path": "2008-06/src/Client/boost_1_34_1/src/boost/function/function_base.hpp"
  },
  "0040a290": {
-  "line": 151,
+  "line": 181,
   "path": "2008-06/src/Client/App/include/reflection/property.h"
  },
  "0040a350": {
@@ -40,7 +40,7 @@
   "path": "2008-06/src/Client/boost_1_34_1/src/boost/any.hpp"
  },
  "0040a610": {
-  "line": 124,
+  "line": 143,
   "path": "2008-06/src/Client/App/include/reflection/type.h"
  },
  "0040ad20": {
@@ -61,27 +61,27 @@
  },
  "004117c0": {
   "line": 23,
-  "path": "2008-06/src/Client/App/include/gui/Gui.h"
+  "path": "2008-06/src/Client/App/include/gui/GUI.h"
  },
  "004117f0": {
-  "line": 59,
-  "path": "2008-06/src/Client/App/include/gui/Gui.h"
+  "line": 62,
+  "path": "2008-06/src/Client/App/include/gui/GUI.h"
  },
  "00411810": {
-  "line": 64,
-  "path": "2008-06/src/Client/App/include/gui/Gui.h"
+  "line": 67,
+  "path": "2008-06/src/Client/App/include/gui/GUI.h"
  },
  "00411830": {
-  "line": 70,
-  "path": "2008-06/src/Client/App/include/gui/Gui.h"
+  "line": 73,
+  "path": "2008-06/src/Client/App/include/gui/GUI.h"
  },
  "00411840": {
-  "line": 80,
-  "path": "2008-06/src/Client/App/include/gui/Gui.h"
+  "line": 83,
+  "path": "2008-06/src/Client/App/include/gui/GUI.h"
  },
  "00411870": {
-  "line": 86,
-  "path": "2008-06/src/Client/App/include/gui/Gui.h"
+  "line": 89,
+  "path": "2008-06/src/Client/App/include/gui/GUI.h"
  },
  "00415350": {
   "line": 98,
@@ -100,7 +100,7 @@
   "path": "2008-06/src/Client/App/include/reflection/member.h"
  },
  "004175d0": {
-  "line": 124,
+  "line": 143,
   "path": "2008-06/src/Client/App/include/reflection/type.h"
  },
  "0041a600": {
@@ -124,12 +124,12 @@
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "00420190": {
-  "line": 109,
+  "line": 123,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "00420740": {
-  "line": 122,
-  "path": "2008-06/src/glue/rbxgs/glue_link_stubs.cpp"
+  "line": 19,
+  "path": "2008-06/src/Client/App/include/util/Events.h"
  },
  "00420930": {
   "line": 629,
@@ -172,19 +172,19 @@
   "path": "2008-06/src/Client/boost_1_34_1/src/boost/any.hpp"
  },
  "0042d0a0": {
-  "line": 124,
+  "line": 143,
   "path": "2008-06/src/Client/App/include/reflection/type.h"
  },
  "00443230": {
-  "line": 151,
+  "line": 181,
   "path": "2008-06/src/Client/App/include/reflection/property.h"
  },
  "004432a0": {
-  "line": 151,
+  "line": 181,
   "path": "2008-06/src/Client/App/include/reflection/property.h"
  },
  "00443590": {
-  "line": 124,
+  "line": 143,
   "path": "2008-06/src/Client/App/include/reflection/type.h"
  },
  "00443d60": {
@@ -212,11 +212,11 @@
   "path": "2008-06/src/Client/App/include/v8datamodel/DebugSettings.h"
  },
  "00445260": {
-  "line": 75,
+  "line": 82,
   "path": "2008-06/src/Client/Network/include/Network/Player.h"
  },
  "00445610": {
-  "line": 151,
+  "line": 181,
   "path": "2008-06/src/Client/App/include/reflection/property.h"
  },
  "00448300": {
@@ -252,19 +252,19 @@
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "0045c660": {
-  "line": 247,
+  "line": 218,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "0045ec80": {
-  "line": 25,
-  "path": "2008-06/src/glue/rbxgs/glue_stats_items.cpp"
+  "line": 66,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Stats.h"
  },
  "0045eff0": {
-  "line": 110,
+  "line": 113,
   "path": "2008-06/src/Client/App/include/v8datamodel/Stats.h"
  },
  "00463890": {
-  "line": 57,
+  "line": 60,
   "path": "2008-06/src/Client/App/include/script/Script.h"
  },
  "00469080": {
@@ -319,32 +319,36 @@
   "line": 33,
   "path": "2008-06/src/Client/App/include/security/SecurityContext.h"
  },
+ "004898d0": {
+  "line": 84,
+  "path": "2008-06/src/Client/App/include/v8tree/Service.h"
+ },
  "00489960": {
-  "line": 80,
+  "line": 87,
   "path": "2008-06/src/Client/Network/include/Network/Player.h"
  },
  "00489970": {
-  "line": 85,
+  "line": 92,
   "path": "2008-06/src/Client/Network/include/Network/Player.h"
  },
  "004899a0": {
-  "line": 100,
+  "line": 110,
   "path": "2008-06/src/Client/Network/include/Network/Player.h"
  },
  "004899b0": {
-  "line": 47,
+  "line": 53,
   "path": "2008-06/src/Client/Network/Player.cpp"
  },
  "004899e0": {
-  "line": 152,
+  "line": 179,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "0048a670": {
-  "line": 26,
+  "line": 32,
   "path": "2008-06/src/Client/Network/Player.cpp"
  },
  "0048a690": {
-  "line": 31,
+  "line": 37,
   "path": "2008-06/src/Client/Network/Player.cpp"
  },
  "0048ae20": {
@@ -360,15 +364,15 @@
   "path": "2008-06/src/Client/boost_1_34_1/src/boost/algorithm/string/find_iterator.hpp"
  },
  "0048c3e0": {
-  "line": 254,
+  "line": 262,
   "path": "2008-06/src/Client/Network/Player.cpp"
  },
  "0048c470": {
-  "line": 74,
+  "line": 82,
   "path": "2008-06/src/Client/Network/Player.cpp"
  },
  "0048c480": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "0048cf90": {
@@ -396,7 +400,7 @@
   "path": "2008-06/src/Client/boost_1_34_1/src/boost/algorithm/string/classification.hpp"
  },
  "0048fe10": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "00490eb0": {
@@ -416,7 +420,7 @@
   "path": "2008-06/src/Client/boost_1_34_1/src/boost/algorithm/string/finder.hpp"
  },
  "004924e0": {
-  "line": 82,
+  "line": 90,
   "path": "2008-06/src/Client/Network/Player.cpp"
  },
  "00493760": {
@@ -424,35 +428,35 @@
   "path": "2008-06/src/Client/App/include/security/SecurityContext.h"
  },
  "004937c0": {
-  "line": 135,
+  "line": 143,
   "path": "2008-06/src/Client/Network/Player.cpp"
  },
  "00493da0": {
-  "line": 57,
+  "line": 65,
   "path": "2008-06/src/Client/Network/Player.cpp"
  },
  "004944b0": {
-  "line": 196,
+  "line": 204,
   "path": "2008-06/src/Client/Network/Player.cpp"
  },
  "00494600": {
-  "line": 109,
+  "line": 117,
   "path": "2008-06/src/Client/Network/Player.cpp"
  },
  "00494620": {
-  "line": 118,
+  "line": 126,
   "path": "2008-06/src/Client/Network/Player.cpp"
  },
  "00494740": {
-  "line": 153,
+  "line": 161,
   "path": "2008-06/src/Client/Network/Player.cpp"
  },
  "004947b0": {
-  "line": 127,
+  "line": 135,
   "path": "2008-06/src/Client/Network/Player.cpp"
  },
  "00494c60": {
-  "line": 69,
+  "line": 77,
   "path": "2008-06/src/Client/Network/Player.cpp"
  },
  "004950a0": {
@@ -468,27 +472,27 @@
   "path": "2008-06/src/Client/Network/include/Network/Players.h"
  },
  "00495e60": {
-  "line": 81,
+  "line": 91,
   "path": "2008-06/src/Client/Network/Players.cpp"
  },
  "00495e80": {
-  "line": 207,
+  "line": 217,
   "path": "2008-06/src/Client/Network/Players.cpp"
  },
  "00495eb0": {
-  "line": 200,
+  "line": 210,
   "path": "2008-06/src/Client/Network/Players.cpp"
  },
  "00495f30": {
-  "line": 86,
+  "line": 96,
   "path": "2008-06/src/Client/Network/Players.cpp"
  },
  "00496350": {
-  "line": 23,
+  "line": 27,
   "path": "2008-06/src/Client/App/include/util/Name.h"
  },
  "00496510": {
-  "line": 91,
+  "line": 101,
   "path": "2008-06/src/Client/Network/Players.cpp"
  },
  "00496c10": {
@@ -496,7 +500,7 @@
   "path": "2008-06/src/Client/Network/include/Network/Players.h"
  },
  "00496cf0": {
-  "line": 245,
+  "line": 255,
   "path": "2008-06/src/Client/Network/Players.cpp"
  },
  "004974c0": {
@@ -508,67 +512,67 @@
   "path": "2008-06/src/Client/boost_1_34_1/src/boost/bind.hpp"
  },
  "00497ec0": {
-  "line": 307,
+  "line": 317,
   "path": "2008-06/src/Client/Network/Players.cpp"
  },
  "00497f40": {
-  "line": 231,
+  "line": 241,
   "path": "2008-06/src/Client/Network/Players.cpp"
  },
  "00498030": {
-  "line": 215,
+  "line": 225,
   "path": "2008-06/src/Client/Network/Players.cpp"
  },
  "00498250": {
-  "line": 247,
+  "line": 218,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "00499630": {
-  "line": 73,
+  "line": 83,
   "path": "2008-06/src/Client/Network/Players.cpp"
  },
  "0049aca0": {
-  "line": 108,
+  "line": 118,
   "path": "2008-06/src/Client/Network/Players.cpp"
  },
  "0049add0": {
-  "line": 137,
+  "line": 41,
   "path": "2008-06/src/Client/App/include/util/Utilities.h"
  },
  "0049bdc0": {
-  "line": 64,
+  "line": 74,
   "path": "2008-06/src/Client/Network/Players.cpp"
  },
  "0049c710": {
-  "line": 346,
+  "line": 425,
   "path": "2008-06/src/Client/Network/Players.cpp"
  },
  "0049d450": {
-  "line": 122,
+  "line": 132,
   "path": "2008-06/src/Client/Network/Players.cpp"
  },
  "0049d770": {
-  "line": 115,
-  "path": "2008-06/src/glue/rbxgs/glue_gameplay.cpp"
+  "line": 343,
+  "path": "2008-06/src/Client/Network/Players.cpp"
  },
  "0049daa0": {
-  "line": 292,
+  "line": 302,
   "path": "2008-06/src/Client/Network/Players.cpp"
  },
  "0049dc70": {
-  "line": 264,
+  "line": 274,
   "path": "2008-06/src/Client/Network/Players.cpp"
  },
  "0049df50": {
-  "line": 29,
+  "line": 26,
   "path": "2008-06/src/Client/Network/Players.cpp"
  },
  "0049e040": {
-  "line": 340,
+  "line": 419,
   "path": "2008-06/src/Client/Network/Players.cpp"
  },
  "0049e1d0": {
-  "line": 114,
+  "line": 124,
   "path": "2008-06/src/Client/Network/Players.cpp"
  },
  "0049e290": {
@@ -584,63 +588,63 @@
   "path": "2008-06/src/Client/Network/CrashReporter.cpp"
  },
  "0049edb0": {
-  "line": 152,
+  "line": 179,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "0049ee20": {
-  "line": 319,
+  "line": 331,
   "path": "2008-06/src/Client/Network/Replicator.h"
  },
  "0049f0f0": {
-  "line": 36,
+  "line": 42,
   "path": "2008-06/src/Client/Network/Client.cpp"
  },
  "0049f130": {
-  "line": 43,
+  "line": 49,
   "path": "2008-06/src/Client/Network/Client.cpp"
  },
  "0049f180": {
-  "line": 14,
+  "line": 18,
   "path": "2008-06/src/Client/Network/Client.cpp"
  },
  "0049f2e0": {
-  "line": 31,
+  "line": 37,
   "path": "2008-06/src/Client/Network/Client.cpp"
  },
  "0049f590": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "0049fe20": {
-  "line": 86,
+  "line": 92,
   "path": "2008-06/src/Client/Network/Client.cpp"
  },
  "0049fe50": {
-  "line": 62,
+  "line": 68,
   "path": "2008-06/src/Client/Network/Client.cpp"
  },
  "004a1070": {
-  "line": 94,
+  "line": 100,
   "path": "2008-06/src/Client/Network/Client.cpp"
  },
  "004a1560": {
-  "line": 64,
+  "line": 73,
   "path": "2008-06/src/Client/App/include/v8datamodel/Feature.h"
  },
  "004a17f0": {
-  "line": 17,
+  "line": 19,
   "path": "2008-06/src/Client/Network/Server.cpp"
  },
  "004a1880": {
-  "line": 37,
+  "line": 41,
   "path": "2008-06/src/Client/Network/Server.cpp"
  },
  "004a2250": {
-  "line": 67,
+  "line": 71,
   "path": "2008-06/src/Client/Network/Server.cpp"
  },
  "004a22a0": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "004a27e0": {
@@ -648,31 +652,31 @@
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "004a2c20": {
-  "line": 20,
-  "path": "2008-06/src/glue/rbxgs/glue_server.cpp"
+  "line": 224,
+  "path": "2008-06/src/Client/Network/Server.cpp"
  },
  "004a3640": {
-  "line": 64,
+  "line": 70,
   "path": "2008-06/src/Client/Network/Server.h"
  },
  "004a3980": {
-  "line": 152,
+  "line": 179,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "004a3c90": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "004a3cb0": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "004a4100": {
-  "line": 79,
+  "line": 83,
   "path": "2008-06/src/Client/Network/Server.cpp"
  },
  "004a4dc0": {
-  "line": 116,
+  "line": 120,
   "path": "2008-06/src/Client/Network/Server.cpp"
  },
  "004a5940": {
@@ -684,39 +688,39 @@
   "path": "2008-06/src/Client/Rendering/g3d/include/G3D/Vector3.inl"
  },
  "004a5c00": {
-  "line": 151,
+  "line": 224,
   "path": "2008-06/src/Client/Network/Streaming.cpp"
  },
  "004a6700": {
-  "line": 192,
+  "line": 265,
   "path": "2008-06/src/Client/Network/Streaming.cpp"
  },
  "004a6a00": {
-  "line": 247,
+  "line": 320,
   "path": "2008-06/src/Client/Network/Streaming.cpp"
  },
  "004a7ba0": {
-  "line": 359,
+  "line": 462,
   "path": "2008-06/src/Client/Network/Streaming.cpp"
  },
  "004a9d90": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "004aadd0": {
-  "line": 29,
+  "line": 30,
   "path": "2008-06/src/Client/App/util/Guid.cpp"
  },
  "004aae80": {
-  "line": 90,
+  "line": 106,
   "path": "2008-06/src/Client/Network/Replicator.cpp"
  },
  "004aaea0": {
-  "line": 96,
+  "line": 112,
   "path": "2008-06/src/Client/Network/Replicator.cpp"
  },
  "004aaf90": {
-  "line": 204,
+  "line": 253,
   "path": "2008-06/src/Client/Network/Replicator.cpp"
  },
  "004ab530": {
@@ -724,23 +728,23 @@
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "004ab5d0": {
-  "line": 632,
+  "line": 768,
   "path": "2008-06/src/Client/Network/Replicator.cpp"
  },
  "004ab880": {
-  "line": 800,
+  "line": 936,
   "path": "2008-06/src/Client/Network/Replicator.cpp"
  },
  "004ac830": {
-  "line": 113,
+  "line": 132,
   "path": "2008-06/src/Client/Network/Replicator.cpp"
  },
  "004acb30": {
-  "line": 163,
+  "line": 193,
   "path": "2008-06/src/Client/App/include/reflection/property.h"
  },
  "004ad180": {
-  "line": 235,
+  "line": 114,
   "path": "2008-06/src/Client/App/include/reflection/property.h"
  },
  "004adbe0": {
@@ -748,44 +752,44 @@
   "path": "2008-06/src/Client/boost_1_34_1/src/boost/bind.hpp"
  },
  "004add50": {
-  "line": 118,
+  "line": 137,
   "path": "2008-06/src/Client/Network/Replicator.cpp"
  },
  "004b1240": {
-  "line": 504,
+  "line": 561,
   "path": "2008-06/src/Client/Network/Replicator.cpp"
  },
  "004b47b0": {
-  "line": 837,
+  "line": 987,
   "path": "2008-06/src/Client/Network/Replicator.cpp"
  },
  "004b51d0": {
-  "line": 110,
+  "line": 113,
   "path": "2008-06/src/Client/App/include/v8datamodel/Stats.h"
  },
  "004b5700": {
-  "line": 152,
-  "path": "2008-06/src/glue/rbxgs/glue_gameplay.cpp"
+  "line": 189,
+  "path": "2008-06/src/Client/Network/Replicator.cpp"
  },
  "004b62c0": {
-  "line": 753,
+  "line": 889,
   "path": "2008-06/src/Client/Network/Replicator.cpp"
  },
  "004b6530": {
-  "line": 777,
+  "line": 913,
   "path": "2008-06/src/Client/Network/Replicator.cpp"
  },
  "004b6d10": {
-  "line": 807,
+  "line": 943,
   "path": "2008-06/src/Client/Network/Replicator.cpp"
  },
  "004b8620": {
-  "line": 39,
+  "line": 31,
   "path": "2008-06/src/glue/rbxgs/glue_replicator.cpp"
  },
  "004b8c20": {
-  "line": 263,
-  "path": "2008-06/src/glue/rbxgs/glue_replicator.cpp"
+  "line": 1166,
+  "path": "2008-06/src/Client/Network/Replicator.cpp"
  },
  "004b9140": {
   "line": 40,
@@ -812,11 +816,11 @@
   "path": "2008-06/src/Client/App/v8world/Block.cpp"
  },
  "004e5b80": {
-  "line": 173,
+  "line": 176,
   "path": "2008-06/src/Client/App/include/v8datamodel/PartInstance.h"
  },
  "004e5b90": {
-  "line": 178,
+  "line": 181,
   "path": "2008-06/src/Client/App/include/v8datamodel/PartInstance.h"
  },
  "004e5ba0": {
@@ -836,11 +840,11 @@
   "path": "2008-06/src/Client/App/include/v8datamodel/Decal.h"
  },
  "004e5f20": {
-  "line": 32,
+  "line": 34,
   "path": "2008-06/src/Client/App/v8datamodel/custommesh.cpp"
  },
  "004e5f50": {
-  "line": 27,
+  "line": 29,
   "path": "2008-06/src/Client/App/v8datamodel/custommesh.cpp"
  },
  "004e6c00": {
@@ -894,10 +898,6 @@
  "00502010": {
   "line": 129,
   "path": "2008-06/src/Client/Rendering/g3d/include/G3D/Array.h"
- },
- "00502500": {
-  "line": 44,
-  "path": "2008-06/src/glue/rbxgs/glue_render_m4b.cpp"
  },
  "00502a00": {
   "line": 211,
@@ -987,36 +987,32 @@
   "line": 136,
   "path": "2008-06/src/Client/Rendering/g3d/include/G3D/Vector3.inl"
  },
- "00553f90": {
-  "line": 54,
-  "path": "2008-06/src/Client/App/util/Name.cpp"
- },
  "00554270": {
-  "line": 48,
+  "line": 56,
   "path": "2008-06/src/Client/App/util/Name.cpp"
  },
  "00554440": {
-  "line": 39,
+  "line": 45,
   "path": "2008-06/src/Client/App/util/RunStateOwner.cpp"
  },
  "00555020": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "00555350": {
-  "line": 69,
+  "line": 75,
   "path": "2008-06/src/Client/App/util/RunStateOwner.cpp"
  },
  "00556b00": {
-  "line": 12,
+  "line": 18,
   "path": "2008-06/src/Client/App/util/RunStateOwner.cpp"
  },
  "00557490": {
-  "line": 165,
+  "line": 166,
   "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
  },
  "005574b0": {
-  "line": 265,
+  "line": 295,
   "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
  },
  "00557640": {
@@ -1028,15 +1024,15 @@
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "00557920": {
-  "line": 173,
+  "line": 174,
   "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
  },
  "00557950": {
-  "line": 306,
+  "line": 336,
   "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
  },
  "00558030": {
-  "line": 235,
+  "line": 259,
   "path": "2008-06/src/Client/App/include/v8xml/XmlElement.h"
  },
  "005580e0": {
@@ -1044,19 +1040,19 @@
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "00558110": {
-  "line": 291,
+  "line": 321,
   "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
  },
  "005581b0": {
-  "line": 322,
+  "line": 352,
   "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
  },
  "00558220": {
-  "line": 343,
+  "line": 373,
   "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
  },
  "00558370": {
-  "line": 364,
+  "line": 394,
   "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
  },
  "00558910": {
@@ -1068,11 +1064,11 @@
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "00558b80": {
-  "line": 47,
-  "path": "2008-06/src/glue/rbxgs/glue_instance_core.cpp"
+  "line": 504,
+  "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
  },
  "00558c50": {
-  "line": 404,
+  "line": 430,
   "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
  },
  "00558ff0": {
@@ -1080,47 +1076,47 @@
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "00559170": {
-  "line": 386,
+  "line": 415,
   "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
  },
  "00559350": {
-  "line": 59,
-  "path": "2008-06/src/glue/rbxgs/glue_instance_core.cpp"
+  "line": 536,
+  "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
  },
  "00559920": {
-  "line": 291,
+  "line": 329,
   "path": "2008-06/src/Client/App/include/reflection/reflection.h"
  },
  "0055a470": {
-  "line": 276,
+  "line": 306,
   "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
  },
  "0055a540": {
-  "line": 80,
+  "line": 81,
   "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
  },
  "0055a8f0": {
-  "line": 424,
+  "line": 450,
   "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
  },
  "0055acc0": {
-  "line": 242,
+  "line": 272,
   "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
  },
  "0055ae20": {
-  "line": 104,
+  "line": 105,
   "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
  },
  "0055ae90": {
-  "line": 112,
+  "line": 113,
   "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
  },
  "0055af90": {
-  "line": 95,
+  "line": 96,
   "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
  },
  "0055afd0": {
-  "line": 157,
+  "line": 158,
   "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
  },
  "0055b4a0": {
@@ -1128,15 +1124,15 @@
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "0055b5a0": {
-  "line": 179,
+  "line": 180,
   "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
  },
  "0055b6a0": {
-  "line": 205,
+  "line": 202,
   "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
  },
  "0055b6f0": {
-  "line": 216,
+  "line": 213,
   "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
  },
  "0055bae0": {
@@ -1156,11 +1152,11 @@
   "path": "2008-06/src/Client/boost_1_34_1/src/boost/date_time/gregorian/greg_month.hpp"
  },
  "0055bd10": {
-  "line": 50,
+  "line": 54,
   "path": "2008-06/src/Client/App/util/ContentProvider.cpp"
  },
  "0055bd60": {
-  "line": 19,
+  "line": 18,
   "path": "2008-06/src/Client/App/util/ContentProvider.cpp"
  },
  "0055c020": {
@@ -1200,15 +1196,15 @@
   "path": "2008-06/src/Client/boost_1_34_1/src/boost/date_time/gregorian_calendar.ipp"
  },
  "0055c540": {
-  "line": 340,
+  "line": 401,
   "path": "2008-06/src/Client/App/util/ContentProvider.cpp"
  },
  "0055c710": {
-  "line": 387,
+  "line": 448,
   "path": "2008-06/src/Client/App/util/ContentProvider.cpp"
  },
  "0055c8b0": {
-  "line": 423,
+  "line": 484,
   "path": "2008-06/src/Client/App/util/ContentProvider.cpp"
  },
  "0055c930": {
@@ -1224,7 +1220,7 @@
   "path": "2008-06/src/Client/boost_1_34_1/src/boost/date_time/time_system_counted.hpp"
  },
  "0055e320": {
-  "line": 392,
+  "line": 453,
   "path": "2008-06/src/Client/App/util/ContentProvider.cpp"
  },
  "0055e7d0": {
@@ -1232,19 +1228,19 @@
   "path": "2008-06/src/Client/boost_1_34_1/src/boost/date_time/time_clock.hpp"
  },
  "0055f710": {
-  "line": 326,
+  "line": 387,
   "path": "2008-06/src/Client/App/util/ContentProvider.cpp"
  },
  "0055f940": {
-  "line": 191,
+  "line": 195,
   "path": "2008-06/src/Client/App/util/ContentProvider.cpp"
  },
  "005632c0": {
-  "line": 266,
+  "line": 275,
   "path": "2008-06/src/Client/App/v8datamodel/DebugSettings.cpp"
  },
  "00563330": {
-  "line": 277,
+  "line": 285,
   "path": "2008-06/src/Client/App/v8datamodel/DebugSettings.cpp"
  },
  "00563cd0": {
@@ -1256,19 +1252,19 @@
   "path": "2008-06/src/Client/boost_1_34_1/src/boost/any.hpp"
  },
  "00564050": {
-  "line": 124,
+  "line": 143,
   "path": "2008-06/src/Client/App/include/reflection/type.h"
  },
  "00564150": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005655b0": {
-  "line": 62,
+  "line": 47,
   "path": "2008-06/src/Client/App/include/v8datamodel/GlobalSettings.h"
  },
  "00565ac0": {
-  "line": 41,
+  "line": 50,
   "path": "2008-06/src/Client/App/v8datamodel/DebugSettings.cpp"
  },
  "00565e00": {
@@ -1276,19 +1272,19 @@
   "path": "2008-06/src/Client/App/include/v8datamodel/Team.h"
  },
  "00565e40": {
-  "line": 31,
+  "line": 35,
   "path": "2008-06/src/Client/App/v8datamodel/Team.cpp"
  },
  "00565e50": {
-  "line": 42,
+  "line": 46,
   "path": "2008-06/src/Client/App/v8datamodel/Team.cpp"
  },
  "00566190": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005665e0": {
-  "line": 11,
+  "line": 13,
   "path": "2008-06/src/Client/App/v8datamodel/Team.cpp"
  },
  "00566860": {
@@ -1296,51 +1292,51 @@
   "path": "2008-06/src/Client/App/include/v8datamodel/Selection.h"
  },
  "00566a80": {
-  "line": 115,
+  "line": 143,
   "path": "2008-06/src/Client/App/include/v8datamodel/Selection.h"
  },
  "00566b80": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "00566ba0": {
-  "line": 29,
+  "line": 31,
   "path": "2008-06/src/Client/App/v8datamodel/Selection.cpp"
  },
  "00566d50": {
-  "line": 41,
+  "line": 43,
   "path": "2008-06/src/Client/App/v8datamodel/Selection.cpp"
  },
  "005670f0": {
-  "line": 24,
+  "line": 26,
   "path": "2008-06/src/Client/App/v8datamodel/Selection.cpp"
  },
  "00567180": {
-  "line": 19,
+  "line": 21,
   "path": "2008-06/src/Client/App/v8datamodel/Selection.cpp"
  },
  "00567210": {
-  "line": 53,
+  "line": 55,
   "path": "2008-06/src/Client/App/v8datamodel/Selection.cpp"
  },
  "005675d0": {
-  "line": 107,
+  "line": 109,
   "path": "2008-06/src/Client/App/v8datamodel/Selection.cpp"
  },
  "00567c10": {
-  "line": 90,
+  "line": 92,
   "path": "2008-06/src/Client/App/v8datamodel/Selection.cpp"
  },
  "00568180": {
-  "line": 8,
+  "line": 10,
   "path": "2008-06/src/Client/App/v8datamodel/Selection.cpp"
  },
  "005682e0": {
-  "line": 152,
+  "line": 154,
   "path": "2008-06/src/Client/App/v8datamodel/Selection.cpp"
  },
  "00568eb0": {
-  "line": 247,
+  "line": 218,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "00568f80": {
@@ -1348,7 +1344,7 @@
   "path": "2008-06/src/Client/App/include/v8datamodel/GlobalSettings.h"
  },
  "005690f0": {
-  "line": 5,
+  "line": 9,
   "path": "2008-06/src/Client/App/v8datamodel/GlobalSettings.cpp"
  },
  "00569530": {
@@ -1360,19 +1356,19 @@
   "path": "2008-06/src/Client/App/util/standardout.cpp"
  },
  "00569a40": {
-  "line": 446,
+  "line": 478,
   "path": "2008-06/src/Client/App/util/Http.cpp"
  },
  "00569ae0": {
-  "line": 422,
+  "line": 454,
   "path": "2008-06/src/Client/App/util/Http.cpp"
  },
  "0056a040": {
-  "line": 345,
+  "line": 377,
   "path": "2008-06/src/Client/App/util/Http.cpp"
  },
  "0056a560": {
-  "line": 10,
+  "line": 11,
   "path": "2008-06/src/Client/App/util/Debug.cpp"
  },
  "0056b620": {
@@ -1380,7 +1376,7 @@
   "path": "2008-06/src/Client/App/reflection/signal.cpp"
  },
  "0056b700": {
-  "line": 131,
+  "line": 149,
   "path": "2008-06/src/Client/App/include/reflection/member.h"
  },
  "0056bab0": {
@@ -1392,19 +1388,19 @@
   "path": "2008-06/src/Client/App/reflection/signal.cpp"
  },
  "0056bd10": {
-  "line": 65,
-  "path": "2008-06/src/glue/rbxgs/glue_input.cpp"
- },
- "0056bd40": {
-  "line": 55,
+  "line": 64,
   "path": "2008-06/src/Client/App/reflection/signal.cpp"
  },
- "0056bd60": {
+ "0056bd40": {
   "line": 57,
   "path": "2008-06/src/Client/App/reflection/signal.cpp"
  },
+ "0056bd60": {
+  "line": 59,
+  "path": "2008-06/src/Client/App/reflection/signal.cpp"
+ },
  "0056c170": {
-  "line": 131,
+  "line": 149,
   "path": "2008-06/src/Client/App/include/reflection/member.h"
  },
  "0056c590": {
@@ -1415,44 +1411,12 @@
   "line": 17,
   "path": "2008-06/src/Client/App/reflection/reflection_property.cpp"
  },
- "0056d090": {
-  "line": 13,
-  "path": "2008-06/src/glue/rbxgs/glue_instance_value.cpp"
- },
- "0056ea60": {
-  "line": 13,
-  "path": "2008-06/src/glue/rbxgs/glue_instance_value.cpp"
- },
- "0056ebb0": {
-  "line": 13,
-  "path": "2008-06/src/glue/rbxgs/glue_instance_value.cpp"
- },
- "0056ee50": {
-  "line": 13,
-  "path": "2008-06/src/glue/rbxgs/glue_instance_value.cpp"
- },
- "0056efa0": {
-  "line": 13,
-  "path": "2008-06/src/glue/rbxgs/glue_instance_value.cpp"
- },
- "0056eff0": {
-  "line": 13,
-  "path": "2008-06/src/glue/rbxgs/glue_instance_value.cpp"
- },
- "0056f0b0": {
-  "line": 13,
-  "path": "2008-06/src/glue/rbxgs/glue_instance_value.cpp"
- },
- "0056f8c0": {
-  "line": 13,
-  "path": "2008-06/src/glue/rbxgs/glue_instance_value.cpp"
- },
  "0056fe10": {
   "line": 36,
   "path": "2008-06/src/Client/App/reflection/reflection_object.cpp"
  },
  "0056fff0": {
-  "line": 131,
+  "line": 149,
   "path": "2008-06/src/Client/App/include/reflection/member.h"
  },
  "005726a0": {
@@ -1461,10 +1425,6 @@
  },
  "005726c0": {
   "line": 44,
-  "path": "2008-06/src/Client/App/v8tree/Service.cpp"
- },
- "005726f0": {
-  "line": 107,
   "path": "2008-06/src/Client/App/v8tree/Service.cpp"
  },
  "005729c0": {
@@ -1492,7 +1452,7 @@
   "path": "2008-06/src/Client/App/gui/GUI.cpp"
  },
  "00573290": {
-  "line": 12,
+  "line": 30,
   "path": "2008-06/src/Client/App/gui/GUI.cpp"
  },
  "005732d0": {
@@ -1500,107 +1460,107 @@
   "path": "2008-06/src/Client/App/include/gui/GuiEvent.h"
  },
  "005732f0": {
-  "line": 75,
+  "line": 117,
   "path": "2008-06/src/Client/App/gui/GUI.cpp"
  },
  "00573310": {
-  "line": 69,
-  "path": "2008-06/src/Client/App/gui/GUI.cpp"
- },
- "00573360": {
-  "line": 51,
-  "path": "2008-06/src/glue/rbxgs/glue_gui.cpp"
- },
- "00573480": {
-  "line": 176,
-  "path": "2008-06/src/Client/App/gui/GUI.cpp"
- },
- "00573530": {
-  "line": 104,
-  "path": "2008-06/src/Client/App/gui/GUI.cpp"
- },
- "005737e0": {
-  "line": 32,
-  "path": "2008-06/src/glue/rbxgs/glue_gui.cpp"
- },
- "00573960": {
-  "line": 42,
-  "path": "2008-06/src/Client/App/include/gui/Gui.h"
- },
- "005739d0": {
-  "line": 22,
-  "path": "2008-06/src/Client/App/gui/GUI.cpp"
- },
- "00573be0": {
-  "line": 258,
-  "path": "2008-06/src/Client/App/include/gui/Gui.h"
- },
- "00573c00": {
-  "line": 197,
-  "path": "2008-06/src/Client/App/gui/GUI.cpp"
- },
- "00573e00": {
-  "line": 212,
-  "path": "2008-06/src/Client/App/include/gui/Gui.h"
- },
- "00573e30": {
   "line": 111,
   "path": "2008-06/src/Client/App/gui/GUI.cpp"
  },
+ "00573360": {
+  "line": 122,
+  "path": "2008-06/src/Client/App/gui/GUI.cpp"
+ },
+ "00573480": {
+  "line": 561,
+  "path": "2008-06/src/Client/App/gui/GUI.cpp"
+ },
+ "00573530": {
+  "line": 460,
+  "path": "2008-06/src/Client/App/gui/GUI.cpp"
+ },
+ "005737e0": {
+  "line": 571,
+  "path": "2008-06/src/Client/App/gui/GUI.cpp"
+ },
+ "00573960": {
+  "line": 45,
+  "path": "2008-06/src/Client/App/include/gui/GUI.h"
+ },
+ "005739d0": {
+  "line": 40,
+  "path": "2008-06/src/Client/App/gui/GUI.cpp"
+ },
+ "00573be0": {
+  "line": 325,
+  "path": "2008-06/src/Client/App/include/gui/GUI.h"
+ },
+ "00573c00": {
+  "line": 619,
+  "path": "2008-06/src/Client/App/gui/GUI.cpp"
+ },
+ "00573e00": {
+  "line": 251,
+  "path": "2008-06/src/Client/App/include/gui/GUI.h"
+ },
+ "00573e30": {
+  "line": 467,
+  "path": "2008-06/src/Client/App/gui/GUI.cpp"
+ },
  "00573f30": {
-  "line": 13,
-  "path": "2008-06/src/glue/rbxgs/glue_gui.cpp"
+  "line": 495,
+  "path": "2008-06/src/Client/App/gui/GUI.cpp"
  },
  "00574050": {
-  "line": 139,
+  "line": 524,
   "path": "2008-06/src/Client/App/gui/GUI.cpp"
  },
  "005746a0": {
-  "line": 61,
+  "line": 103,
   "path": "2008-06/src/Client/App/gui/GUI.cpp"
  },
  "00574980": {
-  "line": 37,
+  "line": 55,
   "path": "2008-06/src/Client/App/gui/GUI.cpp"
  },
  "00574b10": {
-  "line": 80,
+  "line": 79,
   "path": "2008-06/src/Client/App/gui/GUI.cpp"
  },
  "00574bf0": {
-  "line": 157,
+  "line": 542,
   "path": "2008-06/src/Client/App/gui/GUI.cpp"
  },
  "00574f10": {
-  "line": 99,
+  "line": 108,
   "path": "2008-06/src/Client/App/include/v8datamodel/DataModel.h"
  },
  "00574fb0": {
-  "line": 241,
+  "line": 245,
   "path": "2008-06/src/Client/App/include/v8world/Primitive.h"
  },
  "00575060": {
-  "line": 113,
+  "line": 116,
   "path": "2008-06/src/Client/App/v8datamodel/DataModel.cpp"
  },
  "00575120": {
-  "line": 121,
+  "line": 124,
   "path": "2008-06/src/Client/App/v8datamodel/DataModel.cpp"
  },
  "00575270": {
-  "line": 129,
+  "line": 132,
   "path": "2008-06/src/Client/App/v8datamodel/DataModel.cpp"
  },
  "00575750": {
-  "line": 80,
+  "line": 83,
   "path": "2008-06/src/Client/App/v8datamodel/DataModel.cpp"
  },
  "00575840": {
-  "line": 94,
+  "line": 97,
   "path": "2008-06/src/Client/App/v8datamodel/DataModel.cpp"
  },
  "00575d90": {
-  "line": 259,
+  "line": 268,
   "path": "2008-06/src/Client/App/v8datamodel/DataModel.cpp"
  },
  "005769d0": {
@@ -1608,11 +1568,11 @@
   "path": "2008-06/src/Client/boost_1_34_1/src/boost/bind.hpp"
  },
  "00576f00": {
-  "line": 382,
+  "line": 466,
   "path": "2008-06/src/Client/App/v8datamodel/DataModel.cpp"
  },
  "005773c0": {
-  "line": 391,
+  "line": 475,
   "path": "2008-06/src/Client/App/v8datamodel/DataModel.cpp"
  },
  "005777a0": {
@@ -1620,31 +1580,31 @@
   "path": "2008-06/src/Client/boost_1_34_1/src/boost/bind.hpp"
  },
  "0057a850": {
-  "line": 247,
+  "line": 218,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "0057b020": {
-  "line": 77,
+  "line": 86,
   "path": "2008-06/src/Client/App/include/v8datamodel/DataModel.h"
  },
  "0057b030": {
-  "line": 82,
+  "line": 91,
   "path": "2008-06/src/Client/App/include/v8datamodel/DataModel.h"
  },
  "0057b040": {
-  "line": 125,
+  "line": 134,
   "path": "2008-06/src/Client/App/include/v8datamodel/DataModel.h"
  },
  "0057b070": {
-  "line": 131,
+  "line": 140,
   "path": "2008-06/src/Client/App/include/v8datamodel/DataModel.h"
  },
  "0057b630": {
-  "line": 119,
+  "line": 128,
   "path": "2008-06/src/Client/App/include/v8datamodel/DataModel.h"
  },
  "0057b9f0": {
-  "line": 37,
+  "line": 40,
   "path": "2008-06/src/Client/App/v8datamodel/DataModel.cpp"
  },
  "0057c1b0": {
@@ -1672,7 +1632,7 @@
   "path": "2008-06/src/Client/App/v8xml/XmlElement.cpp"
  },
  "00581cc0": {
-  "line": 166,
+  "line": 252,
   "path": "2008-06/src/Client/App/include/v8tree/Service.h"
  },
  "00583210": {
@@ -1748,7 +1708,7 @@
   "path": "2008-06/src/Client/App/v8datamodel/ModelInstance.cpp"
  },
  "00584440": {
-  "line": 151,
+  "line": 181,
   "path": "2008-06/src/Client/App/include/reflection/property.h"
  },
  "00584620": {
@@ -1784,7 +1744,7 @@
   "path": "2008-06/src/Client/App/v8datamodel/ModelInstance.cpp"
  },
  "00584c10": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "00584fc0": {
@@ -1804,7 +1764,7 @@
   "path": "2008-06/src/Client/App/v8datamodel/ModelInstance.cpp"
  },
  "00585df0": {
-  "line": 231,
+  "line": 240,
   "path": "2008-06/src/Client/App/include/reflection/reflection.h"
  },
  "005862a0": {
@@ -1812,11 +1772,11 @@
   "path": "2008-06/src/Client/App/script/Script.cpp"
  },
  "00586310": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005863c0": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "0058c990": {
@@ -1940,67 +1900,67 @@
   "path": "2008-06/src/Client/App/v8xml/XmlElement.cpp"
  },
  "00591d30": {
-  "line": 84,
+  "line": 85,
   "path": "2008-06/src/Client/App/v8xml/SerializerV2.cpp"
  },
  "00592720": {
-  "line": 6,
+  "line": 7,
   "path": "2008-06/src/Client/App/v8xml/SerializerV2.cpp"
  },
  "00592780": {
-  "line": 64,
+  "line": 65,
   "path": "2008-06/src/Client/App/v8xml/SerializerV2.cpp"
  },
  "005930c0": {
-  "line": 37,
+  "line": 38,
   "path": "2008-06/src/Client/App/v8xml/SerializerV2.cpp"
  },
  "00593170": {
-  "line": 53,
+  "line": 54,
   "path": "2008-06/src/Client/App/v8xml/SerializerV2.cpp"
  },
  "00593480": {
-  "line": 99,
+  "line": 100,
   "path": "2008-06/src/Client/App/v8xml/SerializerV2.cpp"
  },
  "00593bb0": {
-  "line": 78,
+  "line": 82,
   "path": "2008-06/src/Client/App/script/ThreadRef.cpp"
  },
  "00593c40": {
-  "line": 144,
+  "line": 153,
   "path": "2008-06/src/Client/App/script/ThreadRef.cpp"
  },
  "00593c60": {
-  "line": 155,
+  "line": 164,
   "path": "2008-06/src/Client/App/script/ThreadRef.cpp"
  },
  "00593cb0": {
-  "line": 116,
+  "line": 120,
   "path": "2008-06/src/Client/App/script/ThreadRef.cpp"
  },
  "00594060": {
-  "line": 41,
+  "line": 45,
   "path": "2008-06/src/Client/App/script/ThreadRef.cpp"
  },
  "00594100": {
-  "line": 49,
+  "line": 53,
   "path": "2008-06/src/Client/App/script/ThreadRef.cpp"
  },
  "00594210": {
-  "line": 88,
+  "line": 92,
   "path": "2008-06/src/Client/App/script/ThreadRef.cpp"
  },
  "00594290": {
-  "line": 101,
+  "line": 105,
   "path": "2008-06/src/Client/App/script/ThreadRef.cpp"
  },
  "00594380": {
-  "line": 36,
+  "line": 40,
   "path": "2008-06/src/Client/App/script/ThreadRef.cpp"
  },
  "00594470": {
-  "line": 149,
+  "line": 158,
   "path": "2008-06/src/Client/App/script/ThreadRef.cpp"
  },
  "00594570": {
@@ -2012,7 +1972,7 @@
   "path": "2008-06/src/Client/boost_1_34_1/src/boost/any.hpp"
  },
  "005948f0": {
-  "line": 106,
+  "line": 110,
   "path": "2008-06/src/Client/App/script/ThreadRef.cpp"
  },
  "00594b40": {
@@ -2036,7 +1996,7 @@
   "path": "2008-06/src/Client/App/reflection/reflection_function.cpp"
  },
  "00595a30": {
-  "line": 31,
+  "line": 32,
   "path": "2008-06/src/Client/App/include/util/boost.hpp"
  },
  "00595a80": {
@@ -2044,19 +2004,19 @@
   "path": "2008-06/src/Client/App/util/boost.cpp"
  },
  "00595ae0": {
-  "line": 76,
+  "line": 84,
   "path": "2008-06/src/Client/App/util/boost.cpp"
  },
  "00595cb0": {
-  "line": 112,
+  "line": 120,
   "path": "2008-06/src/Client/App/util/boost.cpp"
  },
  "00595d70": {
-  "line": 119,
+  "line": 127,
   "path": "2008-06/src/Client/App/util/boost.cpp"
  },
  "00595de0": {
-  "line": 130,
+  "line": 138,
   "path": "2008-06/src/Client/App/util/boost.cpp"
  },
  "005961d0": {
@@ -2064,11 +2024,11 @@
   "path": "2008-06/src/Client/boost_1_34_1/src/boost/bind.hpp"
  },
  "00596db0": {
-  "line": 58,
+  "line": 66,
   "path": "2008-06/src/Client/App/util/boost.cpp"
  },
  "005971d0": {
-  "line": 106,
+  "line": 114,
   "path": "2008-06/src/Client/App/util/boost.cpp"
  },
  "00597350": {
@@ -2080,15 +2040,15 @@
   "path": "2008-06/src/Client/App/include/v8datamodel/Decal.h"
  },
  "005978a0": {
-  "line": 151,
+  "line": 181,
   "path": "2008-06/src/Client/App/include/reflection/property.h"
  },
  "00597d80": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "00597e20": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "00598400": {
@@ -2100,7 +2060,7 @@
   "path": "2008-06/src/Client/App/v8datamodel/Decal.cpp"
  },
  "00598870": {
-  "line": 52,
+  "line": 54,
   "path": "2008-06/src/Client/App/v8datamodel/Decal.cpp"
  },
  "00598a50": {
@@ -2112,55 +2072,55 @@
   "path": "2008-06/src/Client/App/include/v8world/Primitive.h"
  },
  "00598bd0": {
-  "line": 121,
+  "line": 124,
   "path": "2008-06/src/Client/App/include/v8datamodel/PartInstance.h"
  },
  "00598be0": {
-  "line": 155,
+  "line": 158,
   "path": "2008-06/src/Client/App/include/v8datamodel/PartInstance.h"
  },
  "00598bf0": {
-  "line": 183,
+  "line": 186,
   "path": "2008-06/src/Client/App/include/v8datamodel/PartInstance.h"
  },
  "00598c10": {
-  "line": 191,
+  "line": 194,
   "path": "2008-06/src/Client/App/include/v8datamodel/PartInstance.h"
  },
  "00598c20": {
-  "line": 857,
+  "line": 1018,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "00598cb0": {
-  "line": 178,
+  "line": 197,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "00598cc0": {
-  "line": 188,
+  "line": 207,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "00598cd0": {
-  "line": 208,
+  "line": 227,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "00598ce0": {
-  "line": 213,
+  "line": 232,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "00598d10": {
-  "line": 218,
+  "line": 237,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "00598d50": {
-  "line": 233,
+  "line": 252,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "00598d60": {
-  "line": 238,
+  "line": 257,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "00598d70": {
-  "line": 248,
+  "line": 267,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "00598fa0": {
@@ -2168,35 +2128,35 @@
   "path": "2008-06/src/Client/Rendering/g3d/include/G3D/ReferenceCount.h"
  },
  "005993e0": {
-  "line": 253,
+  "line": 272,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "005994c0": {
-  "line": 266,
+  "line": 285,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "005995f0": {
-  "line": 105,
-  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
- },
- "00599640": {
   "line": 124,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
- "00599770": {
+ "00599640": {
   "line": 143,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
+ "00599770": {
+  "line": 162,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
  "005997c0": {
-  "line": 154,
+  "line": 173,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "00599830": {
-  "line": 183,
+  "line": 202,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "00599870": {
-  "line": 203,
+  "line": 222,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "00599b70": {
@@ -2208,11 +2168,11 @@
   "path": "2008-06/src/Client/Rendering/g3d/include/G3D/Array.h"
  },
  "00599ce0": {
-  "line": 231,
+  "line": 240,
   "path": "2008-06/src/Client/App/include/reflection/reflection.h"
  },
  "00599d70": {
-  "line": 236,
+  "line": 245,
   "path": "2008-06/src/Client/App/include/reflection/reflection.h"
  },
  "00599e50": {
@@ -2220,15 +2180,15 @@
   "path": "2008-06/src/Client/App/include/v8world/Controller.h"
  },
  "00599f80": {
-  "line": 308,
+  "line": 327,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "00599fa0": {
-  "line": 323,
+  "line": 342,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "0059a040": {
-  "line": 336,
+  "line": 355,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "0059a0d0": {
@@ -2236,155 +2196,155 @@
   "path": "2008-06/src/Client/App/include/util/ComputeProp.h"
  },
  "0059a4b0": {
-  "line": 151,
+  "line": 181,
   "path": "2008-06/src/Client/App/include/reflection/property.h"
  },
  "0059aa40": {
-  "line": 849,
+  "line": 868,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "0059aa90": {
-  "line": 293,
+  "line": 312,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "0059ab80": {
-  "line": 355,
+  "line": 374,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "0059abb0": {
-  "line": 416,
+  "line": 435,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "0059abe0": {
-  "line": 523,
+  "line": 542,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "0059b970": {
-  "line": 83,
+  "line": 97,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "0059c0d0": {
-  "line": 217,
+  "line": 220,
   "path": "2008-06/src/Client/App/include/v8datamodel/PartInstance.h"
  },
  "0059c3a0": {
-  "line": 217,
+  "line": 220,
   "path": "2008-06/src/Client/App/include/v8datamodel/PartInstance.h"
  },
  "0059c640": {
-  "line": 563,
+  "line": 582,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "0059d4d0": {
-  "line": 54,
+  "line": 68,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "0059d7f0": {
-  "line": 396,
+  "line": 415,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "0059d8a0": {
-  "line": 574,
+  "line": 593,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "0059da10": {
-  "line": 827,
+  "line": 846,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "0059dad0": {
-  "line": 838,
+  "line": 857,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "0059dd20": {
-  "line": 651,
+  "line": 670,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "0059ddf0": {
-  "line": 687,
+  "line": 706,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "0059dee0": {
-  "line": 705,
+  "line": 724,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "0059df40": {
-  "line": 723,
+  "line": 742,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "0059df70": {
-  "line": 733,
+  "line": 752,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "0059e430": {
-  "line": 406,
+  "line": 425,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "0059e4d0": {
-  "line": 421,
+  "line": 440,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "0059eb50": {
-  "line": 785,
+  "line": 804,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "0059ec90": {
-  "line": 406,
+  "line": 425,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "0059ece0": {
-  "line": 152,
+  "line": 179,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "0059ee00": {
-  "line": 231,
+  "line": 240,
   "path": "2008-06/src/Client/App/include/reflection/reflection.h"
  },
  "0059f260": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "0059fbb0": {
-  "line": 14,
+  "line": 16,
   "path": "2008-06/src/Client/App/v8datamodel/custommesh.cpp"
  },
  "0059ffd0": {
-  "line": 76,
+  "line": 78,
   "path": "2008-06/src/Client/App/v8datamodel/custommesh.cpp"
  },
  "005a0030": {
-  "line": 86,
+  "line": 88,
   "path": "2008-06/src/Client/App/v8datamodel/custommesh.cpp"
  },
  "005a0140": {
-  "line": 73,
+  "line": 75,
   "path": "2008-06/src/Client/App/include/v8datamodel/MouseCommand.h"
  },
  "005a0150": {
-  "line": 81,
+  "line": 83,
   "path": "2008-06/src/Client/App/include/v8datamodel/MouseCommand.h"
  },
  "005a01e0": {
-  "line": 52,
+  "line": 60,
   "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
  },
  "005a0210": {
-  "line": 57,
+  "line": 65,
   "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
  },
  "005a0240": {
-  "line": 62,
+  "line": 70,
   "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
  },
  "005a0260": {
-  "line": 78,
+  "line": 86,
   "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
  },
  "005a0280": {
-  "line": 85,
+  "line": 93,
   "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
  },
  "005a04a0": {
-  "line": 86,
+  "line": 88,
   "path": "2008-06/src/Client/App/include/v8datamodel/MouseCommand.h"
  },
  "005a04b0": {
@@ -2392,31 +2352,31 @@
   "path": "2008-06/src/Client/App/include/tool/ToolsArrow.h"
  },
  "005a05a0": {
-  "line": 118,
+  "line": 126,
   "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
  },
  "005a0610": {
-  "line": 90,
+  "line": 98,
   "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
  },
  "005a0660": {
-  "line": 96,
+  "line": 104,
   "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
  },
  "005a0690": {
-  "line": 483,
+  "line": 491,
   "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
  },
  "005a0740": {
-  "line": 174,
-  "path": "2008-06/src/glue/rbxgs/glue_runtime.cpp"
+  "line": 539,
+  "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
  },
  "005a0e40": {
   "line": 239,
   "path": "2008-06/src/Client/Rendering/g3d/include/G3D/Array.h"
  },
  "005a0f80": {
-  "line": 110,
+  "line": 112,
   "path": "2008-06/src/Client/App/include/v8datamodel/MouseCommand.h"
  },
  "005a16b0": {
@@ -2428,51 +2388,51 @@
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "005a17f0": {
-  "line": 247,
+  "line": 218,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005a1830": {
-  "line": 148,
+  "line": 156,
   "path": "2008-06/src/Client/App/include/util/Name.h"
  },
  "005a1b90": {
-  "line": 131,
+  "line": 139,
   "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
  },
  "005a1bc0": {
-  "line": 158,
+  "line": 166,
   "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
  },
  "005a1c20": {
-  "line": 137,
+  "line": 145,
   "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
  },
  "005a1ce0": {
-  "line": 201,
+  "line": 209,
   "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
  },
  "005a1e80": {
-  "line": 223,
+  "line": 231,
   "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
  },
  "005a1fc0": {
-  "line": 235,
+  "line": 243,
   "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
  },
  "005a20e0": {
-  "line": 142,
-  "path": "2008-06/src/glue/rbxgs/glue_runtime.cpp"
+  "line": 558,
+  "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
  },
  "005a2730": {
-  "line": 287,
+  "line": 295,
   "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
  },
  "005a2760": {
-  "line": 293,
+  "line": 301,
   "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
  },
  "005a27c0": {
-  "line": 303,
+  "line": 311,
   "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
  },
  "005a2c30": {
@@ -2500,67 +2460,67 @@
   "path": "2008-06/src/Client/App/include/v8datamodel/Workspace.h"
  },
  "005a3380": {
-  "line": 308,
+  "line": 316,
   "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
  },
  "005a33d0": {
-  "line": 334,
+  "line": 342,
   "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
  },
  "005a3470": {
-  "line": 164,
-  "path": "2008-06/src/glue/rbxgs/glue_runtime.cpp"
+  "line": 620,
+  "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
  },
  "005a36d0": {
-  "line": 429,
+  "line": 437,
   "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
  },
  "005a4d90": {
-  "line": 25,
+  "line": 33,
   "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
  },
  "005a59e0": {
-  "line": 508,
+  "line": 516,
   "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
  },
  "005a66b0": {
-  "line": 455,
+  "line": 463,
   "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
  },
  "005a6bc0": {
-  "line": 31,
+  "line": 34,
   "path": "2008-06/src/Client/App/util/Log.cpp"
  },
  "005a6c60": {
-  "line": 46,
+  "line": 49,
   "path": "2008-06/src/Client/App/util/Log.cpp"
  },
  "005a7770": {
-  "line": 6,
+  "line": 17,
   "path": "2008-06/src/Client/App/util/FileSystem.cpp"
  },
  "005a7780": {
-  "line": 12,
+  "line": 31,
   "path": "2008-06/src/Client/App/util/FileSystem.cpp"
  },
  "005a7ea0": {
-  "line": 71,
+  "line": 79,
   "path": "2008-06/src/Client/App/util/FileSystem.cpp"
  },
  "005a8140": {
-  "line": 54,
+  "line": 55,
   "path": "2008-06/src/Client/App/util/Guid.cpp"
  },
  "005a8260": {
-  "line": 12,
+  "line": 13,
   "path": "2008-06/src/Client/App/util/Guid.cpp"
  },
  "005a8300": {
-  "line": 21,
+  "line": 22,
   "path": "2008-06/src/Client/App/util/Guid.cpp"
  },
  "005a8440": {
-  "line": 91,
+  "line": 92,
   "path": "2008-06/src/Client/App/util/Guid.cpp"
  },
  "005a8590": {
@@ -2604,7 +2564,7 @@
   "path": "2008-06/src/Client/App/script/ScriptContext.cpp"
  },
  "005ac030": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005ac2f0": {
@@ -2624,91 +2584,95 @@
   "path": "2008-06/src/Client/App/include/v8datamodel/Accoutrement.h"
  },
  "005b0840": {
-  "line": 34,
+  "line": 38,
   "path": "2008-06/src/Client/App/v8datamodel/Accoutrement.cpp"
  },
  "005b08a0": {
-  "line": 489,
+  "line": 464,
   "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
  },
+ "005b0920": {
+  "line": 51,
+  "path": "2008-06/src/Client/App/v8datamodel/Accoutrement.cpp"
+ },
  "005b0940": {
-  "line": 56,
+  "line": 57,
   "path": "2008-06/src/Client/App/v8datamodel/Accoutrement.cpp"
  },
  "005b09c0": {
-  "line": 66,
+  "line": 67,
   "path": "2008-06/src/Client/App/v8datamodel/Accoutrement.cpp"
  },
  "005b09e0": {
-  "line": 71,
+  "line": 72,
   "path": "2008-06/src/Client/App/v8datamodel/Accoutrement.cpp"
  },
  "005b0b70": {
-  "line": 81,
+  "line": 82,
   "path": "2008-06/src/Client/App/v8datamodel/Accoutrement.cpp"
  },
  "005b0bd0": {
-  "line": 231,
+  "line": 240,
   "path": "2008-06/src/Client/App/include/reflection/reflection.h"
  },
  "005b0da0": {
-  "line": 24,
+  "line": 28,
   "path": "2008-06/src/Client/App/v8datamodel/Accoutrement.cpp"
  },
  "005b0f90": {
-  "line": 81,
+  "line": 82,
   "path": "2008-06/src/Client/App/v8datamodel/Accoutrement.cpp"
  },
  "005b0fa0": {
-  "line": 110,
+  "line": 111,
   "path": "2008-06/src/Client/App/v8datamodel/Accoutrement.cpp"
  },
  "005b1020": {
-  "line": 119,
+  "line": 120,
   "path": "2008-06/src/Client/App/v8datamodel/Accoutrement.cpp"
  },
  "005b1230": {
-  "line": 152,
+  "line": 179,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005b1470": {
-  "line": 110,
+  "line": 111,
   "path": "2008-06/src/Client/App/v8datamodel/Accoutrement.cpp"
  },
  "005b1480": {
-  "line": 182,
+  "line": 183,
   "path": "2008-06/src/Client/App/v8datamodel/Accoutrement.cpp"
  },
  "005b16e0": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005b1700": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005b2230": {
-  "line": 18,
+  "line": 22,
   "path": "2008-06/src/Client/App/v8datamodel/Accoutrement.cpp"
  },
  "005b24e0": {
-  "line": 230,
+  "line": 231,
   "path": "2008-06/src/Client/App/v8datamodel/Accoutrement.cpp"
  },
  "005b25f0": {
-  "line": 64,
-  "path": "2008-06/src/glue/rbxgs/glue_equipables.cpp"
+  "line": 445,
+  "path": "2008-06/src/Client/App/v8datamodel/Accoutrement.cpp"
  },
  "005b2670": {
-  "line": 239,
+  "line": 240,
   "path": "2008-06/src/Client/App/v8datamodel/Accoutrement.cpp"
  },
  "005b2700": {
-  "line": 258,
+  "line": 259,
   "path": "2008-06/src/Client/App/v8datamodel/Accoutrement.cpp"
  },
  "005b2d10": {
-  "line": 400,
+  "line": 479,
   "path": "2008-06/src/Client/App/v8datamodel/Accoutrement.cpp"
  },
  "005b4410": {
@@ -2756,15 +2720,15 @@
   "path": "2008-06/src/Client/App/v8datamodel/BrickColor.cpp"
  },
  "005b6590": {
-  "line": 70,
+  "line": 77,
   "path": "2008-06/src/Client/Network/include/Network/Player.h"
  },
  "005b7400": {
-  "line": 236,
+  "line": 245,
   "path": "2008-06/src/Client/App/include/reflection/reflection.h"
  },
  "005bf260": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005c3f00": {
@@ -2776,7 +2740,7 @@
   "path": "2008-06/src/Client/App/include/v8datamodel/Visit.h"
  },
  "005c4450": {
-  "line": 152,
+  "line": 179,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005c4720": {
@@ -2784,15 +2748,15 @@
   "path": "2008-06/src/Client/boost_1_34_1/src/boost/bind.hpp"
  },
  "005c4790": {
-  "line": 18,
+  "line": 20,
   "path": "2008-06/src/Client/App/v8datamodel/Visit.cpp"
  },
  "005c48f0": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005c4bb0": {
-  "line": 20,
+  "line": 22,
   "path": "2008-06/src/Client/App/v8datamodel/Visit.cpp"
  },
  "005c8930": {
@@ -2840,23 +2804,23 @@
   "path": "2008-06/src/Client/App/include/v8datamodel/UserController.h"
  },
  "005ca420": {
-  "line": 62,
+  "line": 214,
   "path": "2008-06/src/Client/App/v8datamodel/UserController.cpp"
  },
  "005ca430": {
-  "line": 67,
+  "line": 219,
   "path": "2008-06/src/Client/App/v8datamodel/UserController.cpp"
  },
  "005ca500": {
-  "line": 42,
-  "path": "2008-06/src/glue/rbxgs/glue_input.cpp"
+  "line": 50,
+  "path": "2008-06/src/Client/App/v8datamodel/UserController.cpp"
  },
  "005ca760": {
-  "line": 47,
-  "path": "2008-06/src/glue/rbxgs/glue_input.cpp"
+  "line": 135,
+  "path": "2008-06/src/Client/App/v8datamodel/UserController.cpp"
  },
  "005ca940": {
-  "line": 152,
+  "line": 179,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005cab00": {
@@ -2864,31 +2828,31 @@
   "path": "2008-06/src/Client/boost_1_34_1/src/boost/weak_ptr.hpp"
  },
  "005cac20": {
-  "line": 104,
+  "line": 256,
   "path": "2008-06/src/Client/App/v8datamodel/UserController.cpp"
  },
  "005cada0": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005cadc0": {
-  "line": 124,
+  "line": 276,
   "path": "2008-06/src/Client/App/v8datamodel/UserController.cpp"
  },
  "005cb080": {
-  "line": 159,
+  "line": 311,
   "path": "2008-06/src/Client/App/v8datamodel/UserController.cpp"
  },
  "005cb0e0": {
-  "line": 175,
+  "line": 327,
   "path": "2008-06/src/Client/App/v8datamodel/UserController.cpp"
  },
  "005cb140": {
-  "line": 192,
+  "line": 344,
   "path": "2008-06/src/Client/App/v8datamodel/UserController.cpp"
  },
  "005cb210": {
-  "line": 60,
+  "line": 212,
   "path": "2008-06/src/Client/App/v8datamodel/UserController.cpp"
  },
  "005cb280": {
@@ -2896,11 +2860,11 @@
   "path": "2008-06/src/Client/App/include/v8datamodel/UserController.h"
  },
  "005cb2f0": {
-  "line": 185,
+  "line": 337,
   "path": "2008-06/src/Client/App/v8datamodel/UserController.cpp"
  },
  "005cb3e0": {
-  "line": 197,
+  "line": 349,
   "path": "2008-06/src/Client/App/v8datamodel/UserController.cpp"
  },
  "005cb530": {
@@ -2908,7 +2872,7 @@
   "path": "2008-06/src/glue/rbxgs/glue_player_controller.cpp"
  },
  "005cb820": {
-  "line": 48,
+  "line": 200,
   "path": "2008-06/src/Client/App/v8datamodel/UserController.cpp"
  },
  "005cb990": {
@@ -2920,11 +2884,11 @@
   "path": "2008-06/src/Client/App/include/v8datamodel/UserController.h"
  },
  "005cb9e0": {
-  "line": 13,
+  "line": 15,
   "path": "2008-06/src/Client/App/v8datamodel/UserController.cpp"
  },
  "005cbd10": {
-  "line": 24,
+  "line": 26,
   "path": "2008-06/src/Client/App/v8datamodel/UserController.cpp"
  },
  "005cbf20": {
@@ -2944,15 +2908,15 @@
   "path": "2008-06/src/Client/App/v8datamodel/Camera.cpp"
  },
  "005cc120": {
-  "line": 152,
+  "line": 179,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005cc450": {
-  "line": 336,
+  "line": 335,
   "path": "2008-06/src/Client/App/v8datamodel/Camera.cpp"
  },
  "005cd220": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005cd9a0": {
@@ -2964,23 +2928,23 @@
   "path": "2008-06/src/Client/App/v8datamodel/Camera.cpp"
  },
  "005cddd0": {
-  "line": 346,
+  "line": 345,
   "path": "2008-06/src/Client/App/v8datamodel/Camera.cpp"
  },
  "005cde10": {
-  "line": 357,
+  "line": 356,
   "path": "2008-06/src/Client/App/v8datamodel/Camera.cpp"
  },
  "005cdf00": {
-  "line": 371,
+  "line": 370,
   "path": "2008-06/src/Client/App/v8datamodel/Camera.cpp"
  },
  "005cdf70": {
-  "line": 382,
+  "line": 381,
   "path": "2008-06/src/Client/App/v8datamodel/Camera.cpp"
  },
  "005ce440": {
-  "line": 464,
+  "line": 463,
   "path": "2008-06/src/Client/App/v8datamodel/Camera.cpp"
  },
  "005cf070": {
@@ -2988,7 +2952,7 @@
   "path": "2008-06/src/Client/App/security/SecurityContext.cpp"
  },
  "005cf160": {
-  "line": 45,
+  "line": 47,
   "path": "2008-06/src/Client/App/v8datamodel/Hopper.cpp"
  },
  "005cf1c0": {
@@ -3000,32 +2964,20 @@
   "path": "2008-06/src/Client/App/include/gui/Widget.h"
  },
  "005cf4f0": {
-  "line": 54,
+  "line": 51,
   "path": "2008-06/src/Client/App/include/gui/Widget.h"
  },
  "005cf500": {
-  "line": 59,
+  "line": 56,
   "path": "2008-06/src/Client/App/include/gui/Widget.h"
  },
  "005cf530": {
-  "line": 64,
+  "line": 61,
   "path": "2008-06/src/Client/App/include/gui/Widget.h"
  },
  "005cf690": {
-  "line": 204,
+  "line": 213,
   "path": "2008-06/src/Client/App/include/reflection/reflection.h"
- },
- "005cf6d0": {
-  "line": 204,
-  "path": "2008-06/src/Client/App/include/gui/Gui.h"
- },
- "005cf770": {
-  "line": 230,
-  "path": "2008-06/src/Client/App/include/gui/Gui.h"
- },
- "005cf870": {
-  "line": 52,
-  "path": "2008-06/src/glue/rbxgs/glue_misc.cpp"
  },
  "005cf8d0": {
   "line": 17,
@@ -3036,59 +2988,59 @@
   "path": "2008-06/src/Client/App/v8datamodel/Hopper.cpp"
  },
  "005cfcd0": {
-  "line": 192,
+  "line": 245,
   "path": "2008-06/src/Client/App/v8datamodel/Hopper.cpp"
  },
  "005cfdf0": {
-  "line": 247,
+  "line": 218,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005cfe10": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005cfe30": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005cff30": {
-  "line": 50,
+  "line": 52,
   "path": "2008-06/src/Client/App/v8datamodel/Hopper.cpp"
  },
  "005cff60": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005d0530": {
-  "line": 245,
+  "line": 254,
   "path": "2008-06/src/Client/App/include/reflection/reflection.h"
  },
  "005d05d0": {
-  "line": 131,
-  "path": "2008-06/src/glue/rbxgs/glue_link_stubs.cpp"
+  "line": 66,
+  "path": "2008-06/src/Client/App/v8datamodel/Hopper.cpp"
  },
  "005d0910": {
-  "line": 226,
+  "line": 281,
   "path": "2008-06/src/Client/App/v8datamodel/Hopper.cpp"
  },
  "005d11e0": {
-  "line": 55,
+  "line": 104,
   "path": "2008-06/src/Client/App/v8datamodel/Hopper.cpp"
  },
  "005d1340": {
-  "line": 115,
+  "line": 166,
   "path": "2008-06/src/Client/App/v8datamodel/Hopper.cpp"
  },
  "005d1370": {
-  "line": 138,
+  "line": 189,
   "path": "2008-06/src/Client/App/v8datamodel/Hopper.cpp"
  },
  "005d13d0": {
-  "line": 97,
+  "line": 148,
   "path": "2008-06/src/Client/App/v8datamodel/Hopper.cpp"
  },
  "005d15a0": {
-  "line": 75,
+  "line": 126,
   "path": "2008-06/src/Client/App/v8datamodel/Hopper.cpp"
  },
  "005d1670": {
@@ -3096,51 +3048,51 @@
   "path": "2008-06/src/Client/App/include/v8datamodel/Hopper.h"
  },
  "005d18c0": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005d18e0": {
-  "line": 180,
-  "path": "2008-06/src/glue/rbxgs/glue_runtime.cpp"
+  "line": 14,
+  "path": "2008-06/src/Client/App/v8datamodel/Backpack.cpp"
  },
  "005d1a80": {
-  "line": 5,
+  "line": 9,
   "path": "2008-06/src/Client/App/v8datamodel/Backpack.cpp"
  },
  "005d1ba0": {
-  "line": 16,
+  "line": 22,
   "path": "2008-06/src/Client/App/v8datamodel/SpawnLocation.cpp"
  },
  "005d1bb0": {
-  "line": 152,
+  "line": 179,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005d2390": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005d3490": {
-  "line": 8,
+  "line": 14,
   "path": "2008-06/src/Client/App/v8datamodel/SpawnLocation.cpp"
  },
  "005d36b0": {
-  "line": 406,
+  "line": 425,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "005d37a0": {
-  "line": 217,
+  "line": 220,
   "path": "2008-06/src/Client/App/include/v8datamodel/PartInstance.h"
  },
  "005d37b0": {
-  "line": 21,
+  "line": 27,
   "path": "2008-06/src/Client/App/v8datamodel/SpawnLocation.cpp"
  },
  "005d3a30": {
-  "line": 46,
+  "line": 50,
   "path": "2008-06/src/Client/App/v8datamodel/CharacterAppearance.cpp"
  },
  "005d3aa0": {
-  "line": 75,
+  "line": 81,
   "path": "2008-06/src/Client/App/v8datamodel/CharacterAppearance.cpp"
  },
  "005d41a0": {
@@ -3148,19 +3100,19 @@
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "005d4240": {
-  "line": 27,
+  "line": 29,
   "path": "2008-06/src/Client/App/v8datamodel/CharacterAppearance.cpp"
  },
  "005d4290": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005d42b0": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005d42d0": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005d42f0": {
@@ -3168,7 +3120,7 @@
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005d4b60": {
-  "line": 115,
+  "line": 123,
   "path": "2008-06/src/Client/App/v8datamodel/CharacterAppearance.cpp"
  },
  "005d4c40": {
@@ -3176,19 +3128,19 @@
   "path": "2008-06/src/Client/App/v8datamodel/CharacterAppearance.cpp"
  },
  "005d5510": {
-  "line": 22,
+  "line": 24,
   "path": "2008-06/src/Client/App/v8datamodel/CharacterAppearance.cpp"
  },
  "005d58c0": {
-  "line": 69,
+  "line": 75,
   "path": "2008-06/src/Client/App/v8datamodel/CharacterAppearance.cpp"
  },
  "005d59c0": {
-  "line": 104,
+  "line": 112,
   "path": "2008-06/src/Client/App/v8datamodel/CharacterAppearance.cpp"
  },
  "005d5b80": {
-  "line": 152,
+  "line": 179,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005d5c90": {
@@ -3196,11 +3148,11 @@
   "path": "2008-06/src/Client/App/v8datamodel/Teams.cpp"
  },
  "005d5d60": {
-  "line": 85,
+  "line": 86,
   "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
  },
  "005d5e10": {
-  "line": 46,
+  "line": 63,
   "path": "2008-06/src/Client/App/v8datamodel/Teams.cpp"
  },
  "005d5ed0": {
@@ -3208,7 +3160,7 @@
   "path": "2008-06/src/Client/App/include/v8datamodel/Teams.h"
  },
  "005d5fe0": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005d60f0": {
@@ -3216,15 +3168,15 @@
   "path": "2008-06/src/Client/App/v8datamodel/Teams.cpp"
  },
  "005d6250": {
-  "line": 90,
+  "line": 104,
   "path": "2008-06/src/Client/App/v8datamodel/Teams.cpp"
  },
  "005d6340": {
-  "line": 119,
+  "line": 133,
   "path": "2008-06/src/Client/App/v8datamodel/Teams.cpp"
  },
  "005d6400": {
-  "line": 128,
+  "line": 142,
   "path": "2008-06/src/Client/App/v8datamodel/Teams.cpp"
  },
  "005d6850": {
@@ -3232,27 +3184,27 @@
   "path": "2008-06/src/Client/App/v8datamodel/Teams.cpp"
  },
  "005d6960": {
-  "line": 152,
+  "line": 179,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005d6bd0": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005d6e10": {
-  "line": 10,
+  "line": 12,
   "path": "2008-06/src/Client/App/v8datamodel/TimerService.cpp"
  },
  "005d6f70": {
-  "line": 36,
+  "line": 38,
   "path": "2008-06/src/Client/App/v8datamodel/TimerService.cpp"
  },
  "005d71b0": {
-  "line": 8,
+  "line": 10,
   "path": "2008-06/src/Client/App/v8datamodel/TimerService.cpp"
  },
  "005d73a0": {
-  "line": 64,
+  "line": 66,
   "path": "2008-06/src/Client/App/v8datamodel/TimerService.cpp"
  },
  "005d74d0": {
@@ -3280,23 +3232,23 @@
   "path": "2008-06/src/Client/App/include/humanoid/Humanoid.h"
  },
  "005d75a0": {
-  "line": 55,
+  "line": 68,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d7670": {
-  "line": 80,
+  "line": 98,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d76a0": {
-  "line": 60,
+  "line": 73,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d7750": {
-  "line": 65,
+  "line": 78,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d77b0": {
-  "line": 70,
+  "line": 88,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d7980": {
@@ -3304,39 +3256,39 @@
   "path": "2008-06/src/Client/App/include/humanoid/Humanoid.h"
  },
  "005d7990": {
-  "line": 75,
+  "line": 93,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d79b0": {
-  "line": 92,
+  "line": 110,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d7a30": {
-  "line": 105,
+  "line": 123,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d7a90": {
-  "line": 114,
+  "line": 132,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d7b60": {
-  "line": 231,
+  "line": 240,
   "path": "2008-06/src/Client/App/include/reflection/reflection.h"
  },
  "005d7bf0": {
-  "line": 236,
+  "line": 245,
   "path": "2008-06/src/Client/App/include/reflection/reflection.h"
  },
  "005d7fe0": {
-  "line": 239,
+  "line": 253,
   "path": "2008-06/src/Client/App/include/humanoid/Humanoid.h"
  },
  "005d80c0": {
-  "line": 153,
+  "line": 171,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d8420": {
-  "line": 698,
+  "line": 716,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d8540": {
@@ -3344,135 +3296,135 @@
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "005d8a10": {
-  "line": 188,
+  "line": 206,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d8b10": {
-  "line": 196,
+  "line": 214,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d8c10": {
-  "line": 204,
+  "line": 222,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d8d10": {
-  "line": 212,
+  "line": 230,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d8e10": {
-  "line": 220,
+  "line": 238,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d8f10": {
-  "line": 228,
+  "line": 246,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d9010": {
-  "line": 119,
+  "line": 137,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d9160": {
-  "line": 260,
+  "line": 278,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d9180": {
-  "line": 266,
+  "line": 284,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d9210": {
-  "line": 337,
+  "line": 355,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d9a20": {
-  "line": 158,
+  "line": 176,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d9d10": {
-  "line": 619,
+  "line": 637,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005d9df0": {
-  "line": 639,
+  "line": 657,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005db280": {
-  "line": 34,
+  "line": 47,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005db560": {
-  "line": 131,
+  "line": 149,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005db600": {
-  "line": 567,
+  "line": 585,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005db9e0": {
-  "line": 627,
+  "line": 645,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005dc150": {
-  "line": 492,
+  "line": 510,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005dc270": {
-  "line": 504,
+  "line": 522,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005dc2b0": {
-  "line": 513,
+  "line": 531,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005dc3d0": {
-  "line": 430,
+  "line": 448,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005dc480": {
-  "line": 540,
-  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
- },
- "005dc540": {
-  "line": 549,
-  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
- },
- "005dc600": {
   "line": 558,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
+ "005dc540": {
+  "line": 567,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005dc600": {
+  "line": 576,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
  "005dc7f0": {
-  "line": 666,
+  "line": 684,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005dca00": {
-  "line": 444,
+  "line": 462,
   "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
  },
  "005dcad0": {
-  "line": 33,
+  "line": 32,
   "path": "2008-06/src/Client/App/include/v8datamodel/Message.h"
  },
  "005dcb50": {
-  "line": 39,
+  "line": 41,
   "path": "2008-06/src/Client/App/v8datamodel/Message.cpp"
  },
  "005dcc60": {
-  "line": 11,
-  "path": "2008-06/src/glue/rbxgs/glue_message.cpp"
+  "line": 51,
+  "path": "2008-06/src/Client/App/v8datamodel/Message.cpp"
  },
  "005dcd90": {
-  "line": 24,
+  "line": 26,
   "path": "2008-06/src/Client/App/v8datamodel/Message.cpp"
  },
  "005dcde0": {
-  "line": 21,
-  "path": "2008-06/src/glue/rbxgs/glue_message.cpp"
+  "line": 63,
+  "path": "2008-06/src/Client/App/v8datamodel/Message.cpp"
  },
  "005dd120": {
-  "line": 10,
+  "line": 12,
   "path": "2008-06/src/Client/App/v8datamodel/Message.cpp"
  },
  "005dd280": {
-  "line": 15,
+  "line": 17,
   "path": "2008-06/src/Client/App/v8datamodel/Message.cpp"
  },
  "005dd400": {
@@ -3564,19 +3516,19 @@
   "path": "2008-06/src/Client/App/util/Math.cpp"
  },
  "005df4d0": {
-  "line": 49,
+  "line": 51,
   "path": "2008-06/src/Client/App/v8datamodel/Lighting.cpp"
  },
  "005df500": {
-  "line": 54,
+  "line": 56,
   "path": "2008-06/src/Client/App/v8datamodel/Lighting.cpp"
  },
  "005df530": {
-  "line": 274,
+  "line": 276,
   "path": "2008-06/src/Client/App/v8datamodel/Lighting.cpp"
  },
  "005df560": {
-  "line": 152,
+  "line": 179,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005df780": {
@@ -3592,11 +3544,11 @@
   "path": "2008-06/src/Client/boost_1_34_1/src/boost/date_time/int_adapter.hpp"
  },
  "005dffa0": {
-  "line": 231,
+  "line": 240,
   "path": "2008-06/src/Client/App/include/reflection/reflection.h"
  },
  "005dffe0": {
-  "line": 236,
+  "line": 245,
   "path": "2008-06/src/Client/App/include/reflection/reflection.h"
  },
  "005e0160": {
@@ -3608,11 +3560,11 @@
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "005e0650": {
-  "line": 59,
+  "line": 61,
   "path": "2008-06/src/Client/App/v8datamodel/Lighting.cpp"
  },
  "005e0690": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005e0a10": {
@@ -3624,7 +3576,7 @@
   "path": "2008-06/src/Client/boost_1_34_1/src/boost/tokenizer.hpp"
  },
  "005e0be0": {
-  "line": 69,
+  "line": 71,
   "path": "2008-06/src/Client/App/v8datamodel/Lighting.cpp"
  },
  "005e0c20": {
@@ -3632,23 +3584,23 @@
   "path": "2008-06/src/Client/boost_1_34_1/src/boost/date_time/time_parsing.hpp"
  },
  "005e1a40": {
-  "line": 26,
+  "line": 28,
   "path": "2008-06/src/Client/App/v8datamodel/Lighting.cpp"
  },
  "005e2030": {
-  "line": 79,
+  "line": 81,
   "path": "2008-06/src/Client/App/v8datamodel/Lighting.cpp"
  },
  "005e2100": {
-  "line": 248,
+  "line": 250,
   "path": "2008-06/src/Client/App/v8datamodel/Lighting.cpp"
  },
  "005e2160": {
-  "line": 233,
+  "line": 235,
   "path": "2008-06/src/Client/App/v8datamodel/Lighting.cpp"
  },
  "005e2260": {
-  "line": 261,
+  "line": 263,
   "path": "2008-06/src/Client/App/v8datamodel/Lighting.cpp"
  },
  "005e2540": {
@@ -3656,15 +3608,15 @@
   "path": "2008-06/src/Client/App/include/v8datamodel/Lighting.h"
  },
  "005e2570": {
-  "line": 205,
+  "line": 207,
   "path": "2008-06/src/Client/App/v8datamodel/Lighting.cpp"
  },
  "005e26e0": {
-  "line": 228,
+  "line": 230,
   "path": "2008-06/src/Client/App/v8datamodel/Lighting.cpp"
  },
  "005e2730": {
-  "line": 74,
+  "line": 76,
   "path": "2008-06/src/Client/App/v8datamodel/Lighting.cpp"
  },
  "005e2790": {
@@ -3692,7 +3644,7 @@
   "path": "2008-06/src/Client/App/v8datamodel/JointInstance.cpp"
  },
  "005e2ad0": {
-  "line": 247,
+  "line": 218,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005e2af0": {
@@ -3708,31 +3660,31 @@
   "path": "2008-06/src/Client/App/v8datamodel/JointInstance.cpp"
  },
  "005e3040": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005e30e0": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005e31b0": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005e3290": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005e3330": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005e33f0": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005e3490": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005e3790": {
@@ -3964,11 +3916,11 @@
   "path": "2008-06/src/Client/App/v8world/World.cpp"
  },
  "005eb020": {
-  "line": 152,
+  "line": 179,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005eb160": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005ec180": {
@@ -4000,19 +3952,19 @@
   "path": "2008-06/src/Client/App/util/NormalId.cpp"
  },
  "005ecbb0": {
-  "line": 168,
-  "path": "2008-06/src/glue/rbxgs/glue_surfaces.cpp"
+  "line": 244,
+  "path": "2008-06/src/Client/App/v8datamodel/Surfaces.cpp"
  },
  "005ef530": {
   "line": 11,
   "path": "2008-06/src/Client/App/v8datamodel/FaceInstance.cpp"
  },
  "005f1270": {
-  "line": 6,
+  "line": 8,
   "path": "2008-06/src/Client/App/v8datamodel/Surface.cpp"
  },
  "005f1290": {
-  "line": 18,
+  "line": 20,
   "path": "2008-06/src/Client/App/v8datamodel/Surface.cpp"
  },
  "005f12a0": {
@@ -4020,7 +3972,7 @@
   "path": "2008-06/src/Client/App/v8datamodel/Surface.cpp"
  },
  "005f13c0": {
-  "line": 12,
+  "line": 14,
   "path": "2008-06/src/Client/App/v8datamodel/Surface.cpp"
  },
  "005f2030": {
@@ -4344,23 +4296,23 @@
   "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/filtering_stream.hpp"
  },
  "005fb710": {
-  "line": 152,
+  "line": 179,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005fb7b0": {
-  "line": 152,
+  "line": 179,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005fb900": {
-  "line": 132,
-  "path": "2008-06/src/glue/rbxgs/glue_link_stubs.cpp"
+  "line": 31,
+  "path": "2008-06/src/Client/App/v8datamodel/LocakBackpack.cpp"
  },
  "005fbf10": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005fbf30": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005fbf50": {
@@ -4368,47 +4320,47 @@
   "path": "2008-06/src/Client/App/include/v8datamodel/LocalBackpack.h"
  },
  "005fbff0": {
-  "line": 116,
+  "line": 159,
   "path": "2008-06/src/Client/App/v8datamodel/LocakBackpack.cpp"
  },
  "005fc090": {
-  "line": 8,
+  "line": 11,
   "path": "2008-06/src/Client/App/v8datamodel/LocakBackpack.cpp"
  },
  "005fc100": {
-  "line": 168,
+  "line": 211,
   "path": "2008-06/src/Client/App/v8datamodel/LocakBackpack.cpp"
  },
  "005fc150": {
-  "line": 179,
+  "line": 222,
   "path": "2008-06/src/Client/App/v8datamodel/LocakBackpack.cpp"
  },
  "005fc1d0": {
-  "line": 194,
+  "line": 237,
   "path": "2008-06/src/Client/App/v8datamodel/LocakBackpack.cpp"
  },
  "005fc3b0": {
-  "line": 153,
+  "line": 196,
   "path": "2008-06/src/Client/App/v8datamodel/LocakBackpack.cpp"
  },
  "005fc450": {
-  "line": 27,
+  "line": 70,
   "path": "2008-06/src/Client/App/v8datamodel/LocakBackpack.cpp"
  },
  "005fc730": {
-  "line": 121,
+  "line": 164,
   "path": "2008-06/src/Client/App/v8datamodel/LocakBackpack.cpp"
  },
  "005fccd0": {
-  "line": 6,
+  "line": 9,
   "path": "2008-06/src/Client/App/v8datamodel/LocakBackpack.cpp"
  },
  "005fceb0": {
-  "line": 21,
+  "line": 64,
   "path": "2008-06/src/Client/App/v8datamodel/LocakBackpack.cpp"
  },
  "005fcfb0": {
-  "line": 209,
+  "line": 252,
   "path": "2008-06/src/Client/App/v8datamodel/LocakBackpack.cpp"
  },
  "005fd3a0": {
@@ -4424,47 +4376,47 @@
   "path": "2008-06/src/Client/App/include/v8datamodel/Tool.h"
  },
  "005fd3e0": {
-  "line": 48,
+  "line": 53,
   "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
  },
  "005fd4c0": {
-  "line": 89,
+  "line": 92,
   "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
  },
  "005fd4e0": {
-  "line": 95,
+  "line": 98,
   "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
  },
  "005fd500": {
-  "line": 101,
+  "line": 104,
   "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
  },
  "005fd580": {
-  "line": 111,
+  "line": 114,
   "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
  },
  "005fd5a0": {
-  "line": 116,
+  "line": 119,
   "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
  },
  "005fd770": {
-  "line": 126,
+  "line": 129,
   "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
  },
  "005fd820": {
-  "line": 231,
+  "line": 240,
   "path": "2008-06/src/Client/App/include/reflection/reflection.h"
  },
  "005fd880": {
-  "line": 231,
+  "line": 240,
   "path": "2008-06/src/Client/App/include/reflection/reflection.h"
  },
  "005fd920": {
-  "line": 231,
+  "line": 240,
   "path": "2008-06/src/Client/App/include/reflection/reflection.h"
  },
  "005fdaf0": {
-  "line": 132,
+  "line": 135,
   "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
  },
  "005fdf00": {
@@ -4472,27 +4424,27 @@
   "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
  },
  "005fdfe0": {
-  "line": 186,
+  "line": 189,
   "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
  },
  "005fe140": {
-  "line": 232,
+  "line": 235,
   "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
  },
  "005fe1d0": {
-  "line": 251,
+  "line": 254,
   "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
  },
  "005fe240": {
-  "line": 148,
+  "line": 156,
   "path": "2008-06/src/Client/App/include/util/Name.h"
  },
  "005fe420": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "005fe4b0": {
-  "line": 37,
+  "line": 42,
   "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
  },
  "005fe600": {
@@ -4500,7 +4452,7 @@
   "path": "2008-06/src/Client/App/include/v8datamodel/Tool.h"
  },
  "005fe6a0": {
-  "line": 126,
+  "line": 129,
   "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
  },
  "005ff3b0": {
@@ -4508,43 +4460,43 @@
   "path": "2008-06/src/Client/App/include/v8datamodel/Mouse.h"
  },
  "005ff680": {
-  "line": 494,
+  "line": 469,
   "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
  },
  "005ff750": {
-  "line": 323,
+  "line": 326,
   "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
  },
  "005ff8d0": {
-  "line": 356,
+  "line": 359,
   "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
  },
  "005ffa10": {
-  "line": 119,
-  "path": "2008-06/src/glue/rbxgs/glue_equipables.cpp"
+  "line": 626,
+  "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
  },
  "005ffb70": {
-  "line": 365,
+  "line": 368,
   "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
  },
  "005ffc00": {
-  "line": 384,
+  "line": 387,
   "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
  },
  "00600240": {
-  "line": 28,
+  "line": 33,
   "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
  },
  "00600420": {
-  "line": 506,
+  "line": 481,
   "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
  },
  "006004b0": {
-  "line": 525,
+  "line": 663,
   "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
  },
  "006004d0": {
-  "line": 531,
+  "line": 669,
   "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
  },
  "00606250": {
@@ -4584,7 +4536,7 @@
   "path": "2008-06/src/Client/App/v8datamodel/PVInstance.cpp"
  },
  "00608c90": {
-  "line": 204,
+  "line": 213,
   "path": "2008-06/src/Client/App/include/reflection/reflection.h"
  },
  "00608d10": {
@@ -4604,7 +4556,7 @@
   "path": "2008-06/src/Client/App/v8datamodel/PVInstance.cpp"
  },
  "00609410": {
-  "line": 245,
+  "line": 254,
   "path": "2008-06/src/Client/App/include/reflection/reflection.h"
  },
  "006098d0": {
@@ -4620,7 +4572,7 @@
   "path": "2008-06/src/Client/App/v8datamodel/PVInstance.cpp"
  },
  "00609af0": {
-  "line": 152,
+  "line": 179,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "00609da0": {
@@ -4628,7 +4580,7 @@
   "path": "2008-06/src/Client/App/v8datamodel/Feature.cpp"
  },
  "0060a0f0": {
-  "line": 251,
+  "line": 237,
   "path": "2008-06/src/Client/App/v8datamodel/Feature.cpp"
  },
  "0060a490": {
@@ -4652,19 +4604,19 @@
   "path": "2008-06/src/Client/App/v8datamodel/Feature.cpp"
  },
  "0060ab60": {
-  "line": 247,
+  "line": 218,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "0060ab80": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "0060aba0": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "0060abc0": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "0060be60": {
@@ -5192,23 +5144,23 @@
   "path": "2008-06/src/Client/App/v8world/IMoving.cpp"
  },
  "00614f80": {
-  "line": 5,
+  "line": 6,
   "path": "2008-06/src/Client/App/v8world/Controller.cpp"
  },
  "006157a0": {
-  "line": 127,
+  "line": 129,
   "path": "2008-06/src/Client/App/v8datamodel/MouseCommand.cpp"
  },
  "00615820": {
-  "line": 121,
+  "line": 123,
   "path": "2008-06/src/Client/App/v8datamodel/MouseCommand.cpp"
  },
  "006159f0": {
-  "line": 12,
+  "line": 14,
   "path": "2008-06/src/Client/App/v8datamodel/MouseCommand.cpp"
  },
  "00615a50": {
-  "line": 32,
+  "line": 34,
   "path": "2008-06/src/Client/App/v8datamodel/MouseCommand.cpp"
  },
  "00615b60": {
@@ -5216,55 +5168,55 @@
   "path": "2008-06/src/Client/App/include/v8datamodel/Filters.h"
  },
  "00615d90": {
-  "line": 85,
+  "line": 87,
   "path": "2008-06/src/Client/App/v8datamodel/MouseCommand.cpp"
  },
  "00615f90": {
-  "line": 115,
+  "line": 117,
   "path": "2008-06/src/Client/App/v8datamodel/MouseCommand.cpp"
  },
  "00616080": {
-  "line": 109,
+  "line": 111,
   "path": "2008-06/src/Client/App/v8datamodel/MouseCommand.cpp"
  },
  "00616180": {
-  "line": 17,
+  "line": 19,
   "path": "2008-06/src/Client/App/tool/ToolsArrow.cpp"
  },
  "006161a0": {
-  "line": 12,
+  "line": 14,
   "path": "2008-06/src/Client/App/tool/ToolsArrow.cpp"
  },
  "006164a0": {
-  "line": 107,
+  "line": 111,
   "path": "2008-06/src/Client/App/tool/ToolsArrow.cpp"
  },
  "00616d80": {
-  "line": 148,
+  "line": 156,
   "path": "2008-06/src/Client/App/include/util/Name.h"
  },
  "00616f60": {
-  "line": 113,
+  "line": 117,
   "path": "2008-06/src/Client/App/tool/ToolsArrow.cpp"
  },
  "00617780": {
-  "line": 27,
+  "line": 29,
   "path": "2008-06/src/Client/App/tool/ToolsArrow.cpp"
  },
  "00617a50": {
-  "line": 141,
-  "path": "2008-06/src/glue/rbxgs/glue_link_stubs.cpp"
+  "line": 142,
+  "path": "2008-06/src/Client/App/tool/ToolsArrow.cpp"
  },
  "00617b30": {
-  "line": 142,
-  "path": "2008-06/src/glue/rbxgs/glue_link_stubs.cpp"
+  "line": 159,
+  "path": "2008-06/src/Client/App/tool/ToolsArrow.cpp"
  },
  "00617c10": {
-  "line": 78,
+  "line": 82,
   "path": "2008-06/src/Client/App/tool/ToolsArrow.cpp"
  },
  "00617cb0": {
-  "line": 94,
+  "line": 98,
   "path": "2008-06/src/Client/App/tool/ToolsArrow.cpp"
  },
  "00617e40": {
@@ -5272,23 +5224,23 @@
   "path": "2008-06/src/Client/App/include/tool/NullTool.h"
  },
  "00617e70": {
-  "line": 79,
+  "line": 83,
   "path": "2008-06/src/Client/App/tool/NullTool.cpp"
  },
  "00617ec0": {
-  "line": 31,
+  "line": 35,
   "path": "2008-06/src/Client/App/tool/NullTool.cpp"
  },
  "00617f50": {
-  "line": 45,
+  "line": 49,
   "path": "2008-06/src/Client/App/tool/NullTool.cpp"
  },
  "00617ff0": {
-  "line": 61,
+  "line": 65,
   "path": "2008-06/src/Client/App/tool/NullTool.cpp"
  },
  "00618160": {
-  "line": 8,
+  "line": 12,
   "path": "2008-06/src/Client/App/tool/NullTool.cpp"
  },
  "00618260": {
@@ -5296,27 +5248,27 @@
   "path": "2008-06/src/Client/App/include/tool/NullTool.h"
  },
  "006182e0": {
-  "line": 148,
+  "line": 156,
   "path": "2008-06/src/Client/App/include/util/Name.h"
  },
  "00618300": {
-  "line": 85,
+  "line": 89,
   "path": "2008-06/src/Client/App/tool/NullTool.cpp"
  },
  "00618380": {
-  "line": 20,
+  "line": 22,
   "path": "2008-06/src/Client/App/v8datamodel/Flag.cpp"
  },
  "006183c0": {
-  "line": 152,
+  "line": 179,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "00618610": {
-  "line": 231,
+  "line": 240,
   "path": "2008-06/src/Client/App/include/reflection/reflection.h"
  },
  "00618670": {
-  "line": 18,
+  "line": 20,
   "path": "2008-06/src/Client/App/v8datamodel/Flag.cpp"
  },
  "00618830": {
@@ -5324,7 +5276,7 @@
   "path": "2008-06/src/Client/boost_1_34_1/src/boost/bind.hpp"
  },
  "00618a20": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "00618a40": {
@@ -5332,19 +5284,19 @@
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "00618f70": {
-  "line": 115,
+  "line": 45,
   "path": "2008-06/src/Client/App/v8datamodel/Flag.cpp"
  },
  "00619820": {
-  "line": 12,
+  "line": 14,
   "path": "2008-06/src/Client/App/v8datamodel/Flag.cpp"
  },
  "00619a60": {
-  "line": 25,
+  "line": 27,
   "path": "2008-06/src/Client/App/v8datamodel/Flag.cpp"
  },
  "0061a420": {
-  "line": 20,
+  "line": 22,
   "path": "2008-06/src/Client/App/script/LuaInstanceBridge.cpp"
  },
  "0061a560": {
@@ -5356,11 +5308,11 @@
   "path": "2008-06/src/Client/App/include/script/LuaArguments.h"
  },
  "0061a7b0": {
-  "line": 163,
+  "line": 193,
   "path": "2008-06/src/Client/App/include/reflection/property.h"
  },
  "0061ba10": {
-  "line": 153,
+  "line": 171,
   "path": "2008-06/src/Client/App/include/reflection/member.h"
  },
  "0061c6f0": {
@@ -5384,35 +5336,35 @@
   "path": "2008-06/src/Client/App/include/lua/LuaBridge.h"
  },
  "0061d230": {
-  "line": 206,
-  "path": "2008-06/src/Client/App/script/LuaAtomicClasses.cpp"
- },
- "0061d270": {
-  "line": 212,
-  "path": "2008-06/src/Client/App/script/LuaAtomicClasses.cpp"
- },
- "0061d2b0": {
-  "line": 218,
-  "path": "2008-06/src/Client/App/script/LuaAtomicClasses.cpp"
- },
- "0061d2f0": {
   "line": 224,
   "path": "2008-06/src/Client/App/script/LuaAtomicClasses.cpp"
  },
- "0061d330": {
+ "0061d270": {
   "line": 230,
   "path": "2008-06/src/Client/App/script/LuaAtomicClasses.cpp"
  },
- "0061d370": {
+ "0061d2b0": {
   "line": 236,
   "path": "2008-06/src/Client/App/script/LuaAtomicClasses.cpp"
  },
- "0061d3b0": {
+ "0061d2f0": {
   "line": 242,
   "path": "2008-06/src/Client/App/script/LuaAtomicClasses.cpp"
  },
- "0061d3f0": {
+ "0061d330": {
   "line": 248,
+  "path": "2008-06/src/Client/App/script/LuaAtomicClasses.cpp"
+ },
+ "0061d370": {
+  "line": 254,
+  "path": "2008-06/src/Client/App/script/LuaAtomicClasses.cpp"
+ },
+ "0061d3b0": {
+  "line": 260,
+  "path": "2008-06/src/Client/App/script/LuaAtomicClasses.cpp"
+ },
+ "0061d3f0": {
+  "line": 266,
   "path": "2008-06/src/Client/App/script/LuaAtomicClasses.cpp"
  },
  "0061d640": {
@@ -5427,8 +5379,12 @@
   "line": 74,
   "path": "2008-06/src/Client/App/include/lua/LuaBridge.h"
  },
+ "0061f220": {
+  "line": 111,
+  "path": "2008-06/src/Client/App/include/lua/LuaBridge.h"
+ },
  "0061f410": {
-  "line": 169,
+  "line": 172,
   "path": "2008-06/src/Client/App/script/LuaSignalBridge.cpp"
  },
  "0061f480": {
@@ -5439,16 +5395,12 @@
   "line": 43,
   "path": "2008-06/src/Client/App/include/reflection/signal.h"
  },
- "0061f9f0": {
-  "line": 28,
-  "path": "2008-06/src/Client/App/include/reflection/signal.h"
- },
  "0061fb20": {
-  "line": 43,
+  "line": 46,
   "path": "2008-06/src/Client/App/script/LuaSignalBridge.cpp"
  },
  "00620190": {
-  "line": 169,
+  "line": 172,
   "path": "2008-06/src/Client/App/script/LuaSignalBridge.cpp"
  },
  "00620210": {
@@ -6196,19 +6148,19 @@
   "path": "2008-06/src/Client/App/v8datamodel/IEquipable.cpp"
  },
  "00629c60": {
-  "line": 152,
+  "line": 179,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "0062a030": {
-  "line": 67,
-  "path": "2008-06/src/glue/rbxgs/glue_explosion.cpp"
+  "line": 122,
+  "path": "2008-06/src/Client/App/v8datamodel/Explosion.cpp"
  },
  "0062a340": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "0062adb0": {
-  "line": 17,
+  "line": 19,
   "path": "2008-06/src/Client/App/v8datamodel/Explosion.cpp"
  },
  "0062af60": {
@@ -6216,7 +6168,7 @@
   "path": "2008-06/src/Client/App/include/v8datamodel/Explosion.h"
  },
  "0062b030": {
-  "line": 111,
+  "line": 113,
   "path": "2008-06/src/Client/App/v8datamodel/Explosion.cpp"
  },
  "0062b700": {
@@ -6224,39 +6176,39 @@
   "path": "2008-06/src/glue/rbxgs/glue_explosion.cpp"
  },
  "0062b8f0": {
-  "line": 14,
+  "line": 18,
   "path": "2008-06/src/Client/App/v8datamodel/FlagStand.cpp"
  },
  "0062b900": {
-  "line": 43,
+  "line": 47,
   "path": "2008-06/src/Client/App/v8datamodel/FlagStand.cpp"
  },
  "0062b970": {
-  "line": 152,
+  "line": 179,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "0062bfc0": {
-  "line": 89,
+  "line": 136,
   "path": "2008-06/src/Client/App/v8datamodel/FlagStand.cpp"
  },
  "0062c0a0": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "0062c9c0": {
-  "line": 9,
+  "line": 13,
   "path": "2008-06/src/Client/App/v8datamodel/FlagStand.cpp"
  },
  "0062cb70": {
-  "line": 406,
+  "line": 425,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "0062ccc0": {
-  "line": 217,
+  "line": 220,
   "path": "2008-06/src/Client/App/include/v8datamodel/PartInstance.h"
  },
  "0062cdc0": {
-  "line": 19,
+  "line": 23,
   "path": "2008-06/src/Client/App/v8datamodel/FlagStand.cpp"
  },
  "0062e090": {
@@ -6292,7 +6244,7 @@
   "path": "2008-06/src/Client/App/v8datamodel/Gyro.cpp"
  },
  "0062f4e0": {
-  "line": 152,
+  "line": 179,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "006308f0": {
@@ -6332,15 +6284,15 @@
   "path": "2008-06/src/Client/App/v8datamodel/Gyro.cpp"
  },
  "006334b0": {
-  "line": 113,
+  "line": 122,
   "path": "2008-06/src/Client/App/include/reflection/reflection.h"
  },
  "00637ae0": {
-  "line": 79,
-  "path": "2008-06/src/glue/rbxgs/glue_misc.cpp"
+  "line": 51,
+  "path": "2008-06/src/Client/App/v8datamodel/Value.cpp"
  },
  "0063b2b0": {
-  "line": 118,
+  "line": 127,
   "path": "2008-06/src/Client/App/include/reflection/reflection.h"
  },
  "0063b330": {
@@ -6348,7 +6300,7 @@
   "path": "2008-06/src/Client/App/include/v8datamodel/DebrisService.h"
  },
  "0063b340": {
-  "line": 152,
+  "line": 179,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "0063b5c0": {
@@ -6356,39 +6308,39 @@
   "path": "2008-06/src/Client/App/v8datamodel/DebrisService.cpp"
  },
  "0063b6b0": {
-  "line": 207,
+  "line": 188,
   "path": "2008-06/src/Client/App/include/util/Object.h"
  },
  "0063b9d0": {
-  "line": 53,
+  "line": 55,
   "path": "2008-06/src/Client/App/v8datamodel/DebrisService.cpp"
  },
  "0063bbc0": {
-  "line": 44,
+  "line": 46,
   "path": "2008-06/src/Client/App/v8datamodel/DebrisService.cpp"
  },
  "0063be90": {
-  "line": 24,
+  "line": 26,
   "path": "2008-06/src/Client/App/v8datamodel/DebrisService.cpp"
  },
  "0063c280": {
-  "line": 62,
+  "line": 64,
   "path": "2008-06/src/Client/App/v8datamodel/DebrisService.cpp"
  },
  "0063c3a0": {
-  "line": 31,
+  "line": 33,
   "path": "2008-06/src/Client/App/v8datamodel/DebrisService.cpp"
  },
  "0063d390": {
-  "line": 10,
+  "line": 12,
   "path": "2008-06/src/Client/App/v8datamodel/Seat.cpp"
  },
  "0063d570": {
-  "line": 406,
+  "line": 425,
   "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
  },
  "0063d700": {
-  "line": 217,
+  "line": 220,
   "path": "2008-06/src/Client/App/include/v8datamodel/PartInstance.h"
  },
  "0063fad0": {
@@ -6400,7 +6352,7 @@
   "path": "2008-06/src/Client/App/include/tool/Dragger.h"
  },
  "006404b0": {
-  "line": 22,
+  "line": 24,
   "path": "2008-06/src/Client/App/tool/ToolsArrow.cpp"
  },
  "00641240": {
@@ -6424,7 +6376,7 @@
   "path": "2008-06/src/Client/App/v8datamodel/ICameraOwner.cpp"
  },
  "00642210": {
-  "line": 29,
+  "line": 131,
   "path": "2008-06/src/Client/App/gui/Widget.cpp"
  },
  "006422b0": {
@@ -6440,7 +6392,7 @@
   "path": "2008-06/src/Client/App/gui/GuiDraw.cpp"
  },
  "00642750": {
-  "line": 52,
+  "line": 66,
   "path": "2008-06/src/Client/App/gui/GuiDraw.cpp"
  },
  "00642c90": {
@@ -6636,15 +6588,15 @@
   "path": "2008-06/src/Client/App/include/reflection/enumconverter.h"
  },
  "0064ddf0": {
-  "line": 43,
+  "line": 45,
   "path": "2008-06/src/Client/App/v8datamodel/ToolMouseCommand.cpp"
  },
  "0064dee0": {
-  "line": 29,
+  "line": 31,
   "path": "2008-06/src/Client/App/v8datamodel/ToolMouseCommand.cpp"
  },
  "0064df30": {
-  "line": 36,
+  "line": 38,
   "path": "2008-06/src/Client/App/v8datamodel/ToolMouseCommand.cpp"
  },
  "0064df60": {
@@ -6652,32 +6604,32 @@
   "path": "2008-06/src/Client/App/include/v8datamodel/Mouse.h"
  },
  "0064e020": {
-  "line": 36,
+  "line": 59,
   "path": "2008-06/src/Client/App/v8datamodel/Mouse.cpp"
  },
  "0064e050": {
-  "line": 21,
+  "line": 44,
   "path": "2008-06/src/Client/App/v8datamodel/Mouse.cpp"
  },
  "0064e130": {
-  "line": 231,
+  "line": 240,
   "path": "2008-06/src/Client/App/include/reflection/reflection.h"
  },
  "0064e1a0": {
-  "line": 9,
+  "line": 32,
   "path": "2008-06/src/Client/App/v8datamodel/Mouse.cpp"
  },
  "00658200": {
-  "line": 10,
+  "line": 39,
   "path": "2008-06/src/Client/App/v8datamodel/SafeChat.cpp"
  },
  "00658a00": {
-  "line": 19,
-  "path": "2008-06/src/Client/App/util/PV.cpp"
+  "line": 46,
+  "path": "2008-06/src/Client/App/include/util/PV.h"
  },
  "00658c50": {
-  "line": 26,
-  "path": "2008-06/src/Client/App/util/PV.cpp"
+  "line": 41,
+  "path": "2008-06/src/Client/App/include/util/PV.h"
  },
  "00659260": {
   "line": 6,
@@ -7064,7 +7016,7 @@
   "path": "2008-06/src/Client/App/v8kernel/Cofm.cpp"
  },
  "006601c0": {
-  "line": 163,
+  "line": 166,
   "path": "2008-06/src/Client/App/include/v8datamodel/PartInstance.h"
  },
  "006601f0": {
@@ -7368,23 +7320,23 @@
   "path": "2008-06/src/Client/App/lua-5.1.1/src/llex.c"
  },
  "006659a0": {
-  "line": 27,
+  "line": 29,
   "path": "2008-06/src/Client/App/tool/PartDragTool.cpp"
  },
  "006659e0": {
-  "line": 110,
-  "path": "2008-06/src/glue/rbxgs/glue_link_stubs.cpp"
+  "line": 48,
+  "path": "2008-06/src/Client/App/tool/PartDragTool.cpp"
  },
  "00665aa0": {
   "line": 35,
   "path": "2008-06/src/Client/App/include/tool/MegaDragger.h"
  },
  "00665b00": {
-  "line": 46,
+  "line": 71,
   "path": "2008-06/src/Client/App/tool/PartDragTool.cpp"
  },
  "00665b60": {
-  "line": 35,
+  "line": 37,
   "path": "2008-06/src/Client/App/tool/PartDragTool.cpp"
  },
  "00665c90": {
@@ -7392,19 +7344,19 @@
   "path": "2008-06/src/Client/App/include/tool/PartDragTool.h"
  },
  "00665ce0": {
-  "line": 78,
-  "path": "2008-06/src/Client/App/tool/PartDragTool.cpp"
- },
- "00665e20": {
   "line": 103,
   "path": "2008-06/src/Client/App/tool/PartDragTool.cpp"
  },
+ "00665e20": {
+  "line": 128,
+  "path": "2008-06/src/Client/App/tool/PartDragTool.cpp"
+ },
  "00665f00": {
-  "line": 148,
+  "line": 156,
   "path": "2008-06/src/Client/App/include/util/Name.h"
  },
  "00666100": {
-  "line": 61,
+  "line": 86,
   "path": "2008-06/src/Client/App/tool/PartDragTool.cpp"
  },
  "00666240": {
@@ -7432,31 +7384,31 @@
   "path": "2008-06/src/Client/App/v8world/WeldJoint.cpp"
  },
  "0066a570": {
-  "line": 50,
+  "line": 52,
   "path": "2008-06/src/Client/App/tool/GroupDragTool.cpp"
  },
  "0066a700": {
-  "line": 22,
+  "line": 24,
   "path": "2008-06/src/Client/App/tool/GroupDragTool.cpp"
  },
  "0066a730": {
-  "line": 78,
+  "line": 80,
   "path": "2008-06/src/Client/App/tool/GroupDragTool.cpp"
  },
  "0066a7c0": {
-  "line": 58,
+  "line": 60,
   "path": "2008-06/src/Client/App/tool/GroupDragTool.cpp"
  },
  "0066a930": {
-  "line": 94,
+  "line": 96,
   "path": "2008-06/src/Client/App/tool/GroupDragTool.cpp"
  },
  "0066a980": {
-  "line": 27,
+  "line": 29,
   "path": "2008-06/src/Client/App/tool/GroupDragTool.cpp"
  },
  "0066aa60": {
-  "line": 148,
+  "line": 156,
   "path": "2008-06/src/Client/App/include/util/Name.h"
  },
  "0066aa80": {
@@ -7803,10 +7755,6 @@
   "line": 127,
   "path": "2008-06/src/Client/App/include/v8world/Primitive.h"
  },
- "006d4780": {
-  "line": 179,
-  "path": "2008-06/src/Client/App/include/v8world/World.h"
- },
  "006fa3f0": {
   "line": 20,
   "path": "2008-06/src/Client/App/v8world/AssemblyStage.cpp"
@@ -7820,8 +7768,8 @@
   "path": "2008-06/src/Client/App/include/v8kernel/Body.h"
  },
  "00710290": {
-  "line": 200,
-  "path": "2008-06/src/glue/rbxgs/glue_surfaces.cpp"
+  "line": 255,
+  "path": "2008-06/src/Client/App/v8datamodel/Surfaces.cpp"
  },
  "00710e30": {
   "line": 100,
@@ -7832,7 +7780,7 @@
   "path": "2008-06/src/Client/App/include/v8kernel/Kernel.h"
  },
  "00746d60": {
-  "line": 42,
+  "line": 52,
   "path": "2008-06/src/Client/Network/Replicator.cpp"
  },
  "00750da0": {

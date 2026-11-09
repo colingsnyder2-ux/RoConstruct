@@ -30,7 +30,7 @@ namespace RBX
         class YieldingThreads;
     }
 
-    extern const char *sScriptContext;
+    extern char* sScriptContext;
     class ScriptContext : public DescribedCreatable<ScriptContext, Instance, &sScriptContext>,
                           public Service,
                           public Listener<RunService, RunTransition>,
@@ -94,7 +94,10 @@ namespace RBX
         size_t getThreadCount() const;
         bool hasState() const;
         lua_State* state();
-        virtual XmlElement* write();
+        virtual XmlElement* write()
+		{
+			return NULL;
+		}
     
     protected:
         virtual void onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider);

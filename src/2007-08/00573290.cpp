@@ -12,7 +12,7 @@
 
 namespace RBX
 {
-	const char* sCamera = "Camera";
+	char* sCamera = "Camera";
 
 	static Reflection::EnumPropDescriptor<Camera, Camera::CameraType> desc_cameraType("CameraType", "Camera", &Camera::getCameraType, &Camera::setCameraType, Reflection::PropertyDescriptor::STANDARD); 
 	static Reflection::PropDescriptor<Camera, G3D::CoordinateFrame> desc_CoordFrame("CoordinateFrame", "Data", &Camera::getCameraCoordinateFrame, &Camera::setCameraCoordinateFrameNoLerp, Reflection::PropertyDescriptor::STREAMING);
@@ -227,7 +227,6 @@ namespace RBX
 		}
 	}
 
-	//96.11% matching.
 	void Camera::updateGoal()
 	{
 		switch (cameraType)
@@ -244,8 +243,8 @@ namespace RBX
 
 				updateFocus();
 
-				G3D::Vector2 direction = -cameraFocus.lookVector().xz().direction();
-				cameraGoal.translation = cameraFocus.translation + G3D::Vector3(direction.x * distance, delta.y, direction.y * distance);
+				G3D::Vector2 direction = -cameraFocus.lookVector().xz().direction() * distance;
+				cameraGoal.translation = cameraFocus.translation + G3D::Vector3(direction.x, delta.y, direction.y);
 
 				break;
 			}
@@ -264,8 +263,8 @@ namespace RBX
 
 				updateFocus();
 			
-				G3D::Vector2 direction = (cameraFocus.translation.xz() - cameraGoal.translation.xz()).direction();
-				cameraGoal.translation = cameraFocus.translation - G3D::Vector3(direction.x * distance, delta.y, direction.y * distance);
+				G3D::Vector2 direction = (cameraFocus.translation.xz() - cameraGoal.translation.xz()).direction() * distance;
+				cameraGoal.translation = cameraFocus.translation - G3D::Vector3(direction.x, delta.y, direction.y);
 
 				break;
 			}

@@ -12,6 +12,7 @@ bool doCrash = true;
 namespace RBX
 {
 	Debugable::AssertAction Debugable::assertAction = IgnoreAssert;
+	bool Debugable::validatingDebug = false;
 
 	void Debugable::dump(std::ostream& stream)
 	{

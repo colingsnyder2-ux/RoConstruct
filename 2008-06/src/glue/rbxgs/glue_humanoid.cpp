@@ -9,8 +9,6 @@
 
 namespace RBX
 {
-	Reflection::BoundProp<float, 1> Humanoid::propHealth("Health", "Game", &Humanoid::health, Reflection::PropertyDescriptor::STANDARD);
-	Reflection::SignalDesc<Humanoid, void(void)> Humanoid::event_Died("Died");
 
 	// through the property so Changed fires and onChangedHealth sees it
 	void Humanoid::setHealth(float value)
@@ -18,32 +16,7 @@ namespace RBX
 		propHealth.setValue(this, value);
 	}
 
-	Reflection::SignalDesc<Humanoid, void(float)> Humanoid::event_Running("Running", "speed");
-	Reflection::SignalDesc<Humanoid, void(bool)> Humanoid::event_FreeFalling("FreeFalling", "active");
-	Reflection::SignalDesc<Humanoid, void(bool)> Humanoid::event_Jumping("Jumping", "active");
-	Reflection::SignalDesc<Humanoid, void(bool)> Humanoid::event_GettingUp("GettingUp", "active");
-	Reflection::SignalDesc<Humanoid, void(bool)> Humanoid::event_FallingDown("FallingDown", "active");
-	Reflection::SignalDesc<Humanoid, void(bool)> Humanoid::event_Seated("Seated", "active");
 
-	bool Humanoid::askSetParent(const Instance* instance) const
-	{
-		return true;
-	}
-
-	bool Humanoid::isControllable() const
-	{
-		return !imDead;
-	}
-
-	bool Humanoid::shouldRender2d() const
-	{
-		return true;
-	}
-
-	bool Humanoid::shouldRender3dAdorn() const
-	{
-		return true;
-	}
 
 	// the character's name with a health bar under it, above the head
 	void Humanoid::renderMultiplayer(Adorn* adorn, const G3D::GCamera& camera)

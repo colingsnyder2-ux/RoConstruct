@@ -130,4 +130,60 @@ namespace RBX
 			part->setCoordinateFrame(primInWorld);
 		}
 	}
+
+	void Dragger::searchUpFine(const G3D::Array<Primitive*>& primitives, G3D::Vector3& movedSoFar, ContactManager& contactManager)
+	{
+		RBXASSERT(primitives.size() > 0);
+		movePrimitivesDelta(primitives, G3D::Vector3(0.0f, 0.1f, 0.0f), movedSoFar);
+
+		if (intersectingWorldOrOthers(primitives, contactManager))
+			searchUpFine(primitives, movedSoFar, contactManager);
+	}
+
+	void Dragger::searchDownFine(const G3D::Array<Primitive*>& primitives, G3D::Vector3& movedSoFar, ContactManager& contactManager)
+	{
+		RBXASSERT(primitives.size() > 0);
+		movePrimitivesDelta(primitives, G3D::Vector3(0.0f, -0.1f, 0.0f), movedSoFar);
+
+		if (!intersectingWorldOrOthers(primitives, contactManager))
+		{
+			searchDownFine(primitives, movedSoFar, contactManager);
+		}
+		else
+		{
+			searchUpFine(primitives, movedSoFar, contactManager);
+		}
+	}
+
+	void Dragger::searchUpGross(const G3D::Array<Primitive*>& primitives, G3D::Vector3& movedSoFar, ContactManager& contactManager)
+	{
+		RBXASSERT(primitives.size() > 0);
+		movePrimitivesDelta(primitives, G3D::Vector3(0.0f, 1.2f, 0.0f), movedSoFar);
+
+		if (intersectingWorldOrOthers(primitives, contactManager))
+		{
+			searchUpGross(primitives, movedSoFar, contactManager);
+		}
+		else
+		{
+			searchDownFine(primitives, movedSoFar, contactManager);
+		}
+	}
+
+	void Dragger::searchDownGross(const G3D::Array<Primitive*>& primitives, G3D::Vector3& movedSoFar, ContactManager& contactManager)
+	{
+		RBXASSERT(primitives.size() > 0);
+		RBXASSERT(!intersectingWorldOrOthers(primitives, contactManager));
+
+		movePrimitivesDelta(primitives, G3D::Vector3(0.0f, -1.2f, 0.0f), movedSoFar);
+
+		if (!intersectingWorldOrOthers(primitives, contactManager))
+		{
+			searchDownGross(primitives, movedSoFar, contactManager);
+		}
+		else
+		{
+			searchUpFine(primitives, movedSoFar, contactManager);
+		}
+	}
 }

@@ -14,7 +14,7 @@ namespace RBX
 		Hopper();
 	};
 
-	extern const char* sStarterPackService;
+	extern const char* const sStarterPackService;
 	class StarterPackService : public DescribedCreatable<StarterPackService, Hopper, &sStarterPackService>,
 							   public Service
 	{
@@ -23,7 +23,7 @@ namespace RBX
 		virtual void render2d(Adorn* adorn);
 	};
 
-	extern const char* sLegacyHopperService;
+	extern const char* const sLegacyHopperService;
 	class LegacyHopperService : public DescribedCreatable<LegacyHopperService, Hopper, &sLegacyHopperService>,
 								public Service
 	{
@@ -34,7 +34,7 @@ namespace RBX
 		virtual ~LegacyHopperService();
 	};
 
-	extern const char* sBackpackItem;
+	extern const char* const sBackpackItem;
 	class BackpackItem : public DescribedNonCreatable<BackpackItem, Widget, &sBackpackItem>
 	{
 	private:
@@ -47,7 +47,7 @@ namespace RBX
 		virtual bool askAddChild(const Instance* instance) const;
 	protected:
 		virtual G3D::Vector2 getSize() const;
-		virtual void render2d(Adorn*);
+		virtual void render2d(Adorn* adorn);
 		/*
 			TODO:
 
@@ -85,7 +85,7 @@ namespace RBX
 		}
 	};
 
-	extern const char* sHopperBin;
+	extern const char* const sHopperBin;
 	class HopperBin : public DescribedCreatable<HopperBin, BackpackItem, &sHopperBin>
 	{
 	public:

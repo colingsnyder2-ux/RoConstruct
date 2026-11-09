@@ -136,7 +136,7 @@ namespace RBX
 		virtual ~IModelModifier() {}
 	};
 
-	extern const char* sInstance;
+	extern const char* const sInstance;
 	template <class T>
 class __declspec(novtable) GuidItem
 {

@@ -2,11 +2,13 @@
 
 namespace RBX
 {
-	const char* sTeam = "Team";
+	const char* const sTeam = "Team";
 
 	static Reflection::PropDescriptor<Team, int> prop_Score("Score", "Data", &Team::getScore, &Team::setScore, Reflection::PropertyDescriptor::STANDARD);
 	static Reflection::PropDescriptor<Team, BrickColor> prop_Color("TeamColor", "Data", &Team::getTeamColor, &Team::setTeamColor, Reflection::PropertyDescriptor::STANDARD);
 	static Reflection::PropDescriptor<Team, bool> prop_AutoAssignable("AutoAssignable", "Data", &Team::getAutoAssignable, &Team::setAutoAssignable, Reflection::PropertyDescriptor::STANDARD);
+
+	Reflection::BoundProp<bool, 1> Team::prop_AutoColorCharacters("AutoColorCharacters", "Data", &Team::autoColorCharacters, Reflection::PropertyDescriptor::STANDARD);
 
 	Team::Team()
 		: score(0),
@@ -16,6 +18,8 @@ namespace RBX
 		setName("Team");
 		color = BrickColor::lego_1;
 	}
+
+	Team::~Team() {}
 
 	int Team::getScore() const
 	{

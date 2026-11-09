@@ -28,7 +28,17 @@ namespace RBX
 		std::vector<Item*> items;
   
 	public:
-		~Association();
+		~Association()
+		{
+			std::vector<Item*>::iterator it = items.begin();
+			std::vector<Item*>::iterator end = items.end();
+
+			while(it != end)
+			{
+				delete (*it);
+				it++;
+			}
+		}
   
 	private:
 		static size_t& count();
@@ -73,13 +83,6 @@ namespace RBX
 	{
 		static size_t slot = count++;
 		return slot;
-	}
-
-	template<typename Associated>
-	Association<Associated>::~Association()
-	{
-		for (size_t i = 0; i < items.size(); ++i)
-			delete items[i];
 	}
 
 	template<typename Associated>

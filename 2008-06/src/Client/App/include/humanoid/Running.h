@@ -4,7 +4,7 @@
 
 namespace RBX
 {
-	extern const char* sRunning;
+	extern const char* const sRunning;
 
 	class Running : public Named<Balancing, &sRunning>
 	{
@@ -35,7 +35,7 @@ namespace RBX
 		void updateGoals(Controller&);
 	private:
 		virtual void onComputeForce(const float);
-		virtual Humanoid::State* onStep(const float, Controller&);
+		virtual Humanoid::State* onStep(const float stepDt, Controller& controller);
 
 		virtual bool canSleep() const
 		{

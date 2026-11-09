@@ -1,21 +1,20 @@
-// from server: 54% by Intel
+// from server: 55% by Intel
 struct TextureProxyBase {
-    float __cdecl func_004cfed0(const float* v);
+    float __cdecl func_004cfed0(const float* src);
 };
 
-float TextureProxyBase::func_004cfed0(const float* v)
+float TextureProxyBase::func_004cfed0(const float* src)
 {
-    float a = v[0];
-    float b = v[1];
-    float c = v[2];
+    float v0 = src[0];
+    float v1 = src[1];
+    float v2 = src[2];
 
-    if (a >= 0.0f) a = -a;
-    if (b < 0.0f) b = -b;
-    if (c < 0.0f) c = -c;
+    if (v0 < 0.0f) v0 = -v0;
+    if (v1 < 0.0f) v1 = -v1;
+    if (v2 < 0.0f) v2 = -v2;
 
-    float max_val = a;
-    if (b > max_val) max_val = b;
-    if (c > max_val) max_val = c;
+    float max01 = (v0 > v1) ? v0 : v1;
+    float result = (max01 > v2) ? max01 : v2;
 
-    return max_val;
+    return result;
 }

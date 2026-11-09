@@ -7,6 +7,10 @@ namespace RBX
 {
     namespace Lua
     {
+		const char* Bridge<boost::shared_ptr<ThreadRef::Node>, true>::className = "shared_ptr<ThreadRef::Node>";
+
+		boost::shared_ptr<boost::mutex> ThreadRef::syncSingleton(new boost::mutex);
+
         ThreadRef::ThreadRef(lua_State* thread)
             : sync(syncSingleton),
               node(NULL),
@@ -122,12 +126,17 @@ namespace RBX
             return node;
         }
 
-        // TODO: this might also be the base definition of Bridge::on_index, not currently clear
         template<>
         int ThreadRef::NodeBridge::on_index(const ThreadRef::NodePtr& object, const char* name, lua_State* L)
         {
             throw std::runtime_error(G3D::format("%s is not a valid member", name));
         }
+
+		template<>
+		void ThreadRef::NodeBridge::on_newindex(ThreadRef::NodePtr& object, const char* name, lua_State* L)
+		{
+			throw std::runtime_error(G3D::format("%s cannot be assigned to", name));
+		}
 
         FunctionRef::FunctionRef(lua_State* thread, int functionIndex)
             : ThreadRef(thread)

@@ -1,20 +1,38 @@
 #include <atlpath.h>
 #include "util/FileSystem.h"
+#include <atlutil.h>
 
 namespace RBX
 {
+	VistaAPIs::VistaAPIs()
+		: getKnownFolderPath(NULL)
+	{
+		gShell32DLLInst = LoadLibraryA("Shell32.dll");
+		if (gShell32DLLInst)
+		{
+			getKnownFolderPath = (GetKnownFolderPathPtr)GetProcAddress(gShell32DLLInst, "SHGetKnownFolderPath");
+		}
+	}
+
 	VistaAPIs::~VistaAPIs()
 	{
 		if (gShell32DLLInst)
 			FreeLibrary(gShell32DLLInst);
 	}
 
+	HRESULT VistaAPIs::SHGetKnownFolderPath(REFKNOWNFOLDERID rfid, DWORD dwFlags, HANDLE hToken, PWSTR* ppszPath)
+	{
+		if (!getKnownFolderPath)
+			return E_NOTIMPL;
+
+		return getKnownFolderPath(rfid, dwFlags, hToken, ppszPath);
+	}
+
 	HRESULT VistaAPIs::GetIntegrity(PUCHAR pVal)
 	{
 		*pVal = 0;
 
-		OSVERSIONINFOA osvi;
-		ZeroMemory((char*)&osvi + sizeof(DWORD), sizeof(OSVERSIONINFOA) - sizeof(DWORD));
+		OSVERSIONINFOA osvi = {0};
 		osvi.dwOSVersionInfoSize = sizeof(OSVERSIONINFOA);
 
 		GetVersionExA(&osvi);
@@ -57,40 +75,47 @@ namespace RBX
 		CloseHandle(hToken);
 		return S_OK;
 	}
-}
 
-namespace RBX {
-VistaAPIs::VistaAPIs() : getKnownFolderPath(NULL) {
- gShell32DLLInst = LoadLibraryA("Shell32.dll");
- if(gShell32DLLInst) getKnownFolderPath = (GetKnownFolderPathPtr)GetProcAddress(gShell32DLLInst,"SHGetKnownFolderPath");
-}
-HRESULT VistaAPIs::SHGetKnownFolderPath(REFKNOWNFOLDERID folder, DWORD flags, HANDLE token, PWSTR* path) {
- if(getKnownFolderPath==NULL) return E_NOTIMPL;
- return getKnownFolderPath(folder,flags,token,path);
-}
-std::string FileSystem::getCacheDirectory(bool create) {
- VistaAPIs apis;
- UCHAR integrity;
- apis.GetIntegrity(&integrity);
- if(integrity == 1) {
-  GUID internetCache;
-  CLSIDFromString(L"{352481E8-33BE-4251-BA85-6007CAEDCF9D",&internetCache);
-  PWSTR knownPath = NULL;
-  if(apis.SHGetKnownFolderPath(internetCache,0x8000,NULL,&knownPath)!=E_NOTIMPL) {
-   ATL::CStringA path(knownPath);
-   CoTaskMemFree(knownPath);
-   path += "\\Roblox\\";
-   if(create && !CreateDirectoryA(path,NULL) && GetLastError()!=ERROR_ALREADY_EXISTS) return "";
-   ATL::CPath cache(path);
-   cache.AddBackslash();
-   return (LPCSTR)cache;
-  }
- }
- char path[MAX_PATH];
- HRESULT result=SHGetFolderPathAndSubDirA(NULL,CSIDL_COMMON_APPDATA | (create ? CSIDL_FLAG_CREATE : 0),NULL,SHGFP_TYPE_CURRENT,"Roblox\\Cache",path);
- if(result==S_OK) return path;
- else return "";
-}
+	std::string FileSystem::getCacheDirectory(bool create)
+	{
+		VistaAPIs apis;
+
+		UCHAR integrity;
+		apis.GetIntegrity(&integrity);
+
+		if (integrity == 1)
+		{
+			KNOWNFOLDERID folderID;
+			CLSIDFromString(OLESTR("{352481E8-33BE-4251-BA85-6007CAEDCF9D"), &folderID); // FOLDERID_InternetCache
+			
+			PWSTR lppwstrPath = NULL;
+			if (apis.SHGetKnownFolderPath(folderID, KF_FLAG_CREATE, NULL, &lppwstrPath) != E_NOTIMPL)
+			{
+				ATL::CString s = lppwstrPath;
+				CoTaskMemFree(lppwstrPath);
+				s.Append("\\Roblox\\");
+
+				if (create)
+				{
+					if (!CreateDirectoryA(s, NULL))
+					{
+						if (GetLastError() != ERROR_ALREADY_EXISTS)
+							return "";
+					}
+				}
+
+				ATL::CPath path = s;
+				path.AddBackslash();
+				return std::string(path);
+			}
+		}
+
+		char path[MAX_PATH];
+		if (SHGetFolderPathAndSubDirA(NULL, (create ? CSIDL_FLAG_CREATE : 0L) | CSIDL_COMMON_APPDATA, NULL, 0L, "Roblox\\Cache", path) == S_OK)
+			return path;
+
+		return "";
+	}
 }
 
 namespace RBX {

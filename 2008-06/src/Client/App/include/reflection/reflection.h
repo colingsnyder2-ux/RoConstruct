@@ -1,5 +1,6 @@
 #pragma once
 #include <boost/type_traits.hpp>
+#include <boost/cast.hpp>
 #include "reflection/object.h"
 
 class ArchiveBinder;
@@ -9,7 +10,7 @@ namespace RBX
 	class IReferenceBinder;
 
 	// NOTE: may not be intended for this file
-	class IIDREF
+	class __declspec(novtable) IIDREF
 	{
 		friend class MergeBinder;
 		friend class ::ArchiveBinder;
@@ -20,7 +21,7 @@ namespace RBX
 
 	namespace Reflection
 	{
-		template<typename Class, const char** ClassName, typename DerivedClass>
+		template<typename Class, const char* const* ClassName, typename DerivedClass>
 		class __declspec(novtable) Described : public DerivedClass
 		{
 		public:
@@ -45,14 +46,13 @@ namespace RBX
 			static const type_info& baseClassType();
 			static ClassDescriptor& classDescriptor()
 			{
-				// TODO: match (*ClassName is wrong)
-				static ClassDescriptor foo(DerivedClass::classDescriptor(), *ClassName);
+				static ClassDescriptor foo(DerivedClass::classDescriptor(), (const char*)ClassName);
 				return foo;
 			}
 		};
 	}
 
-	template<typename Class, typename DerivedClass, const char** ClassName>
+	template<typename Class, typename DerivedClass, const char* const* ClassName>
 	class DescribedCreatable : public Reflection::Described<Class, ClassName, FactoryProduct<Class, DerivedClass, ClassName>>
 	{
 	public:
@@ -60,15 +60,24 @@ namespace RBX
 		typedef DescribedCreatable<Class, DerivedClass, ClassName> Base;
 
 	protected:
-		DescribedCreatable();
+		DescribedCreatable()
+			: Described()
+		{
+		}
 
 		template<typename Arg0Type>
-		DescribedCreatable(Arg0Type arg0);
+		DescribedCreatable(Arg0Type arg0)
+			: Described(arg0)
+		{
+		}
 	};
 
-	template<typename Class, typename DerivedClass, const char** ClassName>
+	template<typename Class, typename DerivedClass, const char* const* ClassName>
 	class DescribedNonCreatable : public Reflection::Described<Class, ClassName, NonFactoryProduct<DerivedClass, ClassName>>
 	{
+	public:
+		typedef DescribedNonCreatable<Class, DerivedClass, ClassName> Base;
+
 	protected:
 		DescribedNonCreatable()
 			: Described()
@@ -276,15 +285,44 @@ namespace RBX
 			std::auto_ptr<typename TypedPropertyDescriptor<ReturnType*>::GetSet> getset;
 		  
 		public:
-			virtual bool isReadOnly() const;
-			ReturnType* getValue(const DescribedBase*) const;
-			void setValue(DescribedBase*, ReturnType*) const;
-			virtual bool equalValues(const DescribedBase*, const DescribedBase*) const;
-			virtual DescribedBase* getRefValue(const DescribedBase*) const;
-			virtual void setRefValue(DescribedBase*, DescribedBase*) const;
-			virtual void readValue(DescribedBase*, const XmlElement*, IReferenceBinder&) const;
-			virtual void writeValue(const DescribedBase*, XmlElement*) const;
-			virtual void assignIDREF(DescribedBase*, const InstanceHandle&) const;
+			virtual bool isReadOnly() const
+			{
+				return getset->isReadOnly();
+			}
+			ReturnType* getValue(const DescribedBase* object) const
+			{
+				return getset->getValue(object);
+			}
+			void setValue(DescribedBase* object, ReturnType* value) const
+			{
+				getset->setValue(object, value);
+			}
+			virtual bool equalValues(const DescribedBase* a, const DescribedBase* b) const
+			{
+				return getValue(a) == getValue(b);
+			}
+			virtual DescribedBase* getRefValue(const DescribedBase* instance) const
+			{
+				return getValue(instance);
+			}
+			virtual void setRefValue(DescribedBase* instance, DescribedBase* value) const
+			{
+				ReturnType* val = value ? boost::polymorphic_cast<ReturnType*>(value) : NULL;
+				setValue(instance, val);
+			}
+			virtual void readValue(DescribedBase* instance, const XmlElement* element, IReferenceBinder& binder) const
+			{
+				binder.announceIDREF(element, instance, this);
+			}
+			virtual void writeValue(const DescribedBase* instance, XmlElement* element) const
+			{
+				element->setValue(InstanceHandle(getValue(instance)));
+			}
+			virtual void assignIDREF(DescribedBase* propertyOwner, const InstanceHandle& handle) const
+			{
+				boost::shared_ptr<Instance> t = handle.getTarget();
+				setValue(propertyOwner, static_cast<ReturnType*>(t.get()));
+			}
 
 		public:
 			template<typename GetFunction, typename SetFunction>
@@ -356,7 +394,10 @@ namespace RBX
 				
 				return false;
 			}
-			virtual bool hasStringValue() const;
+			virtual bool hasStringValue() const
+			{
+				return true;
+			}
 			virtual std::string getStringValue(const DescribedBase* instance) const
 			{
 				return EnumDesc<Enum>::singleton().convertToString(getValue(instance));
@@ -464,18 +505,14 @@ namespace RBX
 		public:
 			virtual void execute(DescribedBase* instance, Arguments& arguments) const
 			{
-				Class* o = dynamic_cast<Class*>(instance);
-				if (!o)
-					throw std::bad_cast();
-
-				call<typename result_type>(o, arguments.returnValue);
+				call<typename result_type>(boost::polymorphic_cast<Class*>(instance), arguments.returnValue);
 			}
 
 		private:
 			template<typename ReturnType>
 			void call(Class* o, Value& returnValue) const
 			{
-				returnValue.set<ReturnType>((o->*function)());
+				returnValue = (o->*function)();
 			}
 
 			template<>
@@ -514,8 +551,7 @@ namespace RBX
 				const char* arg1Name,
 				Security security)
 				: FuncDesc(name, security),
-				  function(function),
-				  default1()
+				  function(function)
 			{
 				declareSignature(arg1Name);
 			}
@@ -525,7 +561,13 @@ namespace RBX
 				const char* name,
 				const char* arg1Name,
 				typename Arg1 default1,
-				Security security);
+				Security security)
+				: FuncDesc(name, security),
+				  function(function),
+				  default1(default1)
+			{
+				declareSignature(arg1Name);
+			}
 		
 		public:
 			virtual void execute(DescribedBase* instance, Arguments& arguments) const
@@ -533,18 +575,14 @@ namespace RBX
 				Value arg1 = default1;
 				arguments.get(1, arg1);
 
-				Class* o = dynamic_cast<Class*>(instance);
-				if (!o)
-					throw std::bad_cast();
-
-				call<typename result_type>(o, arguments.returnValue, arg1);
+				call<typename result_type>(boost::polymorphic_cast<Class*>(instance), arguments.returnValue, arg1);
 			}
 
 		private:
 			template<typename ReturnType>
 			void call(Class* o, Value& returnValue, Value& arg1) const
 			{
-				returnValue.set<ReturnType>((o->*function)(arg1.convert<typename Arg1>()));
+				returnValue = (o->*function)(arg1.convert<typename Arg1>());
 			}
 
 			template<>
@@ -585,7 +623,12 @@ namespace RBX
 				const char* name,
 				const char* arg1Name,
 				const char* arg2Name,
-				Security security);
+				Security security)
+				: FuncDesc(name, security),
+				  function(function)
+			{
+				declareSignature(arg1Name, arg2Name);
+			}
 			
 			BoundFuncDesc(
 				typename FunctionSig function,
@@ -596,7 +639,6 @@ namespace RBX
 				Security security)
 				: FuncDesc(name, security),
 				  function(function),
-				  default1(),
 				  default2(default2)
 			{
 				declareSignature(arg1Name, arg2Name);
@@ -609,7 +651,14 @@ namespace RBX
 				typename Arg1 default1,
 				const char* arg2Name,
 				typename Arg2 default2,
-				Security security);
+				Security security)
+				: FuncDesc(name, security),
+				  function(function),
+				  default1(default1),
+				  default2(default2)
+			{
+				declareSignature(arg1Name, arg2Name);
+			}
 		
 		public:
 			virtual void execute(DescribedBase* instance, Arguments& arguments) const
@@ -619,18 +668,14 @@ namespace RBX
 				Value arg2 = default2;
 				arguments.get(2, arg2);
 
-				Class* o = dynamic_cast<Class*>(instance);
-				if (!o)
-					throw std::bad_cast();
-
-				call<typename result_type>(o, arguments.returnValue, arg1, arg2);
+				call<typename result_type>(boost::polymorphic_cast<Class*>(instance), arguments.returnValue, arg1, arg2);
 			}
 		
 		private:
 			template<typename ReturnType>
 			void call(Class* o, Value& returnValue, Value& arg1, Value& arg2) const
 			{
-				returnValue.set<ReturnType>((o->*function)(arg1.convert<typename Arg1>(), arg2.convert<typename Arg2>()));
+				returnValue = (o->*function)(arg1.convert<typename Arg1>(), arg2.convert<typename Arg2>());
 			}
 
 			template<>
@@ -660,7 +705,13 @@ namespace RBX
 			Value default3;
   
 		private:
-			void declareSignature(const char* arg1Name, const char* arg2Name, const char* arg3Name);
+			void declareSignature(const char* arg1Name, const char* arg2Name, const char* arg3Name)
+			{
+				signature.resultType = &Type::singleton<typename result_type>();
+				signature.addArgument(Name::declare(arg1Name, -1), Type::singleton<typename Arg1>(), default1);
+				signature.addArgument(Name::declare(arg2Name, -1), Type::singleton<typename Arg2>(), default2);
+				signature.addArgument(Name::declare(arg3Name, -1), Type::singleton<typename Arg3>(), default3);
+			}
 
 		public:
 			BoundFuncDesc(
@@ -669,7 +720,12 @@ namespace RBX
 				const char* arg1Name,
 				const char* arg2Name,
 				const char* arg3Name,
-				Security security);
+				Security security)
+				: FuncDesc(name, security),
+				  function(function)
+			{
+				declareSignature(arg1Name, arg2Name, arg3Name);
+			}
 			
 			BoundFuncDesc(
 				typename FunctionSig function,
@@ -678,7 +734,13 @@ namespace RBX
 				const char* arg2Name,
 				const char* arg3Name,
 				typename Arg3 default3,
-				Security security);
+				Security security)
+				: FuncDesc(name, security),
+				  function(function),
+				  default3(default3)
+			{
+				declareSignature(arg1Name, arg2Name, arg3Name);
+			}
 
 			BoundFuncDesc(
 				typename FunctionSig function,
@@ -688,7 +750,14 @@ namespace RBX
 				typename Arg2 default2,
 				const char* arg3Name,
 				typename Arg3 default3,
-				Security security);
+				Security security)
+				: FuncDesc(name, security),
+				  function(function),
+				  default2(default2),
+				  default3(default3)
+			{
+				declareSignature(arg1Name, arg2Name, arg3Name);
+			}
 
 			BoundFuncDesc(
 				typename FunctionSig function,
@@ -699,10 +768,41 @@ namespace RBX
 				typename Arg2 default2,
 				const char* arg3Name,
 				typename Arg3 default3,
-				Security security);
+				Security security)
+				: FuncDesc(name, security),
+				  function(function),
+				  default1(default1),
+				  default2(default2),
+				  default3(default3)
+			{
+				declareSignature(arg1Name, arg2Name, arg3Name);
+			}
 		
 		public:
-			virtual void execute(DescribedBase* instance, Arguments& arguments) const;
+			virtual void execute(DescribedBase* instance, Arguments& arguments) const
+			{
+				Value arg1 = default1;
+				arguments.get(1, arg1);
+				Value arg2 = default2;
+				arguments.get(2, arg2);
+				Value arg3 = default3;
+				arguments.get(3, arg3);
+
+				call<typename result_type>(boost::polymorphic_cast<Class*>(instance), arguments.returnValue, arg1, arg2, arg3);
+			}
+
+		private:
+			template<typename ReturnType>
+			void call(Class* o, Value& returnValue, Value& arg1, Value& arg2, Value& arg3) const
+			{
+				returnValue = (o->*function)(arg1.convert<typename Arg1>(), arg2.convert<typename Arg2>(), arg3.convert<typename Arg3>());
+			}
+
+			template<>
+			void call<void>(Class* o, Value& returnValue, Value& arg1, Value& arg2, Value& arg3) const
+			{
+				(o->*function)(arg1.convert<typename Arg1>(), arg2.convert<typename Arg2>(), arg3.convert<typename Arg3>());
+			}
 		};
 
 		// Four arguments
@@ -727,7 +827,14 @@ namespace RBX
 			Value default4;
   
 		private:
-			void declareSignature(const char* arg1Name, const char* arg2Name, const char* arg3Name, const char* arg4Name);
+			void declareSignature(const char* arg1Name, const char* arg2Name, const char* arg3Name, const char* arg4Name)
+			{
+				signature.resultType = &Type::singleton<typename result_type>();
+				signature.addArgument(Name::declare(arg1Name, -1), Type::singleton<typename Arg1>(), default1);
+				signature.addArgument(Name::declare(arg2Name, -1), Type::singleton<typename Arg2>(), default2);
+				signature.addArgument(Name::declare(arg3Name, -1), Type::singleton<typename Arg3>(), default3);
+				signature.addArgument(Name::declare(arg4Name, -1), Type::singleton<typename Arg4>(), default4);
+			}
 
 		public:
 			//BoundFuncDesc(const BoundFuncDesc&);
@@ -738,7 +845,12 @@ namespace RBX
 				const char* arg2Name,
 				const char* arg3Name,
 				const char* arg4Name,
-				Security security);
+				Security security)
+				: FuncDesc(name, security),
+				  function(function)
+			{
+				declareSignature(arg1Name, arg2Name, arg3Name, arg4Name);
+			}
 			
 			BoundFuncDesc(
 				typename FunctionSig function,
@@ -748,7 +860,13 @@ namespace RBX
 				const char* arg3Name,
 				const char* arg4Name,
 				typename Arg4 default4,
-				Security security);
+				Security security)
+				: FuncDesc(name, security),
+				  function(function),
+				  default4(default4)
+			{
+				declareSignature(arg1Name, arg2Name, arg3Name, arg4Name);
+			}
 
 			BoundFuncDesc(
 				typename FunctionSig function,
@@ -759,7 +877,14 @@ namespace RBX
 				typename Arg3 default3,
 				const char* arg4Name,
 				typename Arg4 default4,
-				Security security);
+				Security security)
+				: FuncDesc(name, security),
+				  function(function),
+				  default3(default3),
+				  default4(default4)
+			{
+				declareSignature(arg1Name, arg2Name, arg3Name, arg4Name);
+			}
 
 			BoundFuncDesc(
 				typename FunctionSig function,
@@ -771,7 +896,15 @@ namespace RBX
 				typename Arg3 default3,
 				const char* arg4Name,
 				typename Arg4 default4,
-				Security security);
+				Security security)
+				: FuncDesc(name, security),
+				  function(function),
+				  default2(default2),
+				  default3(default3),
+				  default4(default4)
+			{
+				declareSignature(arg1Name, arg2Name, arg3Name, arg4Name);
+			}
 
 			BoundFuncDesc(
 				typename FunctionSig function,
@@ -784,10 +917,44 @@ namespace RBX
 				typename Arg3 default3,
 				const char* arg4Name,
 				typename Arg4 default4,
-				Security security);
+				Security security)
+				: FuncDesc(name, security),
+				  function(function),
+				  default1(default1),
+				  default2(default2),
+				  default3(default3),
+				  default4(default4)
+			{
+				declareSignature(arg1Name, arg2Name, arg3Name, arg4Name);
+			}
 		
 		public:
-			virtual void execute(DescribedBase* instance, Arguments& arguments) const;
+			virtual void execute(DescribedBase* instance, Arguments& arguments) const
+			{
+				Value arg1 = default1;
+				arguments.get(1, arg1);
+				Value arg2 = default2;
+				arguments.get(2, arg2);
+				Value arg3 = default3;
+				arguments.get(3, arg3);
+				Value arg4 = default4;
+				arguments.get(4, arg4);
+
+				call<typename result_type>(boost::polymorphic_cast<Class*>(instance), arguments.returnValue, arg1, arg2, arg3, arg4);
+			}
+
+		private:
+			template<typename ReturnType>
+			void call(Class* o, Value& returnValue, Value& arg1, Value& arg2, Value& arg3, Value& arg4) const
+			{
+				returnValue = (o->*function)(arg1.convert<typename Arg1>(), arg2.convert<typename Arg2>(), arg3.convert<typename Arg3>(), arg4.convert<typename Arg4>());
+			}
+
+			template<>
+			void call<void>(Class* o, Value& returnValue, Value& arg1, Value& arg2, Value& arg3, Value& arg4) const
+			{
+				(o->*function)(arg1.convert<typename Arg1>(), arg2.convert<typename Arg2>(), arg3.convert<typename Arg3>(), arg4.convert<typename Arg4>());
+			}
 		};
 	}
 }
@@ -795,17 +962,6 @@ namespace RBX
 // rebuild overlay: template bodies rbxgs declares but never defines
 namespace RBX
 {
-	template<typename Class, typename DerivedClass, const char** ClassName>
-	DescribedCreatable<Class, DerivedClass, ClassName>::DescribedCreatable()
-	{
-	}
-
-	template<typename Class, typename DerivedClass, const char** ClassName>
-	template<typename Arg0Type>
-	DescribedCreatable<Class, DerivedClass, ClassName>::DescribedCreatable(Arg0Type arg0)
-		: Reflection::Described<Class, ClassName, FactoryProduct<Class, DerivedClass, ClassName> >(arg0)
-	{
-	}
 }
 
 // rebuild overlay: RefPropDescriptor members rbxgs declares but never defines
@@ -818,59 +974,6 @@ namespace RBX
 
 	namespace Reflection
 	{
-		template<typename Class, typename ReturnType>
-		bool RefPropDescriptor<Class, ReturnType>::isReadOnly() const
-		{
-			return getset->isReadOnly();
-		}
-
-		template<typename Class, typename ReturnType>
-		ReturnType* RefPropDescriptor<Class, ReturnType>::getValue(const DescribedBase* object) const
-		{
-			return getset->getValue(object);
-		}
-
-		template<typename Class, typename ReturnType>
-		void RefPropDescriptor<Class, ReturnType>::setValue(DescribedBase* object, ReturnType* value) const
-		{
-			getset->setValue(object, value);
-		}
-
-		template<typename Class, typename ReturnType>
-		bool RefPropDescriptor<Class, ReturnType>::equalValues(const DescribedBase* a, const DescribedBase* b) const
-		{
-			return getValue(a) == getValue(b);
-		}
-
-		template<typename Class, typename ReturnType>
-		DescribedBase* RefPropDescriptor<Class, ReturnType>::getRefValue(const DescribedBase* object) const
-		{
-			return getValue(object);
-		}
-
-		template<typename Class, typename ReturnType>
-		void RefPropDescriptor<Class, ReturnType>::setRefValue(DescribedBase* object, DescribedBase* value) const
-		{
-			setValue(object, dynamic_cast<ReturnType*>(value));
-		}
-
-		template<typename Class, typename ReturnType>
-		void RefPropDescriptor<Class, ReturnType>::readValue(DescribedBase* object, const XmlElement* element, IReferenceBinder& binder) const
-		{
-			rebuildAnnounceIDREF(binder, element, object, this);
-		}
-
-		template<typename Class, typename ReturnType>
-		void RefPropDescriptor<Class, ReturnType>::writeValue(const DescribedBase* object, XmlElement* element) const
-		{
-			rebuildWriteIDREF(element, getValue(object));
-		}
-
-		template<typename Class, typename ReturnType>
-		void RefPropDescriptor<Class, ReturnType>::assignIDREF(DescribedBase* object, const InstanceHandle& handle) const
-		{
-			setValue(object, dynamic_cast<ReturnType*>(handle.getTarget().get()));
-		}
 	}
 }
 
@@ -879,11 +982,6 @@ namespace RBX
 {
 	namespace Reflection
 	{
-		template<typename Class, typename Enum>
-		bool EnumPropDescriptor<Class, Enum>::hasStringValue() const
-		{
-			return true;
-		}
 	}
 }
 
@@ -907,141 +1005,6 @@ namespace RBX
 			template<typename F>
 			static void run(Value&, F f) { f(); }
 		};
-
-		template<typename Class, typename Function>
-		BoundFuncDesc<Class, Function, 1>::BoundFuncDesc(typename BoundFuncDesc<Class, Function, 1>::FunctionSig function, const char* name, const char* arg1Name, typename BoundFuncDesc<Class, Function, 1>::Arg1 default1, Security security)
-			: FuncDesc<Class>(name, security), function(function), default1(default1)
-		{
-			declareSignature(arg1Name);
-		}
-
-		template<typename Class, typename Function>
-		BoundFuncDesc<Class, Function, 2>::BoundFuncDesc(typename BoundFuncDesc<Class, Function, 2>::FunctionSig function, const char* name, const char* arg1Name, const char* arg2Name, Security security)
-			: FuncDesc<Class>(name, security), function(function), default1(), default2()
-		{
-			declareSignature(arg1Name, arg2Name);
-		}
-
-		template<typename Class, typename Function>
-		BoundFuncDesc<Class, Function, 2>::BoundFuncDesc(typename BoundFuncDesc<Class, Function, 2>::FunctionSig function, const char* name, const char* arg1Name, typename BoundFuncDesc<Class, Function, 2>::Arg1 default1, const char* arg2Name, typename BoundFuncDesc<Class, Function, 2>::Arg2 default2, Security security)
-			: FuncDesc<Class>(name, security), function(function), default1(default1), default2(default2)
-		{
-			declareSignature(arg1Name, arg2Name);
-		}
-
-		template<typename Class, typename Function>
-		BoundFuncDesc<Class, Function, 3>::BoundFuncDesc(typename BoundFuncDesc<Class, Function, 3>::FunctionSig function, const char* name, const char* arg1Name, const char* arg2Name, const char* arg3Name, Security security)
-			: FuncDesc<Class>(name, security), function(function), default1(), default2(), default3()
-		{
-			declareSignature(arg1Name, arg2Name, arg3Name);
-		}
-
-		template<typename Class, typename Function>
-		BoundFuncDesc<Class, Function, 3>::BoundFuncDesc(typename BoundFuncDesc<Class, Function, 3>::FunctionSig function, const char* name, const char* arg1Name, const char* arg2Name, const char* arg3Name, typename BoundFuncDesc<Class, Function, 3>::Arg3 default3, Security security)
-			: FuncDesc<Class>(name, security), function(function), default1(), default2(), default3(default3)
-		{
-			declareSignature(arg1Name, arg2Name, arg3Name);
-		}
-
-		template<typename Class, typename Function>
-		BoundFuncDesc<Class, Function, 3>::BoundFuncDesc(typename BoundFuncDesc<Class, Function, 3>::FunctionSig function, const char* name, const char* arg1Name, const char* arg2Name, typename BoundFuncDesc<Class, Function, 3>::Arg2 default2, const char* arg3Name, typename BoundFuncDesc<Class, Function, 3>::Arg3 default3, Security security)
-			: FuncDesc<Class>(name, security), function(function), default1(), default2(default2), default3(default3)
-		{
-			declareSignature(arg1Name, arg2Name, arg3Name);
-		}
-
-		template<typename Class, typename Function>
-		BoundFuncDesc<Class, Function, 3>::BoundFuncDesc(typename BoundFuncDesc<Class, Function, 3>::FunctionSig function, const char* name, const char* arg1Name, typename BoundFuncDesc<Class, Function, 3>::Arg1 default1, const char* arg2Name, typename BoundFuncDesc<Class, Function, 3>::Arg2 default2, const char* arg3Name, typename BoundFuncDesc<Class, Function, 3>::Arg3 default3, Security security)
-			: FuncDesc<Class>(name, security), function(function), default1(default1), default2(default2), default3(default3)
-		{
-			declareSignature(arg1Name, arg2Name, arg3Name);
-		}
-
-		template<typename Class, typename Function>
-		void BoundFuncDesc<Class, Function, 3>::declareSignature(const char* arg1Name, const char* arg2Name, const char* arg3Name)
-		{
-			signature.resultType = &Type::singleton<typename BoundFuncDesc<Class, Function, 3>::result_type>();
-			signature.addArgument(Name::declare(arg1Name, -1), Type::singleton<typename BoundFuncDesc<Class, Function, 3>::Arg1>(), default1);
-			signature.addArgument(Name::declare(arg2Name, -1), Type::singleton<typename BoundFuncDesc<Class, Function, 3>::Arg2>(), default2);
-			signature.addArgument(Name::declare(arg3Name, -1), Type::singleton<typename BoundFuncDesc<Class, Function, 3>::Arg3>(), default3);
-		}
-
-		template<typename Class, typename Function>
-		void BoundFuncDesc<Class, Function, 3>::execute(DescribedBase* instance, Arguments& arguments) const
-		{
-			Value arg1 = default1;
-			arguments.get(1, arg1);
-			Value arg2 = default2;
-			arguments.get(2, arg2);
-			Value arg3 = default3;
-			arguments.get(3, arg3);
-			Class* o = dynamic_cast<Class*>(instance);
-			if (!o)
-				throw std::bad_cast();
-			rebuildCall<typename BoundFuncDesc<Class, Function, 3>::result_type>::run(arguments.returnValue, boost::bind(function, o, arg1.convert<typename BoundFuncDesc<Class, Function, 3>::Arg1>(), arg2.convert<typename BoundFuncDesc<Class, Function, 3>::Arg2>(), arg3.convert<typename BoundFuncDesc<Class, Function, 3>::Arg3>()));
-		}
-
-		template<typename Class, typename Function>
-		BoundFuncDesc<Class, Function, 4>::BoundFuncDesc(typename BoundFuncDesc<Class, Function, 4>::FunctionSig function, const char* name, const char* arg1Name, const char* arg2Name, const char* arg3Name, const char* arg4Name, Security security)
-			: FuncDesc<Class>(name, security), function(function), default1(), default2(), default3(), default4()
-		{
-			declareSignature(arg1Name, arg2Name, arg3Name, arg4Name);
-		}
-
-		template<typename Class, typename Function>
-		BoundFuncDesc<Class, Function, 4>::BoundFuncDesc(typename BoundFuncDesc<Class, Function, 4>::FunctionSig function, const char* name, const char* arg1Name, const char* arg2Name, const char* arg3Name, const char* arg4Name, typename BoundFuncDesc<Class, Function, 4>::Arg4 default4, Security security)
-			: FuncDesc<Class>(name, security), function(function), default1(), default2(), default3(), default4(default4)
-		{
-			declareSignature(arg1Name, arg2Name, arg3Name, arg4Name);
-		}
-
-		template<typename Class, typename Function>
-		BoundFuncDesc<Class, Function, 4>::BoundFuncDesc(typename BoundFuncDesc<Class, Function, 4>::FunctionSig function, const char* name, const char* arg1Name, const char* arg2Name, const char* arg3Name, typename BoundFuncDesc<Class, Function, 4>::Arg3 default3, const char* arg4Name, typename BoundFuncDesc<Class, Function, 4>::Arg4 default4, Security security)
-			: FuncDesc<Class>(name, security), function(function), default1(), default2(), default3(default3), default4(default4)
-		{
-			declareSignature(arg1Name, arg2Name, arg3Name, arg4Name);
-		}
-
-		template<typename Class, typename Function>
-		BoundFuncDesc<Class, Function, 4>::BoundFuncDesc(typename BoundFuncDesc<Class, Function, 4>::FunctionSig function, const char* name, const char* arg1Name, const char* arg2Name, typename BoundFuncDesc<Class, Function, 4>::Arg2 default2, const char* arg3Name, typename BoundFuncDesc<Class, Function, 4>::Arg3 default3, const char* arg4Name, typename BoundFuncDesc<Class, Function, 4>::Arg4 default4, Security security)
-			: FuncDesc<Class>(name, security), function(function), default1(), default2(default2), default3(default3), default4(default4)
-		{
-			declareSignature(arg1Name, arg2Name, arg3Name, arg4Name);
-		}
-
-		template<typename Class, typename Function>
-		BoundFuncDesc<Class, Function, 4>::BoundFuncDesc(typename BoundFuncDesc<Class, Function, 4>::FunctionSig function, const char* name, const char* arg1Name, typename BoundFuncDesc<Class, Function, 4>::Arg1 default1, const char* arg2Name, typename BoundFuncDesc<Class, Function, 4>::Arg2 default2, const char* arg3Name, typename BoundFuncDesc<Class, Function, 4>::Arg3 default3, const char* arg4Name, typename BoundFuncDesc<Class, Function, 4>::Arg4 default4, Security security)
-			: FuncDesc<Class>(name, security), function(function), default1(default1), default2(default2), default3(default3), default4(default4)
-		{
-			declareSignature(arg1Name, arg2Name, arg3Name, arg4Name);
-		}
-
-		template<typename Class, typename Function>
-		void BoundFuncDesc<Class, Function, 4>::declareSignature(const char* arg1Name, const char* arg2Name, const char* arg3Name, const char* arg4Name)
-		{
-			signature.resultType = &Type::singleton<typename BoundFuncDesc<Class, Function, 4>::result_type>();
-			signature.addArgument(Name::declare(arg1Name, -1), Type::singleton<typename BoundFuncDesc<Class, Function, 4>::Arg1>(), default1);
-			signature.addArgument(Name::declare(arg2Name, -1), Type::singleton<typename BoundFuncDesc<Class, Function, 4>::Arg2>(), default2);
-			signature.addArgument(Name::declare(arg3Name, -1), Type::singleton<typename BoundFuncDesc<Class, Function, 4>::Arg3>(), default3);
-			signature.addArgument(Name::declare(arg4Name, -1), Type::singleton<typename BoundFuncDesc<Class, Function, 4>::Arg4>(), default4);
-		}
-
-		template<typename Class, typename Function>
-		void BoundFuncDesc<Class, Function, 4>::execute(DescribedBase* instance, Arguments& arguments) const
-		{
-			Value arg1 = default1;
-			arguments.get(1, arg1);
-			Value arg2 = default2;
-			arguments.get(2, arg2);
-			Value arg3 = default3;
-			arguments.get(3, arg3);
-			Value arg4 = default4;
-			arguments.get(4, arg4);
-			Class* o = dynamic_cast<Class*>(instance);
-			if (!o)
-				throw std::bad_cast();
-			rebuildCall<typename BoundFuncDesc<Class, Function, 4>::result_type>::run(arguments.returnValue, boost::bind(function, o, arg1.convert<typename BoundFuncDesc<Class, Function, 4>::Arg1>(), arg2.convert<typename BoundFuncDesc<Class, Function, 4>::Arg2>(), arg3.convert<typename BoundFuncDesc<Class, Function, 4>::Arg3>(), arg4.convert<typename BoundFuncDesc<Class, Function, 4>::Arg4>()));
-		}
 
 	}
 }

@@ -5,6 +5,10 @@
 
 namespace RBX
 {
+	char* sNullTool = "NullTool";
+
+	char* sNewNullTool = "NewNullTool";
+
 	NewNullTool::NewNullTool(Workspace* workspace)
 		: Base(workspace),
 		  cursor("ArrowCursor"),
@@ -108,7 +112,6 @@ namespace RBX
 		}
 	}
 
-	const char* sNullTool = "NullTool";
 
 	NullTool::NullTool(Workspace* workspace)
 		: Base(workspace)

@@ -25,7 +25,11 @@ namespace RBX
 			currentState = -1; // see DataModel constructor
 		}
 
-		~StateStack();
+		~StateStack()
+		{
+			clearStackAfter(-1);
+			currentState = -1;
+		}
 
 		void pushState(const Name&, T*, T*);
 		void pushState(std::string, T*, T*);
@@ -35,32 +39,31 @@ namespace RBX
 		bool canRedo(std::string&) const;
 		T* redo();
 	protected:
-		size_t getStackSize() const;
-		virtual bool isStackTooBig() const;
+		size_t getStackSize() const
+		{
+			return stack.size();
+		}
+		virtual bool isStackTooBig() const
+		{
+			return false;
+		}
 	private:
-		void clearStackAfter(int);
+		void clearStackAfter(int index)
+		{
+			for (int i = stack.size() - 1; i > index; i--)
+			{
+				delete stack[i].redoState;
+				delete stack[i].undoState;
+			}
+
+			stack.resize(index + 1);
+		}
 	};
 }
 
 // rebuild overlay: StateStack members rbxgs declares but never defines
 namespace RBX
 {
-	template<typename T>
-	StateStack<T>::~StateStack()
-	{
-		clearStack();
-	}
-
-	template<typename T>
-	void StateStack<T>::clearStackAfter(int index)
-	{
-		while ((int)stack.size() > index + 1)
-		{
-			delete stack.back().undoState;
-			delete stack.back().redoState;
-			stack.pop_back();
-		}
-	}
 
 	template<typename T>
 	void StateStack<T>::pushState(std::string name, T* undoState, T* redoState)
@@ -124,15 +127,4 @@ namespace RBX
 		return currentState + 1 >= (int)stack.size() ? NULL : stack[++currentState].redoState;
 	}
 
-	template<typename T>
-	size_t StateStack<T>::getStackSize() const
-	{
-		return stack.size();
-	}
-
-	template<typename T>
-	bool StateStack<T>::isStackTooBig() const
-	{
-		return stack.size() > 64;
-	}
 }

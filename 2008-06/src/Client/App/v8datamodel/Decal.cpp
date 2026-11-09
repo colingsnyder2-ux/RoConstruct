@@ -6,7 +6,7 @@
 
 namespace RBX 
 {
-	const char* sDecal = "Decal";
+	char* sDecal = "Decal";
 
 	const Reflection::PropDescriptor<Decal, TextureId> Decal::prop_Texture("Texture", "Appearance", &Decal::getTexture, &Decal::setTexture, Reflection::PropertyDescriptor::STANDARD);
 	const Reflection::PropDescriptor<Decal, float> Decal::prop_Specular("Specular", "Appearance", &Decal::getSpecular, &Decal::setSpecular, Reflection::PropertyDescriptor::STANDARD);
@@ -46,6 +46,8 @@ namespace RBX
 		}
 	}
 
+	char* sTexture = "Texture";
+
 	const Reflection::PropDescriptor<Texture, float> Texture::prop_StudsPerTileU("StudsPerTileU", "Appearance", &Texture::getStudsPerTileU, &Texture::setStudsPerTileU, Reflection::PropertyDescriptor::STANDARD);
 	const Reflection::PropDescriptor<Texture, float> Texture::prop_StudsPerTileV("StudsPerTileV", "Appearance", &Texture::getStudsPerTileV, &Texture::setStudsPerTileV, Reflection::PropertyDescriptor::STANDARD);
 
@@ -70,6 +72,72 @@ namespace RBX
 		{
 			studsPerTile.y = value;
 			raisePropertyChanged(prop_StudsPerTileV);
+		}
+	}
+
+	template<>
+	static std::string StringConverter<TextureId>::convertToString(const TextureId& value)
+	{
+		return value.toString();
+	}
+
+	template<>
+	static bool StringConverter<TextureId>::convertToValue(const std::string& text, TextureId& value)
+	{
+		value = TextureId(text);
+		return true;
+	}
+
+	namespace Reflection
+	{
+		template<>
+		const Type& Type::singleton<TextureId>()
+		{
+			return Type::singleton<ContentId>();
+		}
+
+		template<>
+		void TypedPropertyDescriptor<TextureId>::readValue(DescribedBase* instance, const XmlElement* element, IReferenceBinder& binder) const
+		{
+			if (!element->isXsiNil())
+			{
+				ContentId value;
+				if (element->getValue(value))
+				{
+					setValue(instance, value);
+				}
+			}
+		}
+
+		template<>
+		void TypedPropertyDescriptor<TextureId>::writeValue(const DescribedBase* instance, XmlElement* element) const
+		{
+			element->setValue(TextureId(getValue(instance)));
+		}
+
+		template<>
+		bool TypedPropertyDescriptor<TextureId>::hasStringValue() const
+		{
+			return true;
+		}
+
+		template<>
+		std::string TypedPropertyDescriptor<TextureId>::getStringValue(const DescribedBase* instance) const
+		{
+			return StringConverter<TextureId>::convertToString(getValue(instance));
+		}
+
+		template<>
+		bool TypedPropertyDescriptor<TextureId>::setStringValue(DescribedBase* instance, const std::string& text) const
+		{
+			TextureId value;
+			if (StringConverter<TextureId>::convertToValue(text, value))
+			{
+				setValue(instance, value);
+				return true;
+			}
+
+			return false;
 		}
 	}
 }

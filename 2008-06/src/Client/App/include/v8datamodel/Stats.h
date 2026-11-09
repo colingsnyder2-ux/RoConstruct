@@ -7,7 +7,10 @@ namespace RBX
 {
     namespace Stats
     {
-        extern const char* sStatsItem;
+		template<typename T>
+        class TypedStatsItem;
+
+        extern char* sStatsItem;
         class Item : public DescribedNonCreatable<Item, Instance, &sStatsItem>
         {
         protected:
@@ -15,31 +18,76 @@ namespace RBX
             std::string sValue;
     
         protected:
-            virtual void update();
+            virtual void update()
+			{
+				return;
+			}
 
         public:
-            Item(const char*);
-            Item();
+            Item(const char* name)
+				: Base(name),
+				  val(0.0)
+			{
+			}
+
+            Item()
+				: val(0.0)
+			{
+			}
+
             const std::string& getStringValue();
-            double getValue();
-            std::string getStringValue2();
-            void setValue(double, const std::string&);
-            void formatMem(size_t);
-            void formatValue(double, const char*, ...);
+
+            double getValue()
+			{
+				update();
+				return val;
+			}
+
+            std::string getStringValue2()
+			{
+				update();
+				return sValue;
+			}
+
+            void setValue(double value, const std::string& stringValue)
+			{
+				val = value;
+				sValue = stringValue;
+			}
+
+            void formatMem(size_t bytes);
+            void formatValue(double val, const char* fmt, ...);
             void formatPercent(double);
-            Item* createChildItem(const char*);
-            Item* createBoundChildItem(const Profiling::Profiler&);
+            Item* createChildItem(const char* item);
+            Item* createBoundChildItem(const Profiling::Profiler& p);
             Item* createBoundMemChildItem(const char*, const size_t&);
 
         protected:
-            virtual bool askAddChild(const Instance*) const;
+            virtual bool askAddChild(const Instance* instance) const
+			{
+				return dynamic_cast<const Stats::Item*>(instance) != NULL;
+			}
 
         public:
             template<typename T>
-            Item* createBoundChildItem(const char* name, const T& v);
+            Item* createBoundChildItem(const char* name, const T& v)
+			{
+				boost::shared_ptr<Item> item = Creatable::create<TypedStatsItem<T>>(&v);
+				item->setName(name);
+				item->setParent(this);
+
+				return item.get();
+			}
 
             template<typename T>
-            Item* createChildItem(const char* name, boost::function0<T> func);
+            Item* createChildItem(const char* name, boost::function0<T> func)
+			{
+				boost::shared_ptr<Item> item = Creatable::create<TypedStatsItem<T>>(func);
+				item->setName(name);
+				item->setParent(this);
+
+				return item.get();
+			}
 
 			template<typename T>
 			void formatValue(const T& value);
@@ -52,88 +100,72 @@ namespace RBX
             const boost::function0<T> func;
   
         public:
-            TypedStatsItem<T>(const T*);
-            TypedStatsItem<T>(boost::function0<T>);
-            virtual void update();
+            TypedStatsItem<T>(const T* value)
+				: func(boost::bind(&deref, value))
+			{
+			}
+
+            TypedStatsItem<T>(boost::function0<T> func)
+				: func(func)
+			{
+			}
+
+            virtual void update()
+			{
+				formatValue<T>(func());
+			}
   
         private:
-            static const bool& deref(const T*);
+            static const T& deref(const T* value)
+			{
+				return *value;
+			}
         };
 
         class TypedMemItem : public TypedStatsItem<size_t>
         {
         public:
-            TypedMemItem(const size_t*);
-            virtual void update();
+            TypedMemItem(const size_t* value)
+				: TypedStatsItem(value)
+			{
+			}
+
+            virtual void update()
+			{
+				formatMem(func());
+			}
         };
 
-        extern const char *sStats;
+        extern char *sStats;
         class StatsService : public DescribedNonCreatable<StatsService, Instance, &sStats>, 
                              public Service
         {
         public:
-            StatsService();
+            StatsService()
+				: Base("Stats")
+			{
+			}
         
         protected:
-            virtual bool askAddChild(const Instance*) const;
-            virtual XmlElement* write();
+            virtual bool askAddChild(const Instance* instance) const
+			{
+				return dynamic_cast<const Stats::Item*>(instance) != NULL;
+			}
+
+            virtual XmlElement* write()
+			{
+				return NULL;
+			}
         };
     }
 }
 
-// rebuild overlay: Stats template bodies rbxgs declares but never defines
-#include <boost/bind.hpp>
-#include "util/Utilities.h"
-namespace RBX
+class ProfilingItem : public RBX::Stats::Item
 {
-	namespace Stats
-	{
-		template<typename T>
-		T rebuildDeref(const T* value)
-		{
-			return *value;
-		}
+private:
+	const RBX::Profiling::Profiler& p;
 
-		template<typename T>
-		TypedStatsItem<T>::TypedStatsItem(const T* value)
-			: func(boost::bind(&rebuildDeref<T>, value))
-		{
-		}
-
-		template<typename T>
-		TypedStatsItem<T>::TypedStatsItem(boost::function0<T> func)
-			: func(func)
-		{
-		}
-
-		template<typename T>
-		void TypedStatsItem<T>::update()
-		{
-			formatValue(func());
-		}
-
-		template<typename T>
-		void Item::formatValue(const T& value)
-		{
-			setValue((double)value, StringConverter<T>::convertToString(value));
-		}
-
-		template<typename T>
-		Item* Item::createBoundChildItem(const char* name, const T& value)
-		{
-			boost::shared_ptr<TypedStatsItem<T> > item = Creatable<Instance>::create<TypedStatsItem<T> >(&value);
-			item->setName(name);
-			item->setParent(this);
-			return item.get();
-		}
-
-		template<typename T>
-		Item* Item::createChildItem(const char* name, boost::function0<T> func)
-		{
-			boost::shared_ptr<TypedStatsItem<T> > item = Creatable<Instance>::create<TypedStatsItem<T> >(func);
-			item->setName(name);
-			item->setParent(this);
-			return item.get();
-		}
-	}
-}
+public:
+	ProfilingItem(const RBX::Profiling::Profiler* p);
+	virtual void update();
+};

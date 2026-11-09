@@ -1,0 +1,106 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/UserInputBaseLifetime.cpp",
+      "checks": [
+        {
+          "addr": "005ceaa0",
+          "symbol": "??0UserInputBase@RBX@@"
+        },
+        {
+          "addr": "00467770",
+          "symbol": "??1UserInputBase@RBX@@"
+        }
+      ],
+      "object": "NativeUserInputBaseLifetimeFull.obj"
+    },
+    {
+      "source": "native-classes/UserInputBaseCursor.cpp",
+      "checks": [
+        {
+          "addr": "005cea00",
+          "symbol": "?init@UserInputBase@RBX@@"
+        },
+        {
+          "addr": "005ceb00",
+          "symbol": "?getGameCursor@UserInputBase@RBX@@"
+        },
+        {
+          "addr": "005cec50",
+          "symbol": "?setCursorId@UserInputBase@RBX@@"
+        },
+        {
+          "addr": "005cecc0",
+          "symbol": "?renderGameCursor@UserInputBase@RBX@@"
+        }
+      ],
+      "object": "NativeUserInputBaseCursorFull.obj"
+    },
+    {
+      "source": "native-classes/UserInputMovement.cpp",
+      "checks": [
+        {
+          "addr": "005ce960",
+          "symbol": "?getMovementKeys@UserInputBase@RBX@@"
+        }
+      ],
+      "object": "NativeUserInputMovementFull.obj"
+    }
+  ],
+  "retired_source_definitions": [
+    "UserInputBase::UserInputBase():currentCursor(NULL){}",
+    "UserInputBase::~UserInputBase(){}",
+    "G3D::ReferenceCountedPointer<TextureProxyBase> UserInputBase::getGameCursor(Adorn* adorn){\n    if(!currentCursor.notNull()){\n        currentCursor=adorn->createTextureProxy(currentCursorId.toString());\n        if(!currentCursor.notNull())currentCursor=adorn->createTextureProxy(ContentId::fromAssets(\"Textures\\\\ArrowCursor.png\").toString());\n    }\n    return currentCursor;\n}",
+    "void UserInputBase::setCursorId(Adorn*,const TextureId& id){\n    if(currentCursorId!=id){currentCursorId=id;currentCursor=G3D::ReferenceCountedPointer<TextureProxyBase>();}\n}"
+  ],
+  "retired_functions": [
+    "??0?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@QAE@PAVTextureProxyBase@RBX@@@Z",
+    "??0ContentId@RBX@@QAE@XZ",
+    "??0UserInputBase@RBX@@QAE@XZ",
+    "??1UserInputBase@RBX@@QAE@XZ",
+    "__ehhandler$??0ContentId@RBX@@QAE@XZ",
+    "__ehhandler$??0UserInputBase@RBX@@QAE@XZ",
+    "__ehhandler$??1UserInputBase@RBX@@QAE@XZ",
+    "__unwindfunclet$??0ContentId@RBX@@QAE@XZ$0",
+    "__unwindfunclet$??0UserInputBase@RBX@@QAE@XZ$0",
+    "__unwindfunclet$??0UserInputBase@RBX@@QAE@XZ$2",
+    "__unwindfunclet$??1UserInputBase@RBX@@QAE@XZ$0"
+    ,"?getGameCursor@UserInputBase@RBX@@MAE?AV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@PAVAdorn@2@@Z"
+    ,"__unwindfunclet$?getGameCursor@UserInputBase@RBX@@MAE?AV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@PAVAdorn@2@@Z$0"
+    ,"__unwindfunclet$?getGameCursor@UserInputBase@RBX@@MAE?AV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@PAVAdorn@2@@Z$1"
+    ,"__unwindfunclet$?getGameCursor@UserInputBase@RBX@@MAE?AV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@PAVAdorn@2@@Z$2"
+    ,"__unwindfunclet$?getGameCursor@UserInputBase@RBX@@MAE?AV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@PAVAdorn@2@@Z$3"
+    ,"__ehhandler$?getGameCursor@UserInputBase@RBX@@MAE?AV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@PAVAdorn@2@@Z"
+    ,"?setCursorId@UserInputBase@RBX@@UAEXPAVAdorn@2@ABVTextureId@2@@Z"
+    ,"__unwindfunclet$?setCursorId@UserInputBase@RBX@@UAEXPAVAdorn@2@ABVTextureId@2@@Z$0"
+    ,"__ehhandler$?setCursorId@UserInputBase@RBX@@UAEXPAVAdorn@2@ABVTextureId@2@@Z"
+    ,"??0?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@QAE@ABV01@@Z"
+    ,"??0?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@QAE@XZ"
+    ,"??1?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@QAE@XZ"
+    ,"??1ContentId@RBX@@QAE@XZ"
+    ,"??4?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@QAEABV01@ABV01@@Z"
+    ,"??4ContentId@RBX@@QAEAAV01@ABV01@@Z"
+    ,"?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ"
+    ,"?decrement@AtomicInt32@G3D@@QAEIXZ"
+    ,"?increment@AtomicInt32@G3D@@QAEXXZ"
+    ,"?notNull@?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@QBE_NXZ"
+    ,"?setPointer@?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@AAEXPAVTextureProxyBase@RBX@@@Z"
+    ,"?toString@ContentId@RBX@@QBEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+    ,"?zeroPointer@?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@AAEXXZ"
+  ],
+  "retired_data": [
+    "??_7UserInputBase@RBX@@6B@",
+    "??_R4UserInputBase@RBX@@6B@",
+    "__ehfuncinfo$??0ContentId@RBX@@QAE@XZ",
+    "__ehfuncinfo$??0UserInputBase@RBX@@QAE@XZ",
+    "__ehfuncinfo$??1UserInputBase@RBX@@QAE@XZ",
+    "__unwindtable$??0ContentId@RBX@@QAE@XZ",
+    "__unwindtable$??0UserInputBase@RBX@@QAE@XZ",
+    "__unwindtable$??1UserInputBase@RBX@@QAE@XZ"
+    ,"??_C@_0BJ@DPALLAMF@Textures?2ArrowCursor?4png?$AA@"
+    ,"__ehfuncinfo$?getGameCursor@UserInputBase@RBX@@MAE?AV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@PAVAdorn@2@@Z"
+    ,"__ehfuncinfo$?setCursorId@UserInputBase@RBX@@UAEXPAVAdorn@2@ABVTextureId@2@@Z"
+    ,"__unwindtable$?getGameCursor@UserInputBase@RBX@@MAE?AV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@PAVAdorn@2@@Z"
+    ,"__unwindtable$?setCursorId@UserInputBase@RBX@@UAEXPAVAdorn@2@ABVTextureId@2@@Z"
+  ]
+}

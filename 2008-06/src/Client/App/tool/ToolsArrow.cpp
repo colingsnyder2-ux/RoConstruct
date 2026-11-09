@@ -9,6 +9,8 @@
 
 namespace RBX
 {
+	char* sArrowTool = "Arrow";
+
 	const std::string ArrowToolBase::getCursorName() const
 	{
 		return overInstance ? "DragCursor" : "ArrowCursor";
@@ -68,6 +70,8 @@ namespace RBX
 			return newCommand->onMouseDown(uiEvent);
 		}
 	}
+
+	char* sBoxSelectCommand = "BoxSelect";
 
 	BoxSelectCommand::BoxSelectCommand(Workspace* workspace)
 		: Base(workspace),
@@ -133,5 +137,39 @@ namespace RBX
 				}
 			}
 		}
+	}
+
+	void BoxSelectCommand::selectAnd(const std::set<Instance*>& newItemsInBox)
+	{
+		std::set_difference(
+			newItemsInBox.begin(), newItemsInBox.end(), 
+			previousItemsInBox.begin(), previousItemsInBox.end(), 
+			Selection::AddIterator(selection)
+		);
+
+		std::set_difference(
+			previousItemsInBox.begin(), previousItemsInBox.end(), 
+			newItemsInBox.begin(), newItemsInBox.end(), 
+			Selection::RemoveIterator(selection)
+		);
+
+		previousItemsInBox = newItemsInBox;
+	}
+
+	void BoxSelectCommand::selectReverse(const std::set<Instance*>& newItemsInBox)
+	{
+		std::set_difference(
+			newItemsInBox.begin(), newItemsInBox.end(), 
+			previousItemsInBox.begin(), previousItemsInBox.end(), 
+			Selection::ToggleIterator(selection)
+		);
+
+		std::set_difference(
+			previousItemsInBox.begin(), previousItemsInBox.end(), 
+			newItemsInBox.begin(), newItemsInBox.end(), 
+			Selection::ToggleIterator(selection)
+		);
+
+		previousItemsInBox = newItemsInBox;
 	}
 }

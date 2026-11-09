@@ -40,11 +40,15 @@ namespace RBX
 	template<typename T>
 	class Creatable : public Object
 	{
-	public:
+	protected:
 		class Deleter
 		{
 		public:
-			void operator()(T*);
+			void operator()(T* obj)
+			{
+				T::predelete(obj);
+				delete obj;
+			}
 		};
 
 	protected:
@@ -75,6 +79,16 @@ namespace RBX
 		static boost::shared_ptr<Class> create(Parameter1 p1, Parameter2 p2, Parameter3 p3)
 		{
 			return boost::shared_ptr<Class>(new Class(p1, p2, p3), Deleter());
+		}
+		template<typename Class, typename Parameter1, typename Parameter2, typename Parameter3, typename Parameter4>
+		static boost::shared_ptr<Class> create(Parameter1 p1, Parameter2 p2, Parameter3 p3, Parameter4 p4)
+		{
+			return boost::shared_ptr<Class>(new Class(p1, p2, p3, p4), Deleter());
+		}
+		template<typename Class, typename Parameter1, typename Parameter2, typename Parameter3, typename Parameter4, typename Parameter5>
+		static boost::shared_ptr<Class> create(Parameter1 p1, Parameter2 p2, Parameter3 p3, Parameter4 p4, Parameter5 p5)
+		{
+			return boost::shared_ptr<Class>(new Class(p1, p2, p3, p4, p5), Deleter());
 		}
 	private:
 		static void* operator new(size_t size)
@@ -120,19 +134,32 @@ namespace RBX
 		}
 	};
 
-	template<typename Class, typename DerivedClass, const char** ClassName>
+	template<typename Class, typename DerivedClass, const char* const* ClassName>
 	class FactoryProduct : public DerivedClass
 	{
 	private:
 		class Creator : public ICreator
 		{
 		public:
-			virtual boost::shared_ptr<Object> create() const;
-			const Name& getClassName() const;
+			virtual boost::shared_ptr<Object> create() const
+			{
+				return Creatable::create<Class>();
+			}
+			const Name& getClassName() const
+			{
+				return Name::declare<ClassName>();
+			}
 
 		public:
-			Creator();
-			~Creator();
+			Creator()
+			{
+				RBXASSERT(getCreators().find(&getClassName()) == getCreators().end());
+				getCreators()[&getClassName()] = this;
+			}
+			~Creator()
+			{
+				getCreators().erase(&getClassName());
+			}
 		};
 
 	private:
@@ -158,13 +185,22 @@ namespace RBX
 		{
 			return creator;
 		}
-		virtual const Name& getClassName() const;
+		virtual const Name& getClassName() const
+		{
+			return creator.getClassName();
+		}
 	  
 	public:
-		static const Name& className();
+		static const Name& className()
+		{
+			return creator.getClassName();
+		}
 	};
 
-	template<typename DerivedClass, const char** ClassName>
+	template<typename Class, typename DerivedClass, const char* const* ClassName>
+	const typename FactoryProduct<Class, DerivedClass, ClassName>::Creator FactoryProduct<Class, DerivedClass, ClassName>::creator;
+
+	template<typename DerivedClass, const char* const* ClassName>
 	class NonFactoryProduct : public DerivedClass
 	{
 	public:
@@ -179,73 +215,20 @@ namespace RBX
 		{
 		}
 
-		virtual const Name& getClassName() const;
+		virtual const Name& getClassName() const
+		{
+			return Name::declare<ClassName>();
+		}
 
 	public:
-		static const Name& className();
+		static const Name& className()
+		{
+			return Name::declare<ClassName>();
+		}
 	};
 }
 
 // rebuild overlay: template bodies rbxgs declares but never defines
 namespace RBX
 {
-	template<typename T>
-	void Creatable<T>::Deleter::operator()(T* instance)
-	{
-		T::predelete(instance);
-		delete instance;
-	}
-
-	template<typename Class, typename DerivedClass, const char** ClassName>
-	const Name& FactoryProduct<Class, DerivedClass, ClassName>::className()
-	{
-		static const Name& n = Name::declare(*ClassName, -1);
-		return n;
-	}
-
-	template<typename Class, typename DerivedClass, const char** ClassName>
-	const Name& FactoryProduct<Class, DerivedClass, ClassName>::getClassName() const
-	{
-		return className();
-	}
-
-	template<typename Class, typename DerivedClass, const char** ClassName>
-	FactoryProduct<Class, DerivedClass, ClassName>::Creator::Creator()
-	{
-		FactoryProduct::getCreators()[&FactoryProduct::className()] = this;
-	}
-
-	template<typename Class, typename DerivedClass, const char** ClassName>
-	FactoryProduct<Class, DerivedClass, ClassName>::Creator::~Creator()
-	{
-		FactoryProduct::getCreators().erase(&FactoryProduct::className());
-	}
-
-	template<typename Class, typename DerivedClass, const char** ClassName>
-	boost::shared_ptr<Object> FactoryProduct<Class, DerivedClass, ClassName>::Creator::create() const
-	{
-		return Class::CreatableBase::template create<Class>();
-	}
-
-	template<typename Class, typename DerivedClass, const char** ClassName>
-	const Name& FactoryProduct<Class, DerivedClass, ClassName>::Creator::getClassName() const
-	{
-		return FactoryProduct::className();
-	}
-
-	template<typename Class, typename DerivedClass, const char** ClassName>
-	const typename FactoryProduct<Class, DerivedClass, ClassName>::Creator FactoryProduct<Class, DerivedClass, ClassName>::creator;
-
-	template<typename DerivedClass, const char** ClassName>
-	const Name& NonFactoryProduct<DerivedClass, ClassName>::className()
-	{
-		static const Name& n = Name::declare(*ClassName, -1);
-		return n;
-	}
-
-	template<typename DerivedClass, const char** ClassName>
-	const Name& NonFactoryProduct<DerivedClass, ClassName>::getClassName() const
-	{
-		return className();
-	}
 }

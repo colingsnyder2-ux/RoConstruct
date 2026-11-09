@@ -11,6 +11,12 @@
 
 namespace RBX
 {
+	const char* const sFlying = "Flying";
+
+	const float Flying::turnSpeed = 6.0f;
+	const float Flying::kTurnP = 7500.0f;
+	const float Flying::kTurnAccelMax = 120000.0f;
+
 	Flying::Flying(Humanoid* humanoid)
 		: Base(humanoid, 300.0f, 50.0f),
 		  desiredYRotationalVelocity(0.0f)
@@ -38,5 +44,25 @@ namespace RBX
 		{
 			return newState;
 		}
+	}
+
+	void Flying::onComputeForce(const float dt)
+	{
+		Balancing::onComputeForce(dt);
+
+		Body* rootBody = humanoid->getRootBody();
+		RBXASSERT(rootBody);
+		
+		float y = rootBody->getBranchIBodyV3().y;
+		float var1 = (desiredYRotationalVelocity - rootBody->getVelocity().rotational.y) * y;
+		var1 *= kTurnP;
+
+		G3D::Vector3 oldTorque = rootBody->getBranchTorque();
+
+		float desiredTorqueY  = var1 - oldTorque.y;
+		float var2 = kTurnAccelMax * rootBody->getBranchIBodyV3().y;
+		desiredTorqueY = G3D::clamp(desiredTorqueY, -var2, var2);
+
+		rootBody->accumulateTorque(G3D::Vector3(0.0f, desiredTorqueY, 0.0f));
 	}
 }

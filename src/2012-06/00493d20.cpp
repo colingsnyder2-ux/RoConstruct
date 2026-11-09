@@ -12,6 +12,7 @@
 
 namespace RBX
 {
+	char* sIdManager = "IdManager";
 
 	void IdManager::addInstance(Instance* instance)
 	{

@@ -38,8 +38,27 @@ namespace RBX
 		{
 			return object;
 		}
-		boost::shared_ptr<T>& write();
-		void reset();
+		boost::shared_ptr<T>& write()
+		{
+			if (!object)
+			{
+				object = boost::shared_ptr<T>(new T());
+				return object;
+			}
+			else if (object.use_count() <= 1)
+			{
+				return object;
+			}
+			else
+			{
+				object = boost::shared_ptr<T>(new T(*object));
+				return object;
+			}
+		}
+		void reset()
+		{
+			object.reset();
+		}
 	};
 
 	template<typename T>
@@ -128,24 +147,4 @@ namespace RBX
 			next = sibling;
 		}
 	};
-}
-
-// rebuild overlay: template bodies rbxgs declares but never defines (as OpenRBX util/Utilities.h)
-namespace RBX
-{
-	template<typename T>
-	boost::shared_ptr<T>& CopyOnWrite<T>::write()
-	{
-		if (!object)
-			object = boost::shared_ptr<T>(new T());
-		else if (object.use_count() > 1)
-			object = boost::shared_ptr<T>(new T(*object));
-		return object;
-	}
-
-	template<typename T>
-	void CopyOnWrite<T>::reset()
-	{
-		object.reset();
-	}
 }

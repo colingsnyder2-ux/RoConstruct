@@ -12,6 +12,7 @@ namespace RBX
 	namespace Reflection
 	{
 		class Property;
+		class ConstProperty;
 		class __declspec(novtable) PropertyDescriptor : public MemberDescriptor
 		{
 		public:
@@ -24,7 +25,8 @@ namespace RBX
 			};
 
 		public:
-			typedef Property Describing;
+			typedef Property Member;
+			typedef ConstProperty ConstMember;
 
 		private:
 			unsigned bIsPublic : 1;
@@ -52,8 +54,16 @@ namespace RBX
 			virtual void getValue(const DescribedBase*, Value&) const {}
 			virtual void setValue(DescribedBase*, const Value&) const {}
 			virtual bool hasStringValue() const = 0;
-			virtual std::string getStringValue(const DescribedBase*) const = 0;
-			virtual bool setStringValue(DescribedBase*, const std::string&) const = 0;
+			virtual std::string getStringValue(const DescribedBase* instance) const = 0
+			{
+				hasStringValue(); // Da hell
+				return "";
+			}
+			virtual bool setStringValue(DescribedBase* instance, const std::string& text) const = 0
+			{
+				hasStringValue();
+				return false;
+			}
 			XmlElement* write(const DescribedBase* instance, bool ignoreWriteProtection) const;
 			virtual void read(DescribedBase* instance, const XmlElement* element, IReferenceBinder& binder) const;
 
@@ -73,6 +83,7 @@ namespace RBX
 				: descriptor(other.descriptor),
 				  instance(other.instance)
 			{
+				RBXASSERT(descriptor->isMemberOf(instance));
 			}
 			ConstProperty(const PropertyDescriptor& descriptor, const DescribedBase* instance)
 				: descriptor(&descriptor),
@@ -100,13 +111,21 @@ namespace RBX
 
 		public:
 			template<typename T>
-			T getValue() const;
+			T getValue() const
+			{
+				RBXASSERT(dynamic_cast<const TypedPropertyDescriptor<T>*>(descriptor));
+				const TypedPropertyDescriptor<T>* value = boost::polymorphic_cast<const TypedPropertyDescriptor<T>*>(descriptor);
+				return value->getValue(instance);
+			}
 		};
 
 		class Property : public ConstProperty
 		{
 		public:
-			Property(const Property&);
+			Property(const Property& other)
+				: ConstProperty(other)
+			{
+			}
 			Property(const PropertyDescriptor& descriptor, DescribedBase* instance)
 				: ConstProperty(descriptor, instance)
 			{
@@ -114,13 +133,19 @@ namespace RBX
 
 		public:
 			Property& operator=(const Property&);
-			bool operator==(const Property&) const;
+			bool operator==(const Property& other) const
+			{
+				return this->descriptor == other.descriptor && this->instance == other.instance;
+			}
 			bool operator!=(const Property&) const;
 			DescribedBase* getInstance() const
 			{
 				return const_cast<DescribedBase*>(instance); // might not be right
 			}
-			bool setStringValue(const std::string&);
+			bool setStringValue(const std::string& text)
+			{
+				return descriptor->setStringValue(const_cast<DescribedBase*>(instance), text);
+			}
 			void read(const XmlElement* propertyElement, IReferenceBinder& binder)
 			{
 				descriptor->read(getInstance(), propertyElement, binder);
@@ -128,7 +153,12 @@ namespace RBX
 
 		public:
 			template<typename T>
-			void setValue(const T& value);
+			void setValue(const T& value)
+			{
+				RBXASSERT(dynamic_cast<const TypedPropertyDescriptor<T>*>(descriptor));
+				const TypedPropertyDescriptor<T>* typedProp = boost::polymorphic_cast<const TypedPropertyDescriptor<T>*>(descriptor);
+				typedProp->setValue(getInstance(), value);
+			}
 		};
 
 		template<typename PropType>
@@ -173,10 +203,11 @@ namespace RBX
 				return getValue(a) == getValue(b);
 			}
 
-			virtual bool hasStringValue() const
-			{
-				return true;
-			}
+			/*
+				DO NOT DEFINE THESE FUNCTIONS IN THIS HEADER (unless you are really, really sure about it!)
+				These functions are supposed to be specialized for each TypedPropertyDescriptor template.
+			*/
+			virtual bool hasStringValue() const;
 			virtual std::string getStringValue(const DescribedBase* instance) const;
 			virtual bool setStringValue(DescribedBase* instance, const std::string& text) const;
 
@@ -200,8 +231,14 @@ namespace RBX
 			{
 				return false;
 			}
-			virtual std::string getStringValue(const DescribedBase*) const;
-			virtual bool setStringValue(DescribedBase*, const std::string&) const;
+			virtual std::string getStringValue(const DescribedBase* instance) const
+			{
+				return PropertyDescriptor::getStringValue(instance);
+			}
+			virtual bool setStringValue(DescribedBase* instance, const std::string& text) const
+			{
+				return PropertyDescriptor::setStringValue(instance, text);
+			}
 		};
 
 		class EnumPropertyDescriptor : public PropertyDescriptor
@@ -222,25 +259,5 @@ namespace RBX
 			{
 			}
 		};
-	}
-}
-
-// rebuild overlay: template bodies rbxgs declares but never defines
-#include <boost/cast.hpp>
-namespace RBX
-{
-	namespace Reflection
-	{
-		template<typename T>
-		T ConstProperty::getValue() const
-		{
-			return boost::polymorphic_cast<const TypedPropertyDescriptor<T>*>(descriptor)->getValue(instance);
-		}
-
-		template<typename T>
-		void Property::setValue(const T& value)
-		{
-			boost::polymorphic_cast<const TypedPropertyDescriptor<T>*>(descriptor)->setValue(getInstance(), value);
-		}
 	}
 }

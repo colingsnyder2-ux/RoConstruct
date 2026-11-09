@@ -6,34 +6,10 @@
 #include <boost/shared_ptr.hpp>
 #include "util/boost.hpp"
 
-// Log manager embedded in CRobloxApp at +0xa4 (constructed with "Roblox" by 0042a1c0).
-// Layout from that constructor: vptr 008104cc at +0; ThreadLogManager base at +4 with vptr
-// 008104c0, +8 = 0, +c = GetCurrentThreadId(), +10 std::string name; then +2c = 0 and
-// +30 std::string. sizeof 0x4c, as CRobloxApp's next member sits at +0xf0.
-class ThreadLogManager {
-public:
-    explicit ThreadLogManager(const char* name);
-    virtual ~ThreadLogManager();
-private:
-    void* reserved4;       // +4 (0 after construction; role not recovered)
-    DWORD threadId;        // +8
-    std::string name;      // +c
-};
-
-class LogManagerSink {    // vptr-only first base (008104cc)
-public:
-    virtual ~LogManagerSink();
-};
-
-class MainLogManager : public LogManagerSink, public ThreadLogManager {
-public:
-    explicit MainLogManager(const char* name);   // 0042a1c0
-    ~MainLogManager();
-    void startCrashReporter();                    // 00428180
-private:
-    void* crashReporter;   // +2c (0 after construction)
-    std::string reportUrl; // +30 (role provisional)
-};
+// Log manager embedded in CRobloxApp at +0xa4 (constructed with "Roblox" by 0042a1c0), sizeof 0x4c.
+// Uses the Dec 2007 client class (rebuild/2008-06/native-donor-2007/LogManager.h, OpenRBX): same size,
+// RBX::ILogProvider + LogManager bases; 2008 split crash-reporter start into startCrashReporter 00428180.
+#include "LogManager.h"
 
 // Crash-report uploader owned through CRobloxApp+0x10c: 28 bytes (new(0x1c) in InitInstance).
 // Constructor 0044d610 allocates the 72-byte state; destructor 0044a830.

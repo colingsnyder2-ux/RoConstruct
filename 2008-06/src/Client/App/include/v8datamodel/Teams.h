@@ -13,7 +13,7 @@ namespace RBX
 	}
 	class Humanoid;
 
-	extern const char* sTeams;
+	extern const char* const sTeams;
 	class Teams : public DescribedCreatable<Teams, Instance, &sTeams>, public Service
 	{
 	private:
@@ -30,7 +30,7 @@ namespace RBX
 		void rebalanceTeams();
 		BrickColor getUnusedTeamColor();
 		Team* getTeamFromTeamColor(BrickColor brickColor);
-		Team* getTeamFromPlayer(Network::Player*);
+		Team* getTeamFromPlayer(Network::Player* player);
 
 		boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>> getTeams()
 		{

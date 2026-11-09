@@ -8,7 +8,7 @@
 
 namespace RBX
 {
-	extern const char* sGlobalSettings;
+	extern const char* const sGlobalSettings;
 
 	class GlobalSettings : public DescribedNonCreatable<GlobalSettings, ServiceProvider, &sGlobalSettings>
 	{
@@ -37,46 +37,43 @@ namespace RBX
 		static boost::shared_ptr<GlobalSettings> singleton();
 	};
 
-	template<typename Class, const char** ClassName>
+	template<typename Class, const char* const* ClassName>
 	class GlobalSettingsItem : public DescribedCreatable<Class, GlobalSettings::Item, ClassName>, public Service
 	{
 	private:
 		static GlobalSettingsItem* sing;
 
 	protected:
-		GlobalSettingsItem();
-		~GlobalSettingsItem();
+		GlobalSettingsItem()
+		{
+			setName(*ClassName);
+			sing = this;
+		}
+		~GlobalSettingsItem()
+		{
+			sing = NULL;
+		}
 
 	public:
-		static Class& singleton();
+		static Class& singleton()
+		{
+			boost::recursive_mutex::scoped_lock lock(GlobalSettings::mutex);
+
+			if (!sing)
+			{
+				boost::shared_ptr<Class> s = Creatable::create<Class>();
+				s->setParent(GlobalSettings::singleton().get());
+			}
+
+			return *static_cast<Class*>(sing);
+		}
 	};
 }
 
 // rebuild overlay: template bodies rbxgs declares but never defines
 namespace RBX
 {
-	template<typename Class, const char** ClassName>
+	template<typename Class, const char* const* ClassName>
 	GlobalSettingsItem<Class, ClassName>* GlobalSettingsItem<Class, ClassName>::sing = NULL;
 
-	template<typename Class, const char** ClassName>
-	GlobalSettingsItem<Class, ClassName>::GlobalSettingsItem()
-	{
-		sing = this;
-	}
-
-	template<typename Class, const char** ClassName>
-	GlobalSettingsItem<Class, ClassName>::~GlobalSettingsItem()
-	{
-		if (sing == this)
-			sing = NULL;
-	}
-
-	template<typename Class, const char** ClassName>
-	Class& GlobalSettingsItem<Class, ClassName>::singleton()
-	{
-		boost::recursive_mutex::scoped_lock lock(GlobalSettings::mutex);
-		if (!sing)
-			ServiceProvider::create<Class>(GlobalSettings::singleton().get());
-		return *static_cast<Class*>(sing);
-	}
 }

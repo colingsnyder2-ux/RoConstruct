@@ -22,6 +22,12 @@ namespace RBX
 	{
 	}
 
+	RotateJoint::RotateJoint()
+		: MultiJoint(2),
+		  rotateConnector(NULL)
+	{
+	}
+
 	RotateJoint::~RotateJoint()
 	{
 		RBXASSERT(!rotateConnector);

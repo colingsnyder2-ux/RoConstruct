@@ -7,7 +7,7 @@ namespace RBX
 	class RunDragger;
 	class MegaDragger;
 
-	extern const char* sPartDragTool;
+	extern char* sPartDragTool;
 
 	class PartDragTool : public Named<MouseCommand, &sPartDragTool>
 	{
@@ -22,7 +22,7 @@ namespace RBX
 	public:
 		virtual MouseCommand* onMouseDown(const UIEvent& uiEvent);
 		virtual void onMouseIdle(const UIEvent& uiEvent);
-		virtual void onMouseMove(const UIEvent&);
+		virtual void onMouseMove(const UIEvent& uiEvent);
 		virtual void onMouseDelta(const UIEvent& uiEvent);
 		virtual MouseCommand* onMouseUp(const UIEvent& uiEvent);
 		virtual MouseCommand* onKeyDown(const UIEvent& uiEvent);

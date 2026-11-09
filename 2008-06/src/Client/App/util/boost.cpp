@@ -55,6 +55,14 @@ namespace RBX
 		}
 	}
 
+	// 2008 (2007 client ROBLOX 0x005aba50): the name set_thread_name stored, or "rbx_thread"
+	const char* get_thread_name()
+	{
+		boost::call_once(&boost_detail::init_foo, boost_detail::once_init_foo);
+		std::string* name = boost_detail::foo->get();
+		return name ? name->c_str() : "rbx_thread";
+	}
+
 	void set_thread_name(const char* name)
 	{
 		boost_detail::set_foo(new std::string(name));

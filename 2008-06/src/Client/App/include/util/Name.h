@@ -1,16 +1,20 @@
 #pragma once
 #include <boost/noncopyable.hpp>
+#include <boost/thread/once.hpp>
 #include <boost/thread/mutex.hpp>
 #include <string>
 #include <map>
 
 namespace RBX
 {
-	class Name : boost::noncopyable
+	class Name : public boost::noncopyable
 	{
 	private:
-		// TODO: NamMap is a new class, not a typedef
-		typedef std::map<std::string, Name*> NamMap;
+		class NamMap : public std::map<std::string, Name*>
+		{
+		public:
+			~NamMap();
+		};
 
 	private:
 		int dictionaryIndex;
@@ -20,11 +24,23 @@ namespace RBX
 	public:
 		int getDictionaryIndex() const { return dictionaryIndex; }
 
-		bool empty() const { return &getNullName() == this; }
-		const std::string& toString() const { return name; } // guess
-		const char* c_str() const { return name.c_str(); } // guess
+		bool empty() const 
+		{ 
+			return &getNullName() == this; 
+		}
+		const std::string& toString() const 
+		{ 
+			return name; 
+		}
+		const char* c_str() const 
+		{ 
+			return name.c_str(); 
+		}
 		int compare(const Name& other) const
 		{
+			if (this == &other)
+				return 0;
+
 			return toString().compare(other.toString());
 		}
 
@@ -49,7 +65,10 @@ namespace RBX
 			return this == &other;
 		}
 		bool operator !=(const char* name) const;
-		bool operator !=(const std::string& name) const;
+		bool operator !=(const std::string& name) const
+		{
+			return this->name.compare(name) != 0;
+		}
 		bool operator !=(const Name& other) const
 		{
 			return this != &other;
@@ -76,19 +95,26 @@ namespace RBX
 		static const Name& lookup(const std::string& sName);
 		static int compare(Name&, Name&);
 	private:
-		// NOTE: these have not been checked
-		// TODO: these also need to support const char* inputs
-		template<char*& sName>
+		template<const char* const* sName>
 		static const Name& doDeclare()
 		{
-			static const Name& n = declare(sName, -1);
+			static const Name& n = sName ? declare(*sName, -1) : getNullName(); // sName points at the class-name pointer; NULL = unnamed
 			return n;
 		}
 
-		template<char*& sName>
-		static const Name& callDoDeclare()
+		template<const char* const* sName>
+		static void callDoDeclare()
 		{
-			return doDeclare<sName>();
+			doDeclare<sName>();
+		}
+	public:
+		template<const char* const* sName>
+		static const Name& declare()
+		{
+			static boost::once_flag flag = BOOST_ONCE_INIT;
+			boost::call_once(&callDoDeclare<sName>, flag);
+
+			return Name::doDeclare<sName>();
 		}
 	};
 
@@ -98,7 +124,7 @@ namespace RBX
 		virtual const Name& getName() const = 0;
 	};
 
-	template<typename DerivedClass, const char** ClassName>
+	template<typename DerivedClass, const char* const* ClassName>
 	class Named : public DerivedClass
 	{
 	public:
@@ -127,7 +153,10 @@ namespace RBX
 		{
 		}
 
-		virtual const Name& getName() const;
+		virtual const Name& getName() const
+		{
+			return Name::declare<ClassName>();
+		}
 
 	public:
 		static const Name& name();
@@ -137,16 +166,11 @@ namespace RBX
 // rebuild overlay: template bodies rbxgs declares but never defines
 namespace RBX
 {
-	template<typename DerivedClass, const char** ClassName>
+	template<typename DerivedClass, const char* const* ClassName>
 	const Name& Named<DerivedClass, ClassName>::name()
 	{
 		static const Name& n = Name::declare(*ClassName, -1);
 		return n;
 	}
 
-	template<typename DerivedClass, const char** ClassName>
-	const Name& Named<DerivedClass, ClassName>::getName() const
-	{
-		return name();
-	}
 }

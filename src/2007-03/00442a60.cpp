@@ -12,8 +12,8 @@
 
 using namespace RBX;
 
-const Reflection::PropDescriptor<Script, std::string> Script::prop_EmbeddedSourceCode("Source", "Data", &Script::getEmbeddedCode, &Script::setEmbeddedCode, Reflection::PropertyDescriptor::LEGACY);
-const Reflection::PropDescriptor<Script, ContentId> Script::prop_SourceCodeId("LinkedSource", "Data", &Script::getScriptId, &Script::setScriptId, Reflection::PropertyDescriptor::LEGACY);
+const Reflection::PropDescriptor<Script, std::string> Script::prop_EmbeddedSourceCode("Source", "Data", &Script::getEmbeddedCode, &Script::setEmbeddedCode, Reflection::PropertyDescriptor::STANDARD);
+const Reflection::PropDescriptor<Script, ContentId> Script::prop_SourceCodeId("LinkedSource", "Data", &Script::getScriptId, &Script::setScriptId, Reflection::PropertyDescriptor::STANDARD);
 Reflection::BoundProp<bool, true> Script::prop_Disabled("Disabled", "Behavior", &Script::disabled, Reflection::PropertyDescriptor::STANDARD);
 
 static boost::shared_ptr<const std::string> helloWorld;
@@ -24,7 +24,7 @@ void initScriptCpp()
     helloWorld.reset(new std::string("print(\"Hello world!\")\r\n"));
 }
 
-const char* RBX::sScript = "Script";
+char* RBX::sScript = "Script";
 
 Script::Script()
     : DescribedCreatable("Script"),
@@ -35,7 +35,7 @@ Script::Script()
     embeddedSource = helloWorld;
 }
 
-const char* RBX::sLocalScript = "LocalScript";
+char* RBX::sLocalScript = "LocalScript";
 
 LocalScript::LocalScript()
 {

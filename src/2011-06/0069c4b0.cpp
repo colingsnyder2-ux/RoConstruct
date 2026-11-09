@@ -8,11 +8,12 @@
 #include "v8xml/SerializerV2.h"
 #include "v8datamodel/DataModel.h"
 #include <boost/bind.hpp>
+#include <G3D/Log.h>
 #include <algorithm>
 
 bool ArchiveBinder::resolveRefs()
 {
-	size_t counts = std::count_if(idrefBindings.begin(), idrefBindings.end(), boost::bind(&ArchiveBinder::resolveIDREF, this, _1));
+	size_t counts = std::count_if(idrefBindings.begin(), idrefBindings.end(), std::bind1st(std::mem_fun(&ArchiveBinder::resolveIDREF), this));
 
 	return MergeBinder::resolveRefs() && counts == idrefBindings.size();
 }
@@ -23,8 +24,8 @@ bool ArchiveBinder::resolveIDREF(IDREFBinding binding)
 	bool success = binding.valueIDREF->getValue(s);
 
 	RBXASSERT(success);
-	RBXASSERT(value_IDREF_nil.name.compare(s));
-	RBXASSERT(value_IDREF_null.name.compare(s));
+	RBXASSERT(value_IDREF_nil != s);
+	RBXASSERT(value_IDREF_null != s);
 	RBXASSERT(s != "");
 
 	std::map<std::string, RBX::InstanceHandle>::iterator found = idMap.find(s);
@@ -136,6 +137,77 @@ void SerializerV2::load(XmlElement* root, RBX::DataModel* dataModel)
 	binder.resolveRefs();
 }
 
+// 98% match
+// some MSVC shenanigans going on here
+void SerializerV2::load(std::istream& stream, RBX::DataModel* dataModel)
+{
+	char header[5];
+	header[4] = '\0';
+
+	if (!stream.read(header, 4).good())
+		throw std::runtime_error("SerializerV2::load can\'t read header");
+
+	if (strcmp(header, "RBX_") != 0)
+	{
+		stream.clear();
+		stream.seekg(0, std::ios::beg);
+	}
+	else
+	{
+		unsigned long fileFormatVersion;
+		if (!stream.read((char*)&fileFormatVersion, 4).good())
+			throw std::runtime_error("SerializerV2::load can\'t read old fileFormatVersion");
+
+		if (fileFormatVersion != 1)
+			throw std::runtime_error("SerializerV2::load canfileFormatVersion!=1");
+
+		unsigned long contentPos = 0;
+		if (!stream.read((char*)&contentPos, 4).good())
+			throw std::runtime_error("SerializerV2::load can\'t read contentPos");
+
+		if (contentPos != 0)
+		{
+			int prev = stream.tellg();
+			stream.clear();
+			stream.seekg(contentPos, std::ios::beg);
+
+			while (stream.peek() != '\0')
+			{
+				char id[33];
+				id[32] = '\0';
+
+				if (!stream.read(id, 32).good())
+					throw std::runtime_error("SerializerV2::load error reading compound file (1)");
+
+				unsigned long contentLength;
+				if (!stream.read((char*)&contentLength, 4).good())
+					throw std::runtime_error("SerializerV2::load error reading compound file (2)");
+
+				unsigned char compression;
+				if (!stream.read((char*)&compression, 1).good())
+					throw std::runtime_error("SerializerV2::load error reading compound file (3)");
+
+				if (compression != 0)
+					throw std::runtime_error("SerializerV2::load error reading compound file (4)");
+
+				RBX::ContentProvider::singleton().readContent(id, stream, contentLength);
+			}
+
+			stream.clear();
+			stream.seekg(prev, std::ios::beg);
+		}
+
+		unsigned char xmlCompression;
+		if (!stream.read((char*)&xmlCompression, 1).good())
+			throw std::runtime_error("SerializerV2::load error reading compound file (5)");
+
+		if (xmlCompression != 0)
+			throw std::runtime_error("SerializerV2::load error reading compound file (6)");
+	}
+
+	loadXML(stream, dataModel);
+}
+
 void SerializerV2::loadXML(std::istream& stream, RBX::DataModel* dataModel)
 {
 	TextXmlParser machine(stream.rdbuf());
@@ -158,4 +230,43 @@ void SerializerV2::loadXML(std::istream& stream, RBX::DataModel* dataModel)
 		schemaVersionLoading = 1;
 		throw std::runtime_error("SerializerV2::loadXML ill-formed XML. No Roblox tag");
 	}
+}
+
+void SerializerV2::loadInstances(XmlElement* root, std::vector<boost::shared_ptr<RBX::Instance>>& result)
+{
+	if (root->getTag() == tag_roblox)
+	{
+		XmlAttribute* versionAttribute = root->findAttribute(tag_version);
+		if (versionAttribute && versionAttribute->getValue(schemaVersionLoading) && schemaVersionLoading >= 4)
+		{
+			ArchiveBinder binder;
+			const XmlElement* item = root->findFirstChildByTag(tag_Item);
+			while (item != NULL)
+			{
+				const RBX::Name* className = NULL;
+				if (item->findAttributeValue(tag_class, className))
+				{
+					boost::shared_ptr<RBX::Instance> instance = RBX::AbstractFactoryProduct<RBX::Instance>::create(*className);
+					if (instance)
+					{
+						instance->read(item, binder);
+						result.push_back(instance);
+					}
+					else
+					{
+						RBX::StandardOut::singleton()->print(RBX::MESSAGE_WARNING, "Unknown object class \"%s\" while reading XML", className ? className->c_str() : "");
+					}
+				}
+
+				item = root->findNextChildWithSameTag(item);
+			}
+
+			bool success = binder.resolveRefs();
+			RBXASSERT(success);
+
+			return;
+		}
+	}
+
+	G3D::Log::common()->println("Version 1.0 - 3.0 model files not supported - all future version will be supported");
 }

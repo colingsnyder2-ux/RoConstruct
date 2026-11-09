@@ -226,11 +226,6 @@ namespace RBX
 {
     namespace Lua
     {
-        template <typename T, bool isComparable>
-        void Bridge<T, isComparable>::on_newindex(T& object, const char* name, lua_State* L)
-        {
-            throw std::runtime_error(G3D::format("%s cannot be assigned to", name));
-        }
         template<>
         void Bridge<boost::shared_ptr<Reflection::DescribedBase>, false>::on_newindex(boost::shared_ptr<Reflection::DescribedBase>& object, const char* name, lua_State* L);
         template<>

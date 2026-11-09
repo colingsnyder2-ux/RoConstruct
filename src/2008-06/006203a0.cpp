@@ -14,6 +14,9 @@ using namespace RBX;
 using namespace RBX::Lua;
 using namespace RBX::Reflection;
 
+const char* Bridge<boost::shared_ptr<Reflection::SignalInstance>, false>::className = "RBXScriptSignal";
+const char* Bridge<boost::signals::connection, true>::className = "RBXScriptConnection";
+
 template<>
 int SignalBridge::on_index(const boost::shared_ptr<Reflection::SignalInstance>& object, const char* name, lua_State* L)
 {
@@ -224,6 +227,12 @@ int SignalConnectionBridge::on_index(const boost::signals::connection& object, c
     }
 
     throw std::runtime_error(G3D::format("%s is not a valid member", name));
+}
+
+template<>
+void SignalConnectionBridge::on_newindex(boost::signals::connection& object, const char* name, lua_State* L)
+{
+	throw std::runtime_error(G3D::format("%s cannot be assigned to", name));
 }
 
 int SignalConnectionBridge::disconnect(lua_State* L)

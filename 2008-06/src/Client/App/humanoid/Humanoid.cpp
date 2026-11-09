@@ -16,6 +16,8 @@ namespace RBX { void ApplyRecoveredClimbCollision(Humanoid*,bool,bool); }
 
 namespace RBX
 {
+	char* sHumanoid = "Humanoid";
+
 	Reflection::PropDescriptor<Humanoid, G3D::Vector3> propWalkToPoint("WalkToPoint", "Control", &Humanoid::getWalkToPoint, &Humanoid::setWalkToPoint, Reflection::PropertyDescriptor::STREAMING);
 	Reflection::PropDescriptor<Humanoid, G3D::Vector3> propWalkDirection("WalkDirection", "Control", &Humanoid::getWalkDirection, &Humanoid::setWalkDirection, Reflection::PropertyDescriptor::STREAMING);
 	Reflection::PropDescriptor<Humanoid, float> propWalkRotationalVelocity("WalkRotationalVelocity", "Control", &Humanoid::getWalkRotationalVelocity, &Humanoid::setWalkRotationalVelocity, Reflection::PropertyDescriptor::STREAMING);
@@ -30,6 +32,17 @@ namespace RBX
 	Reflection::RefPropDescriptor<Humanoid, PartInstance> propLeftLeg("LeftLeg", "Data", &Humanoid::getLeftLeg, &Humanoid::setLeftLeg, Reflection::PropertyDescriptor::STANDARD);
 	Reflection::RefPropDescriptor<Humanoid, PartInstance> propRightLeg("RightLeg", "Data", &Humanoid::getRightLeg, &Humanoid::setRightLeg, Reflection::PropertyDescriptor::STANDARD);
 	Reflection::RefPropDescriptor<Humanoid, PartInstance> propWalkToPart("WalkToPart", "Control", &Humanoid::getWalkToPart, &Humanoid::setWalkToPart, Reflection::PropertyDescriptor::STREAMING);
+
+	Reflection::BoundProp<float, 1> Humanoid::propHealth("Health", "Game", &Humanoid::health, &Humanoid::onChangedHealth, Reflection::PropertyDescriptor::STANDARD);
+	Reflection::BoundProp<float, 1> Humanoid::propMaxHealth("MaxHealth", "Game", &Humanoid::maxHealth, Reflection::PropertyDescriptor::STANDARD);
+	Reflection::SignalDesc<Humanoid, void(void)> Humanoid::event_Died("Died");
+	Reflection::SignalDesc<Humanoid, void(float)> Humanoid::event_Running("Running", "speed");
+	Reflection::SignalDesc<Humanoid, void(float)> Humanoid::event_Climbing("Climbing", "speed");
+	Reflection::SignalDesc<Humanoid, void(bool)> Humanoid::event_Jumping("Jumping", "active");
+	Reflection::SignalDesc<Humanoid, void(bool)> Humanoid::event_FreeFalling("FreeFalling", "active");
+	Reflection::SignalDesc<Humanoid, void(bool)> Humanoid::event_GettingUp("GettingUp", "active");
+	Reflection::SignalDesc<Humanoid, void(bool)> Humanoid::event_FallingDown("FallingDown", "active");
+	Reflection::SignalDesc<Humanoid, void(bool)> Humanoid::event_Seated("Seated", "active");
 
 	Humanoid::Humanoid()
 		: health(100.0f),
@@ -65,6 +78,11 @@ namespace RBX
 	void Humanoid::renderWaypoint(Adorn* adorn, const G3D::Vector3& waypoint)
 	{
 		DrawAdorn::cylinder(adorn, G3D::CoordinateFrame(waypoint), 1, 0.2f, 1.0f, G3D::Color3::green());
+	}
+
+	bool Humanoid::askSetParent(const Instance* instance) const
+	{
+		return dynamic_cast<const ModelInstance*>(instance) != NULL;
 	}
 
 	ContactManager* Humanoid::getContactManager()

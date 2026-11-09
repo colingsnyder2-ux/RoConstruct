@@ -32,6 +32,8 @@ namespace RBX
 		return true;
 	}
 
+	const char* const sBackpackItem = "BackpackItem";
+
 	bool BackpackItem::askSetParent(const Instance* instance) const
 	{
 		return true;
@@ -50,6 +52,53 @@ namespace RBX
 	bool BackpackItem::isEnabled()
 	{
 		return getParent() && dynamic_cast<Backpack*>(getParent()) != NULL;
+	}
+
+	int BackpackItem::getBinId() const // this is a guess
+	{
+		if (getParent())
+			return getParent()->findChildIndex(this);
+
+		RBXASSERT(0);
+		return -1;
+	}
+
+	void BackpackItem::render2d(Adorn* adorn)
+	{
+		bool viewHack = false;
+		Workspace* workspace = ServiceProvider::find<Workspace>(this);
+		if (workspace && workspace->imageServerViewHack)
+			viewHack = true;
+
+		Rect draw = viewHack ? Rect(GuiRoot::getCanvasSize()) : getMyRect();
+		int fontSize = GuiRoot::normalizedFontSize(12);
+
+		float numberRectSize = draw.size().x * 0.2f;
+		Rect numberRect = Rect::fromLowSize(G3D::Vector2(draw.low.x + 2.0f, draw.high.y - 2.0f - numberRectSize), G3D::Vector2(numberRectSize, numberRectSize));
+
+		if (!viewHack)
+		{
+			adorn->rect2d(draw.toRect2D(), GuiItem::translucentBackdrop());
+		}
+
+		if (isEnabled())
+		{
+			adorn->rect2d(numberRect.toRect2D(), G3D::Color3::gray());
+			adorn->drawFont2D(StringConverter<int>::convertToString(getBinId() + 1), numberRect.center(), fontSize, G3D::Color3::white(), G3D::Color4::clear(), Adorn::XALIGN_CENTER, Adorn::YALIGN_CENTER, Adorn::PROPORTIONAL_SPACING);
+		}
+
+		if (drawSelected())
+		{
+			adorn->outlineRect2d(draw.toRect2D(), 3.0f, G3D::Color3::green());
+		}
+
+		if (guiImageDraw.setImage(adorn, textureId))
+		{
+			guiImageDraw.render2d(adorn, isEnabled() || viewHack, draw.inset(fontSize), widgetState);
+			return;
+		}
+
+		Widget::render2d(adorn);
 	}
 
 	void BackpackItem::setTextureId(const TextureId& value)
@@ -71,6 +120,8 @@ namespace RBX
 		float width = GuiRoot::toPixelSize(G3D::Vector2(10.0f, 10.0f)).x;
 		return G3D::Vector2(width, width);
 	}
+
+	const char* const sHopperBin = "HopperBin";
 
 	HopperBin::HopperBin()
 		: binType(SCRIPT_BIN),
@@ -182,6 +233,8 @@ namespace RBX
 		}
 	}
 
+	const char* const sStarterPackService = "StarterPack";
+
 	StarterPackService::StarterPackService()
 	{
 		setName("StarterPack");
@@ -213,6 +266,8 @@ namespace RBX
 		}
 	}
 
+	const char* const sLegacyHopperService = "Hopper";
+
 	LegacyHopperService::LegacyHopperService()
 	{
 		setName("Hopper");
@@ -237,6 +292,22 @@ namespace RBX
 			}
 
 			setParent(NULL);
+		}
+	}
+
+	namespace Reflection
+	{
+		EnumDesc<HopperBin::BinType>::EnumDesc()
+			: EnumDescriptor("BinType", typeid(HopperBin::BinType))
+		{
+			addPair(HopperBin::SCRIPT_BIN, "Script");
+			addPair(HopperBin::GAME_TOOL, "GameTool");
+			addPair(HopperBin::GRAB_TOOL, "Grab");
+			addPair(HopperBin::CLONE_TOOL, "Clone");
+			addPair(HopperBin::HAMMER_TOOL, "Hammer");
+			addPair(HopperBin::SLINGSHOT_TOOL, "Slingshot");
+			addPair(HopperBin::ROCKET_TOOL, "Rocket");
+			addPair(HopperBin::LASER_TOOL, "Laser");
 		}
 	}
 }

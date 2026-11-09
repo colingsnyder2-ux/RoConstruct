@@ -1,9 +1,15 @@
 #include "v8datamodel/SpawnLocation.h"
+#include "humanoid/Humanoid.h"
 #include "Network/Players.h"
 
 namespace RBX
 {
+	char* sSpawnLocation = "SpawnLocation";
+
 	static Reflection::PropDescriptor<SpawnLocation, BrickColor> prop_TeamColor("TeamColor", "Teams", &SpawnLocation::getTeamColor, &SpawnLocation::setTeamColor, Reflection::PropertyDescriptor::STANDARD);
+
+	Reflection::BoundProp<bool, 1> SpawnLocation::prop_Neutral("Neutral", "Teams", &SpawnLocation::neutral, Reflection::PropertyDescriptor::STANDARD);
+	Reflection::BoundProp<bool, 1> SpawnLocation::prop_AllowTeamChangeOnTouch("AllowTeamChangeOnTouch", "Teams", &SpawnLocation::allowTeamChangeOnTouch, Reflection::PropertyDescriptor::STANDARD);
 
 	SpawnLocation::SpawnLocation()
 		:
@@ -44,6 +50,30 @@ namespace RBX
 			spawnerService->UnregisterSpawner(this);
 		}
 	}
+
+	void SpawnLocation::onEvent_spawnerTouched(boost::shared_ptr<Instance> other)
+	{
+		if (!allowTeamChangeOnTouch)
+			return;
+
+		RBXASSERT(Network::Players::backendProcessing(this, true));
+
+		Instance* parent = other->getParent();
+		if (parent)
+		{
+			if (parent->findFirstChildOfType<Humanoid>())
+			{
+				Network::Player* player = Network::Players::getPlayerFromCharacter(parent);
+				if (player)
+				{
+					player->setTeamColor(getTeamColor());
+					player->setNeutral(neutral);
+				}
+			}
+		}
+	}
+
+	const char* const sSpawnerService = "SpawnerService";
 
 	SpawnerService::SpawnerService()
 	{

@@ -7,6 +7,8 @@
 
 namespace RBX
 {
+	const char* const sFlag = "Flag";
+
 	static Reflection::PropDescriptor<Flag, BrickColor> prop_Color("TeamColor", "Data", &Flag::getTeamColor, &Flag::setTeamColor, Reflection::PropertyDescriptor::STANDARD);
 
 	Flag::Flag()
@@ -39,20 +41,67 @@ namespace RBX
 		}
 	}
 
+
+	void Flag::doUglyPeriodicCloneHack()
+	{
+		evilClone = clone();
+
+		if (timer && numChildren() == 0)
+		{
+			timer->delay(boost::bind(&Flag::doUglyPeriodicCloneHack, shared_from(this)), 2.0f);
+		}
+	}
+
 	bool Flag::canBePickedUpByPlayer(Network::Player* p)
 	{
-		if (p->getNeutral())
+		if (p->getNeutral() != false)
 			return false;
 
 		BrickColor current = teamColor;
 		if (p->getTeamColor() != current)
+		{
 			return true;
+		}
 		else
+		{
 			return false;
+		}
+	}
+
+	void Flag::onEvent_flagTouched(boost::shared_ptr<Instance> other)
+	{
+		RBXASSERT(Network::Players::backendProcessing(this, true));
+		Instance* parent = other->getParent();
+
+		Humanoid* humanoid = Humanoid::modelIsCharacter(parent);
+		if (!humanoid)
+			return;
+
+		Network::Player* player = Network::Players::getPlayerFromCharacter(parent);
+		if (!player)
+			return;
+
+		if (player->getNeutral() != false)
+			return;
+
+		BrickColor current = teamColor;
+		if (player->getTeamColor() != current)
+			return;
+
+		FlagStandService* fss = ServiceProvider::create<FlagStandService>(this);
+		if (!fss->FindStandWithFlag(this))
+		{
+			if (FlagStand* fs = fss->FindClosestEmptyStandForFlag(this))
+			{
+				fs->AffixFlag(this);
+			}
+		}
 	}
 
 	void Flag::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
 	{
+		Instance::onServiceProvider(oldProvider, newProvider);
+
 		if (!oldProvider)
 		{
 			timer = ServiceProvider::create<TimerService>(newProvider);
@@ -63,62 +112,25 @@ namespace RBX
 		{
 			flagTouched.disconnect();
 			RunService* runService = ServiceProvider::create<RunService>(oldProvider);
+			RBXASSERT(runService);
 
 			if (runService->getRunState() == RS_RUNNING)
 			{
 				if (Instance* evilC = evilClone.get())
 				{
 					Flag* flag = dynamic_cast<Flag*>(evilC);
-					flag->getHandle();
+					PartInstance* handle = flag->getHandle();
 
-					FlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(this);
-					if (!flagStandService->FindStandWithFlag(flag))
+					FlagStandService* fss = ServiceProvider::create<FlagStandService>(this);
+					if (!fss->FindStandWithFlag(flag))
 					{
-						if (FlagStand* flagStand = flagStandService->FindClosestEmptyStandForFlag(flag))
+						if (FlagStand* fs = fss->FindClosestEmptyStandForFlag(flag))
 						{
-							flagStand->AffixFlag(flag);
+							fs->AffixFlag(flag);
 						}
 					}
 				}
 			}
-		}
-	}
-
-	void Flag::onEvent_flagTouched(boost::shared_ptr<Instance> other)
-	{
-		Instance* parent = other->getParent();
-
-		if (!Humanoid::modelIsCharacter(parent))
-			return;
-
-		Network::Player* player = Network::Players::getPlayerFromCharacter(parent);
-		if (!player)
-			return;
-
-		if (player->getNeutral())
-			return;
-
-		BrickColor current = teamColor;
-		if (player->getTeamColor() != current)
-			return;
-
-		FlagStandService* flagStandService = ServiceProvider::create<FlagStandService>(this);
-		if (!flagStandService->FindStandWithFlag(this))
-		{
-			if (FlagStand* flagStand = flagStandService->FindClosestEmptyStandForFlag(this))
-			{
-				flagStand->AffixFlag(this);
-			}
-		}
-	}
-
-	void Flag::doUglyPeriodicCloneHack()
-	{
-		evilClone = clone();
-
-		if (timer && numChildren() == 0)
-		{
-			timer->delay(boost::bind(&Flag::doUglyPeriodicCloneHack, shared_from(this)), 2.0f);
 		}
 	}
 }

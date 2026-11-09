@@ -6,7 +6,7 @@ namespace RBX
 {
 	class Flag;
 
-	extern const char* sFlagStand;
+	extern char* sFlagStand;
 
 	class FlagStand : public DescribedCreatable<FlagStand, PartInstance, &sFlagStand>
 	{
@@ -27,7 +27,7 @@ namespace RBX
 		void setTeamColor(BrickColor color);
 	};
 
-	extern const char* sFlagStandService;
+	extern const char* const sFlagStandService;
 
 	class FlagStandService : public DescribedCreatable<FlagStandService, Instance, &sFlagStandService>, public Service
 	{
@@ -37,7 +37,7 @@ namespace RBX
 	public:
 		FlagStandService();
 		virtual ~FlagStandService();
-		FlagStand* FindClosestEmptyStandForFlag(Flag*);
+		FlagStand* FindClosestEmptyStandForFlag(Flag* f);
 		FlagStand* FindStandWithFlag(Flag* f);
 		void RegisterFlagStand(FlagStand* s) { flagStands.push_back(s); }
 		void UnregisterFlagStand(FlagStand* s) { flagStands.remove(s); }

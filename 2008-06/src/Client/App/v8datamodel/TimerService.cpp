@@ -5,6 +5,8 @@ namespace RBX
 {
 	template __declspec(noinline) RunService* ServiceProvider::create<RunService>() const;
 
+	char* sTimerService = "Timer";
+
 	TimerService::TimerService() {}
 
 	void TimerService::delay(boost::function0<void> func, double seconds)

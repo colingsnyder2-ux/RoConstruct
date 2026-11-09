@@ -2,11 +2,12 @@
 #include "Network/Players.h"
 #include "humanoid/Humanoid.h"
 #include "v8datamodel/BrickColor.h"
-#include "v8datamodel/Backpack.h"
 #include "v8datamodel/Workspace.h"
 
 namespace RBX
 {
+	class Backpack;
+
 	namespace Network
 	{
 		struct CharacterAdded
@@ -33,7 +34,7 @@ namespace RBX
 			}
 		};
 
-		extern const char* sPlayer;
+		extern char* sPlayer;
 		class Player : public DescribedCreatable<Player, Instance, &sPlayer>,
 					   public Notifier<Player, CharacterAdded>,
 					   public Notifier<Player, CharacterRemoving>
@@ -57,7 +58,10 @@ namespace RBX
 			static Reflection::SignalDesc<Player, void(std::string, boost::shared_ptr<Instance>)> event_Chatted;
 
 		private:
-			virtual bool askAddChild(const Instance*) const;
+			virtual bool askAddChild(const Instance* instance) const
+			{
+				return true;
+			}
 			virtual void onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider);
 			void onCharacterChangedFrontend();
 			void registerLocalPlayerNotIdle();
@@ -65,7 +69,10 @@ namespace RBX
 			Player();
 			virtual ~Player();
 		public:
-			virtual XmlElement* write();
+			virtual XmlElement* write()
+			{
+				return NULL;
+			}
 			virtual void setName(const std::string& value);
 			ModelInstance* getCharacter() const
 			{
@@ -88,7 +95,10 @@ namespace RBX
 			}
 			void setCharacterAppearance(const std::string& value);
 			bool getUnder13() const;
-			bool getSuperSafeChat() const;
+			bool getSuperSafeChat() const
+			{
+				return superSafeChat;
+			}
 			void setUnder13(bool value)
 			{
 				prop_Under13.setValue(this, value);

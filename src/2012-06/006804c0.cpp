@@ -5,13 +5,14 @@
 
 // Candidate translation unit (score above; library headers required).
 #include "v8tree/Instance.h"
+#include "v8xml/Serializer.h"
 #include "reflection/function.h"
 #include "reflection/property.h"
 #include <algorithm>
 
 namespace RBX
 {
-	const char* sInstance = "Instance";
+	const char* const sInstance = "Instance";
 
 	Reflection::BoundProp<bool, 1> Instance::propArchivable("archivable", "Behavior", &Instance::archivable, Reflection::PropertyDescriptor::STANDARD); // L14
 	static Reflection::BoundFuncDesc<Instance, boost::shared_ptr<Instance>(std::string, bool), 2> findFirstChild(&Instance::findFirstChildByName2, "FindFirstChild", "name", "recursive", false, Reflection::FunctionDescriptor::AnyCaller); // L15
@@ -155,25 +156,21 @@ namespace RBX
 	void Instance::readChild(const XmlElement* childElement, IReferenceBinder& binder)
 	{
 		const Name* className = NULL;
-		const XmlAttribute* classAttrib = childElement->findAttribute(tag_class);
 
-		if (classAttrib)
+		if (childElement->findAttributeValue(tag_class, className))
 		{
-			if (classAttrib->getValue(className))
+			boost::shared_ptr<Instance> childInstance = createChild(*className);
+			if (childInstance)
 			{
-				boost::shared_ptr<Instance> childInstance = createChild(*className);
+				childInstance->read(childElement, binder);
 				if (childInstance)
-				{
-					childInstance->read(childElement, binder);
-					if (childInstance)
-						childInstance->setParent(this);
-				}
-				else
-				{
-					const XmlAttribute* nameRef = childElement->findAttribute(name_referent);
-					if (nameRef)
-						binder.announceID(nameRef, NULL);
-				}
+					childInstance->setParent(this);
+			}
+			else
+			{
+				const XmlAttribute* nameRef = childElement->findAttribute(name_referent);
+				if (nameRef)
+					binder.announceID(nameRef, NULL);
 			}
 		}
 	}
@@ -207,12 +204,45 @@ namespace RBX
 			readChildren(element, binder);
 		}
 		else
+		{
 			readProperty(element, binder);
+		}
 	}
 
 	void Instance::predelete(Instance* instance)
 	{
 		instance->predelete();
+	}
+
+	void Instance::predelete()
+	{
+		RBXASSERT(!parent);
+
+		while (children)
+		{
+			boost::shared_ptr<Instance> child;
+
+			{
+				boost::shared_ptr<std::vector<boost::shared_ptr<Instance>>> c = children.write();
+
+				child = c->back();
+
+				signalDescendentRemoving(child, this, NULL);
+
+				this->onChildRemoving(child.get());
+				child->parent = NULL;
+				c->pop_back();
+
+				if (c->empty())
+					children.reset();
+			}
+
+			event_childRemoved.fire(this, child);
+			Notifier<Instance, ChildRemoved>::raise(ChildRemoved(child.get()));
+
+			child->onAncestorChanged(AncestorChanged(child.get(), this, NULL));
+			child->raisePropertyChanged(propParent);
+		}
 	}
 
 	void Instance::onAncestorChanged(const AncestorChanged& event)
@@ -358,21 +388,17 @@ namespace RBX
 		}
 	}
 
-	//96.19% matching.
 	void Instance::readProperty(const XmlElement* propertyElement, IReferenceBinder& binder)
 	{
 		const Name* value = NULL;
 
-		if (const XmlAttribute* attribute = propertyElement->findAttribute(name_name))
+		if (propertyElement->findAttributeValue(name_name, value))
 		{
-			if (attribute->getValue(value))
-			{
-				Reflection::PropertyIterator iter = findProperty(*value);
+			Reflection::PropertyIterator iter = findProperty(*value);
 
-				if (iter != properties_end())
-				{
-					(*iter).read(propertyElement, binder);
-				}
+			if (iter != properties_end())
+			{
+				(*iter).read(propertyElement, binder);
 			}
 		}
 	}
@@ -449,5 +475,43 @@ namespace RBX
 
 		onAncestorChanged(AncestorChanged(this, oldParent.get(), newParent));
 		raisePropertyChanged(propParent);
+	}
+
+	void Instance::writeProperties(XmlElement* container) const
+	{
+		for (Reflection::ConstPropertyIterator iter = this->properties_begin(); iter != this->properties_end(); ++iter)
+		{
+			const Reflection::PropertyDescriptor& descriptor = (*iter).getDescriptor();
+			XmlElement* element = descriptor.write(this, false);
+			if (element)
+				container->addChild(element);
+		}
+	}
+
+	boost::shared_ptr<Instance> Instance::fromXmlRoot(XmlElement* xmlRoot)
+	{		
+		SerializerV2::isolateHandles(xmlRoot);
+
+		Serializer serializer;
+		std::vector<boost::shared_ptr<Instance>> newInstances;
+		serializer.loadInstances(xmlRoot, newInstances);
+
+		if (newInstances.empty())
+			return boost::shared_ptr<Instance>();
+		else
+			return newInstances.front();
+	}
+
+	XmlElement* Instance::toNewXmlRoot(Instance* instance) // this is a guess
+	{
+		XmlElement* root = SerializerV2::newRootElement();
+		root->addChild(instance->write());
+		return root;
+	}
+
+	boost::shared_ptr<Instance> Instance::clone()
+	{
+		boost::scoped_ptr<XmlElement> root(toNewXmlRoot(this));
+		return fromXmlRoot(root.get());
 	}
 }

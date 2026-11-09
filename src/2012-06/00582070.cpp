@@ -27,6 +27,8 @@ static void cleanup(boost::weak_ptr<RBX::Instance> item)
 
 namespace RBX
 {
+	char* sDebrisService = "Debris";
+
 	DebrisService::DebrisService()
 		: Base("Debris"),
 		  maxItems(300),

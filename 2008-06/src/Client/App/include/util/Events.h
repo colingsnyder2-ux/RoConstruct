@@ -16,7 +16,17 @@ namespace RBX
 		size_t upper;
 		RaiseRange* previous;
 	public:
-		void removeIndex(size_t);
+		void removeIndex(size_t index)
+		{
+			if (this->upper > index)
+				this->upper--;
+
+			if (this->index >= index)
+				this->index--;
+
+			if (previous)
+				previous->removeIndex(index);
+		}
 	};
 
 	template<typename Class, typename Event>
@@ -98,7 +108,7 @@ namespace RBX
 			}
 		}
 
-		void raise(Event event) const throw()
+		__declspec(nothrow) void raise(Event event) const
 		{
 			RaiseRange range = {0, listeners.size(), raiseRange};
 
@@ -106,7 +116,8 @@ namespace RBX
 
 			for (; range.index < range.upper; range.index++)
 			{
-				raise(event, listeners[range.index]);
+				Listener<Class, Event>* listener = listeners[range.index];
+				raise(event, listener);
 			}
 
 			raiseRange = range.previous;

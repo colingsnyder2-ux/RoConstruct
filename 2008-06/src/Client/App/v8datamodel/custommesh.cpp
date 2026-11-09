@@ -11,6 +11,8 @@ static RBX::Reflection::EnumPropDescriptor<RBX::SpecialShape, RBX::SpecialShape:
 
 namespace RBX
 {
+	char* sSpecialShape = "SpecialMesh";
+
 	SpecialShape::SpecialShape()
 		: scale(1.0f, 1.0f, 1.0f),
 		  vertColor(1.0f, 1.0f, 1.0f),
@@ -90,6 +92,21 @@ namespace RBX
 			textureId = value;
 			raisePropertyChanged(desc_textureId);
 			setMeshType(FILE_MESH);
+		}
+	}
+
+	namespace Reflection
+	{
+		EnumDesc<SpecialShape::MeshType>::EnumDesc()
+			: EnumDescriptor("MeshType", typeid(SpecialShape::MeshType))
+		{
+			addPair(SpecialShape::HEAD_MESH, "Head");
+			addPair(SpecialShape::TORSO_MESH, "Torso");
+			addPair(SpecialShape::WEDGE_MESH, "Wedge");
+			addPair(SpecialShape::BRICK_MESH, "Brick");
+			addPair(SpecialShape::SPHERE_MESH, "Sphere");
+			addPair(SpecialShape::CYLINDER_MESH, "Cylinder");
+			addPair(SpecialShape::FILE_MESH, "FileMesh");
 		}
 	}
 }

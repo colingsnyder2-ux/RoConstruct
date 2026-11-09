@@ -5,16 +5,16 @@
 
 namespace RBX
 {
-	extern const char* sIntValue;
-	extern const char* sBoolValue;
-	extern const char* sFloatValue;
-	extern const char* sColor3Value;
-	extern const char* sVector3Value;
-	extern const char* sBrickColorValue;
-	extern const char* sStringValue;
-	extern const char* sCFrameValue;
+	extern char* sIntValue;
+	extern char* sBoolValue;
+	extern char* sFloatValue;
+	extern char* sColor3Value;
+	extern char* sVector3Value;
+	extern char* sBrickColorValue;
+	extern char* sStringValue;
+	extern char* sCFrameValue;
 
-	template<typename ValueType, const char** ClassName>
+	template<typename ValueType, const char* const* ClassName>
 	class Value : public DescribedCreatable<Value<ValueType, ClassName>, Instance, ClassName>
 	{
 	private:
@@ -26,13 +26,23 @@ namespace RBX
 		static Reflection::SignalDesc<Value, void(ValueType)> desc_ValueChanged;
 
 	public:
-		Value();
+		Value()
+			: value(defaultValue)
+		{
+			setName("Value");
+		}
 		const Value& getValue() const;
 		void setValue(const Value&);
 	protected:
-		virtual bool askSetParent(const Instance*) const;
+		virtual bool askSetParent(const Instance* instance) const
+		{
+			return true;
+		}
 	private:
-		void onValueChanged(const Reflection::PropertyDescriptor&);
+		void onValueChanged(const Reflection::PropertyDescriptor&)
+		{
+			desc_ValueChanged.fire(this, value);
+		}
 	};
 
 	typedef Value<int,			&sIntValue>			IntValue;
@@ -44,7 +54,7 @@ namespace RBX
 	typedef Value<std::string,	&sStringValue>		StringValue;
 	typedef Value<G3D::CoordinateFrame, &sCFrameValue> CFrameValue;
 
-	extern const char* sObjectValue;
+	extern char* sObjectValue;
 	
 	class ObjectValue : public DescribedCreatable<ObjectValue, Instance, &sObjectValue>
 	{
@@ -55,11 +65,28 @@ namespace RBX
 		static Reflection::SignalDesc<ObjectValue, void(boost::shared_ptr<Instance>)> desc_ValueChanged;
 
 	public:
-		ObjectValue();
-		Instance* getValue() const;
-		void setValue(Instance*);
+		ObjectValue()
+		{
+			setName("Value");
+		}
+		Instance* getValue() const
+		{
+			return value.get();
+		}
+		void setValue(Instance* value)
+		{
+			if (this->value.get() != value)
+			{
+				this->value = shared_from(value);
+				raisePropertyChanged(desc_Value);
+				desc_ValueChanged.fire(this, this->value);
+			}
+		}
 	protected:
-		virtual bool askSetParent(const Instance*) const;
+		virtual bool askSetParent(const Instance* instance) const
+		{
+			return true;
+		}
 	private:
 		void onValueChanged(const Reflection::PropertyDescriptor&);
 	};

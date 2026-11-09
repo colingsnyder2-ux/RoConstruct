@@ -14,10 +14,30 @@ namespace RBX
 	namespace Network
 	{
 		template<typename T>
-		void serialize(const Reflection::ConstProperty&, RakNet::BitStream&);
+		void serialize(const Reflection::ConstProperty& property, RakNet::BitStream& bitStream)
+		{
+			operator<<(bitStream, property.getValue<T>());
+		}
+
+		template<>
+		void serialize<BrickColor>(const Reflection::ConstProperty& property, RakNet::BitStream& bitStream);
+
+		template<>
+		void serialize<ContentId>(const Reflection::ConstProperty& property, RakNet::BitStream& bitStream);
 
 		template<typename T>
-		void deserialize(Reflection::Property&, RakNet::BitStream&);
+		void deserialize(Reflection::Property& property, RakNet::BitStream& bitStream)
+		{
+			T value;
+			operator>><T>(bitStream, value);
+			property.setValue<T>(value);
+		}
+
+		template<>
+		void deserialize<BrickColor>(Reflection::Property& property, RakNet::BitStream& bitStream);
+
+		template<>
+		void deserialize<ContentId>(Reflection::Property& property, RakNet::BitStream& bitStream);
 
 		void serializeEnum(const Reflection::ConstProperty& property, RakNet::BitStream& bitStream);
 		void deserializeEnum(Reflection::Property& property, RakNet::BitStream& bitStream);
@@ -33,20 +53,10 @@ namespace RBX
 		RakNet::BitStream& operator<<(RakNet::BitStream& stream, const G3D::Color3& value);
 		RakNet::BitStream& operator<<(RakNet::BitStream& stream, const G3D::CoordinateFrame& cf);
 
-		RakNet::BitStream& operator>>(RakNet::BitStream& stream, bool& value);
-		RakNet::BitStream& operator>>(RakNet::BitStream& stream, int& value);
-		RakNet::BitStream& operator>>(RakNet::BitStream& stream, long& value);
-		RakNet::BitStream& operator>>(RakNet::BitStream& stream, unsigned int& value);
-		RakNet::BitStream& operator>>(RakNet::BitStream& stream, unsigned char& value);
-		RakNet::BitStream& operator>>(RakNet::BitStream& stream, float& value);
 		RakNet::BitStream& operator>>(RakNet::BitStream& stream, std::string& value);
-		RakNet::BitStream& operator>>(RakNet::BitStream& stream, G3D::Vector3& value);
-		RakNet::BitStream& operator>>(RakNet::BitStream& stream, G3D::Color3& value);
-		RakNet::BitStream& operator>>(RakNet::BitStream& stream, BrickColor& value);
-		RakNet::BitStream& operator>>(RakNet::BitStream& stream, ContentId& value);
 
 		template<typename T>
-		RakNet::BitStream& operator>>(RakNet::BitStream& stream, T& value); // TODO: check match
+		RakNet::BitStream& operator>>(RakNet::BitStream& stream, T& value);
 
 		void writeBrickVector(RakNet::BitStream& stream, const G3D::Vector3& value);
 		void readBrickVector(RakNet::BitStream& stream, G3D::Vector3& value);
@@ -109,13 +119,13 @@ namespace RBX
 			void deserializeId(RakNet::BitStream& stream, Guid::Data& id);
 			void resolvePendingBindings(Instance* instance, Guid::Data id);
 			bool deserializeInstanceRef(RakNet::BitStream&, Instance*&);
-			bool deserializeInstanceRef(RakNet::BitStream&, Instance*&, Guid::Data&);
+			bool deserializeInstanceRef(RakNet::BitStream& stream, Instance*& instance, Guid::Data& id);
 			size_t numWaitingRefs() const
 			{
 				return waitItems.size();
 			}
 			void serializeRef(const Reflection::ConstProperty& property, RakNet::BitStream& bitStream);
-			void deserializeRef(Reflection::Property&, RakNet::BitStream&);
+			void deserializeRef(Reflection::Property& property, RakNet::BitStream& bitStream);
 		protected:
 			static void setRefValue(WaitItem& wi, Instance* instance);
 		};

@@ -1,5 +1,6 @@
 #pragma float_control(precise, off)
 #include "v8datamodel/PartInstance.h"
+#include "v8datamodel/ModelInstance.h"
 #include "v8datamodel/Workspace.h"
 #include "v8world/Assembly.h"
 #include "v8world/Controller.h"
@@ -10,9 +11,13 @@
 #include "tool/Dragger.h"
 #include <G3D/CoordinateFrame.h>
 #include "reflection/type.h"
+#include "reflection/property.h"
+#include "v8xml/XmlElement.h"
 
 namespace RBX
 {
+	char* sPart = "Part";
+
 	bool __fastcall rocInPipelineAnchor(const IPipelined* p)
 	{
 		return p->inPipeline();
@@ -33,21 +38,30 @@ namespace RBX
 	static Reflection::PropDescriptor<PartInstance, G3D::Vector3> prop_RotVelocity("RotVelocity", "Data", &PartInstance::getRotationalVelocity, &PartInstance::setRotationalVelocity, Reflection::PropertyDescriptor::STANDARD);
 	static Reflection::PropDescriptor<PartInstance, G3D::Vector3> prop_SizeUi("Size", category_Part, &PartInstance::getPartSizeUi, &PartInstance::setPartSizeUi, Reflection::PropertyDescriptor::UI);
 	static Reflection::PropDescriptor<PartInstance, bool> prop_Dragging("DraggingV1", "Behavior", &PartInstance::getDragging, &PartInstance::setDragging, Reflection::PropertyDescriptor::STREAMING);
-	static Reflection::PropDescriptor<PartInstance, PartInstance::FormFactor> prop_formFactorUi("formFactor", category_Part, &PartInstance::getFormFactor, &PartInstance::setFormFactorUi, Reflection::PropertyDescriptor::UI);
-	static Reflection::PropDescriptor<PartInstance, PartInstance::FormFactor> prop_formFactor("FormFactor", category_Part, &PartInstance::getFormFactor, &PartInstance::setFormFactorXml, Reflection::PropertyDescriptor::STREAMING);
+	static Reflection::EnumPropDescriptor<PartInstance, PartInstance::FormFactor> prop_formFactorUi("formFactor", category_Part, &PartInstance::getFormFactor, &PartInstance::setFormFactorUi, Reflection::PropertyDescriptor::UI);
+	static Reflection::EnumPropDescriptor<PartInstance, PartInstance::FormFactor> prop_formFactor("FormFactor", category_Part, &PartInstance::getFormFactor, &PartInstance::setFormFactorXml, Reflection::PropertyDescriptor::STREAMING);
 	static Reflection::PropDescriptor<PartInstance, float> prop_Friction("Friction", category_Part, &PartInstance::getFriction, &PartInstance::setFriction, Reflection::PropertyDescriptor::STANDARD);
 	static Reflection::PropDescriptor<PartInstance, float> prop_Elasticity("Elasticity", category_Part, &PartInstance::getElasticity, &PartInstance::setElasticity, Reflection::PropertyDescriptor::STANDARD);
 
-	namespace Reflection
-	{
-		// TODO: check if type singletons are matching
-		template<>
-		const Type& Type::singleton<G3D::CoordinateFrame>()
-		{
-			static Type type("CoordinateFrame", typeid(G3D::CoordinateFrame));
-			return type;
-		}
-	}
+	const Reflection::PropDescriptor<PartInstance, float> PartInstance::prop_RenderImportance("RenderImportance", "Behavior", &PartInstance::getRenderImportance, &PartInstance::setRenderImportance, Reflection::PropertyDescriptor::LEGACY);
+	const Reflection::EnumPropDescriptor<PartInstance, Part::PartType> PartInstance::prop_shapeXml("shape", category_Part, &PartInstance::getPartType, &PartInstance::setPartTypeXml, Reflection::PropertyDescriptor::STREAMING);
+	const Reflection::PropDescriptor<PartInstance, G3D::Color3> PartInstance::prop_Color("Color", "Appearance", &PartInstance::getColor3, &PartInstance::setColor3, Reflection::PropertyDescriptor::LEGACY);
+	const Reflection::PropDescriptor<PartInstance, BrickColor> PartInstance::prop_BrickColor("BrickColor", "Appearance", &PartInstance::getColor, &PartInstance::setColor, Reflection::PropertyDescriptor::STANDARD);
+	const Reflection::PropDescriptor<PartInstance, float> PartInstance::prop_Transparency("Transparency", "Appearance", &PartInstance::getTransparencyXml, &PartInstance::setTransparency, Reflection::PropertyDescriptor::STANDARD);
+	const Reflection::PropDescriptor<PartInstance, float> PartInstance::prop_Reflectance("Reflectance", "Appearance", &PartInstance::getReflectance, &PartInstance::setReflectance, Reflection::PropertyDescriptor::STANDARD);
+	const Reflection::PropDescriptor<PartInstance, bool> PartInstance::prop_Locked("Locked", "Behavior", &PartInstance::getPartLocked, &PartInstance::setPartLocked, Reflection::PropertyDescriptor::STANDARD);
+	const Reflection::PropDescriptor<PartInstance, bool> PartInstance::prop_CanCollide("CanCollide", "Behavior", &PartInstance::getCanCollide, &PartInstance::setCanCollide, Reflection::PropertyDescriptor::STANDARD);
+	const Reflection::PropDescriptor<PartInstance, bool> PartInstance::prop_Anchored("Anchored", "Behavior", &PartInstance::getAnchored, &PartInstance::setAnchored, Reflection::PropertyDescriptor::STANDARD);
+	const Reflection::PropDescriptor<PartInstance, G3D::Vector3> PartInstance::prop_Size("Size", category_Part, &PartInstance::getPartSizeXml, &PartInstance::setPartSizeXml, Reflection::PropertyDescriptor::STREAMING);
+	const Reflection::PropDescriptor<PartInstance, G3D::CoordinateFrame> PartInstance::prop_CFrame("CFrame", "Data", &PartInstance::getCoordinateFrame, &PartInstance::setCoordinateFrame, Reflection::PropertyDescriptor::STANDARD);
+	Reflection::SignalDesc<PartInstance, void(boost::shared_ptr<Instance>)> PartInstance::event_Touched("Touched", "part");
+
+	bool PartInstance::highlightSleepParts = false;
+	bool PartInstance::highlightAwakeParts = false;
+	bool PartInstance::showAnchoredParts = false;
+	bool PartInstance::showPartCoord = false;
+	bool PartInstance::showUnalignedParts = false;
+	bool PartInstance::showSpanningTree = false;
 
 #pragma warning (push)
 #pragma warning (disable : 4355) // warning C4355: 'this' : used in base member initializer list
@@ -84,6 +98,11 @@ namespace RBX
 	{
 		RBXASSERT(!primitive.getClump());
 		RBXASSERT(!myWorld);
+	}
+
+	bool PartInstance::askSetParent(const Instance* instance) const
+	{
+		return dynamic_cast<const ModelInstance*>(instance) != NULL;
 	}
 
 	Surfaces& PartInstance::getSurfaces()
@@ -849,6 +868,148 @@ namespace RBX
 	bool PartInstance::reportTouches() const
 	{
 		return !event_Touched.empty(this);
+	}
+
+	namespace Reflection
+	{
+		EnumDesc<PartInstance::FormFactor>::EnumDesc()
+			: EnumDescriptor("FormFactor", typeid(PartInstance::FormFactor))
+		{
+			addPair(PartInstance::SYMETRIC, "Symmetric");
+			addPair(PartInstance::BRICK, "Brick");
+			addPair(PartInstance::PLATE, "Plate");
+
+			addLegacyName("Block", PartInstance::BRICK);
+		}
+
+		template<>
+		const Type& Type::singleton<G3D::CoordinateFrame>()
+		{
+			static Type type("CoordinateFrame", typeid(G3D::CoordinateFrame));
+			return type;
+		}
+
+		template<>
+		bool TypedPropertyDescriptor<G3D::CoordinateFrame>::hasStringValue() const
+		{
+			return false;
+		}
+
+		template<>
+		std::string TypedPropertyDescriptor<G3D::CoordinateFrame>::getStringValue(const DescribedBase* instance) const
+		{
+			return PropertyDescriptor::getStringValue(instance);
+		}
+
+		template<>
+		bool TypedPropertyDescriptor<G3D::CoordinateFrame>::setStringValue(DescribedBase* instance, const std::string& text) const
+		{
+			PropertyDescriptor::setStringValue(instance, text);
+			return false;
+		}
+
+		template<>
+		void TypedPropertyDescriptor<G3D::CoordinateFrame>::readValue(DescribedBase* instance, const XmlElement* element, IReferenceBinder& binder) const
+		{
+			if (!element->isXsiNil())
+			{
+				float value;
+				G3D::CoordinateFrame result;
+				
+				bool gotValue1 = element->findFirstChildByTag(tag_X)->getValue(value);
+				RBXASSERT(gotValue1);
+				result.translation.x = value;
+
+				bool gotValue2 = element->findFirstChildByTag(tag_Y)->getValue(value);
+				RBXASSERT(gotValue2);
+				result.translation.y = value;
+
+				bool gotValue3 = element->findFirstChildByTag(tag_Z)->getValue(value);
+				RBXASSERT(gotValue3);
+				result.translation.z = value;
+
+				bool gotValue4 = element->findFirstChildByTag(tag_R00)->getValue(value);
+				RBXASSERT(gotValue4);
+				result.rotation[0][0] = value;
+
+				bool gotValue5 = element->findFirstChildByTag(tag_R01)->getValue(value);
+				RBXASSERT(gotValue5);
+				result.rotation[0][1] = value;
+
+				bool gotValue6 = element->findFirstChildByTag(tag_R02)->getValue(value);
+				RBXASSERT(gotValue6);
+				result.rotation[0][2] = value;
+
+				bool gotValue7 = element->findFirstChildByTag(tag_R10)->getValue(value);
+				RBXASSERT(gotValue7);
+				result.rotation[1][0] = value;
+
+				bool gotValue8 = element->findFirstChildByTag(tag_R11)->getValue(value);
+				RBXASSERT(gotValue8);
+				result.rotation[1][1] = value;
+
+				bool gotValue9 = element->findFirstChildByTag(tag_R12)->getValue(value);
+				RBXASSERT(gotValue9);
+				result.rotation[1][2] = value;
+
+				bool gotValue10 = element->findFirstChildByTag(tag_R20)->getValue(value);
+				RBXASSERT(gotValue10);
+				result.rotation[2][0] = value;
+
+				bool gotValue11 = element->findFirstChildByTag(tag_R21)->getValue(value);
+				RBXASSERT(gotValue11);
+				result.rotation[2][1] = value;
+
+				bool gotValue12 = element->findFirstChildByTag(tag_R22)->getValue(value);
+				RBXASSERT(gotValue12);
+				result.rotation[2][2] = value;
+
+				getset->setValue(instance, result);
+			}
+		}
+
+
+		template<>
+		void TypedPropertyDescriptor<G3D::CoordinateFrame>::writeValue(const DescribedBase* instance, XmlElement* element) const
+		{
+			G3D::CoordinateFrame coord = getValue(instance);
+
+			XmlElement* xElement = new XmlElement(tag_X, coord.translation.x);
+			element->pushBackChild(xElement);
+
+			XmlElement* yElement = new XmlElement(tag_Y, coord.translation.y);
+			element->pushBackChild(yElement);
+
+			XmlElement* zElement = new XmlElement(tag_Z, coord.translation.z);
+			element->pushBackChild(zElement);
+
+			XmlElement* r00Element = new XmlElement(tag_R00, coord.rotation[0][0]);
+			element->pushBackChild(r00Element);
+
+			XmlElement* r01Element = new XmlElement(tag_R01, coord.rotation[0][1]);
+			element->pushBackChild(r01Element);
+
+			XmlElement* r02Element = new XmlElement(tag_R02, coord.rotation[0][2]);
+			element->pushBackChild(r02Element);
+
+			XmlElement* r10Element = new XmlElement(tag_R10, coord.rotation[1][0]);
+			element->pushBackChild(r10Element);
+
+			XmlElement* r11Element = new XmlElement(tag_R11, coord.rotation[1][1]);
+			element->pushBackChild(r11Element);
+
+			XmlElement* r12Element = new XmlElement(tag_R12, coord.rotation[1][2]);
+			element->pushBackChild(r12Element);
+
+			XmlElement* r20Element = new XmlElement(tag_R20, coord.rotation[2][0]);
+			element->pushBackChild(r20Element);
+
+			XmlElement* r21Element = new XmlElement(tag_R21, coord.rotation[2][1]);
+			element->pushBackChild(r21Element);
+
+			XmlElement* r22Element = new XmlElement(tag_R22, coord.rotation[2][2]);
+			element->pushBackChild(r22Element);
+		}
 	}
 }
 

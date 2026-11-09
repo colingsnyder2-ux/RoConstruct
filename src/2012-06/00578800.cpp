@@ -12,18 +12,28 @@
 #include "NetworkSettings.h"
 #include "PacketIds.h"
 #include "security/SecurityContext.h"
+#include "v8datamodel/Lighting.h"
 #include "v8datamodel/Stats.h"
 #include "v8datamodel/PartInstance.h"
+#include "v8datamodel/Hopper.h"
+#include "v8datamodel/Teams.h"
+#include "v8datamodel/JointsService.h"
 #include "v8world/SimJobStage.h"
 #include "util/Log.h"
 #include "util/standardout.h"
 #include <g3d/system.h>
+#include "IdManager.h"
 
 static RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator, boost::shared_ptr<RBX::Reflection::DescribedBase>(void), 0> func_SendMarker(&RBX::Network::Replicator::sendMarker, "SendMarker", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
 static RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator, void(void), 0> func_requestCharacter(&RBX::Network::Replicator::requestCharacter, "RequestCharacter", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
 static RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator, void(void), 0> func_closeConnection(&RBX::Network::Replicator::closeConnection, "CloseConnection", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
 
 static RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator, boost::shared_ptr<RBX::Instance>(void), 0> prop_RemotePlayer(&RBX::Network::Replicator::getPlayer, "GetPlayer", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
+
+RBX::Reflection::BoundProp<int, 1> RBX::Network::Replicator::prop_maxDataModelSendBuffer("MaxDataModelSendBuffer", "Replication", &RBX::NetworkSettings::maxDataModelSendBuffer, RBX::Reflection::PropertyDescriptor::STANDARD);
+
+RBX::Reflection::SignalDesc<RBX::Network::Marker, void(void)> RBX::Network::Marker::event_Returned("Received");
+RBX::Reflection::SignalDesc<RBX::Network::Replicator, void(std::string, bool)> RBX::Network::Replicator::event_Disconnection("Disconnection", "peer", "lostConnection");
 
 enum ValueType // NOTE: may not be intended for this file
 {
@@ -92,7 +102,13 @@ FilePacketLogger::FilePacketLogger(RBX::Network::Peer* peer)
 		RBX::StandardOut::singleton()->print(RBX::MESSAGE_WARNING, "Failed to create log file %s", pathName.c_str());
 	}
 }
-	
+
+FilePacketLogger::~FilePacketLogger()
+{
+	if (packetLogFile)
+		fclose(packetLogFile);
+}
+
 void FilePacketLogger::OnAttach(RakPeerInterface* peer)
 {
 	PacketLogger::OnAttach(peer);
@@ -109,6 +125,9 @@ namespace RBX
 {
 	namespace Network
 	{
+		const char* const sMarker = "NetworkMarker";
+		const char* const sPeer = "NetworkPeer";
+
 		Peer::Peer()
 			: profilePacketsThread(new Profiling::ThreadProfiler("Packets Thread")),
 			  rakPeer(new RakPeer)
@@ -172,6 +191,36 @@ namespace RBX
 				NetworkSettings::singleton().extraPingVariance
 			);
 		}
+
+		void Peer::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
+		{
+			Stats::StatsService* oldStats = ServiceProvider::find<Stats::StatsService>(oldProvider);
+			if (oldStats)
+			{
+				boost::shared_ptr<Stats::Item> network = shared_from_polymorphic_downcast<Stats::Item>(oldStats->findFirstChildByName("Network"));
+				if (network)
+					network->setParent(NULL);
+			}
+
+			Notifier<RunService, Heartbeat>::disconnect(ServiceProvider::find<RunService>(oldProvider), this);
+
+			Instance::onServiceProvider(oldProvider, newProvider);
+
+			Notifier<RunService, Heartbeat>::connect(ServiceProvider::find<RunService>(newProvider), this);
+
+			Stats::StatsService* newStats = ServiceProvider::find<Stats::StatsService>(newProvider);
+			if (newStats)
+			{
+				RBXASSERT(!shared_from_polymorphic_downcast<Stats::Item>(newStats->findFirstChildByName("Network")));
+
+				boost::shared_ptr<Stats::Item> network = Creatable::create<Stats::Item>();
+				network->setName("Network");
+				network->setParent(newStats);
+				network->createBoundChildItem(*profilePacketsThread);
+			}
+		}
+
+		const char* const sReplicator = "NetworkReplicator";
 
 		Replicator::Replicator(SystemAddress remotePlayerId, RakPeerInterface* peer)
 			: lastSendTime(G3D::System::getLocalTime()),
@@ -280,6 +329,14 @@ namespace RBX
 			peer->Send(&bitStream, MEDIUM_PRIORITY, RELIABLE_ORDERED, 0, remotePlayerId, false);
 		}
 
+		void Replicator::connectPropertyChanged(boost::shared_ptr<Instance> instance)
+		{
+			if (propertyChangedConnections.find(instance) == propertyChangedConnections.end())
+			{
+				propertyChangedConnections[instance] = Instance::event_propertyChanged.connect(instance.get(), boost::bind(&Replicator::onPropertyChanged, this, instance, _1));
+			}
+		}
+
 		void Replicator::disconnectPropertyChanged(boost::shared_ptr<Instance> instance)
 		{
 			std::map<boost::shared_ptr<Instance>, boost::signals::connection>::iterator iter = propertyChangedConnections.find(instance);
@@ -343,7 +400,7 @@ namespace RBX
 
 			RakNet::BitStream bitStream;
 			bitStream << (unsigned char)ID_REQUEST_MARKER;
-			bitStream << (int)marker->id();
+			bitStream << marker->id();
 
 			if (NetworkSettings::singleton().printInstances)
 			{
@@ -594,15 +651,14 @@ namespace RBX
 
 				if (deserializeProperty)
 				{
-					const DescribedBase* inst = static_cast<DescribedBase*>(instance.get()); // force static cast outside of the RBXASSERT block
-					RBXASSERT(descriptor->isMemberOf(inst));
-
-					if (descriptor == &deserializeProperty->getDescriptor() && inst == deserializeProperty->getInstance())
+					Reflection::Property prop(*descriptor, instance.get());
+					if (prop == *deserializeProperty)
 						isDeserializeProperty = true;
 				}
 				
 				if (!isDeserializeProperty && (descriptor->canStreamWrite() || descriptor == &Instance::propParent) && !isSerializePending(instance.get()))
 				{
+					// ideally this should also be a ConstProperty/Property but i couldnt get the constructor to inline with it
 					const DescribedBase* inst = static_cast<DescribedBase*>(instance.get());
 					RBXASSERT(descriptor->isMemberOf(inst));
 
@@ -620,13 +676,93 @@ namespace RBX
 			}
 		}
 
+		bool Replicator::remoteDeleteOnDisconnect(const Instance* instance) const
+		{
+			if (instance->isDescendentOf(players))
+				return true;
+
+			if (instance == Players::findLocalCharacter(instance))
+				return true;
+
+			return false;
+		}
+
+		void Replicator::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
+		{
+			Instance* oldLighting = ServiceProvider::create<Lighting>(oldProvider);
+			if (oldLighting)
+				disconnectPropertyChanged(shared_from(oldLighting));
+
+			disconnectAllPropertyChangedConnections();
+			pendingItems.clear();
+			replicationContainers.clear();
+
+			Instance::onServiceProvider(oldProvider, newProvider);
+
+			createStatsItems(ServiceProvider::find<Stats::StatsService>(newProvider));
+
+			replicationContainers.push_back(ServiceProvider::create<StarterPackService>(newProvider));
+			replicationContainers.push_back(ServiceProvider::find<Workspace>(newProvider));
+			replicationContainers.push_back(ServiceProvider::create<JointsService>(newProvider));
+
+			Players* players = ServiceProvider::create<Players>(newProvider);
+			this->players = players;
+
+			replicationContainers.push_back(players);
+			replicationContainers.push_back(ServiceProvider::create<Lighting>(newProvider));
+			replicationContainers.push_back(ServiceProvider::create<Teams>(newProvider));
+
+			Instance* newLighting = ServiceProvider::create<Lighting>(newProvider);
+			if (newLighting)
+			{
+				connectPropertyChanged(shared_from(newLighting));
+				pendingItems.push_back(boost::shared_ptr<Item>(new NewInstanceItem(*this, shared_from(newLighting))));
+			}
+
+			connectToReplicationContainers();
+
+			if (!newProvider)
+			{
+				if (peer)
+				{
+					peer->DetachPlugin(this);
+					peer = NULL;
+				}
+				deleteDisconnectInstances();
+			}
+		}
+
+		void Replicator::connectToReplicationContainers()
+		{
+			std::vector<boost::signals::connection>::iterator dEnd = replicationContainerConnections.end();
+
+			for (std::vector<boost::signals::connection>::iterator it = replicationContainerConnections.begin(); it != dEnd; it++)
+			{
+				it->disconnect();
+			}
+
+			replicationContainerConnections.clear();
+
+			std::vector<Instance*>::iterator cEnd = replicationContainers.end();
+
+			for (std::vector<Instance*>::iterator it = replicationContainers.begin(); it != cEnd; it++)
+			{
+				if (*it && wantReplicate(*it))
+				{
+					replicationContainerConnections.push_back(Instance::event_descendentAdded.connect(*it, boost::bind(&Replicator::onDescendentAdded, this, _1)));
+					replicationContainerConnections.push_back(Instance::event_descendentRemoving.connect(*it, boost::bind(&Replicator::onDescendentRemoving, this, _1)));
+					(*it)->visitDescendents(boost::bind(&Replicator::onDescendentAdded, this, _1));
+				}
+			}
+		}
+
 		void Replicator::Item::readItemType(RakNet::BitStream& stream, ItemType& value)
 		{
 			value = ItemTypeEnd;
 
 			stream.ReadBits((unsigned char*)&value, 2, true);
 
-			if (value < 1 || value > 3) // neither of Delete, New, ChangeProperty
+			if (value < ItemTypeDelete || value > ItemTypeChangeProperty) // neither of Delete, New, ChangeProperty
 			{
 				stream.Read(value);
 			}
@@ -634,14 +770,14 @@ namespace RBX
 
 		void Replicator::Item::writeItemType(RakNet::BitStream& stream, ItemType value)
 		{
-			if (value >= 1 && value <= 3) // Delete, New, ChangeProperty
+			if (value >= ItemTypeDelete && value <= ItemTypeChangeProperty) // Delete, New, ChangeProperty
 			{
 				stream.WriteBits((unsigned char*)&value, 2, true);
 			}
 			else
 			{
-				unsigned char zeroes = 0;
-				stream.WriteBits(&zeroes, 2, true);
+				unsigned char zero = 0;
+				stream.WriteBits(&zero, 2, true);
 				stream.Write(value);
 			}
 		}
@@ -781,7 +917,7 @@ namespace RBX
 		{
 			if (replicator->peer)
 			{
-				bps->formatMem((size_t)statistics->bitsPerSecond / 8);
+				bps->formatMem((unsigned)statistics->bitsPerSecond / 8);
 
 				ping->formatValue(
 					replicator->peer->GetLastPing(replicator->remotePlayerId),
@@ -837,6 +973,20 @@ namespace RBX
 			}
 		}
 
+		Replicator::NewInstanceItem::NewInstanceItem(Replicator& replicator, const boost::shared_ptr<Instance>& instance)
+			: Item(replicator),
+			  instance(instance)
+		{
+			replicator.pendingNewInstances.insert(instance.get());
+		}
+
+		Replicator::DeleteInstanceItem::DeleteInstanceItem(Replicator& replicator, const boost::shared_ptr<const Instance>& instance)
+			: Item(replicator),
+			  instance(instance)
+		{
+			replicator.pendingDeleteInstances.insert(instance.get());
+		}
+
 		void Replicator::DeleteInstanceItem::write(RakNet::BitStream& bitStream)
 		{
 			size_t erased = replicator.pendingDeleteInstances.erase(instance.get());
@@ -876,6 +1026,217 @@ namespace RBX
 					);
 				}
 			}
+		}
+
+		void Replicator::deserializeValue(RakNet::BitStream& inBitStream, bool lengthIncluded, Reflection::Property& property)
+		{
+			if (lengthIncluded)
+			{
+				ValueType output = ValueType_nil;
+				inBitStream.ReadBits((unsigned char*)&output, 4);
+			}
+
+			if (property.getDescriptor().type == Reflection::Type::singleton<std::string>())
+			{
+				getSharedDictionary(property.getDescriptor()).deserializeString(property, inBitStream);
+			}
+			else if (property.getDescriptor().type == Reflection::Type::singleton<bool>())
+			{
+				deserialize<bool>(property, inBitStream);
+			}
+			else if (property.getDescriptor().type == Reflection::Type::singleton<int>())
+			{
+				deserialize<int>(property, inBitStream);
+			}
+			else if (property.getDescriptor().type == Reflection::Type::singleton<float>())
+			{
+				deserialize<float>(property, inBitStream);
+			}
+			else if (property.getDescriptor().type == Reflection::Type::singleton<BrickColor>())
+			{
+				deserialize<BrickColor>(property, inBitStream);
+			}
+			else if (property.getDescriptor().type == Reflection::Type::singleton<G3D::Color3>())
+			{
+				deserialize<G3D::Color3>(property, inBitStream);
+			}
+			else if (property.getDescriptor().type == Reflection::Type::singleton<G3D::Vector3>())
+			{
+				if (property.getDescriptor() == PartInstance::prop_Size)
+				{
+					G3D::Vector3 value;
+					readBrickVector(inBitStream, value);
+					property.setValue<G3D::Vector3>(value);
+				}
+				else
+				{
+					deserialize<G3D::Vector3>(property, inBitStream);
+				}
+			}
+			else if (property.getDescriptor().type == Reflection::Type::singleton<G3D::CoordinateFrame>())
+			{
+				deserialize<G3D::CoordinateFrame>(property, inBitStream);
+			}
+			else if (dynamic_cast<const Reflection::EnumPropertyDescriptor*>(&property.getDescriptor()))
+			{
+				deserializeEnum(property, inBitStream);
+			}
+			else if (dynamic_cast<const Reflection::RefPropertyDescriptor*>(&property.getDescriptor()))
+			{
+				deserializeRef(property, inBitStream);
+			}
+			else if (property.getDescriptor().type == Reflection::Type::singleton<ContentId>())
+			{
+				deserialize<ContentId>(property, inBitStream);
+			}
+			else
+			{
+				RBXASSERT(false);
+			}
+		}
+
+		void Replicator::serializeValue(const Reflection::ConstProperty& property, bool includeLength, RakNet::BitStream& outBitStream)
+		{
+			if (property.getDescriptor().type == Reflection::Type::singleton<std::string>())
+			{
+				writeValueType(includeLength, ValueType_string, outBitStream);
+				getSharedDictionary(property.getDescriptor()).serializeString(property, outBitStream);
+			}
+			else if (property.getDescriptor().type == Reflection::Type::singleton<bool>())
+			{
+				writeValueType(includeLength, ValueType_bool, outBitStream);
+				serialize<bool>(property, outBitStream);
+			}
+			else if (property.getDescriptor().type == Reflection::Type::singleton<int>())
+			{
+				writeValueType(includeLength, ValueType_int, outBitStream);
+				serialize<int>(property, outBitStream);
+			}
+			else if (property.getDescriptor().type == Reflection::Type::singleton<float>())
+			{
+				writeValueType(includeLength, ValueType_float, outBitStream);
+				serialize<float>(property, outBitStream);
+			}
+			else if (property.getDescriptor().type == Reflection::Type::singleton<BrickColor>())
+			{
+				writeValueType(includeLength, ValueType_BrickColor, outBitStream);
+				serialize<BrickColor>(property, outBitStream);
+			}
+			else if (property.getDescriptor().type == Reflection::Type::singleton<G3D::Color3>())
+			{
+				writeValueType(includeLength, ValueType_Color3, outBitStream);
+				serialize<G3D::Color3>(property, outBitStream);
+			}
+			else if (property.getDescriptor().type == Reflection::Type::singleton<G3D::Vector3>())
+			{
+				if (property.getDescriptor() == PartInstance::prop_Size)
+				{
+					writeValueType(includeLength, ValueType_BrickVector, outBitStream);
+					writeBrickVector(outBitStream, property.getValue<G3D::Vector3>());
+				}
+				else
+				{
+					writeValueType(includeLength, ValueType_Vector3, outBitStream);
+					serialize<G3D::Vector3>(property, outBitStream);
+				}
+			}
+			else if (property.getDescriptor().type == Reflection::Type::singleton<G3D::CoordinateFrame>())
+			{
+				writeValueType(includeLength, ValueType_CoordinateFrame, outBitStream);
+				serialize<G3D::CoordinateFrame>(property, outBitStream);
+			}
+			else if (dynamic_cast<const Reflection::EnumPropertyDescriptor*>(&property.getDescriptor()))
+			{
+				writeValueType(includeLength, ValueType_Enum, outBitStream);
+				serializeEnum(property, outBitStream);
+			}
+			else if (dynamic_cast<const Reflection::RefPropertyDescriptor*>(&property.getDescriptor()))
+			{
+				writeValueType(includeLength, ValueType_Ref, outBitStream);
+				serializeRef(property, outBitStream);
+			}
+			else if (property.getDescriptor().type == Reflection::Type::singleton<ContentId>())
+			{
+				writeValueType(includeLength, ValueType_ContentId, outBitStream);
+				serialize<ContentId>(property, outBitStream);
+			}
+			else
+			{
+				RBXASSERT(false);
+			}
+		}
+
+		PluginReceiveResult Replicator::OnReceive(RakPeerInterface* peer, Packet* packet)
+		{
+			RBXASSERT(this->peer == peer);
+			if (packet->systemAddress == remotePlayerId)
+			{
+				Profiling::Mark mark(*profileReplication, false);
+
+				try
+				{
+					switch(packet->data[0])
+					{
+					case ID_TIMESTAMP:
+						{
+							return OnReceive_ID_TIMESTAMP(packet);
+						}
+					case ID_CONNECTION_LOST:
+						{
+							StandardOut::singleton()->print(MESSAGE_WARNING, "Lost connection to %s\n", packet->systemAddress.ToString());
+							event_Disconnection.fire(this, packet->systemAddress.ToString(), true);
+							disconnected = true;
+							return RR_CONTINUE_PROCESSING;
+						}
+					case ID_DISCONNECTION_NOTIFICATION:
+						{
+							StandardOut::singleton()->print(MESSAGE_INFO, "Disconnect from %s", packet->systemAddress.ToString());
+							event_Disconnection.fire(this, packet->systemAddress.ToString(), false);
+							disconnected = true;
+							return RR_CONTINUE_PROCESSING;
+						}
+					case ID_DATA:
+						{
+							receiveData(packet);
+							return RR_STOP_PROCESSING_AND_DEALLOCATE;
+						}
+					case ID_REQUEST_MARKER:
+						{
+							RakNet::BitStream inBitstream(packet->data, packet->length, false);
+							inBitstream.IgnoreBits(8);
+
+							int id;
+							inBitstream >> id;
+
+							pendingItems.push_back(boost::shared_ptr<Item>(new MarkerItem(*this, id)));
+							return RR_STOP_PROCESSING_AND_DEALLOCATE;
+						}
+					case ID_SET_GLOBALS:
+						{
+							RakNet::BitStream inBitstream(packet->data, packet->length, false);
+							inBitstream.IgnoreBits(8);
+
+							std::vector<Instance*>::iterator end = replicationContainers.end();
+
+							for (std::vector<Instance*>::iterator iter = replicationContainers.begin(); iter != end; iter++)
+							{
+								Guid::Data id;
+								deserializeId(inBitstream, id);
+								ServiceProvider::create<IdManager>(this)->addInstance(*iter, id);
+								resolvePendingBindings(*iter, id);
+							}
+						}
+						receivedGlobals = true;
+						return RR_STOP_PROCESSING_AND_DEALLOCATE;
+					}
+				}
+				catch (std::exception& e)
+				{
+					StandardOut::singleton()->print(MESSAGE_ERROR, "Replicator::OnReceive packet %d: %s", packet->data[0], e.what());
+				}
+			}
+
+			return RR_CONTINUE_PROCESSING;
 		}
 	}
 }

@@ -57,6 +57,8 @@ namespace RBX
 			return signalInstance;
 		}
 
+		GenericSlotWrapper::~GenericSlotWrapper() {}
+
 		SignalInstance::~SignalInstance() {}
 
 		SignalSource::~SignalSource() {}
@@ -64,6 +66,11 @@ namespace RBX
 		void SignalSource::disconnect_all_slots()
 		{
 			signals.reset();
+		}
+
+		boost::shared_ptr<SignalInstance> Signal::getSignalInstance() const
+		{
+			return descriptor->getSignalInstance(*instance);
 		}
 	}
 }

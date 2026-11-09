@@ -12,7 +12,7 @@
 
 namespace RBX
 {
-	extern const char* sRunService;
+	extern const char* const sRunService;
 
 	class DataModel;
 
@@ -79,6 +79,7 @@ namespace RBX
 					   public Notifier<RunService, RunTransition>,
 					   public Notifier<RunService, RunState>
 	{
+	friend DataModel;
 	private:
 		RunState runState;
 		double unknown0x1b8;
@@ -133,9 +134,18 @@ namespace RBX
 		{
 			return runState;
 		}
-		bool isEditState() const;
-		bool isRunState() const;
-		bool isPauseState() const;
+		bool isEditState() const
+		{
+			return runState == RS_NORMAL;
+		}
+		bool isRunState() const
+		{
+			return runState == RS_RUNNING;
+		}
+		bool isPauseState() const
+		{
+			return runState == RS_PAUSED;
+		}
 		void setPeriod(float);
 		float getPeriod();
 		void addRunView(IRunView*);

@@ -15,6 +15,8 @@
 
 namespace RBX
 {
+	G3D::Vector3 MouseCommand::ignoreVector3;
+
 	MouseCommand::MouseCommand(Workspace* workspace)
 		: workspace(workspace),
 		  capturedMouse(false)

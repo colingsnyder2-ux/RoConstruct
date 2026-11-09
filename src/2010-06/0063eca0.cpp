@@ -17,6 +17,8 @@ static RBX::Reflection::BoundFuncDesc<RBX::Visit, void(std::string, int), 2> des
 
 namespace RBX
 {
+	char* sVisit = "Visit";
+
 	Visit::Visit()
 		: uploadUrl("NoVisit")
 	{

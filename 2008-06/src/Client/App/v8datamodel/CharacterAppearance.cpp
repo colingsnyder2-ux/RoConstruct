@@ -19,6 +19,8 @@ namespace RBX
 		return dynamic_cast<const ModelInstance*>(instance) != NULL;
 	}
 
+	const char* const sShirtGraphic = "ShirtGraphic";
+
 	ShirtGraphic::ShirtGraphic()
 	{
 		setName("Shirt Graphic");
@@ -34,6 +36,8 @@ namespace RBX
 				decal->setTexture(graphic);
 		}
 	}
+
+	const char* const sShirt = "Shirt";
 
 	Shirt::Shirt()
 		: leftSleeveColor(BrickColor::lego_23),
@@ -65,6 +69,8 @@ namespace RBX
 	if (part)
 		part->remove();
 }
+
+	const char* const sSkin = "Skin";
 
 	Skin::Skin()
 		: skinColor(BrickColor::lego_226)
@@ -100,6 +106,8 @@ namespace RBX
 				rightArm->setColor(skinColor);
 		}
 	}
+
+	const char* const sBodyColors = "BodyColors";
 
 	BodyColors::BodyColors()
 		: headColor(BrickColor::lego_226),

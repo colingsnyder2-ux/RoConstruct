@@ -9,6 +9,7 @@
 #include "script/ScriptContext.h"
 #include "security/SecurityContext.h"
 #include "util/standardout.h"
+#include "util/RunStateOwner.h"
 #include <sstream>
 #include <cstdio>
 #undef main
@@ -64,6 +65,8 @@ int main()
         catch (std::exception& e) { std::printf("script: %s\n", e.what()); ++failures; }
         if (brick->getName() != "Ran") { std::printf("script did not run (name=%s)\n", brick->getName().c_str()); ++failures; }
 
+        // physics steps only in Run state, as after Play in the client
+        RBX::ServiceProvider::create<RBX::RunService>(dataModel.get())->run();
         for (int i = 0; i < 60; ++i)
             dataModel->step(1.0f / 30.0f);
         float endY = brick->getCoordinateFrame().translation.y;

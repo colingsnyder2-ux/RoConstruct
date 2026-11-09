@@ -23,7 +23,7 @@ namespace RBX
 	{
 	};
 
-	extern const char* sWorkspace;
+	extern char* sWorkspace;
 	class Workspace : public DescribedNonCreatable<Workspace, RootInstance, &sWorkspace>,
 					  public Service,
 					  public GuiTarget,
@@ -77,7 +77,7 @@ namespace RBX
 			return;
 		}
 	private:
-		virtual IScriptOwner* scriptShouldRun(Script*);
+		virtual IScriptOwner* scriptShouldRun(Script* script);
 		virtual void runScript(Script* script, ScriptContext* context);
 		virtual void releaseScript(Script* script);
 		virtual Extents computeCameraOwnerExtents()
@@ -93,7 +93,7 @@ namespace RBX
 			ModelInstance::onExtentsChanged();
 			raiseDrawChanged();
 		}
-		virtual void onEvent(const RunService*, Heartbeat);
+		virtual void onEvent(const RunService* source, Heartbeat event);
 	public:
 		Workspace(IDataState* dataState);
 		virtual ~Workspace();
@@ -129,7 +129,7 @@ namespace RBX
 		void setImageServerView(const G3D::Rect2D& viewPortRect);
 		void zoomToExtents();
 		void onWrapMouse(const G3D::Vector2&);
-		virtual GuiResponse process(const GuiEvent&);
+		virtual GuiResponse process(const GuiEvent& event);
 		void selectAll();
 	private:
 		void handleFallenParts(const G3D::Array<boost::shared_ptr<PartInstance>>& fallenParts);

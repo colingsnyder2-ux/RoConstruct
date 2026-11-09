@@ -15,20 +15,20 @@
 #include "v8world/MotorJoint.h"
 #include "util/Debug.h"
 
-static RBX::Reflection::PropDescriptor<RBX::AutoJoint, RBX::PartInstance*> prop_Part0("Part0", "Data", &RBX::AutoJoint::getPart0, &RBX::AutoJoint::setPart0, RBX::Reflection::PropertyDescriptor::LEGACY); 
-static RBX::Reflection::PropDescriptor<RBX::AutoJoint, RBX::PartInstance*> prop_Part1("Part1", "Data", &RBX::AutoJoint::getPart1, &RBX::AutoJoint::setPart1, RBX::Reflection::PropertyDescriptor::LEGACY); 
+static RBX::Reflection::RefPropDescriptor<RBX::AutoJoint, RBX::PartInstance> prop_Part0("Part0", "Data", &RBX::AutoJoint::getPart0, &RBX::AutoJoint::setPart0, RBX::Reflection::PropertyDescriptor::STANDARD); 
+static RBX::Reflection::RefPropDescriptor<RBX::AutoJoint, RBX::PartInstance> prop_Part1("Part1", "Data", &RBX::AutoJoint::getPart1, &RBX::AutoJoint::setPart1, RBX::Reflection::PropertyDescriptor::STANDARD); 
 
-static RBX::Reflection::PropDescriptor<RBX::AutoJoint, G3D::CoordinateFrame> prop_C1("C1", "Data", &RBX::AutoJoint::getC1, &RBX::AutoJoint::setC1, RBX::Reflection::PropertyDescriptor::LEGACY);
-static RBX::Reflection::PropDescriptor<RBX::AutoJoint, G3D::CoordinateFrame> prop_C0("C0", "Data", &RBX::AutoJoint::getC0, &RBX::AutoJoint::setC0, RBX::Reflection::PropertyDescriptor::LEGACY);
+static RBX::Reflection::PropDescriptor<RBX::AutoJoint, G3D::CoordinateFrame> prop_C1("C1", "Data", &RBX::AutoJoint::getC1, &RBX::AutoJoint::setC1, RBX::Reflection::PropertyDescriptor::STANDARD);
+static RBX::Reflection::PropDescriptor<RBX::AutoJoint, G3D::CoordinateFrame> prop_C0("C0", "Data", &RBX::AutoJoint::getC0, &RBX::AutoJoint::setC0, RBX::Reflection::PropertyDescriptor::STANDARD);
 
 // TODO: check that Motor::getMaxVelocity gets linked as VelocityMotor::getMaxVelocity
-static RBX::Reflection::PropDescriptor<RBX::Motor, float> prop_MaxVelocity("MaxVelocity", "Data", &RBX::Motor::getMaxVelocity, &RBX::Motor::setMaxVelocity, RBX::Reflection::PropertyDescriptor::LEGACY);
-static RBX::Reflection::PropDescriptor<RBX::Motor, float> prop_DesiredAngle("DesiredAngle", "Data", &RBX::Motor::getDesiredAngle, &RBX::Motor::setDesiredAngle, RBX::Reflection::PropertyDescriptor::LEGACY);
-static RBX::Reflection::PropDescriptor<RBX::Motor, float> prop_CurrentAngle("CurrentAngle", "Data", &RBX::Motor::getCurrentAngle, &RBX::Motor::setCurrentAngle, RBX::Reflection::PropertyDescriptor::LEGACY);
+static RBX::Reflection::PropDescriptor<RBX::Motor, float> prop_MaxVelocity("MaxVelocity", "Data", &RBX::Motor::getMaxVelocity, &RBX::Motor::setMaxVelocity, RBX::Reflection::PropertyDescriptor::STANDARD);
+static RBX::Reflection::PropDescriptor<RBX::Motor, float> prop_DesiredAngle("DesiredAngle", "Data", &RBX::Motor::getDesiredAngle, &RBX::Motor::setDesiredAngle, RBX::Reflection::PropertyDescriptor::STANDARD);
+static RBX::Reflection::PropDescriptor<RBX::Motor, float> prop_CurrentAngle("CurrentAngle", "Data", &RBX::Motor::getCurrentAngle, &RBX::Motor::setCurrentAngle, RBX::Reflection::PropertyDescriptor::STANDARD);
 
 namespace RBX
 {
-	const char* sJointInstance = "JointInstance";
+	const char* const sJointInstance = "JointInstance";
 
 	JointInstance::JointInstance(Joint* joint)
 		: joint(joint)
@@ -85,7 +85,7 @@ namespace RBX
 		}
 	}
 
-	const char* sAutoJoint = "AutoJoint";
+	const char* const sAutoJoint = "AutoJoint";
 
 	AutoJoint::AutoJoint(Joint* _joint)
 		: DescribedNonCreatable(_joint)
@@ -209,7 +209,7 @@ namespace RBX
 		raisePropertyChanged(prop_C1);
 	}
 
-	const char* sSnap = "Snap";
+	const char* const sSnap = "Snap";
 
 	Snap::Snap(Joint* joint)
 		: DescribedCreatable(joint)
@@ -224,7 +224,7 @@ namespace RBX
 		setName("Snap");
 	}
 
-	const char* sWeld = "Weld";
+	const char* const sWeld = "Weld";
 
 	Weld::Weld(Joint* joint)
 		: DescribedCreatable(joint)
@@ -237,7 +237,7 @@ namespace RBX
 	{
 	}
 
-	const char* sGlue = "Glue";
+	const char* const sGlue = "Glue";
 
 	Glue::Glue(Joint* joint)
 		: DescribedCreatable(joint)
@@ -250,7 +250,7 @@ namespace RBX
 	{
 	}
 
-	const char* sRotate = "Rotate";
+	const char* const sRotate = "Rotate";
 
 	Rotate::Rotate(Joint* joint)
 		: DescribedCreatable(joint)
@@ -263,7 +263,7 @@ namespace RBX
 	{
 	}
 
-	const char* sRotateP = "RotateP";
+	const char* const sRotateP = "RotateP";
 
 	RotateP::RotateP(Joint* joint)
 		: DescribedCreatable(joint)
@@ -276,7 +276,7 @@ namespace RBX
 	{
 	}
 
-	const char* sRotateV = "RotateV";
+	const char* const sRotateV = "RotateV";
 
 	RotateV::RotateV(Joint* joint)
 		: DescribedCreatable(joint)
@@ -289,7 +289,7 @@ namespace RBX
 	{
 	}
 
-	const char* sMotor = "Motor";
+	const char* const sMotor = "Motor";
 
 	Motor::Motor(Joint* joint)
 		: DescribedCreatable(joint)

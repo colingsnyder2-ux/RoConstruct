@@ -4,7 +4,7 @@
 
 namespace RBX
 {
-	extern const char* sLocalBackpackItem;
+	extern const char* const sLocalBackpackItem;
 	class LocalBackpackItem : public DescribedCreatable<LocalBackpackItem, Widget, &sLocalBackpackItem>
 	{
 	private:
@@ -18,7 +18,7 @@ namespace RBX
 		}
 
 		virtual G3D::Vector2 getSize() const;
-		virtual void render2d(Adorn*);
+		virtual void render2d(Adorn* adorn);
 		virtual void onClick(const GuiEvent& event);
 		int getBinId() const;
 	public:
@@ -35,7 +35,7 @@ namespace RBX
 		}
 	};
 
-	extern const char* sLocalBackpack;
+	extern const char* const sLocalBackpack;
 	class LocalBackpack : public DescribedCreatable<LocalBackpack, RelativePanel, &sLocalBackpack>,
 						  public Service,
 						  public Listener<Instance, ChildAdded>,

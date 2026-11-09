@@ -53,17 +53,6 @@ namespace RBX
 		}
 
 		// true when the reference is resolved now (a null reference counts as resolved)
-		bool IdSerializer::deserializeInstanceRef(RakNet::BitStream& stream, Instance*& instance, Guid::Data& id)
-		{
-			deserializeId(stream, id);
-			if (*id.scope == Name::getNullName())
-			{
-				instance = NULL;
-				return true;
-			}
-			instance = rebuildFindGuid(id);
-			return instance != NULL;
-		}
 
 		bool IdSerializer::deserializeInstanceRef(RakNet::BitStream& stream, Instance*& instance)
 		{
@@ -72,20 +61,5 @@ namespace RBX
 		}
 
 		// an unknown target waits until that instance arrives (resolvePendingBindings)
-		void IdSerializer::deserializeRef(Reflection::Property& property, RakNet::BitStream& stream)
-		{
-			const Reflection::RefPropertyDescriptor& desc = static_cast<const Reflection::RefPropertyDescriptor&>(property.getDescriptor());
-			Instance* target = NULL;
-			Guid::Data id;
-			if (deserializeInstanceRef(stream, target, id))
-			{
-				desc.setRefValue(property.getInstance(), target);
-				return;
-			}
-			WaitItem item;
-			item.desc = &desc;
-			item.instance = shared_from(static_cast<Instance*>(property.getInstance()));
-			waitItems[id].push_back(item);
-		}
 	}
 }

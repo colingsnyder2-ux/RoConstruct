@@ -17,7 +17,7 @@ namespace RBX
 	{
 		typedef std::vector<boost::any> Arguments;
 
-		class GenericSlotWrapper
+		class __declspec(novtable) GenericSlotWrapper
 		{
 		public:
 			virtual ~GenericSlotWrapper();
@@ -111,7 +111,8 @@ namespace RBX
 			friend class SignalInstance;
 
 		public:
-			typedef Signal Describing;
+			typedef Signal Member;
+			typedef Signal ConstMember;
 
 		public:
 			void (*signalCreatedHook)(SignalSource*);
@@ -230,10 +231,16 @@ namespace RBX
 				boost::shared_ptr<GenericSlotWrapper> wrapper;
 			  
 			public:
-				GenericSlotAdapter(GenericSlotWrapper*);
+				GenericSlotAdapter(GenericSlotWrapper* wrapper)
+					: wrapper(wrapper)
+				{
+				}
 
 			public:
-				void operator()();
+				void operator()()
+				{
+					wrapper->execute(std::vector<boost::any>());
+				}
 			};
 
 		protected:
@@ -251,7 +258,11 @@ namespace RBX
 			}
 
 		protected:
-			virtual boost::signals::connection connectGeneric(SignalInstance*, GenericSlotWrapper*, boost::signals::connect_position) const;
+			virtual boost::signals::connection connectGeneric(SignalInstance* si, GenericSlotWrapper* wrapper, boost::signals::connect_position pos) const
+			{
+				TSignalInstance* instance = static_cast<TSignalInstance*>(si);
+				return instance->connect(GenericSlotAdapter(wrapper), pos);
+			}
 		};
 
 		template<typename CallbackSignature>
@@ -264,13 +275,16 @@ namespace RBX
 				boost::shared_ptr<GenericSlotWrapper> wrapper;
 			  
 			public:
-				GenericSlotAdapter(GenericSlotWrapper*);
+				GenericSlotAdapter(GenericSlotWrapper* wrapper)
+					: wrapper(wrapper)
+				{
+				}
 
 			public:
 				void operator()(typename boost::function_traits<CallbackSignature>::arg1_type arg1)
 				{
 					std::vector<boost::any> args(1);
-					args[0] = boost::any(arg1);
+					args[0] = arg1;
 
 					wrapper->execute(args);
 				}
@@ -291,7 +305,11 @@ namespace RBX
 			}
 
 		protected:
-			virtual boost::signals::connection connectGeneric(SignalInstance*, GenericSlotWrapper*, boost::signals::connect_position) const;
+			virtual boost::signals::connection connectGeneric(SignalInstance* si, GenericSlotWrapper* wrapper, boost::signals::connect_position pos) const
+			{
+				TSignalInstance* instance = static_cast<TSignalInstance*>(si);
+				return instance->connect(GenericSlotAdapter(wrapper), pos);
+			}
 		};
 
 		template<typename CallbackSignature>
@@ -304,10 +322,20 @@ namespace RBX
 				boost::shared_ptr<GenericSlotWrapper> wrapper;
 			  
 			public:
-				GenericSlotAdapter(GenericSlotWrapper*);
+				GenericSlotAdapter(GenericSlotWrapper* wrapper)
+					: wrapper(wrapper)
+				{
+				}
 
 			public:
-				void operator()(typename boost::function_traits<CallbackSignature>::arg1_type arg1, typename boost::function_traits<CallbackSignature>::arg2_type arg2);
+				void operator()(typename boost::function_traits<CallbackSignature>::arg1_type arg1, typename boost::function_traits<CallbackSignature>::arg2_type arg2)
+				{
+					std::vector<boost::any> args(2);
+					args[0] = arg1;
+					args[1] = arg2;
+
+					wrapper->execute(args);
+				}
 			};
 
 		protected:
@@ -325,7 +353,11 @@ namespace RBX
 			}
 
 		protected:
-			virtual boost::signals::connection connectGeneric(SignalInstance*, GenericSlotWrapper*, boost::signals::connect_position) const;
+			virtual boost::signals::connection connectGeneric(SignalInstance* si, GenericSlotWrapper* wrapper, boost::signals::connect_position pos) const
+			{
+				TSignalInstance* instance = static_cast<TSignalInstance*>(si);
+				return instance->connect(GenericSlotAdapter(wrapper), pos);
+			}
 		};
 
 		template<typename Class, typename CallbackSignature>
@@ -352,61 +384,5 @@ namespace RBX
 			{
 			}
 		};
-	}
-}
-
-// rebuild overlay: SignalDescImpl members rbxgs declares but never defines
-namespace RBX
-{
-	namespace Reflection
-	{
-		template<typename CallbackSignature>
-		SignalDescImpl<0, CallbackSignature>::GenericSlotAdapter::GenericSlotAdapter(GenericSlotWrapper* wrapper)
-			: wrapper(wrapper)
-		{
-		}
-
-		template<typename CallbackSignature>
-		void SignalDescImpl<0, CallbackSignature>::GenericSlotAdapter::operator()()
-		{
-			std::vector<boost::any> args;
-			wrapper->execute(args);
-		}
-
-		template<typename CallbackSignature>
-		SignalDescImpl<1, CallbackSignature>::GenericSlotAdapter::GenericSlotAdapter(GenericSlotWrapper* wrapper)
-			: wrapper(wrapper)
-		{
-		}
-
-		template<typename CallbackSignature>
-		SignalDescImpl<2, CallbackSignature>::GenericSlotAdapter::GenericSlotAdapter(GenericSlotWrapper* wrapper)
-			: wrapper(wrapper)
-		{
-		}
-
-		template<typename CallbackSignature>
-		void SignalDescImpl<2, CallbackSignature>::GenericSlotAdapter::operator()(
-			typename boost::function_traits<CallbackSignature>::arg1_type arg1,
-			typename boost::function_traits<CallbackSignature>::arg2_type arg2)
-		{
-			std::vector<boost::any> args(2);
-			args[0] = boost::any(arg1);
-			args[1] = boost::any(arg2);
-			wrapper->execute(args);
-		}
-
-#define RBX_REBUILD_CONNECT_GENERIC(N) \
-		template<typename CallbackSignature> \
-		boost::signals::connection SignalDescImpl<N, CallbackSignature>::connectGeneric( \
-			SignalInstance* instance, GenericSlotWrapper* wrapper, boost::signals::connect_position pos) const \
-		{ \
-			typedef typename TSignalDesc<CallbackSignature>::TSignalInstance Typed; \
-			return static_cast<Typed*>(instance)->connect(GenericSlotAdapter(wrapper), pos); \
-		}
-		RBX_REBUILD_CONNECT_GENERIC(0)
-		RBX_REBUILD_CONNECT_GENERIC(1)
-		RBX_REBUILD_CONNECT_GENERIC(2)
-#undef RBX_REBUILD_CONNECT_GENERIC
 	}
 }

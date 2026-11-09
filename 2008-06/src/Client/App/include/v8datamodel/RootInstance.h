@@ -12,7 +12,7 @@ namespace RBX
 	class SpawnLocation;
 	class MegaDragger;
 
-	extern const char* sRootInstance;
+	extern char* sRootInstance;
 	class RootInstance : public Reflection::Described<RootInstance, &sRootInstance, ModelInstance>,
 						 public ICameraOwner
 	{
@@ -64,7 +64,10 @@ namespace RBX
 		void insertInstances(const std::vector<boost::shared_ptr<Instance>>& instances, Instance* requestedParent, InsertMode insertMode, PromptMode promptMode);
 		void setInsertPoint(const G3D::Vector3& topCenter);
 		void moveToPoint(PVInstance* pv, G3D::Vector3 point);
-		ControllerTypeArray getControllersUsed() const;
+		ControllerTypeArray getControllersUsed() const
+		{
+			return ControllersUsed;
+		}
 		World* getWorld()
 		{
 			return world.get();

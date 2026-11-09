@@ -10,6 +10,8 @@
 
 namespace RBX
 {
+	const char* const sSeated = "Seated";
+
 	Seated::Seated(Humanoid* humanoid)
 		: Base(humanoid)
 	{

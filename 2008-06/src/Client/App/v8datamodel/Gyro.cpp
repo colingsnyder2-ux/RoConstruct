@@ -13,16 +13,16 @@ namespace RBX
 	const char* sBodyGyro = "BodyGyro";
 	const char* sBodyForce = "BodyForce";
 	const char* sBodyThrust = "BodyThrust";
-	const char* sRocket = "Rocket";
+	const char* sRocket = "RocketPropulsion";
 
 	void registerBodyMovers()
 	{
-		BodyGyro::classDescriptor();
-		BodyPosition::classDescriptor();
-		BodyVelocity::classDescriptor();
-		BodyForce::classDescriptor();
-		BodyThrust::classDescriptor();
-		Rocket::classDescriptor();
+		BodyGyro::className();
+		BodyPosition::className();
+		BodyVelocity::className();
+		BodyForce::className();
+		BodyThrust::className();
+		Rocket::className();
 	}
 
 	BodyMover::BodyMover(const char* name)

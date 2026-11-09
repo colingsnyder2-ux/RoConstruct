@@ -17,7 +17,7 @@ static bool physicalCharacterHacked = false;
 
 namespace RBX
 {
-	const char* sModel = "Model";
+	char* sModel = "Model";
 
 	static const Name& partName = Name::declare(sModel, 2000);
 

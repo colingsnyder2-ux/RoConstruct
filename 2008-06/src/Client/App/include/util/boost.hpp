@@ -7,6 +7,7 @@
 
 namespace RBX
 {
+	const char* get_thread_name(); // set_thread_name's value, or "rbx_thread"
 	boost::function0<void> background_function(const boost::function0<void>& threadfunc, const char* name, int priority = THREAD_PRIORITY_BELOW_NORMAL);
 
 	class worker_thread : public boost::noncopyable

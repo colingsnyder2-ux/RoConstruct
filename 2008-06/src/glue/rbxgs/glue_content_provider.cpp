@@ -71,35 +71,5 @@ namespace RBX
 	}
 
 	// one queued http request per call; the worker keeps calling while more are queued
-	worker_thread::work_result ContentProvider::processRequests()
-	{
-		ContentId id;
-		{
-			boost::mutex::scoped_lock lock(requestSync);
-			if (requestQueue.empty())
-				return worker_thread::done;
-			id = requestQueue.front();
-			requestQueue.pop_front();
-		}
 
-		loadContent(id, SyncHttpRequest);
-
-		boost::mutex::scoped_lock lock(requestSync);
-		return requestQueue.empty() ? worker_thread::done : worker_thread::more;
-	}
-
-	std::auto_ptr<std::istream> ContentProvider::getContent(ContentId id)
-	{
-		CachedContent* content = loadContent(id, SyncHttpRequest);
-		if (!content)
-			throw std::runtime_error("Unable to load " + id.toString());
-
-		if (content->data)
-			return std::auto_ptr<std::istream>(new std::istringstream(*content->data, std::ios::in | std::ios::binary));
-
-		std::auto_ptr<std::istream> stream(new std::ifstream(content->filename->c_str(), std::ios::in | std::ios::binary));
-		if (!*stream)
-			throw std::runtime_error("Unable to open " + *content->filename);
-		return stream;
-	}
 }

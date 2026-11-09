@@ -13,6 +13,8 @@
 
 namespace RBX
 {
+	char* sPartDragTool = "PartDragTool";
+
 	PartDragTool::PartDragTool(PartInstance* mousePart, const G3D::Vector3& hitPointWorld, Workspace* workspace)
 		: Base(workspace),
 		  hitWorld(hitPointWorld),
@@ -46,6 +48,29 @@ namespace RBX
 			megaDragger->continueDragging();
 			runDragger->snap(getUnitMouseRay(uiEvent));
 		}
+	}
+
+	void PartDragTool::onMouseMove(const UIEvent& uiEvent)
+	{
+		RBXASSERT(captured());
+
+		if (!dragging && megaDragger->mousePartAlive())
+		{
+			if ((G3D::Vector2(uiEvent.mousePosition) - downPoint).length() > 4.0f)
+			{
+				dragging = true;
+
+				megaDragger->startDragging();
+				runDragger->init(workspace, megaDragger->getMousePart(), hitWorld);
+			}
+		}
+
+		if (dragging && megaDragger->mousePartAlive())
+		{
+			PartInstance* unused = megaDragger->getMousePart().lock().get();
+		}
+
+		onMouseIdle(uiEvent);
 	}
 
 	void PartDragTool::onMouseDelta(const UIEvent& uiEvent)

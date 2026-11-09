@@ -55,4 +55,9 @@ namespace RBX
 	{
 		mouse->update(uiEvent);
 	}
+
+	const Name& ScriptMouseCommand::getName() const
+	{
+		return Mouse::className();
+	}
 }

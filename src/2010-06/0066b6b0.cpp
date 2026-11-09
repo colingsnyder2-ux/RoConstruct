@@ -11,7 +11,7 @@
 
 namespace RBX
 {
-	const char* sTeams = "Teams";
+	const char* const sTeams = "Teams";
 
 	static Reflection::BoundFuncDesc<Teams, void(void), 0> teams_rebalanceTeamsFunction(&Teams::rebalanceTeams, "RebalanceTeams", Reflection::FunctionDescriptor::AnyCaller);
 	static Reflection::BoundFuncDesc<Teams, boost::shared_ptr<const std::vector<boost::shared_ptr<Instance>>>(void), 0> func_teams(&Teams::getTeams, "GetTeams", Reflection::FunctionDescriptor::AnyCaller);
@@ -51,6 +51,23 @@ namespace RBX
 		return getTeamFromTeamColor(brickColor) != NULL;
 	}
 
+	bool Teams::isTeamGame()
+	{
+		Network::Players* players = ServiceProvider::find<Network::Players>(this);
+		RBXASSERT(players);
+
+		for (size_t i = 0; i < players->numChildren(); ++i)
+		{
+			if (Network::Player* player = dynamic_cast<Network::Player*>(players->getChild(i)))
+			{
+				if (!player->getNeutral())
+					return true;
+			}
+		}
+
+		return false;
+	}
+
 	Team* Teams::getTeamFromTeamColor(BrickColor brickColor)
 	{
 		for (size_t i = 0; i < numChildren(); i++)
@@ -61,6 +78,11 @@ namespace RBX
 		}
 		
 		return NULL;
+	}
+
+	Team* Teams::getTeamFromPlayer(Network::Player* player)
+	{
+		return player->getNeutral() ? NULL : getTeamFromTeamColor(player->getTeamColor());
 	}
 
 	G3D::Color3 Teams::getTeamColorForHumanoid(Humanoid* humanoid)
