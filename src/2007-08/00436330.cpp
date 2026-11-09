@@ -1,46 +1,51 @@
-// from server: 32% by Intel
-extern "C" void* __stdcall sub_4345F0();
-extern "C" void __stdcall sub_4360A0();
-extern "C" void __stdcall sub_725750();
-extern "C" void __stdcall sub_725770();
-extern "C" void* __stdcall GetProcAddress(void* hModule, const char* lpProcName);
-extern "C" void* __stdcall LoadLibraryA(const char* lpLibFileName);
-extern "C" unsigned int __stdcall SendMessageA(void* hWnd, unsigned int Msg, unsigned int wParam, long lParam);
-extern "C" void __cdecl _invalid_parameter_noinfo();
-
-void* g_77ecd8 = (void*)0x77ecd8;
-void* g_77e6d8 = (void*)0x77e6d8;
-void* g_8b5188 = (void*)0x8b5188;
-void* g_434c20 = (void*)0x434c20;
-void* g_434340 = (void*)0x434340;
+// from server: 37% by Intel
+extern "C" {
+    void __stdcall _invalid_parameter_noinfo();
+    int __stdcall SendMessageA(void*, unsigned int, unsigned int, long);
+}
 
 struct CDeclarationView {
     void* vtable;
-    char pad_004[0x1c];
+    char pad_4[0x20 - 4];
     void* m_handle;
-    char pad_008[0x88];
+    char pad_24[0xac - 0x24];
     void* m_item;
-    char pad_012[0x4];
-    int m_count;
-    int m_capacity;
-    int m_end;
-    void updateDeclarationView(void* item);
+    char pad_ac[0xf0 - 0xac];
+
+    void sub_436330();
 };
 
-void CDeclarationView::updateDeclarationView(void* item)
+struct ItemData {
+    int field_0;
+    int field_4;
+    int field_8;
+    int field_c;
+};
+
+void* __stdcall sub_4345F0();
+void __stdcall sub_4360A0();
+void __stdcall sub_725750();
+void __stdcall sub_725770();
+
+void CDeclarationView::sub_436330()
 {
-    void* v_4345f0 = sub_4345F0();
+    void* v1 = sub_4345F0();
     SendMessageA(m_handle, 0x1101, 0, 0xffff0000);
-    m_item = item;
+    m_item = v1;
     sub_725750();
-    int count = m_count;
-    int* begin = (int*)((char*)item + 0x10);
-    if (begin[1] > count)
+    ItemData* v2 = (ItemData*)((char*)v1 + 0x10);
+    int v3 = v2->field_4;
+    int v4 = v2->field_8;
+    if (v2->field_4 <= v3) {
         _invalid_parameter_noinfo();
-    int end = begin[1];
-    if (end > begin[2])
+    }
+    if (v4 <= v2->field_4) {
         _invalid_parameter_noinfo();
+    }
+    int v5 = v2->field_4;
+    int v6 = v2->field_8;
+    int v7 = v2->field_c;
     sub_4360A0();
-    SendMessageA(m_handle, 0x1115, 0, (long)g_434340);
+    SendMessageA(m_handle, 0x1115, 0, (long)&v7);
     sub_725770();
 }

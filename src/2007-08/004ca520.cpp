@@ -1,22 +1,35 @@
-// from server: 58% by colin
-struct S {
-    void* f(void* a, void* b, void* c);
+// from server: 65% by Intel
+struct VTable {
+    void* v0;
+    void* v1;
+    void* v2;
+    void* v3;
+    void* v4;
+    void* v5;
+    int (__thiscall* v6)(void*);
 };
 
-extern "C" void* __stdcall sub_4CA490(void* a, void* b, void* c);
+struct Object {
+    VTable* vptr;
+};
 
-void* S::f(void* a, void* b, void* c)
+extern "C" Object* __stdcall sub_4CA490(Object* a1, int a2, int a3);
+
+int __stdcall sub_4CA520(int a1, int a2, int a3)
 {
-    void* p = sub_4CA490(a, b, c);
-    if (p) {
-        void** vt = *(void***)p;
-        void* (*fn)(void*) = (void* (*)(void*))vt[6];
-        if (fn(p)) {
-            void** vt2 = *(void***)p;
-            void* (*fn2)(void*) = (void* (*)(void*))vt2[6];
-            return fn2(p);
-        }
-        return p;
+    Object* obj;
+    int result;
+
+    obj = sub_4CA490((Object*)a1, a2, a3);
+    if (!obj)
+        return 0;
+
+    result = obj->vptr->v6(obj);
+    if (result)
+    {
+        result = obj->vptr->v6(obj);
+        return result;
     }
-    return 0;
+
+    return (int)obj;
 }

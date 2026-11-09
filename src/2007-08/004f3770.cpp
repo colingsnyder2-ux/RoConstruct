@@ -1,4 +1,4 @@
-// from server: 43% by colin
+// from server: 44% by Intel
 struct std_string {
     std_string();
     std_string(const std_string&);
@@ -31,7 +31,7 @@ extern "C" {
 }
 
 struct S_func_004f3770 {
-    void func(float* a, float* b, char* c);
+    void __cdecl func(float* a, float* b, char* c);
 };
 
 void S_func_004f3770::func(float* a, float* b, char* c)
