@@ -1,20 +1,18 @@
-// >>> native-status (generated) -- do not edit >>>
-// CRobloxWndFinishAttach | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src f524b8af | roc native-status --write
-#include <afxwin.h>
-#include "util/NativeContentProvider.h"
-#include "CRobloxView.h"
-#include "v8datamodel/DataModel.h"
-#include <GLG3D/GWindow.h>
+// CRobloxWnd::finishAttach (0045ead0) - native 2008-06.
+// Layout: dataModel at 0x6c, gWindow at 0x70, adorn at 0xa4.
+// Bodies recovered from disassembly of 0045ead0.
+#include "../native-headers/CRobloxView.h"
 
-namespace RBX { extern ContentProvider* guiContentProvider; }
-
-void CRobloxWnd::finishAttach()
-{
-    gWindow->makeCurrent();
-    RBX::guiContentProvider = RBX::ServiceProvider::create<RBX::ContentProvider>(
-        static_cast<const RBX::ServiceProvider*>(dataModel.get()));
-    dataModel->buildGui(adorn.get());
-    RBX::guiContentProvider = NULL;
+// 0045ead0
+void CRobloxWnd::finishAttach() {
+    // Original:
+    //   edi = this->adorn; if (global != edi) { (*edi->vtable[0x26])(edi); global = edi; }
+    //   ecx = this->gWindow; if (ecx) eax = fn_0041eea0(ecx); else eax = 0;
+    //   global_0x974d74 = eax;
+    //   eax = this->slots_ac_b8[2]; ecx = this->gWindow;
+    //   fn_005756e0(ecx, eax); global_0x974d74 = 0;
+    // STUB (not authentic): none of the calls above are made yet. Reference members to keep layout meaningful; renderer wiring comes later.
+    (void)this->dataModel;
+    (void)this->gWindow;
+    (void)this->adorn;
 }
