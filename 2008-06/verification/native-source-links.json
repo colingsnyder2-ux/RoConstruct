@@ -896,7 +896,7 @@
   "path": "2008-06/src/Client/Rendering/g3d/include/G3D/Array.h"
  },
  "00502500": {
-  "line": 49,
+  "line": 44,
   "path": "2008-06/src/glue/rbxgs/glue_render_m4b.cpp"
  },
  "00502a00": {
@@ -1163,10 +1163,6 @@
   "line": 19,
   "path": "2008-06/src/Client/App/util/ContentProvider.cpp"
  },
- "0055bd80": {
-  "line": 24,
-  "path": "2008-06/src/Client/App/util/ContentProvider.cpp"
- },
  "0055c020": {
   "line": 85,
   "path": "2008-06/src/Client/boost_1_34_1/src/boost/date_time/constrained_value.hpp"
@@ -1202,10 +1198,6 @@
  "0055c2d0": {
   "line": 177,
   "path": "2008-06/src/Client/boost_1_34_1/src/boost/date_time/gregorian_calendar.ipp"
- },
- "0055c500": {
-  "line": 24,
-  "path": "2008-06/src/Client/App/util/ContentProvider.cpp"
  },
  "0055c540": {
   "line": 340,

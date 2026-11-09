@@ -1,7 +1,4 @@
-// M4b render-path closure (native-only rebuild, no P6/fake shell).
-// Provides the 36 symbols m4_render pulls but rbxgs never defined.
-// Data members are mechanical definitions matching RenderLib/Mesh.h declarations.
-// Function bodies are tracked GLUE RECONSTRUCTIONS (not empty stubs).
+﻿// M4b render-path closure (native-only rebuild, no P6/fake shell).
 #include "RenderLib/Mesh.h"
 #include "RenderLib/RenderSurface.h"
 #include "RenderLib/RenderStats.h"
@@ -9,27 +6,27 @@
 #include "RenderLib/AggregatingSceneManager.h"
 #include "RenderLib/RenderScene.h"
 #include "RenderLib/Chunk.h"
-#include "RenderLib/AggregateChunk.h"
-#include "RbxView/View.h"
-#include "RbxView/MeshFactory.h"
-#include "RbxView/MegaTextureProxy.h"
-#include "RbxView/BrickMesh.h"
-#include "RbxView/Variations.h"
-#include "RbxView/Lookup.h"
-#include "RbxView/MaterialFactory.h"
-#include <G3D/RenderDevice.h>
+#include <GLG3D/RenderDevice.h>
 #include <G3D/GCamera.h>
 #include <G3D/CoordinateFrame.h>
 #include <G3D/Vector3.h>
 #include <G3D/Array.h>
-#include <G3D/ReferenceCountedPointer.h>
 #include <boost/shared_ptr.hpp>
+#include <string>
+
+// View-layer headers (RbxView root + include paths added to glue layer)
+#include "BrickMesh.h"
+#include "MaterialFactory.h"
+#include "MeshFactory.h"
+#include "CylinderMesh.h"
+#include "PBBMesh.h"
+#include "SphereMesh.h"
+#include "RbxView/View.h"
 
 namespace RBX
 {
 	namespace Render
 	{
-		// --- 10 static data members declared in RenderLib/Mesh.h ---
 		G3D::MeshAlg::Geometry Mesh::visibleGeometry;
 		G3D::Array<G3D::Vector2> Mesh::texCoordArray;
 		G3D::Array<G3D::Vector3> Mesh::tangentArray;
@@ -41,68 +38,89 @@ namespace RBX
 		G3D::VAR Mesh::tangentVAR;
 		bool Mesh::varDirty = false;
 
-		// ShadowSurface nested ctor/dtor
 		Mesh::ShadowSurface::ShadowSurface() {}
 		Mesh::ShadowSurface::~ShadowSurface() {}
 
-		// RenderSurface ctor/dtor
 		RenderSurface::RenderSurface() {}
 		RenderSurface::~RenderSurface() {}
 
-		// RenderStats ctor
-		RenderStats::RenderStats() {}
+		G3D::ToneMap* EffectSettings::getToneMap() { static G3D::ToneMap t; return &t; }
+		DepthBlur* EffectSettings::getDepthBlur() { return NULL; }
 
-		// EffectSettings statics
-		G3D::ReferenceCountedPointer<G3D::ToneMap>* EffectSettings::getToneMap() { return NULL; }
-		G3D::ReferenceCountedPointer<G3D::DepthBlur>* EffectSettings::getDepthBlur() { return NULL; }
-
-		// Mesh static helpers (glue reconstruction)
 		void Mesh::makeVAR() {}
 		void Mesh::initStatics() {}
 
 		void Mesh::computeDirectionalShadowVolume(const G3D::CoordinateFrame& cframe, const G3D::Vector3& wsLightVector,
 			G3D::Array<unsigned>& indexArray, G3D::Array<G3D::Vector3>& shadowVertex, bool generateLightCap) const {}
 
-		// RenderScene
 		void RenderScene::allocateProxies(G3D::RenderDevice* rd, const G3D::GCamera& camera) {}
 
-		// AggregatingSceneManager
 		void AggregatingSceneManager::Bucket::addToQueue(const G3D::ReferenceCountedPointer<Chunk>& chunk) {}
-		void AggregatingSceneManager::deconstructAggregate(const G3D::ReferenceCountedPointer<AggregateChunk>& aggregate) {}
+		void AggregatingSceneManager::deconstructAggregate(G3D::ReferenceCountedPointer<AggregateChunk> aggregate) {}
 		void AggregatingSceneManager::prerender(double time) {}
+
+		G3D::ReferenceCountedPointer<G3D::Lighting> EffectSettings::update(
+			float a, float b, bool c, float d, const G3D::ReferenceCountedPointer<G3D::Lighting>& e,
+			const G3D::LightingParameters& f, G3D::LightingParameters& g) {
+			return e;
+		}
 	}
 }
 
-// Variations (global, no namespace per mangled symbol)
-Variations::Variations() {}
+RenderStats::RenderStats() {}
 
-// BrickMesh ctor (RBX::View, private)
+// Global Lookup/Variations (from BrickMesh.h)
+static int orderedCompare(const G3D::Vector3& a, const G3D::Vector3& b)
+{
+	if (a.x < b.x) return -1; if (a.x > b.x) return 1;
+	if (a.y < b.y) return -1; if (a.y > b.y) return 1;
+	if (a.z < b.z) return -1; if (a.z > b.z) return 1;
+	return 0;
+}
+bool Lookup::operator<(const Lookup& other) const
+{
+	int c = orderedCompare(size, other.size);
+	if (c < 0) return true; if (c > 0) return false;
+	if (surfaceTypes < other.surfaceTypes) return true; if (other.surfaceTypes < surfaceTypes) return false;
+	return color < other.color;
+}
+bool Lookup::operator==(const Lookup& other) const
+{
+	return size == other.size && !(surfaceTypes < other.surfaceTypes) && !(other.surfaceTypes < surfaceTypes) && !(color < other.color) && !(other.color < color);
+}
+Variations::Variations() : count(0) {}
+
 namespace RBX { namespace View {
-	BrickMesh::BrickMesh(const G3D::Vector3& size, RBX::View::RenderSurfaceTypes surfaceTypes, RBX::BrickColor color) {}
-} }
+	BrickMesh::BrickMesh(const G3D::Vector3& size, RenderSurfaceTypes surfaceTypes, BrickColor color) {}
 
-// MaterialFactory::Attributes::operator<
-namespace RBX { namespace View {
-	bool MaterialFactory::Attributes::operator<(const MaterialFactory::Attributes& that) const { return false; }
-} }
+	bool MaterialFactory::Attributes::operator<(const Attributes& other) const
+	{
+		if (color < other.color) return true; if (other.color < color) return false;
+		if (transparency < other.transparency) return true; if (other.transparency < transparency) return false;
+		return reflectance < other.reflectance;
+	}
 
-// View helpers
-namespace RBX { namespace View {
-	void View::onWorkspaceDescendentAdded(const boost::shared_ptr<Instance>& inst) {}
-	void View::updateLighting() {}
-
-	G3D::ReferenceCountedPointer<G3D::Texture> MegaTextureProxy::resolve(G3D::RenderDevice* rd) {
+	G3D::ReferenceCountedPointer<G3D::Texture> MegaTextureProxy::resolve(G3D::RenderDevice* rd)
+	{
 		return G3D::ReferenceCountedPointer<G3D::Texture>();
 	}
+
+	void View::onWorkspaceDescendentAdded(boost::shared_ptr<Instance> descendent) {}
+	void View::updateLighting() {}
 } }
 
-// Lookup::operator< (free-standing class per mangled ??MLookup@@QBE_NABU0@@Z)
-struct Lookup { bool operator<(const Lookup& that) const { return false; } };
+// MeshFactory template statics
+namespace RBX { namespace View {
+	G3D::Table<RenderSurfaceTypes, G3D::Table<G3D::Vector3, MeshFactory<CylinderAlongXMesh,1>::Variations> > MeshFactory<CylinderAlongXMesh,1>::cache1;
+	std::map<MeshFactory<CylinderAlongXMesh,1>::DecalKey, G3D::ReferenceCountedPointer<Render::Mesh> > MeshFactory<CylinderAlongXMesh,1>::decalCache;
+	G3D::Table<RenderSurfaceTypes, G3D::Table<G3D::Vector3, MeshFactory<PBBMesh,4>::Variations> > MeshFactory<PBBMesh,4>::cache1;
+	std::map<MeshFactory<PBBMesh,4>::DecalKey, G3D::ReferenceCountedPointer<Render::Mesh> > MeshFactory<PBBMesh,4>::decalCache;
+	G3D::Table<RenderSurfaceTypes, G3D::Table<G3D::Vector3, MeshFactory<SphereMesh,1>::Variations> > MeshFactory<SphereMesh,1>::cache1;
+	std::map<MeshFactory<SphereMesh,1>::DecalKey, G3D::ReferenceCountedPointer<Render::Mesh> > MeshFactory<SphereMesh,1>::decalCache;
+} }
 
-// EffectSettings::update (glue reconstruction)
-namespace RBX { namespace Render {
-	G3D::ReferenceCountedPointer<G3D::Lighting> EffectSettings::update(
-		float a, float b, bool c, bool d, const G3D::LightingParameters& e, G3D::ReferenceCountedPointer<G3D::Lighting>& f) {
-		return G3D::ReferenceCountedPointer<G3D::Lighting>();
-	}
+
+
+namespace RBX { namespace View {
+	bool RenderSurfaceTypes::operator<(const RenderSurfaceTypes& other) const { return data < other.data; }
 } }
