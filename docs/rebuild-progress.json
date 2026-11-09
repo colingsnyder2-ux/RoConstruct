@@ -1,10 +1,10 @@
 {
-  "updated": "2026-11-09 03:11 UTC",
+  "updated": "2026-11-09 04:22 UTC",
   "clients": {
     "2008-06": {
       "phase": "6",
       "phaseLabel": "Link closure",
-      "overall": 0.0778,
+      "overall": 0.1405,
       "bars": {
         "compiled": {
           "value": 35,
@@ -12,12 +12,12 @@
           "label": "Modules reporting"
         },
         "linked": {
-          "value": 29,
+          "value": 30,
           "total": 35,
           "label": "Modules linked"
         },
         "exact": {
-          "value": 3205,
+          "value": 5789,
           "total": 41196,
           "label": "Byte-exact functions"
         },
@@ -80,9 +80,9 @@
           "name": "G3D",
           "linked": true,
           "test": 0,
-          "exact": 1145,
+          "exact": 906,
           "compileErrors": 0,
-          "objectFunctions": 16751,
+          "objectFunctions": 6594,
           "unresolved": 0
         },
         {
@@ -312,11 +312,11 @@
         },
         {
           "name": "RbxgsApp",
-          "linked": false,
-          "test": null,
-          "exact": 0,
-          "compileErrors": 1,
-          "objectFunctions": 0,
+          "linked": true,
+          "test": 0,
+          "exact": 3860,
+          "compileErrors": 0,
+          "objectFunctions": 98708,
           "unresolved": 0
         },
         {
