@@ -1,0 +1,138 @@
+// from server: 100% by king_originala
+// roc-lang: cpp
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD
+#include <set>
+#include <list>
+#include <intrin.h>
+#include <utility>
+namespace boost {
+namespace detail {
+struct sp_counted_base {
+    sp_counted_base():use_count_(1),weak_count_(1){}
+    virtual ~sp_counted_base() {}
+    virtual void dispose()=0;
+    virtual void destroy(){delete this;}
+    long use_count_,weak_count_;
+    void weak_release(){if(_InterlockedDecrement(&weak_count_)==0)destroy();}
+    void release(){if(_InterlockedDecrement(&use_count_)==0){dispose();weak_release();}}
+};
+template<class Y>struct sp_counted_impl_p:sp_counted_base {Y*pointer;explicit sp_counted_impl_p(Y*p):pointer(p){}void dispose(){delete pointer;}};
+struct shared_count {
+    sp_counted_base* pi_;
+    shared_count():pi_(0){}
+    template<class Y> __declspec(noinline) explicit shared_count(Y*p):pi_(0){try{pi_=new sp_counted_impl_p<Y>(p);}catch(...){delete p;throw;}}
+    shared_count& operator=(const shared_count& r){sp_counted_base* tmp=r.pi_;if(tmp!=pi_){if(tmp)_InterlockedIncrement(&tmp->use_count_);if(pi_)pi_->release();pi_=tmp;}return *this;}
+    void swap(shared_count& r){sp_counted_base* tmp=r.pi_;r.pi_=pi_;pi_=tmp;}
+    shared_count(const shared_count& r):pi_(r.pi_){if(pi_)_InterlockedIncrement(&pi_->use_count_);}
+    ~shared_count(){if(pi_)pi_->release();}
+};
+}
+namespace detail {inline void sp_enable_shared_from_this(const shared_count&,...) {}}
+template<class T> class shared_ptr {
+public:
+    T* px; detail::shared_count pn;
+    shared_ptr():px(0),pn(){}
+    template<class Y> explicit shared_ptr(Y*p):px(p),pn(p){detail::sp_enable_shared_from_this(pn,p,p);}
+    shared_ptr& operator=(const shared_ptr& r){px=r.px;pn=r.pn;return *this;}
+    void swap(shared_ptr& r){std::swap(px,r.px);pn.swap(r.pn);}
+    void reset(){shared_ptr().swap(*this);}
+    typedef T* shared_ptr::*unspecified_bool_type;
+    operator unspecified_bool_type()const{return px==0?0:&shared_ptr::px;}
+    shared_ptr(const shared_ptr& r):px(r.px),pn(r.pn){}
+    template<class Y> shared_ptr(const shared_ptr<Y>& r):px(r.px),pn(r.pn){}
+    T* get()const{return px;}
+    T* operator->()const{return px;}
+};
+template<class T,class U> bool operator==(const shared_ptr<T>& a,const shared_ptr<U>& b){return a.get()==b.get();}
+}
+
+struct CodeProfiler;
+// Constructor stores profiler at 0, previous TLS value at 4, flag at 8 and time at 0x10.
+struct ProfileMark {CodeProfiler*section;void*previous;bool frameTick;double startTime;ProfileMark(CodeProfiler&,bool);~ProfileMark();};
+class __multiple_inheritance Replicator;
+class Instance;
+struct MemberFunction {
+ typedef void(Replicator::*Function)(boost::shared_ptr<Instance>);
+ Function function;
+ void operator()(Replicator*,boost::shared_ptr<Instance>)const;
+};
+struct Placeholder {};
+struct Visitor {MemberFunction function;Replicator*owner;Placeholder placeholder;void operator()(const boost::shared_ptr<Instance>&p)const{function(owner,p);}};
+struct __declspec(dllimport) ImportedString {
+ void*proxy;union{char buffer[16];char*heap;};unsigned length,capacity;
+ ~ImportedString()throw();
+ const char*c_str()const{return capacity>=16?heap:buffer;}
+};
+struct Name {unsigned id;ImportedString text;const char*c_str()const{return text.c_str();}};
+struct FactoryProduct {virtual ~FactoryProduct();virtual const Name&getClassName()const=0;};
+struct GuidData {const Name*scope;int index;ImportedString readableString(int)const;};
+struct SystemAddress {unsigned address;unsigned short port;const char*ToString(bool)const;};
+struct NetworkSettings {char prefix[0x131];bool printInstances;};
+NetworkSettings&settings();
+struct StandardOut {void __cdecl print(int,const char*,...);};
+boost::shared_ptr<StandardOut> __cdecl standardOut();
+struct BitStream;
+boost::shared_ptr<Instance> __cdecl shared_from(Instance*);
+template<class T>struct ScopedAssign {T&slot;T previous;ScopedAssign(T&s,T value):slot(s),previous(s){slot=value;}~ScopedAssign(){slot=previous;}};
+struct InstancePrimary {virtual ~InstancePrimary();char opaque[0x10-4];};
+class Instance:public InstancePrimary,public FactoryProduct {public:char reserved[0x104-0x14];Instance*parent;void setParent(Instance*);void visitChildren(Visitor)const;};
+class Item {public:virtual ~Item(){}Replicator&replicator;Item(Replicator&r):replicator(r){}virtual void write()=0;};
+class NewInstanceItem:public Item {boost::shared_ptr<Instance>instance;public:NewInstanceItem(Replicator&,const boost::shared_ptr<Instance>&);};
+// RTTI places PluginInterface at 0x2b74; the primary IdSerializer prefix occupies that extent.
+struct PrimaryInterface {virtual ~PrimaryInterface();char opaque[0x2b74-4];};
+struct SecondaryInterface {virtual ~SecondaryInterface();};
+struct PropertyDescriptor;
+extern const PropertyDescriptor parentDescriptor;
+class ChangePropertyItem:public Item {
+ const PropertyDescriptor&descriptor;boost::shared_ptr<const Instance>instance;
+public:
+ ChangePropertyItem(Replicator&r,const boost::shared_ptr<const Instance>&p,const PropertyDescriptor&d):Item(r),descriptor(d),instance(p){}
+ virtual void write();
+};
+class DeleteInstanceItem:public Item {
+ boost::shared_ptr<const Instance>instance;
+public:
+ DeleteInstanceItem(Replicator&,const boost::shared_ptr<const Instance>&);
+ virtual void write();
+};
+class Replicator:public PrimaryInterface,public SecondaryInterface {
+public:
+ virtual ~Replicator();
+ virtual void slot1();virtual void slot2();virtual void slot3();virtual void slot4();virtual void slot5();
+ virtual void slot6();virtual void slot7();virtual void slot8();virtual void slot9();virtual void slot10();
+ virtual void slot11();virtual void slot12();virtual void slot13();virtual void slot14();virtual void slot15();
+ virtual void slot16();virtual void slot17();virtual bool wantReplicate(const Instance*)const;
+ char prefix[0x2c38-0x2b78];std::set<const Instance*>pendingNew;
+ char reserved[0x2c74-0x2c58];std::list<boost::shared_ptr<Item> >pendingItems;
+ std::set<const Instance*>pendingNewItems;char reservedB0[0x2cd8-0x2cb0];Instance*removingInstance;char reservedDC[0x2d1c-0x2cdc];CodeProfiler*profileA;CodeProfiler*profileB;char reserved24[0x2d54-0x2d24];SystemAddress remoteAddress;
+ bool deserializeId(BitStream&,Instance*&,GuidData&);
+ bool removeReplicationData(boost::shared_ptr<Instance>);
+ void assignId(Instance*,GuidData);
+ void readInstanceDelete(BitStream&);
+ void disconnectPropertyChanged(boost::shared_ptr<Instance>);
+ bool removePending(const Instance*p){bool removed=pendingNewItems.erase(p)!=0;_ReadWriteBarrier();return removed;}
+ void onParentChanged(boost::shared_ptr<Instance>);
+ void addReplicationData(boost::shared_ptr<Instance>,bool);
+ void onDescendentAdded(boost::shared_ptr<Instance>);
+};
+void Replicator::readInstanceDelete(BitStream&stream){
+ Instance*instance;
+ GuidData id;
+ if(deserializeId(stream,instance,id)){
+  boost::shared_ptr<Instance>owned=shared_from(instance);
+  if(settings().printInstances){
+   const char*className=instance?static_cast<FactoryProduct*>(instance)->getClassName().c_str():"NULL";
+   standardOut()->print(1,"Replication: ~%s:%d << %s",className,id.readableString(4).c_str(),remoteAddress.ToString(true));
+  }
+  if(removeReplicationData(owned)){
+   const Instance*key=instance;
+   pendingNewItems.erase(key);
+   ScopedAssign<Instance*>removing(removingInstance,instance);
+   instance->setParent(0);
+  }
+ }else if(settings().printInstances){
+  standardOut()->print(1,"Replication ~??? << %s",remoteAddress.ToString(true));
+ }
+ assignId(0,id);
+}

@@ -1,0 +1,45 @@
+// from server: 100% by auto
+// roc 2009-06 00424bb0  unit: MainLogManager  size: 105 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-06 00424bb0
+//
+// 00424bb0  56                   push esi
+// 00424bb1  8b742410             mov esi, dword ptr [esp + 0x10]
+// 00424bb5  3bce                 cmp ecx, esi
+// 00424bb7  740f                 je 0x424bc8
+// 00424bb9  57                   push edi
+// 00424bba  8b7c2428             mov edi, dword ptr [esp + 0x28]
+// 00424bbe  57                   push edi
+// 00424bbf  e82ceeffff           call 0x4239f0
+// 00424bc4  297e18               sub dword ptr [esi + 0x18], edi
+// 00424bc7  5f                   pop edi
+// 00424bc8  8b442418             mov eax, dword ptr [esp + 0x18]
+// 00424bcc  8b4804               mov ecx, dword ptr [eax + 4]
+// 00424bcf  8b542420             mov edx, dword ptr [esp + 0x20]
+// 00424bd3  8911                 mov dword ptr [ecx], edx
+// 00424bd5  8b442420             mov eax, dword ptr [esp + 0x20]
+// 00424bd9  8b4804               mov ecx, dword ptr [eax + 4]
+// 00424bdc  8b54240c             mov edx, dword ptr [esp + 0xc]
+// 00424be0  8911                 mov dword ptr [ecx], edx
+// 00424be2  8b44240c             mov eax, dword ptr [esp + 0xc]
+// 00424be6  8b4804               mov ecx, dword ptr [eax + 4]
+// 00424be9  8b542418             mov edx, dword ptr [esp + 0x18]
+// 00424bed  8911                 mov dword ptr [ecx], edx
+// 00424bef  8b44240c             mov eax, dword ptr [esp + 0xc]
+// 00424bf3  8b542420             mov edx, dword ptr [esp + 0x20]
+// 00424bf7  8b5204               mov edx, dword ptr [edx + 4]
+// 00424bfa  8b4804               mov ecx, dword ptr [eax + 4]
+// 00424bfd  895004               mov dword ptr [eax + 4], edx
+// 00424c00  8b442418             mov eax, dword ptr [esp + 0x18]
+// 00424c04  8b5004               mov edx, dword ptr [eax + 4]
+// 00424c07  8b442420             mov eax, dword ptr [esp + 0x20]
+// 00424c0b  895004               mov dword ptr [eax + 4], edx
+// 00424c0e  8b542418             mov edx, dword ptr [esp + 0x18]
+// 00424c12  894a04               mov dword ptr [edx + 4], ecx
+// 00424c15  5e                   pop esi
+// 00424c16  c22400               ret 0x24
+// standard library list<ptr> (function ?_Splice@?$list@PAUT@@V?$allocator@PAUT@@@std@@@std@@QAEXV?$_Const_iterator@$00@12@AAV12@00I_N@Z)
+
+// stl: list<ptr>
+struct T; typedef T* E;
+#include <list>
+template class std::list<E>;

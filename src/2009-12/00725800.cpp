@@ -1,0 +1,15 @@
+// from server: 100% by colin
+namespace ns_ROCX00000b {
+// from server: 100% by tester
+struct S
+{
+    char padding[0x9c];
+    unsigned int value;
+    void set(unsigned char enabled);
+};
+
+void S::set(unsigned char enabled)
+{
+    value = (value & ~4u) | ((enabled ? 1u : 0u) ? 4u : 0u);
+}
+}

@@ -1,0 +1,15 @@
+// from server: 100% by colin
+struct Sub {
+    char pad[0x74];
+    float value;
+};
+
+struct PartInstance {
+    char pad[0x1d8];
+    Sub* sub;
+    float get() const;
+};
+
+float PartInstance::get() const {
+    return sub->value;
+}

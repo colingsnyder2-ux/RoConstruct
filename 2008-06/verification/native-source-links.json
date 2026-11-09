@@ -1,0 +1,7886 @@
+{
+ "00402570": {
+  "line": 203,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/detail/shared_count.hpp"
+ },
+ "004025b0": {
+  "line": 221,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/detail/shared_count.hpp"
+ },
+ "00405da0": {
+  "line": 103,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "00407be0": {
+  "line": 75,
+  "path": "2008-06/src/Client/App/include/v8datamodel/GlobalSettings.h"
+ },
+ "00409e60": {
+  "line": 19,
+  "path": "2008-06/src/Client/App/include/v8datamodel/GlobalSettings.h"
+ },
+ "00409ef0": {
+  "line": 572,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/function/function_base.hpp"
+ },
+ "0040a290": {
+  "line": 151,
+  "path": "2008-06/src/Client/App/include/reflection/property.h"
+ },
+ "0040a350": {
+  "line": 155,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/any.hpp"
+ },
+ "0040a390": {
+  "line": 116,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/any.hpp"
+ },
+ "0040a3a0": {
+  "line": 121,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/any.hpp"
+ },
+ "0040a610": {
+  "line": 124,
+  "path": "2008-06/src/Client/App/include/reflection/type.h"
+ },
+ "0040ad20": {
+  "line": 66,
+  "path": "2008-06/src/Client/App/include/reflection/object.h"
+ },
+ "0040db00": {
+  "line": 366,
+  "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
+ },
+ "00411160": {
+  "line": 43,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/detail/bad_weak_ptr.hpp"
+ },
+ "004117b0": {
+  "line": 232,
+  "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
+ },
+ "004117c0": {
+  "line": 23,
+  "path": "2008-06/src/Client/App/include/gui/Gui.h"
+ },
+ "004117f0": {
+  "line": 59,
+  "path": "2008-06/src/Client/App/include/gui/Gui.h"
+ },
+ "00411810": {
+  "line": 64,
+  "path": "2008-06/src/Client/App/include/gui/Gui.h"
+ },
+ "00411830": {
+  "line": 70,
+  "path": "2008-06/src/Client/App/include/gui/Gui.h"
+ },
+ "00411840": {
+  "line": 80,
+  "path": "2008-06/src/Client/App/include/gui/Gui.h"
+ },
+ "00411870": {
+  "line": 86,
+  "path": "2008-06/src/Client/App/include/gui/Gui.h"
+ },
+ "00415350": {
+  "line": 98,
+  "path": "2008-06/src/Client/App/include/v8xml/XmlSerializer.h"
+ },
+ "00417000": {
+  "line": 109,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/any.hpp"
+ },
+ "00417060": {
+  "line": 121,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/any.hpp"
+ },
+ "004174b0": {
+  "line": 61,
+  "path": "2008-06/src/Client/App/include/reflection/member.h"
+ },
+ "004175d0": {
+  "line": 124,
+  "path": "2008-06/src/Client/App/include/reflection/type.h"
+ },
+ "0041a600": {
+  "line": 121,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/any.hpp"
+ },
+ "0041a6b0": {
+  "line": 375,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/function/function_base.hpp"
+ },
+ "0041f2b0": {
+  "line": 222,
+  "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
+ },
+ "0041f340": {
+  "line": 295,
+  "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
+ },
+ "0041f390": {
+  "line": 311,
+  "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
+ },
+ "00420190": {
+  "line": 109,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "00420740": {
+  "line": 122,
+  "path": "2008-06/src/glue/rbxgs/glue_link_stubs.cpp"
+ },
+ "00420930": {
+  "line": 629,
+  "path": "2008-06/src/Client/Rendering/g3d/include/GLG3D/Texture.h"
+ },
+ "00422ae0": {
+  "line": 256,
+  "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
+ },
+ "00427410": {
+  "line": 203,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/bind.hpp"
+ },
+ "0042a890": {
+  "line": 74,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/detail/sp_counted_impl.hpp"
+ },
+ "0042bbb0": {
+  "line": 68,
+  "path": "2008-06/src/Client/App/include/security/SecurityContext.h"
+ },
+ "0042bc10": {
+  "line": 80,
+  "path": "2008-06/src/Client/App/include/security/SecurityContext.h"
+ },
+ "0042cf40": {
+  "line": 116,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/any.hpp"
+ },
+ "0042cf50": {
+  "line": 121,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/any.hpp"
+ },
+ "0042cf80": {
+  "line": 116,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/any.hpp"
+ },
+ "0042cf90": {
+  "line": 121,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/any.hpp"
+ },
+ "0042d0a0": {
+  "line": 124,
+  "path": "2008-06/src/Client/App/include/reflection/type.h"
+ },
+ "00443230": {
+  "line": 151,
+  "path": "2008-06/src/Client/App/include/reflection/property.h"
+ },
+ "004432a0": {
+  "line": 151,
+  "path": "2008-06/src/Client/App/include/reflection/property.h"
+ },
+ "00443590": {
+  "line": 124,
+  "path": "2008-06/src/Client/App/include/reflection/type.h"
+ },
+ "00443d60": {
+  "line": 42,
+  "path": "2008-06/src/Client/App/include/v8xml/SerializerV2.h"
+ },
+ "00443eb0": {
+  "line": 37,
+  "path": "2008-06/src/Client/App/include/v8xml/SerializerV2.h"
+ },
+ "004440a0": {
+  "line": 58,
+  "path": "2008-06/src/Client/App/include/v8xml/SerializerV2.h"
+ },
+ "004448f0": {
+  "line": 18,
+  "path": "2008-06/src/Client/App/v8datamodel/Gyro.cpp"
+ },
+ "00444a70": {
+  "line": 75,
+  "path": "2008-06/src/Client/App/include/v8xml/SerializerV2.h"
+ },
+ "00445220": {
+  "line": 84,
+  "path": "2008-06/src/Client/App/include/v8datamodel/DebugSettings.h"
+ },
+ "00445260": {
+  "line": 75,
+  "path": "2008-06/src/Client/Network/include/Network/Player.h"
+ },
+ "00445610": {
+  "line": 151,
+  "path": "2008-06/src/Client/App/include/reflection/property.h"
+ },
+ "00448300": {
+  "line": 76,
+  "path": "2008-06/src/Client/App/include/reflection/enumconverter.h"
+ },
+ "00448450": {
+  "line": 59,
+  "path": "2008-06/src/Client/App/include/reflection/enumconverter.h"
+ },
+ "0044f1b0": {
+  "line": 25,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Visit.h"
+ },
+ "0045ad80": {
+  "line": 125,
+  "path": "2008-06/src/Client/Rendering/g3d/include/G3D/AtomicInt32.h"
+ },
+ "0045ad90": {
+  "line": 151,
+  "path": "2008-06/src/Client/Rendering/g3d/include/G3D/ReferenceCount.h"
+ },
+ "0045aef0": {
+  "line": 87,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Camera.h"
+ },
+ "0045af00": {
+  "line": 92,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Camera.h"
+ },
+ "0045c470": {
+  "line": 385,
+  "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
+ },
+ "0045c660": {
+  "line": 247,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "0045ec80": {
+  "line": 25,
+  "path": "2008-06/src/glue/rbxgs/glue_stats_items.cpp"
+ },
+ "0045eff0": {
+  "line": 110,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Stats.h"
+ },
+ "00463890": {
+  "line": 57,
+  "path": "2008-06/src/Client/App/include/script/Script.h"
+ },
+ "00469080": {
+  "line": 122,
+  "path": "2008-06/src/Client/App/include/v8world/Primitive.h"
+ },
+ "0046fc30": {
+  "line": 196,
+  "path": "2008-06/src/Client/Rendering/g3d/include/G3D/g3dmath.inl"
+ },
+ "0046fc40": {
+  "line": 202,
+  "path": "2008-06/src/Client/Rendering/g3d/include/G3D/g3dmath.inl"
+ },
+ "00473740": {
+  "line": 129,
+  "path": "2008-06/src/Client/Rendering/g3d/include/G3D/Array.h"
+ },
+ "00476520": {
+  "line": 98,
+  "path": "2008-06/src/Client/Rendering/g3d/include/G3D/g3dmath.h"
+ },
+ "004765e0": {
+  "line": 73,
+  "path": "2008-06/src/Client/Rendering/g3d/include/G3D/CoordinateFrame.h"
+ },
+ "00476700": {
+  "line": 251,
+  "path": "2008-06/src/Client/Rendering/g3d/include/G3D/CoordinateFrame.h"
+ },
+ "00477c50": {
+  "line": 14,
+  "path": "2008-06/src/Client/Rendering/g3d/G3Dcpp/GLight.cpp"
+ },
+ "00478240": {
+  "line": 129,
+  "path": "2008-06/src/Client/Rendering/g3d/include/G3D/Array.h"
+ },
+ "00478330": {
+  "line": 114,
+  "path": "2008-06/src/Client/Rendering/g3d/include/G3D/CoordinateFrame.h"
+ },
+ "0047edc0": {
+  "line": 184,
+  "path": "2008-06/src/Client/App/include/v8world/Primitive.h"
+ },
+ "00486ba0": {
+  "line": 230,
+  "path": "2008-06/src/Client/Rendering/g3d/include/G3D/Table.h"
+ },
+ "00489810": {
+  "line": 33,
+  "path": "2008-06/src/Client/App/include/security/SecurityContext.h"
+ },
+ "00489960": {
+  "line": 80,
+  "path": "2008-06/src/Client/Network/include/Network/Player.h"
+ },
+ "00489970": {
+  "line": 85,
+  "path": "2008-06/src/Client/Network/include/Network/Player.h"
+ },
+ "004899a0": {
+  "line": 100,
+  "path": "2008-06/src/Client/Network/include/Network/Player.h"
+ },
+ "004899b0": {
+  "line": 47,
+  "path": "2008-06/src/Client/Network/Player.cpp"
+ },
+ "004899e0": {
+  "line": 152,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "0048a670": {
+  "line": 26,
+  "path": "2008-06/src/Client/Network/Player.cpp"
+ },
+ "0048a690": {
+  "line": 31,
+  "path": "2008-06/src/Client/Network/Player.cpp"
+ },
+ "0048ae20": {
+  "line": 267,
+  "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
+ },
+ "0048bd70": {
+  "line": 258,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/bind.hpp"
+ },
+ "0048c0f0": {
+  "line": 300,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/algorithm/string/find_iterator.hpp"
+ },
+ "0048c3e0": {
+  "line": 254,
+  "path": "2008-06/src/Client/Network/Player.cpp"
+ },
+ "0048c470": {
+  "line": 74,
+  "path": "2008-06/src/Client/Network/Player.cpp"
+ },
+ "0048c480": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "0048cf90": {
+  "line": 599,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/range/iterator_range.hpp"
+ },
+ "0048cfe0": {
+  "line": 71,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/range/iterator_range.hpp"
+ },
+ "0048da90": {
+  "line": 136,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iterator/transform_iterator.hpp"
+ },
+ "0048dac0": {
+  "line": 318,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/algorithm/string/find_iterator.hpp"
+ },
+ "0048e4c0": {
+  "line": 515,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iterator/iterator_facade.hpp"
+ },
+ "0048e620": {
+  "line": 200,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/algorithm/string/classification.hpp"
+ },
+ "0048fe10": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "00490eb0": {
+  "line": 554,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/algorithm/string/detail/finder.hpp"
+ },
+ "00491270": {
+  "line": 633,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iterator/iterator_facade.hpp"
+ },
+ "004915b0": {
+  "line": 37,
+  "path": "2008-06/src/Client/App/include/util/Utilities.h"
+ },
+ "00492110": {
+  "line": 217,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/algorithm/string/finder.hpp"
+ },
+ "004924e0": {
+  "line": 82,
+  "path": "2008-06/src/Client/Network/Player.cpp"
+ },
+ "00493760": {
+  "line": 55,
+  "path": "2008-06/src/Client/App/include/security/SecurityContext.h"
+ },
+ "004937c0": {
+  "line": 135,
+  "path": "2008-06/src/Client/Network/Player.cpp"
+ },
+ "00493da0": {
+  "line": 57,
+  "path": "2008-06/src/Client/Network/Player.cpp"
+ },
+ "004944b0": {
+  "line": 196,
+  "path": "2008-06/src/Client/Network/Player.cpp"
+ },
+ "00494600": {
+  "line": 109,
+  "path": "2008-06/src/Client/Network/Player.cpp"
+ },
+ "00494620": {
+  "line": 118,
+  "path": "2008-06/src/Client/Network/Player.cpp"
+ },
+ "00494740": {
+  "line": 153,
+  "path": "2008-06/src/Client/Network/Player.cpp"
+ },
+ "004947b0": {
+  "line": 127,
+  "path": "2008-06/src/Client/Network/Player.cpp"
+ },
+ "00494c60": {
+  "line": 69,
+  "path": "2008-06/src/Client/Network/Player.cpp"
+ },
+ "004950a0": {
+  "line": 137,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/algorithm/string/iter_find.hpp"
+ },
+ "004952f0": {
+  "line": 139,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/algorithm/string/split.hpp"
+ },
+ "00495e50": {
+  "line": 109,
+  "path": "2008-06/src/Client/Network/include/Network/Players.h"
+ },
+ "00495e60": {
+  "line": 81,
+  "path": "2008-06/src/Client/Network/Players.cpp"
+ },
+ "00495e80": {
+  "line": 207,
+  "path": "2008-06/src/Client/Network/Players.cpp"
+ },
+ "00495eb0": {
+  "line": 200,
+  "path": "2008-06/src/Client/Network/Players.cpp"
+ },
+ "00495f30": {
+  "line": 86,
+  "path": "2008-06/src/Client/Network/Players.cpp"
+ },
+ "00496350": {
+  "line": 23,
+  "path": "2008-06/src/Client/App/include/util/Name.h"
+ },
+ "00496510": {
+  "line": 91,
+  "path": "2008-06/src/Client/Network/Players.cpp"
+ },
+ "00496c10": {
+  "line": 105,
+  "path": "2008-06/src/Client/Network/include/Network/Players.h"
+ },
+ "00496cf0": {
+  "line": 245,
+  "path": "2008-06/src/Client/Network/Players.cpp"
+ },
+ "004974c0": {
+  "line": 114,
+  "path": "2008-06/src/Client/Network/include/Network/Players.h"
+ },
+ "00497dd0": {
+  "line": 258,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/bind.hpp"
+ },
+ "00497ec0": {
+  "line": 307,
+  "path": "2008-06/src/Client/Network/Players.cpp"
+ },
+ "00497f40": {
+  "line": 231,
+  "path": "2008-06/src/Client/Network/Players.cpp"
+ },
+ "00498030": {
+  "line": 215,
+  "path": "2008-06/src/Client/Network/Players.cpp"
+ },
+ "00498250": {
+  "line": 247,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "00499630": {
+  "line": 73,
+  "path": "2008-06/src/Client/Network/Players.cpp"
+ },
+ "0049aca0": {
+  "line": 108,
+  "path": "2008-06/src/Client/Network/Players.cpp"
+ },
+ "0049add0": {
+  "line": 137,
+  "path": "2008-06/src/Client/App/include/util/Utilities.h"
+ },
+ "0049bdc0": {
+  "line": 64,
+  "path": "2008-06/src/Client/Network/Players.cpp"
+ },
+ "0049c710": {
+  "line": 346,
+  "path": "2008-06/src/Client/Network/Players.cpp"
+ },
+ "0049d450": {
+  "line": 122,
+  "path": "2008-06/src/Client/Network/Players.cpp"
+ },
+ "0049d770": {
+  "line": 115,
+  "path": "2008-06/src/glue/rbxgs/glue_gameplay.cpp"
+ },
+ "0049daa0": {
+  "line": 292,
+  "path": "2008-06/src/Client/Network/Players.cpp"
+ },
+ "0049dc70": {
+  "line": 264,
+  "path": "2008-06/src/Client/Network/Players.cpp"
+ },
+ "0049df50": {
+  "line": 29,
+  "path": "2008-06/src/Client/Network/Players.cpp"
+ },
+ "0049e040": {
+  "line": 340,
+  "path": "2008-06/src/Client/Network/Players.cpp"
+ },
+ "0049e1d0": {
+  "line": 114,
+  "path": "2008-06/src/Client/Network/Players.cpp"
+ },
+ "0049e290": {
+  "line": 51,
+  "path": "2008-06/src/Client/Network/CrashReporter.cpp"
+ },
+ "0049e490": {
+  "line": 6,
+  "path": "2008-06/src/Client/Network/CrashReporter.cpp"
+ },
+ "0049e4a0": {
+  "line": 22,
+  "path": "2008-06/src/Client/Network/CrashReporter.cpp"
+ },
+ "0049edb0": {
+  "line": 152,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "0049ee20": {
+  "line": 319,
+  "path": "2008-06/src/Client/Network/Replicator.h"
+ },
+ "0049f0f0": {
+  "line": 36,
+  "path": "2008-06/src/Client/Network/Client.cpp"
+ },
+ "0049f130": {
+  "line": 43,
+  "path": "2008-06/src/Client/Network/Client.cpp"
+ },
+ "0049f180": {
+  "line": 14,
+  "path": "2008-06/src/Client/Network/Client.cpp"
+ },
+ "0049f2e0": {
+  "line": 31,
+  "path": "2008-06/src/Client/Network/Client.cpp"
+ },
+ "0049f590": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "0049fe20": {
+  "line": 86,
+  "path": "2008-06/src/Client/Network/Client.cpp"
+ },
+ "0049fe50": {
+  "line": 62,
+  "path": "2008-06/src/Client/Network/Client.cpp"
+ },
+ "004a1070": {
+  "line": 94,
+  "path": "2008-06/src/Client/Network/Client.cpp"
+ },
+ "004a1560": {
+  "line": 64,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Feature.h"
+ },
+ "004a17f0": {
+  "line": 17,
+  "path": "2008-06/src/Client/Network/Server.cpp"
+ },
+ "004a1880": {
+  "line": 37,
+  "path": "2008-06/src/Client/Network/Server.cpp"
+ },
+ "004a2250": {
+  "line": 67,
+  "path": "2008-06/src/Client/Network/Server.cpp"
+ },
+ "004a22a0": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "004a27e0": {
+  "line": 498,
+  "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
+ },
+ "004a2c20": {
+  "line": 20,
+  "path": "2008-06/src/glue/rbxgs/glue_server.cpp"
+ },
+ "004a3640": {
+  "line": 64,
+  "path": "2008-06/src/Client/Network/Server.h"
+ },
+ "004a3980": {
+  "line": 152,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "004a3c90": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "004a3cb0": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "004a4100": {
+  "line": 79,
+  "path": "2008-06/src/Client/Network/Server.cpp"
+ },
+ "004a4dc0": {
+  "line": 116,
+  "path": "2008-06/src/Client/Network/Server.cpp"
+ },
+ "004a5940": {
+  "line": 27,
+  "path": "2008-06/src/Client/Rendering/g3d/include/G3D/g3dmath.inl"
+ },
+ "004a59e0": {
+  "line": 92,
+  "path": "2008-06/src/Client/Rendering/g3d/include/G3D/Vector3.inl"
+ },
+ "004a5c00": {
+  "line": 151,
+  "path": "2008-06/src/Client/Network/Streaming.cpp"
+ },
+ "004a6700": {
+  "line": 192,
+  "path": "2008-06/src/Client/Network/Streaming.cpp"
+ },
+ "004a6a00": {
+  "line": 247,
+  "path": "2008-06/src/Client/Network/Streaming.cpp"
+ },
+ "004a7ba0": {
+  "line": 359,
+  "path": "2008-06/src/Client/Network/Streaming.cpp"
+ },
+ "004a9d90": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "004aadd0": {
+  "line": 29,
+  "path": "2008-06/src/Client/App/util/Guid.cpp"
+ },
+ "004aae80": {
+  "line": 90,
+  "path": "2008-06/src/Client/Network/Replicator.cpp"
+ },
+ "004aaea0": {
+  "line": 96,
+  "path": "2008-06/src/Client/Network/Replicator.cpp"
+ },
+ "004aaf90": {
+  "line": 204,
+  "path": "2008-06/src/Client/Network/Replicator.cpp"
+ },
+ "004ab530": {
+  "line": 227,
+  "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
+ },
+ "004ab5d0": {
+  "line": 632,
+  "path": "2008-06/src/Client/Network/Replicator.cpp"
+ },
+ "004ab880": {
+  "line": 800,
+  "path": "2008-06/src/Client/Network/Replicator.cpp"
+ },
+ "004ac830": {
+  "line": 113,
+  "path": "2008-06/src/Client/Network/Replicator.cpp"
+ },
+ "004acb30": {
+  "line": 163,
+  "path": "2008-06/src/Client/App/include/reflection/property.h"
+ },
+ "004ad180": {
+  "line": 235,
+  "path": "2008-06/src/Client/App/include/reflection/property.h"
+ },
+ "004adbe0": {
+  "line": 315,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/bind.hpp"
+ },
+ "004add50": {
+  "line": 118,
+  "path": "2008-06/src/Client/Network/Replicator.cpp"
+ },
+ "004b1240": {
+  "line": 504,
+  "path": "2008-06/src/Client/Network/Replicator.cpp"
+ },
+ "004b47b0": {
+  "line": 837,
+  "path": "2008-06/src/Client/Network/Replicator.cpp"
+ },
+ "004b51d0": {
+  "line": 110,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Stats.h"
+ },
+ "004b5700": {
+  "line": 152,
+  "path": "2008-06/src/glue/rbxgs/glue_gameplay.cpp"
+ },
+ "004b62c0": {
+  "line": 753,
+  "path": "2008-06/src/Client/Network/Replicator.cpp"
+ },
+ "004b6530": {
+  "line": 777,
+  "path": "2008-06/src/Client/Network/Replicator.cpp"
+ },
+ "004b6d10": {
+  "line": 807,
+  "path": "2008-06/src/Client/Network/Replicator.cpp"
+ },
+ "004b8620": {
+  "line": 39,
+  "path": "2008-06/src/glue/rbxgs/glue_replicator.cpp"
+ },
+ "004b8c20": {
+  "line": 263,
+  "path": "2008-06/src/glue/rbxgs/glue_replicator.cpp"
+ },
+ "004b9140": {
+  "line": 40,
+  "path": "2008-06/src/Client/Network/Replicator.h"
+ },
+ "004b9190": {
+  "line": 59,
+  "path": "2008-06/src/Client/Network/Replicator.h"
+ },
+ "004c7530": {
+  "line": 21,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "004c9c50": {
+  "line": 237,
+  "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
+ },
+ "004dc3d0": {
+  "line": 33,
+  "path": "2008-06/src/Client/App/util/Handle.cpp"
+ },
+ "004e5b70": {
+  "line": 103,
+  "path": "2008-06/src/Client/App/v8world/Block.cpp"
+ },
+ "004e5b80": {
+  "line": 173,
+  "path": "2008-06/src/Client/App/include/v8datamodel/PartInstance.h"
+ },
+ "004e5b90": {
+  "line": 178,
+  "path": "2008-06/src/Client/App/include/v8datamodel/PartInstance.h"
+ },
+ "004e5ba0": {
+  "line": 48,
+  "path": "2008-06/src/Client/App/include/v8datamodel/custommesh.h"
+ },
+ "004e5bb0": {
+  "line": 23,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Decal.h"
+ },
+ "004e5be0": {
+  "line": 30,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Decal.h"
+ },
+ "004e5bf0": {
+  "line": 37,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Decal.h"
+ },
+ "004e5f20": {
+  "line": 32,
+  "path": "2008-06/src/Client/App/v8datamodel/custommesh.cpp"
+ },
+ "004e5f50": {
+  "line": 27,
+  "path": "2008-06/src/Client/App/v8datamodel/custommesh.cpp"
+ },
+ "004e6c00": {
+  "line": 433,
+  "path": "2008-06/src/Client/Rendering/g3d/include/G3D/ReferenceCount.h"
+ },
+ "004f0840": {
+  "line": 476,
+  "path": "2008-06/src/Client/Rendering/g3d/include/G3D/ReferenceCount.h"
+ },
+ "00501180": {
+  "line": 61,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/lexical_cast.hpp"
+ },
+ "005011d0": {
+  "line": 21,
+  "path": "2008-06/src/Client/Rendering/RenderLib/Profiler.cpp"
+ },
+ "00501400": {
+  "line": 41,
+  "path": "2008-06/src/Client/Rendering/RenderLib/Profiler.cpp"
+ },
+ "005014b0": {
+  "line": 75,
+  "path": "2008-06/src/Client/Rendering/RenderLib/Profiler.cpp"
+ },
+ "00501520": {
+  "line": 97,
+  "path": "2008-06/src/Client/Rendering/RenderLib/Profiler.cpp"
+ },
+ "00501590": {
+  "line": 154,
+  "path": "2008-06/src/Client/Rendering/RenderLib/Profiler.cpp"
+ },
+ "005016f0": {
+  "line": 119,
+  "path": "2008-06/src/Client/Rendering/RenderLib/Profiler.cpp"
+ },
+ "005019f0": {
+  "line": 163,
+  "path": "2008-06/src/Client/Rendering/RenderLib/Profiler.cpp"
+ },
+ "00501ee0": {
+  "line": 113,
+  "path": "2008-06/src/Client/Rendering/g3d/include/G3D/Array.h"
+ },
+ "00501f10": {
+  "line": 129,
+  "path": "2008-06/src/Client/Rendering/g3d/include/G3D/Array.h"
+ },
+ "00502010": {
+  "line": 129,
+  "path": "2008-06/src/Client/Rendering/g3d/include/G3D/Array.h"
+ },
+ "00502a00": {
+  "line": 211,
+  "path": "2008-06/src/Client/Rendering/g3d/include/GLG3D/Sky.h"
+ },
+ "00502a70": {
+  "line": 323,
+  "path": "2008-06/src/Client/Rendering/g3d/include/G3D/ReferenceCount.h"
+ },
+ "00503820": {
+  "line": 118,
+  "path": "2008-06/src/Client/Rendering/g3d/include/GLG3D/LightingParameters.h"
+ },
+ "00503960": {
+  "line": 148,
+  "path": "2008-06/src/Client/Rendering/g3d/include/GLG3D/LightingParameters.h"
+ },
+ "00503cb0": {
+  "line": 63,
+  "path": "2008-06/src/Client/Rendering/RenderLib/include/RenderLib/Material.h"
+ },
+ "00505220": {
+  "line": 18,
+  "path": "2008-06/src/Client/Rendering/RenderLib/RenderSurface.cpp"
+ },
+ "005071d0": {
+  "line": 60,
+  "path": "2008-06/src/Client/Rendering/RenderLib/DepthBlur.cpp"
+ },
+ "00507420": {
+  "line": 43,
+  "path": "2008-06/src/Client/Rendering/RenderLib/DepthBlur.cpp"
+ },
+ "005075d0": {
+  "line": 647,
+  "path": "2008-06/src/Client/Rendering/g3d/include/GLG3D/Shader.h"
+ },
+ "005075e0": {
+  "line": 651,
+  "path": "2008-06/src/Client/Rendering/g3d/include/GLG3D/Shader.h"
+ },
+ "00507740": {
+  "line": 9,
+  "path": "2008-06/src/Client/Rendering/RenderLib/DepthBlur.cpp"
+ },
+ "00510960": {
+  "line": 341,
+  "path": "2008-06/src/Client/Rendering/g3d/include/G3D/Vector3.h"
+ },
+ "00510e00": {
+  "line": 239,
+  "path": "2008-06/src/Client/Rendering/g3d/include/G3D/Array.h"
+ },
+ "00513080": {
+  "line": 242,
+  "path": "2008-06/src/Client/Rendering/g3d/include/G3D/g3dmath.inl"
+ },
+ "005130d0": {
+  "line": 256,
+  "path": "2008-06/src/Client/Rendering/g3d/include/G3D/g3dmath.inl"
+ },
+ "00513220": {
+  "line": 97,
+  "path": "2008-06/src/Client/Rendering/g3d/include/G3D/Matrix3.h"
+ },
+ "005148b0": {
+  "line": 338,
+  "path": "2008-06/src/Client/Rendering/g3d/include/G3D/Vector3.h"
+ },
+ "00514910": {
+  "line": 340,
+  "path": "2008-06/src/Client/Rendering/g3d/include/G3D/Vector3.h"
+ },
+ "005185d0": {
+  "line": 149,
+  "path": "2008-06/src/Client/Rendering/g3d/include/G3D/Rect2D.h"
+ },
+ "005187f0": {
+  "line": 276,
+  "path": "2008-06/src/Client/Rendering/g3d/include/G3D/CoordinateFrame.h"
+ },
+ "00518830": {
+  "line": 50,
+  "path": "2008-06/src/Client/Rendering/g3d/include/G3D/Ray.h"
+ },
+ "00530730": {
+  "line": 136,
+  "path": "2008-06/src/Client/Rendering/g3d/include/G3D/Vector3.inl"
+ },
+ "00553f90": {
+  "line": 54,
+  "path": "2008-06/src/Client/App/util/Name.cpp"
+ },
+ "00554270": {
+  "line": 48,
+  "path": "2008-06/src/Client/App/util/Name.cpp"
+ },
+ "00554440": {
+  "line": 39,
+  "path": "2008-06/src/Client/App/util/RunStateOwner.cpp"
+ },
+ "00555020": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "00555350": {
+  "line": 69,
+  "path": "2008-06/src/Client/App/util/RunStateOwner.cpp"
+ },
+ "00556b00": {
+  "line": 12,
+  "path": "2008-06/src/Client/App/util/RunStateOwner.cpp"
+ },
+ "00557490": {
+  "line": 165,
+  "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
+ },
+ "005574b0": {
+  "line": 265,
+  "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
+ },
+ "00557640": {
+  "line": 248,
+  "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
+ },
+ "00557890": {
+  "line": 252,
+  "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
+ },
+ "00557920": {
+  "line": 173,
+  "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
+ },
+ "00557950": {
+  "line": 306,
+  "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
+ },
+ "00558030": {
+  "line": 235,
+  "path": "2008-06/src/Client/App/include/v8xml/XmlElement.h"
+ },
+ "005580e0": {
+  "line": 290,
+  "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
+ },
+ "00558110": {
+  "line": 291,
+  "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
+ },
+ "005581b0": {
+  "line": 322,
+  "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
+ },
+ "00558220": {
+  "line": 343,
+  "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
+ },
+ "00558370": {
+  "line": 364,
+  "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
+ },
+ "00558910": {
+  "line": 67,
+  "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
+ },
+ "00558970": {
+  "line": 282,
+  "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
+ },
+ "00558b80": {
+  "line": 47,
+  "path": "2008-06/src/glue/rbxgs/glue_instance_core.cpp"
+ },
+ "00558c50": {
+  "line": 404,
+  "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
+ },
+ "00558ff0": {
+  "line": 385,
+  "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
+ },
+ "00559170": {
+  "line": 386,
+  "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
+ },
+ "00559350": {
+  "line": 59,
+  "path": "2008-06/src/glue/rbxgs/glue_instance_core.cpp"
+ },
+ "00559920": {
+  "line": 291,
+  "path": "2008-06/src/Client/App/include/reflection/reflection.h"
+ },
+ "0055a470": {
+  "line": 276,
+  "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
+ },
+ "0055a540": {
+  "line": 80,
+  "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
+ },
+ "0055a8f0": {
+  "line": 424,
+  "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
+ },
+ "0055acc0": {
+  "line": 242,
+  "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
+ },
+ "0055ae20": {
+  "line": 104,
+  "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
+ },
+ "0055ae90": {
+  "line": 112,
+  "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
+ },
+ "0055af90": {
+  "line": 95,
+  "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
+ },
+ "0055afd0": {
+  "line": 157,
+  "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
+ },
+ "0055b4a0": {
+  "line": 204,
+  "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
+ },
+ "0055b5a0": {
+  "line": 179,
+  "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
+ },
+ "0055b6a0": {
+  "line": 205,
+  "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
+ },
+ "0055b6f0": {
+  "line": 216,
+  "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
+ },
+ "0055bae0": {
+  "line": 64,
+  "path": "2008-06/src/Client/App/include/util/ContentProvider.h"
+ },
+ "0055bb50": {
+  "line": 68,
+  "path": "2008-06/src/Client/App/include/util/ContentProvider.h"
+ },
+ "0055bc30": {
+  "line": 22,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/date_time/gregorian/greg_year.hpp"
+ },
+ "0055bca0": {
+  "line": 46,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/date_time/gregorian/greg_month.hpp"
+ },
+ "0055bd10": {
+  "line": 50,
+  "path": "2008-06/src/Client/App/util/ContentProvider.cpp"
+ },
+ "0055bd60": {
+  "line": 19,
+  "path": "2008-06/src/Client/App/util/ContentProvider.cpp"
+ },
+ "0055bd80": {
+  "line": 24,
+  "path": "2008-06/src/Client/App/util/ContentProvider.cpp"
+ },
+ "0055c020": {
+  "line": 85,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/date_time/constrained_value.hpp"
+ },
+ "0055c040": {
+  "line": 85,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/date_time/constrained_value.hpp"
+ },
+ "0055c060": {
+  "line": 85,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/date_time/constrained_value.hpp"
+ },
+ "0055c100": {
+  "line": 84,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/date_time/int_adapter.hpp"
+ },
+ "0055c120": {
+  "line": 88,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/date_time/int_adapter.hpp"
+ },
+ "0055c140": {
+  "line": 110,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/date_time/int_adapter.hpp"
+ },
+ "0055c1f0": {
+  "line": 76,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/date_time/gregorian_calendar.ipp"
+ },
+ "0055c290": {
+  "line": 164,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/date_time/gregorian_calendar.ipp"
+ },
+ "0055c2d0": {
+  "line": 177,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/date_time/gregorian_calendar.ipp"
+ },
+ "0055c500": {
+  "line": 24,
+  "path": "2008-06/src/Client/App/util/ContentProvider.cpp"
+ },
+ "0055c540": {
+  "line": 340,
+  "path": "2008-06/src/Client/App/util/ContentProvider.cpp"
+ },
+ "0055c710": {
+  "line": 387,
+  "path": "2008-06/src/Client/App/util/ContentProvider.cpp"
+ },
+ "0055c8b0": {
+  "line": 423,
+  "path": "2008-06/src/Client/App/util/ContentProvider.cpp"
+ },
+ "0055c930": {
+  "line": 108,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/date_time/time_resolution_traits.hpp"
+ },
+ "0055d6b0": {
+  "line": 74,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/detail/sp_counted_impl.hpp"
+ },
+ "0055d780": {
+  "line": 223,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/date_time/time_system_counted.hpp"
+ },
+ "0055e320": {
+  "line": 392,
+  "path": "2008-06/src/Client/App/util/ContentProvider.cpp"
+ },
+ "0055e7d0": {
+  "line": 66,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/date_time/time_clock.hpp"
+ },
+ "0055f710": {
+  "line": 326,
+  "path": "2008-06/src/Client/App/util/ContentProvider.cpp"
+ },
+ "0055f940": {
+  "line": 191,
+  "path": "2008-06/src/Client/App/util/ContentProvider.cpp"
+ },
+ "005632c0": {
+  "line": 266,
+  "path": "2008-06/src/Client/App/v8datamodel/DebugSettings.cpp"
+ },
+ "00563330": {
+  "line": 277,
+  "path": "2008-06/src/Client/App/v8datamodel/DebugSettings.cpp"
+ },
+ "00563cd0": {
+  "line": 116,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/any.hpp"
+ },
+ "00563ce0": {
+  "line": 121,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/any.hpp"
+ },
+ "00564050": {
+  "line": 124,
+  "path": "2008-06/src/Client/App/include/reflection/type.h"
+ },
+ "00564150": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005655b0": {
+  "line": 62,
+  "path": "2008-06/src/Client/App/include/v8datamodel/GlobalSettings.h"
+ },
+ "00565ac0": {
+  "line": 41,
+  "path": "2008-06/src/Client/App/v8datamodel/DebugSettings.cpp"
+ },
+ "00565e00": {
+  "line": 23,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Team.h"
+ },
+ "00565e40": {
+  "line": 31,
+  "path": "2008-06/src/Client/App/v8datamodel/Team.cpp"
+ },
+ "00565e50": {
+  "line": 42,
+  "path": "2008-06/src/Client/App/v8datamodel/Team.cpp"
+ },
+ "00566190": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005665e0": {
+  "line": 11,
+  "path": "2008-06/src/Client/App/v8datamodel/Team.cpp"
+ },
+ "00566860": {
+  "line": 16,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Selection.h"
+ },
+ "00566a80": {
+  "line": 115,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Selection.h"
+ },
+ "00566b80": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "00566ba0": {
+  "line": 29,
+  "path": "2008-06/src/Client/App/v8datamodel/Selection.cpp"
+ },
+ "00566d50": {
+  "line": 41,
+  "path": "2008-06/src/Client/App/v8datamodel/Selection.cpp"
+ },
+ "005670f0": {
+  "line": 24,
+  "path": "2008-06/src/Client/App/v8datamodel/Selection.cpp"
+ },
+ "00567180": {
+  "line": 19,
+  "path": "2008-06/src/Client/App/v8datamodel/Selection.cpp"
+ },
+ "00567210": {
+  "line": 53,
+  "path": "2008-06/src/Client/App/v8datamodel/Selection.cpp"
+ },
+ "005675d0": {
+  "line": 107,
+  "path": "2008-06/src/Client/App/v8datamodel/Selection.cpp"
+ },
+ "00567c10": {
+  "line": 90,
+  "path": "2008-06/src/Client/App/v8datamodel/Selection.cpp"
+ },
+ "00568180": {
+  "line": 8,
+  "path": "2008-06/src/Client/App/v8datamodel/Selection.cpp"
+ },
+ "005682e0": {
+  "line": 152,
+  "path": "2008-06/src/Client/App/v8datamodel/Selection.cpp"
+ },
+ "00568eb0": {
+  "line": 247,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "00568f80": {
+  "line": 28,
+  "path": "2008-06/src/Client/App/include/v8datamodel/GlobalSettings.h"
+ },
+ "005690f0": {
+  "line": 5,
+  "path": "2008-06/src/Client/App/v8datamodel/GlobalSettings.cpp"
+ },
+ "00569530": {
+  "line": 58,
+  "path": "2008-06/src/Client/App/util/standardout.cpp"
+ },
+ "00569620": {
+  "line": 52,
+  "path": "2008-06/src/Client/App/util/standardout.cpp"
+ },
+ "00569a40": {
+  "line": 446,
+  "path": "2008-06/src/Client/App/util/Http.cpp"
+ },
+ "00569ae0": {
+  "line": 422,
+  "path": "2008-06/src/Client/App/util/Http.cpp"
+ },
+ "0056a040": {
+  "line": 345,
+  "path": "2008-06/src/Client/App/util/Http.cpp"
+ },
+ "0056a560": {
+  "line": 10,
+  "path": "2008-06/src/Client/App/util/Debug.cpp"
+ },
+ "0056b620": {
+  "line": 16,
+  "path": "2008-06/src/Client/App/reflection/signal.cpp"
+ },
+ "0056b700": {
+  "line": 131,
+  "path": "2008-06/src/Client/App/include/reflection/member.h"
+ },
+ "0056bab0": {
+  "line": 8,
+  "path": "2008-06/src/Client/App/reflection/signal.cpp"
+ },
+ "0056bb20": {
+  "line": 31,
+  "path": "2008-06/src/Client/App/reflection/signal.cpp"
+ },
+ "0056bd10": {
+  "line": 65,
+  "path": "2008-06/src/glue/rbxgs/glue_input.cpp"
+ },
+ "0056bd40": {
+  "line": 55,
+  "path": "2008-06/src/Client/App/reflection/signal.cpp"
+ },
+ "0056bd60": {
+  "line": 57,
+  "path": "2008-06/src/Client/App/reflection/signal.cpp"
+ },
+ "0056c170": {
+  "line": 131,
+  "path": "2008-06/src/Client/App/include/reflection/member.h"
+ },
+ "0056c590": {
+  "line": 61,
+  "path": "2008-06/src/Client/App/reflection/reflection_property.cpp"
+ },
+ "0056c650": {
+  "line": 17,
+  "path": "2008-06/src/Client/App/reflection/reflection_property.cpp"
+ },
+ "0056d090": {
+  "line": 13,
+  "path": "2008-06/src/glue/rbxgs/glue_instance_value.cpp"
+ },
+ "0056ea60": {
+  "line": 13,
+  "path": "2008-06/src/glue/rbxgs/glue_instance_value.cpp"
+ },
+ "0056ebb0": {
+  "line": 13,
+  "path": "2008-06/src/glue/rbxgs/glue_instance_value.cpp"
+ },
+ "0056ee50": {
+  "line": 13,
+  "path": "2008-06/src/glue/rbxgs/glue_instance_value.cpp"
+ },
+ "0056efa0": {
+  "line": 13,
+  "path": "2008-06/src/glue/rbxgs/glue_instance_value.cpp"
+ },
+ "0056eff0": {
+  "line": 13,
+  "path": "2008-06/src/glue/rbxgs/glue_instance_value.cpp"
+ },
+ "0056f0b0": {
+  "line": 13,
+  "path": "2008-06/src/glue/rbxgs/glue_instance_value.cpp"
+ },
+ "0056f8c0": {
+  "line": 13,
+  "path": "2008-06/src/glue/rbxgs/glue_instance_value.cpp"
+ },
+ "0056fe10": {
+  "line": 36,
+  "path": "2008-06/src/Client/App/reflection/reflection_object.cpp"
+ },
+ "0056fff0": {
+  "line": 131,
+  "path": "2008-06/src/Client/App/include/reflection/member.h"
+ },
+ "005726a0": {
+  "line": 38,
+  "path": "2008-06/src/Client/App/v8tree/Service.cpp"
+ },
+ "005726c0": {
+  "line": 44,
+  "path": "2008-06/src/Client/App/v8tree/Service.cpp"
+ },
+ "005726f0": {
+  "line": 107,
+  "path": "2008-06/src/Client/App/v8tree/Service.cpp"
+ },
+ "005729c0": {
+  "line": 98,
+  "path": "2008-06/src/Client/App/v8tree/Service.cpp"
+ },
+ "00572b40": {
+  "line": 31,
+  "path": "2008-06/src/Client/App/v8tree/Service.cpp"
+ },
+ "00572bc0": {
+  "line": 50,
+  "path": "2008-06/src/Client/App/v8tree/Service.cpp"
+ },
+ "00572ca0": {
+  "line": 17,
+  "path": "2008-06/src/Client/App/v8tree/Service.cpp"
+ },
+ "00572e40": {
+  "line": 74,
+  "path": "2008-06/src/Client/App/v8tree/Service.cpp"
+ },
+ "00573190": {
+  "line": 6,
+  "path": "2008-06/src/Client/App/gui/GUI.cpp"
+ },
+ "00573290": {
+  "line": 12,
+  "path": "2008-06/src/Client/App/gui/GUI.cpp"
+ },
+ "005732d0": {
+  "line": 88,
+  "path": "2008-06/src/Client/App/include/gui/GuiEvent.h"
+ },
+ "005732f0": {
+  "line": 75,
+  "path": "2008-06/src/Client/App/gui/GUI.cpp"
+ },
+ "00573310": {
+  "line": 69,
+  "path": "2008-06/src/Client/App/gui/GUI.cpp"
+ },
+ "00573360": {
+  "line": 51,
+  "path": "2008-06/src/glue/rbxgs/glue_gui.cpp"
+ },
+ "00573480": {
+  "line": 176,
+  "path": "2008-06/src/Client/App/gui/GUI.cpp"
+ },
+ "00573530": {
+  "line": 104,
+  "path": "2008-06/src/Client/App/gui/GUI.cpp"
+ },
+ "005737e0": {
+  "line": 32,
+  "path": "2008-06/src/glue/rbxgs/glue_gui.cpp"
+ },
+ "00573960": {
+  "line": 42,
+  "path": "2008-06/src/Client/App/include/gui/Gui.h"
+ },
+ "005739d0": {
+  "line": 22,
+  "path": "2008-06/src/Client/App/gui/GUI.cpp"
+ },
+ "00573be0": {
+  "line": 258,
+  "path": "2008-06/src/Client/App/include/gui/Gui.h"
+ },
+ "00573c00": {
+  "line": 197,
+  "path": "2008-06/src/Client/App/gui/GUI.cpp"
+ },
+ "00573e00": {
+  "line": 212,
+  "path": "2008-06/src/Client/App/include/gui/Gui.h"
+ },
+ "00573e30": {
+  "line": 111,
+  "path": "2008-06/src/Client/App/gui/GUI.cpp"
+ },
+ "00573f30": {
+  "line": 13,
+  "path": "2008-06/src/glue/rbxgs/glue_gui.cpp"
+ },
+ "00574050": {
+  "line": 139,
+  "path": "2008-06/src/Client/App/gui/GUI.cpp"
+ },
+ "005746a0": {
+  "line": 61,
+  "path": "2008-06/src/Client/App/gui/GUI.cpp"
+ },
+ "00574980": {
+  "line": 37,
+  "path": "2008-06/src/Client/App/gui/GUI.cpp"
+ },
+ "00574b10": {
+  "line": 80,
+  "path": "2008-06/src/Client/App/gui/GUI.cpp"
+ },
+ "00574bf0": {
+  "line": 157,
+  "path": "2008-06/src/Client/App/gui/GUI.cpp"
+ },
+ "00574f10": {
+  "line": 99,
+  "path": "2008-06/src/Client/App/include/v8datamodel/DataModel.h"
+ },
+ "00574fb0": {
+  "line": 241,
+  "path": "2008-06/src/Client/App/include/v8world/Primitive.h"
+ },
+ "00575060": {
+  "line": 113,
+  "path": "2008-06/src/Client/App/v8datamodel/DataModel.cpp"
+ },
+ "00575120": {
+  "line": 121,
+  "path": "2008-06/src/Client/App/v8datamodel/DataModel.cpp"
+ },
+ "00575270": {
+  "line": 129,
+  "path": "2008-06/src/Client/App/v8datamodel/DataModel.cpp"
+ },
+ "00575750": {
+  "line": 80,
+  "path": "2008-06/src/Client/App/v8datamodel/DataModel.cpp"
+ },
+ "00575840": {
+  "line": 94,
+  "path": "2008-06/src/Client/App/v8datamodel/DataModel.cpp"
+ },
+ "00575d90": {
+  "line": 259,
+  "path": "2008-06/src/Client/App/v8datamodel/DataModel.cpp"
+ },
+ "005769d0": {
+  "line": 258,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/bind.hpp"
+ },
+ "00576f00": {
+  "line": 382,
+  "path": "2008-06/src/Client/App/v8datamodel/DataModel.cpp"
+ },
+ "005773c0": {
+  "line": 391,
+  "path": "2008-06/src/Client/App/v8datamodel/DataModel.cpp"
+ },
+ "005777a0": {
+  "line": 315,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/bind.hpp"
+ },
+ "0057a850": {
+  "line": 247,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "0057b020": {
+  "line": 77,
+  "path": "2008-06/src/Client/App/include/v8datamodel/DataModel.h"
+ },
+ "0057b030": {
+  "line": 82,
+  "path": "2008-06/src/Client/App/include/v8datamodel/DataModel.h"
+ },
+ "0057b040": {
+  "line": 125,
+  "path": "2008-06/src/Client/App/include/v8datamodel/DataModel.h"
+ },
+ "0057b070": {
+  "line": 131,
+  "path": "2008-06/src/Client/App/include/v8datamodel/DataModel.h"
+ },
+ "0057b630": {
+  "line": 119,
+  "path": "2008-06/src/Client/App/include/v8datamodel/DataModel.h"
+ },
+ "0057b9f0": {
+  "line": 37,
+  "path": "2008-06/src/Client/App/v8datamodel/DataModel.cpp"
+ },
+ "0057c1b0": {
+  "line": 268,
+  "path": "2008-06/src/Client/App/v8xml/XmlElement.cpp"
+ },
+ "0057c230": {
+  "line": 360,
+  "path": "2008-06/src/Client/App/v8xml/XmlElement.cpp"
+ },
+ "0057c250": {
+  "line": 372,
+  "path": "2008-06/src/Client/App/v8xml/XmlElement.cpp"
+ },
+ "0057c2d0": {
+  "line": 47,
+  "path": "2008-06/src/Client/App/v8xml/XmlElement.cpp"
+ },
+ "0057cf50": {
+  "line": 370,
+  "path": "2008-06/src/Client/App/v8xml/XmlSerializer.cpp"
+ },
+ "0057d050": {
+  "line": 281,
+  "path": "2008-06/src/Client/App/v8xml/XmlElement.cpp"
+ },
+ "00581cc0": {
+  "line": 166,
+  "path": "2008-06/src/Client/App/include/v8tree/Service.h"
+ },
+ "00583210": {
+  "line": 18,
+  "path": "2008-06/src/Client/App/v8tree/Verb.cpp"
+ },
+ "005832e0": {
+  "line": 10,
+  "path": "2008-06/src/Client/App/v8tree/Verb.cpp"
+ },
+ "00583460": {
+  "line": 5,
+  "path": "2008-06/src/Client/App/v8tree/Verb.cpp"
+ },
+ "005834b0": {
+  "line": 58,
+  "path": "2008-06/src/Client/App/include/v8datamodel/ModelInstance.h"
+ },
+ "005834c0": {
+  "line": 62,
+  "path": "2008-06/src/Client/App/include/v8datamodel/ModelInstance.h"
+ },
+ "005834f0": {
+  "line": 119,
+  "path": "2008-06/src/Client/App/v8datamodel/ModelInstance.cpp"
+ },
+ "00583570": {
+  "line": 379,
+  "path": "2008-06/src/Client/App/v8datamodel/ModelInstance.cpp"
+ },
+ "00583640": {
+  "line": 23,
+  "path": "2008-06/src/Client/App/include/util/ComputeProp.h"
+ },
+ "00583a20": {
+  "line": 64,
+  "path": "2008-06/src/Client/App/v8datamodel/ModelInstance.cpp"
+ },
+ "00583a40": {
+  "line": 130,
+  "path": "2008-06/src/Client/App/v8datamodel/ModelInstance.cpp"
+ },
+ "00583c90": {
+  "line": 292,
+  "path": "2008-06/src/Client/App/v8datamodel/ModelInstance.cpp"
+ },
+ "00583cf0": {
+  "line": 317,
+  "path": "2008-06/src/Client/App/v8datamodel/ModelInstance.cpp"
+ },
+ "00583da0": {
+  "line": 358,
+  "path": "2008-06/src/Client/App/v8datamodel/ModelInstance.cpp"
+ },
+ "005841e0": {
+  "line": 297,
+  "path": "2008-06/src/Client/App/v8datamodel/ModelInstance.cpp"
+ },
+ "00584280": {
+  "line": 328,
+  "path": "2008-06/src/Client/App/v8datamodel/ModelInstance.cpp"
+ },
+ "00584310": {
+  "line": 344,
+  "path": "2008-06/src/Client/App/v8datamodel/ModelInstance.cpp"
+ },
+ "00584360": {
+  "line": 349,
+  "path": "2008-06/src/Client/App/v8datamodel/ModelInstance.cpp"
+ },
+ "005843c0": {
+  "line": 368,
+  "path": "2008-06/src/Client/App/v8datamodel/ModelInstance.cpp"
+ },
+ "00584440": {
+  "line": 151,
+  "path": "2008-06/src/Client/App/include/reflection/property.h"
+ },
+ "00584620": {
+  "line": 87,
+  "path": "2008-06/src/Client/App/v8datamodel/ModelInstance.cpp"
+ },
+ "00584670": {
+  "line": 104,
+  "path": "2008-06/src/Client/App/v8datamodel/ModelInstance.cpp"
+ },
+ "00584790": {
+  "line": 47,
+  "path": "2008-06/src/Client/App/v8datamodel/ModelInstance.cpp"
+ },
+ "005849d0": {
+  "line": 379,
+  "path": "2008-06/src/Client/App/v8datamodel/ModelInstance.cpp"
+ },
+ "00584a50": {
+  "line": 69,
+  "path": "2008-06/src/Client/App/include/v8datamodel/ModelInstance.h"
+ },
+ "00584aa0": {
+  "line": 73,
+  "path": "2008-06/src/Client/App/include/v8datamodel/ModelInstance.h"
+ },
+ "00584af0": {
+  "line": 317,
+  "path": "2008-06/src/Client/App/v8datamodel/ModelInstance.cpp"
+ },
+ "00584b00": {
+  "line": 368,
+  "path": "2008-06/src/Client/App/v8datamodel/ModelInstance.cpp"
+ },
+ "00584c10": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "00584fc0": {
+  "line": 159,
+  "path": "2008-06/src/Client/App/v8datamodel/PVInstance.cpp"
+ },
+ "00585050": {
+  "line": 149,
+  "path": "2008-06/src/Client/App/v8datamodel/PVInstance.cpp"
+ },
+ "00585630": {
+  "line": 30,
+  "path": "2008-06/src/Client/App/v8datamodel/ModelInstance.cpp"
+ },
+ "00585b30": {
+  "line": 167,
+  "path": "2008-06/src/Client/App/v8datamodel/ModelInstance.cpp"
+ },
+ "00585df0": {
+  "line": 231,
+  "path": "2008-06/src/Client/App/include/reflection/reflection.h"
+ },
+ "005862a0": {
+  "line": 15,
+  "path": "2008-06/src/Client/App/script/Script.cpp"
+ },
+ "00586310": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005863c0": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "0058c990": {
+  "line": 238,
+  "path": "2008-06/src/Client/App/v8xml/XmlSerializer.cpp"
+ },
+ "0058ca20": {
+  "line": 246,
+  "path": "2008-06/src/Client/App/v8xml/XmlSerializer.cpp"
+ },
+ "0058cab0": {
+  "line": 32,
+  "path": "2008-06/src/Client/App/v8xml/XmlSerializer.cpp"
+ },
+ "0058cc80": {
+  "line": 38,
+  "path": "2008-06/src/Client/App/v8xml/XmlSerializer.cpp"
+ },
+ "0058d200": {
+  "line": 160,
+  "path": "2008-06/src/Client/App/v8xml/XmlSerializer.cpp"
+ },
+ "0058d2a0": {
+  "line": 176,
+  "path": "2008-06/src/Client/App/v8xml/XmlSerializer.cpp"
+ },
+ "0058d530": {
+  "line": 353,
+  "path": "2008-06/src/Client/App/include/util/base64.hpp"
+ },
+ "0058d780": {
+  "line": 409,
+  "path": "2008-06/src/Client/App/v8xml/XmlSerializer.cpp"
+ },
+ "0058d900": {
+  "line": 216,
+  "path": "2008-06/src/Client/App/include/util/base64.hpp"
+ },
+ "0058eb10": {
+  "line": 385,
+  "path": "2008-06/src/Client/App/v8xml/XmlSerializer.cpp"
+ },
+ "0058ecb0": {
+  "line": 417,
+  "path": "2008-06/src/Client/App/v8xml/XmlSerializer.cpp"
+ },
+ "0058f230": {
+  "line": 26,
+  "path": "2008-06/src/Client/App/v8xml/XmlSerializer.cpp"
+ },
+ "0058f270": {
+  "line": 514,
+  "path": "2008-06/src/Client/App/v8xml/XmlSerializer.cpp"
+ },
+ "0058f6c0": {
+  "line": 254,
+  "path": "2008-06/src/Client/App/v8xml/XmlSerializer.cpp"
+ },
+ "0058fff0": {
+  "line": 365,
+  "path": "2008-06/src/Client/App/v8xml/XmlSerializer.cpp"
+ },
+ "00590030": {
+  "line": 50,
+  "path": "2008-06/src/Client/App/v8datamodel/RootInstance.cpp"
+ },
+ "00590160": {
+  "line": 38,
+  "path": "2008-06/src/Client/App/v8datamodel/RootInstance.cpp"
+ },
+ "00590180": {
+  "line": 44,
+  "path": "2008-06/src/Client/App/v8datamodel/RootInstance.cpp"
+ },
+ "00590190": {
+  "line": 55,
+  "path": "2008-06/src/Client/App/v8datamodel/RootInstance.cpp"
+ },
+ "00590300": {
+  "line": 329,
+  "path": "2008-06/src/Client/App/v8datamodel/RootInstance.cpp"
+ },
+ "00590440": {
+  "line": 157,
+  "path": "2008-06/src/Client/App/v8datamodel/RootInstance.cpp"
+ },
+ "00590630": {
+  "line": 34,
+  "path": "2008-06/src/Client/App/v8datamodel/RootInstance.cpp"
+ },
+ "00590790": {
+  "line": 379,
+  "path": "2008-06/src/Client/App/v8datamodel/ModelInstance.cpp"
+ },
+ "005907c0": {
+  "line": 368,
+  "path": "2008-06/src/Client/App/v8datamodel/ModelInstance.cpp"
+ },
+ "005907d0": {
+  "line": 317,
+  "path": "2008-06/src/Client/App/v8datamodel/ModelInstance.cpp"
+ },
+ "005907f0": {
+  "line": 54,
+  "path": "2008-06/src/Client/App/include/v8datamodel/RootInstance.h"
+ },
+ "005909e0": {
+  "line": 115,
+  "path": "2008-06/src/Client/App/v8datamodel/RootInstance.cpp"
+ },
+ "00590c10": {
+  "line": 169,
+  "path": "2008-06/src/Client/App/v8datamodel/RootInstance.cpp"
+ },
+ "00591580": {
+  "line": 24,
+  "path": "2008-06/src/Client/App/v8datamodel/RootInstance.cpp"
+ },
+ "00591c60": {
+  "line": 321,
+  "path": "2008-06/src/Client/App/v8xml/XmlElement.cpp"
+ },
+ "00591d30": {
+  "line": 84,
+  "path": "2008-06/src/Client/App/v8xml/SerializerV2.cpp"
+ },
+ "00592720": {
+  "line": 6,
+  "path": "2008-06/src/Client/App/v8xml/SerializerV2.cpp"
+ },
+ "00592780": {
+  "line": 64,
+  "path": "2008-06/src/Client/App/v8xml/SerializerV2.cpp"
+ },
+ "005930c0": {
+  "line": 37,
+  "path": "2008-06/src/Client/App/v8xml/SerializerV2.cpp"
+ },
+ "00593170": {
+  "line": 53,
+  "path": "2008-06/src/Client/App/v8xml/SerializerV2.cpp"
+ },
+ "00593480": {
+  "line": 99,
+  "path": "2008-06/src/Client/App/v8xml/SerializerV2.cpp"
+ },
+ "00593bb0": {
+  "line": 78,
+  "path": "2008-06/src/Client/App/script/ThreadRef.cpp"
+ },
+ "00593c40": {
+  "line": 144,
+  "path": "2008-06/src/Client/App/script/ThreadRef.cpp"
+ },
+ "00593c60": {
+  "line": 155,
+  "path": "2008-06/src/Client/App/script/ThreadRef.cpp"
+ },
+ "00593cb0": {
+  "line": 116,
+  "path": "2008-06/src/Client/App/script/ThreadRef.cpp"
+ },
+ "00594060": {
+  "line": 41,
+  "path": "2008-06/src/Client/App/script/ThreadRef.cpp"
+ },
+ "00594100": {
+  "line": 49,
+  "path": "2008-06/src/Client/App/script/ThreadRef.cpp"
+ },
+ "00594210": {
+  "line": 88,
+  "path": "2008-06/src/Client/App/script/ThreadRef.cpp"
+ },
+ "00594290": {
+  "line": 101,
+  "path": "2008-06/src/Client/App/script/ThreadRef.cpp"
+ },
+ "00594380": {
+  "line": 36,
+  "path": "2008-06/src/Client/App/script/ThreadRef.cpp"
+ },
+ "00594470": {
+  "line": 149,
+  "path": "2008-06/src/Client/App/script/ThreadRef.cpp"
+ },
+ "00594570": {
+  "line": 109,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/any.hpp"
+ },
+ "00594680": {
+  "line": 121,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/any.hpp"
+ },
+ "005948f0": {
+  "line": 106,
+  "path": "2008-06/src/Client/App/script/ThreadRef.cpp"
+ },
+ "00594b40": {
+  "line": 24,
+  "path": "2008-06/src/Client/App/reflection/type.cpp"
+ },
+ "00594bf0": {
+  "line": 19,
+  "path": "2008-06/src/Client/App/reflection/type.cpp"
+ },
+ "00594d60": {
+  "line": 38,
+  "path": "2008-06/src/Client/App/util/Handle.cpp"
+ },
+ "00594de0": {
+  "line": 22,
+  "path": "2008-06/src/Client/App/util/Handle.cpp"
+ },
+ "00595790": {
+  "line": 8,
+  "path": "2008-06/src/Client/App/reflection/reflection_function.cpp"
+ },
+ "00595a30": {
+  "line": 31,
+  "path": "2008-06/src/Client/App/include/util/boost.hpp"
+ },
+ "00595a80": {
+  "line": 40,
+  "path": "2008-06/src/Client/App/util/boost.cpp"
+ },
+ "00595ae0": {
+  "line": 76,
+  "path": "2008-06/src/Client/App/util/boost.cpp"
+ },
+ "00595cb0": {
+  "line": 112,
+  "path": "2008-06/src/Client/App/util/boost.cpp"
+ },
+ "00595d70": {
+  "line": 119,
+  "path": "2008-06/src/Client/App/util/boost.cpp"
+ },
+ "00595de0": {
+  "line": 130,
+  "path": "2008-06/src/Client/App/util/boost.cpp"
+ },
+ "005961d0": {
+  "line": 258,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/bind.hpp"
+ },
+ "00596db0": {
+  "line": 58,
+  "path": "2008-06/src/Client/App/util/boost.cpp"
+ },
+ "005971d0": {
+  "line": 106,
+  "path": "2008-06/src/Client/App/util/boost.cpp"
+ },
+ "00597350": {
+  "line": 59,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Decal.h"
+ },
+ "00597360": {
+  "line": 66,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Decal.h"
+ },
+ "005978a0": {
+  "line": 151,
+  "path": "2008-06/src/Client/App/include/reflection/property.h"
+ },
+ "00597d80": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "00597e20": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "00598400": {
+  "line": 15,
+  "path": "2008-06/src/Client/App/v8datamodel/Decal.cpp"
+ },
+ "00598610": {
+  "line": 22,
+  "path": "2008-06/src/Client/App/v8datamodel/Decal.cpp"
+ },
+ "00598870": {
+  "line": 52,
+  "path": "2008-06/src/Client/App/v8datamodel/Decal.cpp"
+ },
+ "00598a50": {
+  "line": 46,
+  "path": "2008-06/src/Client/App/include/v8world/Controller.h"
+ },
+ "00598b60": {
+  "line": 213,
+  "path": "2008-06/src/Client/App/include/v8world/Primitive.h"
+ },
+ "00598bd0": {
+  "line": 121,
+  "path": "2008-06/src/Client/App/include/v8datamodel/PartInstance.h"
+ },
+ "00598be0": {
+  "line": 155,
+  "path": "2008-06/src/Client/App/include/v8datamodel/PartInstance.h"
+ },
+ "00598bf0": {
+  "line": 183,
+  "path": "2008-06/src/Client/App/include/v8datamodel/PartInstance.h"
+ },
+ "00598c10": {
+  "line": 191,
+  "path": "2008-06/src/Client/App/include/v8datamodel/PartInstance.h"
+ },
+ "00598c20": {
+  "line": 857,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "00598cb0": {
+  "line": 178,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "00598cc0": {
+  "line": 188,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "00598cd0": {
+  "line": 208,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "00598ce0": {
+  "line": 213,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "00598d10": {
+  "line": 218,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "00598d50": {
+  "line": 233,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "00598d60": {
+  "line": 238,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "00598d70": {
+  "line": 248,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "00598fa0": {
+  "line": 256,
+  "path": "2008-06/src/Client/Rendering/g3d/include/G3D/ReferenceCount.h"
+ },
+ "005993e0": {
+  "line": 253,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "005994c0": {
+  "line": 266,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "005995f0": {
+  "line": 105,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "00599640": {
+  "line": 124,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "00599770": {
+  "line": 143,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "005997c0": {
+  "line": 154,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "00599830": {
+  "line": 183,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "00599870": {
+  "line": 203,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "00599b70": {
+  "line": 23,
+  "path": "2008-06/src/Client/App/include/util/ComputeProp.h"
+ },
+ "00599bc0": {
+  "line": 129,
+  "path": "2008-06/src/Client/Rendering/g3d/include/G3D/Array.h"
+ },
+ "00599ce0": {
+  "line": 231,
+  "path": "2008-06/src/Client/App/include/reflection/reflection.h"
+ },
+ "00599d70": {
+  "line": 236,
+  "path": "2008-06/src/Client/App/include/reflection/reflection.h"
+ },
+ "00599e50": {
+  "line": 77,
+  "path": "2008-06/src/Client/App/include/v8world/Controller.h"
+ },
+ "00599f80": {
+  "line": 308,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "00599fa0": {
+  "line": 323,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "0059a040": {
+  "line": 336,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "0059a0d0": {
+  "line": 23,
+  "path": "2008-06/src/Client/App/include/util/ComputeProp.h"
+ },
+ "0059a4b0": {
+  "line": 151,
+  "path": "2008-06/src/Client/App/include/reflection/property.h"
+ },
+ "0059aa40": {
+  "line": 849,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "0059aa90": {
+  "line": 293,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "0059ab80": {
+  "line": 355,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "0059abb0": {
+  "line": 416,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "0059abe0": {
+  "line": 523,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "0059b970": {
+  "line": 83,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "0059c0d0": {
+  "line": 217,
+  "path": "2008-06/src/Client/App/include/v8datamodel/PartInstance.h"
+ },
+ "0059c3a0": {
+  "line": 217,
+  "path": "2008-06/src/Client/App/include/v8datamodel/PartInstance.h"
+ },
+ "0059c640": {
+  "line": 563,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "0059d4d0": {
+  "line": 54,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "0059d7f0": {
+  "line": 396,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "0059d8a0": {
+  "line": 574,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "0059da10": {
+  "line": 827,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "0059dad0": {
+  "line": 838,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "0059dd20": {
+  "line": 651,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "0059ddf0": {
+  "line": 687,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "0059dee0": {
+  "line": 705,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "0059df40": {
+  "line": 723,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "0059df70": {
+  "line": 733,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "0059e430": {
+  "line": 406,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "0059e4d0": {
+  "line": 421,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "0059eb50": {
+  "line": 785,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "0059ec90": {
+  "line": 406,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "0059ece0": {
+  "line": 152,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "0059ee00": {
+  "line": 231,
+  "path": "2008-06/src/Client/App/include/reflection/reflection.h"
+ },
+ "0059f260": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "0059fbb0": {
+  "line": 14,
+  "path": "2008-06/src/Client/App/v8datamodel/custommesh.cpp"
+ },
+ "0059ffd0": {
+  "line": 76,
+  "path": "2008-06/src/Client/App/v8datamodel/custommesh.cpp"
+ },
+ "005a0030": {
+  "line": 86,
+  "path": "2008-06/src/Client/App/v8datamodel/custommesh.cpp"
+ },
+ "005a0140": {
+  "line": 73,
+  "path": "2008-06/src/Client/App/include/v8datamodel/MouseCommand.h"
+ },
+ "005a0150": {
+  "line": 81,
+  "path": "2008-06/src/Client/App/include/v8datamodel/MouseCommand.h"
+ },
+ "005a01e0": {
+  "line": 52,
+  "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
+ },
+ "005a0210": {
+  "line": 57,
+  "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
+ },
+ "005a0240": {
+  "line": 62,
+  "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
+ },
+ "005a0260": {
+  "line": 78,
+  "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
+ },
+ "005a0280": {
+  "line": 85,
+  "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
+ },
+ "005a04a0": {
+  "line": 86,
+  "path": "2008-06/src/Client/App/include/v8datamodel/MouseCommand.h"
+ },
+ "005a04b0": {
+  "line": 40,
+  "path": "2008-06/src/Client/App/include/tool/ToolsArrow.h"
+ },
+ "005a05a0": {
+  "line": 118,
+  "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
+ },
+ "005a0610": {
+  "line": 90,
+  "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
+ },
+ "005a0660": {
+  "line": 96,
+  "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
+ },
+ "005a0690": {
+  "line": 483,
+  "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
+ },
+ "005a0740": {
+  "line": 174,
+  "path": "2008-06/src/glue/rbxgs/glue_runtime.cpp"
+ },
+ "005a0e40": {
+  "line": 239,
+  "path": "2008-06/src/Client/Rendering/g3d/include/G3D/Array.h"
+ },
+ "005a0f80": {
+  "line": 110,
+  "path": "2008-06/src/Client/App/include/v8datamodel/MouseCommand.h"
+ },
+ "005a16b0": {
+  "line": 456,
+  "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
+ },
+ "005a1750": {
+  "line": 456,
+  "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
+ },
+ "005a17f0": {
+  "line": 247,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005a1830": {
+  "line": 148,
+  "path": "2008-06/src/Client/App/include/util/Name.h"
+ },
+ "005a1b90": {
+  "line": 131,
+  "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
+ },
+ "005a1bc0": {
+  "line": 158,
+  "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
+ },
+ "005a1c20": {
+  "line": 137,
+  "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
+ },
+ "005a1ce0": {
+  "line": 201,
+  "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
+ },
+ "005a1e80": {
+  "line": 223,
+  "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
+ },
+ "005a1fc0": {
+  "line": 235,
+  "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
+ },
+ "005a20e0": {
+  "line": 142,
+  "path": "2008-06/src/glue/rbxgs/glue_runtime.cpp"
+ },
+ "005a2730": {
+  "line": 287,
+  "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
+ },
+ "005a2760": {
+  "line": 293,
+  "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
+ },
+ "005a27c0": {
+  "line": 303,
+  "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
+ },
+ "005a2c30": {
+  "line": 83,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Workspace.h"
+ },
+ "005a2c90": {
+  "line": 379,
+  "path": "2008-06/src/Client/App/v8datamodel/ModelInstance.cpp"
+ },
+ "005a2d10": {
+  "line": 368,
+  "path": "2008-06/src/Client/App/v8datamodel/ModelInstance.cpp"
+ },
+ "005a2d50": {
+  "line": 317,
+  "path": "2008-06/src/Client/App/v8datamodel/ModelInstance.cpp"
+ },
+ "005a2d90": {
+  "line": 87,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Workspace.h"
+ },
+ "005a2db0": {
+  "line": 91,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Workspace.h"
+ },
+ "005a3380": {
+  "line": 308,
+  "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
+ },
+ "005a33d0": {
+  "line": 334,
+  "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
+ },
+ "005a3470": {
+  "line": 164,
+  "path": "2008-06/src/glue/rbxgs/glue_runtime.cpp"
+ },
+ "005a36d0": {
+  "line": 429,
+  "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
+ },
+ "005a4d90": {
+  "line": 25,
+  "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
+ },
+ "005a59e0": {
+  "line": 508,
+  "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
+ },
+ "005a66b0": {
+  "line": 455,
+  "path": "2008-06/src/Client/App/v8datamodel/Workspace.cpp"
+ },
+ "005a6bc0": {
+  "line": 31,
+  "path": "2008-06/src/Client/App/util/Log.cpp"
+ },
+ "005a6c60": {
+  "line": 46,
+  "path": "2008-06/src/Client/App/util/Log.cpp"
+ },
+ "005a7770": {
+  "line": 6,
+  "path": "2008-06/src/Client/App/util/FileSystem.cpp"
+ },
+ "005a7780": {
+  "line": 12,
+  "path": "2008-06/src/Client/App/util/FileSystem.cpp"
+ },
+ "005a7ea0": {
+  "line": 71,
+  "path": "2008-06/src/Client/App/util/FileSystem.cpp"
+ },
+ "005a8140": {
+  "line": 54,
+  "path": "2008-06/src/Client/App/util/Guid.cpp"
+ },
+ "005a8260": {
+  "line": 12,
+  "path": "2008-06/src/Client/App/util/Guid.cpp"
+ },
+ "005a8300": {
+  "line": 21,
+  "path": "2008-06/src/Client/App/util/Guid.cpp"
+ },
+ "005a8440": {
+  "line": 91,
+  "path": "2008-06/src/Client/App/util/Guid.cpp"
+ },
+ "005a8590": {
+  "line": 22,
+  "path": "2008-06/src/Client/App/include/lua/lua.hpp"
+ },
+ "005a86c0": {
+  "line": 89,
+  "path": "2008-06/src/Client/App/include/script/ScriptContext.h"
+ },
+ "005a8d40": {
+  "line": 87,
+  "path": "2008-06/src/Client/App/include/script/LuaAtomicClasses.h"
+ },
+ "005a9000": {
+  "line": 26,
+  "path": "2008-06/src/Client/App/include/script/LuaAtomicClasses.h"
+ },
+ "005a9040": {
+  "line": 62,
+  "path": "2008-06/src/Client/App/include/script/LuaAtomicClasses.h"
+ },
+ "005a97c0": {
+  "line": 146,
+  "path": "2008-06/src/Client/App/include/lua/LuaBridge.h"
+ },
+ "005aa000": {
+  "line": 235,
+  "path": "2008-06/src/Client/App/include/script/LuaArguments.h"
+ },
+ "005aa2f0": {
+  "line": 32,
+  "path": "2008-06/src/Client/App/include/lua/LuaBridge.h"
+ },
+ "005aa460": {
+  "line": 32,
+  "path": "2008-06/src/Client/App/include/lua/LuaBridge.h"
+ },
+ "005abf90": {
+  "line": 252,
+  "path": "2008-06/src/Client/App/script/ScriptContext.cpp"
+ },
+ "005ac030": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005ac2f0": {
+  "line": 235,
+  "path": "2008-06/src/Client/App/include/script/LuaArguments.h"
+ },
+ "005ac560": {
+  "line": 74,
+  "path": "2008-06/src/Client/App/include/lua/LuaBridge.h"
+ },
+ "005ae210": {
+  "line": 72,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/scoped_ptr.hpp"
+ },
+ "005b0830": {
+  "line": 94,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Accoutrement.h"
+ },
+ "005b0840": {
+  "line": 34,
+  "path": "2008-06/src/Client/App/v8datamodel/Accoutrement.cpp"
+ },
+ "005b08a0": {
+  "line": 489,
+  "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
+ },
+ "005b0940": {
+  "line": 56,
+  "path": "2008-06/src/Client/App/v8datamodel/Accoutrement.cpp"
+ },
+ "005b09c0": {
+  "line": 66,
+  "path": "2008-06/src/Client/App/v8datamodel/Accoutrement.cpp"
+ },
+ "005b09e0": {
+  "line": 71,
+  "path": "2008-06/src/Client/App/v8datamodel/Accoutrement.cpp"
+ },
+ "005b0b70": {
+  "line": 81,
+  "path": "2008-06/src/Client/App/v8datamodel/Accoutrement.cpp"
+ },
+ "005b0bd0": {
+  "line": 231,
+  "path": "2008-06/src/Client/App/include/reflection/reflection.h"
+ },
+ "005b0da0": {
+  "line": 24,
+  "path": "2008-06/src/Client/App/v8datamodel/Accoutrement.cpp"
+ },
+ "005b0f90": {
+  "line": 81,
+  "path": "2008-06/src/Client/App/v8datamodel/Accoutrement.cpp"
+ },
+ "005b0fa0": {
+  "line": 110,
+  "path": "2008-06/src/Client/App/v8datamodel/Accoutrement.cpp"
+ },
+ "005b1020": {
+  "line": 119,
+  "path": "2008-06/src/Client/App/v8datamodel/Accoutrement.cpp"
+ },
+ "005b1230": {
+  "line": 152,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005b1470": {
+  "line": 110,
+  "path": "2008-06/src/Client/App/v8datamodel/Accoutrement.cpp"
+ },
+ "005b1480": {
+  "line": 182,
+  "path": "2008-06/src/Client/App/v8datamodel/Accoutrement.cpp"
+ },
+ "005b16e0": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005b1700": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005b2230": {
+  "line": 18,
+  "path": "2008-06/src/Client/App/v8datamodel/Accoutrement.cpp"
+ },
+ "005b24e0": {
+  "line": 230,
+  "path": "2008-06/src/Client/App/v8datamodel/Accoutrement.cpp"
+ },
+ "005b25f0": {
+  "line": 64,
+  "path": "2008-06/src/glue/rbxgs/glue_equipables.cpp"
+ },
+ "005b2670": {
+  "line": 239,
+  "path": "2008-06/src/Client/App/v8datamodel/Accoutrement.cpp"
+ },
+ "005b2700": {
+  "line": 258,
+  "path": "2008-06/src/Client/App/v8datamodel/Accoutrement.cpp"
+ },
+ "005b2d10": {
+  "line": 400,
+  "path": "2008-06/src/Client/App/v8datamodel/Accoutrement.cpp"
+ },
+ "005b4410": {
+  "line": 5,
+  "path": "2008-06/src/Client/App/v8datamodel/BrickColor.cpp"
+ },
+ "005b4570": {
+  "line": 152,
+  "path": "2008-06/src/Client/App/include/v8datamodel/BrickColor.h"
+ },
+ "005b4630": {
+  "line": 73,
+  "path": "2008-06/src/Client/App/v8datamodel/BrickColor.cpp"
+ },
+ "005b5c20": {
+  "line": 224,
+  "path": "2008-06/src/Client/App/v8datamodel/BrickColor.cpp"
+ },
+ "005b5c80": {
+  "line": 230,
+  "path": "2008-06/src/Client/App/v8datamodel/BrickColor.cpp"
+ },
+ "005b5c90": {
+  "line": 235,
+  "path": "2008-06/src/Client/App/v8datamodel/BrickColor.cpp"
+ },
+ "005b5cb0": {
+  "line": 240,
+  "path": "2008-06/src/Client/App/v8datamodel/BrickColor.cpp"
+ },
+ "005b5ee0": {
+  "line": 254,
+  "path": "2008-06/src/Client/App/v8datamodel/BrickColor.cpp"
+ },
+ "005b61b0": {
+  "line": 305,
+  "path": "2008-06/src/Client/App/v8datamodel/BrickColor.cpp"
+ },
+ "005b6200": {
+  "line": 310,
+  "path": "2008-06/src/Client/App/v8datamodel/BrickColor.cpp"
+ },
+ "005b6270": {
+  "line": 315,
+  "path": "2008-06/src/Client/App/v8datamodel/BrickColor.cpp"
+ },
+ "005b6590": {
+  "line": 70,
+  "path": "2008-06/src/Client/Network/include/Network/Player.h"
+ },
+ "005b7400": {
+  "line": 236,
+  "path": "2008-06/src/Client/App/include/reflection/reflection.h"
+ },
+ "005bf260": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005c3f00": {
+  "line": 9,
+  "path": "2008-06/src/Client/App/util/Profiling.cpp"
+ },
+ "005c4400": {
+  "line": 20,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Visit.h"
+ },
+ "005c4450": {
+  "line": 152,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005c4720": {
+  "line": 258,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/bind.hpp"
+ },
+ "005c4790": {
+  "line": 18,
+  "path": "2008-06/src/Client/App/v8datamodel/Visit.cpp"
+ },
+ "005c48f0": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005c4bb0": {
+  "line": 20,
+  "path": "2008-06/src/Client/App/v8datamodel/Visit.cpp"
+ },
+ "005c8930": {
+  "line": 13,
+  "path": "2008-06/src/Client/App/script/LuaMemory.cpp"
+ },
+ "005c8960": {
+  "line": 19,
+  "path": "2008-06/src/Client/App/script/LuaMemory.cpp"
+ },
+ "005c8990": {
+  "line": 67,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/pool/simple_segregated_storage.hpp"
+ },
+ "005c89e0": {
+  "line": 427,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/pool/pool.hpp"
+ },
+ "005c8a60": {
+  "line": 401,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/pool/pool.hpp"
+ },
+ "005c8aa0": {
+  "line": 78,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/pool/detail/singleton.hpp"
+ },
+ "005c8b00": {
+  "line": 78,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/pool/detail/singleton.hpp"
+ },
+ "005c8b60": {
+  "line": 55,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/pool/singleton_pool.hpp"
+ },
+ "005c8bd0": {
+  "line": 55,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/pool/singleton_pool.hpp"
+ },
+ "005c8c40": {
+  "line": 33,
+  "path": "2008-06/src/Client/App/script/LuaMemory.cpp"
+ },
+ "005ca370": {
+  "line": 49,
+  "path": "2008-06/src/Client/App/include/v8datamodel/UserController.h"
+ },
+ "005ca420": {
+  "line": 62,
+  "path": "2008-06/src/Client/App/v8datamodel/UserController.cpp"
+ },
+ "005ca430": {
+  "line": 67,
+  "path": "2008-06/src/Client/App/v8datamodel/UserController.cpp"
+ },
+ "005ca500": {
+  "line": 42,
+  "path": "2008-06/src/glue/rbxgs/glue_input.cpp"
+ },
+ "005ca760": {
+  "line": 47,
+  "path": "2008-06/src/glue/rbxgs/glue_input.cpp"
+ },
+ "005ca940": {
+  "line": 152,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005cab00": {
+  "line": 94,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/weak_ptr.hpp"
+ },
+ "005cac20": {
+  "line": 104,
+  "path": "2008-06/src/Client/App/v8datamodel/UserController.cpp"
+ },
+ "005cada0": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005cadc0": {
+  "line": 124,
+  "path": "2008-06/src/Client/App/v8datamodel/UserController.cpp"
+ },
+ "005cb080": {
+  "line": 159,
+  "path": "2008-06/src/Client/App/v8datamodel/UserController.cpp"
+ },
+ "005cb0e0": {
+  "line": 175,
+  "path": "2008-06/src/Client/App/v8datamodel/UserController.cpp"
+ },
+ "005cb140": {
+  "line": 192,
+  "path": "2008-06/src/Client/App/v8datamodel/UserController.cpp"
+ },
+ "005cb210": {
+  "line": 60,
+  "path": "2008-06/src/Client/App/v8datamodel/UserController.cpp"
+ },
+ "005cb280": {
+  "line": 166,
+  "path": "2008-06/src/Client/App/include/v8datamodel/UserController.h"
+ },
+ "005cb2f0": {
+  "line": 185,
+  "path": "2008-06/src/Client/App/v8datamodel/UserController.cpp"
+ },
+ "005cb3e0": {
+  "line": 197,
+  "path": "2008-06/src/Client/App/v8datamodel/UserController.cpp"
+ },
+ "005cb530": {
+  "line": 13,
+  "path": "2008-06/src/glue/rbxgs/glue_player_controller.cpp"
+ },
+ "005cb820": {
+  "line": 48,
+  "path": "2008-06/src/Client/App/v8datamodel/UserController.cpp"
+ },
+ "005cb990": {
+  "line": 177,
+  "path": "2008-06/src/Client/App/include/v8datamodel/UserController.h"
+ },
+ "005cb9b0": {
+  "line": 193,
+  "path": "2008-06/src/Client/App/include/v8datamodel/UserController.h"
+ },
+ "005cb9e0": {
+  "line": 13,
+  "path": "2008-06/src/Client/App/v8datamodel/UserController.cpp"
+ },
+ "005cbd10": {
+  "line": 24,
+  "path": "2008-06/src/Client/App/v8datamodel/UserController.cpp"
+ },
+ "005cbf20": {
+  "line": 65,
+  "path": "2008-06/src/Client/App/v8datamodel/Camera.cpp"
+ },
+ "005cbf50": {
+  "line": 70,
+  "path": "2008-06/src/Client/App/v8datamodel/Camera.cpp"
+ },
+ "005cc000": {
+  "line": 118,
+  "path": "2008-06/src/Client/App/v8datamodel/Camera.cpp"
+ },
+ "005cc010": {
+  "line": 82,
+  "path": "2008-06/src/Client/App/v8datamodel/Camera.cpp"
+ },
+ "005cc120": {
+  "line": 152,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005cc450": {
+  "line": 336,
+  "path": "2008-06/src/Client/App/v8datamodel/Camera.cpp"
+ },
+ "005cd220": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005cd9a0": {
+  "line": 27,
+  "path": "2008-06/src/Client/App/v8datamodel/Camera.cpp"
+ },
+ "005cdbf0": {
+  "line": 45,
+  "path": "2008-06/src/Client/App/v8datamodel/Camera.cpp"
+ },
+ "005cddd0": {
+  "line": 346,
+  "path": "2008-06/src/Client/App/v8datamodel/Camera.cpp"
+ },
+ "005cde10": {
+  "line": 357,
+  "path": "2008-06/src/Client/App/v8datamodel/Camera.cpp"
+ },
+ "005cdf00": {
+  "line": 371,
+  "path": "2008-06/src/Client/App/v8datamodel/Camera.cpp"
+ },
+ "005cdf70": {
+  "line": 382,
+  "path": "2008-06/src/Client/App/v8datamodel/Camera.cpp"
+ },
+ "005ce440": {
+  "line": 464,
+  "path": "2008-06/src/Client/App/v8datamodel/Camera.cpp"
+ },
+ "005cf070": {
+  "line": 7,
+  "path": "2008-06/src/Client/App/security/SecurityContext.cpp"
+ },
+ "005cf160": {
+  "line": 45,
+  "path": "2008-06/src/Client/App/v8datamodel/Hopper.cpp"
+ },
+ "005cf1c0": {
+  "line": 25,
+  "path": "2008-06/src/Client/App/v8datamodel/Hopper.cpp"
+ },
+ "005cf4e0": {
+  "line": 27,
+  "path": "2008-06/src/Client/App/include/gui/Widget.h"
+ },
+ "005cf4f0": {
+  "line": 54,
+  "path": "2008-06/src/Client/App/include/gui/Widget.h"
+ },
+ "005cf500": {
+  "line": 59,
+  "path": "2008-06/src/Client/App/include/gui/Widget.h"
+ },
+ "005cf530": {
+  "line": 64,
+  "path": "2008-06/src/Client/App/include/gui/Widget.h"
+ },
+ "005cf690": {
+  "line": 204,
+  "path": "2008-06/src/Client/App/include/reflection/reflection.h"
+ },
+ "005cf6d0": {
+  "line": 204,
+  "path": "2008-06/src/Client/App/include/gui/Gui.h"
+ },
+ "005cf770": {
+  "line": 230,
+  "path": "2008-06/src/Client/App/include/gui/Gui.h"
+ },
+ "005cf870": {
+  "line": 52,
+  "path": "2008-06/src/glue/rbxgs/glue_misc.cpp"
+ },
+ "005cf8d0": {
+  "line": 17,
+  "path": "2008-06/src/Client/App/include/v8datamodel/ScriptMouseCommand.h"
+ },
+ "005cf900": {
+  "line": 20,
+  "path": "2008-06/src/Client/App/v8datamodel/Hopper.cpp"
+ },
+ "005cfcd0": {
+  "line": 192,
+  "path": "2008-06/src/Client/App/v8datamodel/Hopper.cpp"
+ },
+ "005cfdf0": {
+  "line": 247,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005cfe10": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005cfe30": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005cff30": {
+  "line": 50,
+  "path": "2008-06/src/Client/App/v8datamodel/Hopper.cpp"
+ },
+ "005cff60": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005d0530": {
+  "line": 245,
+  "path": "2008-06/src/Client/App/include/reflection/reflection.h"
+ },
+ "005d05d0": {
+  "line": 131,
+  "path": "2008-06/src/glue/rbxgs/glue_link_stubs.cpp"
+ },
+ "005d0910": {
+  "line": 226,
+  "path": "2008-06/src/Client/App/v8datamodel/Hopper.cpp"
+ },
+ "005d11e0": {
+  "line": 55,
+  "path": "2008-06/src/Client/App/v8datamodel/Hopper.cpp"
+ },
+ "005d1340": {
+  "line": 115,
+  "path": "2008-06/src/Client/App/v8datamodel/Hopper.cpp"
+ },
+ "005d1370": {
+  "line": 138,
+  "path": "2008-06/src/Client/App/v8datamodel/Hopper.cpp"
+ },
+ "005d13d0": {
+  "line": 97,
+  "path": "2008-06/src/Client/App/v8datamodel/Hopper.cpp"
+ },
+ "005d15a0": {
+  "line": 75,
+  "path": "2008-06/src/Client/App/v8datamodel/Hopper.cpp"
+ },
+ "005d1670": {
+  "line": 112,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Hopper.h"
+ },
+ "005d18c0": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005d18e0": {
+  "line": 180,
+  "path": "2008-06/src/glue/rbxgs/glue_runtime.cpp"
+ },
+ "005d1a80": {
+  "line": 5,
+  "path": "2008-06/src/Client/App/v8datamodel/Backpack.cpp"
+ },
+ "005d1ba0": {
+  "line": 16,
+  "path": "2008-06/src/Client/App/v8datamodel/SpawnLocation.cpp"
+ },
+ "005d1bb0": {
+  "line": 152,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005d2390": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005d3490": {
+  "line": 8,
+  "path": "2008-06/src/Client/App/v8datamodel/SpawnLocation.cpp"
+ },
+ "005d36b0": {
+  "line": 406,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "005d37a0": {
+  "line": 217,
+  "path": "2008-06/src/Client/App/include/v8datamodel/PartInstance.h"
+ },
+ "005d37b0": {
+  "line": 21,
+  "path": "2008-06/src/Client/App/v8datamodel/SpawnLocation.cpp"
+ },
+ "005d3a30": {
+  "line": 46,
+  "path": "2008-06/src/Client/App/v8datamodel/CharacterAppearance.cpp"
+ },
+ "005d3aa0": {
+  "line": 75,
+  "path": "2008-06/src/Client/App/v8datamodel/CharacterAppearance.cpp"
+ },
+ "005d41a0": {
+  "line": 456,
+  "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
+ },
+ "005d4240": {
+  "line": 27,
+  "path": "2008-06/src/Client/App/v8datamodel/CharacterAppearance.cpp"
+ },
+ "005d4290": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005d42b0": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005d42d0": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005d42f0": {
+  "line": 15,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005d4b60": {
+  "line": 115,
+  "path": "2008-06/src/Client/App/v8datamodel/CharacterAppearance.cpp"
+ },
+ "005d4c40": {
+  "line": 7,
+  "path": "2008-06/src/Client/App/v8datamodel/CharacterAppearance.cpp"
+ },
+ "005d5510": {
+  "line": 22,
+  "path": "2008-06/src/Client/App/v8datamodel/CharacterAppearance.cpp"
+ },
+ "005d58c0": {
+  "line": 69,
+  "path": "2008-06/src/Client/App/v8datamodel/CharacterAppearance.cpp"
+ },
+ "005d59c0": {
+  "line": 104,
+  "path": "2008-06/src/Client/App/v8datamodel/CharacterAppearance.cpp"
+ },
+ "005d5b80": {
+  "line": 152,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005d5c90": {
+  "line": 18,
+  "path": "2008-06/src/Client/App/v8datamodel/Teams.cpp"
+ },
+ "005d5d60": {
+  "line": 85,
+  "path": "2008-06/src/Client/App/v8tree/Instance.cpp"
+ },
+ "005d5e10": {
+  "line": 46,
+  "path": "2008-06/src/Client/App/v8datamodel/Teams.cpp"
+ },
+ "005d5ed0": {
+  "line": 35,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Teams.h"
+ },
+ "005d5fe0": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005d60f0": {
+  "line": 22,
+  "path": "2008-06/src/Client/App/v8datamodel/Teams.cpp"
+ },
+ "005d6250": {
+  "line": 90,
+  "path": "2008-06/src/Client/App/v8datamodel/Teams.cpp"
+ },
+ "005d6340": {
+  "line": 119,
+  "path": "2008-06/src/Client/App/v8datamodel/Teams.cpp"
+ },
+ "005d6400": {
+  "line": 128,
+  "path": "2008-06/src/Client/App/v8datamodel/Teams.cpp"
+ },
+ "005d6850": {
+  "line": 12,
+  "path": "2008-06/src/Client/App/v8datamodel/Teams.cpp"
+ },
+ "005d6960": {
+  "line": 152,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005d6bd0": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005d6e10": {
+  "line": 10,
+  "path": "2008-06/src/Client/App/v8datamodel/TimerService.cpp"
+ },
+ "005d6f70": {
+  "line": 36,
+  "path": "2008-06/src/Client/App/v8datamodel/TimerService.cpp"
+ },
+ "005d71b0": {
+  "line": 8,
+  "path": "2008-06/src/Client/App/v8datamodel/TimerService.cpp"
+ },
+ "005d73a0": {
+  "line": 64,
+  "path": "2008-06/src/Client/App/v8datamodel/TimerService.cpp"
+ },
+ "005d74d0": {
+  "line": 129,
+  "path": "2008-06/src/Client/App/include/humanoid/Humanoid.h"
+ },
+ "005d7500": {
+  "line": 136,
+  "path": "2008-06/src/Client/App/include/humanoid/Humanoid.h"
+ },
+ "005d7510": {
+  "line": 143,
+  "path": "2008-06/src/Client/App/include/humanoid/Humanoid.h"
+ },
+ "005d7520": {
+  "line": 157,
+  "path": "2008-06/src/Client/App/include/humanoid/Humanoid.h"
+ },
+ "005d7530": {
+  "line": 171,
+  "path": "2008-06/src/Client/App/include/humanoid/Humanoid.h"
+ },
+ "005d7550": {
+  "line": 183,
+  "path": "2008-06/src/Client/App/include/humanoid/Humanoid.h"
+ },
+ "005d75a0": {
+  "line": 55,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005d7670": {
+  "line": 80,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005d76a0": {
+  "line": 60,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005d7750": {
+  "line": 65,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005d77b0": {
+  "line": 70,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005d7980": {
+  "line": 150,
+  "path": "2008-06/src/Client/App/include/humanoid/Humanoid.h"
+ },
+ "005d7990": {
+  "line": 75,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005d79b0": {
+  "line": 92,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005d7a30": {
+  "line": 105,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005d7a90": {
+  "line": 114,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005d7b60": {
+  "line": 231,
+  "path": "2008-06/src/Client/App/include/reflection/reflection.h"
+ },
+ "005d7bf0": {
+  "line": 236,
+  "path": "2008-06/src/Client/App/include/reflection/reflection.h"
+ },
+ "005d7fe0": {
+  "line": 239,
+  "path": "2008-06/src/Client/App/include/humanoid/Humanoid.h"
+ },
+ "005d80c0": {
+  "line": 153,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005d8420": {
+  "line": 698,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005d8540": {
+  "line": 498,
+  "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
+ },
+ "005d8a10": {
+  "line": 188,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005d8b10": {
+  "line": 196,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005d8c10": {
+  "line": 204,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005d8d10": {
+  "line": 212,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005d8e10": {
+  "line": 220,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005d8f10": {
+  "line": 228,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005d9010": {
+  "line": 119,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005d9160": {
+  "line": 260,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005d9180": {
+  "line": 266,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005d9210": {
+  "line": 337,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005d9a20": {
+  "line": 158,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005d9d10": {
+  "line": 619,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005d9df0": {
+  "line": 639,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005db280": {
+  "line": 34,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005db560": {
+  "line": 131,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005db600": {
+  "line": 567,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005db9e0": {
+  "line": 627,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005dc150": {
+  "line": 492,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005dc270": {
+  "line": 504,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005dc2b0": {
+  "line": 513,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005dc3d0": {
+  "line": 430,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005dc480": {
+  "line": 540,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005dc540": {
+  "line": 549,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005dc600": {
+  "line": 558,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005dc7f0": {
+  "line": 666,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005dca00": {
+  "line": 444,
+  "path": "2008-06/src/Client/App/humanoid/Humanoid.cpp"
+ },
+ "005dcad0": {
+  "line": 33,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Message.h"
+ },
+ "005dcb50": {
+  "line": 39,
+  "path": "2008-06/src/Client/App/v8datamodel/Message.cpp"
+ },
+ "005dcc60": {
+  "line": 11,
+  "path": "2008-06/src/glue/rbxgs/glue_message.cpp"
+ },
+ "005dcd90": {
+  "line": 24,
+  "path": "2008-06/src/Client/App/v8datamodel/Message.cpp"
+ },
+ "005dcde0": {
+  "line": 21,
+  "path": "2008-06/src/glue/rbxgs/glue_message.cpp"
+ },
+ "005dd120": {
+  "line": 10,
+  "path": "2008-06/src/Client/App/v8datamodel/Message.cpp"
+ },
+ "005dd280": {
+  "line": 15,
+  "path": "2008-06/src/Client/App/v8datamodel/Message.cpp"
+ },
+ "005dd400": {
+  "line": 41,
+  "path": "2008-06/src/Client/App/util/IRenderable.cpp"
+ },
+ "005dd4c0": {
+  "line": 24,
+  "path": "2008-06/src/Client/App/util/IRenderable.cpp"
+ },
+ "005dd4d0": {
+  "line": 30,
+  "path": "2008-06/src/Client/App/util/IRenderable.cpp"
+ },
+ "005dd540": {
+  "line": 12,
+  "path": "2008-06/src/Client/App/util/IRenderable.cpp"
+ },
+ "005dd550": {
+  "line": 56,
+  "path": "2008-06/src/Client/App/util/Quaternion.cpp"
+ },
+ "005dd7b0": {
+  "line": 55,
+  "path": "2008-06/src/Client/App/util/Math.cpp"
+ },
+ "005dd7d0": {
+  "line": 75,
+  "path": "2008-06/src/Client/App/util/Math.cpp"
+ },
+ "005dd860": {
+  "line": 80,
+  "path": "2008-06/src/Client/App/util/Math.cpp"
+ },
+ "005dd940": {
+  "line": 87,
+  "path": "2008-06/src/Client/App/util/Math.cpp"
+ },
+ "005dda70": {
+  "line": 386,
+  "path": "2008-06/src/Client/App/util/Math.cpp"
+ },
+ "005ddb30": {
+  "line": 147,
+  "path": "2008-06/src/Client/App/util/Math.cpp"
+ },
+ "005ddb70": {
+  "line": 152,
+  "path": "2008-06/src/Client/App/util/Math.cpp"
+ },
+ "005ddbb0": {
+  "line": 157,
+  "path": "2008-06/src/Client/App/util/Math.cpp"
+ },
+ "005ddbd0": {
+  "line": 162,
+  "path": "2008-06/src/Client/App/util/Math.cpp"
+ },
+ "005ddc90": {
+  "line": 468,
+  "path": "2008-06/src/Client/App/util/Math.cpp"
+ },
+ "005dde50": {
+  "line": 564,
+  "path": "2008-06/src/Client/App/util/Math.cpp"
+ },
+ "005de090": {
+  "line": 341,
+  "path": "2008-06/src/Client/App/util/Math.cpp"
+ },
+ "005de740": {
+  "line": 199,
+  "path": "2008-06/src/Client/App/util/Math.cpp"
+ },
+ "005de800": {
+  "line": 20,
+  "path": "2008-06/src/Client/App/util/Math.cpp"
+ },
+ "005de890": {
+  "line": 26,
+  "path": "2008-06/src/Client/App/util/Math.cpp"
+ },
+ "005defa0": {
+  "line": 504,
+  "path": "2008-06/src/Client/App/util/Math.cpp"
+ },
+ "005df0a0": {
+  "line": 289,
+  "path": "2008-06/src/Client/App/util/Math.cpp"
+ },
+ "005df4d0": {
+  "line": 49,
+  "path": "2008-06/src/Client/App/v8datamodel/Lighting.cpp"
+ },
+ "005df500": {
+  "line": 54,
+  "path": "2008-06/src/Client/App/v8datamodel/Lighting.cpp"
+ },
+ "005df530": {
+  "line": 274,
+  "path": "2008-06/src/Client/App/v8datamodel/Lighting.cpp"
+ },
+ "005df560": {
+  "line": 152,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005df780": {
+  "line": 491,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/token_functions.hpp"
+ },
+ "005df7e0": {
+  "line": 500,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/token_functions.hpp"
+ },
+ "005df8e0": {
+  "line": 381,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/date_time/int_adapter.hpp"
+ },
+ "005dffa0": {
+  "line": 231,
+  "path": "2008-06/src/Client/App/include/reflection/reflection.h"
+ },
+ "005dffe0": {
+  "line": 236,
+  "path": "2008-06/src/Client/App/include/reflection/reflection.h"
+ },
+ "005e0160": {
+  "line": 67,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/token_iterator.hpp"
+ },
+ "005e04c0": {
+  "line": 456,
+  "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
+ },
+ "005e0650": {
+  "line": 59,
+  "path": "2008-06/src/Client/App/v8datamodel/Lighting.cpp"
+ },
+ "005e0690": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005e0a10": {
+  "line": 86,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/tokenizer.hpp"
+ },
+ "005e0ae0": {
+  "line": 87,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/tokenizer.hpp"
+ },
+ "005e0be0": {
+  "line": 69,
+  "path": "2008-06/src/Client/App/v8datamodel/Lighting.cpp"
+ },
+ "005e0c20": {
+  "line": 48,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/date_time/time_parsing.hpp"
+ },
+ "005e1a40": {
+  "line": 26,
+  "path": "2008-06/src/Client/App/v8datamodel/Lighting.cpp"
+ },
+ "005e2030": {
+  "line": 79,
+  "path": "2008-06/src/Client/App/v8datamodel/Lighting.cpp"
+ },
+ "005e2100": {
+  "line": 248,
+  "path": "2008-06/src/Client/App/v8datamodel/Lighting.cpp"
+ },
+ "005e2160": {
+  "line": 233,
+  "path": "2008-06/src/Client/App/v8datamodel/Lighting.cpp"
+ },
+ "005e2260": {
+  "line": 261,
+  "path": "2008-06/src/Client/App/v8datamodel/Lighting.cpp"
+ },
+ "005e2540": {
+  "line": 135,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Lighting.h"
+ },
+ "005e2570": {
+  "line": 205,
+  "path": "2008-06/src/Client/App/v8datamodel/Lighting.cpp"
+ },
+ "005e26e0": {
+  "line": 228,
+  "path": "2008-06/src/Client/App/v8datamodel/Lighting.cpp"
+ },
+ "005e2730": {
+  "line": 74,
+  "path": "2008-06/src/Client/App/v8datamodel/Lighting.cpp"
+ },
+ "005e2790": {
+  "line": 26,
+  "path": "2008-06/src/Client/App/include/v8world/Geometry.h"
+ },
+ "005e27a0": {
+  "line": 52,
+  "path": "2008-06/src/Client/App/v8datamodel/JointInstance.cpp"
+ },
+ "005e27b0": {
+  "line": 172,
+  "path": "2008-06/src/Client/App/v8datamodel/JointInstance.cpp"
+ },
+ "005e27c0": {
+  "line": 183,
+  "path": "2008-06/src/Client/App/v8datamodel/JointInstance.cpp"
+ },
+ "005e2a10": {
+  "line": 90,
+  "path": "2008-06/src/Client/App/v8datamodel/JointInstance.cpp"
+ },
+ "005e2a70": {
+  "line": 95,
+  "path": "2008-06/src/Client/App/v8datamodel/JointInstance.cpp"
+ },
+ "005e2ad0": {
+  "line": 247,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005e2af0": {
+  "line": 57,
+  "path": "2008-06/src/Client/App/v8datamodel/JointInstance.cpp"
+ },
+ "005e2cd0": {
+  "line": 155,
+  "path": "2008-06/src/Client/App/v8datamodel/JointInstance.cpp"
+ },
+ "005e2e10": {
+  "line": 40,
+  "path": "2008-06/src/Client/App/v8datamodel/JointInstance.cpp"
+ },
+ "005e3040": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005e30e0": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005e31b0": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005e3290": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005e3330": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005e33f0": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005e3490": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005e3790": {
+  "line": 112,
+  "path": "2008-06/src/Client/App/v8datamodel/JointInstance.cpp"
+ },
+ "005e3870": {
+  "line": 28,
+  "path": "2008-06/src/Client/App/v8datamodel/JointInstance.cpp"
+ },
+ "005e3a80": {
+  "line": 118,
+  "path": "2008-06/src/Client/App/v8datamodel/JointInstance.cpp"
+ },
+ "005e4450": {
+  "line": 100,
+  "path": "2008-06/src/Client/App/v8datamodel/JointInstance.cpp"
+ },
+ "005e4470": {
+  "line": 106,
+  "path": "2008-06/src/Client/App/v8datamodel/JointInstance.cpp"
+ },
+ "005e4490": {
+  "line": 177,
+  "path": "2008-06/src/Client/App/v8datamodel/JointInstance.cpp"
+ },
+ "005e44c0": {
+  "line": 188,
+  "path": "2008-06/src/Client/App/v8datamodel/JointInstance.cpp"
+ },
+ "005e4fe0": {
+  "line": 293,
+  "path": "2008-06/src/Client/App/v8datamodel/JointInstance.cpp"
+ },
+ "005e50c0": {
+  "line": 7,
+  "path": "2008-06/src/Client/App/v8world/Mechanism.cpp"
+ },
+ "005e54c0": {
+  "line": 62,
+  "path": "2008-06/src/Client/App/v8datamodel/JointsService.cpp"
+ },
+ "005e5520": {
+  "line": 71,
+  "path": "2008-06/src/Client/App/v8datamodel/JointsService.cpp"
+ },
+ "005e5bf0": {
+  "line": 12,
+  "path": "2008-06/src/Client/App/v8world/MotorJoint.cpp"
+ },
+ "005e5d00": {
+  "line": 93,
+  "path": "2008-06/src/Client/App/v8world/MotorJoint.cpp"
+ },
+ "005e5e00": {
+  "line": 20,
+  "path": "2008-06/src/Client/App/v8world/MotorJoint.cpp"
+ },
+ "005e6110": {
+  "line": 115,
+  "path": "2008-06/src/Client/App/include/v8world/World.h"
+ },
+ "005e61b0": {
+  "line": 179,
+  "path": "2008-06/src/Client/App/v8world/Assembly.cpp"
+ },
+ "005e72a0": {
+  "line": 31,
+  "path": "2008-06/src/Client/App/include/v8world/Geometry.h"
+ },
+ "005e72d0": {
+  "line": 52,
+  "path": "2008-06/src/Client/App/include/v8world/Geometry.h"
+ },
+ "005e7390": {
+  "line": 109,
+  "path": "2008-06/src/Client/App/v8world/Block.cpp"
+ },
+ "005e73d0": {
+  "line": 23,
+  "path": "2008-06/src/Client/App/include/v8world/Ball.h"
+ },
+ "005e73e0": {
+  "line": 27,
+  "path": "2008-06/src/Client/App/include/v8world/Ball.h"
+ },
+ "005e7400": {
+  "line": 31,
+  "path": "2008-06/src/Client/App/include/v8world/Ball.h"
+ },
+ "005e7420": {
+  "line": 617,
+  "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
+ },
+ "005e74c0": {
+  "line": 218,
+  "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
+ },
+ "005e7530": {
+  "line": 234,
+  "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
+ },
+ "005e7550": {
+  "line": 89,
+  "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
+ },
+ "005e7560": {
+  "line": 240,
+  "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
+ },
+ "005e7570": {
+  "line": 240,
+  "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
+ },
+ "005e7580": {
+  "line": 76,
+  "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
+ },
+ "005e7680": {
+  "line": 149,
+  "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
+ },
+ "005e76f0": {
+  "line": 139,
+  "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
+ },
+ "005e7760": {
+  "line": 116,
+  "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
+ },
+ "005e7850": {
+  "line": 154,
+  "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
+ },
+ "005e7870": {
+  "line": 69,
+  "path": "2008-06/src/Client/App/include/v8world/Geometry.h"
+ },
+ "005e78c0": {
+  "line": 47,
+  "path": "2008-06/src/Client/App/include/v8world/Geometry.h"
+ },
+ "005e7980": {
+  "line": 447,
+  "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
+ },
+ "005e7a50": {
+  "line": 464,
+  "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
+ },
+ "005e7bd0": {
+  "line": 193,
+  "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
+ },
+ "005e7be0": {
+  "line": 480,
+  "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
+ },
+ "005e7c80": {
+  "line": 198,
+  "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
+ },
+ "005e7ca0": {
+  "line": 203,
+  "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
+ },
+ "005e7d80": {
+  "line": 208,
+  "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
+ },
+ "005e7f10": {
+  "line": 208,
+  "path": "2008-06/src/Client/App/include/v8world/Primitive.h"
+ },
+ "005e7f20": {
+  "line": 126,
+  "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
+ },
+ "005e8050": {
+  "line": 291,
+  "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
+ },
+ "005e81b0": {
+  "line": 144,
+  "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
+ },
+ "005e82c0": {
+  "line": 97,
+  "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
+ },
+ "005e85e0": {
+  "line": 455,
+  "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
+ },
+ "005e8610": {
+  "line": 591,
+  "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
+ },
+ "005e86f0": {
+  "line": 245,
+  "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
+ },
+ "005e8990": {
+  "line": 584,
+  "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
+ },
+ "005e9190": {
+  "line": 98,
+  "path": "2008-06/src/Client/App/v8world/World.cpp"
+ },
+ "005e9260": {
+  "line": 130,
+  "path": "2008-06/src/Client/App/v8world/World.cpp"
+ },
+ "005e9280": {
+  "line": 136,
+  "path": "2008-06/src/Client/App/v8world/World.cpp"
+ },
+ "005ea920": {
+  "line": 21,
+  "path": "2008-06/src/Client/App/v8world/World.cpp"
+ },
+ "005ead30": {
+  "line": 229,
+  "path": "2008-06/src/Client/App/v8world/World.cpp"
+ },
+ "005eae10": {
+  "line": 219,
+  "path": "2008-06/src/Client/App/v8world/World.cpp"
+ },
+ "005eb020": {
+  "line": 152,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005eb160": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005ec180": {
+  "line": 18,
+  "path": "2008-06/src/Client/App/util/NormalId.cpp"
+ },
+ "005ec290": {
+  "line": 63,
+  "path": "2008-06/src/Client/App/util/NormalId.cpp"
+ },
+ "005ec310": {
+  "line": 82,
+  "path": "2008-06/src/Client/App/util/NormalId.cpp"
+ },
+ "005ec450": {
+  "line": 221,
+  "path": "2008-06/src/Client/App/util/NormalId.cpp"
+ },
+ "005ec570": {
+  "line": 24,
+  "path": "2008-06/src/Client/App/util/NormalId.cpp"
+ },
+ "005ec800": {
+  "line": 131,
+  "path": "2008-06/src/Client/App/util/NormalId.cpp"
+ },
+ "005ec9d0": {
+  "line": 242,
+  "path": "2008-06/src/Client/App/util/NormalId.cpp"
+ },
+ "005ecbb0": {
+  "line": 168,
+  "path": "2008-06/src/glue/rbxgs/glue_surfaces.cpp"
+ },
+ "005ef530": {
+  "line": 11,
+  "path": "2008-06/src/Client/App/v8datamodel/FaceInstance.cpp"
+ },
+ "005f1270": {
+  "line": 6,
+  "path": "2008-06/src/Client/App/v8datamodel/Surface.cpp"
+ },
+ "005f1290": {
+  "line": 18,
+  "path": "2008-06/src/Client/App/v8datamodel/Surface.cpp"
+ },
+ "005f12a0": {
+  "line": 35,
+  "path": "2008-06/src/Client/App/v8datamodel/Surface.cpp"
+ },
+ "005f13c0": {
+  "line": 12,
+  "path": "2008-06/src/Client/App/v8datamodel/Surface.cpp"
+ },
+ "005f2030": {
+  "line": 128,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/filter/gzip.hpp"
+ },
+ "005f2160": {
+  "line": 128,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/filter/gzip.hpp"
+ },
+ "005f21f0": {
+  "line": 530,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/filter/gzip.hpp"
+ },
+ "005f2270": {
+  "line": 577,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/filter/gzip.hpp"
+ },
+ "005f2340": {
+  "line": 334,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/filter/zlib.hpp"
+ },
+ "005f2390": {
+  "line": 359,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/filter/zlib.hpp"
+ },
+ "005f2540": {
+  "line": 158,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/buffer.hpp"
+ },
+ "005f25d0": {
+  "line": 151,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "005f2630": {
+  "line": 151,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "005f2760": {
+  "line": 330,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/filter/zlib.hpp"
+ },
+ "005f27c0": {
+  "line": 18,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/error.hpp"
+ },
+ "005f2840": {
+  "line": 24,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/error.hpp"
+ },
+ "005f2a50": {
+  "line": 151,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "005f2ab0": {
+  "line": 229,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "005f2bc0": {
+  "line": 21,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/error.hpp"
+ },
+ "005f2d20": {
+  "line": 151,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "005f2da0": {
+  "line": 37,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/adapter/non_blocking_adapter.hpp"
+ },
+ "005f3110": {
+  "line": 229,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "005f32f0": {
+  "line": 277,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "005f3580": {
+  "line": 277,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "005f3700": {
+  "line": 381,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "005f4080": {
+  "line": 277,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "005f4350": {
+  "line": 483,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/filter/gzip.hpp"
+ },
+ "005f43e0": {
+  "line": 570,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/filter/gzip.hpp"
+ },
+ "005f4af0": {
+  "line": 229,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "005f4f80": {
+  "line": 277,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "005f5170": {
+  "line": 206,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "005f5180": {
+  "line": 210,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "005f51a0": {
+  "line": 351,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "005f51b0": {
+  "line": 366,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "005f5230": {
+  "line": 406,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "005f5280": {
+  "line": 25,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/closer.hpp"
+ },
+ "005f5320": {
+  "line": 217,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "005f5350": {
+  "line": 548,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/filter/gzip.hpp"
+ },
+ "005f53d0": {
+  "line": 137,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/filter/symmetric.hpp"
+ },
+ "005f54f0": {
+  "line": 268,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/filter/gzip.hpp"
+ },
+ "005f55c0": {
+  "line": 338,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "005f5650": {
+  "line": 220,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/filter/gzip.hpp"
+ },
+ "005f56b0": {
+  "line": 538,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/filter/gzip.hpp"
+ },
+ "005f58c0": {
+  "line": 151,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "005f5ac0": {
+  "line": 206,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "005f5ad0": {
+  "line": 210,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "005f5af0": {
+  "line": 366,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "005f5b90": {
+  "line": 406,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "005f5be0": {
+  "line": 25,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/closer.hpp"
+ },
+ "005f5cc0": {
+  "line": 277,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "005f5d80": {
+  "line": 217,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "005f5db0": {
+  "line": 396,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "005f5eb0": {
+  "line": 313,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "005f5ff0": {
+  "line": 293,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/filter/symmetric.hpp"
+ },
+ "005f6030": {
+  "line": 26,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/adapter/non_blocking_adapter.hpp"
+ },
+ "005f6080": {
+  "line": 338,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "005f6280": {
+  "line": 151,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "005f63b0": {
+  "line": 341,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/filter/gzip.hpp"
+ },
+ "005f6450": {
+  "line": 98,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/filter/symmetric.hpp"
+ },
+ "005f65e0": {
+  "line": 98,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/filter/symmetric.hpp"
+ },
+ "005f6790": {
+  "line": 363,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/filter/gzip.hpp"
+ },
+ "005f67e0": {
+  "line": 382,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/filter/gzip.hpp"
+ },
+ "005f68d0": {
+  "line": 79,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/filtering_stream.hpp"
+ },
+ "005f6930": {
+  "line": 79,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/filtering_stream.hpp"
+ },
+ "005f6990": {
+  "line": 483,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/filter/gzip.hpp"
+ },
+ "005f6bc0": {
+  "line": 570,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/filter/gzip.hpp"
+ },
+ "005f6fd0": {
+  "line": 186,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/filter/gzip.hpp"
+ },
+ "005f7080": {
+  "line": 372,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/filter/gzip.hpp"
+ },
+ "005f71d0": {
+  "line": 363,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/filter/gzip.hpp"
+ },
+ "005f7670": {
+  "line": 397,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/filter/gzip.hpp"
+ },
+ "005f7880": {
+  "line": 372,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/filter/gzip.hpp"
+ },
+ "005f78e0": {
+  "line": 299,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/chain.hpp"
+ },
+ "005f79e0": {
+  "line": 299,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/chain.hpp"
+ },
+ "005f7ae0": {
+  "line": 224,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/chain.hpp"
+ },
+ "005f7c30": {
+  "line": 224,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/chain.hpp"
+ },
+ "005f7d80": {
+  "line": 381,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "005f7e10": {
+  "line": 451,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/filter/gzip.hpp"
+ },
+ "005f80c0": {
+  "line": 277,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "005f81e0": {
+  "line": 396,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "005f8200": {
+  "line": 307,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/filter/gzip.hpp"
+ },
+ "005f8400": {
+  "line": 229,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "005f8770": {
+  "line": 229,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "005f8860": {
+  "line": 77,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/filtering_stream.hpp"
+ },
+ "005f8960": {
+  "line": 77,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/filtering_stream.hpp"
+ },
+ "005fb710": {
+  "line": 152,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005fb7b0": {
+  "line": 152,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005fb900": {
+  "line": 132,
+  "path": "2008-06/src/glue/rbxgs/glue_link_stubs.cpp"
+ },
+ "005fbf10": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005fbf30": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005fbf50": {
+  "line": 27,
+  "path": "2008-06/src/Client/App/include/v8datamodel/LocalBackpack.h"
+ },
+ "005fbff0": {
+  "line": 116,
+  "path": "2008-06/src/Client/App/v8datamodel/LocakBackpack.cpp"
+ },
+ "005fc090": {
+  "line": 8,
+  "path": "2008-06/src/Client/App/v8datamodel/LocakBackpack.cpp"
+ },
+ "005fc100": {
+  "line": 168,
+  "path": "2008-06/src/Client/App/v8datamodel/LocakBackpack.cpp"
+ },
+ "005fc150": {
+  "line": 179,
+  "path": "2008-06/src/Client/App/v8datamodel/LocakBackpack.cpp"
+ },
+ "005fc1d0": {
+  "line": 194,
+  "path": "2008-06/src/Client/App/v8datamodel/LocakBackpack.cpp"
+ },
+ "005fc3b0": {
+  "line": 153,
+  "path": "2008-06/src/Client/App/v8datamodel/LocakBackpack.cpp"
+ },
+ "005fc450": {
+  "line": 27,
+  "path": "2008-06/src/Client/App/v8datamodel/LocakBackpack.cpp"
+ },
+ "005fc730": {
+  "line": 121,
+  "path": "2008-06/src/Client/App/v8datamodel/LocakBackpack.cpp"
+ },
+ "005fccd0": {
+  "line": 6,
+  "path": "2008-06/src/Client/App/v8datamodel/LocakBackpack.cpp"
+ },
+ "005fceb0": {
+  "line": 21,
+  "path": "2008-06/src/Client/App/v8datamodel/LocakBackpack.cpp"
+ },
+ "005fcfb0": {
+  "line": 209,
+  "path": "2008-06/src/Client/App/v8datamodel/LocakBackpack.cpp"
+ },
+ "005fd3a0": {
+  "line": 120,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Tool.h"
+ },
+ "005fd3b0": {
+  "line": 127,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Tool.h"
+ },
+ "005fd3c0": {
+  "line": 132,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Tool.h"
+ },
+ "005fd3e0": {
+  "line": 48,
+  "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
+ },
+ "005fd4c0": {
+  "line": 89,
+  "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
+ },
+ "005fd4e0": {
+  "line": 95,
+  "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
+ },
+ "005fd500": {
+  "line": 101,
+  "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
+ },
+ "005fd580": {
+  "line": 111,
+  "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
+ },
+ "005fd5a0": {
+  "line": 116,
+  "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
+ },
+ "005fd770": {
+  "line": 126,
+  "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
+ },
+ "005fd820": {
+  "line": 231,
+  "path": "2008-06/src/Client/App/include/reflection/reflection.h"
+ },
+ "005fd880": {
+  "line": 231,
+  "path": "2008-06/src/Client/App/include/reflection/reflection.h"
+ },
+ "005fd920": {
+  "line": 231,
+  "path": "2008-06/src/Client/App/include/reflection/reflection.h"
+ },
+ "005fdaf0": {
+  "line": 132,
+  "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
+ },
+ "005fdf00": {
+  "line": 456,
+  "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
+ },
+ "005fdfe0": {
+  "line": 186,
+  "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
+ },
+ "005fe140": {
+  "line": 232,
+  "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
+ },
+ "005fe1d0": {
+  "line": 251,
+  "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
+ },
+ "005fe240": {
+  "line": 148,
+  "path": "2008-06/src/Client/App/include/util/Name.h"
+ },
+ "005fe420": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "005fe4b0": {
+  "line": 37,
+  "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
+ },
+ "005fe600": {
+  "line": 94,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Tool.h"
+ },
+ "005fe6a0": {
+  "line": 126,
+  "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
+ },
+ "005ff3b0": {
+  "line": 37,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Mouse.h"
+ },
+ "005ff680": {
+  "line": 494,
+  "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
+ },
+ "005ff750": {
+  "line": 323,
+  "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
+ },
+ "005ff8d0": {
+  "line": 356,
+  "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
+ },
+ "005ffa10": {
+  "line": 119,
+  "path": "2008-06/src/glue/rbxgs/glue_equipables.cpp"
+ },
+ "005ffb70": {
+  "line": 365,
+  "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
+ },
+ "005ffc00": {
+  "line": 384,
+  "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
+ },
+ "00600240": {
+  "line": 28,
+  "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
+ },
+ "00600420": {
+  "line": 506,
+  "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
+ },
+ "006004b0": {
+  "line": 525,
+  "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
+ },
+ "006004d0": {
+  "line": 531,
+  "path": "2008-06/src/Client/App/v8datamodel/Tool.cpp"
+ },
+ "00606250": {
+  "line": 71,
+  "path": "2008-06/src/Client/App/v8kernel/Connector.cpp"
+ },
+ "00606ca0": {
+  "line": 62,
+  "path": "2008-06/src/Client/App/v8world/Contact.cpp"
+ },
+ "00607ad0": {
+  "line": 91,
+  "path": "2008-06/src/Client/App/v8world/Contact.cpp"
+ },
+ "00608960": {
+  "line": 27,
+  "path": "2008-06/src/Client/App/v8datamodel/PVInstance.cpp"
+ },
+ "006089a0": {
+  "line": 46,
+  "path": "2008-06/src/Client/App/v8datamodel/PVInstance.cpp"
+ },
+ "00608b60": {
+  "line": 75,
+  "path": "2008-06/src/Client/App/v8datamodel/PVInstance.cpp"
+ },
+ "00608ba0": {
+  "line": 103,
+  "path": "2008-06/src/Client/App/v8datamodel/PVInstance.cpp"
+ },
+ "00608bd0": {
+  "line": 110,
+  "path": "2008-06/src/Client/App/v8datamodel/PVInstance.cpp"
+ },
+ "00608bf0": {
+  "line": 197,
+  "path": "2008-06/src/Client/App/v8datamodel/PVInstance.cpp"
+ },
+ "00608c90": {
+  "line": 204,
+  "path": "2008-06/src/Client/App/include/reflection/reflection.h"
+ },
+ "00608d10": {
+  "line": 84,
+  "path": "2008-06/src/Client/App/v8datamodel/PVInstance.cpp"
+ },
+ "00608da0": {
+  "line": 117,
+  "path": "2008-06/src/Client/App/v8datamodel/PVInstance.cpp"
+ },
+ "00608fa0": {
+  "line": 34,
+  "path": "2008-06/src/Client/App/v8datamodel/PVInstance.cpp"
+ },
+ "00609020": {
+  "line": 71,
+  "path": "2008-06/src/Client/App/v8datamodel/PVInstance.cpp"
+ },
+ "00609410": {
+  "line": 245,
+  "path": "2008-06/src/Client/App/include/reflection/reflection.h"
+ },
+ "006098d0": {
+  "line": 15,
+  "path": "2008-06/src/Client/App/v8datamodel/PVInstance.cpp"
+ },
+ "006099c0": {
+  "line": 204,
+  "path": "2008-06/src/Client/App/v8datamodel/PVInstance.cpp"
+ },
+ "00609a00": {
+  "line": 215,
+  "path": "2008-06/src/Client/App/v8datamodel/PVInstance.cpp"
+ },
+ "00609af0": {
+  "line": 152,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "00609da0": {
+  "line": 84,
+  "path": "2008-06/src/Client/App/v8datamodel/Feature.cpp"
+ },
+ "0060a0f0": {
+  "line": 251,
+  "path": "2008-06/src/Client/App/v8datamodel/Feature.cpp"
+ },
+ "0060a490": {
+  "line": 59,
+  "path": "2008-06/src/Client/App/v8datamodel/Feature.cpp"
+ },
+ "0060a520": {
+  "line": 75,
+  "path": "2008-06/src/Client/App/v8datamodel/Feature.cpp"
+ },
+ "0060a580": {
+  "line": 186,
+  "path": "2008-06/src/Client/App/v8datamodel/Feature.cpp"
+ },
+ "0060a5e0": {
+  "line": 201,
+  "path": "2008-06/src/Client/App/v8datamodel/Feature.cpp"
+ },
+ "0060a650": {
+  "line": 217,
+  "path": "2008-06/src/Client/App/v8datamodel/Feature.cpp"
+ },
+ "0060ab60": {
+  "line": 247,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "0060ab80": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "0060aba0": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "0060abc0": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "0060be60": {
+  "line": 45,
+  "path": "2008-06/src/Client/App/v8datamodel/Feature.cpp"
+ },
+ "0060c370": {
+  "line": 152,
+  "path": "2008-06/src/Client/App/v8datamodel/Feature.cpp"
+ },
+ "0060c3a0": {
+  "line": 161,
+  "path": "2008-06/src/Client/App/v8datamodel/Feature.cpp"
+ },
+ "0060c3d0": {
+  "line": 170,
+  "path": "2008-06/src/Client/App/v8datamodel/Feature.cpp"
+ },
+ "0060cb50": {
+  "line": 117,
+  "path": "2008-06/src/Client/App/v8world/Contact.cpp"
+ },
+ "0060d500": {
+  "line": 267,
+  "path": "2008-06/src/Client/App/v8world/Contact.cpp"
+ },
+ "0060d770": {
+  "line": 257,
+  "path": "2008-06/src/Client/App/v8world/ContactManager.cpp"
+ },
+ "0060d8b0": {
+  "line": 27,
+  "path": "2008-06/src/Client/App/v8world/ContactManager.cpp"
+ },
+ "0060d8e0": {
+  "line": 87,
+  "path": "2008-06/src/Client/App/v8world/ContactManager.cpp"
+ },
+ "0060dde0": {
+  "line": 132,
+  "path": "2008-06/src/Client/App/tool/MegaDragger.cpp"
+ },
+ "0060de00": {
+  "line": 41,
+  "path": "2008-06/src/Client/App/tool/MegaDragger.cpp"
+ },
+ "0060dec0": {
+  "line": 69,
+  "path": "2008-06/src/Client/App/tool/MegaDragger.cpp"
+ },
+ "0060df80": {
+  "line": 78,
+  "path": "2008-06/src/Client/App/tool/MegaDragger.cpp"
+ },
+ "0060e100": {
+  "line": 95,
+  "path": "2008-06/src/Client/App/tool/MegaDragger.cpp"
+ },
+ "0060e180": {
+  "line": 111,
+  "path": "2008-06/src/Client/App/tool/MegaDragger.cpp"
+ },
+ "0060e700": {
+  "line": 32,
+  "path": "2008-06/src/Client/App/tool/MegaDragger.cpp"
+ },
+ "0060e780": {
+  "line": 58,
+  "path": "2008-06/src/Client/App/tool/MegaDragger.cpp"
+ },
+ "0060e970": {
+  "line": 212,
+  "path": "2008-06/src/Client/App/tool/DragUtilities.cpp"
+ },
+ "0060ead0": {
+  "line": 11,
+  "path": "2008-06/src/Client/App/tool/DragUtilities.cpp"
+ },
+ "0060eb30": {
+  "line": 160,
+  "path": "2008-06/src/Client/App/tool/DragUtilities.cpp"
+ },
+ "0060ec60": {
+  "line": 203,
+  "path": "2008-06/src/Client/App/tool/DragUtilities.cpp"
+ },
+ "0060ecd0": {
+  "line": 123,
+  "path": "2008-06/src/Client/App/tool/DragUtilities.cpp"
+ },
+ "0060ee30": {
+  "line": 191,
+  "path": "2008-06/src/Client/App/tool/DragUtilities.cpp"
+ },
+ "0060ef30": {
+  "line": 104,
+  "path": "2008-06/src/Client/App/tool/DragUtilities.cpp"
+ },
+ "0060f1d0": {
+  "line": 47,
+  "path": "2008-06/src/Client/App/tool/DragUtilities.cpp"
+ },
+ "0060f2d0": {
+  "line": 63,
+  "path": "2008-06/src/Client/App/tool/DragUtilities.cpp"
+ },
+ "0060f340": {
+  "line": 71,
+  "path": "2008-06/src/Client/App/tool/DragUtilities.cpp"
+ },
+ "0060f4e0": {
+  "line": 71,
+  "path": "2008-06/src/Client/App/util/Extents.cpp"
+ },
+ "0060f7b0": {
+  "line": 116,
+  "path": "2008-06/src/Client/App/util/Extents.cpp"
+ },
+ "0060f9b0": {
+  "line": 231,
+  "path": "2008-06/src/Client/App/util/Extents.cpp"
+ },
+ "0060fe40": {
+  "line": 200,
+  "path": "2008-06/src/Client/App/util/Extents.cpp"
+ },
+ "0060fea0": {
+  "line": 10,
+  "path": "2008-06/src/Client/App/tool/Dragger.cpp"
+ },
+ "00610070": {
+  "line": 31,
+  "path": "2008-06/src/Client/App/tool/Dragger.cpp"
+ },
+ "00610bf0": {
+  "line": 73,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lauxlib.c"
+ },
+ "00610c60": {
+  "line": 86,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lauxlib.c"
+ },
+ "00610c90": {
+  "line": 112,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lauxlib.c"
+ },
+ "00610cf0": {
+  "line": 140,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lauxlib.c"
+ },
+ "00610d20": {
+  "line": 203,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lauxlib.c"
+ },
+ "00610d80": {
+  "line": 219,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lauxlib.c"
+ },
+ "00610de0": {
+  "line": 357,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lauxlib.c"
+ },
+ "00610ed0": {
+  "line": 410,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lauxlib.c"
+ },
+ "00610f40": {
+  "line": 429,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lauxlib.c"
+ },
+ "00610f80": {
+  "line": 436,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lauxlib.c"
+ },
+ "00610fe0": {
+  "line": 447,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lauxlib.c"
+ },
+ "00611020": {
+  "line": 454,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lauxlib.c"
+ },
+ "006110a0": {
+  "line": 472,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lauxlib.c"
+ },
+ "006110c0": {
+  "line": 481,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lauxlib.c"
+ },
+ "00611170": {
+  "line": 504,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lauxlib.c"
+ },
+ "006111d0": {
+  "line": 529,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lauxlib.c"
+ },
+ "00611230": {
+  "line": 543,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lauxlib.c"
+ },
+ "00611270": {
+  "line": 552,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lauxlib.c"
+ },
+ "00611480": {
+  "line": 600,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lauxlib.c"
+ },
+ "006114a0": {
+  "line": 610,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lauxlib.c"
+ },
+ "006115b0": {
+  "line": 124,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lauxlib.c"
+ },
+ "00611640": {
+  "line": 146,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lauxlib.c"
+ },
+ "00611690": {
+  "line": 152,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lauxlib.c"
+ },
+ "006116c0": {
+  "line": 158,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lauxlib.c"
+ },
+ "00611720": {
+  "line": 165,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lauxlib.c"
+ },
+ "00611780": {
+  "line": 176,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lauxlib.c"
+ },
+ "00611800": {
+  "line": 189,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lauxlib.c"
+ },
+ "00611870": {
+  "line": 197,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lauxlib.c"
+ },
+ "006119c0": {
+  "line": 99,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lauxlib.c"
+ },
+ "00611a90": {
+  "line": 49,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00611b10": {
+  "line": 89,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00611b40": {
+  "line": 95,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00611ba0": {
+  "line": 111,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00611bf0": {
+  "line": 126,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00611c20": {
+  "line": 160,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00611c70": {
+  "line": 176,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00611cc0": {
+  "line": 187,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00611d10": {
+  "line": 199,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00611dd0": {
+  "line": 224,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00611e00": {
+  "line": 238,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00611e20": {
+  "line": 244,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00611e40": {
+  "line": 250,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00611e70": {
+  "line": 256,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00611eb0": {
+  "line": 263,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00611ee0": {
+  "line": 275,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00611f20": {
+  "line": 295,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00611f60": {
+  "line": 309,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00611fa0": {
+  "line": 319,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00611fe0": {
+  "line": 333,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00612010": {
+  "line": 339,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00612080": {
+  "line": 357,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "006120f0": {
+  "line": 375,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00612120": {
+  "line": 381,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00612150": {
+  "line": 391,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00612170": {
+  "line": 397,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "006121e0": {
+  "line": 417,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00612200": {
+  "line": 425,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00612220": {
+  "line": 433,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00612240": {
+  "line": 441,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00612280": {
+  "line": 450,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "006122f0": {
+  "line": 458,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00612320": {
+  "line": 469,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00612350": {
+  "line": 482,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "006123f0": {
+  "line": 499,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00612410": {
+  "line": 507,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00612430": {
+  "line": 515,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00612460": {
+  "line": 530,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00612490": {
+  "line": 540,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "006124f0": {
+  "line": 553,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00612530": {
+  "line": 563,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00612570": {
+  "line": 574,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "006125b0": {
+  "line": 583,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00612610": {
+  "line": 612,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00612680": {
+  "line": 641,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "006126b0": {
+  "line": 653,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00612710": {
+  "line": 667,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00612780": {
+  "line": 680,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "006127f0": {
+  "line": 693,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "006128a0": {
+  "line": 730,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00612960": {
+  "line": 794,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00612980": {
+  "line": 801,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "006129f0": {
+  "line": 858,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00612a30": {
+  "line": 871,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00612a70": {
+  "line": 886,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00612a80": {
+  "line": 895,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00612b70": {
+  "line": 957,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00612b80": {
+  "line": 966,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00612bc0": {
+  "line": 983,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00612c40": {
+  "line": 1018,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00612ca0": {
+  "line": 1050,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00612d30": {
+  "line": 1064,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00612e60": {
+  "line": 730,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/luaconf.h"
+ },
+ "00612f00": {
+  "line": 763,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/luaconf.h"
+ },
+ "00612f60": {
+  "line": 136,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "00612fb0": {
+  "line": 54,
+  "path": "2008-06/src/Client/App/include/v8kernel/SimBody.h"
+ },
+ "00613060": {
+  "line": 7,
+  "path": "2008-06/src/Client/App/v8kernel/Pair.cpp"
+ },
+ "00614c20": {
+  "line": 80,
+  "path": "2008-06/src/Client/App/v8world/IMoving.cpp"
+ },
+ "00614dc0": {
+  "line": 69,
+  "path": "2008-06/src/Client/App/v8world/IMoving.cpp"
+ },
+ "00614f80": {
+  "line": 5,
+  "path": "2008-06/src/Client/App/v8world/Controller.cpp"
+ },
+ "006157a0": {
+  "line": 127,
+  "path": "2008-06/src/Client/App/v8datamodel/MouseCommand.cpp"
+ },
+ "00615820": {
+  "line": 121,
+  "path": "2008-06/src/Client/App/v8datamodel/MouseCommand.cpp"
+ },
+ "006159f0": {
+  "line": 12,
+  "path": "2008-06/src/Client/App/v8datamodel/MouseCommand.cpp"
+ },
+ "00615a50": {
+  "line": 32,
+  "path": "2008-06/src/Client/App/v8datamodel/MouseCommand.cpp"
+ },
+ "00615b60": {
+  "line": 12,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Filters.h"
+ },
+ "00615d90": {
+  "line": 85,
+  "path": "2008-06/src/Client/App/v8datamodel/MouseCommand.cpp"
+ },
+ "00615f90": {
+  "line": 115,
+  "path": "2008-06/src/Client/App/v8datamodel/MouseCommand.cpp"
+ },
+ "00616080": {
+  "line": 109,
+  "path": "2008-06/src/Client/App/v8datamodel/MouseCommand.cpp"
+ },
+ "00616180": {
+  "line": 17,
+  "path": "2008-06/src/Client/App/tool/ToolsArrow.cpp"
+ },
+ "006161a0": {
+  "line": 12,
+  "path": "2008-06/src/Client/App/tool/ToolsArrow.cpp"
+ },
+ "006164a0": {
+  "line": 107,
+  "path": "2008-06/src/Client/App/tool/ToolsArrow.cpp"
+ },
+ "00616d80": {
+  "line": 148,
+  "path": "2008-06/src/Client/App/include/util/Name.h"
+ },
+ "00616f60": {
+  "line": 113,
+  "path": "2008-06/src/Client/App/tool/ToolsArrow.cpp"
+ },
+ "00617780": {
+  "line": 27,
+  "path": "2008-06/src/Client/App/tool/ToolsArrow.cpp"
+ },
+ "00617a50": {
+  "line": 141,
+  "path": "2008-06/src/glue/rbxgs/glue_link_stubs.cpp"
+ },
+ "00617b30": {
+  "line": 142,
+  "path": "2008-06/src/glue/rbxgs/glue_link_stubs.cpp"
+ },
+ "00617c10": {
+  "line": 78,
+  "path": "2008-06/src/Client/App/tool/ToolsArrow.cpp"
+ },
+ "00617cb0": {
+  "line": 94,
+  "path": "2008-06/src/Client/App/tool/ToolsArrow.cpp"
+ },
+ "00617e40": {
+  "line": 22,
+  "path": "2008-06/src/Client/App/include/tool/NullTool.h"
+ },
+ "00617e70": {
+  "line": 79,
+  "path": "2008-06/src/Client/App/tool/NullTool.cpp"
+ },
+ "00617ec0": {
+  "line": 31,
+  "path": "2008-06/src/Client/App/tool/NullTool.cpp"
+ },
+ "00617f50": {
+  "line": 45,
+  "path": "2008-06/src/Client/App/tool/NullTool.cpp"
+ },
+ "00617ff0": {
+  "line": 61,
+  "path": "2008-06/src/Client/App/tool/NullTool.cpp"
+ },
+ "00618160": {
+  "line": 8,
+  "path": "2008-06/src/Client/App/tool/NullTool.cpp"
+ },
+ "00618260": {
+  "line": 27,
+  "path": "2008-06/src/Client/App/include/tool/NullTool.h"
+ },
+ "006182e0": {
+  "line": 148,
+  "path": "2008-06/src/Client/App/include/util/Name.h"
+ },
+ "00618300": {
+  "line": 85,
+  "path": "2008-06/src/Client/App/tool/NullTool.cpp"
+ },
+ "00618380": {
+  "line": 20,
+  "path": "2008-06/src/Client/App/v8datamodel/Flag.cpp"
+ },
+ "006183c0": {
+  "line": 152,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "00618610": {
+  "line": 231,
+  "path": "2008-06/src/Client/App/include/reflection/reflection.h"
+ },
+ "00618670": {
+  "line": 18,
+  "path": "2008-06/src/Client/App/v8datamodel/Flag.cpp"
+ },
+ "00618830": {
+  "line": 203,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/bind.hpp"
+ },
+ "00618a20": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "00618a40": {
+  "line": 9,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "00618f70": {
+  "line": 115,
+  "path": "2008-06/src/Client/App/v8datamodel/Flag.cpp"
+ },
+ "00619820": {
+  "line": 12,
+  "path": "2008-06/src/Client/App/v8datamodel/Flag.cpp"
+ },
+ "00619a60": {
+  "line": 25,
+  "path": "2008-06/src/Client/App/v8datamodel/Flag.cpp"
+ },
+ "0061a420": {
+  "line": 20,
+  "path": "2008-06/src/Client/App/script/LuaInstanceBridge.cpp"
+ },
+ "0061a560": {
+  "line": 74,
+  "path": "2008-06/src/Client/App/include/lua/LuaBridge.h"
+ },
+ "0061a5f0": {
+  "line": 24,
+  "path": "2008-06/src/Client/App/include/script/LuaArguments.h"
+ },
+ "0061a7b0": {
+  "line": 163,
+  "path": "2008-06/src/Client/App/include/reflection/property.h"
+ },
+ "0061ba10": {
+  "line": 153,
+  "path": "2008-06/src/Client/App/include/reflection/member.h"
+ },
+ "0061c6f0": {
+  "line": 256,
+  "path": "2008-06/src/Client/Rendering/g3d/include/G3D/CoordinateFrame.h"
+ },
+ "0061c740": {
+  "line": 260,
+  "path": "2008-06/src/Client/Rendering/g3d/include/G3D/CoordinateFrame.h"
+ },
+ "0061c830": {
+  "line": 309,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lapi.c"
+ },
+ "0061c8c0": {
+  "line": 96,
+  "path": "2008-06/src/Client/App/include/lua/LuaBridge.h"
+ },
+ "0061ca60": {
+  "line": 74,
+  "path": "2008-06/src/Client/App/include/lua/LuaBridge.h"
+ },
+ "0061d230": {
+  "line": 206,
+  "path": "2008-06/src/Client/App/script/LuaAtomicClasses.cpp"
+ },
+ "0061d270": {
+  "line": 212,
+  "path": "2008-06/src/Client/App/script/LuaAtomicClasses.cpp"
+ },
+ "0061d2b0": {
+  "line": 218,
+  "path": "2008-06/src/Client/App/script/LuaAtomicClasses.cpp"
+ },
+ "0061d2f0": {
+  "line": 224,
+  "path": "2008-06/src/Client/App/script/LuaAtomicClasses.cpp"
+ },
+ "0061d330": {
+  "line": 230,
+  "path": "2008-06/src/Client/App/script/LuaAtomicClasses.cpp"
+ },
+ "0061d370": {
+  "line": 236,
+  "path": "2008-06/src/Client/App/script/LuaAtomicClasses.cpp"
+ },
+ "0061d3b0": {
+  "line": 242,
+  "path": "2008-06/src/Client/App/script/LuaAtomicClasses.cpp"
+ },
+ "0061d3f0": {
+  "line": 248,
+  "path": "2008-06/src/Client/App/script/LuaAtomicClasses.cpp"
+ },
+ "0061d640": {
+  "line": 96,
+  "path": "2008-06/src/Client/App/include/lua/LuaBridge.h"
+ },
+ "0061e690": {
+  "line": 96,
+  "path": "2008-06/src/Client/App/include/lua/LuaBridge.h"
+ },
+ "0061ec30": {
+  "line": 74,
+  "path": "2008-06/src/Client/App/include/lua/LuaBridge.h"
+ },
+ "0061f410": {
+  "line": 169,
+  "path": "2008-06/src/Client/App/script/LuaSignalBridge.cpp"
+ },
+ "0061f480": {
+  "line": 96,
+  "path": "2008-06/src/Client/App/include/lua/LuaBridge.h"
+ },
+ "0061f650": {
+  "line": 43,
+  "path": "2008-06/src/Client/App/include/reflection/signal.h"
+ },
+ "0061f9f0": {
+  "line": 28,
+  "path": "2008-06/src/Client/App/include/reflection/signal.h"
+ },
+ "0061fb20": {
+  "line": 43,
+  "path": "2008-06/src/Client/App/script/LuaSignalBridge.cpp"
+ },
+ "00620190": {
+  "line": 169,
+  "path": "2008-06/src/Client/App/script/LuaSignalBridge.cpp"
+ },
+ "00620210": {
+  "line": 89,
+  "path": "2008-06/src/Client/App/include/reflection/signal.h"
+ },
+ "00620310": {
+  "line": 49,
+  "path": "2008-06/src/Client/App/include/reflection/signal.h"
+ },
+ "006203a0": {
+  "line": 49,
+  "path": "2008-06/src/Client/App/include/reflection/signal.h"
+ },
+ "00620760": {
+  "line": 96,
+  "path": "2008-06/src/Client/App/include/lua/LuaBridge.h"
+ },
+ "00621330": {
+  "line": 7,
+  "path": "2008-06/src/Client/App/script/ScriptEvent.cpp"
+ },
+ "006217f0": {
+  "line": 51,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldo.c"
+ },
+ "00621920": {
+  "line": 111,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldo.c"
+ },
+ "006219e0": {
+  "line": 126,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldo.c"
+ },
+ "00621a70": {
+  "line": 141,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldo.c"
+ },
+ "00621ad0": {
+  "line": 152,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldo.c"
+ },
+ "00621b50": {
+  "line": 161,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldo.c"
+ },
+ "00621b80": {
+  "line": 181,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldo.c"
+ },
+ "00621cd0": {
+  "line": 243,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldo.c"
+ },
+ "00621d60": {
+  "line": 331,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldo.c"
+ },
+ "00621db0": {
+  "line": 342,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldo.c"
+ },
+ "00621e40": {
+  "line": 408,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldo.c"
+ },
+ "00621ec0": {
+  "line": 441,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldo.c"
+ },
+ "00621f00": {
+  "line": 488,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldo.c"
+ },
+ "00621fe0": {
+  "line": 81,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldo.c"
+ },
+ "00622050": {
+  "line": 94,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldo.c"
+ },
+ "00622300": {
+  "line": 369,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldo.c"
+ },
+ "00622380": {
+  "line": 383,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldo.c"
+ },
+ "00622400": {
+  "line": 417,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldo.c"
+ },
+ "00622480": {
+  "line": 453,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldo.c"
+ },
+ "00622580": {
+  "line": 506,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldo.c"
+ },
+ "006225f0": {
+  "line": 35,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lobject.c"
+ },
+ "00622620": {
+  "line": 47,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lobject.c"
+ },
+ "00622640": {
+  "line": 54,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lobject.c"
+ },
+ "00622670": {
+  "line": 72,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lobject.c"
+ },
+ "006226d0": {
+  "line": 90,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lobject.c"
+ },
+ "00622780": {
+  "line": 104,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lobject.c"
+ },
+ "006227d0": {
+  "line": 111,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lobject.c"
+ },
+ "00622ac0": {
+  "line": 172,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lobject.c"
+ },
+ "00622ae0": {
+  "line": 182,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lobject.c"
+ },
+ "00622c30": {
+  "line": 44,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldebug.c"
+ },
+ "00622c80": {
+  "line": 56,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldebug.c"
+ },
+ "00622cb0": {
+  "line": 69,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldebug.c"
+ },
+ "00622cc0": {
+  "line": 74,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldebug.c"
+ },
+ "00622cd0": {
+  "line": 79,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldebug.c"
+ },
+ "00622ce0": {
+  "line": 84,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldebug.c"
+ },
+ "00622d60": {
+  "line": 112,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldebug.c"
+ },
+ "00622dd0": {
+  "line": 127,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldebug.c"
+ },
+ "00622e20": {
+  "line": 138,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldebug.c"
+ },
+ "00622e70": {
+  "line": 150,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldebug.c"
+ },
+ "00622ef0": {
+  "line": 177,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldebug.c"
+ },
+ "00622f80": {
+  "line": 290,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldebug.c"
+ },
+ "00622fb0": {
+  "line": 304,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldebug.c"
+ },
+ "00623000": {
+  "line": 317,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldebug.c"
+ },
+ "00623460": {
+  "line": 466,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldebug.c"
+ },
+ "00623480": {
+  "line": 471,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldebug.c"
+ },
+ "006234b0": {
+  "line": 479,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldebug.c"
+ },
+ "00623630": {
+  "line": 526,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldebug.c"
+ },
+ "006236d0": {
+  "line": 589,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldebug.c"
+ },
+ "00623740": {
+  "line": 600,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldebug.c"
+ },
+ "006237d0": {
+  "line": 613,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldebug.c"
+ },
+ "00623800": {
+  "line": 193,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldebug.c"
+ },
+ "00623950": {
+  "line": 232,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldebug.c"
+ },
+ "00623a00": {
+  "line": 549,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldebug.c"
+ },
+ "00623a90": {
+  "line": 563,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldebug.c"
+ },
+ "00623ab0": {
+  "line": 570,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldebug.c"
+ },
+ "00623af0": {
+  "line": 578,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldebug.c"
+ },
+ "00623b50": {
+  "line": 42,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstate.c"
+ },
+ "00623bd0": {
+  "line": 70,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstate.c"
+ },
+ "00623c50": {
+  "line": 105,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstate.c"
+ },
+ "00623ce0": {
+  "line": 119,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstate.c"
+ },
+ "00623d80": {
+  "line": 193,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstate.c"
+ },
+ "00623d90": {
+  "line": 134,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstate.c"
+ },
+ "00623e30": {
+  "line": 199,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstate.c"
+ },
+ "00624080": {
+  "line": 48,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/liolib.c"
+ },
+ "006240c0": {
+  "line": 57,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/liolib.c"
+ },
+ "00624160": {
+  "line": 99,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/liolib.c"
+ },
+ "006241e0": {
+  "line": 107,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/liolib.c"
+ },
+ "00624260": {
+  "line": 115,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/liolib.c"
+ },
+ "00624290": {
+  "line": 122,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/liolib.c"
+ },
+ "00624310": {
+  "line": 130,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/liolib.c"
+ },
+ "00624360": {
+  "line": 139,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/liolib.c"
+ },
+ "00624550": {
+  "line": 167,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/liolib.c"
+ },
+ "006245d0": {
+  "line": 184,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/liolib.c"
+ },
+ "006246a0": {
+  "line": 205,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/liolib.c"
+ },
+ "006246c0": {
+  "line": 210,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/liolib.c"
+ },
+ "006246e0": {
+  "line": 257,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/liolib.c"
+ },
+ "00624720": {
+  "line": 275,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/liolib.c"
+ },
+ "006247f0": {
+  "line": 297,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/liolib.c"
+ },
+ "00624890": {
+  "line": 315,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/liolib.c"
+ },
+ "00624a30": {
+  "line": 362,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/liolib.c"
+ },
+ "00624a80": {
+  "line": 367,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/liolib.c"
+ },
+ "00624ac0": {
+  "line": 372,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/liolib.c"
+ },
+ "00624b70": {
+  "line": 394,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/liolib.c"
+ },
+ "00624c60": {
+  "line": 413,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/liolib.c"
+ },
+ "00624cb0": {
+  "line": 418,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/liolib.c"
+ },
+ "00624cf0": {
+  "line": 423,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/liolib.c"
+ },
+ "00624da0": {
+  "line": 439,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/liolib.c"
+ },
+ "00624e50": {
+  "line": 451,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/liolib.c"
+ },
+ "00624ef0": {
+  "line": 456,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/liolib.c"
+ },
+ "00624f80": {
+  "line": 509,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/liolib.c"
+ },
+ "00625140": {
+  "line": 225,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/liolib.c"
+ },
+ "00625190": {
+  "line": 232,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/liolib.c"
+ },
+ "00625270": {
+  "line": 22,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ltablib.c"
+ },
+ "00625390": {
+  "line": 56,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ltablib.c"
+ },
+ "00625430": {
+  "line": 72,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ltablib.c"
+ },
+ "00625460": {
+  "line": 78,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ltablib.c"
+ },
+ "00625490": {
+  "line": 90,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ltablib.c"
+ },
+ "00625540": {
+  "line": 118,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ltablib.c"
+ },
+ "006255c0": {
+  "line": 134,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ltablib.c"
+ },
+ "006256b0": {
+  "line": 184,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ltablib.c"
+ },
+ "00625ab0": {
+  "line": 247,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ltablib.c"
+ },
+ "00625b30": {
+  "line": 26,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lmathlib.c"
+ },
+ "00625d50": {
+  "line": 81,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lmathlib.c"
+ },
+ "00625d80": {
+  "line": 86,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lmathlib.c"
+ },
+ "00625e00": {
+  "line": 96,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lmathlib.c"
+ },
+ "00625fd0": {
+  "line": 139,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lmathlib.c"
+ },
+ "00626010": {
+  "line": 146,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lmathlib.c"
+ },
+ "00626050": {
+  "line": 153,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lmathlib.c"
+ },
+ "006260d0": {
+  "line": 167,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lmathlib.c"
+ },
+ "00626260": {
+  "line": 209,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lmathlib.c"
+ },
+ "006262e0": {
+  "line": 28,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstrlib.c"
+ },
+ "00626310": {
+  "line": 42,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstrlib.c"
+ },
+ "006263b0": {
+  "line": 56,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstrlib.c"
+ },
+ "00626590": {
+  "line": 92,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstrlib.c"
+ },
+ "00626610": {
+  "line": 105,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstrlib.c"
+ },
+ "006266e0": {
+  "line": 124,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstrlib.c"
+ },
+ "006267a0": {
+  "line": 146,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstrlib.c"
+ },
+ "00626810": {
+  "line": 201,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstrlib.c"
+ },
+ "00626880": {
+  "line": 225,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstrlib.c"
+ },
+ "006269a0": {
+  "line": 244,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstrlib.c"
+ },
+ "00626a40": {
+  "line": 280,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstrlib.c"
+ },
+ "00626ab0": {
+  "line": 300,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstrlib.c"
+ },
+ "00626b50": {
+  "line": 315,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstrlib.c"
+ },
+ "00626be0": {
+  "line": 328,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstrlib.c"
+ },
+ "00626c30": {
+  "line": 342,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstrlib.c"
+ },
+ "00626c90": {
+  "line": 353,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstrlib.c"
+ },
+ "00626ff0": {
+  "line": 443,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstrlib.c"
+ },
+ "006270a0": {
+  "line": 465,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstrlib.c"
+ },
+ "00627120": {
+  "line": 484,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstrlib.c"
+ },
+ "00627170": {
+  "line": 494,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstrlib.c"
+ },
+ "00627320": {
+  "line": 537,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstrlib.c"
+ },
+ "00627340": {
+  "line": 547,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstrlib.c"
+ },
+ "006274b0": {
+  "line": 573,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstrlib.c"
+ },
+ "00627510": {
+  "line": 589,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstrlib.c"
+ },
+ "006275f0": {
+  "line": 611,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstrlib.c"
+ },
+ "00627710": {
+  "line": 647,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstrlib.c"
+ },
+ "00627870": {
+  "line": 695,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstrlib.c"
+ },
+ "006279d0": {
+  "line": 724,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstrlib.c"
+ },
+ "00627ab0": {
+  "line": 755,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstrlib.c"
+ },
+ "00627da0": {
+  "line": 844,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstrlib.c"
+ },
+ "00627e30": {
+  "line": 31,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "00627f00": {
+  "line": 53,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "00628020": {
+  "line": 81,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "00628080": {
+  "line": 93,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "006280d0": {
+  "line": 104,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "00628150": {
+  "line": 117,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "006281f0": {
+  "line": 133,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "00628230": {
+  "line": 143,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "006282d0": {
+  "line": 161,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "00628300": {
+  "line": 169,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "00628340": {
+  "line": 177,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "00628380": {
+  "line": 187,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "006283a0": {
+  "line": 193,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "00628450": {
+  "line": 219,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "00628480": {
+  "line": 226,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "006284c0": {
+  "line": 238,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "00628500": {
+  "line": 247,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "00628540": {
+  "line": 257,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "00628580": {
+  "line": 277,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "006285e0": {
+  "line": 285,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "00628620": {
+  "line": 297,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "006286a0": {
+  "line": 315,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "00628700": {
+  "line": 325,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "00628750": {
+  "line": 334,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "006287a0": {
+  "line": 342,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "00628820": {
+  "line": 356,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "006288a0": {
+  "line": 372,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "006288f0": {
+  "line": 382,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "00628940": {
+  "line": 394,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "00628a40": {
+  "line": 419,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "00628b20": {
+  "line": 480,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "00628bd0": {
+  "line": 504,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "00628c50": {
+  "line": 522,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "00628cb0": {
+  "line": 537,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "00628d10": {
+  "line": 547,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "00628d40": {
+  "line": 554,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "00628d60": {
+  "line": 559,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "00628e30": {
+  "line": 587,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "00628e50": {
+  "line": 616,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "00628f50": {
+  "line": 638,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lbaselib.c"
+ },
+ "00628fc0": {
+  "line": 6,
+  "path": "2008-06/src/Client/App/v8datamodel/IEquipable.cpp"
+ },
+ "00629c60": {
+  "line": 152,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "0062a030": {
+  "line": 67,
+  "path": "2008-06/src/glue/rbxgs/glue_explosion.cpp"
+ },
+ "0062a340": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "0062adb0": {
+  "line": 17,
+  "path": "2008-06/src/Client/App/v8datamodel/Explosion.cpp"
+ },
+ "0062af60": {
+  "line": 46,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Explosion.h"
+ },
+ "0062b030": {
+  "line": 111,
+  "path": "2008-06/src/Client/App/v8datamodel/Explosion.cpp"
+ },
+ "0062b700": {
+  "line": 48,
+  "path": "2008-06/src/glue/rbxgs/glue_explosion.cpp"
+ },
+ "0062b8f0": {
+  "line": 14,
+  "path": "2008-06/src/Client/App/v8datamodel/FlagStand.cpp"
+ },
+ "0062b900": {
+  "line": 43,
+  "path": "2008-06/src/Client/App/v8datamodel/FlagStand.cpp"
+ },
+ "0062b970": {
+  "line": 152,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "0062bfc0": {
+  "line": 89,
+  "path": "2008-06/src/Client/App/v8datamodel/FlagStand.cpp"
+ },
+ "0062c0a0": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "0062c9c0": {
+  "line": 9,
+  "path": "2008-06/src/Client/App/v8datamodel/FlagStand.cpp"
+ },
+ "0062cb70": {
+  "line": 406,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "0062ccc0": {
+  "line": 217,
+  "path": "2008-06/src/Client/App/include/v8datamodel/PartInstance.h"
+ },
+ "0062cdc0": {
+  "line": 19,
+  "path": "2008-06/src/Client/App/v8datamodel/FlagStand.cpp"
+ },
+ "0062e090": {
+  "line": 75,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Gyro.h"
+ },
+ "0062e0c0": {
+  "line": 103,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Gyro.h"
+ },
+ "0062e0f0": {
+  "line": 198,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Gyro.h"
+ },
+ "0062e100": {
+  "line": 111,
+  "path": "2008-06/src/Client/App/include/v8kernel/Body.h"
+ },
+ "0062e1c0": {
+  "line": 147,
+  "path": "2008-06/src/Client/App/v8datamodel/Gyro.cpp"
+ },
+ "0062e290": {
+  "line": 156,
+  "path": "2008-06/src/Client/App/v8datamodel/Gyro.cpp"
+ },
+ "0062e320": {
+  "line": 28,
+  "path": "2008-06/src/Client/App/v8datamodel/Gyro.cpp"
+ },
+ "0062e460": {
+  "line": 35,
+  "path": "2008-06/src/Client/App/v8datamodel/Gyro.cpp"
+ },
+ "0062f4e0": {
+  "line": 152,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "006308f0": {
+  "line": 73,
+  "path": "2008-06/src/Client/App/v8datamodel/Gyro.cpp"
+ },
+ "00632070": {
+  "line": 257,
+  "path": "2008-06/src/Client/App/v8datamodel/Gyro.cpp"
+ },
+ "00632190": {
+  "line": 350,
+  "path": "2008-06/src/Client/App/v8datamodel/Gyro.cpp"
+ },
+ "00632370": {
+  "line": 97,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Gyro.h"
+ },
+ "006324f0": {
+  "line": 414,
+  "path": "2008-06/src/Client/App/v8datamodel/Gyro.cpp"
+ },
+ "006325e0": {
+  "line": 432,
+  "path": "2008-06/src/Client/App/v8datamodel/Gyro.cpp"
+ },
+ "00632b50": {
+  "line": 112,
+  "path": "2008-06/src/Client/App/v8datamodel/Gyro.cpp"
+ },
+ "00632db0": {
+  "line": 57,
+  "path": "2008-06/src/Client/App/v8datamodel/Gyro.cpp"
+ },
+ "00632fd0": {
+  "line": 161,
+  "path": "2008-06/src/Client/App/v8datamodel/Gyro.cpp"
+ },
+ "006334b0": {
+  "line": 113,
+  "path": "2008-06/src/Client/App/include/reflection/reflection.h"
+ },
+ "00637ae0": {
+  "line": 79,
+  "path": "2008-06/src/glue/rbxgs/glue_misc.cpp"
+ },
+ "0063b2b0": {
+  "line": 118,
+  "path": "2008-06/src/Client/App/include/reflection/reflection.h"
+ },
+ "0063b330": {
+  "line": 23,
+  "path": "2008-06/src/Client/App/include/v8datamodel/DebrisService.h"
+ },
+ "0063b340": {
+  "line": 152,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "0063b5c0": {
+  "line": 8,
+  "path": "2008-06/src/Client/App/v8datamodel/DebrisService.cpp"
+ },
+ "0063b6b0": {
+  "line": 207,
+  "path": "2008-06/src/Client/App/include/util/Object.h"
+ },
+ "0063b9d0": {
+  "line": 53,
+  "path": "2008-06/src/Client/App/v8datamodel/DebrisService.cpp"
+ },
+ "0063bbc0": {
+  "line": 44,
+  "path": "2008-06/src/Client/App/v8datamodel/DebrisService.cpp"
+ },
+ "0063be90": {
+  "line": 24,
+  "path": "2008-06/src/Client/App/v8datamodel/DebrisService.cpp"
+ },
+ "0063c280": {
+  "line": 62,
+  "path": "2008-06/src/Client/App/v8datamodel/DebrisService.cpp"
+ },
+ "0063c3a0": {
+  "line": 31,
+  "path": "2008-06/src/Client/App/v8datamodel/DebrisService.cpp"
+ },
+ "0063d390": {
+  "line": 10,
+  "path": "2008-06/src/Client/App/v8datamodel/Seat.cpp"
+ },
+ "0063d570": {
+  "line": 406,
+  "path": "2008-06/src/Client/App/v8datamodel/PartInstance.cpp"
+ },
+ "0063d700": {
+  "line": 217,
+  "path": "2008-06/src/Client/App/include/v8datamodel/PartInstance.h"
+ },
+ "0063fad0": {
+  "line": 33,
+  "path": "2008-06/src/Client/App/include/v8xml/SerializerV2.h"
+ },
+ "00640470": {
+  "line": 28,
+  "path": "2008-06/src/Client/App/include/tool/Dragger.h"
+ },
+ "006404b0": {
+  "line": 22,
+  "path": "2008-06/src/Client/App/tool/ToolsArrow.cpp"
+ },
+ "00641240": {
+  "line": 19,
+  "path": "2008-06/src/Client/App/v8datamodel/ICharacterSubject.cpp"
+ },
+ "00641320": {
+  "line": 11,
+  "path": "2008-06/src/Client/App/v8datamodel/ICharacterSubject.cpp"
+ },
+ "00641390": {
+  "line": 35,
+  "path": "2008-06/src/Client/App/v8datamodel/ICharacterSubject.cpp"
+ },
+ "00641800": {
+  "line": 9,
+  "path": "2008-06/src/glue/rbxgs/glue_camera.cpp"
+ },
+ "00641d20": {
+  "line": 6,
+  "path": "2008-06/src/Client/App/v8datamodel/ICameraOwner.cpp"
+ },
+ "00642210": {
+  "line": 29,
+  "path": "2008-06/src/Client/App/gui/Widget.cpp"
+ },
+ "006422b0": {
+  "line": 6,
+  "path": "2008-06/src/Client/App/gui/Widget.cpp"
+ },
+ "00642520": {
+  "line": 12,
+  "path": "2008-06/src/Client/App/gui/Widget.cpp"
+ },
+ "006426f0": {
+  "line": 6,
+  "path": "2008-06/src/Client/App/gui/GuiDraw.cpp"
+ },
+ "00642750": {
+  "line": 52,
+  "path": "2008-06/src/Client/App/gui/GuiDraw.cpp"
+ },
+ "00642c90": {
+  "line": 34,
+  "path": "2008-06/src/Client/App/gui/GuiDraw.cpp"
+ },
+ "00642de0": {
+  "line": 14,
+  "path": "2008-06/src/Client/App/gui/GuiDraw.cpp"
+ },
+ "00642f10": {
+  "line": 28,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Mouse.h"
+ },
+ "00642f80": {
+  "line": 52,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Mouse.h"
+ },
+ "00643070": {
+  "line": 19,
+  "path": "2008-06/src/Client/App/v8datamodel/ScriptMouseCommand.cpp"
+ },
+ "00645490": {
+  "line": 31,
+  "path": "2008-06/src/Client/App/v8world/Joint.cpp"
+ },
+ "006454b0": {
+  "line": 77,
+  "path": "2008-06/src/Client/App/v8world/Joint.cpp"
+ },
+ "00645560": {
+  "line": 98,
+  "path": "2008-06/src/Client/App/v8world/Joint.cpp"
+ },
+ "00645590": {
+  "line": 93,
+  "path": "2008-06/src/Client/App/v8world/Joint.cpp"
+ },
+ "00645750": {
+  "line": 59,
+  "path": "2008-06/src/Client/App/v8world/Joint.cpp"
+ },
+ "00645830": {
+  "line": 64,
+  "path": "2008-06/src/Client/App/v8world/IPipelined.cpp"
+ },
+ "00645860": {
+  "line": 69,
+  "path": "2008-06/src/Client/App/v8world/IPipelined.cpp"
+ },
+ "00645870": {
+  "line": 9,
+  "path": "2008-06/src/Client/App/v8world/RigidJoint.cpp"
+ },
+ "006458d0": {
+  "line": 16,
+  "path": "2008-06/src/Client/App/v8world/RigidJoint.cpp"
+ },
+ "00645930": {
+  "line": 25,
+  "path": "2008-06/src/Client/App/v8world/RigidJoint.cpp"
+ },
+ "00645980": {
+  "line": 33,
+  "path": "2008-06/src/Client/App/v8world/RigidJoint.cpp"
+ },
+ "00645a60": {
+  "line": 105,
+  "path": "2008-06/src/Client/App/include/v8kernel/Connector.h"
+ },
+ "006468a0": {
+  "line": 7,
+  "path": "2008-06/src/Client/App/v8world/MutilJoint.cpp"
+ },
+ "00646f60": {
+  "line": 84,
+  "path": "2008-06/src/Client/App/v8world/GlueJoint.cpp"
+ },
+ "006478f0": {
+  "line": 158,
+  "path": "2008-06/src/Client/App/v8world/Block.cpp"
+ },
+ "00647900": {
+  "line": 163,
+  "path": "2008-06/src/Client/App/v8world/Block.cpp"
+ },
+ "00647990": {
+  "line": 182,
+  "path": "2008-06/src/Client/App/v8world/Block.cpp"
+ },
+ "00647a20": {
+  "line": 206,
+  "path": "2008-06/src/Client/App/v8world/Block.cpp"
+ },
+ "00647c70": {
+  "line": 326,
+  "path": "2008-06/src/Client/App/v8world/Block.cpp"
+ },
+ "00647e70": {
+  "line": 40,
+  "path": "2008-06/src/Client/App/v8world/Block.cpp"
+ },
+ "00647f40": {
+  "line": 388,
+  "path": "2008-06/src/Client/App/v8world/Block.cpp"
+ },
+ "00648270": {
+  "line": 418,
+  "path": "2008-06/src/Client/App/v8world/Block.cpp"
+ },
+ "00648f30": {
+  "line": 65,
+  "path": "2008-06/src/Client/App/v8world/Block.cpp"
+ },
+ "00648fd0": {
+  "line": 380,
+  "path": "2008-06/src/Client/App/v8world/Block.cpp"
+ },
+ "00649130": {
+  "line": 10,
+  "path": "2008-06/src/Client/App/v8world/Ball.cpp"
+ },
+ "00649170": {
+  "line": 21,
+  "path": "2008-06/src/Client/App/v8world/Ball.cpp"
+ },
+ "00649190": {
+  "line": 16,
+  "path": "2008-06/src/Client/App/v8world/Ball.cpp"
+ },
+ "006491a0": {
+  "line": 28,
+  "path": "2008-06/src/Client/App/v8world/Ball.cpp"
+ },
+ "006497e0": {
+  "line": 17,
+  "path": "2008-06/src/Client/App/util/Face.cpp"
+ },
+ "006498b0": {
+  "line": 100,
+  "path": "2008-06/src/Client/App/util/Face.cpp"
+ },
+ "00649920": {
+  "line": 154,
+  "path": "2008-06/src/Client/App/util/Face.cpp"
+ },
+ "00649970": {
+  "line": 161,
+  "path": "2008-06/src/Client/App/util/Face.cpp"
+ },
+ "00649af0": {
+  "line": 171,
+  "path": "2008-06/src/Client/App/util/Face.cpp"
+ },
+ "00649e90": {
+  "line": 81,
+  "path": "2008-06/src/Client/App/util/Face.cpp"
+ },
+ "00649f20": {
+  "line": 129,
+  "path": "2008-06/src/Client/App/util/Face.cpp"
+ },
+ "0064a200": {
+  "line": 26,
+  "path": "2008-06/src/Client/App/util/Face.cpp"
+ },
+ "0064a8c0": {
+  "line": 20,
+  "path": "2008-06/src/Client/App/v8world/IWorldStage.cpp"
+ },
+ "0064b1b0": {
+  "line": 318,
+  "path": "2008-06/src/Client/App/v8world/SleepStage.cpp"
+ },
+ "0064c130": {
+  "line": 548,
+  "path": "2008-06/src/Client/App/v8world/SleepStage.cpp"
+ },
+ "0064ca00": {
+  "line": 730,
+  "path": "2008-06/src/Client/App/v8world/SleepStage.cpp"
+ },
+ "0064d060": {
+  "line": 56,
+  "path": "2008-06/src/Client/App/v8world/SimJobStage.cpp"
+ },
+ "0064d090": {
+  "line": 62,
+  "path": "2008-06/src/Client/App/v8world/SimJobStage.cpp"
+ },
+ "0064d530": {
+  "line": 100,
+  "path": "2008-06/src/Client/App/include/reflection/enumconverter.h"
+ },
+ "0064ddf0": {
+  "line": 43,
+  "path": "2008-06/src/Client/App/v8datamodel/ToolMouseCommand.cpp"
+ },
+ "0064dee0": {
+  "line": 29,
+  "path": "2008-06/src/Client/App/v8datamodel/ToolMouseCommand.cpp"
+ },
+ "0064df30": {
+  "line": 36,
+  "path": "2008-06/src/Client/App/v8datamodel/ToolMouseCommand.cpp"
+ },
+ "0064df60": {
+  "line": 22,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Mouse.h"
+ },
+ "0064e020": {
+  "line": 36,
+  "path": "2008-06/src/Client/App/v8datamodel/Mouse.cpp"
+ },
+ "0064e050": {
+  "line": 21,
+  "path": "2008-06/src/Client/App/v8datamodel/Mouse.cpp"
+ },
+ "0064e130": {
+  "line": 231,
+  "path": "2008-06/src/Client/App/include/reflection/reflection.h"
+ },
+ "0064e1a0": {
+  "line": 9,
+  "path": "2008-06/src/Client/App/v8datamodel/Mouse.cpp"
+ },
+ "00658200": {
+  "line": 10,
+  "path": "2008-06/src/Client/App/v8datamodel/SafeChat.cpp"
+ },
+ "00658a00": {
+  "line": 19,
+  "path": "2008-06/src/Client/App/util/PV.cpp"
+ },
+ "00658c50": {
+  "line": 26,
+  "path": "2008-06/src/Client/App/util/PV.cpp"
+ },
+ "00659260": {
+  "line": 6,
+  "path": "2008-06/src/Client/App/v8world/Edge.cpp"
+ },
+ "0065b5d0": {
+  "line": 69,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lgc.c"
+ },
+ "0065b6b0": {
+  "line": 128,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lgc.c"
+ },
+ "0065b750": {
+  "line": 158,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lgc.c"
+ },
+ "0065b900": {
+  "line": 203,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lgc.c"
+ },
+ "0065b9d0": {
+  "line": 224,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lgc.c"
+ },
+ "0065ba70": {
+  "line": 256,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lgc.c"
+ },
+ "0065bb60": {
+  "line": 277,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lgc.c"
+ },
+ "0065bc60": {
+  "line": 351,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lgc.c"
+ },
+ "0065bd60": {
+  "line": 378,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lgc.c"
+ },
+ "0065be00": {
+  "line": 407,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lgc.c"
+ },
+ "0065be90": {
+  "line": 431,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lgc.c"
+ },
+ "0065bf00": {
+  "line": 445,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lgc.c"
+ },
+ "0065bfc0": {
+  "line": 477,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lgc.c"
+ },
+ "0065bfe0": {
+  "line": 483,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lgc.c"
+ },
+ "0065c020": {
+  "line": 493,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lgc.c"
+ },
+ "0065c060": {
+  "line": 501,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lgc.c"
+ },
+ "0065c0d0": {
+  "line": 515,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lgc.c"
+ },
+ "0065c110": {
+  "line": 525,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lgc.c"
+ },
+ "0065c290": {
+  "line": 556,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lgc.c"
+ },
+ "0065c390": {
+  "line": 610,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lgc.c"
+ },
+ "0065c410": {
+  "line": 636,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lgc.c"
+ },
+ "0065c480": {
+  "line": 662,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lgc.c"
+ },
+ "0065c4c0": {
+  "line": 675,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lgc.c"
+ },
+ "0065c4e0": {
+  "line": 686,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lgc.c"
+ },
+ "0065c510": {
+  "line": 695,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lgc.c"
+ },
+ "0065c570": {
+  "line": 30,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ltm.c"
+ },
+ "0065c5d0": {
+  "line": 50,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ltm.c"
+ },
+ "0065c600": {
+  "line": 61,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ltm.c"
+ },
+ "0065c660": {
+  "line": 35,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lvm.c"
+ },
+ "0065c6b0": {
+  "line": 47,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lvm.c"
+ },
+ "0065c720": {
+  "line": 60,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lvm.c"
+ },
+ "0065c7b0": {
+  "line": 82,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lvm.c"
+ },
+ "0065c850": {
+  "line": 98,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lvm.c"
+ },
+ "0065c8e0": {
+  "line": 110,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lvm.c"
+ },
+ "0065c9d0": {
+  "line": 136,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lvm.c"
+ },
+ "0065caf0": {
+  "line": 174,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lvm.c"
+ },
+ "0065cb70": {
+  "line": 188,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lvm.c"
+ },
+ "0065cbf0": {
+  "line": 201,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lvm.c"
+ },
+ "0065cc60": {
+  "line": 223,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lvm.c"
+ },
+ "0065ccf0": {
+  "line": 237,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lvm.c"
+ },
+ "0065cd90": {
+  "line": 253,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lvm.c"
+ },
+ "0065ce70": {
+  "line": 280,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lvm.c"
+ },
+ "0065d100": {
+  "line": 313,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lvm.c"
+ },
+ "0065d2c0": {
+  "line": 373,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lvm.c"
+ },
+ "0065e3e0": {
+  "line": 84,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ltable.c"
+ },
+ "0065e420": {
+  "line": 100,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ltable.c"
+ },
+ "0065e4b0": {
+  "line": 137,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ltable.c"
+ },
+ "0065e570": {
+  "line": 162,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ltable.c"
+ },
+ "0065e650": {
+  "line": 189,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ltable.c"
+ },
+ "0065e6b0": {
+  "line": 222,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ltable.c"
+ },
+ "0065e730": {
+  "line": 247,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ltable.c"
+ },
+ "0065e7f0": {
+  "line": 263,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ltable.c"
+ },
+ "0065e850": {
+  "line": 272,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ltable.c"
+ },
+ "0065e910": {
+  "line": 358,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ltable.c"
+ },
+ "0065e970": {
+  "line": 374,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ltable.c"
+ },
+ "0065e9d0": {
+  "line": 435,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ltable.c"
+ },
+ "0065ea60": {
+  "line": 455,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ltable.c"
+ },
+ "0065eaa0": {
+  "line": 469,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ltable.c"
+ },
+ "0065eb50": {
+  "line": 494,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ltable.c"
+ },
+ "0065ebc0": {
+  "line": 508,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ltable.c"
+ },
+ "0065ec10": {
+  "line": 532,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ltable.c"
+ },
+ "0065ecb0": {
+  "line": 560,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ltable.c"
+ },
+ "0065ed10": {
+  "line": 297,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ltable.c"
+ },
+ "0065eef0": {
+  "line": 327,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ltable.c"
+ },
+ "0065ef40": {
+  "line": 333,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ltable.c"
+ },
+ "0065f060": {
+  "line": 399,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ltable.c"
+ },
+ "0065f150": {
+  "line": 520,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ltable.c"
+ },
+ "0065f1a0": {
+  "line": 22,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstring.c"
+ },
+ "0065f260": {
+  "line": 50,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstring.c"
+ },
+ "0065f300": {
+  "line": 75,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstring.c"
+ },
+ "0065f3f0": {
+  "line": 96,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lstring.c"
+ },
+ "0065f450": {
+  "line": 23,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lfunc.c"
+ },
+ "0065f490": {
+  "line": 33,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lfunc.c"
+ },
+ "0065f4f0": {
+  "line": 44,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lfunc.c"
+ },
+ "0065f530": {
+  "line": 53,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lfunc.c"
+ },
+ "0065f5c0": {
+  "line": 89,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lfunc.c"
+ },
+ "0065f600": {
+  "line": 96,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lfunc.c"
+ },
+ "0065f6a0": {
+  "line": 115,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lfunc.c"
+ },
+ "0065f700": {
+  "line": 141,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lfunc.c"
+ },
+ "0065f7a0": {
+  "line": 152,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lfunc.c"
+ },
+ "0065f7e0": {
+  "line": 163,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lfunc.c"
+ },
+ "0065f830": {
+  "line": 21,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lzio.c"
+ },
+ "0065f870": {
+  "line": 35,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lzio.c"
+ },
+ "0065f8d0": {
+  "line": 48,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lzio.c"
+ },
+ "0065f900": {
+  "line": 58,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lzio.c"
+ },
+ "0065f990": {
+  "line": 74,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lzio.c"
+ },
+ "0065f9f0": {
+  "line": 61,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldump.c"
+ },
+ "0065fa70": {
+  "line": 80,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldump.c"
+ },
+ "0065fbb0": {
+  "line": 111,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldump.c"
+ },
+ "0065fd00": {
+  "line": 129,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/ldump.c"
+ },
+ "0065fef0": {
+  "line": 8,
+  "path": "2008-06/src/Client/App/v8kernel/Cofm.cpp"
+ },
+ "0065ff10": {
+  "line": 13,
+  "path": "2008-06/src/Client/App/v8kernel/Cofm.cpp"
+ },
+ "0065ff20": {
+  "line": 31,
+  "path": "2008-06/src/Client/App/v8kernel/Cofm.cpp"
+ },
+ "00660160": {
+  "line": 25,
+  "path": "2008-06/src/Client/App/v8kernel/Cofm.cpp"
+ },
+ "00660170": {
+  "line": 19,
+  "path": "2008-06/src/Client/App/v8kernel/Cofm.cpp"
+ },
+ "006601c0": {
+  "line": 163,
+  "path": "2008-06/src/Client/App/include/v8datamodel/PartInstance.h"
+ },
+ "006601f0": {
+  "line": 7,
+  "path": "2008-06/src/Client/App/v8datamodel/Filters.cpp"
+ },
+ "00660260": {
+  "line": 18,
+  "path": "2008-06/src/Client/App/v8datamodel/Filters.cpp"
+ },
+ "00660380": {
+  "line": 12,
+  "path": "2008-06/src/Client/App/v8datamodel/Filters.cpp"
+ },
+ "006606d0": {
+  "line": 66,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lmem.c"
+ },
+ "006606f0": {
+  "line": 76,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lmem.c"
+ },
+ "00660740": {
+  "line": 46,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lmem.c"
+ },
+ "006607d0": {
+  "line": 71,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "00660820": {
+  "line": 104,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "00660890": {
+  "line": 133,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "006608b0": {
+  "line": 138,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "00660910": {
+  "line": 143,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "006609b0": {
+  "line": 167,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "006609f0": {
+  "line": 176,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "00660a30": {
+  "line": 183,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "00660b70": {
+  "line": 224,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "00660c50": {
+  "line": 248,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "00660cb0": {
+  "line": 256,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "00660d20": {
+  "line": 296,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "00660d70": {
+  "line": 310,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "00660e70": {
+  "line": 328,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "00660f20": {
+  "line": 356,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "00661100": {
+  "line": 418,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "00661280": {
+  "line": 498,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "006614f0": {
+  "line": 543,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "00661630": {
+  "line": 576,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "00661780": {
+  "line": 596,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "006617c0": {
+  "line": 609,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "00661900": {
+  "line": 667,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "00661970": {
+  "line": 690,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "00661c60": {
+  "line": 727,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "00661e40": {
+  "line": 788,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "00661ff0": {
+  "line": 828,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "00662100": {
+  "line": 881,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "00662310": {
+  "line": 973,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "00662370": {
+  "line": 989,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "006624a0": {
+  "line": 1008,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "006625f0": {
+  "line": 1044,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "00662790": {
+  "line": 1065,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "006629c0": {
+  "line": 1087,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "00662c30": {
+  "line": 1110,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "00662d50": {
+  "line": 1128,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "00662dd0": {
+  "line": 1139,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "00662e90": {
+  "line": 1163,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "00662f90": {
+  "line": 1177,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "006630b0": {
+  "line": 1196,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "00663190": {
+  "line": 1210,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "006631e0": {
+  "line": 1222,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "00663240": {
+  "line": 1236,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "00663360": {
+  "line": 1269,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "006634b0": {
+  "line": 1323,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lparser.c"
+ },
+ "00663620": {
+  "line": 60,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lundump.c"
+ },
+ "00663690": {
+  "line": 75,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lundump.c"
+ },
+ "00663740": {
+  "line": 89,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lundump.c"
+ },
+ "006637c0": {
+  "line": 99,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lundump.c"
+ },
+ "00663a60": {
+  "line": 136,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lundump.c"
+ },
+ "00663d20": {
+  "line": 160,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lundump.c"
+ },
+ "00663ee0": {
+  "line": 210,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lundump.c"
+ },
+ "00663f20": {
+  "line": 179,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lundump.c"
+ },
+ "00663fe0": {
+  "line": 191,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lundump.c"
+ },
+ "00664050": {
+  "line": 51,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/llex.c"
+ },
+ "00664110": {
+  "line": 78,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/llex.c"
+ },
+ "00664170": {
+  "line": 102,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/llex.c"
+ },
+ "00664210": {
+  "line": 112,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/llex.c"
+ },
+ "00664230": {
+  "line": 117,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/llex.c"
+ },
+ "00664280": {
+  "line": 127,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/llex.c"
+ },
+ "00664310": {
+  "line": 138,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/llex.c"
+ },
+ "006643a0": {
+  "line": 161,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/llex.c"
+ },
+ "00664400": {
+  "line": 177,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/llex.c"
+ },
+ "006644e0": {
+  "line": 192,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/llex.c"
+ },
+ "00664720": {
+  "line": 208,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/llex.c"
+ },
+ "00664870": {
+  "line": 221,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/llex.c"
+ },
+ "00664ac0": {
+  "line": 276,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/llex.c"
+ },
+ "00664f50": {
+  "line": 332,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/llex.c"
+ },
+ "00665600": {
+  "line": 446,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/llex.c"
+ },
+ "00665650": {
+  "line": 457,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/llex.c"
+ },
+ "006659a0": {
+  "line": 27,
+  "path": "2008-06/src/Client/App/tool/PartDragTool.cpp"
+ },
+ "006659e0": {
+  "line": 110,
+  "path": "2008-06/src/glue/rbxgs/glue_link_stubs.cpp"
+ },
+ "00665aa0": {
+  "line": 35,
+  "path": "2008-06/src/Client/App/include/tool/MegaDragger.h"
+ },
+ "00665b00": {
+  "line": 46,
+  "path": "2008-06/src/Client/App/tool/PartDragTool.cpp"
+ },
+ "00665b60": {
+  "line": 35,
+  "path": "2008-06/src/Client/App/tool/PartDragTool.cpp"
+ },
+ "00665c90": {
+  "line": 31,
+  "path": "2008-06/src/Client/App/include/tool/PartDragTool.h"
+ },
+ "00665ce0": {
+  "line": 78,
+  "path": "2008-06/src/Client/App/tool/PartDragTool.cpp"
+ },
+ "00665e20": {
+  "line": 103,
+  "path": "2008-06/src/Client/App/tool/PartDragTool.cpp"
+ },
+ "00665f00": {
+  "line": 148,
+  "path": "2008-06/src/Client/App/include/util/Name.h"
+ },
+ "00666100": {
+  "line": 61,
+  "path": "2008-06/src/Client/App/tool/PartDragTool.cpp"
+ },
+ "00666240": {
+  "line": 5,
+  "path": "2008-06/src/Client/App/util/ExponentialRunningAverage.cpp"
+ },
+ "00666280": {
+  "line": 21,
+  "path": "2008-06/src/Client/App/util/ExponentialRunningAverage.cpp"
+ },
+ "006662d0": {
+  "line": 37,
+  "path": "2008-06/src/Client/App/util/ExponentialRunningAverage.cpp"
+ },
+ "006683f0": {
+  "line": 202,
+  "path": "2008-06/src/Client/App/v8world/JointStage.cpp"
+ },
+ "00669d30": {
+  "line": 13,
+  "path": "2008-06/src/Client/App/v8world/SnapJoint.cpp"
+ },
+ "00669e20": {
+  "line": 13,
+  "path": "2008-06/src/Client/App/v8world/WeldJoint.cpp"
+ },
+ "0066a570": {
+  "line": 50,
+  "path": "2008-06/src/Client/App/tool/GroupDragTool.cpp"
+ },
+ "0066a700": {
+  "line": 22,
+  "path": "2008-06/src/Client/App/tool/GroupDragTool.cpp"
+ },
+ "0066a730": {
+  "line": 78,
+  "path": "2008-06/src/Client/App/tool/GroupDragTool.cpp"
+ },
+ "0066a7c0": {
+  "line": 58,
+  "path": "2008-06/src/Client/App/tool/GroupDragTool.cpp"
+ },
+ "0066a930": {
+  "line": 94,
+  "path": "2008-06/src/Client/App/tool/GroupDragTool.cpp"
+ },
+ "0066a980": {
+  "line": 27,
+  "path": "2008-06/src/Client/App/tool/GroupDragTool.cpp"
+ },
+ "0066aa60": {
+  "line": 148,
+  "path": "2008-06/src/Client/App/include/util/Name.h"
+ },
+ "0066aa80": {
+  "line": 75,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066aad0": {
+  "line": 89,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066aae0": {
+  "line": 117,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066ab40": {
+  "line": 126,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066abc0": {
+  "line": 139,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066ac50": {
+  "line": 145,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066ad10": {
+  "line": 180,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066ad60": {
+  "line": 194,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066ada0": {
+  "line": 204,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066ade0": {
+  "line": 218,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066ae00": {
+  "line": 224,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066aee0": {
+  "line": 245,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066af10": {
+  "line": 252,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066af40": {
+  "line": 275,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066afd0": {
+  "line": 287,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066b030": {
+  "line": 511,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066b080": {
+  "line": 630,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066b170": {
+  "line": 776,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066b190": {
+  "line": 781,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066b230": {
+  "line": 796,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066b260": {
+  "line": 804,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066b290": {
+  "line": 811,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066b320": {
+  "line": 35,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066b3b0": {
+  "line": 54,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066b3f0": {
+  "line": 64,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066b420": {
+  "line": 69,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066b480": {
+  "line": 174,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066b4a0": {
+  "line": 299,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066b5a0": {
+  "line": 338,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066b6b0": {
+  "line": 377,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066b710": {
+  "line": 385,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066b830": {
+  "line": 409,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066b8b0": {
+  "line": 417,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066b900": {
+  "line": 431,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066b920": {
+  "line": 439,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066ba20": {
+  "line": 467,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066bb10": {
+  "line": 498,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066bbd0": {
+  "line": 519,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066bc50": {
+  "line": 534,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066bcf0": {
+  "line": 562,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066bd80": {
+  "line": 589,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066be40": {
+  "line": 624,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066be60": {
+  "line": 656,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066bf10": {
+  "line": 670,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066bfa0": {
+  "line": 686,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066c040": {
+  "line": 707,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066c0b0": {
+  "line": 729,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066c2f0": {
+  "line": 164,
+  "path": "2008-06/src/Client/App/lua-5.1.1/src/lcode.c"
+ },
+ "0066c400": {
+  "line": 58,
+  "path": "2008-06/src/Client/App/tool/RunDragger.cpp"
+ },
+ "0066c4c0": {
+  "line": 60,
+  "path": "2008-06/src/Client/App/tool/RunDragger.cpp"
+ },
+ "0066c5a0": {
+  "line": 76,
+  "path": "2008-06/src/Client/App/tool/RunDragger.cpp"
+ },
+ "0066c600": {
+  "line": 27,
+  "path": "2008-06/src/Client/App/include/tool/RunDragger.h"
+ },
+ "0066c900": {
+  "line": 52,
+  "path": "2008-06/src/Client/App/tool/RunDragger.cpp"
+ },
+ "0066ced0": {
+  "line": 171,
+  "path": "2008-06/src/Client/App/tool/RunDragger.cpp"
+ },
+ "0066f5f0": {
+  "line": 68,
+  "path": "2008-06/src/Client/App/v8world/AssemblyStage.cpp"
+ },
+ "0066f6e0": {
+  "line": 110,
+  "path": "2008-06/src/Client/App/v8world/AssemblyStage.cpp"
+ },
+ "00676480": {
+  "line": 13,
+  "path": "2008-06/src/Client/Rendering/AppDraw/AdornG3D.cpp"
+ },
+ "00676550": {
+  "line": 65,
+  "path": "2008-06/src/Client/Rendering/AppDraw/AdornG3D.cpp"
+ },
+ "00676580": {
+  "line": 87,
+  "path": "2008-06/src/Client/Rendering/AppDraw/AdornG3D.cpp"
+ },
+ "006765b0": {
+  "line": 93,
+  "path": "2008-06/src/Client/Rendering/AppDraw/AdornG3D.cpp"
+ },
+ "006765e0": {
+  "line": 99,
+  "path": "2008-06/src/Client/Rendering/AppDraw/AdornG3D.cpp"
+ },
+ "006765f0": {
+  "line": 104,
+  "path": "2008-06/src/Client/Rendering/AppDraw/AdornG3D.cpp"
+ },
+ "00676690": {
+  "line": 120,
+  "path": "2008-06/src/Client/Rendering/AppDraw/AdornG3D.cpp"
+ },
+ "006766c0": {
+  "line": 125,
+  "path": "2008-06/src/Client/Rendering/AppDraw/AdornG3D.cpp"
+ },
+ "00676720": {
+  "line": 142,
+  "path": "2008-06/src/Client/Rendering/AppDraw/AdornG3D.cpp"
+ },
+ "00676940": {
+  "line": 70,
+  "path": "2008-06/src/Client/Rendering/AppDraw/AdornG3D.cpp"
+ },
+ "006769e0": {
+  "line": 76,
+  "path": "2008-06/src/Client/Rendering/AppDraw/AdornG3D.cpp"
+ },
+ "00676c50": {
+  "line": 46,
+  "path": "2008-06/src/Client/Rendering/AppDraw/Draw.cpp"
+ },
+ "00676c90": {
+  "line": 71,
+  "path": "2008-06/src/Client/Rendering/AppDraw/Draw.cpp"
+ },
+ "006770b0": {
+  "line": 57,
+  "path": "2008-06/src/Client/Rendering/AppDraw/Draw.cpp"
+ },
+ "00677190": {
+  "line": 21,
+  "path": "2008-06/src/Client/Rendering/AppDraw/HitTest.cpp"
+ },
+ "00677260": {
+  "line": 34,
+  "path": "2008-06/src/Client/Rendering/AppDraw/HitTest.cpp"
+ },
+ "00677300": {
+  "line": 9,
+  "path": "2008-06/src/Client/Rendering/AppDraw/HitTest.cpp"
+ },
+ "00677380": {
+  "line": 49,
+  "path": "2008-06/src/Client/Rendering/AppDraw/HitTest.cpp"
+ },
+ "006773f0": {
+  "line": 10,
+  "path": "2008-06/src/Client/Rendering/AppDraw/DrawAdorn.cpp"
+ },
+ "00677de0": {
+  "line": 8,
+  "path": "2008-06/src/Client/Rendering/AppDraw/DrawPrimitives.cpp"
+ },
+ "00677e20": {
+  "line": 20,
+  "path": "2008-06/src/Client/Rendering/AppDraw/DrawPrimitives.cpp"
+ },
+ "00677f60": {
+  "line": 56,
+  "path": "2008-06/src/Client/Rendering/AppDraw/DrawPrimitives.cpp"
+ },
+ "00678080": {
+  "line": 83,
+  "path": "2008-06/src/Client/Rendering/AppDraw/DrawPrimitives.cpp"
+ },
+ "006781f0": {
+  "line": 128,
+  "path": "2008-06/src/Client/Rendering/AppDraw/DrawPrimitives.cpp"
+ },
+ "00678280": {
+  "line": 111,
+  "path": "2008-06/src/Client/Rendering/AppDraw/DrawPrimitives.cpp"
+ },
+ "00678310": {
+  "line": 8,
+  "path": "2008-06/src/Client/Rendering/AppDraw/Fonts.cpp"
+ },
+ "0068e8b0": {
+  "line": 41,
+  "path": "2008-06/src/Client/App/include/v8datamodel/custommesh.h"
+ },
+ "006a6f00": {
+  "line": 98,
+  "path": "2008-06/src/Client/App/include/v8datamodel/Camera.h"
+ },
+ "006b9a60": {
+  "line": 47,
+  "path": "2008-06/src/Client/App/include/reflection/enumconverter.h"
+ },
+ "006d45e0": {
+  "line": 127,
+  "path": "2008-06/src/Client/App/include/v8world/Primitive.h"
+ },
+ "006d4780": {
+  "line": 179,
+  "path": "2008-06/src/Client/App/include/v8world/World.h"
+ },
+ "006fa3f0": {
+  "line": 20,
+  "path": "2008-06/src/Client/App/v8world/AssemblyStage.cpp"
+ },
+ "006fd220": {
+  "line": 118,
+  "path": "2008-06/src/Client/App/include/v8world/Primitive.h"
+ },
+ "0070dee0": {
+  "line": 74,
+  "path": "2008-06/src/Client/App/include/v8kernel/Body.h"
+ },
+ "00710290": {
+  "line": 200,
+  "path": "2008-06/src/glue/rbxgs/glue_surfaces.cpp"
+ },
+ "00710e30": {
+  "line": 100,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "007188c0": {
+  "line": 26,
+  "path": "2008-06/src/Client/App/include/v8kernel/Kernel.h"
+ },
+ "00746d60": {
+  "line": 42,
+  "path": "2008-06/src/Client/Network/Replicator.cpp"
+ },
+ "00750da0": {
+  "line": 625,
+  "path": "2008-06/src/Client/Rendering/g3d/include/GLG3D/Texture.h"
+ },
+ "00773250": {
+  "line": 486,
+  "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
+ },
+ "00773630": {
+  "line": 520,
+  "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
+ },
+ "00773670": {
+  "line": 203,
+  "path": "2008-06/src/Client/App/v8world/Primitive.cpp"
+ },
+ "007762d0": {
+  "line": 22,
+  "path": "2008-06/src/Client/App/include/tool/NullTool.h"
+ },
+ "0077b070": {
+  "line": 26,
+  "path": "2008-06/src/Client/App/reflection/reflection_property.cpp"
+ },
+ "0077d6c0": {
+  "line": 315,
+  "path": "2008-06/src/Client/App/include/v8tree/Instance.h"
+ },
+ "0078c540": {
+  "line": 31,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/device/null.hpp"
+ },
+ "007a1400": {
+  "line": 70,
+  "path": "2008-06/src/Client/App/include/v8kernel/Body.h"
+ },
+ "007a1ca0": {
+  "line": 351,
+  "path": "2008-06/src/Client/boost_1_34_1/src/boost/iostreams/detail/streambuf/indirect_streambuf.hpp"
+ },
+ "007b76c0": {
+  "line": 59,
+  "path": "2008-06/src/Client/Rendering/RenderLib/include/RenderLib/Material.h"
+ }
+}

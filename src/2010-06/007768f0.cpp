@@ -1,0 +1,10 @@
+// from server: 44% by atomic.potato
+struct S
+{
+    int f();
+};
+
+int S::f()
+{
+    return *(int *)((char *)this + 0x1e0);
+}

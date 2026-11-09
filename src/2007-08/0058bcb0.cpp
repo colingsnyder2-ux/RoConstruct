@@ -1,0 +1,81 @@
+// from server: 100% by colin
+struct TypedStatsItem {
+    void* field0;
+    void* field4;
+    void* field8;
+    void* fieldC;
+    void* field10;
+    void* field14;
+    void* field18;
+    void* field1C;
+    void* field20;
+    void* field24;
+    void* field28;
+    void* field2C;
+    void* field30;
+    void* field34;
+    void* field38;
+    void* field3C;
+    void* field40;
+    void* field44;
+    void* field48;
+    void* field4C;
+    void* field50;
+    void* field54;
+    void* field58;
+    void* field5C;
+    void* field60;
+    void* field64;
+    void* field68;
+    void* field6C;
+    void* field70;
+    void* field74;
+    void* field78;
+    void* field7C;
+    void* field80;
+    void* field84;
+    void* field88;
+    void* field8C;
+    void* field90;
+    void* field94;
+    void* field98;
+    void* field9C;
+    void* fieldA0;
+    void* fieldA4;
+    void* fieldA8;
+    void* fieldAC;
+    void* fieldB0;
+    void* fieldB4;
+    void* fieldB8;
+    void* fieldBC;
+    void* fieldC0;
+    void* fieldC4;
+    void* fieldC8;
+    void* fieldCC;
+    void* fieldD0;
+    void* fieldD4;
+    void* fieldD8;
+    void* fieldDC;
+    void* fieldE0;
+    void* fieldE4;
+    void* fieldE8;
+    TypedStatsItem* construct();
+};
+
+void __stdcall sub_0058b6b0();
+
+TypedStatsItem* TypedStatsItem::construct()
+{
+    sub_0058b6b0();
+    *(int*)this = 0x7aebcc;
+    *(int*)((char*)this + 4) = 0x7aebc0;
+    *(int*)((char*)this + 0x10) = 0x7aebb8;
+    *(int*)((char*)this + 0x14) = 0x7aeba8;
+    *(int*)((char*)this + 0x2c) = 0x7aeb98;
+    *(int*)((char*)this + 0x44) = 0x7aeb88;
+    *(int*)((char*)this + 0x5c) = 0x7aeb78;
+    *(int*)((char*)this + 0x74) = 0x7aeb68;
+    *(int*)((char*)this + 0x8c) = 0x7aeb58;
+    *(int*)((char*)this + 0xe8) = 0x7aeb4c;
+    return this;
+}

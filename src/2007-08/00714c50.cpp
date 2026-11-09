@@ -1,0 +1,104 @@
+// from server: 100% by tester
+struct CXTCaptionButton {
+    virtual int vfunc_0();
+    virtual int vfunc_1();
+    virtual int vfunc_2();
+    virtual int vfunc_3();
+    virtual int vfunc_4();
+    virtual int vfunc_5();
+    virtual int vfunc_6();
+    virtual int vfunc_7();
+    virtual int vfunc_8();
+    virtual int vfunc_9();
+    virtual int vfunc_10();
+    virtual int vfunc_11();
+    virtual int vfunc_12();
+    virtual int vfunc_13();
+    virtual int vfunc_14();
+    virtual int vfunc_15();
+    virtual int vfunc_16();
+    virtual int vfunc_17();
+    virtual int vfunc_18();
+    virtual int vfunc_19();
+    virtual int vfunc_20();
+    virtual int vfunc_21();
+    virtual int vfunc_22();
+    virtual int vfunc_23();
+    virtual int vfunc_24();
+    virtual int vfunc_25();
+    virtual int vfunc_26();
+    virtual int vfunc_27();
+    virtual int vfunc_28();
+    virtual int vfunc_29();
+    virtual int vfunc_30();
+    virtual int vfunc_31();
+    virtual int vfunc_32();
+    virtual int vfunc_33();
+    virtual int vfunc_34();
+    virtual int vfunc_35();
+    virtual int vfunc_36();
+    virtual int vfunc_37();
+    virtual int vfunc_38();
+    virtual int vfunc_39();
+    virtual int vfunc_40();
+    virtual int vfunc_41();
+    virtual int vfunc_42();
+    virtual int vfunc_43();
+    virtual int vfunc_44();
+    virtual int vfunc_45();
+    virtual int vfunc_46();
+    virtual int vfunc_47();
+    virtual int vfunc_48();
+    virtual int vfunc_49();
+    virtual int vfunc_50();
+    virtual int vfunc_51();
+    virtual int vfunc_52();
+    virtual int vfunc_53();
+    virtual int vfunc_54();
+    virtual int vfunc_55();
+    virtual int vfunc_56();
+    virtual int vfunc_57();
+    virtual int vfunc_58();
+    virtual int vfunc_59();
+    virtual int vfunc_60();
+    virtual int vfunc_61();
+    virtual int vfunc_62();
+    virtual int vfunc_63();
+    virtual int vfunc_64();
+    virtual int vfunc_65();
+    virtual int vfunc_66();
+    virtual int vfunc_67();
+    virtual int vfunc_68();
+    virtual int vfunc_69();
+    virtual int vfunc_70();
+    virtual int vfunc_71();
+    virtual int vfunc_72();
+    virtual int vfunc_73();
+    virtual int vfunc_74();
+    virtual int vfunc_75();
+    virtual int vfunc_76();
+    virtual int vfunc_77();
+    virtual int vfunc_78();
+    virtual int vfunc_79();
+    virtual int vfunc_80();
+    virtual int vfunc_81();
+    virtual int vfunc_82();
+    virtual int vfunc_83();
+    virtual int vfunc_84();
+    virtual int vfunc_85();
+    virtual int vfunc_86();
+    virtual int vfunc_87();
+    virtual int vfunc_88();
+    virtual int vfunc_89();
+    int method_710f90();
+    int method_714d10(int arg);
+};
+
+int CXTCaptionButton::method_714d10(int arg)
+{
+    if (this->vfunc_89() != 0)
+    {
+        CXTCaptionButton* p = (CXTCaptionButton*)this->method_710f90();
+        return ((int (__thiscall*)(CXTCaptionButton*, int))((*(int**)p)[0x2c / 4]))(p, arg);
+    }
+}

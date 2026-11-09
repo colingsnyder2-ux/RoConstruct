@@ -1,0 +1,35 @@
+// from server: 100% by nuck16
+// roc 2009-12 0096c740  unit: seg_00960000  size: 42 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-12 0096c740
+//
+// 0096c740  33c9                 xor ecx, ecx
+// 0096c742  51                   push ecx
+// 0096c743  6828b19b00           push 0x9bb128
+// 0096c748  6854b99b00           push 0x9bb954
+// 0096c74d  51                   push ecx
+// 0096c74e  b8b05d5100           mov eax, 0x515db0
+// 0096c753  50                   push eax
+// 0096c754  b9e8edb700           mov ecx, 0xb7ede8
+// 0096c759  e8720cbbff           call 0x51d3d0
+// 0096c75e  6810fc9700           push 0x97fc10
+// 0096c763  e8c181e8ff           call 0x7f4929
+// 0096c768  59                   pop ecx
+// 0096c769  c3                   ret 
+
+// dynamic initializer of a static reflection descriptor: ctor on the static object, then atexit(destructor).
+// Member function pointers are {fn, 0} pairs, so the owner uses multiple inheritance.
+struct BaseA { int a; };
+struct BaseB { int b; };
+class Owner : public BaseA, public BaseB
+{
+public:
+    void m0();
+};
+
+struct Desc
+{
+    Desc(void (Owner::*)(), const char *, const char *, int);
+    ~Desc();
+};
+
+static Desc desc(&Owner::m0, "GetPlayerFromCharacter", "character", 0);

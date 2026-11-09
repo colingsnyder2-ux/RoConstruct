@@ -1,0 +1,78 @@
+// from server: 100% by colin
+// from server: 100% by user
+// from server: 99% by colin
+// roc-cl: 21022
+// roc-flags: /O2 /GS- /EHsc /MD /fp:fast
+extern "C" __declspec(dllimport) long __stdcall InterlockedDecrement(volatile long *);
+extern const float upperLimit;
+
+struct Control
+{
+    virtual ~Control();
+    volatile long references;
+    void dispose();
+};
+
+template <class T>
+struct ReferenceCountedPointer
+{
+    T *m_pointer;
+
+    ~ReferenceCountedPointer()
+    {
+        if (m_pointer && InterlockedDecrement(&m_pointer->references) == 0)
+        {
+            m_pointer->dispose();
+            if (m_pointer)
+                delete m_pointer;
+        }
+    }
+
+    void setPointer(T *);
+
+    const ReferenceCountedPointer<T>& operator=(const ReferenceCountedPointer<T>& p)
+    {
+        setPointer(p.m_pointer);
+        return *this;
+    }
+};
+
+struct EffectSettings
+{
+    ReferenceCountedPointer<Control> update(float, float, bool, float, void *, void *, void *);
+};
+
+struct RenderScene
+{
+    char padding0[0x24];
+    float first;
+    float second;
+    char padding1[0x2d4 - 0x2c];
+    EffectSettings effectSettings;
+    char padding2[0x2e8 - 0x2d5];
+    unsigned long desiredLighting;
+    ReferenceCountedPointer<Control> lighting;
+    bool shadows;
+    char padding3[3];
+    float cameraDistance;
+    char padding4[0x310 - 0x2f8];
+    char desiredSkyParameters[0xf8];
+    char skyParameters;
+
+    void setThrottle(float, float, bool, float);
+};
+
+void RenderScene::setThrottle(float t, float m, bool s, float c)
+{
+    float value = t <= 0.0f ? 0.0f : t >= upperLimit ? upperLimit : t;
+
+    if (value != first || m != second || s != shadows || c != cameraDistance)
+    {
+        first = value;
+        second = m;
+        cameraDistance = c;
+        shadows = s;
+        lighting = effectSettings.update(value, m, s, c,
+                                         &desiredLighting, desiredSkyParameters, &skyParameters);
+    }
+}

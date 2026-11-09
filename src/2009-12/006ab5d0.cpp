@@ -1,0 +1,32 @@
+// from server: 100% by nuck16
+// roc 2009-12 006ab5d0  unit: RBX::VHat::?$FactoryProduct  size: 37 bytes
+// Make this compile to the exact bytes below, then: roc check 2009-12 006ab5d0
+//
+// 006ab5d0  8b44240c             mov eax, dword ptr [esp + 0xc]
+// 006ab5d4  83f804               cmp eax, 4
+// 006ab5d7  7409                 je 0x6ab5e2
+// 006ab5d9  8944240c             mov dword ptr [esp + 0xc], eax
+// 006ab5dd  e99ef4ffff           jmp 0x6aaa80
+// 006ab5e2  8b442408             mov eax, dword ptr [esp + 8]
+// 006ab5e6  32c9                 xor cl, cl
+// 006ab5e8  c700e8a0b300         mov dword ptr [eax], 0xb3a0e8
+// 006ab5ee  884804               mov byte ptr [eax + 4], cl
+// 006ab5f1  884805               mov byte ptr [eax + 5], cl
+// 006ab5f4  c3                   ret 
+
+// 0xb3a0e8 is the RTTI type descriptor of the stored functor (boost functor_manager type tag)
+extern "C" const char type_descriptor_b3a0e8[];
+extern "C" void func_6aaa80(int, int, int);
+
+void func_006ab5d0(int a, int b, int c)
+{
+    if (c != 4)
+    {
+        func_6aaa80(a, b, c);
+        return;
+    }
+
+    *(const void **)b = type_descriptor_b3a0e8;
+    *((char *)b + 4) = 0;
+    *((char *)b + 5) = 0;
+}

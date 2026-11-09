@@ -1,0 +1,248 @@
+#pragma once
+#include "reflection/descriptor.h"
+#include <iterator>
+#include <vector>
+#include <algorithm>
+
+namespace RBX
+{
+	namespace Reflection
+	{
+		class DescribedBase;
+		class ClassDescriptor;
+
+		class __declspec(novtable) MemberDescriptor : public Descriptor
+		{
+		public:
+			const Name& category;
+			const ClassDescriptor& owner;
+		  
+		protected:
+			MemberDescriptor(const ClassDescriptor& owner, const char* name, const char* category)
+				: Descriptor(name),
+				  category(Name::declare(category, -1)),
+				  owner(owner)
+			{
+			}
+
+			virtual ~MemberDescriptor()
+			{
+			}
+
+		public:
+			bool isMemberOf(const DescribedBase* instance) const;
+			bool isMemberOf(const ClassDescriptor& classDescriptor) const;
+		};
+
+		template<typename TheDescriptor>
+		class MemberDescriptorContainer
+		{
+		public:
+			typedef std::vector<TheDescriptor*> CollectionType;
+			class Collection : public CollectionType
+			{
+			};
+
+		public:
+			class Iterator : public std::iterator<std::forward_iterator_tag, typename TheDescriptor::Describing, void>
+			{
+			private:
+				DescribedBase* instance;
+				typename CollectionType::const_iterator iter;
+			  
+			public:
+				Iterator(const typename CollectionType::const_iterator& iter, DescribedBase* instance)
+					: instance(instance),
+					  iter(iter)
+				{
+				}
+
+			public:
+				typename TheDescriptor::Describing operator*() const
+				{
+					return TheDescriptor::Describing(**iter, instance);
+				}
+				bool operator==(const Iterator& other) const
+				{
+					return iter == other.iter;
+				}
+				bool operator!=(const Iterator& other) const
+				{
+					return iter != other.iter;
+				}
+				Iterator operator++(int);
+				Iterator& operator++();
+			};
+
+		public:
+			class ConstIterator : public std::iterator<std::forward_iterator_tag, typename TheDescriptor::Describing, void>
+			{
+			private:
+				const DescribedBase* instance;
+				typename CollectionType::const_iterator iter;
+		  
+			public:
+				ConstIterator(const typename CollectionType::const_iterator& iter, const DescribedBase* instance)
+					: instance(instance),
+					  iter(iter)
+				{
+				}
+			public:
+				typename TheDescriptor::Describing operator*() const
+				{
+					return TheDescriptor::Describing(getDescriptor(), instance);
+				}
+				bool operator==(const ConstIterator& other) const
+				{
+					return iter == other.iter;
+				}
+				bool operator!=(const ConstIterator& other) const
+				{
+					return iter != other.iter;
+				}
+				ConstIterator operator++(int);
+				ConstIterator& operator++();
+				const TheDescriptor& getDescriptor() const
+				{
+					return **iter;
+				}
+			};
+
+		protected:
+			Collection descriptors;
+			std::vector<MemberDescriptorContainer*> derivedContainers;
+			MemberDescriptorContainer* base;
+
+		protected:
+			MemberDescriptorContainer(MemberDescriptorContainer* base)
+				: descriptors(),
+				  derivedContainers(),
+				  base(base)
+			{
+				if (base)
+				{
+					boost::recursive_mutex::scoped_lock lock(sync());
+					mergeMembers(base);
+					base->derivedContainers.push_back(this);
+				}
+			}
+
+		public:
+			void declare(TheDescriptor* descriptor)
+			{
+				boost::recursive_mutex::scoped_lock lock(sync());
+
+				CollectionType::iterator bound = std::lower_bound(descriptors.begin(), descriptors.end(), descriptor, &compare);
+				if (bound == descriptors.end() || *bound != descriptor)
+					descriptors.insert(bound, descriptor);
+
+				for (std::vector<MemberDescriptorContainer*>::iterator iter = derivedContainers.begin(); iter != derivedContainers.end(); iter++)
+				{
+					(*iter)->declare(descriptor);
+				}
+			}
+
+			typename CollectionType::const_iterator descriptors_begin() const
+			{
+				return descriptors.begin();
+			}
+			typename CollectionType::const_iterator descriptors_end() const
+			{
+				return descriptors.end();
+			}
+			typename CollectionType::const_iterator findDescriptor(const Name& name) const
+			{
+				size_t posStart = 0;
+				size_t posEnd = descriptors.size();
+
+				if (posEnd)
+				{
+					size_t i;
+					bool found = false;
+
+					do
+					{
+						i = (posStart+posEnd)/2;
+
+						const Name& descName = descriptors[i]->name;
+
+						if (name == descName)
+						{
+							found = true;
+							break;
+						}
+						
+						int compare = name.compare(descName);
+
+						if (compare < 0)
+						{
+							posEnd = i;	
+						}
+						else
+						{
+							if (compare <= 0)
+							{
+								found = true;
+								break;
+							}
+
+							posStart = i+1;
+						}
+					}
+					while (posStart < posEnd);
+
+					if (found)
+						return descriptors.begin()+i;
+				}
+
+				return descriptors.end();
+			}
+
+			Iterator findMember(const Name& name, DescribedBase* instance) const
+			{
+				return Iterator::Iterator(findDescriptor(name), instance);
+			}
+			ConstIterator findConstMember(const Name& name, const DescribedBase* instance) const
+			{
+				return ConstIterator::ConstIterator(findDescriptor(name), instance);
+			}
+
+			Iterator members_begin(DescribedBase* instance) const
+			{
+				return Iterator::Iterator(descriptors_begin(), instance);
+			}
+			ConstIterator members_begin(const DescribedBase* instance) const
+			{
+				return ConstIterator::ConstIterator(descriptors_begin(), instance);
+			}
+
+			Iterator members_end(DescribedBase* instance) const
+			{
+				return Iterator::Iterator(descriptors_end(), instance);
+			}
+			ConstIterator members_end(const DescribedBase* instance) const
+			{
+				return ConstIterator::ConstIterator(descriptors_end(), instance);
+			}
+
+		protected:
+			void mergeMembers(const MemberDescriptorContainer* source)
+			{
+				do
+				{
+					for (CollectionType::const_iterator iter = source->descriptors.begin(); iter != source->descriptors.end(); iter++)
+					{
+						declare(*iter);
+					}
+				}
+				while (source = source->base);
+			}
+
+		public:
+			static bool compare(const TheDescriptor* a, const TheDescriptor* b)
+			{
+				return a->name < b->name;
+			}
+		};
+	}
+}

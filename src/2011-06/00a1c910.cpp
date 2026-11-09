@@ -1,0 +1,13 @@
+// from server: 100% by colin
+extern int g_00a1c910_1;
+extern int g_00a1c910_2;
+// roc-flags: /O2 /GS- /EHsc /MD /Ob2 /Oy /GF
+extern "C" void tail_fn_00a1c910(void*);
+struct O_00a1c910 { int m(int, void*, void*, int); };
+extern O_00a1c910 g_obj_00a1c910;
+extern int g_tail_00a1c910;
+void func_00a1c910()
+{
+    g_obj_00a1c910.m(136, (void*)&g_00a1c910_1, (void*)&g_00a1c910_2, 0);
+    tail_fn_00a1c910(&g_tail_00a1c910);
+}

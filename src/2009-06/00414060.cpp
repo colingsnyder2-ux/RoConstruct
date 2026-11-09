@@ -1,0 +1,6 @@
+// from server: 100% by auto
+extern void G1_func_00414060();
+void func_00414060()
+{
+    G1_func_00414060();
+}

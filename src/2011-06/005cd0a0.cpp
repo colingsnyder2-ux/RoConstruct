@@ -1,0 +1,11 @@
+// from server: 100% by colin
+// roc-flags: /O2 /Ob2 /Oy /GS- /EHsc /MD
+struct Obj_005cd0a0 { void reg(void*); };
+extern Obj_005cd0a0 g_obj_005cd0a0;
+extern void* g_arg_005cd0a0;
+extern void cb_005cd0a0();
+extern void tail_005cd0a0(void*);
+extern void* __stdcall make_005cd0a0(void*, int);
+struct X_005cd0a0 { X_005cd0a0(); };
+X_005cd0a0::X_005cd0a0() { void* p=make_005cd0a0(g_arg_005cd0a0,27); g_obj_005cd0a0.reg(p); tail_005cd0a0((void*)&cb_005cd0a0); }
+X_005cd0a0* func_005cd0a0() { static X_005cd0a0 x; return &x; }

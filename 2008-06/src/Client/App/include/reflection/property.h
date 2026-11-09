@@ -1,0 +1,246 @@
+#pragma once
+#include "reflection/member.h"
+#include "reflection/enumconverter.h"
+#include "v8xml/XmlElement.h"
+#include "util/Handle.h"
+
+namespace RBX
+{
+	class Instance;
+	class IReferenceBinder;
+
+	namespace Reflection
+	{
+		class Property;
+		class __declspec(novtable) PropertyDescriptor : public MemberDescriptor
+		{
+		public:
+			enum Functionality
+			{
+				LEGACY    = 0,
+				UI        = 1 << 0,	// 1
+				STREAMING = 1 << 2,	// 4
+				STANDARD  = UI | STREAMING // 5
+			};
+
+		public:
+			typedef Property Describing;
+
+		private:
+			unsigned bIsPublic : 1;
+			unsigned bCanStreamWrite : 1;
+
+		public:
+			const Type& type;
+		  
+		protected:
+			PropertyDescriptor(ClassDescriptor& classDescriptor, const Type& type, const char* name, const char* category, Functionality flags);
+
+		public:
+			bool isPublic() const;
+			virtual bool isReadOnly() const = 0;
+			virtual bool isWriteOnly() const { return false; }
+			bool canStreamWrite() const
+			{
+				return bCanStreamWrite;
+			}
+			bool operator==(const PropertyDescriptor& other) const
+			{
+				return this == &other;
+			}
+			virtual bool equalValues(const DescribedBase*, const DescribedBase*) const = 0;
+			virtual void getValue(const DescribedBase*, Value&) const {}
+			virtual void setValue(DescribedBase*, const Value&) const {}
+			virtual bool hasStringValue() const = 0;
+			virtual std::string getStringValue(const DescribedBase*) const = 0;
+			virtual bool setStringValue(DescribedBase*, const std::string&) const = 0;
+			XmlElement* write(const DescribedBase* instance, bool ignoreWriteProtection) const;
+			virtual void read(DescribedBase* instance, const XmlElement* element, IReferenceBinder& binder) const;
+
+		private:
+			virtual void writeValue(const DescribedBase*, XmlElement*) const = 0;
+			virtual void readValue(DescribedBase*, const XmlElement*, IReferenceBinder&) const = 0;
+		};
+
+		class ConstProperty
+		{
+		protected:
+			const PropertyDescriptor* descriptor;
+			const DescribedBase* instance;
+		  
+		public:
+			ConstProperty(const ConstProperty& other)
+				: descriptor(other.descriptor),
+				  instance(other.instance)
+			{
+			}
+			ConstProperty(const PropertyDescriptor& descriptor, const DescribedBase* instance)
+				: descriptor(&descriptor),
+				  instance(instance)
+			{
+				RBXASSERT(descriptor.isMemberOf(instance));
+			}
+		public:
+			const DescribedBase* getInstance() const
+			{
+				return instance;
+			}
+			const PropertyDescriptor& getDescriptor() const
+			{
+				return *descriptor; // might be wrong?
+			}
+			ConstProperty& operator=(const ConstProperty&);
+			const Name& getName() const;
+			bool hasStringValue() const;
+			std::string getStringValue() const
+			{
+				return descriptor->getStringValue(instance);
+			}
+			XmlElement* write() const;
+
+		public:
+			template<typename T>
+			T getValue() const;
+		};
+
+		class Property : public ConstProperty
+		{
+		public:
+			Property(const Property&);
+			Property(const PropertyDescriptor& descriptor, DescribedBase* instance)
+				: ConstProperty(descriptor, instance)
+			{
+			}
+
+		public:
+			Property& operator=(const Property&);
+			bool operator==(const Property&) const;
+			bool operator!=(const Property&) const;
+			DescribedBase* getInstance() const
+			{
+				return const_cast<DescribedBase*>(instance); // might not be right
+			}
+			bool setStringValue(const std::string&);
+			void read(const XmlElement* propertyElement, IReferenceBinder& binder)
+			{
+				descriptor->read(getInstance(), propertyElement, binder);
+			}
+
+		public:
+			template<typename T>
+			void setValue(const T& value);
+		};
+
+		template<typename PropType>
+		class TypedPropertyDescriptor : public PropertyDescriptor
+		{
+		public:
+			class GetSet
+			{
+			public:
+				virtual bool isReadOnly() const = 0;
+				virtual bool isWriteOnly() const { return false; }
+				virtual PropType getValue(const DescribedBase*) const = 0;
+				virtual void setValue(DescribedBase*, const PropType&) const = 0;
+			};
+
+		protected:
+			std::auto_ptr<GetSet> getset;
+		  
+		protected:
+			TypedPropertyDescriptor(ClassDescriptor& classDescriptor, const char* name, const char* category, std::auto_ptr<GetSet> getset, Functionality flags)
+				: PropertyDescriptor(classDescriptor, Type::singleton<PropType>(), name, category, flags),
+				  getset(getset)
+			{
+			}
+			TypedPropertyDescriptor(ClassDescriptor&, const Type&, const char*, const char*, std::auto_ptr<GetSet>, Functionality);
+
+		public:
+			virtual bool isReadOnly() const
+			{
+				return getset->isReadOnly();
+			}
+			PropType getValue(const DescribedBase* object) const
+			{
+				return getset->getValue(object);
+			}
+			void setValue(DescribedBase* object, const PropType& value) const
+			{
+				getset->setValue(object, value);
+			}
+			virtual bool equalValues(const DescribedBase* a, const DescribedBase* b) const
+			{
+				return getValue(a) == getValue(b);
+			}
+
+			virtual bool hasStringValue() const
+			{
+				return true;
+			}
+			virtual std::string getStringValue(const DescribedBase* instance) const;
+			virtual bool setStringValue(DescribedBase* instance, const std::string& text) const;
+
+		private:
+			virtual void readValue(DescribedBase* instance, const XmlElement* element, IReferenceBinder& binder) const;
+			virtual void writeValue(const DescribedBase* instance, XmlElement* element) const;
+		};
+
+		class RefPropertyDescriptor : public PropertyDescriptor
+		{
+		public:
+			virtual DescribedBase* getRefValue(const DescribedBase*) const = 0;
+			virtual void setRefValue(DescribedBase*, DescribedBase*) const = 0;
+
+		protected:
+			RefPropertyDescriptor(ClassDescriptor& classDescriptor, const Type& type, const char* name, const char* category, Functionality flags)
+				: PropertyDescriptor(classDescriptor, type, name, category, flags)
+			{
+			}
+			virtual bool hasStringValue() const
+			{
+				return false;
+			}
+			virtual std::string getStringValue(const DescribedBase*) const;
+			virtual bool setStringValue(DescribedBase*, const std::string&) const;
+		};
+
+		class EnumPropertyDescriptor : public PropertyDescriptor
+		{
+		public:
+			const EnumDescriptor& enumDescriptor;
+		  
+		public:
+			virtual unsigned getIndexValue(const DescribedBase*) const = 0;
+			virtual bool setIndexValue(DescribedBase*, unsigned) const = 0;
+			virtual int getEnumValue(const DescribedBase*) const = 0;
+			virtual bool setEnumValue(DescribedBase*, int) const = 0;
+
+		protected:
+			EnumPropertyDescriptor(ClassDescriptor& classDescriptor, const EnumDescriptor& enumDesc, const char* name, const char* category, Functionality flags)
+				: PropertyDescriptor(classDescriptor, enumDesc, name, category, flags),
+				  enumDescriptor(enumDesc)
+			{
+			}
+		};
+	}
+}
+
+// rebuild overlay: template bodies rbxgs declares but never defines
+#include <boost/cast.hpp>
+namespace RBX
+{
+	namespace Reflection
+	{
+		template<typename T>
+		T ConstProperty::getValue() const
+		{
+			return boost::polymorphic_cast<const TypedPropertyDescriptor<T>*>(descriptor)->getValue(instance);
+		}
+
+		template<typename T>
+		void Property::setValue(const T& value)
+		{
+			boost::polymorphic_cast<const TypedPropertyDescriptor<T>*>(descriptor)->setValue(getInstance(), value);
+		}
+	}
+}

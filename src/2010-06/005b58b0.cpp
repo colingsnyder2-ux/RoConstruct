@@ -1,0 +1,5 @@
+// from server: 100% by colin
+// roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
+extern "C" void* __stdcall make_desc_005b58b0(const char*,int); struct Descriptor_005b58b0{void attach(void*);}; extern Descriptor_005b58b0 global_desc_005b58b0; extern void register_desc_005b58b0(void(*)()); extern int name_005b58b0; extern int callback_impl;
+struct Init_005b58b0{Init_005b58b0(){void* p=make_desc_005b58b0("CoreGui",2);global_desc_005b58b0.attach(p);register_desc_005b58b0((void(*)())&callback_impl);}}; Init_005b58b0* func_005b58b0(){static Init_005b58b0 init;return &init;}
+

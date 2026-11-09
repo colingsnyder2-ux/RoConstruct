@@ -1,0 +1,11 @@
+// from server: 100% by EspClaude
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /Od /Ob1 /GS- /MT
+struct M { M(); int x; };
+struct X {
+    int a, b;
+    M m;
+    X();
+};
+X::X() {}

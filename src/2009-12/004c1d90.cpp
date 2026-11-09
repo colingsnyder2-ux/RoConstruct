@@ -1,0 +1,55 @@
+// from server: 100% by nuck16
+// roc 2009-12 004c1d90  unit: RBX::VSparkles::?$FactoryProduct::Creator  size: 66 bytes
+//
+// 004c1d90  51                   push ecx
+// 004c1d91  56                   push esi
+// 004c1d92  c744240400000000     mov dword ptr [esp + 4], 0
+// 004c1d9a  e8e1d3faff           call 0x46f180
+// 004c1d9f  8b4c2410             mov ecx, dword ptr [esp + 0x10]
+// 004c1da3  8b74240c             mov esi, dword ptr [esp + 0xc]
+// 004c1da7  83ec10               sub esp, 0x10
+// 004c1daa  8bd4                 mov edx, esp
+// 004c1dac  890a                 mov dword ptr [edx], ecx
+// 004c1dae  8b4c2424             mov ecx, dword ptr [esp + 0x24]
+// 004c1db2  894a04               mov dword ptr [edx + 4], ecx
+// 004c1db5  8b4c2428             mov ecx, dword ptr [esp + 0x28]
+// 004c1db9  894a08               mov dword ptr [edx + 8], ecx
+// 004c1dbc  8b4c242c             mov ecx, dword ptr [esp + 0x2c]
+// 004c1dc0  894a0c               mov dword ptr [edx + 0xc], ecx
+// 004c1dc3  56                   push esi
+// 004c1dc4  8bc8                 mov ecx, eax
+// 004c1dc6  e815fcffff           call 0x4c19e0
+// 004c1dcb  8bc6                 mov eax, esi
+// 004c1dcd  5e                   pop esi
+// 004c1dce  59                   pop ecx
+// 004c1dcf  c21400               ret 0x14
+
+struct Ret
+{
+    Ret(const Ret &);
+    ~Ret();
+    void *p;
+};
+
+struct Arg
+{
+    int f0, f1, f2, f3;
+};
+
+struct Impl
+{
+    Ret g(Arg arg);
+};
+
+struct Getter { static Impl *get(); };
+
+struct S
+{
+    Ret f(Arg arg);
+};
+
+Ret S::f(Arg arg)
+{
+    Impl *impl = Getter::get();
+    return impl->g(arg);
+}

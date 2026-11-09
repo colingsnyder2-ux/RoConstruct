@@ -1,0 +1,116 @@
+// from server: 16% by colin
+extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
+#pragma intrinsic(_InterlockedExchangeAdd)
+
+extern "C" void* __cdecl malloc(unsigned int);
+extern "C" void __cdecl free(void*);
+
+extern "C" void __stdcall G1_0077e698();
+extern "C" void __cdecl G1_0052cca0();
+extern "C" void __cdecl G1_0062fef6();
+extern "C" void __cdecl G1_00630b9e();
+extern "C" void __cdecl G1_005595a0();
+extern "C" void __cdecl G1_00412dc0();
+extern "C" void __cdecl G1_004339d0();
+extern "C" void __cdecl G1_00464ec0();
+extern "C" void __cdecl G1_0055f310();
+extern "C" void __cdecl G1_0044f870();
+extern "C" void __cdecl G1_0044f8c0();
+extern "C" void __cdecl G1_0040f360();
+extern "C" void __cdecl G1_0040f3c0();
+extern "C" void __cdecl G1_0040f6a0();
+extern "C" void __cdecl G1_0041be20();
+extern "C" void __cdecl G1_0041cee0();
+
+struct S {
+    char pad0[0x54];
+    char field54[0x20];
+    char pad74[0x04];
+    void* field78;
+    void method();
+};
+
+void S::method()
+{
+    G1_0077e698();
+    G1_0055f310();
+    G1_00464ec0();
+    G1_0062fef6();
+    G1_0055f310();
+    G1_00464ec0();
+    G1_0062fef6();
+    G1_0055f310();
+    G1_00464ec0();
+    G1_0044f870();
+    G1_0044f870();
+    G1_0044f870();
+    G1_0044f870();
+    G1_0044f870();
+    G1_0044f870();
+    G1_0044f870();
+    G1_0044f870();
+    G1_0052cca0();
+    G1_004339d0();
+    G1_0052cca0();
+    G1_004339d0();
+    G1_0052cca0();
+    G1_004339d0();
+    G1_0052cca0();
+    G1_004339d0();
+    G1_0052cca0();
+    G1_004339d0();
+    G1_0052cca0();
+    G1_004339d0();
+    G1_0052cca0();
+    G1_004339d0();
+    G1_0052cca0();
+    G1_004339d0();
+    G1_0052cca0();
+    G1_004339d0();
+    G1_0044f870();
+    G1_0044f870();
+    G1_0062fef6();
+    G1_0040f6a0();
+    G1_0044f8c0();
+    G1_0062fef6();
+    G1_0040f3c0();
+    G1_0044f8c0();
+    G1_0062fef6();
+    G1_0040f360();
+    G1_0044f8c0();
+    G1_0062fef6();
+    G1_0040f360();
+    G1_0044f8c0();
+    G1_0062fef6();
+    G1_0041be20();
+    G1_0044f8c0();
+    G1_0062fef6();
+    G1_0041be20();
+    G1_0044f8c0();
+    G1_0062fef6();
+    G1_0041cee0();
+    G1_0044f8c0();
+    G1_0044f870();
+    G1_0044f870();
+    G1_0052cca0();
+    G1_004339d0();
+    G1_0052cca0();
+    G1_004339d0();
+    G1_0044f870();
+    G1_0044f870();
+    G1_0044f870();
+    G1_0044f870();
+    G1_0044f870();
+    G1_0044f870();
+    G1_0044f870();
+    G1_0044f870();
+    G1_0044f870();
+    G1_0044f870();
+    G1_0044f870();
+    G1_0044f870();
+    G1_0044f870();
+    G1_0044f870();
+    G1_005595a0();
+    G1_00412dc0();
+    G1_00630b9e();
+}
