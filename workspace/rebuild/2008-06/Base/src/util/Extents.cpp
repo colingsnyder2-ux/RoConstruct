@@ -128,4 +128,47 @@ namespace RBX
 
 		return G3D::Plane(normal, point);
 	}
+
+	void Extents::getFaceCorners(NormalId faceId, G3D::Vector3& v0, G3D::Vector3& v1, G3D::Vector3& v2, G3D::Vector3& v3) const
+	{
+		switch (faceId)
+		{
+		case NORM_X:
+			v0 = getCorner(4);
+			v1 = getCorner(6);
+			v2 = getCorner(7);
+			v3 = getCorner(5);
+			break;
+		case NORM_Y:
+			v0 = getCorner(2);
+			v1 = getCorner(3);
+			v2 = getCorner(7);
+			v3 = getCorner(6);
+			break;
+		case NORM_Z:
+			v0 = getCorner(1);
+			v1 = getCorner(5);
+			v2 = getCorner(7);
+			v3 = getCorner(3);
+			break;
+		case NORM_X_NEG:
+			v0 = getCorner(0);
+			v1 = getCorner(1);
+			v2 = getCorner(3);
+			v3 = getCorner(2);
+			break;
+		case NORM_Y_NEG:
+			v0 = getCorner(0);
+			v1 = getCorner(4);
+			v2 = getCorner(5);
+			v3 = getCorner(1);
+			break;
+		case NORM_Z_NEG:
+			v0 = getCorner(0);
+			v1 = getCorner(2);
+			v2 = getCorner(6);
+			v3 = getCorner(4);
+			break;
+		}
+	}
 }
