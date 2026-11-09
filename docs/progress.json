@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-04 22:51 UTC",
+ "updated": "2026-11-09 01:59 UTC",
  "clients": [
   {
    "name": "2007-03",
@@ -101,15 +101,15 @@
    "built": "2007-08-19",
    "started": true,
    "functions": 19819,
-   "matched": 17841,
-   "partial": 1875,
+   "matched": 17927,
+   "partial": 1791,
    "source_matched": 12608,
-   "mined_matched": 5233,
+   "mined_matched": 5319,
    "bytes": 3196410,
-   "matched_bytes": 2466140,
+   "matched_bytes": 2483610,
    "source_bytes": 2185755,
-   "mined_bytes": 280385,
-   "partial_bytes": 644950,
+   "mined_bytes": 297855,
+   "partial_bytes": 627685,
    "data_bytes": 1361658,
    "leaderboard": [
     {
@@ -159,12 +159,12 @@
     },
     {
      "user": "tajop",
-     "matched": 86,
-     "mining_points": 950,
-     "points": 950,
+     "matched": 93,
+     "mining_points": 1649,
+     "points": 1649,
      "native_integrated": 0,
-     "submissions": 89,
-     "last": 1793352996.674317
+     "submissions": 117,
+     "last": 1794144762.6604514
     },
     {
      "user": "colinlaptop",
@@ -183,6 +183,15 @@
      "native_integrated": 0,
      "submissions": 190,
      "last": 1792429931.6704466
+    },
+    {
+     "user": "Intel",
+     "matched": 81,
+     "mining_points": 804,
+     "points": 804,
+     "native_integrated": 0,
+     "submissions": 140,
+     "last": 1794167939.3596454
     },
     {
      "user": "atomic.potato",
@@ -219,15 +228,6 @@
      "native_integrated": 0,
      "submissions": 42,
      "last": 1792344458.634544
-    },
-    {
-     "user": "Intel",
-     "matched": 2,
-     "mining_points": 169,
-     "points": 169,
-     "native_integrated": 0,
-     "submissions": 15,
-     "last": 1793832123.148639
     },
     {
      "user": "jazz",
@@ -275,7 +275,7 @@
      "last": 1791599062.0144148
     }
    ],
-   "data_matched_bytes": 115160,
+   "data_matched_bytes": 115521,
    "classes": 1391,
    "generated": 16565
   },
@@ -769,15 +769,15 @@
    "built": "2012-06-13",
    "started": true,
    "functions": 39655,
-   "matched": 17394,
-   "partial": 10776,
-   "source_matched": 9796,
-   "mined_matched": 7598,
+   "matched": 17444,
+   "partial": 10766,
+   "source_matched": 9797,
+   "mined_matched": 7647,
    "bytes": 6736062,
-   "matched_bytes": 1638829,
-   "source_bytes": 1429871,
-   "mined_bytes": 208958,
-   "partial_bytes": 1874105,
+   "matched_bytes": 1644592,
+   "source_bytes": 1429994,
+   "mined_bytes": 214598,
+   "partial_bytes": 1876611,
    "data_bytes": 3396596,
    "leaderboard": [
     {
@@ -817,6 +817,15 @@
      "last": 1793803850.5711186
     },
     {
+     "user": "tajop",
+     "matched": 293,
+     "mining_points": 16718,
+     "points": 16718,
+     "native_integrated": 0,
+     "submissions": 428,
+     "last": 1793947942.2342236
+    },
+    {
      "user": "intel",
      "matched": 49,
      "mining_points": 15889,
@@ -824,15 +833,6 @@
      "native_integrated": 0,
      "submissions": 1415,
      "last": 1792737846.25266
-    },
-    {
-     "user": "tajop",
-     "matched": 243,
-     "mining_points": 11578,
-     "points": 11578,
-     "native_integrated": 0,
-     "submissions": 341,
-     "last": 1793619850.388477
     },
     {
      "user": "Yeetserama",
@@ -959,6 +959,15 @@
    "last": 1793660200.68677
   },
   {
+   "user": "Intel",
+   "matched": 205,
+   "mining_points": 33499,
+   "points": 33499,
+   "native_integrated": 0,
+   "submissions": 934,
+   "last": 1794167939.3596454
+  },
+  {
    "user": "why2",
    "matched": 204,
    "mining_points": 33377,
@@ -968,13 +977,13 @@
    "last": 1791657569.112455
   },
   {
-   "user": "Intel",
-   "matched": 126,
-   "mining_points": 32864,
-   "points": 32864,
+   "user": "tajop",
+   "matched": 386,
+   "mining_points": 18367,
+   "points": 18367,
    "native_integrated": 0,
-   "submissions": 809,
-   "last": 1793832123.148639
+   "submissions": 545,
+   "last": 1794144762.6604514
   },
   {
    "user": "intel",
@@ -984,15 +993,6 @@
    "native_integrated": 0,
    "submissions": 1415,
    "last": 1792737846.25266
-  },
-  {
-   "user": "tajop",
-   "matched": 329,
-   "mining_points": 12528,
-   "points": 12528,
-   "native_integrated": 0,
-   "submissions": 430,
-   "last": 1793619850.388477
   },
   {
    "user": "coldek",
