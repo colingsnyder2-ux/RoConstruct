@@ -789,8 +789,8 @@ int main(int argc, char** argv)
         else if (std::strcmp(argv[i], "--play") == 0) playRequested = true;
         else if (std::strcmp(argv[i], "--p5-join") == 0) p5Join = true;
         else if (std::strcmp(argv[i], "--p5-control") == 0) p5Control = true;
-        else if (std::strcmp(argv[i], "--p5-native-camera") == 0) {p5NativeCamera=true;p5Control=true;p5Play=true;}
-        else if (std::strcmp(argv[i], "--p5-camera-turn-test") == 0) {p5CameraTurnTest=true;p5NativeCamera=true;p5Control=true;p5Play=true;}
+        else if (std::strcmp(argv[i], "--p5-native-camera") == 0) {p5NativeCamera=true;p5Control=true;p5Play=true;p5Spawn=true;}
+        else if (std::strcmp(argv[i], "--p5-camera-turn-test") == 0) {p5CameraTurnTest=true;p5NativeCamera=true;p5Control=true;p5Play=true;p5Spawn=true;}
         else if (std::strcmp(argv[i], "--p5-spawn") == 0) {p5Spawn=true;p5Control=true;p5Play=true;}
         else if (std::strcmp(argv[i], "--p5-animate-observe") == 0) {p5AnimateObserve=true;p5Spawn=true;p5Control=true;p5Play=true;}
         else if (std::strcmp(argv[i], "--p5-live-observe") == 0) p5LiveObserve = true;
@@ -1079,11 +1079,16 @@ int main(int argc, char** argv)
         float actorX=0,actorY=0,actorZ=0;
         Ogre::Vector3 cameraStart=cam->getPosition(),lookStart=cam->getDirection();
         if(p5LiveObserve && GetActorTorsoPosition(&actorX,&actorY,&actorZ))return 1;
+        std::fprintf(stderr,"interactive: before first draw/render\n"); std::fflush(stderr);
+        try{ drawModels(); root->renderOneFrame(); win->update(); }catch(...){ std::fprintf(stderr,"interactive: first render failed\n"); std::fflush(stderr); }
+        std::fprintf(stderr,"interactive: after first render\n"); std::fflush(stderr);
         Ogre::Timer timer;
         unsigned long last = timer.getMilliseconds();
         bool moved = false, removed = false;
+        std::fprintf(stderr,"interactive: entering loop\n"); std::fflush(stderr);
         while (!win->isClosed())
         {
+            try{
             Ogre::WindowEventUtilities::messagePump();
             if(win->isClosed())break;
             unsigned long now = timer.getMilliseconds();
@@ -1111,6 +1116,8 @@ int main(int argc, char** argv)
             drawModels();
             root->renderOneFrame();
             win->update();
+            }catch(const std::exception& e){ std::fprintf(stderr,"interactive frame error: %s\n",e.what()); }
+             catch(...){ std::fprintf(stderr,"interactive frame error: unknown\n"); }
         }
         if(p5LiveObserve){
             float x,y,z;if(GetActorTorsoPosition(&x,&y,&z))return 1;
