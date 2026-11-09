@@ -57,4 +57,53 @@ namespace RBX {
 		Part part(Part::BLOCK_PART, localExtents.size(), G3D::Color3::white(), location);
 		Draw::selectionBox(part, adorn, selectState);
 	}
+
+
+	void ModelInstance::onExtentsChanged() const
+	{
+		LocalGridExtents.setDirty();
+		WorldGridExtents.setDirty();
+		FlagHeight.setDirty();
+		PVInstance::onExtentsChanged();
+	}
+
+	static void makeJ(Instance* instance)   // 00584b30
+	{
+		PartInstance* partInstance = dynamic_cast<PartInstance*>(instance);
+		if (partInstance)
+		{
+			partInstance->join();
+		}
+		else
+		{
+			ModelInstance* modelInstance = dynamic_cast<ModelInstance*>(instance);
+			if (modelInstance)
+				modelInstance->for_eachChild(makeJ);
+		}
+	}
+
+	void ModelInstance::makeJoints()   // 00584b90
+	{
+		for_eachChild(makeJ);
+	}
+
+	static void breakJ(Instance* instance)   // 00584ba0
+	{
+		PartInstance* partInstance = dynamic_cast<PartInstance*>(instance);
+		if (partInstance)
+		{
+			partInstance->destroyJoints();
+		}
+		else
+		{
+			ModelInstance* modelInstance = dynamic_cast<ModelInstance*>(instance);
+			if (modelInstance)
+				modelInstance->for_eachChild(breakJ);
+		}
+	}
+
+	void ModelInstance::breakJoints()   // 00584c00
+	{
+		for_eachChild(breakJ);
+	}
 }
