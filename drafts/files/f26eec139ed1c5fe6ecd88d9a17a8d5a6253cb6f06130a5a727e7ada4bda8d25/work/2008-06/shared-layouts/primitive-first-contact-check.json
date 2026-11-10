@@ -1,0 +1,23 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/PrimitiveLifetime.cpp",
+      "checks": [
+        {
+          "addr": "005e7bd0",
+          "symbol": "?getFirstContact@Primitive@RBX@@QAEPAVContact@2@XZ"
+        },
+        {
+          "addr": "005e7b90",
+          "symbol": "?getFirstJoint@Primitive@RBX@@QBEPAVJoint@2@XZ",
+          "calls": []
+        },
+        {
+          "addr": "005e7b00",
+          "symbol": "?getFirstEdge@Primitive@RBX@@QBEPAVEdge@2@XZ",
+          "calls": []
+        }
+      ]
+    }
+  ]
+}
