@@ -1,0 +1,6 @@
+{
+  "swap_target": "Instance runnable integration (Instance child listener)",
+  "onAddListenerChildAdded": {"run": "work/2008-06/native-check-runs/20261105-190802-bb216d0d", "addr": "00558d90", "size": 285, "symbol": "?onAddListener@Instance@RBX@@UBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z", "target_sha256": "f3735b6f8f36295ed59b57e1fb4d45fa332ca179fd3781e588840d17a22da9f5", "source_sha256": "5c7f98b68e409f76100287200bb34b655731fe5693620acc2711215e964d114f", "object_sha256": "4873ca804b135c3fc23016c474af90151b133c963fc20d6608aae33e0891fd31", "result": "exact bytes+data 100%"},
+  "next_gate": "CWorkspace::insert 0046b9d0 catch rethrow (86%, parked), write EH empty-state (parked), Content closure, NullTool headers, Part provider, Initialize compiler (parked)",
+  "metrics": {"inactive_exact": 44, "selected_exact": "unknown", "gated_swaps": 0, "server_credit": 0}
+}

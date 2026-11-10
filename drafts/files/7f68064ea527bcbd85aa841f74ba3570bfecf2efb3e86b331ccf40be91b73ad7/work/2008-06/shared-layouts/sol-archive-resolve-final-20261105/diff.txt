@@ -1,0 +1,23 @@
+?resolveRefs@ArchiveBinder@@UAE_NXZ 96 93
+     call <r>
+     test al, al
+  -  je 0x59
+  +  je 0x56
+     cmp edi, dword ptr [esi + 0x54]
+  -  jne 0x59
+  +  jne 0x56
+  +  mov al, 1
+     pop edi
+     pop esi
+     pop ebp
+  -  mov eax, 1
+     pop ebx
+     ret 
+  ...
+     pop esi
+     pop ebp
+  -  xor eax, eax
+  +  xor al, al
+     pop ebx
+     ret 
+  ...

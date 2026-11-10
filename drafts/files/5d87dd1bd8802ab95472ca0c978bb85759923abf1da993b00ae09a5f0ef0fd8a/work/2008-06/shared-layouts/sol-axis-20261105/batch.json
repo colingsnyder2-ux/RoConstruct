@@ -1,0 +1,1 @@
+{"jobs":[{"source":"native-classes/AxisMoveToolFactory.cpp","checks":[{"addr":"005c6510","symbol":"?newMouseCommand@?$TToolVerb@VAxisMoveTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ","calls":[{"offset":27,"target":"006a0920","symbol":"??2@YAPAXI@Z"},{"offset":63,"target":"00640560","symbol":"??0AxisMoveTool@RBX@@QAE@PAVWorkspace@1@@Z"}]}]}]}

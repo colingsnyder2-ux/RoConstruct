@@ -1,0 +1,5634 @@
+{
+"2007-03": {
+"004018e0": [
+"1002b180",
+"atl",
+"?Init@CComCriticalSection@ATL@@QAEJXZ",
+""
+],
+"00410420": [
+"10072410",
+"stl",
+"??$_Copy_opt@PAUStateEntry@?$StateStack@VXmlState@RBX@@@RBX@@PAU123@Uforward_iterator_tag@std@@@std@@YAPAUStateEntry@?$StateStack@VXmlState@RBX@@@RBX@@PAU123@00Uforward_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+""
+],
+"004104d0": [
+"10072510",
+"stl",
+"??$_Copy_backward_opt@PAUStateEntry@?$StateStack@VXmlState@RBX@@@RBX@@PAU123@Uforward_iterator_tag@std@@@std@@YAPAUStateEntry@?$StateStack@VXmlState@RBX@@@RBX@@PAU123@00Uforward_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+""
+],
+"004107f0": [
+"10073000",
+"stl",
+"??$_Fill@PAUStateEntry@?$StateStack@VXmlState@RBX@@@RBX@@U123@@std@@YAXPAUStateEntry@?$StateStack@VXmlState@RBX@@@RBX@@0ABU123@@Z",
+""
+],
+"004126f0": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"0042e540": [
+"1001dd30",
+"stl",
+"??$_Construct@VValue@Reflection@RBX@@V123@@std@@YAXPAVValue@Reflection@RBX@@ABV123@@Z",
+""
+],
+"00461350": [
+"10006900",
+"symbols",
+"?joystickName@OSContext@@UAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I@Z",
+""
+],
+"0046f6b0": [
+"101ce6e0",
+"g3d",
+"?video@Settings@Texture@G3D@@SAABV123@XZ",
+""
+],
+"00472ba0": [
+"101da2a0",
+"g3d",
+"?reset@VARArea@G3D@@QAEXXZ",
+""
+],
+"004765a0": [
+"101c7ec0",
+"g3d",
+"?getDepthBufferValue@RenderDevice@G3D@@QBENHH@Z",
+""
+],
+"00479860": [
+"101cb1d0",
+"g3d",
+"?clear@RenderDevice@G3D@@QAEX_N00@Z",
+""
+],
+"0047e5a0": [
+"101dd7c0",
+"g3d",
+"?glLoadMatrix@G3D@@YAXABVCoordinateFrame@1@@Z",
+""
+],
+"004865a0": [
+"1018d7d0",
+"stl",
+"??$for_each@V?$_Vector_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@V?$bind_t@XP6AXABV?$shared_ptr@VModelInstance@RBX@@@boost@@ABV?$shared_ptr@VInstance@RBX@@@2@@ZV?$list2@V?$value@V?$shared_ptr@VModelInstance@RBX@@@boost@@@_bi@boost@@V?$arg@$00@3@@_bi@2@@_bi@boost@@@std@@YA?AV?$bind_t@XP6AXABV?$shared_ptr@VModelInstance@RBX@@@boost@@ABV?$shared_ptr@VInstance@RBX@@@2@@ZV?$list2@V?$value@V?$shared_ptr@VModelInstance@RBX@@@boost@@@_bi@boost@@V?$arg@$00@3@@_bi@2@@_bi@boost@@V?$_Vector_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@0@0V123@@Z",
+""
+],
+"0048bce0": [
+"10191100",
+"stl",
+"??$_Construct@UMessage@AbuseReport@Network@RBX@@U1234@@std@@YAXPAUMessage@AbuseReport@Network@RBX@@ABU1234@@Z",
+""
+],
+"0048bda0": [
+"101911c0",
+"boost",
+"??1?$args2@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VInstance@RBX@@@boost@@H@detail@signals@boost@@QAE@XZ",
+""
+],
+"0048be30": [
+"10191250",
+"boost",
+"??0?$args2@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VInstance@RBX@@@boost@@H@detail@signals@boost@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VInstance@RBX@@@3@@Z",
+""
+],
+"0048c0c0": [
+"10191b80",
+"boost",
+"??1?$storage2@V?$value@V?$shared_ptr@Udata@AbuseReporter@Network@RBX@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@XZ",
+""
+],
+"0048c440": [
+"10191f80",
+"boost",
+"??0?$storage2@V?$value@V?$shared_ptr@Udata@AbuseReporter@Network@RBX@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@ABU012@@Z",
+""
+],
+"00498eb0": [
+"101abf80",
+"stl",
+"??$_Copy_backward_opt@PAUWaitItem@IdSerializer@Network@RBX@@PAU1234@Uforward_iterator_tag@std@@@std@@YAPAUWaitItem@IdSerializer@Network@RBX@@PAU1234@00Uforward_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+""
+],
+"00499000": [
+"101ac210",
+"stl",
+"??$_Fill@PAUWaitItem@IdSerializer@Network@RBX@@U1234@@std@@YAXPAUWaitItem@IdSerializer@Network@RBX@@0ABU1234@@Z",
+""
+],
+"00499080": [
+"101ac6d0",
+"stl",
+"??$_Uninit_copy@PAUWaitItem@IdSerializer@Network@RBX@@PAU1234@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@YAPAUWaitItem@IdSerializer@Network@RBX@@PAU1234@00AAV?$allocator@UWaitItem@IdSerializer@Network@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+""
+],
+"00499240": [
+"101aca30",
+"stl",
+"??$_Uninit_fill_n@PAUWaitItem@IdSerializer@Network@RBX@@IU1234@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@YAXPAUWaitItem@IdSerializer@Network@RBX@@IABU1234@AAV?$allocator@UWaitItem@IdSerializer@Network@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+""
+],
+"0049bf30": [
+"1019c5c0",
+"boost",
+"??0?$args2@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NH@detail@signals@boost@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+""
+],
+"004c42e0": [
+"1016c240",
+"source",
+"",
+"Client/RbxView/Part.cpp:28"
+],
+"004c4ad0": [
+"1016c910",
+"stl",
+"??R?$less@VTextureKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@@std@@QBE_NABVTextureKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@0@Z",
+""
+],
+"004c4b60": [
+"1016c9e0",
+"stl",
+"?_Lbound@?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@V?$ReferenceCountedPointer@VMesh@Render@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@V?$ReferenceCountedPointer@VMesh@Render@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@V?$ReferenceCountedPointer@VMesh@Render@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@V?$ReferenceCountedPointer@VMesh@Render@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@ABVTextureKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@@Z",
+""
+],
+"004c4bb0": [
+"1016c9a0",
+"stl",
+"?_Lbound@?$_Tree@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@V?$ReferenceCountedPointer@VMesh@Render@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@V?$ReferenceCountedPointer@VMesh@Render@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@V?$ReferenceCountedPointer@VMesh@Render@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@V?$ReferenceCountedPointer@VMesh@Render@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@ABVDecalKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@@Z",
+""
+],
+"004cbf10": [
+"10174950",
+"stl",
+"?_Lbound@?$_Tree@V?$_Tmap_traits@UAttributes@MaterialFactory@View@RBX@@V?$WeakReferenceCountedPointer@VMaterial@Render@RBX@@@G3D@@U?$less@UAttributes@MaterialFactory@View@RBX@@@std@@V?$allocator@U?$pair@$$CBUAttributes@MaterialFactory@View@RBX@@V?$WeakReferenceCountedPointer@VMaterial@Render@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@UAttributes@MaterialFactory@View@RBX@@V?$WeakReferenceCountedPointer@VMaterial@Render@RBX@@@G3D@@U?$less@UAttributes@MaterialFactory@View@RBX@@@std@@V?$allocator@U?$pair@$$CBUAttributes@MaterialFactory@View@RBX@@V?$WeakReferenceCountedPointer@VMaterial@Render@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@ABUAttributes@MaterialFactory@View@RBX@@@Z",
+""
+],
+"004cd5c0": [
+"10175e30",
+"stl",
+"?_Lbound@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@2@ABULookup@@@Z",
+""
+],
+"004e70a0": [
+"10042930",
+"boost",
+"??0bad_lexical_cast@boost@@QAE@ABV01@@Z",
+""
+],
+"004e95c0": [
+"10167660",
+"source",
+"",
+"Client/Rendering/RenderLib/include/renderlib/Mesh.h:128"
+],
+"004ef280": [
+"101f6d40",
+"source",
+"",
+"Client/Rendering/RenderLib/Material.cpp:53"
+],
+"004ef530": [
+"101f6ff0",
+"source",
+"",
+"Client/Rendering/RenderLib/Material.cpp:80"
+],
+"004f0110": [
+"101fa240",
+"stl",
+"??$_Construct@VCluster@Clusterer@Render@RBX@@V1234@@std@@YAXPAVCluster@Clusterer@Render@RBX@@ABV1234@@Z",
+""
+],
+"004f0f00": [
+"101f7750",
+"source",
+"",
+"Client/Rendering/RenderLib/EffectSettings.cpp:10"
+],
+"004f53f0": [
+"1012e0b0",
+"g3d",
+"?printHeader@Log@G3D@@AAEXXZ",
+""
+],
+"004fdb30": [
+"1014a160",
+"g3d",
+"?setOptions@TextOutput@G3D@@AAEXABVOptions@12@@Z",
+""
+],
+"004fe100": [
+"1014a590",
+"g3d",
+"?commitString@TextOutput@G3D@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+""
+],
+"005004f0": [
+"10135940",
+"g3d",
+"?orthogonalProjection@Matrix4@G3D@@SA?AV12@MMMMMM@Z",
+""
+],
+"005005d0": [
+"10135a20",
+"g3d",
+"?perspectiveProjection@Matrix4@G3D@@SA?AV12@MMMMMM@Z",
+""
+],
+"00504070": [
+"101ed540",
+"g3d",
+"?containsKey@?$Table@VMeshDirectedEdgeKey@G3D@@V?$Array@H@2@@G3D@@QBE_NABVMeshDirectedEdgeKey@2@@Z",
+""
+],
+"005040d0": [
+"101ed5a0",
+"g3d",
+"?get@?$Table@VMeshDirectedEdgeKey@G3D@@V?$Array@H@2@@G3D@@QBEAAV?$Array@H@2@ABVMeshDirectedEdgeKey@2@@Z",
+""
+],
+"0050a460": [
+"101409b0",
+"libpng",
+"_png_default_flush",
+""
+],
+"00513b10": [
+"1014a030",
+"ijg",
+"_jpeg_set_defaults",
+""
+],
+"005145f0": [
+"1013ada0",
+"g3d",
+"G3D::Plane::getEquation",
+""
+],
+"00515440": [
+"1014dd20",
+"libpng",
+"_png_write_PLTE",
+""
+],
+"00515500": [
+"1014dde0",
+"libpng",
+"_png_write_hIST",
+""
+],
+"00515790": [
+"1014e070",
+"libpng",
+"_png_write_tEXt",
+""
+],
+"00515840": [
+"1014e120",
+"libpng",
+"_png_write_zTXt",
+""
+],
+"00515fe0": [
+"1014e8c0",
+"libpng",
+"_png_write_chunk",
+""
+],
+"005164a0": [
+"1014ed80",
+"libpng",
+"_png_write_IEND",
+""
+],
+"005164c0": [
+"1014eda0",
+"libpng",
+"_png_write_gAMA",
+""
+],
+"00516520": [
+"1014ee00",
+"libpng",
+"_png_write_sRGB",
+""
+],
+"00516560": [
+"1014ee40",
+"libpng",
+"_png_write_iCCP",
+""
+],
+"00518ed0": [
+"101517b0",
+"libpng",
+"_png_free_default",
+""
+],
+"00518fa0": [
+"10151880",
+"libpng",
+"_png_malloc",
+""
+],
+"00518ff0": [
+"101518d0",
+"libpng",
+"_png_free",
+""
+],
+"0051ba40": [
+"10154320",
+"libpng",
+"_png_get_uint_31",
+""
+],
+"0051ba70": [
+"10154350",
+"libpng",
+"_png_crc_finish",
+""
+],
+"0052b2a0": [
+"1014d4c0",
+"g3d",
+"?endPoint@LineSegment@G3D@@QBE?AVVector3@2@H@Z",
+""
+],
+"0052fa20": [
+"1005e920",
+"symbols",
+"?setSelection@Selection@RBX@@QAEXV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@Z",
+""
+],
+"005344a0": [
+"1005a750",
+"source",
+"",
+"Client/App/include/util/Extents.h:75"
+],
+"005445f0": [
+"1004f1c0",
+"source",
+"",
+"Client/App/util/ContentProvider.cpp:20"
+],
+"00544660": [
+"1004f230",
+"source",
+"",
+"Client/App/util/ContentProvider.cpp:27"
+],
+"005446d0": [
+"1004f2a0",
+"symbols",
+"?isHttpUrl@ContentProvider@RBX@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+""
+],
+"00544d10": [
+"1004f880",
+"stl",
+"??$_Construct@VContentId@RBX@@V12@@std@@YAXPAVContentId@RBX@@ABV12@@Z",
+""
+],
+"00545470": [
+"100500b0",
+"stl",
+"??$_Construct@UFailedUrl@ContentProvider@RBX@@U123@@std@@YAXPAUFailedUrl@ContentProvider@RBX@@ABU123@@Z",
+""
+],
+"00545830": [
+"10050610",
+"stl",
+"??$_Find@V?$_Iterator@$0A@@?$list@VContentId@RBX@@V?$allocator@VContentId@RBX@@@std@@@std@@VContentId@RBX@@@std@@YA?AV?$_Iterator@$0A@@?$list@VContentId@RBX@@V?$allocator@VContentId@RBX@@@std@@@0@V120@0ABVContentId@RBX@@@Z",
+""
+],
+"0054a5d0": [
+"10035120",
+"boost",
+"?close@?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@QAEXXZ",
+""
+],
+"0054a830": [
+"100352f0",
+"boost",
+"?open@?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@QAEXABV?$basic_null_device@DUinput@iostreams@boost@@@34@HH@Z",
+""
+],
+"0054ac80": [
+"10035a20",
+"boost",
+"?init_put_area@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@detail@iostreams@boost@@EAEXXZ",
+""
+],
+"0054acd0": [
+"10035a70",
+"boost",
+"?open@?$indirect_streambuf@VHttpRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@detail@iostreams@boost@@QAEXABVHttpRequest_source@@HH@Z",
+""
+],
+"0054b030": [
+"10035d00",
+"boost",
+"??1?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@UAE@XZ",
+""
+],
+"0054b310": [
+"100362e0",
+"boost",
+"?imbue@?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@MAEXABVlocale@std@@@Z",
+""
+],
+"0054b360": [
+"10036310",
+"boost",
+"??1?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@detail@iostreams@boost@@UAE@XZ",
+""
+],
+"0054b610": [
+"100366d0",
+"boost",
+"?init_get_area@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@detail@iostreams@boost@@EAEXXZ",
+""
+],
+"0054bc30": [
+"10037340",
+"boost",
+"?close@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@detail@iostreams@boost@@QAEXXZ",
+""
+],
+"0054c0d0": [
+"100378c0",
+"boost",
+"?imbue@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@detail@iostreams@boost@@MAEXABVlocale@std@@@Z",
+""
+],
+"0054c600": [
+"10038240",
+"boost",
+"?underflow@?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@MAEHXZ",
+""
+],
+"0054d910": [
+"1003a410",
+"stl",
+"??$for_each@V?$reverse_iterator@V?$_Iterator@$00@?$list@PAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@V?$allocator@PAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@std@@@std@@@std@@Ucloser@?$chain_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@@std@@YA?AUcloser@?$chain_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@V?$reverse_iterator@V?$_Iterator@$00@?$list@PAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@V?$allocator@PAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@std@@@std@@@0@0U12345@@Z",
+""
+],
+"00551950": [
+"100d0f60",
+"source",
+"",
+"Client/App/include/util/Rect.h:41"
+],
+"00551b30": [
+"100d1060",
+"source",
+"",
+"Client/App/gui/GUI.cpp:41"
+],
+"00551dd0": [
+"100d1270",
+"symbols",
+"?toPixelSize@GuiRoot@RBX@@SA?AVVector2@G3D@@ABV34@@Z",
+"Client/App/gui/GUI.cpp:103"
+],
+"00566270": [
+"10084b30",
+"symbols",
+"?isCloseTag@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+""
+],
+"00566300": [
+"10084bc0",
+"symbols",
+"?endsWithClose@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+""
+],
+"00566660": [
+"10084ef0",
+"symbols",
+"?decodeString@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@Z",
+""
+],
+"005669a0": [
+"10085230",
+"symbols",
+"?removeTag@TextXmlParser@@AAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@AAH@Z",
+""
+],
+"00566a40": [
+"100852d0",
+"symbols",
+"?findNextToken@TextXmlParser@@AAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@AAH@Z",
+""
+],
+"0056cf70": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"0056cfb0": [
+"1003edf0",
+"boost",
+"??0?$holder@VContentId@RBX@@@any@boost@@QAE@ABVContentId@RBX@@@Z",
+""
+],
+"005705f0": [
+"10095e50",
+"symbols",
+"?getSignalInstance@Signal@Reflection@RBX@@QBE?AV?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@XZ",
+""
+],
+"00571010": [
+"100ff530",
+"symbols",
+"?convertToString@?$StringConverter@VContentId@RBX@@@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVContentId@2@@Z",
+""
+],
+"0057f540": [
+"10090060",
+"source",
+"",
+"Client/App/util/Utilities.cpp:18"
+],
+"00587a60": [
+"10090b10",
+"symbols",
+"?convertToValue@?$StringConverter@VVector3@G3D@@@RBX@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAVVector3@G3D@@@Z",
+""
+],
+"00587ba0": [
+"10090c50",
+"symbols",
+"?convertToString@?$StringConverter@VColor3@G3D@@@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVColor3@G3D@@@Z",
+""
+],
+"00587c00": [
+"10090cb0",
+"symbols",
+"?convertToValue@?$StringConverter@VColor3@G3D@@@RBX@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAVColor3@G3D@@@Z",
+""
+],
+"0058add0": [
+"100f9190",
+"stl",
+"??$_Construct@V?$bind_t@W4work_result@worker_thread@RBX@@P6A?AW4123@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@ZV?$list2@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_bi@boost@@V?$value@H@23@@_bi@boost@@@_bi@boost@@V123@@std@@YAXPAV?$bind_t@W4work_result@worker_thread@RBX@@P6A?AW4123@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@ZV?$list2@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_bi@boost@@V?$value@H@23@@_bi@boost@@@_bi@boost@@ABV123@@Z",
+""
+],
+"0058bee0": [
+"1007ebc0",
+"boost",
+"?invoke@?$function_obj_invoker0@V?$bind_t@ABIP6AABIPBI@ZV?$list1@V?$value@PBI@_bi@boost@@@_bi@boost@@@_bi@boost@@I@function@detail@boost@@SAIAATfunction_buffer@234@@Z",
+""
+],
+"005a6740": [
+"10129ff0",
+"source",
+"",
+"Client/App/util/Quaternion.cpp:17"
+],
+"005a68a0": [
+"1012a150",
+"source",
+"",
+"Client/App/util/Quaternion.cpp:56"
+],
+"005a69e0": [
+"100dea30",
+"source",
+"",
+"Client/App/util/Math.cpp:88"
+],
+"005a6bd0": [
+"100dec20",
+"source",
+"",
+"Client/App/util/Math.cpp:140"
+],
+"005a7140": [
+"100df1a0",
+"source",
+"",
+"Client/App/util/Math.cpp:310"
+],
+"005a71a0": [
+"100df200",
+"source",
+"",
+"Client/App/util/Math.cpp:325"
+],
+"005a74d0": [
+"100df530",
+"source",
+"",
+"Client/App/util/Math.cpp:413"
+],
+"005a75a0": [
+"100df600",
+"source",
+"",
+"Client/App/util/Math.cpp:437"
+],
+"005a75c0": [
+"100df620",
+"source",
+"",
+"Client/App/util/Math.cpp:443"
+],
+"005a7960": [
+"100dfaf0",
+"source",
+"",
+"Client/App/util/Math.cpp:531"
+],
+"005a7a90": [
+"100dfb90",
+"source",
+"",
+"Client/App/util/Math.cpp:548"
+],
+"005a7d40": [
+"100dfe40",
+"source",
+"",
+"Client/App/util/Math.cpp:618"
+],
+"005a7da0": [
+"100dfea0",
+"source",
+"",
+"Client/App/util/Math.cpp:636"
+],
+"005ae610": [
+"100a76d0",
+"source",
+"",
+"Client/App/include/v8world/SurfaceData.h:38"
+],
+"005af920": [
+"1009a610",
+"source",
+"",
+"Client/App/include/util/PV.h:38"
+],
+"005b7340": [
+"100a59a0",
+"source",
+"",
+"Client/App/util/Extents.cpp:7"
+],
+"005b73e0": [
+"100a5a40",
+"source",
+"",
+"Client/App/util/Extents.cpp:44"
+],
+"005b76c0": [
+"100a5d20",
+"source",
+"",
+"Client/App/util/Extents.cpp:103"
+],
+"005b7720": [
+"100a5d80",
+"source",
+"",
+"Client/App/util/Extents.cpp:114"
+],
+"005b7780": [
+"100a5de0",
+"source",
+"",
+"Client/App/util/Extents.cpp:123"
+],
+"005b77e0": [
+"100a5e40",
+"source",
+"",
+"Client/App/util/Extents.cpp:130"
+],
+"005b7850": [
+"100a5eb0",
+"source",
+"",
+"Client/App/util/Extents.cpp:137"
+],
+"005b7970": [
+"100a5fd0",
+"source",
+"",
+"Client/App/util/Extents.cpp:153"
+],
+"005b7b70": [
+"100a61d0",
+"source",
+"",
+"Client/App/util/Extents.cpp:192"
+],
+"005b7de0": [
+"100a6440",
+"source",
+"",
+"Client/App/util/Extents.cpp:208"
+],
+"005c0280": [
+"100b6af0",
+"lua",
+"lua_exception::lua_exception",
+""
+],
+"005c02f0": [
+"100b6b60",
+"lua",
+"luaD_precall",
+""
+],
+"005e70f0": [
+"100e9af0",
+"g3d",
+"?unit@Ray@G3D@@QBE?AV12@XZ",
+""
+],
+"005ea1e0": [
+"1011ed70",
+"source",
+"",
+"Client/App/include/v8world/Tolerance.h:13"
+],
+"005ed340": [
+"1010a990",
+"source",
+"",
+"Client/App/v8kernel/Constants.cpp:62"
+],
+"005ed8e0": [
+"100d1f50",
+"source",
+"",
+"Client/App/include/v8world/Block.h:104"
+],
+"005f51e0": [
+"10109060",
+"source",
+"",
+"Client/App/v8world/Block.cpp:24"
+],
+"005f5540": [
+"101093c0",
+"source",
+"",
+"Client/App/v8world/Block.cpp:159"
+],
+"005f5640": [
+"101094c0",
+"source",
+"",
+"Client/App/v8world/Block.cpp:186"
+],
+"005f57b0": [
+"10109630",
+"source",
+"",
+"Client/App/v8world/Block.cpp:265"
+],
+"005f5900": [
+"10109770",
+"source",
+"",
+"Client/App/v8world/Block.cpp:287"
+],
+"005f5b40": [
+"101099b0",
+"stl",
+"?_Lbound@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@2@ABVVector3@G3D@@@Z",
+""
+],
+"005f67c0": [
+"1010a680",
+"source",
+"",
+"Client/App/v8world/Block.cpp:371"
+],
+"005f6900": [
+"1010a7c0",
+"source",
+"",
+"Client/App/v8world/Ball.cpp:22"
+],
+"005f6ab0": [
+"1010aec0",
+"source",
+"",
+"Client/App/util/Face.cpp:19"
+],
+"005f6b30": [
+"1010af40",
+"source",
+"",
+"Client/App/util/Face.cpp:26"
+],
+"005f6bf0": [
+"1010b000",
+"source",
+"",
+"Client/App/util/Face.cpp:40"
+],
+"005f6f10": [
+"1010b320",
+"symbols",
+"?getAxis@Face@RBX@@ABE?AVVector3@G3D@@H@Z",
+""
+],
+"005f7110": [
+"1010b520",
+"source",
+"",
+"Client/App/util/Face.cpp:54"
+],
+"005f71a0": [
+"1010b5b0",
+"source",
+"",
+"Client/App/util/Face.cpp:61"
+],
+"005f78c0": [
+"10120e00",
+"source",
+"",
+"Client/App/v8kernel/SimBody.cpp:14"
+],
+"005f7940": [
+"10120e80",
+"source",
+"",
+"Client/App/v8kernel/SimBody.cpp:28"
+],
+"005f7a70": [
+"10120fb0",
+"source",
+"",
+"Client/App/include/util/Quaternion.h:38"
+],
+"005f80c0": [
+"10121f50",
+"source",
+"",
+"Client/App/util/Units.cpp:9"
+],
+"005f80f0": [
+"10121f80",
+"source",
+"",
+"Client/App/util/Units.cpp:15"
+],
+"005f8860": [
+"1010bef0",
+"lua",
+"luaO_chunkid",
+""
+],
+"00600e70": [
+"10114500",
+"lua",
+"luaX_token2str",
+""
+],
+"00604790": [
+"10126410",
+"symbols",
+"?getMousePart@MegaDragger@RBX@@QAE?AV?$weak_ptr@VPartInstance@RBX@@@boost@@XZ",
+""
+],
+"00604a10": [
+"10126660",
+"symbols",
+"?getCursorName@PartDragTool@RBX@@UBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+""
+],
+"006066c0": [
+"100a07f0",
+"symbols",
+"?lightGreen@Color@RBX@@SAABVColor3@G3D@@XZ",
+"Client/App/include/util/Color.h:13"
+],
+"00606700": [
+"100a07f0",
+"symbols",
+"?lightGreen@Color@RBX@@SAABVColor3@G3D@@XZ",
+"Client/App/include/util/Color.h:13"
+],
+"00606740": [
+"100a07f0",
+"symbols",
+"?lightGreen@Color@RBX@@SAABVColor3@G3D@@XZ",
+"Client/App/include/util/Color.h:13"
+],
+"00612040": [
+"10126ba0",
+"source",
+"",
+"Client/App/include/util/Quaternion.h:80"
+],
+"006186a0": [
+"10127930",
+"stl",
+"?_Dec@const_iterator@?$_Tree@V?$_Tset_traits@DU?$less@D@std@@V?$allocator@D@2@$0A@@std@@@std@@QAEXXZ",
+""
+],
+"0072f6c0": [
+"101cb650",
+"g3d",
+"?containsKey@?$Table@VTextureArgs@TextureManager@G3D@@V?$ReferenceCountedPointer@VTexture@G3D@@@3@@G3D@@QBE_NABVTextureArgs@TextureManager@2@@Z",
+""
+],
+"0072f7e0": [
+"101cb770",
+"g3d",
+"?get@?$Table@VTextureArgs@TextureManager@G3D@@V?$ReferenceCountedPointer@VTexture@G3D@@@3@@G3D@@QBEAAV?$ReferenceCountedPointer@VTexture@G3D@@@2@ABVTextureArgs@TextureManager@2@@Z",
+""
+],
+"00739550": [
+"10137b90",
+"g3d",
+"??_0Color4@G3D@@QAEAAV01@M@Z",
+""
+]
+},
+"2007-08": {
+"0040f4f0": [
+"10072410",
+"stl",
+"??$_Copy_opt@PAUStateEntry@?$StateStack@VXmlState@RBX@@@RBX@@PAU123@Uforward_iterator_tag@std@@@std@@YAPAUStateEntry@?$StateStack@VXmlState@RBX@@@RBX@@PAU123@00Uforward_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+""
+],
+"0040f5a0": [
+"10072510",
+"stl",
+"??$_Copy_backward_opt@PAUStateEntry@?$StateStack@VXmlState@RBX@@@RBX@@PAU123@Uforward_iterator_tag@std@@@std@@YAPAUStateEntry@?$StateStack@VXmlState@RBX@@@RBX@@PAU123@00Uforward_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+""
+],
+"0040f750": [
+"10073000",
+"stl",
+"??$_Fill@PAUStateEntry@?$StateStack@VXmlState@RBX@@@RBX@@U123@@std@@YAXPAUStateEntry@?$StateStack@VXmlState@RBX@@@RBX@@0ABU123@@Z",
+""
+],
+"004117b0": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"004129b0": [
+"10034680",
+"atl",
+"?AtlGetDefaultUrlPort@ATL@@YAGW4ATL_URL_SCHEME@1@@Z",
+""
+],
+"004147d0": [
+"10191f80",
+"boost",
+"??0?$storage2@V?$value@V?$shared_ptr@Udata@AbuseReporter@Network@RBX@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@ABU012@@Z",
+""
+],
+"0042d700": [
+"1001dd30",
+"stl",
+"??$_Construct@VValue@Reflection@RBX@@V123@@std@@YAXPAVValue@Reflection@RBX@@ABV123@@Z",
+""
+],
+"00457e00": [
+"100061e0",
+"g3d",
+"??1TextureArgs@TextureManager@G3D@@UAE@XZ",
+""
+],
+"0046f710": [
+"101ce6e0",
+"g3d",
+"?video@Settings@Texture@G3D@@SAABV123@XZ",
+""
+],
+"004705c0": [
+"101cf4d0",
+"g3d",
+"??1Texture@G3D@@UAE@XZ",
+""
+],
+"00472ab0": [
+"101da2a0",
+"g3d",
+"?reset@VARArea@G3D@@QAEXXZ",
+""
+],
+"00476440": [
+"101c7ec0",
+"g3d",
+"?getDepthBufferValue@RenderDevice@G3D@@QBENHH@Z",
+""
+],
+"00479710": [
+"101cb1d0",
+"g3d",
+"?clear@RenderDevice@G3D@@QAEX_N00@Z",
+""
+],
+"00479dc0": [
+"101cb650",
+"g3d",
+"?containsKey@?$Table@VTextureArgs@TextureManager@G3D@@V?$ReferenceCountedPointer@VTexture@G3D@@@3@@G3D@@QBE_NABVTextureArgs@TextureManager@2@@Z",
+""
+],
+"00479ee0": [
+"101cb770",
+"g3d",
+"?get@?$Table@VTextureArgs@TextureManager@G3D@@V?$ReferenceCountedPointer@VTexture@G3D@@@3@@G3D@@QBEAAV?$ReferenceCountedPointer@VTexture@G3D@@@2@ABVTextureArgs@TextureManager@2@@Z",
+""
+],
+"004800f0": [
+"101dd7c0",
+"g3d",
+"?glLoadMatrix@G3D@@YAXABVCoordinateFrame@1@@Z",
+""
+],
+"00487330": [
+"10127930",
+"stl",
+"?_Dec@const_iterator@?$_Tree@V?$_Tset_traits@DU?$less@D@std@@V?$allocator@D@2@$0A@@std@@@std@@QAEXXZ",
+""
+],
+"004895a0": [
+"1018d7d0",
+"stl",
+"??$for_each@V?$_Vector_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@V?$bind_t@XP6AXABV?$shared_ptr@VModelInstance@RBX@@@boost@@ABV?$shared_ptr@VInstance@RBX@@@2@@ZV?$list2@V?$value@V?$shared_ptr@VModelInstance@RBX@@@boost@@@_bi@boost@@V?$arg@$00@3@@_bi@2@@_bi@boost@@@std@@YA?AV?$bind_t@XP6AXABV?$shared_ptr@VModelInstance@RBX@@@boost@@ABV?$shared_ptr@VInstance@RBX@@@2@@ZV?$list2@V?$value@V?$shared_ptr@VModelInstance@RBX@@@boost@@@_bi@boost@@V?$arg@$00@3@@_bi@2@@_bi@boost@@V?$_Vector_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@0@0V123@@Z",
+""
+],
+"00491b10": [
+"10191100",
+"stl",
+"??$_Construct@UMessage@AbuseReport@Network@RBX@@U1234@@std@@YAXPAUMessage@AbuseReport@Network@RBX@@ABU1234@@Z",
+""
+],
+"00491df0": [
+"101911c0",
+"boost",
+"??1?$args2@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VInstance@RBX@@@boost@@H@detail@signals@boost@@QAE@XZ",
+""
+],
+"00491f40": [
+"10191250",
+"boost",
+"??0?$args2@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VInstance@RBX@@@boost@@H@detail@signals@boost@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VInstance@RBX@@@3@@Z",
+""
+],
+"004923a0": [
+"10191b80",
+"boost",
+"??1?$storage2@V?$value@V?$shared_ptr@Udata@AbuseReporter@Network@RBX@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@boost@@QAE@XZ",
+""
+],
+"00499550": [
+"101968a0",
+"boost",
+"??0?$args2@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH@detail@signals@boost@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z",
+""
+],
+"004a0f40": [
+"101abf30",
+"stl",
+"?_Ubound@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@EU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@E@std@@@2@$0A@@std@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z",
+""
+],
+"004a0fe0": [
+"101abf80",
+"stl",
+"??$_Copy_backward_opt@PAUWaitItem@IdSerializer@Network@RBX@@PAU1234@Uforward_iterator_tag@std@@@std@@YAPAUWaitItem@IdSerializer@Network@RBX@@PAU1234@00Uforward_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+""
+],
+"004a1270": [
+"101ac210",
+"stl",
+"??$_Fill@PAUWaitItem@IdSerializer@Network@RBX@@U1234@@std@@YAXPAUWaitItem@IdSerializer@Network@RBX@@0ABU1234@@Z",
+""
+],
+"004a17f0": [
+"101ac6d0",
+"stl",
+"??$_Uninit_copy@PAUWaitItem@IdSerializer@Network@RBX@@PAU1234@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@YAPAUWaitItem@IdSerializer@Network@RBX@@PAU1234@00AAV?$allocator@UWaitItem@IdSerializer@Network@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+""
+],
+"004a1b50": [
+"101aca30",
+"stl",
+"??$_Uninit_fill_n@PAUWaitItem@IdSerializer@Network@RBX@@IU1234@V?$allocator@UWaitItem@IdSerializer@Network@RBX@@@std@@@std@@YAXPAUWaitItem@IdSerializer@Network@RBX@@IABU1234@AAV?$allocator@UWaitItem@IdSerializer@Network@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+""
+],
+"004a1db0": [
+"101accf0",
+"stl",
+"??A?$map@EV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@E@2@V?$allocator@U?$pair@$$CBEV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@@2@@std@@QAEAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@ABE@Z",
+""
+],
+"004a5620": [
+"1019c5c0",
+"boost",
+"??0?$args2@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NH@detail@signals@boost@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+""
+],
+"004a7420": [
+"1019d570",
+"boost",
+"??R?$mf1@XVReplicator@Network@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@QBEXPAVReplicator@Network@RBX@@V?$shared_ptr@VInstance@RBX@@@2@@Z",
+""
+],
+"004a76b0": [
+"1019d7c0",
+"boost",
+"??R?$mf2@XVReplicator@Network@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@3@@_mfi@boost@@QBEXPAVReplicator@Network@RBX@@V?$shared_ptr@VInstance@RBX@@@2@PBVPropertyDescriptor@Reflection@5@@Z",
+""
+],
+"004cc330": [
+"101c3ec0",
+"source",
+"",
+"3rdparty/RakNet30/Source/rijndael.cpp:216"
+],
+"004cfed0": [
+"1016c240",
+"source",
+"",
+"Client/RbxView/Part.cpp:28"
+],
+"004d0670": [
+"1016c910",
+"stl",
+"??R?$less@VTextureKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@@std@@QBE_NABVTextureKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@0@Z",
+""
+],
+"004d0700": [
+"1016c9e0",
+"stl",
+"?_Lbound@?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@V?$ReferenceCountedPointer@VMesh@Render@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@V?$ReferenceCountedPointer@VMesh@Render@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@V?$ReferenceCountedPointer@VMesh@Render@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@V?$ReferenceCountedPointer@VMesh@Render@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@ABVTextureKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@@Z",
+""
+],
+"004d0750": [
+"1016c9a0",
+"stl",
+"?_Lbound@?$_Tree@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@V?$ReferenceCountedPointer@VMesh@Render@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@V?$ReferenceCountedPointer@VMesh@Render@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@V?$ReferenceCountedPointer@VMesh@Render@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@V?$ReferenceCountedPointer@VMesh@Render@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@ABVDecalKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@@Z",
+""
+],
+"004d80e0": [
+"10174950",
+"stl",
+"?_Lbound@?$_Tree@V?$_Tmap_traits@UAttributes@MaterialFactory@View@RBX@@V?$WeakReferenceCountedPointer@VMaterial@Render@RBX@@@G3D@@U?$less@UAttributes@MaterialFactory@View@RBX@@@std@@V?$allocator@U?$pair@$$CBUAttributes@MaterialFactory@View@RBX@@V?$WeakReferenceCountedPointer@VMaterial@Render@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@UAttributes@MaterialFactory@View@RBX@@V?$WeakReferenceCountedPointer@VMaterial@Render@RBX@@@G3D@@U?$less@UAttributes@MaterialFactory@View@RBX@@@std@@V?$allocator@U?$pair@$$CBUAttributes@MaterialFactory@View@RBX@@V?$WeakReferenceCountedPointer@VMaterial@Render@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@ABUAttributes@MaterialFactory@View@RBX@@@Z",
+""
+],
+"004d9580": [
+"10175d80",
+"stl",
+"??R?$less@ULookup@@@std@@QBE_NABULookup@@0@Z",
+""
+],
+"004d9740": [
+"10175e30",
+"stl",
+"?_Lbound@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@2@ABULookup@@@Z",
+""
+],
+"004f3740": [
+"10042930",
+"boost",
+"??0bad_lexical_cast@boost@@QAE@ABV01@@Z",
+""
+],
+"004f5b90": [
+"10167660",
+"source",
+"",
+"Client/Rendering/RenderLib/include/renderlib/Mesh.h:128"
+],
+"004fb710": [
+"101f6d40",
+"source",
+"",
+"Client/Rendering/RenderLib/Material.cpp:53"
+],
+"004fb770": [
+"101f6da0",
+"g3d",
+"?append@?$Array@VLevel@Material@Render@RBX@@@G3D@@QAEXABVLevel@Material@Render@RBX@@@Z",
+""
+],
+"004fb9c0": [
+"101f6ff0",
+"source",
+"",
+"Client/Rendering/RenderLib/Material.cpp:80"
+],
+"004fc5a0": [
+"101fa240",
+"stl",
+"??$_Construct@VCluster@Clusterer@Render@RBX@@V1234@@std@@YAXPAVCluster@Clusterer@Render@RBX@@ABV1234@@Z",
+""
+],
+"004fc880": [
+"101fa520",
+"symbols",
+"?go@Clusterer@Render@RBX@@QAEAAV?$vector@VCluster@Clusterer@Render@RBX@@V?$allocator@VCluster@Clusterer@Render@RBX@@@std@@@std@@I@Z",
+"Client/Rendering/RenderLib/Clusterer.cpp:95"
+],
+"004fd390": [
+"101f7750",
+"source",
+"",
+"Client/Rendering/RenderLib/EffectSettings.cpp:10"
+],
+"00501880": [
+"1012e0b0",
+"g3d",
+"?printHeader@Log@G3D@@AAEXXZ",
+""
+],
+"005087b0": [
+"1014a160",
+"g3d",
+"?setOptions@TextOutput@G3D@@AAEXABVOptions@12@@Z",
+""
+],
+"0050adb0": [
+"10135940",
+"g3d",
+"?orthogonalProjection@Matrix4@G3D@@SA?AV12@MMMMMM@Z",
+""
+],
+"0050ae90": [
+"10135a20",
+"g3d",
+"?perspectiveProjection@Matrix4@G3D@@SA?AV12@MMMMMM@Z",
+""
+],
+"0050f560": [
+"10139850",
+"g3d",
+"?random@Vector3@G3D@@SA?AV12@XZ",
+""
+],
+"0050f960": [
+"101ed540",
+"g3d",
+"?containsKey@?$Table@VMeshDirectedEdgeKey@G3D@@V?$Array@H@2@@G3D@@QBE_NABVMeshDirectedEdgeKey@2@@Z",
+""
+],
+"0050f9c0": [
+"101ed5a0",
+"g3d",
+"?get@?$Table@VMeshDirectedEdgeKey@G3D@@V?$Array@H@2@@G3D@@QBEAAV?$Array@H@2@ABVMeshDirectedEdgeKey@2@@Z",
+""
+],
+"0051e230": [
+"1013ada0",
+"g3d",
+"G3D::Plane::getEquation",
+""
+],
+"0051ebb0": [
+"101517b0",
+"libpng",
+"_png_free_default",
+""
+],
+"0051ecd0": [
+"101518d0",
+"libpng",
+"_png_free",
+""
+],
+"0052b090": [
+"1014d4c0",
+"g3d",
+"?endPoint@LineSegment@G3D@@QBE?AVVector3@2@H@Z",
+""
+],
+"0052fbd0": [
+"1009a610",
+"source",
+"",
+"Client/App/include/util/PV.h:38"
+],
+"005307a0": [
+"1005a750",
+"source",
+"",
+"Client/App/include/util/Extents.h:75"
+],
+"00533d40": [
+"1005e920",
+"symbols",
+"?setSelection@Selection@RBX@@QAEXV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@Z",
+""
+],
+"00544e60": [
+"1004f1c0",
+"source",
+"",
+"Client/App/util/ContentProvider.cpp:20"
+],
+"00544ed0": [
+"1004f230",
+"source",
+"",
+"Client/App/util/ContentProvider.cpp:27"
+],
+"00544f40": [
+"1004f2a0",
+"symbols",
+"?isHttpUrl@ContentProvider@RBX@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+""
+],
+"005454a0": [
+"1004f880",
+"stl",
+"??$_Construct@VContentId@RBX@@V12@@std@@YAXPAVContentId@RBX@@ABV12@@Z",
+""
+],
+"005456c0": [
+"1004fb50",
+"symbols",
+"?toString@MD5HasherImpl@RBX@@UAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+""
+],
+"00545bd0": [
+"100500b0",
+"stl",
+"??$_Construct@UFailedUrl@ContentProvider@RBX@@U123@@std@@YAXPAUFailedUrl@ContentProvider@RBX@@ABU123@@Z",
+""
+],
+"00545cc0": [
+"10050290",
+"stl",
+"??0?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@QAE@ABVContentId@RBX@@ABUCachedContent@ContentProvider@3@@Z",
+""
+],
+"00545f30": [
+"10050520",
+"stl",
+"??0?$pair@$$CBVContentId@RBX@@UCachedContent@ContentProvider@2@@std@@QAE@ABU01@@Z",
+""
+],
+"00545f90": [
+"10050610",
+"stl",
+"??$_Find@V?$_Iterator@$0A@@?$list@VContentId@RBX@@V?$allocator@VContentId@RBX@@@std@@@std@@VContentId@RBX@@@std@@YA?AV?$_Iterator@$0A@@?$list@VContentId@RBX@@V?$allocator@VContentId@RBX@@@std@@@0@V120@0ABVContentId@RBX@@@Z",
+""
+],
+"00547090": [
+"10051900",
+"boost",
+"??$copy_impl@V?$reference_wrapper@V?$basic_ifstream@DU?$char_traits@D@std@@@std@@@boost@@V?$reference_wrapper@V?$basic_ostringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@detail@iostreams@boost@@YAHAAV?$reference_wrapper@V?$basic_ifstream@DU?$char_traits@D@std@@@std@@@2@AAV?$reference_wrapper@V?$basic_ostringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@HU?$bool_@$0A@@mpl@2@2@Z",
+""
+],
+"0054aa10": [
+"10034a80",
+"boost",
+"??0gzip_params@iostreams@boost@@QAE@HHHHHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0_J@Z",
+""
+],
+"0054aad0": [
+"10034c40",
+"boost",
+"??1gzip_params@iostreams@boost@@QAE@XZ",
+""
+],
+"0054ab20": [
+"10034cb0",
+"boost",
+"??0gzip_params@iostreams@boost@@QAE@ABU012@@Z",
+""
+],
+"0054abb0": [
+"10034d40",
+"boost",
+"?normalize_params@?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@CA?AUgzip_params@23@U423@@Z",
+""
+],
+"0054aeb0": [
+"100351a0",
+"boost",
+"?resize@?$basic_buffer@DV?$allocator@D@std@@@detail@iostreams@boost@@QAEXH@Z",
+""
+],
+"0054b0f0": [
+"100352f0",
+"boost",
+"?open@?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@QAEXABV?$basic_null_device@DUinput@iostreams@boost@@@34@HH@Z",
+""
+],
+"0054b460": [
+"10035a20",
+"boost",
+"?init_put_area@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@detail@iostreams@boost@@EAEXXZ",
+""
+],
+"0054b760": [
+"10035a70",
+"boost",
+"?open@?$indirect_streambuf@VHttpRequest_source@@U?$char_traits@D@std@@V?$allocator@D@3@Uinput@iostreams@boost@@@detail@iostreams@boost@@QAEXABVHttpRequest_source@@HH@Z",
+""
+],
+"0054b810": [
+"10035b20",
+"boost",
+"?write@?$non_blocking_adapter@V?$reference_wrapper@V?$filtering_stream@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@@boost@@@iostreams@boost@@QAEHPBDH@Z",
+""
+],
+"0054b960": [
+"10036c70",
+"boost",
+"??1?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@QAE@XZ",
+""
+],
+"0054bb00": [
+"10035d00",
+"boost",
+"??1?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@UAE@XZ",
+""
+],
+"0054bb70": [
+"10035d70",
+"boost",
+"?open_impl@?$stream_buffer@V?$basic_null_device@DUoutput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@iostreams@boost@@AAEXABV?$basic_null_device@DUoutput@iostreams@boost@@@23@HH@Z",
+""
+],
+"0054bc30": [
+"10035e30",
+"boost",
+"?open_impl@?$stream_buffer@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@iostreams@boost@@AAEXABV?$basic_null_device@DUinput@iostreams@boost@@@23@HH@Z",
+""
+],
+"0054bea0": [
+"100362e0",
+"boost",
+"?imbue@?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@MAEXABVlocale@std@@@Z",
+""
+],
+"0054c060": [
+"10036310",
+"boost",
+"??1?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@detail@iostreams@boost@@UAE@XZ",
+""
+],
+"0054c0d0": [
+"10036380",
+"boost",
+"?open_impl@?$stream_buffer@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@iostreams@boost@@AAEXABUString_sink@@HH@Z",
+""
+],
+"0054c3c0": [
+"100366d0",
+"boost",
+"?init_get_area@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@detail@iostreams@boost@@EAEXXZ",
+""
+],
+"0054c3e0": [
+"10037980",
+"boost",
+"??0?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@QAE@ABV012@@Z",
+""
+],
+"0054c470": [
+"10036850",
+"boost",
+"?sync_impl@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@detail@iostreams@boost@@AAEXXZ",
+""
+],
+"0054c5c0": [
+"10036d60",
+"boost",
+"??1?$filtering_stream_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@Upublic_@23@@detail@iostreams@boost@@UAE@XZ",
+""
+],
+"0054c650": [
+"10036df0",
+"boost",
+"??1?$filtering_stream_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@Upublic_@23@@detail@iostreams@boost@@UAE@XZ",
+""
+],
+"0054d050": [
+"100378c0",
+"boost",
+"?imbue@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@detail@iostreams@boost@@MAEXABVlocale@std@@@Z",
+""
+],
+"0054d2b0": [
+"100378f0",
+"boost",
+"??0?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@QAE@ABV012@@Z",
+""
+],
+"0054d620": [
+"10037e10",
+"boost",
+"??$copy_impl@V?$reference_wrapper@V?$filtering_stream@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@@boost@@UString_sink@@@detail@iostreams@boost@@YAHAAV?$reference_wrapper@V?$filtering_stream@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Upublic_@23@@iostreams@boost@@@2@AAUString_sink@@HU?$bool_@$0A@@mpl@2@2@Z",
+""
+],
+"0054da10": [
+"100381f0",
+"stl",
+"??$for_each@V?$_Iterator@$00@?$list@PAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@V?$allocator@PAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@std@@@std@@Ucloser@?$chain_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@@std@@YA?AUcloser@?$chain_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@V?$_Iterator@$00@?$list@PAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@V?$allocator@PAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@std@@@0@0U12345@@Z",
+""
+],
+"0054da50": [
+"10038240",
+"boost",
+"?underflow@?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@MAEHXZ",
+""
+],
+"0054e280": [
+"10039440",
+"boost",
+"?init_put_area@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@EAEXXZ",
+""
+],
+"0054e410": [
+"10039630",
+"boost",
+"?imbue@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@MAEXABVlocale@std@@@Z",
+""
+],
+"0054e440": [
+"10039660",
+"boost",
+"?init_get_area@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@EAEXXZ",
+""
+],
+"0054e570": [
+"10039790",
+"boost",
+"?unconsumed_input@?$symmetric_filter@V?$zlib_decompressor_impl@V?$allocator@D@std@@@detail@iostreams@boost@@V?$allocator@D@std@@@iostreams@boost@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+""
+],
+"0054e5b0": [
+"100397d0",
+"boost",
+"?read@?$non_blocking_adapter@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@iostreams@boost@@QAEHPADH@Z",
+""
+],
+"0054eb70": [
+"10038490",
+"boost",
+"?notify@?$filtering_stream_base@V?$chain@Uoutput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@Upublic_@23@@detail@iostreams@boost@@EAEXXZ",
+""
+],
+"0054ebc0": [
+"100384e0",
+"boost",
+"?notify@?$filtering_stream_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@Upublic_@23@@detail@iostreams@boost@@EAEXXZ",
+""
+],
+"0054efa0": [
+"100387c0",
+"boost",
+"?overflow@?$indirect_streambuf@V?$basic_null_device@DUoutput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@MAEHH@Z",
+""
+],
+"0054f4b0": [
+"10038a20",
+"boost",
+"?init_put_area@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@EAEXXZ",
+""
+],
+"0054f590": [
+"10038b00",
+"boost",
+"??$put@V?$non_blocking_adapter@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@iostreams@boost@@@?$write_device_impl@Uoutput@iostreams@boost@@@detail@iostreams@boost@@SA_NAAV?$non_blocking_adapter@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@23@D@Z",
+""
+],
+"0054f5d0": [
+"10038b40",
+"boost",
+"?imbue@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@MAEXABVlocale@std@@@Z",
+""
+],
+"0054f630": [
+"10038ba0",
+"boost",
+"?read_string@?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@AAEHPADHAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+""
+],
+"0054f7d0": [
+"10038d40",
+"boost",
+"??$write_long@V?$back_insert_device@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@iostreams@boost@@@?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@CAXJAAV?$back_insert_device@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@12@@Z",
+""
+],
+"005501d0": [
+"1003a410",
+"stl",
+"??$for_each@V?$reverse_iterator@V?$_Iterator@$00@?$list@PAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@V?$allocator@PAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@std@@@std@@@std@@Ucloser@?$chain_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@@std@@YA?AUcloser@?$chain_base@V?$chain@Uinput@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@@iostreams@boost@@DU?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@V?$reverse_iterator@V?$_Iterator@$00@?$list@PAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@V?$allocator@PAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@std@@@std@@@0@0U12345@@Z",
+""
+],
+"00552300": [
+"1003be50",
+"boost",
+"?init_get_area@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@EAEXXZ",
+""
+],
+"005553d0": [
+"100d0f60",
+"source",
+"",
+"Client/App/include/util/Rect.h:41"
+],
+"00555990": [
+"100d1270",
+"symbols",
+"?toPixelSize@GuiRoot@RBX@@SA?AVVector2@G3D@@ABV34@@Z",
+"Client/App/gui/GUI.cpp:103"
+],
+"00564d90": [
+"10084b30",
+"symbols",
+"?isCloseTag@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+""
+],
+"00564e20": [
+"10084bc0",
+"symbols",
+"?endsWithClose@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+""
+],
+"00565180": [
+"10084ef0",
+"symbols",
+"?decodeString@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@Z",
+""
+],
+"005654c0": [
+"10085230",
+"symbols",
+"?removeTag@TextXmlParser@@AAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@AAH@Z",
+""
+],
+"00565560": [
+"100852d0",
+"symbols",
+"?findNextToken@TextXmlParser@@AAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@AAH@Z",
+""
+],
+"0056d530": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"0056d5b0": [
+"1003edf0",
+"boost",
+"??0?$holder@VContentId@RBX@@@any@boost@@QAE@ABVContentId@RBX@@@Z",
+""
+],
+"005706d0": [
+"10095e50",
+"symbols",
+"?getSignalInstance@Signal@Reflection@RBX@@QBE?AV?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@XZ",
+""
+],
+"0057bf90": [
+"1006c450",
+"boost",
+"?invoke@?$function_obj_invoker0@V?$bind_t@NP6ANPAVCodeProfiler@Profiling@RBX@@@ZV?$list1@V?$value@PAVCodeProfiler@Profiling@RBX@@@_bi@boost@@@_bi@boost@@@_bi@boost@@N@function@detail@boost@@SANAATfunction_buffer@234@@Z",
+""
+],
+"00580420": [
+"10090060",
+"source",
+"",
+"Client/App/util/Utilities.cpp:18"
+],
+"00587df0": [
+"1007d420",
+"source",
+"",
+"Client/App/util/Sound.cpp:69"
+],
+"00587ff0": [
+"1007d640",
+"stl",
+"??1?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@QAE@XZ",
+""
+],
+"00588610": [
+"1007dd00",
+"stl",
+"??0_Node@?$_Tree_nod@V?$_Tmap_traits@VSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@U?$less@VSoundId@Soundscape@RBX@@@std@@V?$allocator@U?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@std@@@7@$0A@@std@@@std@@QAE@PAU012@00ABU?$pair@$$CBVSoundId@Soundscape@RBX@@V?$shared_ptr@VSound@Soundscape@RBX@@@boost@@@2@D@Z",
+""
+],
+"00589420": [
+"1007ebc0",
+"boost",
+"?invoke@?$function_obj_invoker0@V?$bind_t@ABIP6AABIPBI@ZV?$list1@V?$value@PBI@_bi@boost@@@_bi@boost@@@_bi@boost@@I@function@detail@boost@@SAIAATfunction_buffer@234@@Z",
+""
+],
+"0058d190": [
+"10090b10",
+"symbols",
+"?convertToValue@?$StringConverter@VVector3@G3D@@@RBX@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAVVector3@G3D@@@Z",
+""
+],
+"0058d2d0": [
+"10090c50",
+"symbols",
+"?convertToString@?$StringConverter@VColor3@G3D@@@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVColor3@G3D@@@Z",
+""
+],
+"0058d330": [
+"10090cb0",
+"symbols",
+"?convertToValue@?$StringConverter@VColor3@G3D@@@RBX@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAVColor3@G3D@@@Z",
+""
+],
+"00592300": [
+"100f9190",
+"stl",
+"??$_Construct@V?$bind_t@W4work_result@worker_thread@RBX@@P6A?AW4123@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@ZV?$list2@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_bi@boost@@V?$value@H@23@@_bi@boost@@@_bi@boost@@V123@@std@@YAXPAV?$bind_t@W4work_result@worker_thread@RBX@@P6A?AW4123@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@ZV?$list2@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_bi@boost@@V?$value@H@23@@_bi@boost@@@_bi@boost@@ABV123@@Z",
+""
+],
+"0059c830": [
+"1011ced0",
+"source",
+"",
+"Client/App/util/Rect.cpp:5"
+],
+"005aa880": [
+"10129ff0",
+"source",
+"",
+"Client/App/util/Quaternion.cpp:17"
+],
+"005aa9e0": [
+"1012a150",
+"source",
+"",
+"Client/App/util/Quaternion.cpp:56"
+],
+"005aab30": [
+"100de9a0",
+"source",
+"",
+"Client/App/util/Math.cpp:60"
+],
+"005aabc0": [
+"100dea30",
+"source",
+"",
+"Client/App/util/Math.cpp:88"
+],
+"005aadb0": [
+"100dec20",
+"source",
+"",
+"Client/App/util/Math.cpp:140"
+],
+"005ab320": [
+"100df1a0",
+"source",
+"",
+"Client/App/util/Math.cpp:310"
+],
+"005ab380": [
+"100df200",
+"source",
+"",
+"Client/App/util/Math.cpp:325"
+],
+"005ab6b0": [
+"100df530",
+"source",
+"",
+"Client/App/util/Math.cpp:413"
+],
+"005ab780": [
+"100df600",
+"source",
+"",
+"Client/App/util/Math.cpp:437"
+],
+"005ab7a0": [
+"100df620",
+"source",
+"",
+"Client/App/util/Math.cpp:443"
+],
+"005abe30": [
+"100dfaf0",
+"source",
+"",
+"Client/App/util/Math.cpp:531"
+],
+"005abf60": [
+"100dfb90",
+"source",
+"",
+"Client/App/util/Math.cpp:548"
+],
+"005ac210": [
+"100dfe40",
+"source",
+"",
+"Client/App/util/Math.cpp:618"
+],
+"005ac270": [
+"100dfea0",
+"source",
+"",
+"Client/App/util/Math.cpp:636"
+],
+"005aca90": [
+"100425f0",
+"symbols",
+"?getAmbientBottom@Lighting@RBX@@QBE?AVColor3@G3D@@XZ",
+""
+],
+"005b44e0": [
+"100a76d0",
+"source",
+"",
+"Client/App/include/v8world/SurfaceData.h:38"
+],
+"005bc430": [
+"100a59a0",
+"source",
+"",
+"Client/App/util/Extents.cpp:7"
+],
+"005bc4d0": [
+"100a5a40",
+"source",
+"",
+"Client/App/util/Extents.cpp:44"
+],
+"005bc7b0": [
+"100a5d20",
+"source",
+"",
+"Client/App/util/Extents.cpp:103"
+],
+"005bc810": [
+"100a5d80",
+"source",
+"",
+"Client/App/util/Extents.cpp:114"
+],
+"005bc870": [
+"100a5de0",
+"source",
+"",
+"Client/App/util/Extents.cpp:123"
+],
+"005bc8d0": [
+"100a5e40",
+"source",
+"",
+"Client/App/util/Extents.cpp:130"
+],
+"005bc940": [
+"100a5eb0",
+"source",
+"",
+"Client/App/util/Extents.cpp:137"
+],
+"005bca60": [
+"100a5fd0",
+"source",
+"",
+"Client/App/util/Extents.cpp:153"
+],
+"005bcc60": [
+"100a61d0",
+"source",
+"",
+"Client/App/util/Extents.cpp:192"
+],
+"005bced0": [
+"100a6440",
+"source",
+"",
+"Client/App/util/Extents.cpp:208"
+],
+"005be7c0": [
+"100a9fe0",
+"lua",
+"RobloxExtraSpace::construct",
+""
+],
+"005c6110": [
+"100b6b60",
+"lua",
+"luaD_precall",
+""
+],
+"005c63d0": [
+"100b6e20",
+"lua",
+"lua_resume",
+""
+],
+"005ccbb0": [
+"100d1f50",
+"source",
+"",
+"Client/App/include/v8world/Block.h:104"
+],
+"005ddf90": [
+"101233c0",
+"source",
+"",
+"Client/App/v8world/SpatialHash.cpp:16"
+],
+"005ddfe0": [
+"10123410",
+"source",
+"",
+"Client/App/v8world/SpatialHash.cpp:24"
+],
+"005de030": [
+"10123460",
+"source",
+"",
+"Client/App/v8world/SpatialHash.cpp:33"
+],
+"005e3770": [
+"100ff530",
+"symbols",
+"?convertToString@?$StringConverter@VContentId@RBX@@@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVContentId@2@@Z",
+""
+],
+"005eb330": [
+"10042590",
+"symbols",
+"?getLightColor@Lighting@RBX@@QBE?AVColor3@G3D@@XZ",
+""
+],
+"005eecf0": [
+"100ed950",
+"source",
+"",
+"Client/App/v8datamodel/Gyro.cpp:121"
+],
+"005ff530": [
+"100e9af0",
+"g3d",
+"?unit@Ray@G3D@@QBE?AV12@XZ",
+""
+],
+"006086a0": [
+"1010a990",
+"source",
+"",
+"Client/App/v8kernel/Constants.cpp:62"
+],
+"00608a00": [
+"1010acf0",
+"source",
+"",
+"Client/App/v8kernel/Constants.cpp:198"
+],
+"00609170": [
+"1011ed70",
+"source",
+"",
+"Client/App/include/v8world/Tolerance.h:13"
+],
+"0060c3b0": [
+"10109060",
+"source",
+"",
+"Client/App/v8world/Block.cpp:24"
+],
+"0060c710": [
+"101093c0",
+"source",
+"",
+"Client/App/v8world/Block.cpp:159"
+],
+"0060c810": [
+"101094c0",
+"source",
+"",
+"Client/App/v8world/Block.cpp:186"
+],
+"0060c980": [
+"10109630",
+"source",
+"",
+"Client/App/v8world/Block.cpp:265"
+],
+"0060cad0": [
+"10109770",
+"source",
+"",
+"Client/App/v8world/Block.cpp:287"
+],
+"0060cd10": [
+"101099b0",
+"stl",
+"?_Lbound@?$_Tree@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VVector3@G3D@@PAVBlockTemplate@RBX@@UmyLess@4@V?$allocator@U?$pair@$$CBVVector3@G3D@@PAVBlockTemplate@RBX@@@std@@@std@@$0A@@std@@@2@ABVVector3@G3D@@@Z",
+""
+],
+"0060da00": [
+"1010a680",
+"source",
+"",
+"Client/App/v8world/Block.cpp:371"
+],
+"0060db40": [
+"1010a7c0",
+"source",
+"",
+"Client/App/v8world/Ball.cpp:22"
+],
+"0060dcf0": [
+"1010aec0",
+"source",
+"",
+"Client/App/util/Face.cpp:19"
+],
+"0060dd70": [
+"1010af40",
+"source",
+"",
+"Client/App/util/Face.cpp:26"
+],
+"0060de30": [
+"1010b000",
+"source",
+"",
+"Client/App/util/Face.cpp:40"
+],
+"0060e150": [
+"1010b320",
+"symbols",
+"?getAxis@Face@RBX@@ABE?AVVector3@G3D@@H@Z",
+""
+],
+"0060e350": [
+"1010b520",
+"source",
+"",
+"Client/App/util/Face.cpp:54"
+],
+"0060e3e0": [
+"1010b5b0",
+"source",
+"",
+"Client/App/util/Face.cpp:61"
+],
+"0060eeb0": [
+"1010bef0",
+"lua",
+"luaO_chunkid",
+""
+],
+"006174c0": [
+"10114500",
+"lua",
+"luaX_token2str",
+""
+],
+"00619930": [
+"1011de40",
+"source",
+"",
+"Client/App/v8kernel/Connector.cpp:32"
+],
+"00619990": [
+"1011dea0",
+"source",
+"",
+"Client/App/v8kernel/Connector.cpp:39"
+],
+"00619ce0": [
+"1011e1f0",
+"source",
+"",
+"Client/App/v8kernel/Connector.cpp:115"
+],
+"0061a150": [
+"10120e00",
+"source",
+"",
+"Client/App/v8kernel/SimBody.cpp:14"
+],
+"0061a1d0": [
+"10120e80",
+"source",
+"",
+"Client/App/v8kernel/SimBody.cpp:28"
+],
+"0061a300": [
+"10120fb0",
+"source",
+"",
+"Client/App/include/util/Quaternion.h:38"
+],
+"00625110": [
+"10121f50",
+"source",
+"",
+"Client/App/util/Units.cpp:9"
+],
+"00625140": [
+"10121f80",
+"source",
+"",
+"Client/App/util/Units.cpp:15"
+],
+"00625830": [
+"10126410",
+"symbols",
+"?getMousePart@MegaDragger@RBX@@QAE?AV?$weak_ptr@VPartInstance@RBX@@@boost@@XZ",
+""
+],
+"00625ab0": [
+"10126660",
+"symbols",
+"?getCursorName@PartDragTool@RBX@@UBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+""
+],
+"00628390": [
+"10126ba0",
+"source",
+"",
+"Client/App/include/util/Quaternion.h:80"
+],
+"00725192": [
+"101e5f76",
+"atl",
+"??0CAtlStringMgr@ATL@@QAE@PAUIAtlMemMgr@1@@Z",
+""
+],
+"007251be": [
+"101e5fc2",
+"atl",
+"?Free@CAtlStringMgr@ATL@@UAEXPAUCStringData@2@@Z",
+""
+],
+"007251c6": [
+"101e5fca",
+"atl",
+"?GetNilString@CAtlStringMgr@ATL@@UAEPAUCStringData@2@XZ",
+""
+],
+"00736ee0": [
+"10137b90",
+"g3d",
+"??_0Color4@G3D@@QAEAAV01@M@Z",
+""
+],
+"007381c0": [
+"1008ea60",
+"source",
+"",
+"Client/App/util/IndexBox.cpp:25"
+]
+},
+"2008-06": {
+"00415cd0": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"0041ada0": [
+"100cd750",
+"boost",
+"?manage@?$functor_manager@V?$bind_t@XV?$mf1@XVFlag@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVFlag@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@V?$allocator@X@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+""
+],
+"0041f2b0": [
+"10047ab0",
+"symbols",
+"?getClassNameStr@Instance@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+""
+],
+"0042abe0": [
+"10044f10",
+"boost",
+"?manage@?$functor_manager@VGenericSlotAdapter@?$SignalDescImpl@$00$$A6AX_N@Z@Reflection@RBX@@V?$allocator@X@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+""
+],
+"0042b870": [
+"100fc460",
+"boost",
+"?manage@?$functor_manager@V?$bind_t@XV?$mf1@XVSeat@RBX@@_N@_mfi@boost@@V?$list2@V?$value@PAVSeat@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@V?$allocator@X@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+""
+],
+"0043afb0": [
+"100434a0",
+"g3d",
+"??8Color3@G3D@@QBE_NABV01@@Z",
+""
+],
+"0045b950": [
+"100beaf0",
+"g3d",
+"?xyxy@Rect2D@G3D@@SA?AV12@MMMM@Z",
+""
+],
+"0045c710": [
+"1007ebc0",
+"boost",
+"?invoke@?$function_obj_invoker0@V?$bind_t@ABIP6AABIPBI@ZV?$list1@V?$value@PBI@_bi@boost@@@_bi@boost@@@_bi@boost@@I@function@detail@boost@@SAIAATfunction_buffer@234@@Z",
+""
+],
+"00476580": [
+"1008ea00",
+"g3d",
+"G3D::Matrix3::operator*",
+""
+],
+"004766a0": [
+"10059ad0",
+"g3d",
+"G3D::CoordinateFrame::pointToWorldSpace",
+""
+],
+"00485390": [
+"100ad900",
+"g3d",
+"?toWorldSpace@CoordinateFrame@G3D@@QBE?AVVector4@2@ABV32@@Z",
+""
+],
+"0048df70": [
+"1004ae80",
+"boost",
+"?manage@?$functor_manager@VGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@V?$allocator@X@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+""
+],
+"0049f920": [
+"10055c00",
+"boost",
+"?manage@?$functor_manager@VGenericSlotAdapter@?$SignalDescImpl@$01$$A6AXMM@Z@Reflection@RBX@@V?$allocator@X@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+""
+],
+"004a6100": [
+"1008eb00",
+"g3d",
+"?clamp@Vector3@G3D@@QBE?AV12@ABV12@0@Z",
+""
+],
+"004a72c0": [
+"101ac210",
+"stl",
+"??$_Fill@PAUWaitItem@IdSerializer@Network@RBX@@U1234@@std@@YAXPAUWaitItem@IdSerializer@Network@RBX@@0ABU1234@@Z",
+""
+],
+"004b20a0": [
+"1004ae80",
+"boost",
+"?manage@?$functor_manager@VGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@V?$allocator@X@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+""
+],
+"004bb920": [
+"101afc90",
+"source",
+"",
+"3rdparty/RakNet30/Source/RakPeer.cpp:1572"
+],
+"004c9d40": [
+"10121060",
+"source",
+"",
+"Client/App/include/util/Quaternion.h:77"
+],
+"004e61a0": [
+"1016c910",
+"stl",
+"??R?$less@VTextureKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@@std@@QBE_NABVTextureKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@0@Z",
+""
+],
+"004fab70": [
+"100a05d0",
+"g3d",
+"?unit@Vector3@G3D@@QBE?AV12@XZ",
+""
+],
+"00501860": [
+"10042930",
+"boost",
+"??0bad_lexical_cast@boost@@QAE@ABV01@@Z",
+""
+],
+"00501ca0": [
+"100a0610",
+"g3d",
+"?pointToObjectSpace@CoordinateFrame@G3D@@QBE?AVVector3@2@ABV32@@Z",
+""
+],
+"00509e90": [
+"1012e010",
+"g3d",
+"?section@Log@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+""
+],
+"00509ef0": [
+"1012e070",
+"g3d",
+"?println@Log@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+""
+],
+"0051db30": [
+"101409b0",
+"libpng",
+"_png_default_flush",
+""
+],
+"00525ed0": [
+"100d79d0",
+"g3d",
+"?fromTwoPoints@LineSegment@G3D@@SA?AV12@ABVVector3@2@0@Z",
+""
+],
+"00525f40": [
+"100de790",
+"g3d",
+"??0Line@G3D@@IAE@ABVVector3@1@0@Z",
+""
+],
+"0055bae0": [
+"1004f1c0",
+"source",
+"",
+"Client/App/util/ContentProvider.cpp:20"
+],
+"0055bb50": [
+"1004f230",
+"source",
+"",
+"Client/App/util/ContentProvider.cpp:27"
+],
+"0055bd10": [
+"1004f2a0",
+"symbols",
+"?isHttpUrl@ContentProvider@RBX@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+""
+],
+"0055bf20": [
+"1004f3f0",
+"symbols",
+"?convertToLegacyHash@MD5Hasher@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V34@@Z",
+""
+],
+"0055c710": [
+"1004fb50",
+"symbols",
+"?toString@MD5HasherImpl@RBX@@UAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+""
+],
+"0056c6d0": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"0056c710": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"0056c750": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"0056c790": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"0056c7d0": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"0056c810": [
+"1003edf0",
+"boost",
+"??0?$holder@VContentId@RBX@@@any@boost@@QAE@ABVContentId@RBX@@@Z",
+""
+],
+"00573310": [
+"100d1060",
+"source",
+"",
+"Client/App/gui/GUI.cpp:41"
+],
+"00573360": [
+"100d10b0",
+"symbols",
+"?label2d@GuiItem@RBX@@IBEXPAVAdorn@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVColor4@G3D@@2W4XAlign@32@@Z",
+"Client/App/gui/GUI.cpp:49"
+],
+"005736f0": [
+"100d1270",
+"symbols",
+"?toPixelSize@GuiRoot@RBX@@SA?AVVector2@G3D@@ABV34@@Z",
+"Client/App/gui/GUI.cpp:103"
+],
+"00577e80": [
+"1004ae80",
+"boost",
+"?manage@?$functor_manager@VGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@V?$allocator@X@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+""
+],
+"0057dee0": [
+"1005a750",
+"source",
+"",
+"Client/App/include/util/Extents.h:75"
+],
+"00583860": [
+"100a5eb0",
+"source",
+"",
+"Client/App/util/Extents.cpp:137"
+],
+"0058c990": [
+"10084b30",
+"symbols",
+"?isCloseTag@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+""
+],
+"0058ca20": [
+"10084bc0",
+"symbols",
+"?endsWithClose@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+""
+],
+"00597370": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005973b0": [
+"1003edf0",
+"boost",
+"??0?$holder@VContentId@RBX@@@any@boost@@QAE@ABVContentId@RBX@@@Z",
+""
+],
+"00598a60": [
+"1009a610",
+"source",
+"",
+"Client/App/include/util/PV.h:38"
+],
+"0059ee00": [
+"1012cb10",
+"symbols",
+"?getValue@?$GetSetImpl@P8SpecialShape@RBX@@BEABVVector3@G3D@@XZP812@AEXABV34@@Z@?$PropDescriptor@VSpecialShape@RBX@@VVector3@G3D@@@Reflection@RBX@@UBE?AVVector3@G3D@@PBVDescribedBase@34@@Z",
+""
+],
+"0059eec0": [
+"1003edf0",
+"boost",
+"??0?$holder@VContentId@RBX@@@any@boost@@QAE@ABVContentId@RBX@@@Z",
+""
+],
+"005a1260": [
+"1019dfa0",
+"boost",
+"?manage@?$functor_manager@V?$bind_t@XV?$mf1@XVReplicator@Network@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVReplicator@Network@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@V?$allocator@X@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+""
+],
+"005a19e0": [
+"1006c450",
+"boost",
+"?invoke@?$function_obj_invoker0@V?$bind_t@NP6ANPAVCodeProfiler@Profiling@RBX@@@ZV?$list1@V?$value@PAVCodeProfiler@Profiling@RBX@@@_bi@boost@@@_bi@boost@@@_bi@boost@@N@function@detail@boost@@SANAATfunction_buffer@234@@Z",
+""
+],
+"005a23d0": [
+"1006cd50",
+"boost",
+"?invoke@?$function_obj_invoker0@V?$bind_t@HV?$cmf1@HVWorld@RBX@@W4MetricType@IWorldStage@2@@_mfi@boost@@V?$list2@V?$value@PBVWorld@RBX@@@_bi@boost@@V?$value@W4MetricType@IWorldStage@RBX@@@23@@_bi@3@@_bi@boost@@H@function@detail@boost@@SAHAATfunction_buffer@234@@Z",
+""
+],
+"005b6ca0": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005b6d50": [
+"1003edf0",
+"boost",
+"??0?$holder@VContentId@RBX@@@any@boost@@QAE@ABVContentId@RBX@@@Z",
+""
+],
+"005b6ed0": [
+"1007d380",
+"g3d",
+"?clamp@Vector3@G3D@@QBE?AV12@MM@Z",
+""
+],
+"005b6f70": [
+"1007d420",
+"source",
+"",
+"Client/App/util/Sound.cpp:69"
+],
+"005bde60": [
+"10090060",
+"source",
+"",
+"Client/App/util/Utilities.cpp:18"
+],
+"005be040": [
+"10090240",
+"source",
+"",
+"Client/App/util/Utilities.cpp:69"
+],
+"005becf0": [
+"10090c50",
+"symbols",
+"?convertToString@?$StringConverter@VColor3@G3D@@@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVColor3@G3D@@@Z",
+""
+],
+"005c49d0": [
+"100f9160",
+"boost",
+"?invoke@?$function_obj_invoker0@V?$bind_t@W4work_result@worker_thread@RBX@@P6A?AW4123@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@ZV?$list2@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_bi@boost@@V?$value@H@23@@_bi@boost@@@_bi@boost@@W4work_result@worker_thread@RBX@@@function@detail@boost@@SA?AW4work_result@worker_thread@RBX@@AATfunction_buffer@234@@Z",
+""
+],
+"005cef60": [
+"1011ced0",
+"source",
+"",
+"Client/App/util/Rect.cpp:5"
+],
+"005dd570": [
+"10129ff0",
+"source",
+"",
+"Client/App/util/Quaternion.cpp:17"
+],
+"005dd6d0": [
+"1012a150",
+"source",
+"",
+"Client/App/util/Quaternion.cpp:56"
+],
+"005de560": [
+"100df530",
+"source",
+"",
+"Client/App/util/Math.cpp:413"
+],
+"005de630": [
+"100df600",
+"source",
+"",
+"Client/App/util/Math.cpp:437"
+],
+"005de650": [
+"100df620",
+"source",
+"",
+"Client/App/util/Math.cpp:443"
+],
+"005dece0": [
+"100dfaf0",
+"source",
+"",
+"Client/App/util/Math.cpp:531"
+],
+"005dee10": [
+"100dfb90",
+"source",
+"",
+"Client/App/util/Math.cpp:548"
+],
+"005df220": [
+"100dfea0",
+"source",
+"",
+"Client/App/util/Math.cpp:636"
+],
+"005dffa0": [
+"10042e00",
+"symbols",
+"?getValue@?$GetSetImpl@P8Lighting@RBX@@BE?AVColor3@G3D@@XZP812@AEXV34@@Z@?$PropDescriptor@VLighting@RBX@@VColor3@G3D@@@Reflection@RBX@@UBE?AVColor3@G3D@@PBVDescribedBase@34@@Z",
+""
+],
+"005e5e70": [
+"10120140",
+"source",
+"",
+"Client/App/v8world/MotorJoint.cpp:68"
+],
+"005e7300": [
+"100a76d0",
+"source",
+"",
+"Client/App/include/v8world/SurfaceData.h:38"
+],
+"005f2030": [
+"10034a80",
+"boost",
+"??0gzip_params@iostreams@boost@@QAE@HHHHHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0_J@Z",
+""
+],
+"005f20f0": [
+"10034c40",
+"boost",
+"??1gzip_params@iostreams@boost@@QAE@XZ",
+""
+],
+"005f2160": [
+"10034cb0",
+"boost",
+"??0gzip_params@iostreams@boost@@QAE@ABU012@@Z",
+""
+],
+"005f21f0": [
+"10034d40",
+"boost",
+"?normalize_params@?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@CA?AUgzip_params@23@U423@@Z",
+""
+],
+"005f2a00": [
+"10035a20",
+"boost",
+"?init_put_area@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@detail@iostreams@boost@@EAEXXZ",
+""
+],
+"005f3210": [
+"100362e0",
+"boost",
+"?imbue@?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@MAEXABVlocale@std@@@Z",
+""
+],
+"005f3700": [
+"10036850",
+"boost",
+"?sync_impl@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@detail@iostreams@boost@@AAEXXZ",
+""
+],
+"005f41c0": [
+"100378c0",
+"boost",
+"?imbue@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@detail@iostreams@boost@@MAEXABVlocale@std@@@Z",
+""
+],
+"005f5230": [
+"10038a20",
+"boost",
+"?init_put_area@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@EAEXXZ",
+""
+],
+"005f52e0": [
+"10038b00",
+"boost",
+"??$put@V?$non_blocking_adapter@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@iostreams@boost@@@?$write_device_impl@Uoutput@iostreams@boost@@@detail@iostreams@boost@@SA_NAAV?$non_blocking_adapter@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@23@D@Z",
+""
+],
+"005f5320": [
+"10038b40",
+"boost",
+"?imbue@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@MAEXABVlocale@std@@@Z",
+""
+],
+"005f54f0": [
+"10038d40",
+"boost",
+"??$write_long@V?$back_insert_device@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@iostreams@boost@@@?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@CAXJAAV?$back_insert_device@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@12@@Z",
+""
+],
+"005f5b90": [
+"10039440",
+"boost",
+"?init_put_area@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@EAEXXZ",
+""
+],
+"005f5d80": [
+"10039630",
+"boost",
+"?imbue@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@MAEXABVlocale@std@@@Z",
+""
+],
+"005f5db0": [
+"10039660",
+"boost",
+"?init_get_area@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@EAEXXZ",
+""
+],
+"005f81e0": [
+"1003be50",
+"boost",
+"?init_get_area@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@EAEXXZ",
+""
+],
+"005f9750": [
+"100366d0",
+"boost",
+"?init_get_area@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@detail@iostreams@boost@@EAEXXZ",
+""
+],
+"005fd500": [
+"100425c0",
+"symbols",
+"?getAmbientTop@Lighting@RBX@@QBE?AVColor3@G3D@@XZ",
+""
+],
+"00606170": [
+"1011de40",
+"source",
+"",
+"Client/App/v8kernel/Connector.cpp:32"
+],
+"006061f0": [
+"1011dea0",
+"source",
+"",
+"Client/App/v8kernel/Connector.cpp:39"
+],
+"006065d0": [
+"1011e1f0",
+"source",
+"",
+"Client/App/v8kernel/Connector.cpp:115"
+],
+"00606b00": [
+"100d1f50",
+"source",
+"",
+"Client/App/include/v8world/Block.h:104"
+],
+"00606b60": [
+"100a5d20",
+"source",
+"",
+"Client/App/util/Extents.cpp:103"
+],
+"0060cc70": [
+"100e9af0",
+"g3d",
+"?unit@Ray@G3D@@QBE?AV12@XZ",
+""
+],
+"0060f3e0": [
+"100a59a0",
+"source",
+"",
+"Client/App/util/Extents.cpp:7"
+],
+"0060f7b0": [
+"100a5fd0",
+"source",
+"",
+"Client/App/util/Extents.cpp:153"
+],
+"006154a0": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"0062a640": [
+"1004ae80",
+"boost",
+"?manage@?$functor_manager@VGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@V?$allocator@X@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+""
+],
+"0062f5d0": [
+"100eb7c0",
+"symbols",
+"?getValue@?$BoundPropGetSet@V?$Value@VColor3@G3D@@$1?sColor3Value@RBX@@3PADA@RBX@@@?$BoundProp@VColor3@G3D@@$00@Reflection@RBX@@UBE?AVColor3@G3D@@PBVDescribedBase@34@@Z",
+""
+],
+"00633a80": [
+"1004ae80",
+"boost",
+"?manage@?$functor_manager@VGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@V?$allocator@X@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+""
+],
+"00633e80": [
+"1004ae80",
+"boost",
+"?manage@?$functor_manager@VGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@V?$allocator@X@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+""
+],
+"00634280": [
+"1004ae80",
+"boost",
+"?manage@?$functor_manager@VGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@V?$allocator@X@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+""
+],
+"00634680": [
+"1004ae80",
+"boost",
+"?manage@?$functor_manager@VGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@V?$allocator@X@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+""
+],
+"00634b10": [
+"1004ae80",
+"boost",
+"?manage@?$functor_manager@VGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@V?$allocator@X@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+""
+],
+"00634f10": [
+"1004ae80",
+"boost",
+"?manage@?$functor_manager@VGenericSlotAdapter@?$SignalDescImpl@$00$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@V?$allocator@X@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+""
+],
+"0063c790": [
+"10033c60",
+"boost",
+"?manage@?$functor_manager@V?$bind_t@XP6AXABV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZV?$list2@V?$value@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@2@@_bi@boost@@V?$allocator@Vfunction_base@boost@@@std@@@function@detail@boost@@SAXABTfunction_buffer@234@AAT5234@W4functor_manager_operation_type@234@@Z",
+""
+],
+"00645a20": [
+"1011ed70",
+"source",
+"",
+"Client/App/include/v8world/Tolerance.h:13"
+],
+"00647760": [
+"10109060",
+"source",
+"",
+"Client/App/v8world/Block.cpp:24"
+],
+"00647d10": [
+"10109630",
+"source",
+"",
+"Client/App/v8world/Block.cpp:265"
+],
+"00647e70": [
+"10109770",
+"source",
+"",
+"Client/App/v8world/Block.cpp:287"
+],
+"00648fd0": [
+"1010a680",
+"source",
+"",
+"Client/App/v8world/Block.cpp:371"
+],
+"00649170": [
+"1010a7c0",
+"source",
+"",
+"Client/App/v8world/Ball.cpp:22"
+],
+"00649320": [
+"1010a990",
+"source",
+"",
+"Client/App/v8kernel/Constants.cpp:62"
+],
+"00649670": [
+"1010acf0",
+"source",
+"",
+"Client/App/v8kernel/Constants.cpp:198"
+],
+"00649970": [
+"1010b000",
+"source",
+"",
+"Client/App/util/Face.cpp:40"
+],
+"00649c90": [
+"1010b320",
+"symbols",
+"?getAxis@Face@RBX@@ABE?AVVector3@G3D@@H@Z",
+""
+],
+"00649f20": [
+"1010b5b0",
+"source",
+"",
+"Client/App/util/Face.cpp:61"
+],
+"006588a0": [
+"10120e00",
+"source",
+"",
+"Client/App/v8kernel/SimBody.cpp:14"
+],
+"00658920": [
+"10120e80",
+"source",
+"",
+"Client/App/v8kernel/SimBody.cpp:28"
+],
+"00658a30": [
+"10120fb0",
+"source",
+"",
+"Client/App/include/util/Quaternion.h:38"
+],
+"00660180": [
+"10121f50",
+"source",
+"",
+"Client/App/util/Units.cpp:9"
+],
+"006601b0": [
+"10121f80",
+"source",
+"",
+"Client/App/util/Units.cpp:15"
+],
+"00666250": [
+"10123000",
+"source",
+"",
+"Client/App/util/ExponentialRunningAverage.cpp:11"
+],
+"00666290": [
+"10123040",
+"source",
+"",
+"Client/App/util/ExponentialRunningAverage.cpp:32"
+],
+"006689b0": [
+"10126ba0",
+"source",
+"",
+"Client/App/include/util/Quaternion.h:80"
+],
+"007a5e12": [
+"101e5fca",
+"atl",
+"?GetNilString@CAtlStringMgr@ATL@@UAEPAUCStringData@2@XZ",
+""
+],
+"007bbe30": [
+"1008ea60",
+"source",
+"",
+"Client/App/util/IndexBox.cpp:25"
+]
+},
+"2009-06": {
+"004222a0": [
+"100f9160",
+"boost",
+"?invoke@?$function_obj_invoker0@V?$bind_t@W4work_result@worker_thread@RBX@@P6A?AW4123@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@ZV?$list2@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_bi@boost@@V?$value@H@23@@_bi@boost@@@_bi@boost@@W4work_result@worker_thread@RBX@@@function@detail@boost@@SA?AW4work_result@worker_thread@RBX@@AATfunction_buffer@234@@Z",
+""
+],
+"00422d40": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"00425bc0": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"00435200": [
+"100434a0",
+"g3d",
+"??8Color3@G3D@@QBE_NABV01@@Z",
+""
+],
+"0045b740": [
+"100beaf0",
+"g3d",
+"?xyxy@Rect2D@G3D@@SA?AV12@MMMM@Z",
+""
+],
+"0046c670": [
+"1001af00",
+"boost",
+"?is_dropped@?$char_separator@DU?$char_traits@D@std@@@boost@@ABE_ND@Z",
+""
+],
+"00482300": [
+"100a5d20",
+"source",
+"",
+"Client/App/util/Extents.cpp:103"
+],
+"004826d0": [
+"100a5eb0",
+"source",
+"",
+"Client/App/util/Extents.cpp:137"
+],
+"00497cd0": [
+"1004f1c0",
+"source",
+"",
+"Client/App/util/ContentProvider.cpp:20"
+],
+"00497d40": [
+"1004f230",
+"source",
+"",
+"Client/App/util/ContentProvider.cpp:27"
+],
+"0049dc20": [
+"1008ea00",
+"g3d",
+"G3D::Matrix3::operator*",
+""
+],
+"0049dd10": [
+"10059ad0",
+"g3d",
+"G3D::CoordinateFrame::pointToWorldSpace",
+""
+],
+"004af280": [
+"100ad900",
+"g3d",
+"?toWorldSpace@CoordinateFrame@G3D@@QBE?AVVector4@2@ABV32@@Z",
+""
+],
+"004dd000": [
+"1008eb00",
+"g3d",
+"?clamp@Vector3@G3D@@QBE?AV12@ABV12@0@Z",
+""
+],
+"004de2a0": [
+"101ac210",
+"stl",
+"??$_Fill@PAUWaitItem@IdSerializer@Network@RBX@@U1234@@std@@YAXPAUWaitItem@IdSerializer@Network@RBX@@0ABU1234@@Z",
+""
+],
+"004e6900": [
+"1007ebc0",
+"boost",
+"?invoke@?$function_obj_invoker0@V?$bind_t@ABIP6AABIPBI@ZV?$list1@V?$value@PBI@_bi@boost@@@_bi@boost@@@_bi@boost@@I@function@detail@boost@@SAIAATfunction_buffer@234@@Z",
+""
+],
+"00517640": [
+"1016c910",
+"stl",
+"??R?$less@VTextureKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@@std@@QBE_NABVTextureKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@0@Z",
+""
+],
+"0052c160": [
+"100a05d0",
+"g3d",
+"?unit@Vector3@G3D@@QBE?AV12@XZ",
+""
+],
+"00564bd0": [
+"10042930",
+"boost",
+"??0bad_lexical_cast@boost@@QAE@ABV01@@Z",
+""
+],
+"00565660": [
+"100a0610",
+"g3d",
+"?pointToObjectSpace@CoordinateFrame@G3D@@QBE?AVVector3@2@ABV32@@Z",
+""
+],
+"0056ce80": [
+"1012e010",
+"g3d",
+"?section@Log@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+""
+],
+"0056cee0": [
+"1012e070",
+"g3d",
+"?println@Log@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+""
+],
+"00576910": [
+"100de790",
+"g3d",
+"??0Line@G3D@@IAE@ABVVector3@1@0@Z",
+""
+],
+"005769f0": [
+"100d79d0",
+"g3d",
+"?fromTwoPoints@LineSegment@G3D@@SA?AV12@ABVVector3@2@0@Z",
+""
+],
+"005d8bb0": [
+"1004f2a0",
+"symbols",
+"?isHttpUrl@ContentProvider@RBX@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+""
+],
+"005d8e90": [
+"1004f3f0",
+"symbols",
+"?convertToLegacyHash@MD5Hasher@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V34@@Z",
+""
+],
+"005e5050": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005e5090": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005e50d0": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005e5110": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005e5150": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005e5190": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005e51d0": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005e5210": [
+"1003edf0",
+"boost",
+"??0?$holder@VContentId@RBX@@@any@boost@@QAE@ABVContentId@RBX@@@Z",
+""
+],
+"005fad60": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"006078a0": [
+"100d1270",
+"symbols",
+"?toPixelSize@GuiRoot@RBX@@SA?AVVector2@G3D@@ABV34@@Z",
+"Client/App/gui/GUI.cpp:103"
+],
+"0060b660": [
+"1005a750",
+"source",
+"",
+"Client/App/include/util/Extents.h:75"
+],
+"00613140": [
+"10034c40",
+"boost",
+"??1gzip_params@iostreams@boost@@QAE@XZ",
+""
+],
+"006131b0": [
+"10034cb0",
+"boost",
+"??0gzip_params@iostreams@boost@@QAE@ABU012@@Z",
+""
+],
+"00613240": [
+"10034d40",
+"boost",
+"?normalize_params@?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@CA?AUgzip_params@23@U423@@Z",
+""
+],
+"00614250": [
+"100362e0",
+"boost",
+"?imbue@?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@MAEXABVlocale@std@@@Z",
+""
+],
+"006149a0": [
+"100378c0",
+"boost",
+"?imbue@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@detail@iostreams@boost@@MAEXABVlocale@std@@@Z",
+""
+],
+"00614bd0": [
+"10036850",
+"boost",
+"?sync_impl@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@detail@iostreams@boost@@AAEXXZ",
+""
+],
+"00615270": [
+"100366d0",
+"boost",
+"?init_get_area@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@detail@iostreams@boost@@EAEXXZ",
+""
+],
+"00615870": [
+"10038b00",
+"boost",
+"??$put@V?$non_blocking_adapter@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@iostreams@boost@@@?$write_device_impl@Uoutput@iostreams@boost@@@detail@iostreams@boost@@SA_NAAV?$non_blocking_adapter@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@23@D@Z",
+""
+],
+"006158b0": [
+"10038b40",
+"boost",
+"?imbue@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@MAEXABVlocale@std@@@Z",
+""
+],
+"00615a80": [
+"10038d40",
+"boost",
+"??$write_long@V?$back_insert_device@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@iostreams@boost@@@?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@CAXJAAV?$back_insert_device@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@12@@Z",
+""
+],
+"00617540": [
+"1003be50",
+"boost",
+"?init_get_area@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@EAEXXZ",
+""
+],
+"0061d810": [
+"10084b30",
+"symbols",
+"?isCloseTag@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+""
+],
+"0061d8a0": [
+"10084bc0",
+"symbols",
+"?endsWithClose@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+""
+],
+"00620860": [
+"100a5de0",
+"source",
+"",
+"Client/App/util/Extents.cpp:123"
+],
+"00624c50": [
+"1003edf0",
+"boost",
+"??0?$holder@VContentId@RBX@@@any@boost@@QAE@ABVContentId@RBX@@@Z",
+""
+],
+"006434f0": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"00643740": [
+"1007d380",
+"g3d",
+"?clamp@Vector3@G3D@@QBE?AV12@MM@Z",
+""
+],
+"006437e0": [
+"1007d420",
+"source",
+"",
+"Client/App/util/Sound.cpp:69"
+],
+"00643be0": [
+"1003edf0",
+"boost",
+"??0?$holder@VContentId@RBX@@@any@boost@@QAE@ABVContentId@RBX@@@Z",
+""
+],
+"0064a1f0": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"0064b300": [
+"10090060",
+"source",
+"",
+"Client/App/util/Utilities.cpp:18"
+],
+"0064b690": [
+"10090240",
+"source",
+"",
+"Client/App/util/Utilities.cpp:69"
+],
+"0064c0f0": [
+"10090c50",
+"symbols",
+"?convertToString@?$StringConverter@VColor3@G3D@@@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVColor3@G3D@@@Z",
+""
+],
+"0064c4d0": [
+"100ff530",
+"symbols",
+"?convertToString@?$StringConverter@VContentId@RBX@@@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVContentId@2@@Z",
+""
+],
+"0065ba20": [
+"1009a610",
+"source",
+"",
+"Client/App/include/util/PV.h:38"
+],
+"006627a0": [
+"1011ced0",
+"source",
+"",
+"Client/App/util/Rect.cpp:5"
+],
+"0066d5c0": [
+"100df530",
+"source",
+"",
+"Client/App/util/Math.cpp:413"
+],
+"0066d690": [
+"100df600",
+"source",
+"",
+"Client/App/util/Math.cpp:437"
+],
+"0066d6b0": [
+"100df620",
+"source",
+"",
+"Client/App/util/Math.cpp:443"
+],
+"0066dd80": [
+"100dfaf0",
+"source",
+"",
+"Client/App/util/Math.cpp:531"
+],
+"0066df00": [
+"100dfb90",
+"source",
+"",
+"Client/App/util/Math.cpp:548"
+],
+"0066e790": [
+"1003edf0",
+"boost",
+"??0?$holder@VContentId@RBX@@@any@boost@@QAE@ABVContentId@RBX@@@Z",
+""
+],
+"0066f670": [
+"100a76d0",
+"source",
+"",
+"Client/App/include/v8world/SurfaceData.h:38"
+],
+"00677e00": [
+"10129ff0",
+"source",
+"",
+"Client/App/util/Quaternion.cpp:17"
+],
+"00677f60": [
+"1012a150",
+"source",
+"",
+"Client/App/util/Quaternion.cpp:56"
+],
+"00686e00": [
+"10039630",
+"boost",
+"?imbue@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@MAEXABVlocale@std@@@Z",
+""
+],
+"00686e30": [
+"10039660",
+"boost",
+"?init_get_area@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@EAEXXZ",
+""
+],
+"00694ec0": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"0069d750": [
+"100e9af0",
+"g3d",
+"?unit@Ray@G3D@@QBE?AV12@XZ",
+""
+],
+"006ae510": [
+"1011dea0",
+"source",
+"",
+"Client/App/v8kernel/Connector.cpp:39"
+],
+"006aee00": [
+"100d1f50",
+"source",
+"",
+"Client/App/include/v8world/Block.h:104"
+],
+"006b2d90": [
+"100a59a0",
+"source",
+"",
+"Client/App/util/Extents.cpp:7"
+],
+"006b32c0": [
+"100a5fd0",
+"source",
+"",
+"Client/App/util/Extents.cpp:153"
+],
+"006c9210": [
+"10120e00",
+"source",
+"",
+"Client/App/v8kernel/SimBody.cpp:14"
+],
+"006c9290": [
+"10120e80",
+"source",
+"",
+"Client/App/v8kernel/SimBody.cpp:28"
+],
+"006c93a0": [
+"10120fb0",
+"source",
+"",
+"Client/App/include/util/Quaternion.h:38"
+],
+"006d16d0": [
+"1010a990",
+"source",
+"",
+"Client/App/v8kernel/Constants.cpp:62"
+],
+"006d1a20": [
+"1010acf0",
+"source",
+"",
+"Client/App/v8kernel/Constants.cpp:198"
+],
+"006d2580": [
+"10109060",
+"source",
+"",
+"Client/App/v8world/Block.cpp:24"
+],
+"006d2b30": [
+"10109630",
+"source",
+"",
+"Client/App/v8world/Block.cpp:265"
+],
+"006d2c90": [
+"10109770",
+"source",
+"",
+"Client/App/v8world/Block.cpp:287"
+],
+"006d4080": [
+"1010a7c0",
+"source",
+"",
+"Client/App/v8world/Ball.cpp:22"
+],
+"006d5260": [
+"1010b000",
+"source",
+"",
+"Client/App/util/Face.cpp:40"
+],
+"006d5580": [
+"1010b320",
+"symbols",
+"?getAxis@Face@RBX@@ABE?AVVector3@G3D@@H@Z",
+""
+],
+"006d5810": [
+"1010b5b0",
+"source",
+"",
+"Client/App/util/Face.cpp:61"
+],
+"006d7040": [
+"1011ed70",
+"source",
+"",
+"Client/App/include/v8world/Tolerance.h:13"
+],
+"006f2750": [
+"10121f50",
+"source",
+"",
+"Client/App/util/Units.cpp:9"
+],
+"006f2780": [
+"10121f80",
+"source",
+"",
+"Client/App/util/Units.cpp:15"
+],
+"006f49e0": [
+"10123000",
+"source",
+"",
+"Client/App/util/ExponentialRunningAverage.cpp:11"
+],
+"006f4a20": [
+"10123040",
+"source",
+"",
+"Client/App/util/ExponentialRunningAverage.cpp:32"
+],
+"00705830": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"0070aa30": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"0081adde": [
+"101e5fca",
+"atl",
+"?GetNilString@CAtlStringMgr@ATL@@UAEPAUCStringData@2@XZ",
+""
+],
+"0084bcc0": [
+"1008ea60",
+"source",
+"",
+"Client/App/util/IndexBox.cpp:25"
+],
+"0084bd60": [
+"1008ec50",
+"source",
+"",
+"Client/App/util/IndexBox.cpp:34"
+]
+},
+"2009-12": {
+"00403880": [
+"10005260",
+"atl",
+"??1?$CAtlSafeAllocBufferManager@VCCRTAllocator@ATL@@@_ATL_SAFE_ALLOCA_IMPL@ATL@@QAE@XZ",
+""
+],
+"00415e10": [
+"1001c410",
+"symbols",
+"??$isType@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Value@Reflection@RBX@@QBE_NXZ",
+""
+],
+"00415e30": [
+"1001c410",
+"symbols",
+"??$isType@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Value@Reflection@RBX@@QBE_NXZ",
+""
+],
+"00415e50": [
+"1001c410",
+"symbols",
+"??$isType@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Value@Reflection@RBX@@QBE_NXZ",
+""
+],
+"00415e90": [
+"1001c410",
+"symbols",
+"??$isType@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Value@Reflection@RBX@@QBE_NXZ",
+""
+],
+"00423900": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"00426790": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"004754f0": [
+"1001af00",
+"boost",
+"?is_dropped@?$char_separator@DU?$char_traits@D@std@@@boost@@ABE_ND@Z",
+""
+],
+"004b7370": [
+"1004f1c0",
+"source",
+"",
+"Client/App/util/ContentProvider.cpp:20"
+],
+"004b73e0": [
+"1004f230",
+"source",
+"",
+"Client/App/util/ContentProvider.cpp:27"
+],
+"004f5550": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"004f75c0": [
+"1001c410",
+"symbols",
+"??$isType@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Value@Reflection@RBX@@QBE_NXZ",
+""
+],
+"004ffe40": [
+"1001c410",
+"symbols",
+"??$isType@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Value@Reflection@RBX@@QBE_NXZ",
+""
+],
+"00512a90": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005342d0": [
+"101ac210",
+"stl",
+"??$_Fill@PAUWaitItem@IdSerializer@Network@RBX@@U1234@@std@@YAXPAUWaitItem@IdSerializer@Network@RBX@@0ABU1234@@Z",
+""
+],
+"00537e60": [
+"1003edf0",
+"boost",
+"??0?$holder@VContentId@RBX@@@any@boost@@QAE@ABVContentId@RBX@@@Z",
+""
+],
+"0053d260": [
+"1007ebc0",
+"boost",
+"?invoke@?$function_obj_invoker0@V?$bind_t@ABIP6AABIPBI@ZV?$list1@V?$value@PBI@_bi@boost@@@_bi@boost@@@_bi@boost@@I@function@detail@boost@@SAIAATfunction_buffer@234@@Z",
+""
+],
+"00552500": [
+"101ae5c0",
+"source",
+"",
+"3rdparty/RakNet30/Source/PacketLogger.cpp:189"
+],
+"005cd0d0": [
+"1016c950",
+"stl",
+"??R?$less@VDecalKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@@std@@QBE_NABVDecalKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@0@Z",
+""
+],
+"005ce030": [
+"1016c910",
+"stl",
+"??R?$less@VTextureKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@@std@@QBE_NABVTextureKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@0@Z",
+""
+],
+"005dbd30": [
+"10042930",
+"boost",
+"??0bad_lexical_cast@boost@@QAE@ABV01@@Z",
+""
+],
+"005ebf90": [
+"1012e010",
+"g3d",
+"?section@Log@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+""
+],
+"005ebff0": [
+"1012e070",
+"g3d",
+"?println@Log@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+""
+],
+"0062bce0": [
+"100beda0",
+"symbols",
+"?getCursorName@MouseCommand@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+""
+],
+"0063d9a0": [
+"1004f3f0",
+"symbols",
+"?convertToLegacyHash@MD5Hasher@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V34@@Z",
+""
+],
+"00641b80": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"00642850": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"00642990": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"006429d0": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"00642a10": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"00642a50": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"00642a90": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"00642ad0": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"00642b10": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"00642b50": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"00642b90": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"00642bd0": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"00642c10": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"00642d50": [
+"1001c410",
+"symbols",
+"??$isType@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Value@Reflection@RBX@@QBE_NXZ",
+""
+],
+"00642d70": [
+"1001c410",
+"symbols",
+"??$isType@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Value@Reflection@RBX@@QBE_NXZ",
+""
+],
+"00665be0": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"0067eac0": [
+"1001c410",
+"symbols",
+"??$isType@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Value@Reflection@RBX@@QBE_NXZ",
+""
+],
+"00687b70": [
+"10084b30",
+"symbols",
+"?isCloseTag@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+""
+],
+"00687c00": [
+"10084bc0",
+"symbols",
+"?endsWithClose@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+""
+],
+"00688790": [
+"100855f0",
+"symbols",
+"?_getCharType@?$base64@DU?$char_traits@D@std@@@@IBEHH@Z",
+""
+],
+"0068e9a0": [
+"1003edf0",
+"boost",
+"??0?$holder@VContentId@RBX@@@any@boost@@QAE@ABVContentId@RBX@@@Z",
+""
+],
+"00698cd0": [
+"100beda0",
+"symbols",
+"?getCursorName@MouseCommand@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+""
+],
+"006a1760": [
+"1001c410",
+"symbols",
+"??$isType@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Value@Reflection@RBX@@QBE_NXZ",
+""
+],
+"006a1780": [
+"1001c410",
+"symbols",
+"??$isType@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Value@Reflection@RBX@@QBE_NXZ",
+""
+],
+"006a17a0": [
+"1001c410",
+"symbols",
+"??$isType@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Value@Reflection@RBX@@QBE_NXZ",
+""
+],
+"006a17c0": [
+"1001c410",
+"symbols",
+"??$isType@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Value@Reflection@RBX@@QBE_NXZ",
+""
+],
+"006a17e0": [
+"1001c410",
+"symbols",
+"??$isType@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Value@Reflection@RBX@@QBE_NXZ",
+""
+],
+"006a1910": [
+"1001c410",
+"symbols",
+"??$isType@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Value@Reflection@RBX@@QBE_NXZ",
+""
+],
+"006a1930": [
+"1001c410",
+"symbols",
+"??$isType@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Value@Reflection@RBX@@QBE_NXZ",
+""
+],
+"006b2100": [
+"10090c50",
+"symbols",
+"?convertToString@?$StringConverter@VColor3@G3D@@@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVColor3@G3D@@@Z",
+""
+],
+"006b32f0": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"006b3ba0": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"006b3d90": [
+"1007d420",
+"source",
+"",
+"Client/App/util/Sound.cpp:69"
+],
+"006b4120": [
+"1003edf0",
+"boost",
+"??0?$holder@VContentId@RBX@@@any@boost@@QAE@ABVContentId@RBX@@@Z",
+""
+],
+"006bb020": [
+"100ff530",
+"symbols",
+"?convertToString@?$StringConverter@VContentId@RBX@@@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVContentId@2@@Z",
+""
+],
+"006bb040": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"006bbec0": [
+"10090060",
+"source",
+"",
+"Client/App/util/Utilities.cpp:18"
+],
+"006bcfa0": [
+"1004f2a0",
+"symbols",
+"?isHttpUrl@ContentProvider@RBX@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+""
+],
+"006d2c50": [
+"100f9160",
+"boost",
+"?invoke@?$function_obj_invoker0@V?$bind_t@W4work_result@worker_thread@RBX@@P6A?AW4123@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@ZV?$list2@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_bi@boost@@V?$value@H@23@@_bi@boost@@@_bi@boost@@W4work_result@worker_thread@RBX@@@function@detail@boost@@SA?AW4work_result@worker_thread@RBX@@AATfunction_buffer@234@@Z",
+""
+],
+"006d50b0": [
+"100beda0",
+"symbols",
+"?getCursorName@MouseCommand@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+""
+],
+"006d5200": [
+"100beda0",
+"symbols",
+"?getCursorName@MouseCommand@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+""
+],
+"006d5350": [
+"100beda0",
+"symbols",
+"?getCursorName@MouseCommand@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+""
+],
+"006d54a0": [
+"100beda0",
+"symbols",
+"?getCursorName@MouseCommand@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+""
+],
+"006d55f0": [
+"100beda0",
+"symbols",
+"?getCursorName@MouseCommand@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+""
+],
+"006d5740": [
+"100beda0",
+"symbols",
+"?getCursorName@MouseCommand@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+""
+],
+"006d5890": [
+"100beda0",
+"symbols",
+"?getCursorName@MouseCommand@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+""
+],
+"006d5b60": [
+"100beda0",
+"symbols",
+"?getCursorName@MouseCommand@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+""
+],
+"006d5c70": [
+"100beda0",
+"symbols",
+"?getCursorName@MouseCommand@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+""
+],
+"006d5f10": [
+"100beda0",
+"symbols",
+"?getCursorName@MouseCommand@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+""
+],
+"006d6060": [
+"100beda0",
+"symbols",
+"?getCursorName@MouseCommand@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+""
+],
+"006d61b0": [
+"100beda0",
+"symbols",
+"?getCursorName@MouseCommand@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+""
+],
+"006d69b0": [
+"100beda0",
+"symbols",
+"?getCursorName@MouseCommand@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+""
+],
+"006df2e0": [
+"1003edf0",
+"boost",
+"??0?$holder@VContentId@RBX@@@any@boost@@QAE@ABVContentId@RBX@@@Z",
+""
+],
+"006e26d0": [
+"1008ea60",
+"source",
+"",
+"Client/App/util/IndexBox.cpp:25"
+],
+"006e37c0": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"006ef560": [
+"100df600",
+"source",
+"",
+"Client/App/util/Math.cpp:437"
+],
+"006ef580": [
+"100df620",
+"source",
+"",
+"Client/App/util/Math.cpp:443"
+],
+"00718a00": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"00721c10": [
+"10034c40",
+"boost",
+"??1gzip_params@iostreams@boost@@QAE@XZ",
+""
+],
+"00721ca0": [
+"10034cb0",
+"boost",
+"??0gzip_params@iostreams@boost@@QAE@ABU012@@Z",
+""
+],
+"00721d30": [
+"10034d40",
+"boost",
+"?normalize_params@?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@CA?AUgzip_params@23@U423@@Z",
+""
+],
+"00722d80": [
+"10035d70",
+"boost",
+"?open_impl@?$stream_buffer@V?$basic_null_device@DUoutput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@iostreams@boost@@AAEXABV?$basic_null_device@DUoutput@iostreams@boost@@@23@HH@Z",
+""
+],
+"007233d0": [
+"100362e0",
+"boost",
+"?imbue@?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@MAEXABVlocale@std@@@Z",
+""
+],
+"007243f0": [
+"10036850",
+"boost",
+"?sync_impl@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@detail@iostreams@boost@@AAEXXZ",
+""
+],
+"00724f90": [
+"100366d0",
+"boost",
+"?init_get_area@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@detail@iostreams@boost@@EAEXXZ",
+""
+],
+"00725620": [
+"100388f0",
+"boost",
+"?init_get_area@?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@EAEXXZ",
+""
+],
+"007258d0": [
+"10038b00",
+"boost",
+"??$put@V?$non_blocking_adapter@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@iostreams@boost@@@?$write_device_impl@Uoutput@iostreams@boost@@@detail@iostreams@boost@@SA_NAAV?$non_blocking_adapter@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@23@D@Z",
+""
+],
+"00725910": [
+"10038b40",
+"boost",
+"?imbue@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@MAEXABVlocale@std@@@Z",
+""
+],
+"00725ae0": [
+"10038d40",
+"boost",
+"??$write_long@V?$back_insert_device@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@iostreams@boost@@@?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@CAXJAAV?$back_insert_device@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@12@@Z",
+""
+],
+"00726320": [
+"10039630",
+"boost",
+"?imbue@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@MAEXABVlocale@std@@@Z",
+""
+],
+"00726350": [
+"10039660",
+"boost",
+"?init_get_area@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@EAEXXZ",
+""
+],
+"007290c0": [
+"1003be50",
+"boost",
+"?init_get_area@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@EAEXXZ",
+""
+],
+"0072a810": [
+"100378c0",
+"boost",
+"?imbue@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@detail@iostreams@boost@@MAEXABVlocale@std@@@Z",
+""
+],
+"0073a630": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"0077f490": [
+"100d1f50",
+"source",
+"",
+"Client/App/include/v8world/Block.h:104"
+],
+"00787620": [
+"100beda0",
+"symbols",
+"?getCursorName@MouseCommand@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+""
+],
+"007978d0": [
+"100b6af0",
+"lua",
+"lua_exception::lua_exception",
+""
+],
+"007aac50": [
+"1011dea0",
+"source",
+"",
+"Client/App/v8kernel/Connector.cpp:39"
+],
+"007af0f0": [
+"101091f0",
+"source",
+"",
+"Client/App/v8world/Block.cpp:93"
+],
+"007b0d10": [
+"1010a7c0",
+"source",
+"",
+"Client/App/v8world/Ball.cpp:22"
+],
+"007cca60": [
+"100beda0",
+"symbols",
+"?getCursorName@MouseCommand@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+""
+],
+"007d67e0": [
+"10121f80",
+"source",
+"",
+"Client/App/util/Units.cpp:15"
+],
+"007e23b0": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"007e5e90": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"007e6240": [
+"100beda0",
+"symbols",
+"?getCursorName@MouseCommand@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+""
+],
+"007e8f20": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"00877310": [
+"1004f2e0",
+"symbols",
+"?assetFolder@ContentProvider@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+""
+],
+"008c95a0": [
+"100c5060",
+"symbols",
+"?getCursorName@NewNullTool@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+""
+],
+"008f59be": [
+"10030a60",
+"atl",
+"??1CWin32Heap@ATL@@UAE@XZ",
+""
+],
+"008f5abe": [
+"101e5fca",
+"atl",
+"?GetNilString@CAtlStringMgr@ATL@@UAEPAUCStringData@2@XZ",
+""
+]
+},
+"2010-06": {
+"00423c30": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"00426bd0": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"00455c20": [
+"1004f230",
+"source",
+"",
+"Client/App/util/ContentProvider.cpp:27"
+],
+"00468e50": [
+"1007ebc0",
+"boost",
+"?invoke@?$function_obj_invoker0@V?$bind_t@ABIP6AABIPBI@ZV?$list1@V?$value@PBI@_bi@boost@@@_bi@boost@@@_bi@boost@@I@function@detail@boost@@SAIAATfunction_buffer@234@@Z",
+""
+],
+"0047b090": [
+"1001af00",
+"boost",
+"?is_dropped@?$char_separator@DU?$char_traits@D@std@@@boost@@ABE_ND@Z",
+""
+],
+"004a3560": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"004bffe0": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"004e25e0": [
+"101ac210",
+"stl",
+"??$_Fill@PAUWaitItem@IdSerializer@Network@RBX@@U1234@@std@@YAXPAUWaitItem@IdSerializer@Network@RBX@@0ABU1234@@Z",
+""
+],
+"004e6260": [
+"1003edf0",
+"boost",
+"??0?$holder@VContentId@RBX@@@any@boost@@QAE@ABVContentId@RBX@@@Z",
+""
+],
+"0052b570": [
+"10042930",
+"boost",
+"??0bad_lexical_cast@boost@@QAE@ABV01@@Z",
+""
+],
+"0052cf20": [
+"1016c910",
+"stl",
+"??R?$less@VTextureKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@@std@@QBE_NABVTextureKey@?$MeshFactory@VCylinderAlongXMesh@View@RBX@@$00@View@RBX@@0@Z",
+""
+],
+"0054f5d0": [
+"1012e010",
+"g3d",
+"?section@Log@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+""
+],
+"0054f630": [
+"1012e070",
+"g3d",
+"?println@Log@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+""
+],
+"0059f980": [
+"1004f3f0",
+"symbols",
+"?convertToLegacyHash@MD5Hasher@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V34@@Z",
+""
+],
+"005a4230": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005a4f00": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005a5040": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005a5080": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005a50c0": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005a5100": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005a5140": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005a5180": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005a51c0": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005a5200": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005a5240": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005a5280": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005a52c0": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005cc970": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"005eec20": [
+"1004f1c0",
+"source",
+"",
+"Client/App/util/ContentProvider.cpp:20"
+],
+"005eed00": [
+"10084b30",
+"symbols",
+"?isCloseTag@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+""
+],
+"005eed90": [
+"10084bc0",
+"symbols",
+"?endsWithClose@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+""
+],
+"005f5e20": [
+"1003edf0",
+"boost",
+"??0?$holder@VContentId@RBX@@@any@boost@@QAE@ABVContentId@RBX@@@Z",
+""
+],
+"0061fcc0": [
+"10090c50",
+"symbols",
+"?convertToString@?$StringConverter@VColor3@G3D@@@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVColor3@G3D@@@Z",
+""
+],
+"00620ee0": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"00621740": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"00621940": [
+"1007d420",
+"source",
+"",
+"Client/App/util/Sound.cpp:69"
+],
+"00621d10": [
+"1003edf0",
+"boost",
+"??0?$holder@VContentId@RBX@@@any@boost@@QAE@ABVContentId@RBX@@@Z",
+""
+],
+"00628e70": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"00629b90": [
+"10090060",
+"source",
+"",
+"Client/App/util/Utilities.cpp:18"
+],
+"0062b2d0": [
+"1004f2a0",
+"symbols",
+"?isHttpUrl@ContentProvider@RBX@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+""
+],
+"0063eca0": [
+"100f9160",
+"boost",
+"?invoke@?$function_obj_invoker0@V?$bind_t@W4work_result@worker_thread@RBX@@P6A?AW4123@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@ZV?$list2@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_bi@boost@@V?$value@H@23@@_bi@boost@@@_bi@boost@@W4work_result@worker_thread@RBX@@@function@detail@boost@@SA?AW4work_result@worker_thread@RBX@@AATfunction_buffer@234@@Z",
+""
+],
+"00643fa0": [
+"1003edf0",
+"boost",
+"??0?$holder@VContentId@RBX@@@any@boost@@QAE@ABVContentId@RBX@@@Z",
+""
+],
+"006448d0": [
+"1003edf0",
+"boost",
+"??0?$holder@VContentId@RBX@@@any@boost@@QAE@ABVContentId@RBX@@@Z",
+""
+],
+"0064bc40": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"00655540": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"0066c220": [
+"100c9f90",
+"symbols",
+"?getGripPos@Tool@RBX@@QBE?BVVector3@G3D@@XZ",
+""
+],
+"0066cd00": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"0067a940": [
+"100f8b10",
+"symbols",
+"?setUploadUrl@Visit@RBX@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+""
+],
+"0068fee0": [
+"100df600",
+"source",
+"",
+"Client/App/util/Math.cpp:437"
+],
+"0068ff00": [
+"100df620",
+"source",
+"",
+"Client/App/util/Math.cpp:443"
+],
+"0069ffa0": [
+"10034c40",
+"boost",
+"??1gzip_params@iostreams@boost@@QAE@XZ",
+""
+],
+"006a0030": [
+"10034cb0",
+"boost",
+"??0gzip_params@iostreams@boost@@QAE@ABU012@@Z",
+""
+],
+"006a00c0": [
+"10034d40",
+"boost",
+"?normalize_params@?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@CA?AUgzip_params@23@U423@@Z",
+""
+],
+"006a16c0": [
+"100362e0",
+"boost",
+"?imbue@?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@MAEXABVlocale@std@@@Z",
+""
+],
+"006a2730": [
+"100378c0",
+"boost",
+"?imbue@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@detail@iostreams@boost@@MAEXABVlocale@std@@@Z",
+""
+],
+"006a29f0": [
+"10036850",
+"boost",
+"?sync_impl@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@detail@iostreams@boost@@AAEXXZ",
+""
+],
+"006a34c0": [
+"100366d0",
+"boost",
+"?init_get_area@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@detail@iostreams@boost@@EAEXXZ",
+""
+],
+"006a3da0": [
+"10038b00",
+"boost",
+"??$put@V?$non_blocking_adapter@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@iostreams@boost@@@?$write_device_impl@Uoutput@iostreams@boost@@@detail@iostreams@boost@@SA_NAAV?$non_blocking_adapter@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@23@D@Z",
+""
+],
+"006a3de0": [
+"10038b40",
+"boost",
+"?imbue@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@MAEXABVlocale@std@@@Z",
+""
+],
+"006a3fe0": [
+"10038d40",
+"boost",
+"??$write_long@V?$back_insert_device@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@iostreams@boost@@@?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@CAXJAAV?$back_insert_device@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@12@@Z",
+""
+],
+"006a4800": [
+"10039630",
+"boost",
+"?imbue@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@MAEXABVlocale@std@@@Z",
+""
+],
+"006a4830": [
+"10039660",
+"boost",
+"?init_get_area@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@EAEXXZ",
+""
+],
+"006a7540": [
+"1003be50",
+"boost",
+"?init_get_area@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@EAEXXZ",
+""
+],
+"006b98c0": [
+"100ff530",
+"symbols",
+"?convertToString@?$StringConverter@VContentId@RBX@@@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVContentId@2@@Z",
+""
+],
+"006b98e0": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"006b9d00": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"006f3df0": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"006f3ee0": [
+"10127930",
+"stl",
+"?_Dec@const_iterator@?$_Tree@V?$_Tset_traits@DU?$less@D@std@@V?$allocator@D@2@$0A@@std@@@std@@QAEXXZ",
+""
+],
+"00709e60": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"0074b550": [
+"1011dea0",
+"source",
+"",
+"Client/App/v8kernel/Connector.cpp:39"
+],
+"00783a30": [
+"10121f80",
+"source",
+"",
+"Client/App/util/Units.cpp:15"
+],
+"00795a70": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"007996e0": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"0079d180": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"008a9c1e": [
+"101e5fca",
+"atl",
+"?GetNilString@CAtlStringMgr@ATL@@UAEPAUCStringData@2@XZ",
+""
+],
+"0097b0b0": [
+"1008ea60",
+"source",
+"",
+"Client/App/util/IndexBox.cpp:25"
+]
+},
+"2011-06": {
+"00418c20": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"0042c4d0": [
+"100f9160",
+"boost",
+"?invoke@?$function_obj_invoker0@V?$bind_t@W4work_result@worker_thread@RBX@@P6A?AW4123@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@ZV?$list2@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_bi@boost@@V?$value@H@23@@_bi@boost@@@_bi@boost@@W4work_result@worker_thread@RBX@@@function@detail@boost@@SA?AW4work_result@worker_thread@RBX@@AATfunction_buffer@234@@Z",
+""
+],
+"0042cd90": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"0043c5b0": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"00457f50": [
+"1007ebc0",
+"boost",
+"?invoke@?$function_obj_invoker0@V?$bind_t@ABIP6AABIPBI@ZV?$list1@V?$value@PBI@_bi@boost@@@_bi@boost@@@_bi@boost@@I@function@detail@boost@@SAIAATfunction_buffer@234@@Z",
+""
+],
+"0045a3c0": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"0046f050": [
+"1004f230",
+"source",
+"",
+"Client/App/util/ContentProvider.cpp:27"
+],
+"0049a400": [
+"1001af00",
+"boost",
+"?is_dropped@?$char_separator@DU?$char_traits@D@std@@@boost@@ABE_ND@Z",
+""
+],
+"004a3a20": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"004a3aa0": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"004c7270": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"004f13b0": [
+"101ac210",
+"stl",
+"??$_Fill@PAUWaitItem@IdSerializer@Network@RBX@@U1234@@std@@YAXPAUWaitItem@IdSerializer@Network@RBX@@0ABU1234@@Z",
+""
+],
+"004f4d60": [
+"1003edf0",
+"boost",
+"??0?$holder@VContentId@RBX@@@any@boost@@QAE@ABVContentId@RBX@@@Z",
+""
+],
+"0053b640": [
+"1012e010",
+"g3d",
+"?section@Log@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+""
+],
+"0053e960": [
+"10034c40",
+"boost",
+"??1gzip_params@iostreams@boost@@QAE@XZ",
+""
+],
+"00594170": [
+"1006c450",
+"boost",
+"?invoke@?$function_obj_invoker0@V?$bind_t@NP6ANPAVCodeProfiler@Profiling@RBX@@@ZV?$list1@V?$value@PAVCodeProfiler@Profiling@RBX@@@_bi@boost@@@_bi@boost@@@_bi@boost@@N@function@detail@boost@@SANAATfunction_buffer@234@@Z",
+""
+],
+"0059e2d0": [
+"100ff530",
+"symbols",
+"?convertToString@?$StringConverter@VContentId@RBX@@@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVContentId@2@@Z",
+""
+],
+"0059e570": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"0059e760": [
+"1007d420",
+"source",
+"",
+"Client/App/util/Sound.cpp:69"
+],
+"0059eec0": [
+"1003edf0",
+"boost",
+"??0?$holder@VContentId@RBX@@@any@boost@@QAE@ABVContentId@RBX@@@Z",
+""
+],
+"005b8b40": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005b9990": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005b9ad0": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005b9b10": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005b9b50": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005b9b90": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005b9bd0": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005b9c10": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005b9c50": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005b9c90": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005b9cd0": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005b9d10": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005b9d50": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005b9d90": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005e7140": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005e7180": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005e71c0": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005e7200": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"005e73f0": [
+"10042930",
+"boost",
+"??0bad_lexical_cast@boost@@QAE@ABV01@@Z",
+""
+],
+"005e7420": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"005e7760": [
+"10042930",
+"boost",
+"??0bad_lexical_cast@boost@@QAE@ABV01@@Z",
+""
+],
+"005e7900": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"005e7ce0": [
+"10042930",
+"boost",
+"??0bad_lexical_cast@boost@@QAE@ABV01@@Z",
+""
+],
+"00612070": [
+"1004f1c0",
+"source",
+"",
+"Client/App/util/ContentProvider.cpp:20"
+],
+"00618a70": [
+"10042930",
+"boost",
+"??0bad_lexical_cast@boost@@QAE@ABV01@@Z",
+""
+],
+"0062d930": [
+"1003edf0",
+"boost",
+"??0?$holder@VContentId@RBX@@@any@boost@@QAE@ABVContentId@RBX@@@Z",
+""
+],
+"00650020": [
+"10090060",
+"source",
+"",
+"Client/App/util/Utilities.cpp:18"
+],
+"006500f0": [
+"100900f0",
+"source",
+"",
+"Client/App/util/Utilities.cpp:26"
+],
+"00650230": [
+"100900f0",
+"source",
+"",
+"Client/App/util/Utilities.cpp:26"
+],
+"006510d0": [
+"10090c50",
+"symbols",
+"?convertToString@?$StringConverter@VColor3@G3D@@@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVColor3@G3D@@@Z",
+""
+],
+"006523e0": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"00652670": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"00653e50": [
+"1004f2a0",
+"symbols",
+"?isHttpUrl@ContentProvider@RBX@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+""
+],
+"00666e40": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"00677e70": [
+"1003edf0",
+"boost",
+"??0?$holder@VContentId@RBX@@@any@boost@@QAE@ABVContentId@RBX@@@Z",
+""
+],
+"00678810": [
+"1003edf0",
+"boost",
+"??0?$holder@VContentId@RBX@@@any@boost@@QAE@ABVContentId@RBX@@@Z",
+""
+],
+"0067e760": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"006a6470": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"006a64b0": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"006cdd10": [
+"100df600",
+"source",
+"",
+"Client/App/util/Math.cpp:437"
+],
+"006cdd30": [
+"100df620",
+"source",
+"",
+"Client/App/util/Math.cpp:443"
+],
+"006d7d10": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"006da1b0": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"006e0b80": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"006e1040": [
+"10034cb0",
+"boost",
+"??0gzip_params@iostreams@boost@@QAE@ABU012@@Z",
+""
+],
+"006e10d0": [
+"10034d40",
+"boost",
+"?normalize_params@?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@CA?AUgzip_params@23@U423@@Z",
+""
+],
+"006e2350": [
+"100362e0",
+"boost",
+"?imbue@?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@MAEXABVlocale@std@@@Z",
+""
+],
+"006e34f0": [
+"100378c0",
+"boost",
+"?imbue@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@detail@iostreams@boost@@MAEXABVlocale@std@@@Z",
+""
+],
+"006e36c0": [
+"10036850",
+"boost",
+"?sync_impl@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@detail@iostreams@boost@@AAEXXZ",
+""
+],
+"006e4270": [
+"100366d0",
+"boost",
+"?init_get_area@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@detail@iostreams@boost@@EAEXXZ",
+""
+],
+"006e4bd0": [
+"10038b00",
+"boost",
+"??$put@V?$non_blocking_adapter@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@iostreams@boost@@@?$write_device_impl@Uoutput@iostreams@boost@@@detail@iostreams@boost@@SA_NAAV?$non_blocking_adapter@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@23@D@Z",
+""
+],
+"006e4c10": [
+"10038b40",
+"boost",
+"?imbue@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@MAEXABVlocale@std@@@Z",
+""
+],
+"006e4d90": [
+"10038d40",
+"boost",
+"??$write_long@V?$back_insert_device@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@iostreams@boost@@@?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@CAXJAAV?$back_insert_device@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@12@@Z",
+""
+],
+"006e55d0": [
+"10039630",
+"boost",
+"?imbue@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@MAEXABVlocale@std@@@Z",
+""
+],
+"006e5600": [
+"10039660",
+"boost",
+"?init_get_area@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@EAEXXZ",
+""
+],
+"006e80b0": [
+"1003be50",
+"boost",
+"?init_get_area@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@EAEXXZ",
+""
+],
+"006ee570": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"006ee960": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"007369d0": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"00736a10": [
+"1003eb30",
+"boost",
+"??$any_cast@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@YAPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVany@0@@Z",
+""
+],
+"007714e0": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"00771530": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"007737e0": [
+"100857c0",
+"stl",
+"?_Lbound@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z",
+""
+],
+"0079b3d0": [
+"1011dea0",
+"source",
+"",
+"Client/App/v8kernel/Connector.cpp:39"
+],
+"007eb510": [
+"10121f80",
+"source",
+"",
+"Client/App/util/Units.cpp:15"
+],
+"007f9350": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"007f9770": [
+"10032db0",
+"boost",
+"?invoke@?$void_function_obj_invoker0@V?$bind_t@XP6AXABV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZV?$list2@V?$value@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@2@@_bi@boost@@X@function@detail@boost@@SAXAATfunction_buffer@234@@Z",
+""
+],
+"007fb850": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"007feee0": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"00903848": [
+"101e5fca",
+"atl",
+"?GetNilString@CAtlStringMgr@ATL@@UAEPAUCStringData@2@XZ",
+""
+],
+"009ca7a0": [
+"1008ea60",
+"source",
+"",
+"Client/App/util/IndexBox.cpp:25"
+]
+},
+"2012-06": {
+"0040ab70": [
+"100857c0",
+"stl",
+"?_Lbound@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@std@@IBEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@$0A@@std@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z",
+""
+],
+"0041c1a0": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"00431600": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"00448120": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"0044f220": [
+"100382f0",
+"boost",
+"??$wrap@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@@detail@iostreams@boost@@YA?AV?$basic_gzip_compressor@V?$allocator@D@std@@@12@ABV312@PAX@Z",
+""
+],
+"0046bc90": [
+"1007ebc0",
+"boost",
+"?invoke@?$function_obj_invoker0@V?$bind_t@ABIP6AABIPBI@ZV?$list1@V?$value@PBI@_bi@boost@@@_bi@boost@@@_bi@boost@@I@function@detail@boost@@SAIAATfunction_buffer@234@@Z",
+""
+],
+"0046db50": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"00479fa0": [
+"1004f230",
+"source",
+"",
+"Client/App/util/ContentProvider.cpp:27"
+],
+"004af600": [
+"1001af00",
+"boost",
+"?is_dropped@?$char_separator@DU?$char_traits@D@std@@@boost@@ABE_ND@Z",
+""
+],
+"00509d50": [
+"1004f1c0",
+"source",
+"",
+"Client/App/util/ContentProvider.cpp:20"
+],
+"005586d0": [
+"100beda0",
+"symbols",
+"?getCursorName@MouseCommand@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+""
+],
+"0056d600": [
+"101ac210",
+"stl",
+"??$_Fill@PAUWaitItem@IdSerializer@Network@RBX@@U1234@@std@@YAXPAUWaitItem@IdSerializer@Network@RBX@@0ABU1234@@Z",
+""
+],
+"006275b0": [
+"1012e010",
+"g3d",
+"?section@Log@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+""
+],
+"00680c30": [
+"1006c450",
+"boost",
+"?invoke@?$function_obj_invoker0@V?$bind_t@NP6ANPAVCodeProfiler@Profiling@RBX@@@ZV?$list1@V?$value@PAVCodeProfiler@Profiling@RBX@@@_bi@boost@@@_bi@boost@@@_bi@boost@@N@function@detail@boost@@SANAATfunction_buffer@234@@Z",
+""
+],
+"00692670": [
+"100ff530",
+"symbols",
+"?convertToString@?$StringConverter@VContentId@RBX@@@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVContentId@2@@Z",
+""
+],
+"00692a40": [
+"1007d420",
+"source",
+"",
+"Client/App/util/Sound.cpp:69"
+],
+"006ab850": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"006d08d0": [
+"10042930",
+"boost",
+"??0bad_lexical_cast@boost@@QAE@ABV01@@Z",
+""
+],
+"006d0900": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"006d0d00": [
+"10042930",
+"boost",
+"??0bad_lexical_cast@boost@@QAE@ABV01@@Z",
+""
+],
+"006d0ea0": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"006d1ae0": [
+"10042930",
+"boost",
+"??0bad_lexical_cast@boost@@QAE@ABV01@@Z",
+""
+],
+"00743dd0": [
+"10090060",
+"source",
+"",
+"Client/App/util/Utilities.cpp:18"
+],
+"00743ea0": [
+"100900f0",
+"source",
+"",
+"Client/App/util/Utilities.cpp:26"
+],
+"00744310": [
+"10042930",
+"boost",
+"??0bad_lexical_cast@boost@@QAE@ABV01@@Z",
+""
+],
+"007457d0": [
+"10090c50",
+"symbols",
+"?convertToString@?$StringConverter@VColor3@G3D@@@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVColor3@G3D@@@Z",
+""
+],
+"00748d50": [
+"1004f2a0",
+"symbols",
+"?isHttpUrl@ContentProvider@RBX@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+""
+],
+"0078cd90": [
+"100f9160",
+"boost",
+"?invoke@?$function_obj_invoker0@V?$bind_t@W4work_result@worker_thread@RBX@@P6A?AW4123@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@ZV?$list2@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_bi@boost@@V?$value@H@23@@_bi@boost@@@_bi@boost@@W4work_result@worker_thread@RBX@@@function@detail@boost@@SA?AW4work_result@worker_thread@RBX@@AATfunction_buffer@234@@Z",
+""
+],
+"007aa570": [
+"100a0760",
+"symbols",
+"?getWalkDirection@Humanoid@RBX@@QBE?AVVector3@G3D@@XZ",
+""
+],
+"007bd440": [
+"100df600",
+"source",
+"",
+"Client/App/util/Math.cpp:437"
+],
+"007bd460": [
+"100df620",
+"source",
+"",
+"Client/App/util/Math.cpp:443"
+],
+"008419e0": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"00841a30": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"0084ed10": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"0084edc0": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"00859130": [
+"10034c40",
+"boost",
+"??1gzip_params@iostreams@boost@@QAE@XZ",
+""
+],
+"008591a0": [
+"10034cb0",
+"boost",
+"??0gzip_params@iostreams@boost@@QAE@ABU012@@Z",
+""
+],
+"00859230": [
+"10034d40",
+"boost",
+"?normalize_params@?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@CA?AUgzip_params@23@U423@@Z",
+""
+],
+"0085a8b0": [
+"100362e0",
+"boost",
+"?imbue@?$indirect_streambuf@V?$basic_null_device@DUinput@iostreams@boost@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@MAEXABVlocale@std@@@Z",
+""
+],
+"0085b510": [
+"100378c0",
+"boost",
+"?imbue@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@detail@iostreams@boost@@MAEXABVlocale@std@@@Z",
+""
+],
+"0085ba10": [
+"10036850",
+"boost",
+"?sync_impl@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@detail@iostreams@boost@@AAEXXZ",
+""
+],
+"0085c460": [
+"100366d0",
+"boost",
+"?init_get_area@?$indirect_streambuf@UString_sink@@U?$char_traits@D@std@@V?$allocator@D@3@Uoutput@iostreams@boost@@@detail@iostreams@boost@@EAEXXZ",
+""
+],
+"0085cd80": [
+"10038b00",
+"boost",
+"??$put@V?$non_blocking_adapter@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@iostreams@boost@@@?$write_device_impl@Uoutput@iostreams@boost@@@detail@iostreams@boost@@SA_NAAV?$non_blocking_adapter@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@23@D@Z",
+""
+],
+"0085cdc0": [
+"10038b40",
+"boost",
+"?imbue@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@MAEXABVlocale@std@@@Z",
+""
+],
+"0085cf40": [
+"10038d40",
+"boost",
+"??$write_long@V?$back_insert_device@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@iostreams@boost@@@?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@CAXJAAV?$back_insert_device@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@12@@Z",
+""
+],
+"0085d800": [
+"10039630",
+"boost",
+"?imbue@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@MAEXABVlocale@std@@@Z",
+""
+],
+"0085d830": [
+"10039660",
+"boost",
+"?init_get_area@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@EAEXXZ",
+""
+],
+"008602e0": [
+"1003be50",
+"boost",
+"?init_get_area@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@EAEXXZ",
+""
+],
+"008ff910": [
+"1011dea0",
+"source",
+"",
+"Client/App/v8kernel/Connector.cpp:39"
+],
+"009554b0": [
+"10121f80",
+"source",
+"",
+"Client/App/util/Units.cpp:15"
+],
+"009731f0": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"009736b0": [
+"10032db0",
+"boost",
+"?invoke@?$void_function_obj_invoker0@V?$bind_t@XP6AXABV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZV?$list2@V?$value@V?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@@_bi@boost@@V?$value@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@23@@_bi@2@@_bi@boost@@X@function@detail@boost@@SAXAATfunction_buffer@234@@Z",
+""
+],
+"00975800": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"009794e0": [
+"1000c2b0",
+"boost",
+"?get_deleter@?$sp_counted_impl_pd@PAVLighting@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+""
+],
+"00a7be04": [
+"101e5fca",
+"atl",
+"?GetNilString@CAtlStringMgr@ATL@@UAEPAUCStringData@2@XZ",
+""
+]
+}
+}

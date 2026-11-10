@@ -1,0 +1,313 @@
+# Native source recovery with automatic draft sharing
+
+Optional mobile donor reference: `docs/GHIDRA_REFERENCE.md` gives indexed symbol/source provenance and verified offline-kit setup. Consult for 2012 before guessing identities/behavior; for 2008 query the current authorized swap blocker. `docs/MOBILE_REFERENCE_PILOT.md` records Name-family anchors and version differences. Donor evidence does not replace target layout/call/ABI/provider/runtime proof. Missing optional inputs never change the task or block recovery.
+
+Contributor priority: recover substantial native class bodies and authentic
+associated headers in class/family batches. Follow the contributor class/header
+batch policy in `docs/NATIVE_SWAP_BATCH.md`: keep a short authorized target list,
+hand off exhausted or owner-blocked proof work, and continue another unleased
+family. Audit receipts document work; they are not the main deliverable. Preserve
+partial source and all proof/runtime boundaries; do not pad class/file counts.
+
+Current workflow: 52. Use `docs/NATIVE_WORKER_HISTORY.md` only as history.
+Native authority: **RoConstruct, branch `work`, subtree `workspace/`**. Local paths
+below that subtree retain their normal repository-relative names.
+
+## Task and priorities
+
+Advance one authorized runnable class swap and its real dependencies. Recover
+real native C++ under `rebuild/2008-06/native-classes`, `native-headers` and
+`native-world`. Mining requires a separate explicit assignment: do not run
+`roc auto`, `roc xcopy`, `roc immediates`, `roc similar` or `roc submit` in this loop.
+Mined source is untrusted reference material, not layout or integration authority.
+
+Open each batch with:
+
+**swap target → current concrete blocker → required source/provider → next proof**
+
+Read current `AGENTS.md`, `CLAUDE.md` and `docs/NATIVE_SWAP_BATCH.md`. Use:
+
+- Owner checkout queue: `work/native-draft-integration-state.json`, especially
+  `next_runnable_target` and `last_owner_engineering_pass`. This is owner-local
+  state and is **not currently shipped in the Worker**; there is no contributor
+  queue endpoint. If absent, use the owner's assignment and relevant published
+  receipts under `work/2008-06/shared-layouts/`; report missing priorities rather
+  than inventing a queue or choosing unrelated easy matches.
+- Dependency graph: local `work/2008-06/graph.json`, or the packaged snapshot under
+  `docs/graph-data/2008-06/`. After missing-input setup, inspect focused evidence
+  with `roc graph 2008-06 --focus ADDRESS --depth 1 --json`; refresh only when
+  needed with `roc graph build 2008-06`. Graph hints are not ABI/layout proof.
+- Research: `research/log.jsonl`, `research/lessons.json` and existing trials in
+  `work/2008-06/shared-layouts/`. `roc research note TITLE TEXT` records a dated
+  finding. Keep task-owned campaign/receipts in the existing shared-layouts
+  directory; do not upload another worker's edits to a shared log as your own.
+
+Record the package marker's `revision` and `workspace-manifest.json`'s
+`source_revision` in the task receipt. These identify packaged source content,
+not a Git commit or proof of current queue freshness. Compare relevant paths,
+receipt hashes and owner priorities before porting newer work. Use a verified
+Git SHA for `baseline_commit` only when known; otherwise record unknown. Report
+inactive candidates, selected matches, gated swaps, draft receipts and independent
+server credit separately. Unknown proof/progress stays unknown.
+
+## Reuse a compatible workspace
+
+Use the current authorized workspace and nearby package markers. Preserve every
+edit, installed input, session and outbox. Never reset, stash, force-update,
+create a worktree automatically, or extract over existing work. Default client:
+2008-06; another requested client must be supported by the actual package.
+
+Compatibility uses `roconstruct-package.json` authority
+`RoConstruct/work/workspace`, native workflow version at least 52, the required
+files below, and real CLI capabilities. After Python dependencies are available,
+check `python -m roc.native_drafts --help` for init/start/checkpoint/flush/status/stop,
+`python -m roc.native_drafts stop --help` for `--wait`, and
+`python rebuild/2008-06/tests/native_check_runner.py --help` for `--require-proof`.
+Exact documentation headings are diagnostics only: renaming a heading does not
+require another download. An import error means inspect missing runtime inputs;
+do not repeatedly download the same package to fix a missing Python dependency.
+
+A newer source revision is not automatically an incompatible workflow. Keep
+valid evidence and installed inputs; update source when relevant queue/dependency
+changes require it. An ordinary origin checkout is not the native authority.
+Never fetch a retired feature branch as a native baseline.
+
+## Verified fresh Worker bootstrap
+
+Do not ask the user to find a ZIP. Use these actual published resources:
+
+- Manifest: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/data/native-worker.json
+- Package: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/data/native-worker.zip
+- Guide: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/data/NATIVE_AGENT.md
+
+For an update, checkpoint/flush the old session first as described below. This
+Windows bootstrap reuses a verified cache or downloads once, checks SHA-256 and
+extracts into a fresh folder in the current authorized workspace:
+
+```powershell
+$ErrorActionPreference = 'Stop'
+$ProgressPreference = 'SilentlyContinue'
+$nativeManifest = Invoke-RestMethod ('https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/data/native-worker.json?t=' + [guid]::NewGuid().ToString('N'))
+if ($nativeManifest.authority -ne 'RoConstruct/work/workspace' -or
+    $nativeManifest.workflow_version -lt 52 -or
+    $nativeManifest.draft_workflow_version -lt 1 -or
+    $nativeManifest.native_clients -notcontains '2008-06' -or
+    $nativeManifest.url -ne 'https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/data/native-worker.zip' -or
+    $nativeManifest.sha256 -notmatch '^[0-9a-fA-F]{64}$') { throw 'Invalid Worker manifest' }
+$nativeWorkspace = (Get-Location).Path
+$nativeSearch = @($nativeWorkspace, (Split-Path -Parent $nativeWorkspace), (Join-Path $env:USERPROFILE 'Downloads'))
+$nativeSearch += @(Get-ChildItem -LiteralPath $nativeWorkspace -Directory -Filter 'RoConstruct*' | Select-Object -ExpandProperty FullName)
+$nativeSearch += @(Get-ChildItem -LiteralPath (Split-Path -Parent $nativeWorkspace) -Directory -Filter 'RoConstruct*' | Select-Object -ExpandProperty FullName)
+$nativeCached = $null
+foreach ($nativeBase in ($nativeSearch | Select-Object -Unique)) {
+    foreach ($nativeCache in @($nativeBase, (Join-Path $nativeBase 'local/packages'), (Join-Path $nativeBase 'local/findings/data'))) {
+        if (-not (Test-Path -LiteralPath $nativeCache -PathType Container)) { continue }
+        foreach ($nativeZip in (Get-ChildItem -LiteralPath $nativeCache -File -Filter '*.zip')) {
+            if ((Get-FileHash -LiteralPath $nativeZip.FullName -Algorithm SHA256).Hash -eq $nativeManifest.sha256) {
+                $nativeCached = $nativeZip.FullName
+                break
+            }
+        }
+        if ($nativeCached) { break }
+    }
+    if ($nativeCached) { break }
+}
+$nativeFolder = Join-Path $nativeWorkspace ('RoConstruct-Native-' + [guid]::NewGuid().ToString('N'))
+New-Item -ItemType Directory -Path $nativeFolder -ErrorAction Stop | Out-Null
+$nativeArchive = Join-Path $nativeFolder 'worker.zip'
+if ($nativeCached) {
+    Copy-Item -LiteralPath $nativeCached -Destination $nativeArchive
+    Write-Output ('Reusing verified Worker ZIP: ' + $nativeCached)
+} else {
+    Invoke-WebRequest -UseBasicParsing -Uri ($nativeManifest.url + '?sha256=' + $nativeManifest.sha256) -OutFile $nativeArchive
+}
+if ((Get-FileHash -LiteralPath $nativeArchive -Algorithm SHA256).Hash -ne $nativeManifest.sha256) {
+    throw 'Worker ZIP hash mismatch'
+}
+Expand-Archive -LiteralPath $nativeArchive -DestinationPath $nativeFolder
+Set-Location -LiteralPath $nativeFolder
+$env:ROC_NONINTERACTIVE = '1'
+Write-Output ('Native checkout: ' + $nativeFolder)
+$nativeMarker = Get-Content -LiteralPath 'roconstruct-package.json' -Raw | ConvertFrom-Json
+$nativeInventory = Get-Content -LiteralPath 'workspace-manifest.json' -Raw | ConvertFrom-Json
+if ($nativeMarker.authority -ne 'RoConstruct/work/workspace' -or
+    $nativeMarker.native_workflow_version -lt 52 -or
+    $nativeMarker.draft_workflow_version -lt 1 -or
+    $nativeInventory.authority -ne $nativeMarker.authority -or
+    $nativeMarker.revision -ne $nativeManifest.source_revision -or
+    $nativeInventory.source_revision -ne $nativeMarker.revision) { throw 'Extracted Worker metadata mismatch' }
+foreach ($nativeRequired in @('roc/native_drafts.py', 'research/native-units.json', 'research/native-source-lock.json', 'rebuild/2008-06/tests/native_check_runner.py')) {
+    if (-not (Test-Path -LiteralPath $nativeRequired -PathType Leaf)) { throw ('Missing Worker capability file: ' + $nativeRequired) }
+}
+Write-Output ('Package/source revision: ' + $nativeMarker.revision)
+
+```
+
+Capture the printed absolute checkout path and pass it as the working directory
+for every later call. `Set-Location` and environment variables do not persist
+across separate tool calls. On Linux use the same metadata/cache/hash checks and
+fresh-folder extraction. Read the extracted `AGENTS.md` and `CLAUDE.md`; verify the
+CLI capabilities above after resolving missing Python dependencies, before editing.
+On failure retain both workspaces/outboxes and report the exact URL, revision and
+error; do not repeat an identical failed download indefinitely.
+
+## Install only missing inputs
+
+Reuse verified Python 3.12, historical MSVC/SDK, original clients and vendor caches.
+Use `.\roc.cmd` on Windows, `./roc.sh` on Linux; `install.cmd` selects Python if
+missing. Keep `ROC_NONINTERACTIVE=1` in each setup call. Do not run `roc update`
+on a packaged workspace. Native routing overrides mining-only setup/priorities;
+shared preservation and verification rules still apply.
+
+Only when needed, run these existing prerequisites sequentially, stopping on an
+actual failure; these are not commands to repeat per function:
+
+```text
+roc doctor
+roc install --yes --client 2008-06
+roc client-fetch 2008-06
+roc analyze 2008-06
+roc vtables 2008-06
+roc rebuild 2008-06 install
+roc pull 2008-06
+roc lib-fetch rbxgs rbxgs-net rbxgs-appdraw rbxgs-render rbxgs-view openrbx-client
+roc libs-bundle fetch mfc-9.0-rtm
+```
+
+Use `client-fetch --from VERIFIED_EXISTING_EXE` when available. Skip analysis if
+current indexes already cover the verified original. Load persisted input-reuse
+environment before later compiler calls. `roc pull` supplies mined references,
+not a native source update. Do not run full linked builds or P5/P6 merely to save
+a draft, or reinstall everything because an optional probe is missing.
+
+## Scope and initialize before editing
+
+Use actual contributor/model identity; ask only for missing identity. Take real
+file leases (`roc lease ls/take/renew/release`); shared headers have one owner.
+A new lease does not establish authorship of pre-existing changes. Inspect dirty
+files and their provenance first. For mixed ownership, preserve the original and
+prepare a task-owned proposal under existing `work/native-candidates/` paths.
+Never watch the whole checkout or capture unrelated dirty edits.
+
+Name explicit task-owned source/header/probe/receipt files or directories;
+directory scopes include future files. Initialize against untouched packaged
+files **before** editing or porting changes. New packaged sessions reject watched
+files already differing from their package inventory rather than absorbing edits.
+Existing Git edits retain the implementation's HEAD-based provenance, but that
+does not make all those edits yours. Keep the original when ownership is mixed.
+
+Use the manifest's `draft_server` (normally the URL below), never another user's
+credentials. Initialization is local; the watcher obtains upload-only credentials.
+No fork, branch, Git commit, PR, passing compile, live lease or integration approval
+is required to upload incomplete/broken native drafts. Private configs and compiled
+binaries are excluded; deletions remain review proposals only.
+
+```text
+python -m roc.native_drafts init --user YOUR_NAME --model YOUR_ACTUAL_MODEL --server https://colinpc.tail2879d0.ts.net/native-drafts --paths rebuild/2008-06/native-classes/YOUR_CLASS.cpp rebuild/2008-06/tests/YOUR_PROBE.py work/2008-06/shared-layouts/YOUR_RECEIPT.json
+python -m roc.native_drafts start SESSION
+python -m roc.native_drafts status SESSION
+```
+
+Retain the returned SESSION. The baseline is immutable. Restoring a previously
+checkpointed file to baseline is also a saved change: its packet references the
+previous candidate as the per-path base, with the parent retaining provenance.
+
+## Updating an existing Worker without losing drafts
+
+1. In the old folder, checkpoint, flush and check status. Verify a durable receipt
+   for the latest saved snapshot when transport is available. Retain the folder,
+   immutable checkpoints and outbox, including anything unsent; report failures.
+2. Verify/extract the new package into a fresh folder as above; retain installed
+   inputs. Do not overwrite or reset the old workspace.
+3. In the new folder, initialize and start a new scoped draft session against the
+   **untouched** packaged files. Expand scopes through another fresh session before
+   editing newly included files, after checkpointing/flushing the prior session.
+4. Port only task-owned changes using old base / current packaged source / candidate
+   comparison. Porting is editing; never initialize after it and absorb the work.
+   Preserve better implementations and use inactive proposals for mixed ownership.
+5. Checkpoint/flush the new session and verify its latest durable receipt covers
+   the ported snapshot. End the old watcher cooperatively once its work is safe;
+   keep its folder/outbox for any remaining retries.
+
+## Milestones and final shutdown
+
+The watcher checkpoints roughly every five minutes. Use the same session and
+retained outbox for retries. An upload receipt proves durable storage only.
+
+Ordinary milestone: save files, then run:
+
+```text
+python -m roc.native_drafts checkpoint SESSION
+python -m roc.native_drafts flush SESSION
+python -m roc.native_drafts status SESSION
+```
+
+Keep the watcher running. Inspect health/error/heartbeat, `pending`,
+`snapshot_current`, `latest_packet` and `latest_receipt`. `queued` counts retained
+outbox packets, including acknowledged ones. Delivery requires `snapshot_current`
+true and a matching `latest_receipt.id` / `latest_packet` with `durable: true`.
+A later edit invalidates that content-coverage claim until checkpointed again.
+
+Session end: save the last edit, then run:
+
+```text
+python -m roc.native_drafts stop SESSION --wait --timeout 60
+python -m roc.native_drafts flush SESSION
+python -m roc.native_drafts status SESSION
+```
+
+`--wait` cooperatively requests stop, waits for the watch lock and completes the
+final checkpoint/flush, including recovery when the watcher is dead. Verify the
+latest packet's receipt **after** final cleanup, not a pre-stop receipt. Timeout
+or transport failure is a blocker: retain the same session/outbox, retry stop/flush
+and check status; do not kill the watcher or claim delivery. If the session never
+had changes, no draft receipt is expected. Split tasks over the 16 MiB bundle limit
+without discarding originals. No new edits in an ended session until resumed.
+
+## Recovery and contributor handoff
+
+Follow `docs/NATIVE_SWAP_BATCH.md`. Read original assembly with `roc native-asm`
+and focused evidence with `roc source 2008-06 ADDRESS --json`. Keep genuine native
+classes/lifetimes; no invented fields, padding, raw-offset views, stubs, assembly
+patches or weakened checks. Work on required dependencies, not unrelated exacts.
+
+Compile once per distinct candidate and build configuration. Reuse that exact
+object for applicable byte, data and call-binding checks. Recompile whenever
+source, included headers, compiler, flags or other relevant build inputs change.
+`native_check_runner.py run BATCH.json` isolates outputs;
+`analyze RUN --manifest CHECKS.json --require-proof` reuses objects and checks
+freshness without compiling. Recorded flag overrides survive shell exit; an
+explicit new override selects a different configuration. Preserve historical
+receipts lacking build fingerprints, but do not call them fresh proofs.
+
+Byte equality, referenced data, direct calls, indirect-call proofs, ABI/layout,
+linked selection and runtime gates are separate obligations. Retain a verified
+body while its inputs/evidence remain valid; advance its next obligation and
+revisit only when relevant evidence invalidates the result.
+
+After three substantive hypotheses fail to reduce a blocker using the same
+evidence, park it and continue an independent authorized blocker. Syntax
+corrections and multiple checks of one object are not separate hypotheses.
+Revisit parked work when relevant evidence or inputs change.
+
+When available source/dependency/ABI proofs are complete, checkpoint/upload the
+candidate and list owner-only selection/runtime gates explicitly. That completes
+the contributor handoff, not an integrated swap. Continue another authorized
+unleased blocker while owner gates await review. Draft upload never waits for
+successful compilation or approval.
+
+Repeat the authorized loop persistently: read current state/leases → choose a
+required blocker → test evidence-backed hypotheses → save proofs and drafts →
+advance the next obligation → repeat. A parked blocker, match, upload or handoff
+does not stop all useful work. Do not poll/spin or recompile unchanged candidates.
+Near a platform/context limit, save the queue, next action, hashes and evidence,
+then flush drafts **before** the limit prevents cleanup. For a global block, end
+cooperatively, retain resumable state/outbox, release leases and report the cause.
+
+The owner reviews untrusted packets/code before execution and integrates reviewed
+paths into `work/workspace`; executable selection and integration promotion stay
+with the owner. Original-MSVC, dependency, ABI, no-loss and relevant P5/P6/runtime
+gates still apply. Only independent server verification grants server credit.
+Optional `python -m roc.native_drafts notes` / `note SESSION --scope CLASS --text TEXT`
+is sparse advisory handoff context; never per function/minute and never ownership.
+Clear notes with `--clear` when done. Prefer leases and silence.

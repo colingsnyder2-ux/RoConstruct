@@ -1,0 +1,20 @@
+{
+  "revision": "8b27441d913da6320fed67b4d9c32a47b4fcf5e5",
+  "compiler": 21022,
+  "compile_exit": 0,
+  "sizes": {
+    "Guid": 8,
+    "GuidItem_Instance": 16
+  },
+  "original_rtti": "datamodel-rtti.json",
+  "base_offsets": {
+    "GuidItem_Instance": 0,
+    "AbstractFactoryProduct_Instance": 16
+  },
+  "sources": {
+    "rebuild/2008-06/native-headers/util/GuidItem.h": "52b916f8ce58136d5e46f1a0c0e6aea57697ed918bca6f9febc757320fece1a6",
+    "rebuild/2008-06/tests/NativeGuidItemLayout.cpp": "8090ccd861efc1fae450252936b7cdd9ad47fd8c9ac5709f94d7a1c2bb43cab2",
+    "tools/openrbx/Client/App/include/util/Guid.h": "98c8978f0eefb3d140d201dd529fd0a3d4795eab8c26d08ecb3f12721d96408f"
+  },
+  "scope": "Recovered declaration and size probe. Field semantics and active integration remain unverified; donor Guid implementation is used by probe."
+}

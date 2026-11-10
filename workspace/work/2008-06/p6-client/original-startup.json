@@ -1,0 +1,77 @@
+{
+ "hits": [
+  {
+   "va": "006a1ba6",
+   "name": "entry",
+   "seconds": 0.043
+  },
+  {
+   "va": "007bca00",
+   "name": "WinMain thunk",
+   "seconds": 0.064
+  },
+  {
+   "va": "0044d810",
+   "name": "InitInstance",
+   "seconds": 0.064
+  },
+  {
+   "va": "0044d8ed",
+   "name": "InitCommonControls call",
+   "seconds": 0.066
+  },
+  {
+   "va": "0044da5c",
+   "name": "nativeInitializeCom",
+   "seconds": 0.068
+  },
+  {
+   "va": "0044da67",
+   "name": "CRobloxCommandLineInfo",
+   "seconds": 0.071
+  },
+  {
+   "va": "0044daf4",
+   "name": "profiler enable",
+   "seconds": 0.071
+  },
+  {
+   "va": "0044dafc",
+   "name": "initializeTypes",
+   "seconds": 0.071
+  },
+  {
+   "va": "0044db4e",
+   "name": "initializeSettings",
+   "seconds": 0.074
+  },
+  {
+   "va": "00449910",
+   "name": "CIDEDocManager ctor",
+   "seconds": 2.263
+  },
+  {
+   "va": "00449bf0",
+   "name": "initializeFramework",
+   "seconds": 2.264
+  },
+  {
+   "va": "00431d00",
+   "name": "CMainFrame OnCreate",
+   "seconds": 2.275
+  },
+  {
+   "va": "0044d1b0",
+   "name": "openFiles",
+   "seconds": 3.261
+  },
+  {
+   "va": "0044d790",
+   "name": "CRobloxApp slot 23",
+   "seconds": 3.261
+  }
+ ],
+ "not_hit": [
+  "ExitInstance"
+ ]
+}

@@ -1,0 +1,436 @@
+== 0060dd70 13 bytes unit=RBX::BlockBlockContact
+0060dd70  add ecx, 8
+0060dd73  push ecx
+0060dd74  call 0x60ead0  ; fn_0060ead0 [unit? RBX::BlockBlockContact]
+0060dd79  add esp, 4
+0060dd7c  ret 
+== 0060e200 270 bytes unit=RBX::BlockBlockContact
+0060e200  push -1
+0060e202  push 0x7d2588  ; fn_007d2588 [unit? seg_007d0000]
+0060e207  mov eax, dword ptr fs:[0]
+0060e20d  push eax
+0060e20e  mov dword ptr fs:[0], esp
+0060e215  sub esp, 0x18
+0060e218  push esi
+0060e219  push edi
+0060e21a  xor edi, edi
+0060e21c  mov esi, ecx
+0060e21e  mov dword ptr [esp + 0xc], edi
+0060e222  mov dword ptr [esp + 0x10], edi
+0060e226  mov dword ptr [esp + 8], edi
+0060e22a  lea eax, [esp + 8]
+0060e22e  push eax
+0060e22f  lea ecx, [esi + 8]
+0060e232  push ecx
+0060e233  mov dword ptr [esp + 0x30], edi
+0060e237  call 0x60eb30  ; fn_0060eb30 [unit? RBX::BlockBlockContact]
+0060e23c  add esp, 8
+0060e23f  cmp dword ptr [esp + 0xc], edi
+0060e243  jle 0x60e29f
+0060e245  mov edx, dword ptr [esi + 0x28]
+0060e248  mov eax, dword ptr [esp + 0x34]
+0060e24c  push edx
+0060e24d  push eax
+0060e24e  lea ecx, [esp + 0x10]
+0060e252  push ecx
+0060e253  lea edx, [esp + 0x20]
+0060e257  push edx
+0060e258  call 0x6106c0  ; fn_006106c0 [unit? RBX::BlockBlockContact]
+0060e25d  fld dword ptr [esp + 0x24]
+0060e261  mov esi, dword ptr [esp + 0x40]
+0060e265  mov eax, dword ptr [esp + 0x18]
+0060e269  fstp dword ptr [esi]
+0060e26b  fld dword ptr [esp + 0x28]
+0060e26f  push eax
+0060e270  fstp dword ptr [esi + 4]
+0060e273  mov dword ptr [esp + 0x3c], 0xffffffff
+0060e27b  fld dword ptr [esp + 0x30]
+0060e27f  fstp dword ptr [esi + 8]
+0060e282  call 0x507d20  ; fn_00507d20 [unit? G3D::Shader]
+0060e287  add esp, 0x14
+0060e28a  pop edi
+0060e28b  mov eax, esi
+0060e28d  pop esi
+0060e28e  mov ecx, dword ptr [esp + 0x18]
+0060e292  mov dword ptr fs:[0], ecx
+0060e299  add esp, 0x24
+0060e29c  ret 8
+0060e29f  mov eax, 1
+0060e2a4  test byte ptr [0x96f050], al
+0060e2aa  jne 0x60e2c6
+0060e2ac  fldz 
+0060e2ae  or dword ptr [0x96f050], eax
+0060e2b4  fst dword ptr [0x96f044]
+0060e2ba  fst dword ptr [0x96f048]
+0060e2c0  fstp dword ptr [0x96f04c]
+0060e2c6  mov esi, dword ptr [esp + 0x30]
+0060e2ca  fld dword ptr [0x96f044]
+0060e2d0  mov ecx, dword ptr [esp + 8]
+0060e2d4  fstp dword ptr [esi]
+0060e2d6  fld dword ptr [0x96f048]
+0060e2dc  push ecx
+0060e2dd  fstp dword ptr [esi + 4]
+0060e2e0  mov dword ptr [esp + 0x2c], 0xffffffff
+0060e2e8  fld dword ptr [0x96f04c]
+0060e2ee  fstp dword ptr [esi + 8]
+0060e2f1  call 0x507d20  ; fn_00507d20 [unit? G3D::Shader]
+0060e2f6  mov ecx, dword ptr [esp + 0x24]
+0060e2fa  add esp, 4
+0060e2fd  pop edi
+0060e2fe  mov eax, esi
+0060e300  pop esi
+0060e301  mov dword ptr fs:[0], ecx
+0060e308  add esp, 0x24
+0060e30b  ret 8
+== 0060f3d0 5 bytes unit=RBX::BlockBlockContact
+0060f3d0  jmp 0x60f340  ; fn_0060f340 [unit? RBX::BlockBlockContact]
+== 0060ff80 230 bytes unit=RBX::BlockBlockContact
+0060ff80  sub esp, 0x30
+0060ff83  push ebx
+0060ff84  push esi
+0060ff85  push edi
+0060ff86  call 0x583920  ; fn_00583920 [unit? RBX::VModelInstance::?$FactoryProduct]
+0060ff8b  fld dword ptr [eax]
+0060ff8d  mov ebx, dword ptr [esp + 0x40]
+0060ff91  mov edi, dword ptr [esp + 0x44]
+0060ff95  fstp dword ptr [ebx]
+0060ff97  fld dword ptr [eax + 4]
+0060ff9a  xor esi, esi
+0060ff9c  fstp dword ptr [ebx + 4]
+0060ff9f  fld dword ptr [eax + 8]
+0060ffa2  fstp dword ptr [ebx + 8]
+0060ffa5  fld dword ptr [eax + 0xc]
+0060ffa8  fstp dword ptr [ebx + 0xc]
+0060ffab  fld dword ptr [eax + 0x10]
+0060ffae  fstp dword ptr [ebx + 0x10]
+0060ffb1  fld dword ptr [eax + 0x14]
+0060ffb4  fstp dword ptr [ebx + 0x14]
+0060ffb7  mov eax, dword ptr [edi + 0x10]
+0060ffba  sub eax, dword ptr [edi + 0xc]
+0060ffbd  sar eax, 2
+0060ffc0  test eax, eax
+0060ffc2  jbe 0x61005d
+0060ffc8  push ebp
+0060ffc9  mov ebp, dword ptr [0x802890]  ; MSVCR90.dll!_invalid_parameter_noinfo
+0060ffcf  nop 
+0060ffd0  fld dword ptr [0x819bac]
+0060ffd6  cmp esi, eax
+0060ffd8  jb 0x60ffe4
+0060ffda  fstp st(0)
+0060ffdc  call ebp
+0060ffde  fld dword ptr [0x819bac]
+0060ffe4  mov eax, dword ptr [edi + 0xc]
+0060ffe7  mov ecx, dword ptr [eax + esi*4]
+0060ffea  mov eax, dword ptr [ecx + 0x9c]
+0060fff0  fld dword ptr [eax + 4]
+0060fff3  add eax, 4
+0060fff6  fmul st(1)
+0060fff8  fld dword ptr [eax + 4]
+0060fffb  fmul st(2)
+0060fffd  fld dword ptr [eax + 8]
+00610000  fmulp st(3)
+00610002  fld st(1)
+00610004  fchs 
+00610006  fld st(1)
+00610008  fchs 
+0061000a  fld st(4)
+0061000c  fchs 
+0061000e  fxch st(2)
+00610010  fstp dword ptr [esp + 0x10]
+00610014  fstp dword ptr [esp + 0x14]
+00610018  fstp dword ptr [esp + 0x18]
+0061001c  fxch st(1)
+0061001e  fstp dword ptr [esp + 0x1c]
+00610022  fstp dword ptr [esp + 0x20]
+00610026  fstp dword ptr [esp + 0x24]
+0061002a  call 0x5e82c0  ; fn_005e82c0 [unit? RBX::Primitive]
+0061002f  push eax
+00610030  lea ecx, [esp + 0x2c]
+00610034  push ecx
+00610035  lea ecx, [esp + 0x18]
+00610039  call 0x60fc20  ; fn_0060fc20 [unit? RBX::BlockBlockContact]
+0061003e  lea edx, [esp + 0x28]
+00610042  push edx
+00610043  mov ecx, ebx
+00610045  call 0x57dee0  ; fn_0057dee0 [unit? RBX::WatchCameraCommand]
+0061004a  mov eax, dword ptr [edi + 0x10]
+0061004d  sub eax, dword ptr [edi + 0xc]
+00610050  inc esi
+00610051  sar eax, 2
+00610054  cmp esi, eax
+00610056  jb 0x60ffd0
+0061005c  pop ebp
+0061005d  pop edi
+0061005e  pop esi
+0061005f  mov eax, ebx
+00610061  pop ebx
+00610062  add esp, 0x30
+00610065  ret 
+== 00665880 281 bytes unit=RBX::Effect
+00665880  sub esp, 0x54
+00665883  push esi
+00665884  mov esi, dword ptr [esp + 0x5c]
+00665888  fld dword ptr [esi + 0xc]
+0066588b  fadd dword ptr [esi]
+0066588d  fld dword ptr [esi + 0x10]
+00665890  fadd dword ptr [esi + 4]
+00665893  fld dword ptr [esi + 0x14]
+00665896  fadd dword ptr [esi + 8]
+00665899  fld dword ptr [0x819bac]
+0066589f  fmul st(3), st(0)
+006658a1  fxch st(3)
+006658a3  fstp dword ptr [esp + 4]
+006658a7  fxch st(1)
+006658a9  fmul st(2)
+006658ab  fstp dword ptr [esp + 8]
+006658af  fmulp st(1)
+006658b1  fstp dword ptr [esp + 0xc]
+006658b5  call 0x513e20  ; fn_00513e20 [unit? G3D::GCamera]
+006658ba  push eax
+006658bb  lea ecx, [esp + 0x2c]
+006658bf  call 0x513220  ; fn_00513220 [unit? G3D::GCamera]
+006658c4  fld dword ptr [esp + 4]
+006658c8  fstp dword ptr [esp + 0x4c]
+006658cc  mov eax, 1
+006658d1  fld dword ptr [esp + 8]
+006658d5  fstp dword ptr [esp + 0x50]
+006658d9  fld dword ptr [esp + 0xc]
+006658dd  fstp dword ptr [esp + 0x54]
+006658e1  fld dword ptr [esi + 0xc]
+006658e4  fsub dword ptr [esi]
+006658e6  fld dword ptr [esi + 0x10]
+006658e9  fsub dword ptr [esi + 4]
+006658ec  fld dword ptr [esi + 0x14]
+006658ef  fsub dword ptr [esi + 8]
+006658f2  pop esi
+006658f3  fld dword ptr [0x819bac]
+006658f9  fmul st(3), st(0)
+006658fb  fmul st(2), st(0)
+006658fd  fmulp st(1)
+006658ff  test byte ptr [0x96f050], al
+00665905  jne 0x665929
+00665907  fldz 
+00665909  or dword ptr [0x96f050], eax
+0066590f  fld st(0)
+00665911  fst dword ptr [0x96f044]
+00665917  fld st(1)
+00665919  fst dword ptr [0x96f048]
+0066591f  fxch st(2)
+00665921  fst dword ptr [0x96f04c]
+00665927  jmp 0x66593d
+00665929  fld dword ptr [0x96f04c]
+0066592f  fld dword ptr [0x96f044]
+00665935  fld dword ptr [0x96f048]
+0066593b  fxch st(2)
+0066593d  mov eax, dword ptr [esp + 0x64]
+00665941  fld st(5)
+00665943  fadd st(2)
+00665945  mov ecx, dword ptr [esp + 0x60]
+00665949  mov edx, dword ptr [esp + 0x5c]
+0066594d  fld st(5)
+0066594f  fadd st(4)
+00665951  push eax
+00665952  push ecx
+00665953  push edx
+00665954  fstp dword ptr [esp + 0x10]
+00665958  lea eax, [esp + 0x30]
+0066595c  fld st(4)
+0066595e  push eax
+0066595f  fadd st(2)
+00665961  lea ecx, [esp + 0x1c]
+00665965  fxch st(3)
+00665967  push ecx
+00665968  fsubrp st(7)
+0066596a  fxch st(3)
+0066596c  fsubrp st(5)
+0066596e  fsubrp st(3)
+00665970  fxch st(4)
+00665972  fstp dword ptr [esp + 0x20]
+00665976  fxch st(2)
+00665978  fstp dword ptr [esp + 0x24]
+0066597c  fstp dword ptr [esp + 0x28]
+00665980  fstp dword ptr [esp + 0x2c]
+00665984  fld dword ptr [esp + 0x18]
+00665988  fstp dword ptr [esp + 0x30]
+0066598c  fstp dword ptr [esp + 0x34]
+00665990  call 0x6656b0  ; fn_006656b0 [unit? RBX::Effect]
+00665995  add esp, 0x68
+00665998  ret 
+== 006404c0 122 bytes unit=RBX::ArrowTool
+006404c0  mov eax, dword ptr fs:[0]
+006404c6  push -1
+006404c8  push 0x7c6168  ; fn_007c6168 [unit? seg_007c0000]
+006404cd  push eax
+006404ce  mov dword ptr fs:[0], esp
+006404d5  push esi
+006404d6  mov eax, dword ptr [esp + 0x1c]
+006404da  mov ecx, dword ptr [esp + 0x14]
+006404de  push eax
+006404df  push ecx
+006404e0  mov dword ptr [esp + 0x14], 0
+006404e8  call 0x60f3d0  ; fn_0060f3d0 [unit? RBX::BlockBlockContact]
+006404ed  mov esi, dword ptr [esp + 0x20]
+006404f1  add esp, 8
+006404f4  mov dword ptr [esp + 0xc], 0xffffffff
+006404fc  test esi, esi
+006404fe  je 0x64052a
+00640500  lea edx, [esi + 4]
+00640503  or eax, 0xffffffff
+00640506  lock xadd dword ptr [edx], eax
+0064050a  jne 0x64052a
+0064050c  mov edx, dword ptr [esi]
+0064050e  mov eax, dword ptr [edx + 4]
+00640511  mov ecx, esi
+00640513  call eax
+00640515  lea ecx, [esi + 8]
+00640518  or edx, 0xffffffff
+0064051b  lock xadd dword ptr [ecx], edx
+0064051f  jne 0x64052a
+00640521  mov eax, dword ptr [esi]
+00640523  mov edx, dword ptr [eax + 8]
+00640526  mov ecx, esi
+00640528  call edx
+0064052a  mov ecx, dword ptr [esp + 4]
+0064052e  mov dword ptr fs:[0], ecx
+00640535  pop esi
+00640536  add esp, 0xc
+00640539  ret 
+== 006106c0 356 bytes unit=RBX::BlockBlockContact
+006106c0  sub esp, 0xc
+006106c3  push esi
+006106c4  mov esi, dword ptr [esp + 0x18]
+006106c8  cmp dword ptr [esi + 4], 0
+006106cc  jne 0x610715
+006106ce  test byte ptr [0x96f050], 1
+006106d5  jne 0x6106f2
+006106d7  fldz 
+006106d9  or dword ptr [0x96f050], 1
+006106e0  fst dword ptr [0x96f044]
+006106e6  fst dword ptr [0x96f048]
+006106ec  fstp dword ptr [0x96f04c]
+006106f2  mov eax, dword ptr [esp + 0x14]
+006106f6  fld dword ptr [0x96f044]
+006106fc  fstp dword ptr [eax]
+006106fe  pop esi
+006106ff  fld dword ptr [0x96f048]
+00610705  fstp dword ptr [eax + 4]
+00610708  fld dword ptr [0x96f04c]
+0061070e  fstp dword ptr [eax + 8]
+00610711  add esp, 0xc
+00610714  ret 
+00610715  mov ecx, dword ptr [0x96f050]
+0061071b  fldz 
+0061071d  test cl, 1
+00610720  jne 0x610745
+00610722  fld st(0)
+00610724  or ecx, 1
+00610727  fst dword ptr [0x96f044]
+0061072d  mov dword ptr [0x96f050], ecx
+00610733  fld st(1)
+00610735  fst dword ptr [0x96f048]
+0061073b  fld st(2)
+0061073d  fst dword ptr [0x96f04c]
+00610743  jmp 0x610759
+00610745  fld dword ptr [0x96f04c]
+0061074b  fld dword ptr [0x96f048]
+00610751  fld dword ptr [0x96f044]
+00610757  fxch st(2)
+00610759  fxch st(2)
+0061075b  fst dword ptr [esp + 4]
+0061075f  fxch st(1)
+00610761  fst dword ptr [esp + 8]
+00610765  fxch st(2)
+00610767  fst dword ptr [esp + 0xc]
+0061076b  test cl, 1
+0061076e  jne 0x61079d
+00610770  fstp st(1)
+00610772  or ecx, 1
+00610775  fstp st(1)
+00610777  mov dword ptr [0x96f050], ecx
+0061077d  fstp st(0)
+0061077f  fld st(0)
+00610781  fst dword ptr [0x96f044]
+00610787  fld st(1)
+00610789  fst dword ptr [0x96f048]
+0061078f  fld st(2)
+00610791  fst dword ptr [0x96f04c]
+00610797  fxch st(1)
+00610799  fxch st(2)
+0061079b  fxch st(1)
+0061079d  mov edx, dword ptr [esp + 0x1c]
+006107a1  fxch st(1)
+006107a3  fcomp dword ptr [edx]
+006107a5  fnstsw ax
+006107a7  test ah, 0x44
+006107aa  jp 0x6107e1
+006107ac  fxch st(1)
+006107ae  fcomp dword ptr [edx + 4]
+006107b1  fnstsw ax
+006107b3  test ah, 0x44
+006107b6  jp 0x6107e3
+006107b8  fcomp dword ptr [edx + 8]
+006107bb  fnstsw ax
+006107bd  test ah, 0x44
+006107c0  jp 0x6107e5
+006107c2  fstp st(0)
+006107c4  mov eax, dword ptr [esp + 0x14]
+006107c8  fld dword ptr [esp + 4]
+006107cc  fstp dword ptr [eax]
+006107ce  pop esi
+006107cf  fld dword ptr [esp + 4]
+006107d3  fstp dword ptr [eax + 4]
+006107d6  fld dword ptr [esp + 8]
+006107da  fstp dword ptr [eax + 8]
+006107dd  add esp, 0xc
+006107e0  ret 
+006107e1  fstp st(1)
+006107e3  fstp st(0)
+006107e5  test cl, 1
+006107e8  jne 0x610807
+006107ea  fst dword ptr [0x96f044]
+006107f0  or ecx, 1
+006107f3  fst dword ptr [0x96f048]
+006107f9  mov dword ptr [0x96f050], ecx
+006107ff  fstp dword ptr [0x96f04c]
+00610805  jmp 0x610809
+00610807  fstp st(0)
+00610809  mov eax, dword ptr [esp + 0x20]
+0061080d  push eax
+0061080e  lea ecx, [esp + 8]
+00610812  push ecx
+00610813  push edx
+00610814  push 0x96f044
+00610819  push esi
+0061081a  call 0x610580  ; fn_00610580 [unit? RBX::BlockBlockContact]
+0061081f  add esp, 0x14
+00610822  jmp 0x6107c4
+== 00677140 77 bytes unit=RBX::AdornG3D
+00677140  mov eax, dword ptr [esp + 4]
+00677144  mov ecx, dword ptr [esp + 8]
+00677148  fld dword ptr [eax]
+0067714a  fsub dword ptr [ecx]
+0067714c  fld dword ptr [eax + 4]
+0067714f  fsub dword ptr [ecx + 4]
+00677152  fld dword ptr [eax + 8]
+00677155  fsub dword ptr [ecx + 8]
+00677158  fld st(2)
+0067715a  fmulp st(3)
+0067715c  fld st(1)
+0067715e  fmulp st(2)
+00677160  fxch st(2)
+00677162  faddp st(1)
+00677164  fld st(1)
+00677166  fmulp st(2)
+00677168  faddp st(1)
+0067716a  fsqrt 
+0067716c  fld dword ptr [0x819bac]
+00677172  fld dword ptr [0x84dee4]
+00677178  fcomp st(2)
+0067717a  fnstsw ax
+0067717c  test ah, 5
+0067717f  jp 0x67718a
+00677181  fstp st(0)
+00677183  fmul dword ptr [0x84dee0]
+00677189  ret 
+0067718a  fstp st(1)
+0067718c  ret 

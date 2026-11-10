@@ -1,0 +1,147 @@
+{
+  "revision": "e9be161e82e4a0d6bcf23944715257d469f8c140",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "player_sha256": "66f4deb58b39a0a9ce672f2e0ce5af3e0f0908f05e014a0f205f7bbefa62f069",
+  "fixture_sha256": "84dd2a4dab972330ccb20b00268c2b30b60dd66950e205a69951e951de84b2fe",
+  "observer_sha256": "2d3f4b6d06f6142dfd1231f7a9fe609011dd37174db47949e866ffc1075e7985",
+  "original_candidate_counts": [
+    4,
+    4,
+    5,
+    4
+  ],
+  "agreeing_moving_copies": [
+    2,
+    2,
+    2,
+    2
+  ],
+  "original_marker_times": [
+    0.09399999998277053,
+    0.25,
+    0.42199999996228144
+  ],
+  "rebuilt_anchor_transitions": [
+    6,
+    15,
+    24
+  ],
+  "comparisons": [
+    {
+      "time": 0.09399999998277053,
+      "original_y": 20.0,
+      "fixed_frame_window": [
+        3,
+        9
+      ],
+      "best_error": 0.0
+    },
+    {
+      "time": 0.2029999999795109,
+      "original_y": 19.016849517822266,
+      "fixed_frame_window": [
+        9,
+        15
+      ],
+      "best_error": 0.004302982177733838
+    },
+    {
+      "time": 0.29699999996228144,
+      "original_y": 17.27142333984375,
+      "fixed_frame_window": [
+        15,
+        21
+      ],
+      "best_error": 0.5245590601562498
+    },
+    {
+      "time": 0.4059999999590218,
+      "original_y": 17.27142333984375,
+      "fixed_frame_window": [
+        21,
+        27
+      ],
+      "best_error": 0.00717166015624926
+    },
+    {
+      "time": 0.5,
+      "original_y": 14.654006004333496,
+      "fixed_frame_window": [
+        27,
+        33
+      ],
+      "best_error": 0.010039295666503634
+    },
+    {
+      "time": 0.5939999999827705,
+      "original_y": 9.092890739440918,
+      "fixed_frame_window": [
+        33,
+        39
+      ],
+      "best_error": 0.014342310559081639
+    },
+    {
+      "time": 0.7969999999622814,
+      "original_y": -1.6729857921600342,
+      "fixed_frame_window": [
+        45,
+        51
+      ],
+      "best_error": 0.01412058216003409
+    },
+    {
+      "time": 1.0,
+      "original_y": 7.762571811676025,
+      "fixed_frame_window": [
+        57,
+        63
+      ],
+      "best_error": 0.025755881676025716
+    },
+    {
+      "time": 1.5,
+      "original_y": -2.983330488204956,
+      "fixed_frame_window": [
+        87,
+        93
+      ],
+      "best_error": 0.05115127179504375
+    },
+    {
+      "time": 2.0,
+      "original_y": -0.8214419484138489,
+      "fixed_frame_window": [
+        117,
+        123
+      ],
+      "best_error": 0.2628127915861511
+    },
+    {
+      "time": 3.0,
+      "original_y": -3.298125982284546,
+      "fixed_frame_window": [
+        177,
+        183
+      ],
+      "best_error": 0.12485289228454599
+    },
+    {
+      "time": 4.0,
+      "original_y": -3.807239294052124,
+      "fixed_frame_window": [
+        237,
+        243
+      ],
+      "best_error": 0.004516844052123936
+    }
+  ],
+  "original_final_y": -3.807239294052124,
+  "rebuilt_final_y": -3.80272245,
+  "final_difference": 0.004516844052123936,
+  "original_exit": 1,
+  "original_forced_termination": true,
+  "player_exit": 0,
+  "scope": "One authored anchor cycle, original real-time samples versus rebuilt fixed steps, with +/-3 frame timing tolerance. Not direct original single stepping or full physics parity.",
+  "P5_complete": false
+}

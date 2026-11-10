@@ -1,0 +1,701 @@
+{
+  "order": [
+    "zlib-winapi",
+    "g3d",
+    "g3d-gl",
+    "zlib",
+    "libpng",
+    "boost",
+    "raknet",
+    "rbxgs-app",
+    "p2-image-core",
+    "p2-texture-interop",
+    "p4-sound-asset",
+    "p2-native-material",
+    "p2-lighting",
+    "player",
+    "xtp"
+  ],
+  "specs": {
+    "player": {
+      "name": "P2RecoveredPlayer",
+      "description": "Isolated recovered block producer player; preserves local player diagnostics",
+      "refresh_dependencies": [
+        "rbxgs-app",
+        "p2-image-core",
+        "p2-texture-interop",
+        "p4-sound-asset",
+        "p2-native-material",
+        "p2-lighting"
+      ],
+      "depends": [
+        "p4-sound-asset",
+        "p2-native-material",
+        "p2-lighting",
+        "rbxgs-app"
+      ],
+      "layers": [
+        {
+          "name": "engine",
+          "mode": "direct",
+          "dir": "rebuild/2008-06/tests/p2-recovered",
+          "files": "PlayerEngine.cpp PlayerScene.cpp RbxEntityLocal.cpp ../PlayerNativeInput.cpp",
+          "includes_from_recipe": "rbxgs",
+          "defines_from_recipe": "rbxgs",
+          "extra_defines": "BOOST_ALL_NO_LIB",
+          "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD",
+          "extra_includes": [
+            "tools/rbxgs/Client/RbxView",
+            "tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
+          ]
+        },
+        {
+          "name": "block",
+          "mode": "direct",
+          "dir": "rebuild/2008-06/tests",
+          "files": "PlayerBlockMesh.cpp PlayerMeshBackend.cpp PlayerMeshOrientation.cpp PlayerSkybox.cpp",
+          "includes_from_recipe": "rbxgs-view-dll",
+          "defines_from_recipe": "rbxgs-view-dll",
+          "extra_defines": "BOOST_ALL_NO_LIB",
+          "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast",
+          "extra_includes": [
+            "tools/rbxgs/Client/RbxView",
+            "tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
+          ]
+        }
+      ],
+      "overlay": {
+        "root": "tools/rbxgs/Client",
+        "patches": "rebuild/2008-06/patches/rbxgs-client.json"
+      },
+      "test": "P2RecoveredPlayer",
+      "verified": false,
+      "test_includes": [
+        "tools/rbxgs/Client/RbxView",
+        "tools/rbxgs/Client/RbxView/include",
+        "tools/rbxgs/Client/RbxViewBase",
+        "tools/rbxgs/Client/App/include",
+        "tools/rbxgs/Client/RbxGraphics/include",
+        "tools/rbxgs/Client/Network/include",
+        "tools/rbxgs/Client/Rendering/RenderLib/include",
+        "tools/rbxgs/Client/Rendering/AppDraw/include",
+        "tools/rbxgs/Client/Rendering/g3d/include",
+        "tools/rbxgs/Client/Rendering/g3d/zlib",
+        "tools/rbxgs/Client/Rendering/png",
+        "tools/rbxgs/Client/boost_1_34_1/src",
+        "tools/rbxgs/Client/App/lua-5.1.1/src",
+        "tools/rbxgs/Client/Rendering/SDL-1.2.6/include",
+        "tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+        "tools/libs/zlib-1.2.3"
+      ],
+      "import_dlls": [
+        "rgmain.dll",
+        "rgdx.dll",
+        "fmodex.dll"
+      ],
+      "test_defines": "WIN32 NDEBUG _RELEASE"
+    },
+    "rbxgs-app": {
+      "name": "RbxgsApp",
+      "description": "Complete rbxgs Client/App tree (util, v8kernel, reflection, v8tree, v8world, v8datamodel, script, humanoid, tool, v8xml, gui, security) compiled against its own headers: one consistent ABI. Remaining gaps are filled by rebuild glue; empty-bodied stubs are listed in glue_link_stubs.cpp.",
+      "depends": [
+        "g3d",
+        "g3d-gl",
+        "libpng",
+        "boost",
+        "raknet"
+      ],
+      "layers": [
+        {
+          "name": "rbxgs",
+          "mode": "recipe",
+          "recipe": "rbxgs",
+          "direct": true,
+          "files": "util/*.cpp v8kernel/*.cpp reflection/*.cpp v8tree/*.cpp v8world/*.cpp v8datamodel/*.cpp script/*.cpp humanoid/*.cpp tool/*.cpp v8xml/*.cpp gui/*.cpp security/*.cpp",
+          "extra_defines": "BOOST_ALL_NO_LIB",
+          "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD",
+          "exclude": [
+            "util/Utilities.cpp",
+            "v8tree/Property.cpp",
+            "v8world/CollisionStage.cpp",
+            "v8world/SeparateStage.cpp"
+          ]
+        },
+        {
+          "name": "net",
+          "mode": "recipe",
+          "recipe": "rbxgs-net",
+          "direct": true,
+          "files": "recipe",
+          "extra_defines": "BOOST_ALL_NO_LIB",
+          "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
+        },
+        {
+          "name": "appdraw",
+          "mode": "recipe",
+          "recipe": "rbxgs-appdraw",
+          "direct": true,
+          "files": "recipe",
+          "extra_defines": "BOOST_ALL_NO_LIB",
+          "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
+        },
+        {
+          "name": "renderlib",
+          "mode": "recipe",
+          "recipe": "rbxgs-render",
+          "direct": true,
+          "files": "*.cpp",
+          "extra_defines": "BOOST_ALL_NO_LIB",
+          "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
+        },
+        {
+          "name": "view",
+          "mode": "recipe",
+          "recipe": "rbxgs-view",
+          "direct": true,
+          "files": "*.cpp",
+          "extra_defines": "BOOST_ALL_NO_LIB",
+          "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
+        },
+        {
+          "name": "lua",
+          "mode": "direct",
+          "dir": "tools/rbxgs/Client/App/lua-5.1.1/src",
+          "files": "*.c",
+          "exclude": [
+            "lua.c",
+            "luac.c",
+            "print.c"
+          ],
+          "includes_from_recipe": "rbxgs",
+          "defines_from_recipe": "rbxgs",
+          "extra_includes": [
+            "tools/rbxgs/Client/App/lua-5.1.1/src"
+          ],
+          "extra_defines": "BOOST_ALL_NO_LIB",
+          "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /TP"
+        },
+        {
+          "name": "glue",
+          "mode": "direct",
+          "dir": "rebuild/2008-06/glue/rbxgs",
+          "files": "*.cpp",
+          "includes_from_recipe": "rbxgs-net",
+          "defines_from_recipe": "rbxgs",
+          "extra_defines": "BOOST_ALL_NO_LIB",
+          "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD",
+          "extra_includes": [
+            "tools/rbxgs/Client/Network",
+            "tools/rbxgs/Client/RbxView/include"
+          ],
+          "exclude": [
+            "glue_anchor_registry.cpp"
+          ]
+        }
+      ],
+      "test": "rbxgs_app",
+      "test_includes": [
+        "tools/rbxgs/Client/App/include",
+        "tools/rbxgs/Client/RbxGraphics/include",
+        "tools/rbxgs/Client/Network/include",
+        "tools/rbxgs/Client/RbxView/include",
+        "tools/rbxgs/Client/Rendering/png",
+        "tools/rbxgs/Client/Rendering/g3d/include",
+        "tools/rbxgs/Client/Rendering/g3d/zlib",
+        "tools/rbxgs/Client/Rendering/RenderLib/include",
+        "tools/rbxgs/Client/Rendering/AppDraw/include",
+        "tools/rbxgs/Client/boost_1_34_1/src",
+        "tools/rbxgs/Client/App/lua-5.1.1/src",
+        "tools/rbxgs/Client/Rendering/SDL-1.2.6/include",
+        "tools/rbxgs/Client/RbxViewBase",
+        "tools/rbxgs/Client/RbxView",
+        "rebuild/2008-06/out/RbxgsApp/force"
+      ],
+      "test_defines": "WIN32 NDEBUG _LIB _RELEASE _RELEASEASSERT BOOST_ALL_NO_LIB",
+      "overlay": {
+        "root": "tools/rbxgs/Client",
+        "patches": "rebuild/2008-06/patches/rbxgs-client.json"
+      },
+      "verified_exclude": [
+        "??1Humanoid@RBX@@UAE@XZ",
+        "?cleanEdge@TreeStage@RBX@@AAEXPAVEdge@2@@Z",
+        "?forceNeighborAwake@SleepStage@RBX@@AAE_NPAVAssembly@2@@Z",
+        "?okNeighborSleep@SleepStage@RBX@@AAE_NPAVAssembly@2@@Z",
+        "?onEdgeAdded@SleepStage@RBX@@UAEXPAVEdge@2@@Z",
+        "?recursiveWakeEvent@SleepStage@RBX@@AAEXPAVAssembly@2@@Z",
+        "?stepAssembliesAwake@SleepStage@RBX@@AAEXXZ",
+        "?stepAssembliesSleepingChecking@SleepStage@RBX@@AAEXXZ",
+        "?stepContacts@SleepStage@RBX@@AAEXAAV?$IndexArray@VContact@RBX@@$1?steppingIndexFunc@12@QAEAAHXZ@2@@Z",
+        "?stepJoints@SleepStage@RBX@@AAEXXZ",
+        "?wakeEvent@SleepStage@RBX@@AAEXPAVAssembly@2@@Z"
+      ],
+      "verified": true,
+      "force_verified": true
+    },
+    "g3d": {
+      "name": "G3D",
+      "description": "G3D 6.09 core (G3Dcpp, no OpenGL) with the 2008 Roblox header/source patches (recipe g3d-6.09-rbx2008).",
+      "depends": [
+        "zlib-winapi"
+      ],
+      "layers": [
+        {
+          "name": "upstream",
+          "mode": "recipe",
+          "recipe": "g3d-6.09-rbx2008",
+          "files": "G3Dcpp/*.cpp",
+          "direct": true,
+          "flags": "/O2 /GS- /EHsc /MD"
+        },
+        {
+          "name": "ijg",
+          "mode": "direct",
+          "dir": "tools/libs/g3d-6.09/source/IJG",
+          "files": "*.c",
+          "flags": "/O2 /GS- /MD",
+          "defines": "WIN32 NDEBUG"
+        }
+      ],
+      "test": "g3d_core",
+      "test_includes": [
+        "tree:g3d-6.09-rbx2008/include"
+      ],
+      "verified": true
+    },
+    "zlib-winapi": {
+      "name": "zlib-winapi",
+      "description": "The 2008-06 exe's second zlib 1.2.3 copy (0x7a3e90-0x7a99b0): ZLIB_WINAPI (__stdcall), built with VS2005 50727 (recipe zlib-1.2.3-winapi). G3D links against this copy. The rebuild makes deflate_copyright static (overlay) so both copies can link into one program; mining recipes are unchanged.",
+      "layers": [
+        {
+          "name": "upstream",
+          "mode": "recipe",
+          "recipe": "zlib-1.2.3-winapi",
+          "files": "recipe",
+          "cl": 50727,
+          "flags": "/O2 /GS- /MD",
+          "direct": true
+        }
+      ],
+      "test": "zlib_roundtrip",
+      "test_defines": "WIN32 NDEBUG ZLIB_WINAPI",
+      "test_includes": [
+        "tools/libs/zlib-1.2.3"
+      ],
+      "overlay": {
+        "root": "tools/libs/zlib-1.2.3",
+        "patches": "rebuild/2008-06/patches/zlib-winapi-deflate-copyright.json"
+      }
+    },
+    "g3d-gl": {
+      "name": "G3D-GL",
+      "description": "G3D 6.09 GLG3D (RenderDevice, GFont, Draw, textures) with the 2008 Roblox patches (recipe g3d-6.09-rbx2008).",
+      "depends": [
+        "g3d"
+      ],
+      "layers": [
+        {
+          "name": "upstream",
+          "mode": "recipe",
+          "recipe": "g3d-6.09-rbx2008",
+          "files": "GLG3Dcpp/*.cpp",
+          "direct": true,
+          "extra_defines": "NO_SDL_MAIN",
+          "flags": "/O2 /GS- /EHsc /MD"
+        },
+        {
+          "name": "tonemap",
+          "mode": "recipe",
+          "recipe": "g3d-6.09-rbx2008",
+          "files": "contrib/ArticulatedModel/ToneMap.cpp",
+          "direct": true,
+          "extra_defines": "NO_SDL_MAIN",
+          "flags": "/O2 /GS- /EHsc /MD"
+        }
+      ],
+      "test": "g3d_gl",
+      "test_includes": [
+        "tree:g3d-6.09-rbx2008/include",
+        "tools/libs/SDL-1.2.11/include"
+      ]
+    },
+    "libpng": {
+      "name": "libpng",
+      "description": "libpng 1.2.5 (recipe libpng-1.2.5) over the rebuilt zlib.",
+      "depends": [
+        "zlib"
+      ],
+      "layers": [
+        {
+          "name": "upstream",
+          "mode": "recipe",
+          "recipe": "libpng-1.2.5",
+          "files": "recipe",
+          "flags": "/O2 /GS- /MD"
+        }
+      ],
+      "test": "png_roundtrip",
+      "test_includes": [
+        "tools/libs/libpng-1.2.5",
+        "tools/libs/zlib-1.2.3"
+      ]
+    },
+    "zlib": {
+      "name": "zlib",
+      "description": "zlib 1.2.3 as linked into the 2008-06 exe (recipe zlib-1.2.3). The rebuild makes deflate_copyright static (overlay) so both copies can link into one program; mining recipes are unchanged.",
+      "layers": [
+        {
+          "name": "upstream",
+          "mode": "recipe",
+          "recipe": "zlib-1.2.3",
+          "files": "recipe",
+          "flags": "/O2 /GS- /MD",
+          "direct": true
+        }
+      ],
+      "test": "zlib_roundtrip",
+      "test_includes": [
+        "tools/libs/zlib-1.2.3"
+      ],
+      "overlay": {
+        "root": "tools/libs/zlib-1.2.3",
+        "patches": "rebuild/2008-06/patches/zlib-deflate-copyright.json"
+      }
+    },
+    "boost": {
+      "name": "Boost",
+      "description": "Boost 1.34.1 compiled libraries the 2008-06 client links statically (thread, signals, filesystem, date_time, regex, iostreams with zlib), stock upstream sources.",
+      "layers": [
+        {
+          "name": "upstream",
+          "mode": "direct",
+          "recipe": "boost-1.34.1",
+          "dir": "tools/libs/boost_1_34_1",
+          "files": "libs/thread/src/*.cpp libs/signals/src/*.cpp libs/filesystem/src/*.cpp libs/date_time/src/gregorian/*.cpp libs/regex/src/*.cpp libs/iostreams/src/zlib.cpp libs/iostreams/src/file_descriptor.cpp libs/iostreams/src/mapped_file.cpp",
+          "exclude": [
+            "tss_dll.cpp",
+            "tss_null.cpp"
+          ],
+          "extra_includes": [
+            "tools/libs/boost_1_34_1",
+            "tools/libs/zlib-1.2.3"
+          ],
+          "defines": "WIN32 NDEBUG BOOST_ALL_NO_LIB BOOST_THREAD_BUILD_LIB BOOST_SIGNALS_STATIC_LINK BOOST_FILESYSTEM_STATIC_LINK BOOST_DATE_TIME_STATIC_LINK BOOST_REGEX_STATIC_LINK BOOST_IOSTREAMS_NO_LIB",
+          "flags": "/O2 /GS- /EHsc /MD"
+        }
+      ],
+      "test": "boost_core",
+      "test_includes": [
+        "tools/libs/boost_1_34_1"
+      ],
+      "test_defines": "WIN32 NDEBUG BOOST_ALL_NO_LIB BOOST_THREAD_USE_LIB",
+      "depends": [
+        "zlib"
+      ]
+    },
+    "raknet": {
+      "name": "RakNet",
+      "description": "RakNet 3.0 as linked into the 2008-06 client. Layer 1: the 2008-verified OpenRBX files (partial: only the functions OpenRBX matched). Layer 2: complete upstream RakNet30 files compiled against the OpenRBX headers so both layers share one ABI.",
+      "layers": [
+        {
+          "name": "openrbx",
+          "mode": "recipe",
+          "recipe": "openrbx-raknet",
+          "files": "*.cpp",
+          "flags": "/O2 /GS- /EHsc /MD"
+        },
+        {
+          "name": "upstream",
+          "mode": "direct",
+          "dir": "tools/rbxgs/Client/Network/RakNet30/Source",
+          "files": "*.cpp",
+          "includes_from_recipe": "openrbx-raknet",
+          "extra_includes": [
+            "tools/rbxgs/Client/Network/RakNet30/Source"
+          ],
+          "defines_from_recipe": "openrbx-raknet",
+          "flags": "/O2 /GS- /EHsc /MD /FImalloc.h"
+        }
+      ],
+      "test": "raknet_loopback",
+      "test_includes": [
+        "tools/openrbx/3rdparty/RakNet30/Source",
+        "tools/rbxgs/Client/Network/RakNet30/Source"
+      ]
+    },
+    "p2-image-core": {
+      "name": "P2ImageCore",
+      "description": "Clean G3D/PNG image dependency; no inherited verified_sinks object",
+      "depends": [
+        "zlib-winapi",
+        "zlib"
+      ],
+      "layers": [
+        {
+          "name": "upstream",
+          "mode": "recipe",
+          "recipe": "g3d-6.09-rbx2008",
+          "files": "G3Dcpp/*.cpp",
+          "direct": true,
+          "flags": "/O2 /GS- /EHsc /MD"
+        },
+        {
+          "name": "ijg",
+          "mode": "direct",
+          "dir": "tools/libs/g3d-6.09/source/IJG",
+          "files": "*.c",
+          "flags": "/O2 /GS- /MD",
+          "defines": "WIN32 NDEBUG"
+        },
+        {
+          "name": "png",
+          "mode": "direct",
+          "dir": "tools/libs/g3d-6.09/source/png",
+          "files": "*.c",
+          "defines": "WIN32 NDEBUG",
+          "flags": "/O2 /GS- /MD",
+          "extra_includes": [
+            "tools/libs/zlib-1.2.3"
+          ]
+        }
+      ],
+      "test": "P2ImageCodecTest",
+      "test_includes": [
+        "tree:g3d-6.09-rbx2008/include"
+      ],
+      "verified": false
+    },
+    "p2-texture-interop": {
+      "name": "P2TextureInterop",
+      "description": "Clean genuine GLG3D providers needed by native texture legacy-reference branch; no verified sink layer; unrelated SDL GApp bootstrap excluded",
+      "depends": [
+        "p2-image-core"
+      ],
+      "layers": [
+        {
+          "name": "upstream",
+          "mode": "recipe",
+          "recipe": "g3d-6.09-rbx2008",
+          "files": "GLG3Dcpp/*.cpp",
+          "direct": true,
+          "flags": "/O2 /GS- /EHsc /MD",
+          "exclude": [
+            "GLG3Dcpp/GApp.cpp"
+          ]
+        },
+        {
+          "name": "tonemap",
+          "mode": "recipe",
+          "recipe": "g3d-6.09-rbx2008",
+          "files": "contrib/ArticulatedModel/ToneMap.cpp",
+          "direct": true,
+          "flags": "/O2 /GS- /EHsc /MD"
+        }
+      ],
+      "test": "P2TextureInteropTest",
+      "test_includes": [
+        "tree:g3d-6.09-rbx2008/include",
+        "tools/libs/SDL-1.2.11/include"
+      ],
+      "verified": false
+    },
+    "p4-sound-asset": {
+      "name": "P4SoundAsset",
+      "description": "Recovered native Sound memory loader, genuine declaration, PCM/cache/lifetime diagnostic",
+      "depends": [
+        "rbxgs-app"
+      ],
+      "layers": [
+        {
+          "name": "sound",
+          "mode": "direct",
+          "dir": "rebuild/2008-06/tests",
+          "files": "PlayerNativeSound.cpp PlayerNativeSoundService.cpp PlayerNativeSoundGC.cpp PlayerNativeSoundChannel.cpp PlayerNativeSoundReflection.cpp PlayerNativeReverb.cpp PlayerNativeSoundStats.cpp",
+          "includes_from_recipe": "rbxgs",
+          "defines_from_recipe": "rbxgs",
+          "extra_defines": "BOOST_ALL_NO_LIB",
+          "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD",
+          "extra_includes": [
+            "tools/openrbx/3rdparty/fmod/api/inc"
+          ]
+        }
+      ],
+      "test": "P4SoundAssetTest",
+      "verified": false,
+      "test_includes": [
+        "tools/rbxgs/Client/RbxView",
+        "tools/rbxgs/Client/RbxView/include",
+        "tools/rbxgs/Client/RbxViewBase",
+        "tools/rbxgs/Client/App/include",
+        "tools/rbxgs/Client/RbxGraphics/include",
+        "tools/rbxgs/Client/Network/include",
+        "tools/rbxgs/Client/Rendering/RenderLib/include",
+        "tools/rbxgs/Client/Rendering/AppDraw/include",
+        "tools/rbxgs/Client/Rendering/g3d/include",
+        "tools/rbxgs/Client/Rendering/g3d/zlib",
+        "tools/rbxgs/Client/Rendering/png",
+        "tools/rbxgs/Client/boost_1_34_1/src",
+        "tools/rbxgs/Client/App/lua-5.1.1/src",
+        "tools/rbxgs/Client/Rendering/SDL-1.2.6/include",
+        "tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+        "tools/openrbx/3rdparty/fmod/api/inc"
+      ],
+      "import_dlls": [
+        "fmodex.dll"
+      ],
+      "test_defines": "WIN32 NDEBUG _RELEASE",
+      "overlay": {
+        "root": "tools/rbxgs/Client",
+        "patches": "rebuild/2008-06/patches/rbxgs-client.json"
+      }
+    },
+    "p2-native-material": {
+      "name": "P2NativeMaterial",
+      "description": "Measured native Material/Level/TextureProxy contracts and original mega-material weak cache",
+      "depends": [
+        "p2-image-core",
+        "p2-texture-interop",
+        "rbxgs-app"
+      ],
+      "layers": [
+        {
+          "name": "block",
+          "mode": "direct",
+          "dir": "rebuild/2008-06/tests",
+          "files": "PlayerNativeMaterial.cpp PlayerNativeTexture.cpp PlayerTextureAtlas.cpp PlayerMaterialBackend.cpp",
+          "includes_from_recipe": "rbxgs-view-dll",
+          "defines_from_recipe": "rbxgs-view-dll",
+          "extra_defines": "BOOST_ALL_NO_LIB",
+          "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast",
+          "extra_includes": [
+            "tools/rbxgs/Client/RbxView",
+            "tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
+          ]
+        }
+      ],
+      "test": "P2NativeMaterialTest",
+      "verified": false,
+      "test_includes": [
+        "tools/rbxgs/Client/RbxView",
+        "tools/rbxgs/Client/RbxView/include",
+        "tools/rbxgs/Client/RbxViewBase",
+        "tools/rbxgs/Client/App/include",
+        "tools/rbxgs/Client/RbxGraphics/include",
+        "tools/rbxgs/Client/Network/include",
+        "tools/rbxgs/Client/Rendering/RenderLib/include",
+        "tools/rbxgs/Client/Rendering/AppDraw/include",
+        "tools/rbxgs/Client/Rendering/g3d/include",
+        "tools/rbxgs/Client/Rendering/g3d/zlib",
+        "tools/rbxgs/Client/Rendering/png",
+        "tools/rbxgs/Client/boost_1_34_1/src",
+        "tools/rbxgs/Client/App/lua-5.1.1/src",
+        "tools/rbxgs/Client/Rendering/SDL-1.2.6/include",
+        "tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
+      ],
+      "import_dlls": [
+        "rgmain.dll",
+        "rgdx.dll"
+      ],
+      "test_defines": "WIN32 NDEBUG _RELEASE"
+    },
+    "p2-lighting": {
+      "name": "P2Lighting",
+      "description": "Original007aacc0/007a9d30 light setup with005e1a40 defaults; typed values, no padded RenderScene analog",
+      "depends": [
+        "p2-image-core",
+        "p2-texture-interop"
+      ],
+      "layers": [
+        {
+          "name": "block",
+          "mode": "direct",
+          "dir": "rebuild/2008-06/tests",
+          "files": "PlayerLighting.cpp",
+          "includes_from_recipe": "rbxgs-view-dll",
+          "defines_from_recipe": "rbxgs-view-dll",
+          "extra_defines": "BOOST_ALL_NO_LIB",
+          "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast",
+          "extra_includes": [
+            "tools/rbxgs/Client/RbxView",
+            "tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
+          ]
+        }
+      ],
+      "test": "P2LightingTest",
+      "verified": false,
+      "test_includes": [
+        "tools/rbxgs/Client/RbxView",
+        "tools/rbxgs/Client/RbxView/include",
+        "tools/rbxgs/Client/RbxViewBase",
+        "tools/rbxgs/Client/App/include",
+        "tools/rbxgs/Client/RbxGraphics/include",
+        "tools/rbxgs/Client/Network/include",
+        "tools/rbxgs/Client/Rendering/RenderLib/include",
+        "tools/rbxgs/Client/Rendering/AppDraw/include",
+        "tools/rbxgs/Client/Rendering/g3d/include",
+        "tools/rbxgs/Client/Rendering/g3d/zlib",
+        "tools/rbxgs/Client/Rendering/png",
+        "tools/rbxgs/Client/boost_1_34_1/src",
+        "tools/rbxgs/Client/App/lua-5.1.1/src",
+        "tools/rbxgs/Client/Rendering/SDL-1.2.6/include",
+        "tools/libs/ogre-1.4.5/ogrenew/OgreMain/include"
+      ],
+      "import_dlls": [
+        "rgmain.dll",
+        "rgdx.dll"
+      ],
+      "test_defines": "WIN32 NDEBUG _RELEASE"
+    },
+    "xtp": {
+      "name": "XTP",
+      "description": "Codejock Xtreme Toolkit Pro 11.2.2 as the 2008 exe links it statically against shared MFC 9.0 RTM (recipe xtp-11.2.2-lib-strlen: XTPDLLExports.h prelude, _LIB, noinline CString accessors). Exacts from the other XTP configs swap in through the verified layer.",
+      "mfc_import": true,
+      "layers": [
+        {
+          "name": "upstream",
+          "mode": "recipe",
+          "recipe": "xtp-11.2.2-lib-strlen",
+          "files": "recipe",
+          "direct": true,
+          "flags": "/O2 /MD /GS /EHsc /Ob1"
+        },
+        {
+          "name": "internals",
+          "mode": "recipe",
+          "recipe": "xtp-11.2.2-shared-mfc-internals-rtm",
+          "files": "Source/Controls/XTComboBoxEx.cpp Source/Controls/XTDateTimeCtrl.cpp Source/Controls/XTExcelTabCtrl.cpp Source/CommandBars/XTPCommandBar.cpp Source/CommandBars/XTPCustomizeSheet.cpp Source/Common/XTPDrawHelpers.cpp Source/PropertyGrid/XTPPropertyGridInplaceEdit.cpp Source/PropertyGrid/XTPPropertyGridItemExt.cpp Source/Controls/XTPPropertyPage.cpp Source/SkinFramework/XTPSkinObjectTab.cpp Source/CommandBars/XTPStatusBar.cpp Source/Controls/XTSplitterWnd.cpp",
+          "direct": true,
+          "flags": "/O2 /MD /GS /EHsc /Ob1"
+        }
+      ],
+      "test": "xtp_colors",
+      "test_includes": [
+        "tools/libs/xtp-11.2.2/Source",
+        "tools/libs/mfc-9.0-rtm/atlmfc/include",
+        "rebuild/2008-06/out/XTP/force"
+      ],
+      "test_defines": "WIN32 NDEBUG _MBCS _AFXDLL _XTP_STATICLINK _DLL _XTPLIB_NOAUTOLINK",
+      "verified": true,
+      "force_verified": true,
+      "depends": [
+        "libpng"
+      ]
+    }
+  },
+  "hashes": {
+    "zlib-winapi": "3cd1909dee8323670ca492ae0d87ddb3a648daf9e75c62fe52f70d4a735403f3",
+    "g3d": "bbafae32e6de29219ed082bd3e17b0363568d6a4f1ded043c0dcafbd999516c4",
+    "g3d-gl": "881064e3b177df51664d2ec405d24640d9067e22b369157121da60060cd03278",
+    "zlib": "7c7bc4ab866155c98ae68062b2c17de91343b498b138372b4cf013e385e28a42",
+    "libpng": "0d4d531ec366b3a4832c59810dfc3081a37916c0149eba9dbe61e9bf1e230ba8",
+    "boost": "7a3ed1d5c2580177242a5261466a28225870fc3c3134bf79b6b0cdbe9810c7e7",
+    "raknet": "f15fdb898653ffd003d811e2ae59c4c4367a3b81d3a0dd5a226e2b4865950e60",
+    "rbxgs-app": "c62db25232fe9bb6c7815bc9f06c52c4ef855b71c8c610b410bdb08f1cddacca",
+    "p2-image-core": "0633b1c355e7ea49c2b82ee227fa6a7d8e9f255a596877d79198224cc3e320a1",
+    "p2-texture-interop": "7d73afa9c86264e7beb97c7abf0d5c35112e1f5a82bce61904c85813ebfddf13",
+    "p4-sound-asset": "1ea520a3a3823f2bfab22ff5952f113d625b154c23f72bc39eb03cf1dd1de99b",
+    "p2-native-material": "cb77c384ab9d54dd60e62e017cd179423a70c6a7e99d986b34756fabb1ac45e3",
+    "p2-lighting": "877c3af1cb206e94efcd12b7e36f55f8e2aea5fdd78aadb287b5dce3a803ecd3",
+    "player": "c0f17065e35d2f37f84a8de0e501dff5aaab5da48dc96f2eac858630fd6dc462",
+    "xtp": "edfd37b0b529fbad8d55c1bd70c9cc5b708a38018bf56da4898eed322474ed48"
+  }
+}

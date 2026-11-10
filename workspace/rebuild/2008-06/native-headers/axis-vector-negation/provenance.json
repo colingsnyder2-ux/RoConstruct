@@ -1,0 +1,27 @@
+{
+  "scope": "Scoped native Axis negation codegen analog, not an original vendor declaration or runtime/ABI gate.",
+  "base": "Existing G3D6.09 source",
+  "changes": [
+    "Private empty enum selects a no-init constructor; adds no data members.",
+    "Unary minus initializes each of x,y,z directly before returning.",
+    "Existing public constructor signatures, zero-initialization, size, alignment and operators unchanged."
+  ],
+  "initial_receipt": "work/2008-06/native-check-runs/20261104-135250-e5fa45f0/summary.json",
+  "sources": {
+    "Vector3.h": {
+      "vendor": "tools\\libs\\g3d-6.09\\source\\include\\G3D\\Vector3.h",
+      "vendor_sha256": "55fb769a793ded13ee3ac8c384b24b5d0f396d9a796e01dbc9af4d78e62ddc5f",
+      "profile_sha256": "2c74e5350ad9741a8b63555fe909b5f646e81045462a7dc388c3900459efb5da"
+    },
+    "Vector3.inl": {
+      "vendor": "tools\\libs\\g3d-6.09\\source\\include\\G3D\\Vector3.inl",
+      "vendor_sha256": "9ddc199f0b765354b026fd99c0e553f19ac78802e4f84b783feff94cd4fd5874",
+      "profile_sha256": "35a0cae55d040299d5a7392599b05d0407048484fb1b5e4635468cffc8b6ce0a"
+    }
+  },
+  "selection": "Harvest only render2d/render3dAdorn using record_native_axis_render.py; never select whole object, incidental Extents constructor or private tag constructor.",
+  "limitations": "Scoped header differs textually from other G3D compilation profiles. No global header promotion, runtime activation or full C++ ODR/class ABI claim.",
+  "fresh_proof": "work/2008-06/axis-fixed-family/final-proof/receipt.json",
+  "family_checks": "15/15 class bodies and11/11 dependency bodies/data;21 vtable identities;4096 math semantic vectors.",
+  "diagnostic_link": "work/2008-06/axis-fixed-family/link-closure/receipt.json: remaining CWorkspace::write only, zero duplicates, zero input drift."
+}

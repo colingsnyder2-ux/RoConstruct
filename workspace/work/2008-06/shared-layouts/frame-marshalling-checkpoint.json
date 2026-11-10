@@ -1,0 +1,9 @@
+{
+  "revision": "54e50084f4de40ae7db714e465f219be23e75b32",
+  "probe_sha256": "008dfb0e3bafa9cf813c75862d124c0e94ab7d13962e00a397043e6bd90dad04",
+  "active_exes_unchanged": true,
+  "frame_ctor": "483-byte pass with typed caption",
+  "frame_dtor": "309-byte pass with typed caption",
+  "integration_gain": 0,
+  "next": "Recover property-grid base/member layout; complete marshal registry/event dispatch and caption virtual/message ABI before runtime swap"
+}

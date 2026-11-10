@@ -1,0 +1,23 @@
+{
+  "swap_target": "CRobloxDoc native diagnostic closure",
+  "baseline_commit": "e9bfe6671a60913f56cc7efc99de1b9045ede2ecfe9570327ad0a53f2f195188",
+  "session": "abcd180639c648cc9523cdca2e2b4579",
+  "change": "Resolve missing exact bundled generated adoptions into private content-addressed cache; preserve installed inputs and workspace-native resolution",
+  "source_sha256": "b52f846d1861f3ae00f45716928d8b46acf349641546d298a279fb5775de5ea6",
+  "bundle_sha256": "8023588c1f7b47f4aeeb58aa7ee4292a97e21511ab2fc69727d63cf166acd9cb",
+  "validation": [
+    "exact Debris bundled bytes/hash",
+    "existing donor file preserved",
+    "unknown generated name stays missing",
+    "wrong tree cannot use basename fallback",
+    "workspace-native adoption resolves locally",
+    "Python syntax compilation"
+  ],
+  "remaining": [
+    "P6 child build consumption",
+    "sound prerequisite declaration mismatch",
+    "diagnostic provider selection and ABI/runtime gates"
+  ],
+  "activation": false,
+  "server_credit": 0
+}

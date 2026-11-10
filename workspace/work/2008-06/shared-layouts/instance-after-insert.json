@@ -1,0 +1,98 @@
+{
+  "revision": "3895281473eb65bfab07ce44e4c5207366c427f7",
+  "sources": {
+    "rebuild\\2008-06\\tests\\..\\native-classes\\InstanceLifetime.cpp": "a08a54430407d174f12520b30eafe26a860314d37a389c5445fd72a32c969488",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "8776a7affe6a0b715aa006c3946e03d73c3bfe3234310090a2046cbc7e1e472c",
+    "rebuild\\2008-06\\native-headers\\util\\GuidItem.h": "f76a772f00e2606e278066e8f4bd935a1b4fc69a2b56a07f4863ca6a8fd09b53",
+    "rebuild\\2008-06\\tests\\record_native_instance_lifetime.py": "df7095be934683a533d4850043083339b72c78767d4b6a8a8ae7e335d1d4f235"
+  },
+  "compiler_build": 21022,
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoNativeInstanceLifetime.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\..\\native-classes\\InstanceLifetime.cpp"
+  ],
+  "compile_exit": 0,
+  "methods": [
+    {
+      "address": "0055b7e0",
+      "symbol": "??0Instance@RBX@@QAE@XZ",
+      "size": 375,
+      "relocation_normalized_exact": true,
+      "verified_direct_calls": [
+        {
+          "offset": 59,
+          "symbol": "??0Guid@RBX@@QAE@XZ",
+          "target": "0x5a8300"
+        },
+        {
+          "offset": 81,
+          "symbol": "??0?$Described@VInstance@RBX@@$1?sInstance@2@3PBDBVDescribedBase@Reflection@2@@Reflection@RBX@@QAE@XZ",
+          "target": "0x55b780"
+        },
+        {
+          "offset": 96,
+          "symbol": "??0?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@IAE@XZ",
+          "target": "0x5e9ec0"
+        },
+        {
+          "offset": 266,
+          "symbol": "??2@YAPAXI@Z",
+          "target": "0x6a0920"
+        }
+      ]
+    },
+    {
+      "address": "0055a540",
+      "symbol": "??1Instance@RBX@@UAE@XZ",
+      "size": 572,
+      "relocation_normalized_exact": true,
+      "verified_direct_calls": [
+        {
+          "offset": 494,
+          "symbol": "??1SignalSource@Reflection@RBX@@UAE@XZ",
+          "target": "0x56bd40"
+        },
+        {
+          "offset": 512,
+          "symbol": "??1?$GuidItem@VInstance@RBX@@@RBX@@QAE@XZ",
+          "target": "0x4b3760"
+        }
+      ]
+    }
+  ],
+  "scope": "Selected direct calls verified; GuidItem destructor, remaining virtuals and runtime linking remain unverified."
+}

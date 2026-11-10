@@ -1,0 +1,17 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "00629bb0",
+                                        "symbol":  "??0ClickDetector@RBX@@"
+                                    },
+                                    {
+                                        "addr":  "006299a0",
+                                        "symbol":  "??1ClickDetector@RBX@@"
+                                    }
+                                ],
+                     "source":  "native-classes/ClickDetector.cpp"
+                 }
+             ]
+}

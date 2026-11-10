@@ -1,0 +1,111 @@
+{
+  "swap_target": "CRobloxDoc native diagnostic closure",
+  "current_run": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-doc-relinks\\20261105-152734-3e8dd256",
+  "current_result_sha256": "eb734ae0245914418d47aa5e43ff4b001b46a5535e1d15050952345e9a6c3b42",
+  "explicit_inputs_rehashed": 332,
+  "changed_inputs": [],
+  "link_blockers": [
+    "?render2d@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z",
+    "?render3dAdorn@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z",
+    "?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z"
+  ],
+  "duplicates": [],
+  "cumulative_archive": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-cumulative-links-20261105\\serializer-member-152732-82bc06\\linked.lib",
+  "cumulative_archive_sha256": "b9d0373b050bafb2c7e0d3eac3302adc3eb3fe2318c30670bac92448aa794ccf",
+  "primary_evidence": {
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-extents-evidence-20261105\\evidence.json": "4a37a1d5c7fdde616c3c302203dcc3b32d24a384e90212a7680caaeb0b88d71a",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-writer-evidence-20261105\\evidence.json": "ae5b9771665bc80640dbbfee7c7621323291d2abc54fb8c25d80e453fc64803e",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-vista-abi-20261105\\contracts.txt": "1eaf4846df691d0cc074541fb1e5be020f84b1a0b47497615db24ab0d6486638",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-vista-abi-20261105\\inputs.json": "210c53844cc4a18b2786bf8f079ca2e23934f33ab9ed81d63f5a2eab5fea508f",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-drag-abi-20261105\\helper-providers.json": "b51a9dbad6b2d76ce7051cc0563b83e6387f4763afa1cf36ae374b5a7cf65f53",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-drag-abi-20261105\\contracts.json": "fd1d26f383401d56fd3a49aab84bdccfe7b6a24cfa8901f40d3164ee97207316",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-axis-lifetime-20261105\\bindings.json": "c5b06de55f72e70dda5dabfd43915f0edc7645ae1d851d19bec91109d27c6f71",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-axis-lifetime-20261105\\handoff.json": "462a285fa3b4a010a84aa839e7040a845393b82abc28b20af710db139886f9cf",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-mega-cleanup-20261105\\handoff.json": "d100a9e6a46dfd70f6e65922ee4bd99153ee3c96dd1d7c8fedf62d53b1357cbe",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-irenderable-20261105\\replacement.json": "236ed8dfb776bdd85ddcc028ba6850279a013344122d7842e9b0b0c6ef05ea0c",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-irenderable-20261105\\native-proof.json": "440dc2319b2ed0bfc409867c23ae2ba4272fd8ef9cd36719d58280862458d34d",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-mega-provenance-20261105\\handoff.json": "1a278b3140c91639debd9c19192d46dbf69ff1eec6ef5ce6ef30e62586f8fabe",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-axis-data-20261105\\handoff.json": "08213322adade91228a22bbd00ccb6bd5855e8cf69cbb7211ecd4762a3e3dad8",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-xml-actual-20261105\\receipt.json": "512f98a6861246c04a6293c55914128d78f25500ddbb14d8e87d32a97b90c8ab",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-axis-eh-20261105\\continuation.json": "24a85d5eb283a18c5d8deb8fcaf466d03663f414825dc87aa2ce8bb04b2deebd",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-drag-calls-20261105\\handoff.json": "3a21d0f3fad229713da01b85de39e5f2d1b07b1babac5768247cc4f0b195dbff",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-clone-provenance-20261105\\handoff.json": "1b9c6d746967cf6b491b380235eb6954e7756c481a9e85a3e23d3360f81cd494",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-clone-owner-20261105\\handoff.json": "6ff67c12a32a2b77764e65d77befe3cf199cfd0749e9e36d5bbae37c5452dcfd",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-clone-wrapper-20261105\\saved-object.json": "9d4c90072134215f52def0a09deca95e7f01a9df9e58906bc84d50908677dc61",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-clone-delayed-20261105\\saved-object.json": "6f6879fc4ae03b84521722705b453279a5b6ac86add1fb3f2faf8c54bb463a4d",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-clone-helper-20261105\\compile-receipt.json": "a190b69669412e1dbf54afcfb4eaceb564bc3caf24abff6687ad37a0151b64fe",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-clone-helper-20261105\\callee-inventory.json": "1cd3d2cebc5b588a02e438d07e9e2b7afa5e55aeb9f3a6061bf0c46e74b9cb5e",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-serializer-compile-20261105\\receipt.json": "bba14e390020299b4fe01d9ef31c6e77b4d75c5e8b21eb1ef704f2c0de829d15",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-serializer-audit-20261105\\summary.json": "239eb1ff0afc15c4fe6520a010ead118b51708eff73b54afe84415af224a24a3",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-serializer-audit-20261105\\include-log-correction.json": "66e7b05fca5f498956a90620285fff30d80d1955cbf1ce7d407c16c39b0a958d",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-serializer-callees-20261105\\inventory.json": "fed64951eef7f601d4a17b32d64c080486fe7b751706f523bdd241ef6668dc6f",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-serializer-inline-20261105\\receipt.json": "f18ea68fe2788d75d3211ea99dce1fb51c3228354a8dfb665711c8246e4ec346",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-archive-resolve-20261105\\summary.json": "c2debf2e89aaca88f805586aae11650e80fd06bed08b440297ed24d8cf94b487",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-archive-resolve-owner-20261105\\handoff.json": "4e95b960829ecd60d022e8b466ffff6b43c145cfa39e6b93488e7271c17f8dd0"
+  },
+  "original_debug_record": {
+    "path": "d:\\Roblox\\Releases\\2008.06.17\\bin\\Release\\Roblox.pdb",
+    "guid": "11AE806B-23B8-4CB0-A191-E30ED910D995",
+    "age": 8,
+    "nearby_original_pdb_files": [],
+    "scope": "Locator from the verified PE; PDB is not available or authenticated."
+  },
+  "resume_actions": [
+    "Acquire version-proven original June 2008 Axis source/include/compiler context before a new render experiment.",
+    "Acquire provider-bearing VCWorkspace declaration/TU or matching PDB compiland context before a new writer experiment.",
+    "Preserve three-rejected-hypothesis budgets, saved exact providers, and the cumulative archive.",
+    "When a justified provider passes exact body/data/call checks, replay the latest explicit command with only guarded changes.",
+    "After successful link, verify actual map/PE provider selection, ABI/EH and required runtime gates before activation."
+  ],
+  "static_corrections": [
+    "computeExtents has direct Geometry size field reads, not a virtual getGridSize call; CRT indirect boundary remains.",
+    "DragUtilities.obj header offsets22672778(old0c597) and67861986(historical5e468) are snapshot-specific. Current position is recomputed in drag-static-correction.json. Member SHA400206004ed3d01dfa715c8cc9f9aef7dd2d0f1b70ae05530f4bdd12890aa62a is unchanged.",
+    "Axis/Mouse weak externals have search=2 LIBRARY; they are not unconditional search=3 ALIAS records.",
+    "Actual XmlElement.obj supplies exact143B clearValue. Prior saved writer EH graphs are conditional; the proof writer object is not a current selected input.",
+    "Current helper availability and normalized body equality do not establish linked-PE selection."
+  ],
+  "integrated_irenderable": {
+    "original_address": "0047d410",
+    "body_bytes": 1,
+    "required_profile": "Recorded original-MSVC runner flags include /U_RELEASEASSERT /U_DEBUG; source is intentionally not pinned.",
+    "scope": "Exact authentic saved provider plus guarded remainder, supplied to failed diagnostic; no selected-PE proof."
+  },
+  "independent_next_work": [
+    "ResolveRefs hypothesis2 uses original two early-false gates and late true return; one prior rejected native trial.",
+    "Refresh resolve-owner no-loss/consumer audit against current332 inputs and add the exact native method before composition.",
+    "Competing factory COMDAT stays a selected-PE obligation; supplied loader object also has an exact286B factory candidate."
+  ],
+  "integrated_loader": {
+    "address": "00593250",
+    "body_bytes": 550,
+    "data_checks": 3,
+    "object_sha256": "e5508d0afe443b7195efdce28703b97e7c634e15d85a84a97b4ba28d5fc88767",
+    "direct_bindings": 17,
+    "strict_indirect_sites": 4,
+    "prior_rejections": 1,
+    "scope": "Exact body/data supplied to isolated diagnostic with owner split; resolveRefs, complete ABI/EH, selection and runtime remain gated."
+  },
+  "integrated_clone": {
+    "address": "00559350",
+    "body_bytes": 149,
+    "object_sha256": "5ce86906a4f9046887cb1a976ea551944069c3f08313bba25ca84a799a16457f",
+    "direct_calls_verified": 4,
+    "prior_rejected_hypotheses": 1,
+    "scope": "Exact code/data in isolated diagnostic with exact245B helper and owner remainder; virtual indirect, EH/ABI, private canonical ODR and runtime gates remain open."
+  },
+  "inactive_from_xml_root": {
+    "address": "00559250",
+    "body_bytes": 245,
+    "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-144726-344e0b26\\unit-000\\candidate.obj",
+    "object_sha256": "7048fbbf73b4d1f6e9e3fc967eded57734290e8ba4f9037578b99256446a3153",
+    "scope": "Exact code/data with reviewed direct calls; imported indirects, loadInstances callee correctness, EH/selection/ABI/runtime remain separate."
+  },
+  "conditional_eh_extension": {
+    "receipt": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-cumulative-links-20261105\\axis-mega-eh-continuation.json",
+    "scope": "Separate Axis and actual MegaDragger cleanup graphs with supplied actual external bodies; selected PE, indirect ABI/runtime and strict indirect failures remain open."
+  },
+  "executed": false,
+  "activation": false,
+  "gated_swaps": 0,
+  "server_credit": 0
+}

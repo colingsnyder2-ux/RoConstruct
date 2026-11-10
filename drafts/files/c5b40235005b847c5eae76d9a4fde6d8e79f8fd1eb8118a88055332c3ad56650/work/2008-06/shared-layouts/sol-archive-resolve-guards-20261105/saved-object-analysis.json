@@ -1,0 +1,24 @@
+[
+  {
+    "source": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-classes\\ArchiveBinderResolve.cpp",
+    "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-153542-74d2121c\\unit-000\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "00592720",
+        "requested_symbol": "?resolveRefs@ArchiveBinder@@UAE_NXZ",
+        "status": "different",
+        "symbol": "?resolveRefs@ArchiveBinder@@UAE_NXZ",
+        "score": 87,
+        "target_size": 96,
+        "object_size": 90,
+        "target_sha256": "795e550f1220ed8f27e11361af87ee78f934474fead2e012a4b6446d02748d49",
+        "first_byte_difference": 72,
+        "check_seconds": 0.924807
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  }
+]

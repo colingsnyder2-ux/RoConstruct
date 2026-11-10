@@ -1,0 +1,18 @@
+{
+  "source_revision": "0dcbf70f18",
+  "command": [
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\P2RecoveredPlayer.exe",
+    "--frames",
+    "2",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\fixtures\\sphere-reference.rbxl"
+  ],
+  "exit": 0,
+  "exe_sha256": "8c2a6507ed7149653123b40566b22be16d476d51d522c8ec29b21cc09538320a",
+  "fixture_sha256": "25484b0cc4ac333b3b6cf616eb0b6282305c9fb4c995da26c968f0e056d0e095",
+  "files": {
+    "comparison.json": "8f9d4f864ac73f243706be738a70a3e5475977be70c6c53b2f91181e44d6727a",
+    "last.png": "358f239aff63fe108966594dcb2b2455ca03f8eeb3dec802de398792533f3abf",
+    "player.log": "3342d65277e5dd6fd0a04e660d4227fc90d672c8d6a0f86de6c2d57ebf7f3fc0",
+    "stdout.txt": "809c78c55cf081df559d02e464a7105922366d85d4f18d6b2184b8fb08f94830"
+  }
+}

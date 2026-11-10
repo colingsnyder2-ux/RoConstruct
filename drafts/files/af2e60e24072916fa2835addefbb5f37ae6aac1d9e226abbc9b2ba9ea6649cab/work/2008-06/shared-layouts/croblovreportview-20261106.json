@@ -1,0 +1,25 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "00457a40",
+                                        "symbol":  "??0CRobloxReportView@@"
+                                    },
+                                    {
+                                        "addr":  "00458b70",
+                                        "symbol":  "??1CRobloxReportView@@"
+                                    },
+                                    {
+                                        "addr":  "00455fd0",
+                                        "symbol":  "?OnCreate@CRobloxReportView@@"
+                                    },
+                                    {
+                                        "addr":  "004589c0",
+                                        "symbol":  "?OnInitialUpdate@CRobloxReportView@@"
+                                    }
+                                ],
+                     "source":  "native-classes/CRobloxReportView.cpp"
+                 }
+             ]
+}

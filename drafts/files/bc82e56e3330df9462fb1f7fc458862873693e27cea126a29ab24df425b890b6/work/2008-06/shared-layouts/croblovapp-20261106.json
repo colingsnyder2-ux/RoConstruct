@@ -1,0 +1,21 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "0044d810",
+                                        "symbol":  "??0CRobloxApp@@"
+                                    },
+                                    {
+                                        "addr":  "0044b1b0",
+                                        "symbol":  "??1CRobloxApp@@"
+                                    },
+                                    {
+                                        "addr":  "0044aeb0",
+                                        "symbol":  "?InitInstance@CRobloxApp@@"
+                                    }
+                                ],
+                     "source":  "native-classes/CRobloxApp.cpp"
+                 }
+             ]
+}

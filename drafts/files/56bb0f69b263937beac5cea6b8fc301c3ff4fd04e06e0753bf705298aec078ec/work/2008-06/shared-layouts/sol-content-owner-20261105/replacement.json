@@ -1,0 +1,8 @@
+{
+  "original_archive_sha256": "6d17c86cc5b225b7ba0969223e3ce3c260add1876eec7d60e535c4de4b2db28f",
+  "replacement_archive_sha256": "a2c2e7ba00f70bc8da1eb8a00a38177248a79b732b99fe7a2a2e91cee32701f2",
+  "unchanged_other_members": 266,
+  "changed_member": "ContentProvider.obj",
+  "normal_librarian": true,
+  "scope": "inactive archive; final diagnostic selected link and complete external consumers remain unproven"
+}

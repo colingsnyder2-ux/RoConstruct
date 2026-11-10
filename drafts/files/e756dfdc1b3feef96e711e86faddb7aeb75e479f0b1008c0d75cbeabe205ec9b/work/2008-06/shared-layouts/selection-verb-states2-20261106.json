@@ -1,0 +1,11 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/SelectionVerbStates.cpp",
+      "checks": [
+        {"addr": "005813f0", "symbol": "?doIt@TrackCameraCommand@RBX@@"},
+        {"addr": "00581510", "symbol": "?doIt@FollowCameraCommand@RBX@@"}
+      ]
+    }
+  ]
+}

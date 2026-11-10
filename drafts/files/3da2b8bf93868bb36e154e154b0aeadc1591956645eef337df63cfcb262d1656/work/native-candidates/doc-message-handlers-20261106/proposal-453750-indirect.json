@@ -1,0 +1,135 @@
+{
+  "workflow": 52,
+  "client": "2008-06",
+  "swap_target": "CRobloxDoc 30-handler batch (inactive exacts)",
+  "blocker": "453750/453990 std::string/MFC indirect sites (11 each) + 2 virtual dispatches",
+  "batch_open": {
+    "swap_target": "CRobloxDoc 30 handlers",
+    "blocker": "453750 and 453990: 11 indirect sites each; sources already byte-exact (350 bytes both)",
+    "required_provider": "MSVCP90 basic_string + MFC CString IAT providers; ChangeHistoryService/CCmdUI vtable slots",
+    "next_proof": "validated library provider objects for EH audit (IAT group); vtable/RTTI for virtuals; teardown parked"
+  },
+  "evidence": {
+    "asm_map_453750": [
+      {
+        "offset": 122,
+        "insn": "call [0x802460]",
+        "provider": "MSVCP90 basic_string<char> ctor",
+        "group": "library-IAT"
+      },
+      {
+        "offset": 162,
+        "insn": "call edx",
+        "provider": "ChangeHistoryService vtable slot 0 (history->queryUnplay bool)",
+        "group": "virtual"
+      },
+      {
+        "offset": 168,
+        "insn": "call [0x803f04]",
+        "provider": "mfc90 CString ctor #316",
+        "group": "library-IAT"
+      },
+      {
+        "offset": 183,
+        "insn": "call [0x802464]",
+        "provider": "MSVCP90 basic_string::c_str",
+        "group": "library-IAT"
+      },
+      {
+        "offset": 200,
+        "insn": "call [0x8032c4]",
+        "provider": "mfc90 CString::Format #2538 with string id 0x82",
+        "group": "library-IAT"
+      },
+      {
+        "offset": 218,
+        "insn": "call [0x803ee0]",
+        "provider": "mfc90 #910 (CString helper for SetText argument)",
+        "group": "library-IAT"
+      },
+      {
+        "offset": 229,
+        "insn": "call edx",
+        "provider": "CCmdUI vtable (SetText)",
+        "group": "virtual"
+      },
+      {
+        "offset": 235,
+        "insn": "call [0x803f14]",
+        "provider": "mfc90 CString dtor #601",
+        "group": "library-IAT"
+      },
+      {
+        "offset": 250,
+        "insn": "call [0x802468]",
+        "provider": "MSVCP90 basic_string dtor",
+        "group": "library-IAT"
+      },
+      {
+        "offset": 307,
+        "insn": "call eax",
+        "provider": "shared_ptr<DataModel> control-block teardown",
+        "group": "parked-shared-count"
+      },
+      {
+        "offset": 328,
+        "insn": "call edx",
+        "provider": "shared_ptr<DataModel> control-block teardown",
+        "group": "parked-shared-count"
+      }
+    ],
+    "delta_453990": "identical shape (350 bytes); differs only in queryPlay 00587a90 (vs queryUnplay 00587b70) and Format string id 0x83 (vs 0x82)",
+    "provider_names_source": "native-asm import annotations for the IAT slots (MSVCP90/mfc90 decorated imports) -- binary evidence, not invented",
+    "source": "std::string name; ui->Enable(history->queryUnplay(name, 0)); CString caption; caption.Format(0x82, name.c_str()); ui->SetText(caption); -- already byte-exact",
+    "virtual_refinement": {
+      "site_162": "call edx via mov ebp,[esi]; mov edx,[ebp] = vtable slot 0 of object at [esp+0x54]; receiver ecx=esi, arg = bool pushed from queryUnplay/queryPlay return (movzx eax,al). Identity: CCmdUI::Enable(bool).",
+      "site_229": "call edx via mov edi,[esi]; add edi,0xc; mov edx,[edi] = vtable slot 3; receiver ecx=esi, arg = CString caption (push eax after Format). Identity: CCmdUI::SetText(CString).",
+      "vtable_query": "vtables.json has CEnabledCmdUI (4 slots, 0080fbfc) but no base CCmdUI vtable; CCmdUI lives in mfc90.dll outside exe tables, so slot identities stay derived-from-ASM (not binary-proven)."
+    }
+  },
+  "hypotheses": [
+    {
+      "id": "H1",
+      "text": "Edit source to bind indirect as direct",
+      "status": "rejected",
+      "reason": "Would regress byte-exactness; IAT/virtual sites need separate ABI proof, not source shape."
+    },
+    {
+      "id": "H2",
+      "text": "EH-audit library IAT group with validated vendor provider objects",
+      "status": "viable-but-blocked",
+      "reason": "Requires validated objects for MSVCP90 basic_string + mfc90 CString symbols; archive/RSP inputs missing (provider_selection blocked_on_missing_input)."
+    },
+    {
+      "id": "H3",
+      "text": "VTable/RTTI query for CCmdUI Enable/SetText slots",
+      "status": "attempted-blocked",
+      "reason": "CEnabledCmdUI present in exe tables; base CCmdUI vtable is vendor MFC state, outside exe evidence -- slot numbers remain derived, not proven."
+    }
+  ],
+  "groups": {
+    "library-IAT": 7,
+    "virtual": 2,
+    "parked-shared-count": 2,
+    "check": 11
+  },
+  "parked": true,
+  "remaining": [
+    "validated MSVCP90/mfc90 provider objects for IAT group",
+    "base CCmdUI vtable provenance (vendor MFC) for Enable slot 0 / SetText slot 3",
+    "shared_count teardown (parked, proposal-453670-indirect.json)",
+    "document link archive/RSP for provider selection"
+  ],
+  "receipt_hashes": {
+    "run_manifest_sha256": "0574cfa2aa1b544210bd0450e97b72b08d308a34c33d460e568a89377f2ce9c8",
+    "analysis_sha256": "8f5b26fba6f531e4cfc4c4a3a69c84d0dd7f803ddaeb66b0632205a7772deb2f"
+  },
+  "metrics": {
+    "inactive_exacts": 30,
+    "selected_exacts": 0,
+    "gated_swaps": 0,
+    "server_credit_added": 0
+  },
+  "revision": 3,
+  "draft_note": "Parked with IAT/virtual/teardown split; source edit rejected; next gate is validated MSVCP90/mfc90 provider objects for EH audit."
+}

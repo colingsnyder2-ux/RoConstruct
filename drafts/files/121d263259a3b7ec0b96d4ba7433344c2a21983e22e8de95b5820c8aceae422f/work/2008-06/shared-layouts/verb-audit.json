@@ -1,0 +1,6 @@
+{
+  "swap_target": "Selection runnable integration (Verb base)",
+  "ctor": {"run": "work/2008-06/native-check-runs/20261105-195617-a4791b10", "addr": "005833e0", "size": 175, "symbol": "Verb ctor", "result": "different/missing: candidate missing (symbol not in object, header/inline mismatch). Cannot claim."},
+  "next_gate": "CWorkspace::insert 0046b9d0 catch rethrow (86%, parked), write EH empty-state (parked), Content closure, NullTool headers, Body getter COMDAT (parked), Initialize compiler (parked), updateCaption 00465e40 (86% parked)",
+  "metrics": {"inactive_exact": 75, "selected_exact": "unknown", "gated_swaps": 0, "server_credit": 0}
+}

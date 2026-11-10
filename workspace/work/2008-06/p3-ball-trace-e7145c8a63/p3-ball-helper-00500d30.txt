@@ -1,0 +1,36 @@
+00500d30  56                   push esi
+00500d31  57                   push edi
+00500d32  8b7c240c             mov edi, dword ptr [esp + 0xc]
+00500d36  8bf1                 mov esi, ecx
+00500d38  8b06                 mov eax, dword ptr [esi]
+00500d3a  8b5004               mov edx, dword ptr [eax + 4]
+00500d3d  57                   push edi
+00500d3e  ffd2                 call edx
+00500d40  8b06                 mov eax, dword ptr [esi]
+00500d42  8b5008               mov edx, dword ptr [eax + 8]
+00500d45  57                   push edi
+00500d46  8bce                 mov ecx, esi
+00500d48  ffd2                 call edx
+00500d4a  8b06                 mov eax, dword ptr [esi]
+00500d4c  8b500c               mov edx, dword ptr [eax + 0xc]
+00500d4f  57                   push edi
+00500d50  8bce                 mov ecx, esi
+00500d52  ffd2                 call edx
+00500d54  8b06                 mov eax, dword ptr [esi]
+00500d56  8b5010               mov edx, dword ptr [eax + 0x10]
+00500d59  57                   push edi
+00500d5a  8bce                 mov ecx, esi
+00500d5c  ffd2                 call edx
+00500d5e  8b06                 mov eax, dword ptr [esi]
+00500d60  8b5014               mov edx, dword ptr [eax + 0x14]
+00500d63  57                   push edi
+00500d64  8bce                 mov ecx, esi
+00500d66  ffd2                 call edx
+00500d68  8b06                 mov eax, dword ptr [esi]
+00500d6a  8b5018               mov edx, dword ptr [eax + 0x18]
+00500d6d  57                   push edi
+00500d6e  8bce                 mov ecx, esi
+00500d70  ffd2                 call edx
+00500d72  5f                   pop edi
+00500d73  5e                   pop esi
+00500d74  c20400               ret 4

@@ -1,0 +1,65 @@
+{
+  "target": "00592720",
+  "status": "parked; H2 rejected; no third hypothesis authorized",
+  "rejected_hypotheses": 2,
+  "compiled_sources": 1,
+  "runner": "work\\2008-06\\native-check-runs\\20261105-153542-74d2121c",
+  "source_sha256": "8ff3b4ed3ccafc9538b9919b1f70bf262bf09ac73c2f5749f3447446ab49c6b1",
+  "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-153542-74d2121c\\unit-000\\candidate.obj",
+  "object_sha256": "4850a49d274a81e7066e84fea56e42c8fb8a7f36ad501e8f2c5bb976c25bff59",
+  "target_size": 96,
+  "candidate_size": 90,
+  "first_difference": 72,
+  "relocations": [
+    {
+      "offset": 17,
+      "symbol": [
+        "?resolveIDREF@ArchiveBinder@@QAE_NUIDREFBinding@1@@Z",
+        0,
+        0,
+        32
+      ],
+      "kind": 6,
+      "addend": 0
+    },
+    {
+      "offset": 54,
+      "symbol": [
+        "??$_Count_if@V?$_Iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@V?$bind_t@_NV?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@boost@@V?$list2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YAHV?$_Iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@0@0V?$bind_t@_NV?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@boost@@V?$list2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@Z",
+        0,
+        471,
+        32
+      ],
+      "kind": 20,
+      "addend": 0
+    },
+    {
+      "offset": 66,
+      "symbol": [
+        "?resolveRefs@MergeBinder@RBX@@UAE_NXZ",
+        0,
+        489,
+        32
+      ],
+      "kind": 20,
+      "addend": 0
+    }
+  ],
+  "direct_binding_proof": false,
+  "data_proof": false,
+  "missing_inputs": [
+    "parent reviewed evidence and authorization for any H3",
+    "exact body and referenced-data proof",
+    "transitive helper/resolveIDREF ABI/EH",
+    "linked provider selection and runtime gates"
+  ],
+  "next_bounded_action": "parent review H2 saved-object diff; no recompile or source rewrite",
+  "baseline_receipt": "sol-archive-resolve-20261105/summary.json",
+  "swap_target": "serializer dependency closure",
+  "metrics": {
+    "inactive_exact": 0,
+    "selected_exact": null,
+    "fully_gated_swaps": 0,
+    "server_credit": 0
+  }
+}

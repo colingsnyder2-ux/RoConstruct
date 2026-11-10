@@ -1,0 +1,17 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "005d6400",
+                                        "symbol":  "?rebalanceTeams@Teams@RBX@@"
+                                    },
+                                    {
+                                        "addr":  "005d6340",
+                                        "symbol":  "?getNumPlayersInTeam@Teams@RBX@@"
+                                    }
+                                ],
+                     "source":  "native-classes/Teams.cpp"
+                 }
+             ]
+}

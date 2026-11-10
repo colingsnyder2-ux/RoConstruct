@@ -1,0 +1,76 @@
+#include <atlpath.h>
+#include "util/FileSystem.h"
+
+namespace RBX
+{
+	
+
+	
+}
+
+namespace RBX {
+
+
+std::string FileSystem::getCacheDirectory(bool create) {
+ VistaAPIs apis;
+ UCHAR integrity;
+ apis.GetIntegrity(&integrity);
+ if(integrity == 1) {
+  GUID internetCache;
+  CLSIDFromString(L"{352481E8-33BE-4251-BA85-6007CAEDCF9D",&internetCache);
+  PWSTR knownPath = NULL;
+  if(apis.SHGetKnownFolderPath(internetCache,0x8000,NULL,&knownPath)!=E_NOTIMPL) {
+   ATL::CStringA path(knownPath);
+   CoTaskMemFree(knownPath);
+   path += "\\Roblox\\";
+   if(create && !CreateDirectoryA(path,NULL) && GetLastError()!=ERROR_ALREADY_EXISTS) return "";
+   ATL::CPath cache(path);
+   cache.AddBackslash();
+   return (LPCSTR)cache;
+  }
+ }
+ char path[MAX_PATH];
+ HRESULT result=SHGetFolderPathAndSubDirA(NULL,CSIDL_COMMON_APPDATA | (create ? CSIDL_FLAG_CREATE : 0),NULL,SHGFP_TYPE_CURRENT,"Roblox\\Cache",path);
+ if(result==S_OK) return path;
+ else return "";
+}
+}
+
+namespace RBX {
+inline std::string FileSystem::getUserAppDataDirectory(bool create, const char* subDirectory) {
+ VistaAPIs apis;
+ UCHAR integrity;
+ apis.GetIntegrity(&integrity);
+ if(integrity>0) {
+  GUID folder;
+  if(integrity==1) CLSIDFromString(L"{A520A1A4-1780-4FF6-BD18-167343C5AF16}",&folder);
+  else CLSIDFromString(L"{F1B32785-6FBA-4FCF-9D55-7B8E7F157091}",&folder);
+  PWSTR knownPath=NULL;
+  if(apis.SHGetKnownFolderPath(folder,create?0x8000:0,NULL,&knownPath)!=E_NOTIMPL) {
+   ATL::CStringA path(knownPath);
+   CoTaskMemFree(knownPath);
+   path += "\\Roblox\\";
+   if(create) { if(!CreateDirectoryA(path,NULL)) { if(GetLastError()!=ERROR_ALREADY_EXISTS) return ""; } }
+   if(subDirectory) {
+    path += subDirectory;
+    if(create) { if(!CreateDirectoryA(path,NULL)) { if(GetLastError()!=ERROR_ALREADY_EXISTS) return ""; } }
+   }
+   ATL::CPath directory(path);
+   directory.AddBackslash();
+   return (LPCSTR)directory;
+  }
+ }
+ int flags=create?CSIDL_FLAG_CREATE:0;
+ std::string subPath("Roblox\\");
+ if(subDirectory) subPath += subDirectory;
+ ATL::CPath path;
+ HRESULT result=SHGetFolderPathAndSubDirA(NULL,CSIDL_APPDATA|flags,NULL,SHGFP_TYPE_CURRENT,subPath.c_str(),path.m_strPath.GetBuffer(MAX_PATH));
+ if(result!=S_OK) result=SHGetFolderPathAndSubDirA(NULL,CSIDL_COMMON_APPDATA|flags,NULL,SHGFP_TYPE_CURRENT,subPath.c_str(),path.m_strPath.GetBuffer(MAX_PATH));
+ if(result==S_OK) {
+  path.m_strPath.ReleaseBuffer();
+  path.AddBackslash();
+  return (LPCSTR)path;
+ }
+ else return "";
+}
+}

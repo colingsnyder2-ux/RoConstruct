@@ -1,0 +1,12 @@
+layer rbxgs: 0 compile errors
+layer net: 0 compile errors
+layer appdraw: 0 compile errors
+layer renderlib: 0 compile errors
+layer view: 0 compile errors
+layer lua: 0 compile errors
+layer glue: 0 compile errors
+verified layer: 108 exact symbols swapped in
+RbxgsApp: linked=True test_exit=0; 98102 object functions, 3375 byte-identical to unique 2008 functions (3119 of >=16 bytes)
+layer engine: 0 compile errors
+layer block: 0 compile errors
+P2RecoveredPlayer: linked=True test_exit=0; 4277 object functions, 335 byte-identical to unique 2008 functions (282 of >=16 bytes)

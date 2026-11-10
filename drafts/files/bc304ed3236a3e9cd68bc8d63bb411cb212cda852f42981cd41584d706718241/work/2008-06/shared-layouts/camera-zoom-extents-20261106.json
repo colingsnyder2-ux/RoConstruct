@@ -1,0 +1,10 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/CameraZoomExtentsAction.cpp",
+      "checks": [
+        {"addr": "00582f50", "symbol": "?doIt@CameraZoomExtentsCommand@RBX@@"}
+      ]
+    }
+  ]
+}

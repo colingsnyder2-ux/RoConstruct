@@ -1,0 +1,22 @@
+[
+  {
+    "case": "hum0",
+    "exit": 3221225477,
+    "timeout": false
+  },
+  {
+    "case": "hum1",
+    "exit": 3221225477,
+    "timeout": false
+  },
+  {
+    "case": "hum0-default-health",
+    "exit": 3221225477,
+    "timeout": false
+  },
+  {
+    "case": "hum0-name-only",
+    "exit": 3221225622,
+    "timeout": false
+  }
+]

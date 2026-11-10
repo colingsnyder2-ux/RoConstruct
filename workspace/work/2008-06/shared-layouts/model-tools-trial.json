@@ -1,0 +1,56 @@
+{
+  "scope": "Inactive factory/lifetime and RTTI checks; derived methods and runtime ABI unproven.",
+  "methods": [
+    {
+      "tool": "AnchorTool",
+      "address": "0x5c7210",
+      "size": 126,
+      "symbol": "?newMouseCommand@?$TToolVerb@VAnchorTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+      "bindings": {
+        "__ehhandler$?newMouseCommand@?$TToolVerb@VAnchorTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ": "0x7bf43b",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "??0ModelTool@RBX@@QAE@PAVWorkspace@1@@Z": "0x63de80",
+        "??_7AnchorTool@RBX@@6BINamed@1@@": "0x83977c",
+        "??_7AnchorTool@RBX@@6BIRenderable@1@@": "0x839764"
+      }
+    },
+    {
+      "tool": "AnchorTool",
+      "address": "0x5c7af0",
+      "size": 30,
+      "symbol": "??_GAnchorTool@RBX@@UAEPAXI@Z",
+      "bindings": {
+        "??1ModelTool@RBX@@UAE@XZ": "0x5c79d0",
+        "??3@YAXPAX@Z": "0x6a067a"
+      }
+    },
+    {
+      "tool": "LockTool",
+      "address": "0x5c72f0",
+      "size": 101,
+      "symbol": "?newMouseCommand@?$TToolVerb@VLockTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+      "bindings": {
+        "__ehhandler$?newMouseCommand@?$TToolVerb@VLockTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ": "0x7bf43b",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "??0ModelTool@RBX@@QAE@PAVWorkspace@1@@Z": "0x63de80",
+        "??_7LockTool@RBX@@6BINamed@1@@": "0x8397f4",
+        "??_7LockTool@RBX@@6BIRenderable@1@@": "0x8397dc"
+      }
+    },
+    {
+      "tool": "LockTool",
+      "address": "0x5c7af0",
+      "size": 30,
+      "symbol": "??_GLockTool@RBX@@UAEPAXI@Z",
+      "bindings": {
+        "??1ModelTool@RBX@@UAE@XZ": "0x5c79d0",
+        "??3@YAXPAX@Z": "0x6a067a"
+      }
+    }
+  ],
+  "source_sha256": "15b6563956451414f8497f9946b893a7e34c01879bb4d0bb2d4915d9e0422700",
+  "header_sha256": "1f30b090516c79b7361d55f926788dd7ec849cdae89674d0d94a73faaa8381d4",
+  "base_header_sha256": "13320b0d23a62af60655aefe20b0a93ec6cffdfda398e70ff107019c69076b9b",
+  "object_sha256": "bd23638c28e407612e7a6ceeca3efa19d9f7894605b59944736add4d8c956c8b",
+  "observer_sha256": "282c5e71f2e1e2830a769b57ed7f5a4a26c3e5d4b16901eeede228e0641cb2b9"
+}

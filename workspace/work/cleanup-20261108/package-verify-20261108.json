@@ -1,0 +1,33 @@
+{
+ "schema": 1,
+ "recorded": "2026-11-08T11:54:36",
+ "ref": "refs/remotes/origin/work@2da654506111296a9f85e38b18500710df5dd5c3",
+ "method": "git archive --format=zip (canonical built with -c core.autocrlf=false, as in .github/workflows/package-findings.yml)",
+ "note": "Local integrity/hash re-verification of the package-findings.yml archive set; CI sha256sum --check equivalent passed.",
+ "archives": {
+  "roconstruct-findings-src.zip": {
+   "entries": 189007,
+   "integrity_ok": true,
+   "sha256": "faf59392c3581900a6c5cf17a5e2ee3428e6264c4943b11ec0dc2c53c4ee2ee0",
+   "size": 625510243
+  },
+  "roconstruct-evidence.zip": {
+   "entries": 24,
+   "integrity_ok": true,
+   "sha256": "d61a267b2e4d0ed578bc07341d7e941ce44413a6266ec42599d052eb759536b2",
+   "size": 79581821
+  },
+  "roconstruct-native-source.zip": {
+   "entries": 14017,
+   "integrity_ok": true,
+   "sha256": "565ff98598f227b75b678e4961889da93b873ce579a9c1eb975ade431420c8e1",
+   "size": 68242632
+  },
+  "roconstruct-canonical-native.zip": {
+   "entries": 4573,
+   "integrity_ok": true,
+   "sha256": "02ae2d2a0553eb7f9f56c6e722a894665067aa786b5b188d3e86f7735510e1c0",
+   "size": 56057200
+  }
+ }
+}

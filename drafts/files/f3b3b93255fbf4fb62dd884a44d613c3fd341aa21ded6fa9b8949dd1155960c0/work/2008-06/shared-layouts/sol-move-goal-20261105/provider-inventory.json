@@ -1,0 +1,406 @@
+{
+  "functions": [
+    {
+      "symbol": "??0Vector3@G3D@@QAE@MMM@Z",
+      "size": 25
+    },
+    {
+      "symbol": "??4Vector3@G3D@@QAEAAV01@ABV01@@Z",
+      "size": 25
+    },
+    {
+      "symbol": "??9Vector3@G3D@@QBE_NABV01@@Z",
+      "size": 54
+    },
+    {
+      "symbol": "??GVector3@G3D@@QBE?AV01@ABV01@@Z",
+      "size": 35
+    },
+    {
+      "symbol": "?dragSnap@Dragger@RBX@@SAABVVector3@G3D@@XZ",
+      "size": 51
+    },
+    {
+      "symbol": "?zero@Vector3@G3D@@SAABV12@XZ",
+      "size": 45
+    },
+    {
+      "symbol": "?movePrimitivesGoal@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@AAV54@@Z",
+      "size": 236
+    }
+  ],
+  "externals": [
+    {
+      "name": "??_C@_0P@GHFPNOJB@bad?5allocation?$AA@",
+      "section": 3,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?collate@?$_Locbase@H@std@@2HB",
+      "section": 5,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?ctype@?$_Locbase@H@std@@2HB",
+      "section": 6,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?monetary@?$_Locbase@H@std@@2HB",
+      "section": 7,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?numeric@?$_Locbase@H@std@@2HB",
+      "section": 8,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?time@?$_Locbase@H@std@@2HB",
+      "section": 9,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?messages@?$_Locbase@H@std@@2HB",
+      "section": 10,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?all@?$_Locbase@H@std@@2HB",
+      "section": 11,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?none@?$_Locbase@H@std@@2HB",
+      "section": 12,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?skipws@?$_Iosb@H@std@@2W4_Fmtflags@12@B",
+      "section": 13,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?unitbuf@?$_Iosb@H@std@@2W4_Fmtflags@12@B",
+      "section": 14,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?uppercase@?$_Iosb@H@std@@2W4_Fmtflags@12@B",
+      "section": 15,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?showbase@?$_Iosb@H@std@@2W4_Fmtflags@12@B",
+      "section": 16,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?showpoint@?$_Iosb@H@std@@2W4_Fmtflags@12@B",
+      "section": 17,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?showpos@?$_Iosb@H@std@@2W4_Fmtflags@12@B",
+      "section": 18,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?left@?$_Iosb@H@std@@2W4_Fmtflags@12@B",
+      "section": 19,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?right@?$_Iosb@H@std@@2W4_Fmtflags@12@B",
+      "section": 20,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?internal@?$_Iosb@H@std@@2W4_Fmtflags@12@B",
+      "section": 21,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?dec@?$_Iosb@H@std@@2W4_Fmtflags@12@B",
+      "section": 22,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?oct@?$_Iosb@H@std@@2W4_Fmtflags@12@B",
+      "section": 23,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?hex@?$_Iosb@H@std@@2W4_Fmtflags@12@B",
+      "section": 24,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?scientific@?$_Iosb@H@std@@2W4_Fmtflags@12@B",
+      "section": 25,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?fixed@?$_Iosb@H@std@@2W4_Fmtflags@12@B",
+      "section": 26,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?hexfloat@?$_Iosb@H@std@@2W4_Fmtflags@12@B",
+      "section": 27,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?boolalpha@?$_Iosb@H@std@@2W4_Fmtflags@12@B",
+      "section": 28,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?_Stdio@?$_Iosb@H@std@@2W4_Fmtflags@12@B",
+      "section": 29,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?adjustfield@?$_Iosb@H@std@@2W4_Fmtflags@12@B",
+      "section": 30,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?basefield@?$_Iosb@H@std@@2W4_Fmtflags@12@B",
+      "section": 31,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?floatfield@?$_Iosb@H@std@@2W4_Fmtflags@12@B",
+      "section": 32,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?goodbit@?$_Iosb@H@std@@2W4_Iostate@12@B",
+      "section": 33,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?eofbit@?$_Iosb@H@std@@2W4_Iostate@12@B",
+      "section": 34,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?failbit@?$_Iosb@H@std@@2W4_Iostate@12@B",
+      "section": 35,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?badbit@?$_Iosb@H@std@@2W4_Iostate@12@B",
+      "section": 36,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?_Hardfail@?$_Iosb@H@std@@2W4_Iostate@12@B",
+      "section": 37,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?in@?$_Iosb@H@std@@2W4_Openmode@12@B",
+      "section": 38,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?out@?$_Iosb@H@std@@2W4_Openmode@12@B",
+      "section": 39,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?ate@?$_Iosb@H@std@@2W4_Openmode@12@B",
+      "section": 40,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?app@?$_Iosb@H@std@@2W4_Openmode@12@B",
+      "section": 41,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?trunc@?$_Iosb@H@std@@2W4_Openmode@12@B",
+      "section": 42,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?_Nocreate@?$_Iosb@H@std@@2W4_Openmode@12@B",
+      "section": 43,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?_Noreplace@?$_Iosb@H@std@@2W4_Openmode@12@B",
+      "section": 44,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?binary@?$_Iosb@H@std@@2W4_Openmode@12@B",
+      "section": 45,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?beg@?$_Iosb@H@std@@2W4_Seekdir@12@B",
+      "section": 46,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?cur@?$_Iosb@H@std@@2W4_Seekdir@12@B",
+      "section": 47,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?end@?$_Iosb@H@std@@2W4_Seekdir@12@B",
+      "section": 48,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "??0Vector3@G3D@@QAE@MMM@Z",
+      "section": 50,
+      "value": 0,
+      "type": 32
+    },
+    {
+      "name": "__fltused",
+      "section": 0,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "??4Vector3@G3D@@QAEAAV01@ABV01@@Z",
+      "section": 52,
+      "value": 0,
+      "type": 32
+    },
+    {
+      "name": "??9Vector3@G3D@@QBE_NABV01@@Z",
+      "section": 54,
+      "value": 0,
+      "type": 32
+    },
+    {
+      "name": "??GVector3@G3D@@QBE?AV01@ABV01@@Z",
+      "section": 56,
+      "value": 0,
+      "type": 32
+    },
+    {
+      "name": "?dragSnap@Dragger@RBX@@SAABVVector3@G3D@@XZ",
+      "section": 58,
+      "value": 0,
+      "type": 32
+    },
+    {
+      "name": "__real@3dcccccd",
+      "section": 59,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?v@?1??dragSnap@Dragger@RBX@@SAABVVector3@G3D@@XZ@4V45@A",
+      "section": 60,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "__real@3f800000",
+      "section": 61,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "??_B?1??dragSnap@Dragger@RBX@@SAABVVector3@G3D@@XZ@51",
+      "section": 62,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?zero@Vector3@G3D@@SAABV12@XZ",
+      "section": 64,
+      "value": 0,
+      "type": 32
+    },
+    {
+      "name": "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A",
+      "section": 65,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "__real@00000000",
+      "section": 66,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51",
+      "section": 67,
+      "value": 0,
+      "type": 0
+    },
+    {
+      "name": "?movePrimitivesGoal@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@AAV54@@Z",
+      "section": 69,
+      "value": 0,
+      "type": 32
+    },
+    {
+      "name": "?movePrimitives@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@@Z",
+      "section": 0,
+      "value": 0,
+      "type": 32
+    },
+    {
+      "name": "?toGrid@Math@RBX@@SA?AVVector3@G3D@@ABV34@0@Z",
+      "section": 0,
+      "value": 0,
+      "type": 32
+    }
+  ]
+}

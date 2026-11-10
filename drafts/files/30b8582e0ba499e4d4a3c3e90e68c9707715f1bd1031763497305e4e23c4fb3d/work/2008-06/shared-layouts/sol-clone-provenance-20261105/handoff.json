@@ -1,0 +1,46 @@
+{
+  "status": "parked at bounded original+actual-provider catalog",
+  "session": "0b75276ba6ed4872afa9b46cd7a797be",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "archive_sha256": "5e468dd4a346f252ce853c68ee416f1df833eddb23c0ab80e15194c623d19f4c",
+  "compile_count": 0,
+  "source_header_archive_edits": 0,
+  "links": 0,
+  "facts": [
+    "Axis00640800 calls00581d80 for selection service then supplies service+13c, null mouse argument, workspace to0060e540 at006408c8; no new Part ownership on this branch.",
+    "Original clone00559350 calls00591a30 and virtual[vptr+38] before helper00559250. Helper calls00593480,00593250, then returns first eight-byte vector handle with pi count increment at00559315; no new controlblock allocated by that copy.",
+    "00593250 obtains className data at00593303 then calls00420190 at0059331a; registry lookup00420190 dispatches first creator slot at0042023d and dynamic shared cast0041fcc0.",
+    "Original startup007ef080 obtains Part Name via0041df00 (literal0094a240=Part), gets registry00405da0 (returns0096c2b4), calls005644a0 then stores creator0092dd78 at007ef0ab. Destructor007fa820 restores vptr0080f1c4 and erases its key.",
+    "Part creator0041ea40 calls0041e9c0; copies px with nullable+10 adjustment and unchanged pi, incrementing pi+4 at0041ea94. New ownership is lower0041e910/0041e880, not returned-subobject adjustment.",
+    "Actual archive AbstractFactoryProduct<Instance>::create providers normalize to original00420190; direct-call/EH/data closure not asserted. Part creator175B normalizes to many original wrappers including0041ea40, so this alone does not prove data or target identity. Relocation+0x26 names Creatable<Instance>::create<PartInstance>."
+  ],
+  "wrong_provider": {
+    "symbol": "?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ",
+    "member": "/532",
+    "member_sha256": "6b90d0272fc5e4ce238a23bcd487c2f9c29846c505057a3d3beb67d649a05aeb",
+    "original_size": 149,
+    "provider_size": 332,
+    "first_nonrelocation_byte_offset": "0x17",
+    "original": "sub esp,8 at+0x15",
+    "provider": "sub esp,0x28 at+0x15; extra archivable check at+0x22; toNewXmlRoot relocation+0x4a",
+    "proposal": "Recover original149B clone wrapper and00559250 helper separately using verified original assembly; retain virtual+38 and genuine serializer path. No compile authorized."
+  },
+  "missing_inputs": [
+    "Concrete original source-instance vtable+38 targets and their XML producer coverage; registry contents are name dependent.",
+    "Saved COFF providers for00559250/loadInstances transitive chain with reviewed direct calls, RTTI/data/EH; current clone provider is divergent.",
+    "Parent selected final map/PE for provider selection; original registry name and creator RTTI differ from candidate type spelling (PADA versus PBDB), requiring data verification."
+  ],
+  "next_bounded_action": "Parent recover149B original clone wrapper and catalog serializer providers00593250/00559250, then resolve concrete Part source vtable+38 and returned Instance subobject dynamic cast. No universal Part family/runtime claim.",
+  "budget": "No compiled hypotheses; renderer/writer rejected budgets unchanged",
+  "files_sha256": {
+    "catalog.py": "24bf3c41404134d7bde145b795a2f9391dba919c947c61cf12888d25bb964e27",
+    "dispatch.json": "e54118d7a3bfec8f952d9d0ae727e8a676344d4afdf0908b5b9f75108df5b01d",
+    "dispatch.py": "99f7bb4ab140aafd39607d19116020478be61490ecc7aadd17ef20338c4332e6",
+    "handoff.py": "83ea3c20a08afe6709677dcb4a405f20a569a1b19c7ac6c609e60b540b2a8207",
+    "narrow.py": "fa14c390813e89761bb84e13d01273686d2faeca6f71de23e63739aaae74108a",
+    "original.json": "873bf49e33579323fc479798de136ecbf1159e51580e2245d0246b51648b5e6e",
+    "providers.json": "88ca75620550e617ee1f7a4cfa1d625778f3582fbd7e6477406b451593c29618",
+    "providers.py": "d7d171d21914609a72cba7ad52cb413990aa0c8026224b222c45a571771f1192",
+    "registry.json": "25a5efabc8d68f0a198df0881ac490040f05d7d32cce00b0f0660d36ff4a7585"
+  }
+}

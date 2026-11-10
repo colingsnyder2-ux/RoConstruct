@@ -1,0 +1,26 @@
+{
+  "swap_target": "CRobloxDoc native diagnostic closure",
+  "baseline_receipt": "work/2008-06/native-doc-relinks/20261105-134712-a99864f1",
+  "hypotheses": [
+    {
+      "trial": "4 Vista definitions plain inline; exact original compiler profile",
+      "status": "PASS_NO_LOSS_COMDAT",
+      "compile_count": 1
+    }
+  ],
+  "metrics": {
+    "retained_named_symbols": 296,
+    "retained_bytes": 5870,
+    "lost": 0,
+    "changed": 0,
+    "vista_selection_2": 4,
+    "server_credit": 0,
+    "gated_swaps": 0
+  },
+  "next_gate": "Parent isolated direct-object replacement; selected-provider collision proof then ABI/EH/runtime obligations.",
+  "blockers": [
+    "Original standalone constructor/wrapper ABI contracts remain unproven",
+    "No original reviewed-call require-proof claim; no full build or client execution"
+  ],
+  "source_sha256": "42e8893a14718042933b1d26c4afd63505a601e006b1831b594a4af2571ca969"
+}

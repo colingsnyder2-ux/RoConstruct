@@ -1,0 +1,76 @@
+// 2008-06 native RBX::ViewNew::Part / PartChunk bodies that need the complete PartInstance (inactive): cframe,
+// ~Part and Part's invalidate slot. Bodies that read PartInstance fields (+0x1c8 / +0x1dc / +0x224) or the view's
+// scene manager are not built; see native-headers/ViewNew/PartChunk.h.
+#include "ViewNew/PartChunk.h"
+#include "v8datamodel/PartInstance.h"
+#ifdef NATIVE_VIEWNEW_PART_PENDING
+// Pending: the donor v8datamodel/Decal.h passes &sDecal / &sTexture (const char*) to DescribedCreatable, which does
+// not compile against the native reflection templates; the 2008 names are char arrays (RTTI $1?sDecal@2@3PADA).
+// The recorder verifies these bodies against a generated copy under out/ (see tests/record_native_viewnew_part.py).
+#include "v8datamodel/Decal.h"
+#endif
+
+namespace RBX
+{
+	namespace ViewNew
+	{
+		const G3D::CoordinateFrame& PartChunk::cframe()
+		{
+			coordinateFrame = partInstance->getCoordinateFrame();
+			return coordinateFrame;
+		}
+
+		Part::~Part()
+		{
+			if (partInstance)
+				partInstance->Notifier<PartInstance, CanAggregateChanged>::removeListener(this);
+		}
+
+		// PartInstance::prop_Color 0097610c, prop_Transparency 00976128 ("Transparency"), prop_Reflectance 0097601c
+		// ("Reflectance"): the descriptor names come from their initializers 007f46f0 / 007f4750.
+		void Part::onPropertyChanged(const Reflection::PropertyDescriptor* descriptor)
+		{
+			PartChunk::onPropertyChanged(descriptor);
+
+			if (*descriptor == PartInstance::prop_Color)
+			{
+				if (usesMegaTexture())
+					invalidateMesh();
+				invalidateMaterial();
+			}
+			else if (*descriptor == PartInstance::prop_Transparency || *descriptor == PartInstance::prop_Reflectance)
+			{
+				invalidateMaterial();
+			}
+		}
+
+		void Part::invalidate()
+		{
+			invalidateMaterial();
+			invalidateMesh();
+		}
+	
+#ifdef NATIVE_VIEWNEW_PART_PENDING
+		// FaceInstance::prop_Face 0097b57c ("Face"), Decal::prop_Texture 00975f14 / prop_Specular 00975ef8 /
+		// prop_Shiny 00975f30, Texture::prop_StudsPerTileU 00975f68 / prop_StudsPerTileV 00975f4c (initializers
+		// 007f7600 and 007f4190..007f4290 name them).
+		void Decal::onDecalPropertyChanged(const Reflection::PropertyDescriptor* descriptor)
+		{
+			if (*descriptor == FaceInstance::prop_Face)
+				invalidateMesh();
+			else if (*descriptor == RBX::Decal::prop_Texture || *descriptor == RBX::Decal::prop_Specular || *descriptor == RBX::Decal::prop_Shiny)
+				invalidateMaterial();
+		}
+
+		void Texture::onTexturePropertyChanged(const Reflection::PropertyDescriptor* descriptor)
+		{
+			if (*descriptor == FaceInstance::prop_Face)
+				invalidateMesh();
+			else if (*descriptor == RBX::Decal::prop_Texture || *descriptor == RBX::Decal::prop_Specular || *descriptor == RBX::Decal::prop_Shiny)
+				invalidateMaterial();
+			else if (*descriptor == RBX::Texture::prop_StudsPerTileU || *descriptor == RBX::Texture::prop_StudsPerTileV)
+				invalidateMesh();
+		}
+#endif
+	}
+}

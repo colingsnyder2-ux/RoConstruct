@@ -1,0 +1,3476 @@
+{
+  "source_deletion_only": true,
+  "removed_source_sha256": "f783285cdd03f9b044d2cee1cb21cc1769d46b5becf079f174231791b48e7bb5",
+  "args_exact_except_source_outputs_and_runner_pdb": true,
+  "environment_equal": true,
+  "removed_definition_metadata": {
+    "??$?APAVArchiveBinder@@@?$list1@AAUIDREFBinding@ArchiveBinder@@@_bi@boost@@QBEAAPAVArchiveBinder@@AAV?$value@PAVArchiveBinder@@@12@@Z": {
+      "body": {
+        "size": 7,
+        "sha256": "b3691bef5c4a1c9dbae25e37dc10d6a275438baf4351260630eb84e03afa23b4",
+        "relocations": [],
+        "characteristics": 1615859744,
+        "storage": 2,
+        "section": ".text"
+      },
+      "comdat": {
+        "comdat": true,
+        "section_definition": {
+          "selection": 2,
+          "association": null
+        }
+      }
+    },
+    "??$?RUIDREFBinding@ArchiveBinder@@@?$bind_t@_NV?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@boost@@V?$list2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@QAE_NAAUIDREFBinding@ArchiveBinder@@@Z": {
+      "body": {
+        "size": 41,
+        "sha256": "f7665bab0fc8d6fae1d71143493a12e783f2903e9d4a83100fa7d61e32aa900e",
+        "relocations": [],
+        "characteristics": 1615859744,
+        "storage": 2,
+        "section": ".text"
+      },
+      "comdat": {
+        "comdat": true,
+        "section_definition": {
+          "selection": 2,
+          "association": null
+        }
+      }
+    },
+    "??$?R_NV?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@boost@@V?$list1@AAUIDREFBinding@ArchiveBinder@@@_bi@2@@?$list2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@_bi@boost@@QAE_NV?$type@_N@12@AAV?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@2@AAV?$list1@AAUIDREFBinding@ArchiveBinder@@@12@J@Z": {
+      "body": {
+        "size": 42,
+        "sha256": "022dca00bf1c7d52181b3d767f3870ac3b7d7f9d63c60b538a473a89bef721d5",
+        "relocations": [],
+        "characteristics": 1615859744,
+        "storage": 2,
+        "section": ".text"
+      },
+      "comdat": {
+        "comdat": true,
+        "section_definition": {
+          "selection": 2,
+          "association": null
+        }
+      }
+    },
+    "??$_Checked_base@V?$_Iterator@$00@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@@std@@YA?AV?$_Iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@0@AAV?$_Iterator@$00@20@@Z": {
+      "body": {
+        "size": 44,
+        "sha256": "1410325f05fb67647cc6b03f71cf004b5bd9997633c10ef26af853f2ebcd18cd",
+        "relocations": [],
+        "characteristics": 1615859744,
+        "storage": 2,
+        "section": ".text"
+      },
+      "comdat": {
+        "comdat": true,
+        "section_definition": {
+          "selection": 2,
+          "association": null
+        }
+      }
+    },
+    "??$_Checked_base@V?$_Iterator@$00@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@U_Different_checked_iterator_base_type_tag@3@@std@@YA?AV?$_Iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@0@AAV?$_Iterator@$00@20@U_Different_checked_iterator_base_type_tag@0@@Z": {
+      "body": {
+        "size": 44,
+        "sha256": "1410325f05fb67647cc6b03f71cf004b5bd9997633c10ef26af853f2ebcd18cd",
+        "relocations": [],
+        "characteristics": 1615859744,
+        "storage": 2,
+        "section": ".text"
+      },
+      "comdat": {
+        "comdat": true,
+        "section_definition": {
+          "selection": 2,
+          "association": null
+        }
+      }
+    },
+    "??$_Count_if@V?$_Iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@V?$bind_t@_NV?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@boost@@V?$list2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YAHV?$_Iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@0@0V?$bind_t@_NV?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@boost@@V?$list2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@Z": {
+      "body": {
+        "size": 64,
+        "sha256": "b8f208829860dec0d2e16f2ceeae9fe49230eb9601d5738bc6696cea6f133719",
+        "relocations": [],
+        "characteristics": 1615859744,
+        "storage": 2,
+        "section": ".text"
+      },
+      "comdat": {
+        "comdat": true,
+        "section_definition": {
+          "selection": 2,
+          "association": null
+        }
+      }
+    },
+    "??$bind@_NVArchiveBinder@@UIDREFBinding@1@PAV1@V?$arg@$00@boost@@@boost@@YA?AV?$bind_t@_NV?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@boost@@V?$list2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@0@P8ArchiveBinder@@AE_NUIDREFBinding@3@@ZPAV3@V?$arg@$00@0@@Z": {
+      "body": {
+        "size": 18,
+        "sha256": "f6e93b21793fa04531b2dec0b1712dd1a0f4188e98b962b15e208b37d1df5aee",
+        "relocations": [],
+        "characteristics": 1615859744,
+        "storage": 2,
+        "section": ".text"
+      },
+      "comdat": {
+        "comdat": true,
+        "section_definition": {
+          "selection": 2,
+          "association": null
+        }
+      }
+    },
+    "??$count_if@V?$_Iterator@$00@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@V?$bind_t@_NV?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@boost@@V?$list2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YAHV?$_Iterator@$00@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@0@0V?$bind_t@_NV?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@boost@@V?$list2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@Z": {
+      "body": {
+        "size": 67,
+        "sha256": "5ada21641fb9cdeff78fc2088eac8b08fe313653484949255ebcc4d3a89e3274",
+        "relocations": [
+          [
+            57,
+            "??$_Count_if@V?$_Iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@V?$bind_t@_NV?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@boost@@V?$list2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YAHV?$_Iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@0@0V?$bind_t@_NV?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@boost@@V?$list2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@Z",
+            20
+          ]
+        ],
+        "characteristics": 1615859744,
+        "storage": 2,
+        "section": ".text"
+      },
+      "comdat": {
+        "comdat": true,
+        "section_definition": {
+          "selection": 2,
+          "association": null
+        }
+      }
+    },
+    "??0?$_Const_iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@QAE@PAU_Node@?$_List_nod@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@2@PBV12@@Z": {
+      "body": {
+        "size": 26,
+        "sha256": "c91ccc70bb0b645fb2964bca3b9485e61f9ea7211fbe8b6b867b77ee25207748",
+        "relocations": [],
+        "characteristics": 1615859744,
+        "storage": 2,
+        "section": ".text"
+      },
+      "comdat": {
+        "comdat": true,
+        "section_definition": {
+          "selection": 2,
+          "association": null
+        }
+      }
+    },
+    "??0?$_Iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@QAE@PAU_Node@?$_List_nod@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@2@PBV12@@Z": {
+      "body": {
+        "size": 26,
+        "sha256": "c91ccc70bb0b645fb2964bca3b9485e61f9ea7211fbe8b6b867b77ee25207748",
+        "relocations": [],
+        "characteristics": 1615859744,
+        "storage": 2,
+        "section": ".text"
+      },
+      "comdat": {
+        "comdat": true,
+        "section_definition": {
+          "selection": 2,
+          "association": null
+        }
+      }
+    },
+    "??0?$bind_t@_NV?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@boost@@V?$list2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@QAE@V?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@2@ABV?$list2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@12@@Z": {
+      "body": {
+        "size": 20,
+        "sha256": "c19f8e543233833d40d770b76d1c8144bbc4496bc968beed2b5d5a861ec1fdbc",
+        "relocations": [],
+        "characteristics": 1615859744,
+        "storage": 2,
+        "section": ".text"
+      },
+      "comdat": {
+        "comdat": true,
+        "section_definition": {
+          "selection": 2,
+          "association": null
+        }
+      }
+    },
+    "??0?$list1@AAUIDREFBinding@ArchiveBinder@@@_bi@boost@@QAE@AAUIDREFBinding@ArchiveBinder@@@Z": {
+      "body": {
+        "size": 11,
+        "sha256": "0d9d4797ad8c81da5b9f78b6e3eba5066720c9a41fbd098a5dac1e8581c3c29c",
+        "relocations": [],
+        "characteristics": 1615859744,
+        "storage": 2,
+        "section": ".text"
+      },
+      "comdat": {
+        "comdat": true,
+        "section_definition": {
+          "selection": 2,
+          "association": null
+        }
+      }
+    },
+    "??0?$list2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@_bi@boost@@QAE@V?$value@PAVArchiveBinder@@@12@V?$arg@$00@2@@Z": {
+      "body": {
+        "size": 11,
+        "sha256": "f2ac9eed559eb12095ffb02ce6c8849d0c4894892d9d7cf52a2e45fd529ff40a",
+        "relocations": [],
+        "characteristics": 1615859744,
+        "storage": 2,
+        "section": ".text"
+      },
+      "comdat": {
+        "comdat": true,
+        "section_definition": {
+          "selection": 2,
+          "association": null
+        }
+      }
+    },
+    "??0?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@boost@@QAE@P8ArchiveBinder@@AE_NUIDREFBinding@3@@Z@Z": {
+      "body": {
+        "size": 11,
+        "sha256": "0d9d4797ad8c81da5b9f78b6e3eba5066720c9a41fbd098a5dac1e8581c3c29c",
+        "relocations": [],
+        "characteristics": 1615859744,
+        "storage": 2,
+        "section": ".text"
+      },
+      "comdat": {
+        "comdat": true,
+        "section_definition": {
+          "selection": 2,
+          "association": null
+        }
+      }
+    },
+    "??0?$storage1@AAUIDREFBinding@ArchiveBinder@@@_bi@boost@@QAE@AAUIDREFBinding@ArchiveBinder@@@Z": {
+      "body": {
+        "size": 11,
+        "sha256": "0d9d4797ad8c81da5b9f78b6e3eba5066720c9a41fbd098a5dac1e8581c3c29c",
+        "relocations": [],
+        "characteristics": 1615859744,
+        "storage": 2,
+        "section": ".text"
+      },
+      "comdat": {
+        "comdat": true,
+        "section_definition": {
+          "selection": 2,
+          "association": null
+        }
+      }
+    },
+    "??0?$storage1@V?$value@PAVArchiveBinder@@@_bi@boost@@@_bi@boost@@QAE@V?$value@PAVArchiveBinder@@@12@@Z": {
+      "body": {
+        "size": 11,
+        "sha256": "0d9d4797ad8c81da5b9f78b6e3eba5066720c9a41fbd098a5dac1e8581c3c29c",
+        "relocations": [],
+        "characteristics": 1615859744,
+        "storage": 2,
+        "section": ".text"
+      },
+      "comdat": {
+        "comdat": true,
+        "section_definition": {
+          "selection": 2,
+          "association": null
+        }
+      }
+    },
+    "??0?$storage2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@_bi@boost@@QAE@V?$value@PAVArchiveBinder@@@12@V?$arg@$00@2@@Z": {
+      "body": {
+        "size": 11,
+        "sha256": "f2ac9eed559eb12095ffb02ce6c8849d0c4894892d9d7cf52a2e45fd529ff40a",
+        "relocations": [],
+        "characteristics": 1615859744,
+        "storage": 2,
+        "section": ".text"
+      },
+      "comdat": {
+        "comdat": true,
+        "section_definition": {
+          "selection": 2,
+          "association": null
+        }
+      }
+    },
+    "??0?$value@PAVArchiveBinder@@@_bi@boost@@QAE@ABQAVArchiveBinder@@@Z": {
+      "body": {
+        "size": 13,
+        "sha256": "9c375493fe6e8516cd7ebdc429fa91c81045e81d62b4225dc8b83f1e3b160f39",
+        "relocations": [],
+        "characteristics": 1615859744,
+        "storage": 2,
+        "section": ".text"
+      },
+      "comdat": {
+        "comdat": true,
+        "section_definition": {
+          "selection": 2,
+          "association": null
+        }
+      }
+    },
+    "??8?$_Const_iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@QBE_NABV012@@Z": {
+      "body": {
+        "size": 20,
+        "sha256": "46502f1cd2aa61544f7c2ab32b4562cc42f8c21950d5c4c477c64b159f9dcc2d",
+        "relocations": [],
+        "characteristics": 1615859744,
+        "storage": 2,
+        "section": ".text"
+      },
+      "comdat": {
+        "comdat": true,
+        "section_definition": {
+          "selection": 2,
+          "association": null
+        }
+      }
+    },
+    "??9?$_Const_iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@QBE_NABV012@@Z": {
+      "body": {
+        "size": 20,
+        "sha256": "ab6e7145532409b1dce9da6601511fa0ce2181df5401f1298ce81d0da967b282",
+        "relocations": [],
+        "characteristics": 1615859744,
+        "storage": 2,
+        "section": ".text"
+      },
+      "comdat": {
+        "comdat": true,
+        "section_definition": {
+          "selection": 2,
+          "association": null
+        }
+      }
+    },
+    "??A?$list1@AAUIDREFBinding@ArchiveBinder@@@_bi@boost@@QBEAAUIDREFBinding@ArchiveBinder@@P6A?AV?$arg@$00@2@XZ@Z": {
+      "body": {
+        "size": 5,
+        "sha256": "77e92ed0911ed1e9672b7ba86a8d2e74503cdd27612c0872806959208f081f55",
+        "relocations": [],
+        "characteristics": 1615859744,
+        "storage": 2,
+        "section": ".text"
+      },
+      "comdat": {
+        "comdat": true,
+        "section_definition": {
+          "selection": 2,
+          "association": null
+        }
+      }
+    },
+    "??D?$_Const_iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@QBEABUIDREFBinding@ArchiveBinder@@XZ": {
+      "body": {
+        "size": 7,
+        "sha256": "fe804d4ba05b268cfab1df80ed0f474962cd861bf0d35de9ce5890843b208c16",
+        "relocations": [],
+        "characteristics": 1615859744,
+        "storage": 2,
+        "section": ".text"
+      },
+      "comdat": {
+        "comdat": true,
+        "section_definition": {
+          "selection": 2,
+          "association": null
+        }
+      }
+    },
+    "??D?$_Iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@QBEAAUIDREFBinding@ArchiveBinder@@XZ": {
+      "body": {
+        "size": 7,
+        "sha256": "fe804d4ba05b268cfab1df80ed0f474962cd861bf0d35de9ce5890843b208c16",
+        "relocations": [],
+        "characteristics": 1615859744,
+        "storage": 2,
+        "section": ".text"
+      },
+      "comdat": {
+        "comdat": true,
+        "section_definition": {
+          "selection": 2,
+          "association": null
+        }
+      }
+    },
+    "??E?$_Const_iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@QAEAAV012@XZ": {
+      "body": {
+        "size": 11,
+        "sha256": "6d0b4de66952d55c763788980081475265718cb2af867541fbda583c1a861dfd",
+        "relocations": [],
+        "characteristics": 1615859744,
+        "storage": 2,
+        "section": ".text"
+      },
+      "comdat": {
+        "comdat": true,
+        "section_definition": {
+          "selection": 2,
+          "association": null
+        }
+      }
+    },
+    "??E?$_Iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@QAEAAV012@XZ": {
+      "body": {
+        "size": 11,
+        "sha256": "6d0b4de66952d55c763788980081475265718cb2af867541fbda583c1a861dfd",
+        "relocations": [],
+        "characteristics": 1615859744,
+        "storage": 2,
+        "section": ".text"
+      },
+      "comdat": {
+        "comdat": true,
+        "section_definition": {
+          "selection": 2,
+          "association": null
+        }
+      }
+    },
+    "??R?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@boost@@QBE_NPAVArchiveBinder@@UIDREFBinding@3@@Z": {
+      "body": {
+        "size": 38,
+        "sha256": "938b0ef66f011dc6a723d449809e858da15830e682168da17321e88accff31dc",
+        "relocations": [],
+        "characteristics": 1615859744,
+        "storage": 2,
+        "section": ".text"
+      },
+      "comdat": {
+        "comdat": true,
+        "section_definition": {
+          "selection": 2,
+          "association": null
+        }
+      }
+    },
+    "?_Checked_iterator_base@?$_Iterator@$00@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@QBE?AV?$_Iterator@$0A@@23@XZ": {
+      "body": {
+        "size": 44,
+        "sha256": "63de29cce89af43adb0037ad0756d87f8137e91d732cfa77a310234dcc687257",
+        "relocations": [],
+        "characteristics": 1615859744,
+        "storage": 2,
+        "section": ".text"
+      },
+      "comdat": {
+        "comdat": true,
+        "section_definition": {
+          "selection": 2,
+          "association": null
+        }
+      }
+    },
+    "?a2_@?$storage2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@_bi@boost@@SA?AV?$arg@$00@3@XZ": {
+      "body": {
+        "size": 3,
+        "sha256": "01cb47d078b4841b8408ec4fe278efa83115c6f6e101972987507d2b2b57dcf0",
+        "relocations": [],
+        "characteristics": 1615859744,
+        "storage": 2,
+        "section": ".text"
+      },
+      "comdat": {
+        "comdat": true,
+        "section_definition": {
+          "selection": 2,
+          "association": null
+        }
+      }
+    },
+    "?begin@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@QAE?AV?$_Iterator@$00@12@XZ": {
+      "body": {
+        "size": 19,
+        "sha256": "f43d6151d9dc2b4981966323b9474613e30c17efeca0b79efe7d90752093b3eb",
+        "relocations": [],
+        "characteristics": 1615859744,
+        "storage": 2,
+        "section": ".text"
+      },
+      "comdat": {
+        "comdat": true,
+        "section_definition": {
+          "selection": 2,
+          "association": null
+        }
+      }
+    },
+    "?get@?$value@PAVArchiveBinder@@@_bi@boost@@QAEAAPAVArchiveBinder@@XZ": {
+      "body": {
+        "size": 3,
+        "sha256": "58367ffa2a0179375018fa0f5c26da24391e42ebe0ed8fdda35a21fc7bdc396f",
+        "relocations": [],
+        "characteristics": 1615859744,
+        "storage": 2,
+        "section": ".text"
+      },
+      "comdat": {
+        "comdat": true,
+        "section_definition": {
+          "selection": 2,
+          "association": null
+        }
+      }
+    },
+    "?resolveRefs@ArchiveBinder@@UAE_NXZ": {
+      "body": {
+        "size": 96,
+        "sha256": "c8f2d62c80e90e8ab1aca1e9f15236b551fd31a08d0c42530f80d50dadb1bc71",
+        "relocations": [
+          [
+            17,
+            "?resolveIDREF@ArchiveBinder@@QAE_NUIDREFBinding@1@@Z",
+            6
+          ],
+          [
+            54,
+            "??$_Count_if@V?$_Iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@V?$bind_t@_NV?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@boost@@V?$list2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YAHV?$_Iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@0@0V?$bind_t@_NV?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@boost@@V?$list2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@Z",
+            20
+          ],
+          [
+            66,
+            "?resolveRefs@MergeBinder@RBX@@UAE_NXZ",
+            20
+          ]
+        ],
+        "characteristics": 1615859744,
+        "storage": 2,
+        "section": ".text"
+      },
+      "comdat": {
+        "comdat": true,
+        "section_definition": {
+          "selection": 1,
+          "association": null
+        }
+      }
+    },
+    "?size@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@QBEIXZ": {
+      "body": {
+        "size": 4,
+        "sha256": "38058506e8e859d5be73a33baa621352c08ea01f2224ee170173253757193941",
+        "relocations": [],
+        "characteristics": 1615859744,
+        "storage": 2,
+        "section": ".text"
+      },
+      "comdat": {
+        "comdat": true,
+        "section_definition": {
+          "selection": 2,
+          "association": null
+        }
+      }
+    },
+    "?unwrap@?$unwrapper@V?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@boost@@@_bi@boost@@SAAAV?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@3@AAV453@J@Z": {
+      "body": {
+        "size": 5,
+        "sha256": "6d072d11a5144359746b0e9d2eaf5a06531a0162b9f7d07a44dd01f51006e142",
+        "relocations": [],
+        "characteristics": 1615859744,
+        "storage": 2,
+        "section": ".text"
+      },
+      "comdat": {
+        "comdat": true,
+        "section_definition": {
+          "selection": 2,
+          "association": null
+        }
+      }
+    }
+  },
+  "retained_comdat_metadata_changes": {
+    "__ehfuncinfo$??1?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@QAE@XZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 929
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 893
+        }
+      }
+    ],
+    "__unwindfunclet$?processID@MergeBinder@RBX@@MAE_NPBVXmlNameValuePair@@PAVInstance@2@@Z$0": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1348
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1262
+        }
+      }
+    ],
+    "__unwindtable$?_Xlen@?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@KAXXZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 666
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 660
+        }
+      }
+    ],
+    "__unwindfunclet$??1?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@QAE@XZ$0": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 929
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 893
+        }
+      }
+    ],
+    "__unwindfunclet$??1XmlElement@@QAE@XZ$0": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1076
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1022
+        }
+      }
+    ],
+    "__ehhandler$?_Buynode@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@2@D@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1313
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1233
+        }
+      }
+    ],
+    "__ehhandler$?processIDREF@MergeBinder@RBX@@MAE_NPBVXmlNameValuePair@@PAVDescribedBase@Reflection@2@PBVIIDREF@2@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1540
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1474
+        }
+      }
+    ],
+    "__ehfuncinfo$?newRootElement@SerializerV2@@SAPAVXmlElement@@XZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1199
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1133
+        }
+      }
+    ],
+    "__ehhandler$??0?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@VInstanceHandle@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@5@$0A@@std@@@std@@QAE@ABU?$less@PAVInstance@RBX@@@1@ABV?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@1@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1422
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1336
+        }
+      }
+    ],
+    "__unwindtable$?processIDREF@MergeBinder@RBX@@MAE_NPBVXmlNameValuePair@@PAVDescribedBase@Reflection@2@PBVIIDREF@2@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1540
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1474
+        }
+      }
+    ],
+    "__unwindfunclet$??0logic_error@std@@QAE@ABV01@@Z$0": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 676
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 670
+        }
+      }
+    ],
+    "__ehhandler$?processID@MergeBinder@RBX@@MAE_NPBVXmlNameValuePair@@PAVInstance@2@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1348
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1262
+        }
+      }
+    ],
+    "__ehhandler$??4InstanceHandle@RBX@@QAEAAV01@V?$shared_ptr@VInstance@RBX@@@boost@@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1070
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1016
+        }
+      }
+    ],
+    "__unwindtable$?erase@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@VInstanceHandle@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1389
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1305
+        }
+      }
+    ],
+    "__unwindfunclet$??A?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@@std@@QAEAAVInstanceHandle@RBX@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z$0": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1477
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1385
+        }
+      }
+    ],
+    "__unwindtable$?loadXML@SerializerV2@@QAEXAAV?$basic_istream@DU?$char_traits@D@std@@@std@@PAVDataModel@RBX@@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1568
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1502
+        }
+      }
+    ],
+    "__unwindfunclet$?_Incsize@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@IAEXI@Z$2": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1122
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1064
+        }
+      }
+    ],
+    "__unwindfunclet$?erase@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@VInstanceHandle@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z$0": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1389
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1305
+        }
+      }
+    ],
+    "__unwindtable$?processID@ArchiveBinder@@UAE_NPBVXmlNameValuePair@@PAVInstance@RBX@@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1496
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1400
+        }
+      }
+    ],
+    "__ehhandler$??1?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@VInstanceHandle@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@5@$0A@@std@@@std@@QAE@XZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1524
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1458
+        }
+      }
+    ],
+    "__unwindfunclet$?load@SerializerV2@@SAXPAVXmlElement@@PAVDataModel@RBX@@@Z$0": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1564
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1498
+        }
+      }
+    ],
+    "__unwindfunclet$??A?$map@PAVInstance@RBX@@VInstanceHandle@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@5@@std@@QAEAAVInstanceHandle@RBX@@ABQAVInstance@3@@Z$0": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1481
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1389
+        }
+      }
+    ],
+    "__ehfuncinfo$??0?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@QAE@XZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1354
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1268
+        }
+      }
+    ],
+    "__unwindfunclet$?isolateHandles@SerializerV2@@SAXPAVXmlElement@@@Z$0": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1546
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1480
+        }
+      }
+    ],
+    "__unwindfunclet$??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z$1": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1326
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1246
+        }
+      }
+    ],
+    "__ehfuncinfo$??1?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@QAE@XZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1471
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1381
+        }
+      }
+    ],
+    "__unwindtable$?erase@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1379
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1295
+        }
+      }
+    ],
+    "__ehhandler$?_Incsize@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@IAEXI@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1122
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1064
+        }
+      }
+    ],
+    "__unwindfunclet$??0?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@QAE@XZ$0": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1354
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1268
+        }
+      }
+    ],
+    "__ehfuncinfo$??0?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@VInstanceHandle@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@5@$0A@@std@@@std@@QAE@ABU?$less@PAVInstance@RBX@@@1@ABV?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@1@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1422
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1336
+        }
+      }
+    ],
+    "__unwindfunclet$??1?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@VInstanceHandle@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@5@$0A@@std@@@std@@QAE@XZ$0": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1524
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1458
+        }
+      }
+    ],
+    "__unwindfunclet$??0runtime_error@std@@QAE@ABV01@@Z$0": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1578
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1512
+        }
+      }
+    ],
+    "__ehfuncinfo$??4InstanceHandle@RBX@@QAEAAV01@V?$shared_ptr@VInstance@RBX@@@boost@@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1070
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1016
+        }
+      }
+    ],
+    "__ehhandler$??A?$map@PAVInstance@RBX@@VInstanceHandle@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@5@@std@@QAEAAVInstanceHandle@RBX@@ABQAVInstance@3@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1481
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1389
+        }
+      }
+    ],
+    "__unwindfunclet$??0ArchiveBinder@@QAE@XZ$0": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1550
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1484
+        }
+      }
+    ],
+    "__unwindfunclet$??$addAttribute@PBD@XmlElement@@QAEXABVName@RBX@@PBD@Z$0": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1169
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1111
+        }
+      }
+    ],
+    "__ehfuncinfo$?_Insert_n@?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@IAEXV?$_Vector_const_iterator@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@2@IABUIDREFItem@MergeBinder@RBX@@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1489
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1397
+        }
+      }
+    ],
+    "__unwindfunclet$?processIDREF@MergeBinder@RBX@@MAE_NPBVXmlNameValuePair@@PAVDescribedBase@Reflection@2@PBVIIDREF@2@@Z$2": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1540
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1474
+        }
+      }
+    ],
+    "__ehfuncinfo$?resolveIDREF@ArchiveBinder@@QAE_NUIDREFBinding@1@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1409
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1323
+        }
+      }
+    ],
+    "__unwindfunclet$??0?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@QAE@XZ$0": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1283
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1207
+        }
+      }
+    ],
+    "__ehfuncinfo$?isolateHandles@SerializerV2@@SAXPAVXmlElement@@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1546
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1480
+        }
+      }
+    ],
+    "__ehfuncinfo$??0logic_error@std@@QAE@ABV01@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 676
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 670
+        }
+      }
+    ],
+    "__unwindtable$?processID@MergeBinder@RBX@@MAE_NPBVXmlNameValuePair@@PAVInstance@2@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1348
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1262
+        }
+      }
+    ],
+    "__ehhandler$?resolveIDREF@ArchiveBinder@@QAE_NUIDREFBinding@1@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1409
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1323
+        }
+      }
+    ],
+    "__ehhandler$??0MergeBinder@RBX@@QAE@XZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1504
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1408
+        }
+      }
+    ],
+    "__catchsym$?_Insert_n@?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@IAEXV?$_Vector_const_iterator@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@2@IABUIDREFItem@MergeBinder@RBX@@@Z$6": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1489
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1397
+        }
+      }
+    ],
+    "__ehfuncinfo$?_Buynode@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@2@D@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1313
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1233
+        }
+      }
+    ],
+    "__unwindfunclet$?_Incsize@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@IAEXI@Z$0": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1122
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1064
+        }
+      }
+    ],
+    "__unwindtable$??A?$map@PAVInstance@RBX@@VInstanceHandle@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@5@@std@@QAEAAVInstanceHandle@RBX@@ABQAVInstance@3@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1481
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1389
+        }
+      }
+    ],
+    "__unwindfunclet$??0ArchiveBinder@@QAE@XZ$1": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1550
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1484
+        }
+      }
+    ],
+    "__ehfuncinfo$??A?$map@PAVInstance@RBX@@VInstanceHandle@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@5@@std@@QAEAAVInstanceHandle@RBX@@ABQAVInstance@3@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1481
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1389
+        }
+      }
+    ],
+    "__unwindfunclet$?loadXML@SerializerV2@@QAEXAAV?$basic_istream@DU?$char_traits@D@std@@@std@@PAVDataModel@RBX@@@Z$4": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1568
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1502
+        }
+      }
+    ],
+    "__ehfuncinfo$?_Xlen@?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@KAXXZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 666
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 660
+        }
+      }
+    ],
+    "?id$initializer$@?$date_facet@Vdate@gregorian@boost@@DV?$ostreambuf_iterator@DU?$char_traits@D@std@@@std@@@date_time@boost@@2P6AXXZA": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1584
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1518
+        }
+      }
+    ],
+    "__unwindtable$??0?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@std@@QAE@ABU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@1@ABV?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@1@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1418
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1332
+        }
+      }
+    ],
+    "__ehfuncinfo$??0?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@std@@QAE@ABU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@1@ABV?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@1@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1418
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1332
+        }
+      }
+    ],
+    "__ehhandler$??A?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@@std@@QAEAAVInstanceHandle@RBX@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1477
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1385
+        }
+      }
+    ],
+    "__unwindfunclet$?erase@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z$0": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1379
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1295
+        }
+      }
+    ],
+    "__tryblocktable$?_Buynode@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@2@D@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1313
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1233
+        }
+      }
+    ],
+    "__ehfuncinfo$?buildIsolationMap@@YAXPAVXmlElement@@AAV?$map@PAVInstance@RBX@@VInstanceHandle@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@5@@std@@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1500
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1404
+        }
+      }
+    ],
+    "__ehhandler$??1?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@QAE@XZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1471
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1381
+        }
+      }
+    ],
+    "__unwindtable$?load@SerializerV2@@SAXPAVXmlElement@@PAVDataModel@RBX@@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1564
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1498
+        }
+      }
+    ],
+    "__unwindfunclet$?_Insert@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@VInstanceHandle@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@5@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PAVInstance@RBX@@VInstanceHandle@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@5@$0A@@std@@@2@ABU?$pair@QAVInstance@RBX@@VInstanceHandle@2@@2@@Z$2": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1373
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1289
+        }
+      }
+    ],
+    "__unwindfunclet$?newRootElement@SerializerV2@@SAPAVXmlElement@@XZ$0": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1199
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1133
+        }
+      }
+    ],
+    "__ehhandler$??1?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@QAE@XZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 929
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 893
+        }
+      }
+    ],
+    "__unwindfunclet$??1ArchiveBinder@@QAE@XZ$0": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1560
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1494
+        }
+      }
+    ],
+    "__ehfuncinfo$?processID@MergeBinder@RBX@@MAE_NPBVXmlNameValuePair@@PAVInstance@2@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1348
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1262
+        }
+      }
+    ],
+    "$LN6": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1326
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1246
+        }
+      }
+    ],
+    "__unwindfunclet$??0shared_count@detail@boost@@QAE@ABVweak_count@12@@Z$0": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1062
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1008
+        }
+      }
+    ],
+    "__unwindfunclet$??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z$0": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1326
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1246
+        }
+      }
+    ],
+    "__unwindfunclet$?erase@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@VInstanceHandle@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z$2": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1389
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1305
+        }
+      }
+    ],
+    "__ehfuncinfo$??A?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@@std@@QAEAAVInstanceHandle@RBX@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1477
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1385
+        }
+      }
+    ],
+    "__unwindtable$?resolveIDREF@ArchiveBinder@@QAE_NUIDREFBinding@1@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1409
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1323
+        }
+      }
+    ],
+    "__ehhandler$??0logic_error@std@@QAE@ABV01@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 676
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 670
+        }
+      }
+    ],
+    "__unwindtable$?_Buynode@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@2@D@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1313
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1233
+        }
+      }
+    ],
+    "__unwindfunclet$??1?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@QAE@XZ$0": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1471
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1381
+        }
+      }
+    ],
+    "__ehhandler$??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1326
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1246
+        }
+      }
+    ],
+    "__unwindtable$??4InstanceHandle@RBX@@QAEAAV01@V?$shared_ptr@VInstance@RBX@@@boost@@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1070
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1016
+        }
+      }
+    ],
+    "__unwindtable$??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1326
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1246
+        }
+      }
+    ],
+    "__ehhandler$?erase@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1379
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1295
+        }
+      }
+    ],
+    "$LN8": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1326
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1246
+        }
+      }
+    ],
+    "__unwindfunclet$??A?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@@std@@QAEAAVInstanceHandle@RBX@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z$1": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1477
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1385
+        }
+      }
+    ],
+    "__ehhandler$?loadXML@SerializerV2@@QAEXAAV?$basic_istream@DU?$char_traits@D@std@@@std@@PAVDataModel@RBX@@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1568
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1502
+        }
+      }
+    ],
+    "__unwindfunclet$?processID@ArchiveBinder@@UAE_NPBVXmlNameValuePair@@PAVInstance@RBX@@@Z$1": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1496
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1400
+        }
+      }
+    ],
+    "__unwindfunclet$??0MergeBinder@RBX@@QAE@XZ$1": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1504
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1408
+        }
+      }
+    ],
+    "__ehfuncinfo$??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1326
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1246
+        }
+      }
+    ],
+    "__unwindtable$?isolateHandles@SerializerV2@@SAXPAVXmlElement@@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1546
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1480
+        }
+      }
+    ],
+    "__unwindtable$??1?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@std@@QAE@XZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1520
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1454
+        }
+      }
+    ],
+    "__unwindfunclet$??0?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@std@@QAE@ABU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@1@ABV?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@1@@Z$0": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1418
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1332
+        }
+      }
+    ],
+    "__unwindtable$?_Insert@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@2@ABU?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@2@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1366
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1282
+        }
+      }
+    ],
+    "__unwindtable$??0?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@QAE@XZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1354
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1268
+        }
+      }
+    ],
+    "__unwindtable$??$addAttribute@PBD@XmlElement@@QAEXABVName@RBX@@PBD@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1169
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1111
+        }
+      }
+    ],
+    "__ehhandler$?erase@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@VInstanceHandle@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1389
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1305
+        }
+      }
+    ],
+    "$LN12": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1326
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1246
+        }
+      }
+    ],
+    "__unwindfunclet$?erase@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z$2": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1379
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1295
+        }
+      }
+    ],
+    "__unwindfunclet$?resolveIDREF@ArchiveBinder@@QAE_NUIDREFBinding@1@@Z$0": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1409
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1323
+        }
+      }
+    ],
+    "__ehfuncinfo$??0MergeBinder@RBX@@QAE@XZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1504
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1408
+        }
+      }
+    ],
+    "__catchsym$?_Insert_n@?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@IAEXV?$_Vector_const_iterator@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@2@IABUIDREFItem@MergeBinder@RBX@@@Z$7": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1489
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1397
+        }
+      }
+    ],
+    "__unwindtable$??0?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@QAE@XZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1283
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1207
+        }
+      }
+    ],
+    "__ehfuncinfo$?_Incsize@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@IAEXI@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1122
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1064
+        }
+      }
+    ],
+    "__ehfuncinfo$?processID@ArchiveBinder@@UAE_NPBVXmlNameValuePair@@PAVInstance@RBX@@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1496
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1400
+        }
+      }
+    ],
+    "__ehhandler$?processID@ArchiveBinder@@UAE_NPBVXmlNameValuePair@@PAVInstance@RBX@@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1496
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1400
+        }
+      }
+    ],
+    "__ehfuncinfo$?erase@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1379
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1295
+        }
+      }
+    ],
+    "__unwindtable$??0runtime_error@std@@QAE@ABV01@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1578
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1512
+        }
+      }
+    ],
+    "__unwindtable$??1XmlElement@@QAE@XZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1076
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1022
+        }
+      }
+    ],
+    "__unwindfunclet$??4InstanceHandle@RBX@@QAEAAV01@V?$shared_ptr@VInstance@RBX@@@boost@@@Z$0": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1070
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1016
+        }
+      }
+    ],
+    "__ehhandler$??0?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@std@@QAE@ABU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@1@ABV?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@1@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1418
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1332
+        }
+      }
+    ],
+    "__ehfuncinfo$??0?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@QAE@XZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1283
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1207
+        }
+      }
+    ],
+    "__ehfuncinfo$??0shared_count@detail@boost@@QAE@ABVweak_count@12@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1062
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1008
+        }
+      }
+    ],
+    "__ehhandler$?isolateHandles@SerializerV2@@SAXPAVXmlElement@@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1546
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1480
+        }
+      }
+    ],
+    "__ehhandler$??$addAttribute@PBD@XmlElement@@QAEXABVName@RBX@@PBD@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1169
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1111
+        }
+      }
+    ],
+    "__unwindfunclet$??A?$map@PAVInstance@RBX@@VInstanceHandle@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@5@@std@@QAEAAVInstanceHandle@RBX@@ABQAVInstance@3@@Z$1": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1481
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1389
+        }
+      }
+    ],
+    "__ehfuncinfo$??1?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@std@@QAE@XZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1520
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1454
+        }
+      }
+    ],
+    "__tryblocktable$?_Insert_n@?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@IAEXV?$_Vector_const_iterator@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@2@IABUIDREFItem@MergeBinder@RBX@@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1489
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1397
+        }
+      }
+    ],
+    "__ehfuncinfo$??0runtime_error@std@@QAE@ABV01@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1578
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1512
+        }
+      }
+    ],
+    "__unwindtable$??1?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@QAE@XZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 929
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 893
+        }
+      }
+    ],
+    "__ehhandler$??1XmlElement@@QAE@XZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1076
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1022
+        }
+      }
+    ],
+    "__unwindtable$??1ArchiveBinder@@QAE@XZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1560
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1494
+        }
+      }
+    ],
+    "__ehhandler$?buildIsolationMap@@YAXPAVXmlElement@@AAV?$map@PAVInstance@RBX@@VInstanceHandle@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@5@@std@@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1500
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1404
+        }
+      }
+    ],
+    "__ehfuncinfo$??0ArchiveBinder@@QAE@XZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1550
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1484
+        }
+      }
+    ],
+    "__ehhandler$?_Insert@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@VInstanceHandle@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@5@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PAVInstance@RBX@@VInstanceHandle@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@5@$0A@@std@@@2@ABU?$pair@QAVInstance@RBX@@VInstanceHandle@2@@2@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1373
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1289
+        }
+      }
+    ],
+    "__unwindfunclet$?_Xlen@?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@KAXXZ$2": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 666
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 660
+        }
+      }
+    ],
+    "__unwindfunclet$?processID@ArchiveBinder@@UAE_NPBVXmlNameValuePair@@PAVInstance@RBX@@@Z$0": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1496
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1400
+        }
+      }
+    ],
+    "__ehhandler$?load@SerializerV2@@SAXPAVXmlElement@@PAVDataModel@RBX@@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1564
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1498
+        }
+      }
+    ],
+    "__unwindfunclet$??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z$3": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1326
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1246
+        }
+      }
+    ],
+    "__catchsym$?_Buynode@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@2@D@Z$3": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1313
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1233
+        }
+      }
+    ],
+    "__unwindfunclet$?_Insert@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@VInstanceHandle@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@5@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PAVInstance@RBX@@VInstanceHandle@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@5@$0A@@std@@@2@ABU?$pair@QAVInstance@RBX@@VInstanceHandle@2@@2@@Z$0": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1373
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1289
+        }
+      }
+    ],
+    "__unwindfunclet$?loadXML@SerializerV2@@QAEXAAV?$basic_istream@DU?$char_traits@D@std@@@std@@PAVDataModel@RBX@@@Z$0": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1568
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1502
+        }
+      }
+    ],
+    "__unwindtable$??0MergeBinder@RBX@@QAE@XZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1504
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1408
+        }
+      }
+    ],
+    "__unwindfunclet$?_Insert@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@2@ABU?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@2@@Z$0": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1366
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1282
+        }
+      }
+    ],
+    "__unwindfunclet$?_Buynode@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@2@D@Z$2": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1313
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1233
+        }
+      }
+    ],
+    "__unwindfunclet$?loadXML@SerializerV2@@QAEXAAV?$basic_istream@DU?$char_traits@D@std@@@std@@PAVDataModel@RBX@@@Z$2": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1568
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1502
+        }
+      }
+    ],
+    "__ehfuncinfo$??$addAttribute@PBD@XmlElement@@QAEXABVName@RBX@@PBD@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1169
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1111
+        }
+      }
+    ],
+    "__unwindtable$??0ArchiveBinder@@QAE@XZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1550
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1484
+        }
+      }
+    ],
+    "__ehfuncinfo$?processIDREF@MergeBinder@RBX@@MAE_NPBVXmlNameValuePair@@PAVDescribedBase@Reflection@2@PBVIIDREF@2@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1540
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1474
+        }
+      }
+    ],
+    "__unwindfunclet$?loadXML@SerializerV2@@QAEXAAV?$basic_istream@DU?$char_traits@D@std@@@std@@PAVDataModel@RBX@@@Z$5": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1568
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1502
+        }
+      }
+    ],
+    "__ehfuncinfo$?_Insert@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@VInstanceHandle@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@5@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PAVInstance@RBX@@VInstanceHandle@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@5@$0A@@std@@@2@ABU?$pair@QAVInstance@RBX@@VInstanceHandle@2@@2@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1373
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1289
+        }
+      }
+    ],
+    "__unwindfunclet$?processIDREF@MergeBinder@RBX@@MAE_NPBVXmlNameValuePair@@PAVDescribedBase@Reflection@2@PBVIIDREF@2@@Z$0": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1540
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1474
+        }
+      }
+    ],
+    "__unwindtable$?_Insert_n@?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@IAEXV?$_Vector_const_iterator@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@2@IABUIDREFItem@MergeBinder@RBX@@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1489
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1397
+        }
+      }
+    ],
+    "__ehhandler$??1ArchiveBinder@@QAE@XZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1560
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1494
+        }
+      }
+    ],
+    "__ehfuncinfo$?erase@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@VInstanceHandle@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1389
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1305
+        }
+      }
+    ],
+    "__ehfuncinfo$?loadXML@SerializerV2@@QAEXAAV?$basic_istream@DU?$char_traits@D@std@@@std@@PAVDataModel@RBX@@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1568
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1502
+        }
+      }
+    ],
+    "__unwindfunclet$?_Insert_n@?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@IAEXV?$_Vector_const_iterator@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@2@IABUIDREFItem@MergeBinder@RBX@@@Z$5": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1489
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1397
+        }
+      }
+    ],
+    "__ehhandler$??0ArchiveBinder@@QAE@XZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1550
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1484
+        }
+      }
+    ],
+    "__unwindfunclet$?_Xlen@?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@KAXXZ$0": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 666
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 660
+        }
+      }
+    ],
+    "__ehfuncinfo$?_Insert@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@2@ABU?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@2@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1366
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1282
+        }
+      }
+    ],
+    "__unwindfunclet$??0?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@VInstanceHandle@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@5@$0A@@std@@@std@@QAE@ABU?$less@PAVInstance@RBX@@@1@ABV?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@1@@Z$0": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1422
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1336
+        }
+      }
+    ],
+    "__ehhandler$??0?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@QAE@XZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1283
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1207
+        }
+      }
+    ],
+    "__ehhandler$?_Xlen@?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@KAXXZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 666
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 660
+        }
+      }
+    ],
+    "__unwindtable$??A?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@@std@@QAEAAVInstanceHandle@RBX@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1477
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1385
+        }
+      }
+    ],
+    "__ehhandler$?_Insert_n@?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@IAEXV?$_Vector_const_iterator@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@2@IABUIDREFItem@MergeBinder@RBX@@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1489
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1397
+        }
+      }
+    ],
+    "__unwindtable$?_Insert@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@VInstanceHandle@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@5@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PAVInstance@RBX@@VInstanceHandle@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@5@$0A@@std@@@2@ABU?$pair@QAVInstance@RBX@@VInstanceHandle@2@@2@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1373
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1289
+        }
+      }
+    ],
+    "__unwindtable$??1?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@VInstanceHandle@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@5@$0A@@std@@@std@@QAE@XZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1524
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1458
+        }
+      }
+    ],
+    "__ehfuncinfo$??1XmlElement@@QAE@XZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1076
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1022
+        }
+      }
+    ],
+    "__ehfuncinfo$?load@SerializerV2@@SAXPAVXmlElement@@PAVDataModel@RBX@@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1564
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1498
+        }
+      }
+    ],
+    "__ehhandler$?_Insert@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@2@ABU?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@2@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1366
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1282
+        }
+      }
+    ],
+    "__unwindfunclet$?resolveIDREF@ArchiveBinder@@QAE_NUIDREFBinding@1@@Z$1": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1409
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1323
+        }
+      }
+    ],
+    "__ehhandler$??0shared_count@detail@boost@@QAE@ABVweak_count@12@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1062
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1008
+        }
+      }
+    ],
+    "__unwindtable$??0?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@VInstanceHandle@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@5@$0A@@std@@@std@@QAE@ABU?$less@PAVInstance@RBX@@@1@ABV?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@1@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1422
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1336
+        }
+      }
+    ],
+    "__ehhandler$??0?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@QAE@XZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1354
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1268
+        }
+      }
+    ],
+    "__unwindtable$?_Incsize@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@IAEXI@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1122
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1064
+        }
+      }
+    ],
+    "__unwindfunclet$?buildIsolationMap@@YAXPAVXmlElement@@AAV?$map@PAVInstance@RBX@@VInstanceHandle@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@5@@std@@@Z$2": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1500
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1404
+        }
+      }
+    ],
+    "__ehhandler$??0runtime_error@std@@QAE@ABV01@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1578
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1512
+        }
+      }
+    ],
+    "__ehhandler$??1?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@std@@QAE@XZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1520
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1454
+        }
+      }
+    ],
+    "__unwindfunclet$?buildIsolationMap@@YAXPAVXmlElement@@AAV?$map@PAVInstance@RBX@@VInstanceHandle@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@5@@std@@@Z$3": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1500
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1404
+        }
+      }
+    ],
+    "__unwindfunclet$??1?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@std@@QAE@XZ$0": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1520
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1454
+        }
+      }
+    ],
+    "__unwindfunclet$?_Insert_n@?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@IAEXV?$_Vector_const_iterator@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@2@IABUIDREFItem@MergeBinder@RBX@@@Z$4": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1489
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1397
+        }
+      }
+    ],
+    "__ehfuncinfo$??1?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@VInstanceHandle@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@5@$0A@@std@@@std@@QAE@XZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1524
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1458
+        }
+      }
+    ],
+    "__unwindfunclet$?buildIsolationMap@@YAXPAVXmlElement@@AAV?$map@PAVInstance@RBX@@VInstanceHandle@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@5@@std@@@Z$0": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1500
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1404
+        }
+      }
+    ],
+    "__unwindtable$?buildIsolationMap@@YAXPAVXmlElement@@AAV?$map@PAVInstance@RBX@@VInstanceHandle@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@VInstanceHandle@2@@std@@@5@@std@@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1500
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1404
+        }
+      }
+    ],
+    "__unwindtable$??1?$vector@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@QAE@XZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1471
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1381
+        }
+      }
+    ],
+    "__unwindtable$??0shared_count@detail@boost@@QAE@ABVweak_count@12@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1062
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1008
+        }
+      }
+    ],
+    "__ehhandler$?newRootElement@SerializerV2@@SAPAVXmlElement@@XZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1199
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1133
+        }
+      }
+    ],
+    "__ehfuncinfo$??1ArchiveBinder@@QAE@XZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1560
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1494
+        }
+      }
+    ],
+    "__unwindfunclet$?loadXML@SerializerV2@@QAEXAAV?$basic_istream@DU?$char_traits@D@std@@@std@@PAVDataModel@RBX@@@Z$3": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1568
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1502
+        }
+      }
+    ],
+    "__unwindfunclet$?_Insert@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@std@@@2@$0A@@std@@@2@ABU?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VInstanceHandle@RBX@@@2@@Z$2": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1366
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1282
+        }
+      }
+    ],
+    "__unwindtable$??0logic_error@std@@QAE@ABV01@@Z": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 676
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 670
+        }
+      }
+    ],
+    "__unwindtable$?newRootElement@SerializerV2@@SAPAVXmlElement@@XZ": [
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1199
+        }
+      },
+      {
+        "comdat": true,
+        "section_definition": {
+          "selection": 5,
+          "association": 1133
+        }
+      }
+    ]
+  },
+  "vtable": {
+    "size": 20,
+    "sha256": "de47c9b27eb8d300dbb5f2c353e632c393262cf06340c4fa7f1b40c4cbd36f90",
+    "relocations": [
+      [
+        0,
+        "?announceID@MergeBinder@RBX@@UAEXPBVXmlNameValuePair@@PAVInstance@2@@Z",
+        6
+      ],
+      [
+        4,
+        "?announceIDREF@MergeBinder@RBX@@UAEXPBVXmlNameValuePair@@PAVDescribedBase@Reflection@2@PBVIIDREF@2@@Z",
+        6
+      ],
+      [
+        8,
+        "?resolveRefs@ArchiveBinder@@UAE_NXZ",
+        6
+      ],
+      [
+        12,
+        "?processID@ArchiveBinder@@UAE_NPBVXmlNameValuePair@@PAVInstance@RBX@@@Z",
+        6
+      ],
+      [
+        16,
+        "?processIDREF@ArchiveBinder@@UAE_NPBVXmlNameValuePair@@PAVDescribedBase@Reflection@RBX@@PBVIIDREF@5@@Z",
+        6
+      ]
+    ],
+    "characteristics": 1076891712,
+    "storage": 2,
+    "section": ".rdata"
+  },
+  "vtable_equal": true
+}

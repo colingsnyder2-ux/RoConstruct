@@ -1,0 +1,34 @@
+{
+  "status": "parked: bounded direct/EH ownership evidence complete; transitive ABI/selection open",
+  "compile_count": 0,
+  "source_header_archive_edits": 0,
+  "strict_receipt_sha256": "5424b4647dcf9dba562fd4e4208a399bfd587cfaf7d46d887c7b9fc2ea7e9e02",
+  "ownership": [
+    "weak_ptr::lock() const returns shared_ptr<PartInstance> by value: original ECX points at 8-byte vector weak element; stack hidden output pointer is popped by ret 4. Both original success and expired paths write two words. Original 005cab5c invokes shared_count acquisition 00411ad0; catch path zeroes result. Genuine Boost 1.35 weak_ptr.hpp lock and shared_ptr.hpp weak constructor agree; this is not proof of every transitive acquisition/EH provider.",
+    "anyPartAlive reserves 8 bytes at outgoing ESP, passes that address to lock, then calls nonNullInWorkspace directly with that same two-word storage. No extra count increment or caller destructor: returned temporary is constructed directly into by-value parameter storage. Original 005995f0 consumes pointer at entry ESP+4 and controlblock at entry ESP+8; tests pointer/workspace, releases count and invokes virtual dispose/destroy if needed, returns bool in AL with bare ret. Caller adds ESP,8. This establishes callee destruction ownership for this value parameter.",
+    "partsToPrimitives keeps lock result in local ESP+14/18; copies pointer/controlblock to outgoing 8-byte parameter and atomically increments strong count at 0060ebad. nonNullInWorkspace destroys that copy. Original local remains live for append/getMyWorldFast; at 0060ebe9 state is cleared, local release at 0060ebfb and indirect dispose/destroy at 0060ec08/1d. No double destruction of the same ownership reference.",
+    "G3D Array<Primitive*>::append(const T&) takes ECX=output Array, stack pointer to local Primitive* value, ret 4. Original callee 0059a190 copies one pointer into 4-byte slot, handles aliasing through temporary recursive append and resize. Genuine G3D 6.09 Array.h append(const T&) agrees. Its resize/allocation provider closure is unproved.",
+    "Workspace::getMyWorldFast(const Instance*) is static: push EDI, call 005a0560, caller adds 4, World* in EAX. Callee follows parent links then returns World pointer. Frozen Workspace.h signature agrees. Hierarchy/null-precondition correctness and selected provider remain open."
+  ],
+  "eh": {
+    "original": "handler007d9168 -> FuncInfo008f93dc magic19930522, maxState1, unwind008f93d4: state0 -> -1/action007d9160. Action lea ecx,[ebp-14]; jmp00600660. No try blocks in owner FuncInfo.",
+    "member": "one state0 -> -1 cleanup, funclet lea ecx,[ebp-14]; REL32 shared_ptr<PartInstance> destructor zero addend. Handler points to FuncInfo and ___CxxFrameHandler3. Relocations/section bytes recorded in assembly.txt.",
+    "limits": "Generic normalized body/data checker does not compare unwind tables/actions, handler ABI, throw/catch closure or disposal targets; EH graph correspondence is manual structural evidence, not whole EH exactness."
+  },
+  "remaining_fail": [
+    "anyPartAlive +32 CRT indirect call EBX, loaded from IAT00802890",
+    "partsToPrimitives +61 CRT IAT00802890",
+    "partsToPrimitives +216 and +237 virtual controlblock dispose/destroy",
+    "lock shared_count acquisition/EH transitive provider proof",
+    "selected executable/map and exhaustive dynamic controlblock set unavailable; diagnostic must never execute"
+  ],
+  "next_bounded_action": "Parent verify selected direct provider bodies and transitive acquisition/destructor/EH contracts once selected map/PE exists; preserve indirect FAIL until actual controlblock set and CRT ABI independently proven. No unchanged helper compilation justified.",
+  "declaration_hashes": {
+    "rebuild/2008-06/native-headers/v8datamodel/PartInstance.h": "a1c618a62c304d7701f4d2be95d13bc6ab581c320fc612ce0edc3f284ab243fb",
+    "rebuild/2008-06/native-headers/v8datamodel/Workspace.h": "5afc998f6d79228204df3165543daa9f840fd1b52932608164f74adb4513527a",
+    "tools/libs/boost_1_35_0/boost/weak_ptr.hpp": "6f2f3e0a379eb053e167586cc5f95d678ea0b28c8fdb6cb1c50877cee040f14d",
+    "tools/libs/boost_1_35_0/boost/shared_ptr.hpp": "1b382aca03fa3234363054fc4aec50f7b625a4dffffc70fbf24e0c90aaae541c",
+    "tools/libs/boost_1_35_0/boost/detail/shared_count.hpp": "bcdbb18559912015cd9eb5e813d771aabff40228decd7db4b7d521a55f566ca9",
+    "tools/libs/g3d-6.09/source/include/G3D/Array.h": "1f619c606374fc0c674652dc121f8af8a3b2d1de2787ba8dfe7fc75ddd230e27"
+  }
+}

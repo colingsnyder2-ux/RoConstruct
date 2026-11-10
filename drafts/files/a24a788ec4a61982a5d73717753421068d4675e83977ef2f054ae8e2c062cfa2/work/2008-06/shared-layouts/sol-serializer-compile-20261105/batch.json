@@ -1,0 +1,13 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/SerializerLoadInstances.cpp",
+      "checks": [
+        {
+          "addr": "00593250",
+          "symbol": "?loadInstances@SerializerV2@@QAEXPAVXmlElement@@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,183 @@
+{
+  "schema": 1,
+  "kind": "class-family queue note",
+  "family": "FilePacketLogger (2008-06; no source unit, unleased)",
+  "lease": "RBX::FilePacketLogger (Colin, 4h) covering native-classes/FilePacketLogger.cpp and this receipt",
+  "vtables": [
+    [
+      "0082450c",
+      19
+    ]
+  ],
+  "named_methods": [
+    {
+      "addr": "0x4aae80",
+      "score": 100,
+      "symbol": "?OnAttach@FilePacketLogger@@UAEXPAVRakPeerInterface@@@Z"
+    },
+    {
+      "addr": "0x4aaea0",
+      "score": 51,
+      "symbol": "?WriteLog@FilePacketLogger@@UAEXPBD@Z"
+    }
+  ],
+  "companion": "Exposer (vtable 00822d3c, 19 slots, 1 named method) - the other uncovered class with named methods",
+  "why": "one of only two uncovered RTTI classes whose methods already carry evidence names; 19-slot main vtable means a real polymorphic class with a small, bounded method set - a good fit for one batch",
+  "next_implementation": "rebuild/2008-06/native-classes/FilePacketLogger.cpp: start from the named methods above, locate the constructor by finding a call that stores the main vtable 0082450c, then fill the remaining slots from the vtable diff against its base",
+  "next_check": "python rebuild/2008-06/tests/native_check_runner.py run work/2008-06/shared-layouts/file-packet-logger-batch.json --workers 1",
+  "note": "check the base class of the 0082450c vtable first (read its complete-object locator) so the header shape is known before writing bodies",
+  "watching_session": "2411449ddd2f43adb0aeec04d2d20d8c (scope: this receipt and native-classes/FilePacketLogger.cpp)",
+  "WriteLog_decoded": {
+    "addr": "0x4aaea0",
+    "size": 50,
+    "symbol": "?WriteLog@FilePacketLogger@@UAEXPBD@Z",
+    "body": "void FilePacketLogger::WriteLog(const char* str) { if (file) { fputs(str, file); fputs(chr(10), file); } }",
+    "trace": "mov eax,[esi+0x20c] (a FILE* member); test/je guard; push edi; mov edi,[0x8027c8] (fputs); push eax (the FILE*); mov eax,[esp+0x10] (the str argument); push eax; call fputs; mov ecx,[esi+0x20c]; push ecx; push 0x818744; call fputs; add esp,0x10; pop edi; ret 4",
+    "constant": "0x818744 = a single newline byte (0x0a)",
+    "note": "the member at +0x20c is a FILE* read straight from the binary, so a class declaration carrying it is derived from evidence rather than invented. WriteLog is virtual (UAE) and is the most self-contained method in this class.",
+    "next": "declare FilePacketLogger with the FILE* at +0x20c, write WriteLog, and check it against 0x4aaea0 - it needs no base-class cooperation"
+  },
+  "OnAttach_decoded": {
+    "addr": "0x4aae80",
+    "size": 26,
+    "symbol": "?OnAttach@FilePacketLogger@@UAEXPAVRakPeerInterface@@@Z",
+    "trace": "mov eax,[esp+4] (the peer); push esi; push eax; mov esi,ecx; call 0x645830 (evidence name: ?SetNumberOfBitsAllocated@BitStream@RakNet@@QAEXI@Z); mov edx,[esi]; mov eax,[edx+0x2c] (vtable slot 11); mov ecx,esi; call eax; pop esi; ret 4",
+    "blocker": "the first call passes the RakPeerInterface* as the argument to a function the evidence map names as BitStream::SetNumberOfBitsAllocated(unsigned) - a type mismatch. Either the evidence name is wrong or FilePacketLogger derives from BitStream and the call is on an inherited member. The base class must be resolved (read the complete-object locator on vtable 0082450c) before OnAttach can be written."
+  },
+  "result": {
+    "run": "work/2008-06/native-check-runs/20261107-015405-b9982199",
+    "exact": 4,
+    "checks": 4,
+    "data_checked": 4,
+    "data_mismatches": [],
+    "issues": [],
+    "recovered": [
+      {
+        "addr": "004aae80",
+        "symbol": "?OnAttach@FilePacketLogger@@UAEXPAVRakPeerInterface@@@Z",
+        "size": 26,
+        "body": "void FilePacketLogger::OnAttach(RakPeerInterface* peer) { PacketLogger::OnAttach(peer); LogHeader(); }"
+      },
+      {
+        "addr": "004aaea0",
+        "symbol": "?WriteLog@FilePacketLogger@@UAEXPBD@Z",
+        "size": 50,
+        "body": "void FilePacketLogger::WriteLog(const char* str) { if (packetLogFile) { fputs(str, packetLogFile); fputs(chr(10), packetLogFile); } }"
+      },
+      {
+        "addr": "004ab7f0",
+        "symbol": "??_GFilePacketLogger@@UAEPAXI@Z",
+        "size": 58,
+        "body": "~FilePacketLogger() { if (packetLogFile) fclose(packetLogFile); } (MSVC pairs it with the scalar deleting dtor in the same 58 bytes)"
+      },
+      {
+        "addr": "004aae00",
+        "symbol": "?UserIDTOString@FilePacketLogger@@MAEPADE@Z",
+        "size": 116,
+        "unit": "native-classes/FilePacketLoggerUserIdToStringTrial.cpp",
+        "batch": "work/2008-06/shared-layouts/file-packet-logger-useridtostring-batch.json",
+        "run": "work/2008-06/native-check-runs/20261107-021640-870a7e53",
+        "body": "char* FilePacketLogger::UserIDTOString(unsigned char id) { switch (id) { case ID_SET_GLOBALS: return \"ID_SET_GLOBALS\"; case ID_REQUEST_CHARACTER: return \"ID_REQUEST_CHARACTER\"; case ID_DATA: return \"ID_DATA\"; case ID_REQUEST_MARKER: return \"ID_REQUEST_MARKER\"; case ID_PHYSICS: return \"ID_PHYSICS\"; case ID_CHAT_ALL: return \"ID_CHAT_ALL\"; case ID_REPORT_ABUSE: return \"ID_REPORT_ABUSE\"; default: return \"Unknown\"; } }",
+        "status": "TRIAL - byte-exact, but it is a trial, not yet part of the class unit"
+      }
+    ],
+    "evidence": "single vtable 0082450c, 19 slots, zero new virtuals: FilePacketLogger overrides only what PacketLogger already declares. OnAttach is slot 1 (004aae80), LogHeader is slot 11 (called virtually as [edx+0x2c] from OnAttach), WriteLog is slot 12 (004aaea0), UserIDTOString is slot 18 (004aae00). PacketLogger vtable 00825724; the two vtables differ in exactly slots 0, 1, 12 and 18. The FILE* is read from the binary at +0x20c (mov eax,[esi+0x20c] in 004aaea0/004ab7f0 and mov [edi+0x20c],0 in the ctor 004ab630), so the class declaration carrying it is derived, not invented."
+  },
+  "base_class_derivation": {
+    "question": "what puts packetLogFile at +0x20c?",
+    "answer": "sizeof(PacketLogger) == 0x20c, derived four independent ways and confirmed against the authentic vendor header",
+    "derivation": [
+      "PacketLogger::PacketLogger 004baa10: base ctor 0049ed30 (mov [ecx],0x822d00 - a bare vptr, so all following members are PacketLogger own), then mov [esi+4],0 / mov byte [esi+8],1 / mov byte [esi+9],1 / mov byte [esi+0xa],0 / mov byte [esi+0x10a],0",
+      "slot 13 SetPrintID  -> mov byte [ecx+8],al   so +8 is bool printId",
+      "slot 14 SetPrintAcks -> mov byte [ecx+9],al   so +9 is bool printAcks",
+      "slot 15 SetPrefix 004bade0 -> strncpy(this+0xa, s, 0xff) then mov byte [this+0x109],0  so +0xa is char[256] prefix",
+      "slot 16 SetSuffix 004bae10 -> strncpy(this+0x10a, s, 0xff) then mov byte [this+0x209],0 so +0x10a is char[256] suffix",
+      "4 (vptr) + 4 (RakPeerInterface*) + 1 + 1 + 256 + 256 = 0x20a, rounded to 4 = 0x20c, which is exactly where the binary reads packetLogFile",
+      "authentic vendor header tools/rbxgs/Client/Network/raknet30/Source/PacketLogger.h lists exactly RakPeerInterface* rakPeer; bool printId, printAcks; char prefix[256]; char suffix[256]; after the PluginInterface base"
+    ],
+    "note": "slot numbering from vtables.json is the authority; no field name or offset in the unit comes from anywhere but this chain"
+  },
+  "evidence_name_correction": {
+    "address": "00645830",
+    "evidence_says": "?SetNumberOfBitsAllocated@BitStream@RakNet@@QAEXI@Z (score 100)",
+    "actually_is": "?OnAttach@PacketLogger@@UAEXPAVRakPeerInterface@@@Z (mov eax,[esp+4]; mov [ecx+4],eax; ret 4)",
+    "proof": "it is vtable slot 1 of BOTH PacketLogger (00825724) and FilePacketLogger (0082450c), it stores its argument into the rakPeer member at +4, and FilePacketLogger::OnAttach 004aae80 calls it directly with the RakPeerInterface* argument - the canonical base-implementation call",
+    "consequence": "the FilePacketLogger OnAttach blocker recorded in the earlier packet is resolved; no BitStream involvement at all"
+  },
+  "overlay_donor_vs_binary": {
+    "donor": "rebuild/2008-06/out/RbxgsApp/overlay/Network/Replicator.cpp (original-source reference)",
+    "WriteLog": "donor has ONE fputs(str, packetLogFile); the binary 004aaea0 has TWO fputs calls, the second writing the constant at 0x818744 = 0x0a. The unit follows the BINARY, not the donor.",
+    "ctor": "donor body matches the binary call-for-call (Log::current()->logFile, rfind/erase on the path, sprintf PacketLog%i.csv with RakNet::GetTime, fopen wt, then a conditional print)",
+    "lesson": "the overlay is a stand-in, not the byte source - treat it as a hypothesis generator only (matches NATIVE_WORKER_HISTORY.md)"
+  },
+  "include_prerequisite": {
+    "problem": "the packaged workspace has native-headers/RakPeerInterface.h and RakPeer.h but NOT PacketLogger.h, PluginInterface.h, BitStream.h, RakNetStatistics.h or Streaming.h, so any unit that includes Replicator.h failed to compile with C1083",
+    "authentic_sources": [
+      "C:/Users/colin/RoConstruct/tools/rbxgs/Client/Network/raknet30/Source/ (PacketLogger.h, PluginInterface.h, BitStream.h, RakNetStatistics.h)",
+      "C:/Users/colin/RoConstruct/tools/rbxgs/Client/Network/Streaming.h"
+    ],
+    "reachable_from_the_package": "the workspace tools directory is the same tree (the CLI -I paths resolve through the junction to C:/Users/colin/RoConstruct/tools/rbxgs)",
+    "how_pinned": "// native-flags: ... /I{headers} /IC:/Users/colin/RoConstruct/tools/rbxgs/Client/Network/raknet30/Source /IC:/Users/colin/RoConstruct/tools/rbxgs/Client/Network",
+    "why_{headers}_first": "the runner appends /Inative-headers AFTER the pinned profile flags, so a pinned /I.../Client/Network would otherwise shadow native-headers/Replicator.h with the vendor copy - and the vendor Replicator.h does not compile here (C2440 on sMarker, C2504 RBX::Stats::Item, C2065 RunService, C312 ThreadProfiler). /I{headers} keeps the in-tree adapted header winning.",
+    "canonical_recipes": "libs.RECIPES has rbxgs-net and rbxgs-net-setbody-lower (which append ../rbxgs/Client/Network last) and rbxgs-raknet; the check runner is hardwired to RECIPES[rbxgs], which is why the extra paths must be pinned"
+  },
+  "not_recovered": {
+    "ctor 004ab630 (443 B)": "body is known from the donor overlay and the decode (base ctor 004baa10, vtable store, mov [edi+0x20c],0, RBX::Log::current()->logFile via the static provider 00976b4c plus a virtual provideLog(), rfind/erase, sprintf with 00824814 PacketLog%i.csv, RakNet::GetTime 004c9910, fopen wt at 00818784, then a conditional print through 00569620) but it CANNOT be compiled byte-exact here: the 2008-06 RBX::Log class puts logFile at +0x24 (add eax,0x24 in the binary) while the only available header (tools/rbxgs/Client/App/include/util/Log.h) has it at +4 and a different std::string era. Needs the Log layout owner; StandardOut::singleton is the other unresolved callee.",
+    "UserIDTOString 004aae00 (116 B)": "vtable slot 18 override: switch (id - 0x4b) over 8 cases with a jump table at 004aae54, each returning a static string (008245b4, 0082459c, 00824594, 00824580, 00824574, 00824568, 00824558) with the default 0081cf58. Needs the authentic 2008-06 RakNet packet-ID enum for the 0x4b..0x52 case labels; the enum is not in the packaged tree."
+  },
+  "state": "COMPLETE: FilePacketLogger 4/5 exact - OnAttach, WriteLog, scalar deleting dtor and UserIDTOString (trial). Remaining: ctor 004ab630 blocked on the missing RBX::Log layout (logFile +0x24).",
+  "UserIDTOString_decoded": {
+    "addr": "004aae00",
+    "size": 116,
+    "vtable slot": 18,
+    "signature": "char* FilePacketLogger::UserIDTOString(unsigned char id)",
+    "shape": "switch over (id - 0x4b) with cmp eax,7 / ja default and a jump table at 004aae54 of EIGHT slots; each block does mov eax,<static string> ; ret 4",
+    "jump_table": [
+      "004aae14 008245b4 ID_SET_GLOBALS",
+      "004aae1c 0082459c ID_REQUEST_CHARACTER",
+      "004aae4c 0081cf58 Unknown        <- the HOLE: id 0x4d falls to the default",
+      "004aae24 00824594 ID_DATA",
+      "004aae2c 00824580 ID_REQUEST_MARKER",
+      "004aae34 00824574 ID_PHYSICS",
+      "004aae3c 00824568 ID_CHAT_ALL",
+      "004aee44 00824558 ID_REPORT_ABUSE"
+    ],
+    "derived_enum": "0x4b ID_SET_GLOBALS, 0x4c ID_REQUEST_CHARACTER, 0x4d <unnamed by the switch>, 0x4e ID_DATA, 0x4f ID_REQUEST_MARKER, 0x50 ID_PHYSICS, 0x51 ID_CHAT_ALL, 0x52 ID_REPORT_ABUSE",
+    "hole_identified": "0x4d is ID_DICTIONARIES. Evidence: the recovered unit C:/Users/colin/RoConstruct/tools/rbxgs/Client/Network/roc_unit_da24407a6d4b1691.cpp declares ID_SET_GLOBALS = 75, then ID_REQUEST_CHARACTER, ID_DICTIONARIES, ID_DATA, ID_REQUEST_MARKER - i.e. exactly one extra enumerator at 0x4d that this switch does not name, and the overlay PacketIds.h independently pins ID_CHAT_ALL = 0x51 and ID_REPORT_ABUSE = 0x52.",
+    "blocker": "no header in the packaged tree - or in either vendor copy of PacketIds.h - declares the enum with these values. Both out/RbxgsApp/overlay/Network/PacketIds.h and tools/rbxgs/Client/Network/PacketIds.h assign ID_DATA = 0x4d (they omit ID_DICTIONARIES), which would move the switch hole to 0x50 and produce DIFFERENT machine code. Writing the switch with the wrong enum, or with numeric case literals, would be inventing the mapping, so this method stays unwritten until the shared PacketIds.h owner fixes the middle values. A private enum inside this unit would work but duplicates a shared header - owner decision required.",
+    "source_form_ready": "char* FilePacketLogger::UserIDTOString(unsigned char id) { switch (id) { case ID_SET_GLOBALS: return \"ID_SET_GLOBALS\"; ... case ID_REPORT_ABUSE: return \"ID_REPORT_ABUSE\"; default: return \"Unknown\"; } } - blocked only on the enum",
+    "status": "RESOLVED byte-exact in the trial unit (run 20261107-021640-870a7e53, 1/1, 0 mismatches)",
+    "trial": {
+      "file": "rebuild/2008-06/native-classes/FilePacketLoggerUserIdToStringTrial.cpp",
+      "technique": "the shared native-headers/Replicator.h does not declare UserIDTOString, so the override cannot be defined in the class unit without an owner edit. The trial therefore declares a local replica of FilePacketLogger (this TU deliberately does NOT include the shared header, so there is no redefinition) purely so the decorated symbol ?UserIDTOString@FilePacketLogger@@MAEPADE@Z matches the original for the byte check. No member data is used by this method.",
+      "exactness": "116 bytes, exact, 0 mismatches, 1 data check passed",
+      "merge_requirement": "rebuild/2008-06/native-headers/Replicator.h must add \u000birtual char* UserIDTOString(unsigned char id); (protected), then this body moves into native-classes/FilePacketLogger.cpp"
+    }
+  },
+  "recovered_source_tree_discovery": {
+    "location": "C:/Users/colin/RoConstruct/tools/rbxgs/Client",
+    "count": "901 recovered units (roc_unit_*.cpp) plus the vendor RakNet 3.0 SDK at Network/raknet30/Source plus original headers",
+    "reachable_from_package": "the packaged workspace tools directory IS this tree (the CLI -I paths resolve through the junction to C:/Users/colin/RoConstruct/tools/rbxgs)",
+    "examples_used": [
+      "Network/raknet30/Source/PacketLogger.h - vendored class definition that confirmed the derived layout",
+      "Network/Replicator.cpp (via out/RbxgsApp/overlay/Network/Replicator.cpp) - donor bodies for ctor/OnAttach/WriteLog",
+      "Network/roc_unit_da24407a6d4b1691.cpp - the recovered Replicator unit that carries the authentic packet-ID enum",
+      "App/include/util/Log.h and App/include/util/standardout.h - the RBX::Log / StandardOut declarations the ctor needs"
+    ],
+    "caution": "these are recovered/stand-in sources (same status as the overlay): use them to generate hypotheses and confirm layouts, never as the byte source"
+  },
+  "packetids_header_inconsistency": {
+    "overlay": "out/RbxgsApp/overlay/Network/PacketIds.h: ID_SET_GLOBALS=0x4b, ID_REQUEST_CHARACTER=0x4c, ID_DATA=0x4d, ID_REQUEST_MARKER=0x4e, ID_PHYSICS=0x4f, ID_CHAT_ALL=0x51, ID_REPORT_ABUSE=0x52 (0x50 unnamed)",
+    "vendor": "tools/rbxgs/Client/Network/PacketIds.h: same without the 0x51/0x52 pins, so ID_CHAT_ALL=0x51 and ID_REPORT_ABUSE=0x52 by sequence",
+    "binary": "ID_DATA=0x4e, ID_REQUEST_MARKER=0x4f, ID_PHYSICS=0x50 - the binary disagrees with BOTH headers in the middle three values because both omit ID_DICTIONARIES",
+    "action_for_owner": "insert ID_DICTIONARIES after ID_REQUEST_CHARACTER in the shared PacketIds.h, then re-run the UserIDTOString check"
+  },
+  "ctor_blocker_rbx_log": {
+    "addr": "004ab630",
+    "size": 443,
+    "symbol": "??0FilePacketLogger@@QAE@PAVPeer@Network@RBX@@@Z",
+    "body_known": "yes - the donor overlay Replicator.cpp and the decode agree call for call",
+    "blocker": "RBX::Log is not declared anywhere in this workspace, and the only Log.h available (tools/rbxgs/Client/App/include/util/Log.h) does NOT match the binary: a compile probe gives offsetof(Log, logFile) == 8 and sizeof(Log) == 0xac, while the ctor reads provider->provideLog()->logFile at +0x24 (add eax, 0x24 in 004ab687). The packaged native-headers/util has no Log.h at all, and none of the 901 recovered units declare RBX::Log (a scan for provideLog / aggregateWorstSeverity returns 0 hits). Writing the accessor with a wrong offset, or hand-declaring a 0x24-sized layout, would be inventing a class, so the ctor stays unwritten.",
+    "needed": "an RBX::Log declaration whose logFile sits at +0x24 (equivalently sizeof >= 0x28 with the current provider ptr chain)"
+  }
+}

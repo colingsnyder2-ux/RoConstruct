@@ -1,0 +1,110 @@
+{
+  "source_sha256": "4155ece12056a7a7ce9bcb7556fa24fbe61fe2ed08a8d405887334408d0f68d6",
+  "layout_sha256": "be425a78881bfd97189746f1c53feb859c72c3a99af4659657350d655b83e5c5",
+  "observer_sha256": "3810ed4c3c3e218eaf76f6ef6eea71a7e4df60c416b88884da02da6f0164e182",
+  "object_sha256": "854f5410c368833488d083688341ce96af36d784ad60c552e57b5458950fb65f",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeContentProviderWorkerTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeContentProviderWorkerTrial.cpp"
+  ],
+  "address": "005620f0",
+  "size": 950,
+  "targets": {
+    "??0ContentRequest@": [
+      "0x560fa0"
+    ],
+    "?do_lock@mutex@": [
+      "0x594ce0",
+      "0x594ce0",
+      "0x594ce0",
+      "0x594ce0"
+    ],
+    "?do_unlock@mutex@": [
+      "0x594d00",
+      "0x594d00",
+      "0x594d00",
+      "0x594d00"
+    ],
+    "??1ContentRequest@": [
+      "0x561020",
+      "0x561020"
+    ],
+    "??0Http@": [
+      "0x41d4b0"
+    ],
+    "?get@Http@": [
+      "0x569ae0"
+    ],
+    "??1Http@": [
+      "0x5df620"
+    ],
+    "??0FailedUrl@": [
+      "0x55f710"
+    ],
+    "?push_front@?$list@UFailedUrl@": [
+      "0x55e650"
+    ],
+    "?singleton@StandardOut@": [
+      "0x569620"
+    ],
+    "??_C@": [
+      "0x82deb8"
+    ],
+    "?print@StandardOut@": [
+      "0x5693a0"
+    ],
+    "?readContent@RBX@@": [
+      "0x55dc80"
+    ],
+    "??$for_each@": [
+      "0x55ead0"
+    ],
+    "?erase@?$list@UContentRequest@": [
+      "0x5617c0"
+    ]
+  },
+  "imports": [
+    "_invalid_parameter_noinfo",
+    "_invalid_parameter_noinfo",
+    "??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z",
+    "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+    "??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+    "_invalid_parameter_noinfo",
+    "_invalid_parameter_noinfo"
+  ],
+  "scope": "Inactive trial. Queue element types and selected calls verified; callback, cache, exception metadata and runtime ownership remain unproven."
+}

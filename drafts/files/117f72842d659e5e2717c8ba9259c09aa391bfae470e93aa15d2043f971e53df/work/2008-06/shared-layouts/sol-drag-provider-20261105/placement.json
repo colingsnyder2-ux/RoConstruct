@@ -1,0 +1,10 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/DraggerPlacement.cpp",
+      "ranges": [
+        "00610440-006106c0"
+      ]
+    }
+  ]
+}

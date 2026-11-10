@@ -1,0 +1,329 @@
+{
+  "scope": "Direct inventory slice; full graph command interrupted without output",
+  "rows": [
+    {
+      "addr": "0057d570",
+      "size": 30,
+      "relocs": [],
+      "calls": 1,
+      "kind": "code",
+      "start_evidence": [
+        "pointer"
+      ],
+      "call_targets": [
+        "005cc040"
+      ],
+      "shape": "mov ecx, dword ptr [ecx + N] ; mov eax, dword ptr [ecx + N] ; mov edx, dword ptr [eax + N] ; add ecx, N ; call edx ; push -N ; mov ecx, eax ; call N ; ret",
+      "callers": [],
+      "imports": [],
+      "external_calls": [],
+      "strings": [],
+      "entry_ecx_constructors": [],
+      "data_refs": [
+        "0x5cc040"
+      ],
+      "global_reads": [
+        "0x5cc040"
+      ],
+      "global_writes": [],
+      "virtual_slots": [],
+      "stack_args": [],
+      "this_reads": [
+        12,
+        648
+      ],
+      "this_writes": [],
+      "calling_convention": "caller",
+      "return_stack_bytes": [
+        0
+      ],
+      "branches": 0,
+      "constants": [
+        4
+      ],
+      "unit": "RBX::CameraTiltUpCommand",
+      "siblings": [
+        "00451210",
+        "00451300",
+        "00581a70"
+      ]
+    },
+    {
+      "addr": "0057d590",
+      "size": 30,
+      "relocs": [],
+      "calls": 1,
+      "kind": "code",
+      "start_evidence": [
+        "pointer"
+      ],
+      "call_targets": [
+        "005cc040"
+      ],
+      "shape": "mov ecx, dword ptr [ecx + N] ; mov eax, dword ptr [ecx + N] ; mov edx, dword ptr [eax + N] ; add ecx, N ; call edx ; push N ; mov ecx, eax ; call N ; ret",
+      "callers": [],
+      "imports": [],
+      "external_calls": [],
+      "strings": [],
+      "entry_ecx_constructors": [],
+      "data_refs": [
+        "0x5cc040"
+      ],
+      "global_reads": [
+        "0x5cc040"
+      ],
+      "global_writes": [],
+      "virtual_slots": [],
+      "stack_args": [],
+      "this_reads": [
+        12,
+        648
+      ],
+      "this_writes": [],
+      "calling_convention": "caller",
+      "return_stack_bytes": [
+        0
+      ],
+      "branches": 0,
+      "constants": [
+        4
+      ],
+      "unit": "RBX::CameraTiltDownCommand",
+      "siblings": [
+        "00581ac0"
+      ]
+    },
+    {
+      "addr": "0057d5b0",
+      "size": 30,
+      "relocs": [],
+      "calls": 1,
+      "kind": "code",
+      "start_evidence": [
+        "pointer"
+      ],
+      "call_targets": [
+        "005cbf90"
+      ],
+      "shape": "mov ecx, dword ptr [ecx + N] ; mov eax, dword ptr [ecx + N] ; mov edx, dword ptr [eax + N] ; add ecx, N ; call edx ; push N ; mov ecx, eax ; call N ; ret",
+      "callers": [],
+      "imports": [],
+      "external_calls": [],
+      "strings": [],
+      "entry_ecx_constructors": [],
+      "data_refs": [
+        "0x5cbf90"
+      ],
+      "global_reads": [
+        "0x5cbf90"
+      ],
+      "global_writes": [],
+      "virtual_slots": [],
+      "stack_args": [],
+      "this_reads": [
+        12,
+        648
+      ],
+      "this_writes": [],
+      "calling_convention": "caller",
+      "return_stack_bytes": [
+        0
+      ],
+      "branches": 0,
+      "constants": [
+        4
+      ],
+      "unit": "RBX::CameraZoomInCommand",
+      "siblings": [
+        "00581b10"
+      ]
+    },
+    {
+      "addr": "0057d5d0",
+      "size": 30,
+      "relocs": [],
+      "calls": 1,
+      "kind": "code",
+      "start_evidence": [
+        "pointer"
+      ],
+      "call_targets": [
+        "005cbf90"
+      ],
+      "shape": "mov ecx, dword ptr [ecx + N] ; mov eax, dword ptr [ecx + N] ; mov edx, dword ptr [eax + N] ; add ecx, N ; call edx ; push -N ; mov ecx, eax ; call N ; ret",
+      "callers": [],
+      "imports": [],
+      "external_calls": [],
+      "strings": [],
+      "entry_ecx_constructors": [],
+      "data_refs": [
+        "0x5cbf90"
+      ],
+      "global_reads": [
+        "0x5cbf90"
+      ],
+      "global_writes": [],
+      "virtual_slots": [],
+      "stack_args": [],
+      "this_reads": [
+        12,
+        648
+      ],
+      "this_writes": [],
+      "calling_convention": "caller",
+      "return_stack_bytes": [
+        0
+      ],
+      "branches": 0,
+      "constants": [
+        4
+      ],
+      "unit": "RBX::CameraZoomOutCommand",
+      "siblings": [
+        "00581b60"
+      ]
+    },
+    {
+      "addr": "005cbf90",
+      "size": 98,
+      "relocs": [
+        61,
+        79
+      ],
+      "calls": 0,
+      "kind": "code",
+      "start_evidence": [
+        "call"
+      ],
+      "call_targets": [],
+      "shape": "cmp dword ptr [esp + N], N ; fld dword ptr [ecx + N] ; fsub dword ptr [ecx + N] ; fld dword ptr [ecx + N] ; fsub dword ptr [ecx + N] ; fld dword ptr [ecx + N] ; fsub dword ptr [ecx + N] ; fmul st(N), st(N) ; fld st(N) ; fmulp st(N) ; faddp st(N) ; fld st(N) ; fmulp st(N) ; faddp st(N) ; fsqrt ; jle N ; fcomp dword ptr [N] ; fnstsw ax ; test ah, N ; je N ; xor eax, eax ; ret N ; fcomp dword ptr [N] ; fnstsw ax ; test ah, N ; jp N ; mov eax, N ; ret N",
+      "callers": [
+        "0057d5b0",
+        "0057d5d0"
+      ],
+      "imports": [],
+      "external_calls": [],
+      "strings": [],
+      "entry_ecx_constructors": [],
+      "data_refs": [
+        "0x5cbfd8",
+        "0x5cbfdd",
+        "0x5cbfea",
+        "0x819bac",
+        "0x819dcc"
+      ],
+      "global_reads": [
+        "0x5cbfd8",
+        "0x5cbfdd",
+        "0x5cbfea",
+        "0x819bac",
+        "0x819dcc"
+      ],
+      "global_writes": [],
+      "virtual_slots": [],
+      "stack_args": [
+        4
+      ],
+      "this_reads": [
+        408,
+        412,
+        416,
+        456,
+        460,
+        464
+      ],
+      "this_writes": [],
+      "calling_convention": "callee",
+      "return_stack_bytes": [
+        4
+      ],
+      "branches": 3,
+      "constants": [
+        4,
+        5
+      ],
+      "unit": "RBX::Camera",
+      "siblings": [
+        "005cbf20",
+        "005cbf50",
+        "005cc000",
+        "005cc010"
+      ]
+    },
+    {
+      "addr": "005cc040",
+      "size": 127,
+      "relocs": [
+        5,
+        84,
+        105
+      ],
+      "calls": 2,
+      "kind": "code",
+      "start_evidence": [
+        "call"
+      ],
+      "call_targets": [
+        "00513240",
+        "005de190"
+      ],
+      "shape": "sub esp, N ; fld dword ptr [N] ; push N ; lea eax, [esp + N] ; fstp dword ptr [esp + N] ; push eax ; add ecx, N ; call N ; fld dword ptr [eax + N] ; fld dword ptr [esp] ; lea ecx, [esp + N] ; fmul st(N), st(N) ; push ecx ; fld dword ptr [eax + N] ; fmul st(N) ; fxch st(N) ; fmul dword ptr [eax] ; fstp dword ptr [esp + N] ; fxch st(N) ; fstp dword ptr [esp + N] ; fstp dword ptr [esp + N] ; call N ; add esp, N ; cmp dword ptr [esp + N], N ; jge N ; fcomp dword ptr [N] ; fnstsw ax ; test ah, N ; je N ; xor eax, eax ; add esp, N ; ret N ; fcomp dword ptr [N] ; fnstsw ax ; test ah, N ; jp N ; mov eax, N ; add esp, N ; ret N",
+      "callers": [
+        "0057d570",
+        "0057d590"
+      ],
+      "imports": [],
+      "external_calls": [],
+      "strings": [],
+      "entry_ecx_constructors": [],
+      "data_refs": [
+        "0x513240",
+        "0x5cc09f",
+        "0x5cc0a7",
+        "0x5cc0b4",
+        "0x5de190",
+        "0x81e370",
+        "0x81e374",
+        "0x828b60"
+      ],
+      "global_reads": [
+        "0x513240",
+        "0x5cc09f",
+        "0x5cc0a7",
+        "0x5cc0b4",
+        "0x5de190",
+        "0x81e370",
+        "0x81e374",
+        "0x828b60"
+      ],
+      "global_writes": [],
+      "virtual_slots": [],
+      "stack_args": [
+        4,
+        8,
+        12,
+        16,
+        20,
+        32
+      ],
+      "this_reads": [],
+      "this_writes": [],
+      "calling_convention": "callee",
+      "return_stack_bytes": [
+        4
+      ],
+      "branches": 3,
+      "constants": [
+        4,
+        8
+      ],
+      "unit": "RBX::Camera",
+      "siblings": [
+        "005cc000",
+        "005cc010",
+        "005cc0c0",
+        "005cc120"
+      ]
+    }
+  ]
+}

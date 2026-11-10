@@ -1,0 +1,18 @@
+{
+  "archive": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-filesystem-owner-20261105\\linked.lib",
+  "archive_sha256": "0c597337028cf2cda5addf6ededafd11d546ec6205720401a5e1c166ab1b0836",
+  "member": "IRenderable.obj",
+  "member_sha256": "22e4a784692741582c77388a5cb0c6b70639ed109b7abdf589204a9063e6710f",
+  "candidate_sha256": "810d94e2c0724e00f718508452acf3d5199209bb26a8718da081b8a6919e594f",
+  "all_symbols_removed": [
+    "??1IRenderable@RBX@@QAE@XZ"
+  ],
+  "all_symbols_changed": [],
+  "all_symbols_added": [],
+  "functions_removed": [
+    "??1IRenderable@RBX@@QAE@XZ"
+  ],
+  "functions_changed": [],
+  "retained_functions": 35,
+  "differences": {}
+}

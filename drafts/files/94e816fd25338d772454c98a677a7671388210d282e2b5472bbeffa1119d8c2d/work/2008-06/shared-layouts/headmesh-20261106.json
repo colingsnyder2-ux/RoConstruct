@@ -1,0 +1,17 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "00500780",
+                                        "symbol":  "??0HeadBuilder@ViewNew@RBX@@"
+                                    },
+                                    {
+                                        "addr":  "00500180",
+                                        "symbol":  "?buildTop@HeadBuilder@ViewNew@RBX@@"
+                                    }
+                                ],
+                     "source":  "native-classes/ViewNewHeadMesh.cpp"
+                 }
+             ]
+}

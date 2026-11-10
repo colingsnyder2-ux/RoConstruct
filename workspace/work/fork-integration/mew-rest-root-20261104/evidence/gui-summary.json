@@ -1,0 +1,27 @@
+{
+  "recorded_at": "2026-11-04T20:56:40Z",
+  "ref": "refs/remotes/mew/claude/optimistic-shannon-0xccuy",
+  "gates": [
+    {
+      "gate": "widget",
+      "recorder": "rebuild/2008-06/tests/record_native_widget.py",
+      "status": "passed",
+      "changed_headers": [],
+      "seconds": 39.922,
+      "stdout": "PASS native Widget family: 98 distinct class addresses exact (+26 support rows), 3 compiled rows not exact, 6 pending-build-only rows not counted; 132 vtables walked\n",
+      "receipt_copy": "work/fork-integration/mew-rest-gui-20261104/widget-family-working.json",
+      "output_dir": "work/fork-integration/mew-rest-gui-20261104/widget-out"
+    },
+    {
+      "gate": "hud",
+      "recorder": "rebuild/2008-06/tests/record_native_hud.py",
+      "status": "passed",
+      "changed_headers": [],
+      "seconds": 17.766,
+      "stdout": "PASS native HUD family (ScoreHud, ChatOutput): 33 distinct class addresses exact (+30 support rows), 1 compiled rows not exact, 2 pending-build-only rows not counted; 30 vtables walked\n",
+      "receipt_copy": "work/fork-integration/mew-rest-gui-20261104/hud-family-working.json",
+      "output_dir": "work/fork-integration/mew-rest-gui-20261104/hud-out"
+    }
+  ],
+  "scope": "Inactive local compiler/relocation/layout/vtable checks only; no runtime activation."
+}

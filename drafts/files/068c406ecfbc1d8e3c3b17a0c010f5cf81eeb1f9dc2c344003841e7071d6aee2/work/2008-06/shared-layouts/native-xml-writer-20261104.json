@@ -1,0 +1,105 @@
+{
+  "scope": "Inactive source/object diagnostic only. No ABI, link-selection, P5/P6 or runtime proof. CWorkspace::write is parked after repeated authentic-source hypotheses failed the one-byte EH-state check.",
+  "target": {
+    "address": "0046b860",
+    "symbol": "?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+    "size": 112,
+    "calls": [
+      { "offset": 31, "target": "0041eea0", "symbol": "??$create@VContentProvider@RBX@@@ServiceProvider@RBX@@QBEPAVContentProvider@1@XZ" },
+      { "offset": 50, "target": "0046b550", "symbol": "??0TextXmlWriterWithEmbeddedContent@@QAE@PAVContentProvider@RBX@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z" },
+      { "offset": 72, "target": "0058e810", "symbol": "?serialize@TextXmlWriter@@UAEXPBVXmlElement@@@Z" },
+      { "offset": 88, "target": "0046b1e0", "symbol": "??1TextXmlWriterWithEmbeddedContent@@QAE@XZ" }
+    ]
+  },
+  "original_eh": {
+    "funcinfo": "0x8db774",
+    "magic": "0x19930522",
+    "maxState": 2,
+    "unwind_map": [
+      { "state": 0, "to": -1, "action": 0 },
+      { "state": 1, "to": -1, "action": "0x7c39e0" }
+    ],
+    "nTryBlocks": 0,
+    "nIPMapEntries": 0,
+    "runtime_state_store": "mov dword ptr [esp+0x58],1 at 0046b8a0; reset to -1 at 0046b8b0",
+    "cleanup_funclet": "0x7c39e0: lea ecx,[ebp-0x58]; jmp 0x46b1e0"
+  },
+  "candidate": {
+    "source": "rebuild/2008-06/native-classes/WorkspaceXmlWriter.cpp",
+    "source_sha256": "11e4ff49deafb0c7fde41ee1549e765d0f3c5628f1853b90a26ae1979986e120",
+    "object_sha256": "fde9f3a83302a97b5518c063aa824d909b8b22fd9582abc493426f876984d6cf",
+    "object_size": 112,
+    "score": 99,
+    "first_byte_difference": 68,
+    "difference": "original mov dword ptr [esp+0x58],1 versus candidate mov dword ptr [esp+0x58],0",
+    "candidate_eh": {
+      "maxState": 1,
+      "unwind_map": [
+        { "state": 0, "to": -1, "action": "dtor funclet" }
+      ],
+      "nTryBlocks": 0,
+      "nIPMapEntries": 0
+    },
+    "note": "All calls, frame size, object receiver offsets and cleanup funclet target match. The original reserves an unused state 0 with no cleanup action; the candidate assigns the writer destructor to state 0."
+  },
+  "rejected_hypotheses": [
+    {
+      "hypothesis": "Declaration-only out-of-line destructor makes the caller assume a throwing cleanup state.",
+      "profile": "rebuild/2008-06/native-headers/writer-state-2008/v8xml/XmlSerializer.h",
+      "run": "20261104-214913-80ed1a30",
+      "result": "state 0; no byte improvement"
+    },
+    {
+      "hypothesis": "Destructor declared throw(...) reserves state 0 and moves the writer cleanup to state 1.",
+      "profile": "rebuild/2008-06/native-headers/writer-state-2008/v8xml/XmlSerializer.h",
+      "run": "20261104-215921-b0aa3818",
+      "result": "state 0; no byte improvement; profile restored to declaration-only after the probe"
+    },
+    {
+      "hypothesis": "Copy-initialization from a temporary reserves a separate cleanup state.",
+      "source": "rebuild/2008-06/tests/NativeWorkspaceXmlWriterCopyProbe.cpp (temporary probe, deleted after the test)",
+      "run": "20261104-215751-7332dc8d",
+      "result": "state 0; no byte improvement"
+    },
+    {
+      "hypothesis": "An empty-destructor predecessor or a temporary reserves state 0 without emitted code.",
+      "probes": "rebuild/2008-06/tests/native-writer-probes/b.cpp,e.cpp,f.cpp,g.cpp",
+      "runs": ["20261104-220100-23ed91e6", "20261104-220129-2b755fa4"],
+      "result": "all compiler micro-probes use state 0 for the single external-destructor local; the empty-destructor objects were removed without reserving a state"
+    },
+    {
+      "hypothesis": "An enclosing try/catch explains the state number.",
+      "probe": "rebuild/2008-06/tests/native-writer-probes/h.cpp",
+      "result": "a try/catch introduces a catch state and a byte immediately after the EH frame, not the original single state-1 store; original has nTryBlocks=0"
+    }
+  ],
+  "prior_rejected_variants": [
+    "member, pointer, reference, copied, getter, getter-once, service-instance and provider-pointer provider initialization variants",
+    "full Workspace translation-unit context",
+    "inline depth variants 0 through 16",
+    "compiler options /Ob0, /Ob1, /Ob2, /EHs, /EHa, /fp:fast, /fp:strict and /O1"
+  ],
+  "micro_probe_evidence": {
+    "a.cpp": "external destructor local: state 0",
+    "b.cpp": "empty-destructor predecessor plus external-destructor local: state 0",
+    "c.cpp": "std::set member external destructor: state 0",
+    "d.cpp": "throw(...) external destructor: state 0",
+    "e.cpp": "empty temporary plus external-destructor local: state 0",
+    "f.cpp": "scoped empty-destructor local plus external-destructor local: state 0",
+    "g.cpp": "external constructor with empty destructor plus external-destructor local: state 0",
+    "h.cpp": "try/catch around call: catch state present, unlike the original"
+  },
+  "conclusion": "Parked. No authentic 2008-06 source/header/compiler-option variant reproduced the original unused state 0 without changing other bytes. The machine code permits an optimized-out or compiler-internal temporary, but no evidence-backed source form is known. Do not add stubs, no-op objects or artificial state writes. No link-selection, ABI or runtime proof is claimed.",
+  "next_required_evidence": [
+    "An authentic original header/source artifact showing a second local lifetime in CWorkspace::write",
+    "Or a compiler diagnostic proving the unused state 0 is an artifact of a specific original translation-unit construction",
+    "Reopen only if new source evidence appears; otherwise work the remaining AxisMove factory selection or another default-closure blocker"
+  ],
+  "evidence_files": [
+    "work/2008-06/shared-layouts/native-xml-writer-batch.json",
+    "work/2008-06/shared-layouts/native-xml-writer-micro.json",
+    "work/2008-06/shared-layouts/native-xml-writer-micro2.json",
+    "work/2008-06/shared-layouts/workspace-xml-writer-mismatch.json",
+    "rebuild/2008-06/tests/native-writer-probes/"
+  ]
+}

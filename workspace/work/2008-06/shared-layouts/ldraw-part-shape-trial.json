@@ -1,0 +1,142 @@
+{
+  "source_sha256": "c3eae36acf78f08cbdd03ac6f07d8346ded7005903759ca7cc0d8520672c9d4c",
+  "observer_sha256": "1e0b42fa8d0eaad83f91fb43e6604100aa945aaa539dedb4d77a7f56113d752d",
+  "object_sha256": "d514e1e3185aadb5e91215f60626e956e196b26cb7c1f3184d32586f4f5fa20f",
+  "preprocess_flags": [
+    "/nologo",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/P",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeLDrawPartShapeTrial.cpp"
+  ],
+  "compile_flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeLDrawPartShapeProfile.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeLDrawPartShapeProfile.cpp"
+  ],
+  "address": "0046eb40",
+  "size": 421,
+  "bindings": {
+    "__ehhandler$?writeShape@LDrawPart@LDraw2Lua@RBX@@QBE_NAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@PBUNativeRobloxPart@23@@Z": [
+      "0x7ce709"
+    ],
+    "??_C@_01EEMJAFIK@?6?$AA@": [
+      "0x81cbcc",
+      "0x81cbcc",
+      "0x81cbcc",
+      "0x81cbcc",
+      "0x81cbcc",
+      "0x81cbcc",
+      "0x81cbcc"
+    ],
+    "??_C@_0DH@OODFGMDP@Part?5Description?5?9?9?9?9?9?9?9?9?9?9?9?9?9?9?9@": [
+      "0x81caac"
+    ],
+    "??_C@_03CJPCKGBB@?9?9?5?$AA@": [
+      "0x81cbc8"
+    ],
+    "??$?6U?$char_traits@D@std@@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@PBD@Z": [
+      "0x44a450",
+      "0x44a450",
+      "0x44a450",
+      "0x44a450",
+      "0x44a450",
+      "0x44a450",
+      "0x44a450",
+      "0x44a450",
+      "0x44a450",
+      "0x44a450",
+      "0x44a450",
+      "0x44a450",
+      "0x44a450",
+      "0x44a450",
+      "0x44a450",
+      "0x44a450",
+      "0x44a450",
+      "0x44a450"
+    ],
+    "??_C@_0BM@ONNKFOPN@part?5?$DN?5Instance?4new?$CI?$CCPart?$CC?$CJ?$AA@": [
+      "0x81ca90"
+    ],
+    "??_C@_01LFCBOECM@?4?$AA@": [
+      "0x81ca8c"
+    ],
+    "__imp_?find_first_of@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEIPBDI@Z": [
+      "0x802474"
+    ],
+    "__imp_?substr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z": [
+      "0x8023e0"
+    ],
+    "??_C@_01BJJEKLCA@?$CC?$AA@": [
+      "0x81ca88"
+    ],
+    "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": [
+      "0x802464",
+      "0x802464"
+    ],
+    "??_C@_0O@CEGGPPBL@part?4Name?5?$DN?5?$CC?$AA@": [
+      "0x81ca78"
+    ],
+    "??_C@_0O@OGLFLCJA@part?4Shape?5?$DN?5?$AA@": [
+      "0x81ca68"
+    ],
+    "__imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@H@Z": [
+      "0x802470",
+      "0x802470"
+    ],
+    "??_C@_0BD@LFEKFLLB@part?4FormFactor?5?$DN?5?$AA@": [
+      "0x81ca54"
+    ],
+    "??_C@_0CC@EOEHFAE@part?4FormFactor?5?$DN?50?5?5?9?9?5symmetri@": [
+      "0x81ca30"
+    ],
+    "??_C@_01PKGAHCOL@?$CJ?$AA@": [
+      "0x812e5c"
+    ],
+    "??_C@_0BJ@LNNNCDMK@part?4Size?5?$DN?5Vector3?4new?$CI?$AA@": [
+      "0x81ca14"
+    ],
+    "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": [
+      "0x802468"
+    ]
+  },
+  "scope": "Inactive trial; element layout, linked exception metadata and runtime remain unproven."
+}

@@ -1,0 +1,19 @@
+{
+  "base_sha256": "b9d0373b050bafb2c7e0d3eac3302adc3eb3fe2318c30670bac92448aa794ccf",
+  "member_count": 267,
+  "old_member_sha256": "c6f555a65d89f48ff15b4d01fdb45b81698c63eb24031c547aa0dd8d231f35f0",
+  "candidate_sha256": "0d4820b91d2a4603291db857b1f7e15afb9404b279323c92d09ffd8718977fd9",
+  "original_command_file_sha256": "097ad5e9400ec91606036b6a32b1f31aaa14f8d73173e9d595dcdddd31890a7b",
+  "original_source_sha256": "2e753d24233e586dfab51820401b5e0f898614ce32b74af89d91c293851fe80f",
+  "candidate_source_sha256": "7e5f14cb688344f98e1b2823f80978efc4168001a9fa1b034ba39f397d56a3c5",
+  "original_dependency_entries": 797,
+  "original_unique": 791,
+  "candidate_unique": 792,
+  "common_changed": [],
+  "old_only": [],
+  "new_only": [
+    "g:\\projects\\roconstruct\\roconstruct-native-20261105-a12f01fd\\work\\native-candidates\\sol-archive-resolve-owner-20261105\\serializerv2.cpp"
+  ],
+  "original_dependency_drift": [],
+  "weak_mentions": []
+}

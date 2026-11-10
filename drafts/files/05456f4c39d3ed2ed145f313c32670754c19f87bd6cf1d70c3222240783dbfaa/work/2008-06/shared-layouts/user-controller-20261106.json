@@ -1,0 +1,12 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/UserController.cpp",
+      "checks": [
+        {"addr": "005ca500", "symbol": "?getValue@KeyboardPrimaryController@RBX@@"},
+        {"addr": "005cbd10", "symbol": "?getController@ControllerService@RBX@@"},
+        {"addr": "005cbbb0", "symbol": "?getController@ControllerService@RBX@@"}
+      ]
+    }
+  ]
+}

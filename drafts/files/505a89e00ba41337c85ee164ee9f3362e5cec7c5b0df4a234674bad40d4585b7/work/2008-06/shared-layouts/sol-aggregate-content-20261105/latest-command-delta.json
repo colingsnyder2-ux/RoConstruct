@@ -1,0 +1,32 @@
+[
+  {
+    "run": "20261105-131239-7df4c488",
+    "command_sha256": "e24033540167009e3f6d0d5aa558c6d72ebd23e003ce8d93fa6a1f66287bb8aa",
+    "manifest_sha256": "dda30acef1a7ba16e960aaacf421fe1558f889e130f6a069fb27c6cf55a7a834",
+    "explicit_count": 309,
+    "additional_objects": [],
+    "removed_previous_inputs": [],
+    "same_migrated_archive_sha256": "7388fd3bfb96473f268288a5d3aa4164c0d4deb9dc89137ea033f2601b34c05d",
+    "same_member_set": true,
+    "all_manifest_hashes_verified": true,
+    "scope": "Explicit input delta only; implicit default libraries unproven"
+  },
+  {
+    "run": "20261105-131253-90ee3d03",
+    "command_sha256": "039ffa5e2fbde4108fdcac65014796b04e32a5557169fb7c143ac1d489b0f401",
+    "manifest_sha256": "c35f4201283535d1f9ad35e758fc2fa0d29827fd75c7e0c07943e77a4e5f3fc6",
+    "explicit_count": 310,
+    "additional_objects": [
+      {
+        "path": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-122907-a81d3e5b\\unit-000\\candidate.obj",
+        "sha256": "248938454c01362df09a937de1e6b03fa4a93c2a98359a503136292811ddb040",
+        "removed_symbol_external_references": []
+      }
+    ],
+    "removed_previous_inputs": [],
+    "same_migrated_archive_sha256": "7388fd3bfb96473f268288a5d3aa4164c0d4deb9dc89137ea033f2601b34c05d",
+    "same_member_set": true,
+    "all_manifest_hashes_verified": true,
+    "scope": "Explicit input delta only; implicit default libraries unproven"
+  }
+]

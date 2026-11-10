@@ -1,0 +1,45 @@
+{
+  "revision": "54e50084f4de40ae7db714e465f219be23e75b32",
+  "dirty_worktree": true,
+  "sources": {
+    "rebuild\\2008-06\\native-headers\\CMainFrame.h": "b26893d5aeb9a91b09720d4b7ca80cc9697946b40eca9576a141a17c4aa9a5eb",
+    "rebuild\\2008-06\\native-classes\\CMainFrameCommands.cpp": "5da9b2c4e24e8b8f111ee931254dba8230070d1b552c4c7d78dc7dc9501b42e1",
+    "rebuild\\2008-06\\tests\\NativeMainFrameVtable.cpp": "191464a63bcce82d36045076d86088a6b469adac80b4a8edc26f4ffae452a541",
+    "rebuild\\2008-06\\tests\\NativePropertyGridLayout.cpp": "f6a1653b330e219a57b78837fd435dd8c533301c818724352815680216782b19",
+    "rebuild\\2008-06\\tests\\record_native_property_grid.py": "b0aeaa57ce903a5de191dacd7bc3a6d1da3b2aac08b90b4c9f81faf551899a09",
+    "rebuild\\2008-06\\tests\\record_native_main_frame_constructor_trial.py": "5d9edbd4ad7d417e40d9279519e728daf1e583b991fe586d6c2af85464c14037",
+    "rebuild\\2008-06\\tests\\record_native_main_frame_destructor_trial.py": "ae54d9a1330bd23cb5b5f0f900721aaa4ca63596852c828a541165398c50bbaf",
+    "rebuild\\2008-06\\native-headers\\CPropGrid.h": "e4ae33523aebb059887ce8b60de5e23b16ae9abfea1a91ceac589b903a46a934",
+    "rebuild\\2008-06\\native-classes\\CPropGrid.cpp": "269550c9127af46ce66fc44298907ff886de685df92287cc3e5e82cd687ba3ec",
+    "rebuild\\2008-06\\native-headers\\CSelectionPropGrid.h": "13fafeb53f903ffc62b81903ecdd8190eadcb09db62ba71e52130798b658e09a",
+    "rebuild\\2008-06\\native-classes\\CSelectionPropGrid.cpp": "8abcb468d9132b418fd8288a4109f321c3d7d1dce47f568fc96bc655fa4fa8b0",
+    "rebuild\\2008-06\\native-headers\\CDataModelPropGrid.h": "06491cae87a34686af760f38cde54551e6dc5f5e5a337dbb0ad2d62e0557b32b",
+    "rebuild\\2008-06\\native-classes\\CDataModelPropGrid.cpp": "fab5559a90bccb34b18f6b792fe30624934804c219ccbc181725b8891b9e1bd9"
+  },
+  "receipts": {
+    "work\\2008-06\\shared-layouts\\property-grid-working-probe.json": "dd6fdc21cfa001b7a1e6aae6a48a6c720481d9e8a7790d611a8381ef7777f2ed",
+    "work\\2008-06\\shared-layouts\\main-frame-constructor-trial-working-probe.json": "b17b547b3f4cfeea7e1ceefcfd93ff20f380ff2e5c29a59dd9e5126a81b91324",
+    "work\\2008-06\\shared-layouts\\main-frame-destructor-trial-working-probe.json": "4147e3af8cff6c4dd7eb321130bbcc1ddf878c4f8e7e4356b78b486804efaa38",
+    "work\\2008-06\\shared-layouts\\main-frame-bases-typed-owners-probe.json": "0cba48f54ebfe6bfb3ffe598c9ca630970491f9059f04b48e38eef8128f35b61",
+    "work\\2008-06\\shared-layouts\\main-frame-map-typed-owners-probe.json": "1dd3f7c0ecd84d0e1417a767110f32efb4d205d20be36ae1699628f493c1f425",
+    "work\\2008-06\\shared-layouts\\main-frame-color-typed-owners-probe.json": "4dcd240af174ed1086a9ee882ebb05752c0ff366eea00dc78422ce79a26f8000",
+    "work\\2008-06\\shared-layouts\\main-frame-create-typed-owners-probe.json": "e62bafd5d939b60f00b691a97a83a79478eef4a95e9cec9614832497090dcb89",
+    "work\\2008-06\\shared-layouts\\main-frame-toolbars-typed-owners-probe.json": "235a045611a13b1659479fe7fe19c56196334190df2edc3025a1b2bedd5c27bc",
+    "work\\2008-06\\shared-layouts\\main-frame-commands-typed-owners-probe.json": "221d577072447bcc2c5263bdaac3cee98ab1bc6f1d838883d74d15422e9c717a",
+    "work\\2008-06\\shared-layouts\\main-frame-string-recipe-typed-owners-probe.json": "79b30d61a0c7886fcfe5e75c75033d109efa893cac79d10b8ca5f986c47df8f1"
+  },
+  "active_exes_unchanged": true,
+  "selected_running_matches": 3049,
+  "selected_running_functions": 14468,
+  "integration_gain": 0,
+  "findings_manifest_files": 8336,
+  "findings_failed_hashes": [
+    "scripts/compile_test.py",
+    "verification/accepted-integrations.json",
+    "verification/integration-jobs.json",
+    "verification/inventory.json",
+    "verification/native-credit.json"
+  ],
+  "findings_unowned_Source_exists": true,
+  "scope": "Shared inactive frame now uses typed scoped owners and recovered caption/property-grid layouts. Eight lifecycle bodies, three tree constructors and all coupled frame probes pass. Full behaviors/data/virtual ABI remain open. Findings clean export is unproven; preserve concurrent updates."
+}

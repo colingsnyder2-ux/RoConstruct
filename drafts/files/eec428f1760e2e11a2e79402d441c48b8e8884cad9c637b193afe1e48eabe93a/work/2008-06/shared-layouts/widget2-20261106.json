@@ -1,0 +1,13 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "00642520",
+                                        "symbol":  "?render2d@Widget@RBX@@"
+                                    }
+                                ],
+                     "source":  "native-classes/Widget.cpp"
+                 }
+             ]
+}

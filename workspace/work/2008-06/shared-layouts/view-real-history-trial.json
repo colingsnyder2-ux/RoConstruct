@@ -1,0 +1,14 @@
+{
+  "source_sha256": "1b90ddc4aa4ed1717079aeff69b06c39dbf838609cc1617d281f6d0b0bd44d07",
+  "header_sha256": "d17468e5b74420e801fcb144fcb79614b22780274b134a574235ec378e5eb6c6",
+  "object_sha256": "6fa596b21f4093b4860b61dc76eeadb18a495bc906c19b66e27331ddedc82ff4",
+  "history_calls": {
+    "??$create@VChangeHistoryService@RBX@@@ServiceProvider@RBX@@QBEPAVChangeHistoryService@1@XZ": "0x452a00",
+    "?initializeBase@ChangeHistoryService@RBX@@QAEXXZ": "0x58c5e0"
+  },
+  "type_string_address": "0x948df8",
+  "body_size": 1915,
+  "target_size": 1915,
+  "match": false,
+  "scope": "Inactive typed service factory; service class layout and runtime linkage open."
+}

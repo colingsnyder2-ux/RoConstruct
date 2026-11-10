@@ -1,0 +1,157 @@
+{
+  "revision": "6c7b1ff3a8c02a5618062cf6710b2bcbe8ad1a15",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "player_sha256": "5547b4222b8b384818636ee9a5aa99b87f2f3995acbefc80c800ea4efd067244",
+  "fixture_sha256": "4fe10f97abfed14a6688845f06e8694b06e4bd4d4b1a8457f18f7af15b639b55",
+  "observer_sha256": "04ff346d7c097f56ceab6da44671f1c2d5f39b1d20f69fbf090d91874c0c2749",
+  "original_candidate_counts": [
+    4,
+    4,
+    5,
+    4
+  ],
+  "agreeing_moving_copies": [
+    2,
+    2,
+    2,
+    2
+  ],
+  "original_marker_times": [
+    0.09299999999348074,
+    0.25,
+    0.4220000000204891
+  ],
+  "original_wait_seconds": [
+    0.09999847412109375,
+    0.16666793823242188,
+    0.16666412353515625
+  ],
+  "rebuilt_wait_seconds": [
+    0.0999984999999981,
+    0.1500015000000019,
+    0.1500015000000019
+  ],
+  "rebuilt_anchor_transitions": [
+    6,
+    15,
+    24
+  ],
+  "comparisons": [
+    {
+      "time": 0.09299999999348074,
+      "original_y": 20.0,
+      "fixed_frame_window": [
+        3,
+        9
+      ],
+      "best_error": 0.0
+    },
+    {
+      "time": 0.20300000003771856,
+      "original_y": 19.016849517822266,
+      "fixed_frame_window": [
+        9,
+        15
+      ],
+      "best_error": 0.004302982177733838
+    },
+    {
+      "time": 0.2970000000204891,
+      "original_y": 17.27142333984375,
+      "fixed_frame_window": [
+        15,
+        21
+      ],
+      "best_error": 0.5245590601562498
+    },
+    {
+      "time": 0.40600000001722947,
+      "original_y": 17.27142333984375,
+      "fixed_frame_window": [
+        21,
+        27
+      ],
+      "best_error": 0.00717166015624926
+    },
+    {
+      "time": 0.5,
+      "original_y": 14.654006004333496,
+      "fixed_frame_window": [
+        27,
+        33
+      ],
+      "best_error": 0.010039295666503634
+    },
+    {
+      "time": 0.5929999999934807,
+      "original_y": 9.092890739440918,
+      "fixed_frame_window": [
+        33,
+        39
+      ],
+      "best_error": 0.014342310559081639
+    },
+    {
+      "time": 0.7970000000204891,
+      "original_y": -1.6729857921600342,
+      "fixed_frame_window": [
+        45,
+        51
+      ],
+      "best_error": 0.01412058216003409
+    },
+    {
+      "time": 1.0,
+      "original_y": 7.762571811676025,
+      "fixed_frame_window": [
+        57,
+        63
+      ],
+      "best_error": 0.025755881676025716
+    },
+    {
+      "time": 1.5,
+      "original_y": -2.983330488204956,
+      "fixed_frame_window": [
+        87,
+        93
+      ],
+      "best_error": 0.05115127179504375
+    },
+    {
+      "time": 2.0,
+      "original_y": -0.8214419484138489,
+      "fixed_frame_window": [
+        117,
+        123
+      ],
+      "best_error": 0.2628127915861511
+    },
+    {
+      "time": 3.0,
+      "original_y": -3.298125982284546,
+      "fixed_frame_window": [
+        177,
+        183
+      ],
+      "best_error": 0.12485289228454599
+    },
+    {
+      "time": 4.0,
+      "original_y": -3.807239294052124,
+      "fixed_frame_window": [
+        237,
+        243
+      ],
+      "best_error": 0.004516844052123936
+    }
+  ],
+  "original_final_y": -3.807239294052124,
+  "rebuilt_final_y": -3.80272245,
+  "final_difference": 0.004516844052123936,
+  "original_exit": 1,
+  "original_forced_termination": true,
+  "player_exit": 0,
+  "scope": "Three authored waits and anchor transitions; original real-time and rebuilt fixed-step observations. Not full scheduler or physics parity.",
+  "P5_complete": false
+}

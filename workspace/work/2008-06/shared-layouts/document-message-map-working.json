@@ -1,0 +1,363 @@
+{
+  "revision": "f6ee81dd52a25a4f1a76133a5a0d76db5b94f1d5",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "observer_sha256": "eb6f206a9778ac4257f75d090ea08912003f46f378d96f535af1d8e38a041419",
+  "get_message_map": "0x455d20",
+  "map_address": "0x817f0c",
+  "base_map_getter": "0x6a10be",
+  "entries_address": "0x817f18",
+  "entries": [
+    {
+      "index": 0,
+      "message": "0x111",
+      "code": "0x0",
+      "first_id": "0x8025",
+      "last_id": "0x8025",
+      "signature": "0x39",
+      "handler": "0x44f7c0"
+    },
+    {
+      "index": 1,
+      "message": "0x111",
+      "code": "0xffffffff",
+      "first_id": "0x8025",
+      "last_id": "0x8025",
+      "signature": "0x41",
+      "handler": "0x453af0"
+    },
+    {
+      "index": 2,
+      "message": "0x111",
+      "code": "0x0",
+      "first_id": "0xe12b",
+      "last_id": "0xe12b",
+      "signature": "0x39",
+      "handler": "0x453670"
+    },
+    {
+      "index": 3,
+      "message": "0x111",
+      "code": "0xffffffff",
+      "first_id": "0xe12b",
+      "last_id": "0xe12b",
+      "signature": "0x41",
+      "handler": "0x453750"
+    },
+    {
+      "index": 4,
+      "message": "0x111",
+      "code": "0x0",
+      "first_id": "0xe12c",
+      "last_id": "0xe12c",
+      "signature": "0x39",
+      "handler": "0x4538b0"
+    },
+    {
+      "index": 5,
+      "message": "0x111",
+      "code": "0xffffffff",
+      "first_id": "0xe12c",
+      "last_id": "0xe12c",
+      "signature": "0x41",
+      "handler": "0x453990"
+    },
+    {
+      "index": 6,
+      "message": "0x111",
+      "code": "0x0",
+      "first_id": "0x80b6",
+      "last_id": "0x80b6",
+      "signature": "0x39",
+      "handler": "0x44fc50"
+    },
+    {
+      "index": 7,
+      "message": "0x111",
+      "code": "0xffffffff",
+      "first_id": "0x80b6",
+      "last_id": "0x80b6",
+      "signature": "0x41",
+      "handler": "0x42e550"
+    },
+    {
+      "index": 8,
+      "message": "0x111",
+      "code": "0xffffffff",
+      "first_id": "0x80b7",
+      "last_id": "0x80b7",
+      "signature": "0x41",
+      "handler": "0x453af0"
+    },
+    {
+      "index": 9,
+      "message": "0x111",
+      "code": "0x0",
+      "first_id": "0x80b7",
+      "last_id": "0x80b7",
+      "signature": "0x39",
+      "handler": "0x44fcc0"
+    },
+    {
+      "index": 10,
+      "message": "0x4e",
+      "code": "0x64",
+      "first_id": "0x80c3",
+      "last_id": "0x80c3",
+      "signature": "0x3d",
+      "handler": "0x453c30"
+    },
+    {
+      "index": 11,
+      "message": "0x111",
+      "code": "0xffffffff",
+      "first_id": "0x80c3",
+      "last_id": "0x80c3",
+      "signature": "0x41",
+      "handler": "0x42e550"
+    },
+    {
+      "index": 12,
+      "message": "0x111",
+      "code": "0x0",
+      "first_id": "0x80c7",
+      "last_id": "0x80c7",
+      "signature": "0x39",
+      "handler": "0x455460"
+    },
+    {
+      "index": 13,
+      "message": "0x111",
+      "code": "0xffffffff",
+      "first_id": "0x80c7",
+      "last_id": "0x80c7",
+      "signature": "0x41",
+      "handler": "0x454040"
+    },
+    {
+      "index": 14,
+      "message": "0x111",
+      "code": "0x0",
+      "first_id": "0x80c8",
+      "last_id": "0x80c8",
+      "signature": "0x39",
+      "handler": "0x455580"
+    },
+    {
+      "index": 15,
+      "message": "0x111",
+      "code": "0xffffffff",
+      "first_id": "0x80c8",
+      "last_id": "0x80c8",
+      "signature": "0x41",
+      "handler": "0x454170"
+    },
+    {
+      "index": 16,
+      "message": "0x111",
+      "code": "0x0",
+      "first_id": "0x80c6",
+      "last_id": "0x80c6",
+      "signature": "0x39",
+      "handler": "0x455820"
+    },
+    {
+      "index": 17,
+      "message": "0x111",
+      "code": "0xffffffff",
+      "first_id": "0x80c6",
+      "last_id": "0x80c6",
+      "signature": "0x41",
+      "handler": "0x454300"
+    },
+    {
+      "index": 18,
+      "message": "0x111",
+      "code": "0xffffffff",
+      "first_id": "0xbb",
+      "last_id": "0xbb",
+      "signature": "0x41",
+      "handler": "0x450a70"
+    },
+    {
+      "index": 19,
+      "message": "0x111",
+      "code": "0xffffffff",
+      "first_id": "0xbe",
+      "last_id": "0xbe",
+      "signature": "0x41",
+      "handler": "0x450c00"
+    },
+    {
+      "index": 20,
+      "message": "0x111",
+      "code": "0xffffffff",
+      "first_id": "0xd1",
+      "last_id": "0xd1",
+      "signature": "0x41",
+      "handler": "0x450d90"
+    },
+    {
+      "index": 21,
+      "message": "0x111",
+      "code": "0xffffffff",
+      "first_id": "0x80da",
+      "last_id": "0x80da",
+      "signature": "0x41",
+      "handler": "0x454490"
+    },
+    {
+      "index": 22,
+      "message": "0x111",
+      "code": "0x0",
+      "first_id": "0x80da",
+      "last_id": "0x80da",
+      "signature": "0x39",
+      "handler": "0x4545d0"
+    },
+    {
+      "index": 23,
+      "message": "0x111",
+      "code": "0xffffffff",
+      "first_id": "0x80f6",
+      "last_id": "0x80f6",
+      "signature": "0x41",
+      "handler": "0x4547b0"
+    },
+    {
+      "index": 24,
+      "message": "0x111",
+      "code": "0xffffffff",
+      "first_id": "0x80db",
+      "last_id": "0x80db",
+      "signature": "0x41",
+      "handler": "0x454920"
+    },
+    {
+      "index": 25,
+      "message": "0x111",
+      "code": "0x0",
+      "first_id": "0x80f1",
+      "last_id": "0x80f1",
+      "signature": "0x39",
+      "handler": "0x455c30"
+    },
+    {
+      "index": 26,
+      "message": "0x111",
+      "code": "0xffffffff",
+      "first_id": "0x80f1",
+      "last_id": "0x80f1",
+      "signature": "0x41",
+      "handler": "0x42e550"
+    },
+    {
+      "index": 27,
+      "message": "0x111",
+      "code": "0x0",
+      "first_id": "0x80f8",
+      "last_id": "0x80f8",
+      "signature": "0x39",
+      "handler": "0x454c90"
+    },
+    {
+      "index": 28,
+      "message": "0x111",
+      "code": "0xffffffff",
+      "first_id": "0x80f8",
+      "last_id": "0x80f8",
+      "signature": "0x41",
+      "handler": "0x42e550"
+    },
+    {
+      "index": 29,
+      "message": "0x111",
+      "code": "0xffffffff",
+      "first_id": "0x8021",
+      "last_id": "0x8021",
+      "signature": "0x41",
+      "handler": "0x42e550"
+    },
+    {
+      "index": 30,
+      "message": "0x111",
+      "code": "0x0",
+      "first_id": "0x8021",
+      "last_id": "0x8021",
+      "signature": "0x39",
+      "handler": "0x450f30"
+    },
+    {
+      "index": 31,
+      "message": "0x111",
+      "code": "0x0",
+      "first_id": "0x8100",
+      "last_id": "0x8100",
+      "signature": "0x39",
+      "handler": "0x44fd30"
+    },
+    {
+      "index": 32,
+      "message": "0x111",
+      "code": "0xffffffff",
+      "first_id": "0x8100",
+      "last_id": "0x8100",
+      "signature": "0x41",
+      "handler": "0x454f30"
+    },
+    {
+      "index": 33,
+      "message": "0x111",
+      "code": "0x0",
+      "first_id": "0x8104",
+      "last_id": "0x8104",
+      "signature": "0x39",
+      "handler": "0x4500d0"
+    },
+    {
+      "index": 34,
+      "message": "0x111",
+      "code": "0xffffffff",
+      "first_id": "0x8104",
+      "last_id": "0x8104",
+      "signature": "0x41",
+      "handler": "0x42e550"
+    },
+    {
+      "index": 35,
+      "message": "0x111",
+      "code": "0xffffffff",
+      "first_id": "0x8108",
+      "last_id": "0x8108",
+      "signature": "0x41",
+      "handler": "0x42e550"
+    },
+    {
+      "index": 36,
+      "message": "0x111",
+      "code": "0x0",
+      "first_id": "0x8108",
+      "last_id": "0x8108",
+      "signature": "0x39",
+      "handler": "0x4501c0"
+    },
+    {
+      "index": 37,
+      "message": "0x111",
+      "code": "0x0",
+      "first_id": "0x8109",
+      "last_id": "0x8109",
+      "signature": "0x39",
+      "handler": "0x4502b0"
+    },
+    {
+      "index": 38,
+      "message": "0x111",
+      "code": "0xffffffff",
+      "first_id": "0x8109",
+      "last_id": "0x8109",
+      "signature": "0x41",
+      "handler": "0x42e550"
+    }
+  ],
+  "scope": "Original data inventory only; handler names, bodies and linked relocations remain unverified."
+}

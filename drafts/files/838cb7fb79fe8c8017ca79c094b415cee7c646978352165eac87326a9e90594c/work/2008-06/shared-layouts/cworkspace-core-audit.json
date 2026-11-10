@@ -1,0 +1,13 @@
+{
+  "swap_target": "Workspace runnable integration (CWorkspace core)",
+  "run": "work/2008-06/native-check-runs/20261105-183135-c356d370",
+  "checks": "3/3 exact bytes+data, score 100",
+  "ctor": {"addr": "0046ab60", "size": 33, "symbol": "??0CWorkspace@@QAE@XZ", "target_sha256": "51dab74ef817992316576d342220df2ade635eb471297f4cd74a554f7276af56"},
+  "getDataModel": {"addr": "0046a940", "size": 43, "symbol": "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ", "target_sha256": "778484daa9f66865bc8fdc9ada87297f8ebe11a40542e01b43dcdc7829410dd6"},
+  "cleanup": {"addr": "0046b0e0", "size": 242, "symbol": "?cleanup@CWorkspace@@QAEXXZ", "target_sha256": "62f2e7e19cb61039a83795e910393737b08678e2952cc81da1c323fda2ae7ec3"},
+  "source_sha256": "56bb74a319dea21c1bf2530892594b4fb3f0e7d9ba80016f2eece79abcfb0e66",
+  "object_sha256": "6bdc1eb8679f7b0b584554bcad95ea8ccc60cfab6cf88a652720ba5d5406a386",
+  "compiler": "21022 a8fb826379837492f19b249a3553acc3f904afe4c93e643054d0e48340ae717a",
+  "next_gate": "CWorkspace::write 0046b860 EH empty-state (FuncInfo 0x8db774 2 states) + Content closure + NullTool headers + Part provider",
+  "metrics": {"inactive_exact": 14, "selected_exact": "unknown", "gated_swaps": 0, "server_credit": 0}
+}

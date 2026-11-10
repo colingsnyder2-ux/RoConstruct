@@ -1,0 +1,220 @@
+[
+  {
+    "source": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-classes\\WorkspaceServiceFactory.cpp",
+    "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-133434-0c8c15a8\\unit-000\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "00490af0",
+        "requested_symbol": "??$create@VWorkspace@RBX@@@ServiceProvider@RBX@@QBEPAVWorkspace@1@XZ",
+        "status": "exact",
+        "symbol": "??$create@VWorkspace@RBX@@@ServiceProvider@RBX@@QBEPAVWorkspace@1@XZ",
+        "score": 100,
+        "target_size": 320,
+        "object_size": 320,
+        "target_sha256": "377a0b51d2290a401672045ea2c8e7a50e6c518a5934f5feaa525277f5207b57",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": false,
+          "calls": [
+            {
+              "offset": 40,
+              "target": "00557330",
+              "symbol": "?call_once@boost@@YAXP6AXXZAAJ@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 48,
+              "target": "0048a460",
+              "symbol": "??$doGetClassIndex@VWorkspace@RBX@@@ServiceProvider@RBX@@SAIXZ",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 114,
+              "target": "004124c0",
+              "symbol": "?resize@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAEXIV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 134,
+              "target": null,
+              "symbol": null,
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 160,
+              "target": "00557330",
+              "symbol": "?call_once@boost@@YAXP6AXXZAAJ@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 168,
+              "target": "00489c30",
+              "symbol": "??$doDeclare@$1?sWorkspace@RBX@@3PADA@Name@RBX@@CAABV01@XZ",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 181,
+              "target": "00572a90",
+              "symbol": "?findServiceByClassName@ServiceProvider@RBX@@QBE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 214,
+              "target": "00600660",
+              "symbol": "??1?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 255,
+              "target": null,
+              "symbol": null,
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 277,
+              "target": "004025b0",
+              "symbol": "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 294,
+              "target": "00600660",
+              "symbol": "??1?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ",
+              "status": "verified_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 2.002121
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  },
+  {
+    "source": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-classes\\ActiveDocument.cpp",
+    "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-133434-0c8c15a8\\unit-001\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "00405aa0",
+        "requested_symbol": "?setActiveDocument@@YAX_NPAVCRobloxDoc@@@Z",
+        "status": "exact",
+        "symbol": "?setActiveDocument@@YAX_NPAVCRobloxDoc@@@Z",
+        "score": 100,
+        "target_size": 571,
+        "object_size": 571,
+        "target_sha256": "71c598fad4446f46db99aaff383758d0dce14442af8fc4967175d4f3871d33cb",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": false,
+          "calls": [
+            {
+              "offset": 92,
+              "target": "00403040",
+              "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 119,
+              "target": "004025b0",
+              "symbol": "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 164,
+              "target": null,
+              "symbol": null,
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 185,
+              "target": null,
+              "symbol": null,
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 208,
+              "target": "00403040",
+              "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 251,
+              "target": null,
+              "symbol": null,
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 272,
+              "target": null,
+              "symbol": null,
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 283,
+              "target": "00456e80",
+              "symbol": "?reset@?$shared_ptr@VDataModel@RBX@@@boost@@QAEXXZ",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 354,
+              "target": null,
+              "symbol": null,
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 368,
+              "target": null,
+              "symbol": null,
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 375,
+              "target": null,
+              "symbol": null,
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 466,
+              "target": null,
+              "symbol": null,
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 472,
+              "target": "005e9340",
+              "symbol": "?_Inc@const_iterator@?$_Tree@V?$_Tset_traits@PAVActiveDocView@@U?$less@PAVActiveDocView@@@std@@V?$allocator@PAVActiveDocView@@@3@$0A@@std@@@std@@QAEXXZ",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 529,
+              "target": null,
+              "symbol": null,
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 550,
+              "target": null,
+              "symbol": null,
+              "status": "unresolved_or_wrong_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.004823
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  }
+]

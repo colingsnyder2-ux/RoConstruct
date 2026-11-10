@@ -1,0 +1,25 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/ArchiveBinderResolve.cpp",
+      "checks": [
+        {
+          "addr": "00592720",
+          "symbol": "?resolveRefs@ArchiveBinder@@UAE_NXZ",
+          "calls": [
+            {
+              "offset": 53,
+              "target": "005919f0",
+              "symbol": "??$_Count_if@V?$_Iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@V?$bind_t@_NV?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@boost@@V?$list2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YAHV?$_Iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@0@0V?$bind_t@_NV?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@boost@@V?$list2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@Z"
+            },
+            {
+              "offset": 65,
+              "target": "00443d60",
+              "symbol": "?resolveRefs@MergeBinder@RBX@@UAE_NXZ"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "revision": "a4af2401514c685c0b1294772bba3a4fb9baf8d0",
+  "exe_sha256": "f3d61afe296ebdb5b6c282167ae9fe956f545fa6541cf7b234f2ed77852e8bb3",
+  "input_sha256": "727bf73ec80a9766cb620ab2688d3a3027422aadc9da775b9c1990d3a02bba2c",
+  "exit_hex": "0xc0000005",
+  "frames_completed": 30,
+  "models_after": 833,
+  "mesh_cleanup_passed": true,
+  "script_error_stacks": 0,
+  "scope": "Negative supplied-place run; shutdown cause unproven."
+}

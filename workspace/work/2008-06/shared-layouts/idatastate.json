@@ -1,0 +1,16 @@
+{
+  "revision": "dc21e3e3ebfb70d994c3b323a2964bdb781f18a9",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "header_sha256": "0b8b88645efaa4a4f3f665ad39971463411717c09c20e370ad258e34f175891b",
+  "probe_sha256": "28c8863d1a0bfd951ed3c1efd15db40a1ddc4eae2fe17ec714d1015a113528cf",
+  "compiler": 21022,
+  "size": 4,
+  "vtable": "0083030c",
+  "slots": [
+    "0057b020",
+    "0057b030"
+  ],
+  "data_model_dirty_offset": "0x258",
+  "next_vtable_locator": "0x895e50",
+  "scope": "Original RTTI and vtable prove two-slot interface. Candidate inactive; full DataModel layout remains open."
+}

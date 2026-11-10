@@ -1,0 +1,52 @@
+{
+  "scope": "Compare existing native x86 EH metadata graph to the original; never compile/run. Pointer bindings in cleanup are checked against normal-body references/imports; not whole dependency ABI/runtime proof.",
+  "address": "00443e50",
+  "primary_body_size": 87,
+  "primary_body_exact": true,
+  "tool_sha256": "e4c27d8c88a67c0bc8267ec15e7dcbdd3db63f3502b547dc9c9e3796d454bbbb",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "object": "rebuild\\2008-06\\out\\native-misc-leaves\\NativeMergeBinder.obj",
+  "object_sha256": "b277eb879582c2f08e7ca3c17155b0d20814e9c41e2861f3dea723c12b11d8b2",
+  "events": [
+    {
+      "symbol": "__ehhandler$??0MergeBinder@RBX@@QAE@XZ",
+      "original": "0x7d72e8",
+      "kind": "cleanup/handler code",
+      "size": 10,
+      "exact": true
+    },
+    {
+      "symbol": "__ehfuncinfo$??0MergeBinder@RBX@@QAE@XZ",
+      "original": "0x8f5e98",
+      "kind": "EH data",
+      "size": 36,
+      "exact": true,
+      "original_bytes": "2205931901000000905e8f00000000000000000000000000000000000000000001000000",
+      "native_bytes": "220593190100000000000000000000000000000000000000000000000000000001000000"
+    },
+    {
+      "symbol": "__unwindtable$??0MergeBinder@RBX@@QAE@XZ",
+      "original": "0x8f5e90",
+      "kind": "EH data",
+      "size": 8,
+      "exact": true,
+      "original_bytes": "ffffffffe0727d00",
+      "native_bytes": "ffffffff00000000"
+    },
+    {
+      "symbol": "__unwindfunclet$??0MergeBinder@RBX@@QAE@XZ$1",
+      "original": "0x7d72e0",
+      "kind": "cleanup/handler code",
+      "size": 8,
+      "exact": true
+    },
+    {
+      "symbol": "??1?$_Vector_val@UIDREFItem@MergeBinder@RBX@@V?$allocator@UIDREFItem@MergeBinder@RBX@@@std@@@std@@QAE@XZ",
+      "original": "0x5b3d20",
+      "kind": "cleanup/handler code",
+      "size": 10,
+      "exact": true
+    }
+  ],
+  "errors": []
+}

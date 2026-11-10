@@ -1,0 +1,141 @@
+{
+  "revision": "3bbbc0103ae9550daf83a7d9edf645c9dc08e094",
+  "sources": {
+    "rebuild\\2008-06\\tests\\record_native_property_grid.py": "637a800b04f6cf2c24308788abbf6cbe6586b2bad4f905e6294df30483dd5347",
+    "rebuild\\2008-06\\tests\\NativePropertyGridLayout.cpp": "77a7a641ea1b8e639128866b067db926a75235fec8d2266744ecaf6ab35c6f1b",
+    "rebuild\\2008-06\\native-headers\\CMainFrame.h": "7eeb25e0bda0b97adc4918c99983d76307bcd3c8c1b7c332c77658a863037f7e",
+    "rebuild\\2008-06\\native-headers\\SelectionGroup.h": "009c20d44a8a6c5caeb6677ca0825083f1bcffdf33dbe7f6f79de0459735b792",
+    "rebuild\\2008-06\\native-headers\\v8tree\\PropertyChanged.h": "c5fc5062ea7482f19ed3875f42d9823f54bfbecafc2dacaf09212bee33c715ca",
+    "rebuild\\2008-06\\native-headers\\CPropGrid.h": "f8c49281322309579f6916350ccb9a7da22d2d1092e8a70bd14576464d9d383e",
+    "rebuild\\2008-06\\native-classes\\CPropGrid.cpp": "269550c9127af46ce66fc44298907ff886de685df92287cc3e5e82cd687ba3ec",
+    "rebuild\\2008-06\\native-headers\\CSelectionPropGrid.h": "13fafeb53f903ffc62b81903ecdd8190eadcb09db62ba71e52130798b658e09a",
+    "rebuild\\2008-06\\native-classes\\CSelectionPropGrid.cpp": "8abcb468d9132b418fd8288a4109f321c3d7d1dce47f568fc96bc655fa4fa8b0",
+    "rebuild\\2008-06\\native-headers\\CDataModelPropGrid.h": "2451573c8e1baf62d043e01be78d62987f89936fe8a128ff2c7745340ea840f3",
+    "rebuild\\2008-06\\native-classes\\CDataModelPropGrid.cpp": "fab5559a90bccb34b18f6b792fe30624934804c219ccbc181725b8891b9e1bd9"
+  },
+  "compiler_build": 21022,
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DBOOST_ALL_NO_LIB",
+    "/D_XTP_STATICLINK",
+    "/D_XTPLIB_NOAUTOLINK",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+  ],
+  "methods": [
+    {
+      "address": "00442b20",
+      "symbol": "??0CPropGrid@@QAE@XZ",
+      "size": 258,
+      "object": "NativeCPropGrid.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00442a30",
+      "symbol": "??1CPropGrid@@UAE@XZ",
+      "size": 214,
+      "object": "NativeCPropGrid.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00437820",
+      "symbol": "?GetRuntimeClass@CPropGrid@@UBEPAUCRuntimeClass@@XZ",
+      "size": 6,
+      "object": "NativeCPropGrid.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00430700",
+      "symbol": "??1CSelectionPropGrid@@UAE@XZ",
+      "size": 160,
+      "object": "NativeCSelectionPropGrid.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00437830",
+      "symbol": "?GetRuntimeClass@CSelectionPropGrid@@UBEPAUCRuntimeClass@@XZ",
+      "size": 6,
+      "object": "NativeCSelectionPropGrid.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00431040",
+      "symbol": "??0CDataModelPropGrid@@QAE@XZ",
+      "size": 143,
+      "object": "NativeCDataModelPropGrid.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "004310f0",
+      "symbol": "??1CDataModelPropGrid@@UAE@XZ",
+      "size": 79,
+      "object": "NativeCDataModelPropGrid.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00437840",
+      "symbol": "?GetRuntimeClass@CDataModelPropGrid@@UBEPAUCRuntimeClass@@XZ",
+      "size": 6,
+      "object": "NativeCDataModelPropGrid.obj",
+      "relocation_masked_match": true
+    }
+  ],
+  "verified_tree_calls": [
+    {
+      "offset": 141,
+      "address": "0x446110",
+      "symbol": "??0?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@PAVItem@CPropGrid@@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@PAVItem@CPropGrid@@@std@@@7@$0A@@std@@@std@@QAE@ABU?$less@PBVPropertyDescriptor@Reflection@RBX@@@1@ABV?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@PAVItem@CPropGrid@@@std@@@1@@Z",
+      "size": 117
+    },
+    {
+      "offset": 167,
+      "address": "0x446110",
+      "symbol": "??0?$_Tree@V?$_Tmap_traits@PAXPAXU?$less@PAX@std@@V?$allocator@U?$pair@QAXPAX@std@@@2@$0A@@std@@@std@@QAE@ABU?$less@PAX@1@ABV?$allocator@U?$pair@QAXPAX@std@@@1@@Z",
+      "size": 117
+    },
+    {
+      "offset": 205,
+      "address": "0x64b2a0",
+      "symbol": "??0?$_Tree@V?$_Tset_traits@PAVItem@CPropGrid@@U?$less@PAVItem@CPropGrid@@@std@@V?$allocator@PAVItem@CPropGrid@@@4@$0A@@std@@@std@@QAE@ABU?$less@PAVItem@CPropGrid@@@1@ABV?$allocator@PAVItem@CPropGrid@@@1@@Z",
+      "size": 117
+    },
+    {
+      "offset": 231,
+      "address": "0x4d8680",
+      "symbol": "??0?$_Tree@V?$_Tmap_traits@PBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@U?$less@PBVClassDescriptor@Reflection@RBX@@@5@V?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@5@$0A@@std@@@std@@QAE@ABU?$less@PBVClassDescriptor@Reflection@RBX@@@1@ABV?$allocator@U?$pair@QBVClassDescriptor@Reflection@RBX@@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@std@@@1@@Z",
+      "size": 117
+    }
+  ],
+  "primary_virtual_slots": 91,
+  "selected_virtual_slots": {
+    "12": "GetMessageMap",
+    "90": "addProperty"
+  },
+  "layouts": {
+    "CPropGrid": 568,
+    "CSelectionPropGrid": 580,
+    "CDataModelPropGrid": 584
+  },
+  "scope": "Inactive separate-TU lifecycle/layout evidence. Descriptor/item and descriptor/Instance-vector payloads corrected by separate selection-grid proofs; reverse-map identity and full message/virtual ABI remain open; no runtime credit."
+}

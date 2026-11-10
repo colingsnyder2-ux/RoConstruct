@@ -1,0 +1,1139 @@
+{
+  "class": "CInstanceExplorer (+ CSettingsExplorer, CInstanceRecord, CInstanceRecord::CNameItem)",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/UNOMINMAX",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
+    "/D_XTP_STATICLINK"
+  ],
+  "profile": "noinline std::string::c_str (imported)",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_instance_explorer.py": "df418d5ec6c707375efb8fa41bd25c179f3ef3456c395ab2633fa83f746ea2c5",
+    "rebuild/2008-06/native-classes/CInstanceExplorer.cpp": "935eb726cdcdfe591da1a69f67cc081187cf1beb430b183ed675127b36692872",
+    "rebuild/2008-06/native-headers/CInstanceExplorer.h": "c334619a7db58283880f1ec10a644280c446fa7daa28ed7c402b7951706578c7",
+    "rebuild/2008-06/native-headers/CSettingsExplorer.h": "a1b18236247e32daff6120a8dc7f2660e22d6f4f6ce25173be33c9a480b7bc3c",
+    "rebuild/2008-06/tests/NativeInstanceExplorerLayout.cpp": "b3d34f7b00f0d5e89d578268969d9daedb3e70caa3c4a194b34edad730ee450f"
+  },
+  "object_sha256": "afd70f88d8dab8272481d9ef830e59001169b346dca2ce4eba898154bbe355d5",
+  "methods": [
+    {
+      "address": "00420780",
+      "symbol": "?GetRuntimeClass@CInstanceExplorer@@UBEPAUCRuntimeClass@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?classCInstanceExplorer@CInstanceExplorer@@2UCRuntimeClass@@B": "0x80f638"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00420790",
+      "symbol": "?GetCaption@CNameItem@CInstanceRecord@@UAE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@PAVCXTPReportColumn@@@Z",
+      "size": 45,
+      "exact": true,
+      "verified_targets": {
+        "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": "msvcp90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ",
+        "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PBD@Z": "mfc90.dll!??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PBD@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00420990",
+      "symbol": "?OnCreate@CInstanceExplorer@@QAEHPAUtagCREATESTRUCTA@@@Z",
+      "size": 232,
+      "exact": true,
+      "verified_targets": {
+        "?OnCreate@CXTPReportView@@IAEHPAUtagCREATESTRUCTA@@@Z": "0x6c52a0",
+        "?SetAutoColumnSizing@CXTPReportHeader@@QAEXH@Z": "0x6d6890",
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??_C@_04FABLJDN@Name?$AA@": "0x80f7cc",
+        "??0CXTPReportColumn@@QAE@HPBDHHHHH@Z": "0x6d4b70",
+        "?AddColumn@CXTPReportControl@@QAEPAVCXTPReportColumn@@PAV2@@Z": "0x6c9600",
+        "?SetTreeColumn@CXTPReportColumn@@QAEXH@Z": "0x6d4980"
+      },
+      "local_eh": [
+        "__ehhandler$?OnCreate@CInstanceExplorer@@QAEHPAUtagCREATESTRUCTA@@@Z"
+      ]
+    },
+    {
+      "address": "00420c20",
+      "symbol": "?onMarshaledEvent@CInstanceExplorer@@UAEXPBVInstance@RBX@@UDescendantRemoving@3@@Z",
+      "size": 182,
+      "exact": true,
+      "verified_targets": {
+        "?GetCount@CXTPReportRecords@@QBEHXZ": "0x6da050",
+        "?GetAt@CXTPReportRecords@@QBEPAVCXTPReportRecord@@H@Z": "0x6d7920",
+        "?RemoveAt@CXTPReportRecords@@QAEXH@Z": "0x6d7cd0",
+        "??1DescendantRemoving@RBX@@QAE@XZ": "0x422c60"
+      },
+      "local_eh": [
+        "__ehhandler$?onMarshaledEvent@CInstanceExplorer@@UAEXPBVInstance@RBX@@UDescendantRemoving@3@@Z"
+      ]
+    },
+    {
+      "address": "00420db0",
+      "symbol": "??0CInstanceRecord@@QAE@V?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+      "size": 303,
+      "exact": true,
+      "verified_targets": {
+        "??0CXTPReportRecord@@QAE@XZ": "0x6d7fd0",
+        "??_7CInstanceRecord@@6B@": "0x80f7e4",
+        "??2?$CXTPHeapObjectT@VCCmdTarget@@VCXTPReportDataAllocator@@@@SGPAXI@Z": "0x6c81f0",
+        "??0CXTPReportRecordItem@@QAE@XZ": "0x6c7340",
+        "??_7CNameItem@CInstanceRecord@@6B@": "0x80f65c",
+        "?AddItem@CXTPReportRecord@@QAEPAVCXTPReportRecordItem@@PAV2@@Z": "0x6d8070",
+        "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": "msvcp90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ",
+        "??0CXTPReportRecordItemText@@QAE@PBD@Z": "0x6d8600"
+      },
+      "local_eh": [
+        "__ehhandler$??0CInstanceRecord@@QAE@V?$shared_ptr@VInstance@RBX@@@boost@@@Z"
+      ]
+    },
+    {
+      "address": "00420ee0",
+      "symbol": "??1CInstanceRecord@@UAE@XZ",
+      "size": 125,
+      "exact": true,
+      "verified_targets": {
+        "??_7CInstanceRecord@@6B@": "0x80f7e4",
+        "??1CXTPReportRecord@@UAE@XZ": "0x6d8100"
+      },
+      "local_eh": [
+        "__ehhandler$??1CInstanceRecord@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "00420f60",
+      "symbol": "??_GCInstanceRecord@@UAEPAXI@Z",
+      "size": 65,
+      "exact": true,
+      "verified_targets": {
+        "??1CInstanceRecord@@UAE@XZ": "0x420ee0",
+        "?ms_bUseCustomHeap@CXTPReportDataAllocatorData@@2HA": "0x97e114",
+        "?Free_mem@?$CXTPHeapAllocatorT@UCXTPReportDataAllocatorData@@@@SAXPAX@Z": "0x420a80",
+        "?ms_dwRefs@CXTPReportDataAllocatorData@@2JA": "0x97e10c",
+        "__imp__InterlockedDecrement@4": "kernel32.dll!InterlockedDecrement",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00420fb0",
+      "symbol": "?onMarshaledEvent@CInstanceExplorer@@UAEXPBVInstance@RBX@@UDescendantAdded@3@@Z",
+      "size": 205,
+      "exact": true,
+      "verified_targets": {
+        "??2?$CXTPHeapObjectT@VCCmdTarget@@VCXTPReportDataAllocator@@@@SGPAXI@Z": "0x6c81f0",
+        "??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z": "0x618a40",
+        "??0CInstanceRecord@@QAE@V?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x420db0",
+        "??1DescendantAdded@RBX@@QAE@XZ": "0x422c60"
+      },
+      "local_eh": [
+        "__ehhandler$?onMarshaledEvent@CInstanceExplorer@@UAEXPBVInstance@RBX@@UDescendantAdded@3@@Z"
+      ]
+    },
+    {
+      "address": "00421080",
+      "symbol": "??0?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@QAE@XZ",
+      "size": 118,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@6B@": "0x80f84c (RTTI .?AV?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@, offset 0x0)",
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "__imp__GetCurrentThreadId@0": "kernel32.dll!GetCurrentThreadId",
+        "?acquireMarshalWindow@RBX@@YAPAVCMarshalWindow@1@XZ": "0x432ce0"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "00421130",
+      "symbol": "??0?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@QAE@XZ",
+      "size": 118,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@6B@": "0x80f86c (RTTI .?AV?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@, offset 0x0)",
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "__imp__GetCurrentThreadId@0": "kernel32.dll!GetCurrentThreadId",
+        "?acquireMarshalWindow@RBX@@YAPAVCMarshalWindow@1@XZ": "0x432ce0"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "004211b0",
+      "symbol": "?onEvent@?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@UAEXPBVInstance@2@UDescendantAdded@2@@Z",
+      "size": 130,
+      "exact": true,
+      "verified_targets": {
+        "__imp__EnterCriticalSection@4": "kernel32.dll!EnterCriticalSection",
+        "__imp__LeaveCriticalSection@4": "kernel32.dll!LeaveCriticalSection",
+        "??1DescendantAdded@RBX@@QAE@XZ": "0x422c60"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004211b0",
+      "symbol": "?onEvent@?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@UAEXPBVInstance@2@UDescendantRemoving@2@@Z",
+      "size": 130,
+      "exact": true,
+      "verified_targets": {
+        "__imp__EnterCriticalSection@4": "kernel32.dll!EnterCriticalSection",
+        "__imp__LeaveCriticalSection@4": "kernel32.dll!LeaveCriticalSection",
+        "??1DescendantRemoving@RBX@@QAE@XZ": "0x422c60"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00421620",
+      "symbol": "??1?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@UAE@XZ",
+      "size": 113,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@6B@": "0x80f84c (RTTI .?AV?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@, offset 0x0)",
+        "?detach@?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@QAEXXZ": "0x457710",
+        "?releaseMarshalWindow@RBX@@YAXPAVCMarshalWindow@1@@Z": "0x432bd0",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "004216a0",
+      "symbol": "?marshal@?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@UAEXPBVInstance@2@UDescendantAdded@2@@Z",
+      "size": 155,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??0EventData@?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@QAE@PAV12@PBVInstance@2@UDescendantAdded@2@@Z": "0x421240",
+        "?push_back@?$vector@PAVEventData@?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@@std@@@std@@QAEXABQAVEventData@?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@@Z": "0x4213a0",
+        "?post@CMarshalWindow@RBX@@QAEXPAVEventDataBase@2@@Z": "0x432950",
+        "??1DescendantAdded@RBX@@QAE@XZ": "0x422c60"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00421740",
+      "symbol": "??1?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@UAE@XZ",
+      "size": 113,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@6B@": "0x80f86c (RTTI .?AV?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@, offset 0x0)",
+        "?detach@?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@QAEXXZ": "0x457710",
+        "?releaseMarshalWindow@RBX@@YAXPAVCMarshalWindow@1@@Z": "0x432bd0",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "004217c0",
+      "symbol": "?marshal@?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@UAEXPBVInstance@2@UDescendantRemoving@2@@Z",
+      "size": 155,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??0EventData@?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@QAE@PAV12@PBVInstance@2@UDescendantRemoving@2@@Z": "0x4212f0",
+        "?push_back@?$vector@PAVEventData@?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@@std@@@std@@QAEXABQAVEventData@?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@@Z": "0x4213a0",
+        "?post@CMarshalWindow@RBX@@QAEXPAVEventDataBase@2@@Z": "0x432950",
+        "??1DescendantRemoving@RBX@@QAE@XZ": "0x422c60"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004218a0",
+      "symbol": "?addListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@QBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z",
+      "size": 147,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "?push_back@?$vector@PAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@RBX@@@std@@@std@@QAEXABQAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@RBX@@@Z": "0x4213a0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004218a0",
+      "symbol": "?addListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@QBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z",
+      "size": 147,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "?push_back@?$vector@PAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@RBX@@@std@@@std@@QAEXABQAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@RBX@@@Z": "0x4213a0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00421240",
+      "symbol": "??0EventData@?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@QAE@PAV12@PBVInstance@2@UDescendantAdded@2@@Z",
+      "size": 168,
+      "exact": true,
+      "verified_targets": {
+        "??_7EventData@?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@6B@": "0x80f880 (RTTI .?AVEventData@?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@, offset 0x0)",
+        "?setSource@EventData@?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@QAEXPBVInstance@3@@Z": "0x4571d0",
+        "??1DescendantAdded@RBX@@QAE@XZ": "0x422c60"
+      },
+      "local_eh": [
+        "__ehhandler$??0EventData@?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@QAE@PAV12@PBVInstance@2@UDescendantAdded@2@@Z"
+      ]
+    },
+    {
+      "address": "004212f0",
+      "symbol": "??0EventData@?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@QAE@PAV12@PBVInstance@2@UDescendantRemoving@2@@Z",
+      "size": 168,
+      "exact": true,
+      "verified_targets": {
+        "??_7EventData@?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@6B@": "0x80f88c (RTTI .?AVEventData@?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@, offset 0x0)",
+        "?setSource@EventData@?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@QAEXPBVInstance@3@@Z": "0x4571d0",
+        "??1DescendantRemoving@RBX@@QAE@XZ": "0x422c60"
+      },
+      "local_eh": [
+        "__ehhandler$??0EventData@?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@QAE@PAV12@PBVInstance@2@UDescendantRemoving@2@@Z"
+      ]
+    },
+    {
+      "address": "00421940",
+      "symbol": "??0CInstanceExplorer@@QAE@XZ",
+      "size": 132,
+      "exact": true,
+      "verified_targets": {
+        "??0CXTPReportView@@IAE@XZ": "0x6c5070",
+        "??0?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@QAE@XZ": "0x421080",
+        "??0?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@QAE@XZ": "0x421130",
+        "??_7CInstanceExplorer@@6BCXTPReportView@@@": "0x80f8c4",
+        "??_7CInstanceExplorer@@6B?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@@": "0x80f8ac",
+        "??_7CInstanceExplorer@@6B?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@@": "0x80f898"
+      },
+      "local_eh": [
+        "__ehhandler$??0CInstanceExplorer@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "004219d0",
+      "symbol": "??_ECInstanceExplorer@@WDHI@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_ECInstanceExplorer@@UAEPAXI@Z": "0x421c90"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004219e0",
+      "symbol": "??_ECInstanceExplorer@@WDJM@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_ECInstanceExplorer@@UAEPAXI@Z": "0x421c90"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004219d0",
+      "symbol": "??_ECSettingsExplorer@@WDHI@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_ECSettingsExplorer@@UAEPAXI@Z": "0x421c90"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004219e0",
+      "symbol": "??_ECSettingsExplorer@@WDJM@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_ECSettingsExplorer@@UAEPAXI@Z": "0x421c90"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004219f0",
+      "symbol": "?CreateObject@CInstanceExplorer@@SGPAVCObject@@XZ",
+      "size": 89,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??0CInstanceExplorer@@QAE@XZ": "0x421940"
+      },
+      "local_eh": [
+        "__ehhandler$?CreateObject@CInstanceExplorer@@SGPAVCObject@@XZ"
+      ]
+    },
+    {
+      "address": "00421a50",
+      "symbol": "?setRoot@CInstanceExplorer@@QAEXPAVInstance@RBX@@@Z",
+      "size": 360,
+      "exact": true,
+      "verified_targets": {
+        "?removeListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@QBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z": "0x5e5a80",
+        "?removeListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@QBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z": "0x5e5a80",
+        "?RemoveAll@CXTPReportRecords@@QAEXXZ": "0x6d7850",
+        "??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z": "0x618a40",
+        "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0",
+        "?addListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@QBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z": "0x4218a0",
+        "?addListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@QBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z": "0x4218a0"
+      },
+      "local_eh": [
+        "__ehhandler$?setRoot@CInstanceExplorer@@QAEXPAVInstance@RBX@@@Z"
+      ]
+    },
+    {
+      "address": "00421bc0",
+      "symbol": "??1CInstanceExplorer@@UAE@XZ",
+      "size": 193,
+      "exact": true,
+      "verified_targets": {
+        "??_7CInstanceExplorer@@6BCXTPReportView@@@": "0x80f8c4",
+        "??_7CInstanceExplorer@@6B?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@@": "0x80f8ac",
+        "??_7CInstanceExplorer@@6B?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@@": "0x80f898",
+        "?setRoot@CInstanceExplorer@@QAEXPAVInstance@RBX@@@Z": "0x421a50",
+        "??1?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@UAE@XZ": "0x421740",
+        "??1?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@UAE@XZ": "0x421620",
+        "??1CXTPReportView@@MAE@XZ": "0x6c5150"
+      },
+      "local_eh": [
+        "__ehhandler$??1CInstanceExplorer@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "00421c90",
+      "symbol": "??_GCInstanceExplorer@@UAEPAXI@Z",
+      "size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??1CInstanceExplorer@@UAE@XZ": "0x421bc0",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00421c90",
+      "symbol": "??_GCSettingsExplorer@@UAEPAXI@Z",
+      "size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??1CInstanceExplorer@@UAE@XZ": "0x421bc0",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00421e70",
+      "symbol": "?GetMessageMap@CInstanceExplorer@@MBEPBUAFX_MSGMAP@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?messageMap@?1??GetThisMessageMap@CInstanceExplorer@@KGPBUAFX_MSGMAP@@XZ@4U3@B": "0x80fa7c"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00466b80",
+      "symbol": "?GetRuntimeClass@CSettingsExplorer@@UBEPAUCRuntimeClass@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?classCSettingsExplorer@CSettingsExplorer@@2UCRuntimeClass@@B": "0x81bdac"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00466b90",
+      "symbol": "?CreateObject@CSettingsExplorer@@SGPAVCObject@@XZ",
+      "size": 103,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??0CInstanceExplorer@@QAE@XZ": "0x421940",
+        "??_7CSettingsExplorer@@6BCXTPReportView@@@": "0x81bdf4",
+        "??_7CSettingsExplorer@@6B?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@@": "0x81bde0",
+        "??_7CSettingsExplorer@@6B?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@@": "0x81bdcc"
+      },
+      "local_eh": [
+        "__ehhandler$?CreateObject@CSettingsExplorer@@SGPAVCObject@@XZ"
+      ]
+    },
+    {
+      "address": "00466d40",
+      "symbol": "?onEvent@CSettingsExplorer@@UAEXPBVInstance@RBX@@UDescendantAdded@3@@Z",
+      "size": 187,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AVItem@GlobalSettings@RBX@@@8": "0x929418 (.?AVItem@GlobalSettings@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c (.?AVInstance@RBX@@)",
+        "___RTDynamicCast": "msvcr90.dll!__RTDynamicCast",
+        "?onEvent@?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@UAEXPBVInstance@2@UDescendantAdded@2@@Z": "0x4211b0",
+        "??1DescendantAdded@RBX@@QAE@XZ": "0x422c60"
+      },
+      "local_eh": [
+        "__ehhandler$?onEvent@CSettingsExplorer@@UAEXPBVInstance@RBX@@UDescendantAdded@3@@Z"
+      ]
+    },
+    {
+      "address": "00466d40",
+      "symbol": "?onEvent@CSettingsExplorer@@UAEXPBVInstance@RBX@@UDescendantRemoving@3@@Z",
+      "size": 187,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AVItem@GlobalSettings@RBX@@@8": "0x929418 (.?AVItem@GlobalSettings@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c (.?AVInstance@RBX@@)",
+        "___RTDynamicCast": "msvcr90.dll!__RTDynamicCast",
+        "?onEvent@?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@UAEXPBVInstance@2@UDescendantRemoving@2@@Z": "0x4211b0",
+        "??1DescendantRemoving@RBX@@QAE@XZ": "0x422c60"
+      },
+      "local_eh": [
+        "__ehhandler$?onEvent@CSettingsExplorer@@UAEXPBVInstance@RBX@@UDescendantRemoving@3@@Z"
+      ]
+    },
+    {
+      "address": "004213a0",
+      "symbol": "?push_back@?$vector@PAVEventData@?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@@std@@@std@@QAEXABQAVEventData@?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@@Z",
+      "size": 101,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "?insert@?$vector@PAVEventData@?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@@std@@@2@V?$_Vector_const_iterator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@@std@@@2@ABQAVEventData@?$MarshaledListener@VInstance@RBX@@UDescendantAdded@2@V12@U32@@RBX@@@Z": "0x4c7c60"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004213a0",
+      "symbol": "?push_back@?$vector@PAVEventData@?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@@std@@@std@@QAEXABQAVEventData@?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@@Z",
+      "size": 101,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "?insert@?$vector@PAVEventData@?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@@std@@@2@V?$_Vector_const_iterator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@@std@@@2@ABQAVEventData@?$MarshaledListener@VInstance@RBX@@UDescendantRemoving@2@V12@U32@@RBX@@@Z": "0x4c7c60"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004213a0",
+      "symbol": "?push_back@?$vector@PAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@RBX@@@std@@@std@@QAEXABQAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@RBX@@@Z",
+      "size": 101,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "?insert@?$vector@PAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@RBX@@@std@@@2@V?$_Vector_const_iterator@PAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@RBX@@@std@@@2@ABQAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@RBX@@@Z": "0x4c7c60"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004213a0",
+      "symbol": "?push_back@?$vector@PAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@RBX@@@std@@@std@@QAEXABQAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@RBX@@@Z",
+      "size": 101,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "?insert@?$vector@PAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@RBX@@@std@@@2@V?$_Vector_const_iterator@PAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@RBX@@@std@@@2@ABQAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@RBX@@@Z": "0x4c7c60"
+      },
+      "local_eh": []
+    }
+  ],
+  "pending_shared_header": [
+    {
+      "address": "00421d00",
+      "symbol": "?OnReportSelChanged@CInstanceExplorer@@QAEXPAUtagNMHDR@@PAJ@Z",
+      "size": 367,
+      "exact": true,
+      "verified_targets": {
+        "??$create@VSelection@RBX@@@ServiceProvider@RBX@@SAPAVSelection@1@PBVInstance@1@@Z": "0x421cb0",
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "?GetFirstSelectedRowPosition@CXTPReportSelectedRows@@QAEPAU__POSITION@@XZ": "0x6db550",
+        "?GetNextSelectedRow@CXTPReportSelectedRows@@QAEPAVCXTPReportRow@@AAPAU__POSITION@@@Z": "0x6db580",
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "?insert@?$vector@PAVInstance@RBX@@V?$allocator@PAVInstance@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PAVInstance@RBX@@V?$allocator@PAVInstance@RBX@@@std@@@2@V?$_Vector_const_iterator@PAVInstance@RBX@@V?$allocator@PAVInstance@RBX@@@std@@@2@ABQAVInstance@RBX@@@Z": "0x4c7c60",
+        "??$setSelection@V?$_Vector_iterator@PAVInstance@RBX@@V?$allocator@PAVInstance@RBX@@@std@@@std@@@Selection@RBX@@QAEXV?$_Vector_iterator@PAVInstance@RBX@@V?$allocator@PAVInstance@RBX@@@std@@@std@@0@Z": "0x420d20",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": [
+        "__ehhandler$?OnReportSelChanged@CInstanceExplorer@@QAEXPAUtagNMHDR@@PAJ@Z"
+      ]
+    },
+    {
+      "address": "00420d20",
+      "symbol": "??$setSelection@V?$_Vector_iterator@PAVInstance@RBX@@V?$allocator@PAVInstance@RBX@@@std@@@std@@@Selection@RBX@@QAEXV?$_Vector_iterator@PAVInstance@RBX@@V?$allocator@PAVInstance@RBX@@@std@@@std@@0@Z",
+      "size": 141,
+      "exact": true,
+      "verified_targets": {
+        "?clearSelection@Selection@RBX@@QAEXXZ": "0x5675d0",
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "?addToSelection@Selection@RBX@@QAEXPAVInstance@2@@Z": "0x567420"
+      },
+      "local_eh": []
+    }
+  ],
+  "vtables": {
+    "0080f8c4": {
+      "verified": 88,
+      "unverified": {
+        "2": [
+          "?Serialize@CObject@@UAEXAAVCArchive@@@Z",
+          "0x70bdf0"
+        ],
+        "3": [
+          "?AssertValid@CObject@@UBEXXZ",
+          "0x47d410"
+        ],
+        "4": [
+          "?Dump@CObject@@UBEXAAVCDumpContext@@@Z",
+          "0x70bdf0"
+        ],
+        "32": [
+          "?GetScrollBarCtrl@CXTPReportView@@MBEPAVCScrollBar@@H@Z",
+          "0x6c4cf0"
+        ],
+        "65": [
+          "?DoDataExchange@CWnd@@MAEXPAVCDataExchange@@@Z",
+          "0x70bdf0"
+        ],
+        "66": [
+          "?BeginModalState@CWnd@@UAEXXZ",
+          "0x401120"
+        ],
+        "67": [
+          "?EndModalState@CWnd@@UAEXXZ",
+          "0x401130"
+        ],
+        "90": [
+          "?OnPrepareDC@CXTPReportView@@MAEXPAVCDC@@PAUCPrintInfo@@@Z",
+          "0x6c65e0"
+        ],
+        "95": [
+          "?OnDraw@CXTPReportView@@MAEXPAVCDC@@@Z",
+          "0x70bdf0"
+        ],
+        "96": [
+          "?OnPreparePrinting@CXTPReportView@@MAEHPAUCPrintInfo@@@Z",
+          "0x6c5350"
+        ],
+        "97": [
+          "?OnBeginPrinting@CXTPReportView@@MAEXPAVCDC@@PAUCPrintInfo@@@Z",
+          "0x6c53b0"
+        ],
+        "98": [
+          "?OnPrint@CXTPReportView@@MAEXPAVCDC@@PAUCPrintInfo@@@Z",
+          "0x6c5fd0"
+        ],
+        "99": [
+          "?OnEndPrinting@CXTPReportView@@MAEXPAVCDC@@PAUCPrintInfo@@@Z",
+          "0x6c5500"
+        ],
+        "101": [
+          "?GetReportCtrl@CXTPReportView@@UBEAAVCXTPReportControl@@XZ",
+          "0x6c4cd0"
+        ],
+        "102": [
+          "?PrintPage@CXTPReportView@@MAEJPAVCDC@@PAUCPrintInfo@@VCRect@@J@Z",
+          "0x6c5df0"
+        ],
+        "103": [
+          "?PrintReport@CXTPReportView@@MAEJPAVCDC@@PAUCPrintInfo@@VCRect@@J@Z",
+          "0x6c68a0"
+        ],
+        "104": [
+          "?PrintHeader@CXTPReportView@@MAEXPAVCDC@@VCRect@@@Z",
+          "0x6c5520"
+        ],
+        "105": [
+          "?PrintFooter@CXTPReportView@@MAEXPAVCDC@@VCRect@@@Z",
+          "0x6c5670"
+        ],
+        "106": [
+          "?PrintRows@CXTPReportView@@MAEHPAVCDC@@VCRect@@JPAH@Z",
+          "0x6c5cb0"
+        ],
+        "107": [
+          "?PrintRow@CXTPReportView@@MAEXPAVCDC@@PAVCXTPReportRow@@VCRect@@H@Z",
+          "0x6c57b0"
+        ],
+        "108": [
+          "?PaginateTo@CXTPReportView@@MAEHPAVCDC@@PAUCPrintInfo@@@Z",
+          "0x6c62c0"
+        ],
+        "109": [
+          "?_OnPrint2@CXTPReportView@@MAEXPAVCDC@@PAUCPrintInfo@@VCRect@@@Z",
+          "0x6c6220"
+        ]
+      },
+      "slots": 110
+    },
+    "0080f8ac": {
+      "verified": 4,
+      "unverified": {},
+      "slots": 4
+    },
+    "0080f898": {
+      "verified": 4,
+      "unverified": {},
+      "slots": 4
+    },
+    "0081bdf4": {
+      "verified": 88,
+      "unverified": {
+        "2": [
+          "?Serialize@CObject@@UAEXAAVCArchive@@@Z",
+          "0x70bdf0"
+        ],
+        "3": [
+          "?AssertValid@CObject@@UBEXXZ",
+          "0x47d410"
+        ],
+        "4": [
+          "?Dump@CObject@@UBEXAAVCDumpContext@@@Z",
+          "0x70bdf0"
+        ],
+        "32": [
+          "?GetScrollBarCtrl@CXTPReportView@@MBEPAVCScrollBar@@H@Z",
+          "0x6c4cf0"
+        ],
+        "65": [
+          "?DoDataExchange@CWnd@@MAEXPAVCDataExchange@@@Z",
+          "0x70bdf0"
+        ],
+        "66": [
+          "?BeginModalState@CWnd@@UAEXXZ",
+          "0x401120"
+        ],
+        "67": [
+          "?EndModalState@CWnd@@UAEXXZ",
+          "0x401130"
+        ],
+        "90": [
+          "?OnPrepareDC@CXTPReportView@@MAEXPAVCDC@@PAUCPrintInfo@@@Z",
+          "0x6c65e0"
+        ],
+        "95": [
+          "?OnDraw@CXTPReportView@@MAEXPAVCDC@@@Z",
+          "0x70bdf0"
+        ],
+        "96": [
+          "?OnPreparePrinting@CXTPReportView@@MAEHPAUCPrintInfo@@@Z",
+          "0x6c5350"
+        ],
+        "97": [
+          "?OnBeginPrinting@CXTPReportView@@MAEXPAVCDC@@PAUCPrintInfo@@@Z",
+          "0x6c53b0"
+        ],
+        "98": [
+          "?OnPrint@CXTPReportView@@MAEXPAVCDC@@PAUCPrintInfo@@@Z",
+          "0x6c5fd0"
+        ],
+        "99": [
+          "?OnEndPrinting@CXTPReportView@@MAEXPAVCDC@@PAUCPrintInfo@@@Z",
+          "0x6c5500"
+        ],
+        "101": [
+          "?GetReportCtrl@CXTPReportView@@UBEAAVCXTPReportControl@@XZ",
+          "0x6c4cd0"
+        ],
+        "102": [
+          "?PrintPage@CXTPReportView@@MAEJPAVCDC@@PAUCPrintInfo@@VCRect@@J@Z",
+          "0x6c5df0"
+        ],
+        "103": [
+          "?PrintReport@CXTPReportView@@MAEJPAVCDC@@PAUCPrintInfo@@VCRect@@J@Z",
+          "0x6c68a0"
+        ],
+        "104": [
+          "?PrintHeader@CXTPReportView@@MAEXPAVCDC@@VCRect@@@Z",
+          "0x6c5520"
+        ],
+        "105": [
+          "?PrintFooter@CXTPReportView@@MAEXPAVCDC@@VCRect@@@Z",
+          "0x6c5670"
+        ],
+        "106": [
+          "?PrintRows@CXTPReportView@@MAEHPAVCDC@@VCRect@@JPAH@Z",
+          "0x6c5cb0"
+        ],
+        "107": [
+          "?PrintRow@CXTPReportView@@MAEXPAVCDC@@PAVCXTPReportRow@@VCRect@@H@Z",
+          "0x6c57b0"
+        ],
+        "108": [
+          "?PaginateTo@CXTPReportView@@MAEHPAVCDC@@PAUCPrintInfo@@@Z",
+          "0x6c62c0"
+        ],
+        "109": [
+          "?_OnPrint2@CXTPReportView@@MAEXPAVCDC@@PAUCPrintInfo@@VCRect@@@Z",
+          "0x6c6220"
+        ]
+      },
+      "slots": 110
+    },
+    "0081bde0": {
+      "verified": 4,
+      "unverified": {},
+      "slots": 4
+    },
+    "0081bdcc": {
+      "verified": 4,
+      "unverified": {},
+      "slots": 4
+    },
+    "0080f7e4": {
+      "verified": 18,
+      "unverified": {
+        "0": [
+          "?GetRuntimeClass@CXTPReportRecord@@UBEPAUCRuntimeClass@@XZ",
+          "0x6d7f10"
+        ],
+        "2": [
+          "?Serialize@CObject@@UAEXAAVCArchive@@@Z",
+          "0x70bdf0"
+        ],
+        "3": [
+          "?AssertValid@CObject@@UBEXXZ",
+          "0x47d410"
+        ],
+        "4": [
+          "?Dump@CObject@@UBEXAAVCDumpContext@@@Z",
+          "0x70bdf0"
+        ],
+        "22": [
+          "?GetItemMetrics@CXTPReportRecord@@UAEXPAUXTP_REPORTRECORDITEM_DRAWARGS@@PAUXTP_REPORTRECORDITEM_METRICS@@@Z",
+          "0x458e90"
+        ],
+        "23": [
+          "?IsFiltered@CXTPReportRecord@@UBEHXZ",
+          "0x416690"
+        ],
+        "24": [
+          "?DoPropExchange@CXTPReportRecord@@UAEXPAVCXTPPropExchange@@@Z",
+          "0x6d81f0"
+        ]
+      },
+      "slots": 25
+    },
+    "0080f65c": {
+      "verified": 18,
+      "unverified": {
+        "0": [
+          "?GetRuntimeClass@CXTPReportRecordItem@@UBEPAUCRuntimeClass@@XZ",
+          "0x6c6c50"
+        ],
+        "1": [
+          "??_ECNameItem@CInstanceRecord@@UAEPAXI@Z",
+          "0x6d9b30"
+        ],
+        "2": [
+          "?Serialize@CObject@@UAEXAAVCArchive@@@Z",
+          "0x70bdf0"
+        ],
+        "3": [
+          "?AssertValid@CObject@@UBEXXZ",
+          "0x47d410"
+        ],
+        "4": [
+          "?Dump@CObject@@UBEXAAVCDumpContext@@@Z",
+          "0x70bdf0"
+        ],
+        "22": [
+          "?Draw@CXTPReportRecordItem@@UAEHPAUXTP_REPORTRECORDITEM_DRAWARGS@@@Z",
+          "0x6c75d0"
+        ],
+        "23": [
+          "?OnDrawCaption@CXTPReportRecordItem@@UAEXPAUXTP_REPORTRECORDITEM_DRAWARGS@@PAUXTP_REPORTRECORDITEM_METRICS@@@Z",
+          "0x6c6e00"
+        ],
+        "24": [
+          "?OnClick@CXTPReportRecordItem@@UAEXPAUXTP_REPORTRECORDITEM_CLICKARGS@@@Z",
+          "0x6c83f0"
+        ],
+        "25": [
+          "?OnDblClick@CXTPReportRecordItem@@UAEXPAUXTP_REPORTRECORDITEM_CLICKARGS@@@Z",
+          "0x6c8660"
+        ],
+        "26": [
+          "?OnMouseMove@CXTPReportRecordItem@@UAEXIVCPoint@@@Z",
+          "0x6c7a50"
+        ],
+        "28": [
+          "?GetCaptionRect@CXTPReportRecordItem@@UAEXPAUXTP_REPORTRECORDITEM_ARGS@@AAVCRect@@@Z",
+          "0x6c6d80"
+        ],
+        "29": [
+          "?GetGroupCaption@CXTPReportRecordItem@@UAE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@PAVCXTPReportColumn@@@Z",
+          "0x6c7a90"
+        ],
+        "30": [
+          "?GetGroupCaptionID@CXTPReportRecordItem@@UAEHPAVCXTPReportColumn@@@Z",
+          "0x6c6fb0"
+        ],
+        "31": [
+          "?CompareGroupCaption@CXTPReportRecordItem@@UAEHPAVCXTPReportColumn@@PAV1@@Z",
+          "0x6c6f20"
+        ],
+        "32": [
+          "?Compare@CXTPReportRecordItem@@UAEHPAVCXTPReportColumn@@PAV1@@Z",
+          "0x6c6e60"
+        ],
+        "33": [
+          "?SetFont@CXTPReportRecordItem@@UAEXPAVCFont@@@Z",
+          "0x6c6e30"
+        ],
+        "34": [
+          "?GetFont@CXTPReportRecordItem@@UAEPAVCFont@@XZ",
+          "0x71f130"
+        ],
+        "35": [
+          "?GetTooltip@CXTPReportRecordItem@@UBE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ",
+          "0x7505e0"
+        ],
+        "36": [
+          "?SetTooltip@CXTPReportRecordItem@@UAEXPBD@Z",
+          "0x420980"
+        ],
+        "37": [
+          "?SetTextColor@CXTPReportRecordItem@@UAEXK@Z",
+          "0x68bd90"
+        ],
+        "38": [
+          "?SetBold@CXTPReportRecordItem@@UAEXH@Z",
+          "0x6c6e40"
+        ],
+        "39": [
+          "?IsBold@CXTPReportRecordItem@@UBEHXZ",
+          "0x7a0770"
+        ],
+        "40": [
+          "?SetBackgroundColor@CXTPReportRecordItem@@UAEXK@Z",
+          "0x6c6e50"
+        ],
+        "41": [
+          "?GetFormatString@CXTPReportRecordItem@@UAE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ",
+          "0x4207d0"
+        ],
+        "42": [
+          "?SetFormatString@CXTPReportRecordItem@@UAEXPBD@Z",
+          "0x420800"
+        ],
+        "43": [
+          "?IsEditable@CXTPReportRecordItem@@UBEHXZ",
+          "0x6c7000"
+        ],
+        "44": [
+          "?SetEditable@CXTPReportRecordItem@@UAEHH@Z",
+          "0x420810"
+        ],
+        "45": [
+          "?AddHyperlink@CXTPReportRecordItem@@UAEHPAVCXTPReportHyperlink@@@Z",
+          "0x420820"
+        ],
+        "46": [
+          "?GetHyperlinksCount@CXTPReportRecordItem@@UBEHXZ",
+          "0x420850"
+        ],
+        "47": [
+          "?GetHyperlinkAt@CXTPReportRecordItem@@UBEPAVCXTPReportHyperlink@@H@Z",
+          "0x420870"
+        ],
+        "48": [
+          "?RemoveHyperlinkAt@CXTPReportRecordItem@@UAEXH@Z",
+          "0x420890"
+        ],
+        "49": [
+          "?GetItemMetrics@CXTPReportRecordItem@@UAEXPAUXTP_REPORTRECORDITEM_DRAWARGS@@PAUXTP_REPORTRECORDITEM_METRICS@@@Z",
+          "0x6c6fc0"
+        ],
+        "50": [
+          "?IsPreviewItem@CXTPReportRecordItem@@UBEHXZ",
+          "0x416690"
+        ],
+        "51": [
+          "?GetIconIndex@CXTPReportRecordItem@@UBEHXZ",
+          "0x4208b0"
+        ],
+        "52": [
+          "?SetIconIndex@CXTPReportRecordItem@@UAEHH@Z",
+          "0x4208c0"
+        ],
+        "53": [
+          "?GetSortPriority@CXTPReportRecordItem@@UBEHXZ",
+          "0x4208e0"
+        ],
+        "54": [
+          "?SetSortPriority@CXTPReportRecordItem@@UAEXH@Z",
+          "0x4208f0"
+        ],
+        "55": [
+          "?GetGroupPriority@CXTPReportRecordItem@@UBEHXZ",
+          "0x6cb080"
+        ],
+        "56": [
+          "?SetGroupPriority@CXTPReportRecordItem@@UAEXH@Z",
+          "0x6fd220"
+        ],
+        "57": [
+          "?SetGroupCaption@CXTPReportRecordItem@@UAEXPBD@Z",
+          "0x420900"
+        ],
+        "58": [
+          "?SetCaption@CXTPReportRecordItem@@UAEXPBD@Z",
+          "0x420910"
+        ],
+        "59": [
+          "?SetChecked@CXTPReportRecordItem@@UAEXH@Z",
+          "0x420920"
+        ],
+        "60": [
+          "?IsChecked@CXTPReportRecordItem@@UBEHXZ",
+          "0x420930"
+        ],
+        "61": [
+          "?HasCheckbox@CXTPReportRecordItem@@UAEXH@Z",
+          "0x420940"
+        ],
+        "62": [
+          "?GetHasCheckbox@CXTPReportRecordItem@@UBEHXZ",
+          "0x420950"
+        ],
+        "63": [
+          "?GetItemData@CXTPReportRecordItem@@UBEKXZ",
+          "0x4781c0"
+        ],
+        "64": [
+          "?SetItemData@CXTPReportRecordItem@@UAEXK@Z",
+          "0x420970"
+        ],
+        "65": [
+          "?IsFocusable@CXTPReportRecordItem@@UBEHXZ",
+          "0x6c7030"
+        ],
+        "66": [
+          "?SetFocusable@CXTPReportRecordItem@@UAEXH@Z",
+          "0x420960"
+        ],
+        "67": [
+          "?DoPropExchange@CXTPReportRecordItem@@UAEXPAVCXTPPropExchange@@@Z",
+          "0x6c8bb0"
+        ],
+        "68": [
+          "?DrawCheckBox@CXTPReportRecordItem@@MAEXPAUXTP_REPORTRECORDITEM_DRAWARGS@@AAVCRect@@@Z",
+          "0x6c7440"
+        ],
+        "69": [
+          "?HitTestHyperlink@CXTPReportRecordItem@@MAEHVCPoint@@@Z",
+          "0x6c79f0"
+        ],
+        "70": [
+          "?OnBeginEdit@CXTPReportRecordItem@@MAEXPAUXTP_REPORTRECORDITEM_ARGS@@@Z",
+          "0x6c8760"
+        ],
+        "71": [
+          "?OnCancelEdit@CXTPReportRecordItem@@MAEXPAVCXTPReportControl@@H@Z",
+          "0x6c7f30"
+        ],
+        "72": [
+          "?OnChar@CXTPReportRecordItem@@MAEHPAUXTP_REPORTRECORDITEM_ARGS@@I@Z",
+          "0x6c7bd0"
+        ],
+        "73": [
+          "?OnValidateEdit@CXTPReportRecordItem@@UAEXPAUXTP_REPORTRECORDITEM_ARGS@@@Z",
+          "0x6c8930"
+        ],
+        "74": [
+          "?OnEditChanged@CXTPReportRecordItem@@UAEXPAUXTP_REPORTRECORDITEM_ARGS@@PBD@Z",
+          "0x458e90"
+        ],
+        "75": [
+          "?OnEditChanging@CXTPReportRecordItem@@UAEHPAUXTP_REPORTRECORDITEM_ARGS@@AAV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+          "0x49ed50"
+        ],
+        "76": [
+          "?OnEditCanceled@CXTPReportRecordItem@@UAEXPAUXTP_REPORTRECORDITEM_ARGS@@@Z",
+          "0x70bdf0"
+        ],
+        "77": [
+          "?OnConstraintChanged@CXTPReportRecordItem@@UAEXPAUXTP_REPORTRECORDITEM_ARGS@@PAVCXTPReportRecordItemConstraint@@@Z",
+          "0x6c7040"
+        ],
+        "78": [
+          "?GetSelectedConstraintData@CXTPReportRecordItem@@UAEKPAUXTP_REPORTRECORDITEM_ARGS@@@Z",
+          "0x6a6f30"
+        ],
+        "79": [
+          "?OnInplaceButtonDown@CXTPReportRecordItem@@UAEXPAVCXTPReportInplaceButton@@@Z",
+          "0x6c8090"
+        ],
+        "80": [
+          "?OnRequestEdit@CXTPReportRecordItem@@MAEHPAUXTP_REPORTRECORDITEM_ARGS@@@Z",
+          "0x6c70f0"
+        ],
+        "81": [
+          "?IsAllowEdit@CXTPReportRecordItem@@MAEHPAUXTP_REPORTRECORDITEM_ARGS@@@Z",
+          "0x6c7070"
+        ],
+        "82": [
+          "?DoMouseButtonClick@CXTPReportRecordItem@@MAEXXZ",
+          "0x6c6d30"
+        ]
+      },
+      "slots": 83
+    }
+  },
+  "xtp_proof": {
+    "??0CXTPReportView@@IAE@XZ": "XTP recipe body exact",
+    "??1CXTPReportView@@MAE@XZ": "XTP recipe body exact",
+    "?OnCreate@CXTPReportView@@IAEHPAUtagCREATESTRUCTA@@@Z": "XTP recipe body exact",
+    "?GetThisClass@CXTPReportView@@SGPAUCRuntimeClass@@XZ": "XTP recipe body exact",
+    "?GetThisMessageMap@CXTPReportView@@KGPBUAFX_MSGMAP@@XZ": "XTP recipe body exact",
+    "?AddColumn@CXTPReportControl@@QAEPAVCXTPReportColumn@@PAV2@@Z": "XTP recipe body exact",
+    "?SetAutoColumnSizing@CXTPReportHeader@@QAEXH@Z": "XTP recipe body exact",
+    "??0CXTPReportColumn@@QAE@HPBDHHHHH@Z": "XTP recipe body exact",
+    "?SetTreeColumn@CXTPReportColumn@@QAEXH@Z": "XTP recipe body exact",
+    "?RemoveAll@CXTPReportRecords@@QAEXXZ": "XTP recipe body exact",
+    "?GetAt@CXTPReportRecords@@QBEPAVCXTPReportRecord@@H@Z": "XTP recipe body exact",
+    "?RemoveAt@CXTPReportRecords@@QAEXH@Z": "XTP recipe body exact",
+    "?GetCount@CXTPReportRecords@@QBEHXZ": "XTP recipe body exact",
+    "??0CXTPReportRecord@@QAE@XZ": "XTP recipe body exact",
+    "??1CXTPReportRecord@@UAE@XZ": "XTP recipe body exact",
+    "?AddItem@CXTPReportRecord@@QAEPAVCXTPReportRecordItem@@PAV2@@Z": "XTP recipe body exact",
+    "??0CXTPReportRecordItem@@QAE@XZ": "XTP recipe body exact",
+    "??0CXTPReportRecordItemText@@QAE@PBD@Z": "XTP recipe body exact",
+    "??2?$CXTPHeapObjectT@VCCmdTarget@@VCXTPReportDataAllocator@@@@SGPAXI@Z": "XTP recipe body exact",
+    "?Free_mem@?$CXTPHeapAllocatorT@UCXTPReportDataAllocatorData@@@@SAXPAX@Z": "XTP recipe body exact",
+    "?GetFirstSelectedRowPosition@CXTPReportSelectedRows@@QAEPAU__POSITION@@XZ": "bound by call site only",
+    "?GetNextSelectedRow@CXTPReportSelectedRows@@QAEPAVCXTPReportRow@@AAPAU__POSITION@@@Z": "bound by call site only"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "hashes": {
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-headers\\v8tree\\Instance.h": "49ce2d0144378fead1015fd0fce074b67cacc352a15bda5c814913a119fd9114",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-cumulative-links-20261105\\serializer-context\\v8tree\\Instance.h": "56f4f32cfc1aa2c35bd98727ccc3b95f1ac0579ed45019e0fadefa0df2ccd1fd",
+    "rebuild/2008-06/native-classes/SerializerLoadInstances.cpp": "26505e49d92d3c380181162634480fa40834d829e3bde86ae046fceb2466c605",
+    "clients/2008-06/Roblox.exe": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764"
+  },
+  "profile": {
+    "scope": "Inactive parent-approved genuine nonvirtual declaration experiment. Canonical and clone profiles stay frozen; no fields/bases/virtual changes. Canonical ODR/compatibility and runtime gates remain separate.",
+    "canonical_header": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-headers\\v8tree\\Instance.h",
+    "canonical_sha256": "49ce2d0144378fead1015fd0fce074b67cacc352a15bda5c814913a119fd9114",
+    "basis_header": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-cumulative-links-20261105\\clone-context\\v8tree\\Instance.h",
+    "basis_sha256": "2042dd44ebaf86e3bc559b6ebfb4374b6380f82734067b5e5597f30175abb0cd",
+    "genuine_donor_header": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\tools\\rbxgs\\Client\\App\\include\\v8tree\\Instance.h",
+    "genuine_donor_sha256": "f512959a4d23656ff5da69c22ac0dcabba250b16c3103e50af09ba4d6bba3d94",
+    "private_header": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-cumulative-links-20261105\\serializer-context\\v8tree\\Instance.h",
+    "private_sha256": "56f4f32cfc1aa2c35bd98727ccc3b95f1ac0579ed45019e0fadefa0df2ccd1fd",
+    "addition": "    void read(const ::XmlElement*, IReferenceBinder&);",
+    "native_flags_environment": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /IG:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-cumulative-links-20261105\\serializer-context /I{headers}/metadata-load /I{headers}/writer-2008 /I{headers}/std-noinline-string",
+    "existing_profile_source": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-classes\\MetadataReflectionLoad.cpp",
+    "profile_source_sha256": "5120553395a51fe630ffe96b160bc2f1afef5db7bb329c7ef53a21bed21a10c6",
+    "diff": [
+      "--- frozen clone context",
+      "+++ private nonvirtual read declaration",
+      "@@ -137,6 +137,7 @@",
+      "     void removeAllChildren();",
+      "     boost::shared_ptr<Instance> clone();  // ?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ",
+      "     static boost::shared_ptr<Instance> fromXmlRoot(::XmlElement*);",
+      "+    void read(const ::XmlElement*, IReferenceBinder&);",
+      "     void remove();  // ?remove@Instance@RBX@@QAEXXZ",
+      "     struct AnchorAction { bool value; };  // provisional layout: nested struct passed by value below",
+      "     void applyAnchoredToChildren(AnchorAction);  // ?applyAnchoredToChildren@Instance@RBX@@QAEXUAnchorAction@12@@Z"
+    ],
+    "parent_lease": "SolSerializerContext20261105",
+    "canonical_edits": 0,
+    "compiles": 0
+  },
+  "diff": [
+    "--- \n",
+    "+++ \n",
+    "@@ -137,6 +137,7 @@\n",
+    "     void removeAllChildren();",
+    "     boost::shared_ptr<Instance> clone();  // ?clone@Instance@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ",
+    "     static boost::shared_ptr<Instance> fromXmlRoot(::XmlElement*);",
+    "+    void read(const ::XmlElement*, IReferenceBinder&);",
+    "     void remove();  // ?remove@Instance@RBX@@QAEXXZ",
+    "     struct AnchorAction { bool value; };  // provisional layout: nested struct passed by value below",
+    "     void applyAnchoredToChildren(AnchorAction);  // ?applyAnchoredToChildren@Instance@RBX@@QAEXUAnchorAction@12@@Z"
+  ]
+}

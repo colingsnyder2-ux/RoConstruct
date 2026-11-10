@@ -1,0 +1,72 @@
+{
+  "outcome": "link_failed",
+  "exit_code": 1120,
+  "link_log_present": true,
+  "compiler_errors": [],
+  "link_errors": [
+    "candidate.obj : error LNK2001: unresolved external symbol \"private: virtual void __thiscall RBX::AxisMoveTool::render2d(class RBX::Adorn *)\" (?render2d@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z)",
+    "candidate.obj : error LNK2001: unresolved external symbol \"private: virtual void __thiscall RBX::AxisMoveTool::render3dAdorn(class RBX::Adorn *)\" (?render3dAdorn@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z)",
+    "NativeWorkspaceSaveFull.obj : error LNK2019: unresolved external symbol \"public: long __thiscall CWorkspace::write(class XmlElement *,class std::basic_ostream<char,struct std::char_traits<char> > &)\" (?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z) referenced in function \"public: virtual long __stdcall CWorkspace::SaveToFile(wchar_t *)\" (?SaveToFile@CWorkspace@@UAGJPA_W@Z)",
+    "NativeWorkspaceWriteFull.obj : error LNK2001: unresolved external symbol \"public: long __thiscall CWorkspace::write(class XmlElement *,class std::basic_ostream<char,struct std::char_traits<char> > &)\" (?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z)",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-doc-relinks\\20261105-145908-8c2e91ac\\RobloxNativeDoc.exe : fatal error LNK1120: 3 unresolved externals"
+  ],
+  "blockers": [
+    {
+      "symbol": "?render2d@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z",
+      "display": "private: virtual void __thiscall RBX::AxisMoveTool::render2d(class RBX::Adorn *)",
+      "requesters": [
+        "candidate.obj"
+      ]
+    },
+    {
+      "symbol": "?render3dAdorn@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z",
+      "display": "private: virtual void __thiscall RBX::AxisMoveTool::render3dAdorn(class RBX::Adorn *)",
+      "requesters": [
+        "candidate.obj"
+      ]
+    },
+    {
+      "symbol": "?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+      "display": "public: long __thiscall CWorkspace::write(class XmlElement *,class std::basic_ostream<char,struct std::char_traits<char> > &)",
+      "requesters": [
+        "NativeWorkspaceSaveFull.obj",
+        "NativeWorkspaceWriteFull.obj"
+      ]
+    }
+  ],
+  "duplicates": [],
+  "source_run": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-doc-relinks\\20261105-141437-a0617a57",
+  "source_command_sha256": "ab26c7b3eeefef041848817c1b145f2c5b9d28c8a35210374568d0c61491846c",
+  "seconds": 0.968,
+  "changed_inputs": [],
+  "baseline_comparison": {
+    "blockers": {
+      "added": [],
+      "removed": []
+    },
+    "duplicates": {
+      "added": [],
+      "removed": []
+    }
+  },
+  "explicit_input_delta": {
+    "removed": [
+      "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-irenderable-20261105\\linked.lib"
+    ],
+    "added": [
+      "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-144726-344e0b26\\unit-000\\candidate.obj",
+      "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-145405-7856b686\\unit-000\\candidate.obj",
+      "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-clone-owner-20261105\\linked.lib"
+    ]
+  },
+  "source_compiles": 0,
+  "executed": false,
+  "activation": false,
+  "server_credit": 0,
+  "limitations": [
+    "Known nonexact current loadInstances provider remains a separate recovery obligation.",
+    "Private static declaration profile; canonical compatibility/ODR remains unproven.",
+    "Strict indirect calls, complete EH/ABI, selected PE and runtime gates remain open."
+  ],
+  "scope": "Task-local isolated link replay; exact explicit-input deltas only, no execution."
+}

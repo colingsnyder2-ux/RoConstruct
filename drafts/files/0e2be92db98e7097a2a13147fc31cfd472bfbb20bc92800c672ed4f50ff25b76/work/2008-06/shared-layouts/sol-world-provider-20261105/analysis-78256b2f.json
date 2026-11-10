@@ -1,0 +1,69 @@
+[
+  {
+    "source": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-classes\\PhysicsServiceProvider.cpp",
+    "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-132451-074c792f\\unit-001\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "005e8ec0",
+        "requested_symbol": "?onServiceProvider@PhysicsService@RBX@@MAEXPBVServiceProvider@2@0@Z",
+        "status": "exact",
+        "symbol": "?onServiceProvider@PhysicsService@RBX@@MAEXPBVServiceProvider@2@0@Z",
+        "score": 100,
+        "target_size": 163,
+        "object_size": 163,
+        "target_sha256": "d1781f3c0f8f5d542af07d843cb9a44f9cfb872cd444072394a105ba8301525f",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [
+            {
+              "offset": 12,
+              "target": "00490af0",
+              "symbol": "??$find@VWorkspace@RBX@@@ServiceProvider@RBX@@QBEPAVWorkspace@1@XZ",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 49,
+              "target": "005e5a80",
+              "symbol": "?removeListener@?$Notifier@VWorld@RBX@@UAssemblyPhysicsOn@2@@RBX@@QBEXPAV?$Listener@VWorld@RBX@@UAssemblyPhysicsOn@2@@2@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 76,
+              "target": "005e5a80",
+              "symbol": "?removeListener@?$Notifier@VWorld@RBX@@UAssemblyPhysicsOff@2@@RBX@@QBEXPAV?$Listener@VWorld@RBX@@UAssemblyPhysicsOff@2@@2@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 89,
+              "target": "00490af0",
+              "symbol": "??$find@VWorkspace@RBX@@@ServiceProvider@RBX@@QBEPAVWorkspace@1@XZ",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 126,
+              "target": "004218a0",
+              "symbol": "?addListener@?$Notifier@VWorld@RBX@@UAssemblyPhysicsOn@2@@RBX@@QBEXPAV?$Listener@VWorld@RBX@@UAssemblyPhysicsOn@2@@2@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 153,
+              "target": "004218a0",
+              "symbol": "?addListener@?$Notifier@VWorld@RBX@@UAssemblyPhysicsOff@2@@RBX@@QBEXPAV?$Listener@VWorld@RBX@@UAssemblyPhysicsOff@2@@2@@Z",
+              "status": "verified_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 2.705286
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  }
+]

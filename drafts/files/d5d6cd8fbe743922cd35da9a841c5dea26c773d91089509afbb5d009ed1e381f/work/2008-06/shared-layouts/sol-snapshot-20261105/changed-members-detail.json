@@ -1,0 +1,29 @@
+{
+  "API.obj": {
+    "current_size": 189204,
+    "prior_size": 189204,
+    "first_differences": [
+      4,
+      5
+    ],
+    "equal_excluding_coff_timestamp": true
+  },
+  "Player.obj": {
+    "current_size": 1269793,
+    "prior_size": 1269793,
+    "first_differences": [
+      4,
+      5
+    ],
+    "equal_excluding_coff_timestamp": true
+  },
+  "Server.obj": {
+    "current_size": 753370,
+    "prior_size": 753370,
+    "first_differences": [
+      4,
+      5
+    ],
+    "equal_excluding_coff_timestamp": true
+  }
+}

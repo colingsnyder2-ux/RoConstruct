@@ -1,0 +1,136 @@
+{
+  "scope": "Conditional cross-object EH evidence using already supplied exact providers.\n\nThe canonical auditor and its failure receipt remain unchanged. This sidecar does\nnot establish linked selection, indirect callee ABI, or runtime safety.\n",
+  "actual_archive": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-irenderable-20261105\\linked.lib",
+  "archive_sha256": "5e468dd4a346f252ce853c68ee416f1df833eddb23c0ab80e15194c623d19f4c",
+  "mega_member_offset": 50893876,
+  "mega_member_sha256": "a63464692c019673bc9d22850bcf5763274c96f63790357bf3fa6102387310c1",
+  "original_auto_ptr_direct_anchors": [
+    {
+      "offset": 10,
+      "symbol": "??1MegaDragger@RBX@@QAE@XZ",
+      "original_target": "0x60e700",
+      "zero_addend": true
+    },
+    {
+      "offset": 16,
+      "symbol": "??3@YAXPAX@Z",
+      "original_target": "0x6a067a",
+      "zero_addend": true
+    }
+  ],
+  "actual_provider_checks": [
+    {
+      "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-cumulative-links-20261105\\actual-MegaDragger.obj",
+      "sha256": "a63464692c019673bc9d22850bcf5763274c96f63790357bf3fa6102387310c1",
+      "analysis": {
+        "checks": [
+          {
+            "addr": "0060e700",
+            "requested_symbol": "??1MegaDragger@RBX@@QAE@XZ",
+            "status": "exact",
+            "symbol": "??1MegaDragger@RBX@@QAE@XZ",
+            "score": 100,
+            "target_size": 118,
+            "object_size": 118,
+            "target_sha256": "98eb1e844d802a2bd36afcf16e5a640aff4c98707ec6002d2a506b908ad37889",
+            "first_byte_difference": null,
+            "data_matches": [],
+            "data_errors": [],
+            "check_seconds": 2.377348
+          }
+        ],
+        "coverage": [],
+        "layouts": []
+      }
+    },
+    {
+      "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-130705-87b5983d\\output\\NativeMouseCommandFull.obj",
+      "sha256": "b3f271ca190c956215c6b7d4b60e2a76eeb1e7b638bfcc0007ce06cdfdf24307",
+      "analysis": {
+        "checks": [
+          {
+            "addr": "00615780",
+            "requested_symbol": "??1MouseCommand@RBX@@UAE@XZ",
+            "status": "exact",
+            "symbol": "??1MouseCommand@RBX@@UAE@XZ",
+            "score": 100,
+            "target_size": 20,
+            "object_size": 20,
+            "target_sha256": "8e4d57c134166fb859452471cb690092485a4659e7f5e7b4c49efac6ec8062e4",
+            "first_byte_difference": null,
+            "data_matches": [
+              [
+                8665596,
+                64
+              ],
+              [
+                8665568,
+                20
+              ]
+            ],
+            "data_errors": [],
+            "check_seconds": 0.001432
+          }
+        ],
+        "coverage": [],
+        "layouts": []
+      }
+    },
+    {
+      "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-irenderable-20261105\\run\\unit-000\\candidate.obj",
+      "sha256": "42444b399d06567d75cbed1cbde50660d8d672753602d84959cc7b3e1957dbe7",
+      "analysis": {
+        "checks": [
+          {
+            "addr": "0047d410",
+            "requested_symbol": "??1IRenderable@RBX@@QAE@XZ",
+            "status": "exact",
+            "symbol": "??1IRenderable@RBX@@QAE@XZ",
+            "score": 100,
+            "target_size": 1,
+            "object_size": 1,
+            "target_sha256": "ae3f4619b0413d70d3004b9131c3752153074e45725be13b9a148978895e359e",
+            "first_byte_difference": null,
+            "data_matches": [],
+            "data_errors": [],
+            "check_seconds": 0.000302
+          }
+        ],
+        "coverage": [],
+        "layouts": []
+      }
+    }
+  ],
+  "graphs": [
+    {
+      "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-131546-668ff08d\\unit-000\\candidate.obj",
+      "address": "00640560",
+      "nodes": 7,
+      "errors": [],
+      "receipt": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-cumulative-links-20261105\\axis-cleanup-graph.json"
+    },
+    {
+      "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-cumulative-links-20261105\\actual-MegaDragger.obj",
+      "address": "0060e700",
+      "nodes": 13,
+      "errors": [],
+      "receipt": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-cumulative-links-20261105\\mega-cleanup-graph.json"
+    }
+  ],
+  "supplied_external_bindings": {
+    "??1MouseCommand@RBX@@UAE@XZ": "00615780",
+    "??1MegaDragger@RBX@@QAE@XZ": "0060e700"
+  },
+  "preserved_generic_failure_sha256": "3257ed3c403876bc92ed50a2ebcca8c19ca9689940b51d0ec7b083ca7ffbbff0",
+  "canonical_auditor_unchanged": true,
+  "remaining": [
+    "Indirect weak control-block destroy type/ABI and complete producer coverage",
+    "Any graph external/weak bindings listed as errors",
+    "Actual selected PE/RTTI/import/weak LIBRARY resolution and loaded SxS runtime",
+    "Strict constructor string-IAT call at offset78 remains indirect proof failure"
+  ],
+  "compiles": 0,
+  "links": 0,
+  "executed": false,
+  "activation": false
+}

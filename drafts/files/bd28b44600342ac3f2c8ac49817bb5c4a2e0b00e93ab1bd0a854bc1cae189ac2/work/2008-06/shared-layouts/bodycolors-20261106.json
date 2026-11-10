@@ -1,0 +1,13 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "005d4b60",
+                                        "symbol":  "??0BodyColors@RBX@@"
+                                    }
+                                ],
+                     "source":  "native-classes/BodyColors.cpp"
+                 }
+             ]
+}

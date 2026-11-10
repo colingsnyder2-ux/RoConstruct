@@ -1,0 +1,51 @@
+{
+  "jobs": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RunService.cpp",
+      "checks": [
+        {
+          "addr": "00555900",
+          "symbol": "?enqueueTask@RunService@RBX@@"
+        },
+        {
+          "addr": "005559a0",
+          "symbol": "?drainTasks@RunService@RBX@@"
+        },
+        {
+          "addr": "00554da0",
+          "symbol": "?setRunState@RunService@RBX@@"
+        }
+      ]
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InstanceParent.cpp",
+      "checks": [
+        {
+          "addr": "0055a8f0",
+          "symbol": "?setParent@Instance@RBX@@"
+        },
+        {
+          "addr": "005574b0",
+          "symbol": "?contains@Instance@RBX@@"
+        }
+      ]
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\WorkspaceXmlWriter.cpp",
+      "checks": [
+        {
+          "addr": "0046b860",
+          "symbol": "?write@CWorkspace@@"
+        },
+        {
+          "addr": "0046b550",
+          "symbol": "??0TextXmlWriterWithEmbeddedContent@@"
+        },
+        {
+          "addr": "0046b1e0",
+          "symbol": "??1TextXmlWriterWithEmbeddedContent@@"
+        }
+      ]
+    }
+  ]
+}

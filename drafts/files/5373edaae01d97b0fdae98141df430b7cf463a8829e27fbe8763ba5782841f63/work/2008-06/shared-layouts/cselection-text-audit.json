@@ -1,0 +1,6 @@
+{
+  "swap_target": "Selection runnable integration (Selection caption text)",
+  "updateCaption": {"run": "work/2008-06/native-check-runs/20261105-193635-da812620", "addr": "00465e40", "size_target": 924, "size_cand": 927, "score": 86, "first_byte_difference": 40, "target_sha256": "38539d826fc3f6e574b509c7e3febc885995e9f5345ad0c96b82c12fb7301d31", "source_sha256": "see results", "result": "different 86%, +3B"},
+  "next_gate": "CWorkspace::insert 0046b9d0 catch rethrow (86%, parked), write EH empty-state (parked), Content closure, NullTool headers, Body getter COMDAT (parked), Initialize compiler (parked)",
+  "metrics": {"inactive_exact": 60, "selected_exact": "unknown", "gated_swaps": 0, "server_credit": 0}
+}

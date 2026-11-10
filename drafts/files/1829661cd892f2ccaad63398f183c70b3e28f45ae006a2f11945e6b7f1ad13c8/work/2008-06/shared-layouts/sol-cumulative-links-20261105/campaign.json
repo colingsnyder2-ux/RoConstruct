@@ -1,0 +1,38 @@
+{
+  "swap_target": "CRobloxDoc native diagnostic closure",
+  "session": "b251155ec6494e26ab16dd2d1c95bd95",
+  "current_run": "20261105-133846-f21c78c7",
+  "source_compiles": 0,
+  "inputs_changed": [],
+  "unresolved": [
+    "?safePlaceAlongLine@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@1AAV54@AAVContactManager@2@@Z",
+    "?sWorkspace@RBX@@3PADA",
+    "?render2d@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z",
+    "?render3dAdorn@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z",
+    "?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z"
+  ],
+  "duplicates": [
+    "??1VistaAPIs@RBX@@QAE@XZ",
+    "?GetIntegrity@VistaAPIs@RBX@@QAGJPAE@Z",
+    "??0VistaAPIs@RBX@@QAE@XZ",
+    "?SHGetKnownFolderPath@VistaAPIs@RBX@@QAEJABU_GUID@@KPAXPAPA_W@Z"
+  ],
+  "preserved_owners": [
+    "ScriptContext",
+    "PartInstance",
+    "NewNullTool",
+    "ContentProvider",
+    "Math",
+    "WorldHelpers"
+  ],
+  "next_queue": [
+    "Vista hybridinline finalhypothesis",
+    "Workspace namearray provider",
+    "Dragger safePlaceAlongLine isolation/repair",
+    "Axis render Extents evidence parked",
+    "Workspace writer lifetime parked"
+  ],
+  "activation": false,
+  "gated_swaps": 0,
+  "server_credit": 0
+}

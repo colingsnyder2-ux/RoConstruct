@@ -1,0 +1,79 @@
+{
+  "status": "parked; bounded static inventory incomplete",
+  "session": "e041e2af931849429cacb5ee3cb17287",
+  "compile_count": 0,
+  "source_header_archive_edits": 0,
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "archive_sha256": "5e468dd4a346f252ce853c68ee416f1df833eddb23c0ab80e15194c623d19f4c",
+  "facts": [
+    "Both original constructors call00618a40; PV0060e540 calls0060e920; weak0060e630 calls vector copy0060e450. Constructor allocations do not create a new Part controlblock.",
+    "Original00618a40 null branch returns empty; nonnull takes Part+e4 to0042af90, which promotes embedded weak controlblock using00411ad0. Promotion00411120 and exception path retained in paths.json. Static cast004a2070 copies object and pi, increments existing shared count. No controlblock vptr assignment on this path.",
+    "PV0060e920 visits input vector elements and invokes0059c640.0059c640 dynamic casts via RTTI addresses0092dd50/0092907c, calls00618a40 for Part branch, increments existing weak count and appends via0059c3b0; recurses over children. Child membership and creation history remain runtime inputs.",
+    "0041e910 creates shared ownership via0041e880 and installs object/controlblock into Part+e4/+e8, incrementing weak count.0041e880 allocates0x14, stores vtable0080f1cc/counts1/1/object+0xc. Only indexed function containing literal0080f1cc is0041e880. This is bounded indexed scan, not exhaustive executable path proof.",
+    "Saved current archive constructor/shared_from/Instance shared_from_this providers normalize to original code (inventory.json). Relocations and member hashes retained; referenced-data/EH and selected final PE proof not established.",
+    "Part RTTI controlblock entries independently read from original in raw_vtables. FilteredSelection<PartInstance> controlblock is ownership of selection service, not proof of Part handle provenance."
+  ],
+  "direct_constructor_callers": {
+    "0060e540": [
+      "0057f5b0",
+      "00581630",
+      "00581750",
+      "005909e0",
+      "00640800",
+      "00665f20"
+    ],
+    "0060e630": [
+      "005900d0",
+      "0066a630"
+    ]
+  },
+  "raw_vtables": [
+    {
+      "vtable": "0x80f1cc",
+      "COL": "0x87e098",
+      "type_descriptor": "0x92dbe8",
+      "rtti": ".?AV?$sp_counted_impl_pd@PAVPartInstance@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@",
+      "slots": [
+        "0x415000",
+        "0x48ee50",
+        "0x405e10",
+        "0x5a0460"
+      ]
+    },
+    {
+      "vtable": "0x83d2e0",
+      "COL": "0x8a8e2c",
+      "type_descriptor": "0x953888",
+      "rtti": ".?AV?$sp_counted_impl_pd@PAV?$FilteredSelection@VPartInstance@RBX@@@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@",
+      "slots": [
+        "0x415000",
+        "0x48ee50",
+        "0x405e10",
+        "0x5a0460"
+      ]
+    }
+  ],
+  "coverage": {
+    "original_direct_calls": "Indexed constructor callers captured with full assembly; indirect/function-pointer callers not exhaustively enumerated",
+    "new_controlblock": "0041e880->0041e910->0041e9c0 chain captured; higher callers/clone dispatch not closed",
+    "copied_existing": "weak vector and shared_from preserve pi; arbitrary caller-provided existing pi dynamic types unresolved",
+    "Axis": "Native AxisMoveToolMove.cpp supplies null mouse and selection items; independently naming its original onMouseMove body not completed",
+    "clone": "No independent original clone dispatch/creation closure available in this bounded pass; no universal factory claim"
+  },
+  "missing_inputs": [
+    "Independent complete original creation/clone/serialization/script/network dispatch entrypoint identities and reachable ownership constructors for Parts entering selection and weak vectors",
+    "Original Axis onMouseMove independent identity and complete ownership producer chain",
+    "Original-to-saved-COFF data/RTTI/EH closure and successful parent-selected final PE/map"
+  ],
+  "next_bounded_action": "Resolve original Axis caller identity and original0041e9c0 higher creation/clone callers, then check concrete alternate Part controlblock vptr stores. Do not recompile cleanup helper.",
+  "missing_source_proposal": null,
+  "hypothesis_budget": "No new hypotheses compiled; parked renderer/writer budgets unchanged",
+  "files_sha256": {
+    "inventory.json": "17bd4d697a77462bbf0ab3c9d21f4de4d8c7dcb36a60c8f1d1c9080f4ec81610",
+    "inventory.py": "0cf965a33fd3a4fabfb5e6acb25e7765d295d335d6b3b1409302bee21f0c6eef",
+    "paths.json": "22fd089f9f73a9090213db896a5cf5c83ff245dfe7e78f1bd6c2479d7e083062",
+    "paths.py": "1bfb88ffcaf09473ebc103025d6d504cdfda84decf4beb469af03a56e07ab97c",
+    "rtti-catalog.json": "80dedc9dbbc81b1c4d8d2cfd3eea1b179054aef945ef088945fb2a1acd0d2da8",
+    "save_handoff.py": "9e3689577807277d771d31ac75b7f176b464288c195b35847fe05edd80af4058"
+  }
+}

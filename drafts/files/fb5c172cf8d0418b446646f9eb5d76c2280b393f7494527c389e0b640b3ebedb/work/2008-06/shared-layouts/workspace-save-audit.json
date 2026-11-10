@@ -1,0 +1,109 @@
+{
+  "swap_target": "Workspace Save runnable integration (CWorkspace family, native-doc dependency)",
+  "current_blocker_reduced": "CWorkspace::SaveToFile 0046b8d0 253B: baseline with try/catch was 403B 46% (EH), trial without try is exact. Canonical CWorkspaceSave.cpp promoted.",
+  "required_source_provider": "CWorkspaceSave.cpp SaveToFile (?SaveToFile@CWorkspace@@UAGJPA_W@Z) + WorkspaceXmlWriter write 0046b860 (99% parked, EH state) + ContentProvider service",
+  "baseline": {
+    "run": "work/2008-06/native-check-runs/20261105-182108-b570bf1c",
+    "result": "different 46%, 403B vs 253B, first diff 0"
+  },
+  "trial": {
+    "run": "work/2008-06/native-check-runs/20261105-182143-95b9dc46",
+    "source_sha256": "d6c387b2f98470c8750017440c7f23bdf649cb996106d500022b0509467bd8e5",
+    "object_sha256": "9121d55f1d7d30bb5c10a077c8bf76cfad327ad27a59291cccaffeed9c54bb5b41",
+    "result": "exact 100%, 253B, target_sha256 77d83e0724e05820bf6961cae74a38e0ff1eec49f2e3111c1c162a9ebed329cc"
+  },
+  "canonical": {
+    "run": "work/2008-06/native-check-runs/20261105-182217-7352a96e",
+    "source_sha256": "dbc4f06ff67d5e25707d00780db0cd5fed08258d203e571fd760ea7b5afff8ce",
+    "object_sha256": "c483edafc43b7822cff9d96bc3eace0fa5adf7c55f5e0c5aad84914e56b0cf0a",
+    "result": "exact bytes+data 100%"
+  },
+  "call_review": {
+    "method": "same saved trial object vs original disasm (dump_save.py), no recompile",
+    "direct": [
+      {
+        "offset": 7,
+        "symbol": "?AfxGetAppModuleState@@YGPAVAFX_MODULE_STATE@@XZ",
+        "target": "006a0968"
+      },
+      {
+        "offset": 17,
+        "symbol": "??0AFX_MAINTAIN_STATE2@@QAE@PAVAFX_MODULE_STATE@@@Z",
+        "target": "006a0962"
+      },
+      {
+        "offset": 132,
+        "symbol": "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z",
+        "target": "00411b40"
+      },
+      {
+        "offset": 144,
+        "symbol": "?writeXmlModel@CWorkspace@@QAE?AV?$auto_ptr@VXmlElement@@@std@@XZ",
+        "target": "0046b750"
+      },
+      {
+        "offset": 159,
+        "symbol": "?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+        "target": "0046b860"
+      },
+      {
+        "offset": 174,
+        "symbol": "??1XmlElement@@QAE@XZ",
+        "target": "00413a70"
+      },
+      {
+        "offset": 180,
+        "symbol": "??3@YAXPAX@Z",
+        "target": "006a067a"
+      },
+      {
+        "offset": 192,
+        "symbol": "??1Lock@DataModel@RBX@@QAE@XZ",
+        "target": "005773c0"
+      },
+      {
+        "offset": 236,
+        "symbol": "?AfxDeactivateActCtx@@YGHKK@Z",
+        "target": "006a095c"
+      }
+    ],
+    "indirect_blockers": [
+      "ofstream ctor/open/dtor + CStringT via IAT (orig indirect ff15...), remain separate-proof"
+    ],
+    "scope": "Direct bindings reviewed from saved object; indirect remain explicit blockers. Not callee ABI, provider selection, EH or runtime proof."
+  },
+  "next_gate": "Write/WriteSelection exact inactive; remaining: write 0046b860 EH (parked), Content closure, NullTool headers, Part provider",
+  "metrics": {
+    "inactive_exact": 11,
+    "selected_exact": "unknown",
+    "gated_swaps": 0,
+    "server_credit": 0
+  },
+  "write": {
+    "run": "work/2008-06/native-check-runs/20261105-182259-e2dcda13",
+    "Write": {
+      "addr": "0046bd70",
+      "size": 600,
+      "sha": "4051ecff8e69d0bf5deb1d35cb7df016d0285536cf99f0eb24f9aba8afd87993"
+    },
+    "WriteSelection": {
+      "addr": "0046bfd0",
+      "size": 600,
+      "sha": "4e46a1b0fca321d933b03dc3cc3625e13c3ca51220becc40fd2f3b100181907b"
+    },
+    "source_sha256": "26cf8efc37598b9f9b953c164604c008151334442e8f8246e5e3ff0e9b6bed23",
+    "object_sha256": "fa4665837b54dca5481038119f86eb3f2dacfa812e05b1f026dd657f2d485040"
+  },
+  "writeXml": {
+    "selection": {
+      "addr": "0046b750",
+      "size": 261,
+      "run": "20261105-182941-d390fde3"
+    },
+    "model": {
+      "addr": "0046ab90",
+      "size": 245,
+      "run": "20261105-183012-87f21a09"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "revision": "0f8a33aff34c87956453321f3d458d2a0e0497c1",
+  "exe_sha256": "a52d1c9c48da36133bb13d5d357a1521c6d85153905c1076858d3d8501f575fa",
+  "fixture_sha256": "3e7da19ecfd12ab672903b006adaf976973cc6903352702f1667614fbbeb9d07",
+  "observer_sha256": "57de3259d9a68eb0fbe303a8065b1be5bee82a62b2148f477d9ae59f0918751b",
+  "assets_sha256": {
+    "character.rbxm": "91e5e1164863f7ae10ea9be855c38c6c58b7792141b30829464e6a1d2d19548d",
+    "humanoidSound.rbxm": "eceddc097d8ca6f809443a3ea136eb2c6d9ef07af5634dbc3c51cc289bf1d0d4",
+    "humanoidHealth.rbxm": "975a25df0e6e8a1884122e8ae06f7ea3b788ef8527f08aa37d2257d74de7e54b",
+    "humanoidAnimate.rbxm": "bd150973c2b37828e8668bb6b8d7cddb8293b6c217b4385a40a979ec038592ff"
+  },
+  "P5_complete": false,
+  "remaining": [
+    "Head mesh rendering",
+    "Original sound and animation scripts",
+    "Normal launch, camera, physics and scheduler parity"
+  ],
+  "runs": {
+    "hash": {
+      "exit": 0
+    },
+    "idle": {
+      "exit": 0,
+      "torso": [
+        2.97721989e-18,
+        2.813622,
+        25.5
+      ],
+      "head_mesh_status": 3,
+      "snapshot_sha256": "60d6a3bf224f068913d49f4b1afb99b34ec13e4c4911585c4908e9e238dea612"
+    },
+    "input": {
+      "exit": 0,
+      "torso": [
+        2.97721989e-18,
+        2.813622,
+        9.49948978
+      ],
+      "head_mesh_status": 3,
+      "snapshot_sha256": "4b828e6cdd04e5a7f0ecc11aa50489008ab7ca622240165eb9476583ae6a0021"
+    }
+  }
+}

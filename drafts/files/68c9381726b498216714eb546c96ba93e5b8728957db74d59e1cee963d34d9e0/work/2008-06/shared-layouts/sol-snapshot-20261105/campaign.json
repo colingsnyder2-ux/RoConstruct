@@ -1,0 +1,22 @@
+{
+  "swap_target": "CRobloxDoc native diagnostic closure",
+  "session": "3ecf232769b2475da7870eca90d92475",
+  "model": "gpt-6.1-sol",
+  "user": "coldek",
+  "baseline_commit": "e9bfe6671a60913f56cc7efc99de1b9045ede2ecfe9570327ad0a53f2f195188",
+  "commands": [
+    "python -u rebuild/2008-06/tests/SolSnapshot20261105.py",
+    "ROC_INTEGRATOR_PRIVATE=1 python -u -c from roc import rebuild; rebuild.build_module(2008-06,xtp)"
+  ],
+  "metrics": {
+    "inactive_exact": null,
+    "selected_exact": null,
+    "gated_swaps": 0,
+    "server_credit": 0
+  },
+  "next_gate": "fresh prerequisites then p6_probe baseline and additive Axis factory; never run diagnostic",
+  "blockers": [
+    "missing adopted bundled Debris header: approved scoped resolution ready",
+    "original runtime Content input pending parent"
+  ]
+}

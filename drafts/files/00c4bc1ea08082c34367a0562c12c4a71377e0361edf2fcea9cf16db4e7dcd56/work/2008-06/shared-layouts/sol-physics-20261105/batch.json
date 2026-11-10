@@ -1,0 +1,105 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/PhysicsServiceFind.cpp",
+      "checks": [
+        {
+          "addr": "004ccca0",
+          "symbol": "??$find@"
+        },
+        {
+          "addr": "004c9b70",
+          "symbol": "??$doDeclare@"
+        },
+        {
+          "addr": "004c9be0",
+          "symbol": "??$doGetClassIndex@"
+        },
+        {
+          "addr": "004cb520",
+          "symbol": "?getClassName@"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/PhysicsServiceAllocation.cpp",
+      "checks": [
+        {
+          "addr": "004cd760",
+          "symbol": "??$create@"
+        },
+        {
+          "addr": "004cd5b0",
+          "symbol": "??0PhysicsService@"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/PhysicsServiceLifetime.cpp",
+      "checks": [
+        {
+          "addr": "005e8d30",
+          "symbol": "??1PhysicsService@"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/PhysicsServiceEvents.cpp",
+      "checks": [
+        {
+          "addr": "005e9110",
+          "symbol": "?onEvent@PhysicsService@RBX@@MAEXPBVWorld@2@UAssemblyPhysicsOn@2@@Z",
+          "calls": [
+            {
+              "offset": 8,
+              "target": "00599f80",
+              "symbol": "?fromPrimitive@PartInstance@RBX@@SAPAV12@PAVPrimitive@2@@Z"
+            },
+            {
+              "offset": 23,
+              "target": "005e8f70",
+              "symbol": "?onAdded@PhysicsService@RBX@@AAEXPAVPartInstance@2@@Z"
+            }
+          ]
+        },
+        {
+          "addr": "005e9130",
+          "symbol": "?onEvent@PhysicsService@RBX@@MAEXPBVWorld@2@UAssemblyPhysicsOff@2@@Z",
+          "calls": [
+            {
+              "offset": 8,
+              "target": "00599f80",
+              "symbol": "?fromPrimitive@PartInstance@RBX@@SAPAV12@PAVPrimitive@2@@Z"
+            },
+            {
+              "offset": 23,
+              "target": "005e9040",
+              "symbol": "?onRemoved@PhysicsService@RBX@@AAEXPAVPartInstance@2@@Z"
+            }
+          ]
+        },
+        {
+          "addr": "005e8f70",
+          "symbol": "?onAdded@"
+        },
+        {
+          "addr": "005e9040",
+          "symbol": "?onRemoved@"
+        }
+      ]
+    },
+    {
+      "source": "native-classes/PhysicsServiceSignals.cpp",
+      "checks": [
+        {
+          "addr": "005e8df0",
+          "symbol": "??0?$SignalDesc@"
+        },
+        {
+          "addr": "004cd300",
+          "symbol": "?classDescriptor@?$Described@VPhysicsService@"
+        }
+      ]
+    }
+  ]
+}

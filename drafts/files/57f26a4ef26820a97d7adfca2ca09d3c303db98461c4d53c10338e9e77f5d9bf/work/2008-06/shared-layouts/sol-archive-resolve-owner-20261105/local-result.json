@@ -1,0 +1,115 @@
+{
+  "removed": [
+    "??$?APAVArchiveBinder@@@?$list1@AAUIDREFBinding@ArchiveBinder@@@_bi@boost@@QBEAAPAVArchiveBinder@@AAV?$value@PAVArchiveBinder@@@12@@Z",
+    "??$?RUIDREFBinding@ArchiveBinder@@@?$bind_t@_NV?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@boost@@V?$list2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@QAE_NAAUIDREFBinding@ArchiveBinder@@@Z",
+    "??$?R_NV?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@boost@@V?$list1@AAUIDREFBinding@ArchiveBinder@@@_bi@2@@?$list2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@_bi@boost@@QAE_NV?$type@_N@12@AAV?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@2@AAV?$list1@AAUIDREFBinding@ArchiveBinder@@@12@J@Z",
+    "??$_Checked_base@V?$_Iterator@$00@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@@std@@YA?AV?$_Iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@0@AAV?$_Iterator@$00@20@@Z",
+    "??$_Checked_base@V?$_Iterator@$00@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@U_Different_checked_iterator_base_type_tag@3@@std@@YA?AV?$_Iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@0@AAV?$_Iterator@$00@20@U_Different_checked_iterator_base_type_tag@0@@Z",
+    "??$_Count_if@V?$_Iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@V?$bind_t@_NV?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@boost@@V?$list2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YAHV?$_Iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@0@0V?$bind_t@_NV?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@boost@@V?$list2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@Z",
+    "??$bind@_NVArchiveBinder@@UIDREFBinding@1@PAV1@V?$arg@$00@boost@@@boost@@YA?AV?$bind_t@_NV?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@boost@@V?$list2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@0@P8ArchiveBinder@@AE_NUIDREFBinding@3@@ZPAV3@V?$arg@$00@0@@Z",
+    "??$count_if@V?$_Iterator@$00@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@V?$bind_t@_NV?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@boost@@V?$list2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YAHV?$_Iterator@$00@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@0@0V?$bind_t@_NV?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@boost@@V?$list2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@Z",
+    "??0?$_Const_iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@QAE@PAU_Node@?$_List_nod@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@2@PBV12@@Z",
+    "??0?$_Iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@QAE@PAU_Node@?$_List_nod@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@2@PBV12@@Z",
+    "??0?$bind_t@_NV?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@boost@@V?$list2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@QAE@V?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@2@ABV?$list2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@12@@Z",
+    "??0?$list1@AAUIDREFBinding@ArchiveBinder@@@_bi@boost@@QAE@AAUIDREFBinding@ArchiveBinder@@@Z",
+    "??0?$list2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@_bi@boost@@QAE@V?$value@PAVArchiveBinder@@@12@V?$arg@$00@2@@Z",
+    "??0?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@boost@@QAE@P8ArchiveBinder@@AE_NUIDREFBinding@3@@Z@Z",
+    "??0?$storage1@AAUIDREFBinding@ArchiveBinder@@@_bi@boost@@QAE@AAUIDREFBinding@ArchiveBinder@@@Z",
+    "??0?$storage1@V?$value@PAVArchiveBinder@@@_bi@boost@@@_bi@boost@@QAE@V?$value@PAVArchiveBinder@@@12@@Z",
+    "??0?$storage2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@_bi@boost@@QAE@V?$value@PAVArchiveBinder@@@12@V?$arg@$00@2@@Z",
+    "??0?$value@PAVArchiveBinder@@@_bi@boost@@QAE@ABQAVArchiveBinder@@@Z",
+    "??8?$_Const_iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@QBE_NABV012@@Z",
+    "??9?$_Const_iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@QBE_NABV012@@Z",
+    "??A?$list1@AAUIDREFBinding@ArchiveBinder@@@_bi@boost@@QBEAAUIDREFBinding@ArchiveBinder@@P6A?AV?$arg@$00@2@XZ@Z",
+    "??D?$_Const_iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@QBEABUIDREFBinding@ArchiveBinder@@XZ",
+    "??D?$_Iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@QBEAAUIDREFBinding@ArchiveBinder@@XZ",
+    "??E?$_Const_iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@QAEAAV012@XZ",
+    "??E?$_Iterator@$0A@@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@QAEAAV012@XZ",
+    "??R?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@boost@@QBE_NPAVArchiveBinder@@UIDREFBinding@3@@Z",
+    "?_Checked_iterator_base@?$_Iterator@$00@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@QBE?AV?$_Iterator@$0A@@23@XZ",
+    "?a2_@?$storage2@V?$value@PAVArchiveBinder@@@_bi@boost@@V?$arg@$00@3@@_bi@boost@@SA?AV?$arg@$00@3@XZ",
+    "?begin@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@QAE?AV?$_Iterator@$00@12@XZ",
+    "?get@?$value@PAVArchiveBinder@@@_bi@boost@@QAEAAPAVArchiveBinder@@XZ",
+    "?resolveRefs@ArchiveBinder@@UAE_NXZ",
+    "?size@?$list@UIDREFBinding@ArchiveBinder@@V?$allocator@UIDREFBinding@ArchiveBinder@@@std@@@std@@QBEIXZ",
+    "?unwrap@?$unwrapper@V?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@boost@@@_bi@boost@@SAAAV?$mf1@_NVArchiveBinder@@UIDREFBinding@1@@_mfi@3@AAV453@J@Z"
+  ],
+  "retained": 1198,
+  "vtable_old": {
+    "size": 20,
+    "sha256": "de47c9b27eb8d300dbb5f2c353e632c393262cf06340c4fa7f1b40c4cbd36f90",
+    "relocations": [
+      [
+        0,
+        "?announceID@MergeBinder@RBX@@UAEXPBVXmlNameValuePair@@PAVInstance@2@@Z",
+        6
+      ],
+      [
+        4,
+        "?announceIDREF@MergeBinder@RBX@@UAEXPBVXmlNameValuePair@@PAVDescribedBase@Reflection@2@PBVIIDREF@2@@Z",
+        6
+      ],
+      [
+        8,
+        "?resolveRefs@ArchiveBinder@@UAE_NXZ",
+        6
+      ],
+      [
+        12,
+        "?processID@ArchiveBinder@@UAE_NPBVXmlNameValuePair@@PAVInstance@RBX@@@Z",
+        6
+      ],
+      [
+        16,
+        "?processIDREF@ArchiveBinder@@UAE_NPBVXmlNameValuePair@@PAVDescribedBase@Reflection@RBX@@PBVIIDREF@5@@Z",
+        6
+      ]
+    ],
+    "characteristics": 1076891712,
+    "storage": 2,
+    "section": ".rdata"
+  },
+  "vtable_new": {
+    "size": 20,
+    "sha256": "de47c9b27eb8d300dbb5f2c353e632c393262cf06340c4fa7f1b40c4cbd36f90",
+    "relocations": [
+      [
+        0,
+        "?announceID@MergeBinder@RBX@@UAEXPBVXmlNameValuePair@@PAVInstance@2@@Z",
+        6
+      ],
+      [
+        4,
+        "?announceIDREF@MergeBinder@RBX@@UAEXPBVXmlNameValuePair@@PAVDescribedBase@Reflection@2@PBVIIDREF@2@@Z",
+        6
+      ],
+      [
+        8,
+        "?resolveRefs@ArchiveBinder@@UAE_NXZ",
+        6
+      ],
+      [
+        12,
+        "?processID@ArchiveBinder@@UAE_NPBVXmlNameValuePair@@PAVInstance@RBX@@@Z",
+        6
+      ],
+      [
+        16,
+        "?processIDREF@ArchiveBinder@@UAE_NPBVXmlNameValuePair@@PAVDescribedBase@Reflection@RBX@@PBVIIDREF@5@@Z",
+        6
+      ]
+    ],
+    "characteristics": 1076891712,
+    "storage": 2,
+    "section": ".rdata"
+  },
+  "undefined": [
+    [
+      "?resolveRefs@ArchiveBinder@@UAE_NXZ",
+      0,
+      0,
+      32,
+      2
+    ]
+  ]
+}

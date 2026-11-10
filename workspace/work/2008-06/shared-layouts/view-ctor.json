@@ -1,0 +1,29 @@
+{
+ "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+ "object_sha256": "5776ea1e12f4c9eae16f91f54f8a1e16bbc8f3df81a8da60cbb850f37e42661a",
+ "sources": {
+  "rebuild\\2008-06\\tests\\NativeViewLayout.cpp": "ef576626992a02e3297e8549db72f73fd3d97a1dab5f47ef5afc54acb13f7294",
+  "rebuild\\2008-06\\native-classes\\CRobloxView.cpp": "16218368bb2d4b670b11eb58aa799e73edec5788a7ffb19bba0f91e8d2f17a9d",
+  "rebuild\\2008-06\\native-headers\\CRobloxView.h": "ac1752d888ae3bfeb559d6e27b76a68418b50471ae4a4bded22670a46314b758",
+  "work\\2008-06\\p6-trace\\probe_view.py": "7227ea4cfb405320de46f3296be1ef3050f2cc4a2de673ae3e793359b645de68",
+  "rebuild\\2008-06\\tests\\record_native_view.py": "b6dbc18a8016dbd59ad47dd4bdf98a1b772057828ae873c10afc573eb92452a8"
+ },
+ "methods": [
+  {
+   "address": "00459eb0",
+   "symbol": "??0CRobloxView@@QAE@XZ",
+   "target_size": 242,
+   "compiled_size": 242,
+   "relocation_normalized_exact": true,
+   "first_difference": 3
+  },
+  {
+   "address": "00459ba0",
+   "symbol": "??1CRobloxView@@UAE@XZ",
+   "target_size": 371,
+   "compiled_size": 371,
+   "relocation_normalized_exact": true,
+   "first_difference": 3
+  }
+ ]
+}

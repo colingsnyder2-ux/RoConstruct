@@ -1,0 +1,14 @@
+{
+  "revision": "62955063a7b0077f2e819ff5220dd3b8b8e8ac1c",
+  "exe_sha256": "234bcfd5412b7a4d6597d4060e64ea5dda97217be0c2f864f694b2565afd9142",
+  "fixture_sha256": "b8c4183f412de258382665e368151503e2bcdcc46657f8b22b45d5f043fcee27",
+  "test_sha256": "330916e1ad5d3351e0328c22ebf5b58b8172cb89b388bc6a3567ce7bf19e38ec",
+  "exit": 0,
+  "lua_values_pass": true,
+  "part_position": [
+    3,
+    4,
+    5
+  ],
+  "scope": "Behavioral reconstruction; not native parity or complete Value-class coverage."
+}

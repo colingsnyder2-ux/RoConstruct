@@ -1,0 +1,22 @@
+0056cd80  64a100000000         mov eax, dword ptr fs:[0]
+0056cd86  6aff                 push -1
+0056cd88  68befd7c00           push 0x7cfdbe
+0056cd8d  50                   push eax
+0056cd8e  b801000000           mov eax, 1
+0056cd93  64892500000000       mov dword ptr fs:[0], esp
+0056cd9a  8405f44b9700         test byte ptr [0x974bf4], al
+0056cda0  752f                 jne 0x56cdd1
+0056cda2  0905f44b9700         or dword ptr [0x974bf4], eax
+0056cda8  6844bf9200           push 0x92bf44
+0056cdad  68b0f68200           push 0x82f6b0
+0056cdb2  b9e44b9700           mov ecx, 0x974be4
+0056cdb7  c744241000000000     mov dword ptr [esp + 0x10], 0
+0056cdbf  e8ccefffff           call 0x56bd90
+0056cdc4  6880d27f00           push 0x7fd280
+0056cdc9  e8e1491300           call 0x6a17af
+0056cdce  83c404               add esp, 4
+0056cdd1  8b0c24               mov ecx, dword ptr [esp]
+0056cdd4  b8e44b9700           mov eax, 0x974be4
+0056cdd9  64890d00000000       mov dword ptr fs:[0], ecx
+0056cde0  83c40c               add esp, 0xc
+0056cde3  c3                   ret 

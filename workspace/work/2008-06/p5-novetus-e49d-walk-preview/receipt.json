@@ -1,0 +1,73 @@
+{
+  "revision": "e49dd2e24c7e5ec777870d5483e2c71c91d5348c",
+  "exe_sha256": "87f499c243b78b707bde0d8bd55f9e26c9b006fa980f6f48e786fb13d06c02ba",
+  "gif_sha256": "8064b2f1ca896e916cc209734c85ecd1ee8b3068ca031e50bcfdd2e72b544490",
+  "captures": [
+    {
+      "frame": 96,
+      "sha256": "906b17303c6a1b5653be903f57bf3bb05371c52d29de09fa7eba41dd3d1ca851"
+    },
+    {
+      "frame": 104,
+      "sha256": "33a285f3124207b51710c49ff67aabed184786b1023d7d5479edb68332da1737"
+    },
+    {
+      "frame": 112,
+      "sha256": "3aca42c2c48757398d50e03334f2b14276fdd0b861ea4524d1f9d16f8ceb56b6"
+    },
+    {
+      "frame": 120,
+      "sha256": "e80681518c1add3e072724057df079b5d8e07981e3bbc374703395c32eb71b24"
+    },
+    {
+      "frame": 128,
+      "sha256": "e27492ab5a035c7eb0b33e4953b6c034fb817620473b023fe0002af9dec1650c"
+    },
+    {
+      "frame": 136,
+      "sha256": "b4b7475c09a2e44ab4fc6233ff3c42529d80ea431fc88cd1724d610221f0c7e7"
+    },
+    {
+      "frame": 144,
+      "sha256": "edaba7a10bcdeb1df6ee8968290705686d4ea8e42bdd9aa0efe45f589424ea98"
+    },
+    {
+      "frame": 152,
+      "sha256": "f9031e970820e5071d00b16afe265e48fabc273b1ce467950cf10a0823bf5dc3"
+    },
+    {
+      "frame": 160,
+      "sha256": "24f0acc0ce7b57a8837dc567c279a1e0ddfbd4bd15350bf1bb473457c4006c77"
+    },
+    {
+      "frame": 168,
+      "sha256": "edb440252be01f0ca0f571f6ab986a9379a5096186f3087baaae5ef863ce9c9a"
+    },
+    {
+      "frame": 176,
+      "sha256": "2b98e2b05dc9e4104b0ccb1de0d7e63c2664e386020e247d11954d06aa571b14"
+    },
+    {
+      "frame": 184,
+      "sha256": "4708a67d16cceca27f5f0c6f7f6bdce5cb482301493f6acef6b0a0b56446d148"
+    },
+    {
+      "frame": 192,
+      "sha256": "a31a2bfba19efff0d210101e95b0aa636485cfb7b7465a8db7ceb1ffc84b16be"
+    },
+    {
+      "frame": 200,
+      "sha256": "44251a804df8e3cd5fb4190f9523c252b09fc731854701592c5e11259b780b77"
+    },
+    {
+      "frame": 208,
+      "sha256": "5f78ca58df3495d93db717aa4d08613fae9ce1d3240b635812c7ea65dbc762a0"
+    },
+    {
+      "frame": 216,
+      "sha256": "53be6a90d7f4442719bf71c3d24cc7588d14145ec0103468a9e512efa5fe17de"
+    }
+  ],
+  "scope": "Frame captures from separate deterministic runs; original Novetus assets remain local.",
+  "P5_complete": false
+}

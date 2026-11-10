@@ -1,0 +1,68 @@
+{
+  "scope": "Compare existing native x86 EH metadata graph to the original; never compile/run. Pointer bindings in cleanup are checked against normal-body references/imports; not whole dependency ABI/runtime proof.",
+  "address": "00640560",
+  "primary_body_size": 139,
+  "primary_body_exact": true,
+  "tool_sha256": "6aeeb621586e65923c30ecea3d71349fb1d87f4c99bda1b900840c8353168379",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-131546-668ff08d\\unit-000\\candidate.obj",
+  "object_sha256": "e9f53666cd11d3c15c7985b8b24c11821d448840c2df2d3d66f28dda6bdbac7c",
+  "events": [
+    {
+      "symbol": "__ehhandler$??0AxisMoveTool@RBX@@QAE@PAVWorkspace@1@@Z",
+      "original": "0x7daa23",
+      "kind": "cleanup/handler code",
+      "size": 10,
+      "exact": true
+    },
+    {
+      "symbol": "__ehfuncinfo$??0AxisMoveTool@RBX@@QAE@PAVWorkspace@1@@Z",
+      "original": "0x8fb954",
+      "kind": "EH data",
+      "size": 36,
+      "exact": true,
+      "original_bytes": "220593190200000044b98f00000000000000000000000000000000000000000001000000",
+      "native_bytes": "220593190200000000000000000000000000000000000000000000000000000001000000"
+    },
+    {
+      "symbol": "__unwindtable$??0AxisMoveTool@RBX@@QAE@PAVWorkspace@1@@Z",
+      "original": "0x8fb944",
+      "kind": "EH data",
+      "size": 16,
+      "exact": true,
+      "original_bytes": "ffffffff10aa7d000000000018aa7d00",
+      "native_bytes": "ffffffff000000000000000000000000"
+    },
+    {
+      "symbol": "__unwindfunclet$??0AxisMoveTool@RBX@@QAE@PAVWorkspace@1@@Z$0",
+      "original": "0x7daa10",
+      "kind": "cleanup/handler code",
+      "size": 8,
+      "exact": true
+    },
+    {
+      "symbol": "??1?$Named@VArrowToolBase@RBX@@$1?sAxisMoveTool@2@3PADA@RBX@@UAE@XZ",
+      "original": "0x617dd0",
+      "kind": "cleanup/handler code",
+      "size": 5,
+      "exact": true
+    },
+    {
+      "symbol": "__unwindfunclet$??0AxisMoveTool@RBX@@QAE@PAVWorkspace@1@@Z$1",
+      "original": "0x7daa18",
+      "kind": "cleanup/handler code",
+      "size": 11,
+      "exact": true
+    },
+    {
+      "symbol": "??1?$auto_ptr@VMegaDragger@RBX@@@std@@QAE@XZ",
+      "original": "0x640540",
+      "kind": "cleanup/handler code",
+      "size": 25,
+      "exact": true
+    }
+  ],
+  "errors": [
+    "('??1?$auto_ptr@VMegaDragger@RBX@@@std@@QAE@XZ', '??1MegaDragger@RBX@@QAE@XZ', '0x60e700')"
+  ]
+}

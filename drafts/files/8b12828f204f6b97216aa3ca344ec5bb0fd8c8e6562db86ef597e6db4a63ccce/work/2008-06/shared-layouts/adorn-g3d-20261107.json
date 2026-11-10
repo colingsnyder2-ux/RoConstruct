@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "kind": "class-family queue note",
+  "family": "RBX::AdornG3D (2008-06; concrete Adorn implementation, vtable 00819d24, 25 slots, 1 object)",
+  "lease": "RBX::AdornG3D (Colin, 4h) covering native-classes/AdornG3D.cpp and this receipt",
+  "companion": "RBX::AdornRbxGfx (vtable 0084d2a4, 25 slots, 1 object) - the second concrete Adorn; no named methods yet, sequence it after AdornG3D",
+  "why": "no source unit exists; 11 methods already carry evidence names at score 100 so the address map is known; the abstract interface is already recovered in native-headers/RbxGraphics/Adorn.h",
+  "evidence_map": [
+    {
+      "addr": "0x676480",
+      "symbol": "?getViewport@AdornG3D@RBX@@UBE?AVRect2D@G3D@@XZ"
+    },
+    {
+      "addr": "0x676550",
+      "symbol": "?line2d@AdornG3D@RBX@@UBEXABVVector2@G3D@@0ABVColor4@4@@Z"
+    },
+    {
+      "addr": "0x676580",
+      "symbol": "?box@AdornG3D@RBX@@UAEXABVAABox@G3D@@ABVColor4@4@1@Z"
+    },
+    {
+      "addr": "0x6765b0",
+      "symbol": "?sphere@AdornG3D@RBX@@UAEXABVSphere@G3D@@ABVColor4@4@1@Z"
+    },
+    {
+      "addr": "0x6765e0",
+      "symbol": "?explosion@AdornG3D@RBX@@UAEXABVSphere@G3D@@ABVColor4@4@1@Z"
+    },
+    {
+      "addr": "0x6765f0",
+      "symbol": "?cylinderAlongX@AdornG3D@RBX@@UAEXMMABVColor4@G3D@@0@Z"
+    },
+    {
+      "addr": "0x676690",
+      "symbol": "?axes@AdornG3D@RBX@@UAEXABVColor4@G3D@@00M@Z"
+    },
+    {
+      "addr": "0x6766c0",
+      "symbol": "?quad@AdornG3D@RBX@@UAEXABVVector3@G3D@@000ABVColor4@4@@Z"
+    },
+    {
+      "addr": "0x676720",
+      "symbol": "?setColor@AdornG3D@RBX@@UAEXABVColor4@G3D@@@Z"
+    },
+    {
+      "addr": "0x676940",
+      "symbol": "?get2DStringBounds@AdornG3D@RBX@@UBE?AVVector2@G3D@@ABV?@DU?@D@std@@V?@D@2@@std@@NW4Spacing@Adorn@2@@Z"
+    },
+    {
+      "addr": "0x6769e0",
+      "symbol": "?drawFont2D@AdornG3D@RBX@@UBE?AVVector2@G3D@@ABV?@DU?@D@std@@V?@D@2@@std@@ABV34@NABVColor4@4@2W4XAlign@Adorn@2@W4YAlign@92@W4Spacing@92@@Z"
+    }
+  ],
+  "interface": "native-headers/RbxGraphics/Adorn.h declares the pure virtuals: createTextureProxy, prepareRenderPass, finishRenderPass, getViewport, getWidth, getHeight, setTexture, getTextureSize, line2d, outlineRect2d, rect2d, get2DStringBounds, drawFont2D, plus the texture/rect/string helpers",
+  "next_implementation": "rebuild/2008-06/native-classes/AdornG3D.cpp: start with the smallest self-contained methods (setColor 0x676720, getViewport 0x676480, line2d 0x676550) and the shadowing getWidth/getHeight that feed GuiRoot::render2d; then box/sphere/quad/axes/cylinderAlongX/explosion which are the G3D draw calls; drawFont2D and get2DStringBounds last because they need the font metrics provider",
+  "next_check": "python rebuild/2008-06/tests/native_check_runner.py run work/2008-06/shared-layouts/adorn-g3d-batch.json --workers 1 with the documented flags",
+  "note": "the /fp:fast lesson applies: these methods carry Color4/Vector2 temporaries throughout",
+  "watching_session": "06b5936d5afb4c399f260fec297c5660 (scope: this receipt and native-classes/AdornG3D.cpp)"
+}

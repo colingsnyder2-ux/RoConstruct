@@ -1,0 +1,46 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "00433670",
+                                        "symbol":  "??0CMemberTreeView@@"
+                                    },
+                                    {
+                                        "addr":  "004336e0",
+                                        "symbol":  "??1CMemberTreeView@@"
+                                    },
+                                    {
+                                        "addr":  "00433e30",
+                                        "symbol":  "?OnInitialUpdate@CMemberTreeView@@"
+                                    },
+                                    {
+                                        "addr":  "00433ef0",
+                                        "symbol":  "?OnSelChanged@CMemberTreeView@@"
+                                    },
+                                    {
+                                        "addr":  "00434470",
+                                        "symbol":  "?addProperty@CMemberTreeView@@"
+                                    },
+                                    {
+                                        "addr":  "00434500",
+                                        "symbol":  "?showClass@CMemberTreeView@@"
+                                    }
+                                ],
+                     "source":  "native-classes/CMemberTreeView.cpp"
+                 },
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "00435eb0",
+                                        "symbol":  "?addClass@CClassTreeView@@"
+                                    },
+                                    {
+                                        "addr":  "00435fa0",
+                                        "symbol":  "?OnInitialUpdate@CClassTreeView@@"
+                                    }
+                                ],
+                     "source":  "native-classes/CClassTreeView.cpp"
+                 }
+             ]
+}

@@ -1,0 +1,264 @@
+{
+  "checks": [
+    {
+      "addr": "00629120",
+      "requested_symbol": "??0?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@AAE@XZ",
+      "status": "exact",
+      "symbol": "??0?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@AAE@XZ",
+      "score": 100,
+      "target_size": 542,
+      "object_size": 542,
+      "target_sha256": "75ea6f8b7beb6e2f822e4dfe87a54dd4034b178cf744c8065f68c582630c5864",
+      "first_byte_difference": null,
+      "data_matches": [
+        [
+          9810852,
+          29
+        ],
+        [
+          8673368,
+          10
+        ],
+        [
+          8616512,
+          8
+        ],
+        [
+          8673360,
+          8
+        ],
+        [
+          8673352,
+          6
+        ],
+        [
+          8673344,
+          5
+        ],
+        [
+          8673336,
+          6
+        ],
+        [
+          8673328,
+          6
+        ],
+        [
+          8673320,
+          6
+        ],
+        [
+          8629964,
+          10
+        ],
+        [
+          8673312,
+          5
+        ],
+        [
+          8539956,
+          5
+        ],
+        [
+          8647084,
+          5
+        ],
+        [
+          8673304,
+          6
+        ],
+        [
+          8541796,
+          5
+        ],
+        [
+          8673296,
+          7
+        ],
+        [
+          8673288,
+          7
+        ],
+        [
+          8673280,
+          8
+        ]
+      ],
+      "data_errors": [],
+      "call_identity": {
+        "passed": true,
+        "calls": [
+          {
+            "offset": 43,
+            "target": "0056c590",
+            "symbol": "??0EnumDescriptor@Reflection@RBX@@IAE@PBDABVtype_info@@@Z",
+            "status": "verified_binding"
+          },
+          {
+            "offset": 73,
+            "target": "00446110",
+            "symbol": "??0?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4SoundType@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4SoundType@2@@std@@@5@$0A@@std@@@std@@QAE@ABU?$less@PBVName@RBX@@@1@ABV?$allocator@U?$pair@QBVName@RBX@@W4SoundType@2@@std@@@1@@Z",
+            "status": "verified_binding"
+          },
+          {
+            "offset": 96,
+            "target": "00446110",
+            "symbol": "??0?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4SoundType@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4SoundType@2@@std@@@5@$0A@@std@@@std@@QAE@ABU?$less@PBVName@RBX@@@1@ABV?$allocator@U?$pair@QBVName@RBX@@W4SoundType@2@@std@@@1@@Z",
+            "status": "verified_binding"
+          },
+          {
+            "offset": 111,
+            "target": "006a0920",
+            "symbol": "??2@YAPAXI@Z",
+            "status": "verified_binding"
+          },
+          {
+            "offset": 153,
+            "target": "006a0920",
+            "symbol": "??2@YAPAXI@Z",
+            "status": "verified_binding"
+          },
+          {
+            "offset": 195,
+            "target": "006a0920",
+            "symbol": "??2@YAPAXI@Z",
+            "status": "verified_binding"
+          },
+          {
+            "offset": 237,
+            "target": "006a0920",
+            "symbol": "??2@YAPAXI@Z",
+            "status": "verified_binding"
+          },
+          {
+            "offset": 279,
+            "target": "006a0920",
+            "symbol": "??2@YAPAXI@Z",
+            "status": "verified_binding"
+          },
+          {
+            "offset": 321,
+            "target": "0064d530",
+            "symbol": "?addPair@?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@AAEXW4SoundType@3@PBD@Z",
+            "status": "verified_binding"
+          },
+          {
+            "offset": 335,
+            "target": "0064d530",
+            "symbol": "?addPair@?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@AAEXW4SoundType@3@PBD@Z",
+            "status": "verified_binding"
+          },
+          {
+            "offset": 349,
+            "target": "0064d530",
+            "symbol": "?addPair@?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@AAEXW4SoundType@3@PBD@Z",
+            "status": "verified_binding"
+          },
+          {
+            "offset": 363,
+            "target": "0064d530",
+            "symbol": "?addPair@?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@AAEXW4SoundType@3@PBD@Z",
+            "status": "verified_binding"
+          },
+          {
+            "offset": 377,
+            "target": "0064d530",
+            "symbol": "?addPair@?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@AAEXW4SoundType@3@PBD@Z",
+            "status": "verified_binding"
+          },
+          {
+            "offset": 391,
+            "target": "0064d530",
+            "symbol": "?addPair@?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@AAEXW4SoundType@3@PBD@Z",
+            "status": "verified_binding"
+          },
+          {
+            "offset": 405,
+            "target": "0064d530",
+            "symbol": "?addPair@?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@AAEXW4SoundType@3@PBD@Z",
+            "status": "verified_binding"
+          },
+          {
+            "offset": 419,
+            "target": "0064d530",
+            "symbol": "?addPair@?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@AAEXW4SoundType@3@PBD@Z",
+            "status": "verified_binding"
+          },
+          {
+            "offset": 433,
+            "target": "0064d530",
+            "symbol": "?addPair@?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@AAEXW4SoundType@3@PBD@Z",
+            "status": "verified_binding"
+          },
+          {
+            "offset": 447,
+            "target": "0064d530",
+            "symbol": "?addPair@?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@AAEXW4SoundType@3@PBD@Z",
+            "status": "verified_binding"
+          },
+          {
+            "offset": 461,
+            "target": "0064d530",
+            "symbol": "?addPair@?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@AAEXW4SoundType@3@PBD@Z",
+            "status": "verified_binding"
+          },
+          {
+            "offset": 475,
+            "target": "0064d530",
+            "symbol": "?addPair@?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@AAEXW4SoundType@3@PBD@Z",
+            "status": "verified_binding"
+          },
+          {
+            "offset": 489,
+            "target": "0064d530",
+            "symbol": "?addPair@?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@AAEXW4SoundType@3@PBD@Z",
+            "status": "verified_binding"
+          },
+          {
+            "offset": 503,
+            "target": "0064d530",
+            "symbol": "?addPair@?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@AAEXW4SoundType@3@PBD@Z",
+            "status": "verified_binding"
+          },
+          {
+            "offset": 517,
+            "target": "0064d530",
+            "symbol": "?addPair@?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@AAEXW4SoundType@3@PBD@Z",
+            "status": "verified_binding"
+          }
+        ],
+        "unused_expectations": [],
+        "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
+      },
+      "check_seconds": 1.899478
+    },
+    {
+      "addr": "00446110",
+      "requested_symbol": "??0?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4SoundType@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4SoundType@2@@std@@@5@$0A@@std@@@std@@QAE@ABU?$less@PBVName@RBX@@@1@ABV?$allocator@U?$pair@QBVName@RBX@@W4SoundType@2@@std@@@1@@Z",
+      "status": "exact",
+      "symbol": "??0?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4SoundType@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4SoundType@2@@std@@@5@$0A@@std@@@std@@QAE@ABU?$less@PBVName@RBX@@@1@ABV?$allocator@U?$pair@QBVName@RBX@@W4SoundType@2@@std@@@1@@Z",
+      "score": 100,
+      "target_size": 117,
+      "object_size": 117,
+      "target_sha256": "b96624bb8ab5990af6f0866beb2438eabf36d672e020d0c0c9a6ffa8489539c0",
+      "first_byte_difference": null,
+      "data_matches": [],
+      "data_errors": [],
+      "check_seconds": 0.000239
+    },
+    {
+      "addr": "0064d530",
+      "requested_symbol": "?addPair@?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@AAEXW4SoundType@3@PBD@Z",
+      "status": "different",
+      "symbol": "?addPair@?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@AAEXW4SoundType@3@PBD@Z",
+      "score": 55,
+      "target_size": 530,
+      "object_size": 547,
+      "target_sha256": "fe2405bcbbafc77b4e18744443cfe28933f360cc2583ad54f80525fdf8f83a35",
+      "first_byte_difference": 35,
+      "check_seconds": 0.01355
+    }
+  ],
+  "coverage": [],
+  "layouts": []
+}

@@ -1,0 +1,358 @@
+{
+  "schema": 1,
+  "kind": "class-family queue note",
+  "family": "RBX::AdornRbxGfx (2008-06; concrete RbxGraphics::Adorn implementation for the Ogre render path; vtable 0084d2a4, 25 slots, 1 object)",
+  "lease": "RBX::AdornRbxGfx (Colin, 4h) covering native-classes/AdornRbxGfx.cpp and this receipt",
+  "why": "the last uncovered RTTI class in the client. It is the Ogre-side twin of RBX::AdornG3D (already recovered 18/18): AdornG3D feeds G3D::RenderDevice, AdornRbxGfx feeds Ogre 1.4.5.",
+  "slot_mapping": {
+    "evidence": "vtable 0084d2a4 has exactly 25 slots, which equals RbxGraphics::Adorn's 25 virtuals, and native-headers/RbxGraphics/Adorn.h (whose order is already confirmed byte-for-byte by the AdornG3D vtable 00819d24: its 11 evidence-named methods land exactly on that order) declares them. Because neither class adds virtuals of its own, slot index == Adorn virtual index.",
+    "caveat": "this mapping is a HYPOTHESIS until each slot is confirmed by its disassembled signature. It is already partly corroborated: slot 15 (setColor) = 0x70bdf0 and slot 22 (lineSegment) = 0x6ad2a0 and slot 23 (axes) = 0x4e83a0 are all shared \"not implemented\" stubs, exactly as the two AdornG3D stubs (0x47d410 at its slots 2/3/6/19) and Exposer/PacketLogger slot 7 (0x6ad2a0) behave.",
+    "methods": [
+      {
+        "slot": 0,
+        "adorn_virtual": "~AdornRbxGfx (scalar deleting dtor)",
+        "addr": "0x6741f0"
+      },
+      {
+        "slot": 1,
+        "adorn_virtual": "createTextureProxy(const std::string&) -> TextureProxyBaseRef",
+        "addr": "0x670380"
+      },
+      {
+        "slot": 2,
+        "adorn_virtual": "prepareRenderPass()",
+        "addr": "0x670d50"
+      },
+      {
+        "slot": 3,
+        "adorn_virtual": "finishRenderPass()",
+        "addr": "0x671f90"
+      },
+      {
+        "slot": 4,
+        "adorn_virtual": "getViewport() const -> G3D::Rect2D",
+        "addr": "0x670020"
+      },
+      {
+        "slot": 5,
+        "adorn_virtual": "getWidth() const -> int",
+        "addr": "0x66f900"
+      },
+      {
+        "slot": 6,
+        "adorn_virtual": "getHeight() const -> int",
+        "addr": "0x66f910"
+      },
+      {
+        "slot": 7,
+        "adorn_virtual": "setTexture(int, TextureProxyBaseRef)",
+        "addr": "0x6700e0"
+      },
+      {
+        "slot": 8,
+        "adorn_virtual": "getTextureSize(TextureProxyBaseRef) const -> G3D::Rect2D",
+        "addr": "0x670210"
+      },
+      {
+        "slot": 9,
+        "adorn_virtual": "line2d(p0, p1, color) const",
+        "addr": "0x66fa50"
+      },
+      {
+        "slot": 10,
+        "adorn_virtual": "outlineRect2d(rect, thick, color) const",
+        "addr": "0x66f9c0"
+      },
+      {
+        "slot": 11,
+        "adorn_virtual": "rect2d(rect, color) const",
+        "addr": "0x66f920"
+      },
+      {
+        "slot": 12,
+        "adorn_virtual": "get2DStringBounds(s, size, spacing) const -> G3D::Vector2",
+        "addr": "0x66fe30"
+      },
+      {
+        "slot": 13,
+        "adorn_virtual": "drawFont2D(s, pos, size, color, outline, xalign, yalign, spacing) const -> G3D::Vector2",
+        "addr": "0x66fda0"
+      },
+      {
+        "slot": 14,
+        "adorn_virtual": "setObjectToWorldMatrix(c)",
+        "addr": "0x66fac0"
+      },
+      {
+        "slot": 15,
+        "adorn_virtual": "setColor(color)",
+        "addr": "0x70bdf0"
+      },
+      {
+        "slot": 16,
+        "adorn_virtual": "box(box, solid, wire)",
+        "addr": "0x671fd0"
+      },
+      {
+        "slot": 17,
+        "adorn_virtual": "sphere(sphere, solid, wire)",
+        "addr": "0x672ba0"
+      },
+      {
+        "slot": 18,
+        "adorn_virtual": "explosion(sph, solid, wire)",
+        "addr": "0x675360"
+      },
+      {
+        "slot": 19,
+        "adorn_virtual": "sparkle()",
+        "addr": "0x674790"
+      },
+      {
+        "slot": 20,
+        "adorn_virtual": "cylinderAlongX(radius, length, solid, wire)",
+        "addr": "0x6726a0"
+      },
+      {
+        "slot": 21,
+        "adorn_virtual": "ray(ray, color, scale)",
+        "addr": "0x6735a0"
+      },
+      {
+        "slot": 22,
+        "adorn_virtual": "lineSegment(lineSegment, color, scale)",
+        "addr": "0x6ad2a0"
+      },
+      {
+        "slot": 23,
+        "adorn_virtual": "axes(x, y, z, scale)",
+        "addr": "0x4e83a0"
+      },
+      {
+        "slot": 24,
+        "adorn_virtual": "quad(v0, v1, v2, v3, color)",
+        "addr": "0x672f50"
+      }
+    ],
+    "status": "CONFIRMED by signature, not just inferred",
+    "proof": "slot 5 0066f900 is mov eax,[ecx+4]; mov ecx,[eax+0x10]; jmp rgmain.dll!?getActualWidth@Viewport@Ogre@@QBEHXZ - a getWidth(). Slot 6 is the getActualHeight twin. Slot 4 00670020 calls getActualLeft/Top/Width/Height and builds a Rect2D - a getViewport(). Slot 14 0066fac0 assigns a 40-byte CoordinateFrame into +0x114 (rep movsd of 9 dwords plus three float stores) - setObjectToWorldMatrix(). All four land exactly where the Adorn.h declaration order says they must."
+  },
+  "shape_note": "no original source and no class declaration exist anywhere in the tree for AdornRbxGfx - a grep for \"class AdornRbxGfx\" only finds other agents' recovered units, and the one at tools/rbxgs/Client/App/roc_adorn_box_2c163e61e5fcf556.cpp declares a DIFFERENT shape (box, quad, cylinderAlongX, ray first, then cacheMesh/findMesh/localMatrix/uniqueName/updateColor/worldMatrix/drawMesh) and reaches its scene manager through raw offsets (*(void**)((char*)this+4) then *(Ogre::SceneManager**)((char*)engine+4)), which this task must not copy. So the class declaration and its member offsets must be derived from the binary first.",
+  "ogre_prerequisite": "the Ogre 1.4.5 headers are at tools/libs/ogre-1.4.5/ogrenew/OgreMain/include and resolve on that /I path (proven by the earlier TextureProxy2008 experiment). The recovered units also use `#undef OGRE_NONCLIENT_BUILD` before including Ogre headers.",
+  "next_implementation": "mem-phases: (1) disassemble all 25 slots and confirm the mapping by signature - the one-line getters (5 getWidth, 6 getHeight, 4 getViewport) and the 4-arg draw calls (16/17/18/20/21/23/24) identify themselves immediately; (2) derive the member layout by collecting every [reg+offset] those methods touch; (3) write the class declaration in native-classes/AdornRbxGfx.cpp and the bodies for the confirmed methods only.",
+  "next_check": "python rebuild/2008-06/tests/native_check_runner.py run work/2008-06/shared-layouts/adorn-rbxgfx-batch.json --workers 1",
+  "unknowns": [
+    "the class's member layout (no declaration exists)",
+    "whether the derived from Adorn directly or through an intermediate base",
+    "which of the 23 implemented methods have original source anywhere (none found so far)",
+    "the two stub slots (15, 22/23) need only the class declaration, not bodies"
+  ],
+  "watching_session": "11901eb80cdc4460bee0459cdb2dd352 (scope: this receipt and native-classes/AdornRbxGfx.cpp)",
+  "state": "9/10 exact (all ported methods byte-exact except get2DStringBounds). setTexture is BLOCKED on the same 2008-texture-interface header gap that blocks the AdornG3D texture trio; its reference body and the two type questions are recorded above.",
+  "result": {
+    "run": "work/2008-06/native-check-runs/20261107-053846-f82fecad",
+    "exact": 9,
+    "checks": 10,
+    "data_checked": 9,
+    "data_mismatches": [],
+    "issues": [],
+    "mismatches": [],
+    "manifest": "work/2008-06/shared-layouts/adorn-rbxgfx-batch.json",
+    "recovered": [
+      {
+        "addr": "00670020",
+        "size": 148,
+        "symbol": "?getViewport@AdornRbxGfx@RBX@@UBE?AVRect2D@G3D@@XZ"
+      },
+      {
+        "addr": "0066f900",
+        "size": 12,
+        "symbol": "?getWidth@AdornRbxGfx@RBX@@UBEHXZ"
+      },
+      {
+        "addr": "0066f910",
+        "size": 12,
+        "symbol": "?getHeight@AdornRbxGfx@RBX@@UBEHXZ"
+      },
+      {
+        "addr": "0066fac0",
+        "size": 46,
+        "symbol": "?setObjectToWorldMatrix@AdornRbxGfx@RBX@@UAEXABVCoordinateFrame@G3D@@@Z"
+      },
+      {
+        "addr": "00670380",
+        "size": 118,
+        "symbol": "?createTextureProxy@AdornRbxGfx@RBX@@UAE?AV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+      },
+      {
+        "addr": "0066f920",
+        "size": 153,
+        "symbol": "?rect2d@AdornRbxGfx@RBX@@UBEXABVRect2D@G3D@@ABVColor4@4@@Z"
+      },
+      {
+        "addr": "0066f9c0",
+        "size": 138,
+        "symbol": "?outlineRect2d@AdornRbxGfx@RBX@@UBEXABVRect2D@G3D@@MABVColor4@4@@Z"
+      },
+      {
+        "addr": "00671f90",
+        "size": 61,
+        "symbol": "?finishRenderPass@AdornRbxGfx@RBX@@UAEXXZ"
+      },
+      {
+        "addr": "0066fa50",
+        "size": 101,
+        "symbol": "?line2d@AdornRbxGfx@RBX@@UBEXABVVector2@G3D@@0ABVColor4@4@@Z"
+      }
+    ]
+  },
+  "class_layout": {
+    "base": "RbxGraphics::Adorn (native-headers/RbxGraphics/Adorn.h), vptr at +0, 25 virtuals in that header's order",
+    "members": [
+      {
+        "offset": "+4",
+        "what": "render context: [context+0x10] is the Ogre::Viewport* the getActual* queries run on, [context+0x14] is the renderer rect2d calls draw() on",
+        "evidence": "mov eax,[ecx+4]; mov ecx,[eax+0x10] in 0066f900/0066f910/00670020; mov eax,[esi+4]; mov ecx,[eax+4]; mov edx,[ecx]; mov eax,[edx+0xf0]; call eax in 00671f90"
+      },
+      {
+        "offset": "+0x30",
+        "what": "a polymorphic device whose slot 93 (0x174) finishRenderPass invokes with it as this",
+        "evidence": "mov ecx,[esi+0x30]; mov eax,[ecx]; mov edx,[eax+0x174]; call edx in 00671f90"
+      },
+      {
+        "offset": "+0x98",
+        "what": "a resource whose release() (0x67d3d0) finishRenderPass calls",
+        "evidence": "mov ecx,[esi+0x98]; call 0x67d3d0 in 00671f90"
+      },
+      {
+        "offset": "+0x114",
+        "what": "a G3D::CoordinateFrame (40 bytes) assigned by setObjectToWorldMatrix",
+        "evidence": "lea eax,[ecx+0x114]; mov ecx,9; rep movsd + three float copies"
+      },
+      {
+        "offset": "0x97da58",
+        "what": "an int global zeroed by finishRenderPass (NOT a member)",
+        "evidence": "mov dword ptr [0x97da58], 0 in 00671f90"
+      },
+      {
+        "offset": "+0x44",
+        "what": "an int total (a particle budget counter) used by prepareRenderPass",
+        "evidence": "the mined reference unit src/2008-06/00670d50.cpp asserts offsetof(AdornRbxGfx, total) == 0x44"
+      },
+      {
+        "offset": "+0xb8",
+        "what": "a 32-byte map of particle nodes (first map)",
+        "evidence": "the same unit asserts offsetof(AdornRbxGfx, first) == 0xb8 and sizeof(ParticleNodeMap) == 32"
+      },
+      {
+        "offset": "+0xf4",
+        "what": "a second 32-byte map of particle nodes",
+        "evidence": "the same unit asserts offsetof(AdornRbxGfx, second) == 0xf4"
+      }
+    ],
+    "pad_note": "the +8..+0x113 gap is written as char pad[0x10c] purely so the CoordinateFrame lands on +0x114 (4 bytes of context at +4, then 0x114-8 = 0x10c bytes). No method written so far touches that range; a future port that needs those bytes must derive their meaning from the binary, not from this padding.",
+    "alignment_trap": "my first attempt used pad[0x110] and scored 97 with the only difference inside the lea displacement - 0x118 instead of 0x114. Cheap reminder that a padding arithmetic slip shows up as a 1-byte mismatch, not a size mismatch.",
+    "sizeof_note": "RBX::TextureProxyBase measures 0x28 in this unit (a byte-offset-aligned diff showed my first stand-in pushing operator new(0x84) instead of 0x60, which pinned sizeof(base) == 0x28 exactly). The vendor RbxGraphics/TextureProxyBase.h declares no data members of its own, so the 0x28 comes from G3D::ReferenceCountedObject and whatever the shared RbxGraphics/Adorn.h pulls in. AdornRbxGfxTexture therefore needs char pad[0x38], not the 0x5c a naive vptr-only reading would suggest - the same lesson as the AdornRbxGfx +0x114 padding slip: derive sizes from a measured compile, never from an assumed base."
+  },
+  "mined_corpus_discovery": {
+    "what": "the mined tree src/2008-06/ holds a server-verified 100% reference solution for EVERY AdornRbxGfx slot",
+    "coverage": "22 real units (0066f900, 0066f910, 0066f920, 0066f9c0, 0066fa50, 0066fac0, 0066fda0, 0066fe30, 00670020, 006700e0, 00670210, 00670380, 00670d50, 00671f90, 00671fd0, 006726a0, 00672ba0, 006732... no: 00672f50, 006735a0, 00674790, 00675360) plus the three shared \"not implemented\" stubs 0070bdf0 / 006ad2a0 / 004e83a0 generated by auto",
+    "authors": "colin, king_originala, EspClaude, coldek, Espeon, auto",
+    "implication": "those units are mining-style stand-ins (placeholder structs and extern function pointers) and the docs are explicit that stand-ins do not establish native layouts, so they are used here as cross-checks and as a source of the derived member offsets - the native unit still compiles against the real RbxGraphics::Adorn base and the real G3D::Rect2D / G3D::CoordinateFrame types.",
+    "next_ports": [
+      "get2DStringBounds 0066fe30 (56 B, ref src/2008-06/0066fe30.cpp) - a global font pointer at 0x962dac",
+      "finishRenderPass 00671f90 (61 B) - touches members +0x30 and +0x98 and writes a global at 0x97da58",
+      "createTextureProxy 00670380 (118 B) - allocates 0x60 and calls a ctor at 0x66ffb0",
+      "prepareRenderPass 00670d50, rect2d 0066f920, outlineRect2d 0066f9c0, line2d 0066fa50, setTexture 006700e0 (296 B)",
+      "the big draw calls: box 00671fd0 (1734 B), sphere 00672ba0, cylinderAlongX 006726a0 (1274 B), ray 006735a0, quad 00672f50, explosion 00675360 (4379 B)"
+    ],
+    "callee_note": "the callee 0x684640 is UNNAMED in the evidence map, so get2DStringBounds cannot be bound to a named G3D entry point from evidence alone; G3D::GFont::get2DStringBounds(s, double size, Spacing) in tools/rbxgs/Client/Rendering/g3d/include/GLG3D/GFont.h line 245 has exactly the right shape and is what the unit uses. By contrast 0x45b950 IS named (?xyxy@Rect2D@G3D@@SA?AV12@MMMM@Z), which is what getViewport's inline G3D::Rect2D::xywh forwards to - so that port needed no stand-in at all. The other AdornRbxGfx callees (0x66ffb0, 0x67d3d0, 0x671e20) are all unnamed and will need the same treatment get2DStringBounds did."
+  },
+  "not_recovered": "the 21 remaining vtable slots (17 implemented, 3 stubs, plus the constructor and the plain dtor)",
+  "near_misses": {
+    "get2DStringBounds 0066fe30": {
+      "score": 60,
+      "target_size": 56,
+      "object_size": 43,
+      "first_byte_difference": 12,
+      "body_written": "G3D::Vector2 AdornRbxGfx::get2DStringBounds(const std::string& s, double size, Adorn::Spacing spacing) const { return currentFont->get2DStringBounds(s, size, static_cast<G3D::GFont::Spacing>(spacing)); } - the call chain is right (the global font at 0x962dac, the double spilled as the 4th argument, the sret), so only the RETURN differs.",
+      "residual": "the original does NOT forward the outer sret to the callee. It passes a separate stack buffer as the callee's sret and then copies the two floats back one at a time through the x87 (fld [local]; fstp [outer sret]; fld [local+4]; fstp [outer sret+4]). MSVC does the same forwarding for mine, which is where the 13 bytes go.",
+      "mined_reference": "src/2008-06/0066fe30.cpp (100% by king_originala) expresses it as an explicit sret parameter plus a temporary that is filled and then copied - Size* measure(Size* result, const Text* text, double height, int mode) { Size* temporary = reinterpret_cast<Size*>(&height); currentFont->measure(temporary, text, height, mode); result->x = temporary->x; result->y = temporary->y; return result; }",
+      "next": "port the reference body verbatim from src/2008-06/0066fe30.cpp: it spells the callee with an explicit sret parameter (Size* result) and fills a temporary that aliases the double's stack slot, then copies two floats. Doing that in this unit means declaring the unnamed callee 0x684640 with the explicit-sret shape, which is a stand-in binding rather than a named G3D entry point - so it is an owner call whether to adopt the stand-in or keep the honest 43 B form.",
+      "variants_tried": [
+        {
+          "form": "return currentFont->get2DStringBounds(s, size, spacing);  (direct - MSVC forwards the outer sret)",
+          "bytes": 43,
+          "score": 60
+        },
+        {
+          "form": "named local assigned from the call, then return it (defeats forwarding but adds a zero-init + copy)",
+          "bytes": 64,
+          "score": 53
+        },
+        {
+          "target": 56,
+          "note": "the target sits BETWEEN the two, so the original has exactly one component-wise x87 copy and nothing else"
+        }
+      ]
+    }
+  },
+  "stand_in_note": "finishRenderPass needed four placeholder types (DeviceA/DeviceB/TableA/TableB/Resource) plus an extern int global and an undefined same-class helper finishPass(). Their ONLY content is what the binary proves (the offsets and the vtable slot indices 93 and 60); the names are mine and are marked as such in the unit. A __thiscall free-function stand-in is not legal C++ - C3865 - so the unnamed 0x671e20 helper is declared as an undefined member of AdornRbxGfx, which gives the same direct-call-with-ecx shape and the same tail jmp.",
+  "next_ports": [
+    "createTextureProxy 00670380 (118 B): allocates 0x60, calls the unnamed ctor 0x66ffb0 and then ReferenceCountedPointer<G3D::Shader>::setPointer (0x598fa0, which IS named) - the return type needs the 2008 TextureProxyBase or a stand-in",
+    "prepareRenderPass 00670d50, rect2d 0066f920, outlineRect2d 0066f9c0, line2d 0066fa50, setTexture 006700e0 (296 B)",
+    "get2DStringBounds - needs the explicit-sret form from src/2008-06/0066fe30.cpp, which means declaring the unnamed callee 0x684640; an owner call",
+    "the big draw calls: box 00671fd0 (1734 B), sphere 00672ba0, cylinderAlongX 006726a0 (1274 B), ray 006735a0, quad 00672f50, explosion 00675360 (4379 B)"
+  ],
+  "create_texture_proxy_note": "the original allocates 0x60 bytes and runs a ONE-argument constructor at 0x66ffb0 taking (this, const std::string&), then fills a TextureProxyBaseRef through 0x598fa0 - the SAME ReferenceCountedPointer::setPointer that AdornG3D::createTextureProxy calls, which is what let this port reuse the shape already proven exact in AdornG3D.cpp (127 B). Two compile errors solved on the way: TextureProxyBase is RBX-scoped so the stand-in base must be RBX::TextureProxyBase, and __thiscall cannot decorate a free function (C3865) so unnamed this-taking helpers are declared as members.",
+  "prepare_render_pass_note": "00670d50 is a large particle-budget method: it sums getParticleQuota() over two 32-byte node maps at +0xb8 and +0xf4 against a limit from +0x44, then scales quotas and emitter velocities by pow(ratio, 1/3) and retunes durations. Porting it needs the Ogre 1.4.5 ParticleSystem/ParticleEmitter API and the maps' real types; it is the biggest method after box/explosion. Its reference unit is src/2008-06/00670d50.cpp.",
+  "rect2d_note": "rect2d was exact on the first attempt once the members were named. It calls getHeight() TWICE (vtable slot 6, eax+0x18) with a `dec eax` after each giving (height()-1), flips the y coordinates by subtracting them, and passes the 28-byte std::string member at +8 BY VALUE plus a 9-float tail (x0, y0', x1, y1', 0, 0, 1, 1) to a renderer reached through [this+4] at +0x14. G3D::Rect2D exposes x0/y0/x1/y1 as ACCESSOR METHODS, not fields - writing rect.x0 is a C3867 error.",
+  "hoisting_lesson": "naming the context members (context->viewport) initially BROKE getViewport: 160 B instead of 148, because MSVC re-loaded the pointer for each of the four getActual* calls instead of hoisting it once. The fix is a hoisted local - `const void* viewport = context->viewport;` - which is both byte-exact and still readable. A raw-offset read written inline happened to force the hoist, so the raw form looked \"more exact\" for a misleading reason.",
+  "outline_rect2d_note": "outlineRect2d is the six-argument renderer draw overload: draw(2, x0, (height()-1)-y0, x1, (height()-1)-y1, &color) - the leading literal 2 is a mode the reference unit carries as `2`, and the thick parameter is genuinely unused. First attempt scored 79 with both sizes at 138; the single difference was SCHEDULING: the original loads the rect's four components BEFORE the renderer pointer and in DESCENDING offset order (y1, x1, y0, x0), so the source has to read them into named locals in that order first. Reordering the statements - not the expressions - was the whole fix.",
+  "reordering_lesson": "two of this class's methods were decided purely by STATEMENT ORDER rather than by expressions: outlineRect2d needs the rect components read before the renderer, and getViewport needs the viewport pointer hoisted into a local (inlining context->viewport costs 12 bytes because MSVC reloads it per call). When sizes match but scores do not, look at the instruction schedule before suspecting the source form.",
+  "g3d_api_asymmetry": "G3D::Vector2 exposes float x, y as PUBLIC DATA FIELDS (G3D/Vector2.h line 42) while G3D::Rect2D exposes x0()/y0()/x1()/y1() as ACCESSOR METHODS - so p0.x and rect.x0() respectively. Getting this backwards is a C2064 \"term does not evaluate to a function taking 0 arguments\" / C3867 pair of errors.",
+  "line2d_note": "line2d is the same five-argument renderer draw as outlineRect2d minus the leading mode literal: draw(p0.x, (height()-1)-p0.y, p1.x, (height()-1)-p1.y, &color), with the color passed BY POINTER. The reference unit src/2008-06/0066fa50.cpp wraps its body in #pragma float_control(precise, off, push) / pop - a per-function override; this unit already carries the global #pragma float_control(precise, off) that the vendor AdornG3D.cpp uses, so no extra pragma was needed.",
+  "blocked": {
+    "setTexture 006700e0": {
+      "size": 296,
+      "reference_body": "src/2008-06/006700e0.cpp (100% by colin): the 19-slot PacketLogger-shaped reference unit expresses it as - if (!value.pointer) { assignText(&name, \"\"); return; } assignString(&name, value.pointer->name); value.pointer->invoke(context); - where the second parameter is a ref-counted pointer passed BY VALUE and destroyed at the end, `name` is the 28-byte std::string member at +8 (the same one rect2d passes by value), and `context` is the member at +4.",
+      "why_blocked": "two unresolved type questions. (1) value.pointer->name is a std::string member on the pointee - the vendor RbxGraphics/TextureProxyBase.h declares NO members, so the original must be using the 2008 layout in native-headers/RbxGraphics/TextureProxyBase2008.h, which carries `std::string filename`. (2) value.pointer->invoke(context) is a virtual call passing the render context, and no slot in either TextureProxyBase takes an argument like that. Both point at the same root cause as the AdornG3D texture trio: every Adorn header available here (shared AND vendor) is bound to a later, smaller texture interface than the one the June 2008 client was compiled against.",
+      "owner_action": "supply an Adorn/TextureProxyBase interface bound to the 2008 layout (the same fix that unblocks AdornG3D's setTexture/getTextureSize/createTextureProxy). The body is then a three-line port.",
+      "next_cheapest": "box 00671fd0 (1734 B) and sphere 00672ba0 are the next slots with reference bodies that do not depend on the texture interface; ray 006735a0 / quad 00672f50 / explosion 00675336 (4379 B) are the draw primitives. prepareRenderPass 00670d50 needs the Ogre particle API and the two 32-byte node maps at +0xb8/+0xf4."
+    }
+  },
+  "remaining_work": {
+    "sphere 00672ba0 (931 B)": "its mined unit src/2008-06/00672ba0.cpp is ONLY A HEADER - it ends with \"// roc-lib: rbxgs-dll roc_codex_alias_55cb3ee98c5c3f01.cpp\", and that codex file is not present anywhere in this workspace (a recursive search for the name returns nothing), so there is no packaged reference body to port. The binary decodes as a C++-EH method: push -1 / push 0x7dca60 / fs:[0] frame, sub esp,0x144, a call to 0x685e30 (unit-attributed Ogre::RbxSubEntity) constructing a local at [esp+0xe8], then the sphere args scaled by the constant at 0x819b48 and stacked. 931 bytes with EH is a from-scratch decode, not a port.",
+    "box 00671fd0 (1734 B)": "its mined unit DOES carry the body inline (the \"// Make this compile to the exact bytes below\" form), so it is the next genuine port - but at 1734 bytes it is the largest remaining one and needs its own batch.",
+    "ray 006735a0, quad 00672f50 (1614 B), explosion 00675336 (4379 B)": "reference bodies exist; size-ordered after box.",
+    "prepareRenderPass 00670d50": "needs the Ogre particle API plus the two 32-byte node maps at +0xb8/+0xf4 and the int at +0x44."
+  },
+  "reference_availability": {
+    "finding": "the mined corpus is not uniformly packaged. A unit is portable only if it carries its body INLINE (the \"// Make this compile to the exact bytes below\" form, or the short struct-form ones). Units ending in \"// roc-lib: <lib> <file>.cpp\" point at a companion file that this workspace does not contain - a recursive search for those names returns nothing. Always read the last line of a unit before assuming a reference body exists.",
+    "portable_here": [
+      "prepareRenderPass 00670d50 (542-line inline body) - needs the Ogre 1.4.5 particle API and the node maps at +0xb8/+0xf4",
+      "explosion 00675360 (4379 B, inline body) - the largest remaining, and the only draw primitive that is portable"
+    ],
+    "not_packaged": [
+      "box 00671fd0 (1734 B)",
+      "cylinderAlongX 006726a0 (1274 B)",
+      "sphere 00672ba0 (931 B)",
+      "quad 00672f50 (1614 B)",
+      "ray 006735a0",
+      "sparkle 00674790",
+      "drawFont2D 0066fda0",
+      "getTextureSize 00670210"
+    ],
+    "all_reference_files_missing": [
+      "roc_espclaude_bd485405c430e8eb.cpp (drawFont2D)",
+      "roc_espeon_textureboundsnative288799b152876954.cpp (getTextureSize)",
+      "roc_espclaude_8ec9b5cde1252dbf.cpp (box)",
+      "roc_espclaude_369ebbc72e42bae0.cpp (cylinderAlongX)",
+      "roc_codex_alias_55cb3ee98c5c3f01.cpp (sphere)",
+      "roc_claudeM_854f25b05ca3c1ba.cpp (quad)",
+      "roc_adorn_ray_native_orientation4aeecbaf163133f1.cpp (ray)",
+      "roc_sparkle_native_context_accessord3483aed579e6edb.cpp (sparkle)"
+    ],
+    "consequence": "the eight already-ported methods are everything that can be cheaply ported from this workspace. The draw primitives would each be a from-scratch decode against the Ogre 1.4.5 headers - feasible but a batch each, and box/sphere/quad/cylinderAlongX are 931-1734 bytes with C++ EH frames. The single highest-leverage fix remains the header decision."
+  }
+}

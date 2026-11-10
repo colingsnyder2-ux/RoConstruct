@@ -1,0 +1,138 @@
+{
+  "revision": "c9a075722a0c1bc95a2b58cef0f169760ffc4897",
+  "sources": {
+    "rebuild\\2008-06\\p6\\build_native_about.py": "2353885b20b7c405c1159c67ae65c240336190c49248d983c0f50ac92c06fbc9",
+    "rebuild\\2008-06\\native-classes\\CFileVersionInfo.cpp": "7cb064040ab561792d01f8fb2756df6cf605d78137bcd278070a7dff4e31fd7a",
+    "rebuild\\2008-06\\native-classes\\CAboutRobloxDialogData.cpp": "f395990e06e337475b538221f04c6bef3a9cb8a9276fccbc9208b1d539fe2919",
+    "tools\\libs\\g3d-6.09\\source\\roc_large_glcaps_11e595a340f00f1c.cpp": "d58a002bf16c97e75f54074afa881c17bfa65f8873b03ee74b28032612833578",
+    "rebuild\\2008-06\\native-headers\\CFileVersionInfo.h": "cc04a88adc2ce496278fc3854431da96c0f34966fbb2583ab72f95de2bf97bdd",
+    "rebuild\\2008-06\\native-headers\\CAboutRobloxDialog.h": "127f4cbb7e8f83152b2e917da910705bc5b0bf4f84a9622d2f3566c26165e34f",
+    "roc\\libs.py": "6d7e03cd8e1df96b50c45ac9670174c0870e7045ba84ec0fd1b1c7db8492c766",
+    "rebuild\\2008-06\\out\\native-layouts\\NativeAboutDialogData.cpp": "e227b8493c8d1ba9e62d2ec65d010163711c971bed6fadd21c4ae74eeff4ae4e",
+    "rebuild\\2008-06\\out\\native-layouts\\NativeGLCaps.cpp": "8a43a8b4a0ac9eb35174cd4723880ceef9cf59fc5588df4420f134106d3a625e"
+  },
+  "compiler_build": 21022,
+  "version_flags": [
+    "/nologo",
+    "/O2",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/c",
+    "/FoNativeFileVersionInfo.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\CFileVersionInfo.cpp"
+  ],
+  "data_flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/FoNativeAboutDialogData.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeAboutDialogData.cpp"
+  ],
+  "gl_flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Gy",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/DNDEBUG",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\g3d-6.09\\source\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\g3d-6.09\\source\\boost\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\SDL-1.2.11\\include",
+    "/FoNativeGLCaps.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeGLCaps.cpp"
+  ],
+  "methods": [
+    {
+      "address": "0046a200",
+      "symbol": "??0CFileVersionInfo@@QAE@XZ",
+      "size": 31,
+      "target_size": 31,
+      "object": "NativeFileVersionInfo.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "0046a220",
+      "symbol": "?Create@CFileVersionInfo@@QAEHABV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+      "size": 323,
+      "target_size": 323,
+      "object": "NativeFileVersionInfo.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "0046a370",
+      "symbol": "?GetVersionInfo@CFileVersionInfo@@QAE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@ABV23@@Z",
+      "size": 203,
+      "target_size": 203,
+      "object": "NativeFileVersionInfo.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "0046a440",
+      "symbol": "?GetFileVersion@CFileVersionInfo@@QAE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ",
+      "size": 99,
+      "target_size": 99,
+      "object": "NativeFileVersionInfo.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "0046a4b0",
+      "symbol": "?Reset@CFileVersionInfo@@QAEXXZ",
+      "size": 51,
+      "target_size": 51,
+      "object": "NativeFileVersionInfo.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00401390",
+      "symbol": "?DoDataExchange@CAboutRobloxDialog@@UAEXPAVCDataExchange@@@Z",
+      "size": 732,
+      "target_size": 732,
+      "object": "NativeAboutDialogData.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00470770",
+      "symbol": "?glVersion@GLCaps@G3D@@SAABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+      "size": 268,
+      "target_size": 268,
+      "object": "NativeGLCaps.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00471070",
+      "symbol": "?driverVersion@GLCaps@G3D@@SAABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+      "size": 304,
+      "target_size": 304,
+      "object": "NativeGLCaps.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00470880",
+      "symbol": "?vendor@GLCaps@G3D@@SAABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+      "size": 277,
+      "target_size": 277,
+      "object": "NativeGLCaps.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "004709a0",
+      "symbol": "?renderer@GLCaps@G3D@@SAABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+      "size": 268,
+      "target_size": 268,
+      "object": "NativeGLCaps.obj",
+      "relocation_masked_match": true
+    }
+  ],
+  "scope": "Source/object evidence. Full linkage/runtime evidence recorded separately."
+}

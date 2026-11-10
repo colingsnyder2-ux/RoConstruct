@@ -1,0 +1,10 @@
+{
+  "jobs": [
+    {
+      "source": "../../work/native-candidates/crdoc-onopen-20261106/CrdocOnOpen.cpp",
+      "checks": [
+        {"addr": "004513c0", "symbol": "?OnOpenDocument@CRobloxDoc@@"}
+      ]
+    }
+  ]
+}

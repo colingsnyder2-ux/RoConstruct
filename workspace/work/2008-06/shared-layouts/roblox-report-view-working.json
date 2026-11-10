@@ -1,0 +1,661 @@
+{
+  "class": "CRobloxReportView",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "profile": "document-swap flags + XTP 11.2.2 headers (/UNOMINMAX /D_XTP_STATICLINK)",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_roblox_report_view.py": "987716c7b0c31be04ab298cde119f27172d3d622f46d695cd6efa7e73f712e47",
+    "rebuild/2008-06/tests/native_bind.py": "628d095adf7a81a6c7bb82d302eae3e4e2b4f8d0c1b96736d12929ac7a17dff9",
+    "rebuild/2008-06/native-classes/CRobloxReportView.cpp": "5018849209f8969e62fba35e4ceb3ebadf5e6791f61e950590414508941471cd",
+    "rebuild/2008-06/native-headers/CRobloxReportView.h": "9143dfb91de2e1d2e4f5ef830d83a7931ab96ae0a95756a0b923b0825d44b8df",
+    "rebuild/2008-06/tests/NativeRobloxReportViewLayout.cpp": "24f4f563766e405727caaa03bfdec5517605e9d3532b2bbd0a89fb436e1a7aff"
+  },
+  "object_sha256": "857e23f9b828bf171236bc47da71498c4052f1545d38d31091b33c054ed955a2",
+  "methods": [
+    {
+      "address": "00457a40",
+      "symbol": "??0CRobloxReportView@@QAE@XZ",
+      "size": 143,
+      "exact": true,
+      "verified_targets": {
+        "??0CXTPReportView@@IAE@XZ": "0x6c5070",
+        "??0?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@QAE@XZ": "0x457050",
+        "??0?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@QAE@XZ": "0x4570d0",
+        "??_7CRobloxReportView@@6BCXTPReportView@@@": "0x81888c",
+        "??_7CRobloxReportView@@6B?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@@": "0x818878",
+        "??_7CRobloxReportView@@6B?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@@": "0x818864"
+      },
+      "local_eh": [
+        "__ehhandler$??0CRobloxReportView@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "00458b70",
+      "symbol": "??1CRobloxReportView@@UAE@XZ",
+      "size": 272,
+      "exact": true,
+      "verified_targets": {
+        "??_7CRobloxReportView@@6BCXTPReportView@@@": "0x81888c",
+        "??_7CRobloxReportView@@6B?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@@": "0x818878",
+        "??_7CRobloxReportView@@6B?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@@": "0x818864",
+        "?setDataModel@CRobloxReportView@@QAEXV?$shared_ptr@VDataModel@RBX@@@boost@@@Z": "0x458700",
+        "??1?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@UAE@XZ": "0x4578f0",
+        "??1?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@UAE@XZ": "0x4577e0",
+        "??1CXTPReportView@@MAE@XZ": "0x6c5150"
+      },
+      "local_eh": [
+        "__ehhandler$??1CRobloxReportView@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "00458d60",
+      "symbol": "??_GCRobloxReportView@@UAEPAXI@Z",
+      "size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??1CRobloxReportView@@UAE@XZ": "0x458b70",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00457ad0",
+      "symbol": "??_ECRobloxReportView@@WDHI@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_ECRobloxReportView@@UAEPAXI@Z": "0x458d60"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00457ae0",
+      "symbol": "??_ECRobloxReportView@@WDJM@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_ECRobloxReportView@@UAEPAXI@Z": "0x458d60"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00455d50",
+      "symbol": "?GetRuntimeClass@CRobloxReportView@@UBEPAUCRuntimeClass@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?classCRobloxReportView@CRobloxReportView@@2UCRuntimeClass@@B": "0x818348"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00457010",
+      "symbol": "?GetMessageMap@CRobloxReportView@@MBEPBUAFX_MSGMAP@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?messageMap@?1??GetThisMessageMap@CRobloxReportView@@KGPBUAFX_MSGMAP@@XZ@4U3@B": "0x8187b0"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00455fd0",
+      "symbol": "?OnCreate@CRobloxReportView@@QAEHPAUtagCREATESTRUCTA@@@Z",
+      "size": 330,
+      "exact": true,
+      "verified_targets": {
+        "?OnCreate@CXTPReportView@@IAEHPAUtagCREATESTRUCTA@@@Z": "0x6c52a0",
+        "?AdjustLayout@CXTPReportControl@@QAEXXZ": "0x6cc910",
+        "?SetAutoColumnSizing@CXTPReportHeader@@QAEXH@Z": "0x6d6890",
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??_C@_04FABLJDN@Name?$AA@": "0x80f7cc",
+        "??0CXTPReportColumn@@QAE@HPBDHHHHH@Z": "0x6d4b70",
+        "?AddColumn@CXTPReportControl@@QAEPAVCXTPReportColumn@@PAV2@@Z": "0x6c9600",
+        "?SetTreeColumn@CXTPReportColumn@@QAEXH@Z": "0x6d4980",
+        "??_C@_05LPIJGKJ@Value?$AA@": "0x818478"
+      },
+      "local_eh": [
+        "__ehhandler$?OnCreate@CRobloxReportView@@QAEHPAUtagCREATESTRUCTA@@@Z"
+      ]
+    },
+    {
+      "address": "00456e60",
+      "symbol": "?OnTimer@CRobloxReportView@@QAEXI@Z",
+      "size": 19,
+      "exact": true,
+      "verified_targets": {
+        "?updateStats@CRobloxReportView@@QAEXXZ": "0x456c30",
+        "?Default@CWnd@@IAEJXZ": "mfc90.dll!?Default@CWnd@@IAEJXZ"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004589c0",
+      "symbol": "?OnInitialUpdate@CRobloxReportView@@UAEXXZ",
+      "size": 64,
+      "exact": true,
+      "verified_targets": {
+        "?OnInitialUpdate@CView@@UAEXXZ": "mfc90.dll!?OnInitialUpdate@CView@@UAEXXZ",
+        "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x403040",
+        "?setDataModel@CRobloxReportView@@QAEXV?$shared_ptr@VDataModel@RBX@@@boost@@@Z": "0x458700"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00457050",
+      "symbol": "??0?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@QAE@XZ",
+      "size": 118,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@6B@": "0x818824 (RTTI .?AV?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@, offset 0x0)",
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "__imp__GetCurrentThreadId@0": "kernel32.dll!GetCurrentThreadId",
+        "?acquireMarshalWindow@RBX@@YAPAVCMarshalWindow@1@XZ": "0x432ce0"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "004570d0",
+      "symbol": "??0?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@QAE@XZ",
+      "size": 118,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@6B@": "0x818838 (RTTI .?AV?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@, offset 0x0)",
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "__imp__GetCurrentThreadId@0": "kernel32.dll!GetCurrentThreadId",
+        "?acquireMarshalWindow@RBX@@YAPAVCMarshalWindow@1@XZ": "0x432ce0"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "004577e0",
+      "symbol": "??1?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@UAE@XZ",
+      "size": 113,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@6B@": "0x818824 (RTTI .?AV?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@, offset 0x0)",
+        "?detach@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@QAEXXZ": "0x457710",
+        "?releaseMarshalWindow@RBX@@YAXPAVCMarshalWindow@1@@Z": "0x432bd0",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "004578f0",
+      "symbol": "??1?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@UAE@XZ",
+      "size": 113,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@6B@": "0x818838 (RTTI .?AV?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@, offset 0x0)",
+        "?detach@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@QAEXXZ": "0x457710",
+        "?releaseMarshalWindow@RBX@@YAXPAVCMarshalWindow@1@@Z": "0x432bd0",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "00457150",
+      "symbol": "?onEvent@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@UAEXPBVInstance@2@UChildAdded@2@@Z",
+      "size": 118,
+      "exact": true,
+      "verified_targets": {
+        "__imp__EnterCriticalSection@4": "kernel32.dll!EnterCriticalSection",
+        "??0ChildAdded@RBX@@QAE@ABU01@@Z": "0x4116f0",
+        "__imp__LeaveCriticalSection@4": "kernel32.dll!LeaveCriticalSection"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00457860",
+      "symbol": "?marshal@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@UAEXPBVInstance@2@UChildAdded@2@@Z",
+      "size": 141,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??0ChildAdded@RBX@@QAE@ABU01@@Z": "0x4116f0",
+        "??0EventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@QAE@PAV12@PBVInstance@2@UChildAdded@2@@Z": "0x457270",
+        "?push_back@?$vector@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@@std@@@std@@QAEXABQAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@@Z": "0x4213a0",
+        "?post@CMarshalWindow@RBX@@QAEXPAVEventDataBase@2@@Z": "0x432950"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00457970",
+      "symbol": "?marshal@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@UAEXPBVInstance@2@UChildRemoved@2@@Z",
+      "size": 141,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??0ChildRemoved@RBX@@QAE@ABU01@@Z": "0x4116f0",
+        "??0EventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@QAE@PAV12@PBVInstance@2@UChildRemoved@2@@Z": "0x4573f0",
+        "?push_back@?$vector@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@@std@@@std@@QAEXABQAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@@Z": "0x4213a0",
+        "?post@CMarshalWindow@RBX@@QAEXPAVEventDataBase@2@@Z": "0x432950"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00457710",
+      "symbol": "?detach@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@QAEXXZ",
+      "size": 208,
+      "exact": true,
+      "verified_targets": {
+        "__imp__EnterCriticalSection@4": "kernel32.dll!EnterCriticalSection",
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "?erase@?$vector@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@@std@@@2@V?$_Vector_const_iterator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@@std@@@2@0@Z": "0x445dc0",
+        "__imp__LeaveCriticalSection@4": "kernel32.dll!LeaveCriticalSection"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004574b0",
+      "symbol": "?remove@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@QAEXPAVEventData@12@@Z",
+      "size": 211,
+      "exact": true,
+      "verified_targets": {
+        "__imp__EnterCriticalSection@4": "kernel32.dll!EnterCriticalSection",
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "__imp__memmove_s": "msvcr90.dll!memmove_s",
+        "__imp__LeaveCriticalSection@4": "kernel32.dll!LeaveCriticalSection"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00457270",
+      "symbol": "??0EventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@QAE@PAV12@PBVInstance@2@UChildAdded@2@@Z",
+      "size": 179,
+      "exact": true,
+      "verified_targets": {
+        "??_7EventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@6B@": "0x81884c (RTTI .?AVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@, offset 0x0)",
+        "??0ChildAdded@RBX@@QAE@ABU01@@Z": "0x4116f0",
+        "?setSource@EventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@QAEXPBVInstance@3@@Z": "0x4571d0"
+      },
+      "local_eh": [
+        "__ehhandler$??0EventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@QAE@PAV12@PBVInstance@2@UChildAdded@2@@Z"
+      ]
+    },
+    {
+      "address": "004573f0",
+      "symbol": "??0EventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@QAE@PAV12@PBVInstance@2@UChildRemoved@2@@Z",
+      "size": 179,
+      "exact": true,
+      "verified_targets": {
+        "??_7EventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@6B@": "0x818858 (RTTI .?AVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@, offset 0x0)",
+        "??0ChildRemoved@RBX@@QAE@ABU01@@Z": "0x4116f0",
+        "?setSource@EventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@QAEXPBVInstance@3@@Z": "0x4571d0"
+      },
+      "local_eh": [
+        "__ehhandler$??0EventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@QAE@PAV12@PBVInstance@2@UChildRemoved@2@@Z"
+      ]
+    },
+    {
+      "address": "00457330",
+      "symbol": "??1EventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@UAE@XZ",
+      "size": 183,
+      "exact": true,
+      "verified_targets": {
+        "??_7EventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@6B@": "0x81884c (RTTI .?AVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@, offset 0x0)",
+        "?remove@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@QAEXPAVEventData@12@@Z": "0x4574b0",
+        "??_7EventDataBase@RBX@@6B@": "0x80f860 (RTTI .?AVEventDataBase@RBX@@, offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??1EventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "00457590",
+      "symbol": "??1EventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@UAE@XZ",
+      "size": 183,
+      "exact": true,
+      "verified_targets": {
+        "??_7EventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@6B@": "0x818858 (RTTI .?AVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@, offset 0x0)",
+        "?remove@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@QAEXPAVEventData@12@@Z": "0x4574b0",
+        "??_7EventDataBase@RBX@@6B@": "0x80f860 (RTTI .?AVEventDataBase@RBX@@, offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??1EventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "004576d0",
+      "symbol": "??_GEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@UAEPAXI@Z",
+      "size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??1EventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@UAE@XZ": "0x457330",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004576f0",
+      "symbol": "??_GEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@UAEPAXI@Z",
+      "size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??1EventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@UAE@XZ": "0x457590",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004571d0",
+      "symbol": "?setSource@EventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@QAEXPBVInstance@3@@Z",
+      "size": 146,
+      "exact": true,
+      "verified_targets": {
+        "??$shared_from@$$CBVInstance@RBX@@@RBX@@YA?AV?$shared_ptr@$$CBVInstance@RBX@@@boost@@PBVInstance@0@@Z": "0x618a40",
+        "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0"
+      },
+      "local_eh": [
+        "__ehhandler$?setSource@EventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@QAEXPBVInstance@3@@Z"
+      ]
+    },
+    {
+      "address": "00457150",
+      "symbol": "?onEvent@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@UAEXPBVInstance@2@UChildRemoved@2@@Z",
+      "size": 118,
+      "exact": true,
+      "verified_targets": {
+        "__imp__EnterCriticalSection@4": "kernel32.dll!EnterCriticalSection",
+        "??0ChildRemoved@RBX@@QAE@ABU01@@Z": "0x4116f0",
+        "__imp__LeaveCriticalSection@4": "kernel32.dll!LeaveCriticalSection"
+      },
+      "local_eh": [],
+      "role": "identical-COMDAT fold"
+    },
+    {
+      "address": "00457710",
+      "symbol": "?detach@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@QAEXXZ",
+      "size": 208,
+      "exact": true,
+      "verified_targets": {
+        "__imp__EnterCriticalSection@4": "kernel32.dll!EnterCriticalSection",
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "?erase@?$vector@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@@std@@@2@V?$_Vector_const_iterator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@@std@@@2@0@Z": "0x445dc0",
+        "__imp__LeaveCriticalSection@4": "kernel32.dll!LeaveCriticalSection"
+      },
+      "local_eh": [],
+      "role": "identical-COMDAT fold"
+    },
+    {
+      "address": "004574b0",
+      "symbol": "?remove@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@QAEXPAVEventData@12@@Z",
+      "size": 211,
+      "exact": true,
+      "verified_targets": {
+        "__imp__EnterCriticalSection@4": "kernel32.dll!EnterCriticalSection",
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "__imp__memmove_s": "msvcr90.dll!memmove_s",
+        "__imp__LeaveCriticalSection@4": "kernel32.dll!LeaveCriticalSection"
+      },
+      "local_eh": [],
+      "role": "identical-COMDAT fold"
+    },
+    {
+      "address": "004571d0",
+      "symbol": "?setSource@EventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@QAEXPBVInstance@3@@Z",
+      "size": 146,
+      "exact": true,
+      "verified_targets": {
+        "??$shared_from@$$CBVInstance@RBX@@@RBX@@YA?AV?$shared_ptr@$$CBVInstance@RBX@@@boost@@PBVInstance@0@@Z": "0x618a40",
+        "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0"
+      },
+      "local_eh": [
+        "__ehhandler$?setSource@EventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@QAEXPBVInstance@3@@Z"
+      ],
+      "role": "identical-COMDAT fold"
+    },
+    {
+      "address": "00420770",
+      "symbol": "?_GetBaseClass@CRobloxReportView@@KGPAUCRuntimeClass@@XZ",
+      "size": 5,
+      "exact": true,
+      "verified_targets": {
+        "?GetThisClass@CXTPReportView@@SGPAUCRuntimeClass@@XZ": "0x6c4cc0"
+      },
+      "local_eh": [],
+      "role": "identical-COMDAT fold"
+    }
+  ],
+  "dependencies": [
+    {
+      "address": "004213a0",
+      "symbol": "?push_back@?$vector@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@@std@@@std@@QAEXABQAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@@Z",
+      "size": 101,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "?insert@?$vector@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@@std@@@2@V?$_Vector_const_iterator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@@std@@@2@ABQAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@@Z": "0x4c7c60"
+      },
+      "local_eh": [],
+      "role": "shared COMDAT (binding proof)"
+    },
+    {
+      "address": "004213a0",
+      "symbol": "?push_back@?$vector@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@@std@@@std@@QAEXABQAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@@Z",
+      "size": 101,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "?insert@?$vector@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@@std@@@2@V?$_Vector_const_iterator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@@std@@@2@ABQAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@@Z": "0x4c7c60"
+      },
+      "local_eh": [],
+      "role": "shared COMDAT (binding proof)"
+    },
+    {
+      "address": "00445dc0",
+      "symbol": "?erase@?$vector@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@@std@@@2@V?$_Vector_const_iterator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@@std@@@2@0@Z",
+      "size": 141,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "__imp__memmove_s": "msvcr90.dll!memmove_s"
+      },
+      "local_eh": [],
+      "role": "shared COMDAT (binding proof)"
+    },
+    {
+      "address": "00445dc0",
+      "symbol": "?erase@?$vector@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@@std@@@2@V?$_Vector_const_iterator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@@std@@@2@0@Z",
+      "size": 141,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "__imp__memmove_s": "msvcr90.dll!memmove_s"
+      },
+      "local_eh": [],
+      "role": "shared COMDAT (binding proof)"
+    },
+    {
+      "address": "004c7c60",
+      "symbol": "?insert@?$vector@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@@std@@@2@V?$_Vector_const_iterator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@@std@@@2@ABQAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@@Z",
+      "size": 180,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "?_Insert_n@?$vector@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@@std@@@std@@IAEXV?$_Vector_const_iterator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@@std@@@2@IABQAVEventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@@Z": "0x4c7890"
+      },
+      "local_eh": [],
+      "role": "shared COMDAT (binding proof)"
+    },
+    {
+      "address": "004c7c60",
+      "symbol": "?insert@?$vector@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@@std@@@2@V?$_Vector_const_iterator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@@std@@@2@ABQAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@@Z",
+      "size": 180,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "?_Insert_n@?$vector@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@@std@@@std@@IAEXV?$_Vector_const_iterator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@V?$allocator@PAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@@std@@@2@IABQAVEventData@?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@@Z": "0x4c7890"
+      },
+      "local_eh": [],
+      "role": "shared COMDAT (binding proof)"
+    },
+    {
+      "address": "004025b0",
+      "symbol": "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z",
+      "size": 89,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": [],
+      "role": "shared COMDAT (binding proof)"
+    }
+  ],
+  "bounds": [
+    {
+      "address": "00457650",
+      "symbol": "?execute@EventData@?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@UAEXXZ",
+      "size": 124,
+      "analysed_size": 91,
+      "raw_match": true
+    }
+  ],
+  "xtp_targets": {
+    "??0CXTPReportView@@IAE@XZ": "XTP recipe body exact",
+    "??1CXTPReportView@@MAE@XZ": "XTP recipe body exact",
+    "?OnCreate@CXTPReportView@@IAEHPAUtagCREATESTRUCTA@@@Z": "XTP recipe body exact",
+    "?GetThisClass@CXTPReportView@@SGPAUCRuntimeClass@@XZ": "XTP recipe body exact",
+    "?GetThisMessageMap@CXTPReportView@@KGPBUAFX_MSGMAP@@XZ": "XTP recipe body exact",
+    "?AdjustLayout@CXTPReportControl@@QAEXXZ": "XTP recipe body exact",
+    "?AddColumn@CXTPReportControl@@QAEPAVCXTPReportColumn@@PAV2@@Z": "XTP recipe body exact",
+    "?SetAutoColumnSizing@CXTPReportHeader@@QAEXH@Z": "XTP recipe body exact",
+    "??0CXTPReportColumn@@QAE@HPBDHHHHH@Z": "XTP recipe body exact",
+    "?SetTreeColumn@CXTPReportColumn@@QAEXH@Z": "XTP recipe body exact"
+  },
+  "vtables": {
+    "??_7CRobloxReportView@@6BCXTPReportView@@@": {
+      "verified": 108,
+      "xtp": {
+        "2": [
+          "?Serialize@CObject@@UAEXAAVCArchive@@@Z",
+          "0x70bdf0"
+        ],
+        "3": [
+          "?AssertValid@CObject@@UBEXXZ",
+          "0x47d410"
+        ],
+        "4": [
+          "?Dump@CObject@@UBEXAAVCDumpContext@@@Z",
+          "0x70bdf0"
+        ],
+        "32": [
+          "?GetScrollBarCtrl@CXTPReportView@@MBEPAVCScrollBar@@H@Z",
+          "0x6c4cf0"
+        ],
+        "65": [
+          "?DoDataExchange@CWnd@@MAEXPAVCDataExchange@@@Z",
+          "0x70bdf0"
+        ],
+        "66": [
+          "?BeginModalState@CWnd@@UAEXXZ",
+          "0x401120"
+        ],
+        "67": [
+          "?EndModalState@CWnd@@UAEXXZ",
+          "0x401130"
+        ],
+        "90": [
+          "?OnPrepareDC@CXTPReportView@@MAEXPAVCDC@@PAUCPrintInfo@@@Z",
+          "0x6c65e0"
+        ],
+        "95": [
+          "?OnDraw@CXTPReportView@@MAEXPAVCDC@@@Z",
+          "0x70bdf0"
+        ],
+        "96": [
+          "?OnPreparePrinting@CXTPReportView@@MAEHPAUCPrintInfo@@@Z",
+          "0x6c5350"
+        ],
+        "97": [
+          "?OnBeginPrinting@CXTPReportView@@MAEXPAVCDC@@PAUCPrintInfo@@@Z",
+          "0x6c53b0"
+        ],
+        "98": [
+          "?OnPrint@CXTPReportView@@MAEXPAVCDC@@PAUCPrintInfo@@@Z",
+          "0x6c5fd0"
+        ],
+        "99": [
+          "?OnEndPrinting@CXTPReportView@@MAEXPAVCDC@@PAUCPrintInfo@@@Z",
+          "0x6c5500"
+        ],
+        "101": [
+          "?GetReportCtrl@CXTPReportView@@UBEAAVCXTPReportControl@@XZ",
+          "0x6c4cd0"
+        ],
+        "103": [
+          "?PrintReport@CXTPReportView@@MAEJPAVCDC@@PAUCPrintInfo@@VCRect@@J@Z",
+          "0x6c68a0"
+        ],
+        "104": [
+          "?PrintHeader@CXTPReportView@@MAEXPAVCDC@@VCRect@@@Z",
+          "0x6c5520"
+        ],
+        "105": [
+          "?PrintFooter@CXTPReportView@@MAEXPAVCDC@@VCRect@@@Z",
+          "0x6c5670"
+        ],
+        "106": [
+          "?PrintRows@CXTPReportView@@MAEHPAVCDC@@VCRect@@JPAH@Z",
+          "0x6c5cb0"
+        ],
+        "107": [
+          "?PrintRow@CXTPReportView@@MAEXPAVCDC@@PAVCXTPReportRow@@VCRect@@H@Z",
+          "0x6c57b0"
+        ],
+        "109": [
+          "?_OnPrint2@CXTPReportView@@MAEXPAVCDC@@PAUCPrintInfo@@VCRect@@@Z",
+          "0x6c6220"
+        ]
+      },
+      "unverified": {
+        "102": [
+          "?PrintPage@CXTPReportView@@MAEJPAVCDC@@PAUCPrintInfo@@VCRect@@J@Z",
+          "0x6c5df0"
+        ],
+        "108": [
+          "?PaginateTo@CXTPReportView@@MAEHPAVCDC@@PAUCPrintInfo@@@Z",
+          "0x6c62c0"
+        ]
+      },
+      "open": {},
+      "address": "0081888c",
+      "slots": 110,
+      "col_offset": "0x0"
+    },
+    "??_7CRobloxReportView@@6B?$MarshaledListener@VInstance@RBX@@UChildAdded@2@V12@U32@@RBX@@@": {
+      "verified": 3,
+      "xtp": {},
+      "unverified": {},
+      "open": {
+        "2": [
+          "?onMarshaledEvent@CRobloxReportView@@UAEXPBVInstance@RBX@@UChildAdded@3@@Z",
+          "0x4582f0"
+        ]
+      },
+      "address": "00818878",
+      "slots": 4,
+      "col_offset": "0x378"
+    },
+    "??_7CRobloxReportView@@6B?$MarshaledListener@VInstance@RBX@@UChildRemoved@2@V12@U32@@RBX@@@": {
+      "verified": 3,
+      "xtp": {},
+      "unverified": {},
+      "open": {
+        "2": [
+          "?onMarshaledEvent@CRobloxReportView@@UAEXPBVInstance@RBX@@UChildRemoved@3@@Z",
+          "0x456250"
+        ]
+      },
+      "address": "00818864",
+      "slots": 4,
+      "col_offset": "0x39c"
+    }
+  }
+}

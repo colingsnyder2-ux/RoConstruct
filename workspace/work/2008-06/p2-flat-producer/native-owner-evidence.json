@@ -1,0 +1,105 @@
+{
+  "client": "2008-06",
+  "facts": [
+    {
+      "member": "Mesh +0x0c",
+      "type": "G3D::Array<LevelRef>",
+      "proof": "00548570 calls 0054bec0; producer appends Level refs to this+0x0c"
+    },
+    {
+      "member": "Mesh +0x18",
+      "type": "ShadowSurface, 0x34 bytes",
+      "proof": "0054a9f0 constructs 4 arrays at +0,+0c,+18,+24 and LevelRef at +30; element types retained from donor Mesh.h, not independently proven for every shadow path"
+    },
+    {
+      "member": "Mesh +0x4c",
+      "type": "float debugBoundingRadius",
+      "proof": "00548570 stores fldz with fstp at +4c; donor member agrees"
+    },
+    {
+      "member": "Mesh +0x50",
+      "type": "std::vector<short>",
+      "proof": "0054b2a0 invokes 0054c500: storage pointers +c/+10/+14, end=begin+2*count. 004e53c0 passes this+50 as third argument to 004e3570 index output"
+    },
+    {
+      "member": "Mesh +0x68",
+      "type": "std::vector<G3D::Vector3>",
+      "proof": "0054c050 invokes 0054d940: same pointers, stride12. 004e53c0 passes this+68 as second argument to 004e3570 vertex output"
+    },
+    {
+      "member": "Mesh +0x80",
+      "type": "Ogre::RbxSubMesh* shadow backend",
+      "proof": "00548570 initializes0; 00548a90 deletes via0054ac70 and logs registry removal with shd suffix"
+    },
+    {
+      "member": "Mesh +0x84",
+      "type": "int geometry kind (semantic name provisional)",
+      "proof": "00548570 stores0; 004e53c0 stores1; allocation in004e58b0 is0x88"
+    },
+    {
+      "member": "Mesh/BrickMesh vtable",
+      "type": "one deleting destructor slot",
+      "proof": "Mesh 0082d028 ->0054a9c0 ->00548a90; Brick 00826e7c ->004e54c0 ->00548a90; next words are floating constants"
+    },
+    {
+      "member": "Brick cache",
+      "type": "std::map + boost::recursive_mutex + int count",
+      "proof": "004e58b0 locks cache+20 via00563090, whose +8 recursion count increments; count atcache+2c. boost recursive_mutex12, map32, allocation30 hex. Earlier plain-mutex inference was wrong: backend mutex offset24 was confused with size."
+    },
+    {
+      "member": "Factory bevel policy",
+      "type": "useBevels initialized true; paired producer levels",
+      "proof": "Initialized byte009413c0=1. 004e58b0 builds firstLevel with bevel0.065, then sets bevel0/buildingShadowMeshtrue and calls same004e2c80 at004e5a40; not separate 004e3720 path. Constructor showBevels byte0096de64=0 initially."
+    }
+  ],
+  "rejected": [
+    "AABox members at +0x50/+0x68 in matched 004e53c0 analog: refuted by constructors, stride and cube output calls.",
+    "Using mined 0054a9c0 WildMagic library pointer: actual thunk calls Mesh destructor00548a90; label/library not semantic proof."
+  ],
+  "targets": {
+    "00548570": {
+      "sha256": "ed8891cfc519dcccb5c9d48130299cf7a0fb6d6bccda680cfd3fdc6fa01725e1",
+      "size": 204
+    },
+    "004e53c0": {
+      "sha256": "967179dc6332ba8b4373d617ec0e0928a46c5f6cf71b07c7a5528d954117caac",
+      "size": 248
+    },
+    "00548a90": {
+      "sha256": "0a828a6dd7446572aded17b897dd31a95cd05bda4955c63dfcfffbaebc2dfdaa",
+      "size": 451
+    },
+    "0054a9f0": {
+      "sha256": "7b0300209d6552cea6fcdc7488e181e1ac27f97a022a963246000961d9f00ae7",
+      "size": 134
+    },
+    "0054b2a0": {
+      "sha256": "d0e3135530bda02191664842483f8b1ca2818440ea018ce7c1dd4dbaa5eeb5ac",
+      "size": 101
+    },
+    "0054c050": {
+      "sha256": "8f41ecadbdb7ef1d0d39b08047805f7bb422a89b7846f4a550c2f786a69bb0a4",
+      "size": 101
+    },
+    "0054c500": {
+      "sha256": "2d19429f308b11cb7b7fb881aa0d81e2aa5dc1836ecd5f612cedc566c3fdb90b",
+      "size": 128
+    },
+    "0054d940": {
+      "sha256": "3eb190802fb0c023c69a3b668fcf985663edcf0aaa557bc3259c5147f1a896d4",
+      "size": 128
+    },
+    "004e3570": {
+      "sha256": "ce7e38e5bbe81edb7d67f22bb44d4457fb39b26dd25c9a92081e8201e5561f5f",
+      "size": 419
+    },
+    "004e58b0": {
+      "sha256": "09a4e60c20763bb209e32defdb3c255859e5b91f6bbc86e6c567587b6c2263b9",
+      "size": 639
+    },
+    "004e5710": {
+      "sha256": "d0c11d9d8e78476a030117938112c3264b7b0ea902551cf8a3b881687eb33c92",
+      "size": 408
+    }
+  }
+}

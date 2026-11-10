@@ -1,0 +1,16 @@
+{
+  "base_archive": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-filesystem-owner-20261105\\linked.lib",
+  "base_sha256": "0c597337028cf2cda5addf6ededafd11d546ec6205720401a5e1c166ab1b0836",
+  "archive_proposal": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-irenderable-20261105\\linked.lib",
+  "proposal_sha256": "5e468dd4a346f252ce853c68ee416f1df833eddb23c0ab80e15194c623d19f4c",
+  "replaced_member": "IRenderable.obj",
+  "old_member_sha256": "22e4a784692741582c77388a5cb0c6b70639ed109b7abdf589204a9063e6710f",
+  "new_member_sha256": "810d94e2c0724e00f718508452acf3d5199209bb26a8718da081b8a6919e594f",
+  "unchanged_other_members": 266,
+  "native_provider": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-irenderable-20261105\\run\\unit-000\\candidate.obj",
+  "native_provider_sha256": "42444b399d06567d75cbed1cbde50660d8d672753602d84959cc7b3e1957dbe7",
+  "distinct_compiles": 2,
+  "rejected_hypotheses": 0,
+  "status": "inactive; parent owns cumulative link and selection",
+  "next_action": "Parent guard exact inputs then isolated cumulative link with native leaf plus proposed archive. Original three link blockers remain parked. Transitive ABI/EH, selection and runtime remain separate gates."
+}

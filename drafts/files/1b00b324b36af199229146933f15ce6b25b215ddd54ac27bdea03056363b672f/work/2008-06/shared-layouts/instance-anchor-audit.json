@@ -1,0 +1,6 @@
+{
+  "swap_target": "Instance runnable integration (Instance anchor propagation)",
+  "applyAnchoredToChildren": {"run": "work/2008-06/native-check-runs/20261105-190630-141577aa", "addr": "0063deb0", "size": 298, "symbol": "?applyAnchoredToChildren@Instance@RBX@@QAEXUAnchorAction@12@@Z", "target_sha256": "c7218180c0afc08669fb150e9d53bc305fdd1a83a26e9a9651a844680926294f", "source_sha256": "924ea14370eb8619bcf0a59f2890355633bc09a909f56d35f9f365f690e857de", "object_sha256": "98bd8f8ef5d8d3528267044202775e2c35e8e677eaf4e83a17ac19c73c56895c", "result": "exact bytes+data 100%"},
+  "next_gate": "CWorkspace::insert 0046b9d0 catch rethrow (86%, parked), write EH empty-state (parked), Content closure, NullTool headers, Part provider, Initialize compiler (parked)",
+  "metrics": {"inactive_exact": 43, "selected_exact": "unknown", "gated_swaps": 0, "server_credit": 0}
+}

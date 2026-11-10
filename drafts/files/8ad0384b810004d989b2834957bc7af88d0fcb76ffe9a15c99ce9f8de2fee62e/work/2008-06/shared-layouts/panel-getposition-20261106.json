@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "kind": "class-family handoff note",
+  "date": "2026-11-06",
+  "family": "RBX::PercentPanel / RBX::RelativePanel (2008-06 gui, declared in native-headers/gui/Gui.h, no source units yet)",
+  "lease": "RBX::PanelGetPosition (Colin, 4h) covering rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp and work/2008-06/shared-layouts/panel-getposition-batch.json",
+  "why": "Unleased family with strong evidence: both classes carry full 25-slot RTTI vtables (0084213c PercentPanel, 0083ab1c RelativePanel), each overriding only slot 18 (getPosition), and the base TopMenuBar is already recovered so the class shape is pinned.",
+  "vtable_slots": {
+    "PercentPanel": {
+      "vtable": "0084213c",
+      "overrides": {
+        "18": "005738e0 getPosition (122 B)"
+      }
+    },
+    "RelativePanel": {
+      "vtable": "0083ab1c",
+      "overrides": {
+        "18": "005737e0 getPosition (241 B)"
+      }
+    },
+    "TopMenuBar (base, recovered)": {
+      "vtable": "0082faf4",
+      "overrides": {
+        "19": "00573f30 getChildPosition",
+        "21": "00573e00 isVisible",
+        "23": "00573e30 getSize",
+        "24": "00574050 render2d"
+      }
+    }
+  },
+  "member_offsets": {
+    "base": "TopMenuBar is 0x15c bytes (backdropColor +0x144, layoutStyle +0x154, visible +0x158)",
+    "PercentPanel": {
+      "xLocation": "+0x15c (Rect::Location)",
+      "yLocation": "+0x160 (Rect::Location)",
+      "position": "+0x164 (G3D::Vector2)"
+    },
+    "RelativePanel": {
+      "xLocation": "+0x15c",
+      "yLocation": "+0x160",
+      "offset": "+0x164 (G3D::Vector2int16, read as two int16 via movsx at +0x164/+0x166)"
+    }
+  },
+  "external_calls_to_identify": {
+    "00509ba0": "returns a pointer to a static two-float zero (used as G3D::Vector2::zero())",
+    "005736f0": "114-byte helper in the gui region called by PercentPanel::getPosition with (canvasSize copy, Vector2::zero(), &position)",
+    "005cef00": "helper called by PercentPanel::getPosition with (xLocation, yLocation, &out, sret) - Rect::Location to position math",
+    "005cef60": "helper called by RelativePanel::getPosition after the offset fild conversions - same Rect::Location to position math shape"
+  },
+  "next_implementation": "write the PercentPanel::getPosition hypothesis above into rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp and check it against 005738e0; then RelativePanel::getPosition 005737e0 (same shape plus the movsx int16 offset at +0x164/+0x166 and fild conversions, and helper 005cef60 instead of 005cef00).",
+  "next_check": "python rebuild/2008-06/tests/native_check_runner.py run work/2008-06/shared-layouts/panel-getposition-batch.json --workers 1, with the profile that every gui-family unit in this tree needed: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /DNOMINMAX",
+  "profile_note": "/fp:fast is required for G3D Color/Vector temporaries (research note 'gui family needs /fp:fast for G3D Color temporaries'); the enum switch form and hidden constant multiplies both mattered in TopMenuBar::getSize / getChildPosition.",
+  "previous_batches": "TextDisplay 13/14 (packet 08460053/7f5eedff), TopMenuBar 15/15 (packets 83d8f5e6/aa330a68/924369e2), GuiRoot 2/3 (packet 3b1c95ed/807411dc) - all acknowledged durable.",
+  "watching_session": "19cb089bf21b4d60be488fb9ca41da6b (scope: panel-getposition-20261106.json, PanelGetPositionTrial.cpp, panel-getposition-batch.json)",
+  "helper_progress": {
+    "005736f0": {
+      "identity": "GuiRoot::toPixelSize(const G3D::Vector2&) - static member, sret at [esp+4], ref arg at [esp+8]",
+      "body": "fldz; out.x = 0; out.y = 0; fld canvasSize.x (00974d78); fld const A (0082f840); fmul; fld canvasSize.y (00974d7c); fcom st(1); fnstsw; test ah,0x41; jne other - an aspect-ratio test; each branch then multiplies the argument by constants B (0082748c) / C (0082f86c) and stores two floats",
+      "declared": "static G3D::Vector2 toPixelSize(const G3D::Vector2&); already in native-headers/gui/Gui.h"
+    },
+    "00509ba0": {
+      "identity": "G3D::Vector2::zero() - returns a pointer to a static (0,0); used by PercentPanel::getPosition"
+    },
+    "005cef00": {
+      "identity": "RBX::Rect::positionPoint(const G3D::Vector2& size, Location xLocation, Location yLocation) const",
+      "evidence": "member function: this (ecx) is a Rect (low at +0/+4, high at +8/+0xc per Rect.h), sret at [esp+4], ref at [esp+8], two Location args at [esp+0xc]/[esp+0x10], ret 0x10. Body: result(0,0) via fldz; switch on xLocation (sub 2/je LEFT, sub 1/jne skip -> RIGHT): LEFT -> result.x = size.x + low.x, RIGHT -> result.x = high.x - size.x; switch on yLocation (sub 0/je TOP, sub 1/jne skip -> BOTTOM): TOP -> result.y = size.y + low.y, BOTTOM -> result.y = high.y - size.y.",
+      "declared": "yes - G3D::Vector2 positionPoint(const G3D::Vector2&, Location, Location) const; is already in tools/rbxgs/Client/App/include/util/Rect.h, and Location is TOP, BOTTOM, LEFT, RIGHT, CENTER, NONE"
+    },
+    "005cef60": {
+      "identity": "still unknown - the RelativePanel::getPosition equivalent, same five-argument shape"
+    },
+    "PercentPanel::getPosition_call_chain": "G3D::Vector2 canvas = getCanvasSize(); G3D::Vector2 pixelSize = GuiRoot::toPixelSize(this->position); then helper005cef00(&canvas, &pixelSize, this->xLocation, this->yLocation, &sret)",
+    "note": "PercentPanel::getPosition is now blocked only on identifying 005cef00; everything before it is pinned."
+  },
+  "candidate_hypotheses": {
+    "PercentPanel::getPosition_005738e0": "G3D::Vector2 canvas = GuiRoot::getCanvasSize(); G3D::Vector2 size = GuiRoot::toPixelSize(position); return Rect(G3D::Vector2::zero(), canvas).positionPoint(size, xLocation, yLocation);",
+    "note": "UNVERIFIED - recorded from the decoded frame layout only (the two GuiRoot calls, the Vector2::zero() stored at frame-0x10/-0x0c as the Rect low, canvasSize stored at frame-0x08/-0x04 as the Rect high, and the toPixelSize result at frame-0x18 passed by reference). The next pass must compile it in PanelGetPositionTrial.cpp and run the runner before claiming anything."
+  }
+}

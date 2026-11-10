@@ -1,0 +1,69 @@
+{
+  "revision": "0ad4f9deef5d9bc773470a73d7499f70573921ea",
+  "exe_sha256": "46c7be1227e92daf892695b556d56621bbcb24a480b7f7d371e2941358fa4136",
+  "fixture_sha256": "993ccc96ffed91e6149ca659b9402741a60c1da32f58e2fba54e4f3ccc8725f7",
+  "observer_sha256": "5184a80375fb0438b5ff0efa0e6d7d60bbb2d6f940ac4a8ab0171c88a2893d81",
+  "live_helper_sha256": "58cbb33f45b4ab54f7037e9b48b16457eed23c90289a212184a4f45019fec444",
+  "fixed": {
+    "idle": {
+      "exit": 0,
+      "transitions": [],
+      "end_y": 12.0,
+      "tail_span": 0.0,
+      "actor_z_delta": 0.0,
+      "samples_sha256": "9fc1e9176e1032e57c5b76a58e69dcf4e67d3ae202416e156e9666a449db4b11"
+    },
+    "play": {
+      "exit": 0,
+      "transitions": [
+        44,
+        52,
+        62
+      ],
+      "end_y": 1.00014246,
+      "tail_span": 0.0,
+      "actor_z_delta": -6.496570599999998,
+      "samples_sha256": "166d5da6668192aaa901dda285034ccf73fe212a11b3e0a2a6ac07c3fb588232"
+    },
+    "reopen": {
+      "exit": 0,
+      "transitions": [
+        44,
+        52,
+        62
+      ],
+      "end_y": 1.00014246,
+      "tail_span": 0.0,
+      "actor_z_delta": -6.496570599999998,
+      "samples_sha256": "166d5da6668192aaa901dda285034ccf73fe212a11b3e0a2a6ac07c3fb588232"
+    }
+  },
+  "live": {
+    "exit": 0,
+    "forced": false,
+    "touch_event_count": 1,
+    "observation": {
+      "actor_start_x": 0.0,
+      "actor_start_y": 18.5,
+      "actor_start_z": 25.5,
+      "actor_end_x": 8.12261629e-12,
+      "actor_end_y": 2.81359768,
+      "actor_end_z": 19.0488186,
+      "camera_start_x": 0.0,
+      "camera_start_y": 5.0,
+      "camera_start_z": 5.0,
+      "camera_end_x": 13.098793,
+      "camera_end_y": 12.9343939,
+      "camera_end_z": 25.5126266,
+      "look_start_x": 0.0,
+      "look_start_y": -0.707106829,
+      "look_start_z": -0.707106769,
+      "look_end_x": -0.806079745,
+      "look_end_y": -0.438202918,
+      "look_end_z": -0.397760868
+    },
+    "observation_sha256": "b27dbfe16dd9f352e42923b045fd5e3935451a641850420e75b103c0f2f25b12"
+  },
+  "P5_complete": false,
+  "scope": "Combined authored fixture using reconstructed frame, input and anchor adapters; original fixed-step comparison remains open."
+}

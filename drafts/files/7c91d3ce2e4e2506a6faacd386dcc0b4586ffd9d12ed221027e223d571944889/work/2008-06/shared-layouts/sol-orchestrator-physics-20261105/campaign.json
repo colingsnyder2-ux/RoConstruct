@@ -1,0 +1,22 @@
+{
+  "baseline_commit": "e9bfe6671a60913f56cc7efc99de1b9045ede2ecfe9570327ad0a53f2f195188",
+  "session": "9dbd7e91f84940b8847498c4f3cf63d7",
+  "change": "Declare existing selected private static signal descriptor members; genuine two-parameter SignalDesc forward declaration; instance storage and virtual declarations unchanged",
+  "source_sha256": "f2663cd719084a15ccddfa63e535894dd8174c9e9c4161d3cbdc17e38671ff1c",
+  "evidence": {
+    "existing_source": "native-classes/PhysicsServiceSignals.cpp and PhysicsServiceEvents.cpp",
+    "prior_binding_receipt": "work/2008-06/shared-layouts/physics-array-lifetime-trial.json",
+    "original_initializers": [
+      "007f6e40",
+      "007f6e60"
+    ],
+    "original_descriptor_data": [
+      "0097abec",
+      "0097ac20"
+    ],
+    "template_declaration": "native-headers/reflection/signal.h:331"
+  },
+  "validation": "Physics worker fresh exact-selected-profile family compile next; historical receipt not fresh proof",
+  "activation": false,
+  "server_credit": 0
+}

@@ -1,0 +1,63 @@
+[
+  {
+    "source": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-classes\\XmlNameValuePairClear.cpp",
+    "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-123434-ffef8bd3\\unit-000\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "0057c2d0",
+        "requested_symbol": "?clearValue@XmlNameValuePair@@ABEXXZ",
+        "status": "exact",
+        "symbol": "?clearValue@XmlNameValuePair@@ABEXXZ",
+        "score": 100,
+        "target_size": 143,
+        "object_size": 143,
+        "target_sha256": "7b783c5e8ae06f6101c17bdda90ba0e04826e00939d53872e48065f4ad7fd9bd",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": false,
+          "calls": [
+            {
+              "offset": 59,
+              "target": null,
+              "symbol": null,
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 80,
+              "target": null,
+              "symbol": null,
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 83,
+              "target": "006a067a",
+              "symbol": "??3@YAXPAX@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 110,
+              "target": null,
+              "symbol": null,
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 117,
+              "target": "006a067a",
+              "symbol": "??3@YAXPAX@Z",
+              "status": "verified_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 2.247808
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  }
+]

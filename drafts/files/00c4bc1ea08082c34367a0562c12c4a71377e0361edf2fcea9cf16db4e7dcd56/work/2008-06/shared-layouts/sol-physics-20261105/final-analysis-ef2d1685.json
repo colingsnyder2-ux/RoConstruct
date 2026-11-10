@@ -1,0 +1,384 @@
+[
+  {
+    "source": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-classes\\PhysicsServiceFind.cpp",
+    "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-130507-bc1cef4a\\unit-000\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "004ccca0",
+        "requested_symbol": "??$find@",
+        "status": "exact",
+        "symbol": "??$find@VPhysicsService@RBX@@@ServiceProvider@RBX@@QBEPAVPhysicsService@1@XZ",
+        "score": 100,
+        "target_size": 320,
+        "object_size": 320,
+        "target_sha256": "1f1cc8e23e045d72da8aa1bbc20be7e233562bb6645ab4ffec635a8956b3db21",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "check_seconds": 1.926682
+      },
+      {
+        "addr": "004c9b70",
+        "requested_symbol": "??$doDeclare@",
+        "status": "exact",
+        "symbol": "??$doDeclare@$1?sPhysicsService@RBX@@3QBDB@Name@RBX@@CAABV01@XZ",
+        "score": 100,
+        "target_size": 101,
+        "object_size": 101,
+        "target_sha256": "81e7fc839e3abd07b5add5a70c0a72a87d58b3c48fd567de3d2e2c25555d5e03",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8648792,
+            15
+          ]
+        ],
+        "data_errors": [],
+        "check_seconds": 0.000333
+      },
+      {
+        "addr": "004c9be0",
+        "requested_symbol": "??$doGetClassIndex@",
+        "status": "exact",
+        "symbol": "??$doGetClassIndex@VPhysicsService@RBX@@@ServiceProvider@RBX@@SAIXZ",
+        "score": 100,
+        "target_size": 91,
+        "object_size": 91,
+        "target_sha256": "5be3c6834955f30a5392c58ebd1acef3fdac39a00cd67308728f49116e311341",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "check_seconds": 0.000127
+      },
+      {
+        "addr": "004cb520",
+        "requested_symbol": "?getClassName@",
+        "status": "exact",
+        "symbol": "?getClassName@?$NonFactoryProduct@VInstance@RBX@@$1?sPhysicsService@2@3QBDB@RBX@@UBEABVName@2@XZ",
+        "score": 100,
+        "target_size": 23,
+        "object_size": 23,
+        "target_sha256": "0a447c75b37f37c06308fe5e2c09bfb5712dcf907f5cf58f8dd92763ec7a4829",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "check_seconds": 8.2e-05
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  },
+  {
+    "source": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-classes\\PhysicsServiceAllocation.cpp",
+    "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-130507-bc1cef4a\\unit-001\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "004cd760",
+        "requested_symbol": "??$create@",
+        "status": "exact",
+        "symbol": "??$create@VPhysicsService@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VPhysicsService@RBX@@@boost@@XZ",
+        "score": 100,
+        "target_size": 120,
+        "object_size": 120,
+        "target_sha256": "504ea723d0ac75e35a6b6522f81ac9bb2b238dd17a2d7f95aeb39a3ce6f8501a",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "check_seconds": 0.001987
+      },
+      {
+        "addr": "004cd5b0",
+        "requested_symbol": "??0PhysicsService@",
+        "status": "exact",
+        "symbol": "??0PhysicsService@RBX@@QAE@XZ",
+        "score": 100,
+        "target_size": 233,
+        "object_size": 233,
+        "target_sha256": "bd1f9f6a0bb95cc9ccb5f33b4f36713acd91ae305ebc3b9985a5fca523f04ad6",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8546988,
+            64
+          ],
+          [
+            8546976,
+            8
+          ],
+          [
+            8546968,
+            4
+          ],
+          [
+            8546960,
+            4
+          ],
+          [
+            8546944,
+            12
+          ],
+          [
+            8546928,
+            12
+          ],
+          [
+            8546912,
+            12
+          ],
+          [
+            8546896,
+            12
+          ],
+          [
+            8546880,
+            12
+          ],
+          [
+            8546864,
+            12
+          ],
+          [
+            8546852,
+            8
+          ],
+          [
+            8546840,
+            8
+          ],
+          [
+            8546820,
+            15
+          ]
+        ],
+        "data_errors": [],
+        "check_seconds": 0.000452
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  },
+  {
+    "source": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-classes\\PhysicsServiceLifetime.cpp",
+    "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-130507-bc1cef4a\\unit-002\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "005e8d30",
+        "requested_symbol": "??1PhysicsService@",
+        "status": "exact",
+        "symbol": "??1PhysicsService@RBX@@UAE@XZ",
+        "score": 100,
+        "target_size": 177,
+        "object_size": 177,
+        "target_sha256": "cbc0885c96773092ec672778c0938e2b0105752c89049de450fada3fd947aaee",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8546988,
+            64
+          ],
+          [
+            8546976,
+            8
+          ],
+          [
+            8546968,
+            4
+          ],
+          [
+            8546960,
+            4
+          ],
+          [
+            8546944,
+            12
+          ],
+          [
+            8546928,
+            12
+          ],
+          [
+            8546912,
+            12
+          ],
+          [
+            8546896,
+            12
+          ],
+          [
+            8546880,
+            12
+          ],
+          [
+            8546864,
+            12
+          ],
+          [
+            8546852,
+            8
+          ],
+          [
+            8546840,
+            8
+          ]
+        ],
+        "data_errors": [],
+        "check_seconds": 0.001489
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  },
+  {
+    "source": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-classes\\PhysicsServiceEvents.cpp",
+    "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-130507-bc1cef4a\\unit-003\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "005e9110",
+        "requested_symbol": "?onEvent@PhysicsService@RBX@@MAEXPBVWorld@2@UAssemblyPhysicsOn@2@@Z",
+        "status": "exact",
+        "symbol": "?onEvent@PhysicsService@RBX@@MAEXPBVWorld@2@UAssemblyPhysicsOn@2@@Z",
+        "score": 100,
+        "target_size": 32,
+        "object_size": 32,
+        "target_sha256": "d5cccd2c2fdd1df0a0258147ba8687005bed7fb377c5431781ee7cff926c9c1f",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [
+            {
+              "offset": 8,
+              "target": "00599f80",
+              "symbol": "?fromPrimitive@PartInstance@RBX@@SAPAV12@PAVPrimitive@2@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 23,
+              "target": "005e8f70",
+              "symbol": "?onAdded@PhysicsService@RBX@@AAEXPAVPartInstance@2@@Z",
+              "status": "verified_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.001912
+      },
+      {
+        "addr": "005e9130",
+        "requested_symbol": "?onEvent@PhysicsService@RBX@@MAEXPBVWorld@2@UAssemblyPhysicsOff@2@@Z",
+        "status": "exact",
+        "symbol": "?onEvent@PhysicsService@RBX@@MAEXPBVWorld@2@UAssemblyPhysicsOff@2@@Z",
+        "score": 100,
+        "target_size": 32,
+        "object_size": 32,
+        "target_sha256": "5409ee039f530eba7faaa1d4c9c83273961cdbdaac6fc75ed65453c5a7ad5d37",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [
+            {
+              "offset": 8,
+              "target": "00599f80",
+              "symbol": "?fromPrimitive@PartInstance@RBX@@SAPAV12@PAVPrimitive@2@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 23,
+              "target": "005e9040",
+              "symbol": "?onRemoved@PhysicsService@RBX@@AAEXPAVPartInstance@2@@Z",
+              "status": "verified_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.000299
+      },
+      {
+        "addr": "005e8f70",
+        "requested_symbol": "?onAdded@",
+        "status": "exact",
+        "symbol": "?onAdded@PhysicsService@RBX@@AAEXPAVPartInstance@2@@Z",
+        "score": 100,
+        "target_size": 203,
+        "object_size": 203,
+        "target_sha256": "02dc3e09bdd0410e4f0a69a5d15d54b57f176282c6cf4d53a7e646c7dbfc9736",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "check_seconds": 0.000192
+      },
+      {
+        "addr": "005e9040",
+        "requested_symbol": "?onRemoved@",
+        "status": "exact",
+        "symbol": "?onRemoved@PhysicsService@RBX@@AAEXPAVPartInstance@2@@Z",
+        "score": 100,
+        "target_size": 196,
+        "object_size": 196,
+        "target_sha256": "4b0d350d65f1b7cf5e35fae6def7cc42d968c546a2c7fccd5e3391cc160b03a4",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "check_seconds": 0.00018
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  },
+  {
+    "source": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-classes\\PhysicsServiceSignals.cpp",
+    "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-130507-bc1cef4a\\unit-004\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "005e8df0",
+        "requested_symbol": "??0?$SignalDesc@",
+        "status": "exact",
+        "symbol": "??0?$SignalDesc@VPhysicsService@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@QAE@PBD0@Z",
+        "score": 100,
+        "target_size": 194,
+        "object_size": 194,
+        "target_sha256": "e16c08fe6285ca1534815e7e87c76e6cb1bed245531c525ae342da40d496a199",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8648812,
+            12
+          ]
+        ],
+        "data_errors": [],
+        "check_seconds": 0.00209
+      },
+      {
+        "addr": "004cd300",
+        "requested_symbol": "?classDescriptor@?$Described@VPhysicsService@",
+        "status": "exact",
+        "symbol": "?classDescriptor@?$Described@VPhysicsService@RBX@@$1?sPhysicsService@2@3QBDBV?$NonFactoryProduct@VInstance@RBX@@$1?sPhysicsService@2@3QBDB@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+        "score": 100,
+        "target_size": 101,
+        "object_size": 101,
+        "target_sha256": "137fdbba9c3b52b263af770548e2ce1d6aaf4287c771da4b9e2936952335b0a4",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "check_seconds": 0.000272
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  }
+]

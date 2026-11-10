@@ -1,0 +1,185 @@
+{
+  "run": "work\\2008-06\\native-check-runs\\20261106-184100-58ab7f83",
+  "elapsed_since_baseline_seconds": 104.392,
+  "compiled_sources": 3,
+  "baseline_exact": 6,
+  "baseline_checks": 8,
+  "new_source_methods": 0,
+  "new_exact_bodies": 0,
+  "new_abi_proofs": 0,
+  "new_selected_providers": 0,
+  "new_gated_swaps": 0,
+  "source_or_header_changes_during_pilot": [],
+  "results": [
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\RunService.cpp",
+      "source_sha256": "67dc145cc390585d83f0cceb37d99a2139909f02559d70a37105235bedf49d93",
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261106-184100-58ab7f83\\unit-000\\candidate.obj",
+      "object_sha256": "b3e77e82c0977a96dfeeb5290a2ffe7fdfd614c33abf7ceb118440f723d0c5b5",
+      "status": "complete",
+      "compile_seconds": 4.656,
+      "analysis_seconds": 4.563,
+      "checks": [
+        {
+          "addr": "00555900",
+          "requested_symbol": "?enqueueTask@RunService@RBX@@",
+          "status": "exact",
+          "symbol": "?enqueueTask@RunService@RBX@@QAEXV?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@Z",
+          "score": 100,
+          "target_size": 147,
+          "object_size": 147,
+          "target_sha256": "156f38598f452ca4ae4c9dbc6704d137605077d9e7fe8cd3babb8b2011a25e0f",
+          "first_byte_difference": null,
+          "data_matches": [],
+          "data_errors": [],
+          "check_seconds": 0.016
+        },
+        {
+          "addr": "005559a0",
+          "requested_symbol": "?drainTasks@RunService@RBX@@",
+          "status": "exact",
+          "symbol": "?drainTasks@RunService@RBX@@QAEXXZ",
+          "score": 100,
+          "target_size": 462,
+          "object_size": 462,
+          "target_sha256": "a80f446cbbe0e8747f10e94a18ce6308e129891726171d4deb5dad3bc142727e",
+          "first_byte_difference": null,
+          "data_matches": [
+            [
+              8455084,
+              3
+            ]
+          ],
+          "data_errors": [],
+          "check_seconds": 0.0
+        },
+        {
+          "addr": "00554da0",
+          "requested_symbol": "?setRunState@RunService@RBX@@",
+          "status": "exact",
+          "symbol": "?setRunState@RunService@RBX@@QAEXW4RunState@2@@Z",
+          "score": 100,
+          "target_size": 106,
+          "object_size": 106,
+          "target_sha256": "a530de5bbd62f0132fa3192f8bb1a6d52ffb8018fcb4c7e1f78cbeea5eca0282",
+          "first_byte_difference": null,
+          "data_matches": [],
+          "data_errors": [],
+          "check_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InstanceParent.cpp",
+      "source_sha256": "1dbd36cbc66465f69c84ab4849fa97ecdac0b856cb6a8adb2ad693c9872467a7",
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261106-184100-58ab7f83\\unit-001\\candidate.obj",
+      "object_sha256": "27113fe3cec8525420505e98fd07e771e3cdfaafc8281e299f706fd1eb020485",
+      "status": "complete",
+      "compile_seconds": 4.25,
+      "analysis_seconds": 4.984,
+      "checks": [
+        {
+          "addr": "0055a8f0",
+          "requested_symbol": "?setParent@Instance@RBX@@",
+          "status": "exact",
+          "symbol": "?setParent@Instance@RBX@@QAEXPAV12@@Z",
+          "score": 100,
+          "target_size": 967,
+          "object_size": 967,
+          "target_sha256": "b1c326ed619c9b526c424f61b803dc82baf482482c61411d18f28454fb9567ff",
+          "first_byte_difference": null,
+          "data_matches": [
+            [
+              8575240,
+              36
+            ],
+            [
+              9247688,
+              16
+            ],
+            [
+              8575176,
+              64
+            ],
+            [
+              9247688,
+              16
+            ]
+          ],
+          "data_errors": [],
+          "check_seconds": 4.828
+        },
+        {
+          "addr": "005574b0",
+          "requested_symbol": "?contains@Instance@RBX@@",
+          "status": "exact",
+          "symbol": "?contains@Instance@RBX@@QBE_NPBV12@@Z",
+          "score": 100,
+          "target_size": 32,
+          "object_size": 32,
+          "target_sha256": "66825b36a657f989e88f33c7557d4e67b6d328cc50f18c327bcfa0fca4a4b2c8",
+          "first_byte_difference": null,
+          "data_matches": [],
+          "data_errors": [],
+          "check_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "source": "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\WorkspaceXmlWriter.cpp",
+      "source_sha256": "e4b2ff3a6a716043ffbd07f9220df188c841276ce4212b3ba2469055dbf0fd4f",
+      "object": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\native-check-runs\\20261106-184100-58ab7f83\\unit-002\\candidate.obj",
+      "object_sha256": "2e09df5ae46348dbfbe5c51ed320cc7ae9b2dad634317373d8594db0b88a4dcd",
+      "status": "complete",
+      "compile_seconds": 7.39,
+      "analysis_seconds": 0.031,
+      "checks": [
+        {
+          "addr": "0046b860",
+          "requested_symbol": "?write@CWorkspace@@",
+          "status": "different",
+          "symbol": "?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+          "score": 99,
+          "target_size": 112,
+          "object_size": 112,
+          "target_sha256": "4335bc5beb8a8de06f66fe1a9b0af8f32fe04fa397b777689a950296536f6402",
+          "first_byte_difference": 68,
+          "check_seconds": 0.0
+        },
+        {
+          "addr": "0046b550",
+          "requested_symbol": "??0TextXmlWriterWithEmbeddedContent@@",
+          "status": "exact",
+          "symbol": "??0TextXmlWriterWithEmbeddedContent@@QAE@PAVContentProvider@RBX@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+          "score": 100,
+          "target_size": 98,
+          "object_size": 98,
+          "target_sha256": "2272b0d17440b2615fc34fb0a31efd04c9611a074b2bea4582351936e60fe1da",
+          "first_byte_difference": null,
+          "data_matches": [
+            [
+              8505416,
+              8
+            ]
+          ],
+          "data_errors": [],
+          "check_seconds": 0.0
+        },
+        {
+          "addr": "0046b1e0",
+          "requested_symbol": "??1TextXmlWriterWithEmbeddedContent@@",
+          "status": "different",
+          "symbol": "??1TextXmlWriterWithEmbeddedContent@@QAE@XZ",
+          "score": 78,
+          "target_size": 77,
+          "object_size": 83,
+          "target_sha256": "caeadf6b8a42a3d5146a0ac9adbda4b89dc593a79241accc023a7c30c7761056",
+          "first_byte_difference": 29,
+          "check_seconds": 0.016
+        }
+      ]
+    }
+  ],
+  "completed_inspection_unix": 1794008622.03542,
+  "inspection_wall_seconds_since_baseline": 161.862
+}

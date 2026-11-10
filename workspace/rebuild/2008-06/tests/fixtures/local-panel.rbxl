@@ -1,0 +1,10 @@
+<roblox version="4"><Item class="Workspace"><Properties><Ref name="CurrentCamera">RBX_CAMERA</Ref></Properties>
+<Item class="Part" referent="RBX1"><Properties>
+<string name="Name">Brick</string><bool name="Anchored">true</bool>
+<token name="shape">1</token>
+<Vector3 name="size"><X>4</X><Y>4</Y><Z>4</Z></Vector3>
+<Color3 name="Color"><R>0</R><G>1</G><B>0</B></Color3>
+<token name="TopSurface">0</token><token name="BottomSurface">0</token>
+<CoordinateFrame name="CFrame"><X>0</X><Y>0</Y><Z>0</Z>
+<R00>1</R00><R01>0</R01><R02>0</R02><R10>0</R10><R11>1</R11><R12>0</R12><R20>0</R20><R21>0</R21><R22>1</R22></CoordinateFrame>
+</Properties><Item class="SpecialMesh" referent="RBX_MESH"><Properties><string name="Name">LocalPanel</string><token name="MeshType">5</token><Vector3 name="Scale"><X>2</X><Y>2</Y><Z>2</Z></Vector3><Vector3 name="VertexColor"><X>1</X><Y>1</Y><Z>1</Z></Vector3><Content name="MeshId"><url>rbxasset://p4/panel.mesh</url></Content><Content name="TextureId"><url>rbxasset://p4/quadrants.png</url></Content></Properties></Item></Item><Item class="Camera" referent="RBX_CAMERA"><Properties><string name="Name">Camera</string><token name="CameraType">0</token><CoordinateFrame name="CoordinateFrame"><X>0</X><Y>0</Y><Z>10</Z><R00>1</R00><R01>0</R01><R02>0</R02><R10>0</R10><R11>1</R11><R12>0</R12><R20>0</R20><R21>0</R21><R22>1</R22></CoordinateFrame><CoordinateFrame name="Focus"><X>0</X><Y>0</Y><Z>0</Z><R00>1</R00><R01>0</R01><R02>0</R02><R10>0</R10><R11>1</R11><R12>0</R12><R20>0</R20><R21>0</R21><R22>1</R22></CoordinateFrame></Properties></Item></Item></roblox>

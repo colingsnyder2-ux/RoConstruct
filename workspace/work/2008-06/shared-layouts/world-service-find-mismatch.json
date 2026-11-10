@@ -1,0 +1,93 @@
+{
+  "scope": "Inactive find hypotheses differ; neither find body is included in the diagnostic link.",
+  "observer_sha256": "7efec1fb402f138ff5317b81b8e60f82d0cde27450e1a37a2354c31686b19b46",
+  "source_sha256": "892690a23eaa49a302cc63ebfc107cc4143286f6570545ce848b3d5da726e282",
+  "object_sha256": "07ed88de423d97976318739146e2f1188a19d0939849ff0c93f8b2f5c2265332",
+  "methods": [
+    {
+      "class": "JointsService",
+      "address": "004b3a50",
+      "symbol": "??$create@VJointsService@RBX@@@ServiceProvider@RBX@@QBEPAVJointsService@1@XZ",
+      "size": 228,
+      "exact": true,
+      "calls": {
+        "??$find@VJointsService@RBX@@@ServiceProvider@RBX@@QBEPAVJointsService@1@XZ": "0x4b34c0",
+        "??$create@VJointsService@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VJointsService@RBX@@@boost@@XZ": "0x4b0df0",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
+        "??$doGetClassIndex@VJointsService@RBX@@@ServiceProvider@RBX@@SAIXZ": "0x4ab4d0",
+        "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0",
+        "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0"
+      }
+    },
+    {
+      "class": "PhysicsService",
+      "address": "004cd7e0",
+      "symbol": "??$create@VPhysicsService@RBX@@@ServiceProvider@RBX@@QBEPAVPhysicsService@1@XZ",
+      "size": 228,
+      "exact": true,
+      "calls": {
+        "??$find@VPhysicsService@RBX@@@ServiceProvider@RBX@@QBEPAVPhysicsService@1@XZ": "0x4ccca0",
+        "??$create@VPhysicsService@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VPhysicsService@RBX@@@boost@@XZ": "0x4cd760",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
+        "??$doGetClassIndex@VPhysicsService@RBX@@@ServiceProvider@RBX@@SAIXZ": "0x4c9be0",
+        "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0",
+        "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0"
+      }
+    }
+  ],
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/DWORLD_FIND_PROFILE",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeWorldServiceFindTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeWorldServiceFactoriesTrial.cpp"
+  ],
+  "find_methods": [
+    {
+      "class": "JointsService",
+      "address": "004b34c0",
+      "candidate_size": 127,
+      "original_size": 174,
+      "exact": false
+    },
+    {
+      "class": "PhysicsService",
+      "address": "004ccca0",
+      "candidate_size": 386,
+      "original_size": 320,
+      "exact": false
+    }
+  ]
+}

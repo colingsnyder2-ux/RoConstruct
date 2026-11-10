@@ -1,0 +1,13 @@
+{
+  "batch": "RBX::Network::Players",
+  "change": "Removed NATIVE_NETWORK_PLAYERS_PENDING guard around frontendProcessing, backendProcessing, onEvent and onChildAdded/onChildRemoving; includes Teams.h and declares Player::rebuildBackpack.",
+  "changed_files": [
+    "rebuild/2008-06/native-classes/NetworkPlayers.cpp",
+    "rebuild/2008-06/native-headers/Network/Player.h"
+  ],
+  "verification": "rebuild/2008-06/tests/record_native_network_players.py PASS: 100 exact rows, 11 pending-only, 0 non-exact, 13 vtables.",
+  "package_revision": "1d8dc7a8d6ee2c6694f477361ba54ad661ce91c8f648dc9713f7a4bdf6bb4b54",
+  "workspace_manifest_source_revision": "1d8dc7a8d6ee2c6694f477361ba54ad661ce91c8f648dc9713f7a4bdf6bb4b54",
+  "baseline_commit": "unknown",
+  "status": "inactive draft; no active build, swap, runtime, or server credit"
+}

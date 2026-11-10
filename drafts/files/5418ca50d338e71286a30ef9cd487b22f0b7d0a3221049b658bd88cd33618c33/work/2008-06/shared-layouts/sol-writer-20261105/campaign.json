@@ -1,0 +1,203 @@
+{
+  "swap_target": "CRobloxDoc native diagnostic closure",
+  "session": "c2c059ff19704fd093d5c2e3dc42f6e5",
+  "baseline_package_sha256": "c6f2347620c202cd0bd3278203cd5d3536f01b4a022234bd66f26ae42e3cf36f",
+  "runs": [
+    "work\\2008-06\\native-check-runs\\20261105-122948-dbdc3493",
+    "work\\2008-06\\native-check-runs\\20261105-123032-315317b7"
+  ],
+  "hashes": {
+    "work\\native-candidates\\sol-writer-20261105\\SolWriter20261105-depth.cpp": "cb134ba0731cf2b746441eb152c02b0247702a81dfee773bbaa9d706d5db3420",
+    "work\\native-candidates\\sol-writer-20261105\\SolWriter20261105-ob0.cpp": "80eb91a6636a369b38ed8b0e104d972890bbb015732eedf77c3fe85ff1a62068",
+    "work\\native-candidates\\sol-writer-20261105\\SolWriter20261105-ob1.cpp": "b8a566736150b6b766fd63de2aab01c59974e84ff67e99e5e6ac38ba09dd3431",
+    "rebuild\\2008-06\\native-classes\\WorkspaceXmlWriter.cpp": "11e4ff49deafb0c7fde41ee1549e765d0f3c5628f1853b90a26ae1979986e120",
+    "rebuild\\2008-06\\native-classes\\WorkspaceWrite.cpp": "26cf8efc37598b9f9b953c164604c008151334442e8f8246e5e3ff0e9b6bed23",
+    "rebuild\\2008-06\\native-headers\\writer-2008\\v8xml\\XmlSerializer.h": "0fab3121a84dfc5ae591089ed31f092c3b604d48f7f938573ad6c8b941b4f61c"
+  },
+  "metrics": {
+    "compiled_units": 4,
+    "explicit_checks": 11,
+    "code_and_data_exact_checks": 4,
+    "lifetime_call_proof": 2,
+    "lifetime_EH_graph_nodes_each": 58,
+    "lifetime_EH_errors": 0,
+    "COM_EH_unresolved_each": 1,
+    "new_exact_addresses": 0,
+    "selection_delta": 0,
+    "server_credit": 0,
+    "gated_swaps": 0
+  },
+  "hypotheses": [
+    {
+      "name": "SolWriter20261105-ob1.cpp",
+      "checks": [
+        {
+          "addr": "0046b550",
+          "requested_symbol": "??0TextXmlWriterWithEmbeddedContent@@QAE@PAVContentProvider@RBX@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+          "status": "exact",
+          "symbol": "??0TextXmlWriterWithEmbeddedContent@@QAE@PAVContentProvider@RBX@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+          "score": 100,
+          "target_size": 98,
+          "object_size": 98,
+          "target_sha256": "2272b0d17440b2615fc34fb0a31efd04c9611a074b2bea4582351936e60fe1da",
+          "first_byte_difference": null,
+          "data_matches": [
+            [
+              8505416,
+              8
+            ]
+          ],
+          "data_errors": [],
+          "check_seconds": 2.247837
+        },
+        {
+          "addr": "0046b1e0",
+          "requested_symbol": "??1TextXmlWriterWithEmbeddedContent@@QAE@XZ",
+          "status": "exact",
+          "symbol": "??1TextXmlWriterWithEmbeddedContent@@QAE@XZ",
+          "score": 100,
+          "target_size": 77,
+          "object_size": 77,
+          "target_sha256": "caeadf6b8a42a3d5146a0ac9adbda4b89dc593a79241accc023a7c30c7761056",
+          "first_byte_difference": null,
+          "data_matches": [],
+          "data_errors": [],
+          "check_seconds": 0.000331
+        },
+        {
+          "addr": "0046b860",
+          "requested_symbol": "?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+          "status": "different",
+          "symbol": "?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+          "score": 87,
+          "target_size": 112,
+          "object_size": 130,
+          "target_sha256": "4335bc5beb8a8de06f66fe1a9b0af8f32fe04fa397b777689a950296536f6402",
+          "first_byte_difference": 68,
+          "check_seconds": 0.000662
+        }
+      ],
+      "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-122948-dbdc3493\\unit-000\\candidate.obj",
+      "source_sha256": "b8a566736150b6b766fd63de2aab01c59974e84ff67e99e5e6ac38ba09dd3431"
+    },
+    {
+      "name": "SolWriter20261105-ob0.cpp",
+      "checks": [
+        {
+          "addr": "0046b550",
+          "requested_symbol": "??0TextXmlWriterWithEmbeddedContent@@QAE@PAVContentProvider@RBX@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+          "status": "different",
+          "symbol": "??0TextXmlWriterWithEmbeddedContent@@QAE@PAVContentProvider@RBX@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+          "score": 79,
+          "target_size": 98,
+          "object_size": 88,
+          "target_sha256": "2272b0d17440b2615fc34fb0a31efd04c9611a074b2bea4582351936e60fe1da",
+          "first_byte_difference": 40,
+          "check_seconds": 0.817783
+        },
+        {
+          "addr": "0046b1e0",
+          "requested_symbol": "??1TextXmlWriterWithEmbeddedContent@@QAE@XZ",
+          "status": "different",
+          "symbol": "??1TextXmlWriterWithEmbeddedContent@@QAE@XZ",
+          "score": 95,
+          "target_size": 77,
+          "object_size": 76,
+          "target_sha256": "caeadf6b8a42a3d5146a0ac9adbda4b89dc593a79241accc023a7c30c7761056",
+          "first_byte_difference": 45,
+          "check_seconds": 0.00256
+        },
+        {
+          "addr": "0046b860",
+          "requested_symbol": "?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+          "status": "different",
+          "symbol": "?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+          "score": 62,
+          "target_size": 112,
+          "object_size": 134,
+          "target_sha256": "4335bc5beb8a8de06f66fe1a9b0af8f32fe04fa397b777689a950296536f6402",
+          "first_byte_difference": 21,
+          "check_seconds": 0.000918
+        }
+      ],
+      "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-122948-dbdc3493\\unit-001\\candidate.obj",
+      "source_sha256": "80eb91a6636a369b38ed8b0e104d972890bbb015732eedf77c3fe85ff1a62068"
+    },
+    {
+      "name": "SolWriter20261105-depth.cpp",
+      "checks": [
+        {
+          "addr": "0046b550",
+          "requested_symbol": "??0TextXmlWriterWithEmbeddedContent@@QAE@PAVContentProvider@RBX@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+          "status": "different",
+          "symbol": "??0TextXmlWriterWithEmbeddedContent@@QAE@PAVContentProvider@RBX@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+          "score": 78,
+          "target_size": 98,
+          "object_size": 103,
+          "target_sha256": "2272b0d17440b2615fc34fb0a31efd04c9611a074b2bea4582351936e60fe1da",
+          "first_byte_difference": 43,
+          "check_seconds": 0.818153
+        },
+        {
+          "addr": "0046b1e0",
+          "requested_symbol": "??1TextXmlWriterWithEmbeddedContent@@QAE@XZ",
+          "status": "different",
+          "symbol": "??1TextXmlWriterWithEmbeddedContent@@QAE@XZ",
+          "score": 95,
+          "target_size": 77,
+          "object_size": 76,
+          "target_sha256": "caeadf6b8a42a3d5146a0ac9adbda4b89dc593a79241accc023a7c30c7761056",
+          "first_byte_difference": 45,
+          "check_seconds": 0.000527
+        },
+        {
+          "addr": "0046b860",
+          "requested_symbol": "?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+          "status": "different",
+          "symbol": "?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+          "score": 62,
+          "target_size": 112,
+          "object_size": 134,
+          "target_sha256": "4335bc5beb8a8de06f66fe1a9b0af8f32fe04fa397b777689a950296536f6402",
+          "first_byte_difference": 21,
+          "check_seconds": 0.00194
+        }
+      ],
+      "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-122948-dbdc3493\\unit-002\\candidate.obj",
+      "source_sha256": "cb134ba0731cf2b746441eb152c02b0247702a81dfee773bbaa9d706d5db3420"
+    }
+  ],
+  "blockers": [
+    {
+      "address": "0046b860",
+      "status": "parked after three rejected inline controls",
+      "owner": "writer",
+      "next": "Real declaration/compiler evidence for out-of-line implicit destructor and otherwise unexplained null predecessor EH state; do not repeat inline flags or base novtable",
+      "original_handler": "007c39e8",
+      "funcinfo": "0x8db774",
+      "unwind_table": "0x8db764",
+      "states": [
+        {
+          "to": "0xffffffff",
+          "action": "0x0"
+        },
+        {
+          "to": "0xffffffff",
+          "action": "0x7c39e0"
+        }
+      ],
+      "cleanup": "007c39e0 lea ecx,[ebp-58]; jmp0046b1e0",
+      "boundary": "Explicit destructor gives state0 and83B destructor; implicit destructor body77B but caller cleanup inlined130B. /Ob1 preserves lifetime matches; /Ob0 and depth regress."
+    },
+    {
+      "address": "0057c2d0",
+      "symbol": "?clearValue@XmlNameValuePair@@ABEXXZ",
+      "owner": "frozen XmlElement/provider owner",
+      "status": "COM EH external binding unproven; 13 visited nodes each then stops",
+      "next": "Independently identify authentic provider and destructor/string/shared-handle ownership; contains indirect shared ownership disposal calls, so direct name binding alone insufficient"
+    }
+  ],
+  "next_gate": "Parent fresh serialized diagnostic snapshot; no stale link counts asserted",
+  "canonical_edits": false,
+  "scope": "Inactive variant sources and evidence only. No activation, build selection, shared header, server credit or runtime proof."
+}

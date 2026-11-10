@@ -1,0 +1,26 @@
+{
+  "swap_target": "CRobloxDoc diagnostic closure",
+  "baseline_receipt": "work/2008-06/native-doc-relinks/20261105-132212-105c59ff/result.json",
+  "hypotheses": [
+    {
+      "variant": 1,
+      "change": "inline only five migrated definitions",
+      "compile": 1,
+      "retained_bodies": 73,
+      "changed_bodies": 0,
+      "retained_named_symbols": 289
+    }
+  ],
+  "next_gate": [
+    "Independent original constructor/wrapper inlined contract and complete call/EH graph proof",
+    "Parent isolated relink with private per-member replacement"
+  ],
+  "metrics": {
+    "original_body_data_exact": 3,
+    "inactive_new_exact": 0,
+    "selected_executable": 0,
+    "class_swaps": 0,
+    "server_credit": 0
+  },
+  "scope": "Private proposal. No canonical changes; four Vista definitions become COMDAT. No claim that duplicate link diagnostics are closed until parent relink."
+}

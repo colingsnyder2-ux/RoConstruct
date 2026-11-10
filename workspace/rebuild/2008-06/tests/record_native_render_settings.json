@@ -1,0 +1,581 @@
+{
+ "methods": [
+  {
+   "address": "00408e20",
+   "symbol": "??$?0VCRenderSettings@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@?$shared_ptr@VCRenderSettings@@@boost@@QAE@PAVCRenderSettings@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00408ed0",
+   "symbol": "??$create@VCRenderSettings@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VCRenderSettings@@@boost@@XZ",
+   "raw_range": false
+  },
+  {
+   "address": "00412d50",
+   "symbol": "?singleton@?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PADA@RBX@@SAAAVCRenderSettings@@XZ",
+   "raw_range": false
+  },
+  {
+   "address": "004451e0",
+   "symbol": "?getMinShadingQuality@CRenderSettings@@QBEMXZ",
+   "raw_range": false
+  },
+  {
+   "address": "004451f0",
+   "symbol": "?getMaxShadingQuality@CRenderSettings@@QBEMXZ",
+   "raw_range": false
+  },
+  {
+   "address": "00445200",
+   "symbol": "?getMinMeshDetail@CRenderSettings@@QBEMXZ",
+   "raw_range": false
+  },
+  {
+   "address": "00445210",
+   "symbol": "?getMaxMeshDetail@CRenderSettings@@QBEMXZ",
+   "raw_range": false
+  },
+  {
+   "address": "00445220",
+   "symbol": "?getBevelMode@CRenderSettings@@QBE?AW4BevelMode@1@XZ",
+   "raw_range": false
+  },
+  {
+   "address": "00445230",
+   "symbol": "?getShadowMode@CRenderSettings@@QBE?AW4ShadowMode@1@XZ",
+   "raw_range": false
+  },
+  {
+   "address": "00445240",
+   "symbol": "?getAASamples@CRenderSettings@@QBE?AW4AASamples@1@XZ",
+   "raw_range": false
+  },
+  {
+   "address": "00445250",
+   "symbol": "?getFullscreenSize@CRenderSettings@@QBE?AVVector2int16@G3D@@XZ",
+   "raw_range": false
+  },
+  {
+   "address": "00445260",
+   "symbol": "?getWindowSize@CRenderSettings@@QBE?AVVector2int16@G3D@@XZ",
+   "raw_range": false
+  },
+  {
+   "address": "00445270",
+   "symbol": "?getAggregateSize@CRenderSettings@@QBEHXZ",
+   "raw_range": false
+  },
+  {
+   "address": "004452f0",
+   "symbol": "??$min@M@std@@YAABMABM0@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00445370",
+   "symbol": "?getValue@?$GetSetImpl@P8CRenderSettings@@BE?AVVector2int16@G3D@@XZP81@AEXV23@@Z@?$PropDescriptor@VCRenderSettings@@VVector2int16@G3D@@@Reflection@RBX@@UBE?AVVector2int16@G3D@@PBVDescribedBase@34@@Z",
+   "raw_range": false
+  },
+  {
+   "address": "004453a0",
+   "symbol": "?getValue@?$GetSetImpl@P8CRenderSettings@@BEHXZP81@AEXH@Z@?$PropDescriptor@VCRenderSettings@@M@Reflection@RBX@@UBEMPBVDescribedBase@34@@Z",
+   "raw_range": false
+  },
+  {
+   "address": "004453e0",
+   "symbol": "?setValue@?$GetSetImpl@P8CRenderSettings@@BEHXZP81@AEXH@Z@?$PropDescriptor@VCRenderSettings@@M@Reflection@RBX@@UBEXPAVDescribedBase@34@ABM@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00445410",
+   "symbol": "??1?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PADA@RBX@@MAE@XZ",
+   "raw_range": false
+  },
+  {
+   "address": "00445470",
+   "symbol": "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PADA@RBX@@OME@AEPAXI@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00445480",
+   "symbol": "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PADA@RBX@@OBA@AEPAXI@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00445490",
+   "symbol": "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PADA@RBX@@OCE@AEPAXI@Z",
+   "raw_range": false
+  },
+  {
+   "address": "004454a0",
+   "symbol": "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PADA@RBX@@OGE@AEPAXI@Z",
+   "raw_range": false
+  },
+  {
+   "address": "004454b0",
+   "symbol": "??_G?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PADA@RBX@@MAEPAXI@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00445560",
+   "symbol": "??0?$TypedPropertyDescriptor@VVector2int16@G3D@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VVector2int16@G3D@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00445610",
+   "symbol": "??0?$TypedPropertyDescriptor@M@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00445680",
+   "symbol": "??$getset@P8CRenderSettings@@BE?AW4GraphicsMode@1@XZP81@AEXW421@@Z@?$PropDescriptor@VCRenderSettings@@W4GraphicsMode@1@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4GraphicsMode@CRenderSettings@@@Reflection@RBX@@@std@@P8CRenderSettings@@BE?AW4GraphicsMode@5@XZP85@AEXW465@@Z@Z",
+   "raw_range": false
+  },
+  {
+   "address": "004456d0",
+   "symbol": "??$getset@P8CRenderSettings@@BE?AW4FrameRateManagerMode@1@XZP81@AEXW421@@Z@?$PropDescriptor@VCRenderSettings@@W4FrameRateManagerMode@1@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4FrameRateManagerMode@CRenderSettings@@@Reflection@RBX@@@std@@P8CRenderSettings@@BE?AW4FrameRateManagerMode@5@XZP85@AEXW465@@Z@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00445720",
+   "symbol": "??$getset@P8CRenderSettings@@BE?AW4BevelMode@1@XZP81@AEXW421@@Z@?$PropDescriptor@VCRenderSettings@@W4BevelMode@1@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4BevelMode@CRenderSettings@@@Reflection@RBX@@@std@@P8CRenderSettings@@BE?AW4BevelMode@5@XZP85@AEXW465@@Z@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00445770",
+   "symbol": "??$getset@P8CRenderSettings@@BE?AW4ShadowMode@1@XZP81@AEXW421@@Z@?$PropDescriptor@VCRenderSettings@@W4ShadowMode@1@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4ShadowMode@CRenderSettings@@@Reflection@RBX@@@std@@P8CRenderSettings@@BE?AW4ShadowMode@5@XZP85@AEXW465@@Z@Z",
+   "raw_range": false
+  },
+  {
+   "address": "004457c0",
+   "symbol": "??$getset@P8CRenderSettings@@BE?AW4AntialiasingMode@1@XZP81@AEXW421@@Z@?$PropDescriptor@VCRenderSettings@@W4AntialiasingMode@1@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4AntialiasingMode@CRenderSettings@@@Reflection@RBX@@@std@@P8CRenderSettings@@BE?AW4AntialiasingMode@5@XZP85@AEXW465@@Z@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00445810",
+   "symbol": "??$getset@P8CRenderSettings@@BE?AVVector2int16@G3D@@XZP81@AEXV23@@Z@?$PropDescriptor@VCRenderSettings@@VVector2int16@G3D@@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VVector2int16@G3D@@@Reflection@RBX@@@std@@P8CRenderSettings@@BE?AVVector2int16@G3D@@XZP85@AEXV67@@Z@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00445860",
+   "symbol": "??$getset@P8CRenderSettings@@BEMXZP81@AEXM@Z@?$PropDescriptor@VCRenderSettings@@M@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@P8CRenderSettings@@BEMXZP85@AEXM@Z@Z",
+   "raw_range": false
+  },
+  {
+   "address": "004458b0",
+   "symbol": "??$getset@P8CRenderSettings@@BEHXZP81@AEXH@Z@?$PropDescriptor@VCRenderSettings@@M@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@P8CRenderSettings@@BEHXZP85@AEXH@Z@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00445900",
+   "symbol": "??$getset@P8CRenderSettings@@BE?AW4AASamples@1@XZP81@AEXW421@@Z@?$PropDescriptor@VCRenderSettings@@W4AASamples@1@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4AASamples@CRenderSettings@@@Reflection@RBX@@@std@@P8CRenderSettings@@BE?AW4AASamples@5@XZP85@AEXW465@@Z@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00445c10",
+   "symbol": "??1?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PADA@RBX@@MAE@XZ",
+   "raw_range": false
+  },
+  {
+   "address": "00445c70",
+   "symbol": "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PADA@RBX@@OBA@AEPAXI@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00445c80",
+   "symbol": "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PADA@RBX@@OBE@AEPAXI@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00445c90",
+   "symbol": "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PADA@RBX@@OCE@AEPAXI@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00445ca0",
+   "symbol": "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PADA@RBX@@OEE@AEPAXI@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00445cb0",
+   "symbol": "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PADA@RBX@@OGE@AEPAXI@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00445cc0",
+   "symbol": "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PADA@RBX@@OIE@AEPAXI@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00445cd0",
+   "symbol": "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PADA@RBX@@OKE@AEPAXI@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00445ce0",
+   "symbol": "??_E?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PADA@RBX@@OME@AEPAXI@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00445da0",
+   "symbol": "??_G?$GlobalSettingsItem@VCRenderSettings@@$1?sRenderSettings@@3PADA@RBX@@MAEPAXI@Z",
+   "raw_range": false
+  },
+  {
+   "address": "004479f0",
+   "symbol": "??$?0P8CRenderSettings@@BE?AVVector2int16@G3D@@XZP80@AEXV12@@Z@?$PropDescriptor@VCRenderSettings@@VVector2int16@G3D@@@Reflection@RBX@@QAE@PBD0P8CRenderSettings@@BE?AVVector2int16@G3D@@XZP83@AEXV45@@ZW4Functionality@PropertyDescriptor@12@@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00447aa0",
+   "symbol": "??$?0P8CRenderSettings@@BEMXZP80@AEXM@Z@?$PropDescriptor@VCRenderSettings@@M@Reflection@RBX@@QAE@PBD0P8CRenderSettings@@BEMXZP83@AEXM@ZW4Functionality@PropertyDescriptor@12@@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00447b50",
+   "symbol": "??$?0P8CRenderSettings@@BEHXZP80@AEXH@Z@?$PropDescriptor@VCRenderSettings@@M@Reflection@RBX@@QAE@PBD0P8CRenderSettings@@BEHXZP83@AEXH@ZW4Functionality@PropertyDescriptor@12@@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00447c00",
+   "symbol": "??$?0VCRenderSettings@@@?$BoundProp@_N$00@Reflection@RBX@@QAE@PBD0PQCRenderSettings@@_NW4Functionality@PropertyDescriptor@12@@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00447cd0",
+   "symbol": "??$?0VCRenderSettings@@@?$BoundProp@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@$00@Reflection@RBX@@QAE@PBD0PQCRenderSettings@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Functionality@PropertyDescriptor@12@@Z",
+   "raw_range": false
+  },
+  {
+   "address": "004480e0",
+   "symbol": "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PADA@RBX@@OEE@AEPAXI@Z",
+   "raw_range": false
+  },
+  {
+   "address": "004480f0",
+   "symbol": "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PADA@RBX@@OIE@AEPAXI@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00448100",
+   "symbol": "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PADA@RBX@@OKE@AEPAXI@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00448110",
+   "symbol": "??_E?$FactoryProduct@VCRenderSettings@@VItem@GlobalSettings@RBX@@$1?sRenderSettings@@3PADA@RBX@@OBE@AEPAXI@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00448320",
+   "symbol": "??A?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QBEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@I@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00448420",
+   "symbol": "??$_Find_if@PBQBVItem@EnumDescriptor@Reflection@RBX@@V?$bind_t@_NP6A_NPBVItem@EnumDescriptor@Reflection@RBX@@H@ZV?$list2@V?$arg@$00@boost@@V?$value@H@_bi@2@@_bi@boost@@@_bi@boost@@@std@@YAPBQBVItem@EnumDescriptor@Reflection@RBX@@PBQBV1234@0V?$bind_t@_NP6A_NPBVItem@EnumDescriptor@Reflection@RBX@@H@ZV?$list2@V?$arg@$00@boost@@V?$value@H@_bi@2@@_bi@boost@@@_bi@boost@@@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00448c60",
+   "symbol": "??0CRenderSettings@@QAE@XZ",
+   "raw_range": false
+  },
+  {
+   "address": "00448de0",
+   "symbol": "??_ECRenderSettings@@WBE@AEPAXI@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00448df0",
+   "symbol": "??_ECRenderSettings@@WCE@AEPAXI@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00448e00",
+   "symbol": "??_ECRenderSettings@@WEE@AEPAXI@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00448e10",
+   "symbol": "??_ECRenderSettings@@WGE@AEPAXI@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00448e20",
+   "symbol": "??_ECRenderSettings@@WIE@AEPAXI@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00448e30",
+   "symbol": "??_ECRenderSettings@@WKE@AEPAXI@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00448e40",
+   "symbol": "??_ECRenderSettings@@WME@AEPAXI@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00448e50",
+   "symbol": "??_ECRenderSettings@@WBA@AEPAXI@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00448e60",
+   "symbol": "??1CRenderSettings@@UAE@XZ",
+   "raw_range": true
+  },
+  {
+   "address": "00448eb0",
+   "symbol": "??_GCRenderSettings@@UAEPAXI@Z",
+   "raw_range": true
+  },
+  {
+   "address": "00448ed0",
+   "symbol": "?setAASamples@CRenderSettings@@QAEXW4AASamples@1@@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00448f00",
+   "symbol": "?setFullscreenSize@CRenderSettings@@QAEXVVector2int16@G3D@@@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00448f20",
+   "symbol": "?setWindowSize@CRenderSettings@@QAEXVVector2int16@G3D@@@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00448f40",
+   "symbol": "?setMinShadingQuality@CRenderSettings@@QAEXM@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00448fd0",
+   "symbol": "?setMaxShadingQuality@CRenderSettings@@QAEXM@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00449060",
+   "symbol": "?setMinMeshDetail@CRenderSettings@@QAEXM@Z",
+   "raw_range": false
+  },
+  {
+   "address": "004490c0",
+   "symbol": "?setMaxMeshDetail@CRenderSettings@@QAEXM@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00449120",
+   "symbol": "?setAggregateSize@CRenderSettings@@QAEXH@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00449180",
+   "symbol": "?setGraphicsMode@CRenderSettings@@QAEXW4GraphicsMode@1@@Z",
+   "raw_range": false
+  },
+  {
+   "address": "004491b0",
+   "symbol": "?setFrameRateManagerMode@CRenderSettings@@QAEXW4FrameRateManagerMode@1@@Z",
+   "raw_range": false
+  },
+  {
+   "address": "004491e0",
+   "symbol": "?setBevelMode@CRenderSettings@@QAEXW4BevelMode@1@@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00449210",
+   "symbol": "?setAntialiasingMode@CRenderSettings@@QAEXW4AntialiasingMode@1@@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00449240",
+   "symbol": "?setShadowMode@CRenderSettings@@QAEXW4ShadowMode@1@@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00449270",
+   "symbol": "?setValue@?$BoundPropGetSet@VCRenderSettings@@@?$BoundProp@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@$00@Reflection@RBX@@UBEXPAVDescribedBase@34@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "raw_range": false
+  },
+  {
+   "address": "00565e30",
+   "symbol": "?getGraphicsMode@CRenderSettings@@QBE?AW4GraphicsMode@1@XZ",
+   "raw_range": false
+  },
+  {
+   "address": "00609a30",
+   "symbol": "?getFrameRateManagerMode@CRenderSettings@@QBE?AW4FrameRateManagerMode@1@XZ",
+   "raw_range": false
+  },
+  {
+   "address": "006a6ee0",
+   "symbol": "?getAntialiasingMode@CRenderSettings@@QBE?AW4AntialiasingMode@1@XZ",
+   "raw_range": false
+  },
+  {
+   "address": "007ef430",
+   "symbol": "??__Eprop_graphicsMode@@YAXXZ",
+   "raw_range": false
+  },
+  {
+   "address": "007ef470",
+   "symbol": "??__Eprop_frameRateManager@@YAXXZ",
+   "raw_range": false
+  },
+  {
+   "address": "007ef4b0",
+   "symbol": "??__Eprop_bevels@@YAXXZ",
+   "raw_range": false
+  },
+  {
+   "address": "007ef4f0",
+   "symbol": "??__Eprop_shadow@@YAXXZ",
+   "raw_range": false
+  },
+  {
+   "address": "007ef530",
+   "symbol": "??__Eprop_antialiasing@@YAXXZ",
+   "raw_range": false
+  },
+  {
+   "address": "007ef570",
+   "symbol": "??__Eprop_windowSize@@YAXXZ",
+   "raw_range": false
+  },
+  {
+   "address": "007ef5b0",
+   "symbol": "??__Eprop_fullscreenSize@@YAXXZ",
+   "raw_range": false
+  },
+  {
+   "address": "007ef5f0",
+   "symbol": "??__Eprop_minShadingQuality@@YAXXZ",
+   "raw_range": false
+  },
+  {
+   "address": "007ef630",
+   "symbol": "??__Eprop_maxShadingQuality@@YAXXZ",
+   "raw_range": false
+  },
+  {
+   "address": "007ef670",
+   "symbol": "??__Eprop_minMeshDetail@@YAXXZ",
+   "raw_range": false
+  },
+  {
+   "address": "007ef6b0",
+   "symbol": "??__Eprop_maxMeshDetail@@YAXXZ",
+   "raw_range": false
+  },
+  {
+   "address": "007ef6f0",
+   "symbol": "??__Eprop_aggregateSize@@YAXXZ",
+   "raw_range": false
+  },
+  {
+   "address": "007ef730",
+   "symbol": "??__Eprop_aaSamples@@YAXXZ",
+   "raw_range": false
+  },
+  {
+   "address": "007ef770",
+   "symbol": "??__Eprop_delaySwapBuffer@@YAXXZ",
+   "raw_range": false
+  },
+  {
+   "address": "007ef7a0",
+   "symbol": "??__Eprop_profileName@@YAXXZ",
+   "raw_range": false
+  },
+  {
+   "address": "007fab90",
+   "symbol": "??__Fprop_antialiasing@@YAXXZ",
+   "raw_range": false
+  },
+  {
+   "address": "007fabb0",
+   "symbol": "??__Fprop_shadow@@YAXXZ",
+   "raw_range": false
+  },
+  {
+   "address": "007fabd0",
+   "symbol": "??__Fprop_bevels@@YAXXZ",
+   "raw_range": false
+  },
+  {
+   "address": "007fabf0",
+   "symbol": "??__Fprop_frameRateManager@@YAXXZ",
+   "raw_range": false
+  },
+  {
+   "address": "007fac10",
+   "symbol": "??__Fprop_graphicsMode@@YAXXZ",
+   "raw_range": false
+  },
+  {
+   "address": "007fac30",
+   "symbol": "??__Fprop_minMeshDetail@@YAXXZ",
+   "raw_range": false
+  },
+  {
+   "address": "007fac50",
+   "symbol": "??__Fprop_maxMeshDetail@@YAXXZ",
+   "raw_range": false
+  },
+  {
+   "address": "007fac70",
+   "symbol": "??__Fprop_aaSamples@@YAXXZ",
+   "raw_range": false
+  },
+  {
+   "address": "007fac90",
+   "symbol": "??__Fprop_aggregateSize@@YAXXZ",
+   "raw_range": false
+  },
+  {
+   "address": "007facb0",
+   "symbol": "??__Fprop_fullscreenSize@@YAXXZ",
+   "raw_range": false
+  },
+  {
+   "address": "007facd0",
+   "symbol": "??__Fprop_windowSize@@YAXXZ",
+   "raw_range": false
+  },
+  {
+   "address": "007facf0",
+   "symbol": "??__Fprop_maxShadingQuality@@YAXXZ",
+   "raw_range": false
+  },
+  {
+   "address": "007fad10",
+   "symbol": "??__Fprop_minShadingQuality@@YAXXZ",
+   "raw_range": false
+  },
+  {
+   "address": "007fad30",
+   "symbol": "??__Fprop_profileName@@YAXXZ",
+   "raw_range": false
+  },
+  {
+   "address": "007fad50",
+   "symbol": "??__Fprop_delaySwapBuffer@@YAXXZ",
+   "raw_range": false
+  }
+ ],
+ "internal_extra": {
+  "_atexit": "006a17af",
+  "??1Instance@RBX@@UAE@XZ": "0055a540",
+  "??0PropertyDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@ABVType@12@PBD2W4Functionality@012@@Z": "0056c650",
+  "?rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ": "0040ad20",
+  "??0EnumDescriptor@Reflection@RBX@@IAE@PBDABVtype_info@@@Z": "0056c590",
+  "??$singleton@M@Type@Reflection@RBX@@SAABV012@XZ": "0056cca0",
+  "??0?$TypedPropertyDescriptor@_N@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@_N@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0040a290",
+  "??0?$TypedPropertyDescriptor@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "00443230",
+  "??0?$TypedPropertyDescriptor@M@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "00445610",
+  "__ftol2_sse": "006a17f0"
+ }
+}

@@ -1,0 +1,10 @@
+{
+  "bundle_sha256": "8023588c1f7b47f4aeeb58aa7ee4292a97e21511ab2fc69727d63cf166acd9cb",
+  "paths": {
+    "G:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\App\\roc_native_debris_header_2c0ad23d27535ab8.cpp": {
+      "materialized": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-snapshot-20261105\\adopted\\roc_native_debris_header_2c0ad23d27535ab8.cpp",
+      "sha256": "2c0ad23d27535ab85cc81832ca4bff9d25ec6dae2a3848161be6a0af13a135f3",
+      "key": "roc_native_debris_header_2c0ad23d27535ab8.cpp"
+    }
+  }
+}

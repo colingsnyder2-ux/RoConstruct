@@ -1,0 +1,17 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "0045a4a0",
+                                        "symbol":  "?layout@CRobloxView@@"
+                                    },
+                                    {
+                                        "addr":  "0045a2f0",
+                                        "symbol":  "?showToolbox@CRobloxView@@"
+                                    }
+                                ],
+                     "source":  "native-classes/CRobloxViewMethods.cpp"
+                 }
+             ]
+}

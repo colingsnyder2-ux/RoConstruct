@@ -1,0 +1,84 @@
+005ba970  53                   push ebx
+005ba971  55                   push ebp
+005ba972  8bd9                 mov ebx, ecx
+005ba974  8b8354010000         mov eax, dword ptr [ebx + 0x154]
+005ba97a  8b4804               mov ecx, dword ptr [eax + 4]
+005ba97d  56                   push esi
+005ba97e  8db33c010000         lea esi, [ebx + 0x13c]
+005ba984  57                   push edi
+005ba985  51                   push ecx
+005ba986  8bce                 mov ecx, esi
+005ba988  e8f363efff           call 0x4b0d80
+005ba98d  8b4618               mov eax, dword ptr [esi + 0x18]
+005ba990  894004               mov dword ptr [eax + 4], eax
+005ba993  8b4618               mov eax, dword ptr [esi + 0x18]
+005ba996  c7461c00000000       mov dword ptr [esi + 0x1c], 0
+005ba99d  8900                 mov dword ptr [eax], eax
+005ba99f  8b7618               mov esi, dword ptr [esi + 0x18]
+005ba9a2  8bcb                 mov ecx, ebx
+005ba9a4  897608               mov dword ptr [esi + 8], esi
+005ba9a7  e82406faff           call 0x55afd0
+005ba9ac  8b8398010000         mov eax, dword ptr [ebx + 0x198]
+005ba9b2  8b8b80010000         mov ecx, dword ptr [ebx + 0x180]
+005ba9b8  8db380010000         lea esi, [ebx + 0x180]
+005ba9be  68b0a25b00           push 0x5ba2b0
+005ba9c3  50                   push eax
+005ba9c4  8bd0                 mov edx, eax
+005ba9c6  8b12                 mov edx, dword ptr [edx]
+005ba9c8  51                   push ecx
+005ba9c9  8bf9                 mov edi, ecx
+005ba9cb  52                   push edx
+005ba9cc  57                   push edi
+005ba9cd  e86ecfffff           call 0x5b7940
+005ba9d2  8b83b8010000         mov eax, dword ptr [ebx + 0x1b8]
+005ba9d8  8b8ba0010000         mov ecx, dword ptr [ebx + 0x1a0]
+005ba9de  8dbba0010000         lea edi, [ebx + 0x1a0]
+005ba9e4  68b0a25b00           push 0x5ba2b0
+005ba9e9  50                   push eax
+005ba9ea  8bd0                 mov edx, eax
+005ba9ec  8b12                 mov edx, dword ptr [edx]
+005ba9ee  51                   push ecx
+005ba9ef  8be9                 mov ebp, ecx
+005ba9f1  52                   push edx
+005ba9f2  55                   push ebp
+005ba9f3  e848cfffff           call 0x5b7940
+005ba9f8  8b4618               mov eax, dword ptr [esi + 0x18]
+005ba9fb  8b4804               mov ecx, dword ptr [eax + 4]
+005ba9fe  83c428               add esp, 0x28
+005baa01  51                   push ecx
+005baa02  8bce                 mov ecx, esi
+005baa04  e8f7f3ffff           call 0x5b9e00
+005baa09  8b4618               mov eax, dword ptr [esi + 0x18]
+005baa0c  894004               mov dword ptr [eax + 4], eax
+005baa0f  8b4618               mov eax, dword ptr [esi + 0x18]
+005baa12  33ed                 xor ebp, ebp
+005baa14  896e1c               mov dword ptr [esi + 0x1c], ebp
+005baa17  8900                 mov dword ptr [eax], eax
+005baa19  8b7618               mov esi, dword ptr [esi + 0x18]
+005baa1c  897608               mov dword ptr [esi + 8], esi
+005baa1f  8b5718               mov edx, dword ptr [edi + 0x18]
+005baa22  8b4204               mov eax, dword ptr [edx + 4]
+005baa25  50                   push eax
+005baa26  8bcf                 mov ecx, edi
+005baa28  e8d3f3ffff           call 0x5b9e00
+005baa2d  8b4718               mov eax, dword ptr [edi + 0x18]
+005baa30  894004               mov dword ptr [eax + 4], eax
+005baa33  8b4718               mov eax, dword ptr [edi + 0x18]
+005baa36  896f1c               mov dword ptr [edi + 0x1c], ebp
+005baa39  8900                 mov dword ptr [eax], eax
+005baa3b  8b7f18               mov edi, dword ptr [edi + 0x18]
+005baa3e  897f08               mov dword ptr [edi + 8], edi
+005baa41  8b8334010000         mov eax, dword ptr [ebx + 0x134]
+005baa47  3bc5                 cmp eax, ebp
+005baa49  7415                 je 0x5baa60
+005baa4b  50                   push eax
+005baa4c  e8c7510e00           call 0x69fc18
+005baa51  50                   push eax
+005baa52  e849ddffff           call 0x5b87a0
+005baa57  83c404               add esp, 4
+005baa5a  89ab34010000         mov dword ptr [ebx + 0x134], ebp
+005baa60  5f                   pop edi
+005baa61  5e                   pop esi
+005baa62  5d                   pop ebp
+005baa63  5b                   pop ebx
+005baa64  c3                   ret 

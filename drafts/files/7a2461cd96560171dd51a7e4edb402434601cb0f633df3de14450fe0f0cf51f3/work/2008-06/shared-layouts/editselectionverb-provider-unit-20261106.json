@@ -1,0 +1,121 @@
+{
+ "baseline_commit": "unknown",
+ "blocker_reduced": "EditSelectionVerb::EditSelectionVerb 0057e730, the base-class provider the StandardVerbs ctor constructs at eight call sites, is now byte-exact from the existing native source, and its two MSVCP90 std::string call sites carry the same reviewed indirect-call ABI receipt as the StandardVerbs unit.",
+ "check": {
+  "addr": "0057e730",
+  "data_errors": [],
+  "data_references": 1,
+  "first_byte_difference": null,
+  "object_size": 175,
+  "status": "exact",
+  "symbol": "??0EditSelectionVerb@RBX@@IAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVDataModel@1@@Z",
+  "target_sha256": "42a339c66ef12b82861f3b7634cb52967b0c1e9f0d4719a90fea188b75ec947b",
+  "target_size": 175
+ },
+ "client": "2008-06",
+ "compiler": "C:\\Users\\colin\\Desktop\\RoConstruct-main\\RoConstruct-Native-4f7d46a43031423c966cd798b30be257\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\bin\\cl.exe",
+ "compiler_sha256": "a8fb826379837492f19b249a3553acc3f904afe4c93e643054d0e48340ae717a",
+ "direct_call_bindings": {
+  "scope": "Recorded for the next batch. This unit ran in diagnostic call mode, so no reviewed direct-call binding is claimed here; candidate externals are quoted as candidate-derived evidence, never as reviewed bindings.",
+  "sites": [
+   {
+    "candidate_external": "??0Verb@RBX@@IAE@PAVVerbContainer@1@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+    "independent_evidence": "work/2008-06/shared-layouts/verb-ctor.json (task-owned receipt, no build fingerprint; historical, not a fresh proof)",
+    "offset": 80,
+    "target": "005833e0"
+   },
+   {
+    "candidate_external": "??$shared_from@VWorkspace@RBX@@@RBX@@YA?AV?$shared_ptr@VWorkspace@RBX@@@boost@@PAVWorkspace@0@@Z",
+    "independent_evidence": "none resolved: several task-owned receipts label 00618a40 as ??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z with an explicit \"(external)\" / \"(evidence name)\" qualifier, so the specialization identity at 00618a40 is unresolved",
+    "offset": 107,
+    "target": "00618a40"
+   }
+  ],
+  "status": "open"
+ },
+ "indirect_call_abi": {
+  "bindings": "work/native-candidates/editselectionverb-provider-20261106/bindings.json",
+  "bindings_sha256": "2962b98690bc1405dc1844f026b09b19688f832b3ba86321cdb646732d476352",
+  "iat_slots": {
+   "0080245c": {
+    "candidate_external": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+    "demangled": "public: __thiscall std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)",
+    "original_import": {
+     "dll": "MSVCP90.dll",
+     "import": "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z"
+    },
+    "sites": [
+     71
+    ]
+   },
+   "00802468": {
+    "candidate_external": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+    "demangled": "public: __thiscall std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >::~basic_string<char,struct std::char_traits<char>,class std::allocator<char> >(void)",
+    "original_import": {
+     "dll": "MSVCP90.dll",
+     "import": "??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+    },
+    "sites": [
+     147
+    ]
+   }
+  },
+  "probe": "work/native-candidates/standard-verbs-iat-abi-20261106/probe_indirect_call_abi.py",
+  "probe_sha256": "c55370f525fe1cc09c74df995591245f0aba22ff9e127ea949f58c53ddc7c463",
+  "scope": "Same imported callee, same IAT slot, same declared ABI and same argument setup as the original client, for every indirect call site in the recovered body.",
+  "totals": {
+   "bodies": 1,
+   "byte_identical_bodies": 1,
+   "direct_sites": 2,
+   "indirect_sites": 2,
+   "unclassified_sites": 0,
+   "verified": 2
+  }
+ },
+ "manifest": "rebuild/2008-06/tests/editselectionverb-provider-unit-20261106.json",
+ "manifest_sha256": "c506bb7c7f03c037c0d8af6444aaae6cca7b827a7a5aa285f6b74146467f3e13",
+ "metrics": {
+  "gated_class_swaps": 0,
+  "inactive_exact_addresses": 1,
+  "selected_exact_addresses": 0,
+  "server_credit_added": 0
+ },
+ "non_claims": [
+  "No link was performed and no provider was selected.",
+  "No .lib, RSP, map or executable was created, copied or reconstructed.",
+  "No symbol alias, stub or synthetic mapping was introduced.",
+  "No server credit, runtime activation or executable selection change."
+ ],
+ "object": "work/2008-06/native-check-runs/20261106-121512-f7611e2e/unit-000/candidate.obj",
+ "object_sha256": "d98db8bf4ca9bebaa32999f8fb18962743a90e517773d09d3902f524ac117788",
+ "owner_checkout_queue_present": false,
+ "package_revision": "6a75107cef5c18ce5004b83e32ac32736c354a262f7257e7dfbe3192d7bcd00f",
+ "preserved": "Shared headers, vendor inputs, other leases and the active executable selection unchanged. RBX::MoveDown selection verb 2008 and RBX::CRobloxDoc message handlers 2008 are held by other active leases and were not touched.",
+ "proof": {
+  "direct_call_bindings": false,
+  "exact_bytes": true,
+  "indirect_call_bindings": true,
+  "referenced_data": true,
+  "require_proof_exit": 1,
+  "scope": "Local isolated diagnostics. No link, no provider selection, no executable selection, no runtime activation, no server credit."
+ },
+ "provider_selection": {
+  "detail": "No filtered provider archive (b4d51e680296b50c2cfb57e93815e569519144aa19d25779dbd3c0d714db5798), no full archive (21e44d8cac6d3f14850180ccb2f8d5ed618fe129c9d5c1632186b78d52d03519), no link response file and no document-swap link object set exist in this workspace; provider selection for these symbols is unknown.",
+  "status": "blocked_on_missing_input"
+ },
+ "remaining": [
+  "Reviewed direct-call bindings for the two direct call sites in 0057e730 (offsets 80 and 107)",
+  "Resolve the 00618a40 specialization identity (shared_from<Workspace> versus shared_from<Instance>)",
+  "Provider selection and link closure for the StandardVerbs composition (missing owner-side inputs)",
+  "Relevant P5/P6/runtime gates before any activation"
+ ],
+ "run": "work\\2008-06\\native-check-runs\\20261106-121512-f7611e2e",
+ "schema": 1,
+ "source": "rebuild/2008-06/native-classes/EditSelectionVerbConstructor.cpp",
+ "source_sha256": "0a9e0d1308c5e585f4d7e070066b7b5516715bd17f0fcc748f5e8c6b116aec22",
+ "swap_target": "Document/Workspace native class swap: CRobloxDoc/StandardVerbs composition and tool-verb mouse-command providers",
+ "task": "Native source recovery with automatic draft sharing",
+ "unit": "EditSelectionVerbConstructor.cpp",
+ "workflow": 52,
+ "workspace_manifest_source_revision": "6a75107cef5c18ce5004b83e32ac32736c354a262f7257e7dfbe3192d7bcd00f"
+}

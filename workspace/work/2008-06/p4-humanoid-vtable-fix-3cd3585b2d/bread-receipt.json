@@ -1,0 +1,31 @@
+{
+  "source_revision": "3cd3585b2d303f6b10fe14df00196135c81adba7",
+  "fixture": "user-supplied 2008E/Bread Factory Tycoon.rbxl.gz (not redistributed)",
+  "xml_sha256": "f06e50fbfd097e24178e279b721ad8c5a27d5839f3197ca555dfa9fbafe6be00",
+  "exe_sha256": "f96177dde0e2373ec175c61716b04767f05188a37fed2726af61374b9f89d024",
+  "map_sha256": "bf40a3c5011da58bf18719d5dffb931a5d55f8efda9d02850c1845b3bb9d602c",
+  "reflection_asset_sha256": "5603c747eebd4d0a5774826b481387af63d6013eef4eac10d1a5d0cc6d51b2e9",
+  "runs": {
+    "load-only": {
+      "exit": 0,
+      "humanoids_68": true,
+      "cleanup_zero": false
+    },
+    "frames": {
+      "exit": 0,
+      "humanoids_68": false,
+      "cleanup_zero": true
+    }
+  },
+  "model_count": 792,
+  "status_counts": {
+    "0": 480,
+    "3": 312
+  },
+  "capture_sha256": "ed10aca8502256643909b39c92cf979b966dea114df4651e5cbeb6e35f4f0b68",
+  "limitations": [
+    "Harness camera does not frame the whole place.",
+    "312 models return unsupported geometry status3; visual parity not established.",
+    "User map XML, logs, CSV and captures remain local."
+  ]
+}

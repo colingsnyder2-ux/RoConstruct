@@ -1,0 +1,2555 @@
+{
+  "class": "RBX::RenderBase::Chunk (base), SceneManager, SimpleSceneManager, AggregateChunk, AggregatingSceneManager, RenderSceneBase, Render::RenderScene, RenderNew::RenderScene; RBX::ViewBase, ViewNew::ViewRbxGfx (leaves)",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/I/home/user/roconstruct/tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeRenderSceneLayout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/tests/NativeRenderSceneLayout.cpp"
+    ],
+    "scene": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeRenderScene_scene.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/SceneManager2008.cpp"
+    ],
+    "aggregate": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/Od",
+      "/Ob0",
+      "/GS",
+      "/I/home/user/roconstruct/tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeRenderScene_aggregate.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AggregateChunk2008.cpp"
+    ],
+    "aggregating": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/Od",
+      "/Ob0",
+      "/GS",
+      "/I/home/user/roconstruct/tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeRenderScene_aggregating.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/SceneManagerAggregating2008.cpp"
+    ],
+    "scenebase": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/I/home/user/roconstruct/tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeRenderScene_scenebase.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/RenderSceneBase2008.cpp"
+    ],
+    "viewbase": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeRenderScene_viewbase.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/RenderSceneViewBase2008.cpp"
+    ],
+    "viewrbxgfx": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeRenderScene_viewrbxgfx.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/RenderSceneViewRbxGfx2008.cpp"
+    ],
+    "scenenew": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/I/home/user/roconstruct/tools/libs/ogre-1.4.5/ogrenew/OgreMain/include",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeRenderScene_scenenew.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/RenderSceneNew2008.cpp"
+    ],
+    "viewbase_pending": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/render-scene-pending",
+      "/DNATIVE_VIEWBASE_PENDING",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeRenderScene_viewbase_pending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/RenderSceneViewBase2008.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_render_scene.py": "34522207d9d19b1120de88834363e3cf244d81e071982439932842492ecd1b5d",
+    "rebuild/2008-06/tests/NativeRenderSceneLayout.cpp": "443e0dc8e2ae730fadcfcfaa31431110062b806c6c605c86e21ba97cac9ba850",
+    "rebuild/2008-06/native-classes/SceneManager2008.cpp": "76ae91858e1f0aae1f4f4d8a7701676914c321c7d4a8314734c56685e8a84162",
+    "rebuild/2008-06/native-classes/AggregateChunk2008.cpp": "e0e09d1dc3e9142ad1a49e655c0480282a505f87c29d8522c4c1d8478aa5cf24",
+    "rebuild/2008-06/native-classes/SceneManagerAggregating2008.cpp": "d39d2ddf6553d02e2ca588bc9f4af2e6ae791317177fc3113ce9a2a2e7eb94b3",
+    "rebuild/2008-06/native-classes/RenderSceneBase2008.cpp": "619e623fa6686de95ba64620a55656d5d8cbc7218a849b8a4f8d4ad56978a3f5",
+    "rebuild/2008-06/native-classes/RenderSceneViewBase2008.cpp": "f2f0cbc1603b27ed237c7abdc061bc4c09e258aba436e3a6b7498bae0ac0d23f",
+    "rebuild/2008-06/native-classes/RenderSceneViewRbxGfx2008.cpp": "2fd26f9eb3a48f950bfae8346cc3866dca4b25eb040d7b98c21ecc34c594c9c9",
+    "rebuild/2008-06/native-classes/RenderSceneNew2008.cpp": "0cb6fd0c4a6903de83bbcc0a548222becc763813bacef031b5ed915da4c67015",
+    "rebuild/2008-06/native-headers/RenderLib/AggregateChunk2008.h": "2e4d036dbd1996fc6c7b29e1ec93ae819eeb3a7580ba9f7149f1fd1c3ff2cf68",
+    "rebuild/2008-06/native-headers/RenderLib/SceneManager2008.h": "dd1bdeec3ee58da6f291eac9d5ca7a1ede3863ee3aa9bbb7a489026ecdb98d6d",
+    "rebuild/2008-06/native-headers/RenderLib/RenderScene2008.h": "c7a3aaf9d4b99782c09925abb2c2cbd5135d2adb1e378a5aa152c1bb3f2c0561",
+    "rebuild/2008-06/native-headers/RenderLib/ViewBase2008.h": "0a03175b2d9046a97965d17384e3336b07287b6c020d99f88e07fc723537af10",
+    "rebuild/2008-06/native-headers/RenderLib/ViewNew2008.h": "53cb079c857655b92edc3dc13e57dafe18be887ed86f0b918f23ee6d57aee5a0",
+    "rebuild/2008-06/native-headers/RenderLib/RenderSceneRender2008.h": "78e36abbf89f9eb395b05555590710e3da65426b23f08a31ed7b245dbdd069a3",
+    "rebuild/2008-06/native-headers/RenderLib/RenderSceneNew2008.h": "963b1594662c88d88527e6dd0ac96367596fc34e35981d89c68a0ab61c9fb0d7"
+  },
+  "objects": {
+    "NativeRenderSceneLayout.obj": "f94b002af76cce4ada487797e43dead5ace75ccdf641515277e1c8ba927a7dc2",
+    "NativeRenderScene_scene.obj": "8d384238d8a38858d4155292ff3ba1f2306f123bc1201fc2dfeecc3e8ba55872",
+    "NativeRenderScene_aggregate.obj": "9ebca8222679f624b06badc3553a93c1de40b6791dd315dba27a9b85b962527b",
+    "NativeRenderScene_aggregating.obj": "32813de4f8b62ec0fa2fbbecec9351e5eff46a7b08815bacc51ec6826321e37c",
+    "NativeRenderScene_scenebase.obj": "2ac31b4a125677df597d9c02281135f6cb5bc51f2aa0808285d62a8fbb27255b",
+    "NativeRenderScene_viewbase.obj": "b4257fce5a5a2be4cf2a8fbfd2323f2c9dc5805c0a6d7585c2a17f0a6dd2c3f8",
+    "NativeRenderScene_viewrbxgfx.obj": "2003bd605f91a4795bedc8c828de419c0b6ed3c10ddec040d40819dec1fdd03f",
+    "NativeRenderScene_scenenew.obj": "5d6a2c5e2ef8acc7a2aae7b76e42109f96e2a647848f374233e8bbb675ccd719",
+    "NativeRenderScene_viewbase_pending.obj": "1c99bdd8b15a2934768f87c84f536baf467aa97bf57d894cc7fb8945b8d91b0a"
+  },
+  "layout": {
+    "chunkSize": "0x28",
+    "chunkEntity": "0xc",
+    "chunkSubEntity": "0x10",
+    "chunkSortValue": "0x14",
+    "chunkPolygonOffset": "0x18",
+    "chunkRadius": "0x1c",
+    "chunkAggregate": "0x20",
+    "aggregateChunkSize": "0x108",
+    "aggregateMaterial": "0x28",
+    "aggregateMesh": "0x2c",
+    "aggregateCframe": "0x30",
+    "aggregateCastsShadows": "0x60",
+    "aggregateCullable": "0x61",
+    "aggregateShadowSource": "0x68",
+    "aggregateShadowVAR": "0xb8",
+    "aggregateShadowIndexArray": "0xd8",
+    "aggregateShadowIndexArray16": "0xe4",
+    "aggregateComponents": "0xf0",
+    "sceneManagerSize": "0x8",
+    "sceneManagerRenderScene": "0x4",
+    "simpleSceneManagerSize": "0x8",
+    "bucketSize": "0x24",
+    "bucketQueue": "0xc",
+    "bucketKeySize": "0xc",
+    "bucketKeyCullable": "0x1",
+    "bucketKeyPolygonOffset": "0x4",
+    "bucketKeyMaterial": "0x8",
+    "aggregatingSize": "0x68",
+    "aggregatingBuckets": "0x8",
+    "aggregatingInvalidSleeping": "0x28",
+    "aggregatingInvalidMoving": "0x48",
+    "sceneBaseSize": "0x268",
+    "sceneBaseChunkArray": "0x8",
+    "sceneBaseColorClearValue": "0x14",
+    "sceneBaseShadingQuality": "0x24",
+    "sceneBaseMeshDetail": "0x28",
+    "sceneBaseRenderStats": "0x30",
+    "renderStatsSize": "0x238",
+    "lightingParametersSize": "0xf8",
+    "viewBaseSize": "0x48",
+    "viewBaseSceneManager": "0x4",
+    "viewBaseRenderLibScene": "0x8",
+    "viewBaseTextureManager": "0xc",
+    "viewBaseMaterialFactory": "0x10",
+    "viewBaseDataModel": "0x14",
+    "viewBaseLightingChanged": "0x1c",
+    "viewBaseDescendentAdded": "0x30",
+    "viewBaseLightingValid": "0x44",
+    "scopedConnectionSize": "0x14",
+    "textureManagerSize": "0x18",
+    "viewRbxGfxSize": "0x4c",
+    "viewRbxGfxSkyValid": "0x48",
+    "renderSceneSize": "0x500",
+    "renderSceneProxyArray": "0x268",
+    "renderSceneDiffuseProxyArray": "0x274",
+    "renderSceneReflectProxyArray": "0x280",
+    "renderSceneTransparentProxyArray": "0x28c",
+    "renderSceneShadowProxyArray": "0x298",
+    "renderSceneShadowCachingChunkArray": "0x2a4",
+    "renderSceneShadowVAR": "0x2b0",
+    "renderSceneShadowVARArea": "0x2d0",
+    "renderSceneEffectSettings": "0x2d4",
+    "renderSceneDesiredLighting": "0x2e8",
+    "renderSceneLighting": "0x2ec",
+    "renderSceneShadows": "0x2f0",
+    "renderSceneCameraDistance": "0x2f4",
+    "renderSceneShadowIndexArray": "0x2f8",
+    "renderSceneDebugShadowVolumes": "0x304",
+    "renderSceneSky": "0x308",
+    "renderSceneDesiredSkyParameters": "0x310",
+    "renderSceneSkyParameters": "0x408",
+    "effectSettingsSize": "0x14",
+    "renderSurfaceSize": "0x44",
+    "renderSurfaceZ": "0x30",
+    "renderSurfaceMaterial": "0x34",
+    "renderSurfacePolygonOffset": "0x38",
+    "renderSurfaceMesh": "0x3c",
+    "renderSurfaceFullMesh": "0x40",
+    "lightingShadowedLightArray": "0x4c",
+    "lightingAmbientTop": "0x18",
+    "renderNewSceneSize": "0x590",
+    "renderNewSceneRootNode": "0x268",
+    "renderNewSceneEntity": "0x26c",
+    "renderNewSceneMaterial": "0x270",
+    "renderNewSceneMesh": "0x27c",
+    "renderNewSceneProxyArray": "0x288",
+    "renderNewSceneShadowProxyArray": "0x2b8",
+    "renderNewSceneShadowCachingChunkArray": "0x2c4",
+    "renderNewSceneShadowVAR": "0x2d0",
+    "renderNewSceneShadowVARArea": "0x2f0",
+    "renderNewSceneEffectSettings": "0x2f4",
+    "renderNewSceneDesiredLighting": "0x308",
+    "renderNewSceneLighting": "0x30c",
+    "renderNewSceneShadows": "0x310",
+    "renderNewSceneCameraDistance": "0x314",
+    "renderNewSceneShadowIndexArray": "0x318",
+    "renderNewSceneDebugShadowVolumes": "0x324",
+    "renderNewSceneShadowColor": "0x328",
+    "renderNewSceneColorShiftTop": "0x338",
+    "renderNewSceneColorShiftBottom": "0x344",
+    "renderNewSceneBrightness": "0x350",
+    "renderNewSceneAmbient": "0x354",
+    "renderNewSceneLightingTerm0": "0x360",
+    "renderNewSceneLightingTerm4": "0x390",
+    "renderNewSceneDesiredSkyParameters": "0x3a0",
+    "renderNewSceneSkyParameters": "0x498",
+    "renderNewSceneEffectSettingsSize": "0x14",
+    "renderNewSceneEffectSettingsFarCullZ": "0x8",
+    "renderNewSceneEffectSettingsLODShift": "0x10"
+  },
+  "rows": {
+    "scene": [
+      {
+        "address": "004e8160",
+        "symbol": "??0Chunk@RenderBase@RBX@@QAE@M@Z",
+        "size": 97,
+        "target_size": 97,
+        "exact": true,
+        "verified_targets": {
+          "??_7ReferenceCountedObject@G3D@@6B@": "0x81e1e0 (vtable RTTI .?AVReferenceCountedObject@G3D@@ offset 0x0)",
+          "??_B?1??inf@G3D@@YAABNXZ@51": "0x96f020 (data)",
+          "__imp___Inf": "0x8024ac (msvcp90.dll!_Inf)",
+          "?i@?1??inf@G3D@@YAABNXZ@4NB": "0x96f018 (data)",
+          "??_7?$WeakReferenceCountedPointer@VAggregateChunk@RenderBase@RBX@@@G3D@@6B@": "0x826ea0 (vtable RTTI .?AV?$WeakReferenceCountedPointer@VAggregateChunk@RenderBase@RBX@@@G3D@@ offset 0x0)",
+          "?chunkCount@RenderStats@@2HA": "0x97288c (data)"
+        },
+        "local": []
+      },
+      {
+        "address": "004e81d0",
+        "symbol": "??1Chunk@RenderBase@RBX@@UAE@XZ",
+        "size": 117,
+        "target_size": 117,
+        "exact": true,
+        "verified_targets": {
+          "?chunkCount@RenderStats@@2HA": "0x97288c (data)",
+          "?removeSubEntity@RbxEntity@Ogre@@QAEXPAVRbxSubEntity@2@@Z": "0x67d2d0 (external)",
+          "??_7?$WeakReferenceCountedPointer@VAggregateChunk@RenderBase@RBX@@@G3D@@6B@": "0x826ea0 (vtable RTTI .?AV?$WeakReferenceCountedPointer@VAggregateChunk@RenderBase@RBX@@@G3D@@ offset 0x0)",
+          "?zeroPointer@?$WeakReferenceCountedPointer@VAggregateChunk@RenderBase@RBX@@@G3D@@AAEXXZ": "0x4f0840 (external)",
+          "??_7_WeakPtr@G3D@@6B@": "0x826e94 (vtable RTTI .?AV_WeakPtr@G3D@@ offset 0x0)",
+          "??_7ReferenceCountedObject@G3D@@6B@": "0x81e1e0 (vtable RTTI .?AVReferenceCountedObject@G3D@@ offset 0x0)"
+        },
+        "local": [
+          "__ehhandler$??1Chunk@RenderBase@RBX@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "004e5b60",
+        "symbol": "?setSortValue@Chunk@RenderBase@RBX@@UAEXM@Z",
+        "size": 10,
+        "target_size": 10,
+        "exact": true,
+        "verified_targets": {},
+        "local": []
+      },
+      {
+        "address": "004e5b70",
+        "symbol": "?getSortValue@Chunk@RenderBase@RBX@@UBEMXZ",
+        "size": 4,
+        "target_size": 4,
+        "exact": true,
+        "verified_targets": {},
+        "local": []
+      },
+      {
+        "address": "004d6f60",
+        "symbol": "??0SceneManager@RenderBase@RBX@@IAE@PAVRenderSceneBase@12@@Z",
+        "size": 18,
+        "target_size": 18,
+        "exact": true,
+        "verified_targets": {
+          "??_7SceneManager@RenderBase@RBX@@6B@": "0x826b44 (vtable RTTI .?AVSceneManager@RenderBase@RBX@@ offset 0x0)"
+        },
+        "local": []
+      },
+      {
+        "address": "004d6f50",
+        "symbol": "??1SceneManager@RenderBase@RBX@@UAE@XZ",
+        "size": 7,
+        "target_size": 7,
+        "exact": true,
+        "verified_targets": {
+          "??_7SceneManager@RenderBase@RBX@@6B@": "0x826b44 (vtable RTTI .?AVSceneManager@RenderBase@RBX@@ offset 0x0)"
+        },
+        "local": []
+      },
+      {
+        "address": "004d7350",
+        "symbol": "??_GSceneManager@RenderBase@RBX@@UAEPAXI@Z",
+        "size": 31,
+        "target_size": 31,
+        "exact": true,
+        "verified_targets": {
+          "??_7SceneManager@RenderBase@RBX@@6B@": "0x826b44 (vtable RTTI .?AVSceneManager@RenderBase@RBX@@ offset 0x0)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local": []
+      },
+      {
+        "address": "004d7350",
+        "symbol": "??_GSimpleSceneManager@RenderBase@RBX@@UAEPAXI@Z",
+        "size": 31,
+        "target_size": 31,
+        "exact": true,
+        "verified_targets": {
+          "??_7SceneManager@RenderBase@RBX@@6B@": "0x826b44 (vtable RTTI .?AVSceneManager@RenderBase@RBX@@ offset 0x0)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local": []
+      },
+      {
+        "address": "004d7320",
+        "symbol": "?invalidateModel@SimpleSceneManager@RenderBase@RBX@@UAEXABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@_N@Z",
+        "size": 37,
+        "target_size": 37,
+        "exact": true,
+        "verified_targets": {
+          "?removeSubEntity@RbxEntity@Ogre@@QAEXPAVRbxSubEntity@2@@Z": "0x67d2d0 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "00458e90",
+        "symbol": "?setSleeping@SimpleSceneManager@RenderBase@RBX@@UAEXABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@_N@Z",
+        "size": 3,
+        "target_size": 3,
+        "exact": true,
+        "verified_targets": {},
+        "local": []
+      },
+      {
+        "address": "00458e90",
+        "symbol": "?prerender@SimpleSceneManager@RenderBase@RBX@@UAEXN@Z",
+        "size": 3,
+        "target_size": 3,
+        "exact": true,
+        "verified_targets": {},
+        "local": []
+      },
+      {
+        "address": "004d7db0",
+        "symbol": "?addToScene@SceneManager@RenderBase@RBX@@IAEXABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "?append@?$Array@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@G3D@@QAEXABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@2@@Z": "0x4d7ae0 (own row)"
+        },
+        "local": []
+      },
+      {
+        "address": "004d7db0",
+        "symbol": "?addModel@SimpleSceneManager@RenderBase@RBX@@UAEXABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "?append@?$Array@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@G3D@@QAEXABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@2@@Z": "0x4d7ae0 (own row)"
+        },
+        "local": []
+      },
+      {
+        "address": "004d8320",
+        "symbol": "?removeFromScene@SceneManager@RenderBase@RBX@@IAEXABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@Z",
+        "size": 84,
+        "target_size": 84,
+        "exact": true,
+        "verified_targets": {
+          "?setPointer@?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@AAEXPAVChunk@RenderBase@RBX@@@Z": "0x598fa0 (external)",
+          "?resize@?$Array@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@G3D@@QAEXH_N@Z": "0x4d7890 (own row)"
+        },
+        "local": []
+      },
+      {
+        "address": "004d8380",
+        "symbol": "?removeModel@SimpleSceneManager@RenderBase@RBX@@UAEXABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@Z",
+        "size": 5,
+        "target_size": 5,
+        "exact": true,
+        "verified_targets": {
+          "?removeFromScene@SceneManager@RenderBase@RBX@@IAEXABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@Z": "0x4d8320 (own row)"
+        },
+        "local": []
+      },
+      {
+        "address": "004d8310",
+        "symbol": "?clear@SimpleSceneManager@RenderBase@RBX@@UAEXXZ",
+        "size": 16,
+        "target_size": 16,
+        "exact": true,
+        "verified_targets": {
+          "?resize@?$Array@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@G3D@@QAEXH_N@Z": "0x4d7890 (own row)"
+        },
+        "local": []
+      },
+      {
+        "address": "004d7ae0",
+        "symbol": "?append@?$Array@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@G3D@@QAEXABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@2@@Z",
+        "size": 288,
+        "target_size": 288,
+        "exact": true,
+        "verified_targets": {
+          "?setPointer@?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@AAEXPAVChunk@RenderBase@RBX@@@Z": "0x598fa0 (external)",
+          "__imp__InterlockedIncrement@4": "0x8021b0 (kernel32.dll!InterlockedIncrement)",
+          "?append@?$Array@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@G3D@@QAEXABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@2@@Z": "0x4d7ae0 (own row)",
+          "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+          "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ": "0x45ad90 (external (evidence name))",
+          "?resize@?$Array@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@G3D@@QAEXH_N@Z": "0x4d7890 (own row)"
+        },
+        "local": [
+          "__ehhandler$?append@?$Array@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@G3D@@QAEXABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@2@@Z"
+        ]
+      },
+      {
+        "address": "004d7890",
+        "symbol": "?resize@?$Array@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@G3D@@QAEXH_N@Z",
+        "size": 373,
+        "target_size": 373,
+        "exact": true,
+        "verified_targets": {
+          "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "??_B?3??resize@?$Array@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@G3D@@QAEXH_N@Z@53": "0x97271c (data)",
+          "?minSize@?3??resize@?$Array@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@G3D@@QAEXH_N@Z@4HB": "0x972718 (data)",
+          "__real@40400000": "0x81e380 (constant 40400000)",
+          "__real@3fc00000": "0x81e37c (constant 3fc00000)",
+          "__real@40000000": "0x81c434 (constant 40000000)",
+          "__ftol2_sse": "0x6a17f0 (external)",
+          "?realloc@?$Array@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@G3D@@AAEXH@Z": "0x475a40 (external)"
+        },
+        "local": []
+      }
+    ],
+    "aggregate": [
+      {
+        "address": "005526d0",
+        "symbol": "?cachesShadows@AggregateChunk@RenderBase@RBX@@UBE_NXZ",
+        "size": 13,
+        "target_size": 13,
+        "exact": true,
+        "verified_targets": {},
+        "local": []
+      },
+      {
+        "address": "00552690",
+        "symbol": "?castsShadows@AggregateChunk@RenderBase@RBX@@UBE_NXZ",
+        "size": 17,
+        "target_size": 17,
+        "exact": true,
+        "verified_targets": {},
+        "local": []
+      },
+      {
+        "address": "005526b0",
+        "symbol": "?cullable@AggregateChunk@RenderBase@RBX@@UBE_NXZ",
+        "size": 17,
+        "target_size": 17,
+        "exact": true,
+        "verified_targets": {},
+        "local": []
+      },
+      {
+        "address": "00552720",
+        "symbol": "?getMesh@AggregateChunk@RenderBase@RBX@@UAE?AV?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@XZ",
+        "size": 49,
+        "target_size": 49,
+        "exact": true,
+        "verified_targets": {
+          "??0?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@QAE@ABV01@@Z": "0x4f0820 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "00552760",
+        "symbol": "?cframe@AggregateChunk@RenderBase@RBX@@UAEABVCoordinateFrame@G3D@@XZ",
+        "size": 17,
+        "target_size": 17,
+        "exact": true,
+        "verified_targets": {},
+        "local": []
+      },
+      {
+        "address": "005526e0",
+        "symbol": "?getMaterial@AggregateChunk@RenderBase@RBX@@UAE?AV?$ReferenceCountedPointer@VMaterialBase@RenderBase@RBX@@@G3D@@XZ",
+        "size": 49,
+        "target_size": 49,
+        "exact": true,
+        "verified_targets": {
+          "??0?$ReferenceCountedPointer@VMaterialBase@RenderBase@RBX@@@G3D@@QAE@ABV01@@Z": "0x4f0820 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "00551f30",
+        "symbol": "??0AggregateChunk@RenderBase@RBX@@QAE@ABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@Z",
+        "size": 552,
+        "target_size": 552,
+        "exact": true,
+        "verified_targets": {
+          "___security_cookie": "0x965cc0 (data)",
+          "??C?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@QBEPAVChunk@RenderBase@RBX@@XZ": "0x71f210 (external)",
+          "??0Chunk@RenderBase@RBX@@QAE@M@Z": "0x4e8160 (own row)",
+          "??_7AggregateChunk@RenderBase@RBX@@6B@": "0x82d258 (vtable RTTI .?AVAggregateChunk@RenderBase@RBX@@ offset 0x0)",
+          "??0?$ReferenceCountedPointer@VMaterialBase@RenderBase@RBX@@@G3D@@QAE@XZ": "0x4f0810 (external)",
+          "??0?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@QAE@XZ": "0x4f0810 (external)",
+          "??0CoordinateFrame@G3D@@QAE@XZ": "0x4782d0 (external (evidence name))",
+          "??0GLight@G3D@@QAE@XZ": "0x514390 (external)",
+          "??0VAR@G3D@@QAE@XZ": "0x489470 (external)",
+          "??0?$Array@I@G3D@@QAE@XZ": "0x481520 (external)",
+          "??0?$Array@G@G3D@@QAE@XZ": "0x5527f0 (own row)",
+          "??0?$vector@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@QAE@XZ": "0x540560 (own row)",
+          "?randomColors@AggregateChunk@RenderBase@RBX@@2_NA": "0x9738a0 (data)",
+          "??4?$ReferenceCountedPointer@VMaterialBase@RenderBase@RBX@@@G3D@@QAEABV01@ABV01@@Z": "0x4d7560 (external)",
+          "??1?$ReferenceCountedPointer@VMaterialBase@RenderBase@RBX@@@G3D@@QAE@XZ": "0x502a70 (external)",
+          "?aggregateChunkCount@RenderStats@@2HA": "0x972894 (data)",
+          "?chunkCount@RenderStats@@2HA": "0x97288c (data)",
+          "?createMaterial@RenderBase@RBX@@YAPAVMaterialBase@12@XZ": "0x551730 (external)",
+          "??4?$ReferenceCountedPointer@VMaterialBase@RenderBase@RBX@@@G3D@@QAEAAV01@PAVMaterialBase@RenderBase@RBX@@@Z": "0x4dc4e0 (external)",
+          "??C?$ReferenceCountedPointer@VMaterialBase@RenderBase@RBX@@@G3D@@QBEPAVMaterialBase@RenderBase@RBX@@XZ": "0x71f210 (external)",
+          "__real@42480000": "0x819ba4 (constant 42480000)",
+          "__real@40000000": "0x81c434 (constant 40000000)",
+          "?white@Color3@G3D@@SAABV12@XZ": "0x514a60 (external)",
+          "?wheelRandom@Color3@G3D@@SAABV12@XZ": "0x514a90 (external)",
+          "??HColor3@G3D@@QBE?AV01@ABV01@@Z": "0x501c70 (external)",
+          "??KColor3@G3D@@QBE?AV01@M@Z": "0x514c40 (external)",
+          "??0?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@QAE@PAVTextureProxyBase@RBX@@@Z": "0x4e6030 (external)"
+        },
+        "local": [
+          "__ehhandler$??0AggregateChunk@RenderBase@RBX@@QAE@ABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@Z"
+        ]
+      },
+      {
+        "address": "00552160",
+        "symbol": "??1AggregateChunk@RenderBase@RBX@@UAE@XZ",
+        "size": 259,
+        "target_size": 259,
+        "exact": true,
+        "verified_targets": {
+          "___security_cookie": "0x965cc0 (data)",
+          "??_7AggregateChunk@RenderBase@RBX@@6B@": "0x82d258 (vtable RTTI .?AVAggregateChunk@RenderBase@RBX@@ offset 0x0)",
+          "?chunkCount@RenderStats@@2HA": "0x97288c (data)",
+          "?aggregateChunkCount@RenderStats@@2HA": "0x972894 (data)",
+          "?size@?$vector@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@QBEIXZ": "0x546320 (own row)",
+          "?aggregatedChunkCount@RenderStats@@2HA": "0x972890 (data)",
+          "??1?$vector@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@QAE@XZ": "0x5405d0 (own row)",
+          "??1?$Array@G@G3D@@QAE@XZ": "0x6433e0 (external)",
+          "??1?$Array@I@G3D@@QAE@XZ": "0x6433e0 (external)",
+          "??1VAR@G3D@@QAE@XZ": "0x502a70 (external)",
+          "??1CoordinateFrame@G3D@@QAE@XZ": "0x47d410 (external)",
+          "??1?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@QAE@XZ": "0x502a70 (external)",
+          "??1?$ReferenceCountedPointer@VMaterialBase@RenderBase@RBX@@@G3D@@QAE@XZ": "0x502a70 (external)",
+          "??1Chunk@RenderBase@RBX@@UAE@XZ": "0x4e81d0 (own row)"
+        },
+        "local": [
+          "__ehhandler$??1AggregateChunk@RenderBase@RBX@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "00552780",
+        "symbol": "??_GAggregateChunk@RenderBase@RBX@@UAEPAXI@Z",
+        "size": 44,
+        "target_size": 44,
+        "exact": true,
+        "verified_targets": {
+          "??1AggregateChunk@RenderBase@RBX@@UAE@XZ": "0x552160 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local": []
+      },
+      {
+        "address": "005527f0",
+        "symbol": "??0?$Array@G@G3D@@QAE@XZ",
+        "size": 26,
+        "target_size": 26,
+        "exact": true,
+        "verified_targets": {
+          "?init@?$Array@G@G3D@@AAEXHH@Z": "0x47b4e0 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "00546320",
+        "symbol": "?size@?$vector@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@QBEIXZ",
+        "size": 26,
+        "target_size": 26,
+        "exact": true,
+        "verified_targets": {},
+        "local": []
+      }
+    ],
+    "aggregating": [
+      {
+        "address": "0053f0d0",
+        "symbol": "??0AggregatingSceneManager@RenderBase@RBX@@QAE@PAVRenderSceneBase@12@@Z",
+        "size": 134,
+        "target_size": 134,
+        "exact": true,
+        "verified_targets": {
+          "___security_cookie": "0x965cc0 (data)",
+          "??0SceneManager@RenderBase@RBX@@IAE@PAVRenderSceneBase@12@@Z": "0x4d6f60 (own row)",
+          "??_7AggregatingSceneManager@RenderBase@RBX@@6B@": "0x82ced0 (vtable RTTI .?AVAggregatingSceneManager@RenderBase@RBX@@ offset 0x0)",
+          "??0?$map@UBucketKey@AggregatingSceneManager@RenderBase@RBX@@V?$ReferenceCountedPointer@VBucket@AggregatingSceneManager@RenderBase@RBX@@@G3D@@U?$less@UBucketKey@AggregatingSceneManager@RenderBase@RBX@@@std@@V?$allocator@U?$pair@$$CBUBucketKey@AggregatingSceneManager@RenderBase@RBX@@V?$ReferenceCountedPointer@VBucket@AggregatingSceneManager@RenderBase@RBX@@@G3D@@@std@@@8@@std@@QAE@XZ": "0x540800 (external)",
+          "??0?$set@V?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@U?$less@V?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@V?$allocator@V?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@4@@std@@QAE@XZ": "0x540a80 (external)"
+        },
+        "local": [
+          "__ehhandler$??0AggregatingSceneManager@RenderBase@RBX@@QAE@PAVRenderSceneBase@12@@Z"
+        ]
+      },
+      {
+        "address": "0053f160",
+        "symbol": "??1AggregatingSceneManager@RenderBase@RBX@@UAE@XZ",
+        "size": 125,
+        "target_size": 125,
+        "exact": true,
+        "verified_targets": {
+          "___security_cookie": "0x965cc0 (data)",
+          "??_7AggregatingSceneManager@RenderBase@RBX@@6B@": "0x82ced0 (vtable RTTI .?AVAggregatingSceneManager@RenderBase@RBX@@ offset 0x0)",
+          "??1?$set@V?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@U?$less@V?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@V?$allocator@V?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@4@@std@@QAE@XZ": "0x540350 (external)",
+          "??1?$map@UBucketKey@AggregatingSceneManager@RenderBase@RBX@@V?$ReferenceCountedPointer@VBucket@AggregatingSceneManager@RenderBase@RBX@@@G3D@@U?$less@UBucketKey@AggregatingSceneManager@RenderBase@RBX@@@std@@V?$allocator@U?$pair@$$CBUBucketKey@AggregatingSceneManager@RenderBase@RBX@@V?$ReferenceCountedPointer@VBucket@AggregatingSceneManager@RenderBase@RBX@@@G3D@@@std@@@8@@std@@QAE@XZ": "0x540330 (external)",
+          "??1SceneManager@RenderBase@RBX@@UAE@XZ": "0x4d6f50 (own row)"
+        },
+        "local": [
+          "__ehhandler$??1AggregatingSceneManager@RenderBase@RBX@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "00540300",
+        "symbol": "??_GAggregatingSceneManager@RenderBase@RBX@@UAEPAXI@Z",
+        "size": 44,
+        "target_size": 44,
+        "exact": true,
+        "verified_targets": {
+          "??1AggregatingSceneManager@RenderBase@RBX@@UAE@XZ": "0x53f160 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local": []
+      },
+      {
+        "address": "0053f200",
+        "symbol": "??0BucketKey@AggregatingSceneManager@RenderBase@RBX@@QAE@ABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@Z",
+        "size": 125,
+        "target_size": 125,
+        "exact": true,
+        "verified_targets": {
+          "??C?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@QBEPAVChunk@RenderBase@RBX@@XZ": "0x71f210 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "00540390",
+        "symbol": "??0Bucket@AggregatingSceneManager@RenderBase@RBX@@QAE@XZ",
+        "size": 113,
+        "target_size": 113,
+        "exact": true,
+        "verified_targets": {
+          "___security_cookie": "0x965cc0 (data)",
+          "??0ReferenceCountedObject@G3D@@IAE@XZ": "0x472990 (external)",
+          "??0noncopyable@noncopyable_@boost@@IAE@XZ": "0x7188c0 (external)",
+          "??_7Bucket@AggregatingSceneManager@RenderBase@RBX@@6B@": "0x82cef0 (vtable RTTI .?AVBucket@AggregatingSceneManager@RenderBase@RBX@@ offset 0x0)",
+          "??0?$vector@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@QAE@XZ": "0x540560 (own row)"
+        },
+        "local": [
+          "__ehhandler$??0Bucket@AggregatingSceneManager@RenderBase@RBX@@QAE@XZ"
+        ]
+      },
+      {
+        "address": "00540440",
+        "symbol": "??1Bucket@AggregatingSceneManager@RenderBase@RBX@@UAE@XZ",
+        "size": 101,
+        "target_size": 101,
+        "exact": true,
+        "verified_targets": {
+          "___security_cookie": "0x965cc0 (data)",
+          "??1?$vector@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@QAE@XZ": "0x5405d0 (own row)",
+          "??1noncopyable@noncopyable_@boost@@IAE@XZ": "0x47d410 (external)",
+          "??1ReferenceCountedObject@G3D@@UAE@XZ": "0x7accf0 (external)"
+        },
+        "local": [
+          "__ehhandler$??1Bucket@AggregatingSceneManager@RenderBase@RBX@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "00540410",
+        "symbol": "??_GBucket@AggregatingSceneManager@RenderBase@RBX@@UAEPAXI@Z",
+        "size": 44,
+        "target_size": 44,
+        "exact": true,
+        "verified_targets": {
+          "??1Bucket@AggregatingSceneManager@RenderBase@RBX@@UAE@XZ": "0x540440 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local": []
+      },
+      {
+        "address": "0053f1e0",
+        "symbol": "?addModel@AggregatingSceneManager@RenderBase@RBX@@UAEXABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@Z",
+        "size": 25,
+        "target_size": 25,
+        "exact": true,
+        "verified_targets": {
+          "?addToScene@SceneManager@RenderBase@RBX@@IAEXABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@Z": "0x4d7db0 (own row)"
+        },
+        "local": []
+      },
+      {
+        "address": "00540240",
+        "symbol": "?invalidateModel@AggregatingSceneManager@RenderBase@RBX@@UAEXABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@_N@Z",
+        "size": 189,
+        "target_size": 189,
+        "exact": true,
+        "verified_targets": {
+          "___security_cookie": "0x965cc0 (data)",
+          "??0?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@QAE@ABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@1@@Z": "0x540fb0 (own row)",
+          "?insert@?$_Tree@V?$_Tset_traits@V?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@U?$less@V?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@V?$allocator@V?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@4@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tset_traits@V?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@U?$less@V?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@V?$allocator@V?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@4@$0A@@std@@@std@@_N@2@ABV?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@Z": "0x540b10 (external)",
+          "??1?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@UAE@XZ": "0x541030 (own row)"
+        },
+        "local": [
+          "__ehhandler$?invalidateModel@AggregatingSceneManager@RenderBase@RBX@@UAEXABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@_N@Z"
+        ]
+      },
+      {
+        "address": "0053f580",
+        "symbol": "?removeModel@AggregatingSceneManager@RenderBase@RBX@@UAEXABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@Z",
+        "size": 278,
+        "target_size": 278,
+        "exact": true,
+        "verified_targets": {
+          "___security_cookie": "0x965cc0 (data)",
+          "??0?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@QAE@ABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@1@@Z": "0x540fb0 (own row)",
+          "?erase@?$_Tree@V?$_Tset_traits@V?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@U?$less@V?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@V?$allocator@V?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@4@$0A@@std@@@std@@QAEIABV?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@Z": "0x540ce0 (external)",
+          "??1?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@UAE@XZ": "0x541030 (own row)",
+          "??C?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@QBEPAVChunk@RenderBase@RBX@@XZ": "0x71f210 (external)",
+          "?createStrongPtr@?$WeakReferenceCountedPointer@VAggregateChunk@RenderBase@RBX@@@G3D@@QBE?AV?$ReferenceCountedPointer@VAggregateChunk@RenderBase@RBX@@@2@XZ": "0x4e6c00 (external)",
+          "?notNull@?$ReferenceCountedPointer@VAggregateChunk@RenderBase@RBX@@@G3D@@QBE_NXZ": "0x402410 (external)",
+          "??0?$ReferenceCountedPointer@VAggregateChunk@RenderBase@RBX@@@G3D@@QAE@ABV01@@Z": "0x5410d0 (own row)",
+          "?deconstructAggregate@AggregatingSceneManager@RenderBase@RBX@@AAEXV?$ReferenceCountedPointer@VAggregateChunk@RenderBase@RBX@@@G3D@@@Z": "0x5400f0 (external)",
+          "?removeFromScene@SceneManager@RenderBase@RBX@@IAEXABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@Z": "0x4d8320 (own row)",
+          "?dequeueSleepingChunk@AggregatingSceneManager@RenderBase@RBX@@AAEXABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@Z": "0x53f470 (external)",
+          "??1?$ReferenceCountedPointer@VAggregateChunk@RenderBase@RBX@@@G3D@@QAE@XZ": "0x502a70 (external)"
+        },
+        "local": [
+          "__ehhandler$?removeModel@AggregatingSceneManager@RenderBase@RBX@@UAEXABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@Z"
+        ]
+      },
+      {
+        "address": "0053f6a0",
+        "symbol": "?clear@AggregatingSceneManager@RenderBase@RBX@@UAEXXZ",
+        "size": 127,
+        "target_size": 127,
+        "exact": true,
+        "verified_targets": {
+          "?clear@?$_Tree@V?$_Tset_traits@V?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@U?$less@V?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@V?$allocator@V?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@4@$0A@@std@@@std@@QAEXXZ": "0x540d60 (external)",
+          "?begin@?$_Tree@V?$_Tmap_traits@UBucketKey@AggregatingSceneManager@RenderBase@RBX@@V?$ReferenceCountedPointer@VBucket@AggregatingSceneManager@RenderBase@RBX@@@G3D@@U?$less@UBucketKey@AggregatingSceneManager@RenderBase@RBX@@@std@@V?$allocator@U?$pair@$$CBUBucketKey@AggregatingSceneManager@RenderBase@RBX@@V?$ReferenceCountedPointer@VBucket@AggregatingSceneManager@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAE?AViterator@12@XZ": "0x54f140 (external)",
+          "?end@?$_Tree@V?$_Tmap_traits@UBucketKey@AggregatingSceneManager@RenderBase@RBX@@V?$ReferenceCountedPointer@VBucket@AggregatingSceneManager@RenderBase@RBX@@@G3D@@U?$less@UBucketKey@AggregatingSceneManager@RenderBase@RBX@@@std@@V?$allocator@U?$pair@$$CBUBucketKey@AggregatingSceneManager@RenderBase@RBX@@V?$ReferenceCountedPointer@VBucket@AggregatingSceneManager@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAE?AViterator@12@XZ": "0x5409b0 (external)",
+          "??9const_iterator@?$_Tree@V?$_Tmap_traits@UBucketKey@AggregatingSceneManager@RenderBase@RBX@@V?$ReferenceCountedPointer@VBucket@AggregatingSceneManager@RenderBase@RBX@@@G3D@@U?$less@UBucketKey@AggregatingSceneManager@RenderBase@RBX@@@std@@V?$allocator@U?$pair@$$CBUBucketKey@AggregatingSceneManager@RenderBase@RBX@@V?$ReferenceCountedPointer@VBucket@AggregatingSceneManager@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QBE_NABV012@@Z": "0x540f20 (external)",
+          "??Citerator@?$_Tree@V?$_Tmap_traits@UBucketKey@AggregatingSceneManager@RenderBase@RBX@@V?$ReferenceCountedPointer@VBucket@AggregatingSceneManager@RenderBase@RBX@@@G3D@@U?$less@UBucketKey@AggregatingSceneManager@RenderBase@RBX@@@std@@V?$allocator@U?$pair@$$CBUBucketKey@AggregatingSceneManager@RenderBase@RBX@@V?$ReferenceCountedPointer@VBucket@AggregatingSceneManager@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QBEPAU?$pair@$$CBUBucketKey@AggregatingSceneManager@RenderBase@RBX@@V?$ReferenceCountedPointer@VBucket@AggregatingSceneManager@RenderBase@RBX@@@G3D@@@2@XZ": "0x540e90 (external)",
+          "??C?$ReferenceCountedPointer@VBucket@AggregatingSceneManager@RenderBase@RBX@@@G3D@@QBEPAVBucket@AggregatingSceneManager@RenderBase@RBX@@XZ": "0x540e80 (external)",
+          "?clear@Bucket@AggregatingSceneManager@RenderBase@RBX@@QAEXXZ": "0x5404b0 (external)",
+          "??Eiterator@?$_Tree@V?$_Tmap_traits@UBucketKey@AggregatingSceneManager@RenderBase@RBX@@V?$ReferenceCountedPointer@VBucket@AggregatingSceneManager@RenderBase@RBX@@@G3D@@U?$less@UBucketKey@AggregatingSceneManager@RenderBase@RBX@@@std@@V?$allocator@U?$pair@$$CBUBucketKey@AggregatingSceneManager@RenderBase@RBX@@V?$ReferenceCountedPointer@VBucket@AggregatingSceneManager@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAEAAV012@XZ": "0x540eb0 (external)",
+          "?clearScene@SceneManager@RenderBase@RBX@@IAEXXZ": "0x4d8310 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "0053fa50",
+        "symbol": "?setSleeping@AggregatingSceneManager@RenderBase@RBX@@UAEXABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@_N@Z",
+        "size": 429,
+        "target_size": 429,
+        "exact": true,
+        "verified_targets": {
+          "___security_cookie": "0x965cc0 (data)",
+          "??0?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@QAE@ABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@1@@Z": "0x540fb0 (own row)",
+          "?erase@?$_Tree@V?$_Tset_traits@V?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@U?$less@V?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@V?$allocator@V?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@4@$0A@@std@@@std@@QAEIABV?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@Z": "0x540ce0 (external)",
+          "??1?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@UAE@XZ": "0x541030 (own row)",
+          "?insert@?$_Tree@V?$_Tset_traits@V?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@U?$less@V?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@V?$allocator@V?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@4@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tset_traits@V?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@U?$less@V?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@V?$allocator@V?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@4@$0A@@std@@@std@@_N@2@ABV?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@Z": "0x540b10 (external)",
+          "?queueSleepingChunk@AggregatingSceneManager@RenderBase@RBX@@AAEXABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@Z": "0x53f340 (external)",
+          "??C?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@QBEPAVChunk@RenderBase@RBX@@XZ": "0x71f210 (external)",
+          "?createStrongPtr@?$WeakReferenceCountedPointer@VAggregateChunk@RenderBase@RBX@@@G3D@@QBE?AV?$ReferenceCountedPointer@VAggregateChunk@RenderBase@RBX@@@2@XZ": "0x4e6c00 (external)",
+          "?notNull@?$ReferenceCountedPointer@VAggregateChunk@RenderBase@RBX@@@G3D@@QBE_NXZ": "0x402410 (external)",
+          "??0?$ReferenceCountedPointer@VAggregateChunk@RenderBase@RBX@@@G3D@@QAE@ABV01@@Z": "0x5410d0 (own row)",
+          "?deconstructAggregate@AggregatingSceneManager@RenderBase@RBX@@AAEXV?$ReferenceCountedPointer@VAggregateChunk@RenderBase@RBX@@@G3D@@@Z": "0x5400f0 (external)",
+          "?dequeueSleepingChunk@AggregatingSceneManager@RenderBase@RBX@@AAEXABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@Z": "0x53f470 (external)",
+          "??1?$ReferenceCountedPointer@VAggregateChunk@RenderBase@RBX@@@G3D@@QAE@XZ": "0x502a70 (external)"
+        },
+        "local": [
+          "__ehhandler$?setSleeping@AggregatingSceneManager@RenderBase@RBX@@UAEXABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@_N@Z"
+        ]
+      },
+      {
+        "address": "005410d0",
+        "symbol": "??0?$ReferenceCountedPointer@VAggregateChunk@RenderBase@RBX@@@G3D@@QAE@ABV01@@Z",
+        "size": 39,
+        "target_size": 39,
+        "exact": true,
+        "verified_targets": {
+          "?setPointer@?$ReferenceCountedPointer@VAggregateChunk@RenderBase@RBX@@@G3D@@AAEXPAVAggregateChunk@RenderBase@RBX@@@Z": "0x598fa0 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "00540fb0",
+        "symbol": "??0?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@QAE@ABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@1@@Z",
+        "size": 116,
+        "target_size": 116,
+        "exact": true,
+        "verified_targets": {
+          "___security_cookie": "0x965cc0 (data)",
+          "??0_WeakPtr@G3D@@QAE@XZ": "0x4e5c00 (external)",
+          "??_7?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@6B@": "0x82cf04 (vtable RTTI .?AV?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@ offset 0x0)",
+          "?getPointer@?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@QBEPAVChunk@RenderBase@RBX@@XZ": "0x71f210 (external)",
+          "?setPointer@?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@AAEXPAVChunk@RenderBase@RBX@@@Z": "0x542770 (external)"
+        },
+        "local": [
+          "__ehhandler$??0?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@QAE@ABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@1@@Z"
+        ]
+      },
+      {
+        "address": "00541030",
+        "symbol": "??1?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@UAE@XZ",
+        "size": 92,
+        "target_size": 92,
+        "exact": true,
+        "verified_targets": {
+          "___security_cookie": "0x965cc0 (data)",
+          "??_7?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@6B@": "0x82cf04 (vtable RTTI .?AV?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@ offset 0x0)",
+          "?zeroPointer@?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@AAEXXZ": "0x542820 (external)",
+          "??1_WeakPtr@G3D@@UAE@XZ": "0x4e5b30 (external)"
+        },
+        "local": [
+          "__ehhandler$??1?$WeakReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "00540560",
+        "symbol": "??0?$vector@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@QAE@XZ",
+        "size": 101,
+        "target_size": 101,
+        "exact": true,
+        "verified_targets": {
+          "___security_cookie": "0x965cc0 (data)",
+          "??0?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@QAE@XZ": "0x54e310 (own row)",
+          "??0?$_Vector_val@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@IAE@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@1@@Z": "0x54da40 (own row)",
+          "?_Buy@?$vector@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@IAE_NI@Z": "0x5530e0 (own row)"
+        },
+        "local": [
+          "__ehhandler$??0?$vector@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@QAE@XZ"
+        ]
+      },
+      {
+        "address": "005405d0",
+        "symbol": "??1?$vector@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@QAE@XZ",
+        "size": 83,
+        "target_size": 83,
+        "exact": true,
+        "verified_targets": {
+          "___security_cookie": "0x965cc0 (data)",
+          "?_Tidy@?$vector@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@IAEXXZ": "0x5414d0 (own row)",
+          "??1?$_Vector_val@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@QAE@XZ": "0x5411c0 (own row)"
+        },
+        "local": [
+          "__ehhandler$??1?$vector@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@QAE@XZ"
+        ]
+      },
+      {
+        "address": "0054e310",
+        "symbol": "??0?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@QAE@XZ",
+        "size": 14,
+        "target_size": 14,
+        "exact": true,
+        "verified_targets": {},
+        "local": []
+      },
+      {
+        "address": "0054da40",
+        "symbol": "??0?$_Vector_val@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@IAE@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@1@@Z",
+        "size": 56,
+        "target_size": 56,
+        "exact": true,
+        "verified_targets": {
+          "??0?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@QAE@ABV01@@Z": "0x553220 (own row)",
+          "??0?$_Container_base_aux_alloc_real@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@IAE@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@1@@Z": "0x54ef60 (own row)"
+        },
+        "local": []
+      },
+      {
+        "address": "005411c0",
+        "symbol": "??1?$_Vector_val@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@QAE@XZ",
+        "size": 19,
+        "target_size": 19,
+        "exact": true,
+        "verified_targets": {
+          "??1?$_Container_base_aux_alloc_real@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@IAE@XZ": "0x541580 (own row)"
+        },
+        "local": []
+      },
+      {
+        "address": "005530e0",
+        "symbol": "?_Buy@?$vector@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@IAE_NI@Z",
+        "size": 128,
+        "target_size": 128,
+        "exact": true,
+        "verified_targets": {
+          "?max_size@?$vector@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@QBEIXZ": "0x542a30 (own row)",
+          "?_Xlen@?$vector@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@KAXXZ": "0x553270 (own row)",
+          "?allocate@?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@QAEPAV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@I@Z": "0x542de0 (own row)"
+        },
+        "local": []
+      },
+      {
+        "address": "005414d0",
+        "symbol": "?_Tidy@?$vector@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@IAEXXZ",
+        "size": 106,
+        "target_size": 106,
+        "exact": true,
+        "verified_targets": {
+          "?_Destroy@?$vector@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@IAEXPAV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@0@Z": "0x5414a0 (own row)",
+          "?deallocate@?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@QAEXPAV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@I@Z": "0x543610 (own row)"
+        },
+        "local": []
+      },
+      {
+        "address": "0054ef60",
+        "symbol": "??0?$_Container_base_aux_alloc_real@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@IAE@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@1@@Z",
+        "size": 182,
+        "target_size": 182,
+        "exact": true,
+        "verified_targets": {
+          "___security_cookie": "0x965cc0 (data)",
+          "??0_Container_base_aux@std@@QAE@XZ": "0x7188c0 (external)",
+          "??$?0V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@?$allocator@V_Aux_cont@std@@@std@@QAE@ABV?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@1@@Z": "0x553220 (own row)",
+          "?allocate@?$allocator@V_Aux_cont@std@@@std@@QAEPAV_Aux_cont@2@I@Z": "0x4034a0 (external)",
+          "??2@YAPAXIPAX@Z": "0x401670 (external (evidence name))",
+          "??0_Aux_cont@std@@QAE@QBV_Container_base_aux@1@@Z": "0x6f6a20 (external)"
+        },
+        "local": [
+          "__ehhandler$??0?$_Container_base_aux_alloc_real@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@IAE@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@1@@Z"
+        ]
+      },
+      {
+        "address": "00553220",
+        "symbol": "??0?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@QAE@ABV01@@Z",
+        "size": 16,
+        "target_size": 16,
+        "exact": true,
+        "verified_targets": {},
+        "local": []
+      },
+      {
+        "address": "00541580",
+        "symbol": "??1?$_Container_base_aux_alloc_real@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@IAE@XZ",
+        "size": 94,
+        "target_size": 94,
+        "exact": true,
+        "verified_targets": {
+          "___security_cookie": "0x965cc0 (data)",
+          "?deallocate@?$allocator@V_Aux_cont@std@@@std@@QAEXPAV_Aux_cont@2@I@Z": "0x4dc3e0 (external)",
+          "??1_Container_base_aux@std@@QAE@XZ": "0x47d410 (external)"
+        },
+        "local": [
+          "__ehhandler$??1?$_Container_base_aux_alloc_real@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@IAE@XZ"
+        ]
+      },
+      {
+        "address": "005414a0",
+        "symbol": "?_Destroy@?$vector@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@IAEXPAV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@0@Z",
+        "size": 36,
+        "target_size": 36,
+        "exact": true,
+        "verified_targets": {
+          "??$_Destroy_range@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@YAXPAV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@0AAV?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@0@@Z": "0x545f10 (own row)"
+        },
+        "local": []
+      },
+      {
+        "address": "00553270",
+        "symbol": "?_Xlen@?$vector@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@KAXXZ",
+        "size": 115,
+        "target_size": 115,
+        "exact": true,
+        "verified_targets": {
+          "___security_cookie": "0x965cc0 (data)",
+          "??_C@_0BD@OLBABOEK@vector?$DMT?$DO?5too?5long?$AA@": "0x80e190 (literal 'vector<T> too long')",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "??0length_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x402480 (external)",
+          "__TI3?AVlength_error@std@@": "0x8d0cc0 (data)",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+        },
+        "local": [
+          "__ehhandler$?_Xlen@?$vector@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@KAXXZ"
+        ]
+      },
+      {
+        "address": "00542de0",
+        "symbol": "?allocate@?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@QAEPAV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@I@Z",
+        "size": 27,
+        "target_size": 27,
+        "exact": true,
+        "verified_targets": {
+          "??$_Allocate@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@YAPAV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@IPAV12@@Z": "0x546070 (own row)"
+        },
+        "local": []
+      },
+      {
+        "address": "00543610",
+        "symbol": "?deallocate@?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@QAEXPAV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@I@Z",
+        "size": 25,
+        "target_size": 25,
+        "exact": true,
+        "verified_targets": {
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local": []
+      },
+      {
+        "address": "00542a30",
+        "symbol": "?max_size@?$vector@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@QBEIXZ",
+        "size": 22,
+        "target_size": 22,
+        "exact": true,
+        "verified_targets": {
+          "?max_size@?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@QBEIXZ": "0x5446f0 (own row)"
+        },
+        "local": []
+      },
+      {
+        "address": "00553220",
+        "symbol": "??$?0V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@?$allocator@V_Aux_cont@std@@@std@@QAE@ABV?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@1@@Z",
+        "size": 16,
+        "target_size": 16,
+        "exact": true,
+        "verified_targets": {},
+        "local": []
+      },
+      {
+        "address": "00546070",
+        "symbol": "??$_Allocate@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@YAPAV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@IPAV12@@Z",
+        "size": 77,
+        "target_size": 77,
+        "exact": true,
+        "verified_targets": {
+          "??0bad_alloc@std@@QAE@PBD@Z": "0x402390 (external (evidence name))",
+          "__TI2?AVbad_alloc@std@@": "0x8d07d8 (data)",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
+        },
+        "local": []
+      },
+      {
+        "address": "00545f10",
+        "symbol": "??$_Destroy_range@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@YAXPAV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@0AAV?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@0@@Z",
+        "size": 52,
+        "target_size": 52,
+        "exact": true,
+        "verified_targets": {
+          "??$_Ptr_cat@PAV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@PAV12@@std@@YA?AU_Nonscalar_ptr_iterator_tag@0@AAPAV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@0@Z": "0x546900 (own row)",
+          "??$_Destroy_range@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@YAXPAV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@0AAV?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z": "0x5469b0 (own row)"
+        },
+        "local": []
+      },
+      {
+        "address": "005446f0",
+        "symbol": "?max_size@?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@QBEIXZ",
+        "size": 44,
+        "target_size": 44,
+        "exact": true,
+        "verified_targets": {},
+        "local": []
+      },
+      {
+        "address": "005469b0",
+        "symbol": "??$_Destroy_range@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@YAXPAV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@0AAV?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z",
+        "size": 38,
+        "target_size": 38,
+        "exact": true,
+        "verified_targets": {
+          "?destroy@?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@QAEXPAV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@Z": "0x546d20 (own row)"
+        },
+        "local": []
+      },
+      {
+        "address": "00546900",
+        "symbol": "??$_Ptr_cat@PAV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@PAV12@@std@@YA?AU_Nonscalar_ptr_iterator_tag@0@AAPAV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@0@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {},
+        "local": []
+      },
+      {
+        "address": "00546d20",
+        "symbol": "?destroy@?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@QAEXPAV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@Z",
+        "size": 25,
+        "target_size": 25,
+        "exact": true,
+        "verified_targets": {
+          "??$_Destroy@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@YAXPAV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@Z": "0x546fd0 (own row)"
+        },
+        "local": []
+      },
+      {
+        "address": "00546fd0",
+        "symbol": "??$_Destroy@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@YAXPAV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@Z",
+        "size": 15,
+        "target_size": 15,
+        "exact": true,
+        "verified_targets": {
+          "??_G?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@QAEPAXI@Z": "0x4d76e0 (external)"
+        },
+        "local": []
+      }
+    ],
+    "scenebase": [
+      {
+        "address": "00504fd0",
+        "symbol": "??0RenderSceneBase@RenderBase@RBX@@QAE@XZ",
+        "size": 108,
+        "target_size": 108,
+        "exact": true,
+        "verified_targets": {
+          "??_7RenderSceneBase@RenderBase@RBX@@6B@": "0x827424 (vtable RTTI .?AVRenderSceneBase@RenderBase@RBX@@ offset 0x0)",
+          "__real@3f000000": "0x819bac (constant 3f000000)",
+          "__real@bf800000": "0x81c3b8 (constant bf800000)",
+          "??0RenderStats@@QAE@XZ": "0x501c30 (external)"
+        },
+        "local": [
+          "__ehhandler$??0RenderSceneBase@RenderBase@RBX@@QAE@XZ"
+        ]
+      },
+      {
+        "address": "005039d0",
+        "symbol": "??1RenderSceneBase@RenderBase@RBX@@UAE@XZ",
+        "size": 14,
+        "target_size": 14,
+        "exact": true,
+        "verified_targets": {
+          "??_7RenderSceneBase@RenderBase@RBX@@6B@": "0x827424 (vtable RTTI .?AVRenderSceneBase@RenderBase@RBX@@ offset 0x0)",
+          "??1?$Array@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@G3D@@QAE@XZ": "0x475f20 (own row)"
+        },
+        "local": []
+      },
+      {
+        "address": "00503a30",
+        "symbol": "??_GRenderSceneBase@RenderBase@RBX@@UAEPAXI@Z",
+        "size": 39,
+        "target_size": 39,
+        "exact": true,
+        "verified_targets": {
+          "??_7RenderSceneBase@RenderBase@RBX@@6B@": "0x827424 (vtable RTTI .?AVRenderSceneBase@RenderBase@RBX@@ offset 0x0)",
+          "??1?$Array@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@G3D@@QAE@XZ": "0x475f20 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local": []
+      },
+      {
+        "address": "005039e0",
+        "symbol": "?presetLighting@RenderSceneBase@RenderBase@RBX@@UAEXV?$ReferenceCountedPointer@VSky@G3D@@@G3D@@VLightingParameters@5@VColor3@5@2@Z",
+        "size": 69,
+        "target_size": 69,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_0BC@HBNDBKIO@shouldn?8t?5be?5here?$AA@": "0x82743c (literal \"shouldn't be here\")",
+          "__imp_??0exception@std@@QAE@ABQBD@Z": "0x8028a4 (msvcr90.dll!??0exception@std@@QAE@ABQBD@Z)",
+          "__TI1?AVexception@std@@": "0x8d997c (data)",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local": [
+          "__ehhandler$?presetLighting@RenderSceneBase@RenderBase@RBX@@UAEXV?$ReferenceCountedPointer@VSky@G3D@@@G3D@@VLightingParameters@5@VColor3@5@2@Z"
+        ]
+      },
+      {
+        "address": "00475f20",
+        "symbol": "??1?$Array@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@G3D@@QAE@XZ",
+        "size": 139,
+        "target_size": 139,
+        "exact": true,
+        "verified_targets": {
+          "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "?alignedFree@System@G3D@@SAXPAX@Z": "0x507d20 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "00505040",
+        "symbol": "??0RenderScene@Render@RBX@@QAE@XZ",
+        "size": 413,
+        "target_size": 413,
+        "exact": true,
+        "verified_targets": {
+          "??0RenderSceneBase@RenderBase@RBX@@QAE@XZ": "0x504fd0 (own row)",
+          "??_7RenderScene@Render@RBX@@6B@": "0x827454 (vtable RTTI .?AVRenderScene@Render@RBX@@ offset 0x0)",
+          "??0VAR@G3D@@QAE@XZ": "0x489470 (external)",
+          "??_B?1??inf@G3D@@YAABNXZ@51": "0x96f020 (data)",
+          "__imp___Inf": "0x8024ac (msvcp90.dll!_Inf)",
+          "?i@?1??inf@G3D@@YAABNXZ@4NB": "0x96f018 (data)",
+          "??0LightingParameters@G3D@@QAE@XZ": "0x7b6860 (external)",
+          "?create@Lighting@G3D@@SA?AV?$ReferenceCountedPointer@VLighting@G3D@@@2@XZ": "0x503960 (external (evidence name))",
+          "?setPointer@?$ReferenceCountedPointer@VLighting@G3D@@@G3D@@AAEXPAVLighting@2@@Z": "0x598fa0 (external)",
+          "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+          "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ": "0x45ad90 (external (evidence name))"
+        },
+        "local": [
+          "__ehhandler$??0RenderScene@Render@RBX@@QAE@XZ"
+        ]
+      },
+      {
+        "address": "00503a60",
+        "symbol": "??1RenderScene@Render@RBX@@UAE@XZ",
+        "size": 581,
+        "target_size": 581,
+        "exact": true,
+        "verified_targets": {
+          "??_7RenderScene@Render@RBX@@6B@": "0x827454 (vtable RTTI .?AVRenderScene@Render@RBX@@ offset 0x0)",
+          "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+          "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ": "0x45ad90 (external (evidence name))",
+          "?alignedFree@System@G3D@@SAXPAX@Z": "0x507d20 (external)",
+          "??1?$Array@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@G3D@@QAE@XZ": "0x475f20 (own row)",
+          "??1?$Array@VRenderSurface@Render@RBX@@@G3D@@QAE@XZ": "0x7aa980 (own row)",
+          "??_7RenderSceneBase@RenderBase@RBX@@6B@": "0x827424 (vtable RTTI .?AVRenderSceneBase@RenderBase@RBX@@ offset 0x0)"
+        },
+        "local": [
+          "__ehhandler$??1RenderScene@Render@RBX@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "00503fc0",
+        "symbol": "??_GRenderScene@Render@RBX@@UAEPAXI@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1RenderScene@Render@RBX@@UAE@XZ": "0x503a60 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local": []
+      },
+      {
+        "address": "00502d30",
+        "symbol": "?setThrottle@RenderScene@Render@RBX@@UAEXMM_NM@Z",
+        "size": 320,
+        "target_size": 320,
+        "exact": true,
+        "verified_targets": {
+          "__real@42c80000": "0x8163a4 (constant 42c80000)",
+          "?update@EffectSettings@Render@RBX@@QAE?AV?$ReferenceCountedPointer@VLighting@G3D@@@G3D@@MM_NMABV45@ABVLightingParameters@5@AAV65@@Z": "0x506dd0 (external)",
+          "?setPointer@?$ReferenceCountedPointer@VLighting@G3D@@@G3D@@AAEXPAVLighting@2@@Z": "0x598fa0 (external)",
+          "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+          "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ": "0x45ad90 (external (evidence name))"
+        },
+        "local": [
+          "__ehhandler$?setThrottle@RenderScene@Render@RBX@@UAEXMM_NM@Z"
+        ]
+      },
+      {
+        "address": "00502e70",
+        "symbol": "?setLighting@RenderScene@Render@RBX@@QAEXABV?$ReferenceCountedPointer@VLighting@G3D@@@G3D@@@Z",
+        "size": 206,
+        "target_size": 206,
+        "exact": true,
+        "verified_targets": {
+          "?setPointer@?$ReferenceCountedPointer@VLighting@G3D@@@G3D@@AAEXPAVLighting@2@@Z": "0x598fa0 (external)",
+          "?update@EffectSettings@Render@RBX@@QAE?AV?$ReferenceCountedPointer@VLighting@G3D@@@G3D@@MM_NMABV45@ABVLightingParameters@5@AAV65@@Z": "0x506dd0 (external)",
+          "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+          "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ": "0x45ad90 (external (evidence name))"
+        },
+        "local": [
+          "__ehhandler$?setLighting@RenderScene@Render@RBX@@QAEXABV?$ReferenceCountedPointer@VLighting@G3D@@@G3D@@@Z"
+        ]
+      },
+      {
+        "address": "00503cc0",
+        "symbol": "?presetLighting@RenderScene@Render@RBX@@UAEXV?$ReferenceCountedPointer@VSky@G3D@@@G3D@@VLightingParameters@5@VColor3@5@2@Z",
+        "size": 476,
+        "target_size": 476,
+        "exact": true,
+        "verified_targets": {
+          "?setPointer@?$ReferenceCountedPointer@VSky@G3D@@@G3D@@AAEXPAVSky@2@@Z": "0x598fa0 (external)",
+          "??4LightingParameters@G3D@@QAEAAV01@ABV01@@Z": "0x501d80 (external (evidence name))",
+          "?create@Lighting@G3D@@SA?AV?$ReferenceCountedPointer@VLighting@G3D@@@2@XZ": "0x503960 (external (evidence name))",
+          "__real@3f666666": "0x826fc8 (constant 3f666666)",
+          "?directional@GLight@G3D@@SA?AV12@ABVVector3@2@ABVColor3@2@_N2@Z": "0x514510 (external)",
+          "?append@?$Array@VGLight@G3D@@@G3D@@QAEXABVGLight@2@@Z": "0x503000 (external (evidence name))",
+          "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+          "?getEnvironmentMap@Sky@G3D@@QBE?AV?$ReferenceCountedPointer@VTexture@G3D@@@2@XZ": "0x502a00 (external (evidence name))",
+          "?setPointer@?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@AAEXPAVTexture@2@@Z": "0x598fa0 (external)",
+          "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ": "0x45ad90 (external (evidence name))",
+          "?setLighting@RenderScene@Render@RBX@@QAEXABV?$ReferenceCountedPointer@VLighting@G3D@@@G3D@@@Z": "0x502e70 (own row)"
+        },
+        "local": [
+          "__ehhandler$?presetLighting@RenderScene@Render@RBX@@UAEXV?$ReferenceCountedPointer@VSky@G3D@@@G3D@@VLightingParameters@5@VColor3@5@2@Z"
+        ]
+      },
+      {
+        "address": "00505220",
+        "symbol": "?materialPtrSortProc@Render@RBX@@YA_NABQAVRenderSurface@12@0@Z",
+        "size": 23,
+        "target_size": 23,
+        "exact": true,
+        "verified_targets": {},
+        "local": []
+      },
+      {
+        "address": "005051e0",
+        "symbol": "?materialDepthPtrSortProc@Render@RBX@@YA_NABQAVRenderSurface@12@0@Z",
+        "size": 49,
+        "target_size": 49,
+        "exact": true,
+        "verified_targets": {},
+        "local": []
+      },
+      {
+        "address": "00505240",
+        "symbol": "?depthPtrSortProc@Render@RBX@@YA_NABQAVRenderSurface@12@0@Z",
+        "size": 34,
+        "target_size": 34,
+        "exact": true,
+        "verified_targets": {},
+        "local": []
+      },
+      {
+        "address": "00505860",
+        "symbol": "?sortByMaterialAndDepth@Render@RBX@@YAXAAV?$Array@PAVRenderSurface@Render@RBX@@@G3D@@@Z",
+        "size": 36,
+        "target_size": 36,
+        "exact": true,
+        "verified_targets": {
+          "?materialDepthPtrSortProc@Render@RBX@@YA_NABQAVRenderSurface@12@0@Z": "0x5051e0 (own row)",
+          "??$_Sort@PAPAVRenderSurface@Render@RBX@@HP6A_NABQAV123@0@Z@std@@YAXPAPAVRenderSurface@Render@RBX@@0HP6A_NABQAV123@1@Z@Z": "0x505780 (own row)"
+        },
+        "local": []
+      },
+      {
+        "address": "00505890",
+        "symbol": "?sortByMaterial@Render@RBX@@YAXAAV?$Array@PAVRenderSurface@Render@RBX@@@G3D@@@Z",
+        "size": 36,
+        "target_size": 36,
+        "exact": true,
+        "verified_targets": {
+          "?materialPtrSortProc@Render@RBX@@YA_NABQAVRenderSurface@12@0@Z": "0x505220 (own row)",
+          "??$_Sort@PAPAVRenderSurface@Render@RBX@@HP6A_NABQAV123@0@Z@std@@YAXPAPAVRenderSurface@Render@RBX@@0HP6A_NABQAV123@1@Z@Z": "0x505780 (own row)"
+        },
+        "local": []
+      },
+      {
+        "address": "005058c0",
+        "symbol": "?sortByDepth@Render@RBX@@YAXAAV?$Array@PAVRenderSurface@Render@RBX@@@G3D@@@Z",
+        "size": 36,
+        "target_size": 36,
+        "exact": true,
+        "verified_targets": {
+          "?depthPtrSortProc@Render@RBX@@YA_NABQAVRenderSurface@12@0@Z": "0x505240 (own row)",
+          "??$_Sort@PAPAVRenderSurface@Render@RBX@@HP6A_NABQAV123@0@Z@std@@YAXPAPAVRenderSurface@Render@RBX@@0HP6A_NABQAV123@1@Z@Z": "0x505780 (own row)"
+        },
+        "local": []
+      },
+      {
+        "address": "00505780",
+        "symbol": "??$_Sort@PAPAVRenderSurface@Render@RBX@@HP6A_NABQAV123@0@Z@std@@YAXPAPAVRenderSurface@Render@RBX@@0HP6A_NABQAV123@1@Z@Z",
+        "size": 217,
+        "target_size": 217,
+        "exact": true,
+        "verified_targets": {
+          "??$_Unguarded_partition@PAPAVRenderSurface@Render@RBX@@P6A_NABQAV123@0@Z@std@@YA?AU?$pair@PAPAVRenderSurface@Render@RBX@@PAPAV123@@0@PAPAVRenderSurface@Render@RBX@@0P6A_NABQAV234@1@Z@Z": "0x505570 (own row)",
+          "??$_Sort@PAPAVRenderSurface@Render@RBX@@HP6A_NABQAV123@0@Z@std@@YAXPAPAVRenderSurface@Render@RBX@@0HP6A_NABQAV123@1@Z@Z": "0x505780 (own row)",
+          "??$_Insertion_sort1@PAPAVRenderSurface@Render@RBX@@P6A_NABQAV123@0@ZPAV123@@std@@YAXPAPAVRenderSurface@Render@RBX@@0P6A_NABQAV123@1@Z0@Z": "0x5054a0 (own row)",
+          "??$_Make_heap@PAPAVRenderSurface@Render@RBX@@HPAV123@P6A_NABQAV123@0@Z@std@@YAXPAPAVRenderSurface@Render@RBX@@0P6A_NABQAV123@1@ZPAH0@Z": "0x505460 (own row)",
+          "??$_Sort_heap@PAPAVRenderSurface@Render@RBX@@P6A_NABQAV123@0@Z@std@@YAXPAPAVRenderSurface@Render@RBX@@0P6A_NABQAV123@1@Z@Z": "0x505730 (own row)"
+        },
+        "local": []
+      },
+      {
+        "address": "00505270",
+        "symbol": "??$_Push_heap@PAPAVRenderSurface@Render@RBX@@HPAV123@P6A_NABQAV123@0@Z@std@@YAXPAPAVRenderSurface@Render@RBX@@HHPAV123@P6A_NABQAV123@2@Z@Z",
+        "size": 104,
+        "target_size": 104,
+        "exact": true,
+        "verified_targets": {},
+        "local": []
+      },
+      {
+        "address": "005052e0",
+        "symbol": "??$_Med3@PAPAVRenderSurface@Render@RBX@@P6A_NABQAV123@0@Z@std@@YAXPAPAVRenderSurface@Render@RBX@@00P6A_NABQAV123@1@Z@Z",
+        "size": 94,
+        "target_size": 94,
+        "exact": true,
+        "verified_targets": {},
+        "local": []
+      },
+      {
+        "address": "00505340",
+        "symbol": "??$_Adjust_heap@PAPAVRenderSurface@Render@RBX@@HPAV123@P6A_NABQAV123@0@Z@std@@YAXPAPAVRenderSurface@Render@RBX@@HHPAV123@P6A_NABQAV123@2@Z@Z",
+        "size": 110,
+        "target_size": 110,
+        "exact": true,
+        "verified_targets": {
+          "??$_Push_heap@PAPAVRenderSurface@Render@RBX@@HPAV123@P6A_NABQAV123@0@Z@std@@YAXPAPAVRenderSurface@Render@RBX@@HHPAV123@P6A_NABQAV123@2@Z@Z": "0x505270 (own row)"
+        },
+        "local": []
+      },
+      {
+        "address": "005053b0",
+        "symbol": "??$_Median@PAPAVRenderSurface@Render@RBX@@P6A_NABQAV123@0@Z@std@@YAXPAPAVRenderSurface@Render@RBX@@00P6A_NABQAV123@1@Z@Z",
+        "size": 165,
+        "target_size": 165,
+        "exact": true,
+        "verified_targets": {
+          "??$_Med3@PAPAVRenderSurface@Render@RBX@@P6A_NABQAV123@0@Z@std@@YAXPAPAVRenderSurface@Render@RBX@@00P6A_NABQAV123@1@Z@Z": "0x5052e0 (own row)"
+        },
+        "local": []
+      },
+      {
+        "address": "00505460",
+        "symbol": "??$_Make_heap@PAPAVRenderSurface@Render@RBX@@HPAV123@P6A_NABQAV123@0@Z@std@@YAXPAPAVRenderSurface@Render@RBX@@0P6A_NABQAV123@1@ZPAH0@Z",
+        "size": 61,
+        "target_size": 61,
+        "exact": true,
+        "verified_targets": {
+          "??$_Adjust_heap@PAPAVRenderSurface@Render@RBX@@HPAV123@P6A_NABQAV123@0@Z@std@@YAXPAPAVRenderSurface@Render@RBX@@HHPAV123@P6A_NABQAV123@2@Z@Z": "0x505340 (own row)"
+        },
+        "local": []
+      },
+      {
+        "address": "005054a0",
+        "symbol": "??$_Insertion_sort1@PAPAVRenderSurface@Render@RBX@@P6A_NABQAV123@0@ZPAV123@@std@@YAXPAPAVRenderSurface@Render@RBX@@0P6A_NABQAV123@1@Z0@Z",
+        "size": 207,
+        "target_size": 207,
+        "exact": true,
+        "verified_targets": {
+          "__imp__memmove_s": "0x802850 (msvcr90.dll!memmove_s)"
+        },
+        "local": []
+      },
+      {
+        "address": "00505570",
+        "symbol": "??$_Unguarded_partition@PAPAVRenderSurface@Render@RBX@@P6A_NABQAV123@0@Z@std@@YA?AU?$pair@PAPAVRenderSurface@Render@RBX@@PAPAV123@@0@PAPAVRenderSurface@Render@RBX@@0P6A_NABQAV234@1@Z@Z",
+        "size": 437,
+        "target_size": 437,
+        "exact": true,
+        "verified_targets": {
+          "??$_Median@PAPAVRenderSurface@Render@RBX@@P6A_NABQAV123@0@Z@std@@YAXPAPAVRenderSurface@Render@RBX@@00P6A_NABQAV123@1@Z@Z": "0x5053b0 (own row)"
+        },
+        "local": []
+      },
+      {
+        "address": "00505730",
+        "symbol": "??$_Sort_heap@PAPAVRenderSurface@Render@RBX@@P6A_NABQAV123@0@Z@std@@YAXPAPAVRenderSurface@Render@RBX@@0P6A_NABQAV123@1@Z@Z",
+        "size": 74,
+        "target_size": 74,
+        "exact": true,
+        "verified_targets": {
+          "??$_Adjust_heap@PAPAVRenderSurface@Render@RBX@@HPAV123@P6A_NABQAV123@0@Z@std@@YAXPAPAVRenderSurface@Render@RBX@@HHPAV123@P6A_NABQAV123@2@Z@Z": "0x505340 (own row)"
+        },
+        "local": []
+      },
+      {
+        "address": "00502500",
+        "symbol": "??0RenderSurface@Render@RBX@@QAE@ABV012@@Z",
+        "size": 81,
+        "target_size": 81,
+        "exact": true,
+        "verified_targets": {
+          "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)",
+          "?setPointer@?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@AAEXPAVMesh@RenderBase@RBX@@@Z": "0x598fa0 (external)"
+        },
+        "local": []
+      },
+      {
+        "address": "007aa980",
+        "symbol": "??1?$Array@VRenderSurface@Render@RBX@@@G3D@@QAE@XZ",
+        "size": 165,
+        "target_size": 165,
+        "exact": true,
+        "verified_targets": {
+          "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "?alignedFree@System@G3D@@SAXPAX@Z": "0x507d20 (external)"
+        },
+        "local": []
+      }
+    ],
+    "viewbase": [
+      {
+        "address": "004d8a20",
+        "symbol": "??0ViewBase@RBX@@IAE@V?$shared_ptr@VDataModel@RBX@@@boost@@@Z",
+        "size": 146,
+        "target_size": 146,
+        "exact": true,
+        "verified_targets": {
+          "??_7ViewBase@RBX@@6B@": "0x826c24 (vtable RTTI .?AVViewBase@RBX@@ offset 0x0)"
+        },
+        "local": []
+      },
+      {
+        "address": "004d8ac0",
+        "symbol": "??_GViewBase@RBX@@UAEPAXI@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1ViewBase@RBX@@UAE@XZ": "0x4d8920 (external)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local": []
+      }
+    ],
+    "viewrbxgfx": [
+      {
+        "address": "004d76d0",
+        "symbol": "?getMeshDetail@ViewRbxGfx@ViewNew@RBX@@UBEMXZ",
+        "size": 10,
+        "target_size": 10,
+        "exact": true,
+        "verified_targets": {},
+        "local": []
+      },
+      {
+        "address": "004db660",
+        "symbol": "?updateSettings@ViewRbxGfx@ViewNew@RBX@@UAEXMM_NM@Z",
+        "size": 44,
+        "target_size": 44,
+        "exact": true,
+        "verified_targets": {},
+        "local": []
+      },
+      {
+        "address": "004db6f0",
+        "symbol": "?getRenderStats@ViewRbxGfx@ViewNew@RBX@@UAEAAVRenderStats@@XZ",
+        "size": 7,
+        "target_size": 7,
+        "exact": true,
+        "verified_targets": {},
+        "local": []
+      },
+      {
+        "address": "004d7180",
+        "symbol": "?invalidateLighting@ViewRbxGfx@ViewNew@RBX@@EAEX_N@Z",
+        "size": 17,
+        "target_size": 17,
+        "exact": true,
+        "verified_targets": {},
+        "local": []
+      }
+    ],
+    "scenenew": [
+      {
+        "address": "007aae20",
+        "symbol": "??_GRenderScene@RenderNew@RBX@@UAEPAXI@Z",
+        "size": 30,
+        "target_size": 30,
+        "exact": true,
+        "verified_targets": {
+          "??1RenderScene@RenderNew@RBX@@UAE@XZ": "0x7aaa30 (external)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local": []
+      },
+      {
+        "address": "007aa770",
+        "symbol": "?setThrottle@RenderScene@RenderNew@RBX@@UAEXMM_NM@Z",
+        "size": 320,
+        "target_size": 320,
+        "exact": true,
+        "verified_targets": {
+          "__real@42c80000": "0x8163a4 (constant 42c80000)",
+          "?update@EffectSettings@RenderNew@RBX@@QAE?AV?$ReferenceCountedPointer@VLighting@G3D@@@G3D@@MM_NMABV45@ABVLightingParameters@5@AAV65@@Z": "0x7afce0 (external)",
+          "?setPointer@?$ReferenceCountedPointer@VLighting@G3D@@@G3D@@AAEXPAVLighting@2@@Z": "0x598fa0 (external)",
+          "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+          "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ": "0x45ad90 (external (evidence name))"
+        },
+        "local": [
+          "__ehhandler$?setThrottle@RenderScene@RenderNew@RBX@@UAEXMM_NM@Z"
+        ]
+      },
+      {
+        "address": "007aa8b0",
+        "symbol": "?setLighting@RenderScene@RenderNew@RBX@@QAEXABV?$ReferenceCountedPointer@VLighting@G3D@@@G3D@@@Z",
+        "size": 206,
+        "target_size": 206,
+        "exact": true,
+        "verified_targets": {
+          "?setPointer@?$ReferenceCountedPointer@VLighting@G3D@@@G3D@@AAEXPAVLighting@2@@Z": "0x598fa0 (external)",
+          "?update@EffectSettings@RenderNew@RBX@@QAE?AV?$ReferenceCountedPointer@VLighting@G3D@@@G3D@@MM_NMABV45@ABVLightingParameters@5@AAV65@@Z": "0x7afce0 (external)",
+          "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+          "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ": "0x45ad90 (external (evidence name))"
+        },
+        "local": [
+          "__ehhandler$?setLighting@RenderScene@RenderNew@RBX@@QAEXABV?$ReferenceCountedPointer@VLighting@G3D@@@G3D@@@Z"
+        ]
+      },
+      {
+        "address": "007aacc0",
+        "symbol": "?presetLighting@RenderScene@RenderNew@RBX@@UAEXV?$ReferenceCountedPointer@VSky@G3D@@@G3D@@VLightingParameters@5@VColor3@5@2@Z",
+        "size": 350,
+        "target_size": 350,
+        "exact": true,
+        "verified_targets": {
+          "??4LightingParameters@G3D@@QAEAAV01@ABV01@@Z": "0x501d80 (external (evidence name))",
+          "?create@Lighting@G3D@@SA?AV?$ReferenceCountedPointer@VLighting@G3D@@@2@XZ": "0x503960 (external (evidence name))",
+          "__real@3f666666": "0x826fc8 (constant 3f666666)",
+          "?directional@GLight@G3D@@SA?AV12@ABVVector3@2@ABVColor3@2@_N2@Z": "0x514510 (external)",
+          "?append@?$Array@VGLight@G3D@@@G3D@@QAEXABVGLight@2@@Z": "0x503000 (external (evidence name))",
+          "?setLighting@RenderScene@RenderNew@RBX@@QAEXABV?$ReferenceCountedPointer@VLighting@G3D@@@G3D@@@Z": "0x7aa8b0 (own row)",
+          "__imp__InterlockedDecrement@4": "0x8021ac (kernel32.dll!InterlockedDecrement)",
+          "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ": "0x45ad90 (external (evidence name))"
+        },
+        "local": [
+          "__ehhandler$?presetLighting@RenderScene@RenderNew@RBX@@UAEXV?$ReferenceCountedPointer@VSky@G3D@@@G3D@@VLightingParameters@5@VColor3@5@2@Z"
+        ]
+      }
+    ],
+    "not_exact": [
+      {
+        "address": "007aae40",
+        "symbol": "??0RenderScene@RenderNew@RBX@@QAE@XZ",
+        "size": 560,
+        "target_size": 606,
+        "exact": false,
+        "reason": "RenderNew::RenderScene ctor: identical except the colorClearValue assignment at the end. The original copies the (0.5, 0.5, 1, 1) Color4 through an out-of-line copy ctor call (007ab068 -> 00476550, the ICF copy also called by G3D 00511070), so the 2008 G3D Color4 copy ctor was not inline; the donor G3D Color4.inl defines it inline and this build inlines it (560 vs 606 bytes, frame 8 vs 0x28). Needs the 2008 G3D Color4 declaration (tools/, read-only)."
+      }
+    ]
+  },
+  "exact_function_rows": [
+    "00458e90",
+    "00475f20",
+    "004d6f50",
+    "004d6f60",
+    "004d7180",
+    "004d7320",
+    "004d7350",
+    "004d76d0",
+    "004d7890",
+    "004d7ae0",
+    "004d7db0",
+    "004d8310",
+    "004d8320",
+    "004d8380",
+    "004d8a20",
+    "004d8ac0",
+    "004db660",
+    "004db6f0",
+    "004e5b60",
+    "004e5b70",
+    "004e8160",
+    "004e81d0",
+    "00502500",
+    "00502d30",
+    "00502e70",
+    "005039d0",
+    "005039e0",
+    "00503a30",
+    "00503a60",
+    "00503cc0",
+    "00503fc0",
+    "00504fd0",
+    "00505040",
+    "005051e0",
+    "00505220",
+    "00505240",
+    "00505270",
+    "005052e0",
+    "00505340",
+    "005053b0",
+    "00505460",
+    "005054a0",
+    "00505570",
+    "00505730",
+    "00505780",
+    "00505860",
+    "00505890",
+    "005058c0",
+    "0053f0d0",
+    "0053f160",
+    "0053f1e0",
+    "0053f200",
+    "0053f580",
+    "0053f6a0",
+    "0053fa50",
+    "00540240",
+    "00540300",
+    "00540390",
+    "00540410",
+    "00540440",
+    "00540560",
+    "005405d0",
+    "00540fb0",
+    "00541030",
+    "005410d0",
+    "005411c0",
+    "005414a0",
+    "005414d0",
+    "00541580",
+    "00542a30",
+    "00542de0",
+    "00543610",
+    "005446f0",
+    "00545f10",
+    "00546070",
+    "00546320",
+    "00546900",
+    "005469b0",
+    "00546d20",
+    "00546fd0",
+    "0054da40",
+    "0054e310",
+    "0054ef60",
+    "00551f30",
+    "00552160",
+    "00552690",
+    "005526b0",
+    "005526d0",
+    "005526e0",
+    "00552720",
+    "00552760",
+    "00552780",
+    "005527f0",
+    "005530e0",
+    "00553220",
+    "00553270",
+    "007aa770",
+    "007aa8b0",
+    "007aa980",
+    "007aacc0",
+    "007aae20"
+  ],
+  "folded_rows_not_counted": [
+    {
+      "address": "00503cb0",
+      "symbol": "?getShadingQuality@RenderSceneBase@RenderBase@RBX@@UBEMXZ",
+      "size": 4,
+      "target_size": 4,
+      "exact": true,
+      "verified_targets": {},
+      "local": []
+    },
+    {
+      "address": "007b76d0",
+      "symbol": "?getMeshDetail@RenderSceneBase@RenderBase@RBX@@UBEMXZ",
+      "size": 4,
+      "target_size": 4,
+      "exact": true,
+      "verified_targets": {},
+      "local": []
+    },
+    {
+      "address": "0064a390",
+      "symbol": "?getShadingQuality@ViewRbxGfx@ViewNew@RBX@@UBEMXZ",
+      "size": 10,
+      "target_size": 10,
+      "exact": true,
+      "verified_targets": {},
+      "local": []
+    },
+    {
+      "address": "0047d410",
+      "symbol": "?updateLighting@ViewRbxGfx@ViewNew@RBX@@EAEXXZ",
+      "size": 1,
+      "target_size": 1,
+      "exact": true,
+      "verified_targets": {},
+      "local": []
+    }
+  ],
+  "pending_build_rows": [
+    {
+      "address": "004d8920",
+      "symbol": "??1ViewBase@RBX@@UAE@XZ",
+      "size": 242,
+      "target_size": 242,
+      "exact": false,
+      "verified_targets": {
+        "??_7ViewBase@RBX@@6B@": "0x826c24 (vtable RTTI .?AVViewBase@RBX@@ offset 0x0)",
+        "??1scoped_connection@signals@boost@@QAE@XZ": "0x5954b0 (external)",
+        "??1MaterialFactory@ViewNew@RBX@@QAE@XZ": "0x4d7460 (external)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7?$Table@VTextureArgs@TextureManager@G3D@@V?$ReferenceCountedPointer@VTexture@G3D@@@3@@G3D@@6B@": "0x819cd8 (vtable RTTI .?AV?$Table@VTextureArgs@TextureManager@G3D@@V?$ReferenceCountedPointer@VTexture@G3D@@@3@@G3D@@ offset 0x0)",
+        "?freeMemory@?$Table@VTextureArgs@TextureManager@G3D@@V?$ReferenceCountedPointer@VTexture@G3D@@@3@@G3D@@AAEXXZ": "0x45c680 (external)"
+      },
+      "local": [
+        "__ehhandler$??1ViewBase@RBX@@UAE@XZ"
+      ],
+      "exact_in_pending_build": true,
+      "reason": "pending-build-only: ~ViewBase destroys the auto_ptr<ViewNew::MaterialFactory> member, whose 2008 class (0x10 bytes, dtor 004d7460, ctor 004f0920) is not declared; built with a generated header under out/render-scene-pending (NATIVE_VIEWBASE_PENDING) and never counted"
+    }
+  ],
+  "notes": [
+    "RenderSceneBase +0x4 is not a member: MSVC pads the vfptr to the class alignment (8, from the doubles in G3D::Stopwatch), so chunkArray starts at +0x8 (layout probe sceneBaseChunkArray)."
+  ],
+  "blocked": {
+    "004d8920": "ViewBase dtor: exact only in the NATIVE_VIEWBASE_PENDING build (2008 ViewNew::MaterialFactory missing)",
+    "004d9990": "ViewRbxGfx ctor: MaterialFactory ctor (RenderNew::RenderScene is declared in RenderSceneNew2008.h, but its ctor 007aae40 is not exact), Lighting::event_LightingChanged and Instance::event_descendentAdded connections (DataModel / Workspace / Lighting owners)",
+    "004db4f0": "ViewRbxGfx dtor: ServiceProvider::create<Lighting> 004b3380 and the ViewNew mesh-cache flushes 004db130 / 004db040 / 004daf50 / 004e5670 / 004db310 / 004db220 / 004db400 (other owners); its ??_G 004db5d0 is emitted only with the vtable (ctor / dtor)",
+    "004daf10": "ViewRbxGfx::render: Workspace +0x288 camera interface (Workspace owner) and 004dab50",
+    "004d9c90": "ViewRbxGfx::suppressSkybox: Lighting service (owner) accessors",
+    "004d7370": "ViewRbxGfx/ViewG3D::getWorkspace: Workspace* -> Instance* needs the complete Workspace (owner)",
+    "004db7c0": "ViewRbxGfx/ViewG3D::onWorkspaceDescendentAdded: PartInstance / Decal views (other owners)",
+    "004dbbe0": "ViewG3D ctor: map member +0x4c key / value types not derived. Its tree ctor 00446110, head node 0056d3d0 (new 0x18: 8-byte value) and erase 00553ca0 are ICF-shared bodies with no value dtor, so they fix only a trivially destructible 8-byte value_type; +0x48 is a ReferenceCountedPointer<G3D::Sky> (updateLighting 004dc0eb). Also the Lighting / DataModel connections (other owners)",
+    "004dc270": "ViewG3D dtor (and ??_G 004dc340): same map member, plus the Lighting / mesh-cache calls",
+    "004db610": "ViewG3D::invalidateLighting: the ViewG3D class needs the +0x4c map type to be declared",
+    "004db690": "ViewG3D::render: Workspace +0x288 camera interface (Workspace owner)",
+    "007aaa30": "RenderNew::RenderScene dtor: deletes the Ogre::RbxSceneNode (+0x268, via its creator root node) and Ogre::RbxEntity (+0x26c) forks, which are owned by the Ogre fork recoveries and not declared here",
+    "007ab0a0": "RenderNew::RenderScene::render (7199 bytes): Ogre camera / RbxSceneNode / RbxEntity calls (Ogre fork owners)",
+    "00504bf0": "Render::RenderScene::render: the G3D draw path (RenderDevice state, shadow volumes) is not built"
+  },
+  "vtables": {
+    "SceneManager@RenderBase@RBX": [
+      {
+        "slot": 0,
+        "symbol": "__purecall",
+        "original": "006a16be",
+        "ok": true,
+        "how": "import _purecall"
+      },
+      {
+        "slot": 1,
+        "symbol": "__purecall",
+        "original": "006a16be",
+        "ok": true,
+        "how": "import _purecall"
+      },
+      {
+        "slot": 2,
+        "symbol": "__purecall",
+        "original": "006a16be",
+        "ok": true,
+        "how": "import _purecall"
+      },
+      {
+        "slot": 3,
+        "symbol": "__purecall",
+        "original": "006a16be",
+        "ok": true,
+        "how": "import _purecall"
+      },
+      {
+        "slot": 4,
+        "symbol": "__purecall",
+        "original": "006a16be",
+        "ok": true,
+        "how": "import _purecall"
+      },
+      {
+        "slot": 5,
+        "symbol": "__purecall",
+        "original": "006a16be",
+        "ok": true,
+        "how": "import _purecall"
+      },
+      {
+        "slot": 6,
+        "symbol": "??_ESceneManager@RenderBase@RBX@@UAEPAXI@Z",
+        "original": "004d7350",
+        "ok": true,
+        "how": "bound (??_G)"
+      }
+    ],
+    "SimpleSceneManager@RenderBase@RBX": [
+      {
+        "slot": 0,
+        "symbol": "?invalidateModel@SimpleSceneManager@RenderBase@RBX@@UAEXABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@_N@Z",
+        "original": "004d7320",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 1,
+        "symbol": "?addModel@SimpleSceneManager@RenderBase@RBX@@UAEXABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@Z",
+        "original": "004d7db0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?removeModel@SimpleSceneManager@RenderBase@RBX@@UAEXABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@Z",
+        "original": "004d8380",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?clear@SimpleSceneManager@RenderBase@RBX@@UAEXXZ",
+        "original": "004d8310",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?setSleeping@SimpleSceneManager@RenderBase@RBX@@UAEXABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@_N@Z",
+        "original": "00458e90",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?prerender@SimpleSceneManager@RenderBase@RBX@@UAEXN@Z",
+        "original": "00458e90",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 6,
+        "symbol": "??_ESimpleSceneManager@RenderBase@RBX@@UAEPAXI@Z",
+        "original": "004d7350",
+        "ok": true,
+        "how": "bound (??_G)"
+      }
+    ],
+    "Bucket@AggregatingSceneManager@RenderBase@RBX": [
+      {
+        "slot": 0,
+        "symbol": "??_EBucket@AggregatingSceneManager@RenderBase@RBX@@UAEPAXI@Z",
+        "original": "00540410",
+        "ok": true,
+        "how": "bound (??_G)"
+      }
+    ],
+    "AggregatingSceneManager@RenderBase@RBX": [
+      {
+        "slot": 0,
+        "symbol": "?invalidateModel@AggregatingSceneManager@RenderBase@RBX@@UAEXABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@_N@Z",
+        "original": "00540240",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 1,
+        "symbol": "?addModel@AggregatingSceneManager@RenderBase@RBX@@UAEXABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@Z",
+        "original": "0053f1e0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?removeModel@AggregatingSceneManager@RenderBase@RBX@@UAEXABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@Z",
+        "original": "0053f580",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?clear@AggregatingSceneManager@RenderBase@RBX@@UAEXXZ",
+        "original": "0053f6a0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?setSleeping@AggregatingSceneManager@RenderBase@RBX@@UAEXABV?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@_N@Z",
+        "original": "0053fa50",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?prerender@AggregatingSceneManager@RenderBase@RBX@@UAEXN@Z",
+        "original": "0053fc00",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 6,
+        "symbol": "??_EAggregatingSceneManager@RenderBase@RBX@@UAEPAXI@Z",
+        "original": "00540300",
+        "ok": true,
+        "how": "bound (??_G)"
+      }
+    ],
+    "AggregateChunk@RenderBase@RBX": [
+      {
+        "slot": 0,
+        "symbol": "??_EAggregateChunk@RenderBase@RBX@@UAEPAXI@Z",
+        "original": "00552780",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?cachesShadows@AggregateChunk@RenderBase@RBX@@UBE_NXZ",
+        "original": "005526d0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?renderShadows@AggregateChunk@RenderBase@RBX@@UAEXPAVRenderDevice@G3D@@ABVGLight@5@_NM@Z",
+        "original": "00552300",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?castsShadows@AggregateChunk@RenderBase@RBX@@UBE_NXZ",
+        "original": "00552690",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?cullable@AggregateChunk@RenderBase@RBX@@UBE_NXZ",
+        "original": "005526b0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?getMaterial@AggregateChunk@RenderBase@RBX@@UAE?AV?$ReferenceCountedPointer@VMaterialBase@RenderBase@RBX@@@G3D@@XZ",
+        "original": "005526e0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 6,
+        "symbol": "?getMesh@AggregateChunk@RenderBase@RBX@@UAE?AV?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@XZ",
+        "original": "00552720",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 7,
+        "symbol": "?cframe@AggregateChunk@RenderBase@RBX@@UAEABVCoordinateFrame@G3D@@XZ",
+        "original": "00552760",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 8,
+        "symbol": "?setSortValue@Chunk@RenderBase@RBX@@UAEXM@Z",
+        "original": "004e5b60",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 9,
+        "symbol": "?getSortValue@Chunk@RenderBase@RBX@@UBEMXZ",
+        "original": "004e5b70",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "RenderSceneBase@RenderBase@RBX": [
+      {
+        "slot": 0,
+        "symbol": "??_ERenderSceneBase@RenderBase@RBX@@UAEPAXI@Z",
+        "original": "00503a30",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?presetLighting@RenderSceneBase@RenderBase@RBX@@UAEXV?$ReferenceCountedPointer@VSky@G3D@@@G3D@@VLightingParameters@5@VColor3@5@2@Z",
+        "original": "005039e0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "__purecall",
+        "original": "006a16be",
+        "ok": true,
+        "how": "import _purecall"
+      },
+      {
+        "slot": 3,
+        "symbol": "?getShadingQuality@RenderSceneBase@RenderBase@RBX@@UBEMXZ",
+        "original": "00503cb0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?getMeshDetail@RenderSceneBase@RenderBase@RBX@@UBEMXZ",
+        "original": "007b76d0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "__purecall",
+        "original": "006a16be",
+        "ok": true,
+        "how": "import _purecall"
+      }
+    ],
+    "RenderScene@Render@RBX": [
+      {
+        "slot": 0,
+        "symbol": "??_ERenderScene@Render@RBX@@UAEPAXI@Z",
+        "original": "00503fc0",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?presetLighting@RenderScene@Render@RBX@@UAEXV?$ReferenceCountedPointer@VSky@G3D@@@G3D@@VLightingParameters@5@VColor3@5@2@Z",
+        "original": "00503cc0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?setThrottle@RenderScene@Render@RBX@@UAEXMM_NM@Z",
+        "original": "00502d30",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?getShadingQuality@RenderSceneBase@RenderBase@RBX@@UBEMXZ",
+        "original": "00503cb0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?getMeshDetail@RenderSceneBase@RenderBase@RBX@@UBEMXZ",
+        "original": "007b76d0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?render@RenderScene@Render@RBX@@UAEXPAVRenderDevice@G3D@@ABVGCamera@5@@Z",
+        "original": "00504bf0",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "RenderScene@RenderNew@RBX": [
+      {
+        "slot": 0,
+        "symbol": "??_ERenderScene@RenderNew@RBX@@UAEPAXI@Z",
+        "original": "007aae20",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?presetLighting@RenderScene@RenderNew@RBX@@UAEXV?$ReferenceCountedPointer@VSky@G3D@@@G3D@@VLightingParameters@5@VColor3@5@2@Z",
+        "original": "007aacc0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 2,
+        "symbol": "?setThrottle@RenderScene@RenderNew@RBX@@UAEXMM_NM@Z",
+        "original": "007aa770",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 3,
+        "symbol": "?getShadingQuality@RenderSceneBase@RenderBase@RBX@@UBEMXZ",
+        "original": "00503cb0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 4,
+        "symbol": "?getMeshDetail@RenderSceneBase@RenderBase@RBX@@UBEMXZ",
+        "original": "007b76d0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 5,
+        "symbol": "?render@RenderScene@RenderNew@RBX@@UAEXPAVRenderDevice@G3D@@ABVGCamera@5@@Z",
+        "original": "007ab0a0",
+        "ok": true,
+        "how": "bound"
+      }
+    ],
+    "ViewBase@RBX": [
+      {
+        "slot": 0,
+        "symbol": "??_EViewBase@RBX@@UAEPAXI@Z",
+        "original": "004d8ac0",
+        "ok": true,
+        "how": "bound (??_G)"
+      },
+      {
+        "slot": 1,
+        "symbol": "__purecall",
+        "original": "006a16be",
+        "ok": true,
+        "how": "import _purecall"
+      },
+      {
+        "slot": 2,
+        "symbol": "__purecall",
+        "original": "006a16be",
+        "ok": true,
+        "how": "import _purecall"
+      },
+      {
+        "slot": 3,
+        "symbol": "__purecall",
+        "original": "006a16be",
+        "ok": true,
+        "how": "import _purecall"
+      },
+      {
+        "slot": 4,
+        "symbol": "__purecall",
+        "original": "006a16be",
+        "ok": true,
+        "how": "import _purecall"
+      },
+      {
+        "slot": 5,
+        "symbol": "__purecall",
+        "original": "006a16be",
+        "ok": true,
+        "how": "import _purecall"
+      },
+      {
+        "slot": 6,
+        "symbol": "__purecall",
+        "original": "006a16be",
+        "ok": true,
+        "how": "import _purecall"
+      },
+      {
+        "slot": 7,
+        "symbol": "__purecall",
+        "original": "006a16be",
+        "ok": true,
+        "how": "import _purecall"
+      },
+      {
+        "slot": 8,
+        "symbol": "__purecall",
+        "original": "006a16be",
+        "ok": true,
+        "how": "import _purecall"
+      },
+      {
+        "slot": 9,
+        "symbol": "__purecall",
+        "original": "006a16be",
+        "ok": true,
+        "how": "import _purecall"
+      },
+      {
+        "slot": 10,
+        "symbol": "__purecall",
+        "original": "006a16be",
+        "ok": true,
+        "how": "import _purecall"
+      }
+    ]
+  },
+  "proposals": {
+    "ViewNew::MaterialFactory (owner: whoever recovers the ViewNew material factory; not declared anywhere yet)": "0x10 bytes (new 0x10 at 004d9ac1 before its ctor 004f0920(G3D::TextureManager*)), out-of-line dtor 004d7460 (releases four ReferenceCountedPointers at +0xc, +0x8, +0x4, +0x0). The ctor fills +0x4 / +0x8 from the texture-proxy factory 00551920(textureManager, name, true / false) and +0x0 from 00551a30; +0xc is released through slot 0 but its pointee type is not derived. Once a header declares the class (even with only its dtor), ViewBase2008.h can include it and the ViewBase dtor 004d8920 (exact in the NATIVE_VIEWBASE_PENDING build) becomes a counted row.",
+    "Material owner (RenderLib/Material2008.h), FYI": "the unnamed factory 00551730 (new 0x18 RenderNew::Material 007ad960 when 00942ec4 == 0, Render::Material 007b80a0 when 1, else throws std::exception) is declared in AggregateChunk2008.h as RenderBase::createMaterial() (donor name) because the AggregateChunk ctor calls it; move it next to MaterialBase if you recover its body.",
+    "Workspace / Lighting / DataModel owners, FYI": "ViewRbxGfx / ViewG3D render (004daf10 / 004db690) read dataModel->workspace (+0x204) and call slot 2 of the Workspace subobject at +0x288 for the camera; getWorkspace 004d7370 needs Workspace* -> Instance*; the ctors / dtors use Lighting::event_LightingChanged, Instance::event_descendentAdded and ServiceProvider::create<Lighting> 004b3380."
+  },
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

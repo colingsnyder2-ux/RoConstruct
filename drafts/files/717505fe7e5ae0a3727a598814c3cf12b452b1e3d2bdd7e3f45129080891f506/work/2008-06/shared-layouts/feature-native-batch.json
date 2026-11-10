@@ -1,0 +1,12 @@
+{
+  "batch": "RBX::Feature / VelocityMotor",
+  "change": "Removed NATIVE_FEATURE_PENDING guards for VelocityMotor::onAncestorChanged and VelocityMotor::setHole; includes Workspace.h unconditionally.",
+  "changed_files": [
+    "rebuild/2008-06/native-classes/Feature.cpp"
+  ],
+  "verification": "rebuild/2008-06/tests/record_native_feature.py PASS: 206 exact rows (149 unique), 20 pending-only, 14 non-exact, 120 vtables.",
+  "package_revision": "1d8dc7a8d6ee2c6694f477361ba54ad661ce91c8f648dc9713f7a4bdf6bb4b54",
+  "workspace_manifest_source_revision": "1d8dc7a8d6ee2c6694f477361ba54ad661ce91c8f648dc9713f7a4bdf6bb4b54",
+  "baseline_commit": "unknown",
+  "status": "inactive draft; no active build, swap, runtime, or server credit"
+}

@@ -1,0 +1,269 @@
+{
+  "command-native": {
+    "??1VistaAPIs@RBX@@QAE@XZ": [
+      {
+        "offset": 10,
+        "symbol": "__imp__FreeLibrary@4",
+        "kind": 6
+      }
+    ],
+    "?GetIntegrity@VistaAPIs@RBX@@QAGJPAE@Z": [
+      {
+        "offset": 30,
+        "symbol": "_memset",
+        "kind": 20
+      },
+      {
+        "offset": 52,
+        "symbol": "__imp__GetVersionExA@4",
+        "kind": 6
+      },
+      {
+        "offset": 69,
+        "symbol": "__imp__GetCurrentProcess@0",
+        "kind": 6
+      },
+      {
+        "offset": 83,
+        "symbol": "__imp__OpenProcessToken@12",
+        "kind": 6
+      },
+      {
+        "offset": 102,
+        "symbol": "__imp__GetTokenInformation@20",
+        "kind": 6
+      },
+      {
+        "offset": 126,
+        "symbol": "__imp__GetLastError@0",
+        "kind": 6
+      },
+      {
+        "offset": 145,
+        "symbol": "__imp__LocalAlloc@8",
+        "kind": 6
+      },
+      {
+        "offset": 184,
+        "symbol": "__imp__GetSidSubAuthorityCount@4",
+        "kind": 6
+      },
+      {
+        "offset": 201,
+        "symbol": "__imp__GetSidSubAuthority@8",
+        "kind": 6
+      },
+      {
+        "offset": 234,
+        "symbol": "__imp__LocalFree@4",
+        "kind": 6
+      },
+      {
+        "offset": 246,
+        "symbol": "__imp__CloseHandle@4",
+        "kind": 6
+      }
+    ],
+    "??0VistaAPIs@RBX@@QAE@XZ": [
+      {
+        "offset": 4,
+        "symbol": "??_C@_0M@LNAMDANG@Shell32?4dll?$AA@",
+        "kind": 6
+      },
+      {
+        "offset": 16,
+        "symbol": "__imp__LoadLibraryA@4",
+        "kind": 6
+      },
+      {
+        "offset": 28,
+        "symbol": "??_C@_0BF@OMOLCJCE@SHGetKnownFolderPath?$AA@",
+        "kind": 6
+      },
+      {
+        "offset": 35,
+        "symbol": "__imp__GetProcAddress@8",
+        "kind": 6
+      }
+    ],
+    "?SHGetKnownFolderPath@VistaAPIs@RBX@@QAEJABU_GUID@@KPAXPAPA_W@Z": []
+  },
+  "prior-native": {
+    "??1VistaAPIs@RBX@@QAE@XZ": [
+      {
+        "offset": 10,
+        "symbol": "__imp__FreeLibrary@4",
+        "kind": 6
+      }
+    ],
+    "?GetIntegrity@VistaAPIs@RBX@@QAGJPAE@Z": [
+      {
+        "offset": 30,
+        "symbol": "_memset",
+        "kind": 20
+      },
+      {
+        "offset": 52,
+        "symbol": "__imp__GetVersionExA@4",
+        "kind": 6
+      },
+      {
+        "offset": 69,
+        "symbol": "__imp__GetCurrentProcess@0",
+        "kind": 6
+      },
+      {
+        "offset": 83,
+        "symbol": "__imp__OpenProcessToken@12",
+        "kind": 6
+      },
+      {
+        "offset": 102,
+        "symbol": "__imp__GetTokenInformation@20",
+        "kind": 6
+      },
+      {
+        "offset": 126,
+        "symbol": "__imp__GetLastError@0",
+        "kind": 6
+      },
+      {
+        "offset": 145,
+        "symbol": "__imp__LocalAlloc@8",
+        "kind": 6
+      },
+      {
+        "offset": 184,
+        "symbol": "__imp__GetSidSubAuthorityCount@4",
+        "kind": 6
+      },
+      {
+        "offset": 201,
+        "symbol": "__imp__GetSidSubAuthority@8",
+        "kind": 6
+      },
+      {
+        "offset": 234,
+        "symbol": "__imp__LocalFree@4",
+        "kind": 6
+      },
+      {
+        "offset": 246,
+        "symbol": "__imp__CloseHandle@4",
+        "kind": 6
+      }
+    ],
+    "??0VistaAPIs@RBX@@QAE@XZ": [
+      {
+        "offset": 4,
+        "symbol": "??_C@_0M@LNAMDANG@Shell32?4dll?$AA@",
+        "kind": 6
+      },
+      {
+        "offset": 16,
+        "symbol": "__imp__LoadLibraryA@4",
+        "kind": 6
+      },
+      {
+        "offset": 28,
+        "symbol": "??_C@_0BF@OMOLCJCE@SHGetKnownFolderPath?$AA@",
+        "kind": 6
+      },
+      {
+        "offset": 35,
+        "symbol": "__imp__GetProcAddress@8",
+        "kind": 6
+      }
+    ],
+    "?SHGetKnownFolderPath@VistaAPIs@RBX@@QAEJABU_GUID@@KPAXPAPA_W@Z": []
+  },
+  "archive-donor": {
+    "??1VistaAPIs@RBX@@QAE@XZ": [
+      {
+        "offset": 10,
+        "symbol": "__imp__FreeLibrary@4",
+        "kind": 6
+      }
+    ],
+    "?GetIntegrity@VistaAPIs@RBX@@QAGJPAE@Z": [
+      {
+        "offset": 30,
+        "symbol": "_memset",
+        "kind": 20
+      },
+      {
+        "offset": 52,
+        "symbol": "__imp__GetVersionExA@4",
+        "kind": 6
+      },
+      {
+        "offset": 69,
+        "symbol": "__imp__GetCurrentProcess@0",
+        "kind": 6
+      },
+      {
+        "offset": 83,
+        "symbol": "__imp__OpenProcessToken@12",
+        "kind": 6
+      },
+      {
+        "offset": 102,
+        "symbol": "__imp__GetTokenInformation@20",
+        "kind": 6
+      },
+      {
+        "offset": 126,
+        "symbol": "__imp__GetLastError@0",
+        "kind": 6
+      },
+      {
+        "offset": 145,
+        "symbol": "__imp__LocalAlloc@8",
+        "kind": 6
+      },
+      {
+        "offset": 184,
+        "symbol": "__imp__GetSidSubAuthorityCount@4",
+        "kind": 6
+      },
+      {
+        "offset": 201,
+        "symbol": "__imp__GetSidSubAuthority@8",
+        "kind": 6
+      },
+      {
+        "offset": 234,
+        "symbol": "__imp__LocalFree@4",
+        "kind": 6
+      },
+      {
+        "offset": 246,
+        "symbol": "__imp__CloseHandle@4",
+        "kind": 6
+      }
+    ],
+    "??0VistaAPIs@RBX@@QAE@XZ": [
+      {
+        "offset": 4,
+        "symbol": "??_C@_0M@LNAMDANG@Shell32?4dll?$AA@",
+        "kind": 6
+      },
+      {
+        "offset": 16,
+        "symbol": "__imp__LoadLibraryA@4",
+        "kind": 6
+      },
+      {
+        "offset": 28,
+        "symbol": "??_C@_0BF@OMOLCJCE@SHGetKnownFolderPath?$AA@",
+        "kind": 6
+      },
+      {
+        "offset": 35,
+        "symbol": "__imp__GetProcAddress@8",
+        "kind": 6
+      }
+    ],
+    "?SHGetKnownFolderPath@VistaAPIs@RBX@@QAEJABU_GUID@@KPAXPAPA_W@Z": []
+  }
+}

@@ -1,0 +1,7 @@
+# Optional dependencies for the official Sign in with ChatGPT flow.
+Authlib>=1.6,<2
+requests>=2.32,<3
+PyJWT[crypto]>=2.10,<3
+openai>=2,<3
+keyring>=25,<26
+filelock>=3.16,<4

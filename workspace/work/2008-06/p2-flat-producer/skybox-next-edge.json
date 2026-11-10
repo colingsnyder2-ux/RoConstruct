@@ -1,0 +1,30 @@
+{
+  "native_sky_init": "004d9e00",
+  "available_external_assets": {
+    "null_plainsky512_bk.jpg": {
+      "sha256": "c054a173687f7bf18cd386071ffffb4fd45a3f2af39bc201b7aa750088d96249",
+      "same_in_May2008_RCC_installer": true
+    },
+    "null_plainsky512_dn.jpg": {
+      "sha256": "0cf07a5fc64c9d46b73898c3fbb2ff4aafec1fc54c796c387a449849b78530b0",
+      "same_in_May2008_RCC_installer": true
+    },
+    "null_plainsky512_ft.jpg": {
+      "sha256": "34fa945c01a1cfc9a929e48675c52e0ca1f7c5ca33064d0892bdeda647c9928f",
+      "same_in_May2008_RCC_installer": true
+    },
+    "null_plainsky512_lf.jpg": {
+      "sha256": "665c12f846a2dbc08a5ede320683118cd658a6ae1bb980079d3528f030e40be8",
+      "same_in_May2008_RCC_installer": true
+    },
+    "null_plainsky512_rt.jpg": {
+      "sha256": "56532ecfe4367f813e061588c599b3d16d96f2b91e43b46248e82ad5e8dc56fd",
+      "same_in_May2008_RCC_installer": true
+    },
+    "null_plainsky512_up.jpg": {
+      "sha256": "236c0f8e9186c68d07273ea57fb72e016d520ebebbd1a6b4db975248899d6c0f",
+      "same_in_May2008_RCC_installer": true
+    }
+  },
+  "exact_June_distribution_proven": false
+}

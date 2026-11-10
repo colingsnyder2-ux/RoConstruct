@@ -1,0 +1,45 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/PhysicsServiceProvider.cpp",
+      "checks": [
+        {
+          "addr": "005e8ec0",
+          "symbol": "?onServiceProvider@PhysicsService@RBX@@MAEXPBVServiceProvider@2@0@Z",
+          "calls": [
+            {
+              "offset": 12,
+              "target": "00490af0",
+              "symbol": "??$find@VWorkspace@RBX@@@ServiceProvider@RBX@@QBEPAVWorkspace@1@XZ"
+            },
+            {
+              "offset": 89,
+              "target": "00490af0",
+              "symbol": "??$find@VWorkspace@RBX@@@ServiceProvider@RBX@@QBEPAVWorkspace@1@XZ"
+            },
+            {
+              "offset": 49,
+              "target": "005e5a80",
+              "symbol": "?removeListener@?$Notifier@VWorld@RBX@@UAssemblyPhysicsOn@2@@RBX@@QBEXPAV?$Listener@VWorld@RBX@@UAssemblyPhysicsOn@2@@2@@Z"
+            },
+            {
+              "offset": 76,
+              "target": "005e5a80",
+              "symbol": "?removeListener@?$Notifier@VWorld@RBX@@UAssemblyPhysicsOff@2@@RBX@@QBEXPAV?$Listener@VWorld@RBX@@UAssemblyPhysicsOff@2@@2@@Z"
+            },
+            {
+              "offset": 126,
+              "target": "004218a0",
+              "symbol": "?addListener@?$Notifier@VWorld@RBX@@UAssemblyPhysicsOn@2@@RBX@@QBEXPAV?$Listener@VWorld@RBX@@UAssemblyPhysicsOn@2@@2@@Z"
+            },
+            {
+              "offset": 153,
+              "target": "004218a0",
+              "symbol": "?addListener@?$Notifier@VWorld@RBX@@UAssemblyPhysicsOff@2@@RBX@@QBEXPAV?$Listener@VWorld@RBX@@UAssemblyPhysicsOff@2@@2@@Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

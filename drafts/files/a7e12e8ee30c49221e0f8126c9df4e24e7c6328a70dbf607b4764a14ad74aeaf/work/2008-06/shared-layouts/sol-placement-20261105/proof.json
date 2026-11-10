@@ -1,0 +1,90 @@
+[
+  {
+    "source": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-classes\\DraggerSafePlace.cpp",
+    "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-134420-28795e31\\unit-000\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "00610580",
+        "requested_symbol": "?safePlaceAlongLine@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@1AAV54@AAVContactManager@2@@Z",
+        "status": "exact",
+        "symbol": "?safePlaceAlongLine@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@1AAV54@AAVContactManager@2@@Z",
+        "score": 100,
+        "target_size": 317,
+        "object_size": 317,
+        "target_sha256": "8cf2a58f94458fb108aeeff533828ba5f05148ba285205b4bd5fedc6fb1947e2",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8664936,
+            4
+          ],
+          [
+            8513284,
+            4
+          ]
+        ],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [
+            {
+              "offset": 21,
+              "target": "00610180",
+              "symbol": "?movePrimitivesGoal@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@AAV54@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 32,
+              "target": "00610130",
+              "symbol": "?intersectingWorldOrOthers@Dragger@RBX@@CA_NABV?$Array@PAVPrimitive@RBX@@@G3D@@AAVContactManager@2@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 158,
+              "target": "005dee10",
+              "symbol": "?toGrid@Math@RBX@@SA?AVVector3@G3D@@ABV34@0@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 170,
+              "target": "00610180",
+              "symbol": "?movePrimitivesGoal@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@AAV54@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 181,
+              "target": "00610130",
+              "symbol": "?intersectingWorldOrOthers@Dragger@RBX@@CA_NABV?$Array@PAVPrimitive@RBX@@@G3D@@AAVContactManager@2@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 239,
+              "target": "00610180",
+              "symbol": "?movePrimitivesGoal@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@AAV54@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 272,
+              "target": "00610580",
+              "symbol": "?safePlaceAlongLine@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@1AAV54@AAVContactManager@2@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 301,
+              "target": "00610580",
+              "symbol": "?safePlaceAlongLine@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@1AAV54@AAVContactManager@2@@Z",
+              "status": "verified_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 1.953118
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  }
+]

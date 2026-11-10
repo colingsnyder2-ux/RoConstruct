@@ -1,0 +1,102 @@
+{
+  "jobs": [
+    {
+      "source": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-classes\\SerializerLoadInstances.cpp",
+      "checks": [
+        {
+          "addr": "00593250",
+          "symbol": "?loadInstances@SerializerV2@@QAEXPAVXmlElement@@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z",
+          "calls": [
+            {
+              "offset": 64,
+              "target": "0057c2b0",
+              "symbol": "?findAttribute@XmlElement@@QAEPAVXmlAttribute@@ABVName@RBX@@@Z"
+            },
+            {
+              "offset": 83,
+              "target": "0057c4f0",
+              "symbol": "?getValue@XmlNameValuePair@@QBE_NAAH@Z"
+            },
+            {
+              "offset": 109,
+              "target": "00592940",
+              "symbol": "??0ArchiveBinder@@QAE@XZ"
+            },
+            {
+              "offset": 130,
+              "target": "0057c230",
+              "symbol": "?findFirstChildByTag@XmlElement@@QBEPBV1@ABVName@RBX@@@Z"
+            },
+            {
+              "offset": 158,
+              "target": "0057c2b0",
+              "symbol": "?findAttribute@XmlElement@@QBEPBVXmlAttribute@@ABVName@RBX@@@Z"
+            },
+            {
+              "offset": 179,
+              "target": "0057c360",
+              "symbol": "?getValue@XmlNameValuePair@@QBE_NAAPBVName@RBX@@@Z"
+            },
+            {
+              "offset": 202,
+              "target": "00420190",
+              "symbol": "?create@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z"
+            },
+            {
+              "offset": 232,
+              "target": "0055b6f0",
+              "symbol": "?read@Instance@RBX@@QAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z"
+            },
+            {
+              "offset": 245,
+              "target": "00420110",
+              "symbol": "?push_back@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z"
+            },
+            {
+              "offset": 286,
+              "target": "00569620",
+              "symbol": "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 310,
+              "target": "005693a0",
+              "symbol": "?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ"
+            },
+            {
+              "offset": 330,
+              "target": "00600660",
+              "symbol": "??1?$shared_ptr@VStandardOut@RBX@@@boost@@QAE@XZ"
+            },
+            {
+              "offset": 396,
+              "target": "0057c250",
+              "symbol": "?findNextChildWithSameTag@XmlElement@@QBEPBV1@PBV1@@Z"
+            },
+            {
+              "offset": 415,
+              "target": "00592720",
+              "symbol": "?resolveRefs@ArchiveBinder@@UAE_NXZ"
+            },
+            {
+              "offset": 435,
+              "target": "005931e0",
+              "symbol": "??1ArchiveBinder@@QAE@XZ"
+            },
+            {
+              "offset": 494,
+              "target": "00509db0",
+              "symbol": "?common@Log@G3D@@SAPAV12@XZ"
+            },
+            {
+              "offset": 501,
+              "target": "00509ef0",
+              "symbol": "?println@Log@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+            }
+          ]
+        }
+      ],
+      "ranges": [],
+      "layouts": []
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "swap_target": "Instance runnable integration (Instance tree helpers)",
+  "canAddChild": {"run": "work/2008-06/native-check-runs/20261105-185730-586480c4", "addr": "0041f340", "size": 76, "symbol": "?canAddChild@Instance@RBX@@QBE_NPBV12@@Z", "target_sha256": "159a7da5b2318bd0c217a722dbe6fc4e7a3b2ac9115ff86770200a21d448f068", "source_sha256": "1ce6bbf18f5c7cdb95b4d8ba2ae0e82392ef5c4de411e7f018e7c539b4f85229", "object_sha256": "55f1a958a50962f17ddf92ec3bfae33ef0df45ce7c982837deeb87c952595e30", "result": "exact bytes+data 100%"},
+  "findFirstChildByClassName": {"run": "work/2008-06/native-check-runs/20261105-185730-586480c4", "addr": "0046ae30", "size": 349, "symbol": "?findFirstChildByClassName@Instance@RBX@@QBEPAV12@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z", "target_sha256": "2d727fb35e8fdf19be1e4bd452907dbf5eb9b9c31731c48fae5f2343d9a79545", "source_sha256": "391fa34cdf81d0a1b49573d1acb76cde61a9a4bfe288535b34586683ac082a34", "object_sha256": "9161ae5e66ccf9be77cffb90c588923d24420c0d330838205cefb9a5b5052219", "result": "exact bytes+data 100%"},
+  "next_gate": "CWorkspace::insert 0046b9d0 catch rethrow (86%, parked), write EH empty-state (parked), Content closure, NullTool headers, Part provider, Initialize compiler (parked)",
+  "metrics": {"inactive_exact": 35, "selected_exact": "unknown", "gated_swaps": 0, "server_credit": 0}
+}

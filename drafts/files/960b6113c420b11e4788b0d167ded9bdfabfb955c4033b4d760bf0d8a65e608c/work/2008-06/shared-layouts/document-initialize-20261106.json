@@ -1,0 +1,13 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/DocumentInitialize.cpp",
+      "checks": [
+        {"addr": "00415510", "symbol": "?doIt@PasteVerb@@"},
+        {"addr": "00582f50", "symbol": "?doIt@CameraZoomExtentsCommand@RBX@@"},
+        {"addr": "0041f040", "symbol": "?doIt@InsertDecal@@"},
+        {"addr": "005823f0", "symbol": "?doIt@CameraCenterCommand@RBX@@"}
+      ]
+    }
+  ]
+}

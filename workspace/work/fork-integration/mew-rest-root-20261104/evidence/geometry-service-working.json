@@ -1,0 +1,1026 @@
+{
+  "class": "RBX::GeometryService",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\out\\native-geometry-service\\NativeGeometryServiceLayout.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\tests\\NativeGeometryServiceLayout.cpp"
+    ],
+    "unit": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\out\\native-geometry-service\\NativeGeometryService.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\native-classes\\GeometryService.cpp"
+    ],
+    "pending": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/fp:fast",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\out\\native-geometry-service\\geometry-service-pending",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\native-headers\\engine-world",
+      "/DNATIVE_GEOMETRYSERVICE_PENDING",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\out\\native-geometry-service\\NativeGeometryServicePending.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-rest-world-20261104\\snapshot\\rebuild\\2008-06\\native-classes\\GeometryService.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_geometry_service.py": "122632960d8818d1ee8a29dc2704edbb726056f255ac6f2f634bfbcb2e6cd3e9",
+    "rebuild/2008-06/tests/NativeGeometryServiceLayout.cpp": "711d5b5767d2ad391fb57abb3a3d174d7e055c07d0cfd862d62dd06db60478bf",
+    "rebuild/2008-06/native-headers/v8datamodel/GeometryService.h": "7190b78f04cb7445b153fbef10d15786b836324ec86297abee545321351eac2e",
+    "rebuild/2008-06/native-classes/GeometryService.cpp": "f1ef3c806d776e6140c005e404a3f0b4d487de4b0a8d369f54a467593743dca8",
+    "rebuild/2008-06/tests/NativeGeometryServicePendingWorkspace.h": "5c7a6b97e9b0fb74523e21c528678ee378fbf4a625903a42cad13354ee8b364c",
+    "rebuild/2008-06/native-headers/v8datamodel/Filters2008.h": "d016a379b1a29573a46a5a6ef53f1a2c51f22753eda0260cd7441d5a8451df5f"
+  },
+  "objects": {
+    "NativeGeometryServiceLayout.obj": "9d08cda925e0f427164c1e3e36a09221ca35a54b9c9e20958fe7cfe61147dc23",
+    "NativeGeometryService.obj": "4d7d3ae5b112c8533a784c0352eb15fcc7865f68c5212e16b935f2f63111f44a",
+    "NativeGeometryServicePending.obj": "601ea3a213a58ae157c05cfe00bca4d6e9df329abf61c35c20a24919bcabb194"
+  },
+  "layout": {
+    "GeometryService": "0x140 (005c1790); Service empty base (mdisp 0x130), workspace +0x130, G3D::Array<Primitive*> primitives +0x134; class name \"Geometry\" (char[] 0095c530)"
+  },
+  "rows": {
+    "layout": [
+      {
+        "address": "005c1650",
+        "symbol": "??$?0PAVGeometryService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVGeometryService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z",
+        "size": 131,
+        "target_size": 131,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??_7?$sp_counted_impl_pd@PAVGeometryService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@6B@": "0x8388c0 (vtable RTTI .?AV?$sp_counted_impl_pd@PAVGeometryService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@ offset 0x0)",
+          "??RDeleter@?$Creatable@VInstance@RBX@@@RBX@@QAEXPAVInstance@2@@Z": "0x405e30 (external)",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+        },
+        "local_eh": [
+          "__ehhandler$??$?0PAVGeometryService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVGeometryService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z"
+        ]
+      },
+      {
+        "address": "005c1790",
+        "symbol": "??$create@VGeometryService@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VGeometryService@RBX@@@boost@@XZ",
+        "size": 120,
+        "target_size": 120,
+        "exact": true,
+        "verified_targets": {
+          "__imp__malloc": "0x8028b0 (msvcr90.dll!malloc)",
+          "??0GeometryService@RBX@@QAE@XZ": "0x62dee0 (own row)",
+          "??$?0VGeometryService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VGeometryService@RBX@@@boost@@QAE@PAVGeometryService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z": "0x5c16e0 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$??$create@VGeometryService@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VGeometryService@RBX@@@boost@@XZ"
+        ]
+      },
+      {
+        "address": "005c16e0",
+        "symbol": "??$?0VGeometryService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VGeometryService@RBX@@@boost@@QAE@PAVGeometryService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z",
+        "size": 171,
+        "target_size": 171,
+        "exact": true,
+        "verified_targets": {
+          "??$?0PAVGeometryService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVGeometryService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x5c1650 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$??$?0VGeometryService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VGeometryService@RBX@@@boost@@QAE@PAVGeometryService@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z"
+        ]
+      },
+      {
+        "address": "0062d9e0",
+        "symbol": "?resize@?$Array@PAVPartInstance@RBX@@@G3D@@QAEXH_N@Z",
+        "size": 256,
+        "target_size": 256,
+        "exact": true,
+        "verified_targets": {
+          "??_B?3??resize@?$Array@PAVPartInstance@RBX@@@G3D@@QAEXH_N@Z@53": "0x97c0b4 (local static)",
+          "?minSize@?3??resize@?$Array@PAVPartInstance@RBX@@@G3D@@QAEXH_N@Z@4HB": "0x97c0b0 (local static)",
+          "?realloc@?$Array@PAVPartInstance@RBX@@@G3D@@AAEXH@Z": "0x502080 (external)",
+          "__real@40400000": "0x81e380 (constant 40400000)",
+          "__real@3fc00000": "0x81e37c (constant 3fc00000)",
+          "__real@40000000": "0x81c434 (constant 40000000)",
+          "__ftol2_sse": "0x6a17f0 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062daf0",
+        "symbol": "?append@?$Array@PAVPartInstance@RBX@@@G3D@@QAEXABQAVPartInstance@RBX@@@Z",
+        "size": 101,
+        "target_size": 101,
+        "exact": true,
+        "verified_targets": {
+          "?append@?$Array@PAVPartInstance@RBX@@@G3D@@QAEXABQAVPartInstance@RBX@@@Z": "0x62daf0 (own row)",
+          "?resize@?$Array@PAVPartInstance@RBX@@@G3D@@QAEXH_N@Z": "0x62d9e0 (own row)"
+        },
+        "local_eh": []
+      }
+    ],
+    "unit": [
+      {
+        "address": "0062d8f0",
+        "symbol": "??1?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@MAE@XZ",
+        "size": 83,
+        "target_size": 83,
+        "exact": true,
+        "verified_targets": {
+          "??_7?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x846904 (vtable RTTI .?AV?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@ offset 0x0)",
+          "??_7?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x8468f4 (vtable RTTI .?AV?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@ offset 0x10)",
+          "??_7?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x8468ec (vtable RTTI .?AV?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@ offset 0x14)",
+          "??_7?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@6BDebugable@1@@": "0x8468e4 (vtable RTTI .?AV?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@ offset 0x20)",
+          "??_7?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x8468d4 (vtable RTTI .?AV?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@ offset 0x24)",
+          "??_7?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x8468c4 (vtable RTTI .?AV?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@ offset 0x44)",
+          "??_7?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x8468b4 (vtable RTTI .?AV?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@ offset 0x64)",
+          "??_7?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x8468a4 (vtable RTTI .?AV?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@ offset 0x84)",
+          "??_7?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x846894 (vtable RTTI .?AV?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@ offset 0xa4)",
+          "??_7?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x846884 (vtable RTTI .?AV?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@ offset 0xc4)",
+          "??1Instance@RBX@@UAE@XZ": "0x55a540 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062d950",
+        "symbol": "??$?0PBD@?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@IAE@PBD@Z",
+        "size": 97,
+        "target_size": 97,
+        "exact": true,
+        "verified_targets": {
+          "??0Instance@RBX@@QAE@PBD@Z": "0x55b960 (external)",
+          "??_7?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x846904 (vtable RTTI .?AV?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@ offset 0x0)",
+          "??_7?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x8468f4 (vtable RTTI .?AV?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@ offset 0x10)",
+          "??_7?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x8468ec (vtable RTTI .?AV?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@ offset 0x14)",
+          "??_7?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@6BDebugable@1@@": "0x8468e4 (vtable RTTI .?AV?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@ offset 0x20)",
+          "??_7?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x8468d4 (vtable RTTI .?AV?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@ offset 0x24)",
+          "??_7?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x8468c4 (vtable RTTI .?AV?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@ offset 0x44)",
+          "??_7?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x8468b4 (vtable RTTI .?AV?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@ offset 0x64)",
+          "??_7?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x8468a4 (vtable RTTI .?AV?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@ offset 0x84)",
+          "??_7?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x846894 (vtable RTTI .?AV?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@ offset 0xa4)",
+          "??_7?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x846884 (vtable RTTI .?AV?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@ offset 0xc4)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062d9c0",
+        "symbol": "??_E?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@OEE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@MAEPAXI@Z": "0x62dec0 (own row (??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062d9d0",
+        "symbol": "??_E?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@OKE@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@MAEPAXI@Z": "0x62dec0 (own row (??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062dae0",
+        "symbol": "??1?$Described@VGeometryService@RBX@@$1?sGeometryService@2@3PADAV?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@2@@Reflection@RBX@@UAE@XZ",
+        "size": 5,
+        "target_size": 5,
+        "exact": true,
+        "verified_targets": {
+          "??1?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@MAE@XZ": "0x62d8f0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062dbf0",
+        "symbol": "?getClassName@?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@UBEABVName@2@XZ",
+        "size": 23,
+        "target_size": 23,
+        "exact": true,
+        "verified_targets": {
+          "?flag@?1???$declare@$1?sGeometryService@RBX@@3PADA@Name@RBX@@SAABV12@XZ@4JA": "0x977808 (local static)",
+          "??$callDoDeclare@$1?sGeometryService@RBX@@3PADA@Name@RBX@@CAXXZ": "0x5bffc0 (own row)",
+          "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
+          "??$doDeclare@$1?sGeometryService@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x5bfa30 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062dda0",
+        "symbol": "?onServiceProvider@GeometryService@RBX@@MAEXPBVServiceProvider@2@0@Z",
+        "size": 26,
+        "target_size": 26,
+        "exact": true,
+        "verified_targets": {
+          "??$create@VWorkspace@RBX@@@ServiceProvider@RBX@@QBEPAVWorkspace@1@XZ": "0x490af0 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062ddc0",
+        "symbol": "??$?0PBD@?$DescribedCreatable@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@IAE@PBD@Z",
+        "size": 153,
+        "target_size": 153,
+        "exact": true,
+        "verified_targets": {
+          "??$?0PBD@?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@IAE@PBD@Z": "0x62d950 (own row)",
+          "?classDescriptor@?$Described@VGeometryService@RBX@@$1?sGeometryService@2@3PADAV?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5c0470 (own row)",
+          "??_7?$DescribedCreatable@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x8469c4 (vtable RTTI .?AV?$DescribedCreatable@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@ offset 0x0)",
+          "??_7?$DescribedCreatable@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x8469b8 (vtable RTTI .?AV?$DescribedCreatable@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@ offset 0x10)",
+          "??_7?$DescribedCreatable@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x8469b0 (vtable RTTI .?AV?$DescribedCreatable@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@ offset 0x14)",
+          "??_7?$DescribedCreatable@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@6BDebugable@1@@": "0x8469a8 (vtable RTTI .?AV?$DescribedCreatable@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@ offset 0x20)",
+          "??_7?$DescribedCreatable@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x846998 (vtable RTTI .?AV?$DescribedCreatable@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@ offset 0x24)",
+          "??_7?$DescribedCreatable@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x846988 (vtable RTTI .?AV?$DescribedCreatable@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@ offset 0x44)",
+          "??_7?$DescribedCreatable@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x846978 (vtable RTTI .?AV?$DescribedCreatable@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@ offset 0x64)",
+          "??_7?$DescribedCreatable@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x846968 (vtable RTTI .?AV?$DescribedCreatable@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@ offset 0x84)",
+          "??_7?$DescribedCreatable@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x846958 (vtable RTTI .?AV?$DescribedCreatable@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@ offset 0xa4)",
+          "??_7?$DescribedCreatable@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x846948 (vtable RTTI .?AV?$DescribedCreatable@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@ offset 0xc4)"
+        },
+        "local_eh": [
+          "__ehhandler$??$?0PBD@?$DescribedCreatable@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@IAE@PBD@Z"
+        ]
+      },
+      {
+        "address": "0062de60",
+        "symbol": "??_E?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@OBA@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@MAEPAXI@Z": "0x62dec0 (own row (??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062de70",
+        "symbol": "??_E?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@OBE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@MAEPAXI@Z": "0x62dec0 (own row (??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062de80",
+        "symbol": "??_E?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@OCE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@MAEPAXI@Z": "0x62dec0 (own row (??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062de90",
+        "symbol": "??_E?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@OGE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@MAEPAXI@Z": "0x62dec0 (own row (??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062dea0",
+        "symbol": "??_E?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@OIE@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@MAEPAXI@Z": "0x62dec0 (own row (??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062deb0",
+        "symbol": "??_E?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@OME@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_E?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@MAEPAXI@Z": "0x62dec0 (own row (??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062dec0",
+        "symbol": "??_G?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@MAEPAXI@Z",
+        "size": 31,
+        "target_size": 31,
+        "exact": true,
+        "verified_targets": {
+          "??1?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@MAE@XZ": "0x62d8f0 (own row)",
+          "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062dee0",
+        "symbol": "??0GeometryService@RBX@@QAE@XZ",
+        "size": 157,
+        "target_size": 157,
+        "exact": true,
+        "verified_targets": {
+          "?sGeometryService@RBX@@3PADA": "0x95c530 (data)",
+          "??$?0PBD@?$DescribedCreatable@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@IAE@PBD@Z": "0x62ddc0 (own row)",
+          "??_7GeometryService@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x846a84 (vtable RTTI .?AVGeometryService@RBX@@ offset 0x0)",
+          "??_7GeometryService@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x846a78 (vtable RTTI .?AVGeometryService@RBX@@ offset 0x10)",
+          "??_7GeometryService@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x846a70 (vtable RTTI .?AVGeometryService@RBX@@ offset 0x14)",
+          "??_7GeometryService@RBX@@6BDebugable@1@@": "0x846a68 (vtable RTTI .?AVGeometryService@RBX@@ offset 0x20)",
+          "??_7GeometryService@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x846a58 (vtable RTTI .?AVGeometryService@RBX@@ offset 0x24)",
+          "??_7GeometryService@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x846a48 (vtable RTTI .?AVGeometryService@RBX@@ offset 0x44)",
+          "??_7GeometryService@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x846a38 (vtable RTTI .?AVGeometryService@RBX@@ offset 0x64)",
+          "??_7GeometryService@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x846a28 (vtable RTTI .?AVGeometryService@RBX@@ offset 0x84)",
+          "??_7GeometryService@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x846a18 (vtable RTTI .?AVGeometryService@RBX@@ offset 0xa4)",
+          "??_7GeometryService@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x846a08 (vtable RTTI .?AVGeometryService@RBX@@ offset 0xc4)"
+        },
+        "local_eh": [
+          "__ehhandler$??0GeometryService@RBX@@QAE@XZ"
+        ]
+      },
+      {
+        "address": "0062df80",
+        "symbol": "??_EGeometryService@RBX@@WME@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_EGeometryService@RBX@@UAEPAXI@Z": "0x62e070 (own row (??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062df90",
+        "symbol": "??_EGeometryService@RBX@@WBA@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_EGeometryService@RBX@@UAEPAXI@Z": "0x62e070 (own row (??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062dfa0",
+        "symbol": "??_EGeometryService@RBX@@WBE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_EGeometryService@RBX@@UAEPAXI@Z": "0x62e070 (own row (??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062dfb0",
+        "symbol": "??_EGeometryService@RBX@@WCE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_EGeometryService@RBX@@UAEPAXI@Z": "0x62e070 (own row (??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062dfc0",
+        "symbol": "??_EGeometryService@RBX@@WEE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_EGeometryService@RBX@@UAEPAXI@Z": "0x62e070 (own row (??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062dfd0",
+        "symbol": "??_EGeometryService@RBX@@WGE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_EGeometryService@RBX@@UAEPAXI@Z": "0x62e070 (own row (??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062dfe0",
+        "symbol": "??_EGeometryService@RBX@@WIE@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_EGeometryService@RBX@@UAEPAXI@Z": "0x62e070 (own row (??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062dff0",
+        "symbol": "??_EGeometryService@RBX@@WKE@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_EGeometryService@RBX@@UAEPAXI@Z": "0x62e070 (own row (??_G))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0062e000",
+        "symbol": "??1GeometryService@RBX@@UAE@XZ",
+        "size": 101,
+        "target_size": 101,
+        "exact": true,
+        "verified_targets": {
+          "?alignedFree@System@G3D@@SAXPAX@Z": "0x507d20 (external)",
+          "??1?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@RBX@@MAE@XZ": "0x62d8f0 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$??1GeometryService@RBX@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "0062e070",
+        "symbol": "??_GGeometryService@RBX@@UAEPAXI@Z",
+        "size": 31,
+        "target_size": 31,
+        "exact": true,
+        "verified_targets": {
+          "??1GeometryService@RBX@@UAE@XZ": "0x62e000 (own row)",
+          "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005c0470",
+        "symbol": "?classDescriptor@?$Described@VGeometryService@RBX@@$1?sGeometryService@2@3PADAV?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+        "size": 101,
+        "target_size": 101,
+        "exact": true,
+        "verified_targets": {
+          "??_B?1??classDescriptor@?$Described@VGeometryService@RBX@@$1?sGeometryService@2@3PADAV?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x978000 (local static)",
+          "?sGeometryService@RBX@@3PADA": "0x95c530 (data)",
+          "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80 (external (evidence name))",
+          "?foo@?1??classDescriptor@?$Described@VGeometryService@RBX@@$1?sGeometryService@2@3PADAV?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x977f40 (local static)",
+          "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
+          "??__Ffoo@?1??classDescriptor@?$Described@VGeometryService@RBX@@$1?sGeometryService@2@3PADAV?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fe710 (own row)",
+          "_atexit": "0x6a17af (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?classDescriptor@?$Described@VGeometryService@RBX@@$1?sGeometryService@2@3PADAV?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
+        ]
+      },
+      {
+        "address": "005bfa30",
+        "symbol": "??$doDeclare@$1?sGeometryService@RBX@@3PADA@Name@RBX@@CAABV01@XZ",
+        "size": 101,
+        "target_size": 101,
+        "exact": true,
+        "verified_targets": {
+          "??_B?1???$doDeclare@$1?sGeometryService@RBX@@3PADA@Name@RBX@@CAABV01@XZ@51": "0x977798 (local static)",
+          "?sGeometryService@RBX@@3PADA": "0x95c530 (data)",
+          "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external (evidence name))",
+          "?n@?1???$doDeclare@$1?sGeometryService@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "0x977794 (local static)"
+        },
+        "local_eh": [
+          "__ehhandler$??$doDeclare@$1?sGeometryService@RBX@@3PADA@Name@RBX@@CAABV01@XZ"
+        ]
+      },
+      {
+        "address": "005bffc0",
+        "symbol": "??$callDoDeclare@$1?sGeometryService@RBX@@3PADA@Name@RBX@@CAXXZ",
+        "size": 5,
+        "target_size": 5,
+        "exact": true,
+        "verified_targets": {
+          "??$doDeclare@$1?sGeometryService@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x5bfa30 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "007fe710",
+        "symbol": "??__Ffoo@?1??classDescriptor@?$Described@VGeometryService@RBX@@$1?sGeometryService@2@3PADAV?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ",
+        "size": 10,
+        "target_size": 10,
+        "exact": true,
+        "verified_targets": {
+          "?foo@?1??classDescriptor@?$Described@VGeometryService@RBX@@$1?sGeometryService@2@3PADAV?$FactoryProduct@VGeometryService@RBX@@VInstance@2@$1?sGeometryService@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x977f40 (local static)",
+          "??1ClassDescriptor@Reflection@RBX@@UAE@XZ": "0x40abc0 (external (evidence name))"
+        },
+        "local_eh": []
+      }
+    ],
+    "not_exact": [],
+    "pending": [
+      {
+        "address": "0062db60",
+        "symbol": "?getPartsTouchingExtents@GeometryService@RBX@@QAEXABVExtents@2@PBVPrimitive@2@AAV?$Array@PAVPartInstance@RBX@@@G3D@@@Z",
+        "size": 128,
+        "target_size": 129,
+        "exact": false,
+        "exact_pending_build_only": false,
+        "reason": "needs the native Workspace layout: the original loads World* inline from Workspace +0x2e4 (0062db6d); the pending overlay declares Workspace::getWorld() out of line (proposal), so this build calls it"
+      },
+      {
+        "address": "0062dc10",
+        "symbol": "?getHitLocationFilterStairs@GeometryService@RBX@@QAE?AVVector3@G3D@@PAVInstance@2@VRay@4@@Z",
+        "size": 389,
+        "target_size": 390,
+        "exact": false,
+        "exact_pending_build_only": false,
+        "reason": "needs the native Workspace layout (Workspace +0x2e4 at 0062dc81); the pending overlay declares Workspace::getWorld() out of line. RBX::FilterStairs (constructor 006604a0) now comes from the native v8datamodel/Filters2008.h"
+      }
+    ]
+  },
+  "exact_function_rows": [
+    "005bfa30",
+    "005bffc0",
+    "005c0470",
+    "005c1650",
+    "005c16e0",
+    "005c1790",
+    "0062d8f0",
+    "0062d950",
+    "0062d9c0",
+    "0062d9d0",
+    "0062d9e0",
+    "0062dae0",
+    "0062daf0",
+    "0062dbf0",
+    "0062dda0",
+    "0062ddc0",
+    "0062de60",
+    "0062de70",
+    "0062de80",
+    "0062de90",
+    "0062dea0",
+    "0062deb0",
+    "0062dec0",
+    "0062dee0",
+    "0062df80",
+    "0062df90",
+    "0062dfa0",
+    "0062dfb0",
+    "0062dfc0",
+    "0062dfd0",
+    "0062dfe0",
+    "0062dff0",
+    "0062e000",
+    "0062e070",
+    "007fe710"
+  ],
+  "exact_row_slices": [],
+  "vtables": {
+    "GeometryService": [
+      {
+        "slot": 0,
+        "symbol": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ",
+        "original": "0047d410",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "original": "0055af90",
+        "ok": true,
+        "how": "evidence name"
+      },
+      {
+        "slot": 2,
+        "symbol": "?askAddChild@Instance@RBX@@UBE_NPBV12@@Z",
+        "original": "0068e880",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      },
+      {
+        "slot": 3,
+        "symbol": "?askSetParent@Instance@RBX@@UBE_NPBV12@@Z",
+        "original": "0068e880",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      },
+      {
+        "slot": 4,
+        "symbol": "?onAncestorChanged@Instance@RBX@@UAEXABUAncestorChanged@2@@Z",
+        "original": "0055acc0",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      },
+      {
+        "slot": 5,
+        "symbol": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z",
+        "original": "0055ae20",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      },
+      {
+        "slot": 6,
+        "symbol": "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+        "original": "0055ae90",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      },
+      {
+        "slot": 7,
+        "symbol": "?onChildAdded@Instance@RBX@@UAEXPAV12@@Z",
+        "original": "0070bdf0",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      },
+      {
+        "slot": 8,
+        "symbol": "?onChildRemoving@Instance@RBX@@UAEXPAV12@@Z",
+        "original": "0070bdf0",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      },
+      {
+        "slot": 9,
+        "symbol": "?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z",
+        "original": "0070bdf0",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      },
+      {
+        "slot": 10,
+        "symbol": "?onLastChildRemoved@Instance@RBX@@UAEXXZ",
+        "original": "0047d410",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      },
+      {
+        "slot": 11,
+        "symbol": "?readProperty@Instance@RBX@@UAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z",
+        "original": "00559170",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      },
+      {
+        "slot": 12,
+        "symbol": "?onServiceProvider@GeometryService@RBX@@MAEXPBVServiceProvider@2@0@Z",
+        "original": "0062dda0",
+        "ok": true,
+        "how": "bound"
+      },
+      {
+        "slot": 13,
+        "symbol": "?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z",
+        "original": "0055a470",
+        "ok": true,
+        "how": "evidence name"
+      },
+      {
+        "slot": 14,
+        "symbol": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ",
+        "original": "00558c50",
+        "ok": true,
+        "how": "evidence name"
+      },
+      {
+        "slot": 15,
+        "symbol": "?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z",
+        "original": "00557490",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      }
+    ],
+    "GeometryService_FactoryProduct": [
+      {
+        "slot": 0,
+        "symbol": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ",
+        "original": "0047d410",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "original": "0055af90",
+        "ok": true,
+        "how": "evidence name"
+      },
+      {
+        "slot": 2,
+        "symbol": "?askAddChild@Instance@RBX@@UBE_NPBV12@@Z",
+        "original": "0068e880",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      },
+      {
+        "slot": 3,
+        "symbol": "?askSetParent@Instance@RBX@@UBE_NPBV12@@Z",
+        "original": "0068e880",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      },
+      {
+        "slot": 4,
+        "symbol": "?onAncestorChanged@Instance@RBX@@UAEXABUAncestorChanged@2@@Z",
+        "original": "0055acc0",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      },
+      {
+        "slot": 5,
+        "symbol": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z",
+        "original": "0055ae20",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      },
+      {
+        "slot": 6,
+        "symbol": "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+        "original": "0055ae90",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      },
+      {
+        "slot": 7,
+        "symbol": "?onChildAdded@Instance@RBX@@UAEXPAV12@@Z",
+        "original": "0070bdf0",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      },
+      {
+        "slot": 8,
+        "symbol": "?onChildRemoving@Instance@RBX@@UAEXPAV12@@Z",
+        "original": "0070bdf0",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      },
+      {
+        "slot": 9,
+        "symbol": "?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z",
+        "original": "0070bdf0",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      },
+      {
+        "slot": 10,
+        "symbol": "?onLastChildRemoved@Instance@RBX@@UAEXXZ",
+        "original": "0047d410",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      },
+      {
+        "slot": 11,
+        "symbol": "?readProperty@Instance@RBX@@UAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z",
+        "original": "00559170",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      },
+      {
+        "slot": 12,
+        "symbol": "?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z",
+        "original": "00458e90",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      },
+      {
+        "slot": 13,
+        "symbol": "?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z",
+        "original": "0055a470",
+        "ok": true,
+        "how": "evidence name"
+      },
+      {
+        "slot": 14,
+        "symbol": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ",
+        "original": "00558c50",
+        "ok": true,
+        "how": "evidence name"
+      },
+      {
+        "slot": 15,
+        "symbol": "?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z",
+        "original": "00557490",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      }
+    ],
+    "GeometryService_DescribedCreatable": [
+      {
+        "slot": 0,
+        "symbol": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ",
+        "original": "0047d410",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      },
+      {
+        "slot": 1,
+        "symbol": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "original": "0055af90",
+        "ok": true,
+        "how": "evidence name"
+      },
+      {
+        "slot": 2,
+        "symbol": "?askAddChild@Instance@RBX@@UBE_NPBV12@@Z",
+        "original": "0068e880",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      },
+      {
+        "slot": 3,
+        "symbol": "?askSetParent@Instance@RBX@@UBE_NPBV12@@Z",
+        "original": "0068e880",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      },
+      {
+        "slot": 4,
+        "symbol": "?onAncestorChanged@Instance@RBX@@UAEXABUAncestorChanged@2@@Z",
+        "original": "0055acc0",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      },
+      {
+        "slot": 5,
+        "symbol": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z",
+        "original": "0055ae20",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      },
+      {
+        "slot": 6,
+        "symbol": "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+        "original": "0055ae90",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      },
+      {
+        "slot": 7,
+        "symbol": "?onChildAdded@Instance@RBX@@UAEXPAV12@@Z",
+        "original": "0070bdf0",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      },
+      {
+        "slot": 8,
+        "symbol": "?onChildRemoving@Instance@RBX@@UAEXPAV12@@Z",
+        "original": "0070bdf0",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      },
+      {
+        "slot": 9,
+        "symbol": "?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z",
+        "original": "0070bdf0",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      },
+      {
+        "slot": 10,
+        "symbol": "?onLastChildRemoved@Instance@RBX@@UAEXXZ",
+        "original": "0047d410",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      },
+      {
+        "slot": 11,
+        "symbol": "?readProperty@Instance@RBX@@UAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z",
+        "original": "00559170",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      },
+      {
+        "slot": 12,
+        "symbol": "?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z",
+        "original": "00458e90",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      },
+      {
+        "slot": 13,
+        "symbol": "?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z",
+        "original": "0055a470",
+        "ok": true,
+        "how": "evidence name"
+      },
+      {
+        "slot": 14,
+        "symbol": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ",
+        "original": "00558c50",
+        "ok": true,
+        "how": "evidence name"
+      },
+      {
+        "slot": 15,
+        "symbol": "?onChildChanged@Instance@RBX@@UAEXPAV12@ABVPropertyChanged@2@@Z",
+        "original": "00557490",
+        "ok": true,
+        "how": "inherited (same slot of the base vtable 0082d884)"
+      }
+    ]
+  },
+  "proposals": {
+    "v8datamodel/Workspace.h": "World* getWorld() const { return world; } with World* world at Workspace +0x2e4 (GeometryService 0062db6d / 0062dc81, PhysicsService 005e8ec0, JointsService 005e5b50, WorkspaceStatsItem 005a66b0)"
+  },
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

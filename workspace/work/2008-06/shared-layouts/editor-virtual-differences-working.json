@@ -1,0 +1,55 @@
+{
+  "sdk_vtable": "0x85d5e4",
+  "primary_slot_count": 57,
+  "editors": [
+    {
+      "constructor": "0043a650",
+      "primary_differences": [
+        {
+          "slot": 1,
+          "inherited_symbol": "??_E?$XItem@MVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@M@Reflection@RBX@@@@UAEPAXI@Z",
+          "original": "0x43e900"
+        },
+        {
+          "slot": 25,
+          "inherited_symbol": "?OnValueChanged@CXTPPropertyGridItem@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+          "original": "0x4413e0"
+        }
+      ],
+      "item_update": "0x43a870"
+    },
+    {
+      "constructor": "0043ab10",
+      "primary_differences": [
+        {
+          "slot": 1,
+          "inherited_symbol": "??_E?$XItem@MVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@M@Reflection@RBX@@@@UAEPAXI@Z",
+          "original": "0x43e900"
+        },
+        {
+          "slot": 25,
+          "inherited_symbol": "?OnValueChanged@CXTPPropertyGridItem@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+          "original": "0x441460"
+        }
+      ],
+      "item_update": "0x43ac60"
+    },
+    {
+      "constructor": "0043b860",
+      "primary_differences": [
+        {
+          "slot": 1,
+          "inherited_symbol": "??_E?$XItem@MVCXTPPropertyGridItem@@V?$TypedPropertyDescriptor@M@Reflection@RBX@@@@UAEPAXI@Z",
+          "original": "0x43e900"
+        },
+        {
+          "slot": 25,
+          "inherited_symbol": "?OnValueChanged@CXTPPropertyGridItem@@UAEXV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+          "original": "0x4415d0"
+        }
+      ],
+      "item_update": "0x43bc20"
+    }
+  ],
+  "scope": "Original-versus-SDK virtual observations only; not runtime or implementation credit."
+}

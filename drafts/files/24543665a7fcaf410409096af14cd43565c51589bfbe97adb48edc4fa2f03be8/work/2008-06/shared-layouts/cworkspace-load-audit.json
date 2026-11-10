@@ -1,0 +1,6 @@
+{
+  "swap_target": "Workspace runnable integration (CWorkspace load)",
+  "load": {"run": "work/2008-06/native-check-runs/20261105-184329-b90da917", "addr": "0046aa70", "size": 155, "symbol": "?load@CWorkspace@@QAEXAAV?$basic_istream@DU?$char_traits@D@std@@@std@@@Z", "target_sha256": "cf1ce0438febfe9a24beda2f20004f12278b4600862c5328cf8280b739af0810", "source_sha256": "5ed58aae19bb5d8e176e71e28bf3011ef14a3fb17c956c219d9705716b0e0a55", "object_sha256": "64f6b69ac6de1cfb39982b3d418de9dcc058c6012d0b73d1b095048f3f3d81c9", "result": "exact bytes+data 100%"},
+  "next_gate": "CWorkspace::insert 0046b9d0 catch rethrow (86%, parked), write EH empty-state (parked), Content closure, NullTool headers, Part provider",
+  "metrics": {"inactive_exact": 17, "selected_exact": "unknown", "gated_swaps": 0, "server_credit": 0}
+}

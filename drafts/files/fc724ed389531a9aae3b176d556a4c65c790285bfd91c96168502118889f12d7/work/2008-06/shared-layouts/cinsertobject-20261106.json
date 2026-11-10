@@ -1,0 +1,17 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "00420190",
+                                        "symbol":  "??0CInsertObjectDialog@@"
+                                    },
+                                    {
+                                        "addr":  "00420110",
+                                        "symbol":  "??1CInsertObjectDialog@@"
+                                    }
+                                ],
+                     "source":  "native-classes/CInsertObjectDialog.cpp"
+                 }
+             ]
+}

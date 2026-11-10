@@ -1,0 +1,75 @@
+{
+  "source_sha256": "5a7a2be787c171d7c165062173a9e4d14fb20abf8f7e5f6d3c94835082c1e5f8",
+  "observer_sha256": "ec6fdaf14386b29ca14b399b52c7c801725c1637a408983d18ecefe8b9d97ffe",
+  "object_sha256": "fc4ffc5a86387090a5d2bd7cebe980d27b204ca2895c9827524eca9e29f34924",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeInstanceAncestorTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\InstanceAncestorChanged.cpp"
+  ],
+  "methods": [
+    {
+      "address": "0055acc0",
+      "symbol": "?onAncestorChanged@Instance@RBX@@UAEXABUAncestorChanged@2@@Z",
+      "size": 348,
+      "targets": {
+        "?read@?$CopyOnWrite@": "0x4915b0",
+        "??$shared_from@VInstance@": "0x618a40",
+        "?event_ancestryChanged@Instance@": "0x973c38",
+        "?fire@?$SignalDescImpl@": "0x49d200",
+        "?raise@?$Notifier@": "0x558730"
+      },
+      "imports": [
+        "_invalid_parameter_noinfo",
+        "_invalid_parameter_noinfo",
+        "_invalid_parameter_noinfo",
+        "_invalid_parameter_noinfo"
+      ],
+      "original_vtable_slot": "0x8318cc"
+    },
+    {
+      "address": "0049d200",
+      "symbol": "?fire@?$SignalDescImpl@$00$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@QAEXPAVSignalSource@23@V?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+      "size": 175
+    },
+    {
+      "address": "00558730",
+      "symbol": "?raise@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@IBEXUAncestorChanged@2@@Z",
+      "size": 138
+    }
+  ],
+  "scope": "Inactive diagnostic. Signal descriptor identity, event ABI, helper call targets and runtime ownership require further proof."
+}

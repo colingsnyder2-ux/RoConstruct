@@ -1,0 +1,55 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/DraggerSafePlace.cpp",
+      "checks": [
+        {
+          "addr": "00610580",
+          "symbol": "?safePlaceAlongLine@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@1AAV54@AAVContactManager@2@@Z",
+          "calls": [
+            {
+              "offset": 21,
+              "target": "00610180",
+              "symbol": "?movePrimitivesGoal@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@AAV54@@Z"
+            },
+            {
+              "offset": 32,
+              "target": "00610130",
+              "symbol": "?intersectingWorldOrOthers@Dragger@RBX@@CA_NABV?$Array@PAVPrimitive@RBX@@@G3D@@AAVContactManager@2@@Z"
+            },
+            {
+              "offset": 158,
+              "target": "005dee10",
+              "symbol": "?toGrid@Math@RBX@@SA?AVVector3@G3D@@ABV34@0@Z"
+            },
+            {
+              "offset": 170,
+              "target": "00610180",
+              "symbol": "?movePrimitivesGoal@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@AAV54@@Z"
+            },
+            {
+              "offset": 181,
+              "target": "00610130",
+              "symbol": "?intersectingWorldOrOthers@Dragger@RBX@@CA_NABV?$Array@PAVPrimitive@RBX@@@G3D@@AAVContactManager@2@@Z"
+            },
+            {
+              "offset": 239,
+              "target": "00610180",
+              "symbol": "?movePrimitivesGoal@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@AAV54@@Z"
+            },
+            {
+              "offset": 272,
+              "target": "00610580",
+              "symbol": "?safePlaceAlongLine@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@1AAV54@AAVContactManager@2@@Z"
+            },
+            {
+              "offset": 301,
+              "target": "00610580",
+              "symbol": "?safePlaceAlongLine@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@1AAV54@AAVContactManager@2@@Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

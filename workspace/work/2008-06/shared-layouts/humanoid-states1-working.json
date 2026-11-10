@@ -1,0 +1,522 @@
+{
+  "revision": "5d5784bbe8af17787097c0d8b945e70ff8bcfcd4",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_humanoid_states1.py": "6c62acc0f5b584a39e36c4db4378a84b5f36830d2f6ac170a61f0c3c8d567a4e",
+    "rebuild/2008-06/native-headers/humanoid/HumanoidStates1.h": "7dbcf46702473823c828e02921a56a77ef35e61c8420e72d49c43a9d339e6586",
+    "rebuild/2008-06/native-headers/humanoid/HumanoidState.h": "c63f37d84a2ecc31131ce55bf6f7e632d5ed8feb67b71dad06842b51575a0bc3",
+    "rebuild/2008-06/tests/NativeHumanoidStates1Calls.h": "f52d6e1e87e76c6a06647ec1413a8af7f99fb527886e5e022d7d1c356b7147d3",
+    "rebuild/2008-06/tests/NativeHumanoidStates1Layout.cpp": "b9a207488db42a36166e52cd02e73e6bb50070d4813f0a8d2c70127349dad019",
+    "rebuild/2008-06/native-classes/HumanoidStates1.cpp": "a1b60095fb9da376b55557d15b854143c74778bab974d51d822f6ef59678f478",
+    "rebuild/2008-06/native-classes/HumanoidStates1Leaves.cpp": "42576653b3517219115fbcefb70003009667d016d12c67e41e28a4b58ae1ca1f"
+  },
+  "objects": {
+    "layout": "4e098d4dc754ff34ca2f66ac11f46986cfc2aba9efce5136bdd2cebcbab762ec",
+    "states": "ba5786113f5d032272ece3cb426656d3d73dac7a712292107d3f27a349c2536f",
+    "leaves": "9d377a156a62b1dd88d8bd2950c0780ff17e43964145130c9136515919b742d7"
+  },
+  "compiler_build": 21022,
+  "flags": {
+    "layout": [
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/humanoid-states1-overlay",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeHumanoidStates1Layout.obj",
+      "/home/user/roconstruct/rebuild/2008-06/tests/NativeHumanoidStates1Layout.cpp"
+    ],
+    "states": [
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/humanoid-states1-overlay",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeHumanoidStates1.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/HumanoidStates1.cpp"
+    ],
+    "leaves": [
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/humanoid-states1-overlay",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/NativeHumanoidStates1Leaves.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/HumanoidStates1Leaves.cpp"
+    ]
+  },
+  "sizes": {
+    "Balancing": 168,
+    "RunningBase": 204,
+    "Running": 204,
+    "Landed": 204,
+    "Climbing": 204
+  },
+  "vtables": {
+    "0x84d0dc": {
+      "0": "__purecall",
+      "1": "?onStep@HumanoidState@HUMAN@RBX@@UAEXMPAVController@3@@Z",
+      "2": "__purecall",
+      "3": "?query3@HumanoidState@HUMAN@RBX@@UBE_NXZ",
+      "4": "?query4@HumanoidState@HUMAN@RBX@@UBE_NXZ",
+      "5": "?query5@HumanoidState@HUMAN@RBX@@UBE_NXZ",
+      "6": "??_EBalancing@HUMAN@RBX@@UAEPAXI@Z",
+      "7": "?getIntendedRotationAboutYAxis@HumanoidState@HUMAN@RBX@@UBEMXZ",
+      "8": "?onComputeForce@Balancing@HUMAN@RBX@@UAEXM@Z"
+    },
+    "0x84d0d4": {
+      "0": "?filterResult@HumanoidState@HUMAN@RBX@@UBE?AW4Result@HitTestFilter@3@PBVPrimitive@3@@Z"
+    },
+    "0x84cc38": {
+      "0": "__purecall",
+      "1": "?onStep@RunningBase@HUMAN@RBX@@UAEXMPAVController@3@@Z",
+      "2": "__purecall",
+      "3": "?query3@RunningBase@HUMAN@RBX@@UBE_NXZ",
+      "4": "?query4@RunningBase@HUMAN@RBX@@UBE_NXZ",
+      "5": "?query5@HumanoidState@HUMAN@RBX@@UBE_NXZ",
+      "6": "??_ERunningBase@HUMAN@RBX@@UAEPAXI@Z",
+      "7": "?getIntendedRotationAboutYAxis@RunningBase@HUMAN@RBX@@UBEMXZ",
+      "8": "?onComputeForce@RunningBase@HUMAN@RBX@@UAEXM@Z"
+    },
+    "0x84cc30": {
+      "0": "?filterResult@HumanoidState@HUMAN@RBX@@UBE?AW4Result@HitTestFilter@3@PBVPrimitive@3@@Z"
+    },
+    "0x84cc94": {
+      "0": "?getName@?$Named@VRunningBase@HUMAN@RBX@@$1?sRunning@23@3QBDB@RBX@@UBEABVName@2@XZ",
+      "1": "?onStep@Running@HUMAN@RBX@@UAEXMPAVController@3@@Z",
+      "2": "?getStateType@Running@HUMAN@RBX@@UBEHXZ",
+      "3": "?query3@RunningBase@HUMAN@RBX@@UBE_NXZ",
+      "4": "?query4@RunningBase@HUMAN@RBX@@UBE_NXZ",
+      "5": "?query5@HumanoidState@HUMAN@RBX@@UBE_NXZ",
+      "6": "??_ERunning@HUMAN@RBX@@UAEPAXI@Z",
+      "7": "?getIntendedRotationAboutYAxis@RunningBase@HUMAN@RBX@@UBEMXZ",
+      "8": "?onComputeForce@RunningBase@HUMAN@RBX@@UAEXM@Z"
+    },
+    "0x84cc8c": {
+      "0": "?filterResult@HumanoidState@HUMAN@RBX@@UBE?AW4Result@HitTestFilter@3@PBVPrimitive@3@@Z"
+    },
+    "0x84ac9c": {
+      "0": "?getName@?$Named@VRunningBase@HUMAN@RBX@@$1?sLanded@23@3QBDB@RBX@@UBEABVName@2@XZ",
+      "1": "?onStep@RunningBase@HUMAN@RBX@@UAEXMPAVController@3@@Z",
+      "2": "?getStateType@Landed@HUMAN@RBX@@UBEHXZ",
+      "3": "?query3@RunningBase@HUMAN@RBX@@UBE_NXZ",
+      "4": "?query4@RunningBase@HUMAN@RBX@@UBE_NXZ",
+      "5": "?query5@HumanoidState@HUMAN@RBX@@UBE_NXZ",
+      "6": "??_ELanded@HUMAN@RBX@@UAEPAXI@Z",
+      "7": "?getIntendedRotationAboutYAxis@RunningBase@HUMAN@RBX@@UBEMXZ",
+      "8": "?onComputeForce@RunningBase@HUMAN@RBX@@UAEXM@Z"
+    },
+    "0x84ac94": {
+      "0": "?filterResult@HumanoidState@HUMAN@RBX@@UBE?AW4Result@HitTestFilter@3@PBVPrimitive@3@@Z"
+    },
+    "0x84acd0": {
+      "0": "?getName@?$Named@VRunningBase@HUMAN@RBX@@$1?sClimbing@23@3QBDB@RBX@@UBEABVName@2@XZ",
+      "1": "?onStep@Climbing@HUMAN@RBX@@UAEXMPAVController@3@@Z",
+      "2": "?getStateType@Climbing@HUMAN@RBX@@UBEHXZ",
+      "3": "?query3@RunningBase@HUMAN@RBX@@UBE_NXZ",
+      "4": "?query4@RunningBase@HUMAN@RBX@@UBE_NXZ",
+      "5": "?query5@HumanoidState@HUMAN@RBX@@UBE_NXZ",
+      "6": "??_EClimbing@HUMAN@RBX@@UAEPAXI@Z",
+      "7": "?getIntendedRotationAboutYAxis@RunningBase@HUMAN@RBX@@UBEMXZ",
+      "8": "?onComputeForce@RunningBase@HUMAN@RBX@@UAEXM@Z"
+    },
+    "0x84acc8": {
+      "0": "?filterResult@HumanoidState@HUMAN@RBX@@UBE?AW4Result@HitTestFilter@3@PBVPrimitive@3@@Z"
+    }
+  },
+  "methods": [
+    {
+      "address": "0066e660",
+      "symbol": "??0Balancing@HUMAN@RBX@@QAE@PAVHumanoid@2@MM@Z",
+      "size": 52,
+      "direct_calls": {
+        "??0HumanoidState@HUMAN@RBX@@QAE@PAVHumanoid@2@@Z": "0x643e00"
+      },
+      "data_targets": {
+        "??_7Balancing@HUMAN@RBX@@6BINamed@2@@": "0x84d0dc",
+        "??_7Balancing@HUMAN@RBX@@6BHitTestFilter@2@@": "0x84d0d4"
+      }
+    },
+    {
+      "address": "00666980",
+      "symbol": "??0RunningBase@HUMAN@RBX@@QAE@PAVHumanoid@2@@Z",
+      "size": 205,
+      "direct_calls": {
+        "??0Balancing@HUMAN@RBX@@QAE@PAVHumanoid@2@MM@Z": "0x66e660",
+        "?findSignalInstance@SignalDescriptor@Reflection@RBX@@IBEPAVSignalInstance@23@PBVSignalSource@23@@Z": "0x56b620",
+        "??R?$signal1@XMU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXM@ZV?$allocator@X@std@@@2@@boost@@QAE?AUunusable@?$last_value@X@1@M@Z": "0x4937f0"
+      },
+      "data_targets": {
+        "__ehhandler$??0RunningBase@HUMAN@RBX@@QAE@PAVHumanoid@2@@Z": "0x7dc2b8",
+        "__real@42480000": "0x819ba4",
+        "__real@43960000": "0x84cc5c",
+        "??_7RunningBase@HUMAN@RBX@@6BINamed@2@@": "0x84cc38",
+        "??_7RunningBase@HUMAN@RBX@@6BHitTestFilter@2@@": "0x84cc30",
+        "?event_Running@Humanoid@RBX@@2V?$SignalDesc@VHumanoid@RBX@@$$A6AXM@Z@Reflection@2@A": "0x97a504"
+      }
+    },
+    {
+      "address": "006663f0",
+      "symbol": "??1RunningBase@HUMAN@RBX@@UAE@XZ",
+      "size": 18,
+      "direct_calls": {
+        "??1HumanoidState@HUMAN@RBX@@UAE@XZ": "0x6435c0"
+      },
+      "data_targets": {
+        "??_7RunningBase@HUMAN@RBX@@6BINamed@2@@": "0x84cc38",
+        "??_7RunningBase@HUMAN@RBX@@6BHitTestFilter@2@@": "0x84cc30"
+      }
+    },
+    {
+      "address": "00666520",
+      "symbol": "??_GRunningBase@HUMAN@RBX@@UAEPAXI@Z",
+      "size": 43,
+      "direct_calls": {
+        "??1HumanoidState@HUMAN@RBX@@UAE@XZ": "0x6435c0",
+        "??3@YAXPAX@Z": "0x6a067a"
+      },
+      "data_targets": {
+        "??_7RunningBase@HUMAN@RBX@@6BINamed@2@@": "0x84cc38",
+        "??_7RunningBase@HUMAN@RBX@@6BHitTestFilter@2@@": "0x84cc30"
+      }
+    },
+    {
+      "address": "00643400",
+      "symbol": "?getIntendedRotationAboutYAxis@RunningBase@HUMAN@RBX@@UBEMXZ",
+      "size": 7,
+      "direct_calls": {},
+      "data_targets": {}
+    },
+    {
+      "address": "00666ac0",
+      "symbol": "??0Running@HUMAN@RBX@@QAE@PAVHumanoid@2@@Z",
+      "size": 41,
+      "direct_calls": {
+        "??0RunningBase@HUMAN@RBX@@QAE@PAVHumanoid@2@@Z": "0x666980"
+      },
+      "data_targets": {
+        "__real@3e800000": "0x84cc84",
+        "??_7Running@HUMAN@RBX@@6BINamed@2@@": "0x84cc94",
+        "??_7Running@HUMAN@RBX@@6BHitTestFilter@2@@": "0x84cc8c"
+      }
+    },
+    {
+      "address": "00643550",
+      "symbol": "??0Landed@HUMAN@RBX@@QAE@PAVHumanoid@2@@Z",
+      "size": 41,
+      "direct_calls": {
+        "??0RunningBase@HUMAN@RBX@@QAE@PAVHumanoid@2@@Z": "0x666980"
+      },
+      "data_targets": {
+        "__real@3ee66666": "0x84acc0",
+        "??_7Landed@HUMAN@RBX@@6BINamed@2@@": "0x84ac9c",
+        "??_7Landed@HUMAN@RBX@@6BHitTestFilter@2@@": "0x84ac94"
+      }
+    },
+    {
+      "address": "006435a0",
+      "symbol": "??0Climbing@HUMAN@RBX@@QAE@PAVHumanoid@2@@Z",
+      "size": 32,
+      "direct_calls": {
+        "??0RunningBase@HUMAN@RBX@@QAE@PAVHumanoid@2@@Z": "0x666980"
+      },
+      "data_targets": {
+        "??_7Climbing@HUMAN@RBX@@6BINamed@2@@": "0x84acd0",
+        "??_7Climbing@HUMAN@RBX@@6BHitTestFilter@2@@": "0x84acc8"
+      }
+    },
+    {
+      "address": "00643580",
+      "symbol": "??_GLanded@HUMAN@RBX@@UAEPAXI@Z",
+      "size": 30,
+      "direct_calls": {
+        "??1RunningBase@HUMAN@RBX@@UAE@XZ": "0x6663f0",
+        "??3@YAXPAX@Z": "0x6a067a"
+      },
+      "data_targets": {}
+    },
+    {
+      "address": "00666b00",
+      "symbol": "?getName@?$Named@VRunningBase@HUMAN@RBX@@$1?sRunning@23@3QBDB@RBX@@UBEABVName@2@XZ",
+      "size": 23,
+      "direct_calls": {
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
+        "??$doDeclare@$1?sRunning@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x666a50",
+        "??$callDoDeclare@$1?sRunning@HUMAN@RBX@@3QBDB@Name@RBX@@CAXXZ": "0x666af0"
+      },
+      "data_targets": {
+        "?flag@?1???$declare@$1?sRunning@HUMAN@RBX@@3QBDB@Name@RBX@@SAABV12@XZ@4JA": "0x97d990",
+        "??$callDoDeclare@$1?sRunning@HUMAN@RBX@@3QBDB@Name@RBX@@CAXXZ": "0x666af0"
+      }
+    },
+    {
+      "address": "00666a50",
+      "symbol": "??$doDeclare@$1?sRunning@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ",
+      "size": 101,
+      "direct_calls": {
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90"
+      },
+      "data_targets": {
+        "__ehhandler$??$doDeclare@$1?sRunning@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x7dc19e",
+        "??_B?1???$doDeclare@$1?sRunning@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ@51": "0x97d98c",
+        "?sRunning@HUMAN@RBX@@3QBDB": "0x84cc68",
+        "?n@?1???$doDeclare@$1?sRunning@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV12@XZ@4ABV12@B": "0x97d988"
+      }
+    },
+    {
+      "address": "00666af0",
+      "symbol": "??$callDoDeclare@$1?sRunning@HUMAN@RBX@@3QBDB@Name@RBX@@CAXXZ",
+      "size": 5,
+      "direct_calls": {
+        "??$doDeclare@$1?sRunning@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x666a50"
+      },
+      "data_targets": {}
+    },
+    {
+      "address": "00643ed0",
+      "symbol": "?getName@?$Named@VRunningBase@HUMAN@RBX@@$1?sLanded@23@3QBDB@RBX@@UBEABVName@2@XZ",
+      "size": 23,
+      "direct_calls": {
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
+        "??$doDeclare@$1?sLanded@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x643410",
+        "??$callDoDeclare@$1?sLanded@HUMAN@RBX@@3QBDB@Name@RBX@@CAXXZ": "0x643ce0"
+      },
+      "data_targets": {
+        "?flag@?1???$declare@$1?sLanded@HUMAN@RBX@@3QBDB@Name@RBX@@SAABV12@XZ@4JA": "0x97d5e0",
+        "??$callDoDeclare@$1?sLanded@HUMAN@RBX@@3QBDB@Name@RBX@@CAXXZ": "0x643ce0"
+      }
+    },
+    {
+      "address": "00643410",
+      "symbol": "??$doDeclare@$1?sLanded@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ",
+      "size": 101,
+      "direct_calls": {
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90"
+      },
+      "data_targets": {
+        "__ehhandler$??$doDeclare@$1?sLanded@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x7dabde",
+        "??_B?1???$doDeclare@$1?sLanded@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ@51": "0x97d5cc",
+        "?sLanded@HUMAN@RBX@@3QBDB": "0x84cc70",
+        "?n@?1???$doDeclare@$1?sLanded@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV12@XZ@4ABV12@B": "0x97d5c8"
+      }
+    },
+    {
+      "address": "00643ce0",
+      "symbol": "??$callDoDeclare@$1?sLanded@HUMAN@RBX@@3QBDB@Name@RBX@@CAXXZ",
+      "size": 5,
+      "direct_calls": {
+        "??$doDeclare@$1?sLanded@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x643410"
+      },
+      "data_targets": {}
+    },
+    {
+      "address": "00643ef0",
+      "symbol": "?getName@?$Named@VRunningBase@HUMAN@RBX@@$1?sClimbing@23@3QBDB@RBX@@UBEABVName@2@XZ",
+      "size": 23,
+      "direct_calls": {
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330",
+        "??$doDeclare@$1?sClimbing@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x643480",
+        "??$callDoDeclare@$1?sClimbing@HUMAN@RBX@@3QBDB@Name@RBX@@CAXXZ": "0x643cf0"
+      },
+      "data_targets": {
+        "?flag@?1???$declare@$1?sClimbing@HUMAN@RBX@@3QBDB@Name@RBX@@SAABV12@XZ@4JA": "0x97d5e4",
+        "??$callDoDeclare@$1?sClimbing@HUMAN@RBX@@3QBDB@Name@RBX@@CAXXZ": "0x643cf0"
+      }
+    },
+    {
+      "address": "00643480",
+      "symbol": "??$doDeclare@$1?sClimbing@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ",
+      "size": 101,
+      "direct_calls": {
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90"
+      },
+      "data_targets": {
+        "__ehhandler$??$doDeclare@$1?sClimbing@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x7dabfe",
+        "??_B?1???$doDeclare@$1?sClimbing@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ@51": "0x97d5d4",
+        "?sClimbing@HUMAN@RBX@@3QBDB": "0x84cc78",
+        "?n@?1???$doDeclare@$1?sClimbing@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV12@XZ@4ABV12@B": "0x97d5d0"
+      }
+    },
+    {
+      "address": "00643cf0",
+      "symbol": "??$callDoDeclare@$1?sClimbing@HUMAN@RBX@@3QBDB@Name@RBX@@CAXXZ",
+      "size": 5,
+      "direct_calls": {
+        "??$doDeclare@$1?sClimbing@HUMAN@RBX@@3QBDB@Name@RBX@@CAABV01@XZ": "0x643480"
+      },
+      "data_targets": {}
+    },
+    {
+      "address": "00666b20",
+      "symbol": "?onStep@Running@HUMAN@RBX@@UAEXMPAVController@3@@Z",
+      "size": 148,
+      "direct_calls": {
+        "?onStep@RunningBase@HUMAN@RBX@@UAEXMPAVController@3@@Z": "0x666410",
+        "?onFloorStep@HumanoidState@HUMAN@RBX@@QAE_NXZ": "0x6444f0",
+        "?speedSettled@HumanoidState@HUMAN@RBX@@QBE_NXZ": "0x643330",
+        "?getHumanoid@HumanoidState@HUMAN@RBX@@QBEPAVHumanoid@3@XZ": "0x793d50",
+        "?findSignalInstance@SignalDescriptor@Reflection@RBX@@IBEPAVSignalInstance@23@PBVSignalSource@23@@Z": "0x56b620",
+        "??R?$signal1@XMU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXM@ZV?$allocator@X@std@@@2@@boost@@QAE?AUunusable@?$last_value@X@1@M@Z": "0x4937f0"
+      },
+      "data_targets": {
+        "__real@3e800000": "0x84cc84",
+        "?event_Running@Humanoid@RBX@@2V?$SignalDesc@VHumanoid@RBX@@$$A6AXM@Z@Reflection@2@A": "0x97a504"
+      }
+    },
+    {
+      "address": "00666bc0",
+      "symbol": "?onStep@Climbing@HUMAN@RBX@@UAEXMPAVController@3@@Z",
+      "size": 128,
+      "direct_calls": {
+        "?onStep@RunningBase@HUMAN@RBX@@UAEXMPAVController@3@@Z": "0x666410",
+        "?speedSettled@HumanoidState@HUMAN@RBX@@QBE_NXZ": "0x643330",
+        "?getHumanoid@HumanoidState@HUMAN@RBX@@QBEPAVHumanoid@3@XZ": "0x793d50",
+        "?findSignalInstance@SignalDescriptor@Reflection@RBX@@IBEPAVSignalInstance@23@PBVSignalSource@23@@Z": "0x56b620",
+        "??R?$signal1@XMU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXM@ZV?$allocator@X@std@@@2@@boost@@QAE?AUunusable@?$last_value@X@1@M@Z": "0x4937f0"
+      },
+      "data_targets": {
+        "?event_Climbing@Humanoid@RBX@@2V?$SignalDesc@VHumanoid@RBX@@$$A6AXM@Z@Reflection@2@A": "0x97a58c"
+      }
+    }
+  ],
+  "folded": [
+    {
+      "address": "00643d10",
+      "symbol": "??_GBalancing@HUMAN@RBX@@UAEPAXI@Z",
+      "size": 30
+    },
+    {
+      "address": "005cb9d0",
+      "symbol": "?getStateType@Running@HUMAN@RBX@@UBEHXZ",
+      "size": 6
+    },
+    {
+      "address": "007359e0",
+      "symbol": "?getStateType@Landed@HUMAN@RBX@@UBEHXZ",
+      "size": 6
+    },
+    {
+      "address": "0064cac0",
+      "symbol": "?getStateType@Climbing@HUMAN@RBX@@UBEHXZ",
+      "size": 6
+    },
+    {
+      "address": "00643580",
+      "symbol": "??_GRunning@HUMAN@RBX@@UAEPAXI@Z",
+      "size": 30
+    },
+    {
+      "address": "00643580",
+      "symbol": "??_GClimbing@HUMAN@RBX@@UAEPAXI@Z",
+      "size": 30
+    },
+    {
+      "address": "0060a2f0",
+      "symbol": "?query3@RunningBase@HUMAN@RBX@@UBE_NXZ",
+      "size": 3
+    },
+    {
+      "address": "0060a2f0",
+      "symbol": "?query4@RunningBase@HUMAN@RBX@@UBE_NXZ",
+      "size": 3
+    }
+  ],
+  "pending": [
+    "0066e6a0 Balancing::onComputeForce (Body/Cofm/SimBody layouts)",
+    "00666410 RunningBase::onStep (helper 006662f0 and Humanoid/Vector3 calls 005de650/005d91a0/005cbec0 undeclared)",
+    "00666550 RunningBase::onComputeForce (Body/Primitive/Cofm layouts)"
+  ],
+  "scope": "Inactive Balancing/RunningBase/Running/Landed/Climbing layouts, constructors, destructors, getName and vtable/RTTI linkage; Humanoid signal declarations come from the declaration-only overlay tests/NativeHumanoidStates1Calls.h (proposal). Field names are analog names. No runtime swap."
+}

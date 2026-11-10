@@ -1,0 +1,53 @@
+{
+  "scope": "Inactive new-class batch. No linked selection, full dependency ABI, runtime activation or server credit.",
+  "class_family": "RBX::CScriptEditor",
+  "swap_target": "none (general class/header recovery; source batch remains valuable as written)",
+  "baseline_commit": "9bd58c6d78ae205056b16fbfc9d233ca5036d93b",
+  "package": {
+    "revision": "045d8ce8e42565232578ac46d73ad4bde5c260008ea025c6982b75e9cb7b10e5",
+    "source_revision": "045d8ce8e42565232578ac46d73ad4bde5c260008ea025c6982b75e9cb7b10e5",
+    "authority": "RoConstruct/work/workspace",
+    "native_workflow_version": 52,
+    "draft_workflow_version": 1
+  },
+  "blockers": [
+    {
+      "id": "cscripteditor-missing-scintilla-include",
+      "provider": "tools/libs/scintilla-mfc-1.20 (Platform.h, Scintilla.h, SciLexer.h)",
+      "evidence": "CScriptEditor.h includes <Platform.h> which the rbxgs recipe does not cover; the class could not compile in the runner.",
+      "owner": "owner",
+      "status": "recovered-pending-integration",
+      "next_proof": "Owner replaces the absolute path in native-flags with the packaged scintilla include (tools/libs/scintilla-mfc-1.20); confirmed compile and checks here."
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "cscripteditor-substantial-methods-exact",
+      "status": "confirmed",
+      "statement": "The recovered CScriptEditor bodies are byte-exact under the correct Scintilla include.",
+      "result": "setScript 659B exact; dtor 361B exact with vtable data; ctor 200B exact with vtable data; PreCreateWindow 19B and OnUpdate 59B exact."
+    }
+  ],
+  "fresh_build": {
+    "source": "rebuild/2008-06/native-classes/CScriptEditor.cpp",
+    "status": "complete",
+    "object": "work/2008-06/native-check-runs/20261106-183645-e29778d5/unit-000/candidate.obj",
+    "compiler_sha256": "a8fb826379837492f19b249a3553acc3f904afe4c93e643054d0e48340ae717a",
+    "checks": [
+      {"addr": "00465260", "symbol": "?setScript@CScriptEditor@@", "status": "exact", "score": 100, "target_size": 659, "target_sha256": "7cd748364aa06d97e431828279877170289ec25db6f2fbc7e40b9d49dc118d9f"},
+      {"addr": "00465830", "symbol": "??1CScriptEditor@@", "status": "exact", "score": 100, "target_size": 361, "target_sha256": "d8b5ba8996af0f0b3faf777180ad71eb083c09cd8e03f7577bb5564aceb3fee5"},
+      {"addr": "00465010", "symbol": "??0CScriptEditor@@", "status": "exact", "score": 100, "target_size": 200, "target_sha256": "f67889d1551bc49e80c4a8a5ce8cd36b4dda4c27196fe58605b6fea666e67a15"},
+      {"addr": "00463910", "symbol": "?PreCreateWindow@CScriptEditor@@", "status": "exact", "score": 100, "target_size": 19, "target_sha256": "5116cfc78e25ea017500be941592429aa328cace28edce5e99dc1ec10e86861c"},
+      {"addr": "004657f0", "symbol": "?OnUpdate@CScriptEditor@@", "status": "exact", "score": 100, "target_size": 59, "target_sha256": "ea63a405b72db3594f19ea80bf7d7e64d5e6668289e4ea9e7c5fdcdb93f758b8"}
+    ]
+  },
+  "next_gate": "Owner: make the Scintilla include portable (tools/libs/scintilla-mfc-1.20 instead of the absolute path in native-flags), then provider selection and P5/P6/runtime gates. Remainder of the documented CScriptEditor methods (bookmark/fold/line/style handlers) verified in a follow-up batch.",
+  "metrics": {
+    "inactive_exact_addresses": 5,
+    "executable_selected_exact_addresses": 0,
+    "fully_gated_swapped_classes": 0,
+    "unresolved_link_abi_blockers": 0,
+    "server_credit": 0
+  },
+  "server_credit_delta": 0
+}

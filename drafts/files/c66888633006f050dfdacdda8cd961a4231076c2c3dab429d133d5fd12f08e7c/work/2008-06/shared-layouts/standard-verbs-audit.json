@@ -1,0 +1,9 @@
+{
+  "swap_target": "Selection runnable integration (StandardVerbs)",
+  "verbStates": [
+    {"run": "work/2008-06/native-check-runs/20261105-195008-5740907c", "addr": "00450450", "size": 998, "symbol": "??1StandardVerbs@RBX@@QAE@XZ", "target_sha256": "80028858a1362be355548126762026d5a7405fd5220667aad5ee744484d63014", "source_sha256": "c601bf31f11fb3b2b567bb2e8eac0482088962ee79ee58a959da47ac95ae4d9d", "object_sha256": "cc67ba045fd3cd8b868f319da09b26c0ccd0549a09632aea19592759fba67e60", "result": "exact bytes+data 100%"},
+    {"run": "work/2008-06/native-check-runs/20261105-195008-5740907c", "addr": "005c7ea0", "size": 2676, "symbol": "??0StandardVerbs@RBX@@QAE@PAVDataModel@1@@Z", "target_sha256": "100a6228e8a15b9f718bb05f4cb7df7308a1df9a4743a8cd60e810ce950adf07", "source_sha256": "c601bf31f11fb3b2b567bb2e8eac0482088962ee79ee58a959da47ac95ae4d9d", "object_sha256": "cc67ba045fd3cd8b868f319da09b26c0ccd0549a09632aea19592759fba67e60", "result": "exact bytes+data 100%"}
+  ],
+  "next_gate": "CWorkspace::insert 0046b9d0 catch rethrow (86%, parked), write EH empty-state (parked), Content closure, NullTool headers, Body getter COMDAT (parked), Initialize compiler (parked), updateCaption 00465e40 (86% parked)",
+  "metrics": {"inactive_exact": 75, "selected_exact": "unknown", "gated_swaps": 0, "server_credit": 0}
+}

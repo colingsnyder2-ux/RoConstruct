@@ -1,0 +1,32 @@
+{
+  "swap_target": "CRobloxDoc native diagnostic closure",
+  "session": "b251155ec6494e26ab16dd2d1c95bd95",
+  "current_run": "20261105-145908-8c2e91ac",
+  "source_compiles": 0,
+  "inputs_changed": [],
+  "unresolved": [
+    "?render2d@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z",
+    "?render3dAdorn@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z",
+    "?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z"
+  ],
+  "duplicates": [],
+  "preserved_owners": [
+    "ScriptContext",
+    "PartInstance",
+    "NewNullTool",
+    "ContentProvider",
+    "Math",
+    "WorldHelpers"
+  ],
+  "next_queue": [
+    "Axis renderer authentic Extents evidence parked",
+    "Workspace writer lifetime evidence parked",
+    "Selected provider and ABI/EH audit after successful diagnostic link"
+  ],
+  "activation": false,
+  "gated_swaps": 0,
+  "server_credit": 0,
+  "baseline_receipt": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-doc-relinks\\20261105-141437-a0617a57\\result.json",
+  "cumulative_archive": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-clone-owner-20261105\\linked.lib",
+  "cumulative_archive_sha256": "3a0490de7239801417a5ae524ed5e54fd5301cf77a7b5cd88d170e8431a1fcbe"
+}

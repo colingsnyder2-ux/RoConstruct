@@ -1,0 +1,16 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/DraggerLineMove.cpp",
+      "ranges": [
+        "006106c0-00610830"
+      ]
+    },
+    {
+      "source": "native-classes/MoveHandleRadius.cpp",
+      "ranges": [
+        "00677000-00677200"
+      ]
+    }
+  ]
+}

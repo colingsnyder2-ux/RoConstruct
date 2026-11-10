@@ -1,0 +1,476 @@
+{
+ "retired": "2026-10-12",
+ "commit": "3d996cb22cc7b6e263f52a20b4b6c15d4ce0b487",
+ "restore": "git show 3d996cb22cc7:benchmarks/NAME > NAME   (files are unchanged at that commit)",
+ "why": "Historical campaign runners and frozen manifests. New experiments are recipes in research/recipes.json run by roc research; Campaign/fan-out live in roc/research.py.",
+ "runners": {
+  "ai_representatives_v3.py": {
+   "summary": "Diversified DeepSeek family pilot: choose a different unresolved member per family.",
+   "reports": []
+  },
+  "ai_representatives_v4.py": {
+   "summary": "Structured DeepSeek pilot using verified same-family source exemplars.",
+   "reports": []
+  },
+  "ai_representatives_v5.py": {
+   "summary": "Caller-aware DeepSeek pilot: attach exact caller source clues to structured repair.",
+   "reports": []
+  },
+  "atomic.py": {
+   "summary": "Validate MSVC atomic code generation, then measure refcount targets.",
+   "reports": [
+    "findings:reports/worker-efficiency-results.md"
+   ]
+  },
+  "bounds_scan.py": {
+   "summary": "Proven function extents from already-verified library sources.",
+   "reports": []
+  },
+  "branch_loop.py": {
+   "summary": "Continue prepared experiment branches once current writers finish; no cloud calls.",
+   "reports": [
+    "findings:reports/library-branch-loop-20261010.md"
+   ]
+  },
+  "chained_refresh.py": {
+   "summary": "Run a second verified donor/layout pass after fresh refresh completes.",
+   "reports": []
+  },
+  "concurrency.py": {
+   "summary": "Measure remote-request throughput using a fixed non-source prompt.",
+   "reports": [
+    "findings:reports/AI_WORKER_GUIDE.md",
+    "findings:reports/worker-automatic-review.md",
+    "findings:reports/worker-efficiency-results.md",
+    "findings:reports/worker-auto-20261010.md"
+   ]
+  },
+  "duplicates.py": {
+   "summary": "Check whether stopping repeated candidates would have lost historical matches.",
+   "reports": []
+  },
+  "family_coverage.py": {
+   "summary": "Report whole-section family coverage and verified-source status.",
+   "reports": [
+    "findings:reports/family-worker-plan.md"
+   ]
+  },
+  "family_propagation.py": {
+   "summary": "Compiler-gated deterministic family-source propagation replay.",
+   "reports": [
+    "findings:reports/EXPERIMENTS.md"
+   ]
+  },
+  "family_replay.py": {
+   "summary": "Paired sibling test using verified same-shape family exemplars.",
+   "reports": [
+    "findings:reports/EXPERIMENTS.md",
+    "findings:reports/family-reconstruction-results.md",
+    "findings:reports/family-worker-plan.md"
+   ]
+  },
+  "flag_pilot.py": {
+   "summary": "Frozen random source sample; per-target flag changes, no global config writes.",
+   "reports": []
+  },
+  "followup_refresh.py": {
+   "summary": "Wait for existing sweeps, then propagate live donors and refresh class layouts.",
+   "reports": [
+    "findings:reports/followup-pilots-20261010.md"
+   ]
+  },
+  "fresh_holdout.py": {
+   "summary": "Freeze deterministic, never-used benchmark targets before model generation.",
+   "reports": [
+    "findings:reports/control-flow-research.md",
+    "findings:reports/repair-guided-results.md"
+   ]
+  },
+  "g3d_2008_pilot.py": {
+   "summary": "Bounded 2008-only G3D vendor-inlining and GitHub-source experiment.",
+   "reports": [
+    "findings:reports/g3d-x87-2008-20261011.md"
+   ]
+  },
+  "g3d_2008_remaining.py": {
+   "summary": "Match remaining upstream G3D files against 2008-06 using proven fast x87 flags.",
+   "reports": [
+    "findings:reports/g3d-x87-2008-20261011.md"
+   ]
+  },
+  "g3d_inline_emission.py": {
+   "summary": "Emit genuine G3D inline methods through class exports; 2008-only exact matching.",
+   "reports": []
+  },
+  "history.py": {
+   "summary": "Paired DeepSeek history ablation on a fixed, source-hidden corpus.",
+   "reports": [
+    "docs/AGENT_GUIDE.md",
+    "findings:reports/EXPERIMENTS.md",
+    "findings:reports/worker-efficiency-results.md",
+    "findings:reports/worker-runtime-review.md",
+    "findings:reports/agent-auto-audit-20261012.md",
+    "findings:reports/followup-pilots-20261010.md",
+    "docs/investigations/matching-findings.md",
+    "findings:reports/worker-auto-20261010.md",
+    "findings:reports/worker-history-20261010.md",
+    "findings:reports/worker-reuse-20261010.md"
+   ]
+  },
+  "lib_sweep.py": {
+   "summary": "Replay every file of library recipes against every client's unmatched functions.",
+   "reports": []
+  },
+  "library_settings_2008.py": {
+   "summary": "Settings-only trials on verified sibling-supported 2008-06 vendor sources.",
+   "reports": []
+  },
+  "live_worker.py": {
+   "summary": "Run bounded real worker jobs and save isolated profiling telemetry.",
+   "reports": [
+    "findings:reports/worker-runtime-review.md"
+   ]
+  },
+  "ml_budget_holdout.py": {
+   "summary": "Freeze the medium/large re-attempt manifest for the output-budget benchmark.",
+   "reports": []
+  },
+  "raknet_2008.py": {
+   "summary": "RakNet-only source sweep for 2008-06; all submissions group-verified.",
+   "reports": []
+  },
+  "raknet_app_2008.py": {
+   "summary": "Probe real client Network translation units for RakNet/ProfiledRakPeer bodies.",
+   "reports": []
+  },
+  "raknet_profiled_2008.py": {
+   "summary": "Binary-observed ProfiledRakPeer name experiment; no invented fields.",
+   "reports": []
+  },
+  "recipe_probe.py": {
+   "summary": "Find (and optionally submit) 2008 functions a recipe compiles to exactly.",
+   "reports": []
+  },
+  "register_families.py": {
+   "summary": "Preseed server strict family fingerprints without mining jobs.",
+   "reports": [
+    "findings:reports/family-worker-plan.md"
+   ]
+  },
+  "repairs.py": {
+   "summary": "Paired real-compiler replay of saved, source-hidden candidates.",
+   "reports": [
+    "findings:reports/EXPERIMENTS.md",
+    "findings:reports/control-flow-research.md",
+    "findings:reports/output-budget-results.md",
+    "findings:reports/repair-guided-results.md",
+    "findings:reports/agent-auto-audit-20261012.md",
+    "findings:reports/claude-continuation-20261011.md",
+    "findings:reports/library-fill-20261011.md",
+    "docs/investigations/matching-findings.md"
+   ]
+  },
+  "run_holdout.py": {
+   "summary": "Run one model arm against a frozen holdout manifest.",
+   "reports": [
+    "findings:reports/EXPERIMENTS.md",
+    "findings:reports/control-flow-research.md",
+    "findings:reports/output-budget-results.md",
+    "findings:reports/repair-guided-results.md"
+   ]
+  },
+  "scale_queue.py": {
+   "summary": "Continue expanded sweeps after prior writers exit; preserve their existing logs.",
+   "reports": [
+    "findings:reports/scaled-campaign-20261010.md"
+   ]
+  },
+  "segment_families.py": {
+   "summary": "Freeze repeated opcode-shape representatives for a client/segment.",
+   "reports": [
+    "findings:reports/family-reconstruction-results.md",
+    "findings:reports/family-worker-plan.md"
+   ]
+  },
+  "source2016_pilot.py": {
+   "summary": "Retry preserved 2016 vendor code on 2008-06 near misses, with full journals.",
+   "reports": [
+    "findings:reports/claude-continuation-20261011.md",
+    "findings:reports/source2016-pilot-20261011.md"
+   ]
+  },
+  "startup.py": {
+   "summary": "Measure duplicate source-index loads versus one-time worker warmup.",
+   "reports": [
+    "findings:reports/worker-efficiency-results.md"
+   ]
+  },
+  "target_startup.py": {
+   "summary": "Compare real cold target-index loads with and without single-load locking.",
+   "reports": [
+    "findings:reports/worker-efficiency-results.md"
+   ]
+  },
+  "telemetry_read.py": {
+   "summary": "Compare full-history and cached-tail telemetry reads on the local log.",
+   "reports": [
+    "findings:reports/worker-runtime-review.md"
+   ]
+  },
+  "unit_reference_replay.py": {
+   "summary": "Small paired test: direct prompt versus one verified same-unit exemplar.",
+   "reports": []
+  },
+  "worker_auto.py": {
+   "summary": "Compare automatic worker policy against a fixed two-round source-hidden control.",
+   "reports": [
+    "findings:reports/EXPERIMENTS.md",
+    "findings:reports/worker-automatic-review.md"
+   ]
+  },
+  "worker_auto_reliable.py": {
+   "summary": "Paired discovery/holdout test of Auto reliability with one shared budget.",
+   "reports": [
+    "findings:reports/worker-auto-20261010.md"
+   ]
+  },
+  "worker_family_cache.py": {
+   "summary": "Replay cold/warm family retrieval with real compilers and a local API fixture.",
+   "reports": [
+    "findings:reports/worker-reuse-20261010.md"
+   ]
+  },
+  "worker_history.py": {
+   "summary": "Compare repair history on one client with a single shared cloud budget.",
+   "reports": [
+    "findings:reports/worker-history-20261010.md"
+   ]
+  },
+  "worker_repair_start.py": {
+   "summary": "Compare first-round repair against a frozen worker with one shared budget.",
+   "reports": []
+  },
+  "xtp_coverage.py": {
+   "summary": "Resume exact XTP configuration pilots and transfer their winning sources.",
+   "reports": []
+  }
+ },
+ "manifests": {
+  "families-2007-08-seg_00770000.json": {
+   "bytes": 12049
+  },
+  "families-2008-06-seg_00530000.json": {
+   "bytes": 969
+  },
+  "families-2008-06-seg_007f0000.json": {
+   "bytes": 12499
+  },
+  "families-2008-06-seg_00800000.json": {
+   "bytes": 2323
+  },
+  "families-2009-06-seg_00890000.json": {
+   "bytes": 6007
+  },
+  "families-2010-06-seg_009e0000.json": {
+   "bytes": 3529
+  },
+  "family-random-2008-seg7f.json": {
+   "bytes": 2778
+  },
+  "family-random-2009-seg8890000.json": {
+   "bytes": 2193
+  },
+  "family-siblings-2007-08-seg770000-110.json": {
+   "bytes": 9931
+  },
+  "family-siblings-2007-08-seg770000.json": {
+   "bytes": 3655
+  },
+  "family-siblings-2008-06-seg7f.json": {
+   "bytes": 4092
+  },
+  "family-siblings-2008-seg800000.json": {
+   "bytes": 1029
+  },
+  "family-siblings-2009-06-seg8890000.json": {
+   "bytes": 2192
+  },
+  "family-siblings-2010-06-seg9e0000.json": {
+   "bytes": 1756
+  },
+  "family-test-2007-03-seg400000.json": {
+   "bytes": 1315
+  },
+  "family-test-2008-06-seg7f-250.json": {
+   "bytes": 17761
+  },
+  "family-test-2008-06-seg7f.json": {
+   "bytes": 7325
+  },
+  "family-test-2009-06-seg89-250.json": {
+   "bytes": 10819
+  },
+  "family-test-2009-06-seg89.json": {
+   "bytes": 7305
+  },
+  "family-test-2010-06-seg9e-250.json": {
+   "bytes": 4828
+  },
+  "family-test-2010-06-seg9e.json": {
+   "bytes": 4828
+  },
+  "holdout-2007-08.json": {
+   "bytes": 1890
+  },
+  "holdout-fresh-100-20261008.json": {
+   "bytes": 14742
+  },
+  "holdout-fresh-auto12-20261009.json": {
+   "bytes": 1774
+  },
+  "holdout-fresh-auto24-20261009.json": {
+   "bytes": 3539
+  },
+  "holdout-fresh-cfg12-20261009.json": {
+   "bytes": 1774
+  },
+  "holdout-fresh-sem12-20261009.json": {
+   "bytes": 1775
+  },
+  "holdout-ml-budget-40-20261008.json": {
+   "bytes": 9211
+  },
+  "holdout-ml-pilot-4-20261008.json": {
+   "bytes": 924
+  },
+  "propagation-2007-08.json": {
+   "bytes": 1582
+  },
+  "propagation-2008-06.json": {
+   "bytes": 1232
+  },
+  "propagation-2009-06.json": {
+   "bytes": 1474
+  },
+  "propagation-2010-06.json": {
+   "bytes": 876
+  },
+  "propagation-recursive-2008.json": {
+   "bytes": 2108
+  },
+  "propagation-recursive-2009.json": {
+   "bytes": 2508
+  },
+  "repair-holdout-fresh-20261008.json": {
+   "bytes": 2352
+  },
+  "worker-auto-reliable-2007-08.json": {
+   "bytes": 3776
+  },
+  "worker-family-cache-holdout-2007-08.json": {
+   "bytes": 6096
+  },
+  "worker-history-2007-08.json": {
+   "bytes": 1401
+  },
+  "worker-history-holdout-2007-08.json": {
+   "bytes": 1008
+  },
+  "worker-repair-start-discovery-2007-08.json": {
+   "bytes": 2375
+  },
+  "worker-repair-start-holdout-2007-08.json": {
+   "bytes": 1880
+  }
+ },
+ "batches": [
+  {
+   "retired": "2026-10-12",
+   "commit": "c6d089710dd1c103a46b40d8a495b33628ebe9eb",
+   "runners": {
+    "aggregate_search.py": {
+     "summary": "Aggregate completed mass-search arms into per-target winners."
+    },
+    "ai_representatives.py": {
+     "summary": "Uncovered-family AI pilot, persistent peak-price budget, exact-only submissions."
+    },
+    "class_layout.py": {
+     "summary": "Recover field displacements from verified donor methods, with exact acceptance."
+    },
+    "claude_continuation.py": {
+     "summary": "Resume the interrupted 2008-06 library work, preserving every experiment."
+    },
+    "data_recovery.py": {
+     "summary": "Find real code-exact/data-wrong plateaus and repair literal strings conservatively."
+    },
+    "followup_pilots.py": {
+     "summary": "Independent data, compiler and config pilots; exact-only acceptance, resumable logs."
+    },
+    "g3d_header_repair.py": {
+     "summary": "Repair observed G3D header assertion lines without changing executable bytes or matching rules."
+    },
+    "library_branches.py": {
+     "summary": "Pilot branches from verified config wins, with conditional full-scale exact sweeps."
+    },
+    "library_fill.py": {
+     "summary": "Bounded 2008-06 library repairs; no guessed layouts or matching-rule changes."
+    },
+    "mass_search.py": {
+     "summary": "Bounded paired source-hidden search; checkpoint candidates and arm summaries."
+    },
+    "match_campaign.py": {
+     "summary": "Resumable, compiler-verified recovery campaign; no implicit model calls."
+    },
+    "re_pilot.py": {
+     "summary": "Reverse-engineering pilot driver: unit selection, evidence dump, attempt ledger."
+    },
+    "real_neighborhoods.py": {
+     "summary": "Real verified-callee context tests; linked-only scores never submit as matches."
+    },
+    "refine_archive.py": {
+     "summary": "Reverify and refine a frozen snapshot of archived matching candidates."
+    },
+    "rtm_desktop_repair.py": {
+     "summary": "Restore desktop RTM ATL/MFC from existing MSI-keyed cabinet extraction."
+    },
+    "shared_mfc_verify.py": {
+     "summary": "Read-only shared-MFC replay with frozen targets and normal verification."
+    },
+    "xtp_coverage_run.py": {
+     "summary": "Resume exact XTP configuration pilots and transfer their winning sources."
+    }
+   },
+   "tests": [
+    "test_aggregate_search",
+    "test_campaign_pilots",
+    "test_class_layout",
+    "test_followup_pilots",
+    "test_g3d_header_repair",
+    "test_library_branches",
+    "test_library_fill",
+    "test_refine_archive",
+    "test_rtm_recipe_roots",
+    "test_shared_mfc_verify",
+    "test_xtp_transfer"
+   ],
+   "why": "Historical campaign runners with no product callers. Canonical Campaign/fan-out/grid/audit live in roc/research.py.",
+   "modules": {
+    "roc/template_recovery.py": {
+     "summary": "Native RTTI demangling and conservative client-specific instantiations (no callers; superseded by roc/client_templates.py)."
+    },
+    "roc/angr_facts.py": {
+     "summary": "Optional angr CFG facts (commands angr-facts, angr-batch); unused."
+    },
+    "roc/verify_window.py": {
+     "summary": "Tiny SMT verifier for register-only windows (verify-window); unfinished."
+    },
+    "roc/ltcg.py": {
+     "summary": "/GL + /LTCG DLL helper (ltcg); target-compatible scoring unfinished."
+    },
+    "roc/dataset.py": {
+     "summary": "Training-pilot manifest audit (dataset init/audit); unused."
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,17 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "0064df60",
+                                        "symbol":  "?cacheUIEvent@Mouse@RBX@@"
+                                    },
+                                    {
+                                        "addr":  "0064e660",
+                                        "symbol":  "?update@Mouse@RBX@@"
+                                    }
+                                ],
+                     "source":  "native-classes/Mouse.cpp"
+                 }
+             ]
+}

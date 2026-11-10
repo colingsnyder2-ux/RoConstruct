@@ -1,0 +1,40 @@
+{
+  "status": "CONDITIONAL_PASS",
+  "archive_sha256": "3a0490de7239801417a5ae524ed5e54fd5301cf77a7b5cd88d170e8431a1fcbe",
+  "old_member_header_offset": 50755030,
+  "old_member_sha256": "c6f555a65d89f48ff15b4d01fdb45b81698c63eb24031c547aa0dd8d231f35f0",
+  "candidate_sha256": "0d4820b91d2a4603291db857b1f7e15afb9404b279323c92d09ffd8718977fd9",
+  "retained_unchanged": 1198,
+  "retained_changed": [],
+  "removed_named_definitions": 33,
+  "missing_strict_alternates": [
+    "?resolveRefs@ArchiveBinder@@UAE_NXZ"
+  ],
+  "vtable_identical": true,
+  "resolve_undefined": true,
+  "input_count": 331,
+  "drift": [],
+  "candidate_dependency_drift": [],
+  "non_coff_inputs": [
+    [
+      {
+        "input": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\bin\\link.exe",
+        "member": null,
+        "offset": null,
+        "sha256": "836eb85b874a9b9cf9aa9fd489a94ec77558ab5697b40ba2653c62caf8c6f840"
+      },
+      "unsupported COFF"
+    ],
+    [
+      {
+        "input": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-130705-87b5983d\\output\\roblox.res",
+        "member": null,
+        "offset": null,
+        "sha256": "d5d2373dc401a271ff764f16cb92558da4009c7215210b4938e533821187bb42"
+      },
+      "unsupported COFF"
+    ]
+  ],
+  "condition": "Independent native resolveRefs exact provider, parent cumulative composition and all ABI/selection/runtime gates remain required",
+  "compile_count": 1
+}

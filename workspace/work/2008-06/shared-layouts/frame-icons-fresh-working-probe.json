@@ -1,0 +1,50 @@
+{
+  "revision": "c9a075722a0c1bc95a2b58cef0f169760ffc4897",
+  "sources": {
+    "tools\\libs\\mfc-9.0-rtm\\atlmfc\\include\\atlimage.h": "900c8e9860bc5bafa45ab49096f255f018c1a48ae798911c7595f3b9906b6bb6",
+    "tools\\libs\\xtp-11.2.2\\roc_claudeM_55bb15a72a4fb4db.cpp": "e261d4097e8117acf77bc313ae3cad4132424a39252c2956daeda297a97197ed",
+    "roc\\libs.py": "6d7e03cd8e1df96b50c45ac9670174c0870e7045ba84ec0fd1b1c7db8492c766",
+    "rebuild\\2008-06\\p6\\build_native_icons.py": "3998c6c292f176f434b18b4f8b311af9e6091009ff6a2633c4e9a7f5e02af963"
+  },
+  "reconstructed_alias_sha256": "a2c8499b84be3bb653f84c4960301373edeca0da8ce19069650b5e913133fd5b",
+  "compiler_build": 21022,
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/arch:SSE2",
+    "/FoNativeFrameIconsFresh.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeFrameIconsFresh.cpp"
+  ],
+  "methods": [
+    {
+      "address": "0042f490",
+      "symbol": "?InitializeAllIcons@@YAXPAVCXTPImageManager@@@Z",
+      "size": 1211
+    },
+    {
+      "address": "0042f380",
+      "symbol": "?InitializeIcons@@YAXPAVCXTPImageManager@@@Z",
+      "size": 271
+    },
+    {
+      "address": "0042f290",
+      "symbol": "?SetIcon@@YAXPAVCXTPImageManager@@IPBDH@Z",
+      "size": 237
+    },
+    {
+      "address": "0042f0a0",
+      "symbol": "?loadIcon@@YA_NPAVCXTPImageManager@@IPBDW4XTPImageState@@@Z",
+      "size": 485
+    },
+    {
+      "address": "00442c80",
+      "symbol": "?GetWidth@CImage@ATL@@QBEHXZ",
+      "size": 4
+    }
+  ],
+  "scope": "Fresh rebuild with reconstructed ATL alias and separately compiled GetWidth; historical alias bytes, full relocation targets and runtime integration remain unverified."
+}

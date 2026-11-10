@@ -1,0 +1,17 @@
+{
+  "baseline_member_sha256": "c2a2e67926959fb08ac6fb1fa6221755f05e830b8dab270b00d3a3e2f511249a",
+  "retained": 72,
+  "changed": [
+    "__unwindfunclet$?getCacheDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z$0",
+    "?getCacheDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z"
+  ],
+  "removed": [
+    "?GetIntegrity@VistaAPIs@RBX@@QAGJPAE@Z"
+  ],
+  "new": [],
+  "remaining_vista": [
+    "??1VistaAPIs@RBX@@QAE@XZ",
+    "??0VistaAPIs@RBX@@QAE@XZ",
+    "?SHGetKnownFolderPath@VistaAPIs@RBX@@QAEJABU_GUID@@KPAXPAPA_W@Z"
+  ]
+}

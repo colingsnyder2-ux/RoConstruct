@@ -1,0 +1,9 @@
+{
+ "name": "P2MeshOrientation",
+ "description": "Six authentic NormalId template instances required by the recovered flat block producer",
+ "depends": ["rbxgs-app"],
+ "layers": [{"name":"orientation","mode":"direct","dir":"rebuild/2008-06/tests","files":"PlayerMeshOrientation.cpp","includes_from_recipe":"rbxgs","defines_from_recipe":"rbxgs","extra_defines":"BOOST_ALL_NO_LIB","flags":"/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"}],
+ "test": "P2MeshOrientationTest",
+ "verified": false,
+ "test_includes": ["tools/rbxgs/Client/App/include", "tools/rbxgs/Client/Rendering/g3d/include", "tools/rbxgs/Client/boost_1_34_1/src"]
+}

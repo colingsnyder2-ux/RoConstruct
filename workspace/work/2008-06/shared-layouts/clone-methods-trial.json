@@ -1,0 +1,34 @@
+{
+  "scope": "Model tool target layout and runtime ABI unproven.",
+  "methods": [
+    {
+      "address": "0x63f710",
+      "size": 157,
+      "symbol": "?onMouseIdle@CloneTool@RBX@@EAEXABVUIEvent@2@@Z",
+      "bindings": {
+        "__ehhandler$?onMouseIdle@CloneTool@RBX@@EAEXABVUIEvent@2@@Z": "0x7d9168",
+        "?ignoreVector3@MouseCommand@RBX@@0VVector3@G3D@@A": "0x97bee0",
+        "?getUnlockedPartByLocalCharacter@MouseCommand@RBX@@QAEPAVPartInstance@2@ABVUIEvent@2@AAVVector3@G3D@@@Z": "0x616000",
+        "??$shared_from@VPartInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VPartInstance@RBX@@@boost@@PAVPartInstance@0@@Z": "0x618a40",
+        "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0"
+      }
+    },
+    {
+      "address": "0x63fd90",
+      "size": 58,
+      "symbol": "?getCursorName@CloneTool@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+      "bindings": {
+        "??_C@_0BA@EBOEHOFO@CloneOverCursor?$AA@": "0x84a4ac",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458",
+        "??_C@_0M@DPEJCLFJ@CloneCursor?$AA@": "0x84a4a0"
+      }
+    }
+  ],
+  "source_sha256": "f7764225b51c6580ee630550eb96fa5529c8681f926f3b633cb5f667c0cce93a",
+  "surface_header_sha256": "8056b64427cf6059072617d930da52a634832962fd6ab533fb3ac48148fc4932",
+  "overlay_sha256": "b53673f2305d830ed9f02f712b7409ad890c65e8ea407d5eb49516156e9b8633",
+  "object_sha256": "1d0871d17ca33d873d67a5350485189c979008f1e77157aae62dd8ec6582865f",
+  "model_header_sha256": "769f34500c845ebe52d6f7faed838d839ed284fba3cb0814e921544c6d1ab458",
+  "workspace_header_sha256": "dcd4fbdea8091b0d2fc13c2b662aca1ccf31608375a0268d81b9c217127d249b",
+  "observer_sha256": "a1c22367ed0d720b8ca0a0836138fe0e754a552bdd84da718d4d49a7fcccf155"
+}

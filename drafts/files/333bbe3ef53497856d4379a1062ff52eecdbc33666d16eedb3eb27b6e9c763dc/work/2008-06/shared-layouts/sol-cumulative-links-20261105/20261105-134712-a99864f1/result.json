@@ -1,0 +1,119 @@
+{
+  "outcome": "link_failed",
+  "exit_code": 1120,
+  "link_log_present": true,
+  "compiler_errors": [],
+  "link_errors": [
+    "linked.lib(FileSystem.obj) : error LNK2005: \"public: __thiscall RBX::VistaAPIs::~VistaAPIs(void)\" (??1VistaAPIs@RBX@@QAE@XZ) already defined in NativeFileSystemFull.obj",
+    "linked.lib(FileSystem.obj) : error LNK2005: \"public: long __stdcall RBX::VistaAPIs::GetIntegrity(unsigned char *)\" (?GetIntegrity@VistaAPIs@RBX@@QAGJPAE@Z) already defined in NativeFileSystemFull.obj",
+    "linked.lib(FileSystem.obj) : error LNK2005: \"public: __thiscall RBX::VistaAPIs::VistaAPIs(void)\" (??0VistaAPIs@RBX@@QAE@XZ) already defined in NativeFileSystemFull.obj",
+    "linked.lib(FileSystem.obj) : error LNK2005: \"public: long __thiscall RBX::VistaAPIs::SHGetKnownFolderPath(struct _GUID const &,unsigned long,void *,wchar_t * *)\" (?SHGetKnownFolderPath@VistaAPIs@RBX@@QAEJABU_GUID@@KPAXPAPA_W@Z) already defined in NativeFileSystemFull.obj",
+    "candidate.obj : error LNK2019: unresolved external symbol \"private: static void __cdecl RBX::Dragger::movePrimitivesGoal(class G3D::Array<class RBX::Primitive *> const &,class G3D::Vector3 const &,class G3D::Vector3 &)\" (?movePrimitivesGoal@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@AAV54@@Z) referenced in function \"private: static void __cdecl RBX::Dragger::safePlaceAlongLine(class G3D::Array<class RBX::Primitive *> const &,class G3D::Vector3 const &,class G3D::Vector3 const &,class G3D::Vector3 &,class RBX::ContactManager &)\" (?safePlaceAlongLine@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@1AAV54@AAVContactManager@2@@Z)",
+    "candidate.obj : error LNK2001: unresolved external symbol \"private: virtual void __thiscall RBX::AxisMoveTool::render2d(class RBX::Adorn *)\" (?render2d@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z)",
+    "candidate.obj : error LNK2001: unresolved external symbol \"private: virtual void __thiscall RBX::AxisMoveTool::render3dAdorn(class RBX::Adorn *)\" (?render3dAdorn@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z)",
+    "NativeWorkspaceSaveFull.obj : error LNK2019: unresolved external symbol \"public: long __thiscall CWorkspace::write(class XmlElement *,class std::basic_ostream<char,struct std::char_traits<char> > &)\" (?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z) referenced in function \"public: virtual long __stdcall CWorkspace::SaveToFile(wchar_t *)\" (?SaveToFile@CWorkspace@@UAGJPA_W@Z)",
+    "NativeWorkspaceWriteFull.obj : error LNK2001: unresolved external symbol \"public: long __thiscall CWorkspace::write(class XmlElement *,class std::basic_ostream<char,struct std::char_traits<char> > &)\" (?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z)",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-doc-relinks\\20261105-134712-a99864f1\\RobloxNativeDoc.exe : fatal error LNK1120: 4 unresolved externals"
+  ],
+  "blockers": [
+    {
+      "symbol": "?movePrimitivesGoal@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@AAV54@@Z",
+      "display": "private: static void __cdecl RBX::Dragger::movePrimitivesGoal(class G3D::Array<class RBX::Primitive *> const &,class G3D::Vector3 const &,class G3D::Vector3 &)",
+      "requesters": [
+        "candidate.obj"
+      ]
+    },
+    {
+      "symbol": "?render2d@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z",
+      "display": "private: virtual void __thiscall RBX::AxisMoveTool::render2d(class RBX::Adorn *)",
+      "requesters": [
+        "candidate.obj"
+      ]
+    },
+    {
+      "symbol": "?render3dAdorn@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z",
+      "display": "private: virtual void __thiscall RBX::AxisMoveTool::render3dAdorn(class RBX::Adorn *)",
+      "requesters": [
+        "candidate.obj"
+      ]
+    },
+    {
+      "symbol": "?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+      "display": "public: long __thiscall CWorkspace::write(class XmlElement *,class std::basic_ostream<char,struct std::char_traits<char> > &)",
+      "requesters": [
+        "NativeWorkspaceSaveFull.obj",
+        "NativeWorkspaceWriteFull.obj"
+      ]
+    }
+  ],
+  "duplicates": [
+    {
+      "symbol": "??1VistaAPIs@RBX@@QAE@XZ",
+      "display": "\"public: __thiscall RBX::VistaAPIs::~VistaAPIs(void)\" (??1VistaAPIs@RBX@@QAE@XZ)",
+      "providers": [
+        "linked.lib(FileSystem.obj)",
+        "NativeFileSystemFull.obj"
+      ]
+    },
+    {
+      "symbol": "?GetIntegrity@VistaAPIs@RBX@@QAGJPAE@Z",
+      "display": "\"public: long __stdcall RBX::VistaAPIs::GetIntegrity(unsigned char *)\" (?GetIntegrity@VistaAPIs@RBX@@QAGJPAE@Z)",
+      "providers": [
+        "linked.lib(FileSystem.obj)",
+        "NativeFileSystemFull.obj"
+      ]
+    },
+    {
+      "symbol": "??0VistaAPIs@RBX@@QAE@XZ",
+      "display": "\"public: __thiscall RBX::VistaAPIs::VistaAPIs(void)\" (??0VistaAPIs@RBX@@QAE@XZ)",
+      "providers": [
+        "linked.lib(FileSystem.obj)",
+        "NativeFileSystemFull.obj"
+      ]
+    },
+    {
+      "symbol": "?SHGetKnownFolderPath@VistaAPIs@RBX@@QAEJABU_GUID@@KPAXPAPA_W@Z",
+      "display": "\"public: long __thiscall RBX::VistaAPIs::SHGetKnownFolderPath(struct _GUID const &,unsigned long,void *,wchar_t * *)\" (?SHGetKnownFolderPath@VistaAPIs@RBX@@QAEJABU_GUID@@KPAXPAPA_W@Z)",
+      "providers": [
+        "linked.lib(FileSystem.obj)",
+        "NativeFileSystemFull.obj"
+      ]
+    }
+  ],
+  "scope": "Replay a terminal Doc diagnostic link into a new directory; never execute it.\n\nOnly explicit inputs are fingerprinted. Historical provenance, implicit default\nlibraries, class ABI and runtime correctness remain separate obligations.\n",
+  "source_run": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-130705-87b5983d",
+  "source_command_sha256": "d6186dfbab9b8f843a50e4683ad39584dd0ba5e0b8a6a5218c016c321cf50b78",
+  "seconds": 0.814,
+  "changed_inputs": [],
+  "baseline_comparison": {
+    "blockers": {
+      "unchanged": false,
+      "added": [
+        "?movePrimitivesGoal@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@AAV54@@Z",
+        "?render2d@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z",
+        "?render3dAdorn@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z",
+        "?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z"
+      ],
+      "removed": []
+    },
+    "duplicates": {
+      "unchanged": false,
+      "added": [
+        "??0VistaAPIs@RBX@@QAE@XZ",
+        "??1VistaAPIs@RBX@@QAE@XZ",
+        "?GetIntegrity@VistaAPIs@RBX@@QAGJPAE@Z",
+        "?SHGetKnownFolderPath@VistaAPIs@RBX@@QAEJABU_GUID@@KPAXPAPA_W@Z"
+      ],
+      "removed": []
+    }
+  },
+  "library_replacements": [
+    {
+      "old": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-130705-87b5983d\\output\\null-tool-owner\\linked.lib",
+      "old_sha256": "7388fd3bfb96473f268288a5d3aa4164c0d4deb9dc89137ea033f2601b34c05d",
+      "new": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-filesystem-owner-20261105\\linked.lib",
+      "new_sha256": "0c597337028cf2cda5addf6ededafd11d546ec6205720401a5e1c166ab1b0836"
+    }
+  ],
+  "historical_input_identity_proven": false
+}

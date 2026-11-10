@@ -1,0 +1,135 @@
+18:56:06: Creating resource group General
+18:56:06: Creating resource group Internal
+18:56:06: Creating resource group Autodetect
+18:56:06: SceneManagerFactory for type 'DefaultSceneManager' registered.
+18:56:06: Registering ResourceManager for type Material
+18:56:06: Registering ResourceManager for type Mesh
+18:56:06: Registering ResourceManager for type Skeleton
+18:56:06: MovableObjectFactory for type 'ParticleSystem' registered.
+18:56:06: OverlayElementFactory for type Panel registered.
+18:56:06: OverlayElementFactory for type BorderPanel registered.
+18:56:06: OverlayElementFactory for type TextArea registered.
+18:56:06: Registering ResourceManager for type Font
+18:56:06: ArchiveFactory for archive type FileSystem registered.
+18:56:06: ArchiveFactory for archive type Zip registered.
+18:56:06: FreeImage version: 3.10.0
+18:56:06: This program uses FreeImage, a free, open source image library supporting all common bitmap formats. See http://freeimage.sourceforge.net for details
+18:56:06: Supported formats: bmp,ico,jpg,jif,jpeg,jpe,jng,koa,iff,lbm,mng,pbm,pbm,pcd,pcx,pgm,pgm,png,ppm,ppm,ras,tga,targa,tif,tiff,wap,wbmp,wbm,psd,cut,xbm,xpm,gif,hdr,g3,sgi,exr,j2k,j2c,jp2
+18:56:06: DDS codec registering
+18:56:06: Registering ResourceManager for type HighLevelGpuProgram
+18:56:06: Registering ResourceManager for type Compositor
+18:56:06: MovableObjectFactory for type 'Entity' registered.
+18:56:06: MovableObjectFactory for type 'Light' registered.
+18:56:06: MovableObjectFactory for type 'BillboardSet' registered.
+18:56:06: MovableObjectFactory for type 'ManualObject' registered.
+18:56:06: MovableObjectFactory for type 'BillboardChain' registered.
+18:56:06: MovableObjectFactory for type 'RibbonTrail' registered.
+18:56:06: *-*-* OGRE Initialising
+18:56:06: *-*-* Version 1.4.4 (Eihort)
+18:56:06: Loading library rgdx.dll
+18:56:06: Installing plugin: D3D9 RenderSystem
+18:56:06: D3D9 : Direct3D9 Rendering Subsystem created.
+18:56:06: D3D9: Driver Detection Starts
+18:56:06: D3D9: Driver Detection Ends
+18:56:06: Plugin successfully installed
+18:56:06: D3D9 : RenderSystem Option: Full Screen = No
+18:56:06: D3D9 : RenderSystem Option: Video Mode = 320 x 240 @ 32-bit colour
+18:56:06: CPU Identifier & Features
+18:56:06: -------------------------
+18:56:06:  *   CPU ID: GenuineIntel: 12th Gen Intel(R) Core(TM) i7-12700K
+18:56:06:  *      SSE: yes
+18:56:06:  *     SSE2: yes
+18:56:06:  *     SSE3: yes
+18:56:06:  *      MMX: yes
+18:56:06:  *   MMXEXT: yes
+18:56:06:  *    3DNOW: no
+18:56:06:  * 3DNOWEXT: no
+18:56:06:  *     CMOV: yes
+18:56:06:  *      TSC: yes
+18:56:06:  *      FPU: yes
+18:56:06:  *      PRO: yes
+18:56:06:  *       HT: no
+18:56:06: -------------------------
+18:56:06: D3D9 : Subsystem Initialising
+18:56:06: D3D9RenderSystem::createRenderWindow "Player2008", 320x240 windowed  miscParams: FSAA=0 FSAAQuality=0 colourDepth=32 useNVPerfHUD=false vsync=true 
+18:56:06: D3D9 : Created D3D9 Rendering Window 'Player2008' : 320x240, 32bpp
+18:56:06: Registering ResourceManager for type Texture
+18:56:06: Registering ResourceManager for type GpuProgram
+18:56:06: Multiple render targets with independent bit depths supported
+18:56:06: D3D9: Vertex texture format supported - PF_A8R8G8B8
+18:56:06: D3D9: Vertex texture format supported - PF_B8G8R8A8
+18:56:06: D3D9: Vertex texture format supported - PF_FLOAT16_RGB
+18:56:06: D3D9: Vertex texture format supported - PF_FLOAT16_RGBA
+18:56:06: D3D9: Vertex texture format supported - PF_FLOAT32_RGB
+18:56:06: D3D9: Vertex texture format supported - PF_FLOAT32_RGBA
+18:56:06: D3D9: Vertex texture format supported - PF_R8G8B8A8
+18:56:06: D3D9: Vertex texture format supported - PF_DEPTH
+18:56:06: D3D9: Vertex texture format supported - PF_FLOAT16_R
+18:56:06: D3D9: Vertex texture format supported - PF_FLOAT32_R
+18:56:06: D3D9: Vertex texture format supported - PF_FLOAT16_GR
+18:56:06: D3D9: Vertex texture format supported - PF_FLOAT32_GR
+18:56:06: RenderSystem capabilities
+18:56:06: -------------------------
+18:56:06:  * Hardware generation of mipmaps: yes
+18:56:06:  * Texture blending: yes
+18:56:06:  * Anisotropic texture filtering: yes
+18:56:06:  * Dot product texture operation: yes
+18:56:06:  * Cube mapping: yes
+18:56:06:  * Hardware stencil buffer: yes
+18:56:06:    - Stencil depth: 8
+18:56:06:    - Two sided stencil support: yes
+18:56:06:    - Wrap stencil values: yes
+18:56:06:  * Hardware vertex / index buffers: yes
+18:56:06:  * Vertex programs: yes
+18:56:06:    - Max vertex program version: vs_3_0
+18:56:06:  * Fragment programs: yes
+18:56:06:    - Max fragment program version: ps_3_0
+18:56:06:  * Texture Compression: yes
+18:56:06:    - DXT: yes
+18:56:06:    - VTC: no
+18:56:06:  * Scissor Rectangle: yes
+18:56:06:  * Hardware Occlusion Query: yes
+18:56:06:  * User clip planes: yes
+18:56:06:  * VET_UBYTE4 vertex element type: yes
+18:56:06:  * Infinite far plane projection: yes
+18:56:06:  * Hardware render-to-texture: yes
+18:56:06:  * Floating point textures: yes
+18:56:06:  * Non-power-of-two textures: yes
+18:56:06:  * Volume textures: yes
+18:56:06:  * Multiple Render Targets: 4
+18:56:06:  * Point Sprites: yes
+18:56:06:  * Extended point parameters: yes
+18:56:06:  * Max Point Size: 8192
+18:56:06:  * Vertex texture fetch: yes
+18:56:06:    - Max vertex textures: 4
+18:56:06:    - Vertex textures shared: no
+18:56:06: ***************************************
+18:56:06: *** D3D9 : Subsystem Initialised OK ***
+18:56:06: ***************************************
+18:56:06: ResourceBackgroundQueue - threading disabled
+18:56:06: Particle Renderer Type 'billboard' registered
+18:56:06: Creating viewport on target 'Player2008', rendering from camera 'cam', relative dimensions L: 0.00 T: 0.00 W: 1.00 H: 1.00 ZOrder: 0
+18:56:06: RBX cr sms0
+18:56:06: WARNING: Mesh instance 'mesh_0287EC40' was defined as manually loaded, but no manual loader was provided. This Resource will be lost if it has to be reloaded.
+18:56:06: Texture: TextureAtlas: Loading 1 faces(PF_B8G8R8,2048x256x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,2048x256x1.
+18:56:06: RBX cr sms1
+18:56:06: WARNING: Mesh instance 'mesh_03371D70' was defined as manually loaded, but no manual loader was provided. This Resource will be lost if it has to be reloaded.
+18:56:06: RbxGfx: created lightrbxlight0
+18:56:09: RBX removed m0
+18:56:09: RBX rm sms0
+18:56:09: RBX rm sms1
+18:56:09: *-*-* OGRE Shutdown
+18:56:09: Unregistering ResourceManager for type Compositor
+18:56:09: Unregistering ResourceManager for type Font
+18:56:09: Unregistering ResourceManager for type Skeleton
+18:56:09: Unregistering ResourceManager for type Mesh
+18:56:09: Unregistering ResourceManager for type HighLevelGpuProgram
+18:56:09: Uninstalling plugin: D3D9 RenderSystem
+18:56:09: Render Target 'Player2008' Average FPS: 124.089 Best FPS: 166.335 Worst FPS: 2.32831e-007
+18:56:09: D3D9 : Shutting down cleanly.
+18:56:09: Unregistering ResourceManager for type Texture
+18:56:09: Unregistering ResourceManager for type GpuProgram
+18:56:09: D3D9 : Direct3D9 Rendering Subsystem destroyed.
+18:56:09: Plugin successfully uninstalled
+18:56:09: Unloading library rgdx.dll
+18:56:09: Unregistering ResourceManager for type Material

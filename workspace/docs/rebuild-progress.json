@@ -1,0 +1,200 @@
+{
+  "updated": "2026-11-10 01:44 UTC",
+  "clients": {
+    "2008-06": {
+      "phase": "6",
+      "phaseLabel": "Link closure",
+      "overall": 0.1483,
+      "bars": {
+        "compiled": {
+          "value": 17,
+          "total": 17,
+          "label": "Modules reporting"
+        },
+        "linked": {
+          "value": 14,
+          "total": 17,
+          "label": "Modules linked"
+        },
+        "exact": {
+          "value": 6109,
+          "total": 41196,
+          "label": "Byte-exact functions"
+        },
+        "unresolved": {
+          "value": 17,
+          "total": 17,
+          "label": "Unresolved symbols",
+          "invert": true
+        },
+        "stubs": {
+          "value": 0,
+          "total": 1,
+          "label": "Temporary stubs",
+          "invert": true
+        },
+        "runtime": {
+          "value": 0,
+          "total": 7,
+          "label": "Runtime milestones"
+        }
+      },
+      "modules": [
+        {
+          "name": "BoostExtra",
+          "linked": true,
+          "test": 0,
+          "exact": 0,
+          "compileErrors": 0,
+          "objectFunctions": 0,
+          "unresolved": 0
+        },
+        {
+          "name": "Boost",
+          "linked": true,
+          "test": 0,
+          "exact": 348,
+          "compileErrors": 0,
+          "objectFunctions": 10308,
+          "unresolved": 0
+        },
+        {
+          "name": "CodegenAnalogs",
+          "linked": true,
+          "test": 0,
+          "exact": 7,
+          "compileErrors": 0,
+          "objectFunctions": 124,
+          "unresolved": 0
+        },
+        {
+          "name": "G3D-GL",
+          "linked": true,
+          "test": 0,
+          "exact": 473,
+          "compileErrors": 0,
+          "objectFunctions": 6080,
+          "unresolved": 0
+        },
+        {
+          "name": "G3D",
+          "linked": true,
+          "test": 0,
+          "exact": 687,
+          "compileErrors": 0,
+          "objectFunctions": 5976,
+          "unresolved": 0
+        },
+        {
+          "name": "jpeg",
+          "linked": true,
+          "test": 0,
+          "exact": 256,
+          "compileErrors": 0,
+          "objectFunctions": 335,
+          "unresolved": 0
+        },
+        {
+          "name": "libpng",
+          "linked": true,
+          "test": 0,
+          "exact": 109,
+          "compileErrors": 0,
+          "objectFunctions": 332,
+          "unresolved": 0
+        },
+        {
+          "name": "Lua",
+          "linked": true,
+          "test": 0,
+          "exact": 442,
+          "compileErrors": 0,
+          "objectFunctions": 941,
+          "unresolved": 0
+        },
+        {
+          "name": "MfcAtl",
+          "linked": false,
+          "test": null,
+          "exact": 0,
+          "compileErrors": 0,
+          "objectFunctions": 1422,
+          "unresolved": 1
+        },
+        {
+          "name": "Ogre",
+          "linked": false,
+          "test": null,
+          "exact": 0,
+          "compileErrors": 0,
+          "objectFunctions": 41795,
+          "unresolved": 16
+        },
+        {
+          "name": "RakNet",
+          "linked": true,
+          "test": 0,
+          "exact": 394,
+          "compileErrors": 0,
+          "objectFunctions": 2890,
+          "unresolved": 0
+        },
+        {
+          "name": "RbxUtil",
+          "linked": true,
+          "test": 0,
+          "exact": 544,
+          "compileErrors": 0,
+          "objectFunctions": 5140,
+          "unresolved": 0
+        },
+        {
+          "name": "RbxgsApp",
+          "linked": true,
+          "test": 0,
+          "exact": 4409,
+          "compileErrors": 0,
+          "objectFunctions": null,
+          "unresolved": 0
+        },
+        {
+          "name": "Scintilla",
+          "linked": true,
+          "test": 0,
+          "exact": 127,
+          "compileErrors": 0,
+          "objectFunctions": 718,
+          "unresolved": 0
+        },
+        {
+          "name": "XTP",
+          "linked": false,
+          "test": 0,
+          "exact": 0,
+          "compileErrors": 1,
+          "objectFunctions": 86461,
+          "unresolved": 0
+        },
+        {
+          "name": "zlib-winapi",
+          "linked": true,
+          "test": 0,
+          "exact": 24,
+          "compileErrors": 0,
+          "objectFunctions": 108,
+          "unresolved": 0
+        },
+        {
+          "name": "zlib",
+          "linked": true,
+          "test": 0,
+          "exact": 27,
+          "compileErrors": 0,
+          "objectFunctions": 108,
+          "unresolved": 0
+        }
+      ],
+      "next": "Run roc rebuild 2008-06 status for details"
+    }
+  }
+}

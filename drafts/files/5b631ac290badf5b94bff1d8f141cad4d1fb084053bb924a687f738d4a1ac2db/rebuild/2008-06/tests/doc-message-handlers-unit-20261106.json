@@ -1,0 +1,1279 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/CRobloxDoc.cpp",
+      "checks": [
+        {
+          "addr": "44f7c0",
+          "symbol": "?handle_44f7c0@CRobloxDoc@@QAEXXZ",
+          "calls": [
+            {
+              "offset": 98,
+              "target": "006a0e72",
+              "symbol": "??0CFileDialog@@QAE@HPBD0K0PAVCWnd@@KH@Z"
+            },
+            {
+              "offset": 115,
+              "target": "006a0e6c",
+              "symbol": "?DoModal@CFileDialog@@UAEHXZ"
+            },
+            {
+              "offset": 134,
+              "target": "006a0e66",
+              "symbol": "?GetPathName@CFileDialog@@QBE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ"
+            },
+            {
+              "offset": 160,
+              "target": "00401180",
+              "symbol": "??0CComBSTR@ATL@@QAE@PBD@Z"
+            },
+            {
+              "offset": 221,
+              "target": "006a0e5a",
+              "symbol": "??1CFileDialog@@UAE@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "44fc50",
+          "symbol": "?handle_44fc50@CRobloxDoc@@QAEXXZ",
+          "calls": [
+            {
+              "offset": 40,
+              "target": "0044f500",
+              "symbol": "??0CPublishAsPlaceDialog@@QAE@PAUIDispatch@@PAVCWnd@@@Z"
+            },
+            {
+              "offset": 59,
+              "target": "006a084e",
+              "symbol": "?DoModal@CDialog@@UAEHXZ"
+            },
+            {
+              "offset": 78,
+              "target": "0045fe20",
+              "symbol": "??1CSaveToRobloxDialog@@UAE@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "44fcc0",
+          "symbol": "?handle_44fcc0@CRobloxDoc@@QAEXXZ",
+          "calls": [
+            {
+              "offset": 40,
+              "target": "0044f660",
+              "symbol": "??0CSaveModelToRobloxDialog@@QAE@PAUIDispatch@@PAVCWnd@@@Z"
+            },
+            {
+              "offset": 59,
+              "target": "006a084e",
+              "symbol": "?DoModal@CDialog@@UAEHXZ"
+            },
+            {
+              "offset": 78,
+              "target": "0045fe20",
+              "symbol": "??1CSaveToRobloxDialog@@UAE@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "44fd30",
+          "symbol": "?handle_44fd30@CRobloxDoc@@QAEXXZ",
+          "calls": [
+            {
+              "offset": 35,
+              "target": "004060d0",
+              "symbol": "?applicationBaseUrl@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ"
+            },
+            {
+              "offset": 62,
+              "target": "0040e160",
+              "symbol": "??HATL@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@0@ABV10@PBD@Z"
+            },
+            {
+              "offset": 95,
+              "target": "0044eeb0",
+              "symbol": "??0CRobloxDHtmlDialog@@QAE@IPBDPAVCWnd@@@Z"
+            },
+            {
+              "offset": 139,
+              "target": "006a1394",
+              "symbol": "?SetExternalDispatch@CDHtmlDialog@@QAEXPAUIDispatch@@@Z"
+            },
+            {
+              "offset": 148,
+              "target": "006a084e",
+              "symbol": "?DoModal@CDialog@@UAEHXZ"
+            },
+            {
+              "offset": 168,
+              "target": "00401050",
+              "symbol": "??1CRobloxDHtmlDialog@@UAE@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "4500d0",
+          "symbol": "?handle_4500d0@CRobloxDoc@@QAEXXZ",
+          "calls": [
+            {
+              "offset": 46,
+              "target": "004060d0",
+              "symbol": "?applicationBaseUrl@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ"
+            },
+            {
+              "offset": 68,
+              "target": "0044f220",
+              "symbol": "??HATL@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@0@PBDABV10@@Z"
+            },
+            {
+              "offset": 90,
+              "target": "0040e160",
+              "symbol": "??HATL@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@0@ABV10@PBD@Z"
+            },
+            {
+              "offset": 114,
+              "target": "0044fe00",
+              "symbol": "?copyDocument@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@PAVCRobloxDoc@@PBD@Z"
+            },
+            {
+              "offset": 148,
+              "target": "0044ff40",
+              "symbol": "?launch@@YAXPBD0@Z"
+            },
+            {
+              "offset": 221,
+              "target": "006a0c50",
+              "symbol": "?AfxMessageBox@@YGHPBDII@Z"
+            }
+          ]
+        },
+        {
+          "addr": "4501c0",
+          "symbol": "?handle_4501c0@CRobloxDoc@@QAEXXZ",
+          "calls": [
+            {
+              "offset": 46,
+              "target": "004060d0",
+              "symbol": "?applicationBaseUrl@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ"
+            },
+            {
+              "offset": 68,
+              "target": "0044f220",
+              "symbol": "??HATL@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@0@PBDABV10@@Z"
+            },
+            {
+              "offset": 90,
+              "target": "0040e160",
+              "symbol": "??HATL@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@0@ABV10@PBD@Z"
+            },
+            {
+              "offset": 114,
+              "target": "0044fe00",
+              "symbol": "?copyDocument@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@PAVCRobloxDoc@@PBD@Z"
+            },
+            {
+              "offset": 148,
+              "target": "0044ff40",
+              "symbol": "?launch@@YAXPBD0@Z"
+            },
+            {
+              "offset": 221,
+              "target": "006a0c50",
+              "symbol": "?AfxMessageBox@@YGHPBDII@Z"
+            }
+          ]
+        },
+        {
+          "addr": "4502b0",
+          "symbol": "?handle_4502b0@CRobloxDoc@@QAEXXZ",
+          "calls": [
+            {
+              "offset": 44,
+              "target": "004060d0",
+              "symbol": "?applicationBaseUrl@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ"
+            },
+            {
+              "offset": 66,
+              "target": "0044f220",
+              "symbol": "??HATL@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@0@PBDABV10@@Z"
+            },
+            {
+              "offset": 88,
+              "target": "0040e160",
+              "symbol": "??HATL@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@0@ABV10@PBD@Z"
+            },
+            {
+              "offset": 112,
+              "target": "0044ff40",
+              "symbol": "?launch@@YAXPBD0@Z"
+            },
+            {
+              "offset": 176,
+              "target": "006a0c50",
+              "symbol": "?AfxMessageBox@@YGHPBDII@Z"
+            }
+          ]
+        },
+        {
+          "addr": "450a70",
+          "symbol": "?handle_450a70@CRobloxDoc@@QAEXPAVCCmdUI@@@Z",
+          "calls": [
+            {
+              "offset": 34,
+              "target": "00403040",
+              "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 116,
+              "target": "0046a940",
+              "symbol": "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 168,
+              "target": "00411b40",
+              "symbol": "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z"
+            },
+            {
+              "offset": 236,
+              "target": "00403040",
+              "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 248,
+              "target": "005757d0",
+              "symbol": "?getGameTime@DataModel@RBX@@QBENXZ"
+            },
+            {
+              "offset": 346,
+              "target": "005773c0",
+              "symbol": "??1Lock@DataModel@RBX@@QAE@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "450c00",
+          "symbol": "?handle_450c00@CRobloxDoc@@QAEXPAVCCmdUI@@@Z",
+          "calls": [
+            {
+              "offset": 34,
+              "target": "00403040",
+              "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 116,
+              "target": "0046a940",
+              "symbol": "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 168,
+              "target": "00411b40",
+              "symbol": "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z"
+            },
+            {
+              "offset": 236,
+              "target": "00403040",
+              "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 248,
+              "target": "005757e0",
+              "symbol": "?getFrameRate@DataModel@RBX@@QBENXZ"
+            },
+            {
+              "offset": 362,
+              "target": "005773c0",
+              "symbol": "??1Lock@DataModel@RBX@@QAE@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "450d90",
+          "symbol": "?handle_450d90@CRobloxDoc@@QAEXPAVCCmdUI@@@Z",
+          "calls": [
+            {
+              "offset": 34,
+              "target": "00403040",
+              "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 116,
+              "target": "0046a940",
+              "symbol": "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 168,
+              "target": "00411b40",
+              "symbol": "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z"
+            },
+            {
+              "offset": 236,
+              "target": "00403040",
+              "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 248,
+              "target": "005757f0",
+              "symbol": "?getDutyCycle@DataModel@RBX@@QBENXZ"
+            },
+            {
+              "offset": 376,
+              "target": "005773c0",
+              "symbol": "??1Lock@DataModel@RBX@@QAE@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "450f30",
+          "symbol": "?handle_450f30@CRobloxDoc@@QAEXXZ",
+          "calls": [
+            {
+              "offset": 102,
+              "target": "006a0e72",
+              "symbol": "??0CFileDialog@@QAE@HPBD0K0PAVCWnd@@KH@Z"
+            },
+            {
+              "offset": 122,
+              "target": "006a0e6c",
+              "symbol": "?DoModal@CFileDialog@@UAEHXZ"
+            },
+            {
+              "offset": 148,
+              "target": "006a0e66",
+              "symbol": "?GetPathName@CFileDialog@@QBE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ"
+            },
+            {
+              "offset": 215,
+              "target": "0046a940",
+              "symbol": "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 267,
+              "target": "00411b40",
+              "symbol": "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z"
+            },
+            {
+              "offset": 343,
+              "target": "0046b9d0",
+              "symbol": "?insert@CWorkspace@@QAEXAAV?$basic_istream@DU?$char_traits@D@std@@@std@@_N@Z"
+            },
+            {
+              "offset": 360,
+              "target": "005773c0",
+              "symbol": "??1Lock@DataModel@RBX@@QAE@XZ"
+            },
+            {
+              "offset": 398,
+              "target": "006a0e5a",
+              "symbol": "??1CFileDialog@@UAE@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "453670",
+          "symbol": "?handle_453670@CRobloxDoc@@QAEXXZ",
+          "calls": [
+            {
+              "offset": 36,
+              "target": "0046a940",
+              "symbol": "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 95,
+              "target": "00411b40",
+              "symbol": "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z"
+            },
+            {
+              "offset": 109,
+              "target": "00453000",
+              "symbol": "??$create@VChangeHistoryService@RBX@@@ServiceProvider@RBX@@QBEPAVChangeHistoryService@1@XZ"
+            },
+            {
+              "offset": 116,
+              "target": "0058a130",
+              "symbol": "?unplay@ChangeHistoryService@RBX@@QAEXXZ"
+            },
+            {
+              "offset": 130,
+              "target": "005773c0",
+              "symbol": "??1Lock@DataModel@RBX@@QAE@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "453750",
+          "symbol": "?handle_453750@CRobloxDoc@@QAEXPAVCCmdUI@@@Z",
+          "calls": [
+            {
+              "offset": 38,
+              "target": "0046a940",
+              "symbol": "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 97,
+              "target": "00411b40",
+              "symbol": "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z"
+            },
+            {
+              "offset": 111,
+              "target": "00453000",
+              "symbol": "??$create@VChangeHistoryService@RBX@@@ServiceProvider@RBX@@QBEPAVChangeHistoryService@1@XZ"
+            },
+            {
+              "offset": 148,
+              "target": "00587b70",
+              "symbol": "?queryUnplay@ChangeHistoryService@RBX@@QAE_NAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z"
+            },
+            {
+              "offset": 265,
+              "target": "005773c0",
+              "symbol": "??1Lock@DataModel@RBX@@QAE@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "4538b0",
+          "symbol": "?handle_4538b0@CRobloxDoc@@QAEXXZ",
+          "calls": [
+            {
+              "offset": 36,
+              "target": "0046a940",
+              "symbol": "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 95,
+              "target": "00411b40",
+              "symbol": "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z"
+            },
+            {
+              "offset": 109,
+              "target": "00453000",
+              "symbol": "??$create@VChangeHistoryService@RBX@@@ServiceProvider@RBX@@QBEPAVChangeHistoryService@1@XZ"
+            },
+            {
+              "offset": 116,
+              "target": "00588780",
+              "symbol": "?play@ChangeHistoryService@RBX@@QAEXXZ"
+            },
+            {
+              "offset": 130,
+              "target": "005773c0",
+              "symbol": "??1Lock@DataModel@RBX@@QAE@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "453990",
+          "symbol": "?handle_453990@CRobloxDoc@@QAEXPAVCCmdUI@@@Z",
+          "calls": [
+            {
+              "offset": 38,
+              "target": "0046a940",
+              "symbol": "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 97,
+              "target": "00411b40",
+              "symbol": "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z"
+            },
+            {
+              "offset": 111,
+              "target": "00453000",
+              "symbol": "??$create@VChangeHistoryService@RBX@@@ServiceProvider@RBX@@QBEPAVChangeHistoryService@1@XZ"
+            },
+            {
+              "offset": 148,
+              "target": "00587a90",
+              "symbol": "?queryPlay@ChangeHistoryService@RBX@@QAE_NAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z"
+            },
+            {
+              "offset": 265,
+              "target": "005773c0",
+              "symbol": "??1Lock@DataModel@RBX@@QAE@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "453af0",
+          "symbol": "?handle_453af0@CRobloxDoc@@QAEXPAVCCmdUI@@@Z",
+          "calls": [
+            {
+              "offset": 39,
+              "target": "0046a940",
+              "symbol": "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 91,
+              "target": "00411b40",
+              "symbol": "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z"
+            },
+            {
+              "offset": 162,
+              "target": "0046a940",
+              "symbol": "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 178,
+              "target": "004153b0",
+              "symbol": "??$create@VSelection@RBX@@@ServiceProvider@RBX@@QBEPAVSelection@1@XZ"
+            },
+            {
+              "offset": 290,
+              "target": "005773c0",
+              "symbol": "??1Lock@DataModel@RBX@@QAE@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "454040",
+          "symbol": "?handle_454040@CRobloxDoc@@QAEXPAVCCmdUI@@@Z",
+          "calls": [
+            {
+              "offset": 40,
+              "target": "0046a940",
+              "symbol": "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 92,
+              "target": "00411b40",
+              "symbol": "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z"
+            },
+            {
+              "offset": 160,
+              "target": "00403040",
+              "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 172,
+              "target": "004530f0",
+              "symbol": "??$create@VRunService@RBX@@@ServiceProvider@RBX@@QBEPAVRunService@1@XZ"
+            },
+            {
+              "offset": 278,
+              "target": "005773c0",
+              "symbol": "??1Lock@DataModel@RBX@@QAE@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "454170",
+          "symbol": "?handle_454170@CRobloxDoc@@QAEXPAVCCmdUI@@@Z",
+          "calls": [
+            {
+              "offset": 41,
+              "target": "0046a940",
+              "symbol": "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 93,
+              "target": "00411b40",
+              "symbol": "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z"
+            },
+            {
+              "offset": 160,
+              "target": "00403040",
+              "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 172,
+              "target": "004530f0",
+              "symbol": "??$create@VRunService@RBX@@@ServiceProvider@RBX@@QBEPAVRunService@1@XZ"
+            },
+            {
+              "offset": 247,
+              "target": "00403040",
+              "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 260,
+              "target": "0049ac80",
+              "symbol": "?findLocalPlayer@Players@Network@RBX@@SAPAVPlayer@23@PBVInstance@3@@Z"
+            },
+            {
+              "offset": 370,
+              "target": "005773c0",
+              "symbol": "??1Lock@DataModel@RBX@@QAE@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "454300",
+          "symbol": "?handle_454300@CRobloxDoc@@QAEXPAVCCmdUI@@@Z",
+          "calls": [
+            {
+              "offset": 41,
+              "target": "0046a940",
+              "symbol": "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 93,
+              "target": "00411b40",
+              "symbol": "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z"
+            },
+            {
+              "offset": 160,
+              "target": "00403040",
+              "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 172,
+              "target": "004530f0",
+              "symbol": "??$create@VRunService@RBX@@@ServiceProvider@RBX@@QBEPAVRunService@1@XZ"
+            },
+            {
+              "offset": 243,
+              "target": "00403040",
+              "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 258,
+              "target": "00495e60",
+              "symbol": "?clientIsPresent@Client@Network@RBX@@SA_NPBVInstance@3@_N@Z"
+            },
+            {
+              "offset": 367,
+              "target": "005773c0",
+              "symbol": "??1Lock@DataModel@RBX@@QAE@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "454490",
+          "symbol": "?handle_454490@CRobloxDoc@@QAEXPAVCCmdUI@@@Z",
+          "calls": [
+            {
+              "offset": 39,
+              "target": "0046a940",
+              "symbol": "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 91,
+              "target": "00411b40",
+              "symbol": "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z"
+            },
+            {
+              "offset": 158,
+              "target": "00403040",
+              "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 174,
+              "target": "0042de90",
+              "symbol": "??$create@VScriptContext@RBX@@@ServiceProvider@RBX@@QBEPAVScriptContext@1@XZ"
+            },
+            {
+              "offset": 285,
+              "target": "005773c0",
+              "symbol": "??1Lock@DataModel@RBX@@QAE@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "4545d0",
+          "symbol": "?handle_4545d0@CRobloxDoc@@QAEXXZ",
+          "calls": [
+            {
+              "offset": 39,
+              "target": "0046a940",
+              "symbol": "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 91,
+              "target": "00411b40",
+              "symbol": "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z"
+            },
+            {
+              "offset": 158,
+              "target": "00403040",
+              "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 174,
+              "target": "0042de90",
+              "symbol": "??$create@VScriptContext@RBX@@@ServiceProvider@RBX@@QBEPAVScriptContext@1@XZ"
+            },
+            {
+              "offset": 263,
+              "target": "005a86c0",
+              "symbol": "?gc@ScriptContext@RBX@@QAEXXZ"
+            },
+            {
+              "offset": 284,
+              "target": "005c8940",
+              "symbol": "?getHeapStats@LuaAllocator@@QBEXAAI0@Z"
+            },
+            {
+              "offset": 299,
+              "target": "005a6bc0",
+              "symbol": "?formatMem@Log@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I@Z"
+            },
+            {
+              "offset": 314,
+              "target": "005a9120",
+              "symbol": "?getThreadCount@ScriptContext@RBX@@QBEIXZ"
+            },
+            {
+              "offset": 326,
+              "target": "00569620",
+              "symbol": "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 366,
+              "target": "005693a0",
+              "symbol": "?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ"
+            },
+            {
+              "offset": 458,
+              "target": "005773c0",
+              "symbol": "??1Lock@DataModel@RBX@@QAE@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "4547b0",
+          "symbol": "?handle_4547b0@CRobloxDoc@@QAEXPAVCCmdUI@@@Z",
+          "calls": [
+            {
+              "offset": 39,
+              "target": "0046a940",
+              "symbol": "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 91,
+              "target": "00411b40",
+              "symbol": "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z"
+            },
+            {
+              "offset": 158,
+              "target": "00403040",
+              "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 174,
+              "target": "0042de90",
+              "symbol": "??$create@VScriptContext@RBX@@@ServiceProvider@RBX@@QBEPAVScriptContext@1@XZ"
+            },
+            {
+              "offset": 255,
+              "target": "005a9120",
+              "symbol": "?getThreadCount@ScriptContext@RBX@@QBEIXZ"
+            },
+            {
+              "offset": 342,
+              "target": "005773c0",
+              "symbol": "??1Lock@DataModel@RBX@@QAE@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "454920",
+          "symbol": "?handle_454920@CRobloxDoc@@QAEXPAVCCmdUI@@@Z",
+          "calls": [
+            {
+              "offset": 39,
+              "target": "0046a940",
+              "symbol": "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 91,
+              "target": "00411b40",
+              "symbol": "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z"
+            },
+            {
+              "offset": 158,
+              "target": "00403040",
+              "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 174,
+              "target": "0042de90",
+              "symbol": "??$create@VScriptContext@RBX@@@ServiceProvider@RBX@@QBEPAVScriptContext@1@XZ"
+            },
+            {
+              "offset": 264,
+              "target": "005c8940",
+              "symbol": "?getHeapStats@LuaAllocator@@QBEXAAI0@Z"
+            },
+            {
+              "offset": 279,
+              "target": "005a6bc0",
+              "symbol": "?formatMem@Log@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I@Z"
+            },
+            {
+              "offset": 385,
+              "target": "005773c0",
+              "symbol": "??1Lock@DataModel@RBX@@QAE@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "454f30",
+          "symbol": "?handle_454f30@CRobloxDoc@@QAEXPAVCCmdUI@@@Z",
+          "calls": [
+            {
+              "offset": 39,
+              "target": "0046a940",
+              "symbol": "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 91,
+              "target": "00411b40",
+              "symbol": "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z"
+            },
+            {
+              "offset": 158,
+              "target": "00403040",
+              "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 178,
+              "target": "00412710",
+              "symbol": "??$create@VPlayers@Network@RBX@@@ServiceProvider@RBX@@QBEPAVPlayers@Network@1@XZ"
+            },
+            {
+              "offset": 185,
+              "target": "00496390",
+              "symbol": "?canReportAbuse@Players@Network@RBX@@QBE_NXZ"
+            },
+            {
+              "offset": 273,
+              "target": "005773c0",
+              "symbol": "??1Lock@DataModel@RBX@@QAE@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "455460",
+          "symbol": "?handle_455460@CRobloxDoc@@QAEXXZ",
+          "calls": [
+            {
+              "offset": 39,
+              "target": "0046a940",
+              "symbol": "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 91,
+              "target": "00411b40",
+              "symbol": "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z"
+            },
+            {
+              "offset": 158,
+              "target": "00403040",
+              "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 174,
+              "target": "004530f0",
+              "symbol": "??$create@VRunService@RBX@@@ServiceProvider@RBX@@QBEPAVRunService@1@XZ"
+            },
+            {
+              "offset": 187,
+              "target": "00554da0",
+              "symbol": "?setRunState@RunService@RBX@@QAEXW4RunState@2@@Z"
+            },
+            {
+              "offset": 259,
+              "target": "005773c0",
+              "symbol": "??1Lock@DataModel@RBX@@QAE@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "455580",
+          "symbol": "?handle_455580@CRobloxDoc@@QAEXXZ",
+          "calls": [
+            {
+              "offset": 40,
+              "target": "0046a940",
+              "symbol": "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 92,
+              "target": "00411b40",
+              "symbol": "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z"
+            },
+            {
+              "offset": 159,
+              "target": "00403040",
+              "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 171,
+              "target": "004530f0",
+              "symbol": "??$create@VRunService@RBX@@@ServiceProvider@RBX@@QBEPAVRunService@1@XZ"
+            },
+            {
+              "offset": 258,
+              "target": "00403040",
+              "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 274,
+              "target": "004530f0",
+              "symbol": "??$create@VRunService@RBX@@@ServiceProvider@RBX@@QBEPAVRunService@1@XZ"
+            },
+            {
+              "offset": 287,
+              "target": "00554da0",
+              "symbol": "?setRunState@RunService@RBX@@QAEXW4RunState@2@@Z"
+            },
+            {
+              "offset": 354,
+              "target": "00403040",
+              "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 366,
+              "target": "00578ef0",
+              "symbol": "?clearContents@DataModel@RBX@@QAEXXZ"
+            },
+            {
+              "offset": 435,
+              "target": "00403040",
+              "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 452,
+              "target": "00593500",
+              "symbol": "?load@SerializerV2@@SAXPAVXmlElement@@PAVDataModel@RBX@@@Z"
+            },
+            {
+              "offset": 524,
+              "target": "00403040",
+              "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 542,
+              "target": "005a0de0",
+              "symbol": "?joinAllHack@Workspace@RBX@@QAEXXZ"
+            },
+            {
+              "offset": 613,
+              "target": "00413a70",
+              "symbol": "??1XmlElement@@QAE@XZ"
+            },
+            {
+              "offset": 619,
+              "target": "006a067a",
+              "symbol": "??3@YAXPAX@Z"
+            },
+            {
+              "offset": 646,
+              "target": "005773c0",
+              "symbol": "??1Lock@DataModel@RBX@@QAE@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "455820",
+          "symbol": "?handle_455820@CRobloxDoc@@QAEXXZ",
+          "calls": [
+            {
+              "offset": 41,
+              "target": "0046a940",
+              "symbol": "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 93,
+              "target": "00411b40",
+              "symbol": "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z"
+            },
+            {
+              "offset": 160,
+              "target": "00403040",
+              "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 172,
+              "target": "004530f0",
+              "symbol": "??$create@VRunService@RBX@@@ServiceProvider@RBX@@QBEPAVRunService@1@XZ"
+            },
+            {
+              "offset": 248,
+              "target": "00591a30",
+              "symbol": "?newRootElement@SerializerV2@@SAPAVXmlElement@@XZ"
+            },
+            {
+              "offset": 268,
+              "target": "00413a70",
+              "symbol": "??1XmlElement@@QAE@XZ"
+            },
+            {
+              "offset": 274,
+              "target": "006a067a",
+              "symbol": "??3@YAXPAX@Z"
+            },
+            {
+              "offset": 292,
+              "target": "00403040",
+              "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 310,
+              "target": "00558110",
+              "symbol": "?writeChildren@Instance@RBX@@QAEXPAVXmlElement@@@Z"
+            },
+            {
+              "offset": 379,
+              "target": "00403040",
+              "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 395,
+              "target": "004530f0",
+              "symbol": "??$create@VRunService@RBX@@@ServiceProvider@RBX@@QBEPAVRunService@1@XZ"
+            },
+            {
+              "offset": 408,
+              "target": "00554da0",
+              "symbol": "?setRunState@RunService@RBX@@QAEXW4RunState@2@@Z"
+            },
+            {
+              "offset": 480,
+              "target": "005773c0",
+              "symbol": "??1Lock@DataModel@RBX@@QAE@XZ"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "native-classes/DocumentExecute.cpp",
+      "checks": [
+        {
+          "addr": "453c30",
+          "symbol": "?handle_453c30@CRobloxDoc@@QAEXPAUtagNMHDR@@PAJ@Z",
+          "calls": [
+            {
+              "offset": 71,
+              "target": "006a9640",
+              "symbol": "?GetEditText@CXTPControlComboBox@@QBE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ"
+            },
+            {
+              "offset": 127,
+              "target": "006a81e0",
+              "symbol": "?GetComboBoxPopupBar@CXTPControlComboBox@@QBEPAVCXTPControlComboBoxPopupBar@@XZ"
+            },
+            {
+              "offset": 238,
+              "target": "0040e470",
+              "symbol": "?DeleteItem@CXTPControlComboBox@@QAEXJ@Z"
+            },
+            {
+              "offset": 258,
+              "target": "00569620",
+              "symbol": "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 290,
+              "target": "005693a0",
+              "symbol": "?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ"
+            },
+            {
+              "offset": 361,
+              "target": "0055bd10",
+              "symbol": "?isUrl@ContentProvider@RBX@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+            },
+            {
+              "offset": 389,
+              "target": "00615440",
+              "symbol": "??0ContentId@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+            },
+            {
+              "offset": 404,
+              "target": "00403040",
+              "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 419,
+              "target": "0041eea0",
+              "symbol": "??$create@VContentProvider@RBX@@@ServiceProvider@RBX@@QBEPAVContentProvider@1@XZ"
+            },
+            {
+              "offset": 438,
+              "target": "00561f20",
+              "symbol": "?getContent@ContentProvider@RBX@@QAE?AV?$auto_ptr@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@VContentId@2@@Z"
+            },
+            {
+              "offset": 573,
+              "target": "00451300",
+              "symbol": "??$copy_impl@V?$reference_wrapper@V?$basic_istream@DU?$char_traits@D@std@@@std@@@boost@@V?$reference_wrapper@V?$basic_ostringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@detail@iostreams@boost@@YAHV?$reference_wrapper@V?$basic_istream@DU?$char_traits@D@std@@@std@@@2@V?$reference_wrapper@V?$basic_ostringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@H@Z"
+            },
+            {
+              "offset": 671,
+              "target": "00403040",
+              "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 717,
+              "target": "00411b40",
+              "symbol": "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z"
+            },
+            {
+              "offset": 785,
+              "target": "0046a940",
+              "symbol": "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 809,
+              "target": "0042dfd0",
+              "symbol": "??$create@VScriptContext@RBX@@@ServiceProvider@RBX@@QBEPAVScriptContext@1@XZ"
+            },
+            {
+              "offset": 824,
+              "target": "005b03b0",
+              "symbol": "?executeInNewThread@ScriptContext@RBX@@QAEXW4Identities@Security@2@PBD1@Z"
+            },
+            {
+              "offset": 889,
+              "target": "005773c0",
+              "symbol": "??1Lock@DataModel@RBX@@QAE@XZ"
+            },
+            {
+              "offset": 978,
+              "target": "006a0a28",
+              "symbol": "?SetFocus@CWnd@@QAEPAV1@XZ"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "native-classes/DocumentInsertModel.cpp",
+      "checks": [
+        {
+          "addr": "455c30",
+          "symbol": "?handle_455c30@CRobloxDoc@@QAEXXZ",
+          "calls": [
+            {
+              "offset": 98,
+              "target": "006a0e72",
+              "symbol": "??0CFileDialog@@QAE@HPBD0K0PAVCWnd@@KH@Z"
+            },
+            {
+              "offset": 115,
+              "target": "006a0e6c",
+              "symbol": "?DoModal@CFileDialog@@UAEHXZ"
+            },
+            {
+              "offset": 134,
+              "target": "006a0e66",
+              "symbol": "?GetPathName@CFileDialog@@QBE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ"
+            },
+            {
+              "offset": 173,
+              "target": "00455a20",
+              "symbol": "?loadFile@CRobloxDoc@@QAEHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+            },
+            {
+              "offset": 200,
+              "target": "006a0e5a",
+              "symbol": "??1CFileDialog@@UAE@XZ"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "native-classes/DocumentLDraw.cpp",
+      "checks": [
+        {
+          "addr": "454c90",
+          "symbol": "?handle_454c90@CRobloxDoc@@QAEXXZ",
+          "calls": [
+            {
+              "offset": 106,
+              "target": "006a0e72",
+              "symbol": "??0CFileDialog@@QAE@HPBD0K0PAVCWnd@@KH@Z"
+            },
+            {
+              "offset": 121,
+              "target": "006a0e6c",
+              "symbol": "?DoModal@CFileDialog@@UAEHXZ"
+            },
+            {
+              "offset": 145,
+              "target": "006a0e66",
+              "symbol": "?GetPathName@CFileDialog@@QBE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ"
+            },
+            {
+              "offset": 166,
+              "target": "0046f110",
+              "symbol": "??0LDrawParser@LDraw2Lua@RBX@@QAE@PBD@Z"
+            },
+            {
+              "offset": 214,
+              "target": "0046f200",
+              "symbol": "?parse@LDrawParser@LDraw2Lua@RBX@@QAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z"
+            },
+            {
+              "offset": 245,
+              "target": "0046a940",
+              "symbol": "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 291,
+              "target": "00411b40",
+              "symbol": "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z"
+            },
+            {
+              "offset": 352,
+              "target": "004293d0",
+              "symbol": "??0?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@QAE@XZ"
+            },
+            {
+              "offset": 388,
+              "target": "00403040",
+              "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 412,
+              "target": "0042dfd0",
+              "symbol": "??$create@VScriptContext@RBX@@@ServiceProvider@RBX@@QBEPAVScriptContext@1@XZ"
+            },
+            {
+              "offset": 435,
+              "target": "005b0480",
+              "symbol": "?executeInNewThread@ScriptContext@RBX@@QAE?AV?$auto_ptr@V?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@@std@@W4Identities@Security@2@PBD1ABV?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@4@@Z"
+            },
+            {
+              "offset": 449,
+              "target": "0042d630",
+              "symbol": "??1?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@QAE@XZ"
+            },
+            {
+              "offset": 455,
+              "target": "006a067a",
+              "symbol": "??3@YAXPAX@Z"
+            },
+            {
+              "offset": 535,
+              "target": "0042d630",
+              "symbol": "??1?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@QAE@XZ"
+            },
+            {
+              "offset": 547,
+              "target": "005773c0",
+              "symbol": "??1Lock@DataModel@RBX@@QAE@XZ"
+            },
+            {
+              "offset": 582,
+              "target": "0046f100",
+              "symbol": "??1LDrawParser@LDraw2Lua@RBX@@UAE@XZ"
+            },
+            {
+              "offset": 597,
+              "target": "006a0e5a",
+              "symbol": "??1CFileDialog@@UAE@XZ"
+            },
+            {
+              "offset": 646,
+              "target": "006a0c50",
+              "symbol": "?AfxMessageBox@@YGHPBDII@Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

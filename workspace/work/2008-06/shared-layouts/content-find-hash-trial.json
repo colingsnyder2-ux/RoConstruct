@@ -1,0 +1,64 @@
+{
+  "source_sha256": "efcd4c7522e1f0cd173a195e404a822e02afe66618d2b573ae0001551ee4f80d",
+  "layout_sha256": "be425a78881bfd97189746f1c53feb859c72c3a99af4659657350d655b83e5c5",
+  "observer_sha256": "21e9b4b09e1b74c6060b73801ace195b4c957cb3089026ab8071075041ada11e",
+  "object_sha256": "44246ae47cc6a27418f13aa275a0b9093e259483bc65d55acb5fa7d9bfbb2927",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeContentFindTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeContentFindTrial.cpp"
+  ],
+  "address": "0055fdc0",
+  "size": 262,
+  "targets": {
+    "?nativeGetLocalCachePath@RBX@@": [
+      "0x55f940"
+    ],
+    "?CloneData@": [
+      "0x55cbb0"
+    ],
+    "?Append@": [
+      "0x55df40"
+    ],
+    "__imp__PathFileExistsA@4": [
+      "0x802b1c"
+    ],
+    "??_C@": [
+      "0x80b716"
+    ]
+  },
+  "scope": "Inactive trial. Original asset folder state, ATL ABI, exception metadata and ownership remain unproven."
+}

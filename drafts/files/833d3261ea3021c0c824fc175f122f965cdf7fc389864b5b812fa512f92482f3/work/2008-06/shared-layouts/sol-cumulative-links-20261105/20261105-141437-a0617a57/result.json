@@ -1,0 +1,107 @@
+{
+  "outcome": "link_failed",
+  "exit_code": 1120,
+  "link_log_present": true,
+  "compiler_errors": [],
+  "link_errors": [
+    "candidate.obj : error LNK2001: unresolved external symbol \"private: virtual void __thiscall RBX::AxisMoveTool::render2d(class RBX::Adorn *)\" (?render2d@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z)",
+    "candidate.obj : error LNK2001: unresolved external symbol \"private: virtual void __thiscall RBX::AxisMoveTool::render3dAdorn(class RBX::Adorn *)\" (?render3dAdorn@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z)",
+    "NativeWorkspaceSaveFull.obj : error LNK2019: unresolved external symbol \"public: long __thiscall CWorkspace::write(class XmlElement *,class std::basic_ostream<char,struct std::char_traits<char> > &)\" (?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z) referenced in function \"public: virtual long __stdcall CWorkspace::SaveToFile(wchar_t *)\" (?SaveToFile@CWorkspace@@UAGJPA_W@Z)",
+    "NativeWorkspaceWriteFull.obj : error LNK2001: unresolved external symbol \"public: long __thiscall CWorkspace::write(class XmlElement *,class std::basic_ostream<char,struct std::char_traits<char> > &)\" (?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z)",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-doc-relinks\\20261105-141437-a0617a57\\RobloxNativeDoc.exe : fatal error LNK1120: 3 unresolved externals"
+  ],
+  "blockers": [
+    {
+      "symbol": "?render2d@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z",
+      "display": "private: virtual void __thiscall RBX::AxisMoveTool::render2d(class RBX::Adorn *)",
+      "requesters": [
+        "candidate.obj"
+      ]
+    },
+    {
+      "symbol": "?render3dAdorn@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z",
+      "display": "private: virtual void __thiscall RBX::AxisMoveTool::render3dAdorn(class RBX::Adorn *)",
+      "requesters": [
+        "candidate.obj"
+      ]
+    },
+    {
+      "symbol": "?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+      "display": "public: long __thiscall CWorkspace::write(class XmlElement *,class std::basic_ostream<char,struct std::char_traits<char> > &)",
+      "requesters": [
+        "NativeWorkspaceSaveFull.obj",
+        "NativeWorkspaceWriteFull.obj"
+      ]
+    }
+  ],
+  "duplicates": [],
+  "source_run": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-doc-relinks\\20261105-135622-0161a2a8",
+  "source_command_sha256": "750c0d857066483c7fd94d955a34bed436bfd523ac1a14b783bbb9cf773e9a86",
+  "seconds": 1.198,
+  "changed_inputs": [],
+  "baseline_comparison": {
+    "blockers": {
+      "added": [],
+      "removed": []
+    },
+    "duplicates": {
+      "added": [],
+      "removed": []
+    }
+  },
+  "explicit_input_delta": {
+    "removed": [
+      "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-filesystem-owner-20261105\\linked.lib"
+    ],
+    "added": [
+      "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-irenderable-20261105\\linked.lib",
+      "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-irenderable-20261105\\run\\unit-000\\candidate.obj"
+    ]
+  },
+  "unchanged_other_archive_members": 266,
+  "native_profile": [
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/IG:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-headers",
+    "/IG:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IG:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\App\\include",
+    "/IG:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IG:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\Network\\include",
+    "/IG:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IG:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IG:\\Projects\\RoConstruct-main\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IG:\\Projects\\RoConstruct-main\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IG:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IG:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IG:\\Projects\\RoConstruct-main\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IG:\\Projects\\RoConstruct-native-claude\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IG:\\Projects\\RoConstruct-main\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/D_XTP_STATICLINK",
+    "/D_XTPLIB_NOAUTOLINK",
+    "/IG:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\tools\\libs\\xtp-11.2.2\\Source",
+    "/U_RELEASEASSERT",
+    "/U_DEBUG"
+  ],
+  "source_compiles": 0,
+  "executed": false,
+  "activation": false,
+  "server_credit": 0,
+  "scope": "Isolated diagnostic only; no selected PE or complete ABI/EH/runtime claim."
+}

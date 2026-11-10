@@ -1,0 +1,5 @@
+layer upstream: 0 compile errors
+layer ijg: 0 compile errors
+layer png: 0 compile errors
+P2ImageCore: linked=True test_exit=0; 6244 object functions, 816 byte-identical to unique 2008 functions (768 of >=16 bytes)
+rebuild progress written: C:\Users\colin\RoConstruct\docs\rebuild-progress.json

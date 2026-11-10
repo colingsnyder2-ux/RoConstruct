@@ -1,0 +1,196 @@
+== 00490af0 320 bytes unit=RBX::VHumanoid::?$FactoryProduct::Creator
+00490af0  push -1
+00490af2  mov eax, dword ptr fs:[0]
+00490af8  push 0x7d9168  ; fn_007d9168 [unit? seg_007d0000]
+00490afd  push eax
+00490afe  mov dword ptr fs:[0], esp
+00490b05  sub esp, 0xc
+00490b08  push ebx
+00490b09  push ebp
+00490b0a  push esi
+00490b0b  push edi
+00490b0c  push 0x96fbf0
+00490b11  push 0x48ad60  ; fn_0048ad60 [unit? RBX::Network::P8Player::?$GetSetImpl]
+00490b16  mov ebx, ecx
+00490b18  call 0x557330  ; fn_00557330 [unit? RBX::VRunService::?$SignalDesc]
+00490b1d  add esp, 8
+00490b20  call 0x48a460  ; fn_0048a460 [unit? G3D::GWindow]
+00490b25  mov ecx, dword ptr [ebx + 0x1a0]
+00490b2b  sub ecx, dword ptr [ebx + 0x19c]
+00490b31  mov ebp, dword ptr [0x802890]  ; MSVCR90.dll!_invalid_parameter_noinfo
+00490b37  lea esi, [ebx + 0x190]
+00490b3d  mov edi, eax
+00490b3f  lea eax, [edi + 1]
+00490b42  sar ecx, 3
+00490b45  cmp eax, ecx
+00490b47  jbe 0x490b69
+00490b49  sub esp, 8
+00490b4c  mov ecx, esp
+00490b4e  mov dword ptr [ecx], 0
+00490b54  mov dword ptr [esp + 0x18], esp
+00490b58  mov dword ptr [ecx + 4], 0
+00490b5f  push eax
+00490b60  mov ecx, esi
+00490b62  call 0x4124c0  ; fn_004124c0 [unit? CChatPrompt]
+00490b67  jmp 0x490b86
+00490b69  mov edx, dword ptr [esi + 0x10]
+00490b6c  sub edx, dword ptr [esi + 0xc]
+00490b6f  sar edx, 3
+00490b72  cmp edi, edx
+00490b74  jb 0x490b78
+00490b76  call ebp
+00490b78  mov eax, dword ptr [esi + 0xc]
+00490b7b  mov eax, dword ptr [eax + edi*8]
+00490b7e  test eax, eax
+00490b80  jne 0x490c1d
+00490b86  push 0x96fbac
+00490b8b  push 0x48aa70  ; fn_0048aa70 [unit? RBX::Network::VPlayer::?$FactoryProduct]
+00490b90  call 0x557330  ; fn_00557330 [unit? RBX::VRunService::?$SignalDesc]
+00490b95  add esp, 8
+00490b98  call 0x489c30  ; fn_00489c30 [unit? G3D::GWindow]
+00490b9d  push eax
+00490b9e  lea ecx, [esp + 0x18]
+00490ba2  push ecx
+00490ba3  mov ecx, ebx
+00490ba5  call 0x572a90  ; fn_00572a90 [unit? RBX::ServiceProvider]
+00490baa  mov ecx, dword ptr [esp + 0x14]
+00490bae  mov dword ptr [esp + 0x24], 0
+00490bb6  test ecx, ecx
+00490bb8  jne 0x490be0
+00490bba  lea ecx, [esp + 0x14]
+00490bbe  mov dword ptr [esp + 0x24], 0xffffffff
+00490bc6  call 0x600660  ; fn_00600660 [unit? RBX::VTool::?$BoundPropGetSet]
+00490bcb  xor eax, eax
+00490bcd  mov ecx, dword ptr [esp + 0x1c]
+00490bd1  mov dword ptr fs:[0], ecx
+00490bd8  pop edi
+00490bd9  pop esi
+00490bda  pop ebp
+00490bdb  pop ebx
+00490bdc  add esp, 0x18
+00490bdf  ret 
+00490be0  mov edx, dword ptr [esi + 0x10]
+00490be3  sub edx, dword ptr [esi + 0xc]
+00490be6  mov ebx, ecx
+00490be8  sar edx, 3
+00490beb  cmp edi, edx
+00490bed  jb 0x490bf5
+00490bef  call ebp
+00490bf1  mov ecx, dword ptr [esp + 0x14]
+00490bf5  mov eax, dword ptr [esi + 0xc]
+00490bf8  lea eax, [eax + edi*8]
+00490bfb  mov dword ptr [eax], ecx
+00490bfd  lea ecx, [esp + 0x18]
+00490c01  push ecx
+00490c02  lea ecx, [eax + 4]
+00490c05  call 0x4025b0  ; fn_004025b0 [unit? std::bad_alloc]
+00490c0a  lea ecx, [esp + 0x14]
+00490c0e  mov dword ptr [esp + 0x24], 0xffffffff
+00490c16  call 0x600660  ; fn_00600660 [unit? RBX::VTool::?$BoundPropGetSet]
+00490c1b  mov eax, ebx
+00490c1d  mov ecx, dword ptr [esp + 0x1c]
+00490c21  pop edi
+00490c22  pop esi
+00490c23  pop ebp
+00490c24  mov dword ptr fs:[0], ecx
+00490c2b  pop ebx
+00490c2c  add esp, 0x18
+00490c2f  ret 
+== 00490af0 320 bytes unit=RBX::VHumanoid::?$FactoryProduct::Creator
+00490af0  push -1
+00490af2  mov eax, dword ptr fs:[0]
+00490af8  push 0x7d9168  ; fn_007d9168 [unit? seg_007d0000]
+00490afd  push eax
+00490afe  mov dword ptr fs:[0], esp
+00490b05  sub esp, 0xc
+00490b08  push ebx
+00490b09  push ebp
+00490b0a  push esi
+00490b0b  push edi
+00490b0c  push 0x96fbf0
+00490b11  push 0x48ad60  ; fn_0048ad60 [unit? RBX::Network::P8Player::?$GetSetImpl]
+00490b16  mov ebx, ecx
+00490b18  call 0x557330  ; fn_00557330 [unit? RBX::VRunService::?$SignalDesc]
+00490b1d  add esp, 8
+00490b20  call 0x48a460  ; fn_0048a460 [unit? G3D::GWindow]
+00490b25  mov ecx, dword ptr [ebx + 0x1a0]
+00490b2b  sub ecx, dword ptr [ebx + 0x19c]
+00490b31  mov ebp, dword ptr [0x802890]  ; MSVCR90.dll!_invalid_parameter_noinfo
+00490b37  lea esi, [ebx + 0x190]
+00490b3d  mov edi, eax
+00490b3f  lea eax, [edi + 1]
+00490b42  sar ecx, 3
+00490b45  cmp eax, ecx
+00490b47  jbe 0x490b69
+00490b49  sub esp, 8
+00490b4c  mov ecx, esp
+00490b4e  mov dword ptr [ecx], 0
+00490b54  mov dword ptr [esp + 0x18], esp
+00490b58  mov dword ptr [ecx + 4], 0
+00490b5f  push eax
+00490b60  mov ecx, esi
+00490b62  call 0x4124c0  ; fn_004124c0 [unit? CChatPrompt]
+00490b67  jmp 0x490b86
+00490b69  mov edx, dword ptr [esi + 0x10]
+00490b6c  sub edx, dword ptr [esi + 0xc]
+00490b6f  sar edx, 3
+00490b72  cmp edi, edx
+00490b74  jb 0x490b78
+00490b76  call ebp
+00490b78  mov eax, dword ptr [esi + 0xc]
+00490b7b  mov eax, dword ptr [eax + edi*8]
+00490b7e  test eax, eax
+00490b80  jne 0x490c1d
+00490b86  push 0x96fbac
+00490b8b  push 0x48aa70  ; fn_0048aa70 [unit? RBX::Network::VPlayer::?$FactoryProduct]
+00490b90  call 0x557330  ; fn_00557330 [unit? RBX::VRunService::?$SignalDesc]
+00490b95  add esp, 8
+00490b98  call 0x489c30  ; fn_00489c30 [unit? G3D::GWindow]
+00490b9d  push eax
+00490b9e  lea ecx, [esp + 0x18]
+00490ba2  push ecx
+00490ba3  mov ecx, ebx
+00490ba5  call 0x572a90  ; fn_00572a90 [unit? RBX::ServiceProvider]
+00490baa  mov ecx, dword ptr [esp + 0x14]
+00490bae  mov dword ptr [esp + 0x24], 0
+00490bb6  test ecx, ecx
+00490bb8  jne 0x490be0
+00490bba  lea ecx, [esp + 0x14]
+00490bbe  mov dword ptr [esp + 0x24], 0xffffffff
+00490bc6  call 0x600660  ; fn_00600660 [unit? RBX::VTool::?$BoundPropGetSet]
+00490bcb  xor eax, eax
+00490bcd  mov ecx, dword ptr [esp + 0x1c]
+00490bd1  mov dword ptr fs:[0], ecx
+00490bd8  pop edi
+00490bd9  pop esi
+00490bda  pop ebp
+00490bdb  pop ebx
+00490bdc  add esp, 0x18
+00490bdf  ret 
+00490be0  mov edx, dword ptr [esi + 0x10]
+00490be3  sub edx, dword ptr [esi + 0xc]
+00490be6  mov ebx, ecx
+00490be8  sar edx, 3
+00490beb  cmp edi, edx
+00490bed  jb 0x490bf5
+00490bef  call ebp
+00490bf1  mov ecx, dword ptr [esp + 0x14]
+00490bf5  mov eax, dword ptr [esi + 0xc]
+00490bf8  lea eax, [eax + edi*8]
+00490bfb  mov dword ptr [eax], ecx
+00490bfd  lea ecx, [esp + 0x18]
+00490c01  push ecx
+00490c02  lea ecx, [eax + 4]
+00490c05  call 0x4025b0  ; fn_004025b0 [unit? std::bad_alloc]
+00490c0a  lea ecx, [esp + 0x14]
+00490c0e  mov dword ptr [esp + 0x24], 0xffffffff
+00490c16  call 0x600660  ; fn_00600660 [unit? RBX::VTool::?$BoundPropGetSet]
+00490c1b  mov eax, ebx
+00490c1d  mov ecx, dword ptr [esp + 0x1c]
+00490c21  pop edi
+00490c22  pop esi
+00490c23  pop ebp
+00490c24  mov dword ptr fs:[0], ecx
+00490c2b  pop ebx
+00490c2c  add esp, 0x18
+00490c2f  ret 

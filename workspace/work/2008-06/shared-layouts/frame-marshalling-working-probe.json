@@ -1,0 +1,469 @@
+{
+  "revision": "3bbbc0103ae9550daf83a7d9edf645c9dc08e094",
+  "sources": {
+    "rebuild\\2008-06\\tests\\record_native_frame_marshalling.py": "7a28f388fd52f331941212fd46e2448dd031a967d79a19034c87374f34302c4e",
+    "rebuild\\2008-06\\native-classes\\CMarshalWindow.cpp": "7bada83a8026fbbdda0afe84aebc5c6eea810302449c4c0400b171a493d72652",
+    "rebuild\\2008-06\\native-classes\\CSelectionCaption.cpp": "cae44d0b3b2ad07459b7cec4bc05bcbf9eebac7e7be6c8b264e57c8fee509077",
+    "rebuild\\2008-06\\native-classes\\MarshalWindowRegistry.cpp": "843e1ee99249b1cb02b6a586ebdc63fe3f47a25fb6b23003f6286a5c8ccce640",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\SelectionChanged.h": "ae66d7f6c8ce0180c63277667b058e2411918fcdcea6be3747099872b816aab7",
+    "rebuild\\2008-06\\native-headers\\util\\MarshalWindow.h": "dc5a302f6eba7575374a7dc38691d4cea32d7298cdb9844eab00e271f43074d8",
+    "rebuild\\2008-06\\native-headers\\util\\MarshaledListener.h": "2b436ed3971a8b55ed7a7ed94a476942d3cd11259b9c4c0c1b5bed3d0f284933",
+    "rebuild\\2008-06\\native-headers\\util\\EventDataBase.h": "36ade94ab2c1c538faef3a0ba7ac0a4ad74eb8e48e0be59d9f58f64128a2893e",
+    "rebuild\\2008-06\\native-headers\\CSelectionCaption.h": "42dc72d083e2c180e2feda924479a6e28d63a84fe3e4f97cbe4cad41e15038e3",
+    "rebuild\\2008-06\\native-headers\\ActiveDocView.h": "e30143470935d4675ddd3f8dd64806618dc363502f1fe1d67714d6083eeed393",
+    "rebuild\\2008-06\\tests\\NativeMarshalWindowLayout.cpp": "9aeca45c86aee14894eb64c7d033d725159f5cc0efe5667d70f62f745955a9a2",
+    "rebuild\\2008-06\\tests\\NativeMarshaledListener.cpp": "9a4ed94202a0f89efeb74cf9b971aedd80cc2ec83b58b15412cdb1064a19e915",
+    "rebuild\\2008-06\\tests\\NativeSelectionCaptionLayout.cpp": "f80a2a121c352b74d26f4dcd3a14fb9428e369e92e97a7be85e04d17fefb92cc"
+  },
+  "compiler_build": 21022,
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DBOOST_ALL_NO_LIB",
+    "/D_XTP_STATICLINK",
+    "/D_XTPLIB_NOAUTOLINK",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+  ],
+  "methods": [
+    {
+      "address": "00432c50",
+      "symbol": "??0CMarshalWindow@RBX@@QAE@K@Z",
+      "size": 140,
+      "target_size": 140,
+      "object": "NativeMarshalWindow.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00432950",
+      "symbol": "?post@CMarshalWindow@RBX@@QAEXPAVEventDataBase@2@@Z",
+      "size": 25,
+      "target_size": 25,
+      "object": "NativeMarshalWindow.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "004328c0",
+      "symbol": "??0CCriticalSection@ATL@@QAE@XZ",
+      "size": 113,
+      "target_size": 113,
+      "object": "NativeMarshalWindow.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00432a70",
+      "symbol": "?OnFinalMessage@CMarshalWindow@RBX@@UAEXPAUHWND__@@@Z",
+      "size": 22,
+      "target_size": 22,
+      "object": "NativeMarshalWindow.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00432970",
+      "symbol": "?OnDestroy@CMarshalWindow@RBX@@QAEJIIJAAH@Z",
+      "size": 179,
+      "target_size": 179,
+      "object": "NativeMarshalWindow.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00432a90",
+      "symbol": "?ProcessWindowMessage@CMarshalWindow@RBX@@UAEHPAUHWND__@@IIJAAJK@Z",
+      "size": 122,
+      "target_size": 122,
+      "object": "NativeMarshalWindow.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "0041a400",
+      "symbol": "?GetWindowProc@?$CWindowImplBaseT@VCWindow@ATL@@V?$CWinTraits@$0FGAAAAAA@$0A@@2@@ATL@@UAEP6GJPAUHWND__@@IIJ@ZXZ",
+      "size": 6,
+      "target_size": 6,
+      "object": "NativeMarshalWindow.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00432b50",
+      "symbol": "?Create@?$CWindowImpl@VCMarshalWindow@RBX@@VCWindow@ATL@@V?$CWinTraits@$0FGAAAAAA@$0A@@4@@ATL@@QAEPAUHWND__@@PAU3@V_U_RECT@2@PBDKKV_U_MENUorID@2@PAX@Z",
+      "size": 119,
+      "target_size": 119,
+      "object": "NativeMarshalWindow.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00432b10",
+      "symbol": "??_GCMarshalWindow@RBX@@UAEPAXI@Z",
+      "size": 54,
+      "target_size": 54,
+      "object": "NativeMarshalWindow.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "004661e0",
+      "symbol": "??0?$MarshaledListener@VSelection@RBX@@VSelectionChanged@2@V12@V32@@RBX@@QAE@XZ",
+      "size": 118,
+      "target_size": 118,
+      "object": "NativeMarshaledListener.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "004663c0",
+      "symbol": "??1?$MarshaledListener@VSelection@RBX@@VSelectionChanged@2@V12@V32@@RBX@@UAE@XZ",
+      "size": 113,
+      "target_size": 113,
+      "object": "NativeMarshaledListener.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "004211b0",
+      "symbol": "?onEvent@?$MarshaledListener@VSelection@RBX@@VSelectionChanged@2@V12@V32@@RBX@@UAEXPBVSelection@2@VSelectionChanged@2@@Z",
+      "size": 130,
+      "target_size": 130,
+      "object": "NativeMarshaledListener.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00466440",
+      "symbol": "?marshal@?$MarshaledListener@VSelection@RBX@@VSelectionChanged@2@V12@V32@@RBX@@UAEXPBVSelection@2@VSelectionChanged@2@@Z",
+      "size": 155,
+      "target_size": 155,
+      "object": "NativeMarshaledListener.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "004574b0",
+      "symbol": "?remove@?$MarshaledListener@VSelection@RBX@@VSelectionChanged@2@V12@V32@@RBX@@QAEXPAVEventData@12@@Z",
+      "size": 211,
+      "target_size": 211,
+      "object": "NativeMarshaledListener.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00457710",
+      "symbol": "?detach@?$MarshaledListener@VSelection@RBX@@VSelectionChanged@2@V12@V32@@RBX@@QAEXXZ",
+      "size": 208,
+      "target_size": 208,
+      "object": "NativeMarshaledListener.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00466700",
+      "symbol": "?marshal@?$FilteredListener@VSelection@RBX@@VSelectionChanged@2@V12@V32@@RBX@@UAEXPBVSelection@2@VSelectionChanged@2@@Z",
+      "size": 370,
+      "target_size": 370,
+      "object": "NativeMarshaledListener.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00466260",
+      "symbol": "??0EventData@?$MarshaledListener@VSelection@RBX@@VSelectionChanged@2@V12@V32@@RBX@@QAE@PAV12@PBVSelection@2@VSelectionChanged@2@@Z",
+      "size": 168,
+      "target_size": 168,
+      "object": "NativeMarshaledListener.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00466310",
+      "symbol": "??1EventData@?$MarshaledListener@VSelection@RBX@@VSelectionChanged@2@V12@V32@@RBX@@UAE@XZ",
+      "size": 142,
+      "target_size": 142,
+      "object": "NativeMarshaledListener.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00421530",
+      "symbol": "?execute@EventData@?$MarshaledListener@VSelection@RBX@@VSelectionChanged@2@V12@V32@@RBX@@UAEXXZ",
+      "size": 170,
+      "target_size": 170,
+      "object": "NativeMarshaledListener.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "004571d0",
+      "symbol": "?setSource@EventData@?$MarshaledListener@VSelection@RBX@@VSelectionChanged@2@V12@V32@@RBX@@QAEXPBVSelection@3@@Z",
+      "size": 146,
+      "target_size": 146,
+      "object": "NativeMarshaledListener.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00421110",
+      "symbol": "??_GEventDataBase@RBX@@UAEPAXI@Z",
+      "size": 31,
+      "target_size": 31,
+      "object": "NativeMarshaledListener.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00422c60",
+      "symbol": "??1SelectionChanged@RBX@@QAE@XZ",
+      "size": 161,
+      "target_size": 161,
+      "object": "NativeMarshaledListener.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00432ce0",
+      "symbol": "?acquireMarshalWindow@RBX@@YAPAVCMarshalWindow@1@XZ",
+      "size": 305,
+      "target_size": 305,
+      "object": "NativeMarshalWindowRegistry.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00432bd0",
+      "symbol": "?releaseMarshalWindow@RBX@@YAXPAVCMarshalWindow@1@@Z",
+      "size": 118,
+      "target_size": 118,
+      "object": "NativeMarshalWindowRegistry.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00466880",
+      "symbol": "??0CSelectionCaption@@QAE@XZ",
+      "size": 150,
+      "target_size": 150,
+      "object": "NativeSelectionCaption.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00465de0",
+      "symbol": "?GetRuntimeClass@CSelectionCaption@@UBEPAUCRuntimeClass@@XZ",
+      "size": 6,
+      "target_size": 6,
+      "object": "NativeSelectionCaption.obj",
+      "relocation_masked_match": true
+    },
+    {
+      "address": "00466670",
+      "symbol": "?filter@CSelectionCaption@@UAE_NPBVSelection@RBX@@ABVSelectionChanged@3@01@Z",
+      "size": 5,
+      "target_size": 5,
+      "object": "NativeSelectionCaption.obj",
+      "relocation_masked_match": true
+    }
+  ],
+  "verified_bindings": [
+    {
+      "caller": "004661e0",
+      "offset": 92,
+      "symbol": "?acquireMarshalWindow@RBX@@YAPAVCMarshalWindow@1@XZ",
+      "target": "0x432ce0"
+    },
+    {
+      "caller": "004663c0",
+      "offset": 43,
+      "symbol": "?detach@?$MarshaledListener@VSelection@RBX@@VSelectionChanged@2@V12@V32@@RBX@@QAEXXZ",
+      "target": "0x457710"
+    },
+    {
+      "caller": "004663c0",
+      "offset": 52,
+      "symbol": "?releaseMarshalWindow@RBX@@YAXPAVCMarshalWindow@1@@Z",
+      "target": "0x432bd0"
+    },
+    {
+      "caller": "004211b0",
+      "offset": 120,
+      "symbol": "??1SelectionChanged@RBX@@QAE@XZ",
+      "target": "0x422c60"
+    },
+    {
+      "caller": "00466440",
+      "offset": 104,
+      "symbol": "??0EventData@?$MarshaledListener@VSelection@RBX@@VSelectionChanged@2@V12@V32@@RBX@@QAE@PAV12@PBVSelection@2@VSelectionChanged@2@@Z",
+      "target": "0x466260"
+    },
+    {
+      "caller": "00466440",
+      "offset": 136,
+      "symbol": "?post@CMarshalWindow@RBX@@QAEXPAVEventDataBase@2@@Z",
+      "target": "0x432950"
+    },
+    {
+      "caller": "00466440",
+      "offset": 145,
+      "symbol": "??1SelectionChanged@RBX@@QAE@XZ",
+      "target": "0x422c60"
+    },
+    {
+      "caller": "00466700",
+      "offset": 236,
+      "symbol": "?setSource@EventData@?$MarshaledListener@VSelection@RBX@@VSelectionChanged@2@V12@V32@@RBX@@QAEXPBVSelection@3@@Z",
+      "target": "0x4571d0"
+    },
+    {
+      "caller": "00466700",
+      "offset": 245,
+      "symbol": "??1SelectionChanged@RBX@@QAE@XZ",
+      "target": "0x422c60"
+    },
+    {
+      "caller": "00466700",
+      "offset": 349,
+      "symbol": "?marshal@?$MarshaledListener@VSelection@RBX@@VSelectionChanged@2@V12@V32@@RBX@@UAEXPBVSelection@2@VSelectionChanged@2@@Z",
+      "target": "0x466440"
+    },
+    {
+      "caller": "00466700",
+      "offset": 358,
+      "symbol": "??1SelectionChanged@RBX@@QAE@XZ",
+      "target": "0x422c60"
+    },
+    {
+      "caller": "00466260",
+      "offset": 127,
+      "symbol": "?setSource@EventData@?$MarshaledListener@VSelection@RBX@@VSelectionChanged@2@V12@V32@@RBX@@QAEXPBVSelection@3@@Z",
+      "target": "0x4571d0"
+    },
+    {
+      "caller": "00466260",
+      "offset": 144,
+      "symbol": "??1SelectionChanged@RBX@@QAE@XZ",
+      "target": "0x422c60"
+    },
+    {
+      "caller": "00466310",
+      "offset": 53,
+      "symbol": "?remove@?$MarshaledListener@VSelection@RBX@@VSelectionChanged@2@V12@V32@@RBX@@QAEXPAVEventData@12@@Z",
+      "target": "0x4574b0"
+    },
+    {
+      "caller": "00466310",
+      "offset": 61,
+      "symbol": "??1SelectionChanged@RBX@@QAE@XZ",
+      "target": "0x422c60"
+    },
+    {
+      "caller": "00421530",
+      "offset": 54,
+      "symbol": "?remove@?$MarshaledListener@VSelection@RBX@@VSelectionChanged@2@V12@V32@@RBX@@QAEXPAVEventData@12@@Z",
+      "target": "0x4574b0"
+    },
+    {
+      "caller": "00432ce0",
+      "offset": 29,
+      "symbol": "?marshalRegistryLock@RBX@@3VCCriticalSection@ATL@@A",
+      "storage": "0x96d17c"
+    },
+    {
+      "caller": "00432ce0",
+      "offset": 37,
+      "symbol": "?marshalRegistryLock@RBX@@3VCCriticalSection@ATL@@A",
+      "storage": "0x96d17c"
+    },
+    {
+      "caller": "00432ce0",
+      "offset": 79,
+      "symbol": "?marshalWindows@RBX@@3V?$map@KPAVCMarshalWindow@RBX@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVCMarshalWindow@RBX@@@std@@@4@@std@@A",
+      "storage": "0x96d15c"
+    },
+    {
+      "caller": "00432ce0",
+      "offset": 88,
+      "symbol": "?find@?$_Tree@V?$_Tmap_traits@KPAVCMarshalWindow@RBX@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVCMarshalWindow@RBX@@@std@@@4@$0A@@std@@@std@@QAE?AViterator@12@ABK@Z",
+      "target": "0x451600"
+    },
+    {
+      "caller": "00432ce0",
+      "offset": 98,
+      "symbol": "?marshalWindows@RBX@@3V?$map@KPAVCMarshalWindow@RBX@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVCMarshalWindow@RBX@@@std@@@4@@std@@A",
+      "storage": "0x96d15c"
+    },
+    {
+      "caller": "00432ce0",
+      "offset": 108,
+      "symbol": "?marshalWindows@RBX@@3V?$map@KPAVCMarshalWindow@RBX@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVCMarshalWindow@RBX@@@std@@@4@@std@@A",
+      "storage": "0x96d15c"
+    },
+    {
+      "caller": "00432ce0",
+      "offset": 172,
+      "symbol": "?marshalRegistryLock@RBX@@3VCCriticalSection@ATL@@A",
+      "storage": "0x96d17c"
+    },
+    {
+      "caller": "00432ce0",
+      "offset": 238,
+      "symbol": "??0CMarshalWindow@RBX@@QAE@K@Z",
+      "target": "0x432c50"
+    },
+    {
+      "caller": "00432ce0",
+      "offset": 254,
+      "symbol": "?marshalWindows@RBX@@3V?$map@KPAVCMarshalWindow@RBX@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVCMarshalWindow@RBX@@@std@@@4@@std@@A",
+      "storage": "0x96d15c"
+    },
+    {
+      "caller": "00432ce0",
+      "offset": 264,
+      "symbol": "??A?$map@KPAVCMarshalWindow@RBX@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVCMarshalWindow@RBX@@@std@@@4@@std@@QAEAAPAVCMarshalWindow@RBX@@ABK@Z",
+      "target": "0x5644a0"
+    },
+    {
+      "caller": "00432ce0",
+      "offset": 274,
+      "symbol": "?marshalRegistryLock@RBX@@3VCCriticalSection@ATL@@A",
+      "storage": "0x96d17c"
+    },
+    {
+      "caller": "00432bd0",
+      "offset": 26,
+      "symbol": "?marshalRegistryLock@RBX@@3VCCriticalSection@ATL@@A",
+      "storage": "0x96d17c"
+    },
+    {
+      "caller": "00432bd0",
+      "offset": 34,
+      "symbol": "?marshalRegistryLock@RBX@@3VCCriticalSection@ATL@@A",
+      "storage": "0x96d17c"
+    },
+    {
+      "caller": "00432bd0",
+      "offset": 72,
+      "symbol": "?marshalWindows@RBX@@3V?$map@KPAVCMarshalWindow@RBX@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVCMarshalWindow@RBX@@@std@@@4@@std@@A",
+      "storage": "0x96d15c"
+    },
+    {
+      "caller": "00432bd0",
+      "offset": 77,
+      "symbol": "?erase@?$_Tree@V?$_Tmap_traits@KPAVCMarshalWindow@RBX@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVCMarshalWindow@RBX@@@std@@@4@$0A@@std@@@std@@QAEIABK@Z",
+      "target": "0x405ce0"
+    },
+    {
+      "caller": "00432bd0",
+      "offset": 92,
+      "symbol": "?marshalRegistryLock@RBX@@3VCCriticalSection@ATL@@A",
+      "storage": "0x96d17c"
+    }
+  ],
+  "layouts": {
+    "CMarshalWindow": 68,
+    "EventDataBase": 4,
+    "EventData": 32,
+    "MarshaledListener": 36,
+    "FilteredListener": 36,
+    "CSelectionCaption": 456
+  },
+  "scope": "Inactive recovery. Typed lifecycle/dispatch/queue/filter and window-registry recovery. Old EventDataBase 0xc/weak-pointer hypothesis disproven by destructor 00421110; source strong owner is in derived EventData. All selected bodies match: correcting EventDataBase lifetime also resolves OnDestroy, and exposing the real remove body resolves EventData destructor unwind states. Selected call/import/storage bindings verified separately. Global initialization, remaining data/virtual ABI and runtime integration remain open."
+}

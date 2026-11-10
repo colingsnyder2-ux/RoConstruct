@@ -1,0 +1,13 @@
+{
+  "batch": "RBX::CharacterAppearance / Clothing family",
+  "change": "Removed NATIVE_CLOTHING_PENDING guard around Clothing::apply and added PartInstance::outfitChanged declaration.",
+  "changed_files": [
+    "rebuild/2008-06/native-classes/Clothing.cpp",
+    "rebuild/2008-06/native-headers/v8datamodel/PartInstance.h"
+  ],
+  "verification": "rebuild/2008-06/tests/record_native_clothing.py PASS: 84 exact rows, 3 pending-only, 10 vtables.",
+  "package_revision": "1d8dc7a8d6ee2c6694f477361ba54ad661ce91c8f648dc9713f7a4bdf6bb4b54",
+  "workspace_manifest_source_revision": "1d8dc7a8d6ee2c6694f477361ba54ad661ce91c8f648dc9713f7a4bdf6bb4b54",
+  "baseline_commit": "unknown",
+  "status": "inactive draft; no active build, swap, runtime, or server credit"
+}

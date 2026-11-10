@@ -1,0 +1,49 @@
+{
+  "swap_target": "CRobloxDoc native diagnostic closure",
+  "baseline_commit": "e9bfe6671a60913f56cc7efc99de1b9045ede2ecfe9570327ad0a53f2f195188",
+  "baseline_receipt": "donor-compile.json; fresh local source baseline, NOT historical archive identity",
+  "session": "7345dd7a6b814709b861f45519aa9159",
+  "hypotheses": [
+    {
+      "name": "inline only donor load definition",
+      "status": "retained preservation passes; external removed-provider consumers pending"
+    }
+  ],
+  "metrics": {
+    "distinct_compiles": 3,
+    "native_exact_code_and_data": 1,
+    "native_size": 327,
+    "reviewed_direct_calls": 9,
+    "unresolved_indirect_calls": 4,
+    "retained_bodies": 737,
+    "removed_bodies_including_load_and_EH": 54,
+    "retained_data": 1044,
+    "removed_data": 19,
+    "retained_relocation_differences": 0,
+    "retained_body_differences": 0,
+    "retained_data_differences": 0,
+    "retained_to_removed_edges": 0,
+    "selected_exacts": null,
+    "gated_swaps": 0,
+    "server_credit": 0
+  },
+  "blockers": [
+    {
+      "provider": "donor ContentProvider::load ownership",
+      "status": "proposal only",
+      "next_proof": "Parent new snapshot: verify baseline object against actual member; audit all removed provider external consumers; preserve/provide each before archive replacement; compare other members and selected map."
+    },
+    {
+      "provider": "native load calls",
+      "status": "9 direct calls verified; --require-proof fails four indirect calls at offsets 59,126,287,301",
+      "next_proof": "IAT string ctor/dtor and virtual stream deleting-destructor ABI proof; no runner weakening."
+    }
+  ],
+  "next_gate": "Parent source-built current archive replacement + serialized closure; no activation",
+  "hashes": {
+    "rebuild\\2008-06\\native-classes\\ContentProviderLoad.cpp": "c737315a53bbba70c7b744bcd494bafadbce67a36350692a93f9adedd2579aab",
+    "tools\\rbxgs\\Client\\App\\util\\ContentProvider.cpp": "2191e0e1e7062bb90a7ffe96b38a62e423a8d517df83e0b1f0001f7dc54c9f64",
+    "work\\native-candidates\\sol-content-20261105\\baseline.cpp": "9cc71bc7819aacea2667f0fc35fa9156cb2c95935c64e89f924a3d3020f77c45",
+    "work\\native-candidates\\sol-content-20261105\\inline.cpp": "eb1c6276a65e6eb1b6503829a21311e406fdbea76c2072a1eee5c38c65da43ba"
+  }
+}

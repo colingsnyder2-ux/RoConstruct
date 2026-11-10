@@ -1,0 +1,16 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/CSelectionTreeCtrl.cpp",
+      "checks": [
+        {"addr": "00423510", "symbol": "?SelectAllIgnore@CSelectionTreeCtrl@@"},
+        {"addr": "00425810", "symbol": "?onEvent@CSelectionTreeCtrl@@"},
+        {"addr": "00426680", "symbol": "?rebuild@CSelectionTreeCtrl@@"},
+        {"addr": "004271e0", "symbol": "?update@CSelectionTreeCtrl@@"},
+        {"addr": "004228d0", "symbol": "?OnButtonDown@CSelectionTreeCtrl@@"},
+        {"addr": "00422900", "symbol": "?DoAction@CSelectionTreeCtrl@@"},
+        {"addr": "00422950", "symbol": "?UpdateSelectionForRect@CSelectionTreeCtrl@@"}
+      ]
+    }
+  ]
+}

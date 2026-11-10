@@ -1,0 +1,20 @@
+{
+  "revision": "c241e32733ba1e8a39a782511b90364cd0274c7d",
+  "exe_sha256": "9aa64feb189d054d8ec7021b54c24b528ccac20e8cf8e3c31780d2aeaa798c38",
+  "map_sha256": "a19c457a513f254c82e2487eccb89deec52133cfa1a4569b92d902df50d4642b",
+  "engine_report_sha256": "a7f8549d5f2b222efd5a6ec9c1efc831d7e2ffc825ac3ce5bc810fadc51bcf74",
+  "engine_linked": true,
+  "engine_test_exit": 0,
+  "stage_providers": [
+    "0001:00080d90       ?insertJob@SimJobStage@RBX@@QAEXPAVSimJob@2@@Z 00481d90 f   linked:SimJobStage.obj",
+    "0001:00080e00       ?removeJob@SimJobStage@RBX@@QAEXPAVSimJob@2@@Z 00481e00 f   linked:SimJobStage.obj"
+  ],
+  "source_addresses": [
+    "004cb480",
+    "0064d0f0",
+    "0064d180",
+    "005e53a0"
+  ],
+  "scope": "Stage list and tracker lifecycle adapted into donor grouping. Native assembly binding and native no-physics state remain incomplete.",
+  "P5_complete": false
+}

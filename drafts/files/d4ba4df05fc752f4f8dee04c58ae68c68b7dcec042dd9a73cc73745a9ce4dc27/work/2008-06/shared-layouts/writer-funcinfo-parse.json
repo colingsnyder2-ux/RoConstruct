@@ -1,0 +1,8 @@
+{
+  "swap_target": "Workspace (CWorkspace::write 0046b860)",
+  "funcinfo": {"addr": "0x8db774", "magic": "0x19930522", "max_state": 2, "unwind_map": "0x8db764", "try_count": 0, "try_map": "0x0", "raw": "22059319 02000000 64b78d00 00000000 00000000", "unwind_raw": "ffffffff00000000 ffffffff e0397c00"},
+  "candidate": "run 20261105-181745-1c214fc4: max_state 1 (mov [esp+0x58],0), original 2 (mov 1)",
+  "interpretation": "Original has 2 unwind states, 0 TRY blocks; second state entry is empty/unreachable (unwind (-1,0) entries). No second protected object identified from FuncInfo alone.",
+  "next_proof": "Need original TU source construct for empty unwind state; do not repeat prior variant sweeps.",
+  "status": "parked"
+}

@@ -1,0 +1,6 @@
+{
+  "swap_target": "Selection runnable integration (ServiceSelection)",
+  "find": {"run": "work/2008-06/native-check-runs/20261105-195221-26e2b23a", "addr": "folded 5B", "size": 5, "symbol": "template ServiceProvider::find<Selection> (folded)", "result": "revoke/forgettable: only 5B aliases, no distinct exact to claim. Did not claim."},
+  "next_gate": "CWorkspace::insert 0046b9d0 catch rethrow (86%, parked), write EH empty-state (parked), Content closure, NullTool headers, Body getter COMDAT (parked), Initialize compiler (parked), updateCaption 00465e40 (86% parked)",
+  "metrics": {"inactive_exact": 75, "selected_exact": "unknown", "gated_swaps": 0, "server_credit": 0}
+}

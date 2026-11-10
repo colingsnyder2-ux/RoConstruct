@@ -1,0 +1,27 @@
+00500d80  d9442408             fld dword ptr [esp + 8]
+00500d84  8b442414             mov eax, dword ptr [esp + 0x14]
+00500d88  d905ac9b8100         fld dword ptr [0x819bac]
+00500d8e  8b542404             mov edx, dword ptr [esp + 4]
+00500d92  dcc9                 fmul st(1), st(0)
+00500d94  56                   push esi
+00500d95  8bf1                 mov esi, ecx
+00500d97  d9c9                 fxch st(1)
+00500d99  c706c8708200         mov dword ptr [esi], 0x8270c8
+00500d9f  d95e04               fstp dword ptr [esi + 4]
+00500da2  8d4e14               lea ecx, [esi + 0x14]
+00500da5  d9442410             fld dword ptr [esp + 0x10]
+00500da9  d8c9                 fmul st(1)
+00500dab  d95e08               fstp dword ptr [esi + 8]
+00500dae  d84c2414             fmul dword ptr [esp + 0x14]
+00500db2  d95e0c               fstp dword ptr [esi + 0xc]
+00500db5  894610               mov dword ptr [esi + 0x10], eax
+00500db8  c70100000000         mov dword ptr [ecx], 0
+00500dbe  8b02                 mov eax, dword ptr [edx]
+00500dc0  50                   push eax
+00500dc1  e8da810900           call 0x598fa0
+00500dc6  d90534c48100         fld dword ptr [0x81c434]
+00500dcc  d95618               fst dword ptr [esi + 0x18]
+00500dcf  8bc6                 mov eax, esi
+00500dd1  d95e1c               fstp dword ptr [esi + 0x1c]
+00500dd4  5e                   pop esi
+00500dd5  c21400               ret 0x14

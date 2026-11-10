@@ -1,0 +1,7 @@
+{
+  "swap_target": "Workspace/DataModel runnable integration (DataModel flags)",
+  "dutyCycle": {"run": "work/2008-06/native-check-runs/20261105-185205-9f08a0c2", "addr": "005757f0", "size": 35, "symbol": "?getDutyCycle@DataModel@RBX@@QBENXZ", "target_sha256": "aef7cf8b73fccf8d02f5af1bf6dd68df7129a960cb61b4437f078057153379ff", "source_sha256": "f952e7cd6e75cb73bae382de7e0b8d9d1f5472b402bf87881a8cef44cfc70ee9", "object_sha256": "924fa202f341106ae62eec76b3e28b2ae23e7aef0ac8c2debe5df3b7e807a075", "result": "exact bytes+data 100%"},
+  "className": "DataModelClassName.cpp (sDataModel Data only, no code function to check; data descriptor remains)",
+  "next_gate": "CWorkspace::insert 0046b9d0 catch rethrow (86%, parked), write EH empty-state (parked), Content closure, NullTool headers, Part provider, Initialize compiler (parked)",
+  "metrics": {"inactive_exact": 28, "selected_exact": "unknown", "gated_swaps": 0, "server_credit": 0}
+}

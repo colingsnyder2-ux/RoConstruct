@@ -1,0 +1,10 @@
+{
+  "session": "d607f93b4e734920be2b7c0e887a9d9b",
+  "baseline_commit": "e9bfe6671a60913f56cc7efc99de1b9045ede2ecfe9570327ad0a53f2f195188",
+  "change": "Forward-declare genuine RBX::Network::Players for shared_ptr member; no storage, body or ABI changes",
+  "source_sha256": "333c8d3ff96cead60828bf88ac92febac6a82a0fcb5a8590c44f581fbeaea7c4",
+  "declaration_evidence": "rebuild\\2008-06\\native-headers\\Network\\Players.h",
+  "validation": "Only forward declaration added; guarded diagnostic compile next",
+  "activation": false,
+  "server_credit": 0
+}

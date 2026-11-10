@@ -1,0 +1,9 @@
+{
+  "swap_target": "Instance runnable integration (Instance XML write)",
+  "run": "work/2008-06/native-check-runs/20261105-190257-dd8af786",
+  "checks": "2/2 exact bytes+data, score 100",
+  "write": {"addr": "00558c50", "size": 314, "symbol": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ", "target_sha256": "2d5e46742d51506a4c97dd319d75872caa66fdb1bcaa337fa7086fccd90f0c8c", "source_sha256": "969415d2126dbef0bbf4629fd9b00ca6aa7f5123af6d394f6cd5ca11f4272f0a", "object_sha256": "76bf772892cbab131fa204ca7e95016786bc7525eb1ff6b3c688bfd7b6279ec0"},
+  "writeChildren": {"addr": "00558110", "size": 160, "symbol": "?writeChildren@Instance@RBX@@QAEXPAVXmlElement@@@Z", "target_sha256": "98355986750aefdd9acdbe8cf829fc1661e0250cb3fdec87af82d64be1229d13", "source_sha256": "969415d2126dbef0bbf4629fd9b00ca6aa7f5123af6d394f6cd5ca11f4272f0a", "object_sha256": "76bf772892cbab131fa204ca7e95016786bc7525eb1ff6b3c688bfd7b6279ec0"},
+  "next_gate": "CWorkspace::insert 0046b9d0 catch rethrow (86%, parked), write EH empty-state (parked), Content closure, NullTool headers, Part provider, Initialize compiler (parked)",
+  "metrics": {"inactive_exact": 39, "selected_exact": "unknown", "gated_swaps": 0, "server_credit": 0}
+}

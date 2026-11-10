@@ -1,0 +1,889 @@
+{
+  "class": "CRobloxTreeCtrl (+ CRobloxTreeCtrlNode)",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/UNOMINMAX",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\xtp-11.2.2\\Source",
+    "/D_XTP_STATICLINK"
+  ],
+  "profile": "noinline std::string::c_str (imported)",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_roblox_tree_ctrl.py": "dfbb09ba771f9aad36b1974e81776a674fc7dd8a1a832398aeff0eaceca9ad84",
+    "rebuild/2008-06/native-classes/CRobloxTreeCtrl.cpp": "05413069090b3224940f40a6e60a090639ebfe7060e543ad5591c0fae387468e",
+    "rebuild/2008-06/native-headers/CRobloxTreeCtrl.h": "47f63efb1844fa92d4a838a6aa1d8ce24c410c246d5068799b38dba8f1b5ce0b",
+    "rebuild/2008-06/tests/NativeRobloxTreeCtrlLayout.cpp": "732ccde41a49a47dbc7a0a9132acfd4d427a84c1870ed2b00354c027bc46ecec"
+  },
+  "object_sha256": "5883c34039fd250c741370bf0241a0301027ddb0fcbbecb812a714a96984b225",
+  "methods": [
+    {
+      "address": "00422630",
+      "symbol": "?GetRuntimeClass@CRobloxTreeCtrl@@UBEPAUCRuntimeClass@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?classCRobloxTreeCtrl@CRobloxTreeCtrl@@2UCRuntimeClass@@B": "0x80fb20 (own)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004226a0",
+      "symbol": "?OnItemExpanded@CRobloxTreeCtrl@@QAEXPAUtagNMHDR@@PAJ@Z",
+      "size": 31,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "004226c0",
+      "symbol": "?OnGetDispInfo@CRobloxTreeCtrl@@QAEXPAUtagNMHDR@@PAJ@Z",
+      "size": 28,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00422b40",
+      "symbol": "?rebuild@CRobloxTreeCtrl@@UAEXXZ",
+      "size": 135,
+      "exact": true,
+      "verified_targets": {
+        "__imp__SendMessageA@16": "user32.dll!SendMessageA"
+      },
+      "local_eh": [
+        "__ehhandler$?rebuild@CRobloxTreeCtrl@@UAEXXZ"
+      ]
+    },
+    {
+      "address": "00422bd0",
+      "symbol": "?OnDeleteItem@CRobloxTreeCtrl@@QAEXPAUtagNMHDR@@PAJ@Z",
+      "size": 139,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": [
+        "__ehhandler$?OnDeleteItem@CRobloxTreeCtrl@@QAEXPAUtagNMHDR@@PAJ@Z"
+      ]
+    },
+    {
+      "address": "00422d10",
+      "symbol": "?OnDestroy@CRobloxTreeCtrl@@QAEXXZ",
+      "size": 136,
+      "exact": true,
+      "verified_targets": {
+        "?OnDestroy@CTreeCtrl@@QAEXXZ": "mfc90.dll!?OnDestroy@CTreeCtrl@@QAEXXZ",
+        "__imp__SendMessageA@16": "user32.dll!SendMessageA"
+      },
+      "local_eh": [
+        "__ehhandler$?OnDestroy@CRobloxTreeCtrl@@QAEXXZ"
+      ]
+    },
+    {
+      "address": "00422da0",
+      "symbol": "?OnCreate@CRobloxTreeCtrl@@QAEHPAUtagCREATESTRUCTA@@@Z",
+      "size": 103,
+      "exact": true,
+      "verified_targets": {
+        "?Default@CWnd@@IAEJXZ": "mfc90.dll!?Default@CWnd@@IAEJXZ",
+        "__imp__SendMessageA@16": "user32.dll!SendMessageA",
+        "?FromHandle@CImageList@@SGPAV1@PAU_IMAGELIST@@@Z": "mfc90.dll!?FromHandle@CImageList@@SGPAV1@PAU_IMAGELIST@@@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00422e10",
+      "symbol": "?PreCreateWindow@CRobloxTreeCtrl@@UAEHAAUtagCREATESTRUCTA@@@Z",
+      "size": 51,
+      "exact": true,
+      "verified_targets": {
+        "?PreCreateWindow@CWnd@@UAEHAAUtagCREATESTRUCTA@@@Z": "mfc90.dll!?PreCreateWindow@CWnd@@UAEHAAUtagCREATESTRUCTA@@@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00422e90",
+      "symbol": "?OnBeginLabelEdit@CRobloxTreeCtrl@@QAEXPAUtagNMHDR@@PAJ@Z",
+      "size": 57,
+      "exact": true,
+      "verified_targets": {
+        "__imp__SendMessageA@16": "user32.dll!SendMessageA",
+        "?FromHandle@CWnd@@SGPAV1@PAUHWND__@@@Z": "mfc90.dll!?FromHandle@CWnd@@SGPAV1@PAUHWND__@@@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00422ed0",
+      "symbol": "?OnPaint@CRobloxTreeCtrl@@QAEXXZ",
+      "size": 154,
+      "exact": true,
+      "verified_targets": {
+        "?Instance@CXTPColorManager@@CAAAV1@XZ": "0x6dfd40 (call site; pool name -)",
+        "?GetColor@CXTPColorManager@@QBEKH@Z": "0x6df520 (call site; pool name -)",
+        "?SetColor@CXTPColorManager@@QAEXHK@Z": "0x6df780 (call site; pool name -)",
+        "?OnPaint@CXTTreeCtrlBase@@IAEXXZ": "0x422a50 (call site; pool name -)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00422f70",
+      "symbol": "?OnKeyDown@CRobloxTreeCtrl@@QAEXIII@Z",
+      "size": 80,
+      "exact": true,
+      "verified_targets": {
+        "__imp__SendMessageA@16": "user32.dll!SendMessageA",
+        "?FromHandle@CWnd@@SGPAV1@PAUHWND__@@@Z": "mfc90.dll!?FromHandle@CWnd@@SGPAV1@PAUHWND__@@@Z",
+        "?OnKeyDown@CXTTreeBase@@IAEXIII@Z": "0x6de610 (call site; pool name -)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004232a0",
+      "symbol": "?OnEndLabelEdit@CRobloxTreeCtrl@@QAEXPAUtagNMHDR@@PAJ@Z",
+      "size": 292,
+      "exact": true,
+      "verified_targets": {
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40 (call site; pool name ??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0 (call site; pool name ??1Lock@DataModel@RBX@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$?OnEndLabelEdit@CRobloxTreeCtrl@@QAEXPAUtagNMHDR@@PAJ@Z"
+      ]
+    },
+    {
+      "address": "00424510",
+      "symbol": "??1CRobloxTreeCtrl@@UAE@XZ",
+      "size": 111,
+      "exact": true,
+      "verified_targets": {
+        "??1recursive_mutex@boost@@QAE@XZ": "0x594cb0 (call site; pool name -)",
+        "??1CClassImages@@UAE@XZ": "0x412f30 (call site; pool name -)",
+        "??1?$_Tree@V?$_Tmap_traits@PBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@U?$less@PBVInstance@RBX@@@std@@V?$allocator@U?$pair@QBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@@std@@@5@$0A@@std@@@std@@QAE@XZ": "0x553d80 (call site; pool name ??1?$_Tree@V?$_Tmap_traits@W4Number@BrickColor@RBX@@HU?$less@W4Number@BrickColor)",
+        "??1CXTTreeCtrl@@UAE@XZ": "0x6dbac0 (call site; pool name -)"
+      },
+      "local_eh": [
+        "__ehhandler$??1CRobloxTreeCtrl@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "00424580",
+      "symbol": "?queueChild@CRobloxTreeCtrlNode@@QAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+      "size": 127,
+      "exact": true,
+      "verified_targets": {
+        "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090 (call site; pool name -)",
+        "?insert@?$_Tree@V?$_Tset_traits@V?$shared_ptr@VInstance@RBX@@@boost@@U?$less@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@4@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tset_traits@V?$shared_ptr@VInstance@RBX@@@boost@@U?$less@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@4@$0A@@std@@@std@@_N@2@ABV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x424030 (call site; pool name ?insert@?$_Tree@V?$_Tset_traits@V?$WeakReferenceCountedPointer@VChunk@Render@RBX)",
+        "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x5630e0 (call site; pool name -)"
+      },
+      "local_eh": [
+        "__ehhandler$?queueChild@CRobloxTreeCtrlNode@@QAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z"
+      ]
+    },
+    {
+      "address": "00424900",
+      "symbol": "??1CRobloxTreeCtrlNode@@UAE@XZ",
+      "size": 466,
+      "exact": true,
+      "verified_targets": {
+        "??_7CRobloxTreeCtrlNode@@6B?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@": "0x80fc28 (own)",
+        "??_7CRobloxTreeCtrlNode@@6B?$Listener@VInstance@RBX@@UChildAdded@2@@RBX@@@": "0x80fc1c (own)",
+        "??_7CRobloxTreeCtrlNode@@6B?$Listener@VInstance@RBX@@UChildRemoved@2@@RBX@@@": "0x80fc10 (own)",
+        "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090 (call site; pool name -)",
+        "?erase@?$_Tree@V?$_Tmap_traits@PBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@U?$less@PBVInstance@RBX@@@std@@V?$allocator@U?$pair@QBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@@std@@@5@$0A@@std@@@std@@QAEIABQBVInstance@RBX@@@Z": "0x405ce0 (call site; pool name -)",
+        "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x5630e0 (call site; pool name -)",
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40 (call site; pool name ??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z)",
+        "?removeListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@QBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z": "0x5e5a80 (call site; pool name ?removeListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@QBEXPAV?$Listener@)",
+        "?removeListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@QBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z": "0x5e5a80 (call site; pool name ?removeListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@QBEXPAV?$Listener@)",
+        "?removeListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@QBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z": "0x5e5a80 (call site; pool name ?removeListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@QBEXPAV?$Listener@)",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0 (call site; pool name ??1Lock@DataModel@RBX@@QAE@XZ)",
+        "??1?$_Tree@V?$_Tset_traits@V?$shared_ptr@VInstance@RBX@@@boost@@U?$less@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@4@$0A@@std@@@std@@QAE@XZ": "0x4247c0 (call site; pool name -)",
+        "??1?$_Tree@V?$_Tset_traits@PAVCRobloxTreeCtrlNode@@U?$less@PAVCRobloxTreeCtrlNode@@@std@@V?$allocator@PAVCRobloxTreeCtrlNode@@@3@$0A@@std@@@std@@QAE@XZ": "0x64b230 (call site; pool name ??1?$_Tree@V?$_Tset_traits@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$)",
+        "??1?$_Tree@V?$_Tmap_traits@PBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@U?$less@PBVInstance@RBX@@@std@@V?$allocator@U?$pair@QBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@@std@@@5@$0A@@std@@@std@@QAE@XZ": "0x553d80 (call site; pool name ??1?$_Tree@V?$_Tmap_traits@W4Number@BrickColor@RBX@@HU?$less@W4Number@BrickColor)"
+      },
+      "local_eh": [
+        "__ehhandler$??1CRobloxTreeCtrlNode@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "00424ae0",
+      "symbol": "?onItemExpanded@CRobloxTreeCtrlNode@@UAEXI@Z",
+      "size": 105,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00424b50",
+      "symbol": "??_ECRobloxTreeCtrlNode@@W3AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_ECRobloxTreeCtrlNode@@UAEPAXI@Z": "0x426660 (own)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00424dd0",
+      "symbol": "?onEvent@CRobloxTreeCtrlNode@@MAEXPBVInstance@RBX@@VPropertyChanged@3@@Z",
+      "size": 224,
+      "exact": true,
+      "verified_targets": {
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40 (call site; pool name ??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z)",
+        "?desc_Name@Instance@RBX@@2V?$PropDescriptor@VInstance@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@2@B": "0x973d54 (call site; pool name -)",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0 (call site; pool name ??1Lock@DataModel@RBX@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$?onEvent@CRobloxTreeCtrlNode@@MAEXPBVInstance@RBX@@VPropertyChanged@3@@Z"
+      ]
+    },
+    {
+      "address": "00425450",
+      "symbol": "?onEvent@CRobloxTreeCtrlNode@@MAEXPBVInstance@RBX@@UChildAdded@3@@Z",
+      "size": 196,
+      "exact": true,
+      "verified_targets": {
+        "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090 (call site; pool name -)",
+        "?insert@?$_Tree@V?$_Tset_traits@V?$shared_ptr@VInstance@RBX@@@boost@@U?$less@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@4@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tset_traits@V?$shared_ptr@VInstance@RBX@@@boost@@U?$less@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@4@$0A@@std@@@std@@_N@2@ABV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x424030 (call site; pool name ?insert@?$_Tree@V?$_Tset_traits@V?$WeakReferenceCountedPointer@VChunk@Render@RBX)",
+        "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x5630e0 (call site; pool name -)"
+      },
+      "local_eh": [
+        "__ehhandler$?onEvent@CRobloxTreeCtrlNode@@MAEXPBVInstance@RBX@@UChildAdded@3@@Z"
+      ]
+    },
+    {
+      "address": "004256c0",
+      "symbol": "?onEvent@CRobloxTreeCtrlNode@@MAEXPBVInstance@RBX@@UChildRemoved@3@@Z",
+      "size": 332,
+      "exact": true,
+      "verified_targets": {
+        "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090 (call site; pool name -)",
+        "?erase@?$_Tree@V?$_Tmap_traits@PBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@U?$less@PBVInstance@RBX@@@std@@V?$allocator@U?$pair@QBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@@std@@@5@$0A@@std@@@std@@QAEIABQBVInstance@RBX@@@Z": "0x405ce0 (call site; pool name -)",
+        "?find@?$_Tree@V?$_Tmap_traits@PBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@U?$less@PBVInstance@RBX@@@std@@V?$allocator@U?$pair@QBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@ABQBVInstance@RBX@@@Z": "0x451600 (call site; pool name ?find@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@s)",
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "?insert@?$_Tree@V?$_Tset_traits@PAVCRobloxTreeCtrlNode@@U?$less@PAVCRobloxTreeCtrlNode@@@std@@V?$allocator@PAVCRobloxTreeCtrlNode@@@3@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tset_traits@PAVCRobloxTreeCtrlNode@@U?$less@PAVCRobloxTreeCtrlNode@@@std@@V?$allocator@PAVCRobloxTreeCtrlNode@@@3@$0A@@std@@@std@@_N@2@ABQAVCRobloxTreeCtrlNode@@@Z": "0x5e8c40 (call site; pool name ?insert@?$_Tree@V?$_Tset_traits@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std)",
+        "?erase@?$_Tree@V?$_Tset_traits@V?$shared_ptr@VInstance@RBX@@@boost@@U?$less@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@4@$0A@@std@@@std@@QAEIABV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x424830 (call site; pool name -)",
+        "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x5630e0 (call site; pool name -)"
+      },
+      "local_eh": [
+        "__ehhandler$?onEvent@CRobloxTreeCtrlNode@@MAEXPBVInstance@RBX@@UChildRemoved@3@@Z"
+      ]
+    },
+    {
+      "address": "00425b00",
+      "symbol": "??0CRobloxTreeCtrl@@QAE@XZ",
+      "size": 145,
+      "exact": true,
+      "verified_targets": {
+        "??0CXTTreeCtrl@@QAE@XZ": "0x6dbda0 (call site; pool name -)",
+        "??_7CRobloxTreeCtrl@@6BCTreeCtrl@@@": "0x80fcd4 (own)",
+        "??_7CRobloxTreeCtrl@@6BCXTTreeBase@@@": "0x80fc4c (own)",
+        "??0?$_Tree@V?$_Tmap_traits@PBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@U?$less@PBVInstance@RBX@@@std@@V?$allocator@U?$pair@QBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@@std@@@5@$0A@@std@@@std@@QAE@ABU?$less@PBVInstance@RBX@@@1@ABV?$allocator@U?$pair@QBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@@std@@@1@@Z": "0x446110 (call site; pool name ??0?$_Tree@V?$_Tmap_traits@W4Number@BrickColor@RBX@@VColor4uint8@G3D@@U?$less@W4)",
+        "??0CClassImages@@QAE@XZ": "0x413230 (call site; pool name -)",
+        "??0recursive_mutex@boost@@QAE@XZ": "0x563070 (call site; pool name -)"
+      },
+      "local_eh": [
+        "__ehhandler$??0CRobloxTreeCtrl@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "00425ba0",
+      "symbol": "?GetNextItem@CXTTreeCtrlBase@@UBEPAU_TREEITEM@@PAU2@I@Z",
+      "size": 31,
+      "exact": true,
+      "verified_targets": {
+        "__imp__SendMessageA@16": "user32.dll!SendMessageA"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00425bc0",
+      "symbol": "?GetItemState@CXTTreeCtrlBase@@UBEIPAU_TREEITEM@@I@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "?GetItemState@CXTTreeBase@@QBEIPAU_TREEITEM@@I@Z": "0x6dcd30 (call site; pool name -)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00425bd0",
+      "symbol": "?SelectItem@CXTTreeCtrlBase@@UAEHPAU_TREEITEM@@@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "?SelectItem@CXTTreeBase@@QAEHPAU_TREEITEM@@@Z": "0x6dcd80 (call site; pool name -)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00425be0",
+      "symbol": "?SetItemState@CXTTreeCtrlBase@@UAEHPAU_TREEITEM@@II@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "?SetItemState@CXTTreeBase@@QAEHPAU_TREEITEM@@II@Z": "0x6dca00 (call site; pool name -)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00425bf0",
+      "symbol": "?OnNotify@CXTTreeCtrlBase@@MAEHIJPAJ@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "?OnNotify@CXTTreeBase@@MAEHIJPAJ@Z": "0x6dc070 (call site; pool name -)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00425c00",
+      "symbol": "?PreTranslateMessage@CXTTreeCtrlBase@@MAEHPAUtagMSG@@@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "?PreTranslateMessage@CXTTreeBase@@MAEHPAUtagMSG@@@Z": "0x6dd610 (call site; pool name -)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00425c10",
+      "symbol": "?Init@CXTTreeCtrlBase@@MAE_NXZ",
+      "size": 5,
+      "exact": true,
+      "verified_targets": {
+        "?Init@CXTTreeBase@@MAE_NXZ": "0x6dd910 (call site; pool name -)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00425c20",
+      "symbol": "?PreSubclassWindow@CXTTreeCtrlBase@@MAEXXZ",
+      "size": 31,
+      "exact": true,
+      "verified_targets": {
+        "?PreSubclassWindow@CWnd@@UAEXXZ": "mfc90.dll!?PreSubclassWindow@CWnd@@UAEXXZ"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00425c40",
+      "symbol": "??_ECRobloxTreeCtrl@@WFE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_ECRobloxTreeCtrl@@UAEPAXI@Z": "0x425c70 (own)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00425c50",
+      "symbol": "?PreTranslateMessage@CXTTreeCtrlBase@@OFE@AEHPAUtagMSG@@@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "?PreTranslateMessage@CXTTreeCtrlBase@@MAEHPAUtagMSG@@@Z": "0x425c00 (own)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00425c60",
+      "symbol": "?OnNotify@CXTTreeCtrlBase@@OFE@AEHIJPAJ@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "?OnNotify@CXTTreeCtrlBase@@MAEHIJPAJ@Z": "0x425bf0 (own)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00425c70",
+      "symbol": "??_GCRobloxTreeCtrl@@UAEPAXI@Z",
+      "size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??1CRobloxTreeCtrl@@UAE@XZ": "0x424510 (own)",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00425de0",
+      "symbol": "??0CRobloxTreeCtrlNode@@QAE@PAV0@V?$shared_ptr@VInstance@RBX@@@boost@@PAVCRobloxTreeCtrl@@@Z",
+      "size": 548,
+      "exact": true,
+      "verified_targets": {
+        "??_7CRobloxTreeCtrlNode@@6B?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@": "0x80fc28 (own)",
+        "??_7CRobloxTreeCtrlNode@@6B?$Listener@VInstance@RBX@@UChildAdded@2@@RBX@@@": "0x80fc1c (own)",
+        "??_7CRobloxTreeCtrlNode@@6B?$Listener@VInstance@RBX@@UChildRemoved@2@@RBX@@@": "0x80fc10 (own)",
+        "??0?$_Tree@V?$_Tmap_traits@PBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@U?$less@PBVInstance@RBX@@@std@@V?$allocator@U?$pair@QBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@@std@@@5@$0A@@std@@@std@@QAE@ABU?$less@PBVInstance@RBX@@@1@ABV?$allocator@U?$pair@QBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@@std@@@1@@Z": "0x446110 (call site; pool name ??0?$_Tree@V?$_Tmap_traits@W4Number@BrickColor@RBX@@VColor4uint8@G3D@@U?$less@W4)",
+        "??0?$_Tree@V?$_Tset_traits@PAVCRobloxTreeCtrlNode@@U?$less@PAVCRobloxTreeCtrlNode@@@std@@V?$allocator@PAVCRobloxTreeCtrlNode@@@3@$0A@@std@@@std@@QAE@ABU?$less@PAVCRobloxTreeCtrlNode@@@1@ABV?$allocator@PAVCRobloxTreeCtrlNode@@@1@@Z": "0x64b2a0 (call site; pool name ??0?$_Tree@V?$_Tset_traits@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$)",
+        "??0?$_Tree@V?$_Tset_traits@V?$shared_ptr@VInstance@RBX@@@boost@@U?$less@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@4@$0A@@std@@@std@@QAE@ABU?$less@V?$shared_ptr@VInstance@RBX@@@boost@@@1@ABV?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@1@@Z": "0x446110 (call site; pool name ??0?$_Tree@V?$_Tmap_traits@W4Number@BrickColor@RBX@@VColor4uint8@G3D@@U?$less@W4)",
+        "?explorerOrder@@YAHPAVInstance@RBX@@@Z": "0x423050 (own)",
+        "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090 (call site; pool name -)",
+        "??A?$map@PBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@U?$less@PBVInstance@RBX@@@std@@V?$allocator@U?$pair@QBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@@std@@@5@@std@@QAEAAPAVCRobloxTreeCtrlNode@@ABQBVInstance@RBX@@@Z": "0x5644a0 (call site; pool name ??A?$map@PBVName@RBX@@W4SurfaceType@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?)",
+        "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x5630e0 (call site; pool name -)",
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40 (call site; pool name ??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z)",
+        "?addListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@QBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z": "0x4218a0 (call site; pool name ?addListener@?$Notifier@VInstance@RBX@@UDescendentAdded@2@@RBX@@QBEXPAV?$Listene)",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0 (call site; pool name ??1Lock@DataModel@RBX@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$??0CRobloxTreeCtrlNode@@QAE@PAV0@V?$shared_ptr@VInstance@RBX@@@boost@@PAVCRobloxTreeCtrl@@@Z"
+      ]
+    },
+    {
+      "address": "00426010",
+      "symbol": "?initialize@CRobloxTreeCtrlNode@@UAEXXZ",
+      "size": 239,
+      "exact": true,
+      "verified_targets": {
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40 (call site; pool name ??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z)",
+        "?addListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@QBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z": "0x4218a0 (call site; pool name ?addListener@?$Notifier@VInstance@RBX@@UDescendentAdded@2@@RBX@@QBEXPAV?$Listene)",
+        "?addListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@QBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z": "0x4218a0 (call site; pool name ?addListener@?$Notifier@VInstance@RBX@@UDescendentAdded@2@@RBX@@QBEXPAV?$Listene)",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0 (call site; pool name ??1Lock@DataModel@RBX@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$?initialize@CRobloxTreeCtrlNode@@UAEXXZ"
+      ]
+    },
+    {
+      "address": "004262c0",
+      "symbol": "?populate@CRobloxTreeCtrlNode@@QAEXXZ",
+      "size": 386,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40 (call site; pool name ??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z)",
+        "??4?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAEAAV01@ABV01@@Z": "0x4259f0 (call site; pool name -)",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0 (call site; pool name ??1Lock@DataModel@RBX@@QAE@XZ)",
+        "?queueChild@CRobloxTreeCtrlNode@@QAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x424580 (own)",
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "??$for_each@V?$_Vector_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@V?$bind_t@XV?$mf1@XVCRobloxTreeCtrlNode@@ABV?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVCRobloxTreeCtrlNode@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XVCRobloxTreeCtrlNode@@ABV?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVCRobloxTreeCtrlNode@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@V?$_Vector_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@0@0V123@@Z": "0x423ac0 (call site; pool name -)",
+        "??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": "0x5a2fe0 (call site; pool name ??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VIns)"
+      },
+      "local_eh": [
+        "__ehhandler$?populate@CRobloxTreeCtrlNode@@QAEXXZ"
+      ]
+    },
+    {
+      "address": "00426650",
+      "symbol": "??_ECRobloxTreeCtrlNode@@W7AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_ECRobloxTreeCtrlNode@@UAEPAXI@Z": "0x426660 (own)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00426660",
+      "symbol": "??_GCRobloxTreeCtrlNode@@UAEPAXI@Z",
+      "size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??1CRobloxTreeCtrlNode@@UAE@XZ": "0x424900 (own)",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00426d60",
+      "symbol": "?OnItemExpanding@CRobloxTreeCtrl@@QAEXPAUtagNMHDR@@PAJ@Z",
+      "size": 76,
+      "exact": true,
+      "verified_targets": {
+        "?populate@CRobloxTreeCtrlNode@@QAEXXZ": "0x4262c0 (own)",
+        "?addChildren@CRobloxTreeCtrlNode@@QAEXXZ": "0x426450 (call site; pool name -)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004272f0",
+      "symbol": "?GetMessageMap@CRobloxTreeCtrl@@MBEPBUAFX_MSGMAP@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?messageMap@?1??GetThisMessageMap@CRobloxTreeCtrl@@KGPBUAFX_MSGMAP@@XZ@4U3@B": "0x810084 (own)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00424b60",
+      "symbol": "?classImage@@YAHPBVClassDescriptor@Reflection@RBX@@@Z",
+      "size": 157,
+      "exact": true,
+      "verified_targets": {
+        "?singleton@Reflection@Metadata@RBX@@SA?AV?$shared_ptr@VReflection@Metadata@RBX@@@boost@@XZ": "0x445020 (call site; pool name -)",
+        "?lookup@Reflection@Metadata@RBX@@QBEPAVClass@213@ABVClassDescriptor@13@_N@Z": "0x443210 (call site; pool name -)",
+        "?getImageIndex@Class@Metadata@Reflection@RBX@@QBEHXZ": "0x41fb30 (call site; pool name -)"
+      },
+      "local_eh": [
+        "__ehhandler$?classImage@@YAHPBVClassDescriptor@Reflection@RBX@@@Z"
+      ]
+    },
+    {
+      "address": "00424c00",
+      "symbol": "?insertItem@CRobloxTreeCtrlNode@@UAEPAU_TREEITEM@@XZ",
+      "size": 451,
+      "exact": true,
+      "verified_targets": {
+        "?classImage@@YAHPBVClassDescriptor@Reflection@RBX@@@Z": "0x424b60 (own)",
+        "__imp__SendMessageA@16": "user32.dll!SendMessageA",
+        "?GetItemData@CTreeCtrl@@QBEKPAU_TREEITEM@@@Z": "mfc90.dll!?GetItemData@CTreeCtrl@@QBEKPAU_TREEITEM@@@Z",
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40 (call site; pool name ??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z)",
+        "__imp_??$?PDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z": "msvcp90.dll!??$?PDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0 (call site; pool name ??1Lock@DataModel@RBX@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$?insertItem@CRobloxTreeCtrlNode@@UAEPAU_TREEITEM@@XZ"
+      ]
+    }
+  ],
+  "split_catch_funclet": [
+    {
+      "address": "00425320",
+      "symbol": "?onGetDispInfo@CRobloxTreeCtrlNode@@UAEXPAUtagTVDISPINFOA@@@Z",
+      "size": 292,
+      "exact": true,
+      "verified_targets": {
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40 (call site; pool name ??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z)",
+        "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": "msvcp90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ",
+        "__imp__strncpy": "msvcr90.dll!strncpy",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0 (call site; pool name ??1Lock@DataModel@RBX@@QAE@XZ)",
+        "?hasChildren@CRobloxTreeCtrlNode@@QAE_NXZ": "0x425050 (own)",
+        "??_C@_00CNPNBAHC@?$AA@": "0x80b716 (literal)"
+      },
+      "local_eh": [
+        "$LN12",
+        "__ehhandler$?onGetDispInfo@CRobloxTreeCtrlNode@@UAEXPAUtagTVDISPINFOA@@@Z"
+      ]
+    }
+  ],
+  "pending_shared_header": [
+    {
+      "address": "00424f80",
+      "symbol": "?updateSelection@CRobloxTreeCtrlNode@@UAEXXZ",
+      "size": 199,
+      "exact": true,
+      "verified_targets": {
+        "?isSelected@Selection@RBX@@QBE_NPBVInstance@2@@Z": "0x424eb0 (call site; pool name -)",
+        "__imp__SendMessageA@16": "user32.dll!SendMessageA",
+        "?SelectItems@CXTTreeBase@@QAEXPAU_TREEITEM@@0H@Z": "0x6dcfd0 (call site; pool name -)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00425050",
+      "symbol": "?hasChildren@CRobloxTreeCtrlNode@@QAE_NXZ",
+      "size": 719,
+      "exact": true,
+      "verified_targets": {
+        "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40 (call site; pool name ??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z)",
+        "?read@?$CopyOnWrite@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@RBX@@QBE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ": "0x4915b0 (call site; pool name ?read@?$CopyOnWrite@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@)",
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "?singleton@Reflection@Metadata@RBX@@SA?AV?$shared_ptr@VReflection@Metadata@RBX@@@boost@@XZ": "0x445020 (call site; pool name -)",
+        "?lookup@Reflection@Metadata@RBX@@QBEPAVClass@213@ABVClassDescriptor@13@_N@Z": "0x443210 (call site; pool name -)",
+        "?explorerOrder@Class@Metadata@Reflection@RBX@@QBEHXZ": "0x4225b0 (call site; pool name -)",
+        "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0 (call site; pool name ??1Lock@DataModel@RBX@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$?hasChildren@CRobloxTreeCtrlNode@@QAE_NXZ"
+      ]
+    },
+    {
+      "address": "00426100",
+      "symbol": "?addChild@CRobloxTreeCtrlNode@@QAEPAV1@ABV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+      "size": 446,
+      "exact": true,
+      "verified_targets": {
+        "?singleton@Reflection@Metadata@RBX@@SA?AV?$shared_ptr@VReflection@Metadata@RBX@@@boost@@XZ": "0x445020 (call site; pool name -)",
+        "?lookup@Reflection@Metadata@RBX@@QBEPAVClass@213@ABVClassDescriptor@13@_N@Z": "0x443210 (call site; pool name -)",
+        "?explorerOrder@Class@Metadata@Reflection@RBX@@QBEHXZ": "0x4225b0 (call site; pool name -)",
+        "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090 (call site; pool name -)",
+        "?find@?$_Tree@V?$_Tmap_traits@PBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@U?$less@PBVInstance@RBX@@@std@@V?$allocator@U?$pair@QBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@ABQBVInstance@RBX@@@Z": "0x451600 (call site; pool name ?find@?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@s)",
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "??Citerator@?$_Tree@V?$_Tmap_traits@PBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@U?$less@PBVInstance@RBX@@@std@@V?$allocator@U?$pair@QBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@@std@@@5@$0A@@std@@@std@@QBEPAU?$pair@QBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@@2@XZ": "0x6787f0 (call site; pool name ??Cconst_iterator@?$_Tree@V?$_Tmap_traits@PBVSignalDescriptor@Reflection@RBX@@V?)",
+        "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x5630e0 (call site; pool name -)",
+        "??1?$shared_ptr@VReflection@Metadata@RBX@@@boost@@QAE@XZ": "0x600660 (call site; pool name ??1?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ)",
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??0?$shared_ptr@VInstance@RBX@@@boost@@QAE@ABV01@@Z": "0x4116f0 (call site; pool name ??0?$shared_ptr@VInstance@RBX@@@boost@@QAE@ABV01@@Z)",
+        "??0CRobloxTreeCtrlNode@@QAE@PAV0@V?$shared_ptr@VInstance@RBX@@@boost@@PAVCRobloxTreeCtrl@@@Z": "0x425de0 (own)"
+      },
+      "local_eh": [
+        "__ehhandler$?addChild@CRobloxTreeCtrlNode@@QAEPAV1@ABV?$shared_ptr@VInstance@RBX@@@boost@@@Z"
+      ]
+    },
+    {
+      "address": "00423050",
+      "symbol": "?explorerOrder@@YAHPAVInstance@RBX@@@Z",
+      "size": 160,
+      "exact": true,
+      "verified_targets": {
+        "?singleton@Reflection@Metadata@RBX@@SA?AV?$shared_ptr@VReflection@Metadata@RBX@@@boost@@XZ": "0x445020 (call site; pool name -)",
+        "?lookup@Reflection@Metadata@RBX@@QBEPAVClass@213@ABVClassDescriptor@13@_N@Z": "0x443210 (call site; pool name -)",
+        "?explorerOrder@Class@Metadata@Reflection@RBX@@QBEHXZ": "0x4225b0 (call site; pool name -)"
+      },
+      "local_eh": [
+        "__ehhandler$?explorerOrder@@YAHPAVInstance@RBX@@@Z"
+      ]
+    }
+  ],
+  "call_site_bindings": {
+    "??$for_each@V?$_Vector_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@V?$bind_t@XV?$mf1@XVCRobloxTreeCtrlNode@@ABV?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVCRobloxTreeCtrlNode@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XVCRobloxTreeCtrlNode@@ABV?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVCRobloxTreeCtrlNode@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@V?$_Vector_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@0@0V123@@Z": "0x423ac0",
+    "??0?$_Tree@V?$_Tmap_traits@PBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@U?$less@PBVInstance@RBX@@@std@@V?$allocator@U?$pair@QBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@@std@@@5@$0A@@std@@@std@@QAE@ABU?$less@PBVInstance@RBX@@@1@ABV?$allocator@U?$pair@QBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@@std@@@1@@Z": "0x446110",
+    "??0?$_Tree@V?$_Tset_traits@PAVCRobloxTreeCtrlNode@@U?$less@PAVCRobloxTreeCtrlNode@@@std@@V?$allocator@PAVCRobloxTreeCtrlNode@@@3@$0A@@std@@@std@@QAE@ABU?$less@PAVCRobloxTreeCtrlNode@@@1@ABV?$allocator@PAVCRobloxTreeCtrlNode@@@1@@Z": "0x64b2a0",
+    "??0?$_Tree@V?$_Tset_traits@V?$shared_ptr@VInstance@RBX@@@boost@@U?$less@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@4@$0A@@std@@@std@@QAE@ABU?$less@V?$shared_ptr@VInstance@RBX@@@boost@@@1@ABV?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@1@@Z": "0x446110",
+    "??0?$shared_ptr@VInstance@RBX@@@boost@@QAE@ABV01@@Z": "0x4116f0",
+    "??0CClassImages@@QAE@XZ": "0x413230",
+    "??0CXTTreeCtrl@@QAE@XZ": "0x6dbda0",
+    "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40",
+    "??0recursive_mutex@boost@@QAE@XZ": "0x563070",
+    "??1?$_Tree@V?$_Tmap_traits@PBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@U?$less@PBVInstance@RBX@@@std@@V?$allocator@U?$pair@QBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@@std@@@5@$0A@@std@@@std@@QAE@XZ": "0x553d80",
+    "??1?$_Tree@V?$_Tset_traits@PAVCRobloxTreeCtrlNode@@U?$less@PAVCRobloxTreeCtrlNode@@@std@@V?$allocator@PAVCRobloxTreeCtrlNode@@@3@$0A@@std@@@std@@QAE@XZ": "0x64b230",
+    "??1?$_Tree@V?$_Tset_traits@V?$shared_ptr@VInstance@RBX@@@boost@@U?$less@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@4@$0A@@std@@@std@@QAE@XZ": "0x4247c0",
+    "??1?$shared_ptr@VReflection@Metadata@RBX@@@boost@@QAE@XZ": "0x600660",
+    "??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": "0x5a2fe0",
+    "??1CClassImages@@UAE@XZ": "0x412f30",
+    "??1CXTTreeCtrl@@UAE@XZ": "0x6dbac0",
+    "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0",
+    "??1recursive_mutex@boost@@QAE@XZ": "0x594cb0",
+    "??4?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAEAAV01@ABV01@@Z": "0x4259f0",
+    "??A?$map@PBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@U?$less@PBVInstance@RBX@@@std@@V?$allocator@U?$pair@QBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@@std@@@5@@std@@QAEAAPAVCRobloxTreeCtrlNode@@ABQBVInstance@RBX@@@Z": "0x5644a0",
+    "??Citerator@?$_Tree@V?$_Tmap_traits@PBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@U?$less@PBVInstance@RBX@@@std@@V?$allocator@U?$pair@QBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@@std@@@5@$0A@@std@@@std@@QBEPAU?$pair@QBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@@2@XZ": "0x6787f0",
+    "?GetColor@CXTPColorManager@@QBEKH@Z": "0x6df520",
+    "?GetItemState@CXTTreeBase@@QBEIPAU_TREEITEM@@I@Z": "0x6dcd30",
+    "?Init@CXTTreeBase@@MAE_NXZ": "0x6dd910",
+    "?Instance@CXTPColorManager@@CAAAV1@XZ": "0x6dfd40",
+    "?OnKeyDown@CXTTreeBase@@IAEXIII@Z": "0x6de610",
+    "?OnNotify@CXTTreeBase@@MAEHIJPAJ@Z": "0x6dc070",
+    "?OnPaint@CXTTreeCtrlBase@@IAEXXZ": "0x422a50",
+    "?PreTranslateMessage@CXTTreeBase@@MAEHPAUtagMSG@@@Z": "0x6dd610",
+    "?SelectItem@CXTTreeBase@@QAEHPAU_TREEITEM@@@Z": "0x6dcd80",
+    "?SelectItems@CXTTreeBase@@QAEXPAU_TREEITEM@@0H@Z": "0x6dcfd0",
+    "?SetColor@CXTPColorManager@@QAEXHK@Z": "0x6df780",
+    "?SetItemState@CXTTreeBase@@QAEHPAU_TREEITEM@@II@Z": "0x6dca00",
+    "?addChildren@CRobloxTreeCtrlNode@@QAEXXZ": "0x426450",
+    "?addListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@QBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z": "0x4218a0",
+    "?addListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@QBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z": "0x4218a0",
+    "?addListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@QBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z": "0x4218a0",
+    "?desc_Name@Instance@RBX@@2V?$PropDescriptor@VInstance@RBX@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Reflection@2@B": "0x973d54",
+    "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090",
+    "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x5630e0",
+    "?erase@?$_Tree@V?$_Tmap_traits@PBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@U?$less@PBVInstance@RBX@@@std@@V?$allocator@U?$pair@QBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@@std@@@5@$0A@@std@@@std@@QAEIABQBVInstance@RBX@@@Z": "0x405ce0",
+    "?erase@?$_Tree@V?$_Tset_traits@V?$shared_ptr@VInstance@RBX@@@boost@@U?$less@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@4@$0A@@std@@@std@@QAEIABV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x424830",
+    "?explorerOrder@Class@Metadata@Reflection@RBX@@QBEHXZ": "0x4225b0",
+    "?find@?$_Tree@V?$_Tmap_traits@PBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@U?$less@PBVInstance@RBX@@@std@@V?$allocator@U?$pair@QBVInstance@RBX@@PAVCRobloxTreeCtrlNode@@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@ABQBVInstance@RBX@@@Z": "0x451600",
+    "?getImageIndex@Class@Metadata@Reflection@RBX@@QBEHXZ": "0x41fb30",
+    "?insert@?$_Tree@V?$_Tset_traits@PAVCRobloxTreeCtrlNode@@U?$less@PAVCRobloxTreeCtrlNode@@@std@@V?$allocator@PAVCRobloxTreeCtrlNode@@@3@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tset_traits@PAVCRobloxTreeCtrlNode@@U?$less@PAVCRobloxTreeCtrlNode@@@std@@V?$allocator@PAVCRobloxTreeCtrlNode@@@3@$0A@@std@@@std@@_N@2@ABQAVCRobloxTreeCtrlNode@@@Z": "0x5e8c40",
+    "?insert@?$_Tree@V?$_Tset_traits@V?$shared_ptr@VInstance@RBX@@@boost@@U?$less@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@4@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tset_traits@V?$shared_ptr@VInstance@RBX@@@boost@@U?$less@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@4@$0A@@std@@@std@@_N@2@ABV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x424030",
+    "?isSelected@Selection@RBX@@QBE_NPBVInstance@2@@Z": "0x424eb0",
+    "?lookup@Reflection@Metadata@RBX@@QBEPAVClass@213@ABVClassDescriptor@13@_N@Z": "0x443210",
+    "?read@?$CopyOnWrite@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@RBX@@QBE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ": "0x4915b0",
+    "?removeListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@QBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z": "0x5e5a80",
+    "?removeListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@QBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z": "0x5e5a80",
+    "?removeListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@QBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z": "0x5e5a80",
+    "?singleton@Reflection@Metadata@RBX@@SA?AV?$shared_ptr@VReflection@Metadata@RBX@@@boost@@XZ": "0x445020"
+  },
+  "vtables": {
+    "0080fcd4": {
+      "slots": 90,
+      "verified": 84,
+      "bound": {},
+      "unverified": {
+        "2": [
+          "?Serialize@CObject@@UAEXAAVCArchive@@@Z",
+          "0x70bdf0"
+        ],
+        "3": [
+          "?AssertValid@CObject@@UBEXXZ",
+          "0x47d410"
+        ],
+        "4": [
+          "?Dump@CObject@@UBEXAAVCDumpContext@@@Z",
+          "0x70bdf0"
+        ],
+        "65": [
+          "?DoDataExchange@CWnd@@MAEXPAVCDataExchange@@@Z",
+          "0x70bdf0"
+        ],
+        "66": [
+          "?BeginModalState@CWnd@@UAEXXZ",
+          "0x401120"
+        ],
+        "67": [
+          "?EndModalState@CWnd@@UAEXXZ",
+          "0x401130"
+        ]
+      }
+    },
+    "0080fc4c": {
+      "slots": 33,
+      "verified": 5,
+      "bound": {},
+      "unverified": {
+        "2": [
+          "?GetNextItem@CXTTreeCtrlBase@@UBEPAU_TREEITEM@@PAU2@@Z",
+          "0x433790"
+        ],
+        "3": [
+          "?GetPrevItem@CXTTreeBase@@UBEPAU_TREEITEM@@PAU2@@Z",
+          "0x6dc290"
+        ],
+        "4": [
+          "?GetLastItem@CXTTreeBase@@UBEPAU_TREEITEM@@PAU2@@Z",
+          "0x6dc2e0"
+        ],
+        "5": [
+          "?FindItem@CXTTreeBase@@UAEPAU_TREEITEM@@PBDHHHPAU2@@Z",
+          "0x6dc620"
+        ],
+        "6": [
+          "?FindItemInBranch@CXTTreeBase@@UAEPAU_TREEITEM@@PBDHHPAU2@@Z",
+          "0x6dc360"
+        ],
+        "7": [
+          "?SetItemFont@CXTTreeBase@@UAEXPAU_TREEITEM@@AAUtagLOGFONTA@@@Z",
+          "0x6def70"
+        ],
+        "8": [
+          "?GetItemFont@CXTTreeBase@@UAEHPAU_TREEITEM@@PAUtagLOGFONTA@@@Z",
+          "0x6de790"
+        ],
+        "9": [
+          "?SetItemBold@CXTTreeBase@@UAEXPAU_TREEITEM@@H@Z",
+          "0x6dde70"
+        ],
+        "10": [
+          "?GetItemBold@CXTTreeBase@@UAEHPAU_TREEITEM@@@Z",
+          "0x6ddeb0"
+        ],
+        "11": [
+          "?SetItemColor@CXTTreeBase@@UAEXPAU_TREEITEM@@K@Z",
+          "0x6df000"
+        ],
+        "12": [
+          "?SetItemBackColor@CXTTreeBase@@UAEXPAU_TREEITEM@@K@Z",
+          "0x6df090"
+        ],
+        "13": [
+          "?GetItemColor@CXTTreeBase@@UAEKPAU_TREEITEM@@@Z",
+          "0x6de810"
+        ],
+        "14": [
+          "?GetItemBackColor@CXTTreeBase@@MBEKI_NKK@Z",
+          "0x6dbec0"
+        ],
+        "15": [
+          "?GetItemBackColor@CXTTreeBase@@UAEKPAU_TREEITEM@@@Z",
+          "0x6de880"
+        ],
+        "16": [
+          "?EnableMultiSelect@CXTTreeBase@@UAEHH@Z",
+          "0x6ddf60"
+        ],
+        "17": [
+          "?GetPrevSelectedItem@CXTTreeBase@@UBEPAU_TREEITEM@@PAU2@@Z",
+          "0x6dded0"
+        ],
+        "19": [
+          "?SendNotify@CXTTreeBase@@MAEJPAUtagNMHDR@@@Z",
+          "0x6ddfd0"
+        ],
+        "20": [
+          "?SelectAllIgnore@CXTTreeBase@@MAEXHPAU_TREEITEM@@@Z",
+          "0x6dcf50"
+        ],
+        "21": [
+          "?OnButtonDown@CXTTreeBase@@MAEHHIVCPoint@@@Z",
+          "0x6dbfa0"
+        ],
+        "22": [
+          "?DoPreSelection@CXTTreeBase@@MAEXPAU_TREEITEM@@HI@Z",
+          "0x6dd120"
+        ],
+        "23": [
+          "?DoAction@CXTTreeBase@@MAEXPAU_TREEITEM@@HIVCPoint@@@Z",
+          "0x6dd210"
+        ],
+        "24": [
+          "?DoBanding@CXTTreeBase@@MAEXIVCPoint@@@Z",
+          "0x6de020"
+        ],
+        "25": [
+          "?UpdateSelectionForRect@CXTTreeBase@@MAEXPBUtagRECT@@IAAV?$CTypedPtrList@VCPtrList@@PAU_TREEITEM@@@@@Z",
+          "0x6dd420"
+        ],
+        "26": [
+          "?IsFindValid@CXTTreeBase@@MAEHPAU_TREEITEM@@@Z",
+          "0x6e8870"
+        ],
+        "27": [
+          "?DoPaint@CXTTreeBase@@MAEXAAVCDC@@H@Z",
+          "0x6de8f0"
+        ],
+        "28": [
+          "?GetTreeBackColor@CXTTreeBase@@MBEKXZ",
+          "0x6dc940"
+        ],
+        "29": [
+          "?GetTreeTextColor@CXTTreeBase@@MBEKXZ",
+          "0x6dc9a0"
+        ],
+        "30": [
+          "?GetItemTextColor@CXTTreeBase@@MBEKI_NKK@Z",
+          "0x6dbf30"
+        ]
+      }
+    },
+    "0080fc28": {
+      "slots": 7,
+      "verified": 7,
+      "bound": {},
+      "unverified": {}
+    },
+    "0080fc1c": {
+      "slots": 2,
+      "verified": 2,
+      "bound": {},
+      "unverified": {}
+    },
+    "0080fc10": {
+      "slots": 2,
+      "verified": 2,
+      "bound": {},
+      "unverified": {}
+    }
+  }
+}

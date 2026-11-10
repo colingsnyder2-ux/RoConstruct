@@ -1,0 +1,20 @@
+{
+  "scope": "Model tool target layout and runtime ABI unproven.",
+  "methods": [
+    {
+      "address": "0x63dde0",
+      "size": 66,
+      "symbol": "?getCursorName@AnchorTool@RBX@@EBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+      "bindings": {
+        "??_C@_0P@JPLDDPDH@UnAnchorCursor?$AA@": "0x84a298",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458",
+        "??_C@_0N@LNEMPKEC@AnchorCursor?$AA@": "0x84a288"
+      }
+    }
+  ],
+  "source_sha256": "d127f9aeec541b666a33d256ded6fb4d8fe248cb6bd4a75bee2b8a754b97b9ee",
+  "surface_header_sha256": "8056b64427cf6059072617d930da52a634832962fd6ab533fb3ac48148fc4932",
+  "overlay_sha256": "b53673f2305d830ed9f02f712b7409ad890c65e8ea407d5eb49516156e9b8633",
+  "object_sha256": "ad6928195eb5b314db1addb921f1f14fc1e68f89a0b0bd9c00187424d98acb27",
+  "observer_sha256": "3df48a40a62cde73f54f1219d08f3347302787c8c216542a54aaa26613598942"
+}

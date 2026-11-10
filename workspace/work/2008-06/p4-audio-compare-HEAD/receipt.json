@@ -1,0 +1,115 @@
+{
+  "revision": "866583a6184fcc33243c9553afede3f260f73190",
+  "fixture_sha256": "4dce33ccc307e3aecb01800448de4b95a54827ad3cf49ca374d2130b297c55e4",
+  "tone_sha256": "b0e95cb1badb20186a79c6a191b9baa5835efa56b179e17001c785bd915c7bf3",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "player_sha256": "4def62743b4664c91f448a9a63d39242f3184342fe32b1ed77a330298aa66077",
+  "observer_sha256": "9f487f87474dcafae75a8efda7e989ececa0c4fe84f7cf6b2005bafdeea08c9a",
+  "sample_rate": 48000,
+  "speaker_id_sha256": "11df3cdc5d9a64e2fc0f4fc46ac495d372e66f36fc837f4f1a2c54b0ab1e0c67",
+  "soundcard_version": "0.4.6",
+  "runs": {
+    "original": {
+      "baseline": {
+        "rms": 0.0,
+        "hz440": 0.0
+      },
+      "windows": [
+        {
+          "rms": 0.0,
+          "hz440": 0.0
+        },
+        {
+          "rms": 0.0,
+          "hz440": 0.0
+        },
+        {
+          "rms": 0.004331562668085098,
+          "hz440": 0.0037998940174024916
+        },
+        {
+          "rms": 0.006984625943005085,
+          "hz440": 0.009848701805563239
+        },
+        {
+          "rms": 0.006984637584537268,
+          "hz440": 0.009848719255654214
+        },
+        {
+          "rms": 0.006984579376876354,
+          "hz440": 0.009848637312950966
+        },
+        {
+          "rms": 0.00698446249589324,
+          "hz440": 0.009848472180481094
+        },
+        {
+          "rms": 0.006984297186136246,
+          "hz440": 0.009848233583253055
+        }
+      ],
+      "active_windows": 6,
+      "median_hz440": 0.009848472180481094,
+      "median_rms": 0.00698446249589324,
+      "cleanup": {
+        "exit": 1,
+        "forced": true
+      }
+    },
+    "player": {
+      "baseline": {
+        "rms": 0.0,
+        "hz440": 0.0
+      },
+      "windows": [
+        {
+          "rms": 0.006476838141679764,
+          "hz440": 0.008479290041900624
+        },
+        {
+          "rms": 0.006984586361795664,
+          "hz440": 0.009848673799638073
+        },
+        {
+          "rms": 0.006984435487538576,
+          "hz440": 0.00984845648688756
+        },
+        {
+          "rms": 0.006984301842749119,
+          "hz440": 0.009848263973595735
+        },
+        {
+          "rms": 0.006984139326959848,
+          "hz440": 0.00984803409840114
+        },
+        {
+          "rms": 0.006984031293541193,
+          "hz440": 0.00984788038107166
+        },
+        {
+          "rms": 0.006984007079154253,
+          "hz440": 0.009847842063368544
+        },
+        {
+          "rms": 0.006984018255025148,
+          "hz440": 0.009847854901473019
+        }
+      ],
+      "active_windows": 8,
+      "median_hz440": 0.009847854901473019,
+      "median_rms": 0.006984018255025148,
+      "cleanup": {
+        "exit": 0,
+        "forced": false
+      }
+    }
+  },
+  "P4_complete": false,
+  "scope": "One looping 2D authored 440 Hz tone; no raw audio retained.",
+  "limitations": [
+    "No human listening claim.",
+    "No spatial, missing-asset, scripted, or network audio comparison."
+  ],
+  "amplitude_ratio": 0.9999373223585585,
+  "rms_ratio": 0.9999363958402879
+}

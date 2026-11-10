@@ -1,0 +1,17 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "005ffc50",
+                                        "symbol":  "?getMouse@Tool@RBX@@"
+                                    },
+                                    {
+                                        "addr":  "005feed0",
+                                        "symbol":  "?equip@Tool@RBX@@"
+                                    }
+                                ],
+                     "source":  "native-classes/Tool.cpp"
+                 }
+             ]
+}

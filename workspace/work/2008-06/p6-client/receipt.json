@@ -1,0 +1,165 @@
+{
+ "milestone": "P6",
+ "status": "SCOPED PASS, see rebuild/2008-06/p6/p6-acceptance-audit.md",
+ "scope": "XTP MFC client: edit mode, save, reopen, play mode with real input",
+ "exe_sha256": "ea3dac93fb241d62d5679d06fe43079195f214cb74a7b932263c31d2a240f077",
+ "capture_sha256": "93b0646bf6d8a27f053487b7b80490872b79e6215d7674f30517832cf593c85e",
+ "place": "7e44dc577dacb884e6971bd25de8c23769eba12f2978fa219080d4b45c04181d",
+ "sources": {
+  "RobloxShell.cpp": "dde8693f855f59f1ea30a537fc402e5320c3b3898e56413d73b847f5b1b03505",
+  "P6Engine.cpp": "99b8d87560f7809bb56e0a7a3b80e5db14aded6cae6dec6f757d60dbd753ddb3",
+  "P6Data.cpp": "c288511f66639b565d51817077aa61924a96734a39a90be71e517bb312a6b4c0",
+  "P6Engine.h": "6575395bf1db05c87358b49c4717cf5190d05d007b6fcf86d6b8037996694dc0",
+  "build_client.py": "715a443e151a2892b48711205156217c7276d4faf775b02be7383cddc9eafb35",
+  "gen_res.py": "780cf9a95025f0d3f315bbac95703dfabe1378308ec5da220be5eb3e1f787497",
+  "input_test.py": "49ef8f555c7afa4f49d4065c7c1122d1eb24dd1574a1e4373d7b226c913615ff",
+  "click_test.py": "5891541d9212ce039647a229c7fd358ccb64faa3feb3ff8417cb1516742d3a76",
+  "original_check.py": "61e158d23bd868df42ceac4e32d52309c8d725210b0935b417724e33b811b418",
+  "ordinary_launch.py": "8640cce1c0b5ad78457b2e5b7a39a4c76b4312dea7a6ea0ca2d613498598d593",
+  "original_trace.py": "6a9832c726f3458e9b89ebf70e5b0cddd104741920f4609726edc11bca6f0046"
+ },
+ "player_libs": "this worktree: rbxgs-app and full player chain rebuilt from merged sources, all module tests pass",
+ "runs": [
+  {
+   "command": "Roblox.exe -p6-autoclose -p6-capture p6-frameN.png Places/p5-playable.rbxl",
+   "exit": 0,
+   "observed": [
+    "p6: frame=01C40676 menus=8",
+    "p6: engine open 0",
+    "p6: autoclose frames=300",
+    "p6: actor 1.31497e-019 2.99913 25.5",
+    "p6: capture ok",
+    "mesh cleanup: levels=0 refs=0 backends=0 spheres=0",
+    "p6: ExitInstance"
+   ]
+  },
+  {
+   "command": "Roblox.exe -p6-autoclose -p6-capture p6-frameN.png Places/p5-playable.rbxl",
+   "exit": 0,
+   "observed": [
+    "p6: frame=01C50676 menus=8",
+    "p6: engine open 0",
+    "p6: autoclose frames=302",
+    "p6: actor 1.31497e-019 2.99913 25.5",
+    "p6: capture ok",
+    "mesh cleanup: levels=0 refs=0 backends=0 spheres=0",
+    "p6: ExitInstance"
+   ]
+  },
+  {
+   "command": "Roblox.exe -p6-autoclose Places/nope.rbxl",
+   "exit": 1
+  }
+ ],
+ "shims": [
+  "InitInstance omits engine setup, crash reporter, COM registration, IDE doc manager",
+  "60 Hz frame cap, not original 00555190 deadline loop",
+  "_afxForce symbols local",
+  "WinMain from RTM appmodul.cpp",
+  "Edit via Lua command line, no selection or drag tools"
+ ],
+ "visible_input_run": {
+  "command": "python rebuild/2008-06/p6/input_test.py Roblox.exe Places/p5-playable.rbxl",
+  "desktop_lock": true,
+  "focused": true,
+  "exit": 0,
+  "keys": "real W keybd_event for 1.5 s after engine open",
+  "actor_end": [
+   2.91625e-07,
+   2.99909,
+   18.989
+  ],
+  "idle_actor_end": [
+   0,
+   2.99913,
+   25.5
+  ],
+  "frames": 301,
+  "cleanup": "levels=0 refs=0 backends=0 spheres=0",
+  "note": "Earlier 0.53 stud results were a test artifact: Alt armed menu mnemonics and W opened Window, halting frames. Not an engine regression."
+ },
+ "edit_save_reopen": {
+  "fixture": "lifetime-shapes.rbxl",
+  "script": "game.Workspace.Brick.CFrame = CFrame.new(7,8,9)",
+  "after_edit": [
+   7,
+   8,
+   9
+  ],
+  "after_reopen": [
+   7,
+   8,
+   9
+  ],
+  "exit": [
+   0,
+   0
+  ],
+  "saved_sha256": "ccf2290249b937a688a783f4546c639b79c68addc9080ca1f6257815e305d7ea",
+  "note": "Saved file also holds services the fixture lacked (Camera, RunService, Lighting and others). Not yet opened in the original client.",
+  "original_client": {
+   "exe_sha256_prefix": "2fbbfdf8577b5b28",
+   "title": "Roblox - [saved.rbxl]",
+   "observed": "Opens with no error dialog; red ball over default sky. Visual only, no position read from original memory.",
+   "capture": "work/2008-06/p6-client/original-saved.png"
+  },
+  "rerun_saved_sha256": "a0281e6bf4dfc5e416ac316a7c5b095ab005c40039203196784085a4234603b1"
+ },
+ "menu_commands": {
+  "33028 Play Solo": "WM_COMMAND switches edit to play; status 0; explorer nodes 14 to 56",
+  "32792 Explorer": "XTP docking pane with live DataModel tree",
+  "57600 File New": "replaces document in process, Ogre restart, cleanup zero both times",
+  "57664 About": "dialog 117 DoModal returned IDCANCEL (2)",
+  "32966 Run": "toolbar command runs simulation, status logged, cleanup zero",
+  "32967 Pause": "status logged",
+  "32968 Reset": "reloads document, cleanup zero both opens"
+ },
+ "not_rerun_on_this_exe": [],
+ "execute_script": "RunFile via -p6-runfile moved Brick to 1,2,3; file dialog path not exercised",
+ "property_edit": {
+  "select": "Brick",
+  "properties_listed": 50,
+  "set": "Name=Renamed via SetProperty, status 0",
+  "reopened": "Renamed found",
+  "skipped": "CoordinateFrame string conversion hangs",
+  "limit": "Grid notify path shares SetProperty but was not driven by real typing"
+ },
+ "startup_trace": {
+  "file": "work/2008-06/p6-client/startup-stages.txt",
+  "kind": "Self-reported stage prints with nearest original call VA. Not a debugger trace of the original. 0044db4e labels the place where this client does its own setup; the original calls initializeSettings 0044c760 there.",
+  "not_implemented": [
+   "crash reporter",
+   "real COM class registration; RegServer and Unregserver exit 0 without registering",
+   "nativeInitializeTypes, class and name registration calls",
+   "templates 185, 207, 138",
+   "openFiles multi-file path"
+  ],
+  "original_trace": "work/2008-06/p6-client/original-startup.json",
+  "original_kind": "One-shot int3 in unmodified original process memory; 14 of 15 sites hit in InitInstance order. ExitInstance not hit: trace terminates the process.",
+  "finding": "Slot 23 follows openFiles, consistent with Run. Original spends about 2.2 s between initializeSettings and CIDEDocManager."
+ },
+ "edit_selection": {
+  "pick_scan": "Brick at 0.3-0.4, Other at 0.6-0.7, empty elsewhere",
+  "real_click": "click at 35 percent width selected a Part, properties 50, exit 0",
+  "limits": "Right-drag orbit and wheel zoom are wired but not driven in a test; picking uses oriented boxes, so a ball picks by its box"
+ },
+ "drag": {
+  "real_mouse": "Brick -2 0 0 to -1 0 0, exit 0, on this exe",
+  "undo": "WM_COMMAND Edit Undo restored -2 0 0",
+  "limit": "horizontal plane, whole-stud snap only, no collision check"
+ },
+ "regressions": {
+  "save": 0,
+  "reopen": 0,
+  "play_solo": 0,
+  "bad_path": 1,
+  "real_drag": "-2 to -1",
+  "real_w": "z 25.5 to 18.99",
+  "saved_sha256": "d8e809ea7df458db0bcfbc4cdb154003b007e9e6eac3a5a9ecf1e00abeaed49b"
+ },
+ "output_pane": "print marker reached the pane on hidden run",
+ "script_editor": "Scintilla from SciLexer.dll; TriggerScript opened 250 chars, edited, saved to Source 262 chars. Double-click path shares OnExplorerOpen, not driven with a real mouse.",
+ "merged_codex": "cc5796493c",
+ "tabs_fps": "CXTPTabClientWnd tabs and status FPS, screenshot showed 46fps; engine open deferred to first nonzero OnSize; test mode now off screen, not SW_HIDE",
+ "edit_camera": "wheel and right-drag sent as view messages: scan before --BB-OO--, zoomed -BBB-OOOO, orbited BBB--OOOO"
+}

@@ -1,0 +1,158 @@
+{
+  "scope": "Inactive source/provider proof. No linked selection, full dependency ABI, runtime activation or server credit.",
+  "swap_target": "CRobloxDoc RunService lifetime dependency",
+  "baseline_commit": "9bd58c6d78ae205056b16fbfc9d233ca5036d93b",
+  "baseline_receipt": "work/integration-pass-20261106-2007/summary.json",
+  "package": {
+    "revision": "045d8ce8e42565232578ac46d73ad4bde5c260008ea025c6982b75e9cb7b10e5",
+    "source_revision": "045d8ce8e42565232578ac46d73ad4bde5c260008ea025c6982b75e9cb7b10e5",
+    "authority": "RoConstruct/work/workspace",
+    "native_workflow_version": 52,
+    "draft_workflow_version": 1
+  },
+  "blockers": [
+    {
+      "id": "boost-thread-exception-provider-00568430",
+      "address": "00568430",
+      "symbol": "??0thread_resource_error@boost@@QAE@XZ",
+      "provider": "boost::thread_resource_error (vendor boost_1_34_1 exceptions)",
+      "evidence": "Validated RunService receipt: ctor/dtor graphs advance through 79 events but fail at the boost::thread_resource_error constructor (00568430).",
+      "owner": "owner",
+      "status": "recovered-pending-integration",
+      "next_proof": "Re-run the RunService ctor EH audit (00556b00) with this provider attached and confirm the graph advances past 79 events."
+    },
+    {
+      "id": "boost-exception-deleting-dtor-00406be0",
+      "address": "00406be0",
+      "symbol": "??_Gthread_resource_error@boost@@UAEPAXI@Z",
+      "provider": "boost::thread_resource_error (vendor boost_1_34_1 exceptions)",
+      "evidence": "Scalar deleting destructor at 00406be0 is byte-exact (30B) when destructor inlining is disabled; the complete destructor at 00568410 is byte-exact (12B) with the vtable data at 0x80b49c matched.",
+      "owner": "owner",
+      "status": "recovered-pending-integration",
+      "next_proof": "Re-run the RunService ctor EH audit (00556b00) with the recovered provider attached; no further boost provider blocker remains."
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "vendor-exceptions-verbatim",
+      "status": "confirmed",
+      "statement": "Compiling the genuine vendor boost::thread exception definitions reproduces the provider bytes.",
+      "result": "00568430 exact (26B, score 100) with vtable data matched at 0x8104d4; 00568450 what exact (6B, string at 0x82ef10); 00568420 lock_error what exact (6B, string at 0x82eefc)."
+    },
+    {
+      "id": "dtor-noinline-boundary",
+      "status": "confirmed",
+      "statement": "Original scalar deleting destructor calls the base destructor out-of-line; disabling destructor inlining reproduces both the 30B deleting and 12B complete destructor shapes.",
+      "result": "00406be0 exact (30B); 00568410 exact (12B, vtable at 0x80b49c)."
+    }
+  ],
+  "fresh_build": {
+    "source": "work/native-candidates/boost-thread-exception-20261106/BoostThreadExceptions.cpp",
+    "source_sha256": "0e0376572b918277d60802523d6d1dbc48bfeb4ff4b1f6e2cac51bcb380886a0",
+    "status": "complete",
+    "object": "work/2008-06/native-check-runs/20261106-180242-77e82117/unit-000/candidate.obj",
+    "compiler": "tools/vc2008rtm/Program Files/Microsoft Visual Studio 9.0/VC/bin/cl.exe",
+    "compiler_sha256": "a8fb826379837492f19b249a3553acc3f904afe4c93e643054d0e48340ae717a",
+    "flags": [
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD"
+    ],
+    "checks": [
+      {
+        "addr": "00568430",
+        "symbol": "??0thread_resource_error@boost@@QAE@XZ",
+        "status": "exact",
+        "score": 100,
+        "target_size": 26,
+        "object_size": 26,
+        "target_sha256": "c7f9f88bea9d88b185e6edad9809b16d062cf629a5a0d42c9dcad9a091385c62",
+        "data_matches": [
+          [
+            8455380,
+            8
+          ]
+        ],
+        "data_errors": []
+      },
+      {
+        "addr": "00568450",
+        "symbol": "?what@thread_resource_error@boost@@UBEPBDXZ",
+        "status": "exact",
+        "score": 100,
+        "target_size": 6,
+        "object_size": 6,
+        "target_sha256": "92feac01e9af67b9f4d4615fa4c0cbea65db6b44debe2f82f5a26c6cdaef1e70",
+        "data_matches": [
+          [
+            8580880,
+            29
+          ]
+        ],
+        "data_errors": [],
+        "call_identity": "passed (leaf, no calls)"
+      },
+      {
+        "addr": "00568420",
+        "symbol": "?what@lock_error@boost@@UBEPBDXZ",
+        "status": "exact",
+        "score": 100,
+        "target_size": 6,
+        "object_size": 6,
+        "target_sha256": "0edeab4d69f8c19242ff15abc17fe634c69ae774bc7d042163d1235d6cf0caad",
+        "data_matches": [
+          [
+            8580860,
+            18
+          ]
+        ],
+        "data_errors": [],
+        "call_identity": "passed (leaf, no calls)"
+      },
+      {
+        "addr": "00406be0",
+        "symbol": "??_Gthread_resource_error@boost@@UAEPAXI@Z",
+        "status": "exact",
+        "score": 100,
+        "target_size": 30,
+        "object_size": 30,
+        "target_sha256": "dd5e99a360ffe2dc5847709cdb9f8adf25d4b8220c2b585581de721032a9bd51",
+        "data_errors": []
+      },
+      {
+        "addr": "00568410",
+        "symbol": "??1thread_exception@boost@@UAE@XZ",
+        "status": "exact",
+        "score": 100,
+        "target_size": 12,
+        "object_size": 12,
+        "target_sha256": "598b1af03eb6a89193eb8679a6f4424c25290a9307dbe419efa1b45df09982e8",
+        "data_matches": [
+          [
+            8434844,
+            8
+          ]
+        ],
+        "data_errors": []
+      }
+    ]
+  },
+  "indirect_call_note": "00568430 calls the std::exception ctor through an import indirect call (ff 15 [0x802898]); no direct-call identity exists to claim. The byte-exact body plus the vtable data match cover this provider; callee ABI is a separate obligation.",
+  "next_gate": "Re-run the RunService ctor EH audit (00556b00) with the recovered provider attached; expected to advance past the 79 reviewed events. Select a linked provider and run the remaining RunService/reflection/indirect gates.",
+  "metrics": {
+    "inactive_exact_addresses": 5,
+    "executable_selected_exact_addresses": 0,
+    "fully_gated_swapped_classes": 0,
+    "unresolved_link_abi_blockers": 0,
+    "server_credit": 0
+  },
+  "server_credit_delta": 0
+}

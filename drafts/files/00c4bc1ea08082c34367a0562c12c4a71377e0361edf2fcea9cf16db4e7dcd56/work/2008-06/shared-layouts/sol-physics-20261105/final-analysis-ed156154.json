@@ -1,0 +1,78 @@
+[
+  {
+    "source": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\native-classes\\PhysicsServiceEvents.cpp",
+    "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-130507-bc1cef4a\\unit-003\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "005e9110",
+        "requested_symbol": "?onEvent@PhysicsService@RBX@@MAEXPBVWorld@2@UAssemblyPhysicsOn@2@@Z",
+        "status": "exact",
+        "symbol": "?onEvent@PhysicsService@RBX@@MAEXPBVWorld@2@UAssemblyPhysicsOn@2@@Z",
+        "score": 100,
+        "target_size": 32,
+        "object_size": 32,
+        "target_sha256": "d5cccd2c2fdd1df0a0258147ba8687005bed7fb377c5431781ee7cff926c9c1f",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [
+            {
+              "offset": 8,
+              "target": "00599f80",
+              "symbol": "?fromPrimitive@PartInstance@RBX@@SAPAV12@PAVPrimitive@2@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 23,
+              "target": "005e8f70",
+              "symbol": "?onAdded@PhysicsService@RBX@@AAEXPAVPartInstance@2@@Z",
+              "status": "verified_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 1.885725
+      },
+      {
+        "addr": "005e9130",
+        "requested_symbol": "?onEvent@PhysicsService@RBX@@MAEXPBVWorld@2@UAssemblyPhysicsOff@2@@Z",
+        "status": "exact",
+        "symbol": "?onEvent@PhysicsService@RBX@@MAEXPBVWorld@2@UAssemblyPhysicsOff@2@@Z",
+        "score": 100,
+        "target_size": 32,
+        "object_size": 32,
+        "target_sha256": "5409ee039f530eba7faaa1d4c9c83273961cdbdaac6fc75ed65453c5a7ad5d37",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [
+            {
+              "offset": 8,
+              "target": "00599f80",
+              "symbol": "?fromPrimitive@PartInstance@RBX@@SAPAV12@PAVPrimitive@2@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 23,
+              "target": "005e9040",
+              "symbol": "?onRemoved@PhysicsService@RBX@@AAEXPAVPartInstance@2@@Z",
+              "status": "verified_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.000447
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  }
+]

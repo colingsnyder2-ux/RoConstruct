@@ -1,0 +1,173 @@
+{
+  "scope": "Inactive Upload, exception reporter and GUID bytes match; HTTP implementation, COM map identity and live ownership remain unproven. Do not run.",
+  "source_sha256": "33beceebfa623ad90acd66c5cc4418b4084fefed6e64a0ac2fb90987a606ad05",
+  "error_source_sha256": "a440c4de006b4033040e1965e78e60f4781d26221d6c74ca494ceec411d747d4",
+  "guid_source_sha256": "2f4939cf7b1aa9af42fb85702c288f12ca3fe2ff91f17a1e9c48fa378fc8c975",
+  "observer_sha256": "9f1d5351d1da64dd73e831b33a4f0f479116b5e535151a27b8b895522c93130e",
+  "header_sha256": "e5ca7b6560ce7d078bbf3905ad64d77fcd6534607534b7fabfc454c3b0f05e62",
+  "object_sha256": "9f2f7dc3d1aafe273d23c3ea3ffe91812e5139ed2822c4d02d5efa522609e889",
+  "error_object_sha256": "fa660d5869705bda6f744136bc16c8d5a30c0167fae95c8b5cfede2815b1feaf",
+  "guid_object_sha256": "4879efd9b9c9327ab17dfbfcdb756c7c050117a47343872dd3f9e448dd908c35",
+  "methods": [
+    {
+      "address": "0x4166a0",
+      "symbol": "?Upload@CContent@@UAGJPA_W@Z",
+      "size": 457,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$?Upload@CContent@@UAGJPA_W@Z": [
+          "0x7bdad4"
+        ],
+        "?AfxGetAppModuleState@@YGPAVAFX_MODULE_STATE@@XZ": [
+          "0x6a0968"
+        ],
+        "??0AFX_MAINTAIN_STATE2@@QAE@PAVAFX_MODULE_STATE@@@Z": [
+          "0x6a0962"
+        ],
+        "?validateWorkspaceSiteUrl@@YAJPB_W@Z": [
+          "0x41dcd0"
+        ],
+        "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": [
+          "0x803f04"
+        ],
+        "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PB_W@Z": [
+          "0x803ed8"
+        ],
+        "??_C@_0BC@CCIMHPIK@Untrusted?5Url?3?5?$CFs?$AA@": [
+          "0x80ea80"
+        ],
+        "__imp_?Format@?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAAXPBDZZ": [
+          "0x803edc"
+        ],
+        "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": [
+          "0x803f14"
+        ],
+        "__imp_??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ": [
+          "0x803ee0"
+        ],
+        "?CLSID_Content@@3U_GUID@@B": [
+          "0x816518"
+        ],
+        "?reportWorkspaceSiteError@@YAJABU_GUID@@PBDJ@Z": [
+          "0x429330"
+        ],
+        "?AfxDeactivateActCtx@@YGHKK@Z": [
+          "0x6a095c"
+        ],
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": [
+          "0x802460"
+        ],
+        "??0Http@RBX@@QAE@PBD@Z": [
+          "0x409750"
+        ],
+        "?post@Http@RBX@@QAEXAAV?$basic_istream@DU?$char_traits@D@std@@@std@@_NAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@4@@Z": [
+          "0x569a40"
+        ],
+        "??1Http@RBX@@QAE@XZ": [
+          "0x5df620"
+        ],
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": [
+          "0x802468"
+        ],
+        "?reportWorkspaceSiteError@@YAJABU_GUID@@ABVexception@std@@@Z": [
+          "0x429360"
+        ],
+        "$LN14": [
+          "0x416844"
+        ],
+        "??1AFX_MAINTAIN_STATE2@@QAE@XZ": [
+          "0x4060f0"
+        ]
+      }
+    },
+    {
+      "address": "0x409750",
+      "symbol": "??0Http@RBX@@QAE@PBD@Z",
+      "size": 77,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$??0Http@RBX@@QAE@PBD@Z": [
+          "0x7c6b49"
+        ],
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": [
+          "0x802458"
+        ],
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": [
+          "0x802460"
+        ]
+      }
+    },
+    {
+      "address": "0x5df620",
+      "symbol": "??1Http@RBX@@QAE@XZ",
+      "size": 78,
+      "exact": true,
+      "bindings": {
+        "__ehhandler$??1Http@RBX@@QAE@XZ": [
+          "0x7c6b49"
+        ],
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": [
+          "0x802468"
+        ]
+      }
+    },
+    {
+      "address": "0x429360",
+      "symbol": "?reportWorkspaceSiteError@@YAJABU_GUID@@ABVexception@std@@@Z",
+      "size": 49,
+      "exact": true,
+      "bindings": {
+        "?reportWorkspaceStatus@@YAXGPBD@Z": [
+          "0x427c20"
+        ],
+        "_GUID_NULL": [
+          "0x8501ec"
+        ],
+        "?AtlReportError@ATL@@YGJABU_GUID@@PBDK10J@Z": [
+          "0x4290b0"
+        ]
+      }
+    }
+  ],
+  "clsid_original": "0x816518",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\content-upload-probe\\CContentUploadProfile.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\content-upload-probe\\CContentUploadProfile.cpp"
+  ],
+  "http_donor": {
+    "object_sha256": "8ef5b252374dba637556a44cb32ee3b9b774a6d7abac973fa77de83931f0fded",
+    "methods": [
+      {
+        "symbol": "?post@Http@RBX@@QAEXAAV?$basic_istream@DU?$char_traits@D@std@@@std@@_NAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@4@@Z",
+        "address": "0x569a40",
+        "candidate_size": 155,
+        "original_size": 155,
+        "exact": true
+      },
+      {
+        "symbol": "?httpRequest@Http@RBX@@AAEX_NAAV?$basic_istream@DU?$char_traits@D@std@@@std@@0PBDAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@4@@Z",
+        "address": "0x5f9c30",
+        "candidate_size": 1835,
+        "original_size": 2515,
+        "exact": false
+      },
+      {
+        "symbol": "?httpRequestAlternate@Http@RBX@@AAEX_NAAV?$basic_istream@DU?$char_traits@D@std@@@std@@0PBDAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@4@@Z",
+        "address": "0x5f8b60",
+        "candidate_size": 1835,
+        "original_size": 2261,
+        "exact": false
+      }
+    ],
+    "scope": "post matches but both HTTP backends differ; linker selection, global mode identity and runtime remain unproven."
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "independent_binding_source": "Original verified clients/2008-06/Roblox.exe disassembly; semantic prototypes from frozen module EnumConverter.h and MSVC STL declarations. Map helper also independently byte-exact117/117 against00446110.",
+  "original_constructor_calls": [
+    {
+      "offset": 43,
+      "target": "0x56c590",
+      "indirect": false
+    },
+    {
+      "offset": 73,
+      "target": "0x446110",
+      "indirect": false
+    },
+    {
+      "offset": 96,
+      "target": "0x446110",
+      "indirect": false
+    },
+    {
+      "offset": 111,
+      "target": "0x6a0920",
+      "indirect": false
+    },
+    {
+      "offset": 153,
+      "target": "0x6a0920",
+      "indirect": false
+    },
+    {
+      "offset": 195,
+      "target": "0x6a0920",
+      "indirect": false
+    },
+    {
+      "offset": 237,
+      "target": "0x6a0920",
+      "indirect": false
+    },
+    {
+      "offset": 279,
+      "target": "0x6a0920",
+      "indirect": false
+    },
+    {
+      "offset": 321,
+      "target": "0x64d530",
+      "indirect": false
+    },
+    {
+      "offset": 335,
+      "target": "0x64d530",
+      "indirect": false
+    },
+    {
+      "offset": 349,
+      "target": "0x64d530",
+      "indirect": false
+    },
+    {
+      "offset": 363,
+      "target": "0x64d530",
+      "indirect": false
+    },
+    {
+      "offset": 377,
+      "target": "0x64d530",
+      "indirect": false
+    },
+    {
+      "offset": 391,
+      "target": "0x64d530",
+      "indirect": false
+    },
+    {
+      "offset": 405,
+      "target": "0x64d530",
+      "indirect": false
+    },
+    {
+      "offset": 419,
+      "target": "0x64d530",
+      "indirect": false
+    },
+    {
+      "offset": 433,
+      "target": "0x64d530",
+      "indirect": false
+    },
+    {
+      "offset": 447,
+      "target": "0x64d530",
+      "indirect": false
+    },
+    {
+      "offset": 461,
+      "target": "0x64d530",
+      "indirect": false
+    },
+    {
+      "offset": 475,
+      "target": "0x64d530",
+      "indirect": false
+    },
+    {
+      "offset": 489,
+      "target": "0x64d530",
+      "indirect": false
+    },
+    {
+      "offset": 503,
+      "target": "0x64d530",
+      "indirect": false
+    },
+    {
+      "offset": 517,
+      "target": "0x64d530",
+      "indirect": false
+    }
+  ],
+  "direct_calls": 23,
+  "indirect_calls": 0,
+  "review": "All23 direct destinations agree with call-analysis.json. No constructor indirect-call blocker. Base callee transitive closure, addPair machine mismatch, EH and runtime ABI proof remain separate obligations.",
+  "addPair": {
+    "target_size": 530,
+    "object_size": 547,
+    "score": 55,
+    "first_difference": 35,
+    "data_status": "Not checked: runner only checks data after exact body. Earlier zero-data-errors shorthand meant absent errors, NOT successful helper data proof."
+  },
+  "frozen_paths": [
+    "rebuild/2008-06/tests/PlayerNativeSoundEnum.cpp",
+    "rebuild/2008-06/modules/p4-sound-asset.json"
+  ]
+}

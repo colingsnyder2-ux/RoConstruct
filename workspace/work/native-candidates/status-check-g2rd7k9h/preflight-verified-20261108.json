@@ -1,0 +1,60 @@
+﻿{
+    "base_commit":  "2da654506111296a9f85e38b18500710df5dd5c3",
+    "base_workspace_tree":  "043ec79ca8391fb4a1c7e9dac2bd7f12b29e4810",
+    "candidate_tree":  "efadaeb4c59c44a31f606d16e14acc90b2c3709a",
+    "tree_scope":  "workspace",
+    "source_candidates":  [
+                              "status-check-g2rd7k9h",
+                              "site-link-repair-y_hkcvtj"
+                          ],
+    "files":  {
+                  "roc/native_status.py":  {
+                                               "blob":  "4361ff51fbcdd9c5867573ca3df2b2e20136483f",
+                                               "bytes":  17118,
+                                               "sha256":  "f2ce8f965f314744de956cc1029fa83aa6398494332d0e8019cf734356454fff",
+                                               "source":  "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\status-check-g2rd7k9h\\roc\\native_status.py"
+                                           },
+                  "tests/test_native_status.py":  {
+                                                      "blob":  "20296535b36cc55893f81c7e9d3462f1bbeccdb9",
+                                                      "bytes":  14242,
+                                                      "sha256":  "471dafeceb604e9fd323b8fb6bbc6252aef3bdee7ec9f7fdb1a20568f931bfb1",
+                                                      "source":  "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\status-check-g2rd7k9h\\tests\\test_native_status.py"
+                                                  },
+                  "roc/integration_site.py":  {
+                                                  "blob":  "8ec948236b7736c5931bed8491cdbd458b7e7258",
+                                                  "bytes":  27314,
+                                                  "sha256":  "8fb8cea55cb16f4a2f39449db8d262fe840ed534f8e6523ad0d638385871664a",
+                                                  "source":  "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\site-link-repair-y_hkcvtj\\roc\\integration_site.py"
+                                              },
+                  "tests/test_integration_site.py":  {
+                                                         "blob":  "af23b669cdd17d058a887951c9b2f66c6583a8e2",
+                                                         "bytes":  12221,
+                                                         "sha256":  "fd2f55a844a01589fee4ff38b4ae97ecf98586c7937061eb9f3826fa7a867f4c",
+                                                         "source":  "C:\\Users\\colin\\RoConstruct\\work\\native-candidates\\site-link-repair-y_hkcvtj\\tests\\test_integration_site.py"
+                                                     }
+              },
+    "added":  [
+
+              ],
+    "modified":  [
+                     "roc/integration_site.py",
+                     "roc/native_status.py",
+                     "tests/test_integration_site.py",
+                     "tests/test_native_status.py"
+                 ],
+    "deleted":  [
+
+                ],
+    "preservation_passed":  true,
+    "tests":  {
+                  "command":  "python -m pytest tests/test_native_status.py tests/test_integration_site.py -q",
+                  "result":  "39 passed",
+                  "exit_ok":  true
+              },
+    "combined_run":  {
+                         "command":  "python -m pytest tests/test_native_status.py tests/test_integration_site.py tests/test_glue_owner.py tests/test_p6_native_cache.py tests/test_p6_native_parallel.py tests/test_p6_provider_ownership.py -q",
+                         "result":  "68 passed"
+                     },
+    "generated":  "2026-11-08T11:32:58.1401630-05:00",
+    "note":  "Exact-byte rebuild for the current work tip; supersedes stale stored preflight trees. Preservation covers workspace tree only. Compile, matching, dependency and runtime gates are separate."
+}

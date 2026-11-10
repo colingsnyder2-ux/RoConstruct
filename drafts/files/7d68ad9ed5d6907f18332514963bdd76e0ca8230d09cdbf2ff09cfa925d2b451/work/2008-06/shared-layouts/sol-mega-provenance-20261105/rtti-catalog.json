@@ -1,0 +1,222 @@
+[
+  {
+    "class": "RBX::PAVModelInstance::?$sp_counted_impl_pd",
+    "vtable": "0080e9b4",
+    "slots": [
+      [
+        "00415000",
+        0
+      ],
+      [
+        "0048ee50",
+        0
+      ],
+      [
+        "00405e10",
+        0
+      ],
+      [
+        "005a0460",
+        0
+      ]
+    ]
+  },
+  {
+    "class": "RBX::PAVPartInstance::?$sp_counted_impl_pd",
+    "vtable": "0080f1cc",
+    "slots": [
+      [
+        "00415000",
+        0
+      ],
+      [
+        "0048ee50",
+        0
+      ],
+      [
+        "00405e10",
+        0
+      ],
+      [
+        "005a0460",
+        0
+      ]
+    ]
+  },
+  {
+    "class": "RBX::VInstance::V?$shared_ptr::V?$vector::?$sp_counted_impl_p",
+    "vtable": "00822674",
+    "slots": [
+      [
+        "00415000",
+        0
+      ],
+      [
+        "0049a750",
+        0
+      ],
+      [
+        "00405e10",
+        0
+      ],
+      [
+        "005f2310",
+        0
+      ]
+    ]
+  },
+  {
+    "class": "RBX::Network::Replicator::VNewInstanceItem::?$sp_counted_impl_p",
+    "vtable": "0082471c",
+    "slots": [
+      [
+        "00415000",
+        0
+      ],
+      [
+        "004ac390",
+        0
+      ],
+      [
+        "00405e10",
+        0
+      ],
+      [
+        "005f2310",
+        0
+      ]
+    ]
+  },
+  {
+    "class": "RBX::Network::Replicator::VDeleteInstanceItem::?$sp_counted_impl_p",
+    "vtable": "00824744",
+    "slots": [
+      [
+        "00415000",
+        0
+      ],
+      [
+        "004ac390",
+        0
+      ],
+      [
+        "00405e10",
+        0
+      ],
+      [
+        "005f2310",
+        0
+      ]
+    ]
+  },
+  {
+    "class": "RBX::Reflection::VSignalInstance::?$sp_counted_impl_p",
+    "vtable": "0082f614",
+    "slots": [
+      [
+        "00415000",
+        0
+      ],
+      [
+        "004ac390",
+        0
+      ],
+      [
+        "00405e10",
+        0
+      ],
+      [
+        "005f2310",
+        0
+      ]
+    ]
+  },
+  {
+    "class": "RBX::VPVInstance::PAV?$FilteredSelection::?$sp_counted_impl_pd",
+    "vtable": "0083070c",
+    "slots": [
+      [
+        "00415000",
+        0
+      ],
+      [
+        "0048ee50",
+        0
+      ],
+      [
+        "00405e10",
+        0
+      ],
+      [
+        "005a0460",
+        0
+      ]
+    ]
+  },
+  {
+    "class": "RBX::VModelInstance::PAV?$FilteredSelection::?$sp_counted_impl_pd",
+    "vtable": "00830720",
+    "slots": [
+      [
+        "00415000",
+        0
+      ],
+      [
+        "0048ee50",
+        0
+      ],
+      [
+        "00405e10",
+        0
+      ],
+      [
+        "005a0460",
+        0
+      ]
+    ]
+  },
+  {
+    "class": "RBX::VPartInstance::PAV?$FilteredSelection::?$sp_counted_impl_pd",
+    "vtable": "0083d2e0",
+    "slots": [
+      [
+        "00415000",
+        0
+      ],
+      [
+        "0048ee50",
+        0
+      ],
+      [
+        "00405e10",
+        0
+      ],
+      [
+        "005a0460",
+        0
+      ]
+    ]
+  },
+  {
+    "class": "RBX::VInstance::PAV?$FilteredSelection::?$sp_counted_impl_pd",
+    "vtable": "00843a70",
+    "slots": [
+      [
+        "00415000",
+        0
+      ],
+      [
+        "0048ee50",
+        0
+      ],
+      [
+        "00405e10",
+        0
+      ],
+      [
+        "005a0460",
+        0
+      ]
+    ]
+  }
+]

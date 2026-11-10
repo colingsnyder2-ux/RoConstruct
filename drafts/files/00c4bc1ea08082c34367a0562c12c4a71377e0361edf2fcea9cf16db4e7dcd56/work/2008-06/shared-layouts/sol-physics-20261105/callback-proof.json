@@ -1,0 +1,41 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/PhysicsServiceEvents.cpp",
+      "checks": [
+        {
+          "addr": "005e9110",
+          "symbol": "?onEvent@PhysicsService@RBX@@MAEXPBVWorld@2@UAssemblyPhysicsOn@2@@Z",
+          "calls": [
+            {
+              "offset": 8,
+              "target": "00599f80",
+              "symbol": "?fromPrimitive@PartInstance@RBX@@SAPAV12@PAVPrimitive@2@@Z"
+            },
+            {
+              "offset": 23,
+              "target": "005e8f70",
+              "symbol": "?onAdded@PhysicsService@RBX@@AAEXPAVPartInstance@2@@Z"
+            }
+          ]
+        },
+        {
+          "addr": "005e9130",
+          "symbol": "?onEvent@PhysicsService@RBX@@MAEXPBVWorld@2@UAssemblyPhysicsOff@2@@Z",
+          "calls": [
+            {
+              "offset": 8,
+              "target": "00599f80",
+              "symbol": "?fromPrimitive@PartInstance@RBX@@SAPAV12@PAVPrimitive@2@@Z"
+            },
+            {
+              "offset": 23,
+              "target": "005e9040",
+              "symbol": "?onRemoved@PhysicsService@RBX@@AAEXPAVPartInstance@2@@Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

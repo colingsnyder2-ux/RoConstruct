@@ -1,0 +1,18 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/PanelGetPositionTrial.cpp",
+      "checks": [
+        {
+          "addr": "005738e0",
+          "symbol": "?getPosition@PercentPanel@RBX@@UBE?AVVector2@G3D@@XZ",
+          "calls": [
+            {"offset": 122, "target": "005cef00", "symbol": "?positionPoint@Rect@RBX@@QBE?AVVector2@G3D@@ABV34@W4Location@12@1@Z"}
+          ]
+        }
+      ],
+      "ranges": [],
+      "layouts": []
+    }
+  ]
+}

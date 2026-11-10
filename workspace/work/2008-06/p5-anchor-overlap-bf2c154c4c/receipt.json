@@ -1,0 +1,76 @@
+{
+  "revision": "bf2c154c4c070da19ddb305c1594d069f6f1dbfd",
+  "exe_sha256": "98319fbf73c3c759342de5ef62720fd3a6994d24e8eee795f377bce73bb8a2bb",
+  "fixture_sha256": "c377e8d9e0add162fbb3b3bcbcba498a5c9d69048da718eb3050679da8d1b63c",
+  "observer_sha256": "3b41026b9a27035ada9d85066e024f06c1fe9b100533f69460c4ad1643fc03fc",
+  "scope": "Fixed-step Lua-driven anchor cycle in rebuilt player with tracked anchor/heartbeat shims.",
+  "P5_complete": false,
+  "runs": {
+    "edit": {
+      "exit": 0,
+      "frames": 50,
+      "transitions": [],
+      "first_y": 20.0,
+      "last_y": 20.0,
+      "tail_min": 20.0,
+      "tail_max": 20.0,
+      "fixture_sha256": "c377e8d9e0add162fbb3b3bcbcba498a5c9d69048da718eb3050679da8d1b63c",
+      "samples_sha256": "cedc054a90dfec0b8921db126b587b7f9530631e300253ba2f480b0a3da6b3c9"
+    },
+    "cycle": {
+      "exit": 0,
+      "frames": 600,
+      "transitions": [
+        6,
+        15,
+        24
+      ],
+      "first_y": 20.0,
+      "last_y": -3.8027389,
+      "tail_min": -3.8027389,
+      "tail_max": -3.8027389,
+      "fixture_sha256": "c377e8d9e0add162fbb3b3bcbcba498a5c9d69048da718eb3050679da8d1b63c",
+      "samples_sha256": "c2373fbb218c7d29f58e7bb3808a45e12bd9a21be5a16123ceb8dded912cdc24"
+    },
+    "reopen": {
+      "exit": 0,
+      "frames": 600,
+      "transitions": [
+        6,
+        15,
+        24
+      ],
+      "first_y": 20.0,
+      "last_y": -3.8027389,
+      "tail_min": -3.8027389,
+      "tail_max": -3.8027389,
+      "fixture_sha256": "c377e8d9e0add162fbb3b3bcbcba498a5c9d69048da718eb3050679da8d1b63c",
+      "samples_sha256": "c2373fbb218c7d29f58e7bb3808a45e12bd9a21be5a16123ceb8dded912cdc24"
+    },
+    "overlap": {
+      "exit": 0,
+      "frames": 600,
+      "transitions": [
+        6,
+        12,
+        18
+      ],
+      "first_y": 20.0,
+      "last_y": -3.8027389,
+      "tail_min": -3.8027389,
+      "tail_max": -3.8027389,
+      "fixture_sha256": "3629faeadc1d4f556b6a7dadd9a7097b67d8913a0bc33dc2d288bcc4c945c83c",
+      "samples_sha256": "89834db1926b9e22f4b333541e24be5fcf545fb2e68d1606d8fe312798f31e42"
+    },
+    "flags": {
+      "exit": 0,
+      "combinations": 8
+    }
+  },
+  "remaining": [
+    "Original fixed-step physics comparison",
+    "Native AnchorJoint/FreeJoint integration",
+    "Normal launch, character input and controller"
+  ],
+  "reopen_max_delta": 0.0
+}

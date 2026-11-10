@@ -1,0 +1,52 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/TextDisplay.cpp",
+      "checks": [
+        {
+          "addr": "005735e0",
+          "symbol": "?init@TextDisplay@RBX@@AAEXXZ",
+          "calls": [
+            {"offset": 37, "target": "00514940", "symbol": "?purple@Color3@G3D@@SAABV12@XZ"},
+            {"offset": 78, "target": "007baf10", "symbol": "?clear@Color4@G3D@@SAABV12@XZ"}
+          ]
+        },
+        {
+          "addr": "00573670",
+          "symbol": "?render2d@TextDisplay@RBX@@UAEXPAVAdorn@2@@Z",
+          "calls": [
+            {"offset": 78, "target": "00573360", "symbol": "?label2d@GuiItem@RBX@@IBEXPAVAdorn@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVColor4@G3D@@2W4XAlign@32@@Z"}
+          ]
+        },
+        {
+          "addr": "005744a0",
+          "symbol": "??0TextDisplay@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z",
+          "calls": [
+            {"offset": 30, "target": "005739d0", "symbol": "??0GuiItem@RBX@@QAE@XZ"},
+            {"offset": 152, "target": "005735e0", "symbol": "?init@TextDisplay@RBX@@AAEXXZ"},
+            {"offset": 164, "target": "0055af90", "symbol": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"}
+          ]
+        },
+        {"addr": "00574570", "symbol": "?getFontSize@TextDisplay@RBX@@MBEHXZ"},
+        {"addr": "00574580", "symbol": "?getLabel@TextDisplay@RBX@@MBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"},
+        {
+          "addr": "00574630",
+          "symbol": "??1TextDisplay@RBX@@UAE@XZ",
+          "calls": [
+            {"offset": 59, "target": "00411540", "symbol": "??1GuiItem@RBX@@UAE@XZ"}
+          ]
+        },
+        {"addr": "005745b0", "symbol": "??_ETextDisplay@RBX@@WIE@AEPAXI@Z"},
+        {"addr": "005745c0", "symbol": "??_ETextDisplay@RBX@@WKE@AEPAXI@Z"},
+        {"addr": "005745d0", "symbol": "??_ETextDisplay@RBX@@WME@AEPAXI@Z"},
+        {"addr": "005745e0", "symbol": "??_ETextDisplay@RBX@@WBA@AEPAXI@Z"},
+        {"addr": "005745f0", "symbol": "??_ETextDisplay@RBX@@WBE@AEPAXI@Z"},
+        {"addr": "00574600", "symbol": "??_ETextDisplay@RBX@@WCE@AEPAXI@Z"},
+        {"addr": "00574610", "symbol": "??_ETextDisplay@RBX@@WEE@AEPAXI@Z"},
+        {"addr": "00574620", "symbol": "??_ETextDisplay@RBX@@WGE@AEPAXI@Z"}
+      ],
+      "ranges": [],
+      "layouts": []
+    }
+  ]
+}

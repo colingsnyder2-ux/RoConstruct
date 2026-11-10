@@ -1,0 +1,23 @@
+{
+  "retained": 289,
+  "changed": [],
+  "lost": [
+    "$LN181",
+    "??0?$CPathT@V?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@@ATL@@QAE@XZ",
+    "??0?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAE@XZ",
+    "??_C@_07MGHHBANJ@Roblox?2?$AA@",
+    "??_C@_1EO@FDMDPONF@?$AA?$HL?$AAF?$AA1?$AAB?$AA3?$AA2?$AA7?$AA8?$AA5?$AA?9?$AA6?$AAF?$AAB?$AAA?$AA?9?$AA4?$AAF?$AAC?$AAF?$AA?9?$AA9?$AAD?$AA5?$AA5?$AA?9?$AA7?$AAB?$AA8?$AAE?$AA7?$AAF?$AA1@",
+    "??_C@_1EO@LHHCNAEB@?$AA?$HL?$AAA?$AA5?$AA2?$AA0?$AAA?$AA1?$AAA?$AA4?$AA?9?$AA1?$AA7?$AA8?$AA0?$AA?9?$AA4?$AAF?$AAF?$AA6?$AA?9?$AAB?$AAD?$AA1?$AA8?$AA?9?$AA1?$AA6?$AA7?$AA3?$AA4?$AA3?$AAC@",
+    "?getUserAppDataDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NPBD@Z",
+    "__ehfuncinfo$?getUserAppDataDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NPBD@Z",
+    "__ehhandler$?getUserAppDataDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NPBD@Z",
+    "__unwindfunclet$?getUserAppDataDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NPBD@Z$0",
+    "__unwindfunclet$?getUserAppDataDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NPBD@Z$1",
+    "__unwindfunclet$?getUserAppDataDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NPBD@Z$2",
+    "__unwindfunclet$?getUserAppDataDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NPBD@Z$3",
+    "__unwindfunclet$?getUserAppDataDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NPBD@Z$4",
+    "__unwindfunclet$?getUserAppDataDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NPBD@Z$5",
+    "__unwindtable$?getUserAppDataDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NPBD@Z"
+  ],
+  "new": []
+}

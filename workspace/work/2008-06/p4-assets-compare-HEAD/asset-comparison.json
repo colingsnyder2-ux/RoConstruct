@@ -1,0 +1,165 @@
+{
+  "scope": "Texture quadrant orientation, tinted fallback, sphere color; not pixel/UI parity.",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "player_revision": "866583a6184fcc33243c9553afede3f260f73190",
+  "player_exe_sha256": "4def62743b4664c91f448a9a63d39242f3184342fe32b1ed77a330298aa66077",
+  "observer_sha256": "86dbc3f4469d0b20b998a7bb30b3634a45787ab85896fd2127b1d5574ea7f40c",
+  "captures": {
+    "work\\2008-06\\original-p4-reference\\original-panel.jpg": "76800d50b21934285fb13fd73b33cdfc3a4f0e2c92e19d2d3aba24fadf01afbe",
+    "work\\2008-06\\p4-assets-compare-HEAD\\panel\\last.png": "feba5d6a69d9484d6c02dc0c588814e84161cc266818addbca0ad5314e241d0b",
+    "work\\2008-06\\original-p4-reference\\original-gallery.jpg": "869e6658864f497f8fc578e11935e1862882a368ad1d97056c04f05686b8abe5",
+    "work\\2008-06\\p4-assets-compare-HEAD\\gallery\\last.png": "c99b595bfdeaa3813084bcba912bcfe1c88d2e93e8625cb9b7574f5b168cd3bd",
+    "work\\2008-06\\original-p4-reference\\original-missing-texture.jpg": "eb44fc85cc03b3aab2ea445b3b97df05784aabe6c4644c0ffb2ab769a28433f8",
+    "work\\2008-06\\p4-assets-compare-HEAD\\missing-texture\\last.png": "b73b0b809cff67af01a704e27da8aec4cc2a4a6d5a781d5aac3596a563f2ea9c",
+    "work\\2008-06\\original-p4-reference\\original-missing-mesh.jpg": "4ca9609cd23ee1e790ed267cdc2e0d663c3509d14e22f0305df8799e2f367ca4"
+  },
+  "checks": {
+    "panel": {
+      "original_bounds": [
+        192,
+        287,
+        357,
+        453
+      ],
+      "rebuilt_bounds": [
+        103,
+        63,
+        218,
+        179
+      ],
+      "original_quadrants_rgb": [
+        [
+          255,
+          93,
+          91
+        ],
+        [
+          32,
+          190,
+          33
+        ],
+        [
+          35,
+          35,
+          193
+        ],
+        [
+          181,
+          182,
+          29
+        ]
+      ],
+      "rebuilt_quadrants_rgb": [
+        [
+          255,
+          83,
+          83
+        ],
+        [
+          30,
+          180,
+          30
+        ],
+        [
+          31,
+          31,
+          184
+        ],
+        [
+          172,
+          172,
+          28
+        ]
+      ]
+    },
+    "gallery": {
+      "original_bounds": [
+        151,
+        329,
+        233,
+        411
+      ],
+      "rebuilt_bounds": [
+        74,
+        92,
+        132,
+        150
+      ],
+      "original_quadrants_rgb": [
+        [
+          233,
+          61,
+          59
+        ],
+        [
+          60,
+          227,
+          59
+        ],
+        [
+          45,
+          44,
+          207
+        ],
+        [
+          205,
+          205,
+          45
+        ]
+      ],
+      "rebuilt_quadrants_rgb": [
+        [
+          223,
+          55,
+          55
+        ],
+        [
+          56,
+          220,
+          56
+        ],
+        [
+          41,
+          41,
+          198
+        ],
+        [
+          198,
+          198,
+          42
+        ]
+      ],
+      "sphere_center_rgb": [
+        [
+          137,
+          29,
+          19
+        ],
+        [
+          131,
+          27,
+          18
+        ]
+      ]
+    },
+    "missing_texture": {
+      "green_fallback_rgb": [
+        [
+          40,
+          107,
+          64
+        ],
+        [
+          36,
+          100,
+          58
+        ]
+      ]
+    },
+    "missing_mesh": {
+      "original": "visually absent; capture retained",
+      "rebuilt": "zero foreground; separate runtime receipt"
+    }
+  },
+  "asset_comparison_pass": true
+}

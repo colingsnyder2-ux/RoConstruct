@@ -1,0 +1,154 @@
+{
+  "revision": "b8cd526f04dc6f0b2ea076e2e938e353697be628",
+  "scope": "Ordinary block native render path; milestone verdict is recorded in p2-acceptance-audit.md",
+  "ROC_BUILD": null,
+  "asset": "C:\\Users\\colin\\RoConstruct\\work\\client2007\\content\\textures\\SurfacesStrip.png",
+  "asset_sha256": "dc5418f1c8dbd2e1fc218c392b41e3b55461817930a9468d821c5d48bdae85e4",
+  "exe_sha256": "d435f6b5ef07faa689624c472358067148ab56a147241342b02e4a8038c44407",
+  "map_sha256": "2de41c486a95669441eab886c40006182aa98e358bd6018ed49aaee55bd00ba4",
+  "fixture_sha256": "5edbe47c0cd7eea74912275648559189c218600697e7c908480d3bc7303a1549",
+  "runs": {
+    "selftest": {
+      "command": [
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\P2RecoveredPlayer.exe",
+        "--selftest"
+      ],
+      "cwd": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p2-flat-producer\\final-sky-p2-regression\\selftest",
+      "exit": 0,
+      "cleanup_zero": true,
+      "stdout_sha256": "e70c6e4078a61f588223498eb297c122470fe0dd07de051740fe6e41367615da",
+      "pixels": {
+        "pixel_metric": "lit green: G>50, G>2R, 2G>3B",
+        "initial": {
+          "models": 1,
+          "greenA": 1879,
+          "greenB": 0,
+          "pass": true
+        },
+        "moved": {
+          "models": 1,
+          "greenA": 0,
+          "greenB": 2080,
+          "pass": true
+        },
+        "removed": {
+          "models": 0,
+          "green": 0,
+          "pass": true
+        },
+        "empty": {
+          "models": 0,
+          "green": 0,
+          "pass": true
+        },
+        "failures": 0
+      },
+      "captures": {
+        "initial": {
+          "sha256": "c45f954cbf174bb689c58c6dc7eab0fc2de0cd4b5c9c5c4ff86b0c57b8263844",
+          "lit_A": 1879,
+          "lit_B": 0,
+          "legacy_unlit_A": 8,
+          "legacy_unlit_B": 0
+        },
+        "moved": {
+          "sha256": "f88f0fd09c79c139f3313fdfa418acc84adb8b2b2ae89f703052f0d1db5b02b4",
+          "lit_A": 0,
+          "lit_B": 2080,
+          "legacy_unlit_A": 0,
+          "legacy_unlit_B": 9
+        },
+        "removed": {
+          "sha256": "43b90f1bd66171f89cd34a1f8320045431e7e41db921e3572405f83f9ad955de",
+          "lit_A": 0,
+          "lit_B": 0,
+          "legacy_unlit_A": 0,
+          "legacy_unlit_B": 0
+        },
+        "empty": {
+          "sha256": "43b90f1bd66171f89cd34a1f8320045431e7e41db921e3572405f83f9ad955de",
+          "lit_A": 0,
+          "lit_B": 0,
+          "legacy_unlit_A": 0,
+          "legacy_unlit_B": 0
+        }
+      }
+    },
+    "cachetest": {
+      "command": [
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\P2RecoveredPlayer.exe",
+        "--cachetest",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\fixtures\\cache-blocks.rbxl"
+      ],
+      "cwd": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p2-flat-producer\\final-sky-p2-regression\\cachetest",
+      "exit": 0,
+      "cleanup_zero": true,
+      "stdout_sha256": "88b397e290c2b03d5fba661c2189cb42f783aa78e742d60900d141f83adf67f9",
+      "passed_cycles": 2
+    },
+    "falling-smoke": {
+      "command": [
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\P2RecoveredPlayer.exe",
+        "--frames",
+        "240",
+        "C:\\Users\\colin\\RoConstruct\\falling.rbxl"
+      ],
+      "cwd": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p2-flat-producer\\final-sky-p2-regression\\falling-smoke",
+      "exit": 0,
+      "cleanup_zero": true,
+      "stdout_sha256": "b712e41e0e4214ca1054d8f062333beec3b1b0c6c924cc8f2ba1555d0cd609ba",
+      "observation": "after 240 frames: Brick at (-6.59815e-016,-3.80274,-3.42562e-015), models=2"
+    }
+  },
+  "loaded_dlls": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\rgmain.dll": "b67d2e96c5bf28fe48799a96c7927c57b91c74e483b30975ee58ca45f470153c",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\rgdx.dll": "dfce3291ea1214f37aae8e009af1891c45ab7843eb639a914d9791418559a50e"
+  },
+  "pixel_metric": "G>50, G>2R, 2G>3B; unchanged area/noise gates and fixture",
+  "previous_unlit_metric": "G>120, R<90, B<90; retained per capture, no longer acceptance metric",
+  "selected_symbols": {
+    "?prepareBackend@": [
+      "0001:00015e40       ?prepareBackend@PlayerNativeMaterial@@YA?AVMaterialPtr@Ogre@@AAVMaterialBase@1@PAXHHMABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 00416e40 f   linked:PlayerMaterialBackend.obj"
+    ],
+    "?getMegaMaterial@": [
+      "0001:000184e0       ?getMegaMaterial@MaterialFactory@PlayerNativeMaterial@@QAE?AV?$ReferenceCountedPointer@VMaterialBase@PlayerNativeMaterial@@@G3D@@UAttributes@2@@Z 004194e0 f   linked:PlayerNativeMaterial.obj"
+    ],
+    "?resolve@MegaTextureProxy@": [
+      "0001:00019050       ?resolve@MegaTextureProxy@PlayerNativeMaterial@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAX@Z 0041a050 f   linked:PlayerNativeTexture.obj"
+    ],
+    "?apply@PlayerLighting@": [
+      "0001:0001bc30       ?apply@PlayerLighting@@YAXAAVSceneManager@Ogre@@ABV?$ReferenceCountedPointer@VLighting@G3D@@@G3D@@ABUSettings@1@PBVAxisAlignedBox@3@_N@Z 0041cc30 f   linked:PlayerLighting.obj"
+    ],
+    "?populate@BlockMesh@": [
+      "0001:0000d8a0       ?populate@BlockMesh@PlayerBlockMesh@@AAEXABVVector3@G3D@@VRenderSurfaceTypes@View@RBX@@VBrickColor@7@@Z 0040e8a0 f   linked:PlayerBlockMesh.obj"
+    ],
+    "?createSubEntity@RbxEntity@": [
+      "0001:000146b0       ?createSubEntity@RbxEntity@Ogre@@QAEPAVSubEntity@2@PAVSubMesh@2@I@Z 004156b0 f   linked:RbxEntityLocal.obj"
+    ]
+  },
+  "unversioned_falling_fixture_sha256": "07eb68599bafa3ccaf014a695451e7a0d66f6490fd19b2112966196096c7013e",
+  "source_sha256": {
+    "rebuild/2008-06/modules/p2-recovered-player.json": "3493a2bf9cb434551f5f08b8225362b159ac174225615a91607d64c048710285",
+    "rebuild/2008-06/tests/p2-recovered/Player2008.cpp": "317a28e06cb328d174b7b268ba7ef5d8804ab5921b587e812c65f78a7d329b4a",
+    "rebuild/2008-06/tests/p2-recovered/PlayerScene.cpp": "c8e6b6e5e300563a511fbe07375f5c87c25871a2a1bc337c7ecd7317513e7db4",
+    "rebuild/2008-06/tests/p2-recovered/PlayerScene.h": "aaf11bb69174dddef35dcd797363a6909823553fb6bf8b110f42a2556a6232bb",
+    "rebuild/2008-06/tests/p2-recovered/PlayerEngine.cpp": "d85b5d89c6f77842492b57e2711eea3b123420151f053e76ceeb662184954a09",
+    "rebuild/2008-06/tests/p2-recovered/RbxEntity.h": "f809fe919a1880d311058e926848a6e6629c2086964d92ef973a19abe01ac1e8",
+    "rebuild/2008-06/tests/p2-recovered/RbxEntityLocal.cpp": "621fb24359061ceee88a94d442c5175d6a9316c51f3d99d75d100a8f53faeacf",
+    "rebuild/2008-06/tests/PlayerNativeMaterial.cpp": "fb8aa01276d5b30b0e0839b0c4f3fd795511ebfeabe7142c05d4cf66916280bb",
+    "rebuild/2008-06/tests/PlayerNativeTexture.cpp": "e0a2dbe8e6d036350c8ffb6e0efa6cb9364ced3a3c7ed24e5b26227ef084c594",
+    "rebuild/2008-06/tests/PlayerMaterialBackend.cpp": "ee6750bf4b4d0b55726828f88cdb88c5673163a56fb4c423a6b5d551880ea12c",
+    "rebuild/2008-06/tests/PlayerLighting.cpp": "694045c9c926fda6befa5f3086717f8b5795fd341525dd980d9d9202e9a2dd96",
+    "rebuild/2008-06/tests/PlayerBlockMesh.cpp": "e211d388ca7950fbaa8309189d1719a6d4f5a34d981bce6fe07aec2d3b81a7a7",
+    "rebuild/2008-06/tests/PlayerMeshBackend.cpp": "b27eabf490dac098cd276a6619f3621e0351089fc48457a958dcb85519765c32",
+    "rebuild/2008-06/tests/PlayerMeshBackend.h": "c53b22cd7a5330b08488dab2d5cad680c93a66d7433fe737c049cc3ea7606cf3",
+    "rebuild/2008-06/tests/PlayerBlockMesh.h": "7dd4059946b3939ea645fd4e8920afd451dd68d8772fb1067828ea0de59fe681"
+  },
+  "limits": [
+    "Pixel classifier changed for native lit palette; original-threshold failure explicitly retained.",
+    "Default extra Lighting fields bridge the older donor model, complete native class ABI unproven.",
+    "Shared-index, complete selector/child and native enclosing scene integration remain outside this exercised block path.",
+    "Fall smoke uses unversioned fixture and one final observation, not full P0 stability proof.",
+    "Not a clean second-worktree run or original-client visual comparison."
+  ]
+}

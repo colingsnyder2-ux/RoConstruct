@@ -1,0 +1,112 @@
+{
+  "scope": "Compare existing native x86 EH metadata graph to the original; never compile/run. Pointer bindings in cleanup are checked against normal-body references/imports; not whole dependency ABI/runtime proof.",
+  "address": "0060e700",
+  "primary_body_size": 118,
+  "primary_body_exact": true,
+  "tool_sha256": "9bb152de27b162135b0988f695a880b286fd430bb1dc8dd5aaf9f84c491ce815",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-cumulative-links-20261105\\actual-MegaDragger.obj",
+  "object_sha256": "a63464692c019673bc9d22850bcf5763274c96f63790357bf3fa6102387310c1",
+  "events": [
+    {
+      "symbol": "__ehhandler$??1MegaDragger@RBX@@QAE@XZ",
+      "original": "0x7d8d73",
+      "kind": "cleanup/handler code",
+      "size": 10,
+      "exact": true
+    },
+    {
+      "symbol": "__ehfuncinfo$??1MegaDragger@RBX@@QAE@XZ",
+      "original": "0x8f8e88",
+      "kind": "EH data",
+      "size": 36,
+      "exact": true,
+      "original_bytes": "2205931902000000788e8f00000000000000000000000000000000000000000001000000",
+      "native_bytes": "220593190200000000000000000000000000000000000000000000000000000001000000"
+    },
+    {
+      "symbol": "__unwindtable$??1MegaDragger@RBX@@QAE@XZ",
+      "original": "0x8f8e78",
+      "kind": "EH data",
+      "size": 16,
+      "exact": true,
+      "original_bytes": "ffffffff608d7d0000000000688d7d00",
+      "native_bytes": "ffffffff000000000000000000000000"
+    },
+    {
+      "symbol": "__unwindfunclet$??1MegaDragger@RBX@@QAE@XZ$0",
+      "original": "0x7d8d60",
+      "kind": "cleanup/handler code",
+      "size": 8,
+      "exact": true
+    },
+    {
+      "symbol": "??1?$weak_ptr@VPartInstance@RBX@@@boost@@QAE@XZ",
+      "original": "0x5576e0",
+      "kind": "cleanup/handler code",
+      "size": 27,
+      "exact": true
+    },
+    {
+      "symbol": "__unwindfunclet$??1MegaDragger@RBX@@QAE@XZ$1",
+      "original": "0x7d8d68",
+      "kind": "cleanup/handler code",
+      "size": 11,
+      "exact": true
+    },
+    {
+      "symbol": "??1?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+      "original": "0x590550",
+      "kind": "cleanup/handler code",
+      "size": 111,
+      "exact": true
+    },
+    {
+      "symbol": "__ehhandler$??1?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+      "original": "0x7d72e8",
+      "kind": "cleanup/handler code",
+      "size": 10,
+      "exact": true
+    },
+    {
+      "symbol": "__ehfuncinfo$??1?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+      "original": "0x8f5e98",
+      "kind": "EH data",
+      "size": 36,
+      "exact": true,
+      "original_bytes": "2205931901000000905e8f00000000000000000000000000000000000000000001000000",
+      "native_bytes": "220593190100000000000000000000000000000000000000000000000000000001000000"
+    },
+    {
+      "symbol": "__unwindtable$??1?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+      "original": "0x8f5e90",
+      "kind": "EH data",
+      "size": 8,
+      "exact": true,
+      "original_bytes": "ffffffffe0727d00",
+      "native_bytes": "ffffffff00000000"
+    },
+    {
+      "symbol": "__unwindfunclet$??1?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAE@XZ$0",
+      "original": "0x7d72e0",
+      "kind": "cleanup/handler code",
+      "size": 8,
+      "exact": true
+    },
+    {
+      "symbol": "??1?$_Vector_val@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+      "original": "0x5b3d20",
+      "kind": "cleanup/handler code",
+      "size": 10,
+      "exact": true
+    },
+    {
+      "symbol": "??$_Destroy_range@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@YAXPAV?$weak_ptr@VPartInstance@RBX@@@boost@@0AAV?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z",
+      "original": "0x590390",
+      "kind": "cleanup/handler code",
+      "size": 52,
+      "exact": true
+    }
+  ],
+  "errors": []
+}

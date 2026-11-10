@@ -1,0 +1,17 @@
+{
+  "recorded": "2026-11-08T12:36:00",
+  "integration_commit": "4f91cf6f6d50979afe97bcf58c50bee1d61ac0e6",
+  "lineending_fixup_commit": "ae4da2e104aa21f4d0abc943609e172e5b6bac6b",
+  "publication_commit": "64acd8987205ac30a131c94934b31af26f46f85c",
+  "base": "2da654506111296a9f85e38b18500710df5dd5c3",
+  "workspace_tree_source": "f5f808063368a6a50888e1d01172c6a5a720e491",
+  "workspace_tree_publication": "b0349ff83506006692c678ede5e5b0b445c68791",
+  "paths": 10,
+  "preservation_receipts": [
+    "work/findings-integration/preservation-4f91cf6f6d50979afe97bcf58c50bee1d61ac0e6.json",
+    "work/findings-integration/preservation-ae4da2e104aa21f4d0abc943609e172e5b6bac6b.json"
+  ],
+  "preservation_losses": 0,
+  "affected_gate": "68 passed (39 status/site + 29 builder) in 12.19s on exact exported bytes",
+  "status": "integrated-and-published"
+}

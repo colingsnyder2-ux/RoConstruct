@@ -1,0 +1,20 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/RunService.cpp",
+      "checks": [
+        {
+          "addr": "00554ae0",
+          "symbol": "?raise@?$Notifier@VRunService@RBX@@W4RunState@2@@RBX@@IBEXW4RunState@2@@Z",
+          "calls": [
+            {
+              "offset": 83,
+              "target": "00554750",
+              "symbol": "?raise@?$Notifier@VRunService@RBX@@W4RunState@2@@RBX@@IBEXW4RunState@2@PAV?$Listener@VRunService@RBX@@W4RunState@2@@2@@Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

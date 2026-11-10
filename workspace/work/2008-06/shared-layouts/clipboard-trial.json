@@ -1,0 +1,483 @@
+{
+  "scope": "Inactive diagnostic only. Compiler xstring overlay imports real MSVCP90 c_str; Instance header overlay declares target-inferred findFirstChildByName. Neither overlay is integrated. Relocations list original target destinations; listed key bindings, imports, vtable slots, literals and emitted bytes checked; remaining semantic bindings need independent proof. No linked/runtime or server verification.",
+  "methods": [
+    {
+      "method": "?doIt@CopyVerb@@UAEXPAVIDataState@RBX@@@Z",
+      "address": "0x415800",
+      "vtable_slot": "0x80e970",
+      "length": 479,
+      "code_exact": true,
+      "data_spans": [
+        [
+          8448540,
+          8
+        ],
+        [
+          8448288,
+          7
+        ]
+      ],
+      "data_mismatches": [],
+      "source_sha256": "f3fc69876750fa3369390cc8ae40ab187ade76aab579064b7e0372f0f7474389",
+      "object_sha256": "0ea0767de0d8b0deacc8f90b427990cdf94fd904cedabce18ed03687a1af4a10",
+      "link_object_sha256": "f14ad03ea012fa0f9f29ecf5bb7056d635ef6aa7b41c9776e387378e11767935",
+      "relocations": [
+        {
+          "offset": "0x9",
+          "symbol": "__ehhandler$?doIt@CopyVerb@@UAEXPAVIDataState@RBX@@@Z",
+          "target": "0x7bda13",
+          "import": null
+        },
+        {
+          "offset": "0x22",
+          "symbol": "?newRootElement@SerializerV2@@SAPAVXmlElement@@XZ",
+          "target": "0x591a30",
+          "import": null
+        },
+        {
+          "offset": "0x30",
+          "symbol": "??$create@VSelection@RBX@@@ServiceProvider@RBX@@QBEPAVSelection@1@XZ",
+          "target": "0x4153b0",
+          "import": null
+        },
+        {
+          "offset": "0x4a",
+          "symbol": "__imp___invalid_parameter_noinfo",
+          "target": "0x802890",
+          "import": "MSVCR90.dll!_invalid_parameter_noinfo"
+        },
+        {
+          "offset": "0x64",
+          "symbol": "__imp___invalid_parameter_noinfo",
+          "target": "0x802890",
+          "import": "MSVCR90.dll!_invalid_parameter_noinfo"
+        },
+        {
+          "offset": "0x70",
+          "symbol": "?collectSelection@@YAXPAVXmlElement@@V?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+          "target": "0x57e140",
+          "import": null
+        },
+        {
+          "offset": "0x7f",
+          "symbol": "??$for_each@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@V?$bind_t@XP6AXPAVXmlElement@@V?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$list2@V?$value@PAVXmlElement@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XP6AXPAVXmlElement@@V?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$list2@V?$value@PAVXmlElement@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@0@0V123@@Z",
+          "target": "0x423ba0",
+          "import": null
+        },
+        {
+          "offset": "0x94",
+          "symbol": "__imp_??0?$basic_ostringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@H@Z",
+          "target": "0x802430",
+          "import": "MSVCP90.dll!??0?$basic_ostringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@H@Z"
+        },
+        {
+          "offset": "0xad",
+          "symbol": "??0XmlWriter@@IAE@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+          "target": "0x58fff0",
+          "import": null
+        },
+        {
+          "offset": "0xb5",
+          "symbol": "??_7TextXmlWriter@@6B@",
+          "target": "0x80ea1c",
+          "import": null
+        },
+        {
+          "offset": "0xc6",
+          "symbol": "?serialize@TextXmlWriter@@UAEXPBVXmlElement@@@Z",
+          "target": "0x58e810",
+          "import": null
+        },
+        {
+          "offset": "0xd1",
+          "symbol": "??1XmlElement@@QAE@XZ",
+          "target": "0x413a70",
+          "import": null
+        },
+        {
+          "offset": "0xd7",
+          "symbol": "??3@YAXPAX@Z",
+          "target": "0x6a067a",
+          "import": null
+        },
+        {
+          "offset": "0xdf",
+          "symbol": "?AfxGetThread@@YGPAVCWinThread@@XZ",
+          "target": "0x6a0e4e",
+          "import": null
+        },
+        {
+          "offset": "0xfa",
+          "symbol": "__imp__OpenClipboard@4",
+          "target": "0x802df4",
+          "import": "USER32.dll!OpenClipboard"
+        },
+        {
+          "offset": "0x108",
+          "symbol": "__imp__EmptyClipboard@0",
+          "target": "0x802ddc",
+          "import": "USER32.dll!EmptyClipboard"
+        },
+        {
+          "offset": "0x117",
+          "symbol": "__imp_?str@?$basic_ostringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@XZ",
+          "target": "0x802434",
+          "import": "MSVCP90.dll!?str@?$basic_ostringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@XZ"
+        },
+        {
+          "offset": "0x12d",
+          "symbol": "__imp__GlobalAlloc@8",
+          "target": "0x8021dc",
+          "import": "KERNEL32.dll!GlobalAlloc"
+        },
+        {
+          "offset": "0x136",
+          "symbol": "__imp__GlobalLock@4",
+          "target": "0x8021d8",
+          "import": "KERNEL32.dll!GlobalLock"
+        },
+        {
+          "offset": "0x142",
+          "symbol": "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ",
+          "target": "0x802464",
+          "import": "MSVCP90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ"
+        },
+        {
+          "offset": "0x157",
+          "symbol": "__imp__GlobalUnlock@4",
+          "target": "0x8021d4",
+          "import": "KERNEL32.dll!GlobalUnlock"
+        },
+        {
+          "offset": "0x15d",
+          "symbol": "?$S2@?1??getClipboardFormat@@YAIXZ@4IA",
+          "target": "0x96cbf4",
+          "import": null
+        },
+        {
+          "offset": "0x165",
+          "symbol": "?$S2@?1??getClipboardFormat@@YAIXZ@4IA",
+          "target": "0x96cbf4",
+          "import": null
+        },
+        {
+          "offset": "0x16a",
+          "symbol": "??_C@_06BJBEHGOF@Roblox?$AA@",
+          "target": "0x80e920",
+          "import": null
+        },
+        {
+          "offset": "0x170",
+          "symbol": "__imp__RegisterClipboardFormatA@4",
+          "target": "0x802df0",
+          "import": "USER32.dll!RegisterClipboardFormatA"
+        },
+        {
+          "offset": "0x175",
+          "symbol": "?format@?1??getClipboardFormat@@YAIXZ@4IA",
+          "target": "0x96cbf0",
+          "import": null
+        },
+        {
+          "offset": "0x17b",
+          "symbol": "?format@?1??getClipboardFormat@@YAIXZ@4IA",
+          "target": "0x96cbf0",
+          "import": null
+        },
+        {
+          "offset": "0x183",
+          "symbol": "__imp__SetClipboardData@8",
+          "target": "0x802de0",
+          "import": "USER32.dll!SetClipboardData"
+        },
+        {
+          "offset": "0x189",
+          "symbol": "__imp__CloseClipboard@0",
+          "target": "0x802de8",
+          "import": "USER32.dll!CloseClipboard"
+        },
+        {
+          "offset": "0x19a",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "target": "0x802468",
+          "import": "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+        },
+        {
+          "offset": "0x1ab",
+          "symbol": "??1?$_Tree@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@std@@QAE@XZ",
+          "target": "0x4146d0",
+          "import": null
+        },
+        {
+          "offset": "0x1c0",
+          "symbol": "__imp_??_D?$basic_ostringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXXZ",
+          "target": "0x802438",
+          "import": "MSVCP90.dll!??_D?$basic_ostringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXXZ"
+        }
+      ]
+    },
+    {
+      "method": "?doIt@PasteVerb@@UAEXPAVIDataState@RBX@@@Z",
+      "address": "0x415510",
+      "vtable_slot": "0x80e944",
+      "length": 745,
+      "code_exact": true,
+      "data_spans": [
+        [
+          8448556,
+          14
+        ],
+        [
+          8448288,
+          7
+        ]
+      ],
+      "data_mismatches": [],
+      "source_sha256": "5438728d8d9142f323950f87a37c6fe703bc8228a57ce6672c1a85fcbe016ec6",
+      "object_sha256": "4a9f6361f5c06874dea495d8ad9b907483ea6ab530f9249fe0af9129b556eb1b",
+      "link_object_sha256": "d85ae188216961f59e16c3eca5fa1738c671dfad315ebf52214b2a3f6f232929",
+      "relocations": [
+        {
+          "offset": "0x3",
+          "symbol": "__ehhandler$?doIt@PasteVerb@@UAEXPAVIDataState@RBX@@@Z",
+          "target": "0x7bd9e5",
+          "import": null
+        },
+        {
+          "offset": "0x23",
+          "symbol": "??_C@_0O@KPMCFAKM@NetworkClient?$AA@",
+          "target": "0x80ea2c",
+          "import": null
+        },
+        {
+          "offset": "0x31",
+          "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+          "target": "0x802458",
+          "import": "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z"
+        },
+        {
+          "offset": "0x45",
+          "symbol": "?findFirstChildByName@Instance@RBX@@QBEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "target": "0x557950",
+          "import": null
+        },
+        {
+          "offset": "0x5c",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "target": "0x802468",
+          "import": "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+        },
+        {
+          "offset": "0x69",
+          "symbol": "?AfxGetThread@@YGPAVCWinThread@@XZ",
+          "target": "0x6a0e4e",
+          "import": null
+        },
+        {
+          "offset": "0x84",
+          "symbol": "__imp__OpenClipboard@4",
+          "target": "0x802df4",
+          "import": "USER32.dll!OpenClipboard"
+        },
+        {
+          "offset": "0x92",
+          "symbol": "?$S2@?1??getClipboardFormat@@YAIXZ@4IA",
+          "target": "0x96cbf4",
+          "import": null
+        },
+        {
+          "offset": "0x9b",
+          "symbol": "?$S2@?1??getClipboardFormat@@YAIXZ@4IA",
+          "target": "0x96cbf4",
+          "import": null
+        },
+        {
+          "offset": "0xa1",
+          "symbol": "??_C@_06BJBEHGOF@Roblox?$AA@",
+          "target": "0x80e920",
+          "import": null
+        },
+        {
+          "offset": "0xa7",
+          "symbol": "__imp__RegisterClipboardFormatA@4",
+          "target": "0x802df0",
+          "import": "USER32.dll!RegisterClipboardFormatA"
+        },
+        {
+          "offset": "0xac",
+          "symbol": "?format@?1??getClipboardFormat@@YAIXZ@4IA",
+          "target": "0x96cbf0",
+          "import": null
+        },
+        {
+          "offset": "0xb2",
+          "symbol": "?format@?1??getClipboardFormat@@YAIXZ@4IA",
+          "target": "0x96cbf0",
+          "import": null
+        },
+        {
+          "offset": "0xba",
+          "symbol": "__imp__GetClipboardData@4",
+          "target": "0x802de4",
+          "import": "USER32.dll!GetClipboardData"
+        },
+        {
+          "offset": "0xc5",
+          "symbol": "__imp__GlobalLock@4",
+          "target": "0x8021d8",
+          "import": "KERNEL32.dll!GlobalLock"
+        },
+        {
+          "offset": "0xd0",
+          "symbol": "??0?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+          "target": "0x4293d0",
+          "import": null
+        },
+        {
+          "offset": "0xe6",
+          "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+          "target": "0x802458",
+          "import": "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z"
+        },
+        {
+          "offset": "0x104",
+          "symbol": "__imp_??0?$basic_istringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@H@Z",
+          "target": "0x80243c",
+          "import": "MSVCP90.dll!??0?$basic_istringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@H@Z"
+        },
+        {
+          "offset": "0x116",
+          "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+          "target": "0x802468",
+          "import": "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+        },
+        {
+          "offset": "0x127",
+          "symbol": "??0TextXmlParser@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@std@@@Z",
+          "target": "0x415350",
+          "import": null
+        },
+        {
+          "offset": "0x13d",
+          "symbol": "?parse@TextXmlParser@@UAE?AV?$auto_ptr@VXmlElement@@@std@@XZ",
+          "target": "0x58f6c0",
+          "import": null
+        },
+        {
+          "offset": "0x15c",
+          "symbol": "??1XmlElement@@QAE@XZ",
+          "target": "0x413a70",
+          "import": null
+        },
+        {
+          "offset": "0x162",
+          "symbol": "??3@YAXPAX@Z",
+          "target": "0x6a067a",
+          "import": null
+        },
+        {
+          "offset": "0x171",
+          "symbol": "??$create@VSelection@RBX@@@ServiceProvider@RBX@@QBEPAVSelection@1@XZ",
+          "target": "0x4153b0",
+          "import": null
+        },
+        {
+          "offset": "0x1a3",
+          "symbol": "?front@Selection@RBX@@QBE?AV?$shared_ptr@VInstance@RBX@@@boost@@XZ",
+          "target": "0x413c20",
+          "import": null
+        },
+        {
+          "offset": "0x1c7",
+          "symbol": "??1?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ",
+          "target": "0x600660",
+          "import": null
+        },
+        {
+          "offset": "0x1e1",
+          "symbol": "?loadInstances@SerializerV2@@QAEXPAVXmlElement@@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z",
+          "target": "0x593250",
+          "import": null
+        },
+        {
+          "offset": "0x1f8",
+          "symbol": "?insertInstances@RootInstance@RBX@@QAEXABV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@PAVInstance@2@W4InsertMode@2@W4PromptMode@2@@Z",
+          "target": "0x5911d0",
+          "import": null
+        },
+        {
+          "offset": "0x20c",
+          "symbol": "__imp___invalid_parameter_noinfo",
+          "target": "0x802890",
+          "import": "MSVCR90.dll!_invalid_parameter_noinfo"
+        },
+        {
+          "offset": "0x226",
+          "symbol": "__imp___invalid_parameter_noinfo",
+          "target": "0x802890",
+          "import": "MSVCR90.dll!_invalid_parameter_noinfo"
+        },
+        {
+          "offset": "0x23b",
+          "symbol": "??$setSelection@V?$_Vector_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Selection@RBX@@QAEXV?$_Vector_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@0@Z",
+          "target": "0x413b00",
+          "import": null
+        },
+        {
+          "offset": "0x24f",
+          "symbol": "??1XmlElement@@QAE@XZ",
+          "target": "0x413a70",
+          "import": null
+        },
+        {
+          "offset": "0x255",
+          "symbol": "??3@YAXPAX@Z",
+          "target": "0x6a067a",
+          "import": null
+        },
+        {
+          "offset": "0x269",
+          "symbol": "??1TextXmlParser@@QAE@XZ",
+          "target": "0x4147c0",
+          "import": null
+        },
+        {
+          "offset": "0x27e",
+          "symbol": "__imp_??_D?$basic_istringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXXZ",
+          "target": "0x802440",
+          "import": "MSVCP90.dll!??_D?$basic_istringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXXZ"
+        },
+        {
+          "offset": "0x289",
+          "symbol": "__imp__GlobalUnlock@4",
+          "target": "0x8021d4",
+          "import": "KERNEL32.dll!GlobalUnlock"
+        },
+        {
+          "offset": "0x28f",
+          "symbol": "__imp__CloseClipboard@0",
+          "target": "0x802de8",
+          "import": "USER32.dll!CloseClipboard"
+        },
+        {
+          "offset": "0x29b",
+          "symbol": "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ",
+          "target": "0x802464",
+          "import": "MSVCP90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ"
+        },
+        {
+          "offset": "0x2a5",
+          "symbol": "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z",
+          "target": "0x58c5c0",
+          "import": null
+        },
+        {
+          "offset": "0x2cb",
+          "symbol": "??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ",
+          "target": "0x5a2fe0",
+          "import": null
+        }
+      ]
+    }
+  ]
+}

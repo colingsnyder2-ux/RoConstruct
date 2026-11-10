@@ -1,0 +1,372 @@
+{
+  "retained": 283,
+  "unchanged": 278,
+  "changed": [
+    {
+      "symbol": "__unwindfunclet$?getCacheDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z$3",
+      "old_size": 11,
+      "new_size": 11,
+      "first_byte_difference": 2,
+      "old_relocations": [
+        [
+          7,
+          "??1?$CPathT@V?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@@ATL@@QAE@XZ",
+          20
+        ]
+      ],
+      "new_relocations": [
+        [
+          7,
+          "??1?$CPathT@V?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@@ATL@@QAE@XZ",
+          20
+        ]
+      ]
+    },
+    {
+      "symbol": "?getCacheDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+      "old_size": 548,
+      "new_size": 517,
+      "first_byte_difference": 23,
+      "old_relocations": [
+        [
+          3,
+          "__ehhandler$?getCacheDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+          6
+        ],
+        [
+          40,
+          "??_C@_0M@LNAMDANG@Shell32?4dll?$AA@",
+          6
+        ],
+        [
+          50,
+          "__imp__LoadLibraryA@4",
+          6
+        ],
+        [
+          65,
+          "??_C@_0BF@OMOLCJCE@SHGetKnownFolderPath?$AA@",
+          6
+        ],
+        [
+          72,
+          "__imp__GetProcAddress@8",
+          6
+        ],
+        [
+          104,
+          "?GetIntegrity@VistaAPIs@RBX@@QAGJPAE@Z",
+          20
+        ],
+        [
+          125,
+          "??_C@_1EM@EBDJCMBA@?$AA?$HL?$AA3?$AA5?$AA2?$AA4?$AA8?$AA1?$AAE?$AA8?$AA?9?$AA3?$AA3?$AAB?$AAE?$AA?9?$AA4?$AA2?$AA5?$AA1?$AA?9?$AAB?$AAA?$AA8?$AA5?$AA?9?$AA6?$AA0?$AA0?$AA7?$AAC?$AAA?$AAE@",
+          6
+        ],
+        [
+          131,
+          "__imp__CLSIDFromString@8",
+          6
+        ],
+        [
+          191,
+          "??0?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAE@PB_W@Z",
+          20
+        ],
+        [
+          210,
+          "__imp__CoTaskMemFree@4",
+          6
+        ],
+        [
+          217,
+          "??_C@_08NBDKGJHM@?2Roblox?2?$AA@",
+          6
+        ],
+        [
+          226,
+          "?Append@?$CSimpleStringT@D$0A@@ATL@@QAEXPBDH@Z",
+          20
+        ],
+        [
+          249,
+          "__imp__CreateDirectoryA@8",
+          6
+        ],
+        [
+          259,
+          "__imp__GetLastError@0",
+          6
+        ],
+        [
+          278,
+          "??_C@_00CNPNBAHC@?$AA@",
+          6
+        ],
+        [
+          286,
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+          6
+        ],
+        [
+          295,
+          "??1?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAE@XZ",
+          20
+        ],
+        [
+          314,
+          "??0?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAE@PBD@Z",
+          20
+        ],
+        [
+          331,
+          "?AddBackslash@?$CPathT@V?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@@ATL@@QAEXXZ",
+          20
+        ],
+        [
+          351,
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+          6
+        ],
+        [
+          453,
+          "??_C@_0N@ECKBDPAC@Roblox?2Cache?$AA@",
+          6
+        ],
+        [
+          477,
+          "__imp__SHGetFolderPathAndSubDirA@24",
+          6
+        ],
+        [
+          502,
+          "??_C@_00CNPNBAHC@?$AA@",
+          6
+        ],
+        [
+          508,
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+          6
+        ],
+        [
+          519,
+          "__imp__FreeLibrary@4",
+          6
+        ]
+      ],
+      "new_relocations": [
+        [
+          3,
+          "__ehhandler$?getCacheDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+          6
+        ],
+        [
+          40,
+          "??0VistaAPIs@RBX@@QAE@XZ",
+          20
+        ],
+        [
+          67,
+          "?GetIntegrity@VistaAPIs@RBX@@QAGJPAE@Z",
+          20
+        ],
+        [
+          87,
+          "??_C@_1EM@EBDJCMBA@?$AA?$HL?$AA3?$AA5?$AA2?$AA4?$AA8?$AA1?$AAE?$AA8?$AA?9?$AA3?$AA3?$AAB?$AAE?$AA?9?$AA4?$AA2?$AA5?$AA1?$AA?9?$AAB?$AAA?$AA8?$AA5?$AA?9?$AA6?$AA0?$AA0?$AA7?$AAC?$AAA?$AAE@",
+          6
+        ],
+        [
+          93,
+          "__imp__CLSIDFromString@8",
+          6
+        ],
+        [
+          122,
+          "?SHGetKnownFolderPath@VistaAPIs@RBX@@QAEJABU_GUID@@KPAXPAPA_W@Z",
+          20
+        ],
+        [
+          147,
+          "??0?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAE@PB_W@Z",
+          20
+        ],
+        [
+          166,
+          "__imp__CoTaskMemFree@4",
+          6
+        ],
+        [
+          173,
+          "??_C@_08NBDKGJHM@?2Roblox?2?$AA@",
+          6
+        ],
+        [
+          182,
+          "?Append@?$CSimpleStringT@D$0A@@ATL@@QAEXPBDH@Z",
+          20
+        ],
+        [
+          204,
+          "__imp__CreateDirectoryA@8",
+          6
+        ],
+        [
+          214,
+          "__imp__GetLastError@0",
+          6
+        ],
+        [
+          233,
+          "??_C@_00CNPNBAHC@?$AA@",
+          6
+        ],
+        [
+          241,
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+          6
+        ],
+        [
+          254,
+          "??1?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAE@XZ",
+          20
+        ],
+        [
+          273,
+          "??0?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAE@PBD@Z",
+          20
+        ],
+        [
+          290,
+          "?AddBackslash@?$CPathT@V?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@@ATL@@QAEXXZ",
+          20
+        ],
+        [
+          310,
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+          6
+        ],
+        [
+          415,
+          "??_C@_0N@ECKBDPAC@Roblox?2Cache?$AA@",
+          6
+        ],
+        [
+          436,
+          "__imp__SHGetFolderPathAndSubDirA@24",
+          6
+        ],
+        [
+          461,
+          "??_C@_00CNPNBAHC@?$AA@",
+          6
+        ],
+        [
+          467,
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+          6
+        ],
+        [
+          488,
+          "??1VistaAPIs@RBX@@QAE@XZ",
+          20
+        ]
+      ]
+    },
+    {
+      "symbol": "__ehfuncinfo$?getCacheDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+      "old_size": 36,
+      "new_size": 36,
+      "first_byte_difference": 4,
+      "old_relocations": [
+        [
+          8,
+          "__unwindtable$?getCacheDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+          6
+        ]
+      ],
+      "new_relocations": [
+        [
+          8,
+          "__unwindtable$?getCacheDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+          6
+        ]
+      ]
+    },
+    {
+      "symbol": "__unwindtable$?getCacheDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+      "old_size": 24,
+      "new_size": 32,
+      "first_byte_difference": null,
+      "old_relocations": [
+        [
+          4,
+          "__unwindfunclet$?getCacheDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z$0",
+          6
+        ],
+        [
+          12,
+          "__unwindfunclet$?getCacheDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z$1",
+          6
+        ],
+        [
+          20,
+          "__unwindfunclet$?getCacheDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z$3",
+          6
+        ]
+      ],
+      "new_relocations": [
+        [
+          4,
+          "__unwindfunclet$?getCacheDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z$2",
+          6
+        ],
+        [
+          12,
+          "__unwindfunclet$?getCacheDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z$0",
+          6
+        ],
+        [
+          20,
+          "__unwindfunclet$?getCacheDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z$1",
+          6
+        ],
+        [
+          28,
+          "__unwindfunclet$?getCacheDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z$3",
+          6
+        ]
+      ]
+    },
+    {
+      "symbol": "__unwindfunclet$?getCacheDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z$1",
+      "old_size": 11,
+      "new_size": 11,
+      "first_byte_difference": 2,
+      "old_relocations": [
+        [
+          7,
+          "??1?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAE@XZ",
+          20
+        ]
+      ],
+      "new_relocations": [
+        [
+          7,
+          "??1?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAE@XZ",
+          20
+        ]
+      ]
+    }
+  ],
+  "removed": [
+    "??0VistaAPIs@RBX@@QAE@XZ",
+    "??1VistaAPIs@RBX@@QAE@XZ",
+    "??_C@_0BF@OMOLCJCE@SHGetKnownFolderPath?$AA@",
+    "??_C@_0M@LNAMDANG@Shell32?4dll?$AA@",
+    "?GetIntegrity@VistaAPIs@RBX@@QAGJPAE@Z",
+    "?SHGetKnownFolderPath@VistaAPIs@RBX@@QAEJABU_GUID@@KPAXPAPA_W@Z"
+  ],
+  "new": [
+    "__unwindfunclet$?getCacheDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z$2"
+  ]
+}

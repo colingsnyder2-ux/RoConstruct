@@ -1,0 +1,38 @@
+{
+  "scope": "Inactive mismatch only: native FinalConstruct source differs due donor Workspace base layout. Normalized bytes are not linked; class lifetimes and target implementations remain unproven.",
+  "observer_sha256": "96438982ac000c9016ea5df87deaeec9b03d8741b061d0bcb8b5bba520e39b52",
+  "source_sha256": "a01e1073413f2f171a4d61b213756bdf3e76034181f0057ea8c55f9bd23ea7d4",
+  "profile_sha256": "1168dadf445af9b1d9bd5c857895e26ded34eb8de7b140f540586fb8bf0b56c5",
+  "object_sha256": "ed3b1741422c51303a9bbc4a19ae1858b42b9f1694649b904d75ea45a7a868e8",
+  "address": "0046b5c0",
+  "size": 373,
+  "original_size": 373,
+  "exact": false,
+  "normalized_offset_only_matches": true,
+  "donor_notifier_offset": "0x32c",
+  "original_notifier_offset": "0x344",
+  "calls": {
+    "?createDataModel@DataModel@RBX@@SA?AV?$shared_ptr@VDataModel@RBX@@@boost@@_N@Z": "0x57c100",
+    "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0",
+    "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40",
+    "??$create@VRunService@RBX@@@ServiceProvider@RBX@@QBEPAVRunService@1@XZ": "0x4530f0",
+    "??$shared_from@VRunService@RBX@@@RBX@@YA?AV?$shared_ptr@VRunService@RBX@@@boost@@PAVRunService@0@@Z": "0x618a40",
+    "?addListener@?$Notifier@VWorkspace@RBX@@VDrawChanged@2@@RBX@@QBEXPAV?$Listener@VWorkspace@RBX@@VDrawChanged@2@@2@@Z": "0x4218a0",
+    "??$find@VSelection@RBX@@@ServiceProvider@RBX@@QBEPAVSelection@1@XZ": "0x4153b0",
+    "?addListener@?$Notifier@VSelection@RBX@@VSelectionChanged@2@@RBX@@QBEXPAV?$Listener@VSelection@RBX@@VSelectionChanged@2@@2@@Z": "0x4218a0",
+    "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0"
+  },
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeWorkspaceFinalConstructTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeWorkspaceFinalConstructProfile.cpp"
+  ]
+}

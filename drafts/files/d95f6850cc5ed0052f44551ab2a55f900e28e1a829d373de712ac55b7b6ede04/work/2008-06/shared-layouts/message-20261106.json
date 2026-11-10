@@ -1,0 +1,21 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "005de2f0",
+                                        "symbol":  "??0Message@RBX@@"
+                                    },
+                                    {
+                                        "addr":  "005dde50",
+                                        "symbol":  "??1Message@RBX@@"
+                                    },
+                                    {
+                                        "addr":  "005dead0",
+                                        "symbol":  "?setText@Message@RBX@@"
+                                    }
+                                ],
+                     "source":  "native-classes/Message.cpp"
+                 }
+             ]
+}

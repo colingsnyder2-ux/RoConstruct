@@ -1,0 +1,21 @@
+{
+  "scope": "Model tool target layout and runtime ABI unproven.",
+  "methods": [
+    {
+      "address": "0x63e370",
+      "size": 64,
+      "symbol": "?onMouseDown@LockTool@RBX@@EAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+      "bindings": {
+        "?getLocked@PartInstance@RBX@@SA_NPAVInstance@2@@Z": "0x59a040",
+        "?setLocked@PartInstance@RBX@@SAXPAVInstance@2@_N@Z": "0x59de20",
+        "??$create@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@SAPAVSoundService@Soundscape@1@PBVInstance@1@@Z": "0x5807b0",
+        "?playSound@SoundService@Soundscape@RBX@@QAEXW4SoundType@3@@Z": "0x5bd820"
+      }
+    }
+  ],
+  "source_sha256": "72690cbfe467ace3c8559c84efe2b83a7a4739ed0401bd2090c545a6758d8f11",
+  "surface_header_sha256": "8056b64427cf6059072617d930da52a634832962fd6ab533fb3ac48148fc4932",
+  "overlay_sha256": "b53673f2305d830ed9f02f712b7409ad890c65e8ea407d5eb49516156e9b8633",
+  "object_sha256": "ce4085de226bda4d17181e36af434437253945aad682f8c6efa615d8591b6133",
+  "observer_sha256": "4c7f48967ddda2c71fca5efa61ed2486fde4c3cb01a56153c9d532edc1b367f4"
+}

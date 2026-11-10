@@ -1,0 +1,972 @@
+{
+  "revision": "84c50385bb57a1807574b0636cc2208bb54cf50b",
+  "compiler_build": 21022,
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoNativeDocumentLayout.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeDocumentLayout.cpp"
+  ],
+  "compile_exit": 0,
+  "sources": {
+    "rebuild\\2008-06\\tests\\NativeDocumentLayout.cpp": "46c6138324eff27502f3c69b3eb12a8e23aaefecb25dba8772bd2c5250313d9c",
+    "rebuild\\2008-06\\native-headers\\CRobloxDoc.h": "bd63e71b42041c61756532b71353f57096361d17372c8093813bda7a3830fceb",
+    "rebuild\\2008-06\\native-headers\\VerbBinder.h": "68afba3d1650223fd42a2c33cc38bc71418cea087d13f18858743aeaf19877f6",
+    "rebuild\\2008-06\\tests\\record_native_document.py": "fbc3eea051d678406c9171d3efb7d9b8bb8ee62987133cab99fb0ac39e506f55",
+    "rebuild\\2008-06\\native-classes\\CRobloxDoc.cpp": "b751735b7b03860f558821f52411cbb05e5aa12937675adc98ad2c58949de12b",
+    "rebuild\\2008-06\\native-classes\\StandardVerbs.cpp": "497b7e172bdfcb34b4595c5c5661c159e580e2b6d5f0804bbd595fcd7a0e5710",
+    "rebuild\\2008-06\\native-headers\\StandardVerbs.h": "7a48e0178f955854b8a4c16c06476388e4ffcbc1f171a97886379fadaaa3d0cd",
+    "rebuild\\2008-06\\native-headers\\v8xml\\XmlElement.h": "dd6594e4312f376e95960b5cbd27d14fb83e4c796d08ecd1ea19ea98333502c4",
+    "rebuild\\2008-06\\native-headers\\RobloxLib.h": "032fab4066a9b203ac532fccaa1d6e9d46ffad9b9b0000f67a37591d064a05a4",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\DataModel.h": "eb785af6c82c30802e8df8be411c69cb7a0ed6e40e385cac821108d093c1b64b",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Verb.h": "aa94b9409b10392ebee9d81c40b6d594a08a773922321533004d5432af47fcbc",
+    "rebuild\\2008-06\\native-headers\\v8tree\\Service.h": "a5c154265d6ccfe2ec2d7cb28899f73e3f586790e0db3b839ad809d3d02761b5"
+  },
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "object_sha256": "dea3932c68ed0f5e369b3de35d2098d72d89eca7caca15f1aef91ac48188f4ee",
+  "compile_log_sha256": "c4e76fdceab90fb871c4bb1f784fe8d5f7929f22b03cddc483ae05ff0a8b4819",
+  "static_layout_gates": {
+    "size": 152,
+    "XmlElement": 40,
+    "StandardVerbs": 1796,
+    "IWorkspace": 4,
+    "IContent": 4,
+    "VARIANT": 16,
+    "savedState": 116,
+    "ownedVerbs": 120,
+    "standardVerbs": 144,
+    "workspace": 148
+  },
+  "constructor": {
+    "address": "00451ac0",
+    "symbol": "?OnUpdateAlwaysEnable@CRobloxDoc@@QAEXPAVCCmdUI@@@Z",
+    "size": 504,
+    "relocation_normalized_exact": true,
+    "target_relocations": [
+      3,
+      42
+    ],
+    "candidate_relocations": [
+      3,
+      34,
+      42,
+      64
+    ]
+  },
+  "exact_methods": [
+    {
+      "address": "00451a10",
+      "symbol": "?bindExisting@CRobloxDoc@@QAEXIPAVVerb@RBX@@@Z",
+      "size": 78,
+      "relocation_normalized_exact": true,
+      "target_relocations": [],
+      "candidate_relocations": [
+        32,
+        44,
+        67
+      ]
+    },
+    {
+      "address": "00451a60",
+      "symbol": "?bindOwned@CRobloxDoc@@QAEXIPAVVerb@RBX@@@Z",
+      "size": 91,
+      "relocation_normalized_exact": true,
+      "target_relocations": [],
+      "candidate_relocations": [
+        21,
+        45,
+        57,
+        80
+      ]
+    },
+    {
+      "address": "00403040",
+      "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ",
+      "size": 47,
+      "relocation_normalized_exact": true,
+      "target_relocations": [],
+      "candidate_relocations": [
+        23
+      ]
+    },
+    {
+      "address": "00450890",
+      "symbol": "?getVerbContainer@CRobloxDoc@@QAEPAVVerbContainer@RBX@@XZ",
+      "size": 95,
+      "relocation_normalized_exact": true,
+      "target_relocations": [],
+      "candidate_relocations": [
+        11
+      ]
+    },
+    {
+      "address": "0044fad0",
+      "symbol": "?SetModifiedFlag@CRobloxDoc@@UAEXH@Z",
+      "size": 166,
+      "relocation_normalized_exact": true,
+      "target_relocations": [
+        9
+      ],
+      "candidate_relocations": [
+        9,
+        48
+      ]
+    },
+    {
+      "address": "0044fb80",
+      "symbol": "?SetTitle@CRobloxDoc@@UAEXPBD@Z",
+      "size": 199,
+      "relocation_normalized_exact": true,
+      "target_relocations": [
+        9,
+        58,
+        176
+      ],
+      "candidate_relocations": [
+        9,
+        34,
+        58,
+        82,
+        176
+      ]
+    },
+    {
+      "address": "004508f0",
+      "symbol": "?IsModified@CRobloxDoc@@UAEHXZ",
+      "size": 377,
+      "relocation_normalized_exact": true,
+      "target_relocations": [
+        9
+      ],
+      "candidate_relocations": [
+        9,
+        35,
+        113,
+        165,
+        233,
+        333
+      ]
+    },
+    {
+      "address": "0044f8d0",
+      "symbol": "?DoSave@CRobloxDoc@@UAEHPBDH@Z",
+      "size": 213,
+      "relocation_normalized_exact": true,
+      "target_relocations": [
+        3
+      ],
+      "candidate_relocations": [
+        3,
+        41,
+        59,
+        74,
+        189
+      ]
+    },
+    {
+      "address": "004533f0",
+      "symbol": "?OnOpenDocument@CRobloxDoc@@UAEHPBD@Z",
+      "size": 628,
+      "relocation_normalized_exact": true,
+      "target_relocations": [
+        6,
+        58,
+        75,
+        96,
+        118,
+        131,
+        150,
+        155,
+        167,
+        185,
+        198,
+        235,
+        291,
+        556,
+        623
+      ],
+      "candidate_relocations": [
+        6,
+        58,
+        75,
+        96,
+        118,
+        131,
+        150,
+        155,
+        167,
+        185,
+        198,
+        235,
+        251,
+        291,
+        313,
+        339,
+        385,
+        454,
+        465,
+        528,
+        540,
+        556,
+        589,
+        623
+      ]
+    },
+    {
+      "address": "0044f9b0",
+      "symbol": "?OnSaveDocument@CRobloxDoc@@UAEHPBD@Z",
+      "size": 279,
+      "relocation_normalized_exact": true,
+      "target_relocations": [
+        3,
+        235
+      ],
+      "candidate_relocations": [
+        3,
+        41,
+        59,
+        74,
+        186,
+        235
+      ]
+    },
+    {
+      "address": "004513c0",
+      "symbol": "?DeleteContents@CRobloxDoc@@UAEXXZ",
+      "size": 449,
+      "relocation_normalized_exact": true,
+      "target_relocations": [
+        3,
+        153,
+        292,
+        406
+      ],
+      "candidate_relocations": [
+        3,
+        40,
+        92,
+        153,
+        292,
+        310,
+        339,
+        345,
+        365,
+        380,
+        406,
+        416,
+        426
+      ]
+    },
+    {
+      "address": "00452f60",
+      "symbol": "?OnNewDocument@CRobloxDoc@@UAEHXZ",
+      "size": 149,
+      "relocation_normalized_exact": true,
+      "target_relocations": [
+        6,
+        115,
+        125
+      ],
+      "candidate_relocations": [
+        6,
+        36,
+        54,
+        103,
+        115,
+        120,
+        125
+      ]
+    },
+    {
+      "address": "0044f210",
+      "symbol": "?OnCloseDocument@CRobloxDoc@@UAEXXZ",
+      "size": 5,
+      "relocation_normalized_exact": true,
+      "target_relocations": [],
+      "candidate_relocations": [
+        1
+      ]
+    },
+    {
+      "address": "0044f200",
+      "symbol": "?GetRuntimeClass@CRobloxDoc@@UBEPAUCRuntimeClass@@XZ",
+      "size": 6,
+      "relocation_normalized_exact": true,
+      "target_relocations": [
+        1
+      ],
+      "candidate_relocations": [
+        1
+      ]
+    },
+    {
+      "address": "00455d20",
+      "symbol": "?GetMessageMap@CRobloxDoc@@MBEPBUAFX_MSGMAP@@XZ",
+      "size": 6,
+      "relocation_normalized_exact": true,
+      "target_relocations": [
+        1
+      ],
+      "candidate_relocations": [
+        1
+      ]
+    },
+    {
+      "address": "00455460",
+      "symbol": "?handle_455460@CRobloxDoc@@QAEXXZ",
+      "size": 281,
+      "relocation_normalized_exact": true,
+      "target_relocations": [
+        3
+      ],
+      "candidate_relocations": [
+        3,
+        40,
+        92,
+        159,
+        175,
+        188,
+        260
+      ],
+      "verified_direct_calls": [
+        {
+          "offset": 40,
+          "symbol": "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ",
+          "target": "0x46a940"
+        },
+        {
+          "offset": 92,
+          "symbol": "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z",
+          "target": "0x411b40"
+        },
+        {
+          "offset": 159,
+          "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ",
+          "target": "0x403040"
+        },
+        {
+          "offset": 175,
+          "symbol": "??$create@VRunService@RBX@@@ServiceProvider@RBX@@QBEPAVRunService@1@XZ",
+          "target": "0x4530f0"
+        },
+        {
+          "offset": 188,
+          "symbol": "?setRunState@RunService@RBX@@QAEXW4RunState@2@@Z",
+          "target": "0x554da0"
+        },
+        {
+          "offset": 260,
+          "symbol": "??1Lock@DataModel@RBX@@QAE@XZ",
+          "target": "0x5773c0"
+        }
+      ]
+    },
+    {
+      "address": "00455820",
+      "symbol": "?handle_455820@CRobloxDoc@@QAEXXZ",
+      "size": 504,
+      "relocation_normalized_exact": true,
+      "target_relocations": [
+        3
+      ],
+      "candidate_relocations": [
+        3,
+        42,
+        94,
+        161,
+        173,
+        249,
+        269,
+        275,
+        293,
+        311,
+        380,
+        396,
+        409,
+        481
+      ],
+      "verified_direct_calls": [
+        {
+          "offset": 42,
+          "symbol": "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ",
+          "target": "0x46a940"
+        },
+        {
+          "offset": 94,
+          "symbol": "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z",
+          "target": "0x411b40"
+        },
+        {
+          "offset": 161,
+          "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ",
+          "target": "0x403040"
+        },
+        {
+          "offset": 173,
+          "symbol": "??$create@VRunService@RBX@@@ServiceProvider@RBX@@QBEPAVRunService@1@XZ",
+          "target": "0x4530f0"
+        },
+        {
+          "offset": 249,
+          "symbol": "?newRootElement@SerializerV2@@SAPAVXmlElement@@XZ",
+          "target": "0x591a30"
+        },
+        {
+          "offset": 269,
+          "symbol": "??1XmlElement@@QAE@XZ",
+          "target": "0x413a70"
+        },
+        {
+          "offset": 275,
+          "symbol": "??3@YAXPAX@Z",
+          "target": "0x6a067a"
+        },
+        {
+          "offset": 293,
+          "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ",
+          "target": "0x403040"
+        },
+        {
+          "offset": 311,
+          "symbol": "?writeChildren@Instance@RBX@@QAEXPAVXmlElement@@@Z",
+          "target": "0x558110"
+        },
+        {
+          "offset": 380,
+          "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ",
+          "target": "0x403040"
+        },
+        {
+          "offset": 396,
+          "symbol": "??$create@VRunService@RBX@@@ServiceProvider@RBX@@QBEPAVRunService@1@XZ",
+          "target": "0x4530f0"
+        },
+        {
+          "offset": 409,
+          "symbol": "?setRunState@RunService@RBX@@QAEXW4RunState@2@@Z",
+          "target": "0x554da0"
+        },
+        {
+          "offset": 481,
+          "symbol": "??1Lock@DataModel@RBX@@QAE@XZ",
+          "target": "0x5773c0"
+        }
+      ]
+    },
+    {
+      "address": "0042e550",
+      "symbol": "?OnUpdateAlwaysEnable@CRobloxDoc@@QAEXPAVCCmdUI@@@Z",
+      "size": 18,
+      "relocation_normalized_exact": true,
+      "target_relocations": [],
+      "candidate_relocations": []
+    },
+    {
+      "address": "00452f00",
+      "symbol": "?CreateObject@CRobloxDoc@@SGPAVCObject@@XZ",
+      "size": 89,
+      "relocation_normalized_exact": true,
+      "target_relocations": [
+        3
+      ],
+      "candidate_relocations": [
+        3,
+        28,
+        53
+      ]
+    }
+  ],
+  "command_routing": {
+    "address": "00451690",
+    "symbol": "?OnCmdMsg@?$VerbBinder@VCRobloxDoc@@VCDocument@@@@UAEHIHPAXPAUAFX_CMDHANDLERINFO@@@Z",
+    "size": 507,
+    "relocation_normalized_exact": true
+  },
+  "message_entries": [
+    {
+      "index": 0,
+      "original_handler": "0x44f7c0",
+      "candidate_symbol": "?handle_44f7c0@CRobloxDoc@@QAEXXZ"
+    },
+    {
+      "index": 1,
+      "original_handler": "0x453af0",
+      "candidate_symbol": "?handle_453af0@CRobloxDoc@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 2,
+      "original_handler": "0x453670",
+      "candidate_symbol": "?handle_453670@CRobloxDoc@@QAEXXZ"
+    },
+    {
+      "index": 3,
+      "original_handler": "0x453750",
+      "candidate_symbol": "?handle_453750@CRobloxDoc@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 4,
+      "original_handler": "0x4538b0",
+      "candidate_symbol": "?handle_4538b0@CRobloxDoc@@QAEXXZ"
+    },
+    {
+      "index": 5,
+      "original_handler": "0x453990",
+      "candidate_symbol": "?handle_453990@CRobloxDoc@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 6,
+      "original_handler": "0x44fc50",
+      "candidate_symbol": "?handle_44fc50@CRobloxDoc@@QAEXXZ"
+    },
+    {
+      "index": 7,
+      "original_handler": "0x42e550",
+      "candidate_symbol": "?OnUpdateAlwaysEnable@CRobloxDoc@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 8,
+      "original_handler": "0x453af0",
+      "candidate_symbol": "?handle_453af0@CRobloxDoc@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 9,
+      "original_handler": "0x44fcc0",
+      "candidate_symbol": "?handle_44fcc0@CRobloxDoc@@QAEXXZ"
+    },
+    {
+      "index": 10,
+      "original_handler": "0x453c30",
+      "candidate_symbol": "?handle_453c30@CRobloxDoc@@QAEXPAUtagNMHDR@@PAJ@Z"
+    },
+    {
+      "index": 11,
+      "original_handler": "0x42e550",
+      "candidate_symbol": "?OnUpdateAlwaysEnable@CRobloxDoc@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 12,
+      "original_handler": "0x455460",
+      "candidate_symbol": "?handle_455460@CRobloxDoc@@QAEXXZ"
+    },
+    {
+      "index": 13,
+      "original_handler": "0x454040",
+      "candidate_symbol": "?handle_454040@CRobloxDoc@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 14,
+      "original_handler": "0x455580",
+      "candidate_symbol": "?handle_455580@CRobloxDoc@@QAEXXZ"
+    },
+    {
+      "index": 15,
+      "original_handler": "0x454170",
+      "candidate_symbol": "?handle_454170@CRobloxDoc@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 16,
+      "original_handler": "0x455820",
+      "candidate_symbol": "?handle_455820@CRobloxDoc@@QAEXXZ"
+    },
+    {
+      "index": 17,
+      "original_handler": "0x454300",
+      "candidate_symbol": "?handle_454300@CRobloxDoc@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 18,
+      "original_handler": "0x450a70",
+      "candidate_symbol": "?handle_450a70@CRobloxDoc@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 19,
+      "original_handler": "0x450c00",
+      "candidate_symbol": "?handle_450c00@CRobloxDoc@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 20,
+      "original_handler": "0x450d90",
+      "candidate_symbol": "?handle_450d90@CRobloxDoc@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 21,
+      "original_handler": "0x454490",
+      "candidate_symbol": "?handle_454490@CRobloxDoc@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 22,
+      "original_handler": "0x4545d0",
+      "candidate_symbol": "?handle_4545d0@CRobloxDoc@@QAEXXZ"
+    },
+    {
+      "index": 23,
+      "original_handler": "0x4547b0",
+      "candidate_symbol": "?handle_4547b0@CRobloxDoc@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 24,
+      "original_handler": "0x454920",
+      "candidate_symbol": "?handle_454920@CRobloxDoc@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 25,
+      "original_handler": "0x455c30",
+      "candidate_symbol": "?handle_455c30@CRobloxDoc@@QAEXXZ"
+    },
+    {
+      "index": 26,
+      "original_handler": "0x42e550",
+      "candidate_symbol": "?OnUpdateAlwaysEnable@CRobloxDoc@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 27,
+      "original_handler": "0x454c90",
+      "candidate_symbol": "?handle_454c90@CRobloxDoc@@QAEXXZ"
+    },
+    {
+      "index": 28,
+      "original_handler": "0x42e550",
+      "candidate_symbol": "?OnUpdateAlwaysEnable@CRobloxDoc@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 29,
+      "original_handler": "0x42e550",
+      "candidate_symbol": "?OnUpdateAlwaysEnable@CRobloxDoc@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 30,
+      "original_handler": "0x450f30",
+      "candidate_symbol": "?handle_450f30@CRobloxDoc@@QAEXXZ"
+    },
+    {
+      "index": 31,
+      "original_handler": "0x44fd30",
+      "candidate_symbol": "?handle_44fd30@CRobloxDoc@@QAEXXZ"
+    },
+    {
+      "index": 32,
+      "original_handler": "0x454f30",
+      "candidate_symbol": "?handle_454f30@CRobloxDoc@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 33,
+      "original_handler": "0x4500d0",
+      "candidate_symbol": "?handle_4500d0@CRobloxDoc@@QAEXXZ"
+    },
+    {
+      "index": 34,
+      "original_handler": "0x42e550",
+      "candidate_symbol": "?OnUpdateAlwaysEnable@CRobloxDoc@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 35,
+      "original_handler": "0x42e550",
+      "candidate_symbol": "?OnUpdateAlwaysEnable@CRobloxDoc@@QAEXPAVCCmdUI@@@Z"
+    },
+    {
+      "index": 36,
+      "original_handler": "0x4501c0",
+      "candidate_symbol": "?handle_4501c0@CRobloxDoc@@QAEXXZ"
+    },
+    {
+      "index": 37,
+      "original_handler": "0x4502b0",
+      "candidate_symbol": "?handle_4502b0@CRobloxDoc@@QAEXXZ"
+    },
+    {
+      "index": 38,
+      "original_handler": "0x42e550",
+      "candidate_symbol": "?OnUpdateAlwaysEnable@CRobloxDoc@@QAEXPAVCCmdUI@@@Z"
+    }
+  ],
+  "ownership_dependencies": [
+    {
+      "address": "00413a70",
+      "symbol": "??1XmlElement@@QAE@XZ",
+      "target_size": 138,
+      "compiled_size": 138,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "00450450",
+      "symbol": "??1StandardVerbs@RBX@@QAE@XZ",
+      "target_size": 998,
+      "compiled_size": 998,
+      "relocation_normalized_exact": true
+    },
+    {
+      "address": "00451940",
+      "symbol": "??1CRobloxDoc@@UAE@XZ",
+      "target_size": 198,
+      "compiled_size": 198,
+      "relocation_normalized_exact": true
+    }
+  ],
+  "unresolved_lifecycle": [],
+  "virtual_slots": [
+    {
+      "slot": 0,
+      "source_symbol": "?GetRuntimeClass@CRobloxDoc@@UBEPAUCRuntimeClass@@XZ",
+      "original_address": "0x44f200"
+    },
+    {
+      "slot": 1,
+      "source_symbol": "??_ECRobloxDoc@@UAEPAXI@Z",
+      "original_address": "0x451b40"
+    },
+    {
+      "slot": 2,
+      "source_symbol": "?Serialize@CObject@@UAEXAAVCArchive@@@Z",
+      "original_address": "0x70bdf0"
+    },
+    {
+      "slot": 3,
+      "source_symbol": "?AssertValid@CObject@@UBEXXZ",
+      "original_address": "0x47d410"
+    },
+    {
+      "slot": 4,
+      "source_symbol": "?Dump@CObject@@UBEXAAVCDumpContext@@@Z",
+      "original_address": "0x70bdf0"
+    },
+    {
+      "slot": 5,
+      "source_symbol": "?OnCmdMsg@?$VerbBinder@VCRobloxDoc@@VCDocument@@@@UAEHIHPAXPAUAFX_CMDHANDLERINFO@@@Z",
+      "original_address": "0x451690"
+    },
+    {
+      "slot": 6,
+      "source_symbol": "?OnFinalRelease@CDocument@@UAEXXZ",
+      "original_address": "0x6a098c"
+    },
+    {
+      "slot": 7,
+      "source_symbol": "?IsInvokeAllowed@CCmdTarget@@UAEHJ@Z",
+      "original_address": "0x6a069e"
+    },
+    {
+      "slot": 8,
+      "source_symbol": "?GetDispatchIID@CCmdTarget@@UAEHPAU_GUID@@@Z",
+      "original_address": "0x6a06a4"
+    },
+    {
+      "slot": 9,
+      "source_symbol": "?GetTypeInfoCount@CCmdTarget@@UAEIXZ",
+      "original_address": "0x6a06aa"
+    },
+    {
+      "slot": 10,
+      "source_symbol": "?GetTypeLibCache@CCmdTarget@@UAEPAVCTypeLibCache@@XZ",
+      "original_address": "0x6a06b0"
+    },
+    {
+      "slot": 11,
+      "source_symbol": "?GetTypeLib@CCmdTarget@@UAEJKPAPAUITypeLib@@@Z",
+      "original_address": "0x6a06b6"
+    },
+    {
+      "slot": 12,
+      "source_symbol": "?GetMessageMap@CRobloxDoc@@MBEPBUAFX_MSGMAP@@XZ",
+      "original_address": "0x455d20"
+    },
+    {
+      "slot": 13,
+      "source_symbol": "?GetCommandMap@CCmdTarget@@MBEPBUAFX_OLECMDMAP@@XZ",
+      "original_address": "0x6a06bc"
+    },
+    {
+      "slot": 14,
+      "source_symbol": "?GetDispatchMap@CCmdTarget@@MBEPBUAFX_DISPMAP@@XZ",
+      "original_address": "0x6a06c2"
+    },
+    {
+      "slot": 15,
+      "source_symbol": "?GetConnectionMap@CCmdTarget@@MBEPBUAFX_CONNECTIONMAP@@XZ",
+      "original_address": "0x6a06c8"
+    },
+    {
+      "slot": 16,
+      "source_symbol": "?GetInterfaceMap@CCmdTarget@@MBEPBUAFX_INTERFACEMAP@@XZ",
+      "original_address": "0x6a0992"
+    },
+    {
+      "slot": 17,
+      "source_symbol": "?GetEventSinkMap@CCmdTarget@@MBEPBUAFX_EVENTSINKMAP@@XZ",
+      "original_address": "0x6a0998"
+    },
+    {
+      "slot": 18,
+      "source_symbol": "?OnCreateAggregates@CCmdTarget@@UAEHXZ",
+      "original_address": "0x6a06d4"
+    },
+    {
+      "slot": 19,
+      "source_symbol": "?GetInterfaceHook@CCmdTarget@@UAEPAUIUnknown@@PBX@Z",
+      "original_address": "0x6a06da"
+    },
+    {
+      "slot": 20,
+      "source_symbol": "?GetExtraConnectionPoints@CCmdTarget@@MAEHPAVCPtrArray@@@Z",
+      "original_address": "0x6a06e0"
+    },
+    {
+      "slot": 21,
+      "source_symbol": "?GetConnectionHook@CCmdTarget@@MAEPAUIConnectionPoint@@ABU_GUID@@@Z",
+      "original_address": "0x6a06e6"
+    },
+    {
+      "slot": 22,
+      "source_symbol": "?SetTitle@CRobloxDoc@@UAEXPBD@Z",
+      "original_address": "0x44fb80"
+    },
+    {
+      "slot": 23,
+      "source_symbol": "?SetPathName@CDocument@@UAEXPBDH@Z",
+      "original_address": "0x6a09a4"
+    },
+    {
+      "slot": 24,
+      "source_symbol": "?IsModified@CRobloxDoc@@UAEHXZ",
+      "original_address": "0x4508f0"
+    },
+    {
+      "slot": 25,
+      "source_symbol": "?SetModifiedFlag@CRobloxDoc@@UAEXH@Z",
+      "original_address": "0x44fad0"
+    },
+    {
+      "slot": 26,
+      "source_symbol": "?GetFirstViewPosition@CDocument@@UBEPAU__POSITION@@XZ",
+      "original_address": "0x6a09aa"
+    },
+    {
+      "slot": 27,
+      "source_symbol": "?GetNextView@CDocument@@UBEPAVCView@@AAPAU__POSITION@@@Z",
+      "original_address": "0x6a09b0"
+    },
+    {
+      "slot": 28,
+      "source_symbol": "?OnChangedViewList@CDocument@@UAEXXZ",
+      "original_address": "0x6a09b6"
+    },
+    {
+      "slot": 29,
+      "source_symbol": "?DeleteContents@CRobloxDoc@@UAEXXZ",
+      "original_address": "0x4513c0"
+    },
+    {
+      "slot": 30,
+      "source_symbol": "?OnNewDocument@CRobloxDoc@@UAEHXZ",
+      "original_address": "0x452f60"
+    },
+    {
+      "slot": 31,
+      "source_symbol": "?OnOpenDocument@CRobloxDoc@@UAEHPBD@Z",
+      "original_address": "0x4533f0"
+    },
+    {
+      "slot": 32,
+      "source_symbol": "?OnSaveDocument@CRobloxDoc@@UAEHPBD@Z",
+      "original_address": "0x44f9b0"
+    },
+    {
+      "slot": 33,
+      "source_symbol": "?OnCloseDocument@CRobloxDoc@@UAEXXZ",
+      "original_address": "0x44f210"
+    },
+    {
+      "slot": 34,
+      "source_symbol": "?ReportSaveLoadException@CDocument@@UAEXPBDPAVCException@@HI@Z",
+      "original_address": "0x6a09da"
+    },
+    {
+      "slot": 35,
+      "source_symbol": "?GetFile@CDocument@@UAEPAVCFile@@PBDIPAVCFileException@@@Z",
+      "original_address": "0x6a09e0"
+    },
+    {
+      "slot": 36,
+      "source_symbol": "?ReleaseFile@CDocument@@UAEXPAVCFile@@H@Z",
+      "original_address": "0x6a09e6"
+    },
+    {
+      "slot": 37,
+      "source_symbol": "?CanCloseFrame@CDocument@@UAEHPAVCFrameWnd@@@Z",
+      "original_address": "0x6a09ec"
+    },
+    {
+      "slot": 38,
+      "source_symbol": "?SaveModified@CRobloxDoc@@UAEHXZ",
+      "original_address": "0x455060"
+    },
+    {
+      "slot": 39,
+      "source_symbol": "?PreCloseFrame@CDocument@@UAEXPAVCFrameWnd@@@Z",
+      "original_address": "0x6a09f2"
+    },
+    {
+      "slot": 40,
+      "source_symbol": "?DoSave@CRobloxDoc@@UAEHPBDH@Z",
+      "original_address": "0x44f8d0"
+    },
+    {
+      "slot": 41,
+      "source_symbol": "?DoFileSave@CDocument@@UAEHXZ",
+      "original_address": "0x6a09fe"
+    },
+    {
+      "slot": 42,
+      "source_symbol": "?UpdateFrameCounts@CDocument@@UAEXXZ",
+      "original_address": "0x6a0a04"
+    },
+    {
+      "slot": 43,
+      "source_symbol": "?GetDefaultMenu@CDocument@@UAEPAUHMENU__@@XZ",
+      "original_address": "0x6a0a0a"
+    },
+    {
+      "slot": 44,
+      "source_symbol": "?GetDefaultAccelerator@CDocument@@UAEPAUHACCEL__@@XZ",
+      "original_address": "0x6a0a10"
+    },
+    {
+      "slot": 45,
+      "source_symbol": "?OnIdle@CDocument@@UAEXXZ",
+      "original_address": "0x6a0a16"
+    }
+  ],
+  "active_client_changed": false,
+  "scope": "Compiler-only document storage, virtual-slot declarations, twenty document bodies, 39 message entries, command routing and three destructor proofs, including the document destructor. Other virtual bodies and relocated targets remain unverified. No active class swap, linked-function increase or server verification claimed."
+}

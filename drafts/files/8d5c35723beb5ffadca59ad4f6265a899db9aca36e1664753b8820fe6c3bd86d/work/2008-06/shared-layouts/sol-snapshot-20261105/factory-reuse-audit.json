@@ -1,0 +1,47 @@
+{
+  "changed_inputs": [],
+  "dependency_count": 804,
+  "object_sha256": "248938454c01362df09a937de1e6b03fa4a93c2a98359a503136292811ddb040",
+  "recorded_object_sha256": "248938454c01362df09a937de1e6b03fa4a93c2a98359a503136292811ddb040",
+  "source_sha256": "ee88ced83408c0c49912f67e91598a0bc2d75f22ba52df6ef44f15c95c9f5401",
+  "recompiled": false,
+  "analysis": {
+    "checks": [
+      {
+        "addr": "005c6510",
+        "requested_symbol": "?newMouseCommand@?$TToolVerb@VAxisMoveTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+        "status": "exact",
+        "symbol": "?newMouseCommand@?$TToolVerb@VAxisMoveTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+        "score": 100,
+        "target_size": 102,
+        "object_size": 102,
+        "target_sha256": "d48330207c5a6aa9e7e1c688ef4e4fdf40a46dc5ca76a11faa8e00732985dbde",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [
+            {
+              "offset": 27,
+              "target": "006a0920",
+              "symbol": "??2@YAPAXI@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 63,
+              "target": "00640560",
+              "symbol": "??0AxisMoveTool@RBX@@QAE@PAVWorkspace@1@@Z",
+              "status": "verified_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 2.149557
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "status": "corrected static evidence verified",
+  "evidence_hashes": {
+    "helper-providers.json": "b51a9dbad6b2d76ce7051cc0563b83e6387f4763afa1cf36ae374b5a7cf65f53",
+    "contracts.json": "fd1d26f383401d56fd3a49aab84bdccfe7b6a24cfa8901f40d3164ee97207316"
+  },
+  "previous_archive": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-filesystem-owner-20261105\\linked.lib",
+  "previous_archive_member_offset": 22672778,
+  "current_archive": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-cumulative-links-20261105\\serializer-member-152732-82bc06\\linked.lib",
+  "current_archive_sha256": "b9d0373b050bafb2c7e0d3eac3302adc3eb3fe2318c30670bac92448aa794ccf",
+  "archive_member_offset": 67524326,
+  "archive_member_sha256": "400206004ed3d01dfa715c8cc9f9aef7dd2d0f1b70ae05530f4bdd12890aa62a",
+  "original_geometry_reads": [
+    {
+      "address": "0x60ffea",
+      "mnemonic": "mov",
+      "operands": "eax, dword ptr [ecx + 0x9c]"
+    },
+    {
+      "address": "0x60fff0",
+      "mnemonic": "fld",
+      "operands": "dword ptr [eax + 4]"
+    },
+    {
+      "address": "0x60fff3",
+      "mnemonic": "add",
+      "operands": "eax, 4"
+    },
+    {
+      "address": "0x60fff6",
+      "mnemonic": "fmul",
+      "operands": "st(1)"
+    },
+    {
+      "address": "0x60fff8",
+      "mnemonic": "fld",
+      "operands": "dword ptr [eax + 4]"
+    },
+    {
+      "address": "0x60fffb",
+      "mnemonic": "fmul",
+      "operands": "st(2)"
+    },
+    {
+      "address": "0x60fffd",
+      "mnemonic": "fld",
+      "operands": "dword ptr [eax + 8]"
+    },
+    {
+      "address": "0x610000",
+      "mnemonic": "fmulp",
+      "operands": "st(3)"
+    }
+  ],
+  "all_original_calls": [
+    {
+      "address": "0x60ff86",
+      "operands": "0x583920"
+    },
+    {
+      "address": "0x60ffdc",
+      "operands": "ebp"
+    },
+    {
+      "address": "0x61002a",
+      "operands": "0x5e82c0"
+    },
+    {
+      "address": "0x610039",
+      "operands": "0x60fc20"
+    },
+    {
+      "address": "0x610045",
+      "operands": "0x57dee0"
+    }
+  ],
+  "correction": "No Geometry virtual call in this body. Indirect CRT and transitive helper/RTTI/EH obligations remain.",
+  "selected_pe_proven": false,
+  "source_compiles": 0
+}

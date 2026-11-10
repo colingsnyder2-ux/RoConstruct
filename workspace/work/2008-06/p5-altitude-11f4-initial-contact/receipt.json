@@ -1,0 +1,31 @@
+{
+  "revision": "11f424ae13225cc7d9e75d2c327caa08c33ab07c",
+  "exe_sha256": "95a9b9c6c0bc28f923fbc605857dabe5c934ce51fe2d431be3a5e1322a380e55",
+  "fixture_sha256": "c18d1b58974590258e7a737ffb172f67116c65298e2011998adda9a82b1affbd",
+  "runs": [
+    {
+      "exit": 3221225477,
+      "torso": [
+        137.25,
+        4.0,
+        71.75
+      ],
+      "cleanup_marker": true,
+      "snapshot_sha256": "e2563e86712102e4ffd184137d02743a7311287b842d47688ebc7838eb74a2e8",
+      "stdout_sha256": "358ba05b92e0095ad12604c4ac16874bdd658f8478ef67c3ce82da8da13875b7"
+    },
+    {
+      "exit": 3221225477,
+      "torso": [
+        137.25,
+        4.0,
+        71.75
+      ],
+      "cleanup_marker": true,
+      "snapshot_sha256": "e2563e86712102e4ffd184137d02743a7311287b842d47688ebc7838eb74a2e8",
+      "stdout_sha256": "358ba05b92e0095ad12604c4ac16874bdd658f8478ef67c3ce82da8da13875b7"
+    }
+  ],
+  "scope": "Diagnostic: tall actor starts touching floor; two abnormal shutdowns. Cause and original behavior unverified.",
+  "P5_complete": false
+}

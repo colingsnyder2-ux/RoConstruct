@@ -1,0 +1,20 @@
+{
+  "revision": "62955063a7b0077f2e819ff5220dd3b8b8e8ac1c",
+  "exe_sha256": "234bcfd5412b7a4d6597d4060e64ea5dda97217be0c2f864f694b2565afd9142",
+  "input_sha256": "488a58983b0f65122a979aa50d0e11e225f8cb684a55abb0c785aaa11a89651c",
+  "exit": 0,
+  "loaded_datamodel_counts": {
+    "Workspace": 1,
+    "Model": 126,
+    "Part": 786,
+    "Script": 106,
+    "Humanoid": 68,
+    "Sound": 0,
+    "IntValue": 91,
+    "StringValue": 9,
+    "ObjectValue": 201,
+    "FloatValue": 0,
+    "NumberValue": 8
+  },
+  "scope": "Class counts, not full gameplay or native parity."
+}

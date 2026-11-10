@@ -1,0 +1,17 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "00582230",
+                                        "symbol":  "?doIt@BoolPropertyVerb@RBX@@"
+                                    },
+                                    {
+                                        "addr":  "00582180",
+                                        "symbol":  "?isChecked@BoolPropertyVerb@RBX@@"
+                                    }
+                                ],
+                     "source":  "native-classes/BoolPropertyVerb.cpp"
+                 }
+             ]
+}

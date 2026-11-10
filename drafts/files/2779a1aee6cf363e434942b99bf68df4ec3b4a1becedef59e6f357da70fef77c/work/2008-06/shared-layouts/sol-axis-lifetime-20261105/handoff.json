@@ -1,0 +1,42 @@
+{
+  "swap_target": "AxisMoveTool lifetime dependencies",
+  "session": "eed5fe77c87e495ea9a61a3bdc3aab95",
+  "status": "parked concrete provider mismatch; parent notified",
+  "compile_count": 0,
+  "source_edits": 0,
+  "generic_eh_receipt_preserved": "work/2008-06/shared-layouts/sol-axis-ctor-20261105/eh.json",
+  "sidecar_scope": "Conditional sidecar. Original instruction destinations and original vtable entries precede provider comparison; normalized body only, no referenced-data/EH/selection/runtime closure.",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "findings": [
+    "Original Mouse destructor adjusts ECX by +4 and tail jumps 0047d410 (ret); actual IRenderable archive provider is 66 bytes and mismatches.",
+    "Mouse deleting destructor takes ECX full object, adjusts +4 for IRenderable, deletes original full object through MFC delete only when flag bit 1 set, returns object EAX, ret 4.",
+    "Axis deleting destructor calls 00640620 on unchanged ECX, deletes full object if flag bit 1, ret 4.",
+    "Axis destructor passes member pointer +0x20 unchanged to MegaDragger destructor 0060e700 then MFC delete; string member +0x24 calls IAT 00802468 first.",
+    "MegaDragger destructor joins if byte +0x20 is zero, destroys vector at +8, decrements weak control block at member +4; when final weak count calls control block vtable+8 indirectly.",
+    "Weak-vector destructor 00590550 has exact 111-byte actual providers; array helper 00590390 remains next transitive dependency."
+  ],
+  "blockers": [
+    "IRenderable provider/config mismatch",
+    "COFF E-to-G weak fallback and secondary base adjustor identities not yet proven",
+    "Referenced vtable/RTTI/string data and transitive EH graph closure",
+    "00590390 array cleanup helper and its weak controlblock indirect dispatch ownership",
+    "MegaDragger indirect controlblock vtable+8 target/type provenance",
+    "String ctor/destructor IAT prototype/provider proof",
+    "Final selected-PE and runtime obligations parked"
+  ],
+  "next_bounded_action": "Parent inspect authentic IRenderable destructor and original release assert configuration; authorize concrete isolated source proposal only after evidence. Continue saved-object array/EH proof with no compile.",
+  "no_safe_class_claim": true,
+  "files_sha256": {
+    "bind.py": "f2e3a51ef22f209ce454f27f03454732bda3ea10b66dcde6899cbba1c6f47b76",
+    "binding-summary.txt": "b9da026b3781f423dfeaeacc1251b034478b908a89f8f2cc3ad3b894275b8992",
+    "bindings.json": "c5b06de55f72e70dda5dabfd43915f0edc7645ae1d851d19bec91109d27c6f71",
+    "handoff.json": "0e50a405e34d86d7e53a3e252e66e230937dc7ef7bd017e68a4297f7da3aa6f5",
+    "handoff.py": "ef13fcb66c71e4e63ae2c16a1bb56d9ba854b0a94f84809fd431eee114077670",
+    "inventory.json": "b662207f8c239cfa8df6db38bd56a0b6ccacb2076200b105cf9f3593db30f54e",
+    "original-base.txt": "f9c4966b908e811aa9585129020deff9990144960bf953d2888b7ff2f9ee3873",
+    "original-cleanup.txt": "1f4897757229ec42878695c913a78f812e841391e205e95a88afbed86f671380",
+    "original-deleting.txt": "f37ebedf6f4a0472bb15ddd690bfbbd882f972517b5599db8375fea399c33660",
+    "scan-summary.txt": "9d3fd7f29e3398c9f472eefa331cce7ccfb73f68481d1bfba2f75eab4e540690",
+    "scan.py": "809d7261d15b3380d36a0e5beea20b36f1bda44d19e6094b277e155b189004b7"
+  }
+}

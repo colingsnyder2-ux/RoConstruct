@@ -1,0 +1,38 @@
+{
+  "swap_target": "CRobloxDoc diagnostic provider closure",
+  "baseline_receipt": "work/2008-06/native-doc-relinks/20261105-133846-f21c78c7/result.json",
+  "source": "rebuild\\2008-06\\native-classes\\DraggerSafePlace.cpp",
+  "source_sha256": "f053e2f33f321fab77c89c7d32a4b0571716acf2b5722fdeec4aff568d95431a",
+  "object": "work\\2008-06\\native-check-runs\\20261105-134420-28795e31\\unit-000\\candidate.obj",
+  "object_sha256": "132adf9c5fc5571201c131aafbee997d9c0ab82d9a2065928d8c3a8b70857e63",
+  "run": "work\\2008-06\\native-check-runs\\20261105-134420-28795e31",
+  "session": "dd0b7c3faae144cfb003187641ee7999",
+  "metrics": {
+    "distinct_compiles": 1,
+    "new_fresh_exact_functions": 1,
+    "body_bytes": 317,
+    "data_references": 2,
+    "data_bytes": 8,
+    "verified_direct_calls": 8,
+    "changed_inputs": 0,
+    "selected_by_worker": 0,
+    "swaps": 0,
+    "server_credit": 0
+  },
+  "hypotheses": [
+    {
+      "hypothesis": "Isolate already exact body preserving genuine external helper prototype",
+      "result": "strict proof passed first compile"
+    }
+  ],
+  "blockers": [
+    "Parent cumulative link must establish external provider closure and selected ownership",
+    "Callee ABI, shared static dragSnap ownership, runtime and full EH safety are separate; original body has no visible EH registration"
+  ],
+  "resume_queue": [
+    "Parent add only isolated object to cumulative diagnostic link",
+    "If goal helper unresolved, first inspect authentic linked archive provider; mixed placement object remains inactive",
+    "Request next precise owned dependency from parent"
+  ],
+  "scope": "No shared header, original placement source, default selection, build runner, global log, executable, commit or credit changes"
+}

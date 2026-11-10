@@ -1,0 +1,6 @@
+{
+  "swap_target": "Part runnable integration (Part resize)",
+  "resize": {"run": "work/2008-06/native-check-runs/20261105-193015-904c64f1", "addr": "0059e150", "size": 590, "symbol": "?resize@PartInstance@RBX@@QAE_NW4NormalId@2@H@Z", "target_sha256": "7e172d1da7fdec39e2df14674c2f04723318105232bb0d7be3264125e8362a4b", "source_sha256": "455f9e805158e8a1b1ab85566b078ed383a8cd5dc0785a374ef9df4da101df0c", "object_sha256": "626474de576a1ad8074ecf1ecf8d14df206815eb0f683979ec02efcaf6497d4e", "result": "exact bytes+data 100%"},
+  "next_gate": "CWorkspace::insert 0046b9d0 catch rethrow (86%, parked), write EH empty-state (parked), Content closure, NullTool headers, Body getter COMDAT (parked), Initialize compiler (parked)",
+  "metrics": {"inactive_exact": 56, "selected_exact": "unknown", "gated_swaps": 0, "server_credit": 0}
+}

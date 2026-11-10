@@ -1,0 +1,70 @@
+#define NATIVE_CONTENT_PROVIDER_TYPES_ONLY
+#include "NativeContentProviderTrial.cpp"
+#include "util/Http.h"
+#include <algorithm>
+namespace RBX {
+std::string nativeFindAsset(ContentId);
+std::string nativeFindHashFile(ContentId);
+ContentProvider::CachedContent* ContentProvider::loadContent(ContentId id, int mode, const RequestCallback* callback) {
+    if (id.isNull()) return NULL;
+    {
+        boost::mutex::scoped_lock lock(contentCacheMutex);
+        std::map<ContentId,CachedContent>::iterator found = contentCache.find(id);
+        if (found != contentCache.end()) return &found->second;
+    }
+    if (id.isAsset()) {
+        boost::shared_ptr<const std::string> filename(new std::string(nativeFindAsset(id)));
+        if (filename->empty()) return NULL;
+        boost::mutex::scoped_lock lock(contentCacheMutex);
+        CachedContent& content = contentCache[id];
+        content.filename = filename;
+        return &content;
+    } else {
+        boost::shared_ptr<const std::string> filename(new std::string(nativeFindHashFile(id)));
+        if (!filename->empty()) {
+            boost::mutex::scoped_lock lock(contentCacheMutex);
+            CachedContent& content = contentCache[id];
+            content.filename = filename;
+            return &content;
+        }
+    }
+    if (id.isHttp()) {
+        switch(mode) {
+        case 1: {
+            boost::mutex::scoped_lock lock(requestSync);
+            if (!isUrlBad(id.c_str())) {
+                std::list<ContentRequest>::iterator found = std::find(requestQueue.begin(),requestQueue.end(),id);
+                if (found == requestQueue.end()) {
+                    requestQueue.push_back(ContentRequest());
+                    ContentRequest& request = requestQueue.back();
+                    request.id = id;
+                    if (callback) request.callbacks.push_back(*callback);
+                } else if (callback) {
+                    found->callbacks.push_back(*callback);
+                }
+            }
+            requestProcessor->wake();
+            break;
+        }
+        case 2: {
+            boost::shared_ptr<std::string> text(new std::string);
+            try {
+                Http(id.toString()).get(*text);
+            } catch (std::exception&) {
+                boost::mutex::scoped_lock lock(requestSync);
+                {
+                    FailedUrl failed(id.c_str());
+                    failedUrls.push_front(failed);
+                }
+                throw;
+            }
+            boost::mutex::scoped_lock lock(contentCacheMutex);
+            CachedContent& content = contentCache[id];
+            content.data = text;
+            return &content;
+        }
+        }
+    }
+    return NULL;
+}
+}

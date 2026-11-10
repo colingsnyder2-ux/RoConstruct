@@ -1,0 +1,463 @@
+[
+  {
+    "addr": "005a7770",
+    "size": 15,
+    "relocs": [
+      10
+    ],
+    "calls": 0,
+    "kind": "code",
+    "start_evidence": [
+      "aligned"
+    ],
+    "call_targets": [],
+    "shape": "mov eax, dword ptr [ecx + N] ; test eax, eax ; je N ; push eax ; call dword ptr [N] ; ret",
+    "callers": [],
+    "imports": [
+      "KERNEL32.dll!FreeLibrary"
+    ],
+    "external_calls": [
+      "KERNEL32.dll!FreeLibrary"
+    ],
+    "strings": [],
+    "entry_ecx_constructors": [],
+    "data_refs": [
+      "0x5a777e",
+      "0x8021a0"
+    ],
+    "global_reads": [
+      "0x5a777e"
+    ],
+    "global_writes": [],
+    "virtual_slots": [],
+    "stack_args": [],
+    "this_reads": [
+      4
+    ],
+    "this_writes": [],
+    "calling_convention": "caller",
+    "return_stack_bytes": [
+      0
+    ],
+    "branches": 1,
+    "constants": [
+      4
+    ],
+    "unit": "RBX::Log",
+    "siblings": [
+      "005a75d0",
+      "005a76b0",
+      "005a7780",
+      "005a7890"
+    ]
+  },
+  {
+    "addr": "005a7780",
+    "size": 263,
+    "relocs": [
+      52,
+      69,
+      83,
+      102,
+      126,
+      145,
+      184,
+      201,
+      234,
+      246
+    ],
+    "calls": 1,
+    "kind": "code",
+    "start_evidence": [
+      "call"
+    ],
+    "call_targets": [
+      "006a1704"
+    ],
+    "shape": "sub esp, N ; push ebx ; mov ebx, dword ptr [esp + N] ; push N ; lea eax, [esp + N] ; push N ; push eax ; mov byte ptr [ebx], N ; call N ; add esp, N ; lea ecx, [esp + N] ; push ecx ; mov dword ptr [esp + N], N ; call dword ptr [N] ; cmp dword ptr [esp + N], N ; jb N ; call dword ptr [N] ; lea edx, [esp + N] ; push edx ; push N ; push eax ; call dword ptr [N] ; test eax, eax ; je N ; mov ecx, dword ptr [esp + N] ; push edi ; mov edi, dword ptr [N] ; lea eax, [esp + N] ; push eax ; push N ; push N ; push N ; push ecx ; call edi ; test eax, eax ; jne N ; call dword ptr [N] ; cmp eax, N ; jne N ; mov edx, dword ptr [esp + N] ; push esi ; push edx ; push N ; call dword ptr [N] ; mov esi, eax ; test esi, esi ; je N ; mov ecx, dword ptr [esp + N] ; mov edx, dword ptr [esp + N] ; lea eax, [esp + N] ; push eax ; push ecx ; push esi ; push N ; push edx ; call edi ; test eax, eax ; je N ; mov eax, dword ptr [esi] ; push eax ; call dword ptr [N] ; mov cl, byte ptr [eax] ; mov eax, dword ptr [esi] ; dec cl ; movzx edx, cl ; push edx ; push eax ; call dword ptr [N] ; mov eax, dword ptr [eax] ; cmp eax, N ; jae N ; mov byte ptr [ebx], N ; jmp N ; cmp eax, N ; sbb cl, cl ; add cl, N ; mov byte ptr [ebx], cl ; push esi ; call dword ptr [N] ; pop esi ; mov edx, dword ptr [esp + N] ; push edx ; call dword ptr [N] ; pop edi ; xor eax, eax ; pop ebx ; add esp, N ; ret N",
+    "callers": [
+      "005a7ac0",
+      "005a7ea0"
+    ],
+    "imports": [
+      "ADVAPI32.dll!GetSidSubAuthority",
+      "ADVAPI32.dll!GetSidSubAuthorityCount",
+      "ADVAPI32.dll!GetTokenInformation",
+      "ADVAPI32.dll!OpenProcessToken",
+      "KERNEL32.dll!CloseHandle",
+      "KERNEL32.dll!GetCurrentProcess",
+      "KERNEL32.dll!GetLastError",
+      "KERNEL32.dll!GetVersionExA",
+      "KERNEL32.dll!LocalAlloc",
+      "KERNEL32.dll!LocalFree",
+      "MSVCR90.dll!memset"
+    ],
+    "external_calls": [
+      "ADVAPI32.dll!GetSidSubAuthority",
+      "ADVAPI32.dll!GetSidSubAuthorityCount",
+      "ADVAPI32.dll!OpenProcessToken",
+      "KERNEL32.dll!CloseHandle",
+      "KERNEL32.dll!GetCurrentProcess",
+      "KERNEL32.dll!GetLastError",
+      "KERNEL32.dll!GetVersionExA",
+      "KERNEL32.dll!LocalAlloc",
+      "KERNEL32.dll!LocalFree",
+      "MSVCR90.dll!memset"
+    ],
+    "strings": [],
+    "entry_ecx_constructors": [],
+    "data_refs": [
+      "0x5a785b",
+      "0x5a7867",
+      "0x5a786e",
+      "0x5a786f",
+      "0x5a787b",
+      "0x6a1704",
+      "0x802000",
+      "0x802030",
+      "0x802038",
+      "0x80203c",
+      "0x80219c",
+      "0x8021e4",
+      "0x802234",
+      "0x802274",
+      "0x8022b0",
+      "0x8022d8"
+    ],
+    "global_reads": [
+      "0x5a785b",
+      "0x5a7867",
+      "0x5a786e",
+      "0x5a786f",
+      "0x5a787b"
+    ],
+    "global_writes": [],
+    "virtual_slots": [],
+    "stack_args": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      168
+    ],
+    "this_reads": [],
+    "this_writes": [],
+    "calling_convention": "callee",
+    "return_stack_bytes": [
+      8
+    ],
+    "branches": 8,
+    "constants": [
+      4,
+      6,
+      8
+    ],
+    "unit": "RBX::Log",
+    "siblings": [
+      "005a76b0",
+      "005a7770",
+      "005a7890",
+      "005a7920"
+    ]
+  },
+  {
+    "addr": "005a7ac0",
+    "size": 992,
+    "relocs": [
+      3,
+      37,
+      47,
+      62,
+      69,
+      128,
+      140,
+      146,
+      226,
+      233,
+      248,
+      254,
+      289,
+      297,
+      317,
+      391,
+      399,
+      446,
+      549,
+      565,
+      589,
+      595,
+      603,
+      680,
+      781,
+      826,
+      888,
+      896,
+      952,
+      967
+    ],
+    "calls": 11,
+    "kind": "code",
+    "start_evidence": [
+      "call"
+    ],
+    "call_targets": [
+      "00401000",
+      "00407400",
+      "0055d760",
+      "0055dee0",
+      "0055ee20",
+      "005a7780",
+      "005a7920",
+      "005a79e0",
+      "005a7a80"
+    ],
+    "shape": "push -N ; push N ; mov eax, dword ptr fs:[N] ; push eax ; mov dword ptr fs:[N], esp ; sub esp, N ; push ebx ; push ebp ; push esi ; push edi ; xor edi, edi ; mov dword ptr [esp + N], edi ; xor esi, esi ; push N ; mov dword ptr [esp + N], esi ; call dword ptr [N] ; mov ebp, eax ; mov dword ptr [esp + N], ebp ; cmp ebp, edi ; je N ; push N ; push ebp ; call dword ptr [N] ; mov esi, eax ; mov dword ptr [esp + N], esi ; lea eax, [esp + N] ; push eax ; lea ecx, [esp + N] ; push ecx ; mov dword ptr [esp + N], N ; call N ; mov al, byte ptr [esp + N] ; mov bl, byte ptr [esp + N] ; test al, al ; jbe N ; cmp al, N ; jne N ; lea edx, [esp + N] ; push edx ; push N ; jmp N ; lea eax, [esp + N] ; push eax ; push N ; call dword ptr [N] ; mov dword ptr [esp + N], edi ; cmp esi, edi ; je N ; movzx edx, bl ; neg edx ; lea ecx, [esp + N] ; push ecx ; sbb edx, edx ; push edi ; and edx, N ; push edx ; lea eax, [esp + N] ; push eax ; call esi ; cmp eax, N ; je N ; mov ecx, dword ptr [esp + N] ; push ecx ; lea ecx, [esp + N] ; call N ; mov edx, dword ptr [esp + N] ; push edx ; mov byte ptr [esp + N], N ; call dword ptr [N] ; push N ; push N ; lea ecx, [esp + N] ; call N ; mov edi, dword ptr [N] ; mov esi, dword ptr [N] ; test bl, bl ; je N ; mov eax, dword ptr [esp + N] ; push N ; push eax ; call esi ; test eax, eax ; jne N ; call edi ; cmp eax, N ; je N ; mov esi, dword ptr [esp + N] ; push N ; mov ecx, esi ; call dword ptr [N] ; lea ecx, [esp + N] ; call N ; test ebp, ebp ; je N ; push ebp ; call dword ptr [N] ; pop edi ; mov eax, esi ; pop esi ; pop ebp ; pop ebx ; mov ecx, dword ptr [esp + N] ; mov dword ptr fs:[N], ecx ; add esp, N ; ret ; mov eax, dword ptr [esp + N] ; test eax, eax ; je N ; push eax ; lea ecx, [esp + N] ; call N ; test bl, bl ; je N ; mov ecx, dword ptr [esp + N] ; push N ; push ecx ; call esi ; test eax, eax ; jne N ; call edi ; cmp eax, N ; je N ; mov esi, dword ptr [esp + N] ; push N ; mov ecx, esi ; call dword ptr [N] ; jmp N ; mov edx, dword ptr [esp + N] ; push edx ; lea ecx, [esp + N] ; call N ; lea ecx, [esp + N] ; mov byte ptr [esp + N], N ; call N ; mov eax, dword ptr [esp + N] ; mov esi, dword ptr [esp + N] ; push eax ; mov ecx, esi ; call dword ptr [N] ; mov eax, dword ptr [esp + N] ; add eax, -N ; mov dword ptr [esp + N], N ; mov byte ptr [esp + N], N ; lea ecx, [eax + N] ; or edx, N ; lock xadd dword ptr [ecx], edx ; dec edx ; test edx, edx ; jg N ; mov ecx, dword ptr [eax] ; mov edx, dword ptr [ecx] ; push eax ; mov eax, dword ptr [edx + N] ; call eax ; mov eax, dword ptr [esp + N] ; add eax, -N ; mov byte ptr [esp + N], N ; lea ecx, [eax + N] ; or edx, N ; lock xadd dword ptr [ecx], edx ; dec edx ; test edx, edx ; jg N ; mov ecx, dword ptr [eax] ; mov edx, dword ptr [ecx] ; push eax ; mov eax, dword ptr [edx + N] ; call eax ; jmp N ; movzx edi, bl ; neg edi ; sbb edi, edi ; push N ; lea ecx, [esp + N] ; and edi, N ; call dword ptr [N] ; mov eax, dword ptr [esp + N] ; mov byte ptr [esp + N], N ; test eax, eax ; je N ; push eax ; lea ecx, [esp + N] ; call dword ptr [N] ; mov edx, dword ptr [N] ; mov eax, dword ptr [edx + N] ; mov ecx, N ; call eax ; lea esi, [eax + N] ; mov dword ptr [esp + N], esi ; mov eax, dword ptr [esi - N] ; mov ecx, N ; sub ecx, dword ptr [esi - N] ; sub eax, N ; or eax, ecx ; mov byte ptr [esp + N], N ; jge N ; push N ; lea ecx, [esp + N] ; call N ; mov esi, dword ptr [esp + N] ; mov eax, dword ptr [esp + N] ; mov ebp, N ; cmp dword ptr [esp + N], ebp ; jae N ; lea eax, [esp + N] ; mov ebx, dword ptr [N] ; push esi ; push eax ; push N ; push N ; mov ecx, edi ; or ecx, N ; push ecx ; push N ; call ebx ; test eax, eax ; je N ; mov eax, dword ptr [esi - N] ; mov ecx, N ; sub ecx, dword ptr [esi - N] ; sub eax, N ; or eax, ecx ; jge N ; push N ; lea ecx, [esp + N] ; call N ; mov esi, dword ptr [esp + N] ; mov eax, dword ptr [esp + N] ; cmp dword ptr [esp + N], ebp ; jae N ; lea eax, [esp + N] ; push esi ; push eax ; push N ; push N ; or edi, N ; push edi ; push N ; call ebx ; test eax, eax ; jne N ; mov eax, dword ptr [esi - N] ; push eax ; push esi ; call dword ptr [N] ; add esp, N ; test eax, eax ; jl N ; cmp eax, dword ptr [esi - N] ; jg N ; mov dword ptr [esi - N], eax ; lea ecx, [esp + N] ; mov byte ptr [eax + esi], N ; call N ; mov esi, dword ptr [esp + N] ; mov edi, dword ptr [esp + N] ; push esi ; mov ecx, edi ; call dword ptr [N] ; lea eax, [esi - N] ; mov dword ptr [esp + N], N ; mov byte ptr [esp + N], N ; lea edx, [eax + N] ; or ecx, N ; lock xadd dword ptr [edx], ecx ; dec ecx ; test ecx, ecx ; jg N ; mov ecx, dword ptr [eax] ; mov edx, dword ptr [ecx] ; push eax ; mov eax, dword ptr [edx + N] ; call eax ; jmp N ; push N ; call N ; mov edi, dword ptr [esp + N] ; push N ; mov ecx, edi ; call dword ptr [N] ; add esi, -N ; mov dword ptr [esp + N], N ; mov byte ptr [esp + N], N ; lea ecx, [esi + N] ; or edx, N ; lock xadd dword ptr [ecx], edx ; dec edx ; test edx, edx ; jg N ; mov ecx, dword ptr [esi] ; mov eax, dword ptr [ecx] ; mov edx, dword ptr [eax + N] ; push esi ; call edx ; lea ecx, [esp + N] ; mov byte ptr [esp + N], N ; call dword ptr [N] ; mov eax, dword ptr [esp + N] ; test eax, eax ; je N ; push eax ; call dword ptr [N] ; mov ecx, dword ptr [esp + N] ; mov eax, edi ; pop edi ; pop esi ; pop ebp ; pop ebx ; mov dword ptr fs:[N], ecx ; add esp, N ; ret",
+    "callers": [
+      "00427ba0",
+      "004321f0",
+      "0044fe00",
+      "00568460"
+    ],
+    "imports": [
+      "KERNEL32.dll!CreateDirectoryA",
+      "KERNEL32.dll!FreeLibrary",
+      "KERNEL32.dll!GetLastError",
+      "KERNEL32.dll!GetProcAddress",
+      "KERNEL32.dll!LoadLibraryA",
+      "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+      "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+      "MSVCP90.dll!??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z",
+      "MSVCR90.dll!strnlen",
+      "SHELL32.dll!SHGetFolderPathAndSubDirA",
+      "ole32.dll!CLSIDFromString",
+      "ole32.dll!CoTaskMemFree"
+    ],
+    "external_calls": [
+      "KERNEL32.dll!FreeLibrary",
+      "KERNEL32.dll!GetProcAddress",
+      "KERNEL32.dll!LoadLibraryA",
+      "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+      "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+      "MSVCP90.dll!??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z",
+      "MSVCR90.dll!strnlen",
+      "ole32.dll!CLSIDFromString",
+      "ole32.dll!CoTaskMemFree"
+    ],
+    "strings": [
+      "Shell32.dll",
+      "SHGetKnownFolderPath",
+      "\\Roblox\\",
+      "Roblox\\"
+    ],
+    "entry_ecx_constructors": [],
+    "data_refs": [
+      "0x401000",
+      "0x407400",
+      "0x55d760",
+      "0x55dee0",
+      "0x55ee20",
+      "0x5a7780",
+      "0x5a7920",
+      "0x5a79e0",
+      "0x5a7a80",
+      "0x5a7b0f",
+      "0x5a7b46",
+      "0x5a7b50",
+      "0x5a7bed",
+      "0x5a7bf6",
+      "0x5a7c01",
+      "0x5a7c16"
+    ],
+    "global_reads": [
+      "0x401000",
+      "0x407400",
+      "0x55d760",
+      "0x55dee0",
+      "0x55ee20",
+      "0x5a7780",
+      "0x5a7920",
+      "0x5a79e0",
+      "0x5a7a80",
+      "0x5a7b0f",
+      "0x5a7b46",
+      "0x5a7b50",
+      "0x5a7bed",
+      "0x5a7bf6",
+      "0x5a7c01",
+      "0x5a7c16"
+    ],
+    "global_writes": [],
+    "virtual_slots": [],
+    "stack_args": [
+      19,
+      20,
+      24,
+      28,
+      32,
+      36,
+      40,
+      44
+    ],
+    "this_reads": [
+      0
+    ],
+    "this_writes": [],
+    "calling_convention": "caller",
+    "return_stack_bytes": [
+      0
+    ],
+    "branches": 31,
+    "constants": [
+      4,
+      5,
+      8
+    ],
+    "unit": "RBX::Log",
+    "siblings": [
+      "005a79e0",
+      "005a7a80",
+      "005a7ea0",
+      "005a80d0"
+    ]
+  },
+  {
+    "addr": "005a7ea0",
+    "size": 548,
+    "relocs": [
+      3,
+      40,
+      50,
+      65,
+      72,
+      125,
+      131,
+      210,
+      217,
+      249,
+      259,
+      278,
+      286,
+      351,
+      453,
+      477,
+      502,
+      508,
+      519
+    ],
+    "calls": 6,
+    "kind": "code",
+    "start_evidence": [
+      "call"
+    ],
+    "call_targets": [
+      "0055d760",
+      "0055dee0",
+      "0055ee20",
+      "005a7780",
+      "005a7920",
+      "005a79e0"
+    ],
+    "shape": "push -N ; push N ; mov eax, dword ptr fs:[N] ; push eax ; mov dword ptr fs:[N], esp ; sub esp, N ; push esi ; push edi ; mov dword ptr [esp + N], N ; xor esi, esi ; push N ; mov dword ptr [esp + N], esi ; call dword ptr [N] ; mov edi, eax ; mov dword ptr [esp + N], edi ; test edi, edi ; je N ; push N ; push edi ; call dword ptr [N] ; mov esi, eax ; mov dword ptr [esp + N], esi ; lea eax, [esp + N] ; push eax ; lea ecx, [esp + N] ; push ecx ; mov dword ptr [esp + N], N ; call N ; cmp byte ptr [esp + N], N ; jne N ; lea edx, [esp + N] ; push edx ; push N ; call dword ptr [N] ; mov dword ptr [esp + N], N ; test esi, esi ; je N ; lea eax, [esp + N] ; push eax ; push N ; push N ; lea ecx, [esp + N] ; push ecx ; call esi ; cmp eax, N ; je N ; mov edx, dword ptr [esp + N] ; push edx ; lea ecx, [esp + N] ; call N ; mov eax, dword ptr [esp + N] ; push eax ; mov byte ptr [esp + N], N ; call dword ptr [N] ; push N ; push N ; lea ecx, [esp + N] ; call N ; cmp byte ptr [esp + N], N ; je N ; mov ecx, dword ptr [esp + N] ; push N ; push ecx ; call dword ptr [N] ; test eax, eax ; jne N ; call dword ptr [N] ; cmp eax, N ; je N ; mov esi, dword ptr [esp + N] ; push N ; mov ecx, esi ; call dword ptr [N] ; lea ecx, [esp + N] ; call N ; jmp N ; mov edx, dword ptr [esp + N] ; push edx ; lea ecx, [esp + N] ; call N ; lea ecx, [esp + N] ; mov byte ptr [esp + N], N ; call N ; mov eax, dword ptr [esp + N] ; mov esi, dword ptr [esp + N] ; push eax ; mov ecx, esi ; call dword ptr [N] ; mov eax, dword ptr [esp + N] ; add eax, -N ; mov byte ptr [esp + N], N ; lea ecx, [eax + N] ; or edx, N ; lock xadd dword ptr [ecx], edx ; dec edx ; test edx, edx ; jg N ; mov ecx, dword ptr [eax] ; mov edx, dword ptr [ecx] ; push eax ; mov eax, dword ptr [edx + N] ; call eax ; mov eax, dword ptr [esp + N] ; add eax, -N ; mov byte ptr [esp + N], N ; lea ecx, [eax + N] ; or edx, N ; lock xadd dword ptr [ecx], edx ; dec edx ; test edx, edx ; jg N ; mov ecx, dword ptr [eax] ; mov edx, dword ptr [ecx] ; push eax ; mov eax, dword ptr [edx + N] ; call eax ; jmp N ; movzx edx, byte ptr [esp + N] ; lea ecx, [esp + N] ; push ecx ; neg edx ; push N ; sbb edx, edx ; push N ; and edx, N ; push N ; or edx, N ; push edx ; push N ; call dword ptr [N] ; mov esi, dword ptr [esp + N] ; mov ecx, esi ; test eax, eax ; jne N ; lea eax, [esp + N] ; push eax ; jmp N ; push N ; call dword ptr [N] ; test edi, edi ; je N ; push edi ; call dword ptr [N] ; mov ecx, dword ptr [esp + N] ; pop edi ; mov eax, esi ; pop esi ; mov dword ptr fs:[N], ecx ; add esp, N ; ret",
+    "callers": [
+      "0055f940"
+    ],
+    "imports": [
+      "KERNEL32.dll!CreateDirectoryA",
+      "KERNEL32.dll!FreeLibrary",
+      "KERNEL32.dll!GetLastError",
+      "KERNEL32.dll!GetProcAddress",
+      "KERNEL32.dll!LoadLibraryA",
+      "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+      "SHELL32.dll!SHGetFolderPathAndSubDirA",
+      "ole32.dll!CLSIDFromString",
+      "ole32.dll!CoTaskMemFree"
+    ],
+    "external_calls": [
+      "KERNEL32.dll!CreateDirectoryA",
+      "KERNEL32.dll!FreeLibrary",
+      "KERNEL32.dll!GetLastError",
+      "KERNEL32.dll!GetProcAddress",
+      "KERNEL32.dll!LoadLibraryA",
+      "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+      "SHELL32.dll!SHGetFolderPathAndSubDirA",
+      "ole32.dll!CLSIDFromString",
+      "ole32.dll!CoTaskMemFree"
+    ],
+    "strings": [
+      "Shell32.dll",
+      "SHGetKnownFolderPath",
+      "\\Roblox\\",
+      "Roblox\\Cache"
+    ],
+    "entry_ecx_constructors": [],
+    "data_refs": [
+      "0x55d760",
+      "0x55dee0",
+      "0x55ee20",
+      "0x5a7780",
+      "0x5a7920",
+      "0x5a79e0",
+      "0x5a7ef2",
+      "0x5a7fd0",
+      "0x5a802b",
+      "0x5a8055",
+      "0x5a8095",
+      "0x5a809a",
+      "0x5a80a0",
+      "0x5a80ab",
+      "0x7d30c1",
+      "0x8021a0"
+    ],
+    "global_reads": [
+      "0x55d760",
+      "0x55dee0",
+      "0x55ee20",
+      "0x5a7780",
+      "0x5a7920",
+      "0x5a79e0",
+      "0x5a7ef2",
+      "0x5a7fd0",
+      "0x5a802b",
+      "0x5a8055",
+      "0x5a8095",
+      "0x5a809a",
+      "0x5a80a0",
+      "0x5a80ab",
+      "0x7d30c1",
+      "0x80b716"
+    ],
+    "global_writes": [],
+    "virtual_slots": [],
+    "stack_args": [
+      11,
+      12,
+      16,
+      20,
+      24,
+      28,
+      32,
+      44
+    ],
+    "this_reads": [
+      0
+    ],
+    "this_writes": [],
+    "calling_convention": "caller",
+    "return_stack_bytes": [
+      0
+    ],
+    "branches": 14,
+    "constants": [
+      4,
+      8
+    ],
+    "unit": "RBX::Log",
+    "siblings": [
+      "005a7a80",
+      "005a7ac0",
+      "005a80d0",
+      "005a8140"
+    ]
+  }
+]

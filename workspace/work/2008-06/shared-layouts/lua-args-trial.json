@@ -1,0 +1,146 @@
+{
+  "scope": "Inactive conversion and selected Value constructors match. Complete Value lifetime, type data identity and live ABI remain unproven.",
+  "source_sha256": "c57e3444194995060c522026330cee805f08781fc67b55befc595a19db6fc5a6",
+  "observer_sha256": "9ebb8ac241bf978b31a08ff65aecaf9dbb4c1a9569bb96bc905efd198ee66efa",
+  "lua_args_header_sha256": "912a23a687552ac6955f8e355ba2a6fd7055cc9354416013e4057721b63cb7e5",
+  "value_header_sha256": "45c53b5b025ca601e435c940fa70fa3bf560ada1f886d63bb6dab08553ebb070",
+  "profile_sha256": "50fd2679eb0e95983ab086648ffc76cdf50f4daaa0069f1c691fa6d24a3fe528",
+  "object_sha256": "c3d268e28d6d857c6e2383ff17cf20427509af5ba142a615d945b4992d52c148",
+  "methods": [
+    {
+      "symbol": "?push@LuaArgs@@QAEXVCComVariant@ATL@@@Z",
+      "address": "0042db20",
+      "size": 692,
+      "exact": true
+    },
+    {
+      "symbol": "??$?0M@Value@Reflection@RBX@@QAE@ABM@Z",
+      "address": "0042d200",
+      "size": 59,
+      "exact": true
+    },
+    {
+      "symbol": "??$?0_N@Value@Reflection@RBX@@QAE@AB_N@Z",
+      "address": "0042d240",
+      "size": 59,
+      "exact": true
+    },
+    {
+      "symbol": "??$?0H@Value@Reflection@RBX@@QAE@ABH@Z",
+      "address": "0042d280",
+      "size": 59,
+      "exact": true
+    },
+    {
+      "symbol": "??$?0V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Value@Reflection@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "address": "004175d0",
+      "size": 29,
+      "exact": true
+    },
+    {
+      "symbol": "?push_back@?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@QAEXABVValue@Reflection@RBX@@@Z",
+      "address": "0042daa0",
+      "size": 128,
+      "exact": true
+    }
+  ],
+  "bindings": {
+    "__ehhandler$?push@LuaArgs@@QAEXVCComVariant@ATL@@@Z": [
+      "0x7bf8ee"
+    ],
+    "$LN96": [
+      "0x42dda4"
+    ],
+    "??$?0M@Value@Reflection@RBX@@QAE@ABM@Z": [
+      "0x42d200"
+    ],
+    "?push_back@?$vector@VValue@Reflection@RBX@@V?$allocator@VValue@Reflection@RBX@@@std@@@std@@QAEXABVValue@Reflection@RBX@@@Z": [
+      "0x42daa0"
+    ],
+    "__imp_??0?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@PB_W@Z": [
+      "0x803ed8"
+    ],
+    "__imp_??B?$CSimpleStringT@D$00@ATL@@QBEPBDXZ": [
+      "0x803ee0"
+    ],
+    "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": [
+      "0x802458"
+    ],
+    "??$?0V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Value@Reflection@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": [
+      "0x4175d0"
+    ],
+    "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": [
+      "0x802468"
+    ],
+    "__imp_??1?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAE@XZ": [
+      "0x803f14"
+    ],
+    "??$?0_N@Value@Reflection@RBX@@QAE@AB_N@Z": [
+      "0x42d240"
+    ],
+    "??$?0H@Value@Reflection@RBX@@QAE@ABH@Z": [
+      "0x42d280"
+    ],
+    "??0Value@Reflection@RBX@@QAE@XZ": [
+      "0x594ac0"
+    ],
+    "__imp__VariantClear@4": [
+      "0x80291c"
+    ],
+    "??_C@_0BP@ICGMCHMO@Invalid?5argument?5?$CFd?5VT_TYPE?$DN?$CFd?$AA@": [
+      "0x8106ec"
+    ],
+    "?format@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDZZ": [
+      "0x509b10"
+    ],
+    "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": [
+      "0x409d50"
+    ],
+    "__TI2?AVruntime_error@std@@": [
+      "0x8d1bc8"
+    ],
+    "__CxxThrowException@8": [
+      "0x6a158c"
+    ],
+    "$LN84": [
+      "0x42dd39"
+    ],
+    "$LN3": [
+      "0x42dd09"
+    ],
+    "$LN5": [
+      "0x42dca2"
+    ],
+    "$LN4": [
+      "0x42dcd6"
+    ],
+    "$LN9": [
+      "0x42db60"
+    ],
+    "$LN8": [
+      "0x42db8e"
+    ],
+    "$LN1": [
+      "0x42dd60"
+    ],
+    "$LN7": [
+      "0x42dbdb"
+    ],
+    "$LN6": [
+      "0x42dc67"
+    ]
+  },
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\lua-args-probe\\LuaArgsProfile.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\lua-args-probe\\LuaArgsProfile.cpp"
+  ]
+}

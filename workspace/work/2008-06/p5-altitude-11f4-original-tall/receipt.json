@@ -1,0 +1,172 @@
+{
+  "revision": "11f424ae13225cc7d9e75d2c327caa08c33ab07c",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "player_sha256": "95a9b9c6c0bc28f923fbc605857dabe5c934ce51fe2d431be3a5e1322a380e55",
+  "fixture_sha256": "f7fbfcd45e42fc5f954d673c78783933fcf2e78a261d21b12c7a57a1122a3d12",
+  "observer_sha256": "922e41e185d358883890eb7e6a51224fb4de4c19dc79c8437ed17168aba2dc23",
+  "candidate_counts": [
+    4,
+    4
+  ],
+  "moving_copies": [
+    2,
+    2
+  ],
+  "rebuilt": {
+    "30": {
+      "torso": [
+        141.391022,
+        5.01199293,
+        71.75
+      ],
+      "head": [
+        141.391022,
+        6.51199293,
+        71.75
+      ],
+      "floor": [
+        137.25,
+        -1.0,
+        71.75
+      ],
+      "snapshot_sha256": "3d0d8280743b6d6e70fa2cd6f4ee00fbb7f901030a90f666026f93d78ec2a8e1"
+    },
+    "60": {
+      "torso": [
+        149.392731,
+        5.0002284,
+        71.75
+      ],
+      "head": [
+        149.392731,
+        6.5002284,
+        71.75
+      ],
+      "floor": [
+        137.25,
+        -1.0,
+        71.75
+      ],
+      "snapshot_sha256": "f5114c260a82b865e1eeaac5b04859211783642ae7cf86bb6676ff6d6ed5d275"
+    },
+    "90": {
+      "torso": [
+        157.39444,
+        5.00013447,
+        71.75
+      ],
+      "head": [
+        157.39444,
+        6.50013447,
+        71.75
+      ],
+      "floor": [
+        137.25,
+        -1.0,
+        71.75
+      ],
+      "snapshot_sha256": "c654e74211f207c21b452db58185b757df4762301ad2327f3a51a0ddc6520f8d"
+    },
+    "120": {
+      "torso": [
+        165.396149,
+        5.00013447,
+        71.75
+      ],
+      "head": [
+        165.396149,
+        6.50013447,
+        71.75
+      ],
+      "floor": [
+        137.25,
+        -1.0,
+        71.75
+      ],
+      "snapshot_sha256": "1b1228bed4426b1462f5674dd46de0c8a828c044f8639d18d88d76f421e2f66f"
+    }
+  },
+  "comparisons": [
+    {
+      "frame": 30,
+      "original_time": 0.5,
+      "original_torso": [
+        141.39102172851562,
+        5.040398597717285,
+        71.75
+      ],
+      "original_head": [
+        141.39102172851562,
+        6.540398597717285,
+        71.75
+      ],
+      "delta": [
+        -2.714843674311851e-07,
+        0.028405667717285255,
+        0.0
+      ]
+    },
+    {
+      "frame": 60,
+      "original_time": 1.0,
+      "original_torso": [
+        149.92532348632812,
+        4.904728412628174,
+        71.75
+      ],
+      "original_head": [
+        149.92532348632812,
+        6.404728412628174,
+        71.75
+      ],
+      "delta": [
+        0.5325924863281273,
+        -0.0954999873718263,
+        0.0
+      ]
+    },
+    {
+      "frame": 90,
+      "original_time": 1.5,
+      "original_torso": [
+        157.92543029785156,
+        4.904728412628174,
+        71.75
+      ],
+      "original_head": [
+        157.92543029785156,
+        6.404728412628174,
+        71.75
+      ],
+      "delta": [
+        0.5309902978515595,
+        -0.09540605737182606,
+        0.0
+      ]
+    },
+    {
+      "frame": 120,
+      "original_time": 2.0,
+      "original_torso": [
+        165.925537109375,
+        4.904728412628174,
+        71.75
+      ],
+      "original_head": [
+        165.925537109375,
+        6.404728412628174,
+        71.75
+      ],
+      "delta": [
+        0.5293881093749917,
+        -0.09540605737182606,
+        0.0
+      ]
+    }
+  ],
+  "original_exit": 1,
+  "original_forced_termination": true,
+  "mode": "tall",
+  "scope": "One authored walk, tall character walk, or moving floor; original wall-time vs rebuilt fixed steps, +/-35 ms sampling, torso x tolerance 0.8 and y tolerance 0.16 studs. Joint construction differs and native parity is unproven.",
+  "P5_complete": false
+}

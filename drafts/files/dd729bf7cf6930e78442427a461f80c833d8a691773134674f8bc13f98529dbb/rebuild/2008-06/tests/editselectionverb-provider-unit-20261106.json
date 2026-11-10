@@ -1,0 +1,1 @@
+{"jobs":[{"source":"native-classes/EditSelectionVerbConstructor.cpp","checks":[{"addr":"0057e730","symbol":"??0EditSelectionVerb@RBX@@IAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVDataModel@1@@Z"}]}]}

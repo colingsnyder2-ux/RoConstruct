@@ -1,0 +1,30 @@
+{
+  "swap_target": "CRobloxDoc native diagnostic closure",
+  "session": "b251155ec6494e26ab16dd2d1c95bd95",
+  "current_run": "20261105-135622-0161a2a8",
+  "source_compiles": 0,
+  "inputs_changed": [],
+  "unresolved": [
+    "?render2d@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z",
+    "?render3dAdorn@AxisMoveTool@RBX@@EAEXPAVAdorn@2@@Z",
+    "?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z"
+  ],
+  "duplicates": [],
+  "preserved_owners": [
+    "ScriptContext",
+    "PartInstance",
+    "NewNullTool",
+    "ContentProvider",
+    "Math",
+    "WorldHelpers"
+  ],
+  "next_queue": [
+    "Axis renderer authentic Extents evidence parked",
+    "Workspace writer lifetime evidence parked",
+    "Selected provider and ABI/EH audit after successful diagnostic link"
+  ],
+  "activation": false,
+  "gated_swaps": 0,
+  "server_credit": 0,
+  "baseline_receipt": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-doc-relinks\\20261105-134712-a99864f1\\result.json"
+}

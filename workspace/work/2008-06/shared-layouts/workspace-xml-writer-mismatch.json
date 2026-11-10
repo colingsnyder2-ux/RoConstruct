@@ -1,0 +1,162 @@
+{
+  "scope": "Inactive explicit-destructor profile: constructor matches, destructor and caller differ. Implicit-destructor results are recorded separately; no runtime promotion.",
+  "observer_sha256": "1b5d536d72d9e232649bcc977b3647cd30fd8fe59e4dc8dd0249658df1ce0556",
+  "source_sha256": "7a2401642b82a46fed479a026737fc6ce79dafb9e83a9a579c22bf60e9427090",
+  "header_sha256": "64605ae487e3015a62cb8367127abe6953f19824915d2d6fcd2d182dd4b3ac86",
+  "overlay_sha256": "24e5ebd16eeaf4d6beb6e6c7a9c84f550eeccc6c5782180fe991da73a4c8ec70",
+  "object_sha256": "65370fa984d85f0e9c99f4394d8f7e5d455587036430560968a014862bbf2cc5",
+  "original_vtable": "0x81c848",
+  "original_type_descriptor": "0x93350c",
+  "methods": [
+    {
+      "symbol": "??0TextXmlWriterWithEmbeddedContent@@QAE@PAVContentProvider@RBX@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+      "address": "0046b550",
+      "candidate_size": 98,
+      "original_size": 98,
+      "exact": true
+    },
+    {
+      "symbol": "??1TextXmlWriterWithEmbeddedContent@@QAE@XZ",
+      "address": "0046b1e0",
+      "candidate_size": 83,
+      "original_size": 77,
+      "exact": false
+    },
+    {
+      "symbol": "?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+      "address": "0046b860",
+      "candidate_size": 112,
+      "original_size": 112,
+      "exact": false
+    }
+  ],
+  "flags": [
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\xml-writer-probe",
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\xml-writer-probe\\NativeWorkspaceXmlWriterMismatch.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeWorkspaceXmlWriterMismatch.cpp"
+  ],
+  "original_caller_unwind": {
+    "handler": "0x7c39e8",
+    "funcinfo": "0x8db774",
+    "unwind_map": "0x8db764",
+    "states": [
+      {
+        "to": "0xffffffff",
+        "action": "0x0"
+      },
+      {
+        "to": "0xffffffff",
+        "action": "0x7c39e0"
+      }
+    ],
+    "finding": "State 0 has no cleanup action; state 1 invokes writer cleanup."
+  },
+  "implicit_destructor_profile": {
+    "scope": "Constructor and implicit destructor match; caller still differs. Complete layout and runtime ABI remain unproven.",
+    "object_sha256": "cf80433b937c62c3840a3b60342c6c2ac3d14dde11123971a9c65b0f3f17daf5",
+    "source_sha256": "12ff225f0ba9fd659d469b5a026f02bd6cd02f80f61193bef14c6f49c32b8a62",
+    "overlay_sha256": "a8ae4ca56871739dc522f2478046925b4f5dfccf4c2aae05884911ce493b9a8e",
+    "methods": [
+      {
+        "symbol": "??0TextXmlWriterWithEmbeddedContent@@QAE@PAVContentProvider@RBX@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+        "address": "0046b550",
+        "candidate_size": 98,
+        "original_size": 98,
+        "exact": true
+      },
+      {
+        "symbol": "??1TextXmlWriterWithEmbeddedContent@@QAE@XZ",
+        "address": "0046b1e0",
+        "candidate_size": 77,
+        "original_size": 77,
+        "exact": true
+      },
+      {
+        "symbol": "?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+        "address": "0046b860",
+        "candidate_size": 130,
+        "original_size": 112,
+        "exact": false
+      }
+    ],
+    "destructor_calls": {
+      "??1?$_Tree@V?$_Tset_traits@VContentId@RBX@@U?$less@VContentId@RBX@@@std@@V?$allocator@VContentId@RBX@@@4@$0A@@std@@@std@@QAE@XZ": "0x46b070",
+      "??1?$_Tree@V?$_Tmap_traits@VInstanceHandle@RBX@@HU?$less@VInstanceHandle@RBX@@@std@@V?$allocator@U?$pair@$$CBVInstanceHandle@RBX@@H@std@@@4@$0A@@std@@@std@@QAE@XZ": "0x4146d0"
+    },
+    "flags": [
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\xml-writer-probe",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\xml-writer-probe\\NativeWorkspaceXmlWriterImplicit.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\xml-writer-probe\\NativeWorkspaceXmlWriterImplicit.cpp"
+    ]
+  }
+}

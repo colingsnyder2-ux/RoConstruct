@@ -1,0 +1,64 @@
+{
+  "scope": "Inactive compiler profile comparison; runtime ABI and call targets not verified.",
+  "observer_sha256": "afcf2b1a5996c4a2ec42a2f7b0daa0213b79d9cb6427594d817a24c31cbac1a3",
+  "source_sha256": "cd9d1db835683baec7310fcf0a353b8d82bffa0a3b7e1591538cad2211c665f2",
+  "address": "0046b0e0",
+  "original_size": 242,
+  "profiles": [
+    {
+      "options": [
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF"
+      ],
+      "size": 242,
+      "exact": false,
+      "object_sha256": "00795926500976030d2defad7c9c3794c1b7e7502d39f56a92a39bc086dcea07"
+    },
+    {
+      "options": [
+        "/O2",
+        "/Ob1",
+        "/Oy",
+        "/GF"
+      ],
+      "size": 242,
+      "exact": false,
+      "object_sha256": "2d15e513fe30f85422a441a8f765f177f97929ebc75d3d1eeba7a983e00eb6ef"
+    },
+    {
+      "options": [
+        "/O2",
+        "/Ob2",
+        "/Oy-",
+        "/GF"
+      ],
+      "size": 238,
+      "exact": false,
+      "object_sha256": "d89c984f6b7e3036bfa1dde21ffdedf2c85f61ecd10c45a4b5d78f31fc258963"
+    },
+    {
+      "options": [
+        "/O2",
+        "/Ob1",
+        "/Oy-",
+        "/GF"
+      ],
+      "size": 238,
+      "exact": false,
+      "object_sha256": "fa2f4b2ba4c46c3093e815b6e5ee9c1a409446a6fa01cdfe7d7a9e266d9869fa"
+    },
+    {
+      "options": [
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF-"
+      ],
+      "size": 242,
+      "exact": false,
+      "object_sha256": "924a9fcebd0e5c4a3a7deea25ace8903cf2c583aa6669a629560cf31affe00ba"
+    }
+  ]
+}

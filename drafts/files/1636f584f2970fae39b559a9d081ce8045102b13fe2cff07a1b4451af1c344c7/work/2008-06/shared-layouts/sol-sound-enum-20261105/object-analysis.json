@@ -1,0 +1,93 @@
+{
+  "checks": [
+    {
+      "addr": "00629120",
+      "requested_symbol": "??0?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@AAE@XZ",
+      "status": "exact",
+      "symbol": "??0?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@AAE@XZ",
+      "score": 100,
+      "target_size": 542,
+      "object_size": 542,
+      "target_sha256": "75ea6f8b7beb6e2f822e4dfe87a54dd4034b178cf744c8065f68c582630c5864",
+      "first_byte_difference": null,
+      "data_matches": [
+        [
+          9810852,
+          29
+        ],
+        [
+          8673368,
+          10
+        ],
+        [
+          8616512,
+          8
+        ],
+        [
+          8673360,
+          8
+        ],
+        [
+          8673352,
+          6
+        ],
+        [
+          8673344,
+          5
+        ],
+        [
+          8673336,
+          6
+        ],
+        [
+          8673328,
+          6
+        ],
+        [
+          8673320,
+          6
+        ],
+        [
+          8629964,
+          10
+        ],
+        [
+          8673312,
+          5
+        ],
+        [
+          8539956,
+          5
+        ],
+        [
+          8647084,
+          5
+        ],
+        [
+          8673304,
+          6
+        ],
+        [
+          8541796,
+          5
+        ],
+        [
+          8673296,
+          7
+        ],
+        [
+          8673288,
+          7
+        ],
+        [
+          8673280,
+          8
+        ]
+      ],
+      "data_errors": [],
+      "check_seconds": 1.81875
+    }
+  ],
+  "coverage": [],
+  "layouts": []
+}

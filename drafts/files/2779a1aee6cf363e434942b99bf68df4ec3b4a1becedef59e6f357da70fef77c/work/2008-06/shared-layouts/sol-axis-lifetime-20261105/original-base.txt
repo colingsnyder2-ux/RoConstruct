@@ -1,0 +1,20 @@
+== 006159f0 42 bytes unit=RBX::ArrowTool
+006159f0  mov eax, ecx
+006159f2  or ecx, 0xffffffff
+006159f5  mov dword ptr [eax + 8], ecx
+006159f8  mov dword ptr [eax + 0xc], ecx
+006159fb  xor ecx, ecx
+006159fd  mov dword ptr [eax + 0x10], ecx
+00615a00  mov byte ptr [eax + 0x14], cl
+00615a03  mov ecx, dword ptr [esp + 4]
+00615a07  mov dword ptr [eax], 0x8439fc
+00615a0d  mov dword ptr [eax + 4], 0x8439e0
+00615a14  mov dword ptr [eax + 0x18], ecx
+00615a17  ret 4
+== 00615780 20 bytes unit=RBX::VContentId::?$TypedPropertyDescriptor
+00615780  mov dword ptr [ecx], 0x8439fc
+00615786  add ecx, 4
+00615789  mov dword ptr [ecx], 0x8439e0
+0061578f  jmp 0x47d410  ; fn_0047d410 [unit? boost::iostreams::Uoutput::V?$chain::?$chain_client]
+== 00617dd0 5 bytes unit=RBX::NullTool
+00617dd0  jmp 0x615780  ; fn_00615780 [unit? RBX::VContentId::?$TypedPropertyDescriptor]

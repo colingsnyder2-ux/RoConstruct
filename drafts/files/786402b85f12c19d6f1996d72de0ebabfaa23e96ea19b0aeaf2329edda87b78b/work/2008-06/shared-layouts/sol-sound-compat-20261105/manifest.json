@@ -1,0 +1,13 @@
+{
+  "jobs": [
+    {
+      "source": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\tests\\PlayerNativeSoundChannel.cpp",
+      "checks": [],
+      "ranges": [],
+      "layouts": []
+    }
+  ],
+  "retained_command": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\out\\P4SoundAsset\\layer-sound\\PlayerNativeSoundChannel.command.json",
+  "retained_command_sha256": "cd1aeeefad2a7f3bbb54677870b9aa4aa5b9f985633ff669d35fdd98a7603272",
+  "scope": "compile and ABI symbol/data compatibility only; no new exact-body, runtime, selection or credit claim"
+}

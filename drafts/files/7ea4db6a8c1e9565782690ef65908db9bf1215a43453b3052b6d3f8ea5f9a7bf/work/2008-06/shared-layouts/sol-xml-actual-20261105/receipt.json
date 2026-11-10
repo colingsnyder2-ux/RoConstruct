@@ -1,0 +1,663 @@
+{
+  "input_count": 329,
+  "drift": [],
+  "providers": [
+    {
+      "path": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-irenderable-20261105\\linked.lib",
+      "member": "XmlElement.obj",
+      "sha256": "f77401bec859a6c2ae4840e2460c8b80a3416f25cb127b8d05043457b1bdd3a6",
+      "definition": true,
+      "references": [
+        {
+          "section": 409,
+          "offset": 0,
+          "kind": 7,
+          "owners": []
+        },
+        {
+          "section": 410,
+          "offset": 69,
+          "kind": 20,
+          "owners": [
+            "?getValue@XmlNameValuePair@@QBE_NAAPBVName@RBX@@@Z"
+          ]
+        },
+        {
+          "section": 412,
+          "offset": 152,
+          "kind": 20,
+          "owners": [
+            "?getValue@XmlNameValuePair@@QBE_NAAVContentId@RBX@@@Z"
+          ]
+        },
+        {
+          "section": 416,
+          "offset": 56,
+          "kind": 20,
+          "owners": [
+            "?getValue@XmlNameValuePair@@QBE_NAAH@Z"
+          ]
+        },
+        {
+          "section": 418,
+          "offset": 56,
+          "kind": 20,
+          "owners": [
+            "?getValue@XmlNameValuePair@@QBE_NAAI@Z"
+          ]
+        },
+        {
+          "section": 420,
+          "offset": 56,
+          "kind": 20,
+          "owners": [
+            "?getValue@XmlNameValuePair@@QBE_NAA_N@Z"
+          ]
+        },
+        {
+          "section": 422,
+          "offset": 72,
+          "kind": 20,
+          "owners": [
+            "?getValue@XmlNameValuePair@@QBE_NAAN@Z"
+          ]
+        },
+        {
+          "section": 424,
+          "offset": 56,
+          "kind": 20,
+          "owners": [
+            "?getValue@XmlNameValuePair@@QBE_NAAM@Z"
+          ]
+        },
+        {
+          "section": 426,
+          "offset": 53,
+          "kind": 20,
+          "owners": [
+            "?getValue@XmlNameValuePair@@QBE_NAAVInstanceHandle@RBX@@@Z"
+          ]
+        },
+        {
+          "section": 426,
+          "offset": 105,
+          "kind": 20,
+          "owners": [
+            "?getValue@XmlNameValuePair@@QBE_NAAVInstanceHandle@RBX@@@Z"
+          ]
+        },
+        {
+          "section": 426,
+          "offset": 163,
+          "kind": 20,
+          "owners": [
+            "?getValue@XmlNameValuePair@@QBE_NAAVInstanceHandle@RBX@@@Z"
+          ]
+        }
+      ],
+      "bodies": [
+        {
+          "size": 143,
+          "target_size": 143,
+          "exact": true,
+          "first_difference": null,
+          "data_ok": [],
+          "data_errors": [],
+          "relocations": [
+            {
+              "offset": 84,
+              "symbol": "??3@YAXPAX@Z",
+              "kind": 20,
+              "addend": 0
+            },
+            {
+              "offset": 112,
+              "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "kind": 6,
+              "addend": 0
+            },
+            {
+              "offset": 118,
+              "symbol": "??3@YAXPAX@Z",
+              "kind": 20,
+              "addend": 0
+            }
+          ],
+          "body_hex": "55568bf18b460483e80257745683e801745183e805756d538b5e0833ed3bdd743a8b7b043bfd742a8d470483c9fff00fc108751e8b178b42048bcfffd08d4f0883cafff00fc11175098b078b50088bcfffd253e80000000083c4045b5f896e045e5dc38b7e0833ed3bfd74118bcfff150000000057e80000000083c4045f896e045e5dc35fc74604000000005e5dc3"
+        }
+      ]
+    }
+  ],
+  "consumer_objects_or_members": 35,
+  "reference_rows_including_section_metadata": 154,
+  "bindings": [
+    {
+      "operand_offset": 84,
+      "original_target": "0x6a067a",
+      "symbol": "??3@YAXPAX@Z"
+    },
+    {
+      "operand_offset": 118,
+      "original_target": "0x6a067a",
+      "symbol": "??3@YAXPAX@Z"
+    },
+    {
+      "operand_offset": 112,
+      "iat": "0x802468",
+      "original_import": "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+    }
+  ],
+  "current_source_header_original_hashes": {
+    "rebuild/2008-06/native-classes/XmlNameValuePairClear.cpp": "6417b99cc2eb19efc3102f74412f784837c9989635cfc6f19273edca0f799cc9",
+    "rebuild/2008-06/native-headers/v8xml/XmlElement.h": "9fb2186f9cd2a7b71cc2e213244b480d674fa9997d2199e8df5fc3108406e76a",
+    "tools/rbxgs/Client/App/v8xml/XmlElement.cpp": "436c0dd3ee6e632a37e7dc70e73f152211487584737b526d1992cefee5ffeae5",
+    "tools/rbxgs/Client/App/include/util/Handle.h": "ee14671d251cd816980fb6d77059e1801059530c45a05077316fcd04326a182f",
+    "tools/rbxgs/Client/App/util/Handle.cpp": "58c9d00b874b3209bdd548b37ea209b08c333a46be74e7bd878ff60fbf0b017b",
+    "tools/rbxgs/Client/App/include/util/Object.h": "a90ae0f4fb6fe30b5d0632caf64285aa7f54d898f3ec20244831f209d41fa909",
+    "tools/rbxgs/Client/boost_1_34_1/src/boost/detail/sp_counted_base_w32.hpp": "543cc85220efe6da0d8b1b11a0ea6df1ee5ab31db2f4ad4392f38ecb047015cf",
+    "tools/rbxgs/Client/boost_1_34_1/src/boost/detail/sp_counted_impl.hpp": "9221e9c796ee6d34a65c432edf0e6e4e5626987af6627bbb180207ef03167ef3",
+    "tools/rbxgs/Client/boost_1_34_1/src/boost/detail/shared_count.hpp": "16fb0fb4f5364dabc15682a767aa1501754050e0258d3b494116587a618abeb9",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\clients\\2008-06\\Roblox.exe": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764"
+  },
+  "writer_eh": [
+    {
+      "scope": "CONDITIONAL provider continuation; indirect control-block provenance unproven. Compare existing native x86 EH metadata graph to the original; never compile/run. Pointer bindings in cleanup are checked against normal-body references/imports; not whole dependency ABI/runtime proof.",
+      "address": "0046bd70",
+      "primary_body_size": 600,
+      "primary_body_exact": true,
+      "tool_sha256": "08fada46581a3c4e317ef065af5307a129241ac7a2bb7248998c88cfa66f8820",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "object": "work\\2008-06\\native-check-runs\\20261105-123032-315317b7\\unit-000\\candidate.obj",
+      "object_sha256": "7a79c35dad8a6a63bef9db38975737e6160567cc3788cb381cca76a06f11d3ec",
+      "events": [
+        {
+          "symbol": "__ehhandler$?Write@CWorkspace@@UAGJPAPAUIContent@@@Z",
+          "original": "0x7c3abb",
+          "kind": "cleanup/handler code",
+          "size": 10,
+          "exact": true
+        },
+        {
+          "symbol": "__ehfuncinfo$?Write@CWorkspace@@UAGJPAPAUIContent@@@Z",
+          "original": "0x8db880",
+          "kind": "EH data",
+          "size": 36,
+          "exact": true,
+          "original_bytes": "2205931907000000a4b88d00010000004cb88d0000000000000000000000000001000000",
+          "native_bytes": "220593190700000000000000010000000000000000000000000000000000000001000000"
+        },
+        {
+          "symbol": "__unwindtable$?Write@CWorkspace@@UAGJPAPAUIContent@@@Z",
+          "original": "0x8db8a4",
+          "kind": "EH data",
+          "size": 56,
+          "exact": true,
+          "original_bytes": "ffffffff603a7c00000000000000000001000000683a7c0002000000813a7c00030000009a3a7c0001000000b33a7c000000000000000000",
+          "native_bytes": "ffffffff00000000000000000000000001000000000000000200000000000000030000000000000001000000000000000000000000000000"
+        },
+        {
+          "symbol": "__unwindfunclet$?Write@CWorkspace@@UAGJPAPAUIContent@@@Z$3",
+          "original": "0x7c3a60",
+          "kind": "cleanup/handler code",
+          "size": 8,
+          "exact": true
+        },
+        {
+          "symbol": "??1AFX_MAINTAIN_STATE2@@QAE@XZ",
+          "original": "0x4060f0",
+          "kind": "cleanup/handler code",
+          "size": 30,
+          "exact": true
+        },
+        {
+          "symbol": "__unwindfunclet$?Write@CWorkspace@@UAGJPAPAUIContent@@@Z$4",
+          "original": "0x7c3a68",
+          "kind": "cleanup/handler code",
+          "size": 25,
+          "exact": true
+        },
+        {
+          "symbol": "??1?$auto_ptr@VXmlElement@@@std@@QAE@XZ",
+          "original": "0x443570",
+          "kind": "cleanup/handler code",
+          "size": 25,
+          "exact": true
+        },
+        {
+          "symbol": "??1XmlElement@@QAE@XZ",
+          "original": "0x413a70",
+          "kind": "cleanup/handler code",
+          "size": 138,
+          "exact": true
+        },
+        {
+          "symbol": "__ehhandler$??1XmlElement@@QAE@XZ",
+          "original": "0x7bd8db",
+          "kind": "cleanup/handler code",
+          "size": 10,
+          "exact": true
+        },
+        {
+          "symbol": "__ehfuncinfo$??1XmlElement@@QAE@XZ",
+          "original": "0x8d2744",
+          "kind": "EH data",
+          "size": 36,
+          "exact": true,
+          "original_bytes": "22059319010000003c278d00000000000000000000000000000000000000000001000000",
+          "native_bytes": "220593190100000000000000000000000000000000000000000000000000000001000000"
+        },
+        {
+          "symbol": "__unwindtable$??1XmlElement@@QAE@XZ",
+          "original": "0x8d273c",
+          "kind": "EH data",
+          "size": 8,
+          "exact": true,
+          "original_bytes": "ffffffffd0d87b00",
+          "native_bytes": "ffffffff00000000"
+        },
+        {
+          "symbol": "__unwindfunclet$??1XmlElement@@QAE@XZ$0",
+          "original": "0x7bd8d0",
+          "kind": "cleanup/handler code",
+          "size": 11,
+          "exact": true
+        },
+        {
+          "symbol": "??1XmlNameValuePair@@QAE@XZ",
+          "original": "0x413470",
+          "kind": "cleanup/handler code",
+          "size": 5,
+          "exact": true
+        },
+        {
+          "kind": "conditional external provider body",
+          "symbol": "?clearValue@XmlNameValuePair@@ABEXXZ",
+          "original": "0x57c2d0",
+          "body_exact": true,
+          "object_sha256": "f77401bec859a6c2ae4840e2460c8b80a3416f25cb127b8d05043457b1bdd3a6",
+          "remaining": [
+            "indirect dispose/destroy dynamic control-block provenance",
+            "final linked selection and ABI"
+          ],
+          "scope": "Conditional graph continuation only; not complete provider proof"
+        },
+        {
+          "kind": "conditional external provider body",
+          "symbol": "?clearValue@XmlNameValuePair@@ABEXXZ",
+          "original": "0x57c2d0",
+          "body_exact": true,
+          "object_sha256": "f77401bec859a6c2ae4840e2460c8b80a3416f25cb127b8d05043457b1bdd3a6",
+          "remaining": [
+            "indirect dispose/destroy dynamic control-block provenance",
+            "final linked selection and ABI"
+          ],
+          "scope": "Conditional graph continuation only; not complete provider proof"
+        },
+        {
+          "kind": "conditional external provider body",
+          "symbol": "?clearValue@XmlNameValuePair@@ABEXXZ",
+          "original": "0x57c2d0",
+          "body_exact": true,
+          "object_sha256": "f77401bec859a6c2ae4840e2460c8b80a3416f25cb127b8d05043457b1bdd3a6",
+          "remaining": [
+            "indirect dispose/destroy dynamic control-block provenance",
+            "final linked selection and ABI"
+          ],
+          "scope": "Conditional graph continuation only; not complete provider proof"
+        },
+        {
+          "symbol": "__unwindfunclet$?Write@CWorkspace@@UAGJPAPAUIContent@@@Z$5",
+          "original": "0x7c3a81",
+          "kind": "cleanup/handler code",
+          "size": 25,
+          "exact": true
+        },
+        {
+          "symbol": "__unwindfunclet$?Write@CWorkspace@@UAGJPAPAUIContent@@@Z$6",
+          "original": "0x7c3a9a",
+          "kind": "cleanup/handler code",
+          "size": 25,
+          "exact": true
+        },
+        {
+          "symbol": "__unwindfunclet$?Write@CWorkspace@@UAGJPAPAUIContent@@@Z$7",
+          "original": "0x7c3ab3",
+          "kind": "cleanup/handler code",
+          "size": 8,
+          "exact": true
+        },
+        {
+          "symbol": "??1?$CComPtr@UIContent@@@ATL@@QAE@XZ",
+          "original": "0x4029c0",
+          "kind": "cleanup/handler code",
+          "size": 15,
+          "exact": true
+        },
+        {
+          "symbol": "__tryblocktable$?Write@CWorkspace@@UAGJPAPAUIContent@@@Z",
+          "original": "0x8db84c",
+          "kind": "EH data",
+          "size": 20,
+          "exact": true,
+          "original_bytes": "0100000005000000060000000200000060b88d00",
+          "native_bytes": "0100000005000000060000000200000000000000"
+        },
+        {
+          "symbol": "__catchsym$?Write@CWorkspace@@UAGJPAPAUIContent@@@Z$8",
+          "original": "0x8db860",
+          "kind": "EH data",
+          "size": 32,
+          "exact": true,
+          "original_bytes": "0900000088859200e0ffffff67bf46000000000004869200dcffffff8abf4600",
+          "native_bytes": "0900000000000000e0ffffff000000000000000000000000dcffffff00000000"
+        },
+        {
+          "symbol": "??_R0?AVexception@std@@@8",
+          "original": "0x928588",
+          "kind": "EH data",
+          "size": 28,
+          "exact": true,
+          "original_bytes": "80018500000000002e3f4156657863657074696f6e40737464404000",
+          "native_bytes": "00000000000000002e3f4156657863657074696f6e40737464404000"
+        },
+        {
+          "kind": "canonical type_info vtable binding",
+          "original": "0x850180",
+          "anchors": [
+            {
+              "type": ".?AVCWorkspace@@",
+              "descriptor": "0x9281e0",
+              "vtable": "0x850180"
+            },
+            {
+              "type": ".?AVInstance@RBX@@",
+              "descriptor": "0x92907c",
+              "vtable": "0x850180"
+            }
+          ],
+          "exact": true
+        },
+        {
+          "symbol": "??_7type_info@@6B@",
+          "original": "0x850180",
+          "kind": "external",
+          "exact": true
+        },
+        {
+          "symbol": "__catch$?Write@CWorkspace@@UAGJPAPAUIContent@@@Z$0",
+          "original": "0x46bf67",
+          "kind": "in-function continuation",
+          "exact": true
+        },
+        {
+          "symbol": "??_R0PAVCException@@@8",
+          "original": "0x928604",
+          "kind": "EH data",
+          "size": 25,
+          "exact": true,
+          "original_bytes": "80018500000000002e50415643457863657074696f6e404000",
+          "native_bytes": "00000000000000002e50415643457863657074696f6e404000"
+        },
+        {
+          "symbol": "__catch$?Write@CWorkspace@@UAGJPAPAUIContent@@@Z$1",
+          "original": "0x46bf8a",
+          "kind": "in-function continuation",
+          "exact": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "scope": "CONDITIONAL provider continuation; indirect control-block provenance unproven. Compare existing native x86 EH metadata graph to the original; never compile/run. Pointer bindings in cleanup are checked against normal-body references/imports; not whole dependency ABI/runtime proof.",
+      "address": "0046bfd0",
+      "primary_body_size": 600,
+      "primary_body_exact": true,
+      "tool_sha256": "08fada46581a3c4e317ef065af5307a129241ac7a2bb7248998c88cfa66f8820",
+      "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+      "object": "work\\2008-06\\native-check-runs\\20261105-123032-315317b7\\unit-000\\candidate.obj",
+      "object_sha256": "7a79c35dad8a6a63bef9db38975737e6160567cc3788cb381cca76a06f11d3ec",
+      "events": [
+        {
+          "symbol": "__ehhandler$?WriteSelection@CWorkspace@@UAGJPAPAUIContent@@@Z",
+          "original": "0x7c3b2b",
+          "kind": "cleanup/handler code",
+          "size": 10,
+          "exact": true
+        },
+        {
+          "symbol": "__ehfuncinfo$?WriteSelection@CWorkspace@@UAGJPAPAUIContent@@@Z",
+          "original": "0x8db910",
+          "kind": "EH data",
+          "size": 36,
+          "exact": true,
+          "original_bytes": "220593190700000034b98d0001000000dcb88d0000000000000000000000000001000000",
+          "native_bytes": "220593190700000000000000010000000000000000000000000000000000000001000000"
+        },
+        {
+          "symbol": "__unwindtable$?WriteSelection@CWorkspace@@UAGJPAPAUIContent@@@Z",
+          "original": "0x8db934",
+          "kind": "EH data",
+          "size": 56,
+          "exact": true,
+          "original_bytes": "ffffffffd03a7c00000000000000000001000000d83a7c0002000000f13a7c00030000000a3b7c0001000000233b7c000000000000000000",
+          "native_bytes": "ffffffff00000000000000000000000001000000000000000200000000000000030000000000000001000000000000000000000000000000"
+        },
+        {
+          "symbol": "__unwindfunclet$?WriteSelection@CWorkspace@@UAGJPAPAUIContent@@@Z$3",
+          "original": "0x7c3ad0",
+          "kind": "cleanup/handler code",
+          "size": 8,
+          "exact": true
+        },
+        {
+          "symbol": "??1AFX_MAINTAIN_STATE2@@QAE@XZ",
+          "original": "0x4060f0",
+          "kind": "cleanup/handler code",
+          "size": 30,
+          "exact": true
+        },
+        {
+          "symbol": "__unwindfunclet$?WriteSelection@CWorkspace@@UAGJPAPAUIContent@@@Z$4",
+          "original": "0x7c3ad8",
+          "kind": "cleanup/handler code",
+          "size": 25,
+          "exact": true
+        },
+        {
+          "symbol": "??1?$auto_ptr@VXmlElement@@@std@@QAE@XZ",
+          "original": "0x443570",
+          "kind": "cleanup/handler code",
+          "size": 25,
+          "exact": true
+        },
+        {
+          "symbol": "??1XmlElement@@QAE@XZ",
+          "original": "0x413a70",
+          "kind": "cleanup/handler code",
+          "size": 138,
+          "exact": true
+        },
+        {
+          "symbol": "__ehhandler$??1XmlElement@@QAE@XZ",
+          "original": "0x7bd8db",
+          "kind": "cleanup/handler code",
+          "size": 10,
+          "exact": true
+        },
+        {
+          "symbol": "__ehfuncinfo$??1XmlElement@@QAE@XZ",
+          "original": "0x8d2744",
+          "kind": "EH data",
+          "size": 36,
+          "exact": true,
+          "original_bytes": "22059319010000003c278d00000000000000000000000000000000000000000001000000",
+          "native_bytes": "220593190100000000000000000000000000000000000000000000000000000001000000"
+        },
+        {
+          "symbol": "__unwindtable$??1XmlElement@@QAE@XZ",
+          "original": "0x8d273c",
+          "kind": "EH data",
+          "size": 8,
+          "exact": true,
+          "original_bytes": "ffffffffd0d87b00",
+          "native_bytes": "ffffffff00000000"
+        },
+        {
+          "symbol": "__unwindfunclet$??1XmlElement@@QAE@XZ$0",
+          "original": "0x7bd8d0",
+          "kind": "cleanup/handler code",
+          "size": 11,
+          "exact": true
+        },
+        {
+          "symbol": "??1XmlNameValuePair@@QAE@XZ",
+          "original": "0x413470",
+          "kind": "cleanup/handler code",
+          "size": 5,
+          "exact": true
+        },
+        {
+          "kind": "conditional external provider body",
+          "symbol": "?clearValue@XmlNameValuePair@@ABEXXZ",
+          "original": "0x57c2d0",
+          "body_exact": true,
+          "object_sha256": "f77401bec859a6c2ae4840e2460c8b80a3416f25cb127b8d05043457b1bdd3a6",
+          "remaining": [
+            "indirect dispose/destroy dynamic control-block provenance",
+            "final linked selection and ABI"
+          ],
+          "scope": "Conditional graph continuation only; not complete provider proof"
+        },
+        {
+          "kind": "conditional external provider body",
+          "symbol": "?clearValue@XmlNameValuePair@@ABEXXZ",
+          "original": "0x57c2d0",
+          "body_exact": true,
+          "object_sha256": "f77401bec859a6c2ae4840e2460c8b80a3416f25cb127b8d05043457b1bdd3a6",
+          "remaining": [
+            "indirect dispose/destroy dynamic control-block provenance",
+            "final linked selection and ABI"
+          ],
+          "scope": "Conditional graph continuation only; not complete provider proof"
+        },
+        {
+          "kind": "conditional external provider body",
+          "symbol": "?clearValue@XmlNameValuePair@@ABEXXZ",
+          "original": "0x57c2d0",
+          "body_exact": true,
+          "object_sha256": "f77401bec859a6c2ae4840e2460c8b80a3416f25cb127b8d05043457b1bdd3a6",
+          "remaining": [
+            "indirect dispose/destroy dynamic control-block provenance",
+            "final linked selection and ABI"
+          ],
+          "scope": "Conditional graph continuation only; not complete provider proof"
+        },
+        {
+          "symbol": "__unwindfunclet$?WriteSelection@CWorkspace@@UAGJPAPAUIContent@@@Z$5",
+          "original": "0x7c3af1",
+          "kind": "cleanup/handler code",
+          "size": 25,
+          "exact": true
+        },
+        {
+          "symbol": "__unwindfunclet$?WriteSelection@CWorkspace@@UAGJPAPAUIContent@@@Z$6",
+          "original": "0x7c3b0a",
+          "kind": "cleanup/handler code",
+          "size": 25,
+          "exact": true
+        },
+        {
+          "symbol": "__unwindfunclet$?WriteSelection@CWorkspace@@UAGJPAPAUIContent@@@Z$7",
+          "original": "0x7c3b23",
+          "kind": "cleanup/handler code",
+          "size": 8,
+          "exact": true
+        },
+        {
+          "symbol": "??1?$CComPtr@UIContent@@@ATL@@QAE@XZ",
+          "original": "0x4029c0",
+          "kind": "cleanup/handler code",
+          "size": 15,
+          "exact": true
+        },
+        {
+          "symbol": "__tryblocktable$?WriteSelection@CWorkspace@@UAGJPAPAUIContent@@@Z",
+          "original": "0x8db8dc",
+          "kind": "EH data",
+          "size": 20,
+          "exact": true,
+          "original_bytes": "01000000050000000600000002000000f0b88d00",
+          "native_bytes": "0100000005000000060000000200000000000000"
+        },
+        {
+          "symbol": "__catchsym$?WriteSelection@CWorkspace@@UAGJPAPAUIContent@@@Z$8",
+          "original": "0x8db8f0",
+          "kind": "EH data",
+          "size": 32,
+          "exact": true,
+          "original_bytes": "0900000088859200e0ffffffc7c146000000000004869200dcffffffeac14600",
+          "native_bytes": "0900000000000000e0ffffff000000000000000000000000dcffffff00000000"
+        },
+        {
+          "symbol": "??_R0?AVexception@std@@@8",
+          "original": "0x928588",
+          "kind": "EH data",
+          "size": 28,
+          "exact": true,
+          "original_bytes": "80018500000000002e3f4156657863657074696f6e40737464404000",
+          "native_bytes": "00000000000000002e3f4156657863657074696f6e40737464404000"
+        },
+        {
+          "kind": "canonical type_info vtable binding",
+          "original": "0x850180",
+          "anchors": [
+            {
+              "type": ".?AVCWorkspace@@",
+              "descriptor": "0x9281e0",
+              "vtable": "0x850180"
+            },
+            {
+              "type": ".?AVInstance@RBX@@",
+              "descriptor": "0x92907c",
+              "vtable": "0x850180"
+            }
+          ],
+          "exact": true
+        },
+        {
+          "symbol": "??_7type_info@@6B@",
+          "original": "0x850180",
+          "kind": "external",
+          "exact": true
+        },
+        {
+          "symbol": "__catch$?WriteSelection@CWorkspace@@UAGJPAPAUIContent@@@Z$0",
+          "original": "0x46c1c7",
+          "kind": "in-function continuation",
+          "exact": true
+        },
+        {
+          "symbol": "??_R0PAVCException@@@8",
+          "original": "0x928604",
+          "kind": "EH data",
+          "size": 25,
+          "exact": true,
+          "original_bytes": "80018500000000002e50415643457863657074696f6e404000",
+          "native_bytes": "00000000000000002e50415643457863657074696f6e404000"
+        },
+        {
+          "symbol": "__catch$?WriteSelection@CWorkspace@@UAGJPAPAUIContent@@@Z$1",
+          "original": "0x46c1ea",
+          "kind": "in-function continuation",
+          "exact": true
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "contract": "Boost 1.34.1 sp_counted_base release decrements shared count; zero invokes virtual dispose then weak_release; weak zero invokes virtual destroy. sp_counted_impl_p dispose checked-deletes px_; base destroy deletes control block this. These authentic declarations explain ownership separation but do not prove exhaustive dynamic bindings or Instance full-object this adjustments.",
+  "selection": "Failed actual link has no selected PE/map; member availability and exact bytes do not prove selection. Saved public writer proof object is not itself a current input; its EH graph remains conditional.",
+  "next_gate": "Parent obtains successful serial link and selected-member map after parked writer/render providers resolved; establish actual writer object/COMDAT EH selection, import identity and exhaustive reachable dynamic control-block dispose/destroy ABI before runtime. No clearValue compile/migration warranted.",
+  "compiles": 0,
+  "source_shared_archive_edits": 0
+}

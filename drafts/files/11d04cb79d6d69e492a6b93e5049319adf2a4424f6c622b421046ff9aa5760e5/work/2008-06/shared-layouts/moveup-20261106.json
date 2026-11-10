@@ -1,0 +1,13 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "00581630",
+                                        "symbol":  "?doIt@MoveUpSelectionVerb@RBX@@"
+                                    }
+                                ],
+                     "source":  "native-classes/MoveUpSelectionVerb.cpp"
+                 }
+             ]
+}

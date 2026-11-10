@@ -1,0 +1,530 @@
+{
+  "scope": "Inventory only, not an external consumer audit or no-loss proof",
+  "split_receipt_sha256": "923cbe2c10130feab9f3e1d724d2b6a181cee97ff93d5bac500e2744c385a286",
+  "functions": 54,
+  "data": 19,
+  "symbols": [
+    {
+      "symbol": "??$?BV?$basic_istream@DU?$char_traits@D@std@@@std@@@?$auto_ptr@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@QAE?AU?$auto_ptr_ref@V?$basic_istream@DU?$char_traits@D@std@@@std@@@1@XZ",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??$?BVXmlElement@@@?$auto_ptr@VXmlElement@@@std@@QAE?AU?$auto_ptr_ref@VXmlElement@@@1@XZ",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??$_Destroy@PAPAVXmlElement@@@std@@YAXPAPAPAVXmlElement@@@Z",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??$_Destroy@PAVXmlElement@@@std@@YAXPAPAVXmlElement@@@Z",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??$checked_delete@V?$basic_istream@DU?$char_traits@D@std@@@std@@@boost@@YAXPAV?$basic_istream@DU?$char_traits@D@std@@@std@@@Z",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??$checked_delete@VXmlElement@@@boost@@YAXPAVXmlElement@@@Z",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??0?$auto_ptr@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@QAE@U?$auto_ptr_ref@V?$basic_istream@DU?$char_traits@D@std@@@std@@@1@@Z",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??0?$auto_ptr@VXmlElement@@@std@@QAE@U?$auto_ptr_ref@VXmlElement@@@1@@Z",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??0?$auto_ptr_ref@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@QAE@PAV?$basic_istream@DU?$char_traits@D@std@@@1@@Z",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??0?$auto_ptr_ref@VXmlElement@@@std@@QAE@PAVXmlElement@@@Z",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??0?$scoped_ptr@V?$basic_istream@DU?$char_traits@D@std@@@std@@@boost@@QAE@V?$auto_ptr@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@@Z",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??0?$scoped_ptr@VXmlElement@@@boost@@QAE@V?$auto_ptr@VXmlElement@@@std@@@Z",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??0TextXmlParser@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@std@@@Z",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??1?$_Container_base_aux_alloc_real@V?$allocator@PAVXmlElement@@@std@@@std@@IAE@XZ",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??1?$_Deque_map@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@QAE@XZ",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??1?$_Deque_val@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@QAE@XZ",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??1?$auto_ptr@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@QAE@XZ",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??1?$auto_ptr@VXmlElement@@@std@@QAE@XZ",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??1?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@QAE@XZ",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??1?$scoped_ptr@V?$basic_istream@DU?$char_traits@D@std@@@std@@@boost@@QAE@XZ",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??1?$scoped_ptr@VXmlElement@@@boost@@QAE@XZ",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??1?$stack@PAVXmlElement@@V?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@@std@@QAE@XZ",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??1TextXmlParser@@QAE@XZ",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??1XmlAttribute@@QAE@XZ",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??1XmlElement@@QAE@XZ",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??1XmlNameValuePair@@QAE@XZ",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??1XmlParser@@QAE@XZ",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??C?$scoped_ptr@V?$basic_istream@DU?$char_traits@D@std@@@std@@@boost@@QBEPAV?$basic_istream@DU?$char_traits@D@std@@@std@@XZ",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??_GXmlAttribute@@QAEPAXI@Z",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??_GXmlElement@@QAEPAXI@Z",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "?_Tidy@?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@IAEXXZ",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "?deallocate@?$allocator@PAPAVXmlElement@@@std@@QAEXPAPAPAVXmlElement@@I@Z",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "?deallocate@?$allocator@PAVXmlElement@@@std@@QAEXPAPAVXmlElement@@I@Z",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "?destroy@?$allocator@PAPAVXmlElement@@@std@@QAEXPAPAPAVXmlElement@@@Z",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "?destroy@?$allocator@PAVXmlElement@@@std@@QAEXPAPAVXmlElement@@@Z",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "?empty@?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@QBE_NXZ",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "?firstChild@?$Parent@VXmlAttribute@@@RBX@@QAEPAVXmlAttribute@@XZ",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "?firstChild@?$Parent@VXmlElement@@@RBX@@QAEPAVXmlElement@@XZ",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "?get@?$scoped_ptr@VXmlElement@@@boost@@QBEPAVXmlElement@@XZ",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "?load@ContentProvider@RBX@@QAEXVContentId@2@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "?nextSibling@?$Sibling@VXmlAttribute@@@RBX@@QAEPAVXmlAttribute@@XZ",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "?nextSibling@?$Sibling@VXmlElement@@@RBX@@QAEPAVXmlElement@@XZ",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "?pop_back@?$deque@PAVXmlElement@@V?$allocator@PAVXmlElement@@@std@@@std@@QAEXXZ",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "?release@?$auto_ptr@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@QAEPAV?$basic_istream@DU?$char_traits@D@std@@@2@XZ",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "?release@?$auto_ptr@VXmlElement@@@std@@QAEPAVXmlElement@@XZ",
+      "kind": "function",
+      "category": "C++ callable COMDAT/provider candidate",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "__ehhandler$??1XmlElement@@QAE@XZ",
+      "kind": "function",
+      "category": "EH compiler metadata",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "__ehhandler$?load@ContentProvider@RBX@@QAEXVContentId@2@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z",
+      "kind": "function",
+      "category": "EH compiler metadata",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "__unwindfunclet$??1XmlElement@@QAE@XZ$0",
+      "kind": "function",
+      "category": "EH compiler metadata",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "__unwindfunclet$?load@ContentProvider@RBX@@QAEXVContentId@2@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z$0",
+      "kind": "function",
+      "category": "EH compiler metadata",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "__unwindfunclet$?load@ContentProvider@RBX@@QAEXVContentId@2@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z$2",
+      "kind": "function",
+      "category": "EH compiler metadata",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "__unwindfunclet$?load@ContentProvider@RBX@@QAEXVContentId@2@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z$4",
+      "kind": "function",
+      "category": "EH compiler metadata",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "__unwindfunclet$?load@ContentProvider@RBX@@QAEXVContentId@2@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z$5",
+      "kind": "function",
+      "category": "EH compiler metadata",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "__unwindfunclet$?load@ContentProvider@RBX@@QAEXVContentId@2@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z$6",
+      "kind": "function",
+      "category": "EH compiler metadata",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "__unwindfunclet$?load@ContentProvider@RBX@@QAEXVContentId@2@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z$8",
+      "kind": "function",
+      "category": "EH compiler metadata",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??_7TextXmlParser@@6B@",
+      "kind": "data",
+      "category": "RTTI/vtable externally referencable data",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??_R0?AVTextXmlParser@@@8",
+      "kind": "data",
+      "category": "RTTI/vtable externally referencable data",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??_R0?AVXmlParser@@@8",
+      "kind": "data",
+      "category": "RTTI/vtable externally referencable data",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??_R0?AVnoncopyable@noncopyable_@boost@@@8",
+      "kind": "data",
+      "category": "RTTI/vtable externally referencable data",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??_R13?0A@EA@noncopyable@noncopyable_@boost@@8",
+      "kind": "data",
+      "category": "RTTI/vtable externally referencable data",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??_R1A@?0A@EA@TextXmlParser@@8",
+      "kind": "data",
+      "category": "RTTI/vtable externally referencable data",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??_R1A@?0A@EA@XmlParser@@8",
+      "kind": "data",
+      "category": "RTTI/vtable externally referencable data",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??_R1A@?0A@EA@noncopyable@noncopyable_@boost@@8",
+      "kind": "data",
+      "category": "RTTI/vtable externally referencable data",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??_R2TextXmlParser@@8",
+      "kind": "data",
+      "category": "RTTI/vtable externally referencable data",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??_R2XmlParser@@8",
+      "kind": "data",
+      "category": "RTTI/vtable externally referencable data",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??_R2noncopyable@noncopyable_@boost@@8",
+      "kind": "data",
+      "category": "RTTI/vtable externally referencable data",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??_R3TextXmlParser@@8",
+      "kind": "data",
+      "category": "RTTI/vtable externally referencable data",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??_R3XmlParser@@8",
+      "kind": "data",
+      "category": "RTTI/vtable externally referencable data",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??_R3noncopyable@noncopyable_@boost@@8",
+      "kind": "data",
+      "category": "RTTI/vtable externally referencable data",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "??_R4TextXmlParser@@6B@",
+      "kind": "data",
+      "category": "RTTI/vtable externally referencable data",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "__ehfuncinfo$??1XmlElement@@QAE@XZ",
+      "kind": "data",
+      "category": "EH compiler metadata",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "__ehfuncinfo$?load@ContentProvider@RBX@@QAEXVContentId@2@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z",
+      "kind": "data",
+      "category": "EH compiler metadata",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "__unwindtable$??1XmlElement@@QAE@XZ",
+      "kind": "data",
+      "category": "EH compiler metadata",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    },
+    {
+      "symbol": "__unwindtable$?load@ContentProvider@RBX@@QAEXVContentId@2@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z",
+      "kind": "data",
+      "category": "EH compiler metadata",
+      "external_consumers": "unknown pending fresh inputs",
+      "replacement_provider": "unverified"
+    }
+  ],
+  "source_observations": [
+    "Removed load is public native method declared in authentic tools/rbxgs/Client/App/include/util/ContentProvider.h.",
+    "XmlElement/TextXmlParser constructors, destructors, deleting wrappers and RTTI are not assumed private to this TU.",
+    "Template instantiations may be externally consumed despite source inline declarations; all current relocation symbol identities must be audited."
+  ],
+  "audit_requirements": [
+    "Exact current archive/member hashes and parent build command, excluding abandoned outputs.",
+    "Enumerate archive member definitions and relocation-backed undefined symbol consumers; distinguish weak/COMDAT alternatives.",
+    "Enumerate all actual diagnostic direct objects and sibling archives; archive-only scan cannot prove global absence.",
+    "For every removed symbol with external references, identify authentic surviving provider and exact decorated identity; unresolved provider blocks replacement."
+  ]
+}

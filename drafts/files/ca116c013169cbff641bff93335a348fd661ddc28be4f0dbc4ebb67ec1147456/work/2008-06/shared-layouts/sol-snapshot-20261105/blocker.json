@@ -1,0 +1,17 @@
+{
+  "error": "canonical module failed: p4-sound-asset",
+  "traceback": "Traceback (most recent call last):\n  File \"rebuild/2008-06/tests/SolSnapshot20261105.py\", line 53, in <module>\n    if not result.get('linked') or result.get('test_exit')!=0: raise RuntimeError('canonical module failed: '+name)\n                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: canonical module failed: p4-sound-asset\n",
+  "completed": [
+    "zlib-winapi",
+    "g3d",
+    "g3d-gl",
+    "zlib",
+    "libpng",
+    "boost",
+    "raknet",
+    "rbxgs-app",
+    "p2-image-core",
+    "p2-texture-interop",
+    "p4-sound-asset"
+  ]
+}

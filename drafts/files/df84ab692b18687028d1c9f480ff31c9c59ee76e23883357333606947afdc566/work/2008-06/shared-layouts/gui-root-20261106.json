@@ -1,0 +1,177 @@
+{
+  "schema": 1,
+  "delivered_by": {
+    "session": "3bd33b9206644a9d92860dbca92017f0",
+    "note": "scope-expansion session carrying gui-root-20261106.json (toPixelSize decode) and the panel-getposition family files"
+  },
+  "class": "RBX::GuiRoot",
+  "client": "2008-06",
+  "unit": "gui/GuiRoot.cpp (recovered source); declaration and the getSize inline body live in native-headers/gui/Gui.h",
+  "state": "inactive candidate: local byte checks only; no link, no selection, no runtime/P5-P6 gate",
+  "package_marker_revision": "045d8ce8e42565232578ac46d73ad4bde5c260008ea025c6982b75e9cb7b10e5",
+  "workspace_manifest_source_revision": null,
+  "baseline_commit": null,
+  "run": "work/2008-06/native-check-runs/20261106-222404-2cce3c0d",
+  "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /DNOMINMAX (+ runner rbxgs profile)",
+  "totals": {
+    "checks": 3,
+    "exact": 2,
+    "data_checked": 2,
+    "data_mismatches": []
+  },
+  "recovered_methods": [
+    {
+      "addr": "00573b10",
+      "symbol": "??0GuiRoot@RBX@@QAE@XZ",
+      "size": 197,
+      "body": "GuiRoot::GuiRoot() : GuiItem() { setName(\"GuiRoot\"); }",
+      "note": "the eleven subobject vtables are the shared GuiItem-derived layout; setName receives a temporary built from the \"GuiRoot\" literal at 0082fa60"
+    },
+    {
+      "addr": "00573be0",
+      "symbol": "?getSize@GuiRoot@RBX@@EBE?AVVector2@G3D@@XZ",
+      "size": 24,
+      "body": "inline body from Gui.h: return getCanvasSize(); - both floats come from the private static canvasSize (00974d78/00974d7c)"
+    }
+  ],
+  "parked": [
+    {
+      "addr": "00573c00",
+      "symbol": "?render2d@GuiRoot@RBX@@UAEXPAVAdorn@2@@Z",
+      "target_size": 167,
+      "object_size": 168,
+      "first_byte_difference": 0,
+      "body_so_far": "int height = adorn->getHeight(); int width = adorn->getWidth(); canvasSize = G3D::Vector2((float)width, (float)height); for (size_t i = 0; i < numChildren(); ++i) { GuiItem* item = dynamic_cast<GuiItem*>(getChild(i)); if (item) item->render2d(adorn); }",
+      "evidence": "original order is getHeight (Adorn vtable slot 6) then getWidth (slot 5), then two int->float fild conversions into the static canvasSize, then the child loop with dynamic_cast<GuiItem*> (RTTI 0092907c/0092b8d8) and an indirect render2d through slot 24; the residual 1-byte difference is at offset 0, almost certainly the frame the two int locals force",
+      "next_proof": "swap the two locals for one or drop them (try (float)adorn->getWidth(), (float)adorn->getHeight() with the call order forced by the argument order); three failed hypotheses on the same evidence parks it per the family rule"
+    }
+  ],
+  "generated_symbols_verified": [
+    "??1GuiRoot@RBX@@UAE@XZ (00573e20 region tail jump) - emitted but not separately checked",
+    "??_GGuiRoot@RBX@@UAEPAXI@Z and the eight ??_EGuiRoot@RBX@@W* adjustor thunks are present in the object"
+  ],
+  "remaining_obligations": [
+    "render2d residual 1-byte divergence (see parked)",
+    "indirect virtual calls (Adorn::getWidth/getHeight through the vtable, child render2d through slot 24) need indirect-call ABI evidence",
+    "vtable slot walk, linked provider selection, runtime/P5-P6 gates and independent server credit all remain with the owner; nothing here is claimed beyond local bytes"
+  ],
+  "render2d_observation": "The residual is NOT the two named ints. The original extends both call results as 16-bit (movzx esi, ax / cwde / movsx ecx, si) and then spills each into the dead argument slot [esp+0x10] before the two fild conversions, with fxch st(1) before the stores; my build treats the same two Adorn vtable slots (0x18 then 0x14) as 32-bit int returns and spills the first into a saved register slot before the second call. Everything else matches byte for byte (call order, store targets x<-slot 0x14 / y<-slot 0x18, the dynamic_cast<GuiItem*> child loop and the indirect render2d through slot 24). The next hypothesis should therefore test whether the 2008-06 Adorn declarations for those two slots return short rather than int, or find the real callee identities, before touching the source form; three hypotheses have now been spent on this evidence.",
+  "toPixelSize_decode": {
+    "addr": "005736f0",
+    "size": 114,
+    "status": "compiles: 92 B vs 114 B, score 66, first divergence at byte 25",
+    "signature": "static G3D::Vector2 GuiRoot::toPixelSize(const G3D::Vector2&) - sret at [esp+4], ref at [esp+8], ret (no args popped)",
+    "structure": [
+      "result = Vector2(0,0)  (fldz; fst [ecx]; fstp [ecx+4] where ecx = the sret from [esp+4])",
+      "fld canvasSize.x (00974d78); fld 0.75f (0082f840); fmul st(1) -> st1 = canvasSize.x * 0.75",
+      "fld canvasSize.y (00974d7c); fcom st(1) -> compares canvasSize.y with canvasSize.x * 0.75",
+      "fnstsw ax; test ah,0x41; mov eax,[esp+8] (the argument); jne -> the non-4:3 branch",
+      "4:3 branch: fstp st(0); fld [eax] (size.x); fld 0.01f (0082748c); two fmul/fmulp; fxch st(3); fmulp; fxch; fmulp; fstp [ecx]; fstp [ecx+4]; ret",
+      "non-4:3 branch: fstp st(1) x2; fld 1.33f (0082f86c); fmul st(1); fld [eax]; fld 0.01f; fmul st(1),st(0); fmul [eax+4]; then the same fxch/fmulp/fstp epilogue"
+    ],
+    "constants": {
+      "0x82f840": 0.75,
+      "0x82748c": 0.01,
+      "0x82f86c": 1.33
+    },
+    "semantics_hypothesis": "an aspect-ratio-dependent normalised-to-pixel scale: when the canvas is 4:3 the scale is 0.01, otherwise the x scale is 0.01 * 1.33 (the classic 4:3 vs widescreen compensation). The exact operand order of the two fmulp/fxch pairs still has to be traced before a candidate can be written.",
+    "fp_bytes": "4:3 branch raw bytes: 44 dd d8 (fstp st(0) - pop canvas.y) | 46 d9 00 (fld [eax] = size.x) | 48 d9 05 8c 74 82 00 (fld 0.01f) | 54 dc c9 (fmulp st(1),st(0): st1 = size.x*0.01, pop) | 56 d8 48 04 (fmul [eax+4] = size.y -> st0 = size.x*0.01*size.y) | 61 d9 cb (fxch st(3)) | 63 de c9 (fmulp st(1)) | 65 d9 c9 (fxch st(1)) | 67 de ca (fmulp st(2)) | 69 d9 19 / 71 d9 59 04 (fstp [ecx] / fstp [ecx+4]) | 74 c3 (ret). Non-4:3 branch: 75/77 dd d9 (fstp st(1) twice) | 79 fld 1.33f | 85 d8 c9 (fmul st(1)) | 87 fld size.x | 89 fld 0.01f | 95 dc c9 (fmulp st(1),st(0)) | 97 fmul [eax+4] | 102 fxch st(1) | 104/106 de ca (fmulp st(2) twice) | 108/110 fstp | 113 ret.",
+    "fp_stack_trace": "tracing 4:3: [canvas.x] -> [0.75, canvas.x] -> fmul st(1) -> [0.75*canvas.x, canvas.x] -> fld canvas.y -> [canvas.y, 0.75*canvas.x, canvas.x] -> fcom st(1) compares canvas.y with 0.75*canvas.x -> fstp st(0) pops -> [0.75*canvas.x, canvas.x] -> fld size.x -> fld 0.01 -> 4 entries -> fmulp st(1),st(0) -> [size.x*0.01, 0.75*canvas.x, canvas.x] -> fmul [eax+4] -> [size.x*0.01*size.y, 0.75*canvas.x, canvas.x]",
+    "oddity": "offset 61 is d9 cb = FXCH ST(3), but the stack holds only three valid entries (st0..st2) at that point. Either the trace is missing a push, or - more likely - the argument at [esp+8] is NOT a plain Vector2 and [eax+4] is a different field, which would change every operand identity in this function. Resolving what [esp+8] actually points at is the prerequisite for writing this candidate; do NOT guess the expression first.",
+    "next_proof": "the divergence at byte 25 is the aspect-test operand order: the original loads canvasSize.x, then 0.75f, then fmul st(1), then loads canvasSize.y for the fcom. Try writing the comparison so MSVC emits that exact hoist (e.g. compare against a named local float aspect = canvasSize.x * 0.75f, or reverse to 0.75f * canvasSize.x), and re-check; the remaining 22-byte gap is the FP stack liveness of 0.75*canvas.x and canvas.x across the compare.",
+    "call_sites": {
+      "0x5737a8": "lea eax,[esp+4] (sret); push 0x974e54 (a function-local static Vector2 initialised from 0x8163a4 and 0x82f870 under a guard at 0x974e5c); push eax; call",
+      "0x573928": "inside PercentPanel::getPosition: push &this->position (lea eax,[esi+0x164]) as the argument, with a Vector2::zero() result and canvas.y spilled around it",
+      "0x5cf1aa": "a third caller in another unit (sub esp,0x10; fld [0x827490]; lea eax,[esp]; push eax; ...)"
+    },
+    "conclusion": "the argument IS a const G3D::Vector2& in every call site - one caller passes a function-local static Vector2, PercentPanel passes this->position. So [eax] is size.x and [eax+4] is size.y, and the earlier wrong-argument-type hypothesis for the FXCH ST(3) oddity is REFUTED. The stack trace must therefore be missing a push somewhere in offsets 44..61; the prime suspect is the fstp st(0) at offset 44 (dd d8), which pops only if its modrm reg field is 3 rather than 2.",
+    "BREAKTHROUGH": "dc c9 is FMUL ST(1),ST(0) and does NOT pop - only the DE forms (de c9 / de ca) pop. My earlier traces assumed DC popped, which is what made FXCH ST(3) look illegal. With the correct semantics the whole function resolves: 4:3 -> result.x = size.x*0.01*canvas.x, result.y = size.y*0.01*0.75*canvas.x; otherwise -> result.x = size.x*0.01*1.33*canvas.x, result.y = size.y*0.01*canvas.x. Both callers pass a const Vector2& (one a function-local static, PercentPanel passes this->position), confirming [eax]=size.x, [eax+4]=size.y.",
+    "candidate_on_disk": "rebuild/2008-06/native-classes/GuiRoot.cpp now defines GuiRoot::toPixelSize alongside the exact ctor; the ctor (00573b10) and getSize (00573be0) remain byte-exact after the addition.",
+    "divergence_diagnosis": {
+      "original": "fld canvas.x; fld 0.75f; fmul st(1) -> st0 = 0.75*canvas.x; fld canvas.y; FCOM ST(1) (register compare, no pop); fnstsw ax; test ah,0x41; jne",
+      "mine": "fld canvas.x; fld 0.75f; fmul st(1); FCOMP [0x974d7c] (MEMORY compare, pops); fnstsw ax; test ah,0x44; jp",
+      "implication": "the original compares two operands already live on the FP stack (canvas.y was pushed before the compare), so MSVC emits FCOM ST(1) with the 0x41 flag test (ZF|CF). My form lets MSVC compare against the memory operand directly, which pops and needs the 0x44 test (ZF|PF). The fix is to make canvasSize.y a value that is loaded onto the FP stack before the comparison - i.e. a named float local assigned before the multiply, or the comparison written with the multiply on the left.",
+      "second_difference": "after the branch the original does fstp st(0) then fld size.x then fld 0.01 then FMULP; mine does fld size.x then fmul st(1) directly. That is the same liveness issue one level down - the original keeps more values on the FP stack across the compare, so the multiply order follows."
+    },
+    "variants_tried": [
+      {
+        "hypothesis": "direct: if (canvasSize.y == canvasSize.x * 0.75f)",
+        "result": "92 B / score 66, first divergence byte 25"
+      },
+      {
+        "hypothesis": "named float locals canvasX/canvasY",
+        "result": "92 B / score 66, byte-identical - MSVC optimised the locals away"
+      },
+      {
+        "hypothesis": "operand order swapped: canvasX * 0.75f == canvasY",
+        "result": "92 B / score 66, byte-identical"
+      }
+    ],
+    "state": "THREE hypotheses spent, all byte-identical. Parked per the three-hypothesis rule.",
+    "inference": "three source forms producing byte-identical output means the residual is NOT source-form dependent: MSVC 9 chooses FCOMP [mem] over FCOM ST(1) for this comparison regardless of how it is written. The original used FCOM ST(1), which for this compiler means the compared value was already on the FP stack for a reason the source controls only indirectly - most plausibly a different but equivalent expression for the aspect test (e.g. comparing canvasSize.y / canvasSize.x against 0.75f, or a precomputed static aspect constant) rather than a rewrite of the same multiply."
+  },
+  "topixelsize_probe": {
+    "target": {
+      "addr": "005736f0",
+      "size": 114,
+      "sha256": "6a0619edefa9b95ba65e96544dce0ebac807921e0eebd8fe2f1c19fc8bba7a8f"
+    },
+    "status": "still NOT exact, but the residual is now pinned to two small, named causes",
+    "configs": [
+      {
+        "flags": "/fp:fast",
+        "body": "x = size.x*0.01f*canvasSize.x; y = size.y*0.01f*0.75f*canvasSize.x",
+        "bytes": 92,
+        "score": 66,
+        "note": "the form recorded before this pass"
+      },
+      {
+        "flags": "/fp:fast",
+        "body": "x/y SWAPPED: x = size.y*0.01f*0.75f*canvasSize.x; y = size.x*0.01f*canvasSize.x",
+        "bytes": 104,
+        "score": 76,
+        "note": "the swap alone is worth 12 bytes"
+      },
+      {
+        "flags": "precise (no /fp:fast)",
+        "body": "x/y swapped",
+        "bytes": 122,
+        "score": 66,
+        "note": "precise FP introduces the original's fused fxch/fmulp sequence and overshoots"
+      },
+      {
+        "flags": "/fp:fast + #pragma float_control(precise, on) around it",
+        "body": "x/y swapped",
+        "bytes": 147,
+        "score": 45,
+        "note": "worst - a pragma inside an /fp:fast unit is not the same as compiling precise"
+      },
+      {
+        "flags": "precise baseline + #pragma float_control(precise, off) around render2d",
+        "body": "DERIVED GROUPING: x = canvasSize.x*0.75f*(size.y*0.01f); y = canvasSize.x*(size.x*0.01f)",
+        "bytes": 116,
+        "score": 74,
+        "note": "BEST: smallest size gap (2 bytes) and the best score"
+      },
+      {
+        "flags": "/fp:fast",
+        "body": "DERIVED GROUPING",
+        "bytes": 118,
+        "score": 37,
+        "note": "the configuration currently on disk (documented family profile)"
+      }
+    ],
+    "derived_grouping": "read straight out of the original x87 trace: the equal branch computes result.x = (canvasSize.x * A) * (0.01f * size.y) and result.y = canvasSize.x * (0.01f * size.x) where A = 0x82f840 = 0.75f, and the else branch uses canvasSize.y with the reciprocal constant 0x82f86c. Note result.x takes the size.y term - the original really does swap the roles of size.x and size.y.",
+    "two_residual_causes": [
+      "constant typing: the original loads 0.75f and 0.01f as FLOATS (fld dword ptr [0x82f840] / [0x82748c]) while every one of my forms loads them as DOUBLES (fld qword ptr). With the derived grouping the else branch also carries one extra fld st(2). So the source must spell these so the constants stay float-typed in .rdata.",
+      "FP mode: the original emits fcom st(1) / test ah,0x41 / jne, mine emits fucomp st(2) / test ah,0x44 / jp - the textbook /fp:fast signature. But render2d moves the other way (168 B and score 80 under /fp:fast, 186 B and score 60 under precise), so ONE unit cannot satisfy both: the original must have used #pragma float_control per function, and a pragma inside an /fp:fast unit is NOT equivalent (it produced 147 B for toPixelSize)."
+    ],
+    "next_proof": "two things to try, both cheap: (1) spell the constants so they stay float-typed - the cleanest test is to hoist them into named `const float` locals before the branch, which forces float .rdata constants even when MSVC would otherwise promote; (2) build the unit with a PRECISE baseline and put #pragma float_control(precise, off) at the very TOP of the file (before every function), then verify render2d only - that is the exact inverse of the failed attempt."
+  },
+  "render2d_status": {
+    "addr": "00573c00",
+    "target_size": 167,
+    "best": "168 B / score 80 under /fp:fast (first_byte_difference 0)",
+    "note": "render2d is also not exact; /fp:fast is the better of its two configurations"
+  }
+}

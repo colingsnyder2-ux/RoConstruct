@@ -1,0 +1,70 @@
+class Instance	size(304):
+	+---
+	| +--- (base class ?$GuidItem@VInstance@RBX@@)
+ 0	| | {vfptr}
+ 4	| | registeredGuid
+  	| | <alignment member> (size=3)
+ 8	| | Guid guid
+	| +---
+	| +--- (base class ?$AbstractFactoryProduct@VInstance@RBX@@)
+	| | +--- (base class ?$Creatable@VInstance@RBX@@)
+	| | | +--- (base class Object)
+16	| | | | {vfptr}
+	| | | +---
+	| | +---
+	| +---
+	| +--- (base class ?$Described@VInstance@RBX@@$1?sInstance@2@3PBDBVDescribedBase@Reflection@2@)
+	| | +--- (base class DescribedBase)
+	| | | +--- (base class SignalSource)
+20	| | | | {vfptr}
+24	| | | | ?$scoped_ptr@V?$map@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@@std@@ signals
+	| | | +---
+28	| | | descriptor
+	| | +---
+	| +---
+	| +--- (base class Debugable)
+32	| | {vfptr}
+	| +---
+	| +--- (base class ?$Notifier@VInstance@RBX@@UChildAdded@2@)
+36	| | {vfptr}
+40	| | ?$vector@PAV?$Listener@VInstance@RBX@@UChildAdded@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@UChildAdded@2@@RBX@@@std@@ listeners
+64	| | raiseRange
+	| +---
+	| +--- (base class ?$Notifier@VInstance@RBX@@UChildRemoved@2@)
+68	| | {vfptr}
+72	| | ?$vector@PAV?$Listener@VInstance@RBX@@UChildRemoved@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@UChildRemoved@2@@RBX@@@std@@ listeners
+96	| | raiseRange
+	| +---
+	| +--- (base class ?$Notifier@VInstance@RBX@@UDescendantAdded@2@)
+100	| | {vfptr}
+104	| | ?$vector@PAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@RBX@@@std@@ listeners
+128	| | raiseRange
+	| +---
+	| +--- (base class ?$Notifier@VInstance@RBX@@UDescendantRemoving@2@)
+132	| | {vfptr}
+136	| | ?$vector@PAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@RBX@@@std@@ listeners
+160	| | raiseRange
+	| +---
+	| +--- (base class ?$Notifier@VInstance@RBX@@UAncestorChanged@2@)
+164	| | {vfptr}
+168	| | ?$vector@PAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@RBX@@@std@@ listeners
+192	| | raiseRange
+	| +---
+	| +--- (base class ?$Notifier@VInstance@RBX@@VPropertyChanged@2@)
+196	| | {vfptr}
+200	| | ?$vector@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@ listeners
+224	| | raiseRange
+	| +---
+	| +--- (base class ?$enable_shared_from_this@VInstance@RBX@@)
+228	| | ?$weak_ptr@VInstance@RBX@@ _internal_weak_this
+	| +---
+	| +--- (base class noncopyable)
+	| +---
+236	| ?$Association@VInstance@RBX@@ assoc
+260	| parent
+264	| ?$CopyOnWrite@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@ children
+272	| ?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@ name
+300	| archivable
+  	| <alignment member> (size=3)
+	+---
+

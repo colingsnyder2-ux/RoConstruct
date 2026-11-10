@@ -1,0 +1,9 @@
+{
+  "revision": "e49dd2e24c7e5ec777870d5483e2c71c91d5348c",
+  "exe_sha256": "87f499c243b78b707bde0d8bd55f9e26c9b006fa980f6f48e786fb13d06c02ba",
+  "fixture_sha256": "28d1e28077672764de0f7356f692dca7844d9c9c54d35f123e6a430f7388d0ff",
+  "observer_sha256": "2cc05182cd4200c5c5adfa62afa080d05eda55f9715327db3a962908db00ef40",
+  "result": "half=0 one=0.033333 three=0.100000",
+  "scope": "Harness batching and zero-time behavior; native scheduler and run-mode parity unproven.",
+  "P5_complete": false
+}

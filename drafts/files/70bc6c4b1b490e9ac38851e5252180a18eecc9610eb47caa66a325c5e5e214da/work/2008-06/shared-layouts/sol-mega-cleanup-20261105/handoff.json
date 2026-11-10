@@ -1,0 +1,46 @@
+{
+  "status": "parked at exhaustive provenance/data/EH/selection obligations; evidence only",
+  "session": "45085e29d02e4649a139359ab42f6a47",
+  "compile_count": 0,
+  "source_header_archive_edits": 0,
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "archive_sha256": "0c597337028cf2cda5addf6ededafd11d546ec6205720401a5e1c166ab1b0836",
+  "helper": {
+    "address": "00590390",
+    "size": 52,
+    "exact_provider_count": 7,
+    "relocations": [],
+    "referenced_data": [],
+    "contract": [
+      "cdecl: first at entry ESP+4, last at ESP+8; trailing allocator/tag arguments unused; plain ret, caller removes arguments",
+      "Preserves ESI/EDI; ignores entry ECX; iteration loads controlblock from element+4 and advances element by8 until pointer equality; count=(last-first)/8 requires valid aligned range",
+      "LOCK XADD with -1 sets ZF when new weak count becomes zero; only then loads vptr+8 and calls with ECX=controlblock",
+      "No local EH frame or direct call; indirect destroy must obey genuine nothrow contract. Vector caller has EH registration and releases array via006a067a separately",
+      "No managed PartInstance delete occurs directly in weak cleanup"
+    ]
+  },
+  "lifetime": [
+    "Boost1.34.1 weak_count destructor weak_releases nonnull pi; weak_count_=#weak+(#shared!=0), initialized1 alongside use_count1",
+    "Shared release zero calls dispose then drops implicit weak reference; weak release zero calls destroy, avoiding managed-object disposal twice",
+    "Part factory0041e880 allocates0x14 at006a0920; stores counts1 at+4,+8, vptr0080f1cc, managed pointer+0xc",
+    "Verified original Part controlblock slots: deleting destructor00415000, dispose0048ee50, destroy00405e10, get_deleter005a0460",
+    "00405e10 uses ECX unchanged, invokes vptr slot0 with flag1;00415000 installs base vptr0080b2f0 and passes full controlblock to006a067a, returns original pointer, ret4",
+    "0048ee50 separately calls0055b770 on managed ptr then managed object secondary-base+0x10 deleting destructor(flag1); managed Instance predelete/destructor closure is separate",
+    "Genuine MegaDragger constructors use shared_from(mousePartPtr), copy supplied weak vector or convert PVInstances; copied weak pointers retain existing controlblock dynamic types. Part factory example is not exhaustive"
+  ],
+  "blockers": [
+    "Exhaustive reachable controlblock dynamic-type/vptr provenance from all actual MegaDragger constructor inputs and Instance shared_from paths unavailable as a completed proof",
+    "Referenced vtable/RTTI identity and COFF weak fallback/COMDAT selection remain unproved; base deleting destructor normalized body has data relocation and delete binding only, not data closure",
+    "Full vector/MegaDragger transitive EH registration/unwind data and nothrow provider contract closure remain open; generic auditor prior error untouched",
+    "CRT/MFC allocation/deallocation selected provider identity and ABI; final linked PE selection requires parent serialized successful link/map; current failed diagnostic supplies no selected PE proof"
+  ],
+  "next_bounded_action": "Parent provide/assign exhaustive Instance shared_from plus both MegaDragger constructor input provenance and original controlblock-vptr inventory; separately verify referenced vtable/RTTI data and CRT delete import/provider. No recovery compile needed for00590390.",
+  "hypothesis_budget": "No compile hypotheses consumed; existing budgets unchanged",
+  "files_sha256": {
+    "cleanup_probe.py": "91f1a0748a9f8bd684e8f341ba95fdc0a55ecc733257799afae75fadbee43da9",
+    "controlblock-bindings.json": "35f8ab5960c18b71c7579fb87e8b96c49bd7c7a46b397a13aa4b8c0546baa21a",
+    "controlblock_probe.py": "57641db8f64cceb9eacc6c75a61765b43a9060586fb57eb9722849b554f5128d",
+    "helper-providers.json": "bb3fb0fba0f9ab9cb7ca3a4acfd50d43f63914faf3b72658d2054de979893433",
+    "save_handoff.py": "4d9acf578a305abd882f43c012fad93c3e316aaed18e16876ec622578b2ba4a8"
+  }
+}

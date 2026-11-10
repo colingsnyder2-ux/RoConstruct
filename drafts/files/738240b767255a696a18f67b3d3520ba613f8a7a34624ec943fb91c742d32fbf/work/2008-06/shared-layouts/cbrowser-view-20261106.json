@@ -1,0 +1,12 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/CBrowserView.cpp",
+      "checks": [
+        {"addr": "004109e0", "symbol": "?OnNavigate@CBrowserView@@"},
+        {"addr": "0040e7f0", "symbol": "?OnInitialUpdate@CBrowserView@@"},
+        {"addr": "0040e670", "symbol": "?OnCommandStateChange@CBrowserView@@"}
+      ]
+    }
+  ]
+}

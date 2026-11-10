@@ -1,0 +1,72 @@
+{
+  "workflow": 52,
+  "client": "2008-06",
+  "swap_target": "CRobloxDoc 30-handler batch (inactive exacts)",
+  "blocker": "455460: 4 indirect sites, all DataModel shared_count teardown (2 copies)",
+  "batch_open": {
+    "swap_target": "CRobloxDoc 30 handlers",
+    "blocker": "455460 (281 bytes, exact): +128 call eax, +149 call edx, +224 call edx, +245 call eax -- two lock-xadd refcount teardowns",
+    "required_provider": "RBX::PAVDataModel::sp_counted_impl_pd @ 0082fdc0 (0082fdc0 table: slot1 dispose 0048ee50, slot2 destroy 00405e10)",
+    "next_proof": "document link selection of 0048ee50/00405e10 instantiations (missing archive/RSP)"
+  },
+  "evidence": {
+    "asm_map": [
+      {
+        "offset": 128,
+        "insn": "call eax",
+        "provider": "dispose 0048ee50 (mov eax,[edx+4] where edx=[esi] vptr; first shared_ptr copy teardown)",
+        "group": "shared-count-pinned"
+      },
+      {
+        "offset": 149,
+        "insn": "call edx",
+        "provider": "destroy 00405e10 (mov edx,[eax+8])",
+        "group": "shared-count-pinned"
+      },
+      {
+        "offset": 224,
+        "insn": "call edx",
+        "provider": "dispose 0048ee50 (second copy teardown)",
+        "group": "shared-count-pinned"
+      },
+      {
+        "offset": 245,
+        "insn": "call eax",
+        "provider": "destroy 00405e10",
+        "group": "shared-count-pinned"
+      }
+    ],
+    "vtable_source": "work/2008-06/vtables.json 0082fdc0 RBX::PAVDataModel::sp_counted_impl_pd (4 slots) + native-asm of 0048ee50/00405e10",
+    "source": "DataModel::Lock lock(workspace->getDataModel()); documentRunService(getDataModel())->setRunState(RS_PAUSED); -- already byte-exact",
+    "note": "Both shared_ptr copies are the DataModel::Lock construction (lock + getDataModel()); targets identical to 453670/4538b0 pattern."
+  },
+  "hypotheses": [
+    {
+      "id": "H1",
+      "text": "Edit source to bind teardown as direct",
+      "status": "rejected",
+      "reason": "Would regress byte-exactness; teardown dispatches through control-block vtable by design."
+    },
+    {
+      "id": "H2",
+      "text": "Vtable/RTTI identification of control block",
+      "status": "done-identified",
+      "reason": "0082fdc0 pins dispose 0048ee50 and destroy 00405e10; remaining is link selection (missing archive/RSP)."
+    }
+  ],
+  "parked": true,
+  "remaining": [
+    "document link archive/RSP for provider selection of 0048ee50/00405e10",
+    "mfc90 provider objects (44fd30 group)",
+    "453750/453990 IAT/virtual split",
+    "44f7c0 COM slot-8 map"
+  ],
+  "metrics": {
+    "inactive_exacts": 30,
+    "selected_exacts": 0,
+    "gated_swaps": 0,
+    "server_credit_added": 0
+  },
+  "revision": 2,
+  "draft_note": "Parked: teardown targets 0048ee50/00405e10 pinned via 0082fdc0; remaining gate is link selection."
+}

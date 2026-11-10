@@ -1,0 +1,22 @@
+<roblox version="4">
+<Item class="Workspace"><Properties />
+<Item class="Part" referent="RBX1"><Properties>
+<string name="Name">Brick</string>
+<bool name="Anchored">true</bool>
+<CoordinateFrame name="CFrame"><X>137.25</X><Y>20</Y><Z>71.75</Z>
+<R00>1</R00><R01>0</R01><R02>0</R02><R10>0</R10><R11>1</R11><R12>0</R12><R20>0</R20><R21>0</R21><R22>1</R22>
+</CoordinateFrame>
+</Properties></Item>
+<Item class="Part" referent="RBX2"><Properties>
+<string name="Name">Floor</string>
+<bool name="Anchored">true</bool>
+<CoordinateFrame name="CFrame"><X>137.25</X><Y>-5</Y><Z>71.75</Z>
+<R00>1</R00><R01>0</R01><R02>0</R02><R10>0</R10><R11>1</R11><R12>0</R12><R20>0</R20><R21>0</R21><R22>1</R22>
+</CoordinateFrame>
+</Properties></Item>
+<Item class="Script"><Properties><string name="Name">AnchorCycle</string><string name="Source">local w=game.Workspace
+local delays={0.05,0.1,0.15,0.2,0.25,0.3}
+for i=1,6 do
+ local elapsed,now=wait(delays[i]); assert(type(now)=="number")
+ w["Marker"..i].CFrame=CFrame.new(137.25+20*i,40+10*i+elapsed*10,71.75)
+end</string><bool name="Disabled">false</bool></Properties></Item><Item class="Part"><Properties><string name="Name">Marker1</string><bool name="Anchored">true</bool><Vector3 name="size"><X>2</X><Y>2</Y><Z>2</Z></Vector3><CoordinateFrame name="CFrame"><X>157.25</X><Y>50</Y><Z>71.75</Z><R00>1</R00><R01>0</R01><R02>0</R02><R10>0</R10><R11>1</R11><R12>0</R12><R20>0</R20><R21>0</R21><R22>1</R22></CoordinateFrame></Properties></Item><Item class="Part"><Properties><string name="Name">Marker2</string><bool name="Anchored">true</bool><Vector3 name="size"><X>2</X><Y>2</Y><Z>2</Z></Vector3><CoordinateFrame name="CFrame"><X>177.25</X><Y>60</Y><Z>71.75</Z><R00>1</R00><R01>0</R01><R02>0</R02><R10>0</R10><R11>1</R11><R12>0</R12><R20>0</R20><R21>0</R21><R22>1</R22></CoordinateFrame></Properties></Item><Item class="Part"><Properties><string name="Name">Marker3</string><bool name="Anchored">true</bool><Vector3 name="size"><X>2</X><Y>2</Y><Z>2</Z></Vector3><CoordinateFrame name="CFrame"><X>197.25</X><Y>70</Y><Z>71.75</Z><R00>1</R00><R01>0</R01><R02>0</R02><R10>0</R10><R11>1</R11><R12>0</R12><R20>0</R20><R21>0</R21><R22>1</R22></CoordinateFrame></Properties></Item><Item class="Part"><Properties><string name="Name">Marker4</string><bool name="Anchored">true</bool><Vector3 name="size"><X>2</X><Y>2</Y><Z>2</Z></Vector3><CoordinateFrame name="CFrame"><X>217.25</X><Y>80</Y><Z>71.75</Z><R00>1</R00><R01>0</R01><R02>0</R02><R10>0</R10><R11>1</R11><R12>0</R12><R20>0</R20><R21>0</R21><R22>1</R22></CoordinateFrame></Properties></Item><Item class="Part"><Properties><string name="Name">Marker5</string><bool name="Anchored">true</bool><Vector3 name="size"><X>2</X><Y>2</Y><Z>2</Z></Vector3><CoordinateFrame name="CFrame"><X>237.25</X><Y>90</Y><Z>71.75</Z><R00>1</R00><R01>0</R01><R02>0</R02><R10>0</R10><R11>1</R11><R12>0</R12><R20>0</R20><R21>0</R21><R22>1</R22></CoordinateFrame></Properties></Item><Item class="Part"><Properties><string name="Name">Marker6</string><bool name="Anchored">true</bool><Vector3 name="size"><X>2</X><Y>2</Y><Z>2</Z></Vector3><CoordinateFrame name="CFrame"><X>257.25</X><Y>100</Y><Z>71.75</Z><R00>1</R00><R01>0</R01><R02>0</R02><R10>0</R10><R11>1</R11><R12>0</R12><R20>0</R20><R21>0</R21><R22>1</R22></CoordinateFrame></Properties></Item></Item></roblox>

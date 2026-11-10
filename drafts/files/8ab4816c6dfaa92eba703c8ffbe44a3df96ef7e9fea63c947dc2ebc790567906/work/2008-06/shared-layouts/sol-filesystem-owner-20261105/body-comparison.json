@@ -1,0 +1,17 @@
+{
+  "removed": [
+    "??0?$CPathT@V?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@@ATL@@QAE@XZ",
+    "??0?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAE@XZ",
+    "?getUserAppDataDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NPBD@Z",
+    "__ehhandler$?getUserAppDataDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NPBD@Z",
+    "__unwindfunclet$?getUserAppDataDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NPBD@Z$0",
+    "__unwindfunclet$?getUserAppDataDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NPBD@Z$1",
+    "__unwindfunclet$?getUserAppDataDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NPBD@Z$2",
+    "__unwindfunclet$?getUserAppDataDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NPBD@Z$3",
+    "__unwindfunclet$?getUserAppDataDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NPBD@Z$4",
+    "__unwindfunclet$?getUserAppDataDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NPBD@Z$5"
+  ],
+  "changed": [],
+  "retained": 73,
+  "new": []
+}

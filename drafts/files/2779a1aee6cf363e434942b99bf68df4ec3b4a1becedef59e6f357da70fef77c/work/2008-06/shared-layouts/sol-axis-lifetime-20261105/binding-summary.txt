@@ -1,0 +1,22 @@
+??0MouseCommand@RBX@@IAE@PAVWorkspace@1@@Z 0x6159f0 True 42 
+??0MouseCommand@RBX@@IAE@PAVWorkspace@1@@Z 0x6159f0 True 42 /634
+??1MouseCommand@RBX@@UAE@XZ 0x615780 True 20 
+??1MouseCommand@RBX@@UAE@XZ 0x615780 True 20 /634
+??1?$Named@VArrowToolBase@RBX@@$1?sAxisMoveTool@2@3PADA@RBX@@UAE@XZ 0x617dd0 True 5 
+??0AxisMoveTool@RBX@@QAE@PAVWorkspace@1@@Z 0x640560 True 139 
+??_GMouseCommand@RBX@@UAEPAXI@Z 0x615a20 True 45 
+??_GMouseCommand@RBX@@UAEPAXI@Z 0x615a20 True 45 /634
+??_GAxisMoveTool@RBX@@UAEPAXI@Z 0x640760 True 30 
+??_EMouseCommand@RBX@@UAEPAXI@Z 0x615a20 None None None
+??1IRenderable@RBX@@QAE@XZ 0x47d410 False 66 IRenderable.obj/
+??_EAxisMoveTool@RBX@@UAEPAXI@Z 0x640760 None None None
+??0Ray@G3D@@QAE@XZ 0x510a30 None None None
+??1AxisMoveTool@RBX@@UAE@XZ 0x640620 True 114 
+??_ERay@G3D@@UAEPAXI@Z 0x510780 None None None
+??1MegaDragger@RBX@@QAE@XZ 0x60e700 True 118 MegaDragger.obj/
+?joinAndStopDragging@DragUtilities@RBX@@SAXABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z 0x60ef30 True 354 /249
+??1?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAE@XZ 0x590550 True 111 
+??1?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAE@XZ 0x590550 True 111 /54
+??1?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAE@XZ 0x590550 True 111 MegaDragger.obj/
+??1?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAE@XZ 0x590550 True 111 /706
+??1?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAE@XZ 0x590550 True 111 Tool.obj/

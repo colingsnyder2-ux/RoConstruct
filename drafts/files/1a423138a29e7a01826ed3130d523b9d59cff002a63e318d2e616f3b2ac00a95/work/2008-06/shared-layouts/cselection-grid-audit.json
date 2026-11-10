@@ -1,0 +1,7 @@
+{
+  "swap_target": "Selection runnable integration (Selection prop grid)",
+  "onEvent": {"run": "work/2008-06/native-check-runs/20261105-193312-6e3774b1", "addr": "00442490", "size": 325, "symbol": "?onEvent@CSelectionPropGrid@@UAEXPBVSelection@RBX@@VSelectionChanged@3@@Z", "target_sha256": "077cc74d105f1e802bc33972794413e0a1ebd918410ee6954ab37c4be374ab62", "source_sha256": "b8fc85e173a3c56d3e706f91cb552d0e2232f625d1467b8ac3988c20e521d204", "object_sha256": "fda6e7b714ff17b615582e3eeca9e83c2e2b68f6939cbcd4d2ca5c3d2ca96b18", "result": "exact bytes+data 100%"},
+  "setSelection": {"run": "work/2008-06/native-check-runs/20261105-193312-6e3774b1", "addr": "00442650", "size": 680, "symbol": "?setSelection@CSelectionPropGrid@@QAEXPAVSelection@RBX@@@Z", "target_sha256": "24b50ece607052460e3b565a788e3af886336039461a71489f5ded225fa79dd3", "source_sha256": "9ef0a2322201241357f2a9f24eaf538123b52708756c971122c61e1a750bdd33", "object_sha256": "a8be3eeac819bfb9cd86a3d6744844f1e94219ca03a0984ffc261b0a7c67b42f", "result": "exact bytes+data 100%"},
+  "next_gate": "CWorkspace::insert 0046b9d0 catch rethrow (86%, parked), write EH empty-state (parked), Content closure, NullTool headers, Body getter COMDAT (parked), Initialize compiler (parked)",
+  "metrics": {"inactive_exact": 59, "selected_exact": "unknown", "gated_swaps": 0, "server_credit": 0}
+}

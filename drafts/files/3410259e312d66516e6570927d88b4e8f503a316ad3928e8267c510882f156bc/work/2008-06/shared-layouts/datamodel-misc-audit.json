@@ -1,0 +1,8 @@
+{
+  "swap_target": "Workspace/DataModel runnable integration (DataModel timing)",
+  "getGameTime": {"run": "work/2008-06/native-check-runs/20261105-185039-67ab57bb", "addr": "005757d0", "size": 13, "symbol": "?getGameTime@DataModel@RBX@@QBENXZ", "target_sha256": "dfab317605d49424b93b3632a6e3751958cca628c58f169bc593c9b0c3d28fb3", "source_sha256": "1b1c9c9cc1455b4454c4c8210f873bdb4121dff4649f25640f241dd90db2e588", "object_sha256": "3d793f9f3cfd2b0df9d0a48f37ce8bedc1a1ce0256eac466d36bddb2d2f4b6a2", "result": "exact bytes+data 100%"},
+  "getFrameRate": {"run": "work/2008-06/native-check-runs/20261105-185039-67ab57bb", "addr": "005757e0", "size": 13, "symbol": "?getFrameRate@DataModel@RBX@@QBENXZ", "target_sha256": "17d8ec9840d80b3bd5d020ff1215e2720b384a906ee4e17d1f84ea891861f8f6", "source_sha256": "1b1c9c9cc1455b4454c4c8210f873bdb4121dff4649f25640f241dd90db2e588", "object_sha256": "3d793f9f3cfd2b0df9d0a48f37ce8bedc1a1ce0256eac466d36bddb2d2f4b6a2", "result": "exact bytes+data 100%"},
+  "initialize": {"status": "compiler failed (DataModelInitialize.cpp exit 2, log unit-001 in 184950 run) - parked awaiting header evidence, no forced build"},
+  "next_gate": "CWorkspace::insert 0046b9d0 catch rethrow (86%, parked), write EH empty-state (parked), Content closure, NullTool headers, Part provider",
+  "metrics": {"inactive_exact": 27, "selected_exact": "unknown", "gated_swaps": 0, "server_credit": 0}
+}

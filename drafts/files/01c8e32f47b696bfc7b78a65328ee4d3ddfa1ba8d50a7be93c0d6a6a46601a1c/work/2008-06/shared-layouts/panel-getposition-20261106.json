@@ -1,0 +1,131 @@
+{
+  "schema": 1,
+  "kind": "class-family handoff note",
+  "date": "2026-11-06",
+  "family": "RBX::PercentPanel / RBX::RelativePanel (2008-06 gui, declared in native-headers/gui/Gui.h, no source units yet)",
+  "lease": "RBX::PanelGetPosition (Colin, 4h) covering rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp and work/2008-06/shared-layouts/panel-getposition-batch.json",
+  "why": "Unleased family with strong evidence: both classes carry full 25-slot RTTI vtables (0084213c PercentPanel, 0083ab1c RelativePanel), each overriding only slot 18 (getPosition), and the base TopMenuBar is already recovered so the class shape is pinned.",
+  "vtable_slots": {
+    "PercentPanel": {
+      "vtable": "0084213c",
+      "overrides": {
+        "18": "005738e0 getPosition (122 B)"
+      }
+    },
+    "RelativePanel": {
+      "vtable": "0083ab1c",
+      "overrides": {
+        "18": "005737e0 getPosition (241 B)"
+      }
+    },
+    "TopMenuBar (base, recovered)": {
+      "vtable": "0082faf4",
+      "overrides": {
+        "19": "00573f30 getChildPosition",
+        "21": "00573e00 isVisible",
+        "23": "00573e30 getSize",
+        "24": "00574050 render2d"
+      }
+    }
+  },
+  "member_offsets": {
+    "base": "TopMenuBar is 0x15c bytes (backdropColor +0x144, layoutStyle +0x154, visible +0x158)",
+    "PercentPanel": {
+      "xLocation": "+0x15c (Rect::Location)",
+      "yLocation": "+0x160 (Rect::Location)",
+      "position": "+0x164 (G3D::Vector2)"
+    },
+    "RelativePanel": {
+      "xLocation": "+0x15c",
+      "yLocation": "+0x160",
+      "offset": "+0x164 (G3D::Vector2int16, read as two int16 via movsx at +0x164/+0x166)"
+    }
+  },
+  "external_calls_to_identify": {
+    "00509ba0": "returns a pointer to a static two-float zero (used as G3D::Vector2::zero())",
+    "005736f0": "114-byte helper in the gui region called by PercentPanel::getPosition with (canvasSize copy, Vector2::zero(), &position)",
+    "005cef00": "helper called by PercentPanel::getPosition with (xLocation, yLocation, &out, sret) - Rect::Location to position math",
+    "005cef60": "helper called by RelativePanel::getPosition after the offset fild conversions - same Rect::Location to position math shape"
+  },
+  "next_implementation": "write the PercentPanel::getPosition hypothesis above into rebuild/2008-06/native-classes/PanelGetPositionTrial.cpp and check it against 005738e0; then RelativePanel::getPosition 005737e0 (same shape plus the movsx int16 offset at +0x164/+0x166 and fild conversions, and helper 005cef60 instead of 005cef00).",
+  "next_check": "python rebuild/2008-06/tests/native_check_runner.py run work/2008-06/shared-layouts/panel-getposition-batch.json --workers 1, with the profile that every gui-family unit in this tree needed: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /DNOMINMAX",
+  "profile_note": "/fp:fast is required for G3D Color/Vector temporaries (research note 'gui family needs /fp:fast for G3D Color temporaries'); the enum switch form and hidden constant multiplies both mattered in TopMenuBar::getSize / getChildPosition.",
+  "previous_batches": "TextDisplay 13/14 (packet 08460053/7f5eedff), TopMenuBar 15/15 (packets 83d8f5e6/aa330a68/924369e2), GuiRoot 2/3 (packet 3b1c95ed/807411dc) - all acknowledged durable.",
+  "watching_session": "19cb089bf21b4d60be488fb9ca41da6b (scope: panel-getposition-20261106.json, PanelGetPositionTrial.cpp, panel-getposition-batch.json)",
+  "helper_progress": {
+    "005736f0": {
+      "identity": "GuiRoot::toPixelSize(const G3D::Vector2&) - static member, sret at [esp+4], ref arg at [esp+8]",
+      "body": "fldz; out.x = 0; out.y = 0; fld canvasSize.x (00974d78); fld const A (0082f840); fmul; fld canvasSize.y (00974d7c); fcom st(1); fnstsw; test ah,0x41; jne other - an aspect-ratio test; each branch then multiplies the argument by constants B (0082748c) / C (0082f86c) and stores two floats",
+      "declared": "static G3D::Vector2 toPixelSize(const G3D::Vector2&); already in native-headers/gui/Gui.h"
+    },
+    "00509ba0": {
+      "identity": "G3D::Vector2::zero() - returns a pointer to a static (0,0); used by PercentPanel::getPosition"
+    },
+    "005cef00": {
+      "identity": "RBX::Rect::positionPoint(const G3D::Vector2& size, Location xLocation, Location yLocation) const",
+      "evidence": "member function: this (ecx) is a Rect (low at +0/+4, high at +8/+0xc per Rect.h), sret at [esp+4], ref at [esp+8], two Location args at [esp+0xc]/[esp+0x10], ret 0x10. Body: result(0,0) via fldz; switch on xLocation (sub 2/je LEFT, sub 1/jne skip -> RIGHT): LEFT -> result.x = size.x + low.x, RIGHT -> result.x = high.x - size.x; switch on yLocation (sub 0/je TOP, sub 1/jne skip -> BOTTOM): TOP -> result.y = size.y + low.y, BOTTOM -> result.y = high.y - size.y.",
+      "declared": "yes - G3D::Vector2 positionPoint(const G3D::Vector2&, Location, Location) const; is already in tools/rbxgs/Client/App/include/util/Rect.h, and Location is TOP, BOTTOM, LEFT, RIGHT, CENTER, NONE"
+    },
+    "005cef60": {
+      "identity": "still unknown - the RelativePanel::getPosition equivalent, same five-argument shape"
+    },
+    "PercentPanel::getPosition_call_chain": "G3D::Vector2 canvas = getCanvasSize(); G3D::Vector2 pixelSize = GuiRoot::toPixelSize(this->position); then helper005cef00(&canvas, &pixelSize, this->xLocation, this->yLocation, &sret)",
+    "note": "PercentPanel::getPosition is now blocked only on identifying 005cef00; everything before it is pinned."
+  },
+  "candidate_hypotheses": {
+    "PercentPanel::getPosition_005738e0": "G3D::Vector2 canvas = GuiRoot::getCanvasSize(); G3D::Vector2 size = GuiRoot::toPixelSize(position); return Rect(G3D::Vector2::zero(), canvas).positionPoint(size, xLocation, yLocation);",
+    "note": "UNVERIFIED - recorded from the decoded frame layout only (the two GuiRoot calls, the Vector2::zero() stored at frame-0x10/-0x0c as the Rect low, canvasSize stored at frame-0x08/-0x04 as the Rect high, and the toPixelSize result at frame-0x18 passed by reference). The next pass must compile it in PanelGetPositionTrial.cpp and run the runner before claiming anything."
+  },
+  "variants_tried": [
+    {
+      "hypothesis": "Rect(G3D::Vector2::zero(), canvas).positionPoint(GuiRoot::toPixelSize(position), xLocation, yLocation) as a temporary",
+      "result": "122 B (size matches exactly) but score 62, first divergence byte 10: Vector2::zero() is called AFTER toPixelSize and the Rect lives in a frame slot, not a temporary"
+    },
+    {
+      "hypothesis": "named local Rect rect(Vector2::zero(), canvas); then rect.positionPoint(GuiRoot::toPixelSize(position), xLocation, yLocation)",
+      "result": "115 B, score 71, first divergence byte 2: the frame shrinks (sub esp,0x20 becomes smaller) so the named local is laid out differently from the original"
+    },
+    {
+      "hypothesis": "Rect rect(Vector2::zero(), GuiRoot::getCanvasSize()); then rect.positionPoint(GuiRoot::toPixelSize(position), xLocation, yLocation)",
+      "result": "115 B, score 71, first divergence byte 2 - byte-identical to the named-local variant 2, so both named-Rect forms compile the same"
+    },
+    {
+      "hypothesis": "named canvas local as the Rect high argument (temporary-Rect form kept)",
+      "result": "115 B, score 71, divergence byte 2 - the named-local frame is capped at 115 B"
+    },
+    {
+      "hypothesis": "__declspec(align(16)) on the canvas local to force a larger aligned frame",
+      "result": "120 B, score 57, divergence byte 0 - the size moved the right way but MSVC emitted an and esp alignment prologue the original does not have (original is a plain sub esp,0x20)"
+    }
+  ],
+  "parked": {
+    "addr": "005738e0",
+    "symbol": "?getPosition@PercentPanel@RBX@@UBE?AVVector2@G3D@@XZ",
+    "state": "FIVE hypotheses spent. Parked per the three-hypothesis rule; moved to another family.",
+    "size": "original 122 B",
+    "evidence": "sub esp,0x20; fld canvasSize.x (00974d78); push esi; fstp [esp+4]; fld canvasSize.y (00974d7c); fstp [esp+8]; call Vector2::zero() (00509ba0); the zero result is stored to [esp+0x14]/[esp+0x18] and &this->position (+0x164) plus a sret are pushed for GuiRoot::toPixelSize (005736f0); then xLocation (+0x15c) and yLocation (+0x160) are pushed and Rect::positionPoint (005cef00) is called with this = a 16-byte Rect whose low is the Vector2::zero() result and whose high is the canvasSize copy.",
+    "next_proof": "the third hypothesis should test where the canvasSize Vector2 and the Rect live: the original keeps the canvas copy at [esp+4]/[esp+8] and the Rect at [esp+0x10..0x20) (low = zero(), high = canvas), which is what a Rect declared BEFORE the toPixelSize call but built from an already-copied canvas would give - try Rect rect(G3D::Vector2::zero(), canvas); declared before, with toPixelSize called inside the positionPoint argument, or with getCanvasSize() inlined as two direct static loads.",
+    "key_finding": "the original is 122 B with a plain sub esp,0x20 (no and-esp alignment). The temporary-Rect form reaches exactly 122 B but with the wrong call order and frame offsets; the named-local forms reach only 115 B; forcing alignment reaches 120 B but adds an unwanted prologue. The remaining gap is therefore NOT alignment - it is that the original has one more live 8-byte temporary in its frame than any of these source forms produce, most plausibly because GuiRoot::getCanvasSize() is NOT inlined in the original (an out-of-line call would need a frame slot for its Vector2 return) or because the toPixelSize result is kept in a named local. Test those two first on any revisit."
+  },
+  "relative_panel_decode": {
+    "addr": "005737e0",
+    "size": 241,
+    "status": "decoded structure, not yet a compilable candidate",
+    "structure": [
+      "G3D::Vector2 canvas = GuiRoot::getCanvasSize();  (two direct static loads 00974d78/00974d7c into a frame local)",
+      "G3D::Vector2 size = getSize();  (virtual, vtable slot 0x5c, sret into a frame temp kept in edi)",
+      "two separate G3D::Vector2::zero() calls (00509ba0)",
+      "offset read as two int16 via movsx at +0x164 (x) and +0x166 (y), converted with fild",
+      "a 16-byte Rect built at [esp+0x28] (low = zero + offset as floats, high computed from the size values with fsubrp)",
+      "helper 005cef60 called with this = that Rect, args = (sret, &size, xLocation +0x15c, yLocation +0x160)"
+    ],
+    "helper_005cef60": "same signature as 005cef00 (Rect::positionPoint(const Vector2&, Location, Location) const): sret as the first stack argument and the sret pointer returned in eax, then copied to the getPosition sret. Confirms 005cef00/005cef60 are the same function reached two ways.",
+    "next_proof": "the missing half is almost certainly the canvasSize local being consumed: the original loads canvasSize.x/y into the frame at the top, calls zero() twice, and the final FP chain (fadd st(1) x2, fsubrp st(4)/st(2), fxch/fstp x4) produces all four Rect floats from canvas, size and offset together. The next hypothesis should build the Rect from (zero + offset) as low and (canvas - size) or (canvas - offset - size) as high."
+  },
+  "relative_panel_variants": [
+    {
+      "hypothesis": "G3D::Vector2 size = getSize(); G3D::Vector2 at((float)offset.x, (float)offset.y); return Rect(at, at - size).positionPoint(size, xLocation, yLocation);",
+      "result": "compiles; 124 B vs the original 241 B, score 38, first divergence byte 2. Roughly half the body is missing: the original makes TWO Vector2::zero() calls, loads canvasSize into the frame, and runs a longer FP computation before the four Rect stores."
+    }
+  ]
+}

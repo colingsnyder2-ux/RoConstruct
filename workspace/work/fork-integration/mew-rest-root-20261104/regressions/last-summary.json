@@ -1,0 +1,98 @@
+[
+  {
+    "script": "feature",
+    "exit": 0,
+    "seconds": 53.046,
+    "log": "work\\fork-integration\\mew-rest-root-20261104\\regressions\\feature-last.log"
+  },
+  {
+    "script": "flag_family",
+    "exit": 0,
+    "seconds": 37.421,
+    "log": "work\\fork-integration\\mew-rest-root-20261104\\regressions\\flag_family-last.log"
+  },
+  {
+    "script": "services",
+    "exit": 0,
+    "seconds": 48.625,
+    "log": "work\\fork-integration\\mew-rest-root-20261104\\regressions\\services-last.log"
+  },
+  {
+    "script": "settings_items",
+    "exit": 0,
+    "seconds": 35.016,
+    "log": "work\\fork-integration\\mew-rest-root-20261104\\regressions\\settings_items-last.log"
+  },
+  {
+    "script": "user_controller",
+    "exit": 0,
+    "seconds": 16.297,
+    "log": "work\\fork-integration\\mew-rest-root-20261104\\regressions\\user_controller-last.log"
+  },
+  {
+    "script": "humanoid_state",
+    "exit": 0,
+    "seconds": 5.375,
+    "log": "work\\fork-integration\\mew-rest-root-20261104\\regressions\\humanoid_state-last.log"
+  },
+  {
+    "script": "humanoid_states1",
+    "exit": 0,
+    "seconds": 9.781,
+    "log": "work\\fork-integration\\mew-rest-root-20261104\\regressions\\humanoid_states1-last.log"
+  },
+  {
+    "script": "humanoid_states2",
+    "exit": 0,
+    "seconds": 9.625,
+    "log": "work\\fork-integration\\mew-rest-root-20261104\\regressions\\humanoid_states2-last.log"
+  },
+  {
+    "script": "humanoid_states3",
+    "exit": 0,
+    "seconds": 17.5,
+    "log": "work\\fork-integration\\mew-rest-root-20261104\\regressions\\humanoid_states3-last.log"
+  },
+  {
+    "script": "team",
+    "exit": 0,
+    "seconds": 31.36,
+    "log": "work\\fork-integration\\mew-rest-root-20261104\\regressions\\team-last.log"
+  },
+  {
+    "script": "appearance",
+    "exit": 0,
+    "seconds": 31.391,
+    "log": "work\\fork-integration\\mew-rest-root-20261104\\regressions\\appearance-last.log"
+  },
+  {
+    "script": "click_detector",
+    "exit": 0,
+    "seconds": 21.328,
+    "log": "work\\fork-integration\\mew-rest-root-20261104\\regressions\\click_detector-last.log"
+  },
+  {
+    "script": "spawn",
+    "exit": 0,
+    "seconds": 23.656,
+    "log": "work\\fork-integration\\mew-rest-root-20261104\\regressions\\spawn-last.log"
+  },
+  {
+    "script": "seat",
+    "exit": 0,
+    "seconds": 15.25,
+    "log": "work\\fork-integration\\mew-rest-root-20261104\\regressions\\seat-last.log"
+  },
+  {
+    "script": "special_shape",
+    "exit": 0,
+    "seconds": 20.266,
+    "log": "work\\fork-integration\\mew-rest-root-20261104\\regressions\\special_shape-last.log"
+  },
+  {
+    "script": "debris_forcefield",
+    "exit": 0,
+    "seconds": 27.922,
+    "log": "work\\fork-integration\\mew-rest-root-20261104\\regressions\\debris_forcefield-last.log"
+  }
+]

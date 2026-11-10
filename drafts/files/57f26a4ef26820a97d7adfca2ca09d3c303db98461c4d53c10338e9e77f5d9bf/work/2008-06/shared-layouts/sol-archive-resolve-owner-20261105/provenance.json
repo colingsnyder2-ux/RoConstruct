@@ -1,0 +1,12 @@
+{
+  "old_unique": 791,
+  "new_unique": 792,
+  "common_changed": [],
+  "old_only": [],
+  "new_only": [
+    "g:\\projects\\roconstruct\\roconstruct-native-20261105-a12f01fd\\work\\native-candidates\\sol-archive-resolve-owner-20261105\\serializerv2.cpp"
+  ],
+  "compiler_sha256": "a8fb826379837492f19b249a3553acc3f904afe4c93e643054d0e48340ae717a",
+  "args_exact_except_source_outputs_and_runner_pdb": true,
+  "environment_equal": true
+}

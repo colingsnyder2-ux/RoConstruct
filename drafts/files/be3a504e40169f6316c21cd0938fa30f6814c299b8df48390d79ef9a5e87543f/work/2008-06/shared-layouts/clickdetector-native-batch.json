@@ -1,0 +1,12 @@
+{
+  "batch": "RBX::ClickDetector",
+  "change": "Removed NATIVE_CLICKDETECTOR_PENDING guards for askSetParent, setFrontendMouseClick and isClickable; includes ModelInstance.h and Workspace.h unconditionally.",
+  "changed_files": [
+    "rebuild/2008-06/native-classes/ClickDetector.cpp"
+  ],
+  "verification": "Direct native-header compile of ClickDetector.cpp succeeded.",
+  "package_revision": "1d8dc7a8d6ee2c6694f477361ba54ad661ce91c8f648dc9713f7a4bdf6bb4b54",
+  "workspace_manifest_source_revision": "1d8dc7a8d6ee2c6694f477361ba54ad661ce91c8f648dc9713f7a4bdf6bb4b54",
+  "baseline_commit": "unknown",
+  "status": "inactive draft; no active build, swap, runtime, or server credit"
+}

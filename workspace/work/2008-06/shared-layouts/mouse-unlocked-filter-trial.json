@@ -1,0 +1,87 @@
+{
+  "source_sha256": "55b1afc7fe02ce4c763e29e29fee4653a27bc0b343a4a14767813afc4e4e89b8",
+  "observer_sha256": "0766d7095fc41b74e86a0610fd1ca5e76222ea3c9fca40724a1613d7bc6c53c1",
+  "headers": {
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\MouseCommand.h": "1f64b1ad3f0fe3597c7c9739bc9716e0f58a5b1220a05c381e61fe44a0e8ee09",
+    "tools\\rbxgs\\Client\\App\\include\\v8datamodel\\Filters.h": "9ba0a58de140da2ae5f32d1fd29ed10d448246165c2fad2e935f4b0567dbb977",
+    "tools\\rbxgs\\Client\\App\\include\\v8datamodel\\Workspace.h": "2ed391867e49e12497e567740dccb42655e413d90112d7f918a8b9d1fe2beb07"
+  },
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeMouseUnlockedTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeMouseUnlockedTrial.cpp"
+  ],
+  "methods": [
+    {
+      "address": "00616000",
+      "size": 117,
+      "object_sha256": "0b4022f089b8f410dfa6231cb07a9c13725484b2097c69d58780d99ba1d3a12d",
+      "targets": {
+        "??0PartByLocalCharacter@RBX@@": "0x660380",
+        "??_7UnlockedPartByLocalCharacter@RBX@@": "0x843a50",
+        "?getPart@MouseCommand@RBX@@": "0x615d90",
+        "??1PartByLocalCharacter@RBX@@": "0x615b80"
+      }
+    },
+    {
+      "address": "00615b80",
+      "size": 161,
+      "object_sha256": "0b4022f089b8f410dfa6231cb07a9c13725484b2097c69d58780d99ba1d3a12d",
+      "targets": {}
+    },
+    {
+      "address": "00615d90",
+      "size": 372,
+      "object_sha256": "44e519aa848a6c2eeb662cf38ab99af8254397012469a344ec63690fc429da63",
+      "targets": {
+        "?getUnitMouseRay@MouseCommand@RBX@@": "0x615d00",
+        "?getCameraIgnorePrimitives@ICameraOwner@RBX@@": "0x641d20",
+        "?getMousePart@MouseCommand@RBX@@": "0x615940"
+      }
+    },
+    {
+      "address": "00660380",
+      "size": 287,
+      "object_sha256": "0880f8daba942d851ca067da8847ab8f9b08aed3a2b361d3766655971e823b6a",
+      "targets": {
+        "??_7PartByLocalCharacter@RBX@@": "0x84c464",
+        "?findLocalCharacter@Players@Network@RBX@@": "0x49aca0",
+        "?getHeadFromCharacter@Humanoid@RBX@@": "0x5d75a0"
+      }
+    }
+  ],
+  "scope": "Inactive trial. Inactive trial: donor filter constructor and trial destructor match, but filter vtables, Workspace and shared ownership ABI remain unproven."
+}

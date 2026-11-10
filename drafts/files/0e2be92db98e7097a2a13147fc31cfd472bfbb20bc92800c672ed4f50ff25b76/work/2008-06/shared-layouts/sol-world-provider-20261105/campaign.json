@@ -1,0 +1,21 @@
+{
+  "swap_target": "CRobloxDoc diagnostic closure",
+  "physics": {
+    "address": "005e8ec0",
+    "status": "exact bytes/data/6 direct bindings",
+    "object": "work\\2008-06\\native-check-runs\\20261105-132451-074c792f\\unit-001\\candidate.obj",
+    "sha256": "9c58e6266c21d355e040009641e7be09654d5a529eff17b2e32cd7d20bcabceb"
+  },
+  "workspace": {
+    "status": "generic create candidate compiled; not accepted; original caller 00580bad ->00490af0 has find-shaped implementation; parent guidance requested",
+    "object": "work\\2008-06\\native-check-runs\\20261105-132451-074c792f\\unit-000\\candidate.obj"
+  },
+  "metrics": {
+    "compiled_units": 2,
+    "proof_checks_passed": 1,
+    "rejected_hypotheses": 0,
+    "activation": 0,
+    "server_credit": 0
+  },
+  "next_gate": "parent compose Physics object; establish authentic Workspace create template semantics, EH and provider proof"
+}

@@ -1,0 +1,1979 @@
+{
+  "class": "RBX::Network::Players",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": {
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\network_players\\NativeNetworkPlayersLayout.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\tests\\NativeNetworkPlayersLayout.cpp"
+    ],
+    "base": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\out\\native-network-players\\overlay",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\tools\\rbxgs\\Client\\Network\\raknet30\\Source",
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\network_players\\NativeNetworkPlayers.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\NetworkPlayers.cpp"
+    ],
+    "pending": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\out\\native-network-players\\pending",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\out\\native-network-players\\overlay",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\tools\\rbxgs\\Client\\Network\\raknet30\\Source",
+      "/DNATIVE_NETWORK_PLAYERS_PENDING",
+      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\network_players\\NativeNetworkPlayersPending.obj",
+      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\NetworkPlayers.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_network_players.py": "12d547eac142764a28eb8e6be64f98a045ecb8ffc21b8f163e4ecd962b76d829",
+    "rebuild/2008-06/native-headers/Network/Players.h": "377385928ffc1bc3b831cbae0cd580caf1c98a27f09c9cbb019aa79763e1c949",
+    "rebuild/2008-06/native-classes/NetworkPlayers.cpp": "32d12fa3557c1976c6b2e9255866a8c1e20ba17fd36d171dcd95a8825709972c",
+    "rebuild/2008-06/tests/NativeNetworkPlayersLayout.cpp": "c6a507cbe6d721e0948dc11fd99a4dfa84faaac2771e623fa3ec723919a7b121",
+    "rebuild/2008-06/tests/NativeNetworkPlayersPeers.h": "92a7c176346f13f66e6dd2e5b320c31d1d8f861ccea0451e09dbe647bbd39e92",
+    "rebuild/2008-06/tests/NativeTeamPendingModel.h": "88164ed8537f5812afbd86fd869aba9235ecc6527414066562d68069c3978993"
+  },
+  "objects": {
+    "NativeNetworkPlayersLayout.obj": "26763d43e8ebf8c31de726ee157be78cdfcc1dbbb9927418528a137f3b54f72c",
+    "NativeNetworkPlayers.obj": "769934194c01f3749824867e5d14bdb80c98ae10578611da99a744e4618856d5",
+    "NativeNetworkPlayersPending.obj": "d3579d344457309747053599ec995c74de45975e6696f71f292339a3dc62a46a"
+  },
+  "layout": "Players 0x1b0 (ServiceProvider::create<Players> 00411fd0); Notifier<Players,ChatMessage> 0x130, Notifier<Players,SuperSafeChanged> 0x150, Listener<Player,CharacterAdded> 0x170, Service 0x174; abuseReporter +0x174, chatHistory +0x178, plugin +0x194, players +0x198, localPlayer +0x1a0, peer +0x1a8, maxPlayers +0x1ac; ChatMessage 0x48 (time +0x00, message +0x1c, source +0x38, destination +0x40)",
+  "methods": [
+    {
+      "address": "00495e50",
+      "symbol": "?getMaxPlayers@Players@Network@RBX@@QBEHXZ",
+      "size": 7,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00495e60",
+      "symbol": "?clientIsPresent@Players@Network@RBX@@SA_NPBVInstance@3@_N@Z",
+      "size": 5,
+      "exact": true,
+      "verified_targets": {
+        "?clientIsPresent@Client@Network@RBX@@SA_NPBVInstance@3@_N@Z": "0x49fe20 (external (evidence name))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00495e70",
+      "symbol": "?serverIsPresent@Players@Network@RBX@@SA_NPBVInstance@3@_N@Z",
+      "size": 5,
+      "exact": true,
+      "verified_targets": {
+        "?serverIsPresent@Server@Network@RBX@@SA_NPBVInstance@3@_N@Z": "0x4a40d0 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00495f30",
+      "symbol": "?askAddChild@Players@Network@RBX@@MBE_NPBVInstance@3@@Z",
+      "size": 36,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AVPlayer@Network@RBX@@@8": "0x937460 (RTTI .?AVPlayer@Network@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00496390",
+      "symbol": "?canReportAbuse@Players@Network@RBX@@QBE_NXZ",
+      "size": 33,
+      "exact": true,
+      "verified_targets": {
+        "?clientIsPresent@Client@Network@RBX@@SA_NPBVInstance@3@_N@Z": "0x49fe20 (external (evidence name))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00496510",
+      "symbol": "?setConnection@Players@Network@RBX@@QAEXPAVRakPeerInterface@@@Z",
+      "size": 69,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00496c10",
+      "symbol": "?numPlayers@Players@Network@RBX@@QBEHXZ",
+      "size": 16,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "004974c0",
+      "symbol": "?getPlayers@Players@Network@RBX@@QAE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ",
+      "size": 33,
+      "exact": true,
+      "verified_targets": {
+        "?read@?$CopyOnWrite@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@RBX@@QBE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ": "0x4915b0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00497f40",
+      "symbol": "?getPlayerByID@Players@Network@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@H@Z",
+      "size": 239,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00498030",
+      "symbol": "?playerFromCharacter@Players@Network@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@V45@@Z",
+      "size": 533,
+      "exact": true,
+      "verified_targets": {
+        "?getPlayers@Players@Network@RBX@@QAE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ": "0x4974c0 (own row)",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+      },
+      "local_eh": [
+        "__ehhandler$?playerFromCharacter@Players@Network@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@V45@@Z"
+      ]
+    },
+    {
+      "address": "00499630",
+      "symbol": "??1Players@Network@RBX@@UAE@XZ",
+      "size": 503,
+      "exact": true,
+      "verified_targets": {
+        "??_7Players@Network@RBX@@6B?$GuidItem@VInstance@RBX@@@2@@": "0x8227bc (vtable RTTI .?AVPlayers@Network@RBX@@ offset 0x0)",
+        "??_7Players@Network@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@2@@": "0x8227b0 (vtable RTTI .?AVPlayers@Network@RBX@@ offset 0x10)",
+        "??_7Players@Network@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@2@@": "0x8227a8 (vtable RTTI .?AVPlayers@Network@RBX@@ offset 0x14)",
+        "??_7Players@Network@RBX@@6BDebugable@2@@": "0x8227a0 (vtable RTTI .?AVPlayers@Network@RBX@@ offset 0x20)",
+        "??_7Players@Network@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@2@@": "0x822790 (vtable RTTI .?AVPlayers@Network@RBX@@ offset 0x24)",
+        "??_7Players@Network@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@2@@": "0x822780 (vtable RTTI .?AVPlayers@Network@RBX@@ offset 0x44)",
+        "??_7Players@Network@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@2@@": "0x822770 (vtable RTTI .?AVPlayers@Network@RBX@@ offset 0x64)",
+        "??_7Players@Network@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@2@@": "0x822760 (vtable RTTI .?AVPlayers@Network@RBX@@ offset 0x84)",
+        "??_7Players@Network@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@2@@": "0x822750 (vtable RTTI .?AVPlayers@Network@RBX@@ offset 0xa4)",
+        "??_7Players@Network@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@2@@": "0x822740 (vtable RTTI .?AVPlayers@Network@RBX@@ offset 0xc4)",
+        "??_7Players@Network@RBX@@6B?$Notifier@VPlayers@Network@RBX@@VChatMessage@23@@2@@": "0x822730 (vtable RTTI .?AVPlayers@Network@RBX@@ offset 0x130)",
+        "??_7Players@Network@RBX@@6B?$Notifier@VPlayers@Network@RBX@@VSuperSafeChanged@3@@2@@": "0x822720 (vtable RTTI .?AVPlayers@Network@RBX@@ offset 0x150)",
+        "??_7Players@Network@RBX@@6B?$Listener@VPlayer@Network@RBX@@UCharacterAdded@23@@2@@": "0x822714 (vtable RTTI .?AVPlayers@Network@RBX@@ offset 0x170)",
+        "??1?$list@VChatMessage@Network@RBX@@V?$allocator@VChatMessage@Network@RBX@@@std@@@std@@QAE@XZ": "0x4993c0 (own row)",
+        "??1AbuseReporter@Network@RBX@@QAE@XZ": "0x4971c0 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??1Instance@RBX@@UAE@XZ": "0x55a540 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??1Players@Network@RBX@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "00499fb0",
+      "symbol": "??_GPlayers@Network@RBX@@UAEPAXI@Z",
+      "size": 31,
+      "exact": true,
+      "verified_targets": {
+        "??1Players@Network@RBX@@UAE@XZ": "0x499630 (own row)",
+        "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00499830",
+      "symbol": "??_EPlayers@Network@RBX@@WKE@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_EPlayers@Network@RBX@@UAEPAXI@Z": "0x499fb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00499840",
+      "symbol": "??_EPlayers@Network@RBX@@WME@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_EPlayers@Network@RBX@@UAEPAXI@Z": "0x499fb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00499850",
+      "symbol": "??_EPlayers@Network@RBX@@WBA@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_EPlayers@Network@RBX@@UAEPAXI@Z": "0x499fb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00499860",
+      "symbol": "??_EPlayers@Network@RBX@@WBE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_EPlayers@Network@RBX@@UAEPAXI@Z": "0x499fb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00499870",
+      "symbol": "??_EPlayers@Network@RBX@@WBDA@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_EPlayers@Network@RBX@@UAEPAXI@Z": "0x499fb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00499880",
+      "symbol": "??_EPlayers@Network@RBX@@WBFA@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_EPlayers@Network@RBX@@UAEPAXI@Z": "0x499fb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00499890",
+      "symbol": "??_EPlayers@Network@RBX@@WBHA@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_EPlayers@Network@RBX@@UAEPAXI@Z": "0x499fb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004998a0",
+      "symbol": "??_EPlayers@Network@RBX@@WCE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_EPlayers@Network@RBX@@UAEPAXI@Z": "0x499fb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004998b0",
+      "symbol": "??_EPlayers@Network@RBX@@WEE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_EPlayers@Network@RBX@@UAEPAXI@Z": "0x499fb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004998c0",
+      "symbol": "??_EPlayers@Network@RBX@@WGE@AEPAXI@Z",
+      "size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_EPlayers@Network@RBX@@UAEPAXI@Z": "0x499fb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004998d0",
+      "symbol": "??_EPlayers@Network@RBX@@WIE@AEPAXI@Z",
+      "size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_EPlayers@Network@RBX@@UAEPAXI@Z": "0x499fb0 (own row (??_G))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0049ac80",
+      "symbol": "?findLocalPlayer@Players@Network@RBX@@SAPAVPlayer@23@PBVInstance@3@@Z",
+      "size": 27,
+      "exact": true,
+      "verified_targets": {
+        "??$find@VPlayers@Network@RBX@@@ServiceProvider@RBX@@SAPAVPlayers@Network@1@PBVInstance@1@@Z": "0x491d50 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0049aca0",
+      "symbol": "?findLocalCharacter@Players@Network@RBX@@SAPAVModelInstance@3@PBVInstance@3@@Z",
+      "size": 37,
+      "exact": true,
+      "verified_targets": {
+        "??$find@VPlayers@Network@RBX@@@ServiceProvider@RBX@@SAPAVPlayers@Network@1@PBVInstance@1@@Z": "0x491d50 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0049bdc0",
+      "symbol": "??0Players@Network@RBX@@QAE@XZ",
+      "size": 461,
+      "exact": true,
+      "verified_targets": {
+        "??0?$DescribedNonCreatable@VPlayers@Network@RBX@@VInstance@3@$1?sPlayers@23@3PADA@RBX@@IAE@XZ": "0x49af70 (own row)",
+        "??0?$Notifier@VPlayers@Network@RBX@@VChatMessage@23@@RBX@@IAE@XZ": "0x5e9ec0 (external)",
+        "??0?$Notifier@VPlayers@Network@RBX@@VSuperSafeChanged@3@@RBX@@IAE@XZ": "0x5e9ec0 (external)",
+        "??_7Players@Network@RBX@@6B?$GuidItem@VInstance@RBX@@@2@@": "0x8227bc (vtable RTTI .?AVPlayers@Network@RBX@@ offset 0x0)",
+        "??_7Players@Network@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@2@@": "0x8227b0 (vtable RTTI .?AVPlayers@Network@RBX@@ offset 0x10)",
+        "??_7Players@Network@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@2@@": "0x8227a8 (vtable RTTI .?AVPlayers@Network@RBX@@ offset 0x14)",
+        "??_7Players@Network@RBX@@6BDebugable@2@@": "0x8227a0 (vtable RTTI .?AVPlayers@Network@RBX@@ offset 0x20)",
+        "??_7Players@Network@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@2@@": "0x822790 (vtable RTTI .?AVPlayers@Network@RBX@@ offset 0x24)",
+        "??_7Players@Network@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@2@@": "0x822780 (vtable RTTI .?AVPlayers@Network@RBX@@ offset 0x44)",
+        "??_7Players@Network@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@2@@": "0x822770 (vtable RTTI .?AVPlayers@Network@RBX@@ offset 0x64)",
+        "??_7Players@Network@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@2@@": "0x822760 (vtable RTTI .?AVPlayers@Network@RBX@@ offset 0x84)",
+        "??_7Players@Network@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@2@@": "0x822750 (vtable RTTI .?AVPlayers@Network@RBX@@ offset 0xa4)",
+        "??_7Players@Network@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@2@@": "0x822740 (vtable RTTI .?AVPlayers@Network@RBX@@ offset 0xc4)",
+        "??_7Players@Network@RBX@@6B?$Notifier@VPlayers@Network@RBX@@VChatMessage@23@@2@@": "0x822730 (vtable RTTI .?AVPlayers@Network@RBX@@ offset 0x130)",
+        "??_7Players@Network@RBX@@6B?$Notifier@VPlayers@Network@RBX@@VSuperSafeChanged@3@@2@@": "0x822720 (vtable RTTI .?AVPlayers@Network@RBX@@ offset 0x150)",
+        "??_7Players@Network@RBX@@6B?$Listener@VPlayer@Network@RBX@@UCharacterAdded@23@@2@@": "0x822714 (vtable RTTI .?AVPlayers@Network@RBX@@ offset 0x170)",
+        "??0?$list@VChatMessage@Network@RBX@@V?$allocator@VChatMessage@Network@RBX@@@std@@@std@@QAE@XZ": "0x4987f0 (own row)",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0?$CopyOnWrite@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@RBX@@QAE@ABV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z": "0x49ad50 (own row)",
+        "??1?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": "0x5a2fe0 (external (evidence name))",
+        "??_C@_07OLBIDKLK@Players?$AA@": "0x8194d0 (literal 'Players')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x55af90 (external (evidence name))",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??0PluginInterface@@QAE@XZ": "0x49ed30 (external)",
+        "??_7Plugin@Players@Network@RBX@@6B@": "0x822688 (vtable RTTI .?AVPlugin@Players@Network@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??0Players@Network@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "0049ca70",
+      "symbol": "?reportAbuse@Players@Network@RBX@@QAEXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "size": 189,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "??_R0?AVPlayer@Network@RBX@@@8": "0x937460 (RTTI .?AVPlayer@Network@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+        "?reportAbuse@Players@Network@RBX@@QAEXPAVPlayer@23@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x49c7b0 (external (evidence name))",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$?reportAbuse@Players@Network@RBX@@QAEXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+      ]
+    },
+    {
+      "address": "0049d450",
+      "symbol": "?setMaxPlayers@Players@Network@RBX@@QAEXH@Z",
+      "size": 34,
+      "exact": true,
+      "verified_targets": {
+        "_propPlayerMaxCount": "0x97029c (data)",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0049e1d0",
+      "symbol": "?setAbuseReportUrl@Players@Network@RBX@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "size": 191,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "??0AbuseReporter@Network@RBX@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x49e040 (external (evidence name))",
+        "??1AbuseReporter@Network@RBX@@QAE@XZ": "0x4971c0 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$?setAbuseReportUrl@Players@Network@RBX@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+      ]
+    },
+    {
+      "address": "00496370",
+      "symbol": "??_GPlugin@Players@Network@RBX@@UAEPAXI@Z",
+      "size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??1PluginInterface@@UAE@XZ": "0x49ed40 (external)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004971c0",
+      "symbol": "??1AbuseReporter@Network@RBX@@QAE@XZ",
+      "size": 135,
+      "exact": true,
+      "verified_targets": {
+        "??1worker_thread@RBX@@QAE@XZ": "0x595cb0 (external (evidence name))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??1AbuseReporter@Network@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "004963c0",
+      "symbol": "??1ChatMessage@Network@RBX@@QAE@XZ",
+      "size": 188,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$??1ChatMessage@Network@RBX@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "00495fc0",
+      "symbol": "??0?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@RBX@@QAE@XZ",
+      "size": 90,
+      "exact": true,
+      "verified_targets": {
+        "??0Instance@RBX@@QAE@XZ": "0x55b7e0 (external)",
+        "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x82261c (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@RBX@@ offset 0x0)",
+        "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x82260c (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@RBX@@ offset 0x10)",
+        "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x822604 (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@RBX@@ offset 0x14)",
+        "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@RBX@@6BDebugable@1@@": "0x8225fc (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@RBX@@ offset 0x20)",
+        "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x8225ec (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@RBX@@ offset 0x24)",
+        "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x8225dc (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@RBX@@ offset 0x44)",
+        "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x8225cc (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@RBX@@ offset 0x64)",
+        "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x8225bc (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@RBX@@ offset 0x84)",
+        "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x8225ac (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@RBX@@ offset 0xa4)",
+        "??_7?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x82259c (vtable RTTI .?AV?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@RBX@@ offset 0xc4)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00498250",
+      "symbol": "?getClassName@?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@RBX@@UBEABVName@2@XZ",
+      "size": 23,
+      "exact": true,
+      "verified_targets": {
+        "?flag@?1???$declare@$1?sPlayers@Network@RBX@@3PADA@Name@RBX@@SAABV12@XZ@4JA": "0x96cbe4 (local static)",
+        "??$callDoDeclare@$1?sPlayers@Network@RBX@@3PADA@Name@RBX@@CAXXZ": "0x411890 (external)",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
+        "??$doDeclare@$1?sPlayers@Network@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x411420 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0049af70",
+      "symbol": "??0?$DescribedNonCreatable@VPlayers@Network@RBX@@VInstance@3@$1?sPlayers@23@3PADA@RBX@@IAE@XZ",
+      "size": 146,
+      "exact": true,
+      "verified_targets": {
+        "??0?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@RBX@@QAE@XZ": "0x495fc0 (own row)",
+        "?classDescriptor@?$Described@VPlayers@Network@RBX@@$1?sPlayers@23@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x49a8a0 (own row)",
+        "??_7?$DescribedNonCreatable@VPlayers@Network@RBX@@VInstance@3@$1?sPlayers@23@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x822944 (vtable RTTI .?AV?$DescribedNonCreatable@VPlayers@Network@RBX@@VInstance@3@$1?sPlayers@23@3PADA@RBX@@ offset 0x0)",
+        "??_7?$DescribedNonCreatable@VPlayers@Network@RBX@@VInstance@3@$1?sPlayers@23@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x822938 (vtable RTTI .?AV?$DescribedNonCreatable@VPlayers@Network@RBX@@VInstance@3@$1?sPlayers@23@3PADA@RBX@@ offset 0x10)",
+        "??_7?$DescribedNonCreatable@VPlayers@Network@RBX@@VInstance@3@$1?sPlayers@23@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x822930 (vtable RTTI .?AV?$DescribedNonCreatable@VPlayers@Network@RBX@@VInstance@3@$1?sPlayers@23@3PADA@RBX@@ offset 0x14)",
+        "??_7?$DescribedNonCreatable@VPlayers@Network@RBX@@VInstance@3@$1?sPlayers@23@3PADA@RBX@@6BDebugable@1@@": "0x822928 (vtable RTTI .?AV?$DescribedNonCreatable@VPlayers@Network@RBX@@VInstance@3@$1?sPlayers@23@3PADA@RBX@@ offset 0x20)",
+        "??_7?$DescribedNonCreatable@VPlayers@Network@RBX@@VInstance@3@$1?sPlayers@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x822918 (vtable RTTI .?AV?$DescribedNonCreatable@VPlayers@Network@RBX@@VInstance@3@$1?sPlayers@23@3PADA@RBX@@ offset 0x24)",
+        "??_7?$DescribedNonCreatable@VPlayers@Network@RBX@@VInstance@3@$1?sPlayers@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x822908 (vtable RTTI .?AV?$DescribedNonCreatable@VPlayers@Network@RBX@@VInstance@3@$1?sPlayers@23@3PADA@RBX@@ offset 0x44)",
+        "??_7?$DescribedNonCreatable@VPlayers@Network@RBX@@VInstance@3@$1?sPlayers@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x8228f8 (vtable RTTI .?AV?$DescribedNonCreatable@VPlayers@Network@RBX@@VInstance@3@$1?sPlayers@23@3PADA@RBX@@ offset 0x64)",
+        "??_7?$DescribedNonCreatable@VPlayers@Network@RBX@@VInstance@3@$1?sPlayers@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x8228e8 (vtable RTTI .?AV?$DescribedNonCreatable@VPlayers@Network@RBX@@VInstance@3@$1?sPlayers@23@3PADA@RBX@@ offset 0x84)",
+        "??_7?$DescribedNonCreatable@VPlayers@Network@RBX@@VInstance@3@$1?sPlayers@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x8228d8 (vtable RTTI .?AV?$DescribedNonCreatable@VPlayers@Network@RBX@@VInstance@3@$1?sPlayers@23@3PADA@RBX@@ offset 0xa4)",
+        "??_7?$DescribedNonCreatable@VPlayers@Network@RBX@@VInstance@3@$1?sPlayers@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x8228c8 (vtable RTTI .?AV?$DescribedNonCreatable@VPlayers@Network@RBX@@VInstance@3@$1?sPlayers@23@3PADA@RBX@@ offset 0xc4)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$DescribedNonCreatable@VPlayers@Network@RBX@@VInstance@3@$1?sPlayers@23@3PADA@RBX@@IAE@XZ"
+      ]
+    },
+    {
+      "address": "0049a8a0",
+      "symbol": "?classDescriptor@?$Described@VPlayers@Network@RBX@@$1?sPlayers@23@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+      "size": 101,
+      "exact": true,
+      "verified_targets": {
+        "??_B?1??classDescriptor@?$Described@VPlayers@Network@RBX@@$1?sPlayers@23@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x9706b8 (local static)",
+        "?sPlayers@Network@RBX@@3PADA": "0x93784c (data)",
+        "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80 (external (evidence name))",
+        "?foo@?1??classDescriptor@?$Described@VPlayers@Network@RBX@@$1?sPlayers@23@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x9705f8 (local static)",
+        "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
+        "??__Ffoo@?1??classDescriptor@?$Described@VPlayers@Network@RBX@@$1?sPlayers@23@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fb820 (external)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?classDescriptor@?$Described@VPlayers@Network@RBX@@$1?sPlayers@23@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
+      ]
+    },
+    {
+      "address": "00496e20",
+      "symbol": "?raise@?$Notifier@VPlayers@Network@RBX@@VSuperSafeChanged@3@@RBX@@IBEXVSuperSafeChanged@2@@Z",
+      "size": 129,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?raise@?$Notifier@VPlayers@Network@RBX@@VSuperSafeChanged@3@@RBX@@IBEXVSuperSafeChanged@2@PAV?$Listener@VPlayers@Network@RBX@@VSuperSafeChanged@3@@2@@Z": "0x496680 (external (evidence name))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00496870",
+      "symbol": "??$singleton@PAVPlayers@Network@RBX@@@RefType@Reflection@RBX@@SAABV012@XZ",
+      "size": 115,
+      "exact": true,
+      "verified_targets": {
+        "??_B?1???$singleton@PAVPlayers@Network@RBX@@@RefType@Reflection@RBX@@SAABV012@XZ@51": "0x970284 (local static)",
+        "??_C@_03MCAECCCA@Ref?$AA@": "0x821450 (literal 'Ref')",
+        "??_R0?AVRefType@Reflection@RBX@@@8": "0x934d40 (RTTI .?AVRefType@Reflection@RBX@@)",
+        "??_C@_06ELFECKBG@Object?$AA@": "0x821634 (literal 'Object')",
+        "?type@?1???$singleton@PAVPlayers@Network@RBX@@@RefType@Reflection@RBX@@SAABV123@XZ@4V123@A": "0x970274 (local static)",
+        "??0Type@Reflection@RBX@@IAE@PBDABVtype_info@@0@Z": "0x4897a0 (external)",
+        "??__Ftype@?1???$singleton@PAVPlayers@Network@RBX@@@RefType@Reflection@RBX@@SAABV012@XZ@YAXXZ": "0x7fb7b0 (external)",
+        "??_7RefType@Reflection@RBX@@6B@": "0x82144c (vtable RTTI .?AVRefType@Reflection@RBX@@ offset 0x0)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??$singleton@PAVPlayers@Network@RBX@@@RefType@Reflection@RBX@@SAABV012@XZ"
+      ]
+    },
+    {
+      "address": "004987f0",
+      "symbol": "??0?$list@VChatMessage@Network@RBX@@V?$allocator@VChatMessage@Network@RBX@@@std@@@std@@QAE@XZ",
+      "size": 94,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "?_Buynode@?$list@VChatMessage@Network@RBX@@V?$allocator@VChatMessage@Network@RBX@@@std@@@std@@IAEPAU_Node@?$_List_nod@VChatMessage@Network@RBX@@V?$allocator@VChatMessage@Network@RBX@@@std@@@2@XZ": "0x496ed0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$list@VChatMessage@Network@RBX@@V?$allocator@VChatMessage@Network@RBX@@@std@@@std@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "004993c0",
+      "symbol": "??1?$list@VChatMessage@Network@RBX@@V?$allocator@VChatMessage@Network@RBX@@@std@@@std@@QAE@XZ",
+      "size": 85,
+      "exact": true,
+      "verified_targets": {
+        "?clear@?$list@VChatMessage@Network@RBX@@V?$allocator@VChatMessage@Network@RBX@@@std@@@std@@QAEXXZ": "0x498a60 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$list@VChatMessage@Network@RBX@@V?$allocator@VChatMessage@Network@RBX@@@std@@@std@@QAE@XZ"
+      ]
+    },
+    {
+      "address": "00496ed0",
+      "symbol": "?_Buynode@?$list@VChatMessage@Network@RBX@@V?$allocator@VChatMessage@Network@RBX@@@std@@@std@@IAEPAU_Node@?$_List_nod@VChatMessage@Network@RBX@@V?$allocator@VChatMessage@Network@RBX@@@std@@@2@XZ",
+      "size": 26,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00498a60",
+      "symbol": "?clear@?$list@VChatMessage@Network@RBX@@V?$allocator@VChatMessage@Network@RBX@@@std@@@std@@QAEXXZ",
+      "size": 62,
+      "exact": true,
+      "verified_targets": {
+        "??1ChatMessage@Network@RBX@@QAE@XZ": "0x4963c0 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0049ad50",
+      "symbol": "??0?$CopyOnWrite@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@RBX@@QAE@ABV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z",
+      "size": 119,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE@ABV01@@Z": "0x5acb00 (external (evidence name))",
+        "??$?0V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@shared_count@detail@boost@@QAE@PAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z": "0x49a6c0 (external (evidence name))",
+        "?sp_enable_shared_from_this@detail@boost@@YAXABVshared_count@12@ZZ": "0x47d410 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$CopyOnWrite@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@RBX@@QAE@ABV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z"
+      ]
+    },
+    {
+      "address": "0049a910",
+      "symbol": "??$?0P8Players@Network@RBX@@BEHXZH@?$PropDescriptor@VPlayers@Network@RBX@@H@Reflection@RBX@@QAE@PBD0P8Players@Network@2@BEHXZHW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 157,
+      "exact": true,
+      "verified_targets": {
+        "??$getset@P8Players@Network@RBX@@BEHXZ@?$PropDescriptor@VPlayers@Network@RBX@@H@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@H@Reflection@RBX@@@std@@P8Players@Network@2@BEHXZH@Z": "0x497320 (own row)",
+        "?classDescriptor@?$Described@VPlayers@Network@RBX@@$1?sPlayers@23@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x49a8a0 (own row)",
+        "??0?$TypedPropertyDescriptor@H@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@H@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x4432a0 (external)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7?$PropDescriptor@VPlayers@Network@RBX@@H@Reflection@RBX@@6B@": "0x822850 (vtable RTTI .?AV?$PropDescriptor@VPlayers@Network@RBX@@H@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0P8Players@Network@RBX@@BEHXZH@?$PropDescriptor@VPlayers@Network@RBX@@H@Reflection@RBX@@QAE@PBD0P8Players@Network@2@BEHXZHW4Functionality@PropertyDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "0049a9b0",
+      "symbol": "??$?0P8Players@Network@RBX@@BEHXZP8012@AEXH@Z@?$PropDescriptor@VPlayers@Network@RBX@@H@Reflection@RBX@@QAE@PBD0P8Players@Network@2@BEHXZP8342@AEXH@ZW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 163,
+      "exact": true,
+      "verified_targets": {
+        "??$getset@P8Players@Network@RBX@@BEHXZP8123@AEXH@Z@?$PropDescriptor@VPlayers@Network@RBX@@H@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@H@Reflection@RBX@@@std@@P8Players@Network@2@BEHXZP8562@AEXH@Z@Z": "0x497360 (own row)",
+        "?classDescriptor@?$Described@VPlayers@Network@RBX@@$1?sPlayers@23@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x49a8a0 (own row)",
+        "??0?$TypedPropertyDescriptor@H@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@H@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x4432a0 (external)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7?$PropDescriptor@VPlayers@Network@RBX@@H@Reflection@RBX@@6B@": "0x822850 (vtable RTTI .?AV?$PropDescriptor@VPlayers@Network@RBX@@H@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0P8Players@Network@RBX@@BEHXZP8012@AEXH@Z@?$PropDescriptor@VPlayers@Network@RBX@@H@Reflection@RBX@@QAE@PBD0P8Players@Network@2@BEHXZP8342@AEXH@ZW4Functionality@PropertyDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "00497320",
+      "symbol": "??$getset@P8Players@Network@RBX@@BEHXZ@?$PropDescriptor@VPlayers@Network@RBX@@H@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@H@Reflection@RBX@@@std@@P8Players@Network@2@BEHXZH@Z",
+      "size": 63,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$GetImpl@P8Players@Network@RBX@@BEHXZ@?$PropDescriptor@VPlayers@Network@RBX@@H@Reflection@RBX@@6B@": "0x8226b8 (vtable RTTI .?AV?$GetImpl@P8Players@Network@RBX@@BEHXZ@?$PropDescriptor@VPlayers@Network@RBX@@H@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00497360",
+      "symbol": "??$getset@P8Players@Network@RBX@@BEHXZP8123@AEXH@Z@?$PropDescriptor@VPlayers@Network@RBX@@H@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@H@Reflection@RBX@@@std@@P8Players@Network@2@BEHXZP8562@AEXH@Z@Z",
+      "size": 77,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$GetSetImpl@P8Players@Network@RBX@@BEHXZP8123@AEXH@Z@?$PropDescriptor@VPlayers@Network@RBX@@H@Reflection@RBX@@6B@": "0x8226dc (vtable RTTI .?AV?$GetSetImpl@P8Players@Network@RBX@@BEHXZP8123@AEXH@Z@?$PropDescriptor@VPlayers@Network@RBX@@H@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0049b010",
+      "symbol": "??0?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@H@Z$00@Reflection@RBX@@QAE@P8Players@Network@2@AE?AV?$shared_ptr@VInstance@RBX@@@boost@@H@ZPBD1W4Security@FunctionDescriptor@12@@Z",
+      "size": 159,
+      "exact": true,
+      "verified_targets": {
+        "?classDescriptor@?$Described@VPlayers@Network@RBX@@$1?sPlayers@23@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x49a8a0 (own row)",
+        "??0FunctionDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBDW4Security@012@@Z": "0x595790 (external (evidence name))",
+        "??_7?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@H@Z$00@Reflection@RBX@@6B@": "0x822988 (vtable RTTI .?AV?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@H@Z$00@Reflection@RBX@@ offset 0x0)",
+        "??0Value@Reflection@RBX@@QAE@XZ": "0x594ac0 (external (evidence name))",
+        "??$singleton@V?$shared_ptr@VInstance@RBX@@@boost@@@Type@Reflection@RBX@@SAABV012@XZ": "0x56cae0 (external (evidence name))",
+        "??$singleton@H@Type@Reflection@RBX@@SAABV012@XZ": "0x56cbc0 (external (evidence name))",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external (evidence name))",
+        "?addArgument@SignatureDescriptor@Reflection@RBX@@QAEXABVName@3@ABVType@23@ABVValue@23@@Z": "0x594b40 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@H@Z$00@Reflection@RBX@@QAE@P8Players@Network@2@AE?AV?$shared_ptr@VInstance@RBX@@@boost@@H@ZPBD1W4Security@FunctionDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "0049b0b0",
+      "symbol": "??$call@V?$shared_ptr@VInstance@RBX@@@boost@@@?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@H@Z$00@Reflection@RBX@@ABEXPAVPlayers@Network@2@AAVValue@12@1@Z",
+      "size": 164,
+      "exact": true,
+      "verified_targets": {
+        "??$convert@H@Value@Reflection@RBX@@QAEAAHXZ": "0x56ea60 (external (evidence name))",
+        "??$singleton@V?$shared_ptr@VInstance@RBX@@@boost@@@Type@Reflection@RBX@@SAABV012@XZ": "0x56cae0 (external (evidence name))",
+        "??$?4V?$shared_ptr@VInstance@RBX@@@boost@@@any@boost@@QAEAAV01@ABV?$shared_ptr@VInstance@RBX@@@1@@Z": "0x48dd00 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$??$call@V?$shared_ptr@VInstance@RBX@@@boost@@@?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@H@Z$00@Reflection@RBX@@ABEXPAVPlayers@Network@2@AAVValue@12@1@Z"
+      ]
+    },
+    {
+      "address": "0049b160",
+      "symbol": "?execute@?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@H@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+      "size": 206,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AVPlayers@Network@RBX@@@8": "0x937c18 (RTTI .?AVPlayers@Network@RBX@@)",
+        "??_R0?AVDescribedBase@Reflection@RBX@@@8": "0x9291fc (RTTI .?AVDescribedBase@Reflection@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+        "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+        "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+        "__TI2?AVbad_cast@std@@": "0x8d362c (external)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "??$call@V?$shared_ptr@VInstance@RBX@@@boost@@@?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@H@Z$00@Reflection@RBX@@ABEXPAVPlayers@Network@2@AAVValue@12@1@Z": "0x49b0b0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?execute@?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@H@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z"
+      ]
+    },
+    {
+      "address": "0049b230",
+      "symbol": "??0?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@QAE@P8Players@Network@2@AEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZPBD2W4Security@FunctionDescriptor@12@@Z",
+      "size": 159,
+      "exact": true,
+      "verified_targets": {
+        "?classDescriptor@?$Described@VPlayers@Network@RBX@@$1?sPlayers@23@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x49a8a0 (own row)",
+        "??0FunctionDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBDW4Security@012@@Z": "0x595790 (external (evidence name))",
+        "??_7?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@6B@": "0x822994 (vtable RTTI .?AV?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@ offset 0x0)",
+        "??0Value@Reflection@RBX@@QAE@XZ": "0x594ac0 (external (evidence name))",
+        "??$singleton@X@Type@Reflection@RBX@@SAABV012@XZ": "0x594a50 (external (evidence name))",
+        "??$singleton@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Type@Reflection@RBX@@SAABV012@XZ": "0x56cdf0 (external (evidence name))",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external (evidence name))",
+        "?addArgument@SignatureDescriptor@Reflection@RBX@@QAEXABVName@3@ABVType@23@ABVValue@23@@Z": "0x594b40 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@QAE@P8Players@Network@2@AEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZPBD2W4Security@FunctionDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "0049b2d0",
+      "symbol": "?execute@?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+      "size": 224,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AVPlayers@Network@RBX@@@8": "0x937c18 (RTTI .?AVPlayers@Network@RBX@@)",
+        "??_R0?AVDescribedBase@Reflection@RBX@@@8": "0x9291fc (RTTI .?AVDescribedBase@Reflection@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+        "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+        "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+        "__TI2?AVbad_cast@std@@": "0x8d362c (external)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "??$convert@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Value@Reflection@RBX@@QAEAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ": "0x56f0b0 (external (evidence name))",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$?execute@?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z"
+      ]
+    },
+    {
+      "address": "0049b3b0",
+      "symbol": "??0?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$01@Reflection@RBX@@QAE@P8Players@Network@2@AEXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZPBD33W4Security@FunctionDescriptor@12@@Z",
+      "size": 143,
+      "exact": true,
+      "verified_targets": {
+        "?classDescriptor@?$Described@VPlayers@Network@RBX@@$1?sPlayers@23@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x49a8a0 (own row)",
+        "??0FunctionDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBDW4Security@012@@Z": "0x595790 (external (evidence name))",
+        "??_7?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$01@Reflection@RBX@@6B@": "0x8229a0 (vtable RTTI .?AV?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$01@Reflection@RBX@@ offset 0x0)",
+        "??0Value@Reflection@RBX@@QAE@XZ": "0x594ac0 (external (evidence name))",
+        "?declareSignature@?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$01@Reflection@RBX@@AAEXPBD0@Z": "0x495f60 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$01@Reflection@RBX@@QAE@P8Players@Network@2@AEXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZPBD33W4Security@FunctionDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "0049b440",
+      "symbol": "??$call@X@?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$01@Reflection@RBX@@ABEXPAVPlayers@Network@2@AAVValue@12@11@Z",
+      "size": 139,
+      "exact": true,
+      "verified_targets": {
+        "??$convert@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Value@Reflection@RBX@@QAEAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ": "0x56f0b0 (external (evidence name))",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "??$convert@V?$shared_ptr@VInstance@RBX@@@boost@@@Value@Reflection@RBX@@QAEAAV?$shared_ptr@VInstance@RBX@@@boost@@XZ": "0x56f8c0 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$??$call@X@?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$01@Reflection@RBX@@ABEXPAVPlayers@Network@2@AAVValue@12@11@Z"
+      ]
+    },
+    {
+      "address": "0049b4d0",
+      "symbol": "?execute@?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$01@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+      "size": 282,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AVPlayers@Network@RBX@@@8": "0x937c18 (RTTI .?AVPlayers@Network@RBX@@)",
+        "??_R0?AVDescribedBase@Reflection@RBX@@@8": "0x9291fc (RTTI .?AVDescribedBase@Reflection@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+        "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+        "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+        "__TI2?AVbad_cast@std@@": "0x8d362c (external)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "??$call@X@?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$01@Reflection@RBX@@ABEXPAVPlayers@Network@2@AAVValue@12@11@Z": "0x49b440 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?execute@?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$01@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z"
+      ]
+    },
+    {
+      "address": "0049b5f0",
+      "symbol": "??0?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ$0A@@Reflection@RBX@@QAE@P8Players@Network@2@AE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZPBDW4Security@FunctionDescriptor@12@@Z",
+      "size": 108,
+      "exact": true,
+      "verified_targets": {
+        "?classDescriptor@?$Described@VPlayers@Network@RBX@@$1?sPlayers@23@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x49a8a0 (own row)",
+        "??0FunctionDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBDW4Security@012@@Z": "0x595790 (external (evidence name))",
+        "??_7?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ$0A@@Reflection@RBX@@6B@": "0x8229ac (vtable RTTI .?AV?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ$0A@@Reflection@RBX@@ offset 0x0)",
+        "??$singleton@V?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@Type@Reflection@RBX@@SAABV012@XZ": "0x56cb50 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ$0A@@Reflection@RBX@@QAE@P8Players@Network@2@AE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZPBDW4Security@FunctionDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "0049b710",
+      "symbol": "?execute@?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ$0A@@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+      "size": 90,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AVPlayers@Network@RBX@@@8": "0x937c18 (RTTI .?AVPlayers@Network@RBX@@)",
+        "??_R0?AVDescribedBase@Reflection@RBX@@@8": "0x9291fc (RTTI .?AVDescribedBase@Reflection@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+        "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+        "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+        "__TI2?AVbad_cast@std@@": "0x8d362c (external)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "??$call@V?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ$0A@@Reflection@RBX@@ABEXPAVPlayers@Network@2@AAVValue@12@@Z": "0x5d6750 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0049b6b0",
+      "symbol": "??$?4V?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@any@boost@@QAEAAV01@ABV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@1@@Z",
+      "size": 90,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$holder@V?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@any@boost@@6B@": "0x8229b8 (vtable RTTI .?AV?$holder@V?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@@any@boost@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0049b770",
+      "symbol": "??0?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@V45@@Z$00@Reflection@RBX@@QAE@P8Players@Network@2@AE?AV?$shared_ptr@VInstance@RBX@@@boost@@V56@@ZPBD2W4Security@FunctionDescriptor@12@@Z",
+      "size": 159,
+      "exact": true,
+      "verified_targets": {
+        "?classDescriptor@?$Described@VPlayers@Network@RBX@@$1?sPlayers@23@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x49a8a0 (own row)",
+        "??0FunctionDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBDW4Security@012@@Z": "0x595790 (external (evidence name))",
+        "??_7?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@V45@@Z$00@Reflection@RBX@@6B@": "0x8229c8 (vtable RTTI .?AV?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@V45@@Z$00@Reflection@RBX@@ offset 0x0)",
+        "??0Value@Reflection@RBX@@QAE@XZ": "0x594ac0 (external (evidence name))",
+        "??$singleton@V?$shared_ptr@VInstance@RBX@@@boost@@@Type@Reflection@RBX@@SAABV012@XZ": "0x56cae0 (external (evidence name))",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external (evidence name))",
+        "?addArgument@SignatureDescriptor@Reflection@RBX@@QAEXABVName@3@ABVType@23@ABVValue@23@@Z": "0x594b40 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@V45@@Z$00@Reflection@RBX@@QAE@P8Players@Network@2@AE?AV?$shared_ptr@VInstance@RBX@@@boost@@V56@@ZPBD2W4Security@FunctionDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "0049b810",
+      "symbol": "??$call@V?$shared_ptr@VInstance@RBX@@@boost@@@?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@V45@@Z$00@Reflection@RBX@@ABEXPAVPlayers@Network@2@AAVValue@12@1@Z",
+      "size": 196,
+      "exact": true,
+      "verified_targets": {
+        "??$convert@V?$shared_ptr@VInstance@RBX@@@boost@@@Value@Reflection@RBX@@QAEAAV?$shared_ptr@VInstance@RBX@@@boost@@XZ": "0x56f8c0 (external (evidence name))",
+        "??$singleton@V?$shared_ptr@VInstance@RBX@@@boost@@@Type@Reflection@RBX@@SAABV012@XZ": "0x56cae0 (external (evidence name))",
+        "??$?4V?$shared_ptr@VInstance@RBX@@@boost@@@any@boost@@QAEAAV01@ABV?$shared_ptr@VInstance@RBX@@@1@@Z": "0x48dd00 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$??$call@V?$shared_ptr@VInstance@RBX@@@boost@@@?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@V45@@Z$00@Reflection@RBX@@ABEXPAVPlayers@Network@2@AAVValue@12@1@Z"
+      ]
+    },
+    {
+      "address": "0049b8e0",
+      "symbol": "?execute@?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@V45@@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z",
+      "size": 206,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AVPlayers@Network@RBX@@@8": "0x937c18 (RTTI .?AVPlayers@Network@RBX@@)",
+        "??_R0?AVDescribedBase@Reflection@RBX@@@8": "0x9291fc (RTTI .?AVDescribedBase@Reflection@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+        "??_C@_08EPJLHIJG@bad?5cast?$AA@": "0x80ba34 (literal 'bad cast')",
+        "__imp_??0bad_cast@std@@QAE@PBD@Z": "0x802864 (msvcr90.dll!??0bad_cast@std@@QAE@PBD@Z)",
+        "__TI2?AVbad_cast@std@@": "0x8d362c (external)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "??$call@V?$shared_ptr@VInstance@RBX@@@boost@@@?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@V45@@Z$00@Reflection@RBX@@ABEXPAVPlayers@Network@2@AAVValue@12@1@Z": "0x49b810 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?execute@?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@V45@@Z$00@Reflection@RBX@@UBEXPAVDescribedBase@23@AAVArguments@FunctionDescriptor@23@@Z"
+      ]
+    },
+    {
+      "address": "0049b9b0",
+      "symbol": "??0?$SignalDesc@VPlayers@Network@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@QAE@PBD0@Z",
+      "size": 194,
+      "exact": true,
+      "verified_targets": {
+        "?classDescriptor@?$Described@VPlayers@Network@RBX@@$1?sPlayers@23@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x49a8a0 (own row)",
+        "??0SignalDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD@Z": "0x56bab0 (external (evidence name))",
+        "??_7?$SignalDesc@VPlayers@Network@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@6B@": "0x8229d4 (vtable RTTI .?AV?$SignalDesc@VPlayers@Network@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@ offset 0x0)",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external (evidence name))",
+        "??$singleton@V?$shared_ptr@VInstance@RBX@@@boost@@@Type@Reflection@RBX@@SAABV012@XZ": "0x56cae0 (external (evidence name))",
+        "??0Value@Reflection@RBX@@QAE@XZ": "0x594ac0 (external (evidence name))",
+        "?_Buynode@?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@IAEPAU_Node@?$_List_nod@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@2@PAU342@0ABUItem@SignatureDescriptor@Reflection@RBX@@@Z": "0x417f00 (external (evidence name))",
+        "?_Incsize@?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@IAEXI@Z": "0x682cc0 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$SignalDesc@VPlayers@Network@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@QAE@PBD0@Z"
+      ]
+    },
+    {
+      "address": "00495f60",
+      "symbol": "?declareSignature@?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$01@Reflection@RBX@@AAEXPBD0@Z",
+      "size": 85,
+      "exact": true,
+      "verified_targets": {
+        "??$singleton@X@Type@Reflection@RBX@@SAABV012@XZ": "0x594a50 (external (evidence name))",
+        "??$singleton@V?$shared_ptr@VInstance@RBX@@@boost@@@Type@Reflection@RBX@@SAABV012@XZ": "0x56cae0 (external (evidence name))",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external (evidence name))",
+        "?addArgument@SignatureDescriptor@Reflection@RBX@@QAEXABVName@3@ABVType@23@ABVValue@23@@Z": "0x594b40 (external (evidence name))",
+        "??$singleton@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Type@Reflection@RBX@@SAABV012@XZ": "0x56cdf0 (external (evidence name))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004973b0",
+      "symbol": "??$getset@P8Players@Network@RBX@@BEPAVPlayer@23@XZ@?$PropDescriptor@VPlayers@Network@RBX@@PAVPlayer@23@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@PAVPlayer@Network@RBX@@@Reflection@RBX@@@std@@P8Players@Network@2@BEPAVPlayer@62@XZH@Z",
+      "size": 63,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$GetImpl@P8Players@Network@RBX@@BEPAVPlayer@23@XZ@?$PropDescriptor@VPlayers@Network@RBX@@PAVPlayer@23@@Reflection@RBX@@6B@": "0x8226f0 (vtable RTTI .?AV?$GetImpl@P8Players@Network@RBX@@BEPAVPlayer@23@XZ@?$PropDescriptor@VPlayers@Network@RBX@@PAVPlayer@23@@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00499cf0",
+      "symbol": "??0TSignalInstance@?$TSignalDesc@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@QAE@PAVSignalSource@23@ABVSignalDescriptor@23@@Z",
+      "size": 101,
+      "exact": true,
+      "verified_targets": {
+        "??_7SignalInstance@Reflection@RBX@@6B@": "0x80ece0 (vtable RTTI .?AVSignalInstance@Reflection@RBX@@ offset 0x0)",
+        "??0?$signal1@XV?$shared_ptr@VInstance@RBX@@@boost@@U?$last_value@X@2@HU?$less@H@std@@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@2@@boost@@QAE@ABU?$last_value@X@1@ABU?$less@H@std@@@Z": "0x499c00 (external)",
+        "??_7TSignalInstance@?$TSignalDesc@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@6B@": "0x822810 (vtable RTTI .?AVTSignalInstance@?$TSignalDesc@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??0TSignalInstance@?$TSignalDesc@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@QAE@PAVSignalSource@23@ABVSignalDescriptor@23@@Z"
+      ]
+    },
+    {
+      "address": "00499fd0",
+      "symbol": "?newSignalInstance@?$TSignalDesc@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@EBEPAVSignalInstance@23@AAVSignalSource@23@@Z",
+      "size": 102,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0TSignalInstance@?$TSignalDesc@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@QAE@PAVSignalSource@23@ABVSignalDescriptor@23@@Z": "0x499cf0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?newSignalInstance@?$TSignalDesc@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@EBEPAVSignalInstance@23@AAVSignalSource@23@@Z"
+      ]
+    },
+    {
+      "address": "007f17c0",
+      "symbol": "??__EpropPlayerCount@@YAXXZ",
+      "size": 44,
+      "exact": true,
+      "verified_targets": {
+        "?numPlayers@Players@Network@RBX@@QBEHXZ": "0x496c10 (own row)",
+        "??_C@_04DICKPMGH@Data?$AA@": "0x822490 (literal 'Data')",
+        "??_C@_0L@NMMPEOPJ@NumPlayers?$AA@": "0x822b70 (literal 'NumPlayers')",
+        "_propPlayerCount": "0x9703a8 (data)",
+        "??$?0P8Players@Network@RBX@@BEHXZH@?$PropDescriptor@VPlayers@Network@RBX@@H@Reflection@RBX@@QAE@PBD0P8Players@Network@2@BEHXZHW4Functionality@PropertyDescriptor@12@@Z": "0x49a910 (own row)",
+        "??__FpropPlayerCount@@YAXXZ": "0x7fb800 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007f17f0",
+      "symbol": "??__EpropPlayerMaxCount@@YAXXZ",
+      "size": 56,
+      "exact": true,
+      "verified_targets": {
+        "?setMaxPlayers@Players@Network@RBX@@QAEXH@Z": "0x49d450 (own row)",
+        "?getMaxPlayers@Players@Network@RBX@@QBEHXZ": "0x495e50 (own row)",
+        "??_C@_04DICKPMGH@Data?$AA@": "0x822490 (literal 'Data')",
+        "??_C@_0L@INDPAOFE@MaxPlayers?$AA@": "0x822b7c (literal 'MaxPlayers')",
+        "_propPlayerMaxCount": "0x97029c (data)",
+        "??$?0P8Players@Network@RBX@@BEHXZP8012@AEXH@Z@?$PropDescriptor@VPlayers@Network@RBX@@H@Reflection@RBX@@QAE@PBD0P8Players@Network@2@BEHXZP8342@AEXH@ZW4Functionality@PropertyDescriptor@12@@Z": "0x49a9b0 (own row)",
+        "??__FpropPlayerMaxCount@@YAXXZ": "0x7fb7e0 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007f1830",
+      "symbol": "??__E?propLocalPlayer@Players@Network@RBX@@2V?$RefPropDescriptor@VPlayers@Network@RBX@@VPlayer@23@@Reflection@3@A@@YAXXZ",
+      "size": 44,
+      "exact": true,
+      "verified_targets": {
+        "?getLocalPlayer@Players@Network@RBX@@QBEPAVPlayer@23@XZ": "0x48a660 (own row)",
+        "??_C@_04DICKPMGH@Data?$AA@": "0x822490 (literal 'Data')",
+        "??_C@_0M@DJHALLLN@LocalPlayer?$AA@": "0x822b88 (literal 'LocalPlayer')",
+        "?propLocalPlayer@Players@Network@RBX@@2V?$RefPropDescriptor@VPlayers@Network@RBX@@VPlayer@23@@Reflection@3@A": "0x970388 (data)",
+        "??$?0P8Players@Network@RBX@@BEPAVPlayer@12@XZH@?$RefPropDescriptor@VPlayers@Network@RBX@@VPlayer@23@@Reflection@RBX@@QAE@PBD0P8Players@Network@2@BEPAVPlayer@42@XZHW4Functionality@PropertyDescriptor@12@@Z": "0x49aa60 (own row)",
+        "??__F?propLocalPlayer@Players@Network@RBX@@2V?$RefPropDescriptor@VPlayers@Network@RBX@@VPlayer@23@@Reflection@3@A@@YAXXZ": "0x7fb7c0 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007f1860",
+      "symbol": "??__Efunc_GetPlayerByID@@YAXXZ",
+      "size": 43,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_06CKMPAMAG@userID?$AA@": "0x822708 (literal 'userID')",
+        "??_C@_0O@DFPMDJLA@GetPlayerByID?$AA@": "0x822b94 (literal 'GetPlayerByID')",
+        "?getPlayerByID@Players@Network@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@H@Z": "0x497f40 (own row)",
+        "_func_GetPlayerByID": "0x970340 (data)",
+        "??0?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@H@Z$00@Reflection@RBX@@QAE@P8Players@Network@2@AE?AV?$shared_ptr@VInstance@RBX@@@boost@@H@ZPBD1W4Security@FunctionDescriptor@12@@Z": "0x49b010 (own row)",
+        "??__Ffunc_GetPlayerByID@@YAXXZ": "0x7fb9d0 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007f1890",
+      "symbol": "??__EfuncChat@@YAXXZ",
+      "size": 43,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_07ONPBMBOP@message?$AA@": "0x82256c (literal 'message')",
+        "??_C@_04NKFKOIHC@Chat?$AA@": "0x822ba4 (literal 'Chat')",
+        "?chat@Players@Network@RBX@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x49cb30 (external)",
+        "_funcChat": "0x9704d8 (data)",
+        "??0?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@QAE@P8Players@Network@2@AEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZPBD2W4Security@FunctionDescriptor@12@@Z": "0x49b230 (own row)",
+        "??__FfuncChat@@YAXXZ": "0x7fb890 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007f18c0",
+      "symbol": "??__EfuncReportAbuse@@YAXXZ",
+      "size": 48,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_07ONPBMBOP@message?$AA@": "0x82256c (literal 'message')",
+        "??_C@_06BALNJMNP@player?$AA@": "0x822bac (literal 'player')",
+        "??_C@_0M@MDACIKOA@ReportAbuse?$AA@": "0x8172f4 (literal 'ReportAbuse')",
+        "?reportAbuse@Players@Network@RBX@@QAEXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x49ca70 (own row)",
+        "_funcReportAbuse": "0x970408 (data)",
+        "??0?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$01@Reflection@RBX@@QAE@P8Players@Network@2@AEXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZPBD33W4Security@FunctionDescriptor@12@@Z": "0x49b3b0 (own row)",
+        "??__FfuncReportAbuse@@YAXXZ": "0x7fb8a0 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007f18f0",
+      "symbol": "??__Efunc_players@@YAXXZ",
+      "size": 37,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_07BCGOFIOM@players?$AA@": "0x822bb4 (literal 'players')",
+        "?getPlayers@Players@Network@RBX@@QAE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ": "0x4974c0 (own row)",
+        "_func_players": "0x9702b8 (data)",
+        "??0?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ$0A@@Reflection@RBX@@QAE@P8Players@Network@2@AE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZPBDW4Security@FunctionDescriptor@12@@Z": "0x49b5f0 (own row)",
+        "??__Ffunc_players@@YAXXZ": "0x7fb8b0 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007f1920",
+      "symbol": "??__Efunc_GetPlayers@@YAXXZ",
+      "size": 37,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_0L@IAEPAFLO@GetPlayers?$AA@": "0x822bbc (literal 'GetPlayers')",
+        "?getPlayers@Players@Network@RBX@@QAE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ": "0x4974c0 (own row)",
+        "_func_GetPlayers": "0x9703c8 (data)",
+        "??0?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ$0A@@Reflection@RBX@@QAE@P8Players@Network@2@AE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZPBDW4Security@FunctionDescriptor@12@@Z": "0x49b5f0 (own row)",
+        "??__Ffunc_GetPlayers@@YAXXZ": "0x7fb830 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007f1950",
+      "symbol": "??__Efunc_createLocalPlayer@@YAXXZ",
+      "size": 43,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_06LPELCIKE@userId?$AA@": "0x8224ac (literal 'userId')",
+        "??_C@_0BC@JNPPNKKA@CreateLocalPlayer?$AA@": "0x822bc8 (literal 'CreateLocalPlayer')",
+        "?createLocalPlayer@Players@Network@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@H@Z": "0x49d480 (own row)",
+        "_func_createLocalPlayer": "0x9702f8 (data)",
+        "??0?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@H@Z$00@Reflection@RBX@@QAE@P8Players@Network@2@AE?AV?$shared_ptr@VInstance@RBX@@@boost@@H@ZPBD1W4Security@FunctionDescriptor@12@@Z": "0x49b010 (own row)",
+        "??__Ffunc_createLocalPlayer@@YAXXZ": "0x7fb8f0 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007f1980",
+      "symbol": "??__Efunc_setAbuseReportUrl@@YAXXZ",
+      "size": 43,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_03BMGHOINI@url?$AA@": "0x80f08c (literal 'url')",
+        "??_C@_0BC@PDICHKIO@SetAbuseReportUrl?$AA@": "0x822bdc (literal 'SetAbuseReportUrl')",
+        "?setAbuseReportUrl@Players@Network@RBX@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x49e1d0 (own row)",
+        "_func_setAbuseReportUrl": "0x970558 (data)",
+        "??0?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@QAE@P8Players@Network@2@AEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZPBD2W4Security@FunctionDescriptor@12@@Z": "0x49b230 (own row)",
+        "??__Ffunc_setAbuseReportUrl@@YAXXZ": "0x7fb870 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007f19b0",
+      "symbol": "??__Efunc_playerFromCharacterOld@@YAXXZ",
+      "size": 42,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_09MNKJOHH@character?$AA@": "0x822c04 (literal 'character')",
+        "??_C@_0BE@KJFDONEC@playerFromCharacter?$AA@": "0x822bf0 (literal 'playerFromCharacter')",
+        "?playerFromCharacter@Players@Network@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@V45@@Z": "0x498030 (own row)",
+        "_func_playerFromCharacterOld": "0x9705a0 (data)",
+        "??0?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@V45@@Z$00@Reflection@RBX@@QAE@P8Players@Network@2@AE?AV?$shared_ptr@VInstance@RBX@@@boost@@V56@@ZPBD2W4Security@FunctionDescriptor@12@@Z": "0x49b770 (own row)",
+        "??__Ffunc_playerFromCharacterOld@@YAXXZ": "0x7fb900 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007f19e0",
+      "symbol": "??__Efunc_playerFromCharacter@@YAXXZ",
+      "size": 42,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_09MNKJOHH@character?$AA@": "0x822c04 (literal 'character')",
+        "??_C@_0BH@IOMFLLKE@GetPlayerFromCharacter?$AA@": "0x822c10 (literal 'GetPlayerFromCharacter')",
+        "?playerFromCharacter@Players@Network@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@V45@@Z": "0x498030 (own row)",
+        "_func_playerFromCharacter": "0x970458 (data)",
+        "??0?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@V45@@Z$00@Reflection@RBX@@QAE@P8Players@Network@2@AE?AV?$shared_ptr@VInstance@RBX@@@boost@@V56@@ZPBD2W4Security@FunctionDescriptor@12@@Z": "0x49b770 (own row)",
+        "??__Ffunc_playerFromCharacter@@YAXXZ": "0x7fb880 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007f1a10",
+      "symbol": "??__Eevent_PlayerAdded@@YAXXZ",
+      "size": 32,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_06BALNJMNP@player?$AA@": "0x822bac (literal 'player')",
+        "??_C@_0M@DADJNNAG@PlayerAdded?$AA@": "0x822c28 (literal 'PlayerAdded')",
+        "_event_PlayerAdded": "0x9704a0 (data)",
+        "??0?$SignalDesc@VPlayers@Network@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@QAE@PBD0@Z": "0x49b9b0 (own row)",
+        "??__Fevent_PlayerAdded@@YAXXZ": "0x7fb9e0 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007f1a30",
+      "symbol": "??__Eevent_PlayerRemoving@@YAXXZ",
+      "size": 32,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_06BALNJMNP@player?$AA@": "0x822bac (literal 'player')",
+        "??_C@_0P@DGABDAGG@PlayerRemoving?$AA@": "0x822c34 (literal 'PlayerRemoving')",
+        "_event_PlayerRemoving": "0x970520 (data)",
+        "??0?$SignalDesc@VPlayers@Network@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@QAE@PBD0@Z": "0x49b9b0 (own row)",
+        "??__Fevent_PlayerRemoving@@YAXXZ": "0x7fb910 (own row)",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0048a660",
+      "symbol": "?getLocalPlayer@Players@Network@RBX@@QBEPAVPlayer@23@XZ",
+      "size": 7,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "004915b0",
+      "symbol": "?read@?$CopyOnWrite@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@RBX@@QBE?AV?$shared_ptr@$$CBV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ",
+      "size": 42,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "007fb800",
+      "symbol": "??__FpropPlayerCount@@YAXXZ",
+      "size": 29,
+      "exact": true,
+      "verified_targets": {
+        "_propPlayerCount": "0x9703a8 (data)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fb7e0",
+      "symbol": "??__FpropPlayerMaxCount@@YAXXZ",
+      "size": 29,
+      "exact": true,
+      "verified_targets": {
+        "_propPlayerMaxCount": "0x97029c (data)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fb7c0",
+      "symbol": "??__F?propLocalPlayer@Players@Network@RBX@@2V?$RefPropDescriptor@VPlayers@Network@RBX@@VPlayer@23@@Reflection@3@A@@YAXXZ",
+      "size": 29,
+      "exact": true,
+      "verified_targets": {
+        "?propLocalPlayer@Players@Network@RBX@@2V?$RefPropDescriptor@VPlayers@Network@RBX@@VPlayer@23@@Reflection@3@A": "0x970388 (data)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fb9d0",
+      "symbol": "??__Ffunc_GetPlayerByID@@YAXXZ",
+      "size": 10,
+      "exact": true,
+      "verified_targets": {
+        "_func_GetPlayerByID": "0x970340 (data)",
+        "??1?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@H@Z$00@Reflection@RBX@@UAE@XZ": "0x4a34e0 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fb890",
+      "symbol": "??__FfuncChat@@YAXXZ",
+      "size": 10,
+      "exact": true,
+      "verified_targets": {
+        "_funcChat": "0x9704d8 (data)",
+        "??1?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@UAE@XZ": "0x4a34e0 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fb8a0",
+      "symbol": "??__FfuncReportAbuse@@YAXXZ",
+      "size": 10,
+      "exact": true,
+      "verified_targets": {
+        "_funcReportAbuse": "0x970408 (data)",
+        "??1?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$01@Reflection@RBX@@UAE@XZ": "0x4a3d40 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fb8b0",
+      "symbol": "??__Ffunc_players@@YAXXZ",
+      "size": 63,
+      "exact": true,
+      "verified_targets": {
+        "_func_players": "0x9702b8 (data)",
+        "??1?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@QAE@XZ": "0x4199e0 (external (evidence name))",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??__Ffunc_players@@YAXXZ"
+      ]
+    },
+    {
+      "address": "007fb830",
+      "symbol": "??__Ffunc_GetPlayers@@YAXXZ",
+      "size": 63,
+      "exact": true,
+      "verified_targets": {
+        "_func_GetPlayers": "0x9703c8 (data)",
+        "??1?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@QAE@XZ": "0x4199e0 (external (evidence name))",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??__Ffunc_GetPlayers@@YAXXZ"
+      ]
+    },
+    {
+      "address": "007fb8f0",
+      "symbol": "??__Ffunc_createLocalPlayer@@YAXXZ",
+      "size": 10,
+      "exact": true,
+      "verified_targets": {
+        "_func_createLocalPlayer": "0x9702f8 (data)",
+        "??1?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@H@Z$00@Reflection@RBX@@UAE@XZ": "0x4a34e0 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fb870",
+      "symbol": "??__Ffunc_setAbuseReportUrl@@YAXXZ",
+      "size": 10,
+      "exact": true,
+      "verified_targets": {
+        "_func_setAbuseReportUrl": "0x970558 (data)",
+        "??1?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@UAE@XZ": "0x4a34e0 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fb900",
+      "symbol": "??__Ffunc_playerFromCharacterOld@@YAXXZ",
+      "size": 10,
+      "exact": true,
+      "verified_targets": {
+        "_func_playerFromCharacterOld": "0x9705a0 (data)",
+        "??1?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@V45@@Z$00@Reflection@RBX@@UAE@XZ": "0x4a34e0 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fb880",
+      "symbol": "??__Ffunc_playerFromCharacter@@YAXXZ",
+      "size": 10,
+      "exact": true,
+      "verified_targets": {
+        "_func_playerFromCharacter": "0x970458 (data)",
+        "??1?$BoundFuncDesc@VPlayers@Network@RBX@@$$A6A?AV?$shared_ptr@VInstance@RBX@@@boost@@V45@@Z$00@Reflection@RBX@@UAE@XZ": "0x4a34e0 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "007fb9e0",
+      "symbol": "??__Fevent_PlayerAdded@@YAXXZ",
+      "size": 63,
+      "exact": true,
+      "verified_targets": {
+        "_event_PlayerAdded": "0x9704a0 (data)",
+        "??1?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@QAE@XZ": "0x4199e0 (external (evidence name))",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??__Fevent_PlayerAdded@@YAXXZ"
+      ]
+    },
+    {
+      "address": "007fb910",
+      "symbol": "??__Fevent_PlayerRemoving@@YAXXZ",
+      "size": 63,
+      "exact": true,
+      "verified_targets": {
+        "_event_PlayerRemoving": "0x970520 (data)",
+        "??1?$list@UItem@SignatureDescriptor@Reflection@RBX@@V?$allocator@UItem@SignatureDescriptor@Reflection@RBX@@@std@@@std@@QAE@XZ": "0x4199e0 (external (evidence name))",
+        "??_7Descriptor@Reflection@RBX@@6B@": "0x80b730 (vtable RTTI .?AVDescriptor@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??__Fevent_PlayerRemoving@@YAXXZ"
+      ]
+    }
+  ],
+  "pending_methods": [
+    {
+      "address": "00495e80",
+      "symbol": "?frontendProcessing@Players@Network@RBX@@SA_NPBVInstance@3@_N@Z",
+      "size": 47,
+      "exact": false,
+      "verified_targets": {
+        "?findServiceProvider@ServiceProvider@RBX@@SAPBV12@PBVInstance@2@@Z": "0x4898d0 (external (evidence name))",
+        "?serverIsPresent@Server@Network@RBX@@SA_NPBVInstance@3@_N@Z": "0x4a40d0 (external)"
+      },
+      "local_eh": [],
+      "exact_pending_build_only": true
+    },
+    {
+      "address": "00495eb0",
+      "symbol": "?backendProcessing@Players@Network@RBX@@SA_NPBVInstance@3@_N@Z",
+      "size": 47,
+      "exact": false,
+      "verified_targets": {
+        "?findServiceProvider@ServiceProvider@RBX@@SAPBV12@PBVInstance@2@@Z": "0x4898d0 (external (evidence name))",
+        "?clientIsPresent@Client@Network@RBX@@SA_NPBVInstance@3@_N@Z": "0x49fe20 (external (evidence name))"
+      },
+      "local_eh": [],
+      "exact_pending_build_only": true
+    },
+    {
+      "address": "00496cf0",
+      "symbol": "?onEvent@Players@Network@RBX@@EAEXPBVPlayer@23@UCharacterAdded@23@@Z",
+      "size": 115,
+      "exact": false,
+      "verified_targets": {
+        "?rebuildBackpack@Player@Network@RBX@@QAEXXZ": "0x4925c0 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?onEvent@Players@Network@RBX@@EAEXPBVPlayer@23@UCharacterAdded@23@@Z"
+      ],
+      "exact_pending_build_only": true
+    },
+    {
+      "address": "0049dc70",
+      "symbol": "?onChildAdded@Players@Network@RBX@@MAEXPAVInstance@3@@Z",
+      "size": 505,
+      "exact": false,
+      "verified_targets": {
+        "??_R0?AVPlayer@Network@RBX@@@8": "0x937460 (RTTI .?AVPlayer@Network@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+        "?getPlayerByID@Players@Network@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@H@Z": "0x497f40 (own row)",
+        "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0 (external (evidence name))",
+        "?write@?$CopyOnWrite@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@RBX@@QAEAAV?$shared_ptr@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ": "0x49add0 (external (evidence name))",
+        "??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z": "0x618a40 (external (evidence name))",
+        "?push_back@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x420110 (external (evidence name))",
+        "?findServiceProvider@ServiceProvider@RBX@@SAPBV12@PBVInstance@2@@Z": "0x4898d0 (external (evidence name))",
+        "?clientIsPresent@Client@Network@RBX@@SA_NPBVInstance@3@_N@Z": "0x49fe20 (external (evidence name))",
+        "?addListener@?$Notifier@VPlayer@Network@RBX@@UCharacterAdded@23@@RBX@@QBEXPAV?$Listener@VPlayer@Network@RBX@@UCharacterAdded@23@@2@@Z": "0x4218a0 (external)",
+        "?rebuildBackpack@Player@Network@RBX@@QAEXXZ": "0x4925c0 (external)",
+        "??$find@VTeams@RBX@@@ServiceProvider@RBX@@SAPAVTeams@1@PBVInstance@1@@Z": "0x49ab50 (external)",
+        "?assignNewPlayerToTeam@Teams@RBX@@QAEXPAVPlayer@Network@2@@Z": "0x5d6250 (external (evidence name))",
+        "??$shared_from@VPlayer@Network@RBX@@@RBX@@YA?AV?$shared_ptr@VPlayer@Network@RBX@@@boost@@PAVPlayer@Network@0@@Z": "0x618a40 (external)",
+        "_event_PlayerAdded": "0x9704a0 (data)",
+        "?fire@?$SignalDescImpl@$00$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@QAEXPAVSignalSource@23@V?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x49d200 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?onChildAdded@Players@Network@RBX@@MAEXPAVInstance@3@@Z"
+      ],
+      "exact_pending_build_only": true
+    },
+    {
+      "address": "0049daa0",
+      "symbol": "?onChildRemoving@Players@Network@RBX@@MAEXPAVInstance@3@@Z",
+      "size": 463,
+      "exact": false,
+      "verified_targets": {
+        "??_R0?AVPlayer@Network@RBX@@@8": "0x937460 (RTTI .?AVPlayer@Network@RBX@@)",
+        "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
+        "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+        "?write@?$CopyOnWrite@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@RBX@@QAEAAV?$shared_ptr@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@boost@@XZ": "0x49add0 (external (evidence name))",
+        "??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z": "0x618a40 (external (evidence name))",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?erase@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAE?AV?$_Vector_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@2@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@2@@Z": "0x439480 (external (evidence name))",
+        "?findServiceProvider@ServiceProvider@RBX@@SAPBV12@PBVInstance@2@@Z": "0x4898d0 (external (evidence name))",
+        "?clientIsPresent@Client@Network@RBX@@SA_NPBVInstance@3@_N@Z": "0x49fe20 (external (evidence name))",
+        "??$shared_from@VPlayer@Network@RBX@@@RBX@@YA?AV?$shared_ptr@VPlayer@Network@RBX@@@boost@@PAVPlayer@Network@0@@Z": "0x618a40 (external)",
+        "_event_PlayerRemoving": "0x970520 (data)",
+        "?fire@?$SignalDescImpl@$00$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@QAEXPAVSignalSource@23@V?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x49d200 (own row)",
+        "?removeListener@?$Notifier@VPlayer@Network@RBX@@UCharacterAdded@23@@RBX@@QBEXPAV?$Listener@VPlayer@Network@RBX@@UCharacterAdded@23@@2@@Z": "0x5e5a80 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?onChildRemoving@Players@Network@RBX@@MAEXPAVInstance@3@@Z"
+      ],
+      "exact_pending_build_only": true
+    },
+    {
+      "address": "00497ec0",
+      "symbol": "?onChildChanged@Players@Network@RBX@@EAEXPAVInstance@3@ABVPropertyChanged@3@@Z",
+      "size": 97,
+      "exact": false,
+      "verified_targets": {
+        "?prop_SuperSafeChat@Player@Network@RBX@@2V?$BoundProp@_N$00@Reflection@3@A": "0x96fcd4 (data)",
+        "?raise@?$Notifier@VPlayers@Network@RBX@@VSuperSafeChanged@3@@RBX@@IBEXVSuperSafeChanged@2@@Z": "0x496e20 (own row)"
+      },
+      "local_eh": [],
+      "exact_pending_build_only": true
+    },
+    {
+      "address": "0049d480",
+      "symbol": "?createLocalPlayer@Players@Network@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@H@Z",
+      "size": 418,
+      "exact": false,
+      "verified_targets": {
+        "??_C@_0BM@MJOEDKAK@Local?5player?5already?5exists?$AA@": "0x822af4 (literal 'Local player already exists')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (external (evidence name))",
+        "__TI2?AVruntime_error@std@@": "0x8d1bc8 (external)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+        "??0Impersonator@Security@RBX@@QAE@W4Identities@12@@Z": "0x42bc10 (external (evidence name))",
+        "??$create@VPlayer@Network@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VPlayer@Network@RBX@@@boost@@XZ": "0x4093b0 (external (evidence name))",
+        "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0 (external (evidence name))",
+        "?ptr@Context@Security@RBX@@CAAAV?$thread_specific_ptr@VContext@Security@RBX@@@boost@@XZ": "0x42bbb0 (external (evidence name))",
+        "?get@tss@detail@boost@@QBEPAXXZ": "0x5a7570 (external)",
+        "?set@tss@detail@boost@@QAEXPAX@Z": "0x5a76b0 (external)",
+        "?cleanup@tss@detail@boost@@QAEXPAX@Z": "0x5a6ff0 (external)",
+        "?setUserID@Player@Network@RBX@@QAEXH@Z": "0x494830 (external)",
+        "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0 (external (evidence name))",
+        "?propLocalPlayer@Players@Network@RBX@@2V?$RefPropDescriptor@VPlayers@Network@RBX@@VPlayer@23@@Reflection@3@A": "0x970388 (data)",
+        "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))",
+        "?prop_SuperSafeChat@Player@Network@RBX@@2V?$BoundProp@_N$00@Reflection@3@A": "0x96fcd4 (data)",
+        "?raise@?$Notifier@VPlayers@Network@RBX@@VSuperSafeChanged@3@@RBX@@IBEXVSuperSafeChanged@2@@Z": "0x496e20 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?createLocalPlayer@Players@Network@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@H@Z"
+      ],
+      "exact_pending_build_only": true
+    },
+    {
+      "address": "0049aa60",
+      "symbol": "??$?0P8Players@Network@RBX@@BEPAVPlayer@12@XZH@?$RefPropDescriptor@VPlayers@Network@RBX@@VPlayer@23@@Reflection@RBX@@QAE@PBD0P8Players@Network@2@BEPAVPlayer@42@XZHW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 164,
+      "exact": false,
+      "verified_targets": {
+        "??$singleton@PAVPlayers@Network@RBX@@@RefType@Reflection@RBX@@SAABV012@XZ": "0x496870 (own row)",
+        "?classDescriptor@?$Described@VPlayers@Network@RBX@@$1?sPlayers@23@3PADAV?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x49a8a0 (own row)",
+        "??0PropertyDescriptor@Reflection@RBX@@IAE@AAVClassDescriptor@12@ABVType@12@PBD2W4Functionality@012@@Z": "0x56c650 (external (evidence name))",
+        "??_7?$RefPropDescriptor@VPlayers@Network@RBX@@VPlayer@23@@Reflection@RBX@@6BRefPropertyDescriptor@12@@": "0x82288c (vtable RTTI .?AV?$RefPropDescriptor@VPlayers@Network@RBX@@VPlayer@23@@Reflection@RBX@@ offset 0x0)",
+        "??_7?$RefPropDescriptor@VPlayers@Network@RBX@@VPlayer@23@@Reflection@RBX@@6BIIDREF@2@@": "0x822884 (vtable RTTI .?AV?$RefPropDescriptor@VPlayers@Network@RBX@@VPlayer@23@@Reflection@RBX@@ offset 0x18)",
+        "??$getset@P8Players@Network@RBX@@BEPAVPlayer@23@XZ@?$PropDescriptor@VPlayers@Network@RBX@@PAVPlayer@23@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@PAVPlayer@Network@RBX@@@Reflection@RBX@@@std@@P8Players@Network@2@BEPAVPlayer@62@XZH@Z": "0x4973b0 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0P8Players@Network@RBX@@BEPAVPlayer@12@XZH@?$RefPropDescriptor@VPlayers@Network@RBX@@VPlayer@23@@Reflection@RBX@@QAE@PBD0P8Players@Network@2@BEPAVPlayer@42@XZHW4Functionality@PropertyDescriptor@12@@Z"
+      ],
+      "exact_pending_build_only": true
+    },
+    {
+      "address": "0049d200",
+      "symbol": "?fire@?$SignalDescImpl@$00$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@QAEXPAVSignalSource@23@V?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+      "size": 175,
+      "exact": false,
+      "verified_targets": {
+        "?findSignalInstance@SignalDescriptor@Reflection@RBX@@IBEPAVSignalInstance@23@PBVSignalSource@23@@Z": "0x56b620 (external (evidence name))",
+        "??R?$signal1@XV?$shared_ptr@VInstance@RBX@@@boost@@U?$last_value@X@2@HU?$less@H@std@@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@2@@boost@@QAE?AUunusable@?$last_value@X@1@V?$shared_ptr@VInstance@RBX@@@1@@Z": "0x49cd00 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?fire@?$SignalDescImpl@$00$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@QAEXPAVSignalSource@23@V?$shared_ptr@VInstance@RBX@@@boost@@@Z"
+      ],
+      "exact_pending_build_only": true
+    },
+    {
+      "address": "0049cd00",
+      "symbol": "??R?$signal1@XV?$shared_ptr@VInstance@RBX@@@boost@@U?$last_value@X@2@HU?$less@H@std@@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@2@@boost@@QAE?AUunusable@?$last_value@X@1@V?$shared_ptr@VInstance@RBX@@@1@@Z",
+      "size": 448,
+      "exact": false,
+      "verified_targets": {
+        "??0call_notification@detail@signals@boost@@QAE@ABV?$shared_ptr@Vsignal_base_impl@detail@signals@boost@@@3@@Z": "0x56a760 (external)",
+        "??0?$args1@V?$shared_ptr@VInstance@RBX@@@boost@@H@detail@signals@boost@@QAE@V?$shared_ptr@VInstance@RBX@@@3@@Z": "0x554810 (external)",
+        "?end@named_slot_map@detail@signals@boost@@QAE?AVnamed_slot_map_iterator@234@XZ": "0x5713b0 (external)",
+        "??0?$slot_call_iterator@U?$caller@V?$shared_ptr@VInstance@RBX@@@boost@@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@2@@?$call_bound1@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@QAE@Vnamed_slot_map_iterator@123@0U?$caller@V?$shared_ptr@VInstance@RBX@@@boost@@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@2@@?$call_bound1@X@123@AAV?$optional@Uunusable@detail@signals@boost@@@3@@Z": "0x4908a0 (external)",
+        "?begin@named_slot_map@detail@signals@boost@@QAE?AVnamed_slot_map_iterator@234@XZ": "0x571380 (external)",
+        "??$?RV?$slot_call_iterator@U?$caller@V?$shared_ptr@VInstance@RBX@@@boost@@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@2@@?$call_bound1@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@@?$last_value@X@boost@@QBE?AUunusable@01@V?$slot_call_iterator@U?$caller@V?$shared_ptr@VInstance@RBX@@@boost@@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@2@@?$call_bound1@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@1@0@Z": "0x49c4f0 (own row)",
+        "??1call_notification@detail@signals@boost@@QAE@XZ": "0x56a650 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??R?$signal1@XV?$shared_ptr@VInstance@RBX@@@boost@@U?$last_value@X@2@HU?$less@H@std@@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@2@@boost@@QAE?AUunusable@?$last_value@X@1@V?$shared_ptr@VInstance@RBX@@@1@@Z"
+      ],
+      "exact_pending_build_only": true
+    },
+    {
+      "address": "0049c4f0",
+      "symbol": "??$?RV?$slot_call_iterator@U?$caller@V?$shared_ptr@VInstance@RBX@@@boost@@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@2@@?$call_bound1@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@@?$last_value@X@boost@@QBE?AUunusable@01@V?$slot_call_iterator@U?$caller@V?$shared_ptr@VInstance@RBX@@@boost@@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@2@@?$call_bound1@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@1@0@Z",
+      "size": 146,
+      "exact": false,
+      "verified_targets": {
+        "?equal@?$slot_call_iterator@U?$caller@V?$shared_ptr@VInstance@RBX@@@boost@@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@2@@?$call_bound1@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@QBE_NABV1234@@Z": "0x40b050 (external)",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "??$?RUconnection_slot_pair@detail@signals@boost@@@?$caller@V?$shared_ptr@VInstance@RBX@@@boost@@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@2@@?$call_bound1@X@detail@signals@boost@@QBE?AUunusable@234@ABUconnection_slot_pair@234@@Z": "0x4973f0 (own row)",
+        "?increment@?$slot_call_iterator@U?$caller@V?$shared_ptr@VInstance@RBX@@@boost@@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@2@@?$call_bound1@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@QAEXXZ": "0x499ed0 (own row)"
+      },
+      "local_eh": [],
+      "exact_pending_build_only": true
+    },
+    {
+      "address": "00499ed0",
+      "symbol": "?increment@?$slot_call_iterator@U?$caller@V?$shared_ptr@VInstance@RBX@@@boost@@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@2@@?$call_bound1@X@detail@signals@boost@@Vnamed_slot_map_iterator@345@@detail@signals@boost@@QAEXXZ",
+      "size": 209,
+      "exact": false,
+      "verified_targets": {
+        "?increment@named_slot_map_iterator@detail@signals@boost@@QAEXXZ": "0x40aaa0 (external (evidence name))",
+        "??$find_if@Vnamed_slot_map_iterator@detail@signals@boost@@Uis_callable@234@@std@@YA?AVnamed_slot_map_iterator@detail@signals@boost@@V1234@0Uis_callable@234@@Z": "0x40af30 (external (evidence name))"
+      },
+      "local_eh": [],
+      "exact_pending_build_only": true
+    },
+    {
+      "address": "004973f0",
+      "symbol": "??$?RUconnection_slot_pair@detail@signals@boost@@@?$caller@V?$shared_ptr@VInstance@RBX@@@boost@@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@2@@?$call_bound1@X@detail@signals@boost@@QBE?AUunusable@234@ABUconnection_slot_pair@234@@Z",
+      "size": 63,
+      "exact": false,
+      "verified_targets": {
+        "??R?$function1@XV?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@X@std@@@boost@@QBEXV?$shared_ptr@VInstance@RBX@@@1@@Z": "0x496a00 (own row)"
+      },
+      "local_eh": [],
+      "exact_pending_build_only": true
+    },
+    {
+      "address": "00496a00",
+      "symbol": "??R?$function1@XV?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@X@std@@@boost@@QBEXV?$shared_ptr@VInstance@RBX@@@1@@Z",
+      "size": 190,
+      "exact": false,
+      "verified_targets": {
+        "??0bad_function_call@boost@@QAE@XZ": "0x409ef0 (external (evidence name))",
+        "??$throw_exception@Vbad_function_call@boost@@@boost@@YAXABVbad_function_call@0@@Z": "0x40a500 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$??R?$function1@XV?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@X@std@@@boost@@QBEXV?$shared_ptr@VInstance@RBX@@@1@@Z"
+      ],
+      "exact_pending_build_only": true
+    }
+  ],
+  "not_exact": [
+    {
+      "address": "00497ec0",
+      "symbol": "?onChildChanged@Players@Network@RBX@@EAEXPAVInstance@3@ABVPropertyChanged@3@@Z",
+      "size": 97,
+      "target_size": 97,
+      "exact": false,
+      "reason": "reads SuperSafeChat through GetSet slot 2 (+8); the current property.h GetSet has getValue at slot 1 (exact in the pending build)"
+    },
+    {
+      "address": "0049d480",
+      "symbol": "?createLocalPlayer@Players@Network@RBX@@QAE?AV?$shared_ptr@VInstance@RBX@@@boost@@H@Z",
+      "size": 418,
+      "target_size": 418,
+      "exact": false,
+      "reason": "same GetSet slot difference (exact in the pending build)"
+    }
+  ],
+  "vtables": [
+    {
+      "vtable": "0x822714",
+      "symbol": "??_7Players@Network@RBX@@6B?$Listener@VPlayer@Network@RBX@@UCharacterAdded@23@@2@@",
+      "rtti_offset": 368,
+      "slots": {
+        "0": "?onEvent@Players@Network@RBX@@EAEXPBVPlayer@23@UCharacterAdded@23@@Z -> 0x496cf0 (own row (pending-build-only))",
+        "1": "??_EPlayers@Network@RBX@@WBHA@AEPAXI@Z -> 0x499890 (own row)"
+      }
+    },
+    {
+      "vtable": "0x822720",
+      "symbol": "??_7Players@Network@RBX@@6B?$Notifier@VPlayers@Network@RBX@@VSuperSafeChanged@3@@2@@",
+      "rtti_offset": 336,
+      "slots": {
+        "0": "??_EPlayers@Network@RBX@@WBFA@AEPAXI@Z -> 0x499880 (own row)",
+        "1": "?onAddListener@?$Notifier@VPlayers@Network@RBX@@VSuperSafeChanged@3@@RBX@@MBEXPAV?$Listener@VPlayers@Network@RBX@@VSuperSafeChanged@3@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))",
+        "2": "?onRemoveListener@?$Notifier@VPlayers@Network@RBX@@VSuperSafeChanged@3@@RBX@@MBEXPAV?$Listener@VPlayers@Network@RBX@@VSuperSafeChanged@3@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))"
+      }
+    },
+    {
+      "vtable": "0x822730",
+      "symbol": "??_7Players@Network@RBX@@6B?$Notifier@VPlayers@Network@RBX@@VChatMessage@23@@2@@",
+      "rtti_offset": 304,
+      "slots": {
+        "0": "??_EPlayers@Network@RBX@@WBDA@AEPAXI@Z -> 0x499870 (own row)",
+        "1": "?onAddListener@?$Notifier@VPlayers@Network@RBX@@VChatMessage@23@@RBX@@MBEXPAV?$Listener@VPlayers@Network@RBX@@VChatMessage@23@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))",
+        "2": "?onRemoveListener@?$Notifier@VPlayers@Network@RBX@@VChatMessage@23@@RBX@@MBEXPAV?$Listener@VPlayers@Network@RBX@@VChatMessage@23@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))"
+      }
+    },
+    {
+      "vtable": "0x822740",
+      "symbol": "??_7Players@Network@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@2@@",
+      "rtti_offset": 196,
+      "slots": {
+        "0": "??_EPlayers@Network@RBX@@WME@AEPAXI@Z -> 0x499840 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))"
+      }
+    },
+    {
+      "vtable": "0x822750",
+      "symbol": "??_7Players@Network@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@2@@",
+      "rtti_offset": 164,
+      "slots": {
+        "0": "??_EPlayers@Network@RBX@@WKE@AEPAXI@Z -> 0x499830 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))"
+      }
+    },
+    {
+      "vtable": "0x822760",
+      "symbol": "??_7Players@Network@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@2@@",
+      "rtti_offset": 132,
+      "slots": {
+        "0": "??_EPlayers@Network@RBX@@WIE@AEPAXI@Z -> 0x4998d0 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantRemoving@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))"
+      }
+    },
+    {
+      "vtable": "0x822770",
+      "symbol": "??_7Players@Network@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@2@@",
+      "rtti_offset": 100,
+      "slots": {
+        "0": "??_EPlayers@Network@RBX@@WGE@AEPAXI@Z -> 0x4998c0 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z -> 0x559230 (bound (consistent across rows/slots))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UDescendantAdded@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))"
+      }
+    },
+    {
+      "vtable": "0x822780",
+      "symbol": "??_7Players@Network@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@2@@",
+      "rtti_offset": 68,
+      "slots": {
+        "0": "??_EPlayers@Network@RBX@@WEE@AEPAXI@Z -> 0x4998b0 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildRemoved@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))"
+      }
+    },
+    {
+      "vtable": "0x822790",
+      "symbol": "??_7Players@Network@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@2@@",
+      "rtti_offset": 36,
+      "slots": {
+        "0": "??_EPlayers@Network@RBX@@WCE@AEPAXI@Z -> 0x4998a0 (own row)",
+        "1": "?onAddListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z -> 0x558d90 (bound (consistent across rows/slots))",
+        "2": "?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listener@VInstance@RBX@@UChildAdded@2@@2@@Z -> 0x70bdf0 (bound (consistent across rows/slots))"
+      }
+    },
+    {
+      "vtable": "0x8227a0",
+      "symbol": "??_7Players@Network@RBX@@6BDebugable@2@@",
+      "rtti_offset": 32,
+      "slots": {
+        "0": "?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z -> 0x56a560 (evidence name)"
+      }
+    },
+    {
+      "vtable": "0x8227a8",
+      "symbol": "??_7Players@Network@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@2@@",
+      "rtti_offset": 20,
+      "slots": {
+        "0": "??_EPlayers@Network@RBX@@WBE@AEPAXI@Z -> 0x499860 (own row)"
+      }
+    },
+    {
+      "vtable": "0x8227b0",
+      "symbol": "??_7Players@Network@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@2@@",
+      "rtti_offset": 16,
+      "slots": {
+        "0": "??_EPlayers@Network@RBX@@WBA@AEPAXI@Z -> 0x499850 (own row)",
+        "1": "?getClassName@?$NonFactoryProduct@VInstance@RBX@@$1?sPlayers@Network@2@3PADA@RBX@@UBEABVName@2@XZ -> 0x498250 (own row)"
+      }
+    },
+    {
+      "vtable": "0x8227bc",
+      "symbol": "??_7Players@Network@RBX@@6B?$GuidItem@VInstance@RBX@@@2@@",
+      "rtti_offset": 0,
+      "slots": {
+        "0": "?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ -> 0x47d410 (bound (consistent across rows/slots))",
+        "1": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z -> 0x55af90 (external)",
+        "2": "?askAddChild@Players@Network@RBX@@MBE_NPBVInstance@3@@Z -> 0x495f30 (own row)",
+        "3": "?askSetParent@Instance@RBX@@UBE_NPBV12@@Z -> 0x68e880 (bound (consistent across rows/slots))",
+        "4": "?onAncestorChanged@Instance@RBX@@UAEXABUAncestorChanged@2@@Z -> 0x55acc0 (bound (consistent across rows/slots))",
+        "5": "?onDescendentAdded@Instance@RBX@@UAEXPAV12@@Z -> 0x55ae20 (bound (consistent across rows/slots))",
+        "6": "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z -> 0x55ae90 (bound (consistent across rows/slots))",
+        "7": "?onChildAdded@Players@Network@RBX@@MAEXPAVInstance@3@@Z -> 0x49dc70 (own row (pending-build-only))",
+        "8": "?onChildRemoving@Players@Network@RBX@@MAEXPAVInstance@3@@Z -> 0x49daa0 (own row (pending-build-only))",
+        "9": "?onChildRemoved@Instance@RBX@@UAEXPAV12@@Z -> 0x70bdf0 (bound (consistent across rows/slots))",
+        "10": "?onLastChildRemoved@Instance@RBX@@UAEXXZ -> 0x47d410 (bound (consistent across rows/slots))",
+        "11": "?readProperty@Instance@RBX@@UAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z -> 0x559170 (bound (consistent across rows/slots))",
+        "12": "?onServiceProvider@Instance@RBX@@UAEXPBVServiceProvider@2@0@Z -> 0x458e90 (bound (consistent across rows/slots))",
+        "13": "?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z -> 0x55a470 (evidence name)",
+        "14": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ -> 0x558c50 (evidence name)",
+        "15": "?onChildChanged@Players@Network@RBX@@EAEXPAVInstance@3@ABVPropertyChanged@3@@Z -> 0x497ec0 (own row (pending-build-only))"
+      }
+    }
+  ],
+  "exact_distinct_addresses": [
+    "0048a660",
+    "004915b0",
+    "00495e50",
+    "00495e60",
+    "00495e70",
+    "00495f30",
+    "00495f60",
+    "00495fc0",
+    "00496370",
+    "00496390",
+    "004963c0",
+    "00496510",
+    "00496870",
+    "00496c10",
+    "00496e20",
+    "00496ed0",
+    "004971c0",
+    "00497320",
+    "00497360",
+    "004973b0",
+    "004974c0",
+    "00497f40",
+    "00498030",
+    "00498250",
+    "004987f0",
+    "00498a60",
+    "004993c0",
+    "00499630",
+    "00499830",
+    "00499840",
+    "00499850",
+    "00499860",
+    "00499870",
+    "00499880",
+    "00499890",
+    "004998a0",
+    "004998b0",
+    "004998c0",
+    "004998d0",
+    "00499cf0",
+    "00499fb0",
+    "00499fd0",
+    "0049a8a0",
+    "0049a910",
+    "0049a9b0",
+    "0049ac80",
+    "0049aca0",
+    "0049ad50",
+    "0049af70",
+    "0049b010",
+    "0049b0b0",
+    "0049b160",
+    "0049b230",
+    "0049b2d0",
+    "0049b3b0",
+    "0049b440",
+    "0049b4d0",
+    "0049b5f0",
+    "0049b6b0",
+    "0049b710",
+    "0049b770",
+    "0049b810",
+    "0049b8e0",
+    "0049b9b0",
+    "0049bdc0",
+    "0049ca70",
+    "0049d450",
+    "0049e1d0",
+    "007f17c0",
+    "007f17f0",
+    "007f1830",
+    "007f1860",
+    "007f1890",
+    "007f18c0",
+    "007f18f0",
+    "007f1920",
+    "007f1950",
+    "007f1980",
+    "007f19b0",
+    "007f19e0",
+    "007f1a10",
+    "007f1a30",
+    "007fb7c0",
+    "007fb7e0",
+    "007fb800",
+    "007fb830",
+    "007fb870",
+    "007fb880",
+    "007fb890",
+    "007fb8a0",
+    "007fb8b0",
+    "007fb8f0",
+    "007fb900",
+    "007fb910",
+    "007fb9d0",
+    "007fb9e0"
+  ],
+  "pending_only_addresses": [
+    "00495e80",
+    "00495eb0",
+    "00496a00",
+    "00496cf0",
+    "004973f0",
+    "00497ec0",
+    "00499ed0",
+    "0049aa60",
+    "0049c4f0",
+    "0049cd00",
+    "0049d200",
+    "0049d480",
+    "0049daa0",
+    "0049dc70"
+  ],
+  "pending_note": "pending rows are exact only with generated copies of other owners' headers (proposals); not counted.",
+  "proposals": [
+    "v8tree/Service.h (ServiceProvider): declare `static const ServiceProvider* findServiceProvider(const Instance* context);` (not inline: 2008 calls 004898d0 from frontendProcessing 00495e80, backendProcessing 00495eb0, onChildAdded 0049dc70, onChildRemoving 0049daa0)",
+    "Network/Player.h (Player): declare `void rebuildBackpack();` (004925c0, thiscall; throws \"rebuildBackpack can only be called by the backend server\"; called by Players::onEvent 00496cf0 and onChildAdded 0049dc70)",
+    "reflection/property.h (TypedPropertyDescriptor::GetSet): the 2008 GetSet has a second bool virtual at slot 1 (same proposal as tests/record_native_clothing.py); getValue is slot 2 (+8) in onChildChanged 00497ec0 and createLocalPlayer 0049d480",
+    "reflection/reflection.h: IIDREF __declspec(novtable) (same proposal as tests/record_native_network_player.py); RefPropDescriptor<Players, Player> constructor 0049aa60 stores only the final vtable"
+  ],
+  "standins_note": "base build uses declaration-only stand-ins for \"Client.h\"/\"Server.h\" (tests/NativeNetworkPlayersPeers.h) and v8datamodel/ModelInstance.h (tests/NativeTeamPendingModel.h).",
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

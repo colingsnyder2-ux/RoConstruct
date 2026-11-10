@@ -1,0 +1,17 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "0063d1b0",
+                                        "symbol":  "??0Seat@RBX@@"
+                                    },
+                                    {
+                                        "addr":  "0063d0d0",
+                                        "symbol":  "?onEvent_humanoidSeated@Seat@RBX@@"
+                                    }
+                                ],
+                     "source":  "native-classes/Seat.cpp"
+                 }
+             ]
+}

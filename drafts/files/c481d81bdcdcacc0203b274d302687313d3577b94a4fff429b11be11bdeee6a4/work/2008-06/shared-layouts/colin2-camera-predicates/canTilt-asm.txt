@@ -1,0 +1,80 @@
+original
+005cc040 sub esp, 0x1c
+005cc043 fld dword ptr [0x828b60]
+005cc049 push 2
+005cc04b lea eax, [esp + 0x14]
+005cc04f fstp dword ptr [esp + 4]
+005cc053 push eax
+005cc054 add ecx, 0x174
+005cc05a call 0x513240
+005cc05f fld dword ptr [eax + 4]
+005cc062 fld dword ptr [esp]
+005cc065 lea ecx, [esp + 4]
+005cc069 fmul st(1), st(0)
+005cc06b push ecx
+005cc06c fld dword ptr [eax + 8]
+005cc06f fmul st(1)
+005cc071 fxch st(1)
+005cc073 fmul dword ptr [eax]
+005cc075 fstp dword ptr [esp + 8]
+005cc079 fxch st(1)
+005cc07b fstp dword ptr [esp + 0xc]
+005cc07f fstp dword ptr [esp + 0x10]
+005cc083 call 0x5de190
+005cc088 add esp, 4
+005cc08b cmp dword ptr [esp + 0x20], 0
+005cc090 jge 0x5cc0a7
+005cc092 fcomp dword ptr [0x81e370]
+005cc098 fnstsw ax
+005cc09a test ah, 1
+005cc09d je 0x5cc0b4
+005cc09f xor eax, eax
+005cc0a1 add esp, 0x1c
+005cc0a4 ret 4
+005cc0a7 fcomp dword ptr [0x81e374]
+005cc0ad fnstsw ax
+005cc0af test ah, 0x41
+005cc0b2 jp 0x5cc09f
+005cc0b4 mov eax, 1
+005cc0b9 add esp, 0x1c
+005cc0bc ret 4
+candidate
+005cc040 sub esp, 0x1c
+005cc043 fld dword ptr [0]
+005cc049 push 2
+005cc04b lea eax, [esp + 0x14]
+005cc04f fstp dword ptr [esp + 4]
+005cc053 push eax
+005cc054 add ecx, 0x174
+005cc05a call 0x5cc05f
+005cc05f fld dword ptr [eax + 4]
+005cc062 fld dword ptr [esp]
+005cc065 lea ecx, [esp + 4]
+005cc069 fmul st(1), st(0)
+005cc06b push ecx
+005cc06c fld dword ptr [eax + 8]
+005cc06f fmul st(1)
+005cc071 fxch st(1)
+005cc073 fmul dword ptr [eax]
+005cc075 fstp dword ptr [esp + 8]
+005cc079 fxch st(1)
+005cc07b fstp dword ptr [esp + 0xc]
+005cc07f fstp dword ptr [esp + 0x10]
+005cc083 call 0x5cc088
+005cc088 add esp, 4
+005cc08b cmp dword ptr [esp + 0x20], 0
+005cc090 jge 0x5cc0a7
+005cc092 fcomp dword ptr [0]
+005cc098 fnstsw ax
+005cc09a test ah, 1
+005cc09d je 0x5cc0b4
+005cc09f xor al, al
+005cc0a1 add esp, 0x1c
+005cc0a4 ret 4
+005cc0a7 fcomp dword ptr [0]
+005cc0ad fnstsw ax
+005cc0af test ah, 0x41
+005cc0b2 jp 0x5cc09f
+005cc0b4 mov al, 1
+005cc0b6 add esp, 0x1c
+005cc0b9 ret 4

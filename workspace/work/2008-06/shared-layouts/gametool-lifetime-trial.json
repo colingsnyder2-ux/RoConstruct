@@ -1,0 +1,371 @@
+{
+  "observer_sha256": "b07a4d2a8f1c3b82299eb79fac513320a75ad716d86e9ef3016cf52365a0f41b",
+  "headers": {
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\MouseCommand.h": "1f64b1ad3f0fe3597c7c9739bc9716e0f58a5b1220a05c381e61fe44a0e8ee09",
+    "rebuild\\2008-06\\native-headers\\StandardVerbs.h": "9dcd23b3ff126060fabab6ccdbbb0019262a3ca7fa96d3fb2e63de8370f8a796",
+    "rebuild\\2008-06\\tests\\NativeGameToolTrial.h": "ea0bc508cf58ddfe81d1ff6b75f8cfe87f2e2879ce2a88b07ed95c55a1a80d27",
+    "rebuild\\2008-06\\tests\\NativePartDragToolTrial.h": "3f0f513d56dba59eeafffe5fcb3b1baaccfdb75c46301998e7f45833a231c307",
+    "tools\\rbxgs\\Client\\App\\include\\v8datamodel\\PartInstance.h": "1818fa26d3dbc571785d1261c01a67d11b8dae6726916ef22a83c0bbb1537208"
+  },
+  "objects": {
+    "NativeGameToolFactoryTrial": {
+      "source_sha256": "00066736020bf8af8a40ef603c4dd8b3de56f6e674d9bec82cdb633bafc0f501",
+      "object_sha256": "fef197a260d0ff7076868a9a24a93822b80023962ff7030eaa7274dcbafef4bd",
+      "flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/D_AFXDLL",
+        "/DNDEBUG",
+        "/D_MBCS",
+        "/DNOMINMAX",
+        "/DBOOST_ALL_NO_LIB",
+        "/DWIN32",
+        "/DNDEBUG",
+        "/D_LIB",
+        "/D_RELEASE",
+        "/D_RELEASEASSERT",
+        "/D_VC80_UPGRADE=0x0710",
+        "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+        "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeGameToolFactoryTrial.obj",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeGameToolFactoryTrial.cpp"
+      ]
+    },
+    "NativeGameToolLifetimeTrial": {
+      "source_sha256": "103004466b791e25315e2007d1960ce071bd49ee386e0dccfb2d3c6517f6185a",
+      "object_sha256": "49e7d7be367725d2d202ed32d5a9f0c1be112f990e1a3467bba3f503d1c56608",
+      "flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/D_AFXDLL",
+        "/DNDEBUG",
+        "/D_MBCS",
+        "/DNOMINMAX",
+        "/DBOOST_ALL_NO_LIB",
+        "/DWIN32",
+        "/DNDEBUG",
+        "/D_LIB",
+        "/D_RELEASE",
+        "/D_RELEASEASSERT",
+        "/D_VC80_UPGRADE=0x0710",
+        "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+        "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeGameToolLifetimeTrial.obj",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeGameToolLifetimeTrial.cpp"
+      ]
+    },
+    "NativeGameToolEventsTrial": {
+      "source_sha256": "2670a53d63c03a99d65ff65650fbadb600bbdbcefc61aa77146579608f0b47c4",
+      "object_sha256": "c780b65009c0dd12cbe8dcce6813e5b683d95d8af31216c8d657e3b0bb05a3ff",
+      "flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/D_AFXDLL",
+        "/DNDEBUG",
+        "/D_MBCS",
+        "/DNOMINMAX",
+        "/DBOOST_ALL_NO_LIB",
+        "/DWIN32",
+        "/DNDEBUG",
+        "/D_LIB",
+        "/D_RELEASE",
+        "/D_RELEASEASSERT",
+        "/D_VC80_UPGRADE=0x0710",
+        "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+        "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeGameToolEventsTrial.obj",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeGameToolEventsTrial.cpp"
+      ]
+    },
+    "NativeGameToolDragTrial": {
+      "source_sha256": "82080ab4d80012f45cde0a7c78bea5c2cd0fb8af13de95bff48e55b2d0d26f1e",
+      "object_sha256": "010a4a61ca21dbfc5282ed616304d1123d95adf37292205f198725d581e30548",
+      "flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/D_AFXDLL",
+        "/DNDEBUG",
+        "/D_MBCS",
+        "/DNOMINMAX",
+        "/DBOOST_ALL_NO_LIB",
+        "/DWIN32",
+        "/DNDEBUG",
+        "/D_LIB",
+        "/D_RELEASE",
+        "/D_RELEASEASSERT",
+        "/D_VC80_UPGRADE=0x0710",
+        "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+        "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeGameToolDragTrial.obj",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeGameToolDragTrial.cpp"
+      ]
+    },
+    "NativeGameToolMouseDownTrial": {
+      "source_sha256": "878092f1a85e79c6260102d5ed2545df78f2da11ddace3059e1afc1aeaab9b88",
+      "object_sha256": "f41f196b4fcbb26d8c5024b4e4ec31e3d777efc80b6093986f4894ad0964b9ac",
+      "flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/D_AFXDLL",
+        "/DNDEBUG",
+        "/D_MBCS",
+        "/DNOMINMAX",
+        "/DBOOST_ALL_NO_LIB",
+        "/DWIN32",
+        "/DNDEBUG",
+        "/D_LIB",
+        "/D_RELEASE",
+        "/D_RELEASEASSERT",
+        "/D_VC80_UPGRADE=0x0710",
+        "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+        "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeGameToolMouseDownTrial.obj",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeGameToolMouseDownTrial.cpp"
+      ]
+    },
+    "NativeGameToolNameTrial": {
+      "source_sha256": "7a5e9a77bb26c8b9501001d684bc43ada55392fdf2f1147141c00bcd9c89ba62",
+      "object_sha256": "ade05a878fc227fe4a70e74e5f5f0a946b0f6870e39b270df7ce79f41c038838",
+      "flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/D_AFXDLL",
+        "/DNDEBUG",
+        "/D_MBCS",
+        "/DNOMINMAX",
+        "/DBOOST_ALL_NO_LIB",
+        "/DWIN32",
+        "/DNDEBUG",
+        "/D_LIB",
+        "/D_RELEASE",
+        "/D_RELEASEASSERT",
+        "/D_VC80_UPGRADE=0x0710",
+        "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+        "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+        "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeGameToolNameTrial.obj",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeGameToolNameTrial.cpp"
+      ]
+    }
+  },
+  "methods": [
+    {
+      "address": "005c76b0",
+      "size": 102,
+      "targets": {
+        "??0GameTool@RBX@@": "0x640280"
+      }
+    },
+    {
+      "address": "00640280",
+      "size": 89,
+      "targets": {
+        "??0MouseCommand@RBX@@": "0x6159f0",
+        "??_7GameTool@RBX@@6BINamed@": "0x84a544",
+        "??_7GameTool@RBX@@6BIRenderable@": "0x84a52c"
+      }
+    },
+    {
+      "address": "00640220",
+      "size": 90,
+      "targets": {
+        "??_7GameTool@RBX@@6BINamed@": "0x84a544",
+        "??_7GameTool@RBX@@6BIRenderable@": "0x84a52c",
+        "??1MouseCommand@RBX@@": "0x615780"
+      }
+    },
+    {
+      "address": "006402e0",
+      "size": 30,
+      "targets": {
+        "??1GameTool@RBX@@": "0x640220"
+      }
+    },
+    {
+      "address": "00640300",
+      "size": 96,
+      "targets": {
+        "??0GameTool@RBX@@": "0x640280"
+      }
+    },
+    {
+      "address": "00617e40",
+      "size": 33,
+      "targets": {
+        "__imp_??0?$basic_string@": "0x80245c"
+      }
+    },
+    {
+      "address": "0063fad0",
+      "size": 7,
+      "targets": {}
+    },
+    {
+      "address": "00640190",
+      "size": 135,
+      "targets": {
+        "?getUnlockedPartByLocalCharacter@MouseCommand@RBX@@": "0x616000",
+        "??_C@_0P@": "0x843c14",
+        "?canDrag@GameTool@RBX@@": "0x640150",
+        "??_C@_0M@": "0x833850",
+        "??_C@_0L@": "0x843a60"
+      }
+    },
+    {
+      "address": "00640150",
+      "size": 56,
+      "targets": {
+        "?lockedInPlace@PartInstance@RBX@@": "0x599530",
+        "?characterCanReach@MouseCommand@RBX@@": "0x615880"
+      }
+    },
+    {
+      "address": "00640360",
+      "size": 237,
+      "targets": {
+        "?getUnlockedPartByLocalCharacter@MouseCommand@RBX@@": "0x616000",
+        "?lockedInPlace@PartInstance@RBX@@": "0x599530",
+        "?characterCanReach@MouseCommand@RBX@@": "0x615880",
+        "??0PartDragTool@RBX@@": "0x665f20"
+      }
+    },
+    {
+      "address": "00640450",
+      "size": 23,
+      "targets": {
+        "?callDoDeclare@?$NativeToolName@VGameTool": "0x5c6220",
+        "?call_once@boost@@": "0x557330",
+        "?doDeclare@?$NativeToolName@VGameTool": "0x5c5f30"
+      }
+    },
+    {
+      "address": "005c5f30",
+      "size": 101,
+      "targets": {
+        "??_C@": "0x961af0",
+        "?declare@Name@RBX@@": "0x553f90"
+      }
+    },
+    {
+      "address": "005c6220",
+      "size": 5,
+      "targets": {
+        "?doDeclare@?$NativeToolName@VGameTool": "0x5c5f30"
+      }
+    }
+  ],
+  "scope": "Inactive layout candidate. GameTool constructor, both destructor forms and factory match. Full virtual slots, GameTool methods, linked callees and runtime ABI remain unproven."
+}

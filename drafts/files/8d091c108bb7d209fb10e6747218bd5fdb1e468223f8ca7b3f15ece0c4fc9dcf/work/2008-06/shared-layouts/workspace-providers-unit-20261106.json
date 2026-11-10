@@ -1,0 +1,1426 @@
+{
+ "analysis": "work\\2008-06\\native-check-runs\\20261106-140554-cab011e3\\analysis-5324d93c.json",
+ "baseline_commit": "unknown",
+ "blocker_reduced": "The RBX::Workspace half of the swap target was unmeasured. 21 packaged Workspace sources now compile clean and 36 RBX::Workspace bodies are byte-exact with referenced data, measured with the range feature and then proven with explicit checks on the same objects.",
+ "checks": [
+  {
+   "addr": "005a0210",
+   "data_errors": [],
+   "data_references": 0,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-000/candidate.obj",
+   "object_sha256": "aea59231610821bc5a6ddc1e84eb6b29c1afd2e1f821c0c1840da6f3d7e8717b",
+   "object_size": 13,
+   "source_sha256": "9e28ba3c692a1de92ec77c8011f8b880950107bc96ae90be0d73aca36f786256",
+   "status": "exact",
+   "symbol": "?getGCamera@Workspace@RBX@@UBEABVGCamera@G3D@@XZ",
+   "target_sha256": "ad93de0495c3b76ff82cb09d0003c607515f7371d235191ff0531d160fd5ad30",
+   "target_size": 13,
+   "unit": "WorkspaceCamera.cpp"
+  },
+  {
+   "addr": "005a05a0",
+   "data_errors": [],
+   "data_references": 0,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-000/candidate.obj",
+   "object_sha256": "aea59231610821bc5a6ddc1e84eb6b29c1afd2e1f821c0c1840da6f3d7e8717b",
+   "object_size": 17,
+   "source_sha256": "9e28ba3c692a1de92ec77c8011f8b880950107bc96ae90be0d73aca36f786256",
+   "status": "exact",
+   "symbol": "?getCamera@Workspace@RBX@@UBEPAVCamera@2@XZ",
+   "target_sha256": "0510f64d4e1751e6fb60adba853a696866737b20754b7138c33d6575f2db6d8d",
+   "target_size": 17,
+   "unit": "WorkspaceCamera.cpp"
+  },
+  {
+   "addr": "005a01d0",
+   "data_errors": [],
+   "data_references": 0,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-001/candidate.obj",
+   "object_sha256": "b9ace1ff20bebd24d373937126af61ea787e4228f2d7a6cbb9a38553d0df3d5b",
+   "object_size": 5,
+   "source_sha256": "5b77c4ee092aaf1ab23b056a90e2730a771525ccb61ccd95a87c7b5411a4e8e0",
+   "status": "exact",
+   "symbol": "??$callDoDeclare@$1?sWorkspace@RBX@@3PADA@Name@RBX@@CAXXZ",
+   "target_sha256": "9281749100198d182c5beb6aa4de5ef236f1eb79854f117d5237469d8fbafe68",
+   "target_size": 5,
+   "unit": "WorkspaceClassName.cpp"
+  },
+  {
+   "addr": "005a0320",
+   "data_errors": [],
+   "data_references": 0,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-001/candidate.obj",
+   "object_sha256": "b9ace1ff20bebd24d373937126af61ea787e4228f2d7a6cbb9a38553d0df3d5b",
+   "object_size": 101,
+   "source_sha256": "5b77c4ee092aaf1ab23b056a90e2730a771525ccb61ccd95a87c7b5411a4e8e0",
+   "status": "exact",
+   "symbol": "??$doDeclare@$1?sWorkspace@RBX@@3PADA@Name@RBX@@CAABV01@XZ",
+   "target_sha256": "d3c8f85d2dd47bb34f5badfe350e4baaf99d6dfa3c562ffc80d404ad28f007c4",
+   "target_size": 101,
+   "unit": "WorkspaceClassName.cpp"
+  },
+  {
+   "addr": "005a0390",
+   "data_errors": [],
+   "data_references": 0,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-001/candidate.obj",
+   "object_sha256": "b9ace1ff20bebd24d373937126af61ea787e4228f2d7a6cbb9a38553d0df3d5b",
+   "object_size": 101,
+   "source_sha256": "5b77c4ee092aaf1ab23b056a90e2730a771525ccb61ccd95a87c7b5411a4e8e0",
+   "status": "exact",
+   "symbol": "??$doDeclare@$1?sWorkspace@RBX@@3PADA@Name@RBX@@CAABV01@XZ",
+   "target_sha256": "e890948cbb1b9a823a177b55733974e5b9beb121a704bfd626f56a289bcde5fe",
+   "target_size": 101,
+   "unit": "WorkspaceClassName.cpp"
+  },
+  {
+   "addr": "005a09b0",
+   "data_errors": [],
+   "data_references": 0,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-001/candidate.obj",
+   "object_sha256": "b9ace1ff20bebd24d373937126af61ea787e4228f2d7a6cbb9a38553d0df3d5b",
+   "object_size": 5,
+   "source_sha256": "5b77c4ee092aaf1ab23b056a90e2730a771525ccb61ccd95a87c7b5411a4e8e0",
+   "status": "exact",
+   "symbol": "??$callDoDeclare@$1?sWorkspace@RBX@@3PADA@Name@RBX@@CAXXZ",
+   "target_sha256": "fd6f727337b0d30127b6baa9606fcb6c43ba58761a911f3c945c5732f401928b",
+   "target_size": 5,
+   "unit": "WorkspaceClassName.cpp"
+  },
+  {
+   "addr": "005a09c0",
+   "data_errors": [],
+   "data_references": 0,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-001/candidate.obj",
+   "object_sha256": "b9ace1ff20bebd24d373937126af61ea787e4228f2d7a6cbb9a38553d0df3d5b",
+   "object_size": 5,
+   "source_sha256": "5b77c4ee092aaf1ab23b056a90e2730a771525ccb61ccd95a87c7b5411a4e8e0",
+   "status": "exact",
+   "symbol": "??$callDoDeclare@$1?sWorkspace@RBX@@3PADA@Name@RBX@@CAXXZ",
+   "target_sha256": "a3cdf41d4206c2316bdc77d77ac5a279874641835e42bcda07fe4a3693025480",
+   "target_size": 5,
+   "unit": "WorkspaceClassName.cpp"
+  },
+  {
+   "addr": "005a0fb0",
+   "data_errors": [],
+   "data_references": 0,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-001/candidate.obj",
+   "object_sha256": "b9ace1ff20bebd24d373937126af61ea787e4228f2d7a6cbb9a38553d0df3d5b",
+   "object_size": 101,
+   "source_sha256": "5b77c4ee092aaf1ab23b056a90e2730a771525ccb61ccd95a87c7b5411a4e8e0",
+   "status": "exact",
+   "symbol": "??$doDeclare@$1?sWorkspace@RBX@@3PADA@Name@RBX@@CAABV01@XZ",
+   "target_sha256": "47840b648becdc7768f1e33f4262d370dab379ee3e3c3646586137ac96e8051f",
+   "target_size": 101,
+   "unit": "WorkspaceClassName.cpp"
+  },
+  {
+   "addr": "005a1020",
+   "data_errors": [],
+   "data_references": 0,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-001/candidate.obj",
+   "object_sha256": "b9ace1ff20bebd24d373937126af61ea787e4228f2d7a6cbb9a38553d0df3d5b",
+   "object_size": 5,
+   "source_sha256": "5b77c4ee092aaf1ab23b056a90e2730a771525ccb61ccd95a87c7b5411a4e8e0",
+   "status": "exact",
+   "symbol": "??$callDoDeclare@$1?sWorkspace@RBX@@3PADA@Name@RBX@@CAXXZ",
+   "target_sha256": "9cc93e53ab12b3dbfb32b000cab1c98e0ee480a32b4bab6d5ca0d7d06b1590bc",
+   "target_size": 5,
+   "unit": "WorkspaceClassName.cpp"
+  },
+  {
+   "addr": "005a1520",
+   "data_errors": [],
+   "data_references": 0,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-001/candidate.obj",
+   "object_sha256": "b9ace1ff20bebd24d373937126af61ea787e4228f2d7a6cbb9a38553d0df3d5b",
+   "object_size": 5,
+   "source_sha256": "5b77c4ee092aaf1ab23b056a90e2730a771525ccb61ccd95a87c7b5411a4e8e0",
+   "status": "exact",
+   "symbol": "??$callDoDeclare@$1?sWorkspace@RBX@@3PADA@Name@RBX@@CAXXZ",
+   "target_sha256": "dbb7a40f55958d90273bc2c2e12ea29da7feb3d91ad1a933b1eba5b09263a616",
+   "target_size": 5,
+   "unit": "WorkspaceClassName.cpp"
+  },
+  {
+   "addr": "005a17f0",
+   "data_errors": [],
+   "data_references": 0,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-001/candidate.obj",
+   "object_sha256": "b9ace1ff20bebd24d373937126af61ea787e4228f2d7a6cbb9a38553d0df3d5b",
+   "object_size": 23,
+   "source_sha256": "5b77c4ee092aaf1ab23b056a90e2730a771525ccb61ccd95a87c7b5411a4e8e0",
+   "status": "exact",
+   "symbol": "??$declare@$1?sWorkspace@RBX@@3PADA@Name@RBX@@SAABV01@XZ",
+   "target_sha256": "ac352f1f316809c6634e23c74dac6818ae7b8b14663b2f88c5da785aeec40733",
+   "target_size": 23,
+   "unit": "WorkspaceClassName.cpp"
+  },
+  {
+   "addr": "005a1810",
+   "data_errors": [],
+   "data_references": 0,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-001/candidate.obj",
+   "object_sha256": "b9ace1ff20bebd24d373937126af61ea787e4228f2d7a6cbb9a38553d0df3d5b",
+   "object_size": 23,
+   "source_sha256": "5b77c4ee092aaf1ab23b056a90e2730a771525ccb61ccd95a87c7b5411a4e8e0",
+   "status": "exact",
+   "symbol": "??$declare@$1?sWorkspace@RBX@@3PADA@Name@RBX@@SAABV01@XZ",
+   "target_sha256": "7505888ead0bf1f01c0dc92464aa7093d5d918e3887ca221e4f15bbd9a3db7c7",
+   "target_size": 23,
+   "unit": "WorkspaceClassName.cpp"
+  },
+  {
+   "addr": "005a1830",
+   "data_errors": [],
+   "data_references": 0,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-001/candidate.obj",
+   "object_sha256": "b9ace1ff20bebd24d373937126af61ea787e4228f2d7a6cbb9a38553d0df3d5b",
+   "object_size": 23,
+   "source_sha256": "5b77c4ee092aaf1ab23b056a90e2730a771525ccb61ccd95a87c7b5411a4e8e0",
+   "status": "exact",
+   "symbol": "??$declare@$1?sWorkspace@RBX@@3PADA@Name@RBX@@SAABV01@XZ",
+   "target_sha256": "a946ba5a671fb5319466db1b7645523a324439c49389d076b35322491d1769b4",
+   "target_size": 23,
+   "unit": "WorkspaceClassName.cpp"
+  },
+  {
+   "addr": "005a3380",
+   "data_errors": [],
+   "data_references": 0,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-001/candidate.obj",
+   "object_sha256": "b9ace1ff20bebd24d373937126af61ea787e4228f2d7a6cbb9a38553d0df3d5b",
+   "object_size": 5,
+   "source_sha256": "5b77c4ee092aaf1ab23b056a90e2730a771525ccb61ccd95a87c7b5411a4e8e0",
+   "status": "exact",
+   "symbol": "??$callDoDeclare@$1?sWorkspace@RBX@@3PADA@Name@RBX@@CAXXZ",
+   "target_sha256": "dc0df78ee128a5341685b36c42cc158f7e05e2473781e1ffff6b45b126562c50",
+   "target_size": 5,
+   "unit": "WorkspaceClassName.cpp"
+  },
+  {
+   "addr": "005a0d90",
+   "data_errors": [],
+   "data_references": 0,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-007/candidate.obj",
+   "object_sha256": "e7f40ff49166f2932dc3e0b1bf1ff3e821c69749ad67f07ec6a66e397dd351a5",
+   "object_size": 65,
+   "source_sha256": "d2301df53071747177f6d51a1b85dbaae735ff1e8a3105492b8b66da3d81f4a9",
+   "status": "exact",
+   "symbol": "?findTopInstance@Workspace@RBX@@SAPAVInstance@2@PAV32@@Z",
+   "target_sha256": "7ae8ae088a7ea54e787dff4a7ceb2a348eb5d12b59c879f70f4643a98733ae8d",
+   "target_size": 65,
+   "unit": "WorkspaceFindTopInstance.cpp"
+  },
+  {
+   "addr": "005a0310",
+   "data_errors": [],
+   "data_references": 0,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-013/candidate.obj",
+   "object_sha256": "9bf10c31c3423c366ea498acb152f99a6df434a9708020f33a6536891d9e97b9",
+   "object_size": 16,
+   "source_sha256": "8baffef7ecf4f0a3eaa4522f16ff33fe7452eee421c7068818477a56cec548bf",
+   "status": "exact",
+   "symbol": "??1?$auto_ptr@VMouseCommand@RBX@@@std@@QAE@XZ",
+   "target_sha256": "026f8dfcded427247b901b62d1f523823fbc0b21e62387e8a0be916191c07a09",
+   "target_size": 16,
+   "unit": "WorkspaceLifetime.cpp"
+  },
+  {
+   "addr": "005a0460",
+   "data_errors": [],
+   "data_references": 1,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-013/candidate.obj",
+   "object_sha256": "9bf10c31c3423c366ea498acb152f99a6df434a9708020f33a6536891d9e97b9",
+   "object_size": 35,
+   "source_sha256": "8baffef7ecf4f0a3eaa4522f16ff33fe7452eee421c7068818477a56cec548bf",
+   "status": "exact",
+   "symbol": "?get_deleter@?$sp_counted_impl_pd@PAVCamera@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+   "target_sha256": "638de9e1fda2ccab94436998a31ec6f4c2595f18680267a7ccd001830a09d59a",
+   "target_size": 35,
+   "unit": "WorkspaceLifetime.cpp"
+  },
+  {
+   "addr": "005a07b0",
+   "data_errors": [],
+   "data_references": 18,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-013/candidate.obj",
+   "object_sha256": "9bf10c31c3423c366ea498acb152f99a6df434a9708020f33a6536891d9e97b9",
+   "object_size": 287,
+   "source_sha256": "8baffef7ecf4f0a3eaa4522f16ff33fe7452eee421c7068818477a56cec548bf",
+   "status": "exact",
+   "symbol": "??0?$NonFactoryProduct@VRootInstance@RBX@@$1?sWorkspace@2@3PADA@RBX@@QAE@XZ",
+   "target_sha256": "c8806cca65e4c58d18d3cb20b91ab6aa7d842a7f1acbeb981cc9a20349cc0669",
+   "target_size": 287,
+   "unit": "WorkspaceLifetime.cpp"
+  },
+  {
+   "addr": "005a0b50",
+   "data_errors": [],
+   "data_references": 1,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-013/candidate.obj",
+   "object_sha256": "9bf10c31c3423c366ea498acb152f99a6df434a9708020f33a6536891d9e97b9",
+   "object_size": 131,
+   "source_sha256": "8baffef7ecf4f0a3eaa4522f16ff33fe7452eee421c7068818477a56cec548bf",
+   "status": "exact",
+   "symbol": "??$?0PAVCamera@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVCamera@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z",
+   "target_sha256": "5b6a71edafc993071a18802e686e64b71394557beb60ba44a2f4382ea9c28cca",
+   "target_size": 131,
+   "unit": "WorkspaceLifetime.cpp"
+  },
+  {
+   "addr": "005a0be0",
+   "data_errors": [],
+   "data_references": 1,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-013/candidate.obj",
+   "object_sha256": "9bf10c31c3423c366ea498acb152f99a6df434a9708020f33a6536891d9e97b9",
+   "object_size": 131,
+   "source_sha256": "8baffef7ecf4f0a3eaa4522f16ff33fe7452eee421c7068818477a56cec548bf",
+   "status": "exact",
+   "symbol": "??$?0PAVCamera@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVCamera@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z",
+   "target_sha256": "6ec30a6485abefa6154630467504e5ccd10da52adbd30a3ab62b59a3b65ca1da",
+   "target_size": 131,
+   "unit": "WorkspaceLifetime.cpp"
+  },
+  {
+   "addr": "005a0c70",
+   "data_errors": [],
+   "data_references": 1,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-013/candidate.obj",
+   "object_sha256": "9bf10c31c3423c366ea498acb152f99a6df434a9708020f33a6536891d9e97b9",
+   "object_size": 131,
+   "source_sha256": "8baffef7ecf4f0a3eaa4522f16ff33fe7452eee421c7068818477a56cec548bf",
+   "status": "exact",
+   "symbol": "??$?0PAVCamera@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVCamera@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z",
+   "target_sha256": "cd82f319d6100229b20e343bd7db3dddb492a9683d9aa485934e01b7a045ee94",
+   "target_size": 131,
+   "unit": "WorkspaceLifetime.cpp"
+  },
+  {
+   "addr": "005a1090",
+   "data_errors": [],
+   "data_references": 0,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-013/candidate.obj",
+   "object_sha256": "9bf10c31c3423c366ea498acb152f99a6df434a9708020f33a6536891d9e97b9",
+   "object_size": 171,
+   "source_sha256": "8baffef7ecf4f0a3eaa4522f16ff33fe7452eee421c7068818477a56cec548bf",
+   "status": "exact",
+   "symbol": "??$?0VCamera@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VCamera@RBX@@@boost@@QAE@PAVCamera@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z",
+   "target_sha256": "2cb6c7a03198b8c33538c90990ae9135abff4d53f75e5e3ff9f3393bb0f258a8",
+   "target_size": 171,
+   "unit": "WorkspaceLifetime.cpp"
+  },
+  {
+   "addr": "005a13c0",
+   "data_errors": [],
+   "data_references": 0,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-013/candidate.obj",
+   "object_sha256": "9bf10c31c3423c366ea498acb152f99a6df434a9708020f33a6536891d9e97b9",
+   "object_size": 171,
+   "source_sha256": "8baffef7ecf4f0a3eaa4522f16ff33fe7452eee421c7068818477a56cec548bf",
+   "status": "exact",
+   "symbol": "??$?0VCamera@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VCamera@RBX@@@boost@@QAE@PAVCamera@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z",
+   "target_sha256": "65421a2e0d5c4aefadda3177acb233787d5ff84d4d41029f21576540bf6d3d2e",
+   "target_size": 171,
+   "unit": "WorkspaceLifetime.cpp"
+  },
+  {
+   "addr": "005a1470",
+   "data_errors": [],
+   "data_references": 0,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-013/candidate.obj",
+   "object_sha256": "9bf10c31c3423c366ea498acb152f99a6df434a9708020f33a6536891d9e97b9",
+   "object_size": 171,
+   "source_sha256": "8baffef7ecf4f0a3eaa4522f16ff33fe7452eee421c7068818477a56cec548bf",
+   "status": "exact",
+   "symbol": "??$?0VCamera@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VCamera@RBX@@@boost@@QAE@PAVCamera@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z",
+   "target_sha256": "46f5bfd7119dd4c7a1c39f848c0fa1f69daca293ba991543666260e778d9fa31",
+   "target_size": 171,
+   "unit": "WorkspaceLifetime.cpp"
+  },
+  {
+   "addr": "005a1530",
+   "data_errors": [],
+   "data_references": 0,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-013/candidate.obj",
+   "object_sha256": "9bf10c31c3423c366ea498acb152f99a6df434a9708020f33a6536891d9e97b9",
+   "object_size": 129,
+   "source_sha256": "8baffef7ecf4f0a3eaa4522f16ff33fe7452eee421c7068818477a56cec548bf",
+   "status": "exact",
+   "symbol": "?raise@?$Notifier@VWorkspace@RBX@@VDrawChanged@2@@RBX@@IBEXVDrawChanged@2@@Z",
+   "target_sha256": "168b431998c4343b1fe81c31328036ed9a15aac34a2e82dbb70e0d007c464524",
+   "target_size": 129,
+   "unit": "WorkspaceLifetime.cpp"
+  },
+  {
+   "addr": "005a1850",
+   "data_errors": [],
+   "data_references": 0,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-013/candidate.obj",
+   "object_sha256": "9bf10c31c3423c366ea498acb152f99a6df434a9708020f33a6536891d9e97b9",
+   "object_size": 54,
+   "source_sha256": "8baffef7ecf4f0a3eaa4522f16ff33fe7452eee421c7068818477a56cec548bf",
+   "status": "exact",
+   "symbol": "?_Tidy@?$_Tree@V?$_Tset_traits@PAVScript@RBX@@U?$less@PAVScript@RBX@@@std@@V?$allocator@PAVScript@RBX@@@4@$0A@@std@@@std@@IAEXXZ",
+   "target_sha256": "b2fd36f1ae306a23692ee554ed55022a99fafbd052e0eeb0bb70cf93610bd047",
+   "target_size": 54,
+   "unit": "WorkspaceLifetime.cpp"
+  },
+  {
+   "addr": "005a28c0",
+   "data_errors": [],
+   "data_references": 23,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-013/candidate.obj",
+   "object_sha256": "9bf10c31c3423c366ea498acb152f99a6df434a9708020f33a6536891d9e97b9",
+   "object_size": 878,
+   "source_sha256": "8baffef7ecf4f0a3eaa4522f16ff33fe7452eee421c7068818477a56cec548bf",
+   "status": "exact",
+   "symbol": "??1Workspace@RBX@@UAE@XZ",
+   "target_sha256": "4c9e6b79ce878347fe4f3d49044f6727d97227e14d1b847c1d9bd6989841ff8f",
+   "target_size": 878,
+   "unit": "WorkspaceLifetime.cpp"
+  },
+  {
+   "addr": "005a2c30",
+   "data_errors": [],
+   "data_references": 0,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-013/candidate.obj",
+   "object_sha256": "9bf10c31c3423c366ea498acb152f99a6df434a9708020f33a6536891d9e97b9",
+   "object_size": 29,
+   "source_sha256": "8baffef7ecf4f0a3eaa4522f16ff33fe7452eee421c7068818477a56cec548bf",
+   "status": "exact",
+   "symbol": "?computeCameraOwnerExtents@Workspace@RBX@@EAE?AVExtents@2@XZ",
+   "target_sha256": "61ede9077da9ffdb0f045bebed83132fff4f213d52acc009d480a7d45cfb5da1",
+   "target_size": 29,
+   "unit": "WorkspaceLifetime.cpp"
+  },
+  {
+   "addr": "005a2d90",
+   "data_errors": [],
+   "data_references": 0,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-013/candidate.obj",
+   "object_sha256": "9bf10c31c3423c366ea498acb152f99a6df434a9708020f33a6536891d9e97b9",
+   "object_size": 22,
+   "source_sha256": "8baffef7ecf4f0a3eaa4522f16ff33fe7452eee421c7068818477a56cec548bf",
+   "status": "exact",
+   "symbol": "?cameraMoved@Workspace@RBX@@EAEXXZ",
+   "target_sha256": "33ea922e4c5efb4298b0e0c313e5e8e25f80f37c4faf4f5b4753da814cc9efd9",
+   "target_size": 22,
+   "unit": "WorkspaceLifetime.cpp"
+  },
+  {
+   "addr": "005a2db0",
+   "data_errors": [],
+   "data_references": 0,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-013/candidate.obj",
+   "object_sha256": "9bf10c31c3423c366ea498acb152f99a6df434a9708020f33a6536891d9e97b9",
+   "object_size": 33,
+   "source_sha256": "8baffef7ecf4f0a3eaa4522f16ff33fe7452eee421c7068818477a56cec548bf",
+   "status": "exact",
+   "symbol": "?onExtentsChanged@Workspace@RBX@@EBEXXZ",
+   "target_sha256": "3b6b52ac9b9d16887f6f3162e641c644494657b6768dd8d91b73e4d907cd69eb",
+   "target_size": 33,
+   "unit": "WorkspaceLifetime.cpp"
+  },
+  {
+   "addr": "005a3070",
+   "data_errors": [],
+   "data_references": 1,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-013/candidate.obj",
+   "object_sha256": "9bf10c31c3423c366ea498acb152f99a6df434a9708020f33a6536891d9e97b9",
+   "object_size": 131,
+   "source_sha256": "8baffef7ecf4f0a3eaa4522f16ff33fe7452eee421c7068818477a56cec548bf",
+   "status": "exact",
+   "symbol": "??$?0PAVCamera@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVCamera@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z",
+   "target_sha256": "37c3866935bf1000a4ca2ed94bf5f405c920c4a54ce8a424b0ec1a2d7f2c8f6d",
+   "target_size": 131,
+   "unit": "WorkspaceLifetime.cpp"
+  },
+  {
+   "addr": "005a3100",
+   "data_errors": [],
+   "data_references": 0,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-013/candidate.obj",
+   "object_sha256": "9bf10c31c3423c366ea498acb152f99a6df434a9708020f33a6536891d9e97b9",
+   "object_size": 171,
+   "source_sha256": "8baffef7ecf4f0a3eaa4522f16ff33fe7452eee421c7068818477a56cec548bf",
+   "status": "exact",
+   "symbol": "??$?0VCamera@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VCamera@RBX@@@boost@@QAE@PAVCamera@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z",
+   "target_sha256": "6300b05998524c26190e175fa603f60466075759b0ecd2d25e6c1dc122580f93",
+   "target_size": 171,
+   "unit": "WorkspaceLifetime.cpp"
+  },
+  {
+   "addr": "005a3b70",
+   "data_errors": [],
+   "data_references": 0,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-013/candidate.obj",
+   "object_sha256": "9bf10c31c3423c366ea498acb152f99a6df434a9708020f33a6536891d9e97b9",
+   "object_size": 101,
+   "source_sha256": "8baffef7ecf4f0a3eaa4522f16ff33fe7452eee421c7068818477a56cec548bf",
+   "status": "exact",
+   "symbol": "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+   "target_sha256": "1c41a5eabdc205f01de2afd41a403918a0cd38ca5082d94db39e9d2adcad80f8",
+   "target_size": 101,
+   "unit": "WorkspaceLifetime.cpp"
+  },
+  {
+   "addr": "005a4280",
+   "data_errors": [],
+   "data_references": 18,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-013/candidate.obj",
+   "object_sha256": "9bf10c31c3423c366ea498acb152f99a6df434a9708020f33a6536891d9e97b9",
+   "object_size": 343,
+   "source_sha256": "8baffef7ecf4f0a3eaa4522f16ff33fe7452eee421c7068818477a56cec548bf",
+   "status": "exact",
+   "symbol": "??0?$DescribedNonCreatable@VWorkspace@RBX@@VRootInstance@2@$1?sWorkspace@2@3PADA@RBX@@IAE@XZ",
+   "target_sha256": "0e716a60a2186168c3e1da6a8ee2e4b1d299f5696e57a3d227443191c22cd2c7",
+   "target_size": 343,
+   "unit": "WorkspaceLifetime.cpp"
+  },
+  {
+   "addr": "005a3e10",
+   "data_errors": [],
+   "data_references": 2,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-015/candidate.obj",
+   "object_sha256": "23cef2569c915d31496a4a1939af58100b8c5c9b0b748a1cc98dbc09946188eb",
+   "object_size": 274,
+   "source_sha256": "6b25c60cc3866d2ed32507752a117ee9c741d69eadb725668038e1f48fb0b52a",
+   "status": "exact",
+   "symbol": "?selectAll@Workspace@RBX@@QAEXXZ",
+   "target_sha256": "e5d12af326f88c5486c43a38204529eed78231a5f610d14aaefc314916ec5f75",
+   "target_size": 274,
+   "unit": "WorkspaceSelectAll.cpp"
+  },
+  {
+   "addr": "005a6fd0",
+   "data_errors": [],
+   "data_references": 0,
+   "first_byte_difference": null,
+   "object": "work/2008-06/native-check-runs/20261106-140554-cab011e3/unit-020/candidate.obj",
+   "object_sha256": "848cc2e6c484bc73c708162dc559579387a662b62b58ba3b683259b886d4b0ef",
+   "object_size": 25,
+   "source_sha256": "26cf8efc37598b9f9b953c164604c008151334442e8f8246e5e3ff0e9b6bed23",
+   "status": "exact",
+   "symbol": "??1?$auto_ptr@VXmlElement@@@std@@QAE@XZ",
+   "target_sha256": "87fb44fac03b852e82cd0b8722190858c40269806be9eeef1ea1e076362c6054",
+   "target_size": 25,
+   "unit": "WorkspaceWrite.cpp"
+  }
+ ],
+ "client": "2008-06",
+ "compiler": "C:\\Users\\colin\\Desktop\\RoConstruct-main\\RoConstruct-Native-4f7d46a43031423c966cd798b30be257\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\bin\\cl.exe",
+ "compiler_sha256": "a8fb826379837492f19b249a3553acc3f904afe4c93e643054d0e48340ae717a",
+ "direct_call_bindings": {
+  "checks_total": 36,
+  "checks_with_call_identity_passed": 25,
+  "declared": 53,
+  "per_check": [
+   {
+    "addr": "005a0210",
+    "call_identity_passed": false,
+    "call_sites": 1,
+    "direct_bindings_verified": 0,
+    "unit": "WorkspaceCamera.cpp"
+   },
+   {
+    "addr": "005a05a0",
+    "call_identity_passed": true,
+    "call_sites": 0,
+    "direct_bindings_verified": 0,
+    "unit": "WorkspaceCamera.cpp"
+   },
+   {
+    "addr": "005a01d0",
+    "call_identity_passed": true,
+    "call_sites": 0,
+    "direct_bindings_verified": 0,
+    "unit": "WorkspaceClassName.cpp"
+   },
+   {
+    "addr": "005a0320",
+    "call_identity_passed": true,
+    "call_sites": 1,
+    "direct_bindings_verified": 1,
+    "unit": "WorkspaceClassName.cpp"
+   },
+   {
+    "addr": "005a0390",
+    "call_identity_passed": true,
+    "call_sites": 1,
+    "direct_bindings_verified": 1,
+    "unit": "WorkspaceClassName.cpp"
+   },
+   {
+    "addr": "005a09b0",
+    "call_identity_passed": true,
+    "call_sites": 0,
+    "direct_bindings_verified": 0,
+    "unit": "WorkspaceClassName.cpp"
+   },
+   {
+    "addr": "005a09c0",
+    "call_identity_passed": true,
+    "call_sites": 0,
+    "direct_bindings_verified": 0,
+    "unit": "WorkspaceClassName.cpp"
+   },
+   {
+    "addr": "005a0fb0",
+    "call_identity_passed": true,
+    "call_sites": 1,
+    "direct_bindings_verified": 1,
+    "unit": "WorkspaceClassName.cpp"
+   },
+   {
+    "addr": "005a1020",
+    "call_identity_passed": true,
+    "call_sites": 0,
+    "direct_bindings_verified": 0,
+    "unit": "WorkspaceClassName.cpp"
+   },
+   {
+    "addr": "005a1520",
+    "call_identity_passed": true,
+    "call_sites": 0,
+    "direct_bindings_verified": 0,
+    "unit": "WorkspaceClassName.cpp"
+   },
+   {
+    "addr": "005a17f0",
+    "call_identity_passed": true,
+    "call_sites": 1,
+    "direct_bindings_verified": 1,
+    "unit": "WorkspaceClassName.cpp"
+   },
+   {
+    "addr": "005a1810",
+    "call_identity_passed": true,
+    "call_sites": 1,
+    "direct_bindings_verified": 1,
+    "unit": "WorkspaceClassName.cpp"
+   },
+   {
+    "addr": "005a1830",
+    "call_identity_passed": true,
+    "call_sites": 1,
+    "direct_bindings_verified": 1,
+    "unit": "WorkspaceClassName.cpp"
+   },
+   {
+    "addr": "005a3380",
+    "call_identity_passed": true,
+    "call_sites": 0,
+    "direct_bindings_verified": 0,
+    "unit": "WorkspaceClassName.cpp"
+   },
+   {
+    "addr": "005a0d90",
+    "call_identity_passed": true,
+    "call_sites": 0,
+    "direct_bindings_verified": 0,
+    "unit": "WorkspaceFindTopInstance.cpp"
+   },
+   {
+    "addr": "005a0310",
+    "call_identity_passed": false,
+    "call_sites": 1,
+    "direct_bindings_verified": 0,
+    "unit": "WorkspaceLifetime.cpp"
+   },
+   {
+    "addr": "005a0460",
+    "call_identity_passed": false,
+    "call_sites": 1,
+    "direct_bindings_verified": 0,
+    "unit": "WorkspaceLifetime.cpp"
+   },
+   {
+    "addr": "005a07b0",
+    "call_identity_passed": true,
+    "call_sites": 1,
+    "direct_bindings_verified": 1,
+    "unit": "WorkspaceLifetime.cpp"
+   },
+   {
+    "addr": "005a0b50",
+    "call_identity_passed": true,
+    "call_sites": 3,
+    "direct_bindings_verified": 3,
+    "unit": "WorkspaceLifetime.cpp"
+   },
+   {
+    "addr": "005a0be0",
+    "call_identity_passed": true,
+    "call_sites": 3,
+    "direct_bindings_verified": 3,
+    "unit": "WorkspaceLifetime.cpp"
+   },
+   {
+    "addr": "005a0c70",
+    "call_identity_passed": true,
+    "call_sites": 3,
+    "direct_bindings_verified": 3,
+    "unit": "WorkspaceLifetime.cpp"
+   },
+   {
+    "addr": "005a1090",
+    "call_identity_passed": false,
+    "call_sites": 2,
+    "direct_bindings_verified": 1,
+    "unit": "WorkspaceLifetime.cpp"
+   },
+   {
+    "addr": "005a13c0",
+    "call_identity_passed": false,
+    "call_sites": 2,
+    "direct_bindings_verified": 1,
+    "unit": "WorkspaceLifetime.cpp"
+   },
+   {
+    "addr": "005a1470",
+    "call_identity_passed": false,
+    "call_sites": 2,
+    "direct_bindings_verified": 1,
+    "unit": "WorkspaceLifetime.cpp"
+   },
+   {
+    "addr": "005a1530",
+    "call_identity_passed": false,
+    "call_sites": 2,
+    "direct_bindings_verified": 1,
+    "unit": "WorkspaceLifetime.cpp"
+   },
+   {
+    "addr": "005a1850",
+    "call_identity_passed": true,
+    "call_sites": 2,
+    "direct_bindings_verified": 2,
+    "unit": "WorkspaceLifetime.cpp"
+   },
+   {
+    "addr": "005a28c0",
+    "call_identity_passed": false,
+    "call_sites": 22,
+    "direct_bindings_verified": 9,
+    "unit": "WorkspaceLifetime.cpp"
+   },
+   {
+    "addr": "005a2c30",
+    "call_identity_passed": false,
+    "call_sites": 1,
+    "direct_bindings_verified": 0,
+    "unit": "WorkspaceLifetime.cpp"
+   },
+   {
+    "addr": "005a2d90",
+    "call_identity_passed": true,
+    "call_sites": 1,
+    "direct_bindings_verified": 1,
+    "unit": "WorkspaceLifetime.cpp"
+   },
+   {
+    "addr": "005a2db0",
+    "call_identity_passed": true,
+    "call_sites": 2,
+    "direct_bindings_verified": 2,
+    "unit": "WorkspaceLifetime.cpp"
+   },
+   {
+    "addr": "005a3070",
+    "call_identity_passed": true,
+    "call_sites": 3,
+    "direct_bindings_verified": 3,
+    "unit": "WorkspaceLifetime.cpp"
+   },
+   {
+    "addr": "005a3100",
+    "call_identity_passed": false,
+    "call_sites": 2,
+    "direct_bindings_verified": 1,
+    "unit": "WorkspaceLifetime.cpp"
+   },
+   {
+    "addr": "005a3b70",
+    "call_identity_passed": true,
+    "call_sites": 3,
+    "direct_bindings_verified": 3,
+    "unit": "WorkspaceLifetime.cpp"
+   },
+   {
+    "addr": "005a4280",
+    "call_identity_passed": true,
+    "call_sites": 2,
+    "direct_bindings_verified": 2,
+    "unit": "WorkspaceLifetime.cpp"
+   },
+   {
+    "addr": "005a3e10",
+    "call_identity_passed": false,
+    "call_sites": 11,
+    "direct_bindings_verified": 8,
+    "unit": "WorkspaceSelectAll.cpp"
+   },
+   {
+    "addr": "005a6fd0",
+    "call_identity_passed": true,
+    "call_sites": 2,
+    "direct_bindings_verified": 2,
+    "unit": "WorkspaceWrite.cpp"
+   }
+  ],
+  "provenance": "Call targets and offsets are read from the original assembly of each body. The decorated symbol strings come from the candidate object COFF relocations and are recorded as candidate-derived; no independent decorated-name evidence was available for this batch, so these bindings assert address plus candidate external and are flagged for independent confirmation exactly as in the leaf-selection-verbs receipt.",
+  "runner_total_call_sites": 78,
+  "runner_verified": 53,
+  "scope": "53 direct e8 call sites carry a reviewed symbol/address binding verified on the reused objects; every one of them passed. The runner additionally inspects the 25 indirect call sites in these bodies and reports them unresolved, which is by design: 22 are virtual dispatches and 3 are the MSVCP90/CRT IAT sites covered by the indirect-call ABI receipt.",
+  "verified": 53
+ },
+ "indirect_call_abi": {
+  "bindings": "work/native-candidates/workspace-providers-20261106/bindings.json",
+  "bindings_sha256": "fa8cc3abd5005779d2eebcdbfedf2645b712046326fc09a04171a1d01b5cdd9e",
+  "probe": "work/native-candidates/standard-verbs-iat-abi-20261106/probe_indirect_call_abi.py",
+  "probe_limitation": "Two sites are reported as failures only because the probe compares the candidate COFF external string against __imp_ + the pefile export name. At IAT slot 00802890 the original import is _invalid_parameter_noinfo while the object external is __imp___invalid_parameter_noinfo; the slot, the instruction bytes and the argument setup are identical, so the binding itself holds and only the string test is too strict.",
+  "probe_sha256": "4ae00f7ef93e5e9c3db5d0e839cf376020d86700defce464cf30b0565eee9f28",
+  "scope": "Same imported callee, same IAT slot, same declared ABI and same argument setup as the original client.",
+  "sites": [
+   {
+    "addr": "005a0460",
+    "offsets": [
+     12
+    ],
+    "slots": [
+     "00802878"
+    ],
+    "symbol": "?get_deleter@?$sp_counted_impl_pd@PAVCamera@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@UAEPAXABVtype_info@@@Z",
+    "unit": "WorkspaceLifetime.cpp"
+   },
+   {
+    "addr": "005a1530",
+    "offsets": [
+     66
+    ],
+    "slots": [
+     "00802890"
+    ],
+    "symbol": "?raise@?$Notifier@VWorkspace@RBX@@VDrawChanged@2@@RBX@@IBEXVDrawChanged@2@@Z",
+    "unit": "WorkspaceLifetime.cpp"
+   },
+   {
+    "addr": "005a3e10",
+    "offsets": [
+     115
+    ],
+    "slots": [
+     "00802890"
+    ],
+    "symbol": "?selectAll@Workspace@RBX@@QAEXXZ",
+    "unit": "WorkspaceSelectAll.cpp"
+   }
+  ],
+  "totals": {
+   "bodies": 36,
+   "byte_identical_bodies": 36,
+   "direct_sites": 53,
+   "indirect_sites": 3,
+   "unclassified_sites": 0,
+   "verified": 1,
+   "virtual_dispatch_sites": 22
+  }
+ },
+ "manifest": "rebuild/2008-06/tests/workspace-providers-unit-20261106.json",
+ "manifest_sha256": "6cb7e369d20f8579b24bcf3fd3b070b2751ad7c04b8435880936c1fbe71b21af",
+ "metrics": {
+  "gated_class_swaps": 0,
+  "inactive_exact_addresses": 36,
+  "selected_exact_addresses": 0,
+  "server_credit_added": 0
+ },
+ "non_claims": [
+  "No link was performed and no provider was selected.",
+  "No .lib, RSP, map or executable was created, copied or reconstructed.",
+  "No symbol alias, stub or synthetic mapping was introduced.",
+  "No server credit, runtime activation or executable selection change."
+ ],
+ "owner_checkout_queue_present": false,
+ "package_revision": "6a75107cef5c18ce5004b83e32ac32736c354a262f7257e7dfbe3192d7bcd00f",
+ "preserved": "Shared headers, vendor inputs, other leases and the active executable selection unchanged. RBX::CRobloxDoc message handlers 2008, RBX::MoveDown selection verb 2008 and the EspClaude leases were not touched. WorkspaceXmlWriter.cpp is leased by another worker and was excluded.",
+ "proof": {
+  "direct_call_bindings": true,
+  "exact_bytes": true,
+  "indirect_call_bindings": "2 of 3 verified; the third is a probe string limitation, see above",
+  "referenced_data": true,
+  "require_proof_exit": "not run for this batch",
+  "scope": "Local isolated diagnostics. No link, no provider selection, no executable selection, no runtime activation, no server credit."
+ },
+ "provider_selection": {
+  "detail": "No filtered provider archive (b4d51e680296b50c2cfb57e93815e569519144aa19d25779dbd3c0d714db5798), no full archive (21e44d8cac6d3f14850180ccb2f8d5ed618fe129c9d5c1632186b78d52d03519), no link response file and no document-swap link object set exist in this workspace; provider selection for these symbols is unknown.",
+  "status": "blocked_on_missing_input"
+ },
+ "rbx_workspace_remaining": {
+  "addresses": [
+   {
+    "addr": "005a01e0",
+    "calls": 1,
+    "size": 36
+   },
+   {
+    "addr": "005a0220",
+    "calls": 1,
+    "size": 32
+   },
+   {
+    "addr": "005a0240",
+    "calls": 1,
+    "size": 29
+   },
+   {
+    "addr": "005a0260",
+    "calls": 0,
+    "size": 31
+   },
+   {
+    "addr": "005a0280",
+    "calls": 2,
+    "size": 91
+   },
+   {
+    "addr": "005a02e0",
+    "calls": 2,
+    "size": 40
+   },
+   {
+    "addr": "005a0400",
+    "calls": 0,
+    "size": 93
+   },
+   {
+    "addr": "005a05c0",
+    "calls": 0,
+    "size": 7
+   },
+   {
+    "addr": "005a05d0",
+    "calls": 2,
+    "size": 60
+   },
+   {
+    "addr": "005a0610",
+    "calls": 1,
+    "size": 76
+   },
+   {
+    "addr": "005a0660",
+    "calls": 1,
+    "size": 42
+   },
+   {
+    "addr": "005a0690",
+    "calls": 2,
+    "size": 174
+   },
+   {
+    "addr": "005a0740",
+    "calls": 4,
+    "size": 103
+   },
+   {
+    "addr": "005a1b90",
+    "calls": 2,
+    "size": 45
+   },
+   {
+    "addr": "005a1bc0",
+    "calls": 4,
+    "size": 83
+   },
+   {
+    "addr": "005a1c20",
+    "calls": 8,
+    "size": 189
+   },
+   {
+    "addr": "005a1ce0",
+    "calls": 15,
+    "size": 408
+   },
+   {
+    "addr": "005a1e80",
+    "calls": 3,
+    "size": 320
+   },
+   {
+    "addr": "005a1fc0",
+    "calls": 5,
+    "size": 276
+   },
+   {
+    "addr": "005a20e0",
+    "calls": 2,
+    "size": 420
+   },
+   {
+    "addr": "005a2290",
+    "calls": 3,
+    "size": 158
+   },
+   {
+    "addr": "005a2330",
+    "calls": 3,
+    "size": 158
+   },
+   {
+    "addr": "005a23d0",
+    "calls": 0,
+    "size": 21
+   },
+   {
+    "addr": "005a23f0",
+    "calls": 0,
+    "size": 35
+   },
+   {
+    "addr": "005a2420",
+    "calls": 1,
+    "size": 176
+   },
+   {
+    "addr": "005a24d0",
+    "calls": 1,
+    "size": 176
+   },
+   {
+    "addr": "005a2580",
+    "calls": 13,
+    "size": 420
+   },
+   {
+    "addr": "005a2730",
+    "calls": 1,
+    "size": 43
+   },
+   {
+    "addr": "005a2760",
+    "calls": 3,
+    "size": 85
+   },
+   {
+    "addr": "005a27c0",
+    "calls": 1,
+    "size": 19
+   },
+   {
+    "addr": "005a27e0",
+    "calls": 1,
+    "size": 30
+   },
+   {
+    "addr": "005a2800",
+    "calls": 0,
+    "size": 92
+   },
+   {
+    "addr": "005a2860",
+    "calls": 1,
+    "size": 84
+   },
+   {
+    "addr": "005a2c50",
+    "calls": 0,
+    "size": 11
+   },
+   {
+    "addr": "005a2c60",
+    "calls": 0,
+    "size": 14
+   },
+   {
+    "addr": "005a2c70",
+    "calls": 0,
+    "size": 11
+   },
+   {
+    "addr": "005a2c80",
+    "calls": 0,
+    "size": 8
+   },
+   {
+    "addr": "005a2c90",
+    "calls": 0,
+    "size": 14
+   },
+   {
+    "addr": "005a2ca0",
+    "calls": 0,
+    "size": 8
+   },
+   {
+    "addr": "005a2cb0",
+    "calls": 0,
+    "size": 14
+   },
+   {
+    "addr": "005a2cc0",
+    "calls": 0,
+    "size": 11
+   },
+   {
+    "addr": "005a2cd0",
+    "calls": 0,
+    "size": 11
+   },
+   {
+    "addr": "005a2ce0",
+    "calls": 0,
+    "size": 11
+   },
+   {
+    "addr": "005a2cf0",
+    "calls": 0,
+    "size": 11
+   },
+   {
+    "addr": "005a2d00",
+    "calls": 0,
+    "size": 11
+   },
+   {
+    "addr": "005a2d10",
+    "calls": 0,
+    "size": 14
+   },
+   {
+    "addr": "005a2d20",
+    "calls": 0,
+    "size": 11
+   },
+   {
+    "addr": "005a2d30",
+    "calls": 0,
+    "size": 8
+   },
+   {
+    "addr": "005a2d40",
+    "calls": 0,
+    "size": 8
+   },
+   {
+    "addr": "005a2d50",
+    "calls": 0,
+    "size": 14
+   },
+   {
+    "addr": "005a2d60",
+    "calls": 0,
+    "size": 8
+   },
+   {
+    "addr": "005a2d70",
+    "calls": 0,
+    "size": 11
+   },
+   {
+    "addr": "005a2d80",
+    "calls": 0,
+    "size": 11
+   },
+   {
+    "addr": "005a2de0",
+    "calls": 2,
+    "size": 66
+   },
+   {
+    "addr": "005a2e30",
+    "calls": 1,
+    "size": 84
+   },
+   {
+    "addr": "005a2e90",
+    "calls": 1,
+    "size": 84
+   },
+   {
+    "addr": "005a2ef0",
+    "calls": 1,
+    "size": 84
+   },
+   {
+    "addr": "005a2f50",
+    "calls": 1,
+    "size": 84
+   },
+   {
+    "addr": "005a2fb0",
+    "calls": 1,
+    "size": 44
+   },
+   {
+    "addr": "005a2fe0",
+    "calls": 3,
+    "size": 111
+   },
+   {
+    "addr": "005a3050",
+    "calls": 1,
+    "size": 31
+   },
+   {
+    "addr": "005a31b0",
+    "calls": 2,
+    "size": 122
+   },
+   {
+    "addr": "005a3470",
+    "calls": 6,
+    "size": 201
+   },
+   {
+    "addr": "005a3540",
+    "calls": 11,
+    "size": 391
+   },
+   {
+    "addr": "005a36d0",
+    "calls": 1,
+    "size": 15
+   },
+   {
+    "addr": "005a36e0",
+    "calls": 8,
+    "size": 519
+   },
+   {
+    "addr": "005a38f0",
+    "calls": 1,
+    "size": 125
+   },
+   {
+    "addr": "005a3970",
+    "calls": 1,
+    "size": 84
+   },
+   {
+    "addr": "005a39d0",
+    "calls": 8,
+    "size": 414
+   },
+   {
+    "addr": "005a3be0",
+    "calls": 5,
+    "size": 199
+   },
+   {
+    "addr": "005a3cb0",
+    "calls": 2,
+    "size": 68
+   },
+   {
+    "addr": "005a59e0",
+    "calls": 12,
+    "size": 678
+   },
+   {
+    "addr": "005a5c90",
+    "calls": 74,
+    "size": 2431
+   },
+   {
+    "addr": "005a66b0",
+    "calls": 11,
+    "size": 316
+   },
+   {
+    "addr": "005a67f0",
+    "calls": 2,
+    "size": 76
+   },
+   {
+    "addr": "005a6840",
+    "calls": 0,
+    "size": 16
+   },
+   {
+    "addr": "005a6850",
+    "calls": 0,
+    "size": 29
+   },
+   {
+    "addr": "005a6870",
+    "calls": 2,
+    "size": 139
+   },
+   {
+    "addr": "005a6900",
+    "calls": 6,
+    "size": 140
+   },
+   {
+    "addr": "005a6990",
+    "calls": 3,
+    "size": 92
+   },
+   {
+    "addr": "005a69f0",
+    "calls": 4,
+    "size": 134
+   },
+   {
+    "addr": "005a6a80",
+    "calls": 6,
+    "size": 183
+   },
+   {
+    "addr": "005a6b40",
+    "calls": 2,
+    "size": 109
+   },
+   {
+    "addr": "005a6bb0",
+    "calls": 0,
+    "size": 10
+   },
+   {
+    "addr": "005a6bc0",
+    "calls": 0,
+    "size": 153
+   },
+   {
+    "addr": "005a6c60",
+    "calls": 0,
+    "size": 163
+   },
+   {
+    "addr": "005a6d10",
+    "calls": 2,
+    "size": 144
+   },
+   {
+    "addr": "005a6da0",
+    "calls": 4,
+    "size": 182
+   },
+   {
+    "addr": "005a6e60",
+    "calls": 2,
+    "size": 129
+   },
+   {
+    "addr": "005a6ef0",
+    "calls": 4,
+    "size": 181
+   }
+  ],
+  "functions_attributed_to_RBX_Workspace": 103,
+  "instance_source_probe": {
+   "duplicate_signal": [
+    "005a01d0",
+    "005a09b0",
+    "005a09c0",
+    "005a0d90",
+    "005a1020",
+    "005a1520",
+    "005a1850",
+    "005a3380",
+    "005a6fd0"
+   ],
+   "result": "11 of 189 functions matched, 351 bytes; only one new RBX::Workspace address, so the inherited-instance hypothesis is disproved",
+   "run": "work/2008-06/native-check-runs/20261106-141929-16ec87bb",
+   "sources": [
+    "InstanceLifetime.cpp",
+    "InstanceAncestorChanged.cpp",
+    "InstanceAncestorChangedNative.cpp",
+    "InstanceBaseCallbacks.cpp",
+    "InstanceChildListener.cpp",
+    "InstanceChildPermission.cpp",
+    "InstanceClassLookup.cpp",
+    "InstanceDescendantEvents.cpp",
+    "InstanceReadChildren.cpp",
+    "InstanceReadProperty.cpp",
+    "InstanceSerialization.cpp",
+    "InstanceSignalDescriptors.cpp",
+    "InstanceAnchorChildren.cpp",
+    "ModelInstance.cpp",
+    "WorkspaceFindTopInstance.cpp"
+   ]
+  },
+  "largest_body_identification": {
+   "address": "005a5c90",
+   "call_sites": 74,
+   "emitted_by_no_current_source": true,
+   "identification": "the shape is a reflection-declaring class constructor: a base ctor call, then a run of property/descriptor pointer stores into this at fixed offsets, then a name string. This is RBX::Workspace::Workspace() and it is the single most important remaining body for the Workspace half, since a class swap needs its constructor.",
+   "next_proof": "recover RBX::Workspace::Workspace() from the descriptor stores and the base-ctor chain, then prove bytes, the ten referenced descriptor pointers and the direct call bindings on one object",
+   "scope": "Read from the original binary; the source must be derived from these facts and proven by compile.",
+   "shape": [
+    "EH prologue push -1 / push 0x7d3db1 / fs:[0], sub esp,0x20, push ebx/ebp/esi/edi",
+    "mov edi,ecx then call 0x45ebe0 (a base constructor, unit RBX::VInstance::?)",
+    "stores ten descriptor pointers at edi+0x00, +0x10, +0x14, +0x20, +0x24, +0x44, +0x64, +0x84, +0xa4 and +0xc4",
+    "push 0x833e2c then constructs a std::string from that literal through IAT 00802458",
+    "calls 0x55af90 with ecx = this, then destroys the temporary string through IAT 00802468",
+    "later loads [ebx+0x428] and stores 0x5a02e0 (an RBX::Workspace function) into a local"
+   ],
+   "size": 2431,
+   "unit": "RBX::Workspace"
+  },
+  "note": "The largest remaining bodies are 005a5c90 (2431 B, 74 call sites), 005a59e0 (678 B, 12), 005a36e0 (519 B, 8), 005a1ce0 (408 B, 15), 005a3d90-005a3be0 region and 005a2580 (420 B, 13).",
+  "proven": 14,
+  "scope": "Addresses whose functions.jsonl unit is exactly RBX::Workspace and which no verified source matched. The 36 bodies proven in this receipt include addresses attributed to other units, so the two counts measure different sets and are reported separately rather than merged. Nine of the Instance sources also reproduce bodies already proven from Workspace sources, which is a duplicate-definition signal for the owner rather than additional coverage.",
+  "unmatched": 89,
+  "unmatched_bytes": 12227,
+  "unmatched_call_sites": 274
+ },
+ "region_coverage": {
+  "functions_in_range": 189,
+  "matched_by_verified_sources": 36,
+  "range": "005a0000-005a7000",
+  "scope": "Masked-byte analog coverage from the runner range feature. 189 functions in the range belong to RBX::Workspace or neighbouring units; the 36 proven here are the RBX::Workspace bodies the 21 packaged sources emit. The remainder is unmeasured for this class, not proven absent."
+ },
+ "remaining": [
+  "Independent decorated-name evidence for the 53 direct call targets",
+  "The 22 virtual dispatch sites (slot identity and callee ABI unproven)",
+  "The remaining RBX::Workspace functions in 005a0000-005a7000 not emitted by the packaged sources",
+  "Provider selection and link closure (missing owner-side inputs)",
+  "Relevant P5/P6/runtime gates before any activation"
+ ],
+ "run": "work\\2008-06\\native-check-runs\\20261106-140554-cab011e3",
+ "schema": 1,
+ "swap_target": "Document/Workspace native class swap: CRobloxDoc/StandardVerbs composition and tool-verb mouse-command providers",
+ "task": "Native source recovery with automatic draft sharing",
+ "unit": "RBX::Workspace providers",
+ "workflow": 52,
+ "workspace_manifest_source_revision": "6a75107cef5c18ce5004b83e32ac32736c354a262f7257e7dfbe3192d7bcd00f"
+}

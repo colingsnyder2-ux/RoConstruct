@@ -1,0 +1,44 @@
+{
+  "status": "CONDITIONAL_PARK",
+  "input_count": 331,
+  "manifest_sha256": "5221cb394eca6556ccb4ef53f492debce0be527523c59c612b1e0d3ff91b7fde",
+  "archive_sha256": "3a0490de7239801417a5ae524ed5e54fd5301cf77a7b5cd88d170e8431a1fcbe",
+  "member_count": 267,
+  "old_member_header_offset": 69492296,
+  "old_member_sha256": "242d36b8806d7843d65eb3c37dbea60e40e288cca3549a3255fe6d4920d4418b",
+  "candidate_sha256": "410f7416ff2ab4dd10ca8c608affa2637efcfbad04cee7ac8c7e160f6e0ec58f",
+  "coff_count": 1434,
+  "short_import_count": 21199,
+  "drift": [],
+  "retained_unchanged": 434,
+  "retained_changed": [],
+  "removed_named_definitions": 579,
+  "consumed_without_strict_alternate": [
+    "?loadInstances@SerializerV2@@QAEXPAVXmlElement@@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z"
+  ],
+  "no_compiles": true,
+  "no_archive_mutation": true,
+  "non_coff_inputs": [
+    [
+      {
+        "input": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\bin\\link.exe",
+        "member": null,
+        "offset": null,
+        "sha256": "836eb85b874a9b9cf9aa9fd489a94ec77558ab5697b40ba2653c62caf8c6f840"
+      },
+      "unsupported COFF"
+    ],
+    [
+      {
+        "input": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-130705-87b5983d\\output\\roblox.res",
+        "member": null,
+        "offset": null,
+        "sha256": "d5d2373dc401a271ff764f16cb92558da4009c7215210b4938e533821187bb42"
+      },
+      "unsupported COFF"
+    ]
+  ],
+  "errors": [],
+  "condition": "Only consumed removed symbol without strict alternate is loadInstances; independently verified native provider required before composition. No archive proposal generated.",
+  "provenance_correction": "See include-log-correction.json and normalized-provenance.json; adapter omitted flag but runner restored it in saved command/log."
+}

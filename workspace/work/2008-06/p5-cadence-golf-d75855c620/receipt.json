@@ -1,0 +1,23 @@
+{
+  "revision": "d75855c620f6c1257270a70e48a2071d9fdc35c1",
+  "exe_sha256": "46c7be1227e92daf892695b556d56621bbcb24a480b7f7d371e2941358fa4136",
+  "observer_sha256": "76b17acf38763fb1067fa6f9a855b0e1dfa70519bdaf22d3cdf9886809c17903",
+  "input_sha256": "727bf73ec80a9766cb620ab2688d3a3027422aadc9da775b9c1990d3a02bba2c",
+  "decoded_sha256": "931b5f15090ae830cd2aa66e6d6391702f8283a6ac1368aea158f9ccfe2bcc97",
+  "decoded_bytes": 2115631,
+  "exit": 0,
+  "frames": 240,
+  "initial_models": 829,
+  "final_models": 881,
+  "statuses": {
+    "0": 876,
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 5
+  },
+  "script_error_stacks": 0,
+  "missing_member_messages": 0,
+  "P5_complete": false,
+  "scope": "Fixed-frame local supplied-place load; script/asset fidelity and gameplay not established."
+}

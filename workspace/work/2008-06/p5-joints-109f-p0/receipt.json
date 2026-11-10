@@ -1,0 +1,125 @@
+{
+  "revision": "109f9894feb2a0f9eace7c4f2af127b2e9800fce",
+  "checkout": "C:\\Users\\colin\\RoConstruct",
+  "exe_sha256": "a89f4a68e655137bce100dd47557a82a2ec15eb5e6d9bf1ffef2038d4aa291e4",
+  "map_sha256": "ee6cf90c6a58ecc8a54c59adbddf2037b3032347d1892af4637083baa8725c62",
+  "fixture_sha256": "07eb68599bafa3ccaf014a695451e7a0d66f6490fd19b2112966196096c7013e",
+  "environment_removed": [
+    "ROC_BUILD",
+    "ROC_TEXTURE_STRIP",
+    "ROC_SKY_SPHERE",
+    "ROC_TRACE_STAGES"
+  ],
+  "runs": {
+    "selftest": {
+      "command": [
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\P2RecoveredPlayer.exe",
+        "--selftest"
+      ],
+      "cwd": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p5-joints-109f-p0\\selftest",
+      "exit": 0,
+      "result": {
+        "pixel_metric": "lit green: G>50, G>2R, 2G>3B",
+        "initial": {
+          "models": 1,
+          "greenA": 1879,
+          "greenB": 0,
+          "pass": true
+        },
+        "moved": {
+          "models": 1,
+          "greenA": 0,
+          "greenB": 2080,
+          "pass": true
+        },
+        "removed": {
+          "models": 0,
+          "green": 0,
+          "pass": true
+        },
+        "empty": {
+          "models": 0,
+          "green": 0,
+          "pass": true
+        },
+        "failures": 0
+      },
+      "files": {
+        "player.log": "8bb2c0edc822f571575f2d82f71b8bc02b0013fa69d36d8a4cda3ed98c687b1a",
+        "selftest_empty.png": "43b90f1bd66171f89cd34a1f8320045431e7e41db921e3572405f83f9ad955de",
+        "selftest_initial.png": "c45f954cbf174bb689c58c6dc7eab0fc2de0cd4b5c9c5c4ff86b0c57b8263844",
+        "selftest_moved.png": "f88f0fd09c79c139f3313fdfa418acc84adb8b2b2ae89f703052f0d1db5b02b4",
+        "selftest_removed.png": "43b90f1bd66171f89cd34a1f8320045431e7e41db921e3572405f83f9ad955de",
+        "selftest_result.json": "a4e8122cd39a76909bc0129b0405f306368add686bd710f7b1307b9720467b69",
+        "stdout.txt": "dab6e25583a431059f2cb3b3edfccc64c18a11e7811f59b2f22a26beaa7f269d"
+      }
+    },
+    "falling240": {
+      "command": [
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\P2RecoveredPlayer.exe",
+        "--frames",
+        "240",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\fixtures\\falling.rbxl"
+      ],
+      "cwd": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p5-joints-109f-p0\\falling240",
+      "exit": 0,
+      "files": {
+        "last.png": "00b52f98c32110a40ae2f430c7e577430704c0ccc89c84ad993d39fab9487157",
+        "player.log": "ab1edc7f875e8fd721d9543a150895051bf97229c7e75ce2e41fc75fb45334d1",
+        "stdout.txt": "56b8af190edfbd1806974619fd4bc83886a85445018e6f3bc34acf6124cb5c2c"
+      }
+    },
+    "stability600": {
+      "command": [
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\P2RecoveredPlayer.exe",
+        "--frames",
+        "600",
+        "--stability-test",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\fixtures\\falling.rbxl"
+      ],
+      "cwd": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p5-joints-109f-p0\\stability600",
+      "exit": 0,
+      "result": {
+        "pass": true,
+        "frames": 600,
+        "expected_y": -3.79999995,
+        "initial_floor_y": -5,
+        "floor_stable_and_anchored": true,
+        "tail_samples": 300,
+        "tail_min_y": -3.80272245,
+        "tail_max_y": -3.80272245
+      },
+      "independent_csv_audit": {
+        "samples": 600,
+        "tail": 300,
+        "min": -3.80272245,
+        "max": -3.80272245
+      },
+      "files": {
+        "last.png": "00b52f98c32110a40ae2f430c7e577430704c0ccc89c84ad993d39fab9487157",
+        "player.log": "c42ac7109030be02fea45de77c27fb494262deb6f6cc7089bbcb94d78fe172a9",
+        "stability_result.json": "2a28f607eff8d05533011fa51195c4cbb8d6d310b5bfe97720ab36454496587d",
+        "stability_samples.csv": "cbc8fcb329ab2e53e02923287e6d178d8c69ef41d74ba59aa3e9d999a8096419",
+        "stdout.txt": "7d0024c5ba5ddd150f120acdd8288b918cb5a76996a2caa03e4c10df8cfcaa11"
+      }
+    },
+    "missing-place": {
+      "command": [
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\P2RecoveredPlayer.exe",
+        "--frames",
+        "240",
+        "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p5-joints-109f-p0\\absent.rbxl"
+      ],
+      "cwd": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p5-joints-109f-p0\\missing-place",
+      "exit": 1,
+      "files": {
+        "stdout.txt": "cd99a531533e782990f33411dc5e12a80f16edf204d5b2bc8f2d86364f40276d"
+      }
+    }
+  },
+  "loaded_dlls": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\rgmain.dll": "b67d2e96c5bf28fe48799a96c7927c57b91c74e483b30975ee58ca45f470153c",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\rgdx.dll": "dfce3291ea1214f37aae8e009af1891c45ab7843eb639a914d9791418559a50e"
+  },
+  "scope": "Direct runtime evidence only; source export and clean-build provenance require separate audit."
+}

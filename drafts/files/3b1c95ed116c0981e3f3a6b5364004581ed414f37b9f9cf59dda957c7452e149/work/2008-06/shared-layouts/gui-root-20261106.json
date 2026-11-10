@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "delivered_by": {"session": "5f9808016e1a45f98831028ad053a299", "note": "scope-expansion session carrying native-classes/GuiRoot.cpp, gui-root-batch.json and this receipt"},
+  "class": "RBX::GuiRoot",
+  "client": "2008-06",
+  "unit": "gui/GuiRoot.cpp (recovered source); declaration and the getSize inline body live in native-headers/gui/Gui.h",
+  "state": "inactive candidate: local byte checks only; no link, no selection, no runtime/P5-P6 gate",
+  "package_marker_revision": "045d8ce8e42565232578ac46d73ad4bde5c260008ea025c6982b75e9cb7b10e5",
+  "workspace_manifest_source_revision": null,
+  "baseline_commit": null,
+  "run": "work/2008-06/native-check-runs/20261106-222404-2cce3c0d",
+  "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /DNOMINMAX (+ runner rbxgs profile)",
+  "totals": {"checks": 3, "exact": 2, "data_checked": 2, "data_mismatches": []},
+  "recovered_methods": [
+    {"addr": "00573b10", "symbol": "??0GuiRoot@RBX@@QAE@XZ", "size": 197,
+     "body": "GuiRoot::GuiRoot() : GuiItem() { setName(\"GuiRoot\"); }",
+     "note": "the eleven subobject vtables are the shared GuiItem-derived layout; setName receives a temporary built from the \"GuiRoot\" literal at 0082fa60"},
+    {"addr": "00573be0", "symbol": "?getSize@GuiRoot@RBX@@EBE?AVVector2@G3D@@XZ", "size": 24,
+     "body": "inline body from Gui.h: return getCanvasSize(); - both floats come from the private static canvasSize (00974d78/00974d7c)"}
+  ],
+  "parked": [
+    {"addr": "00573c00", "symbol": "?render2d@GuiRoot@RBX@@UAEXPAVAdorn@2@@Z", "target_size": 167, "object_size": 168,
+     "first_byte_difference": 0,
+     "body_so_far": "int height = adorn->getHeight(); int width = adorn->getWidth(); canvasSize = G3D::Vector2((float)width, (float)height); for (size_t i = 0; i < numChildren(); ++i) { GuiItem* item = dynamic_cast<GuiItem*>(getChild(i)); if (item) item->render2d(adorn); }",
+     "evidence": "original order is getHeight (Adorn vtable slot 6) then getWidth (slot 5), then two int->float fild conversions into the static canvasSize, then the child loop with dynamic_cast<GuiItem*> (RTTI 0092907c/0092b8d8) and an indirect render2d through slot 24; the residual 1-byte difference is at offset 0, almost certainly the frame the two int locals force",
+     "next_proof": "swap the two locals for one or drop them (try (float)adorn->getWidth(), (float)adorn->getHeight() with the call order forced by the argument order); three failed hypotheses on the same evidence parks it per the family rule"}
+  ],
+  "generated_symbols_verified": [
+    "??1GuiRoot@RBX@@UAE@XZ (00573e20 region tail jump) - emitted but not separately checked",
+    "??_GGuiRoot@RBX@@UAEPAXI@Z and the eight ??_EGuiRoot@RBX@@W* adjustor thunks are present in the object"
+  ],
+  "remaining_obligations": [
+    "render2d residual 1-byte divergence (see parked)",
+    "indirect virtual calls (Adorn::getWidth/getHeight through the vtable, child render2d through slot 24) need indirect-call ABI evidence",
+    "vtable slot walk, linked provider selection, runtime/P5-P6 gates and independent server credit all remain with the owner; nothing here is claimed beyond local bytes"
+  ]
+}

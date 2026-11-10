@@ -1,0 +1,183 @@
+{
+  "outcome": "link_failed",
+  "exit_code": 1120,
+  "link_log_present": true,
+  "compiler_errors": [],
+  "link_errors": [
+    "linked.lib(ContentProvider.obj) : error LNK2005: \"public: void __thiscall RBX::ContentProvider::load(class RBX::ContentId,class std::vector<class boost::shared_ptr<class RBX::Instance>,class std::allocator<class boost::shared_ptr<class RBX::Instance> > > &)\" (?load@ContentProvider@RBX@@QAEXVContentId@2@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z) already defined in NativeContentProviderLoadFull.obj",
+    "linked.lib(Math.obj) : error LNK2005: \"public: static class G3D::Matrix3 const __cdecl RBX::Math::matrixTiltQuadrant(int)\" (?matrixTiltQuadrant@Math@RBX@@SA?BVMatrix3@G3D@@H@Z) already defined in NativeMathTiltMatricesFull.obj",
+    "linked.lib(Math.obj) : error LNK2005: \"public: static int __cdecl RBX::Math::toYAxisQuadrant(class G3D::CoordinateFrame const &)\" (?toYAxisQuadrant@Math@RBX@@SAHABVCoordinateFrame@G3D@@@Z) already defined in NativeMathTiltQuadrantFull.obj",
+    "linked.lib(Math.obj) : error LNK2005: \"public: static class G3D::Vector3 __cdecl RBX::Math::closestPointOnRay(class G3D::Ray const &,class G3D::Ray const &)\" (?closestPointOnRay@Math@RBX@@SA?AVVector3@G3D@@ABVRay@4@0@Z) already defined in NativeMathClosestRayFull.obj",
+    "linked.lib(FileSystem.obj) : error LNK2005: \"public: __thiscall RBX::VistaAPIs::~VistaAPIs(void)\" (??1VistaAPIs@RBX@@QAE@XZ) already defined in NativeFileSystemFull.obj",
+    "linked.lib(FileSystem.obj) : error LNK2005: \"public: long __stdcall RBX::VistaAPIs::GetIntegrity(unsigned char *)\" (?GetIntegrity@VistaAPIs@RBX@@QAGJPAE@Z) already defined in NativeFileSystemFull.obj",
+    "linked.lib(FileSystem.obj) : error LNK2005: \"public: __thiscall RBX::VistaAPIs::VistaAPIs(void)\" (??0VistaAPIs@RBX@@QAE@XZ) already defined in NativeFileSystemFull.obj",
+    "linked.lib(FileSystem.obj) : error LNK2005: \"public: long __thiscall RBX::VistaAPIs::SHGetKnownFolderPath(struct _GUID const &,unsigned long,void *,wchar_t * *)\" (?SHGetKnownFolderPath@VistaAPIs@RBX@@QAEJABU_GUID@@KPAXPAPA_W@Z) already defined in NativeFileSystemFull.obj",
+    "linked.lib(FileSystem.obj) : error LNK2005: \"public: static class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl RBX::FileSystem::getUserAppDataDirectory(bool,char const *)\" (?getUserAppDataDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NPBD@Z) already defined in NativeFileSystemFull.obj",
+    "linked.lib(WorldHelpers.obj) : error LNK2005: \"public: static int __cdecl RBX::Name::compare(class RBX::Name &,class RBX::Name &)\" (?compare@Name@RBX@@SAHAAV12@0@Z) already defined in NativeNameCompareFull.obj",
+    "candidate.obj : error LNK2019: unresolved external symbol \"public: __thiscall RBX::AxisMoveTool::AxisMoveTool(class RBX::Workspace *)\" (??0AxisMoveTool@RBX@@QAE@PAVWorkspace@1@@Z) referenced in function \"public: virtual class RBX::MouseCommand * __thiscall RBX::TToolVerb<class RBX::AxisMoveTool,class RBX::RunStateVerb>::newMouseCommand(void)\" (?newMouseCommand@?$TToolVerb@VAxisMoveTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ)",
+    "NativeCRobloxDoc.obj : error LNK2019: unresolved external symbol \"void __cdecl setActiveDocument(bool,class CRobloxDoc *)\" (?setActiveDocument@@YAX_NPAVCRobloxDoc@@@Z) referenced in function \"public: virtual void __thiscall CRobloxDoc::DeleteContents(void)\" (?DeleteContents@CRobloxDoc@@UAEXXZ)",
+    "NativeDocumentInitializeFull.obj : error LNK2019: unresolved external symbol \"public: class RBX::Workspace * __thiscall RBX::ServiceProvider::create<class RBX::Workspace>(void)const \" (??$create@VWorkspace@RBX@@@ServiceProvider@RBX@@QBEPAVWorkspace@1@XZ) referenced in function \"protected: __thiscall RBX::EditSelectionVerb::EditSelectionVerb(class RBX::VerbContainer *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class RBX::DataModel *)\" (??0EditSelectionVerb@RBX@@IAE@PAVVerbContainer@1@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVDataModel@1@@Z)",
+    "NativeWorkspaceSaveFull.obj : error LNK2019: unresolved external symbol \"public: long __thiscall CWorkspace::write(class XmlElement *,class std::basic_ostream<char,struct std::char_traits<char> > &)\" (?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z) referenced in function \"public: virtual long __stdcall CWorkspace::SaveToFile(wchar_t *)\" (?SaveToFile@CWorkspace@@UAGJPA_W@Z)",
+    "NativeWorkspaceWriteFull.obj : error LNK2001: unresolved external symbol \"public: long __thiscall CWorkspace::write(class XmlElement *,class std::basic_ostream<char,struct std::char_traits<char> > &)\" (?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z)",
+    "NativePhysicsServiceAllocationFull.obj : error LNK2001: unresolved external symbol \"protected: virtual void __thiscall RBX::PhysicsService::onServiceProvider(class RBX::ServiceProvider const *,class RBX::ServiceProvider const *)\" (?onServiceProvider@PhysicsService@RBX@@MAEXPBVServiceProvider@2@0@Z)",
+    "NativePhysicsServiceLifetimeFull.obj : error LNK2001: unresolved external symbol \"protected: virtual void __thiscall RBX::PhysicsService::onServiceProvider(class RBX::ServiceProvider const *,class RBX::ServiceProvider const *)\" (?onServiceProvider@PhysicsService@RBX@@MAEXPBVServiceProvider@2@0@Z)",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-doc-relinks\\20261105-131253-90ee3d03\\RobloxNativeDoc.exe : fatal error LNK1120: 5 unresolved externals"
+  ],
+  "blockers": [
+    {
+      "symbol": "??0AxisMoveTool@RBX@@QAE@PAVWorkspace@1@@Z",
+      "display": "public: __thiscall RBX::AxisMoveTool::AxisMoveTool(class RBX::Workspace *)",
+      "requesters": [
+        "candidate.obj"
+      ]
+    },
+    {
+      "symbol": "?setActiveDocument@@YAX_NPAVCRobloxDoc@@@Z",
+      "display": "void __cdecl setActiveDocument(bool,class CRobloxDoc *)",
+      "requesters": [
+        "NativeCRobloxDoc.obj"
+      ]
+    },
+    {
+      "symbol": "??$create@VWorkspace@RBX@@@ServiceProvider@RBX@@QBEPAVWorkspace@1@XZ",
+      "display": "public: class RBX::Workspace * __thiscall RBX::ServiceProvider::create<class RBX::Workspace>(void)const ",
+      "requesters": [
+        "NativeDocumentInitializeFull.obj"
+      ]
+    },
+    {
+      "symbol": "?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+      "display": "public: long __thiscall CWorkspace::write(class XmlElement *,class std::basic_ostream<char,struct std::char_traits<char> > &)",
+      "requesters": [
+        "NativeWorkspaceSaveFull.obj",
+        "NativeWorkspaceWriteFull.obj"
+      ]
+    },
+    {
+      "symbol": "?onServiceProvider@PhysicsService@RBX@@MAEXPBVServiceProvider@2@0@Z",
+      "display": "protected: virtual void __thiscall RBX::PhysicsService::onServiceProvider(class RBX::ServiceProvider const *,class RBX::ServiceProvider const *)",
+      "requesters": [
+        "NativePhysicsServiceAllocationFull.obj",
+        "NativePhysicsServiceLifetimeFull.obj"
+      ]
+    }
+  ],
+  "duplicates": [
+    {
+      "symbol": "?load@ContentProvider@RBX@@QAEXVContentId@2@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z",
+      "display": "\"public: void __thiscall RBX::ContentProvider::load(class RBX::ContentId,class std::vector<class boost::shared_ptr<class RBX::Instance>,class std::allocator<class boost::shared_ptr<class RBX::Instance> > > &)\" (?load@ContentProvider@RBX@@QAEXVContentId@2@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z)",
+      "providers": [
+        "linked.lib(ContentProvider.obj)",
+        "NativeContentProviderLoadFull.obj"
+      ]
+    },
+    {
+      "symbol": "?matrixTiltQuadrant@Math@RBX@@SA?BVMatrix3@G3D@@H@Z",
+      "display": "\"public: static class G3D::Matrix3 const __cdecl RBX::Math::matrixTiltQuadrant(int)\" (?matrixTiltQuadrant@Math@RBX@@SA?BVMatrix3@G3D@@H@Z)",
+      "providers": [
+        "linked.lib(Math.obj)",
+        "NativeMathTiltMatricesFull.obj"
+      ]
+    },
+    {
+      "symbol": "?toYAxisQuadrant@Math@RBX@@SAHABVCoordinateFrame@G3D@@@Z",
+      "display": "\"public: static int __cdecl RBX::Math::toYAxisQuadrant(class G3D::CoordinateFrame const &)\" (?toYAxisQuadrant@Math@RBX@@SAHABVCoordinateFrame@G3D@@@Z)",
+      "providers": [
+        "linked.lib(Math.obj)",
+        "NativeMathTiltQuadrantFull.obj"
+      ]
+    },
+    {
+      "symbol": "?closestPointOnRay@Math@RBX@@SA?AVVector3@G3D@@ABVRay@4@0@Z",
+      "display": "\"public: static class G3D::Vector3 __cdecl RBX::Math::closestPointOnRay(class G3D::Ray const &,class G3D::Ray const &)\" (?closestPointOnRay@Math@RBX@@SA?AVVector3@G3D@@ABVRay@4@0@Z)",
+      "providers": [
+        "linked.lib(Math.obj)",
+        "NativeMathClosestRayFull.obj"
+      ]
+    },
+    {
+      "symbol": "??1VistaAPIs@RBX@@QAE@XZ",
+      "display": "\"public: __thiscall RBX::VistaAPIs::~VistaAPIs(void)\" (??1VistaAPIs@RBX@@QAE@XZ)",
+      "providers": [
+        "linked.lib(FileSystem.obj)",
+        "NativeFileSystemFull.obj"
+      ]
+    },
+    {
+      "symbol": "?GetIntegrity@VistaAPIs@RBX@@QAGJPAE@Z",
+      "display": "\"public: long __stdcall RBX::VistaAPIs::GetIntegrity(unsigned char *)\" (?GetIntegrity@VistaAPIs@RBX@@QAGJPAE@Z)",
+      "providers": [
+        "linked.lib(FileSystem.obj)",
+        "NativeFileSystemFull.obj"
+      ]
+    },
+    {
+      "symbol": "??0VistaAPIs@RBX@@QAE@XZ",
+      "display": "\"public: __thiscall RBX::VistaAPIs::VistaAPIs(void)\" (??0VistaAPIs@RBX@@QAE@XZ)",
+      "providers": [
+        "linked.lib(FileSystem.obj)",
+        "NativeFileSystemFull.obj"
+      ]
+    },
+    {
+      "symbol": "?SHGetKnownFolderPath@VistaAPIs@RBX@@QAEJABU_GUID@@KPAXPAPA_W@Z",
+      "display": "\"public: long __thiscall RBX::VistaAPIs::SHGetKnownFolderPath(struct _GUID const &,unsigned long,void *,wchar_t * *)\" (?SHGetKnownFolderPath@VistaAPIs@RBX@@QAEJABU_GUID@@KPAXPAPA_W@Z)",
+      "providers": [
+        "linked.lib(FileSystem.obj)",
+        "NativeFileSystemFull.obj"
+      ]
+    },
+    {
+      "symbol": "?getUserAppDataDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NPBD@Z",
+      "display": "\"public: static class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl RBX::FileSystem::getUserAppDataDirectory(bool,char const *)\" (?getUserAppDataDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NPBD@Z)",
+      "providers": [
+        "linked.lib(FileSystem.obj)",
+        "NativeFileSystemFull.obj"
+      ]
+    },
+    {
+      "symbol": "?compare@Name@RBX@@SAHAAV12@0@Z",
+      "display": "\"public: static int __cdecl RBX::Name::compare(class RBX::Name &,class RBX::Name &)\" (?compare@Name@RBX@@SAHAAV12@0@Z)",
+      "providers": [
+        "linked.lib(WorldHelpers.obj)",
+        "NativeNameCompareFull.obj"
+      ]
+    }
+  ],
+  "scope": "Replay a terminal Doc diagnostic link into a new directory; never execute it.\n\nOnly explicit inputs are fingerprinted. Historical provenance, implicit default\nlibraries, class ABI and runtime correctness remain separate obligations.\n",
+  "source_run": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-130705-87b5983d",
+  "source_command_sha256": "d6186dfbab9b8f843a50e4683ad39584dd0ba5e0b8a6a5218c016c321cf50b78",
+  "seconds": 0.822,
+  "changed_inputs": [],
+  "baseline_comparison": {
+    "blockers": {
+      "unchanged": false,
+      "added": [
+        "??$create@VWorkspace@RBX@@@ServiceProvider@RBX@@QBEPAVWorkspace@1@XZ",
+        "??0AxisMoveTool@RBX@@QAE@PAVWorkspace@1@@Z",
+        "?onServiceProvider@PhysicsService@RBX@@MAEXPBVServiceProvider@2@0@Z",
+        "?setActiveDocument@@YAX_NPAVCRobloxDoc@@@Z",
+        "?write@CWorkspace@@QAEJPAVXmlElement@@AAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z"
+      ],
+      "removed": []
+    },
+    "duplicates": {
+      "unchanged": false,
+      "added": [
+        "??0VistaAPIs@RBX@@QAE@XZ",
+        "??1VistaAPIs@RBX@@QAE@XZ",
+        "?GetIntegrity@VistaAPIs@RBX@@QAGJPAE@Z",
+        "?SHGetKnownFolderPath@VistaAPIs@RBX@@QAEJABU_GUID@@KPAXPAPA_W@Z",
+        "?closestPointOnRay@Math@RBX@@SA?AVVector3@G3D@@ABVRay@4@0@Z",
+        "?compare@Name@RBX@@SAHAAV12@0@Z",
+        "?getUserAppDataDirectory@FileSystem@RBX@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_NPBD@Z",
+        "?load@ContentProvider@RBX@@QAEXVContentId@2@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z",
+        "?matrixTiltQuadrant@Math@RBX@@SA?BVMatrix3@G3D@@H@Z",
+        "?toYAxisQuadrant@Math@RBX@@SAHABVCoordinateFrame@G3D@@@Z"
+      ],
+      "removed": []
+    }
+  },
+  "library_replacements": [],
+  "historical_input_identity_proven": false
+}

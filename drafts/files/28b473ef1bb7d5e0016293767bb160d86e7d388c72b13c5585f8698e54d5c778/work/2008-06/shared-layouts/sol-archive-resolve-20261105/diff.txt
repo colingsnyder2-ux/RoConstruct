@@ -1,0 +1,11 @@
+?resolveRefs@ArchiveBinder@@UAE_NXZ 96 96
+     cmp edi, dword ptr [esi + 0x54]
+     jne 0x59
+  +  mov eax, 1
+     pop edi
+     pop esi
+     pop ebp
+  -  mov eax, 1
+     pop ebx
+     ret 
+  ...

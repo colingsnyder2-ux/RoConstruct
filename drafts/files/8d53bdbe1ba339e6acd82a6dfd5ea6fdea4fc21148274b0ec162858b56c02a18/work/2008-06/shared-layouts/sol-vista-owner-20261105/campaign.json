@@ -1,0 +1,34 @@
+{
+  "swap_target": "CRobloxDoc diagnostic closure",
+  "baseline_receipt": "work/2008-06/native-doc-relinks/20261105-133112-e038d1b8/result.json",
+  "hypotheses": [
+    {
+      "id": 1,
+      "status": "rejected upstream",
+      "reason": "inline annotations retain four duplicate COMDAT definitions"
+    },
+    {
+      "id": 2,
+      "status": "rejected retained-code regression",
+      "compile_count": 1,
+      "change": "remove only four Vista method definitions; authentic header and canonical flags unchanged",
+      "remaining_duplicate_definitions": 0,
+      "retained_bodies": 69,
+      "unchanged_retained_bodies": 66,
+      "changed_bodies": 3
+    }
+  ],
+  "next_gate": "Parent guidance required before another compile; original cache caller embeds Vista ctor/wrapper/dtor and removing definitions changes body and EH. No archive replacement permitted by no-loss guard.",
+  "metrics": {
+    "new_inactive_exact": 0,
+    "selected_executable": 0,
+    "gated_swaps": 0,
+    "server_credit": 0
+  },
+  "inputs": {
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-filesystem-owner-20261105\\linked.lib": "0c597337028cf2cda5addf6ededafd11d546ec6205720401a5e1c166ab1b0836",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\shared-layouts\\sol-vista-owner-20261105\\FileSystem.obj": "d48c4365aaefd825e02a9e9623573fe287cde699c59c72324d40c9bff950011d",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\out\\RbxgsApp\\layer-rbxgs\\FileSystem.command.json": "2bcfdf70a8944e6eddf95267d9d237dda7ea424385fc943032d5041c4b274214",
+    "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\native-candidates\\sol-vista-owner-20261105\\FileSystem.cpp": "f57f025ef3b0e43eda0eaf49f36c0945a58bb0a3bb39f3680eff7f664a0008aa"
+  }
+}

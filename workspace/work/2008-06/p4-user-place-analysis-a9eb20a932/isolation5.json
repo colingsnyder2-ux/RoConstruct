@@ -1,0 +1,22 @@
+[
+  {
+    "case": "no-humanoid",
+    "exit": 0,
+    "timeout": false
+  },
+  {
+    "case": "no-script",
+    "exit": 3221225477,
+    "timeout": false
+  },
+  {
+    "case": "no-values",
+    "exit": 3221225477,
+    "timeout": false
+  },
+  {
+    "case": "only-models",
+    "exit": 0,
+    "timeout": false
+  }
+]

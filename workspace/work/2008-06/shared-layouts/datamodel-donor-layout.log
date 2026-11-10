@@ -1,0 +1,800 @@
+NativeDataModelProbe.cpp
+Unknown compiler version - please run the configure tests and report the results
+class ?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB	size(448):
+	+---
+	| +--- (base class ServiceProvider)
+	| | +--- (base class ?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3PBDB)
+	| | | +--- (base class ?$Described@VServiceProvider@RBX@@$1?sServiceProvider@2@3PBDBV?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3PBDB@2@)
+	| | | | +--- (base class ?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3PBDB)
+	| | | | | +--- (base class Instance)
+	| | | | | | +--- (base class ?$AbstractFactoryProduct@VInstance@RBX@@)
+	| | | | | | | +--- (base class ?$Creatable@VInstance@RBX@@)
+	| | | | | | | | +--- (base class Object)
+ 0	| | | | | | | | | {vfptr}
+	| | | | | | | | +---
+	| | | | | | | +---
+	| | | | | | +---
+	| | | | | | +--- (base class ?$Described@VInstance@RBX@@$1?sInstance@2@3PBDBVDescribedBase@Reflection@2@)
+	| | | | | | | +--- (base class DescribedBase)
+	| | | | | | | | +--- (base class SignalSource)
+ 4	| | | | | | | | | {vfptr}
+ 8	| | | | | | | | | ?$scoped_ptr@V?$map@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@@std@@ signals
+	| | | | | | | | +---
+12	| | | | | | | | descriptor
+	| | | | | | | +---
+	| | | | | | +---
+	| | | | | | +--- (base class Debugable)
+16	| | | | | | | {vfptr}
+	| | | | | | +---
+	| | | | | | +--- (base class ?$Notifier@VInstance@RBX@@UChildAdded@2@)
+20	| | | | | | | {vfptr}
+24	| | | | | | | ?$vector@PAV?$Listener@VInstance@RBX@@UChildAdded@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@UChildAdded@2@@RBX@@@std@@ listeners
+48	| | | | | | | raiseRange
+	| | | | | | +---
+	| | | | | | +--- (base class ?$Notifier@VInstance@RBX@@UChildRemoved@2@)
+52	| | | | | | | {vfptr}
+56	| | | | | | | ?$vector@PAV?$Listener@VInstance@RBX@@UChildRemoved@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@UChildRemoved@2@@RBX@@@std@@ listeners
+80	| | | | | | | raiseRange
+	| | | | | | +---
+	| | | | | | +--- (base class ?$Notifier@VInstance@RBX@@UDescendentAdded@2@)
+84	| | | | | | | {vfptr}
+88	| | | | | | | ?$vector@PAV?$Listener@VInstance@RBX@@UDescendentAdded@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@UDescendentAdded@2@@RBX@@@std@@ listeners
+112	| | | | | | | raiseRange
+	| | | | | | +---
+	| | | | | | +--- (base class ?$Notifier@VInstance@RBX@@UDescendentRemoving@2@)
+116	| | | | | | | {vfptr}
+120	| | | | | | | ?$vector@PAV?$Listener@VInstance@RBX@@UDescendentRemoving@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@UDescendentRemoving@2@@RBX@@@std@@ listeners
+144	| | | | | | | raiseRange
+	| | | | | | +---
+	| | | | | | +--- (base class ?$Notifier@VInstance@RBX@@UAncestorChanged@2@)
+148	| | | | | | | {vfptr}
+152	| | | | | | | ?$vector@PAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@RBX@@@std@@ listeners
+176	| | | | | | | raiseRange
+	| | | | | | +---
+	| | | | | | +--- (base class ?$Notifier@VInstance@RBX@@VPropertyChanged@2@)
+180	| | | | | | | {vfptr}
+184	| | | | | | | ?$vector@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@ listeners
+208	| | | | | | | raiseRange
+	| | | | | | +---
+	| | | | | | +--- (base class ?$enable_shared_from_this@VInstance@RBX@@)
+212	| | | | | | | ?$weak_ptr@VInstance@RBX@@ _internal_weak_this
+	| | | | | | +---
+	| | | | | | +--- (base class noncopyable)
+	| | | | | | +---
+220	| | | | | | ?$Association@VInstance@RBX@@ assoc
+244	| | | | | | parent
+248	| | | | | | ?$CopyOnWrite@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@ children
+256	| | | | | | ?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@ name
+284	| | | | | | archivable
+  	| | | | | | <alignment member> (size=3)
+288	| | | | | | Guid guid
+	| | | | | +---
+	| | | | +---
+	| | | +---
+	| | +---
+	| | +--- (base class ?$Notifier@VServiceProvider@RBX@@VClosing@2@)
+296	| | | {vfptr}
+300	| | | ?$vector@PAV?$Listener@VServiceProvider@RBX@@VClosing@2@@RBX@@V?$allocator@PAV?$Listener@VServiceProvider@RBX@@VClosing@2@@RBX@@@std@@ listeners
+324	| | | raiseRange
+	| | +---
+	| | +--- (base class ?$Notifier@VServiceProvider@RBX@@UServiceAdded@2@)
+328	| | | {vfptr}
+332	| | | ?$vector@PAV?$Listener@VServiceProvider@RBX@@UServiceAdded@2@@RBX@@V?$allocator@PAV?$Listener@VServiceProvider@RBX@@UServiceAdded@2@@RBX@@@std@@ listeners
+356	| | | raiseRange
+	| | +---
+	| | +--- (base class ?$Notifier@VServiceProvider@RBX@@UServiceRemoving@2@)
+360	| | | {vfptr}
+364	| | | ?$vector@PAV?$Listener@VServiceProvider@RBX@@UServiceRemoving@2@@RBX@@V?$allocator@PAV?$Listener@VServiceProvider@RBX@@UServiceRemoving@2@@RBX@@@std@@ listeners
+388	| | | raiseRange
+	| | +---
+392	| | ?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@ serviceArray
+416	| | ?$map@PBVName@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@6@ serviceMap
+	| +---
+	+---
+
+?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB::$vftable@?$AbstractFactoryProduct@VInstance@RBX@@@:
+	| &?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB_meta
+	|  0
+ 0	| &?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB::{dtor}
+ 1	| &?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB::getClassName
+ 2	| &Instance::onGuidChanged
+ 3	| &Instance::setName
+ 4	| &ServiceProvider::askAddChild
+ 5	| &Instance::askSetParent
+ 6	| &Instance::onAncestorChanged
+ 7	| &ServiceProvider::onDescendentAdded
+ 8	| &ServiceProvider::onDescendentRemoving
+ 9	| &ServiceProvider::onChildAdded
+10	| &ServiceProvider::onChildRemoving
+11	| &Instance::onChildRemoved
+12	| &Instance::onLastChildRemoved
+13	| &Instance::readProperty
+14	| &Instance::onServiceProvider
+15	| &ServiceProvider::createChild
+16	| &Instance::write
+17	| &Instance::onChildChanged
+
+?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB::$vftable@?$Described@VInstance@RBX@@$1?sInstance@2@3PBDBVDescribedBase@Reflection@2@@:
+	| -4
+ 0	| &thunk: this-=4; goto ?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB::{dtor}
+
+?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB::$vftable@Debugable@:
+	| -16
+ 0	| &Debugable::dump
+
+?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB::$vftable@?$Notifier@VInstance@RBX@@UChildAdded@2@@:
+	| -20
+ 0	| &thunk: this-=20; goto ?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB::{dtor}
+ 1	| &Instance::onAddListener
+ 2	| &?$Notifier@VInstance@RBX@@UChildAdded@2@::onRemoveListener
+
+?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB::$vftable@?$Notifier@VInstance@RBX@@UChildRemoved@2@@:
+	| -52
+ 0	| &thunk: this-=52; goto ?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB::{dtor}
+ 1	| &?$Notifier@VInstance@RBX@@UChildRemoved@2@::onAddListener
+ 2	| &?$Notifier@VInstance@RBX@@UChildRemoved@2@::onRemoveListener
+
+?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB::$vftable@?$Notifier@VInstance@RBX@@UDescendentAdded@2@@:
+	| -84
+ 0	| &thunk: this-=84; goto ?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB::{dtor}
+ 1	| &Instance::onAddListener
+ 2	| &?$Notifier@VInstance@RBX@@UDescendentAdded@2@::onRemoveListener
+
+?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB::$vftable@?$Notifier@VInstance@RBX@@UDescendentRemoving@2@@:
+	| -116
+ 0	| &thunk: this-=116; goto ?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB::{dtor}
+ 1	| &?$Notifier@VInstance@RBX@@UDescendentRemoving@2@::onAddListener
+ 2	| &?$Notifier@VInstance@RBX@@UDescendentRemoving@2@::onRemoveListener
+
+?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB::$vftable@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@:
+	| -148
+ 0	| &thunk: this-=148; goto ?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB::{dtor}
+ 1	| &?$Notifier@VInstance@RBX@@UAncestorChanged@2@::onAddListener
+ 2	| &?$Notifier@VInstance@RBX@@UAncestorChanged@2@::onRemoveListener
+
+?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB::$vftable@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@:
+	| -180
+ 0	| &thunk: this-=180; goto ?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB::{dtor}
+ 1	| &?$Notifier@VInstance@RBX@@VPropertyChanged@2@::onAddListener
+ 2	| &?$Notifier@VInstance@RBX@@VPropertyChanged@2@::onRemoveListener
+
+?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB::$vftable@?$Notifier@VServiceProvider@RBX@@VClosing@2@@:
+	| -296
+ 0	| &thunk: this-=296; goto ?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB::{dtor}
+ 1	| &?$Notifier@VServiceProvider@RBX@@VClosing@2@::onAddListener
+ 2	| &?$Notifier@VServiceProvider@RBX@@VClosing@2@::onRemoveListener
+
+?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB::$vftable@?$Notifier@VServiceProvider@RBX@@UServiceAdded@2@@:
+	| -328
+ 0	| &thunk: this-=328; goto ?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB::{dtor}
+ 1	| &ServiceProvider::onAddListener
+ 2	| &?$Notifier@VServiceProvider@RBX@@UServiceAdded@2@::onRemoveListener
+
+?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB::$vftable@?$Notifier@VServiceProvider@RBX@@UServiceRemoving@2@@:
+	| -360
+ 0	| &thunk: this-=360; goto ?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB::{dtor}
+ 1	| &?$Notifier@VServiceProvider@RBX@@UServiceRemoving@2@::onAddListener
+ 2	| &?$Notifier@VServiceProvider@RBX@@UServiceRemoving@2@::onRemoveListener
+
+?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB::getClassName this adjustor: 0
+?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB::{dtor} this adjustor: 0
+?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB::__delDtor this adjustor: 0
+?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB::__vecDelDtor this adjustor: 0
+
+
+class ?$Described@VDataModel@RBX@@$1?sDataModel@2@3PBDBV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB@2@	size(448):
+	+---
+	| +--- (base class ?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB)
+	| | +--- (base class ServiceProvider)
+	| | | +--- (base class ?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3PBDB)
+	| | | | +--- (base class ?$Described@VServiceProvider@RBX@@$1?sServiceProvider@2@3PBDBV?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3PBDB@2@)
+	| | | | | +--- (base class ?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3PBDB)
+	| | | | | | +--- (base class Instance)
+	| | | | | | | +--- (base class ?$AbstractFactoryProduct@VInstance@RBX@@)
+	| | | | | | | | +--- (base class ?$Creatable@VInstance@RBX@@)
+	| | | | | | | | | +--- (base class Object)
+ 0	| | | | | | | | | | {vfptr}
+	| | | | | | | | | +---
+	| | | | | | | | +---
+	| | | | | | | +---
+	| | | | | | | +--- (base class ?$Described@VInstance@RBX@@$1?sInstance@2@3PBDBVDescribedBase@Reflection@2@)
+	| | | | | | | | +--- (base class DescribedBase)
+	| | | | | | | | | +--- (base class SignalSource)
+ 4	| | | | | | | | | | {vfptr}
+ 8	| | | | | | | | | | ?$scoped_ptr@V?$map@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@@std@@ signals
+	| | | | | | | | | +---
+12	| | | | | | | | | descriptor
+	| | | | | | | | +---
+	| | | | | | | +---
+	| | | | | | | +--- (base class Debugable)
+16	| | | | | | | | {vfptr}
+	| | | | | | | +---
+	| | | | | | | +--- (base class ?$Notifier@VInstance@RBX@@UChildAdded@2@)
+20	| | | | | | | | {vfptr}
+24	| | | | | | | | ?$vector@PAV?$Listener@VInstance@RBX@@UChildAdded@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@UChildAdded@2@@RBX@@@std@@ listeners
+48	| | | | | | | | raiseRange
+	| | | | | | | +---
+	| | | | | | | +--- (base class ?$Notifier@VInstance@RBX@@UChildRemoved@2@)
+52	| | | | | | | | {vfptr}
+56	| | | | | | | | ?$vector@PAV?$Listener@VInstance@RBX@@UChildRemoved@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@UChildRemoved@2@@RBX@@@std@@ listeners
+80	| | | | | | | | raiseRange
+	| | | | | | | +---
+	| | | | | | | +--- (base class ?$Notifier@VInstance@RBX@@UDescendentAdded@2@)
+84	| | | | | | | | {vfptr}
+88	| | | | | | | | ?$vector@PAV?$Listener@VInstance@RBX@@UDescendentAdded@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@UDescendentAdded@2@@RBX@@@std@@ listeners
+112	| | | | | | | | raiseRange
+	| | | | | | | +---
+	| | | | | | | +--- (base class ?$Notifier@VInstance@RBX@@UDescendentRemoving@2@)
+116	| | | | | | | | {vfptr}
+120	| | | | | | | | ?$vector@PAV?$Listener@VInstance@RBX@@UDescendentRemoving@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@UDescendentRemoving@2@@RBX@@@std@@ listeners
+144	| | | | | | | | raiseRange
+	| | | | | | | +---
+	| | | | | | | +--- (base class ?$Notifier@VInstance@RBX@@UAncestorChanged@2@)
+148	| | | | | | | | {vfptr}
+152	| | | | | | | | ?$vector@PAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@RBX@@@std@@ listeners
+176	| | | | | | | | raiseRange
+	| | | | | | | +---
+	| | | | | | | +--- (base class ?$Notifier@VInstance@RBX@@VPropertyChanged@2@)
+180	| | | | | | | | {vfptr}
+184	| | | | | | | | ?$vector@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@ listeners
+208	| | | | | | | | raiseRange
+	| | | | | | | +---
+	| | | | | | | +--- (base class ?$enable_shared_from_this@VInstance@RBX@@)
+212	| | | | | | | | ?$weak_ptr@VInstance@RBX@@ _internal_weak_this
+	| | | | | | | +---
+	| | | | | | | +--- (base class noncopyable)
+	| | | | | | | +---
+220	| | | | | | | ?$Association@VInstance@RBX@@ assoc
+244	| | | | | | | parent
+248	| | | | | | | ?$CopyOnWrite@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@ children
+256	| | | | | | | ?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@ name
+284	| | | | | | | archivable
+  	| | | | | | | <alignment member> (size=3)
+288	| | | | | | | Guid guid
+	| | | | | | +---
+	| | | | | +---
+	| | | | +---
+	| | | +---
+	| | | +--- (base class ?$Notifier@VServiceProvider@RBX@@VClosing@2@)
+296	| | | | {vfptr}
+300	| | | | ?$vector@PAV?$Listener@VServiceProvider@RBX@@VClosing@2@@RBX@@V?$allocator@PAV?$Listener@VServiceProvider@RBX@@VClosing@2@@RBX@@@std@@ listeners
+324	| | | | raiseRange
+	| | | +---
+	| | | +--- (base class ?$Notifier@VServiceProvider@RBX@@UServiceAdded@2@)
+328	| | | | {vfptr}
+332	| | | | ?$vector@PAV?$Listener@VServiceProvider@RBX@@UServiceAdded@2@@RBX@@V?$allocator@PAV?$Listener@VServiceProvider@RBX@@UServiceAdded@2@@RBX@@@std@@ listeners
+356	| | | | raiseRange
+	| | | +---
+	| | | +--- (base class ?$Notifier@VServiceProvider@RBX@@UServiceRemoving@2@)
+360	| | | | {vfptr}
+364	| | | | ?$vector@PAV?$Listener@VServiceProvider@RBX@@UServiceRemoving@2@@RBX@@V?$allocator@PAV?$Listener@VServiceProvider@RBX@@UServiceRemoving@2@@RBX@@@std@@ listeners
+388	| | | | raiseRange
+	| | | +---
+392	| | | ?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@ serviceArray
+416	| | | ?$map@PBVName@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@6@ serviceMap
+	| | +---
+	| +---
+	+---
+
+?$Described@VDataModel@RBX@@$1?sDataModel@2@3PBDBV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB@2@::$vftable@?$AbstractFactoryProduct@VInstance@RBX@@@:
+	| &?$Described@VDataModel@RBX@@$1?sDataModel@2@3PBDBV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB@2@_meta
+	|  0
+ 0	| &?$Described@VDataModel@RBX@@$1?sDataModel@2@3PBDBV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB@2@::{dtor}
+ 1	| &?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB::getClassName
+ 2	| &Instance::onGuidChanged
+ 3	| &Instance::setName
+ 4	| &ServiceProvider::askAddChild
+ 5	| &Instance::askSetParent
+ 6	| &Instance::onAncestorChanged
+ 7	| &ServiceProvider::onDescendentAdded
+ 8	| &ServiceProvider::onDescendentRemoving
+ 9	| &ServiceProvider::onChildAdded
+10	| &ServiceProvider::onChildRemoving
+11	| &Instance::onChildRemoved
+12	| &Instance::onLastChildRemoved
+13	| &Instance::readProperty
+14	| &Instance::onServiceProvider
+15	| &ServiceProvider::createChild
+16	| &Instance::write
+17	| &Instance::onChildChanged
+
+?$Described@VDataModel@RBX@@$1?sDataModel@2@3PBDBV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB@2@::$vftable@?$Described@VInstance@RBX@@$1?sInstance@2@3PBDBVDescribedBase@Reflection@2@@:
+	| -4
+ 0	| &thunk: this-=4; goto ?$Described@VDataModel@RBX@@$1?sDataModel@2@3PBDBV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB@2@::{dtor}
+
+?$Described@VDataModel@RBX@@$1?sDataModel@2@3PBDBV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB@2@::$vftable@Debugable@:
+	| -16
+ 0	| &Debugable::dump
+
+?$Described@VDataModel@RBX@@$1?sDataModel@2@3PBDBV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB@2@::$vftable@?$Notifier@VInstance@RBX@@UChildAdded@2@@:
+	| -20
+ 0	| &thunk: this-=20; goto ?$Described@VDataModel@RBX@@$1?sDataModel@2@3PBDBV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB@2@::{dtor}
+ 1	| &Instance::onAddListener
+ 2	| &?$Notifier@VInstance@RBX@@UChildAdded@2@::onRemoveListener
+
+?$Described@VDataModel@RBX@@$1?sDataModel@2@3PBDBV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB@2@::$vftable@?$Notifier@VInstance@RBX@@UChildRemoved@2@@:
+	| -52
+ 0	| &thunk: this-=52; goto ?$Described@VDataModel@RBX@@$1?sDataModel@2@3PBDBV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB@2@::{dtor}
+ 1	| &?$Notifier@VInstance@RBX@@UChildRemoved@2@::onAddListener
+ 2	| &?$Notifier@VInstance@RBX@@UChildRemoved@2@::onRemoveListener
+
+?$Described@VDataModel@RBX@@$1?sDataModel@2@3PBDBV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB@2@::$vftable@?$Notifier@VInstance@RBX@@UDescendentAdded@2@@:
+	| -84
+ 0	| &thunk: this-=84; goto ?$Described@VDataModel@RBX@@$1?sDataModel@2@3PBDBV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB@2@::{dtor}
+ 1	| &Instance::onAddListener
+ 2	| &?$Notifier@VInstance@RBX@@UDescendentAdded@2@::onRemoveListener
+
+?$Described@VDataModel@RBX@@$1?sDataModel@2@3PBDBV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB@2@::$vftable@?$Notifier@VInstance@RBX@@UDescendentRemoving@2@@:
+	| -116
+ 0	| &thunk: this-=116; goto ?$Described@VDataModel@RBX@@$1?sDataModel@2@3PBDBV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB@2@::{dtor}
+ 1	| &?$Notifier@VInstance@RBX@@UDescendentRemoving@2@::onAddListener
+ 2	| &?$Notifier@VInstance@RBX@@UDescendentRemoving@2@::onRemoveListener
+
+?$Described@VDataModel@RBX@@$1?sDataModel@2@3PBDBV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB@2@::$vftable@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@:
+	| -148
+ 0	| &thunk: this-=148; goto ?$Described@VDataModel@RBX@@$1?sDataModel@2@3PBDBV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB@2@::{dtor}
+ 1	| &?$Notifier@VInstance@RBX@@UAncestorChanged@2@::onAddListener
+ 2	| &?$Notifier@VInstance@RBX@@UAncestorChanged@2@::onRemoveListener
+
+?$Described@VDataModel@RBX@@$1?sDataModel@2@3PBDBV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB@2@::$vftable@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@:
+	| -180
+ 0	| &thunk: this-=180; goto ?$Described@VDataModel@RBX@@$1?sDataModel@2@3PBDBV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB@2@::{dtor}
+ 1	| &?$Notifier@VInstance@RBX@@VPropertyChanged@2@::onAddListener
+ 2	| &?$Notifier@VInstance@RBX@@VPropertyChanged@2@::onRemoveListener
+
+?$Described@VDataModel@RBX@@$1?sDataModel@2@3PBDBV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB@2@::$vftable@?$Notifier@VServiceProvider@RBX@@VClosing@2@@:
+	| -296
+ 0	| &thunk: this-=296; goto ?$Described@VDataModel@RBX@@$1?sDataModel@2@3PBDBV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB@2@::{dtor}
+ 1	| &?$Notifier@VServiceProvider@RBX@@VClosing@2@::onAddListener
+ 2	| &?$Notifier@VServiceProvider@RBX@@VClosing@2@::onRemoveListener
+
+?$Described@VDataModel@RBX@@$1?sDataModel@2@3PBDBV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB@2@::$vftable@?$Notifier@VServiceProvider@RBX@@UServiceAdded@2@@:
+	| -328
+ 0	| &thunk: this-=328; goto ?$Described@VDataModel@RBX@@$1?sDataModel@2@3PBDBV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB@2@::{dtor}
+ 1	| &ServiceProvider::onAddListener
+ 2	| &?$Notifier@VServiceProvider@RBX@@UServiceAdded@2@::onRemoveListener
+
+?$Described@VDataModel@RBX@@$1?sDataModel@2@3PBDBV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB@2@::$vftable@?$Notifier@VServiceProvider@RBX@@UServiceRemoving@2@@:
+	| -360
+ 0	| &thunk: this-=360; goto ?$Described@VDataModel@RBX@@$1?sDataModel@2@3PBDBV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB@2@::{dtor}
+ 1	| &?$Notifier@VServiceProvider@RBX@@UServiceRemoving@2@::onAddListener
+ 2	| &?$Notifier@VServiceProvider@RBX@@UServiceRemoving@2@::onRemoveListener
+
+?$Described@VDataModel@RBX@@$1?sDataModel@2@3PBDBV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB@2@::{dtor} this adjustor: 0
+?$Described@VDataModel@RBX@@$1?sDataModel@2@3PBDBV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB@2@::__delDtor this adjustor: 0
+?$Described@VDataModel@RBX@@$1?sDataModel@2@3PBDBV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB@2@::__vecDelDtor this adjustor: 0
+
+
+class ?$DescribedNonCreatable@VDataModel@RBX@@VServiceProvider@2@$1?sDataModel@2@3PBDB	size(448):
+	+---
+	| +--- (base class ?$Described@VDataModel@RBX@@$1?sDataModel@2@3PBDBV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB@2@)
+	| | +--- (base class ?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB)
+	| | | +--- (base class ServiceProvider)
+	| | | | +--- (base class ?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3PBDB)
+	| | | | | +--- (base class ?$Described@VServiceProvider@RBX@@$1?sServiceProvider@2@3PBDBV?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3PBDB@2@)
+	| | | | | | +--- (base class ?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3PBDB)
+	| | | | | | | +--- (base class Instance)
+	| | | | | | | | +--- (base class ?$AbstractFactoryProduct@VInstance@RBX@@)
+	| | | | | | | | | +--- (base class ?$Creatable@VInstance@RBX@@)
+	| | | | | | | | | | +--- (base class Object)
+ 0	| | | | | | | | | | | {vfptr}
+	| | | | | | | | | | +---
+	| | | | | | | | | +---
+	| | | | | | | | +---
+	| | | | | | | | +--- (base class ?$Described@VInstance@RBX@@$1?sInstance@2@3PBDBVDescribedBase@Reflection@2@)
+	| | | | | | | | | +--- (base class DescribedBase)
+	| | | | | | | | | | +--- (base class SignalSource)
+ 4	| | | | | | | | | | | {vfptr}
+ 8	| | | | | | | | | | | ?$scoped_ptr@V?$map@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@@std@@ signals
+	| | | | | | | | | | +---
+12	| | | | | | | | | | descriptor
+	| | | | | | | | | +---
+	| | | | | | | | +---
+	| | | | | | | | +--- (base class Debugable)
+16	| | | | | | | | | {vfptr}
+	| | | | | | | | +---
+	| | | | | | | | +--- (base class ?$Notifier@VInstance@RBX@@UChildAdded@2@)
+20	| | | | | | | | | {vfptr}
+24	| | | | | | | | | ?$vector@PAV?$Listener@VInstance@RBX@@UChildAdded@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@UChildAdded@2@@RBX@@@std@@ listeners
+48	| | | | | | | | | raiseRange
+	| | | | | | | | +---
+	| | | | | | | | +--- (base class ?$Notifier@VInstance@RBX@@UChildRemoved@2@)
+52	| | | | | | | | | {vfptr}
+56	| | | | | | | | | ?$vector@PAV?$Listener@VInstance@RBX@@UChildRemoved@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@UChildRemoved@2@@RBX@@@std@@ listeners
+80	| | | | | | | | | raiseRange
+	| | | | | | | | +---
+	| | | | | | | | +--- (base class ?$Notifier@VInstance@RBX@@UDescendentAdded@2@)
+84	| | | | | | | | | {vfptr}
+88	| | | | | | | | | ?$vector@PAV?$Listener@VInstance@RBX@@UDescendentAdded@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@UDescendentAdded@2@@RBX@@@std@@ listeners
+112	| | | | | | | | | raiseRange
+	| | | | | | | | +---
+	| | | | | | | | +--- (base class ?$Notifier@VInstance@RBX@@UDescendentRemoving@2@)
+116	| | | | | | | | | {vfptr}
+120	| | | | | | | | | ?$vector@PAV?$Listener@VInstance@RBX@@UDescendentRemoving@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@UDescendentRemoving@2@@RBX@@@std@@ listeners
+144	| | | | | | | | | raiseRange
+	| | | | | | | | +---
+	| | | | | | | | +--- (base class ?$Notifier@VInstance@RBX@@UAncestorChanged@2@)
+148	| | | | | | | | | {vfptr}
+152	| | | | | | | | | ?$vector@PAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@RBX@@@std@@ listeners
+176	| | | | | | | | | raiseRange
+	| | | | | | | | +---
+	| | | | | | | | +--- (base class ?$Notifier@VInstance@RBX@@VPropertyChanged@2@)
+180	| | | | | | | | | {vfptr}
+184	| | | | | | | | | ?$vector@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@ listeners
+208	| | | | | | | | | raiseRange
+	| | | | | | | | +---
+	| | | | | | | | +--- (base class ?$enable_shared_from_this@VInstance@RBX@@)
+212	| | | | | | | | | ?$weak_ptr@VInstance@RBX@@ _internal_weak_this
+	| | | | | | | | +---
+	| | | | | | | | +--- (base class noncopyable)
+	| | | | | | | | +---
+220	| | | | | | | | ?$Association@VInstance@RBX@@ assoc
+244	| | | | | | | | parent
+248	| | | | | | | | ?$CopyOnWrite@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@ children
+256	| | | | | | | | ?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@ name
+284	| | | | | | | | archivable
+  	| | | | | | | | <alignment member> (size=3)
+288	| | | | | | | | Guid guid
+	| | | | | | | +---
+	| | | | | | +---
+	| | | | | +---
+	| | | | +---
+	| | | | +--- (base class ?$Notifier@VServiceProvider@RBX@@VClosing@2@)
+296	| | | | | {vfptr}
+300	| | | | | ?$vector@PAV?$Listener@VServiceProvider@RBX@@VClosing@2@@RBX@@V?$allocator@PAV?$Listener@VServiceProvider@RBX@@VClosing@2@@RBX@@@std@@ listeners
+324	| | | | | raiseRange
+	| | | | +---
+	| | | | +--- (base class ?$Notifier@VServiceProvider@RBX@@UServiceAdded@2@)
+328	| | | | | {vfptr}
+332	| | | | | ?$vector@PAV?$Listener@VServiceProvider@RBX@@UServiceAdded@2@@RBX@@V?$allocator@PAV?$Listener@VServiceProvider@RBX@@UServiceAdded@2@@RBX@@@std@@ listeners
+356	| | | | | raiseRange
+	| | | | +---
+	| | | | +--- (base class ?$Notifier@VServiceProvider@RBX@@UServiceRemoving@2@)
+360	| | | | | {vfptr}
+364	| | | | | ?$vector@PAV?$Listener@VServiceProvider@RBX@@UServiceRemoving@2@@RBX@@V?$allocator@PAV?$Listener@VServiceProvider@RBX@@UServiceRemoving@2@@RBX@@@std@@ listeners
+388	| | | | | raiseRange
+	| | | | +---
+392	| | | | ?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@ serviceArray
+416	| | | | ?$map@PBVName@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@6@ serviceMap
+	| | | +---
+	| | +---
+	| +---
+	+---
+
+?$DescribedNonCreatable@VDataModel@RBX@@VServiceProvider@2@$1?sDataModel@2@3PBDB::$vftable@?$AbstractFactoryProduct@VInstance@RBX@@@:
+	| &?$DescribedNonCreatable@VDataModel@RBX@@VServiceProvider@2@$1?sDataModel@2@3PBDB_meta
+	|  0
+ 0	| &?$DescribedNonCreatable@VDataModel@RBX@@VServiceProvider@2@$1?sDataModel@2@3PBDB::{dtor}
+ 1	| &?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB::getClassName
+ 2	| &Instance::onGuidChanged
+ 3	| &Instance::setName
+ 4	| &ServiceProvider::askAddChild
+ 5	| &Instance::askSetParent
+ 6	| &Instance::onAncestorChanged
+ 7	| &ServiceProvider::onDescendentAdded
+ 8	| &ServiceProvider::onDescendentRemoving
+ 9	| &ServiceProvider::onChildAdded
+10	| &ServiceProvider::onChildRemoving
+11	| &Instance::onChildRemoved
+12	| &Instance::onLastChildRemoved
+13	| &Instance::readProperty
+14	| &Instance::onServiceProvider
+15	| &ServiceProvider::createChild
+16	| &Instance::write
+17	| &Instance::onChildChanged
+
+?$DescribedNonCreatable@VDataModel@RBX@@VServiceProvider@2@$1?sDataModel@2@3PBDB::$vftable@?$Described@VInstance@RBX@@$1?sInstance@2@3PBDBVDescribedBase@Reflection@2@@:
+	| -4
+ 0	| &thunk: this-=4; goto ?$DescribedNonCreatable@VDataModel@RBX@@VServiceProvider@2@$1?sDataModel@2@3PBDB::{dtor}
+
+?$DescribedNonCreatable@VDataModel@RBX@@VServiceProvider@2@$1?sDataModel@2@3PBDB::$vftable@Debugable@:
+	| -16
+ 0	| &Debugable::dump
+
+?$DescribedNonCreatable@VDataModel@RBX@@VServiceProvider@2@$1?sDataModel@2@3PBDB::$vftable@?$Notifier@VInstance@RBX@@UChildAdded@2@@:
+	| -20
+ 0	| &thunk: this-=20; goto ?$DescribedNonCreatable@VDataModel@RBX@@VServiceProvider@2@$1?sDataModel@2@3PBDB::{dtor}
+ 1	| &Instance::onAddListener
+ 2	| &?$Notifier@VInstance@RBX@@UChildAdded@2@::onRemoveListener
+
+?$DescribedNonCreatable@VDataModel@RBX@@VServiceProvider@2@$1?sDataModel@2@3PBDB::$vftable@?$Notifier@VInstance@RBX@@UChildRemoved@2@@:
+	| -52
+ 0	| &thunk: this-=52; goto ?$DescribedNonCreatable@VDataModel@RBX@@VServiceProvider@2@$1?sDataModel@2@3PBDB::{dtor}
+ 1	| &?$Notifier@VInstance@RBX@@UChildRemoved@2@::onAddListener
+ 2	| &?$Notifier@VInstance@RBX@@UChildRemoved@2@::onRemoveListener
+
+?$DescribedNonCreatable@VDataModel@RBX@@VServiceProvider@2@$1?sDataModel@2@3PBDB::$vftable@?$Notifier@VInstance@RBX@@UDescendentAdded@2@@:
+	| -84
+ 0	| &thunk: this-=84; goto ?$DescribedNonCreatable@VDataModel@RBX@@VServiceProvider@2@$1?sDataModel@2@3PBDB::{dtor}
+ 1	| &Instance::onAddListener
+ 2	| &?$Notifier@VInstance@RBX@@UDescendentAdded@2@::onRemoveListener
+
+?$DescribedNonCreatable@VDataModel@RBX@@VServiceProvider@2@$1?sDataModel@2@3PBDB::$vftable@?$Notifier@VInstance@RBX@@UDescendentRemoving@2@@:
+	| -116
+ 0	| &thunk: this-=116; goto ?$DescribedNonCreatable@VDataModel@RBX@@VServiceProvider@2@$1?sDataModel@2@3PBDB::{dtor}
+ 1	| &?$Notifier@VInstance@RBX@@UDescendentRemoving@2@::onAddListener
+ 2	| &?$Notifier@VInstance@RBX@@UDescendentRemoving@2@::onRemoveListener
+
+?$DescribedNonCreatable@VDataModel@RBX@@VServiceProvider@2@$1?sDataModel@2@3PBDB::$vftable@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@:
+	| -148
+ 0	| &thunk: this-=148; goto ?$DescribedNonCreatable@VDataModel@RBX@@VServiceProvider@2@$1?sDataModel@2@3PBDB::{dtor}
+ 1	| &?$Notifier@VInstance@RBX@@UAncestorChanged@2@::onAddListener
+ 2	| &?$Notifier@VInstance@RBX@@UAncestorChanged@2@::onRemoveListener
+
+?$DescribedNonCreatable@VDataModel@RBX@@VServiceProvider@2@$1?sDataModel@2@3PBDB::$vftable@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@:
+	| -180
+ 0	| &thunk: this-=180; goto ?$DescribedNonCreatable@VDataModel@RBX@@VServiceProvider@2@$1?sDataModel@2@3PBDB::{dtor}
+ 1	| &?$Notifier@VInstance@RBX@@VPropertyChanged@2@::onAddListener
+ 2	| &?$Notifier@VInstance@RBX@@VPropertyChanged@2@::onRemoveListener
+
+?$DescribedNonCreatable@VDataModel@RBX@@VServiceProvider@2@$1?sDataModel@2@3PBDB::$vftable@?$Notifier@VServiceProvider@RBX@@VClosing@2@@:
+	| -296
+ 0	| &thunk: this-=296; goto ?$DescribedNonCreatable@VDataModel@RBX@@VServiceProvider@2@$1?sDataModel@2@3PBDB::{dtor}
+ 1	| &?$Notifier@VServiceProvider@RBX@@VClosing@2@::onAddListener
+ 2	| &?$Notifier@VServiceProvider@RBX@@VClosing@2@::onRemoveListener
+
+?$DescribedNonCreatable@VDataModel@RBX@@VServiceProvider@2@$1?sDataModel@2@3PBDB::$vftable@?$Notifier@VServiceProvider@RBX@@UServiceAdded@2@@:
+	| -328
+ 0	| &thunk: this-=328; goto ?$DescribedNonCreatable@VDataModel@RBX@@VServiceProvider@2@$1?sDataModel@2@3PBDB::{dtor}
+ 1	| &ServiceProvider::onAddListener
+ 2	| &?$Notifier@VServiceProvider@RBX@@UServiceAdded@2@::onRemoveListener
+
+?$DescribedNonCreatable@VDataModel@RBX@@VServiceProvider@2@$1?sDataModel@2@3PBDB::$vftable@?$Notifier@VServiceProvider@RBX@@UServiceRemoving@2@@:
+	| -360
+ 0	| &thunk: this-=360; goto ?$DescribedNonCreatable@VDataModel@RBX@@VServiceProvider@2@$1?sDataModel@2@3PBDB::{dtor}
+ 1	| &?$Notifier@VServiceProvider@RBX@@UServiceRemoving@2@::onAddListener
+ 2	| &?$Notifier@VServiceProvider@RBX@@UServiceRemoving@2@::onRemoveListener
+
+?$DescribedNonCreatable@VDataModel@RBX@@VServiceProvider@2@$1?sDataModel@2@3PBDB::{dtor} this adjustor: 0
+?$DescribedNonCreatable@VDataModel@RBX@@VServiceProvider@2@$1?sDataModel@2@3PBDB::__delDtor this adjustor: 0
+?$DescribedNonCreatable@VDataModel@RBX@@VServiceProvider@2@$1?sDataModel@2@3PBDB::__vecDelDtor this adjustor: 0
+
+
+class DataModel	size(636):
+	+---
+	| +--- (base class ?$DescribedNonCreatable@VDataModel@RBX@@VServiceProvider@2@$1?sDataModel@2@3PBDB)
+	| | +--- (base class ?$Described@VDataModel@RBX@@$1?sDataModel@2@3PBDBV?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB@2@)
+	| | | +--- (base class ?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB)
+	| | | | +--- (base class ServiceProvider)
+	| | | | | +--- (base class ?$DescribedNonCreatable@VServiceProvider@RBX@@VInstance@2@$1?sServiceProvider@2@3PBDB)
+	| | | | | | +--- (base class ?$Described@VServiceProvider@RBX@@$1?sServiceProvider@2@3PBDBV?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3PBDB@2@)
+	| | | | | | | +--- (base class ?$NonFactoryProduct@VInstance@RBX@@$1?sServiceProvider@2@3PBDB)
+	| | | | | | | | +--- (base class Instance)
+	| | | | | | | | | +--- (base class ?$AbstractFactoryProduct@VInstance@RBX@@)
+	| | | | | | | | | | +--- (base class ?$Creatable@VInstance@RBX@@)
+	| | | | | | | | | | | +--- (base class Object)
+ 0	| | | | | | | | | | | | {vfptr}
+	| | | | | | | | | | | +---
+	| | | | | | | | | | +---
+	| | | | | | | | | +---
+	| | | | | | | | | +--- (base class ?$Described@VInstance@RBX@@$1?sInstance@2@3PBDBVDescribedBase@Reflection@2@)
+	| | | | | | | | | | +--- (base class DescribedBase)
+	| | | | | | | | | | | +--- (base class SignalSource)
+ 4	| | | | | | | | | | | | {vfptr}
+ 8	| | | | | | | | | | | | ?$scoped_ptr@V?$map@PBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@U?$less@PBVSignalDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVSignalDescriptor@Reflection@RBX@@V?$shared_ptr@VSignalInstance@Reflection@RBX@@@boost@@@std@@@7@@std@@ signals
+	| | | | | | | | | | | +---
+12	| | | | | | | | | | | descriptor
+	| | | | | | | | | | +---
+	| | | | | | | | | +---
+	| | | | | | | | | +--- (base class Debugable)
+16	| | | | | | | | | | {vfptr}
+	| | | | | | | | | +---
+	| | | | | | | | | +--- (base class ?$Notifier@VInstance@RBX@@UChildAdded@2@)
+20	| | | | | | | | | | {vfptr}
+24	| | | | | | | | | | ?$vector@PAV?$Listener@VInstance@RBX@@UChildAdded@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@UChildAdded@2@@RBX@@@std@@ listeners
+48	| | | | | | | | | | raiseRange
+	| | | | | | | | | +---
+	| | | | | | | | | +--- (base class ?$Notifier@VInstance@RBX@@UChildRemoved@2@)
+52	| | | | | | | | | | {vfptr}
+56	| | | | | | | | | | ?$vector@PAV?$Listener@VInstance@RBX@@UChildRemoved@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@UChildRemoved@2@@RBX@@@std@@ listeners
+80	| | | | | | | | | | raiseRange
+	| | | | | | | | | +---
+	| | | | | | | | | +--- (base class ?$Notifier@VInstance@RBX@@UDescendentAdded@2@)
+84	| | | | | | | | | | {vfptr}
+88	| | | | | | | | | | ?$vector@PAV?$Listener@VInstance@RBX@@UDescendentAdded@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@UDescendentAdded@2@@RBX@@@std@@ listeners
+112	| | | | | | | | | | raiseRange
+	| | | | | | | | | +---
+	| | | | | | | | | +--- (base class ?$Notifier@VInstance@RBX@@UDescendentRemoving@2@)
+116	| | | | | | | | | | {vfptr}
+120	| | | | | | | | | | ?$vector@PAV?$Listener@VInstance@RBX@@UDescendentRemoving@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@UDescendentRemoving@2@@RBX@@@std@@ listeners
+144	| | | | | | | | | | raiseRange
+	| | | | | | | | | +---
+	| | | | | | | | | +--- (base class ?$Notifier@VInstance@RBX@@UAncestorChanged@2@)
+148	| | | | | | | | | | {vfptr}
+152	| | | | | | | | | | ?$vector@PAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@UAncestorChanged@2@@RBX@@@std@@ listeners
+176	| | | | | | | | | | raiseRange
+	| | | | | | | | | +---
+	| | | | | | | | | +--- (base class ?$Notifier@VInstance@RBX@@VPropertyChanged@2@)
+180	| | | | | | | | | | {vfptr}
+184	| | | | | | | | | | ?$vector@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@V?$allocator@PAV?$Listener@VInstance@RBX@@VPropertyChanged@2@@RBX@@@std@@ listeners
+208	| | | | | | | | | | raiseRange
+	| | | | | | | | | +---
+	| | | | | | | | | +--- (base class ?$enable_shared_from_this@VInstance@RBX@@)
+212	| | | | | | | | | | ?$weak_ptr@VInstance@RBX@@ _internal_weak_this
+	| | | | | | | | | +---
+	| | | | | | | | | +--- (base class noncopyable)
+	| | | | | | | | | +---
+220	| | | | | | | | | ?$Association@VInstance@RBX@@ assoc
+244	| | | | | | | | | parent
+248	| | | | | | | | | ?$CopyOnWrite@V?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@ children
+256	| | | | | | | | | ?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@ name
+284	| | | | | | | | | archivable
+  	| | | | | | | | | <alignment member> (size=3)
+288	| | | | | | | | | Guid guid
+	| | | | | | | | +---
+	| | | | | | | +---
+	| | | | | | +---
+	| | | | | +---
+	| | | | | +--- (base class ?$Notifier@VServiceProvider@RBX@@VClosing@2@)
+296	| | | | | | {vfptr}
+300	| | | | | | ?$vector@PAV?$Listener@VServiceProvider@RBX@@VClosing@2@@RBX@@V?$allocator@PAV?$Listener@VServiceProvider@RBX@@VClosing@2@@RBX@@@std@@ listeners
+324	| | | | | | raiseRange
+	| | | | | +---
+	| | | | | +--- (base class ?$Notifier@VServiceProvider@RBX@@UServiceAdded@2@)
+328	| | | | | | {vfptr}
+332	| | | | | | ?$vector@PAV?$Listener@VServiceProvider@RBX@@UServiceAdded@2@@RBX@@V?$allocator@PAV?$Listener@VServiceProvider@RBX@@UServiceAdded@2@@RBX@@@std@@ listeners
+356	| | | | | | raiseRange
+	| | | | | +---
+	| | | | | +--- (base class ?$Notifier@VServiceProvider@RBX@@UServiceRemoving@2@)
+360	| | | | | | {vfptr}
+364	| | | | | | ?$vector@PAV?$Listener@VServiceProvider@RBX@@UServiceRemoving@2@@RBX@@V?$allocator@PAV?$Listener@VServiceProvider@RBX@@UServiceRemoving@2@@RBX@@@std@@ listeners
+388	| | | | | | raiseRange
+	| | | | | +---
+392	| | | | | ?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@ serviceArray
+416	| | | | | ?$map@PBVName@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@6@ serviceMap
+	| | | | +---
+	| | | +---
+	| | +---
+	| +---
+	| +--- (base class VerbContainer)
+448	| | {vfptr}
+452	| | ?$map@PBVName@RBX@@PAVVerb@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PAVVerb@2@@std@@@5@ verbs
+484	| | parent
+	| +---
+	| +--- (base class IDataState)
+	| | +--- (base class ?$StateStack@VXmlState@RBX@@)
+488	| | | {vfptr}
+492	| | | currentState
+496	| | | ?$vector@UStateEntry@?$StateStack@VXmlState@RBX@@@RBX@@V?$allocator@UStateEntry@?$StateStack@VXmlState@RBX@@@RBX@@@std@@ stack
+	| | +---
+	| +---
+	| +--- (base class Evaluator)
+520	| | {vfptr}
+	| +---
+	| +--- (base class ?$Listener@VRunService@RBX@@VRunTransition@2@)
+524	| | {vfptr}
+	| +---
+528	| ?$shared_ptr@VLocalBackpack@RBX@@ localBackpack
+536	| ?$shared_ptr@VWorkspace@RBX@@ workspace
+544	| ?$shared_ptr@VRunService@RBX@@ runService
+552	| ?$shared_ptr@VStarterPackService@RBX@@ starterPackService
+560	| ?$shared_ptr@VGuiRoot@RBX@@ guiRoot
+568	| ?$shared_ptr@VGuiRoot@RBX@@ guiHooks
+576	| guiTarget
+580	| forceArrowCursor
+  	| <alignment member> (size=3)
+584	| ?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@ uiMessage
+612	| drawId
+616	| tempMetric
+620	| dirty
+  	| <alignment member> (size=3)
+624	| ?$shared_ptr@Vrecursive_mutex@boost@@ mutex
+632	| ?$scoped_ptr@VTimeState@RBX@@ timeState
+	+---
+
+DataModel::$vftable@?$AbstractFactoryProduct@VInstance@RBX@@@:
+	| &DataModel_meta
+	|  0
+ 0	| &DataModel::{dtor}
+ 1	| &?$NonFactoryProduct@VServiceProvider@RBX@@$1?sDataModel@2@3PBDB::getClassName
+ 2	| &Instance::onGuidChanged
+ 3	| &Instance::setName
+ 4	| &DataModel::askAddChild
+ 5	| &Instance::askSetParent
+ 6	| &Instance::onAncestorChanged
+ 7	| &DataModel::onDescendentAdded
+ 8	| &DataModel::onDescendentRemoving
+ 9	| &DataModel::onChildAdded
+10	| &ServiceProvider::onChildRemoving
+11	| &Instance::onChildRemoved
+12	| &Instance::onLastChildRemoved
+13	| &Instance::readProperty
+14	| &Instance::onServiceProvider
+15	| &ServiceProvider::createChild
+16	| &Instance::write
+17	| &DataModel::onChildChanged
+
+DataModel::$vftable@?$Described@VInstance@RBX@@$1?sInstance@2@3PBDBVDescribedBase@Reflection@2@@:
+	| -4
+ 0	| &thunk: this-=4; goto DataModel::{dtor}
+
+DataModel::$vftable@Debugable@:
+	| -16
+ 0	| &Debugable::dump
+
+DataModel::$vftable@?$Notifier@VInstance@RBX@@UChildAdded@2@@:
+	| -20
+ 0	| &thunk: this-=20; goto DataModel::{dtor}
+ 1	| &Instance::onAddListener
+ 2	| &?$Notifier@VInstance@RBX@@UChildAdded@2@::onRemoveListener
+
+DataModel::$vftable@?$Notifier@VInstance@RBX@@UChildRemoved@2@@:
+	| -52
+ 0	| &thunk: this-=52; goto DataModel::{dtor}
+ 1	| &?$Notifier@VInstance@RBX@@UChildRemoved@2@::onAddListener
+ 2	| &?$Notifier@VInstance@RBX@@UChildRemoved@2@::onRemoveListener
+
+DataModel::$vftable@?$Notifier@VInstance@RBX@@UDescendentAdded@2@@:
+	| -84
+ 0	| &thunk: this-=84; goto DataModel::{dtor}
+ 1	| &Instance::onAddListener
+ 2	| &?$Notifier@VInstance@RBX@@UDescendentAdded@2@::onRemoveListener
+
+DataModel::$vftable@?$Notifier@VInstance@RBX@@UDescendentRemoving@2@@:
+	| -116
+ 0	| &thunk: this-=116; goto DataModel::{dtor}
+ 1	| &?$Notifier@VInstance@RBX@@UDescendentRemoving@2@::onAddListener
+ 2	| &?$Notifier@VInstance@RBX@@UDescendentRemoving@2@::onRemoveListener
+
+DataModel::$vftable@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@:
+	| -148
+ 0	| &thunk: this-=148; goto DataModel::{dtor}
+ 1	| &?$Notifier@VInstance@RBX@@UAncestorChanged@2@::onAddListener
+ 2	| &?$Notifier@VInstance@RBX@@UAncestorChanged@2@::onRemoveListener
+
+DataModel::$vftable@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@:
+	| -180
+ 0	| &thunk: this-=180; goto DataModel::{dtor}
+ 1	| &?$Notifier@VInstance@RBX@@VPropertyChanged@2@::onAddListener
+ 2	| &?$Notifier@VInstance@RBX@@VPropertyChanged@2@::onRemoveListener
+
+DataModel::$vftable@?$Notifier@VServiceProvider@RBX@@VClosing@2@@:
+	| -296
+ 0	| &thunk: this-=296; goto DataModel::{dtor}
+ 1	| &?$Notifier@VServiceProvider@RBX@@VClosing@2@::onAddListener
+ 2	| &?$Notifier@VServiceProvider@RBX@@VClosing@2@::onRemoveListener
+
+DataModel::$vftable@?$Notifier@VServiceProvider@RBX@@UServiceAdded@2@@:
+	| -328
+ 0	| &thunk: this-=328; goto DataModel::{dtor}
+ 1	| &ServiceProvider::onAddListener
+ 2	| &?$Notifier@VServiceProvider@RBX@@UServiceAdded@2@::onRemoveListener
+
+DataModel::$vftable@?$Notifier@VServiceProvider@RBX@@UServiceRemoving@2@@:
+	| -360
+ 0	| &thunk: this-=360; goto DataModel::{dtor}
+ 1	| &?$Notifier@VServiceProvider@RBX@@UServiceRemoving@2@::onAddListener
+ 2	| &?$Notifier@VServiceProvider@RBX@@UServiceRemoving@2@::onRemoveListener
+
+DataModel::$vftable@VerbContainer@:
+	| -448
+ 0	| &thunk: this-=448; goto DataModel::{dtor}
+
+DataModel::$vftable@IDataState@:
+	| -488
+ 0	| &DataModel::isStackTooBig
+ 1	| &DataModel::setDirty
+ 2	| &DataModel::isDirty
+
+DataModel::$vftable@Evaluator@:
+	| -520
+ 0	| &DataModel::evaluate
+
+DataModel::$vftable@?$Listener@VRunService@RBX@@VRunTransition@2@@:
+	| -524
+ 0	| &DataModel::onEvent
+ 1	| &thunk: this-=524; goto DataModel::{dtor}
+
+DataModel::{dtor} this adjustor: 0
+DataModel::setDirty this adjustor: 488
+DataModel::isDirty this adjustor: 488
+DataModel::isStackTooBig this adjustor: 488
+DataModel::evaluate this adjustor: 520
+DataModel::askAddChild this adjustor: 0
+DataModel::onChildAdded this adjustor: 0
+DataModel::onChildChanged this adjustor: 0
+DataModel::onDescendentAdded this adjustor: 0
+DataModel::onDescendentRemoving this adjustor: 0
+DataModel::onEvent this adjustor: 524
+DataModel::__delDtor this adjustor: 0
+DataModel::__vecDelDtor this adjustor: 0

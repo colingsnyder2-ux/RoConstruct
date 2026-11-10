@@ -1,0 +1,12 @@
+{
+  "batch": "RBX::Hopper / BackpackItem",
+  "change": "Removed NATIVE_HOPPER_PENDING guards around Backpack.h include and BackpackItem::isEnabled.",
+  "changed_files": [
+    "rebuild/2008-06/native-classes/Hopper.cpp"
+  ],
+  "verification": "rebuild/2008-06/tests/record_native_hopper.py PASS: 195 exact addresses, 17 pending-only, 14 non-exact, 229 vtables.",
+  "package_revision": "1d8dc7a8d6ee2c6694f477361ba54ad661ce91c8f648dc9713f7a4bdf6bb4b54",
+  "workspace_manifest_source_revision": "1d8dc7a8d6ee2c6694f477361ba54ad661ce91c8f648dc9713f7a4bdf6bb4b54",
+  "baseline_commit": "unknown",
+  "status": "inactive draft; no active build, swap, runtime, or server credit"
+}

@@ -1,0 +1,13 @@
+{
+  "revision": "f6e8dccfd35b95e2551f0675f8875045af2c8e43",
+  "files": {
+    "rebuild\\2008-06\\out\\native-icon-link-probe\\Roblox.exe": "d1112193a195e0a82dbd9406dc16753333b2b5017de82bbf4f864a3f4ef894cb",
+    "rebuild\\2008-06\\out\\native-icon-link-probe\\Roblox.map": "41d32f4fbb01b24f31eb6856ad14bb1a8c0766868f1361a1baf55f4c8479d015",
+    "rebuild\\2008-06\\out\\native-layouts\\NativeFrameIconsFresh.obj": "7d71050b937dd017683f389645de0e9eae8f59aed63c0c518f79aedd36c977b5",
+    "rebuild\\2008-06\\out\\native-layouts\\NativeFrameIconWidth.obj": "9d8c633bc0122f4e2ab98eb2de930a87451f473046e2ac073742b41c55895cf4",
+    "rebuild\\2008-06\\tests\\link_native_icon_probe.py": "c3ac7c052c7bb5655023ebe6a43910d0305ccd756fb74ce5c89088468b41136d",
+    "rebuild\\2008-06\\tests\\NativeIconGImageLayout.cpp": "dfec64e0b71db4d0a1c28f68100f00c9f0022b16cec8ef988526f4dc2c8d6534",
+    "rebuild\\2008-06\\p6\\build_client.py": "e4c73706e2e2d8bc696f154961c4faabcf48e5feeff33caa767f6ae804a426b5"
+  },
+  "scope": "Isolated P6 link only: GDI+ linked; original icon initializer forced into executable but not called, no runtime or P5/P6 gate claim. GImage layout probe checks size and public offsets; private pixel pointer established by original destructor read +4."
+}

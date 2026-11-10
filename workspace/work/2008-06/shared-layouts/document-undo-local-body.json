@@ -1,0 +1,15 @@
+{
+  "source_sha256": "448f75ef77aef69c7c97dca5f08b8d591d6d9f2af0f1a89ea09be57d8444de6c",
+  "object_sha256": "f6ceb327de50fb8fbb1b254a0f3990e4ee42be61c0cc2cc5cb05a9996a49f479",
+  "candidate_size": 209,
+  "target_size": 209,
+  "match": true,
+  "direct_call_targets": {
+    "?getDataModel@CWorkspace@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ": "0x46a940",
+    "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z": "0x411b40",
+    "??$create@VChangeHistoryService@RBX@@@ServiceProvider@RBX@@QBEPAVChangeHistoryService@1@XZ": "0x453000",
+    "?unplay@ChangeHistoryService@RBX@@QAEXXZ": "0x58a130",
+    "??1Lock@DataModel@RBX@@QAE@XZ": "0x5773c0"
+  },
+  "scope": "Inactive; relocation-masked body and direct calls observed, history identity and runtime integration unverified."
+}

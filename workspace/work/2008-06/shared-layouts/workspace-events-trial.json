@@ -1,0 +1,48 @@
+{
+  "scope": "Inactive handlers and selected call targets match; RunService layout, event lifetime and runtime ABI remain unproven.",
+  "observer_sha256": "73eea747a7cde82a253f28a6b06e43b807b91a43adb1278d9cc058374cdd0012",
+  "source_sha256": "ec1e22e6040554cd97e1ded486fe5578c85a7c411ee323d9a135a9847908abf4",
+  "profile_sha256": "7cdb7ecc9672b2f2e2f09d2a205d690e78afed6f8143ab3e73631690aca3d022",
+  "object_sha256": "b2b55d0eac3c45d9f3cd3f77e81335c3d9449d7bdd6327adbf15e6563dde26be",
+  "methods": [
+    {
+      "symbol": "?onEvent@CWorkspace@@UAEXPBVWorkspace@RBX@@VDrawChanged@3@@Z",
+      "address": "0046a990",
+      "size": 11,
+      "exact": true,
+      "calls": {
+        "?invalidateRunViews@RunService@RBX@@QAEXXZ": "0x555350"
+      }
+    },
+    {
+      "symbol": "?onEvent@CWorkspace@@UAEXPBVSelection@RBX@@VSelectionChanged@3@@Z",
+      "address": "0046ab10",
+      "size": 70,
+      "exact": true,
+      "calls": {
+        "?invalidateRunViews@RunService@RBX@@QAEXXZ": "0x555350",
+        "??1SelectionChanged@RBX@@QAE@XZ": "0x422c60"
+      }
+    }
+  ],
+  "donor_invalidate": {
+    "address": "00555350",
+    "symbol": "?invalidateRunViews@RunService@RBX@@QAEXXZ",
+    "candidate_size": 281,
+    "original_size": 281,
+    "exact": true
+  },
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeWorkspaceEventsTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeWorkspaceEventsProfile.cpp"
+  ]
+}

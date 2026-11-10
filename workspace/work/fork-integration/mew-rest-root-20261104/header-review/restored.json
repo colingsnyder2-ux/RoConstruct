@@ -1,0 +1,84 @@
+{
+  "source": "5f07015bca, byte-identical to current Mew donor",
+  "reason": "Recover verified native declarations replaced by old snapshot; original whole-tree native build unverified. Current post-snapshot useful core headers (Instance/reflection/Events etc) preserved.",
+  "paths": [
+    {
+      "path": "rebuild/2008-06/native-headers/Network/Player.h",
+      "bad_snapshot_blob": "99151995af151b60cb3fb763107e180b06a2d50a",
+      "restored_verified_blob": "e73fccf6dab0dbb6b6ff78295696251e69518e0c",
+      "sha256": "91a4a333ac984e0cb2a222624e357ce569ac0126657bf600dec1f003cbf06760"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/Network/Players.h",
+      "bad_snapshot_blob": "3c0a30d61533124a1fc2694f00851f4881c2c3d8",
+      "restored_verified_blob": "ff84418a3ea3c3691b1cffafe8cdc688c26d81ba",
+      "sha256": "377385928ffc1bc3b831cbae0cd580caf1c98a27f09c9cbb019aa79763e1c949"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/Replicator.h",
+      "bad_snapshot_blob": "e9cf795627f6fe803d7aca05fb498210febf6107",
+      "restored_verified_blob": "4235a637aa93a3e4b8ca51dafaef24f5c788431d",
+      "sha256": "d2405a3ea84f4dcbd9253c45a3bff87cc6e2e23d88920db5f55a8b6ad75170fa"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/humanoid/HumanoidState.h",
+      "bad_snapshot_blob": "79a92ed302e1edeb8baa1f49ba6c23dab9d44d45",
+      "restored_verified_blob": "33a9fac17d36235b64036f57965209278cccd27d",
+      "sha256": "c63f37d84a2ecc31131ce55bf6f7e632d5ed8feb67b71dad06842b51575a0bc3"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/v8datamodel/Backpack.h",
+      "bad_snapshot_blob": "185dd66f548248d8046aa4c1255e61911386030e",
+      "restored_verified_blob": "41370f2f150c19d93441855321c4a3bf138ee74d",
+      "sha256": "9221815bf684dd0bc6febd4b94dcac3186ea9510b6ec27c8e24e0676f1f49339"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h",
+      "bad_snapshot_blob": "abab0d4c67bb45a6521c322157649e2afb248506",
+      "restored_verified_blob": "cece77ea768b717a41ced5abdeb8b184ab059e37",
+      "sha256": "8a71a6f8defc32833c4a5ba367367b6f89d46701fa9eb7fc92165a9f8fe45917"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/v8datamodel/Feature.h",
+      "bad_snapshot_blob": "c8a4fdc3b7ee5b9e2bfa9f2fee58a767e906488a",
+      "restored_verified_blob": "a03120bd674560b5ba0bdbbdb9e3e680622ec377",
+      "sha256": "b1eabe86377ca5d951c7dcf0b192e7901358e20a9f675cc074093144ac789a3b"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/v8datamodel/Flag.h",
+      "bad_snapshot_blob": "4ce2db22ae32a8deddea899e461b5d2ab5eea6ee",
+      "restored_verified_blob": "c2348c856d900d5b900829e8a5d8ab12eea162a5",
+      "sha256": "daf0cb3e156c04f05135ff5bb440451b3ee29699f99a1d9eb73b98a626930265"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/v8datamodel/GameSettings.h",
+      "bad_snapshot_blob": "c098a4ddd527caf111da0291c8b0dbfc2c7313dd",
+      "restored_verified_blob": "cf1a5fb93568a58d7f4baa3b141f671774f79b9f",
+      "sha256": "57423bda044b1f3904bd02c06b29362fb3a54f804599b2fb78210802e87ea83f"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/v8datamodel/Hopper.h",
+      "bad_snapshot_blob": "9c7e3df9648d425541ac794beb55281c33f98e1e",
+      "restored_verified_blob": "1288f2541ca9444540b08b300cb19c00ebab2914",
+      "sha256": "b43abcdd0d0d8e2e80f19769b83160d906f99ebd100de80385057319d80bc24a"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/v8datamodel/PhysicsService.h",
+      "bad_snapshot_blob": "090e24ac032e4f9328243ece2e572e3051685ae4",
+      "restored_verified_blob": "d5d28dd7daae230b6dd6068342d7519ad21ab519",
+      "sha256": "7b207a5817fec10a98cb22ca9e5f024031a783330b32cc1a2db01440e62a7c4e"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/v8datamodel/Tool.h",
+      "bad_snapshot_blob": "88aa4f6ccef4fc6e78dfb0acf33dc5dfb695109d",
+      "restored_verified_blob": "d928964d8af7c5faf3a715ba62bedc0b7cac8c25",
+      "sha256": "ee1739601cbe99d862761a90640acc920a8a6a03c792962895144967d8d9c236"
+    },
+    {
+      "path": "rebuild/2008-06/native-headers/v8datamodel/UserController.h",
+      "bad_snapshot_blob": "929310970f278070bee0eb65f677f1afd13f8a33",
+      "restored_verified_blob": "acb1b0a8e6ad5d870fc07909cfdd1441d736f98d",
+      "sha256": "50d100ac1c8d51dad2f8e4aacfbdb17a0cb71d9009a771029722fe220a89d839"
+    }
+  ]
+}

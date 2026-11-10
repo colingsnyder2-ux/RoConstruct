@@ -1,0 +1,13 @@
+{
+  "baseline": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-130705-87b5983d\\output\\null-tool-owner\\linked.lib",
+  "baseline_sha256": "7388fd3bfb96473f268288a5d3aa4164c0d4deb9dc89137ea033f2601b34c05d",
+  "replacement": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\native-candidates\\sol-aggregate-content-20261105\\linked.lib",
+  "replacement_sha256": "4623ee3e28b0752e09bb26108ba97061b2efddd8b758cd1f2a03bd113dc7f6b5",
+  "changed_member": "ContentProvider.obj",
+  "unchanged_other_members": 266,
+  "normal_librarian": true,
+  "source_compiles": 0,
+  "missing_inputs": [],
+  "unresolved_removed_symbol_consumers": [],
+  "scope": "Guarded inactive archive derived from actual final migrated baseline. ScriptContext/Part/NewNull and all other member bytes preserved. Parent owns isolated link. Implicit libraries, EH/indirect ABI/runtime/gates/selection remain separate."
+}

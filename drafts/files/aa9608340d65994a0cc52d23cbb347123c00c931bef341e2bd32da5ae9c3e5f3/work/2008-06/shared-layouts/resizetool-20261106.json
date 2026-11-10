@@ -1,0 +1,17 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "0063f040",
+                                        "symbol":  "?render3dAdorn@ResizeTool@RBX@@"
+                                    },
+                                    {
+                                        "addr":  "0063ee20",
+                                        "symbol":  "?render2d@ResizeTool@RBX@@"
+                                    }
+                                ],
+                     "source":  "native-classes/ResizeToolRender.cpp"
+                 }
+             ]
+}

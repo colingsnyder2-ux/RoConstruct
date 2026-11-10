@@ -1,0 +1,60 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/ContentProviderLoad.cpp",
+      "checks": [
+        {
+          "addr": "005628e0",
+          "symbol": "?load@ContentProvider@RBX@@QAEXVContentId@2@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z",
+          "calls": [
+            {
+              "offset": 82,
+              "target": "00561f20",
+              "symbol": "?getContent@ContentProvider@RBX@@QAE?AV?$auto_ptr@V?$basic_istream@DU?$char_traits@D@std@@@std@@@std@@VContentId@2@@Z"
+            },
+            {
+              "offset": 142,
+              "target": "00415350",
+              "symbol": "??0TextXmlParser@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@std@@@Z"
+            },
+            {
+              "offset": 161,
+              "target": "0058f6c0",
+              "symbol": "?parse@TextXmlParser@@UAE?AV?$auto_ptr@VXmlElement@@@std@@XZ"
+            },
+            {
+              "offset": 193,
+              "target": "00413a70",
+              "symbol": "??1XmlElement@@QAE@XZ"
+            },
+            {
+              "offset": 199,
+              "target": "006a067a",
+              "symbol": "??3@YAXPAX@Z"
+            },
+            {
+              "offset": 223,
+              "target": "00593250",
+              "symbol": "?loadInstances@SerializerV2@@QAEXPAVXmlElement@@AAV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@@Z"
+            },
+            {
+              "offset": 239,
+              "target": "00413a70",
+              "symbol": "??1XmlElement@@QAE@XZ"
+            },
+            {
+              "offset": 245,
+              "target": "006a067a",
+              "symbol": "??3@YAXPAX@Z"
+            },
+            {
+              "offset": 262,
+              "target": "004147c0",
+              "symbol": "??1TextXmlParser@@QAE@XZ"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

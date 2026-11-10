@@ -1,0 +1,6 @@
+{
+  "swap_target": "Selection runnable integration (FilteredSelection)",
+  "findFirst": {"run": "work/2008-06/native-check-runs/20261105-193855-4cb6309f", "addr": "0057edb0", "size": 172, "symbol": "?findFirst@?$FilteredSelection@VModelInstance@RBX@@@RBX@@QAEPAVModelInstance@2@P6A_NPAV32@@Z@Z", "target_sha256": "aaaa587c1f4175f76a207ecde8c793deb1382cccca51be5acf0eefc96167b4b2", "source_sha256": "228258b49ec4ee7c04e5107b06422223c6b7f1320ec22cb3eb4d57d532d85ec0", "object_sha256": "4dfbc91e75be2d97abe2b98339b24ef0d42cd7b7f762808e1b326bc4f6b61eb1", "result": "exact bytes+data 100%", "note": "Folding: ModelInstance/PVInstance instantiations share 0057edb0"},
+  "next_gate": "CWorkspace::insert 0046b9d0 catch rethrow (86%, parked), write EH empty-state (parked), Content closure, NullTool headers, Body getter COMDAT (parked), Initialize compiler (parked), updateCaption 00465e40 (86% parked)",
+  "metrics": {"inactive_exact": 61, "selected_exact": "unknown", "gated_swaps": 0, "server_credit": 0}
+}

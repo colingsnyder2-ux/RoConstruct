@@ -1,0 +1,234 @@
+{
+  "scope": "Inactive native predicates match with provisional ModelInstance/Workspace overlay. Full layout, type identity and runtime ABI remain unproven.",
+  "observer_sha256": "eaeaa2ec857d326b005d42ddd7601d93d08c6f4c4a55938696939a905301bd02",
+  "source_sha256": "09474ba1e98e0c19444f2f26dae3b7bff194710a6d1f0a0ed161fe09f5834aa1",
+  "resize_header_sha256": "acccbf42cd94a4f6ed10fe90224ada3291e415bcabeb7e7b97bfad1b56c9934b",
+  "axis_header_sha256": "683426776e90bf23f3e6a00b06b4f493bd08ec0856db245807ad9ed3db9c31f2",
+  "flat_header_sha256": "d1bef31f2947f7b95819b9dbb9290a7fbb1d3a5cb0e3f0b6c23ccad8f90674f0",
+  "surface_header_sha256": "a9b681ce97b1ac3ecfb88c43fe2de296e90b4ebc7b02e5bc23c9ec9f98b0080a",
+  "sibling_header_sha256": "6b0fed40a8049ba878a470807ef23d75af45abd580ef63b5cc56b3fd87f0e9c0",
+  "model_tools_header_sha256": "1f30b090516c79b7361d55f926788dd7ec849cdae89674d0d94a73faaa8381d4",
+  "model_tool_header_sha256": "13320b0d23a62af60655aefe20b0a93ec6cffdfda398e70ff107019c69076b9b",
+  "clone_header_sha256": "769f34500c845ebe52d6f7faed838d839ed284fba3cb0814e921544c6d1ab458",
+  "grab_header_sha256": "723de2380294fc64d7c99450789ed4cf71195dd453cb321f2d26fd021752cd33",
+  "object_sha256": "9faaf4624563ec733176e2c187c3201f8570349f15f5bcbec6b56e67ea8a140f",
+  "model_overlay_sha256": "1606a7b85530c003e44ac975b09b1f40263445def89cbb38896840abe325919c",
+  "workspace_overlay_sha256": "84682cd4a731b5f40990e3bb675259f3c80707b9e5837bb435076fa47f14a11c",
+  "methods": [
+    {
+      "tool": "GlueTool",
+      "address": "0x5c66d0",
+      "symbol": "?isChecked@?$TToolVerb@VGlueTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x94fefc"
+    },
+    {
+      "tool": "WeldTool",
+      "address": "0x5c6840",
+      "symbol": "?isChecked@?$TToolVerb@VWeldTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x94ff9c"
+    },
+    {
+      "tool": "StudsTool",
+      "address": "0x5c6990",
+      "symbol": "?isChecked@?$TToolVerb@VStudsTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x95003c"
+    },
+    {
+      "tool": "InletTool",
+      "address": "0x5c6ae0",
+      "symbol": "?isChecked@?$TToolVerb@VInletTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x9500dc"
+    },
+    {
+      "tool": "HingeTool",
+      "address": "0x5c6c30",
+      "symbol": "?isChecked@?$TToolVerb@VHingeTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x95017c"
+    },
+    {
+      "tool": "RightMotorTool",
+      "address": "0x5c6d80",
+      "symbol": "?isChecked@?$TToolVerb@VRightMotorTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x950224"
+    },
+    {
+      "tool": "LeftMotorTool",
+      "address": "0x5c6e40",
+      "symbol": "?isChecked@?$TToolVerb@VLeftMotorTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x9502d4"
+    },
+    {
+      "tool": "OscillateMotorTool",
+      "address": "0x5c6f40",
+      "symbol": "?isChecked@?$TToolVerb@VOscillateMotorTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x950388"
+    },
+    {
+      "tool": "ModelSetFrontTool",
+      "address": "0x5c7030",
+      "symbol": "?isChecked@?$TToolVerb@VModelSetFrontTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x950448"
+    },
+    {
+      "tool": "AnchorTool",
+      "address": "0x5c71e0",
+      "symbol": "?isChecked@?$TToolVerb@VAnchorTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x9505d0"
+    },
+    {
+      "tool": "LockTool",
+      "address": "0x5c72b0",
+      "symbol": "?isChecked@?$TToolVerb@VLockTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x950690"
+    },
+    {
+      "tool": "CloneTool",
+      "address": "0x5c77c0",
+      "symbol": "?isChecked@?$TToolVerb@VCloneTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x950988"
+    },
+    {
+      "tool": "GrabTool",
+      "address": "0x5c7720",
+      "symbol": "?isChecked@?$TToolVerb@VGrabTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x95092c"
+    },
+    {
+      "tool": "FlatTool",
+      "address": "0x5c6580",
+      "symbol": "?isChecked@?$TToolVerb@VFlatTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x94fe5c"
+    },
+    {
+      "tool": "AxisMoveTool",
+      "address": "0x5c64e0",
+      "symbol": "?isChecked@?$TToolVerb@VAxisMoveTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x94fdfc"
+    },
+    {
+      "tool": "ResizeTool",
+      "address": "0x5c6420",
+      "symbol": "?isChecked@?$TToolVerb@VResizeTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x94fd50"
+    },
+    {
+      "tool": "ArrowTool",
+      "address": "0x5c6240",
+      "symbol": "?isChecked@?$TToolVerb@VArrowTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x94bc74"
+    },
+    {
+      "tool": "NullTool",
+      "address": "0x5c75e0",
+      "symbol": "?isChecked@?$TToolVerb@VNullTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x950874"
+    },
+    {
+      "tool": "GameTool",
+      "address": "0x5c7680",
+      "symbol": "?isChecked@?$TToolVerb@VGameTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x9508d0"
+    },
+    {
+      "tool": "FillTool",
+      "address": "0x5c7380",
+      "symbol": "?isChecked@?$TToolVerb@VFillTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x95072c"
+    },
+    {
+      "tool": "DropperTool",
+      "address": "0x5c74d0",
+      "symbol": "?isChecked@?$TToolVerb@VDropperTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x9507cc"
+    },
+    {
+      "tool": "ModelSetPrimaryPartTool",
+      "address": "0x5c7120",
+      "symbol": "?isChecked@?$TToolVerb@VModelSetPrimaryPartTool@RBX@@VRunStateVerb@2@@RBX@@UBE_NXZ",
+      "size": 44,
+      "exact": true,
+      "type_descriptor": "0x950510"
+    }
+  ],
+  "flags": [
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\workspace-model-vector-include",
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeToolCheckedMultiTrial.obj",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeToolCheckedMultiTrial.cpp"
+  ]
+}

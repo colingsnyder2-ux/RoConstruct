@@ -1,0 +1,155 @@
+{
+  "revision": "1f22f9eb1c698b5a2c8336e4aa5e70f31fcb1eb8",
+  "exe_sha256": "8061f05ad0fe02c337f7fff6544326d67168215cf8e2c98b29ccec3696341d50",
+  "map_sha256": "cd7cda67767d97f1be1804f62cee05d34604539db285b42d924192537d76897b",
+  "fixture_sha256": "a3767501e407f73ac942b7d426a3995ca8d2a920f468378c757b256e5b9f5841",
+  "observer_sha256": "02a133a835b0786afd9f22401f312dbb01b814daaf6452605dd0f9b599024495",
+  "loaded_dlls": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\rgmain.dll": "b67d2e96c5bf28fe48799a96c7927c57b91c74e483b30975ee58ca45f470153c",
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\rgdx.dll": "dfce3291ea1214f37aae8e009af1891c45ab7843eb639a914d9791418559a50e"
+  },
+  "runs": {
+    "lifetime": {
+      "command": [
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\P2RecoveredPlayer.exe",
+        "--p3test",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\fixtures\\lifetime-blocks.rbxl"
+      ],
+      "cwd": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p5-controller-lifetime-1f22f9eb1c\\lifetime",
+      "exit": 0,
+      "result": {
+        "block_lifetime_pass": true,
+        "cycles": 2,
+        "non_box_proven": false,
+        "mesh_baseline": 3,
+        "material_baseline": 3,
+        "texture_baseline": 0,
+        "node_baseline": 0
+      },
+      "independent_image_audit": [
+        {
+          "cycle": 0,
+          "stationary_foreground_pixels": 2450,
+          "initial_red_color_pixels": 2450,
+          "transform_changed_pixels": 5629,
+          "insert_changed_pixels": 7066,
+          "insert_new_foreground_pixels": 1314,
+          "insert_foreground_bounds": [
+            85,
+            159,
+            118,
+            198
+          ],
+          "insert_removal_restores_exact_frame": true
+        },
+        {
+          "cycle": 1,
+          "stationary_foreground_pixels": 2450,
+          "initial_red_color_pixels": 2450,
+          "transform_changed_pixels": 5701,
+          "insert_changed_pixels": 7109,
+          "insert_new_foreground_pixels": 1314,
+          "insert_foreground_bounds": [
+            85,
+            159,
+            118,
+            198
+          ],
+          "insert_removal_restores_exact_frame": true
+        }
+      ],
+      "files": {
+        "p3_0_detached.png": "76f4f5635ce2bf7a223026a0a18c43bf9f5fe8446ce24697f472578e0d5e6151",
+        "p3_0_empty.png": "43b90f1bd66171f89cd34a1f8320045431e7e41db921e3572405f83f9ad955de",
+        "p3_0_inserted.png": "1af54931863aaebc2714a7a3a0e98fe894813999053359793c99ea1c5dde9b93",
+        "p3_0_insert_removed.png": "fd3a3e7b8932a10f4816ba91e6f1d0848afaa76d9d1d0fb707ea800c894a9db2",
+        "p3_0_loaded.png": "4416dbe3530001868e891b0bd5b6c3000d04f413ae86afc5db99835e05665cc0",
+        "p3_0_reattached.png": "fd3a3e7b8932a10f4816ba91e6f1d0848afaa76d9d1d0fb707ea800c894a9db2",
+        "p3_0_removed.png": "76f4f5635ce2bf7a223026a0a18c43bf9f5fe8446ce24697f472578e0d5e6151",
+        "p3_0_reparented.png": "fd3a3e7b8932a10f4816ba91e6f1d0848afaa76d9d1d0fb707ea800c894a9db2",
+        "p3_0_transformed.png": "fd3a3e7b8932a10f4816ba91e6f1d0848afaa76d9d1d0fb707ea800c894a9db2",
+        "p3_1_detached.png": "84c407ce71181bce71beabb8b46a3da0b965c742e08e94c81fbac355189ec6cd",
+        "p3_1_empty.png": "43b90f1bd66171f89cd34a1f8320045431e7e41db921e3572405f83f9ad955de",
+        "p3_1_inserted.png": "9a6b69699cee4b3cc38f32cdaa6c00086acdb993a8856dfbe4054fe201d45dd2",
+        "p3_1_insert_removed.png": "5e293eb6d540f5ff1e3cc7ee006fdbba14f7f830edb22e6a840be8bf9a326350",
+        "p3_1_loaded.png": "287d14f93e8b82dc31049789951ce5202e989d1bae5bcfd37bb3e5d3c36802f3",
+        "p3_1_reattached.png": "5e293eb6d540f5ff1e3cc7ee006fdbba14f7f830edb22e6a840be8bf9a326350",
+        "p3_1_removed.png": "84c407ce71181bce71beabb8b46a3da0b965c742e08e94c81fbac355189ec6cd",
+        "p3_1_reparented.png": "5e293eb6d540f5ff1e3cc7ee006fdbba14f7f830edb22e6a840be8bf9a326350",
+        "p3_1_transformed.png": "5e293eb6d540f5ff1e3cc7ee006fdbba14f7f830edb22e6a840be8bf9a326350",
+        "p3_lifetime.csv": "7093fa0eafeac6c0a99e6ed3d0d604999ddfbe88a2251bf7dfad427c012b1b10",
+        "p3_result.json": "1306bc6b4db60d5f5692ac90d28ccdacde481c3f0eae770c458bdbe8fbe62e48",
+        "player.log": "ef7cda386e11abdfbe638ba779b4667fd5f48d48d78160ff2f8906244b690ca4",
+        "stdout.txt": "8ff69fa314a96b516dd23830285fa4f6c097c31f51f56d36b520bcd85eae13d6"
+      }
+    },
+    "selftest": {
+      "command": [
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\P2RecoveredPlayer.exe",
+        "--selftest"
+      ],
+      "cwd": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p5-controller-lifetime-1f22f9eb1c\\selftest",
+      "exit": 0,
+      "result": {
+        "pixel_metric": "lit green: G>50, G>2R, 2G>3B",
+        "initial": {
+          "models": 1,
+          "greenA": 1879,
+          "greenB": 0,
+          "pass": true
+        },
+        "moved": {
+          "models": 1,
+          "greenA": 0,
+          "greenB": 2080,
+          "pass": true
+        },
+        "removed": {
+          "models": 0,
+          "green": 0,
+          "pass": true
+        },
+        "empty": {
+          "models": 0,
+          "green": 0,
+          "pass": true
+        },
+        "failures": 0
+      },
+      "files": {
+        "player.log": "1eb79175ed1bd9750e5b4aac7cdd26efd24cec2cc998c919b19aa1ec144d6d1b",
+        "selftest_empty.png": "43b90f1bd66171f89cd34a1f8320045431e7e41db921e3572405f83f9ad955de",
+        "selftest_initial.png": "c45f954cbf174bb689c58c6dc7eab0fc2de0cd4b5c9c5c4ff86b0c57b8263844",
+        "selftest_moved.png": "f88f0fd09c79c139f3313fdfa418acc84adb8b2b2ae89f703052f0d1db5b02b4",
+        "selftest_removed.png": "43b90f1bd66171f89cd34a1f8320045431e7e41db921e3572405f83f9ad955de",
+        "selftest_result.json": "a4e8122cd39a76909bc0129b0405f306368add686bd710f7b1307b9720467b69",
+        "stdout.txt": "43ad0c6c85478509b4c907669e47c2414d690f8e65ade7673b472297569e596a"
+      }
+    },
+    "cachetest": {
+      "command": [
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2RecoveredPlayer\\P2RecoveredPlayer.exe",
+        "--cachetest",
+        "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\fixtures\\cache-blocks.rbxl"
+      ],
+      "cwd": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p5-controller-lifetime-1f22f9eb1c\\cachetest",
+      "exit": 0,
+      "files": {
+        "cache_initial.png": "2d873bfc05fe89ebd1a39e6f3ff5c65a1739805d55f6933c68a35f4d88ab2fa4",
+        "cache_remaining.png": "2d873bfc05fe89ebd1a39e6f3ff5c65a1739805d55f6933c68a35f4d88ab2fa4",
+        "player.log": "b1d9a9b05edbaa015011f826993898c1d64a0cc56d59a8a6f8d1d077feef75af",
+        "stdout.txt": "7b0000c9b736189817162547cbef6067d362223ef2da3d6afc91b8efb5ab1afd"
+      }
+    }
+  },
+  "P3_complete": false,
+  "remaining": "Native non-box geometry and silhouette comparison against original client.",
+  "source_sha256": {
+    "modules/player.json": "a56723c433db16898c145671620847f8a96da1e48860ca00ab428f58bc6a8f01",
+    "tests/p2-recovered/Player2008.cpp": "70eae8d76e0d0c2aedc2ab3af32b776dccead00d4a2cd8d92c1b1509490a0526",
+    "tests/p2-recovered/PlayerEngine.cpp": "6f1b34fa93e71c3c9a4913ef85d83a5aa6f8f9f9a90e51f62167cd7483df1200",
+    "tests/p2-recovered/PlayerScene.cpp": "09a1e974c3a26df8ad699b33f80e84c26310c59ea66b74848d0fdab43521e9bf",
+    "tests/p2-recovered/PlayerScene.h": "1aa44471d8732078655344770a45a4935153edb6e587da1a5ce0b376be8fab17",
+    "tests/p2-recovered/RbxEntity.h": "f809fe919a1880d311058e926848a6e6629c2086964d92ef973a19abe01ac1e8"
+  }
+}

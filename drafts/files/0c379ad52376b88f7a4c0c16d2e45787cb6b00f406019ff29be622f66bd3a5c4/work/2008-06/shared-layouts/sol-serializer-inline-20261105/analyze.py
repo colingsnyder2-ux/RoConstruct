@@ -1,0 +1,13 @@
+import json, pathlib, sys, struct, hashlib
+R=pathlib.Path.cwd();sys.path.insert(0,str(R));from roc import match,rebuild
+O=R/'work/2008-06/shared-layouts/sol-serializer-inline-20261105';run=R/'work/2008-06/native-check-runs/20261105-151943-cff659c3';r=json.loads((run/'results.json').read_text())[0];raw=pathlib.Path(r['object']).read_bytes();symbol=r['checks'][0]['symbol'];secs,syms,defs,_=match._coff_data_index(raw);start,sec=defs[symbol];sc=secs[sec];refs={}
+for k in range(sc[7]):
+ off,ix,ty=struct.unpack_from('<IIH',raw,sc[5]+10*k)
+ if start<=off<start+550:refs[off-start]=(syms[ix][0],ty)
+# Destinations read independently from original PE assembly; API roles from genuine declarations/source and caller argument flow.
+pairs=[(0x40,'0057c2b0','findAttribute'),(0x53,'0057c4f0','getValue'),(0x6d,'00592940','??0ArchiveBinder'),(0x82,'0057c230','findFirstChildByTag'),(0x9e,'0057c2b0','findAttribute'),(0xb3,'0057c360','getValue'),(0xca,'00420190','create'),(0xe8,'0055b6f0','read'),(0xf5,'00420110','push_back'),(0x11e,'00569620','singleton'),(0x136,'005693a0','print'),(0x14a,'00600660','??1?$shared_ptr'),(0x18c,'0057c250','findNextChildWithSameTag'),(0x19f,'00592720','resolveRefs'),(0x1b3,'005931e0','??1ArchiveBinder'),(0x1ee,'00509db0','common'),(0x1f5,'00509ef0','println')]
+calls=[]
+for off,addr,role in pairs:
+ name,ty=refs[off+1];assert role in name and ty==20;calls.append(dict(offset=off,target=addr,symbol=name,independent_evidence='original-assembly.txt PE destination; genuine declaration API and original argument flow',role=role))
+m=json.loads((run/'manifest.json').read_text());m['jobs'][0]['checks'][0]['calls']=[{k:v for k,v in c.items() if k in ('offset','target','symbol')} for c in calls];(O/'reviewed-checks.json').write_text(json.dumps(m,indent=2));(O/'direct-review.json').write_text(json.dumps(calls,indent=2));(O/'saved-results.json').write_bytes((run/'results.json').read_bytes());(O/'saved-summary.json').write_bytes((run/'summary.json').read_bytes())
+inv={'defined_externals':rebuild.coff_externals(raw),'all_functions':[{'symbol':s,'size':len(b),'relocations':rel} for s,b,rel in match.coff_functions(raw)],'indirect_sites':[{'address':'005933c1','contract':'shared-count dispose vtable+4; selected concrete ABI unproven'},{'address':'005933d6','contract':'shared-count destroy vtable+8; selected concrete ABI unproven'},{'address':'00593428','contract':'IAT 00802458 MSVCP90 string char* ctor','symbol':refs[0x1da][0]},{'address':'00593459','contract':'IAT 00802468 MSVCP90 string dtor','symbol':refs[0x20b][0]}]};(O/'provider-inventory.json').write_text(json.dumps(inv,indent=2));print('direct bindings reviewed',len(calls),'functions',len(inv['all_functions']),'dependencies',len(r['dependencies']))

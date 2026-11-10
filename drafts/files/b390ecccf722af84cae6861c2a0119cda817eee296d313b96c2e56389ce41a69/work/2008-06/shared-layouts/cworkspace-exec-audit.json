@@ -1,0 +1,6 @@
+{
+  "swap_target": "Workspace runnable integration (CWorkspace Exec)",
+  "ExecScript": {"run": "work/2008-06/native-check-runs/20261105-183352-26a85e54", "addr": "0046c230", "size": 511, "symbol": "?ExecScript@CWorkspace@@UAGJPA_WUtagVARIANT@@111PAPAUtagSAFEARRAY@@@Z", "target_sha256": "adeeef5168236d6468912410ea0d6c9720e313f891a4d45c293c22c1ee9d481c", "source_sha256": "8d53b9d91753fd04216b57138387e344935c6ced650e14589ace0c47bb48ca8e", "object_sha256": "cf3625c38eef8c8db5176193d6eb280b1baa9c9b0418c1495463f88b0a6a2563", "result": "exact bytes+data 100%"},
+  "next_gate": "execScript helper + ExecUrlScript (CWorkspaceExecScriptHelper) + write EH + Content closure + NullTool headers + Part provider",
+  "metrics": {"inactive_exact": 15, "selected_exact": "unknown", "gated_swaps": 0, "server_credit": 0}
+}

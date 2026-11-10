@@ -1,0 +1,33 @@
+{
+  "target": "00592720",
+  "swap_target": "serializer dependency closure",
+  "status": "PARKED awaiting genuine new input",
+  "rejected_hypotheses": 3,
+  "compiled_sources_this_task": 1,
+  "additional_compiles_authorized": 0,
+  "source_sha256": "fcbf9d854dfa63eb4cb6646deadff54416d7a9328c1db362a52280ec60544f81",
+  "H2_source_sha256": "8ff3b4ed3ccafc9538b9919b1f70bf262bf09ac73c2f5749f3447446ab49c6b1",
+  "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\native-check-runs\\20261105-154257-1a48538d\\unit-000\\candidate.obj",
+  "object_sha256": "8e8b53b53a9449693c3f5779c30b1b9f5f10c66634e83542bb72000964f1c754",
+  "runner": "work\\2008-06\\native-check-runs\\20261105-154257-1a48538d",
+  "target_size": 96,
+  "candidate_size": 93,
+  "first_difference": 73,
+  "difference": "short branches shifted; success mov al,1 before pops vs original mov eax,1 after three pops; false xor al,al vs xor eax,eax",
+  "direct_binding_proof": false,
+  "data_proof": false,
+  "next_gate": "genuine new evidence required; no H4 or profile grid",
+  "remaining_gates": [
+    "exact bytes/data/direct calls",
+    "count_if and resolveIDREF transitive ABI/EH",
+    "canonical ODR compatibility",
+    "linked selection",
+    "runtime gates"
+  ],
+  "metrics": {
+    "inactive_exact": 0,
+    "selected_exact": null,
+    "fully_gated_swaps": 0,
+    "server_credit": 0
+  }
+}

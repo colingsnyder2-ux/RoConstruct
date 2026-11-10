@@ -1,0 +1,28 @@
+{
+  "checks": [
+    {
+      "addr": "0047d410",
+      "requested_symbol": "??1IRenderable@RBX@@QAE@XZ",
+      "status": "exact",
+      "symbol": "??1IRenderable@RBX@@QAE@XZ",
+      "score": 100,
+      "target_size": 1,
+      "object_size": 1,
+      "target_sha256": "ae3f4619b0413d70d3004b9131c3752153074e45725be13b9a148978895e359e",
+      "first_byte_difference": null,
+      "data_matches": [],
+      "data_errors": [],
+      "call_identity": {
+        "passed": true,
+        "calls": [],
+        "unused_expectations": [],
+        "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
+      },
+      "check_seconds": 1.920998
+    }
+  ],
+  "coverage": [],
+  "layouts": [],
+  "object_sha256": "42444b399d06567d75cbed1cbde50660d8d672753602d84959cc7b3e1957dbe7",
+  "scope": "Saved object strict byte/data/calls proof. Mouse original adjustment and deleting ownership independently disassembled. No linked selection, full transitive ABI/EH or runtime claim."
+}

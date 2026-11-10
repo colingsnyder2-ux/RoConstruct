@@ -1,0 +1,40 @@
+{
+  "scope": "Inactive factory/lifetime and RTTI checks; derived methods and runtime ABI unproven.",
+  "methods": [
+    {
+      "address": "0x5c73b0",
+      "size": 34,
+      "symbol": "?getCursorName@FillTool@RBX@@MBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+      "bindings": {
+        "??_C@_0L@DAHCKNGD@FillCursor?$AA@": "0x8398ac",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458"
+      }
+    },
+    {
+      "address": "0x5c73e0",
+      "size": 95,
+      "symbol": "?isSticky@FillTool@RBX@@UBEPAVMouseCommand@2@XZ",
+      "bindings": {
+        "__ehhandler$?isSticky@FillTool@RBX@@UBEPAVMouseCommand@2@XZ": "0x7bf43b",
+        "??2@YAPAXI@Z": "0x6a0920",
+        "??0PartTool@RBX@@QAE@PAVWorkspace@1@@Z": "0x5b6390",
+        "??_7FillTool@RBX@@6BINamed@1@@": "0x83986c",
+        "??_7FillTool@RBX@@6BIRenderable@1@@": "0x839854"
+      }
+    },
+    {
+      "address": "0x5c7500",
+      "size": 34,
+      "symbol": "?getCursorName@DropperTool@RBX@@MBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+      "bindings": {
+        "??_C@_0O@IMMDJJCL@DropperCursor?$AA@": "0x839934",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458"
+      }
+    }
+  ],
+  "source_sha256": "2b0799174beaa92fac5dc7bf9a2c9eef017e066464e8d46492715d57abd8507c",
+  "header_sha256": "f483645c36a6156f599696476c1c2d2029b76a89bc040ca95fa896fd7d9dac00",
+  "base_header_sha256": "e6a1ca3275f54c8656d41ef1452743b4d2c962bbe58b0deb67ab28cd258dac6b",
+  "object_sha256": "fcbd939fc82aed5056f291559b80d2e0977c003a6ad7b6f65e10a62b2e623249",
+  "observer_sha256": "f54d791e7641268e3ba8110136b350d184d65bff1c481f2a631ba90151eb38c1"
+}

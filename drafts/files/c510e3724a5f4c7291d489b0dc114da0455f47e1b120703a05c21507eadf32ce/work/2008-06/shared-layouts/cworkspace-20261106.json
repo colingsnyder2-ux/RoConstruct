@@ -1,0 +1,25 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "0046ab60",
+                                        "symbol":  "??0CWorkspace@@"
+                                    },
+                                    {
+                                        "addr":  "0046a940",
+                                        "symbol":  "?getDataModel@CWorkspace@@"
+                                    },
+                                    {
+                                        "addr":  "0046ab90",
+                                        "symbol":  "?writeXmlModel@CWorkspace@@"
+                                    },
+                                    {
+                                        "addr":  "0046b0e0",
+                                        "symbol":  "?cleanup@CWorkspace@@"
+                                    }
+                                ],
+                     "source":  "native-classes/CWorkspace.cpp"
+                 }
+             ]
+}

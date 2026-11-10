@@ -1,0 +1,29 @@
+{
+  "status": "parked pending absent helper provider guidance",
+  "compile_count": 0,
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "archive_sha256": "5e468dd4a346f252ce853c68ee416f1df833eddb23c0ab80e15194c623d19f4c",
+  "canonical_header_sha256": "49ce2d0144378fead1015fd0fce074b67cacc352a15bda5c814913a119fd9114",
+  "original_virtual_binding": {
+    "constructor_store": "0059d55d ->00832d4c",
+    "COL": "0089a210",
+    "RTTI": "PartInstance",
+    "offset": 0,
+    "slot_38": "00558c50",
+    "genuine_symbol": "?write@Instance@RBX@@UAEPAVXmlElement@@XZ",
+    "donor_member_sha256": "947583b50f1108dae75be8368843c52c5cd6be382a1ce88a99ae13b6b5f49460",
+    "normalized_body_exact": true
+  },
+  "canonical_abi": "XmlElement* write() nonconst thiscall; expected primary slot14/+38 from declarations, secondary overrides excluded. No fresh compiled current canonical slot proof.",
+  "helper_normalized_matches": [],
+  "helper_named_provider_found": false,
+  "root_provider": "/903 normalized exact00591a30; c6f555a65d89f48ff15b4d01fdb45b81698c63eb24031c547aa0dd8d231f35f0",
+  "missing": [
+    "native Instance::fromXmlRoot provider for00559250",
+    "fresh current canonical virtual slot COFF evidence",
+    "transitive ABI/EH/data and selected provider proof"
+  ],
+  "next_gate": "Parent supply/recover genuine fromXmlRoot provider or authorize wrapper-only compile with unresolved helper recorded. No speculative helper body.",
+  "hypotheses_rejected": 0,
+  "source_edits": 0
+}

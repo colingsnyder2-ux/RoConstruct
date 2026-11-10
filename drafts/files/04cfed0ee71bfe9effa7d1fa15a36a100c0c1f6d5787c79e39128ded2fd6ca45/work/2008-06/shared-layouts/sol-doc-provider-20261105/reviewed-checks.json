@@ -1,0 +1,96 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/WorkspaceServiceFactory.cpp",
+      "checks": [
+        {
+          "addr": "00490af0",
+          "symbol": "??$create@VWorkspace@RBX@@@ServiceProvider@RBX@@QBEPAVWorkspace@1@XZ",
+          "calls": [
+            {
+              "offset": 40,
+              "target": "00557330",
+              "symbol": "?call_once@boost@@YAXP6AXXZAAJ@Z"
+            },
+            {
+              "offset": 48,
+              "target": "0048a460",
+              "symbol": "??$doGetClassIndex@VWorkspace@RBX@@@ServiceProvider@RBX@@SAIXZ"
+            },
+            {
+              "offset": 114,
+              "target": "004124c0",
+              "symbol": "?resize@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAEXIV?$shared_ptr@VInstance@RBX@@@boost@@@Z"
+            },
+            {
+              "offset": 160,
+              "target": "00557330",
+              "symbol": "?call_once@boost@@YAXP6AXXZAAJ@Z"
+            },
+            {
+              "offset": 168,
+              "target": "00489c30",
+              "symbol": "??$doDeclare@$1?sWorkspace@RBX@@3PADA@Name@RBX@@CAABV01@XZ"
+            },
+            {
+              "offset": 181,
+              "target": "00572a90",
+              "symbol": "?findServiceByClassName@ServiceProvider@RBX@@QBE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z"
+            },
+            {
+              "offset": 214,
+              "target": "00600660",
+              "symbol": "??1?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ"
+            },
+            {
+              "offset": 277,
+              "target": "004025b0",
+              "symbol": "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z"
+            },
+            {
+              "offset": 294,
+              "target": "00600660",
+              "symbol": "??1?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "native-classes/ActiveDocument.cpp",
+      "checks": [
+        {
+          "addr": "00405aa0",
+          "symbol": "?setActiveDocument@@YAX_NPAVCRobloxDoc@@@Z",
+          "calls": [
+            {
+              "offset": 92,
+              "target": "00403040",
+              "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 119,
+              "target": "004025b0",
+              "symbol": "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z"
+            },
+            {
+              "offset": 208,
+              "target": "00403040",
+              "symbol": "?getDataModel@CRobloxDoc@@QAE?AV?$shared_ptr@VDataModel@RBX@@@boost@@XZ"
+            },
+            {
+              "offset": 283,
+              "target": "00456e80",
+              "symbol": "?reset@?$shared_ptr@VDataModel@RBX@@@boost@@QAEXXZ"
+            },
+            {
+              "offset": 472,
+              "target": "005e9340",
+              "symbol": "?_Inc@const_iterator@?$_Tree@V?$_Tset_traits@PAVActiveDocView@@U?$less@PAVActiveDocView@@@std@@V?$allocator@PAVActiveDocView@@@3@$0A@@std@@@std@@QAEXXZ"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "session": "e76ca2250d4a4896ab9ffcf0d229d5a1",
+  "swap_target": "CRobloxDoc native diagnostic closure",
+  "status": "ready for parent isolated relink; no activation",
+  "explicit_inputs": 1191,
+  "scanned_members": 22614,
+  "ordinary_coff": 1415,
+  "short_import_members": 21199,
+  "unparsed": 0,
+  "external_consumer_objects": 4,
+  "missing_inputs": [],
+  "replacement": {
+    "baseline": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-130705-87b5983d\\output\\null-tool-owner\\linked.lib",
+    "baseline_sha256": "7388fd3bfb96473f268288a5d3aa4164c0d4deb9dc89137ea033f2601b34c05d",
+    "replacement": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\native-candidates\\sol-aggregate-content-20261105\\linked.lib",
+    "replacement_sha256": "4623ee3e28b0752e09bb26108ba97061b2efddd8b758cd1f2a03bd113dc7f6b5",
+    "changed_member": "ContentProvider.obj",
+    "unchanged_other_members": 266,
+    "normal_librarian": true,
+    "source_compiles": 0,
+    "missing_inputs": [],
+    "unresolved_removed_symbol_consumers": [],
+    "scope": "Guarded inactive archive derived from actual final migrated baseline. ScriptContext/Part/NewNull and all other member bytes preserved. Parent owns isolated link. Implicit libraries, EH/indirect ABI/runtime/gates/selection remain separate."
+  },
+  "attempts": [
+    "First scan identified short-import members unsupported by generic COFF parser; added validated short-import header/name reader; final coverage unparsed=0. No C++ compilation."
+  ],
+  "blockers": [
+    "Implicit default-library transitive closure unproven",
+    "WorkspaceInsert catch_relocs recorder failed: EH incomplete",
+    "4 indirect load calls, ABI/runtime/gates remain separate",
+    "Parent owns actual isolated relink and selected provider verification"
+  ],
+  "metrics": {
+    "source_compiles": 0,
+    "new_inactive_exacts": 0,
+    "selected_exacts": null,
+    "gated_swaps": 0,
+    "server_credit": 0
+  },
+  "next_gate": "Parent rehash command+manifest, isolated relink replacing only actual null-tool-owner/linked.lib with task archive; inspect selected map and remaining diagnostics."
+}

@@ -1,0 +1,17 @@
+{
+    "jobs":  [
+                 {
+                     "checks":  [
+                                    {
+                                        "addr":  "00434570",
+                                        "symbol":  "??0CDeclarationView@@"
+                                    },
+                                    {
+                                        "addr":  "00434640",
+                                        "symbol":  "??1CDeclarationView@@"
+                                    }
+                                ],
+                     "source":  "native-classes/CDeclarationView.cpp"
+                 }
+             ]
+}

@@ -1,0 +1,32 @@
+{
+  "scope": "Class-name byte arrays match original descriptor name strings; storage placement, pooling, complete ABI and runtime remain unproven.",
+  "names": [
+    {
+      "symbol": "?sInstance@RBX@@3QBDB",
+      "original_address": "0x82d6a0",
+      "bytes": "496e7374616e636500",
+      "original_reference": "0x40ada9"
+    },
+    {
+      "symbol": "?sSelection@RBX@@3PADA",
+      "original_address": "0x82ec58",
+      "bytes": "53656c656374696f6e00",
+      "original_reference": "0x5671c9"
+    },
+    {
+      "symbol": "?sTexture@RBX@@3PADA",
+      "original_address": "0x949c70",
+      "bytes": "5465787475726500",
+      "original_reference": "0x41debb"
+    },
+    {
+      "symbol": "?sRunService@RBX@@3PADA",
+      "original_address": "0x82d328",
+      "bytes": "52756e5365727669636500",
+      "original_reference": "0x556459"
+    }
+  ],
+  "source_sha256": "26553c3a1384d4dbb67915a0ab42bfacfa5d2b80c764d5e187abd071fd38b263",
+  "object_sha256": "7c78fb86f5d7591bd419cffdd7b6a02dea9fcbbd1416871c08190277a5b83d26",
+  "observer_sha256": "af4dd312992c48fe943e0afc27bb4818cd40fd26e752fc1dd08df9a75e9b14a2"
+}

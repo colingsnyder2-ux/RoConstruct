@@ -1,0 +1,1 @@
+﻿{"jobs":[{"source":"native-classes/CSelectionCaptionText.cpp","checks":[{"addr":"00465e40","symbol":"?updateCaption@CSelectionCaption@@"}]}]}

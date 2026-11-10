@@ -1,0 +1,12 @@
+{
+  "swap_target": "Workspace runnable integration (CWorkspace::write 0046b860)",
+  "current_blocker": "112/112 99% first diff offset 68: EH state 0 vs 1; original FuncInfo 0x8db774 has 2 states, candidate has 1 state (0) then -1",
+  "new_evidence": {
+    "original_funcinfo": "0x8db774 bytes 22 05 93 19 = 0x19930522 magic, next DWORD 2 states; candidate pushes funcinfo via reloc (dump_writer.py refs [9]) but sets state 0 before serialize 0058e810, original sets 1 before same call",
+    "original_ctor_dtor": "0046b550 98B (ctor) + 0046b1e0 77B (dtor) both push 0x7c3948, exact under implicit profile",
+    "prior_rejected": "copy-init, scope, provider local, member/ref, service-instance, base novtable, auto_inline/depth/Ob1, real TU, STL extern (research/log.jsonl)"
+  },
+  "next_proof": "Parse FuncInfo 0x8db774 TRY block table (2 blocks) to identify second protected object; do not repeat prior variants without that table.",
+  "status": "parked - awaiting FuncInfo table parse",
+  "run": "work/2008-06/native-check-runs/20261105-181745-1c214fc4"
+}

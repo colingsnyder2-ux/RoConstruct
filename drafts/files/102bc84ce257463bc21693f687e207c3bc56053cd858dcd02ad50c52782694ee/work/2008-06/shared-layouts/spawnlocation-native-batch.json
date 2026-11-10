@@ -1,0 +1,12 @@
+{
+  "batch": "RBX::SpawnerService / SpawnLocation",
+  "change": "Removed NATIVE_SPAWN_PENDING guard around SpawnerService constructor; uses Instance::propArchivable.",
+  "changed_files": [
+    "rebuild/2008-06/native-classes/SpawnLocation.cpp"
+  ],
+  "verification": "rebuild/2008-06/tests/record_native_spawn.py PASS: 80 Spawn rows exact plus 42 Timer rows, 1 pending-only, 12 layout-blocked, vtables verified.",
+  "package_revision": "1d8dc7a8d6ee2c6694f477361ba54ad661ce91c8f648dc9713f7a4bdf6bb4b54",
+  "workspace_manifest_source_revision": "1d8dc7a8d6ee2c6694f477361ba54ad661ce91c8f648dc9713f7a4bdf6bb4b54",
+  "baseline_commit": "unknown",
+  "status": "inactive draft; no active build, swap, runtime, or server credit"
+}

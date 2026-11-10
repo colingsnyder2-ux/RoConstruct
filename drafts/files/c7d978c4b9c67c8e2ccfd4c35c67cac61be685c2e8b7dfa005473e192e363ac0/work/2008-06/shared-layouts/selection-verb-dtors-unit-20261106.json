@@ -1,0 +1,120 @@
+{
+ "baseline_commit": "unknown",
+ "blocker_reduced": "The two destructor providers StandardVerbs::~StandardVerbs actually calls are now byte-exact from the existing native source, and their single direct call to Verb::~Verb 005832c0 (proven exact in the same session) carries a reviewed binding.",
+ "checks": [
+  {
+   "addr": "0057dfd0",
+   "call_identity_passed": false,
+   "call_sites_total": 3,
+   "data_errors": [],
+   "data_references": 1,
+   "direct_call_bindings_verified": 1,
+   "first_byte_difference": null,
+   "iat_indirect_call_bindings_verified": true,
+   "iat_indirect_call_sites": 0,
+   "indirect_call_sites": 2,
+   "object_size": 125,
+   "role": "RunStateVerb dtor: the provider StandardVerbs::~StandardVerbs calls at 22 sites",
+   "status": "exact",
+   "symbol": "??1RunStateVerb@RBX@@UAE@XZ",
+   "target_sha256": "87327199c94fb8a2c39399157ceadb6b37e57389c4bdeb0c1b627f38b3046702",
+   "target_size": 125,
+   "virtual_dispatch_offsets": [
+    70,
+    91
+   ],
+   "virtual_dispatch_sites": 2
+  },
+  {
+   "addr": "0057e050",
+   "call_identity_passed": false,
+   "call_sites_total": 5,
+   "data_errors": [],
+   "data_references": 1,
+   "direct_call_bindings_verified": 1,
+   "first_byte_difference": null,
+   "iat_indirect_call_bindings_verified": true,
+   "iat_indirect_call_sites": 0,
+   "indirect_call_sites": 4,
+   "object_size": 179,
+   "role": "EditSelectionVerb dtor: the provider StandardVerbs::~StandardVerbs calls at 18 sites",
+   "status": "exact",
+   "symbol": "??1EditSelectionVerb@RBX@@UAE@XZ",
+   "target_sha256": "a28e7e848327ceae841de1da93616a27bbfdefd35c3a826443c23a8d012bc8c9",
+   "target_size": 179,
+   "virtual_dispatch_offsets": [
+    70,
+    91,
+    124,
+    145
+   ],
+   "virtual_dispatch_sites": 4
+  }
+ ],
+ "client": "2008-06",
+ "compiler": "C:\\Users\\colin\\Desktop\\RoConstruct-main\\RoConstruct-Native-4f7d46a43031423c966cd798b30be257\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\bin\\cl.exe",
+ "compiler_sha256": "a8fb826379837492f19b249a3553acc3f904afe4c93e643054d0e48340ae717a",
+ "indirect_call_abi": {
+  "bindings": "work/native-candidates/selection-verb-dtors-20261106/bindings.json",
+  "bindings_sha256": "beb6b53744cccb15074f5de099c4e9fa92cd8d1791a057fab08a8b1ead38cd84",
+  "probe": "work/native-candidates/standard-verbs-iat-abi-20261106/probe_indirect_call_abi.py",
+  "probe_sha256": "4ae00f7ef93e5e9c3db5d0e839cf376020d86700defce464cf30b0565eee9f28",
+  "scope": "Neither destructor body reaches an imported function through an IAT slot, so that obligation is empty for this unit. The six register-indirect call sites are virtual dispatches (call eax / call edx from a loaded vtable pointer); their slot identity and callee ABI are a separate obligation and are NOT proven here.",
+  "totals": {
+   "bodies": 2,
+   "byte_identical_bodies": 2,
+   "direct_sites": 2,
+   "indirect_sites": 0,
+   "unclassified_sites": 0,
+   "verified": 0,
+   "virtual_dispatch_sites": 6
+  }
+ },
+ "manifest": "rebuild/2008-06/tests/selection-verb-dtors-unit-20261106.json",
+ "manifest_sha256": "c2dbef15f9f9ea1b7efbdbe797f1315ae61c71512dadd921bd960eab0edb69bb",
+ "metrics": {
+  "gated_class_swaps": 0,
+  "inactive_exact_addresses": 2,
+  "selected_exact_addresses": 0,
+  "server_credit_added": 0
+ },
+ "non_claims": [
+  "No link was performed and no provider was selected.",
+  "No .lib, RSP, map or executable was created, copied or reconstructed.",
+  "No symbol alias, stub or synthetic mapping was introduced.",
+  "No server credit, runtime activation or executable selection change."
+ ],
+ "object": "work/2008-06/native-check-runs/20261106-123742-b9c68558/unit-000/candidate.obj",
+ "object_sha256": "e7d4544d3d9a5ee223e749a3d5d6a099935e4dddf958e75c3d7d8d2e31af29d6",
+ "owner_checkout_queue_present": false,
+ "package_revision": "6a75107cef5c18ce5004b83e32ac32736c354a262f7257e7dfbe3192d7bcd00f",
+ "preserved": "Shared headers, vendor inputs, other leases and the active executable selection unchanged. RBX::CRobloxDoc message handlers 2008, RBX::MoveDown selection verb 2008, RBX::Lua instance bridge 2008, RBX::ScoreHud gui huds 2008, RBX::ViewNew render 2008 and boost shared_count Creatable 2008 are held by other workers and were not touched.",
+ "proof": {
+  "direct_call_bindings": true,
+  "exact_bytes": true,
+  "indirect_call_bindings": true,
+  "referenced_data": true,
+  "require_proof_exit": 1,
+  "require_proof_reason": "native_check_runner analyze --require-proof exits 1 by design whenever a body has indirect call sites; here the indirect sites are virtual dispatches whose slot identity and callee ABI remain unproven.",
+  "scope": "Local isolated diagnostics. No link, no provider selection, no executable selection, no runtime activation, no server credit.",
+  "virtual_dispatch_bindings": false
+ },
+ "provider_selection": {
+  "detail": "No filtered provider archive (b4d51e680296b50c2cfb57e93815e569519144aa19d25779dbd3c0d714db5798), no full archive (21e44d8cac6d3f14850180ccb2f8d5ed618fe129c9d5c1632186b78d52d03519), no link response file and no document-swap link object set exist in this workspace; provider selection for these symbols is unknown.",
+  "status": "blocked_on_missing_input"
+ },
+ "remaining": [
+  "Virtual-dispatch slot identity and callee ABI for the six call eax / call edx sites",
+  "Provider selection and link closure for the StandardVerbs composition (missing owner-side inputs)",
+  "Relevant P5/P6/runtime gates before any activation"
+ ],
+ "run": "work\\2008-06\\native-check-runs\\20261106-123742-b9c68558",
+ "schema": 1,
+ "source": "rebuild/2008-06/native-classes/VerbLifetime.cpp",
+ "source_sha256": "7678e97a27c5a39f32b6ac6eb377ca565ba4f104922e5f66d809364bb78c3a7e",
+ "swap_target": "Document/Workspace native class swap: CRobloxDoc/StandardVerbs composition and tool-verb mouse-command providers",
+ "task": "Native source recovery with automatic draft sharing",
+ "unit": "VerbLifetime.cpp",
+ "workflow": 52,
+ "workspace_manifest_source_revision": "6a75107cef5c18ce5004b83e32ac32736c354a262f7257e7dfbe3192d7bcd00f"
+}

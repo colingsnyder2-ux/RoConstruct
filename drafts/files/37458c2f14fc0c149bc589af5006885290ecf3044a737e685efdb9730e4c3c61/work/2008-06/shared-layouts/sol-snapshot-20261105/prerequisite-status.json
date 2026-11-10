@@ -1,0 +1,90 @@
+{
+  "zlib-winapi": {
+    "linked": true,
+    "test_exit": 0,
+    "test_output": "zlib 1.2.3 packed=8062 same=1",
+    "compile_errors": {}
+  },
+  "g3d": {
+    "linked": true,
+    "test_exit": 0,
+    "test_output": "g3d 6.09 failures=0",
+    "compile_errors": {}
+  },
+  "g3d-gl": {
+    "linked": true,
+    "test_exit": 0,
+    "test_output": "failures=0",
+    "compile_errors": {}
+  },
+  "zlib": {
+    "linked": true,
+    "test_exit": 0,
+    "test_output": "zlib 1.2.3 packed=8062 same=1",
+    "compile_errors": {}
+  },
+  "libpng": {
+    "linked": true,
+    "test_exit": 0,
+    "test_output": "libpng 1.2.5 32x16 same=1",
+    "compile_errors": {}
+  },
+  "boost": {
+    "linked": true,
+    "test_exit": 0,
+    "test_output": "failures=0",
+    "compile_errors": {}
+  },
+  "raknet": {
+    "linked": true,
+    "test_exit": 0,
+    "test_output": "connected=1 received=1",
+    "compile_errors": {}
+  },
+  "rbxgs-app": {
+    "linked": true,
+    "test_exit": 0,
+    "test_output": "failures=0",
+    "compile_errors": {}
+  },
+  "p2-image-core": {
+    "linked": true,
+    "test_exit": 0,
+    "test_output": "G3D PNG 64x256x3 lossless=1",
+    "compile_errors": {}
+  },
+  "p2-texture-interop": {
+    "linked": true,
+    "test_exit": 0,
+    "test_output": "failures=0",
+    "compile_errors": {}
+  },
+  "p4-sound-asset": {
+    "linked": false,
+    "test_exit": null,
+    "test_output": "Source compilation failed",
+    "compile_errors": {
+      "sound": {
+        "PlayerNativeSoundChannel.cpp": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\rebuild\\2008-06\\tests\\PlayerNativeSoundChannel.cpp(12) : error C2372: 'sStockSound' : redefinition; different types of indirection"
+      }
+    }
+  },
+  "p2-native-material": {
+    "linked": true,
+    "test_exit": 0,
+    "test_output": "n\nUnregistering ResourceManager for type Mesh\nUnregistering ResourceManager for type HighLevelGpuProgram\nUninstalling plugin: D3D9 RenderSystem\nRender Target 'P2NativeMaterial' Average FPS: 0 Best FPS: 0 Worst FPS: 999\nD3D9 : Shutting down cleanly.\nUnregistering ResourceManager for type Texture\nUnregistering ResourceManager for type GpuProgram\nD3D9 : Direct3D9 Rendering Subsystem destroyed.\nPlugin successfully uninstalled\nUnloading library rgdx.dll\nUnregistering ResourceManager for type Material",
+    "compile_errors": {}
+  },
+  "p2-lighting": {
+    "linked": true,
+    "test_exit": 0,
+    "test_output": "actory for type 'RibbonTrail' registered.\n*-*-* OGRE Initialising\n*-*-* Version 1.4.4 (Eihort)\nRbxGfx: created lightrbxlight0\nRbxGfx: created lightrbxlight1\nRbxGfx: created lightrbxlight2\n*-*-* OGRE Shutdown\nUnregistering ResourceManager for type Compositor\nUnregistering ResourceManager for type Font\nUnregistering ResourceManager for type Skeleton\nUnregistering ResourceManager for type Mesh\nUnregistering ResourceManager for type HighLevelGpuProgram\nUnregistering ResourceManager for type Material",
+    "compile_errors": {}
+  },
+  "xtp": {
+    "linked": true,
+    "test_exit": 0,
+    "test_output": "xtp window colour ffffff",
+    "compile_errors": {}
+  }
+}

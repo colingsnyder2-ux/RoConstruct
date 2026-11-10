@@ -1,0 +1,76 @@
+{
+  "workflow": 52,
+  "client": "2008-06",
+  "swap_target": "CRobloxDoc 30-handler batch (inactive exacts)",
+  "blocker": "44fd30: 3 library-IAT sites need validated mfc90 provider objects (only handler closable by library providers alone)",
+  "batch_open": {
+    "swap_target": "CRobloxDoc 30 handlers",
+    "blocker": "44fd30 (195 bytes, exact): +82 call [0x803ee0], +104/+122 call [0x803f14]; zero virtuals, zero teardown",
+    "required_provider": "mfc90 CString #910 and #601 -- shared batch-wide: 24x #601, 17x #910 (41 of 229 indirect sites)",
+    "next_proof": "audit_native_eh_graph with validated mfc90 #910/#601 provider objects; would lift 44fd30 to fully binding-verified and reduce batch indirect by 41 sites if generalized"
+  },
+  "evidence": {
+    "asm_map": [
+      {
+        "offset": 82,
+        "insn": "call [0x803ee0]",
+        "provider": "mfc90 #910 (CString helper; ecx=eax from ATL concat 0x40e160)",
+        "group": "library-IAT"
+      },
+      {
+        "offset": 104,
+        "insn": "call [0x803f14]",
+        "provider": "mfc90 #601 (CString dtor; on [esp+8] temp)",
+        "group": "library-IAT"
+      },
+      {
+        "offset": 122,
+        "insn": "call [0x803f14]",
+        "provider": "mfc90 #601 (CString dtor; on [esp+4] temp)",
+        "group": "library-IAT"
+      }
+    ],
+    "provider_names_source": "native-asm import annotations (mfc90.dll decorated imports) -- binary evidence",
+    "direct_sites": "6 reviewed direct bindings already verified (applicationBaseUrl, ATL concat, CRobloxDHtmlDialog ctor, SetExternalDispatch, DoModal, dtor)",
+    "source": "DHtml dialog handler -- already byte-exact; IAT imports are the original calling convention"
+  },
+  "hypotheses": [
+    {
+      "id": "H1",
+      "text": "Edit source to bind IAT sites as direct calls",
+      "status": "rejected",
+      "reason": "Would regress byte-exactness; IAT imports are original convention and need provider-object proof, not source shape."
+    },
+    {
+      "id": "H2",
+      "text": "EH-audit 44fd30 with validated mfc90 #910/#601 provider objects",
+      "status": "viable-but-blocked",
+      "reason": "Requires per-symbol COFF provider objects from vendor libs (mfcs90.lib archives are not single-object inputs for the audit tool)."
+    },
+    {
+      "id": "H3",
+      "text": "Scoped variant compile of the CString pattern to prove IAT emission",
+      "status": "rejected",
+      "reason": "Would only re-prove shape already established by byte-exactness; no identity gain."
+    }
+  ],
+  "parked": true,
+  "remaining": [
+    "validated mfc90 #910/#601 provider objects (vendor provenance + per-symbol objects)",
+    "shared_count teardown (parked, proposal-453670-indirect.json)",
+    "IAT/virtual split for 453750/453990 (proposal-453750-indirect.json)",
+    "document link archive/RSP for provider selection"
+  ],
+  "receipt_hashes": {
+    "run_manifest_sha256": "0574cfa2aa1b544210bd0450e97b72b08d308a34c33d460e568a89377f2ce9c8",
+    "analysis_sha256": "8f5b26fba6f531e4cfc4c4a3a69c84d0dd7f803ddaeb66b0632205a7772deb2f"
+  },
+  "metrics": {
+    "inactive_exacts": 30,
+    "selected_exacts": 0,
+    "gated_swaps": 0,
+    "server_credit_added": 0
+  },
+  "revision": 2,
+  "draft_note": "Parked: 44fd30 is the only IAT-only handler (3 sites, 2 symbols); #601/#910 cover 41 batch sites. Next gate is validated mfc90 provider objects."
+}

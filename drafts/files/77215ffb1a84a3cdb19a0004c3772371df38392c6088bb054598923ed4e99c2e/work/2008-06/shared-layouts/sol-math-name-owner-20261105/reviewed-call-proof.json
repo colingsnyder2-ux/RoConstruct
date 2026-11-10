@@ -1,0 +1,230 @@
+[
+  {
+    "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-130705-87b5983d\\output\\NativeMathTiltMatricesFull.obj",
+    "checks": [
+      {
+        "addr": "005de990",
+        "requested_symbol": "?matrixTiltQuadrant@Math@RBX@@SA?BVMatrix3@G3D@@H@Z",
+        "status": "exact",
+        "symbol": "?matrixTiltQuadrant@Math@RBX@@SA?BVMatrix3@G3D@@H@Z",
+        "score": 100,
+        "target_size": 200,
+        "object_size": 200,
+        "target_sha256": "9c218febc150f2f72703e9f6baf06aacda4aa81321b04f8ce90e61a99255b98e",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8504248,
+            4
+          ],
+          [
+            8504248,
+            4
+          ]
+        ],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [
+            {
+              "offset": 77,
+              "target": "00513b70",
+              "symbol": "??0Matrix3@G3D@@QAE@MMMMMMMMM@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 86,
+              "target": "005de890",
+              "symbol": "?matrixTiltZ@Math@RBX@@SAABVMatrix3@G3D@@XZ",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 98,
+              "target": "00513220",
+              "symbol": "??0Matrix3@G3D@@QAE@ABV01@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 140,
+              "target": "005de910",
+              "symbol": "?matrixTiltNegativeZ@Math@RBX@@SAABVMatrix3@G3D@@XZ",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 152,
+              "target": "00513220",
+              "symbol": "??0Matrix3@G3D@@QAE@ABV01@@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 161,
+              "target": "00513e20",
+              "symbol": "?identity@Matrix3@G3D@@SAABV12@XZ",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 173,
+              "target": "00513220",
+              "symbol": "??0Matrix3@G3D@@QAE@ABV01@@Z",
+              "status": "verified_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 2.157182
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  },
+  {
+    "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-130705-87b5983d\\output\\NativeMathTiltQuadrantFull.obj",
+    "checks": [
+      {
+        "addr": "005dea60",
+        "requested_symbol": "?toYAxisQuadrant@Math@RBX@@SAHABVCoordinateFrame@G3D@@@Z",
+        "status": "exact",
+        "symbol": "?toYAxisQuadrant@Math@RBX@@SAHABVCoordinateFrame@G3D@@@Z",
+        "score": 100,
+        "target_size": 99,
+        "object_size": 99,
+        "target_sha256": "517df5f760fe0898abdb70e3b34236fbce970dd12cb75a4dd4a188463053d364",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8641360,
+            4
+          ],
+          [
+            8547948,
+            4
+          ],
+          [
+            8641352,
+            8
+          ]
+        ],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [
+            {
+              "offset": 24,
+              "target": "00513240",
+              "symbol": "?getColumn@Matrix3@G3D@@QBE?AVVector3@2@H@Z",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 73,
+              "target": "006a1bb0",
+              "symbol": "_floor",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 78,
+              "target": "006a17f0",
+              "symbol": "__ftol2_sse",
+              "status": "verified_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.000707
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  },
+  {
+    "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-130705-87b5983d\\output\\NativeMathClosestRayFull.obj",
+    "checks": [
+      {
+        "addr": "005df270",
+        "requested_symbol": "?closestPointOnRay@Math@RBX@@SA?AVVector3@G3D@@ABVRay@4@0@Z",
+        "status": "exact",
+        "symbol": "?closestPointOnRay@Math@RBX@@SA?AVVector3@G3D@@ABVRay@4@0@Z",
+        "score": 100,
+        "target_size": 261,
+        "object_size": 261,
+        "target_sha256": "fee21117940c7c9f4889203bff89ab160e6ee453d02b7d2db162a10a3060971d",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8556416,
+            8
+          ]
+        ],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [],
+          "unused_expectations": [],
+          "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.001223
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  },
+  {
+    "object": "G:\\Projects\\RoConstruct\\RoConstruct-Native-20261105-a12f01fd\\work\\2008-06\\p6-probe-runs\\20261105-130705-87b5983d\\output\\NativeNameCompareFull.obj",
+    "checks": [
+      {
+        "addr": "0041faa0",
+        "requested_symbol": "?compare@Name@RBX@@SAHAAV12@0@Z",
+        "status": "exact",
+        "symbol": "?compare@Name@RBX@@SAHAAV12@0@Z",
+        "score": 100,
+        "target_size": 131,
+        "object_size": 131,
+        "target_sha256": "ba8bc71186c9b21be551a29b8c3c1e1a73b1fa05dbe311712b1802fe4f4fb5b0",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": false,
+          "calls": [
+            {
+              "offset": 9,
+              "target": "00554270",
+              "symbol": "?getNullName@Name@RBX@@SAABV12@XZ",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 26,
+              "target": "00554270",
+              "symbol": "?getNullName@Name@RBX@@SAABV12@XZ",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 75,
+              "target": "00554270",
+              "symbol": "?getNullName@Name@RBX@@SAABV12@XZ",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 84,
+              "target": "00554270",
+              "symbol": "?getNullName@Name@RBX@@SAABV12@XZ",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 122,
+              "target": null,
+              "symbol": null,
+              "status": "unresolved_or_wrong_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "scope": "Reviewed direct-call symbol/address bindings only; indirect calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.000957
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  }
+]

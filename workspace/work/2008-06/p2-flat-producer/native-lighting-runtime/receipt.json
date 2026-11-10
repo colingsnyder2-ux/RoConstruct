@@ -1,0 +1,32 @@
+{
+  "revision": "33b464e8f681764ed7a3855caf6ab7ea433dcd37",
+  "scope": "Standalone recovered light state; not rendered player acceptance or P2 closure",
+  "command": [
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2LightingTest\\P2LightingTest.exe"
+  ],
+  "cwd": "C:\\Users\\colin\\RoConstruct\\work\\2008-06\\p2-flat-producer\\native-lighting-runtime",
+  "ROC_BUILD": null,
+  "exit": 0,
+  "exe_sha256": "efac76788c06cda0c53e4c846d61bbefbb465607157679ae01ad4e2ecf40aa43",
+  "map_sha256": "b03914122da4fee60d03cd2a4e904b66cc0f7fdafb12e95f17e5bc8715ef985a",
+  "library_sha256": "94ca65feca9904eeae26f526872d5e7761773e4dd9452ebff4392686b14151fc",
+  "report_sha256": "21dc78424ec8f09cf0f48867d741be8acdef5d6422834c2c45b9e6782c8feb9e",
+  "stdout_sha256": "8dd9b327f8b64dfb32e2a3eb74bad06f36f35363b5d65e07e38cdaf558190bb2",
+  "loaded_dlls": {
+    "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\tests\\P2LightingTest\\rgmain.dll": "b67d2e96c5bf28fe48799a96c7927c57b91c74e483b30975ee58ca45f470153c"
+  },
+  "no_verified_sinks_in_map": true,
+  "source_sha256": {
+    "rebuild/2008-06/tests/PlayerLighting.h": "901639bc0a2c2fcd3e290a2288050d2904f867b19a0bb46b4bf139fd789cef51",
+    "rebuild/2008-06/tests/PlayerLighting.cpp": "694045c9c926fda6befa5f3086717f8b5795fd341525dd980d9d9202e9a2dd96",
+    "rebuild/2008-06/tests/P2LightingTest.cpp": "7a93f70fb026681832e00a276fcbc50dd14443fc056f70564cc43103a8cab355",
+    "rebuild/2008-06/modules/p2-lighting.json": "ac3befaba725a488e0604df6fb6974feee7102229f3ce63790081fa17edcfbe9"
+  },
+  "target_evidence_sha256": "f1100b7ef66c692fdef5042f61d9263c6e73022f08d6d208550c72c3ae2b727a",
+  "limits": [
+    "No GL/GPU rendering exercised.",
+    "Complete Lighting/View/RenderScene ABI not established.",
+    "Sky environment map not exercised.",
+    "No new server exact-function credit."
+  ]
+}

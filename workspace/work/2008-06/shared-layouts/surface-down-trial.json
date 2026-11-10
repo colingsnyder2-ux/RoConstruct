@@ -1,0 +1,20 @@
+{
+  "scope": "Inactive FlatTool methods; Surface layout and runtime ABI unproven.",
+  "methods": [
+    {
+      "address": "0x619f00",
+      "size": 105,
+      "symbol": "?onMouseDown@SurfaceTool@RBX@@MAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+      "bindings": {
+        "??$create@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@SAPAVSoundService@Soundscape@1@PBVInstance@1@@Z": "0x5807b0",
+        "?playSound@SoundService@Soundscape@RBX@@QAEXW4SoundType@3@@Z": "0x5bd820",
+        "?recordCameraHistory@RBX@@YAXPBDPBVInstance@1@@Z": "0x58c5c0"
+      }
+    }
+  ],
+  "source_sha256": "68e203f1dfd9b639880f597b6fdc2f68c75a7ca91a60a541a95df0b0e4dafc89",
+  "surface_header_sha256": "8056b64427cf6059072617d930da52a634832962fd6ab533fb3ac48148fc4932",
+  "overlay_sha256": "b53673f2305d830ed9f02f712b7409ad890c65e8ea407d5eb49516156e9b8633",
+  "object_sha256": "e95aadba326f67421b48935e323ba898089537940f6d651fd996f32895a034f6",
+  "observer_sha256": "7d62caaa0354e9346f5a796016a194dae2bb16abdea680d3ba3a4fd8fba0ed79"
+}

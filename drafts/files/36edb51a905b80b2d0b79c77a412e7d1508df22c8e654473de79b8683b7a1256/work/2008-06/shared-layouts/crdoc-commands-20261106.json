@@ -1,0 +1,10 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/CRobloxDocCommands.cpp",
+      "checks": [
+        {"addr": "004532d0", "symbol": "?doIt@ReportAbuseVerb@@"}
+      ]
+    }
+  ]
+}

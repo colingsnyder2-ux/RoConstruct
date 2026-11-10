@@ -1,0 +1,86 @@
+{
+  "workflow": 52,
+  "client": "2008-06",
+  "blocker_id": "tool-verb-factories-provider-selection",
+  "swap_target": "Document/Workspace native class swap: StandardVerbs composition and its tool-verb mouse-command providers",
+  "blocker": "Which object supplies the 26 TToolVerb<...,RunStateVerb>::newMouseCommand symbols in the document link, and whether the original link selected them.",
+  "status": "blocked_on_missing_input",
+  "evidence_unavailable": true,
+  "current_proof": {
+    "unit_receipt": "work/2008-06/shared-layouts/tool-verb-factories-unit-20261106.json",
+    "unit_receipt_sha256": "687d2d4430ebd15d3ba6c2f4286fa7ad53f4d01207d326d2e3cd7213a5a7938d",
+    "manifest": "rebuild/2008-06/tests/tool-verb-factories-unit-20261106.json",
+    "manifest_sha256": "ba752bcaaa3454762f1e48f3afa538fb71b9cf37068f0f6b6fcbf43cd94c3921",
+    "run": "work/2008-06/native-check-runs/20261106-103103-6be7bd3a",
+    "exact_checks": 26,
+    "call_bindings": 52,
+    "scope": "Inactive exact bodies only. Exact bytes, referenced data and reviewed direct-call bindings; no link, no provider selection, no activation, no credit."
+  },
+  "symbols": [
+    "005c7210 ?newMouseCommand@?$TToolVerb@VAnchorTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+    "005c6270 ?newMouseCommand@?$TToolVerb@VArrowTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+    "005c6510 ?newMouseCommand@?$TToolVerb@VAxisMoveTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+    "005c77f0 ?newMouseCommand@?$TToolVerb@VCloneTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+    "005c7530 ?newMouseCommand@?$TToolVerb@VDropperTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+    "005c7460 ?newMouseCommand@?$TToolVerb@VFillTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+    "005c6640 ?newMouseCommand@?$TToolVerb@VFlatTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+    "005c76b0 ?newMouseCommand@?$TToolVerb@VGameTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+    "005c67b0 ?newMouseCommand@?$TToolVerb@VGlueTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+    "005c7750 ?newMouseCommand@?$TToolVerb@VGrabTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+    "005c7920 ?newMouseCommand@?$TToolVerb@VHammerTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+    "005c6cf0 ?newMouseCommand@?$TToolVerb@VHingeTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+    "005c6ba0 ?newMouseCommand@?$TToolVerb@VInletTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+    "005c7de0 ?newMouseCommand@?$TToolVerb@VLaserTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+    "005c6e70 ?newMouseCommand@?$TToolVerb@VLeftMotorTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+    "005c72f0 ?newMouseCommand@?$TToolVerb@VLockTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+    "005c7090 ?newMouseCommand@?$TToolVerb@VModelSetFrontTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+    "005c7150 ?newMouseCommand@?$TToolVerb@VModelSetPrimaryPartTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+    "005c7610 ?newMouseCommand@?$TToolVerb@VNullTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+    "005c6fa0 ?newMouseCommand@?$TToolVerb@VOscillateMotorTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+    "005c6450 ?newMouseCommand@?$TToolVerb@VResizeTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+    "005c6db0 ?newMouseCommand@?$TToolVerb@VRightMotorTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+    "005c7c40 ?newMouseCommand@?$TToolVerb@VRocketTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+    "005c7b10 ?newMouseCommand@?$TToolVerb@VSlingshotTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+    "005c6a50 ?newMouseCommand@?$TToolVerb@VStudsTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ",
+    "005c6900 ?newMouseCommand@?$TToolVerb@VWeldTool@RBX@@VRunStateVerb@2@@RBX@@UAEPAVMouseCommand@2@XZ"
+  ],
+  "missing_inputs": [
+    {
+      "item": "document link object set",
+      "searched": "workspace rebuild/2008-06/out/** (recursive)",
+      "result": "absent: 340/340 objects listed by work/2008-06/shared-layouts/document-swap-provider-trial.json do not exist locally (first: rebuild/2008-06/out/native-layouts/document-swap-link-trial/NativeDocShell.obj)"
+    },
+    {
+      "item": "filtered provider archive",
+      "searched": "workspace roots excluding vendor tool trees",
+      "result": "absent: no .lib found; identified by filtered_archive_sha256 b4d51e680296b50c2cfb57e93815e569519144aa19d25779dbd3c0d714db5798"
+    },
+    {
+      "item": "link response file",
+      "searched": "workspace roots",
+      "result": "absent: no candidate.rsp or equivalent"
+    },
+    {
+      "item": "full provider archive",
+      "searched": "workspace roots",
+      "result": "absent: identified by archive_sha256 21e44d8cac6d3f14850180ccb2f8d5ed618fe129c9d5c1632186b78d52d03519"
+    }
+  ],
+  "why_local_probe_impossible": [
+    "The native object produced by this unit has roughly 1200 undefined externals, so a clean link or /MAP selection probe cannot be built from the isolated object alone.",
+    "The prior document-swap diagnostic receipt shows link_exit 0 but records no provider-per-symbol mapping and its inputs are all absent here, so it cannot be re-verified or cited as selection evidence.",
+    "No archive, RSP, or map output exists anywhere in this workspace."
+  ],
+  "non_claims": [
+    "No link was performed and no provider was selected.",
+    "No .lib, RSP, map or executable was created, copied or reconstructed.",
+    "No symbol alias, stub or synthetic mapping was introduced to imitate a link result.",
+    "Inactive exacts remain inactive; no runtime activation, no executable selection change, no server credit."
+  ],
+  "next_resume_action": "Re-run the isolated closure probe only after the filtered archive (b4d51e68...) and its RSP are restored to this workspace; then record the selected provider per symbol and the map/selection receipt. Until then treat provider selection as unknown.",
+  "baseline_metrics": {
+    "normal_client_selected_native_md5_methods": 7,
+    "gated_main_class_swaps": 0,
+    "server_credit_added": 0
+  }
+}

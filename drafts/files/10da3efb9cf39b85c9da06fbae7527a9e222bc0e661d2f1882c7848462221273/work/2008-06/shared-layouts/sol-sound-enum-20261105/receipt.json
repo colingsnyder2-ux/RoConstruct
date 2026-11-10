@@ -1,0 +1,32 @@
+{
+  "swap_target": "CRobloxDoc sound diagnostic closure",
+  "session": "9107c8e103874bc3b01de7b42f33edbb",
+  "compile_count": 1,
+  "compile_exit": 0,
+  "attempts": [
+    {
+      "hypothesis": "Authentic SoundType specialization in unchanged module owner-aware reflection ABI",
+      "result": "constructor exact bytes/data and23 direct call bindings"
+    }
+  ],
+  "hashes": {
+    "rebuild/2008-06/tests/PlayerNativeSoundEnum.cpp": "f1faf7e85411296ed110337df5f17d95b634a1e14ca2336b56f61ddc3f7921c3",
+    "rebuild/2008-06/modules/p4-sound-asset.json": "73ea9c9ba36126a9f934cbf014dd5565d174cd71e4412d9fa71f18b03abfd548",
+    "clients/2008-06/Roblox.exe": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+    "work\\2008-06\\shared-layouts\\sol-sound-enum-20261105\\SoundEnum.obj": "3491c853a9cfdff39283f41436af2d68e06abcebbd8e4f8b51edaf3eb9908dd1",
+    "rebuild/2008-06/out/P4SoundAsset/overlay/App/include/reflection/enumconverter.h": "8b8f1520ca79985797efe904cd783ff16cb467eae039a949e9e0d865c6a9f5ec"
+  },
+  "baseline": "e9bfe6671a60913f56cc7efc99de1b9045ede2ecfe9570327ad0a53f2f195188",
+  "next_gate": "Snapshot worker single canonical p4-sound-asset build, inspect selected provider and remaining closure; no runtime authorized",
+  "blockers": [
+    "full linked selection pending snapshot",
+    "EH and runtime/P5/P6 remain unproven"
+  ],
+  "metrics": {
+    "inactive_constructor_exact": 1,
+    "selected_exact": null,
+    "gated_swaps": 0,
+    "server_credit": 0
+  },
+  "proof_limit": "Call symbols reviewed against original registration disassembly and genuine module declarations; helper comparisons in call-analysis.json. No require-proof runner receipt: exact module adapter compiled once; analyze_object reused same object."
+}

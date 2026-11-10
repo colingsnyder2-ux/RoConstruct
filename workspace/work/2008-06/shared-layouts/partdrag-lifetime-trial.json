@@ -1,0 +1,42 @@
+{
+  "observer_sha256": "ade632429afe061ec6128e91ab42c9d8dd66e996ed78bd53951353871f49e481",
+  "headers": {
+    "rebuild\\2008-06\\tests\\NativePartDragToolTrial.h": "3f0f513d56dba59eeafffe5fcb3b1baaccfdb75c46301998e7f45833a231c307",
+    "rebuild\\2008-06\\native-headers\\v8datamodel\\MouseCommand.h": "1f64b1ad3f0fe3597c7c9739bc9716e0f58a5b1220a05c381e61fe44a0e8ee09"
+  },
+  "methods": [
+    {
+      "address": "00665f20",
+      "size": 479,
+      "object_sha256": "9e1ea468325ccae7cedd8532e6d921194f27fc96823f36f8a3c486ce3205df79",
+      "targets": {
+        "??0MouseCommand@RBX@@": "0x6159f0",
+        "??_7PartDragTool@RBX@@6BINamed@": "0x84cbb4",
+        "??_7PartDragTool@RBX@@6BIRenderable@": "0x84cb9c",
+        "??0RunDragger@RBX@@": "0x66c900",
+        "??0MegaDragger@RBX@@": "0x60e540"
+      }
+    },
+    {
+      "address": "00665bd0",
+      "size": 188,
+      "object_sha256": "9e1ea468325ccae7cedd8532e6d921194f27fc96823f36f8a3c486ce3205df79",
+      "targets": {
+        "??_7PartDragTool@RBX@@6BINamed@": "0x84cbb4",
+        "??_7PartDragTool@RBX@@6BIRenderable@": "0x84cb9c",
+        "??1MegaDragger@RBX@@": "0x60e700",
+        "??1RunDragger@RBX@@": "0x66c400",
+        "??1MouseCommand@RBX@@": "0x615780"
+      }
+    },
+    {
+      "address": "00665cc0",
+      "size": 30,
+      "object_sha256": "9e1ea468325ccae7cedd8532e6d921194f27fc96823f36f8a3c486ce3205df79",
+      "targets": {
+        "??1PartDragTool@RBX@@": "0x665bd0"
+      }
+    }
+  ],
+  "scope": "Existing donor object constructor/destructors and selected targets verified against original; all other methods, linked layout and runtime remain unproven."
+}

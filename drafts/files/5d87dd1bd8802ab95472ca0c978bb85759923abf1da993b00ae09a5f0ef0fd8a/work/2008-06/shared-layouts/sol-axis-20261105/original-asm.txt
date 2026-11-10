@@ -1,0 +1,74 @@
+﻿== 005c6510 102 bytes unit=RBX::VAxisMoveTool::?$TToolVerb
+005c6510  push -1
+005c6512  push 0x7bf43b  ; fn_007bf43b [unit? CSpinButtonCtrl]
+005c6517  mov eax, dword ptr fs:[0]
+005c651d  push eax
+005c651e  mov dword ptr fs:[0], esp
+005c6525  push ecx
+005c6526  push esi
+005c6527  push 0x74
+005c6529  mov esi, ecx
+005c652b  call 0x6a0920  ; MFC ??2@YAPAXI@Z
+005c6530  add esp, 4
+005c6533  mov dword ptr [esp + 4], eax
+005c6537  mov dword ptr [esp + 0x10], 0
+005c653f  test eax, eax
+005c6541  je 0x5c6564
+005c6543  mov ecx, dword ptr [esi + 0xc]
+005c6546  mov ecx, dword ptr [ecx + 0x204]
+005c654c  push ecx
+005c654d  mov ecx, eax
+005c654f  call 0x640560  ; fn_00640560 [unit? RBX::ArrowTool]
+005c6554  pop esi
+005c6555  mov ecx, dword ptr [esp + 4]
+005c6559  mov dword ptr fs:[0], ecx
+005c6560  add esp, 0x10
+005c6563  ret 
+005c6564  mov ecx, dword ptr [esp + 8]
+005c6568  xor eax, eax
+005c656a  pop esi
+005c656b  mov dword ptr fs:[0], ecx
+005c6572  add esp, 0x10
+005c6575  ret 
+== 00640560 139 bytes unit=RBX::ArrowTool
+00640560  push -1
+00640562  push 0x7daa23  ; fn_007daa23 [unit? seg_007d0000]
+00640567  mov eax, dword ptr fs:[0]
+0064056d  push eax
+0064056e  mov dword ptr fs:[0], esp
+00640575  push ecx
+00640576  mov eax, dword ptr [esp + 0x14]
+0064057a  push ebx
+0064057b  push esi
+0064057c  mov esi, ecx
+0064057e  push eax
+0064057f  mov dword ptr [esp + 0xc], esi
+00640583  call 0x6159f0  ; fn_006159f0 [unit? RBX::ArrowTool]
+00640588  xor ebx, ebx
+0064058a  mov byte ptr [esi + 0x1c], bl
+0064058d  mov dword ptr [esi], 0x84a5ac
+00640593  mov dword ptr [esi + 4], 0x84a594
+0064059a  mov dword ptr [esp + 0x14], ebx
+0064059e  mov dword ptr [esi + 0x20], ebx
+006405a1  push 0x833850
+006405a6  lea ecx, [esi + 0x24]
+006405a9  mov byte ptr [esp + 0x18], 1
+006405ae  call dword ptr [0x802458]  ; MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z
+006405b4  xor ecx, ecx
+006405b6  mov byte ptr [esi + 0x40], bl
+006405b9  mov word ptr [esi + 0x42], cx
+006405bd  xor edx, edx
+006405bf  lea ecx, [esi + 0x48]
+006405c2  mov word ptr [esi + 0x44], dx
+006405c6  call 0x510a30  ; fn_00510a30 [unit? G3D::Ray]
+006405cb  fldz 
+006405cd  mov ecx, dword ptr [esp + 0xc]
+006405d1  fst dword ptr [esi + 0x68]
+006405d4  fst dword ptr [esi + 0x6c]
+006405d7  mov eax, esi
+006405d9  fstp dword ptr [esi + 0x70]
+006405dc  pop esi
+006405dd  pop ebx
+006405de  mov dword ptr fs:[0], ecx
+006405e5  add esp, 0x10
+006405e8  ret 4

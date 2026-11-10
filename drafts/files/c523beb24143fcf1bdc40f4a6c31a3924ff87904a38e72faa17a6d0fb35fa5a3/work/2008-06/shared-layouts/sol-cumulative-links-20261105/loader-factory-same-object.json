@@ -1,0 +1,20 @@
+{
+  "checks": [
+    {
+      "addr": "00420190",
+      "requested_symbol": "?create@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z",
+      "status": "exact",
+      "symbol": "?create@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z",
+      "score": 100,
+      "target_size": 286,
+      "object_size": 286,
+      "target_sha256": "ec6ff8fc797dca5d1d698597868ce2b05ba704a87cc72ea3cb264cb61fa3bb8e",
+      "first_byte_difference": null,
+      "data_matches": [],
+      "data_errors": [],
+      "check_seconds": 2.045399
+    }
+  ],
+  "coverage": [],
+  "layouts": []
+}
