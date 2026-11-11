@@ -12,7 +12,9 @@ from roc import findings_workspace as fw
 from roc.native_drafts import encoded
 rev, mine = fw.committed_files('.', 'HEAD')
 subprocess.run(['git', 'fetch', '-q', 'origin', 'work:refs/remotes/origin/work'], check=True)
-old_zip = subprocess.check_output(['git', 'show', 'refs/remotes/origin/work:data/native-worker.zip'])
+TIP = 'refs/remotes/origin/work'
+BASE = sys.argv[sys.argv.index('--base') + 1] if '--base' in sys.argv else TIP     # --base REF: rebuild from an earlier, pristine package
+old_zip = subprocess.check_output(['git', 'show', BASE + ':data/native-worker.zip'])
 old = zipfile.ZipFile(io.BytesIO(old_zip))
 files = {n: old.read(n) for n in old.namelist()}
 import ast, re
@@ -56,16 +58,21 @@ def closure(entry):
 
 
 need = closure(TOOLS)
+
+
+def ours(n):
+    """Files this checkout owns and may overwrite; every other path is only ever ADDED, never replaced (the published package may be newer)."""
+    return n == 'docs/NATIVE_AGENT.md' or n.startswith('work/native-client/') or n == 'scripts/native_status.py' or n == 'roc/findings_workspace.py'
+
+
 overlay = {}
 for n, d in mine.items():
-    if n in need and n not in overlay and n.endswith('.py') and not n.startswith('work/native-client/'):
+    if n in need and n.endswith('.py') and (ours(n) or n not in files):
         overlay[n] = d
-for n, d in mine.items():
-    if n == 'docs/NATIVE_AGENT.md' or n.startswith(('work/native-client/', 'scripts/')):
+    elif n == 'docs/NATIVE_AGENT.md' or n.startswith('work/native-client/') or n == 'scripts/native_status.py':
         overlay[n] = d
     elif n.startswith(('rebuild/2008-06/native-classes/', 'rebuild/2008-06/native-headers/')) and n not in files:
         overlay[n] = d
-overlay['roc/findings_workspace.py'] = mine['roc/findings_workspace.py']
 changed = {n for n, d in overlay.items() if files.get(n) != d}
 files.update(overlay)
 print('overlay', len(overlay), 'changed/new', len(changed))
@@ -81,11 +88,18 @@ with zipfile.ZipFile(out, 'w', zipfile.ZIP_DEFLATED) as z:
     for n, d in sorted(files.items()):
         i = zipfile.ZipInfo(n, (2026, 1, 1, 0, 0, 0)); i.compress_type = zipfile.ZIP_DEFLATED; z.writestr(i, d)
 zb = out.getvalue()
-man = json.loads(subprocess.check_output(['git', 'show', 'refs/remotes/origin/work:data/native-worker.json']))
+man = json.loads(subprocess.check_output(['git', 'show', TIP + ':data/native-worker.json']))
 man.update(workflow_version=53, sha256=hashlib.sha256(zb).hexdigest(), size=len(zb), source_revision=revision)
 guide = mine['docs/NATIVE_AGENT.md']
 upd = {'data/native-worker.zip': zb, 'data/native-worker.json': json.dumps(man, sort_keys=True, separators=(',', ':')).encode(), 'data/NATIVE_AGENT.md': guide}
 for n in changed: upd['workspace/' + n] = overlay[n]
+if BASE != TIP:      # undo earlier clobbering: every workspace path we changed that existed in the pristine base goes back to the base blob
+    for path in subprocess.check_output(['git', 'diff', '--name-only', BASE, TIP, '--', 'workspace/'], text=True).split():
+        n = path[len('workspace/'):]
+        blob = subprocess.run(['git', 'show', BASE + ':' + path], capture_output=True)
+        if blob.returncode == 0 and not ours(n) and path not in upd:
+            upd[path] = blob.stdout
+            print('restored', path)
 env = dict(os.environ, GIT_INDEX_FILE=os.path.abspath('.git/work-publish.index'))
 def git(*a, inp=None): return subprocess.run(['git', *a], env=env, input=inp, capture_output=True, check=True).stdout
 git('read-tree', 'refs/remotes/origin/work')
