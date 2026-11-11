@@ -206,9 +206,11 @@ def main():
             if rel(INFERRED) not in evidence:
                 evidence.append(rel(INFERRED))
         receipt = HERE / ('reference-bindings-prove-%s-%d.json' % (family, int(time.time())))
-        known = sum((['--known', str(ROOT / e)] for e in evidence if 'bindings' in e), [])
+        known = [str(ROOT / e) for e in evidence if 'bindings' in e]
+        known_file = out.with_suffix('.known.json')
+        known_file.write_text(json.dumps(known), encoding='utf-8')
         bind = subprocess.run([sys.executable, str(HERE / 'batch_reference_bind.py'), str(manifest), '--out', str(receipt),
-                               *known], cwd=ROOT, capture_output=True, text=True)
+                               '--known-list', str(known_file)], cwd=ROOT, capture_output=True, text=True)
         found = json.loads(bind.stdout.strip().splitlines()[-1]) if bind.returncode == 0 else {'bindings': 0}
         if found['bindings']:
             evidence.append(rel(receipt))
