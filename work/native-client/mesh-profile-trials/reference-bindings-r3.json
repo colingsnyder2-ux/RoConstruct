@@ -1,0 +1,27 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??0Node@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@QAE@VVector3@2@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@IPAV012@@Z",
+    "address": "004e6d50"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\mesh-identity-proof\\objects\\6ba56c84b21caeca\\candidate.obj": "e30a5b5fc665f34e4006f477a274a1c9a94c12bf02f19cf76e2b7fe21d7f6bc9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-3gyvx9z1\\owners.json": "d59371f71cdac4c1b69d4bcf1f34f8eb70e4bb84db315d228ab97530af4f81f3",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-3gyvx9z1\\import-thunk-identities-as-owner.json": "85bc1c3b4d730418cea22d45f1b8218fd9732e1822ee8bfb15e03b119a3f7f2f"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "__ehhandler$??0Node@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@G3D@@QAE@VVector3@2@UVariations@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@IPAV012@@Z",
+   "address": "007ca513",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

@@ -1,6 +1,6 @@
 """Batch reference-identity binding from a native_bulk manifest (no LLM, no source edits).
 
-For every draft row whose body is byte-exact at exactly one candidate address and whose only rejection is
+For every draft row with exactly one identity-established candidate whose only rejection is
 "unproven reference identity", run native_reference_alias_bind.py on its object: each referenced symbol's address
 is read from the ORIGINAL code at the same relocation. Results are merged; a symbol whose callers point at
 different addresses (identical copies in the exe) is dropped, never guessed.
@@ -23,6 +23,24 @@ sys.path.insert(0, str(HERE))
 from roc import match  # noqa: E402
 
 
+
+def reference_owner(row):
+    """Only bind one identity-established candidate with solely unresolved references."""
+    if row.get('status') != 'draft':
+        return None
+    candidates = set(row.get('candidates') or [])
+    eligible = {rejection['addr'] for rejection in row.get('rejections', [])
+                if rejection.get('addr') in candidates and rejection.get('errors')
+                and all(error.startswith('unproven reference identity') for error in rejection['errors'])}
+    if len(eligible) != 1:
+        return None
+    address = next(iter(eligible))
+    rejected = {rejection['addr'] for rejection in row.get('rejections', [])
+                if rejection.get('errors') == ['symbol identity not established by current reference evidence']}
+    # Every other byte candidate must fail the owner's identity gate, not data/reference checks.
+    return address if candidates - {address} <= rejected else None
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('manifest', type=Path)
@@ -41,10 +59,9 @@ def main():
     work = {}
     for family in data['families']:
         for row in family['symbols']:
-            errors = [e for r in row.get('rejections', []) for e in r.get('errors', [])]
-            if (row.get('status') == 'draft' and len(row.get('candidates') or []) == 1 and errors
-                    and all(e.startswith('unproven reference identity') for e in errors) and row['symbol'] in emitted):
-                work[row['symbol']] = (row['candidates'][0], emitted[row['symbol']])
+            address = reference_owner(row)
+            if address and row['symbol'] in emitted:
+                work[row['symbol']] = (address, emitted[row['symbol']])
     folder = Path(tempfile.mkdtemp(prefix='refbind-', dir=HERE))
     closure = folder / 'owners.json'
     owner_evidence = folder / 'import-thunk-identities-as-owner.json'

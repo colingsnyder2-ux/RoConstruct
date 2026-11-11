@@ -133,5 +133,33 @@ class MechanicalFixTests(unittest.TestCase):
             fix.write(path, 'one\r\ntwo\n')
             self.assertEqual(b'one\r\ntwo\r\n', path.read_bytes())
 
+class ReferenceBinderTests(unittest.TestCase):
+    def row(self, errors):
+        return {'status': 'draft', 'candidates': ['00100000', '00200000'],
+                'rejections': [{'addr': address, 'errors': error} for address, error in
+                               zip(['00100000', '00200000'], errors)]}
+
+    def test_known_owner_among_byte_copies(self):
+        from batch_reference_bind import reference_owner
+        row = self.row([['unproven reference identity: helper'],
+                        ['symbol identity not established by current reference evidence']])
+        self.assertEqual('00100000', reference_owner(row))
+
+    def test_two_possible_owners_are_not_bound(self):
+        from batch_reference_bind import reference_owner
+        self.assertIsNone(reference_owner(self.row([['unproven reference identity: a'],
+                                                    ['unproven reference identity: b']])))
+
+    def test_reference_conflict_does_not_establish_other_owner(self):
+        from batch_reference_bind import reference_owner
+        self.assertIsNone(reference_owner(self.row([['reference identity differs: a'],
+                                                    ['unproven reference identity: b']])))
+
+    def test_unexamined_alternative_is_not_ignored(self):
+        from batch_reference_bind import reference_owner
+        row = self.row([['unproven reference identity: a']])
+        self.assertIsNone(reference_owner(row))
+
+
 if __name__ == '__main__':
     unittest.main()
