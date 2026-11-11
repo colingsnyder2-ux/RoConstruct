@@ -1,0 +1,11 @@
+{
+ "scope": "INFERRED RenderNew shadePixel name",
+ "rows": [
+  {
+   "symbol": "?shadePixel@TextureProxy@RenderNew@RBX@@SAXABVColor3uint8@G3D@@AAV45@@Z",
+   "address": "007add10",
+   "inferred_name": true,
+   "evidence": "INFERRED RenderNew method identity: byte exact at 007add10; original RenderNew::TextureProxy::resolve calls it at 007aeee6; possible folded alias."
+  }
+ ]
+}
