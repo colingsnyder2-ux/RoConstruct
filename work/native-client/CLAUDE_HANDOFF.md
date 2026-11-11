@@ -2,6 +2,22 @@
 
 ## Update log
 
+### 2026-11-11 01:50 (Claude) - first header-lane class: Ogre::VRbxFont
+- New native class from the binary (no prior source): native-headers/OgreRbx/VRbxFont2008.h + native-classes/OgreVRbxFont.cpp.
+  It is Roblox's Ogre port of G3D 6.09 GFont: layout new(0x218) = int subWidth[128], charWidth, charHeight, baseline,
+  Ogre::TexturePtr texture (+0x20c), exactly GFont's field order. Byte-exact with full reference identity: ctor 00684b10
+  (917 B), fromFile 00684eb0 (240 B), computePackedArray 006843f0 (586 B). Ogre roots now ~622 / ~130.0 KB (43.5%).
+- get2DStringBounds 00684640: byte-exact, name from the G3D API; identity waits on its only caller draw2D.
+- draw2D 00684730: real first parameter is Ogre::VisualEngine* (caller 0066fe0c passes AdornRbxGfx::visualEngine; body
+  calls addQuad on VisualEngine+0x14). Registry's TwoDManager* spelling came from a generated roc_* analog (name_source
+  "upstream-replay" still admits some roc_* names: worth the same filter Codex B added). Body matches through 153/245
+  instructions, kept under NATIVE_VRBXFONT_DRAW2D_PENDING. Unblocks once VisualEngine gets a native header.
+- New native-headers/G3D/BinaryInput.h: Roblox's G3D throws std::exception in getCArray (all 7 exe sites), else identical.
+- import_thunk_identities.py now also emits __imp_<name> IAT-slot rows (1,794 bindings).
+- Header-lane recipe that worked: allocation size from the factory, ctor stores for every offset, find the upstream class
+  the fork came from (here G3D GFont), port verbatim, then fix by diff (unsigned loops, extern-linkage counter,
+  Roblox-patched library header, y-flip for Ogre).
+
 ### 2026-11-11 00:20 (Claude) - Ogre native: 24.5% -> 42.3% of Ogre-scope root bytes, tools, next lane
 - Metric: Ogre-scope roots = run_all.roots(('Ogre::','RBX::RenderNew','RBX::ViewNew')), 987 fns / 298,912 B. Byte-proved native
   (inactive_exact, evidence-backed): 442 / 73,367 B (Codex census) -> **609 / 126,516 B (42.3%)**. All proved native addresses
