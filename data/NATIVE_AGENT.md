@@ -165,7 +165,7 @@ if ($nativeMarker.authority -ne 'RoConstruct/work/workspace' -or
     $nativeInventory.authority -ne $nativeMarker.authority -or
     $nativeMarker.revision -ne $nativeManifest.source_revision -or
     $nativeInventory.source_revision -ne $nativeMarker.revision) { throw 'Extracted Worker metadata mismatch' }
-foreach ($nativeRequired in @('roc/native_drafts.py', 'research/native-units.json', 'research/native-source-lock.json', 'rebuild/2008-06/tests/native_check_runner.py', 'work/native-client/prove.py', 'work/native-client/bootstrap_tools.py', 'work/native-client/data/identity-registry.json.gz')) {
+foreach ($nativeRequired in @('roc/native_drafts.py', 'research/native-units.json', 'research/native-source-lock.json', 'rebuild/2008-06/tests/native_check_runner.py', 'work/native-client/prove.py', 'work/native-client/bootstrap_tools.py', 'work/native-client/data/identity-registry.json.gz', 'work/native-client/audit_digest.py')) {
     if (-not (Test-Path -LiteralPath $nativeRequired -PathType Leaf)) { throw ('Missing Worker capability file: ' + $nativeRequired) }
 }
 Write-Output ('Package/source revision: ' + $nativeMarker.revision)
@@ -321,6 +321,21 @@ Use these instead of compiling by hand (each prints `--help`; run from the check
   commit (`--force` overrides) and while a `prove.py --all` census runs (edits would void the census).
 - Inferred fields, layouts and inline asm are allowed when the original source plausibly had them. Mark each
   `// INFERRED: <evidence>`; the proof reports inferred names separately from proven ones.
+
+## Hourly self-audit
+
+Set this up once per session, before recovery work. Use your own agent's scheduler on its own login; no CLI, API key or
+other provider is needed:
+
+- Claude Code: `/loop 60m Run work/native-client/AUDIT_PROMPT.md` (or the schedule tool with an hourly task).
+- Codex: create a recurring automation/task that runs every 60 minutes with the same prompt.
+- No scheduler available: at the start of each work step, run it if the newest file in `work/native-client/audit/` is
+  older than 60 minutes.
+
+Each run does `python work/native-client/audit_digest.py --write`, reads the digest (bytes/hour, time per tool, repeated
+command shapes, waste, tool health) and follows `work/native-client/AUDIT_PROMPT.md`: report the bytes/hour gain, turn
+repeated manual steps into one `.py` tool, speed up the slowest step, and try evidence-backed inferences
+(`// INFERRED: <evidence>`). It must not skip leases, commit cadence, or the no-`__emit`/no-byte-blob rules.
 
 ## Scope: RbxApp only
 
