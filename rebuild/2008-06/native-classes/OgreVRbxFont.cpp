@@ -1,10 +1,12 @@
 // native-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
-// 2008-06 native Ogre::VRbxFont (inactive): G3D 6.09 GFont ctor/fromFile ported to Ogre textures.
-// Body order follows the original 00684b10 / 00684eb0 and upstream GLG3D/GFont.cpp.
 // >>> native-status (generated) -- do not edit >>>
 // OgreVRbxFont | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 174853c3 | roc native-status --write
+// <<< native-status | src 30a4f97a | roc native-status --write
+#undef OGRE_NONCLIENT_BUILD
+#define NOMINMAX
+// 2008-06 native Ogre::VRbxFont (inactive): G3D 6.09 GFont ctor/fromFile ported to Ogre textures.
+// Body order follows the original 00684b10 / 00684eb0 and upstream GLG3D/GFont.cpp.
 #include "OgreRbx/VRbxFont2008.h"
 #include "OgreRbx/VisualEngine2008.h"
 #include "OgreRbxNode/TwoDManager2008.h"
@@ -19,6 +21,7 @@ namespace Ogre
 	// Unique texture names "ft0", "ft1", ... (original counter at 0097dbc8, format "ft%d" at 0084e808).
 	// External linkage: the original stores the increment after the _snprintf argument pushes, which an
 	// internal-linkage static does not reproduce. Name unknown (placeholder).
+	// INFERRED: counter spelling; original read/write address0097dbc8.
 	int fontTextureCount = 0;
 
 	VRbxFont::VRbxFont(const std::string& filename, G3D::BinaryInput& b)
@@ -124,6 +127,7 @@ namespace Ogre
 		return G3D::Vector2(x - x0, h);
 	}
 
+	// INFERRED: method spelling from GFont port; unique target00684640.
 	G3D::Vector2 VRbxFont::get2DStringBounds(
 		const std::string&  s,
 		double              size,

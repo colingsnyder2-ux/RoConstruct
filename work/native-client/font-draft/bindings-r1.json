@@ -1,0 +1,133 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??0VRbxFont@Ogre@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAVBinaryInput@G3D@@@Z",
+    "address": "00684b10"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\font-proof\\objects\\d57ed529a115799a\\candidate.obj": "f10df1fc01278bf0789d16f791e8831fd4c400e4cd63f4d64ccbf6e7a6580c08",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-yb9y2j4_\\owners.json": "ce52fca7743f383703bbed4d019398cab10b6a7422f4e33fdfd73b7bed0e6797",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-yb9y2j4_\\import-thunk-identities-as-owner.json": "50be92c8465d94912d8878c67daa6829809eea70bc223ece5643892963ffc87f"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?fromFile@VRbxFont@Ogre@@SA?AV?$SharedPtr@VVRbxFont@Ogre@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+    "address": "00684eb0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\font-proof\\objects\\d57ed529a115799a\\candidate.obj": "f10df1fc01278bf0789d16f791e8831fd4c400e4cd63f4d64ccbf6e7a6580c08",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-yb9y2j4_\\owners.json": "ce52fca7743f383703bbed4d019398cab10b6a7422f4e33fdfd73b7bed0e6797",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-yb9y2j4_\\import-thunk-identities-as-owner.json": "50be92c8465d94912d8878c67daa6829809eea70bc223ece5643892963ffc87f"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??0BinaryInput@G3D@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4G3DEndian@1@_N@Z",
+   "address": "00515a00",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??1BinaryInput@G3D@@UAE@XZ",
+   "address": "00515c20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??1exception@std@@UAE@XZ",
+   "address": "006a1552",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??2@YAPAXI@Z",
+   "address": "006a0920",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_E?$SharedPtr@VDataStream@Ogre@@@Ogre@@UAEPAXI@Z",
+   "address": "004d7420",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_E?$SharedPtr@VResource@Ogre@@@Ogre@@UAEPAXI@Z",
+   "address": "004d73e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_E?$SharedPtr@VVRbxFont@Ogre@@@Ogre@@UAEPAXI@Z",
+   "address": "0066fe90",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_EMemoryDataStream@Ogre@@UAEPAXI@Z",
+   "address": "004dab30",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?destroy@?$SharedPtr@VDataStream@Ogre@@@Ogre@@MAEXXZ",
+   "address": "004d73a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?destroy@?$SharedPtr@VResource@Ogre@@@Ogre@@MAEXXZ",
+   "address": "004d73a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?destroy@?$SharedPtr@VVRbxFont@Ogre@@@Ogre@@MAEXXZ",
+   "address": "00670710",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?fileExists@G3D@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "00514d90",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?loadIntoMemory@BinaryInput@G3D@@AAEXHH@Z",
+   "address": "005157d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?readUInt32@BinaryInput@G3D@@QAEIXZ",
+   "address": "00509b40",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?swap@?$SharedPtr@VDataStream@Ogre@@@Ogre@@MAEXAAV12@@Z",
+   "address": "0068ddc0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?swap@?$SharedPtr@VResource@Ogre@@@Ogre@@MAEXAAV12@@Z",
+   "address": "0068ddc0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?swap@?$SharedPtr@VVRbxFont@Ogre@@@Ogre@@MAEXAAV12@@Z",
+   "address": "0068ddc0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__CxxThrowException@8",
+   "address": "006a158c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??0VRbxFont@Ogre@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAVBinaryInput@G3D@@@Z",
+   "address": "007ddd6c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?fromFile@VRbxFont@Ogre@@SA?AV?$SharedPtr@VVRbxFont@Ogre@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "007dddac",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

@@ -2,7 +2,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // ViewNew2008 | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src f21a0481 | roc native-status --write
+// <<< native-status | src 42f581c8 | roc native-status --write
 // 2008-06 native RBX::ViewNew::ViewRbxGfx (inactive). Named *2008.h so it never shadows a donor header.
 //   ViewRbxGfx   RTTI vtable 00826c70 -> ViewBase (mdisp 0); new 0x4c (CRobloxWnd 0045b3ba, ctor 004d9990 with the
 //                DataModel shared_ptr by value); ctor: ViewBase(dataModel) 004d8a20, vptr, +0x48 = false, then new 0x590
@@ -37,6 +37,8 @@ namespace RBX
 		public:
 			// INFERRED: direct caller and 004d9e00 donor body establish method ABI.
 			void updateSkybox(Ogre::VisualEngine*);
+			// INFERRED: original render004daf10 directly calls004dab50 with VisualEngine context.
+			void updateLighting(Ogre::VisualEngine*);
 			ViewRbxGfx(boost::shared_ptr<DataModel> dataModel);             // 004d9990
 			virtual ~ViewRbxGfx();                                          // 004db4f0 (??_G 004db5d0)
 			virtual void render(G3D::RenderDevice* rd);                    // 004daf10

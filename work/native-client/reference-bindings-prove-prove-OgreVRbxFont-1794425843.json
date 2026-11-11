@@ -1,0 +1,52 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "__ehhandler$?loadFromMeshFile@FileMesh@ViewNew@RBX@@QAE_NPAVContentProvider@3@ABVVector3@G3D@@VMeshId@3@@Z",
+    "address": "007cb21c"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-OgreVRbxFont\\objects\\1037c1481dbedbe5\\candidate.obj": "9cceae80ab4a8d14b90833f3eb50b8dffc041fda32094f9b7f6744b9ea934a1d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-o284pu06\\owners.json": "c1d5ee965fc407df673c07d34dc509ba9c5d6eb7cb054317bab3f4b79cb62bbe",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-o284pu06\\import-thunk-identities-as-owner.json": "f1a964a615fc4859f6e08ba1211f5f7bfd4385332b1e0101756a399e56eaec16"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "__catch$?loadFromMeshFile@FileMesh@ViewNew@RBX@@QAE_NPAVContentProvider@3@ABVVector3@G3D@@VMeshId@3@@Z$0",
+   "address": "00500b7f",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?loadFromMeshFile@FileMesh@ViewNew@RBX@@QAE_NPAVContentProvider@3@ABVVector3@G3D@@VMeshId@3@@Z$2",
+   "address": "007cb1f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?loadFromMeshFile@FileMesh@ViewNew@RBX@@QAE_NPAVContentProvider@3@ABVVector3@G3D@@VMeshId@3@@Z$3",
+   "address": "007cb1f8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?loadFromMeshFile@FileMesh@ViewNew@RBX@@QAE_NPAVContentProvider@3@ABVVector3@G3D@@VMeshId@3@@Z$4",
+   "address": "007cb201",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?loadFromMeshFile@FileMesh@ViewNew@RBX@@QAE_NPAVContentProvider@3@ABVVector3@G3D@@VMeshId@3@@Z$5",
+   "address": "007cb20c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?loadFromMeshFile@FileMesh@ViewNew@RBX@@QAE_NPAVContentProvider@3@ABVVector3@G3D@@VMeshId@3@@Z$6",
+   "address": "007cb214",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}
