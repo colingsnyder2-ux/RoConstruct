@@ -1,0 +1,53 @@
+{
+ "scope": "INFERRED BrickMesh cache names",
+ "rows": [
+  {
+   "symbol": "?create@BrickMesh@ViewNew@RBX@@SA?AV?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@ABVVector3@5@VRenderSurfaceTypes@23@VBrickColor@3@@Z",
+   "address": "004e58b0",
+   "inferred_name": true,
+   "evidence": "INFERRED: unique byte-exact candidate and donor BrickMesh cache body"
+  },
+  {
+   "symbol": "?buildBevel@BrickMesh@ViewNew@RBX@@QAEXABVVector3@G3D@@VRenderSurfaceTypes@23@VBrickColor@3@@Z",
+   "address": "004e2c80",
+   "inferred_name": true,
+   "evidence": "INFERRED: original call at 004e5a40 and donor body"
+  },
+  {
+   "symbol": "??0BrickMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@VRenderSurfaceTypes@12@VBrickColor@2@HHHM@Z",
+   "address": "004e53c0",
+   "inferred_name": true,
+   "evidence": "INFERRED: original constructor call 004e59f5; value argument types inferred"
+  },
+  {
+   "symbol": "?currentBevel@ViewNew@RBX@@3MA",
+   "address": "00972758",
+   "inferred_name": true,
+   "evidence": "INFERRED: original float global stores at 004e59c1"
+  },
+  {
+   "symbol": "?buildingBevel@ViewNew@RBX@@3_NA",
+   "address": "0097275c",
+   "inferred_name": true,
+   "evidence": "INFERRED: original boolean global stores at 004e5a2a"
+  },
+  {
+   "symbol": "?useBevels@ViewNew@RBX@@3_NA",
+   "address": "009413c0",
+   "inferred_name": true,
+   "evidence": "INFERRED: original boolean global test at 004e59a2"
+  },
+  {
+   "symbol": "?createSpecialBrick@ViewNew@RBX@@YA?AV?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@ABVVector3@4@VRenderSurfaceTypes@12@VBrickColor@2@HHHM@Z",
+   "address": "004e54e0",
+   "inferred_name": true,
+   "evidence": "INFERRED: unique byte-exact candidate and seven-argument mined factory donor"
+  },
+  {
+   "symbol": "?buildBevel@BrickMesh@ViewNew@RBX@@QAEXABVVector3@G3D@@VRenderSurfaceTypes@23@VBrickColor@3@HHHM@Z",
+   "address": "004e3720",
+   "inferred_name": true,
+   "evidence": "INFERRED: original call at 004e55ce; method name and argument types inferred"
+  }
+ ]
+}
