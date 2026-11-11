@@ -1,0 +1,127 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z",
+    "address": "004d9e00"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\skybox-proof\\objects\\51682950f68f6224\\candidate.obj": "db1e783a9339a91bdd23fd84fb695b45395272ea01e366878e14d3f1bcc8aad8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-hxtpgcdv\\owners.json": "2c8428f2689a23bbf39937359ecd5862f37310d8caa71b0a042f2f9b311c3640",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-hxtpgcdv\\import-thunk-identities-as-owner.json": "50be92c8465d94912d8878c67daa6829809eea70bc223ece5643892963ffc87f"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??$create@VContentProvider@RBX@@@ServiceProvider@RBX@@QBEPAVContentProvider@1@XZ",
+   "address": "0041eea0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$create@VLighting@RBX@@@ServiceProvider@RBX@@QBEPAVLighting@1@XZ",
+   "address": "004b3870",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??2@YAPAXI@Z",
+   "address": "006a0920",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_E?$SharedPtr@VDataStream@Ogre@@@Ogre@@UAEPAXI@Z",
+   "address": "004d7420",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_E?$SharedPtr@VResource@Ogre@@@Ogre@@UAEPAXI@Z",
+   "address": "004d73e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_EMemoryDataStream@Ogre@@UAEPAXI@Z",
+   "address": "004dab30",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_L@YGXPAXIHP6EX0@Z1@Z",
+   "address": "006a1598",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_M@YGXPAXIHP6EX0@Z@Z",
+   "address": "006a165b",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?destroy@?$SharedPtr@VDataStream@Ogre@@@Ogre@@MAEXXZ",
+   "address": "004d73a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?destroy@?$SharedPtr@VResource@Ogre@@@Ogre@@MAEXXZ",
+   "address": "004d73a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?fromAssets@ContentId@RBX@@SA?AV12@PBD@Z",
+   "address": "0055bd80",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?getFile@ContentProvider@RBX@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VContentId@2@@Z",
+   "address": "00561e30",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?getNullName@Name@RBX@@SAABV12@XZ",
+   "address": "00554270",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?nativeAssetFolder@RBX@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+   "address": "0055c4c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?nativeAssetPath@RBX@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBD@Z",
+   "address": "0055d0b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?resolveFormat@GImage@G3D@@SA?AW4Format@12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "0050edb0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?swap@?$SharedPtr@VDataStream@Ogre@@@Ogre@@MAEXAAV12@@Z",
+   "address": "0068ddc0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?swap@?$SharedPtr@VResource@Ogre@@@Ogre@@MAEXAAV12@@Z",
+   "address": "0068ddc0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z",
+   "address": "007ca0bb",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__GetShortPathNameA@12",
+   "address": "00802218",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__MoveFileExA@12",
+   "address": "00802264",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

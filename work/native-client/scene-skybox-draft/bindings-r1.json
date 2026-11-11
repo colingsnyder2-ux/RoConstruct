@@ -1,0 +1,67 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?setSkyBox@RbxSceneManager@Ogre@@UAEX_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@M0ABVQuaternion@2@1@Z",
+    "address": "00692a10"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\scene-skybox-proof\\objects\\f96b66d93fe42550\\candidate.obj": "94b4bce441ad22f3e7ac7e4a75af519b1289a05eadee50471d0291e043326687",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-dkvt3m16\\owners.json": "c4875559a93eec8c1bb8088db391da0d3af6e64f864f39f53aaa39164d056f02",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-dkvt3m16\\import-thunk-identities-as-owner.json": "50be92c8465d94912d8878c67daa6829809eea70bc223ece5643892963ffc87f"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??0RbxSky@Ogre@@QAE@PAVSceneManager@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+   "address": "0067fd60",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??2@YAPAXI@Z",
+   "address": "006a0920",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_E?$SharedPtr@VResource@Ogre@@@Ogre@@UAEPAXI@Z",
+   "address": "004d73e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?create@ExceptionFactory@Ogre@@SA?AVInvalidParametersException@2@U?$ExceptionCodeType@$01@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1PBDJ@Z",
+   "address": "0067c4d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?createSkyboxPlane@RbxSceneManager@Ogre@@IAE?AVMeshPtr@2@W4BoxPlane@SceneManager@2@MABVQuaternion@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "0068efd0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?destroy@?$SharedPtr@VResource@Ogre@@@Ogre@@MAEXXZ",
+   "address": "004d73a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?swap@?$SharedPtr@VResource@Ogre@@@Ogre@@MAEXAAV12@@Z",
+   "address": "0068ddc0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__CxxThrowException@8",
+   "address": "006a158c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?setSkyBox@RbxSceneManager@Ogre@@UAEX_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@M0ABVQuaternion@2@1@Z",
+   "address": "007de6e4",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}
