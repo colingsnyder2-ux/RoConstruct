@@ -2,7 +2,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // RbxSceneNode2008 | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 374a0e65 | roc native-status --write
+// <<< native-status | src d05aafae | roc native-status --write
 // Ogre::RbxSceneNode as compiled into the June 2008 client (inactive native recovery; an exe-local Ogre::SceneNode
 // subclass). Non-colliding name: there is no donor header for it. Needs the Ogre 1.4.5 client headers on the include
 // path (tools/libs/ogre-1.4.5/ogrenew/OgreMain/include, OGRE_NONCLIENT_BUILD not defined: SceneNode is an rgmain.dll
@@ -50,6 +50,7 @@ namespace Ogre
 	class RbxSceneNode : public SceneNode
 	{
 		friend struct ::NativeOgreRbxNodeLayout;
+		friend class VisualEngine;   // its destructor 0067a130 reads the node's spheres
 
 	public:
 		typedef std::map<unsigned long, Matrix4*> TransformMap;
