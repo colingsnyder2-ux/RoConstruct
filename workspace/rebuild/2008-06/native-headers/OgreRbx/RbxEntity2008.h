@@ -2,7 +2,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // RbxEntity2008 | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 9497cc93 | roc native-status --write
+// <<< native-status | src 2fb8b20d | roc native-status --write
 // Ogre::RbxEntity, June 2008 executable-local Entity extension.
 // Target proof: 0067d1f0 constructs Entity then writes derived state through
 // +0x274..+0x2b8; allocation is 0x2bc. 0067d420 destroys AxisAlignedBox at
@@ -14,9 +14,11 @@
 
 namespace Ogre
 {
+	class FrameHistory;    // OgreRbx/VisualEngine2008.h
+
 	class RbxEntity : public Entity
 	{
-		void* mHistory;                         // +0x274, non-owning opaque receiver
+		FrameHistory* mHistory;                 // +0x274, non-owning; INFERRED type: collect 0067e2f0 calls FrameHistory::get 00678630 on it
 		bool mVisibilityCulling;                // +0x278
 		bool mCameraNotified;                   // +0x279
 		bool mRecordHistory;                    // +0x27a
@@ -35,7 +37,7 @@ namespace Ogre
 		SubEntity* createSubEntity(SubMesh* subMesh, unsigned int lod); // 0067d9b0
 		// Direct call 00696269 -> 0067e2f0 proves this exact non-virtual ABI.
 		// Its body remains unrecovered; declaration enables its proven SceneManager caller.
-		void collect(const Camera* camera, const Light* light, std::vector<ShadowCaster*>& output); // 0067e2f0
+		void collect(Camera* camera, Light* light, std::vector<ShadowCaster*>& output);             // 0067e2f0 (registry mangled name: non-const)
 	};
 
 	typedef char RbxEntity2008Size[(sizeof(RbxEntity) == 0x2bc) ? 1 : -1];

@@ -152,6 +152,8 @@ def audit_references(raw, symbol, body, target, target_relocs, va, targets, bind
         if known is not None and int(known, 16) != base:
             errors.append('reference identity differs: ' + name)
             return
+        if number - 1 == section and known is None and base == (va + value - start) & 0xffffffff:
+            return      # a label in the audited function's own section (switch table $LN): placed with the body
         if number <= 0 or sections[number - 1][9] & 0x20:
             if known is None:
                 errors.append('unproven reference identity: ' + name)

@@ -89,6 +89,8 @@ def data_coverage():
             continue
         addresses = metric.get('addresses', {})
         source = path.parent / 'roc_data.cpp'
+        if not current_typed_proof(metric, {}, source):
+            continue  # Legacy or stale receipts cannot establish current coverage.
         if source.is_file():
             source_text = source.read_text(errors='replace')
             generic = set(re.findall(r'\bvoid\s*\*\s*(?:const\s+)?roc_data_([0-9a-f]{8})\b', source_text))

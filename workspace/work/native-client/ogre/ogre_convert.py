@@ -16,7 +16,7 @@ by ogre_names.py):
 usage: python work/native-client/ogre/ogre_convert.py [ADDR ...]
   -> renamed/ADDR.obj, link/ogre_convert.json {addr: {status, symbol, ...}},
      link/importlibs/*.lib exact PE import-table providers (including ordinals)."""
-import json, os, re, struct, sys
+import hashlib, json, os, re, struct, sys
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
@@ -1072,6 +1072,8 @@ def write_data_defs(report):
         print('data definitions: %d (proof FAILED at %s)' % (len(lines), bad[0].decode()))
         return
     json.dump({'definitions': len(lines), 'bytes': sum(covered.values()), 'addresses': covered,
+               'source': str(src.resolve()), 'source_sha256': hashlib.sha256(src.read_bytes()).hexdigest(),
+               'object': str((OUT / 'roc_data.obj').resolve()), 'object_sha256': hashlib.sha256(obj).hexdigest(),
                'status': 'proved'}, open(LINK / 'data-metrics.json', 'w'))
     print('data definitions: %d (compile/proof ok)' % len(lines))
 

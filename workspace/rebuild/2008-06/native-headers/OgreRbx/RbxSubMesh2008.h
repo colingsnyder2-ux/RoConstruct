@@ -2,7 +2,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // RbxSubMesh2008 | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src e3a9db1a | roc native-status --write
+// <<< native-status | src d7d7b76e | roc native-status --write
 // Ogre::RbxSubMesh: exe-local SubMesh extension.
 // Original evidence: 00678470 calls imported SubMesh(), clears +0xc4/+0xc8,
 // then constructs AxisAlignedBox at +0xcc. 006824e0 destroys EdgeData* +0xc8,
@@ -17,6 +17,7 @@ namespace Ogre
 	class RbxSubMesh : public SubMesh
 	{
 		friend class RbxSubEntity;
+		friend class RbxEntity;       // collect 0067e2f0 reads radius
 
 		bool rbxFlag;                 // +0xc4
 		EdgeData* edgeData;           // +0xc8

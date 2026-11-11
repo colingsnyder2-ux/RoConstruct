@@ -1,0 +1,10 @@
+{
+ "files": [
+  {
+   "path": "mesa-glu/quad.c",
+   "url": "https://gitlab.freedesktop.org/mesa/glu/-/raw/master/src/libutil/quad.c",
+   "sha256": "958dcd0ed3f95c84a3fcfacc08233caa90ed517fe632e52a873144ebbaa843e3",
+   "license": "SGI Free Software License B 2.0"
+  }
+ ]
+}
