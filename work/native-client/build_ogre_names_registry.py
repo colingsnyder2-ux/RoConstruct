@@ -30,6 +30,15 @@ def addr(value):
     return value.zfill(8) if all(c in '0123456789abcdef' for c in value) else None
 
 
+def current_string_proof(receipt, provider, binding):
+    """Compiler-string evidence expires when its source object changes."""
+    path = binding.get('object') or provider.get('object') or receipt.get('object')
+    digest = binding.get('object_sha256') or provider.get('object_sha256') or receipt.get('object_sha256')
+    candidate = ROOT / path if path and digest else None
+    import hashlib
+    return bool(candidate and candidate.is_file() and hashlib.sha256(candidate.read_bytes()).hexdigest() == digest)
+
+
 def method_facts():
     facts = {}
     for cls in load('work/native-client/ogre-conversion-queue-v10.json', {}).get('classes', []):
@@ -96,9 +105,13 @@ def data_coverage():
     # record address and exact emitted storage size, so union them here rather
     # than reporting converter-local coverage as whole-client coverage.
     link = ROOT / 'work/native-client/link'
-    for path in list(link.glob('selected-typed*.json')) + list(link.glob('typed-data-coverage-batch*.json')):
-        for provider in load(path.relative_to(ROOT), {}).get('selected', []):
+    for path in (list(link.glob('selected-typed*.json')) + list(link.glob('typed-data-coverage-batch*.json')) +
+                 list(link.glob('native-string-data-*.json'))):
+        receipt = load(path.relative_to(ROOT), {})
+        for provider in receipt.get('selected', []):
             for symbol in provider.get('symbols', []):
+                if path.name.startswith('native-string-data-') and not current_string_proof(receipt, provider, symbol):
+                    continue
                 key, size = addr(symbol.get('address')), symbol.get('bytes')
                 if key and isinstance(size, int) and size > 0:
                     covered[key] = max(size, covered.get(key, 0))
@@ -178,6 +191,14 @@ def main():
     for binding in load('work/2008-06/shared-layouts/identity-registry-batch.json', {}).get('identity_bindings', []):
         add_name(rows, addr(binding['address']), binding['symbol'], 'reviewed-reference-binding',
                  [binding['evidence']], kind=binding['kind'])
+    for path in (ROOT / 'work/native-client/link').glob('native-string-data-*.json'):
+        receipt = load(path.relative_to(ROOT), {})
+        for provider in receipt.get('selected', []):
+            for binding in provider.get('symbols', []):
+                if binding.get('kind') == 'string' and current_string_proof(receipt, provider, binding):
+                    add_name(rows, addr(binding.get('address')), binding.get('symbol'), 'compiler-string-proof',
+                             [{'kind': 'compiler-string-proof', 'receipt': path.relative_to(ROOT).as_posix(),
+                               'bytes': binding.get('bytes'), 'evidence': binding.get('evidence')}], kind='string')
     for path, source in (('work/native-client/link/names.json', 'header-address'),
                          ('work/native-client/ogre/link/ogre_names.json', 'header-address')):
         for key, name in load(path, {}).items():

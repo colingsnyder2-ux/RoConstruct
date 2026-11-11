@@ -342,7 +342,12 @@ def work(t, ladder, tries, start=0):
         expanded = libs.unit(recipe, path.strip(), 21022)
         # Recipe preprocessors can emit megabytes of dependency declarations.
         # Give the actual trailing analog body instead of an empty directive.
-        analog += '\n// Expanded recipe trailing source excerpt (analog types are not native declarations):\n' + expanded[-32000:]
+        if t.get('donor_body'):
+            # The exact function from the donor file beats a trailing excerpt that may not contain it.
+            analog += ('\n// 2007 donor source of THIS function (byte-exact in its own unit; 2008 header names may differ):\n'
+                       + t['donor_body'][:12000])
+        else:
+            analog += '\n// Expanded recipe trailing source excerpt (analog types are not native declarations):\n' + expanded[-32000:]
     header = (ROOT / t['header']).read_text(errors='replace')[:40000]
     asm = subprocess.run([str(ROOT / 'roc.cmd'), 'native-asm', '2008-06', t['addr']], cwd=ROOT,
                          capture_output=True, text=True).stdout[-6000:]

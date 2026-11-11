@@ -172,6 +172,30 @@ def string_bindings(raw, symbols, functions):
     return proved
 
 
+def string_coverage(output):
+    """Whole native-object string pass; unique target bytes are the only identity gate."""
+    rows, seen = [], set()
+    for obj in sorted((HERE / 'obj').glob('*.obj')):
+        object_path = str(obj.relative_to(ROOT)).replace('\\', '/')
+        object_sha256 = hashlib.sha256(obj.read_bytes()).hexdigest()
+        for binding in string_bindings(obj.read_bytes(), [], {}):
+            key = binding['address'], binding['symbol']
+            if key not in seen:
+                seen.add(key)
+                binding.update(object=object_path, object_sha256=object_sha256)
+                rows.append(binding)
+    by_address = {}
+    for row in rows:
+        by_address[row['address']] = max(row['bytes'], by_address.get(row['address'], 0))
+    receipt = {'scope': 'native compiler strings: unique exact printable NUL bytes only',
+               'selected': [{'source': 'native-string-coverage', 'object': 'multiple native objects',
+                             'symbols': sorted(rows, key=lambda row: (row['address'], row['symbol']))}],
+               'definitions': len(rows), 'proved_data_bytes': sum(by_address.values()), 'linked': False,
+               'runtime_executed': False, 'p5_p6_executed': False}
+    output.write_text(json.dumps(receipt, indent=1) + '\n')
+    print(json.dumps({'string_definitions': receipt['definitions'], 'data_bytes': receipt['proved_data_bytes']}))
+
+
 def guid_exact(raw, row, stem, targets):
     """Only authentic typed GUID definitions, exact 16 bytes without relocations."""
     if not row['symbol'].endswith('@@3U_GUID@@B'):
@@ -231,7 +255,11 @@ def main():
     ap.add_argument('--closure-discover', type=Path, help='discover pre-isolatable providers from a closure and cached objects')
     ap.add_argument('--fresh-only', action='store_true', help='trial only providers compiled during this invocation')
     ap.add_argument('--reuse-current', action='store_true', help='reuse a hash-checked successful object after selector-only changes')
+    ap.add_argument('--string-coverage', action='store_true', help='prove unique compiler string data across cached native objects')
     args = ap.parse_args()
+    if args.string_coverage:
+        string_coverage(args.output)
+        return
     if bool(args.identity_closure) != bool(args.closure_provider):
         ap.error('--identity-closure and --closure-provider must be used together')
     if args.closure_discover and args.identity_closure:

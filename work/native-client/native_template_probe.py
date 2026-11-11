@@ -99,7 +99,7 @@ def exact(raw, targets):
     return hits
 
 
-def probe(source, output, targets, check):
+def probe(source, output, targets, check, per_line=False):
     source = source.resolve()
     flags = flags_for(check, source, output)
     receipt = {'source': str(source.relative_to(ROOT)).replace('\\', '/'), 'rounds': []}
@@ -147,6 +147,25 @@ def probe(source, output, targets, check):
                    new_exact_symbols=len(new),
                    new_exact_addresses=len({a for v in new.values() for a in v}),
                    new_unique=sorted((a[0], s) for s, a in new.items() if len(a) == 1))
+    if per_line:
+        # Attribution is discovery only.  It never changes source and its raw
+        # byte hits still require the native_bulk identity/reference gate.
+        line_rows = []
+        profile = ' '.join(flag for flag in flags if not flag.lower().startswith(('/fo', '/fd', '/c')))
+        for number, line in enumerate(lines):
+            one = output / ('line-%03d.cpp' % number)
+            # Preserve resolved fallback include roots for native_bulk's later
+            # strict reference pass; otherwise a probe that compiled here can
+            # fail there before its body is even inspected.
+            one.write_text('// native-flags: %s\n#include "%s"\n%s\n' %
+                           (profile, source.as_posix(), line), encoding='utf-8')
+            code, _, seconds = compile_tu(flags, one, output / ('line-%03d' % number))
+            hits = {} if code else exact((output / ('line-%03d/candidate.obj' % number)).read_bytes(), targets)
+            added = {symbol: addresses for symbol, addresses in hits.items() if symbol not in base}
+            line_rows.append({'line': line, 'compile_exit': code, 'seconds': seconds,
+                              'raw_unique': sorted((addresses[0], symbol) for symbol, addresses in added.items()
+                                                   if len(addresses) == 1)})
+        receipt['per_line'] = line_rows
     return receipt
 
 
@@ -154,13 +173,23 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('sources', nargs='+', type=Path)
     ap.add_argument('--output', type=Path, required=True)
+    ap.add_argument('--per-line', action='store_true',
+                    help='compile each surviving instantiation separately; discovery only')
     args = ap.parse_args()
     targets, check = Targets('2008-06'), runner()
+    line_sources = []
     for source in args.sources:
         folder = args.output.resolve() / source.stem
-        receipt = probe(source, folder, targets, check)
+        receipt = probe(source, folder, targets, check, args.per_line)
         (folder / 'receipt.json').write_text(json.dumps(receipt, indent=1) + '\n')
+        if args.per_line and receipt.get('status') == 'ok':
+            line_sources.extend(str((folder / ('line-%03d.cpp' % number)).relative_to(ROOT)).replace('\\', '/')
+                                for number, row in enumerate(receipt.get('per_line', [])) if row.get('raw_unique'))
         print(json.dumps({k: v for k, v in receipt.items() if k != 'new_unique'}))
+    if args.per_line:
+        inventory = {'client': '2008-06', 'families': [
+            {'name': 'NativeTemplateLineProbe', 'sources': line_sources, 'evidence': []}]}
+        (args.output.resolve() / 'line-inventory.json').write_text(json.dumps(inventory, indent=1) + '\n')
 
 
 if __name__ == '__main__':

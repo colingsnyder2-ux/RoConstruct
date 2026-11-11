@@ -2,6 +2,23 @@
 
 ## Update log
 
+### 2026-11-10 22:55 (Claude) - publish/auto-commit, banners, restarts, fan-out note
+- Pushed fd3dff7487 + 2ab5c298f1 to origin/codex/native-partial-search-20261029: all rebuild/2008-06 native sources, roc/, tests,
+  and tool scripts force-added from work/native-client (work/ is otherwise ignored).
+- New roc/autocommit.py runs inside the server publish cycle (roc/server.py _publish_once). Publish interval default is now
+  21600 s (6 h) in roc.py, roc/native_drafts.py host, roc/findings_workspace.py. It regenerates native-status banners under a
+  short lease `autocommit-native-banners`, skips files whose banner went stale mid-cycle, refuses binaries/>20 MB/secrets.
+- Banners (scripts/native_status.py): address map now from the conversion queue; an address counts byte-exact only when a
+  native-bulk manifest (work/native-client/*/ or out/**) compiled this file's current contents (matched by content hash,
+  banner lines ignored). NOTE: writing banners changes native file bytes, so a native-bulk batch running at that moment
+  reports "inputs changed" - rerun it.
+- Restarted: publisher (supervised, now 6 h) and API server :8765 (now detached, logs work/roc-server.*.log).
+- PROPOSAL for auto_loop.py (your lease): zero_batches counts --repair batches and carries across rounds, so scopes stop
+  after round 1 before the round-2 retry (G, RBX::N, CXTPR ended "not converged"). Count only --next/--vendor batches, or
+  reset zero_batches at each round start.
+- symcheck.py (work/rbxgs-rebase) symbols(): same quadratic string-table slice as strip_symbols; fixed, 25-object
+  equivalence check identical, 10 MB objects 40 s -> 0.05 s. linkprobe.py benefits.
+
 ### 2026-11-10 22:16 - Codex run_scopes status clarification
 - `run_scopes.status.json` is stale from an earlier 1/1 run; **do not treat it as the live runner's plan**. Live parent `19940` has five active `auto_loop.py` children (`seg_007f`, `RBX::R`, `G`, `RBX::N`, `CXTPR`) from `run_scopes.py --jobs 5 --batch 100 --minutes 240`.
 - No runner code change, restart, or scope proposal is needed. Wait for live child completion, then the parent writes current status.
@@ -385,6 +402,8 @@ In progress (Claude): `native-bulk` over all 750 native classes, 12 shards, clos
 - Isolation correction pending: VS2008 `$LN*` compiler-local labels are not linkable providers and must not trigger the residual-definition rejection; named non-local externals still reject.
 - Isolation correction pending: `match._coff_data_index()` also reports symbols from `IMAGE_SCN_LNK_REMOVE` sections after `strip_symbols`; residual gate must inspect live COFF sections only. `/Gy` pilot preserved 35 exact Scintilla bodies.
 - Selector data extension planned: retain a residual `??_C` string only when an already exact retained body has one call-site relocation target, emitted bytes match that target's complete printable NUL string, and the string has no object relocations. Receipt will carry address/bytes evidence for later registry seed; no invented string data.
+- Registry content extension planned: `native-string-data-*.json` receipts with compiler-object hash, exact body closure, unique target bytes, and string length seed `kind:string` rows and typed-data coverage. Registry schema/converter format unchanged.
+- String receipt hardening planned: coverage records will carry per-symbol object path/SHA-256; registry/metrics ignore stale proofs after a source object changes. Schema unchanged outside receipt metadata.
 - Selector pre-isolation discovery planned: scan cached native objects against closure exacts, run the same strip/reproof gate before compiling, then queue only zero-residual source families. This replaces manual provider-family guessing; no registry/converter schema change.
 - Registry content extension planned: scan structurally validated RTTI complete-object locators. Primary offset-zero tables receive their mechanically derived `??_7` spelling; secondary tables remain `data_ADDR` placeholders with RTTI raw-type owner/signature evidence. Schema and converter format unchanged.
 
@@ -512,4 +531,33 @@ roc.cmd native-bulk work/native-client/identity-bulk-shard00.json --out work/nat
 - Scratch closure `work/native-client/ogre-native-full-identity-closure-20261110.json` scanned 18 deduped objects / 9,404 emitted symbols. It bound 1,794 addresses (1,833 unique-body; 1,177 reference-vote; 307 vote-selected-body).
 - Against current full native census, 179 currently unregistered emitted exact addresses have body-exact symbol identities: 155 unique-body, 24 vote-selected-body; classification: 106 Ogre, 8 RBX, 19 G3D, 46 std/other.
 - Proposal only: registry owner may ingest these rows after existing conflict policy. No registry file changed here. Full strict census is `work/native-client/ogre-native-full-census-current/manifest.json`; use `symbol.addr` (not `candidates`) for reference-proved addresses.
+
+### 2026-11-10 - registry string-proof freshness repair
+
+- Registry builder now will accept `native-string-data-*.json` rows only while recorded per-symbol object SHA-256 matches current object. Receipt metadata only; registry schema and `ogre_convert.py` format unchanged. Regenerate coverage after change so every binding carries object path/hash.
+
+### 2026-11-10 - provider selector queue park
+
+- Clean 173-row provider map has no untried address-bearing `native-source-defines` provider: 86 prior trial stems cover all rows with target addresses. `MetadataContainersLifetime`/`MetadataMemberLookup` are source-only unresolved rows with no original address, so selector correctly emits zero sources. Do not retry selector until provider map gains target-address evidence or a new source family appears.
+
+- `converter_link_select.py --scope all --limit 20` scans reports before applying limit; after five minutes it had no output, so it was stopped under efficiency rule. Park `--scope all` until driver gets a cached/prefiltered report index; use one completed scope only.
+
+### 2026-11-10 - converter selector cache
+
+- `converter_link_select.py` now caches renamed report rows per scope using report mtime/size stamps; unchanged reports are not reparsed. `--refresh-report-cache` forces one scope refresh. Cache is selector-local metadata only: no registry or `ogre_convert.py` format change.
+- First indexed `RBXNetwork` selection: 874 candidates, 0 selected; 865 are not current link unresolved, remaining 9 use forbidden byte-pointer/constant-offset layout views. This is second zero-gain selection/data batch; park converter selection until clean unresolved map changes. Cache created at `work/native-client/link/cache/converter-reports/`.
+
+### 2026-11-10 - converter link-trial receipt proposal
+
+- Planned `converter_link_select.py --trial-link`: append `link_trial` to its selection receipt with baseline/trial unresolved sets, duplicate check, net gain, and per-provider introduced undefined dependencies; always restore baseline probe after a rejected trial. Receipt extension only; registry and `ogre_convert.py` formats unchanged.
+- Closure trial batch7: 20 candidate bodies / 1,922 B, link 172 -> 217 unresolved, 65 introduced; rejected and baseline restored. Batch6 also lost 25 unresolved. Park closure selection until compiler-emitted vtables/data or missing provider evidence changes; two consecutive zero-gain trials.
+
+### 2026-11-10 - Codex pause: Ogre native template strict-promotion pilot
+
+- Fresh full native census `work/native-client/ogre-native-full-census-current/manifest.json`: 687 unique emitted `inactive_exact` addresses / 106,441 B. Registry-root subset: 499 / 86,983 B (458 proved-name / 82,669 B; 41 placeholder / 4,314 B). Unclassified emitted helpers: 188 / 19,458 B. Important: count `symbol.addr`, never byte-only `symbol.candidates`.
+- Function-template sweep: 25 TUs, one proven source promotion in `OgreRbxEntity.cpp`: address 00515f80 / 39 B, strict reference-proof. Alias reproof parked: 166 probes, zero bindings.
+- Class-template sweep: 24/25 compiled, raw candidates only. New `native_template_probe.py --per-line` writes per-line attribution plus an inventory with resolved include-profile pins. R3 two-TU pilot gave 15 directive TUs / 75 strict scratch addresses in 30.812 s.
+- Native source promotion applied to `rebuild/2008-06/native-classes/AppUnit67C_2008SubEntity.cpp`: 9 class-template directives. Actual-source proof `work/native-client/ogre-template-subentity-r3-reference-proof/manifest.json`: 64 strict addresses, +1 beyond prior full census: 00685a40 / 968 B; no loss. Lease `OgreTemplateSubEntity` released.
+- Open automatic next step: generalize R3 planner/apply from two TUs to sweep results; source edits require lease and actual-source native_bulk reproof. Do not count scratch template bytes as native recovery.
+- Uncommitted tracked edits: `rebuild/2008-06/native-classes/AppUnit67C_2008SubEntity.cpp`; `work/native-client/native_template_probe.py`. Generated/ignored evidence includes `ogre-template-*-r3-*`, `ogre-native-full-census-current`, `ogre-layout-solutions.json`, and metrics log. No draft session was started by this work, so none to flush.
 

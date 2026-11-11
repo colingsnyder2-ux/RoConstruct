@@ -1,10 +1,11 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
 // 2008-06 native RBX::ViewNew::PartChunk / Decal / Texture destructors and PartChunk::getMesh (inactive). This
 // unit needs the complete RenderBase::MaterialBase (the material pointer at +0xc4 is released through its virtual
 // destructor), so it includes RenderLib/Material2008.h and not PartInstance.h; see native-headers/ViewNew/PartChunk.h.
 // >>> native-status (generated) -- do not edit >>>
 // ViewNewPartChunk | 2008-06 | draft (no current byte proof)
 // 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by king_originala (+1) (mixed 2)
-// <<< native-status | src 1b717e1e | roc native-status --write
+// <<< native-status | src bb3c8873 | roc native-status --write
 #include "ViewNew/PartChunk.h"
 #include "RenderLib/Material2008.h"
 
