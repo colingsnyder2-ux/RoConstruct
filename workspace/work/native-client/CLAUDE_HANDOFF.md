@@ -2,6 +2,62 @@
 
 ## Update log
 
+### 2026-11-11 01:50 (Claude) - first header-lane class: Ogre::VRbxFont
+- New native class from the binary (no prior source): native-headers/OgreRbx/VRbxFont2008.h + native-classes/OgreVRbxFont.cpp.
+  It is Roblox's Ogre port of G3D 6.09 GFont: layout new(0x218) = int subWidth[128], charWidth, charHeight, baseline,
+  Ogre::TexturePtr texture (+0x20c), exactly GFont's field order. Byte-exact with full reference identity: ctor 00684b10
+  (917 B), fromFile 00684eb0 (240 B), computePackedArray 006843f0 (586 B). Ogre roots now ~622 / ~130.0 KB (43.5%).
+- get2DStringBounds 00684640: byte-exact, name from the G3D API; identity waits on its only caller draw2D.
+- draw2D 00684730: real first parameter is Ogre::VisualEngine* (caller 0066fe0c passes AdornRbxGfx::visualEngine; body
+  calls addQuad on VisualEngine+0x14). Registry's TwoDManager* spelling came from a generated roc_* analog (name_source
+  "upstream-replay" still admits some roc_* names: worth the same filter Codex B added). Body matches through 153/245
+  instructions, kept under NATIVE_VRBXFONT_DRAW2D_PENDING. Unblocks once VisualEngine gets a native header.
+- New native-headers/G3D/BinaryInput.h: Roblox's G3D throws std::exception in getCArray (all 7 exe sites), else identical.
+- import_thunk_identities.py now also emits __imp_<name> IAT-slot rows (1,794 bindings).
+- Header-lane recipe that worked: allocation size from the factory, ctor stores for every offset, find the upstream class
+  the fork came from (here G3D GFont), port verbatim, then fix by diff (unsigned loops, extern-linkage counter,
+  Roblox-patched library header, y-flip for Ogre).
+
+### 2026-11-11 00:20 (Claude) - Ogre native: 24.5% -> 42.3% of Ogre-scope root bytes, tools, next lane
+- Metric: Ogre-scope roots = run_all.roots(('Ogre::','RBX::RenderNew','RBX::ViewNew')), 987 fns / 298,912 B. Byte-proved native
+  (inactive_exact, evidence-backed): 442 / 73,367 B (Codex census) -> **609 / 126,516 B (42.3%)**. All proved native addresses
+  incl. emitted helpers: 687 / 106,441 B -> 1,762 / 195,730 B. Latest manifest: ogre-native-full-census-loop7/manifest.json.
+- What moved it (no LLM, no new bodies): (1) import_thunk_identities.py: binds C++ imports and msvcr90/msvcp90 C imports to their
+  FF 25 thunks, plus ??_7type_info@@6B@ = 00850180 (all 2,949 RTTI descriptors agree); (2) batch_reference_bind.py: runs
+  native_reference_alias_bind.py in-process (one shared Targets index: 206 owners in 13 s) over every draft whose only blocker
+  is reference identity, keeps identities consistent across owners; (3) ogre_identity_loop.py: census<->binder fixpoint
+  (converged round 7); (4) 8 Ogre files never compiled (no Ogre include in native-flags; some only had roc-flags): fixed,
+  committed 6546f03d4a; (5) census inventory widened by class leaf names and template instantiations (40 sources:
+  ogre-native-full-inventory-all.json; the 25-file narrow one is .narrow.json); (6) ogre-registry-identities.json: proved
+  registry names as evidence, resolves byte-identical copies (e.g. SphereBuilder::build*).
+- Exhausted lanes: template per-line promotion (ogre_template_promote.py, 166 strict line TUs, 0 new beyond census);
+  LLM lane (ogre_llm_lane.py, combined closure ogre-combined-closure.json): 0/11, every failure a missing header declaration
+  (RbxSky 3-arg ctor, incomplete PartInstance, undeclared Lighting). Only 22 of 578 placeholders sit in a vtable
+  (vtable_owner_scan.py).
+- Remaining 378 roots / ~172 KB: 113 mined-analog placeholders (51 KB), 76 donor-named without native body (41 KB: 36
+  template owners, 27 no native header declaring class+method), 48 upstream-named (23 KB, mostly no header), ~100
+  native bodies with ambiguous/unproved identity (17 KB). Next lane = header recovery: give classes like
+  RBX::View::PartChunk2, RBX::ViewNew::PartView, RBX::View::MeshFactory a native header from donor/registry evidence,
+  accepted only through native_class_layout.py + native_layout_gate.py; then reuse ogre_llm_lane.py.
+- Codex thread A (Ogre) is paused; this lane is Claude's now.
+
+### 2026-11-10 22:55 (Claude) - publish/auto-commit, banners, restarts, fan-out note
+- Pushed fd3dff7487 + 2ab5c298f1 to origin/codex/native-partial-search-20261029: all rebuild/2008-06 native sources, roc/, tests,
+  and tool scripts force-added from work/native-client (work/ is otherwise ignored).
+- New roc/autocommit.py runs inside the server publish cycle (roc/server.py _publish_once). Publish interval default is now
+  21600 s (6 h) in roc.py, roc/native_drafts.py host, roc/findings_workspace.py. It regenerates native-status banners under a
+  short lease `autocommit-native-banners`, skips files whose banner went stale mid-cycle, refuses binaries/>20 MB/secrets.
+- Banners (scripts/native_status.py): address map now from the conversion queue; an address counts byte-exact only when a
+  native-bulk manifest (work/native-client/*/ or out/**) compiled this file's current contents (matched by content hash,
+  banner lines ignored). NOTE: writing banners changes native file bytes, so a native-bulk batch running at that moment
+  reports "inputs changed" - rerun it.
+- Restarted: publisher (supervised, now 6 h) and API server :8765 (now detached, logs work/roc-server.*.log).
+- PROPOSAL for auto_loop.py (your lease): zero_batches counts --repair batches and carries across rounds, so scopes stop
+  after round 1 before the round-2 retry (G, RBX::N, CXTPR ended "not converged"). Count only --next/--vendor batches, or
+  reset zero_batches at each round start.
+- symcheck.py (work/rbxgs-rebase) symbols(): same quadratic string-table slice as strip_symbols; fixed, 25-object
+  equivalence check identical, 10 MB objects 40 s -> 0.05 s. linkprobe.py benefits.
+
 ### 2026-11-10 22:16 - Codex run_scopes status clarification
 - `run_scopes.status.json` is stale from an earlier 1/1 run; **do not treat it as the live runner's plan**. Live parent `19940` has five active `auto_loop.py` children (`seg_007f`, `RBX::R`, `G`, `RBX::N`, `CXTPR`) from `run_scopes.py --jobs 5 --batch 100 --minutes 240`.
 - No runner code change, restart, or scope proposal is needed. Wait for live child completion, then the parent writes current status.
@@ -385,6 +441,8 @@ In progress (Claude): `native-bulk` over all 750 native classes, 12 shards, clos
 - Isolation correction pending: VS2008 `$LN*` compiler-local labels are not linkable providers and must not trigger the residual-definition rejection; named non-local externals still reject.
 - Isolation correction pending: `match._coff_data_index()` also reports symbols from `IMAGE_SCN_LNK_REMOVE` sections after `strip_symbols`; residual gate must inspect live COFF sections only. `/Gy` pilot preserved 35 exact Scintilla bodies.
 - Selector data extension planned: retain a residual `??_C` string only when an already exact retained body has one call-site relocation target, emitted bytes match that target's complete printable NUL string, and the string has no object relocations. Receipt will carry address/bytes evidence for later registry seed; no invented string data.
+- Registry content extension planned: `native-string-data-*.json` receipts with compiler-object hash, exact body closure, unique target bytes, and string length seed `kind:string` rows and typed-data coverage. Registry schema/converter format unchanged.
+- String receipt hardening planned: coverage records will carry per-symbol object path/SHA-256; registry/metrics ignore stale proofs after a source object changes. Schema unchanged outside receipt metadata.
 - Selector pre-isolation discovery planned: scan cached native objects against closure exacts, run the same strip/reproof gate before compiling, then queue only zero-residual source families. This replaces manual provider-family guessing; no registry/converter schema change.
 - Registry content extension planned: scan structurally validated RTTI complete-object locators. Primary offset-zero tables receive their mechanically derived `??_7` spelling; secondary tables remain `data_ADDR` placeholders with RTTI raw-type owner/signature evidence. Schema and converter format unchanged.
 
@@ -512,4 +570,76 @@ roc.cmd native-bulk work/native-client/identity-bulk-shard00.json --out work/nat
 - Scratch closure `work/native-client/ogre-native-full-identity-closure-20261110.json` scanned 18 deduped objects / 9,404 emitted symbols. It bound 1,794 addresses (1,833 unique-body; 1,177 reference-vote; 307 vote-selected-body).
 - Against current full native census, 179 currently unregistered emitted exact addresses have body-exact symbol identities: 155 unique-body, 24 vote-selected-body; classification: 106 Ogre, 8 RBX, 19 G3D, 46 std/other.
 - Proposal only: registry owner may ingest these rows after existing conflict policy. No registry file changed here. Full strict census is `work/native-client/ogre-native-full-census-current/manifest.json`; use `symbol.addr` (not `candidates`) for reference-proved addresses.
+
+### 2026-11-10 - registry string-proof freshness repair
+
+- Registry builder now will accept `native-string-data-*.json` rows only while recorded per-symbol object SHA-256 matches current object. Receipt metadata only; registry schema and `ogre_convert.py` format unchanged. Regenerate coverage after change so every binding carries object path/hash.
+
+### 2026-11-10 - provider selector queue park
+
+- Clean 173-row provider map has no untried address-bearing `native-source-defines` provider: 86 prior trial stems cover all rows with target addresses. `MetadataContainersLifetime`/`MetadataMemberLookup` are source-only unresolved rows with no original address, so selector correctly emits zero sources. Do not retry selector until provider map gains target-address evidence or a new source family appears.
+
+- `converter_link_select.py --scope all --limit 20` scans reports before applying limit; after five minutes it had no output, so it was stopped under efficiency rule. Park `--scope all` until driver gets a cached/prefiltered report index; use one completed scope only.
+
+### 2026-11-10 - converter selector cache
+
+- `converter_link_select.py` now caches renamed report rows per scope using report mtime/size stamps; unchanged reports are not reparsed. `--refresh-report-cache` forces one scope refresh. Cache is selector-local metadata only: no registry or `ogre_convert.py` format change.
+- First indexed `RBXNetwork` selection: 874 candidates, 0 selected; 865 are not current link unresolved, remaining 9 use forbidden byte-pointer/constant-offset layout views. This is second zero-gain selection/data batch; park converter selection until clean unresolved map changes. Cache created at `work/native-client/link/cache/converter-reports/`.
+
+### 2026-11-10 - converter link-trial receipt proposal
+
+- Planned `converter_link_select.py --trial-link`: append `link_trial` to its selection receipt with baseline/trial unresolved sets, duplicate check, net gain, and per-provider introduced undefined dependencies; always restore baseline probe after a rejected trial. Receipt extension only; registry and `ogre_convert.py` formats unchanged.
+- Closure trial batch7: 20 candidate bodies / 1,922 B, link 172 -> 217 unresolved, 65 introduced; rejected and baseline restored. Batch6 also lost 25 unresolved. Park closure selection until compiler-emitted vtables/data or missing provider evidence changes; two consecutive zero-gain trials.
+- Typed-data correction: selected batch1 emitted `void*` for 0096c238 and 0096dd00; latter is a function pointer in the registry, former lacks a proved type. Byte equality alone does not prove typed source. Removed that 8 B provider from cumulative link selection pending exact declarations; coverage metrics containing these generic-pointer rows are provisional and must not be presented as fully typed.
+- Registry metric excludes generic `void*` stand-ins; latest corrected coverage 10,243 B (.data 1,045, .rdata 9,198). Selector now rejects those definitions; converter itself remains unchanged and its generated pointer data must not be selected as typed source.
+- Replaced both withdrawn globals with real pointer declarations: `nativeRegistrationCallback` is a `long (__stdcall*)()` and `activeRobloxDoc` is `CRobloxDoc*`, each 4 B BSS byte/symbol proved, object-hash pinned. Link trials 174 -> 173 -> 172 unresolved, zero duplicates; selected receipts `selected-typed-callback.json` and `selected-typed-document-pointer.json`.
+- Registry metric and selector now exclude converter arrays standing in for `@@3QBDB` const pointers pending pointer/target relocation proof. Compiler-generated native string receipts remain separate. Corrected coverage: 8,565 B (.data 1,075, .rdata 7,490). No registry schema or converter format change.
+- Registry typed-data receipt rows now count only while source and object SHA-256 match their proof receipt. Latest coverage 8,566 B (.data 1,075, .rdata 7,491); converter-batch metrics still need their own source/object freshness audit. No registry schema or converter format change.
+- Registry metric change parked: converter-batch data receipts lack source/object SHA-256. Patch to exclude them failed with `Failed to write file`; source remains syntactically valid. Existing coverage remains provisional until freshness proof. Existing legacy receipts intact; no converter or registry schema change.
+- Closure batch7 vtable cross-check: existing 751-source layout sweep mentions 9 of its 30 unresolved vtable symbols (159 receipt rows). These are slot-name/layout observations, not current compiler-object byte/relocation proofs; tables remain unselected pending object and provider proof.
+- Vtable object-proof pilot: `claude-fresh-all/AppUnit400_2008Names/candidate.obj` emits no `AuthoringSettings` vtable definitions despite the layout sweep listing them; layout dump alone cannot supply link providers. Park this source for vtable emission, seek actual emitting object.
+- Cached-object search found four emitters of batch7 vtables: `AuthoringSettings` (9), `MetadataClassesRegister` (10), `AppUnit588_2008ChangeHistory` and `ChangeHistoryLifetime` (9 each). Recursive data proof pilot for AuthoringSettings Debugable table 0080bbb8 failed at FactoryProduct RTTI descriptor (`reachable data differs`). No table selected; RTTI definition must be reconciled before class promotion.
+- Independent `MetadataClassesRegister` object: Debugable vtable 0080cd88 recursive data/relocation check passed; 3,221 identity bindings in `link/metadata-debugable-vtable-proof.json` with object and target-table hashes. This is identity/data evidence only: isolate the compiler-emitted table and prove all retained code/data and linked dependencies before selecting it.
+- Generic isolation repair: `prune_unused_comdat_data()` now treats explicitly kept data symbols as reachability roots. Before repair it deleted the requested Debugable vtable; after repair the table survives. Its retained object still contains additional RTTI/string definitions, so selection stays blocked until each retained definition and section is proved.
+- Vtable proof receipt now records recursively byte/relocation-checked data definitions separately from inferred relocation identities. Metadata Debugable pilot: 117 of 119 live externals proved; remaining `bad allocation` string and Boost `date_facet::id` are unrelated/unproved retained definitions. Object remains unselected. No registry or converter format change.
+- Metadata isolation trace: explicit COFF removal can remove both unrelated data definitions while retaining the vtable, but leaves an 11-byte `.text$yc` Boost `date_facet::id` initializer section. It is unproved and the object is not linkable under current rules. No object written or selected; isolate/remove the unreachable initializer section with a verified generic COFF driver before retry.
+- Metadata initializer section 843 has one retained incoming relocation, from `.debug$F` section 844; no live code/data relocations target it. A generic isolation fix must remove both the orphan initializer and dependent debug metadata, verify all retained roots/relocations and then re-prove data; do not select the current object as-is.
+- Added conservative `prune_orphan_initializers()` to native selector: local `.text$yc` `??__E` initializer sections are removed only with no live non-debug incoming reference; associated debug references removed. Metadata pilot after explicit residual-data removal had no live code/unproved externals, and 117 data definitions re-proved. Diagnostic link 172 -> 311 unresolved, 0 duplicates: large vtable dependency closure remains; rejected, baseline restored. Helper is not yet wired into ordinary selections.
+- Fixed zero-/one-based COFF section mixup in `native_vtable_data_bind.py` recursive extent calculation. Metadata isolated object reproof still passes: 117 definitions and 4,139 bytes, all ranges unchanged; older receipts need reproof if consumed. In 00444dd0 candidate the recurring `bad allocation` string is referenced by retained non-COMDAT `.data`, so it cannot be dropped solely as an unreferenced string.
+- Tightened recursive vtable data proof: object relocation offsets must equal original PE base-relocation offsets, not merely contain them; extra object relocations can no longer mask unrelated bytes. Metadata isolated object reproof still passes 117 definitions / 4,139 B. Older receipts need this reproof before use.
+- Vtable slot/locator binding now subtracts the actual signed COFF relocation addend before recording target-symbol address, instead of assuming zero. Metadata isolated recursive proof still passes; old non-recursive receipts need reproof before use.
+- Registry evidence lead: `claude-memfn-args.json` has 254 consistent function-pointer argument rows, 110 unnamed. Its member-pointer owner is a static parameter type and may denote a base class after a cast; preserve that distinction and do not promote it as exact owner without separate proof. Free-function pointer signatures and site-specific evidence can be reviewed for safe enrichment.
+- `native_memfn_args.py` gathers any code immediate since the preceding call, including `mov` into non-argument locations; uniqueness alone does not prove argument binding. Treat its 100 free-function signature candidates as leads, not registry proofs, until instruction/dataflow ties each immediate to the actual call argument.
+- Registry invariant audit: all placeholders follow generated `func_ADDR`/`data_ADDR` naming; 21,958 code placeholders still lack owner and/or signature. These remain incomplete, not proof of absent owners or permission to guess.
+- Post-scope converter selector: 35 rejected candidates retain extra COMDAT definitions; `bad allocation` compiler string occurs in 23. Reuse native selector's conservative COMDAT reachability/pruning and string proofs before reconsidering; no blanket acceptance of unused symbols.
+- Tested all 35 cached objects with conservative COMDAT reachability, exact native-string proof, and orphan-initializer removal: zero had every residual definition accounted for. Park this path until retained-section reachability or data proof improves; no selections changed.
+- Read-only root-relocation trace over the 35 rejected objects: 10 have no extra external definitions reachable from their body; 9 have additional EH code/data sections, while 0067d2d0 has one reachable code section. This trace omits associative-section and provider/ABI proof and does not authorize selection. Generic root-section isolation is being investigated; no registry/converter format change.
+- Whole-section isolation pilot 0067d2d0: 241-byte body and nine relocation names re-proved; diagnostic trial worsened 170 -> 454 unresolved despite `LNK_REMOVE` metadata, with linker errors naming discarded functions. Baseline restored. `isolate_single_code_section` is diagnostic only; do not select its objects until the linker behavior and object reconstruction are understood.
+- Checked 0067d2d0 isolated object: `_updateRenderQueue` section has 0x800 `IMAGE_SCN_LNK_REMOVE`, yet VS2008 link emitted unresolved references attributed to that removed section. Microsoft PE/COFF describes this flag as preventing section inclusion in the image, not as a guarantee that symbol resolution ignores it. Physical COFF section/symbol isolation or a compiler-produced per-function object needs proof; do not assume the flag suffices.
+- Post-scope closed subset selected: 00403040 (47 B) and 005872a0 (37 B), hash-pinned converter objects. Trial and cumulative probe 172 -> 170 unresolved, zero duplicates, no introduced dependencies. Byte/reference proof only; native declaration, layout/ABI and runtime gates remain separate.
+- Native Ogre census vs current 172 unresolved: four strict inactive-exact symbol hits across `ViewNewPart.cpp` (393 B) and `ViewNewPartChunk.cpp` (397 B), source/object hashes current. Isolation retains respectively 5 and 15 unrelated or unproved definitions (strings, floats, Boost id, vtable/RTTI). Two zero-gain source families parked until safe retained-section isolation; no duplicate compile and no selection.
+- Linkprobe now records selected-provider provenance counts and leaves linked section bytes null when unavailable. Current probe: 172 unresolved, 0 duplicates, 52 receipt-listed providers, 2 hash-pinned, 7 reference a proof receipt, 45 lack that receipt field. Counts do not prove or disprove the other providers; they identify provenance still to audit. Failed link leaves empty map, so linked bytes remain unknown rather than inferred.
+- `native_link_select.py --audit-selected` rechecks old selected receipt body claims against current objects without compiling. Current 52 providers: 77 distinct byte-equal code addresses / 15,217 target bytes; 12 typed-data claims intentionally not checked by this code-only audit. This does not establish current source/dependency freshness, data, relocation identity, selected linker ownership, or ABI; it is not a linked-byte metric. Receipt `link/selected-byte-audit-20261111.json` hashes each current object.
+- Extended audit to compare selected data bytes or zero BSS storage: 12/12 data claims, 87 B, match (four GUIDs 64 B, scalars 15 B, typed pointers 8 B). `link/selected-byte-data-audit-20261111.json` hashes current objects; source/type freshness and selected linker ownership remain separate gates.
+- Optional identity/reference audit of the 77 byte-equal code claims: 52 pass, 25 blocked using `claude-identity-closure.json` + `import-thunk-identities.json`. `CBrowserDocManager` ctor 00449650 has a nested `CDocManager::OnFileNew` reference identity conflict; other blockers include unmapped operators/imports. This is a probe-baseline risk, not an independently verified mismatch until the closure identity and nested vtable edge are reconciled. Receipt `link/selected-reference-audit-20261111.json` records hashes for reference inputs and objects; no runtime/ABI claim.
+- Added existing `archivebinder-finish-v1/closure.json` as independent identity input: reference audit improves 52 -> 65 passing of 77 byte-equal code claims; 12 remain blocked. CBrowserDocManager ctor has two nested MFC identity conflicts (`OnFileNew`, `DoPromptFileName`) under combined bindings. The result remains object-reference evidence only, not source freshness, ABI or selected-link proof. Receipt `link/selected-reference-audit-archive-20261111.json`.
+- MFC conflict trace: actual ctor vtable edges point to 006a11b4 / 006a11c0, FF25 thunks via `mfc90.dll` ordinals 2236 / 4874. VS2008 RTM `mfc90.def` independently names those ordinals `CDocManager::DoPromptFileName` / `CDocManager::OnFileNew`; old closure points the same base-class names at 00449ae0 / 0044abd0. Opt-in ordinal scanner produced 1,029 new identity pairs and six conflicts; `selected-reference-audit-mfc-20261111.json` independently re-verifies ordinal, IAT and thunk and prefers the MFC result while retaining all six overrides. It resolves both observed identity conflicts, but total passing bodies remains 65/77 due other missing identities. Default scanner output and registry unchanged.
+- Compared 52 selected providers against 13 available native-bulk manifests: 49 provider names occur, but none of the selected object hashes equal the corresponding manifest object hashes. These may be different compile profiles, not disproved bodies; the manifests cannot directly establish provenance of current selected objects. Existing 77-body byte audit remains byte-only.
+- Correction: withdrew 00403040, 005872a0 and 004e6b50 converter objects (145 B): source analogs use synthetic padding, virtual slots or byte-offset layout fields, prohibited by native rules. Probe now 173 unresolved, 0 duplicates. Selector rejects these explicit patterns; heuristic is not a complete proof that other analog layouts are authentic. Audit all existing selected analogs before making source-compliance claims.
+- Implicit linkprobe analog audit: `00465a80` used fabricated `B_func_...`/`S_func_...` inheritance; linkprobe now skips that synthetic class pattern and missing analog sources. New clean probe: 172 unresolved, 0 duplicates. This is removal of an unsafe provider and its dependencies, not a recovered-code gain. Explicit cumulative-source heuristic flagged only COutputView, a false positive from unrelated `WM_USER + 0x65`; all other source/layout proof remains separate.
+- ICF registry correction applied: 0070bdf0 now pairs `CRobloxWnd::setActive` with matching owner/signature and retains 95 alternate closure spellings as evidence. 1,659 rows contain folded-or-conflicting candidate spellings; candidates are not automatic link approval. Builder derives named code owner/signature from chosen decorated identity, removing stale unrelated queue facts. Schema unchanged.
+- `CRobloxWndActive` candidate at 0070bdf0 byte-compiles to exact `c2 04 00`; selector's generic probe intentionally skips bodies shorter than six bytes. Its isolated cached object still retains 22 other externals and three initializer code sections, so it is not safely selectable. Do not weaken short-body/ICF gate or select until residual sections and independently evidenced aliases are handled.
+- Runtime-class data lane: `CChatPrompt` and `CRobloxView` use `DECLARE_DYNCREATE`. Corrected CChatPrompt gate: 3 agree, 2 unknown, 1 inside; the former +0x94 vfptr mismatch is unexpanded `CBrush` and not an established defect. Target runtime class at 0080df88 encodes size 0xa8, matching compiler size 168. Full layout and emitted runtime-class data/relocations remain unproved; keep provider parked.
+- Added `--strict-first-argument`: only accepts an immediate function-start `push` directly adjacent to the call when the first formal parameter is a free-function pointer. Fresh `codex-memfn-firstarg.json`: 208 consistent targets, 89 lacked registry signatures. This proves the argument's static type at that call site; casts, control-flow entry, and folded-body identities still require review before claiming the original function signature.
+- Typed-data batch3 rescan after registry growth found no additional supported unresolved scalar candidates. Park this queue until registry types or unresolved symbols change.
+- Typed coverage batch3 after pointer/array corrections: 50 scalar definitions / 173 B (.data 93, .rdata 80), all addresses already in prior coverage; no net new addresses. Last overall provisional metric 8,570 B vs .data 358,160 / .rdata 1,201,764 virtual bytes. Coverage is not linked data and older converter receipts lack input hashes.
+
+### 2026-11-10 - Codex pause: Ogre native template strict-promotion pilot
+
+- Fresh full native census `work/native-client/ogre-native-full-census-current/manifest.json`: 687 unique emitted `inactive_exact` addresses / 106,441 B. Registry-root subset: 499 / 86,983 B (458 proved-name / 82,669 B; 41 placeholder / 4,314 B). Unclassified emitted helpers: 188 / 19,458 B. Important: count `symbol.addr`, never byte-only `symbol.candidates`.
+- Function-template sweep: 25 TUs, one proven source promotion in `OgreRbxEntity.cpp`: address 00515f80 / 39 B, strict reference-proof. Alias reproof parked: 166 probes, zero bindings.
+- Class-template sweep: 24/25 compiled, raw candidates only. New `native_template_probe.py --per-line` writes per-line attribution plus an inventory with resolved include-profile pins. R3 two-TU pilot gave 15 directive TUs / 75 strict scratch addresses in 30.812 s.
+- Native source promotion applied to `rebuild/2008-06/native-classes/AppUnit67C_2008SubEntity.cpp`: 9 class-template directives. Actual-source proof `work/native-client/ogre-template-subentity-r3-reference-proof/manifest.json`: 64 strict addresses, +1 beyond prior full census: 00685a40 / 968 B; no loss. Lease `OgreTemplateSubEntity` released.
+- Open automatic next step: generalize R3 planner/apply from two TUs to sweep results; source edits require lease and actual-source native_bulk reproof. Do not count scratch template bytes as native recovery.
+- Uncommitted tracked edits: `rebuild/2008-06/native-classes/AppUnit67C_2008SubEntity.cpp`; `work/native-client/native_template_probe.py`. Generated/ignored evidence includes `ogre-template-*-r3-*`, `ogre-native-full-census-current`, `ogre-layout-solutions.json`, and metrics log. No draft session was started by this work, so none to flush.
 

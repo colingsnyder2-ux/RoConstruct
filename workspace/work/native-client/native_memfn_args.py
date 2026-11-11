@@ -63,6 +63,8 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--closure', type=Path, required=True)
     ap.add_argument('--output', type=Path, required=True)
+    ap.add_argument('--strict-first-argument', action='store_true',
+                    help='accept only a direct immediate push immediately before the call for the first parameter')
     args = ap.parse_args()
     base, image = match._image('2008-06')
     image = bytes(image)
@@ -105,6 +107,7 @@ def main():
         # Member pointers may be 4, 8 or 12 bytes (`push imm` or `mov [esp+n], imm`), so take
         # immediates since the previous call; accept only one memfn param and one code immediate.
         imms, wanted, known = [], set(calls), set(starts)
+        previous = None
         for insn in md.disasm(image[start - base:start - base + size], start):
             if insn.mnemonic in ('push', 'mov') and insn.op_str.split(', ')[-1].startswith('0x'):
                 imms.append(int(insn.op_str.split(', ')[-1], 16))
@@ -114,6 +117,15 @@ def main():
                     totals['call_sites'] += 1
                     memfn = [MEMFN.match(p) for p in ps if MEMFN.match(p)]
                     code = sorted({v for v in imms if v in known})
+                    if args.strict_first_argument:
+                        first = MEMFN.match(ps[0]) if ps else None
+                        pushed = (int(previous.op_str, 16) if previous and previous.mnemonic == 'push' and
+                                  previous.address + previous.size == insn.address and previous.op_str.startswith('0x') else None)
+                        if not first or first[2] is not None or pushed not in known:
+                            imms = []
+                            previous = insn
+                            continue
+                        memfn, code = [first], [pushed]
                     if len(memfn) == 1 and len(code) == 1:
                         m = memfn[0]
                         totals['member_pointers'] += 1
@@ -123,6 +135,7 @@ def main():
                     else:
                         totals['skipped_ambiguous_site'] += 1
                 imms = []
+            previous = insn
     rows = []
     for va, evidence in sorted(proofs.items()):
         owners = sorted({e['owner'] for e in evidence})

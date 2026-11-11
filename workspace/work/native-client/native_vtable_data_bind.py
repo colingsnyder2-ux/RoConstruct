@@ -41,6 +41,7 @@ def main():
     table_rows = {row['vtable'].lower(): row for row in json.loads(args.tables.read_text())}
     bindings = {}
     data_roots = []
+    proved_data = []
     for item in args.vtable:
         if '=' not in item:
             raise SystemExit('--vtable needs SYMBOL=ADDRESS')
@@ -61,7 +62,10 @@ def main():
             if kind != 6:
                 raise SystemExit('non-absolute vtable relocation %s slot %d' % (name, slot))
             symbol = symbols[index][0]
-            address = f'{int(pair[0], 16):08x}'
+            if not table[4] or offset + 4 > table[3]:
+                raise SystemExit('vtable slot outside initialized COFF data: ' + name)
+            addend = struct.unpack_from('<i', raw, table[4] + offset)[0]
+            address = f'{(int(pair[0], 16) - addend) & 0xffffffff:08x}'
             if symbol in bindings and bindings[symbol] != address:
                 raise SystemExit('conflicting vtable slot symbol: ' + symbol)
             bindings[symbol] = address
@@ -72,7 +76,10 @@ def main():
         locator = relocs.get(start - 4)
         if locator and locator[1] == 6:
             symbol = symbols[locator[0]][0]
-            target = struct.unpack('<I', Targets('2008-06').data(int(va, 16) - 4, 4))[0]
+            if not table[4] or start < 4:
+                raise SystemExit('vtable locator outside initialized COFF data: ' + name)
+            addend = struct.unpack_from('<i', raw, table[4] + start - 4)[0]
+            target = (struct.unpack('<I', Targets('2008-06').data(int(va, 16) - 4, 4))[0] - addend) & 0xffffffff
             bindings[symbol] = f'{target:08x}'
             data_roots.append((symbol, target))
     if args.recursive_data:
@@ -88,7 +95,7 @@ def main():
             if table[9] & 0x20:
                 continue
             values = [value for _, value, number, _ in symbols.values()
-                      if number == section and value > start]
+                      if number == section + 1 and value > start]
             end = min(values + [table[3]])
             native = raw[table[4] + start:table[4] + end] if table[4] else bytes(end - start)
             try:
@@ -114,8 +121,10 @@ def main():
                 bindings[symbol] = f'{target:08x}'
                 queued.append((symbol, target))
             original_offsets = targets.data_relocations(va, len(native))
-            if not original_offsets <= set(offsets) or not match.exact_match(expected, original_offsets, native, offsets):
+            if original_offsets != set(offsets) or not match.exact_match(expected, original_offsets, native, offsets):
                 raise SystemExit('reachable data differs: ' + name)
+            proved_data.append({'symbol': name, 'address': f'{va:08x}', 'bytes': len(native),
+                                'relocations': len(offsets)})
     closure_rows = {}
     if args.closure_symbol:
         if not args.closure:
@@ -142,6 +151,7 @@ def main():
         sources[project(closure)] = hashlib.sha256(closure.read_bytes()).hexdigest()
     out = {'scope': 'COFF vtable relocation slots bound to original vtable slots; native-bulk still byte/reference-proves bodies',
            'sources': sources,
+           'proved_data': sorted(proved_data, key=lambda row: (row['address'], row['symbol'])),
            'identity_bindings': [{'symbol': name, 'address': address,
                                   'identity_evidence': 'original-vtable-data-slot', 'votes': 1}
                                  for name, address in sorted(bindings.items())]}

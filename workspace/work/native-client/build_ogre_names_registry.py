@@ -30,6 +30,27 @@ def addr(value):
     return value.zfill(8) if all(c in '0123456789abcdef' for c in value) else None
 
 
+def current_string_proof(receipt, provider, binding):
+    """Compiler-string evidence expires when its source object changes."""
+    path = binding.get('object') or provider.get('object') or receipt.get('object')
+    digest = binding.get('object_sha256') or provider.get('object_sha256') or receipt.get('object_sha256')
+    candidate = ROOT / path if path and digest else None
+    import hashlib
+    return bool(candidate and candidate.is_file() and hashlib.sha256(candidate.read_bytes()).hexdigest() == digest)
+
+
+def current_typed_proof(receipt, provider, source):
+    """A typed receipt is valid only for its proved source and object bytes."""
+    import hashlib
+    obj = provider.get('object') or receipt.get('object')
+    object_hash = provider.get('object_sha256') or receipt.get('object_sha256')
+    source_hash = receipt.get('source_sha256')
+    return bool(obj and object_hash and source_hash and source.is_file() and
+                (ROOT / obj).is_file() and
+                hashlib.sha256(source.read_bytes()).hexdigest() == source_hash and
+                hashlib.sha256((ROOT / obj).read_bytes()).hexdigest() == object_hash)
+
+
 def method_facts():
     facts = {}
     for cls in load('work/native-client/ogre-conversion-queue-v10.json', {}).get('classes', []):
@@ -61,26 +82,27 @@ def data_coverage():
     covered = {}
     scalar_sizes = {'signed char': 1, 'char': 1, 'unsigned char': 1, 'short': 2, 'unsigned short': 2,
                     'int': 4, 'unsigned int': 4, 'long': 4, 'unsigned long': 4, 'float': 4, 'double': 8,
-                    'bool': 1, '__int64': 8, 'unsigned __int64': 8, 'void*': 4}
+                    'bool': 1, '__int64': 8, 'unsigned __int64': 8}
     for path in (ROOT / 'work/native-client/ogre/batches').glob('*/*/link/data-metrics.json'):
         metric = load(path.relative_to(ROOT), {})
         if metric.get('status') != 'proved':
             continue
         addresses = metric.get('addresses', {})
+        source = path.parent / 'roc_data.cpp'
+        if source.is_file():
+            source_text = source.read_text(errors='replace')
+            generic = set(re.findall(r'\bvoid\s*\*\s*(?:const\s+)?roc_data_([0-9a-f]{8})\b', source_text))
+            generic |= set(re.findall(r'\bconst\s+char\s+roc_data_([0-9a-f]{8})\s*\[\s*\]', source_text))
+            addresses = {key: size for key, size in addresses.items() if key not in generic}
+        else:
+            continue  # Without source, a byte receipt cannot establish the declared type.
         if not addresses:
-            source = path.parent / 'roc_data.cpp'
             if source.is_file():
                 for line in source.read_text(errors='replace').splitlines():
                     name = re.search(r'roc_data_([0-9a-f]{8})', line)
                     if not name:
                         continue
                     if 'const char' in line and '[]' in line:
-                        literal = re.search(r'=\s*("(?:[^"\\]|\\.)*")\s*;', line)
-                        if literal:
-                            try:
-                                addresses[name.group(1)] = len(ast.literal_eval(literal.group(1)).encode('ascii')) + 1
-                            except (SyntaxError, UnicodeEncodeError):
-                                pass
                         continue
                     declaration = re.fullmatch(r'extern "C"\s+(.+?)\s+roc_data_[0-9a-f]{8}\s*=.*;', line.strip())
                     if declaration:
@@ -96,10 +118,25 @@ def data_coverage():
     # record address and exact emitted storage size, so union them here rather
     # than reporting converter-local coverage as whole-client coverage.
     link = ROOT / 'work/native-client/link'
-    for path in list(link.glob('selected-typed*.json')) + list(link.glob('typed-data-coverage-batch*.json')):
-        for provider in load(path.relative_to(ROOT), {}).get('selected', []):
+    for path in (list(link.glob('selected-typed*.json')) + list(link.glob('typed-data-coverage-batch*.json')) +
+                 list(link.glob('native-string-data-*.json'))):
+        receipt = load(path.relative_to(ROOT), {})
+        for provider in receipt.get('selected', []):
+            generic = set()
+            if not path.name.startswith('native-string-data-'):
+                obj = provider.get('object') or receipt.get('object')
+                source = (ROOT / obj).with_suffix('.cpp') if obj else None
+                if not source or not current_typed_proof(receipt, provider, source):
+                    continue
+                source_text = source.read_text(errors='replace')
+                generic = set(re.findall(r'\bvoid\s*\*\s*(?:const\s+)?roc_data_([0-9a-f]{8})\b', source_text))
+                generic |= set(re.findall(r'\bconst\s+char\s+roc_data_([0-9a-f]{8})\s*\[\s*\]', source_text))
             for symbol in provider.get('symbols', []):
+                if path.name.startswith('native-string-data-') and not current_string_proof(receipt, provider, symbol):
+                    continue
                 key, size = addr(symbol.get('address')), symbol.get('bytes')
+                if key in generic:
+                    continue
                 if key and isinstance(size, int) and size > 0:
                     covered[key] = max(size, covered.get(key, 0))
     import pefile
@@ -172,12 +209,24 @@ def main():
 
     for binding in load('work/native-client/claude-identity-closure.json', {}).get('bindings', []):
         key = addr(binding.get('addr', binding.get('address')))
+        previous = rows.get(key, {}).get('name')
         add_name(rows, key, binding.get('symbol'), 'identity-closure',
                  [{'kind': 'identity-closure', 'body_exact': binding.get('body_exact', False),
                    'votes': binding.get('votes', 0), 'evidence': binding.get('evidence')}])
+        if previous and previous != binding.get('symbol') and rows[key].get('name') != binding.get('symbol'):
+            rows[key]['evidence'].append({'kind': 'folded-or-conflicting-name', 'symbol': binding.get('symbol'),
+                                          'votes': binding.get('votes', 0), 'evidence': binding.get('evidence')})
     for binding in load('work/2008-06/shared-layouts/identity-registry-batch.json', {}).get('identity_bindings', []):
         add_name(rows, addr(binding['address']), binding['symbol'], 'reviewed-reference-binding',
                  [binding['evidence']], kind=binding['kind'])
+    for path in (ROOT / 'work/native-client/link').glob('native-string-data-*.json'):
+        receipt = load(path.relative_to(ROOT), {})
+        for provider in receipt.get('selected', []):
+            for binding in provider.get('symbols', []):
+                if binding.get('kind') == 'string' and current_string_proof(receipt, provider, binding):
+                    add_name(rows, addr(binding.get('address')), binding.get('symbol'), 'compiler-string-proof',
+                             [{'kind': 'compiler-string-proof', 'receipt': path.relative_to(ROOT).as_posix(),
+                               'bytes': binding.get('bytes'), 'evidence': binding.get('evidence')}], kind='string')
     for path, source in (('work/native-client/link/names.json', 'header-address'),
                          ('work/native-client/ogre/link/ogre_names.json', 'header-address')):
         for key, name in load(path, {}).items():
@@ -225,13 +274,11 @@ def main():
         signature = undecorate(row['name'])
         if signature == row['name'] or '(' not in signature:
             continue
-        if row['signature'] is None:
-            row['signature'] = signature
-            row['evidence'].append({'kind': 'decorated-signature', 'symbol': row['name']})
+        row['signature'] = signature
+        row['evidence'].append({'kind': 'decorated-signature', 'symbol': row['name']})
         # Namespaces can own free functions; only access-qualified member
         # signatures prove an owner class.
-        if row['owner_class'] is None and re.match(r'^(public|protected|private):', signature):
-            row['owner_class'] = owner(row['name']) or None
+        row['owner_class'] = owner(row['name']) or None if re.match(r'^(public|protected|private):', signature) else None
 
     # A name's presence in native_asm is not evidence that its storage is code.
     # PE section characteristics distinguish executable bodies from data slots.

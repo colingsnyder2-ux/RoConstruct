@@ -64,10 +64,20 @@ def main():
               'opengl32.lib', 'glu32.lib', 'imagehlp.lib', 'version.lib', 'wininet.lib', 'dbghelp.lib', 'psapi.lib',
               'shlwapi.lib', 'urlmon.lib', 'oledlg.lib', 'msimg32.lib', 'sensapi.lib']
     rsp = OUT / 'link.rsp'
-    rsp.write_text('\n'.join('"%s"' % p for p in kept + libs) + '\n')
-    code, text = rebuild.run(rebuild.toolchain(), 'link', ['/nologo', '/SUBSYSTEM:WINDOWS', '/MACHINE:X86',
-                                                           '/OUT:Roblox2008-pure.exe', '/MAP:Roblox2008-pure.map',
-                                                           '@' + str(rsp)] + system, OUT)
+    corrupt = []
+    for _ in range(50):               # a fatal per-object error hides every other result: set it aside, relink
+        rsp.write_text('\n'.join('"%s"' % p for p in kept + libs) + '\n')
+        code, text = rebuild.run(rebuild.toolchain(), 'link', ['/nologo', '/SUBSYSTEM:WINDOWS', '/MACHINE:X86',
+                                                               '/OUT:Roblox2008-pure.exe', '/MAP:Roblox2008-pure.map',
+                                                               '@' + str(rsp)] + system, OUT)
+        bad = re.search(r'^(\S+\.obj) : fatal error (LNK\d+): (.*)$', text, re.M)
+        if not bad:
+            break
+        hit = [p for p in kept if Path(p).name == bad.group(1)]
+        if not hit:
+            break
+        corrupt.append({'object': str(hit[0]), 'error': bad.group(2) + ' ' + bad.group(3).strip()})
+        kept.remove(hit[0])
     (OUT / 'link.txt').write_text(text, encoding='utf-8')
     unres = sorted(set(rebuild.unresolved_symbols(text)))
     dups = sorted(set(re.findall(r'error LNK2005:\s*(.*?)\s+already defined in', text)))
@@ -80,6 +90,7 @@ def main():
         'placeholder fn' if 'roc_fn_' in s else 'named fn/data' for s in unres)
     report = {'scope': 'pure-2008 link probe: converter objects + real libs, no 2007 donor engine; metric only',
               'link_exit_code': code, 'objects': len(kept), 'stripped_duplicates': stripped,
+              'corrupt_objects_set_aside': corrupt,
               'covered_functions': len(covered), 'covered_code_bytes': size(covered), 'total_code_bytes': total,
               'covered_pct': round(100 * size(covered) / total, 2), 'unresolved': len(unres),
               'unresolved_kinds': dict(groups), 'duplicates': len(dups), 'unresolved_sample': unres[:40],
