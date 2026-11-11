@@ -26,6 +26,7 @@ from roc import libs, match  # noqa: E402
 import native_llm as nl  # noqa: E402
 import native_transplant_probe as tp  # noqa: E402
 import run_all  # noqa: E402
+import fingerprint  # noqa: E402
 
 CENSUS = HERE / 'ogre-native-full-census-loop6/manifest.json'
 HEADERS = ROOT / 'rebuild/2008-06/native-headers'
@@ -69,6 +70,13 @@ def donor_body(addr, qual):
     return None
 
 
+def refresh_fingerprints():
+    """Rerun the fingerprint pass when a newer census exists (cached corpus index: seconds)."""
+    census = sorted(HERE.glob('ogre-native-full-census-loop*/manifest.json'), key=lambda p: p.stat().st_mtime)
+    if census and (not fingerprint.OUT.is_file() or fingerprint.OUT.stat().st_mtime < census[-1].stat().st_mtime):
+        subprocess.run([sys.executable, str(HERE / 'fingerprint.py')], cwd=ROOT, capture_output=True, text=True)
+
+
 def targets(limit_size):
     roots = set(run_all.roots(SCOPE))
     exact = set()
@@ -100,6 +108,10 @@ def targets(limit_size):
         t = dict(addr=addr, symbol=row['name'], decl=sig, owner=row['owner_class'], qual=qual, header=header,
                  dest=dest, size=size, name_source=row.get('name_source'), placeholder=False, new_source=False)
         body = donor_body(addr, qual)
+        if not body:                                  # no recipe donor: the upstream function it was ported from
+            hit = fingerprint.lookup(addr)
+            body = hit and '// %s:%d %s (fingerprint %.2f; port origin, not identity)\n%s' % (
+                hit['file'], hit['lines'][0], hit['function'], hit['score'], hit['body'])
         if body:
             t['donor_body'] = body
         out.append(t)
@@ -117,6 +129,7 @@ def main():
     args = ap.parse_args()
     nl.CLOSURE = HERE / 'ogre-combined-closure.json'     # thunks + binder identities, not only the base closure
     nl.HERE.mkdir(parents=True, exist_ok=True)
+    refresh_fingerprints()
     todo = targets(args.max_size)
     print('%d eligible (%d B, %d with donor body); running %d' % (
         len(todo), sum(t['size'] for t in todo), sum('donor_body' in t for t in todo), min(args.limit, len(todo))),
