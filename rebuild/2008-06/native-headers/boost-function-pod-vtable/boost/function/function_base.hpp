@@ -8,8 +8,8 @@
 // For more information, see http://www.boost.org
 
 // >>> native-status (generated) -- do not edit >>>
-// function_base | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// function_base | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 9e6bb423 | roc native-status --write
 #ifndef BOOST_FUNCTION_BASE_HEADER
 #define BOOST_FUNCTION_BASE_HEADER

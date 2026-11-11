@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// CRobloxCommandLineInfo | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CRobloxCommandLineInfo | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 5ff8d152 | roc native-status --write
 #include <afxwin.h>
 #include <string>

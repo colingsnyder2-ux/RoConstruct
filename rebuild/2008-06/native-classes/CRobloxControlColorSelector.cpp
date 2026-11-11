@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// CRobloxControlColorSelector | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CRobloxControlColorSelector | 2008-06 | 10 byte-exact, inactive (not link-selected)
+// 10/13 mapped addresses byte-exact | 3 unproved | no mapped strings | by tester (+5) (mixed 5)
 // <<< native-status | src 79ad607a | roc native-status --write
 #include "CRobloxControlColorSelector.h"
 #include "v8datamodel/BrickColor.h"

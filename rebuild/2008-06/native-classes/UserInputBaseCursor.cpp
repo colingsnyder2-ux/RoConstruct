@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/slingshot-load /fp:fast
 // >>> native-status (generated) -- do not edit >>>
-// UserInputBaseCursor | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// UserInputBaseCursor | 2008-06 | draft (no current byte proof)
+// 0/5 mapped addresses byte-exact | 5 unproved | no mapped strings | by Espeon (+2) (mixed 4)
 // <<< native-status | src 2242190e | roc native-status --write
 #include "util/UserInputBase.h"
 #include "AppDraw/Textures.h"

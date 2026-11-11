@@ -3,8 +3,8 @@
 // updateLighting 004dc040 need declarations owned elsewhere (ViewNew::MaterialFactory, the Lighting service, the
 // ViewNew mesh-cache flushes, the Lighting / descendant-added signal descriptors) and are not built here.
 // >>> native-status (generated) -- do not edit >>>
-// ViewG3D2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ViewG3D2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 6316f71c | roc native-status --write
 #include "ViewG3D2008/ViewG3D2008.h"
 #include "v8datamodel/DataModel.h"

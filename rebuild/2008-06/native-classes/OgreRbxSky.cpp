@@ -24,8 +24,8 @@
 // Pending-build-only (NATIVE_OGRE_RBX_SKY_PENDING, with the proposal header that tests/record_native_ogre_rbx_sky.py
 // generates under rebuild/2008-06/out/): the RbxSky members.
 // >>> native-status (generated) -- do not edit >>>
-// OgreRbxSky | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// OgreRbxSky | 2008-06 | 14 byte-exact, inactive (not link-selected)
+// 14/14 mapped addresses byte-exact | named 1 | 0 unproved | no mapped strings | by auto
 // <<< native-status | src 661df4c4 | roc native-status --write
 #include <vector>
 #include <OgreVector3.h>

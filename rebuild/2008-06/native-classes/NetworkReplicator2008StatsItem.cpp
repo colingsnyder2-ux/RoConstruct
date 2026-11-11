@@ -6,8 +6,8 @@
 // 004b62c0 and update 004b6530 read Replicator members past +0x2b90 and stay open; the implicit destructor 004b6690,
 // deleting destructor 004b6710 and its thunks are only emitted with the constructor's vtable.
 // >>> native-status (generated) -- do not edit >>>
-// NetworkReplicator2008StatsItem | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// NetworkReplicator2008StatsItem | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 616c9e3d | roc native-status --write
 #include "Network/Replicator2008.h"
 

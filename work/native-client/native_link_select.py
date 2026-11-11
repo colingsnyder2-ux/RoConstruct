@@ -24,6 +24,154 @@ def provider_source(stem):
     return native if native.is_file() else local if local.is_file() else None
 
 
+def live_definitions(raw):
+    """External definitions in sections linker will retain after strip_symbols."""
+    _, nsec, _, symptr, nsym, optsz, _ = struct.unpack_from('<HHIIIHH', raw, 0)
+    strtab = symptr + nsym * 18
+    flags = {sec: struct.unpack_from('<I', raw, 20 + optsz + 40 * (sec - 1) + 36)[0]
+             for sec in range(1, nsec + 1)}
+    out, index = set(), 0
+    while index < nsym:
+        name, _, sec, _, cls, aux = struct.unpack_from('<8sIhHBB', raw, symptr + index * 18)
+        if name[:4] == b'\0\0\0\0':
+            at = strtab + struct.unpack_from('<I', name, 4)[0]
+            name = raw[at:raw.index(b'\0', at)]
+        else:
+            name = name.rstrip(b'\0')
+        if cls == 2 and sec > 0 and not flags[sec] & 0x800:
+            out.add(name.decode('latin-1'))
+        index += 1 + aux
+    return out
+
+
+def prune_unused_comdat_data(raw):
+    """Drop data COMDATs unreachable from retained sections; never drop code."""
+    _, nsec, _, symptr, nsym, optsz, _ = struct.unpack_from('<HHIIIHH', raw, 0)
+    sections = [struct.unpack_from('<8sIIIIIIHHI', raw, 20 + optsz + 40 * index) for index in range(nsec)]
+    targets, index = {}, 0
+    while index < nsym:
+        _, _, sec, _, _, aux = struct.unpack_from('<8sIhHBB', raw, symptr + index * 18)
+        targets[index] = sec
+        index += 1 + aux
+    candidates = {index + 1 for index, section in enumerate(sections)
+                  if section[9] & 0x1000 and not section[9] & (0x20 | 0x800)
+                  and not section[0].startswith((b'.CRT', b'.tls'))}
+    live = {index + 1 for index, section in enumerate(sections)
+            if not section[9] & 0x800 and index + 1 not in candidates}
+    edges = {index: {targets.get(struct.unpack_from('<I', raw, section[5] + rel * 10 + 4)[0], 0)
+                     for rel in range(section[7])}
+             for index, section in enumerate(sections, 1)}
+    index = 0
+    while index < nsym:
+        _, value, sec, _, cls, aux = struct.unpack_from('<8sIhHBB', raw, symptr + index * 18)
+        if cls == 3 and aux and sec > 0 and value == 0:
+            parent, selection = struct.unpack_from('<HB', raw, symptr + 18 * (index + 1) + 12)
+            if selection == 5:
+                edges.setdefault(parent, set()).add(sec)
+        index += 1 + aux
+    pending = list(live)
+    while pending:
+        for target in edges.get(pending.pop(), ()):
+            if target > 0 and target not in live and not sections[target - 1][9] & 0x800:
+                live.add(target)
+                pending.append(target)
+    drop, index = set(), 0
+    strtab = symptr + nsym * 18
+    while index < nsym:
+        name, _, sec, _, cls, aux = struct.unpack_from('<8sIhHBB', raw, symptr + index * 18)
+        if name[:4] == b'\0\0\0\0':
+            at = strtab + struct.unpack_from('<I', name, 4)[0]
+            name = raw[at:raw.index(b'\0', at)]
+        else:
+            name = name.rstrip(b'\0')
+        if cls == 2 and sec in candidates - live:
+            drop.add(name.decode('latin-1'))
+        index += 1 + aux
+    return rebuild.strip_symbols(raw, drop=drop) if drop else raw
+
+
+def string_bindings(raw, symbols, functions):
+    """Prove live compiler strings through retained exact-body relocations."""
+    base, image = match._image('2008-06')
+    _, nsec, _, symptr, nsym, optsz, _ = struct.unpack_from('<HHIIIHH', raw, 0)
+    strtab = symptr + nsym * 18
+    entries, index = {}, 0
+    while index < nsym:
+        name, value, sec, _, cls, aux = struct.unpack_from('<8sIhHBB', raw, symptr + index * 18)
+        if name[:4] == b'\0\0\0\0':
+            at = strtab + struct.unpack_from('<I', name, 4)[0]
+            name = raw[at:raw.index(b'\0', at)]
+        else:
+            name = name.rstrip(b'\0')
+        entries[index] = (name.decode('latin-1'), value, sec, cls)
+        index += 1 + aux
+    headers = {sec: struct.unpack_from('<8sIIIIIIHHI', raw, 20 + optsz + 40 * (sec - 1))
+               for sec in range(1, nsec + 1)}
+    candidates = {name for name, _, sec, cls in entries.values()
+                  if cls == 2 and sec > 0 and not headers[sec][9] & 0x800 and name.startswith('??_C@')}
+    refs = {name: set() for name in candidates}
+    for symbol in symbols:
+        if symbol['kind'] != 'code' or symbol['symbol'] not in entries:
+            continue
+        owner = next((row for row in entries.values() if row[0] == symbol['symbol'] and row[3] == 2 and row[2] > 0), None)
+        if not owner:
+            continue
+        _, value, sec, _ = owner
+        section = headers[sec]
+        _, _, _, rawsize, rawptr, relptr, _, nrel, _, _ = section
+        size = functions.get(symbol['address'], {}).get('size', 0)
+        if not rawptr or not size:
+            continue
+        for rel in range(nrel):
+            off, target_index, kind = struct.unpack_from('<IIH', raw, relptr + rel * 10)
+            if kind != 6 or not value <= off < value + size:
+                continue
+            target = entries.get(target_index, ('', 0, 0, 0))[0]
+            if target not in refs:
+                continue
+            addend = struct.unpack_from('<i', raw, rawptr + off)[0]
+            site = int(symbol['address'], 16) + off - value
+            if not base <= site <= base + len(image) - 4:
+                continue
+            refs[target].add(struct.unpack_from('<I', image, site - base)[0] - addend)
+    proved = []
+    for name, targets in refs.items():
+        owner = next((row for row in entries.values() if row[0] == name and row[3] == 2 and row[2] > 0), None)
+        if not owner:
+            continue
+        _, value, sec, _ = owner
+        section = headers[sec]
+        _, _, _, rawsize, rawptr, relptr, _, nrel, _, _ = section
+        if not rawptr or value >= rawsize:
+            continue
+        end = raw.find(b'\0', rawptr + value, min(rawptr + rawsize, rawptr + value + 1025))
+        if end < 0:
+            continue
+        target = raw[rawptr + value:end + 1]
+        if len(target) < 2 or any(byte not in (9, 10, 13) and not 0x20 <= byte <= 0x7e for byte in target[:-1]):
+            continue
+        if any(value <= struct.unpack_from('<I', raw, relptr + rel * 10)[0] < value + len(target) for rel in range(nrel)):
+            continue
+        if len(targets) != 1:
+            found, at = [], 0
+            while True:
+                at = image.find(target, at)
+                if at < 0:
+                    break
+                found.append(base + at)
+                at += 1
+            if len(found) != 1:
+                continue
+            targets = set(found)
+        va = next(iter(targets))
+        if not base <= va <= base + len(image) - len(target) or image[va - base:va - base + len(target)] != target:
+            continue
+        proved.append({'symbol': name, 'address': '%08x' % va, 'kind': 'string', 'bytes': len(target),
+                       'evidence': 'exact-body DIR32 call-site plus exact printable NUL bytes' if refs[name]
+                       else 'unique exact printable NUL bytes'})
+    return proved
+
+
 def guid_exact(raw, row, stem, targets):
     """Only authentic typed GUID definitions, exact 16 bytes without relocations."""
     if not row['symbol'].endswith('@@3U_GUID@@B'):
@@ -46,7 +194,10 @@ def guid_exact(raw, row, stem, targets):
     return raw[ptr + offset:ptr + offset + 16] == targets.data(va, 16)
 
 
-def objects(stem, engine_abi, native_headers=False):
+def objects(stem, engine_abi, native_headers=False, function_comdat=False):
+    if function_comdat:
+        path = HERE / 'obj-function-comdat' / (stem + '.obj')
+        return [path] if path.is_file() else []
     if native_headers:
         path = HERE / 'obj' / (stem + '.obj')
         return [path] if path.is_file() else []
@@ -65,6 +216,7 @@ def main():
     ap.add_argument('--limit', type=int, default=20)
     ap.add_argument('--engine-abi', action='store_true')
     ap.add_argument('--native-headers', action='store_true', help='compile providers with native 2008 headers, retaining engine-ABI link baseline')
+    ap.add_argument('--function-comdat', action='store_true', help='native-header compile with /Gy for safe function-level isolation')
     ap.add_argument('--closure-from', type=Path, help='also prove introduced dependencies from a prior family trial')
     ap.add_argument('--closed-from', type=Path, help='trial the prior batch providers with no introduced dependencies')
     ap.add_argument('--exclude', type=Path, default=HERE / 'link' / 'selected-engine-cumulative.json')
@@ -76,11 +228,14 @@ def main():
     ap.add_argument('--provider', action='append', help='restrict to one or more source families after an input repair')
     ap.add_argument('--identity-closure', type=Path, help='add exact closure bodies for --closure-provider')
     ap.add_argument('--closure-provider', action='append', help='source family supplying --identity-closure bodies')
+    ap.add_argument('--closure-discover', type=Path, help='discover pre-isolatable providers from a closure and cached objects')
     ap.add_argument('--fresh-only', action='store_true', help='trial only providers compiled during this invocation')
     ap.add_argument('--reuse-current', action='store_true', help='reuse a hash-checked successful object after selector-only changes')
     args = ap.parse_args()
     if bool(args.identity_closure) != bool(args.closure_provider):
         ap.error('--identity-closure and --closure-provider must be used together')
+    if args.closure_discover and args.identity_closure:
+        ap.error('choose --closure-discover or --identity-closure')
     if args.closed_from:
         previous = json.loads(args.closed_from.read_text()).get('link_trial', {})
         if 'provider_dependencies' not in previous:
@@ -89,8 +244,39 @@ def main():
         args.trial_link = True
     if args.native_headers and not args.engine_abi:
         ap.error('--native-headers requires --engine-abi baseline')
+    if args.function_comdat and not args.native_headers:
+        ap.error('--function-comdat requires --native-headers')
     targets, _ = Targets('2008-06'), probe.runner()
     rows = json.loads(args.input.read_text())
+    if args.closure_discover:
+        unresolved_now = set(json.loads(args.unresolved.read_text()).get('unresolved', [])) if args.unresolved.is_file() else set()
+        closure = {binding['symbol']: binding for binding in json.loads(args.closure_discover.read_text()).get('bindings', [])
+                   if binding.get('body_exact') and binding.get('function_start')}
+        rows = []
+        root = HERE / ('obj' if args.native_headers else 'obj-engine-abi')
+        for obj in sorted(root.glob('*.obj')):
+            source = provider_source(obj.stem)
+            if not source:
+                continue
+            raw = obj.read_bytes()
+            _, _, definitions, _ = match._coff_data_index(raw)
+            # Retain every directly proved external in this source, not merely
+            # today's gaps: exact helper bodies are required for a safe source
+            # closure and may be dependencies of the unresolved entrypoints.
+            keep = set(definitions) & set(closure)
+            if not (keep & unresolved_now):
+                continue
+            trimmed = prune_unused_comdat_data(rebuild.strip_symbols(raw, keep=keep))
+            left = live_definitions(trimmed)
+            if any(name not in keep and not name.startswith(('$', '.')) for name in left):
+                continue
+            proof = probe.exact(trimmed, targets)
+            for symbol in sorted(keep):
+                binding = closure[symbol]
+                if binding['addr'] in proof.get(symbol, []):
+                    rows.append({'symbol': symbol, 'kind': 'native-source-defines',
+                                 'providers': [obj.stem], 'address': binding['addr'],
+                                 'identity_evidence': binding.get('evidence')})
     if args.identity_closure:
         unresolved_now = set(json.loads(args.unresolved.read_text()).get('unresolved', [])) if args.unresolved.is_file() else set()
         known = {(row['symbol'], tuple(row.get('providers', ()))) for row in rows}
@@ -127,7 +313,8 @@ def main():
                             (len(row.get('providers', [])) == 1 or args.include_multi))
     current_attempts, fingerprints, compiled_stems = {}, {}, set()
     if args.engine_abi:
-        trials = HERE / 'link' / ('native-header-experimental.json' if args.native_headers else 'engine-abi-experimental.json')
+        trials = HERE / 'link' / ('function-comdat-experimental.json' if args.function_comdat else
+                                  'native-header-experimental.json' if args.native_headers else 'engine-abi-experimental.json')
         trial_data = json.loads(trials.read_text()) if trials.is_file() else {'stems': []}
         current_attempts = trial_data.setdefault('attempts', {})
         header_hash = hashlib.sha256()
@@ -140,7 +327,8 @@ def main():
             for stem in row.get('providers', []):
                 source = provider_source(stem)
                 if source:
-                    fingerprints[stem] = hashlib.sha256(header_hash.digest() + source.read_bytes()).hexdigest()
+                    fingerprints[stem] = hashlib.sha256(header_hash.digest() + source.read_bytes() +
+                                                         (b'/Gy' if args.function_comdat else b'')).hexdigest()
         names, seen = [], set()
         for row in rows:
             providers = row.get('providers', [])
@@ -148,7 +336,7 @@ def main():
                 continue
             for stem in providers:
                 attempt = current_attempts.get(stem, {})
-                obj = HERE / ('obj' if args.native_headers else 'obj-engine-abi') / (stem + '.obj')
+                obj = HERE / ('obj-function-comdat' if args.function_comdat else 'obj' if args.native_headers else 'obj-engine-abi') / (stem + '.obj')
                 reusable = args.reuse_current and attempt.get('compile_ok') and obj.is_file() and \
                     hashlib.sha256(obj.read_bytes()).hexdigest() == attempt.get('object_sha256')
                 if stem in seen or stem in excluded or stem not in fingerprints or attempt.get('fingerprint') == fingerprints[stem] or reusable:
@@ -168,6 +356,9 @@ def main():
         trials.parent.mkdir(parents=True, exist_ok=True)
         trials.write_text(json.dumps(trial_data, indent=1) + '\n')
         env = dict(os.environ, ROC_ENGINE_ABI='0' if args.native_headers else '1')
+        if args.function_comdat:
+            env['ROC_NATIVE_OUT'] = str(HERE / 'obj-function-comdat')
+            env['ROC_NATIVE_EXTRA_FLAGS'] = '/Gy'
         if names:
             compiled_stems = {Path(name).stem for name in names}
             run = subprocess.run([sys.executable, str(HERE / 'inventory.py')] + names, cwd=ROOT, env=env, check=False)
@@ -176,7 +367,7 @@ def main():
             results = json.loads((HERE / 'inventory.json').read_text())
             for name in names:
                 stem = Path(name).stem
-                obj = HERE / ('obj' if args.native_headers else 'obj-engine-abi') / (stem + '.obj')
+                obj = HERE / ('obj-function-comdat' if args.function_comdat else 'obj' if args.native_headers else 'obj-engine-abi') / (stem + '.obj')
                 result = results.get(Path(name).name, {})
                 ok = result.get('ok', False) and obj.is_file()
                 current_attempts[stem] = {'fingerprint': fingerprints[stem], 'compile_ok': ok,
@@ -207,10 +398,10 @@ def main():
                 attempt = current_attempts.get(candidate_stem, {})
                 reusable = args.reuse_current and attempt.get('compile_ok') and any(
                     hashlib.sha256(obj.read_bytes()).hexdigest() == attempt.get('object_sha256')
-                    for obj in objects(candidate_stem, args.engine_abi, args.native_headers))
+                    for obj in objects(candidate_stem, args.engine_abi, args.native_headers, args.function_comdat))
                 if (attempt.get('fingerprint') != fingerprints.get(candidate_stem) and not reusable) or not attempt.get('compile_ok'):
                     continue
-            for obj in objects(candidate_stem, args.engine_abi, args.native_headers):
+            for obj in objects(candidate_stem, args.engine_abi, args.native_headers, args.function_comdat):
                 if args.engine_abi and candidate_stem not in excluded and hashlib.sha256(obj.read_bytes()).hexdigest() != attempt.get('object_sha256'):
                     continue
                 if row['symbol'].endswith('@@3U_GUID@@B'):
@@ -236,7 +427,7 @@ def main():
             if exact:
                 break
         if not exact:
-            reason = 'no-current-native-object' if not any(objects(s, args.engine_abi, args.native_headers) for s in providers) else 'provider-body-not-exact'
+            reason = 'no-current-native-object' if not any(objects(s, args.engine_abi, args.native_headers, args.function_comdat) for s in providers) else 'provider-body-not-exact'
             if args.engine_abi and all(not current_attempts.get(s, {}).get('compile_ok') for s in providers):
                 reason = 'current-provider-compile-failed-or-unchecked'
             blocked.append(dict(row, reason=reason))
@@ -259,12 +450,14 @@ def main():
     for item in selected:
         raw = (ROOT / item['object']).read_bytes()
         keep = {symbol['symbol'] for symbol in item['symbols']}
-        trimmed = rebuild.strip_symbols(raw, keep=keep)
-        _, _, definitions, _ = match._coff_data_index(trimmed)
+        trimmed = prune_unused_comdat_data(rebuild.strip_symbols(raw, keep=keep))
+        definitions = live_definitions(trimmed)
+        strings = string_bindings(trimmed, item['symbols'], funcs)
+        allowed = keep | {string['symbol'] for string in strings}
         # `$LN*` is VS2008's local EH/debug label spelling.  It cannot satisfy
         # another object and has no target identity; all named link externals
         # remain subject to the strict residual-definition gate.
-        extras = sorted(name for name in definitions if name not in keep and not name.startswith('$'))
+        extras = sorted(name for name in definitions if name not in allowed and not name.startswith(('$', '.')))
         if extras:
             blocked.extend({'symbol': symbol['symbol'], 'kind': symbol['kind'],
                             'providers': [item['source']], 'address': symbol['address'],
@@ -283,13 +476,15 @@ def main():
         path = isolate_root / (item['source'] + '.obj')
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(trimmed)
-        copy = dict(item, object=str(path.relative_to(ROOT)).replace('\\', '/'))
+        copy = dict(item, object=str(path.relative_to(ROOT)).replace('\\', '/'), data_symbols=strings)
         isolated.append(copy)
     selected = isolated
     code_addresses = {symbol['address'] for item in selected for symbol in item['symbols'] if symbol['kind'] == 'code'}
     proved_bytes = sum(funcs.get(addr, {}).get('size', 0) for addr in code_addresses)
+    data_bytes = sum(symbol['bytes'] for item in selected for symbol in item.get('data_symbols', []))
     args.output.write_text(json.dumps({'selected': selected, 'blocked': blocked,
                                        'candidate_proved_code_bytes': proved_bytes,
+                                       'candidate_proved_data_bytes': data_bytes,
                                        'newly_compiled_sources': sorted(compiled_stems),
                                        'isolated_sources': [item['source'] for item in selected],
                                        'scope': 'cached native object direct body equality; link selection only'}, indent=1) + '\n')

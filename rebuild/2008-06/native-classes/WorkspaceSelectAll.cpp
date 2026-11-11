@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// WorkspaceSelectAll | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// WorkspaceSelectAll | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/1 mapped addresses byte-exact | 0 unproved | no mapped strings | by EspClaude (deepseek:deepseek-chat)
 // <<< native-status | src 6b25c60c | roc native-status --write
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Workspace.h"

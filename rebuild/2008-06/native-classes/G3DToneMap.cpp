@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
 // >>> native-status (generated) -- do not edit >>>
-// G3DToneMap | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// G3DToneMap | 2008-06 | 24 byte-exact, inactive (not link-selected)
+// 24/24 mapped addresses byte-exact | named 11 | 0 unproved | no mapped strings | by auto (+1) (mixed 2)
 // <<< native-status | src 3038587c | roc native-status --write
 #include <GLG3D/ToneMap.h>
 

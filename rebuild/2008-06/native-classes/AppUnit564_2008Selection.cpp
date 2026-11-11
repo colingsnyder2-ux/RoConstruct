@@ -2,8 +2,8 @@
 // v8datamodel/Selection.h (read-only; its layout is proven by tests/NativeSelectionLayout.cpp: size 0x174,
 // selection +0x154, filteredSelections +0x15c).
 // >>> native-status (generated) -- do not edit >>>
-// AppUnit564_2008Selection | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AppUnit564_2008Selection | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by Espeon (deepseek:deepseek-chat)
 // <<< native-status | src f6211821 | roc native-status --write
 #include "v8datamodel/Selection.h"
 

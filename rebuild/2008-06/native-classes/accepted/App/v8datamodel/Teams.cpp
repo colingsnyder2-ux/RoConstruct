@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// Teams | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Teams | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 9510c0ff | roc native-status --write
 #include "v8datamodel/Teams.h"
 #include "v8datamodel/ModelInstance.h"

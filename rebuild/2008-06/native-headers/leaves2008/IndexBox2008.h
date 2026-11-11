@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// IndexBox2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// IndexBox2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src ef5cee2b | roc native-status --write
 // 2008-06 native RBX::IndexBox (inactive). Declared under a non-colliding name (donor util/IndexBox.h describes a
 // non-polymorphic IndexBox); a unit must not include both headers.

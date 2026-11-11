@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // >>> native-status (generated) -- do not edit >>>
-// TiltSelectionAxis | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// TiltSelectionAxis | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by king_originala (deepseek:deepseek-flash)
 // <<< native-status | src df651f2f | roc native-status --write
 #include "StandardVerbs.h"
 #include "util/Math.h"

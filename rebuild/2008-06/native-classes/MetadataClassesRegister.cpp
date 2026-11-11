@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// MetadataClassesRegister | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// MetadataClassesRegister | 2008-06 | draft (no current byte proof)
+// 0/3 mapped addresses byte-exact | 3 unproved | no mapped strings | by colin (+1) (mixed 3)
 // <<< native-status | src 4bfa3926 | roc native-status --write
 #include "reflection/Metadata.h"
 namespace RBX {

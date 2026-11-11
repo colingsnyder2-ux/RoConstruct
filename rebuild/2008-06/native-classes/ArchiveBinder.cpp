@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
 // >>> native-status (generated) -- do not edit >>>
-// ArchiveBinder | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ArchiveBinder | 2008-06 | draft (no current byte proof)
+// 0/3 mapped addresses byte-exact | 3 unproved | no mapped strings | by Espeon (+2) (deepseek-v4.1-flash)
 // <<< native-status | src f3342862 | roc native-status --write
 #include "metadata-load/v8xml/SerializerV2.h"
 

@@ -11,8 +11,8 @@
 // Codegen analog: bodies follow the donor tools/rbxgs script/Script.cpp; the recorder proves each against the bytes
 // and every call / data target.
 // >>> native-status (generated) -- do not edit >>>
-// AppUnit57C_2008Script | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AppUnit57C_2008Script | 2008-06 | draft (no current byte proof)
+// 0/7 mapped addresses byte-exact | 7 unproved | 1 referenced strings (not rechecked) | by Espeon (+2) (mixed 5)
 // <<< native-status | src 6a8c5a09 | roc native-status --write
 #include "script/Script.h"
 #include "script/ScriptContext.h"

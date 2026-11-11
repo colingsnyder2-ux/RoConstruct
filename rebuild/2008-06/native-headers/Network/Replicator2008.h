@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// Replicator2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Replicator2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src a2d95b40 | roc native-status --write
 // 2008-06 native RBX::Network::Replicator and Replicator::ReplicatorStatsItem (inactive). A new, non-colliding
 // header: the donor-path native-headers/Replicator.h (provisional donor layout) is neither used nor shadowed. Shape

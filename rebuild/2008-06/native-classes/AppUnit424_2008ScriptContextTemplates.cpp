@@ -20,8 +20,8 @@
 // definitions are given below (the same definitions as ServiceProvider.cpp, AppUnit480_2008PlayerTemplates.cpp and
 // AppUnit634_2008Value.cpp).
 // >>> native-status (generated) -- do not edit >>>
-// AppUnit424_2008ScriptContextTemplates | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AppUnit424_2008ScriptContextTemplates | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by auto (+1) (mixed 2)
 // <<< native-status | src efe7be4d | roc native-status --write
 #include "script/ScriptContext.h"
 #include "v8tree/Service.h"

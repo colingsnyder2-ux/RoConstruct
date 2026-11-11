@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// CMainFrameCreate | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CMainFrameCreate | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by EspClaude (+1) (deepseek:deepseek-chat)
 // <<< native-status | src f5ae3801 | roc native-status --write
 #include "CMainFrame.h"
 #include "LoginRenewer.h"

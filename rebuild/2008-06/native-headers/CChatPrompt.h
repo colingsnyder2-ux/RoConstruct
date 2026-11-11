@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// CChatPrompt | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CChatPrompt | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 15351e5c | roc native-status --write
 #include <afxext.h>
 #include <boost/shared_ptr.hpp>

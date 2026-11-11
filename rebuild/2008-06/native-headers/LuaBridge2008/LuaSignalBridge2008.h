@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// LuaSignalBridge2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// LuaSignalBridge2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 4f1cc46e | roc native-status --write
 // 2008-06 Lua signal bridge (SignalBridge, SignalConnectionBridge, FunctionScriptSlot, WaitScriptSlot), inactive.
 // Range 0061f180..00620a60 inside the bridge range documented in LuaBridge2008.h. These declarations replace the

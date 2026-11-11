@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// LuaEnumBridge2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// LuaEnumBridge2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 023f9ac6 | roc native-status --write
 // 2008-06 Lua enum bridges (Enums / Enum / EnumItem), inactive native recovery. Unit range 0061edb0..0061f0f0 inside
 // the bridge range documented in LuaBridge2008.h; its .data block is the bad_alloc message 0095b1d0 followed by the

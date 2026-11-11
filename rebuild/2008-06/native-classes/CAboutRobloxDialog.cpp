@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// CAboutRobloxDialog | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CAboutRobloxDialog | 2008-06 | draft (no current byte proof)
+// 0/6 mapped addresses byte-exact | 6 unproved | no mapped strings | by king_originala (+1) (chatgpt:gpt-6.1-sol)
 // <<< native-status | src f0b941d0 | roc native-status --write
 #include "CAboutRobloxDialog.h"
 

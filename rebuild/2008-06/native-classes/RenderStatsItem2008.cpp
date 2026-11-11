@@ -3,8 +3,8 @@
 // instances its constructor binds (original COMDATs 0045c250..0045f730 in the CRobloxWnd unit). Evidence in
 // native-headers/RenderStatsItem2008/RenderStatsItem2008.h. Verified by tests/record_native_render_stats_item2008.py.
 // >>> native-status (generated) -- do not edit >>>
-// RenderStatsItem2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// RenderStatsItem2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src f12b0f4b | roc native-status --write
 #include "RenderStatsItem2008/RenderStatsItem2008.h"
 #include <GLG3D/Texture.h>

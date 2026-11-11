@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// HistoryRecordLookup | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// HistoryRecordLookup | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 40e6cade | roc native-status --write
 #include "v8datamodel/HistoryRecord.h"
 #include "v8tree/Instance.h"

@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// WedgeMesh | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// WedgeMesh | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 0a181395 | roc native-status --write
 // 2008-06 native RBX::ViewNew::WedgeBuilder / WedgeMesh (inactive).
 //   WedgeBuilder  vtable 008270a8 .?AVWedgeBuilder@ViewNew@RBX@@ -> BevelMesh::Builder -> LevelBuilder (mdisp 0);

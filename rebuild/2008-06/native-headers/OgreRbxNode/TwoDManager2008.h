@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// TwoDManager2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// TwoDManager2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 3b1848bc | roc native-status --write
 // Ogre::TwoDManager as compiled into the June 2008 client (inactive native recovery; an exe-local
 // Ogre::RenderQueueListener that collects 2D quads and draws them from a render queue callback). Non-colliding name:

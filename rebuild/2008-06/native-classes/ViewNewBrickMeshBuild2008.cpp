@@ -3,8 +3,8 @@
 // unit-local appendQuad 004de1d0. Declarations: ViewNew/BrickMesh.h and ViewNewBrickBuild2008/BrickMeshCache2008.h.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // >>> native-status (generated) -- do not edit >>>
-// ViewNewBrickMeshBuild2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ViewNewBrickMeshBuild2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 8d6d222f | roc native-status --write
 #include "ViewNewBrickBuild2008/BrickMeshCache2008.h"
 

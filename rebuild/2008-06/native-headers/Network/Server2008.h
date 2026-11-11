@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// Server2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Server2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 5d89f949 | roc native-status --write
 // 2008-06 native RBX::Network::Server (inactive). Shape after the donor tools/rbxgs Client/Network/Server.h; every
 // base, field and virtual below is read from the 2008-06 binary:

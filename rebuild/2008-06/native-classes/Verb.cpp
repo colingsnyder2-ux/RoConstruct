@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// Verb | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Verb | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/3 mapped addresses byte-exact | 2 unproved | no mapped strings | by colin (+1) (mixed 2)
 // <<< native-status | src 29581cb2 | roc native-status --write
 #include "../native-headers/v8tree/Verb.h"
 #include "StandardVerbs.h"

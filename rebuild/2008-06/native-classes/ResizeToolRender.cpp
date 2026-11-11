@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/draw-handles
 // >>> native-status (generated) -- do not edit >>>
-// ResizeToolRender | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ResizeToolRender | 2008-06 | 2 byte-exact, inactive (not link-selected)
+// 2/3 mapped addresses byte-exact | 1 unproved | no mapped strings | by colin (+1) (chatgpt:gpt-6.1-sol)
 // <<< native-status | src 328a11d0 | roc native-status --write
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Workspace.h"

@@ -23,8 +23,8 @@
 // against the bytes and every call / data target.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // >>> native-status (generated) -- do not edit >>>
-// AppUnit57C_2008ModelInstance | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AppUnit57C_2008ModelInstance | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/30 mapped addresses byte-exact | named 1 | 29 unproved | 2 referenced strings (not rechecked) | by king_originala (+5) (mixed 8)
 // <<< native-status | src 8fbfb5a5 | roc native-status --write
 #include "v8datamodel/ModelInstance.h"
 #include "v8datamodel/PartInstance.h"

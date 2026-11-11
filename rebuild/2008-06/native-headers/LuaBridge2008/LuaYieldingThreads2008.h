@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// LuaYieldingThreads2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// LuaYieldingThreads2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 22b13a52 | roc native-status --write
 // 2008-06 Lua yielding-thread queue (the YieldingThreads / ScriptEvent unit 00620970..006217e2), inactive.
 // The read-only donor script/ScriptEvent.h (reached through native script/ScriptContext.h) declares

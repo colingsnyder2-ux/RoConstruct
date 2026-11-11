@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// WidgetMenuItem | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// WidgetMenuItem | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src fe297305 | roc native-status --write
 // 2008-06 native RBX::MenuItem (inactive). Shape after the donor tools/rbxgs gui/MenuItem.h (a differently named
 // header so that it does not shadow the donor one). Read from the binary (tests/record_native_widget.py checks it):

@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// AxisMoveToolMethods | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AxisMoveToolMethods | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 3d817b65 | roc native-status --write
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Workspace.h"

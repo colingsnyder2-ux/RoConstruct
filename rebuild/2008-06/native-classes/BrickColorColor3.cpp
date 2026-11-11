@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// BrickColorColor3 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// BrickColorColor3 | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by king_originala (gpt-6.1-sol)
 // <<< native-status | src fcd2c7f1 | roc native-status --write
 #include "v8datamodel/BrickColor.h"
 

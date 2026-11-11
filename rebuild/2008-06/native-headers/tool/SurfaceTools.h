@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// SurfaceTools | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// SurfaceTools | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src f4e22179 | roc native-status --write
 
 #include "tool/SurfaceTool.h"

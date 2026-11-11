@@ -16,8 +16,8 @@
 /// option) any later version.
 
 // >>> native-status (generated) -- do not edit >>>
-// MTUSize | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// MTUSize | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 228443a6 | roc native-status --write
 #ifndef DEFAULT_MTU_SIZE
 

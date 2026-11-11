@@ -1,8 +1,8 @@
 // 2008-06 native RBX::ViewNew::LevelBuilder (inactive): the QuadVolume unit 00500ca0..0050103f (+ Array<unsigned>::append 00500690).
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // >>> native-status (generated) -- do not edit >>>
-// ViewNewQuadVolume | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ViewNewQuadVolume | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/8 mapped addresses byte-exact | 7 unproved | no mapped strings | by auto (+1) (chatgpt:gpt-6.1-sol)
 // <<< native-status | src bb6961a0 | roc native-status --write
 #include "ViewNew/QuadVolume.h"
 

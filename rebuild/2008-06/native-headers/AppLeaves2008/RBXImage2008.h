@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// RBXImage2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// RBXImage2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 35cac8bc | roc native-status --write
 // Inactive native 2008-06 recovery: RBXImage, Roblox's copy of ATL's CImage without the GDI+ bookkeeping
 // (used as a stack object by the resource-bitmap loader 0042f0a0).

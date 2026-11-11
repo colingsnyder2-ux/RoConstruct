@@ -2,8 +2,8 @@
 // 2008-06 native RBX::PhysicsService (inactive); evidence in native-headers/v8datamodel/PhysicsService.h.
 // Unsplit/combined: includes onEvent bodies and service find/create (mew 5fe2214 integration, native-doc link).
 // >>> native-status (generated) -- do not edit >>>
-// PhysicsService | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// PhysicsService | 2008-06 | 4 byte-exact, inactive (not link-selected)
+// 4/5 mapped addresses byte-exact | 1 unproved | no mapped strings | by king_originala (+2) (mixed 4)
 // <<< native-status | src dd9d9405 | roc native-status --write
 #include "engine-world/v8world/World.h"
 #include "v8datamodel/PhysicsService.h"

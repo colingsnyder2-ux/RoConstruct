@@ -20,8 +20,8 @@
 // shared_ptr<C>(C*, Creatable<Instance>::Deleter) (Functions 0040c000, Events 0040c2f0, Member 0040c550) and
 // Described<C>::classDescriptor() (Functions 0040c0d0, Events 0040c3c0, Member 0040c760) are implicit instances.
 // >>> native-status (generated) -- do not edit >>>
-// AppUnit40C_2008Metadata | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AppUnit40C_2008Metadata | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src f38c891b | roc native-status --write
 #include "reflection/Metadata.h"
 #include "AuthoringSettings.h"

@@ -1,8 +1,8 @@
 // Isolated ABI trial. Requires the 2008 property descriptor candidate header;
 // do not include in the live client until descriptor construction and slots agree.
 // >>> native-status (generated) -- do not edit >>>
-// HistoryItemPropertyTrial | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// HistoryItemPropertyTrial | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src eec8f748 | roc native-status --write
 #include "v8datamodel/HistoryRecord.h"
 #include "v8datamodel/ChangeHistoryService.h"

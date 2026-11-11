@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/std-noinline-string
 // >>> native-status (generated) -- do not edit >>>
-// LDrawModelWrite | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// LDrawModelWrite | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by EspClaude (deepseek:deepseek-chat)
 // <<< native-status | src 9e30102e | roc native-status --write
 #include "util/LDrawEntities.h"
 

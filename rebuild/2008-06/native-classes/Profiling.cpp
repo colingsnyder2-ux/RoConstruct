@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// Profiling | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Profiling | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/9 mapped addresses byte-exact | 8 unproved | no mapped strings | by king_originala (+3) (mixed 2)
 // <<< native-status | src 8f1c6f1c | roc native-status --write
 #include "util/Profiling.h"
 

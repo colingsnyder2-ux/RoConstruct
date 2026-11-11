@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// FilteredSelectionService | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// FilteredSelectionService | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 14d696a9 | roc native-status --write
 #include "v8datamodel/Selection.h"
 #include "v8datamodel/PVInstance.h"

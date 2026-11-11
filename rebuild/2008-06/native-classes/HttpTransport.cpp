@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // >>> native-status (generated) -- do not edit >>>
-// HttpTransport | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// HttpTransport | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by EspClaude (+1) (deepseek-v4.1-flash)
 // <<< native-status | src 652e57a7 | roc native-status --write
 #include "util/Http.h"
 #include <sstream>

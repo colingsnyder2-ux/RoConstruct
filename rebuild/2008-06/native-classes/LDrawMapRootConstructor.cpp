@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // >>> native-status (generated) -- do not edit >>>
-// LDrawMapRootConstructor | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// LDrawMapRootConstructor | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by EspClaude (deepseek:deepseek-chat)
 // <<< native-status | src e9c06e56 | roc native-status --write
 #include "util/LDrawMapRoot.h"
 #include "v8xml/XmlSerializer.h"

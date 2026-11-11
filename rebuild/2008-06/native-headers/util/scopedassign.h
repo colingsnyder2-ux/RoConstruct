@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// scopedassign | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// scopedassign | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src e78e76bf | roc native-status --write
 #ifndef UTIL_SCOPEDASSIGN_H
 #define UTIL_SCOPEDASSIGN_H

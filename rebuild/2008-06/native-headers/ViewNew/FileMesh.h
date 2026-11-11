@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// FileMesh | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// FileMesh | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 1cce79ff | roc native-status --write
 // 2008-06 native RBX::ViewNew::FileMesh (inactive): the unit 00500780..00500c98.
 //   vtable 008271cc .?AVFileMesh@ViewNew@RBX@@ -> RenderBase::Mesh -> G3D::ReferenceCountedObject (all mdisp 0; no

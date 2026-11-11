@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-import-length
 // >>> native-status (generated) -- do not edit >>>
-// CRobloxViewHelp | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CRobloxViewHelp | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by Espeon (deepseek:deepseek-flash)
 // <<< native-status | src 50172d02 | roc native-status --write
 #include "CRobloxView.h"
 #include <algorithm>

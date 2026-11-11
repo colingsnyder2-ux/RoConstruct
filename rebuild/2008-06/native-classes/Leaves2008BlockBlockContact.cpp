@@ -5,8 +5,8 @@
 // 00606b60), which needs a 2008 Primitive declaration that can share a unit with Contact2008.h; they are not
 // defined here (see the recorder's blocked list).
 // >>> native-status (generated) -- do not edit >>>
-// Leaves2008BlockBlockContact | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Leaves2008BlockBlockContact | 2008-06 | draft (no current byte proof)
+// 0/4 mapped addresses byte-exact | 4 unproved | no mapped strings | by auto (+2) (mixed 3)
 // <<< native-status | src 8e8639c6 | roc native-status --write
 #include "leaves2008/BlockBlockContact2008.h"
 #include "v8kernel/Kernel.h"

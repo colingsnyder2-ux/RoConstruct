@@ -7,8 +7,8 @@
 // Verified by tests/record_native_contact_unit2008.py.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // >>> native-status (generated) -- do not edit >>>
-// ContactUnit2008Connector | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ContactUnit2008Connector | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by auto (deepseek:deepseek-flash)
 // <<< native-status | src 8c16b80c | roc native-status --write
 #include "v8kernel/Connector2008.h"
 

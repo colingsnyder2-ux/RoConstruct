@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/engine-world /I{headers}/part-embedded
 // >>> native-status (generated) -- do not edit >>>
-// MouseCommand | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// MouseCommand | 2008-06 | draft (no current byte proof)
+// 0/16 mapped addresses byte-exact | 16 unproved | 2 referenced strings (not rechecked) | by colin (+4) (mixed 8)
 // <<< native-status | src 0d8a90a8 | roc native-status --write
 #undef _RELEASEASSERT
 #pragma float_control(precise, off)

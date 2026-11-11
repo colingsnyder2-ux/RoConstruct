@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// MovementKeys | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// MovementKeys | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src b5d50a4f | roc native-status --write
 namespace RBX {
 // Original byte field order established by 005ce960 SDL key queries.

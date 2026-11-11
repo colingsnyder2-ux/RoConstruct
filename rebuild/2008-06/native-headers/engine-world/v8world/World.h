@@ -2,8 +2,8 @@
 // Constructor and destructor do not yet match. No runtime/class-swap acceptance.
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// World | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// World | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src fefd356f | roc native-status --write
 #include <set>
 #include <boost/scoped_ptr.hpp>

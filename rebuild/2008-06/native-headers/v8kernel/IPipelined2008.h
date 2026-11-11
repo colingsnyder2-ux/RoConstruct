@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// IPipelined2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// IPipelined2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 37ec8f6e | roc native-status --write
 // 2008-06 native RBX::IPipelined (inactive). Declared under a non-colliding name: the original path
 // v8world/IPipelined.h is the donor header, which includes the donor v8kernel/Kernel.h -> KernelData.h -> Body.h /

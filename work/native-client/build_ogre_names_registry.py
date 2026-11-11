@@ -130,6 +130,30 @@ def data_coverage():
             'covered_bytes_by_section': by_section, 'sections': sections}
 
 
+def rtti_vtables(match, rtti):
+    """Validated RTTI vtables; secondary tables deliberately retain placeholders."""
+    base, image = match._image('2008-06')
+    relocs, functions, types = match._base_relocs('2008-06'), match._functions('2008-06'), rtti.descriptors('2008-06')
+    word = lambda va: int.from_bytes(image[va - base:va - base + 4], 'little') if base <= va <= base + len(image) - 4 else 0
+    out = []
+    for table in range(base + 4, base + len(image) - 4, 4):
+        if table - 4 not in relocs or table not in relocs:
+            continue
+        locator = word(table - 4)
+        if not base <= locator <= base + len(image) - 20 or word(locator) != 0 or locator + 12 not in relocs:
+            continue
+        descriptor = word(locator + 12)
+        raw_type = types.get(descriptor)
+        first = '%08x' % word(table)
+        if not raw_type or first not in functions or functions[first].get('kind') not in ('code', 'gen'):
+            continue
+        offset = word(locator + 4)
+        primary = offset == 0 and raw_type.startswith('.?AV')
+        name = ('??_7' + raw_type[4:] + '6B@') if primary else None
+        out.append((table, raw_type, offset, name, descriptor, locator))
+    return out
+
+
 def main():
     from roc import match, native_asm, rtti
     ap = argparse.ArgumentParser(description=__doc__)
@@ -164,6 +188,22 @@ def main():
     for value, name in rtti.descriptors('2008-06').items():
         add_name(rows, addr(value), '??_R0' + name[1:] + '@8', 'rtti',
                  [{'kind': 'rtti-type-descriptor', 'raw_name': name}], kind='rtti')
+    for table, raw_type, offset, name, descriptor, locator in rtti_vtables(match, rtti):
+        key = addr(table)
+        evidence = [{'kind': 'rtti-complete-object-locator', 'raw_type': raw_type,
+                     'type_descriptor': addr(descriptor), 'locator': addr(locator), 'offset': offset}]
+        if name:
+            add_name(rows, key, name, 'rtti-primary-vtable', evidence,
+                     owner=raw_type, signature='vtable ' + raw_type, kind='vtable')
+        elif key not in rows:
+            rows[key] = {'name': 'data_' + key, 'owner_class': raw_type,
+                         'signature': 'secondary vtable ' + raw_type, 'kind': 'vtable',
+                         'name_source': 'placeholder', 'evidence': evidence, 'placeholder': True}
+        else:
+            rows[key]['kind'] = 'vtable'
+            rows[key]['owner_class'] = rows[key]['owner_class'] or raw_type
+            rows[key]['signature'] = rows[key]['signature'] or ('secondary vtable ' + raw_type)
+            rows[key]['evidence'].extend(evidence)
     for path in sorted((ROOT / 'work/native-client/ogre/batches').glob('*/*/link/ogre_convert.json')):
         for key, result in json.loads(path.read_text()).items():
             if result.get('status') == 'renamed' and result.get('name_source') == 'lib':

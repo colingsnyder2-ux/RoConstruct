@@ -2,8 +2,8 @@
 // The one CRobloxApp object (MFC's AfxGetApp / WinMain find it through its CWinApp base). The Dec 2007 client
 // defines it the same way (OpenRBX Client/win/Roblox.cpp: `CRobloxApp theApp;`); 2008 address not mapped yet.
 // >>> native-status (generated) -- do not edit >>>
-// CRobloxAppInstance | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CRobloxAppInstance | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 6ba4873a | roc native-status --write
 #include "CRobloxApp.h"
 

@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob1 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS
 // >>> native-status (generated) -- do not edit >>>
-// DraggerPlacement | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// DraggerPlacement | 2008-06 | 2 byte-exact, inactive (not link-selected)
+// 2/2 mapped addresses byte-exact | 0 unproved | no mapped strings | by king_originala (+1) (mixed 2)
 // <<< native-status | src dbf34372 | roc native-status --write
 #include "tool/Dragger.h"
 #include "util/Math.h"

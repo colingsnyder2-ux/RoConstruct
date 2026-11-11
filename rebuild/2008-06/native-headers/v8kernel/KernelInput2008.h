@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// KernelInput2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// KernelInput2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 77719ad2 | roc native-status --write
 // 2008-06 native RBX::KernelInput (inactive). Declared under a non-colliding name: the original path
 // v8kernel/KernelInput.h is the donor header (reached through the donor v8kernel/Connector.h by every kernel / joint

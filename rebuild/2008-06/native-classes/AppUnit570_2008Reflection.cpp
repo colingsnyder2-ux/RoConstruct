@@ -8,8 +8,8 @@
 // ClassDescriptor and DescribedBase are the donor reflection/object.h declarations (read-only); MemberDescriptor and
 // MemberDescriptorContainer are the native reflection/member.h ones (read-only).
 // >>> native-status (generated) -- do not edit >>>
-// AppUnit570_2008Reflection | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AppUnit570_2008Reflection | 2008-06 | draft (no current byte proof)
+// 0/4 mapped addresses byte-exact | 4 unproved | 1 referenced strings (not rechecked) | by auto (+2) (ntech:glm-4.5-air)
 // <<< native-status | src 802f1dae | roc native-status --write
 #include "reflection/reflection.h"
 

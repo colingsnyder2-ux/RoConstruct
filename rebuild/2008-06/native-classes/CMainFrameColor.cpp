@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// CMainFrameColor | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CMainFrameColor | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/2 mapped addresses byte-exact | 1 unproved | no mapped strings | by king_originala (mixed 2)
 // <<< native-status | src ee01982a | roc native-status --write
 #include "CMainFrame.h"
 #include "CRobloxControlColorSelector.h"

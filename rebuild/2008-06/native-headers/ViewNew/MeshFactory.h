@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// MeshFactory | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// MeshFactory | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 03b5415b | roc native-status --write
 // 2008-06 native RBX::ViewNew::MeshFactory<Mesh, numMeshes> (inactive): the empty second base of the cached meshes.
 //   RTTI     .?AV?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@ (and WedgeMesh / TorsoMesh / HeadMesh /

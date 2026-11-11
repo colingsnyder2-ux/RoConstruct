@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// SelectionVerbConstructors | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// SelectionVerbConstructors | 2008-06 | draft (no current byte proof)
+// 0/14 mapped addresses byte-exact | 14 unproved | no mapped strings | by colin (+1) (mixed 3)
 // <<< native-status | src d436a674 | roc native-status --write
 #include "StandardVerbs.h"
 

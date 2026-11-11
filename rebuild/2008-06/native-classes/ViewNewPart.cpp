@@ -4,8 +4,8 @@
 // near-miss: recorded, not counted). Bodies that read PartInstance fields (+0x1c8 / +0x1dc / +0x224) or the view's
 // scene manager are not built; see native-headers/ViewNew/PartChunk.h.
 // >>> native-status (generated) -- do not edit >>>
-// ViewNewPart | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ViewNewPart | 2008-06 | 3 byte-exact, inactive (not link-selected)
+// 3/8 mapped addresses byte-exact | 5 unproved | no mapped strings | by king_originala (+3) (mixed 3)
 // <<< native-status | src e8aa6d57 | roc native-status --write
 #include "ViewNew/PartChunk.h"
 #include "RenderLib/ViewBase2008.h"

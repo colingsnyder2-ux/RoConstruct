@@ -9,8 +9,8 @@
 //              ...Member, Authoring, and 0040b790 ReflectionMetadataItem;
 //   callDoDeclare 00406e90..00406ec0, 00409fd0..0040a040 and 0040b800 (each a jmp to its doDeclare row).
 // >>> native-status (generated) -- do not edit >>>
-// AppUnit400_2008Names | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AppUnit400_2008Names | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src f2199fa3 | roc native-status --write
 #include "util/RunStateOwner.h"
 #include "CRenderSettings.h"

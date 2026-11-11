@@ -4,8 +4,8 @@
 // 004d7db0, removeFromScene 004d8320, removeModel 004d8380, clear 004d8310) use the RenderSceneBase chunkArray +0x8
 // (RenderLib/RenderScene2008.h).
 // >>> native-status (generated) -- do not edit >>>
-// SceneManager2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// SceneManager2008 | 2008-06 | draft (no current byte proof)
+// 0/8 mapped addresses byte-exact | 8 unproved | no mapped strings | by auto (+3) (mixed 3)
 // <<< native-status | src 76ae9185 | roc native-status --write
 #include "RenderLib/SceneManager2008.h"
 #include "RenderLib/RenderScene2008.h"

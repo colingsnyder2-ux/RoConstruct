@@ -1,7 +1,7 @@
 // native-flags: /O2 /GS- /EHsc /MD /IC:\Users\colin\RoConstruct\tools\libs\g3d-6.09\source\G3Dcpp
 // >>> native-status (generated) -- do not edit >>>
-// Vector3 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Vector3 | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by auto
 // <<< native-status | src 454efa08 | roc native-status --write
 #include "axis-vector-negation/G3D/Vector3.h"
 #include "G3D/Vector3.h"

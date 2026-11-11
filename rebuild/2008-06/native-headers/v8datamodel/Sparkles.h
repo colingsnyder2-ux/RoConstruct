@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// Sparkles | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Sparkles | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 0d4164d1 | roc native-status --write
 // 2008-06 native RBX::Sparkles and its base RBX::Effect (inactive). No donor source: every field, virtual and
 // descriptor below is read from the 2008-06 binary.

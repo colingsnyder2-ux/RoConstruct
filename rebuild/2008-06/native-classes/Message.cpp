@@ -2,8 +2,8 @@
 // Verified by tests/record_native_effects.py.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // >>> native-status (generated) -- do not edit >>>
-// Message | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Message | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/5 mapped addresses byte-exact | named 1 | 4 unproved | 1 referenced strings (not rechecked) | by colin (+2) (mixed 3)
 // <<< native-status | src 6cdf471c | roc native-status --write
 #include "v8datamodel/Message.h"
 #include "util/Rect.h"

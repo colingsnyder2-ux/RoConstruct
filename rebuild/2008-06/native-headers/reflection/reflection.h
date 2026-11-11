@@ -2,8 +2,8 @@
 // char array itself (const char*), as the 2008 binary pushes .data name arrays directly.
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// reflection | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// reflection | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 40c3aa45 | roc native-status --write
 #include <boost/type_traits.hpp>
 #include "reflection/object.h"

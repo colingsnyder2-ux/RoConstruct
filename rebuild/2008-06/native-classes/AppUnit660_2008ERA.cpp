@@ -5,8 +5,8 @@
 // See tests/record_native_app_unit660_2008.py.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // >>> native-status (generated) -- do not edit >>>
-// AppUnit660_2008ERA | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AppUnit660_2008ERA | 2008-06 | draft (no current byte proof)
+// 0/3 mapped addresses byte-exact | 3 unproved | no mapped strings | by auto (+1) (deepseek:deepseek-flash)
 // <<< native-status | src 632921e9 | roc native-status --write
 #include "util/ExponentialRunningAverage.h"
 

@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// HumanoidState | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// HumanoidState | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src c63f37d8 | roc native-status --write
 #include "util/Name.h"
 #include "util/HitTestFilter.h"

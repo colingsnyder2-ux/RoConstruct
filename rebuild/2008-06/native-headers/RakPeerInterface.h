@@ -16,8 +16,8 @@
 /// option) any later version.
 
 // >>> native-status (generated) -- do not edit >>>
-// RakPeerInterface | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// RakPeerInterface | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 02c6d817 | roc native-status --write
 #ifndef __RAK_PEER_INTERFACE_H
 #define __RAK_PEER_INTERFACE_H

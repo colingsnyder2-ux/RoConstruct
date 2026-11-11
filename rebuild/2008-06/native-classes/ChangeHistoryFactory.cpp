@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// ChangeHistoryFactory | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ChangeHistoryFactory | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 8cace1d5 | roc native-status --write
 #include "v8datamodel/ChangeHistoryService.h"
 namespace RBX {

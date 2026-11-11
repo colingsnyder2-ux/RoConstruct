@@ -16,8 +16,8 @@
 // VerbWidget (gui/Widget.h, owner: widget family); the generated overlay under out/native-layouts/gui-widgets2008-pending
 // supplies it.
 // >>> native-status (generated) -- do not edit >>>
-// GuiWidgets2008MenuItem | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// GuiWidgets2008MenuItem | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by colin (Codex)
 // <<< native-status | src 01ed154a | roc native-status --write
 #include "gui/WidgetMenuItem.h"
 

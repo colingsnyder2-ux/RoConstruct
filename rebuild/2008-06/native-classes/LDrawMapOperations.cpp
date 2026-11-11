@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // >>> native-status (generated) -- do not edit >>>
-// LDrawMapOperations | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// LDrawMapOperations | 2008-06 | draft (no current byte proof)
+// 0/16 mapped addresses byte-exact | 16 unproved | no mapped strings | by Espeon (+5) (mixed 4)
 // <<< native-status | src dfc22cf6 | roc native-status --write
 #include "util/LDrawMapRoot.h"
 #include <algorithm>

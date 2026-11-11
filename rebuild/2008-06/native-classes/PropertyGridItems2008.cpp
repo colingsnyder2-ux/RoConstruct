@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // >>> native-status (generated) -- do not edit >>>
-// PropertyGridItems2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// PropertyGridItems2008 | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by auto
 // <<< native-status | src 92118c65 | roc native-status --write
 #include "PropertyGridItems2008.h"
 #include <stdio.h>

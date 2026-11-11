@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// DataModelCreate | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// DataModelCreate | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/1 mapped addresses byte-exact | 0 unproved | no mapped strings | by king_originala (chatgpt:gpt-6.1-sol)
 // <<< native-status | src 98cd48d9 | roc native-status --write
 #include "v8datamodel/DataModel.h"
 

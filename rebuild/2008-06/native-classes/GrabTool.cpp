@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // >>> native-status (generated) -- do not edit >>>
-// GrabTool | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// GrabTool | 2008-06 | draft (no current byte proof)
+// 0/4 mapped addresses byte-exact | 4 unproved | no mapped strings | by king_originala (+2) (mixed 2)
 // <<< native-status | src 6df898ac | roc native-status --write
 #include "tool/BasicMouseTools.h"
 #include "tool/DragTool.h"

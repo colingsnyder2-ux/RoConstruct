@@ -8,8 +8,8 @@
 // (codegen analogs). See tests/record_native_app_unit660_2008.py.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // >>> native-status (generated) -- do not edit >>>
-// AppUnit660_2008GroupDragTool | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AppUnit660_2008GroupDragTool | 2008-06 | draft (no current byte proof)
+// 0/8 mapped addresses byte-exact | 8 unproved | 2 referenced strings (not rechecked) | by king_originala (+2) (mixed 4)
 // <<< native-status | src 539d1b86 | roc native-status --write
 #include "tool/GroupDragTool.h"
 #include "v8datamodel/Workspace.h"

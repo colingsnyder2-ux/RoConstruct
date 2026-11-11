@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// Explosion | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Explosion | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | 1 referenced strings (not rechecked) | by colin (chatgpt:gpt-6.1-sol)
 // <<< native-status | src 6a9327b9 | roc native-status --write
 #include "v8datamodel/Explosion.h"
 namespace RBX {

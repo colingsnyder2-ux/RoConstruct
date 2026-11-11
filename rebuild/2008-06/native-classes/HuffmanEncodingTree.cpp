@@ -1,7 +1,7 @@
 // native-flags: /O2 /EHsc /MD /GS- /IC:\Users\colin\RoConstruct\tools\rbxgs\Client\Network\raknet30\Source
 // >>> native-status (generated) -- do not edit >>>
-// HuffmanEncodingTree | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// HuffmanEncodingTree | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/1 mapped addresses byte-exact | 0 unproved | no mapped strings | by auto (deepseek:deepseek-flash)
 // <<< native-status | src b466922c | roc native-status --write
 #include "../../../tools/rbxgs/Client/Network/raknet30/Source/DS_HuffmanEncodingTree.h"
 #include "DS_Queue.h"

@@ -9,8 +9,8 @@
 // The template bodies come from the native util/MarshaledListener.h (read-only); this unit only names the two
 // specialisations the binary emits here.
 // >>> native-status (generated) -- do not edit >>>
-// AppUnit460_2008MarshaledEventData | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AppUnit460_2008MarshaledEventData | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 1964bcdf | roc native-status --write
 #include "util/MarshaledListener.h"
 #include "v8tree/Instance.h"

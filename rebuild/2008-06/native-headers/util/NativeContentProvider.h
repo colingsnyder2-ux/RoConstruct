@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// NativeContentProvider | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// NativeContentProvider | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 3095f3a7 | roc native-status --write
 #include "util/ContentRequest.h"
 

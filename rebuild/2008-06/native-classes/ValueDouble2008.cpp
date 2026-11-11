@@ -10,8 +10,8 @@
 //     initializer 007f8650 / atexit 00800ae0; desc_ValueChanged 0097d490: SignalDesc<Value, void(double)>("Changed",
 //     "value"), initializer 007f8680 / atexit 00800e60. onValueChanged fires desc_ValueChanged with the value.
 // >>> native-status (generated) -- do not edit >>>
-// ValueDouble2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ValueDouble2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 4cd5af9f | roc native-status --write
 #include "v8datamodel/Value.h"
 

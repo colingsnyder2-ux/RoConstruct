@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/script-file-load
 // >>> native-status (generated) -- do not edit >>>
-// ScriptFileLoad | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ScriptFileLoad | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by Espeon (+1) (mixed 2)
 // <<< native-status | src 7e3a2736 | roc native-status --write
 #include "util/NativeContentProvider.h"
 #include "script/ScriptContext.h"

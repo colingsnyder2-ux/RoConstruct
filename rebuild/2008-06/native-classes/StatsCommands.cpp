@@ -1,7 +1,7 @@
 // Native StatsCommand methods: 0057d9f0, 0057db00, 0057db90.
 // >>> native-status (generated) -- do not edit >>>
-// StatsCommands | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// StatsCommands | 2008-06 | draft (no current byte proof)
+// 0/3 mapped addresses byte-exact | 3 unproved | no mapped strings | by king_originala (+1) (mixed 2)
 // <<< native-status | src 43b29c4e | roc native-status --write
 #include "v8datamodel/DataModel.h"
 #include "StandardVerbs.h"

@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /FImalloc.h /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source
 // >>> native-status (generated) -- do not edit >>>
-// ReliabilityLayer | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ReliabilityLayer | 2008-06 | 14 byte-exact, inactive (not link-selected)
+// 14/14 mapped addresses byte-exact | 0 unproved | no mapped strings | by auto (+2) (ntech:glm-4.5-air)
 // <<< native-status | src 5cda2ac1 | roc native-status --write
 #include "ReliabilityLayer.h"
 

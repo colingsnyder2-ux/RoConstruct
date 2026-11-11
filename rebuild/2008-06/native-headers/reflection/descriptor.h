@@ -3,8 +3,8 @@
 // just the vtable store and Name::declare(name, -1)).
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// descriptor | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// descriptor | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src d2516c9b | roc native-status --write
 #include <boost/noncopyable.hpp>
 #include <boost/thread/recursive_mutex.hpp>

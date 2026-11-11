@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// Replicator | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Replicator | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src d2405a3e | roc native-status --write
 // Class-name ABI corrected for 2008; remaining network and profiler layout is provisional.
 #include <PluginInterface.h>

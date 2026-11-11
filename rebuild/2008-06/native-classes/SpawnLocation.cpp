@@ -2,8 +2,8 @@
 // initializers 007f5f20..007f5fb0, atexit 007feff0..007ff070). Evidence in native-headers/v8datamodel/
 // SpawnLocation.h and SpawnerService.h. Verified by tests/record_native_spawn.py.
 // >>> native-status (generated) -- do not edit >>>
-// SpawnLocation | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// SpawnLocation | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 041cbfd4 | roc native-status --write
 #include "v8datamodel/SpawnLocation.h"
 #include "v8datamodel/SpawnerService.h"

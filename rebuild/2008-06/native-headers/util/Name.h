@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// Name | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Name | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 83aa4cc4 | roc native-status --write
 #include <boost/noncopyable.hpp>
 #include <boost/thread/mutex.hpp>

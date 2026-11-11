@@ -2,8 +2,8 @@
 // 006551e0. Layout and addresses in native-headers/gui/ScoreHud.h; verified by tests/record_native_scorehud_leaderboard.py.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // >>> native-status (generated) -- do not edit >>>
-// ScoreHudLeaderboard2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ScoreHudLeaderboard2008 | 2008-06 | draft (no current byte proof)
+// 0/7 mapped addresses byte-exact | 7 unproved | no mapped strings | by EspClaude (+5) (deepseek:deepseek-chat)
 // <<< native-status | src f5c2b726 | roc native-status --write
 #include "gui/ScoreHud.h"
 #include "v8datamodel/Value.h"

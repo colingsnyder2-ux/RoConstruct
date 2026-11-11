@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// MarshalWindow | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// MarshalWindow | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src c939ada0 | roc native-status --write
 #include <atlbase.h>
 #include <atlwin.h>

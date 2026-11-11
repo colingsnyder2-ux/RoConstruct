@@ -3,8 +3,8 @@
 // original unit (Navigate / SetBody / SetCallback / Resize / Show / Close / Bind / Unbind, DocumentComplete) are not
 // recovered: they need the DHTMLWindow class of the unit around 00416e60.
 // >>> native-status (generated) -- do not edit >>>
-// AppLeaves2008DHTMLWindowService | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AppLeaves2008DHTMLWindowService | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src e97626c7 | roc native-status --write
 #include "AppLeaves2008/DHTMLWindowService2008.h"
 

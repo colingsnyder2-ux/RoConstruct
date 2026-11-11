@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// WorkspaceSiteTrust | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// WorkspaceSiteTrust | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 37260412 | roc native-status --write
 #include <afxwin.h>
 #include "util/Http.h"

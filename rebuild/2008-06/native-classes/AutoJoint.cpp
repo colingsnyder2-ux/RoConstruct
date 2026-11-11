@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
 // >>> native-status (generated) -- do not edit >>>
-// AutoJoint | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AutoJoint | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by auto
 // <<< native-status | src fa909a5f | roc native-status --write
 #include "v8datamodel/JointInstance.h"
 

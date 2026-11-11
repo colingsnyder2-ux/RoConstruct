@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS
 // >>> native-status (generated) -- do not edit >>>
-// MoveHandleRadius | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// MoveHandleRadius | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 0ddd33a6 | roc native-status --write
 #include <G3D/Vector3.h>
 namespace RBX {

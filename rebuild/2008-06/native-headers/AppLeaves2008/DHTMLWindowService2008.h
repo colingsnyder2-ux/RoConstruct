@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// DHTMLWindowService2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// DHTMLWindowService2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src df4bc9b9 | roc native-status --write
 // Inactive native 2008-06 recovery: DHTMLWindowService (global namespace) and the per-thread Marshaller registry of
 // its translation unit (0041b6f0..0041cf60, dynamic initializers 007eef40..007eef90, atexit 007fa610..007fa7a0).

@@ -2,8 +2,8 @@
 // char array itself (const char*), as the 2008 binary pushes .data name arrays directly.
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// Value | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Value | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src bad7c00f | roc native-status --write
 #include "v8tree/Instance.h"
 #include "v8datamodel/BrickColor.h"

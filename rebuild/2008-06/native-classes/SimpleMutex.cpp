@@ -1,7 +1,7 @@
 // native-flags: /O2 /GS- /EHsc /MD /GS- /IC:\Users\colin\RoConstruct\tools\rbxgs\Client\Network\raknet30\Source
 // >>> native-status (generated) -- do not edit >>>
-// SimpleMutex | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// SimpleMutex | 2008-06 | 2 byte-exact, inactive (not link-selected)
+// 2/2 mapped addresses byte-exact | 0 unproved | no mapped strings | by auto
 // <<< native-status | src 13ca235f | roc native-status --write
 #include "../../../tools/rbxgs/Client/Network/raknet30/Source/SimpleMutex.h"
 

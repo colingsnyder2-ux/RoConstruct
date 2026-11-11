@@ -2,8 +2,8 @@
 // Verified by tests/record_native_lighting2008.py. Original unit 005df0c0..005e2760 (constructor 005e1a40,
 // destructor 005e1d60); classDescriptor 005e1100, doDeclare 004ab0f0.
 // >>> native-status (generated) -- do not edit >>>
-// Lighting2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Lighting2008 | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by auto
 // <<< native-status | src 05533627 | roc native-status --write
 #include "v8datamodel/Lighting2008.h"
 #include "v8datamodel/Sky.h"

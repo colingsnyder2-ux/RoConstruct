@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// Point2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Point2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src aa07e8a9 | roc native-status --write
 // 2008-06 RBX::Point (inactive native recovery). The donor v8kernel/Point.h layout is the 2008 one (it is already
 // reached through native-headers/v8kernel/Connector2008.h, so it is not redeclared here):

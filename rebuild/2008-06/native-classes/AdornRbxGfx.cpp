@@ -7,8 +7,8 @@
 // RbxSceneNode / RbxEntity / RbxSubEntity / RbxFont methods waits for those declarations (see the recorder receipt).
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
 // >>> native-status (generated) -- do not edit >>>
-// AdornRbxGfx | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AdornRbxGfx | 2008-06 | 23 byte-exact, inactive (not link-selected)
+// 23/24 mapped addresses byte-exact | named 3 | 1 unproved | no mapped strings | by auto (+3) (mixed 3)
 // <<< native-status | src aa80cd6a | roc native-status --write
 #include "RbxGraphics/AdornRbxGfx2008.h"
 #include <OgreSceneNode.h>

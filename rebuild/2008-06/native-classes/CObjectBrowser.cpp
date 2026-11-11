@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// CObjectBrowser | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CObjectBrowser | 2008-06 | 5 byte-exact, inactive (not link-selected)
+// 5/7 mapped addresses byte-exact | 2 unproved | no mapped strings | by king_originala (+2) (mixed 3)
 // <<< native-status | src c7f8d5b8 | roc native-status --write
 #include "CObjectBrowser.h"
 #include <algorithm>

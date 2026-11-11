@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// CSettingsDialog | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CSettingsDialog | 2008-06 | 4 byte-exact, inactive (not link-selected)
+// 4/5 mapped addresses byte-exact | 1 unproved | no mapped strings | by king_originala (+3) (mixed 3)
 // <<< native-status | src a9685516 | roc native-status --write
 #include "CSettingsDialog.h"
 #include "v8datamodel/GlobalSettings.h"

@@ -5,8 +5,8 @@
 // (ICF-shared addPair 0064d530). Enum values from the native util/Sound.h (read-only).
 // Verified by tests/record_native_script_app2008.py.
 // >>> native-status (generated) -- do not edit >>>
-// ScriptApp2008SoundType | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ScriptApp2008SoundType | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 5acdc6f7 | roc native-status --write
 #include "util/Sound.h"
 #include "reflection/enumconverter.h"

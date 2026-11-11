@@ -3,8 +3,8 @@
 // (announceID 0063fad0, announceIDREF 00443eb0, resolveRefs 00443d60, processID 004440a0, processIDREF 00444a70)
 // and the std::vector<IDREFItem> members they instantiate.
 // >>> native-status (generated) -- do not edit >>>
-// MergeBinder | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// MergeBinder | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by auto
 // <<< native-status | src b95d2151 | roc native-status --write
 #include "v8datamodel/MergeBinder2008.h"
 

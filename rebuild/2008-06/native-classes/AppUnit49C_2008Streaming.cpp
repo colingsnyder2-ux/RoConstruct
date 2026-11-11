@@ -4,8 +4,8 @@
 // Bodies are in address order of the original. Verified by tests/record_native_app_unit49c_2008.py.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // >>> native-status (generated) -- do not edit >>>
-// AppUnit49C_2008Streaming | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AppUnit49C_2008Streaming | 2008-06 | draft (no current byte proof)
+// 0/4 mapped addresses byte-exact | 4 unproved | no mapped strings | by auto (+1) (chatgpt:gpt-6.1-sol)
 // <<< native-status | src c9c40eaf | roc native-status --write
 #include "AppUnit49C_2008/Streaming2008.h"
 #include <BitStream.h>

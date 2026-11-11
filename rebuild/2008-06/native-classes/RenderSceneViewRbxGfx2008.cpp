@@ -6,8 +6,8 @@
 // 004dab50 lighting helper), suppressSkybox and onWorkspaceDescendentAdded need declarations owned elsewhere and are
 // not built.
 // >>> native-status (generated) -- do not edit >>>
-// RenderSceneViewRbxGfx2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// RenderSceneViewRbxGfx2008 | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by tester (+1) (deepseek:deepseek-flash)
 // <<< native-status | src ecc3cb8a | roc native-status --write
 #include "RenderLib/ViewNew2008.h"
 #include "v8datamodel/DataModel.h"

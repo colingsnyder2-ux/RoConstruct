@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// CRobloxView | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CRobloxView | 2008-06 | 2 byte-exact, inactive (not link-selected)
+// 2/14 mapped addresses byte-exact | 12 unproved | no mapped strings | by king_originala (+4) (mixed 3)
 // <<< native-status | src e3537d7c | roc native-status --write
 #include "../native-headers/CRobloxView.h"
 

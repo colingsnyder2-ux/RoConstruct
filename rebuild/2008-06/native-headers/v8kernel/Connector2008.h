@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// Connector2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Connector2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src cae16136 | roc native-status --write
 // 2008-06 native RBX::Connector, ContactConnector, PointToPointBreakConnector, NormalBreakConnector, RotateConnector
 // (inactive). Declared under a non-colliding name: the original path v8kernel/Connector.h is reached through the donor

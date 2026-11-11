@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// CDataModelPropGridUpdate | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CDataModelPropGridUpdate | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by king_originala (chatgpt:gpt-6.1-sol)
 // <<< native-status | src 1254405e | roc native-status --write
 #include "CDataModelPropGrid.h"
 #include "v8datamodel/DataModel.h"

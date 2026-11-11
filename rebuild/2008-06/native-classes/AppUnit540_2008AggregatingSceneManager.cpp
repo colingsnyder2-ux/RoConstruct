@@ -18,8 +18,8 @@
 //                                             and components.clear() 00540780)
 //   Bucket::clear                   005404b0 (queue.clear() 00540780)
 // >>> native-status (generated) -- do not edit >>>
-// AppUnit540_2008AggregatingSceneManager | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AppUnit540_2008AggregatingSceneManager | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src c7fe7f19 | roc native-status --write
 #include "RenderLib/SceneManager2008.h"
 #include "RenderLib/Material2008.h"   // completes RenderBase::MaterialBase (needs the Ogre 1.4.5 client headers)

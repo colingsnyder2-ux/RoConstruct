@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// InstanceClassLookup | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// InstanceClassLookup | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/1 mapped addresses byte-exact | 0 unproved | no mapped strings | by EspClaude (deepseek:deepseek-chat)
 // <<< native-status | src 391fa34c | roc native-status --write
 #include "v8tree/Instance.h"
 

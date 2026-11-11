@@ -4,8 +4,8 @@
 // createConnector, onPrimitiveContactParametersChanged, the ball / block contact geometry) need the native
 // Primitive / Body / ContactConnector layouts and are not part of this unit yet.
 // >>> native-status (generated) -- do not edit >>>
-// Contact | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Contact | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by auto (+1) (gpt-6)
 // <<< native-status | src 4c385f91 | roc native-status --write
 #include "v8world/Contact2008.h"
 #include "v8kernel/Kernel.h"

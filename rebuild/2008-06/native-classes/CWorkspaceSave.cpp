@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr
 // >>> native-status (generated) -- do not edit >>>
-// CWorkspaceSave | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CWorkspaceSave | 2008-06 | 2 byte-exact, inactive (not link-selected)
+// 2/2 mapped addresses byte-exact | 0 unproved | no mapped strings | by EspClaude (+1) (mixed 2)
 // <<< native-status | src 0ff530f8 | roc native-status --write
 #include <afxwin.h>
 #include <atlbase.h>

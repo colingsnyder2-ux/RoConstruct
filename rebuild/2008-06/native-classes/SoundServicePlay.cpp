@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// SoundServicePlay | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// SoundServicePlay | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by colin (deepseek:deepseek-flash)
 // <<< native-status | src 29cc1573 | roc native-status --write
 #include "util/Sound.h"
 

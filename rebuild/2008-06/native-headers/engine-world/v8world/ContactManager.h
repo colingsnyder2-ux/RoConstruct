@@ -1,8 +1,8 @@
 // Inactive typed candidate: destructor matches; SpatialHash allocation and scratch element type remain open.
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// ContactManager | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ContactManager | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 83977498 | roc native-status --write
 #include <set>
 #include <vector>

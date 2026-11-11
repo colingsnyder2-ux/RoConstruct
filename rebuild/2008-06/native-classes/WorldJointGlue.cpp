@@ -5,8 +5,8 @@
 // Body and are not part of this unit yet.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // >>> native-status (generated) -- do not edit >>>
-// WorldJointGlue | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// WorldJointGlue | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by auto
 // <<< native-status | src 75d3b3c0 | roc native-status --write
 #include "v8world/Joints2008.h"
 #include "v8kernel/Constants.h"

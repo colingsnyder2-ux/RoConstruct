@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// SoundTypedProperties | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// SoundTypedProperties | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 92bf579e | roc native-status --write
 #include "util/Sound.h"
 #include "reflection/type.h"

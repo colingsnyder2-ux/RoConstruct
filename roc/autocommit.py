@@ -68,6 +68,14 @@ def stage():
     tools = sorted({str(p.relative_to(ROOT)).replace('\\', '/') for pattern in TOOLS for p in ROOT.glob(pattern)})
     if tools:
         git('add', '-f', '--', *tools, check=True)
+    # A file another worker edits between the banner write and here would fail the hook: skip it this cycle.
+    check = subprocess.run([sys.executable, str(ROOT / 'scripts' / 'native_status.py'), '--check', '--staged'],
+                           cwd=ROOT, capture_output=True, text=True)
+    stale = [line[len('STALE: '):].strip().replace('\\', '/') for line in check.stdout.splitlines()
+             if line.startswith('STALE: ')]
+    if stale:
+        git('reset', '-q', '--', *stale)
+        log(state='skipped-stale-banners', files=stale[:20], count=len(stale))
     names = git('diff', '--cached', '--name-only', '-z', '--', *paths, *tools, check=True).stdout
     return [n for n in names.split('\0') if n], paths + tools
 

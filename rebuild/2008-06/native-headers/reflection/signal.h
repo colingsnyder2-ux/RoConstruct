@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// signal | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// signal | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src e8f76a9b | roc native-status --write
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>

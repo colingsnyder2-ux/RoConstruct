@@ -383,6 +383,10 @@ In progress (Claude): `native-bulk` over all 750 native classes, 12 shards, clos
 - Selector extension planned: accept a seed-free identity-closure plus one explicit provider family, then re-prove every selected body from that object's bytes before link trial. This bypasses stale provider-map scans; no registry/converter schema change.
 - Selector isolation planned before link: copy each native source object through `rebuild.strip_symbols(keep=proved symbols)`, re-prove retained bodies, and reject any remaining unproved external definition. Receipt object path will point to isolated copy; prevents a whole provider TU from linking unproved functions/data.
 - Isolation correction pending: VS2008 `$LN*` compiler-local labels are not linkable providers and must not trigger the residual-definition rejection; named non-local externals still reject.
+- Isolation correction pending: `match._coff_data_index()` also reports symbols from `IMAGE_SCN_LNK_REMOVE` sections after `strip_symbols`; residual gate must inspect live COFF sections only. `/Gy` pilot preserved 35 exact Scintilla bodies.
+- Selector data extension planned: retain a residual `??_C` string only when an already exact retained body has one call-site relocation target, emitted bytes match that target's complete printable NUL string, and the string has no object relocations. Receipt will carry address/bytes evidence for later registry seed; no invented string data.
+- Selector pre-isolation discovery planned: scan cached native objects against closure exacts, run the same strip/reproof gate before compiling, then queue only zero-residual source families. This replaces manual provider-family guessing; no registry/converter schema change.
+- Registry content extension planned: scan structurally validated RTTI complete-object locators. Primary offset-zero tables receive their mechanically derived `??_7` spelling; secondary tables remain `data_ADDR` placeholders with RTTI raw-type owner/signature evidence. Schema and converter format unchanged.
 
 Prompt:
 1. Stop detecting owners from mined packet text. Take owner, signature and calling convention from the bound mangled symbol (`gate_join` in `identity-closure.json` covers 259 of the 574 blocked rows).
@@ -503,3 +507,9 @@ roc.cmd native-bulk work/native-client/identity-bulk-shard00.json --out work/nat
   root/index -> donor Body.h is 12 bytes short at the front. Explains Primitive::getCoordinateFrame park: Primitive
   flags (part-embedded) resolve the donor Body.h, not Body2008.h. Lead only; header-provider change needs owner.
 - Body2008 getPVUnsafe address 0064dc93 is not a function start (match.target refuses it); check that comment.
+### 2026-11-10 - Codex Ogre full-TU identity proposal (read-only)
+
+- Scratch closure `work/native-client/ogre-native-full-identity-closure-20261110.json` scanned 18 deduped objects / 9,404 emitted symbols. It bound 1,794 addresses (1,833 unique-body; 1,177 reference-vote; 307 vote-selected-body).
+- Against current full native census, 179 currently unregistered emitted exact addresses have body-exact symbol identities: 155 unique-body, 24 vote-selected-body; classification: 106 Ogre, 8 RBX, 19 G3D, 46 std/other.
+- Proposal only: registry owner may ingest these rows after existing conflict policy. No registry file changed here. Full strict census is `work/native-client/ogre-native-full-census-current/manifest.json`; use `symbol.addr` (not `candidates`) for reference-proved addresses.
+

@@ -8,8 +8,8 @@
 // numContacts +0xe8, numLinkCalls +0xec) are off by 0xc in the header (see the recorder's PROPOSALS) and are not used.
 // Verified by tests/record_native_app_unit5e8_2008.py.
 // >>> native-status (generated) -- do not edit >>>
-// AppUnit5E8_2008World | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AppUnit5E8_2008World | 2008-06 | draft (no current byte proof)
+// 0/6 mapped addresses byte-exact | 6 unproved | no mapped strings | by auto (+3) (mixed 3)
 // <<< native-status | src df14a0e5 | roc native-status --write
 #undef _RELEASEASSERT
 #include "v8world/World.h"

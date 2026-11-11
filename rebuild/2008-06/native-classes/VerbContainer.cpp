@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// VerbContainer | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// VerbContainer | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by auto
 // <<< native-status | src 3d27fcce | roc native-status --write
 #include "../native-headers/v8tree/VerbContainer.h"
 

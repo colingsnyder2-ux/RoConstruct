@@ -1,8 +1,8 @@
 // 2008-06 native RBX::GameSettings (inactive); evidence in native-headers/v8datamodel/GameSettings.h.
 // Verified by tests/record_native_settings_items.py (unit profile: document-swap flags).
 // >>> native-status (generated) -- do not edit >>>
-// GameSettings | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// GameSettings | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/1 mapped addresses byte-exact | 0 unproved | no mapped strings | by king_originala (deepseek:deepseek-flash)
 // <<< native-status | src 1a7bb98a | roc native-status --write
 #include "v8datamodel/GameSettings.h"
 #include <G3D/format.h>

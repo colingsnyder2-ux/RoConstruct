@@ -1,8 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-import-length /I{headers}/std-noinline-string
 // Body matches the original across its main and exception-handler fragments.
 // >>> native-status (generated) -- do not edit >>>
-// SecureHtmlAdSyndicator | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// SecureHtmlAdSyndicator | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src ab564ca1 | roc native-status --write
 #include <afxwin.h>
 #include <atlutil.h>

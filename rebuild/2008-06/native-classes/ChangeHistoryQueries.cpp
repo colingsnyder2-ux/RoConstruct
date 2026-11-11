@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// ChangeHistoryQueries | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ChangeHistoryQueries | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 4c7ff0f0 | roc native-status --write
 #include "v8datamodel/ChangeHistoryService.h"
 #include "v8datamodel/HistoryRecord.h"

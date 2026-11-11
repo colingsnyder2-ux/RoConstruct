@@ -2,8 +2,8 @@
 // 0064e840, and the UnifiedImageWidget / ChatButton constructors 00601c50 / 00601d00.
 // Layout and addresses in native-headers/gui/WidgetChat.h; verified by tests/record_native_widget.py.
 // >>> native-status (generated) -- do not edit >>>
-// WidgetChat | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// WidgetChat | 2008-06 | 4 byte-exact, inactive (not link-selected)
+// 4/4 mapped addresses byte-exact | 0 unproved | no mapped strings | by king_originala (+1) (mixed 2)
 // <<< native-status | src cb61a1ed | roc native-status --write
 #include "gui/WidgetChat.h"
 

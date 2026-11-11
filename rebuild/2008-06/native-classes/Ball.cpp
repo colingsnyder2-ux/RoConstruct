@@ -3,8 +3,8 @@
 // onSetSize, hitTest).
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // >>> native-status (generated) -- do not edit >>>
-// Ball | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Ball | 2008-06 | draft (no current byte proof)
+// 0/5 mapped addresses byte-exact | 5 unproved | no mapped strings | by tester (+2) (mixed 2)
 // <<< native-status | src 64abeefd | roc native-status --write
 #include "v8world/Ball2008.h"
 #include "util/Math.h"

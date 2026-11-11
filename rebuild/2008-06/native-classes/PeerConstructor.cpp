@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// PeerConstructor | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// PeerConstructor | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src ab2762eb | roc native-status --write
 #include "Replicator.h"
 #include "ProfiledRakPeer.h"

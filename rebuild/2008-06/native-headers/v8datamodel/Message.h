@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// Message | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Message | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 39f15e0e | roc native-status --write
 // 2008-06 native RBX::Message and RBX::Hint (inactive). Shape after the donor tools/rbxgs Message.h; every
 // field, virtual and descriptor below is read from the 2008-06 binary:

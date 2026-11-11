@@ -3,8 +3,8 @@
 // the held type against the other numeric types in the order the target compares type descriptors, stores the
 // converted value, sets the Type singleton and falls through to genericConvert<T> (tail call).
 // >>> native-status (generated) -- do not edit >>>
-// AppUnit564_2008ValueConvert | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AppUnit564_2008ValueConvert | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 2706dddf | roc native-status --write
 #include "reflection/type.h"
 #include "G3D/g3dmath.h"

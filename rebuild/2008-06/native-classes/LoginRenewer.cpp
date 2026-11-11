@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// LoginRenewer | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// LoginRenewer | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by Espeon (deepseek:deepseek-flash)
 // <<< native-status | src d093e4f5 | roc native-status --write
 #include "LoginRenewer.h"
 #include <boost/bind.hpp>

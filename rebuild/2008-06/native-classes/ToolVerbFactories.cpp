@@ -1,8 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string
 // The 2008 client was built without RBXASSERT: getCurrentMouseCommand inlines to a plain load.
 // >>> native-status (generated) -- do not edit >>>
-// ToolVerbFactories | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ToolVerbFactories | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src a5920f59 | roc native-status --write
 #undef _RELEASEASSERT
 #include "v8datamodel/DataModel.h"

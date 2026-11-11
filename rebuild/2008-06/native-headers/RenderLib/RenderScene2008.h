@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// RenderScene2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// RenderScene2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src c7a3aaf9 | roc native-status --write
 // 2008-06 native RBX::RenderBase::RenderSceneBase (inactive). Named *2008.h so it never shadows the donor
 // RenderLib/RenderScene.h (a later source base whose single, non-virtual RBX::Render::RenderScene also declares the

@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// ViewVerbs | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ViewVerbs | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 4c518ec7 | roc native-status --write
 #include "v8tree/Verb.h"
 

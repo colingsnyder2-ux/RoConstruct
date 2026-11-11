@@ -7,8 +7,8 @@
 // factories 00551920 / 00551a30 (not recovered here: they select on an unnamed global 00942ec4). The optimized RenderLib
 // units call them out of line (007ade34 / 007b8474 -> 00551bf0, 007b8fc1 -> 00551b30, 007ae4c1 -> 00551e30).
 // >>> native-status (generated) -- do not edit >>>
-// TextureProxyBase2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// TextureProxyBase2008 | 2008-06 | 7 byte-exact, inactive (not link-selected)
+// 7/9 mapped addresses byte-exact | 2 unproved | no mapped strings | by colin (+3) (mixed 5)
 // <<< native-status | src 4052977e | roc native-status --write
 #include "RenderLib/TextureProxy2008.h"
 

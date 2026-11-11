@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// ClickDetector | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ClickDetector | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 2765df58 | roc native-status --write
 // 2008-06 native RBX::ClickDetector (inactive). No donor source (tools/rbxgs has no ClickDetector): every base, field,
 // virtual and descriptor below is read from the 2008-06 binary:

@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// LogLifetime | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// LogLifetime | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src c82f1fd2 | roc native-status --write
 #include "util/Log.h"
 #include <windows.h>

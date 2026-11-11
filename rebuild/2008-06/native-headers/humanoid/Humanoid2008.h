@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// Humanoid2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Humanoid2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 89c1f7ee | roc native-status --write
 // 2008-06 native RBX::Humanoid (inactive). Declared under a non-colliding name: the original path humanoid/Humanoid.h
 // is the donor header that many units still include (Team, Seat, Clothing, hit-test filters ...), so a native header

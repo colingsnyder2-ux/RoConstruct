@@ -3,8 +3,8 @@
 // In the original, BodyColors shares the CharacterAppearance unit with Clothing/Shirt/Pants/ShirtGraphic/Skin
 // (native-classes/Clothing.cpp, another owner); CharacterAppearance::dataChanged 005d3b50 is defined there.
 // >>> native-status (generated) -- do not edit >>>
-// BodyColors | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// BodyColors | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | 1 referenced strings (not rechecked) | by EspClaude (deepseek:deepseek-chat)
 // <<< native-status | src a6da4090 | roc native-status --write
 #include "v8datamodel/BodyColors.h"
 #include "v8datamodel/PartInstance.h"

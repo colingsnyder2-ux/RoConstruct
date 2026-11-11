@@ -14,8 +14,8 @@
 // 0048bcf0 is counted by app-unit480). Humanoid is in AppUnit48C_2008CreatorsHumanoid.cpp (humanoid/Humanoid2008.h).
 // sizeof(C) comes from the native headers and is checked by the malloc size each create<C> passes.
 // >>> native-status (generated) -- do not edit >>>
-// AppUnit48C_2008Creators | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AppUnit48C_2008Creators | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 141adb9c | roc native-status --write
 #include "v8datamodel/Hopper.h"
 #include "v8datamodel/Backpack.h"

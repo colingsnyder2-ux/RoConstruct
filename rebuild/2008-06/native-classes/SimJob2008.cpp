@@ -3,8 +3,8 @@
 // destructor 005e5190 (vtable 0083f72c is emitted here), AssemblySimJob(assembly) 005e51e0 (vtable 0083f73c; its
 // slots 1 / 2 fold into 0074eed0).
 // >>> native-status (generated) -- do not edit >>>
-// SimJob2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// SimJob2008 | 2008-06 | draft (no current byte proof)
+// 0/3 mapped addresses byte-exact | 3 unproved | no mapped strings | by tester (+2) (mixed 3)
 // <<< native-status | src 812bdd77 | roc native-status --write
 #include "v8world/SimJob2008.h"
 

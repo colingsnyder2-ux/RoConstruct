@@ -6,8 +6,8 @@
 // passed by value (0x10 bytes) to Notifier<Instance, DescendantRemoving>::raise 00558660.
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// InstanceDescendantRemoving2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// InstanceDescendantRemoving2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 130472c5 | roc native-status --write
 #include "v8tree/InstanceEvents.h"
 

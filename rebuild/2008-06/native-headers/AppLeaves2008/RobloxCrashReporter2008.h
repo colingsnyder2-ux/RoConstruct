@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// RobloxCrashReporter2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// RobloxCrashReporter2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 61d3a82a | roc native-status --write
 // Inactive native 2008-06 RobloxCrashReporter (RTTI of vtable 00810320: RobloxCrashReporter : CrashReporter).
 // CrashReporter is the donor Network/CrashReporter.h class: vptr +0, CrashReportControls controls +4

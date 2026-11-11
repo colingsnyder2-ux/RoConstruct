@@ -1,8 +1,8 @@
 // Inactive 2008-06 native recovery: RBX::Lua enum bridges (Enums / Enum / EnumItem), unit 0061edb0..0061f0f0.
 // Body shapes are codegen analogs; counted rows are proven by tests/record_native_lua_bridge2008.py.
 // >>> native-status (generated) -- do not edit >>>
-// LuaBridge2008Enum | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// LuaBridge2008Enum | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src b05a5a75 | roc native-status --write
 #include "LuaBridge2008/LuaEnumBridge2008.h"
 #include "G3D/format.h"

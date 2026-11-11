@@ -5,8 +5,8 @@
 // DirectPhysicsReceiver scalar deleting destructor 004ab5b0 and the empty step(unsigned) 0070bdf0 (both folded).
 // sendPackets 004cd420 and receivePacket 004c83b0 are declared only (open).
 // >>> native-status (generated) -- do not edit >>>
-// NetworkPhysics | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// NetworkPhysics | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/2 mapped addresses byte-exact | 1 unproved | no mapped strings | by king_originala (chatgpt:gpt-6.1-sol)
 // <<< native-status | src b4a7a546 | roc native-status --write
 #include "Network/PhysicsReplication.h"
 
