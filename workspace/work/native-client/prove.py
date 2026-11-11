@@ -33,6 +33,7 @@ CACHE = HERE / 'prove-cache'            # one ledger row per source (the full le
 INFERRED = HERE / 'inferred-name-identities.json'
 REGISTRY = ROOT / 'work/2008-06/identity-registry.json'   # authoritative placeholder flags
 LOG = HERE / 'prove-log.jsonl'
+LOCK = HERE / 'prove-out/CENSUS.lock'
 SCOPE = ('Ogre::', 'RBX::RenderNew', 'RBX::ViewNew')
 
 
@@ -160,12 +161,15 @@ def main():
     ap.add_argument('--rounds', type=int, default=4)
     ap.add_argument('--infer-names', action='store_true')
     ap.add_argument('--quiet', action='store_true')
+    ap.add_argument('--no-register', action='store_true', help='do not add trial sources or evidence to the shared inventory')
     ap.add_argument('--why', metavar='FILTER', help='after the proof, list non-exact symbols whose name contains FILTER ("" = all named)')
     ap.add_argument('--diff', metavar='ADDR', help='after the proof, assembly diff of ADDR against the file newest object')
     ap.add_argument('--objdiff-symbol', metavar='SYMBOL', help='also generate an objdiff report for this decorated symbol; requires --diff and one source')
     args = ap.parse_args()
     if not args.files and not args.all:
         ap.error('give FILE(s) or --all')
+    if args.no_register and (args.all or args.infer_names):
+        ap.error('--no-register cannot be combined with --all or --infer-names')
     if args.objdiff_symbol and (not args.diff or args.all or len(args.files) != 1):
         ap.error('--objdiff-symbol requires --diff and exactly one source')
     import run_all
@@ -182,6 +186,10 @@ def main():
                 master['sources'].append(s)
     evidence = master['evidence']
     out = HERE / ('prove-out/%s' % family)
+    if args.all:        # native_commit.py refuses to touch native files while a census runs (edits void its results)
+        LOCK.write_text(json.dumps({'pid': os.getpid(), 'started': time.time()}))
+        import atexit
+        atexit.register(lambda: LOCK.unlink(missing_ok=True))
     for rnd in range(1, args.rounds + 1):
         started = time.time()
         spec = {'client': '2008-06', 'families': [dict(master, name=family, sources=sources, evidence=evidence)]}
@@ -203,9 +211,11 @@ def main():
             if rel(INFERRED) not in evidence:
                 evidence.append(rel(INFERRED))
         receipt = HERE / ('reference-bindings-prove-%s-%d.json' % (family, int(time.time())))
-        known = sum((['--known', str(ROOT / e)] for e in evidence if 'bindings' in e), [])
+        known = [str(ROOT / e) for e in evidence if 'bindings' in e]
+        known_file = out.with_suffix('.known.json')
+        known_file.write_text(json.dumps(known), encoding='utf-8')
         bind = subprocess.run([sys.executable, str(HERE / 'batch_reference_bind.py'), str(manifest), '--out', str(receipt),
-                               *known], cwd=ROOT, capture_output=True, text=True)
+                               '--known-list', str(known_file)], cwd=ROOT, capture_output=True, text=True)
         found = json.loads(bind.stdout.strip().splitlines()[-1]) if bind.returncode == 0 else {'bindings': 0}
         if found['bindings']:
             evidence.append(rel(receipt))
@@ -225,11 +235,12 @@ def main():
     if args.why is not None or args.diff:
         report(out, args)
     # Persist new sources/evidence; merge with the file as it is now (another prove run may have added its own).
-    current = load(INVENTORY, inventory)
-    disk = current['families'][0]
-    for key in ('sources', 'evidence'):
-        disk[key] += [x for x in master[key] if x not in disk[key]]
-    INVENTORY.write_text(json.dumps(current, indent=1))
+    if not args.no_register:
+        current = load(INVENTORY, inventory)
+        disk = current['families'][0]
+        for key in ('sources', 'evidence'):
+            disk[key] += [x for x in master[key] if x not in disk[key]]
+        INVENTORY.write_text(json.dumps(current, indent=1))
     if not args.quiet:
         for src, (n, b, why) in sorted(by_file.items()):
             if args.all and not why:

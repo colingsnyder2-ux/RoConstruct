@@ -41,13 +41,26 @@ def reference_owner(row):
     return address if candidates - {address} <= rejected else None
 
 
+def read_known_list(path):
+    paths = json.loads(Path(path).read_text(encoding='utf-8'))
+    if not isinstance(paths, list) or not all(isinstance(path, str) for path in paths):
+        raise ValueError('known list must contain a JSON array of paths')
+    return [Path(path) for path in paths]
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('manifest', type=Path)
     ap.add_argument('--out', type=Path, required=True)
     ap.add_argument('--jobs', type=int, default=8)
     ap.add_argument('--known', type=Path, action='append', default=[], help='earlier binding receipts')
+    ap.add_argument('--known-list', type=Path, help='JSON array of earlier receipt paths')
     args = ap.parse_args()
+    if args.known_list:
+        try:
+            args.known.extend(read_known_list(args.known_list))
+        except ValueError as error:
+            ap.error(str(error))
     data = json.loads(args.manifest.read_text())
     emitted = {}                                   # symbol -> object path
     for family in data['families']:

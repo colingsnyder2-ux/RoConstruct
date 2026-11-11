@@ -1,0 +1,73 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?getMaterial@Decal@ViewNew@RBX@@UAE?AV?$ReferenceCountedPointer@VMaterialBase@RenderBase@RBX@@@G3D@@XZ",
+    "address": "004ebe70"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-ViewNewSurfaceMaterial2008\\objects\\a911ecba927d444e\\candidate.obj": "e1418026fee25b042848738f4fb3e0b05a82bcc5cd875f02bbe2018013f42779",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-smpaqxrf\\owners.json": "51927a6d7db632aaa6ba306ee25d3c0d0ba7db1c232a3e1ff5fda37676fcdd1a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-smpaqxrf\\import-thunk-identities-as-owner.json": "f650431d1efc92390ab7d398726e20fe5dac5678f42779aac3981be2ee33d6a4"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?getMaterial@Texture@ViewNew@RBX@@UAE?AV?$ReferenceCountedPointer@VMaterialBase@RenderBase@RBX@@@G3D@@XZ",
+    "address": "004ec070"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-ViewNewSurfaceMaterial2008\\objects\\a911ecba927d444e\\candidate.obj": "e1418026fee25b042848738f4fb3e0b05a82bcc5cd875f02bbe2018013f42779",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-smpaqxrf\\owners.json": "51927a6d7db632aaa6ba306ee25d3c0d0ba7db1c232a3e1ff5fda37676fcdd1a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-smpaqxrf\\import-thunk-identities-as-owner.json": "f650431d1efc92390ab7d398726e20fe5dac5678f42779aac3981be2ee33d6a4"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??$find@VContentProvider@RBX@@@ServiceProvider@RBX@@SAPAVContentProvider@1@PBVInstance@1@@Z",
+   "address": "00465210",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?WHITE@Color3@G3D@@2V12@B",
+   "address": "00942904",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?createPartMaterial@@YAPAVMaterialBase@RenderBase@RBX@@XZ",
+   "address": "00551730",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?createPartTexture@@YAPAVTextureProxyBase@RBX@@PAVTextureManager@G3D@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z",
+   "address": "00551920",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?decalTextureScale@@3MB",
+   "address": "009326f8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?setPointer@?$ReferenceCountedPointer@VMaterialBase@RenderBase@RBX@@@G3D@@AAEXPAVMaterialBase@RenderBase@RBX@@@Z",
+   "address": "00598fa0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?getMaterial@Decal@ViewNew@RBX@@UAE?AV?$ReferenceCountedPointer@VMaterialBase@RenderBase@RBX@@@G3D@@XZ",
+   "address": "007caa81",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?getMaterial@Texture@ViewNew@RBX@@UAE?AV?$ReferenceCountedPointer@VMaterialBase@RenderBase@RBX@@@G3D@@XZ",
+   "address": "007caaa1",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

@@ -67,7 +67,7 @@ def export(root, ref=BRANCH):
                     extras[name] = archive.read(name)
     files.update(extras)
     marker = dict(package='worker', revision=revision, native_workflow=True,
-                  native_workflow_version=50, matching_workflow_version=4, draft_workflow_version=1)
+                  native_workflow_version=53, matching_workflow_version=4, draft_workflow_version=1)
     files['roconstruct-package.json'] = encoded(marker)
     inventory = {name: hashlib.sha256(data).hexdigest() for name,data in files.items()}
     provenance = dict(schema=1, source_commit=revision, files=inventory, draft_workflow_version=1,
@@ -84,7 +84,7 @@ def export(root, ref=BRANCH):
     old = folder / 'native-worker.json'
     previous = json.loads(old.read_text()) if old.exists() else {}
     server = previous.get('server', 'https://colinpc.tail2879d0.ts.net')
-    manifest = dict(schema=1, workflow_version=50, matching_workflow_version=4, draft_workflow_version=1,
+    manifest = dict(schema=1, workflow_version=53, matching_workflow_version=4, draft_workflow_version=1,
                     source_commit=revision, url=BASE_URL+'native-worker.zip',
                     sha256=hashlib.sha256(archive_bytes).hexdigest(), size=len(archive_bytes),
                     guide=BASE_URL+'NATIVE_AGENT.md', matching_guide=BASE_URL+'MATCHING_AGENT.md',
