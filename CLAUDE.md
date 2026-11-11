@@ -192,8 +192,14 @@ assignment. Native recovery continues with its current class/header queue.
   All clients authorizes every registered client, including 2009-12. Keep each
   client's sources, compiler configuration and evidence separate.
 - A source that matches is a codegen analog: don't claim it is the original declaration.
-- No inline assembly, `__emit`, byte blobs or patched target bytes.
-- Never invent struct fields, offsets or ABIs: derive them from the binary or a compile.
+- Never use `__emit`, byte blobs or patched target bytes.
+- Derive struct fields, offsets and ABIs from the binary or a compile where possible.
+- Native recovery: inferred fields/layouts are allowed when the original source plausibly had them (owner
+  rule, 2026-11-11). Mark each `// INFERRED: <evidence>`. Example: a member the binary never touches but
+  that the size or alignment requires. Never invent them only to force a build or a match.
+- Native recovery: inline asm is allowed when the original source plausibly had it (for example `rdtsc`
+  timing). Comment the evidence beside it. Never use it to reproduce compiler codegen. Mining submissions
+  still cannot use inline asm: the server rejects it.
 - Never overwrite a better stored source; submit only improvements.
 - Don't edit `clients/` or `tools/` by hand. Don't delete files you didn't create.
 - Do not push without explicit owner authorization. Native contributors share automatic
