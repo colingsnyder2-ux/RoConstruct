@@ -2712,16 +2712,6 @@ def command_groups(sub):
     return "\n".join(lines)
 
 
-def cmd_native_status(args):
-    command = [sys.executable, "-m", "roc.native_status"]
-    for flag in ("write", "check", "json", "staged"):
-        if getattr(args, flag, False):
-            command.append("--" + flag)
-    if args.path:
-        command.extend(["--path", args.path])
-    subprocess.run(command, cwd=ROOT, check=True)
-
-
 def main(argv=None):
     ap = argparse.ArgumentParser(prog="roc", description=__doc__, usage="roc <command> [options]",
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -2954,12 +2944,17 @@ def main(argv=None):
                             "help": "do not append to work/agent-memory/attempts.jsonl"}))
     cmd("classify", cmd_classify, "compile a source and classify target/candidate mismatch",
         (["client"], {}), (["addr"], {}), (["source"], {}))
-    cmd("native-status", cmd_native_status, "inspect or update native status banners",
-        (["--write"], {"action": "store_true"}),
-        (["--check"], {"action": "store_true"}),
-        (["--json"], {"action": "store_true"}),
-        (["--staged"], {"action": "store_true"}),
-        (["--path"], {}))
+    cmd("source-catalog", cmd_source_catalog, "build read-only source catalog (blob pairing + local snapshot hashing)",
+        (["--ref"], {"default": "refs/remotes/findings/work", "help": "reviewed work ref"}),
+        (["--local"], {"action": "store_true", "help": "also fingerprint local snapshots"}),
+        (["--output"], {"type": str, "required": True, "help": "new JSON output path (refuses overwrite)"}),
+        (["--map-output"], {"type": str, "help": "new generated browse-map JSON path (refuses overwrite)"}))
+    cmd("native-status", cmd_native_status, "generate native-status banners for native-classes/headers/world",
+        (["--write"], {"action": "store_true", "help": "write banners"}),
+        (["--check"], {"action": "store_true", "help": "fail if any banner missing/stale"}),
+        (["--json"], {"action": "store_true", "help": "print index JSON"}),
+        (["--path"], {"help": "glob relative to rebuild/2008-06"}),
+        (["--staged"], {"action": "store_true", "help": "check only git-staged native files"}))
     cmd("native-asm", cmd_native_asm, "target disassembly with named calls/imports; --obj diffs a candidate .obj symbol",
         (["client"], {}), (["addrs"], {"nargs": "+"}),
         (["--obj"], {"help": "candidate COFF .obj to diff against each ADDR"}),
@@ -3010,6 +3005,7 @@ def main(argv=None):
         "save and automatically upload incomplete native work without branches",
         (["args"], {"nargs": argparse.REMAINDER}))
     __import__("roc.native_try").native_try.register(cmd)
+    __import__("roc.native_bulk").native_bulk.register(cmd)
     __import__("roc.native_promotions").native_promotions.register(cmd)
     __import__("roc.leases").leases.register(cmd)
     __import__("roc.native_files_notify").native_files_notify.register(cmd)
@@ -3225,7 +3221,7 @@ def main(argv=None):
         (["--lease"], {"type": int, "default": 900, "help": "seconds before an abandoned job frees up"}),
         (["--tunnel"], {"action": "store_true", "help": "public HTTPS address via Cloudflare (no router setup)"}),
         (["--publish"], {"action": "store_true", "help": "publish new sources, partials, mined findings and website changes"}),
-        (["--publish-every"], {"type": int, "default": 3600, "help": "seconds between findings/site checks; unchanged output makes no commit"}),
+        (["--publish-every"], {"type": int, "default": 21600, "help": "seconds between publishes (default 6 h): work auto-commit, findings, site; unchanged output makes no commit"}),
         (["--public-server"], {"help": "address shown on the site (if not using --tunnel)"}),
         (["--startup"], {"action": "store_true", "help": "start `roc host` automatically when you log in"}))
     cmd("host", cmd_host, "run the group server with tunnel + publishing, restarting it if it stops")
@@ -3370,6 +3366,38 @@ def main(argv=None):
             watch.finish("completed")
     else:
         a.fn(a)
+
+
+def cmd_native_status(a):
+    """Generate native-status banners for native classes/headers/world."""
+    import subprocess
+    argv = [sys.executable, str(ROOT / "scripts" / "native_status.py")]
+    if getattr(a, "write", False):
+        argv.append("--write")
+    if getattr(a, "check", False):
+        argv.append("--check")
+    if getattr(a, "json", False):
+        argv.append("--json")
+    if getattr(a, "path", None):
+        argv.extend(["--path", a.path])
+    if getattr(a, "staged", False):
+        argv.append("--staged")
+    subprocess.run(argv, check=True)
+
+
+def cmd_source_catalog(a):
+    """Build a read-only source catalog (no moves, no deletes, no overwrites)."""
+    import subprocess
+    argv = [sys.executable, "-m", "roc.source_catalog"]
+    if getattr(a, "ref", None):
+        argv.extend(["--ref", a.ref])
+    if getattr(a, "local", False):
+        argv.append("--local")
+    if getattr(a, "map_output", None):
+        argv.extend(["--map-output", a.map_output])
+    if getattr(a, "output", None):
+        argv.extend(["--output", a.output])
+    subprocess.run(argv, check=True)
 
 
 if __name__ == "__main__":

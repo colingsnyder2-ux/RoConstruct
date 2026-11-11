@@ -683,9 +683,9 @@ class Handler(BaseHTTPRequestHandler):
             return self.send(404, {"error": "Unknown endpoint"})
         files = {"/": "index.html", "/app.js": "app.js", "/style.css": "style.css",
                  "/fonts.css": "fonts.css",
-                 # One copy of the brand images, shared with the website in site/.
-                 "/logo.png": ROOT / "site" / "logo.png",
-                 "/favicon.png": ROOT / "site" / "favicon.png"}
+                 # One copy of the brand images, shared with the website in docs/.
+                 "/logo.png": ROOT / "docs" / "logo.png",
+                 "/favicon.png": ROOT / "docs" / "favicon.png"}
         files.update({"/fonts/" + path.name: "fonts/" + path.name for path in (ASSETS / "fonts").iterdir()
                       if path.suffix == ".woff2"})
         if parsed.path not in files:

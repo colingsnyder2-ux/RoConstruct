@@ -177,22 +177,21 @@ def payload(promotions, job, receipt=None, extra=None):
     description = "**2008-06 Client**\n\nEstablishing verified native baseline..."
     if proof.exists():
         native = set(json.loads(proof.read_text())["addresses"])
-        from roc.integration_site import coverage, inactive_code, progress_description
-        inactive = inactive_code(root)
-        groups, functions = coverage(root, scores, native, set(inactive))
-        stats = {key: {'functions': 0, 'bytes': 0} for key in ('inactive', 'draft')}
-        for addr, row in inactive.items():
-            if addr not in native and addr in functions:
-                bucket = stats['inactive' if row[1] else 'draft']
-                bucket['functions'] += 1
-                bucket['bytes'] += functions[addr]['size']
-        total_functions = sum(g['functions'] for g in groups.values())
-        description = ('**2008-06 Client**\n%s / %s integrated · %s remaining\n' % (
-            format(groups['integrated']['functions'], ','), format(total_functions, ','),
-            format(total_functions - groups['integrated']['functions'], ','))) + progress_description({
-            'groups': groups, 'native_code': stats,
-            'updated': datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')})
-        remaining = sum(g['bytes'] for g in groups.values()) - groups['integrated']['bytes']
+        from roc.integration_site import coverage
+        groups, functions = coverage(root, scores, native)
+        counts = [groups["integrated"]["functions"], groups["exact_waiting"]["functions"], groups["partial"]["functions"] + groups["unmined"]["functions"]]
+        sizes = [groups["integrated"]["bytes"], groups["exact_waiting"]["bytes"], groups["partial"]["bytes"] + groups["unmined"]["bytes"]]
+        total = sum(sizes)
+        cells = [s * 23 // total if total else 0 for s in sizes]
+        for i in sorted(range(3), key=lambda i: sizes[i] * 23 % total if total else 0, reverse=True)[:23 - sum(cells)]:
+            cells[i] += 1
+        bar = "".join(c * n for c, n in zip(("\U0001f7ea", "\U0001f7e6", "\u2b1c"), cells))
+        description = ("**2008-06 Client**\n%s / %s integrated \u00b7 %s remaining\n\n%s **%.2f%%** of target bytes\n\n"
+            "\U0001f7ea integrated \u00b7 \U0001f7e6 exact waiting \u00b7 \u2b1c not integrated") % (
+                format(counts[0], ","), format(sum(counts), ","), format(sum(counts[1:]), ","),
+                bar, 100 * sizes[0] / total if total else 0)
+        description += "\n%s / %s target bytes" % (format(sizes[0], ","), format(total, ","))
+        remaining = sum(sizes[1:])
     else:
         remaining = None
     recent_gains = {addr for row in recent for addr in json.loads(row[0]).get("gains", [])

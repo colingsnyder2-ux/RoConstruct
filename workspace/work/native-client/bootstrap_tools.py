@@ -57,6 +57,9 @@ def main():
         need(True, 'MSVC 2008 toolchain (cl 15.00.21022)', '')
     except Exception as error:  # noqa: BLE001 - report any toolchain failure
         need(False, 'MSVC 2008 toolchain (%s)' % str(error)[:80], 'roc install --yes --client 2008-06')
+    for module in ('roc.native_bulk', 'roc.native_promotion', 'roc.autocommit', 'roc.integration_site', 'roc.match', 'roc.rebuild', 'roc.libs'):
+        run = subprocess.run([sys.executable, '-c', 'import ' + module], capture_output=True, text=True, cwd=ROOT)
+        need(run.returncode == 0, 'import ' + module, (run.stderr.strip().splitlines() or ['import fails'])[-1][:110] + ' (package incomplete: ask the owner to republish)')
     for tool in ('prove.py', 'native_commit.py', 'upstream_lane.py', 'fingerprint.py', 'scope.py', 'audit_digest.py'):
         run = subprocess.run([sys.executable, str(HERE / tool), '--help'], capture_output=True, text=True, cwd=ROOT)
         need(run.returncode == 0, tool + ' --help', (run.stderr or run.stdout).strip().splitlines()[-1:] and (run.stderr or run.stdout).strip().splitlines()[-1][:100] or 'fails')

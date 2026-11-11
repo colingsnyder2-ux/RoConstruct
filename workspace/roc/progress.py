@@ -1,5 +1,5 @@
-"""Build the GitHub Pages data: site/progress.json, site/history.json,
-site/data/<client>.json.
+"""Build the GitHub Pages data: docs/progress.json, docs/history.json,
+docs/data/<client>.json.
 
 Scores come from work/<client>/scores.json ({addr: 0-100}); 100 = byte match.
 """
@@ -14,7 +14,7 @@ from urllib.parse import quote
 from roc import clients
 
 ROOT = Path(__file__).resolve().parent.parent
-DOCS = ROOT / "site"
+DOCS = ROOT / "docs"
 STATS = ("functions", "matched", "partial", "bytes", "matched_bytes", "source_bytes", "mined_bytes", "partial_bytes",
          "source_matched", "mined_matched")
 
@@ -49,25 +49,12 @@ def add_history(stats, updated):
     """Record snapshots only when client stats change."""
     path = DOCS / "history.json"
     hist = json.loads(path.read_text()) if path.exists() else []
-    legacy = ROOT / "docs/history.json"
-    merged = False
-    if legacy != path and legacy.exists():
-        seen = {json.dumps(row, sort_keys=True) for row in hist}
-        for row in json.loads(legacy.read_text()):
-            identity = json.dumps(row, sort_keys=True)
-            if identity not in seen:
-                hist.append(row)
-                seen.add(identity)
-                merged = True
-        if merged:
-            hist.sort(key=lambda row: row["date"])
-    if not hist or hist[-1]["clients"] != stats:
-        commit, subject = head_commit()
-        hist.append({"date": updated, "commit": commit, "subject": subject, "clients": stats})
-        merged = True
-    if merged:
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(json.dumps(hist, separators=(",", ":")) + "\n")
+    if hist and hist[-1]["clients"] == stats:
+        return
+    commit, subject = head_commit()
+    snap = {"date": updated, "commit": commit, "subject": subject, "clients": stats}
+    hist.append(snap)
+    path.write_text(json.dumps(hist, separators=(",", ":")) + "\n")
 
 
 def union_bytes(span_lists):

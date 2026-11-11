@@ -77,18 +77,8 @@ def preservation_losses(repo, before, candidate):
     for meta, raw_path in zip(fields[0::2], fields[1::2]):
         path = raw_path.decode('utf-8', errors='surrogateescape')
         parts = path.split('/')
-        if parts[0] == 'workspace':
-            parts = parts[1:]
-        if len(parts) >= 3 and parts[0] == 'rebuild':
-            parts = parts[2:]
-        elif len(parts) >= 2 and re.fullmatch(r'\d{4}-\d{2}', parts[0]):
-            parts = parts[1:]
-        legacy = len(parts) >= 2 and parts[0] in (
-            'native-classes', 'native-headers', 'native-world', 'tests')
-        organized = (len(parts) >= 3 and parts[0] in (
-            'App', 'Base', 'Network', 'Rendering', 'WindowsClient', 'Studio', 'Unclassified')
-            and parts[1] in ('src', 'include'))
-        if not (legacy or organized):
+        if len(parts) < 4 or parts[0] != 'rebuild' or parts[2] not in (
+                'native-classes', 'native-headers', 'native-world', 'tests'):
             continue
         _, mode, old, new, status = meta[1:].split()
         reason = None
@@ -136,8 +126,6 @@ def park(clone, owner, branch, ref, sha, reason):
 
 
 def run(push=True, log=print, repo=ROOT, clone=CLONE, mine=None, days=14, state_file=STATE):
-    if (Path(repo) / 'work/draft-workflow-enabled.json').exists():
-        return log('Legacy bot merges retired; use reviewed draft integration on work.')
     state = {'parked': {}, 'merged': {}}
     try:
         state = json.loads(Path(state_file).read_text())

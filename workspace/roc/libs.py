@@ -1054,7 +1054,7 @@ def _fetch(name):
 # so their text is kept in the findings repository (units/generated-units.json), downloaded
 # by `roc pull` into local/units/ and written into the vendor tree by `fetch`.
 UNITS_FILE = ROOT / "local" / "units" / "generated-units.json"
-UNITS_URL = "https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/units/generated-units.json"
+UNITS_URL = "https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/units/generated-units.json"
 
 
 def fetch_units(log=print, url=UNITS_URL):
@@ -1479,7 +1479,7 @@ def default_targets():
 
 
 # --- libraries ---
-# Library of a unit label: the same rules as the progress site's table (site/index.html).
+# Library of a unit label: the same rules as the progress site's table (docs/index.html).
 
 _MFC = re.compile(r"^(?:[A-Z0-9_$]*V)?C(?:Wnd|FrameWnd|MDIFrameWnd|MDIChildWnd|Edit|Static|ListBox|ComboBox|Button|Brush|Pen|Rgn|Rect|Point|Size|PtrList|PtrArray|ObList|StringList|StringArray|Ole\w*|CmdUI|EnabledCmdUI|Dialog|View|Document|WinApp|WinThread|Object|Archive|File|Exception|DC|ClientDC|PaintDC|WindowDC|GdiObject|Bitmap|Font|Menu|ImageList|ToolBar|StatusBar|ControlBar|SplitterWnd|ScrollView|FormView|EditView|HtmlView|HtmlEditView|DHtmlDialog|PropertySheet|PropertyPage|TreeCtrl|ListCtrl|TabCtrl|SpinButtonCtrl|ProgressCtrl|SliderCtrl|DockState|DockBar|DocTemplate|SingleDocTemplate|MultiDocTemplate|DocManager|MemFile|String|Map\w+|Array|CommandLineInfo|RecentFileList|Mini\w*Wnd)$")
 

@@ -1,0 +1,93 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?createSpecialBrick@ViewNew@RBX@@YA?AV?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@ABVVector3@4@VRenderSurfaceTypes@12@VBrickColor@2@HHHM@Z",
+    "address": "004e54e0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-ViewNewBrickCacheRecovery2008\\objects\\1ab770844a44efc5\\candidate.obj": "025cc1c60a630df261b8bfc285d3cb44bc75403b8c545b79ad77ffc1275b8acd",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-_e1obdl1\\owners.json": "06fa1c04ebd9c86423cc77fa70030898d4c578f3ac0329688fe1fd02b721beca",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-_e1obdl1\\import-thunk-identities-as-owner.json": "8b46c7b3de6d9b64b30c2b9519463c43104199ffe217799ac4cbecb8abe65e12"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?create@BrickMesh@ViewNew@RBX@@SA?AV?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@ABVVector3@5@VRenderSurfaceTypes@23@VBrickColor@3@@Z",
+    "address": "004e58b0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-ViewNewBrickCacheRecovery2008\\objects\\1ab770844a44efc5\\candidate.obj": "025cc1c60a630df261b8bfc285d3cb44bc75403b8c545b79ad77ffc1275b8acd",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-_e1obdl1\\owners.json": "06fa1c04ebd9c86423cc77fa70030898d4c578f3ac0329688fe1fd02b721beca",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-_e1obdl1\\import-thunk-identities-as-owner.json": "8b46c7b3de6d9b64b30c2b9519463c43104199ffe217799ac4cbecb8abe65e12"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??0BrickMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@VRenderSurfaceTypes@12@VBrickColor@2@HHHM@Z",
+   "address": "004e53c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??A?$map@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@@std@@QAEAAUVariations@@ABULookup@@@Z",
+   "address": "004ddf80",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?buildBevel@BrickMesh@ViewNew@RBX@@QAEXABVVector3@G3D@@VRenderSurfaceTypes@23@VBrickColor@3@@Z",
+   "address": "004e2c80",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?buildBevel@BrickMesh@ViewNew@RBX@@QAEXABVVector3@G3D@@VRenderSurfaceTypes@23@VBrickColor@3@HHHM@Z",
+   "address": "004e3720",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?buildingBevel@ViewNew@RBX@@3_NA",
+   "address": "0097275c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?cache@BrickMesh@ViewNew@RBX@@0PAUCache@123@A",
+   "address": "00972754",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?cacheFlag@BrickMesh@ViewNew@RBX@@0JA",
+   "address": "00972870",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?currentBevel@ViewNew@RBX@@3MA",
+   "address": "00972758",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?releaseUnused@BrickMesh@ViewNew@RBX@@CAXXZ",
+   "address": "004e5710",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?useBevels@ViewNew@RBX@@3_NA",
+   "address": "009413c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?create@BrickMesh@ViewNew@RBX@@SA?AV?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@ABVVector3@5@VRenderSurfaceTypes@23@VBrickColor@3@@Z",
+   "address": "007ca4af",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?createSpecialBrick@ViewNew@RBX@@YA?AV?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@ABVVector3@4@VRenderSurfaceTypes@12@VBrickColor@2@HHHM@Z",
+   "address": "007ca45f",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

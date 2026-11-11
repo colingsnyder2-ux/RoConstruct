@@ -15,7 +15,51 @@ subprocess.run(['git', 'fetch', '-q', 'origin', 'work:refs/remotes/origin/work']
 old_zip = subprocess.check_output(['git', 'show', 'refs/remotes/origin/work:data/native-worker.zip'])
 old = zipfile.ZipFile(io.BytesIO(old_zip))
 files = {n: old.read(n) for n in old.namelist()}
+import ast, re
+from pathlib import Path
+TOOLS = ['work/native-client/' + f for f in ('prove.py', 'bootstrap_tools.py', 'scope.py', 'upstream_lane.py', 'fingerprint.py', 'native_commit.py',
+         'audit_digest.py', 'stop_stale_watchers.py', 'registry_identity_receipt.py', 'batch_reference_bind.py', 'run_all.py', 'publish_work.py')] + [
+         'scripts/native_status.py', 'roc/native_drafts.py', 'roc.py', 'roc/findings_workspace.py', 'roc/native_bulk.py']
+
+
+def closure(entry):
+    """Every tracked .py file the tools import (roc.*, sibling modules) or name as a script, so a fresh Worker can run them."""
+    seen, queue = set(), list(entry)
+    while queue:
+        f = queue.pop()
+        if f in seen or f not in mine:
+            continue
+        seen.add(f)
+        text = mine[f].decode('utf-8', 'replace')
+        try:
+            tree = ast.parse(text)
+        except SyntaxError:
+            continue
+        base = Path(f).parent.as_posix()
+        mods = set()
+        for node in ast.walk(tree):
+            if isinstance(node, ast.Import):
+                mods |= {a.name for a in node.names}
+            elif isinstance(node, ast.ImportFrom) and node.module and node.level == 0:
+                mods.add(node.module)
+                mods |= {node.module + '.' + a.name for a in node.names}
+        for m in mods:
+            path = m.replace('.', '/')
+            for cand in (path + '.py', path + '/__init__.py', base + '/' + path + '.py'):
+                if cand in mine:
+                    queue.append(cand)
+        for name in re.findall(r"['\"]([\w./-]+\.py)['\"]", text):
+            for cand in (name, base + '/' + name, 'work/native-client/' + name):
+                if cand in mine:
+                    queue.append(cand)
+    return seen
+
+
+need = closure(TOOLS)
 overlay = {}
+for n, d in mine.items():
+    if n in need and n not in overlay and n.endswith('.py') and not n.startswith('work/native-client/'):
+        overlay[n] = d
 for n, d in mine.items():
     if n == 'docs/NATIVE_AGENT.md' or n.startswith(('work/native-client/', 'scripts/')):
         overlay[n] = d

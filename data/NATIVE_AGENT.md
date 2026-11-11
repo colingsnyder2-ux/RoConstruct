@@ -319,6 +319,10 @@ Use these instead of compiling by hand (each prints `--help`; run from the check
 - `python work/native-client/native_commit.py --path GLOB ...` takes the lease, writes the status banners and commits.
   Commit one finished family, or at most hourly; never per function. The tool refuses within 45 minutes of the last
   commit (`--force` overrides) and while a `prove.py --all` census runs (edits would void the census).
+- `python work/native-client/stop_stale_watchers.py` stops draft watchers idle for 2+ hours (each stop does a final checkpoint and
+  flush). Run it when the machine feels slow: dozens of old watchers each rescan the tree every 5 minutes.
+- Census speed: objects are reused per source. Adding a new `.cpp` no longer invalidates the cache (only includable header names
+  count); editing a shared header still recompiles every source that includes it, so batch header edits.
 - Inferred fields, layouts and inline asm are allowed when the original source plausibly had them. Mark each
   `// INFERRED: <evidence>`; the proof reports inferred names separately from proven ones.
 

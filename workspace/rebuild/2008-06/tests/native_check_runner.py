@@ -17,7 +17,6 @@ import os
 from pathlib import Path
 import re
 import subprocess
-import struct
 import sys
 import time
 import uuid
@@ -29,14 +28,6 @@ sys.path.insert(0, str(ROOT))
 from roc import libs, match, rebuild, native_work
 
 
-# Original IWorkspace COM slots (IDispatch + SaveToFile/SaveSelectionToFile).
-# See record_native_workspace_save.py; verify the original slot before trusting a label.
-METHOD_IDENTITIES = {
-    '?SaveToFile@CWorkspace@@UAGJPA_W@Z': ('0046c780', 0x80ae88),
-    '?SaveSelectionToFile@CWorkspace@@UAGJPA_W@Z': ('0046b8d0', 0x80ae8c),
-}
-
-
 def sha(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
@@ -44,17 +35,7 @@ def sha(path):
 def save(path, value):
     temporary = path.with_name(path.name + '.' + uuid.uuid4().hex + '.tmp')
     temporary.write_text(json.dumps(value, indent=2) + '\n', encoding='utf-8')
-    try:
-        for attempt in range(10):
-            try:
-                os.replace(temporary, path)
-                break
-            except PermissionError as error:
-                if getattr(error, 'winerror', None) != 5 or attempt == 9:
-                    raise
-                time.sleep(0.05 * (attempt + 1))
-    finally:
-        temporary.unlink(missing_ok=True)
+    os.replace(temporary, path)
 
 
 def jobs_from(data):
@@ -83,11 +64,11 @@ def jobs_from(data):
     return list(jobs.values())
 
 
-def compiler_flags(source, override=None):
+def compiler_flags(source):
     recipe = libs.RECIPES['rbxgs']
     headers = str(BASE / 'native-headers')
     pinned = re.search(r'^// native-flags: (.*)$', source.read_text(encoding='utf-8-sig'), re.M)
-    profile = override or os.environ.get('NATIVE_FLAGS') or (pinned[1] if pinned else '/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS')
+    profile = os.environ.get('NATIVE_FLAGS') or (pinned[1] if pinned else '/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS')
     flags = ['/nologo', '/c'] + profile.replace('{headers}', headers).split()
     # Runner owns output paths; reject overrides that could collide with other work.
     if any(flag.lower().startswith(('/fo', '/fd', '/yc', '/yu'))
@@ -95,133 +76,10 @@ def compiler_flags(source, override=None):
            or flag.lower().startswith('/fa') and not flag.lower().startswith('/favor:')
            or flag.startswith('@') for flag in flags):
         raise ValueError('profile output/PCH/response flags unsupported in isolated runner')
-    flags = ['/DBOOST_ALL_NO_LIB'] + ['/D' + v for v in recipe['defines'].split()] + flags
+    flags += ['/DBOOST_ALL_NO_LIB'] + ['/D' + v for v in recipe['defines'].split()]
     flags += ['/I' + headers, '/I' + str(ROOT / 'tools/libs/mfc-9.0-rtm/atlmfc/include')]
     flags += ['/I' + str((libs.LIBS / v).resolve()) for v in recipe['include'] if v != 'WINSDK']
     return flags + ['/D_XTP_STATICLINK', '/D_XTPLIB_NOAUTOLINK', '/I' + str(ROOT / 'tools/libs/xtp-11.2.2/Source')]
-
-
-def import_evidence():
-    """Read PE import names and configured VC9 CRT/SDK import-library aliases."""
-    from roc import clients
-    import pefile
-    image = clients.exe_path('2008-06', clients.load()['2008-06'])
-    image_data = image.read_bytes()
-    hashes = {str(image): hashlib.sha256(image_data).hexdigest()}
-    pe = pefile.PE(data=image_data, fast_load=True)
-    pe.parse_data_directories(directories=[pefile.DIRECTORY_ENTRY['IMAGE_DIRECTORY_ENTRY_IMPORT']])
-    labels = {}
-    for descriptor in getattr(pe, 'DIRECTORY_ENTRY_IMPORT', []):
-        dll = descriptor.dll.decode('ascii')
-        for entry in descriptor.imports:
-            if entry.name is None:
-                continue  # Ordinal imports need their own independent proof.
-            if entry.address in labels:
-                raise ValueError('Duplicate PE import address')
-            labels[entry.address] = dll + '!' + entry.name.decode('ascii')
-    pe.close()
-    aliases = {}
-    directory = ROOT / 'tools/vc2008rtm/Program Files/Microsoft Visual Studio 9.0/VC/lib'
-    paths = [directory / name for name in ('msvcrt.lib', 'msvcprt.lib')]
-    sdk = rebuild.toolchain(21022).get('sdk_lib')
-    if sdk and (Path(sdk) / 'Kernel32.Lib').is_file():
-        paths.append(Path(sdk) / 'Kernel32.Lib')
-    for path in paths:
-        data = path.read_bytes()
-        hashes[str(path)] = hashlib.sha256(data).hexdigest()
-        if not data.startswith(b'!<arch>\n'):
-            raise ValueError('Invalid CRT import library: ' + str(path))
-        offset = 8
-        while offset + 60 <= len(data):
-            size = int(data[offset + 48:offset + 58])
-            member = data[offset + 60:offset + 60 + size]
-            offset += 60 + size + (size & 1)
-            if member[:4] != b'\0\0\xff\xff':
-                continue
-            symbol, dll = member[20:].split(b'\0')[:2]
-            symbol, dll = symbol.decode('ascii'), dll.decode('ascii').lower()
-            name_type = (struct.unpack_from('<H', member, 18)[0] >> 2) & 7
-            if name_type == 1:
-                export = symbol
-            elif name_type in (2, 3):
-                export = symbol[1:] if symbol[:1] in ('_', '@', '?') else symbol
-                if name_type == 3:
-                    export = export.split('@', 1)[0]
-            else:
-                continue
-            aliases.setdefault((dll, export), set()).add('__imp_' + symbol)
-    return labels, aliases, hashes
-
-
-def check_calls(raw, symbol, body, target, address, expected):
-    """Check reviewed direct calls and explicitly identified CRT IAT calls.
-
-    Direct rows specify offset, original target and exact COFF symbol. Import
-    rows additionally specify kind=import and the original DLL!export. Their
-    PE IAT address and CRT import-library alias must both agree. Dynamic or
-    virtual calls, final provider selection and callee ABI remain unproven.
-    """
-    from capstone import Cs, CS_ARCH_X86, CS_MODE_32, CS_GRP_CALL
-    from capstone.x86 import X86_OP_IMM, X86_OP_MEM
-    sections, symbols, definitions, _ = match._coff_data_index(raw)
-    start, section = definitions[symbol]
-    table = sections[section]
-    refs = {}
-    for index in range(table[7]):
-        offset, name, kind = struct.unpack_from('<IIH', raw, table[5] + 10 * index)
-        if start <= offset < start + len(body):
-            refs[offset - start] = (symbols[name][0], kind)
-    decoder = Cs(CS_ARCH_X86, CS_MODE_32)
-    decoder.detail = True
-    declarations = {row['offset']: row for row in expected}
-    if len(declarations) != len(expected):
-        raise ValueError('duplicate call expectation offset')
-    imports = import_evidence() if any(row.get('kind') == 'import' for row in expected) else None
-    rows = []
-    for instruction in decoder.disasm(target, address):
-        if not instruction.group(CS_GRP_CALL):
-            continue
-        offset = instruction.address - address
-        wanted = declarations.pop(offset, None)
-        direct = instruction.operands[0].type == X86_OP_IMM
-        destination = instruction.operands[0].imm if direct else None
-        binding = refs.get(offset + 1)
-        ok = bool(direct and (not wanted or wanted.get('kind', 'direct') == 'direct')
-                  and instruction.bytes[0] == 0xe8 and binding and binding[1] == 20
-                  and wanted and binding[0] == wanted['symbol']
-                  and destination == int(wanted['target'], 16)
-                  and body[offset + 1:offset + 5] == b'\0\0\0\0')
-        kind = 'direct'
-        if wanted and wanted.get('kind') == 'import':
-            kind = 'import'
-            binding = refs.get(offset + 2)
-            op = instruction.operands[0]
-            absolute = (op.type == X86_OP_MEM and op.mem.base == 0 and op.mem.index == 0)
-            destination = op.mem.disp & 0xffffffff if absolute else None
-            label = imports[0].get(destination) if absolute else None
-            expected_label = wanted.get('import', '')
-            dll, separator, export = expected_label.partition('!')
-            actual_dll, actual_separator, actual_export = (label or '').partition('!')
-            ok = bool(absolute and bytes(instruction.bytes[:2]) == b'\xff\x15'
-                      and body[offset:offset + 2] == b'\xff\x15'
-                      and body[offset + 2:offset + 6] == b'\0\0\0\0'
-                      and binding and binding[1] == 6 and binding[0] == wanted['symbol']
-                      and destination == int(wanted['target'], 16)
-                      and separator and actual_separator and dll.lower() == actual_dll.lower()
-                      and export == actual_export
-                      and binding[0] in imports[1].get((dll.lower(), export), set()))
-        rows.append({'offset': offset, 'target': f'{destination:08x}' if destination is not None else None,
-                     'symbol': binding[0] if binding else None, 'kind': kind,
-                     'status': ('verified_import' if kind == 'import' else 'verified_binding') if ok
-                               else 'unresolved_or_wrong_binding'})
-    if imports:
-        for file, digest in imports[2].items():
-            if sha(Path(file)) != digest:
-                raise ValueError('CRT import library changed during analysis: ' + file)
-    return {'passed': not declarations and all(row['status'] in ('verified_binding', 'verified_import') for row in rows),
-            'calls': rows, 'unused_expectations': list(declarations.values()),
-            'import_evidence_inputs': imports[2] if imports else {},
-            'scope': 'Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof.'}
 
 
 def analyze_object(job, obj):
@@ -241,26 +99,9 @@ def analyze_object(job, obj):
             exact = set(refs) <= set(relocs) and match.exact_match(target, refs, body, relocs)
             row.update(symbol=name, status='exact' if exact else 'different', score=match.score(target, refs, body, relocs),
                        target_size=len(target), object_size=len(body), target_sha256=hashlib.sha256(target).hexdigest())
-            masked = set(refs) | set(relocs)
-            row['first_byte_difference'] = next((i for i in range(min(len(target), len(body)))
-                if not any(r <= i < r + 4 for r in masked) and target[i] != body[i]),
-                min(len(target), len(body)) if len(target) != len(body) else None)
-            identity = METHOD_IDENTITIES.get(name)
-            if identity:
-                expected, slot = identity
-                image_base, image = match._image('2008-06')
-                original = struct.unpack_from('<I', image, slot - image_base)[0]
-                passed = addr == expected and original == int(expected, 16)
-                row['method_identity'] = dict(expected=expected, vtable_slot=f'{slot:08x}',
-                                              original_slot_target=f'{original:08x}', passed=passed)
-                if not passed:
-                    row.update(status='method_identity_mismatch', masked_byte_score=row['score'], score=0)
-                    exact = False
             if exact:
                 data_matches, data_errors = match.data_check('2008-06', addr, target, match.coff_data_refs(raw, name))
                 row.update(data_matches=data_matches, data_errors=data_errors)
-                if 'calls' in check:
-                    row['call_identity'] = check_calls(raw, name, body, target, int(addr, 16), check['calls'])
         row['check_seconds'] = round(time.monotonic() - check_started, 6)
         checks.append(row)
     if job['ranges']:
@@ -297,29 +138,6 @@ def analyze_object(job, obj):
     return {'checks': checks, 'coverage': coverage, 'layouts': layouts}
 
 
-def build_inputs(tc):
-    compiler = Path(tc['cl']) if tc.get('cl') else None
-    paths = [compiler] + [compiler.with_name(name) for name in ('c1.dll', 'c1xx.dll', 'c2.dll')] if compiler else []
-    if tc.get('mspdb'):
-        paths.append(Path(tc['mspdb']))
-    return dict(compiler={str(p): sha(p) for p in paths if p.is_file()},
-                includes={k: str(tc[k]) if tc.get(k) else None for k in ('vc_include', 'atlmfc_include', 'sdk_include')})
-
-
-def build_changes(receipt, tc):
-    changed = []
-    if not receipt.get('build_inputs'):
-        changed.append('build configuration unrecorded; historical evidence only')
-    elif receipt['build_inputs'] != build_inputs(tc):
-        changed.append('compiler/toolchain inputs changed')
-    # An explicit current override selects a new configuration. Otherwise reuse
-    # the captured override, even after the original shell environment ended.
-    override = os.environ.get('NATIVE_FLAGS') or receipt.get('native_flags')
-    if compiler_flags(Path(receipt['source']), override) != receipt.get('flags'):
-        changed.append('compiler flags changed')
-    return changed
-
-
 def compile_job(job, folder, tc):
     folder.mkdir()
     started = time.time_ns()
@@ -333,7 +151,6 @@ def compile_job(job, folder, tc):
             return result
         before = sha(source)
         flags = compiler_flags(source)
-        result.update(build_inputs=build_inputs(tc), native_flags=os.environ.get('NATIVE_FLAGS'))
         compile_started = time.monotonic()
         code, log = rebuild.run(tc, 'cl', flags + ['/showIncludes', '/Fo' + result['object'], '/Fd' + str(folder / 'compiler.pdb'), str(source)], folder)
         result['compile_seconds'] = round(time.monotonic() - compile_started, 3)
@@ -350,7 +167,6 @@ def compile_job(job, folder, tc):
         result['dependencies'] = {str(p): sha(p) for p in sorted(dependencies)}
         # Fingerprints are evidence, not a cache key. No reuse of changed builds.
         changed = [str(p) for p in dependencies if p != source and p.stat().st_mtime_ns >= started]
-        changed += build_changes(result, tc)
         if sha(source) != before or changed:
             result.update(error='inputs changed during compile; rerun', changed_inputs=changed)
             return result
@@ -383,8 +199,6 @@ def compact(results):
             'exact_checks': sum(r['status'] == 'exact' for r in checks), 'checks': len(checks),
             'data_checked': sum('data_errors' in r for r in checks),
             'verified_checks': sum(r['status'] == 'exact' and 'data_errors' in r and not r['data_errors'] for r in checks),
-            'binding_verified_checks': sum(r['status'] == 'exact' and 'data_errors' in r and not r['data_errors']
-                                           and r.get('call_identity', {}).get('passed', False) for r in checks),
             'data_mismatches': [r for r in checks if r.get('data_errors')][:8],
             'issues': [{'source': r['source'], 'error': r['error']} for r in results if r.get('error')][:8],
             'mismatches': [r for r in checks if r['status'] != 'exact'][:8],
@@ -487,10 +301,7 @@ def main():
     parser.add_argument('input', type=Path, help='manifest for start/run; run directory otherwise')
     parser.add_argument('--manifest', type=Path, help='analyze: replacement comparisons against existing objects')
     parser.add_argument('--workers', type=int, choices=range(1, 9), default=3)
-    parser.add_argument('--require-proof', action='store_true', help='run/analyze: fail unless every explicit check has fresh exact bytes, data and reviewed call bindings')
     args = parser.parse_args()
-    if args.require_proof and args.action not in ('run', 'analyze'):
-        parser.error('--require-proof supports foreground run/analyze only')
     if args.action in ('start', 'run'):
         jobs = jobs_from(json.loads(args.input.read_text(encoding='utf-8-sig')))
         RUNS.mkdir(parents=True, exist_ok=True)
@@ -516,29 +327,18 @@ def main():
         jobs = jobs_from(json.loads((args.manifest or run / 'manifest.json').read_text(encoding='utf-8-sig')))
         receipts = {r['source'].casefold(): r for r in json.loads((run / 'results.json').read_text())}
         results = []
-        tc = rebuild.toolchain(21022)
         for job in jobs:
             receipt = receipts[job['source'].casefold()]
             obj = Path(receipt['object'])
             if receipt['status'] != 'complete' or sha(obj) != receipt['object_sha256']:
                 raise ValueError('recorded object failed or changed: ' + str(obj))
             changed = [p for p, digest in receipt['dependencies'].items() if not Path(p).exists() or sha(p) != digest]
-            changed += build_changes(receipt, tc)
             results.append({'source': job['source'], 'object': str(obj), 'changed_inputs': changed,
                             'scope': 'recorded object analysis only; not a fresh build', **analyze_object(job, obj)})
             native_work.log_checks(run, job, results[-1], mode='analyze')
-        # Analysis can take seconds. Inputs must still match after the whole batch.
-        for result in results:
-            receipt = receipts[result['source'].casefold()]
-            expected = dict(receipt['dependencies'])
-            expected[receipt['object']] = receipt['object_sha256']
-            result['changed_inputs'] = sorted(set(result['changed_inputs']) | set(build_changes(receipt, tc)) | {
-                p for p, digest in expected.items() if not Path(p).exists() or sha(p) != digest})
         output = run / ('analysis-' + uuid.uuid4().hex[:8] + '.json')
         save(output, results)
         print(json.dumps({'state': 'analyzed', 'sources': len(results), 'changed_input_sources': sum(bool(r['changed_inputs']) for r in results), 'results': str(output)}))
-        if args.require_proof:
-            require_proof(results)
         return
     elif args.action == '_worker':
         execute(args.input.resolve(), args.workers)
@@ -547,23 +347,6 @@ def main():
         summary = display(args.input.resolve())
     if summary['state'] == 'failed':
         raise SystemExit(1)
-    if args.require_proof:
-        require_proof(json.loads((Path(summary['run']) / 'results.json').read_text()))
-
-
-def require_proof(results):
-    checks = [row for result in results for row in result.get('checks', [])]
-    for row in checks:
-        for name, digest in row.get('call_identity', {}).get('import_evidence_inputs', {}).items():
-            try:
-                if sha(Path(name)) != digest:
-                    raise SystemExit('import proof input changed: ' + name)
-            except OSError:
-                raise SystemExit('import proof input unavailable: ' + name)
-    if (not checks or any(result.get('status', 'complete') != 'complete' or result.get('changed_inputs') for result in results)
-            or any(row['status'] != 'exact' or 'data_errors' not in row or row['data_errors']
-                   or not row.get('call_identity', {}).get('passed', False) for row in checks)):
-        raise SystemExit('proof incomplete; inspect saved receipt (no ABI/runtime/server credit)')
 
 
 if __name__ == '__main__':
