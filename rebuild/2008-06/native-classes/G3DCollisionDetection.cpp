@@ -3,7 +3,8 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DCollisionDetection | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 3191e606 | roc native-status --write
+// <<< native-status | src 113f5133 | roc native-status --write
+#line 1 ".\\G3Dcpp\\CollisionDetection.cpp"
 /**
   @file CollisionDetection.cpp
   

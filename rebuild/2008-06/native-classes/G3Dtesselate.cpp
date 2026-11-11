@@ -3,7 +3,8 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3Dtesselate | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 57aa4efd | roc native-status --write
+// <<< native-status | src 44cddc14 | roc native-status --write
+#line 1 ".\\glg3dcpp\\tesselate.cpp"
 /**
  @file tesselate.cpp
  

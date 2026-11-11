@@ -3,7 +3,8 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DMatrix4 | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 1fe444eb | roc native-status --write
+// <<< native-status | src d0a72459 | roc native-status --write
+#line 1 ".\\G3Dcpp\\Matrix4.cpp"
 /**
   @file Matrix4.cpp
  

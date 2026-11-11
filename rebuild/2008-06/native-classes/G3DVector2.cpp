@@ -3,7 +3,8 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DVector2 | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 219de2e9 | roc native-status --write
+// <<< native-status | src c31ffa3c | roc native-status --write
+#line 1 ".\\G3Dcpp\\Vector2.cpp"
 /**
  @file Vector2.cpp
  

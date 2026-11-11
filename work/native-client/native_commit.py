@@ -61,7 +61,10 @@ def main():
     name = 'commit-' + Path(paths[0]).stem
     py = sys.executable
     if native:
-        run(py, 'roc.py', 'lease', 'take', name, *native, '--hours', '1')
+        patterns = native
+        if len(native) > 150:      # the server accepts at most 200 globs: lease the parent directories instead
+            patterns = sorted({Path(p).parent.as_posix() + '/*' for p in native})
+        run(py, 'roc.py', 'lease', 'take', name, *patterns, '--hours', '1')
     try:
         if native:        # one banner pass for every native path (each pass indexes the whole tree)
             run(py, 'scripts/native_status.py', '--write', *sum((['--path', p] for p in native), []))

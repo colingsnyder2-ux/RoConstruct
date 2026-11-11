@@ -3,7 +3,8 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DLightingParameters | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 83e29da3 | roc native-status --write
+// <<< native-status | src a5fb2d7c | roc native-status --write
+#line 1 ".\\glg3dcpp\\LightingParameters.cpp"
 /*
  @file LightingParameters.cpp
 

@@ -1,0 +1,63 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??0HeadMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@W4NormalId@2@@Z",
+    "address": "00500350"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-ViewNewHeadMesh\\objects\\d43436519ac4f7cc\\candidate.obj": "99dcaef5e7b05c1429fe82fda156c194cdf7f29f2f666a10b7412d44f4241245",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-dae67g5y\\owners.json": "abe2bee4447efff7b5c8b2c66eff1470c20d2f7cbe6e82c74d3406f2432a2378",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-dae67g5y\\import-thunk-identities-as-owner.json": "78df1a4ecac9c9e20bc1174885713208611fe412ef8f5e6303c9dfd23f55db36"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0PBBMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@VRenderSurfaceTypes@12@@Z",
+    "address": "004f4cb0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-ViewNewHeadMesh\\objects\\336f1388f2e49b07\\candidate.obj": "c2d0de4a86802b71fca58bd4c6df2558e2e6509ceaf7442669e19b1337d43a10",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-dae67g5y\\owners.json": "abe2bee4447efff7b5c8b2c66eff1470c20d2f7cbe6e82c74d3406f2432a2378",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-dae67g5y\\import-thunk-identities-as-owner.json": "78df1a4ecac9c9e20bc1174885713208611fe412ef8f5e6303c9dfd23f55db36"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??0PBBBuilder@ViewNew@RBX@@QAE@AAV?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@VVector3@4@VRenderSurfaceTypes@12@@Z",
+   "address": "004f1eb0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_EPBBMesh@ViewNew@RBX@@UAEPAXI@Z",
+   "address": "004e54c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?buildShadowBox@ViewNew@RBX@@YAXABVVector3@G3D@@AAV?$vector@VVector3@G3D@@V?$allocator@VVector3@G3D@@@std@@@std@@AAV?$vector@GV?$allocator@G@std@@@6@@Z",
+   "address": "004e3570",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?shadowsEnabled@RBX@@3_NA",
+   "address": "0096de64",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??0HeadMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@W4NormalId@2@@Z",
+   "address": "007cb1b3",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??0PBBMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@VRenderSurfaceTypes@12@@Z",
+   "address": "007caf43",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

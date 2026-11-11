@@ -3,7 +3,8 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DGImage_png | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src f104d8fe | roc native-status --write
+// <<< native-status | src 96ec7629 | roc native-status --write
+#line 1 ".\\G3Dcpp\\GImage_png.cpp"
 /**
   @file GImage_png.cpp
   @author Morgan McGuire, morgan@graphics3d.com

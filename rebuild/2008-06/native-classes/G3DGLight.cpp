@@ -3,7 +3,8 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DGLight | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src bb897834 | roc native-status --write
+// <<< native-status | src ee26863d | roc native-status --write
+#line 1 ".\\G3Dcpp\\GLight.cpp"
 /**
   @file GLight.cpp
 

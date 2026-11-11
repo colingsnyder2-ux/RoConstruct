@@ -1,9 +1,10 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
+// native-flags: /O2 /GS- /EHsc /MD
 // 2008-06 native G3DTextureManager (inactive): upstream tools/libs/g3d-6.09/source/GLG3Dcpp/TextureManager.cpp, verbatim.
 // >>> native-status (generated) -- do not edit >>>
 // G3DTextureManager | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 787f1c2a | roc native-status --write
+// <<< native-status | src 7541e6c1 | roc native-status --write
+#line 1 ".\\glg3dcpp\\TextureManager.cpp"
 /**
   @file TextureManager.cpp
 

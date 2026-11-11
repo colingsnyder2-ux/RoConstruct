@@ -3,7 +3,8 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DGWindow | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src d81c444a | roc native-status --write
+// <<< native-status | src 8ae8a76f | roc native-status --write
+#line 1 ".\\glg3dcpp\\GWindow.cpp"
 /**
  @file GWindow.cpp
   

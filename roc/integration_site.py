@@ -92,6 +92,24 @@ def inactive_code(root):
                                  [path.stem, False, path.name, 0])
         except (ValueError, OSError):
             continue
+    # native_bulk proofs (work/native-client/prove.py: full census + per-file runs). Byte-exact rows are inactive
+    # (exact); a byte-matched body at one candidate still waiting for identity/reference proof is draft.
+    for path in sorted((root / "work/native-client/prove-out").glob("*/manifest.json"), key=lambda p: p.stat().st_mtime):
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except (ValueError, OSError):
+            continue
+        stamp = path.stat().st_mtime
+        for family in data.get("families", []):
+            for row in family.get("symbols", []):
+                exact = row.get("status") == "inactive_exact"
+                candidates = row.get("candidates") or []
+                if not candidates or row["symbol"].startswith(("__", "$")) or (not exact and len(candidates) != 1):
+                    continue
+                for addr in candidates:
+                    old = found.get(addr)
+                    if not old or (exact, stamp) > (old[1], old[3]):
+                        found[addr] = [row["symbol"], exact, "native-bulk:" + path.parent.name, stamp]
     # native source with an address-named method but no receipt yet (e.g. CRobloxDoc::handle_453c30)
     for path in sorted((root / "rebuild" / CLIENT).glob("*/*.cpp")):
         text = path.read_text(encoding="utf-8", errors="replace")
