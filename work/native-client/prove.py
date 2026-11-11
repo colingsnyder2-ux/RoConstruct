@@ -129,11 +129,18 @@ def report(out, args):
             print('  %s %s %sB cand=%s %s' % (row['status'][:5], row['symbol'][:60], row.get('size'), (row.get('candidates') or [])[:2], err[:110]))
     if args.diff:
         objs = sorted(out.glob('objects/*/*.obj'), key=lambda p: p.stat().st_mtime)
-        sym = next((r['symbol'] for r in rows(manifest) if args.diff in (r.get('candidates') or [])), None)
+        sym = getattr(args, 'objdiff_symbol', None) or next((r['symbol'] for r in rows(manifest) if args.diff in (r.get('candidates') or [])), None)
         if objs and sym:
             run = subprocess.run([sys.executable, 'roc.py', 'native-asm', '2008-06', args.diff, '--obj', str(objs[-1]), '--sym', sym,
                                   '--context', '1', '--head', '40'], cwd=ROOT, capture_output=True, text=True)
             print(run.stdout[-3000:])
+            if getattr(args, 'objdiff_symbol', None):
+                import native_repair_tools as tools
+                try:
+                    directory = tools.run_dir('objdiff', args.diff)
+                    print(json.dumps({'objdiff': tools.diff_object(args.diff, sym, objs[-1], directory)}))
+                except (OSError, ValueError, RuntimeError, subprocess.TimeoutExpired) as error:
+                    print('objdiff unavailable: ' + str(error)[:500])
         else:
             logs = sorted(out.glob('objects/*/*.log'), key=lambda p: p.stat().st_mtime)
             print('no object/symbol; last compile errors:' if logs else 'nothing to diff')
@@ -155,9 +162,12 @@ def main():
     ap.add_argument('--quiet', action='store_true')
     ap.add_argument('--why', metavar='FILTER', help='after the proof, list non-exact symbols whose name contains FILTER ("" = all named)')
     ap.add_argument('--diff', metavar='ADDR', help='after the proof, assembly diff of ADDR against the file newest object')
+    ap.add_argument('--objdiff-symbol', metavar='SYMBOL', help='also generate an objdiff report for this decorated symbol; requires --diff and one source')
     args = ap.parse_args()
     if not args.files and not args.all:
         ap.error('give FILE(s) or --all')
+    if args.objdiff_symbol and (not args.diff or args.all or len(args.files) != 1):
+        ap.error('--objdiff-symbol requires --diff and exactly one source')
     import run_all
     roots = set(run_all.roots(SCOPE))
     inventory = load(INVENTORY, None)

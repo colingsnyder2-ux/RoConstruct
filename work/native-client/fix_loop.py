@@ -193,6 +193,154 @@ def near_target_size(source, addr, method):
                for family in data.get('families', []) for row in family.get('symbols', []))
 
 
+def external_diagnostics(source, addr, owner, method, deadline, iterations=12):
+    """Generate bounded review-only tool artifacts for one compiled candidate."""
+    import native_repair_tools as tools
+    proof = HERE / 'prove-out' / ('prove-' + Path(source).stem)
+    manifest = proof / 'manifest.json'
+    if not manifest.is_file():
+        return {'status': 'skipped', 'reason': 'no compiled proof manifest'}
+    data = json.loads(manifest.read_text())
+    prefix = '?' + method + '@' + owner.rsplit('::', 1)[-1] + '@'
+    rows = [row for family in data.get('families', []) for row in family.get('symbols', [])
+            if row.get('symbol', '').startswith(prefix)]
+    jobs = [job for family in data.get('families', []) for job in family.get('jobs', [])
+            if Path(job.get('source', '')).resolve() == Path(source).resolve() and job.get('object')]
+    if len(rows) != 1 or len(jobs) != 1 or not Path(jobs[0]['object']).is_file():
+        return {'status': 'skipped', 'reason': 'compiled method or object is ambiguous'}
+    symbol = rows[0]['symbol']
+    result = {'status': 'draft_only', 'symbol': symbol}
+    remaining = deadline - time.monotonic()
+    if remaining <= 5:
+        return {'status': 'skipped', 'reason': 'target time budget exhausted'}
+    try:
+        directory = tools.run_dir('objdiff', addr)
+        result['objdiff'] = tools.diff_object(addr, symbol, jobs[0]['object'], directory,
+                                              timeout=min(120, remaining))
+    except (OSError, RuntimeError, ValueError, subprocess.TimeoutExpired) as error:
+        result['objdiff_error'] = str(error)[:500]
+    remaining = deadline - time.monotonic()
+    if addr in (rows[0].get('candidates') or []):
+        result['permuter_skipped'] = 'body already byte-matched; resolve identity and references'
+    elif iterations > 0 and remaining > 50 and near_target_size(source, addr, method):
+        try:
+            result['permuter'] = tools.permute(source, addr, symbol,
+                owner.rsplit('::', 1)[-1] + '::' + method, iterations=iterations,
+                seconds=min(180, int(remaining - 35)))
+        except (OSError, RuntimeError, ValueError, subprocess.TimeoutExpired) as error:
+            result['permuter_error'] = str(error)[:500]
+    else:
+        result['permuter_skipped'] = 'not within 5% of target size or insufficient time'
+    return result
+
+
+def zero_score_candidate(diagnostics):
+    """Read a zero-score draft only from the isolated run directory."""
+    result = diagnostics.get('permuter') or {}
+    out = result.get('output_directory')
+    if not out:
+        return None
+    directory = Path(out).resolve()
+    if not directory.is_relative_to((HERE / 'repair-tool-runs').resolve()):
+        return None
+    for score_file in sorted(directory.glob('output-*/score.txt')):
+        try:
+            candidate = score_file.with_name('source.cpp')
+            if int(score_file.read_text().strip()) == 0 and candidate.is_file() and candidate.resolve().is_relative_to(directory):
+                return candidate
+        except (OSError, ValueError):
+            continue
+    return None
+
+
+def only_method_changed(original, candidate, owner, method):
+    """Reject candidates that alter declarations, other functions or source context."""
+    def body_end(text, start):
+        depth, index, literals = 0, start, []
+        while index < len(text):
+            if text.startswith('//', index):
+                end = text.find('\n', index + 2)
+                index = len(text) if end < 0 else end
+                continue
+            if text.startswith('/*', index):
+                end = text.find('*/', index + 2)
+                if end < 0:
+                    return None
+                index = end + 2
+                continue
+            if text.startswith('R"', index):
+                beginning = index
+                opening = text.find('(', index + 2, index + 19)
+                if opening < 0:
+                    return None
+                delimiter = text[index + 2:opening]
+                end = text.find(')' + delimiter + '"', opening + 1)
+                if end < 0:
+                    return None
+                index = end + len(delimiter) + 2
+                literals.append(text[beginning:index])
+                continue
+            if text[index] in ('"', "'"):
+                beginning = index
+                quote = text[index]
+                index += 1
+                while index < len(text) and text[index] != quote:
+                    index += 2 if text[index] == '\\' else 1
+                if index >= len(text):
+                    return None
+                index += 1
+                literals.append(text[beginning:index])
+                continue
+            if text[index] == '{':
+                depth += 1
+            elif text[index] == '}':
+                depth -= 1
+                if depth == 0:
+                    return index + 1, literals
+            index += 1
+        return None
+
+    def parts(text):
+        text = text.replace('\r\n', '\n')
+        matches = [m for m in transplant.DEF.finditer(text)
+                   if m.group(3) == owner.rsplit('::', 1)[-1] and m.group(4) == method]
+        if len(matches) != 1:
+            return None
+        m = matches[0]
+        extent = body_end(text, m.end() - 1)
+        if extent is None:
+            return None
+        end, literals = extent
+        if re.search(r'^\s*#', text[m.end():end], re.M):
+            return None
+        return text[:m.end()], text[end:], text[m.start():end], literals
+    before, after = parts(original), parts(candidate)
+    return (before is not None and after is not None and before[:2] == after[:2]
+            and before[3] == after[3] and not re.search(r'\b(?:__emit|_emit)\b', after[2]))
+
+
+def verify_repair_candidate(source, candidate, addr, owner, method, baseline, prove):
+    """Promote only after the normal exact/reference gate and baseline reproof pass."""
+    original = Path(source).read_bytes()
+    proposed = Path(candidate).read_text(encoding='utf-8-sig')
+    if not only_method_changed(original.decode('utf-8-sig'), proposed, owner, method):
+        return False
+    try:
+        write(Path(source), proposed)
+        if original.startswith(b'\xef\xbb\xbf'):
+            Path(source).write_bytes(b'\xef\xbb\xbf' + Path(source).read_bytes())
+        prove(source)
+        accepted = transplant.exact_addrs(Path(source))
+        if addr in accepted and baseline <= accepted and not compile_errors(Path(source)):
+            return True
+    except BaseException:
+        Path(source).write_bytes(original)
+        raise
+    Path(source).write_bytes(original)
+    prove(source)  # Restore proof state before the transplant continues.
+    return False
+
+
 
 def header_context(header, limit=100000):
     """Include reachable native declarations, not just the receiver's header."""
@@ -235,7 +383,10 @@ def header_dependents(header):
     return sorted(result)
 
 
-def run_target(addr, max_attempts=None, budget_seconds=1500, models=None, allow_models=True):
+def run_target(addr, max_attempts=None, budget_seconds=1500, models=None, allow_models=True,
+               use_repair_tools=False):
+    if not 0 < budget_seconds <= 1500:
+        raise ValueError('per-target time budget must be in (0, 1500] seconds')
     deadline = time.monotonic() + budget_seconds
     targets = transplant.transplant_targets([addr])
     if not targets:
@@ -275,6 +426,7 @@ def run_target(addr, max_attempts=None, budget_seconds=1500, models=None, allow_
     header_leases = []
     sibling_baselines = {}
     trial = []
+    diagnostics_seen = set()
     baseline = transplant.exact_addrs(path)
 
     def repair_prove(source):
@@ -332,6 +484,21 @@ def run_target(addr, max_attempts=None, budget_seconds=1500, models=None, allow_
             attempts.append(errors.splitlines()[0])
             write(Path(source), fixed)
             prove(source)
+
+        if (use_repair_tools and not compile_errors(Path(source)) and
+                addr not in transplant.exact_addrs(Path(source))):
+            digest = hashlib.sha256(Path(source).read_bytes()).hexdigest()
+            if not diagnostics_seen:
+                diagnostics_seen.add(digest)
+                iterations = 12 if max_attempts is None else max(0, min(12, max_attempts - len(attempts)))
+                result = external_diagnostics(source, addr, owner, method, deadline, iterations)
+                candidate = zero_score_candidate(result)
+                if candidate and time.monotonic() < deadline:
+                    result['promoted_after_full_proof'] = verify_repair_candidate(
+                        source, candidate, addr, owner, method, baseline, prove)
+                with (HERE / 'fix-loop.jsonl').open('a') as log:
+                    log.write(json.dumps({'addr': addr, 'status': 'repair_diagnostics',
+                                          'result': result}) + '\n')
 
         # Existing provider client handles credentials, quotas and fenced replies.
         if not allow_models:
@@ -471,18 +638,19 @@ def main():
     parser.add_argument('--minutes', type=float, default=25)
     parser.add_argument('--model', action='append', help='override repair ladder; suffix #medium sets medium effort')
     parser.add_argument('--no-llm', action='store_true', help='deterministic repairs only; never invoke a model/provider')
+    parser.add_argument('--repair-tools', action='store_true', help='run bounded objdiff/permuter; promote only after full proof')
     args = parser.parse_args()
     if args.no_llm and args.model:
         parser.error('--no-llm cannot be combined with --model')
-    if args.minutes <= 0 or (args.attempts is not None and args.attempts <= 0):
-        parser.error('time and attempt budgets must be positive')
+    if not 0 < args.minutes <= 25 or (args.attempts is not None and args.attempts <= 0):
+        parser.error('time must be in (0,25] minutes and attempts positive')
     for addr in args.addresses:
         if not re.fullmatch(r'[0-9a-fA-F]{8}', addr):
             parser.error('addresses must contain eight hexadecimal digits')
     for addr in args.addresses:
         try:
             result = run_target(addr.lower(), args.attempts, args.minutes * 60, args.model,
-                                allow_models=not args.no_llm)
+                                allow_models=not args.no_llm, use_repair_tools=args.repair_tools)
         except (RuntimeError, OSError) as error:
             result = 'blocked: ' + str(error).replace('\n', ' ')[:500]
         print(addr.lower(), result, flush=True)

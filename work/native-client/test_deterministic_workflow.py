@@ -34,6 +34,39 @@ class DeterministicWorkflowTests(unittest.TestCase):
         self.assertFalse(worker.call_args.kwargs['allow_models'])
         self.assertEqual(1500, worker.call_args.kwargs['budget_seconds'])
 
+    def test_repair_tools_are_opt_in_and_do_not_enable_models(self):
+        with patch.object(workflow.fix_loop, 'run_target', return_value='reverted: no rule') as worker:
+            workflow.execute({'address': '004ef930'}, 5, True)
+        self.assertTrue(worker.call_args.kwargs['use_repair_tools'])
+        self.assertFalse(worker.call_args.kwargs['allow_models'])
+
+    def test_repair_tool_transaction_logs_draft_and_restores_rejection(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / 'Owner.cpp'
+            source.write_bytes(b'original\r\n')
+            def trial(*args):
+                source.write_text('// 004ef930: transplanted\nvoid Owner::f() {}\n')
+                analog_to_native.prove(source)
+                return 'reverted: not exact'
+            with patch.object(fix_loop, 'ROOT', root), patch.object(fix_loop, 'HERE', root), \
+                 patch.object(analog_to_native, 'transplant_targets',
+                    return_value=[('004ef930', 'RBX::Owner', 'Owner', 'f', 'Owner.cpp')]), \
+                 patch.object(analog_to_native, 'transplant', side_effect=trial), \
+                 patch.object(analog_to_native, 'exact_addrs', return_value=set()), \
+                 patch.object(fix_loop, 'compile_errors', return_value=''), \
+                 patch.object(fix_loop, 'bounded_run', return_value=subprocess.CompletedProcess([], 0, '', '')), \
+                 patch.object(fix_loop.subprocess, 'run', return_value=subprocess.CompletedProcess([], 0)), \
+                 patch.object(fix_loop, 'external_diagnostics', return_value={'status': 'draft_only'}) as tools, \
+                 patch.object(fix_loop, 'model_body', side_effect=AssertionError('model called')):
+                outcome = fix_loop.run_target('004ef930', budget_seconds=60, allow_models=False, use_repair_tools=True)
+            self.assertTrue(outcome.startswith('reverted'))
+            tools.assert_called_once()
+            self.assertEqual(b'original\r\n', source.read_bytes())
+            records = [json.loads(line) for line in (root / 'fix-loop.jsonl').read_text().splitlines()]
+            self.assertEqual('repair_diagnostics', records[0]['status'])
+            self.assertEqual('parked', records[-1]['status'])
+
     def test_no_model_mode_restores_rejected_trial_without_provider_call(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

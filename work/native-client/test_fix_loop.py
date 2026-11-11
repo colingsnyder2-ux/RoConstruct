@@ -44,6 +44,136 @@ class MechanicalFixTests(unittest.TestCase):
     def test_member_is_not_global(self):
         text = '// 004ef930: transplanted body\nvoid f() { part->flag = true; }'
         self.assertEqual(text, fix.inferred_globals(text, "'flag' : undeclared identifier", 'extern bool flag;'))
+
+    def test_external_diagnostics_are_bounded_and_do_not_edit_source(self):
+        import json
+        import time
+        import native_repair_tools as tools
+        source = fix.HERE / 'Owner.cpp'
+        source.write_text('void Owner::method() {}')
+        obj = fix.HERE / 'candidate.obj'
+        obj.write_bytes(b'object')
+        proof = fix.HERE / 'prove-out/prove-Owner'
+        proof.mkdir(parents=True)
+        (proof / 'manifest.json').write_text(json.dumps({'families': [{
+            'symbols': [{'symbol': '?method@Owner@RBX@@QAEXXZ'}],
+            'jobs': [{'source': str(source), 'object': str(obj)}]}]}))
+        with patch.object(tools, 'run_dir', return_value=fix.HERE), \
+             patch.object(tools, 'diff_object', return_value={'scope': 'diagnostic'}) as diff, \
+             patch.object(tools, 'permute', return_value={'scope': 'draft'}) as permute, \
+             patch.object(fix, 'near_target_size', return_value=True):
+            result = fix.external_diagnostics(source, '00400000', 'RBX::Owner', 'method', time.monotonic()+60)
+        self.assertEqual('draft_only', result['status'])
+        self.assertEqual('void Owner::method() {}', source.read_text())
+        self.assertEqual(12, permute.call_args.kwargs['iterations'])
+        self.assertLessEqual(permute.call_args.kwargs['seconds'], 60)
+        diff.assert_called_once()
+
+    def test_external_diagnostics_skip_ambiguous_symbols(self):
+        import json
+        import time
+        source = fix.HERE / 'Owner.cpp'
+        source.write_text('void Owner::method() {}')
+        proof = fix.HERE / 'prove-out/prove-Owner'
+        proof.mkdir(parents=True)
+        (proof / 'manifest.json').write_text(json.dumps({'families': [{
+            'symbols': [{'symbol': '?method@Owner@one'}, {'symbol': '?method@Owner@two'}], 'jobs': []}]}))
+        result = fix.external_diagnostics(source, '00400000', 'RBX::Owner', 'method', time.monotonic()+60)
+        self.assertEqual('skipped', result['status'])
+
+    def test_byte_matched_body_is_not_permuted(self):
+        import json
+        import time
+        import native_repair_tools as tools
+        source = fix.HERE / 'Owner.cpp'
+        source.write_text('void Owner::method() {}')
+        obj = fix.HERE / 'candidate.obj'
+        obj.write_bytes(b'object')
+        proof = fix.HERE / 'prove-out/prove-Owner'
+        proof.mkdir(parents=True)
+        (proof / 'manifest.json').write_text(json.dumps({'families': [{
+            'symbols': [{'symbol': '?method@Owner@RBX@@QAEXXZ', 'candidates': ['00400000']}],
+            'jobs': [{'source': str(source), 'object': str(obj)}]}]}))
+        with patch.object(tools, 'run_dir', return_value=fix.HERE), \
+             patch.object(tools, 'diff_object', return_value={'scope': 'diagnostic'}), \
+             patch.object(tools, 'permute') as permute:
+            result = fix.external_diagnostics(source, '00400000', 'RBX::Owner', 'method', time.monotonic()+60)
+        self.assertIn('byte-matched', result['permuter_skipped'])
+        permute.assert_not_called()
+
+    def test_candidate_must_change_only_target_body(self):
+        original = 'void Owner::method() { int x = 1; }\nvoid Other::f() {}\n'
+        candidate = 'void Owner::method() { int x = 2; }\nvoid Other::f() {}\n'
+        self.assertTrue(fix.only_method_changed(original, candidate, 'RBX::Owner', 'method'))
+        self.assertFalse(fix.only_method_changed(original, candidate.replace('Other::f()', 'Other::g()'), 'RBX::Owner', 'method'))
+        self.assertFalse(fix.only_method_changed(original, candidate.replace('int x = 2;', '__emit 0;'), 'RBX::Owner', 'method'))
+        self.assertFalse(fix.only_method_changed(original, candidate.replace('method()', 'method(int a)'), 'RBX::Owner', 'method'))
+
+    def test_candidate_guard_ignores_braces_in_strings_and_comments(self):
+        original = 'void Owner::method() { const char* s = "{"; /* } */ int x = 1; }\nvoid Other::f() {}\n'
+        candidate = original.replace('x = 1', 'x = 2')
+        self.assertTrue(fix.only_method_changed(original, candidate, 'RBX::Owner', 'method'))
+        self.assertFalse(fix.only_method_changed(original, candidate.replace('"{"', '"renamed"'), 'RBX::Owner', 'method'))
+        self.assertFalse(fix.only_method_changed(original, candidate.replace('Other::f()', 'Other::g()'), 'RBX::Owner', 'method'))
+        raw = 'void Owner::method() { const char* s = R"tag({})tag"; int x = 1; }\nvoid Other::f() {}\n'
+        self.assertTrue(fix.only_method_changed(raw, raw.replace('x = 1', 'x = 2'), 'RBX::Owner', 'method'))
+
+    def test_zero_candidate_requires_reference_and_baseline_proof(self):
+        source = fix.HERE / 'Owner.cpp'
+        candidate = fix.HERE / 'candidate.cpp'
+        original = b'void Owner::method() { int x = 1; }\r\n'
+        source.write_bytes(original)
+        candidate.write_text('void Owner::method() { int x = 2; }\n')
+        proof = unittest.mock.Mock()
+        with patch.object(fix.transplant, 'exact_addrs', return_value={'00400000'}), \
+             patch.object(fix, 'compile_errors', return_value=''):
+            self.assertFalse(fix.verify_repair_candidate(source, candidate, '00400000', 'RBX::Owner',
+                                                         'method', {'00500000'}, proof))
+        self.assertEqual(original, source.read_bytes())
+        self.assertEqual(2, proof.call_count)
+        with patch.object(fix.transplant, 'exact_addrs', return_value={'00400000', '00500000'}), \
+             patch.object(fix, 'compile_errors', return_value=''):
+            self.assertTrue(fix.verify_repair_candidate(source, candidate, '00400000', 'RBX::Owner',
+                                                        'method', {'00500000'}, proof))
+        self.assertIn(b'int x = 2', source.read_bytes())
+
+    def test_candidate_restored_on_interruption(self):
+        source = fix.HERE / 'Owner.cpp'
+        candidate = fix.HERE / 'candidate.cpp'
+        original = b'void Owner::method() { int x = 1; }\r\n'
+        source.write_bytes(original)
+        candidate.write_text('void Owner::method() { int x = 2; }\n')
+        with self.assertRaises(KeyboardInterrupt):
+            fix.verify_repair_candidate(source, candidate, '00400000', 'RBX::Owner', 'method', set(),
+                                        unittest.mock.Mock(side_effect=KeyboardInterrupt))
+        self.assertEqual(original, source.read_bytes())
+
+    def test_successful_candidate_preserves_utf8_bom(self):
+        source = fix.HERE / 'Owner.cpp'
+        candidate = fix.HERE / 'candidate.cpp'
+        source.write_bytes(b'\xef\xbb\xbfvoid Owner::method() { int x = 1; }\r\n')
+        candidate.write_text('void Owner::method() { int x = 2; }\n', encoding='utf-8')
+        with patch.object(fix.transplant, 'exact_addrs', return_value={'00400000'}), \
+             patch.object(fix, 'compile_errors', return_value=''):
+            self.assertTrue(fix.verify_repair_candidate(source, candidate, '00400000', 'RBX::Owner',
+                                                        'method', set(), unittest.mock.Mock()))
+        self.assertTrue(source.read_bytes().startswith(b'\xef\xbb\xbf'))
+
+    def test_zero_candidate_must_be_inside_owned_run_directory(self):
+        run = fix.HERE / 'repair-tool-runs/test/candidates'
+        candidate = run / 'output-0-1'
+        candidate.mkdir(parents=True)
+        (candidate / 'score.txt').write_text('0')
+        (candidate / 'source.cpp').write_text('void Owner::method() {}')
+        result = {'permuter': {'output_directory': str(run)}}
+        self.assertEqual(candidate / 'source.cpp', fix.zero_score_candidate(result))
+        (candidate / 'score.txt').write_text('1')
+        self.assertIsNone(fix.zero_score_candidate(result))
+        self.assertIsNone(fix.zero_score_candidate({'permuter': {'output_directory': str(fix.HERE)}}))
+
+    def test_target_budget_cannot_exceed_25_minutes(self):
+        with self.assertRaises(ValueError):
+            fix.run_target('00400000', budget_seconds=1501)
     def test_failed_transplant_restores_exact_original_bytes(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

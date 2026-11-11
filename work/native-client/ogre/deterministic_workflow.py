@@ -115,10 +115,10 @@ def queue(manifest, state, addresses=None, retry=False):
     return result
 
 
-def execute(target, minutes):
+def execute(target, minutes, repair_tools=False):
     # Existing transaction owns leases, CRLF, header dependency reproof and rollback.
     return fix_loop.run_target(target['address'], budget_seconds=minutes * 60,
-                               allow_models=False)
+                               allow_models=False, use_repair_tools=repair_tools)
 
 
 def acquire_lock(path):
@@ -196,6 +196,7 @@ def main():
     parser.add_argument('--retry-parked', action='store_true', help='explicitly revisit unchanged failed evidence')
     parser.add_argument('--census', action='store_true', help='run one final full census after the batch')
     parser.add_argument('--commit', action='store_true', help='commit/push only unchanged proved survivors, once per batch')
+    parser.add_argument('--repair-tools', action='store_true', help='use bounded objdiff/permuter with full-proof gate')
     args = parser.parse_args()
     if not 0 < args.minutes <= 25 or args.limit <= 0:
         parser.error('positive limit and per-target time in (0,25] required')
@@ -237,7 +238,7 @@ def main():
             try:
                 proof_log = NATIVE / 'fix-loop.jsonl'
                 offset = proof_log.stat().st_size if proof_log.exists() else 0
-                outcome = execute(target, args.minutes)
+                outcome = execute(target, args.minutes, args.repair_tools)
                 event.update(status='inactive_exact' if outcome.startswith('exact') else 'parked', reason=outcome)
                 if event['status'] == 'inactive_exact':
                     with proof_log.open('rb') as log:
