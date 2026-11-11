@@ -58,6 +58,9 @@ def audit(manifest, inferred):
         'inactive_exact_bytes': sum(sizes[a] for a in accepted),
         'remaining_functions': len(remaining), 'remaining_bytes': sum(sizes[a] for a in remaining),
         'inferred_name_functions': len(named), 'inferred_name_bytes': sum(sizes[a] for a in named),
+        'inferred_name_note': ('Counts accepted owner symbols marked inferred; does not audit '
+                               'dependencies on inferred reference names.'),
+        'inferred_name_dependency_functions': None,
         'inferred_field_functions': None,
         'inferred_field_note': 'Separate field/layout dependence audit remains required; names are counted above.',
     }
