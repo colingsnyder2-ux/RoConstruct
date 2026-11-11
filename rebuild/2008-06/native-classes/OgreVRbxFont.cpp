@@ -2,9 +2,9 @@
 // 2008-06 native Ogre::VRbxFont (inactive): G3D 6.09 GFont ctor/fromFile ported to Ogre textures.
 // Body order follows the original 00684b10 / 00684eb0 and upstream GLG3D/GFont.cpp.
 // >>> native-status (generated) -- do not edit >>>
-// OgreVRbxFont | 2008-06 | 11 byte-exact, inactive (not link-selected)
-// 11/11 mapped addresses byte-exact | 0 unproved | no mapped strings | by king_originala (+2) (chatgpt:gpt-6.1-sol)
-// <<< native-status | src 3689f26a | roc native-status --write
+// OgreVRbxFont | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 95d36021 | roc native-status --write
 #include "OgreRbx/VRbxFont2008.h"
 #include <OgreTextureManager.h>
 #include <OgreDataStream.h>
@@ -146,6 +146,104 @@ namespace Ogre
 
 		return G3D::Vector2(x, y);
 	}
+
+#ifdef NATIVE_VRBXFONT_DRAW2D_PENDING   // needs VisualEngine (native header pending); see VRbxFont2008.h
+	// G3D GFont::draw2D with the OpenGL vertex arrays replaced by one TwoDManager::addQuad per character
+	// (outline passes at dx,dy = +-1 when outline.a > 0.05, then the color pass).
+	G3D::Vector2 VRbxFont::draw2D(
+		VisualEngine*               visualEngine,
+		const std::string&          s,
+		const G3D::Vector2&         pos2D,
+		double                      size,
+		const G3D::Color4&          color,
+		const G3D::Color4&          border,
+		XAlign                      xalign,
+		YAlign                      yalign,
+		Spacing                     spacing) const {
+
+		float x = pos2D.x;
+		float y = pos2D.y;
+
+		float h = size * 1.5f;
+		float w = h * charWidth / charHeight;
+
+		switch (xalign) {
+		case XALIGN_RIGHT:
+			x -= get2DStringBounds(s, size, spacing).x;
+			break;
+
+		case XALIGN_CENTER:
+			x -= get2DStringBounds(s, size, spacing).x / 2;
+			break;
+
+		default:
+			break;
+		}
+
+		// Ogre's 2D space is y-up: Roblox's port shifts by h for YALIGN_TOP and leaves YALIGN_BOTTOM alone.
+		switch (yalign) {
+		case YALIGN_TOP:
+			y -= h;
+			break;
+
+		case YALIGN_BASELINE:
+			y -= baseline * h / (double)charHeight;
+			break;
+
+		case YALIGN_CENTER:
+			y -= h / 2.0;
+			break;
+
+		default:
+			break;
+		}
+
+		int numChars = 0;
+		for (unsigned int i = 0; i < s.length(); ++i) {
+			numChars += ((s[i] % 128) != ' ') ? 1 : 0;
+		}
+		if (numChars == 0) {
+			return G3D::Vector2(0, h);
+		}
+
+		// Packed vertex array; tex coord and vertex are interlaced, 4 vertices per character.
+		G3D::Vector2* array = (G3D::Vector2*)malloc(numChars * 4 * 2 * sizeof(G3D::Vector2));
+
+		G3D::Vector2 bounds;
+		bounds = computePackedArray(s, x, y, w, h, spacing, array);
+
+		int texWidth  = texture->getWidth();
+		int texHeight = texture->getHeight();
+
+		if (border.a > 0.05f) {
+			for (int dy = -1; dy <= 1; dy += 2) {
+				for (int dx = -1; dx <= 1; dx += 2) {
+					if ((dx != 0) || (dy != 0)) {
+						const G3D::Vector2* q = array;
+						for (int i = 0; i < numChars; ++i, q += 8) {
+							visualEngine->twoD->addQuad(texture->getName(), border,
+							              q[1].x + dx, q[1].y + dy, q[5].x + dx, q[5].y + dy,
+							              q[0].x / texWidth, q[4].y / texHeight, q[4].x / texWidth, q[0].y / texHeight);
+						}
+					}
+				}
+			}
+		}
+
+		// Draw foreground
+		const G3D::Vector2* q = array;
+		for (int i = 0; i < numChars; ++i, q += 8) {
+			visualEngine->twoD->addQuad(texture->getName(), color,
+			              q[1].x, q[1].y, q[5].x, q[5].y,
+			              q[0].x / texWidth, q[4].y / texHeight, q[4].x / texWidth, q[0].y / texHeight);
+		}
+
+		free(array);
+
+		return bounds;
+	}
+
+#endif
 
 	SharedPtr<VRbxFont> VRbxFont::fromFile(const std::string& filename)
 	{

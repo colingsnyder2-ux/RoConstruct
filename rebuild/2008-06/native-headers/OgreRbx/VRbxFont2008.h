@@ -11,7 +11,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // VRbxFont2008 | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 7c79af5d | roc native-status --write
+// <<< native-status | src b0281788 | roc native-status --write
 
 #include <string>
 #include <OgreSharedPtr.h>
@@ -26,7 +26,7 @@ namespace G3D
 
 namespace Ogre
 {
-	class TwoDManager;
+	class VisualEngine;     // exe-local, size 0x808; native header still pending (see native-classes/OgreVisualEngine.cpp)
 
 	class VRbxFont
 	{
@@ -53,8 +53,12 @@ namespace Ogre
 		// and called from draw2D's XALIGN_RIGHT / XALIGN_CENTER cases exactly as GFont::draw2D calls it.
 		G3D::Vector2 get2DStringBounds(const std::string& s, double size, Spacing spacing) const;   // 00684640
 
-		G3D::Vector2 draw2D(TwoDManager* twoD, const std::string& s, const G3D::Vector2& pos2D, double size,
+		// 00684730: first parameter is VisualEngine*, not TwoDManager*: the only caller (AdornRbxGfx 0066fe0c) passes
+		// AdornRbxGfx::visualEngine (+0x04), and the body calls TwoDManager::addQuad on [arg + 0x14] = VisualEngine's
+		// TwoDManager*. (The registry's TwoDManager* spelling came from a generated roc_* analog.) Body recovered as
+		// far as 153/245 instructions; parked until VisualEngine has a native header (Codex parked its layout).
+		G3D::Vector2 draw2D(VisualEngine* visualEngine, const std::string& s, const G3D::Vector2& pos2D, double size,
 		                    const G3D::Color4& color, const G3D::Color4& outline, XAlign xalign,
-		                    YAlign yalign, Spacing spacing) const;                                 // 00684730
+		                    YAlign yalign, Spacing spacing) const;
 	};
 }
