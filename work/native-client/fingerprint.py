@@ -288,7 +288,8 @@ def default_targets(min_size):
     from roc import match
     roots = run_all.roots(('Ogre::', 'RBX::RenderNew', 'RBX::ViewNew'))
     exact = set()
-    census = sorted(HERE.glob('ogre-native-full-census-loop*/manifest.json'), key=lambda p: p.stat().st_mtime)
+    census = sorted([*HERE.glob('ogre-native-full-census-loop*/manifest.json'), *HERE.glob('prove-out/OgreNativeFull/manifest.json')],
+                    key=lambda p: p.stat().st_mtime)
     if census:
         for family in json.loads(census[-1].read_text())['families']:
             for row in family['symbols']:
