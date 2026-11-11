@@ -1,4 +1,95 @@
+// from server: 100% by EspClaude
 // from server: 78% by EspClaude
+// roc 2007-08 00562c90  unit: RBX::TrackCameraCommand  size: 264 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 00562c90
+//
+// 00562c90  64a100000000         mov eax, dword ptr fs:[0]
+// 00562c96  6aff                 push -1
+// 00562c98  68d8bc7500           push 0x75bcd8
+// 00562c9d  50                   push eax
+// 00562c9e  64892500000000       mov dword ptr fs:[0], esp
+// 00562ca5  83ec08               sub esp, 8
+// 00562ca8  53                   push ebx
+// 00562ca9  8bd9                 mov ebx, ecx
+// 00562cab  8b4b20               mov ecx, dword ptr [ebx + 0x20]
+// 00562cae  85c9                 test ecx, ecx
+// 00562cb0  56                   push esi
+// 00562cb1  7407                 je 0x562cba
+// 00562cb3  e888e0eaff           call 0x410d40
+// 00562cb8  eb02                 jmp 0x562cbc
+// 00562cba  33c0                 xor eax, eax
+// 00562cbc  8d4c2408             lea ecx, [esp + 8]
+// 00562cc0  51                   push ecx
+// 00562cc1  8bc8                 mov ecx, eax
+// 00562cc3  e8c8cfeaff           call 0x40fc90
+// 00562cc8  8b00                 mov eax, dword ptr [eax]
+// 00562cca  6a00                 push 0
+// 00562ccc  68c08f8900           push 0x898fc0
+// 00562cd1  684c1f8800           push 0x881f4c
+// 00562cd6  6a00                 push 0
+// 00562cd8  50                   push eax
+// 00562cd9  c744242c00000000     mov dword ptr [esp + 0x2c], 0
+// 00562ce1  e850e00c00           call 0x630d36
+// 00562ce6  8bf0                 mov esi, eax
+// 00562ce8  8b442420             mov eax, dword ptr [esp + 0x20]
+// 00562cec  83c414               add esp, 0x14
+// 00562cef  85c0                 test eax, eax
+// 00562cf1  c7442418ffffffff     mov dword ptr [esp + 0x18], 0xffffffff
+// 00562cf9  742e                 je 0x562d29
+// 00562cfb  57                   push edi
+// 00562cfc  8bf8                 mov edi, eax
+// 00562cfe  83c004               add eax, 4
+// 00562d01  83caff               or edx, 0xffffffff
+// 00562d04  f00fc110             lock xadd dword ptr [eax], edx
+// 00562d08  751e                 jne 0x562d28
+// 00562d0a  8b07                 mov eax, dword ptr [edi]
+// 00562d0c  8b5004               mov edx, dword ptr [eax + 4]
+// 00562d0f  8bcf                 mov ecx, edi
+// 00562d11  ffd2                 call edx
+// 00562d13  8d4708               lea eax, [edi + 8]
+// 00562d16  83c9ff               or ecx, 0xffffffff
+// 00562d19  f00fc108             lock xadd dword ptr [eax], ecx
+// 00562d1d  7509                 jne 0x562d28
+// 00562d1f  8b17                 mov edx, dword ptr [edi]
+// 00562d21  8b4208               mov eax, dword ptr [edx + 8]
+// 00562d24  8bcf                 mov ecx, edi
+// 00562d26  ffd0                 call eax
+// 00562d28  5f                   pop edi
+// 00562d29  85f6                 test esi, esi
+// 00562d2b  7439                 je 0x562d66
+// 00562d2d  8b430c               mov eax, dword ptr [ebx + 0xc]
+// 00562d30  8b9028020000         mov edx, dword ptr [eax + 0x228]
+// 00562d36  8d8828020000         lea ecx, [eax + 0x228]
+// 00562d3c  8b4204               mov eax, dword ptr [edx + 4]
+// 00562d3f  56                   push esi
+// 00562d40  ffd0                 call eax
+// 00562d42  8bc8                 mov ecx, eax
+// 00562d44  e8b7890300           call 0x59b700
+// 00562d49  8b430c               mov eax, dword ptr [ebx + 0xc]
+// 00562d4c  8b9028020000         mov edx, dword ptr [eax + 0x228]
+// 00562d52  8d8828020000         lea ecx, [eax + 0x228]
+// 00562d58  8b4204               mov eax, dword ptr [edx + 4]
+// 00562d5b  6a03                 push 3
+// 00562d5d  ffd0                 call eax
+// 00562d5f  8bc8                 mov ecx, eax
+// 00562d61  e85a890300           call 0x59b6c0
+// 00562d66  8b742420             mov esi, dword ptr [esp + 0x20]
+// 00562d6a  6aff                 push -1
+// 00562d6c  8bce                 mov ecx, esi
+// 00562d6e  e83ddbeaff           call 0x4108b0
+// 00562d73  8b16                 mov edx, dword ptr [esi]
+// 00562d75  8b4204               mov eax, dword ptr [edx + 4]
+// 00562d78  6a01                 push 1
+// 00562d7a  8bce                 mov ecx, esi
+// 00562d7c  c74604ffffffff       mov dword ptr [esi + 4], 0xffffffff
+// 00562d83  ffd0                 call eax
+// 00562d85  8b4c2410             mov ecx, dword ptr [esp + 0x10]
+// 00562d89  5e                   pop esi
+// 00562d8a  5b                   pop ebx
+// 00562d8b  64890d00000000       mov dword ptr fs:[0], ecx
+// 00562d92  83c414               add esp, 0x14
+// 00562d95  c20400               ret 4
+
 // from server: 100% by king_originala
 // roc 2008-06 005813f0  unit: RBX::TrackCameraCommand  size: 278 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005813f0
@@ -98,7 +189,7 @@
 // 00581503  c20400               ret 4
 
 // from server: 97% by Espeon
-// roc-cl: 21022
+// roc-cl: 50727
 // roc-flags: /O2 /GS- /EHsc /MD
 #include <intrin.h>
 #include <utility>
@@ -146,9 +237,9 @@ struct Selection {boost::shared_ptr<Instance> first();};
 struct Context {Selection* selection();};
 struct Camera {void setSubject(PVInstance*);void setType(int);};
 struct CameraOwner {virtual ~CameraOwner();virtual Camera* getCamera();};
-struct Workspace {char pad[0x288];CameraOwner cameraOwner;};
+struct Workspace {char pad[0x228];CameraOwner cameraOwner;};
 struct Name {int id;std::string text;const char* c_str()const{return text.c_str();}};
-struct IDataState {virtual void setDirty(bool)=0;};
+struct IDataState {virtual void slot0();virtual void setDirty(bool)=0;int field4;void func_4108b0(int);};
 void __cdecl trackVerb(const char*,Workspace*);
 struct TrackCameraCommand {
  void* table;
@@ -165,8 +256,8 @@ void TrackCameraCommand::doIt(IDataState* state){
   workspace->cameraOwner.getCamera()->setSubject(subject);
   workspace->cameraOwner.getCamera()->setType(3);
  }
- Workspace* currentWorkspace=workspace;
- trackVerb(name->c_str(),currentWorkspace);
+ state->func_4108b0(-1);
+ state->field4=-1;
  state->setDirty(true);
 }
 }

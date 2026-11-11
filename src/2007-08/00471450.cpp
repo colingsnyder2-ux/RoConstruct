@@ -1,11 +1,13 @@
+// from server: 100% by EspClaude
 // from server: 99% by EspClaude
 // from server: 100% by king_originala
 // from server: 94% by colin
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-lib: g3d-6.09-dll GLG3Dcpp/Texture.cpp
+// roc-lib: g3d-6.09-dll roc_claude_ee24dd4928e63081.cpp
 
 // Candidate translation unit (score above; library headers required).
+#line 1 ".\\glg3dcpp\\Texture.cpp"
 /**
  @file Texture.cpp
 

@@ -1,10 +1,1425 @@
+// from server: 100% by EspClaude
 // from server: 99% by EspClaude
 // from server: 100% by auto
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-lib: openrbx-raknet RakPeer.cpp
+// roc-lib: openrbx-raknet roc_claude_1b46fa9afc360a23.cpp
 
 // Candidate translation unit (score above; library headers required).
+// 2007-08: RakPeer has no maxOutgoingBPS (rsacrypt at 0x73c, not 0x744)
+#include "RakNetDefines.h"
+// 2007-08: OrderedList::Remove takes no comparison-function argument (CloseConnectionInternal pushes only the key)
+/// \file
+/// \brief \b [Internal] Quicksort ordered list.
+///
+/// This file is part of RakNet Copyright 2003 Kevin Jenkins.
+///
+/// Usage of RakNet is subject to the appropriate license agreement.
+/// Creative Commons Licensees are subject to the
+/// license found at
+/// http://creativecommons.org/licenses/by-nc/2.5/
+/// Single application licensees are subject to the license found at
+/// http://www.rakkarsoft.com/SingleApplicationLicense.html
+/// Custom license users are subject to the terms therein.
+/// GPL license users are subject to the GNU General Public
+/// License as published by the Free
+/// Software Foundation; either version 2 of the License, or (at your
+/// option) any later version.
+
+#include "DS_List.h"
+#include "Export.h"
+
+#ifndef __ORDERED_LIST_H
+#define __ORDERED_LIST_H
+
+/// The namespace DataStructures was only added to avoid compiler errors for commonly named data structures
+/// As these data structures are stand-alone, you can use them outside of RakNet for your own projects if you wish.
+namespace DataStructures
+{
+	template <class key_type, class data_type>
+	int defaultOrderedListComparison(const key_type &a, const data_type &b)
+	{
+		if (a<b) return -1; if (a==b) return 0; return 1;
+	}
+
+	/// \note IMPORTANT! If you use defaultOrderedListComparison then call IMPLEMENT_DEFAULT_COMPARISON or you will get an unresolved external linker error.
+	template <class key_type, class data_type, int (*comparison_function)(const key_type&, const data_type&)=defaultOrderedListComparison<key_type, data_type> >
+	class RAK_DLL_EXPORT OrderedList
+	{
+	public:
+		static void IMPLEMENT_DEFAULT_COMPARISON(void) {DataStructures::defaultOrderedListComparison<key_type, data_type>(key_type(),data_type());}
+
+		OrderedList();
+		~OrderedList();
+		OrderedList( const OrderedList& original_copy );
+		OrderedList& operator= ( const OrderedList& original_copy );
+
+		/// comparisonFunction must take a key_type and a data_type and return <0, ==0, or >0
+		/// If the data type has comparison operators already defined then you can just use defaultComparison
+		bool HasData(const key_type &key, int (*cf)(const key_type&, const data_type&)=comparison_function) const;
+		// GetIndexFromKey returns where the insert should go at the same time checks if it is there
+		unsigned GetIndexFromKey(const key_type &key, bool *objectExists, int (*cf)(const key_type&, const data_type&)=comparison_function) const;
+		data_type GetElementFromKey(const key_type &key, int (*cf)(const key_type&, const data_type&)=comparison_function);
+		bool GetElementFromKey(const key_type &key, data_type &element, int (*cf)(const key_type&, const data_type&)=comparison_function);
+		unsigned Insert(const key_type &key, const data_type &data, bool assertOnDuplicate, int (*cf)(const key_type&, const data_type&)=comparison_function);
+		unsigned Remove(const key_type &key);
+		unsigned RemoveIfExists(const key_type &key, int (*cf)(const key_type&, const data_type&)=comparison_function);
+		data_type& operator[] ( const unsigned int position ) const;
+		void RemoveAtIndex(const unsigned index);
+		void InsertAtIndex(const data_type &data, const unsigned index);
+		void InsertAtEnd(const data_type &data);
+		void Del(const unsigned num=1);
+		void Clear(void);		
+		unsigned Size(void) const;
+
+	protected:
+		DataStructures::List<data_type> orderedList;
+	};
+
+	template <class key_type, class data_type, int (*comparison_function)(const key_type&, const data_type&)>
+	OrderedList<key_type, data_type, comparison_function>::OrderedList()
+	{
+	}
+
+	// FUNCTION: WEBSERVICE 0x101c2070
+	// DataStructures::OrderedList<SystemAddress,SystemAddressAndIndex,&SystemAddressAndIndexComp>::~OrderedList<SystemAddress,SystemAddressAndIndex,&SystemAddressAndIndexComp>
+	// FUNCTION: WEBSERVICE 0x101bedb0
+	// DataStructures::OrderedList<unsigned int,DataStructures::RangeNode<unsigned int>,&DataStructures::RangeNodeComp<unsigned int> >::~OrderedList<unsigned int,DataStructures::RangeNode<unsigned int>,&DataStructures::RangeNodeComp<unsigned int> >
+	template <class key_type, class data_type, int (*comparison_function)(const key_type&, const data_type&)>
+	OrderedList<key_type, data_type, comparison_function>::~OrderedList()
+	{
+		Clear();
+	}
+
+	template <class key_type, class data_type, int (*comparison_function)(const key_type&, const data_type&)>
+	OrderedList<key_type, data_type, comparison_function>::OrderedList( const OrderedList& original_copy )
+	{
+		orderedList=original_copy.orderedList;
+	}
+
+	template <class key_type, class data_type, int (*comparison_function)(const key_type&, const data_type&)>
+	OrderedList<key_type, data_type, comparison_function>& OrderedList<key_type, data_type, comparison_function>::operator= ( const OrderedList& original_copy )
+	{
+		orderedList=original_copy.orderedList;
+		return *this;
+	}
+
+	template <class key_type, class data_type, int (*comparison_function)(const key_type&, const data_type&)>
+	bool OrderedList<key_type, data_type, comparison_function>::HasData(const key_type &key, int (*cf)(const key_type&, const data_type&)) const
+	{
+		bool objectExists;
+		unsigned index;
+		index = GetIndexFromKey(key, &objectExists, cf);
+		return objectExists;
+	}
+
+	template <class key_type, class data_type, int (*comparison_function)(const key_type&, const data_type&)>
+	data_type OrderedList<key_type, data_type, comparison_function>::GetElementFromKey(const key_type &key, int (*cf)(const key_type&, const data_type&))
+	{
+		bool objectExists;
+		unsigned index;
+		index = GetIndexFromKey(key, &objectExists, cf);
+		assert(objectExists);
+		return orderedList[index];
+	}
+	template <class key_type, class data_type, int (*comparison_function)(const key_type&, const data_type&)>
+	bool OrderedList<key_type, data_type, comparison_function>::GetElementFromKey(const key_type &key, data_type &element, int (*cf)(const key_type&, const data_type&))
+	{
+		bool objectExists;
+		unsigned index;
+		index = GetIndexFromKey(key, &objectExists, cf);
+		if (objectExists)
+			element = orderedList[index];
+		return objectExists;
+	}
+	// FUNCTION: WEBSERVICE 0x101b1c90
+	// DataStructures::OrderedList<SystemAddress,SystemAddressAndIndex,&SystemAddressAndIndexComp>::GetIndexFromKey
+	// FUNCTION: WEBSERVICE 0x101bb0f0
+	// DataStructures::OrderedList<unsigned int,DataStructures::RangeNode<unsigned int>,&DataStructures::RangeNodeComp<unsigned int> >::GetIndexFromKey
+	// FUNCTION: WEBSERVICE 0x101bc4c0
+	// DataStructures::OrderedList<unsigned short,SplitPacketChannel *,&SplitPacketChannelComp>::GetIndexFromKey
+	template <class key_type, class data_type, int (*comparison_function)(const key_type&, const data_type&)>
+	unsigned OrderedList<key_type, data_type, comparison_function>::GetIndexFromKey(const key_type &key, bool *objectExists, int (*cf)(const key_type&, const data_type&)) const
+	{
+		int index, upperBound, lowerBound;
+		int res;
+
+		if (orderedList.Size()==0)
+		{
+			*objectExists=false;
+			return 0;
+		}
+
+		upperBound=(int)orderedList.Size()-1;
+		lowerBound=0;
+		index = (int)orderedList.Size()/2;
+
+#ifdef _MSC_VER
+	#pragma warning( disable : 4127 ) // warning C4127: conditional expression is constant
+#endif
+		while (1)
+		{
+			res = cf(key,orderedList[index]);
+			if (res==0)
+			{
+				*objectExists=true;
+				return index;
+			}
+			else if (res<0)
+			{
+				upperBound=index-1;
+			}
+			else// if (res>0)
+			{
+				lowerBound=index+1;
+			}
+
+			index=lowerBound+(upperBound-lowerBound)/2;
+
+			if (lowerBound>upperBound)
+			{
+				*objectExists=false;
+				return lowerBound; // No match
+			}
+		}
+	}
+
+	// FUNCTION: WEBSERVICE 0x101bb330
+	// DataStructures::OrderedList<int,DataStructures::Map<int,HuffmanEncodingTree *,&DataStructures::defaultMapKeyComparison<int> >::MapNode,&DataStructures::Map<int,HuffmanEncodingTree *,&DataStructures::defaultMapKeyComparison<int> >::NodeComparisonFunc>::Insert
+	// FUNCTION: WEBSERVICE 0x101be020
+	// DataStructures::OrderedList<unsigned int,DataStructures::RangeNode<unsigned int>,&DataStructures::RangeNodeComp<unsigned int> >::Insert
+	template <class key_type, class data_type, int (*comparison_function)(const key_type&, const data_type&)>
+	unsigned OrderedList<key_type, data_type, comparison_function>::Insert(const key_type &key, const data_type &data, bool assertOnDuplicate, int (*cf)(const key_type&, const data_type&))
+	{
+		bool objectExists;
+		unsigned index;
+		index = GetIndexFromKey(key, &objectExists, cf);
+
+		if (objectExists)
+		{
+			assert(assertOnDuplicate==false);
+			return (unsigned)-1;
+		}
+
+		if (index>=orderedList.Size())
+		{
+			orderedList.Insert(data);
+			return orderedList.Size()-1;
+		}
+		else
+		{
+			orderedList.Insert(data,index);
+			return index;
+		}		
+	}
+
+	// FUNCTION: WEBSERVICE 0x101b4710
+	template <class key_type, class data_type, int (*comparison_function)(const key_type&, const data_type&)>
+	unsigned OrderedList<key_type, data_type, comparison_function>::Remove(const key_type &key)
+	{
+		bool objectExists;
+		unsigned index;
+		index = GetIndexFromKey(key, &objectExists);
+
+		// Can't find the element to remove if this assert hits
+		assert(objectExists==true);
+		if (objectExists==false)
+			return 0;
+
+		orderedList.RemoveAtIndex(index);
+		return index;
+	}
+
+	template <class key_type, class data_type, int (*comparison_function)(const key_type&, const data_type&)>
+	unsigned OrderedList<key_type, data_type, comparison_function>::RemoveIfExists(const key_type &key, int (*cf)(const key_type&, const data_type&))
+	{
+		bool objectExists;
+		unsigned index;
+		index = GetIndexFromKey(key, &objectExists, cf);
+
+		// Can't find the element to remove if this assert hits
+		if (objectExists==false)
+			return 0;
+
+		orderedList.RemoveAtIndex(index);
+		return index;
+	}
+
+	template <class key_type, class data_type, int (*comparison_function)(const key_type&, const data_type&)>
+	void OrderedList<key_type, data_type, comparison_function>::RemoveAtIndex(const unsigned index)
+	{
+		orderedList.RemoveAtIndex(index);
+	}
+
+	template <class key_type, class data_type, int (*comparison_function)(const key_type&, const data_type&)>
+		void OrderedList<key_type, data_type, comparison_function>::InsertAtIndex(const data_type &data, const unsigned index)
+	{
+		orderedList.Insert(data, index);
+	}
+
+	template <class key_type, class data_type, int (*comparison_function)(const key_type&, const data_type&)>
+		void OrderedList<key_type, data_type, comparison_function>::InsertAtEnd(const data_type &data)
+	{
+		orderedList.Insert(data);
+	}
+
+	template <class key_type, class data_type, int (*comparison_function)(const key_type&, const data_type&)>
+		void OrderedList<key_type, data_type, comparison_function>::Del(const unsigned num)
+	{
+		orderedList.Del(num);
+	}
+
+	template <class key_type, class data_type, int (*comparison_function)(const key_type&, const data_type&)>
+	void OrderedList<key_type, data_type, comparison_function>::Clear(void)
+	{
+		orderedList.Clear();
+	}
+
+	template <class key_type, class data_type, int (*comparison_function)(const key_type&, const data_type&)>
+	data_type& OrderedList<key_type, data_type, comparison_function>::operator[]( const unsigned int position ) const
+	{
+		return orderedList[position];
+	}
+
+	template <class key_type, class data_type, int (*comparison_function)(const key_type&, const data_type&)>
+	unsigned OrderedList<key_type, data_type, comparison_function>::Size(void) const
+	{
+		return orderedList.Size();
+	}
+}
+
+#endif
+
+// 2007-08: ReliabilityLayer is 0x10 smaller (RemoteSystemStruct stride 0x840, weInitiatedTheConnection at 0x7d0): no throughput-cap timers
+/// \file
+/// \brief \b [Internal] Datagram reliable, ordered, unordered and sequenced sends.  Flow control.  Message splitting, reassembly, and coalescence.
+///
+/// This file is part of RakNet Copyright 2003 Kevin Jenkins.
+///
+/// Usage of RakNet is subject to the appropriate license agreement.
+/// Creative Commons Licensees are subject to the
+/// license found at
+/// http://creativecommons.org/licenses/by-nc/2.5/
+/// Single application licensees are subject to the license found at
+/// http://www.rakkarsoft.com/SingleApplicationLicense.html
+/// Custom license users are subject to the terms therein.
+/// GPL license users are subject to the GNU General Public
+/// License as published by the Free
+/// Software Foundation; either version 2 of the License, or (at your
+/// option) any later version.
+
+#ifndef __RELIABILITY_LAYER_H
+#define __RELIABILITY_LAYER_H
+
+#include "MTUSize.h"
+#include "DS_LinkedList.h"
+#include "DS_List.h"
+#include "SocketLayer.h"
+#include "PacketPriority.h"
+#include "DS_Queue.h"
+#include "BitStream.h"
+#include "InternalPacket.h"
+#include "DS_MemoryPool.h"
+#include "DataBlockEncryptor.h"
+#include "RakNetStatistics.h"
+#include "SHA1.h"
+#include "DS_OrderedList.h"
+#include "DS_RangeList.h"
+#include "DS_BPlusTree.h"
+
+class PluginInterface;
+
+/// Sizeof an UDP header in byte
+#define UDP_HEADER_SIZE 28
+
+/// Number of ordered streams available. You can use up to 32 ordered streams
+#define NUMBER_OF_ORDERED_STREAMS 32 // 2^5
+
+#define RESEND_TREE_ORDER 32
+
+#include "BitStream.h"
+
+int SplitPacketIndexComp( SplitPacketIndexType const &key, InternalPacket* const &data );
+struct SplitPacketChannel
+{
+	RakNetTimeNS lastUpdateTime;
+	DataStructures::OrderedList<SplitPacketIndexType, InternalPacket*, SplitPacketIndexComp> splitPacketList;
+};
+int RAK_DLL_EXPORT SplitPacketChannelComp( SplitPacketIdType const &key, SplitPacketChannel* const &data );
+
+/// Datagram reliable, ordered, unordered and sequenced sends.  Flow control.  Message splitting, reassembly, and coalescence.
+class ReliabilityLayer
+{
+public:
+
+	/// Constructor
+	ReliabilityLayer();
+
+	/// Destructor
+	~ReliabilityLayer();
+
+	/// Resets the layer for reuse
+	void Reset( bool resetVariables );
+
+	///Sets the encryption key.  Doing so will activate secure connections
+	/// \param[in] key Byte stream for the encryption key
+	void SetEncryptionKey( const unsigned char *key );
+
+	/// Set the time, in MS, to use before considering ourselves disconnected after not being able to deliver a reliable packet
+	/// Default time is 10,000 or 10 seconds in release and 30,000 or 30 seconds in debug.
+	/// \param[in] time Time, in MS
+	void SetTimeoutTime( RakNetTime time );
+
+	/// Returns the value passed to SetTimeoutTime. or the default if it was never called
+	/// \param[out] the value passed to SetTimeoutTime
+	RakNetTime GetTimeoutTime(void);
+
+	/// Packets are read directly from the socket layer and skip the reliability layer because unconnected players do not use the reliability layer
+	/// This function takes packet data after a player has been confirmed as connected.
+	/// \param[in] buffer The socket data
+	/// \param[in] length The length of the socket data
+	/// \param[in] systemAddress The player that this data is from
+	/// \param[in] messageHandlerList A list of registered plugins
+	/// \param[in] MTUSize maximum datagram size
+	/// \retval true Success
+	/// \retval false Modified packet
+	bool HandleSocketReceiveFromConnectedPlayer( const char *buffer, int length, SystemAddress systemAddress, DataStructures::List<PluginInterface*> &messageHandlerList, int MTUSize );
+
+	/// This allocates bytes and writes a user-level message to those bytes.
+	/// \param[out] data The message
+	/// \return Returns number of BITS put into the buffer
+	int Receive( unsigned char**data );
+
+	/// Puts data on the send queue
+	/// \param[in] data The data to send
+	/// \param[in] numberOfBitsToSend The length of \a data in bits
+	/// \param[in] priority The priority level for the send
+	/// \param[in] reliability The reliability type for the send
+	/// \param[in] orderingChannel 0 to 31.  Specifies what channel to use, for relational ordering and sequencing of packets.
+	/// \param[in] makeDataCopy If true \a data will be copied.  Otherwise, only a pointer will be stored.
+	/// \param[in] MTUSize maximum datagram size
+	/// \param[in] currentTime Current time, as per RakNet::GetTime()
+	/// \return True or false for success or failure.
+	bool Send( char *data, int numberOfBitsToSend, PacketPriority priority, PacketReliability reliability, unsigned char orderingChannel, bool makeDataCopy, int MTUSize, RakNetTimeNS currentTime );
+
+	/// Call once per game cycle.  Handles internal lists and actually does the send.
+	/// \param[in] s the communication  end point
+	/// \param[in] systemAddress The Unique Player Identifier who shouldhave sent some packets
+	/// \param[in] MTUSize maximum datagram size
+	/// \param[in] time current system time
+	/// \param[in] messageHandlerList A list of registered plugins
+	void Update(  SOCKET s, SystemAddress systemAddress, int MTUSize, RakNetTimeNS time, unsigned maxBitsPerSecond, DataStructures::List<PluginInterface*> &messageHandlerList );
+
+	/// If Read returns -1 and this returns true then a modified packetwas detected
+	/// \return true when a modified packet is detected
+	bool IsCheater( void ) const;
+
+	/// Were you ever unable to deliver a packet despite retries?
+	/// \return true means the connection has been lost.  Otherwise not.
+	bool IsDeadConnection( void ) const;
+
+	/// Causes IsDeadConnection to return true
+	void KillConnection(void);
+
+	/// Sets the ping, which is used by the reliability layer to determine how long to wait for resends.  Mostly for flow control.
+	/// \param[in] The ping time.
+
+	/// Get Statistics
+	/// \return A pointer to a static struct, filled out with current statistical information.
+	RakNetStatistics * const GetStatistics( void );
+
+	///Are we waiting for any data to be sent out or be processed by the player?
+	bool IsDataWaiting(void);
+	bool AreAcksWaiting(void);
+
+	// Set outgoing lag and packet loss properties
+	void ApplyNetworkSimulator( double _maxSendBPS, RakNetTime _minExtraPing, RakNetTime _extraPingVariance );
+
+	/// Returns if you previously called ApplyNetworkSimulator
+	/// \return If you previously called ApplyNetworkSimulator
+	bool IsNetworkSimulatorActive( void );
+
+	void SetSplitMessageProgressInterval(int interval);
+	RakNetTimeNS GetLastTimeBetweenPacketsIncrease(void) const;
+	RakNetTimeNS GetLastTimeBetweenPacketsDecrease(void) const;
+	RakNetTimeNS GetAckPing(void) const;
+	/// True when the peer has not acknowledged anything within timeoutTime.
+	bool AckTimeout( RakNetTimeNS curTime );
+	/// True when anything is queued to send, awaiting acknowledgement or pending resend.
+	bool IsOutgoingDataWaiting(void);
+	void SetUnreliableTimeout(RakNetTime timeoutMS);
+
+private:
+
+	/// Generates a datagram (coalesced packets)
+	/// \param[out] output The resulting BitStream
+	/// \param[in] Current MTU size
+	/// \param[out] reliableDataSent Set to true or false as a return value as to if reliable data was sent.
+	/// \param[in] time Current time
+	/// \param[in] systemAddress Who we are sending to
+	/// \param[in] messageHandlerList A list of registered plugins
+	/// \return The number of messages sent
+	bool GenerateDatagram( RakNet::BitStream *output, int MTUSize, bool *reliableDataSent, RakNetTimeNS time, SystemAddress systemAddress, DataStructures::List<PluginInterface*> &messageHandlerList );
+
+	/// Send the contents of a bitstream to the socket
+	/// \param[in] s The socket used for sending data
+	/// \param[in] systemAddress The address and port to send to
+	/// \param[in] bitStream The data to send.
+	void SendBitStream( SOCKET s, SystemAddress systemAddress, RakNet::BitStream *bitStream );
+
+	///Parse an internalPacket and create a bitstream to represent this dataReturns number of bits used
+	int WriteToBitStreamFromInternalPacket( RakNet::BitStream *bitStream, const InternalPacket *const internalPacket, RakNetTimeNS curTime );
+
+	/// Parse a bitstream and create an internal packet to represent this data
+	InternalPacket* CreateInternalPacketFromBitStream( RakNet::BitStream *bitStream, RakNetTimeNS time );
+
+	/// Does what the function name says
+
+	/// Acknowledge receipt of the packet with the specified messageNumber
+	void SendAcknowledgementPacket( const MessageNumberType messageNumber, RakNetTimeNS time );
+
+	/// This will return true if we should not send at this time
+	bool IsSendThrottled( int MTUSize );
+
+	/// We lost a packet
+	void UpdateWindowFromPacketloss( RakNetTimeNS time );
+
+	/// Increase the window size
+	void UpdateWindowFromAck( RakNetTimeNS time );
+
+	/// Parse an internalPacket and figure out how many header bits would be written.  Returns that number
+	int GetBitStreamHeaderLength( const InternalPacket *const internalPacket );
+
+	/// Get the SHA1 code
+	void GetSHA1( unsigned char * const buffer, unsigned int nbytes, char code[ SHA1_LENGTH ] );
+
+	/// Check the SHA1 code
+	bool CheckSHA1( char code[ SHA1_LENGTH ], unsigned char * const buffer, unsigned int nbytes );
+
+	/// Search the specified list for sequenced packets on the specified ordering channel, optionally skipping those with splitPacketId, and delete them
+	void DeleteSequencedPacketsInList( unsigned char orderingChannel, DataStructures::List<InternalPacket*>&theList, int splitPacketId = -1 );
+
+	/// Search the specified list for sequenced packets with a value less than orderingIndex and delete them
+	void DeleteSequencedPacketsInList( unsigned char orderingChannel, DataStructures::Queue<InternalPacket*>&theList );
+
+	/// Returns true if newPacketOrderingIndex is older than the waitingForPacketOrderingIndex
+	bool IsOlderOrderedPacket( OrderingIndexType newPacketOrderingIndex, OrderingIndexType waitingForPacketOrderingIndex );
+
+	/// Split the passed packet into chunks under MTU_SIZE bytes (including headers) and save those new chunks
+	void SplitPacket( InternalPacket *internalPacket, int MTUSize );
+
+	/// Insert a packet into the split packet list
+	void InsertIntoSplitPacketList( InternalPacket * internalPacket, RakNetTimeNS time );
+
+	/// Take all split chunks with the specified splitPacketId and try to reconstruct a packet. If we can, allocate and return it.  Otherwise return 0
+	InternalPacket * BuildPacketFromSplitPacketList( SplitPacketIdType splitPacketId, RakNetTimeNS time );
+
+	/// Delete any unreliable split packets that have long since expired
+	void DeleteOldUnreliableSplitPackets( RakNetTimeNS time );
+
+	/// Creates a copy of the specified internal packet with data copied from the original starting at dataByteOffset for dataByteLength bytes.
+	/// Does not copy any split data parameters as that information is always generated does not have any reason to be copied
+	InternalPacket * CreateInternalPacketCopy( InternalPacket *original, int dataByteOffset, int dataByteLength, RakNetTimeNS time );
+
+	/// Get the specified ordering list
+	DataStructures::LinkedList<InternalPacket*> *GetOrderingListAtOrderingStream( unsigned char orderingChannel );
+
+	/// Add the internal packet to the ordering list in order based on order index
+	void AddToOrderingList( InternalPacket * internalPacket );
+
+	/// Inserts a packet into the resend list in order
+	void InsertPacketIntoResendList( InternalPacket *internalPacket, RakNetTimeNS time, bool makeCopyOfInternalPacket, bool firstResend );
+
+	/// Memory handling
+	void FreeMemory( bool freeAllImmediately );
+
+	/// Memory handling
+	void FreeThreadedMemory( void );
+
+	/// Memory handling
+	void FreeThreadSafeMemory( void );
+
+	// Initialize the variables
+	void InitializeVariables( void );
+
+	/// Given the current time, is this time so old that we should consider it a timeout?
+	bool IsExpiredTime(unsigned int input, RakNetTimeNS currentTime) const;
+
+	// Make it so we don't do resends within a minimum threshold of time
+
+	/// Does this packet number represent a packet that was skipped (out of order?)
+	//unsigned int IsReceivedPacketHole(unsigned int input, RakNetTime currentTime) const;
+
+	/// Skip an element in the received packets list
+	//unsigned int MakeReceivedPacketHole(unsigned int input) const;
+
+	/// How many elements are waiting to be resent?
+	unsigned int GetResendListDataSize(void) const;
+
+	/// Update all memory which is not threadsafe
+	void UpdateThreadedMemory(void);
+
+	void CalculateHistogramAckSize(void);
+
+	DataStructures::List<DataStructures::LinkedList<InternalPacket*>*> orderingList;
+	DataStructures::Queue<InternalPacket*> outputQueue;
+	DataStructures::RangeList<MessageNumberType> acknowlegements;
+	int splitMessageProgressInterval;
+	RakNetTimeNS unreliableTimeout;
+	
+	DataStructures::BPlusTree<MessageNumberType, InternalPacket*, RESEND_TREE_ORDER> resendList;
+	DataStructures::Queue<InternalPacket*> resendQueue;
+	
+	DataStructures::Queue<InternalPacket*> sendPacketSet[ NUMBER_OF_PRIORITIES ];
+    DataStructures::OrderedList<SplitPacketIdType, SplitPacketChannel*, SplitPacketChannelComp> splitPacketChannelList;
+	MessageNumberType sendMessageNumberIndex;
+	//unsigned int windowSize;
+	RakNetTimeNS lastAckTime;
+	RakNet::BitStream updateBitStream;
+	OrderingIndexType waitingForOrderedPacketWriteIndex[ NUMBER_OF_ORDERED_STREAMS ], waitingForSequencedPacketWriteIndex[ NUMBER_OF_ORDERED_STREAMS ];
+	// Used for flow control (changed to regular TCP sliding window)
+	// unsigned int maximumWindowSize, bytesSentSinceAck;
+	// unsigned int outputWindowFullTime; // under linux if this last variable is on the line above it the delete operator crashes deleting this class!
+
+	// STUFF TO NOT MUTEX HERE (called from non-conflicting threads, or value is not important)
+	OrderingIndexType waitingForOrderedPacketReadIndex[ NUMBER_OF_ORDERED_STREAMS ], waitingForSequencedPacketReadIndex[ NUMBER_OF_ORDERED_STREAMS ];
+	bool deadConnection, cheater;
+	// unsigned int lastPacketSendTime,retransmittedFrames, sentPackets, sentFrames, receivedPacketsCount, bytesSent, bytesReceived,lastPacketReceivedTime;
+	SplitPacketIdType splitPacketId;
+	RakNetTime timeoutTime; // How long to wait in MS before timing someone out
+	//int MAX_AVERAGE_PACKETS_PER_SECOND; // Name says it all
+//	int RECEIVED_PACKET_LOG_LENGTH, requestedReceivedPacketLogLength; // How big the receivedPackets array is
+//	unsigned int *receivedPackets;
+	unsigned int blockWindowIncreaseUntilTime;
+	RakNetStatistics statistics;
+
+	RakNetTimeNS histogramStart;
+	unsigned histogramBitsSent;
+	DataStructures::Queue<RakNetTimeNS> hasReceivedPacketQueue;
+	MessageNumberType receivedPacketsBaseIndex;
+	bool resetReceivedPackets;
+	RakNetTimeNS lastUpdateTime;
+	RakNetTimeNS timeBetweenPackets;
+	RakNetTimeNS nextSendTime;
+	RakNetTimeNS ackPingSum;
+	RakNetTimeNS ackPingCount;
+	RakNetTimeNS ackPing;
+	unsigned remoteSystemTime;
+	bool continuousSend;
+	RakNetTimeNS lastTimeBetweenPacketsIncrease;
+	RakNetTimeNS lastTimeBetweenPacketsDecrease;
+	DataBlockEncryptor encryptor;
+	unsigned sendPacketCount, receivePacketCount;
+	bool freeThreadedMemoryOnNextUpdate;
+
+	/// Memory-efficient receivedPackets algorithm:
+	/// receivedPacketsBaseIndex is the packet number we are expecting
+	/// Everything under receivedPacketsBaseIndex is a packet we already got
+	/// Everything over receivedPacketsBaseIndex is stored in hasReceivedPacketQueue
+	/// It stores the time to stop waiting for a particular packet number, where the packet number is receivedPacketsBaseIndex + the index into the queue
+	/// If 0, we got got that packet.  Otherwise, the time to give up waiting for that packet.
+	/// If we get a packet number where (receivedPacketsBaseIndex-packetNumber) is less than half the range of receivedPacketsBaseIndex then it is a duplicate
+	/// Otherwise, it is a duplicate packet (and ignore it).
+
+
+
+
+	///This variable is so that free memory can be called by only the update thread so we don't have to mutex things so much
+
+#ifndef _RELEASE
+	struct DataAndTime
+	{
+		char data[ MAXIMUM_MTU_SIZE ];
+		int length;
+		RakNetTimeNS sendTime;
+	};
+	DataStructures::List<DataAndTime*> delayList;
+
+	// Internet simulator
+	double maxSendBPS;
+	RakNetTime minExtraPing, extraPingVariance;
+#endif
+
+	// This has to be a member because it's not threadsafe when I removed the mutexes
+	DataStructures::MemoryPool<InternalPacket> internalPacketPool;
+};
+
+#endif
+
+/// \file
+/// \brief The main class used for data transmission and most of RakNet's functionality.
+///
+/// This file is part of RakNet Copyright 2003 Kevin Jenkins.
+///
+/// Usage of RakNet is subject to the appropriate license agreement.
+/// Creative Commons Licensees are subject to the
+/// license found at
+/// http://creativecommons.org/licenses/by-nc/2.5/
+/// Single application licensees are subject to the license found at
+/// http://www.rakkarsoft.com/SingleApplicationLicense.html
+/// Custom license users are subject to the terms therein.
+/// GPL license users are subject to the GNU General Public
+/// License as published by the Free
+/// Software Foundation; either version 2 of the License, or (at your
+/// option) any later version.
+
+#ifndef __RAK_PEER_H
+#define __RAK_PEER_H
+
+#include "ReliabilityLayer.h"
+#include "RakPeerInterface.h"
+#include "RPCNode.h"
+#include "RSACrypt.h"
+#include "BitStream.h"
+#include "SingleProducerConsumer.h"
+#include "RPCMap.h"
+#include "SimpleMutex.h"
+#include "DS_OrderedList.h"
+#include "Export.h"
+
+class HuffmanEncodingTree;
+class PluginInterface;
+
+// Sucks but this struct has to be outside the class.  Inside and DevCPP won't let you refer to the struct as RakPeer::SystemAddressAndIndex while GCC
+// forces you to do RakPeer::SystemAddressAndIndex
+struct SystemAddressAndIndex{SystemAddress systemAddress;unsigned index;};
+int RAK_DLL_EXPORT SystemAddressAndIndexComp( const SystemAddress &key, const SystemAddressAndIndex &data ); // GCC requires RakPeer::SystemAddressAndIndex or it won't compile
+
+/// The primary interface for RakNet, RakPeer contains all major functions for the library.
+/// See the individual functions for what the class can do.
+/// \brief The main interface for network communications
+class NetworkIDManager;
+
+// VTABLE: WEBSERVICE 0x10251ddc
+// class RakPeer
+class RAK_DLL_EXPORT RakPeer : public RakPeerInterface
+{
+public:
+	///Constructor
+	RakPeer();
+
+	///Destructor
+	virtual ~RakPeer();
+
+	// --------------------------------------------------------------------------------------------Major Low Level Functions - Functions needed by most users--------------------------------------------------------------------------------------------
+	/// \brief Starts the network threads, opens the listen port.
+	/// You must call this before calling Connect().
+	/// Multiple calls while already active are ignored.  To call this function again with different settings, you must first call Shutdown().
+	/// \note Call SetMaximumIncomingConnections if you want to accept incoming connections
+	/// \param[in] maxConnections The maximum number of connections between this instance of RakPeer and another instance of RakPeer. Required so the network can preallocate and for thread safety. A pure client would set this to 1.  A pure server would set it to the number of allowed clients.- A hybrid would set it to the sum of both types of connections
+	/// \param[in] localPort The port to listen for connections on.
+	/// \param[in] _threadSleepTimer How many ms to Sleep each internal update cycle (30 to give the game priority, 0 for regular (recommended)
+	/// \param[in] socketDescriptors An array of SocketDescriptor structures to force RakNet to listen on a particular IP address or port (or both).  Each SocketDescriptor will represent one unique socket.  Do not pass redundant structures.  To listen on a specific port, you can pass SocketDescriptor(myPort,0); such as for a server.  For a client, it is usually OK to just pass SocketDescriptor();
+	/// \param[in] socketDescriptorCount The size of the \a socketDescriptors array.  Pass 1 if you are not sure what to pass.
+	/// \return False on failure (can't create socket or thread), true on success.
+	bool Startup( unsigned short maxConnections, int _threadSleepTimer, SocketDescriptor *socketDescriptors, unsigned socketDescriptorCount );
+
+	/// Secures connections though a combination of SHA1, AES128, SYN Cookies, and RSA to prevent connection spoofing, replay attacks, data eavesdropping, packet tampering, and MitM attacks.
+	/// There is a significant amount of processing and a slight amount of bandwidth overhead for this feature.
+	/// If you accept connections, you must call this or else secure connections will not be enabled for incoming connections.
+	/// If you are connecting to another system, you can call this with values for the (e and p,q) public keys before connecting to prevent MitM
+	/// \pre Must be called before Initialize
+	/// \param[in] pubKeyE A pointer to the public keys from the RSACrypt class.  
+	/// \param[in] pubKeyN A pointer to the public keys from the RSACrypt class. 
+	/// \param[in] privKeyP Public key generated from the RSACrypt class.  
+	/// \param[in] privKeyQ Public key generated from the RSACrypt class.  If the private keys are 0, then a new key will be generated when this function is called@see the Encryption sample
+	void InitializeSecurity(const char *pubKeyE, const char *pubKeyN, const char *privKeyP, const char *privKeyQ );
+
+	/// Disables all security.
+	/// \note Must be called while offline
+	void DisableSecurity( void );
+
+	/// Sets how many incoming connections are allowed. If this is less than the number of players currently connected,
+	/// no more players will be allowed to connect.  If this is greater than the maximum number of peers allowed,
+	/// it will be reduced to the maximum number of peers allowed.  Defaults to 0.
+	/// \param[in] numberAllowed Maximum number of incoming connections allowed.
+	void SetMaximumIncomingConnections( unsigned short numberAllowed );
+
+	/// Returns the value passed to SetMaximumIncomingConnections()
+	/// \return the maximum number of incoming connections, which is always <= maxConnections
+	unsigned short GetMaximumIncomingConnections( void ) const;
+
+	/// Returns how many open connections there are at this time
+	/// \return the number of open connections
+	unsigned short NumberOfConnections(void) const;
+
+	/// Sets the password incoming connections must match in the call to Connect (defaults to none). Pass 0 to passwordData to specify no password
+	/// This is a way to set a low level password for all incoming connections.  To selectively reject connections, implement your own scheme using CloseConnection() to remove unwanted connections
+	/// \param[in] passwordData A data block that incoming connections must match.  This can be just a password, or can be a stream of data. Specify 0 for no password data
+	/// \param[in] passwordDataLength The length in bytes of passwordData
+	void SetIncomingPassword( const char* passwordData, int passwordDataLength );
+
+	/// Gets the password passed to SetIncomingPassword
+	/// \param[out] passwordData  Should point to a block large enough to hold the password data you passed to SetIncomingPassword()
+	/// \param[in,out] passwordDataLength Maximum size of the array passwordData.  Modified to hold the number of bytes actually written
+	void GetIncomingPassword( char* passwordData, int *passwordDataLength  );
+
+	/// \brief Connect to the specified host (ip or domain name) and server port.
+	/// Calling Connect and not calling SetMaximumIncomingConnections acts as a dedicated client.
+	/// Calling both acts as a true peer. This is a non-blocking connection.
+	/// You know the connection is successful when IsConnected() returns true or Receive() gets a message with the type identifier ID_CONNECTION_ACCEPTED.
+	/// If the connection is not successful, such as a rejected connection or no response then neither of these things will happen.
+	/// \pre Requires that you first call Initialize
+	/// \param[in] host Either a dotted IP address or a domain name
+	/// \param[in] remotePort Which port to connect to on the remote machine.
+	/// \param[in] passwordData A data block that must match the data block on the server passed to SetIncomingPassword.  This can be a string or can be a stream of data.  Use 0 for no password.
+	/// \param[in] passwordDataLength The length in bytes of passwordData
+	/// \param[in] connectionSocketIndex Index into the array of socket descriptors passed to socketDescriptors in RakPeer::Startup() to send on.
+	/// \return True on successful initiation. False on incorrect parameters, internal error, or too many existing peers.  Returning true does not mean you connected!
+	bool Connect( const char* host, unsigned short remotePort, const char* passwordData, int passwordDataLength, unsigned connectionSocketIndex=0 );
+
+	/// \brief Stops the network threads and closes all connections.
+	/// \param[in] blockDuration How long you should wait for all remaining messages to go out, including ID_DISCONNECTION_NOTIFICATION.  If 0, it doesn't wait at all.
+	/// \param[in] orderingChannel If blockDuration > 0, ID_DISCONNECTION_NOTIFICATION will be sent on this channel
+	/// If you set it to 0 then the disconnection notification won't be sent
+	void Shutdown( unsigned int blockDuration, unsigned char orderingChannel=0 );
+
+	/// Returns if the network thread is running
+	/// \return true if the network thread is running, false otherwise
+	bool IsActive( void ) const;
+
+	/// Fills the array remoteSystems with the SystemAddress of all the systems we are connected to
+	/// \param[out] remoteSystems An array of SystemAddress structures to be filled with the SystemAddresss of the systems we are connected to. Pass 0 to remoteSystems to only get the number of systems we are connected to
+	/// \param[in, out] numberOfSystems As input, the size of remoteSystems array.  As output, the number of elements put into the array 
+	bool GetConnectionList( SystemAddress *remoteSystems, unsigned short *numberOfSystems ) const;
+
+	/// Sends a block of data to the specified system that you are connected to.
+	/// This function only works while the connected
+	/// \param[in] data The block of data to send
+	/// \param[in] length The size in bytes of the data to send
+	/// \param[in] priority What priority level to send on.  See PacketPriority.h
+	/// \param[in] reliability How reliability to send this data.  See PacketPriority.h
+	/// \param[in] orderingChannel When using ordered or sequenced messages, what channel to order these on. Messages are only ordered relative to other messages on the same stream
+	/// \param[in] systemAddress Who to send this packet to, or in the case of broadcasting who not to send it to.  Use UNASSIGNED_SYSTEM_ADDRESS to specify none
+	/// \param[in] broadcast True to send this packet to all connected systems. If true, then systemAddress specifies who not to send the packet to.
+	/// \return False if we are not connected to the specified recipient.  True otherwise
+	bool Send( const char *data, const int length, PacketPriority priority, PacketReliability reliability, char orderingChannel, SystemAddress systemAddress, bool broadcast );
+
+	/// Sends a block of data to the specified system that you are connected to.  Same as the above version, but takes a BitStream as input.
+	/// \param[in] bitStream The bitstream to send
+	/// \param[in] priority What priority level to send on.  See PacketPriority.h
+	/// \param[in] reliability How reliability to send this data.  See PacketPriority.h
+	/// \param[in] orderingChannel When using ordered or sequenced messages, what channel to order these on. Messages are only ordered relative to other messages on the same stream
+	/// \param[in] systemAddress Who to send this packet to, or in the case of broadcasting who not to send it to.  Use UNASSIGNED_SYSTEM_ADDRESS to specify none
+	/// \param[in] broadcast True to send this packet to all connected systems. If true, then systemAddress specifies who not to send the packet to.
+	/// \return False if we are not connected to the specified recipient.  True otherwise
+	bool Send( const RakNet::BitStream * bitStream, PacketPriority priority, PacketReliability reliability, char orderingChannel, SystemAddress systemAddress, bool broadcast );
+
+	/// Gets a message from the incoming message queue.
+	/// Use DeallocatePacket() to deallocate the message after you are done with it.
+	/// User-thread functions, such as RPC calls and the plugin function PluginInterface::Update occur here.
+	/// \return 0 if no packets are waiting to be handled, otherwise a pointer to a packet.
+	/// sa RakNetTypes.h contains struct Packet
+	Packet* Receive( void );
+
+	/// Call this to deallocate a message returned by Receive() when you are done handling it.
+	/// \param[in] packet The message to deallocate.	
+	void DeallocatePacket( Packet *packet );
+
+	/// Return the total number of connections we are allowed
+	unsigned short GetMaximumNumberOfPeers( void ) const;
+
+	// --------------------------------------------------------------------------------------------Remote Procedure Call Functions - Functions to initialize and perform RPC--------------------------------------------------------------------------------------------
+	/// \ingroup RAKNET_RPC
+	/// Register a C or static member function as available for calling as a remote procedure call
+	/// \param[in] uniqueID A null-terminated unique string to identify this procedure.  See RegisterClassMemberRPC() for class member functions.
+	/// \param[in] functionPointer(...) The name of the function to be used as a function pointer. This can be called whether active or not, and registered functions stay registered unless unregistered
+	void RegisterAsRemoteProcedureCall( const char* uniqueID, void ( *functionPointer ) ( RPCParameters *rpcParms ) );
+
+	/// \ingroup RAKNET_RPC
+	/// Register a C++ member function as available for calling as a remote procedure call.
+	/// \param[in] uniqueID A null terminated string to identify this procedure. Recommended you use the macro REGISTER_CLASS_MEMBER_RPC to create the string.  Use RegisterAsRemoteProcedureCall() for static functions.
+	/// \param[in] functionPointer The name of the function to be used as a function pointer. This can be called whether active or not, and registered functions stay registered unless unregistered with UnregisterAsRemoteProcedureCall
+	/// \sa The sample ObjectMemberRPC.cpp
+	void RegisterClassMemberRPC( const char* uniqueID, void *functionPointer );
+
+	/// \ingroup RAKNET_RPC
+	/// Unregisters a C function as available for calling as a remote procedure call that was formerly registered with RegisterAsRemoteProcedureCall. Only call offline.
+	/// \param[in] uniqueID A string of only letters to identify this procedure.  Recommended you use the macro CLASS_MEMBER_ID for class member functions.
+	void UnregisterAsRemoteProcedureCall( const char* uniqueID );
+
+	/// \ingroup RAKNET_RPC
+	/// Calls a C function on the remote system that was already registered using RegisterAsRemoteProcedureCall().
+	/// \param[in] uniqueID A NULL terminated string identifying the function to call.  Recommended you use the macro CLASS_MEMBER_ID for class member functions.
+	/// \param[in] data The data to send
+	/// \param[in] bitLength The number of bits of \a data
+	/// \param[in] priority What priority level to send on. See PacketPriority.h.
+	/// \param[in] reliability How reliability to send this data. See PacketPriority.h.
+	/// \param[in] orderingChannel When using ordered or sequenced message, what channel to order these on.
+	/// \param[in] systemAddress Who to send this message to, or in the case of broadcasting who not to send it to.  Use UNASSIGNED_SYSTEM_ADDRESS to specify none
+	/// \param[in] broadcast True to send this packet to all connected systems. If true, then systemAddress specifies who not to send the packet to.
+	/// \param[in] includedTimestamp Pass a timestamp if you wish, to be adjusted in the usual fashion as per ID_TIMESTAMP.  Pass 0 to not include a timestamp.
+	/// \param[in] networkID For static functions, pass UNASSIGNED_NETWORK_ID.  For member functions, you must derive from NetworkIDGenerator and pass the value returned by NetworkIDGenerator::GetNetworkID for that object.
+	/// \param[in] replyFromTarget If 0, this function is non-blocking.  Otherwise it will block while waiting for a reply from the target procedure, which should be remotely written to RPCParameters::replyToSender and copied to replyFromTarget.  The block will return early on disconnect or if the sent packet is unreliable and more than 3X the ping has elapsed.
+	/// \return True on a successful packet send (this does not indicate the recipient performed the call), false on failure
+	bool RPC( const char* uniqueID, const char *data, unsigned int bitLength, PacketPriority priority, PacketReliability reliability, char orderingChannel, SystemAddress systemAddress, bool broadcast, RakNetTime *includedTimestamp, NetworkID networkID, RakNet::BitStream *replyFromTarget );
+
+	/// \ingroup RAKNET_RPC
+	/// Calls a C function on the remote system that was already registered using RegisterAsRemoteProcedureCall.
+	/// If you want that function to return data you should call RPC from that system in the same wayReturns true on a successful packet
+	/// send (this does not indicate the recipient performed the call), false on failure
+	/// \param[in] uniqueID A NULL terminated string identifying the function to call.  Recommended you use the macro CLASS_MEMBER_ID for class member functions.
+	/// \param[in] data The data to send
+	/// \param[in] bitLength The number of bits of \a data
+	/// \param[in] priority What priority level to send on. See PacketPriority.h.
+	/// \param[in] reliability How reliability to send this data. See PacketPriority.h.
+	/// \param[in] orderingChannel When using ordered or sequenced message, what channel to order these on.
+	/// \param[in] systemAddress Who to send this message to, or in the case of broadcasting who not to send it to.  Use UNASSIGNED_SYSTEM_ADDRESS to specify none
+	/// \param[in] broadcast True to send this packet to all connected systems. If true, then systemAddress specifies who not to send the packet to.
+	/// \param[in] includedTimestamp Pass a timestamp if you wish, to be adjusted in the usual fashion as per ID_TIMESTAMP.  Pass 0 to not include a timestamp.
+	/// \param[in] networkID For static functions, pass UNASSIGNED_NETWORK_ID.  For member functions, you must derive from NetworkIDGenerator and pass the value returned by NetworkIDGenerator::GetNetworkID for that object.
+	/// \param[in] replyFromTarget If 0, this function is non-blocking.  Otherwise it will block while waiting for a reply from the target procedure, which should be remotely written to RPCParameters::replyToSender and copied to replyFromTarget.  The block will return early on disconnect or if the sent packet is unreliable and more than 3X the ping has elapsed.
+	/// \return True on a successful packet send (this does not indicate the recipient performed the call), false on failure
+	bool RPC( const char* uniqueID, const RakNet::BitStream *bitStream, PacketPriority priority, PacketReliability reliability, char orderingChannel, SystemAddress systemAddress, bool broadcast, RakNetTime *includedTimestamp, NetworkID networkID, RakNet::BitStream *replyFromTarget );
+	
+	// -------------------------------------------------------------------------------------------- Connection Management Functions--------------------------------------------------------------------------------------------
+	/// Close the connection to another host (if we initiated the connection it will disconnect, if they did it will kick them out).
+	/// \param[in] target Which system to close the connection to.
+	/// \param[in] sendDisconnectionNotification True to send ID_DISCONNECTION_NOTIFICATION to the recipient.  False to close it silently.
+	/// \param[in] channel Which ordering channel to send the disconnection notification on, if any
+	void CloseConnection( const SystemAddress target, bool sendDisconnectionNotification, unsigned char orderingChannel=0 );
+
+	/// Given a systemAddress, returns an index from 0 to the maximum number of players allowed - 1.
+	/// \param[in] systemAddress The SystemAddress we are referring to
+	/// \return The index of this SystemAddress or -1 on system not found.
+	int GetIndexFromSystemAddress( const SystemAddress systemAddress );
+
+	/// This function is only useful for looping through all systems
+	/// Given an index, will return a SystemAddress.
+	/// \param[in] index Index should range between 0 and the maximum number of players allowed - 1.
+	/// \return The SystemAddress
+	SystemAddress GetSystemAddressFromIndex( int index );
+
+	/// Bans an IP from connecting.  Banned IPs persist between connections but are not saved on shutdown nor loaded on startup.
+	/// param[in] IP Dotted IP address. Can use * as a wildcard, such as 128.0.0.* will ban all IP addresses starting with 128.0.0
+	/// \param[in] milliseconds how many ms for a temporary ban.  Use 0 for a permanent ban
+	void AddToBanList( const char *IP, RakNetTime milliseconds=0 );
+
+	/// Allows a previously banned IP to connect. 
+	/// param[in] Dotted IP address. Can use * as a wildcard, such as 128.0.0.* will banAll IP addresses starting with 128.0.0
+	void RemoveFromBanList( const char *IP );
+
+	/// Allows all previously banned IPs to connect.
+	void ClearBanList( void );
+
+	/// Returns true or false indicating if a particular IP is banned.
+	/// \param[in] IP - Dotted IP address.
+	/// \return true if IP matches any IPs in the ban list, accounting for any wildcards. False otherwise.
+	bool IsBanned( const char *IP );
+	
+	// --------------------------------------------------------------------------------------------Pinging Functions - Functions dealing with the automatic ping mechanism--------------------------------------------------------------------------------------------
+	/// Send a ping to the specified connected system.
+	/// \pre The sender and recipient must already be started via a successful call to Startup()
+	/// \param[in] target Which system to ping
+	void Ping( const SystemAddress target );
+
+	/// Send a ping to the specified unconnected system. The remote system, if it is Initialized, will respond with ID_PONG. The final ping time will be encoded in the following sizeof(RakNetTime) bytes.  (Default is 4 bytes - See __GET_TIME_64BIT in RakNetTypes.h
+	/// \param[in] host Either a dotted IP address or a domain name.  Can be 255.255.255.255 for LAN broadcast.
+	/// \param[in] remotePort Which port to connect to on the remote machine.
+	/// \param[in] onlyReplyOnAcceptingConnections Only request a reply if the remote system is accepting connections
+	/// \param[in] connectionSocketIndex Index into the array of socket descriptors passed to socketDescriptors in RakPeer::Startup() to send on.
+	void Ping( const char* host, unsigned short remotePort, bool onlyReplyOnAcceptingConnections, unsigned connectionSocketIndex=0 );
+
+	/// Returns the average of all ping times read for the specific system or -1 if none read yet
+	/// \param[in] systemAddress Which system we are referring to
+	/// \return The ping time for this system, or -1
+	int GetAveragePing( const SystemAddress systemAddress );
+
+	/// Returns the last ping time read for the specific system or -1 if none read yet
+	/// \param[in] systemAddress Which system we are referring to
+	/// \return The last ping time for this system, or -1
+	int GetLastPing( const SystemAddress systemAddress ) const;
+
+	/// Returns the lowest ping time read or -1 if none read yet
+	/// \param[in] systemAddress Which system we are referring to
+	/// \return The lowest ping time for this system, or -1
+	int GetLowestPing( const SystemAddress systemAddress ) const;
+
+	/// Ping the remote systems every so often, or not. This is off by default.  Can be called anytime.
+	/// \param[in] doPing True to start occasional pings.  False to stop them.
+	void SetOccasionalPing( bool doPing );
+	
+	// --------------------------------------------------------------------------------------------Static Data Functions - Functions dealing with API defined synchronized memory--------------------------------------------------------------------------------------------
+	/// Sets the data to send along with a LAN server discovery or offline ping reply.
+	/// \a length should be under 400 bytes, as a security measure against flood attacks
+	/// \param[in] data a block of data to store, or 0 for none
+	/// \param[in] length The length of data in bytes, or 0 for none
+	/// \sa Ping.cpp
+	void SetOfflinePingResponse( const char *data, const unsigned int length );
+	
+	//--------------------------------------------------------------------------------------------Network Functions - Functions dealing with the network in general--------------------------------------------------------------------------------------------
+	/// Return the unique address identifier that represents you on the the network and is based on your local IP / port.
+	/// \param[in] systemAddress Specifies which internal IP address to use, per connected system, in case you have multiple systems connected to different local IP addresses.
+	/// \return the identifier of your system internally, which may not be how other systems see if you if you are behind a NAT or proxy
+	SystemAddress GetInternalID( const SystemAddress systemAddress=UNASSIGNED_SYSTEM_ADDRESS ) const;
+
+	/// Return the unique address identifier that represents you on the the network and is based on your externalIP / port
+	/// (the IP / port the specified player uses to communicate with you)
+	/// \param[in] target Which remote system you are referring to for your external ID.  Usually the same for all systems, unless you have two or more network cards.
+	SystemAddress GetExternalID( const SystemAddress target ) const;
+
+	/// Set the time, in MS, to use before considering ourselves disconnected after not being able to deliver a reliable message.
+	/// Default time is 10,000 or 10 seconds in release and 30,000 or 30 seconds in debug.
+    /// \param[in] timeMS Time, in MS
+	/// \param[in] target Which system to do this for
+	void SetTimeoutTime( RakNetTime timeMS, const SystemAddress target );
+
+	/// Set the MTU per datagram.  It's important to set this correctly - otherwise packets will be needlessly split, decreasing performance and throughput.
+	/// Maximum allowed size is MAXIMUM_MTU_SIZE.
+	/// Too high of a value will cause packets not to arrive at worst and be fragmented at best.
+	/// Too low of a value will split packets unnecessarily.
+	/// Recommended size is 1500
+	/// sa MTUSize.h
+	/// \pre Can only be called when not connected.
+	/// \return false on failure (we are connected), else true
+	bool SetMTUSize( int size );
+
+	/// Returns the current MTU size
+	/// \return The current MTU size
+	int GetMTUSize( const SystemAddress target ) const;
+
+	/// Returns the number of IP addresses this system has internally. Get the actual addresses from GetLocalIP()
+	unsigned GetNumberOfAddresses( void );
+
+	/// Returns an IP address at index 0 to GetNumberOfAddresses-1
+	const char* GetLocalIP( unsigned int index );
+
+	/// Allow or disallow connection responses from any IP. Normally this should be false, but may be necessary
+	/// when connecting to servers with multiple IP addresses.
+	/// \param[in] allow - True to allow this behavior, false to not allow. Defaults to false. Value persists between connections
+	void AllowConnectionResponseIPMigration( bool allow );
+
+	/// Sends a one byte message ID_ADVERTISE_SYSTEM to the remote unconnected system.
+	/// This will tell the remote system our external IP outside the LAN along with some user data.
+	/// \pre The sender and recipient must already be started via a successful call to Initialize
+	/// \param[in] host Either a dotted IP address or a domain name
+	/// \param[in] remotePort Which port to connect to on the remote machine.
+	/// \param[in] data Optional data to append to the packet.
+	/// \param[in] dataLength length of data in bytes.  Use 0 if no data.
+	/// \param[in] connectionSocketIndex Index into the array of socket descriptors passed to socketDescriptors in RakPeer::Startup() to send on.
+	void AdvertiseSystem( const char *host, unsigned short remotePort, const char *data, int dataLength, unsigned connectionSocketIndex=0 );
+
+	/// Controls how often to return ID_DOWNLOAD_PROGRESS for large message downloads.
+	/// ID_DOWNLOAD_PROGRESS is returned to indicate a new partial message chunk, roughly the MTU size, has arrived
+	/// As it can be slow or cumbersome to get this notification for every chunk, you can set the interval at which it is returned.
+	/// Defaults to 0 (never return this notification)
+	/// \param[in] interval How many messages to use as an interval
+	void SetSplitMessageProgressInterval(int interval);
+
+	/// Set how long to wait before giving up on sending an unreliable message
+	/// Useful if the network is clogged up.
+	/// Set to 0 or less to never timeout.  Defaults to 0.
+	/// \param[in] timeoutMS How many ms to wait before simply not sending an unreliable message.
+	void SetUnreliableTimeout(RakNetTime timeoutMS);
+
+	// --------------------------------------------------------------------------------------------Compression Functions - Functions related to the compression layer--------------------------------------------------------------------------------------------
+	/// Enables or disables frequency table tracking.  This is required to get a frequency table, which is used in GenerateCompressionLayer()
+	/// This value persists between connect calls and defaults to false (no frequency tracking)
+	/// \pre You can call this at any time - however you SHOULD only call it when disconnected.  Otherwise you will only trackpart of the values sent over the network.
+	/// \param[in] doCompile True to enable tracking 
+	void SetCompileFrequencyTable( bool doCompile );
+
+	/// Returns the frequency of outgoing bytes into output frequency table
+	/// The purpose is to save to file as either a master frequency table from a sample game session for passing to
+	/// GenerateCompressionLayer() 
+	/// \pre You should only call this when disconnected. Requires that you first enable data frequency tracking by calling SetCompileFrequencyTable(true)
+	/// \param[out] outputFrequencyTable  The frequency of each corresponding byte
+	/// \return False (failure) if connected or if frequency table tracking is not enabled. Otherwise true (success)
+	bool GetOutgoingFrequencyTable( unsigned int outputFrequencyTable[ 256 ] );
+
+	/// This is an optional function to generate the compression layer based on the input frequency table.
+	/// If you want to use it you should call this twice - once with inputLayer as true and once as false.
+	/// The frequency table passed here with inputLayer=true should match the frequency table on the recipient with inputLayer=false.
+	/// Likewise, the frequency table passed here with inputLayer=false should match the frequency table on the recipient with inputLayer=true.
+	/// Calling this function when there is an existing layer will overwrite the old layer.
+	/// \pre You should only call this when disconnected
+	/// \param[in] inputFrequencyTable A frequency table for your data
+	/// \param[in] inputLayer Is this the input layer?
+	/// \return false (failure) if connected.  Otherwise true (success)
+	/// \sa Compression.cpp
+	bool GenerateCompressionLayer( unsigned int inputFrequencyTable[ 256 ], bool inputLayer );
+
+	/// Delete the output or input layer as specified.  This is not necessary to call and is only valuable for freeing memory.
+	/// \pre You should only call this when disconnected
+	/// \param[in] inputLayer True to mean the inputLayer, false to mean the output layer
+	/// \return false (failure) if connected.  Otherwise true (success)
+	bool DeleteCompressionLayer( bool inputLayer );
+
+	/// Returns the compression ratio. A low compression ratio is good.  Compression is for outgoing data
+	/// \return The compression ratio
+	float GetCompressionRatio( void ) const;
+
+	///Returns the decompression ratio.  A high decompression ratio is good.  Decompression is for incoming data
+	/// \return The decompression ratio
+	float GetDecompressionRatio( void ) const;
+
+	// -------------------------------------------------------------------------------------------- Plugin Functions--------------------------------------------------------------------------------------------
+	/// Attatches a Plugin interface to run code automatically on message receipt in the Receive call
+	/// \note If plugins have dependencies on each other then the order does matter - for example the router plugin should go first because it might route messages for other plugins
+	/// \param[in] messageHandler Pointer to a plugin to attach
+	void AttachPlugin( PluginInterface *plugin );
+
+	/// Detaches a Plugin interface to run code automatically on message receipt
+	/// \param[in] messageHandler Pointer to a plugin to detach
+	void DetachPlugin( PluginInterface *messageHandler );
+
+	// --------------------------------------------------------------------------------------------Miscellaneous Functions--------------------------------------------------------------------------------------------
+	/// Put a message back at the end of the receive queue in case you don't want to deal with it immediately
+	/// \param[in] packet The packet you want to push back.
+	/// \param[in] pushAtHead True to push the packet so that the next receive call returns it.  False to push it at the end of the queue (obviously pushing it at the end makes the packets out of order)
+	void PushBackPacket( Packet *packet, bool pushAtHead );
+
+	/// \Internal
+	// \param[in] routerInterface The router to use to route messages to systems not directly connected to this system.
+	void SetRouterInterface( RouterInterface *routerInterface );
+
+	/// \Internal
+	// \param[in] routerInterface The router to use to route messages to systems not directly connected to this system.
+	void RemoveRouterInterface( RouterInterface *routerInterface );
+
+	// --------------------------------------------------------------------------------------------Network Simulator Functions--------------------------------------------------------------------------------------------
+	/// Adds simulated ping and packet loss to the outgoing data flow.
+	/// To simulate bi-directional ping and packet loss, you should call this on both the sender and the recipient, with half the total ping and maxSendBPS value on each.
+	/// You can exclude network simulator code with the _RELEASE #define to decrease code size
+	/// \param[in] maxSendBPS Maximum bits per second to send.  Packetloss grows linearly.  0 to disable.
+	/// \param[in] minExtraPing The minimum time to delay sends.
+	/// \param[in] extraPingVariance The additional random time to delay sends.
+    void ApplyNetworkSimulator( double maxSendBPS, unsigned short minExtraPing, unsigned short extraPingVariance);
+
+	/// Returns if you previously called ApplyNetworkSimulator
+	/// \return If you previously called ApplyNetworkSimulator
+	bool IsNetworkSimulatorActive( void );
+
+	// --------------------------------------------------------------------------------------------Statistical Functions - Functions dealing with API performance--------------------------------------------------------------------------------------------
+
+	/// Returns a structure containing a large set of network statistics for the specified system.
+	/// You can map this data to a string using the C style StatisticsToString() function
+	/// \param[in] systemAddress: Which connected system to get statistics for
+	/// \return 0 on can't find the specified system.  A pointer to a set of data otherwise.
+	/// \sa RakNetStatistics.h
+	RakNetStatistics * const GetStatistics( const SystemAddress systemAddress );
+
+	// --------------------------------------------------------------------------------------------EVERYTHING AFTER THIS COMMENT IS FOR INTERNAL USE ONLY--------------------------------------------------------------------------------------------
+	/// \internal
+	char *GetRPCString( const char *data, const unsigned int bitSize, const SystemAddress systemAddress);
+
+	/// \internal
+	/// \brief Holds the clock differences between systems, along with the ping
+	struct PingAndClockDifferential
+	{
+		unsigned short pingTime;
+		RakNetTime clockDifferential;
+	};
+
+	/// \internal
+	/// \brief All the information representing a connected system system
+	struct RemoteSystemStruct
+	{
+		bool isActive; // Is this structure in use?
+		SystemAddress systemAddress;  /// The remote system associated with this reliability layer
+		SystemAddress myExternalSystemAddress;  /// Your own IP, as reported by the remote system
+		ReliabilityLayer reliabilityLayer;  /// The reliability layer associated with this player
+		bool weInitiatedTheConnection; /// True if we started this connection via Connect.  False if someone else connected to us.
+		PingAndClockDifferential pingAndClockDifferential[ PING_TIMES_ARRAY_SIZE ];  /// last x ping times and calculated clock differentials with it
+		int pingAndClockDifferentialWriteIndex;  /// The index we are writing into the pingAndClockDifferential circular buffer
+		unsigned short lowestPing; ///The lowest ping value encountered
+		RakNetTime nextPingTime;  /// When to next ping this player
+		RakNetTime lastReliableSend; /// When did the last reliable send occur.  Reliable sends must occur at least once every timeoutTime/2 units to notice disconnects
+		RakNetTime connectionTime; /// connection time, if active.
+		unsigned char AESKey[ 16 ]; /// Security key.
+		bool setAESKey; /// true if security is enabled.
+		int connectionSocketIndex; // index into connectionSockets to send back on.
+		RPCMap rpcMap; /// Mapping of RPC calls to single byte integers to save transmission bandwidth.
+		int MTUSize;
+		enum ConnectMode {NO_ACTION, DISCONNECT_ASAP, DISCONNECT_ASAP_SILENTLY, DISCONNECT_ON_NO_ACK, REQUESTED_CONNECTION, HANDLING_CONNECTION_REQUEST, UNVERIFIED_SENDER, SET_ENCRYPTION_ON_MULTIPLE_16_BYTE_PACKET, CONNECTED} connectMode;
+	};
+
+protected:
+
+#ifdef _WIN32
+	// friend unsigned __stdcall RecvFromNetworkLoop(LPVOID arguments);
+	friend void __stdcall ProcessPortUnreachable( const unsigned int binaryAddress, const unsigned short port, RakPeer *rakPeer );
+	friend void __stdcall ProcessNetworkPacket( const unsigned int binaryAddress, const unsigned short port, const char *data, const int length, RakPeer *rakPeer, unsigned connectionSocketIndex );
+	friend unsigned __stdcall UpdateNetworkLoop( LPVOID arguments );
+#else
+	// friend void*  RecvFromNetworkLoop( void*  arguments );
+	friend void ProcessPortUnreachable( const unsigned int binaryAddress, const unsigned short port, RakPeer *rakPeer );
+	friend void ProcessNetworkPacket( const unsigned int binaryAddress, const unsigned short port, const char *data, const int length, RakPeer *rakPeer, unsigned connectionSocketIndex );
+	friend void* UpdateNetworkLoop( void* arguments );
+#endif
+
+	// This is done to provide custom RPC handling when in a blocking RPC
+	Packet* ReceiveIgnoreRPC( void );
+
+	int GetIndexFromSystemAddress( const SystemAddress systemAddress, bool calledFromNetworkThread );
+
+	//void RemoveFromRequestedConnectionsList( const SystemAddress systemAddress );
+	bool SendConnectionRequest( const char* host, unsigned short remotePort, const char* passwordData, int passwordDataLength, unsigned connectionSocketIndex );
+	///Get the reliability layer associated with a systemAddress.  
+	/// \param[in] systemAddress The player identifier 
+	/// \return 0 if none
+	RemoteSystemStruct *GetRemoteSystemFromSystemAddress( const SystemAddress systemAddress, bool calledFromNetworkThread, bool onlyActive ) const;
+	///Parse out a connection request packet
+	void ParseConnectionRequestPacket( RakPeer::RemoteSystemStruct *remoteSystem, SystemAddress systemAddress, const char *data, int byteSize);
+	///When we get a connection request from an ip / port, accept it unless full
+	void OnConnectionRequest( RakPeer::RemoteSystemStruct *remoteSystem, unsigned char *AESKey, bool setAESKey );
+	///Send a reliable disconnect packet to this player and disconnect them when it is delivered
+	void NotifyAndFlagForShutdown( const SystemAddress systemAddress, bool performImmediate, unsigned char orderingChannel );
+	///Returns how many remote systems initiated a connection to us
+	unsigned short GetNumberOfRemoteInitiatedConnections( void ) const;
+	///Get a free remote system from the list and assign our systemAddress to it.  Should only be called from the update thread - not the user thread
+	RemoteSystemStruct * AssignSystemAddressToRemoteSystemList( const SystemAddress systemAddress, RemoteSystemStruct::ConnectMode connectionMode, unsigned connectionSocketIndex );
+	///An incoming packet has a timestamp, so adjust it to be relative to this system
+	void ShiftIncomingTimestamp( unsigned char *data, SystemAddress systemAddress ) const;
+	///Get the most probably accurate clock differential for a certain player
+	RakNetTime GetBestClockDifferential( const SystemAddress systemAddress ) const;
+
+	//void PushPortRefused( const SystemAddress target );
+	///Handles an RPC packet.  This is sending an RPC request
+	/// \param[in] data A packet returned from Receive with the ID ID_RPC
+	/// \param[in] length The size of the packet data 
+	/// \param[in] systemAddress The sender of the packet 
+	/// \return true on success, false on a bad packet or an unregistered function
+	bool HandleRPCPacket( const char *data, int length, SystemAddress systemAddress );
+
+	///Handles an RPC reply packet.  This is data returned from an RPC call
+	/// \param[in] data A packet returned from Receive with the ID ID_RPC
+	/// \param[in] length The size of the packet data 
+	/// \param[in] systemAddress The sender of the packet 
+	void HandleRPCReplyPacket( const char *data, int length, SystemAddress systemAddress );
+
+	///Set this to true to terminate the Peer thread execution 
+	volatile bool endThreads;
+	///true if the peer thread is active. 
+	volatile bool isMainLoopThreadActive;
+	bool occasionalPing;  /// Do we occasionally ping the other systems?*/
+	///Store the maximum number of peers allowed to connect
+	unsigned short maximumNumberOfPeers;
+	//05/02/06 Just using maximumNumberOfPeers instead
+	///Store the maximum number of peers able to connect, including reserved connection slots for pings, etc.
+	//unsigned short remoteSystemListSize;
+	///Store the maximum incoming connection allowed 
+	unsigned short maximumIncomingConnections;
+	RakNet::BitStream offlinePingResponse;
+	///Local Player ID
+	SystemAddress mySystemAddress;
+	char incomingPassword[256];
+	unsigned char incomingPasswordLength;
+
+	/// This is an array of pointers to RemoteSystemStruct
+	/// This allows us to preallocate the list when starting, so we don't have to allocate or delete at runtime.
+	/// Another benefit is that is lets us add and remove active players simply by setting systemAddress
+	/// and moving elements in the list by copying pointers variables without affecting running threads, even if they are in the reliability layer
+	RemoteSystemStruct* remoteSystemList;
+
+	// remoteSystemLookup is only used in the network thread or when single threaded.  Not safe to use this in the user thread
+	// A list of SystemAddressAndIndex sorted by systemAddress.  This way, given a SystemAddress, we can quickly get the index into remoteSystemList to find this player.
+	// This is an optimization to avoid scanning the remoteSystemList::systemAddress member when doing targeted sends
+	// Improves speed of a targeted send to every player from O(n^2) to O(n * log2(n)).
+	// For an MMOG with 1000 players:
+	// The original method takes 1000^2=1,000,000 calls
+	// The new method takes:
+	// logbx = (logax) / (logab)
+	// log2(x) = log10(x) / log10(2)
+	// log2(1000) = log10(1000) / log10(2)
+	// log2(1000) = 9.965
+	// 9.965 * 1000 = 9965
+	// For 1000 players this optimization improves the speed by over 1000 times.
+	DataStructures::OrderedList<SystemAddress, SystemAddressAndIndex, SystemAddressAndIndexComp> remoteSystemLookup;
+	
+	enum
+	{
+		// Only put these mutexes in user thread functions!
+#ifdef _RAKNET_THREADSAFE
+		transferToPacketQueue_Mutex,
+		packetPool_Mutex,
+		bufferedCommands_Mutex,
+		requestedConnectionList_Mutex,
+#endif
+		offlinePingResponse_Mutex,
+		NUMBER_OF_RAKPEER_MUTEXES
+	};
+	SimpleMutex rakPeerMutexes[ NUMBER_OF_RAKPEER_MUTEXES ];
+	///RunUpdateCycle is not thread safe but we don't need to mutex calls. Just skip calls if it is running already
+
+	bool updateCycleIsRunning;
+	///The list of people we have tried to connect to recently
+
+	//DataStructures::Queue<RequestedConnectionStruct*> requestedConnectionsList;
+	///Data that both the client and the server needs
+
+	unsigned int bytesSentPerSecond, bytesReceivedPerSecond;
+	// bool isSocketLayerBlocking;
+	// bool continualPing,isRecvfromThreadActive,isMainLoopThreadActive, endThreads, isSocketLayerBlocking;
+	unsigned int validationInteger;
+#ifdef _WIN32
+	HANDLE
+#else
+	pthread_t
+#endif
+		processPacketsThreadHandle, recvfromThreadHandle;
+	SimpleMutex incomingQueueMutex, banListMutex; //,synchronizedMemoryQueueMutex, automaticVariableSynchronizationMutex;
+	//DataStructures::Queue<Packet *> incomingpacketSingleProducerConsumer; //, synchronizedMemorypacketSingleProducerConsumer;
+	// BitStream enumerationData;
+
+	/// @brief Automatic Variable Synchronization Mechanism
+	/// automatic variable synchronization takes a primary and secondary identifier
+	/// The unique primary identifier is the index into the automaticVariableSynchronizationList
+	/// The unique secondary identifier (UNASSIGNED_NETWORK_ID for none) is in an unsorted list of memory blocks
+	struct MemoryBlock
+	{
+		char *original, *copy;
+		unsigned short size;
+		NetworkID secondaryID;
+		bool isAuthority;
+		bool ( *synchronizationRules ) ( char*, char* );
+	};
+
+	struct BanStruct
+	{
+		char *IP;
+		RakNetTime timeout; // 0 for none
+	};
+
+	struct RequestedConnectionStruct
+	{
+		SystemAddress systemAddress;
+		RakNetTime nextRequestTime;
+		unsigned char requestsMade;
+		char *data;
+		unsigned short dataLength;
+		char outgoingPassword[256];
+		unsigned char outgoingPasswordLength;
+		unsigned socketIndex;
+		enum {CONNECT=1, /*PING=2, PING_OPEN_CONNECTIONS=4,*/ /*ADVERTISE_SYSTEM=2*/} actionToTake;
+	};
+
+	//DataStructures::List<DataStructures::List<MemoryBlock>* > automaticVariableSynchronizationList;
+	DataStructures::List<BanStruct*> banList;
+	DataStructures::List<PluginInterface*> messageHandlerList;
+	DataStructures::SingleProducerConsumer<RequestedConnectionStruct> requestedConnectionList;
+
+	/// Compression stuff
+	unsigned int frequencyTable[ 256 ];
+	HuffmanEncodingTree *inputTree, *outputTree;
+	unsigned int rawBytesSent, rawBytesReceived, compressedBytesSent, compressedBytesReceived;
+	// void DecompressInput(RakNet::BitStream *bitStream);
+	// void UpdateOutgoingFrequencyTable(RakNet::BitStream * bitStream);
+	void GenerateSYNCookieRandomNumber( void );
+	void SecuredConnectionResponse( const SystemAddress systemAddress );
+	void SecuredConnectionConfirmation( RakPeer::RemoteSystemStruct * remoteSystem, char* data );
+	bool RunUpdateCycle( void );
+	// void RunMutexedUpdateCycle(void);
+
+	struct BufferedCommandStruct
+	{
+		int numberOfBitsToSend;
+		PacketPriority priority;
+		PacketReliability reliability;
+		char orderingChannel;
+		SystemAddress systemAddress;
+		bool broadcast;
+		RemoteSystemStruct::ConnectMode connectionMode;
+		NetworkID networkID;
+		bool blockingCommand; // Only used for RPC
+		char *data;
+		enum {BCS_SEND, BCS_CLOSE_CONNECTION, /*BCS_RPC, BCS_RPC_SHIFT,*/ BCS_DO_NOTHING} command;
+	};
+
+	// Single producer single consumer queue using a linked list
+	//BufferedCommandStruct* bufferedCommandReadIndex, bufferedCommandWriteIndex;
+	DataStructures::SingleProducerConsumer<BufferedCommandStruct> bufferedCommands;
+
+	bool AllowIncomingConnections(void) const;
+
+	void PingInternal( const SystemAddress target, bool performImmediate, PacketReliability reliability );
+	bool ValidSendTarget(SystemAddress systemAddress, bool broadcast);
+	// This stores the user send calls to be handled by the update thread.  This way we don't have thread contention over systemAddresss
+	void CloseConnectionInternal( const SystemAddress target, bool sendDisconnectionNotification, bool performImmediate, unsigned char orderingChannel );
+	void SendBuffered( const char *data, int numberOfBitsToSend, PacketPriority priority, PacketReliability reliability, char orderingChannel, SystemAddress systemAddress, bool broadcast, RemoteSystemStruct::ConnectMode connectionMode );
+	bool SendImmediate( char *data, int numberOfBitsToSend, PacketPriority priority, PacketReliability reliability, char orderingChannel, SystemAddress systemAddress, bool broadcast, bool useCallerDataAllocation, RakNetTimeNS currentTime );
+	//bool HandleBufferedRPC(BufferedCommandStruct *bcs, RakNetTime time);
+	void ClearBufferedCommands(void);
+	void ClearRequestedConnectionList(void);
+	void AddPacketToProducer(Packet *p);
+
+	//DataStructures::AVLBalancedBinarySearchTree<RPCNode> rpcTree;
+	RPCMap rpcMap; // Can't use StrPtrHash because runtime insertions will screw up the indices
+	int defaultMTUSize;
+	bool trackFrequencyTable;
+	int threadSleepTimer;
+
+	SOCKET *connectionSockets;
+	unsigned connectionSocketsLength;
+	/*
+#if defined (_WIN32) && defined(USE_WAIT_FOR_MULTIPLE_EVENTS)
+	WSAEVENT recvEvent;
+#endif
+	*/
+
+	// Used for RPC replies
+	RakNet::BitStream *replyFromTargetBS;
+	SystemAddress replyFromTargetPlayer;
+	bool replyFromTargetBroadcast;
+
+	// Problem:
+	// Waiting in function A:
+	// Wait function gets RPC B:
+	// 
+	bool blockOnRPCReply;
+
+	// For redirecting sends through the router plugin.  Unfortunate I have to use this architecture.
+	RouterInterface *router;
+
+
+public:
+	virtual void SetNetworkIDManager( NetworkIDManager *manager );
+	virtual NetworkIDManager* GetNetworkIDManager(void) const;
+	virtual void SetPerConnectionOutgoingBandwidthLimit( unsigned maxBitsPerSecond );
+	/// Allocates a Packet plus its payload in one malloc; data points just past the header.
+	virtual Packet* AllocatePacket(unsigned dataSize);
+	/// True when the address maps to a live entry in remoteSystemList.
+	virtual bool IsConnected(const SystemAddress systemAddress);
+	/// Sends a two-byte probe with TTL 1, used to open the local NAT mapping.
+	virtual void SendTTL1( const char* host, unsigned short remotePort, unsigned connectionSocketIndex );
+protected:
+
+
+	// Nobody would use the internet simulator in a final build.
+#ifndef _RELEASE
+	double _maxSendBPS;
+	unsigned short _minExtraPing, _extraPingVariance;
+#endif
+
+#if !defined(_COMPATIBILITY_1)
+	/// Encryption and security
+	big::RSACrypt<RSA_BIT_SIZE> rsacrypt;
+	big::u32 publicKeyE;
+	RSA_BIT_SIZE publicKeyN;
+	bool keysLocallyGenerated, usingSecurity;
+	RakNetTime randomNumberExpirationTime;
+	unsigned char newRandomNumber[ 20 ], oldRandomNumber[ 20 ];
+#endif
+    
+	///How long it has been since things were updated by a call to receiveUpdate thread uses this to determine how long to sleep for
+	//unsigned int lastUserUpdateCycle;
+	/// True to allow connection accepted packets from anyone.  False to only allow these packets from servers we requested a connection to.
+	bool allowConnectionResponseIPMigration;
+
+	int splitMessageProgressInterval;
+	RakNetTime unreliableTimeout;
+
+	// The packetSingleProducerConsumer transfers the packets from the network thread to the user thread. The pushedBackPacket holds packets that couldn't be processed
+	// immediately while waiting on blocked RPCs
+	DataStructures::SingleProducerConsumer<Packet*> packetSingleProducerConsumer;
+	//DataStructures::Queue<Packet*> pushedBackPacket, outOfOrderDeallocatedPacket;
+	DataStructures::Queue<Packet*> packetPool;
+
+	NetworkIDManager *networkIDManager;
+};
+
+#endif
+
 /// \file
 ///
 /// This file is part of RakNet Copyright 2003 Kevin Jenkins.
@@ -192,7 +1607,6 @@ RakPeer::RakPeer() : processPacketsThreadHandle(0)
 	splitMessageProgressInterval=0;
 	unreliableTimeout=0;
 	networkIDManager=0;
-	maxOutgoingBPS=0;
 
 	/*
 #if defined (_WIN32) && defined(USE_WAIT_FOR_MULTIPLE_EVENTS)
@@ -1046,7 +2460,7 @@ NetworkIDManager* RakPeer::GetNetworkIDManager(void) const
 // FUNCTION: WEBSERVICE 0x101b0280
 void RakPeer::SetPerConnectionOutgoingBandwidthLimit( unsigned maxBitsPerSecond )
 {
-	maxOutgoingBPS=maxBitsPerSecond;
+	(void)maxBitsPerSecond;
 }
 
 // FUNCTION: WEBSERVICE 0x101b9220
@@ -4461,7 +5875,7 @@ bool RakPeer::RunUpdateCycle( void )
 				SendImmediate((char*)&keepAlive,8,LOW_PRIORITY, RELIABLE, 0, remoteSystem->systemAddress, false, false, timeNS);
 			}
 
-			remoteSystem->reliabilityLayer.Update( connectionSockets[remoteSystem->connectionSocketIndex], systemAddress, remoteSystem->MTUSize, timeNS, maxOutgoingBPS, messageHandlerList ); // systemAddress only used for the internet simulator test
+			remoteSystem->reliabilityLayer.Update( connectionSockets[remoteSystem->connectionSocketIndex], systemAddress, remoteSystem->MTUSize, timeNS, 0, messageHandlerList ); // systemAddress only used for the internet simulator test
 
 			// Check for failure conditions
 			if ( remoteSystem->reliabilityLayer.IsDeadConnection() ||

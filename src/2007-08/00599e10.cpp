@@ -1,9 +1,10 @@
+// from server: 100% by EspClaude
 // from server: 99% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll roc_espeon_cameratiltconstantc267f6dc5c411473.cpp
+// roc-lib: rbxgs-dll roc_claude_795da709fda2eeb5.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "G3D/CoordinateFrame.h"
@@ -11,7 +12,7 @@
 extern const float radiansToDegrees;
 namespace RBX { namespace Math { float getElevation(const G3D::Vector3&); } }
 struct Camera {
- char prefix[0x174]; G3D::CoordinateFrame cameraGoal;
+ char prefix[0x12c]; G3D::CoordinateFrame cameraGoal;
  bool tiltRadians(float);
  void tiltSteps(int steps);
 };

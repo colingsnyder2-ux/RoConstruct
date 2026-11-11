@@ -1,4 +1,91 @@
+// from server: 99% by EspClaude
 // from server: 72% by EspClaude
+// roc 2007-08 0046ba80  unit: RBX::LDraw2Lua::LDrawCommand  size: 261 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 0046ba80
+//
+// 0046ba80  6aff                 push -1
+// 0046ba82  68a93f7400           push 0x743fa9
+// 0046ba87  64a100000000         mov eax, dword ptr fs:[0]
+// 0046ba8d  50                   push eax
+// 0046ba8e  51                   push ecx
+// 0046ba8f  53                   push ebx
+// 0046ba90  56                   push esi
+// 0046ba91  57                   push edi
+// 0046ba92  a188518b00           mov eax, dword ptr [0x8b5188]
+// 0046ba97  33c4                 xor eax, esp
+// 0046ba99  50                   push eax
+// 0046ba9a  8d442414             lea eax, [esp + 0x14]
+// 0046ba9e  64a300000000         mov dword ptr fs:[0], eax
+// 0046baa4  8b7c2424             mov edi, dword ptr [esp + 0x24]
+// 0046baa8  8bf1                 mov esi, ecx
+// 0046baaa  837e0801             cmp dword ptr [esi + 8], 1
+// 0046baae  c744241c00000000     mov dword ptr [esp + 0x1c], 0
+// 0046bab6  0f85a0000000         jne 0x46bb5c
+// 0046babc  8b4e04               mov ecx, dword ptr [esi + 4]
+// 0046babf  8d4670               lea eax, [esi + 0x70]
+// 0046bac2  50                   push eax
+// 0046bac3  e8d8ddffff           call 0x4698a0
+// 0046bac8  85c0                 test eax, eax
+// 0046baca  0f848c000000         je 0x46bb5c
+// 0046bad0  8bc8                 mov ecx, eax
+// 0046bad2  e8f9eeffff           call 0x46a9d0
+// 0046bad7  8bd8                 mov ebx, eax
+// 0046bad9  85db                 test ebx, ebx
+// 0046badb  747f                 je 0x46bb5c
+// 0046badd  53                   push ebx
+// 0046bade  57                   push edi
+// 0046badf  8bce                 mov ecx, esi
+// 0046bae1  e8aafaffff           call 0x46b590
+// 0046bae6  57                   push edi
+// 0046bae7  8bce                 mov ecx, esi
+// 0046bae9  e872fcffff           call 0x46b760
+// 0046baee  83ec1c               sub esp, 0x1c
+// 0046baf1  83c324               add ebx, 0x24
+// 0046baf4  8bcc                 mov ecx, esp
+// 0046baf6  8964242c             mov dword ptr [esp + 0x2c], esp
+// 0046bafa  53                   push ebx
+// 0046bafb  ff159ce67700         call dword ptr [0x77e69c]
+// 0046bb01  57                   push edi
+// 0046bb02  8bce                 mov ecx, esi
+// 0046bb04  e8a7fcffff           call 0x46b7b0
+// 0046bb09  83ec1c               sub esp, 0x1c
+// 0046bb0c  8d542444             lea edx, [esp + 0x44]
+// 0046bb10  8bcc                 mov ecx, esp
+// 0046bb12  8964242c             mov dword ptr [esp + 0x2c], esp
+// 0046bb16  52                   push edx
+// 0046bb17  ff159ce67700         call dword ptr [0x77e69c]
+// 0046bb1d  57                   push edi
+// 0046bb1e  8bce                 mov ecx, esi
+// 0046bb20  e8bbfeffff           call 0x46b9e0
+// 0046bb25  6868637900           push 0x796368
+// 0046bb2a  57                   push edi
+// 0046bb2b  e870f8ffff           call 0x46b3a0
+// 0046bb30  83c408               add esp, 8
+// 0046bb33  8d4c2428             lea ecx, [esp + 0x28]
+// 0046bb37  c744241cffffffff     mov dword ptr [esp + 0x1c], 0xffffffff
+// 0046bb3f  ff15ace67700         call dword ptr [0x77e6ac]
+// 0046bb45  b001                 mov al, 1
+// 0046bb47  8b4c2414             mov ecx, dword ptr [esp + 0x14]
+// 0046bb4b  64890d00000000       mov dword ptr fs:[0], ecx
+// 0046bb52  59                   pop ecx
+// 0046bb53  5f                   pop edi
+// 0046bb54  5e                   pop esi
+// 0046bb55  5b                   pop ebx
+// 0046bb56  83c410               add esp, 0x10
+// 0046bb59  c22000               ret 0x20
+// 0046bb5c  8d4c2428             lea ecx, [esp + 0x28]
+// 0046bb60  c744241cffffffff     mov dword ptr [esp + 0x1c], 0xffffffff
+// 0046bb68  ff15ace67700         call dword ptr [0x77e6ac]
+// 0046bb6e  32c0                 xor al, al
+// 0046bb70  8b4c2414             mov ecx, dword ptr [esp + 0x14]
+// 0046bb74  64890d00000000       mov dword ptr fs:[0], ecx
+// 0046bb7b  59                   pop ecx
+// 0046bb7c  5f                   pop edi
+// 0046bb7d  5e                   pop esi
+// 0046bb7e  5b                   pop ebx
+// 0046bb7f  83c410               add esp, 0x10
+// 0046bb82  c22000               ret 0x20
+
 // from server: 100% by colin
 // roc 2008-06 0046f000  unit: RBX::LDraw2Lua::LDrawCommand  size: 251 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0046f000
@@ -205,8 +292,9 @@ struct S {
     bool f(int, Text);
 };
 
-bool S::f(int context, Text argument)
+bool S::f(int context0, Text argument)
 {
+    int context = *(volatile int*)&context0;
     if (mode == 1) {
         Entry* entry = lookup->find(&key);
         if (entry) {

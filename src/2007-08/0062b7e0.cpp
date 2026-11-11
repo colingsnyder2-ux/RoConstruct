@@ -1,9 +1,10 @@
+// from server: 97% by EspClaude
 // from server: 92% by EspClaude
 // from server: 100% by nuck16
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll roc_unit_4bcacccd78e95d4b.cpp
+// roc-lib: rbxgs-dll roc_claude_998ea152d9bc7f89.cpp
 
 // Candidate translation unit (score above; library headers required).
 #define private public
@@ -22,11 +23,14 @@
 
 namespace RBX
 {
-	// 2008-06 layout from the target: Primitive::geometry at +0x9c.
+	// 2007-08 layout from the target: Primitive::geometry at +0x60, body at +0x64.
 	struct Primitive2008View
 	{
-		char prefix[0x9c];
+		char prefix[0x60];
 		Geometry* geometry;
+		Body* body;
+		// 2007-08: Body::pv.position at +0x84 (target add esi,0x84 after updatePV).
+		const G3D::CoordinateFrame& getCoordinateFrame() const {const Body* b=body;b->updatePV();return *reinterpret_cast<const G3D::CoordinateFrame*>(reinterpret_cast<const char*>(b)+0x84);}
 		Extents getExtentsLocal() const
 		{
 			G3D::Vector3 hVec = geometry->getGridSize() * 0.5f;
@@ -42,7 +46,7 @@ namespace RBX
 		answer.snap = snap;
 
 		Extents snapExtents = ((Primitive2008View*)snap)->getExtentsLocal();
-		const G3D::CoordinateFrame& cframe = snap->getCoordinateFrame();
+		const G3D::CoordinateFrame& cframe = ((Primitive2008View*)snap)->getCoordinateFrame();
 		G3D::Ray rayInSnap = cframe.toObjectSpace(mouseRay);
 
 		float bestDistance = 0.0f;

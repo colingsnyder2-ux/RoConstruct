@@ -1,4 +1,122 @@
+// from server: 100% by EspClaude
 // from server: 85% by EspClaude
+// roc 2007-08 005e1b10  unit: RBX::VMotorFeature::?$FactoryProduct  size: 421 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 005e1b10
+//
+// 005e1b10  81ec08010000         sub esp, 0x108
+// 005e1b16  55                   push ebp
+// 005e1b17  8bac2410010000       mov ebp, dword ptr [esp + 0x110]
+// 005e1b1e  837d0400             cmp dword ptr [ebp + 4], 0
+// 005e1b22  0f8485010000         je 0x5e1cad
+// 005e1b28  8d44247c             lea eax, [esp + 0x7c]
+// 005e1b2c  55                   push ebp
+// 005e1b2d  50                   push eax
+// 005e1b2e  e8adf6ffff           call 0x5e11e0
+// 005e1b33  d9400c               fld dword ptr [eax + 0xc]
+// 005e1b36  d800                 fadd dword ptr [eax]
+// 005e1b38  83c408               add esp, 8
+// 005e1b3b  f605fc2a8c0001       test byte ptr [0x8c2afc], 1
+// 005e1b42  d94010               fld dword ptr [eax + 0x10]
+// 005e1b45  d84004               fadd dword ptr [eax + 4]
+// 005e1b48  d94014               fld dword ptr [eax + 0x14]
+// 005e1b4b  d84008               fadd dword ptr [eax + 8]
+// 005e1b4e  d9059c7e7900         fld dword ptr [0x797e9c]
+// 005e1b54  dccb                 fmul st(3), st(0)
+// 005e1b56  d9cb                 fxch st(3)
+// 005e1b58  d95c2404             fstp dword ptr [esp + 4]
+// 005e1b5c  d9c9                 fxch st(1)
+// 005e1b5e  d8ca                 fmul st(2)
+// 005e1b60  d95c2408             fstp dword ptr [esp + 8]
+// 005e1b64  dec9                 fmulp st(1)
+// 005e1b66  d95c240c             fstp dword ptr [esp + 0xc]
+// 005e1b6a  7521                 jne 0x5e1b8d
+// 005e1b6c  d9e8                 fld1 
+// 005e1b6e  830dfc2a8c0001       or dword ptr [0x8c2afc], 1
+// 005e1b75  d915f02a8c00         fst dword ptr [0x8c2af0]
+// 005e1b7b  d905b07e7900         fld dword ptr [0x797eb0]
+// 005e1b81  d91df42a8c00         fstp dword ptr [0x8c2af4]
+// 005e1b87  d91df82a8c00         fstp dword ptr [0x8c2af8]
+// 005e1b8d  68f02a8c00           push 0x8c2af0
+// 005e1b92  8d4c2408             lea ecx, [esp + 8]
+// 005e1b96  51                   push ecx
+// 005e1b97  8d542418             lea edx, [esp + 0x18]
+// 005e1b9b  52                   push edx
+// 005e1b9c  e8bfa3fcff           call 0x5abf60
+// 005e1ba1  83c40c               add esp, 0xc
+// 005e1ba4  e85789f2ff           call 0x50a500
+// 005e1ba9  50                   push eax
+// 005e1baa  8d4c2420             lea ecx, [esp + 0x20]
+// 005e1bae  e81d7af2ff           call 0x5095d0
+// 005e1bb3  d9442410             fld dword ptr [esp + 0x10]
+// 005e1bb7  f60538d18b0001       test byte ptr [0x8bd138], 1
+// 005e1bbe  d95c2440             fstp dword ptr [esp + 0x40]
+// 005e1bc2  d9442414             fld dword ptr [esp + 0x14]
+// 005e1bc6  d95c2444             fstp dword ptr [esp + 0x44]
+// 005e1bca  d9442418             fld dword ptr [esp + 0x18]
+// 005e1bce  d95c2448             fstp dword ptr [esp + 0x48]
+// 005e1bd2  751b                 jne 0x5e1bef
+// 005e1bd4  d9ee                 fldz 
+// 005e1bd6  830d38d18b0001       or dword ptr [0x8bd138], 1
+// 005e1bdd  d9152cd18b00         fst dword ptr [0x8bd12c]
+// 005e1be3  d91530d18b00         fst dword ptr [0x8bd130]
+// 005e1be9  d91d34d18b00         fstp dword ptr [0x8bd134]
+// 005e1bef  8b842414010000       mov eax, dword ptr [esp + 0x114]
+// 005e1bf6  56                   push esi
+// 005e1bf7  50                   push eax
+// 005e1bf8  8d4c2454             lea ecx, [esp + 0x54]
+// 005e1bfc  e8cf79f2ff           call 0x5095d0
+// 005e1c01  d9052cd18b00         fld dword ptr [0x8bd12c]
+// 005e1c07  d95c2474             fstp dword ptr [esp + 0x74]
+// 005e1c0b  33f6                 xor esi, esi
+// 005e1c0d  397504               cmp dword ptr [ebp + 4], esi
+// 005e1c10  d90530d18b00         fld dword ptr [0x8bd130]
+// 005e1c16  d95c2478             fstp dword ptr [esp + 0x78]
+// 005e1c1a  d90534d18b00         fld dword ptr [0x8bd134]
+// 005e1c20  d95c247c             fstp dword ptr [esp + 0x7c]
+// 005e1c24  0f8e82000000         jle 0x5e1cac
+// 005e1c2a  53                   push ebx
+// 005e1c2b  57                   push edi
+// 005e1c2c  8d642400             lea esp, [esp]
+// 005e1c30  8b4d00               mov ecx, dword ptr [ebp]
+// 005e1c33  8b3cb1               mov edi, dword ptr [ecx + esi*4]
+// 005e1c36  8b5f64               mov ebx, dword ptr [edi + 0x64]
+// 005e1c39  8bcb                 mov ecx, ebx
+// 005e1c3b  e8c0e4f4ff           call 0x530100
+// 005e1c40  81c384000000         add ebx, 0x84
+// 005e1c46  53                   push ebx
+// 005e1c47  8d94248c000000       lea edx, [esp + 0x8c]
+// 005e1c4e  52                   push edx
+// 005e1c4f  8d4c2430             lea ecx, [esp + 0x30]
+// 005e1c53  e86886fdff           call 0x5ba2c0
+// 005e1c58  8d842488000000       lea eax, [esp + 0x88]
+// 005e1c5f  50                   push eax
+// 005e1c60  8d8c24bc000000       lea ecx, [esp + 0xbc]
+// 005e1c67  51                   push ecx
+// 005e1c68  8d4c2460             lea ecx, [esp + 0x60]
+// 005e1c6c  e88f15e9ff           call 0x473200
+// 005e1c71  8d9424b8000000       lea edx, [esp + 0xb8]
+// 005e1c78  52                   push edx
+// 005e1c79  8d8424ec000000       lea eax, [esp + 0xec]
+// 005e1c80  50                   push eax
+// 005e1c81  8d4c2430             lea ecx, [esp + 0x30]
+// 005e1c85  e87615e9ff           call 0x473200
+// 005e1c8a  57                   push edi
+// 005e1c8b  e8b020f9ff           call 0x573d40
+// 005e1c90  83c404               add esp, 4
+// 005e1c93  8d8c24e8000000       lea ecx, [esp + 0xe8]
+// 005e1c9a  51                   push ecx
+// 005e1c9b  8bc8                 mov ecx, eax
+// 005e1c9d  e83e61f9ff           call 0x577de0
+// 005e1ca2  83c601               add esi, 1
+// 005e1ca5  3b7504               cmp esi, dword ptr [ebp + 4]
+// 005e1ca8  7c86                 jl 0x5e1c30
+// 005e1caa  5f                   pop edi
+// 005e1cab  5b                   pop ebx
+// 005e1cac  5e                   pop esi
+// 005e1cad  5d                   pop ebp
+// 005e1cae  81c408010000         add esp, 0x108
+// 005e1cb4  c3                   ret 
+
 // from server: 100% by Bob535653
 // roc 2008-06 00610a60  unit: RBX::BlockBlockContact  size: 399 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00610a60
@@ -260,12 +378,18 @@ struct Extents {
     Vector3 center() const { return (high + low) * 0.5f; }
 };
 
-struct PartInstance {
-    const CoordinateFrame& getCoordinateFrame() const;
+struct Primitive {
+    char padding[0x84];
+    CoordinateFrame cframe;
+    void refresh() const;
+    const CoordinateFrame& getCoordinateFrame() const { refresh(); return cframe; }
+    void setCoordinateFrame(const CoordinateFrame& c);
 };
 
-struct Primitive {
-    void setCoordinateFrame(const CoordinateFrame& c);
+struct PartInstance {
+    char padding[0x64];
+    Primitive* primitive;
+    const CoordinateFrame& getCoordinateFrame() const { return primitive->getCoordinateFrame(); }
 };
 
 Primitive* getPrimitive(PartInstance* p);

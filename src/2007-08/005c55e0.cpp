@@ -1,9 +1,10 @@
+// from server: 100% by EspClaude
 // from server: 99% by EspClaude
 // from server: 74% by colin
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll script/ScriptEvent.cpp
+// roc-lib: rbxgs-dll roc_claude_9bf0f801207940e7.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "script/ScriptEvent.h"
@@ -43,7 +44,7 @@ namespace RBX
                     continue;
 
                 // TODO: LHS and RHS swapped in codegen
-                it->elapsedTime += heartbeat.step;
+                { WaitingThread& w = *it; w.elapsedTime = heartbeat.step + w.elapsedTime; }
 
                 if (it->elapsedTime < it->requestedDelay)
                 {

@@ -1,4 +1,81 @@
+// from server: 100% by EspClaude
 // from server: 75% by EspClaude
+// roc 2007-08 00422c30  unit: CRobloxTreeCtrlNode  size: 186 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 00422c30
+//
+// 00422c30  57                   push edi
+// 00422c31  8bf9                 mov edi, ecx
+// 00422c33  837f4400             cmp dword ptr [edi + 0x44], 0
+// 00422c37  0f84ab000000         je 0x422ce8
+// 00422c3d  8b4f30               mov ecx, dword ptr [edi + 0x30]
+// 00422c40  8b01                 mov eax, dword ptr [ecx]
+// 00422c42  8b9048010000         mov edx, dword ptr [eax + 0x148]
+// 00422c48  ffd2                 call edx
+// 00422c4a  85c0                 test eax, eax
+// 00422c4c  0f8481000000         je 0x422cd3
+// 00422c52  8b470c               mov eax, dword ptr [edi + 0xc]
+// 00422c55  8b4f30               mov ecx, dword ptr [edi + 0x30]
+// 00422c58  50                   push eax
+// 00422c59  8b01                 mov eax, dword ptr [ecx]
+// 00422c5b  8b9048010000         mov edx, dword ptr [eax + 0x148]
+// 00422c61  ffd2                 call edx
+// 00422c63  8bc8                 mov ecx, eax
+// 00422c65  e8f6feffff           call 0x422b60
+// 00422c6a  84c0                 test al, al
+// 00422c6c  7465                 je 0x422cd3
+// 00422c6e  55                   push ebp
+// 00422c6f  8b2dd8ec7700         mov ebp, dword ptr [0x77ecd8]
+// 00422c75  56                   push esi
+// 00422c76  8b7734               mov esi, dword ptr [edi + 0x34]
+// 00422c79  85f6                 test esi, esi
+// 00422c7b  742c                 je 0x422ca9
+// 00422c7d  53                   push ebx
+// 00422c7e  8bff                 mov edi, edi
+// 00422c80  8a5e2d               mov bl, byte ptr [esi + 0x2d]
+// 00422c83  c6462d01             mov byte ptr [esi + 0x2d], 1
+// 00422c87  8b4644               mov eax, dword ptr [esi + 0x44]
+// 00422c8a  8b4e30               mov ecx, dword ptr [esi + 0x30]
+// 00422c8d  8b5120               mov edx, dword ptr [ecx + 0x20]
+// 00422c90  50                   push eax
+// 00422c91  6802400000           push 0x4002
+// 00422c96  6802110000           push 0x1102
+// 00422c9b  52                   push edx
+// 00422c9c  ffd5                 call ebp
+// 00422c9e  885e2d               mov byte ptr [esi + 0x2d], bl
+// 00422ca1  8b7634               mov esi, dword ptr [esi + 0x34]
+// 00422ca4  85f6                 test esi, esi
+// 00422ca6  75d8                 jne 0x422c80
+// 00422ca8  5b                   pop ebx
+// 00422ca9  8b4744               mov eax, dword ptr [edi + 0x44]
+// 00422cac  8b4f30               mov ecx, dword ptr [edi + 0x30]
+// 00422caf  6a00                 push 0
+// 00422cb1  50                   push eax
+// 00422cb2  50                   push eax
+// 00422cb3  83c154               add ecx, 0x54
+// 00422cb6  e875352400           call 0x666230
+// 00422cbb  8b4744               mov eax, dword ptr [edi + 0x44]
+// 00422cbe  8b4f30               mov ecx, dword ptr [edi + 0x30]
+// 00422cc1  8b5120               mov edx, dword ptr [ecx + 0x20]
+// 00422cc4  50                   push eax
+// 00422cc5  6a00                 push 0
+// 00422cc7  6814110000           push 0x1114
+// 00422ccc  52                   push edx
+// 00422ccd  ffd5                 call ebp
+// 00422ccf  5e                   pop esi
+// 00422cd0  5d                   pop ebp
+// 00422cd1  5f                   pop edi
+// 00422cd2  c3                   ret 
+// 00422cd3  8b4f30               mov ecx, dword ptr [edi + 0x30]
+// 00422cd6  8b01                 mov eax, dword ptr [ecx]
+// 00422cd8  8b5744               mov edx, dword ptr [edi + 0x44]
+// 00422cdb  8b8044010000         mov eax, dword ptr [eax + 0x144]
+// 00422ce1  6a02                 push 2
+// 00422ce3  6a00                 push 0
+// 00422ce5  52                   push edx
+// 00422ce6  ffd0                 call eax
+// 00422ce8  5f                   pop edi
+// 00422ce9  c3                   ret 
+
 // from server: 100% by king_originala
 // roc 2008-06 00424f80  unit: CRobloxTreeCtrlNode  size: 199 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00424f80
@@ -97,7 +174,7 @@ struct Control {
     V(50) V(51) V(52) V(53) V(54) V(55) V(56) V(57) V(58) V(59)
     V(60) V(61) V(62) V(63) V(64) V(65) V(66) V(67) V(68) V(69)
     V(70) V(71) V(72) V(73) V(74) V(75) V(76) V(77) V(78) V(79)
-    V(80) V(81) V(82)
+    V(80)
     virtual void update(int, int, int);
     virtual Context *context();
 
@@ -111,12 +188,12 @@ struct Control {
 struct Node {
     char padding00[12];
     void *object;
-    char padding10[69];
+    char padding10[29];
     volatile unsigned char flag;
-    char padding56[2];
+    char padding2e[2];
     Control *control;
     Node *next;
-    char padding60[32];
+    char padding38[12];
     int item;
 
     void update();

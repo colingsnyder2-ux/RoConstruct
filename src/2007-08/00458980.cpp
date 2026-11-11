@@ -1,8 +1,9 @@
+// from server: 100% by EspClaude
 // from server: 94% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-lib: rbxgs-dll roc_espeon_renderdeviceautoptreefad870f7e7913d.cpp
+// roc-lib: rbxgs-dll roc_claude_1e24b491f8c94146.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <memory>
@@ -93,7 +94,7 @@ extern bool deviceCreated;
 extern const char driverWarning[];
 
 struct CRobloxWnd {
-    char padding0[0x88];
+    char padding0[0x78];
     bool beginImmediately;
     char padding1[0x1b];
     Context* context;

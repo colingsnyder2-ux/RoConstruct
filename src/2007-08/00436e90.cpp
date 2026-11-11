@@ -1,4 +1,89 @@
+// from server: 100% by EspClaude
 // from server: 95% by EspClaude
+// roc 2007-08 00436e90  unit: CClassTreeView  size: 251 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 00436e90
+//
+// 00436e90  6aff                 push -1
+// 00436e92  6878e37300           push 0x73e378
+// 00436e97  64a100000000         mov eax, dword ptr fs:[0]
+// 00436e9d  50                   push eax
+// 00436e9e  83ec34               sub esp, 0x34
+// 00436ea1  53                   push ebx
+// 00436ea2  55                   push ebp
+// 00436ea3  56                   push esi
+// 00436ea4  57                   push edi
+// 00436ea5  a188518b00           mov eax, dword ptr [0x8b5188]
+// 00436eaa  33c4                 xor eax, esp
+// 00436eac  50                   push eax
+// 00436ead  8d442448             lea eax, [esp + 0x48]
+// 00436eb1  64a300000000         mov dword ptr fs:[0], eax
+// 00436eb7  8bf1                 mov esi, ecx
+// 00436eb9  e8da931f00           call 0x630298
+// 00436ebe  e82dd7ffff           call 0x4345f0
+// 00436ec3  8bf8                 mov edi, eax
+// 00436ec5  8bcf                 mov ecx, edi
+// 00436ec7  897c2414             mov dword ptr [esp + 0x14], edi
+// 00436ecb  e880e82e00           call 0x725750
+// 00436ed0  c644241801           mov byte ptr [esp + 0x18], 1
+// 00436ed5  c744245000000000     mov dword ptr [esp + 0x50], 0
+// 00436edd  e81e15feff           call 0x418400
+// 00436ee2  50                   push eax
+// 00436ee3  8bce                 mov ecx, esi
+// 00436ee5  e8e6f2ffff           call 0x4361d0
+// 00436eea  b8d04a4300           mov eax, 0x434ad0
+// 00436eef  8be8                 mov ebp, eax
+// 00436ef1  8d44241c             lea eax, [esp + 0x1c]
+// 00436ef5  33c9                 xor ecx, ecx
+// 00436ef7  50                   push eax
+// 00436ef8  894c2440             mov dword ptr [esp + 0x40], ecx
+// 00436efc  e84f031500           call 0x587250
+// 00436f01  8d4c2428             lea ecx, [esp + 0x28]
+// 00436f05  51                   push ecx
+// 00436f06  8bd8                 mov ebx, eax
+// 00436f08  e813031500           call 0x587220
+// 00436f0d  8b542444             mov edx, dword ptr [esp + 0x44]
+// 00436f11  83ec08               sub esp, 8
+// 00436f14  8bcc                 mov ecx, esp
+// 00436f16  8929                 mov dword ptr [ecx], ebp
+// 00436f18  895104               mov dword ptr [ecx + 4], edx
+// 00436f1b  8bd6                 mov edx, esi
+// 00436f1d  895108               mov dword ptr [ecx + 8], edx
+// 00436f20  8b542438             mov edx, dword ptr [esp + 0x38]
+// 00436f24  89510c               mov dword ptr [ecx + 0xc], edx
+// 00436f27  8b4b04               mov ecx, dword ptr [ebx + 4]
+// 00436f2a  8b13                 mov edx, dword ptr [ebx]
+// 00436f2c  51                   push ecx
+// 00436f2d  8b4804               mov ecx, dword ptr [eax + 4]
+// 00436f30  52                   push edx
+// 00436f31  8b10                 mov edx, dword ptr [eax]
+// 00436f33  51                   push ecx
+// 00436f34  52                   push edx
+// 00436f35  8d442458             lea eax, [esp + 0x58]
+// 00436f39  50                   push eax
+// 00436f3a  e861f1ffff           call 0x4360a0
+// 00436f3f  8b5620               mov edx, dword ptr [esi + 0x20]
+// 00436f42  83c424               add esp, 0x24
+// 00436f45  8d4c242c             lea ecx, [esp + 0x2c]
+// 00436f49  51                   push ecx
+// 00436f4a  6a00                 push 0
+// 00436f4c  6815110000           push 0x1115
+// 00436f51  52                   push edx
+// 00436f52  c744243c0000ffff     mov dword ptr [esp + 0x3c], 0xffff0000
+// 00436f5a  c744244040434300     mov dword ptr [esp + 0x40], 0x434340
+// 00436f62  ff15d8ec7700         call dword ptr [0x77ecd8]
+// 00436f68  8bcf                 mov ecx, edi
+// 00436f6a  c7442450ffffffff     mov dword ptr [esp + 0x50], 0xffffffff
+// 00436f72  e8f9e72e00           call 0x725770
+// 00436f77  8b4c2448             mov ecx, dword ptr [esp + 0x48]
+// 00436f7b  64890d00000000       mov dword ptr fs:[0], ecx
+// 00436f82  59                   pop ecx
+// 00436f83  5f                   pop edi
+// 00436f84  5e                   pop esi
+// 00436f85  5d                   pop ebp
+// 00436f86  5b                   pop ebx
+// 00436f87  83c440               add esp, 0x40
+// 00436f8a  c3                   ret 
+
 // from server: 100% by king_originala
 // roc 2008-06 00435eb0  unit: CClassTreeView  size: 237 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00435eb0
@@ -121,12 +206,35 @@ Iterator* __cdecl getBegin(Iterator*);
 struct __multiple_inheritance CClassTreeView;
 typedef void (CClassTreeView::*VisitFunction)(void*);
 
+struct Value
+{
+    CClassTreeView* object;
+    Value(CClassTreeView* p) : object(p) {}
+};
+
+struct Placeholder
+{
+};
+
+struct List
+{
+    Value a1;
+    Placeholder a2;
+    List(Value v, Placeholder) : a1(v) {}
+};
+
 struct Function
 {
     VisitFunction callback;
-    CClassTreeView* object;
-    int extra;
+    List list;
+    Function(VisitFunction f, const List& l) : callback(f), list(l) {}
 };
+
+inline Function bind(VisitFunction f, CClassTreeView* p)
+{
+    Placeholder ph;
+    return Function(f, List(Value(p), ph));
+}
 
 Function __cdecl visitRange(Iterator, Iterator, Function);
 int __stdcall compareItems(long, long, long);
@@ -164,9 +272,8 @@ void CClassTreeView::initialize()
     Lock lock(getMutex());
     populate(getDescriptor());
 
-    Function function;
-    function.callback = &CClassTreeView::visitItem;
-    function.object = this;
+
+    Function function = bind(&CClassTreeView::visitItem, this);
 
     Iterator endStorage;
     Iterator beginStorage;

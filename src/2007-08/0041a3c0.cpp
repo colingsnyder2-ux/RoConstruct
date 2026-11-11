@@ -1,4 +1,55 @@
+// from server: 100% by EspClaude
 // from server: 79% by EspClaude
+// roc 2007-08 0041a3c0  unit: VDHTMLWindow::?$BoundFuncDesc  size: 155 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 0041a3c0
+//
+// 0041a3c0  6aff                 push -1
+// 0041a3c2  688e837400           push 0x74838e
+// 0041a3c7  64a100000000         mov eax, dword ptr fs:[0]
+// 0041a3cd  50                   push eax
+// 0041a3ce  51                   push ecx
+// 0041a3cf  56                   push esi
+// 0041a3d0  a188518b00           mov eax, dword ptr [0x8b5188]
+// 0041a3d5  33c4                 xor eax, esp
+// 0041a3d7  50                   push eax
+// 0041a3d8  8d44240c             lea eax, [esp + 0xc]
+// 0041a3dc  64a300000000         mov dword ptr fs:[0], eax
+// 0041a3e2  8bf1                 mov esi, ecx
+// 0041a3e4  89742408             mov dword ptr [esp + 8], esi
+// 0041a3e8  8b442430             mov eax, dword ptr [esp + 0x30]
+// 0041a3ec  8b4c2424             mov ecx, dword ptr [esp + 0x24]
+// 0041a3f0  50                   push eax
+// 0041a3f1  51                   push ecx
+// 0041a3f2  e819edffff           call 0x419110
+// 0041a3f7  50                   push eax
+// 0041a3f8  8bce                 mov ecx, esi
+// 0041a3fa  e8b1691500           call 0x570db0
+// 0041a3ff  8b54241c             mov edx, dword ptr [esp + 0x1c]
+// 0041a403  8b442420             mov eax, dword ptr [esp + 0x20]
+// 0041a407  8d4e30               lea ecx, [esi + 0x30]
+// 0041a40a  c744241400000000     mov dword ptr [esp + 0x14], 0
+// 0041a412  c70668787800         mov dword ptr [esi], 0x787868
+// 0041a418  895628               mov dword ptr [esi + 0x28], edx
+// 0041a41b  89462c               mov dword ptr [esi + 0x2c], eax
+// 0041a41e  e89d2f1500           call 0x56d3c0
+// 0041a423  8d4e38               lea ecx, [esi + 0x38]
+// 0041a426  c644241401           mov byte ptr [esp + 0x14], 1
+// 0041a42b  e8902f1500           call 0x56d3c0
+// 0041a430  8b4c242c             mov ecx, dword ptr [esp + 0x2c]
+// 0041a434  8b542428             mov edx, dword ptr [esp + 0x28]
+// 0041a438  51                   push ecx
+// 0041a439  52                   push edx
+// 0041a43a  8bce                 mov ecx, esi
+// 0041a43c  c644241c02           mov byte ptr [esp + 0x1c], 2
+// 0041a441  e8fa93ffff           call 0x413840
+// 0041a446  8bc6                 mov eax, esi
+// 0041a448  8b4c240c             mov ecx, dword ptr [esp + 0xc]
+// 0041a44c  64890d00000000       mov dword ptr fs:[0], ecx
+// 0041a453  59                   pop ecx
+// 0041a454  5e                   pop esi
+// 0041a455  83c410               add esp, 0x10
+// 0041a458  c21800               ret 0x18
+
 // from server: 100% by king_originala
 // roc 2008-06 0041c4b0  unit: VDHTMLWindow::?$BoundFuncDesc  size: 161 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0041c4b0
@@ -53,7 +104,7 @@
 extern "C" void* __stdcall getDescriptor(const char*, int);
 
 struct Base {
-    char data[0x34];
+    char data[0x24];
 
     Base(void*);
     virtual ~Base();
@@ -72,21 +123,19 @@ struct S : Base {
     unsigned long second;
     Value value1;
     Value value2;
-    Value value3;
 
-    S(unsigned long, unsigned long, const char*, int, int, int, int);
+    S(unsigned long, unsigned long, const char*, int, int, int);
     virtual ~S();
-    void initialize(int, int, int);
+    void initialize(int, int);
 };
 
 S::S(unsigned long a, unsigned long b, const char* c,
-     int d, int e, int f, int g)
+     int d, int e, int g)
     : Base(getDescriptor(c, g)),
       first(a),
       second(b),
       value1(),
-      value2(),
-      value3()
+      value2()
 {
-    initialize(d, e, f);
+    initialize(d, e);
 }

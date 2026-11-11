@@ -1,9 +1,10 @@
+// from server: 100% by EspClaude
 // from server: 99% by EspClaude
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: openrbx-client roc_manual_gui_5169e2e566c140cf.cpp
+// roc-lib: openrbx-client roc_claude_6ae939f87e938614.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "util/Rect.h"
@@ -22,12 +23,12 @@ typedef void (__thiscall* DrawFunction)(
     void*, unsigned long, int, int, int);
 
 struct GuiTable {
-    void* preceding[20];
+    void* preceding[21]; // scale at vtable+0x54 (target mov edx,[eax+0x54])
     int (__thiscall* scale)(GuiTarget*);
 };
 
 struct RenderTable {
-    void* preceding[13];
+    void* preceding[12]; // draw at vtable+0x30 (target add esi,0x30)
     DrawFunction draw;
 };
 

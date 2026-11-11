@@ -1,3 +1,4 @@
+// from server: 100% by EspClaude
 // from server: 70% by EspClaude
 // roc-cl: 50727
 // from server: 100% by king_originala
@@ -69,35 +70,34 @@ extern "C" void *__stdcall resourceModule(unsigned int, const char *);
 
 struct ViewBase {
     virtual ~ViewBase();
-    char storage[0x74];
+    char storage[0x60];
     ViewBase();
 };
 
 struct Interface1 {
+    virtual ~Interface1();
     virtual void method1();
 };
 
 struct Interface2 {
+    virtual ~Interface2();
     virtual void method2();
 };
 
 struct Interface3 {
+    virtual ~Interface3();
     virtual void method3();
 };
 
 struct CommandBase {
     virtual ~CommandBase();
-    char storage[0x24];
+    char storage[0x10];
+    CommandBase(int);
 };
 
-struct Command : CommandBase, Interface1, Interface2, Interface3 {
-    unsigned int reserved;
-    Command(int);
-    ~Command();
-};
 
 struct Pane {
-    char storage[0xC0];
+    char storage[0xA8];
     Pane(int);
     ~Pane();
 };
@@ -140,7 +140,8 @@ inline Pointer::Pointer() : value(0)
 {
 }
 
-struct CRobloxView : ViewBase, Command {
+struct CRobloxView : ViewBase, CommandBase, Interface1, Interface2, Interface3 {
+    unsigned int reserved;
     Pane pane;
     PointerPair owner;
     Menu menu;
@@ -160,7 +161,7 @@ struct CRobloxView : ViewBase, Command {
 
 CRobloxView::CRobloxView()
     : ViewBase(),
-      Command(0),
+      CommandBase(0),
       pane(0),
       owner(),
       menu(),

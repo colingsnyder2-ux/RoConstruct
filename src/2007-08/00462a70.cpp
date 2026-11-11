@@ -1,8 +1,9 @@
+// from server: 100% by EspClaude
 // from server: 93% by EspClaude
 // from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-lib: rbxgs-dll roc_espclaude_c10ceb206eeeada0.cpp
+// roc-lib: rbxgs-dll roc_claude_fe65bf0fea96be08.cpp
 
 // Candidate translation unit (score above; library headers required).
 #define _DLL
@@ -17,7 +18,7 @@ public:
 };
 class Selection {
 public:
-    char pad[0x130];
+    char pad[0xe8];
     ListenerList listeners;
 };
 class Root : public Instance { public: void* getThing(); };
@@ -37,7 +38,7 @@ public:
 };
 class CSelectionCaption : public CBase0, public ISelectionTarget, public RBX::Listener {
 public:
-    char pad[0x1b8 - 0x198];
+    char pad[0x1b0 - 0x198];
     boost::shared_ptr<RBX::Root> current;
     boost::shared_ptr<RBX::Selection> selection;
     void updateCaption();
@@ -57,8 +58,8 @@ void CSelectionCaption::setInstance(boost::shared_ptr<RBX::Root> instance, boost
         RBX::Guard guard1(current);
         detachFrom(selection, this);
         selection.reset();
+        current.reset();
     }
-    current.reset();
     if (instance)
     {
         current = instance;

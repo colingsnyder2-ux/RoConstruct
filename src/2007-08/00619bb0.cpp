@@ -1,15 +1,16 @@
+// from server: 98% by EspClaude
 // from server: 96% by EspClaude
 // from server: 100% by colin
 // roc-cl: 50727
 // roc-lang: cpp
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll roc_espclaude_c3e50d71e8e5fa3d.cpp
+// roc-lib: rbxgs-dll roc_claude_ee315045ce0bd949.cpp
 
 // Candidate translation unit (score above; library headers required).
 #define private public
 #include "v8kernel/KernelInput.h"
-#undef private
 #include "v8kernel/Connector.h"
+#undef private
 #include "util/Debug.h"
 
 namespace RBX
@@ -140,8 +141,9 @@ namespace RBX
 		//float v1 = (currentGoal - rotation) * this->k;
 		G3D::Vector3 v2 = normal * ((currentGoal - rotation) * this->k);
 
-		this->ref0->getBody()->accumulateTorque(-v2);
-		this->ref1->getBody()->accumulateTorque(v2);
+		G3D::Vector3 negV2 = -v2;
+		if (SimBody* s0 = this->ref0->getBody()->getRoot()->simBody) s0->accumulateTorque(negV2);
+		if (SimBody* s1 = this->ref1->getBody()->getRoot()->simBody) s1->accumulateTorque(v2);
 	}
 
 	void RotateConnector::computeParams(G3D::Vector3& normal, float& rotation, float& rotVel)

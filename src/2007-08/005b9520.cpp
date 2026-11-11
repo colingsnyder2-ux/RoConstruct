@@ -1,4 +1,75 @@
+// from server: 100% by EspClaude
 // from server: 78% by EspClaude
+// roc 2007-08 005b9520  unit: RBX::VFaceInstance::?$EnumPropDescriptor  size: 267 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 005b9520
+//
+// 005b9520  53                   push ebx
+// 005b9521  56                   push esi
+// 005b9522  8bf1                 mov esi, ecx
+// 005b9524  8b0e                 mov ecx, dword ptr [esi]
+// 005b9526  8b4604               mov eax, dword ptr [esi + 4]
+// 005b9529  8b89d8010000         mov ecx, dword ptr [ecx + 0x1d8]
+// 005b952f  837c817c00           cmp dword ptr [ecx + eax*4 + 0x7c], 0
+// 005b9534  742d                 je 0x5b9563
+// 005b9536  6a00                 push 0
+// 005b9538  50                   push eax
+// 005b9539  e8d2b5ffff           call 0x5b4b10
+// 005b953e  8b5604               mov edx, dword ptr [esi + 4]
+// 005b9541  8b0e                 mov ecx, dword ptr [esi]
+// 005b9543  52                   push edx
+// 005b9544  e857a9fbff           call 0x573ea0
+// 005b9549  8b4604               mov eax, dword ptr [esi + 4]
+// 005b954c  8b0e                 mov ecx, dword ptr [esi]
+// 005b954e  50                   push eax
+// 005b954f  e83ca3fbff           call 0x573890
+// 005b9554  8bc8                 mov ecx, eax
+// 005b9556  e885d5ffff           call 0x5b6ae0
+// 005b955b  8b0e                 mov ecx, dword ptr [esi]
+// 005b955d  50                   push eax
+// 005b955e  e8adb1e8ff           call 0x444710
+// 005b9563  bb01000000           mov ebx, 1
+// 005b9568  841dbc5e8c00         test byte ptr [0x8c5ebc], bl
+// 005b956e  7528                 jne 0x5b9598
+// 005b9570  d905f0547b00         fld dword ptr [0x7b54f0]
+// 005b9576  091dbc5e8c00         or dword ptr [0x8c5ebc], ebx
+// 005b957c  d91db45e8c00         fstp dword ptr [0x8c5eb4]
+// 005b9582  c705b05e8c0000000000 mov dword ptr [0x8c5eb0], 0
+// 005b958c  d9059c7e7900         fld dword ptr [0x797e9c]
+// 005b9592  d91db85e8c00         fstp dword ptr [0x8c5eb8]
+// 005b9598  8b0db05e8c00         mov ecx, dword ptr [0x8c5eb0]
+// 005b959e  51                   push ecx
+// 005b959f  8bce                 mov ecx, esi
+// 005b95a1  e81afdffff           call 0x5b92c0
+// 005b95a6  841dbc5e8c00         test byte ptr [0x8c5ebc], bl
+// 005b95ac  7528                 jne 0x5b95d6
+// 005b95ae  d905f0547b00         fld dword ptr [0x7b54f0]
+// 005b95b4  091dbc5e8c00         or dword ptr [0x8c5ebc], ebx
+// 005b95ba  d91db45e8c00         fstp dword ptr [0x8c5eb4]
+// 005b95c0  c705b05e8c0000000000 mov dword ptr [0x8c5eb0], 0
+// 005b95ca  d9059c7e7900         fld dword ptr [0x797e9c]
+// 005b95d0  d91db85e8c00         fstp dword ptr [0x8c5eb8]
+// 005b95d6  d905b45e8c00         fld dword ptr [0x8c5eb4]
+// 005b95dc  51                   push ecx
+// 005b95dd  8bce                 mov ecx, esi
+// 005b95df  d91c24               fstp dword ptr [esp]
+// 005b95e2  e899fdffff           call 0x5b9380
+// 005b95e7  841dbc5e8c00         test byte ptr [0x8c5ebc], bl
+// 005b95ed  7528                 jne 0x5b9617
+// 005b95ef  d905f0547b00         fld dword ptr [0x7b54f0]
+// 005b95f5  091dbc5e8c00         or dword ptr [0x8c5ebc], ebx
+// 005b95fb  d91db45e8c00         fstp dword ptr [0x8c5eb4]
+// 005b9601  c705b05e8c0000000000 mov dword ptr [0x8c5eb0], 0
+// 005b960b  d9059c7e7900         fld dword ptr [0x797e9c]
+// 005b9611  d91db85e8c00         fstp dword ptr [0x8c5eb8]
+// 005b9617  d905b85e8c00         fld dword ptr [0x8c5eb8]
+// 005b961d  51                   push ecx
+// 005b961e  8bce                 mov ecx, esi
+// 005b9620  d91c24               fstp dword ptr [esp]
+// 005b9623  e828feffff           call 0x5b9450
+// 005b9628  5e                   pop esi
+// 005b9629  5b                   pop ebx
+// 005b962a  c3                   ret 
+
 // from server: 100% by king_originala
 // roc 2008-06 005f1690  unit: RBX::FaceInstance  size: 270 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 005f1690
@@ -78,7 +149,7 @@ extern float g_97abcc;
 extern unsigned int g_97abd0;
 
 struct Ball {
-    char padding[0xB8];
+    char padding[0x7C];
     int values[1];
     void set(int index, int value);
 };
@@ -88,8 +159,8 @@ struct Value {
 };
 
 struct PartInstance {
-    char padding[0x228];
-    Ball ball;
+    char padding[0x1D8];
+    Ball* ball;
     void setShouldRender(int);
     int* f(int);
     void notify(int);
@@ -106,8 +177,8 @@ struct FaceInstance {
 
 void FaceInstance::reset()
 {
-    if (part->ball.values[face] != 0) {
-        part->ball.set(face, 0);
+    if (part->ball->values[face] != 0) {
+        part->ball->set(face, 0);
         part->setShouldRender(face);
         int* value = part->f(face);
         part->notify(((Value*)value)->get());

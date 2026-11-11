@@ -1,3 +1,4 @@
+// from server: 100% by EspClaude
 // from server: 93% by EspClaude
 // roc 2007-08 004201a0  unit: CRobloxTreeCtrl
 struct HWND__ { int unused; };
@@ -37,12 +38,12 @@ public:
 void CRobloxTreeCtrl::DeleteAll()
 {
     ScopedAssign<bool> guard(m_deleting, true);
-    if (m_hWnd) {
-        DeleteAllItems();
-        if (m_root) {
-            delete m_root;
-            m_root = 0;
-        }
+    if (!m_hWnd)
+        return;
+    DeleteAllItems();
+    if (m_root) {
+        delete m_root;
+        m_root = 0;
     }
 }
 void CRobloxTreeCtrl::OnDeleteItem(NMHDR* pNMHDR, long* pResult)

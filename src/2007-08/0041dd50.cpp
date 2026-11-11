@@ -1,9 +1,10 @@
+// from server: 100% by EspClaude
 // from server: 96% by EspClaude
 // from server: 100% by EspClaude
 // from server: 96% by Espeon
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-lib: openrbx-client-dll roc_espclaude_524751294c2dc6d0.cpp
+// roc-lib: openrbx-client-dll roc_claude_30904dd5f7b5bc75.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <boost/shared_ptr.hpp>
@@ -30,7 +31,6 @@ struct Named
 
 struct Instance
 {
-    char storage[16];
     Named named;
 };
 

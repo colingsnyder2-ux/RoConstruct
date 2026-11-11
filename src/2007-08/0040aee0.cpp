@@ -1,3 +1,4 @@
+// from server: 100% by EspClaude
 // from server: 90% by EspClaude
 // roc-cl: 50727
 // from server: 100% by king_originala
@@ -113,11 +114,11 @@ struct Control {
     virtual void v25();
     virtual void enable(int);
 
-    char padding[0x144];
+    char padding[0x140];
     int mode;
-    char tail[0x94];
+    char tail[0x8c];
 
-    Control(int);
+    Control();
     void setEditable(int);
     void setCaption(const char*);
     void updateMode();
@@ -142,7 +143,7 @@ struct Request {
 };
 
 struct CBrowserView {
-    char padding[0x118];
+    char padding[0x104];
     Control* control;
     int f(Request*);
 };
@@ -154,7 +155,7 @@ int CBrowserView::f(Request* volatile input)
         validate(lookup(request->id)) &&
         request->code == 0x80c9) {
         if (!control)
-            control = new Control(0);
+            control = new Control();
 
         control->setEditable(1);
         control->setCaption("Address");

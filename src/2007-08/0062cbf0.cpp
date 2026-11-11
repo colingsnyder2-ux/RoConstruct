@@ -1,3 +1,5 @@
+// from server: 100% by EspClaude
+// roc-flags: /O2 /GS- /EHsc /MD
 // from server: 78% by EspClaude
 // roc-cl: 50727
 // from server: 100% by king_originala
@@ -169,7 +171,6 @@ struct Weak
 
     void swap(Weak& other)
     {
-        if (&pointer != &other.pointer)
         {
             PartInstance* saved = pointer;
             pointer = other.pointer;
@@ -196,5 +197,11 @@ void GroupDragTool::update()
     if (part)
         selected.assign(acquire(GetSetImpl::get(part)));
     else
-        Weak().swap(selected);
+    {
+        *(PartInstance* volatile*)&selected.pointer = 0;
+        Control* c = *(Control* volatile*)&selected.control;
+        selected.control = 0;
+        if (c)
+            c->releaseWeak();
+    }
 }

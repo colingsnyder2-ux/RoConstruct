@@ -1,3 +1,4 @@
+// from server: 91% by EspClaude
 // from server: 70% by EspClaude
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
 // roc-cl: 50727
@@ -100,39 +101,35 @@ struct Transform {
 };
 
 struct Source {
-    char reserved[0x94];
+    char reserved[0x84];
     Transform transform;
     const void* get();
 };
 
-struct Provider {
-    virtual void slot0() = 0;
-    virtual void slot1() = 0;
-    virtual void slot2() = 0;
-    virtual void slot3() = 0;
-    virtual void slot4() = 0;
-    virtual void slot5() = 0;
-    virtual void slot6() = 0;
-    virtual void slot7() = 0;
-    virtual bool intersect(const Ray& ray, Vector3& point, float& limit) = 0;
+struct Body {
+    char reserved[0x64];
+    Source* source;
 };
+
+struct Shape;
+bool __cdecl intersectShape(Shape* shape, const Ray& ray, Vector3& point, float scale);
 
 struct Primitive {
-    char reserved[0x9c];
-    Provider* provider;
-    Source* source;
-    bool func_005e7f20(const Ray& ray, Vector3& point, float& limit);
+    char reserved[0x1d8];
+    Body* body;
+    Shape* getShape();
+    bool func_005758e0(const Ray& ray, Vector3& point);
 };
 
-bool Primitive::func_005e7f20(const Ray& ray, Vector3& point, float& limit)
+bool Primitive::func_005758e0(const Ray& ray, Vector3& point)
 {
-    Source* current = source;
+    Source* current = body->source;
     current->get();
     Ray localRay = current->transform.transformRay(ray);
     Vector3 localPoint = { 0.0f, 0.0f, 0.0f };
 
-    if (provider->intersect(localRay, localPoint, limit)) {
-        current = source;
+    if (intersectShape(getShape(), localRay, localPoint, 1.0f)) {
+        current = body->source;
         current->get();
         point = current->transform.transformPoint(localPoint);
         return true;

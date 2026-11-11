@@ -1,3 +1,4 @@
+// from server: 100% by EspClaude
 // from server: 74% by EspClaude
 // roc-cl: 50727
 // from server: 100% by king_originala
@@ -68,7 +69,7 @@
 // 004a45fd  83c410               add esp, 0x10
 // 004a4600  c22000               ret 0x20
 
-void* __cdecl getBaseToken();
+void* __stdcall getBaseToken(void*, void*);
 void* __cdecl getSharedToken();
 void* __cdecl operator new(unsigned int);
 
@@ -92,32 +93,40 @@ struct Shared {
 inline Shared::Shared(void* p)
     : token(getSharedToken()), holder(new Holder(p)) {}
 
+struct Value {
+    unsigned long type;
+    unsigned long data;
+
+    Value();
+    ~Value();
+};
+
 struct Base {
     virtual ~Base();
-    unsigned char storage[0x34];
+    unsigned char storage[0x24];
 
-    Base(void* token, void* a, void* b);
+    Base(void* token);
     void finish(void* a, void* b);
 };
 
 struct Product : Base {
     void* first;
     void* second;
-    Shared left;
+    Value left;
     Shared right;
 
     Product(void* a, void* b, void* c, void* d,
-            void* e, void* f, void* g, void* h);
+            void* e, void* f, void* g);
     virtual ~Product();
 };
 
 Product::Product(void* a, void* b, void* c, void* d,
-                 void* e, void* f, void* g, void* h)
-    : Base(getBaseToken(), c, h),
+                 void* e, void* f, void* g)
+    : Base(getBaseToken(c, g)),
       first(a),
       second(b),
-      left(e),
-      right(g)
+      left(),
+      right(f)
 {
-    finish(d, f);
+    finish(d, e);
 }

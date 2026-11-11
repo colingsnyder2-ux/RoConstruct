@@ -1,3 +1,4 @@
+// from server: 100% by EspClaude
 // from server: 81% by EspClaude
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
 // roc-cl: 21022
@@ -43,6 +44,5 @@ void __cdecl reconstruct(Destination* destination, void* source)
     Temporary temporary;
     temporary.initialize();
     process(source, &temporary);
-    if (destination->active != 0)
-        destination->apply(&temporary);
+    destination->apply(&temporary);
 }

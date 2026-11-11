@@ -12,6 +12,10 @@
 #include "v8datamodel/PartInstance.h"
 // Native v8datamodel/Decal.h: the 2008 class names are char arrays (RTTI $1?sDecal@2@3PADA / $1?sTexture@2@3PADA).
 #include "v8datamodel/Decal.h"
+#include "v8datamodel/Clothing.h"
+#include "humanoid/Humanoid.h"
+#include "v8datamodel/ModelInstance.h"
+#include "v8datamodel/custommesh.h"
 
 namespace RBX
 {

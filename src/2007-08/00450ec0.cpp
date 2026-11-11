@@ -1,3 +1,4 @@
+// from server: 100% by EspClaude
 // from server: 85% by EspClaude
 // roc-cl: 50727
 // from server: 100% by colin
@@ -119,7 +120,7 @@ extern "C" void (__cdecl* _invalid_parameter_noinfo)();
 
 struct CChatPrompt
 {
-    char padding[0x19c];
+    char padding[0x134];
     Shared* first;
     Shared* last;
 
@@ -153,7 +154,8 @@ Object* CChatPrompt::func_00412710()
         register_callback(callback, &callback_data);
 
         unsigned index = current_index();
-        if (index >= static_cast<unsigned>(last - first))
+        unsigned size = first == 0 ? 0 : static_cast<unsigned>(last - first);
+        if (index >= size)
             _invalid_parameter_noinfo();
 
         Shared& slot = first[index];

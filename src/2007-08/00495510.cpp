@@ -1,3 +1,4 @@
+// from server: 100% by EspClaude
 // from server: 90% by EspClaude
 // roc-cl: 50727
 // from server: 100% by king_originala
@@ -73,8 +74,7 @@ struct Owner {
 
 inline Owner::~Owner()
 {
-    if (p)
-        operator delete(p);
+    operator delete(p);
 }
 
 inline void* Owner::release()
@@ -86,10 +86,16 @@ inline void* Owner::release()
 
 extern Owner __cdecl makeOwner(int, int, int);
 
+extern const char middleTable[];
+
+struct Second {
+    const void* secondary;
+    Second() { secondary = middleTable; }
+};
+
 struct Base {
     const void* primary;
     char padding[20];
-    const void* secondary;
 
     Base(int, int, int);
     void initialize(void*, void*, int, int, int);
@@ -103,14 +109,14 @@ __forceinline Base::Base(int a, int b, int f)
     initialize(second, first, a, b, f);
 }
 
-struct S : Base {
+struct S : Base, Second {
     void* value;
 
     S(int, int, int, int, int, int);
 };
 
 S::S(int a, int b, int c, int d, int e, int f)
-    : Base(a, b, f)
+    : Base(a, b, f), Second()
 {
     primary = primaryTable;
     secondary = secondaryTable;

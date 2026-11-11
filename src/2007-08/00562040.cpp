@@ -1,4 +1,59 @@
+// from server: 100% by EspClaude
+// roc-flags: /O2 /GS- /EHsc /MD
 // from server: 74% by EspClaude
+// roc 2007-08 00562040  unit: RBX::ClearStarterpack  size: 174 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 00562040
+//
+// 00562040  6aff                 push -1
+// 00562042  68013f7500           push 0x753f01
+// 00562047  64a100000000         mov eax, dword ptr fs:[0]
+// 0056204d  50                   push eax
+// 0056204e  64892500000000       mov dword ptr fs:[0], esp
+// 00562055  83ec08               sub esp, 8
+// 00562058  56                   push esi
+// 00562059  8bf1                 mov esi, ecx
+// 0056205b  57                   push edi
+// 0056205c  89742408             mov dword ptr [esp + 8], esi
+// 00562060  83ec1c               sub esp, 0x1c
+// 00562063  8d442440             lea eax, [esp + 0x40]
+// 00562067  8bcc                 mov ecx, esp
+// 00562069  89642428             mov dword ptr [esp + 0x28], esp
+// 0056206d  50                   push eax
+// 0056206e  c744243800000000     mov dword ptr [esp + 0x38], 0
+// 00562076  ff159ce67700         call dword ptr [0x77e69c]
+// 0056207c  8b4c243c             mov ecx, dword ptr [esp + 0x3c]
+// 00562080  51                   push ecx
+// 00562081  8bce                 mov ecx, esi
+// 00562083  e8c82b0000           call 0x564c50
+// 00562088  8b7c2440             mov edi, dword ptr [esp + 0x40]
+// 0056208c  85ff                 test edi, edi
+// 0056208e  c644241801           mov byte ptr [esp + 0x18], 1
+// 00562093  c706e4917a00         mov dword ptr [esi], 0x7a91e4
+// 00562099  7409                 je 0x5620a4
+// 0056209b  8bcf                 mov ecx, edi
+// 0056209d  e83eabf2ff           call 0x48cbe0
+// 005620a2  eb02                 jmp 0x5620a6
+// 005620a4  33c0                 xor eax, eax
+// 005620a6  50                   push eax
+// 005620a7  8d560c               lea edx, [esi + 0xc]
+// 005620aa  52                   push edx
+// 005620ab  e830290800           call 0x5e49e0
+// 005620b0  897e14               mov dword ptr [esi + 0x14], edi
+// 005620b3  c7461800000000       mov dword ptr [esi + 0x18], 0
+// 005620ba  c7461c00000000       mov dword ptr [esi + 0x1c], 0
+// 005620c1  83c408               add esp, 8
+// 005620c4  8d4c2424             lea ecx, [esp + 0x24]
+// 005620c8  897e20               mov dword ptr [esi + 0x20], edi
+// 005620cb  c7442418ffffffff     mov dword ptr [esp + 0x18], 0xffffffff
+// 005620d3  ff15ace67700         call dword ptr [0x77e6ac]
+// 005620d9  8b4c2410             mov ecx, dword ptr [esp + 0x10]
+// 005620dd  5f                   pop edi
+// 005620de  8bc6                 mov eax, esi
+// 005620e0  64890d00000000       mov dword ptr fs:[0], ecx
+// 005620e7  5e                   pop esi
+// 005620e8  83c414               add esp, 0x14
+// 005620eb  c22400               ret 0x24
+
 // from server: 100% by colin
 // roc 2008-06 00580b50  unit: RBX::ClearStarterpack  size: 174 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00580b50

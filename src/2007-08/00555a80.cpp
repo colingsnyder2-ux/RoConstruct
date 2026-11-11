@@ -1,9 +1,10 @@
+// from server: 100% by EspClaude
 // from server: 97% by EspClaude
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: openrbx-client roc_unit_006cb460d421f354.cpp
+// roc-lib: openrbx-client roc_claude_38039dce77b89ff2.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "util/Rect.h"
@@ -35,9 +36,10 @@ struct S {
     virtual void f20();
     virtual void f21();
     virtual void f22();
+    virtual void f23(); // size() at vtable+0x60 per target
     virtual Vec2f size();
 
-    char pad[0x158];
+    char pad[0x110]; // fields at 0x114,0x118,0x11c per target
     int m15c;
     int m160;
     G3D::Vector2int16 offset;

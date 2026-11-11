@@ -1,6 +1,7 @@
+// from server: 87% by EspClaude
 // from server: 83% by EspClaude
 // roc 2007-08 004433e0  Reflection::Metadata lookup of an event's metadata instance
-// roc-flags: /O2 /GS /EHsc /MD
+// roc-flags: /O1 /GS /EHsc /MD
 #include <string>
 namespace RBX {
 class Name {

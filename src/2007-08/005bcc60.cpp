@@ -1,4 +1,230 @@
+// from server: 100% by EspClaude
 // from server: 95% by EspClaude
+// roc 2007-08 005bcc60  unit: RBX::VPVInstance::?$EnumPropDescriptor  size: 619 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 005bcc60
+//
+// 005bcc60  a144578c00           mov eax, dword ptr [0x8c5744]
+// 005bcc65  8b159ce47700         mov edx, dword ptr [0x77e49c]
+// 005bcc6b  83ec24               sub esp, 0x24
+// 005bcc6e  a801                 test al, 1
+// 005bcc70  7512                 jne 0x5bcc84
+// 005bcc72  83c801               or eax, 1
+// 005bcc75  a344578c00           mov dword ptr [0x8c5744], eax
+// 005bcc7a  d902                 fld dword ptr [edx]
+// 005bcc7c  d91540578c00         fst dword ptr [0x8c5740]
+// 005bcc82  eb06                 jmp 0x5bcc8a
+// 005bcc84  d90540578c00         fld dword ptr [0x8c5740]
+// 005bcc8a  a801                 test al, 1
+// 005bcc8c  7528                 jne 0x5bccb6
+// 005bcc8e  83c801               or eax, 1
+// 005bcc91  ddd8                 fstp st(0)
+// 005bcc93  a801                 test al, 1
+// 005bcc95  a344578c00           mov dword ptr [0x8c5744], eax
+// 005bcc9a  d902                 fld dword ptr [edx]
+// 005bcc9c  d91540578c00         fst dword ptr [0x8c5740]
+// 005bcca2  7512                 jne 0x5bccb6
+// 005bcca4  83c801               or eax, 1
+// 005bcca7  ddd8                 fstp st(0)
+// 005bcca9  a344578c00           mov dword ptr [0x8c5744], eax
+// 005bccae  d902                 fld dword ptr [edx]
+// 005bccb0  d91540578c00         fst dword ptr [0x8c5740]
+// 005bccb6  a801                 test al, 1
+// 005bccb8  d954240c             fst dword ptr [esp + 0xc]
+// 005bccbc  d9542410             fst dword ptr [esp + 0x10]
+// 005bccc0  d9c0                 fld st(0)
+// 005bccc2  d9542414             fst dword ptr [esp + 0x14]
+// 005bccc6  7544                 jne 0x5bcd0c
+// 005bccc8  83c801               or eax, 1
+// 005bcccb  ddd9                 fstp st(1)
+// 005bcccd  a801                 test al, 1
+// 005bcccf  a344578c00           mov dword ptr [0x8c5744], eax
+// 005bccd4  d902                 fld dword ptr [edx]
+// 005bccd6  d91540578c00         fst dword ptr [0x8c5740]
+// 005bccdc  d9c9                 fxch st(1)
+// 005bccde  752c                 jne 0x5bcd0c
+// 005bcce0  83c801               or eax, 1
+// 005bcce3  ddd9                 fstp st(1)
+// 005bcce5  a801                 test al, 1
+// 005bcce7  a344578c00           mov dword ptr [0x8c5744], eax
+// 005bccec  d902                 fld dword ptr [edx]
+// 005bccee  d91540578c00         fst dword ptr [0x8c5740]
+// 005bccf4  d9c9                 fxch st(1)
+// 005bccf6  7514                 jne 0x5bcd0c
+// 005bccf8  83c801               or eax, 1
+// 005bccfb  ddd9                 fstp st(1)
+// 005bccfd  a344578c00           mov dword ptr [0x8c5744], eax
+// 005bcd02  d902                 fld dword ptr [edx]
+// 005bcd04  d91540578c00         fst dword ptr [0x8c5740]
+// 005bcd0a  d9c9                 fxch st(1)
+// 005bcd0c  8b54242c             mov edx, dword ptr [esp + 0x2c]
+// 005bcd10  d9c9                 fxch st(1)
+// 005bcd12  d9e0                 fchs 
+// 005bcd14  56                   push esi
+// 005bcd15  8b742434             mov esi, dword ptr [esp + 0x34]
+// 005bcd19  d9542404             fst dword ptr [esp + 4]
+// 005bcd1d  d9542408             fst dword ptr [esp + 8]
+// 005bcd21  57                   push edi
+// 005bcd22  d9542410             fst dword ptr [esp + 0x10]
+// 005bcd26  33ff                 xor edi, edi
+// 005bcd28  8bc7                 mov eax, edi
+// 005bcd2a  c1e802               shr eax, 2
+// 005bcd2d  8d0440               lea eax, [eax + eax*2]
+// 005bcd30  d90481               fld dword ptr [ecx + eax*4]
+// 005bcd33  8bc7                 mov eax, edi
+// 005bcd35  d1e8                 shr eax, 1
+// 005bcd37  2501000080           and eax, 0x80000001
+// 005bcd3c  7905                 jns 0x5bcd43
+// 005bcd3e  48                   dec eax
+// 005bcd3f  83c8fe               or eax, 0xfffffffe
+// 005bcd42  40                   inc eax
+// 005bcd43  8d0440               lea eax, [eax + eax*2]
+// 005bcd46  d9448104             fld dword ptr [ecx + eax*4 + 4]
+// 005bcd4a  8bc7                 mov eax, edi
+// 005bcd4c  83e001               and eax, 1
+// 005bcd4f  8d0440               lea eax, [eax + eax*2]
+// 005bcd52  d9448108             fld dword ptr [ecx + eax*4 + 8]
+// 005bcd56  d94204               fld dword ptr [edx + 4]
+// 005bcd59  d8ca                 fmul st(2)
+// 005bcd5b  d94208               fld dword ptr [edx + 8]
+// 005bcd5e  d8ca                 fmul st(2)
+// 005bcd60  dec1                 faddp st(1)
+// 005bcd62  d902                 fld dword ptr [edx]
+// 005bcd64  d8cc                 fmul st(4)
+// 005bcd66  dec1                 faddp st(1)
+// 005bcd68  d84224               fadd dword ptr [edx + 0x24]
+// 005bcd6b  d94210               fld dword ptr [edx + 0x10]
+// 005bcd6e  d8cb                 fmul st(3)
+// 005bcd70  d9420c               fld dword ptr [edx + 0xc]
+// 005bcd73  d8cd                 fmul st(5)
+// 005bcd75  dec1                 faddp st(1)
+// 005bcd77  d94214               fld dword ptr [edx + 0x14]
+// 005bcd7a  d8cb                 fmul st(3)
+// 005bcd7c  dec1                 faddp st(1)
+// 005bcd7e  d84228               fadd dword ptr [edx + 0x28]
+// 005bcd81  d94218               fld dword ptr [edx + 0x18]
+// 005bcd84  decd                 fmulp st(5)
+// 005bcd86  d9cb                 fxch st(3)
+// 005bcd88  d84a1c               fmul dword ptr [edx + 0x1c]
+// 005bcd8b  dec4                 faddp st(4)
+// 005bcd8d  d9c9                 fxch st(1)
+// 005bcd8f  d84a20               fmul dword ptr [edx + 0x20]
+// 005bcd92  dec3                 faddp st(3)
+// 005bcd94  d9ca                 fxch st(2)
+// 005bcd96  d8422c               fadd dword ptr [edx + 0x2c]
+// 005bcd99  d9ca                 fxch st(2)
+// 005bcd9b  d86624               fsub dword ptr [esi + 0x24]
+// 005bcd9e  d9c9                 fxch st(1)
+// 005bcda0  d86628               fsub dword ptr [esi + 0x28]
+// 005bcda3  d9ca                 fxch st(2)
+// 005bcda5  d8662c               fsub dword ptr [esi + 0x2c]
+// 005bcda8  d94618               fld dword ptr [esi + 0x18]
+// 005bcdab  d8c9                 fmul st(1)
+// 005bcdad  d9460c               fld dword ptr [esi + 0xc]
+// 005bcdb0  d8cc                 fmul st(4)
+// 005bcdb2  dec1                 faddp st(1)
+// 005bcdb4  d906                 fld dword ptr [esi]
+// 005bcdb6  d8cb                 fmul st(3)
+// 005bcdb8  dec1                 faddp st(1)
+// 005bcdba  d9542420             fst dword ptr [esp + 0x20]
+// 005bcdbe  d9461c               fld dword ptr [esi + 0x1c]
+// 005bcdc1  d8ca                 fmul st(2)
+// 005bcdc3  d94610               fld dword ptr [esi + 0x10]
+// 005bcdc6  d8cd                 fmul st(5)
+// 005bcdc8  dec1                 faddp st(1)
+// 005bcdca  d9c3                 fld st(3)
+// 005bcdcc  d84e04               fmul dword ptr [esi + 4]
+// 005bcdcf  dec1                 faddp st(1)
+// 005bcdd1  d9542424             fst dword ptr [esp + 0x24]
+// 005bcdd5  d94608               fld dword ptr [esi + 8]
+// 005bcdd8  decc                 fmulp st(4)
+// 005bcdda  d94620               fld dword ptr [esi + 0x20]
+// 005bcddd  decb                 fmulp st(3)
+// 005bcddf  d9cb                 fxch st(3)
+// 005bcde1  dec2                 faddp st(2)
+// 005bcde3  d94614               fld dword ptr [esi + 0x14]
+// 005bcde6  decc                 fmulp st(4)
+// 005bcde8  d9c9                 fxch st(1)
+// 005bcdea  dec3                 faddp st(3)
+// 005bcdec  d9ca                 fxch st(2)
+// 005bcdee  d9542428             fst dword ptr [esp + 0x28]
+// 005bcdf2  d8d4                 fcom st(4)
+// 005bcdf4  dfe0                 fnstsw ax
+// 005bcdf6  dddc                 fstp st(4)
+// 005bcdf8  f6c441               test ah, 0x41
+// 005bcdfb  8d44241c             lea eax, [esp + 0x1c]
+// 005bcdff  7404                 je 0x5bce05
+// 005bce01  8d442428             lea eax, [esp + 0x28]
+// 005bce05  d900                 fld dword ptr [eax]
+// 005bce07  d9c9                 fxch st(1)
+// 005bce09  d8542418             fcom dword ptr [esp + 0x18]
+// 005bce0d  dfe0                 fnstsw ax
+// 005bce0f  f6c441               test ah, 0x41
+// 005bce12  8d442418             lea eax, [esp + 0x18]
+// 005bce16  7404                 je 0x5bce1c
+// 005bce18  8d442424             lea eax, [esp + 0x24]
+// 005bce1c  d900                 fld dword ptr [eax]
+// 005bce1e  d9cb                 fxch st(3)
+// 005bce20  d8542414             fcom dword ptr [esp + 0x14]
+// 005bce24  dfe0                 fnstsw ax
+// 005bce26  f6c441               test ah, 0x41
+// 005bce29  8d442414             lea eax, [esp + 0x14]
+// 005bce2d  7404                 je 0x5bce33
+// 005bce2f  8d442420             lea eax, [esp + 0x20]
+// 005bce33  d900                 fld dword ptr [eax]
+// 005bce35  d95c2414             fstp dword ptr [esp + 0x14]
+// 005bce39  d9cb                 fxch st(3)
+// 005bce3b  d95c2418             fstp dword ptr [esp + 0x18]
+// 005bce3f  d9c9                 fxch st(1)
+// 005bce41  d954241c             fst dword ptr [esp + 0x1c]
+// 005bce45  d9cc                 fxch st(4)
+// 005bce47  d8db                 fcomp st(3)
+// 005bce49  dfe0                 fnstsw ax
+// 005bce4b  ddda                 fstp st(2)
+// 005bce4d  f6c405               test ah, 5
+// 005bce50  8d442410             lea eax, [esp + 0x10]
+// 005bce54  7b04                 jnp 0x5bce5a
+// 005bce56  8d442428             lea eax, [esp + 0x28]
+// 005bce5a  d900                 fld dword ptr [eax]
+// 005bce5c  d944240c             fld dword ptr [esp + 0xc]
+// 005bce60  d8db                 fcomp st(3)
+// 005bce62  dfe0                 fnstsw ax
+// 005bce64  ddda                 fstp st(2)
+// 005bce66  f6c441               test ah, 0x41
+// 005bce69  8d44240c             lea eax, [esp + 0xc]
+// 005bce6d  7404                 je 0x5bce73
+// 005bce6f  8d442424             lea eax, [esp + 0x24]
+// 005bce73  d900                 fld dword ptr [eax]
+// 005bce75  d9442408             fld dword ptr [esp + 8]
+// 005bce79  d8da                 fcomp st(2)
+// 005bce7b  dfe0                 fnstsw ax
+// 005bce7d  ddd9                 fstp st(1)
+// 005bce7f  f6c441               test ah, 0x41
+// 005bce82  8d442408             lea eax, [esp + 8]
+// 005bce86  7404                 je 0x5bce8c
+// 005bce88  8d442420             lea eax, [esp + 0x20]
+// 005bce8c  d900                 fld dword ptr [eax]
+// 005bce8e  83c701               add edi, 1
+// 005bce91  83ff08               cmp edi, 8
+// 005bce94  d95c2408             fstp dword ptr [esp + 8]
+// 005bce98  d95c240c             fstp dword ptr [esp + 0xc]
+// 005bce9c  d9542410             fst dword ptr [esp + 0x10]
+// 005bcea0  0f8c82feffff         jl 0x5bcd28
+// 005bcea6  8b742430             mov esi, dword ptr [esp + 0x30]
+// 005bceaa  ddd9                 fstp st(1)
+// 005bceac  8d4c2408             lea ecx, [esp + 8]
+// 005bceb0  ddd8                 fstp st(0)
+// 005bceb2  51                   push ecx
+// 005bceb3  8d542418             lea edx, [esp + 0x18]
+// 005bceb7  52                   push edx
+// 005bceb8  56                   push esi
+// 005bceb9  e8d2fcffff           call 0x5bcb90
+// 005bcebe  83c40c               add esp, 0xc
+// 005bcec1  5f                   pop edi
+// 005bcec2  8bc6                 mov eax, esi
+// 005bcec4  5e                   pop esi
+// 005bcec5  83c424               add esp, 0x24
+// 005bcec8  c20c00               ret 0xc
+
 // from server: 100% by EspClaude
 // roc 2008-06 0060f9b0  unit: RBX::BlockBlockContact  size: 617 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0060f9b0
@@ -226,7 +452,7 @@
 // 0060fc16  c20c00               ret 0xc
 
 // claude-opus-5-5 G3: row1 of pointToWorldSpace read into named locals (m10,m11,m12,t1) fixes fp:fast pair order
-// roc-cl: 21022
+// roc-cl: 50727
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
 // roc-lang: cpp
 #include <limits>

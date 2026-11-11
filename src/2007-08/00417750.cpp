@@ -1,3 +1,4 @@
+// from server: 100% by EspClaude
 // from server: 94% by EspClaude
 // roc-cl: 50727
 // from server: 100% by king_originala
@@ -56,33 +57,24 @@
 
 extern "C" int (__stdcall *PostMessageA)(void*, unsigned int, unsigned int, long);
 
-struct FunctionTable {
-    void (__cdecl *manager)(void*, void*, int);
-};
-
+// 2007-08 target: by-value arg is 12 bytes (ret 0xc); dtor: if ([+0]) [+0]([+4], 1), cdecl add esp 8
 struct Function {
-    FunctionTable* table;
-    unsigned int reserved;
-    unsigned int storage[6];
+    void (__cdecl *manager)(void*, int);
+    void* functor;
+    void* invoker;
 
     ~Function();
 };
 
 inline Function::~Function()
 {
-    if (table) {
-        void (__cdecl *manager)(void*, void*, int) = table->manager;
-        if (manager)
-            manager(storage, storage, 1);
-    }
+    if (manager)
+        manager(functor, 1);
 }
 
 struct Queue {
-    unsigned int reserved[4];
-    void** blocks;
-    unsigned int capacity;
-    unsigned int start;
-    unsigned int count;
+    // 2007-08 target: queue at +0x2c, mutex at +0x40 -> 0x14 bytes
+    unsigned int reserved[5];
 
     void append(const void*);
 };

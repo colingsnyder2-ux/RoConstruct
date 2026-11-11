@@ -1,9 +1,10 @@
+// from server: 100% by EspClaude
 // from server: 96% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll roc_espeon_modelfrontvolatileb61dda8044e2a937.cpp
+// roc-lib: rbxgs-dll roc_claude_f0e80a07f028a7f1.cpp
 
 // Candidate translation unit (score above; library headers required).
 // roc-cl: 21022
@@ -94,10 +95,10 @@ extern Vec zero;
 extern unsigned int zeroFlags;
 
 struct Model {
-    char pad0[0x1b0];
+    char pad0[0x168];
     Result transform;
     Source* source;
-    char pad1[0x28];
+    char pad1[0x10];
     volatile unsigned char dirty0;
     char pad2[0x33];
     volatile unsigned char dirty1;

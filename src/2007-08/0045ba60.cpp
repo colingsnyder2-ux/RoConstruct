@@ -1,3 +1,4 @@
+// from server: 100% by EspClaude
 // from server: 71% by EspClaude
 // roc-cl: 50727
 // from server: 100% by colin
@@ -280,6 +281,7 @@
 // 0045fd72  83c410               add esp, 0x10
 // 0045fd75  c3                   ret 
 
+#include <string>
 extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
 #pragma intrinsic(_InterlockedExchangeAdd)
 extern "C" long __cdecl _InterlockedDecrement(volatile long*);
@@ -373,6 +375,22 @@ inline NameOwner::~NameOwner()
         delete pointer;
 }
 
+struct StringItem {
+    char padding[0x20018];
+    std::string name;
+};
+
+struct StringItemOwner {
+    StringItem* pointer;
+    ~StringItemOwner();
+};
+
+inline StringItemOwner::~StringItemOwner()
+{
+    if (pointer)
+        delete pointer;
+}
+
 struct Base {
     virtual void base0();
     char padding04[0x50];
@@ -383,24 +401,20 @@ struct Interface54 {
     virtual void interface54();
 };
 
-struct Interface58 {
-    virtual void interface58();
-};
 
-struct S : Base, Interface54, Interface58 {
-    char padding5c[8];
-    Shared member64;
-    CustomOwner member6c;
-    Shared member70;
-    Shared member78;
-    unsigned long padding80;
-    AdjustedOwner member84;
-    char padding88[0x10];
-    VirtualOwner member98;
-    char padding9c[0x10];
-    NameOwner memberac;
-    VirtualOwner memberb0;
-    VirtualOwner memberb4;
+struct S : Base, Interface54 {
+    char padding58[4];
+    Shared member5c;
+    CustomOwner member64;
+    Shared member68;
+    unsigned long padding70;
+    AdjustedOwner member74;
+    char padding78[0x10];
+    StringItemOwner member88;
+    char padding8c[0x10];
+    NameOwner member9c;
+    VirtualOwner membera0;
+    VirtualOwner membera4;
 
     void reset(int);
     ~S();

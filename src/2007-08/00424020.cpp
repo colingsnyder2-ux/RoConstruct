@@ -1,14 +1,15 @@
+// from server: 100% by EspClaude
 // from server: 99% by EspClaude
 // from server: 100% by EspClaude
 // from server: 97% by Espeon
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-lib: openrbx-client-dll roc_espclaude_3c296dcb0e83fb52.cpp
+// roc-lib: openrbx-client-dll roc_claude_781a253619cadb25.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <map>
 #include <boost/shared_ptr.hpp>
-struct Object {char padding[0x104];Object* parent;};
+struct Object {char padding[0xbc];Object* parent;};
 typedef boost::shared_ptr<Object> Shared;
 struct Tree {Tree* insert(const Shared*);};
 typedef std::map<Object*,Tree*> Map;

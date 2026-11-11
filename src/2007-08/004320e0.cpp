@@ -1,3 +1,4 @@
+// from server: 100% by EspClaude
 // from server: 99% by EspClaude
 // roc-cl: 50727
 // from server: 100% by EspClaude
@@ -84,7 +85,7 @@ public:
     virtual ~CMainFrame();
     char pad0[0x1c];
     HWND m_hWnd;
-    char pad1[0xfa - 0x24];
+    char pad1[0xe1 - 0x24];
     bool m_changingResolution;
     HMONITOR m_hMonitor;
     BOOL ModifyStyle(DWORD dwRemove, DWORD dwAdd, UINT nFlags = 0);

@@ -1,3 +1,4 @@
+// from server: 100% by EspClaude
 // from server: 76% by EspClaude
 // roc-cl: 50727
 // from server: 100% by EspClaude
@@ -312,9 +313,21 @@ struct Error {
 
 extern "C" __declspec(dllimport) void __stdcall SysFreeString(unsigned short*);
 
+extern unsigned short* __cdecl convertToBString(const char*, int);
+extern void __stdcall throwError(long);
+
 struct BString {
     unsigned short* data;
-    BString(const char*);
+    BString(const char* source)
+    {
+        if (source) {
+            data = convertToBString(source, -1);
+            if (data)
+                return;
+            throwError(0x8007000e);
+        }
+        data = 0;
+    }
     ~BString() { SysFreeString(data); }
     operator unsigned short*() const { return data; }
 };
@@ -366,9 +379,9 @@ void __stdcall f(const char* text)
     InterfacePtr body;
     document.value->table->getBody(document.value, &body.value);
 
-    Interface* element = body.value;
-    if (!element)
+    if (!body.value)
         throw Error(String("The HtmlDocument does not contain a body"));
+    Interface* element = body.value;
 
     element->table->putHtml(element, BString(text));
 }

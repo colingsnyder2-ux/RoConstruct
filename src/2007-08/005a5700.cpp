@@ -1,3 +1,4 @@
+// from server: 97% by EspClaude
 // from server: 92% by EspClaude
 // roc 2007-08 005a5700  RBX::Humanoid::onAncestorChanged (rbxgs humanoid/Humanoid.cpp body).
 // 2007 layout from the target: Connector base @+0xe8, world @+0x198, currentState auto_ptr @+0x19c,
@@ -25,8 +26,9 @@ class IndexArray {
 public:
     void fastAppend(tInstance* item)
     {
-        indexOf(item) = array.size();
-        array.append(item);
+        tInstance* p = item;
+        indexOf(p) = array.size();
+        array.append(p);
     }
 };
 class Kernel {

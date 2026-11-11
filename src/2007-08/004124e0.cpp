@@ -1,33 +1,57 @@
-// from server: 87% by colin
+// from server: 100% by EspClaude
 // roc 2007-08 004124e0  size: 75 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 004124e0
+// roc-cl: 50727
+// roc-flags: /O2 /GS /EHsc /MD
 
-struct S_func_004124e0 {
-    int f(int a1, int a2, int a3, int a4);
+struct GUID;
+struct ITypeInfo {
+    virtual long __stdcall QueryInterface(const GUID&, void**) = 0;
+    virtual unsigned long __stdcall AddRef() = 0;
+    virtual unsigned long __stdcall Release() = 0;
 };
 
-extern int G1_func_004124e0;
-extern int G2_func_004124e0;
-
-struct T_func_004055f0 {
-    void m(int a1);
-};
-
-extern T_func_004055f0 G3_func_004055f0;
-
-int S_func_004124e0::f(int a1, int a2, int a3, int a4)
+class CComTypeInfoHolder
 {
-    if (a4 == 0)
-        return (int)0x80004003;
-    if (G2_func_004124e0 == 0)
-        G3_func_004055f0.m(a3);
-    *(int*)a4 = G2_func_004124e0;
-    int p = G2_func_004124e0;
-    if (p != 0)
+public:
+    const GUID* m_pguid;
+    const GUID* m_plibid;
+    unsigned short m_wMajor;
+    unsigned short m_wMinor;
+    ITypeInfo* m_pInfo;
+
+    long GetTypeInfo(unsigned int, unsigned long lcid, ITypeInfo** pptinfo)
     {
-        int* vtbl = *(int**)p;
-        int (__stdcall *fn)(int) = (int (__stdcall *)(int))vtbl[1];
-        fn(p);
+        return GetTI(lcid, pptinfo);
     }
-    return 0;
+    long GetTI(unsigned long lcid, ITypeInfo** ppInfo)
+    {
+        if (ppInfo == 0)
+            return 0x80004003L;
+
+        long hr = 0;
+        if (m_pInfo == 0)
+            hr = GetTI(lcid);
+        *ppInfo = m_pInfo;
+        if (m_pInfo != 0)
+        {
+            m_pInfo->AddRef();
+            hr = 0;
+        }
+        return hr;
+    }
+    long GetTI(unsigned long lcid);
+};
+
+struct IDispatchImpl
+{
+    static CComTypeInfoHolder _tih;
+    virtual long __stdcall GetTypeInfo(unsigned int itinfo, unsigned long lcid, ITypeInfo** pptinfo);
+};
+
+CComTypeInfoHolder IDispatchImpl::_tih;
+
+long __stdcall IDispatchImpl::GetTypeInfo(unsigned int itinfo, unsigned long lcid, ITypeInfo** pptinfo)
+{
+    return _tih.GetTypeInfo(itinfo, lcid, pptinfo);
 }

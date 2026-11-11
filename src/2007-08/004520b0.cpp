@@ -1,8 +1,9 @@
+// from server: 100% by EspClaude
 // from server: 91% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-lib: openrbx-client-dll roc_espeon_docauthoringempty_2d969e909e300645.cpp
+// roc-lib: openrbx-client-dll roc_claude_c18d18fd2c1b15bb.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <boost/shared_ptr.hpp>
@@ -35,7 +36,7 @@ struct Authoring
 
 struct Context
 {
-    char padding[0x1f0];
+    char padding[0x150];
     Authoring* authoring;
 };
 
@@ -51,7 +52,7 @@ struct Result
 
 struct CRobloxDoc
 {
-    char padding[0x94];
+    char padding[0x78];
     Source* source;
 
     Returned getModel();

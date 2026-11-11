@@ -18,9 +18,9 @@
 // 0069bc50 (dynamic_cast to RbxSubEntity / RbxSceneNode and their cached transforms).
 // _queueSkiesForRendering 0068d7d0 calls RbxSky::update through the minimal OgreRbx/RbxSky2008.h.
 // >>> native-status (generated) -- do not edit >>>
-// OgreRbxSceneManager | 2008-06 | 448 byte-exact, inactive (not link-selected)
-// 448/487 mapped addresses byte-exact | named 113 | 39 unproved | no mapped strings | by auto (+7) (mixed 7)
-// <<< native-status | src 1e0576e2 | roc native-status --write
+// OgreRbxSceneManager | 2008-06 | draft (no current byte proof)
+// 0/203 mapped addresses byte-exact | 203 unproved | no mapped strings | by tester (+7) (mixed 5)
+// <<< native-status | src c93f82db | roc native-status --write
 #include "OgreSceneManager.h"
 #include "OgreCamera.h"
 #include "OgreRenderSystem.h"
@@ -4985,7 +4985,7 @@ const SceneManager::ShadowCasterList& RbxSceneManager::findShadowCastersForLight
 		if (root->getAttachedObjectIterator().hasMoreElements())
 		{
 			RbxEntity* entity = dynamic_cast<RbxEntity*>(root->getAttachedObject(0));
-			entity->collect(camera, light, mShadowCasterList);
+			entity->collect(const_cast<Camera*>(camera), const_cast<Light*>(light), mShadowCasterList);   // collect 0067e2f0 takes non-const (registry mangling)
 		}
 	}
 	return mShadowCasterList;

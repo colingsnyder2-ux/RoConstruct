@@ -1,8 +1,9 @@
+// from server: 100% by EspClaude
 // from server: 99% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-lib: openrbx-client-dll roc_espeon_resolution_f185f02428b33393.cpp
+// roc-lib: openrbx-client-dll roc_claude_d0400c8926d0204d.cpp
 
 // Candidate translation unit (score above; library headers required).
 // from server: 91% by king_originala
@@ -47,7 +48,7 @@ Shared __cdecl getLogger();
 void __cdecl logMessage(void*, int, const char*, ...);
 
 struct CWrapperView {
-    char padding[0xfa];
+    char padding[0xe1]; // restoring @0xe1, monitor @0xe4 per target
     unsigned char restoring;
     unsigned char alignment;
     void* monitor;

@@ -1,4 +1,76 @@
+// from server: 100% by EspClaude
 // from server: 74% by EspClaude
+// roc 2007-08 0049b970  unit: RBX::Network::VClient::?$FactoryProduct  size: 225 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 0049b970
+//
+// 0049b970  6aff                 push -1
+// 0049b972  68248e7400           push 0x748e24
+// 0049b977  64a100000000         mov eax, dword ptr fs:[0]
+// 0049b97d  50                   push eax
+// 0049b97e  51                   push ecx
+// 0049b97f  56                   push esi
+// 0049b980  a188518b00           mov eax, dword ptr [0x8b5188]
+// 0049b985  33c4                 xor eax, esp
+// 0049b987  50                   push eax
+// 0049b988  8d44240c             lea eax, [esp + 0xc]
+// 0049b98c  64a300000000         mov dword ptr fs:[0], eax
+// 0049b992  8bf1                 mov esi, ecx
+// 0049b994  89742408             mov dword ptr [esp + 8], esi
+// 0049b998  8b44243c             mov eax, dword ptr [esp + 0x3c]
+// 0049b99c  8b4c2424             mov ecx, dword ptr [esp + 0x24]
+// 0049b9a0  50                   push eax
+// 0049b9a1  51                   push ecx
+// 0049b9a2  e809d8ffff           call 0x4991b0
+// 0049b9a7  50                   push eax
+// 0049b9a8  8bce                 mov ecx, esi
+// 0049b9aa  e801540d00           call 0x570db0
+// 0049b9af  8b54241c             mov edx, dword ptr [esp + 0x1c]
+// 0049b9b3  8b442420             mov eax, dword ptr [esp + 0x20]
+// 0049b9b7  8d4e30               lea ecx, [esi + 0x30]
+// 0049b9ba  c744241400000000     mov dword ptr [esp + 0x14], 0
+// 0049b9c2  c706ccc47900         mov dword ptr [esi], 0x79c4cc
+// 0049b9c8  895628               mov dword ptr [esi + 0x28], edx
+// 0049b9cb  89462c               mov dword ptr [esi + 0x2c], eax
+// 0049b9ce  e8ed190d00           call 0x56d3c0
+// 0049b9d3  8d4e38               lea ecx, [esi + 0x38]
+// 0049b9d6  c644241401           mov byte ptr [esp + 0x14], 1
+// 0049b9db  e8e0190d00           call 0x56d3c0
+// 0049b9e0  8d4e40               lea ecx, [esi + 0x40]
+// 0049b9e3  c644241402           mov byte ptr [esp + 0x14], 2
+// 0049b9e8  e8d3190d00           call 0x56d3c0
+// 0049b9ed  c644241403           mov byte ptr [esp + 0x14], 3
+// 0049b9f2  e8d91d0d00           call 0x56d7d0
+// 0049b9f7  6a08                 push 8
+// 0049b9f9  894648               mov dword ptr [esi + 0x48], eax
+// 0049b9fc  e8f5441900           call 0x62fef6
+// 0049ba01  83c404               add esp, 4
+// 0049ba04  85c0                 test eax, eax
+// 0049ba06  740f                 je 0x49ba17
+// 0049ba08  8b4c2438             mov ecx, dword ptr [esp + 0x38]
+// 0049ba0c  c70098717800         mov dword ptr [eax], 0x787198
+// 0049ba12  894804               mov dword ptr [eax + 4], ecx
+// 0049ba15  eb02                 jmp 0x49ba19
+// 0049ba17  33c0                 xor eax, eax
+// 0049ba19  89464c               mov dword ptr [esi + 0x4c], eax
+// 0049ba1c  8b542434             mov edx, dword ptr [esp + 0x34]
+// 0049ba20  8b442430             mov eax, dword ptr [esp + 0x30]
+// 0049ba24  8b4c242c             mov ecx, dword ptr [esp + 0x2c]
+// 0049ba28  52                   push edx
+// 0049ba29  8b54242c             mov edx, dword ptr [esp + 0x2c]
+// 0049ba2d  50                   push eax
+// 0049ba2e  51                   push ecx
+// 0049ba2f  52                   push edx
+// 0049ba30  8bce                 mov ecx, esi
+// 0049ba32  c644242404           mov byte ptr [esp + 0x24], 4
+// 0049ba37  e8f4d9ffff           call 0x499430
+// 0049ba3c  8bc6                 mov eax, esi
+// 0049ba3e  8b4c240c             mov ecx, dword ptr [esp + 0xc]
+// 0049ba42  64890d00000000       mov dword ptr fs:[0], ecx
+// 0049ba49  59                   pop ecx
+// 0049ba4a  5e                   pop esi
+// 0049ba4b  83c410               add esp, 0x10
+// 0049ba4e  c22400               ret 0x24
+
 // from server: 100% by king_originala
 // roc 2008-06 004a03b0  unit: RBX::Network::VClient::?$FactoryProduct  size: 247 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 004a03b0
@@ -84,7 +156,7 @@ extern "C" void *__stdcall getSettings(int, int);
 extern "C" void *__cdecl getType();
 
 struct Base {
-    unsigned char storage[52];
+    unsigned char storage[36];
     Base(void *);
     virtual ~Base();
 };
@@ -119,21 +191,20 @@ struct S : Base {
     int second;
     Value value1;
     Value value2;
+    Value value3;
     Property property1;
-    Property property2;
 
-    S(int, int, int, int, int, int, int, int, int, int);
+    S(int, int, int, int, int, int, int, int, int);
     virtual ~S();
     void initialize(int, int, int, int);
 };
 
 S::S(int a1, int a2, int a3, int a4, int a5,
-     int a6, int a7, int a8, int a9, int a10)
-    : Base(getSettings(a3, a10)),
+     int a6, int a7, int a8, int a9)
+    : Base(getSettings(a3, a9)),
       first(a1),
       second(a2),
-      property1(a7),
-      property2(a9)
+      property1(a8)
 {
-    initialize(a4, a5, a6, a8);
+    initialize(a4, a5, a6, a7);
 }

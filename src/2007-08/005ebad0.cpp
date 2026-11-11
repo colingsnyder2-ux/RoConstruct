@@ -1,9 +1,10 @@
+// from server: 99% by EspClaude
 // from server: 96% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll roc_espeon_gyronativeaccessorlayout0f142783d4632244.cpp
+// roc-lib: rbxgs-dll roc_claude_6c474ccfd91cb2df.cpp
 
 // Candidate translation unit (score above; library headers required).
 
@@ -35,7 +36,6 @@ namespace RBX {
 			float massRecip;
 			float constantForceY;
 			G3D::Vector3 force;
-			char observedTorqueGap[4];
 			G3D::Vector3 torque;
 			//funcs
 			__forceinline void SimBody::unkSimInline(float fNum);
@@ -97,14 +97,12 @@ namespace RBX {
 	{
 		private:
 			int& getIndex() {return index;};
-			char observedPrefix[12];
 			Body *root;
 			Body *parent;
 			int index;
 			IndexArray<RBX::Body, &getIndex> children;
 			Cofm *cofm;
 			SimBody *simBody;
-			bool canThrottle;
 			RBX::Link *link;
 			G3D::CoordinateFrame meInParent;
 			G3D::Matrix3 moment;
@@ -218,7 +216,6 @@ namespace RBX {
 				updatePV();
 				return pv;
 			}
-			const bool getCanThrottle() const {return this->canThrottle;}
 			void accumulateForceAtCofm(const G3D::Vector3&);
 			void accumulateForceAtBranchCofm(const G3D::Vector3& force)
 			{
@@ -272,10 +269,6 @@ namespace RBX {
 			void setPv(const PV& _pv);
 			void setCoordinateFrame(const G3D::CoordinateFrame& worldCord);
 			void setVelocity(const RBX::Velocity& worldVelocity);
-			void setCanThrottle(bool value)
-			{
-				canThrottle = value;
-			}
 			float kineticEnergy() const;
 			float potentialEnergy() const;
 			static int getNextStateIndex();
@@ -284,7 +277,7 @@ namespace RBX {
 }
 #include <G3D/CoordinateFrame.h>
 namespace RBX {
-class NativeGyro { char prefix[0x148]; float kP,kD; G3D::Vector3 maxTorque; G3D::CoordinateFrame cframe; public: void computeOrientation(Body*); void computeBalance(Body*); };
+class NativeGyro { char prefix[0xfc]; float kP,kD; G3D::Vector3 maxTorque; G3D::CoordinateFrame cframe; public: void computeOrientation(Body*); void computeBalance(Body*); };
 	void NativeGyro::computeOrientation(Body* body)
 	{
 		if (G3D::fuzzyEq(maxTorque.y, 0.0f))

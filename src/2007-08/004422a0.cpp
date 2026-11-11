@@ -1,3 +1,4 @@
+// from server: 100% by EspClaude
 // from server: 78% by EspClaude
 // roc-cl: 50727
 // from server: 100% by king_originala
@@ -128,7 +129,7 @@ inline Shared::~Shared()
 }
 
 struct Guard {
-    char storage[12];
+    unsigned int storage[3];
     Guard(Object*);
     ~Guard();
 };
@@ -144,17 +145,17 @@ struct CDataModelPropGrid {
 void CDataModelPropGrid::f(Shared value, Shared other)
 {
     Object*& current =
-        *reinterpret_cast<Object**>(reinterpret_cast<char*>(this) - 0xac);
+        *reinterpret_cast<Object**>(reinterpret_cast<char*>(this) - 0x54);
 
     if (current) {
         Guard guard(current);
-        reinterpret_cast<Grid*>(reinterpret_cast<char*>(this) - 0x244)->set(0);
+        reinterpret_cast<Grid*>(reinterpret_cast<char*>(this) - 0x1dc)->set(0);
     }
 
     current = value.object;
     if (current) {
         Guard guard(current);
-        reinterpret_cast<Grid*>(reinterpret_cast<char*>(this) - 0x244)->set(
+        reinterpret_cast<Grid*>(reinterpret_cast<char*>(this) - 0x1dc)->set(
             current ? current->get() : 0);
     }
 }

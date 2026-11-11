@@ -1,8 +1,9 @@
+// from server: 97% by EspClaude
 // from server: 95% by EspClaude
 // from server: 100% by king_originala
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: rbxgs-dll roc_king_originala_physics_939c6f841021e3eb.cpp
+// roc-lib: rbxgs-dll roc_claude_a4aef23b02cf8729.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "tool/RunDragger.h"
@@ -15,7 +16,7 @@ void RunDragger::smartPtrHackPost() {
  typedef char snap_offset[offsetof(RunDragger,snapInfo)==0x24?1:-1];
  boost::shared_ptr<PartInstance> value=snapPart.lock();
  // Native LEA/add228 establishes the embedded Primitive on this borrowed receiver.
- if(check(value))snapInfo.snap=reinterpret_cast<Primitive*>(reinterpret_cast<char*>(value.get())+0x228);
+ if(check(value)){Primitive* p=*reinterpret_cast<Primitive**>(reinterpret_cast<char*>(value.get())+0x1d8);snapInfo.snap=p;}
  else snapInfo.snap=0;
 }
 }

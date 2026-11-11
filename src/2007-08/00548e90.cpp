@@ -1,3 +1,4 @@
+// from server: 83% by EspClaude
 // from server: 80% by EspClaude
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
 // roc-cl: 21022
@@ -186,9 +187,21 @@ inline FileStream::FileStream(const char* path, int mode, int protection) {
     *reinterpret_cast<unsigned int**>(storage + 88) = file_stream_table;
 }
 
+struct HolderRef {
+    HolderRef(void* r) : ref(r) {}
+    void* ref;
+};
+
+struct Holder {
+    Stream* pointer;
+    explicit Holder(Stream* p) : pointer(p) {}
+    operator HolderRef() { HolderRef ans(&pointer); return ans; }
+};
+
 struct Result {
     Stream* pointer;
     explicit Result(Stream* p);
+    Result(HolderRef r) { Stream** pp = (Stream**)r.ref; Stream* p = *pp; *(Stream* volatile*)pp = 0; pointer = p; }
     ~Result();
 };
 
@@ -208,23 +221,23 @@ struct Error {
 String __cdecl format(const char*, ...);
 
 struct Provider {
-    Entry* lookup(Content, int, int);
+    Entry* lookup(Content, int);
     Result load(Content);
 };
 
 Result Provider::load(Content content) {
-    Entry* entry = lookup(content, 2, 0);
+    Entry* entry = lookup(content, 2);
 
     if (!entry)
         throw Error(format("Unable to load %s", content.name.c_str()));
 
     if (entry->text)
-        return Result(reinterpret_cast<Stream*>(
-            new StringStream(*entry->text, 1)));
+        return Result(Holder(reinterpret_cast<Stream*>(
+            new StringStream(*entry->text, 1))));
 
-    return Result(reinterpret_cast<Stream*>(
+    return Result(Holder(reinterpret_cast<Stream*>(
         new FileStream(entry->filename->capacity >= 16
                            ? entry->filename->pointer
                            : entry->filename->buffer,
-                       33, 64)));
+                       33, 64))));
 }

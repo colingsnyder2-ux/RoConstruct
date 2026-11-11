@@ -1,4 +1,6 @@
+// from server: 100% by EspClaude
 // from server: 74% by EspClaude
+// 2007-08 target (roc check diff): children vector at [this+0xc0], _Myfirst +4 / _Mylast +8 with null test, Player flag at +0x124
 // roc-cl: 50727
 // from server: 100% by colin
 // roc 2008-06 005d6070  unit: RBX::VTeams::?$FactoryProduct  size: 123 bytes
@@ -60,8 +62,7 @@ namespace RBX {
     class Instance {
     public:
         virtual ~Instance();
-        char padding[0x100];
-        Instance* next;
+        char padding[0xbc];
     };
 
     struct Entry {
@@ -70,9 +71,10 @@ namespace RBX {
     };
 
     struct Children {
-        char padding[0x0c];
+        char padding[0x04];
         Entry* first;
         Entry* last;
+        unsigned int size() const { return first == 0 ? 0 : static_cast<unsigned int>(last - first); }
     };
 
     struct ServiceProvider : Instance {
@@ -83,7 +85,7 @@ namespace RBX {
     namespace Network {
         class Player : Instance {
         public:
-            char padding[0x74];
+            char padding[0x64];
             bool flag;
         };
     }
@@ -105,7 +107,7 @@ bool RBX::FactoryProduct::f()
         void (__cdecl *invalid)() = invalid_parameter_noinfo;
         do {
             Children* children = provider->children;
-            if (i >= static_cast<unsigned int>(children->last - children->first))
+            if (i >= children->size())
                 invalid();
 
             Instance* obj = children->first[i].object;

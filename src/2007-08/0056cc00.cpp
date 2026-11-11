@@ -1,9 +1,10 @@
+// from server: 98% by EspClaude
 // from server: 95% by EspClaude
 // from server: 100% by auto
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs script/ThreadRef.cpp
+// roc-lib: rbxgs roc_claude_ab4a83faead67fcc.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "script/ThreadRef.h"
@@ -15,10 +16,6 @@ namespace RBX
 {
     namespace Lua
     {
-		const char* Bridge<boost::shared_ptr<ThreadRef::Node>, true>::className = "shared_ptr<ThreadRef::Node>";
-
-		boost::shared_ptr<boost::mutex> ThreadRef::syncSingleton(new boost::mutex);
-
         ThreadRef::ThreadRef(lua_State* thread)
             : sync(syncSingleton),
               node(NULL),
@@ -78,7 +75,20 @@ namespace RBX
             {
                 boost::mutex::scoped_lock lock(*sync);
 
-                removeFromNode();
+                if (node)
+                {
+                    if (next)
+                        next->previous = previous;
+
+                    if (previous)
+                        previous->next = next;
+
+                    if (node->first == this)
+                        node->first = next;
+
+                    next = NULL;
+                    previous = NULL;
+                }
 
                 node = other.node;
                 addToNode();
@@ -134,17 +144,12 @@ namespace RBX
             return node;
         }
 
+        // TODO: this might also be the base definition of Bridge::on_index, not currently clear
         template<>
         int ThreadRef::NodeBridge::on_index(const ThreadRef::NodePtr& object, const char* name, lua_State* L)
         {
             throw std::runtime_error(G3D::format("%s is not a valid member", name));
         }
-
-		template<>
-		void ThreadRef::NodeBridge::on_newindex(ThreadRef::NodePtr& object, const char* name, lua_State* L)
-		{
-			throw std::runtime_error(G3D::format("%s cannot be assigned to", name));
-		}
 
         FunctionRef::FunctionRef(lua_State* thread, int functionIndex)
             : ThreadRef(thread)

@@ -1,9 +1,10 @@
+// from server: 96% by EspClaude
 // from server: 95% by EspClaude
 // from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs roc_espclaude_e420a4960dc1ca1b.cpp
+// roc-lib: rbxgs roc_claude_7aa974f70a576078.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "RbxGraphics/Adorn.h"
@@ -14,18 +15,175 @@
 #undef private
 #include "util/Object.h"
 namespace RBX { template<class T> class GuidItem { public: virtual ~GuidItem() {} char guidPad[0xc]; }; }
-#define AbstractFactoryProduct GuidItem<Instance>, public AbstractFactoryProduct
 #include "util/Guid.h"
 namespace RBX { class GuidStub { public: typedef Guid::Data Data; void assign(const Data&) {} operator const Guid&() const { return *(const Guid*)0; } }; }
 #define Guid GuidStub
 #include "v8tree/Instance.h"
 #undef Guid
-#undef AbstractFactoryProduct
+
 #include "v8datamodel/Hopper.h"
 #include "util/IRenderable.h"
 #include "v8datamodel/IEquipable.h"
 namespace RBX { struct ExePad8 { virtual void exePadV(); char exePad[0x2c]; }; }
-#include "v8datamodel/Tool.h"
+// v8datamodel/Tool.h (2007-08 layout: weld/workspace are Tool members after enabled; no IEquipable base)
+#include "v8datamodel/Hopper.h"
+#include "v8datamodel/IEquipable.h"
+#include "util/IRenderable.h"
+#include "util/ILocation.h"
+#include "util/ISelectable3d.h"
+
+namespace RBX
+{
+	namespace Network
+	{
+		class Player;
+	}
+	class ModelInstance;
+	class Mouse;
+	class ToolMouseCommand;
+
+	extern const char* sTool;
+	class Tool : public DescribedCreatable<Tool, BackpackItem, &sTool>,
+				 public IRenderable,
+				 public virtual ILocation,
+				 public virtual ISelectable3d
+	{
+	private:
+		enum ToolState
+		{
+			NOTHING,
+			HAS_HANDLE,
+			IN_WORKSPACE,
+			IN_CHARACTER,
+			HAS_TORSO,
+			EQUIPPED,
+			ACTIVATED
+		};
+
+	private:
+		ToolState backendToolState;
+		int frontendActivationState;
+		G3D::CoordinateFrame grip;
+		bool enabled;
+		boost::shared_ptr<Weld> weld;
+		ToolMouseCommand* toolMouseCommand;
+		Workspace* workspace;
+		boost::signals::scoped_connection handleTouched;
+		boost::signals::scoped_connection characterChildAdded;
+		boost::signals::scoped_connection characterChildRemoved;
+		boost::signals::scoped_connection torsoChildAdded;
+		boost::signals::scoped_connection torsoChildRemoved;
+	public:
+		static Reflection::BoundProp<bool, 1> prop_Enabled;
+
+	private:
+		int getNumToolsInCharacter();
+		void onEvent_AddedBackend(boost::shared_ptr<Instance> child);
+		void onEvent_RemovedBackend(boost::shared_ptr<Instance> child);
+		void onEvent_HandleTouched(boost::shared_ptr<Instance> other);
+		boost::shared_ptr<Mouse> getMouse();
+		ToolState computeDesiredState(Instance* testParent);
+		ToolState computeDesiredState();
+		void setDesiredState(ToolState, const ServiceProvider*);
+		void setBackendToolStateNoReplicate(int value);
+		void rebuildBackendState();
+		void connectTouchEvent();
+		void upTo_Activated();
+		void upTo_Equipped();
+		void upTo_HasTorso();
+		void upTo_InCharacter();
+		void upTo_InWorkspace();
+		void upTo_HasHandle();
+		void downFrom_Activated();
+		void downFrom_Equipped();
+		void downFrom_HasTorso();
+		void downFrom_InCharacter();
+		void downFrom_InWorkspace();
+		void downFrom_HasHandle();
+		void onEquipping();
+		void buildWeld(PartInstance* humanoidPart, PartInstance* gadgetPart, const G3D::CoordinateFrame& humanoidCoord, const G3D::CoordinateFrame& gadgetCoord, const std::string& name);
+		void onUnequipped();
+		void onChildAdded();
+		void onChildRemoved();
+		virtual void onAncestorChanged(const AncestorChanged&);
+
+		virtual bool askSetParent(const Instance* instance) const
+		{
+			return true;
+		}
+
+		virtual bool askAddChild(const Instance* instance) const
+		{
+			return true;
+		}
+
+		virtual void readProperty(const XmlElement* propertyElement, IReferenceBinder& binder);
+		virtual const G3D::CoordinateFrame getLocation() const;
+
+		virtual bool drawSelected() const
+		{
+			return backendToolState >= EQUIPPED; // EQUIPPED or ACTIVATED
+		}
+
+		virtual void onLocalClicked();
+		virtual void onLocalOtherClicked();
+		virtual void render3dSelect(Adorn* adorn, SelectState selectState);
+	public:
+		Tool();
+		virtual ~Tool();
+	public:
+		virtual bool canUnequip()
+		{
+			return true;
+		}
+
+		virtual bool canBePickedUpByPlayer(Network::Player* p)
+		{
+			return true;
+		}
+
+		PartInstance* getHandle();
+		const PartInstance* getHandleConst() const;
+		void setFrontendActivationState(int value);
+
+		int getFrontendActivationState() const
+		{
+			return frontendActivationState;
+		}
+
+		void setBackendToolState(int value);
+
+		int getBackendToolState() const
+		{
+			return backendToolState;
+		}
+
+		const G3D::CoordinateFrame& getGrip() const
+		{
+			return grip;
+		}
+
+		void setGrip(const G3D::CoordinateFrame& value);
+		void activate();
+		void deactivate();
+		const G3D::Vector3 getGripPos() const;
+		const G3D::Vector3 getGripForward() const;
+		const G3D::Vector3 getGripUp() const;
+		const G3D::Vector3 getGripRight() const;
+		void setGripPos(const G3D::Vector3& v);
+		void setGripForward(const G3D::Vector3& v);
+		void setGripUp(const G3D::Vector3&);
+		void setGripRight(const G3D::Vector3&);
+
+	private:
+		static void moveAllToolsToBackpack(Network::Player* player);
+		static ToolState characterCanPickUpTool(Instance*);
+		static bool characterCanUnequipTool(ModelInstance* character);
+	public:
+		static void dropAll(ModelInstance*);
+	};
+}
+
 #include "v8datamodel/IEquipable.h"
 #include "v8datamodel/Workspace.h"
 #include "v8datamodel/PartInstance.h"

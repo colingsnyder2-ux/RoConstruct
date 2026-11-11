@@ -1,3 +1,4 @@
+// from server: 100% by EspClaude
 // from server: 73% by EspClaude
 // roc-cl: 50727
 // from server: 100% by colin
@@ -310,12 +311,12 @@ struct Lock
 
     Lock(void*);
     ~Lock();
+    void lock();
 };
 
-inline Lock::Lock(void* p) : section(p)
+inline Lock::Lock(void* p) : section(p), locked(false)
 {
-    EnterCriticalSection(section);
-    locked = true;
+    lock();
 }
 
 inline Lock::~Lock()
@@ -341,7 +342,7 @@ struct DxUserInput
 {
     unsigned char prefix[0x34];
     unsigned char section[24];
-    unsigned char padding[0x130];
+    unsigned char padding[0x144];
     Device* keyboard;
 
     bool read(void*, unsigned long*, Device*);
@@ -353,7 +354,7 @@ bool DxUserInput::read(void* data, unsigned long* count, Device* device)
     switch (device->table->getData(device, 20, data, count, 0))
     {
     case 0:
-        break;
+        return true;
     case 1:
         {
             StringName name(device == keyboard ? "Keyboard " : "Mouse ");

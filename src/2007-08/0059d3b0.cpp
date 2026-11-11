@@ -1,9 +1,10 @@
+// from server: 100% by EspClaude
 // from server: 99% by EspClaude
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: openrbx-client-dll roc_try_sp_c1_d41adcc463e21ee1.cpp
+// roc-lib: openrbx-client-dll roc_claude_1f67429e838e8d63.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <string>
@@ -19,7 +20,6 @@ struct Context {
     virtual void slot0();
     virtual void slot1();
     virtual void slot2();
-    virtual void slot3();
     virtual G3D::Rect2D getViewport();
     virtual void slot5();
     virtual void slot6();

@@ -1,9 +1,10 @@
+// from server: 100% by EspClaude
 // from server: 93% by EspClaude
 // from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client-dll roc_espclaude_12fb1623c20ba0ae.cpp
+// roc-lib: openrbx-client-dll roc_claude_1d3abc8461a48925.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <boost/shared_ptr.hpp>
@@ -13,13 +14,13 @@ class Player;
 class Instance {
 public:
     virtual ~Instance();
-    char padding[0x100];
+    char padding[0xb8];
     Instance* parent;
     Player* getPlayer();
 };
 class Flag : public Instance {
 public:
-    char more[0x178 - 0x108];
+    char more[0x120 - 0xc0];
     BrickColor teamColor;
     bool inactive;
 };
@@ -43,9 +44,9 @@ boost::shared_ptr<Flag> __cdecl sharedFrom(Flag*);
 Teams* __cdecl findTeams(void*);
 class FlagStand {
 public:
-    char padding[0x14];
+    char padding[0x4];
     Source source;
-    char more[0x3fc - 0x18];
+    char more[0x294 - 0x8];
     BrickColor teamColor;
     void onTouched(boost::shared_ptr<Instance> other);
 };
@@ -65,8 +66,7 @@ void FlagStand::onTouched(boost::shared_ptr<Instance> other)
         return;
     if (player->getTeamColor().number == myColor)
         return;
-    Source* src = &source;
-    flagCaptured(src, sharedFrom(flag));
+    flagCaptured(&source, sharedFrom(flag));
     Teams* all = findTeams(this);
     if (Teams* teams = all->findTeam(player))
         teams->captured(player);

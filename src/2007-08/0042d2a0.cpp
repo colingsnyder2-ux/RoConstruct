@@ -1,4 +1,290 @@
+// from server: 100% by EspClaude
 // from server: 96% by EspClaude
+// roc 2007-08 0042d2a0  unit: CLuaHtmlView  size: 985 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 0042d2a0
+//
+// 0042d2a0  6aff                 push -1
+// 0042d2a2  684ed57300           push 0x73d54e
+// 0042d2a7  64a100000000         mov eax, dword ptr fs:[0]
+// 0042d2ad  50                   push eax
+// 0042d2ae  83ec68               sub esp, 0x68
+// 0042d2b1  53                   push ebx
+// 0042d2b2  55                   push ebp
+// 0042d2b3  56                   push esi
+// 0042d2b4  57                   push edi
+// 0042d2b5  a188518b00           mov eax, dword ptr [0x8b5188]
+// 0042d2ba  33c4                 xor eax, esp
+// 0042d2bc  50                   push eax
+// 0042d2bd  8d44247c             lea eax, [esp + 0x7c]
+// 0042d2c1  64a300000000         mov dword ptr fs:[0], eax
+// 0042d2c7  894c2424             mov dword ptr [esp + 0x24], ecx
+// 0042d2cb  33f6                 xor esi, esi
+// 0042d2cd  89b42484000000       mov dword ptr [esp + 0x84], esi
+// 0042d2d4  e811322000           call 0x6304ea
+// 0042d2d9  33c9                 xor ecx, ecx
+// 0042d2db  3bc6                 cmp eax, esi
+// 0042d2dd  894c2420             mov dword ptr [esp + 0x20], ecx
+// 0042d2e1  7415                 je 0x42d2f8
+// 0042d2e3  8b08                 mov ecx, dword ptr [eax]
+// 0042d2e5  8d542420             lea edx, [esp + 0x20]
+// 0042d2e9  52                   push edx
+// 0042d2ea  6820707800           push 0x787020
+// 0042d2ef  50                   push eax
+// 0042d2f0  8b01                 mov eax, dword ptr [ecx]
+// 0042d2f2  ffd0                 call eax
+// 0042d2f4  8b4c2420             mov ecx, dword ptr [esp + 0x20]
+// 0042d2f8  3bce                 cmp ecx, esi
+// 0042d2fa  c684248400000001     mov byte ptr [esp + 0x84], 1
+// 0042d302  7534                 jne 0x42d338
+// 0042d304  68e4a27800           push 0x78a2e4
+// 0042d309  8d4c243c             lea ecx, [esp + 0x3c]
+// 0042d30d  ff1598e67700         call dword ptr [0x77e698]
+// 0042d313  8d4c2438             lea ecx, [esp + 0x38]
+// 0042d317  51                   push ecx
+// 0042d318  8d4c2458             lea ecx, [esp + 0x58]
+// 0042d31c  c684248800000002     mov byte ptr [esp + 0x88], 2
+// 0042d324  e8975afeff           call 0x412dc0
+// 0042d329  68c0108400           push 0x8410c0
+// 0042d32e  8d542458             lea edx, [esp + 0x58]
+// 0042d332  52                   push edx
+// 0042d333  e866382000           call 0x630b9e
+// 0042d338  8974241c             mov dword ptr [esp + 0x1c], esi
+// 0042d33c  8b01                 mov eax, dword ptr [ecx]
+// 0042d33e  8b4020               mov eax, dword ptr [eax + 0x20]
+// 0042d341  8d54241c             lea edx, [esp + 0x1c]
+// 0042d345  52                   push edx
+// 0042d346  51                   push ecx
+// 0042d347  c684248c00000003     mov byte ptr [esp + 0x8c], 3
+// 0042d34f  ffd0                 call eax
+// 0042d351  89742418             mov dword ptr [esp + 0x18], esi
+// 0042d355  8d4c2428             lea ecx, [esp + 0x28]
+// 0042d359  51                   push ecx
+// 0042d35a  ff1500ea7700         call dword ptr [0x77ea00]
+// 0042d360  8b942498000000       mov edx, dword ptr [esp + 0x98]
+// 0042d367  8b742428             mov esi, dword ptr [esp + 0x28]
+// 0042d36b  8b7c242c             mov edi, dword ptr [esp + 0x2c]
+// 0042d36f  8b6c2430             mov ebp, dword ptr [esp + 0x30]
+// 0042d373  8b5c2434             mov ebx, dword ptr [esp + 0x34]
+// 0042d377  52                   push edx
+// 0042d378  8d4c243c             lea ecx, [esp + 0x3c]
+// 0042d37c  c684248800000005     mov byte ptr [esp + 0x88], 5
+// 0042d384  66c744243c0000       mov word ptr [esp + 0x3c], 0
+// 0042d38b  e8f044feff           call 0x411880
+// 0042d390  8b4c241c             mov ecx, dword ptr [esp + 0x1c]
+// 0042d394  8b11                 mov edx, dword ptr [ecx]
+// 0042d396  8d442418             lea eax, [esp + 0x18]
+// 0042d39a  50                   push eax
+// 0042d39b  83ec10               sub esp, 0x10
+// 0042d39e  8bc4                 mov eax, esp
+// 0042d3a0  8930                 mov dword ptr [eax], esi
+// 0042d3a2  8b74244c             mov esi, dword ptr [esp + 0x4c]
+// 0042d3a6  897804               mov dword ptr [eax + 4], edi
+// 0042d3a9  896808               mov dword ptr [eax + 8], ebp
+// 0042d3ac  89580c               mov dword ptr [eax + 0xc], ebx
+// 0042d3af  83ec10               sub esp, 0x10
+// 0042d3b2  8bc4                 mov eax, esp
+// 0042d3b4  8930                 mov dword ptr [eax], esi
+// 0042d3b6  8b742460             mov esi, dword ptr [esp + 0x60]
+// 0042d3ba  897004               mov dword ptr [eax + 4], esi
+// 0042d3bd  8b742464             mov esi, dword ptr [esp + 0x64]
+// 0042d3c1  897008               mov dword ptr [eax + 8], esi
+// 0042d3c4  8b742468             mov esi, dword ptr [esp + 0x68]
+// 0042d3c8  51                   push ecx
+// 0042d3c9  8b4a2c               mov ecx, dword ptr [edx + 0x2c]
+// 0042d3cc  c68424ac00000006     mov byte ptr [esp + 0xac], 6
+// 0042d3d4  89700c               mov dword ptr [eax + 0xc], esi
+// 0042d3d7  ffd1                 call ecx
+// 0042d3d9  8b35d8e97700         mov esi, dword ptr [0x77e9d8]
+// 0042d3df  8d542438             lea edx, [esp + 0x38]
+// 0042d3e3  52                   push edx
+// 0042d3e4  ffd6                 call esi
+// 0042d3e6  8d442428             lea eax, [esp + 0x28]
+// 0042d3ea  50                   push eax
+// 0042d3eb  c684248800000004     mov byte ptr [esp + 0x88], 4
+// 0042d3f3  ffd6                 call esi
+// 0042d3f5  8b442418             mov eax, dword ptr [esp + 0x18]
+// 0042d3f9  85c0                 test eax, eax
+// 0042d3fb  753b                 jne 0x42d438
+// 0042d3fd  8b8c2498000000       mov ecx, dword ptr [esp + 0x98]
+// 0042d404  51                   push ecx
+// 0042d405  8d54243c             lea edx, [esp + 0x3c]
+// 0042d409  68b0a57800           push 0x78a5b0
+// 0042d40e  52                   push edx
+// 0042d40f  e8ac430d00           call 0x5017c0
+// 0042d414  83c40c               add esp, 0xc
+// 0042d417  50                   push eax
+// 0042d418  8d4c2458             lea ecx, [esp + 0x58]
+// 0042d41c  c684248800000007     mov byte ptr [esp + 0x88], 7
+// 0042d424  e89759feff           call 0x412dc0
+// 0042d429  68c0108400           push 0x8410c0
+// 0042d42e  8d442458             lea eax, [esp + 0x58]
+// 0042d432  50                   push eax
+// 0042d433  e866372000           call 0x630b9e
+// 0042d438  8d542414             lea edx, [esp + 0x14]
+// 0042d43c  52                   push edx
+// 0042d43d  c744241800000000     mov dword ptr [esp + 0x18], 0
+// 0042d445  8b08                 mov ecx, dword ptr [eax]
+// 0042d447  6834a27800           push 0x78a234
+// 0042d44c  50                   push eax
+// 0042d44d  8b01                 mov eax, dword ptr [ecx]
+// 0042d44f  ffd0                 call eax
+// 0042d451  837c241400           cmp dword ptr [esp + 0x14], 0
+// 0042d456  c684248400000008     mov byte ptr [esp + 0x84], 8
+// 0042d45e  753b                 jne 0x42d49b
+// 0042d460  8b8c2498000000       mov ecx, dword ptr [esp + 0x98]
+// 0042d467  51                   push ecx
+// 0042d468  8d54243c             lea edx, [esp + 0x3c]
+// 0042d46c  6894a57800           push 0x78a594
+// 0042d471  52                   push edx
+// 0042d472  e849430d00           call 0x5017c0
+// 0042d477  83c40c               add esp, 0xc
+// 0042d47a  50                   push eax
+// 0042d47b  8d4c2458             lea ecx, [esp + 0x58]
+// 0042d47f  c684248800000009     mov byte ptr [esp + 0x88], 9
+// 0042d487  e83459feff           call 0x412dc0
+// 0042d48c  68c0108400           push 0x8410c0
+// 0042d491  8d442458             lea eax, [esp + 0x58]
+// 0042d495  50                   push eax
+// 0042d496  e803372000           call 0x630b9e
+// 0042d49b  8b7c2424             mov edi, dword ptr [esp + 0x24]
+// 0042d49f  8b8710010000         mov eax, dword ptr [edi + 0x110]
+// 0042d4a5  8b30                 mov esi, dword ptr [eax]
+// 0042d4a7  8b1dd8e67700         mov ebx, dword ptr [0x77e6d8]
+// 0042d4ad  81c70c010000         add edi, 0x10c
+// 0042d4b3  8974242c             mov dword ptr [esp + 0x2c], esi
+// 0042d4b7  897c2428             mov dword ptr [esp + 0x28], edi
+// 0042d4bb  8be8                 mov ebp, eax
+// 0042d4bd  8d4900               lea ecx, [ecx]
+// 0042d4c0  3bff                 cmp edi, edi
+// 0042d4c2  7402                 je 0x42d4c6
+// 0042d4c4  ffd3                 call ebx
+// 0042d4c6  3bf5                 cmp esi, ebp
+// 0042d4c8  7442                 je 0x42d50c
+// 0042d4ca  3b7704               cmp esi, dword ptr [edi + 4]
+// 0042d4cd  7502                 jne 0x42d4d1
+// 0042d4cf  ffd3                 call ebx
+// 0042d4d1  8b4608               mov eax, dword ptr [esi + 8]
+// 0042d4d4  8b4c2414             mov ecx, dword ptr [esp + 0x14]
+// 0042d4d8  8b5020               mov edx, dword ptr [eax + 0x20]
+// 0042d4db  51                   push ecx
+// 0042d4dc  52                   push edx
+// 0042d4dd  e8ced6ffff           call 0x42abb0
+// 0042d4e2  83c408               add esp, 8
+// 0042d4e5  84c0                 test al, al
+// 0042d4e7  750b                 jne 0x42d4f4
+// 0042d4e9  3b7704               cmp esi, dword ptr [edi + 4]
+// 0042d4ec  7502                 jne 0x42d4f0
+// 0042d4ee  ffd3                 call ebx
+// 0042d4f0  8b36                 mov esi, dword ptr [esi]
+// 0042d4f2  ebcc                 jmp 0x42d4c0
+// 0042d4f4  8d4c2428             lea ecx, [esp + 0x28]
+// 0042d4f8  8974242c             mov dword ptr [esp + 0x2c], esi
+// 0042d4fc  e8bfd5ffff           call 0x42aac0
+// 0042d501  8b30                 mov esi, dword ptr [eax]
+// 0042d503  85f6                 test esi, esi
+// 0042d505  7409                 je 0x42d510
+// 0042d507  e9a2000000           jmp 0x42d5ae
+// 0042d50c  8974242c             mov dword ptr [esp + 0x2c], esi
+// 0042d510  8b442424             mov eax, dword ptr [esp + 0x24]
+// 0042d514  83ec08               sub esp, 8
+// 0042d517  05fc000000           add eax, 0xfc
+// 0042d51c  8bcc                 mov ecx, esp
+// 0042d51e  89a424a0000000       mov dword ptr [esp + 0xa0], esp
+// 0042d525  50                   push eax
+// 0042d526  e835970700           call 0x4a6c60
+// 0042d52b  8d4c2440             lea ecx, [esp + 0x40]
+// 0042d52f  e81c00feff           call 0x40d550
+// 0042d534  b30a                 mov bl, 0xa
+// 0042d536  6a24                 push 0x24
+// 0042d538  889c2488000000       mov byte ptr [esp + 0x88], bl
+// 0042d53f  e8b2292000           call 0x62fef6
+// 0042d544  83c404               add esp, 4
+// 0042d547  89842498000000       mov dword ptr [esp + 0x98], eax
+// 0042d54e  85c0                 test eax, eax
+// 0042d550  c68424840000000b     mov byte ptr [esp + 0x84], 0xb
+// 0042d558  740e                 je 0x42d568
+// 0042d55a  8b4c2414             mov ecx, dword ptr [esp + 0x14]
+// 0042d55e  51                   push ecx
+// 0042d55f  8bc8                 mov ecx, eax
+// 0042d561  e86aefffff           call 0x42c4d0
+// 0042d566  eb02                 jmp 0x42d56a
+// 0042d568  33c0                 xor eax, eax
+// 0042d56a  50                   push eax
+// 0042d56b  8d4c242c             lea ecx, [esp + 0x2c]
+// 0042d56f  889c2488000000       mov byte ptr [esp + 0x88], bl
+// 0042d576  8bf0                 mov esi, eax
+// 0042d578  e803d8ffff           call 0x42ad80
+// 0042d57d  50                   push eax
+// 0042d57e  8bcf                 mov ecx, edi
+// 0042d580  c68424880000000c     mov byte ptr [esp + 0x88], 0xc
+// 0042d588  e803e5ffff           call 0x42ba90
+// 0042d58d  8d4c2428             lea ecx, [esp + 0x28]
+// 0042d591  889c2484000000       mov byte ptr [esp + 0x84], bl
+// 0042d598  e8c34d0600           call 0x492360
+// 0042d59d  8d4c2438             lea ecx, [esp + 0x38]
+// 0042d5a1  c684248400000008     mov byte ptr [esp + 0x84], 8
+// 0042d5a9  e8f2bf1200           call 0x5595a0
+// 0042d5ae  8b942494000000       mov edx, dword ptr [esp + 0x94]
+// 0042d5b5  8b8c248c000000       mov ecx, dword ptr [esp + 0x8c]
+// 0042d5bc  52                   push edx
+// 0042d5bd  83ec08               sub esp, 8
+// 0042d5c0  8bc4                 mov eax, esp
+// 0042d5c2  8908                 mov dword ptr [eax], ecx
+// 0042d5c4  8b8c249c000000       mov ecx, dword ptr [esp + 0x9c]
+// 0042d5cb  85c9                 test ecx, ecx
+// 0042d5cd  89a424a4000000       mov dword ptr [esp + 0xa4], esp
+// 0042d5d4  894804               mov dword ptr [eax + 4], ecx
+// 0042d5d7  740c                 je 0x42d5e5
+// 0042d5d9  83c104               add ecx, 4
+// 0042d5dc  ba01000000           mov edx, 1
+// 0042d5e1  f00fc111             lock xadd dword ptr [ecx], edx
+// 0042d5e5  8bce                 mov ecx, esi
+// 0042d5e7  e854fbffff           call 0x42d140
+// 0042d5ec  8b442414             mov eax, dword ptr [esp + 0x14]
+// 0042d5f0  85c0                 test eax, eax
+// 0042d5f2  c684248400000004     mov byte ptr [esp + 0x84], 4
+// 0042d5fa  7408                 je 0x42d604
+// 0042d5fc  8b08                 mov ecx, dword ptr [eax]
+// 0042d5fe  8b5108               mov edx, dword ptr [ecx + 8]
+// 0042d601  50                   push eax
+// 0042d602  ffd2                 call edx
+// 0042d604  8b442418             mov eax, dword ptr [esp + 0x18]
+// 0042d608  85c0                 test eax, eax
+// 0042d60a  c684248400000003     mov byte ptr [esp + 0x84], 3
+// 0042d612  7408                 je 0x42d61c
+// 0042d614  8b08                 mov ecx, dword ptr [eax]
+// 0042d616  8b5108               mov edx, dword ptr [ecx + 8]
+// 0042d619  50                   push eax
+// 0042d61a  ffd2                 call edx
+// 0042d61c  8b44241c             mov eax, dword ptr [esp + 0x1c]
+// 0042d620  85c0                 test eax, eax
+// 0042d622  c684248400000001     mov byte ptr [esp + 0x84], 1
+// 0042d62a  7408                 je 0x42d634
+// 0042d62c  8b08                 mov ecx, dword ptr [eax]
+// 0042d62e  8b5108               mov edx, dword ptr [ecx + 8]
+// 0042d631  50                   push eax
+// 0042d632  ffd2                 call edx
+// 0042d634  8b442420             mov eax, dword ptr [esp + 0x20]
+// 0042d638  85c0                 test eax, eax
+// 0042d63a  c684248400000000     mov byte ptr [esp + 0x84], 0
+// 0042d642  7408                 je 0x42d64c
+// 0042d644  8b08                 mov ecx, dword ptr [eax]
+// 0042d646  8b5108               mov edx, dword ptr [ecx + 8]
+// 0042d649  50                   push eax
+// 0042d64a  ffd2                 call edx
+// 0042d64c  8d8c248c000000       lea ecx, [esp + 0x8c]
+// 0042d653  c7842484000000ffffffff mov dword ptr [esp + 0x84], 0xffffffff
+// 0042d65e  e8fd4c0600           call 0x492360
+// 0042d663  8b4c247c             mov ecx, dword ptr [esp + 0x7c]
+// 0042d667  64890d00000000       mov dword ptr fs:[0], ecx
+// 0042d66e  59                   pop ecx
+// 0042d66f  5f                   pop edi
+// 0042d670  5e                   pop esi
+// 0042d671  5d                   pop ebp
+// 0042d672  5b                   pop ebx
+// 0042d673  83c474               add esp, 0x74
+// 0042d676  c21000               ret 0x10
+
 // from server: 100% by EspClaude
 // roc 2008-06 0042c8c0  unit: CLuaHtmlView::Binder  size: 1026 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0042c8c0
@@ -673,7 +959,7 @@ struct sp_counted_base {
 };
 struct shared_count {
     sp_counted_base* pi_;
-    shared_count(const shared_count& r) : pi_(r.pi_) { if (pi_ != 0) _InterlockedIncrement(&pi_->use_count_); }
+    shared_count(const shared_count& r) { sp_counted_base* p = r.pi_; pi_ = p; if (p != 0) _InterlockedIncrement(&p->use_count_); }
     ~shared_count();
 };
 }
@@ -720,12 +1006,12 @@ public:
     public:
         Binder(IHTMLInputElement* element);
         void bind(boost::shared_ptr<RBX::Instance> instance, int property);
-        char pad[0x30];
+        char pad[0x20];
         IHTMLInputElement* element;
     };
-    char pad0[0x100 - 4];
+    char pad0[0xfc - 4];
     dm_ptr<RBX::DataModel> dataModel;
-    char pad1[0x110 - 0x108];
+    char pad1[0x10c - 0x104];
     typedef std::list<boost::shared_ptr<Binder> > BaseList;
     struct BinderList : public BaseList {
         struct iterator : public BaseList::iterator {

@@ -1,8 +1,9 @@
+// from server: 100% by EspClaude
 // from server: 99% by EspClaude
 // from server: 100% by king_originala
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-lib: rbxgs-dll roc_unit_7d2f0ab88aedddfb.cpp
+// roc-lib: rbxgs-dll roc_claude_9e702a5ce262c7dc.cpp
 
 // Candidate translation unit (score above; library headers required).
 #pragma include_alias("util/Rect.h", "roc_native_rect_center_f0523507542fe513.cpp")
@@ -421,6 +422,21 @@ static inline G3D::Rect2D handleRect(const G3D::Vector2& c) {
     G3D::Vector2 hi = c + G3D::Vector2(3.0f, 3.0f);
     return G3D::Rect2D::xyxy(lo, hi);
 }
+// 2007-08 Adorn vtable (AdornG3D vtable 0x79362c: dtor, createTextureProxy, one
+// render-pass stub, getViewport...): getViewport at +0xc and rect2d at +0x28.
+struct Adorn2007View {
+    virtual ~Adorn2007View();
+    virtual G3D::ReferenceCountedPointer<TextureProxyBase> createTextureProxy(const std::string& filename) = 0;
+    virtual void prepareRenderPass() = 0;
+    virtual G3D::Rect2D getViewport() const = 0;
+    virtual int getWidth() const = 0;
+    virtual int getHeight() const = 0;
+    virtual void setTexture(int id, G3D::ReferenceCountedPointer<TextureProxyBase> _texture) = 0;
+    virtual G3D::Rect2D getTextureSize(G3D::ReferenceCountedPointer<TextureProxyBase> _texture) const = 0;
+    virtual void line2d(const G3D::Vector2& p0, const G3D::Vector2& p1, const G3D::Color4& color) const = 0;
+    virtual void outlineRect2d(const G3D::Rect2D& rect, float thick, const G3D::Color4& color) const = 0;
+    virtual void rect2d(const G3D::Rect2D& rect, const G3D::Color4& color) const = 0;
+};
 void DrawAdorn::handles2d(const G3D::Vector3& size, const G3D::CoordinateFrame& frame,
                          const G3D::GCamera& camera, Adorn* adorn, const G3D::Color3& color) {
     G3D::Vector3 halfSize = size * 0.5f;
@@ -429,8 +445,8 @@ void DrawAdorn::handles2d(const G3D::Vector3& size, const G3D::CoordinateFrame& 
         for (int axis = 0; axis < 3; ++axis) {
             G3D::Vector3 point(0, 0, 0);
             point[axis] = (halfSize[axis] + 3.0f) * sign;
-            G3D::Vector2 screen = camera.project(frame.pointToWorldSpace(point), adorn->getViewport()).xy();
-            adorn->rect2d(Rect::fromCenterSize(screen, 6.0f).toRect2D(), color);
+            G3D::Vector2 screen = camera.project(frame.pointToWorldSpace(point), ((Adorn2007View*)adorn)->getViewport()).xy();
+            ((Adorn2007View*)adorn)->rect2d(Rect::fromCenterSize(screen, 6.0f).toRect2D(), color);
         }
     }
 }

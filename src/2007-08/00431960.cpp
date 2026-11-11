@@ -1,3 +1,4 @@
+// from server: 100% by EspClaude
 // from server: 83% by EspClaude
 // roc-cl: 50727
 // from server: 100% by tester
@@ -26,7 +27,7 @@
 // 0043113e  c3                   ret 
 
 struct Base {
-    char data[0x244];
+    char data[0x1dc];
     ~Base();
 };
 
@@ -34,8 +35,7 @@ struct Member {
     ~Member();
 };
 
-struct ImageKeyButton : Base {
-    Member member;
+struct ImageKeyButton : Base, Member {
     ~ImageKeyButton();
 };
 

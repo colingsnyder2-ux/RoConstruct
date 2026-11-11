@@ -1,5 +1,60 @@
+// from server: 100% by EspClaude
 // from server: 98% by Intel
-﻿// from server: 97% by EspClaude
+// roc 2007-08 0055fc40  unit: RBX::VModelInstance::?$FilteredSelection  size: 175 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 0055fc40
+//
+// 0055fc40  6aff                 push -1
+// 0055fc42  68813d7500           push 0x753d81
+// 0055fc47  64a100000000         mov eax, dword ptr fs:[0]
+// 0055fc4d  50                   push eax
+// 0055fc4e  64892500000000       mov dword ptr fs:[0], esp
+// 0055fc55  51                   push ecx
+// 0055fc56  53                   push ebx
+// 0055fc57  56                   push esi
+// 0055fc58  8bf1                 mov esi, ecx
+// 0055fc5a  57                   push edi
+// 0055fc5b  8974240c             mov dword ptr [esp + 0xc], esi
+// 0055fc5f  8b7c243c             mov edi, dword ptr [esp + 0x3c]
+// 0055fc63  85ff                 test edi, edi
+// 0055fc65  c744241800000000     mov dword ptr [esp + 0x18], 0
+// 0055fc6d  7408                 je 0x55fc77
+// 0055fc6f  8d9f4c010000         lea ebx, [edi + 0x14c]
+// 0055fc75  eb02                 jmp 0x55fc79
+// 0055fc77  33db                 xor ebx, ebx
+// 0055fc79  83ec1c               sub esp, 0x1c
+// 0055fc7c  8d44243c             lea eax, [esp + 0x3c]
+// 0055fc80  8bcc                 mov ecx, esp
+// 0055fc82  89642458             mov dword ptr [esp + 0x58], esp
+// 0055fc86  50                   push eax
+// 0055fc87  ff159ce67700         call dword ptr [0x77e69c]
+// 0055fc8d  53                   push ebx
+// 0055fc8e  8bce                 mov ecx, esi
+// 0055fc90  e8bb4f0000           call 0x564c50
+// 0055fc95  c706e4917a00         mov dword ptr [esi], 0x7a91e4
+// 0055fc9b  8b8788010000         mov eax, dword ptr [edi + 0x188]
+// 0055fca1  50                   push eax
+// 0055fca2  8d4e0c               lea ecx, [esi + 0xc]
+// 0055fca5  51                   push ecx
+// 0055fca6  c644242001           mov byte ptr [esp + 0x20], 1
+// 0055fcab  e8304d0800           call 0x5e49e0
+// 0055fcb0  897e14               mov dword ptr [esi + 0x14], edi
+// 0055fcb3  c7461800000000       mov dword ptr [esi + 0x18], 0
+// 0055fcba  c7461c00000000       mov dword ptr [esi + 0x1c], 0
+// 0055fcc1  83c408               add esp, 8
+// 0055fcc4  8d4c2420             lea ecx, [esp + 0x20]
+// 0055fcc8  897e20               mov dword ptr [esi + 0x20], edi
+// 0055fccb  c7442418ffffffff     mov dword ptr [esp + 0x18], 0xffffffff
+// 0055fcd3  ff15ace67700         call dword ptr [0x77e6ac]
+// 0055fcd9  8b4c2410             mov ecx, dword ptr [esp + 0x10]
+// 0055fcdd  5f                   pop edi
+// 0055fcde  8bc6                 mov eax, esi
+// 0055fce0  5e                   pop esi
+// 0055fce1  64890d00000000       mov dword ptr fs:[0], ecx
+// 0055fce8  5b                   pop ebx
+// 0055fce9  83c410               add esp, 0x10
+// 0055fcec  c22000               ret 0x20
+
+// from server: 97% by EspClaude
 // roc 2007-08 0055fc40  unit: RBX::VModelInstance::?$FilteredSelection  size: 175 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 0055fc40
 //
@@ -165,9 +220,6 @@
 // 0057e7dc  c22000               ret 0x20
 
 // from server: 95% by colin
-// roc-cl: 21022
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
 struct String;
 extern String* (__thiscall *stringCopy)(String*, const String*);

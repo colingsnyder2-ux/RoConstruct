@@ -1,8 +1,11 @@
-// 2008-06 native RBX::ViewNew::FileMesh (inactive): the unit 00500780..00500c98 (/fp:fast like the other ViewNew units).
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/file-mesh-provider
 // >>> native-status (generated) -- do not edit >>>
 // ViewNewFileMesh | 2008-06 | draft (no current byte proof)
 // 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by king_originala (deepseek:deepseek-chat)
-// <<< native-status | src 9f4df88c | roc native-status --write
+// <<< native-status | src 89145a8b | roc native-status --write
+#define NOMINMAX
+#include <winsock2.h>
+// 2008-06 native RBX::ViewNew::FileMesh (inactive): the unit 00500780..00500c98 (/fp:fast like the other ViewNew units).
 #include "ViewNew/FileMesh.h"
 #include <stdio.h>
 #include <exception>
@@ -13,9 +16,8 @@ namespace RBX
 {
 	namespace ViewNew
 	{
-#ifdef NATIVE_VIEWNEW_FILEMESH_PENDING
 		// 00500780. Needs ContentProvider::requestContentFile(const ContentId&, Status*, std::string&) (00562670) and its
-		// status enum (1 = succeeded: cmp [ebp+0x58], 1), which util/NativeContentProvider.h does not declare yet.
+		// status enum (1 = succeeded); declarations live in this unit's file-mesh-provider profile.
 		bool FileMesh::loadFromMeshFile(ContentProvider* provider, const G3D::Vector3& scale, MeshId meshFile)
 		{
 			try
@@ -63,7 +65,6 @@ namespace RBX
 			}
 			return true;
 		}
-#endif
 
 		// 00500b90
 		G3D::ReferenceCountedPointer<RenderBase::Mesh> FileMesh::create(ContentProvider* provider, const G3D::Vector3& scale, MeshId meshFile)

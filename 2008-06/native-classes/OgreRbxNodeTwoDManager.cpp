@@ -5,7 +5,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // OgreRbxNodeTwoDManager | 2008-06 | draft (no current byte proof)
 // 0/8 mapped addresses byte-exact | 8 unproved | no mapped strings | by colin (+2) (mixed 3)
-// <<< native-status | src 30d048cf | roc native-status --write
+// <<< native-status | src d4045eb0 | roc native-status --write
 #include "OgreRbxNode/TwoDManager2008.h"
 #include <OgreRoot.h>
 #include <OgreRenderSystem.h>

@@ -1,4 +1,60 @@
+// from server: 100% by EspClaude
 // from server: 71% by EspClaude
+// roc 2007-08 00430dd0  unit: VCMDIFrameWnd::?$CXTPCommandBarsSiteBase  size: 184 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 00430dd0
+//
+// 00430dd0  6aff                 push -1
+// 00430dd2  686fda7300           push 0x73da6f
+// 00430dd7  64a100000000         mov eax, dword ptr fs:[0]
+// 00430ddd  50                   push eax
+// 00430dde  83ec08               sub esp, 8
+// 00430de1  56                   push esi
+// 00430de2  57                   push edi
+// 00430de3  a188518b00           mov eax, dword ptr [0x8b5188]
+// 00430de8  33c4                 xor eax, esp
+// 00430dea  50                   push eax
+// 00430deb  8d442414             lea eax, [esp + 0x14]
+// 00430def  64a300000000         mov dword ptr fs:[0], eax
+// 00430df5  8bf1                 mov esi, ecx
+// 00430df7  89742410             mov dword ptr [esp + 0x10], esi
+// 00430dfb  c7066caf7800         mov dword ptr [esi], 0x78af6c
+// 00430e01  c7867c01000060af7800 mov dword ptr [esi + 0x17c], 0x78af60
+// 00430e0b  c786d001000054af7800 mov dword ptr [esi + 0x1d0], 0x78af54
+// 00430e15  6a00                 push 0
+// 00430e17  c744242002000000     mov dword ptr [esp + 0x20], 2
+// 00430e1f  e8cc110100           call 0x441ff0
+// 00430e24  8bbed8010000         mov edi, dword ptr [esi + 0x1d8]
+// 00430e2a  85ff                 test edi, edi
+// 00430e2c  c644241c01           mov byte ptr [esp + 0x1c], 1
+// 00430e31  742a                 je 0x430e5d
+// 00430e33  8d4704               lea eax, [edi + 4]
+// 00430e36  83c9ff               or ecx, 0xffffffff
+// 00430e39  f00fc108             lock xadd dword ptr [eax], ecx
+// 00430e3d  751e                 jne 0x430e5d
+// 00430e3f  8b17                 mov edx, dword ptr [edi]
+// 00430e41  8b4204               mov eax, dword ptr [edx + 4]
+// 00430e44  8bcf                 mov ecx, edi
+// 00430e46  ffd0                 call eax
+// 00430e48  8d4f08               lea ecx, [edi + 8]
+// 00430e4b  83caff               or edx, 0xffffffff
+// 00430e4e  f00fc111             lock xadd dword ptr [ecx], edx
+// 00430e52  7509                 jne 0x430e5d
+// 00430e54  8b07                 mov eax, dword ptr [edi]
+// 00430e56  8b5008               mov edx, dword ptr [eax + 8]
+// 00430e59  8bcf                 mov ecx, edi
+// 00430e5b  ffd2                 call edx
+// 00430e5d  8bce                 mov ecx, esi
+// 00430e5f  c786d001000038837800 mov dword ptr [esi + 0x1d0], 0x788338
+// 00430e69  c744241cffffffff     mov dword ptr [esp + 0x1c], 0xffffffff
+// 00430e71  e85a150100           call 0x4423d0
+// 00430e76  8b4c2414             mov ecx, dword ptr [esp + 0x14]
+// 00430e7a  64890d00000000       mov dword ptr fs:[0], ecx
+// 00430e81  59                   pop ecx
+// 00430e82  5f                   pop edi
+// 00430e83  5e                   pop esi
+// 00430e84  83c414               add esp, 0x14
+// 00430e87  c3                   ret 
+
 // from server: 100% by king_originala
 // roc 2008-06 00430700  unit: VCMDIFrameWnd::?$CXTPCommandBarsSiteBase  size: 160 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00430700
@@ -70,16 +126,17 @@ struct Shared {
 
 struct Base {
     virtual ~Base();
-    char storage[0x184];
+    char storage[0x17c - 4];
 };
 
 struct Interface1 {
     virtual void method();
-    char storage[0xAC];
+    char storage[0x1d0 - 0x17c - 4];
 };
 
 struct Interface2 {
     virtual void method();
+    virtual ~Interface2() {}
 };
 
 struct S : Base, Interface1, Interface2 {

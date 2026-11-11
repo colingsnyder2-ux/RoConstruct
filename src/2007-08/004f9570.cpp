@@ -1,8 +1,9 @@
+// from server: 100% by EspClaude
 // from server: 99% by EspClaude
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-lib: rbxgs-render roc_unit_6c5e3f5d7442c234.cpp
+// roc-lib: rbxgs-render roc_claude_df839322596f72de.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "RenderLib/RenderScene.h"
@@ -223,8 +224,8 @@ namespace RBX
 
 		void RenderScene::presetLighting(G3D::ReferenceCountedPointer<G3D::Sky> sky, G3D::LightingParameters skyParameters, G3D::Color3 ambientTop, G3D::Color3 ambientBottom)
 		{
-			*reinterpret_cast<G3D::ReferenceCountedPointer<G3D::Sky>*>(reinterpret_cast<char*>(this) + 0x308) = sky;
-			*reinterpret_cast<G3D::LightingParameters*>(reinterpret_cast<char*>(this) + 0x310) = skyParameters;
+			*reinterpret_cast<G3D::ReferenceCountedPointer<G3D::Sky>*>(reinterpret_cast<char*>(this) + 0x2ec) = sky;
+			*reinterpret_cast<G3D::LightingParameters*>(reinterpret_cast<char*>(this) + 0x300) = skyParameters;
 
 			G3D::ReferenceCountedPointer<G3D::Lighting> lighting = G3D::Lighting::create();
 			lighting->ambientTop = ambientTop;
@@ -420,15 +421,15 @@ namespace RBX
 
 			float farPlane = G3D::min(10000.0f, -camera.getFarPlaneZ() * 0.2f);
 
-			(*reinterpret_cast<G3D::Array<unsigned>*>(reinterpret_cast<char*>(this) + 0x2f8)).fastClear();
-			computeShadowVolumeGeometry((*reinterpret_cast<G3D::Array<unsigned>*>(reinterpret_cast<char*>(this) + 0x2f8)), shadowVertex, light, true, farPlane);
+			(*reinterpret_cast<G3D::Array<unsigned>*>(reinterpret_cast<char*>(this) + 0xa4)).fastClear();
+			computeShadowVolumeGeometry((*reinterpret_cast<G3D::Array<unsigned>*>(reinterpret_cast<char*>(this) + 0xa4)), shadowVertex, light, true, farPlane);
 
 			updateShadowVAR(shadowVertex);
 
 			rd->pushState();
 			rd->setDepthTest(G3D::RenderDevice::DEPTH_LEQUAL);
 
-			if ((*reinterpret_cast<bool*>(reinterpret_cast<char*>(this) + 0x304)))
+			if ((*reinterpret_cast<bool*>(reinterpret_cast<char*>(this) + 0x2e8)))
 			{
 				rd->setColor(G3D::Color3::white() * 0.25);
 				rd->setCullFace(G3D::RenderDevice::CULL_NONE);
@@ -463,7 +464,7 @@ namespace RBX
 			rd->setObjectToWorldMatrix(G3D::CoordinateFrame());
 			renderShadowVolumeGeometry(rd, light, true, farPlane);
 
-			if (!G3D::GLCaps::supports_two_sided_stencil() && !(*reinterpret_cast<bool*>(reinterpret_cast<char*>(this) + 0x304)))
+			if (!G3D::GLCaps::supports_two_sided_stencil() && !(*reinterpret_cast<bool*>(reinterpret_cast<char*>(this) + 0x2e8)))
 			{
 				rd->setCullFace(G3D::RenderDevice::CULL_FRONT);
 				rd->setStencilOp(G3D::RenderDevice::STENCIL_KEEP, G3D::RenderDevice::STENCIL_INCR_WRAP, G3D::RenderDevice::STENCIL_KEEP);

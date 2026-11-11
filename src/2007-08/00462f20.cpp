@@ -1,3 +1,4 @@
+// from server: 100% by EspClaude
 // from server: 84% by EspClaude
 // roc-cl: 50727
 // from server: 100% by king_originala
@@ -55,28 +56,30 @@ struct Splitter {
     ~Splitter();
 };
 
+// 2007-08 target: Secondary vptr at control+0x17c, Tertiary vptr at control+0x1d0 (c7 86 7c010000 / c7 86 d0010000)
 struct Primary {
     virtual ~Primary();
-    char storage[0x184];
+    char storage[0x178];
 };
 
 struct Secondary {
     virtual ~Secondary();
-    char storage[0xAC];
+    char storage[0x50];
 };
 
 struct Tertiary {
     virtual ~Tertiary();
+    int first;
+    int second;
+    Tertiary() : first(0), second(0) {}
 };
 
-struct ControlBase : Primary, Secondary, Tertiary {
+struct ControlBase : Primary, Secondary {
     ControlBase();
     virtual ~ControlBase();
 };
 
-struct Control : ControlBase {
-    int first;
-    int second;
+struct Control : ControlBase, Tertiary {
     Control();
     virtual ~Control();
 };
@@ -90,7 +93,7 @@ struct CSettingsDialog : DialogBase {
 };
 
 __forceinline Control::Control()
-    : ControlBase(), first(0), second(0)
+    : ControlBase(), Tertiary()
 {
 }
 

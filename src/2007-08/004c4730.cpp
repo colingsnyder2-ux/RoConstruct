@@ -1,8 +1,9 @@
+// from server: 100% by EspClaude
 // from server: 93% by EspClaude
 // from server: 100% by auto
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-lib: rbxgs-raknet SocketLayer.cpp
+// roc-lib: rbxgs-raknet roc_claude_e314ab81f7866b53.cpp
 
 // Candidate translation unit (score above; library headers required).
 /**
@@ -377,7 +378,7 @@ int SocketLayer::RecvFrom( const SOCKET s, RakPeer *rakPeer, int *errorCode, uns
 		return SOCKET_ERROR;
 	}
 
-	if ( len > 0 )
+	if ( len != SOCKET_ERROR )
 	// if ( len != SOCKET_ERROR )
 	{
 		unsigned short portnum;

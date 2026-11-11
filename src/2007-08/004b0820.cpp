@@ -1,3 +1,4 @@
+// from server: 100% by EspClaude
 // from server: 85% by EspClaude
 // roc-cl: 50727
 // from server: 100% by colin
@@ -123,7 +124,7 @@ struct Entry {
 };
 
 struct S {
-    char padding[0x19c];
+    char padding[0x134];
     Entry* first;
     Entry* last;
 
@@ -145,7 +146,7 @@ Ref* S::create() {
         result = p.value;
         register_value(cleanup_value, &registration_data);
         unsigned index = (unsigned)func_0057d800();
-        if (index >= (unsigned)(last - first))
+        if (index >= (unsigned)(first == 0 ? 0 : last - first))
             invalid_parameter_noinfo();
         Entry& entry = first[index];
         entry.value = p.value;

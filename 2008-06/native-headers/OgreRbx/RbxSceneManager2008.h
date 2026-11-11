@@ -2,7 +2,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // RbxSceneManager2008 | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src ad347c71 | roc native-status --write
+// <<< native-status | src a7dbc800 | roc native-status --write
 // Ogre::RbxSceneManager and Ogre::RbxSceneManagerFactory as compiled into the June 2008 client (inactive native
 // recovery; Roblox's fork of the Ogre 1.4.5 scene manager, source file ".\RbxSceneManager.cpp", string 0084e9e8).
 //
@@ -49,6 +49,7 @@
 #include <OgreShadowCameraSetup.h>
 #include "OgreRbx/RbxSky2008.h"   // minimal Ogre::RbxSky interface (virtual destructor, update); no layout claimed
 
+namespace RBX { namespace ViewNew { class ViewRbxGfx; } }
 struct NativeOgreRbxSceneManagerLayout;
 
 namespace Ogre
@@ -58,6 +59,8 @@ namespace Ogre
 	class RbxSceneManager : public SceneManager
 	{
 		friend struct ::NativeOgreRbxSceneManagerLayout;
+		// INFERRED: updateSkybox004d9e00 writes mRbxSkyName at +8bbc.
+		friend class RBX::ViewNew::ViewRbxGfx;
 
 	protected:
 		class ShadowCasterSceneQueryListener : public SceneQueryListener

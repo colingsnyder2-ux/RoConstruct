@@ -1,3 +1,4 @@
+// from server: 100% by EspClaude
 // from server: 80% by EspClaude
 // roc 2007-08 004b2750  RBX::Creatable<Instance>::create<Stats::TypedStatsItem<bool>, P1>(P1) (util/Object.h)
 // roc-flags: /O2 /GS /EHsc /MD
@@ -8,6 +9,7 @@ template<class T> class shared_ptr {
     void* pn;
 public:
     template<class Y, class D> shared_ptr(Y* p, D d);
+    ~shared_ptr();
 };
 }
 namespace RBX {

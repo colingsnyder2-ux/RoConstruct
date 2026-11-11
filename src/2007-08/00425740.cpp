@@ -1,8 +1,9 @@
+// from server: 100% by EspClaude
 // from server: 93% by EspClaude
 // from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-lib: rbxgs-dll roc_espclaude_a5ea428152578063.cpp
+// roc-lib: rbxgs-dll roc_claude_8e50d52a16debca1.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <boost/shared_ptr.hpp>
@@ -17,12 +18,12 @@ public:
 };
 class Workspace {
 public:
-    char pad[0x130];
+    char pad[0xe8];
     ListenerList listeners;
 };
 class Selection {
 public:
-    char pad[0x130];
+    char pad[0xe8];
     ListenerList listeners;
 };
 class DataModel {
@@ -42,11 +43,11 @@ public:
 
 class ViewBase {
 public:
-    char pad[0xd4];
+    char pad[0xbc];
 };
 class CRobloxView : public ViewBase, public RBX::Listener {
 public:
-    char pad2[0x124 - 0xd4];
+    char pad2[0xe4 - 0xbc];
     boost::shared_ptr<RBX::DataModel> dataModel;
     void setDataModel(boost::shared_ptr<RBX::DataModel> dm);
 };

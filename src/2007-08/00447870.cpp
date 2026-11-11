@@ -1,4 +1,52 @@
+// from server: 100% by EspClaude
 // from server: 72% by EspClaude
+// roc 2007-08 00447870  unit: VCRenderSettings::?$FactoryProduct  size: 192 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 00447870
+//
+// 00447870  6aff                 push -1
+// 00447872  68f1f87300           push 0x73f8f1
+// 00447877  64a100000000         mov eax, dword ptr fs:[0]
+// 0044787d  50                   push eax
+// 0044787e  83ec20               sub esp, 0x20
+// 00447881  56                   push esi
+// 00447882  a188518b00           mov eax, dword ptr [0x8b5188]
+// 00447887  33c4                 xor eax, esp
+// 00447889  50                   push eax
+// 0044788a  8d442428             lea eax, [esp + 0x28]
+// 0044788e  64a300000000         mov dword ptr fs:[0], eax
+// 00447894  8bf1                 mov esi, ecx
+// 00447896  89742408             mov dword ptr [esp + 8], esi
+// 0044789a  e851fdffff           call 0x4475f0
+// 0044789f  684cfa7800           push 0x78fa4c
+// 004478a4  8d4c2410             lea ecx, [esp + 0x10]
+// 004478a8  c744243400000000     mov dword ptr [esp + 0x34], 0
+// 004478b0  c70634007900         mov dword ptr [esi], 0x790034
+// 004478b6  c7460428007900       mov dword ptr [esi + 4], 0x790028
+// 004478bd  c7461020007900       mov dword ptr [esi + 0x10], 0x790020
+// 004478c4  c7461410007900       mov dword ptr [esi + 0x14], 0x790010
+// 004478cb  c7462c00007900       mov dword ptr [esi + 0x2c], 0x790000
+// 004478d2  c74644f0ff7800       mov dword ptr [esi + 0x44], 0x78fff0
+// 004478d9  c7465ce0ff7800       mov dword ptr [esi + 0x5c], 0x78ffe0
+// 004478e0  c74674d0ff7800       mov dword ptr [esi + 0x74], 0x78ffd0
+// 004478e7  c7868c000000c0ff7800 mov dword ptr [esi + 0x8c], 0x78ffc0
+// 004478f1  ff1598e67700         call dword ptr [0x77e698]
+// 004478f7  8d44240c             lea eax, [esp + 0xc]
+// 004478fb  50                   push eax
+// 004478fc  8bce                 mov ecx, esi
+// 004478fe  c644243401           mov byte ptr [esp + 0x34], 1
+// 00447903  e8e8a20f00           call 0x541bf0
+// 00447908  8d4c240c             lea ecx, [esp + 0xc]
+// 0044790c  c644243000           mov byte ptr [esp + 0x30], 0
+// 00447911  ff15ace67700         call dword ptr [0x77e6ac]
+// 00447917  8935a4af8b00         mov dword ptr [0x8bafa4], esi
+// 0044791d  8bc6                 mov eax, esi
+// 0044791f  8b4c2428             mov ecx, dword ptr [esp + 0x28]
+// 00447923  64890d00000000       mov dword ptr fs:[0], ecx
+// 0044792a  59                   pop ecx
+// 0044792b  5e                   pop esi
+// 0044792c  83c42c               add esp, 0x2c
+// 0044792f  c3                   ret 
+
 // from server: 100% by king_originala
 // roc 2008-06 00448120  unit: VCRenderSettings::?$FactoryProduct  size: 255 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00448120
@@ -79,7 +127,7 @@ struct Exception {
 };
 
 struct Base {
-    unsigned long storage[75];
+    unsigned long storage[36];
     Base();
     ~Base();
     void setValue(const String&);
@@ -90,26 +138,22 @@ struct S : Base {
 };
 
 extern S* singleton;
-extern unsigned char table0[], table10[], table14[], table20[], table24[];
-extern unsigned char table44[], table64[], table84[], tableA4[], tableC4[];
+extern unsigned char table0[], table4[], table10[], table14[], table2c[];
+extern unsigned char table44[], table5c[], table74[], table8c[];
 
 S::S()
 {
     storage[0] = reinterpret_cast<unsigned long>(table0);
+    storage[1] = reinterpret_cast<unsigned long>(table4);
     storage[4] = reinterpret_cast<unsigned long>(table10);
     storage[5] = reinterpret_cast<unsigned long>(table14);
-    storage[8] = reinterpret_cast<unsigned long>(table20);
-    storage[9] = reinterpret_cast<unsigned long>(table24);
+    storage[11] = reinterpret_cast<unsigned long>(table2c);
     storage[17] = reinterpret_cast<unsigned long>(table44);
-    storage[25] = reinterpret_cast<unsigned long>(table64);
-    storage[33] = reinterpret_cast<unsigned long>(table84);
-    storage[41] = reinterpret_cast<unsigned long>(tableA4);
-    storage[49] = reinterpret_cast<unsigned long>(tableC4);
+    storage[23] = reinterpret_cast<unsigned long>(table5c);
+    storage[29] = reinterpret_cast<unsigned long>(table74);
+    storage[35] = reinterpret_cast<unsigned long>(table8c);
 
     setValue(String("RenderSettings"));
-
-    if (singleton)
-        throw Exception(format("singleton %s already exists", "RenderSettings"));
 
     singleton = this;
 }

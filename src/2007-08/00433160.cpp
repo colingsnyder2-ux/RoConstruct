@@ -1,3 +1,4 @@
+// from server: 100% by EspClaude
 // from server: 79% by EspClaude
 // roc-cl: 50727
 // from server: 100% by colin
@@ -156,12 +157,12 @@ struct Lock {
 
     Lock(CriticalSection*);
     ~Lock();
+    void lock();
     void unlock();
 };
 
-inline Lock::Lock(CriticalSection* p) : section(p) {
-    EnterCriticalSection(section);
-    owned = true;
+inline Lock::Lock(CriticalSection* p) : section(p), owned(false) {
+    lock();
 }
 
 inline Lock::~Lock() {
@@ -170,8 +171,10 @@ inline Lock::~Lock() {
 }
 
 inline void Lock::unlock() {
-    LeaveCriticalSection(section);
-    owned = false;
+    if (owned) {
+        LeaveCriticalSection(section);
+        owned = false;
+    }
 }
 
 struct S {

@@ -1,3 +1,4 @@
+// from server: 100% by EspClaude
 // from server: 71% by EspClaude
 // roc-cl: 50727
 // from server: 100% by colin
@@ -98,9 +99,9 @@ struct CDataModelPropGrid
 
 struct ColorDialog
 {
-    char padding[0x124];
+    unsigned int padding[0x124 / 4];
     unsigned int color;
-    char tail[4];
+    unsigned int tail;
 
     ColorDialog(unsigned int, unsigned int, unsigned int,
                 CDataModelPropGrid*);
@@ -128,7 +129,7 @@ void CDataModelPropGrid::func_431160(int, int)
     {
         RGB selected;
         selected.r = static_cast<unsigned char>(dialog.color);
-        selected.g = static_cast<unsigned char>(dialog.color >> 8);
+        selected.g = static_cast<unsigned char>(static_cast<unsigned short>(dialog.color) >> 8);
         selected.b = static_cast<unsigned char>(dialog.color >> 16);
 
         unsigned int result;

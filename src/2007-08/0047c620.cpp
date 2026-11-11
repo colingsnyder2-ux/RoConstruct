@@ -1,8 +1,9 @@
+// from server: 100% by EspClaude
 // from server: 99% by EspClaude
 // from server: 100% by tester
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-lib: g3d-6.09 GLG3Dcpp/roc_line_eb2a2907090c8b55.cpp
+// roc-lib: g3d-6.09 roc_claude_5433e3eabdc021fd.cpp
 
 // Candidate translation unit (score above; library headers required).
 #line 1 ".\\glg3dcpp\\Win32Window.cpp"
@@ -30,7 +31,7 @@
 #include "GLG3D/Win32Window.h"
 #include "GLG3D/glcalls.h"
 #include "GLG3D/UserInput.h"
-#include "directinput8.h"
+#include "GLG3Dcpp/directinput8.h"
 
 #include <time.h>
 #include <sstream>
@@ -458,12 +459,16 @@ bool Win32Window::requiresMainLoop() const {
 
 
 void Win32Window::setIcon(const GImage& image) {
+#line 455
     alwaysAssertM((image.channels == 3) ||
                   (image.channels == 4), 
                   "Icon image must have at least 3 channels.");
+#line 456
 
+#line 459
     alwaysAssertM((image.width == 32) && (image.height == 32),
         "Icons must be 32x32 on windows.");
+#line 459
 
     uint8 bwMaskData[128];
     uint8 colorMaskData[1024*4];
@@ -729,7 +734,7 @@ bool Win32Window::inputCapture() const {
 
 
 void Win32Window::setGammaRamp(const Array<uint16>& gammaRamp) {
-#line 772
+#line 769
     alwaysAssertM(gammaRamp.size() >= 256, "Gamma ramp must have at least 256 entries");
 #line 725
 
@@ -865,7 +870,9 @@ void Win32Window::initWGL() {
     window_class.lpszClassName = "window"; 
     
     int ret = RegisterClass(&window_class);
+#line 903
 	alwaysAssertM(ret, "Registration Failed");
+#line 859
 
     // Create some dummy pixel format.
 	PIXELFORMATDESCRIPTOR pfd =	

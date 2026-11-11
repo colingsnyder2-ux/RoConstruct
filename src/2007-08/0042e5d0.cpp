@@ -1,4 +1,86 @@
+// from server: 100% by EspClaude
 // from server: 85% by EspClaude
+// roc 2007-08 0042e5d0  unit: VCLuaFunction::?$CComObject  size: 246 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 0042e5d0
+//
+// 0042e5d0  6aff                 push -1
+// 0042e5d2  68c8a77400           push 0x74a7c8
+// 0042e5d7  64a100000000         mov eax, dword ptr fs:[0]
+// 0042e5dd  50                   push eax
+// 0042e5de  83ec08               sub esp, 8
+// 0042e5e1  53                   push ebx
+// 0042e5e2  56                   push esi
+// 0042e5e3  57                   push edi
+// 0042e5e4  a188518b00           mov eax, dword ptr [0x8b5188]
+// 0042e5e9  33c4                 xor eax, esp
+// 0042e5eb  50                   push eax
+// 0042e5ec  8d442418             lea eax, [esp + 0x18]
+// 0042e5f0  64a300000000         mov dword ptr fs:[0], eax
+// 0042e5f6  8bf1                 mov esi, ecx
+// 0042e5f8  e813feffff           call 0x42e410
+// 0042e5fd  85c0                 test eax, eax
+// 0042e5ff  0f85ae000000         jne 0x42e6b3
+// 0042e605  8d442410             lea eax, [esp + 0x10]
+// 0042e609  50                   push eax
+// 0042e60a  e89197fdff           call 0x407da0
+// 0042e60f  8b5c2414             mov ebx, dword ptr [esp + 0x14]
+// 0042e613  6808b98b00           push 0x8bb908
+// 0042e618  6830d84200           push 0x42d830
+// 0042e61d  c744242c00000000     mov dword ptr [esp + 0x2c], 0
+// 0042e625  e8f66e2f00           call 0x725520
+// 0042e62a  83c40c               add esp, 0xc
+// 0042e62d  e84ef1ffff           call 0x42d780
+// 0042e632  8b8e34010000         mov ecx, dword ptr [esi + 0x134]
+// 0042e638  85c9                 test ecx, ecx
+// 0042e63a  8bf8                 mov edi, eax
+// 0042e63c  740f                 je 0x42e64d
+// 0042e63e  8b8638010000         mov eax, dword ptr [esi + 0x138]
+// 0042e644  2bc1                 sub eax, ecx
+// 0042e646  c1f803               sar eax, 3
+// 0042e649  3bf8                 cmp edi, eax
+// 0042e64b  7206                 jb 0x42e653
+// 0042e64d  ff15d8e67700         call dword ptr [0x77e6d8]
+// 0042e653  8b8e34010000         mov ecx, dword ptr [esi + 0x134]
+// 0042e659  8b542410             mov edx, dword ptr [esp + 0x10]
+// 0042e65d  8d04f9               lea eax, [ecx + edi*8]
+// 0042e660  8d4c2414             lea ecx, [esp + 0x14]
+// 0042e664  51                   push ecx
+// 0042e665  8d4804               lea ecx, [eax + 4]
+// 0042e668  8910                 mov dword ptr [eax], edx
+// 0042e66a  e8f143fdff           call 0x402a60
+// 0042e66f  56                   push esi
+// 0042e670  8bcb                 mov ecx, ebx
+// 0042e672  e8b92f1100           call 0x541630
+// 0042e677  8b742414             mov esi, dword ptr [esp + 0x14]
+// 0042e67b  85f6                 test esi, esi
+// 0042e67d  c7442420ffffffff     mov dword ptr [esp + 0x20], 0xffffffff
+// 0042e685  742a                 je 0x42e6b1
+// 0042e687  8d5604               lea edx, [esi + 4]
+// 0042e68a  83c8ff               or eax, 0xffffffff
+// 0042e68d  f00fc102             lock xadd dword ptr [edx], eax
+// 0042e691  751e                 jne 0x42e6b1
+// 0042e693  8b16                 mov edx, dword ptr [esi]
+// 0042e695  8b4204               mov eax, dword ptr [edx + 4]
+// 0042e698  8bce                 mov ecx, esi
+// 0042e69a  ffd0                 call eax
+// 0042e69c  8d4e08               lea ecx, [esi + 8]
+// 0042e69f  83caff               or edx, 0xffffffff
+// 0042e6a2  f00fc111             lock xadd dword ptr [ecx], edx
+// 0042e6a6  7509                 jne 0x42e6b1
+// 0042e6a8  8b06                 mov eax, dword ptr [esi]
+// 0042e6aa  8b5008               mov edx, dword ptr [eax + 8]
+// 0042e6ad  8bce                 mov ecx, esi
+// 0042e6af  ffd2                 call edx
+// 0042e6b1  8bc3                 mov eax, ebx
+// 0042e6b3  8b4c2418             mov ecx, dword ptr [esp + 0x18]
+// 0042e6b7  64890d00000000       mov dword ptr fs:[0], ecx
+// 0042e6be  59                   pop ecx
+// 0042e6bf  5f                   pop edi
+// 0042e6c0  5e                   pop esi
+// 0042e6c1  5b                   pop ebx
+// 0042e6c2  83c414               add esp, 0x14
+// 0042e6c5  c3                   ret 
+
 // from server: 100% by colin
 // roc 2008-06 0042dfd0  unit: RBX::VScriptContext::?$FactoryProduct::Creator  size: 228 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 0042dfd0
@@ -122,7 +204,7 @@ struct Entry {
 };
 
 struct S {
-    char padding[0x19c];
+    char padding[0x134];
     Entry* first;
     Entry* last;
 
@@ -144,7 +226,7 @@ Ref* S::create() {
         result = p.value;
         register_value(cleanup_value, &registration_data);
         unsigned index = (unsigned)func_0057d800();
-        if (index >= (unsigned)(last - first))
+        if (index >= (first == 0 ? 0u : (unsigned)(last - first)))
             invalid_parameter_noinfo();
         Entry& entry = first[index];
         entry.value = p.value;

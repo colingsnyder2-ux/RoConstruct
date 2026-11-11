@@ -1,19 +1,33 @@
-// from server: 72% by colin
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 100% by EspClaude
+extern "C" long __cdecl _InterlockedIncrement(volatile long*);
+#pragma intrinsic(_InterlockedIncrement)
+
+struct counted_base {
+    void* vtbl;
+    long use_count;
+    void add_ref_copy() { _InterlockedIncrement(&use_count); }
+    void release();
+};
+
+struct shared_count {
+    counted_base* pi_;
+    shared_count(const shared_count& r) : pi_(r.pi_) {
+        if (pi_ != 0) pi_->add_ref_copy();
+    }
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
+};
+
+struct shared_ref {
+    int px;
+    shared_count pn;
+};
 
 struct placeholder {
     char pad[0xe8];
-    int field_e8;
-    long* field_ec;
-    void get(int* out);
+    shared_ref field_e8;
+    shared_ref get();
 };
 
-void placeholder::get(int* out) {
-    out[0] = this->field_e8;
-    long* p = this->field_ec;
-    out[1] = (int)p;
-    if (p == 0) {
-        _InterlockedExchangeAdd(p + 1, 1);
-    }
+shared_ref placeholder::get() {
+    return field_e8;
 }

@@ -1,3 +1,4 @@
+// from server: 98% by EspClaude
 // from server: 83% by EspClaude
 // roc-cl: 50727
 // roc-flags: /O2 /GS- /EHsc /MD
@@ -80,7 +81,8 @@ Selection* Workspace::getSelection()
 {
     if (!selection || !validParent(selection->getParent(), this)) {
         boost::shared_ptr<Selection> s = Creatable<Instance>::create<Selection>();
-        s->setParent(this);
+        Instance* self = this;
+        s->setParent(self);
         selection = s;
     }
     return selection.get();

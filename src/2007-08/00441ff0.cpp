@@ -1,3 +1,4 @@
+// from server: 100% by EspClaude
 // from server: 80% by EspClaude
 // roc-cl: 50727
 // from server: 100% by EspClaude
@@ -73,14 +74,13 @@ template<class A, class B> class Notifier {
 public:
     void addListener(Listener<A, B>* l) const;
     void removeListener(Listener<A, B>* l) const;
-    char pad[0x20];
+    char pad[0x1c];
 };
 struct E1 {};
 class Instance;
-struct PadI { char pad0[0x130]; };
+struct PadI { char pad0[0xe8]; };
 class Instance : public PadI, public Notifier<Instance, E1> {
 public:
-    int pad150;
     std::vector<boost::shared_ptr<Instance> >* children;
 };
 template<class C, class E, class P> inline void removeL(const boost::shared_ptr<P>& p, Listener<C, E>* l)
@@ -92,33 +92,43 @@ template<class T> boost::shared_ptr<T> shared_from(T* p);
 
 template<int I> struct arg {};
 static arg<1> _1;
-template<class C> struct bind_t {
-    typedef void (C::*F)(boost::shared_ptr<RBX::Instance>);
-    F f;
-    C* p;
-    arg<1> a;
-    bind_t(F f_, C* p_, arg<1> a_) : f(f_), p(p_), a(a_) {}
-    void operator()(boost::shared_ptr<RBX::Instance> i) { (p->*f)(i); }
+template<class T> struct value { T t_; value(T const& t) : t_(t) {} };
+template<class A1, class A2> struct list2 {
+    A1 a1_; A2 a2_;
+    list2(A1 a1, A2 a2) : a1_(a1), a2_(a2) {}
 };
-template<class C> inline bind_t<C> bind(void (C::*f)(boost::shared_ptr<RBX::Instance>), C* p, arg<1> a2)
+template<class C> struct mf1 {
+    typedef void (C::*F)(boost::shared_ptr<RBX::Instance>);
+    F f_;
+    explicit mf1(F f) : f_(f) {}
+};
+template<class C> struct bind_t {
+    typedef list2<value<C*>, arg<1> > L;
+    mf1<C> f_;
+    L l_;
+    bind_t(mf1<C> f, L const& l) : f_(f), l_(l) {}
+    void operator()(boost::shared_ptr<RBX::Instance> i) { (l_.a1_.t_->*f_.f_)(i); }
+};
+template<class C> inline bind_t<C> bind(void (C::*f)(boost::shared_ptr<RBX::Instance>), C* a1, arg<1> a2)
 {
-    return bind_t<C>(f, p, a2);
+    typedef list2<value<C*>, arg<1> > list_type;
+    return bind_t<C>(mf1<C>(f), list_type(a1, a2));
 }
 
-class PadA { public: virtual ~PadA(); char pad0[0x1c]; void* m_hWnd; char pad1[0x18c - 0x24];
+class PadA { public: virtual ~PadA(); char pad0[0x1c]; void* m_hWnd; char pad1[0x180 - 0x24];
 public:
-    boost::recursive_mutex mutex;   // 0x18c
-    char pad2[0x1f4 - 0x198];
-    bool posted;                    // 0x1f4
-    bool dirty;                     // 0x1f5
-    std::set<int> set1;             // 0x1f8
-    std::set<void*> set2;           // 0x218
+    boost::recursive_mutex mutex;   // 0x180
+    char pad2[0x1b4 - 0x18c];
+    bool posted;                    // 0x1b4
+    bool dirty;                     // 0x1b5
+    std::set<int> set1;             // 0x1b8
+    std::set<void*> set2;           // 0x1c4
 };
 
 class CSelectionPropGrid : public PadA, public RBX::Listener<RBX::Instance, RBX::E1>
 {
 public:
-    boost::shared_ptr<RBX::Instance> instance; // 0x23c? 
+    boost::shared_ptr<RBX::Instance> instance; // 0x1d4
     void onChildRemoved(boost::shared_ptr<RBX::Instance> i);
     void onChildAdded(boost::shared_ptr<RBX::Instance> i);
     void setInstance(RBX::Instance* inst);

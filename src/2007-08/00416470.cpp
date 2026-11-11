@@ -1,37 +1,55 @@
-// from server: 87% by Intel
+// from server: 100% by EspClaude
 // roc-cl: 50727
 // roc-flags: /O2 /GS /EHsc /MD
 
-struct IUnknown
-{
-    virtual long __stdcall QueryInterface(void*, void**) = 0;
-    virtual unsigned long __stdcall AddRef(void* self) = 0;
-    virtual unsigned long __stdcall Release(void* self) = 0;
+struct GUID;
+struct ITypeInfo {
+    virtual long __stdcall QueryInterface(const GUID&, void**) = 0;
+    virtual unsigned long __stdcall AddRef() = 0;
+    virtual unsigned long __stdcall Release() = 0;
 };
 
-struct Creator
+class CComTypeInfoHolder
 {
-    char pad[0xc];
-    IUnknown* pUnk;
-    long Create(void* pOuter);
+public:
+    const GUID* m_pguid;
+    const GUID* m_plibid;
+    unsigned short m_wMajor;
+    unsigned short m_wMinor;
+    ITypeInfo* m_pInfo;
+
+    long GetTypeInfo(unsigned int, unsigned long lcid, ITypeInfo** pptinfo)
+    {
+        return GetTI(lcid, pptinfo);
+    }
+    long GetTI(unsigned long lcid, ITypeInfo** ppInfo)
+    {
+        if (ppInfo == 0)
+            return 0x80004003L;
+
+        long hr = 0;
+        if (m_pInfo == 0)
+            hr = GetTI(lcid);
+        *ppInfo = m_pInfo;
+        if (m_pInfo != 0)
+        {
+            m_pInfo->AddRef();
+            hr = 0;
+        }
+        return hr;
+    }
+    long GetTI(unsigned long lcid);
 };
 
-Creator g_creator;
-
-long __stdcall sub_416470(void* a1, void* a2, void* a3, IUnknown** ppOut)
+struct IDispatchImpl
 {
-    if (!ppOut)
-        return 0x80004003;
+    static CComTypeInfoHolder _tih;
+    virtual long __stdcall GetTypeInfo(unsigned int itinfo, unsigned long lcid, ITypeInfo** pptinfo);
+};
 
-    long result = 0;
+CComTypeInfoHolder IDispatchImpl::_tih;
 
-    if (!g_creator.pUnk)
-        g_creator.Create(a3);
-
-    *ppOut = g_creator.pUnk;
-
-    if (g_creator.pUnk)
-        g_creator.pUnk->AddRef(g_creator.pUnk);
-
-    return result;
+long __stdcall IDispatchImpl::GetTypeInfo(unsigned int itinfo, unsigned long lcid, ITypeInfo** pptinfo)
+{
+    return _tih.GetTypeInfo(itinfo, lcid, pptinfo);
 }

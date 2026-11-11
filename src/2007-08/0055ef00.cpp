@@ -1,3 +1,5 @@
+// from server: 100% by EspClaude
+// roc-flags: /O2 /GS- /EHsc /MD
 // from server: 83% by EspClaude
 // roc-cl: 50727
 // from server: 100% by king_originala

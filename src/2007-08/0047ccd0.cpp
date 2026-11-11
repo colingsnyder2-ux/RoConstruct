@@ -1,11 +1,12 @@
+// from server: 100% by EspClaude
 // from server: 99% by EspClaude
 // from server: 100% by colin
 // roc-cl: 50727
 // roc-lang: cpp
-// roc-lib: rbxgs-g3d roc_table_uint_remove_2008path_4adaf0ad51de3f5c.cpp
+// roc-lib: rbxgs-g3d roc_claude_acd0a510b5323099.cpp
 
 // Candidate translation unit (score above; library headers required).
-#line 1 "d:\\Roblox\\Releases\\2008.06.17\\Client\\Rendering\\g3d\\include\\G3D/Table.h"
+#line 1 "c:\\Documents and Settings\\erik.cassel\\My Documents\\Visual Studio 2005\\Projects\\Roblox\\Trunk\\Client\\Rendering\\g3d\\include\\G3D/Table.h"
 /**
   @file Table.h
   Templated hash table class.

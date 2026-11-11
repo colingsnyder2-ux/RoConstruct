@@ -4,10 +4,14 @@
 // RbxEntity forks) and render 007ab0a0 are not built. Declarations: RenderLib/RenderSceneNew2008.h.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
 // >>> native-status (generated) -- do not edit >>>
-// RenderSceneNew2008 | 2008-06 | 18 byte-exact, inactive (not link-selected)
-// 18/18 mapped addresses byte-exact | named 6 | 0 unproved | no mapped strings | by auto (+2) (mixed 3)
-// <<< native-status | src 1a212f39 | roc native-status --write
+// RenderSceneNew2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 2b27e18d | roc native-status --write
+#define NOMINMAX
 #include "RenderLib/RenderSceneNew2008.h"
+#include "OgreRbxNode/RbxSceneNode2008.h"
+#include "OgreRbx/RbxEntity2008.h"
+#include <OgreSceneManager.h>
 #include <G3D/Vector4.h>
 #include <GLG3D/ToneMap.h>
 #include <memory>
@@ -153,4 +157,14 @@ namespace RBX
 			return toneMap.get();
 		}
 	}
+}
+
+// 007aaa30: native destructor body from exact analog, with complete native fork classes.
+RBX::RenderNew::RenderScene::~RenderScene()
+{
+    if (rootNode) {
+        rootNode->getCreator()->getRootSceneNode()->removeChild(rootNode->getName());
+        delete rootNode;
+    }
+    delete entity;
 }
