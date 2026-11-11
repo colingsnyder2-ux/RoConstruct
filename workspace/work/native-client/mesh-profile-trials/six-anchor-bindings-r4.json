@@ -1,0 +1,274 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?clone@Node@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@QAEPAV123@XZ",
+    "address": "004e6f50"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\mesh-identity-proof\\objects\\6ba56c84b21caeca\\candidate.obj": "e30a5b5fc665f34e4006f477a274a1c9a94c12bf02f19cf76e2b7fe21d7f6bc9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6xulrsje\\owners.json": "3bc60fa94f2e1769822d64d12a52df11729f23544e0b28e295d133bd558696ce",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6xulrsje\\import-thunk-identities-as-owner.json": "42ec5ebb1e49956a4ccc8444012d5c2339270aba093e101e3081eba5722cda7e"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?clone@Node@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@QAEPAV123@XZ",
+    "address": "004e6f50"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\mesh-identity-proof\\objects\\6ba56c84b21caeca\\candidate.obj": "e30a5b5fc665f34e4006f477a274a1c9a94c12bf02f19cf76e2b7fe21d7f6bc9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6xulrsje\\owners.json": "3bc60fa94f2e1769822d64d12a52df11729f23544e0b28e295d133bd558696ce",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6xulrsje\\import-thunk-identities-as-owner.json": "42ec5ebb1e49956a4ccc8444012d5c2339270aba093e101e3081eba5722cda7e"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?_Buynode@?$_Tree@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VCylinderAlongXMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VCylinderAlongXMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VCylinderAlongXMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VCylinderAlongXMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VCylinderAlongXMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VCylinderAlongXMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBVDecalKey@?$MeshFactory@VCylinderAlongXMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@2@D@Z",
+    "address": "004e78f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\mesh-identity-proof\\objects\\6ba56c84b21caeca\\candidate.obj": "e30a5b5fc665f34e4006f477a274a1c9a94c12bf02f19cf76e2b7fe21d7f6bc9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6xulrsje\\owners.json": "3bc60fa94f2e1769822d64d12a52df11729f23544e0b28e295d133bd558696ce",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6xulrsje\\import-thunk-identities-as-owner.json": "42ec5ebb1e49956a4ccc8444012d5c2339270aba093e101e3081eba5722cda7e"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?_Buynode@?$_Tree@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBVDecalKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@2@D@Z",
+    "address": "004e78f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\mesh-identity-proof\\objects\\6ba56c84b21caeca\\candidate.obj": "e30a5b5fc665f34e4006f477a274a1c9a94c12bf02f19cf76e2b7fe21d7f6bc9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6xulrsje\\owners.json": "3bc60fa94f2e1769822d64d12a52df11729f23544e0b28e295d133bd558696ce",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6xulrsje\\import-thunk-identities-as-owner.json": "42ec5ebb1e49956a4ccc8444012d5c2339270aba093e101e3081eba5722cda7e"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?_Buynode@?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBVTextureKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@2@D@Z",
+    "address": "004e7980"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\mesh-identity-proof\\objects\\6ba56c84b21caeca\\candidate.obj": "e30a5b5fc665f34e4006f477a274a1c9a94c12bf02f19cf76e2b7fe21d7f6bc9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6xulrsje\\owners.json": "3bc60fa94f2e1769822d64d12a52df11729f23544e0b28e295d133bd558696ce",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6xulrsje\\import-thunk-identities-as-owner.json": "42ec5ebb1e49956a4ccc8444012d5c2339270aba093e101e3081eba5722cda7e"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?_Buynode@?$_Tree@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBVDecalKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@2@D@Z",
+    "address": "004e78f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\mesh-identity-proof\\objects\\6ba56c84b21caeca\\candidate.obj": "e30a5b5fc665f34e4006f477a274a1c9a94c12bf02f19cf76e2b7fe21d7f6bc9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6xulrsje\\owners.json": "3bc60fa94f2e1769822d64d12a52df11729f23544e0b28e295d133bd558696ce",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6xulrsje\\import-thunk-identities-as-owner.json": "42ec5ebb1e49956a4ccc8444012d5c2339270aba093e101e3081eba5722cda7e"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?_Buynode@?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBVTextureKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@2@D@Z",
+    "address": "004e7980"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\mesh-identity-proof\\objects\\6ba56c84b21caeca\\candidate.obj": "e30a5b5fc665f34e4006f477a274a1c9a94c12bf02f19cf76e2b7fe21d7f6bc9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6xulrsje\\owners.json": "3bc60fa94f2e1769822d64d12a52df11729f23544e0b28e295d133bd558696ce",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6xulrsje\\import-thunk-identities-as-owner.json": "42ec5ebb1e49956a4ccc8444012d5c2339270aba093e101e3081eba5722cda7e"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?_Buynode@?$_Tree@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBVDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@2@D@Z",
+    "address": "004e78f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\mesh-identity-proof\\objects\\6ba56c84b21caeca\\candidate.obj": "e30a5b5fc665f34e4006f477a274a1c9a94c12bf02f19cf76e2b7fe21d7f6bc9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6xulrsje\\owners.json": "3bc60fa94f2e1769822d64d12a52df11729f23544e0b28e295d133bd558696ce",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6xulrsje\\import-thunk-identities-as-owner.json": "42ec5ebb1e49956a4ccc8444012d5c2339270aba093e101e3081eba5722cda7e"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?_Buynode@?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBVTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@2@D@Z",
+    "address": "004e7980"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\mesh-identity-proof\\objects\\6ba56c84b21caeca\\candidate.obj": "e30a5b5fc665f34e4006f477a274a1c9a94c12bf02f19cf76e2b7fe21d7f6bc9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6xulrsje\\owners.json": "3bc60fa94f2e1769822d64d12a52df11729f23544e0b28e295d133bd558696ce",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6xulrsje\\import-thunk-identities-as-owner.json": "42ec5ebb1e49956a4ccc8444012d5c2339270aba093e101e3081eba5722cda7e"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0?$_Tree@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAE@ABU?$less@VDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@1@ABV?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@1@@Z",
+    "address": "004f0fc0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\mesh-identity-proof\\objects\\6ba56c84b21caeca\\candidate.obj": "e30a5b5fc665f34e4006f477a274a1c9a94c12bf02f19cf76e2b7fe21d7f6bc9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6xulrsje\\owners.json": "3bc60fa94f2e1769822d64d12a52df11729f23544e0b28e295d133bd558696ce",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6xulrsje\\import-thunk-identities-as-owner.json": "42ec5ebb1e49956a4ccc8444012d5c2339270aba093e101e3081eba5722cda7e"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAE@ABU?$less@VTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@1@ABV?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@1@@Z",
+    "address": "004d8680"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\mesh-identity-proof\\objects\\6ba56c84b21caeca\\candidate.obj": "e30a5b5fc665f34e4006f477a274a1c9a94c12bf02f19cf76e2b7fe21d7f6bc9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6xulrsje\\owners.json": "3bc60fa94f2e1769822d64d12a52df11729f23544e0b28e295d133bd558696ce",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6xulrsje\\import-thunk-identities-as-owner.json": "42ec5ebb1e49956a4ccc8444012d5c2339270aba093e101e3081eba5722cda7e"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0?$_Tree@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAE@ABU?$less@VDecalKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@1@ABV?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@1@@Z",
+    "address": "004f0fc0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\mesh-identity-proof\\objects\\6ba56c84b21caeca\\candidate.obj": "e30a5b5fc665f34e4006f477a274a1c9a94c12bf02f19cf76e2b7fe21d7f6bc9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6xulrsje\\owners.json": "3bc60fa94f2e1769822d64d12a52df11729f23544e0b28e295d133bd558696ce",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6xulrsje\\import-thunk-identities-as-owner.json": "42ec5ebb1e49956a4ccc8444012d5c2339270aba093e101e3081eba5722cda7e"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAE@ABU?$less@VTextureKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@1@ABV?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@1@@Z",
+    "address": "004d8680"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\mesh-identity-proof\\objects\\6ba56c84b21caeca\\candidate.obj": "e30a5b5fc665f34e4006f477a274a1c9a94c12bf02f19cf76e2b7fe21d7f6bc9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6xulrsje\\owners.json": "3bc60fa94f2e1769822d64d12a52df11729f23544e0b28e295d133bd558696ce",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6xulrsje\\import-thunk-identities-as-owner.json": "42ec5ebb1e49956a4ccc8444012d5c2339270aba093e101e3081eba5722cda7e"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??0_Node@?$_Tree_nod@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VCylinderAlongXMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VCylinderAlongXMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VCylinderAlongXMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAE@PAU012@00ABU?$pair@$$CBVDecalKey@?$MeshFactory@VCylinderAlongXMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@2@D@Z",
+   "address": "004e6ff0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??0_Node@?$_Tree_nod@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAE@PAU012@00ABU?$pair@$$CBVDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@2@D@Z",
+   "address": "004e6ff0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??0_Node@?$_Tree_nod@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAE@PAU012@00ABU?$pair@$$CBVDecalKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@2@D@Z",
+   "address": "004e6ff0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??0_Node@?$_Tree_nod@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAE@PAU012@00ABU?$pair@$$CBVDecalKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@2@D@Z",
+   "address": "004e6ff0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??0_Node@?$_Tree_nod@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAE@PAU012@00ABU?$pair@$$CBVTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@2@D@Z",
+   "address": "004e7050",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??0_Node@?$_Tree_nod@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAE@PAU012@00ABU?$pair@$$CBVTextureKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@2@D@Z",
+   "address": "004e7050",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??0_Node@?$_Tree_nod@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAE@PAU012@00ABU?$pair@$$CBVTextureKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@2@D@Z",
+   "address": "004e7050",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_Buynode@?$_Tree@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@XZ",
+   "address": "005b3020",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_Buynode@?$_Tree@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@XZ",
+   "address": "005b3020",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_Buynode@?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@XZ",
+   "address": "004d7770",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_Buynode@?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@XZ",
+   "address": "004d7770",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??0?$_Tree@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAE@ABU?$less@VDecalKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@1@ABV?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@1@@Z",
+   "address": "007d72e8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??0?$_Tree@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAE@ABU?$less@VDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@1@ABV?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@1@@Z",
+   "address": "007d72e8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??0?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAE@ABU?$less@VTextureKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@1@ABV?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@1@@Z",
+   "address": "007d72e8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??0?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@QAE@ABU?$less@VTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@1@ABV?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@1@@Z",
+   "address": "007d72e8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?_Buynode@?$_Tree@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VCylinderAlongXMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VCylinderAlongXMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VCylinderAlongXMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VCylinderAlongXMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VCylinderAlongXMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VCylinderAlongXMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBVDecalKey@?$MeshFactory@VCylinderAlongXMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@2@D@Z",
+   "address": "007ca591",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?_Buynode@?$_Tree@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBVDecalKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@2@D@Z",
+   "address": "007ca591",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?_Buynode@?$_Tree@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBVDecalKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@2@D@Z",
+   "address": "007ca591",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?_Buynode@?$_Tree@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VDecalKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VDecalKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVDecalKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBVDecalKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@2@D@Z",
+   "address": "007ca591",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?_Buynode@?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBVTextureKey@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@2@D@Z",
+   "address": "007ca5b1",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?_Buynode@?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBVTextureKey@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@2@D@Z",
+   "address": "007ca5b1",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?_Buynode@?$_Tree@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@VTextureKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@U?$less@VTextureKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@std@@V?$allocator@U?$pair@$$CBVTextureKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@std@@@8@$0A@@std@@@2@PAU342@00ABU?$pair@$$CBVTextureKey@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@V?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@@2@D@Z",
+   "address": "007ca5b1",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?clone@Node@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@QAEPAV123@XZ",
+   "address": "007ca54b",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?clone@Node@?$Table@VVector3@G3D@@UVariations@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@@G3D@@QAEPAV123@XZ",
+   "address": "007ca54b",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 13,
+ "owners_bound": 13
+}

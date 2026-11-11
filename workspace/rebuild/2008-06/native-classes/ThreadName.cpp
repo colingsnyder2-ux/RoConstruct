@@ -1,0 +1,25 @@
+// >>> native-status (generated) -- do not edit >>>
+// ThreadName | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 0a1f8666 | roc native-status --write
+#include <string>
+#include <boost/thread/once.hpp>
+#include <boost/thread/tss.hpp>
+
+namespace RBX { namespace boost_detail {
+extern boost::thread_specific_ptr<std::string>* foo;
+extern boost::once_flag once_init_foo;
+void init_foo();
+} }
+
+extern const char* defaultThreadName;
+
+const char* currentThreadName()
+{
+    boost::call_once(&RBX::boost_detail::init_foo, RBX::boost_detail::once_init_foo);
+    std::string* name = RBX::boost_detail::foo->get();
+    return name ? name->c_str() : defaultThreadName;
+}
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::thread_specific_ptr<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >;

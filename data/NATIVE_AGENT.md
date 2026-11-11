@@ -13,7 +13,7 @@ for owner integration, then continue another class. Do not turn source recovery
 into a prolonged Workspace writer, linker or audit campaign. An explicit owner
 integration assignment may prioritize those blockers separately.
 
-Current workflow: 52. Use `docs/NATIVE_WORKER_HISTORY.md` only as history.
+Current workflow: 53. Use `docs/NATIVE_WORKER_HISTORY.md` only as history.
 Native authority: **RoConstruct, branch `work`, subtree `workspace/`**. Local paths
 below that subtree retain their normal repository-relative names.
 
@@ -118,7 +118,7 @@ $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 $nativeManifest = Invoke-RestMethod ('https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/data/native-worker.json?t=' + [guid]::NewGuid().ToString('N'))
 if ($nativeManifest.authority -ne 'RoConstruct/work/workspace' -or
-    $nativeManifest.workflow_version -lt 52 -or
+    $nativeManifest.workflow_version -lt 53 -or
     $nativeManifest.draft_workflow_version -lt 1 -or
     $nativeManifest.native_clients -notcontains '2008-06' -or
     $nativeManifest.url -ne 'https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/data/native-worker.zip' -or
@@ -160,12 +160,12 @@ Write-Output ('Native checkout: ' + $nativeFolder)
 $nativeMarker = Get-Content -LiteralPath 'roconstruct-package.json' -Raw | ConvertFrom-Json
 $nativeInventory = Get-Content -LiteralPath 'workspace-manifest.json' -Raw | ConvertFrom-Json
 if ($nativeMarker.authority -ne 'RoConstruct/work/workspace' -or
-    $nativeMarker.native_workflow_version -lt 52 -or
+    $nativeMarker.native_workflow_version -lt 53 -or
     $nativeMarker.draft_workflow_version -lt 1 -or
     $nativeInventory.authority -ne $nativeMarker.authority -or
     $nativeMarker.revision -ne $nativeManifest.source_revision -or
     $nativeInventory.source_revision -ne $nativeMarker.revision) { throw 'Extracted Worker metadata mismatch' }
-foreach ($nativeRequired in @('roc/native_drafts.py', 'research/native-units.json', 'research/native-source-lock.json', 'rebuild/2008-06/tests/native_check_runner.py')) {
+foreach ($nativeRequired in @('roc/native_drafts.py', 'research/native-units.json', 'research/native-source-lock.json', 'rebuild/2008-06/tests/native_check_runner.py', 'work/native-client/prove.py', 'work/native-client/bootstrap_tools.py', 'work/native-client/data/identity-registry.json.gz')) {
     if (-not (Test-Path -LiteralPath $nativeRequired -PathType Leaf)) { throw ('Missing Worker capability file: ' + $nativeRequired) }
 }
 Write-Output ('Package/source revision: ' + $nativeMarker.revision)
@@ -292,6 +292,44 @@ or transport failure is a blocker: retain the same session/outbox, retry stop/fl
 and check status; do not kill the watcher or claim delivery. If the session never
 had changes, no draft receipt is expected. Split tasks over the 16 MiB bundle limit
 without discarding originals. No new edits in an ended session until resumed.
+
+## Fast native tools (workflow 53)
+
+After the Worker is extracted and the prerequisites above are installed, run once and fix every `MISS` line:
+
+```text
+python work/native-client/bootstrap_tools.py --smoke
+```
+
+It unpacks the identity registry, builds `registry-identities.json`, checks the original client and MSVC 2008, and proves
+one small class end to end. Do not start recovery until it prints `READY`.
+
+Use these instead of compiling by hand (each prints `--help`; run from the checkout root; no `roc submit`):
+
+- `python work/native-client/prove.py FILE.cpp --rounds 3 --infer-names --quiet` compiles a native class with the flags in
+  its first-line `// native-flags:` comment and reports byte-exact functions. `--why FILTER` lists the non-exact symbols and
+  why; `--diff ADDR` prints the assembly diff. Do not edit shared inventory sources or headers while someone runs `--all`.
+- `python work/native-client/scope.py rbxapp --queue 15` is the contributor work queue: unfinished Roblox classes ranked
+  (extend partial native files first, then small classes; leased and huge classes last or skipped). Without `--queue` it
+  lists every class with its exact/total count. Results are cached; `--refresh` rebuilds them.
+- `python work/native-client/upstream_lane.py --root TREE --prefix P --all-in DIR` copies verbatim upstream library
+  source and keeps only files with an exact function (G3D, XTP, libpng, libjpeg, zlib, Lua, MFC).
+- `python work/native-client/fingerprint.py` and `analog_to_native.py` turn matched mined analogs into native classes;
+  `beautify.py` renames their placeholders. `fix_loop.py` applies the deterministic include/friend/extern fixes.
+- `python work/native-client/native_commit.py --path GLOB ...` takes the lease, writes the status banners and commits.
+  Commit one finished family, or at most hourly; never per function. The tool refuses within 45 minutes of the last
+  commit (`--force` overrides) and while a `prove.py --all` census runs (edits would void the census).
+- Inferred fields, layouts and inline asm are allowed when the original source plausibly had them. Mark each
+  `// INFERRED: <evidence>`; the proof reports inferred names separately from proven ones.
+
+## Scope: RbxApp only
+
+When the assignment says "RbxApp only" (or `scope=rbxapp`), work only on Roblox's own code: the MFC/COM app classes
+(`CRobloxView`, `CMainFrame`, `CBrowserView`, ...) and the `RBX::` engine classes. Skip every library: G3D, Ogre, XTP, ATL,
+stock MFC classes (`CWnd`, `CView`, ...), boost, std, Lua, libpng/libjpeg/zlib and RakNet. Run
+`python work/native-client/scope.py rbxapp --todo`, pick an unleased class from that list, and ignore library classes even
+when a failing build points at them. A Roblox class that needs a library header may include it; do not recover the library
+function. Report RbxApp counts separately.
 
 ## Recovery and contributor handoff
 

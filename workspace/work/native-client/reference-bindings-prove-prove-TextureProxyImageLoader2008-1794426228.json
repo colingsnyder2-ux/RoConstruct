@@ -1,0 +1,82 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "__ehhandler$?loadTexture@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAVImage@Ogre@@@Z",
+    "address": "007ed9ec"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-TextureProxyImageLoader2008\\objects\\10d45a3b23fa83bc\\candidate.obj": "00912b1082c662ba495c8466a90beceacfb4bbfc043aa5ef4518995091841aa8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-_brokvy0\\owners.json": "fe8d56706b0be653e41938c3ee1d3d32ba74139a2e21a27a3a06221ec80e9496",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-_brokvy0\\import-thunk-identities-as-owner.json": "d119696f77a47a532544af981f519ffa5876893f78f245b07a676f21a4d16458"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "__catch$?loadTexture@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAVImage@Ogre@@@Z$0",
+   "address": "007ae18d",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__catch$?loadTexture@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAVImage@Ogre@@@Z$2",
+   "address": "007ae33e",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?loadTexture@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAVImage@Ogre@@@Z$10",
+   "address": "007ed9c8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?loadTexture@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAVImage@Ogre@@@Z$11",
+   "address": "007ed9d3",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?loadTexture@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAVImage@Ogre@@@Z$12",
+   "address": "007ed9db",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?loadTexture@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAVImage@Ogre@@@Z$13",
+   "address": "007ed9e4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?loadTexture@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAVImage@Ogre@@@Z$4",
+   "address": "007ed990",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?loadTexture@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAVImage@Ogre@@@Z$5",
+   "address": "007ed999",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?loadTexture@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAVImage@Ogre@@@Z$6",
+   "address": "007ed9a2",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?loadTexture@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAVImage@Ogre@@@Z$7",
+   "address": "007ed9b3",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?loadTexture@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAVImage@Ogre@@@Z$8",
+   "address": "007ed9ab",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?loadTexture@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAVImage@Ogre@@@Z$9",
+   "address": "007ed9bc",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

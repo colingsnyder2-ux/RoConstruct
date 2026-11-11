@@ -1,0 +1,72 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?loadTexture@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAVImage@Ogre@@@Z",
+    "address": "007adfb0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\image-loader-proof\\objects\\acf6e18d47958f3e\\candidate.obj": "ecd92c1fca0a02e4d88b098c441705d04af9f34a3f4f4f00c1047cfdde24f99e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-ux0zufam\\owners.json": "a7421b9864e75493c07d8a64d099bd96cf903d59437ee4768fb7b0d7d84b64a0",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-ux0zufam\\import-thunk-identities-as-owner.json": "50be92c8465d94912d8878c67daa6829809eea70bc223ece5643892963ffc87f"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??1?$shared_ptr@VStandardOut@RBX@@@boost@@QAE@XZ",
+   "address": "00600660",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??2@YAPAXI@Z",
+   "address": "006a0920",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_E?$SharedPtr@VDataStream@Ogre@@@Ogre@@UAEPAXI@Z",
+   "address": "004d7420",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_EFileStreamDataStream@Ogre@@UAEPAXI@Z",
+   "address": "006700c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?destroy@?$SharedPtr@VDataStream@Ogre@@@Ogre@@MAEXXZ",
+   "address": "004d73a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ",
+   "address": "005693a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?resolveFormat@GImage@G3D@@SA?AW4Format@12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "0050edb0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ",
+   "address": "00569620",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?swap@?$SharedPtr@VDataStream@Ogre@@@Ogre@@MAEXAAV12@@Z",
+   "address": "0068ddc0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?loadTexture@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAVImage@Ogre@@@Z",
+   "address": "007ed9ec",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

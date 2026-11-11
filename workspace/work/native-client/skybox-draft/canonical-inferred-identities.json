@@ -1,0 +1,53 @@
+{
+ "scope": "INFERRED names for native skybox/head-builder batch; not original spelling proof",
+ "rows": [
+  {
+   "symbol": "??RCylinderTransform@@QBEXAAVVector3@G3D@@0AAVVector2@2@ABV12@ABVVector2int16@2@@Z",
+   "address": "004fdbd0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?updateSkybox@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z",
+   "inferred_name": true,
+   "evidence": "Unique byte-exact 3367B candidate from authentic donor; typed real native layouts; fresh runner verified local data. Method spelling inferred.",
+   "address": "004d9e00"
+  },
+  {
+   "symbol": "??$create@VLighting@RBX@@@ServiceProvider@RBX@@QBEPAVLighting@1@XZ",
+   "address": "004b3870",
+   "evidence": "INFERRED spelling; original relocation in exact updateSkybox004d9e00 binds address.",
+   "inferred_name": true
+  },
+  {
+   "symbol": "?nativeAssetFolder@RBX@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+   "address": "0055c4c0",
+   "evidence": "INFERRED spelling; original relocation in exact updateSkybox004d9e00 binds address.",
+   "inferred_name": true
+  },
+  {
+   "symbol": "?nativeAssetPath@RBX@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBD@Z",
+   "address": "0055d0b0",
+   "evidence": "INFERRED spelling; original relocation in exact updateSkybox004d9e00 binds address.",
+   "inferred_name": true
+  },
+  {
+   "symbol": "??$buildFace@$03VEndcapTransform@ViewNew@RBX@@@LevelBuilder@ViewNew@RBX@@IAEXVEndcapTransform@12@VVector2int16@G3D@@W4Purpose@012@@Z",
+   "address": "004ff1e0",
+   "inferred_name": true,
+   "evidence": "INFERRED spelling: authentic ViewNewHeadMesh.cpp/LevelBuilder template; unique714B candidate. Original byte/reference gate must still pass."
+  },
+  {
+   "symbol": "??RCylinderTransform@ViewNew@RBX@@QAEXAAVVector3@G3D@@0AAVVector2@4@ABV34@ABVVector2int16@4@@Z",
+   "address": "004fdbd0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "??0HeadBuilder@ViewNew@RBX@@QAE@V?$ReferenceCountedPointer@VLevel@Mesh@RenderBase@RBX@@@G3D@@VVector3@4@VRenderSurfaceTypes@12@IM@Z",
+   "address": "004fdaf0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  }
+ ]
+}

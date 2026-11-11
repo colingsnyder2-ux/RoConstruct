@@ -1,4 +1,4 @@
-"""RoConstruct work/workspace is the native source authority; publish downloads and drafts."""
+"""Publish immutable committed contributor workspaces and durable draft archives."""
 import argparse
 import hashlib
 import io
@@ -8,172 +8,144 @@ import subprocess
 import time
 import zipfile
 
-from roc.native_drafts import ROOT, Inbox, atomic, digest, encoded, lock, safe_path
+from roc.native_drafts import ROOT, Inbox, atomic, encoded, lock
 
-BASE_URL = 'https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/data/'
-AUTHORITY = 'RoConstruct/work/workspace'
-
-
-def git(root, *args):
-    return subprocess.check_output(['git', *args], cwd=root).decode().strip()
+BRANCH = 'codex/native-partial-search-20261029'
+BASE_URL = 'https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/data/'
 
 
-def fetch(root):
-    subprocess.run(['git','fetch','--no-write-fetch-head','findings',
-                    'refs/heads/work:refs/remotes/findings/work'],cwd=root,capture_output=True,check=True,timeout=120)
-    return git(root,'rev-parse','refs/remotes/findings/work')
-
-
-def committed_files(root, ref, prefix=''):
-    """Read immutable Git blobs, never the changing working tree or another worker's index."""
-    revision = git(root,'rev-parse',ref+'^{commit}')
-    rows = subprocess.check_output(['git','ls-tree','-r','-z',revision,'--',prefix or '.'],cwd=root).split(b'\0')
+def committed_files(root, ref):
+    """Read Git blobs, never the changing native working tree or another worker's index."""
+    revision = subprocess.check_output(['git', 'rev-parse', ref + '^{commit}'], cwd=root).decode().strip()
+    rows = subprocess.check_output(['git', 'ls-tree', '-r', '-z', revision], cwd=root).split(b'\0')
     entries = []
     for row in rows:
         if not row:
             continue
-        meta,name=row.split(b'\t');mode,kind,sha=meta.split();name=name.decode()
-        if prefix:
-            if not name.startswith(prefix):
-                continue
-            name=name[len(prefix):]
-        if mode not in (b'100644',b'100755') or kind != b'blob':
-            raise ValueError('Non-regular workspace entry: '+name)
-        if name.startswith(('tools/','local/','src/','.github/')) or name.endswith(('.key','.db','.exe','.dll','.obj','.pdb')) or 'secrets' in name.lower():
+        meta, name = row.split(b'\t')
+        mode, kind, sha = meta.split()
+        name = name.decode()
+        if mode not in (b'100644', b'100755') or kind != b'blob':
+            raise ValueError('Non-regular workspace entry: ' + name)
+        if (name.startswith(('clients/', 'tools/', 'local/', 'src/', '.github/'))
+                and name not in ('clients/clients.json','clients/sources.json','clients/donor.json')):
             continue
-        entries.append((name,sha.decode()))
-    result=subprocess.run(['git','cat-file','--batch'],cwd=root,
-                          input=('\n'.join(sha for _,sha in entries)+'\n').encode(),capture_output=True,check=True)
-    stream=io.BytesIO(result.stdout);files={}
-    for name,sha in entries:
-        header=stream.readline().split()
-        if header[0].decode()!=sha or header[1]!=b'blob':
+        if name.endswith(('.key', '.db', '.exe', '.dll', '.obj', '.pdb')) or 'secrets' in name.lower():
+            continue
+        entries.append((name, sha.decode()))
+    process = subprocess.run(['git','cat-file','--batch'], cwd=root,
+                             input=('\n'.join(sha for _,sha in entries)+'\n').encode(),
+                             capture_output=True, check=True)
+    stream = io.BytesIO(process.stdout)
+    files = {}
+    for name, sha in entries:
+        header = stream.readline().split()
+        if header[0].decode() != sha or header[1] != b'blob':
             raise ValueError('Git snapshot identity mismatch')
-        files[name]=stream.read(int(header[2]));stream.read(1)
-    return revision,files
+        files[name] = stream.read(int(header[2]))
+        if b'https://discord.com/api/webhooks/' in files[name] or b'https://discordapp.com/api/webhooks/' in files[name]:
+            from roc.findings_publish import portable_text
+            files[name] = portable_text(files[name])
+        stream.read(1)
+    return revision, files
 
 
-def source_files(root, ref):
-    _,files=committed_files(root,ref,'workspace/')
-    for name in ('roconstruct-package.json','workspace-manifest.json'):
-        files.pop(name,None)
+def export(root, ref=BRANCH):
+    root = Path(root)
+    revision, files = committed_files(root, ref)
     if 'roc/native_drafts.py' not in files:
-        raise ValueError('Findings workspace lacks draft tooling; initialize reviewed workspace first')
-    return files
-
-
-def source_revision(files):
-    return digest({name:hashlib.sha256(data).hexdigest() for name,data in files.items()})
-
-
-def export(root, ref):
-    files=source_files(root,ref)
-    revision=source_revision(files)
-    files['roconstruct-package.json']=encoded(dict(package='worker',revision=revision,authority=AUTHORITY,
-        native_workflow=True,native_workflow_version=52,matching_workflow_version=4,draft_workflow_version=1))
-    inventory={name:hashlib.sha256(data).hexdigest() for name,data in files.items()}
-    provenance=dict(schema=1,authority=AUTHORITY,source_revision=revision,files=inventory,
-                    draft_workflow_version=1,baseline='reviewed findings source; incomplete candidates stay inactive')
-    files['workspace-manifest.json']=encoded(provenance)
-    output=io.BytesIO()
-    with zipfile.ZipFile(output,'w',zipfile.ZIP_DEFLATED) as archive:
+        raise ValueError('Draft workflow must be committed before workspace publication')
+    folder = root / 'local/findings/data'
+    folder.mkdir(parents=True, exist_ok=True)
+    seed = folder / 'native-worker.zip'
+    extras = {}
+    if seed.exists():
+        with zipfile.ZipFile(seed) as archive:
+            # ABI evidence and generated adopted units may not be tracked in Git.
+            for name in ('rebuild/2008-06/manifests/abi-evidence.json', 'research/native-units.json'):
+                if name not in files and name in archive.namelist():
+                    extras[name] = archive.read(name)
+    files.update(extras)
+    marker = dict(package='worker', revision=revision, native_workflow=True,
+                  native_workflow_version=53, matching_workflow_version=4, draft_workflow_version=1)
+    files['roconstruct-package.json'] = encoded(marker)
+    inventory = {name: hashlib.sha256(data).hexdigest() for name,data in files.items()}
+    provenance = dict(schema=1, source_commit=revision, files=inventory, draft_workflow_version=1,
+                      baseline='reviewed-committed-source; incomplete candidates remain inactive',
+                      toolchain='Use pinned roc install/client-fetch/lib-fetch recipes; reuse verified caches')
+    files['workspace-manifest.json'] = encoded(provenance)
+    output = io.BytesIO()
+    with zipfile.ZipFile(output, 'w', zipfile.ZIP_DEFLATED) as archive:
         for name,data in sorted(files.items()):
-            info=zipfile.ZipInfo(name,(2026,1,1,0,0,0));info.compress_type=zipfile.ZIP_DEFLATED
-            archive.writestr(info,data)
-    archive_bytes=output.getvalue()
-    manifest=dict(schema=1,authority=AUTHORITY,workflow_version=52,matching_workflow_version=4,
-                  draft_workflow_version=1,source_revision=revision,url=BASE_URL+'native-worker.zip',
-                  sha256=hashlib.sha256(archive_bytes).hexdigest(),size=len(archive_bytes),
-                  guide=BASE_URL+'NATIVE_AGENT.md',matching_guide=BASE_URL+'MATCHING_AGENT.md',
-                  native_clients=['2008-06'],invitation_required=False,
-                  server='https://colinpc.tail2879d0.ts.net',
-                  draft_server='https://colinpc.tail2879d0.ts.net/native-drafts')
-    # Packages update metadata/downloads only. Native files are never mirrored from origin.
-    return revision,{'workspace/workspace-manifest.json':encoded(provenance),
-        'workspace/roconstruct-package.json':files['roconstruct-package.json'],
-        'data/native-worker.zip':archive_bytes,'data/native-worker.json':encoded(manifest),
-        'data/NATIVE_AGENT.md':files['docs/NATIVE_AGENT.md'],
-        'data/MATCHING_AGENT.md':files['docs/MATCHING_AGENT.md']}
+            info = zipfile.ZipInfo(name, (2026,1,1,0,0,0))
+            info.compress_type = zipfile.ZIP_DEFLATED
+            archive.writestr(info, data)
+    archive_bytes = output.getvalue()
+    old = folder / 'native-worker.json'
+    previous = json.loads(old.read_text()) if old.exists() else {}
+    server = previous.get('server', 'https://colinpc.tail2879d0.ts.net')
+    manifest = dict(schema=1, workflow_version=53, matching_workflow_version=4, draft_workflow_version=1,
+                    source_commit=revision, url=BASE_URL+'native-worker.zip',
+                    sha256=hashlib.sha256(archive_bytes).hexdigest(), size=len(archive_bytes),
+                    guide=BASE_URL+'NATIVE_AGENT.md', matching_guide=BASE_URL+'MATCHING_AGENT.md',
+                    native_clients=['2008-06'], invitation_required=False, server=server,
+                    draft_server=previous.get('draft_server', 'https://colinpc.tail2879d0.ts.net/native-drafts'))
+    for key in ('abi_manifest_sha256','abi_manifest_classes'):
+        if key in previous:
+            manifest[key] = previous[key]
+    result = {'workspace/'+name:data for name,data in files.items()}
+    result.update({'data/native-worker.zip':archive_bytes, 'data/native-worker.json':encoded(manifest),
+                   'data/NATIVE_AGENT.md':files['docs/NATIVE_AGENT.md'],
+                   'data/MATCHING_AGENT.md':files['docs/MATCHING_AGENT.md']})
+    return revision, result
 
 
-def publish(root, ref=None):
+def publish(root, ref=BRANCH):
     from roc.findings_transport import publish_files
-    root=Path(root)
-    with lock(root/'work/findings-workspace.lock'):
-        parent=ref or fetch(root)
-        revision,files=export(root,parent)
-        inbox=Inbox(root);files.update(inbox.archive())
-        files['coordination/notes.json']=encoded(inbox.notes())
-        def guard(current):
-            if source_revision(source_files(root,current))!=revision:
-                raise ValueError('Findings workspace advanced; retry publication against current source')
-        result=publish_files(root,files,'Refresh findings native downloads and draft archive',guard=guard)
-        atomic(root/'work/findings-workspace-status.json',dict(**result,authority=AUTHORITY,
-               source_revision=revision,last_success=time.time(),error=None))
+    root = Path(root)
+    with lock(root / 'work/findings-workspace.lock'):
+        if ref == BRANCH:
+            subprocess.run(['git','fetch','--no-write-fetch-head','origin',
+                            'refs/heads/'+BRANCH+':refs/remotes/origin/'+BRANCH],
+                           cwd=root,capture_output=True,check=True,timeout=120)
+            ref = subprocess.check_output(['git','rev-parse','refs/remotes/origin/'+BRANCH],cwd=root).decode().strip()
+        revision, files = export(root, ref)
+        files.update(Inbox(root).archive())
+        def guard(parent):
+            # A delayed exporter cannot roll back a newer published source revision.
+            old = subprocess.run(['git','show',parent+':workspace/workspace-manifest.json'],cwd=root,capture_output=True)
+            if old.returncode == 0:
+                previous = json.loads(old.stdout)
+                before = previous['source_commit']
+                if before != revision:
+                    p = subprocess.run(['git','merge-base','--is-ancestor',before,revision],cwd=root,capture_output=True)
+                    if p.returncode:
+                        raise ValueError('Published workspace is newer/diverged; refuse stale export')
+                return ['workspace/'+name for name in previous['files'] if 'workspace/'+name not in files]
+        result = publish_files(root, files, 'Publish committed native workspace and draft archive', guard=guard)
+        atomic(root/'work/findings-workspace-status.json',dict(**result,source_commit=revision,last_success=time.time()))
         return result
 
 
-def integrate(root, base, files, message):
-    """Commit explicit reviewed paths directly to findings, without moving local HEAD/index."""
-    from roc.findings_transport import publish_files
-    from roc.fork_merge import preservation_losses
-    root=Path(root)
-    git(root,'rev-parse',base+':workspace')
-    if not files or len({name.casefold() for name in files})!=len(files):
-        raise ValueError('Empty or case-colliding reviewed path set')
-    for name in files:
-        safe_path(name)
-    payload={'workspace/'+name:data for name,data in files.items()}
-    def blob(ref,name):
-        p=subprocess.run(['git','rev-parse','--verify',ref+':workspace/'+name],cwd=root,capture_output=True)
-        return p.stdout if p.returncode==0 else None
-    def guard(parent):
-        if subprocess.run(['git','merge-base','--is-ancestor',base,parent],cwd=root,capture_output=True).returncode:
-            raise ValueError('Findings integration base is not canonical ancestry')
-        for name in files:
-            if blob(base,name)!=blob(parent,name):
-                raise ValueError('Canonical file advanced; review three-way conflict: '+name)
-    def verify(parent,candidate):
-        before=git(root,'rev-parse',parent+':workspace')
-        after=git(root,'rev-parse',candidate+':workspace')
-        losses=preservation_losses(root,before,after)
-        receipt=dict(base=parent,candidate=candidate,base_workspace=before,candidate_workspace=after,
-                     losses=losses,passed=not losses,paths=sorted(files),authority=AUTHORITY)
-        atomic(root/'work/findings-integration'/('preservation-'+candidate+'.json'),receipt)
-        if losses:
-            raise ValueError('Findings integration loses native source/proofs: '+json.dumps(losses))
-    return publish_files(root,payload,message,guard=guard,verify=verify)
-
-
-def publish_loop(root,every=3600):
+def publish_loop(root, every=21600):
     while True:
         try:
-            if not (root/'work/findings-workspace-paused.json').exists():
-                publish(root)
-            delay=every
-        except (OSError,ValueError,RuntimeError,subprocess.SubprocessError) as error:
-            atomic(root/'work/findings-workspace-status.json',dict(error=str(error),failed=time.time(),authority=AUTHORITY))
-            delay=60
+            publish(root)
+            delay = every
+        except (OSError, ValueError, RuntimeError, subprocess.SubprocessError) as error:
+            atomic(root/'work/findings-workspace-status.json',dict(error=str(error),failed=time.time()))
+            delay = 60
         for _ in range(delay):
             time.sleep(1)
 
 
 def main():
-    parser=argparse.ArgumentParser(description=__doc__)
+    parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--root',type=Path,default=ROOT)
-    sub=parser.add_subparsers(dest='action')
-    action=sub.add_parser('integrate')
-    action.add_argument('--manifest',type=Path,required=True)
-    action.add_argument('--message',required=True)
-    args=parser.parse_args()
-    if args.action=='integrate':
-        spec=json.loads(args.manifest.read_text())
-        files={name:Path(path).read_bytes() for name,path in spec['files'].items()}
-        result=integrate(args.root,spec['base'],files,args.message)
-    else:
-        result=publish(args.root)
-    print(json.dumps(result,indent=2))
+    parser.add_argument('--ref',default=BRANCH)
+    args = parser.parse_args()
+    print(json.dumps(publish(args.root,args.ref),indent=2))
 
 
-if __name__=='__main__':
+if __name__ == '__main__':
     main()

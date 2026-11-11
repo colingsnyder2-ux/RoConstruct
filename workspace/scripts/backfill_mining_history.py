@@ -10,10 +10,9 @@ def backfill():
     def git(*args):
         return subprocess.check_output(["git", *args], cwd=ROOT).decode().splitlines()
 
-    refs = [(ref, "site/") for ref in git("log", "--all", "--format=%H", "--", "site/progress.json")]
-    refs += [(ref, "docs/") for ref in git("log", "--all", "--format=%H", "--", "docs/progress.json")]
+    refs = [(ref, "docs/") for ref in git("log", "--all", "--format=%H", "--", "docs/progress.json")]
     refs += [(ref, "") for ref in git("reflog", "show", "--format=%H", "origin/gh-pages")]
-    history_file = ROOT / "site/history.json"
+    history_file = ROOT / "docs/history.json"
     history = json.loads(history_file.read_text())
     fields = ("functions", "matched", "partial", "bytes", "matched_bytes")
 

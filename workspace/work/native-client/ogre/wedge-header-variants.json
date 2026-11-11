@@ -1,0 +1,38 @@
+{
+  "header": "rebuild/2008-06/native-headers/ViewNew/QuadVolumeFace.h",
+  "include": "ViewNew/QuadVolumeFace.h",
+  "sources": [
+    "rebuild/2008-06/native-classes/ViewNewWedgeMesh.cpp"
+  ],
+  "variants": [
+    {
+      "name": "donor_order_and_scalar_position",
+      "replacements": [
+        {
+          "old": "G3D::Vector2 positionStep((rect.x1() - rect.x0()) / divisions.x, (rect.y1() - rect.y0()) / divisions.y);",
+          "new": "float stepX = (rect.x1() - rect.x0()) / divisions.x;\n\t\t\tfloat stepY = (rect.y1() - rect.y0()) / divisions.y;"
+        },
+        {
+          "old": "y += positionStep.y;",
+          "new": "y += stepY;"
+        },
+        {
+          "old": "x += positionStep.x;",
+          "new": "x += stepX;"
+        },
+        {
+          "old": "float stepX = ",
+          "new": "float x = 0, u = 0, y = 0, v = 0;\n\n\t\t\tfloat stepX = "
+        },
+        {
+          "old": "float x = rect.x0();\n\t\t\tfloat u = textureOrigin.x;",
+          "new": "x = rect.x0();\n\t\t\tu = textureOrigin.x;"
+        },
+        {
+          "old": "float y = rect.y0();\n\t\t\t\tfloat v = textureOrigin.y;",
+          "new": "y = rect.y0();\n\t\t\t\tv = textureOrigin.y;"
+        }
+      ]
+    }
+  ]
+}
