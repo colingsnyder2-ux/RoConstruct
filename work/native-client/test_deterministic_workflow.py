@@ -140,6 +140,24 @@ class DeterministicWorkflowTests(unittest.TestCase):
             self.assertEqual('parked', json.loads(state.read_text())['targets']['004ef930']['status'])
             self.assertEqual(1, len((state.parent / 'events.jsonl').read_text().splitlines()))
 
+    def test_commit_compares_filtered_checkout_bytes(self):
+        import hashlib
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            name = 'rebuild/2008-06/Owner.cpp'
+            path = root / name
+            path.parent.mkdir(parents=True)
+            path.write_bytes(b'proved\r\n')
+            receipt = {'sha256': {name: hashlib.sha256(b'proved\r\n').hexdigest()},
+                       'original_sha256': {name: hashlib.sha256(b'original\r\n').hexdigest()}}
+            with patch.object(workflow, 'ROOT', root), patch.object(workflow, 'require_branch'), \
+                 patch.object(workflow.subprocess, 'run', side_effect=[
+                    subprocess.CompletedProcess([], 0, '', ''),
+                    subprocess.CompletedProcess([], 0, b'original\r\n', b''),
+                    subprocess.CompletedProcess([], 0)]) as git:
+                workflow.commit_survivors([receipt])
+            self.assertEqual(['git', 'cat-file', '--filters', 'HEAD:' + name], git.call_args_list[1].args[0])
+
 
 if __name__ == '__main__':
     unittest.main()

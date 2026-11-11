@@ -172,7 +172,8 @@ def commit_survivors(receipts):
             raise RuntimeError('refused non-native survivor path: ' + name)
         if hashlib.sha256(path.read_bytes()).hexdigest() != digest:
             raise RuntimeError('survivor changed after proof: ' + name)
-        previous = subprocess.run(['git', 'show', 'HEAD:' + name], cwd=ROOT, capture_output=True)
+        # Compare checkout bytes, including configured CRLF filters, rather than raw LF blobs.
+        previous = subprocess.run(['git', 'cat-file', '--filters', 'HEAD:' + name], cwd=ROOT, capture_output=True)
         if previous.returncode or hashlib.sha256(previous.stdout).hexdigest() != originals.get(name):
             raise RuntimeError('automatic commit refused: path had pre-existing edits: ' + name)
     if paths:
