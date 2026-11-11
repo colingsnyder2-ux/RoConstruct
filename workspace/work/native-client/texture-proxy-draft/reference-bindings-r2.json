@@ -1,0 +1,348 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "__ehhandler$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z",
+    "address": "007edd8a"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\texture-proxy-proof\\objects\\445eed974858b5c6\\candidate.obj": "a5bcb3dae93de50adad1d92e52b5839b6f18d857837defc19d60d0de83d308d6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5bln5252\\owners.json": "9f9a81f53f370225761987b9c04cb7235ef75149d08ac30dc69ab28d02e04e4b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5bln5252\\import-thunk-identities-as-owner.json": "c6570d46e32a13c7a0df620ba7c312743fff6d55320d841c78325c9c70aff640"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?resolve@MegaTextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z",
+    "address": "007ae4e0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\texture-proxy-proof\\objects\\479fa31e22b97454\\candidate.obj": "8fd59933a226a7f6e031cb23e00c6e64a62046f0db6250e41a8e8b36bd7fc9d3",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5bln5252\\owners.json": "9f9a81f53f370225761987b9c04cb7235ef75149d08ac30dc69ab28d02e04e4b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5bln5252\\import-thunk-identities-as-owner.json": "c6570d46e32a13c7a0df620ba7c312743fff6d55320d841c78325c9c70aff640"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??0GImage@G3D@@QAE@HHH@Z",
+   "address": "0050eea0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??1GImage@G3D@@UAE@XZ",
+   "address": "0050e230",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ",
+   "address": "0045ad90",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?color3@BrickColor@RBX@@QBE?AVColor3@G3D@@XZ",
+   "address": "005b6270",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?colorPalette@BrickColor@RBX@@SAABV?$vector@VBrickColor@RBX@@V?$allocator@VBrickColor@RBX@@@std@@@std@@XZ",
+   "address": "005b5c80",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?shadePixel@TextureProxy@Render@RBX@@SAXABVColor3uint8@G3D@@AAV45@@Z",
+   "address": "007add10",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?stringify@RenderNew@RBX@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@N@Z",
+   "address": "007adbe0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__catch$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$0",
+   "address": "007afa1b",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?resolve@MegaTextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z",
+   "address": "007edae1",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$10",
+   "address": "007edbb1",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$11",
+   "address": "007edbc2",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$12",
+   "address": "007edbca",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$13",
+   "address": "007edbd3",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$14",
+   "address": "007edbdb",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$15",
+   "address": "007edbe7",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$16",
+   "address": "007edbf3",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$17",
+   "address": "007edbfc",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$18",
+   "address": "007edc05",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$19",
+   "address": "007edc0e",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$2",
+   "address": "007edb60",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$20",
+   "address": "007edc16",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$21",
+   "address": "007edc1f",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$22",
+   "address": "007edc2b",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$23",
+   "address": "007edc37",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$24",
+   "address": "007edc43",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$25",
+   "address": "007edc4f",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$26",
+   "address": "007edc5b",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$27",
+   "address": "007edc67",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$28",
+   "address": "007edc70",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$29",
+   "address": "007edc79",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$3",
+   "address": "007edb69",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$30",
+   "address": "007edc82",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$31",
+   "address": "007edc8e",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$32",
+   "address": "007edc9a",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$33",
+   "address": "007edca3",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$34",
+   "address": "007edcac",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$35",
+   "address": "007edcb5",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$36",
+   "address": "007edcc1",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$37",
+   "address": "007edccd",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$38",
+   "address": "007edcd9",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$39",
+   "address": "007edce5",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$4",
+   "address": "007edb72",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$40",
+   "address": "007edcf1",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$41",
+   "address": "007edcfd",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$42",
+   "address": "007edd09",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$43",
+   "address": "007edd15",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$44",
+   "address": "007edd1e",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$45",
+   "address": "007edd27",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$46",
+   "address": "007edd2f",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$47",
+   "address": "007edd3b",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$48",
+   "address": "007edd44",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$49",
+   "address": "007edd50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$5",
+   "address": "007edb7b",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$50",
+   "address": "007edd5c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$51",
+   "address": "007edd68",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$52",
+   "address": "007edd71",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$53",
+   "address": "007edd79",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$54",
+   "address": "007edd81",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$56",
+   "address": "007edbba",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$6",
+   "address": "007edb83",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$7",
+   "address": "007edb91",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$8",
+   "address": "007edb9f",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z$9",
+   "address": "007edba8",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

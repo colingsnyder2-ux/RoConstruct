@@ -69,12 +69,12 @@ def records(value):
             yield from records(child)
 
 
-def seed_evidence(root, paths):
+def seed_evidence(root, paths, strict_conflicts=True):
     symbols, bindings, blockers, inputs = {}, {}, [], {}
     def bind(symbol, target):
         target = address(target)
         if symbol in bindings and bindings[symbol] != target:
-            blockers.append('conflicting reference identity: ' + symbol)
+            bindings[symbol] = None
         else:
             bindings[symbol] = target
     for name in paths:
@@ -104,6 +104,11 @@ def seed_evidence(root, paths):
                 if hit:
                     bind(reference, hit[1])
                     symbols.setdefault(reference, set()).add(address(hit[1]))
+    for symbol, target in bindings.items():
+        if target is None:
+            symbols.pop(symbol, None)
+            if strict_conflicts:
+                blockers.append('conflicting reference identity: ' + symbol)
     return symbols, bindings, blockers, inputs
 
 
@@ -149,7 +154,20 @@ def audit_references(raw, symbol, body, target, target_relocs, va, targets, bind
         name, value, number, _ = symbols[index]
         base = (original - stored) & 0xffffffff
         known = bindings.get(name)
-        if known is not None and int(known, 16) != base:
+        if name in bindings and known is None:
+            errors.append('conflicting reference identity: ' + name)
+            return
+        literal = re.fullmatch(r'__real@([0-9a-fA-F]{8}|[0-9a-fA-F]{16})', name)
+        is_local_literal = False
+        if literal and stored == 0 and number > 0:
+            table = sections[number - 1]
+            encoded = bytes.fromhex(literal.group(1))[::-1]
+            is_local_literal = (table[0].rstrip(b'\0') == b'.rdata' and
+                                not table[9] & 0x80000000 and value == 0 and
+                                table[3] == len(encoded) and table[4] and
+                                raw[table[4]:table[4] + len(encoded)] == encoded and
+                                table[7] == 0)
+        if known is not None and int(known, 16) != base and not is_local_literal:
             errors.append('reference identity differs: ' + name)
             return
         if number - 1 == section and known is None and base == (va + value - start) & 0xffffffff:
@@ -163,6 +181,9 @@ def audit_references(raw, symbol, body, target, target_relocs, va, targets, bind
         following = [v for _, v, n, _ in symbols.values() if n == number and v > value]
         end = min(following + [rawsize])
         begin = value + stored
+        if begin == end and stored > 0 and value < end and depth <= 6:
+            reference(index, 0, base, depth + 1)
+            return
         if depth > 6 or not value <= begin < end:
             errors.append('unproven data span: ' + name)
             return
@@ -231,6 +252,9 @@ def harvest(raw, targets, names, bindings):
                 continue
             analogs.append(addr)
             # Exact bytes alone cannot assign a constructor, tiny alias or library helper an identity.
+            if symbol in bindings and bindings[symbol] is None:
+                rejections.append({'addr': addr, 'errors': ['conflicting symbol identity: ' + symbol]})
+                continue
             if addr not in names.get(symbol, ()):
                 rejections.append({'addr': addr, 'errors': ['symbol identity not established by current reference evidence']})
                 continue
@@ -303,7 +327,7 @@ def _run(config, output, root=ROOT):
         name = spec['name']
         if not re.fullmatch(r'[A-Za-z0-9_.-]+', name):
             raise ValueError('family name must be a filename-safe label')
-        names, bindings, blockers, evidence_inputs = seed_evidence(root, spec.get('evidence', []))
+        names, bindings, blockers, evidence_inputs = seed_evidence(root, spec.get('evidence', []), strict_conflicts=False)
         providers, requires, jobs = [], set(spec.get('requires', [])), []
         family_rows, family_inputs, family_exact = [], dict(evidence_inputs), set()
         for source_name in spec['sources']:
@@ -388,6 +412,8 @@ def _run(config, output, root=ROOT):
                 # New shadow headers make this batch's proof stale even if prior headers did not change.
                 family_inputs[str(source)] = 'include-search-changed'
         for symbol, addr in bindings.items():
+            if addr is None:
+                continue
             if symbol in baseline and baseline[symbol]['address'] != addr:
                 raise ValueError('conflicting original symbol identity across families: ' + symbol)
             baseline[symbol] = {'address': addr, 'identity': 'original:' + targets.identity + ':' + addr,

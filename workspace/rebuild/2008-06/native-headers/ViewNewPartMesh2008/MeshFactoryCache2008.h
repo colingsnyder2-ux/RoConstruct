@@ -2,7 +2,9 @@
 // >>> native-status (generated) -- do not edit >>>
 // MeshFactoryCache2008 | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src c57578ba | roc native-status --write
+// <<< native-status | src 2d7429f6 | roc native-status --write
+// INFERRED: private factory/cache names remain descriptive; identities use original constructor/RTTI/relocation anchors.
+
 // 2008-06 native RBX::ViewNew::MeshFactory<Mesh, numMeshes> static caches (inactive): definitions of the nested types
 // and static members declared in ViewNew/MeshFactory.h. One instance per mesh: PBBMesh (4), SphereMesh,
 // CylinderAlongXMesh, TorsoMesh, HeadMesh, WedgeMesh (1 each).

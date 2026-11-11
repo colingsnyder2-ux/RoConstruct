@@ -1,0 +1,35 @@
+{
+ "scope": "Inferred names, not original symbol proof",
+ "rows": [
+  {
+   "symbol": "?get2DStringBounds@VRbxFont@Ogre@@QBE?AVVector2@G3D@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@NW4Spacing@12@@Z",
+   "address": "00684640",
+   "inferred_name": true,
+   "evidence": "INFERRED method spelling from G3D6.09 GFont port; unique238B body at00684640; native fields proven from constructor and renderer callers."
+  },
+  {
+   "symbol": "?loadTexture@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAVImage@Ogre@@@Z",
+   "address": "007adfb0",
+   "inferred_name": true,
+   "evidence": "INFERRED spelling from exact1016B image loader donor; native TextureProxy caller and unique body establish address; real Ogre/G3D/StandardOut headers."
+  },
+  {
+   "symbol": "?updateLighting@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z",
+   "address": "004dab50",
+   "evidence": "INFERRED spelling; address bound from original caller relocation.",
+   "inferred_name": true
+  },
+  {
+   "symbol": "?requestContentFile@ContentProvider@RBX@@QAEXABVContentId@2@PAW4Status@12@AAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "00562670",
+   "evidence": "INFERRED spelling; address bound from original caller relocation.",
+   "inferred_name": true
+  },
+  {
+   "symbol": "?fontTextureCount@Ogre@@3HA",
+   "address": "0097dbc8",
+   "inferred_name": true,
+   "evidence": "INFERRED counter spelling; original constructor references bind address."
+  }
+ ]
+}

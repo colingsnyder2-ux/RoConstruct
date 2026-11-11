@@ -31,7 +31,7 @@ from roc import match  # noqa: E402
 INVENTORY = HERE / 'ogre-native-full-inventory-all.json'
 CACHE = HERE / 'prove-cache'            # one ledger row per source (the full ledger is >100 MB)
 INFERRED = HERE / 'inferred-name-identities.json'
-REGISTRY = HERE / 'ogre-names-registry.json'
+REGISTRY = ROOT / 'work/2008-06/identity-registry.json'   # authoritative placeholder flags
 LOG = HERE / 'prove-log.jsonl'
 SCOPE = ('Ogre::', 'RBX::RenderNew', 'RBX::ViewNew')
 
@@ -121,6 +121,34 @@ def summary(manifest, roots, sources=None):
     return by_file, exact
 
 
+def report(out, args):
+    manifest = out / 'manifest.json'
+    for row in rows(manifest):
+        if args.why is not None and row['status'] != 'inactive_exact' and args.why in row['symbol'] and (row.get('candidates') or args.why):
+            err = next((e for r in row.get('rejections', []) for e in r.get('errors', [])), '-')
+            print('  %s %s %sB cand=%s %s' % (row['status'][:5], row['symbol'][:60], row.get('size'), (row.get('candidates') or [])[:2], err[:110]))
+    if args.diff:
+        objs = sorted(out.glob('objects/*/*.obj'), key=lambda p: p.stat().st_mtime)
+        sym = getattr(args, 'objdiff_symbol', None) or next((r['symbol'] for r in rows(manifest) if args.diff in (r.get('candidates') or [])), None)
+        if objs and sym:
+            run = subprocess.run([sys.executable, 'roc.py', 'native-asm', '2008-06', args.diff, '--obj', str(objs[-1]), '--sym', sym,
+                                  '--context', '1', '--head', '40'], cwd=ROOT, capture_output=True, text=True)
+            print(run.stdout[-3000:])
+            if getattr(args, 'objdiff_symbol', None):
+                import native_repair_tools as tools
+                try:
+                    directory = tools.run_dir('objdiff', args.diff)
+                    print(json.dumps({'objdiff': tools.diff_object(args.diff, sym, objs[-1], directory)}))
+                except (OSError, ValueError, RuntimeError, subprocess.TimeoutExpired) as error:
+                    print('objdiff unavailable: ' + str(error)[:500])
+        else:
+            logs = sorted(out.glob('objects/*/*.log'), key=lambda p: p.stat().st_mtime)
+            print('no object/symbol; last compile errors:' if logs else 'nothing to diff')
+            if logs:
+                for line in [l[-200:] for l in logs[-1].read_text(errors='replace').splitlines() if ' error ' in l][:6]:
+                    print(line)
+
+
 def size(addrs):
     return sum(len(match.target('2008-06', a)[0]) for a in addrs)
 
@@ -132,9 +160,14 @@ def main():
     ap.add_argument('--rounds', type=int, default=4)
     ap.add_argument('--infer-names', action='store_true')
     ap.add_argument('--quiet', action='store_true')
+    ap.add_argument('--why', metavar='FILTER', help='after the proof, list non-exact symbols whose name contains FILTER ("" = all named)')
+    ap.add_argument('--diff', metavar='ADDR', help='after the proof, assembly diff of ADDR against the file newest object')
+    ap.add_argument('--objdiff-symbol', metavar='SYMBOL', help='also generate an objdiff report for this decorated symbol; requires --diff and one source')
     args = ap.parse_args()
     if not args.files and not args.all:
         ap.error('give FILE(s) or --all')
+    if args.objdiff_symbol and (not args.diff or args.all or len(args.files) != 1):
+        ap.error('--objdiff-symbol requires --diff and exactly one source')
     import run_all
     roots = set(run_all.roots(SCOPE))
     inventory = load(INVENTORY, None)
@@ -189,6 +222,8 @@ def main():
         print(json.dumps(row), flush=True)
         if not found['bindings'] and not added:
             break
+    if args.why is not None or args.diff:
+        report(out, args)
     # Persist new sources/evidence; merge with the file as it is now (another prove run may have added its own).
     current = load(INVENTORY, inventory)
     disk = current['families'][0]

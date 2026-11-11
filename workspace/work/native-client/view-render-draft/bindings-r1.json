@@ -1,0 +1,27 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?render@ViewRbxGfx@ViewNew@RBX@@UAEXPAVRenderDevice@G3D@@@Z",
+    "address": "004daf10"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\view-render-proof\\objects\\f41261388e19a69c\\candidate.obj": "b256b7a877b36ca64395090e0efcfedb2be437acf02e561d4a31e50c463b894d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-9qn170kk\\owners.json": "6604fa496427c0ba5f6abeceb0ec26671594e2977f338bb3163429e4dad3f77b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-9qn170kk\\import-thunk-identities-as-owner.json": "50be92c8465d94912d8878c67daa6829809eea70bc223ece5643892963ffc87f"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?updateLighting@ViewRbxGfx@ViewNew@RBX@@QAEXPAVVisualEngine@Ogre@@@Z",
+   "address": "004dab50",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

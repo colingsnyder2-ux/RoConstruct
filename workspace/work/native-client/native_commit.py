@@ -34,8 +34,8 @@ def main():
     if native:
         run(py, 'roc.py', 'lease', 'take', name, *native, '--hours', '1')
     try:
-        for p in native:
-            run(py, 'scripts/native_status.py', '--write', '--path', p)
+        if native:        # one banner pass for every native path (each pass indexes the whole tree)
+            run(py, 'scripts/native_status.py', '--write', *sum((['--path', p] for p in native), []))
         run('git', 'add', '-f', *paths)
         run('git', 'commit', '-q', '-m', args.message.rstrip() + TRAILER)
         print(run('git', 'log', '--oneline', '-1').stdout.strip())

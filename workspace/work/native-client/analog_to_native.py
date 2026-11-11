@@ -181,8 +181,8 @@ def beautify(*paths):
 def exact_addrs(cpath):
     manifest = HERE / 'prove-out' / ('prove-' + Path(cpath).stem) / 'manifest.json'
     data = json.loads(manifest.read_text()) if manifest.is_file() else {'families': []}
-    return {c for f in data['families'] for r in f['symbols'] if r['status'] == 'inactive_exact'
-            for c in (r.get('candidates') or [])}
+    return {r['addr'] for f in data['families'] for r in f['symbols']
+            if r['status'] == 'inactive_exact' and r.get('addr')}
 
 
 def transplant_targets(addrs):
@@ -225,6 +225,10 @@ def transplant(a, owner, leaf, method, dest):
         return 'analog defines no %s::%s' % (leaf, method)
     d = defs[-1]
     body = block(text, d.start())
+    if re.search(r'\b(?:__emit|_emit)\b|\bnativeField\s*<|\bNF\s*\(', body):
+        return 'blocked: analog requires byte emission or raw-offset receiver views'
+    if re.search(r'reinterpret_cast\s*<[^>]*char\s*\*[^>]*>\s*\(\s*(?:this|ctx|engine)\b', body):
+        return 'blocked: analog requires a raw-offset receiver; typed port needed'
     body = body[:d.start(2) - d.start()] + body[d.start(3) - d.start():]       # drop namespace qualifiers
     # Analog/fork receiver views name members by offset (field279); the native header comments them "// +0x279".
     import ogre_llm_lane as ol
