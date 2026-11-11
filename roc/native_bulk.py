@@ -29,13 +29,19 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest() if path.is_file() else None
 
 
+# Only files an #include can resolve to may shadow a fallback include. New .cpp/.obj/.log files cannot, and counting them
+# made every native class stale whenever anyone added a source file (full-census recompiles).
+INCLUDABLE = ('.h', '.hpp', '.hxx', '.inl', '.inc', '.tlh', '.tli', '.rc', '.idl')
+
+
 def search_inventory(directories):
     # File creation can shadow an unchanged fallback include without changing it.
     result = {}
     for path in sorted(set(Path(d).resolve() for d in directories)):
         if path.is_dir():
             files = [os.path.relpath(os.path.join(folder, name), path)
-                     for folder, _, names in os.walk(path) for name in names]
+                     for folder, _, names in os.walk(path) for name in names
+                     if name.lower().endswith(INCLUDABLE) or '.' not in name]
             result[str(path)] = digest(sorted(files))
     return result
 
