@@ -1,0 +1,25 @@
+{
+ "registry": "work/2008-06/identity-registry.json",
+ "rows": 54784,
+ "proved": 24957,
+ "placeholder": 29827,
+ "validation": [
+  "python -m py_compile work/native-client/build_ogre_names_registry.py work/native-client/ogre/ogre_convert.py work/native-client/ogre/run_all.py work/native-client/ogre/auto_loop.py work/native-client/rename.py",
+  "schema keys exact for all rows",
+  "run_all --scope Ogre:: --summary",
+  "run_all --scope RBX::RenderNew --summary"
+ ],
+ "runtime_executed": false,
+ "p5_p6_executed": false,
+ "draft_server": {
+  "root_cause": "Funnel /native-drafts routed to unbound loopback port 8766",
+  "fix": "started native_drafts supervise; HTTPS health returned 200",
+  "receipt": "6e34b4be73ac2a5804acb1b753f1429bcf044e569bd03b0bc349708f1a442d0b"
+ },
+ "ogre_batches": {
+  "Ogre": {"round1_new_exact": 11, "round1_new_bytes": 1146, "round2_new_exact": 0},
+  "RBX::RenderNew": {"round1_new_exact": 18, "round1_new_bytes": 1762, "round2_new_exact": 0},
+  "RBX::ViewNew": {"round1_new_exact": 18, "round1_new_bytes": 1762, "round2_new_exact": 0}
+ },
+ "next": "run isolated per-subsystem conversion batches; resolve duplicate proved symbols as ICF aliases before link selection"
+}

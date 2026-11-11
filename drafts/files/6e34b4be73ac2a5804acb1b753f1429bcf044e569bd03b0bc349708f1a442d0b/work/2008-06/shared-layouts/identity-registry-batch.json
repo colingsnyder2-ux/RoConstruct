@@ -1,0 +1,15 @@
+{
+ "registry": "work/2008-06/identity-registry.json",
+ "rows": 54784,
+ "proved": 24957,
+ "placeholder": 29827,
+ "validation": [
+  "python -m py_compile work/native-client/build_ogre_names_registry.py work/native-client/ogre/ogre_convert.py work/native-client/ogre/run_all.py work/native-client/ogre/auto_loop.py work/native-client/rename.py",
+  "schema keys exact for all rows",
+  "run_all --scope Ogre:: --summary",
+  "run_all --scope RBX::RenderNew --summary"
+ ],
+ "runtime_executed": false,
+ "p5_p6_executed": false,
+ "next": "run isolated per-subsystem conversion batches; resolve duplicate proved symbols as ICF aliases before link selection"
+}
