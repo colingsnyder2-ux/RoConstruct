@@ -1,0 +1,404 @@
+{
+  "scope": "PartChunk original-reference bindings and explicitly INFERRED identities; inactive only",
+  "rows": [
+    {
+      "symbol": "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ",
+      "address": "0045ad90",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "__ehhandler$?invalidateMaterial@PartChunk@ViewNew@RBX@@IAEXXZ",
+      "address": "007ca4e8",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "__ehhandler$?invalidateMesh@PartChunk@ViewNew@RBX@@IAEXXZ",
+      "address": "007ca4e8",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "__imp__InterlockedDecrement@4",
+      "address": "008021ac",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "__imp__InterlockedIncrement@4",
+      "address": "008021b0",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "??3@YAXPAX@Z",
+      "address": "006a067a",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?invalidateMaterial@PartChunk@ViewNew@RBX@@IAEXXZ",
+      "address": "004e68b0",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?invalidateMesh@PartChunk@ViewNew@RBX@@IAEXXZ",
+      "address": "004e6740",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?isSurfaceDescriptor@Surfaces@RBX@@SA_NABVPropertyDescriptor@Reflection@2@@Z",
+      "address": "005ec9f0",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?prop_RenderImportance@PartInstance@RBX@@2V?$PropDescriptor@VPartInstance@RBX@@M@Reflection@2@B",
+      "address": "0097626c",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?prop_Size@PartInstance@RBX@@2V?$PropDescriptor@VPartInstance@RBX@@VVector3@G3D@@@Reflection@2@B",
+      "address": "00976148",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?prop_Transparency@PartInstance@RBX@@2V?$PropDescriptor@VPartInstance@RBX@@M@Reflection@2@B",
+      "address": "00976128",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?prop_shapeXml@PartInstance@RBX@@2V?$EnumPropDescriptor@VPartInstance@RBX@@W4PartType@Part@2@@Reflection@2@B",
+      "address": "009760a8",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "??0PartChunk@ViewNew@RBX@@IAE@MABV?$shared_ptr@VPartInstance@RBX@@@boost@@PAVViewBase@2@@Z",
+      "address": "004eaae0",
+      "inferred_name": true,
+      "evidence": "INFERRED: unique 812-byte target, RTTI PartChunk and known constructor allocation/call site 004ebcc0"
+    },
+    {
+      "symbol": "??$?0V?$bind_t@XV?$mf1@XVPartChunk@ViewNew@RBX@@PBVPropertyDescriptor@Reflection@3@@_mfi@boost@@V?$list2@V?$value@PAVPartChunk@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@?$slot@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABV?$bind_t@XV?$mf1@XVPartChunk@ViewNew@RBX@@PBVPropertyDescriptor@Reflection@3@@_mfi@boost@@V?$list2@V?$value@PAVPartChunk@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@1@@Z",
+      "address": "004ea7c0",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "??$?0V?$bind_t@XV?$mf1@XVPartChunk@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVPartChunk@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABV?$bind_t@XV?$mf1@XVPartChunk@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVPartChunk@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@1@@Z",
+      "address": "004ea720",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "??$visitChildren@V?$bind_t@XV?$mf1@XVPartChunk@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVPartChunk@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@Instance@RBX@@QBEXV?$bind_t@XV?$mf1@XVPartChunk@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVPartChunk@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@Z",
+      "address": "004e7ed0",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "??0Chunk@RenderBase@RBX@@QAE@M@Z",
+      "address": "004e8160",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "??0CoordinateFrame@G3D@@QAE@XZ",
+      "address": "004782d0",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "??1?$holder@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@any@boost@@UAE@XZ",
+      "address": "0041a8f0",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "??1?$holder@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@boost@@@any@boost@@UAE@XZ",
+      "address": "0041a8f0",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "??1?$slot@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@XZ",
+      "address": "0049f710",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "??1?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@XZ",
+      "address": "0049f710",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "??1PartChunk@ViewNew@RBX@@UAE@XZ",
+      "address": "004e8250",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "??1connection@signals@boost@@QAE@XZ",
+      "address": "00595370",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "??4scoped_connection@signals@boost@@QAEAAV012@ABVconnection@12@@Z",
+      "address": "00595540",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "??_9PartChunk@ViewNew@RBX@@$BCM@AE",
+      "address": "004e5f10",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "??_EPartChunk@ViewNew@RBX@@UAEPAXI@Z",
+      "address": "004e8fc0",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?cachesShadows@Chunk@RenderBase@RBX@@UBE_NXZ",
+      "address": "0060a2f0",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?castsShadows@PartChunk@ViewNew@RBX@@UBE_NXZ",
+      "address": "00565950",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?cframe@PartChunk@ViewNew@RBX@@UAEABVCoordinateFrame@G3D@@XZ",
+      "address": "004e5ff0",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?connect@?$TSignalDesc@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@Z@Reflection@RBX@@QAE?AVconnection@signals@boost@@PAVSignalSource@23@ABV?$slot@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@6@H@Z",
+      "address": "0042b680",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?connect@?$TSignalDesc@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@QAE?AVconnection@signals@boost@@PAVSignalSource@23@ABV?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@boost@@@6@H@Z",
+      "address": "004a3340",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?cullable@PartChunk@ViewNew@RBX@@UBE_NXZ",
+      "address": "00565950",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?event_ancestryChanged@Instance@RBX@@2V?$SignalDesc@VInstance@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@2@A",
+      "address": "00973c38",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?event_childAdded@Instance@RBX@@2V?$SignalDesc@VInstance@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@2@A",
+      "address": "00973e90",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?event_childRemoved@Instance@RBX@@2V?$SignalDesc@VInstance@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@2@A",
+      "address": "00973c6c",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?event_propertyChanged@Instance@RBX@@2V?$SignalDesc@VInstance@RBX@@$$A6AXPBVPropertyDescriptor@Reflection@2@@Z@Reflection@2@A",
+      "address": "00973f48",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?getMesh@PartChunk@ViewNew@RBX@@UAE?AV?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@XZ",
+      "address": "004e6b50",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?getSortValue@Chunk@RenderBase@RBX@@UBEMXZ",
+      "address": "004e5b70",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?onAncestorChanged@PartChunk@ViewNew@RBX@@AAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+      "address": "004e6520",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?onChildAdded@PartChunk@ViewNew@RBX@@AAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+      "address": "004ea5e0",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?onChildRemoved@PartChunk@ViewNew@RBX@@AAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+      "address": "004e73b0",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?onPropertyChanged@PartChunk@ViewNew@RBX@@MAEXPBVPropertyDescriptor@Reflection@3@@Z",
+      "address": "004e6a30",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?renderShadows@Chunk@RenderBase@RBX@@UAEXPAVRenderDevice@G3D@@ABVGLight@5@_NM@Z",
+      "address": "004e83a0",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?setSortValue@Chunk@RenderBase@RBX@@UAEXM@Z",
+      "address": "004e5b60",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "__ehhandler$??0PartChunk@ViewNew@RBX@@IAE@MABV?$shared_ptr@VPartInstance@RBX@@@boost@@PAVViewBase@2@@Z",
+      "address": "007ca93a",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "??0Decal@ViewNew@RBX@@QAE@PAV02@PAVPartInstance@2@PAVViewBase@2@@Z",
+      "address": "004eae10",
+      "inferred_name": true,
+      "evidence": "INFERRED: unique matching RTTI vtable and distinct original polygon offset constant (-0.2/-0.1); other byte-compatible candidate rejects both."
+    },
+    {
+      "symbol": "??0Texture@ViewNew@RBX@@QAE@PAV02@PAVPartInstance@2@PAVViewBase@2@@Z",
+      "address": "004eafd0",
+      "inferred_name": true,
+      "evidence": "INFERRED: unique matching RTTI vtable and distinct original polygon offset constant (-0.2/-0.1); other byte-compatible candidate rejects both."
+    },
+    {
+      "symbol": "??$?0V?$bind_t@XV?$mf1@XVDecal@ViewNew@RBX@@PBVPropertyDescriptor@Reflection@3@@_mfi@boost@@V?$list2@V?$value@PAVDecal@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@?$slot@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABV?$bind_t@XV?$mf1@XVDecal@ViewNew@RBX@@PBVPropertyDescriptor@Reflection@3@@_mfi@boost@@V?$list2@V?$value@PAVDecal@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@1@@Z",
+      "address": "004ea900",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "??$?0V?$bind_t@XV?$mf1@XVDecal@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVDecal@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABV?$bind_t@XV?$mf1@XVDecal@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVDecal@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@1@@Z",
+      "address": "004ea860",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "??$?0V?$bind_t@XV?$mf1@XVTexture@ViewNew@RBX@@PBVPropertyDescriptor@Reflection@3@@_mfi@boost@@V?$list2@V?$value@PAVTexture@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@?$slot@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABV?$bind_t@XV?$mf1@XVTexture@ViewNew@RBX@@PBVPropertyDescriptor@Reflection@3@@_mfi@boost@@V?$list2@V?$value@PAVTexture@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@1@@Z",
+      "address": "004eaa40",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "??$?0V?$bind_t@XV?$mf1@XVTexture@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVTexture@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABV?$bind_t@XV?$mf1@XVTexture@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVTexture@ViewNew@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@1@@Z",
+      "address": "004ea9a0",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "??$shared_from@VDecal@RBX@@@RBX@@YA?AV?$shared_ptr@VDecal@RBX@@@boost@@PAVDecal@0@@Z",
+      "address": "00618a40",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "??$shared_from@VPartInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VPartInstance@RBX@@@boost@@PAVPartInstance@0@@Z",
+      "address": "00618a40",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "??$shared_from@VTexture@RBX@@@RBX@@YA?AV?$shared_ptr@VTexture@RBX@@@boost@@PAVTexture@0@@Z",
+      "address": "00618a40",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "??_EDecal@ViewNew@RBX@@UAEPAXI@Z",
+      "address": "004e8fe0",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "??_ETexture@ViewNew@RBX@@UAEPAXI@Z",
+      "address": "004e9000",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "??_Eplaceholder@any@boost@@UAEPAXI@Z",
+      "address": "0048b250",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?connect@?$signal1@XPBVPropertyDescriptor@Reflection@RBX@@U?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@5@@boost@@QAE?AVconnection@signals@2@ABHABV?$slot@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@2@W4connect_position@42@@Z",
+      "address": "0042b400",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?connect@?$signal1@XV?$shared_ptr@VInstance@RBX@@@boost@@U?$last_value@X@2@HU?$less@H@std@@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@2@@boost@@QAE?AVconnection@signals@2@ABHABV?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@boost@@@2@W4connect_position@42@@Z",
+      "address": "004a3020",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?getMaterial@Decal@ViewNew@RBX@@UAE?AV?$ReferenceCountedPointer@VMaterialBase@RenderBase@RBX@@@G3D@@XZ",
+      "address": "004ebe70",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?getMaterial@Texture@ViewNew@RBX@@UAE?AV?$ReferenceCountedPointer@VMaterialBase@RenderBase@RBX@@@G3D@@XZ",
+      "address": "004ec070",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?onDecalAncestorChanged@Decal@ViewNew@RBX@@IAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+      "address": "004e83b0",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?onDecalPropertyChanged@Decal@ViewNew@RBX@@IAEXPBVPropertyDescriptor@Reflection@3@@Z",
+      "address": "004e6b90",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?onTextureAncestorChanged@Texture@ViewNew@RBX@@IAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+      "address": "004e6630",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?onTexturePropertyChanged@Texture@ViewNew@RBX@@IAEXPBVPropertyDescriptor@Reflection@3@@Z",
+      "address": "004e6bc0",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?sig@?$TSignalDesc@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@Z@Reflection@RBX@@IBEAAVTSignalInstance@123@AAVSignalSource@23@@Z",
+      "address": "005875e0",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?sig@?$TSignalDesc@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@IBEAAVTSignalInstance@123@AAVSignalSource@23@@Z",
+      "address": "005875e0",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?updateMesh@Decal@ViewNew@RBX@@EAEXXZ",
+      "address": "004f0300",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?updateMesh@Texture@ViewNew@RBX@@EAEXXZ",
+      "address": "004f0540",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "__ehhandler$??0Decal@ViewNew@RBX@@QAE@PAV02@PAVPartInstance@2@PAVViewBase@2@@Z",
+      "address": "007ca9aa",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "__ehhandler$??0Texture@ViewNew@RBX@@QAE@PAV02@PAVPartInstance@2@PAVViewBase@2@@Z",
+      "address": "007ca9aa",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "__ehhandler$??1?$holder@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@any@boost@@UAE@XZ",
+      "address": "007d9898",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "__ehhandler$??1?$holder@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@boost@@@any@boost@@UAE@XZ",
+      "address": "007d9898",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "__ehhandler$??1?$slot@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@XZ",
+      "address": "007d0738",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "__ehhandler$??1?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@XZ",
+      "address": "007d0738",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "__ehhandler$??R?$mf1@XVDecal@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@QBEXPAVDecal@ViewNew@RBX@@V?$shared_ptr@VInstance@RBX@@@2@@Z",
+      "address": "007c0418",
+      "evidence": "original relocation target at an exact owner"
+    },
+    {
+      "symbol": "?onSpecialShapeChanged@PartChunk@ViewNew@RBX@@AAEXXZ",
+      "address": "004e6a20",
+      "inferred_name": true,
+      "evidence": "INFERRED: upstream callback and original bound invalidateMesh then invalidateMaterial uniquely distinguish six byte-compatible candidates."
+    }
+  ]
+}
