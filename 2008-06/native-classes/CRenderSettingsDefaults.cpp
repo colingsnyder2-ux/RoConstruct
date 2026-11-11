@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// CRenderSettingsDefaults | 2008-06 | inactive
-// unmapped (no binary link) | by -
+// CRenderSettingsDefaults | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src ff937c28 | roc native-status --write
 #include "CRenderSettings.h"
 

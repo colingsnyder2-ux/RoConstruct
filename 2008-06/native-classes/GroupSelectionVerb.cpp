@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// GroupSelectionVerb | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by king_originala (deepseek:deepseek-chat)
+// <<< native-status | src e3bacb13 | roc native-status --write
 #include "StandardVerbs.h"
 #include "v8datamodel/Workspace.h"
 #include "v8datamodel/DataModel.h"

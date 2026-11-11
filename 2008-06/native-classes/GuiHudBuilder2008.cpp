@@ -9,6 +9,10 @@
 // native-headers/gui/Gui.h (pass 2) declares TopMenuBar(const std::string&, Layout::Style, bool = false) (00601fd0 pushes
 // 0 at 00602027) and TextDisplay setFontSize / setFontColor / setBorderColor inline (00604dd8, 00604e16, 00604e2e).
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// GuiHudBuilder2008 | 2008-06 | draft (no current byte proof)
+// 0/11 mapped addresses byte-exact | 11 unproved | no mapped strings | by EspClaude (+3) (deepseek:deepseek-chat)
+// <<< native-status | src 8f7cfd50 | roc native-status --write
 #include "GuiHud2008/GuiBuilder2008.h"
 #include "gui/HealthHud.h"
 #include "gui/ScoreHud.h"

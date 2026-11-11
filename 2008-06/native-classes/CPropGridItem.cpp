@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CPropGridItem | 2008-06 | draft (no current byte proof)
+// 0/5 mapped addresses byte-exact | 5 unproved | no mapped strings | by king_originala (+2) (mixed 3)
+// <<< native-status | src d46c7ffa | roc native-status --write
 #include "CPropGrid.h"
 #include "reflection/object.h"
 #include <algorithm>

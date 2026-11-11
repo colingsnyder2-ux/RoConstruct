@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// CRenderSettings | 2008-06 | 8 byte-exact, inactive (not link-selected)
+// 8/8 mapped addresses byte-exact | 0 unproved | no mapped strings | by tester (+3) (mixed 3)
+// <<< native-status | src 7126ec99 | roc native-status --write
 #include "CRenderSettings.h"
 #include "reflection/enumconverter.h"
 #include <GLG3D/DXCaps.h>

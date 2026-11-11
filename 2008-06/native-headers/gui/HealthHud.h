@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// HealthHud | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 9db5cbce | roc native-status --write
 // 2008-06 native RBX::HealthHud (inactive). Shape after the donor tools/rbxgs gui/HealthHud.h. Read from the binary
 // (tests/record_native_widget.py checks it):
 //   HealthHud  vtable 0084bdcc .?AVHealthHud@RBX@@ -> GuiItem -> Instance (+ GuiTarget +0x130). Constructor 00656490:

@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// FilteredSelectionFactory | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 3e2d4d0e | roc native-status --write
 #include <boost/thread/once.hpp>
 #include "v8datamodel/Selection.h"
 #include "v8datamodel/PVInstance.h"

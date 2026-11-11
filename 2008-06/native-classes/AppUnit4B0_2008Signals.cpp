@@ -11,6 +11,10 @@
 //     (the void() pair 004b1c60 / 004b1d50 is counted by humanoid2008);
 //   * SignalDescImpl<0, void()>::fire 004b5f40, SignalDescImpl<2, void(std::string, bool)>::fire 004b6040 and the
 //     signal2 slot_call_iterator caller 004b4fb0.
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit4B0_2008Signals | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src fca1edf3 | roc native-status --write
 #include "reflection/signal.h"
 #include <boost/any.hpp>
 #include <boost/function.hpp>

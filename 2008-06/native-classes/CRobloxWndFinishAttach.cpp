@@ -1,6 +1,10 @@
 // CRobloxWnd::finishAttach (0045ead0) - native 2008-06.
 // Layout: dataModel at 0x6c, gWindow at 0x70, adorn at 0xa4.
 // Bodies recovered from disassembly of 0045ead0.
+// >>> native-status (generated) -- do not edit >>>
+// CRobloxWndFinishAttach | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by king_originala (deepseek:deepseek-flash)
+// <<< native-status | src a992974f | roc native-status --write
 #include "../native-headers/CRobloxView.h"
 
 // 0045ead0

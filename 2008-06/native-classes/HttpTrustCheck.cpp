@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// HttpTrustCheck | 2008-06 | inactive
-// unmapped (no binary link) | by -
+// HttpTrustCheck | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 5760f44f | roc native-status --write
 #define _SCL_SECURE_NO_DEPRECATE
 #include "util/Http.h"

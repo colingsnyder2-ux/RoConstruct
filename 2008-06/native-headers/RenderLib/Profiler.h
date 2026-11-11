@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// Profiler | 2008-06 | inactive
-// unmapped (no binary link) | by -
+// Profiler | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src d03e4358 | roc native-status --write
 #include <string>
 

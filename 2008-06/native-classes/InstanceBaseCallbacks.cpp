@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// InstanceBaseCallbacks | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/2 mapped addresses byte-exact | 1 unproved | no mapped strings | by auto
+// <<< native-status | src baa292c7 | roc native-status --write
 #include "v8tree/Instance.h"
 
 #ifndef NATIVE_INSTANCE_EXTERNAL_BASE_CALLBACKS

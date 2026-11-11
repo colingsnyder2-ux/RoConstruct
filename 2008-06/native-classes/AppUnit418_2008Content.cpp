@@ -7,6 +7,10 @@
 //   * Creatable<Instance>::create<ContentProvider>() 0041e5d0 (120 B; ServiceProvider::create reaches it, there is no
 //     Creator: ContentProvider is DescribedNonCreatable);
 //   * Name::doDeclare<sContentProvider>() 0041dfe0 and callDoDeclare 0041e0f0.
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit418_2008Content | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 9a857ac9 | roc native-status --write
 #include "util/NativeContentProvider.h"
 
 namespace RBX

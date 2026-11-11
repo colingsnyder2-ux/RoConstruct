@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// GuidRegistryMutex | 2008-06 | draft (no current byte proof)
+// 0/3 mapped addresses byte-exact | 3 unproved | no mapped strings | by auto (+2) (mixed 2)
+// <<< native-status | src 25589d8e | roc native-status --write
 #include <windows.h>
 #include "util/GuidRegistry.h"
 

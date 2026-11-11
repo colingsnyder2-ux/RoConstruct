@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Decal | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src b0225ab3 | roc native-status --write
 #include "reflection/reflection.h"
 #include "v8datamodel/FaceInstance.h"
 #include "util/TextureId.h"

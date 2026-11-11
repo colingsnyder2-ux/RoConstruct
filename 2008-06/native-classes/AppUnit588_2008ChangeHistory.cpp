@@ -5,6 +5,10 @@
 // HistoryItem* / HistoryRecord* native-classes (their owners' per-method trials) into one unit; the original
 // Instance::event_itemChanged definition is not part of this unit (its initializer is at 007f344b) and is omitted.
 // Verified by tests/record_native_app_unit588_2008.py.
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit588_2008ChangeHistory | 2008-06 | draft (no current byte proof)
+// 0/35 mapped addresses byte-exact | 35 unproved | no mapped strings | by Espeon (+5) (mixed 5)
+// <<< native-status | src 4c0c550e | roc native-status --write
 #include "v8datamodel/ChangeHistoryService.h"
 #include "v8datamodel/HistoryRecord.h"
 #include "v8tree/Instance.h"

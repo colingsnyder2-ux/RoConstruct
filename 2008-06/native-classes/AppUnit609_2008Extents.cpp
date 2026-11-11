@@ -7,6 +7,10 @@
 // std::numeric_limits<float> infinity at 0080250c), read by express / toWorldSpace.
 // Codegen analog: bodies follow the donor util/Extents.cpp shape; the recorder proves each against the bytes.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit609_2008Extents | 2008-06 | draft (no current byte proof)
+// 0/10 mapped addresses byte-exact | 10 unproved | no mapped strings | by auto (+3) (mixed 5)
+// <<< native-status | src 74409360 | roc native-status --write
 #include "util/Extents.h"
 #include "util/Math.h"
 

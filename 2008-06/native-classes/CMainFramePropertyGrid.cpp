@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// CMainFramePropertyGrid | 2008-06 | inactive
-// unmapped (no binary link) | by -
+// CMainFramePropertyGrid | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by colin (roc repair)
 // <<< native-status | src 6e5c572c | roc native-status --write
 #include "CMainFrame.h"
 #include "v8datamodel/ToolsPart.h"

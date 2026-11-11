@@ -4,6 +4,10 @@
 // ~FaceInstance 00597500 are counted by work/2008-06/shared-layouts/face-instance-lifetime.json (FaceInstanceLifetime.cpp),
 // not here. setFace: face +0x140 (constructor store `mov [esi+0x140], 5`), then raisePropertyChanged(prop_Face 0097b57c).
 // Verified by tests/record_native_app_unit5e8_2008.py.
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit5E8_2008FaceInstance | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by king_originala (chatgpt:gpt-6.1-sol)
+// <<< native-status | src 89856234 | roc native-status --write
 #include "v8datamodel/FaceInstance.h"
 #include "v8datamodel/PartInstance.h"
 

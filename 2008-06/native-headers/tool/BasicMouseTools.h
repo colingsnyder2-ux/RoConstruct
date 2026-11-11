@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// BasicMouseTools | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src ddaa9362 | roc native-status --write
 
 #include "v8datamodel/MouseCommand.h"
 #include "v8datamodel/PartInstance.h"

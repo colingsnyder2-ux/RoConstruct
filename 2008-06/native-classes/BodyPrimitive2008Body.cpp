@@ -2,6 +2,10 @@
 // SimBody layouts of native-headers/v8kernel/Body2008.h (SimBody 0xb4: constructor 00658ae0, step 00658fb0, Kernel
 // insertBody 005fb0e0). Verified by tests/record_native_body_primitive2008.py.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// BodyPrimitive2008Body | 2008-06 | 2 byte-exact, inactive (not link-selected)
+// 2/25 mapped addresses byte-exact | 23 unproved | no mapped strings | by king_originala (+5) (mixed 7)
+// <<< native-status | src 30fbe380 | roc native-status --write
 #include <boost/thread/once.hpp>
 #include <limits.h>
 #include "v8kernel/Body2008.h"

@@ -8,6 +8,10 @@
 // recorder's layout probe). Vtables 0081b390 / 0081b39c (RTTI), base EventDataBase (vtable 0080f860).
 // The template bodies come from the native util/MarshaledListener.h (read-only); this unit only names the two
 // specialisations the binary emits here.
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit460_2008MarshaledEventData | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 1964bcdf | roc native-status --write
 #include "util/MarshaledListener.h"
 #include "v8tree/Instance.h"
 #include "v8tree/PropertyChanged.h"

@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CSettingsExplorer | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 7ba92d21 | roc native-status --write
 #include "CInstanceExplorer.h"
 
 // CRuntimeClass 0081bdac (DYNCREATE, size 0x3cc == CInstanceExplorer, create 00466b90: the implicit constructor

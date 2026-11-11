@@ -1,4 +1,8 @@
 // Inactive native 2008-06 CRobloxModule (native-headers/AppLeaves2008/RobloxModule2008.h).
+// >>> native-status (generated) -- do not edit >>>
+// AppLeaves2008RobloxModule | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 925ca5ee | roc native-status --write
 #include "AppLeaves2008/RobloxModule2008.h"
 
 CRobloxModule _AtlModule;   // 0096dbb4: dynamic initializer 007ef7d0, atexit destructor 007fae10

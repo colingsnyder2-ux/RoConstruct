@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
+// >>> native-status (generated) -- do not edit >>>
+// OgreRbxEntity | 2008-06 | draft (no current byte proof)
+// 0/3 mapped addresses byte-exact | 3 unproved | no mapped strings | by colin (chatgpt:gpt-6.1-sol)
+// <<< native-status | src cddb2cdb | roc native-status --write
 #include "OgreRbx/RbxEntity2008.h"
 #include "AppUnit67C_2008/RbxSubEntity2008.h"
 #include <OgreSubEntity.h>
@@ -45,3 +49,7 @@ namespace Ogre
 		return subEntity;
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template unsigned char * std::vector<unsigned char,class std::allocator<unsigned char> >::_Ucopy<unsigned char const *>(unsigned char const *,unsigned char const *,unsigned char *);
+template unsigned char * std::vector<unsigned char,class std::allocator<unsigned char> >::_Umove<unsigned char *>(unsigned char *,unsigned char *,unsigned char *);

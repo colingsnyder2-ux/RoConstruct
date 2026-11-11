@@ -1,7 +1,7 @@
 // Request and read bodies match; other stream helpers and runtime ABI remain unverified.
 // >>> native-status (generated) -- do not edit >>>
-// HttpWinHttp | 2008-06 | inactive
-// unmapped (no binary link) | by -
+// HttpWinHttp | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by EspClaude (deepseek:deepseek-chat)
 // <<< native-status | src 2acebad0 | roc native-status --write
 #define NDEBUG 1
 #include <shlwapi.h>

@@ -1,5 +1,9 @@
 // 2008-06 native RBX::HealthHud unit (inactive): 00656490..00656940.
 // Layout and addresses in native-headers/gui/HealthHud.h; verified by tests/record_native_widget.py.
+// >>> native-status (generated) -- do not edit >>>
+// HealthHud | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/1 mapped addresses byte-exact | 0 unproved | no mapped strings | by EspClaude (roc repair)
+// <<< native-status | src 2ea2df9b | roc native-status --write
 #include "gui/HealthHud.h"
 
 namespace RBX

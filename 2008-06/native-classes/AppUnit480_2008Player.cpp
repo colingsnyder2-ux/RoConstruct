@@ -14,6 +14,10 @@
 //     binds them through boost::bind / for_eachChild); the evidence mangling is the same.
 //   * Player::setUnder13 0048b910 / setSuperSafeChat 0048b940: the Network/Player.h inlines (BoundProp GetSet call
 //     through prop_Under13 / prop_SuperSafeChat + 0x18), emitted out of line here.
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit480_2008Player | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by king_originala (+1) (chatgpt:gpt-6.1-sol)
+// <<< native-status | src d7fa650b | roc native-status --write
 #include "Network/Player.h"
 #include "v8tree/Service.h"
 #include "v8datamodel/ModelInstance.h"

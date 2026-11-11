@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/boost-noinline-shared-destructor
 // >>> native-status (generated) -- do not edit >>>
-// SoundServiceFind | 2008-06 | inactive
-// unmapped (no binary link) | by -
+// SoundServiceFind | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 2913d5d3 | roc native-status --write
 #include <boost/thread/once.hpp>
 #include "../native-headers/v8datamodel/Selection.h"

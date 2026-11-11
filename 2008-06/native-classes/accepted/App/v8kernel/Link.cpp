@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// Link | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 93233d99 | roc native-status --write
 #pragma float_control(precise, off, push)
 #include "v8kernel/Link.h"
 #include "v8kernel/Body.h"

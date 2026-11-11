@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/part-embedded
+// >>> native-status (generated) -- do not edit >>>
+// DragPrimitiveBounds | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/2 mapped addresses byte-exact | 1 unproved | no mapped strings | by Espeon (mixed 2)
+// <<< native-status | src 640ff6ea | roc native-status --write
 #include "tool/Dragger.h"
 #include "tool/DragUtilities.h"
 #include "v8datamodel/PartInstance.h"

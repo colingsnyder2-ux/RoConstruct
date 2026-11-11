@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// ServiceLookup | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by Espeon (gpt-6.1-sol)
+// <<< native-status | src 0a71f589 | roc native-status --write
 #include "v8tree/Service.h"
 
 size_t RBX::ServiceProvider::newIndex()

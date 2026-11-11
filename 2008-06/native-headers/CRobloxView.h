@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CRobloxView | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 1378d87f | roc native-status --write
 #include "VerbBinder.h"
 #include "CWebToolbox.h"
 #include "v8tree/VerbContainer.h"

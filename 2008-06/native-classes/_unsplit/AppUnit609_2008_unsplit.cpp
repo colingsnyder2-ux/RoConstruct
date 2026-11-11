@@ -15,6 +15,10 @@
 // the moved vector is finite and the intersection test keeps the same answer; a Gross search hands over to the
 // Fine search in the opposite direction).
 // Codegen analog: the recorder proves each body against the bytes; names follow the donor declarations.
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit609_2008_unsplit | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src d2cea473 | roc native-status --write
 #include "tool/Dragger.h"
 #include "v8world/ContactManager.h"
 #include "util/Math.h"

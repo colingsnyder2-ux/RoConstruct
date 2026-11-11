@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CScriptEditor | 2008-06 | 26 byte-exact, inactive (not link-selected)
+// 26/29 mapped addresses byte-exact | 3 unproved | no mapped strings | by king_originala (+4) (mixed 5)
+// <<< native-status | src b5f5dcea | roc native-status --write
 #include "CScriptEditor.h"
 #include "script/Script.h"
 #include "v8datamodel/DataModel.h"

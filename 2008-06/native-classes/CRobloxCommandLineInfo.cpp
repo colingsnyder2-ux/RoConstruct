@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /D_AFXDLL /D_DLL /I{headers}/std-noinline-string
 // >>> native-status (generated) -- do not edit >>>
-// CRobloxCommandLineInfo | 2008-06 | inactive
-// unmapped (no binary link) | by -
+// CRobloxCommandLineInfo | 2008-06 | draft (no current byte proof)
+// 0/3 mapped addresses byte-exact | 3 unproved | no mapped strings | by Espeon (+1) (deepseek:deepseek-chat)
 // <<< native-status | src 95a33bb7 | roc native-status --write
 #include "CRobloxCommandLineInfo.h"
 #include "util/standardout.h"

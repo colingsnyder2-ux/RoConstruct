@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /D_AFXDLL /D_DLL /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string
+// >>> native-status (generated) -- do not edit >>>
+// CRobloxApp | 2008-06 | draft (no current byte proof)
+// 0/9 mapped addresses byte-exact | 9 unproved | no mapped strings | by king_originala (+3) (mixed 3)
+// <<< native-status | src 38a4cce1 | roc native-status --write
 #include "CRobloxApp.h"
 #include <atlbase.h>
 #include "util/standardout.h"

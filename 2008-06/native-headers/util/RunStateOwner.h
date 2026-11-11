@@ -1,5 +1,9 @@
 // Inactive candidate: fields follow recovered 00556b00 constructor.
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// RunStateOwner | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src f6c39ef2 | roc native-status --write
 #include "reflection/reflection.h"
 #include "reflection/signal.h"
 #include "util/Events.h"

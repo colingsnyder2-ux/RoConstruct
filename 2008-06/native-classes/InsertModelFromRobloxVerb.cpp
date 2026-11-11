@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// InsertModelFromRobloxVerb | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/4 mapped addresses byte-exact | 3 unproved | no mapped strings | by colin (+3) (mixed 3)
+// <<< native-status | src 935331d0 | roc native-status --write
 #include <afxwin.h>
 #include "../native-headers/InsertModelFromRobloxVerb.h"
 #include "../native-headers/CRobloxView.h"

@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Teams | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 81ffd764 | roc native-status --write
 // 2008-06 native RBX::Teams (inactive). Shape after the donor tools/rbxgs Teams.h; evidence:
 //   RTTI       vtable 0083ce54 .?AVTeams@RBX@@ -> DescribedCreatable<Teams, Instance, sTeams>,
 //              Service (empty base, mdisp 0x130).

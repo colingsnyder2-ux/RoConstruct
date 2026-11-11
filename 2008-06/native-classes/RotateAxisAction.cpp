@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// >>> native-status (generated) -- do not edit >>>
+// RotateAxisAction | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by colin (+1) (deepseek:deepseek-flash)
+// <<< native-status | src 8efbaf47 | roc native-status --write
 #include "StandardVerbs.h"
 #include "v8datamodel/Workspace.h"
 #include "v8datamodel/DataModel.h"

@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// MetadataClassesLookup | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by colin (chatgpt:gpt-6.1-sol)
+// <<< native-status | src a615dbe9 | roc native-status --write
 #include "reflection/Metadata.h"
 #include "reflection/reflection.h"
 namespace RBX { namespace Reflection { namespace Metadata {

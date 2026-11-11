@@ -1,7 +1,7 @@
 // >>> native-status (generated) -- do not edit >>>
-// ActiveDataModel | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src f2ac53b2 | roc native-status --write
+// ActiveDataModel | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src a142b06a | roc native-status --write
 #include "ActiveDocView.h"
 
 boost::shared_ptr<RBX::DataModel> getActiveDataModel()

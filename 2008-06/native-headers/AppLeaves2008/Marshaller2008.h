@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Marshaller2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 5ce8a439 | roc native-status --write
 // Inactive native 2008-06 recovery: Marshaller, a hidden ATL window that runs queued functions on the thread that
 // created it (posted with message 0x465). Declared in the DHTMLWindowService translation unit.
 #include <afxwin.h>

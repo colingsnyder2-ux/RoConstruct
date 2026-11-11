@@ -21,6 +21,10 @@
 //     RTTI is .?AVCreator@?$FactoryProduct@VVisit@RBX@@VInstance@2@$1?sVisit@2@3PADA@RBX@@).
 // v8tree/Service.h, util/Object.h and util/Name.h declare these templates; the definitions below are the same ones
 // native-classes/AppUnit48C_2008Services.cpp and AppUnit48C_2008Creators.cpp use.
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit448_2008Services | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by king_originala (chatgpt:gpt-6.1-sol)
+// <<< native-status | src 33f07573 | roc native-status --write
 #include <boost/thread/once.hpp>
 #include "v8tree/Service.h"
 #include "v8datamodel/ChangeHistoryService.h"

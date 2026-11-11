@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// GuiItem | 2008-06 | draft (no current byte proof)
+// 0/4 mapped addresses byte-exact | 4 unproved | 1 referenced strings (not rechecked) | by auto (+1)
+// <<< native-status | src dd633a53 | roc native-status --write
 #include "gui/Gui.h"
 namespace RBX {
 GuiItem::GuiItem() : guiSize(0, 0) { setName("Unnamed GuiItem"); }

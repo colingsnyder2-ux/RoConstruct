@@ -5,6 +5,10 @@
 // Each body follows the target bytes (relocation-masked exact, every call/data target verified by the recorder).
 // The 2008 struct names are DescendentAdded / DescendentRemoving (evidence symbols of 00557780 / 00557e80); the native
 // headers spell them DescendantAdded / DescendantRemoving, which changes only the mangled names (proposal).
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit558_2008Instance | 2008-06 | draft (no current byte proof)
+// 0/11 mapped addresses byte-exact | 11 unproved | no mapped strings | by colin (+5) (mixed 4)
+// <<< native-status | src 7c15397c | roc native-status --write
 #include "AppUnit558_2008/InstanceDescendantRemoving2008.h"
 #include "v8xml/XmlElement.h"
 #include <algorithm>

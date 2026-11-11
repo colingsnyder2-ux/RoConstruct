@@ -2,6 +2,10 @@
 // /Od profile of tests/record_native_render_scene.py. Rows: Bucket ctor 00540390 / dtor 00540440 / ??_G 00540410,
 // AggregatingSceneManager::addModel 0053f1e0, ctor 0053f0d0 / dtor 0053f160 / ??_G 00540300 and the BucketKey ctor
 // 0053f200 (these use the complete RenderBase::MaterialBase from RenderLib/Material2008.h).
+// >>> native-status (generated) -- do not edit >>>
+// SceneManagerAggregating2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src caf3531a | roc native-status --write
 #include "RenderLib/SceneManager2008.h"
 #include "RenderLib/Material2008.h"   // completes RenderBase::MaterialBase (needs the Ogre 1.4.5 client headers)
 

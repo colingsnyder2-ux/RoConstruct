@@ -16,6 +16,10 @@
 //   * boost::any::holder<shared_ptr<Instance> > (vtable 00821718): ??_G 0048dc10, type() 0048db50, clone() 0048db60,
 //     destructor 0048dba0, and boost::any::operator=<shared_ptr<Instance> > 0048dd00.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit48C_2008Signals | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 9688d543 | roc native-status --write
 #include "reflection/signal.h"
 #include "v8tree/Instance.h"
 #include <boost/any.hpp>

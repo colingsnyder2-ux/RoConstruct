@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// PropertyGridNumericValues | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 56b13a87 | roc native-status --write
 #include "PropertyGridItems.h"
 #include <stdio.h>
 #include "util/Utilities.h"

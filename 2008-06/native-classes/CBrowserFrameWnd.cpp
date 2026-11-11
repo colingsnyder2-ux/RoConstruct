@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CBrowserFrameWnd | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/1 mapped addresses byte-exact | 0 unproved | no mapped strings | by king_originala (deepseek:deepseek-flash)
+// <<< native-status | src c7883fa0 | roc native-status --write
 #include "CBrowserFrameWnd.h"
 
 IMPLEMENT_DYNCREATE(CBrowserFrameWnd, CXTPFrameWnd)

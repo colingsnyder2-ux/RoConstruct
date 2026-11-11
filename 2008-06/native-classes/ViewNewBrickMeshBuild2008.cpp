@@ -2,6 +2,10 @@
 // initCache 004e5360, flushCache 004e5670, releaseUnused 004e5710) and the shadow box helper 004e3570 with its
 // unit-local appendQuad 004de1d0. Declarations: ViewNew/BrickMesh.h and ViewNewBrickBuild2008/BrickMeshCache2008.h.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// ViewNewBrickMeshBuild2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 8d6d222f | roc native-status --write
 #include "ViewNewBrickBuild2008/BrickMeshCache2008.h"
 
 static int orderedCompare(const G3D::Vector3& a, const G3D::Vector3& b)   // 004dc360

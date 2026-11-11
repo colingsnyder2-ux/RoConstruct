@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// >>> native-status (generated) -- do not edit >>>
+// PartTools | 2008-06 | draft (no current byte proof)
+// 0/6 mapped addresses byte-exact | 6 unproved | no mapped strings | by king_originala (+1) (mixed 2)
+// <<< native-status | src 7e1d95a6 | roc native-status --write
 #include "v8datamodel/ToolsPart.h"
 #include "v8datamodel/Workspace.h"
 #include "v8datamodel/ModelInstance.h"

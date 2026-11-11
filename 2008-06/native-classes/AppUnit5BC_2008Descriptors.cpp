@@ -11,6 +11,10 @@
 // Built here: the Explosion, FlagStandService and ObjectValue names and the Explosion, FlagStandService, Visit,
 // JointInstance and ObjectValue descriptors (the other rows of the block are counted by the class receipts; the joint
 // descriptors 005c3420..005c36c0 call JointInstance's 005c08d0 directly, which the native AutoJoint base does not give).
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit5BC_2008Descriptors | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src a5e9388a | roc native-status --write
 #include "v8datamodel/Explosion.h"
 #include "v8datamodel/FlagStandService.h"
 #include "v8datamodel/Value.h"

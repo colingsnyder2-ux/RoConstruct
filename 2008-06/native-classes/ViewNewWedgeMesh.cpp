@@ -3,6 +3,10 @@
 // operator() bodies are class-inline: the original inlines them into the strips (DeformSide3 004f4e60 / 004f54d0,
 // DeformTop3 004f51a0, DeformFront 004f5810), whose x87 code they are read from (functor at [esp+0x80]: inset, flip).
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// ViewNewWedgeMesh | 2008-06 | draft (no current byte proof)
+// 0/9 mapped addresses byte-exact | 9 unproved | no mapped strings | by auto (+2) (deepseek:deepseek-chat)
+// <<< native-status | src 33f6b106 | roc native-status --write
 #include "ViewNew/WedgeMesh.h"
 #include "ViewNew/QuadVolumeFace.h"
 

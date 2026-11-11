@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// ScriptContextLifetime | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by EspClaude (deepseek:deepseek-chat)
+// <<< native-status | src 6eb54c57 | roc native-status --write
 #include "script/ScriptContext.h"
 #include <boost/date_time/posix_time/posix_time.hpp>
 RBX::ScriptContext::ScriptContext()

@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// AppOpenFiles | 2008-06 | inactive
-// unmapped (no binary link) | by -
+// AppOpenFiles | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by colin (+1) (chatgpt:gpt-6.1-sol)
 // <<< native-status | src 0704d61a | roc native-status --write
 #include "CRobloxApp.h"
 #include <algorithm>

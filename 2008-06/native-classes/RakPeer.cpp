@@ -2,6 +2,10 @@
 // native-flags: /O2 /GS- /EHsc /MD /FImalloc.h /IC:\Users\colin\RoConstruct\tools\rbxgs\Client\Network\raknet30\Source
 // native-flags: /O2 /EHsc /MD /IC:\Users\colin\RoConstruct\tools\rbxgs\Client\Network\raknet30\Source
 // native-flags: /O2 /EHsc /MD /IC:\Users\colin\RoConstruct\tools\rbxgs\Client\Network\raknet30\Source
+// >>> native-status (generated) -- do not edit >>>
+// RakPeer | 2008-06 | draft (no current byte proof)
+// 0/31 mapped addresses byte-exact | 31 unproved | no mapped strings | by auto (mixed 2)
+// <<< native-status | src c23a33ab | roc native-status --write
 #include "RakPeer.h"
 #include "RakNetDefines.h"
 #include "RakNetTypes.h"

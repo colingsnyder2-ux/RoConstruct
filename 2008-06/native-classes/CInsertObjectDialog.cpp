@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/boost-inline-nothrow /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-dialog
+// >>> native-status (generated) -- do not edit >>>
+// CInsertObjectDialog | 2008-06 | 6 byte-exact, inactive (not link-selected)
+// 6/8 mapped addresses byte-exact | 2 unproved | no mapped strings | by king_originala (+3) (mixed 4)
+// <<< native-status | src 38529a5e | roc native-status --write
 #include "CInsertObjectDialog.h"
 #include "v8tree/Instance.h"
 #include "v8tree/Service.h"

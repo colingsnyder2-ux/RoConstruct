@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// >>> native-status (generated) -- do not edit >>>
+// GameTool | 2008-06 | draft (no current byte proof)
+// 0/5 mapped addresses byte-exact | 5 unproved | no mapped strings | by king_originala (+2) (chatgpt:gpt-6.1-sol)
+// <<< native-status | src 0ac15f11 | roc native-status --write
 #include "tool/BasicMouseTools.h"
 #include "tool/PartDragTool.h"
 #include "v8datamodel/DataModel.h"

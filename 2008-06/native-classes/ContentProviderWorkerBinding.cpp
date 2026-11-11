@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/content-cache-inline /I{headers}/boost-function-pod-vtable
+// >>> native-status (generated) -- do not edit >>>
+// ContentProviderWorkerBinding | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src db328594 | roc native-status --write
 #include <functional>
 #include "util/NativeContentProvider.h"
 

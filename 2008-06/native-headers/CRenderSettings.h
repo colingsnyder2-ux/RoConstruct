@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CRenderSettings | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src d462e83a | roc native-status --write
 #include "v8datamodel/GlobalSettings.h"
 #include <G3D/Vector2int16.h>
 #include <string>

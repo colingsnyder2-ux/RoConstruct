@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// MetadataContainersLifetime | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 8fdc5bc9 | roc native-status --write
 #include "reflection/Metadata.h"
 namespace RBX { namespace Reflection { namespace Metadata {
 

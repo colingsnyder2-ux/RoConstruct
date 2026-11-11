@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// RenderSceneNew2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src bfb670e2 | roc native-status --write
 // 2008-06 native RBX::RenderNew::EffectSettings / RenderScene (the Ogre render scene; inactive). Named *2008.h: no donor
 // header has this path (the donor base has only the G3D Render::RenderScene).
 //   EffectSettings 0x14 bytes (RenderScene +0x2f4 .. +0x308). update 007afce0 (this = +0x2f4, ret 0x20, same arguments

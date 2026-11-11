@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Lighting2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 52e9143d | roc native-status --write
 // 2008-06 native RBX::Lighting (inactive). A new, non-colliding header (the donor v8datamodel/Lighting.h keeps
 // its path and is not shadowed). Shape after the donor tools/rbxgs Lighting.h; every base, field and virtual below
 // is read from the 2008-06 binary (verified by tests/record_native_lighting2008.py):

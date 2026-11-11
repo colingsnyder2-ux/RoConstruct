@@ -1,4 +1,8 @@
 // 2008-06 native RBX::ViewNew::FileMesh (inactive): the unit 00500780..00500c98 (/fp:fast like the other ViewNew units).
+// >>> native-status (generated) -- do not edit >>>
+// ViewNewFileMesh | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by king_originala (deepseek:deepseek-chat)
+// <<< native-status | src 9f4df88c | roc native-status --write
 #include "ViewNew/FileMesh.h"
 #include <stdio.h>
 #include <exception>

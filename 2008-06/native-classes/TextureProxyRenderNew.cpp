@@ -6,6 +6,10 @@
 // MegaTextureProxy(TextureManager&, name) 007ae4b0 and its ??_G 007aea40; also TextureProxy(const std::string&) 0066ffb0
 // (emitted in the AdornRbxGfx image block, whose createTextureProxy 00670380 is its only caller). resolve 007aec70 /
 // MegaTextureProxy::resolve 007ae4e0 and the shading helpers 007ad9d0 / 007ada80 / 007add10 are not built.
+// >>> native-status (generated) -- do not edit >>>
+// TextureProxyRenderNew | 2008-06 | 2 byte-exact, inactive (not link-selected)
+// 2/2 mapped addresses byte-exact | 0 unproved | no mapped strings | by colin (+1) (mixed 2)
+// <<< native-status | src a4420bb5 | roc native-status --write
 #include <sstream>
 #include "RenderLib/TextureProxy2008.h"
 

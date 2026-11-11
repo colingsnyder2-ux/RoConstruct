@@ -5,6 +5,10 @@
 // Every T is the complete class of a committed native header (included read-only); nothing is declared here.
 // Separate unit: stats/Stats.h (and stats/WorkspaceStatsItem.h, which includes it) and v8datamodel/Stats.h, which the
 // main unit reaches through util/Sound.h, both define RBX::Stats::Item (C2011 in either include order).
+// >>> native-status (generated) -- do not edit >>>
+// CreatableSharedCount2008Stats | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 11fdb6ae | roc native-status --write
 #include "stats/Stats.h"
 #include "stats/WorkspaceStatsItem.h"
 

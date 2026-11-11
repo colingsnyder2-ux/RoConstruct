@@ -1,8 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // >>> native-status (generated) -- do not edit >>>
-// BrickColorProviders | 2008-06 | inactive
-// unmapped (no binary link) | by -
-// <<< native-status | src 910a70ba | roc native-status --write
+// BrickColorProviders | 2008-06 | draft (no current byte proof)
+// 0/7 mapped addresses byte-exact | 7 unproved | no mapped strings | by tester (+1) (deepseek:deepseek-flash)
+// <<< native-status | src 69a27bbb | roc native-status --write
 #include "v8datamodel/BrickColor.h"
 
 namespace RBX {

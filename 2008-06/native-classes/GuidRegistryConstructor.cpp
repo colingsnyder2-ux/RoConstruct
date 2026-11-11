@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// GuidRegistryConstructor | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by colin (chatgpt:gpt-6.1-sol)
+// <<< native-status | src 5e9a03e2 | roc native-status --write
 #include "util/GuidRegistry.h"
 
 RBX::GuidRegistry::GuidRegistry() : tree(), mutex() {}

@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// InstanceEvents | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src fa84d459 | roc native-status --write
 #include "v8tree/Instance.h"
 
 namespace RBX {

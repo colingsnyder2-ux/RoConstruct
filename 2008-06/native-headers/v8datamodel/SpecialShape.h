@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// SpecialShape | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 25ab90d5 | roc native-status --write
 // 2008-06 native RBX::SpecialShape (class name "SpecialMesh"; inactive). Shape after the donor
 // tools/rbxgs v8datamodel/custommesh.h; every field, virtual and descriptor below is read from the 2008-06 binary:
 //   RTTI       vtable 00833584 .?AVSpecialShape@RBX@@ -> DescribedCreatable<SpecialShape, Instance, sSpecialShape>

@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// SoundStringConverter | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 018e53b5 | roc native-status --write
 #include "util/Sound.h"
 #include "util/Utilities.h"
 namespace RBX {

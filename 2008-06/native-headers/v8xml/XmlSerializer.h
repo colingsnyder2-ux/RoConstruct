@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// XmlSerializer | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 7f3412ef | roc native-status --write
 #include <boost/noncopyable.hpp>
 #include <iostream>
 #include <memory>

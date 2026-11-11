@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CSettingsPropGrid | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src b48a7430 | roc native-status --write
 #include "CSelectionPropGrid.h"
 
 // RTTI vtables 0081c174/0081c168/0081c15c: every slot equals CSelectionPropGrid's (no own

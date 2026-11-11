@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // >>> native-status (generated) -- do not edit >>>
-// InstanceParent | 2008-06 | inactive
-// unmapped (no binary link) | by -
+// InstanceParent | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | 2 referenced strings (not rechecked) | by king_originala (deepseek:deepseek-chat)
 // <<< native-status | src f434cfb6 | roc native-status --write
 #include "v8tree/InstanceEvents.h"
 #include <G3D/format.h>

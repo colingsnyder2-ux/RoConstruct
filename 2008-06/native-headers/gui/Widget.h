@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Widget | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 0c62fa5d | roc native-status --write
 // 2008-06 native RBX::Widget and RBX::VerbWidget (inactive). Shape after the donor tools/rbxgs gui/Widget.h; the
 // virtual order of the donor matches the 2008 vtables slot for slot, so every unit that already used the donor header
 // (Hopper/BackpackItem, Tool, Flag, Backpack) compiles the same declarations. MultiVerbWidget is left out: the 2008-06

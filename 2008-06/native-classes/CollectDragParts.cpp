@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// >>> native-status (generated) -- do not edit >>>
+// CollectDragParts | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 10171339 | roc native-status --write
 #include "v8datamodel/PartInstance.h"
 #include <boost/weak_ptr.hpp>
 #include <vector>

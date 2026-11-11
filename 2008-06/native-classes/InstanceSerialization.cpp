@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// InstanceSerialization | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by colin
+// <<< native-status | src 969415d2 | roc native-status --write
 #include "../native-headers/v8tree/Instance.h"
 #include "../native-headers/v8xml/XmlElement.h"
 

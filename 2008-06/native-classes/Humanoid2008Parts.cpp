@@ -8,6 +8,10 @@
 // with native-headers/engine-world ahead of the donor dirs (the 2008 World: contactManager at +0x84).
 // Verified by tests/record_native_humanoid2008.py.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// Humanoid2008Parts | 2008-06 | draft (no current byte proof)
+// 0/18 mapped addresses byte-exact | 18 unproved | 7 referenced strings (not rechecked) | by colin (+4) (mixed 6)
+// <<< native-status | src 02c79c42 | roc native-status --write
 #define NATIVE_HUMANOID2008_DONOR_CONNECTOR
 #include "util/NativeContentProvider.h"
 #include "v8datamodel/PartInstance.h"

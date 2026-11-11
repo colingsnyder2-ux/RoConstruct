@@ -1,5 +1,9 @@
 // 2008-06 native RBX::JointsService (inactive); evidence in native-headers/v8datamodel/JointsService.h.
 // Verified by tests/record_native_services.py.
+// >>> native-status (generated) -- do not edit >>>
+// JointsService | 2008-06 | draft (no current byte proof)
+// 0/4 mapped addresses byte-exact | 4 unproved | no mapped strings | by colin (+2) (mixed 4)
+// <<< native-status | src 2a8df79d | roc native-status --write
 #include "v8datamodel/JointsService.h"
 #include "v8tree/Service.h"
 #include <boost/thread/once.hpp>

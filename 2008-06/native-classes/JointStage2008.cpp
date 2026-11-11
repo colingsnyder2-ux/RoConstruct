@@ -5,6 +5,10 @@
 // Not built: the constructor 00668470 news a ClumpStage (0x30, 0064cfd0) and the donor v8world/ClumpStage.h declares a
 // 0x1cc-byte class (see the recorder's PROPOSALS); onPrimitiveAdded 006685b0 / onPrimitiveRemoving 00668850 walk the
 // primitive's edge lists through the native Primitive (not available).
+// >>> native-status (generated) -- do not edit >>>
+// JointStage2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 5a55ec55 | roc native-status --write
 #include "v8world/JointStage2008.h"
 #include "v8world/Primitive.h"
 #include "v8world/Joint.h"

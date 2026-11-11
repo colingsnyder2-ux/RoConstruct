@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// AtlErrorCore | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src adeac0f3 | roc native-status --write
 #include <atlbase.h>
 #include <atlcom.h>
 

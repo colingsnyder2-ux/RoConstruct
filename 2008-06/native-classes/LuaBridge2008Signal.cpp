@@ -1,5 +1,9 @@
 // Inactive 2008-06 native recovery: RBX::Lua signal bridge and script slots.
 // Body shapes follow the donor reconstruction; counted rows are proven by tests/record_native_lua_bridge2008.py.
+// >>> native-status (generated) -- do not edit >>>
+// LuaBridge2008Signal | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by auto
+// <<< native-status | src 47edb3f5 | roc native-status --write
 #include "LuaBridge2008/LuaSignalBridge2008.h"
 #include "G3D/format.h"
 #include "util/standardout.h"

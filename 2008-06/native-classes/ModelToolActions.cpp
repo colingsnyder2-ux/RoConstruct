@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// >>> native-status (generated) -- do not edit >>>
+// ModelToolActions | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/5 mapped addresses byte-exact | 4 unproved | no mapped strings | by king_originala (+1) (mixed 2)
+// <<< native-status | src cc17d0a4 | roc native-status --write
 #include "tool/ModelTools.h"
 #include "v8datamodel/Workspace.h"
 #include "v8datamodel/PartInstance.h"

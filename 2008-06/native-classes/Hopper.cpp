@@ -2,6 +2,10 @@
 // original Hopper unit 005cf160..005d1770 (dynamic initializers 007f5df0..007f5ef0, atexit functions 007feed0..
 // 007fefb0). Evidence in native-headers/v8datamodel/Hopper.h.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// Hopper | 2008-06 | draft (no current byte proof)
+// 0/11 mapped addresses byte-exact | 11 unproved | 1 referenced strings (not rechecked) | by king_originala (+3) (mixed 5)
+// <<< native-status | src be7c0408 | roc native-status --write
 #include "v8datamodel/Hopper.h"
 #include "v8datamodel/Backpack.h"
 #include "v8datamodel/Workspace.h"

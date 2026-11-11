@@ -2,6 +2,10 @@
 // bodies sit in the CRobloxApp unit (00449ae0, 0044a150, 0044abd0); the
 // constructor 00449910 is in AppLeaves2008IDEDocManagerCtor.cpp (it needs the view/document class headers).
 // CRobloxApp.cpp is not edited.
+// >>> native-status (generated) -- do not edit >>>
+// AppLeaves2008IDEDocManager | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by king_originala (chatgpt:gpt-6.1-sol)
+// <<< native-status | src 3162755d | roc native-status --write
 #include "AppLeaves2008/IDEDocManager2008.h"
 #include <afxpriv.h>
 #include <stdexcept>

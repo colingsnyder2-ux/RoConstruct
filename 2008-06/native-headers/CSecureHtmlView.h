@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CSecureHtmlView | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src ed3f334b | roc native-status --write
 #include <afxwin.h>
 #include <afxext.h>
 #include <afxhtml.h>

@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// >>> native-status (generated) -- do not edit >>>
+// ControllerApply | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by Espeon (deepseek:deepseek-flash)
+// <<< native-status | src 57b138ea | roc native-status --write
 #include "StandardVerbs.h"
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Selection.h"

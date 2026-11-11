@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CMainFrame | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 39e10fa9 | roc native-status --write
 #include "CMainFrameBases.h"
 #include "util/boost.hpp"
 #include <boost/scoped_ptr.hpp>

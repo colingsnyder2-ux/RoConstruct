@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CSelectionTreeCtrl | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 252391fd | roc native-status --write
 #include "CRobloxTreeCtrl.h"
 #include "ActiveDocView.h"
 #include "v8datamodel/SelectionChanged.h"

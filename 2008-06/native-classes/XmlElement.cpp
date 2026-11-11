@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// XmlElement | 2008-06 | draft (no current byte proof)
+// 0/10 mapped addresses byte-exact | 10 unproved | no mapped strings | by auto (+2) (mixed 2)
+// <<< native-status | src 79714071 | roc native-status --write
 #include "v8xml/XmlElement.h"
 
 bool XmlNameValuePair::isValueEqual(const RBX::Name* value) const

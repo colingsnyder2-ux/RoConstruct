@@ -5,6 +5,10 @@
 // TypedPropertyDescriptor<MeshId> Value/boost::any helpers 0059eec0..0059f400 come from header templates; they are
 // exact only against the generated reflection.h / type.h / property.h copies the recorder writes (proposals).
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// SpecialShape | 2008-06 | draft (no current byte proof)
+// 0/4 mapped addresses byte-exact | 4 unproved | 1 referenced strings (not rechecked) | by king_originala (+1) (chatgpt:gpt-6.1-sol)
+// <<< native-status | src ff07e2e9 | roc native-status --write
 #include "v8datamodel/SpecialShape.h"
 #include "v8datamodel/PartInstance.h"
 #include "reflection/enumconverter.h"

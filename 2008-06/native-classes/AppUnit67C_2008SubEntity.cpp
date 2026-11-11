@@ -4,6 +4,10 @@
 // tests/record_native_app_unit67c_2008.py verifies them. getWorldBoundingBox 00685490 remains parked for a
 // codegen-shape mismatch (see the header); getShadowVolumeRenderableIterator 00685a40 is recovered.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit67C_2008SubEntity | 2008-06 | 25 byte-exact, inactive (not link-selected)
+// 25/29 mapped addresses byte-exact | 4 unproved | no mapped strings | by colin (+4) (mixed 4)
+// <<< native-status | src b79f0a96 | roc native-status --write
 #include "AppUnit67C_2008/RbxSubEntity2008.h"
 #include "OgreRbxNode/RbxSceneNode2008.h"
 #include "OgreRbx/RbxSubMesh2008.h"

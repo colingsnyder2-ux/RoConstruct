@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// SimJob | 2008-06 | inactive
-// unmapped (no binary link) | by -
+// SimJob | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 75943d17 | roc native-status --write
 // 2008-06 native RBX::SimJob declaration (inactive). Proposed from RTTI and the
 // MovingNoPhysicsBase family; see tests/NativeHumanoidStates3SimJob.h for evidence.

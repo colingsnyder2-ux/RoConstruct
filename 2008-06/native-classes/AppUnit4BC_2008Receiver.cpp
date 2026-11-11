@@ -14,6 +14,10 @@
 //     std::vector<float>'s copy constructor 004c77b0;
 //   * PartItem(const shared_ptr<PartInstance>&) 004c7a10 with the implicit History() 004c76a0 it reaches.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit4BC_2008Receiver | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 5108c31d | roc native-status --write
 #include "Network/PhysicsSenders2008.h"
 #include "AppUnit4BC_2008/AssociationTimeStamp.h"
 

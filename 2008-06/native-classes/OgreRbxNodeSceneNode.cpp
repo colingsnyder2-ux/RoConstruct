@@ -1,6 +1,10 @@
 // Ogre::RbxSceneNode method bodies (inactive native recovery, June 2008 client); see OgreRbxNode/RbxSceneNode2008.h.
 // Bodies 00681190..006823ff. Built with the Ogre 1.4.5 client headers; record_native_ogre_rbx_node.py verifies them.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
+// >>> native-status (generated) -- do not edit >>>
+// OgreRbxNodeSceneNode | 2008-06 | 36 byte-exact, inactive (not link-selected)
+// 36/38 mapped addresses byte-exact | named 13 | 2 unproved | no mapped strings | by auto (+4) (mixed 3)
+// <<< native-status | src 6c2c1a1c | roc native-status --write
 #include "OgreRbxNode/RbxSceneNode2008.h"
 #include <OgreCamera.h>
 #include <OgreRenderQueue.h>

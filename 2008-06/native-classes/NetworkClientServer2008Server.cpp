@@ -2,6 +2,10 @@
 // Verified by tests/record_native_network_client_server2008.py. Original bodies: constructor 004a4b30,
 // DescribedCreatable<Server> 004a42c0, FactoryProduct<Server> 004a15f0 / ~FactoryProduct 004a1580, destructor
 // 004a3540, classDescriptor 0049eba0.
+// >>> native-status (generated) -- do not edit >>>
+// NetworkClientServer2008Server | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/1 mapped addresses byte-exact | 0 unproved | no mapped strings | by auto
+// <<< native-status | src 308c979a | roc native-status --write
 #include "Network/Server2008.h"
 #include "Network/API.h"
 

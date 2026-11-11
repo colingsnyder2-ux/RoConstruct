@@ -8,6 +8,10 @@
 // declare 00665a30 (sPartDragTool 0096265c, "PartDragTool"); the helper names come from StandardVerbs.h (codegen
 // analogs). See tests/record_native_app_unit660_2008.py.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit660_2008PartDragTool | 2008-06 | draft (no current byte proof)
+// 0/6 mapped addresses byte-exact | 6 unproved | no mapped strings | by EspClaude (+4) (mixed 3)
+// <<< native-status | src 638440b6 | roc native-status --write
 #include "tool/PartDragTool.h"
 #include "tool/RunDragger.h"
 #include "tool/MegaDragger.h"

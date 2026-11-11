@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// QuadVolumeFace | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src de40ab62 | roc native-status --write
 // 2008-06 native RBX::ViewNew::LevelBuilder per-face grid templates (inactive): the bodies of the two buildFace templates
 // that QuadVolume.h declares, included by the builder units (Sphere / Cylinder / Head / Wedge / Torso / PBB), which
 // instantiate them implicitly as the original units did (tests/record_native_viewnew.py checks every instance).

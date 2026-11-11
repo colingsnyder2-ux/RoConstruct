@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// RbxEntity2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 9497cc93 | roc native-status --write
 // Ogre::RbxEntity, June 2008 executable-local Entity extension.
 // Target proof: 0067d1f0 constructs Entity then writes derived state through
 // +0x274..+0x2b8; allocation is 0x2bc. 0067d420 destroys AxisAlignedBox at

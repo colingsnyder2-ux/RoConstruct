@@ -4,6 +4,10 @@
 // Separate unit: the leaves' deleting destructor 00643580 calls ~RunningBase 006663f0 out of line,
 // so RunningBase's destructor body is not visible here (it is in HumanoidStates1.cpp, where the
 // RunningBase deleting destructor 00666520 inlines it).
+// >>> native-status (generated) -- do not edit >>>
+// HumanoidStates1Leaves | 2008-06 | draft (no current byte proof)
+// 0/4 mapped addresses byte-exact | 4 unproved | no mapped strings | by king_originala (+1) (mixed 3)
+// <<< native-status | src 42576653 | roc native-status --write
 #include "humanoid/HumanoidStates1.h"
 #include "humanoid/Humanoid.h"
 

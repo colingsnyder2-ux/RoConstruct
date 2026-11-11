@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// HttpRobloxSite | 2008-06 | inactive
-// unmapped (no binary link) | by -
+// HttpRobloxSite | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by colin (deepseek:deepseek-chat)
 // <<< native-status | src 4b7cee21 | roc native-status --write
 #include <shlwapi.h>
 #include <atlutil.h>

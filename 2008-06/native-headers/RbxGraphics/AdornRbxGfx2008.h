@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// AdornRbxGfx2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 68b7739c | roc native-status --write
 // RBX::AdornRbxGfx as compiled into the June 2008 client (inactive native recovery; the Ogre-backed Adorn).
 //
 // Non-colliding name (see RbxGraphics/Adorn2008.h); there is no donor AdornRbxGfx header. Needs the Ogre 1.4.5 client

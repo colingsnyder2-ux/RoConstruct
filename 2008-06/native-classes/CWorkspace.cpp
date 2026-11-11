@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CWorkspace | 2008-06 | 4 byte-exact, inactive (not link-selected)
+// 4/5 mapped addresses byte-exact | 1 unproved | no mapped strings | by king_originala (+3) (mixed 4)
+// <<< native-status | src 030fba46 | roc native-status --write
 #include <afxwin.h>
 #include "../native-headers/CWorkspace.h"
 #include "../native-headers/v8datamodel/DataModel.h"

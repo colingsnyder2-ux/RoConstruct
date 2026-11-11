@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// PhysicsSenders2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src f3e22a64 | roc native-status --write
 // 2008-06 native RBX::Network::PhysicsSender and InterpolatingPhysicsReceiver (inactive). The interfaces, the two
 // simple implementations and the owner evidence are in Network/PhysicsReplication.h (committed, read-only here); this
 // header has its own name, so no donor header is shadowed. The donor tree has neither class. Every base, field, index

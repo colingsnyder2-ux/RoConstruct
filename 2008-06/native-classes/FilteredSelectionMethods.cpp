@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// FilteredSelectionMethods | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 228258b4 | roc native-status --write
 #include "v8datamodel/Selection.h"
 #include "v8datamodel/PVInstance.h"
 #include "v8datamodel/ModelInstance.h"

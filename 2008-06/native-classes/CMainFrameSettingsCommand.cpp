@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// CMainFrameSettingsCommand | 2008-06 | inactive
-// unmapped (no binary link) | by -
+// CMainFrameSettingsCommand | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src ad545536 | roc native-status --write
 #include "CMainFrame.h"
 

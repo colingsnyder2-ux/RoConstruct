@@ -1,6 +1,10 @@
 // 2008-06 native RBX::ChatOutput unit (inactive): 0064fb60..00651000.
 // Layout and addresses in native-headers/gui/ChatOutput.h; verified by tests/record_native_hud.py.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// ChatOutput | 2008-06 | 5 byte-exact, inactive (not link-selected)
+// 5/6 mapped addresses byte-exact | 1 unproved | no mapped strings | by king_originala (+3) (mixed 4)
+// <<< native-status | src 3cb0b382 | roc native-status --write
 #include "gui/ChatOutput.h"
 
 namespace RBX

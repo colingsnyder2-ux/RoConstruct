@@ -1,6 +1,10 @@
 // 2008-06 override of Source/App/include/v8datamodel/Value.h: class-name template parameters take the
 // char array itself (const char*), as the 2008 binary pushes .data name arrays directly.
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Value | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src bad7c00f | roc native-status --write
 #include "v8tree/Instance.h"
 #include "v8datamodel/BrickColor.h"
 #include <G3D/CoordinateFrame.h>

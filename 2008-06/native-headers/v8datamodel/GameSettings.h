@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// GameSettings | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 57423bda | roc native-status --write
 // 2008-06 native RBX::GameSettings (inactive). Shape after the donor tools/rbxgs v8datamodel/GameSettings.h; every
 // base, field and descriptor below is read from the 2008-06 binary:
 //   RTTI       vtable 00838774 .?AVGameSettings@RBX@@ -> GlobalSettingsItem<GameSettings, sGameSettings> (vtable

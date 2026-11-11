@@ -2,6 +2,10 @@
 // the application range 005b0000..005bc000. Built against the committed native v8datamodel/Accoutrement.h (read-only).
 // Verified by tests/record_native_app_unit5b0_2008.py (receipt app-unit5b0-2008-working.json).
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit5B0_2008Accoutrement | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/8 mapped addresses byte-exact | named 1 | 7 unproved | 2 referenced strings (not rechecked) | by king_originala (+2) (mixed 5)
+// <<< native-status | src de03d80c | roc native-status --write
 #include "v8datamodel/Accoutrement.h"
 #include "v8datamodel/PartInstance.h"
 #include "v8datamodel/JointInstance.h"

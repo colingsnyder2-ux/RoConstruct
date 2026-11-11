@@ -14,6 +14,10 @@
 /// Software Foundation; either version 2 of the License, or (at your
 /// option) any later version.
 
+// >>> native-status (generated) -- do not edit >>>
+// RakPeerUpdate | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by auto
+// <<< native-status | src e1690b5e | roc native-status --write
 #include "RakNetDefines.h"
 #include "RakPeer.h"
 #include "RakNetTypes.h"

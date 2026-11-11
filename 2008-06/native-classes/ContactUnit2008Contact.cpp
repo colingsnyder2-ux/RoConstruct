@@ -5,6 +5,10 @@
 // of tests/record_native_contact_unit2008.py (pending-build-only rows, not counted; proposal in its receipt).
 // Contact2008.h reaches the donor v8world/Edge.h -> IPipelined.h, so Primitive2008.h takes the donor IPipelined.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// ContactUnit2008Contact | 2008-06 | draft (no current byte proof)
+// 0/5 mapped addresses byte-exact | 5 unproved | no mapped strings | by king_originala (+2) (mixed 4)
+// <<< native-status | src 7368f1e4 | roc native-status --write
 #define NATIVE_IPIPELINED2008_DONOR
 #include "v8world/Contact2008.h"
 #include "v8world/Primitive2008.h"

@@ -15,6 +15,10 @@
 /// Software Foundation; either version 2 of the License, or (at your
 /// option) any later version.
 
+// >>> native-status (generated) -- do not edit >>>
+// MTUSize | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 228443a6 | roc native-status --write
 #ifndef DEFAULT_MTU_SIZE
 
 /// The MTU size to use if RakPeer::SetMTUSize() is not called.

@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// BrickColorMapAccess | 2008-06 | inactive
-// unmapped (no binary link) | by -
+// BrickColorMapAccess | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by auto (+1) (deepseek:deepseek-flash)
 // <<< native-status | src 16ffac63 | roc native-status --write
 #include "v8datamodel/BrickColor.h"
 #include <cstdlib>

@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// AuthoringSettings | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/1 mapped addresses byte-exact | 0 unproved | no mapped strings | by king_originala (chatgpt:gpt-6.1-sol)
+// <<< native-status | src 5961d731 | roc native-status --write
 #include "AuthoringSettings.h"
 #include <boost/thread/recursive_mutex.hpp>
 #include <G3D/format.h>

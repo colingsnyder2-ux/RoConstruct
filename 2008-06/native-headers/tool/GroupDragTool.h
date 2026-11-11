@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// GroupDragTool | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src f73d602f | roc native-status --write
 #include "v8datamodel/MouseCommand.h"
 #include "tool/MegaDragger.h"
 #include "util/Name.h"

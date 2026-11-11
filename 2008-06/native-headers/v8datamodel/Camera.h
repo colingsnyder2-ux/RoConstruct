@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Camera | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 7a5af872 | roc native-status --write
 #include <G3D/GCamera.h>
 #include <G3D/CoordinateFrame.h>
 #include <G3D/Rect2D.h>

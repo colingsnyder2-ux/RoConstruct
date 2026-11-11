@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// JointInstance | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 31f13819 | roc native-status --write
 #include <boost/shared_ptr.hpp>
 #include "v8world/Joint.h"
 #include "v8tree/Instance.h"

@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// InstanceChildListener | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 5c7f98b6 | roc native-status --write
 #include "v8tree/InstanceEvents.h"
 
 namespace RBX {

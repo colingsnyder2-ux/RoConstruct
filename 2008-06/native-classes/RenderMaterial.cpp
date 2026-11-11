@@ -6,6 +6,10 @@
 // setBaseTexture 007ad0e0, matte 007ad160); the accessor bodies of this unit (007b76a0..007b76d0, 007b7810, and the
 // shared 00503cb0) are the ones RenderNew::Material::Level folds onto.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// RenderMaterial | 2008-06 | 27 byte-exact, inactive (not link-selected)
+// 27/32 mapped addresses byte-exact | 5 unproved | no mapped strings | by king_originala (+4) (mixed 6)
+// <<< native-status | src e9cd5a13 | roc native-status --write
 #include "RenderLib/Material2008.h"
 #include "RenderLib/TextureProxy2008.h"
 

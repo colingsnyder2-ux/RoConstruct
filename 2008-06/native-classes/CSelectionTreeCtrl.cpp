@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CSelectionTreeCtrl | 2008-06 | 31 byte-exact, inactive (not link-selected)
+// 31/41 mapped addresses byte-exact | 10 unproved | no mapped strings | by auto (+8) (mixed 7)
+// <<< native-status | src 1938dc3f | roc native-status --write
 #include "CSelectionTreeCtrl.h"
 #include "CRobloxDoc.h"
 #include "v8tree/Instance.h"

@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// Matrix3 | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by auto
+// <<< native-status | src 77509ce2 | roc native-status --write
 #include "G3D/Matrix3.h"
 
 namespace G3D {

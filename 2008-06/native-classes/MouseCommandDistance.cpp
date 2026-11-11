@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS
+// >>> native-status (generated) -- do not edit >>>
+// MouseCommandDistance | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by Espeon (deepseek:deepseek-flash)
+// <<< native-status | src 4278af1f | roc native-status --write
 #include "v8datamodel/MouseCommand.h"
 #include "v8datamodel/PartInstance.h"
 #include "v8datamodel/Workspace.h"

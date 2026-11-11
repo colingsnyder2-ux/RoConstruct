@@ -2,6 +2,10 @@
 // 005fb710..005fd330. Evidence in native-headers/LocalBackpack2008/LocalBackpack2008.h; verified by
 // tests/record_native_local_backpack.py.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// LocalBackpack2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 6d41a521 | roc native-status --write
 #include "LocalBackpack2008/LocalBackpack2008.h"
 #include "v8datamodel/Backpack.h"
 #include "Network/Players.h"

@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// RbxSky2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 3626c050 | roc native-status --write
 // Ogre::RbxSky as compiled into the June 2008 client: a MINIMAL interface for the RbxSceneManager fork (inactive native
 // recovery). NO LAYOUT IS CLAIMED: the real object is 0xd4 bytes (new(0xd4) in RbxSceneManager::setSkyBox 00692a10,
 // constructor 0067fd60), but no member is declared here; one 4-byte member at +0x50 is not derived (no instruction of

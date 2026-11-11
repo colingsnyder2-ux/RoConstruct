@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// AppFramework | 2008-06 | inactive
-// unmapped (no binary link) | by -
+// AppFramework | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by EspClaude (deepseek:deepseek-chat)
 // <<< native-status | src cb2abb6c | roc native-status --write
 #include "CRobloxApp.h"
 #include "CMainFrame.h"

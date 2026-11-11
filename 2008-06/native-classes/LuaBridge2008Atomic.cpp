@@ -1,6 +1,10 @@
 // Inactive 2008-06 native recovery: RBX::Lua atomic bridges (Vector3, Color3, CoordinateFrame, BrickColor).
 // Body shapes follow the donor reconstruction; counted rows are proven by tests/record_native_lua_bridge2008.py.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// LuaBridge2008Atomic | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src afd3f7f2 | roc native-status --write
 #include "LuaBridge2008/LuaBridge2008.h"
 #include "G3D/Quat.h"
 #include "lua.h"

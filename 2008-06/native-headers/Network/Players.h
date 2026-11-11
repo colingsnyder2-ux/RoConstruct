@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Players | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 37738592 | roc native-status --write
 // 2008-06 native RBX::Network::Players (inactive). Shape after the donor tools/rbxgs Network/Players.h;
 // every base, field, virtual and descriptor below is read from the 2008-06 binary:
 //   RTTI       vtable 008227bc .?AVPlayers@Network@RBX@@ (25 bases) -> DescribedNonCreatable<Players,

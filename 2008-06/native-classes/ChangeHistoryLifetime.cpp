@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// ChangeHistoryLifetime | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src bcddff61 | roc native-status --write
 #include "v8datamodel/ChangeHistoryService.h"
 #include "v8datamodel/HistoryRecord.h"
 

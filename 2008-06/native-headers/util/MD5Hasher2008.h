@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// MD5Hasher2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 54d86300 | roc native-status --write
 // 2008-06 native RBX::MD5HasherImpl (inactive). Verified by tests/record_native_misc_leaves.py.
 //
 // The interface RBX::MD5Hasher is the donor declaration in util/ContentProvider.h (unchanged in 2008-06):

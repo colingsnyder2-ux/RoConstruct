@@ -1,8 +1,8 @@
 // Source-derived helpers required by ClumpStage2/Assembly2/SleepStage2.
 // Bodies from openrbx Guid.cpp, Primitive.cpp, MotorJoint.cpp and Link.cpp.
 // >>> native-status (generated) -- do not edit >>>
-// WorldHelpers | 2008-06 | inactive
-// unmapped (no binary link) | by -
+// WorldHelpers | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 5faff7d6 | roc native-status --write
 #include "util/Guid.h"
 #include "v8world/Primitive.h"

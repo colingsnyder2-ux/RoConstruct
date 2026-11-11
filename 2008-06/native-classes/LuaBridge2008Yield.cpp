@@ -2,6 +2,10 @@
 // Declarations in LuaBridge2008/LuaYieldingThreads2008.h (2008 double layout); the std::vector<WaitingThread> and
 // shared_ptr<ThreadRef> instances are emitted by this unit. Counted rows are proven by
 // tests/record_native_lua_bridge2008.py.
+// >>> native-status (generated) -- do not edit >>>
+// LuaBridge2008Yield | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 56a83c3d | roc native-status --write
 #include "LuaBridge2008/LuaYieldingThreads2008.h"
 
 namespace RBX

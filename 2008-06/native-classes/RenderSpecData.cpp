@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // >>> native-status (generated) -- do not edit >>>
-// RenderSpecData | 2008-06 | inactive
-// unmapped (no binary link) | by -
+// RenderSpecData | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by Espeon (deepseek:deepseek-chat)
 // <<< native-status | src 8683f3b0 | roc native-status --write
 #include "RenderLib/Profiler.h"
 #include <GLG3D/GLCaps.h>

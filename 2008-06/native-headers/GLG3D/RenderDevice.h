@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// RenderDevice | 2008-06 | inactive
-// unmapped (no binary link) | by -
+// RenderDevice | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src b9d70761 | roc native-status --write
 /**
   @file RenderDevice.h

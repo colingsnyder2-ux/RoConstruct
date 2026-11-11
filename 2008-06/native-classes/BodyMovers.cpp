@@ -2,6 +2,10 @@
 // The original unit 0062e090..00633101 also holds Rocket (native-classes/Rocket.cpp). Verified by
 // tests/record_native_body_movers.py.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// BodyMovers | 2008-06 | draft (no current byte proof)
+// 0/11 mapped addresses byte-exact | 11 unproved | 4 referenced strings (not rechecked) | by king_originala (+3) (mixed 5)
+// <<< native-status | src 3793eee6 | roc native-status --write
 #include "v8datamodel/BodyMovers.h"
 #include "v8datamodel/Rocket.h"
 #include "v8datamodel/PartInstance.h"

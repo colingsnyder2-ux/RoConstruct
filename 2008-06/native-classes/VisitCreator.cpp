@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// VisitCreator | 2008-06 | inactive
-// unmapped (no binary link) | by -
+// VisitCreator | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 1f5fbf06 | roc native-status --write
 #include "v8datamodel/Visit.h"
 

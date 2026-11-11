@@ -9,6 +9,10 @@
 //     setName("Visit");
 //   * setPing 005c4bb0: url != "" (operator!= import 008023cc), new worker_thread(boost::bind(&Visit::ping, url, interval),
 //     "rbx_visit") (0x14 bytes, ctor 005971d0), else pingThread.reset().
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit5BC_2008Visit | 2008-06 | draft (no current byte proof)
+// 0/3 mapped addresses byte-exact | 3 unproved | no mapped strings | by colin (+1) (mixed 2)
+// <<< native-status | src 8e752ad7 | roc native-status --write
 #include "v8datamodel/Visit.h"
 #include "util/Http.h"
 #include <boost/thread.hpp>

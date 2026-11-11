@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/slingshot-load
+// >>> native-status (generated) -- do not edit >>>
+// ContentProviderLoad | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by king_originala_sol_resume_medium (deepseek:deepseek-chat)
+// <<< native-status | src 59104507 | roc native-status --write
 #include "util/NativeContentProvider.h"
 #include "v8xml/XmlSerializer.h"
 #include "v8xml/SerializerV2.h"

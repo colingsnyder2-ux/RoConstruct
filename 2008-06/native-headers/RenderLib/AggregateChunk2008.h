@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// AggregateChunk2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 2e4d036d | roc native-status --write
 // 2008-06 native RBX::RenderBase::Chunk / AggregateChunk (inactive). Named *2008.h so it never shadows the donor
 // RenderLib/Chunk.h (a later source base whose Chunk lives in RBX::Render and has a different layout).
 //   Chunk          no RTTI vtable of its own: the constructor 004e8160 stores only the ReferenceCountedObject vtable

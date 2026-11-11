@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Sound | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 92a51f4d | roc native-status --write
 #include "util/ContentProvider.h"
 #include "util/RunStateOwner.h"
 #include "v8datamodel/PartInstance.h"

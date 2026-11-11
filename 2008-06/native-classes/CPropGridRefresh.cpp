@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CPropGridRefresh | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 77a79e22 | roc native-status --write
 #include "CPropGrid.h"
 #include "v8datamodel/DataModel.h"
 #include <algorithm>

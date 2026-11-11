@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// DuplicateSelectionVerb | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by auto (+1) (deepseek:deepseek-chat)
+// <<< native-status | src b99b65c9 | roc native-status --write
 #include "../native-headers/StandardVerbs.h"
 #include "../native-headers/v8datamodel/Workspace.h"
 #include "../native-headers/util/RunStateOwner.h"

@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// RbxSubEntity2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 0d9d7a22 | roc native-status --write
 // Ogre::RbxSubEntity as compiled into the June 2008 client (inactive native recovery; Roblox's exe-local Ogre 1.4.5
 // SubEntity subclass, the image block 00684fa0..00685a40 after the RbxFont unit). Non-colliding path: there is no donor
 // or other native header of this name; other native headers only forward-declare Ogre::RbxSubEntity

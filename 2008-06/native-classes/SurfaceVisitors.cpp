@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// SurfaceVisitors | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 70809dc6 | roc native-status --write
 #include "../native-headers/v8datamodel/PartInstance.h"
 #include "../native-headers/v8datamodel/Surfaces.h"
 #include <boost/bind.hpp>

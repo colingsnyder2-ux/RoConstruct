@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CClassTreeView | 2008-06 | 6 byte-exact, inactive (not link-selected)
+// 6/7 mapped addresses byte-exact | 1 unproved | no mapped strings | by king_originala (+1) (mixed 5)
+// <<< native-status | src 412bfc96 | roc native-status --write
 #include "CClassTreeView.h"
 #include "reflection/object.h"
 #include "reflection/enumconverter.h"

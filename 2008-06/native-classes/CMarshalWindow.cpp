@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CMarshalWindow | 2008-06 | draft (no current byte proof)
+// 0/4 mapped addresses byte-exact | 4 unproved | no mapped strings | by tester (+2) (mixed 2)
+// <<< native-status | src 7bada83a | roc native-status --write
 #include "util/MarshalWindow.h"
 #include "util/EventDataBase.h"
 

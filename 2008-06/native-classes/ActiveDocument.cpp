@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// ActiveDocument | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 51234cfe | roc native-status --write
 #include "ActiveDocView.h"
 #include "CRobloxDoc.h"
 

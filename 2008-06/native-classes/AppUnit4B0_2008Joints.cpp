@@ -11,6 +11,10 @@
 // Lighting's create<Lighting> 004adb60 and its shared_ptr / shared_count sit below the range (lighting2008).
 // sizeof(C) comes from the native v8datamodel/JointInstance.h: malloc 0x154 in create<Weld> 004b2620 and the
 // other create<C> rows.
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit4B0_2008Joints | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 6270a697 | roc native-status --write
 #include "v8datamodel/JointInstance.h"
 #include "v8datamodel/Lighting2008.h"
 #include "util/Object.h"

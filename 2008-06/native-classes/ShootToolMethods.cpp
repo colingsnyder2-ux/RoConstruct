@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// ShootToolMethods | 2008-06 | draft (no current byte proof)
+// 0/5 mapped addresses byte-exact | 5 unproved | no mapped strings | by king_originala (+2) (mixed 2)
+// <<< native-status | src 432d1e0f | roc native-status --write
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Workspace.h"
 #include "tool/ShootTools.h"

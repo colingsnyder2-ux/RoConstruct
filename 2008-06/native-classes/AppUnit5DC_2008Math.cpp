@@ -4,6 +4,10 @@
 // of the original; the unit is built with /fp:fast (x87 compare and constant forms of 005dda70 / 005dee10 / 005de1d0 /
 // 005de230 only match with it). Verified by tests/record_native_app_unit5dc_2008.py.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit5DC_2008Math | 2008-06 | draft (no current byte proof)
+// 0/46 mapped addresses byte-exact | 46 unproved | no mapped strings | by auto (+4) (mixed 6)
+// <<< native-status | src 8b99b287 | roc native-status --write
 #undef _RELEASEASSERT
 #include "util/Math.h"
 #include "util/Debug.h"

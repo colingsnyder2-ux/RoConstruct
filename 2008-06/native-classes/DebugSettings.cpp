@@ -2,6 +2,10 @@
 // Verified by tests/record_native_settings_items.py (unit profile: document-swap flags). Bodies that need a declaration
 // the shared headers lack (World::EThrottle) are guarded by NATIVE_DEBUGSETTINGS_PENDING and checked only against a
 // generated header copy (recorded pending-build-only, not counted).
+// >>> native-status (generated) -- do not edit >>>
+// DebugSettings | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | 1 referenced strings (not rechecked) | by king_originala (chatgpt:gpt-6.1-sol)
+// <<< native-status | src 81554b5f | roc native-status --write
 #include "v8datamodel/DebugSettings.h"
 #include "v8datamodel/PartInstance.h"
 #ifdef NATIVE_DEBUGSETTINGS_PENDING

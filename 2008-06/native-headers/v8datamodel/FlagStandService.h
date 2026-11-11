@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// FlagStandService | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src c04f93d8 | roc native-status --write
 #include <list>
 #include "v8tree/Instance.h"
 #include "v8tree/Service.h"

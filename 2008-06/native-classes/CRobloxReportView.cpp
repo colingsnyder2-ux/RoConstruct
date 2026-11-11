@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CRobloxReportView | 2008-06 | 4 byte-exact, inactive (not link-selected)
+// 4/7 mapped addresses byte-exact | 3 unproved | no mapped strings | by king_originala (+3) (mixed 4)
+// <<< native-status | src 530e5cd3 | roc native-status --write
 #include "CRobloxReportView.h"
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Stats.h"

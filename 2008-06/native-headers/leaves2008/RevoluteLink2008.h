@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// RevoluteLink2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src b0487f3e | roc native-status --write
 // 2008-06 RBX::Link / RBX::RevoluteLink (inactive native recovery). The donor v8kernel/Link.h layout is the 2008 one
 // (it is already reached through native-headers/v8world/Joints2008.h, so it is not redeclared here):
 //   RTTI     vtable 0083f75c .?AVRevoluteLink@RBX@@ -> Link (mdisp 0); Link is __declspec(novtable) (Link() 00613d20

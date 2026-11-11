@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// PropertyGridItems2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src d6ef5665 | roc native-status --write
 // Inactive recovery of the remaining Studio property-grid editor rows (2008-06).
 // Extends PropertyGridItems.h (XItem<T, GridItem, Descriptor>) without changing it.
 // Every layout below comes from the original editor factory 00440e30 (operator new sizes),

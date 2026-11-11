@@ -1,4 +1,8 @@
 // native-flags: /O2 /Gy /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/part-resize /I{headers}/part-embedded
+// >>> native-status (generated) -- do not edit >>>
+// PartInstanceResize | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/3 mapped addresses byte-exact | 2 unproved | no mapped strings | by auto (+1) (deepseek:deepseek-chat)
+// <<< native-status | src 455f9e80 | roc native-status --write
 #include "v8datamodel/PartInstance.h"
 #include "util/Math.h"
 namespace RBX {

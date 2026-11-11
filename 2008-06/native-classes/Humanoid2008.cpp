@@ -2,6 +2,10 @@
 // atexit 007ff300..007ff660). Evidence in native-headers/humanoid/Humanoid2008.h; verified by
 // tests/record_native_humanoid2008.py. Bodies after the donor tools/rbxgs Humanoid.cpp where the 2008 bytes agree.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// Humanoid2008 | 2008-06 | draft (no current byte proof)
+// 0/13 mapped addresses byte-exact | 13 unproved | 1 referenced strings (not rechecked) | by king_originala (+5) (mixed 6)
+// <<< native-status | src 0ffbb1d7 | roc native-status --write
 #include "humanoid/Humanoid2008.h"
 #include "v8tree/Service.h"
 #include "util/Object.h"

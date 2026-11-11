@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// LocalBackpack | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src b52b7e01 | roc native-status --write
 #include "v8datamodel/Hopper.h"
 #include "Network/Player.h"
 #include "Network/Players.h"

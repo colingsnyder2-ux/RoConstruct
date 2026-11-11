@@ -4,6 +4,10 @@
 // 0060d0d0 (used there by onPrimitiveGeometryTypeChanged 0060d8e0, which needs the Primitive contact list and is
 // not built), against native-headers/v8world/ContactManager2008.h. Verified by tests/record_native_contact_unit2008.py.
 // Contact2008.h reaches the donor v8world/Edge.h -> IPipelined.h, so Primitive2008.h takes the donor IPipelined.
+// >>> native-status (generated) -- do not edit >>>
+// ContactUnit2008Manager | 2008-06 | draft (no current byte proof)
+// 0/6 mapped addresses byte-exact | 6 unproved | no mapped strings | by auto (+1) (Claude Opus 5.5)
+// <<< native-status | src f3dc92b4 | roc native-status --write
 #define NATIVE_IPIPELINED2008_DONOR
 #include <algorithm>
 #include "v8world/ContactManager2008.h"

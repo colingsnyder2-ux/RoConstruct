@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CMainFrameDestructor | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/1 mapped addresses byte-exact | 0 unproved | no mapped strings | by colin (deepseek:deepseek-chat)
+// <<< native-status | src ec0cd03b | roc native-status --write
 #include "CMainFrame.h"
 #include "v8datamodel/ToolsPart.h"
 

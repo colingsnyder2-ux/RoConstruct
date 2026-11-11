@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// LocalBackpack2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src ebff9c2f | roc native-status --write
 // 2008-06 native RBX::LocalBackpack / RBX::LocalBackpackItem (inactive): the original LocalBackpack unit
 // 005fb710..005fd330 (bounded by Kernel 005fb650 and Tool 005fd3a0). Shape after the donor tools/rbxgs
 // v8datamodel/LocalBackpack.h; this header has its own path (no donor header lives at LocalBackpack2008/) so it shadows

@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/libs/scintilla-mfc-1.20
 // >>> native-status (generated) -- do not edit >>>
-// CIDEDocManager | 2008-06 | inactive
-// unmapped (no binary link) | by -
+// CIDEDocManager | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src ce99bb96 | roc native-status --write
 #include <afxwin.h>
 #include <Platform.h>

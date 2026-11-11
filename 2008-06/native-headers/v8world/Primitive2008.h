@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Primitive2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src a64bd29e | roc native-status --write
 // 2008-06 native RBX::Primitive and RBX::EdgeList (inactive). Declared under a non-colliding name: the original path
 // v8world/Primitive.h is reached by every unit that includes PartInstance.h / World.h, and a unit must not include
 // both this header and the donor v8world/Primitive.h. The base IPipelined comes from native-headers/v8kernel/

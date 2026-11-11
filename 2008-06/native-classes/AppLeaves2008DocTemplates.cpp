@@ -1,4 +1,8 @@
 // Inactive native 2008-06 CRbxDocTemplate / CRbxPlayDocTemplate (native-headers/AppLeaves2008/RbxDocTemplates2008.h).
+// >>> native-status (generated) -- do not edit >>>
+// AppLeaves2008DocTemplates | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by atomic.potato (ntech:glm-4.5-air)
+// <<< native-status | src 2fec990b | roc native-status --write
 #include "AppLeaves2008/RbxDocTemplates2008.h"
 #include <afxpriv.h>
 #include "CRobloxApp.h"

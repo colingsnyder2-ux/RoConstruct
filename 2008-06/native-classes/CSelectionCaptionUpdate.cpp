@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CSelectionCaptionUpdate | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by king_originala (+1) (mixed 2)
+// <<< native-status | src fbe0d546 | roc native-status --write
 #include "CSelectionCaption.h"
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Selection.h"

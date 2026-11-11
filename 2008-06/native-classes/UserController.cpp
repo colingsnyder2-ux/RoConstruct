@@ -3,6 +3,10 @@
 // Unit profile: document-swap flags plus /fp:fast (x87 constant folding in chaseTarget/updateTarget and the keyboard
 // getValue bodies).
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// UserController | 2008-06 | draft (no current byte proof)
+// 0/14 mapped addresses byte-exact | 14 unproved | no mapped strings | by auto (+3) (mixed 7)
+// <<< native-status | src c0b8003f | roc native-status --write
 #include "v8datamodel/UserController.h"
 #include "v8datamodel/PVInstance.h"
 #include "util/Math.h"

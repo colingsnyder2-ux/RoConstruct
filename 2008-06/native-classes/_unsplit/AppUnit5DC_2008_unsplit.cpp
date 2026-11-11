@@ -5,6 +5,10 @@
 // 2008-06 native RBX::IRenderable / IRenderableBucket rows of the util/IRenderable.cpp unit 005dd2c0..005dd54f inside
 // the application range 005dc000..005e8000 (inactive). Declarations: the native util/IRenderable.h (read-only).
 // Verified by tests/record_native_app_unit5dc_2008.py.
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit5DC_2008_unsplit | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 35e87a6d | roc native-status --write
 #undef _RELEASEASSERT
 #include "util/IRenderable.h"
 #include "util/Debug.h"

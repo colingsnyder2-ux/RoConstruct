@@ -1,4 +1,8 @@
 // Inactive native 2008-06 RBXImage (native-headers/AppLeaves2008/RBXImage2008.h).
+// >>> native-status (generated) -- do not edit >>>
+// AppLeaves2008RBXImage | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src abe06bbf | roc native-status --write
 #include "AppLeaves2008/RBXImage2008.h"
 #include <atlbase.h>
 #include <atlalloc.h>

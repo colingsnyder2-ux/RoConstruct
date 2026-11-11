@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /U_RELEASEASSERT
 // >>> native-status (generated) -- do not edit >>>
-// SelectionRemove | 2008-06 | inactive
-// unmapped (no binary link) | by -
+// SelectionRemove | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by colin (ntech:deepseek-flash)
 // <<< native-status | src 7077393e | roc native-status --write
 #include "v8datamodel/Selection.h"
 #include "util/Debug.h"

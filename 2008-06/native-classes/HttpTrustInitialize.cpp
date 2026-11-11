@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// HttpTrustInitialize | 2008-06 | inactive
-// unmapped (no binary link) | by -
+// HttpTrustInitialize | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 0310874d | roc native-status --write
 #include <windows.h>
 #include <atlbase.h>

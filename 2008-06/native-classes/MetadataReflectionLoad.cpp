@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/metadata-load /I{headers}/writer-2008 /I{headers}/std-noinline-string
+// >>> native-status (generated) -- do not edit >>>
+// MetadataReflectionLoad | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by EspClaude (deepseek:deepseek-chat)
+// <<< native-status | src bc850a44 | roc native-status --write
 #include "reflection/Metadata.h"
 #include "v8xml/SerializerV2.h"
 #include <fstream>

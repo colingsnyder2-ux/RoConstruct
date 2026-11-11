@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// RootInstance | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src c11395d8 | roc native-status --write
 #include "v8datamodel/ModelInstance.h"
 #include "v8world/Controller.h"
 #include "util/InsertMode.h"

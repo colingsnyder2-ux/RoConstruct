@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// PartInstanceLocked | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 1ad8bb1e | roc native-status --write
 #include "../native-headers/v8datamodel/PartInstance.h"
 
 namespace RBX {

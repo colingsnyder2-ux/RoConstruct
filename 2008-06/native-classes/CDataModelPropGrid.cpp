@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CDataModelPropGrid | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by EspClaude (deepseek:deepseek-flash)
+// <<< native-status | src b4038a21 | roc native-status --write
 #include "CDataModelPropGrid.h"
 IMPLEMENT_DYNAMIC(CDataModelPropGrid, CSelectionPropGrid)
 
