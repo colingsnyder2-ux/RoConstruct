@@ -35,6 +35,9 @@ def main():
         REGISTRY.parent.mkdir(parents=True, exist_ok=True)
         with gzip.open(PACKED) as src, open(REGISTRY, 'wb') as dst:
             shutil.copyfileobj(src, dst)
+    inventory = HERE / 'ogre-native-full-inventory-all.json'     # shared proof inventory: seed it from the packaged baseline
+    if not inventory.exists() and (HERE / 'data' / inventory.name).exists():
+        shutil.copyfile(HERE / 'data' / inventory.name, inventory)
     need(REGISTRY.exists(), 'work/2008-06/identity-registry.json', 'ask the owner for data/identity-registry.json.gz in the Worker package')
     for name in ('prove-cache', 'prove-out'):
         (HERE / name).mkdir(exist_ok=True)
