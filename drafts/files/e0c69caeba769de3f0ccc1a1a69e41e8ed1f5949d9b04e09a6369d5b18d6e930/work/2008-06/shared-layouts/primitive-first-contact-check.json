@@ -1,0 +1,54 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/PrimitiveLifetime.cpp",
+      "checks": [
+        {
+          "addr": "005e7bd0",
+          "symbol": "?getFirstContact@Primitive@RBX@@QAEPAVContact@2@XZ"
+        },
+        {
+          "addr": "005e7b90",
+          "symbol": "?getFirstJoint@Primitive@RBX@@QBEPAVJoint@2@XZ",
+          "calls": []
+        },
+        {
+          "addr": "005e7b00",
+          "symbol": "?getFirstEdge@Primitive@RBX@@QBEPAVEdge@2@XZ",
+          "calls": []
+        },
+        {
+          "addr": "005e82c0",
+          "symbol": "?getCoordinateFrame@Primitive@RBX@@QBEABVCoordinateFrame@G3D@@XZ"
+        },
+        {
+          "addr": "005e7530",
+          "symbol": "?onNewTouch@Primitive@RBX@@SAXPAV12@0@Z",
+          "calls": [
+            {
+              "offset": 14,
+              "target": "005e74c0",
+              "symbol": "?newTouch@RBX@@YAXPAVPrimitive@1@0@Z"
+            },
+            {
+              "offset": 21,
+              "target": "005e74c0",
+              "symbol": "?newTouch@RBX@@YAXPAVPrimitive@1@0@Z"
+            }
+          ]
+        },
+        {
+          "addr": "005e85e0",
+          "symbol": "?setController@Primitive@RBX@@QAEXPAVController@2@@Z",
+          "calls": [
+            {
+              "offset": 11,
+              "target": "00599e50",
+              "symbol": "?getStaticNullController@NullController@RBX@@SAPAV12@XZ"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

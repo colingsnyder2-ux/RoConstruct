@@ -1,0 +1,13 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/NetworkPlayer.cpp",
+      "checks": [
+        {
+          "addr": "004924e0",
+          "symbol": "?onCharacterChangedFrontend@Player@Network@RBX@@AAEXXZ"
+        }
+      ]
+    }
+  ]
+}

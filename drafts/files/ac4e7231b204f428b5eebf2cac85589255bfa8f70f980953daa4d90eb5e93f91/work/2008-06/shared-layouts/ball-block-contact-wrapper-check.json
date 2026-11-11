@@ -1,0 +1,13 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/ContactUnit2008Contact.cpp",
+      "checks": [
+        {
+          "addr": "00607bd0",
+          "symbol": "?computeIsColliding@BallBlockContact@RBX@@EAE_NM@Z"
+        }
+      ]
+    }
+  ]
+}
