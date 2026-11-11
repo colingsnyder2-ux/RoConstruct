@@ -4,8 +4,10 @@
 // >>> native-status (generated) -- do not edit >>>
 // OgreVRbxFont | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 95d36021 | roc native-status --write
+// <<< native-status | src 174853c3 | roc native-status --write
 #include "OgreRbx/VRbxFont2008.h"
+#include "OgreRbx/VisualEngine2008.h"
+#include "OgreRbxNode/TwoDManager2008.h"
 #include <OgreTextureManager.h>
 #include <OgreDataStream.h>
 #include "G3D/BinaryInput.h"
@@ -147,7 +149,6 @@ namespace Ogre
 		return G3D::Vector2(x, y);
 	}
 
-#ifdef NATIVE_VRBXFONT_DRAW2D_PENDING   // needs VisualEngine (native header pending); see VRbxFont2008.h
 	// G3D GFont::draw2D with the OpenGL vertex arrays replaced by one TwoDManager::addQuad per character
 	// (outline passes at dx,dy = +-1 when outline.a > 0.05, then the color pass).
 	G3D::Vector2 VRbxFont::draw2D(
@@ -212,6 +213,7 @@ namespace Ogre
 		G3D::Vector2 bounds;
 		bounds = computePackedArray(s, x, y, w, h, spacing, array);
 
+		TwoDManager* twoD = visualEngine->twoD;
 		int texWidth  = texture->getWidth();
 		int texHeight = texture->getHeight();
 
@@ -221,7 +223,7 @@ namespace Ogre
 					if ((dx != 0) || (dy != 0)) {
 						const G3D::Vector2* q = array;
 						for (int i = 0; i < numChars; ++i, q += 8) {
-							visualEngine->twoD->addQuad(texture->getName(), border,
+							twoD->addQuad(texture->getName(), border,
 							              q[1].x + dx, q[1].y + dy, q[5].x + dx, q[5].y + dy,
 							              q[0].x / texWidth, q[4].y / texHeight, q[4].x / texWidth, q[0].y / texHeight);
 						}
@@ -233,7 +235,7 @@ namespace Ogre
 		// Draw foreground
 		const G3D::Vector2* q = array;
 		for (int i = 0; i < numChars; ++i, q += 8) {
-			visualEngine->twoD->addQuad(texture->getName(), color,
+			twoD->addQuad(texture->getName(), color,
 			              q[1].x, q[1].y, q[5].x, q[5].y,
 			              q[0].x / texWidth, q[4].y / texHeight, q[4].x / texWidth, q[0].y / texHeight);
 		}
@@ -243,7 +245,6 @@ namespace Ogre
 		return bounds;
 	}
 
-#endif
 
 	SharedPtr<VRbxFont> VRbxFont::fromFile(const std::string& filename)
 	{

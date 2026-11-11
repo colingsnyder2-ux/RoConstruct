@@ -643,3 +643,6 @@ roc.cmd native-bulk work/native-client/identity-bulk-shard00.json --out work/nat
 - Open automatic next step: generalize R3 planner/apply from two TUs to sweep results; source edits require lease and actual-source native_bulk reproof. Do not count scratch template bytes as native recovery.
 - Uncommitted tracked edits: `rebuild/2008-06/native-classes/AppUnit67C_2008SubEntity.cpp`; `work/native-client/native_template_probe.py`. Generated/ignored evidence includes `ogre-template-*-r3-*`, `ogre-native-full-census-current`, `ogre-layout-solutions.json`, and metrics log. No draft session was started by this work, so none to flush.
 
+
+- NativeTypedMetricFreshness proposal: converter data-metrics receipts will add source/object SHA-256 and paths; coverage builder will exclude unpinned or stale converter receipts. Registry row schema unchanged. No converter loops started; current legacy metrics remain provisional until reproof.
+- NativeTypedMetricFreshness applied: proved converter receipts now pin source/object hashes; builder rejects legacy/stale ones. Coverage recomputed without converter runs: 476 addresses / 7,299 bytes (.data 138 / 358,160 virtual; .rdata 7,161 / 1,201,764 virtual). This supersedes provisional 8,570 B; it is freshness-filtered coverage, not full type/ABI or linked-data proof. Both scripts pass py_compile.

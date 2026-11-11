@@ -25,13 +25,12 @@
 //   * the resource-manager helpers the destructor calls: releaseUnusedResources 006792b0 and dumpResources 00678e20
 //     (names not in the binary), with the ResourceMapIterator::getNext COMDAT 00678dc0;
 //   * the std::vector<float> and std::sort<float*> COMDATs of this block (the frame-history median uses them).
-// Pending-build-only (NATIVE_OGRE_VISUAL_ENGINE_PENDING, with the proposal header that the recorder generates under
-// rebuild/2008-06/out/): VisualEngine and its frame history.
+// VisualEngine and its frame history: declared in OgreRbx/VisualEngine2008.h (one inferred member, see that header).
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // >>> native-status (generated) -- do not edit >>>
-// OgreVisualEngine | 2008-06 | 27 byte-exact, inactive (not link-selected)
-// 27/27 mapped addresses byte-exact | named 9 | 0 unproved | no mapped strings | by auto (+2) (mixed 2)
-// <<< native-status | src 1d059217 | roc native-status --write
+// OgreVisualEngine | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 2120bc2b | roc native-status --write
 #include <windows.h>
 #include <ddraw.h>
 #include <vector>
@@ -145,8 +144,7 @@ void dumpResources(ResourceManager& manager, const String& type)
 
 } // namespace Ogre
 
-#ifdef NATIVE_OGRE_VISUAL_ENGINE_PENDING
-#include "OgreRbxSky/VisualEnginePending2008.h"
+#include "OgreRbx/VisualEngine2008.h"
 #include <OgreSceneManager.h>
 #include <OgreRenderTarget.h>
 #include <OgreMaterialManager.h>
@@ -246,7 +244,6 @@ VisualEngine::~VisualEngine()
 }
 
 } // namespace Ogre
-#endif
 
 // Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class Ogre::MapIterator<std::map<unsigned long,Ogre::SharedPtr<Ogre::Resource>,std::less<unsigned long>,std::allocator<std::pair<unsigned long const ,Ogre::SharedPtr<Ogre::Resource> > > > >;
