@@ -5,7 +5,7 @@
   options: --rounds N (default 4), --infer-names, --quiet
 
 Every round compiles only sources whose compile inputs changed: the ledger of every earlier run is kept in
-prove-cache.json keyed by source (native_bulk's control digest has no family name, so reuse is safe), then the
+prove-cache/ (one file per source) (native_bulk's control digest has no family name, so reuse is safe), then the
 binder reads references of the now-exact owners from the ORIGINAL relocations and adds them as evidence until a
 round binds nothing new. Receipts: reference-bindings-prove-<n>.json (appended to the inventory evidence).
 
@@ -29,7 +29,7 @@ sys.path.insert(0, str(HERE / 'ogre'))
 from roc import match  # noqa: E402
 
 INVENTORY = HERE / 'ogre-native-full-inventory-all.json'
-CACHE = HERE / 'prove-cache.json'
+CACHE = HERE / 'prove-cache'            # one ledger row per source (the full ledger is >100 MB)
 INFERRED = HERE / 'inferred-name-identities.json'
 REGISTRY = HERE / 'ogre-names-registry.json'
 LOG = HERE / 'prove-log.jsonl'
@@ -44,19 +44,29 @@ def load(path, default):
     return json.loads(Path(path).read_text()) if Path(path).is_file() else default
 
 
+def cache_file(source):
+    import hashlib
+    return CACHE / (hashlib.sha1(source.encode()).hexdigest()[:20] + '.json')
+
+
 def seed_ledger(out, family, sources):
-    """Write out/ledger.json from the cache, keys renamed to this family."""
-    cache = load(CACHE, {})
-    ledger = {family + ':' + s: cache[s] for s in sources if s in cache}
+    """Write out/ledger.json from the per-source cache, keys renamed to this family."""
+    ledger = {}
+    for s in sources:
+        row = load(cache_file(s), None)
+        if row:
+            ledger[family + ':' + s] = row
     out.mkdir(parents=True, exist_ok=True)
     (out / 'ledger.json').write_text(json.dumps(ledger))
 
 
-def save_ledger(out):
-    cache = load(CACHE, {})
-    for key, row in load(out / 'ledger.json', {}).items():
-        cache[key.split(':', 1)[1]] = row
-    CACHE.write_text(json.dumps(cache))
+def save_ledger(out, sources):
+    CACHE.mkdir(exist_ok=True)
+    ledger = load(out / 'ledger.json', {})
+    for key, row in ledger.items():
+        source = key.split(':', 1)[1]
+        if source in sources:
+            cache_file(source).write_text(json.dumps(row))
 
 
 def rows(manifest):
@@ -152,7 +162,7 @@ def main():
                               capture_output=True, text=True)
         if bulk.returncode:
             sys.exit('native_bulk failed:\n' + (bulk.stdout + bulk.stderr)[-2000:])
-        save_ledger(out)
+        save_ledger(out, set(sources))
         manifest = out / 'manifest.json'
         metrics = load(manifest, {}).get('metrics', {})
         added = infer_names(manifest) if args.infer_names else 0
@@ -179,7 +189,12 @@ def main():
         print(json.dumps(row), flush=True)
         if not found['bindings'] and not added:
             break
-    INVENTORY.write_text(json.dumps(inventory, indent=1))                # evidence + sources persist for later runs
+    # Persist new sources/evidence; merge with the file as it is now (another prove run may have added its own).
+    current = load(INVENTORY, inventory)
+    disk = current['families'][0]
+    for key in ('sources', 'evidence'):
+        disk[key] += [x for x in master[key] if x not in disk[key]]
+    INVENTORY.write_text(json.dumps(current, indent=1))
     if not args.quiet:
         for src, (n, b, why) in sorted(by_file.items()):
             if args.all and not why:

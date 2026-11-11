@@ -173,12 +173,102 @@ def targets_from_fingerprint():
             if m and m[0].get('confidence') == 'high'}
 
 
+def beautify(*paths):
+    """Formatting-only pass; beautify.py reverts any file whose proof changes."""
+    subprocess.run([sys.executable, str(HERE / 'beautify.py'), *map(str, paths)], cwd=ROOT, capture_output=True)
+
+
+def exact_addrs(cpath):
+    manifest = HERE / 'prove-out' / ('prove-' + Path(cpath).stem) / 'manifest.json'
+    data = json.loads(manifest.read_text()) if manifest.is_file() else {'families': []}
+    return {c for f in data['families'] for r in f['symbols'] if r['status'] == 'inactive_exact'
+            for c in (r.get('candidates') or [])}
+
+
+def transplant_targets(addrs):
+    """Proven-name methods whose class header declares them and whose class .cpp lacks a body: (addr, row, dest)."""
+    import native_llm as nl
+    import ogre_llm_lane as ol
+    registry = json.loads(REGISTRY.read_text())
+    out = []
+    for a in addrs:
+        row = registry.get(a) or {}
+        sig, owner = row.get('signature'), row.get('owner_class')
+        if row.get('placeholder', True) or not sig or not owner or '<' in owner or '`' in sig:
+            continue
+        qual = re.sub(r'\s+const$', '', sig.split('(')[0]).split()[-1]
+        method, leaf = qual.rsplit('::', 1)[-1], owner.rsplit('::', 1)[-1]
+        dest, new = nl.destination_for(owner)
+        if not ol.class_header(leaf, method) or not dest or new:
+            continue
+        if re.search(r'\b%s::%s\s*\(' % (leaf, re.escape(method)), (ROOT / dest).read_text(errors='replace')):
+            continue
+        out.append((a, owner, leaf, method, dest))
+    return out
+
+
+def transplant(a, owner, leaf, method, dest):
+    """Append the analog body to dest inside owner's namespaces; keep only if `a` becomes exact and nothing is lost."""
+    text = (ANALOGS / (a + '.cpp')).read_text(errors='replace') if (ANALOGS / (a + '.cpp')).is_file() else ''
+    if '// from server: 100%' not in text[:400]:
+        return 'no 100% analog'
+    lib = re.search(r'^// roc-lib:\s*(\S+)\s+(\S+)', text, re.M)
+    if lib:                                           # fork/recipe analog: the body is in the recipe's source file
+        from roc import libs
+        recipe = libs.RECIPES.get(lib.group(1)) or libs.RECIPES.get(lib.group(1).replace('-dll', ''))
+        source = recipe and libs.LIBS / recipe['src'] / lib.group(2)
+        if not source or not source.is_file():
+            return 'recipe source missing'
+        text = source.read_text(errors='replace')
+    defs = [m for m in DEF.finditer(text) if m.group(3) == leaf and m.group(4) == method]
+    if not defs:
+        return 'analog defines no %s::%s' % (leaf, method)
+    d = defs[-1]
+    body = block(text, d.start())
+    body = body[:d.start(2) - d.start()] + body[d.start(3) - d.start():]       # drop namespace qualifiers
+    spaces = owner.split('::')[:-1]
+    code = ''.join('namespace %s {\n' % n for n in spaces) + body + '\n' + '}\n' * len(spaces)
+    path = ROOT / dest
+    before = path.read_bytes()
+    baseline = exact_addrs(path)
+    if not baseline:
+        prove(path)
+        baseline = exact_addrs(path)
+    path.write_bytes(before + ('\r\n// %s: transplanted from the server-exact analog (analog_to_native --transplant)\r\n'
+                               % a).encode() + code.replace('\r\n', '\n').replace('\n', '\r\n').encode())
+    prove(path)
+    after = exact_addrs(path)
+    if a in after and baseline <= after:
+        beautify(path)
+        return 'exact (+%d addrs)' % len(after - baseline)
+    path.write_bytes(before)
+    err = compile_error(path)
+    return 'reverted: ' + (err or ('lost %d' % len(baseline - after) if not baseline <= after else 'not exact'))
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('addrs', nargs='*')
     ap.add_argument('--fingerprint', action='store_true')
     ap.add_argument('--scan', action='store_true')
+    ap.add_argument('--transplant', action='store_true', help='proven-name methods into their existing class .cpp')
     args = ap.parse_args()
+    if args.transplant:
+        from roc import leases  # noqa: F401  (lease taken per dest below)
+        todo = transplant_targets([x.lower() for x in args.addrs] or fingerprint.default_targets(16))
+        sizes = match._functions('2008-06')
+        for a, owner, leaf, method, dest in sorted(todo, key=lambda t: -sizes[t[0]]['size']):
+            if args.scan:
+                print('%s %5d %s::%s -> %s' % (a, sizes[a]['size'], owner, method, dest))
+                continue
+            lease = subprocess.run([sys.executable, 'roc.py', 'lease', 'take', 'transplant-' + Path(dest).stem, dest,
+                                    '--hours', '1'], cwd=ROOT, capture_output=True, text=True)
+            if lease.returncode:
+                print('%s %s::%s: lease refused (%s)' % (a, owner, method, dest))
+                continue
+            print('%s %5d %s::%s: %s' % (a, sizes[a]['size'], owner, method, transplant(a, owner, leaf, method, dest)),
+                  flush=True)
+        return
     origins = targets_from_fingerprint()
     registry = json.loads(REGISTRY.read_text()) if REGISTRY.is_file() else {}
     if args.addrs:
@@ -218,6 +308,7 @@ def main():
                 shutil.move(str(f), str(dest / f.name))
             print('%-28s %6d B  FAILED %s' % (cls, size, err or (lines[-1] if lines else 'prove failed')))
         else:
+            beautify(cpath, hpath)
             print('%-28s %6d B  %s' % (cls, size, next((l for l in lines if l.startswith('rebuild/')), lines[-1] if lines else '')))
     print('skipped:', dict(skipped))
 
