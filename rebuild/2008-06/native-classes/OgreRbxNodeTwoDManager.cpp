@@ -5,7 +5,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // OgreRbxNodeTwoDManager | 2008-06 | draft (no current byte proof)
 // 0/8 mapped addresses byte-exact | 8 unproved | no mapped strings | by colin (+2) (mixed 3)
-// <<< native-status | src 30d048cf | roc native-status --write
+// <<< native-status | src d4045eb0 | roc native-status --write
 #include "OgreRbxNode/TwoDManager2008.h"
 #include <OgreRoot.h>
 #include <OgreRenderSystem.h>
@@ -134,7 +134,7 @@ namespace Ogre
 	// INFERRED (owner rule 2026-11-11): Batch, createVertexBuffer 006829a0 and prepareRenderState 006825b0 names;
 	// bodies follow the server-exact fork analog roc_espclaude_610f7f834b7be5f0.cpp.
 	// PARKED drafts: render 4554/4309 B (original calls out-of-line list iterator operator*/++ 0042a8f0/00682ad0; the fork
-	// forces them with noinline wrappers, not plausible source). prepareRenderState 999/1007 B: the fork itself is 999 B
+	// forces them with noinline wrappers, not plausible source). prepareRenderState: body from its own 100% app analog 006825b0 (the fork variant is 999 B)
 	// under the native runner (rbxgs prelude) but 1007 B under the ogre-1.4.5-dll recipe build -> runner prelude difference.
 	struct Batch {ResourceHandle texture; RenderOperation::OperationType points; int mode; unsigned count;};
 #define VERTEXO(X,Y,U,V) *out++=(*i).X; *out++=(*i).Y; *out++=-1.0f; col=static_cast<RGBA*>(static_cast<void*>(out)); *col++=(*i).colour; out=static_cast<float*>(static_cast<void*>(col)); *out++=(*i).U; *out++=(*i).V;
@@ -222,9 +222,9 @@ void TwoDManager::prepareRenderState() {
  alpha.blendType=LBT_ALPHA;alpha.operation=LBX_SOURCE1;alpha.source1=LBS_TEXTURE;
  TextureUnitState::UVWAddressingMode address={TextureUnitState::TAM_CLAMP,TextureUnitState::TAM_CLAMP,TextureUnitState::TAM_CLAMP};
  rs->_setWorldMatrix(Matrix4::IDENTITY);
- Matrix4 view,projection;
+ Matrix4 projection;
  if(flag) {
-  view=Matrix4::IDENTITY;
+  Matrix4 view=Matrix4::IDENTITY;
   view[0][3]=-0.5f;view[1][3]=-0.5f;view[2][3]=0;
   view[0][0]=0.5f;view[1][1]=0.5f;view[2][2]=0;
   rs->_setViewMatrix(view);
@@ -232,8 +232,8 @@ void TwoDManager::prepareRenderState() {
  }else {
   float nearPlane=target->getHeight()*0.5f;
   target->getHeight();
-  view=Matrix4::IDENTITY;
-  view[0][3]=target->getWidth()*-0.5f;view[1][3]=target->getHeight()*-0.5f;view[2][3]=0;
+  Matrix4 view=Matrix4::IDENTITY;
+  view.setTrans(Vector3(target->getWidth()*-0.5f,target->getHeight()*-0.5f,0));
   rs->_setViewMatrix(view);
   rs->_makeOrthoMatrix(Radian(Math::PI*0.5f),static_cast<float>(target->getWidth())/target->getHeight(),nearPlane,0,projection);
  }

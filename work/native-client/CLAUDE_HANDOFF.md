@@ -698,9 +698,7 @@ roc.cmd native-bulk work/native-client/identity-bulk-shard00.json --out work/nat
 - NativeRijndaelMetrics proposal: typed-data receipts may identify their real vendor source using source_path and pin included source_dependencies. Registry coverage will validate those hashes before counting; existing receipt and registry schemas remain compatible. Real RakNet array/object proof still pending.
 - Typed GUID batch: eight independently named original global GUIDs / 128 B emitted as ordinary GUID field initializers, compiled once with the historical compiler, each compiler-mangled name and relocation-free target bytes re-proved. Receipt link/typed-data-coverage-guid-batch-20261111.json pins source, object, target and registry hashes. Data coverage rises 20,011 -> 20,139 B (.data 291 / 358,160; .rdata 19,848 / 1,201,764). Target-hash-verified subset 19,962 B. Unlinked; no runtime proof. Shared converter patch failed once with Failed to write file; separate isolated batch reused the existing data proof gate.
 - Live-reference COMDAT stripping regression check: using an existing native object with a real inter-section call, kept owner bytes and relocation offsets unchanged and verified its referenced removed COMDAT became the correct undefined alias. Complements the selected Scintilla case where dead debug-only aliases were removed. No target executable run.
-- 11-11 finding (Claude): native_check_runner always appends the rbxgs prelude (defines _LIB _RELEASE _RELEASEASSERT
-  _VC80_UPGRADE, rbxgs include dirs). The server-exact fork roc_espclaude_610f7f834b7be5f0.cpp `setup` (006825b0)
-  compiles 999 B under the runner vs 1007 B under the ogre-1.4.5-dll recipe -> some Ogre-layer native bodies can never
-  match in the runner. Next lead: bisect the prelude (defines vs include order) on that file.
+- 11-11 (Claude): runner prelude bisected on the fork's setup: recipe-only flags give the same 999 B, so the rbxgs
+  prelude is NOT a codegen factor. 006825b0's 100% source is its own app analog src/2008-06/006825b0.cpp, not the fork.
 - Parked by the same cause class (inliner declined in the original large bodies): RbxEntity 0067daf0 (Vector3 copy /
   Math imports), TwoDManager::render 006832b0 (list iterator */++ out of line).

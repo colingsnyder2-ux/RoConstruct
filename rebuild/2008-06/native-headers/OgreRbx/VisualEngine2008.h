@@ -2,7 +2,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // VisualEngine2008 | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src f91be8ba | roc native-status --write
+// <<< native-status | src 21fdce51 | roc native-status --write
 // 2008-06 native Ogre::VisualEngine (Roblox exe-local owner of the Ogre Root / scene manager / camera / render window).
 // Layout derived from the original exe (evidence per member below; derivation: commit e816da27a6,
 // tests/record_native_ogre_visual_engine.py). Size 0x808 (new(0x808) at CRobloxView 0045cc9c).
@@ -44,6 +44,7 @@ namespace Ogre
 	public:
 		VisualEngine();                         // 006786c0 (new(0x808) at 0045cc9c)
 		virtual ~VisualEngine();                // 0067a130, vtable 0084df2c, ??_G 0067c4b0
+		void initialize(int api, HWND hwnd, int width, int height, int antialiasMode, std::string logFile);   // 0067a7e0 (INFERRED name)
 		SceneManager* sceneManager;             // +0x04 dynamic_cast<RbxSceneManager*> 0067ba33, Root::destroySceneManager
 		Camera* camera;                         // +0x08 sceneManager->createCamera("Camera") 0067ba68
 		RenderTarget* renderTarget;             // +0x0c Root::createRenderWindow 0067b279, Root::detachRenderTarget 0067a17e

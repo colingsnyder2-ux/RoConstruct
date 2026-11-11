@@ -31,7 +31,7 @@ from roc import match  # noqa: E402
 INVENTORY = HERE / 'ogre-native-full-inventory-all.json'
 CACHE = HERE / 'prove-cache'            # one ledger row per source (the full ledger is >100 MB)
 INFERRED = HERE / 'inferred-name-identities.json'
-REGISTRY = HERE / 'ogre-names-registry.json'
+REGISTRY = ROOT / 'work/2008-06/identity-registry.json'   # authoritative placeholder flags
 LOG = HERE / 'prove-log.jsonl'
 SCOPE = ('Ogre::', 'RBX::RenderNew', 'RBX::ViewNew')
 

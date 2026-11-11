@@ -24,17 +24,17 @@
 // Pending-build-only (NATIVE_OGRE_RBX_SKY_PENDING, with the proposal header that tests/record_native_ogre_rbx_sky.py
 // generates under rebuild/2008-06/out/): the RbxSky members.
 // >>> native-status (generated) -- do not edit >>>
-// OgreRbxSky | 2008-06 | 14 byte-exact, inactive (not link-selected)
-// 14/14 mapped addresses byte-exact | named 1 | 0 unproved | no mapped strings | by auto
-// <<< native-status | src 661df4c4 | roc native-status --write
+// OgreRbxSky | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 610e9bab | roc native-status --write
 #include <vector>
 #include <OgreVector3.h>
 
 template class std::vector<Ogre::Vector3>;
 template class std::vector<float>;
 
-#ifdef NATIVE_OGRE_RBX_SKY_PENDING
-#include "OgreRbxSky/RbxSkyPending2008.h"
+#include "OgreRbx/RbxSky2008.h"
+#include "OgreRbx/VisualEngine2008.h"
 #include <OgreSceneManager.h>
 #include <OgreBillboardSet.h>
 #include <OgreBillboard.h>
@@ -290,7 +290,6 @@ void RbxSky::updateSun(VisualEngine*, const G3D::LightingParameters& lighting)
 }
 
 }
-#endif
 
 // Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class std::_Container_base_aux_alloc_real<std::allocator<Ogre::Vector3> >;
