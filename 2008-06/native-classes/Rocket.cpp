@@ -1,6 +1,7 @@
 // 2008-06 native RBX::Rocket (inactive); evidence in native-headers/v8datamodel/Rocket.h. The original compiles it
 // in the BodyMover unit (0062e090..00633101), so it uses the same unit profile (see
 // tests/record_native_body_movers.py). Verified by tests/record_native_body_movers.py.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "v8datamodel/Rocket.h"
 #include "v8datamodel/PartInstance.h"
 #include "v8datamodel/Workspace.h"
@@ -84,3 +85,6 @@ namespace RBX
 		}
 	}
 }
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sRocket>();

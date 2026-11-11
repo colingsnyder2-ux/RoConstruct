@@ -67,3 +67,12 @@ namespace RBX
 		raisePropertyChanged(prop_TeamColor);
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Container_base_aux_alloc_real<std::allocator<RBX::SpawnLocation *> >;
+template class std::_List_nod<RBX::SpawnLocation *,std::allocator<RBX::SpawnLocation *> >;
+template class std::_List_ptr<RBX::SpawnLocation *,std::allocator<RBX::SpawnLocation *> >;
+template class std::_List_val<RBX::SpawnLocation *,std::allocator<RBX::SpawnLocation *> >;
+template class std::allocator<std::_List_nod<RBX::SpawnLocation *,std::allocator<RBX::SpawnLocation *> >::_Node *>;
+template class std::allocator<std::_List_nod<RBX::SpawnLocation *,std::allocator<RBX::SpawnLocation *> >::_Node>;
+template class std::list<RBX::SpawnLocation *,std::allocator<RBX::SpawnLocation *> >;

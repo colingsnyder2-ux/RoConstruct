@@ -64,3 +64,10 @@ void CRobloxView::onEvent(const RBX::ServiceProvider* source, RBX::ServiceRemovi
 void CRobloxView::detachDataModel() {
     owner_170.reset();
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class RBX::Listener<RBX::Network::Players,RBX::SuperSafeChanged>;
+template class RBX::Listener<RBX::ServiceProvider,RBX::ServiceAdded>;
+template class RBX::Listener<RBX::ServiceProvider,RBX::ServiceRemoving>;
+template class boost::scoped_ptr<RBX::Verb>;
+template class std::map<unsigned int,RBX::Name const *,std::less<unsigned int>,std::allocator<std::pair<unsigned int const ,RBX::Name const *> > >;

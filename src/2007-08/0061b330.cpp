@@ -1,7 +1,8 @@
-// from server: 97% by EspClaude
-// from server: 100% by EspClaude
-// roc-lang: cpp
-// roc-cl: 50727
+// from server: 99% by Intel
+// 2007-08 hand variant of 0061b330 (RBX::Mouse::onEvent):
+// the target's jump table spans eventType 1..9 (add ecx,-1 ; cmp ecx,8 ; ja default), so the
+// keyboard event must be the switch DEFAULT, not "case 10".
+// Pad14 has no data payload here: DescribedBase sits at +4, not +0x14.
 #include <string>
 namespace RBX {
 namespace Reflection {
@@ -21,7 +22,7 @@ struct UIEvent {
     unsigned char key;
     int b, c;
 };
-struct Pad14 { virtual ~Pad14(); char p[0x10]; };
+struct Pad14 { virtual ~Pad14(); };
 extern const Reflection::SignalDesc<void(int)> event_1;
 extern const Reflection::SignalDesc<void(int)> event_2;
 extern const Reflection::SignalDesc<void(int)> event_3;
@@ -48,7 +49,7 @@ void Mouse::onEvent(const UIEvent& event)
     case 2: update(event); event_2.fireEvent(this); break;
     case 8: event_8.fireEvent(this); break;
     case 9: event_9.fireEvent(this); break;
-    case 10: event_key.fireEvent(this, std::string(1, event.key)); break;
+    default: event_key.fireEvent(this, std::string(1, event.key)); break;
     }
 }
 }

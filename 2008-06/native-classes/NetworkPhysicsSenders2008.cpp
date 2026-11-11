@@ -7,6 +7,7 @@
 // explicit sender container instantiation below, the sender index members 004c9b20..004cc580. step/sendPackets/
 // receivePacket are declared only (open: they need the native Replicator). Built with /fp:fast (calculate_max_load
 // 004ca090 keeps the product on the x87 stack).
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "Network/PhysicsSenders2008.h"
 
 namespace RBX
@@ -43,3 +44,15 @@ namespace RBX
 template class boost::multi_index::multi_index_container<
 	RBX::Network::PhysicsSender::PartItem,
 	RBX::Network::PhysicsSender::PartItems::index_specifier_type_list>;
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::multi_index::detail::auto_space<boost::multi_index::detail::copy_map_entry<boost::multi_index::detail::hashed_index_node<boost::multi_index::detail::ordered_index_node<boost::multi_index::detail::ordered_index_node<boost::multi_index::detail::index_node_base<RBX::Network::PhysicsSender::PartItem> > > > >,std::allocator<RBX::Network::PhysicsSender::PartItem> >;
+template class boost::multi_index::detail::auto_space<boost::multi_index::detail::hashed_index_node_impl,std::allocator<RBX::Network::InterpolatingPhysicsReceiver::PartItem> >;
+template class boost::multi_index::detail::auto_space<unsigned int,std::allocator<RBX::Network::PhysicsSender::PartItem> >;
+template class boost::multi_index::detail::bidir_node_iterator<boost::multi_index::detail::ordered_index_node<boost::multi_index::detail::ordered_index_node<boost::multi_index::detail::index_node_base<RBX::Network::PhysicsSender::PartItem> > >,boost::mpl::na>;
+template class boost::multi_index::detail::bucket_array<std::allocator<RBX::Network::InterpolatingPhysicsReceiver::PartItem> >;
+template class boost::shared_ptr<RBX::PhysicsService>;
+template class std::_Vector_val<float,std::allocator<float> >;
+template class std::allocator<RBX::Network::PhysicsSender::PartItem>;
+template class std::pair<boost::multi_index::detail::copy_map_entry<boost::multi_index::detail::hashed_index_node<boost::multi_index::detail::ordered_index_node<boost::multi_index::detail::ordered_index_node<boost::multi_index::detail::index_node_base<RBX::Network::PhysicsSender::PartItem> > > > > *,boost::multi_index::detail::copy_map_entry<boost::multi_index::detail::hashed_index_node<boost::multi_index::detail::ordered_index_node<boost::multi_index::detail::ordered_index_node<boost::multi_index::detail::index_node_base<RBX::Network::PhysicsSender::PartItem> > > > > *>;
+template class std::vector<float,std::allocator<float> >;

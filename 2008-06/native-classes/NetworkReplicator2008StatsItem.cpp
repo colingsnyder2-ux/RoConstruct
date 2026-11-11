@@ -13,3 +13,7 @@ namespace RBX
 	Creatable<Instance>::create<Network::Replicator::ReplicatorStatsItem, boost::shared_ptr<Network::Replicator>,
 								RakNetStatistics*>(boost::shared_ptr<Network::Replicator>, RakNetStatistics*); // 004b7e50
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<RBX::Network::Replicator::ReplicatorStatsItem>;
+template class boost::shared_ptr<RBX::Network::Replicator>;

@@ -768,3 +768,9 @@ bool RakPeer::RunUpdateCycle( void )
 
 	return true;
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class DataStructures::List<PluginInterface *>;
+template class DataStructures::SingleProducerConsumer<RakPeer::BufferedCommandStruct>;
+template class DataStructures::SingleProducerConsumer<RakPeer::RequestedConnectionStruct>;
+template class big::RSACrypt<unsigned int [8]>;

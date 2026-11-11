@@ -117,3 +117,7 @@ namespace RBX
 	// create<Lighting> 004adb60 (ServiceProvider::create<Lighting> reaches it).
 	template boost::shared_ptr<Lighting> Creatable<Instance>::create<Lighting>();
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::token_iterator<boost::char_separator<char,std::char_traits<char> >,std::_String_const_iterator<char,std::char_traits<char>,std::allocator<char> >,std::basic_string<char,std::char_traits<char>,std::allocator<char> > >;
+template class std::_String_const_iterator<char,std::char_traits<char>,std::allocator<char> >;

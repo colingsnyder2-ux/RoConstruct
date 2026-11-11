@@ -90,3 +90,13 @@ template boost::shared_ptr<CRobloxWnd::RenderStatsItem>
 	RBX::Creatable<RBX::Instance>::create<CRobloxWnd::RenderStatsItem, RenderStats*>(RenderStats*);
 
 #endif
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::_bi::list1<boost::_bi::value<G3D::Stopwatch const *> >;
+template class boost::_bi::list1<boost::_bi::value<int const *> >;
+template class boost::_bi::value<G3D::Stopwatch const *>;
+template class boost::_bi::value<int const *>;
+template class boost::function0<G3D::Stopwatch,std::allocator<boost::function_base> >;
+template class boost::function0<int,std::allocator<boost::function_base> >;
+template class boost::shared_ptr<RBX::Stats::TypedStatsItem<G3D::Stopwatch> >;
+template class boost::shared_ptr<RBX::Stats::TypedStatsItem<int> >;

@@ -6,6 +6,7 @@
 // Accoutrement mdisp IEquipable 0x130 -> IRenderable 0x140, Tool 0x1a0 -> 0x1b0), declared by the donor
 // v8datamodel/IEquipable.h that the native Tool.h / Accoutrement.h already include.
 // Verified by tests/record_native_script_app2008.py.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "v8datamodel/IEquipable.h"
 #include "v8datamodel/JointInstance.h"
 #include "v8datamodel/PartInstance.h"

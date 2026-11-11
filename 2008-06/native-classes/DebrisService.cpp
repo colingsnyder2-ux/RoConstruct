@@ -99,3 +99,14 @@ namespace RBX
 		timer = ServiceProvider::create<TimerService>(newProvider);
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::Instance> > >;
+template class boost::_bi::value<boost::shared_ptr<RBX::Instance> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<boost::weak_ptr<RBX::Instance> > >;
+template class std::_Deque_const_iterator<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance> >,1>;
+template class std::_Deque_iterator<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance> >,1>;
+template class std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance> > >;
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sDebrisService>();

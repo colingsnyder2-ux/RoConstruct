@@ -26,6 +26,7 @@
 #include "v8world/Edge.h"
 
 struct NativeWorldShapesLayout;
+namespace G3D { class Vector3; class Vector3int16; }
 
 namespace RBX
 {
@@ -112,6 +113,8 @@ namespace RBX
 
 	private:
 		ContactConnector* ballBlockConnector;           // +0x34
+		bool computeIsColliding(short& onBorder, G3D::Vector3int16& clip,
+			G3D::Vector3& projectionInBlock, float overlapIgnored); // 00607020
 
 	private:
 		virtual void deleteAllConnectors()              // slot 5 (0060cb50, folded with BallBallContact's)

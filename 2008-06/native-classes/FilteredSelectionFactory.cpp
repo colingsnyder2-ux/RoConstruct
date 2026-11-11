@@ -45,3 +45,10 @@ template<class Class> Class* ServiceProvider::create() const {
 template FilteredSelection<ModelInstance>* ServiceProvider::create<FilteredSelection<ModelInstance> >() const;
 template FilteredSelection<PVInstance>* ServiceProvider::create<FilteredSelection<PVInstance> >() const;
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<RBX::FilteredSelection<RBX::ModelInstance> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<RBX::ModelInstance *> >;
+template class std::_Vector_const_iterator<RBX::ModelInstance *,std::allocator<RBX::ModelInstance *> >;
+template class std::_Vector_iterator<RBX::ModelInstance *,std::allocator<RBX::ModelInstance *> >;
+template class std::vector<RBX::ModelInstance *,std::allocator<RBX::ModelInstance *> >;

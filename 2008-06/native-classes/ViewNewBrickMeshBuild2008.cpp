@@ -1,6 +1,7 @@
 // 2008-06 native RBX::ViewNew BrickMesh unit (inactive, pass 2): the BrickMesh static cache (Cache ctor 004e5300,
 // initCache 004e5360, flushCache 004e5670, releaseUnused 004e5710) and the shadow box helper 004e3570 with its
 // unit-local appendQuad 004de1d0. Declarations: ViewNew/BrickMesh.h and ViewNewBrickBuild2008/BrickMeshCache2008.h.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "ViewNewBrickBuild2008/BrickMeshCache2008.h"
 
 static int orderedCompare(const G3D::Vector3& a, const G3D::Vector3& b)   // 004dc360
@@ -107,3 +108,17 @@ namespace RBX
 }
 
 template Variations& std::map<Lookup, Variations>::operator[](const Lookup&);
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class G3D::ReferenceCountedPointer<RBX::RenderBase::Mesh>;
+template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<Lookup const ,Variations> > >;
+template class std::_Tmap_traits<Lookup,Variations,std::less<Lookup>,std::allocator<std::pair<Lookup const ,Variations> >,0>;
+template class std::_Tree<std::_Tmap_traits<Lookup,Variations,std::less<Lookup>,std::allocator<std::pair<Lookup const ,Variations> >,0> >;
+template class std::_Vector_const_iterator<G3D::Vector3,std::allocator<G3D::Vector3> >;
+template class std::_Vector_const_iterator<unsigned short,std::allocator<unsigned short> >;
+template class std::_Vector_iterator<G3D::Vector3,std::allocator<G3D::Vector3> >;
+template class std::_Vector_iterator<unsigned short,std::allocator<unsigned short> >;
+template class std::allocator<std::_Tree_nod<std::_Tmap_traits<Lookup,Variations,std::less<Lookup>,std::allocator<std::pair<Lookup const ,Variations> >,0> >::_Node *>;
+template class std::allocator<std::pair<Lookup const ,Variations> >;
+template class std::vector<G3D::Vector3,std::allocator<G3D::Vector3> >;
+template class std::vector<unsigned short,std::allocator<unsigned short> >;

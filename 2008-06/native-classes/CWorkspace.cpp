@@ -38,3 +38,10 @@ void CWorkspace::cleanup() {
         dataModel.reset();
     }
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class ATL::IDispatchImpl<IWorkspace,&IID_IWorkspace,&LIBID_RobloxLib,1,2,ATL::CComTypeInfoHolder>;
+template class ATL::IObjectWithSiteImpl<CWorkspace>;
+template class RBX::Listener<RBX::Workspace,RBX::DrawChanged>;
+template class std::_Vector_const_iterator<RBX::Listener<RBX::Workspace,RBX::DrawChanged> *,std::allocator<RBX::Listener<RBX::Workspace,RBX::DrawChanged> *> >;
+template class std::_Vector_iterator<RBX::Listener<RBX::Workspace,RBX::DrawChanged> *,std::allocator<RBX::Listener<RBX::Workspace,RBX::DrawChanged> *> >;

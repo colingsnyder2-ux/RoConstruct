@@ -105,3 +105,14 @@ LDraw2RobloxMapRoot::LDraw2RobloxMapRoot(std::string filename):path(filename) {
     }
 }
 } }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<int const ,RBX::LDraw2Lua::LDraw2RobloxColorMap *> > >;
+template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,RBX::LDraw2Lua::LDraw2RobloxPartMap *> > >;
+template class std::_Tree<std::_Tmap_traits<int,RBX::LDraw2Lua::LDraw2RobloxColorMap *,std::less<int>,std::allocator<std::pair<int const ,RBX::LDraw2Lua::LDraw2RobloxColorMap *> >,0> >;
+template class std::_Tree<std::_Tmap_traits<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,RBX::LDraw2Lua::LDraw2RobloxPartMap *,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,RBX::LDraw2Lua::LDraw2RobloxPartMap *> >,0> >;
+template class std::allocator<std::_Tree_nod<std::_Tmap_traits<int,RBX::LDraw2Lua::LDraw2RobloxColorMap *,std::less<int>,std::allocator<std::pair<int const ,RBX::LDraw2Lua::LDraw2RobloxColorMap *> >,0> >::_Node *>;
+template class std::allocator<std::_Tree_nod<std::_Tmap_traits<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,RBX::LDraw2Lua::LDraw2RobloxPartMap *,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,RBX::LDraw2Lua::LDraw2RobloxPartMap *> >,0> >::_Node *>;
+template class std::allocator<std::pair<int const ,RBX::LDraw2Lua::LDraw2RobloxColorMap *> >;
+template class std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,RBX::LDraw2Lua::LDraw2RobloxPartMap *> >;
+template class std::map<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,RBX::LDraw2Lua::LDraw2RobloxPartMap *,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,RBX::LDraw2Lua::LDraw2RobloxPartMap *> > >;

@@ -1,6 +1,7 @@
 // 2008-06 native RBX::SimBody rows (inactive) against native-headers/v8kernel/Body2008.h (the 0xb4 SimBody):
 // SimBody(Body*) 00658ae0, getOwnerPV 00658ca0 (SimBody unit 00658a30..0065925e) and accumulateForce 00612fb0 (its
 // out-of-line copy precedes the GeoPair unit 00613060). Verified by tests/record_native_body_primitive2008.py.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "v8kernel/Body2008.h"
 #include "v8kernel/Constants.h"
 #include "util/Units.h"

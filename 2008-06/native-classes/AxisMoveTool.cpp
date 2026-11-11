@@ -130,3 +130,14 @@ void AxisMoveTool::onMouseIdle(const UIEvent& event) {
 }
 
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class RBX::ServiceClient<RBX::FilteredSelection<RBX::PVInstance> >;
+template class RBX::ServiceClient<RBX::Selection>;
+template class boost::function0<unsigned int,std::allocator<boost::function_base> >;
+template class boost::shared_ptr<RBX::FilteredSelection<RBX::PVInstance> >;
+template class boost::shared_ptr<RBX::Selection>;
+template class boost::shared_ptr<RBX::Workspace>;
+template class std::_Container_base_aux_alloc_real<std::allocator<RBX::Primitive *> >;
+template class std::auto_ptr<RBX::MegaDragger>;
+template class std::vector<RBX::Primitive *,std::allocator<RBX::Primitive *> >;

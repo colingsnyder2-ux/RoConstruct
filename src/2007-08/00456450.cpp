@@ -1,6 +1,6 @@
+// from server: 39% by Intel
 // from server: 38% by tester
 // roc-lang: cpp
-// roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
 // roc-lib: g3d-6.09 G3Dcpp/Vector3.cpp
 

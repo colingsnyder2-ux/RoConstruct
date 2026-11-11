@@ -2,6 +2,7 @@
 // Body shapes follow the donor reconstruction; counted rows are proven by tests/record_native_lua_bridge2008.py.
 // NATIVE_LUABRIDGE_PENDING guards code that needs declarations the shared native headers lack
 // (RBX::Instances / Instance::setParent2 in v8tree/Instance.h, and the donor LuaArguments.h that needs Instances).
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "LuaBridge2008/LuaSignalBridge2008.h"
 #include "LuaBridge2008/LuaEnumBridge2008.h"
 #include "LuaBridge2008/LuaArguments2008.h"
@@ -511,3 +512,32 @@ template void Property::setValue<Lua::FunctionRef>(const Lua::FunctionRef&);
 template void Property::setValue<boost::shared_ptr<Instance> >(const boost::shared_ptr<Instance>&);
 template void Property::setValue<boost::shared_ptr<DescribedBase> >(const boost::shared_ptr<DescribedBase>&);
 }}
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class RBX::Lua::Bridge<G3D::CoordinateFrame,1>;
+template class RBX::Lua::Bridge<G3D::Vector3,1>;
+template class RBX::Lua::Bridge<boost::shared_ptr<RBX::Reflection::SignalInstance>,0>;
+template class RBX::Lua::SharedPtrBridge<RBX::Reflection::SignalInstance>;
+template class RBX::Reflection::TypedPropertyDescriptor<G3D::Color3>;
+template class RBX::Reflection::TypedPropertyDescriptor<G3D::CoordinateFrame>;
+template class RBX::Reflection::TypedPropertyDescriptor<RBX::ContentId>;
+template class RBX::Reflection::TypedPropertyDescriptor<RBX::Lua::FunctionRef>;
+template class RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>;
+template class RBX::Reflection::TypedPropertyDescriptor<RBX::TextureId>;
+template class RBX::Reflection::TypedPropertyDescriptor<boost::shared_ptr<RBX::Instance> >;
+template class RBX::Reflection::TypedPropertyDescriptor<boost::shared_ptr<RBX::Reflection::DescribedBase> >;
+template class RBX::Reflection::TypedPropertyDescriptor<boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance> > > const > >;
+template class RBX::Reflection::TypedPropertyDescriptor<int>;
+template class boost::shared_ptr<RBX::Reflection::DescribedBase>;
+template class boost::shared_ptr<RBX::Reflection::SignalInstance>;
+template class std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<G3D::Color3>::GetSet>;
+template class std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<G3D::CoordinateFrame>::GetSet>;
+template class std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<RBX::ContentId>::GetSet>;
+template class std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<RBX::Lua::FunctionRef>::GetSet>;
+template class std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::GetSet>;
+template class std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<RBX::TextureId>::GetSet>;
+template class std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<boost::shared_ptr<RBX::Instance> >::GetSet>;
+template class std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<boost::shared_ptr<RBX::Reflection::DescribedBase> >::GetSet>;
+template class std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance> > > const > >::GetSet>;
+template class std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<int>::GetSet>;
+template class std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >::GetSet>;

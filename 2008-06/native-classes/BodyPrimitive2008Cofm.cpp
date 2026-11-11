@@ -1,5 +1,6 @@
 // 2008-06 native RBX::Cofm (inactive): the Cofm unit rows 0065fef0..0066017c against native-headers/v8kernel/Body2008.h.
 // Verified by tests/record_native_body_primitive2008.py.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "v8kernel/Body2008.h"
 
 namespace RBX

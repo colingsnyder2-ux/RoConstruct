@@ -38,3 +38,9 @@ template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::ModelInstance, 
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::Script, RBX::Instance, RBX::sScript>::Creator::create() const;
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::LocalScript, RBX::Script, RBX::sLocalScript>::Creator::create() const;
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::ChangeHistoryService, RBX::Instance, RBX::sChangeHistoryService>::Creator::create() const;
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<ChatEnter>;
+template class boost::shared_ptr<RBX::LocalScript>;
+template class boost::shared_ptr<RBX::Network::Players>;
+template class boost::shared_ptr<RBX::Script>;

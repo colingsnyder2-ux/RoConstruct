@@ -45,3 +45,6 @@ int XItem<int, CXTPPropertyGridItem, RBX::Reflection::TypedPropertyDescriptor<in
     if (valid) return value;
     return 0;
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class XItem<int,CXTPPropertyGridItem,RBX::Reflection::TypedPropertyDescriptor<int> >;

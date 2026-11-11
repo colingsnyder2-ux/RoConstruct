@@ -44,3 +44,10 @@ void CInsertObjectDialog::addClasses(const RBX::Reflection::ClassDescriptor* des
     std::for_each(descriptor->derivedClasses_begin(), descriptor->derivedClasses_end(),
                   boost::bind(&CInsertObjectDialog::addClasses, this, _1));
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::_bi::value<CInsertObjectDialog *>;
+template class boost::_mfi::mf1<void,CInsertObjectDialog,RBX::Reflection::ClassDescriptor const *>;
+template class boost::shared_ptr<RBX::Metadata::Reflection>;
+template class std::_Vector_const_iterator<RBX::Reflection::ClassDescriptor *,std::allocator<RBX::Reflection::ClassDescriptor *> >;
+template class std::map<RBX::Name const *,RBX::ICreator const *,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,RBX::ICreator const *> > >;

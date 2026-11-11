@@ -21,3 +21,7 @@ void LuaArgs::push(ATL::CComVariant value) {
         throw std::runtime_error(msg);
     }
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Vector_const_iterator<RBX::Reflection::Value,std::allocator<RBX::Reflection::Value> >;
+template class std::_Vector_iterator<RBX::Reflection::Value,std::allocator<RBX::Reflection::Value> >;

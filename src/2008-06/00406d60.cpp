@@ -1,35 +1,127 @@
 // from server: 100% by auto
-// roc 2008-06 00406d60  unit: boost::thread_exception  size: 55 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 00406d60
-//
-// 00406d60  8b542404             mov edx, dword ptr [esp + 4]
-// 00406d64  56                   push esi
-// 00406d65  8bf1                 mov esi, ecx
-// 00406d67  8b06                 mov eax, dword ptr [esi]
-// 00406d69  8b48f0               mov ecx, dword ptr [eax - 0x10]
-// 00406d6c  83e810               sub eax, 0x10
-// 00406d6f  395008               cmp dword ptr [eax + 8], edx
-// 00406d72  7d15                 jge 0x406d89
-// 00406d74  85d2                 test edx, edx
-// 00406d76  7e11                 jle 0x406d89
-// 00406d78  57                   push edi
-// 00406d79  8b39                 mov edi, dword ptr [ecx]
-// 00406d7b  6a01                 push 1
-// 00406d7d  52                   push edx
-// 00406d7e  50                   push eax
-// 00406d7f  8b4708               mov eax, dword ptr [edi + 8]
-// 00406d82  ffd0                 call eax
-// 00406d84  5f                   pop edi
-// 00406d85  85c0                 test eax, eax
-// 00406d87  7505                 jne 0x406d8e
-// 00406d89  e822f9ffff           call 0x4066b0
-// 00406d8e  83c010               add eax, 0x10
-// 00406d91  8906                 mov dword ptr [esi], eax
-// 00406d93  5e                   pop esi
-// 00406d94  c20400               ret 4
-// library mfc-9.0/atlmfc\src\mfc\afxacceleratorkey.cpp (function ?Reallocate@?$CSimpleStringT@D$0A@@ATL@@AAEXH@Z)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
 // roc-lib: mfc-9.0 atlmfc/src/mfc/afxacceleratorkey.cpp
+
+// Candidate translation unit (score above; library headers required).
+// This is a part of the Microsoft Foundation Classes C++ library.
+// Copyright (C) Microsoft Corporation
+// All rights reserved.
+//
+// This source code is only intended as a supplement to the
+// Microsoft Foundation Classes Reference and related
+// electronic documentation provided with the library.
+// See these sources for detailed information regarding the
+// Microsoft Foundation Classes product.
+
+#include "stdafx.h"
+#include "afxacceleratorkey.h"
+
+#ifdef _DEBUG
+#define new DEBUG_NEW
+#endif
+
+//////////////////////////////////////////////////////////////////////
+// Construction/Destruction
+//////////////////////////////////////////////////////////////////////
+
+CMFCAcceleratorKey::CMFCAcceleratorKey(LPACCEL lpAccel) : m_lpAccel(lpAccel)
+{
+}
+
+CMFCAcceleratorKey::CMFCAcceleratorKey() : m_lpAccel(NULL)
+{
+}
+
+CMFCAcceleratorKey::~CMFCAcceleratorKey()
+{
+}
+
+void CMFCAcceleratorKey::Format(CString& str) const
+{
+	str.Empty();
+
+	if (m_lpAccel == NULL)
+	{
+		ASSERT(FALSE);
+		return;
+	}
+
+	if (m_lpAccel->fVirt & FCONTROL)
+	{
+		AddVirtKeyStr(str, VK_CONTROL);
+	}
+
+	if (m_lpAccel->fVirt & FSHIFT)
+	{
+		AddVirtKeyStr(str, VK_SHIFT);
+	}
+
+	if (m_lpAccel->fVirt & FALT)
+	{
+		AddVirtKeyStr(str, VK_MENU);
+	}
+
+	if (m_lpAccel->fVirt & FVIRTKEY)
+	{
+		AddVirtKeyStr(str, m_lpAccel->key, TRUE);
+	}
+	else if (m_lpAccel->key != 27) // Don't print esc
+	{
+		str += (char) m_lpAccel->key;
+	}
+}
+
+void CMFCAcceleratorKey::AddVirtKeyStr(CString& str, UINT uiVirtKey, BOOL bLast) const
+{
+	CString strKey;
+
+	if (uiVirtKey == VK_PAUSE)
+	{
+		strKey = _T("Pause");
+	}
+	else
+	{
+#define AFX_BUFFER_LEN 50
+		TCHAR szBuffer [AFX_BUFFER_LEN + 1];
+
+		ZeroMemory(szBuffer, sizeof(szBuffer));
+
+		UINT nScanCode = ::MapVirtualKeyEx(uiVirtKey, 0, ::GetKeyboardLayout(0)) <<16 | 0x1;
+
+		if (uiVirtKey >= VK_PRIOR && uiVirtKey <= VK_HELP)
+		{
+			nScanCode |= 0x01000000;
+		}
+
+		::GetKeyNameText(nScanCode, szBuffer, AFX_BUFFER_LEN);
+
+		strKey = szBuffer;
+	}
+
+	strKey.MakeLower();
+
+	//--------------------------------------
+	// The first letter should be uppercase:
+	//--------------------------------------
+	for (int nCount = 0; nCount < strKey.GetLength(); nCount++)
+	{
+		TCHAR c = strKey[nCount];
+		if (IsCharLower(c))
+		{
+			c = (TCHAR) toupper(c); // Convert single character JY 4-Dec-99
+			strKey.SetAt(nCount, c);
+			break;
+		}
+	}
+
+	str += strKey;
+
+	if (!bLast)
+	{
+		str += '+';
+	}
+}
+
+

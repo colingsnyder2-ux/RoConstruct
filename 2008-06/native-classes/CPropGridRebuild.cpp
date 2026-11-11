@@ -12,3 +12,7 @@ void CPropGrid::rebuild(const RBX::Reflection::ClassDescriptor* descriptor)
                   descriptor->RBX::Reflection::PropertyContainer::descriptors_end(),
                   boost::bind(&CPropGrid::addProperty, this, descriptor, _1));
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::_bi::value<CPropGrid *>;
+template class boost::_bi::value<RBX::Reflection::ClassDescriptor const *>;

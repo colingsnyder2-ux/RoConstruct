@@ -24,3 +24,7 @@ Extents Dragger::computeExtents(const std::vector<Primitive*>& primitives) {
     return result;
 }
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Vector_const_iterator<RBX::Primitive *,std::allocator<RBX::Primitive *> >;
+template class std::_Vector_iterator<RBX::Primitive *,std::allocator<RBX::Primitive *> >;

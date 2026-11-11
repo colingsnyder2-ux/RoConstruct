@@ -11,6 +11,7 @@
 // the moved vector is finite and the intersection test keeps the same answer; a Gross search hands over to the
 // Fine search in the opposite direction).
 // Codegen analog: the recorder proves each body against the bytes; names follow the donor declarations.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "tool/Dragger.h"
 #include "v8world/ContactManager.h"
 #include "util/Math.h"
@@ -126,3 +127,6 @@ namespace RBX
 		return movedSoFar;
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class G3D::Array<RBX::Primitive *>;

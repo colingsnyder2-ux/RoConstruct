@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
 // Ogre::RbxSceneManager / RbxSceneManagerFactory as compiled into the June 2008 client (inactive native recovery).
 //
 // Roblox forked Ogre 1.4.5's OgreSceneManager.cpp into ".\RbxSceneManager.cpp" (string 0084e9e8) and overrode every
@@ -14,8 +15,7 @@
 //     "fork bodies" marker (cameras, light list, animations, manualRender, the Ogre::Timer-instrumented basic queue
 //     group and _renderScene, the findingShadowCasters guard) follow the fork's versions.
 // Not built (blocked): setSkyBox 00692a10 (constructs RbxSky, new(0xd4), ctor 0067fd60) and renderSingleObject
-// 0069bc50 (dynamic_cast to RbxSubEntity / RbxSceneNode and their cached transforms). findShadowCastersForLight
-// 006960e0 is compiled only with NATIVE_OGRE_RBXSCENEMANAGER_PENDING (it needs a declaration of RbxEntity::collect).
+// 0069bc50 (dynamic_cast to RbxSubEntity / RbxSceneNode and their cached transforms).
 // _queueSkiesForRendering 0068d7d0 calls RbxSky::update through the minimal OgreRbx/RbxSky2008.h.
 #include "OgreSceneManager.h"
 #include "OgreCamera.h"
@@ -58,9 +58,7 @@
 #include "OgreParticleSystemManager.h"
 #include "OgreTimer.h"
 #include "OgreRbx/RbxSceneManager2008.h"
-#ifdef NATIVE_OGRE_RBXSCENEMANAGER_PENDING
-#include "RbxSceneManagerPendingDecls.h"
-#endif
+#include "OgreRbx/RbxEntity2008.h"
 #include <cstdio>
 
 namespace Ogre {
@@ -4964,10 +4962,6 @@ void RbxSceneManager::_queueSkiesForRendering(Camera* cam)
 	}
 }
 
-#ifdef NATIVE_OGRE_RBXSCENEMANAGER_PENDING
-// Pending-build-only body: it needs a declaration of the exe-local Ogre::RbxEntity (collect) that no native header
-// provides yet (see the recorder's proposal header).
-
 const SceneManager::ShadowCasterList& RbxSceneManager::findShadowCastersForLight(
 	const Light* light, const Camera* camera)
 {
@@ -4992,6 +4986,92 @@ const SceneManager::ShadowCasterList& RbxSceneManager::findShadowCastersForLight
 	}
 	return mShadowCasterList;
 }
-#endif
 
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class Ogre::ConstMapIterator<std::map<unsigned short,Ogre::NodeAnimationTrack *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const ,Ogre::NodeAnimationTrack *> > > >;
+template class Ogre::ConstMapIterator<std::map<unsigned short,Ogre::NumericAnimationTrack *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const ,Ogre::NumericAnimationTrack *> > > >;
+template class Ogre::ConstVectorIterator<std::list<Ogre::AnimationState *,std::allocator<Ogre::AnimationState *> > >;
+template class Ogre::ConstVectorIterator<std::vector<Ogre::TextureUnitState *,std::allocator<Ogre::TextureUnitState *> > >;
+template class Ogre::MapIterator<std::map<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,Ogre::MovableObject *,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::MovableObject *> > > >;
+template class Ogre::MapIterator<std::map<unsigned char,Ogre::RenderQueueGroup *,std::less<unsigned char>,std::allocator<std::pair<unsigned char const ,Ogre::RenderQueueGroup *> > > >;
+template class Ogre::MapIterator<std::map<unsigned short,Ogre::RenderPriorityGroup *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const ,Ogre::RenderPriorityGroup *> > > >;
+template class Ogre::SharedPtr<Ogre::AnimableValue>;
+template class Ogre::SharedPtr<Ogre::DataStream>;
+template class Ogre::SharedPtr<Ogre::GpuProgramParameters>;
+template class Ogre::SharedPtr<Ogre::RbxSky>;
+template class Ogre::SharedPtr<Ogre::Resource>;
+template class Ogre::SharedPtr<Ogre::ShadowCameraSetup>;
+template class Ogre::VectorIterator<std::vector<Ogre::RenderQueueInvocation *,std::allocator<Ogre::RenderQueueInvocation *> > >;
+template class Ogre::VectorIterator<std::vector<Ogre::ShadowRenderable *,std::allocator<Ogre::ShadowRenderable *> > >;
+template class std::_Container_base_aux_alloc_real<std::allocator<Ogre::Light *> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<Ogre::SceneManager::LightInfo> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::MovableObject *> > >;
+template class std::_Revranit<std::_Vector_iterator<Ogre::ShadowListener *,std::allocator<Ogre::ShadowListener *> >,std::iterator<std::random_access_iterator_tag,Ogre::ShadowListener *,int,Ogre::ShadowListener * *,Ogre::ShadowListener * &> >;
+template class std::_Tmap_traits<Ogre::Camera const *,Ogre::Light const *,std::less<Ogre::Camera const *>,std::allocator<std::pair<Ogre::Camera const * const,Ogre::Light const *> >,0>;
+template class std::_Tmap_traits<Ogre::Camera const *,Ogre::VisibleObjectsBoundsInfo,std::less<Ogre::Camera const *>,std::allocator<std::pair<Ogre::Camera const * const,Ogre::VisibleObjectsBoundsInfo> >,0>;
+template class std::_Tree<std::_Tmap_traits<Ogre::Camera const *,Ogre::Light const *,std::less<Ogre::Camera const *>,std::allocator<std::pair<Ogre::Camera const * const,Ogre::Light const *> >,0> >;
+template class std::_Tree<std::_Tmap_traits<Ogre::Camera const *,Ogre::VisibleObjectsBoundsInfo,std::less<Ogre::Camera const *>,std::allocator<std::pair<Ogre::Camera const * const,Ogre::VisibleObjectsBoundsInfo> >,0> >;
+template class std::_Tree<std::_Tmap_traits<enum Ogre::TextureUnitState::TextureEffectType,Ogre::TextureUnitState::TextureEffect,std::less<enum Ogre::TextureUnitState::TextureEffectType>,std::allocator<std::pair<enum Ogre::TextureUnitState::TextureEffectType const ,Ogre::TextureUnitState::TextureEffect> >,1> >;
+template class std::_Tree<std::_Tmap_traits<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,Ogre::Animation *,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::Animation *> >,0> >;
+template class std::_Tree<std::_Tmap_traits<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,Ogre::Camera *,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::Camera *> >,0> >;
+template class std::_Tree<std::_Tmap_traits<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,Ogre::InstancedGeometry *,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::InstancedGeometry *> >,0> >;
+template class std::_Tree<std::_Tmap_traits<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,Ogre::MovableObject *,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::MovableObject *> >,0> >;
+template class std::_Tree<std::_Tmap_traits<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,Ogre::SceneManager::MovableObjectCollection *,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::SceneManager::MovableObjectCollection *> >,0> >;
+template class std::_Tree<std::_Tmap_traits<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,Ogre::SceneNode *,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::SceneNode *> >,0> >;
+template class std::_Tree<std::_Tmap_traits<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,Ogre::StaticGeometry *,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::StaticGeometry *> >,0> >;
+template class std::_Tree<std::_Tmap_traits<unsigned char,Ogre::RenderQueueGroup *,std::less<unsigned char>,std::allocator<std::pair<unsigned char const ,Ogre::RenderQueueGroup *> >,0> >;
+template class std::_Tree<std::_Tmap_traits<unsigned short,Ogre::NodeAnimationTrack *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const ,Ogre::NodeAnimationTrack *> >,0> >;
+template class std::_Tree<std::_Tmap_traits<unsigned short,Ogre::NumericAnimationTrack *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const ,Ogre::NumericAnimationTrack *> >,0> >;
+template class std::_Tree<std::_Tmap_traits<unsigned short,Ogre::RenderPriorityGroup *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const ,Ogre::RenderPriorityGroup *> >,0> >;
+template class std::_Tree<std::_Tset_traits<Ogre::SceneNode *,std::less<Ogre::SceneNode *>,std::allocator<Ogre::SceneNode *>,0> >;
+template class std::_Tree<std::_Tset_traits<unsigned char,std::less<unsigned char>,std::allocator<unsigned char>,0> >;
+template class std::_Vector_const_iterator<Ogre::Camera *,std::allocator<Ogre::Camera *> >;
+template class std::_Vector_const_iterator<Ogre::Light *,std::allocator<Ogre::Light *> >;
+template class std::_Vector_const_iterator<Ogre::PlaneBoundedVolume,std::allocator<Ogre::PlaneBoundedVolume> >;
+template class std::_Vector_const_iterator<Ogre::RenderQueueInvocation *,std::allocator<Ogre::RenderQueueInvocation *> >;
+template class std::_Vector_const_iterator<Ogre::RenderQueueListener *,std::allocator<Ogre::RenderQueueListener *> >;
+template class std::_Vector_const_iterator<Ogre::SceneManager::LightInfo,std::allocator<Ogre::SceneManager::LightInfo> >;
+template class std::_Vector_const_iterator<Ogre::ShadowCaster *,std::allocator<Ogre::ShadowCaster *> >;
+template class std::_Vector_const_iterator<Ogre::ShadowListener *,std::allocator<Ogre::ShadowListener *> >;
+template class std::_Vector_const_iterator<Ogre::ShadowRenderable *,std::allocator<Ogre::ShadowRenderable *> >;
+template class std::_Vector_const_iterator<Ogre::ShadowTextureConfig,std::allocator<Ogre::ShadowTextureConfig> >;
+template class std::_Vector_const_iterator<Ogre::TexturePtr,std::allocator<Ogre::TexturePtr> >;
+template class std::_Vector_const_iterator<Ogre::TextureUnitState *,std::allocator<Ogre::TextureUnitState *> >;
+template class std::_Vector_iterator<Ogre::Camera *,std::allocator<Ogre::Camera *> >;
+template class std::_Vector_iterator<Ogre::Light *,std::allocator<Ogre::Light *> >;
+template class std::_Vector_iterator<Ogre::RenderQueueInvocation *,std::allocator<Ogre::RenderQueueInvocation *> >;
+template class std::_Vector_iterator<Ogre::RenderQueueListener *,std::allocator<Ogre::RenderQueueListener *> >;
+template class std::_Vector_iterator<Ogre::SceneManager::LightInfo,std::allocator<Ogre::SceneManager::LightInfo> >;
+template class std::_Vector_iterator<Ogre::ShadowCaster *,std::allocator<Ogre::ShadowCaster *> >;
+template class std::_Vector_iterator<Ogre::ShadowListener *,std::allocator<Ogre::ShadowListener *> >;
+template class std::_Vector_iterator<Ogre::ShadowRenderable *,std::allocator<Ogre::ShadowRenderable *> >;
+template class std::_Vector_iterator<Ogre::ShadowTextureConfig,std::allocator<Ogre::ShadowTextureConfig> >;
+template class std::_Vector_iterator<Ogre::TexturePtr,std::allocator<Ogre::TexturePtr> >;
+template class std::allocator<Ogre::SceneNode *>;
+template class std::allocator<Ogre::TexturePtr>;
+template class std::allocator<std::_Tree_nod<std::_Tmap_traits<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,Ogre::MovableObject *,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::MovableObject *> >,0> >::_Node *>;
+template class std::allocator<std::pair<Ogre::Camera const * const,Ogre::Light const *> >;
+template class std::allocator<std::pair<Ogre::Camera const * const,Ogre::VisibleObjectsBoundsInfo> >;
+template class std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::Animation *> >;
+template class std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::Camera *> >;
+template class std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::InstancedGeometry *> >;
+template class std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::MovableObject *> >;
+template class std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::SceneManager::MovableObjectCollection *> >;
+template class std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::SceneNode *> >;
+template class std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::StaticGeometry *> >;
+template class std::allocator<unsigned char>;
+template class std::deque<unsigned long,std::allocator<unsigned long> >;
+template class std::list<Ogre::AnimationState *,std::allocator<Ogre::AnimationState *> >;
+template class std::reverse_iterator<std::_Vector_iterator<Ogre::ShadowListener *,std::allocator<Ogre::ShadowListener *> > >;
+template class std::vector<Ogre::Camera *,std::allocator<Ogre::Camera *> >;
+template class std::vector<Ogre::Light *,std::allocator<Ogre::Light *> >;
+template class std::vector<Ogre::Plane,std::allocator<Ogre::Plane> >;
+template class std::vector<Ogre::PlaneBoundedVolume,std::allocator<Ogre::PlaneBoundedVolume> >;
+template class std::vector<Ogre::RenderQueueListener *,std::allocator<Ogre::RenderQueueListener *> >;
+template class std::vector<Ogre::SceneManager::LightInfo,std::allocator<Ogre::SceneManager::LightInfo> >;
+template class std::vector<Ogre::ShadowCaster *,std::allocator<Ogre::ShadowCaster *> >;
+template class std::vector<Ogre::ShadowListener *,std::allocator<Ogre::ShadowListener *> >;
+template class std::vector<Ogre::ShadowTextureConfig,std::allocator<Ogre::ShadowTextureConfig> >;
+template class std::vector<Ogre::TexturePtr,std::allocator<Ogre::TexturePtr> >;

@@ -73,3 +73,9 @@ namespace RBX
 	}
 
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class RBX::FilteredSelection<RBX::Instance>;
+template class RBX::ServiceClient<RBX::FilteredSelection<RBX::Instance> >;
+template class boost::shared_ptr<RBX::Decal>;
+template class boost::shared_ptr<RBX::FilteredSelection<RBX::Instance> >;

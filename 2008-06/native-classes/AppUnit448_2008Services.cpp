@@ -107,3 +107,9 @@ template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::Visit, RBX::Ins
 // settings-items).
 template boost::detail::shared_count::shared_count(RBX::GameSettings*, RBX::Creatable<RBX::Instance>::Deleter);
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::GameSettings, RBX::GlobalSettings::Item, RBX::sGameSettings>::Creator::create() const;
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<RBX::ChangeHistoryService>;
+template class boost::shared_ptr<RBX::GameSettings>;
+template class boost::shared_ptr<RBX::Soundscape::SoundService>;
+template class boost::shared_ptr<RBX::Visit>;

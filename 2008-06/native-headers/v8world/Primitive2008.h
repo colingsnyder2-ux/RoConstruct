@@ -196,5 +196,8 @@ namespace RBX
 		Contact* getNextContact(Contact* prev);          // 005e7be0
 
 		static void onNewTouch(Primitive* p0, Primitive* p1);   // 005e7530 (Contact::step 00606c6f)
+// Declarations proven by closure symbols of byte-exact recovered methods.
+public:
+    void setCanSleep(bool);
 	};
 }

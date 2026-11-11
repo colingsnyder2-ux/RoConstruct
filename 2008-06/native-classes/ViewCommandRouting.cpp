@@ -31,3 +31,6 @@ BOOL VerbBinder<CRobloxView, CView>::OnCmdMsg(UINT id, int code, void* extra, AF
     }
     return CView::OnCmdMsg(id, code, extra, info);
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class VerbBinder<CRobloxView,CView>;

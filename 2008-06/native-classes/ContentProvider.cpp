@@ -57,3 +57,26 @@ ContentProvider::~ContentProvider()
 }
 #endif
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::_bi::list1<boost::_bi::value<RBX::ContentProvider *> >;
+template class boost::_bi::value<RBX::ContentProvider *>;
+template class boost::_bi::value<boost::shared_ptr<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >;
+template class boost::_bi::value<enum RBX::RequestResult>;
+template class boost::function2<void,enum RBX::RequestResult,std::basic_istream<char,std::char_traits<char> > &,std::allocator<void> >;
+template class boost::function<void __cdecl(enum RBX::RequestResult,std::basic_istream<char,std::char_traits<char> > &),std::allocator<void> >;
+template class boost::shared_ptr<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >;
+template class std::_Container_base_aux_alloc_real<std::allocator<RBX::ContentProvider::FailedUrl> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<RBX::ContentRequest> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<boost::function<void __cdecl(enum RBX::RequestResult,std::basic_istream<char,std::char_traits<char> > &),std::allocator<void> > > >;
+template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<RBX::ContentId const ,RBX::ContentProvider::CachedContent> > >;
+template class std::_Tree<std::_Tmap_traits<RBX::ContentId,RBX::ContentProvider::CachedContent,std::less<RBX::ContentId>,std::allocator<std::pair<RBX::ContentId const ,RBX::ContentProvider::CachedContent> >,0> >;
+template class std::_Vector_const_iterator<boost::function<void __cdecl(enum RBX::RequestResult,std::basic_istream<char,std::char_traits<char> > &),std::allocator<void> >,std::allocator<boost::function<void __cdecl(enum RBX::RequestResult,std::basic_istream<char,std::char_traits<char> > &),std::allocator<void> > > >;
+template class std::_Vector_iterator<boost::function<void __cdecl(enum RBX::RequestResult,std::basic_istream<char,std::char_traits<char> > &),std::allocator<void> >,std::allocator<boost::function<void __cdecl(enum RBX::RequestResult,std::basic_istream<char,std::char_traits<char> > &),std::allocator<void> > > >;
+template class std::allocator<RBX::ContentProvider::FailedUrl>;
+template class std::allocator<RBX::ContentRequest>;
+template class std::allocator<std::_List_nod<RBX::ContentProvider::FailedUrl,std::allocator<RBX::ContentProvider::FailedUrl> >::_Node *>;
+template class std::allocator<std::_List_nod<RBX::ContentRequest,std::allocator<RBX::ContentRequest> >::_Node *>;
+template class std::allocator<std::_Tree_nod<std::_Tmap_traits<RBX::ContentId,RBX::ContentProvider::CachedContent,std::less<RBX::ContentId>,std::allocator<std::pair<RBX::ContentId const ,RBX::ContentProvider::CachedContent> >,0> >::_Node *>;
+template class std::allocator<std::pair<RBX::ContentId const ,RBX::ContentProvider::CachedContent> >;
+template class std::vector<boost::function<void __cdecl(enum RBX::RequestResult,std::basic_istream<char,std::char_traits<char> > &),std::allocator<void> >,std::allocator<boost::function<void __cdecl(enum RBX::RequestResult,std::basic_istream<char,std::char_traits<char> > &),std::allocator<void> > > >;

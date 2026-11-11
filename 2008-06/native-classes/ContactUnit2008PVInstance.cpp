@@ -6,6 +6,7 @@
 //   showControllerFlag +0x198, legacyOffset +0x19c; IPrimaryPart / ILocation virtual bases through the vbptr +0x134;
 //   Instance parent +0x104, children (copy_on_write_ptr) +0x108.
 // Verified by tests/record_native_contact_unit2008.py.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "v8datamodel/PVInstance.h"
 #include "v8datamodel/Workspace.h"
 #include "v8xml/XmlElement.h"
@@ -251,3 +252,16 @@ namespace RBX
 		}
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class G3D::ReferenceCountedPointer<RBX::Controller>;
+template class RBX::Reflection::EnumDesc<enum RBX::Controller::ControllerType>;
+template class RBX::Reflection::TypedPropertyDescriptor<enum RBX::Controller::ControllerType>;
+template class std::_Container_base_aux_alloc_real<std::allocator<enum RBX::Controller::ControllerType> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<RBX::Name const * const,enum RBX::Controller::ControllerType> > >;
+template class std::_Tmap_traits<RBX::Name const *,enum RBX::Controller::ControllerType,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::Controller::ControllerType> >,0>;
+template class std::_Tree<std::_Tmap_traits<RBX::Name const *,enum RBX::Controller::ControllerType,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::Controller::ControllerType> >,0> >;
+template class std::_Vector_val<enum RBX::Controller::ControllerType,std::allocator<enum RBX::Controller::ControllerType> >;
+template class std::allocator<std::_Tree_nod<std::_Tmap_traits<RBX::Name const *,enum RBX::Controller::ControllerType,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::Controller::ControllerType> >,0> >::_Node *>;
+template class std::map<RBX::Name const *,enum RBX::Controller::ControllerType,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::Controller::ControllerType> > >;
+template class std::vector<enum RBX::Controller::ControllerType,std::allocator<enum RBX::Controller::ControllerType> >;

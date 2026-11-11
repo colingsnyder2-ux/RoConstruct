@@ -1,69 +1,223 @@
 // from server: 100% by auto
-// roc 2009-12 0091ff50  unit: RBX::VChunk::?$WeakReferenceCountedPointer  size: 163 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 0091ff50
-//
-// 0091ff50  55                   push ebp
-// 0091ff51  8bec                 mov ebp, esp
-// 0091ff53  83ec0c               sub esp, 0xc
-// 0091ff56  894df4               mov dword ptr [ebp - 0xc], ecx
-// 0091ff59  8b4508               mov eax, dword ptr [ebp + 8]
-// 0091ff5c  8b08                 mov ecx, dword ptr [eax]
-// 0091ff5e  894dfc               mov dword ptr [ebp - 4], ecx
-// 0091ff61  8b5508               mov edx, dword ptr [ebp + 8]
-// 0091ff64  8b45fc               mov eax, dword ptr [ebp - 4]
-// 0091ff67  8b4808               mov ecx, dword ptr [eax + 8]
-// 0091ff6a  890a                 mov dword ptr [edx], ecx
-// 0091ff6c  8b55fc               mov edx, dword ptr [ebp - 4]
-// 0091ff6f  8b4208               mov eax, dword ptr [edx + 8]
-// 0091ff72  0fbe4815             movsx ecx, byte ptr [eax + 0x15]
-// 0091ff76  85c9                 test ecx, ecx
-// 0091ff78  750c                 jne 0x91ff86
-// 0091ff7a  8b55fc               mov edx, dword ptr [ebp - 4]
-// 0091ff7d  8b4208               mov eax, dword ptr [edx + 8]
-// 0091ff80  8b4d08               mov ecx, dword ptr [ebp + 8]
-// 0091ff83  894804               mov dword ptr [eax + 4], ecx
-// 0091ff86  8b55fc               mov edx, dword ptr [ebp - 4]
-// 0091ff89  8b4508               mov eax, dword ptr [ebp + 8]
-// 0091ff8c  8b4804               mov ecx, dword ptr [eax + 4]
-// 0091ff8f  894a04               mov dword ptr [edx + 4], ecx
-// 0091ff92  8b55f4               mov edx, dword ptr [ebp - 0xc]
-// 0091ff95  8b4218               mov eax, dword ptr [edx + 0x18]
-// 0091ff98  8b4d08               mov ecx, dword ptr [ebp + 8]
-// 0091ff9b  3b4804               cmp ecx, dword ptr [eax + 4]
-// 0091ff9e  750e                 jne 0x91ffae
-// 0091ffa0  8b55f4               mov edx, dword ptr [ebp - 0xc]
-// 0091ffa3  8b4218               mov eax, dword ptr [edx + 0x18]
-// 0091ffa6  8b4dfc               mov ecx, dword ptr [ebp - 4]
-// 0091ffa9  894804               mov dword ptr [eax + 4], ecx
-// 0091ffac  eb2d                 jmp 0x91ffdb
-// 0091ffae  8b5508               mov edx, dword ptr [ebp + 8]
-// 0091ffb1  8b4204               mov eax, dword ptr [edx + 4]
-// 0091ffb4  8b4d08               mov ecx, dword ptr [ebp + 8]
-// 0091ffb7  3b4808               cmp ecx, dword ptr [eax + 8]
-// 0091ffba  750e                 jne 0x91ffca
-// 0091ffbc  8b5508               mov edx, dword ptr [ebp + 8]
-// 0091ffbf  8b4204               mov eax, dword ptr [edx + 4]
-// 0091ffc2  8b4dfc               mov ecx, dword ptr [ebp - 4]
-// 0091ffc5  894808               mov dword ptr [eax + 8], ecx
-// 0091ffc8  eb11                 jmp 0x91ffdb
-// 0091ffca  8b5508               mov edx, dword ptr [ebp + 8]
-// 0091ffcd  8b4204               mov eax, dword ptr [edx + 4]
-// 0091ffd0  8945f8               mov dword ptr [ebp - 8], eax
-// 0091ffd3  8b4df8               mov ecx, dword ptr [ebp - 8]
-// 0091ffd6  8b55fc               mov edx, dword ptr [ebp - 4]
-// 0091ffd9  8911                 mov dword ptr [ecx], edx
-// 0091ffdb  8b45fc               mov eax, dword ptr [ebp - 4]
-// 0091ffde  8b4d08               mov ecx, dword ptr [ebp + 8]
-// 0091ffe1  894808               mov dword ptr [eax + 8], ecx
-// 0091ffe4  8b5508               mov edx, dword ptr [ebp + 8]
-// 0091ffe7  8b45fc               mov eax, dword ptr [ebp - 4]
-// 0091ffea  894204               mov dword ptr [edx + 4], eax
-// 0091ffed  8be5                 mov esp, ebp
-// 0091ffef  5d                   pop ebp
-// 0091fff0  c20400               ret 4
-// library wildmagic-2-core/Containment\WmlContSeparatePoints3.cpp (function ?_Rrotate@?$_Tree@V?$_Tset_traits@U?$pair@HH@std@@U?$less@U?$pair@HH@std@@@2@V?$allocator@U?$pair@HH@std@@@2@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tset_traits@U?$pair@HH@std@@U?$less@U?$pair@HH@std@@@2@V?$allocator@U?$pair@HH@std@@@2@$0A@@std@@@2@@Z)
-
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /Od /Ob1 /GS- /MT
 // roc-lib: wildmagic-2-core Containment/WmlContSeparatePoints3.cpp
+
+// Candidate translation unit (score above; library headers required).
+// Magic Software, Inc.
+// http://www.magic-software.com
+// http://www.wild-magic.com
+// Copyright (c) 2003.  All Rights Reserved
+//
+// The Wild Magic Library (WML) source code is supplied under the terms of
+// the license agreement http://www.magic-software.com/License/WildMagic.pdf
+// and may not be copied or disclosed except in accordance with the terms of
+// that agreement.
+
+#include "WmlContSeparatePoints3.h"
+#include "WmlConvexHull3.h"
+using namespace Wml;
+using namespace std;
+
+//----------------------------------------------------------------------------
+template <class Real>
+static int OnSameSide (const Plane3<Real>& rkPlane, int iTriangleQuantity,
+    const int* aiConnect, const Vector3<Real>* akPoint)
+{
+    // test if all points on same side of plane (nx,ny,nz)*(x,y,z) = c
+    int iPosSide = 0, iNegSide = 0;
+
+    for (int iT = 0; iT < iTriangleQuantity; iT++)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            int iV = aiConnect[3*iT+i];;
+            Real fC0 = rkPlane.GetNormal().Dot(akPoint[iV]);
+            if ( fC0 > rkPlane.GetConstant() + Math<Real>::EPSILON )
+                iPosSide++;
+            else if ( fC0 < rkPlane.GetConstant() - Math<Real>::EPSILON )
+                iNegSide++;
+            
+            if ( iPosSide && iNegSide )
+            {
+                // plane splits point set
+                return 0;
+            }
+        }
+    }
+
+    return iPosSide ? +1 : -1;
+}
+//----------------------------------------------------------------------------
+template <class Real>
+static int WhichSide (const Plane3<Real>& rkPlane, int iTriangleQuantity,
+    const int* aiConnect, const Vector3<Real>* akPoint)
+{
+    // establish which side of plane hull is on
+    for (int iT = 0; iT < iTriangleQuantity; iT++)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            int iV = aiConnect[3*iT+i];
+            Real fC0 = rkPlane.GetNormal().Dot(akPoint[iV]);
+            if ( fC0 > rkPlane.GetConstant() + Math<Real>::EPSILON )
+            {
+                // positive side
+                return +1;
+            }
+            if ( fC0 < rkPlane.GetConstant() - Math<Real>::EPSILON )
+            {
+                // negative side
+                return -1;
+            }
+        }
+    }
+
+    // hull is effectively collinear
+    return 0;
+}
+//----------------------------------------------------------------------------
+template <class Real>
+bool Wml::SeparatePoints3 (int iQuantity0, const Vector3<Real>* akVertex0,
+    int iQuantity1, const Vector3<Real>* akVertex1, Plane3<Real>& rkSeprPlane)
+{
+    // construct convex hull of point set 0
+    ConvexHull3<Real> kHull0(iQuantity0,akVertex0);
+    assert( kHull0.GetType() == ConvexHull3<Real>::HULL_SPATIAL );
+    const vector<int>& rkConnect0 = kHull0.GetConnectivity();
+    int iTriangleQuantity0 = (int)rkConnect0.size();
+    const int* aiConnect0 = &rkConnect0.front();
+
+    // construct convex hull of point set 1
+    ConvexHull3<Real> kHull1(iQuantity1,akVertex1);
+    assert( kHull1.GetType() == ConvexHull3<Real>::HULL_SPATIAL );
+    const vector<int>& rkConnect1 = kHull1.GetConnectivity();
+    int iTriangleQuantity1 = (int)rkConnect1.size();
+    const int* aiConnect1 = &rkConnect1.front();
+
+    // test faces of hull 0 for possible separation of points
+    int i, iI0, iI1, iI2, iSide0, iSide1;
+    Vector3<Real> kDiff0, kDiff1;
+    for (i = 0; i < iTriangleQuantity0; i++)
+    {
+        // lookup face (assert: iI0 != iI1 && iI0 != iI2 && iI1 != iI2)
+        iI0 = aiConnect0[3*i  ];
+        iI1 = aiConnect0[3*i+1];
+        iI2 = aiConnect0[3*i+2];
+
+        // compute potential separating plane (assert: normal != (0,0,0))
+        kDiff0 = akVertex0[iI1] - akVertex0[iI0];
+        kDiff1 = akVertex0[iI2] - akVertex0[iI0];
+        rkSeprPlane.SetNormal(kDiff0.Cross(kDiff1));
+        rkSeprPlane.SetConstant(rkSeprPlane.GetNormal().Dot(akVertex0[iI0]));
+
+        // determine if hull 1 is on same side of plane
+        iSide1 = OnSameSide(rkSeprPlane,iTriangleQuantity1,aiConnect1,
+            akVertex1);
+        if ( iSide1 )
+        {
+            // determine which side of plane hull 0 lies
+            iSide0 = WhichSide(rkSeprPlane,iTriangleQuantity0,aiConnect0,
+                akVertex0);
+            if ( iSide0*iSide1 <= 0 )  // plane separates hulls
+                return true;
+        }
+    }
+
+    // test faces of hull 1 for possible separation of points
+    for (i = 0; i < iTriangleQuantity1; i++)
+    {
+        // lookup edge (assert: iI0 != iI1 && iI0 != iI2 && iI1 != iI2)
+        iI0 = aiConnect1[3*i  ];
+        iI1 = aiConnect1[3*i+1];
+        iI2 = aiConnect1[3*i+2];
+
+        // compute perpendicular to face (assert: normal != (0,0,0))
+        kDiff0 = akVertex1[iI1] - akVertex1[iI0];
+        kDiff1 = akVertex1[iI2] - akVertex1[iI0];
+        rkSeprPlane.SetNormal(kDiff0.Cross(kDiff1));
+        rkSeprPlane.SetConstant(rkSeprPlane.GetNormal().Dot(akVertex1[iI0]));
+
+        // determine if hull 0 is on same side of plane
+        iSide0 = OnSameSide(rkSeprPlane,iTriangleQuantity0,aiConnect0,
+            akVertex0);
+        if ( iSide0 )
+        {
+            // determine which side of plane hull 1 lies
+            iSide1 = WhichSide(rkSeprPlane,iTriangleQuantity1,aiConnect1,
+                akVertex1);
+            if ( iSide0*iSide1 <= 0 )  // plane separates hulls
+                return true;
+        }
+    }
+
+    // build edge set for hull 0
+    set<pair<int,int> > kESet0;
+    for (i = 0; i < iTriangleQuantity0; i++)
+    {
+        // lookup face (assert: iI0 != iI1 && iI0 != iI2 && iI1 != iI2)
+        iI0 = aiConnect0[3*i  ];
+        iI1 = aiConnect0[3*i+1];
+        iI2 = aiConnect0[3*i+2];
+        kESet0.insert(make_pair(iI0,iI1));
+        kESet0.insert(make_pair(iI0,iI2));
+        kESet0.insert(make_pair(iI1,iI2));
+    }
+
+    // build edge list for hull 1
+    set<pair<int,int> > kESet1;
+    for (i = 0; i < iTriangleQuantity1; i++)
+    {
+        // lookup face (assert: iI0 != iI1 && iI0 != iI2 && iI1 != iI2)
+        iI0 = aiConnect1[3*i  ];
+        iI1 = aiConnect1[3*i+1];
+        iI2 = aiConnect1[3*i+2];
+        kESet1.insert(make_pair(iI0,iI1));
+        kESet1.insert(make_pair(iI0,iI2));
+        kESet1.insert(make_pair(iI1,iI2));
+    }
+
+    // Test planes whose normals are cross products of two edges, one from
+    // each hull.
+    set<pair<int,int> >::iterator pkEI0, pkEI1;
+    for (pkEI0 = kESet0.begin(); pkEI0 != kESet0.end(); pkEI0++)
+    {
+        // get edge
+        kDiff0 = akVertex0[pkEI0->second] - akVertex0[pkEI0->first];
+
+        for (pkEI1 = kESet1.begin(); pkEI1 != kESet1.end(); pkEI1++)
+        {
+            kDiff1 = akVertex1[pkEI1->second] - akVertex1[pkEI1->first];
+
+            // compute potential separating plane
+            rkSeprPlane.SetNormal(kDiff0.Cross(kDiff1));
+            rkSeprPlane.SetConstant(rkSeprPlane.GetNormal().Dot(
+                akVertex0[pkEI0->first]));
+
+            // determine if hull 0 is on same side of plane
+            iSide0 = OnSameSide(rkSeprPlane,iTriangleQuantity0,aiConnect0,
+                akVertex0);
+            iSide1 = OnSameSide(rkSeprPlane,iTriangleQuantity1,aiConnect1,
+                akVertex1);
+            if ( iSide0*iSide1 < 0 )  // plane separates hulls
+                return true;
+        }
+    }
+
+    return false;
+}
+//----------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------
+// explicit instantiation
+//----------------------------------------------------------------------------
+namespace Wml
+{
+template WML_ITEM bool SeparatePoints3<float> (int,
+    const Vector3<float>*, int, const Vector3<float>*, Plane3<float>&);
+
+template WML_ITEM bool SeparatePoints3<double> (int,
+    const Vector3<double>*, int, const Vector3<double>*, Plane3<double>&);
+}
+//----------------------------------------------------------------------------

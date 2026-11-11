@@ -136,3 +136,10 @@ namespace RBX
 		return intersectingOthers(check, checkSet, overlapIgnored);
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class G3D::Array<RBX::Contact *>;
+template class G3D::Array<RBX::Primitive const *>;
+template class std::_Tree<std::_Tset_traits<RBX::Primitive *,std::less<RBX::Primitive *>,std::allocator<RBX::Primitive *>,0> >;
+template class std::allocator<RBX::Primitive *>;
+template class std::allocator<std::_Tree_nod<std::_Tset_traits<RBX::Primitive *,std::less<RBX::Primitive *>,std::allocator<RBX::Primitive *>,0> >::_Node *>;

@@ -8,3 +8,7 @@ char sProperties[] = "ReflectionMetadataProperties";
 char sFunctions[] = "ReflectionMetadataFunctions";
 char sEvents[] = "ReflectionMetadataEvents";
 }}}
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::Reflection::Metadata::sClass>();
+template void RBX::Name::callDoDeclare<RBX::Reflection::Metadata::sItem>();

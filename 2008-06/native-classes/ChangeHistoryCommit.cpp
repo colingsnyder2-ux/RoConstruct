@@ -86,3 +86,9 @@ void RBX::ChangeHistoryService::mergeFirst()
     delete *it;
     history.erase(it);
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::_bi::value<RBX::HistoryItem *>;
+template class boost::_mfi::mf1<void,RBX::HistoryItem,std::pair<RBX::Reflection::PropertyDescriptor const * const,RBX::Reflection::Value> const &>;
+template class std::allocator<std::pair<RBX::Instance * const,RBX::HistoryItem> >;
+template class std::allocator<std::pair<RBX::Reflection::PropertyDescriptor const * const,RBX::Reflection::Value> >;

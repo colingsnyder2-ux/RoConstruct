@@ -1,19 +1,77 @@
 // from server: 100% by auto
-// roc 2009-06 005bdc00  unit: RBX::AggregateChunk  size: 17 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 005bdc00
-//
-// 005bdc00  55                   push ebp
-// 005bdc01  8bec                 mov ebp, esp
-// 005bdc03  51                   push ecx
-// 005bdc04  894dfc               mov dword ptr [ebp - 4], ecx
-// 005bdc07  8b45fc               mov eax, dword ptr [ebp - 4]
-// 005bdc0a  83c028               add eax, 0x28
-// 005bdc0d  8be5                 mov esp, ebp
-// 005bdc0f  5d                   pop ebp
-// 005bdc10  c3                   ret 
-// library wildmagic-2-core/Geometry\WmlArc2.cpp (function ?End1@?$Arc2@N@Wml@@QBEABV?$Vector2@N@2@XZ)
-
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /Od /Ob1 /GS- /MT
 // roc-lib: wildmagic-2-core Geometry/WmlArc2.cpp
+
+// Candidate translation unit (score above; library headers required).
+// Magic Software, Inc.
+// http://www.magic-software.com
+// http://www.wild-magic.com
+// Copyright (c) 2003.  All Rights Reserved
+//
+// The Wild Magic Library (WML) source code is supplied under the terms of
+// the license agreement http://www.magic-software.com/License/WildMagic.pdf
+// and may not be copied or disclosed except in accordance with the terms of
+// that agreement.
+
+#include "WmlArc2.h"
+using namespace Wml;
+
+//----------------------------------------------------------------------------
+template <class Real>
+Arc2<Real>::Arc2 ()
+    :
+    m_kEnd0(Vector2<Real>::ZERO),
+    m_kEnd1(Vector2<Real>::ZERO)
+{
+}
+//----------------------------------------------------------------------------
+template <class Real>
+Vector2<Real>& Arc2<Real>::End0 ()
+{
+    return m_kEnd0;
+}
+//----------------------------------------------------------------------------
+template <class Real>
+const Vector2<Real>& Arc2<Real>::End0 () const
+{
+    return m_kEnd0;
+}
+//----------------------------------------------------------------------------
+template <class Real>
+Vector2<Real>& Arc2<Real>::End1 ()
+{
+    return m_kEnd1;
+}
+//----------------------------------------------------------------------------
+template <class Real>
+const Vector2<Real>& Arc2<Real>::End1 () const
+{
+    return m_kEnd1;
+}
+//----------------------------------------------------------------------------
+template <class Real>
+bool Arc2<Real>::Contains (const Vector2<Real>& rkP) const
+{
+    // Assert: |P-C| = R where P is the input point, C is the circle center,
+    // and R is the circle radius.  For P to be on the arc from A to B, it
+    // must be on the side of the plane containing A with normal N = Perp(B-A)
+    // where Perp(u,v) = (v,-u).
+
+    Vector2<Real> kPmE0 = rkP - m_kEnd0;
+    Vector2<Real> kE1mE0 = m_kEnd1 - m_kEnd0;
+    Real fKross = kPmE0.Kross(kE1mE0);
+    return fKross >= (Real)0.0;
+}
+//----------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------
+// explicit instantiation
+//----------------------------------------------------------------------------
+namespace Wml
+{
+template class WML_ITEM Arc2<float>;
+template class WML_ITEM Arc2<double>;
+}
+//----------------------------------------------------------------------------

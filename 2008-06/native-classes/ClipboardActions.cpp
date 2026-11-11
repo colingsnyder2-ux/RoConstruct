@@ -65,3 +65,19 @@ void PasteVerb::doIt(IDataState* state)
     recordCameraHistory(verbName.c_str(), dataModel);
     state->setDirty(true);
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::_bi::value<XmlElement *>;
+template class std::_Container_base_aux_alloc_real<std::allocator<XmlElement *> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<RBX::InstanceHandle const ,int> > >;
+template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,std::basic_string<char,std::char_traits<char>,std::allocator<char> > > > >;
+template class std::_Deque_map<XmlElement *,std::allocator<XmlElement *> >;
+template class std::_Deque_val<XmlElement *,std::allocator<XmlElement *> >;
+template class std::_Tmap_traits<RBX::InstanceHandle,int,std::less<RBX::InstanceHandle>,std::allocator<std::pair<RBX::InstanceHandle const ,int> >,0>;
+template class std::_Tree<std::_Tmap_traits<RBX::InstanceHandle,int,std::less<RBX::InstanceHandle>,std::allocator<std::pair<RBX::InstanceHandle const ,int> >,0> >;
+template class std::_Tree<std::_Tmap_traits<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >,0> >;
+template class std::allocator<std::_Tree_nod<std::_Tmap_traits<RBX::InstanceHandle,int,std::less<RBX::InstanceHandle>,std::allocator<std::pair<RBX::InstanceHandle const ,int> >,0> >::_Node *>;
+template class std::allocator<std::_Tree_nod<std::_Tmap_traits<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >,0> >::_Node *>;
+template class std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >;
+template class std::map<RBX::InstanceHandle,int,std::less<RBX::InstanceHandle>,std::allocator<std::pair<RBX::InstanceHandle const ,int> > >;
+template class std::map<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,std::basic_string<char,std::char_traits<char>,std::allocator<char> > > > >;

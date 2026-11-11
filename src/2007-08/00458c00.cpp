@@ -1,4 +1,5 @@
-// from server: 86% by EspClaude
+// from server: 100% by Intel
+﻿// from server: 86% by EspClaude
 // roc-cl: 50727
 // from server: 100% by king_originala
 // roc 2008-06 0045beb0  unit: CRobloxWnd  size: 124 bytes
@@ -83,7 +84,7 @@ struct StopwatchScope {
 };
 
 struct CRobloxWnd {
-    char padding0[0x8a];
+    char padding0[0x7a];
     bool pending;
     char padding1[0x19];
     Interface* target;

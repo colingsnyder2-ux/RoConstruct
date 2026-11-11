@@ -131,3 +131,9 @@ std::string FileSystem::getUserAppDataDirectory(bool create, const char* subDire
  else return "";
 }
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class ATL::CPathT<ATL::CStringT<char,ATL::StrTraitATL<char,ATL::ChTraitsCRT<char> > > >;
+template class ATL::CSimpleStringT<char,0>;
+template class ATL::CStringT<char,ATL::StrTraitATL<char,ATL::ChTraitsCRT<char> > >;
+template class ATL::ChTraitsCRT<char>;

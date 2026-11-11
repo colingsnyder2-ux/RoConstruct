@@ -76,3 +76,13 @@ namespace RBX
 	}
 	template boost::shared_ptr<PhysicsService> Creatable<Instance>::create<PhysicsService>();
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Container_base_aux_alloc_real<std::allocator<RBX::PartInstance *> >;
+template class std::_Tree<std::_Tset_traits<RBX::PartInstance *,std::less<RBX::PartInstance *>,std::allocator<RBX::PartInstance *>,0> >;
+template class std::allocator<RBX::PartInstance *>;
+template class std::allocator<std::_Tree_nod<std::_Tset_traits<RBX::PartInstance *,std::less<RBX::PartInstance *>,std::allocator<RBX::PartInstance *>,0> >::_Node *>;
+template class std::pair<std::_Tree<std::_Tset_traits<RBX::PartInstance *,std::less<RBX::PartInstance *>,std::allocator<RBX::PartInstance *>,0> >::iterator,std::_Tree<std::_Tset_traits<RBX::PartInstance *,std::less<RBX::PartInstance *>,std::allocator<RBX::PartInstance *>,0> >::iterator>;
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sPhysicsService>();

@@ -87,3 +87,12 @@ template<> const Name& Named<HUMAN::Balancing, HUMAN::sFlying>::getName() const 
 template<> const Name& Named<HUMAN::Flying, HUMAN::sJumping>::getName() const { return Name::declare<HUMAN::sJumping>(); }
 template<> const Name& Named<HUMAN::Balancing, HUMAN::sGettingUp>::getName() const { return Name::declare<HUMAN::sGettingUp>(); }
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class RBX::Reflection::SignalDescImpl<1,void __cdecl(bool)>;
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::HUMAN::sFlying>();
+template void RBX::Name::callDoDeclare<RBX::HUMAN::sFreefall>();
+template void RBX::Name::callDoDeclare<RBX::HUMAN::sJumping>();
+template void RBX::Name::callDoDeclare<RBX::HUMAN::sGettingUp>();

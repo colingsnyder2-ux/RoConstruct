@@ -90,3 +90,14 @@ namespace RBX
 		e->removeFromStage(this);
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Container_base_aux_alloc_real<std::allocator<RBX::Joint *> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<RBX::Primitive * const,RBX::Joint *> > >;
+template class std::_Tmap_traits<RBX::Primitive *,RBX::Joint *,std::less<RBX::Primitive *>,std::allocator<std::pair<RBX::Primitive * const,RBX::Joint *> >,1>;
+template class std::_Tree<std::_Tmap_traits<RBX::Primitive *,RBX::Joint *,std::less<RBX::Primitive *>,std::allocator<std::pair<RBX::Primitive * const,RBX::Joint *> >,1> >;
+template class std::_Tree<std::_Tset_traits<RBX::Joint *,std::less<RBX::Joint *>,std::allocator<RBX::Joint *>,0> >;
+template class std::allocator<RBX::Joint *>;
+template class std::allocator<std::_Tree_nod<std::_Tmap_traits<RBX::Primitive *,RBX::Joint *,std::less<RBX::Primitive *>,std::allocator<std::pair<RBX::Primitive * const,RBX::Joint *> >,1> >::_Node *>;
+template class std::allocator<std::_Tree_nod<std::_Tset_traits<RBX::Joint *,std::less<RBX::Joint *>,std::allocator<RBX::Joint *>,0> >::_Node *>;
+template class std::allocator<std::pair<RBX::Primitive * const,RBX::Joint *> >;

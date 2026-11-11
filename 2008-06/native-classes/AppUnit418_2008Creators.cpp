@@ -44,3 +44,8 @@ template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::Decal, RBX::Fac
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::Texture, RBX::Decal, RBX::sTexture>::Creator::create() const;
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::PartInstance, RBX::PVInstance, RBX::sPart>::Creator::create() const;
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::SpecialShape, RBX::Instance, RBX::sSpecialShape>::Creator::create() const;
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<DHTMLWindowService>;
+template class boost::shared_ptr<RBX::SpecialShape>;
+template class boost::shared_ptr<RBX::Texture>;

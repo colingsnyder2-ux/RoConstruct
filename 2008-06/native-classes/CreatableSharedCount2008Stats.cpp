@@ -16,3 +16,7 @@ template boost::detail::shared_count::shared_count(RBX::WorkspaceStatsItem*, Cre
 template boost::detail::shared_count::shared_count(RBX::Stats::TypedStatsItem<double>*, CreatableInstanceDeleter); // 005a0be0
 template boost::detail::shared_count::shared_count(RBX::Stats::TypedStatsItem<float>*, CreatableInstanceDeleter); // 005a0c70
 template boost::detail::shared_count::shared_count(RBX::Stats::TypedStatsItem<unsigned int>*, CreatableInstanceDeleter); // 005b75a0
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::function0<double,std::allocator<boost::function_base> >;
+template class boost::function0<float,std::allocator<boost::function_base> >;

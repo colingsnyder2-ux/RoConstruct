@@ -56,3 +56,9 @@ namespace RBX
         }
     }
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<RBX::Lua::ThreadRef>;
+template class std::_Container_base_aux_alloc_real<std::allocator<RBX::Lua::YieldingThreads2008::WaitingThread> >;
+template class std::_Vector_const_iterator<RBX::Lua::YieldingThreads2008::WaitingThread,std::allocator<RBX::Lua::YieldingThreads2008::WaitingThread> >;
+template class std::_Vector_iterator<RBX::Lua::YieldingThreads2008::WaitingThread,std::allocator<RBX::Lua::YieldingThreads2008::WaitingThread> >;

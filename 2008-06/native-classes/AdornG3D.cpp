@@ -6,6 +6,7 @@
 // declarations (RbxGraphics/TextureProxyBase2008.h: resolve(RenderDevice*) is virtual slot 6, +0x18;
 // RenderLib/TextureProxy2008.h: the TextureProxy(TextureManager&, const std::string&, bool) constructor 00551b30 is out
 // of line, object size 0x54). TextureProxy2008.h needs the Ogre 1.4.5 client headers on the include path.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "AppDraw/AdornG3D2008.h"
 #include "AppDraw/DrawPrimitives.h"
 #include "AppDraw/Fonts.h"
@@ -152,3 +153,6 @@ namespace RBX
         renderDevice->setColor(color);
     }
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class G3D::ReferenceCountedPointer<G3D::GFont>;

@@ -1,4 +1,4 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "tool/BasicMouseTools.h"
 #include "v8datamodel/Workspace.h"
 #include "v8datamodel/Explosion.h"
@@ -47,3 +47,10 @@ template<> MouseCommand* TToolVerb<HammerTool, RunStateVerb>::newMouseCommand()
     return new HammerTool(dataModel->getWorkspace());
 }
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class RBX::Reflection::TypedPropertyDescriptor<G3D::Vector3>;
+template class RBX::Reflection::TypedPropertyDescriptor<float>;
+template class boost::shared_ptr<RBX::Explosion>;
+template class std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<G3D::Vector3>::GetSet>;
+template class std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<float>::GetSet>;

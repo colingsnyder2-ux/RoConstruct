@@ -1,19 +1,116 @@
 // from server: 100% by auto
-// roc 2008-06 00552760  unit: RBX::RenderBase::AggregateChunk  size: 17 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 00552760
-//
-// 00552760  55                   push ebp
-// 00552761  8bec                 mov ebp, esp
-// 00552763  51                   push ecx
-// 00552764  894dfc               mov dword ptr [ebp - 4], ecx
-// 00552767  8b45fc               mov eax, dword ptr [ebp - 4]
-// 0055276a  83c030               add eax, 0x30
-// 0055276d  8be5                 mov esp, ebp
-// 0055276f  5d                   pop ebp
-// 00552770  c3                   ret 
-// library wildmagic-2-core/Geometry\WmlBox2.cpp (function ?Extents@?$Box2@N@Wml@@QBEPBNXZ)
-
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /Od /Ob1 /GS- /MT
 // roc-lib: wildmagic-2-core Geometry/WmlBox2.cpp
+
+// Candidate translation unit (score above; library headers required).
+// Magic Software, Inc.
+// http://www.magic-software.com
+// http://www.wild-magic.com
+// Copyright (c) 2003.  All Rights Reserved
+//
+// The Wild Magic Library (WML) source code is supplied under the terms of
+// the license agreement http://www.magic-software.com/License/WildMagic.pdf
+// and may not be copied or disclosed except in accordance with the terms of
+// that agreement.
+
+#include "WmlBox2.h"
+using namespace Wml;
+
+//----------------------------------------------------------------------------
+template <class Real>
+Box2<Real>::Box2 ()
+{
+    // no initialization for efficiency
+}
+//----------------------------------------------------------------------------
+template <class Real>
+Vector2<Real>& Box2<Real>::Center ()
+{
+    return m_kCenter;
+}
+//----------------------------------------------------------------------------
+template <class Real>
+const Vector2<Real>& Box2<Real>::Center () const
+{
+    return m_kCenter;
+}
+//----------------------------------------------------------------------------
+template <class Real>
+Vector2<Real>& Box2<Real>::Axis (int i)
+{
+    assert( 0 <= i && i < 2 );
+    return m_akAxis[i];
+}
+//----------------------------------------------------------------------------
+template <class Real>
+const Vector2<Real>& Box2<Real>::Axis (int i) const
+{
+    assert( 0 <= i && i < 2 );
+    return m_akAxis[i];
+}
+//----------------------------------------------------------------------------
+template <class Real>
+Vector2<Real>* Box2<Real>::Axes ()
+{
+    return m_akAxis;
+}
+//----------------------------------------------------------------------------
+template <class Real>
+const Vector2<Real>* Box2<Real>::Axes () const
+{
+    return m_akAxis;
+}
+//----------------------------------------------------------------------------
+template <class Real>
+Real& Box2<Real>::Extent (int i)
+{
+    assert( 0 <= i && i < 2 );
+    return m_afExtent[i];
+}
+//----------------------------------------------------------------------------
+template <class Real>
+const Real& Box2<Real>::Extent (int i) const
+{
+    assert( 0 <= i && i < 2 );
+    return m_afExtent[i];
+}
+//----------------------------------------------------------------------------
+template <class Real>
+Real* Box2<Real>::Extents ()
+{
+    return m_afExtent;
+}
+//----------------------------------------------------------------------------
+template <class Real>
+const Real* Box2<Real>::Extents () const
+{
+    return m_afExtent;
+}
+//----------------------------------------------------------------------------
+template <class Real>
+void Box2<Real>::ComputeVertices (Vector2<Real> akVertex[4]) const
+{
+    Vector2<Real> akEAxis[2] =
+    {
+        m_afExtent[0]*m_akAxis[0],
+        m_afExtent[1]*m_akAxis[1]
+    };
+
+    akVertex[0] = m_kCenter - akEAxis[0] - akEAxis[1];
+    akVertex[1] = m_kCenter + akEAxis[0] - akEAxis[1];
+    akVertex[2] = m_kCenter + akEAxis[0] + akEAxis[1];
+    akVertex[3] = m_kCenter - akEAxis[0] + akEAxis[1];
+}
+//----------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------
+// explicit instantiation
+//----------------------------------------------------------------------------
+namespace Wml
+{
+template WML_ITEM class Box2<float>;
+template WML_ITEM class Box2<double>;
+}
+//----------------------------------------------------------------------------

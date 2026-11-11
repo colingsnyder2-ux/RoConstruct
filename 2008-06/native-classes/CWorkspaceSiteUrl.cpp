@@ -24,3 +24,8 @@ HRESULT IObjectSafetyRobloxImpl<T, Supported>::getSiteUrl(ATL::CComBSTR& url, DW
 }
 
 template HRESULT IObjectSafetyRobloxImpl<CWorkspace, 1>::getSiteUrl(ATL::CComBSTR&, DWORD&);
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class ATL::CComPtrBase<IInternetSecurityManager>;
+template class ATL::CComPtrBase<IServiceProvider>;
+template class ATL::CComPtrBase<IWebBrowser2>;

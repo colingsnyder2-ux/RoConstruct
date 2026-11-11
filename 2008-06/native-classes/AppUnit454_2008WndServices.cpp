@@ -90,3 +90,7 @@ namespace RBX
 
 	template void Instance::for_eachChild<void (*)(Instance*)>(void (*)(Instance*)) const;
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<RBX::Camera>;
+template class boost::shared_ptr<RBX::ControllerService>;

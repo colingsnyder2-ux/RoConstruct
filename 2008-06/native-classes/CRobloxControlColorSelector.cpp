@@ -128,3 +128,8 @@ void CRobloxControlColorSelector::OnLButtonUp(CPoint point)
     if (GetEnabled() && m_pParent->GetPosition() == xtpBarPopup)
         OnClick(TRUE, point);
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Container_base_aux_alloc_real<std::allocator<CRobloxControlColorSelector::CColorInfo> >;
+template class std::_Vector_const_iterator<CRobloxControlColorSelector::CColorInfo,std::allocator<CRobloxControlColorSelector::CColorInfo> >;
+template class std::_Vector_iterator<CRobloxControlColorSelector::CColorInfo,std::allocator<CRobloxControlColorSelector::CColorInfo> >;

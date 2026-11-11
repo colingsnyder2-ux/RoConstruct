@@ -1,28 +1,131 @@
 // from server: 100% by auto
-// roc 2008-06 00721410  unit: CXTPMenuBar  size: 47 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 00721410
-//
-// 00721410  51                   push ecx
-// 00721411  8d442408             lea eax, [esp + 8]
-// 00721415  50                   push eax
-// 00721416  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 0072141a  8d542404             lea edx, [esp + 4]
-// 0072141e  52                   push edx
-// 0072141f  50                   push eax
-// 00721420  e85b6cfeff           call 0x708080
-// 00721425  85c0                 test eax, eax
-// 00721427  7504                 jne 0x72142d
-// 00721429  59                   pop ecx
-// 0072142a  c20800               ret 8
-// 0072142d  8b4804               mov ecx, dword ptr [eax + 4]
-// 00721430  8b54240c             mov edx, dword ptr [esp + 0xc]
-// 00721434  890a                 mov dword ptr [edx], ecx
-// 00721436  b801000000           mov eax, 1
-// 0072143b  59                   pop ecx
-// 0072143c  c20800               ret 8
-// library mfc-9.0/atlmfc\src\mfc\afxcmdusagecount.cpp (function ?Lookup@?$CMap@IIII@@QBEHIAAI@Z)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
 // roc-lib: mfc-9.0 atlmfc/src/mfc/afxcmdusagecount.cpp
+
+// Candidate translation unit (score above; library headers required).
+// This is a part of the Microsoft Foundation Classes C++ library.
+// Copyright (C) Microsoft Corporation
+// All rights reserved.
+//
+// This source code is only intended as a supplement to the
+// Microsoft Foundation Classes Reference and related
+// electronic documentation provided with the library.
+// See these sources for detailed information regarding the
+// Microsoft Foundation Classes product.
+
+#include "stdafx.h"
+#include "afxcontrolbarutil.h"
+#include "afxcmdusagecount.h"
+#include "afxtoolbar.h"
+
+#ifdef _DEBUG
+#define new DEBUG_NEW
+#endif
+
+UINT CMFCCmdUsageCount::m_nStartCount = 0;
+UINT CMFCCmdUsageCount::m_nMinUsagePercentage = 5;
+
+// Construction/Destruction
+CMFCCmdUsageCount::CMFCCmdUsageCount() : m_nTotalUsage(0)
+{
+}
+
+CMFCCmdUsageCount::~CMFCCmdUsageCount()
+{
+}
+
+void CMFCCmdUsageCount::Serialize(CArchive& ar)
+{
+	if (ar.IsLoading())
+	{
+		ar >> m_nTotalUsage;
+	}
+	else
+	{
+		ar << m_nTotalUsage;
+	}
+
+	m_CmdUsage.Serialize(ar);
+}
+
+void CMFCCmdUsageCount::AddCmd(UINT uiCmd)
+{
+	if (CMFCToolBar::IsCustomizeMode())
+	{
+		return;
+	}
+
+	if ((uiCmd == 0 || uiCmd == (UINT) -1) || // Ignore submenus and separators, CMFCToolBar::IsBasicCommand(uiCmd) || // basic commands and
+		IsStandardCommand(uiCmd)) // standard commands
+	{
+		return;
+	}
+
+	UINT uiCount = 0;
+	if (!m_CmdUsage.Lookup(uiCmd, uiCount))
+	{
+		uiCount = 0;
+	}
+
+	m_CmdUsage.SetAt(uiCmd, ++uiCount);
+	m_nTotalUsage ++;
+}
+
+void CMFCCmdUsageCount::Reset()
+{
+	m_CmdUsage.RemoveAll();
+	m_nTotalUsage = 0;
+}
+
+UINT CMFCCmdUsageCount::GetCount(UINT uiCmd) const
+{
+	UINT uiCount = 0;
+	m_CmdUsage.Lookup(uiCmd, uiCount);
+
+	return uiCount;
+}
+
+BOOL CMFCCmdUsageCount::IsFreqeuntlyUsedCmd(UINT uiCmd) const
+{
+	// I say, that the specific command is frequently used,
+	// if the command usage percentage is more than 20%
+	if (m_nTotalUsage == 0)
+	{
+		return FALSE;
+	}
+
+	UINT uiCount = GetCount(uiCmd);
+
+	if (m_nMinUsagePercentage == 0)
+	{
+		return uiCount > 0;
+	}
+	else
+	{
+		UINT uiPercentage = uiCount * 100 / m_nTotalUsage;
+		return uiPercentage > m_nMinUsagePercentage;
+	}
+}
+
+BOOL CMFCCmdUsageCount::HasEnoughInformation() const
+{
+	return m_nTotalUsage >= m_nStartCount;
+}
+
+BOOL __stdcall CMFCCmdUsageCount::SetOptions(UINT nStartCount, UINT nMinUsagePercentage)
+{
+	if (nMinUsagePercentage >= 100)
+	{
+		ASSERT(FALSE);
+		return FALSE;
+	}
+
+	m_nStartCount = nStartCount;
+	m_nMinUsagePercentage = nMinUsagePercentage;
+
+	return TRUE;
+}
+
+

@@ -40,3 +40,6 @@ void CRobloxDoc::handle_453c30(NMHDR* header, LRESULT* result)
     combo->GetEditCtrl()->SetFocus();
     *result = 1;
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::iostreams::detail::basic_buffer<char,std::allocator<char> >;

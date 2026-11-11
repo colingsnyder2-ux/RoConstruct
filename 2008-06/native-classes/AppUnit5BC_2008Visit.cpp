@@ -78,3 +78,8 @@ namespace RBX
 		return worker_thread::more;
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class RBX::Reflection::BoundFuncDesc<RBX::Visit,void __cdecl(std::basic_string<char,std::char_traits<char>,std::allocator<char> >,int),2>;
+template class boost::function0<enum RBX::worker_thread::work_result,std::allocator<boost::function_base> >;
+template class boost::scoped_ptr<RBX::worker_thread>;

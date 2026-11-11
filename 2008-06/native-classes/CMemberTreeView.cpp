@@ -170,3 +170,6 @@ void CMemberTreeView::showClass(const RBX::Reflection::ClassDescriptor* descript
     sort.lpfnCompare = CClassTreeView::compareItems;
     GetTreeCtrl().SortChildrenCB(&sort);
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::_bi::value<CMemberTreeView *>;

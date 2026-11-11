@@ -20,3 +20,6 @@ namespace RBX
 
 template boost::shared_ptr<RBX::Humanoid> RBX::Creatable<RBX::Instance>::create<RBX::Humanoid>();
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::Humanoid, RBX::Instance, RBX::sHumanoid>::Creator::create() const;
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<RBX::Humanoid>;

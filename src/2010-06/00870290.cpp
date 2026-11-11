@@ -1,69 +1,610 @@
 // from server: 100% by auto
-// roc 2010-06 00870290  unit: ATL::CRegObject  size: 137 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 00870290
-//
-// 00870290  53                   push ebx
-// 00870291  8b5904               mov ebx, dword ptr [ecx + 4]
-// 00870294  85db                 test ebx, ebx
-// 00870296  7505                 jne 0x87029d
-// 00870298  e8af79f3ff           call 0x7a7c4c
-// 0087029d  55                   push ebp
-// 0087029e  8b6c240c             mov ebp, dword ptr [esp + 0xc]
-// 008702a2  56                   push esi
-// 008702a3  8b7500               mov esi, dword ptr [ebp]
-// 008702a6  85f6                 test esi, esi
-// 008702a8  7505                 jne 0x8702af
-// 008702aa  e89d79f3ff           call 0x7a7c4c
-// 008702af  57                   push edi
-// 008702b0  83feff               cmp esi, -1
-// 008702b3  751e                 jne 0x8702d3
-// 008702b5  8b7908               mov edi, dword ptr [ecx + 8]
-// 008702b8  33c0                 xor eax, eax
-// 008702ba  85ff                 test edi, edi
-// 008702bc  7615                 jbe 0x8702d3
-// 008702be  8bd3                 mov edx, ebx
-// 008702c0  8b32                 mov esi, dword ptr [edx]
-// 008702c2  85f6                 test esi, esi
-// 008702c4  750d                 jne 0x8702d3
-// 008702c6  40                   inc eax
-// 008702c7  83c204               add edx, 4
-// 008702ca  3bc7                 cmp eax, edi
-// 008702cc  72f2                 jb 0x8702c0
-// 008702ce  e87979f3ff           call 0x7a7c4c
-// 008702d3  8b7e08               mov edi, dword ptr [esi + 8]
-// 008702d6  85ff                 test edi, edi
-// 008702d8  7524                 jne 0x8702fe
-// 008702da  8b4908               mov ecx, dword ptr [ecx + 8]
-// 008702dd  8b460c               mov eax, dword ptr [esi + 0xc]
-// 008702e0  33d2                 xor edx, edx
-// 008702e2  f7f1                 div ecx
-// 008702e4  42                   inc edx
-// 008702e5  3bd1                 cmp edx, ecx
-// 008702e7  7315                 jae 0x8702fe
-// 008702e9  8d0493               lea eax, [ebx + edx*4]
-// 008702ec  8d642400             lea esp, [esp]
-// 008702f0  8b38                 mov edi, dword ptr [eax]
-// 008702f2  85ff                 test edi, edi
-// 008702f4  7508                 jne 0x8702fe
-// 008702f6  42                   inc edx
-// 008702f7  83c004               add eax, 4
-// 008702fa  3bd1                 cmp edx, ecx
-// 008702fc  72f2                 jb 0x8702f0
-// 008702fe  8b4c2418             mov ecx, dword ptr [esp + 0x18]
-// 00870302  897d00               mov dword ptr [ebp], edi
-// 00870305  8b06                 mov eax, dword ptr [esi]
-// 00870307  8901                 mov dword ptr [ecx], eax
-// 00870309  8b5604               mov edx, dword ptr [esi + 4]
-// 0087030c  8b44241c             mov eax, dword ptr [esp + 0x1c]
-// 00870310  5f                   pop edi
-// 00870311  5e                   pop esi
-// 00870312  5d                   pop ebp
-// 00870313  8910                 mov dword ptr [eax], edx
-// 00870315  5b                   pop ebx
-// 00870316  c20c00               ret 0xc
-// library mfc-9.0/atlmfc\src\mfc\afxcontextmenumanager.cpp (function ?GetNextAssoc@?$CMap@IIPAUHMENU__@@PAU1@@@QBEXAAPAU__POSITION@@AAIAAPAUHMENU__@@@Z)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
 // roc-lib: mfc-9.0 atlmfc/src/mfc/afxcontextmenumanager.cpp
+
+// Candidate translation unit (score above; library headers required).
+// This is a part of the Microsoft Foundation Classes C++ library.
+// Copyright (C) Microsoft Corporation
+// All rights reserved.
+//
+// This source code is only intended as a supplement to the
+// Microsoft Foundation Classes Reference and related
+// electronic documentation provided with the library.
+// See these sources for detailed information regarding the
+// Microsoft Foundation Classes product.
+
+#include "stdafx.h"
+#include "afxcontextmenumanager.h"
+#include "afxmenutearoffmanager.h"
+#include "afxpopupmenu.h"
+#include "afxmenuhash.h"
+#include "afxglobals.h"
+#include "afxregpath.h"
+#include "afxdialogex.h"
+#include "afxpropertypage.h"
+#include "afxwinappex.h"
+
+#ifdef _DEBUG
+#define new DEBUG_NEW
+#endif
+
+static const CString strMenusProfile = _T("ContextMenuManager");
+
+CContextMenuManager* afxContextMenuManager = NULL;
+
+// Construction/Destruction
+CContextMenuManager::CContextMenuManager()
+{
+	ENSURE(afxContextMenuManager == NULL);
+	afxContextMenuManager = this;
+	m_nLastCommandID = 0;
+	m_bTrackMode = FALSE;
+	m_bDontCloseActiveMenu = FALSE;
+}
+
+CContextMenuManager::~CContextMenuManager()
+{
+	POSITION pos = NULL;
+
+	for (pos = m_Menus.GetStartPosition(); pos != NULL;)
+	{
+		UINT uiResId;
+		HMENU hMenu;
+
+		m_Menus.GetNextAssoc(pos, uiResId, hMenu);
+		::DestroyMenu(hMenu);
+	}
+
+	for (pos = m_MenuOriginalItems.GetStartPosition(); pos != NULL;)
+	{
+		UINT uiResId;
+		CObList* pLstOrginItems = NULL;
+
+		m_MenuOriginalItems.GetNextAssoc(pos, uiResId, pLstOrginItems);
+		ASSERT_VALID(pLstOrginItems);
+
+		while (!pLstOrginItems->IsEmpty())
+		{
+			delete pLstOrginItems->RemoveHead();
+		}
+
+		delete pLstOrginItems;
+	}
+
+	afxContextMenuManager = NULL;
+}
+
+BOOL CContextMenuManager::AddMenu(UINT uiMenuNameResId, UINT uiMenuResId)
+{
+	CString strMenuName;
+	ENSURE(strMenuName.LoadString(uiMenuNameResId));
+
+	return AddMenu(strMenuName, uiMenuResId);
+}
+
+BOOL CContextMenuManager::AddMenu(LPCTSTR lpszName, UINT uiMenuResId)
+{
+	ENSURE(lpszName != NULL);
+
+	CMenu menu;
+	if (!menu.LoadMenu(uiMenuResId))
+	{
+		ASSERT(FALSE);
+		return FALSE;
+	}
+
+	HMENU hExMenu;
+	if (m_Menus.Lookup(uiMenuResId, hExMenu))
+	{
+		// Menu with the same name is already exist!
+		return FALSE;
+	}
+
+	HMENU hMenu = menu.Detach();
+
+	if (g_pTearOffMenuManager != NULL)
+	{
+		g_pTearOffMenuManager->SetupTearOffMenus(hMenu);
+	}
+
+	m_Menus.SetAt(uiMenuResId, hMenu);
+	m_MenuNames.SetAt(lpszName, hMenu);
+
+	return TRUE;
+}
+
+BOOL CContextMenuManager::ShowPopupMenu(UINT uiMenuResId, int x, int y, CWnd* pWndOwner, BOOL bOwnMessage, BOOL bRightAlign)
+{
+	HMENU hMenu;
+	if (!m_Menus.Lookup(uiMenuResId, hMenu) || hMenu == NULL)
+	{
+		return FALSE;
+	}
+
+	if (x == -1 && y == -1 && // Undefined position
+		pWndOwner != NULL)
+	{
+		CRect rectParent;
+		pWndOwner->GetClientRect(&rectParent);
+		pWndOwner->ClientToScreen(&rectParent);
+
+		x = rectParent.left + 5;
+		y = rectParent.top + 5;
+	}
+
+	HMENU hmenuPopup = ::GetSubMenu(hMenu, 0);
+	if (hmenuPopup == NULL)
+	{
+#ifdef _DEBUG
+
+		MENUITEMINFO info;
+		memset(&info, 0, sizeof(MENUITEMINFO));
+
+		if (!::GetMenuItemInfo(hMenu, 0, TRUE, &info))
+		{
+			TRACE(_T("Invalid menu: %d\n"), uiMenuResId);
+		}
+		else
+		{
+			ASSERT(info.hSubMenu == NULL);
+			TRACE(_T("Menu %d, first option '%s' doesn't contain popup menu!\n"), uiMenuResId, info.dwTypeData);
+		}
+
+#endif // _DEBUG
+		return FALSE;
+	}
+
+	return ShowPopupMenu(hmenuPopup, x, y, pWndOwner, bOwnMessage, TRUE, bRightAlign) != NULL;
+}
+
+CMFCPopupMenu* CContextMenuManager::ShowPopupMenu(HMENU hmenuPopup, int x, int y, CWnd* pWndOwner, BOOL bOwnMessage, BOOL /*bAutoDestroy*/, BOOL bRightAlign)
+{
+	if (pWndOwner != NULL && pWndOwner->IsKindOf(RUNTIME_CLASS(CDialogEx)) && !bOwnMessage)
+	{
+		// CDialogEx should own menu messages
+		ASSERT(FALSE);
+		return NULL;
+	}
+
+	if (pWndOwner != NULL && pWndOwner->IsKindOf(RUNTIME_CLASS(CMFCPropertyPage)) && !bOwnMessage)
+	{
+		// CMFCPropertyPage should own menu messages
+		ASSERT(FALSE);
+		return NULL;
+	}
+
+	ENSURE(hmenuPopup != NULL);
+	if (g_pTearOffMenuManager != NULL)
+	{
+		g_pTearOffMenuManager->SetupTearOffMenus(hmenuPopup);
+	}
+
+	if (m_bTrackMode)
+	{
+		bOwnMessage = TRUE;
+	}
+
+	if (!bOwnMessage)
+	{
+		while (pWndOwner != NULL && pWndOwner->GetStyle() & WS_CHILD)
+		{
+			pWndOwner = pWndOwner->GetParent();
+		}
+	}
+
+	CMFCPopupMenu* pPopupMenu = new CMFCPopupMenu;
+	pPopupMenu->SetAutoDestroy(FALSE);
+
+	pPopupMenu->m_bTrackMode = m_bTrackMode;
+	pPopupMenu->SetRightAlign(bRightAlign);
+
+	CMFCPopupMenu* pMenuActive = CMFCPopupMenu::GetActiveMenu();
+	if (!m_bDontCloseActiveMenu && pMenuActive != NULL)
+	{
+		pMenuActive->SendMessage(WM_CLOSE);
+	}
+
+	if (!pPopupMenu->Create(pWndOwner, x, y, hmenuPopup, FALSE, bOwnMessage))
+	{
+		return NULL;
+	}
+
+	return pPopupMenu;
+}
+
+UINT CContextMenuManager::TrackPopupMenu(HMENU hmenuPopup, int x, int y, CWnd* pWndOwner, BOOL bRightAlign)
+{
+	m_nLastCommandID = 0;
+
+	CWinThread* pCurrThread = ::AfxGetThread();
+	if (pCurrThread == NULL)
+	{
+		ASSERT(FALSE);
+		return 0;
+	}
+
+	m_bTrackMode = TRUE;
+
+	CMFCPopupMenu* pMenu = ShowPopupMenu(hmenuPopup, x, y, pWndOwner, FALSE, TRUE, bRightAlign);
+
+	if (pMenu != NULL)
+	{
+		CRect rect;
+		pMenu->GetWindowRect(&rect);
+		pMenu->UpdateShadow(&rect);
+	}
+
+	CDialogEx* pParentDlg = NULL;
+	if (pWndOwner != NULL && pWndOwner->GetParent() != NULL)
+	{
+		pParentDlg = DYNAMIC_DOWNCAST(CDialogEx, pWndOwner->GetParent());
+		if (pParentDlg != NULL)
+		{
+			pParentDlg->SetActiveMenu(pMenu);
+		}
+	}
+
+	CMFCPropertyPage* pParentPropPage = NULL;
+	if (pWndOwner != NULL && pWndOwner->GetParent() != NULL)
+	{
+		pParentPropPage = DYNAMIC_DOWNCAST(CMFCPropertyPage, pWndOwner->GetParent());
+		if (pParentPropPage != NULL)
+		{
+			pParentPropPage->SetActiveMenu(pMenu);
+		}
+	}
+
+	m_bTrackMode = FALSE;
+
+	if (pMenu != NULL && pCurrThread != NULL)
+	{
+		ASSERT_VALID(pMenu);
+
+		CWinAppEx* pApp = DYNAMIC_DOWNCAST(CWinAppEx, AfxGetApp());
+		if (pApp == NULL || !pApp->OnWorkspaceIdle(pMenu))
+		{
+			LONG lIdleCount = 0;
+			HWND hwndMenu = pMenu->GetSafeHwnd();
+
+			while (::IsWindow(hwndMenu))
+			{
+				MSG msg;
+				while (::PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+				{
+					if (msg.message == WM_QUIT)
+					{
+						PostThreadMessage(GetCurrentThreadId(), msg.message, msg.wParam, msg.lParam);
+						return 0;
+					}
+
+					if (!::IsWindow(hwndMenu))
+					{
+						break;
+					}
+
+					switch (msg.message)
+					{
+					case WM_NCLBUTTONDOWN:
+						pMenu->DestroyWindow();
+
+						PostMessage(msg.hwnd, msg.message, msg.wParam, msg.lParam);
+
+						if (pParentDlg != NULL)
+						{
+							pParentDlg->SetActiveMenu(NULL);
+						}
+
+						if (pParentPropPage != NULL)
+						{
+							pParentPropPage->SetActiveMenu(NULL);
+						}
+
+						return 0;
+					}
+
+					if (::IsWindow(hwndMenu) && !pCurrThread->PreTranslateMessage(&msg))
+					{
+						::TranslateMessage(&msg);
+						::DispatchMessage(&msg);
+					}
+
+					if (::IsWindow(hwndMenu) && pMenu->IsIdle())
+					{
+						pCurrThread->OnIdle(lIdleCount++);
+					}
+				}
+
+				// reset "no idle" state after pumping "normal" message
+				if (pCurrThread->IsIdleMessage(&msg))
+				{
+					lIdleCount = 0;
+				}
+
+				if (!::IsWindow(hwndMenu))
+				{
+					break;
+				}
+
+				WaitMessage();
+			}
+		}
+	}
+
+	if (pParentDlg != NULL)
+	{
+		pParentDlg->SetActiveMenu(NULL);
+	}
+
+	if (pParentPropPage != NULL)
+	{
+		pParentPropPage->SetActiveMenu(NULL);
+	}
+
+	return m_nLastCommandID;
+}
+
+void CContextMenuManager::GetMenuNames(CStringList& listOfNames) const
+{
+	listOfNames.RemoveAll();
+
+	for (POSITION pos = m_MenuNames.GetStartPosition(); pos != NULL;)
+	{
+		CString strName;
+		HMENU hMenu;
+
+		m_MenuNames.GetNextAssoc(pos, strName, hMenu);
+		listOfNames.AddTail(strName);
+	}
+}
+
+HMENU CContextMenuManager::GetMenuByName(LPCTSTR lpszName, UINT* puiOrigResID) const
+{
+	HMENU hMenu;
+	if (!m_MenuNames.Lookup(lpszName, hMenu))
+	{
+		return NULL;
+	}
+
+	if (puiOrigResID != NULL)
+	{
+		*puiOrigResID = 0;
+
+		for (POSITION pos = m_Menus.GetStartPosition(); pos != NULL;)
+		{
+			UINT uiResId;
+			HMENU hMenuMap;
+
+			m_Menus.GetNextAssoc(pos, uiResId, hMenuMap);
+			if (hMenuMap == hMenu)
+			{
+				*puiOrigResID = uiResId;
+				break;
+			}
+		}
+	}
+
+	return hMenu;
+}
+
+BOOL CContextMenuManager::LoadState(LPCTSTR lpszProfileName)
+{
+	CString strProfileName = ::AFXGetRegPath(strMenusProfile, lpszProfileName);
+
+	for (POSITION pos = m_Menus.GetStartPosition(); pos != NULL;)
+	{
+		UINT uiResId;
+		HMENU hMenu;
+
+		m_Menus.GetNextAssoc(pos, uiResId, hMenu);
+		ENSURE(hMenu != NULL);
+
+		HMENU hPopupMenu = ::GetSubMenu(hMenu, 0);
+		ENSURE(hPopupMenu != NULL);
+
+		CMFCPopupMenuBar* pBar = new CMFCPopupMenuBar;
+
+		CWnd* pParentWnd = AfxGetMainWnd();
+		if (pParentWnd == NULL)
+		{
+			pParentWnd = CWnd::FromHandle(GetDesktopWindow());
+		}
+
+		if (pBar->Create(pParentWnd, AFX_DEFAULT_TOOLBAR_STYLE, 0xFFFF))
+		{
+			if (!pBar->ImportFromMenu(hPopupMenu))
+			{
+				pBar->DestroyWindow();
+				delete pBar;
+				return FALSE;
+			}
+
+			pBar->BuildOrigItems(uiResId);
+
+			if (pBar->LoadState(strProfileName, 0, uiResId) && !pBar->IsResourceChanged())
+			{
+				afxMenuHash.SaveMenuBar(hPopupMenu, pBar);
+			}
+
+			CopyOriginalMenuItemsFromMenu(uiResId, *pBar);
+			pBar->DestroyWindow();
+		}
+
+		delete pBar;
+	}
+
+	return TRUE;
+}
+
+BOOL CContextMenuManager::SaveState(LPCTSTR lpszProfileName)
+{
+	CString strProfileName = ::AFXGetRegPath(strMenusProfile, lpszProfileName);
+
+	for (POSITION pos = m_Menus.GetStartPosition(); pos != NULL;)
+	{
+		UINT uiResId;
+		HMENU hMenu;
+
+		m_Menus.GetNextAssoc(pos, uiResId, hMenu);
+		ENSURE(hMenu != NULL);
+
+		HMENU hPopupMenu = ::GetSubMenu(hMenu, 0);
+		ENSURE(hPopupMenu != NULL);
+
+		CMFCPopupMenuBar* pBar = new CMFCPopupMenuBar;
+		if (pBar->Create(CWnd::FromHandle(GetDesktopWindow())))
+		{
+			if (afxMenuHash.LoadMenuBar(hPopupMenu, pBar))
+			{
+				CopyOriginalMenuItemsToMenu(uiResId, *pBar);
+
+				if (!pBar->SaveState(strProfileName, 0, uiResId))
+				{
+					pBar->DestroyWindow();
+					delete pBar;
+					return FALSE;
+				}
+			}
+
+			pBar->DestroyWindow();
+		}
+		delete pBar;
+	}
+
+	return TRUE;
+}
+
+BOOL CContextMenuManager::ResetState()
+{
+	POSITION pos = NULL;
+
+	for (pos = m_Menus.GetStartPosition(); pos != NULL;)
+	{
+		UINT uiResId;
+		HMENU hMenu;
+
+		m_Menus.GetNextAssoc(pos, uiResId, hMenu);
+		ENSURE(hMenu != NULL);
+
+		HMENU hPopupMenu = ::GetSubMenu(hMenu, 0);
+		ENSURE(hPopupMenu != NULL);
+
+		afxMenuHash.RemoveMenu(hPopupMenu);
+	}
+
+	for (pos = m_MenuOriginalItems.GetStartPosition(); pos != NULL;)
+	{
+		UINT uiResId;
+		CObList* pLstOrginItems = NULL;
+
+		m_MenuOriginalItems.GetNextAssoc(pos, uiResId, pLstOrginItems);
+		ASSERT_VALID(pLstOrginItems);
+
+		while (!pLstOrginItems->IsEmpty())
+		{
+			delete pLstOrginItems->RemoveHead();
+		}
+
+		delete pLstOrginItems;
+	}
+
+	m_MenuOriginalItems.RemoveAll();
+
+	return TRUE;
+}
+
+HMENU CContextMenuManager::GetMenuById(UINT nMenuResId) const
+{
+	HMENU hMenu = NULL ;
+	return m_Menus.Lookup(nMenuResId, hMenu) ? hMenu : NULL;
+}
+
+void CContextMenuManager::CopyOriginalMenuItemsToMenu(UINT uiResId, CMFCPopupMenuBar& menuBar)
+{
+	CObList* pLstOrginItems = NULL;
+
+	if (!m_MenuOriginalItems.Lookup(uiResId, pLstOrginItems))
+	{
+		return;
+	}
+
+	ASSERT_VALID(pLstOrginItems);
+
+	if (pLstOrginItems->IsEmpty())
+	{
+		return;
+	}
+
+	CObList lstMenuItems;
+
+	for (POSITION pos = pLstOrginItems->GetHeadPosition(); pos != NULL;)
+	{
+		CMFCToolBarButton* pSrcButton = DYNAMIC_DOWNCAST(CMFCToolBarButton, pLstOrginItems->GetNext(pos));
+		ASSERT_VALID(pSrcButton);
+
+		CRuntimeClass* pClass = pSrcButton->GetRuntimeClass();
+		ENSURE(pClass != NULL);
+
+		CMFCToolBarButton* pButton = (CMFCToolBarButton*) pClass->CreateObject();
+		ASSERT_VALID(pButton);
+
+		pButton->CopyFrom(*pSrcButton);
+		lstMenuItems.AddTail(pButton);
+	}
+
+	menuBar.SetOrigButtons(lstMenuItems);
+}
+
+void CContextMenuManager::CopyOriginalMenuItemsFromMenu(UINT uiResId, CMFCPopupMenuBar& menuBar)
+{
+	const CObList& lstMenuItems = menuBar.GetOrigButtons();
+
+	CObList* pLstOrginItems = NULL;
+
+	if (m_MenuOriginalItems.Lookup(uiResId, pLstOrginItems))
+	{
+		ASSERT_VALID(pLstOrginItems);
+
+		while (!pLstOrginItems->IsEmpty())
+		{
+			delete pLstOrginItems->RemoveHead();
+		}
+
+		if (lstMenuItems.IsEmpty())
+		{
+			m_MenuOriginalItems.RemoveKey(uiResId);
+			delete pLstOrginItems;
+			return;
+		}
+	}
+	else
+	{
+		if (lstMenuItems.IsEmpty())
+		{
+			return;
+		}
+
+		pLstOrginItems = new CObList;
+		m_MenuOriginalItems.SetAt(uiResId, pLstOrginItems);
+	}
+
+	ASSERT_VALID(pLstOrginItems);
+
+	for (POSITION pos = lstMenuItems.GetHeadPosition(); pos != NULL;)
+	{
+		CMFCToolBarButton* pSrcButton = DYNAMIC_DOWNCAST(CMFCToolBarButton, lstMenuItems.GetNext(pos));
+		ASSERT_VALID(pSrcButton);
+
+		CRuntimeClass* pClass = pSrcButton->GetRuntimeClass();
+		ENSURE(pClass != NULL);
+
+		CMFCToolBarButton* pButton = (CMFCToolBarButton*) pClass->CreateObject();
+		ASSERT_VALID(pButton);
+
+		pButton->CopyFrom(*pSrcButton);
+		pLstOrginItems->AddTail(pButton);
+	}
+}
+
+

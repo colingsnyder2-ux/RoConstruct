@@ -1,34 +1,88 @@
 // from server: 100% by auto
-// roc 2009-06 00473c30  unit: Ogre::VRbxSky::?$SharedPtr  size: 49 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 00473c30
-//
-// 00473c30  56                   push esi
-// 00473c31  8b742408             mov esi, dword ptr [esp + 8]
-// 00473c35  8d4604               lea eax, [esi + 4]
-// 00473c38  8d5104               lea edx, [ecx + 4]
-// 00473c3b  3bd0                 cmp edx, eax
-// 00473c3d  740c                 je 0x473c4b
-// 00473c3f  53                   push ebx
-// 00473c40  8b18                 mov ebx, dword ptr [eax]
-// 00473c42  57                   push edi
-// 00473c43  8b3a                 mov edi, dword ptr [edx]
-// 00473c45  891a                 mov dword ptr [edx], ebx
-// 00473c47  8938                 mov dword ptr [eax], edi
-// 00473c49  5f                   pop edi
-// 00473c4a  5b                   pop ebx
-// 00473c4b  8d4608               lea eax, [esi + 8]
-// 00473c4e  83c108               add ecx, 8
-// 00473c51  3bc8                 cmp ecx, eax
-// 00473c53  7408                 je 0x473c5d
-// 00473c55  8b30                 mov esi, dword ptr [eax]
-// 00473c57  8b11                 mov edx, dword ptr [ecx]
-// 00473c59  8931                 mov dword ptr [ecx], esi
-// 00473c5b  8910                 mov dword ptr [eax], edx
-// 00473c5d  5e                   pop esi
-// 00473c5e  c20400               ret 4
-// library ogre-1.4.9/OgreAlignedAllocator.cpp (function ?swap@?$SharedPtr@VHardwareVertexBuffer@Ogre@@@Ogre@@MAEXAAV12@@Z)
-
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MT
 // roc-lib: ogre-1.4.9 OgreAlignedAllocator.cpp
+
+// Candidate translation unit (score above; library headers required).
+/*
+-----------------------------------------------------------------------------
+This source file is part of OGRE
+    (Object-oriented Graphics Rendering Engine)
+For the latest info, see http://www.ogre3d.org/
+
+Copyright (c) 2000-2006 Torus Knot Software Ltd
+Also see acknowledgements in Readme.html
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of the GNU Lesser General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License along with
+this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+Place - Suite 330, Boston, MA 02111-1307, USA, or go to
+http://www.gnu.org/copyleft/lesser.txt.
+
+You may alternatively use this source under the terms of a specific version of
+the OGRE Unrestricted License provided you have obtained such a license from
+Torus Knot Software Ltd.
+-----------------------------------------------------------------------------
+*/
+#include "OgreStableHeaders.h"
+
+#include "OgreAlignedAllocator.h"
+
+#include "OgrePlatformInformation.h"
+#include "OgreBitwise.h"
+
+/**
+*
+* |___2___|3|_________5__________|__6__|
+* ^         ^
+* 1         4
+*
+* 1 -> Pointer to start of the block allocated by new.
+* 2 -> Gap used to get 4 aligned on given alignment
+* 3 -> Byte offset between 1 and 4
+* 4 -> Pointer to the start of data block.
+* 5 -> Data block.
+* 6 -> Wasted memory at rear of data block.
+*/
+
+namespace Ogre {
+
+    //---------------------------------------------------------------------
+    void* AlignedMemory::allocate(size_t size, size_t alignment)
+    {
+        assert(0 < alignment && alignment <= 128 && Bitwise::isPO2(alignment));
+
+        unsigned char* p = new unsigned char[size + alignment];
+        size_t offset = alignment - (size_t(p) & (alignment-1));
+
+        unsigned char* result = p + offset;
+        result[-1] = (unsigned char)offset;
+
+        return result;
+    }
+    //---------------------------------------------------------------------
+    void* AlignedMemory::allocate(size_t size)
+    {
+        return allocate(size, OGRE_SIMD_ALIGNMENT);
+    }
+    //---------------------------------------------------------------------
+    void AlignedMemory::deallocate(void* p)
+    {
+        if (p)
+        {
+            unsigned char* mem = (unsigned char*)p;
+            mem = mem - mem[-1];
+            delete [] mem;
+        }
+    }
+
+}

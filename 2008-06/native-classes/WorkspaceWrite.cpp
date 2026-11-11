@@ -61,3 +61,6 @@ HRESULT __stdcall CWorkspace::WriteSelection(IContent** result) {
     }
     return S_OK;
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class ATL::CComPtrBase<IContent>;

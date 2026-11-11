@@ -128,3 +128,8 @@ namespace RBX
 		}
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<RBX::RunService>;
+template class std::_Vector_iterator<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance> > >;
+template class std::deque<RBX::Network::AbuseReport,std::allocator<RBX::Network::AbuseReport> >;

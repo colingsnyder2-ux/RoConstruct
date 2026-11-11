@@ -26,3 +26,7 @@ LDrawPart::LDrawPart(LDraw2RobloxMapRoot* owner) : output(owner)
     (void)std::string(""); // The original constructs and discards this temporary.
 }
 } }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Container_base_aux_alloc_real<std::allocator<RBX::LDraw2Lua::LDrawItem *> >;
+template class std::_Vector_iterator<RBX::LDraw2Lua::LDrawItem *,std::allocator<RBX::LDraw2Lua::LDrawItem *> >;

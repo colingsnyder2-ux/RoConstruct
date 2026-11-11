@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS
 // 2008-06 native RBX::Value<double, sDoubleValue> (DoubleValue; class name "NumberValue"), inactive.
 // Evidence (verified by tests/record_native_value_double2008.py):
 //   * RTTI .?AV?$Value@N$1?sDoubleValue@RBX@@3PADA@RBX@@ (vtable 0084948c, 21 bases, Instance at 0): the template
@@ -75,3 +76,11 @@ namespace RBX
 	// create<DoubleValue> 00639800 (FactoryProduct<DoubleValue>::Creator::create 0063a080 calls it).
 	template boost::shared_ptr<DoubleValue> Creatable<Instance>::create<DoubleValue>();
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class RBX::Reflection::TSignalDesc<void __cdecl(double)>;
+template class boost::function<void __cdecl(double),std::allocator<void> >;
+template class boost::signal1<void,double,boost::last_value<void>,int,std::less<int>,boost::function<void __cdecl(double),std::allocator<void> > >;
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sDoubleValue>();

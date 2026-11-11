@@ -50,3 +50,7 @@ namespace RBX
 		}
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::auto_ptr<RBX::RenderBase::RenderSceneBase>;
+template class std::deque<G3D::Token,std::allocator<G3D::Token> >;

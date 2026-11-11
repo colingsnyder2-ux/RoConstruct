@@ -41,9 +41,10 @@
 // 2 getEdgeList 00685170, 3 hasEdgeList 006851a0, 4 getWorldBoundingBox 00685490, 5 getLightCapBounds 00685100,
 // 6 getDarkCapBounds 00685590, 7 getShadowVolumeRenderableIterator 00685a40, 8 getPointExtrusionDistance 00685110;
 // 9..11 are the imported ShadowCaster protected virtuals.
-// getWorldBoundingBox 00685490 and getShadowVolumeRenderableIterator 00685a40 are declared but not built: they read
-// +0xc8 (EdgeData*) / +0xec (radius) of the selected sub-mesh, members of an exe-local SubMesh subclass (prepare
-// 00682430, destructor 006824e0) whose size and constructor are not derived; the imported SubMesh is 0xc4 bytes.
+// getWorldBoundingBox 00685490 remains declared but not built: the selected RbxSubMesh is proven through 0067c130
+// (0xf0 allocation; EdgeData* +0xc8 and float radius +0xec), but three normal C++ bounds shapes emitted 207/236/229
+// bytes versus the 254-byte target. Preserve the exact existing methods and park it for a deterministic codegen-shape
+// solver. getShadowVolumeRenderableIterator 00685a40 is recovered and byte-proved against the same RbxSubMesh layout.
 // Member and method names are naming choices (no symbol evidence) except the overridden Ogre virtuals; types and
 // offsets come from the evidence above.
 #include <OgreSubEntity.h>
@@ -122,5 +123,6 @@ namespace Ogre
 		bool mCastShadows;                                                   // +0x13c
 		SubMesh* mShadowSubMesh;                                             // +0x140
 		ShadowRenderableList mShadowRenderables;                             // +0x144 (size 0x15c)
+		SubMesh* getCurrentSubMesh(void) const;                              // codegen helper, inlined into 00685a40
 	};
 }

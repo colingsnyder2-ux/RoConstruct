@@ -95,3 +95,6 @@ namespace RBX
 	template ScriptContext* ServiceProvider::create<ScriptContext>() const;
 	template boost::shared_ptr<Object> FactoryProduct<ScriptContext, Instance, sScriptContext>::Creator::create() const;
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<RBX::ScriptContext>;

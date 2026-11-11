@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
 // Ogre::VisualEngine as compiled into the June 2008 client (inactive native recovery; Roblox's exe-local owner of the
 // Ogre 1.4.5 Root / scene manager / camera / render window, image block 00678510..0067c4d0).
 //
@@ -26,6 +27,7 @@
 //   * the std::vector<float> and std::sort<float*> COMDATs of this block (the frame-history median uses them).
 // Pending-build-only (NATIVE_OGRE_VISUAL_ENGINE_PENDING, with the proposal header that the recorder generates under
 // rebuild/2008-06/out/): VisualEngine and its frame history.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include <windows.h>
 #include <ddraw.h>
 #include <vector>
@@ -241,3 +243,8 @@ VisualEngine::~VisualEngine()
 
 } // namespace Ogre
 #endif
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class Ogre::MapIterator<std::map<unsigned long,Ogre::SharedPtr<Ogre::Resource>,std::less<unsigned long>,std::allocator<std::pair<unsigned long const ,Ogre::SharedPtr<Ogre::Resource> > > > >;
+template class std::_Tree<std::_Tmap_traits<unsigned long,Ogre::SharedPtr<Ogre::Resource>,std::less<unsigned long>,std::allocator<std::pair<unsigned long const ,Ogre::SharedPtr<Ogre::Resource> > >,0> >;
+template class std::pair<float *,float *>;

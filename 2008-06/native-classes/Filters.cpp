@@ -2,6 +2,7 @@
 // Verified by tests/record_native_hit_filters.py. The original unit is 006601c0..00660544 (the inline
 // PartInstance::getIsTransparent 006601c0 is emitted first). The PartByLocalCharacter constructor uses
 // Humanoid::getHeadFromCharacter (005d75a0) from the native humanoid/Humanoid.h.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "v8datamodel/Filters2008.h"
 #include "v8datamodel/PartInstance.h"
 #include "v8datamodel/ModelInstance.h"

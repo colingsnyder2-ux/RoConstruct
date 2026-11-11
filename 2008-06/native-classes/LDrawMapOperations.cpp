@@ -88,3 +88,9 @@ int LDraw2RobloxMapRoot::readFormFactor(std::string value)
     return 2;
 }
 } }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Container_base_aux_alloc_real<std::allocator<RBX::LDraw2Lua::NativeRobloxPart> >;
+template class std::_String_iterator<char,std::char_traits<char>,std::allocator<char> >;
+template class std::_Vector_const_iterator<RBX::LDraw2Lua::NativeRobloxPart,std::allocator<RBX::LDraw2Lua::NativeRobloxPart> >;
+template class std::_Vector_iterator<RBX::LDraw2Lua::NativeRobloxPart,std::allocator<RBX::LDraw2Lua::NativeRobloxPart> >;

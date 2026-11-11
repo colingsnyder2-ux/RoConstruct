@@ -1,14 +1,166 @@
 // from server: 100% by auto
-// roc 2009-06 00760bb0  unit: CXTPToolBar::CControlButtonExpand  size: 10 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 00760bb0
-//
-// 00760bb0  8b01                 mov eax, dword ptr [ecx]
-// 00760bb2  50                   push eax
-// 00760bb3  ff15a8e18900         call dword ptr [0x89e1a8]
-// 00760bb9  c3                   ret 
-// library mfc-9.0/atlmfc\src\mfc\ThemeHelper.cpp (function ??1CComBSTR@ATL@@QAE@XZ)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
 // roc-lib: mfc-9.0 atlmfc/src/mfc/ThemeHelper.cpp
+
+// Candidate translation unit (score above; library headers required).
+// This is a part of the Microsoft Foundation Classes C++ library.
+// Copyright (C) Microsoft Corporation
+// All rights reserved.
+//
+// This source code is only intended as a supplement to the
+// Microsoft Foundation Classes Reference and related
+// electronic documentation provided with the library.
+// See these sources for detailed information regarding the
+// Microsoft Foundation Classes product.
+
+#include "stdafx.h"
+
+#define new DEBUG_NEW
+
+/////////////////////////////////////////////////////////////////////////////
+// DLL Load Helper
+
+inline HMODULE AfxLoadSystemLibraryUsingFullPath(const WCHAR *pszLibrary)
+{
+	WCHAR wszLoadPath[MAX_PATH+1];
+	if (::GetSystemDirectoryW(wszLoadPath, _countof(wszLoadPath)) == 0)
+	{
+		return NULL;
+	}
+
+	if (wszLoadPath[wcslen(wszLoadPath)-1] != L'\\')
+	{
+		if (wcscat_s(wszLoadPath, _countof(wszLoadPath), L"\\") != 0)
+		{
+			return NULL;
+		}
+	}
+
+	if (wcscat_s(wszLoadPath, _countof(wszLoadPath), pszLibrary) != 0)
+	{
+		return NULL;
+	}
+
+	return(::AfxCtxLoadLibraryW(wszLoadPath));
+}
+
+/////////////////////////////////////////////////////////////////////////////
+// CThemeHelper
+void* CThemeHelper::GetProc(LPCSTR szProc, void* pfnFail)
+{
+	static HMODULE hThemeDll = AfxLoadSystemLibraryUsingFullPath(L"UxTheme.dll");
+
+	void* pRet = pfnFail;
+	if (hThemeDll != NULL)
+	{
+		void *pFunc = GetProcAddress(hThemeDll, szProc);
+		if(pFunc!=NULL)
+		{
+			pRet=pFunc;
+		}
+	}
+	return pRet;
+}
+
+BOOL CThemeHelper::IsAppThemedFail()
+{
+	return FALSE;
+}
+
+
+HTHEME CThemeHelper::OpenThemeDataFail(HWND , LPCWSTR )
+{
+	return NULL;
+}
+
+
+HRESULT CThemeHelper::CloseThemeDataFail(HTHEME)
+{
+	return E_FAIL;
+}
+
+
+HRESULT CThemeHelper::DrawThemeBackgroundFail(HTHEME, HDC, int, int, const RECT *, const RECT *)
+{
+	return E_FAIL;
+}
+
+
+HRESULT CThemeHelper::GetThemePartSizeFail(HTHEME, HDC, int, int, RECT *, enum THEMESIZE, SIZE *)
+{
+	return E_FAIL;
+}
+
+
+BOOL CThemeHelper::IsThemeBackgroundPartiallyTransparentFail(HTHEME , int , int )
+{
+	return FALSE;
+}
+
+HRESULT CThemeHelper::DrawThemeParentBackgroundFail(HWND , HDC , RECT *)
+{
+	return E_FAIL;
+}
+
+BOOL CThemeHelper::IsThemePartDefinedFail(HTHEME , int , int )
+{
+	return FALSE;
+}
+
+BOOL CThemeHelper::IsAppThemed()
+{
+	static PFNISAPPTHEMED pfnIsAppThemed = (PFNISAPPTHEMED)GetProc("IsAppThemed", IsAppThemedFail);
+	return (*pfnIsAppThemed)();
+}
+
+HTHEME CThemeHelper::OpenThemeData(HWND hwnd, LPCWSTR pszClassList)
+{
+	static PFNOPENTHEMEDATA pfnOpenThemeData = (PFNOPENTHEMEDATA)GetProc("OpenThemeData", OpenThemeDataFail);
+	return (*pfnOpenThemeData)(hwnd, pszClassList);
+}
+
+HRESULT CThemeHelper::CloseThemeData(HTHEME hTheme)
+{
+	static PFNCLOSETHEMEDATA pfnCloseThemeData = (PFNCLOSETHEMEDATA)GetProc("CloseThemeData", CloseThemeDataFail);
+	return (*pfnCloseThemeData)(hTheme);
+}
+
+HRESULT CThemeHelper::DrawThemeBackground(HTHEME hTheme, HDC hdc, 
+	int nPartId, int nStateId, const RECT *pRect, const RECT *pClipRect)
+{
+	static PFNDRAWTHEMEBACKGROUND pfnDrawThemeBackground = 
+		(PFNDRAWTHEMEBACKGROUND)GetProc("DrawThemeBackground", DrawThemeBackgroundFail);
+	return (*pfnDrawThemeBackground)(hTheme, hdc, nPartId, nStateId, pRect, pClipRect);
+}
+
+HRESULT CThemeHelper::GetThemePartSize(HTHEME hTheme, HDC hdc, 
+	int nPartId, int nStateId, RECT * pRect, enum THEMESIZE eSize, SIZE *psz)
+{
+	static PFNGETTHEMEPARTSIZE pfnGetThemePartSize = 
+		(PFNGETTHEMEPARTSIZE)GetProc("GetThemePartSize", GetThemePartSizeFail);
+	return (*pfnGetThemePartSize)(hTheme, hdc, nPartId, nStateId, pRect, eSize, psz);
+}
+
+BOOL CThemeHelper::IsThemeBackgroundPartiallyTransparent(HTHEME hTheme, int nPartId, int nStateId)
+{
+	static PFNISTHEMEBACKGROUNDPARTIALLYTRANSPARENT pfnIsThemeBackgroundPartiallyTransparent =
+		(PFNISTHEMEBACKGROUNDPARTIALLYTRANSPARENT)GetProc("IsThemeBackgroundPartiallyTransparent", 
+															IsThemeBackgroundPartiallyTransparentFail);
+	return (*pfnIsThemeBackgroundPartiallyTransparent)(hTheme, nPartId, nStateId);
+}
+
+HRESULT CThemeHelper::DrawThemeParentBackground(HWND hwnd, HDC hdc, RECT *prc)
+{
+	static PFNDRAWTHEMEPARENTBACKGROUND pfnDrawThemeParentBackground =
+		(PFNDRAWTHEMEPARENTBACKGROUND)GetProc("DrawThemeParentBackground", DrawThemeParentBackgroundFail);
+	return (*pfnDrawThemeParentBackground)(hwnd, hdc, prc);
+}
+
+BOOL CThemeHelper::IsThemePartDefined(HTHEME hTheme, int nPartId, int nStateId)
+{
+	static PFNISTHEMEPARTDEFINED pfnIsThemePartDefined =
+		(PFNISTHEMEPARTDEFINED)GetProc("IsThemePartDefined", IsThemePartDefinedFail);
+	return (*pfnIsThemePartDefined)(hTheme, nPartId, nStateId);
+}

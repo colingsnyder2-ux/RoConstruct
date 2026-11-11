@@ -1,17 +1,162 @@
 // from server: 100% by auto
-// roc 2009-06 00457ec0  unit: CRobloxView  size: 19 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-06 00457ec0
-//
-// 00457ec0  56                   push esi
-// 00457ec1  8bf1                 mov esi, ecx
-// 00457ec3  e840112c00           call 0x719008
-// 00457ec8  8bce                 mov ecx, esi
-// 00457eca  e811ffffff           call 0x457de0
-// 00457ecf  5e                   pop esi
-// 00457ed0  c20c00               ret 0xc
-// library mfc-9.0/atlmfc\src\mfc\afxcolorpropertysheet.cpp (function ?OnSize@CMFCColorPropertySheet@@IAEXIHH@Z)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
 // roc-lib: mfc-9.0 atlmfc/src/mfc/afxcolorpropertysheet.cpp
+
+// Candidate translation unit (score above; library headers required).
+// This is a part of the Microsoft Foundation Classes C++ library.
+// Copyright (C) Microsoft Corporation
+// All rights reserved.
+//
+// This source code is only intended as a supplement to the
+// Microsoft Foundation Classes Reference and related
+// electronic documentation provided with the library.
+// See these sources for detailed information regarding the
+// Microsoft Foundation Classes product.
+
+#include "stdafx.h"
+#include "afxcontrolbarutil.h"
+#include "afxcolorpropertysheet.h"
+
+#ifdef _DEBUG
+#define new DEBUG_NEW
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+// CMFCColorPropertySheet
+
+IMPLEMENT_DYNAMIC(CMFCColorPropertySheet, CPropertySheet)
+
+CMFCColorPropertySheet::CMFCColorPropertySheet(UINT nIDCaption, CWnd* pParentWnd, UINT iSelectPage)
+	: CPropertySheet(nIDCaption, pParentWnd, iSelectPage)
+{
+	m_hAccel = NULL;
+}
+
+CMFCColorPropertySheet::CMFCColorPropertySheet(LPCTSTR pszCaption, CWnd* pParentWnd, UINT iSelectPage)
+	: CPropertySheet(pszCaption, pParentWnd, iSelectPage)
+{
+	m_hAccel = NULL;
+}
+
+CMFCColorPropertySheet::~CMFCColorPropertySheet()
+{
+}
+
+BEGIN_MESSAGE_MAP(CMFCColorPropertySheet, CPropertySheet)
+	//{{AFX_MSG_MAP(CMFCColorPropertySheet)
+	ON_WM_SIZE()
+	//}}AFX_MSG_MAP
+END_MESSAGE_MAP()
+
+/////////////////////////////////////////////////////////////////////////////
+// CMFCColorPropertySheet message handlers
+
+void CMFCColorPropertySheet::PostNcDestroy()
+{
+	// Call the base class routine first
+	CPropertySheet::PostNcDestroy();
+
+	if (m_bModeless)
+	{
+		delete this;
+	}
+}
+
+BOOL CMFCColorPropertySheet::OnInitDialog()
+{
+	ASSERT_VALID(this);
+
+	// Call the base class routine
+	BOOL bRtnValue = CPropertySheet::OnInitDialog();
+
+	ModifyStyleEx(0, WS_EX_CONTROLPARENT);
+
+	ResizeControl();
+	return bRtnValue;
+}
+
+BOOL CMFCColorPropertySheet::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
+{
+	NMHDR* pNMHDR = (NMHDR*) lParam;
+	ENSURE(pNMHDR != NULL);
+
+	if (pNMHDR->code == TCN_SELCHANGE)
+	{
+		ResizeControl();
+	}
+
+	return CPropertySheet::OnNotify(wParam, lParam, pResult);
+}
+
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+void CMFCColorPropertySheet::LoadAcceleratorTable(UINT nAccelTableID /*=0*/)
+{
+	if (nAccelTableID)
+	{
+		m_hAccel = ::LoadAccelerators(AfxGetInstanceHandle(), MAKEINTRESOURCE(nAccelTableID));
+		ASSERT(m_hAccel);
+	}
+}
+
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+BOOL CMFCColorPropertySheet::PreTranslateMessage(MSG* pMsg)
+{
+	//TRACE("[%s - %d] - CMFCColorPropertySheet::PreTranslateMessage().....\n", __FILE__,__LINE__);
+	////////
+	// Check to see if the property sheet has an accelerator table
+	// attached to it. If there is one call it. Return TRUE if it has
+	// been processed. Otherwise, past it to the base class function.
+	////////
+	if (m_hAccel && ::TranslateAccelerator(m_hWnd, m_hAccel, pMsg))
+	{
+		return TRUE;
+	}
+
+	return CPropertySheet::PreTranslateMessage(pMsg);
+}
+
+void CMFCColorPropertySheet::OnSize(UINT nType, int cx, int cy)
+{
+	CPropertySheet::OnSize(nType, cx, cy);
+	ResizeControl();
+}
+
+void CMFCColorPropertySheet::ResizeControl()
+{
+	CTabCtrl* pTabCtrl = GetTabControl();
+	if (pTabCtrl == NULL)
+	{
+		return;
+	}
+
+	CRect rectClient;
+	GetClientRect(rectClient);
+
+	pTabCtrl->SetWindowPos(NULL, 0, 0, rectClient.Width(), rectClient.Height(), SWP_NOZORDER | SWP_NOACTIVATE);
+
+	int nPageCount = CPropertySheet::GetPageCount();
+
+	int nXBorder = ::GetSystemMetrics(SM_CXEDGE);
+	int nYBorder = ::GetSystemMetrics(SM_CYEDGE);
+
+	for (int nPage = 0; nPage <= nPageCount - 1; nPage++)
+	{
+		CPropertyPage* pPage = GetPage(nPage);
+
+		if ((pPage != NULL) &&(pPage->m_hWnd != NULL))
+		{
+			CRect rcTabCtrl;
+			pPage->GetWindowRect(&rcTabCtrl);
+			pTabCtrl->ScreenToClient(rcTabCtrl);
+
+			pPage->SetWindowPos(NULL, rcTabCtrl.left, rcTabCtrl.top, rectClient.Width() -(nXBorder * 3),
+				rectClient.Height() -(rcTabCtrl.top + nYBorder), SWP_NOZORDER | SWP_NOACTIVATE);
+		}
+	}
+}
+
+

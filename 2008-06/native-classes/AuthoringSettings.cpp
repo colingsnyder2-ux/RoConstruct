@@ -55,3 +55,9 @@ template AuthoringSettings& RBX::GlobalSettingsItem<AuthoringSettings, sAuthorin
 
 // 0040d140.
 AuthoringSettings::AuthoringSettings() : showDepricatedObjects(false), showPreliminaryObjects(true) {}
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<RBX::GlobalSettings>;
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<::sAuthoringSettings>();

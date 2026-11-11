@@ -27,3 +27,10 @@ void CRobloxTreeCtrlNode::removeChildren()
     for (NodeVector::iterator it = values.begin(); it != values.end(); ++it)
         tree->DeleteItem((*it)->item);
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Container_base_aux_alloc_real<std::allocator<CRobloxTreeCtrlNode *> >;
+template class std::_Tree<std::_Tset_traits<CRobloxTreeCtrlNode *,std::less<CRobloxTreeCtrlNode *>,std::allocator<CRobloxTreeCtrlNode *>,0> >;
+template class std::_Vector_const_iterator<CRobloxTreeCtrlNode *,std::allocator<CRobloxTreeCtrlNode *> >;
+template class std::_Vector_iterator<CRobloxTreeCtrlNode *,std::allocator<CRobloxTreeCtrlNode *> >;
+template class std::vector<CRobloxTreeCtrlNode *,std::allocator<CRobloxTreeCtrlNode *> >;

@@ -10,3 +10,6 @@ void collectDragParts(const std::vector<Instance*>& instances, std::vector<boost
         PartInstance::findParts(instances[i], parts);
 }
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::vector<RBX::Instance *,std::allocator<RBX::Instance *> >;

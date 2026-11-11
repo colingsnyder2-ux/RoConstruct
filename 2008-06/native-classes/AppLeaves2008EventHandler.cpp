@@ -69,3 +69,6 @@ STDMETHODIMP EventHandler::Invoke(DISPID, REFIID, LCID, WORD, DISPPARAMS*, VARIA
         return E_FAIL;
     }
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::function0<bool,std::allocator<boost::function_base> >;

@@ -146,3 +146,6 @@ template bool TToolVerb<SlingshotTool, RunStateVerb>::isChecked() const;
 template bool TToolVerb<RocketTool, RunStateVerb>::isChecked() const;
 template bool TToolVerb<LaserTool, RunStateVerb>::isChecked() const;
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::auto_ptr<RBX::MouseCommand>;

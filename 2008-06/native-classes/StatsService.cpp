@@ -178,3 +178,11 @@ namespace RBX
 		}
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::_bi::list1<boost::_bi::value<unsigned int const *> >;
+template class boost::_bi::value<unsigned int const *>;
+template class boost::shared_ptr<RBX::Stats::TypedMemItem>;
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::Stats::sStats>();

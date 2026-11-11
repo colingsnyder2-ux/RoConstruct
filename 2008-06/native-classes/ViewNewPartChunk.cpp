@@ -86,3 +86,8 @@ NATIVE_VIEWNEW_MANAGE(NativeViewNewTextureInstanceBind)        // 004e72e0
 NATIVE_VIEWNEW_MANAGE(NativeViewNewTextureDescriptorBind)      // 004e7340
 NATIVE_VIEWNEW_INVOKE(NativeViewNewDecalInstanceBind, NativeViewNewInstancePtr)       // 004e80a0
 NATIVE_VIEWNEW_INVOKE(NativeViewNewDecalDescriptorBind, NativeViewNewDescriptorPtr)   // 004e8140
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::_bi::value<RBX::ViewNew::Decal *>;
+template class boost::_mfi::mf1<void,RBX::ViewNew::Decal,RBX::Reflection::PropertyDescriptor const *>;
+template class boost::_mfi::mf1<void,RBX::ViewNew::Decal,boost::shared_ptr<RBX::Instance> >;

@@ -23,3 +23,8 @@ void setCurrentDocument(bool makeCurrent, CRobloxDoc* document) {
         for (std::set<ActiveDocView*>::iterator it = activeDocViews.begin(); it != activeDocViews.end(); ++it)
             (*it)->update(activeDocDataModel, oldDataModel);
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Container_base_aux_alloc_real<std::allocator<ActiveDocView *> >;
+template class std::allocator<ActiveDocView *>;
+template class std::allocator<std::_Tree_nod<std::_Tset_traits<ActiveDocView *,std::less<ActiveDocView *>,std::allocator<ActiveDocView *>,0> >::_Node *>;

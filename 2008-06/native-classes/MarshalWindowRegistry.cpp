@@ -32,3 +32,6 @@ void __cdecl releaseMarshalWindow(CMarshalWindow* window)
     }
 }
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class ATL::CWindowImplBaseT<ATL::CWindow,ATL::CWinTraits<1442840576,0> >;

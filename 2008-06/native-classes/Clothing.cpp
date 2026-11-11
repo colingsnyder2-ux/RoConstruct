@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS
 // Inactive native recovery of RBX::CharacterAppearance / Clothing / Shirt / Pants / ShirtGraphic / Skin.
 // Layout and evidence: native-headers/v8datamodel/Clothing.h. Verified by tests/record_native_clothing.py.
 #include "v8datamodel/Clothing.h"
@@ -168,3 +169,8 @@ namespace RBX
 		if (PartInstance* part = humanoid->getRightArm()) part->setColor(skinColor);
 	}
 }
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sShirtGraphic>();
+template void RBX::Name::callDoDeclare<RBX::sClothing>();
+template void RBX::Name::callDoDeclare<RBX::sSkin>();

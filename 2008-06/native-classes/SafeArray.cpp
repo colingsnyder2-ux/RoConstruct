@@ -11,3 +11,6 @@ SAFEARRAY* __cdecl makeSafeArray(RBX::Reflection::ValueCollection* values) {
         { RBX::Reflection::Value* value=&(*values)[i]; VARIANT* dest=&array[(LONG)i]; valueToVariant(value,dest); }
     return array.Detach();
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class ATL::CComSafeArray<tagVARIANT,12>;

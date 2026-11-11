@@ -11,3 +11,6 @@ void DataModel::Lock::doLock(const DataModel* dataModel) {
 }
 DataModel::Lock::~Lock() { delete lock; }
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<boost::recursive_mutex>;

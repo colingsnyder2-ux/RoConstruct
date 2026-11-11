@@ -17,3 +17,6 @@ bool Reflection::askAddChild(const Instance* child) const
     return dynamic_cast<const RBX::Reflection::Metadata::Classes*>(child) != NULL;
 }
 }}
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::Metadata::sReflection>();

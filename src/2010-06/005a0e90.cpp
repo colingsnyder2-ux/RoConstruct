@@ -1,50 +1,127 @@
 // from server: 100% by auto
-// roc 2010-06 005a0e90  unit: RBX::VStandardOut::?$sp_counted_impl_p  size: 96 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 005a0e90
-//
-// 005a0e90  56                   push esi
-// 005a0e91  8bf1                 mov esi, ecx
-// 005a0e93  8b0e                 mov ecx, dword ptr [esi]
-// 005a0e95  8379f400             cmp dword ptr [ecx - 0xc], 0
-// 005a0e99  8d41f0               lea eax, [ecx - 0x10]
-// 005a0e9c  57                   push edi
-// 005a0e9d  8b38                 mov edi, dword ptr [eax]
-// 005a0e9f  744c                 je 0x5a0eed
-// 005a0ea1  83780c00             cmp dword ptr [eax + 0xc], 0
-// 005a0ea5  8d500c               lea edx, [eax + 0xc]
-// 005a0ea8  7d1f                 jge 0x5a0ec9
-// 005a0eaa  8379f800             cmp dword ptr [ecx - 8], 0
-// 005a0eae  7d0a                 jge 0x5a0eba
-// 005a0eb0  6857000780           push 0x80070057
-// 005a0eb5  e8161de6ff           call 0x402bd0
-// 005a0eba  c741f400000000       mov dword ptr [ecx - 0xc], 0
-// 005a0ec1  8b06                 mov eax, dword ptr [esi]
-// 005a0ec3  5f                   pop edi
-// 005a0ec4  c60000               mov byte ptr [eax], 0
-// 005a0ec7  5e                   pop esi
-// 005a0ec8  c3                   ret 
-// 005a0ec9  83c9ff               or ecx, 0xffffffff
-// 005a0ecc  f00fc10a             lock xadd dword ptr [edx], ecx
-// 005a0ed0  49                   dec ecx
-// 005a0ed1  85c9                 test ecx, ecx
-// 005a0ed3  7f0a                 jg 0x5a0edf
-// 005a0ed5  8b08                 mov ecx, dword ptr [eax]
-// 005a0ed7  8b11                 mov edx, dword ptr [ecx]
-// 005a0ed9  50                   push eax
-// 005a0eda  8b4204               mov eax, dword ptr [edx + 4]
-// 005a0edd  ffd0                 call eax
-// 005a0edf  8b17                 mov edx, dword ptr [edi]
-// 005a0ee1  8b420c               mov eax, dword ptr [edx + 0xc]
-// 005a0ee4  8bcf                 mov ecx, edi
-// 005a0ee6  ffd0                 call eax
-// 005a0ee8  83c010               add eax, 0x10
-// 005a0eeb  8906                 mov dword ptr [esi], eax
-// 005a0eed  5f                   pop edi
-// 005a0eee  5e                   pop esi
-// 005a0eef  c3                   ret 
-// library mfc-9.0/atlmfc\src\mfc\afxacceleratorkey.cpp (function ?Empty@?$CSimpleStringT@D$0A@@ATL@@QAEXXZ)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
 // roc-lib: mfc-9.0 atlmfc/src/mfc/afxacceleratorkey.cpp
+
+// Candidate translation unit (score above; library headers required).
+// This is a part of the Microsoft Foundation Classes C++ library.
+// Copyright (C) Microsoft Corporation
+// All rights reserved.
+//
+// This source code is only intended as a supplement to the
+// Microsoft Foundation Classes Reference and related
+// electronic documentation provided with the library.
+// See these sources for detailed information regarding the
+// Microsoft Foundation Classes product.
+
+#include "stdafx.h"
+#include "afxacceleratorkey.h"
+
+#ifdef _DEBUG
+#define new DEBUG_NEW
+#endif
+
+//////////////////////////////////////////////////////////////////////
+// Construction/Destruction
+//////////////////////////////////////////////////////////////////////
+
+CMFCAcceleratorKey::CMFCAcceleratorKey(LPACCEL lpAccel) : m_lpAccel(lpAccel)
+{
+}
+
+CMFCAcceleratorKey::CMFCAcceleratorKey() : m_lpAccel(NULL)
+{
+}
+
+CMFCAcceleratorKey::~CMFCAcceleratorKey()
+{
+}
+
+void CMFCAcceleratorKey::Format(CString& str) const
+{
+	str.Empty();
+
+	if (m_lpAccel == NULL)
+	{
+		ASSERT(FALSE);
+		return;
+	}
+
+	if (m_lpAccel->fVirt & FCONTROL)
+	{
+		AddVirtKeyStr(str, VK_CONTROL);
+	}
+
+	if (m_lpAccel->fVirt & FSHIFT)
+	{
+		AddVirtKeyStr(str, VK_SHIFT);
+	}
+
+	if (m_lpAccel->fVirt & FALT)
+	{
+		AddVirtKeyStr(str, VK_MENU);
+	}
+
+	if (m_lpAccel->fVirt & FVIRTKEY)
+	{
+		AddVirtKeyStr(str, m_lpAccel->key, TRUE);
+	}
+	else if (m_lpAccel->key != 27) // Don't print esc
+	{
+		str += (char) m_lpAccel->key;
+	}
+}
+
+void CMFCAcceleratorKey::AddVirtKeyStr(CString& str, UINT uiVirtKey, BOOL bLast) const
+{
+	CString strKey;
+
+	if (uiVirtKey == VK_PAUSE)
+	{
+		strKey = _T("Pause");
+	}
+	else
+	{
+#define AFX_BUFFER_LEN 50
+		TCHAR szBuffer [AFX_BUFFER_LEN + 1];
+
+		ZeroMemory(szBuffer, sizeof(szBuffer));
+
+		UINT nScanCode = ::MapVirtualKeyEx(uiVirtKey, 0, ::GetKeyboardLayout(0)) <<16 | 0x1;
+
+		if (uiVirtKey >= VK_PRIOR && uiVirtKey <= VK_HELP)
+		{
+			nScanCode |= 0x01000000;
+		}
+
+		::GetKeyNameText(nScanCode, szBuffer, AFX_BUFFER_LEN);
+
+		strKey = szBuffer;
+	}
+
+	strKey.MakeLower();
+
+	//--------------------------------------
+	// The first letter should be uppercase:
+	//--------------------------------------
+	for (int nCount = 0; nCount < strKey.GetLength(); nCount++)
+	{
+		TCHAR c = strKey[nCount];
+		if (IsCharLower(c))
+		{
+			c = (TCHAR) toupper(c); // Convert single character JY 4-Dec-99
+			strKey.SetAt(nCount, c);
+			break;
+		}
+	}
+
+	str += strKey;
+
+	if (!bLast)
+	{
+		str += '+';
+	}
+}
+
+

@@ -75,3 +75,6 @@ void RBX::RunService::invalidateRunViews() {
         runViewsDoneCondition.notify_all();
     }
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::map<RBX::IRunView *,bool,std::less<RBX::IRunView *>,std::allocator<std::pair<RBX::IRunView * const,bool> > >;

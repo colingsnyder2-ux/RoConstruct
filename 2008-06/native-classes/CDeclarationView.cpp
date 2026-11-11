@@ -162,3 +162,6 @@ void CDeclarationView::showDescriptor(const RBX::Reflection::Descriptor* descrip
     }
     setContent(item, text.c_str(), ownerClass ? ownerClass->name.c_str() : NULL);
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class ATL::CComPtrBase<IHTMLStyle>;

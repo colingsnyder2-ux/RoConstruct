@@ -24,3 +24,13 @@ void PhysicsService::onServiceProvider(const ServiceProvider* oldProvider, const
     }
 }
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class RBX::Notifier<RBX::World,RBX::AssemblyPhysicsOff>;
+template class RBX::Notifier<RBX::World,RBX::AssemblyPhysicsOn>;
+template class std::_Vector_const_iterator<RBX::Listener<RBX::World,RBX::AssemblyPhysicsOff> *,std::allocator<RBX::Listener<RBX::World,RBX::AssemblyPhysicsOff> *> >;
+template class std::_Vector_const_iterator<RBX::Listener<RBX::World,RBX::AssemblyPhysicsOn> *,std::allocator<RBX::Listener<RBX::World,RBX::AssemblyPhysicsOn> *> >;
+template class std::_Vector_iterator<RBX::Listener<RBX::World,RBX::AssemblyPhysicsOff> *,std::allocator<RBX::Listener<RBX::World,RBX::AssemblyPhysicsOff> *> >;
+template class std::_Vector_iterator<RBX::Listener<RBX::World,RBX::AssemblyPhysicsOn> *,std::allocator<RBX::Listener<RBX::World,RBX::AssemblyPhysicsOn> *> >;
+template class std::vector<RBX::Listener<RBX::World,RBX::AssemblyPhysicsOff> *,std::allocator<RBX::Listener<RBX::World,RBX::AssemblyPhysicsOff> *> >;
+template class std::vector<RBX::Listener<RBX::World,RBX::AssemblyPhysicsOn> *,std::allocator<RBX::Listener<RBX::World,RBX::AssemblyPhysicsOn> *> >;

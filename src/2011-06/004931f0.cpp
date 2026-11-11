@@ -1,52 +1,441 @@
 // from server: 100% by auto
-// roc 2011-06 004931f0  unit: CSettingsDialog  size: 108 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 004931f0
-//
-// 004931f0  56                   push esi
-// 004931f1  8b74240c             mov esi, dword ptr [esp + 0xc]
-// 004931f5  57                   push edi
-// 004931f6  8b7c2414             mov edi, dword ptr [esp + 0x14]
-// 004931fa  8b07                 mov eax, dword ptr [edi]
-// 004931fc  8d542414             lea edx, [esp + 0x14]
-// 00493200  52                   push edx
-// 00493201  8b542410             mov edx, dword ptr [esp + 0x10]
-// 00493205  56                   push esi
-// 00493206  8944241c             mov dword ptr [esp + 0x1c], eax
-// 0049320a  8d442418             lea eax, [esp + 0x18]
-// 0049320e  50                   push eax
-// 0049320f  6a00                 push 0
-// 00493211  c70700000000         mov dword ptr [edi], 0
-// 00493217  8b01                 mov eax, dword ptr [ecx]
-// 00493219  52                   push edx
-// 0049321a  50                   push eax
-// 0049321b  ff153400a400         call dword ptr [0xa40034]
-// 00493221  85c0                 test eax, eax
-// 00493223  7532                 jne 0x493257
-// 00493225  8b442410             mov eax, dword ptr [esp + 0x10]
-// 00493229  83f801               cmp eax, 1
-// 0049322c  7405                 je 0x493233
-// 0049322e  83f802               cmp eax, 2
-// 00493231  7513                 jne 0x493246
-// 00493233  8b442414             mov eax, dword ptr [esp + 0x14]
-// 00493237  85f6                 test esi, esi
-// 00493239  7418                 je 0x493253
-// 0049323b  85c0                 test eax, eax
-// 0049323d  7411                 je 0x493250
-// 0049323f  807c30ff00           cmp byte ptr [eax + esi - 1], 0
-// 00493244  740d                 je 0x493253
-// 00493246  5f                   pop edi
-// 00493247  b80d000000           mov eax, 0xd
-// 0049324c  5e                   pop esi
-// 0049324d  c20c00               ret 0xc
-// 00493250  c60600               mov byte ptr [esi], 0
-// 00493253  8907                 mov dword ptr [edi], eax
-// 00493255  33c0                 xor eax, eax
-// 00493257  5f                   pop edi
-// 00493258  5e                   pop esi
-// 00493259  c20c00               ret 0xc
-// library mfc-9.0/atlmfc\src\mfc\afxsettingsstore.cpp (function ?QueryStringValue@CRegKey@ATL@@QAEJPBDPADPAK@Z)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
 // roc-lib: mfc-9.0 atlmfc/src/mfc/afxsettingsstore.cpp
+
+// Candidate translation unit (score above; library headers required).
+// This is a part of the Microsoft Foundation Classes C++ library.
+// Copyright (C) Microsoft Corporation
+// All rights reserved.
+//
+// This source code is only intended as a supplement to the
+// Microsoft Foundation Classes Reference and related
+// electronic documentation provided with the library.
+// See these sources for detailed information regarding the
+// Microsoft Foundation Classes product.
+
+#include "stdafx.h"
+#include "afxsettingsstore.h"
+
+IMPLEMENT_DYNCREATE(CSettingsStore, CObject)
+
+static CString __stdcall PreparePath(LPCTSTR lpszPath)
+{
+	ENSURE(lpszPath != NULL);
+
+	CString strPath = lpszPath;
+
+	int iPathLen = strPath.GetLength();
+	if (iPathLen > 0 && strPath [iPathLen - 1] == _T('\\'))
+	{
+		strPath = strPath.Left(iPathLen - 1);
+	}
+
+	return strPath;
+}
+
+CSettingsStore::CSettingsStore() :
+	m_bReadOnly(FALSE), m_bAdmin(FALSE), m_dwUserData(0)
+{
+}
+
+CSettingsStore::CSettingsStore(BOOL bAdmin, BOOL bReadOnly) :
+	m_bReadOnly(bReadOnly), m_bAdmin(bAdmin), m_dwUserData(0)
+{
+	m_reg.m_hKey = bAdmin ? HKEY_LOCAL_MACHINE : HKEY_CURRENT_USER;
+}
+
+CSettingsStore::~CSettingsStore()
+{
+	Close();
+}
+
+BOOL CSettingsStore::CreateKey(LPCTSTR lpszPath)
+{
+	if (m_bReadOnly)
+	{
+		ASSERT(FALSE);
+		return FALSE;
+	}
+
+	return m_reg.Create(m_reg.m_hKey, PreparePath(lpszPath)) == ERROR_SUCCESS;
+}
+
+BOOL CSettingsStore::Open(LPCTSTR lpszPath)
+{
+	return m_reg.Open(m_reg.m_hKey, PreparePath(lpszPath),
+		m_bReadOnly ?(KEY_QUERY_VALUE | KEY_ENUMERATE_SUB_KEYS | KEY_NOTIFY) : KEY_ALL_ACCESS) == ERROR_SUCCESS;
+}
+
+void CSettingsStore::Close()
+{
+	m_reg.Close();
+}
+
+BOOL CSettingsStore::Write(LPCTSTR lpszValueName, int nValue)
+{
+	return Write(lpszValueName, (DWORD) nValue);
+}
+
+BOOL CSettingsStore::Write(LPCTSTR lpszValueName, DWORD dwValue)
+{
+	if (m_bReadOnly)
+	{
+		ASSERT(FALSE);
+		return FALSE;
+	}
+
+	return m_reg.SetDWORDValue(lpszValueName, dwValue) == ERROR_SUCCESS;
+}
+
+BOOL CSettingsStore::Write(LPCTSTR lpszValueName, LPCTSTR lpszData)
+{
+	if (m_bReadOnly)
+	{
+		ASSERT(FALSE);
+		return FALSE;
+	}
+
+	return m_reg.SetStringValue(lpszValueName, lpszData) == ERROR_SUCCESS;
+}
+
+BOOL CSettingsStore::Write(LPCTSTR lpszValueName, CObject& obj)
+{
+	if (m_bReadOnly)
+	{
+		ASSERT(FALSE);
+		return FALSE;
+	}
+
+	BOOL bRes = FALSE;
+
+	try
+	{
+		CMemFile file;
+
+		{
+			CArchive ar(&file, CArchive::store);
+			obj.Serialize(ar);
+			ar.Flush();
+		}
+
+		DWORD dwDataSize = (DWORD) file.GetLength();
+		LPBYTE lpbData = file.Detach();
+
+		if (lpbData == NULL)
+		{
+			return FALSE;
+		}
+
+		bRes = Write(lpszValueName, lpbData, (UINT) dwDataSize);
+		free(lpbData);
+	}
+	catch(CMemoryException* pEx)
+	{
+		pEx->Delete();
+		TRACE(_T("Memory exception in CSettingsStore::Write()!\n"));
+	}
+
+	return bRes;
+}
+
+BOOL CSettingsStore::Write(LPCTSTR lpszValueName, CObject* pObj)
+{
+	ASSERT_VALID(pObj);
+	return Write(lpszValueName, *pObj);
+}
+
+BOOL CSettingsStore::Write(LPCTSTR lpszValueName, const CRect& rect)
+{
+	if (m_bReadOnly)
+	{
+		ASSERT(FALSE);
+		return FALSE;
+	}
+
+	BOOL bRes = FALSE;
+	try
+	{
+		CMemFile file;
+
+		{
+			CArchive ar(&file, CArchive::store);
+			ar << rect;
+			ar.Flush();
+		}
+
+		DWORD dwDataSize = (DWORD) file.GetLength();
+		LPBYTE lpbData = file.Detach();
+
+		if (lpbData == NULL)
+		{
+			return FALSE;
+		}
+
+		bRes = Write(lpszValueName, lpbData, (UINT) dwDataSize);
+		free(lpbData);
+	}
+	catch(CMemoryException* pEx)
+	{
+		pEx->Delete();
+		TRACE(_T("Memory exception in CSettingsStore::Write()!\n"));
+		return FALSE;
+	}
+
+	return bRes;
+}
+
+BOOL CSettingsStore::Write(LPCTSTR lpszValueName, LPBYTE pData, UINT nBytes)
+{
+	if (m_bReadOnly)
+	{
+		ASSERT(FALSE);
+		return FALSE;
+	}
+
+	return m_reg.SetBinaryValue(lpszValueName, pData, (ULONG) nBytes) == ERROR_SUCCESS;
+}
+
+BOOL CSettingsStore::Read(LPCTSTR lpszValueName, int& nValue)
+{
+	return Read(lpszValueName, (DWORD&)nValue);
+}
+
+BOOL CSettingsStore::Read(LPCTSTR lpszValueName, DWORD& dwValue)
+{
+	return m_reg.QueryDWORDValue(lpszValueName, dwValue) == ERROR_SUCCESS;
+}
+
+BOOL CSettingsStore::Read(LPCTSTR lpszValueName, CString& strValue)
+{
+	ENSURE(lpszValueName != NULL);
+
+	strValue.Empty();
+
+	DWORD dwCount = 0;
+	if (m_reg.QueryStringValue(lpszValueName, NULL, &dwCount) != ERROR_SUCCESS)
+	{
+		return FALSE;
+	}
+
+	if (dwCount == 0)
+	{
+		return TRUE;
+	}
+
+	LPTSTR szValue = new TCHAR [dwCount + 1];
+
+	BOOL bRes = m_reg.QueryStringValue(lpszValueName, szValue, &dwCount) == ERROR_SUCCESS;
+	if (bRes)
+	{
+		strValue = szValue;
+	}
+
+	delete [] szValue;
+	return bRes;
+}
+
+BOOL CSettingsStore::Read(LPCTSTR lpszValueName, CRect& rect)
+{
+	BOOL bSucess = FALSE;
+	BYTE* pData = NULL;
+	UINT uDataSize;
+
+	if (!Read(lpszValueName, &pData, &uDataSize))
+	{
+		ENSURE(pData == NULL);
+		return FALSE;
+	}
+
+	ENSURE(pData != NULL);
+
+	try
+	{
+		CMemFile file(pData, uDataSize);
+		CArchive ar(&file, CArchive::load);
+
+		ar >> rect;
+		bSucess = TRUE;
+	}
+	catch(CMemoryException* pEx)
+	{
+		pEx->Delete();
+		TRACE(_T("Memory exception in CSettingsStore::Read()!\n"));
+	}
+	catch(CArchiveException* pEx)
+	{
+		pEx->Delete();
+		TRACE(_T("CArchiveException exception in CSettingsStore::Read()!\n"));
+	}
+
+	delete [] pData;
+	return bSucess;
+}
+
+BOOL CSettingsStore::Read(LPCTSTR lpszValueName, BYTE** ppData, UINT* pcbData)
+{
+	ENSURE(lpszValueName != NULL);
+	ENSURE(ppData != NULL);
+	ENSURE(pcbData != NULL);
+
+	*ppData = NULL;
+	*pcbData = 0;
+
+	if (m_reg.QueryBinaryValue(lpszValueName, NULL, (ULONG*)pcbData) != ERROR_SUCCESS || *pcbData == 0)
+	{
+		return FALSE;
+	}
+
+	*ppData = new BYTE [*pcbData];
+
+	if (m_reg.QueryBinaryValue(lpszValueName, *ppData, (ULONG*)pcbData) != ERROR_SUCCESS)
+	{
+		delete [] *ppData;
+		*ppData = NULL;
+		return FALSE;
+	}
+
+	return TRUE;
+}
+
+BOOL CSettingsStore::Read(LPCTSTR lpszValueName, CObject& obj)
+{
+	BOOL bSucess = FALSE;
+	BYTE* pData = NULL;
+	UINT uDataSize;
+
+	if (!Read(lpszValueName, &pData, &uDataSize))
+	{
+		ENSURE(pData == NULL);
+		return FALSE;
+	}
+
+	ENSURE(pData != NULL);
+
+	try
+	{
+		CMemFile file(pData, uDataSize);
+		CArchive ar(&file, CArchive::load);
+
+		obj.Serialize(ar);
+		bSucess = TRUE;
+	}
+	catch(CMemoryException* pEx)
+	{
+		pEx->Delete();
+		TRACE(_T("Memory exception in CSettingsStore::Read()!\n"));
+	}
+	catch(CArchiveException* pEx)
+	{
+		pEx->Delete();
+		TRACE(_T("CArchiveException exception in CSettingsStore::Read()!\n"));
+	}
+
+	delete [] pData;
+	return bSucess;
+}
+
+BOOL CSettingsStore::Read(LPCTSTR lpszValueName, CObject*& pObj)
+{
+	BOOL bSucess = FALSE;
+	BYTE* pData = NULL;
+	UINT uDataSize;
+
+	if (!Read(lpszValueName, &pData, &uDataSize))
+	{
+		ENSURE(pData == NULL);
+		return FALSE;
+	}
+
+	ENSURE(pData != NULL);
+
+	try
+	{
+		CMemFile file(pData, uDataSize);
+		CArchive ar(&file, CArchive::load);
+		ar >> pObj;
+
+		bSucess = TRUE;
+	}
+	catch(CMemoryException* pEx)
+	{
+		pEx->Delete();
+		TRACE(_T("Memory exception in CSettingsStore::Read()!\n"));
+	}
+	catch(CArchiveException* pEx)
+	{
+		pEx->Delete();
+		TRACE(_T("CArchiveException exception in CSettingsStore::Read()!\n"));
+	}
+
+	delete [] pData;
+	return bSucess;
+}
+
+BOOL CSettingsStore::DeleteValue(LPCTSTR lpszValue)
+{
+	return m_reg.DeleteValue(lpszValue) == ERROR_SUCCESS;
+}
+
+BOOL CSettingsStore::DeleteKey(LPCTSTR lpszPath, BOOL bAdmin)
+{
+	if (m_bReadOnly)
+	{
+		return FALSE;
+	}
+
+	m_reg.Close();
+	m_reg.m_hKey = bAdmin ? HKEY_LOCAL_MACHINE : HKEY_CURRENT_USER;
+
+	return m_reg.RecurseDeleteKey(PreparePath(lpszPath)) == ERROR_SUCCESS;
+}
+
+//////////////////////////////////////////////////////////////////////////////
+// CSettingsStoreSP - Helper class that manages "safe" CSettingsStore pointer
+
+CRuntimeClass* CSettingsStoreSP::m_pRTIDefault = NULL;
+
+BOOL __stdcall CSettingsStoreSP::SetRuntimeClass(CRuntimeClass* pRTI)
+{
+	if (pRTI != NULL &&
+		!pRTI->IsDerivedFrom(RUNTIME_CLASS(CSettingsStore)))
+	{
+		ASSERT(FALSE);
+		return FALSE;
+	}
+
+	m_pRTIDefault = pRTI;
+	return TRUE;
+}
+
+CSettingsStore& CSettingsStoreSP::Create(BOOL bAdmin, BOOL bReadOnly)
+{
+	if (m_pRegistry != NULL)
+	{
+		ASSERT(FALSE);
+		ASSERT_VALID(m_pRegistry);
+		return *m_pRegistry;
+	}
+
+	if (m_pRTIDefault == NULL)
+	{
+		m_pRegistry = new CSettingsStore;
+	}
+	else
+	{
+		ASSERT(m_pRTIDefault->IsDerivedFrom(RUNTIME_CLASS(CSettingsStore)));
+		m_pRegistry = DYNAMIC_DOWNCAST(CSettingsStore, m_pRTIDefault->CreateObject());
+	}
+
+	ASSERT_VALID(m_pRegistry);
+
+	m_pRegistry->m_bReadOnly = bReadOnly;
+	m_pRegistry->m_bAdmin = bAdmin;
+	m_pRegistry->m_reg.m_hKey = bAdmin ? HKEY_LOCAL_MACHINE : HKEY_CURRENT_USER;
+	m_pRegistry->m_dwUserData = m_dwUserData;
+
+	return *m_pRegistry;
+}
+
+

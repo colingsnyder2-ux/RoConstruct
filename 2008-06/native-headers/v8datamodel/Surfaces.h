@@ -5,6 +5,7 @@
 
 namespace RBX
 {
+	namespace Reflection { class PropertyDescriptor; }
 	class PartInstance;
 
 	class Surfaces : public boost::noncopyable

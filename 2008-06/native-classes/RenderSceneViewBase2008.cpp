@@ -15,3 +15,9 @@ namespace RBX
 	{
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class G3D::ReferenceCountedPointer<G3D::Texture>;
+template class std::auto_ptr<G3D::TextureManager>;
+template class std::auto_ptr<RBX::RenderBase::SceneManager>;
+template class std::auto_ptr<RBX::ViewNew::MaterialFactory>;

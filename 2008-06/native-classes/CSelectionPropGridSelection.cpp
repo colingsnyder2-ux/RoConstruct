@@ -22,3 +22,10 @@ void CSelectionPropGrid::setSelection(RBX::Selection* value)
     dirty = true;
     requestUpdate();
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::_bi::value<CSelectionPropGrid *>;
+template class boost::_mfi::mf1<void,CPropGrid,boost::shared_ptr<RBX::Instance> >;
+template class std::_Vector_const_iterator<RBX::Listener<RBX::Selection,RBX::SelectionChanged> *,std::allocator<RBX::Listener<RBX::Selection,RBX::SelectionChanged> *> >;
+template class std::_Vector_iterator<RBX::Listener<RBX::Selection,RBX::SelectionChanged> *,std::allocator<RBX::Listener<RBX::Selection,RBX::SelectionChanged> *> >;
+template class std::vector<RBX::Listener<RBX::Selection,RBX::SelectionChanged> *,std::allocator<RBX::Listener<RBX::Selection,RBX::SelectionChanged> *> >;

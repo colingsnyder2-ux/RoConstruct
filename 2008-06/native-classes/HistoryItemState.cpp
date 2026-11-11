@@ -40,3 +40,6 @@ void RBX::HistoryItem::capture(const Reflection::Property& property)
     const Reflection::PropertyDescriptor* descriptor = &property.getDescriptor();
     if (descriptor != &Instance::propParent) captureProperty(descriptor);
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::_mfi::mf1<void,RBX::HistoryItem,RBX::Reflection::Property const &>;

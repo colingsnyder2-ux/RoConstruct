@@ -1,55 +1,753 @@
 // from server: 100% by auto
-// roc 2007-08 006922a0  unit: CXTPStatusBar  size: 121 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 006922a0
-//
-// 006922a0  8b442408             mov eax, dword ptr [esp + 8]
-// 006922a4  83ec0c               sub esp, 0xc
-// 006922a7  56                   push esi
-// 006922a8  57                   push edi
-// 006922a9  8b7c2418             mov edi, dword ptr [esp + 0x18]
-// 006922ad  50                   push eax
-// 006922ae  57                   push edi
-// 006922af  8bf1                 mov esi, ecx
-// 006922b1  e89c660a00           call 0x738952
-// 006922b6  8bce                 mov ecx, esi
-// 006922b8  e855610a00           call 0x738412
-// 006922bd  a900010000           test eax, 0x100
-// 006922c2  744d                 je 0x692311
-// 006922c4  8b4e20               mov ecx, dword ptr [esi + 0x20]
-// 006922c7  51                   push ecx
-// 006922c8  ff15f8eb7700         call dword ptr [0x77ebf8]
-// 006922ce  50                   push eax
-// 006922cf  ff155cec7700         call dword ptr [0x77ec5c]
-// 006922d5  85c0                 test eax, eax
-// 006922d7  7538                 jne 0x692311
-// 006922d9  8b16                 mov edx, dword ptr [esi]
-// 006922db  8b9218010000         mov edx, dword ptr [edx + 0x118]
-// 006922e1  53                   push ebx
-// 006922e2  8d44240c             lea eax, [esp + 0xc]
-// 006922e6  50                   push eax
-// 006922e7  6a00                 push 0
-// 006922e9  6807040000           push 0x407
-// 006922ee  8bce                 mov ecx, esi
-// 006922f0  ffd2                 call edx
-// 006922f2  8b1db8ed7700         mov ebx, dword ptr [0x77edb8]
-// 006922f8  6a05                 push 5
-// 006922fa  ffd3                 call ebx
-// 006922fc  8b7708               mov esi, dword ptr [edi + 8]
-// 006922ff  03c0                 add eax, eax
-// 00692301  2bf0                 sub esi, eax
-// 00692303  2b74240c             sub esi, dword ptr [esp + 0xc]
-// 00692307  6a02                 push 2
-// 00692309  ffd3                 call ebx
-// 0069230b  2bf0                 sub esi, eax
-// 0069230d  897708               mov dword ptr [edi + 8], esi
-// 00692310  5b                   pop ebx
-// 00692311  5f                   pop edi
-// 00692312  5e                   pop esi
-// 00692313  83c40c               add esp, 0xc
-// 00692316  c20800               ret 8
-// library mfc-9.0/atlmfc\src\mfc\barstat.cpp (function ?CalcInsideRect@CStatusBar@@UBEXAAVCRect@@H@Z)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
 // roc-lib: mfc-9.0 atlmfc/src/mfc/barstat.cpp
+
+// Candidate translation unit (score above; library headers required).
+// This is a part of the Microsoft Foundation Classes C++ library.
+// Copyright (C) Microsoft Corporation
+// All rights reserved.
+//
+// This source code is only intended as a supplement to the
+// Microsoft Foundation Classes Reference and related
+// electronic documentation provided with the library.
+// See these sources for detailed information regarding the
+// Microsoft Foundation Classes product.
+
+#include "stdafx.h"
+
+
+
+#define new DEBUG_NEW
+
+/////////////////////////////////////////////////////////////////////////////
+// CStatusBar creation, etc
+
+#define SBPF_UPDATE 0x0001  // pending update of text
+
+struct AFX_STATUSPANE
+{
+	UINT    nID;        // IDC of indicator: 0 => normal text area
+	int     cxText;     // width of string area in pixels
+						//   on both sides there is a 3 pixel gap and
+						//   a one pixel border, making a pane 6 pixels wider
+	UINT    nStyle;     // style flags (SBPS_*)
+	UINT    nFlags;     // state flags (SBPF_*)
+	CString strText;    // text in the pane
+};
+
+inline AFX_STATUSPANE* CStatusBar::_GetPanePtr(int nIndex) const
+{
+	ASSERT((nIndex >= 0 && nIndex < m_nCount) || m_nCount == 0);
+	return ((AFX_STATUSPANE*)m_pData) + nIndex;
+}
+
+
+#define CX_PANE_BORDER 6    // 3 pixels on each side of each pane
+
+CStatusBar::CStatusBar()
+{
+	// setup default border/margin depending on type of system
+	m_cyTopBorder = 2;
+	m_cxLeftBorder = 0;
+	m_cxRightBorder = 0;
+	m_cyBottomBorder = 0;
+
+	// minimum height set with SB_SETMINHEIGHT is cached
+	m_nMinHeight = 0;
+}
+
+CStatusBar::~CStatusBar()
+{
+	AllocElements(0, 0);    // destroys existing elements
+}
+
+BOOL CStatusBar::Create(CWnd* pParentWnd, DWORD dwStyle, UINT nID)
+{
+	return CreateEx(pParentWnd, 0, dwStyle, nID);
+}
+
+BOOL CStatusBar::CreateEx(CWnd* pParentWnd, DWORD dwCtrlStyle, DWORD dwStyle, UINT nID)
+{
+	ASSERT_VALID(pParentWnd);   // must have a parent
+
+	// save the style (some of these style bits are MFC specific)
+	m_dwStyle = (dwStyle & CBRS_ALL);
+
+	// translate MFC style bits to windows style bits
+	dwStyle &= ~CBRS_ALL;
+	dwStyle |= CCS_NOPARENTALIGN|CCS_NOMOVEY|CCS_NODIVIDER|CCS_NORESIZE;
+	if (pParentWnd->GetStyle() & WS_THICKFRAME)
+		dwStyle |= SBARS_SIZEGRIP;
+	dwStyle |= dwCtrlStyle;
+
+	// initialize common controls
+	VERIFY(AfxDeferRegisterClass(AFX_WNDCOMMCTL_BAR_REG));
+
+	// create the HWND
+	CRect rect; rect.SetRectEmpty();
+	return CWnd::Create(STATUSCLASSNAME, NULL, dwStyle, rect, pParentWnd, nID);
+}
+
+BOOL CStatusBar::PreCreateWindow(CREATESTRUCT& cs)
+{
+	// in Win4, status bars do not have a border at all, since it is
+	//  provided by the client area.
+	if ((m_dwStyle & (CBRS_ALIGN_ANY|CBRS_BORDER_ANY)) == CBRS_BOTTOM)
+		m_dwStyle &= ~(CBRS_BORDER_ANY|CBRS_BORDER_3D);
+
+	return CControlBar::PreCreateWindow(cs);
+}
+
+BOOL CStatusBar::SetIndicators(const UINT* lpIDArray, int nIDCount)
+{
+	ASSERT_VALID(this);
+	ASSERT(nIDCount >= 1);  // must be at least one of them
+	ASSERT(lpIDArray == NULL ||
+		AfxIsValidAddress(lpIDArray, sizeof(UINT) * nIDCount, FALSE));
+	ASSERT(::IsWindow(m_hWnd));
+
+	// first allocate array for panes and copy initial data
+	if (!AllocElements(nIDCount, sizeof(AFX_STATUSPANE)))
+		return FALSE;
+	ASSERT(nIDCount == m_nCount);
+
+	// copy initial data from indicator array
+	BOOL bResult = TRUE;
+	if (lpIDArray != NULL)
+	{
+		HFONT hFont = (HFONT)SendMessage(WM_GETFONT);
+		CClientDC dcScreen(NULL);
+		HGDIOBJ hOldFont = NULL;
+		if (hFont != NULL)
+			hOldFont = dcScreen.SelectObject(hFont);
+
+		AFX_STATUSPANE* pSBP = _GetPanePtr(0);
+		for (int i = 0; i < nIDCount; i++)
+		{
+			pSBP->nID = *lpIDArray++;
+			pSBP->nFlags |= SBPF_UPDATE;
+			if (pSBP->nID != 0)
+			{
+				if (!pSBP->strText.LoadString(pSBP->nID))
+				{
+					TRACE(traceAppMsg, 0, "Warning: failed to load indicator string 0x%04X.\n",
+						pSBP->nID);
+					bResult = FALSE;
+					break;
+				}
+				pSBP->cxText = dcScreen.GetTextExtent(pSBP->strText).cx;
+				ASSERT(pSBP->cxText >= 0);
+				if (!SetPaneText(i, pSBP->strText, FALSE))
+				{
+					bResult = FALSE;
+					break;
+				}
+			}
+			else
+			{
+				// no indicator (must access via index)
+				// default to 1/4 the screen width (first pane is stretchy)
+				pSBP->cxText = ::GetSystemMetrics(SM_CXSCREEN)/4;
+				if (i == 0)
+					pSBP->nStyle |= (SBPS_STRETCH | SBPS_NOBORDERS);
+			}
+			++pSBP;
+		}
+		if (hOldFont != NULL)
+			dcScreen.SelectObject(hOldFont);
+	}
+	UpdateAllPanes(TRUE, TRUE);
+
+	return bResult;
+}
+
+BOOL CStatusBar::AllocElements(int nElements, int cbElement)
+{
+	int i;
+
+	// destruct old elements
+	AFX_STATUSPANE* pSBP = _GetPanePtr(0);
+	for (i = 0; i < m_nCount; i++)
+	{
+		pSBP->strText.~CString();
+		++pSBP;
+	}
+
+	// allocate new elements
+	if (!CControlBar::AllocElements(nElements, cbElement))
+		return FALSE;
+
+	// construct new elements
+	pSBP = _GetPanePtr(0);
+	for (i = 0; i < m_nCount; i++)
+	{
+#pragma push_macro("new")
+#undef new
+		new( &pSBP->strText ) CString;
+#pragma pop_macro("new")
+		++pSBP;
+	}
+	return TRUE;
+}
+
+void CStatusBar::CalcInsideRect(CRect& rect, BOOL bHorz) const
+{
+	ASSERT_VALID(this);
+	ASSERT(::IsWindow(m_hWnd));
+	ASSERT(bHorz);  // vertical status bar not supported
+
+	// subtract standard CControlBar borders
+	CControlBar::CalcInsideRect(rect, bHorz);
+
+	// subtract size grip if present
+	if ((GetStyle() & SBARS_SIZEGRIP) && !::IsZoomed(::GetParent(m_hWnd)))
+	{
+		// get border metrics from common control
+		int rgBorders[3];
+		CStatusBar* pBar = (CStatusBar*)this;
+		pBar->DefWindowProc(SB_GETBORDERS, 0, (LPARAM)rgBorders);
+
+		// size grip uses a border + size of scrollbar + cx border
+		rect.right -= rgBorders[0] + ::GetSystemMetrics(SM_CXVSCROLL) +
+			::GetSystemMetrics(SM_CXBORDER) * 2;
+	}
+}
+
+void CStatusBar::UpdateAllPanes(BOOL bUpdateRects, BOOL bUpdateText)
+{
+	ASSERT_VALID(this);
+	ASSERT(::IsWindow(m_hWnd));
+
+	int i;
+
+	// update the status pane locations
+	if (bUpdateRects)
+	{
+
+		// get border information and client work area
+		CRect rect; GetWindowRect(rect);
+		rect.OffsetRect(-rect.left, -rect.top);
+		CalcInsideRect(rect, TRUE);
+		int rgBorders[3];
+		VERIFY((BOOL)DefWindowProc(SB_GETBORDERS, 0, (LPARAM)rgBorders));
+
+		// determine extra space for stretchy pane
+		int cxExtra = rect.Width() + rgBorders[2];
+		int nStretchyCount = 0;
+		AFX_STATUSPANE* pSBP = _GetPanePtr(0);
+		for (i = 0; i < m_nCount; i++)
+		{
+			if (pSBP->nStyle & SBPS_STRETCH)
+				++nStretchyCount;
+			cxExtra -= (pSBP->cxText+CX_PANE_BORDER + rgBorders[2]);
+			++pSBP;
+		}
+
+		// determine right edge of each pane
+		CArray<int> rgRights;
+		rgRights.SetSize(m_nCount);
+		int right = rgBorders[0];
+		pSBP = _GetPanePtr(0);
+		for (i = 0; i < m_nCount; i++)
+		{
+			// determine size of the pane
+			ASSERT(pSBP->cxText >= 0);
+			right += pSBP->cxText+CX_PANE_BORDER;
+			if ((pSBP->nStyle & SBPS_STRETCH) && cxExtra > 0)
+			{
+				ASSERT(nStretchyCount != 0);
+				int cxAddExtra = cxExtra / nStretchyCount;
+				right += cxAddExtra;
+				--nStretchyCount;
+				cxExtra -= cxAddExtra;
+			}
+			rgRights[i] = right;
+
+			// next pane
+			++pSBP;
+			right += rgBorders[2];
+		}
+
+		// set new right edges for all panes
+		DefWindowProc(SB_SETPARTS, m_nCount, 
+			reinterpret_cast<LPARAM>(rgRights.GetData()));
+	}
+
+	// update text in the status panes if specified
+	if (bUpdateText)
+	{
+		AFX_STATUSPANE* pSBP = _GetPanePtr(0);
+		for (i = 0; i < m_nCount; i++)
+		{
+			if (pSBP->nFlags & SBPF_UPDATE)
+				SetPaneText(i, pSBP->strText);
+			++pSBP;
+		}
+	}
+}
+
+
+/////////////////////////////////////////////////////////////////////////////
+// CStatusBar attribute access
+
+int CStatusBar::CommandToIndex(UINT nIDFind) const
+{
+	ASSERT_VALID(this);
+
+	if (m_nCount <= 0)
+		return -1;
+
+	AFX_STATUSPANE* pSBP = _GetPanePtr(0);
+	for (int i = 0; i < m_nCount; i++, pSBP++)
+		if (pSBP->nID == nIDFind)
+			return i;
+
+	return -1;
+}
+
+UINT CStatusBar::GetItemID(int nIndex) const
+{
+	ASSERT_VALID(this);
+	return _GetPanePtr(nIndex)->nID;
+}
+
+void CStatusBar::GetItemRect(int nIndex, LPRECT lpRect) const
+{
+	ASSERT_VALID(this);
+	ASSERT(::IsWindow(m_hWnd));
+
+	CStatusBar* pBar = (CStatusBar*)this;
+	if (!pBar->DefWindowProc(SB_GETRECT, nIndex, (LPARAM)lpRect))
+		::SetRectEmpty(lpRect);
+}
+
+UINT CStatusBar::GetPaneStyle(int nIndex) const
+{
+	return _GetPanePtr(nIndex)->nStyle;
+}
+
+void CStatusBar::SetPaneStyle(int nIndex, UINT nStyle)
+{
+	AFX_STATUSPANE* pSBP = _GetPanePtr(nIndex);
+	if (pSBP->nStyle != nStyle)
+	{
+		// if the pane is changing SBPS_STRETCH, then...
+		if ((pSBP->nStyle ^ nStyle) & SBPS_STRETCH)
+		{
+			// ... we need to re-layout the panes
+			pSBP->nStyle = nStyle;
+			UpdateAllPanes(TRUE, FALSE);
+		}
+
+		// use SetPaneText, since it updates the style and text
+		pSBP->nStyle = nStyle;
+		pSBP->nFlags |= SBPF_UPDATE;
+		SetPaneText(nIndex, pSBP->strText);
+	}
+}
+
+void CStatusBar::GetPaneInfo(int nIndex, UINT& nID, UINT& nStyle,
+	int& cxWidth) const
+{
+	ASSERT_VALID(this);
+
+	AFX_STATUSPANE* pSBP = _GetPanePtr(nIndex);
+	nID = pSBP->nID;
+	nStyle = pSBP->nStyle;
+	cxWidth = pSBP->cxText;
+}
+
+void CStatusBar::SetPaneInfo(int nIndex, UINT nID, UINT nStyle, int cxWidth)
+{
+	ASSERT_VALID(this);
+
+	BOOL bChanged = FALSE;
+	AFX_STATUSPANE* pSBP = _GetPanePtr(nIndex);
+	pSBP->nID = nID;
+	if (pSBP->nStyle != nStyle)
+	{
+		if ((pSBP->nStyle ^ nStyle) & SBPS_STRETCH)
+			bChanged = TRUE;
+		else
+		{
+			pSBP->nStyle = nStyle;
+			pSBP->nFlags |= SBPF_UPDATE;
+			SetPaneText(nIndex, pSBP->strText);
+		}
+		pSBP->nStyle = nStyle;
+	}
+	if (cxWidth != pSBP->cxText)
+	{
+		// change width of one pane -> invalidate the entire status bar
+		pSBP->cxText = cxWidth;
+		bChanged = TRUE;
+	}
+	if (bChanged)
+		UpdateAllPanes(TRUE, FALSE);
+}
+
+void CStatusBar::GetPaneText(int nIndex, CString& s) const
+{
+	ASSERT_VALID(this);
+
+	AFX_STATUSPANE* pSBP = _GetPanePtr(nIndex);
+	s = pSBP->strText;
+}
+
+CString CStatusBar::GetPaneText(int nIndex) const
+{
+	ASSERT_VALID(this);
+
+	AFX_STATUSPANE* pSBP = _GetPanePtr(nIndex);
+	return pSBP->strText;
+}
+
+BOOL CStatusBar::SetPaneText(int nIndex, LPCTSTR lpszNewText, BOOL bUpdate)
+{
+	ASSERT_VALID(this);
+	ASSERT(::IsWindow(m_hWnd));
+
+	AFX_STATUSPANE* pSBP = _GetPanePtr(nIndex);
+
+	if (!(pSBP->nFlags & SBPF_UPDATE) &&
+		((lpszNewText == NULL && pSBP->strText.IsEmpty()) ||
+		 (lpszNewText != NULL && pSBP->strText.Compare(lpszNewText) == 0)))
+	{
+		// nothing to change
+		return TRUE;
+	}
+
+	TRY
+	{
+		if (lpszNewText != NULL)
+			pSBP->strText = lpszNewText;
+		else
+			pSBP->strText.Empty();
+	}
+	CATCH_ALL(e)
+	{
+		// Note: DELETE_EXCEPTION(e) not required
+		return FALSE;
+	}
+	END_CATCH_ALL
+
+	if (!bUpdate)
+	{
+		// can't update now, wait until later
+		pSBP->nFlags |= SBPF_UPDATE;
+		return TRUE;
+	}
+
+	pSBP->nFlags &= ~SBPF_UPDATE;
+	DefWindowProc(SB_SETTEXT, ((WORD)pSBP->nStyle)|nIndex,
+		(pSBP->nStyle & SBPS_DISABLED) ? NULL :
+		(LPARAM)(LPCTSTR)pSBP->strText);
+
+	return TRUE;
+}
+
+/////////////////////////////////////////////////////////////////////////////
+// CStatusBar implementation
+
+CSize CStatusBar::CalcFixedLayout(BOOL, BOOL bHorz)
+{
+	ASSERT_VALID(this);
+	ASSERT(::IsWindow(m_hWnd));
+
+	// determinme size of font being used by the status bar
+	TEXTMETRIC tm;
+	{
+		CClientDC dc(NULL);
+		HFONT hFont = (HFONT)SendMessage(WM_GETFONT);
+		HGDIOBJ hOldFont = NULL;
+		if (hFont != NULL)
+			hOldFont = dc.SelectObject(hFont);
+		VERIFY(dc.GetTextMetrics(&tm));
+		if (hOldFont != NULL)
+			dc.SelectObject(hOldFont);
+	}
+
+	// get border information
+	CRect rect; rect.SetRectEmpty();
+	CalcInsideRect(rect, bHorz);
+	int rgBorders[3];
+	DefWindowProc(SB_GETBORDERS, 0, (LPARAM)rgBorders);
+
+	// determine size, including borders
+	CSize size;
+	size.cx = 32767;
+	size.cy = tm.tmHeight - tm.tmInternalLeading - 1
+		+ rgBorders[1] * 2 + ::GetSystemMetrics(SM_CYBORDER) * 2
+		- rect.Height();
+	if (size.cy < m_nMinHeight)
+		size.cy = m_nMinHeight;
+
+	return size;
+}
+
+/////////////////////////////////////////////////////////////////////////////
+// CStatusBar message handlers
+
+BEGIN_MESSAGE_MAP(CStatusBar, CControlBar)
+	//{{AFX_MSG_MAP(CStatusBar)
+	ON_WM_NCHITTEST()
+	ON_WM_NCPAINT()
+	ON_WM_PAINT()
+	ON_WM_NCCALCSIZE()
+	ON_WM_SIZE()
+	ON_WM_WINDOWPOSCHANGING()
+	ON_MESSAGE(WM_SETTEXT, &CStatusBar::OnSetText)
+	ON_MESSAGE(WM_GETTEXT, &CStatusBar::OnGetText)
+	ON_MESSAGE(WM_GETTEXTLENGTH, &CStatusBar::OnGetTextLength)
+	ON_MESSAGE(SB_SETMINHEIGHT, &CStatusBar::OnSetMinHeight)
+	//}}AFX_MSG_MAP
+END_MESSAGE_MAP()
+
+LRESULT CStatusBar::OnNcHitTest(CPoint)
+{
+	LRESULT nResult = Default();
+	if (nResult == HTBOTTOMRIGHT)
+		return HTBOTTOMRIGHT;
+	else
+		return HTCLIENT;
+}
+
+void CStatusBar::OnNcCalcSize(BOOL /*bCalcValidRects*/, NCCALCSIZE_PARAMS* lpncsp)
+{
+	// calculate border space (will add to top/bottom, subtract from right/bottom)
+	CRect rect; rect.SetRectEmpty();
+	CControlBar::CalcInsideRect(rect, TRUE);
+	ASSERT(rect.top >= 2);
+
+	// adjust non-client area for border space
+	lpncsp->rgrc[0].left += rect.left;
+	lpncsp->rgrc[0].top += rect.top - 2;
+	lpncsp->rgrc[0].right += rect.right;
+	lpncsp->rgrc[0].bottom += rect.bottom;
+}
+
+void CStatusBar::OnBarStyleChange(DWORD dwOldStyle, DWORD dwNewStyle)
+{
+	if (m_hWnd != NULL &&
+		((dwOldStyle & CBRS_BORDER_ANY) != (dwNewStyle & CBRS_BORDER_ANY)))
+	{
+		// recalc non-client area when border styles change
+		SetWindowPos(NULL, 0, 0, 0, 0,
+			SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE | SWP_DRAWFRAME);
+	}
+}
+
+void CStatusBar::OnNcPaint()
+{
+	EraseNonClient();
+}
+
+// Derived class is responsible for implementing all of these handlers
+//  for owner/self draw controls.
+void CStatusBar::DrawItem(LPDRAWITEMSTRUCT)
+{
+	ASSERT(FALSE);
+}
+
+BOOL CStatusBar::OnChildNotify(UINT message, WPARAM wParam, LPARAM lParam, LRESULT* pResult)
+{
+	if (message != WM_DRAWITEM)
+		return CWnd::OnChildNotify(message, wParam, lParam, pResult);
+
+	ASSERT(pResult == NULL);
+	UNUSED(pResult); // unused in release builds
+	DrawItem((LPDRAWITEMSTRUCT)lParam);
+	return TRUE;
+}
+
+void CStatusBar::OnPaint()
+{
+	UpdateAllPanes(FALSE, TRUE);
+
+	Default();
+}
+
+void CStatusBar::OnSize(UINT nType, int cx, int cy)
+{
+	ASSERT_VALID(this);
+	ASSERT(::IsWindow(m_hWnd));
+
+	CControlBar::OnSize(nType, cx, cy);
+
+	// need to adjust pane right edges (because of stretchy pane)
+	UpdateAllPanes(TRUE, FALSE);
+}
+
+void CStatusBar::OnWindowPosChanging(LPWINDOWPOS lpWndPos)
+{
+	// not necessary to invalidate the borders
+	DWORD dwStyle = m_dwStyle;
+	m_dwStyle &= ~(CBRS_BORDER_ANY);
+	CControlBar::OnWindowPosChanging(lpWndPos);
+	m_dwStyle = dwStyle;
+}
+
+LRESULT CStatusBar::OnSetText(WPARAM, LPARAM lParam)
+{
+	ASSERT_VALID(this);
+	ASSERT(::IsWindow(m_hWnd));
+
+	int nIndex = CommandToIndex(0);
+	if (nIndex < 0)
+		return -1;
+	return SetPaneText(nIndex, (LPCTSTR)lParam) ? 0 : -1;
+}
+
+LRESULT CStatusBar::OnGetText(WPARAM wParam, LPARAM lParam)
+{
+	ASSERT_VALID(this);
+	ASSERT(::IsWindow(m_hWnd));
+
+	int nMaxLen = (int)wParam;
+	if (nMaxLen == 0)
+		return 0;       // nothing copied
+	LPTSTR lpszDest = (LPTSTR)lParam;
+
+	INT_PTR nLen = 0;
+	int nIndex = CommandToIndex(0); // use pane with ID zero
+	if (nIndex >= 0)
+	{
+		AFX_STATUSPANE* pSBP = _GetPanePtr(nIndex);
+		nLen = pSBP->strText.GetLength();
+		if (nLen > nMaxLen)
+			nLen = nMaxLen - 1; // number of characters to copy (less term.)
+
+		Checked::memcpy_s(lpszDest, nMaxLen*sizeof(TCHAR), 
+			(LPCTSTR)pSBP->strText, nLen*sizeof(TCHAR));
+	}
+	lpszDest[nLen] = '\0';
+	return nLen+1;      // number of bytes copied
+}
+
+LRESULT CStatusBar::OnGetTextLength(WPARAM, LPARAM)
+{
+	ASSERT_VALID(this);
+	ASSERT(::IsWindow(m_hWnd));
+
+	INT_PTR nLen = 0;
+	int nIndex = CommandToIndex(0); // use pane with ID zero
+	if (nIndex >= 0)
+	{
+		AFX_STATUSPANE* pSBP = _GetPanePtr(nIndex);
+		nLen = pSBP->strText.GetLength();
+	}
+	return nLen;
+}
+
+LRESULT CStatusBar::OnSetMinHeight(WPARAM wParam, LPARAM)
+{
+	LRESULT lResult = Default();
+	m_nMinHeight = (int)wParam;
+	return lResult;
+}
+
+/////////////////////////////////////////////////////////////////////////////
+// CStatusBar idle update through CStatusCmdUI class
+
+class CStatusCmdUI : public CCmdUI      // class private to this file!
+{
+public: // re-implementations only
+	virtual void Enable(BOOL bOn);
+	virtual void SetCheck(int nCheck);
+	virtual void SetText(LPCTSTR lpszText);
+};
+
+void CStatusCmdUI::Enable(BOOL bOn)
+{
+	m_bEnableChanged = TRUE;
+	CStatusBar* pStatusBar = (CStatusBar*)m_pOther;
+	ASSERT(pStatusBar != NULL);
+	ASSERT_KINDOF(CStatusBar, pStatusBar);
+	ASSERT(m_nIndex < m_nIndexMax);
+
+	UINT nNewStyle = pStatusBar->GetPaneStyle(m_nIndex) & ~SBPS_DISABLED;
+	if (!bOn)
+		nNewStyle |= SBPS_DISABLED;
+	pStatusBar->SetPaneStyle(m_nIndex, nNewStyle);
+}
+
+void CStatusCmdUI::SetCheck(int nCheck) // "checking" will pop out the text
+{
+	CStatusBar* pStatusBar = (CStatusBar*)m_pOther;
+	ASSERT(pStatusBar != NULL);
+	ASSERT_KINDOF(CStatusBar, pStatusBar);
+	ASSERT(m_nIndex < m_nIndexMax);
+
+	UINT nNewStyle = pStatusBar->GetPaneStyle(m_nIndex) & ~SBPS_POPOUT;
+	if (nCheck != 0)
+		nNewStyle |= SBPS_POPOUT;
+	pStatusBar->SetPaneStyle(m_nIndex, nNewStyle);
+}
+
+void CStatusCmdUI::SetText(LPCTSTR lpszText)
+{
+	CStatusBar* pStatusBar = (CStatusBar*)m_pOther;
+	ASSERT(pStatusBar != NULL);
+	ASSERT_KINDOF(CStatusBar, pStatusBar);
+	ASSERT(m_nIndex < m_nIndexMax);
+
+	pStatusBar->SetPaneText(m_nIndex, lpszText);
+}
+
+void CStatusBar::OnUpdateCmdUI(CFrameWnd* pTarget, BOOL bDisableIfNoHndler)
+{
+	CStatusCmdUI state;
+	state.m_pOther = this;
+	state.m_nIndexMax = (UINT)m_nCount;
+	for (state.m_nIndex = 0; state.m_nIndex < state.m_nIndexMax;
+		state.m_nIndex++)
+	{
+		state.m_nID = _GetPanePtr(state.m_nIndex)->nID;
+
+		// allow the statusbar itself to have update handlers
+		if (CWnd::OnCmdMsg(state.m_nID, CN_UPDATE_COMMAND_UI, &state, NULL))
+			continue;
+
+		// allow target (owner) to handle the remaining updates
+		state.DoUpdate(pTarget, FALSE);
+	}
+
+	// update the dialog controls added to the status bar
+	UpdateDialogControls(pTarget, bDisableIfNoHndler);
+}
+
+/////////////////////////////////////////////////////////////////////////////
+// CStatusBar diagnostics
+
+#ifdef _DEBUG
+void CStatusBar::AssertValid() const
+{
+	CControlBar::AssertValid();
+}
+
+void CStatusBar::Dump(CDumpContext& dc) const
+{
+	CControlBar::Dump(dc);
+
+	if (dc.GetDepth() > 0)
+	{
+		for (int i = 0; i < m_nCount; i++)
+		{
+			dc << "\nstatus pane[" << i << "] = {";
+			dc << "\n\tnID = " << _GetPanePtr(i)->nID;
+			dc << "\n\tnStyle = " << _GetPanePtr(i)->nStyle;
+			dc << "\n\tcxText = " << _GetPanePtr(i)->cxText;
+			dc << "\n\tstrText = " << _GetPanePtr(i)->strText;
+			dc << "\n\t}";
+		}
+	}
+	dc << "\n";
+}
+#endif //_DEBUG
+
+
+IMPLEMENT_DYNAMIC(CStatusBar, CControlBar)
+
+/////////////////////////////////////////////////////////////////////////////

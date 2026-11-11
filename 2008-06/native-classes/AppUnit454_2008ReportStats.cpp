@@ -79,3 +79,7 @@ namespace RBX
 // 00456ee0 are the report view's ChildAdded / ChildRemoved handlers 004582f0 / 004581a0 in this unit.
 template boost::shared_ptr<RBX::Stats::Item> boost::shared_dynamic_cast<RBX::Stats::Item, RBX::Instance>(
 	const boost::shared_ptr<RBX::Instance>&);
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<RBX::Stats::Item>;
+template class boost::shared_ptr<RBX::Stats::StatsService>;

@@ -1,48 +1,206 @@
 // from server: 100% by auto
-// roc 2009-12 004b7c50  unit: Ogre::UFileInfo::V?$vector::?$SharedPtr  size: 92 bytes
-// Make this compile to the exact bytes below, then: roc check 2009-12 004b7c50
-//
-// 004b7c50  83ec08               sub esp, 8
-// 004b7c53  8b542414             mov edx, dword ptr [esp + 0x14]
-// 004b7c57  53                   push ebx
-// 004b7c58  8b5c2410             mov ebx, dword ptr [esp + 0x10]
-// 004b7c5c  56                   push esi
-// 004b7c5d  8b742418             mov esi, dword ptr [esp + 0x18]
-// 004b7c61  57                   push edi
-// 004b7c62  8b7c2420             mov edi, dword ptr [esp + 0x20]
-// 004b7c66  32c0                 xor al, al
-// 004b7c68  88442410             mov byte ptr [esp + 0x10], al
-// 004b7c6c  8b4c2410             mov ecx, dword ptr [esp + 0x10]
-// 004b7c70  8844240c             mov byte ptr [esp + 0xc], al
-// 004b7c74  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 004b7c78  50                   push eax
-// 004b7c79  51                   push ecx
-// 004b7c7a  52                   push edx
-// 004b7c7b  57                   push edi
-// 004b7c7c  56                   push esi
-// 004b7c7d  53                   push ebx
-// 004b7c7e  e81dfeffff           call 0x4b7aa0
-// 004b7c83  2bf3                 sub esi, ebx
-// 004b7c85  b8abaaaa2a           mov eax, 0x2aaaaaab
-// 004b7c8a  f7ee                 imul esi
-// 004b7c8c  c1fa04               sar edx, 4
-// 004b7c8f  8bc2                 mov eax, edx
-// 004b7c91  c1e81f               shr eax, 0x1f
-// 004b7c94  03c2                 add eax, edx
-// 004b7c96  8d0440               lea eax, [eax + eax*2]
-// 004b7c99  c1e005               shl eax, 5
-// 004b7c9c  83c418               add esp, 0x18
-// 004b7c9f  8bc8                 mov ecx, eax
-// 004b7ca1  8bc7                 mov eax, edi
-// 004b7ca3  5f                   pop edi
-// 004b7ca4  5e                   pop esi
-// 004b7ca5  2bc1                 sub eax, ecx
-// 004b7ca7  5b                   pop ebx
-// 004b7ca8  83c408               add esp, 8
-// 004b7cab  c3                   ret 
-// library wildmagic-2-core/Intersection\WmlIntrTet3Tet3.cpp (function ??$_Copy_backward_opt@PAV?$Tetrahedron3@N@Wml@@PAV12@@std@@YAPAV?$Tetrahedron3@N@Wml@@PAV12@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z)
-
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /O2 /Ob1 /GS- /MT
 // roc-lib: wildmagic-2-core Intersection/WmlIntrTet3Tet3.cpp
+
+// Candidate translation unit (score above; library headers required).
+// Magic Software, Inc.
+// http://www.magic-software.com
+// http://www.wild-magic.com
+// Copyright (c) 2003.  All Rights Reserved
+//
+// The Wild Magic Library (WML) source code is supplied under the terms of
+// the license agreement http://www.magic-software.com/License/WildMagic.pdf
+// and may not be copied or disclosed except in accordance with the terms of
+// that agreement.
+
+#include "WmlIntrTet3Tet3.h"
+using namespace Wml;
+using namespace std;
+
+//----------------------------------------------------------------------------
+template <class Real>
+static void SplitAndDecompose (Tetrahedron3<Real> kTetra,
+    const Plane3<Real>& rkPlane, vector<Tetrahedron3<Real> >& rkInside)
+{
+    // determine on which side of the plane the points of the tetrahedron lie
+    Real afC[4];
+    int i, aiP[4], aiN[4], aiZ[4];
+    int iPositive = 0, iNegative = 0, iZero = 0;
+
+    for (i = 0; i < 4; i++)
+    {
+        afC[i] = rkPlane.DistanceTo(kTetra[i]);
+        if ( afC[i] > 0.0f )
+            aiP[iPositive++] = i;
+        else if ( afC[i] < 0.0f )
+            aiN[iNegative++] = i;
+        else
+            aiZ[iZero++] = i;
+    }
+
+    // For a split to occur, one of the c_i must be positive and one must
+    // be negative.
+
+    if ( iNegative == 0 )
+    {
+        // tetrahedron is completely on the positive side of plane, full clip
+        return;
+    }
+
+    if ( iPositive == 0 )
+    {
+        // tetrahedron is completely on the negative side of plane
+        rkInside.push_back(kTetra);
+        return;
+    }
+
+    // Tetrahedron is split by plane.  Determine how it is split and how to
+    // decompose the negative-side portion into tetrahedra (6 cases).
+    Real fW0, fW1, fInvCDiff;
+    Vector3<Real> akIntp[4];
+
+    if ( iPositive == 3 )
+    {
+        // +++-
+        for (i = 0; i < iPositive; i++)
+        {
+            fInvCDiff = ((Real)1.0)/(afC[aiP[i]] - afC[aiN[0]]);
+            fW0 = -afC[aiN[0]]*fInvCDiff;
+            fW1 = +afC[aiP[i]]*fInvCDiff;
+            kTetra[aiP[i]] = fW0*kTetra[aiP[i]] + fW1*kTetra[aiN[0]];
+        }
+        rkInside.push_back(kTetra);
+    }
+    else if ( iPositive == 2 )
+    {
+        if ( iNegative == 2 )
+        {
+            // ++--
+            for (i = 0; i < iPositive; i++)
+            {
+                fInvCDiff = ((Real)1.0)/(afC[aiP[i]]-afC[aiN[0]]);
+                fW0 = -afC[aiN[0]]*fInvCDiff;
+                fW1 = +afC[aiP[i]]*fInvCDiff;
+                akIntp[i] = fW0*kTetra[aiP[i]] + fW1*kTetra[aiN[0]];
+            }
+            for (i = 0; i < iNegative; i++)
+            {
+                fInvCDiff = ((Real)1.0)/(afC[aiP[i]]-afC[aiN[1]]);
+                fW0 = -afC[aiN[1]]*fInvCDiff;
+                fW1 = +afC[aiP[i]]*fInvCDiff;
+                akIntp[i+2] = fW0*kTetra[aiP[i]] + fW1*kTetra[aiN[1]];
+            }
+
+            kTetra[aiP[0]] = akIntp[2];
+            kTetra[aiP[1]] = akIntp[1];
+            rkInside.push_back(kTetra);
+
+            rkInside.push_back(Tetrahedron3<Real>(kTetra[aiN[1]],akIntp[3],
+                akIntp[2],akIntp[1]));
+
+            rkInside.push_back(Tetrahedron3<Real>(kTetra[aiN[0]],akIntp[0],
+                akIntp[1],akIntp[2]));
+        }
+        else
+        {
+            // ++-0
+            for (i = 0; i < iPositive; i++)
+            {
+                fInvCDiff = ((Real)1.0)/(afC[aiP[i]]-afC[aiN[0]]);
+                fW0 = -afC[aiN[0]]*fInvCDiff;
+                fW1 = +afC[aiP[i]]*fInvCDiff;
+                kTetra[aiP[i]] = fW0*kTetra[aiP[i]] + fW1*kTetra[aiN[0]];
+            }
+            rkInside.push_back(kTetra);
+        }
+    }
+    else if ( iPositive == 1 )
+    {
+        if ( iNegative == 3 )
+        {
+            // +---
+            for (i = 0; i < iNegative; i++)
+            {
+                fInvCDiff = ((Real)1.0)/(afC[aiP[0]]-afC[aiN[i]]);
+                fW0 = -afC[aiN[i]]*fInvCDiff;
+                fW1 = +afC[aiP[0]]*fInvCDiff;
+                akIntp[i] = fW0*kTetra[aiP[0]] + fW1*kTetra[aiN[i]];
+            }
+
+            kTetra[aiP[0]] = akIntp[0];
+            rkInside.push_back(kTetra);
+
+            rkInside.push_back(Tetrahedron3<Real>(akIntp[0],kTetra[aiN[1]],
+                kTetra[aiN[2]],akIntp[1]));
+
+            rkInside.push_back(Tetrahedron3<Real>(kTetra[aiN[2]],akIntp[1],
+                akIntp[2],akIntp[0]));
+        }
+        else if ( iNegative == 2 )
+        {
+            // +--0
+            for (i = 0; i < iNegative; i++)
+            {
+                fInvCDiff = ((Real)1.0)/(afC[aiP[0]]-afC[aiN[i]]);
+                fW0 = -afC[aiN[i]]*fInvCDiff;
+                fW1 = +afC[aiP[0]]*fInvCDiff;
+                akIntp[i] = fW0*kTetra[aiP[0]] + fW1*kTetra[aiN[i]];
+            }
+
+            kTetra[aiP[0]] = akIntp[0];
+            rkInside.push_back(kTetra);
+
+            rkInside.push_back(Tetrahedron3<Real>(akIntp[1],kTetra[aiZ[0]],
+                kTetra[aiN[1]],akIntp[0]));
+        }
+        else
+        {
+            // +-00
+            fInvCDiff = ((Real)1.0)/(afC[aiP[0]]-afC[aiN[0]]);
+            fW0 = -afC[aiN[0]]*fInvCDiff;
+            fW1 = +afC[aiP[0]]*fInvCDiff;
+            kTetra[aiP[0]] = fW0*kTetra[aiP[0]] + fW1*kTetra[aiN[0]];
+            rkInside.push_back(kTetra);
+        }
+    }
+}
+//----------------------------------------------------------------------------
+template <class Real>
+void Wml::FindIntersection (const Tetrahedron3<Real>& rkT0,
+    const Tetrahedron3<Real>& rkT1,  vector<Tetrahedron3<Real> >& rkIntr)
+{
+    // build planar faces of T0
+    Plane3<Real> akPlane[4];
+    rkT0.GetPlanes(akPlane);
+
+    // initial object to clip is T1
+    rkIntr.clear();
+    rkIntr.push_back(rkT1);
+
+    // clip T1 against planes of T0
+    for (int iP = 0; iP < 4; iP++)
+    {
+        vector<Tetrahedron3<Real> > kInside;
+        for (int iT = 0; iT < (int)rkIntr.size(); iT++)
+            SplitAndDecompose(rkIntr[iT],akPlane[iP],kInside);
+        rkIntr = kInside;
+    }
+}
+//----------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------
+// explicit instantiation
+//----------------------------------------------------------------------------
+namespace Wml
+{
+template WML_ITEM void FindIntersection<float> (
+    const Tetrahedron3<float>&, const Tetrahedron3<float>&,
+    vector<Tetrahedron3<float> >&);
+
+template WML_ITEM void FindIntersection<double> (
+    const Tetrahedron3<double>&, const Tetrahedron3<double>&,
+    vector<Tetrahedron3<double> >&);
+}
+//----------------------------------------------------------------------------

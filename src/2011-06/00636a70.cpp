@@ -1,38 +1,127 @@
 // from server: 100% by auto
-// roc 2011-06 00636a70  unit: FLog::VFastLogSettingsItem::?$FactoryProduct::Creator  size: 57 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 00636a70
-//
-// 00636a70  8b542404             mov edx, dword ptr [esp + 4]
-// 00636a74  57                   push edi
-// 00636a75  8bf9                 mov edi, ecx
-// 00636a77  85d2                 test edx, edx
-// 00636a79  750f                 jne 0x636a8a
-// 00636a7b  33c0                 xor eax, eax
-// 00636a7d  50                   push eax
-// 00636a7e  52                   push edx
-// 00636a7f  e8bcfdffff           call 0x636840
-// 00636a84  8bc7                 mov eax, edi
-// 00636a86  5f                   pop edi
-// 00636a87  c20400               ret 4
-// 00636a8a  8bc2                 mov eax, edx
-// 00636a8c  56                   push esi
-// 00636a8d  8d7001               lea esi, [eax + 1]
-// 00636a90  8a08                 mov cl, byte ptr [eax]
-// 00636a92  40                   inc eax
-// 00636a93  84c9                 test cl, cl
-// 00636a95  75f9                 jne 0x636a90
-// 00636a97  2bc6                 sub eax, esi
-// 00636a99  5e                   pop esi
-// 00636a9a  50                   push eax
-// 00636a9b  52                   push edx
-// 00636a9c  8bcf                 mov ecx, edi
-// 00636a9e  e89dfdffff           call 0x636840
-// 00636aa3  8bc7                 mov eax, edi
-// 00636aa5  5f                   pop edi
-// 00636aa6  c20400               ret 4
-// library mfc-9.0/atlmfc\src\mfc\afxacceleratorkey.cpp (function ??4?$CSimpleStringT@D$0A@@ATL@@QAEAAV01@PBD@Z)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
 // roc-lib: mfc-9.0 atlmfc/src/mfc/afxacceleratorkey.cpp
+
+// Candidate translation unit (score above; library headers required).
+// This is a part of the Microsoft Foundation Classes C++ library.
+// Copyright (C) Microsoft Corporation
+// All rights reserved.
+//
+// This source code is only intended as a supplement to the
+// Microsoft Foundation Classes Reference and related
+// electronic documentation provided with the library.
+// See these sources for detailed information regarding the
+// Microsoft Foundation Classes product.
+
+#include "stdafx.h"
+#include "afxacceleratorkey.h"
+
+#ifdef _DEBUG
+#define new DEBUG_NEW
+#endif
+
+//////////////////////////////////////////////////////////////////////
+// Construction/Destruction
+//////////////////////////////////////////////////////////////////////
+
+CMFCAcceleratorKey::CMFCAcceleratorKey(LPACCEL lpAccel) : m_lpAccel(lpAccel)
+{
+}
+
+CMFCAcceleratorKey::CMFCAcceleratorKey() : m_lpAccel(NULL)
+{
+}
+
+CMFCAcceleratorKey::~CMFCAcceleratorKey()
+{
+}
+
+void CMFCAcceleratorKey::Format(CString& str) const
+{
+	str.Empty();
+
+	if (m_lpAccel == NULL)
+	{
+		ASSERT(FALSE);
+		return;
+	}
+
+	if (m_lpAccel->fVirt & FCONTROL)
+	{
+		AddVirtKeyStr(str, VK_CONTROL);
+	}
+
+	if (m_lpAccel->fVirt & FSHIFT)
+	{
+		AddVirtKeyStr(str, VK_SHIFT);
+	}
+
+	if (m_lpAccel->fVirt & FALT)
+	{
+		AddVirtKeyStr(str, VK_MENU);
+	}
+
+	if (m_lpAccel->fVirt & FVIRTKEY)
+	{
+		AddVirtKeyStr(str, m_lpAccel->key, TRUE);
+	}
+	else if (m_lpAccel->key != 27) // Don't print esc
+	{
+		str += (char) m_lpAccel->key;
+	}
+}
+
+void CMFCAcceleratorKey::AddVirtKeyStr(CString& str, UINT uiVirtKey, BOOL bLast) const
+{
+	CString strKey;
+
+	if (uiVirtKey == VK_PAUSE)
+	{
+		strKey = _T("Pause");
+	}
+	else
+	{
+#define AFX_BUFFER_LEN 50
+		TCHAR szBuffer [AFX_BUFFER_LEN + 1];
+
+		ZeroMemory(szBuffer, sizeof(szBuffer));
+
+		UINT nScanCode = ::MapVirtualKeyEx(uiVirtKey, 0, ::GetKeyboardLayout(0)) <<16 | 0x1;
+
+		if (uiVirtKey >= VK_PRIOR && uiVirtKey <= VK_HELP)
+		{
+			nScanCode |= 0x01000000;
+		}
+
+		::GetKeyNameText(nScanCode, szBuffer, AFX_BUFFER_LEN);
+
+		strKey = szBuffer;
+	}
+
+	strKey.MakeLower();
+
+	//--------------------------------------
+	// The first letter should be uppercase:
+	//--------------------------------------
+	for (int nCount = 0; nCount < strKey.GetLength(); nCount++)
+	{
+		TCHAR c = strKey[nCount];
+		if (IsCharLower(c))
+		{
+			c = (TCHAR) toupper(c); // Convert single character JY 4-Dec-99
+			strKey.SetAt(nCount, c);
+			break;
+		}
+	}
+
+	str += strKey;
+
+	if (!bLast)
+	{
+		str += '+';
+	}
+}
+
+

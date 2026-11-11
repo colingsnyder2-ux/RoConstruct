@@ -1,4 +1,5 @@
-// from server: 98% by EspClaude
+// from server: 100% by Intel
+﻿// from server: 98% by EspClaude
 // roc-cl: 50727
 // from server: 100% by king_originala
 // roc 2008-06 00440e30  unit: CSelectionPropGrid  size: 1321 bytes
@@ -464,51 +465,51 @@ struct Property {
 extern Property specialProperty;
 
 struct Editor0 {
-    char storage[0x144];
+    char storage[0x130];
     Editor0(void*, Grid*);
 };
 struct Editor1 {
-    char storage[0x130];
+    char storage[0x11c];
     Editor1(void*, Grid*);
 };
 struct Editor2 {
-    char storage[0x130];
+    char storage[0x11c];
     Editor2(void*, Grid*);
 };
 struct Editor3 {
-    char storage[0x13c];
+    char storage[0x128];
     Editor3(void*, Grid*);
 };
 struct Editor4 {
-    char storage[0x13c];
+    char storage[0x128];
     Editor4(void*, Grid*);
 };
 struct Editor5 {
-    char storage[0x13c];
+    char storage[0x128];
     Editor5(void*, Grid*);
 };
 struct Editor6 {
-    char storage[0x138];
+    char storage[0x124];
     Editor6(void*, Grid*);
 };
 struct Editor7 {
-    char storage[0x134];
+    char storage[0x120];
     Editor7(void*, Grid*);
 };
 struct Editor8 {
-    char storage[0x130];
+    char storage[0x11c];
     Editor8(void*, Grid*);
 };
 struct Editor9 {
-    char storage[0x130];
+    char storage[0x11c];
     Editor9(void*, Grid*);
 };
 struct Editor10 {
-    char storage[0x130];
+    char storage[0x11c];
     Editor10(void*, Grid*);
 };
 struct Editor11 {
-    char storage[0x130];
+    char storage[0x11c];
     Editor11(void*, Grid*);
 };
 
@@ -600,6 +601,6 @@ void Grid::f(void* object, Property* property)
         return;
     }
 
-    if (((Property::Query)property->table[6])(property))
+    if (((Property::Query)property->table[3])(property))
         addOther(new Editor11(property, this));
 }

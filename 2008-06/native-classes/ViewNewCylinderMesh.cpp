@@ -1,4 +1,5 @@
 // 2008-06 native RBX::ViewNew::CylinderBuilder / CylinderAlongXMesh (inactive): the unit 004fd430..004fdaef.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "ViewNew/CylinderMesh.h"
 #include "ViewNew/QuadVolumeFace.h"
 #include <algorithm>

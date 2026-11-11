@@ -563,3 +563,22 @@ BOOL VerbBinder<CRobloxDoc, CDocument>::OnCmdMsg(UINT id, int code, void* extra,
     }
     return CDocument::OnCmdMsg(id, code, extra, info);
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class ATL::_ATL_SAFE_ALLOCA_IMPL::CAtlSafeAllocBufferManager<ATL::CCRTAllocator>;
+template class RBX::Parent<XmlAttribute>;
+template class RBX::Parent<XmlElement>;
+template class RBX::Sibling<XmlAttribute>;
+template class RBX::Sibling<XmlElement>;
+template class boost::scoped_ptr<LuaAllocator>;
+template class boost::shared_ptr<RBX::DataModel const >;
+template class std::_Container_base_aux_alloc_real<std::allocator<RBX::Verb *> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<unsigned int const ,RBX::Name const *> > >;
+template class std::_Tmap_traits<unsigned int,RBX::Name const *,std::less<unsigned int>,std::allocator<std::pair<unsigned int const ,RBX::Name const *> >,0>;
+template class std::_Tree<std::_Tmap_traits<unsigned int,RBX::Name const *,std::less<unsigned int>,std::allocator<std::pair<unsigned int const ,RBX::Name const *> >,0> >;
+template class std::_Vector_const_iterator<RBX::Verb *,std::allocator<RBX::Verb *> >;
+template class std::_Vector_iterator<RBX::Verb *,std::allocator<RBX::Verb *> >;
+template class std::allocator<std::_Tree_nod<std::_Tmap_traits<unsigned int,RBX::Name const *,std::less<unsigned int>,std::allocator<std::pair<unsigned int const ,RBX::Name const *> >,0> >::_Node *>;
+template class std::allocator<std::pair<unsigned int const ,RBX::Name const *> >;
+template class std::auto_ptr<XmlElement>;
+template class std::vector<RBX::Verb *,std::allocator<RBX::Verb *> >;

@@ -227,3 +227,10 @@ BrickColor::BrickMap::BrickMap()
 		generatePaletteMap();
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Vector_const_iterator<RBX::BrickColor,std::allocator<RBX::BrickColor> >;
+template class std::_Vector_iterator<RBX::BrickColor,std::allocator<RBX::BrickColor> >;
+template class std::allocator<std::pair<enum RBX::BrickColor::Number const ,G3D::Color4> >;
+template class std::allocator<std::pair<enum RBX::BrickColor::Number const ,G3D::Color4uint8> >;
+template class std::allocator<std::pair<enum RBX::BrickColor::Number const ,std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >;

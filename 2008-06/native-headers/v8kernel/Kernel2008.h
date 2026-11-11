@@ -29,6 +29,7 @@ namespace RBX
 {
 	class KernelData;
 	class Connector;
+	class Point;
 	namespace Profiling
 	{
 		class CodeProfiler;
@@ -59,5 +60,7 @@ namespace RBX
 		int numBodies() const;                                        // 005faa20
 		int numPoints() const;                                        // 005faa30
 		int numConnectors() const;                                    // 005faa40
+		void insertConnector(Connector* connector);                    // 005fb160
+		void deletePoint(Point* point);                                // 005fb3c0
 	};
 }

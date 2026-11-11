@@ -75,5 +75,8 @@ public:
     boost::scoped_ptr<CSelectionCaption> selectionCaption;
     CXTThemeManager theme;
     CXTPStatusBar status;
+// Declarations proven by closure symbols (mangled names) of the 2008-06 client.
+public:
+    int showFrame(int);
 };
 

@@ -45,3 +45,8 @@ template<> MouseCommand* TToolVerb<GrabTool, RunStateVerb>::newMouseCommand()
     return new GrabTool(dataModel->getWorkspace());
 }
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Container_base_aux_alloc_real<std::allocator<RBX::Instance *> >;
+template class std::_Vector_const_iterator<RBX::Instance *,std::allocator<RBX::Instance *> >;
+template class std::_Vector_iterator<RBX::Instance *,std::allocator<RBX::Instance *> >;

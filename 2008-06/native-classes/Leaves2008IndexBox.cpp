@@ -2,6 +2,7 @@
 // 007bbe30 getFaceCorners, 007bbed0 IndexBox(min, max) and the tables 00875da0..00875fc7; the inline destructor
 // 0066f8d0 / ??_G 0066f8e0 are emitted with the vtable. Built with /fp:fast (the constructor 007bbed0 chains the corner stores without spills).
 // Verified by tests/record_native_leaves2008.py.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "leaves2008/IndexBox2008.h"
 
 namespace RBX

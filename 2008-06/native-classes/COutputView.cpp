@@ -151,3 +151,17 @@ LRESULT CStandardOutputView::OnStandardOutMessage(WPARAM, LPARAM)
     }
     return 0;
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class ATL::CComPtrBase<IDispatch>;
+template class ATL::CComPtrBase<IHTMLDOMNode>;
+template class ATL::CComPtrBase<IHTMLDocument2>;
+template class ATL::CComPtrBase<IHTMLElement>;
+template class ATL::CComPtrBase<IHTMLElementCollection>;
+template class RBX::Listener<RBX::StandardOut,RBX::StandardOutMessage>;
+template class std::_Deque_const_iterator<ATL::CComPtr<IHTMLDOMNode>,std::allocator<ATL::CComPtr<IHTMLDOMNode> >,1>;
+template class std::_Deque_const_iterator<RBX::StandardOutMessage,std::allocator<RBX::StandardOutMessage>,1>;
+template class std::_Deque_iterator<RBX::StandardOutMessage,std::allocator<RBX::StandardOutMessage>,1>;
+template class std::_Vector_const_iterator<RBX::Listener<RBX::StandardOut,RBX::StandardOutMessage> *,std::allocator<RBX::Listener<RBX::StandardOut,RBX::StandardOutMessage> *> >;
+template class std::_Vector_iterator<RBX::Listener<RBX::StandardOut,RBX::StandardOutMessage> *,std::allocator<RBX::Listener<RBX::StandardOut,RBX::StandardOutMessage> *> >;
+template class std::vector<RBX::Listener<RBX::StandardOut,RBX::StandardOutMessage> *,std::allocator<RBX::Listener<RBX::StandardOut,RBX::StandardOutMessage> *> >;

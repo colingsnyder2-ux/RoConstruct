@@ -52,3 +52,8 @@ template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::Network::Player
 #ifdef NATIVE_APPUNIT400_PENDING
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::Selection, RBX::Instance, RBX::sSelection>::Creator::create() const;
 #endif
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<CRenderSettings>;
+template class boost::shared_ptr<RBX::DebugSettings>;
+template class boost::shared_ptr<RBX::Network::Player>;

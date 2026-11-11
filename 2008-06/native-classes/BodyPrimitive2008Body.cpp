@@ -1,6 +1,7 @@
 // 2008-06 native RBX::Body (inactive): rows of the original Body unit (00613e80..00614bc7) against the Body / Cofm /
 // SimBody layouts of native-headers/v8kernel/Body2008.h (SimBody 0xb4: constructor 00658ae0, step 00658fb0, Kernel
 // insertBody 005fb0e0). Verified by tests/record_native_body_primitive2008.py.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include <boost/thread/once.hpp>
 #include <limits.h>
 #include "v8kernel/Body2008.h"

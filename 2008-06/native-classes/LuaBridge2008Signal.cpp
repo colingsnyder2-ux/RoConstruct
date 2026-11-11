@@ -248,3 +248,10 @@ int SignalConnectionBridge::disconnect(lua_State* L)
     cnction.disconnect();
     return 0;
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class RBX::Lua::Bridge<boost::signals::connection,1>;
+template class RBX::Lua::SharedPtrBridge<RBX::Reflection::DescribedBase>;
+template class boost::shared_ptr<boost::mutex>;
+template class boost::shared_ptr<boost::signals::connection>;
+template class std::_Vector_const_iterator<boost::any,std::allocator<boost::any> >;

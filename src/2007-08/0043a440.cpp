@@ -1,23 +1,39 @@
 // from server: 100% by auto
-// roc 2007-08 0043a440  unit: IIHAAH::?$CMap  size: 42 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0043a440
-//
-// 0043a440  56                   push esi
-// 0043a441  8bf1                 mov esi, ecx
-// 0043a443  8b4608               mov eax, dword ptr [esi + 8]
-// 0043a446  85c0                 test eax, eax
-// 0043a448  7409                 je 0x43a453
-// 0043a44a  50                   push eax
-// 0043a44b  e812581f00           call 0x62fc62
-// 0043a450  83c404               add esp, 4
-// 0043a453  c7460800000000       mov dword ptr [esi + 8], 0
-// 0043a45a  c7460c00000000       mov dword ptr [esi + 0xc], 0
-// 0043a461  c7461000000000       mov dword ptr [esi + 0x10], 0
-// 0043a468  5e                   pop esi
-// 0043a469  c3                   ret 
-// library boost-1.40.0/libs\regex\src\instances.cpp (function ??1?$named_subexpressions@D@re_detail@boost@@QAE@XZ)
-
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /O2 /GS- /EHsc /MD
 // roc-lib: boost-1.40.0 libs/regex/src/instances.cpp
+
+// Candidate translation unit (score above; library headers required).
+/*
+ *
+ * Copyright (c) 1998-2002
+ * John Maddock
+ *
+ * Use, modification and distribution are subject to the 
+ * Boost Software License, Version 1.0. (See accompanying file 
+ * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+ *
+ */
+
+ /*
+  *   LOCATION:    see http://www.boost.org for most recent version.
+  *   FILE:        instances.cpp
+  *   VERSION:     see <boost/version.hpp>
+  *   DESCRIPTION: regex narrow character template instances.
+  */
+
+#define BOOST_REGEX_SOURCE
+
+#include <boost/regex/config.hpp>
+
+#if !defined(BOOST_REGEX_NO_EXTERNAL_TEMPLATES)
+#define BOOST_REGEX_NARROW_INSTANTIATE
+
+#ifdef __BORLANDC__
+#pragma hrdstop
+#endif
+
+#include <boost/regex.hpp>
+
+#endif

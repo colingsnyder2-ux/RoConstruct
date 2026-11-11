@@ -2,6 +2,7 @@
 // The per-face grid instances (004f7d90..004fa04f, 004fa190) come from ViewNew/QuadVolumeFace.h. The functor
 // operator() bodies are class-inline: the original inlines them into the strips (DeformSide 004f7d90 / 004f8790,
 // DeformTop 004f80e0, DeformFrontBack 004f8420 / 004f8ae0; functor at [esp+0x80]: inset, [esp+0x84]: shoulderInset).
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "ViewNew/TorsoMesh.h"
 #include "ViewNew/QuadVolumeFace.h"
 

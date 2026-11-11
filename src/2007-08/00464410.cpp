@@ -1,4 +1,161 @@
-// from server: 96% by EspClaude
+// from server: 100% by Intel
+﻿// from server: 96% by EspClaude
+// roc 2007-08 00464410  unit: DxUserInput  size: 459 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 00464410
+//
+// 00464410  6aff                 push -1
+// 00464412  6838097400           push 0x740938
+// 00464417  64a100000000         mov eax, dword ptr fs:[0]
+// 0046441d  50                   push eax
+// 0046441e  83ec24               sub esp, 0x24
+// 00464421  53                   push ebx
+// 00464422  56                   push esi
+// 00464423  57                   push edi
+// 00464424  a188518b00           mov eax, dword ptr [0x8b5188]
+// 00464429  33c4                 xor eax, esp
+// 0046442b  50                   push eax
+// 0046442c  8d442434             lea eax, [esp + 0x34]
+// 00464430  64a300000000         mov dword ptr fs:[0], eax
+// 00464436  e8c7ba1c00           call 0x62ff02
+// 0046443b  8b4004               mov eax, dword ptr [eax + 4]
+// 0046443e  8b4020               mov eax, dword ptr [eax + 0x20]
+// 00464441  8a80ec000000         mov al, byte ptr [eax + 0xec]
+// 00464447  84c0                 test al, al
+// 00464449  0f8477010000         je 0x4645c6
+// 0046444f  8d442410             lea eax, [esp + 0x10]
+// 00464453  50                   push eax
+// 00464454  e8b7b2fcff           call 0x42f710
+// 00464459  8b742418             mov esi, dword ptr [esp + 0x18]
+// 0046445d  83c404               add esp, 4
+// 00464460  833800               cmp dword ptr [eax], 0
+// 00464463  0f95c3               setne bl
+// 00464466  85f6                 test esi, esi
+// 00464468  742a                 je 0x464494
+// 0046446a  8d4e04               lea ecx, [esi + 4]
+// 0046446d  83caff               or edx, 0xffffffff
+// 00464470  f00fc111             lock xadd dword ptr [ecx], edx
+// 00464474  751e                 jne 0x464494
+// 00464476  8b06                 mov eax, dword ptr [esi]
+// 00464478  8b5004               mov edx, dword ptr [eax + 4]
+// 0046447b  8bce                 mov ecx, esi
+// 0046447d  ffd2                 call edx
+// 0046447f  8d4608               lea eax, [esi + 8]
+// 00464482  83c9ff               or ecx, 0xffffffff
+// 00464485  f00fc108             lock xadd dword ptr [eax], ecx
+// 00464489  7509                 jne 0x464494
+// 0046448b  8b16                 mov edx, dword ptr [esi]
+// 0046448d  8b4208               mov eax, dword ptr [edx + 8]
+// 00464490  8bce                 mov ecx, esi
+// 00464492  ffd0                 call eax
+// 00464494  84db                 test bl, bl
+// 00464496  0f842a010000         je 0x4645c6
+// 0046449c  8d4c2418             lea ecx, [esp + 0x18]
+// 004644a0  51                   push ecx
+// 004644a1  e86ab2fcff           call 0x42f710
+// 004644a6  8b10                 mov edx, dword ptr [eax]
+// 004644a8  51                   push ecx
+// 004644a9  8bcc                 mov ecx, esp
+// 004644ab  8911                 mov dword ptr [ecx], edx
+// 004644ad  8b4004               mov eax, dword ptr [eax + 4]
+// 004644b0  85c0                 test eax, eax
+// 004644b2  c744244400000000     mov dword ptr [esp + 0x44], 0
+// 004644ba  89642418             mov dword ptr [esp + 0x18], esp
+// 004644be  894104               mov dword ptr [ecx + 4], eax
+// 004644c1  740c                 je 0x4644cf
+// 004644c3  83c004               add eax, 4
+// 004644c6  b901000000           mov ecx, 1
+// 004644cb  f00fc108             lock xadd dword ptr [eax], ecx
+// 004644cf  8d4c2430             lea ecx, [esp + 0x30]
+// 004644d3  e87890faff           call 0x40d550
+// 004644d8  8b74241c             mov esi, dword ptr [esp + 0x1c]
+// 004644dc  85f6                 test esi, esi
+// 004644de  b302                 mov bl, 2
+// 004644e0  885c243c             mov byte ptr [esp + 0x3c], bl
+// 004644e4  742a                 je 0x464510
+// 004644e6  8d5604               lea edx, [esi + 4]
+// 004644e9  83c8ff               or eax, 0xffffffff
+// 004644ec  f00fc102             lock xadd dword ptr [edx], eax
+// 004644f0  751e                 jne 0x464510
+// 004644f2  8b16                 mov edx, dword ptr [esi]
+// 004644f4  8b4204               mov eax, dword ptr [edx + 4]
+// 004644f7  8bce                 mov ecx, esi
+// 004644f9  ffd0                 call eax
+// 004644fb  8d4e08               lea ecx, [esi + 8]
+// 004644fe  83caff               or edx, 0xffffffff
+// 00464501  f00fc111             lock xadd dword ptr [ecx], edx
+// 00464505  7509                 jne 0x464510
+// 00464507  8b06                 mov eax, dword ptr [esi]
+// 00464509  8b5008               mov edx, dword ptr [eax + 8]
+// 0046450c  8bce                 mov ecx, esi
+// 0046450e  ffd2                 call edx
+// 00464510  83ec1c               sub esp, 0x1c
+// 00464513  8bcc                 mov ecx, esp
+// 00464515  8964242c             mov dword ptr [esp + 0x2c], esp
+// 00464519  68e82a7900           push 0x792ae8
+// 0046451e  ff1598e67700         call dword ptr [0x77e698]
+// 00464524  8d44243c             lea eax, [esp + 0x3c]
+// 00464528  50                   push eax
+// 00464529  e8e2b1fcff           call 0x42f710
+// 0046452e  83c404               add esp, 4
+// 00464531  8b00                 mov eax, dword ptr [eax]
+// 00464533  8d884c010000         lea ecx, [eax + 0x14c]
+// 00464539  c644245803           mov byte ptr [esp + 0x58], 3
+// 0046453e  e80d061000           call 0x564b50
+// 00464543  8bf8                 mov edi, eax
+// 00464545  8b442424             mov eax, dword ptr [esp + 0x24]
+// 00464549  85c0                 test eax, eax
+// 0046454b  885c243c             mov byte ptr [esp + 0x3c], bl
+// 0046454f  742c                 je 0x46457d
+// 00464551  8bf0                 mov esi, eax
+// 00464553  83c004               add eax, 4
+// 00464556  83c9ff               or ecx, 0xffffffff
+// 00464559  f00fc108             lock xadd dword ptr [eax], ecx
+// 0046455d  751e                 jne 0x46457d
+// 0046455f  8b16                 mov edx, dword ptr [esi]
+// 00464561  8b4204               mov eax, dword ptr [edx + 4]
+// 00464564  8bce                 mov ecx, esi
+// 00464566  ffd0                 call eax
+// 00464568  8d4e08               lea ecx, [esi + 8]
+// 0046456b  83caff               or edx, 0xffffffff
+// 0046456e  f00fc111             lock xadd dword ptr [ecx], edx
+// 00464572  7509                 jne 0x46457d
+// 00464574  8b06                 mov eax, dword ptr [esi]
+// 00464576  8b5008               mov edx, dword ptr [eax + 8]
+// 00464579  8bce                 mov ecx, esi
+// 0046457b  ffd2                 call edx
+// 0046457d  85ff                 test edi, edi
+// 0046457f  7434                 je 0x4645b5
+// 00464581  8b07                 mov eax, dword ptr [edi]
+// 00464583  8b500c               mov edx, dword ptr [eax + 0xc]
+// 00464586  8bcf                 mov ecx, edi
+// 00464588  ffd2                 call edx
+// 0046458a  84c0                 test al, al
+// 0046458c  8d4c2428             lea ecx, [esp + 0x28]
+// 00464590  0f94c3               sete bl
+// 00464593  c744243cffffffff     mov dword ptr [esp + 0x3c], 0xffffffff
+// 0046459b  e800500f00           call 0x5595a0
+// 004645a0  8ac3                 mov al, bl
+// 004645a2  8b4c2434             mov ecx, dword ptr [esp + 0x34]
+// 004645a6  64890d00000000       mov dword ptr fs:[0], ecx
+// 004645ad  59                   pop ecx
+// 004645ae  5f                   pop edi
+// 004645af  5e                   pop esi
+// 004645b0  5b                   pop ebx
+// 004645b1  83c430               add esp, 0x30
+// 004645b4  c3                   ret 
+// 004645b5  8d4c2428             lea ecx, [esp + 0x28]
+// 004645b9  c744243cffffffff     mov dword ptr [esp + 0x3c], 0xffffffff
+// 004645c1  e8da4f0f00           call 0x5595a0
+// 004645c6  32c0                 xor al, al
+// 004645c8  8b4c2434             mov ecx, dword ptr [esp + 0x34]
+// 004645cc  64890d00000000       mov dword ptr fs:[0], ecx
+// 004645d3  59                   pop ecx
+// 004645d4  5f                   pop edi
+// 004645d5  5e                   pop esi
+// 004645d6  5b                   pop ebx
+// 004645d7  83c430               add esp, 0x30
+// 004645da  c3                   ret 
+
 // from server: 100% by EspClaude
 // roc 2008-06 00467d50  unit: DxUserInput  size: 443 bytes
 // Make this compile to the exact bytes below, then: roc check 2008-06 00467d50
@@ -203,7 +360,7 @@ public:
 namespace RBX {
 class DataModel {
 public:
-    char pad[0x1c8];
+    char pad[0x14c];
     struct VerbContainer { class Verb* getVerb(std::string name); } verbs;
     class scoped_write_request {
         void* a; void* b; void* c;
@@ -229,7 +386,7 @@ public:
 struct AFX_MODULE_STATE { void* reserved; struct CWinApp* m_pCurrentWinApp; };
 AFX_MODULE_STATE* __stdcall AfxGetModuleState();
 struct CWinApp { char pad[0x20]; struct CWnd* m_pMainWnd; };
-struct CWnd { char pad[0x104]; bool flag; bool isFlag() const { return flag; } };
+struct CWnd { char pad[0xec]; bool flag; bool isFlag() const { return flag; } };
 inline CWinApp* __stdcall AfxGetApp() { return AfxGetModuleState()->m_pCurrentWinApp; }
 
 boost::shared_ptr<RBX::Game> getDataModel() throw();
@@ -247,8 +404,8 @@ bool DxUserInput::isToolboxEnabled()
             RBX::DataModel::scoped_write_request request(getDataModel());
             RBX::Verb* verb = getDataModel()->verbs.getVerb("ToggleToolbox");
             if (verb)
-                return verb->isChecked();
+                return !verb->isChecked();
         }
     }
-    return true;
+    return false;
 }

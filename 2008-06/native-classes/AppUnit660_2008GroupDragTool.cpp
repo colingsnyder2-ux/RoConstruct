@@ -6,6 +6,7 @@
 // Named<MouseCommand, sGroupDragTool>::getName 0066aa60 call_once's a thunk 0066a620 of the function-local Name
 // declare 0066a5b0 (sGroupDragTool 00962c54, "GroupDragTool"); the helper names come from StandardVerbs.h
 // (codegen analogs). See tests/record_native_app_unit660_2008.py.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "tool/GroupDragTool.h"
 #include "v8datamodel/Workspace.h"
 #include "util/Math.h"

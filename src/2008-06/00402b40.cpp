@@ -1,137 +1,441 @@
 // from server: 100% by auto
-// roc 2008-06 00402b40  unit: VCWorkspace::?$CComObject  size: 324 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 00402b40
-//
-// 00402b40  55                   push ebp
-// 00402b41  8bec                 mov ebp, esp
-// 00402b43  83e4f8               and esp, 0xfffffff8
-// 00402b46  81ec1c010000         sub esp, 0x11c
-// 00402b4c  8b01                 mov eax, dword ptr [ecx]
-// 00402b4e  8b5508               mov edx, dword ptr [ebp + 8]
-// 00402b51  53                   push ebx
-// 00402b52  56                   push esi
-// 00402b53  8b7104               mov esi, dword ptr [ecx + 4]
-// 00402b56  57                   push edi
-// 00402b57  894c241c             mov dword ptr [esp + 0x1c], ecx
-// 00402b5b  8d4c2418             lea ecx, [esp + 0x18]
-// 00402b5f  51                   push ecx
-// 00402b60  33db                 xor ebx, ebx
-// 00402b62  81ce1f000200         or esi, 0x2001f
-// 00402b68  56                   push esi
-// 00402b69  53                   push ebx
-// 00402b6a  52                   push edx
-// 00402b6b  50                   push eax
-// 00402b6c  895c2420             mov dword ptr [esp + 0x20], ebx
-// 00402b70  895c2424             mov dword ptr [esp + 0x24], ebx
-// 00402b74  895c242c             mov dword ptr [esp + 0x2c], ebx
-// 00402b78  ff1510208000         call dword ptr [0x802010]
-// 00402b7e  8b4c240c             mov ecx, dword ptr [esp + 0xc]
-// 00402b82  8bf8                 mov edi, eax
-// 00402b84  3bfb                 cmp edi, ebx
-// 00402b86  7525                 jne 0x402bad
-// 00402b88  33c0                 xor eax, eax
-// 00402b8a  3bcb                 cmp ecx, ebx
-// 00402b8c  7407                 je 0x402b95
-// 00402b8e  51                   push ecx
-// 00402b8f  ff1508208000         call dword ptr [0x802008]
-// 00402b95  8b4c2418             mov ecx, dword ptr [esp + 0x18]
-// 00402b99  81e600030000         and esi, 0x300
-// 00402b9f  8bf8                 mov edi, eax
-// 00402ba1  894c240c             mov dword ptr [esp + 0xc], ecx
-// 00402ba5  89742410             mov dword ptr [esp + 0x10], esi
-// 00402ba9  3bc3                 cmp eax, ebx
-// 00402bab  7416                 je 0x402bc3
-// 00402bad  3bcb                 cmp ecx, ebx
-// 00402baf  7407                 je 0x402bb8
-// 00402bb1  51                   push ecx
-// 00402bb2  ff1508208000         call dword ptr [0x802008]
-// 00402bb8  8bc7                 mov eax, edi
-// 00402bba  5f                   pop edi
-// 00402bbb  5e                   pop esi
-// 00402bbc  5b                   pop ebx
-// 00402bbd  8be5                 mov esp, ebp
-// 00402bbf  5d                   pop ebp
-// 00402bc0  c20400               ret 4
-// 00402bc3  8b351c208000         mov esi, dword ptr [0x80201c]
-// 00402bc9  8d442420             lea eax, [esp + 0x20]
-// 00402bcd  50                   push eax
-// 00402bce  53                   push ebx
-// 00402bcf  53                   push ebx
-// 00402bd0  53                   push ebx
-// 00402bd1  8d542424             lea edx, [esp + 0x24]
-// 00402bd5  52                   push edx
-// 00402bd6  8d44243c             lea eax, [esp + 0x3c]
-// 00402bda  50                   push eax
-// 00402bdb  53                   push ebx
-// 00402bdc  51                   push ecx
-// 00402bdd  c744243400010000     mov dword ptr [esp + 0x34], 0x100
-// 00402be5  ffd6                 call esi
-// 00402be7  85c0                 test eax, eax
-// 00402be9  753f                 jne 0x402c2a
-// 00402beb  eb03                 jmp 0x402bf0
-// 00402bed  8d4900               lea ecx, [ecx]
-// 00402bf0  8d4c2428             lea ecx, [esp + 0x28]
-// 00402bf4  51                   push ecx
-// 00402bf5  8d4c2410             lea ecx, [esp + 0x10]
-// 00402bf9  e842ffffff           call 0x402b40
-// 00402bfe  8bf8                 mov edi, eax
-// 00402c00  3bfb                 cmp edi, ebx
-// 00402c02  7566                 jne 0x402c6a
-// 00402c04  8d542420             lea edx, [esp + 0x20]
-// 00402c08  52                   push edx
-// 00402c09  8b542410             mov edx, dword ptr [esp + 0x10]
-// 00402c0d  53                   push ebx
-// 00402c0e  53                   push ebx
-// 00402c0f  53                   push ebx
-// 00402c10  8d442424             lea eax, [esp + 0x24]
-// 00402c14  50                   push eax
-// 00402c15  8d4c243c             lea ecx, [esp + 0x3c]
-// 00402c19  51                   push ecx
-// 00402c1a  53                   push ebx
-// 00402c1b  52                   push edx
-// 00402c1c  c744243400010000     mov dword ptr [esp + 0x34], 0x100
-// 00402c24  ffd6                 call esi
-// 00402c26  85c0                 test eax, eax
-// 00402c28  74c6                 je 0x402bf0
-// 00402c2a  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 00402c2e  3bc3                 cmp eax, ebx
-// 00402c30  740b                 je 0x402c3d
-// 00402c32  50                   push eax
-// 00402c33  ff1508208000         call dword ptr [0x802008]
-// 00402c39  895c240c             mov dword ptr [esp + 0xc], ebx
-// 00402c3d  8b4508               mov eax, dword ptr [ebp + 8]
-// 00402c40  8b4c241c             mov ecx, dword ptr [esp + 0x1c]
-// 00402c44  50                   push eax
-// 00402c45  895c2414             mov dword ptr [esp + 0x14], ebx
-// 00402c49  e8a2efffff           call 0x401bf0
-// 00402c4e  8bf0                 mov esi, eax
-// 00402c50  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 00402c54  3bc3                 cmp eax, ebx
-// 00402c56  7407                 je 0x402c5f
-// 00402c58  50                   push eax
-// 00402c59  ff1508208000         call dword ptr [0x802008]
-// 00402c5f  8bc6                 mov eax, esi
-// 00402c61  5f                   pop edi
-// 00402c62  5e                   pop esi
-// 00402c63  5b                   pop ebx
-// 00402c64  8be5                 mov esp, ebp
-// 00402c66  5d                   pop ebp
-// 00402c67  c20400               ret 4
-// 00402c6a  8b44240c             mov eax, dword ptr [esp + 0xc]
-// 00402c6e  3bc3                 cmp eax, ebx
-// 00402c70  7407                 je 0x402c79
-// 00402c72  50                   push eax
-// 00402c73  ff1508208000         call dword ptr [0x802008]
-// 00402c79  8bc7                 mov eax, edi
-// 00402c7b  5f                   pop edi
-// 00402c7c  5e                   pop esi
-// 00402c7d  5b                   pop ebx
-// 00402c7e  8be5                 mov esp, ebp
-// 00402c80  5d                   pop ebp
-// 00402c81  c20400               ret 4
-// library mfc-9.0/atlmfc\src\mfc\afxsettingsstore.cpp (function ?RecurseDeleteKey@CRegKey@ATL@@QAEJPBD@Z)
-
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /GS- /MD
 // roc-lib: mfc-9.0 atlmfc/src/mfc/afxsettingsstore.cpp
+
+// Candidate translation unit (score above; library headers required).
+// This is a part of the Microsoft Foundation Classes C++ library.
+// Copyright (C) Microsoft Corporation
+// All rights reserved.
+//
+// This source code is only intended as a supplement to the
+// Microsoft Foundation Classes Reference and related
+// electronic documentation provided with the library.
+// See these sources for detailed information regarding the
+// Microsoft Foundation Classes product.
+
+#include "stdafx.h"
+#include "afxsettingsstore.h"
+
+IMPLEMENT_DYNCREATE(CSettingsStore, CObject)
+
+static CString __stdcall PreparePath(LPCTSTR lpszPath)
+{
+	ENSURE(lpszPath != NULL);
+
+	CString strPath = lpszPath;
+
+	int iPathLen = strPath.GetLength();
+	if (iPathLen > 0 && strPath [iPathLen - 1] == _T('\\'))
+	{
+		strPath = strPath.Left(iPathLen - 1);
+	}
+
+	return strPath;
+}
+
+CSettingsStore::CSettingsStore() :
+	m_bReadOnly(FALSE), m_bAdmin(FALSE), m_dwUserData(0)
+{
+}
+
+CSettingsStore::CSettingsStore(BOOL bAdmin, BOOL bReadOnly) :
+	m_bReadOnly(bReadOnly), m_bAdmin(bAdmin), m_dwUserData(0)
+{
+	m_reg.m_hKey = bAdmin ? HKEY_LOCAL_MACHINE : HKEY_CURRENT_USER;
+}
+
+CSettingsStore::~CSettingsStore()
+{
+	Close();
+}
+
+BOOL CSettingsStore::CreateKey(LPCTSTR lpszPath)
+{
+	if (m_bReadOnly)
+	{
+		ASSERT(FALSE);
+		return FALSE;
+	}
+
+	return m_reg.Create(m_reg.m_hKey, PreparePath(lpszPath)) == ERROR_SUCCESS;
+}
+
+BOOL CSettingsStore::Open(LPCTSTR lpszPath)
+{
+	return m_reg.Open(m_reg.m_hKey, PreparePath(lpszPath),
+		m_bReadOnly ?(KEY_QUERY_VALUE | KEY_ENUMERATE_SUB_KEYS | KEY_NOTIFY) : KEY_ALL_ACCESS) == ERROR_SUCCESS;
+}
+
+void CSettingsStore::Close()
+{
+	m_reg.Close();
+}
+
+BOOL CSettingsStore::Write(LPCTSTR lpszValueName, int nValue)
+{
+	return Write(lpszValueName, (DWORD) nValue);
+}
+
+BOOL CSettingsStore::Write(LPCTSTR lpszValueName, DWORD dwValue)
+{
+	if (m_bReadOnly)
+	{
+		ASSERT(FALSE);
+		return FALSE;
+	}
+
+	return m_reg.SetDWORDValue(lpszValueName, dwValue) == ERROR_SUCCESS;
+}
+
+BOOL CSettingsStore::Write(LPCTSTR lpszValueName, LPCTSTR lpszData)
+{
+	if (m_bReadOnly)
+	{
+		ASSERT(FALSE);
+		return FALSE;
+	}
+
+	return m_reg.SetStringValue(lpszValueName, lpszData) == ERROR_SUCCESS;
+}
+
+BOOL CSettingsStore::Write(LPCTSTR lpszValueName, CObject& obj)
+{
+	if (m_bReadOnly)
+	{
+		ASSERT(FALSE);
+		return FALSE;
+	}
+
+	BOOL bRes = FALSE;
+
+	try
+	{
+		CMemFile file;
+
+		{
+			CArchive ar(&file, CArchive::store);
+			obj.Serialize(ar);
+			ar.Flush();
+		}
+
+		DWORD dwDataSize = (DWORD) file.GetLength();
+		LPBYTE lpbData = file.Detach();
+
+		if (lpbData == NULL)
+		{
+			return FALSE;
+		}
+
+		bRes = Write(lpszValueName, lpbData, (UINT) dwDataSize);
+		free(lpbData);
+	}
+	catch(CMemoryException* pEx)
+	{
+		pEx->Delete();
+		TRACE(_T("Memory exception in CSettingsStore::Write()!\n"));
+	}
+
+	return bRes;
+}
+
+BOOL CSettingsStore::Write(LPCTSTR lpszValueName, CObject* pObj)
+{
+	ASSERT_VALID(pObj);
+	return Write(lpszValueName, *pObj);
+}
+
+BOOL CSettingsStore::Write(LPCTSTR lpszValueName, const CRect& rect)
+{
+	if (m_bReadOnly)
+	{
+		ASSERT(FALSE);
+		return FALSE;
+	}
+
+	BOOL bRes = FALSE;
+	try
+	{
+		CMemFile file;
+
+		{
+			CArchive ar(&file, CArchive::store);
+			ar << rect;
+			ar.Flush();
+		}
+
+		DWORD dwDataSize = (DWORD) file.GetLength();
+		LPBYTE lpbData = file.Detach();
+
+		if (lpbData == NULL)
+		{
+			return FALSE;
+		}
+
+		bRes = Write(lpszValueName, lpbData, (UINT) dwDataSize);
+		free(lpbData);
+	}
+	catch(CMemoryException* pEx)
+	{
+		pEx->Delete();
+		TRACE(_T("Memory exception in CSettingsStore::Write()!\n"));
+		return FALSE;
+	}
+
+	return bRes;
+}
+
+BOOL CSettingsStore::Write(LPCTSTR lpszValueName, LPBYTE pData, UINT nBytes)
+{
+	if (m_bReadOnly)
+	{
+		ASSERT(FALSE);
+		return FALSE;
+	}
+
+	return m_reg.SetBinaryValue(lpszValueName, pData, (ULONG) nBytes) == ERROR_SUCCESS;
+}
+
+BOOL CSettingsStore::Read(LPCTSTR lpszValueName, int& nValue)
+{
+	return Read(lpszValueName, (DWORD&)nValue);
+}
+
+BOOL CSettingsStore::Read(LPCTSTR lpszValueName, DWORD& dwValue)
+{
+	return m_reg.QueryDWORDValue(lpszValueName, dwValue) == ERROR_SUCCESS;
+}
+
+BOOL CSettingsStore::Read(LPCTSTR lpszValueName, CString& strValue)
+{
+	ENSURE(lpszValueName != NULL);
+
+	strValue.Empty();
+
+	DWORD dwCount = 0;
+	if (m_reg.QueryStringValue(lpszValueName, NULL, &dwCount) != ERROR_SUCCESS)
+	{
+		return FALSE;
+	}
+
+	if (dwCount == 0)
+	{
+		return TRUE;
+	}
+
+	LPTSTR szValue = new TCHAR [dwCount + 1];
+
+	BOOL bRes = m_reg.QueryStringValue(lpszValueName, szValue, &dwCount) == ERROR_SUCCESS;
+	if (bRes)
+	{
+		strValue = szValue;
+	}
+
+	delete [] szValue;
+	return bRes;
+}
+
+BOOL CSettingsStore::Read(LPCTSTR lpszValueName, CRect& rect)
+{
+	BOOL bSucess = FALSE;
+	BYTE* pData = NULL;
+	UINT uDataSize;
+
+	if (!Read(lpszValueName, &pData, &uDataSize))
+	{
+		ENSURE(pData == NULL);
+		return FALSE;
+	}
+
+	ENSURE(pData != NULL);
+
+	try
+	{
+		CMemFile file(pData, uDataSize);
+		CArchive ar(&file, CArchive::load);
+
+		ar >> rect;
+		bSucess = TRUE;
+	}
+	catch(CMemoryException* pEx)
+	{
+		pEx->Delete();
+		TRACE(_T("Memory exception in CSettingsStore::Read()!\n"));
+	}
+	catch(CArchiveException* pEx)
+	{
+		pEx->Delete();
+		TRACE(_T("CArchiveException exception in CSettingsStore::Read()!\n"));
+	}
+
+	delete [] pData;
+	return bSucess;
+}
+
+BOOL CSettingsStore::Read(LPCTSTR lpszValueName, BYTE** ppData, UINT* pcbData)
+{
+	ENSURE(lpszValueName != NULL);
+	ENSURE(ppData != NULL);
+	ENSURE(pcbData != NULL);
+
+	*ppData = NULL;
+	*pcbData = 0;
+
+	if (m_reg.QueryBinaryValue(lpszValueName, NULL, (ULONG*)pcbData) != ERROR_SUCCESS || *pcbData == 0)
+	{
+		return FALSE;
+	}
+
+	*ppData = new BYTE [*pcbData];
+
+	if (m_reg.QueryBinaryValue(lpszValueName, *ppData, (ULONG*)pcbData) != ERROR_SUCCESS)
+	{
+		delete [] *ppData;
+		*ppData = NULL;
+		return FALSE;
+	}
+
+	return TRUE;
+}
+
+BOOL CSettingsStore::Read(LPCTSTR lpszValueName, CObject& obj)
+{
+	BOOL bSucess = FALSE;
+	BYTE* pData = NULL;
+	UINT uDataSize;
+
+	if (!Read(lpszValueName, &pData, &uDataSize))
+	{
+		ENSURE(pData == NULL);
+		return FALSE;
+	}
+
+	ENSURE(pData != NULL);
+
+	try
+	{
+		CMemFile file(pData, uDataSize);
+		CArchive ar(&file, CArchive::load);
+
+		obj.Serialize(ar);
+		bSucess = TRUE;
+	}
+	catch(CMemoryException* pEx)
+	{
+		pEx->Delete();
+		TRACE(_T("Memory exception in CSettingsStore::Read()!\n"));
+	}
+	catch(CArchiveException* pEx)
+	{
+		pEx->Delete();
+		TRACE(_T("CArchiveException exception in CSettingsStore::Read()!\n"));
+	}
+
+	delete [] pData;
+	return bSucess;
+}
+
+BOOL CSettingsStore::Read(LPCTSTR lpszValueName, CObject*& pObj)
+{
+	BOOL bSucess = FALSE;
+	BYTE* pData = NULL;
+	UINT uDataSize;
+
+	if (!Read(lpszValueName, &pData, &uDataSize))
+	{
+		ENSURE(pData == NULL);
+		return FALSE;
+	}
+
+	ENSURE(pData != NULL);
+
+	try
+	{
+		CMemFile file(pData, uDataSize);
+		CArchive ar(&file, CArchive::load);
+		ar >> pObj;
+
+		bSucess = TRUE;
+	}
+	catch(CMemoryException* pEx)
+	{
+		pEx->Delete();
+		TRACE(_T("Memory exception in CSettingsStore::Read()!\n"));
+	}
+	catch(CArchiveException* pEx)
+	{
+		pEx->Delete();
+		TRACE(_T("CArchiveException exception in CSettingsStore::Read()!\n"));
+	}
+
+	delete [] pData;
+	return bSucess;
+}
+
+BOOL CSettingsStore::DeleteValue(LPCTSTR lpszValue)
+{
+	return m_reg.DeleteValue(lpszValue) == ERROR_SUCCESS;
+}
+
+BOOL CSettingsStore::DeleteKey(LPCTSTR lpszPath, BOOL bAdmin)
+{
+	if (m_bReadOnly)
+	{
+		return FALSE;
+	}
+
+	m_reg.Close();
+	m_reg.m_hKey = bAdmin ? HKEY_LOCAL_MACHINE : HKEY_CURRENT_USER;
+
+	return m_reg.RecurseDeleteKey(PreparePath(lpszPath)) == ERROR_SUCCESS;
+}
+
+//////////////////////////////////////////////////////////////////////////////
+// CSettingsStoreSP - Helper class that manages "safe" CSettingsStore pointer
+
+CRuntimeClass* CSettingsStoreSP::m_pRTIDefault = NULL;
+
+BOOL __stdcall CSettingsStoreSP::SetRuntimeClass(CRuntimeClass* pRTI)
+{
+	if (pRTI != NULL &&
+		!pRTI->IsDerivedFrom(RUNTIME_CLASS(CSettingsStore)))
+	{
+		ASSERT(FALSE);
+		return FALSE;
+	}
+
+	m_pRTIDefault = pRTI;
+	return TRUE;
+}
+
+CSettingsStore& CSettingsStoreSP::Create(BOOL bAdmin, BOOL bReadOnly)
+{
+	if (m_pRegistry != NULL)
+	{
+		ASSERT(FALSE);
+		ASSERT_VALID(m_pRegistry);
+		return *m_pRegistry;
+	}
+
+	if (m_pRTIDefault == NULL)
+	{
+		m_pRegistry = new CSettingsStore;
+	}
+	else
+	{
+		ASSERT(m_pRTIDefault->IsDerivedFrom(RUNTIME_CLASS(CSettingsStore)));
+		m_pRegistry = DYNAMIC_DOWNCAST(CSettingsStore, m_pRTIDefault->CreateObject());
+	}
+
+	ASSERT_VALID(m_pRegistry);
+
+	m_pRegistry->m_bReadOnly = bReadOnly;
+	m_pRegistry->m_bAdmin = bAdmin;
+	m_pRegistry->m_reg.m_hKey = bAdmin ? HKEY_LOCAL_MACHINE : HKEY_CURRENT_USER;
+	m_pRegistry->m_dwUserData = m_dwUserData;
+
+	return *m_pRegistry;
+}
+
+

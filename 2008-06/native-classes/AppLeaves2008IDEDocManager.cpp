@@ -32,3 +32,6 @@ void CIDEDocManager::OnFileNew()
             document->OnCloseDocument();
     }
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::scoped_ptr<std::exception>;

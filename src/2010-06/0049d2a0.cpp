@@ -1,19 +1,102 @@
 // from server: 100% by auto
-// roc 2010-06 0049d2a0  unit: G3D::VertexAndPixelShader  size: 17 bytes
-// Make this compile to the exact bytes below, then: roc check 2010-06 0049d2a0
-//
-// 0049d2a0  55                   push ebp
-// 0049d2a1  8bec                 mov ebp, esp
-// 0049d2a3  51                   push ecx
-// 0049d2a4  894dfc               mov dword ptr [ebp - 4], ecx
-// 0049d2a7  8b45fc               mov eax, dword ptr [ebp - 4]
-// 0049d2aa  83c048               add eax, 0x48
-// 0049d2ad  8be5                 mov esp, ebp
-// 0049d2af  5d                   pop ebp
-// 0049d2b0  c3                   ret 
-// library wildmagic-2-core/Geometry\WmlCircle3.cpp (function ?Center@?$Circle3@N@Wml@@QBEABV?$Vector3@N@2@XZ)
-
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /Od /Ob1 /GS- /MT
 // roc-lib: wildmagic-2-core Geometry/WmlCircle3.cpp
+
+// Candidate translation unit (score above; library headers required).
+// Magic Software, Inc.
+// http://www.magic-software.com
+// http://www.wild-magic.com
+// Copyright (c) 2003.  All Rights Reserved
+//
+// The Wild Magic Library (WML) source code is supplied under the terms of
+// the license agreement http://www.magic-software.com/License/WildMagic.pdf
+// and may not be copied or disclosed except in accordance with the terms of
+// that agreement.
+
+#include "WmlCircle3.h"
+using namespace Wml;
+
+//----------------------------------------------------------------------------
+template <class Real>
+Circle3<Real>::Circle3 ()
+    :
+    m_kU(Vector3<Real>::ZERO),
+    m_kV(Vector3<Real>::ZERO),
+    m_kN(Vector3<Real>::ZERO),
+    m_kCenter(Vector3<Real>::ZERO)
+{
+    m_fRadius = (Real)0.0;
+}
+//----------------------------------------------------------------------------
+template <class Real>
+Vector3<Real>& Circle3<Real>::U ()
+{
+    return m_kU;
+}
+//----------------------------------------------------------------------------
+template <class Real>
+const Vector3<Real>& Circle3<Real>::U () const
+{
+    return m_kU;
+}
+//----------------------------------------------------------------------------
+template <class Real>
+Vector3<Real>& Circle3<Real>::V ()
+{
+    return m_kV;
+}
+//----------------------------------------------------------------------------
+template <class Real>
+const Vector3<Real>& Circle3<Real>::V () const
+{
+    return m_kV;
+}
+//----------------------------------------------------------------------------
+template <class Real>
+Vector3<Real>& Circle3<Real>::N ()
+{
+    return m_kN;
+}
+//----------------------------------------------------------------------------
+template <class Real>
+const Vector3<Real>& Circle3<Real>::N () const
+{
+    return m_kN;
+}
+//----------------------------------------------------------------------------
+template <class Real>
+Vector3<Real>& Circle3<Real>::Center ()
+{
+    return m_kCenter;
+}
+//----------------------------------------------------------------------------
+template <class Real>
+const Vector3<Real>& Circle3<Real>::Center () const
+{
+    return m_kCenter;
+}
+//----------------------------------------------------------------------------
+template <class Real>
+Real& Circle3<Real>::Radius ()
+{
+    return m_fRadius;
+}
+//----------------------------------------------------------------------------
+template <class Real>
+const Real& Circle3<Real>::Radius () const
+{
+    return m_fRadius;
+}
+//----------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------
+// explicit instantiation
+//----------------------------------------------------------------------------
+namespace Wml
+{
+template class WML_ITEM Circle3<float>;
+template class WML_ITEM Circle3<double>;
+}
+//----------------------------------------------------------------------------

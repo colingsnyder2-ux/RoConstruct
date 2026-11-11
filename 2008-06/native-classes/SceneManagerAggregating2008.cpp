@@ -108,3 +108,11 @@ namespace RBX
 		}
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Container_base_aux_alloc_real<std::allocator<G3D::WeakReferenceCountedPointer<RBX::RenderBase::Chunk> > >;
+template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<RBX::RenderBase::AggregatingSceneManager::BucketKey const ,G3D::ReferenceCountedPointer<RBX::RenderBase::AggregatingSceneManager::Bucket> > > >;
+template class std::_Tree<std::_Tset_traits<G3D::WeakReferenceCountedPointer<RBX::RenderBase::Chunk>,std::less<G3D::WeakReferenceCountedPointer<RBX::RenderBase::Chunk> >,std::allocator<G3D::WeakReferenceCountedPointer<RBX::RenderBase::Chunk> >,0> >;
+template class std::allocator<G3D::WeakReferenceCountedPointer<RBX::RenderBase::Chunk> >;
+template class std::allocator<std::_Tree_nod<std::_Tmap_traits<RBX::RenderBase::AggregatingSceneManager::BucketKey,G3D::ReferenceCountedPointer<RBX::RenderBase::AggregatingSceneManager::Bucket>,std::less<RBX::RenderBase::AggregatingSceneManager::BucketKey>,std::allocator<std::pair<RBX::RenderBase::AggregatingSceneManager::BucketKey const ,G3D::ReferenceCountedPointer<RBX::RenderBase::AggregatingSceneManager::Bucket> > >,0> >::_Node *>;
+template class std::allocator<std::_Tree_nod<std::_Tset_traits<G3D::WeakReferenceCountedPointer<RBX::RenderBase::Chunk>,std::less<G3D::WeakReferenceCountedPointer<RBX::RenderBase::Chunk> >,std::allocator<G3D::WeakReferenceCountedPointer<RBX::RenderBase::Chunk> >,0> >::_Node *>;

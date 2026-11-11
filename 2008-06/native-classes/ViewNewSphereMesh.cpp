@@ -1,4 +1,5 @@
 // 2008-06 native RBX::ViewNew::SphereBuilder / SphereMesh (inactive): the unit 004fce90..004fd40f.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "ViewNew/SphereMesh.h"
 #include "ViewNew/QuadVolumeFace.h"
 

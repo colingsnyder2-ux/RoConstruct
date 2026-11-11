@@ -10,3 +10,6 @@ LDraw2RobloxMapRoot::~LDraw2RobloxMapRoot()
     for (part = parts.begin(); part != parts.end(); ++part) delete part->second;
 }
 } }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::map<int,RBX::LDraw2Lua::LDraw2RobloxColorMap *,std::less<int>,std::allocator<std::pair<int const ,RBX::LDraw2Lua::LDraw2RobloxColorMap *> > >;

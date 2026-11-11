@@ -67,6 +67,8 @@ namespace RBX
 			float _groundLOD;                                                         // +0xc
 			float _LODShift;                                                          // +0x10
 		public:
+			// Direct calls in update 007afce0 target local static initializer 007afc60.
+			static G3D::ToneMap* getToneMap();
 			G3D::ReferenceCountedPointer<G3D::Lighting> update(float, float, bool, float,
 			                                                   const G3D::ReferenceCountedPointer<G3D::Lighting>&,
 			                                                   const G3D::LightingParameters&,

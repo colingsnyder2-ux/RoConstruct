@@ -1,108 +1,588 @@
 // from server: 100% by auto
-// roc 2008-06 0055cdc0  unit: RBX::MD5HasherImpl  size: 263 bytes
-// Make this compile to the exact bytes below, then: roc check 2008-06 0055cdc0
-//
-// 0055cdc0  8b442408             mov eax, dword ptr [esp + 8]
-// 0055cdc4  53                   push ebx
-// 0055cdc5  55                   push ebp
-// 0055cdc6  56                   push esi
-// 0055cdc7  8bd9                 mov ebx, ecx
-// 0055cdc9  8b6b04               mov ebp, dword ptr [ebx + 4]
-// 0055cdcc  57                   push edi
-// 0055cdcd  8b3b                 mov edi, dword ptr [ebx]
-// 0055cdcf  85ff                 test edi, edi
-// 0055cdd1  7508                 jne 0x55cddb
-// 0055cdd3  81fd00000080         cmp ebp, 0x80000000
-// 0055cdd9  7432                 je 0x55ce0d
-// 0055cddb  83ffff               cmp edi, -1
-// 0055cdde  7508                 jne 0x55cde8
-// 0055cde0  81fdffffff7f         cmp ebp, 0x7fffffff
-// 0055cde6  7425                 je 0x55ce0d
-// 0055cde8  83fffe               cmp edi, -2
-// 0055cdeb  750c                 jne 0x55cdf9
-// 0055cded  81fdffffff7f         cmp ebp, 0x7fffffff
-// 0055cdf3  0f84b6000000         je 0x55ceaf
-// 0055cdf9  8b30                 mov esi, dword ptr [eax]
-// 0055cdfb  85f6                 test esi, esi
-// 0055cdfd  740e                 je 0x55ce0d
-// 0055cdff  83feff               cmp esi, -1
-// 0055ce02  7409                 je 0x55ce0d
-// 0055ce04  83fefe               cmp esi, -2
-// 0055ce07  0f858c000000         jne 0x55ce99
-// 0055ce0d  83fffe               cmp edi, -2
-// 0055ce10  750c                 jne 0x55ce1e
-// 0055ce12  81fdffffff7f         cmp ebp, 0x7fffffff
-// 0055ce18  0f8491000000         je 0x55ceaf
-// 0055ce1e  8b30                 mov esi, dword ptr [eax]
-// 0055ce20  83fefe               cmp esi, -2
-// 0055ce23  0f8486000000         je 0x55ceaf
-// 0055ce29  83ffff               cmp edi, -1
-// 0055ce2c  750c                 jne 0x55ce3a
-// 0055ce2e  81fdffffff7f         cmp ebp, 0x7fffffff
-// 0055ce34  7504                 jne 0x55ce3a
-// 0055ce36  85f6                 test esi, esi
-// 0055ce38  7475                 je 0x55ceaf
-// 0055ce3a  85ff                 test edi, edi
-// 0055ce3c  750d                 jne 0x55ce4b
-// 0055ce3e  81fd00000080         cmp ebp, 0x80000000
-// 0055ce44  7505                 jne 0x55ce4b
-// 0055ce46  83feff               cmp esi, -1
-// 0055ce49  7464                 je 0x55ceaf
-// 0055ce4b  e8f0f2ffff           call 0x55c140
-// 0055ce50  84c0                 test al, al
-// 0055ce52  7414                 je 0x55ce68
-// 0055ce54  8b442414             mov eax, dword ptr [esp + 0x14]
-// 0055ce58  8bcf                 mov ecx, edi
-// 0055ce5a  5f                   pop edi
-// 0055ce5b  5e                   pop esi
-// 0055ce5c  8bd5                 mov edx, ebp
-// 0055ce5e  5d                   pop ebp
-// 0055ce5f  8908                 mov dword ptr [eax], ecx
-// 0055ce61  895004               mov dword ptr [eax + 4], edx
-// 0055ce64  5b                   pop ebx
-// 0055ce65  c20800               ret 8
-// 0055ce68  83feff               cmp esi, -1
-// 0055ce6b  7514                 jne 0x55ce81
-// 0055ce6d  8b442414             mov eax, dword ptr [esp + 0x14]
-// 0055ce71  5f                   pop edi
-// 0055ce72  8930                 mov dword ptr [eax], esi
-// 0055ce74  5e                   pop esi
-// 0055ce75  5d                   pop ebp
-// 0055ce76  c74004ffffff7f       mov dword ptr [eax + 4], 0x7fffffff
-// 0055ce7d  5b                   pop ebx
-// 0055ce7e  c20800               ret 8
-// 0055ce81  85f6                 test esi, esi
-// 0055ce83  7514                 jne 0x55ce99
-// 0055ce85  8b442414             mov eax, dword ptr [esp + 0x14]
-// 0055ce89  5f                   pop edi
-// 0055ce8a  8930                 mov dword ptr [eax], esi
-// 0055ce8c  5e                   pop esi
-// 0055ce8d  5d                   pop ebp
-// 0055ce8e  c7400400000080       mov dword ptr [eax + 4], 0x80000000
-// 0055ce95  5b                   pop ebx
-// 0055ce96  c20800               ret 8
-// 0055ce99  8b442414             mov eax, dword ptr [esp + 0x14]
-// 0055ce9d  33c9                 xor ecx, ecx
-// 0055ce9f  03f7                 add esi, edi
-// 0055cea1  5f                   pop edi
-// 0055cea2  8930                 mov dword ptr [eax], esi
-// 0055cea4  5e                   pop esi
-// 0055cea5  13cd                 adc ecx, ebp
-// 0055cea7  5d                   pop ebp
-// 0055cea8  894804               mov dword ptr [eax + 4], ecx
-// 0055ceab  5b                   pop ebx
-// 0055ceac  c20800               ret 8
-// 0055ceaf  8b442414             mov eax, dword ptr [esp + 0x14]
-// 0055ceb3  5f                   pop edi
-// 0055ceb4  5e                   pop esi
-// 0055ceb5  5d                   pop ebp
-// 0055ceb6  c700feffffff         mov dword ptr [eax], 0xfffffffe
-// 0055cebc  c74004ffffff7f       mov dword ptr [eax + 4], 0x7fffffff
-// 0055cec3  5b                   pop ebx
-// 0055cec4  c20800               ret 8
-// library boost-1.36.0/libs\thread\src\win32\thread.cpp (function ??$?HK@?$int_adapter@_J@date_time@boost@@QBE?AV012@ABV?$int_adapter@K@12@@Z)
-
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
 // roc-lib: boost-1.36.0 libs/thread/src/win32/thread.cpp
+
+// Candidate translation unit (score above; library headers required).
+// Distributed under the Boost Software License, Version 1.0. (See
+// accompanying file LICENSE_1_0.txt or copy at
+// http://www.boost.org/LICENSE_1_0.txt)
+// (C) Copyright 2007 Anthony Williams
+// (C) Copyright 2007 David Deakins
+
+#define _WIN32_WINNT 0x400
+#define WINVER 0x400
+
+#include <boost/thread/thread.hpp>
+#include <algorithm>
+#include <windows.h>
+#ifndef UNDER_CE
+#include <process.h>
+#endif
+#include <stdio.h>
+#include <boost/thread/once.hpp>
+#include <boost/thread/tss.hpp>
+#include <boost/assert.hpp>
+#include <boost/thread/detail/tss_hooks.hpp>
+#include <boost/date_time/posix_time/conversion.hpp>
+
+namespace boost
+{
+    namespace
+    {
+        boost::once_flag current_thread_tls_init_flag=BOOST_ONCE_INIT;
+        DWORD current_thread_tls_key=0;
+
+        void create_current_thread_tls_key()
+        {
+            current_thread_tls_key=TlsAlloc();
+            BOOST_ASSERT(current_thread_tls_key!=TLS_OUT_OF_INDEXES);
+        }
+
+        detail::thread_data_base* get_current_thread_data()
+        {
+            boost::call_once(current_thread_tls_init_flag,create_current_thread_tls_key);
+            return (detail::thread_data_base*)TlsGetValue(current_thread_tls_key);
+        }
+
+        void set_current_thread_data(detail::thread_data_base* new_data)
+        {
+            boost::call_once(current_thread_tls_init_flag,create_current_thread_tls_key);
+            BOOST_VERIFY(TlsSetValue(current_thread_tls_key,new_data));
+        }
+
+#ifdef BOOST_NO_THREADEX
+// Windows CE doesn't define _beginthreadex
+
+        struct ThreadProxyData
+        {
+            typedef unsigned (__stdcall* func)(void*);
+            func start_address_;
+            void* arglist_;
+            ThreadProxyData(func start_address,void* arglist) : start_address_(start_address), arglist_(arglist) {}
+        };
+
+        DWORD WINAPI ThreadProxy(LPVOID args)
+        {
+            ThreadProxyData* data=reinterpret_cast<ThreadProxyData*>(args);
+            DWORD ret=data->start_address_(data->arglist_);
+            delete data;
+            return ret;
+        }
+        
+        typedef void* uintptr_t;
+
+        inline uintptr_t const _beginthreadex(void* security, unsigned stack_size, unsigned (__stdcall* start_address)(void*),
+                                              void* arglist, unsigned initflag, unsigned* thrdaddr)
+        {
+            DWORD threadID;
+            HANDLE hthread=CreateThread(static_cast<LPSECURITY_ATTRIBUTES>(security),stack_size,ThreadProxy,
+                                        new ThreadProxyData(start_address,arglist),initflag,&threadID);
+            if (hthread!=0)
+                *thrdaddr=threadID;
+            return reinterpret_cast<uintptr_t const>(hthread);
+        }
+
+#endif
+
+    }
+
+    namespace detail
+    {
+        struct thread_exit_callback_node
+        {
+            boost::detail::thread_exit_function_base* func;
+            thread_exit_callback_node* next;
+
+            thread_exit_callback_node(boost::detail::thread_exit_function_base* func_,
+                                      thread_exit_callback_node* next_):
+                func(func_),next(next_)
+            {}
+        };
+
+        struct tss_data_node
+        {
+            void const* key;
+            boost::shared_ptr<boost::detail::tss_cleanup_function> func;
+            void* value;
+            tss_data_node* next;
+
+            tss_data_node(void const* key_,boost::shared_ptr<boost::detail::tss_cleanup_function> func_,void* value_,
+                          tss_data_node* next_):
+                key(key_),func(func_),value(value_),next(next_)
+            {}
+        };
+
+    }
+
+    namespace
+    {
+        void run_thread_exit_callbacks()
+        {
+            detail::thread_data_ptr current_thread_data(get_current_thread_data(),false);
+            if(current_thread_data)
+            {
+                while(current_thread_data->tss_data || current_thread_data->thread_exit_callbacks)
+                {
+                    while(current_thread_data->thread_exit_callbacks)
+                    {
+                        detail::thread_exit_callback_node* const current_node=current_thread_data->thread_exit_callbacks;
+                        current_thread_data->thread_exit_callbacks=current_node->next;
+                        if(current_node->func)
+                        {
+                            (*current_node->func)();
+                            boost::detail::heap_delete(current_node->func);
+                        }
+                        boost::detail::heap_delete(current_node);
+                    }
+                    while(current_thread_data->tss_data)
+                    {
+                        detail::tss_data_node* const current_node=current_thread_data->tss_data;
+                        current_thread_data->tss_data=current_node->next;
+                        if(current_node->func)
+                        {
+                            (*current_node->func)(current_node->value);
+                        }
+                        boost::detail::heap_delete(current_node);
+                    }
+                }
+                
+            }
+            set_current_thread_data(0);
+        }
+        
+        unsigned __stdcall thread_start_function(void* param)
+        {
+            detail::thread_data_base* const thread_info(reinterpret_cast<detail::thread_data_base*>(param));
+            set_current_thread_data(thread_info);
+            try
+            {
+                thread_info->run();
+            }
+            catch(thread_interrupted const&)
+            {
+            }
+            catch(...)
+            {
+                std::terminate();
+            }
+            run_thread_exit_callbacks();
+            return 0;
+        }
+    }
+
+    thread::thread()
+    {}
+
+    void thread::start_thread()
+    {
+        uintptr_t const new_thread=_beginthreadex(0,0,&thread_start_function,thread_info.get(),CREATE_SUSPENDED,&thread_info->id);
+        if(!new_thread)
+        {
+            throw thread_resource_error();
+        }
+        intrusive_ptr_add_ref(thread_info.get());
+        thread_info->thread_handle=(detail::win32::handle)(new_thread);
+        ResumeThread(thread_info->thread_handle);
+    }
+
+    thread::thread(detail::thread_data_ptr data):
+        thread_info(data)
+    {}
+
+    namespace
+    {
+        struct externally_launched_thread:
+            detail::thread_data_base
+        {
+            externally_launched_thread()
+            {
+                ++count;
+                interruption_enabled=false;
+            }
+            
+            void run()
+            {}
+        private:
+            externally_launched_thread(externally_launched_thread&);
+            void operator=(externally_launched_thread&);
+        };
+
+        void make_external_thread_data()
+        {
+            externally_launched_thread* me=detail::heap_new<externally_launched_thread>();
+            set_current_thread_data(me);
+        }
+
+        detail::thread_data_base* get_or_make_current_thread_data()
+        {
+            detail::thread_data_base* current_thread_data(get_current_thread_data());
+            if(!current_thread_data)
+            {
+                make_external_thread_data();
+                current_thread_data=get_current_thread_data();
+            }
+            return current_thread_data;
+        }
+        
+    }
+
+    thread::~thread()
+    {
+        detach();
+    }
+    
+    thread::id thread::get_id() const
+    {
+        return thread::id(get_thread_info());
+    }
+
+    bool thread::joinable() const
+    {
+        return get_thread_info();
+    }
+
+    void thread::join()
+    {
+        detail::thread_data_ptr local_thread_info=get_thread_info();
+        if(local_thread_info)
+        {
+            this_thread::interruptible_wait(local_thread_info->thread_handle,detail::timeout::sentinel());
+            release_handle();
+        }
+    }
+
+    bool thread::timed_join(boost::system_time const& wait_until)
+    {
+        detail::thread_data_ptr local_thread_info=get_thread_info();
+        if(local_thread_info)
+        {
+            if(!this_thread::interruptible_wait(local_thread_info->thread_handle,get_milliseconds_until(wait_until)))
+            {
+                return false;
+            }
+            release_handle();
+        }
+        return true;
+    }
+    
+    void thread::detach()
+    {
+        release_handle();
+    }
+
+    void thread::release_handle()
+    {
+        lock_guard<mutex> l1(thread_info_mutex);
+        thread_info=0;
+    }
+    
+    void thread::interrupt()
+    {
+        detail::thread_data_ptr local_thread_info=get_thread_info();
+        if(local_thread_info)
+        {
+            local_thread_info->interrupt();
+        }
+    }
+    
+    bool thread::interruption_requested() const
+    {
+        detail::thread_data_ptr local_thread_info=get_thread_info();
+        return local_thread_info.get() && (detail::win32::WaitForSingleObject(local_thread_info->interruption_handle,0)==0);
+    }
+    
+    unsigned thread::hardware_concurrency()
+    {
+        SYSTEM_INFO info={0};
+        GetSystemInfo(&info);
+        return info.dwNumberOfProcessors;
+    }
+    
+    thread::native_handle_type thread::native_handle()
+    {
+        detail::thread_data_ptr local_thread_info=get_thread_info();
+        return local_thread_info?(detail::win32::handle)local_thread_info->thread_handle:detail::win32::invalid_handle_value;
+    }
+
+    detail::thread_data_ptr thread::get_thread_info() const
+    {
+        boost::mutex::scoped_lock l(thread_info_mutex);
+        return thread_info;
+    }
+
+    namespace this_thread
+    {
+        namespace
+        {
+            LARGE_INTEGER get_due_time(detail::timeout const&  target_time)
+            {
+                LARGE_INTEGER due_time={0};
+                if(target_time.relative)
+                {
+                    unsigned long const elapsed_milliseconds=GetTickCount()-target_time.start;
+                    LONGLONG const remaining_milliseconds=(target_time.milliseconds-elapsed_milliseconds);
+                    LONGLONG const hundred_nanoseconds_in_one_millisecond=10000;
+
+                    if(remaining_milliseconds>0)
+                    {
+                        due_time.QuadPart=-(remaining_milliseconds*hundred_nanoseconds_in_one_millisecond);
+                    }
+                }
+                else
+                {
+                    SYSTEMTIME target_system_time={0};
+                    target_system_time.wYear=target_time.abs_time.date().year();
+                    target_system_time.wMonth=target_time.abs_time.date().month();
+                    target_system_time.wDay=target_time.abs_time.date().day();
+                    target_system_time.wHour=(WORD)target_time.abs_time.time_of_day().hours();
+                    target_system_time.wMinute=(WORD)target_time.abs_time.time_of_day().minutes();
+                    target_system_time.wSecond=(WORD)target_time.abs_time.time_of_day().seconds();
+
+                    if(!SystemTimeToFileTime(&target_system_time,((FILETIME*)&due_time)))
+                    {
+                        due_time.QuadPart=0;
+                    }
+                    else
+                    {
+                        long const hundred_nanoseconds_in_one_second=10000000;
+                        due_time.QuadPart+=target_time.abs_time.time_of_day().fractional_seconds()*(hundred_nanoseconds_in_one_second/target_time.abs_time.time_of_day().ticks_per_second());
+                    }
+                }
+                return due_time;
+            }
+        }
+        
+
+        bool interruptible_wait(detail::win32::handle handle_to_wait_for,detail::timeout target_time)
+        {
+            detail::win32::handle handles[3]={0};
+            unsigned handle_count=0;
+            unsigned wait_handle_index=~0U;
+            unsigned interruption_index=~0U;
+            unsigned timeout_index=~0U;
+            if(handle_to_wait_for!=detail::win32::invalid_handle_value)
+            {
+                wait_handle_index=handle_count;
+                handles[handle_count++]=handle_to_wait_for;
+            }
+            if(get_current_thread_data() && get_current_thread_data()->interruption_enabled)
+            {
+                interruption_index=handle_count;
+                handles[handle_count++]=get_current_thread_data()->interruption_handle;
+            }
+
+            detail::win32::handle_manager timer_handle;
+            
+#ifndef UNDER_CE
+            unsigned const min_timer_wait_period=20;
+            
+            if(!target_time.is_sentinel())
+            {
+                detail::timeout::remaining_time const time_left=target_time.remaining_milliseconds();
+                if(time_left.milliseconds > min_timer_wait_period)
+                {
+                    // for a long-enough timeout, use a waitable timer (which tracks clock changes)
+                    timer_handle=CreateWaitableTimer(NULL,false,NULL);
+                    if(timer_handle!=0)
+                    {
+                        LARGE_INTEGER due_time=get_due_time(target_time);
+                        
+                        bool const set_time_succeeded=SetWaitableTimer(timer_handle,&due_time,0,0,0,false)!=0;
+                        if(set_time_succeeded)
+                        {
+                            timeout_index=handle_count;
+                            handles[handle_count++]=timer_handle;
+                        }
+                    }
+                }
+                else if(!target_time.relative)
+                {
+                    // convert short absolute-time timeouts into relative ones, so we don't race against clock changes
+                    target_time=detail::timeout(time_left.milliseconds);
+                }
+            }
+#endif
+        
+            bool const using_timer=timeout_index!=~0u;
+            detail::timeout::remaining_time time_left(0);
+            
+            do
+            {
+                if(!using_timer)
+                {
+                    time_left=target_time.remaining_milliseconds();
+                }
+                
+                if(handle_count)
+                {
+                    unsigned long const notified_index=detail::win32::WaitForMultipleObjects(handle_count,handles,false,using_timer?INFINITE:time_left.milliseconds);
+                    if(notified_index<handle_count)
+                    {
+                        if(notified_index==wait_handle_index)
+                        {
+                            return true;
+                        }
+                        else if(notified_index==interruption_index)
+                        {
+                            detail::win32::ResetEvent(get_current_thread_data()->interruption_handle);
+                            throw thread_interrupted();
+                        }
+                        else if(notified_index==timeout_index)
+                        {
+                            return false;
+                        }
+                    }
+                }
+                else
+                {
+                    detail::win32::Sleep(time_left.milliseconds);
+                }
+                if(target_time.relative)
+                {
+                    target_time.milliseconds-=detail::timeout::max_non_infinite_wait;
+                }
+            }
+            while(time_left.more);
+            return false;
+        }
+
+        thread::id get_id()
+        {
+            return thread::id(get_or_make_current_thread_data());
+        }
+
+        void interruption_point()
+        {
+            if(interruption_enabled() && interruption_requested())
+            {
+                detail::win32::ResetEvent(get_current_thread_data()->interruption_handle);
+                throw thread_interrupted();
+            }
+        }
+        
+        bool interruption_enabled()
+        {
+            return get_current_thread_data() && get_current_thread_data()->interruption_enabled;
+        }
+        
+        bool interruption_requested()
+        {
+            return get_current_thread_data() && (detail::win32::WaitForSingleObject(get_current_thread_data()->interruption_handle,0)==0);
+        }
+
+        void yield()
+        {
+            detail::win32::Sleep(0);
+        }
+        
+        disable_interruption::disable_interruption():
+            interruption_was_enabled(interruption_enabled())
+        {
+            if(interruption_was_enabled)
+            {
+                get_current_thread_data()->interruption_enabled=false;
+            }
+        }
+        
+        disable_interruption::~disable_interruption()
+        {
+            if(get_current_thread_data())
+            {
+                get_current_thread_data()->interruption_enabled=interruption_was_enabled;
+            }
+        }
+
+        restore_interruption::restore_interruption(disable_interruption& d)
+        {
+            if(d.interruption_was_enabled)
+            {
+                get_current_thread_data()->interruption_enabled=true;
+            }
+        }
+        
+        restore_interruption::~restore_interruption()
+        {
+            if(get_current_thread_data())
+            {
+                get_current_thread_data()->interruption_enabled=false;
+            }
+        }
+    }
+
+    namespace detail
+    {
+        void add_thread_exit_function(thread_exit_function_base* func)
+        {
+            detail::thread_data_base* const current_thread_data(get_or_make_current_thread_data());
+            thread_exit_callback_node* const new_node=
+                heap_new<thread_exit_callback_node>(func,
+                                                    current_thread_data->thread_exit_callbacks);
+            current_thread_data->thread_exit_callbacks=new_node;
+        }
+
+        tss_data_node* find_tss_data(void const* key)
+        {
+            detail::thread_data_base* const current_thread_data(get_current_thread_data());
+            if(current_thread_data)
+            {
+                detail::tss_data_node* current_node=current_thread_data->tss_data;
+                while(current_node)
+                {
+                    if(current_node->key==key)
+                    {
+                        return current_node;
+                    }
+                    current_node=current_node->next;
+                }
+            }
+            return NULL;
+        }
+
+        void* get_tss_data(void const* key)
+        {
+            if(tss_data_node* const current_node=find_tss_data(key))
+            {
+                return current_node->value;
+            }
+            return NULL;
+        }
+        
+        void set_tss_data(void const* key,boost::shared_ptr<tss_cleanup_function> func,void* tss_data,bool cleanup_existing)
+        {
+            tss_cleanup_implemented(); // if anyone uses TSS, we need the cleanup linked in
+            if(tss_data_node* const current_node=find_tss_data(key))
+            {
+                if(cleanup_existing && current_node->func.get())
+                {
+                    (*current_node->func)(current_node->value);
+                }
+                current_node->func=func;
+                current_node->value=tss_data;
+            }
+            else
+            {
+                detail::thread_data_base* const current_thread_data(get_or_make_current_thread_data());
+                tss_data_node* const new_node=heap_new<tss_data_node>(key,func,tss_data,current_thread_data->tss_data);
+                current_thread_data->tss_data=new_node;
+            }
+        }
+    }
+}
+
+
+extern "C" BOOST_THREAD_DECL void on_process_enter()
+{}
+
+extern "C" BOOST_THREAD_DECL void on_thread_enter()
+{}
+
+extern "C" BOOST_THREAD_DECL void on_process_exit()
+{}
+
+extern "C" BOOST_THREAD_DECL void on_thread_exit()
+{
+    boost::run_thread_exit_callbacks();
+}
+

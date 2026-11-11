@@ -83,3 +83,10 @@ void CRobloxView::OnInitialUpdate() {
     }
 }
 
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Vector_const_iterator<RBX::Listener<RBX::ServiceProvider,RBX::ServiceAdded> *,std::allocator<RBX::Listener<RBX::ServiceProvider,RBX::ServiceAdded> *> >;
+template class std::_Vector_const_iterator<RBX::Listener<RBX::ServiceProvider,RBX::ServiceRemoving> *,std::allocator<RBX::Listener<RBX::ServiceProvider,RBX::ServiceRemoving> *> >;
+template class std::_Vector_iterator<RBX::Listener<RBX::ServiceProvider,RBX::ServiceAdded> *,std::allocator<RBX::Listener<RBX::ServiceProvider,RBX::ServiceAdded> *> >;
+template class std::_Vector_iterator<RBX::Listener<RBX::ServiceProvider,RBX::ServiceRemoving> *,std::allocator<RBX::Listener<RBX::ServiceProvider,RBX::ServiceRemoving> *> >;
+template class std::vector<RBX::Listener<RBX::ServiceProvider,RBX::ServiceAdded> *,std::allocator<RBX::Listener<RBX::ServiceProvider,RBX::ServiceAdded> *> >;
+template class std::vector<RBX::Listener<RBX::ServiceProvider,RBX::ServiceRemoving> *,std::allocator<RBX::Listener<RBX::ServiceProvider,RBX::ServiceRemoving> *> >;

@@ -1,4 +1,5 @@
-// from server: 87% by EspClaude
+// from server: 100% by Intel
+﻿// from server: 87% by EspClaude
 // roc-cl: 50727
 // from server: 100% by king_originala
 // roc 2008-06 00646460  unit: RBX::RotatePJoint  size: 235 bytes
@@ -104,7 +105,7 @@ struct Geometry
 
 struct Part
 {
-    char padding[0x9c];
+    char padding[0x60];
     Geometry* geometry;
 };
 
@@ -131,10 +132,10 @@ inline const T& minimum(const T& a, const T& b)
 
 struct RotatePJoint
 {
-    char padding0[0x0c];
+    char padding0[0x8];
     Part* part0;
     Part* part1;
-    char padding1[0x14];
+    char padding1[0x18];
     Transform frame0;
     Transform frame1;
 

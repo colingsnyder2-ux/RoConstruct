@@ -44,3 +44,13 @@ LRESULT CPropGrid::OnUpdate(WPARAM, LPARAM)
     RedrawControl();
     return 0;
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class CArray<CXTPPropertyGridItem *,CXTPPropertyGridItem *>;
+template class CMap<unsigned int,unsigned int,int,int &>;
+template class std::_Container_base_aux_alloc_real<std::allocator<CPropGrid::Item *> >;
+template class std::_Tree<std::_Tset_traits<CPropGrid::Item *,std::less<CPropGrid::Item *>,std::allocator<CPropGrid::Item *>,0> >;
+template class std::_Vector_const_iterator<CPropGrid::Item *,std::allocator<CPropGrid::Item *> >;
+template class std::_Vector_iterator<CPropGrid::Item *,std::allocator<CPropGrid::Item *> >;
+template class std::allocator<std::_Tree_nod<std::_Tset_traits<CPropGrid::Item *,std::less<CPropGrid::Item *>,std::allocator<CPropGrid::Item *>,0> >::_Node *>;
+template class std::vector<CPropGrid::Item *,std::allocator<CPropGrid::Item *> >;

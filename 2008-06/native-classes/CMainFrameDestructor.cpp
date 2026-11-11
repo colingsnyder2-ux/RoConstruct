@@ -9,3 +9,15 @@ CMainFrame::~CMainFrame()
     }
     RBX::FillTool::color.removeListener(this);
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class CXTPCommandBarsSiteBase<CMDIFrameWnd>;
+template class CXTPFrameWndBase<CMDIFrameWnd>;
+template class RBX::Listener<RBX::FillToolColor,RBX::BrickColor>;
+template class RBX::Notifier<RBX::FillToolColor,RBX::BrickColor>;
+template class boost::scoped_ptr<CDataModelPropGrid>;
+template class boost::scoped_ptr<CSelectionCaption>;
+template class boost::scoped_ptr<CXTSplitterWnd>;
+template class std::_Vector_const_iterator<RBX::Listener<RBX::FillToolColor,RBX::BrickColor> *,std::allocator<RBX::Listener<RBX::FillToolColor,RBX::BrickColor> *> >;
+template class std::_Vector_iterator<RBX::Listener<RBX::FillToolColor,RBX::BrickColor> *,std::allocator<RBX::Listener<RBX::FillToolColor,RBX::BrickColor> *> >;
+template class std::vector<RBX::Listener<RBX::FillToolColor,RBX::BrickColor> *,std::allocator<RBX::Listener<RBX::FillToolColor,RBX::BrickColor> *> >;

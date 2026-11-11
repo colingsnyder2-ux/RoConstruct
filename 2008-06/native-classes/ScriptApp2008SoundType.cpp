@@ -29,3 +29,15 @@ namespace RBX
 		addPair(VICTORY_SOUND, "Victory");
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class RBX::Reflection::EnumDesc<enum RBX::SoundType>;
+template class std::_Container_base_aux_alloc_real<std::allocator<enum RBX::SoundType> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<RBX::Name const * const,enum RBX::SoundType> > >;
+template class std::_Tmap_traits<RBX::Name const *,enum RBX::SoundType,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::SoundType> >,0>;
+template class std::_Tree<std::_Tmap_traits<RBX::Name const *,enum RBX::SoundType,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::SoundType> >,0> >;
+template class std::_Vector_const_iterator<enum RBX::SoundType,std::allocator<enum RBX::SoundType> >;
+template class std::_Vector_iterator<enum RBX::SoundType,std::allocator<enum RBX::SoundType> >;
+template class std::allocator<std::_Tree_nod<std::_Tmap_traits<RBX::Name const *,enum RBX::SoundType,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::SoundType> >,0> >::_Node *>;
+template class std::allocator<std::pair<RBX::Name const * const,enum RBX::SoundType> >;
+template class std::vector<enum RBX::SoundType,std::allocator<enum RBX::SoundType> >;

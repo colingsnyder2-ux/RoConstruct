@@ -25,3 +25,8 @@ PartInstance::PartInstance()
 
 PartInstance::~PartInstance() {}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class RBX::ComputeProp<RBX::Part,RBX::PartInstance>;
+template class std::_Container_base_aux_alloc_real<std::allocator<RBX::Listener<RBX::PartInstance,RBX::CanAggregateChanged> *> >;
+template class std::vector<RBX::Listener<RBX::PartInstance,RBX::CanAggregateChanged> *,std::allocator<RBX::Listener<RBX::PartInstance,RBX::CanAggregateChanged> *> >;

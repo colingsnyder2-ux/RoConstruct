@@ -3,6 +3,7 @@
 // 005e5bf0, setCurrentAngle 005e5da0, the destructor 005e5e00, stepUi 005e5e70 and the scalar deleting destructor
 // 005e5ee0 (vtable 0083f764 is emitted here); setCurrentAngle 005e5da0 only in the pending build (KERNEL_STAGE). resetLink 005e5c90 and isAligned 005e5d00 read the native Primitive
 // (body, coordinate frame) and are not part of this unit yet.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "v8world/Joints2008.h"
 
 namespace RBX

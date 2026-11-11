@@ -3,6 +3,7 @@
 // Rows: cachesShadows 005526d0, castsShadows 00552690, cullable 005526b0, getMesh 00552720, cframe 00552760.
 // ctor 00551f30, dtor 00552160, ??_G 00552780 and getMaterial 005526e0 use the complete RenderBase::MaterialBase from
 // RenderLib/Material2008.h (material owner; Ogre 1.4.5 client include path).
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 #include "RenderLib/AggregateChunk2008.h"
 #include "RenderLib/Material2008.h"   // completes RenderBase::MaterialBase (needs the Ogre 1.4.5 client headers)
 
@@ -66,3 +67,9 @@ namespace RBX
 		}
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class G3D::ReferenceCountedPointer<G3D::VARArea>;
+template class G3D::ReferenceCountedPointer<RBX::RenderBase::Chunk>;
+template class G3D::ReferenceCountedPointer<RBX::RenderBase::MaterialBase>;
+template class std::_Container_base_aux_alloc_real<std::allocator<G3D::ReferenceCountedPointer<RBX::RenderBase::Chunk> > >;

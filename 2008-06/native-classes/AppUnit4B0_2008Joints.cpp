@@ -39,3 +39,12 @@ template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::Rotate, RBX::Au
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::RotateP, RBX::AutoJoint, RBX::sRotateP>::Creator::create() const;
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::RotateV, RBX::AutoJoint, RBX::sRotateV>::Creator::create() const;
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::Motor, RBX::AutoJoint, RBX::sMotor>::Creator::create() const;
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<RBX::Glue>;
+template class boost::shared_ptr<RBX::Lighting>;
+template class boost::shared_ptr<RBX::Motor>;
+template class boost::shared_ptr<RBX::Rotate>;
+template class boost::shared_ptr<RBX::RotateP>;
+template class boost::shared_ptr<RBX::RotateV>;
+template class boost::shared_ptr<RBX::Snap>;

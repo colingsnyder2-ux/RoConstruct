@@ -76,3 +76,9 @@ void ReliabilityLayer::FreeThreadedMemory()
 {
 }
 
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class DataStructures::MemoryPool<DataStructures::Page<unsigned int,InternalPacket *,32> >;
+template class DataStructures::MemoryPool<InternalPacket>;
+template class DataStructures::Queue<DataStructures::Page<unsigned int,InternalPacket *,32> *>;
+template class DataStructures::Queue<__int64>;
+template class DataStructures::RangeNode<unsigned int>;

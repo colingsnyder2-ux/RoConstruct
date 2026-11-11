@@ -143,3 +143,11 @@ boost::shared_ptr<const std::string> Script::requestCode()
     else
         return ContentProvider::singleton().requestContentString(scriptId);
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::function1<void,RBX::Security::Context *,std::allocator<boost::function_base> >;
+template class boost::function1<void,void *,std::allocator<boost::function_base> >;
+template class boost::shared_ptr<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const >;
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sScript>();

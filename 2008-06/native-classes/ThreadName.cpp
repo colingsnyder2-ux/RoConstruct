@@ -20,3 +20,6 @@ const char* currentThreadName()
     std::string* name = RBX::boost_detail::foo->get();
     return name ? name->c_str() : defaultThreadName;
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::thread_specific_ptr<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >;

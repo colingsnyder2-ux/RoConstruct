@@ -22,3 +22,7 @@ HRESULT __cdecl createBrowserViewExternal(ATL::CComObjectNoLock<CBrowserViewExte
     *result = object;
     return status;
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class ATL::CComPtrBase<ITypeInfo2>;
+template class ATL::CComPtrBase<IUnknown>;

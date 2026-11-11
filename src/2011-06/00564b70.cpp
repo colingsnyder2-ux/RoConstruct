@@ -1,17 +1,170 @@
 // from server: 100% by auto
-// roc 2011-06 00564b70  unit: G3D::Random  size: 19 bytes
-// Make this compile to the exact bytes below, then: roc check 2011-06 00564b70
-//
-// 00564b70  8b442408             mov eax, dword ptr [esp + 8]
-// 00564b74  8b10                 mov edx, dword ptr [eax]
-// 00564b76  8b4c2404             mov ecx, dword ptr [esp + 4]
-// 00564b7a  8911                 mov dword ptr [ecx], edx
-// 00564b7c  8b4004               mov eax, dword ptr [eax + 4]
-// 00564b7f  894104               mov dword ptr [ecx + 4], eax
-// 00564b82  c3                   ret 
-// library ogre-1.4.9/OgreGpuProgramManager.cpp (function ??$_Checked_assign_from_base@Vconst_iterator@?$_Tree@V?$_Tset_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@$0A@@std@@@std@@@std@@YAXAAVconst_iterator@?$_Tree@V?$_Tset_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@$0A@@std@@@0@ABV120@@Z)
-
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MT
 // roc-lib: ogre-1.4.9 OgreGpuProgramManager.cpp
+
+// Candidate translation unit (score above; library headers required).
+/*
+-----------------------------------------------------------------------------
+This source file is part of OGRE
+    (Object-oriented Graphics Rendering Engine)
+For the latest info, see http://www.ogre3d.org/
+
+Copyright (c) 2000-2006 Torus Knot Software Ltd
+Also see acknowledgements in Readme.html
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of the GNU Lesser General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License along with
+this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+Place - Suite 330, Boston, MA 02111-1307, USA, or go to
+http://www.gnu.org/copyleft/lesser.txt.
+
+You may alternatively use this source under the terms of a specific version of
+the OGRE Unrestricted License provided you have obtained such a license from
+Torus Knot Software Ltd.
+-----------------------------------------------------------------------------
+*/
+#include "OgreStableHeaders.h"
+#include "OgreGpuProgramManager.h"
+#include "OgreHighLevelGpuProgramManager.h"
+
+namespace Ogre {
+    //-----------------------------------------------------------------------
+    template<> GpuProgramManager* Singleton<GpuProgramManager>::ms_Singleton = 0;
+    GpuProgramManager* GpuProgramManager::getSingletonPtr(void)
+    {
+        return ms_Singleton;
+    }
+    GpuProgramManager& GpuProgramManager::getSingleton(void)
+    {  
+        assert( ms_Singleton );  return ( *ms_Singleton );  
+    }
+	//---------------------------------------------------------------------------
+	GpuProgramManager::GpuProgramManager()
+	{
+		// Loading order
+		mLoadOrder = 50.0f;
+		// Resource type
+		mResourceType = "GpuProgram";
+
+		// subclasses should register with resource group manager
+	}
+	//---------------------------------------------------------------------------
+	GpuProgramManager::~GpuProgramManager()
+	{
+		// subclasses should unregister with resource group manager
+	}
+	//---------------------------------------------------------------------------
+    GpuProgramPtr GpuProgramManager::load(const String& name,
+		const String& groupName, const String& filename, 
+		GpuProgramType gptype, const String& syntaxCode)
+    {
+		GpuProgramPtr prg;
+		{
+			OGRE_LOCK_AUTO_MUTEX
+			prg = getByName(name);
+			if (prg.isNull())
+			{
+				prg = createProgram(name, groupName, filename, gptype, syntaxCode);
+			}
+
+		}
+        prg->load();
+        return prg;
+    }
+    //---------------------------------------------------------------------------
+	GpuProgramPtr GpuProgramManager::loadFromString(const String& name, 
+		const String& groupName, const String& code, 
+        GpuProgramType gptype, const String& syntaxCode)
+    {
+		GpuProgramPtr prg;
+		{
+			OGRE_LOCK_AUTO_MUTEX
+			prg = getByName(name);
+			if (prg.isNull())
+			{
+				prg = createProgramFromString(name, groupName, code, gptype, syntaxCode);
+			}
+
+		}
+        prg->load();
+        return prg;
+    }
+    //---------------------------------------------------------------------------
+    ResourcePtr GpuProgramManager::create(const String& name, const String& group, 
+        GpuProgramType gptype, const String& syntaxCode, bool isManual, 
+        ManualResourceLoader* loader)
+    {
+        // Call creation implementation
+        ResourcePtr ret = ResourcePtr(
+            createImpl(name, getNextHandle(), group, isManual, loader, gptype, syntaxCode));
+
+        addImpl(ret);
+        // Tell resource group manager
+        ResourceGroupManager::getSingleton()._notifyResourceCreated(ret);
+        return ret;
+    }
+    //---------------------------------------------------------------------------
+	GpuProgramPtr GpuProgramManager::createProgram(const String& name, 
+		const String& groupName, const String& filename, 
+		GpuProgramType gptype, const String& syntaxCode)
+    {
+		GpuProgramPtr prg = create(name, groupName, gptype, syntaxCode);
+        // Set all prarmeters (create does not set, just determines factory)
+		prg->setType(gptype);
+		prg->setSyntaxCode(syntaxCode);
+		prg->setSourceFile(filename);
+        return prg;
+    }
+    //---------------------------------------------------------------------------
+	GpuProgramPtr GpuProgramManager::createProgramFromString(const String& name, 
+		const String& groupName, const String& code, GpuProgramType gptype, 
+		const String& syntaxCode)
+    {
+		GpuProgramPtr prg = create(name, groupName, gptype, syntaxCode);
+        // Set all prarmeters (create does not set, just determines factory)
+		prg->setType(gptype);
+		prg->setSyntaxCode(syntaxCode);
+		prg->setSource(code);
+        return prg;
+    }
+    //---------------------------------------------------------------------------
+    bool GpuProgramManager::isSyntaxSupported(const String& syntaxCode) const
+    {
+        if (std::find(mSyntaxCodes.begin(), mSyntaxCodes.end(), syntaxCode) != mSyntaxCodes.end())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    //---------------------------------------------------------------------------
+    ResourcePtr GpuProgramManager::getByName(const String& name, bool preferHighLevelPrograms)
+    {
+        ResourcePtr ret;
+        if (preferHighLevelPrograms)
+        {
+            ret = HighLevelGpuProgramManager::getSingleton().getByName(name);
+            if (!ret.isNull())
+                return ret;
+        }
+        return ResourceManager::getByName(name);
+    }
+	//-----------------------------------------------------------------------------
+	GpuProgramParametersSharedPtr GpuProgramManager::createParameters(void)
+	{
+		return GpuProgramParametersSharedPtr(new GpuProgramParameters());
+	}
+
+}

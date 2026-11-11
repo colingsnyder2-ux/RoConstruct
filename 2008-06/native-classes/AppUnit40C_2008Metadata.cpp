@@ -75,3 +75,13 @@ template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<M::Events, M::Member
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<AuthoringSettings, RBX::GlobalSettings::Item, sAuthoringSettings>::Creator::create() const;
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<M::Class, M::Item, M::sClass>::Creator::create() const;
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<M::Member, M::Item, M::sMember>::Creator::create() const;
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<AuthoringSettings>;
+template class boost::shared_ptr<RBX::Object>;
+template class boost::shared_ptr<RBX::Reflection::Metadata::Class>;
+template class boost::shared_ptr<RBX::Reflection::Metadata::Classes>;
+template class boost::shared_ptr<RBX::Reflection::Metadata::Events>;
+template class boost::shared_ptr<RBX::Reflection::Metadata::Functions>;
+template class boost::shared_ptr<RBX::Reflection::Metadata::Member>;
+template class boost::shared_ptr<RBX::Reflection::Metadata::Properties>;

@@ -23,3 +23,6 @@ int CBrowserFrameWnd::OnCreate(LPCREATESTRUCT lpCreateStruct)
     pane->ModifyStyleEx(WS_EX_CLIENTEDGE, 0, SWP_FRAMECHANGED);
     return 0;
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class CXTPFrameWndBase<CFrameWnd>;

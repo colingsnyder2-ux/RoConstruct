@@ -16,3 +16,6 @@ void CRobloxTreeCtrlNode::addChildren()
         addChild(child);
     }
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Tree<std::_Tset_traits<boost::shared_ptr<RBX::Instance>,std::less<boost::shared_ptr<RBX::Instance> >,std::allocator<boost::shared_ptr<RBX::Instance> >,0> >;
