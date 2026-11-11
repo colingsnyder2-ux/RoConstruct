@@ -33,6 +33,7 @@ CACHE = HERE / 'prove-cache'            # one ledger row per source (the full le
 INFERRED = HERE / 'inferred-name-identities.json'
 REGISTRY = ROOT / 'work/2008-06/identity-registry.json'   # authoritative placeholder flags
 LOG = HERE / 'prove-log.jsonl'
+LOCK = HERE / 'prove-out/CENSUS.lock'
 SCOPE = ('Ogre::', 'RBX::RenderNew', 'RBX::ViewNew')
 
 
@@ -185,6 +186,10 @@ def main():
                 master['sources'].append(s)
     evidence = master['evidence']
     out = HERE / ('prove-out/%s' % family)
+    if args.all:        # native_commit.py refuses to touch native files while a census runs (edits void its results)
+        LOCK.write_text(json.dumps({'pid': os.getpid(), 'started': time.time()}))
+        import atexit
+        atexit.register(lambda: LOCK.unlink(missing_ok=True))
     for rnd in range(1, args.rounds + 1):
         started = time.time()
         spec = {'client': '2008-06', 'families': [dict(master, name=family, sources=sources, evidence=evidence)]}

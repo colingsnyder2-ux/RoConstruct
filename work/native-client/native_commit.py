@@ -6,7 +6,10 @@ Native files (rebuild/<client>/native-*) get a lease and a path-scoped banner wr
 they are (tool .py files under work/ are force-added). The pre-commit hook still runs lease/banner checks.
 """
 import argparse
+import json
+import os
 import subprocess
+import time
 import sys
 from pathlib import Path
 
@@ -21,12 +24,38 @@ def run(*argv, check=True):
     return done
 
 
+def census_running():
+    """A `prove.py --all` census is live: editing native files now would void its results."""
+    lock = ROOT / 'work/native-client/prove-out/CENSUS.lock'
+    try:
+        info = json.loads(lock.read_text())
+    except (OSError, ValueError):
+        return False
+    if time.time() - info['started'] > 4 * 3600:
+        return False
+    try:
+        os.kill(info['pid'], 0)
+    except (OSError, SystemError):
+        return False
+    return True
+
+
+def minutes_since_last_commit():
+    stamp = run('git', 'log', '-1', '--format=%ct').stdout.strip()
+    return (time.time() - int(stamp or 0)) / 60
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('-m', '--message', required=True)
     ap.add_argument('paths', nargs='+')
     ap.add_argument('--no-push', action='store_true')
+    ap.add_argument('--force', action='store_true', help='skip the commit-cadence guard (batch commits: one family, at most hourly)')
     args = ap.parse_args()
+    if census_running():
+        sys.exit('refused: a prove.py --all census is running; native edits would void it. Wait for it or stop it.')
+    if not args.force and minutes_since_last_commit() < 45:
+        sys.exit('refused: last commit was %d min ago. Batch your work (one family, at most hourly) or pass --force.' % minutes_since_last_commit())
     paths = [Path(p).as_posix() for p in args.paths]
     native = [p for p in paths if '/native-' in p and p.startswith('rebuild/')]
     name = 'commit-' + Path(paths[0]).stem
