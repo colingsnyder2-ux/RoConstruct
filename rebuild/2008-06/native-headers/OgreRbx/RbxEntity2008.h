@@ -2,7 +2,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // RbxEntity2008 | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 2fb8b20d | roc native-status --write
+// <<< native-status | src 8246d5f4 | roc native-status --write
 // Ogre::RbxEntity, June 2008 executable-local Entity extension.
 // Target proof: 0067d1f0 constructs Entity then writes derived state through
 // +0x274..+0x2b8; allocation is 0x2bc. 0067d420 destroys AxisAlignedBox at
@@ -14,6 +14,7 @@
 
 namespace Ogre
 {
+	class RbxSubEntity;
 	class FrameHistory;    // OgreRbx/VisualEngine2008.h
 
 	class RbxEntity : public Entity
@@ -28,6 +29,7 @@ namespace Ogre
 		std::vector<unsigned char> mVisibility; // +0x2a4, byte element accesses proven
 
 	public:
+		void removeSubEntity(RbxSubEntity* subEntity); // 0067d2d0; existing Chunk destructor call proves declaration.
 		RbxEntity();                            // 0067d1f0
 		virtual ~RbxEntity();                   // 0067d420
 		virtual void _notifyCurrentCamera(Camera* camera); // slot 24, 0067c570
