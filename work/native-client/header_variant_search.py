@@ -5,6 +5,7 @@ check. Results are drafts: all actual header dependents must be checked before p
 """
 import argparse
 import hashlib
+import itertools
 import json
 from pathlib import Path
 import sys
@@ -25,6 +26,54 @@ def apply_variant(original, replacements):
     return result
 
 
+def expand_variants(recipe, original):
+    """Compose explicitly supplied, evidence-backed edits; never invent mutations."""
+    variants = list(recipe.get('variants', []))
+    groups = recipe.get('groups', [])
+    if groups:
+        choices = []
+        count = 1
+        for group in groups:
+            options = group['choices']
+            if not options:
+                raise ValueError('each group needs choices')
+            count *= len(options)
+            if count > 13:
+                raise ValueError('at most 12 non-baseline combinations')
+            choices.append([(group['name'] + '=' + choice['name'], choice['replacements'])
+                            for choice in options])
+        for combination in itertools.product(*choices):
+            replacements = [item for _, edits in combination for item in edits]
+            if replacements:
+                variants.append({'name': ','.join(name for name, _ in combination),
+                                 'replacements': replacements})
+    if not 1 <= len(variants) <= 12:
+        raise ValueError('specify 1..12 variants or combinations')
+    generated = [('baseline', original)]
+    names = {'baseline'}
+    bodies = {original}
+    for variant in variants:
+        name = variant['name']
+        body = apply_variant(original, variant['replacements'])
+        if name in names:
+            raise ValueError('variant names must be unique')
+        names.add(name)
+        if body not in bodies:
+            generated.append((name, body))
+            bodies.add(body)
+    return generated
+
+
+def input_changes(before, after, scratch_dir):
+    def shared(inputs):
+        return {k: v for k, v in inputs.items()
+                if not Path(k).resolve().is_relative_to(scratch_dir.resolve())}
+    left, right = shared(before), shared(after)
+    return {'changed': sorted(k for k in left.keys() & right.keys() if left[k] != right[k]),
+            'added': sorted(right.keys() - left.keys()),
+            'deleted': sorted(left.keys() - right.keys())}
+
+
 def exact_addresses(manifest):
     families = manifest['families']
     if any(f.get('blockers') or any(not j.get('object') for j in f.get('jobs', []))
@@ -37,10 +86,9 @@ def exact_addresses(manifest):
 def run(recipe, seconds=600, rounds=3):
     if not 1 <= seconds <= 1500 or not 1 <= rounds <= 4:
         raise ValueError('seconds must be 1..1500 and rounds 1..4')
-    variants = recipe['variants']
     sources = [ROOT / p for p in recipe['sources']]
-    if not sources or not 1 <= len(variants) <= 12:
-        raise ValueError('specify sources and 1..12 variants')
+    if not sources:
+        raise ValueError('specify at least one source')
     header = ROOT / recipe['header']
     include = recipe['include']
     old = '#include "' + include + '"'
@@ -49,10 +97,7 @@ def run(recipe, seconds=600, rounds=3):
     if any(s.count(old) != 1 for s in source_text):
         raise ValueError('each source must directly include header exactly once')
     # Validate every edit before starting any compilation.
-    generated = [('baseline', header_text)] + [
-        (v['name'], apply_variant(header_text, v['replacements'])) for v in variants]
-    if len({name for name, _ in generated}) != len(generated):
-        raise ValueError('variant names must be unique')
+    generated = expand_variants(recipe, header_text)
     run_id = uuid.uuid4().hex[:12]
     out = HERE / 'header-variant-runs' / run_id
     out.mkdir(parents=True)
@@ -100,7 +145,11 @@ def run(recipe, seconds=600, rounds=3):
                            'output': (done.stdout + done.stderr)[-2000:]}
                 break
             manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
-            current[str(original)] = exact_addresses(manifest)
+            try:
+                current[str(original)] = exact_addresses(manifest)
+            except (ValueError, KeyError) as error:
+                failure = {'name': name, 'status': 'proof_failed', 'output': str(error)}
+                break
             manifests[str(original)] = str(manifest_path)
             proof_inputs[str(original)] = manifest['families'][0].get('inputs', {})
         if failure:
@@ -109,17 +158,20 @@ def run(recipe, seconds=600, rounds=3):
         if baseline is None:
             baseline = current
             baseline_inputs = proof_inputs
-        changed_inputs = {src: sorted(k for k in inputs.keys() & baseline_inputs[src].keys()
-                                      if inputs[k] != baseline_inputs[src][k])
+        changed_inputs = {src: input_changes(baseline_inputs[src], inputs, out)
                           for src, inputs in proof_inputs.items()}
         by_source = {src: {'gained': sorted(addresses - baseline[src]),
                            'lost': sorted(baseline[src] - addresses)}
                      for src, addresses in current.items()}
         reports.append({'name': name, 'status': 'proved', 'manifests': manifests,
                         'exact_count': sum(map(len, current.values())),
-                        'by_source': by_source, 'shared_inputs_changed': changed_inputs})
+                        'by_source': by_source, 'shared_inputs_changed': changed_inputs,
+                        'comparison_valid': not any(any(diff.values()) for diff in changed_inputs.values())})
     unchanged = all(Path(p).is_file() and hashlib.sha256(Path(p).read_bytes()).hexdigest() == digest
                     for p, digest in inputs.items())
+    if not unchanged:
+        for report in reports:
+            report['comparison_valid'] = False
     result = {'input_hashes': inputs, 'inputs_unchanged': unchanged, 'results': reports,
               'scope': 'draft only; manually verify all header dependents and source plausibility'}
     receipt = out / 'receipt.json'

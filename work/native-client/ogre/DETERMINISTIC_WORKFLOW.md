@@ -127,3 +127,9 @@ Results are drafts: list all relevant dependent sources and independently verify
 before any promotion. Source plausibility and inferred identities still require review.
 The tool never changes native files or automatically promotes a candidate. Maximum
 runtime is 25 minutes; a failed proof or deadline stops the run.
+
+Recipes can also provide `groups`, each with named `choices` and literal
+`replacements`. The search composes choices across groups, skips unchanged and
+duplicate bodies, and validates all edits before compiling. It rejects more than
+12 non-baseline combinations. See `work/native-client/ogre/wedge-header-combinations.json`.
+Only supply source forms supported by evidence; combinations do not prove provenance.
