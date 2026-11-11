@@ -163,6 +163,9 @@ def audit_references(raw, symbol, body, target, target_relocs, va, targets, bind
         following = [v for _, v, n, _ in symbols.values() if n == number and v > value]
         end = min(following + [rawsize])
         begin = value + stored
+        if begin == end and stored > 0 and value < end and depth <= 6:
+            reference(index, 0, base, depth + 1)
+            return
         if depth > 6 or not value <= begin < end:
             errors.append('unproven data span: ' + name)
             return
