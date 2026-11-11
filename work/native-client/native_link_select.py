@@ -24,6 +24,37 @@ def provider_source(stem):
     return native if native.is_file() else local if local.is_file() else None
 
 
+def mfc_ordinal_bindings(receipt):
+    """Verify MFC ordinal names and FF25 thunks directly before using them as identities."""
+    from roc import standins
+    definition = ROOT / 'tools/libs/mfc-9.0-rtm/atlmfc/src/mfc/intel/mfc90.def'
+    ordinals = {}
+    for name, number in re.findall(r'^\s*(\?\S+)\s+@\s*(\d+)\s+NONAME\b',
+                                   definition.read_text(errors='replace'), re.M | re.I):
+        ordinals.setdefault(int(number), set()).add(name)
+    imports = standins._imports('2008-06')
+    base, image = match._image('2008-06')
+    starts = set(match._functions('2008-06'))
+    out = {}
+    for row in receipt.get('rows', []):
+        if row.get('dll', '').lower() != 'mfc90.dll':
+            continue
+        symbol, ordinal = row.get('symbol'), row.get('ordinal')
+        try:
+            slot, thunk = int(row['iat_address'], 16), int(row['address'], 16)
+        except (KeyError, TypeError, ValueError):
+            raise ValueError('invalid MFC ordinal identity')
+        if (ordinals.get(ordinal) != {symbol} or
+                imports.get(slot, '').lower() != f'mfc90.dll!#{ordinal}' or
+                f'{thunk:08x}' not in starts or
+                thunk < base or bytes(image[thunk - base:thunk - base + 6]) != b'\xff\x25' + struct.pack('<I', slot)):
+            raise ValueError('MFC ordinal identity does not match original inputs: ' + str(symbol))
+        if symbol in out and out[symbol] != f'{thunk:08x}':
+            raise ValueError('ambiguous MFC ordinal identity: ' + symbol)
+        out[symbol] = f'{thunk:08x}'
+    return out
+
+
 def live_definitions(raw):
     """External definitions in sections linker will retain after strip_symbols."""
     _, nsec, _, symptr, nsym, optsz, _ = struct.unpack_from('<HHIIIHH', raw, 0)
@@ -44,20 +75,32 @@ def live_definitions(raw):
     return out
 
 
-def prune_unused_comdat_data(raw):
+def prune_unused_comdat_data(raw, roots=()):
     """Drop data COMDATs unreachable from retained sections; never drop code."""
     _, nsec, _, symptr, nsym, optsz, _ = struct.unpack_from('<HHIIIHH', raw, 0)
     sections = [struct.unpack_from('<8sIIIIIIHHI', raw, 20 + optsz + 40 * index) for index in range(nsec)]
     targets, index = {}, 0
+    root_names = set(roots)
+    root_sections = set()
+    strtab = symptr + nsym * 18
     while index < nsym:
-        _, _, sec, _, _, aux = struct.unpack_from('<8sIhHBB', raw, symptr + index * 18)
+        name, _, sec, _, cls, aux = struct.unpack_from('<8sIhHBB', raw, symptr + index * 18)
         targets[index] = sec
+        if cls == 2 and sec > 0:
+            if name[:4] == b'\0\0\0\0':
+                at = strtab + struct.unpack_from('<I', name, 4)[0]
+                name = raw[at:raw.index(b'\0', at)]
+            else:
+                name = name.rstrip(b'\0')
+            if name.decode('latin-1') in root_names:
+                root_sections.add(sec)
         index += 1 + aux
     candidates = {index + 1 for index, section in enumerate(sections)
                   if section[9] & 0x1000 and not section[9] & (0x20 | 0x800)
                   and not section[0].startswith((b'.CRT', b'.tls'))}
     live = {index + 1 for index, section in enumerate(sections)
             if not section[9] & 0x800 and index + 1 not in candidates}
+    live |= root_sections
     edges = {index: {targets.get(struct.unpack_from('<I', raw, section[5] + rel * 10 + 4)[0], 0)
                      for rel in range(section[7])}
              for index, section in enumerate(sections, 1)}
@@ -88,6 +131,77 @@ def prune_unused_comdat_data(raw):
             drop.add(name.decode('latin-1'))
         index += 1 + aux
     return rebuild.strip_symbols(raw, drop=drop) if drop else raw
+
+
+def prune_orphan_initializers(raw):
+    """Remove isolated compiler initializers only when no live non-debug section references them."""
+    raw = bytearray(raw)
+    _, count, _, symptr, nsym, optsz, _ = struct.unpack_from('<HHIIIHH', raw, 0)
+    sections = [struct.unpack_from('<8sIIIIIIHHI', raw, 20 + optsz + 40 * i) for i in range(count)]
+    targets, initializers, index = {}, set(), 0
+    strtab = symptr + nsym * 18
+    while index < nsym:
+        name, _, sec, _, cls, aux = struct.unpack_from('<8sIhHBB', raw, symptr + index * 18)
+        targets[index] = sec
+        if name[:4] == b'\0\0\0\0':
+            start = strtab + struct.unpack_from('<I', name, 4)[0]
+            name = bytes(raw[start:raw.index(0, start)])
+        else:
+            name = name.rstrip(b'\0')
+        if sec > 0 and cls == 3 and name.startswith(b'??__E') and sections[sec - 1][0].startswith(b'.text$yc'):
+            initializers.add(sec)
+        index += 1 + aux
+    incoming = {sec: set() for sec in initializers}
+    for sec, section in enumerate(sections, 1):
+        if section[9] & 0x800:
+            continue
+        for i in range(section[7]):
+            target = targets.get(struct.unpack_from('<I', raw, section[5] + 10 * i + 4)[0])
+            if target in incoming and target != sec:
+                incoming[target].add(sec)
+    remove = set()
+    for sec, refs in incoming.items():
+        if all(sections[parent - 1][0].startswith(b'.debug$F') for parent in refs):
+            remove.add(sec)
+            remove.update(refs)
+    for sec in remove:
+        offset = 20 + optsz + 40 * (sec - 1) + 36
+        struct.pack_into('<I', raw, offset, sections[sec - 1][9] | 0x800)
+    return bytes(raw)
+
+
+def isolate_single_code_section(raw, root, size):
+    """Experimental diagnostic only: MSVC linker still sees other section references."""
+    raise RuntimeError('disabled: LNK_REMOVE does not prevent discarded-section unresolved references')
+    raw = bytearray(rebuild.strip_symbols(raw, keep={root}))
+    sections, symbols, definitions, _ = match._coff_data_index(bytes(raw))
+    if root not in definitions:
+        raise ValueError('root not defined')
+    value, index = definitions[root]
+    section = sections[index]
+    if value != 0 or section[3] != size or not section[9] & 0x20 or section[9] & 0x800:
+        raise ValueError('root does not occupy one complete live code section')
+    for j in range(section[7]):
+        _, target, _ = struct.unpack_from('<IIH', raw, section[5] + 10 * j)
+        if target not in symbols:
+            raise ValueError('missing relocation symbol')
+        target_section = symbols[target][2]
+        if target_section > 0 and target_section != index + 1:
+            raise ValueError('root has local section dependency')
+    _, _, _, symptr, nsym, optsz, _ = struct.unpack_from('<HHIIIHH', raw, 0)
+    i = 0
+    while i < nsym:
+        _, value, sec, _, cls, aux = struct.unpack_from('<8sIhHBB', raw, symptr + 18 * i)
+        if cls == 3 and aux and sec > 0 and value == 0:
+            parent, selection = struct.unpack_from('<HB', raw, symptr + 18 * (i + 1) + 12)
+            if selection == 5 and parent == index + 1 and not sections[sec - 1][0].startswith(b'.debug'):
+                raise ValueError('root has non-debug associative section')
+        i += 1 + aux
+    for i, entry in enumerate(sections):
+        if i != index:
+            offset = 20 + optsz + 40 * i + 36
+            struct.pack_into('<I', raw, offset, entry[9] | 0x800)
+    return bytes(raw)
 
 
 def string_bindings(raw, symbols, functions):
@@ -256,9 +370,106 @@ def main():
     ap.add_argument('--fresh-only', action='store_true', help='trial only providers compiled during this invocation')
     ap.add_argument('--reuse-current', action='store_true', help='reuse a hash-checked successful object after selector-only changes')
     ap.add_argument('--string-coverage', action='store_true', help='prove unique compiler string data across cached native objects')
+    ap.add_argument('--audit-selected', type=Path, help='recheck named receipt bodies in existing selected objects without recompiling')
+    ap.add_argument('--reference-evidence', type=Path, action='append', default=[],
+                    help='also audit selected code references using these identity receipts')
+    ap.add_argument('--mfc-ordinal-evidence', type=Path,
+                    help='verify MFC ordinal thunk evidence and prefer it over conflicting closure votes')
     args = ap.parse_args()
     if args.string_coverage:
         string_coverage(args.output)
+        return
+    if args.audit_selected:
+        sys.path.insert(0, str(HERE / 'ogre'))
+        import ogre_convert as converter
+        converter.BASE, converter.IMAGE = match._image('2008-06')
+        selected = json.loads(args.audit_selected.read_text()).get('selected', [])
+        names, bindings, targets, reference_inputs, identity_overrides = {}, {}, None, {}, []
+        if args.mfc_ordinal_evidence and not args.reference_evidence:
+            ap.error('--mfc-ordinal-evidence requires --reference-evidence')
+        if args.reference_evidence:
+            from roc import native_bulk
+            names, bindings, blockers, reference_inputs = native_bulk.seed_evidence(ROOT, [str(p) for p in args.reference_evidence])
+            if blockers:
+                raise RuntimeError('reference evidence blocked: ' + '; '.join(blockers[:5]))
+            if args.mfc_ordinal_evidence:
+                _, _, errors, ordinal_inputs = native_bulk.seed_evidence(ROOT, [str(args.mfc_ordinal_evidence)])
+                if errors:
+                    raise RuntimeError('MFC ordinal receipt blocked: ' + '; '.join(errors[:5]))
+                reference_inputs.update(ordinal_inputs)
+                ordinal = mfc_ordinal_bindings(json.loads(args.mfc_ordinal_evidence.read_text()))
+                for symbol, address in ordinal.items():
+                    if symbol in bindings and bindings[symbol] != address:
+                        identity_overrides.append({'symbol': symbol, 'previous': bindings[symbol],
+                                                   'mfc_ordinal_thunk': address})
+                    bindings[symbol] = address
+            targets = Targets('2008-06')
+        receipts = {}
+        for path in (HERE / 'link').glob('selected-*.json'):
+            if path.resolve() == args.audit_selected.resolve():
+                continue
+            try:
+                entries = json.loads(path.read_text()).get('selected', [])
+            except (OSError, ValueError):
+                continue
+            for entry in entries:
+                key = (entry.get('source'), entry.get('object'))
+                if entry.get('symbols'):
+                    receipts.setdefault(key, []).extend(entry['symbols'])
+        results = []
+        for entry in selected:
+            obj = ROOT / entry['object']
+            key = (entry.get('source'), entry.get('object'))
+            claims = entry.get('symbols') or receipts.get(key, [])
+            if not obj.is_file():
+                results.append({'source': entry.get('source'), 'status': 'object-missing'})
+                continue
+            raw = obj.read_bytes()
+            emitted = {name: (body, relocs) for name, body, relocs in match.coff_functions(raw)}
+            checks = []
+            for claim in { (v.get('symbol'), v.get('address'), v.get('kind'), v.get('bytes')) for v in claims }:
+                symbol, address, kind, size = claim
+                if kind == 'data':
+                    size = size or (16 if symbol and symbol.endswith('@@3U_GUID@@B') else None)
+                    exact = bool(size and address and converter.data_proved(raw, symbol, int(address, 16), size))
+                    checks.append({'symbol': symbol, 'address': address, 'bytes': size,
+                                   'status': 'data-byte-exact' if exact else 'data-unproved'})
+                    continue
+                if not symbol or not address or symbol not in emitted:
+                    checks.append({'symbol': symbol, 'address': address, 'status': 'symbol-or-address-missing'})
+                    continue
+                try:
+                    original, original_relocs, _ = match.target('2008-06', address)
+                    body, relocs = emitted[symbol]
+                    exact = len(original) == len(body) and set(original_relocs) <= set(relocs) and match.exact_match(original, original_relocs, body, relocs)
+                except (KeyError, ValueError, SystemExit):
+                    exact = False
+                result = {'symbol': symbol, 'address': address, 'status': 'byte-exact' if exact else 'byte-mismatch'}
+                if exact and targets:
+                    if address.lower() not in names.get(symbol, set()):
+                        result['reference_status'] = 'identity-unproved'
+                    else:
+                        try:
+                            refs, errors = native_bulk.audit_references(raw, symbol, body, original, original_relocs,
+                                                                        int(address, 16), targets, bindings)
+                            result.update(reference_status='unproved' if errors else 'exact',
+                                          reference_errors=errors, reference_count=len(refs))
+                        except (KeyError, ValueError, struct.error) as error:
+                            result.update(reference_status='unproved', reference_errors=[str(error)])
+                checks.append(result)
+            results.append({'source': entry.get('source'), 'object': entry['object'],
+                            'object_sha256': hashlib.sha256(raw).hexdigest(), 'checks': checks})
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        args.output.write_text(json.dumps({'scope': 'current-object bytes and optional reference audit; not source freshness, type or ABI proof',
+                                           'reference_inputs': reference_inputs,
+                                           'mfc_identity_overrides': identity_overrides,
+                                           'providers': results}, indent=1) + '\n')
+        checks = [c for result in results for c in result.get('checks', [])]
+        print(json.dumps({'providers': len(results), 'code_byte_exact': sum(c['status'] == 'byte-exact' for c in checks),
+                          'data_byte_exact': sum(c['status'] == 'data-byte-exact' for c in checks),
+                          'byte_unproved': sum(c['status'] not in ('byte-exact', 'data-byte-exact') for c in checks),
+                          'references_exact': sum(c.get('reference_status') == 'exact' for c in checks),
+                          'references_unproved': sum(c.get('reference_status') in ('unproved', 'identity-unproved') for c in checks)}))
         return
     if bool(args.identity_closure) != bool(args.closure_provider):
         ap.error('--identity-closure and --closure-provider must be used together')
@@ -294,7 +505,7 @@ def main():
             keep = set(definitions) & set(closure)
             if not (keep & unresolved_now):
                 continue
-            trimmed = prune_unused_comdat_data(rebuild.strip_symbols(raw, keep=keep))
+            trimmed = prune_unused_comdat_data(rebuild.strip_symbols(raw, keep=keep), keep)
             left = live_definitions(trimmed)
             if any(name not in keep and not name.startswith(('$', '.')) for name in left):
                 continue
@@ -478,7 +689,7 @@ def main():
     for item in selected:
         raw = (ROOT / item['object']).read_bytes()
         keep = {symbol['symbol'] for symbol in item['symbols']}
-        trimmed = prune_unused_comdat_data(rebuild.strip_symbols(raw, keep=keep))
+        trimmed = prune_unused_comdat_data(rebuild.strip_symbols(raw, keep=keep), keep)
         definitions = live_definitions(trimmed)
         strings = string_bindings(trimmed, item['symbols'], funcs)
         allowed = keep | {string['symbol'] for string in strings}

@@ -197,7 +197,14 @@ def main():
             continue
         text = source.read_text(errors='replace')
         if text not in policy_cache:
-            policy_cache[text] = conv.effective_source_policy(text)
+            policy = conv.effective_source_policy(text)
+            if conv.re.search(r'\b(?:padding|reserved|unused)\s*\[', text, conv.re.I):
+                policy.append('synthetic padding or unused field')
+            if conv.re.search(r'\bvirtual\s+[^;{}]*\bslot\d+\s*\(', text):
+                policy.append('synthetic virtual slot declarations')
+            if conv.re.search(r'\b(?:unsigned\s+)?char\s*\*\s*\w+[^;]*;', text) and conv.re.search(r'\b\w+\s*\+\s*(?:0x[\da-f]+|\d+)', text, conv.re.I):
+                policy.append('byte pointer arithmetic')
+            policy_cache[text] = policy
         policy = policy_cache[text]
         if policy:
             rejected.append({'address': addr, 'reason': 'source-policy', 'why': policy})

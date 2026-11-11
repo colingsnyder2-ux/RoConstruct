@@ -348,6 +348,10 @@ def work(t, ladder, tries, start=0):
                        + t['donor_body'][:12000])
         else:
             analog += '\n// Expanded recipe trailing source excerpt (analog types are not native declarations):\n' + expanded[-32000:]
+    elif t.get('donor_body'):
+        # Upstream/donor source this function was ported from (e.g. G3D GFont for Ogre::VRbxFont).
+        analog += ('\n// Upstream source this function was ported from (types/API may differ; follow the asm):\n'
+                   + t['donor_body'][:12000])
     header = (ROOT / t['header']).read_text(errors='replace')[:40000]
     asm = subprocess.run([str(ROOT / 'roc.cmd'), 'native-asm', '2008-06', t['addr']], cwd=ROOT,
                          capture_output=True, text=True).stdout[-6000:]

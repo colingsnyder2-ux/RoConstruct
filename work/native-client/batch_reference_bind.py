@@ -47,6 +47,7 @@ def main():
                 work[row['symbol']] = (row['candidates'][0], emitted[row['symbol']])
     folder = Path(tempfile.mkdtemp(prefix='refbind-', dir=HERE))
     closure = folder / 'owners.json'
+    owner_evidence = folder / 'import-thunk-identities-as-owner.json'
     closure.write_text(json.dumps({'bindings': [{'symbol': s, 'addr': a} for s, (a, _) in work.items()]}))
 
     import contextlib, io
@@ -61,7 +62,7 @@ def main():
         out = folder / ('%s-%d.json' % (address, abs(hash(symbol)) % 10**8))
         argv = sys.argv
         sys.argv = ['bind', '--object', str(obj), '--symbol', symbol, '--address', address, '--closure', str(closure),
-                    '--owner-evidence', str(HERE / 'import-thunk-identities-as-owner.json'), '--output', str(out)]
+                    '--owner-evidence', str(owner_evidence), '--output', str(out)]
         try:
             with contextlib.redirect_stdout(io.StringIO()):
                 binder.main()
@@ -76,7 +77,7 @@ def main():
     known = []                                       # earlier rounds' receipts: feed them, and never re-emit them
     for path in args.known:
         known += json.loads(path.read_text())['rows']
-    (HERE / 'import-thunk-identities-as-owner.json').write_text(json.dumps({'identity_bindings': thunks + known}))
+    owner_evidence.write_text(json.dumps({'identity_bindings': thunks + known}))
     already = {row['symbol'] for row in thunks + known}
     results = [r for r in map(bind, work.items()) if r]      # in-process: argv-driven, so sequential
     votes = defaultdict(set)
@@ -87,6 +88,8 @@ def main():
             for s, a in sorted(votes.items()) if len(a) == 1 and not s.startswith('$') and s not in already]   # $LN labels are per-object
     conflicts = {s: sorted(a) for s, a in votes.items() if len(a) > 1}
     args.out.write_text(json.dumps({'scope': 'merged exact-owner reference identities', 'sources': {},
+                                    'owner_proofs': [{'owner': r['owner'], 'input_sha256': r['input_sha256']}
+                                                     for r in results],
                                     'rows': rows, 'conflicts': conflicts, 'owners_tried': len(work),
                                     'owners_bound': len(results)}, indent=1) + '\n')
     print(json.dumps({'owners_tried': len(work), 'owners_bound': len(results), 'bindings': len(rows),

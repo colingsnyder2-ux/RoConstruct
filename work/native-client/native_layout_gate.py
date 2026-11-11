@@ -5,9 +5,8 @@ Inputs: a `native_class_layout.py` JSON (what the headers declare) and
 this+N, named member calls on this+N).  Per class and offset:
 
   agree    compiler has a vfptr / a member or base of that type starting at N
-  differ   binary proves something at N, compiler has nothing starting there,
-           or a vfptr the compiler does not have
-  unknown  compiler has a row at N but the type cannot be read from the dump
+  differ   binary proves something at N, compiler has nothing starting there
+  unknown  compiler has a row at N but its nested type/layout is not expanded
 
 Non-template classes only (dump names templates in mangled form).  A `differ`
 is a header defect; zero `differ` is necessary, not sufficient, layout proof.
@@ -46,7 +45,8 @@ def main():
         for row in rows:
             n = row['offset']
             if row['vfptr_of']:
-                checks.append({'offset': n, 'proof': 'vfptr', 'verdict': 'agree' if n in vfptrs else 'differ',
+                verdict = 'agree' if n in vfptrs else 'unknown' if starts.get(n) else 'differ'
+                checks.append({'offset': n, 'proof': 'vfptr', 'verdict': verdict,
                                'compiler': starts.get(n, [])})
             for typ in row['object_of']:
                 if short(typ) == short(qualified) or typ in (qualified,) or '<' in typ:

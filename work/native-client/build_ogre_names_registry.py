@@ -209,9 +209,13 @@ def main():
 
     for binding in load('work/native-client/claude-identity-closure.json', {}).get('bindings', []):
         key = addr(binding.get('addr', binding.get('address')))
+        previous = rows.get(key, {}).get('name')
         add_name(rows, key, binding.get('symbol'), 'identity-closure',
                  [{'kind': 'identity-closure', 'body_exact': binding.get('body_exact', False),
                    'votes': binding.get('votes', 0), 'evidence': binding.get('evidence')}])
+        if previous and previous != binding.get('symbol') and rows[key].get('name') != binding.get('symbol'):
+            rows[key]['evidence'].append({'kind': 'folded-or-conflicting-name', 'symbol': binding.get('symbol'),
+                                          'votes': binding.get('votes', 0), 'evidence': binding.get('evidence')})
     for binding in load('work/2008-06/shared-layouts/identity-registry-batch.json', {}).get('identity_bindings', []):
         add_name(rows, addr(binding['address']), binding['symbol'], 'reviewed-reference-binding',
                  [binding['evidence']], kind=binding['kind'])
@@ -270,13 +274,11 @@ def main():
         signature = undecorate(row['name'])
         if signature == row['name'] or '(' not in signature:
             continue
-        if row['signature'] is None:
-            row['signature'] = signature
-            row['evidence'].append({'kind': 'decorated-signature', 'symbol': row['name']})
+        row['signature'] = signature
+        row['evidence'].append({'kind': 'decorated-signature', 'symbol': row['name']})
         # Namespaces can own free functions; only access-qualified member
         # signatures prove an owner class.
-        if row['owner_class'] is None and re.match(r'^(public|protected|private):', signature):
-            row['owner_class'] = owner(row['name']) or None
+        row['owner_class'] = owner(row['name']) or None if re.match(r'^(public|protected|private):', signature) else None
 
     # A name's presence in native_asm is not evidence that its storage is code.
     # PE section characteristics distinguish executable bodies from data slots.

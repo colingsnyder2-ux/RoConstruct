@@ -7,6 +7,7 @@ word at the same recursive edge.  Ambiguous aliases, code/data differences and
 unknown relocation kinds are rejected.
 """
 import argparse
+import hashlib
 import json
 import struct
 import sys
@@ -88,7 +89,13 @@ def main():
         seen.add(key)
         native = raw[rawptr + begin:rawptr + end] if rawptr else bytes(end - begin)
         expected = targets.data(original, len(native))
-        for offset, nested, kind in relocs_for(table):
+        nested_relocs = [(offset, nested, kind) for offset, nested, kind in relocs_for(table)
+                         if begin <= offset < end]
+        offsets = [offset - begin for offset, _, _ in nested_relocs]
+        original_offsets = targets.data_relocations(original, len(native))
+        if original_offsets != set(offsets) or not match.exact_match(expected, original_offsets, native, offsets):
+            raise ValueError('reachable data differs: ' + name)
+        for offset, nested, kind in nested_relocs:
             if begin <= offset < end:
                 at = offset - begin
                 if kind != 6 or at + 4 > len(native) or original + at not in targets.relocs:
@@ -115,6 +122,8 @@ def main():
             for name, values in sorted(found.items()) if len(values) == 1]
     out = {'scope': 'exact target COFF relocation/data alias identities only; no body/layout claim',
            'owner': {'symbol': args.symbol, 'address': address},
+           'input_sha256': {str(path): hashlib.sha256(path.read_bytes()).hexdigest()
+                            for path in [args.object, args.closure, *args.owner_evidence]},
            'identity_bindings': rows, 'ambiguous': ambiguous}
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(out, indent=1) + '\n')
