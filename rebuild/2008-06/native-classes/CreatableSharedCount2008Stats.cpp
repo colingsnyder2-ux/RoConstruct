@@ -5,6 +5,10 @@
 // Every T is the complete class of a committed native header (included read-only); nothing is declared here.
 // Separate unit: stats/Stats.h (and stats/WorkspaceStatsItem.h, which includes it) and v8datamodel/Stats.h, which the
 // main unit reaches through util/Sound.h, both define RBX::Stats::Item (C2011 in either include order).
+// >>> native-status (generated) -- do not edit >>>
+// CreatableSharedCount2008Stats | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 11fdb6ae | roc native-status --write
 #include "stats/Stats.h"
 #include "stats/WorkspaceStatsItem.h"
 
@@ -16,3 +20,7 @@ template boost::detail::shared_count::shared_count(RBX::WorkspaceStatsItem*, Cre
 template boost::detail::shared_count::shared_count(RBX::Stats::TypedStatsItem<double>*, CreatableInstanceDeleter); // 005a0be0
 template boost::detail::shared_count::shared_count(RBX::Stats::TypedStatsItem<float>*, CreatableInstanceDeleter); // 005a0c70
 template boost::detail::shared_count::shared_count(RBX::Stats::TypedStatsItem<unsigned int>*, CreatableInstanceDeleter); // 005b75a0
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::function0<double,std::allocator<boost::function_base> >;
+template class boost::function0<float,std::allocator<boost::function_base> >;

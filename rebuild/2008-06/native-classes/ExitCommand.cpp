@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// ExitCommand | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src b4d8ad7b | roc native-status --write
 #include <afxwin.h>
 #include "CRobloxDoc.h"
 #include "CMainFrame.h"

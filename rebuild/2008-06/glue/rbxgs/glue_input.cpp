@@ -39,33 +39,10 @@ namespace RBX
 		}
 	}
 
-	float KeyboardPrimaryController::getValue(Controller::InputType type) const
-	{
-		return driveValue(getHardwareDevice(), type, SDLK_UP, SDLK_DOWN, SDLK_LEFT, SDLK_RIGHT);
-	}
 
-	float KeyboardSecondaryController::getValue(Controller::InputType type) const
-	{
-		return driveValue(getHardwareDevice(), type, SDLK_w, SDLK_s, SDLK_a, SDLK_d);
-	}
-
-	bool Selection::isSelected(const Instance* instance) const
-	{
-		boost::shared_ptr<const std::vector<boost::shared_ptr<Instance> > > items = selection.read();
-		if (!items)
-			return false;
-		for (size_t i = 0; i < items->size(); ++i)
-			if ((*items)[i].get() == instance)
-				return true;
-		return false;
-	}
 
 	namespace Reflection
 	{
-		boost::shared_ptr<SignalInstance> Signal::getSignalInstance() const
-		{
-			return descriptor->getSignalInstance(*instance);
-		}
 	}
 
 	namespace Network

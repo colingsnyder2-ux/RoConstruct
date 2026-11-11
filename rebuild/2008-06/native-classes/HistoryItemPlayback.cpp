@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// HistoryItemPlayback | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 65c13c31 | roc native-status --write
 #include "v8datamodel/HistoryRecord.h"
 #include "v8datamodel/ChangeHistoryService.h"
 #include "v8tree/Instance.h"
@@ -48,3 +52,9 @@ void RBX::HistoryItem::unplay()
         pending.pop_back();
     }
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Container_base_aux_alloc_real<std::allocator<RBX::HistoryItem *> >;
+template class std::_Deque_const_iterator<RBX::HistoryItem *,std::allocator<RBX::HistoryItem *>,1>;
+template class std::_Deque_iterator<RBX::HistoryItem *,std::allocator<RBX::HistoryItem *>,1>;
+template class std::deque<RBX::HistoryItem *,std::allocator<RBX::HistoryItem *> >;

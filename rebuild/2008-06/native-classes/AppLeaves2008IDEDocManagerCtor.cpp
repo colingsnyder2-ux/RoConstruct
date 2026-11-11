@@ -3,6 +3,10 @@
 // Include order: Scintilla's Platform.h (class Font) before afxhtml.h pulls in comdef.h, whose Font smart pointer
 // is __if_not_exists-guarded; CBrowserView.h (XTP, needs min/max and the MFC CCriticalSection) before the RBX
 // headers.
+// >>> native-status (generated) -- do not edit >>>
+// AppLeaves2008IDEDocManagerCtor | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 5a3edeb8 | roc native-status --write
 #include <afxwin.h>
 #include <Platform.h>
 #include "CBrowserView.h"

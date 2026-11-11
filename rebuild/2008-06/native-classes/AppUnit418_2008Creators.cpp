@@ -13,6 +13,10 @@
 // Name::doDeclare<sC>() / callDoDeclare<sC>() (inline in native util/Name.h, instantiated through Name::declare<sC>())
 // for Decal 0041de20, Texture 0041de90 and Part 0041df00 / 0041e0d0.
 // DHTMLWindowService2008.h includes MFC and must precede the headers that include windows.h (afxv_w32.h C1189).
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit418_2008Creators | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 03db0ed3 | roc native-status --write
 #include "AppLeaves2008/DHTMLWindowService2008.h"
 #include "v8datamodel/Decal.h"
 #include "v8datamodel/PartInstance.h"
@@ -44,3 +48,8 @@ template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::Decal, RBX::Fac
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::Texture, RBX::Decal, RBX::sTexture>::Creator::create() const;
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::PartInstance, RBX::PVInstance, RBX::sPart>::Creator::create() const;
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::SpecialShape, RBX::Instance, RBX::sSpecialShape>::Creator::create() const;
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<DHTMLWindowService>;
+template class boost::shared_ptr<RBX::SpecialShape>;
+template class boost::shared_ptr<RBX::Texture>;

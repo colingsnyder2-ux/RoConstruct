@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Point2008 | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src aa07e8a9 | roc native-status --write
 // 2008-06 RBX::Point (inactive native recovery). The donor v8kernel/Point.h layout is the 2008 one (it is already
 // reached through native-headers/v8kernel/Connector2008.h, so it is not redeclared here):
 //   RTTI     vtable 0084b24c .?AVPoint@RBX@@ -> KernelIndex at +0x04 (non-polymorphic); one slot, the scalar deleting

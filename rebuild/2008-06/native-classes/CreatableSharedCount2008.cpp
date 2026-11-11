@@ -4,6 +4,10 @@
 // expected address and T of every instance are listed in tests/record_native_creatable_shared_count.py.
 // Every T is the complete class of a committed native header (included read-only); nothing is declared here.
 // DHTMLWindowService2008.h includes MFC and must precede the headers that include windows.h (afxv_w32.h C1189).
+// >>> native-status (generated) -- do not edit >>>
+// CreatableSharedCount2008 | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 672bf1a4 | roc native-status --write
 #include "AppLeaves2008/DHTMLWindowService2008.h"
 #include "AuthoringSettings.h"
 #include "ChatEnter.h"

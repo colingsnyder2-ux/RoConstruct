@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// ProfiledRakPeer | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 35cf45a4 | roc native-status --write
 #include "ProfiledRakPeer.h"
 
 bool ProfiledRakPeer::RunUpdateCycle()

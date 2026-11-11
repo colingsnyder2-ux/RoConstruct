@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/std-noinline-string
+// >>> native-status (generated) -- do not edit >>>
+// LDrawModelWrite | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 9e30102e | roc native-status --write
 #include "util/LDrawEntities.h"
 
 namespace RBX { namespace LDraw2Lua {
@@ -18,3 +22,7 @@ void LDrawModel::writeLua(std::ostream& out) const
     }
 }
 } }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Vector_const_iterator<RBX::LDraw2Lua::LDrawItem *,std::allocator<RBX::LDraw2Lua::LDrawItem *> >;
+template class std::vector<RBX::LDraw2Lua::LDrawItem *,std::allocator<RBX::LDraw2Lua::LDrawItem *> >;

@@ -1,6 +1,6 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // >>> native-status (generated) -- do not edit >>>
-// RenderSpecData | 2008-06 | inactive
+// RenderSpecData | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src 8683f3b0 | roc native-status --write
 #include "RenderLib/Profiler.h"

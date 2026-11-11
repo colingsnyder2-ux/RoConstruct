@@ -57,7 +57,6 @@ bool RBX::DetectClimb(RBX::Humanoid* humanoid)
 }
 
 namespace RBX {
-Reflection::SignalDesc<Humanoid, void(float)> Humanoid::event_Climbing("Climbing", "speed");
 class RecoveredClimbing : public Balancing {
     G3D::Vector3 desiredVelocity;
     float desiredRotation;

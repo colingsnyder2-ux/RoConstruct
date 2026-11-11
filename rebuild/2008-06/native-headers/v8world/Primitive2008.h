@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Primitive2008 | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src a64bd29e | roc native-status --write
 // 2008-06 native RBX::Primitive and RBX::EdgeList (inactive). Declared under a non-colliding name: the original path
 // v8world/Primitive.h is reached by every unit that includes PartInstance.h / World.h, and a unit must not include
 // both this header and the donor v8world/Primitive.h. The base IPipelined comes from native-headers/v8kernel/
@@ -196,5 +200,8 @@ namespace RBX
 		Contact* getNextContact(Contact* prev);          // 005e7be0
 
 		static void onNewTouch(Primitive* p0, Primitive* p1);   // 005e7530 (Contact::step 00606c6f)
+// Declarations proven by closure symbols of byte-exact recovered methods.
+public:
+    void setCanSleep(bool);
 	};
 }

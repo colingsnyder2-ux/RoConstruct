@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/boost-inline-nothrow /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-dialog
+// >>> native-status (generated) -- do not edit >>>
+// CInsertObjectDialog | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 38529a5e | roc native-status --write
 #include "CInsertObjectDialog.h"
 #include "v8tree/Instance.h"
 #include "v8tree/Service.h"
@@ -98,3 +102,6 @@ void CInsertObjectDialog::addClasses(const RBX::Reflection::ClassDescriptor* des
     std::for_each(descriptor->derivedClasses_begin(), descriptor->derivedClasses_end(),
                   boost::bind(&CInsertObjectDialog::addClasses, this, _1));
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Container_base_aux_alloc_real<std::allocator<boost::shared_ptr<RBX::Instance> > >;

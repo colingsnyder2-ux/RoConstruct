@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// LuaYieldingThreads2008 | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 22b13a52 | roc native-status --write
 // 2008-06 Lua yielding-thread queue (the YieldingThreads / ScriptEvent unit 00620970..006217e2), inactive.
 // The read-only donor script/ScriptEvent.h (reached through native script/ScriptContext.h) declares
 // RBX::Lua::YieldingThreads with float delays; the 2008-06 bytes prove double fields and a double queueWaiter

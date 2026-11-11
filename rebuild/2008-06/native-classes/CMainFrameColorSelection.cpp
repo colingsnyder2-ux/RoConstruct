@@ -1,5 +1,5 @@
 // >>> native-status (generated) -- do not edit >>>
-// CMainFrameColorSelection | 2008-06 | inactive
+// CMainFrameColorSelection | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src 462d916f | roc native-status --write
 #include "CMainFrame.h"

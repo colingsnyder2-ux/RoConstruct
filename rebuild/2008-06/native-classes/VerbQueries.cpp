@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// VerbQueries | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src d05983f8 | roc native-status --write
 #include "StandardVerbs.h"
 #include "v8datamodel/Selection.h"
 

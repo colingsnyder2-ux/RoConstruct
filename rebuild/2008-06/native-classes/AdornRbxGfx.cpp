@@ -5,6 +5,11 @@
 // Only bodies that need nothing beyond the AdornRbxGfx layout and the Ogre / std headers are built here. Everything
 // that reads the Ogre::VisualEngine (+0x4: scene manager +0x4, 2D manager +0x14, viewport +0x10) or calls the exe-local
 // RbxSceneNode / RbxEntity / RbxSubEntity / RbxFont methods waits for those declarations (see the recorder receipt).
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
+// >>> native-status (generated) -- do not edit >>>
+// AdornRbxGfx | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src aa80cd6a | roc native-status --write
 #include "RbxGraphics/AdornRbxGfx2008.h"
 #include <OgreSceneNode.h>
 #include <OgreMatrix3.h>
@@ -89,3 +94,28 @@ namespace RBX
         return new RenderNew::TextureProxy(filename);
     }
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Container_base_aux_alloc_real<std::allocator<Ogre::RbxSubEntity *> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<Ogre::SceneNode *> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::MeshPtr> > >;
+template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::SceneNode *> > >;
+template class std::_Revranit<std::_Vector_const_iterator<Ogre::RbxSubEntity *,std::allocator<Ogre::RbxSubEntity *> >,std::iterator<std::random_access_iterator_tag,Ogre::RbxSubEntity *,int,Ogre::RbxSubEntity * const *,Ogre::RbxSubEntity * const &> >;
+template class std::_Revranit<std::_Vector_const_iterator<Ogre::SceneNode *,std::allocator<Ogre::SceneNode *> >,std::iterator<std::random_access_iterator_tag,Ogre::SceneNode *,int,Ogre::SceneNode * const *,Ogre::SceneNode * const &> >;
+template class std::_Revranit<std::_Vector_iterator<Ogre::RbxSubEntity *,std::allocator<Ogre::RbxSubEntity *> >,std::iterator<std::random_access_iterator_tag,Ogre::RbxSubEntity *,int,Ogre::RbxSubEntity * *,Ogre::RbxSubEntity * &> >;
+template class std::_Revranit<std::_Vector_iterator<Ogre::SceneNode *,std::allocator<Ogre::SceneNode *> >,std::iterator<std::random_access_iterator_tag,Ogre::SceneNode *,int,Ogre::SceneNode * *,Ogre::SceneNode * &> >;
+template class std::_Vector_const_iterator<Ogre::RbxSubEntity *,std::allocator<Ogre::RbxSubEntity *> >;
+template class std::_Vector_const_iterator<Ogre::SceneNode *,std::allocator<Ogre::SceneNode *> >;
+template class std::_Vector_iterator<Ogre::RbxSubEntity *,std::allocator<Ogre::RbxSubEntity *> >;
+template class std::_Vector_iterator<Ogre::SceneNode *,std::allocator<Ogre::SceneNode *> >;
+template class std::allocator<std::_Tree_nod<std::_Tmap_traits<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,Ogre::MeshPtr,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::MeshPtr> >,0> >::_Node *>;
+template class std::allocator<std::_Tree_nod<std::_Tmap_traits<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,Ogre::SceneNode *,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::SceneNode *> >,0> >::_Node *>;
+template class std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::MeshPtr> >;
+template class std::pair<std::_Tree<std::_Tmap_traits<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,Ogre::MeshPtr,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::MeshPtr> >,0> >::const_iterator,std::_Tree<std::_Tmap_traits<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,Ogre::MeshPtr,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::MeshPtr> >,0> >::const_iterator>;
+template class std::pair<std::_Tree<std::_Tmap_traits<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,Ogre::MeshPtr,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::MeshPtr> >,0> >::iterator,std::_Tree<std::_Tmap_traits<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,Ogre::MeshPtr,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::MeshPtr> >,0> >::iterator>;
+template class std::pair<std::_Tree<std::_Tmap_traits<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,Ogre::SceneNode *,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::SceneNode *> >,0> >::const_iterator,std::_Tree<std::_Tmap_traits<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,Ogre::SceneNode *,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::SceneNode *> >,0> >::const_iterator>;
+template class std::pair<std::_Tree<std::_Tmap_traits<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,Ogre::SceneNode *,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::SceneNode *> >,0> >::iterator,std::_Tree<std::_Tmap_traits<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,Ogre::SceneNode *,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,Ogre::SceneNode *> >,0> >::iterator>;
+template class std::reverse_iterator<std::_Vector_const_iterator<Ogre::RbxSubEntity *,std::allocator<Ogre::RbxSubEntity *> > >;
+template class std::reverse_iterator<std::_Vector_const_iterator<Ogre::SceneNode *,std::allocator<Ogre::SceneNode *> > >;
+template class std::reverse_iterator<std::_Vector_iterator<Ogre::RbxSubEntity *,std::allocator<Ogre::RbxSubEntity *> > >;
+template class std::reverse_iterator<std::_Vector_iterator<Ogre::SceneNode *,std::allocator<Ogre::SceneNode *> > >;

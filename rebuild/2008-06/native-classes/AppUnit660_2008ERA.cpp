@@ -3,6 +3,11 @@
 // (donor header, read-only): floatERA {weight +0, avg +4} and Vector3ERA {weight +0, x/y/z +4/+8/+0xc}, the offsets
 // every body below reads (reset 00666240 / 00666280 store +4 / +4..+0xc, pushAndGetAverage multiplies by [ecx]).
 // See tests/record_native_app_unit660_2008.py.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit660_2008ERA | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 632921e9 | roc native-status --write
 #include "util/ExponentialRunningAverage.h"
 
 namespace RBX

@@ -1,6 +1,6 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/slingshot-load /fp:fast
 // >>> native-status (generated) -- do not edit >>>
-// UserInputBaseCursor | 2008-06 | inactive
+// UserInputBaseCursor | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src 2242190e | roc native-status --write
 #include "util/UserInputBase.h"

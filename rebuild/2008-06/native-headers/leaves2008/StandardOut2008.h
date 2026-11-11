@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// StandardOut2008 | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 9a17692d | roc native-status --write
 // 2008-06 RBX::StandardOut (inactive native recovery). The class itself is the donor util/standardout.h declaration,
 // which every native unit already reaches through native-headers/util/Events.h; it is not redeclared here (a second
 // declaration would collide in those units). This header only gathers the 2008-06 evidence:

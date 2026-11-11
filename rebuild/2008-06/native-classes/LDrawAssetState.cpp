@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// >>> native-status (generated) -- do not edit >>>
+// LDrawAssetState | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 21365e01 | roc native-status --write
 #include <shlobj.h>
 #include <string>
 #include <boost/thread/once.hpp>
@@ -21,3 +25,5 @@ void initializeAssetFolder()
 }
 } }
 
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::auto_ptr<RBX::LDraw2Lua::LDraw2RobloxMapRoot>;

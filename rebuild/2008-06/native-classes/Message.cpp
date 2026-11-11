@@ -1,5 +1,10 @@
 // 2008-06 native RBX::Message / RBX::Hint (inactive); evidence in native-headers/v8datamodel/Message.h.
 // Verified by tests/record_native_effects.py.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// Message | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 6cdf471c | roc native-status --write
 #include "v8datamodel/Message.h"
 #include "util/Rect.h"
 #include "Network/Player.h" // native Network::Player (render2d dynamic_casts the parent to it)
@@ -103,3 +108,6 @@ namespace RBX
 		adorn->drawFont2D(text, textPos, 14.0, G3D::Color3::white(), G3D::Color4::clear(), Adorn::XALIGN_CENTER, Adorn::YALIGN_CENTER, Adorn::PROPORTIONAL_SPACING);
 	}
 }
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sMessage>();

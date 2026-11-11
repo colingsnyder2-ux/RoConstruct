@@ -1,4 +1,8 @@
 // Inactive native 2008-06 CRbxDocTemplate / CRbxPlayDocTemplate (native-headers/AppLeaves2008/RbxDocTemplates2008.h).
+// >>> native-status (generated) -- do not edit >>>
+// AppLeaves2008DocTemplates | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 2fec990b | roc native-status --write
 #include "AppLeaves2008/RbxDocTemplates2008.h"
 #include <afxpriv.h>
 #include "CRobloxApp.h"

@@ -64,8 +64,4 @@ namespace RBX
 			setParent(NULL);
 	}
 
-	void Explosion::render3dAdorn(Adorn* adorn)
-	{
-		adorn->explosion(G3D::Sphere(position, visualRadius()), G3D::Color4(1.0f, 0.5f, 0.0f, 0.5f), G3D::Color4(1.0f, 1.0f, 0.0f, 1.0f));
-	}
 }

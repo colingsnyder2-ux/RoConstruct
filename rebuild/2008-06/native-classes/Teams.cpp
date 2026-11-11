@@ -1,4 +1,8 @@
 // 2008-06 native RBX::Teams (inactive); evidence in native-headers/v8datamodel/Teams.h.
+// >>> native-status (generated) -- do not edit >>>
+// Teams | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 38f41684 | roc native-status --write
 #include "v8datamodel/Teams.h"
 #include <algorithm>
 #include "Network/Players.h" // native Network::Players (ServiceProvider::find<Players>, 00491d50)
@@ -178,3 +182,6 @@ namespace RBX
 		}
 	}
 }
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sTeams>();

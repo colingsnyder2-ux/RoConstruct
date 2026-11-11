@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CSettingsDialog | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src a9685516 | roc native-status --write
 #include "CSettingsDialog.h"
 #include "v8datamodel/GlobalSettings.h"
 #include "v8datamodel/Selection.h"

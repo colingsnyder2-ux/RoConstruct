@@ -1,5 +1,5 @@
 // >>> native-status (generated) -- do not edit >>>
-// CRobloxReportViewChildAdded | 2008-06 | inactive
+// CRobloxReportViewChildAdded | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src 8a7f4abf | roc native-status --write
 #include "CRobloxReportView.h"

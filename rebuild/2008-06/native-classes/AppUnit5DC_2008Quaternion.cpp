@@ -4,6 +4,11 @@
 // order (w, x, y, z), the Matrix3 constructor 005dd570 and toRotationMatrix 005dd6d0 read / write only those four.
 // The unit holds only these three bodies, in this order; built with /fp:fast. Verified by
 // tests/record_native_app_unit5dc_2008.py.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit5DC_2008Quaternion | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 6800dd85 | roc native-status --write
 #include "util/Quaternion.h"
 
 namespace RBX

@@ -21,6 +21,10 @@
 //     RTTI is .?AVCreator@?$FactoryProduct@VVisit@RBX@@VInstance@2@$1?sVisit@2@3PADA@RBX@@).
 // v8tree/Service.h, util/Object.h and util/Name.h declare these templates; the definitions below are the same ones
 // native-classes/AppUnit48C_2008Services.cpp and AppUnit48C_2008Creators.cpp use.
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit448_2008Services | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 33f07573 | roc native-status --write
 #include <boost/thread/once.hpp>
 #include "v8tree/Service.h"
 #include "v8datamodel/ChangeHistoryService.h"
@@ -107,3 +111,9 @@ template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::Visit, RBX::Ins
 // settings-items).
 template boost::detail::shared_count::shared_count(RBX::GameSettings*, RBX::Creatable<RBX::Instance>::Deleter);
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::GameSettings, RBX::GlobalSettings::Item, RBX::sGameSettings>::Creator::create() const;
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<RBX::ChangeHistoryService>;
+template class boost::shared_ptr<RBX::GameSettings>;
+template class boost::shared_ptr<RBX::Soundscape::SoundService>;
+template class boost::shared_ptr<RBX::Visit>;

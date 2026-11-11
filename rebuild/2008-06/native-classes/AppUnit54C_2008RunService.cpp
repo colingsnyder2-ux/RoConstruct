@@ -2,6 +2,10 @@
 // tests/record_native_app_unit54c_2008.py. Built against the read-only native util/RunStateOwner.h (layout 0x2d8: the
 // size create<RunService> 00405fbf passes to new; fields from the ctor 00556b00 and dtor 00555c00).
 // Bodies follow the target bytes; the class and member names are those of the native header.
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit54C_2008RunService | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src baae8879 | roc native-status --write
 #include "util/RunStateOwner.h"
 #include "util/StandardOut.h"
 #include <exception>
@@ -157,3 +161,23 @@ namespace RBX
 // raises are instantiated explicitly here.
 template void RBX::Notifier<RBX::RunService, RBX::Heartbeat>::raise(RBX::Heartbeat) const;
 template void RBX::Notifier<RBX::RunService, RBX::Stepped>::raise(RBX::Stepped) const;
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::function<void __cdecl(void),std::allocator<void> >;
+template class boost::scoped_ptr<boost::thread>;
+template class std::_Container_base_aux_alloc_real<std::allocator<RBX::Listener<RBX::RunService,RBX::Heartbeat> *> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<RBX::Listener<RBX::RunService,RBX::RunTransition> *> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<RBX::Listener<RBX::RunService,RBX::Stepped> *> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<RBX::Listener<RBX::RunService,enum RBX::RunState> *> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<boost::function<void __cdecl(void),std::allocator<void> > > >;
+template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<RBX::IRunView * const,bool> > >;
+template class std::_Deque_const_iterator<boost::function<void __cdecl(void),std::allocator<void> >,std::allocator<boost::function<void __cdecl(void),std::allocator<void> > >,1>;
+template class std::_Deque_iterator<boost::function<void __cdecl(void),std::allocator<void> >,std::allocator<boost::function<void __cdecl(void),std::allocator<void> > >,1>;
+template class std::_Tmap_traits<RBX::IRunView *,bool,std::less<RBX::IRunView *>,std::allocator<std::pair<RBX::IRunView * const,bool> >,0>;
+template class std::_Tree<std::_Tmap_traits<RBX::IRunView *,bool,std::less<RBX::IRunView *>,std::allocator<std::pair<RBX::IRunView * const,bool> >,0> >;
+template class std::allocator<std::_Tree_nod<std::_Tmap_traits<RBX::IRunView *,bool,std::less<RBX::IRunView *>,std::allocator<std::pair<RBX::IRunView * const,bool> >,0> >::_Node *>;
+template class std::allocator<std::pair<RBX::IRunView * const,bool> >;
+template class std::vector<RBX::Listener<RBX::RunService,RBX::Heartbeat> *,std::allocator<RBX::Listener<RBX::RunService,RBX::Heartbeat> *> >;
+template class std::vector<RBX::Listener<RBX::RunService,RBX::RunTransition> *,std::allocator<RBX::Listener<RBX::RunService,RBX::RunTransition> *> >;
+template class std::vector<RBX::Listener<RBX::RunService,RBX::Stepped> *,std::allocator<RBX::Listener<RBX::RunService,RBX::Stepped> *> >;
+template class std::vector<RBX::Listener<RBX::RunService,enum RBX::RunState> *,std::allocator<RBX::Listener<RBX::RunService,enum RBX::RunState> *> >;

@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/draw-handles
+// >>> native-status (generated) -- do not edit >>>
+// ResizeToolRender | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 328a11d0 | roc native-status --write
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Workspace.h"
 #include "tool/ResizeTool.h"

@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// EquationDisplay | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 8de48f9c | roc native-status --write
 // 2008-06 native RBX::EquationDisplay (inactive). Shape after the donor tools/rbxgs gui/EquationDisplay.h. Read from the
 // binary (tests/record_native_widget.py checks it):
 //   EquationDisplay  vtable 0084becc .?AVEquationDisplay@RBX@@ -> TextDisplay -> GuiItem. Constructor 00656a50

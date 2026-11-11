@@ -11,25 +11,6 @@
 
 namespace RBX
 {
-	Reflection::EnumDesc<Controller::InputType>::EnumDesc()
-		: EnumDescriptor("InputType", typeid(Controller::InputType))
-	{
-		addPair(Controller::NO_INPUT, "NoInput");
-		addPair(Controller::LEFT_TRACK_INPUT, "LeftTread");
-		addPair(Controller::RIGHT_TRACK_INPUT, "RightTread");
-		addPair(Controller::RIGHT_LEFT_INPUT, "Steer");
-		addPair(Controller::BACK_FORWARD_INPUT, "Throtle");
-		addPair(Controller::STRAFE_INPUT, "Strafe");
-		addPair(Controller::UP_DOWN_INPUT, "UpDown");
-		addPair(Controller::BUTTON_1_INPUT, "Action1");
-		addPair(Controller::BUTTON_2_INPUT, "Action2");
-		addPair(Controller::BUTTON_3_INPUT, "Action3");
-		addPair(Controller::BUTTON_4_INPUT, "Action4");
-		addPair(Controller::BUTTON_3_4_INPUT, "Action5");
-		addPair(Controller::CONSTANT_INPUT, "Constant");
-		addPair(Controller::SIN_INPUT, "Sin");
-	}
-
 	namespace
 	{
 		Surface& faceOf(const Reflection::DescribedBase* instance, NormalId face)
@@ -165,63 +146,10 @@ namespace RBX
 		} declareFaceProperties;
 	}
 
-	Surfaces::Surfaces(PartInstance* part)
-		: Top(part, NORM_Y), Bottom(part, NORM_Y_NEG), Left(part, NORM_X_NEG),
-		  Right(part, NORM_X), Front(part, NORM_Z_NEG), Back(part, NORM_Z)
-	{
-	}
 
-	Surface& Surfaces::operator[](NormalId face)
-	{
-		switch (face)
-		{
-		case NORM_Y: return Top;
-		case NORM_Y_NEG: return Bottom;
-		case NORM_X_NEG: return Left;
-		case NORM_X: return Right;
-		case NORM_Z_NEG: return Front;
-		default: return Back;
-		}
-	}
 
-	const Surface& Surfaces::operator[](NormalId face) const
-	{
-		return const_cast<Surfaces&>(*this)[face];
-	}
 
-	Vector6<SurfaceType> Surfaces::surf6() const
-	{
-		Vector6<SurfaceType> result;
-		for (int face = 0; face < 6; ++face)
-			result[face] = (*this)[(NormalId)face].getSurfaceType();
-		return result;
-	}
-
-	const Reflection::PropertyDescriptor& Surfaces::getSurfaceType(NormalId face) const { return faceProperties(face).type; }
-	const Reflection::PropertyDescriptor& Surfaces::getSurfaceInput(NormalId face) const { return faceProperties(face).input; }
-	const Reflection::PropertyDescriptor& Surfaces::getParamA(NormalId face) const { return faceProperties(face).paramA; }
-	const Reflection::PropertyDescriptor& Surfaces::getParamB(NormalId face) const { return faceProperties(face).paramB; }
 
 	// the stock brick: studs on top, inlets underneath, smooth sides
-	const bool Surfaces::isStandardPart() const
-	{
-		for (int face = 0; face < 6; ++face)
-		{
-			SurfaceType expected = face == NORM_Y ? STUDS : face == NORM_Y_NEG ? INLET : NO_SURFACE;
-			if ((*this)[(NormalId)face].getSurfaceType() != expected)
-				return false;
-		}
-		return true;
-	}
 
-	bool Surfaces::isSurfaceDescriptor(const Reflection::PropertyDescriptor& desc)
-	{
-		for (int face = 0; face < 6; ++face)
-		{
-			const FaceProperties& p = faceProperties((NormalId)face);
-			if (&desc == &p.type || &desc == &p.input || &desc == &p.paramA || &desc == &p.paramB)
-				return true;
-		}
-		return false;
-	}
 }

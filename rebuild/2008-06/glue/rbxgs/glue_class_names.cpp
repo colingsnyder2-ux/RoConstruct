@@ -10,75 +10,47 @@ namespace RBX
 {
 	namespace Network
 	{
-		const char* sClient = "NetworkClient";
-		const char* sServer = "NetworkServer";
-		const char* sPeer = "NetworkPeer";
-		const char* sMarker = "NetworkMarker";
-		const char* sReplicator = "NetworkReplicator";
-		const char* sPlayers = "Players";
-		const char* sPlayer = "Player";
+		const char* const sPeer = "NetworkPeer";
+		const char* const sMarker = "NetworkMarker";
+		const char* const sReplicator = "NetworkReplicator";
 	}
 
 	namespace Stats
 	{
-		const char* sStats = "Stats";
 	}
 
-	ILogProvider* Log::provider = NULL;
 
-	const char* sAccoutrement = "Accoutrement";
-	const char* sArrowTool = "Arrow";
-	const char* sBackpack = "Backpack";
-	const char* sBackpackItem = "BackpackItem";
-	const char* sBodyColors = "BodyColors";
-	const char* sBoxSelectCommand = "BoxSelect";
-	const char* sControllerService = "ControllerService";
-	const char* sDataModel = "DataModel";
-	const char* sDebrisService = "Debris";
-	const char* sDebugSettings = "DebugSettings";
-	const char* sExplosion = "Explosion";
-	const char* sFallingDown = "FallingDown";
-	const char* sFlag = "Flag";
-	const char* sFlagStand = "FlagStand";
-	const char* sFlagStandService = "FlagStandService";
-	const char* sFlying = "Flying";
-	const char* sFreefall = "Freefall";
-	const char* sGameSettings = "GameSettings";
-	const char* sGettingUp = "GettingUp";
-	const char* sGlobalSettings = "GlobalSettings";
-	const char* sGroupDragTool = "GroupDragTool";
-	const char* sHat = "Hat";
-	const char* sHint = "Hint";
-	const char* sHopperBin = "HopperBin";
-	const char* sHumanoid = "Humanoid";
-	const char* sIdManager = "IdManager";
-	const char* sJumping = "Jumping";
-	const char* sLegacyHopperService = "Hopper";
-	const char* sLocalBackpack = "LocalBackpack";
-	const char* sLocalBackpackItem = "LocalBackpackItem";
-	const char* sMessage = "Message";
-	const char* sMouse = "Mouse";
-	const char* sNetworkSettings = "NetworkSettings";
-	const char* sNewNullTool = "NewNullTool";
-	const char* sPart = "Part";
-	const char* sPartDragTool = "PartDragTool";
-	const char* sRunService = "RunService";
-	const char* sRunning = "Running";
-	const char* sSeat = "Seat";
-	const char* sSeated = "Seated";
-	const char* sSelection = "Selection";
-	const char* sShirt = "Shirt";
-	const char* sShirtGraphic = "ShirtGraphic";
-	const char* sSkin = "Skin";
-	const char* sSky = "Sky";
-	const char* sSpawnLocation = "SpawnLocation";
-	const char* sSpawnerService = "SpawnerService";
-	const char* sSpecialShape = "SpecialMesh";
-	const char* sStarterPackService = "StarterPack";
-	const char* sTexture = "Texture";
-	const char* sTimerService = "TimerService";
-	const char* sTool = "Tool";
-	const char* sToolMouseCommand = "ToolMouseCommand";
-	const char* sVisit = "Visit";
-	const char* sWorkspace = "Workspace";
+	const char* const sAccoutrement = "Accoutrement";
+	const char* const sBackpack = "Backpack";
+	const char* const sBackpackItem = "BackpackItem";
+	const char* const sBodyColors = "BodyColors";
+	const char* const sDataModel = "DataModel";
+	char* sDebrisService = "Debris";
+	const char* const sDebugSettings = "DebugSettings";
+	const char* const sFallingDown = "FallingDown";
+	const char* const sFlag = "Flag";
+	const char* const sFlagStandService = "FlagStandService";
+	const char* const sFlying = "Flying";
+	const char* const sFreefall = "Freefall";
+	const char* const sGameSettings = "GameSettings";
+	const char* const sGettingUp = "GettingUp";
+	const char* const sGlobalSettings = "GlobalSettings";
+	const char* const sHat = "Hat";
+	const char* const sHopperBin = "HopperBin";
+	const char* const sJumping = "Jumping";
+	const char* const sLegacyHopperService = "Hopper";
+	const char* const sLocalBackpack = "LocalBackpack";
+	const char* const sLocalBackpackItem = "LocalBackpackItem";
+	const char* const sMouse = "Mouse";
+	const char* const sNetworkSettings = "NetworkSettings";
+	const char* const sRunService = "RunService";
+	const char* const sRunning = "Running";
+	const char* const sSeated = "Seated";
+	const char* const sSelection = "Selection";
+	const char* const sShirt = "Shirt";
+	const char* const sShirtGraphic = "ShirtGraphic";
+	const char* const sSkin = "Skin";
+	const char* const sSpawnerService = "SpawnerService";
+	const char* const sStarterPackService = "StarterPack";
+	const char* const sTool = "Tool";
 }

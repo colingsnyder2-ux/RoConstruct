@@ -1,5 +1,5 @@
 // >>> native-status (generated) -- do not edit >>>
-// PlayersSuperSafe | 2008-06 | inactive
+// PlayersSuperSafe | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src a9a310e3 | roc native-status --write
 #include "Network/Players.h"

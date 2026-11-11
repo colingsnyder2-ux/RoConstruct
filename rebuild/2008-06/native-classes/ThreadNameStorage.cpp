@@ -1,7 +1,7 @@
 // >>> native-status (generated) -- do not edit >>>
-// ThreadNameStorage | 2008-06 | inactive
+// ThreadNameStorage | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
-// <<< native-status | src a76f366b | roc native-status --write
+// <<< native-status | src 8df9dd69 | roc native-status --write
 #include <string>
 #include <boost/thread/once.hpp>
 #include <boost/thread/tss.hpp>
@@ -16,3 +16,6 @@ void init_foo()
     foo = &value;
 }
 } }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::function1<void,std::basic_string<char,std::char_traits<char>,std::allocator<char> > *,std::allocator<boost::function_base> >;

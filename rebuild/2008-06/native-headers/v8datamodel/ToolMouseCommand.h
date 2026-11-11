@@ -1,6 +1,6 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// ToolMouseCommand | 2008-06 | inactive
+// ToolMouseCommand | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src b6f64a40 | roc native-status --write
 #include "v8datamodel/ScriptMouseCommand.h"

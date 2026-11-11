@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// WeldSnapActions | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 4b977c25 | roc native-status --write
 #include "../native-headers/StandardVerbs.h"
 #include "../native-headers/v8datamodel/Workspace.h"
 #include "../native-headers/v8datamodel/DataModel.h"

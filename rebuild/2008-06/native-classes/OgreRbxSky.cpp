@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
 // Ogre::RbxSky as compiled into the June 2008 client (inactive native recovery; Roblox's exe-local sky object for its
 // Ogre 1.4.5 fork, the image block 0067f170..00681190 between VisualEngine and RbxSceneNode).
 //
@@ -22,6 +23,10 @@
 // _Copy_backward_opt 0067f1d0, _Fill 0067f7c0).
 // Pending-build-only (NATIVE_OGRE_RBX_SKY_PENDING, with the proposal header that tests/record_native_ogre_rbx_sky.py
 // generates under rebuild/2008-06/out/): the RbxSky members.
+// >>> native-status (generated) -- do not edit >>>
+// OgreRbxSky | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 661df4c4 | roc native-status --write
 #include <vector>
 #include <OgreVector3.h>
 
@@ -286,3 +291,12 @@ void RbxSky::updateSun(VisualEngine*, const G3D::LightingParameters& lighting)
 
 }
 #endif
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Container_base_aux_alloc_real<std::allocator<Ogre::Vector3> >;
+template class std::_Revranit<std::_Vector_const_iterator<Ogre::Vector3,std::allocator<Ogre::Vector3> >,std::iterator<std::random_access_iterator_tag,Ogre::Vector3,int,Ogre::Vector3 const *,Ogre::Vector3 const &> >;
+template class std::_Revranit<std::_Vector_iterator<Ogre::Vector3,std::allocator<Ogre::Vector3> >,std::iterator<std::random_access_iterator_tag,Ogre::Vector3,int,Ogre::Vector3 *,Ogre::Vector3 &> >;
+template class std::_Vector_const_iterator<Ogre::Vector3,std::allocator<Ogre::Vector3> >;
+template class std::_Vector_iterator<Ogre::Vector3,std::allocator<Ogre::Vector3> >;
+template class std::reverse_iterator<std::_Vector_const_iterator<Ogre::Vector3,std::allocator<Ogre::Vector3> > >;
+template class std::reverse_iterator<std::_Vector_iterator<Ogre::Vector3,std::allocator<Ogre::Vector3> > >;

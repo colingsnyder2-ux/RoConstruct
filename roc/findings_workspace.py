@@ -127,7 +127,7 @@ def publish(root, ref=BRANCH):
         return result
 
 
-def publish_loop(root, every=3600):
+def publish_loop(root, every=21600):
     while True:
         try:
             publish(root)

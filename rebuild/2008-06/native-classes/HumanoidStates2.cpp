@@ -1,6 +1,10 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
 // Inactive native Freefall/Flying/Jumping/GettingUp methods (2008-06). Not in any build list.
 // Bodies that read the stored humanoid call the out-of-line getter 00793d50 (HumanoidState::getHumanoid).
+// >>> native-status (generated) -- do not edit >>>
+// HumanoidStates2 | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src bf8134f9 | roc native-status --write
 #include "humanoid/HumanoidStates2.h"
 #include "humanoid/Humanoid.h"
 #include "v8datamodel/PartInstance.h"
@@ -87,3 +91,12 @@ template<> const Name& Named<HUMAN::Balancing, HUMAN::sFlying>::getName() const 
 template<> const Name& Named<HUMAN::Flying, HUMAN::sJumping>::getName() const { return Name::declare<HUMAN::sJumping>(); }
 template<> const Name& Named<HUMAN::Balancing, HUMAN::sGettingUp>::getName() const { return Name::declare<HUMAN::sGettingUp>(); }
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class RBX::Reflection::SignalDescImpl<1,void __cdecl(bool)>;
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::HUMAN::sFlying>();
+template void RBX::Name::callDoDeclare<RBX::HUMAN::sFreefall>();
+template void RBX::Name::callDoDeclare<RBX::HUMAN::sJumping>();
+template void RBX::Name::callDoDeclare<RBX::HUMAN::sGettingUp>();

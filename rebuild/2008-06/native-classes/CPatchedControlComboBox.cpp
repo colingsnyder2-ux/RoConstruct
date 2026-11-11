@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CPatchedControlComboBox | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 928be26b | roc native-status --write
 #include "CPatchedControlComboBox.h"
 
 IMPLEMENT_XTP_CONTROL(CPatchedControlComboBox, CXTPControlComboBox)

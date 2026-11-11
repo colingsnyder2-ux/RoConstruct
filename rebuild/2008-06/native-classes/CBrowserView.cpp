@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CBrowserView | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src d39eb600 | roc native-status --write
 #include "CBrowserView.h"
 #include "CBrowserDoc.h"
 #include "CBrowserViewExternal.h"

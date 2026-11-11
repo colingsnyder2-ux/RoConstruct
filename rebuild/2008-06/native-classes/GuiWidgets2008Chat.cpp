@@ -13,6 +13,10 @@
 //   * v8tree/Instance.h    the donor's inline Instance::getRootAncestor() / getRootAncestor() const and static
 //                          getRootAncestor(const Instance*): EquationDisplay::getLabel 00656940 tests this (00656963),
 //                          inlines two parent steps (+0x104) and calls the out-of-line one 0042a5f0 (0065697b).
+// >>> native-status (generated) -- do not edit >>>
+// GuiWidgets2008Chat | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 58795820 | roc native-status --write
 #include "gui/WidgetChat.h"
 #include "gui/EquationDisplay.h"
 #include "Network/Players.h"

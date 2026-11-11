@@ -4,6 +4,10 @@
 // yet, so this unit takes newMarker's address (nativeReplicatorNewMarker, not an original symbol) to emit the same
 // COMDAT bodies (newMarker 004b9190, Marker() 004b9140, NonFactoryProduct<DescribedBase, sMarker>() 004b85b0,
 // ~Marker scalar deleting 004b8600, shared_count<Marker> 004ac040): a codegen analog, not the original unit.
+// >>> native-status (generated) -- do not edit >>>
+// ReplicatorMarker | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 7077a441 | roc native-status --write
 #include "Network/ReplicatorMarker.h"
 
 namespace RBX

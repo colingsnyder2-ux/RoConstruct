@@ -1,3 +1,8 @@
+// >>> native-status (generated) -- do not edit >>>
+// InsertModelFromRobloxVerb | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 935331d0 | roc native-status --write
+#include <afxwin.h>
 #include "../native-headers/InsertModelFromRobloxVerb.h"
 #include "../native-headers/CRobloxView.h"
 #include "../native-headers/v8datamodel/DataModel.h"

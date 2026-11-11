@@ -13,6 +13,11 @@
 //     index_base insert_ 004c8b20, the compiler-generated History / PartItem copy constructors 004c7c10 / 004c7dd0 with
 //     std::vector<float>'s copy constructor 004c77b0;
 //   * PartItem(const shared_ptr<PartInstance>&) 004c7a10 with the implicit History() 004c76a0 it reaches.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit4BC_2008Receiver | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 5108c31d | roc native-status --write
 #include "Network/PhysicsSenders2008.h"
 #include "AppUnit4BC_2008/AssociationTimeStamp.h"
 
@@ -49,3 +54,27 @@ namespace RBX
 		}
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class RBX::Association<RBX::Instance>;
+template class boost::mpl::int_<13>;
+template class boost::mpl::integral_c<unsigned int,2>;
+template class boost::mpl::long_<1>;
+template class boost::mpl::long_<2>;
+template class boost::mpl::long_<3>;
+template class boost::multi_index::detail::auto_space<boost::multi_index::detail::copy_map_entry<boost::multi_index::detail::hashed_index_node<boost::multi_index::detail::ordered_index_node<boost::multi_index::detail::index_node_base<RBX::Network::InterpolatingPhysicsReceiver::PartItem> > > >,std::allocator<RBX::Network::InterpolatingPhysicsReceiver::PartItem> >;
+template class boost::multi_index::detail::auto_space<unsigned int,std::allocator<RBX::Network::InterpolatingPhysicsReceiver::PartItem> >;
+template class boost::multi_index::detail::ordered_index_node<boost::multi_index::detail::index_node_base<RBX::Network::InterpolatingPhysicsReceiver::PartItem> >;
+template class boost::shared_ptr<RBX::PartInstance>;
+template class std::_Container_base_aux_alloc_real<std::allocator<float> >;
+template class std::_Revranit<std::_Vector_const_iterator<float,std::allocator<float> >,std::iterator<std::random_access_iterator_tag,float,int,float const *,float const &> >;
+template class std::_Revranit<std::_Vector_iterator<float,std::allocator<float> >,std::iterator<std::random_access_iterator_tag,float,int,float *,float &> >;
+template class std::_Vector_const_iterator<RBX::Association<RBX::Instance>::Item *,std::allocator<RBX::Association<RBX::Instance>::Item *> >;
+template class std::_Vector_const_iterator<float,std::allocator<float> >;
+template class std::_Vector_iterator<RBX::Association<RBX::Instance>::Item *,std::allocator<RBX::Association<RBX::Instance>::Item *> >;
+template class std::_Vector_iterator<float,std::allocator<float> >;
+template class std::allocator<RBX::Network::InterpolatingPhysicsReceiver::PartItem>;
+template class std::pair<boost::multi_index::detail::copy_map_entry<boost::multi_index::detail::hashed_index_node<boost::multi_index::detail::ordered_index_node<boost::multi_index::detail::index_node_base<RBX::Network::InterpolatingPhysicsReceiver::PartItem> > > > *,boost::multi_index::detail::copy_map_entry<boost::multi_index::detail::hashed_index_node<boost::multi_index::detail::ordered_index_node<boost::multi_index::detail::index_node_base<RBX::Network::InterpolatingPhysicsReceiver::PartItem> > > > *>;
+template class std::reverse_iterator<std::_Vector_const_iterator<float,std::allocator<float> > >;
+template class std::reverse_iterator<std::_Vector_iterator<float,std::allocator<float> > >;
+template class std::vector<RBX::Association<RBX::Instance>::Item *,std::allocator<RBX::Association<RBX::Instance>::Item *> >;

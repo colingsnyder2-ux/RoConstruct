@@ -1,5 +1,5 @@
 // >>> native-status (generated) -- do not edit >>>
-// ApplicationWindowClass | 2008-06 | inactive
+// ApplicationWindowClass | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src 85aacb81 | roc native-status --write
 #include <afxwin.h>

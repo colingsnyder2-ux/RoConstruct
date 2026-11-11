@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/metadata-load /I{headers}/writer-2008 /I{headers}/std-noinline-string
+// >>> native-status (generated) -- do not edit >>>
+// MetadataReflectionLoad | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src bc850a44 | roc native-status --write
 #include "reflection/Metadata.h"
 #include "v8xml/SerializerV2.h"
 #include <fstream>
@@ -28,3 +32,7 @@ void Reflection::load(std::string filename)
     }
 }
 }}
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Container_base_aux_alloc_real<std::allocator<RBX::MergeBinder::IDREFItem> >;
+template class std::_Vector_val<RBX::MergeBinder::IDREFItem,std::allocator<RBX::MergeBinder::IDREFItem> >;

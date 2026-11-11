@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/boost-inline-nothrow /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-dialog
+// >>> native-status (generated) -- do not edit >>>
+// CInsertObjectDialogAction | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 96031a49 | roc native-status --write
 #include "CInsertObjectDialog.h"
 #include "v8tree/Instance.h"
 #include "v8tree/Service.h"
@@ -44,3 +48,10 @@ void CInsertObjectDialog::addClasses(const RBX::Reflection::ClassDescriptor* des
     std::for_each(descriptor->derivedClasses_begin(), descriptor->derivedClasses_end(),
                   boost::bind(&CInsertObjectDialog::addClasses, this, _1));
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::_bi::value<CInsertObjectDialog *>;
+template class boost::_mfi::mf1<void,CInsertObjectDialog,RBX::Reflection::ClassDescriptor const *>;
+template class boost::shared_ptr<RBX::Metadata::Reflection>;
+template class std::_Vector_const_iterator<RBX::Reflection::ClassDescriptor *,std::allocator<RBX::Reflection::ClassDescriptor *> >;
+template class std::map<RBX::Name const *,RBX::ICreator const *,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,RBX::ICreator const *> > >;

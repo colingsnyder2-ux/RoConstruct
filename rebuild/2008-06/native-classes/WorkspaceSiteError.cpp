@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// WorkspaceSiteError | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 6273af49 | roc native-status --write
 #include <windows.h>
 
 extern void __cdecl reportWorkspaceStatus(unsigned short, const char*);

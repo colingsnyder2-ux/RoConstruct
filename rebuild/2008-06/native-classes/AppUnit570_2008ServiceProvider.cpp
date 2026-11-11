@@ -3,6 +3,10 @@
 // Evidence (005726f0, 216 B): walks context -> parent (+0x104) until __RTDynamicCast(context, 0, Instance, ServiceProvider)
 // is non-null, then calls createChild through the Instance vtable (slot 0x34) and Instance::setParent 0055a8f0 when the
 // returned child is non-null; returns child.get(). See tests/record_native_app_unit570_2008.py.
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit570_2008ServiceProvider | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src f10cbd8a | roc native-status --write
 #include "v8tree/Service.h"
 
 namespace RBX

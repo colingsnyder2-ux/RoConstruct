@@ -8,6 +8,10 @@
 // Item::createBoundChildItem 005ca240 (with the ProfilingItem constructor, create and shared_ptr instances it
 // pulls in: 005c9ac0, 005c9ed0, 005c9f70, 005ca1c0, 005c91b0, 005c92e0).
 // Verified by tests/record_native_stats_service.py.
+// >>> native-status (generated) -- do not edit >>>
+// StatsService | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 039d9b53 | roc native-status --write
 #include "stats/Stats.h"
 #include "util/Log.h"
 #include <G3D/format.h>
@@ -178,3 +182,11 @@ namespace RBX
 		}
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::_bi::list1<boost::_bi::value<unsigned int const *> >;
+template class boost::_bi::value<unsigned int const *>;
+template class boost::shared_ptr<RBX::Stats::TypedMemItem>;
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::Stats::sStats>();

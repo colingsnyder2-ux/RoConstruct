@@ -1,5 +1,5 @@
 // >>> native-status (generated) -- do not edit >>>
-// AppFramework | 2008-06 | inactive
+// AppFramework | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src cb2abb6c | roc native-status --write
 #include "CRobloxApp.h"

@@ -1,6 +1,11 @@
 // Ogre::TwoDManager method bodies (inactive native recovery, June 2008 client); see OgreRbxNode/TwoDManager2008.h.
 // Bodies 00682560..006843e6 except render 006832b0. Built with the Ogre 1.4.5 client headers (/fp:fast);
 // record_native_ogre_rbx_node.py verifies them.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
+// >>> native-status (generated) -- do not edit >>>
+// OgreRbxNodeTwoDManager | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 24b27030 | roc native-status --write
 #include "OgreRbxNode/TwoDManager2008.h"
 #include <OgreRoot.h>
 #include <OgreRenderSystem.h>
@@ -123,3 +128,8 @@ namespace Ogre
 			render();
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Container_base_aux_alloc_real<std::allocator<Ogre::TwoDManager::Quad> >;
+template class std::allocator<Ogre::TwoDManager::Quad>;
+template class std::allocator<std::_List_nod<Ogre::TwoDManager::Quad,std::allocator<Ogre::TwoDManager::Quad> >::_Node *>;

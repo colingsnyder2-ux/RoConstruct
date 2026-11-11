@@ -17,6 +17,10 @@
 //                       00657240 with ten arguments, ret 0x28);
 //   * util/Object.h     Creatable<T>::create with five parameters (create<ArrowButton> 00657190 forwards five
 //                       arguments to the ArrowButton constructor 006570a0 at 006571f3).
+// >>> native-status (generated) -- do not edit >>>
+// GuiWidgets2008Arrow | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 67095a65 | roc native-status --write
 #include "gui/ArrowPanel.h"
 #include "v8datamodel/DataModel.h"
 #include "util/RunStateOwner.h"
@@ -74,3 +78,6 @@ namespace RBX
 	template boost::shared_ptr<ImageWidget> Creatable<Instance>::create<ImageWidget, Adorn*, std::string>(Adorn*, std::string);
 	template boost::shared_ptr<TopMenuBar> Creatable<Instance>::create<TopMenuBar, std::string, Layout::Style>(std::string, Layout::Style);
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<RBX::ImageWidget>;

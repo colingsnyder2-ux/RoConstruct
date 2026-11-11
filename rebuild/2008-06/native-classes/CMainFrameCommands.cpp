@@ -1,5 +1,9 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr
 // (OnClose 00431f10 needs CString::operator PCXSTR out of line; hideEditorChrome 004309f0, showEditorChrome 00430f50)
+// >>> native-status (generated) -- do not edit >>>
+// CMainFrameCommands | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src dfae80fb | roc native-status --write
 #include "CMainFrame.h"
 #include "util/standardout.h"
 #include "util/boost.hpp"

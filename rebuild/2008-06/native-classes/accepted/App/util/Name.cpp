@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// Name | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 00e40ccb | roc native-status --write
 #include "util/Name.h"
 #include "util/Debug.h"
 #include <boost/thread/once.hpp>

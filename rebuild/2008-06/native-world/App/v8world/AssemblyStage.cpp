@@ -1,7 +1,7 @@
 // Source-derived world pipeline port from openrbx v8world/AssemblyStage2.cpp.
 // June anchor swap is evidenced at 0064cc40/0064ccf0; full ABI/physics parity remains unproven.
 // >>> native-status (generated) -- do not edit >>>
-// AssemblyStage | 2008-06 | inactive
+// AssemblyStage | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src 04f4a9d1 | roc native-status --write
 #include "v8world/AssemblyStage.h"

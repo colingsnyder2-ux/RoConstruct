@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// NetworkSettings | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 7d809577 | roc native-status --write
 // 2008-06 native RBX::NetworkSettings (inactive). Shape after the donor tools/rbxgs Client/Network/NetworkSettings.h;
 // every base, field and descriptor below is read from the 2008-06 binary:
 //   RTTI       vtable 00824344 .?AVNetworkSettings@RBX@@ -> GlobalSettingsItem<NetworkSettings, sNetworkSettings>

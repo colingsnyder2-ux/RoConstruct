@@ -1,6 +1,6 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// World2008 | 2008-06 | inactive
+// World2008 | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src 6a3720fb | roc native-status --write
 // 2008-06 native RBX::World declaration (inactive). Minimal method surface needed by the

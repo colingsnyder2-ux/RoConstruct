@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/part-resize /I{headers}/part-embedded
+// >>> native-status (generated) -- do not edit >>>
+// PartInstanceCoordinate | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 9a058f62 | roc native-status --write
 #include "v8datamodel/PartInstance.h"
 #include "util/Math.h"
 #include "v8datamodel/Workspace.h"

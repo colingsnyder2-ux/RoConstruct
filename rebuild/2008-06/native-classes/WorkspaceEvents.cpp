@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// WorkspaceEvents | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src ec1e22e6 | roc native-status --write
 #include <afxwin.h>
 #include "CWorkspace.h"
 #include "v8datamodel/Workspace.h"

@@ -26,14 +26,6 @@ namespace RBX
 			return report(mechanism);
 		}
 
-		Replicator::Item::~Item()
-		{
-		}
-
-		Replicator::NewInstanceItem::NewInstanceItem(Replicator& replicator, const boost::shared_ptr<Instance>& instance)
-			: Item(replicator), instance(instance)
-		{
-		}
 
 		// id, class, then every streamable property in descriptor order, then the parent's id
 		void Replicator::NewInstanceItem::write(RakNet::BitStream& bitStream)
@@ -54,97 +46,7 @@ namespace RBX
 			replicator.serializeId(bitStream, instance->getParent());
 		}
 
-		void Replicator::serializeValue(const Reflection::ConstProperty& property, bool useDictionary, RakNet::BitStream& bitStream)
-		{
-			const Reflection::PropertyDescriptor& desc = property.getDescriptor();
-			const Reflection::Type& type = desc.type;
 
-			if (dynamic_cast<const Reflection::EnumPropertyDescriptor*>(&desc))
-				serializeEnum(property, bitStream);
-			else if (dynamic_cast<const Reflection::RefPropertyDescriptor*>(&desc))
-				serializeRef(property, bitStream);
-			else if (type == Reflection::Type::singleton<std::string>())
-			{
-				if (useDictionary)
-					getSharedDictionary(desc).serializeString(property, bitStream);
-				else
-					bitStream << property.getValue<std::string>();
-			}
-			else if (type == Reflection::Type::singleton<bool>())
-				bitStream << property.getValue<bool>();
-			else if (type == Reflection::Type::singleton<int>())
-				bitStream << property.getValue<int>();
-			else if (type == Reflection::Type::singleton<float>())
-				bitStream << property.getValue<float>();
-			else if (type == Reflection::Type::singleton<G3D::Vector3>())
-				bitStream << property.getValue<G3D::Vector3>();
-			else if (type == Reflection::Type::singleton<G3D::Color3>())
-				bitStream << property.getValue<G3D::Color3>();
-			else if (type == Reflection::Type::singleton<G3D::CoordinateFrame>())
-				bitStream << property.getValue<G3D::CoordinateFrame>();
-			else if (type == Reflection::Type::singleton<BrickColor>())
-				bitStream << property.getValue<BrickColor>().asInt();
-			else if (type == Reflection::Type::singleton<ContentId>())
-				bitStream << property.getValue<ContentId>().toString();
-			else
-				StandardOut::singleton()->print(MESSAGE_ERROR, "Replication: cannot send property %s", desc.name.c_str());
-		}
-
-		void Replicator::deserializeValue(RakNet::BitStream& bitStream, bool useDictionary, Reflection::Property& property)
-		{
-			const Reflection::PropertyDescriptor& desc = property.getDescriptor();
-			const Reflection::Type& type = desc.type;
-
-			if (dynamic_cast<const Reflection::EnumPropertyDescriptor*>(&desc))
-				deserializeEnum(property, bitStream);
-			else if (dynamic_cast<const Reflection::RefPropertyDescriptor*>(&desc))
-				deserializeRef(property, bitStream);
-			else if (type == Reflection::Type::singleton<std::string>())
-			{
-				if (useDictionary)
-					getSharedDictionary(desc).deserializeString(property, bitStream);
-				else
-				{
-					std::string value;
-					bitStream >> value;
-					property.setValue(value);
-				}
-			}
-#define RBX_REBUILD_READ(T) \
-			else if (type == Reflection::Type::singleton<T>()) \
-			{ \
-				T value; \
-				bitStream >> value; \
-				property.setValue(value); \
-			}
-			RBX_REBUILD_READ(bool)
-			RBX_REBUILD_READ(int)
-			RBX_REBUILD_READ(float)
-			RBX_REBUILD_READ(G3D::Vector3)
-			RBX_REBUILD_READ(G3D::Color3)
-#undef RBX_REBUILD_READ
-			else if (type == Reflection::Type::singleton<G3D::CoordinateFrame>())
-			{
-				G3D::CoordinateFrame value;
-				bitStream >> value.translation;
-				for (int r = 0; r < 3; ++r)
-					for (int c = 0; c < 3; ++c)
-						bitStream >> value.rotation[r][c];
-				property.setValue(value);
-			}
-			else if (type == Reflection::Type::singleton<BrickColor>())
-			{
-				int value;
-				bitStream >> value;
-				property.setValue(BrickColor(value));
-			}
-			else if (type == Reflection::Type::singleton<ContentId>())
-			{
-				std::string value;
-				bitStream >> value;
-				property.setValue(ContentId(value));
-			}
-		}
 
 		void Replicator::readInstanceNew(RakNet::BitStream& bitStream)
 		{
@@ -260,46 +162,9 @@ namespace RBX
 			return RR_STOP_PROCESSING_AND_DEALLOCATE;
 		}
 
-		PluginReceiveResult Replicator::OnReceive(RakPeerInterface* peer, Packet* packet)
-		{
-			if (packet->systemAddress != remotePlayerId)
-				return RR_CONTINUE_PROCESSING;
-
-			switch (packet->data[0])
-			{
-			case ID_DATA:
-				receiveData(packet);
-				return RR_STOP_PROCESSING_AND_DEALLOCATE;
-			case ID_TIMESTAMP:
-				return OnReceive_ID_TIMESTAMP(packet);
-			default:
-				return RR_CONTINUE_PROCESSING;
-			}
-		}
 
 		// a replicator is a live connection, never part of a saved place
-		XmlElement* Replicator::write()
-		{
-			return NULL;
-		}
-
-		void Replicator::onSentMarker(long)
-		{
-		}
-
 		// instances this connection created are removed when it drops
-		bool Replicator::remoteDeleteOnDisconnect(const Instance* instance) const
-		{
-			return getCameFromRemotePlayer(instance);
-		}
 
-		void Replicator::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-		{
-			Instance::onServiceProvider(oldProvider, newProvider);
-			if (newProvider)
-				connectToReplicationContainers();
-			else
-				disconnectAllPropertyChangedConnections();
-		}
 	}
 }

@@ -1,6 +1,10 @@
 // 2008-06 native RBX::SpawnLocation and RBX::SpawnerService (inactive): one original unit (005d1ba0..005d39f0,
 // initializers 007f5f20..007f5fb0, atexit 007feff0..007ff070). Evidence in native-headers/v8datamodel/
 // SpawnLocation.h and SpawnerService.h. Verified by tests/record_native_spawn.py.
+// >>> native-status (generated) -- do not edit >>>
+// SpawnLocation | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 041cbfd4 | roc native-status --write
 #include "v8datamodel/SpawnLocation.h"
 #include "v8datamodel/SpawnerService.h"
 
@@ -67,3 +71,12 @@ namespace RBX
 		raisePropertyChanged(prop_TeamColor);
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Container_base_aux_alloc_real<std::allocator<RBX::SpawnLocation *> >;
+template class std::_List_nod<RBX::SpawnLocation *,std::allocator<RBX::SpawnLocation *> >;
+template class std::_List_ptr<RBX::SpawnLocation *,std::allocator<RBX::SpawnLocation *> >;
+template class std::_List_val<RBX::SpawnLocation *,std::allocator<RBX::SpawnLocation *> >;
+template class std::allocator<std::_List_nod<RBX::SpawnLocation *,std::allocator<RBX::SpawnLocation *> >::_Node *>;
+template class std::allocator<std::_List_nod<RBX::SpawnLocation *,std::allocator<RBX::SpawnLocation *> >::_Node>;
+template class std::list<RBX::SpawnLocation *,std::allocator<RBX::SpawnLocation *> >;

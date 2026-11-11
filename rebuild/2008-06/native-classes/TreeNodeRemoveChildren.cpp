@@ -1,7 +1,7 @@
 // >>> native-status (generated) -- do not edit >>>
-// TreeNodeRemoveChildren | 2008-06 | inactive
+// TreeNodeRemoveChildren | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
-// <<< native-status | src 87bec7c8 | roc native-status --write
+// <<< native-status | src dce1a1c8 | roc native-status --write
 #include "CRobloxTreeCtrl.h"
 #include <algorithm>
 #include <vector>
@@ -27,3 +27,10 @@ void CRobloxTreeCtrlNode::removeChildren()
     for (NodeVector::iterator it = values.begin(); it != values.end(); ++it)
         tree->DeleteItem((*it)->item);
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Container_base_aux_alloc_real<std::allocator<CRobloxTreeCtrlNode *> >;
+template class std::_Tree<std::_Tset_traits<CRobloxTreeCtrlNode *,std::less<CRobloxTreeCtrlNode *>,std::allocator<CRobloxTreeCtrlNode *>,0> >;
+template class std::_Vector_const_iterator<CRobloxTreeCtrlNode *,std::allocator<CRobloxTreeCtrlNode *> >;
+template class std::_Vector_iterator<CRobloxTreeCtrlNode *,std::allocator<CRobloxTreeCtrlNode *> >;
+template class std::vector<CRobloxTreeCtrlNode *,std::allocator<CRobloxTreeCtrlNode *> >;

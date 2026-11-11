@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// InstanceClassLookup | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 391fa34c | roc native-status --write
 #include "v8tree/Instance.h"
 
 RBX::Instance* RBX::Instance::findFirstChildByClassName(std::string className) const

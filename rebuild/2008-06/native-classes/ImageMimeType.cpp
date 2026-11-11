@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// >>> native-status (generated) -- do not edit >>>
+// ImageMimeType | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 8dc1315a | roc native-status --write
 #include <G3D/GImage.h>
 #include "util/ImageContent.h"
 

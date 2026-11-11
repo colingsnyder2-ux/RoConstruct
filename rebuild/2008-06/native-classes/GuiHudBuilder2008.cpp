@@ -8,6 +8,11 @@
 //                    006021e0, create<ImageButton> 00601f00 take three by-value arguments).
 // native-headers/gui/Gui.h (pass 2) declares TopMenuBar(const std::string&, Layout::Style, bool = false) (00601fd0 pushes
 // 0 at 00602027) and TextDisplay setFontSize / setFontColor / setBorderColor inline (00604dd8, 00604e16, 00604e2e).
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// GuiHudBuilder2008 | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 8f7cfd50 | roc native-status --write
 #include "GuiHud2008/GuiBuilder2008.h"
 #include "gui/HealthHud.h"
 #include "gui/ScoreHud.h"
@@ -306,3 +311,18 @@ namespace RBX
 	template boost::shared_ptr<TopMenuBar> Creatable<Instance>::create<TopMenuBar, const char*, Layout::Style>(const char*, Layout::Style);
 	template boost::shared_ptr<MenuSpacer> Creatable<Instance>::create<MenuSpacer, float, float>(float, float);
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<RBX::ChatButton>;
+template class boost::shared_ptr<RBX::ChatOutput>;
+template class boost::shared_ptr<RBX::ChatWidget>;
+template class boost::shared_ptr<RBX::EquationDisplay>;
+template class boost::shared_ptr<RBX::HealthHud>;
+template class boost::shared_ptr<RBX::MenuItem>;
+template class boost::shared_ptr<RBX::MenuSpacer>;
+template class boost::shared_ptr<RBX::RelativePanel>;
+template class boost::shared_ptr<RBX::ScoreHud>;
+template class boost::shared_ptr<RBX::TextDisplay>;
+template class boost::shared_ptr<RBX::TopMenuBar>;
+template class boost::shared_ptr<RBX::UnifiedWidget>;
+template class std::vector<RBX::ChatOption *,std::allocator<RBX::ChatOption *> >;

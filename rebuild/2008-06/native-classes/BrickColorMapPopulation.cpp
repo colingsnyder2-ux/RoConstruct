@@ -1,8 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // >>> native-status (generated) -- do not edit >>>
-// BrickColorMapPopulation | 2008-06 | inactive
+// BrickColorMapPopulation | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
-// <<< native-status | src 1c6864cb | roc native-status --write
+// <<< native-status | src 94354bfd | roc native-status --write
 #include "v8datamodel/BrickColor.h"
 
 namespace RBX {
@@ -227,3 +227,10 @@ BrickColor::BrickMap::BrickMap()
 		generatePaletteMap();
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Vector_const_iterator<RBX::BrickColor,std::allocator<RBX::BrickColor> >;
+template class std::_Vector_iterator<RBX::BrickColor,std::allocator<RBX::BrickColor> >;
+template class std::allocator<std::pair<enum RBX::BrickColor::Number const ,G3D::Color4> >;
+template class std::allocator<std::pair<enum RBX::BrickColor::Number const ,G3D::Color4uint8> >;
+template class std::allocator<std::pair<enum RBX::BrickColor::Number const ,std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >;

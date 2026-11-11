@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string
+// >>> native-status (generated) -- do not edit >>>
+// SurfaceToolHoverRender | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src e7ac4daa | roc native-status --write
 #include "tool/SurfaceTool.h"
 #include "AppDraw/DrawAdorn.h"
 

@@ -3,6 +3,10 @@
 // Server are declared in native-headers/Network/{Peer,Server}2008.h (record_native_network_client_server2008.py,
 // which leaves these two bodies open); the definitions live here because they need Replicator2008.h /
 // ClientProxy2008.h. Verified by tests/record_native_network_replicator2008.py.
+// >>> native-status (generated) -- do not edit >>>
+// NetworkReplicator2008AskAddChild | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 5b06dd93 | roc native-status --write
 #include "Network/ClientProxy2008.h"
 
 namespace RBX

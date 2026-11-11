@@ -16,44 +16,11 @@
 namespace RBX
 {
 	void registerRecoveredValues();
-	Hole::~Hole() {}
-	MotorFeature::~MotorFeature() {}
-	LocalScript::~LocalScript() {}
-	Team::~Team() {}
 
 	// as the other RotateJoint constructor: a two-breaking multi joint with no connector yet
-	RotateJoint::RotateJoint()
-		: MultiJoint(2), rotateConnector(NULL)
-	{
-	}
 
 	// features sit on a part's face
-	bool Feature::askSetParent(const Instance* instance) const
-	{
-		return dynamic_cast<const PartInstance*>(instance) != NULL;
-	}
-
-	bool Feature::shouldRender3dAdorn() const
-	{
-		return true;
-	}
-
 	// a feature's frame points out of its face; a hole's points into it
-	Feature::InOutZ Feature::getCoordOrientation() const
-	{
-		return Z_OUT;
-	}
-
-	Feature::InOutZ Hole::getCoordOrientation() const
-	{
-		return Z_IN;
-	}
-
-	GuiDrawImage::GuiDrawImage()
-		: size(0.0f, 0.0f)
-	{
-	}
-
 	WorkspaceStatsItem::WorkspaceStatsItem(const Workspace* workspace, const World* world, const RunService* runService)
 	{
 		setName("Workspace");
@@ -70,23 +37,5 @@ namespace RBX
 	}
 
 	// declare the reflected classes so the factory can create them by name
-	void registerSound()
-	{
-		Soundscape::SoundChannel::classDescriptor();
-		Soundscape::SoundService::classDescriptor();
-	}
 
-	void registerValueClasses()
-	{
-		registerRecoveredValues();
-		IntValue::classDescriptor();
-		BoolValue::classDescriptor();
-		FloatValue::classDescriptor();
-		Color3Value::classDescriptor();
-		Vector3Value::classDescriptor();
-		BrickColorValue::classDescriptor();
-		StringValue::classDescriptor();
-		CFrameValue::classDescriptor();
-		ObjectValue::classDescriptor();
-	}
 }

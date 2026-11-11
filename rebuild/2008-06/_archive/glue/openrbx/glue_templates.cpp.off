@@ -1,0 +1,41 @@
+// Native-only glue: explicit template instantiations for DescribedCreatable
+// and FactoryProduct that upstream code references but that are only defined
+// in native-classes/Humanoid2008.cpp (not built into rbx-app). Using the same
+// pattern as tools/rbxgs/Client/App/roc_espeon_aug2007_equipable_default_forwarding_*.cpp:
+//   template class FactoryProduct<Tool, BackpackItem, &sTool>;
+//   template class DescribedCreatable<Tool, Instance, &sTool>;
+
+#include "v8datamodel/Camera.h"
+#include "humanoid/Humanoid.h"
+#include "v8datamodel/Lighting.h"
+#include "script/ScriptContext.h"
+#include "v8datamodel/Selection.h"
+#include "v8datamodel/Teams.h"
+
+namespace RBX
+{
+// Explicit instantiations for DescribedCreatable types
+template class DescribedCreatable<Camera, Instance, &sCamera>;
+template class DescribedCreatable<ControllerService, Instance, &sControllerService>;
+template class DescribedCreatable<Humanoid, Instance, &sHumanoid>;
+template class DescribedCreatable<Lighting, Instance, &sLighting>;
+template class DescribedCreatable<ScriptContext, Instance, &sScriptContext>;
+template class DescribedCreatable<Selection, Instance, &sSelection>;
+template class DescribedCreatable<Teams, Instance, &sTeams>;
+
+// Explicit instantiations for FactoryProduct joint types
+template class FactoryProduct<GlueJoint, Glue, &sGlue>;
+template class FactoryProduct<Joint, Glue, &sGlue>;
+template class FactoryProduct<Joint, Motor, &sMotor>;
+template class FactoryProduct<Joint, Rotate, &sRotate>;
+template class FactoryProduct<Joint, RotateP, &sRotateP>;
+template class FactoryProduct<Joint, RotateV, &sRotateV>;
+template class FactoryProduct<Joint, Snap, &sSnap>;
+template class FactoryProduct<Joint, Weld, &sWeld>;
+template class FactoryProduct<MotorJoint, Motor, &sMotor>;
+template class FactoryProduct<RotateJoint, Rotate, &sRotate>;
+template class FactoryProduct<RotatePJoint, RotateP, &sRotateP>;
+template class FactoryProduct<RotateVJoint, RotateV, &sRotateV>;
+template class FactoryProduct<SnapJoint, Snap, &sSnap>;
+template class FactoryProduct<WeldJoint, Weld, &sWeld>;
+}

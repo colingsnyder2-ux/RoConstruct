@@ -1,6 +1,6 @@
 // Request and read bodies match; other stream helpers and runtime ABI remain unverified.
 // >>> native-status (generated) -- do not edit >>>
-// HttpWinInet | 2008-06 | inactive
+// HttpWinInet | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src 1df64f89 | roc native-status --write
 #define NDEBUG 1

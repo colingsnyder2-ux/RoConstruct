@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Log2008 | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 6a8308cd | roc native-status --write
 // 2008-06 native RBX::Log (inactive). Declared under a non-colliding name: the donor util/Log.h is included by
 // native-classes/CRobloxDoc.cpp (and by the donor App sources), so a unit must not include both headers.
 // Every field and slot below is read from the 2008-06 binary:

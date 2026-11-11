@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/writer-2008
+// >>> native-status (generated) -- do not edit >>>
+// WorkspaceXmlWriter | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src d5272834 | roc native-status --write
 #include <afxwin.h>
 #include "util/NativeContentProvider.h"
 #include "CWorkspace.h"
@@ -11,3 +15,9 @@ HRESULT CWorkspace::write(XmlElement* element, std::ostream& stream)
     writer.serialize(element);
     return S_OK;
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Container_base_aux_alloc_real<std::allocator<RBX::ContentId> >;
+template class std::_Tree<std::_Tset_traits<RBX::ContentId,std::less<RBX::ContentId>,std::allocator<RBX::ContentId>,0> >;
+template class std::allocator<RBX::ContentId>;
+template class std::allocator<std::_Tree_nod<std::_Tset_traits<RBX::ContentId,std::less<RBX::ContentId>,std::allocator<RBX::ContentId>,0> >::_Node *>;

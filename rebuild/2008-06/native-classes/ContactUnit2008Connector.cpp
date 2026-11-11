@@ -5,6 +5,11 @@
 // (read-only here); the Point fields come from the donor v8kernel/Point.h, whose layout is the 2008 one
 // (worldPos +0x1c, force +0x28: Point(Body*) 0064dc00, see native-headers/leaves2008/Point2008.h).
 // Verified by tests/record_native_contact_unit2008.py.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// ContactUnit2008Connector | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 8c16b80c | roc native-status --write
 #include "v8kernel/Connector2008.h"
 
 namespace RBX

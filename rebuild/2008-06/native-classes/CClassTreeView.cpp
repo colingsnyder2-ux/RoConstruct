@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CClassTreeView | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 412bfc96 | roc native-status --write
 #include "CClassTreeView.h"
 #include "reflection/object.h"
 #include "reflection/enumconverter.h"
@@ -147,3 +151,9 @@ void CClassTreeView::addClass(const RBX::Reflection::ClassDescriptor* descriptor
     std::for_each(descriptor->derivedClasses_begin(), descriptor->derivedClasses_end(),
                   boost::bind(&CClassTreeView::addClass, this, _1));
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::_bi::value<CClassTreeView *>;
+template class std::_Vector_const_iterator<RBX::Reflection::EnumDescriptor const *,std::allocator<RBX::Reflection::EnumDescriptor const *> >;
+template class std::_Vector_iterator<RBX::Reflection::EnumDescriptor const *,std::allocator<RBX::Reflection::EnumDescriptor const *> >;
+template class std::vector<RBX::Reflection::EnumDescriptor const *,std::allocator<RBX::Reflection::EnumDescriptor const *> >;

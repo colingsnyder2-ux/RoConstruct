@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Stats | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 902bb2c6 | roc native-status --write
 // 2008-06 native RBX::Stats::Item, TypedStatsItem<T>, TypedMemItem and StatsService (inactive). Shape after the
 // donor tools/rbxgs v8datamodel/Stats.h; every base, field, virtual and argument below is read from the 2008-06
 // binary (the donor's Stats.cpp is empty, its TypedStatsItem::deref signature is wrong).

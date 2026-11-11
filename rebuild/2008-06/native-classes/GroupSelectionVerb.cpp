@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// GroupSelectionVerb | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src e3bacb13 | roc native-status --write
 #include "StandardVerbs.h"
 #include "v8datamodel/Workspace.h"
 #include "v8datamodel/DataModel.h"

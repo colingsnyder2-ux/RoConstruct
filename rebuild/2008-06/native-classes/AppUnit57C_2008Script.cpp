@@ -10,6 +10,10 @@
 // Unit profile: document-swap flags, /fp:fast and /U_RELEASEASSERT (the unit profile of the ModelInstance unit).
 // Codegen analog: bodies follow the donor tools/rbxgs script/Script.cpp; the recorder proves each against the bytes
 // and every call / data target.
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit57C_2008Script | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 6a8c5a09 | roc native-status --write
 #include "script/Script.h"
 #include "script/ScriptContext.h"
 #include "v8tree/Service.h"
@@ -143,3 +147,11 @@ boost::shared_ptr<const std::string> Script::requestCode()
     else
         return ContentProvider::singleton().requestContentString(scriptId);
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::function1<void,RBX::Security::Context *,std::allocator<boost::function_base> >;
+template class boost::function1<void,void *,std::allocator<boost::function_base> >;
+template class boost::shared_ptr<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const >;
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sScript>();

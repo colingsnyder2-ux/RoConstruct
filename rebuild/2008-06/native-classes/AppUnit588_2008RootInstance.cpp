@@ -18,6 +18,10 @@
 //     native-headers/part-embedded (pending build only).
 //   * insertInstances 005911d0 is not built: its 2008 shape (an early setParent loop for a foreign requestedParent,
 //     an extra dynamic_cast branch, a final ChangeHistory waypoint 0058c5c0 "Insert") differs from the donor.
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit588_2008RootInstance | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 211f3cc7 | roc native-status --write
 #include "v8datamodel/RootInstance.h"
 #include "v8datamodel/PartInstance.h"
 #include "tool/Dragger.h"
@@ -297,3 +301,21 @@ namespace RBX {
 	}
 #pragma warning (pop)
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::_bi::list1<boost::shared_ptr<RBX::Instance> const &>;
+template class boost::_bi::value<RBX::Instance *>;
+template class boost::mpl::bool_<1>;
+template class boost::shared_ptr<RBX::Team>;
+template class std::_Container_base_aux_alloc_real<std::allocator<boost::weak_ptr<RBX::PartInstance> > >;
+template class std::allocator<RBX::Reflection::ClassDescriptor *>;
+template class std::allocator<RBX::Reflection::FunctionDescriptor *>;
+template class std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::FunctionDescriptor> *>;
+template class std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::PropertyDescriptor> *>;
+template class std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::SignalDescriptor> *>;
+template class std::allocator<RBX::Reflection::PropertyDescriptor *>;
+template class std::allocator<RBX::Reflection::SignalDescriptor *>;
+template class std::allocator<std::_Aux_cont>;
+template class std::auto_ptr<RBX::World>;
+template class std::vector<bool,std::allocator<bool> >;
+template class std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance> > >;

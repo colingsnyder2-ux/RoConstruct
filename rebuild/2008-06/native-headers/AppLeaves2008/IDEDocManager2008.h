@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// IDEDocManager2008 | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 4e9ca587 | roc native-status --write
 // Inactive native 2008-06 recovery: CIDEDocManager, the IDE document manager CRobloxApp::InitInstance installs
 // (`m_pDocManager = new CIDEDocManager(command.noStartPage)`). CRobloxApp.cpp keeps its own local declaration for
 // that call; this header is the recovered layout, and nothing in the CRobloxApp unit includes it.

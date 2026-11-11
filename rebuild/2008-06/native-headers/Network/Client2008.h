@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Client2008 | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src d128ef30 | roc native-status --write
 // 2008-06 native RBX::Network::Client (inactive). Shape after the donor tools/rbxgs Client/Network/Client.h; every
 // base, field and virtual below is read from the 2008-06 binary:
 //   RTTI       vtable 00822f4c .?AVClient@Network@RBX@@ (27 bases) -> DescribedCreatable<Client, Peer, sClient> (name

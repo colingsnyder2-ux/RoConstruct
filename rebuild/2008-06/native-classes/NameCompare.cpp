@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// NameCompare | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 1fd7548e | roc native-status --write
 #include "util/Name.h"
 
 static inline bool isNullName(const RBX::Name* name)

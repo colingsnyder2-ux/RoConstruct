@@ -44,21 +44,77 @@
   },
   {
    "name": "renderlib",
-   "mode": "recipe",
-   "recipe": "rbxgs-render",
-   "direct": true,
+   "mode": "direct",
+   "dir": "work/upstream/OpenRBX/Client/Rendering/RenderLib",
    "files": "*.cpp",
+   "defines_from_recipe": "rbxgs-render",
    "extra_defines": "BOOST_ALL_NO_LIB",
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD",
+   "note": "complete 2007 renderer from OpenRBX (GPLv3 donor, Dec 2007 0.3.676); rbxgs ships it partially; OpenRBX renderlib/rbxview headers first (renderer-internal ABI), engine App headers from rbxgs",
+   "extra_includes": [
+    "work/upstream/OpenRBX/Client/Rendering/RenderLib/include",
+    "work/upstream/OpenRBX/Client/RbxView/include",
+    "work/upstream/OpenRBX/Client/RbxView",
+    "rebuild/2008-06/native-donor-2007",
+    "tools/rbxgs/Client/RbxView/include",
+    "tools/rbxgs/Client/RbxViewBase",
+    "tools/rbxgs/Client/App/include",
+    "tools/rbxgs/Client/RbxGraphics/include",
+    "tools/rbxgs/Client/Network/include",
+    "tools/rbxgs/Client/Rendering/RenderLib/include",
+    "tools/rbxgs/Client/Rendering/AppDraw/include",
+    "tools/rbxgs/Client/Rendering/g3d/include",
+    "tools/rbxgs/Client/Rendering/g3d/zlib",
+    "tools/rbxgs/Client/Rendering/png",
+    "tools/rbxgs/Client/boost_1_34_1/src",
+    "tools/rbxgs/Client/App/lua-5.1.1/src",
+    "tools/rbxgs/Client/Rendering/SDL-1.2.6/include"
+   ],
+   "winsdk": true,
+   "exclude": [
+    "Profiler.cpp"
+   ]
+  },
+  {
+   "name": "renderlib-rbxgs",
+   "mode": "direct",
+   "dir": "tools/rbxgs/Client/Rendering/RenderLib",
+   "files": "Profiler.cpp",
+   "includes_from_recipe": "rbxgs-render",
+   "defines_from_recipe": "rbxgs-render",
+   "extra_defines": "BOOST_ALL_NO_LIB",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD",
+   "note": "OpenRBX Profiler.cpp needs a newer G3D RegistryUtil; keep the rbxgs one"
   },
   {
    "name": "view",
-   "mode": "recipe",
-   "recipe": "rbxgs-view",
-   "direct": true,
+   "mode": "direct",
+   "dir": "work/upstream/OpenRBX/Client/RbxView",
    "files": "*.cpp",
+   "defines_from_recipe": "rbxgs-view",
    "extra_defines": "BOOST_ALL_NO_LIB",
-   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /FIv8datamodel/PartInstance.h",
+   "note": "complete 2007 renderer from OpenRBX (GPLv3 donor, Dec 2007 0.3.676); rbxgs ships it partially; OpenRBX renderlib/rbxview headers first (renderer-internal ABI), engine App headers from rbxgs",
+   "extra_includes": [
+    "work/upstream/OpenRBX/Client/Rendering/RenderLib/include",
+    "work/upstream/OpenRBX/Client/RbxView/include",
+    "work/upstream/OpenRBX/Client/RbxView",
+    "rebuild/2008-06/native-donor-2007",
+    "tools/rbxgs/Client/RbxView/include",
+    "tools/rbxgs/Client/RbxViewBase",
+    "tools/rbxgs/Client/App/include",
+    "tools/rbxgs/Client/RbxGraphics/include",
+    "tools/rbxgs/Client/Network/include",
+    "tools/rbxgs/Client/Rendering/RenderLib/include",
+    "tools/rbxgs/Client/Rendering/AppDraw/include",
+    "tools/rbxgs/Client/Rendering/g3d/include",
+    "tools/rbxgs/Client/Rendering/g3d/zlib",
+    "tools/rbxgs/Client/Rendering/png",
+    "tools/rbxgs/Client/boost_1_34_1/src",
+    "tools/rbxgs/Client/App/lua-5.1.1/src",
+    "tools/rbxgs/Client/Rendering/SDL-1.2.6/include"
+   ],
+   "winsdk": true
   },
   {
    "name": "lua",
@@ -89,7 +145,10 @@
    "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD",
    "extra_includes": [
     "tools/rbxgs/Client/Network",
-    "tools/rbxgs/Client/RbxView/include"
+    "tools/rbxgs/Client/RbxView/include",
+    "tools/rbxgs/Client/App/include",
+    "tools/rbxgs/Client/RbxViewBase",
+    "tools/rbxgs/Client/RbxView"
    ],
    "exclude": [
     "glue_anchor_registry.cpp"

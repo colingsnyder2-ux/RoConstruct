@@ -2,6 +2,11 @@
 // The per-face grid instances (004f4e60..004f6a80, 004f6fa0, 004f7390) come from ViewNew/QuadVolumeFace.h. The functor
 // operator() bodies are class-inline: the original inlines them into the strips (DeformSide3 004f4e60 / 004f54d0,
 // DeformTop3 004f51a0, DeformFront 004f5810), whose x87 code they are read from (functor at [esp+0x80]: inset, flip).
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// ViewNewWedgeMesh | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 33f6b106 | roc native-status --write
 #include "ViewNew/WedgeMesh.h"
 #include "ViewNew/QuadVolumeFace.h"
 

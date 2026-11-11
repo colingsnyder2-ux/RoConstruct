@@ -1,6 +1,10 @@
 // 2008-06 native RBX::Lighting (inactive); evidence in native-headers/v8datamodel/Lighting2008.h.
 // Verified by tests/record_native_lighting2008.py. Original unit 005df0c0..005e2760 (constructor 005e1a40,
 // destructor 005e1d60); classDescriptor 005e1100, doDeclare 004ab0f0.
+// >>> native-status (generated) -- do not edit >>>
+// Lighting2008 | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 05533627 | roc native-status --write
 #include "v8datamodel/Lighting2008.h"
 #include "v8datamodel/Sky.h"
 #include "util/RunStateOwner.h"
@@ -117,3 +121,7 @@ namespace RBX
 	// create<Lighting> 004adb60 (ServiceProvider::create<Lighting> reaches it).
 	template boost::shared_ptr<Lighting> Creatable<Instance>::create<Lighting>();
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::token_iterator<boost::char_separator<char,std::char_traits<char> >,std::_String_const_iterator<char,std::char_traits<char>,std::allocator<char> >,std::basic_string<char,std::char_traits<char>,std::allocator<char> > >;
+template class std::_String_const_iterator<char,std::char_traits<char>,std::allocator<char> >;

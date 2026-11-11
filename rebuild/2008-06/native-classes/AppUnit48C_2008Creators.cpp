@@ -13,6 +13,10 @@
 // create / Creator at 004941d0..004949ff), BodyColors, Skin, Teams, TimerService (Creator only; create<TimerService>
 // 0048bcf0 is counted by app-unit480). Humanoid is in AppUnit48C_2008CreatorsHumanoid.cpp (humanoid/Humanoid2008.h).
 // sizeof(C) comes from the native headers and is checked by the malloc size each create<C> passes.
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit48C_2008Creators | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 141adb9c | roc native-status --write
 #include "v8datamodel/Hopper.h"
 #include "v8datamodel/Backpack.h"
 #include "v8datamodel/SpawnLocation.h"
@@ -60,3 +64,17 @@ template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::BodyColors, RBX
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::Skin, RBX::CharacterAppearance, RBX::sSkin>::Creator::create() const;
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::Teams, RBX::Instance, RBX::sTeams>::Creator::create() const;
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::TimerService, RBX::Instance, RBX::sTimerService>::Creator::create() const;
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<RBX::BodyColors>;
+template class boost::shared_ptr<RBX::Clothing>;
+template class boost::shared_ptr<RBX::HopperBin>;
+template class boost::shared_ptr<RBX::LegacyHopperService>;
+template class boost::shared_ptr<RBX::Pants>;
+template class boost::shared_ptr<RBX::Shirt>;
+template class boost::shared_ptr<RBX::ShirtGraphic>;
+template class boost::shared_ptr<RBX::Skin>;
+template class boost::shared_ptr<RBX::SpawnLocation>;
+template class boost::shared_ptr<RBX::SpawnerService>;
+template class boost::shared_ptr<RBX::StarterPackService>;
+template class boost::shared_ptr<RBX::Teams>;

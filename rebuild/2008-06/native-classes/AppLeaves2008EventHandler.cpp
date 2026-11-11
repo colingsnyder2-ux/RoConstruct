@@ -1,4 +1,8 @@
 // Inactive native 2008-06 EventHandler (native-headers/AppLeaves2008/EventHandler2008.h).
+// >>> native-status (generated) -- do not edit >>>
+// AppLeaves2008EventHandler | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 508ac20f | roc native-status --write
 #include "AppLeaves2008/EventHandler2008.h"
 #include "util/standardout.h"
 
@@ -69,3 +73,6 @@ STDMETHODIMP EventHandler::Invoke(DISPID, REFIID, LCID, WORD, DISPPARAMS*, VARIA
         return E_FAIL;
     }
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::function0<bool,std::allocator<boost::function_base> >;

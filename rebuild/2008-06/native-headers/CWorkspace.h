@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CWorkspace | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src a15cc430 | roc native-status --write
 #include <atlbase.h>
 #include <atlcom.h>
 #include <objsafe.h>

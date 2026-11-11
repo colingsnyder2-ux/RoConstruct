@@ -5,6 +5,10 @@
 // code and recorded as folded. The ctor / dtor (Lighting and workspace connections, mesh-cache flushes), render (its
 // 004dab50 lighting helper), suppressSkybox and onWorkspaceDescendentAdded need declarations owned elsewhere and are
 // not built.
+// >>> native-status (generated) -- do not edit >>>
+// RenderSceneViewRbxGfx2008 | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src ecc3cb8a | roc native-status --write
 #include "RenderLib/ViewNew2008.h"
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Workspace.h"
@@ -50,3 +54,7 @@ namespace RBX
 		}
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::auto_ptr<RBX::RenderBase::RenderSceneBase>;
+template class std::deque<G3D::Token,std::allocator<G3D::Token> >;

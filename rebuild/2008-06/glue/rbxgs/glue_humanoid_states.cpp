@@ -28,21 +28,6 @@ namespace RBX
 	class RecoveredLanded : public Running
 	{
 		float remaining;
-		virtual Humanoid::State* onStep(float dt, Controller& controller)
-		{
-			Humanoid::State* next = Balancing::onStep(dt, controller);
-			if (next != this) return next;
-			if (DetectClimb(humanoid)) return CreateRecoveredClimbing(humanoid);
-			if (!floorPart) return new Freefall(humanoid);
-			remaining -= dt;
-			if (remaining <= 0.0f) {
-				Running* running = new Running(humanoid);
-				running->resumeFromLanding(*this, controller);
-				return running;
-			}
-			updateGoals(controller);
-			return this;
-		}
 	public:
 		RecoveredLanded(Humanoid* humanoid) : Running(humanoid), remaining(0.45f) {
 			// 00645450 / 006453a0 refresh replacement floor before its first force.
@@ -53,121 +38,15 @@ namespace RBX
 		virtual const Name& getName() const { return Name::declare("Landed", -1); }
 	};
 	Humanoid::State* CreateRecoveredLanded(Humanoid* humanoid) { return new RecoveredLanded(humanoid); }
-	HitTestFilter::Result Balancing::filterResult(const Primitive* testMe) const
-	{
-		Primitive* torsoPrimitive = humanoid->getTorsoPrimitive();
-		if (testMe->getDragging() || !testMe->getCanCollide() ||
-			(torsoPrimitive != NULL && torsoPrimitive->getAssembly() == testMe->getAssembly()))
-			return IGNORE_PRIM;
-		return INCLUDE_PRIM;
-	}
 
-	void Balancing::onComputeForce(const float)
-	{
-		Body* torso = humanoid->getTorsoBody();
-		if (!torso)
-			return;
-		Body* root = humanoid->getRootBody();
-		if (!root)
-			return;
 
-		G3D::Vector3 yAxis = torso->getCoordinateFrame().rotation.getColumn(1);
-		G3D::Vector3 tilt = G3D::Vector3::unitY().cross(yAxis);
-		G3D::Vector3 angularVelocity = torso->getVelocity().rotational;
-		G3D::Vector3 torque = root->getBranchTorque();
-		const G3D::CoordinateFrame& rootFrame = root->getCoordinateFrame();
-		const G3D::Vector3 localTilt = rootFrame.vectorToObjectSpace(tilt);
-		G3D::Vector3 localAngularVelocity = rootFrame.vectorToObjectSpace(angularVelocity);
-		G3D::Vector3 localTorque = rootFrame.vectorToObjectSpace(torque);
-		G3D::Vector3 desiredTorque = (-kP * root->getBranchIBody()) * localTilt;
-		G3D::Vector3 totalTorque = localTorque + desiredTorque;
-		G3D::Vector3 inertia = Math::toDiagonal(root->getBranchIBody());
-		for (int i = 0; i < 3; i += 2)
-		{
-			if (fabs(desiredTorque[i] - localTorque[i]) < inertia[i] * 4000.0f)
-				totalTorque[i] = desiredTorque[i];
-		}
-		G3D::Vector3 delta = rootFrame.vectorToWorldSpace(totalTorque - kD * inertia * localAngularVelocity) - torque;
-		root->accumulateTorque(delta);
-	}
-
-	G3D::Vector3 Balancing::getYAxis() const
-	{
-		Body* torso = humanoid->getTorsoBody();
-		return torso ? torso->getCoordinateFrame().rotation.getColumn(1) : G3D::Vector3::unitY();
-	}
 
 	// Adapted from original 00644000: torso bottom, then four corner rays.
-	PartInstance* Balancing::findFloor(bool existingFloor)
-	{
-		if (!humanoid->getTorsoBody()) return NULL;
-		Primitive* torso = humanoid->getTorsoPrimitive();
-		if (!torso) return NULL;
-		const G3D::CoordinateFrame& frame = torso->getCoordinateFrame();
-		G3D::Vector3 half = torso->getGridSize() * 0.5f;
-		float distance = 1.0f;
-		float factor = existingFloor ? 1.5f : 1.1f;
-		Primitive* leg = humanoid->getLeftLegPrimitive();
-		if (!leg) leg = humanoid->getRightLegPrimitive();
-		if (leg) distance = leg->getGridSize().y * factor + 1.0f;
-		G3D::Vector3 origin = frame.pointToWorldSpace(G3D::Vector3(0,-half.y,0));
-		PartInstance* hit = tryFloor(G3D::Ray::fromOriginAndDirection(origin,-G3D::Vector3::unitY()),distance);
-		if (hit) return hit;
-		for (int x=-1; x<=1; x+=2) for (int z=-1; z<=1; z+=2) {
-			origin = frame.pointToWorldSpace(G3D::Vector3(x*half.x,-half.y,z*half.z));
-			hit = tryFloor(G3D::Ray::fromOriginAndDirection(origin,-G3D::Vector3::unitY()),distance);
-			if (hit) return hit;
-		}
-		return NULL;
-	}
 
-	const float Flying::kTurnP = 7500.0f;
-	const float Flying::kTurnAccelMax = 120000.0f;
 
-	void Flying::onComputeForce(const float dt)
-	{
-		Balancing::onComputeForce(dt);
-
-		Body* body = humanoid->getRootBody();
-		if (!body)
-			return;
-		float momentY = body->getBranchIBodyV3().y;
-		float desiredTorqueY = desiredYRotationalVelocity - body->getVelocity().rotational.y;
-		desiredTorqueY = desiredTorqueY * momentY * kTurnP - body->getBranchTorque().y;
-		float maxTorqueY = body->getBranchIBodyV3().y * kTurnAccelMax;
-		desiredTorqueY = G3D::clamp(desiredTorqueY, -maxTorqueY, maxTorqueY);
-		body->accumulateTorque(G3D::Vector3(0, desiredTorqueY, 0));
-		// Original 006675d0 applies bounded horizontal air control, no vertical force.
-		Body* torso = humanoid->getTorsoBody();
-		if (torso) {
-			G3D::Vector3 acceleration = ((desiredVelocity - body->getVelocity().linear) * 1250.0f).clamp(
-				G3D::Vector3(-1000,0,-1000), G3D::Vector3(1000,10000,1000));
-			acceleration.y = 0;
-			body->accumulateForceAtBranchCofm(acceleration * torso->getBranchMass());
-		}
-	}
 
 	// Adapted from 00667a40: drive torso velocity toward 50 and react on floor.
-	void Jumping::onComputeForce(const float dt)
-	{
-		Flying::onComputeForce(dt);
-		if (done) return;
-		Body* torso = humanoid->getTorsoBody();
-		if (!torso) { done = true; return; }
-		float acceleration = (50.0f - torso->getVelocity().linear.y) * 5000.0f;
-		if (acceleration <= 0.0f) { done = true; return; }
-		if (!floorPart) return;
-		Body* floor = floorPart->getPrimitive()->getBody();
-		Body* root = humanoid->getRootBody();
-		float force = std::min(torso->getBranchMass(), floor->getBranchMass()) * acceleration - torso->getBranchForce().y;
-		if (force > 0.0f) {
-			root->accumulateForceAtBranchCofm(G3D::Vector3(0, force, 0));
-			floor->accumulateForce(G3D::Vector3(0, -force, 0), floorTouchInWorld);
-		}
-	}
 
-	const float Running::manualTurnSpeed = 8.0f;
-	const float Running::autoTurnSpeed = 8.0f;
 
 	void Running::updateGoals(Controller&)
 	{
@@ -256,23 +135,4 @@ namespace RBX
 			floorRotationalVelocity,desiredVelocity,desiredYRotationalVelocity,desiredAltitude);
 	}
 
-	Humanoid::State* Running::onStep(const float stepDt, Controller& controller)
-	{
-		Humanoid::State* next = Balancing::onStep(stepDt, controller);
-		if (next != this)
-			return next;
-		if (DetectClimb(humanoid))
-			return CreateRecoveredClimbing(humanoid);
-		if (!floorPart)
-			return new Freefall(humanoid);
-
-		updateGoals(controller);
-		jumpWarmup = G3D::min(jumpWarmup + stepDt, 0.0f);
-		if (humanoid->getJump() && jumpWarmup >= 0.0f)
-		{
-			humanoid->setJump(false);
-			return new Jumping(humanoid);
-		}
-		return this;
-	}
 }

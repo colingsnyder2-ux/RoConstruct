@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Verb | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 8db91cec | roc native-status --write
 #include "v8tree/IDataState.h"
 #include "v8tree/VerbContainer.h"
 #include "util/Name.h"

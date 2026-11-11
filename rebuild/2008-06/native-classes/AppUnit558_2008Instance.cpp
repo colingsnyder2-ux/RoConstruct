@@ -5,6 +5,10 @@
 // Each body follows the target bytes (relocation-masked exact, every call/data target verified by the recorder).
 // The 2008 struct names are DescendentAdded / DescendentRemoving (evidence symbols of 00557780 / 00557e80); the native
 // headers spell them DescendantAdded / DescendantRemoving, which changes only the mangled names (proposal).
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit558_2008Instance | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 7c15397c | roc native-status --write
 #include "AppUnit558_2008/InstanceDescendantRemoving2008.h"
 #include "v8xml/XmlElement.h"
 #include <algorithm>
@@ -248,3 +252,27 @@ boost::shared_ptr<Instance> Instance::findFirstChildByName2(std::string findName
 }
 #endif
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class RBX::CopyOnWrite<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance> > > >;
+template class RBX::Reflection::SignalDescImpl<1,void __cdecl(boost::shared_ptr<RBX::Instance>)>;
+template class RBX::Reflection::TSignalDesc<void __cdecl(boost::shared_ptr<RBX::Instance>)>;
+template class boost::function1<void,boost::shared_ptr<RBX::Instance>,std::allocator<void> >;
+template class boost::shared_ptr<RBX::Instance>;
+template class boost::shared_ptr<RBX::StandardOut>;
+template class boost::shared_ptr<boost::signals::detail::basic_connection>;
+template class boost::shared_ptr<boost::signals::detail::signal_base_impl>;
+template class boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance> > > >;
+template class boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance> > > const >;
+template class boost::signal1<void,boost::shared_ptr<RBX::Instance>,boost::last_value<void>,int,std::less<int>,boost::function<void __cdecl(boost::shared_ptr<RBX::Instance>),std::allocator<void> > >;
+template class std::_Tree<std::_Tmap_traits<boost::signals::detail::stored_group,std::list<boost::signals::detail::connection_slot_pair,std::allocator<boost::signals::detail::connection_slot_pair> >,boost::function2<bool,boost::signals::detail::stored_group,boost::signals::detail::stored_group,std::allocator<boost::function_base> >,std::allocator<std::pair<boost::signals::detail::stored_group const ,std::list<boost::signals::detail::connection_slot_pair,std::allocator<boost::signals::detail::connection_slot_pair> > > >,0> >;
+template class std::_Vector_const_iterator<RBX::Reflection::PropertyDescriptor *,std::allocator<RBX::Reflection::PropertyDescriptor *> >;
+template class std::_Vector_const_iterator<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance> > >;
+template class std::list<boost::signals::detail::connection_slot_pair,std::allocator<boost::signals::detail::connection_slot_pair> >;
+template class std::vector<RBX::Listener<RBX::Instance,RBX::AncestorChanged> *,std::allocator<RBX::Listener<RBX::Instance,RBX::AncestorChanged> *> >;
+template class std::vector<RBX::Listener<RBX::Instance,RBX::DescendantAdded> *,std::allocator<RBX::Listener<RBX::Instance,RBX::DescendantAdded> *> >;
+template class std::vector<RBX::Listener<RBX::Instance,RBX::DescendantRemoving> *,std::allocator<RBX::Listener<RBX::Instance,RBX::DescendantRemoving> *> >;
+template class std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance> > >;
+
+// Methods recovered from exact mined packets: field offsets mapped to this header by compiler layout.
+bool RBX::Instance::isDescendentOf(RBX::Instance const * node) const { Instance* p = parent; while (node != p) { if (!p) return false; p = p->parent; } return true; }

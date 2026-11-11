@@ -12,7 +12,7 @@
 // Active Template Library product.
 
 // >>> native-status (generated) -- do not edit >>>
-// atlsimpstr | 2008-06 | inactive
+// atlsimpstr | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src d04baa4e | roc native-status --write
 #ifndef __ATLSIMPSTR_H__

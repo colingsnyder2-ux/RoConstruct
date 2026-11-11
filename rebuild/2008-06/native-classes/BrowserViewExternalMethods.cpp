@@ -1,5 +1,5 @@
 // >>> native-status (generated) -- do not edit >>>
-// BrowserViewExternalMethods | 2008-06 | inactive
+// BrowserViewExternalMethods | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src 23cd52ca | roc native-status --write
 #include <afxwin.h>

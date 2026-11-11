@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Server2008 | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 5d89f949 | roc native-status --write
 // 2008-06 native RBX::Network::Server (inactive). Shape after the donor tools/rbxgs Client/Network/Server.h; every
 // base, field and virtual below is read from the 2008-06 binary:
 //   RTTI       vtable 0082367c .?AVServer@Network@RBX@@ (26 bases) -> DescribedCreatable<Server, Peer, sServer> (name

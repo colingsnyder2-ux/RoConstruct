@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// LuaInstanceBridge2008 | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src df3e9b40 | roc native-status --write
 // 2008-06 ObjectBridge / SharedPtrBridge<DescribedBase>::on_tostring declarations for the inactive Lua bridge recovery.
 // Replaces the read-only donor script/LuaInstanceBridge.h for this recovery (that header is no longer included by
 // LuaBridge2008.h; nothing is declared at the donor path). Shapes are the donor's except ObjectBridge::getInstance

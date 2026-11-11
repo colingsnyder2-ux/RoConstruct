@@ -10,6 +10,11 @@
 //   * Each Value<T> body (constructor, desc_Value BoundProp<T, 1>("Value", "Data", +0x130, onValueChanged, STANDARD),
 //     desc_ValueChanged SignalDesc<Value, void(T)>("Changed", "value")) has the DoubleValue shape; the allocation
 //     sizes are read from the create<T> bodies by the recorder.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit634_2008Value | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 500e0c21 | roc native-status --write
 #include "v8datamodel/Value.h"
 #include "util/Object.h"
 
@@ -152,3 +157,52 @@ namespace RBX
 		ObjectValue::classDescriptor();
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class RBX::Reflection::TSignalDesc<void __cdecl(G3D::Color3)>;
+template class RBX::Reflection::TSignalDesc<void __cdecl(G3D::CoordinateFrame)>;
+template class RBX::Reflection::TSignalDesc<void __cdecl(G3D::Vector3)>;
+template class RBX::Reflection::TSignalDesc<void __cdecl(RBX::BrickColor)>;
+template class RBX::Reflection::TSignalDesc<void __cdecl(bool)>;
+template class RBX::Reflection::TSignalDesc<void __cdecl(int)>;
+template class RBX::Reflection::TSignalDesc<void __cdecl(std::basic_string<char,std::char_traits<char>,std::allocator<char> >)>;
+template class RBX::Reflection::TypedPropertyDescriptor<RBX::Instance *>;
+template class boost::function1<void,G3D::Color3,std::allocator<void> >;
+template class boost::function1<void,G3D::CoordinateFrame,std::allocator<void> >;
+template class boost::function1<void,G3D::Vector3,std::allocator<void> >;
+template class boost::function1<void,RBX::BrickColor,std::allocator<void> >;
+template class boost::function1<void,bool,std::allocator<void> >;
+template class boost::function1<void,double,std::allocator<void> >;
+template class boost::function1<void,int,std::allocator<void> >;
+template class boost::function1<void,std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::allocator<void> >;
+template class boost::function<void __cdecl(G3D::Color3),std::allocator<void> >;
+template class boost::function<void __cdecl(G3D::CoordinateFrame),std::allocator<void> >;
+template class boost::function<void __cdecl(G3D::Vector3),std::allocator<void> >;
+template class boost::function<void __cdecl(RBX::BrickColor),std::allocator<void> >;
+template class boost::function<void __cdecl(bool),std::allocator<void> >;
+template class boost::function<void __cdecl(boost::shared_ptr<RBX::Instance>),std::allocator<void> >;
+template class boost::function<void __cdecl(int),std::allocator<void> >;
+template class boost::function<void __cdecl(std::basic_string<char,std::char_traits<char>,std::allocator<char> >),std::allocator<void> >;
+template class boost::mpl::integral_c<unsigned int,4>;
+template class boost::signal1<void,G3D::Color3,boost::last_value<void>,int,std::less<int>,boost::function<void __cdecl(G3D::Color3),std::allocator<void> > >;
+template class boost::signal1<void,G3D::CoordinateFrame,boost::last_value<void>,int,std::less<int>,boost::function<void __cdecl(G3D::CoordinateFrame),std::allocator<void> > >;
+template class boost::signal1<void,G3D::Vector3,boost::last_value<void>,int,std::less<int>,boost::function<void __cdecl(G3D::Vector3),std::allocator<void> > >;
+template class boost::signal1<void,RBX::BrickColor,boost::last_value<void>,int,std::less<int>,boost::function<void __cdecl(RBX::BrickColor),std::allocator<void> > >;
+template class boost::signal1<void,bool,boost::last_value<void>,int,std::less<int>,boost::function<void __cdecl(bool),std::allocator<void> > >;
+template class boost::signal1<void,int,boost::last_value<void>,int,std::less<int>,boost::function<void __cdecl(int),std::allocator<void> > >;
+template class boost::signal1<void,std::basic_string<char,std::char_traits<char>,std::allocator<char> >,boost::last_value<void>,int,std::less<int>,boost::function<void __cdecl(std::basic_string<char,std::char_traits<char>,std::allocator<char> >),std::allocator<void> > >;
+template class std::_Container_base_aux_alloc_real<std::allocator<boost::any> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<boost::signals::connection> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<boost::signals::trackable const *> >;
+template class std::allocator<RBX::Reflection::SignatureDescriptor::Item>;
+template class std::allocator<boost::signals::connection>;
+template class std::allocator<std::_List_nod<boost::signals::connection,std::allocator<boost::signals::connection> >::_Node *>;
+template class std::vector<boost::any,std::allocator<boost::any> >;
+template class std::vector<boost::signals::trackable const *,std::allocator<boost::signals::trackable const *> >;
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sIntValue>();
+template void RBX::Name::callDoDeclare<RBX::sBoolValue>();
+template void RBX::Name::callDoDeclare<RBX::sStringValue>();
+template void RBX::Name::callDoDeclare<RBX::sCFrameValue>();
+template void RBX::Name::callDoDeclare<RBX::sBrickColorValue>();

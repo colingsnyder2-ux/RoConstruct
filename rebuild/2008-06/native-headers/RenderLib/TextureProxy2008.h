@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// TextureProxy2008 | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 3ea0ee86 | roc native-status --write
 // RBX::Render::TextureProxy / MegaTextureProxy and RBX::RenderNew::TextureProxy / MegaTextureProxy / BadConversion as
 // compiled into the June 2008 client (inactive native recovery).
 //

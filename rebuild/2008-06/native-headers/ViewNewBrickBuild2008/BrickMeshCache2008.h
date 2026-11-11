@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// BrickMeshCache2008 | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 5045044a | roc native-status --write
 // 2008-06 native RBX::ViewNew::BrickMesh static cache and shadow box helper (inactive). A new path
 // (ViewNewBrickBuild2008/) that shadows no donor header; included only by native-classes/ViewNewBrickMeshBuild2008.cpp.
 //

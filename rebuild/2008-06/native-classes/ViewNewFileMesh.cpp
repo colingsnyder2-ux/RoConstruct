@@ -1,4 +1,8 @@
 // 2008-06 native RBX::ViewNew::FileMesh (inactive): the unit 00500780..00500c98 (/fp:fast like the other ViewNew units).
+// >>> native-status (generated) -- do not edit >>>
+// ViewNewFileMesh | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 9f4df88c | roc native-status --write
 #include "ViewNew/FileMesh.h"
 #include <stdio.h>
 #include <exception>
@@ -74,3 +78,6 @@ namespace RBX
 		}
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class G3D::ReferenceCountedPointer<RBX::ViewNew::FileMesh>;

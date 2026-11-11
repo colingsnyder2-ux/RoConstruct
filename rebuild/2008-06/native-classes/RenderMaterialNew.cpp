@@ -2,6 +2,11 @@
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
 // RBX::RenderNew::Material / Material::Level with the RenderBase::MaterialBase::Level defaults, optimized RenderLib unit
 // (2008-06, inactive native recovery). Image block 007accc0..007ad9cf.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// RenderMaterialNew | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 2765be33 | roc native-status --write
 #include "RenderLib/Material2008.h"
 #include <OgreMaterialManager.h>
 #include <OgreLogManager.h>

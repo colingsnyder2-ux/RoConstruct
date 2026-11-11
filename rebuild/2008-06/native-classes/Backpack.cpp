@@ -1,5 +1,9 @@
 // 2008-06 native RBX::Backpack (inactive): the Backpack part of the original Hopper unit (005d16d0..005d1b70).
 // Evidence in native-headers/v8datamodel/Backpack.h (IScriptOwner from the native script/Script.h).
+// >>> native-status (generated) -- do not edit >>>
+// Backpack | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src ad5f3cec | roc native-status --write
 #include "v8datamodel/Backpack.h"
 
 namespace RBX
@@ -24,3 +28,6 @@ namespace RBX
 		setName("Backpack");
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<RBX::GuiItem>;

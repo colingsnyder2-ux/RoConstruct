@@ -1,5 +1,5 @@
 // >>> native-status (generated) -- do not edit >>>
-// VisitCreator | 2008-06 | inactive
+// VisitCreator | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src 1f5fbf06 | roc native-status --write
 #include "v8datamodel/Visit.h"

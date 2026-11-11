@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Peer2008 | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 51822d04 | roc native-status --write
 // 2008-06 native RBX::Network::Peer (inactive). Shape after the donor tools/rbxgs Client/Network/Replicator.h (class
 // Peer); every base, field and virtual below is read from the 2008-06 binary:
 //   RTTI       vtable 00824944 .?AVPeer@Network@RBX@@ (21 bases) -> Described<Peer, sPeer, Instance> (name mangled

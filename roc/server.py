@@ -1348,6 +1348,12 @@ def _publish_once(store, public_url, log=print):
                 result = git(*args)
                 if result.returncode:
                     raise RuntimeError("Address publish failed: " + result.stderr.strip()[-300:])
+    # Same cycle commits all source work (rebuild/, roc/, tools under work/native-client, ...): one auto-committer.
+    try:
+        from roc import autocommit
+        autocommit.run_once()
+    except Exception as error:  # never block findings/site publishing
+        log("Work auto-commit failed: %s" % error)
     pushed = git("push", "origin", "HEAD")
     if pushed.returncode:
         log("Source push deferred; publishing findings and website independently: " + pushed.stderr.strip()[-300:])

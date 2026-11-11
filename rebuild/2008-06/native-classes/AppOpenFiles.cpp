@@ -1,5 +1,5 @@
 // >>> native-status (generated) -- do not edit >>>
-// AppOpenFiles | 2008-06 | inactive
+// AppOpenFiles | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src 0704d61a | roc native-status --write
 #include "CRobloxApp.h"

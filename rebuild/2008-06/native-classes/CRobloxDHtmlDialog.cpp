@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CRobloxDHtmlDialog | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src af4c756b | roc native-status --write
 #include "CRobloxDHtmlDialog.h"
 #include "util/Http.h"
 #include <exdispid.h>

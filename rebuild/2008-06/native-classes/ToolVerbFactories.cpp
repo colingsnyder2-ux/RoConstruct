@@ -1,5 +1,9 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string
 // The 2008 client was built without RBXASSERT: getCurrentMouseCommand inlines to a plain load.
+// >>> native-status (generated) -- do not edit >>>
+// ToolVerbFactories | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src a5920f59 | roc native-status --write
 #undef _RELEASEASSERT
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Workspace.h"
@@ -146,3 +150,6 @@ template bool TToolVerb<SlingshotTool, RunStateVerb>::isChecked() const;
 template bool TToolVerb<RocketTool, RunStateVerb>::isChecked() const;
 template bool TToolVerb<LaserTool, RunStateVerb>::isChecked() const;
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::auto_ptr<RBX::MouseCommand>;

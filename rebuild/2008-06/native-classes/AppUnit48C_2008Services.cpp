@@ -21,6 +21,10 @@
 // v8tree/Service.h and util/Object.h declare these templates without bodies; the definitions below are the ones
 // native-classes/ServiceProvider.cpp (find / create / getClassIndex / className) and AppUnit588_2008RootInstance.cpp
 // (the const Instance* forms) use.
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit48C_2008Services | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 157caef0 | roc native-status --write
 #include <boost/thread/once.hpp>
 #include "v8tree/Service.h"
 #include "v8datamodel/Workspace.h"
@@ -128,3 +132,8 @@ namespace RBX
 		}
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<RBX::RunService>;
+template class std::_Vector_iterator<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance> > >;
+template class std::deque<RBX::Network::AbuseReport,std::allocator<RBX::Network::AbuseReport> >;

@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Body2008 | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src d8674bd7 | roc native-status --write
 // 2008-06 native RBX::Body and RBX::Cofm (inactive). Declared under a non-colliding name: the original path
 // v8kernel/Body.h is reached through the donor v8kernel/KernelData.h <- Kernel.h <- IPipelined.h <- Edge.h by every
 // engine unit, and through v8kernel/Connector2008.h / Point.h / Pair.h, so a header at that path would shadow the donor

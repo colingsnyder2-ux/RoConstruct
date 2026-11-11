@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// SoundValueGenericFloat | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 413686a3 | roc native-status --write
 #include "reflection/type.h"
 #include "util/Utilities.h"
 #include "G3D/format.h"

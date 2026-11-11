@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// ShootTools | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 29459a8e | roc native-status --write
 
 #include "tool/ShootTool.h"
 

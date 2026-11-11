@@ -1,6 +1,6 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// SimJob | 2008-06 | inactive
+// SimJob | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src 75943d17 | roc native-status --write
 // 2008-06 native RBX::SimJob declaration (inactive). Proposed from RTTI and the

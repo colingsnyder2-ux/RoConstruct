@@ -12,28 +12,5 @@ namespace RBX
 {
 	namespace Network
 	{
-		bool Server::ClientProxy::canSendItems()
-		{
-			return true;
-		}
-
-		PluginReceiveResult Server::ClientProxy::OnReceive(RakPeerInterface* peer, Packet* packet)
-		{
-			PluginReceiveResult result = Replicator::OnReceive(peer, packet);
-			if (result != RR_CONTINUE_PROCESSING || packet->systemAddress != remotePlayerId || packet->data[0] != ID_REQUEST_CHARACTER)
-				return result;
-
-			RakNet::BitStream bitStream(packet->data, packet->length, false);
-			unsigned char id;
-			bitStream >> id;
-			Instance* instance = NULL;
-			if (deserializeInstanceRef(bitStream, instance))
-				if (Player* player = dynamic_cast<Player*>(instance))
-				{
-					remotePlayer = shared_from(player);
-					player->loadCharacter();
-				}
-			return RR_STOP_PROCESSING_AND_DEALLOCATE;
-		}
 	}
 }

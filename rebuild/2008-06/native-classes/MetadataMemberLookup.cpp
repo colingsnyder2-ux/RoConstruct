@@ -1,5 +1,5 @@
 // >>> native-status (generated) -- do not edit >>>
-// MetadataMemberLookup | 2008-06 | inactive
+// MetadataMemberLookup | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src 5103578e | roc native-status --write
 #include "reflection/Metadata.h"

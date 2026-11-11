@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// WorkspaceGuids | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 45b1efca | roc native-status --write
 #include <guiddef.h>
 
 extern const IID IID_IWorkspace = {0x0730c3c6, 0x092d, 0x4f45, {0xb8, 0xb9, 0xbd, 0xeb, 0x82, 0xde, 0x1c, 0x7b}};

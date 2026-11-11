@@ -10,6 +10,10 @@
 // The chat run 00411d90..0041202f (ChatEnter, Network::Players; the CChatPrompt unit creates both) and the clipboard-verb
 // run 00414820..004151ff (ModelInstance, Script, LocalScript, ChangeHistoryService; Creator vtables 0080e9ac /
 // 0080e9c8 / 0080e9e4 / 0080ea00). sizeof(C) comes from the native headers and is checked against the malloc size.
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit40C_2008Creators | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 774a94da | roc native-status --write
 #include "ChatEnter.h"
 #include "Network/Players.h"
 #include "v8datamodel/ModelInstance.h"
@@ -38,3 +42,9 @@ template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::ModelInstance, 
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::Script, RBX::Instance, RBX::sScript>::Creator::create() const;
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::LocalScript, RBX::Script, RBX::sLocalScript>::Creator::create() const;
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::ChangeHistoryService, RBX::Instance, RBX::sChangeHistoryService>::Creator::create() const;
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<ChatEnter>;
+template class boost::shared_ptr<RBX::LocalScript>;
+template class boost::shared_ptr<RBX::Network::Players>;
+template class boost::shared_ptr<RBX::Script>;

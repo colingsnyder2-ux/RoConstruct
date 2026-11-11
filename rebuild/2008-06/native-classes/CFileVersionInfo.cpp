@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CFileVersionInfo | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 8e7b4c2a | roc native-status --write
 #include "CFileVersionInfo.h"
 
 // Create reuses roc_espclaude_43f0d040995d240c.cpp (0046a220).

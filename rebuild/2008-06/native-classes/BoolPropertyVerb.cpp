@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// BoolPropertyVerb | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 236591e5 | roc native-status --write
 #include "../native-headers/StandardVerbs.h"
 #include "../native-headers/v8datamodel/Workspace.h"
 #include "../native-headers/util/RunStateOwner.h"
@@ -60,3 +64,6 @@ bool BoolPropertyVerb::isChecked() const {
 }
 
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::_bi::value<RBX::Name const *>;

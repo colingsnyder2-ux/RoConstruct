@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// ClearStarterpack | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src a2ac7c55 | roc native-status --write
 #include "StandardVerbs.h"
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Hopper.h"

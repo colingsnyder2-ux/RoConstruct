@@ -1,7 +1,7 @@
 // Source-derived world pipeline port from openrbx include/v8world/SleepStage2.h.
 // June anchor swap is evidenced at 0064cc40/0064ccf0; full ABI/physics parity remains unproven.
 // >>> native-status (generated) -- do not edit >>>
-// SleepStage | 2008-06 | inactive
+// SleepStage | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src 5bbb2415 | roc native-status --write
 #ifndef V8WORLD_SLEEPSTAGE2_H

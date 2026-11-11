@@ -2,6 +2,10 @@
 // Verified by tests/record_native_network_players.py. Network::Client and Network::Server do not compile
 // against the 2008 const-char-array DescribedCreatable; the recorder supplies declaration-only stand-ins
 // for "Client.h" / "Server.h" (tests/NativeNetworkPlayersPeers.h).
+// >>> native-status (generated) -- do not edit >>>
+// NetworkPlayers | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 4da67c48 | roc native-status --write
 #include <RakPeer.h>
 #include <PluginInterface.h>
 #include "Client.h"

@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// HeadMesh | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src e75efeea | roc native-status --write
 // 2008-06 native RBX::ViewNew::HeadBuilder / HeadMesh (inactive).
 //   HeadBuilder  vtable 00827194 .?AVHeadBuilder@ViewNew@RBX@@ -> LevelBuilder (mdisp 0); slots 0 build 00500d30
 //                (inherited), 1 buildTop 00500020, 2 buildBottom 00500050 (EndcapTransform), 3 buildLeft 00500080,

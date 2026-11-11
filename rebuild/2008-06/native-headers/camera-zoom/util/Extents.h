@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Extents | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 344d4239 | roc native-status --write
 #include <G3D/Vector3.h>
 #include <G3D/CoordinateFrame.h>
 #include <G3D/Plane.h>

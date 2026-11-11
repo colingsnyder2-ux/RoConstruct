@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// SurfaceTool | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 49e01f6f | roc native-status --write
 
 #include "v8datamodel/MouseCommand.h"
 #include "v8datamodel/PartInstance.h"

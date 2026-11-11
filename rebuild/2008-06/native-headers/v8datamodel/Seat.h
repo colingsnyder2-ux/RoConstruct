@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Seat | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src d0aab664 | roc native-status --write
 // 2008-06 native RBX::Seat (inactive). Shape after the donor tools/rbxgs Seat.h; every base, field and descriptor
 // below is read from the 2008-06 binary:
 //   RTTI       vtable 00849f74 .?AVSeat@RBX@@ -> DescribedCreatable<Seat, PartInstance, sSeat> (37 bases; name mangled

@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Point2008 | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 217c158e | roc native-status --write
 // 2008-06 native RBX::Point on the 2008 Body of native-headers/v8kernel/Body2008.h (inactive). Declared under a
 // non-colliding name: the donor v8kernel/Point.h includes the donor v8kernel/Body.h (root +0x4, pv +0x88 there), and is
 // reached through native-headers/v8kernel/Connector2008.h and leaves2008/Point2008.h; a unit must not include both

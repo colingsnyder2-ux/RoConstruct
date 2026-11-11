@@ -6,6 +6,10 @@
 // 0, Instance 0092907c, ServiceProvider 0092e15c, 0) succeeds, then tail-jumps to the member create<PhysicsService>()
 // const 004cd7e0 (counted by world-service-actions-secure-trial.json); NULL when no provider is found. Same definition
 // as LocalBackpack2008.cpp / SoundServiceProvider.cpp use for their own service types. Headers are read-only here.
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit4C8_2008PhysicsServiceCreate | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 26336bc4 | roc native-status --write
 #include "v8datamodel/PhysicsService.h"
 
 namespace RBX

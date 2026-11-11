@@ -1,5 +1,5 @@
 // >>> native-status (generated) -- do not edit >>>
-// HttpTrustCheck | 2008-06 | inactive
+// HttpTrustCheck | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src 5760f44f | roc native-status --write
 #define _SCL_SECURE_NO_DEPRECATE

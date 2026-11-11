@@ -16,33 +16,7 @@ namespace RBX
 {
 	namespace Network
 	{
-		Replicator::DeleteInstanceItem::DeleteInstanceItem(Replicator& replicator, const boost::shared_ptr<const Instance>& instance)
-			: Item(replicator), instance(instance)
-		{
-		}
 
-		void Replicator::connectToReplicationContainers()
-		{
-			Instance* containers[] = {
-				ServiceProvider::find<Workspace>(this),
-				ServiceProvider::find<Lighting>(this),
-				ServiceProvider::find<Players>(this),
-				ServiceProvider::find<Teams>(this),
-				ServiceProvider::find<StarterPackService>(this),
-			};
-
-			for (size_t i = 0; i < sizeof(containers) / sizeof(containers[0]); ++i)
-			{
-				Instance* container = containers[i];
-				if (!container || std::find(replicationContainers.begin(), replicationContainers.end(), container) != replicationContainers.end())
-					continue;
-
-				replicationContainers.push_back(container);
-				replicationContainerConnections.push_back(Instance::event_descendentAdded.connect(container, boost::bind(&Replicator::onDescendentAdded, this, _1)));
-				replicationContainerConnections.push_back(Instance::event_descendentRemoving.connect(container, boost::bind(&Replicator::onDescendentRemoving, this, _1)));
-				container->visitDescendents(boost::bind(&Replicator::onDescendentAdded, this, _1));
-			}
-		}
 
 		void Replicator::onDescendentAdded(boost::shared_ptr<Instance> instance)
 		{
@@ -75,11 +49,5 @@ namespace RBX
 			}
 		}
 
-		void Replicator::connectPropertyChanged(boost::shared_ptr<Instance> instance)
-		{
-			if (propertyChangedConnections.find(instance) != propertyChangedConnections.end())
-				return;
-			propertyChangedConnections[instance] = Instance::event_propertyChanged.connect(instance.get(), boost::bind(&Replicator::onPropertyChanged, this, instance, _1));
-		}
 	}
 }

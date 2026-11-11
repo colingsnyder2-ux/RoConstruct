@@ -1,3 +1,8 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// CameraUnits | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src a1e8e5e4 | roc native-status --write
 #include "v8datamodel/Camera.h"
 #include "util/Math.h"
 #include "G3D/g3dmath.h"

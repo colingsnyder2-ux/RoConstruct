@@ -1,5 +1,5 @@
 // >>> native-status (generated) -- do not edit >>>
-// WorkspaceJoin | 2008-06 | inactive
+// WorkspaceJoin | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src fed16a9a | roc native-status --write
 #include "v8datamodel/Workspace.h"

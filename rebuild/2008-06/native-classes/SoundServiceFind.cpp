@@ -1,6 +1,6 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/boost-noinline-shared-destructor
 // >>> native-status (generated) -- do not edit >>>
-// SoundServiceFind | 2008-06 | inactive
+// SoundServiceFind | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src 2913d5d3 | roc native-status --write
 #include <boost/thread/once.hpp>

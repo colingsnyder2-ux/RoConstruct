@@ -2,6 +2,10 @@
 // the donor's ViewBase::getShadowsEnabled() function-local static, which RenderLib/ViewBase2008.h does not declare yet:
 // the body is built only with NATIVE_VIEWNEW_BRICK_BUILD_PENDING (tests/record_native_viewnew_brick_build.py generates
 // the ViewBase2008.h copy with that declaration under out/).
+// >>> native-status (generated) -- do not edit >>>
+// ViewNewPartMesh2008PBB | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src f493e0f9 | roc native-status --write
 #include "ViewNew/PBBMesh.h"
 #include "ViewNewBrickBuild2008/BrickMeshCache2008.h"
 #ifdef NATIVE_VIEWNEW_BRICK_BUILD_PENDING

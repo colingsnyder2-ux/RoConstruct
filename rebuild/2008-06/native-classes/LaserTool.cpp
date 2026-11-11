@@ -1,4 +1,8 @@
-// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// LaserTool | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 3e27499e | roc native-status --write
 #include "tool/BasicMouseTools.h"
 #include "v8datamodel/Workspace.h"
 #include "v8datamodel/Explosion.h"

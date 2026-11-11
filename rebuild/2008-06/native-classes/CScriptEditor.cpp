@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CScriptEditor | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src b5f5dcea | roc native-status --write
 #include "CScriptEditor.h"
 #include "script/Script.h"
 #include "v8datamodel/DataModel.h"
@@ -505,3 +509,14 @@ void CScriptEditor::reload()
     GetCtrl().SetSavePoint();
     loading = false;
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class CArray<int,int>;
+template class RBX::Listener<RBX::Instance,RBX::AncestorChanged>;
+template class RBX::Listener<RBX::RunService,enum RBX::RunState>;
+template class std::_Container_base_aux_alloc_real<std::allocator<RBX::MarshaledListener<RBX::Instance,RBX::PropertyChanged,RBX::Instance,RBX::PropertyChanged>::EventData *> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<RBX::MarshaledListener<RBX::RunService,enum RBX::RunState,RBX::RunService,enum RBX::RunState>::EventData *> >;
+template class std::_Vector_const_iterator<RBX::Listener<RBX::Instance,RBX::AncestorChanged> *,std::allocator<RBX::Listener<RBX::Instance,RBX::AncestorChanged> *> >;
+template class std::_Vector_const_iterator<RBX::Listener<RBX::RunService,enum RBX::RunState> *,std::allocator<RBX::Listener<RBX::RunService,enum RBX::RunState> *> >;
+template class std::_Vector_iterator<RBX::Listener<RBX::Instance,RBX::AncestorChanged> *,std::allocator<RBX::Listener<RBX::Instance,RBX::AncestorChanged> *> >;
+template class std::_Vector_iterator<RBX::Listener<RBX::RunService,enum RBX::RunState> *,std::allocator<RBX::Listener<RBX::RunService,enum RBX::RunState> *> >;
