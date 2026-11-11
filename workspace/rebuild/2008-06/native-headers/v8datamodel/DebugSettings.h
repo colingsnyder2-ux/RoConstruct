@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// DebugSettings | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// DebugSettings | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 8a71a6f8 | roc native-status --write
 // 2008-06 native RBX::DebugSettings (inactive). Shape after the donor tools/rbxgs v8datamodel/DebugSettings.h; every
 // base, field, accessor and descriptor below is read from the 2008-06 binary:

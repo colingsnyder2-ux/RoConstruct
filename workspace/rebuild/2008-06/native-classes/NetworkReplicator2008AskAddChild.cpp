@@ -4,8 +4,8 @@
 // which leaves these two bodies open); the definitions live here because they need Replicator2008.h /
 // ClientProxy2008.h. Verified by tests/record_native_network_replicator2008.py.
 // >>> native-status (generated) -- do not edit >>>
-// NetworkReplicator2008AskAddChild | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// NetworkReplicator2008AskAddChild | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by auto
 // <<< native-status | src 5b06dd93 | roc native-status --write
 #include "Network/ClientProxy2008.h"
 

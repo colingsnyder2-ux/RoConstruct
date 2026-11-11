@@ -8,8 +8,8 @@
 //   00505890 / 005058c0 with their std::sort helpers. render 00504bf0 is not built (declared only).
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // >>> native-status (generated) -- do not edit >>>
-// RenderSceneBase2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// RenderSceneBase2008 | 2008-06 | draft (no current byte proof)
+// 0/13 mapped addresses byte-exact | 13 unproved | no mapped strings | by colin (+7) (mixed 4)
 // <<< native-status | src 7224c665 | roc native-status --write
 #include "RenderLib/RenderSceneRender2008.h"
 #include <exception>

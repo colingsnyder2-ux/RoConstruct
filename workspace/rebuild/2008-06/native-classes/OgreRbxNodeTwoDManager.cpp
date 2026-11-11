@@ -3,8 +3,8 @@
 // record_native_ogre_rbx_node.py verifies them.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
 // >>> native-status (generated) -- do not edit >>>
-// OgreRbxNodeTwoDManager | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// OgreRbxNodeTwoDManager | 2008-06 | 10 byte-exact, inactive (not link-selected)
+// 10/11 mapped addresses byte-exact | 1 unproved | no mapped strings | by colin (+3) (mixed 3)
 // <<< native-status | src 24b27030 | roc native-status --write
 #include "OgreRbxNode/TwoDManager2008.h"
 #include <OgreRoot.h>

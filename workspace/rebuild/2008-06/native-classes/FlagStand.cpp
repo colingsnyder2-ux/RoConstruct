@@ -3,8 +3,8 @@
 // native-classes/FlagStandService.cpp (another contributor). Evidence in native-headers/v8datamodel/FlagStand.h.
 // Verified by tests/record_native_flag_family.py.
 // >>> native-status (generated) -- do not edit >>>
-// FlagStand | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// FlagStand | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 66c1a3dd | roc native-status --write
 #include "v8datamodel/FlagStand.h"
 #include "reflection/signal.h"

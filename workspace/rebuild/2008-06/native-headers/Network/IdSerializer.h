@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// IdSerializer | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// IdSerializer | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src b62f39fd | roc native-status --write
 // 2008-06 native RBX::Network::IdSerializer and its string dictionaries (inactive). Shape after the donor
 // tools/rbxgs/Client/Network/Streaming.h; every base, field and size below is read from the 2008-06 binary:

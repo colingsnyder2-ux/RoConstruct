@@ -20,8 +20,8 @@
 // DebrisService shared_ptr / create rows are counted by their own receipts; only their Creator rows are built here.
 // sizeof(C) comes from the native headers and is checked by the malloc size each create<C> passes.
 // >>> native-status (generated) -- do not edit >>>
-// AppUnit5BC_2008_unsplit | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AppUnit5BC_2008_unsplit | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 1cf37091 | roc native-status --write
 #include "v8datamodel/ClickDetector.h"
 #include "v8datamodel/Explosion.h"

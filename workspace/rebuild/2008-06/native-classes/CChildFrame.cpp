@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// CChildFrame | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CChildFrame | 2008-06 | 3 byte-exact, inactive (not link-selected)
+// 3/4 mapped addresses byte-exact | 1 unproved | no mapped strings | by atomic.potato (+1) (mixed 3)
 // <<< native-status | src fa5b8315 | roc native-status --write
 #include "CChildFrame.h"
 

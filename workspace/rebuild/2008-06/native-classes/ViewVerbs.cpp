@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// ViewVerbs | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ViewVerbs | 2008-06 | draft (no current byte proof)
+// 0/8 mapped addresses byte-exact | 8 unproved | no mapped strings | by colin (+3) (mixed 3)
 // <<< native-status | src 5c93d29a | roc native-status --write
 #include "../native-headers/CMainFrame.h"
 #include "../native-headers/ViewVerbs.h"

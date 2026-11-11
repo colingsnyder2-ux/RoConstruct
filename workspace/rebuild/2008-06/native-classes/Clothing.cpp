@@ -2,8 +2,8 @@
 // Inactive native recovery of RBX::CharacterAppearance / Clothing / Shirt / Pants / ShirtGraphic / Skin.
 // Layout and evidence: native-headers/v8datamodel/Clothing.h. Verified by tests/record_native_clothing.py.
 // >>> native-status (generated) -- do not edit >>>
-// Clothing | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Clothing | 2008-06 | 5 byte-exact, inactive (not link-selected)
+// 5/9 mapped addresses byte-exact | named 1 | 4 unproved | 2 referenced strings (not rechecked) | by king_originala (+2) (mixed 4)
 // <<< native-status | src b7b4a88d | roc native-status --write
 #include "v8datamodel/Clothing.h"
 #include "v8datamodel/PartInstance.h"

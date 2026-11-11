@@ -4,8 +4,8 @@
 // Humanoid::getHeadFromCharacter (005d75a0) from the native humanoid/Humanoid.h.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // >>> native-status (generated) -- do not edit >>>
-// Filters | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Filters | 2008-06 | 2 byte-exact, inactive (not link-selected)
+// 2/6 mapped addresses byte-exact | 4 unproved | 1 referenced strings (not rechecked) | by king_originala (+2) (mixed 4)
 // <<< native-status | src 7eee5f67 | roc native-status --write
 #include "v8datamodel/Filters2008.h"
 #include "v8datamodel/PartInstance.h"

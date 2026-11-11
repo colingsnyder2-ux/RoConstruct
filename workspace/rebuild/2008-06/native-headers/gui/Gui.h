@@ -1,8 +1,8 @@
 // Inactive native candidate; getChildPosition follows original 00411810.
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// Gui | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Gui | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 7e3740b3 | roc native-status --write
 #include "RbxGraphics/Adorn.h"
 #include "v8tree/Instance.h"

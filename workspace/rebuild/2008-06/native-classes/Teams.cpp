@@ -1,7 +1,7 @@
 // 2008-06 native RBX::Teams (inactive); evidence in native-headers/v8datamodel/Teams.h.
 // >>> native-status (generated) -- do not edit >>>
-// Teams | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Teams | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/10 mapped addresses byte-exact | 9 unproved | 1 referenced strings (not rechecked) | by colin (+2) (mixed 5)
 // <<< native-status | src 38f41684 | roc native-status --write
 #include "v8datamodel/Teams.h"
 #include <algorithm>

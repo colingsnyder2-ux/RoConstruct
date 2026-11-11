@@ -134,6 +134,10 @@ def probe(source, output, targets, check):
         receipt['rounds'][-1]['rejected'] = len(lines) - len(kept)
         lines = kept
     receipt['instantiations_requested'], receipt['instantiations_kept'] = len(classes), len(lines)
+    # Persist exact directives.  A later strict identity/reference gate can
+    # consume this receipt without recompiling discovery merely to reconstruct
+    # the surviving lines from probe.cpp.
+    receipt['instantiation_lines'] = lines
     if code:
         receipt['status'] = 'probe-compile-failed'
         return receipt

@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// CFileVersionInfo | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CFileVersionInfo | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 8e7b4c2a | roc native-status --write
 #include "CFileVersionInfo.h"
 

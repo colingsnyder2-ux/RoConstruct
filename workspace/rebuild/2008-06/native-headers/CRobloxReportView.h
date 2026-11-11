@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// CRobloxReportView | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CRobloxReportView | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src f3f785bd | roc native-status --write
 #include <XTToolkitPro.h>
 #include <boost/shared_ptr.hpp>

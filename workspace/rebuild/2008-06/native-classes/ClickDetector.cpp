@@ -5,8 +5,8 @@
 // RBX::ModelInstance come from the committed native headers.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // >>> native-status (generated) -- do not edit >>>
-// ClickDetector | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ClickDetector | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/2 mapped addresses byte-exact | 1 unproved | no mapped strings | by king_originala (mixed 2)
 // <<< native-status | src bb49f159 | roc native-status --write
 #include "v8datamodel/ClickDetector.h"
 #include "v8datamodel/PartInstance.h"

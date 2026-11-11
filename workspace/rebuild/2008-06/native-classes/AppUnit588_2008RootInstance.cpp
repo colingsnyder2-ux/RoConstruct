@@ -19,8 +19,8 @@
 //   * insertInstances 005911d0 is not built: its 2008 shape (an early setParent loop for a foreign requestedParent,
 //     an extra dynamic_cast branch, a final ChangeHistory waypoint 0058c5c0 "Insert") differs from the donor.
 // >>> native-status (generated) -- do not edit >>>
-// AppUnit588_2008RootInstance | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AppUnit588_2008RootInstance | 2008-06 | draft (no current byte proof)
+// 0/24 mapped addresses byte-exact | 24 unproved | no mapped strings | by king_originala (+5) (mixed 9)
 // <<< native-status | src 211f3cc7 | roc native-status --write
 #include "v8datamodel/RootInstance.h"
 #include "v8datamodel/PartInstance.h"

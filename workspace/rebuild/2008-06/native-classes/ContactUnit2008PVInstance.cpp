@@ -8,8 +8,8 @@
 // Verified by tests/record_native_contact_unit2008.py.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // >>> native-status (generated) -- do not edit >>>
-// ContactUnit2008PVInstance | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ContactUnit2008PVInstance | 2008-06 | draft (no current byte proof)
+// 0/12 mapped addresses byte-exact | 12 unproved | no mapped strings | by auto (+4) (mixed 5)
 // <<< native-status | src 31a5be23 | roc native-status --write
 #include "v8datamodel/PVInstance.h"
 #include "v8datamodel/Workspace.h"

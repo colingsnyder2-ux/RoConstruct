@@ -7,8 +7,8 @@
 // checks do not apply to names in an explicit instantiation, so the protected WaitItem can be named).
 // Verified by tests/record_native_app_unit49c_2008.py.
 // >>> native-status (generated) -- do not edit >>>
-// AppUnit49C_2008IdSerializerTemplates | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AppUnit49C_2008IdSerializerTemplates | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 2e7ead5b | roc native-status --write
 #include "Network/IdSerializer.h"
 

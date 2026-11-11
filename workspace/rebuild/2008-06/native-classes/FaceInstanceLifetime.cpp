@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// FaceInstanceLifetime | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// FaceInstanceLifetime | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 68ca1bfa | roc native-status --write
 #include "v8datamodel/FaceInstance.h"
 #include "v8datamodel/PartInstance.h"

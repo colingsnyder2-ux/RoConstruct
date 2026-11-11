@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// FileSystem | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// FileSystem | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src da515e6d | roc native-status --write
 #include <shlobj.h>
 #include <string>

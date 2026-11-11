@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// CWorkspaceInsert | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CWorkspaceInsert | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/2 mapped addresses byte-exact | 1 unproved | no mapped strings | by EspClaude (+1) (mixed 2)
 // <<< native-status | src fec648b6 | roc native-status --write
 #include "CWorkspace.h"
 #include "v8datamodel/DataModel.h"

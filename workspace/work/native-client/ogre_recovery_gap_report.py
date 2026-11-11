@@ -16,33 +16,46 @@ QUEUE = ROOT / 'work/native-client/ogre-conversion-queue-v10.json'
 TEMPLATES = ROOT / 'work/native-client/viewnew-template-existing.json'
 ATTEMPTS = ROOT / 'work/native-client/native-llm/attempts.jsonl'
 OUT = ROOT / 'work/native-client/ogre-recovery-gap-report.json'
-CENSUS = ROOT / 'work/native-client/ogre-native-full-census-20261110/manifest.json'
+CENSUS = ROOT / 'work/native-client/ogre-native-full-census-current/manifest.json'
+
+
+def native_emitted_exact_addresses():
+    """Every uniquely reference-proved body emitted by Ogre-scope native TUs."""
+    if not CENSUS.is_file():
+        return None
+    manifest = json.loads(CENSUS.read_text())
+    # ``candidates`` contains byte-only aliases.  ``addr`` is written only
+    # after identity plus every relocation/data reference passes.
+    return {symbol['addr'] for family in manifest.get('families', [])
+            for symbol in family.get('symbols', [])
+            if symbol.get('status') == 'inactive_exact' and isinstance(symbol.get('addr'), str)}
 
 
 def native_exact_addresses(registry):
-    """Current full-TU exact set, not historic source inventory or converter objects."""
-    if not CENSUS.is_file():
-        return None
-    from roc import match
-    manifest = json.loads(CENSUS.read_text())
-    return {address for family in manifest.get('families', []) for symbol in family.get('symbols', [])
-            if symbol.get('status') == 'inactive_exact' for address in symbol.get('candidates', [])
-            if isinstance(address, str) and address in registry}
+    """Subset with an Ogre registry identity, used only for root queue lanes."""
+    emitted = native_emitted_exact_addresses()
+    return None if emitted is None else emitted & set(registry)
 
 
 def native_census(registry, exact=None):
     """Serializable full-TU proof metrics."""
-    exact = native_exact_addresses(registry) if exact is None else exact
-    if exact is None:
+    roots = native_exact_addresses(registry) if exact is None else exact
+    emitted = native_emitted_exact_addresses()
+    if roots is None or emitted is None:
         return {'addresses': None, 'bytes': None, 'proved_name_addresses': None,
-                'proved_name_bytes': None, 'placeholder_addresses': None, 'placeholder_bytes': None}
+                'proved_name_bytes': None, 'placeholder_addresses': None, 'placeholder_bytes': None,
+                'emitted_addresses': None, 'emitted_bytes': None, 'unclassified_emitted_addresses': None,
+                'unclassified_emitted_bytes': None}
     from roc import match
-    proved = {address for address in exact if not registry[address].get('placeholder')}
-    placeholders = exact - proved
+    proved = {address for address in roots if not registry[address].get('placeholder')}
+    placeholders = roots - proved
+    unclassified = emitted - roots
     size = lambda addresses: sum(len(match.target('2008-06', address)[0]) for address in addresses)
-    return {'addresses': len(exact), 'bytes': size(exact), 'proved_name_addresses': len(proved),
+    return {'addresses': len(roots), 'bytes': size(roots), 'proved_name_addresses': len(proved),
             'proved_name_bytes': size(proved), 'placeholder_addresses': len(placeholders),
-            'placeholder_bytes': size(placeholders)}
+            'placeholder_bytes': size(placeholders), 'emitted_addresses': len(emitted),
+            'emitted_bytes': size(emitted), 'unclassified_emitted_addresses': len(unclassified),
+            'unclassified_emitted_bytes': size(unclassified)}
 
 
 def main():

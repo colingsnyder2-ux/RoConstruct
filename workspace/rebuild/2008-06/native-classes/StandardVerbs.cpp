@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// StandardVerbs | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// StandardVerbs | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by colin (deepseek:deepseek-chat)
 // <<< native-status | src c601bf31 | roc native-status --write
 #include "../native-headers/StandardVerbs.h"
 

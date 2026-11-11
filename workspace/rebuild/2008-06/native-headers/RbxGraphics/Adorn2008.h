@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// Adorn2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Adorn2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src be3147e3 | roc native-status --write
 // RBX::Adorn as compiled into the June 2008 client (inactive native recovery).
 //

@@ -2,8 +2,8 @@
 // (native-headers/AppLeaves2008/RbxDocTemplates2008.h). The original imports CSimpleStringT::IsEmpty (mfc90 #4311)
 // and operator PCXSTR (#910) here; the recorder compiles this unit through that noinline profile.
 // >>> native-status (generated) -- do not edit >>>
-// AppLeaves2008PlayDocument | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AppLeaves2008PlayDocument | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 45755ec1 | roc native-status --write
 #include "AppLeaves2008/RbxDocTemplates2008.h"
 #include <afxpriv.h>

@@ -3,8 +3,8 @@
 // Balancing's constructor is in HumanoidStates1Leaves.cpp: RunningBase(Humanoid*) 00666980 calls
 // Balancing(Humanoid*, float, float) 0066e660 out of line, so its body is not visible here.
 // >>> native-status (generated) -- do not edit >>>
-// HumanoidStates1 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// HumanoidStates1 | 2008-06 | draft (no current byte proof)
+// 0/3 mapped addresses byte-exact | 3 unproved | no mapped strings | by auto (+2) (mixed 2)
 // <<< native-status | src a1b60095 | roc native-status --write
 #include "humanoid/HumanoidStates1.h"
 #include "humanoid/Humanoid.h"

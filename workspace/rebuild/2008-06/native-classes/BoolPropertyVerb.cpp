@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// BoolPropertyVerb | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// BoolPropertyVerb | 2008-06 | draft (no current byte proof)
+// 0/3 mapped addresses byte-exact | 3 unproved | no mapped strings | by king_originala (+2) (mixed 3)
 // <<< native-status | src 236591e5 | roc native-status --write
 #include "../native-headers/StandardVerbs.h"
 #include "../native-headers/v8datamodel/Workspace.h"

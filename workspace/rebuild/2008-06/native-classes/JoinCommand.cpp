@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// JoinCommand | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// JoinCommand | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by Espeon (deepseek:deepseek-chat)
 // <<< native-status | src 876aa58f | roc native-status --write
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Selection.h"

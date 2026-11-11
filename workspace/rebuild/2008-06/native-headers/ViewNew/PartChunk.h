@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// PartChunk | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// PartChunk | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 80fe20d8 | roc native-status --write
 // 2008-06 native RBX::ViewNew::PartChunk / Part / Decal / Texture (inactive). The donor tree has no ViewNew/
 // directory, so this header shadows nothing (the donor shape is Client/RbxView/Part.h, namespace RBX::View).

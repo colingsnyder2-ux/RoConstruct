@@ -2,8 +2,8 @@
 // ABI evidence: complete005991c0, accepted005989d0, and verified SDK00598a60.
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// PVFrameOps | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// PVFrameOps | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 8a4c075c | roc native-status --write
 #include "util/PV.h"
 namespace RBX {

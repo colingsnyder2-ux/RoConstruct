@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// UserInputBase | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// UserInputBase | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src e01d4605 | roc native-status --write
 #include "RbxGraphics/TextureProxyBase.h"
 #include "util/TextureId.h"

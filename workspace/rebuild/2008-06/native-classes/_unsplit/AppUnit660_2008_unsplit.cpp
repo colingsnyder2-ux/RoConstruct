@@ -8,8 +8,8 @@
 // every body below reads (reset 00666240 / 00666280 store +4 / +4..+0xc, pushAndGetAverage multiplies by [ecx]).
 // See tests/record_native_app_unit660_2008.py.
 // >>> native-status (generated) -- do not edit >>>
-// AppUnit660_2008_unsplit | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AppUnit660_2008_unsplit | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 588142ed | roc native-status --write
 #include "util/ExponentialRunningAverage.h"
 

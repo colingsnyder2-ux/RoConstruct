@@ -2,12 +2,15 @@
 rebuild/2008-06/native-classes against real MFC 9.0 / XTP 11.2.2 headers and the rbxgs-app engine headers
 (overlay first), keep objects in work/native-client/obj, and summarize compile errors.
 usage: python work/native-client/inventory.py [FILE.cpp ...]"""
-import concurrent.futures as cf, json, re, sys, collections
+import concurrent.futures as cf, json, os, re, sys, collections
 from pathlib import Path
 sys.path.insert(0, '.')
 from roc import rebuild
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from inventory_flags import *  # noqa: F401,F403  (ROOT, NC, OUT, DONOR, flags_for)
+
+OUT = Path(os.environ.get('ROC_NATIVE_OUT', OUT))
+EXTRA_FLAGS = os.environ.get('ROC_NATIVE_EXTRA_FLAGS', '').split()
 
 
 if len(sys.argv) > 1:
@@ -34,7 +37,7 @@ def one(src):
         tmp.parent.mkdir(exist_ok=True)
         tmp.write_text(patched)
         src = tmp
-    code, text = rebuild.run(tc, 'cl', flags_for(src) + ['/Fo' + src.stem + '.obj', str(src)], OUT)
+    code, text = rebuild.run(tc, 'cl', flags_for(src) + EXTRA_FLAGS + ['/Fo' + src.stem + '.obj', str(src)], OUT)
     errs = [l.strip() for l in text.splitlines() if ' error ' in l]
     return src.name, code, errs
 

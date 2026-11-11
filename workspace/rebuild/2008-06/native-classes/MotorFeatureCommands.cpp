@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// MotorFeatureCommands | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// MotorFeatureCommands | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 9c66d060 | roc native-status --write
 #include "v8datamodel/Feature.h"
 namespace RBX {

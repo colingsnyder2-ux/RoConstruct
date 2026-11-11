@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// SimJobStage2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// SimJobStage2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 8dab6772 | roc native-status --write
 // 2008-06 native RBX::SimJobStage (inactive). Declared under a non-colliding name: the original path
 // v8world/SimJobStage.h is included by the donor v8world/World.h, so a header at that path would shadow the donor for

@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// DefaultSceneQueries2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// DefaultSceneQueries2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 5fbe658f | roc native-status --write
 // Ogre 1.4.5's default scene queries as the June 2008 client sees them (inactive native recovery; 2008-06).
 //

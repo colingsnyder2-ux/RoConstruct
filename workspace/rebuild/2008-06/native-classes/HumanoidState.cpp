@@ -1,8 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
 // Inactive native HumanoidState base methods (2008-06). Not in any build list.
 // >>> native-status (generated) -- do not edit >>>
-// HumanoidState | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// HumanoidState | 2008-06 | draft (no current byte proof)
+// 0/5 mapped addresses byte-exact | 5 unproved | no mapped strings | by colin (+3) (mixed 3)
 // <<< native-status | src ff825017 | roc native-status --write
 #include "humanoid/HumanoidState.h"
 #include "humanoid/Humanoid.h"

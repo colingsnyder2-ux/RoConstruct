@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// CleanStage2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CleanStage2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src b5aa2692 | roc native-status --write
 // 2008-06 native RBX::CleanStage (inactive): the first world stage in 2008 (no donor class; the donor pipeline starts
 // at JointStage). Declared under a non-colliding name next to JointStage2008.h / SimJobStage2008.h; it does not shadow

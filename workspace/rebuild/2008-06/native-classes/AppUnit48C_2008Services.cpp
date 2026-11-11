@@ -22,8 +22,8 @@
 // native-classes/ServiceProvider.cpp (find / create / getClassIndex / className) and AppUnit588_2008RootInstance.cpp
 // (the const Instance* forms) use.
 // >>> native-status (generated) -- do not edit >>>
-// AppUnit48C_2008Services | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AppUnit48C_2008Services | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by auto
 // <<< native-status | src 157caef0 | roc native-status --write
 #include <boost/thread/once.hpp>
 #include "v8tree/Service.h"

@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// Kernel2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Kernel2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src f23688bc | roc native-status --write
 // 2008-06 native RBX::Kernel (inactive). Declared under a non-colliding name: the original path v8kernel/Kernel.h is
 // included by the donor v8world/IPipelined.h, i.e. by every engine unit (Edge, Joint, Contact, Primitive, World ...),

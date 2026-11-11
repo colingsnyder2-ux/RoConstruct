@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// SphereMesh | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// SphereMesh | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src bee2d269 | roc native-status --write
 // 2008-06 native RBX::ViewNew::SphereBuilder / SphereMesh (inactive).
 //   SphereBuilder  vtable 00827134 .?AVSphereBuilder@ViewNew@RBX@@ -> LevelBuilder (mdisp 0); slots 0 build 00500d30

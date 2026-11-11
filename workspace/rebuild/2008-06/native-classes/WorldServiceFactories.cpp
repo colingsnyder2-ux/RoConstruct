@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// WorldServiceFactories | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// WorldServiceFactories | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 452aec45 | roc native-status --write
 #include <boost/thread/once.hpp>
 #include "v8datamodel/PhysicsService.h"

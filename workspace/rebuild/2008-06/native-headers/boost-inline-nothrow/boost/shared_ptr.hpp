@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// shared_ptr | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// shared_ptr | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 9bb4a245 | roc native-status --write
 #ifndef BOOST_SHARED_PTR_HPP_INCLUDED
 #define BOOST_SHARED_PTR_HPP_INCLUDED

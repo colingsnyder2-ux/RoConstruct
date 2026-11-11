@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// HttpResultCheck | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// HttpResultCheck | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by king_originala (chatgpt:gpt-6.1-sol)
 // <<< native-status | src c5db584c | roc native-status --write
 #include <windows.h>
 #include <stdexcept>

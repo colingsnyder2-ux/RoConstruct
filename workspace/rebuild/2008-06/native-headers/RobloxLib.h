@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// RobloxLib | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// RobloxLib | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 283a8a8c | roc native-status --write
 #include <oaidl.h>
 

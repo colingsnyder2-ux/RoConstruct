@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// EventHandler2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// EventHandler2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 6396425d | roc native-status --write
 // Inactive native 2008-06 EventHandler (RTTI of vtable 00810598: EventHandler : IDispatch : IUnknown), a COM
 // IDispatch sink whose Invoke calls a boost::function0<bool>. Layout from the constructor 0042acb0 (new(0x30) at

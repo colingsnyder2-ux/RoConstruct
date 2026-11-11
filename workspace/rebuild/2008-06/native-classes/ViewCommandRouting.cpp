@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/boost-count-copy
 // >>> native-status (generated) -- do not edit >>>
-// ViewCommandRouting | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ViewCommandRouting | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by -
 // <<< native-status | src 40aa8c92 | roc native-status --write
 #include "../native-headers/CRobloxView.h"
 #include "../native-headers/v8datamodel/DataModel.h"

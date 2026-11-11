@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// PropertyGridItems | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// PropertyGridItems | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 55c32e8c | roc native-status --write
 #include "CPropGrid.h"
 #include "reflection/property.h"

@@ -36,7 +36,7 @@ REGISTRY = ROOT / 'work/native-client/ogre-names-registry.json'
 METRICS = HERE / 'bytes-per-hour.jsonl'
 PREFLIGHT = HERE / 'preflight-blocked.json'
 LAYOUTS = ROOT / 'work/native-client/ogre-layout-solutions.json'
-NATIVE_CENSUS = ROOT / 'work/native-client/ogre-native-full-census-20261110/manifest.json'
+NATIVE_CENSUS = ROOT / 'work/native-client/ogre-native-full-census-current/manifest.json'
 OPENCODE = Path(os.environ.get('APPDATA', '')) / 'ai.opencode.desktop/cli/2.2.6-x64/opencode-cli.exe'
 # Escalation ladder, fastest first: attempt n uses LADDER[n % len]. "provider:model" goes through
 # roc/providers.py (NVIDIA NIM API key, signed-in Codex CLI); "opencode*/..." through the OpenCode CLI.
@@ -118,10 +118,12 @@ def native_exact_addresses():
         NATIVE_EXACT = set()
         if NATIVE_CENSUS.is_file():
             manifest = json.loads(NATIVE_CENSUS.read_text())
-            NATIVE_EXACT = {address for family in manifest.get('families', [])
+            # Candidates include byte-only aliases.  ``addr`` exists only
+            # after identity plus relocation/data reference proof.
+            NATIVE_EXACT = {symbol['addr'] for family in manifest.get('families', [])
                             for symbol in family.get('symbols', [])
                             if symbol.get('status') == 'inactive_exact'
-                            for address in symbol.get('candidates', []) if isinstance(address, str)}
+                            and isinstance(symbol.get('addr'), str)}
             NATIVE_EXACT = {address.lower() for address in NATIVE_EXACT}
     return NATIVE_EXACT
 

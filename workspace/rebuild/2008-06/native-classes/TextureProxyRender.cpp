@@ -5,8 +5,8 @@
 // alphaOnlyVersion 007b8eb0, getSize 007b8f40, MegaTextureProxy(TextureManager&, name) 007b8fb0 (with the inline shade
 // slot 007b8fe0 and ??_G 007b9350). resolve 007b8610 / MegaTextureProxy::resolve 007b9000 are not built.
 // >>> native-status (generated) -- do not edit >>>
-// TextureProxyRender | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// TextureProxyRender | 2008-06 | 4 byte-exact, inactive (not link-selected)
+// 4/8 mapped addresses byte-exact | 4 unproved | no mapped strings | by king_originala (+1) (mixed 2)
 // <<< native-status | src 58c15739 | roc native-status --write
 #include "RenderLib/TextureProxy2008.h"
 

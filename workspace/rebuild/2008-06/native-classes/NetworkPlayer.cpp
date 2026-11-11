@@ -3,8 +3,8 @@
 // do not compile against the 2008 const-char-array DescribedCreatable; the recorder supplies
 // declaration-only stand-ins (tests/NativeNetworkPlayerPlayers.h, tests/NativeTeamPendingModel.h).
 // >>> native-status (generated) -- do not edit >>>
-// NetworkPlayer | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// NetworkPlayer | 2008-06 | 4 byte-exact, inactive (not link-selected)
+// 4/12 mapped addresses byte-exact | named 2 | 8 unproved | 4 referenced strings (not rechecked) | by king_originala (+6) (mixed 5)
 // <<< native-status | src ee51ac95 | roc native-status --write
 #include "Network/Player.h"
 #include "Network/Players.h"

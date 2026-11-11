@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// ExitCommand | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ExitCommand | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by colin (deepseek:deepseek-flash)
 // <<< native-status | src b4d8ad7b | roc native-status --write
 #include <afxwin.h>
 #include "CRobloxDoc.h"

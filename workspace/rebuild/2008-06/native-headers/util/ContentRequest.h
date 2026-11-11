@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// ContentRequest | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ContentRequest | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 0cd0bc7d | roc native-status --write
 #include <iosfwd>
 #include <string>

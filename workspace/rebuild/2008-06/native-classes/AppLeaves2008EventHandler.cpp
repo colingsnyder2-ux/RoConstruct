@@ -1,7 +1,7 @@
 // Inactive native 2008-06 EventHandler (native-headers/AppLeaves2008/EventHandler2008.h).
 // >>> native-status (generated) -- do not edit >>>
-// AppLeaves2008EventHandler | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AppLeaves2008EventHandler | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by auto
 // <<< native-status | src 508ac20f | roc native-status --write
 #include "AppLeaves2008/EventHandler2008.h"
 #include "util/standardout.h"

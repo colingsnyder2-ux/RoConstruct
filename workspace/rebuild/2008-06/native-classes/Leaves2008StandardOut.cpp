@@ -8,8 +8,8 @@
 // StandardOut has no user-declared destructor (00569590 stores no StandardOut vtable). print 005693a0 needs
 // Notifier::hasListeners as `size() > 0` (`sar eax, 2; test eax, eax; jbe`), now in native-headers/util/Events.h.
 // >>> native-status (generated) -- do not edit >>>
-// Leaves2008StandardOut | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Leaves2008StandardOut | 2008-06 | draft (no current byte proof)
+// 0/3 mapped addresses byte-exact | 3 unproved | no mapped strings | by auto (+1) (gpt-6)
 // <<< native-status | src a6ac1fe2 | roc native-status --write
 #include "leaves2008/StandardOut2008.h"
 #include "leaves2008/Log2008.h"

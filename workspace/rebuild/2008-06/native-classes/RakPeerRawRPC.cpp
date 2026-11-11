@@ -15,8 +15,8 @@
 /// option) any later version.
 
 // >>> native-status (generated) -- do not edit >>>
-// RakPeerRawRPC | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// RakPeerRawRPC | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by auto (ntech:glm-4.5-air)
 // <<< native-status | src 036ed1b3 | roc native-status --write
 #include "RakNetDefines.h"
 #include "RakPeer.h"

@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// Vector3 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Vector3 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 13d12491 | roc native-status --write
 /**
   @file Vector3.h

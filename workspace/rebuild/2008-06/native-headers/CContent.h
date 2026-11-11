@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// CContent | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CContent | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src e5ca7b65 | roc native-status --write
 #include <atlbase.h>
 #include <atlcom.h>

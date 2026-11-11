@@ -13,8 +13,8 @@
 // Codegen analog: the recorder proves each body against the bytes; names follow the donor declarations.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // >>> native-status (generated) -- do not edit >>>
-// AppUnit609_2008Dragger | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AppUnit609_2008Dragger | 2008-06 | draft (no current byte proof)
+// 0/8 mapped addresses byte-exact | 8 unproved | no mapped strings | by king_originala (+2) (mixed 4)
 // <<< native-status | src f7487883 | roc native-status --write
 #include "tool/Dragger.h"
 #include "v8world/ContactManager.h"

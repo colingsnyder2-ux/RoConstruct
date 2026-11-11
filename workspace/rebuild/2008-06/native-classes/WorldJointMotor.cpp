@@ -5,8 +5,8 @@
 // (body, coordinate frame) and are not part of this unit yet.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // >>> native-status (generated) -- do not edit >>>
-// WorldJointMotor | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// WorldJointMotor | 2008-06 | draft (no current byte proof)
+// 0/3 mapped addresses byte-exact | 3 unproved | no mapped strings | by auto (+1) (gpt-6)
 // <<< native-status | src d150cb8c | roc native-status --write
 #include "v8world/Joints2008.h"
 

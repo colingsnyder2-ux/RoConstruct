@@ -17,8 +17,8 @@
 // The adjustments are the base offsets of the native Clothing.h hierarchy (RTTI of the FactoryProduct<Clothing>
 // vtables 008218c8..00821850 at +0x10/+0x64/+0x84/+0xa4/+0x130).
 // >>> native-status (generated) -- do not edit >>>
-// AppUnit48C_2008_unsplit | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AppUnit48C_2008_unsplit | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 2b76acc1 | roc native-status --write
 #include "v8datamodel/Clothing.h"
 

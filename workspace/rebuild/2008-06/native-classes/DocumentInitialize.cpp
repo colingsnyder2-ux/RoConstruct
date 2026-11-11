@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// DocumentInitialize | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// DocumentInitialize | 2008-06 | 20 byte-exact, inactive (not link-selected)
+// 20/36 mapped addresses byte-exact | 16 unproved | no mapped strings | by king_originala (+5) (mixed 4)
 // <<< native-status | src 7636ea12 | roc native-status --write
 #include <afxwin.h>
 #include <boost/scoped_ptr.hpp>

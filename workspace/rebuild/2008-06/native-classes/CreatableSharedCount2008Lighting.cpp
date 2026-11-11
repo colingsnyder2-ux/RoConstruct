@@ -5,8 +5,8 @@
 // Separate unit: T = RBX::Lighting comes from the native v8datamodel/Lighting2008.h (G3D LightingParameters and
 // boost date_time), kept apart from the main unit's header set; nothing is declared here.
 // >>> native-status (generated) -- do not edit >>>
-// CreatableSharedCount2008Lighting | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CreatableSharedCount2008Lighting | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src f7f17186 | roc native-status --write
 #include "v8datamodel/Lighting2008.h"
 

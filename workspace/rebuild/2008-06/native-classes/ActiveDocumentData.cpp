@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// ActiveDocumentData | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ActiveDocumentData | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 1578f3cc | roc native-status --write
 #include "ActiveDocView.h"
 #include "CRobloxDoc.h"

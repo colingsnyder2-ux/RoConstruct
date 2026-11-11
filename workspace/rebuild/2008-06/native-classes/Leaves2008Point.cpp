@@ -4,8 +4,8 @@
 // 0064dc70 and setWorldPos 0064dd40 need a 2008 Body layout and are not attempted. Verified by
 // tests/record_native_leaves2008.py.
 // >>> native-status (generated) -- do not edit >>>
-// Leaves2008Point | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Leaves2008Point | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by auto
 // <<< native-status | src 2ace8eae | roc native-status --write
 #include "leaves2008/Point2008.h"
 

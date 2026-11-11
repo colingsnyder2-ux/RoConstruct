@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// BrowserViewExternalFactory | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// BrowserViewExternalFactory | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 1772334e | roc native-status --write
 #include <afxwin.h>
 #include "CBrowserViewExternal.h"

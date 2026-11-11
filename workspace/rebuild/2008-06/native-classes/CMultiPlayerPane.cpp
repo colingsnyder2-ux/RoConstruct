@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// CMultiPlayerPane | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CMultiPlayerPane | 2008-06 | 2 byte-exact, inactive (not link-selected)
+// 2/2 mapped addresses byte-exact | 0 unproved | no mapped strings | by king_originala (mixed 2)
 // <<< native-status | src 9cb453fd | roc native-status --write
 #include "../native-headers/CMultiPlayerPane.h"
 #include "../native-headers/CChatPrompt.h"

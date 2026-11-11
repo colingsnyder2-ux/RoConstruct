@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// ReplicatorMarker | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ReplicatorMarker | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 3fbb7a70 | roc native-status --write
 // 2008-06 native RBX::Network::Marker (inactive). Shape after the donor tools/rbxgs/Client/Network/Replicator.h
 // (where Marker lives with Replicator; kept in its own header so the donor Replicator.h is not shadowed).

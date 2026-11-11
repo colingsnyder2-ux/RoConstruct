@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// Metadata | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Metadata | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 3a42e7a6 | roc native-status --write
 #include <boost/shared_ptr.hpp>
 #include <string>

@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string
 // >>> native-status (generated) -- do not edit >>>
-// ToolVerbCheckedModel | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ToolVerbCheckedModel | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 59014b2e | roc native-status --write
 #undef _RELEASEASSERT
 #include "v8datamodel/DataModel.h"

@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string
 // >>> native-status (generated) -- do not edit >>>
-// CRobloxDoc | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CRobloxDoc | 2008-06 | 18 byte-exact, inactive (not link-selected)
+// 18/46 mapped addresses byte-exact | named 1 | 28 unproved | no mapped strings | by king_originala (+5) (mixed 4)
 // <<< native-status | src 2d1ef71f | roc native-status --write
 #include <afxwin.h>
 #include <afxdlgs.h>

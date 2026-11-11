@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// ForceField | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ForceField | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 99bd9dd2 | roc native-status --write
 // 2008-06 native RBX::ForceField (inactive). No donor header: every base, field and virtual below is read from the
 // 2008-06 binary:

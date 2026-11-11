@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// Filters2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Filters2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src d016a379 | roc native-status --write
 // 2008-06 native hit-test filters (inactive): RBX::Unlocked, RBX::PartByLocalCharacter,
 // RBX::UnlockedPartByLocalCharacter, RBX::FilterStairs and RBX::FilterCharacterOcclusion. Shape after the donor

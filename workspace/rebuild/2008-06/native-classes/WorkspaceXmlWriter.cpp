@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/writer-2008
 // >>> native-status (generated) -- do not edit >>>
-// WorkspaceXmlWriter | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// WorkspaceXmlWriter | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by Gemini (roc repair)
 // <<< native-status | src d5272834 | roc native-status --write
 #include <afxwin.h>
 #include "util/NativeContentProvider.h"

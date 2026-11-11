@@ -1,7 +1,7 @@
 // Inactive candidate: lifetime bodies match; dependent ABI and linkage remain open.
 // >>> native-status (generated) -- do not edit >>>
-// InstanceLifetime | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// InstanceLifetime | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/4 mapped addresses byte-exact | named 1 | 3 unproved | 1 referenced strings (not rechecked) | by colin (+2) (deepseek-v4.1-flash)
 // <<< native-status | src 0ce4fb09 | roc native-status --write
 #include "v8tree/Instance.h"
 #include <windows.h>

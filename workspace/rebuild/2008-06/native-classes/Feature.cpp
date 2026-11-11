@@ -8,8 +8,8 @@
 // (rbx_static_cast without the debug dynamic_cast, so IPipelined::getWorld inlines in 0060a0f0).
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // >>> native-status (generated) -- do not edit >>>
-// Feature | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Feature | 2008-06 | 2 byte-exact, inactive (not link-selected)
+// 2/16 mapped addresses byte-exact | 14 unproved | 1 referenced strings (not rechecked) | by king_originala (+4) (mixed 5)
 // <<< native-status | src 0d38d2b5 | roc native-status --write
 #include "v8datamodel/Feature.h"
 #include "v8datamodel/PartInstance.h"

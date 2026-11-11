@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// CBrowserView | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CBrowserView | 2008-06 | 47 byte-exact, inactive (not link-selected)
+// 47/48 mapped addresses byte-exact | named 3 | 1 unproved | no mapped strings | by auto (+4) (mixed 5)
 // <<< native-status | src d39eb600 | roc native-status --write
 #include "CBrowserView.h"
 #include "CBrowserDoc.h"

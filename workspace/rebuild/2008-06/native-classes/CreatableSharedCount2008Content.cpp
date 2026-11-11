@@ -6,8 +6,8 @@
 // Separate unit: util/NativeContentProvider.h fails after the main unit's headers (C2011 'RBX::ContentProvider' :
 // 'class' type redefinition against the donor util/ContentProvider.h that DHTMLWindowService2008.h reaches).
 // >>> native-status (generated) -- do not edit >>>
-// CreatableSharedCount2008Content | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CreatableSharedCount2008Content | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 2ad1ee69 | roc native-status --write
 #include "util/NativeContentProvider.h"
 

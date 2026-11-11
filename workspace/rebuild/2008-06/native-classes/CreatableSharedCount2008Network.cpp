@@ -9,8 +9,8 @@
 // are partial declarations there, which these instances do not depend on: each body only stores the T-specific
 // sp_counted_impl_pd vtable and converts T* to Instance* at offset 0). Nothing is declared here.
 // >>> native-status (generated) -- do not edit >>>
-// CreatableSharedCount2008Network | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CreatableSharedCount2008Network | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src a2049729 | roc native-status --write
 #include "Network/Client2008.h"
 #include "Network/Server2008.h"

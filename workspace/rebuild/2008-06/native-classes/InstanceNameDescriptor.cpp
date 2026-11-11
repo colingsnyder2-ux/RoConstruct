@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// InstanceNameDescriptor | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// InstanceNameDescriptor | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 78eec097 | roc native-status --write
 #include "v8tree/Instance.h"
 namespace RBX {

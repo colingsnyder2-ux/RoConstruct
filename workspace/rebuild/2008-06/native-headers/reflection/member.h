@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// member | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// member | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src e4ea6206 | roc native-status --write
 #include "reflection/descriptor.h"
 #include <iterator>

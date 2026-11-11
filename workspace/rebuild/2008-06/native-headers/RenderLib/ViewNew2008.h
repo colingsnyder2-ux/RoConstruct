@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// ViewNew2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ViewNew2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 53cb079c | roc native-status --write
 // 2008-06 native RBX::ViewNew::ViewRbxGfx (inactive). Named *2008.h so it never shadows a donor header.
 //   ViewRbxGfx   RTTI vtable 00826c70 -> ViewBase (mdisp 0); new 0x4c (CRobloxWnd 0045b3ba, ctor 004d9990 with the

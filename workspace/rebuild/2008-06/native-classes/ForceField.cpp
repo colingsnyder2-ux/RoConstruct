@@ -5,8 +5,8 @@
 // 0062d570 uses the native Instance::visitDescendents (0062d400). renderPart 0062d200 is compiled but not exact
 // (2008 PartInstance float at +0x328).
 // >>> native-status (generated) -- do not edit >>>
-// ForceField | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ForceField | 2008-06 | 2 byte-exact, inactive (not link-selected)
+// 2/4 mapped addresses byte-exact | 2 unproved | no mapped strings | by king_originala (+2) (mixed 3)
 // <<< native-status | src 1c7cee2e | roc native-status --write
 #include "v8datamodel/ForceField.h"
 #include "v8datamodel/PartInstance.h"

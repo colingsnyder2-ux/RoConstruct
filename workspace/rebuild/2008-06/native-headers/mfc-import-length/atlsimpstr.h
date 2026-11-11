@@ -12,8 +12,8 @@
 // Active Template Library product.
 
 // >>> native-status (generated) -- do not edit >>>
-// atlsimpstr | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// atlsimpstr | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src d04baa4e | roc native-status --write
 #ifndef __ATLSIMPSTR_H__
 #define __ATLSIMPSTR_H__

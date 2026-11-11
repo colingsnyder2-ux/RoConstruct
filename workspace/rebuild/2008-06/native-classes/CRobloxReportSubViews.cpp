@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// CRobloxReportSubViews | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CRobloxReportSubViews | 2008-06 | 4 byte-exact, inactive (not link-selected)
+// 4/4 mapped addresses byte-exact | 0 unproved | no mapped strings | by king_originala (+1) (mixed 2)
 // <<< native-status | src 43cb05b9 | roc native-status --write
 #include "CRobloxReportSubViews.h"
 #include "CRobloxDoc.h"

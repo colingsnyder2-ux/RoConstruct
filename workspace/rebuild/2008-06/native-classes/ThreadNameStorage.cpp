@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// ThreadNameStorage | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ThreadNameStorage | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 8df9dd69 | roc native-status --write
 #include <string>
 #include <boost/thread/once.hpp>

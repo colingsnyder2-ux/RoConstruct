@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// ViewG3D2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ViewG3D2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 525479a3 | roc native-status --write
 // 2008-06 native RBX::ViewNew::ViewG3D (inactive). A new path (ViewG3D2008/ViewG3D2008.h) that shadows no donor header.
 //   ViewG3D      RTTI vtable 00826e04 -> ViewBase (mdisp 0); new 0x6c at 0045d86a before the ctor 004dbbe0 (thiscall,

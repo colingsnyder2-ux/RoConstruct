@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// LuaArguments2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// LuaArguments2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 2fa3e38e | roc native-status --write
 // 2008-06 Lua function-call arguments (RBX::Lua::LuaArguments), inactive. The read-only donor script/LuaArguments.h
 // needs RBX::Instances (missing from native v8tree/Instance.h) and has a different static get, so this recovery declares

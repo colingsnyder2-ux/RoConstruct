@@ -19,8 +19,8 @@
 // v8tree/Service.h and util/Object.h declare these templates without bodies; the definitions below are the ones
 // AppUnit48C_2008Services.cpp and AppUnit400_2008Creators.cpp use.
 // >>> native-status (generated) -- do not edit >>>
-// AppUnit454_2008WndServices | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AppUnit454_2008WndServices | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 12dd0f5c | roc native-status --write
 #include <boost/thread/once.hpp>
 #include "v8tree/Service.h"

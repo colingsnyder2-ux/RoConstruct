@@ -1,8 +1,8 @@
 // 2008-06 native RBX::Backpack (inactive): the Backpack part of the original Hopper unit (005d16d0..005d1b70).
 // Evidence in native-headers/v8datamodel/Backpack.h (IScriptOwner from the native script/Script.h).
 // >>> native-status (generated) -- do not edit >>>
-// Backpack | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Backpack | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src ad5f3cec | roc native-status --write
 #include "v8datamodel/Backpack.h"
 

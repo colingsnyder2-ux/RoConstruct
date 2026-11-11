@@ -15,8 +15,8 @@
 /// option) any later version.
 
 // >>> native-status (generated) -- do not edit >>>
-// RakPeerNetworkLoop | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// RakPeerNetworkLoop | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 6c6bab38 | roc native-status --write
 #include "RakNetDefines.h"
 #include "RakPeer.h"

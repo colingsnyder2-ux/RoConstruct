@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// ResizeToolMethods | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ResizeToolMethods | 2008-06 | 5 byte-exact, inactive (not link-selected)
+// 5/5 mapped addresses byte-exact | 0 unproved | no mapped strings | by king_originala (+2) (mixed 2)
 // <<< native-status | src 75192014 | roc native-status --write
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Workspace.h"

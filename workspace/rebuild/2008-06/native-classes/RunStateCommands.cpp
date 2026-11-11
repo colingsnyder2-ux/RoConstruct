@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// RunStateCommands | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// RunStateCommands | 2008-06 | draft (no current byte proof)
+// 0/9 mapped addresses byte-exact | 9 unproved | no mapped strings | by colin (+1) (mixed 4)
 // <<< native-status | src 995261ec | roc native-status --write
 #include "../native-headers/StandardVerbs.h"
 #include "../native-headers/v8datamodel/Workspace.h"

@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// CRobloxReportViewChildAdded | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CRobloxReportViewChildAdded | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 8a7f4abf | roc native-status --write
 #include "CRobloxReportView.h"
 #include "v8datamodel/DataModel.h"

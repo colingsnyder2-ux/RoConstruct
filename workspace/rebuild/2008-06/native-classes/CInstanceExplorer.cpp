@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// CInstanceExplorer | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CInstanceExplorer | 2008-06 | 10 byte-exact, inactive (not link-selected)
+// 10/10 mapped addresses byte-exact | 0 unproved | no mapped strings | by king_originala (+3) (mixed 3)
 // <<< native-status | src 9c070ae2 | roc native-status --write
 #include "CInstanceExplorer.h"
 #include "CSettingsExplorer.h"

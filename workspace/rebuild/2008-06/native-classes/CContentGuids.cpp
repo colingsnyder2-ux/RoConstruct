@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// CContentGuids | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CContentGuids | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 2f4939cf | roc native-status --write
 #include <guiddef.h>
 

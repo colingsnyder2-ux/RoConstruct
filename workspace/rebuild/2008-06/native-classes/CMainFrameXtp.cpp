@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string
 // >>> native-status (generated) -- do not edit >>>
-// CMainFrameXtp | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CMainFrameXtp | 2008-06 | 4 byte-exact, inactive (not link-selected)
+// 4/10 mapped addresses byte-exact | 6 unproved | no mapped strings | by king_originala (+2) (mixed 3)
 // <<< native-status | src b1f4166d | roc native-status --write
 #include "CMainFrame.h"
 #include "CPatchedControlComboBox.h"

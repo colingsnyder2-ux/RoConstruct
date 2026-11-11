@@ -5,8 +5,8 @@
 // RenderLib/Material2008.h (material owner; Ogre 1.4.5 client include path).
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // >>> native-status (generated) -- do not edit >>>
-// AggregateChunk2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AggregateChunk2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 267279fb | roc native-status --write
 #include "RenderLib/AggregateChunk2008.h"
 #include "RenderLib/Material2008.h"   // completes RenderBase::MaterialBase (needs the Ogre 1.4.5 client headers)

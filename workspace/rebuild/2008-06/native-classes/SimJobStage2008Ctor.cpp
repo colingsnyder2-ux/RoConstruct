@@ -4,8 +4,8 @@
 // Verified by tests/record_native_kernel_stages.py: the constructor 0064d300 and the scalar deleting destructor
 // 0064d380 (the destructor is inline; vtable 0084b174 is emitted here).
 // >>> native-status (generated) -- do not edit >>>
-// SimJobStage2008Ctor | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// SimJobStage2008Ctor | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by king_originala (nvidia:moonshotai/kimi-k3)
 // <<< native-status | src 17d6b438 | roc native-status --write
 #include "v8world/SimJobStage2008.h"
 #include "v8world/SimJob2008.h"

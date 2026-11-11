@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// ContactManager2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ContactManager2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 2bfd55aa | roc native-status --write
 // 2008-06 native RBX::ContactManager (inactive), declared by members whose evidence is a call or an evidence name and by
 // its two leading fields; the members after +0x8 are not declared, so this class must not be used for new or sizeof. Declared under a

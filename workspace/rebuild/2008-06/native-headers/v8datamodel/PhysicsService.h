@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// PhysicsService | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// PhysicsService | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 7b207a58 | roc native-status --write
 // 2008-06 native RBX::PhysicsService (inactive). No donor header; names after the existing probe
 // tests/record_native_physics_array_lifetime.py. Every base, field and virtual below is read from the 2008-06 binary:

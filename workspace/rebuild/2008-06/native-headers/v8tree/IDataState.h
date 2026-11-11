@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// IDataState | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// IDataState | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 0b8b8864 | roc native-status --write
 
 namespace RBX {

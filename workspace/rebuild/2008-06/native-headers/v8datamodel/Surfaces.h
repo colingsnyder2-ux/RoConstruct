@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// Surfaces | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Surfaces | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src ad58e20e | roc native-status --write
 #include <boost/noncopyable.hpp>
 #include "v8datamodel/Surface.h"

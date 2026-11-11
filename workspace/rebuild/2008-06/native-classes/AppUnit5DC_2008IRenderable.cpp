@@ -2,8 +2,8 @@
 // the application range 005dc000..005e8000 (inactive). Declarations: the native util/IRenderable.h (read-only).
 // Verified by tests/record_native_app_unit5dc_2008.py.
 // >>> native-status (generated) -- do not edit >>>
-// AppUnit5DC_2008IRenderable | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AppUnit5DC_2008IRenderable | 2008-06 | draft (no current byte proof)
+// 0/7 mapped addresses byte-exact | 7 unproved | no mapped strings | by auto
 // <<< native-status | src aa70a80a | roc native-status --write
 #undef _RELEASEASSERT
 #include "util/IRenderable.h"

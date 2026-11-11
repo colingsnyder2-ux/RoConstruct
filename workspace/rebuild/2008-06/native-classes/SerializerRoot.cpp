@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
 // >>> native-status (generated) -- do not edit >>>
-// SerializerRoot | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// SerializerRoot | 2008-06 | 9 byte-exact, inactive (not link-selected)
+// 9/9 mapped addresses byte-exact | named 2 | 0 unproved | no mapped strings | by auto (+3) (mixed 3)
 // <<< native-status | src 53f62ba5 | roc native-status --write
 #include "../native-headers/v8xml/XmlElement.h"
 #include "v8xml/SerializerV2.h"

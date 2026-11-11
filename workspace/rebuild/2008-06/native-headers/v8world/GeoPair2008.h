@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// GeoPair2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// GeoPair2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src d66b2bca | roc native-status --write
 // 2008-06 native RBX::GeoPair / PairParams / GeoPairType on the 2008 Body of native-headers/v8kernel/Body2008.h
 // (inactive). Declared under a non-colliding name (the original declaration is the donor v8kernel/Pair.h, which

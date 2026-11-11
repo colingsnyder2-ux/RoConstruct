@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// AssociationTimeStamp | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AssociationTimeStamp | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 2082a0ae | roc native-status --write
 // 2008-06 native RBX::Association<Instance> template members and the TimeStamp association item (inactive).
 // The donor util/Association.h (read-only, included unchanged) declares Item::~Item, TItem<T>::TItem, count() and

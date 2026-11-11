@@ -1,8 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS
 // Unsplit: combined from AxisMoveToolCore/Bounds/Down/Move/Render/Methods (mew 5fe2214 layout unsplit for native-doc).
 // >>> native-status (generated) -- do not edit >>>
-// AxisMoveTool | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AxisMoveTool | 2008-06 | 14 byte-exact, inactive (not link-selected)
+// 14/15 mapped addresses byte-exact | 1 unproved | no mapped strings | by king_originala (+3) (mixed 3)
 // <<< native-status | src 8ad992d1 | roc native-status --write
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Workspace.h"

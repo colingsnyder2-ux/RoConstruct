@@ -3,8 +3,8 @@
 // Type(const char*, const type_info&) 0056bd90 (emitted here as the header-inline COMDAT), destroyed at exit by the
 // atexit stubs 007fd210..007fd2d0. The name strings and type descriptors are read from the pushes of each body.
 // >>> native-status (generated) -- do not edit >>>
-// AppUnit564_2008Type | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AppUnit564_2008Type | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src bd946f16 | roc native-status --write
 #include "reflection/reflection.h"
 #include "v8tree/Instance.h"

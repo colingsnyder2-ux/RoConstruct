@@ -48,6 +48,22 @@ def evidence_size(name, text, item):
     return None, None
 
 
+def receiver_vptr_offsets(stores):
+    """Only receiver-relative stores establish an object vptr offset.
+
+    ``[+0x...]`` is an absolute image address in the ABI scanner output, not an
+    offset from ``this``.  Treating it as a member offset can accidentally turn
+    a global vtable assignment into a layout claim.
+    """
+    offsets = set()
+    for entries in stores.values():
+        for place, _ in entries:
+            match = re.fullmatch(r'\[(?:ecx|esi|edi|eax)\+0x([0-9a-fA-F]+)\]', place)
+            if match:
+                offsets.add(int(match.group(1), 16))
+    return sorted(offsets)
+
+
 def main():
     abi, names = json.loads(ABI.read_text()), addr_names()
     rows = []
@@ -57,9 +73,7 @@ def main():
         short = name.rsplit('::', 1)[-1]
         header, text = header_for(short)
         stores = item.get('vptr_stores', {})
-        offsets = sorted({int(re.search(r'0x([0-9a-fA-F]+)', place).group(1), 16)
-                          for entries in stores.values() for place, _ in entries
-                          if re.search(r'0x([0-9a-fA-F]+)', place)})
+        offsets = receiver_vptr_offsets(stores)
         size, size_source = evidence_size(name, text, item)
         explained = comment_offsets(text)
         unexplained = [offset for offset in offsets if offset and offset not in explained]

@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// MyXTPCommandBars | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// MyXTPCommandBars | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by tester (+1) (chatgpt:gpt-6.1-sol)
 // <<< native-status | src 09b4cdea | roc native-status --write
 #include <afxwin.h>
 #include <afxole.h>

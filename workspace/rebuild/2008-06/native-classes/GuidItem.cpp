@@ -1,7 +1,7 @@
 // Inactive registry interfaces: names provisional; offsets and calls from 004b3760.
 // >>> native-status (generated) -- do not edit >>>
-// GuidItem | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// GuidItem | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 59781a69 | roc native-status --write
 #include "v8tree/Instance.h"
 #include "util/GuidRegistry.h"

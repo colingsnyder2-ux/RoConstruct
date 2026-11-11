@@ -3,8 +3,8 @@
 // tests/record_native_body_movers.py). Verified by tests/record_native_body_movers.py.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // >>> native-status (generated) -- do not edit >>>
-// Rocket | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Rocket | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/3 mapped addresses byte-exact | named 1 | 2 unproved | 3 referenced strings (not rechecked) | by Espeon (+1) (mixed 3)
 // <<< native-status | src fa4e3abd | roc native-status --write
 #include "v8datamodel/Rocket.h"
 #include "v8datamodel/PartInstance.h"

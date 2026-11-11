@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/camera-zoom
 // >>> native-status (generated) -- do not edit >>>
-// CameraZoomExtentsAction | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CameraZoomExtentsAction | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by EspClaude (deepseek:deepseek-chat)
 // <<< native-status | src 4198072f | roc native-status --write
 #include "v8datamodel/Workspace.h"
 #include "v8datamodel/Selection.h"

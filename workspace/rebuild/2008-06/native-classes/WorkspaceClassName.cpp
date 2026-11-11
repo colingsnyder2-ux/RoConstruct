@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// WorkspaceClassName | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// WorkspaceClassName | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 5b77c4ee | roc native-status --write
 #include "v8datamodel/Workspace.h"
 namespace RBX {

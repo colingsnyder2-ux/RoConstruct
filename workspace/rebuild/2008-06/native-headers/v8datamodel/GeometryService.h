@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// GeometryService | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// GeometryService | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 7190b78f | roc native-status --write
 // 2008-06 native RBX::GeometryService (inactive). No donor header (tools/rbxgs has no GeometryService); every base,
 // field and virtual below is read from the 2008-06 binary:

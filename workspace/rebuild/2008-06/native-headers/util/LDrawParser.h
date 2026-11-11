@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// LDrawParser | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// LDrawParser | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src ecd10d77 | roc native-status --write
 #include <string>
 #include <ostream>

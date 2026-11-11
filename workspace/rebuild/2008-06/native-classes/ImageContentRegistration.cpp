@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // >>> native-status (generated) -- do not edit >>>
-// ImageContentRegistration | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ImageContentRegistration | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src abd046a2 | roc native-status --write
 #include <windows.h>
 #include <atlbase.h>

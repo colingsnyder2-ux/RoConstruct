@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/cow-noinline-read
 // >>> native-status (generated) -- do not edit >>>
-// AnchorTool | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AnchorTool | 2008-06 | draft (no current byte proof)
+// 0/3 mapped addresses byte-exact | 3 unproved | no mapped strings | by Espeon (+2) (mixed 2)
 // <<< native-status | src 0b0cc813 | roc native-status --write
 #include "tool/ModelTools.h"
 #include "v8datamodel/Workspace.h"

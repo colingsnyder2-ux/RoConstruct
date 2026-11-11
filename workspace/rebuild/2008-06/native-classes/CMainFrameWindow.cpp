@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// CMainFrameWindow | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CMainFrameWindow | 2008-06 | draft (no current byte proof)
+// 0/3 mapped addresses byte-exact | 3 unproved | no mapped strings | by king_originala (+1) (deepseek:deepseek-flash)
 // <<< native-status | src 4e60f154 | roc native-status --write
 #include "CMainFrame.h"
 

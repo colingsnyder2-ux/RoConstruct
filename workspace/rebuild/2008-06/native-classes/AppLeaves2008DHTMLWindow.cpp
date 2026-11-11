@@ -2,8 +2,8 @@
 // DHTMLWindowService translation unit, their descriptors and DHTMLWindowService::askAddChild. The service itself and
 // the Marshaller registry of the same unit stay in AppLeaves2008DHTMLWindowService.cpp.
 // >>> native-status (generated) -- do not edit >>>
-// AppLeaves2008DHTMLWindow | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AppLeaves2008DHTMLWindow | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src cbb12b82 | roc native-status --write
 #include "AppLeaves2008/DHTMLWindow2008.h"
 #include <boost/bind.hpp>

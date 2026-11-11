@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /GS- /IC:\Users\colin\RoConstruct\tools\rbxgs\Client\Network\raknet30\Source
 // >>> native-status (generated) -- do not edit >>>
-// PacketLogger | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// PacketLogger | 2008-06 | 2 byte-exact, inactive (not link-selected)
+// 2/2 mapped addresses byte-exact | 0 unproved | no mapped strings | by auto
 // <<< native-status | src b332b913 | roc native-status --write
 #include "../../../tools/rbxgs/Client/Network/raknet30/Source/PacketLogger.h"
 

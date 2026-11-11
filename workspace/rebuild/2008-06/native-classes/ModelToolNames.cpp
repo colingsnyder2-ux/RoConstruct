@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // >>> native-status (generated) -- do not edit >>>
-// ModelToolNames | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ModelToolNames | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src dfbf8211 | roc native-status --write
 #include "tool/ModelTools.h"
 #include "StandardVerbs.h"

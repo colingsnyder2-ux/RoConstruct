@@ -17,8 +17,8 @@
 // declares ServiceProvider::getClassIndex / doGetClassIndex / callDoGetClassIndex without bodies, so their template
 // definitions are given below (the same definitions ServiceChangeHistory.cpp uses).
 // >>> native-status (generated) -- do not edit >>>
-// AppUnit480_2008PlayerTemplates | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AppUnit480_2008PlayerTemplates | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 0c67d0be | roc native-status --write
 #include "util/Name.h"
 #include "v8tree/Service.h"

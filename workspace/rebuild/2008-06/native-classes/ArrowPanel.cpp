@@ -1,8 +1,8 @@
 // 2008-06 native RBX::ArrowPanel / RBX::ArrowButton unit (inactive): 00656bf0..00657c00.
 // Layout and addresses in native-headers/gui/ArrowPanel.h; verified by tests/record_native_widget.py.
 // >>> native-status (generated) -- do not edit >>>
-// ArrowPanel | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ArrowPanel | 2008-06 | 2 byte-exact, inactive (not link-selected)
+// 2/4 mapped addresses byte-exact | 2 unproved | no mapped strings | by colin (+2) (mixed 3)
 // <<< native-status | src 6a0f45d9 | roc native-status --write
 #include "gui/ArrowPanel.h"
 

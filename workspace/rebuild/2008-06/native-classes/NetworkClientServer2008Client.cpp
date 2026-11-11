@@ -3,8 +3,8 @@
 // DescribedCreatable<Client> 0049ff10, FactoryProduct<Client> 0049eef0 / ~FactoryProduct 0049edb0, destructor
 // 0049f2e0 (deleting 0049f4e0), classDescriptor 0049eb30 (atexit 007fba60).
 // >>> native-status (generated) -- do not edit >>>
-// NetworkClientServer2008Client | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// NetworkClientServer2008Client | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 5e7de074 | roc native-status --write
 #include "Network/Client2008.h"
 

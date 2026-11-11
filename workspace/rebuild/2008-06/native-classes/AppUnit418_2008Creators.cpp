@@ -14,8 +14,8 @@
 // for Decal 0041de20, Texture 0041de90 and Part 0041df00 / 0041e0d0.
 // DHTMLWindowService2008.h includes MFC and must precede the headers that include windows.h (afxv_w32.h C1189).
 // >>> native-status (generated) -- do not edit >>>
-// AppUnit418_2008Creators | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AppUnit418_2008Creators | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 03db0ed3 | roc native-status --write
 #include "AppLeaves2008/DHTMLWindowService2008.h"
 #include "v8datamodel/Decal.h"

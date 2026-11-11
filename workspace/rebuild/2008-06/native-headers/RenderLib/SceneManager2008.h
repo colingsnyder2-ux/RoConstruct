@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// SceneManager2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// SceneManager2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src dd1bdeec | roc native-status --write
 // 2008-06 native RBX::RenderBase::SceneManager / SimpleSceneManager (inactive). Named *2008.h so it never shadows
 // a donor RenderLib header (the donor SceneManager lives in RenderLib/RenderScene.h, namespace RBX::Render).

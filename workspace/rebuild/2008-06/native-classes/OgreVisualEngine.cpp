@@ -29,8 +29,8 @@
 // rebuild/2008-06/out/): VisualEngine and its frame history.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // >>> native-status (generated) -- do not edit >>>
-// OgreVisualEngine | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// OgreVisualEngine | 2008-06 | 27 byte-exact, inactive (not link-selected)
+// 27/27 mapped addresses byte-exact | named 9 | 0 unproved | no mapped strings | by auto (+2) (mixed 2)
 // <<< native-status | src 1d059217 | roc native-status --write
 #include <windows.h>
 #include <ddraw.h>

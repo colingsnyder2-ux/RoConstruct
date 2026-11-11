@@ -2,8 +2,8 @@
 // Same body as the committed SoundValueGenericFloat.cpp (genericConvert<float> 0056d650, counted there): any_cast
 // to T, else a string parsed through StringConverter<T>, else runtime_error("Unable to cast %s to %s").
 // >>> native-status (generated) -- do not edit >>>
-// AppUnit564_2008GenericConvert | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AppUnit564_2008GenericConvert | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 82d63773 | roc native-status --write
 #include "reflection/type.h"
 #include "util/Utilities.h"

@@ -9,8 +9,8 @@
 // whose register allocation then relies on it preserving ecx, unlike the original 0064e660.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // >>> native-status (generated) -- do not edit >>>
-// Mouse | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Mouse | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/4 mapped addresses byte-exact | 3 unproved | no mapped strings | by king_originala (+2) (mixed 3)
 // <<< native-status | src cc5b93d3 | roc native-status --write
 #include "v8datamodel/Mouse.h"
 #include "v8datamodel/MouseCommand.h"

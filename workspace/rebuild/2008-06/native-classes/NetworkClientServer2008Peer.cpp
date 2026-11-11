@@ -2,8 +2,8 @@
 // Verified by tests/record_native_network_client_server2008.py. Original bodies: constructor 004b4640, destructor
 // 004ac830, deleting destructor 004ad7a0, classDescriptor 0049ea10 (atexit 007fba70).
 // >>> native-status (generated) -- do not edit >>>
-// NetworkClientServer2008Peer | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// NetworkClientServer2008Peer | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by colin (+1) (mixed 2)
 // <<< native-status | src fd443832 | roc native-status --write
 #include "Network/Peer2008.h"
 

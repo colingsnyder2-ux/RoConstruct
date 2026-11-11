@@ -1,8 +1,8 @@
 // 2008-06 native RBX::Sparkles (inactive); evidence in native-headers/v8datamodel/Sparkles.h.
 // Verified by tests/record_native_effects.py.
 // >>> native-status (generated) -- do not edit >>>
-// Sparkles | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Sparkles | 2008-06 | 2 byte-exact, inactive (not link-selected)
+// 2/2 mapped addresses byte-exact | 0 unproved | no mapped strings | by colin (+1) (chatgpt:gpt-6.1-sol)
 // <<< native-status | src fb5c48a0 | roc native-status --write
 #include "v8datamodel/Sparkles.h"
 #include "v8datamodel/PartInstance.h"

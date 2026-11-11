@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// DataModelLock | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// DataModelLock | 2008-06 | draft (no current byte proof)
+// 0/4 mapped addresses byte-exact | 4 unproved | no mapped strings | by king_originala (+1) (mixed 2)
 // <<< native-status | src fb27b514 | roc native-status --write
 #include "../native-headers/v8datamodel/DataModel.h"
 

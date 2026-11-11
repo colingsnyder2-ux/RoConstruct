@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// CRobloxTreeCtrl | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CRobloxTreeCtrl | 2008-06 | 27 byte-exact, inactive (not link-selected)
+// 27/28 mapped addresses byte-exact | 1 unproved | no mapped strings | by king_originala (+5) (mixed 5)
 // <<< native-status | src 44f7d365 | roc native-status --write
 #include "CRobloxTreeCtrl.h"
 #include "CRobloxReportView.h"

@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// LuaHtmlBinder2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// LuaHtmlBinder2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 16c75a4f | roc native-status --write
 // Inactive native 2008-06 recovery: CLuaHtmlView::Binder and CLuaHtmlView::Binder::PropBinding, the two-way binding
 // between an HTML <input> element and the string value of one or more Instance properties (CLuaHtmlView unit,

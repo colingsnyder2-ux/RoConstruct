@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// CPropGridRebuild | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CPropGridRebuild | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by EspClaude (deepseek:deepseek-chat)
 // <<< native-status | src beef1144 | roc native-status --write
 #include "CPropGrid.h"
 #include "reflection/object.h"

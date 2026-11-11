@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// FileSystem | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// FileSystem | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | 4 referenced strings (not rechecked) | by auto (+1) (ntech:deepseek-flash)
 // <<< native-status | src 425d9cb4 | roc native-status --write
 #include <atlpath.h>
 #include "util/FileSystem.h"

@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// SelectionVerbStates | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// SelectionVerbStates | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/17 mapped addresses byte-exact | 16 unproved | no mapped strings | by king_originala (+3) (mixed 6)
 // <<< native-status | src f0c44da8 | roc native-status --write
 #include "StandardVerbs.h"
 #include "v8datamodel/Workspace.h"

@@ -4,8 +4,8 @@
 // (RBX::Instances / Instance::setParent2 in v8tree/Instance.h, and the donor LuaArguments.h that needs Instances).
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // >>> native-status (generated) -- do not edit >>>
-// LuaBridge2008Instance | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// LuaBridge2008Instance | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by colin (gpt-6.1-sol)
 // <<< native-status | src 2f6d886f | roc native-status --write
 #include "LuaBridge2008/LuaSignalBridge2008.h"
 #include "LuaBridge2008/LuaEnumBridge2008.h"

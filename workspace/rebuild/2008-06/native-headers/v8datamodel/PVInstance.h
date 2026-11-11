@@ -2,8 +2,8 @@
 // char arrays passed directly as template arguments (see native-headers/util/Name.h).
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// PVInstance | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// PVInstance | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 4bfc2162 | roc native-status --write
 #include <g3d/vector3.h>
 #include <g3d/coordinateframe.h>

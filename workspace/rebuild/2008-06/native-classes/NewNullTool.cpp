@@ -1,8 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/part-embedded
 // Inactive recovery. Render predicate ABI and ClickDetector query remain unproven.
 // >>> native-status (generated) -- do not edit >>>
-// NewNullTool | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// NewNullTool | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 7408d784 | roc native-status --write
 #include "tool/NullTool.h"
 #include "v8datamodel/UserController.h"

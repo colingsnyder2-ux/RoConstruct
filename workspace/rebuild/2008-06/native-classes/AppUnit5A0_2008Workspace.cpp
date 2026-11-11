@@ -2,8 +2,8 @@
 // the application range 005a0000..005ac000. Built against the committed native v8datamodel/Workspace.h (read-only).
 // Verified by tests/record_native_app_unit5a0_2008.py (receipt app-unit5a0-2008-working.json).
 // >>> native-status (generated) -- do not edit >>>
-// AppUnit5A0_2008Workspace | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AppUnit5A0_2008Workspace | 2008-06 | draft (no current byte proof)
+// 0/25 mapped addresses byte-exact | 25 unproved | no mapped strings | by king_originala (+5) (mixed 10)
 // <<< native-status | src 2ad20ab3 | roc native-status --write
 #include "v8datamodel/Workspace.h"
 #include "v8datamodel/Camera.h"

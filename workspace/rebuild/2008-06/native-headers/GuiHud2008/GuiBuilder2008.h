@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// GuiBuilder2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// GuiBuilder2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src d7269911 | roc native-status --write
 // 2008-06 native RBX::GuiBuilder (inactive). Shape after the donor tools/rbxgs v8datamodel/GuiBuilder.h (a differently
 // named header so that it does not shadow the donor one). Not polymorphic, no RTTI. Read from the binary

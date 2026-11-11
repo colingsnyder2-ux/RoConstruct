@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/part-embedded
 // >>> native-status (generated) -- do not edit >>>
-// PartInstanceLockedInPlace | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// PartInstanceLockedInPlace | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by king_originala (chatgpt:gpt-6.1-sol)
 // <<< native-status | src 575ce7ed | roc native-status --write
 #undef _RELEASEASSERT
 #include "v8datamodel/PartInstance.h"

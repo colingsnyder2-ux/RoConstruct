@@ -18,8 +18,8 @@
 //   * util/Object.h     Creatable<T>::create with five parameters (create<ArrowButton> 00657190 forwards five
 //                       arguments to the ArrowButton constructor 006570a0 at 006571f3).
 // >>> native-status (generated) -- do not edit >>>
-// GuiWidgets2008Arrow | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// GuiWidgets2008Arrow | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by colin (+1)
 // <<< native-status | src 67095a65 | roc native-status --write
 #include "gui/ArrowPanel.h"
 #include "v8datamodel/DataModel.h"

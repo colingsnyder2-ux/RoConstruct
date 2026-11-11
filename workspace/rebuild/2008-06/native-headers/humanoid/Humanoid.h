@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// Humanoid | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Humanoid | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 888cf285 | roc native-status --write
 #include "util/RunStateOwner.h"
 #include "util/IControllable.h"

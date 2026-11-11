@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// HumanoidStates2 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// HumanoidStates2 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src ced97750 | roc native-status --write
 #include "humanoid/HumanoidStates1.h"
 #include "util/Name.h"

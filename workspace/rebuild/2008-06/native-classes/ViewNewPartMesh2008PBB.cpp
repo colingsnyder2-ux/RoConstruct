@@ -3,8 +3,8 @@
 // the body is built only with NATIVE_VIEWNEW_BRICK_BUILD_PENDING (tests/record_native_viewnew_brick_build.py generates
 // the ViewBase2008.h copy with that declaration under out/).
 // >>> native-status (generated) -- do not edit >>>
-// ViewNewPartMesh2008PBB | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ViewNewPartMesh2008PBB | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src f493e0f9 | roc native-status --write
 #include "ViewNew/PBBMesh.h"
 #include "ViewNewBrickBuild2008/BrickMeshCache2008.h"

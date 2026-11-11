@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /GS- /IC:\Users\colin\RoConstruct\tools\rbxgs\Client\Network\raknet30\Source
 // >>> native-status (generated) -- do not edit >>>
-// SocketLayer | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// SocketLayer | 2008-06 | 8 byte-exact, inactive (not link-selected)
+// 8/8 mapped addresses byte-exact | 0 unproved | no mapped strings | by auto
 // <<< native-status | src 2495a1f1 | roc native-status --write
 #include "../../../tools/rbxgs/Client/Network/raknet30/Source/SocketLayer.h"
 #include "../../../tools/rbxgs/Client/Network/raknet30/Source/MTUSize.h"

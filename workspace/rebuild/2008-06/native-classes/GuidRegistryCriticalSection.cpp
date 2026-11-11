@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// GuidRegistryCriticalSection | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// GuidRegistryCriticalSection | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 2faec000 | roc native-status --write
 #include <windows.h>
 #include <boost/thread/exceptions.hpp>

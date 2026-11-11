@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// RenderStatsItem2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// RenderStatsItem2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 6c911f3f | roc native-status --write
 // 2008-06 native CRobloxWnd::RenderStatsItem (inactive). A non-colliding header: CRobloxWnd itself belongs to
 // native-headers/CRobloxView.h (maintainer-owned) and is only included, never edited.

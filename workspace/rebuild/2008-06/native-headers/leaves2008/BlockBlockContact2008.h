@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// BlockBlockContact2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// BlockBlockContact2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 2129500e | roc native-status --write
 // 2008-06 RBX::BlockBlockContact (inactive native recovery). Non-colliding name: the original path v8world/Contact.h
 // is the donor header reached through World.h / Primitive.h; the bases come from the committed

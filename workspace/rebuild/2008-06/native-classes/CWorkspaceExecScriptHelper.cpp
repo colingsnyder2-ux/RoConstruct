@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/std-noinline-string
 // >>> native-status (generated) -- do not edit >>>
-// CWorkspaceExecScriptHelper | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CWorkspaceExecScriptHelper | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/1 mapped addresses byte-exact | 0 unproved | no mapped strings | by EspClaude (deepseek:deepseek-chat)
 // <<< native-status | src 719f0c6d | roc native-status --write
 #include <afxwin.h>
 #include <atlbase.h>

@@ -5,8 +5,8 @@
 // COMDAT bodies (newMarker 004b9190, Marker() 004b9140, NonFactoryProduct<DescribedBase, sMarker>() 004b85b0,
 // ~Marker scalar deleting 004b8600, shared_count<Marker> 004ac040): a codegen analog, not the original unit.
 // >>> native-status (generated) -- do not edit >>>
-// ReplicatorMarker | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ReplicatorMarker | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 7077a441 | roc native-status --write
 #include "Network/ReplicatorMarker.h"
 

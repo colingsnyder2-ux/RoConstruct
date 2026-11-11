@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// TorsoMesh | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// TorsoMesh | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 568c47a7 | roc native-status --write
 // 2008-06 native RBX::ViewNew::TorsoBuilder / TorsoMesh (inactive).
 //   TorsoBuilder  vtable 00827100 .?AVTorsoBuilder@ViewNew@RBX@@ -> BevelMesh::Builder -> LevelBuilder (mdisp 0);

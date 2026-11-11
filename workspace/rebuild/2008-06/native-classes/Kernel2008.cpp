@@ -5,8 +5,8 @@
 // (0x20040) differ from the 2008 ones (0x3c with an out-of-line destructor 005fa970; 0xc048), see PROPOSALS.
 // stepWorld 005fb3f0 and the insert / remove rows are not built (Body / Point / Connector).
 // >>> native-status (generated) -- do not edit >>>
-// Kernel2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Kernel2008 | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by king_originala (mixed 2)
 // <<< native-status | src e8423b3a | roc native-status --write
 #include "v8kernel/Kernel2008.h"
 #include "v8kernel/KernelData.h"

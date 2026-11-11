@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// CContentError | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CContentError | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by Espeon (deepseek:deepseek-chat)
 // <<< native-status | src a440c4de | roc native-status --write
 #include <afxwin.h>
 #include <exception>

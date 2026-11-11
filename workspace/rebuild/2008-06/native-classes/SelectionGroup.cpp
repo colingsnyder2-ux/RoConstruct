@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// SelectionGroup | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// SelectionGroup | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by Espeon (+1) (mixed 2)
 // <<< native-status | src 0952db8c | roc native-status --write
 #include "SelectionGroup.h"
 #include "v8tree/Instance.h"

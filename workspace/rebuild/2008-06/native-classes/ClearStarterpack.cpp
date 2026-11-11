@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// ClearStarterpack | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ClearStarterpack | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by king_originala (+1) (mixed 2)
 // <<< native-status | src a2ac7c55 | roc native-status --write
 #include "StandardVerbs.h"
 #include "v8datamodel/DataModel.h"

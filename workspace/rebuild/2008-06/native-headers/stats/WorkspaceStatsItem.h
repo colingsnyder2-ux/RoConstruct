@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// WorkspaceStatsItem | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// WorkspaceStatsItem | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src ff7a6fa9 | roc native-status --write
 // 2008-06 native RBX::WorkspaceStatsItem (inactive, declaration only).
 //   RTTI       vtable 008340ac .?AVWorkspaceStatsItem@RBX@@ -> Stats::Item (22 bases, no Service/IRenderable).

@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS
 // >>> native-status (generated) -- do not edit >>>
-// HandleRadius | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// HandleRadius | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 731688a5 | roc native-status --write
 #include <AppDraw/HitTest.h>
 namespace RBX {

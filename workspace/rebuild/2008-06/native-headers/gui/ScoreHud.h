@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// ScoreHud | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ScoreHud | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 1bdad86b | roc native-status --write
 // 2008-06 native RBX::ScoreHud (inactive). Shape after the donor tools/rbxgs gui/ScoreHud.h. Read from the binary
 // (tests/record_native_hud.py checks it):

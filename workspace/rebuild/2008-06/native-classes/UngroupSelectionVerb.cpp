@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// UngroupSelectionVerb | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// UngroupSelectionVerb | 2008-06 | draft (no current byte proof)
+// 0/1 mapped addresses byte-exact | 1 unproved | no mapped strings | by king_originala (deepseek:deepseek-chat)
 // <<< native-status | src 6b536efd | roc native-status --write
 #include "StandardVerbs.h"
 #include "v8datamodel/Workspace.h"

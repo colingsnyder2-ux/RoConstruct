@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// MetadataReflectionLookup | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// MetadataReflectionLookup | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 94df1015 | roc native-status --write
 #include "reflection/Metadata.h"
 namespace RBX { namespace Metadata {

@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/boost-explicit-shared-assignment
 // >>> native-status (generated) -- do not edit >>>
-// ArrowToolBase | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// ArrowToolBase | 2008-06 | 1 byte-exact, inactive (not link-selected)
+// 1/5 mapped addresses byte-exact | 4 unproved | 2 referenced strings (not rechecked) | by tester (+4) (mixed 2)
 // <<< native-status | src d585137e | roc native-status --write
 #undef _RELEASEASSERT
 #include "tool/ToolsArrow.h"

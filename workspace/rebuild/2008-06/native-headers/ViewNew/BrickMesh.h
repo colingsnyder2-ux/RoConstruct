@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// BrickMesh | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// BrickMesh | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 70f85671 | roc native-status --write
 // 2008-06 native RBX::ViewNew::BrickMesh (inactive; only what the ViewNew units here use).
 //   vtable 00826e7c .?AVBrickMesh@ViewNew@RBX@@ -> RenderBase::Mesh -> ReferenceCountedObject (mdisp 0; no MeshFactory

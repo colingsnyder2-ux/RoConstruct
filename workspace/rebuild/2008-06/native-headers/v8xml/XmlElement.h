@@ -1,8 +1,8 @@
 // Recovered header from roc_unit_28e31b0627a2d865.cpp; native value union includes double.
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// XmlElement | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// XmlElement | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 9fb2186f | roc native-status --write
 #include <map>
 #include "util/Name.h"

@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// Tool | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// Tool | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src ee173960 | roc native-status --write
 // 2008-06 native RBX::Tool (inactive). Shape after the donor tools/rbxgs v8datamodel/Tool.h; the one change is the
 // class-name template argument (a const char array, RTTI $1?sTool@2@3QBDB). Every base, field and size below is read

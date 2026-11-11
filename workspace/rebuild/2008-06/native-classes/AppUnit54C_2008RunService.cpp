@@ -3,8 +3,8 @@
 // size create<RunService> 00405fbf passes to new; fields from the ctor 00556b00 and dtor 00555c00).
 // Bodies follow the target bytes; the class and member names are those of the native header.
 // >>> native-status (generated) -- do not edit >>>
-// AppUnit54C_2008RunService | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// AppUnit54C_2008RunService | 2008-06 | 3 byte-exact, inactive (not link-selected)
+// 3/10 mapped addresses byte-exact | 7 unproved | 1 referenced strings (not rechecked) | by king_originala (+5) (mixed 4)
 // <<< native-status | src baae8879 | roc native-status --write
 #include "util/RunStateOwner.h"
 #include "util/StandardOut.h"

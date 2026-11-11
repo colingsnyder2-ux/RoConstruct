@@ -3,8 +3,8 @@
 // std-noinline-string and boost-function-pod-vtable put first. The NATIVE_LUAHTMLBINDER2008_PENDING connect in the
 // PropBinding constructor needs Instance::event_propertyChanged (proposal in the receipt).
 // >>> native-status (generated) -- do not edit >>>
-// LuaHtmlBinder2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// LuaHtmlBinder2008 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 595abd96 | roc native-status --write
 #include "LuaHtmlBinder2008/LuaHtmlBinder2008.h"
 #include "AppLeaves2008/DHTMLWindowService2008.h"

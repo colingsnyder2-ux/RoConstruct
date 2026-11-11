@@ -2,8 +2,8 @@
 // 004d8ac0 (emitted with the vtable, calls the dtor out of line). The dtor deletes the materialFactory auto_ptr through
 // the out-of-line ~MaterialFactory 004d7460 (ViewNew/MaterialFactory2008.h declares only that destructor).
 // >>> native-status (generated) -- do not edit >>>
-// RenderSceneViewBase2008 | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// RenderSceneViewBase2008 | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by Espeon (+1) (mixed 2)
 // <<< native-status | src 9e391949 | roc native-status --write
 #include "RenderLib/ViewBase2008.h"
 

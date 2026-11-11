@@ -1,7 +1,7 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// CRobloxDoc | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CRobloxDoc | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src 4c6250bc | roc native-status --write
 #include "VerbBinder.h"
 #include <memory>

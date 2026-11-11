@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// CPropGrid | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// CPropGrid | 2008-06 | draft (no current byte proof)
+// 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by king_originala (+1) (mixed 2)
 // <<< native-status | src ffef17dd | roc native-status --write
 #include "CPropGrid.h"
 IMPLEMENT_DYNAMIC(CPropGrid, CXTPPropertyGrid)

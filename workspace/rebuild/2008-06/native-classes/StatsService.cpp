@@ -9,8 +9,8 @@
 // pulls in: 005c9ac0, 005c9ed0, 005c9f70, 005ca1c0, 005c91b0, 005c92e0).
 // Verified by tests/record_native_stats_service.py.
 // >>> native-status (generated) -- do not edit >>>
-// StatsService | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// StatsService | 2008-06 | 10 byte-exact, inactive (not link-selected)
+// 10/12 mapped addresses byte-exact | 2 unproved | no mapped strings | by king_originala (+3) (mixed 3)
 // <<< native-status | src 039d9b53 | roc native-status --write
 #include "stats/Stats.h"
 #include "util/Log.h"

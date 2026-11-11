@@ -1,6 +1,6 @@
 // >>> native-status (generated) -- do not edit >>>
-// shared_count | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// shared_count | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
 // <<< native-status | src cebf0384 | roc native-status --write
 #ifndef BOOST_DETAIL_SHARED_COUNT_HPP_INCLUDED
 #define BOOST_DETAIL_SHARED_COUNT_HPP_INCLUDED

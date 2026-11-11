@@ -1,7 +1,7 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
 // >>> native-status (generated) -- do not edit >>>
-// BrickColorMapPopulation | 2008-06 | selection unverified
-// unmapped (no binary link) | by -
+// BrickColorMapPopulation | 2008-06 | draft (no current byte proof)
+// 0/4 mapped addresses byte-exact | 4 unproved | 8 referenced strings (not rechecked) | by auto (+3) (mixed 2)
 // <<< native-status | src 94354bfd | roc native-status --write
 #include "v8datamodel/BrickColor.h"
 
