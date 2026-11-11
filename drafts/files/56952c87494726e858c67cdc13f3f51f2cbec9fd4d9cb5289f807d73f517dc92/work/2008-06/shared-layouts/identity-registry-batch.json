@@ -1,0 +1,105 @@
+{
+ "registry": "work/2008-06/identity-registry.json",
+ "vendor_and_data_gate": {
+  "vendor_address": "00513240",
+  "vendor_symbol": "?getColumn@Matrix3@G3D@@QBE?AVVector3@2@H@Z",
+  "vendor_body_bytes": 30,
+  "registry_promotion": "placeholder to library-replay",
+  "data_compile_failure_test": "forced compile failure rejected caller and removed stale roc_data.obj",
+  "registry_proved_names": 24958,
+  "registry_placeholders": 29826
+ },
+ "ldraw_family_link": {
+  "provider_receipts": ["work/native-client/link/selected-engine-batch9.json", "work/native-client/link/selected-engine-batch10.json"],
+  "proved_symbols": 5,
+  "proved_code_bytes": 1428,
+  "unresolved_before": 150,
+  "unresolved_after": 149,
+  "duplicate_symbols": 0,
+  "successful_link": false,
+  "selected_in": "work/native-client/link/selected-engine-cumulative.json",
+  "selector_fix": "empty compile queue no longer launches inventory.py without source arguments"
+ },
+ "resume_tool_fixes": {
+  "scoped_history": "run_all repair, next, adaptive scans now read scope batches; lock scoped too",
+  "identity": "RTTI retains .?AV type marker after removing dot; imports use exact COFF import mapping",
+  "zero_gain": "auto_loop stops on two consecutive zero-gain batches",
+  "new_scoped_converter_objects": 56,
+  "new_scoped_converter_bytes": 8214,
+  "validation": "two distinct root batches; RTTI decoration assertions; import mapping assertion; py_compile"
+ },
+ "rows": 54784,
+ "proved": 25065,
+ "placeholder": 29719,
+ "validation": [
+  "python -m py_compile work/native-client/build_ogre_names_registry.py work/native-client/ogre/ogre_convert.py work/native-client/ogre/run_all.py work/native-client/ogre/auto_loop.py work/native-client/rename.py",
+  "schema keys exact for all rows",
+  "run_all --scope Ogre:: --summary",
+  "run_all --scope RBX::RenderNew --summary"
+ ],
+ "runtime_executed": false,
+ "p5_p6_executed": false,
+ "draft_server": {
+  "root_cause": "Funnel /native-drafts routed to unbound loopback port 8766",
+  "fix": "started native_drafts supervise; HTTPS health returned 200",
+  "receipt": "6e34b4be73ac2a5804acb1b753f1429bcf044e569bd03b0bc349708f1a442d0b"
+ },
+ "ogre_batches": {
+  "Ogre": {"round1_new_exact": 11, "round1_new_bytes": 1146, "round2_new_exact": 0},
+  "RBX::RenderNew": {"round1_new_exact": 18, "round1_new_bytes": 1762, "round2_new_exact": 0},
+  "RBX::ViewNew": {"round1_new_exact": 18, "round1_new_bytes": 1762, "round2_new_exact": 0}
+ },
+ "batch_receipts": {
+  "fix": "run_all now suffixes an occupied batch stem instead of overwriting metrics/roots receipts",
+  "verification": ["batch-00000-00001-r001", "batch-00000-00001-r002"],
+  "generic_rbx": {"new_exact": 59, "new_bytes": 18111, "following_zero_gain_batches": 2}
+ },
+ "rbx_20261110_2004": {
+  "auto_loop_new_exact": 124,
+  "auto_loop_new_code_bytes": 40236,
+  "repair_new_exact": 34,
+  "repair_new_code_bytes": 9386,
+  "converter_linked_code_bytes": 0,
+  "converter_linked_data_bytes": 0,
+  "unresolved_symbols": 210,
+  "duplicate_symbols": 0,
+  "data_blocker": "009738f0/009738fc/00973934 are dynamic List objects; element/count/layout not proved, so no data source emitted",
+  "library_blocker": "templates-boost-1_34_1 pull returned 0 server sources; missing generated unit remains parked",
+  "runtime_executed": false,
+  "p5_p6_executed": false
+ },
+ "converter_link_policy": {
+  "source_policy": "reject proxyField/raw char-pointer hexadecimal offset layout views before object emission",
+  "rejected_example": "00504290 NativeRenderScene proxyField body",
+  "allowed_example": "00642750 GuiDrawImage::setImage re-proved exact with declared fields",
+  "provider_audit": "reprove target body with EH extent, require one defined symbol, require source-policy pass",
+  "first_link_trial": {"objects": 20, "code_bytes": 1354, "unresolved_before": 149, "unresolved_after": 154, "duplicates": 0, "selected": false},
+  "current_unresolved_filter": {"selected_objects": 0, "linked_code_bytes": 0},
+  "runtime_executed": false,
+  "p5_p6_executed": false
+ },
+ "data_coverage": {
+  "typed_definition_addresses": 43,
+  "typed_definition_bytes": 183,
+  "data_bytes": 136,
+  "rdata_bytes": 39,
+  "data_section_virtual_bytes": 358160,
+  "rdata_section_virtual_bytes": 1201764,
+  "source": "identity-registry-data-metrics.json; only proof-checked typed definitions count"
+ },
+ "rbx_network_20261110_2035": {
+  "round1_exact_bodies": 131,
+  "round2_exact_bodies": 92,
+  "new_code_bytes": 37582,
+  "root_status": {"renamed": 148, "blocked": 80, "compile_fail": 2},
+  "source_backed_roots": 898,
+  "unattempted_roots": 668,
+  "linked_code_bytes": 0,
+  "linked_data_bytes": 0,
+  "unresolved_symbols": 149,
+  "duplicate_symbols": 0,
+  "runtime_executed": false,
+  "p5_p6_executed": false
+ },
+ "next": "run isolated per-subsystem conversion batches; resolve duplicate proved symbols as ICF aliases before link selection"
+}
