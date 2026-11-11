@@ -22,6 +22,27 @@ def write(path, text):
     path.write_bytes(text.replace('\r\n', '\n').replace('\n', '\r\n').encode())
 
 
+def bounded_run(args, seconds):
+    """Stop the proof's child compiler/binder processes too on timeout or interrupt."""
+    process = subprocess.Popen(args, cwd=ROOT, stdout=subprocess.PIPE,
+                               stderr=subprocess.PIPE, text=True,
+                               start_new_session=(sys.platform != 'win32'))
+    try:
+        stdout, stderr = process.communicate(timeout=seconds)
+        return subprocess.CompletedProcess(args, process.returncode, stdout, stderr)
+    except BaseException:
+        if sys.platform == 'win32':
+            subprocess.run(['taskkill', '/PID', str(process.pid), '/T', '/F'], capture_output=True)
+        else:
+            import os, signal
+            try:
+                os.killpg(process.pid, signal.SIGKILL)
+            except ProcessLookupError:
+                pass
+        process.communicate()
+        raise
+
+
 def includes(text, errors):
     """Only include headers that exist; never synthesize declarations from guesses."""
     names = set(re.findall(r"(?:undefined type|undeclared identifier)\s*'([^']+)'", errors))
@@ -214,7 +235,7 @@ def header_dependents(header):
     return sorted(result)
 
 
-def run_target(addr, max_attempts=None, budget_seconds=1500, models=None):
+def run_target(addr, max_attempts=None, budget_seconds=1500, models=None, allow_models=True):
     deadline = time.monotonic() + budget_seconds
     targets = transplant.transplant_targets([addr])
     if not targets:
@@ -235,13 +256,17 @@ def run_target(addr, max_attempts=None, budget_seconds=1500, models=None):
         return 'blocked: source lease refused'
     original = path.read_bytes()
     original_prove = transplant.prove
+    original_beautify = transplant.beautify
 
     def prove(source):
+        remaining = deadline - time.monotonic()
+        if remaining <= 0:
+            raise RuntimeError('target time budget exhausted')
         if Path(source) == path and ('// %s: transplanted' % addr) in Path(source).read_text():
             trial[:] = [Path(source).read_text()]
-        run = subprocess.run([sys.executable, str(HERE / 'prove.py'), str(source),
+        run = bounded_run([sys.executable, str(HERE / 'prove.py'), str(source),
                               '--infer-names', '--rounds', '3', '--why', ''],
-                             cwd=ROOT, capture_output=True, text=True)
+                          remaining)
         if run.returncode:
             raise RuntimeError('proof command failed: ' + (run.stderr or run.stdout)[-1000:])
         return run.returncode, (run.stdout + run.stderr).splitlines()
@@ -259,6 +284,8 @@ def run_target(addr, max_attempts=None, budget_seconds=1500, models=None):
         trial[:] = [Path(source).read_text()]
         # A deterministic pass is a hypothesis only when it changes source.
         for _ in range(3):
+            if time.monotonic() >= deadline or (max_attempts is not None and len(attempts) >= max_attempts):
+                return
             trial[:] = [Path(source).read_text()]
             errors = compile_errors(Path(source))
             if not errors:
@@ -307,6 +334,8 @@ def run_target(addr, max_attempts=None, budget_seconds=1500, models=None):
             prove(source)
 
         # Existing provider client handles credentials, quotas and fenced replies.
+        if not allow_models:
+            return
         if addr in transplant.exact_addrs(Path(source)) or (max_attempts is not None and len(attempts) >= max_attempts) or time.monotonic() >= deadline:
             return
         import native_llm as nl
@@ -375,6 +404,9 @@ def run_target(addr, max_attempts=None, budget_seconds=1500, models=None):
 
     try:
         transplant.prove = repair_prove
+        if not allow_models:
+            # Formatting is optional and must not launch an unbounded extra proof.
+            transplant.beautify = lambda *paths: None
         with contextlib.redirect_stdout(io.StringIO()):
             result = transplant.transplant(addr, owner, leaf, method, dest)
         if result.startswith('exact'):
@@ -408,6 +440,15 @@ def run_target(addr, max_attempts=None, budget_seconds=1500, models=None):
                 handoff.write('\n- PARKED fix_loop ' + addr + ' (' + owner + '): ' + result.replace('\n', ' ')
                               + '; rejected repair hypotheses=' + str(len(attempts))
                               + '; trial: work/native-client/fix-loop-parked/' + addr + '.cpp. Native source/header bytes restored.\n')
+        else:
+            changed = [path] + [h for h, saved in header_originals.items() if h.read_bytes() != saved]
+            with (HERE / 'fix-loop.jsonl').open('a') as log:
+                log.write(json.dumps({'addr': addr, 'status': 'inactive_exact',
+                    'changed_paths': [p.relative_to(ROOT).as_posix() for p in changed],
+                    'original_sha256': {p.relative_to(ROOT).as_posix(): hashlib.sha256(
+                        original if p == path else header_originals[p]).hexdigest() for p in changed},
+                    'sha256': {p.relative_to(ROOT).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
+                               for p in changed}}) + '\n')
         return result
     except BaseException:
         # Interrupts must restore the transaction as well as ordinary failures.
@@ -417,6 +458,7 @@ def run_target(addr, max_attempts=None, budget_seconds=1500, models=None):
         raise
     finally:
         transplant.prove = original_prove
+        transplant.beautify = original_beautify
         for header_lease in header_leases:
             subprocess.run(command + ['release', header_lease], cwd=ROOT, capture_output=True)
         subprocess.run(command + ['release', lease], cwd=ROOT, capture_output=True)
@@ -428,13 +470,19 @@ def main():
     parser.add_argument('--attempts', type=int, default=None, help='optional cap; default unlimited')
     parser.add_argument('--minutes', type=float, default=25)
     parser.add_argument('--model', action='append', help='override repair ladder; suffix #medium sets medium effort')
+    parser.add_argument('--no-llm', action='store_true', help='deterministic repairs only; never invoke a model/provider')
     args = parser.parse_args()
+    if args.no_llm and args.model:
+        parser.error('--no-llm cannot be combined with --model')
+    if args.minutes <= 0 or (args.attempts is not None and args.attempts <= 0):
+        parser.error('time and attempt budgets must be positive')
     for addr in args.addresses:
         if not re.fullmatch(r'[0-9a-fA-F]{8}', addr):
             parser.error('addresses must contain eight hexadecimal digits')
     for addr in args.addresses:
         try:
-            result = run_target(addr.lower(), args.attempts, args.minutes * 60, args.model)
+            result = run_target(addr.lower(), args.attempts, args.minutes * 60, args.model,
+                                allow_models=not args.no_llm)
         except (RuntimeError, OSError) as error:
             result = 'blocked: ' + str(error).replace('\n', ' ')[:500]
         print(addr.lower(), result, flush=True)
