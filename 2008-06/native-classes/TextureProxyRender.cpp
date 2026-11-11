@@ -1,3 +1,4 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
 // RBX::Render::TextureProxy / MegaTextureProxy, optimized RenderLib unit (2008-06, inactive native recovery).
@@ -7,7 +8,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // TextureProxyRender | 2008-06 | 4 byte-exact, inactive (not link-selected)
 // 4/8 mapped addresses byte-exact | 4 unproved | no mapped strings | by king_originala (+1) (mixed 2)
-// <<< native-status | src 58c15739 | roc native-status --write
+// <<< native-status | src 2f1c157b | roc native-status --write
 #include "RenderLib/TextureProxy2008.h"
 
 namespace RBX

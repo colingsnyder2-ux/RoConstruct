@@ -5,9 +5,9 @@
 // codegen-shape mismatch (see the header); getShadowVolumeRenderableIterator 00685a40 is recovered.
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
 // >>> native-status (generated) -- do not edit >>>
-// AppUnit67C_2008SubEntity | 2008-06 | 25 byte-exact, inactive (not link-selected)
-// 25/29 mapped addresses byte-exact | 4 unproved | no mapped strings | by colin (+4) (mixed 4)
-// <<< native-status | src b79f0a96 | roc native-status --write
+// AppUnit67C_2008SubEntity | 2008-06 | draft (no current byte proof)
+// 0/27 mapped addresses byte-exact | 27 unproved | no mapped strings | by colin (+4) (mixed 4)
+// <<< native-status | src 6e856eb8 | roc native-status --write
 #include "AppUnit67C_2008/RbxSubEntity2008.h"
 #include "OgreRbxNode/RbxSceneNode2008.h"
 #include "OgreRbx/RbxSubMesh2008.h"
@@ -331,3 +331,12 @@ namespace Ogre
 // Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class std::_Container_base_aux_alloc_real<std::allocator<Ogre::ShadowRenderable *> >;
 template class std::vector<Ogre::ShadowRenderable *,std::allocator<Ogre::ShadowRenderable *> >;
+template class Ogre::VectorIterator<std::vector<Ogre::ShadowRenderable *,std::allocator<Ogre::ShadowRenderable *> > >;
+template class std::_Revranit<std::_Vector_const_iterator<Ogre::ShadowRenderable *,std::allocator<Ogre::ShadowRenderable *> >,std::iterator<std::random_access_iterator_tag,Ogre::ShadowRenderable *,int,Ogre::ShadowRenderable * const *,Ogre::ShadowRenderable * const &> >;
+template class std::_Revranit<std::_Vector_iterator<Ogre::ShadowRenderable *,std::allocator<Ogre::ShadowRenderable *> >,std::iterator<std::random_access_iterator_tag,Ogre::ShadowRenderable *,int,Ogre::ShadowRenderable * *,Ogre::ShadowRenderable * &> >;
+template class std::_Vector_const_iterator<Ogre::EdgeData::EdgeGroup,std::allocator<Ogre::EdgeData::EdgeGroup> >;
+template class std::_Vector_const_iterator<Ogre::ShadowRenderable *,std::allocator<Ogre::ShadowRenderable *> >;
+template class std::_Vector_iterator<Ogre::ShadowRenderable *,std::allocator<Ogre::ShadowRenderable *> >;
+template class std::reverse_iterator<std::_Vector_const_iterator<Ogre::ShadowRenderable *,std::allocator<Ogre::ShadowRenderable *> > >;
+template class std::reverse_iterator<std::_Vector_iterator<Ogre::ShadowRenderable *,std::allocator<Ogre::ShadowRenderable *> > >;
+template class std::vector<Ogre::EdgeData::EdgeGroup,std::allocator<Ogre::EdgeData::EdgeGroup> >;
