@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CFileVersionInfo | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 50e4b987 | roc native-status --write
 #include <afxwin.h>
 
 // Non-polymorphic name retained from existing recovery; observed extent is 0x14.

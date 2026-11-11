@@ -15,6 +15,10 @@
 // ObjectValue (shared_ptr 005c2b90, create 005c3da0, Creator 005c3e20). The ForceField, GeometryService and
 // DebrisService shared_ptr / create rows are counted by their own receipts; only their Creator rows are built here.
 // sizeof(C) comes from the native headers and is checked by the malloc size each create<C> passes.
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit5BC_2008Creators | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 59e1751d | roc native-status --write
 #include "v8datamodel/ClickDetector.h"
 #include "v8datamodel/Explosion.h"
 #include "v8datamodel/FlagStand.h"

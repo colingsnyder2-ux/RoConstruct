@@ -1,4 +1,8 @@
 // 2008-06 native RBX::Team (inactive); evidence in native-headers/v8datamodel/Team.h.
+// >>> native-status (generated) -- do not edit >>>
+// Team | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 3f8ae7e1 | roc native-status --write
 #include "v8datamodel/Team.h"
 #include "v8datamodel/Teams.h"
 
@@ -82,3 +86,6 @@ namespace RBX
 		}
 	}
 }
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sTeam>();

@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Primitive | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src e587636e | roc native-status --write
 #include "G3D/Array.h"
 #include "v8world/Anchor.h"
 #include "v8world/Clump.h"

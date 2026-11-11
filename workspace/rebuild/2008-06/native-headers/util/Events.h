@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// Events | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 39a843b3 | roc native-status --write
 #include <vector>
 #include "util/standardout.h"
 

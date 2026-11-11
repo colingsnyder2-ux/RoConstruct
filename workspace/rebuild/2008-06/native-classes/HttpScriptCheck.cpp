@@ -1,5 +1,5 @@
 // >>> native-status (generated) -- do not edit >>>
-// HttpScriptCheck | 2008-06 | inactive
+// HttpScriptCheck | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src 68721f11 | roc native-status --write
 #include <shlwapi.h>

@@ -1,5 +1,9 @@
 // Inactive 2008-06 native recovery: RBX::Lua signal bridge and script slots.
 // Body shapes follow the donor reconstruction; counted rows are proven by tests/record_native_lua_bridge2008.py.
+// >>> native-status (generated) -- do not edit >>>
+// LuaBridge2008Signal | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 47edb3f5 | roc native-status --write
 #include "LuaBridge2008/LuaSignalBridge2008.h"
 #include "G3D/format.h"
 #include "util/standardout.h"
@@ -248,3 +252,10 @@ int SignalConnectionBridge::disconnect(lua_State* L)
     cnction.disconnect();
     return 0;
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class RBX::Lua::Bridge<boost::signals::connection,1>;
+template class RBX::Lua::SharedPtrBridge<RBX::Reflection::DescribedBase>;
+template class boost::shared_ptr<boost::mutex>;
+template class boost::shared_ptr<boost::signals::connection>;
+template class std::_Vector_const_iterator<boost::any,std::allocator<boost::any> >;

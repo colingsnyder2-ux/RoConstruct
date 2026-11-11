@@ -59,11 +59,17 @@ PROPOSALS = [
      'called by the backend server"; called by Players::onEvent 00496cf0 and onChildAdded 0049dc70)'),
 ]
 pending = base_dir / 'pending'
+if pending.exists():
+    shutil.rmtree(pending)
+applied_proposals = []
 for source, dest, anchor, replacement, _ in PROPOSALS:
     text = source.read_text()
+    if 'void rebuildBackpack();' in text:
+        continue
     assert text.count(anchor) == 1, (source, anchor)
     (pending / dest).parent.mkdir(parents=True, exist_ok=True)
     (pending / dest).write_text(text.replace(anchor, replacement))
+    applied_proposals.append(_)
 
 
 def build(name, src, extra=(), tail=()):
@@ -561,7 +567,7 @@ receipt = {
     'methods': base_out, 'pending_methods': pend_out, 'not_exact': not_exact, 'vtables': vtables,
     'exact_distinct_addresses': exact_addresses, 'pending_only_addresses': pending_addresses,
     'pending_note': 'pending rows are exact only with generated copies of other owners\' headers (proposals); not counted.',
-    'proposals': [p[4] for p in PROPOSALS],
+    'proposals': applied_proposals,
     'standins_note': 'base build uses declaration-only stand-ins for "Client.h"/"Server.h" (tests/NativeNetworkPlayersPeers.h) '
                      'and v8datamodel/ModelInstance.h (tests/NativeTeamPendingModel.h).',
     'scope': 'Inactive. Exact bodies with verified call/data targets; no active build, swap or credit.',

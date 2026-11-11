@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// GuidRegistryCriticalSection | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 2faec000 | roc native-status --write
 #include <windows.h>
 #include <boost/thread/exceptions.hpp>
 

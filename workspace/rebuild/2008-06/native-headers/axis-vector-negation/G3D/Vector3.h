@@ -1,5 +1,5 @@
 // >>> native-status (generated) -- do not edit >>>
-// Vector3 | 2008-06 | inactive
+// Vector3 | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src 13d12491 | roc native-status --write
 /**

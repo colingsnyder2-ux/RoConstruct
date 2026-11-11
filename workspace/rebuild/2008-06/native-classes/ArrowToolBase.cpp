@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/boost-explicit-shared-assignment
+// >>> native-status (generated) -- do not edit >>>
+// ArrowToolBase | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src d585137e | roc native-status --write
 #undef _RELEASEASSERT
 #include "tool/ToolsArrow.h"
 #include "tool/DragTool.h"
@@ -73,3 +77,9 @@ namespace RBX
 	}
 
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class RBX::FilteredSelection<RBX::Instance>;
+template class RBX::ServiceClient<RBX::FilteredSelection<RBX::Instance> >;
+template class boost::shared_ptr<RBX::Decal>;
+template class boost::shared_ptr<RBX::FilteredSelection<RBX::Instance> >;

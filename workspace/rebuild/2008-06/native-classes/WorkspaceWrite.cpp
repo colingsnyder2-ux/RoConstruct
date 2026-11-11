@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr
+// >>> native-status (generated) -- do not edit >>>
+// WorkspaceWrite | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 13a5ff3f | roc native-status --write
 #include <afxwin.h>
 #include <afxdisp.h>
 #include "CWorkspace.h"
@@ -61,3 +65,6 @@ HRESULT __stdcall CWorkspace::WriteSelection(IContent** result) {
     }
     return S_OK;
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class ATL::CComPtrBase<IContent>;

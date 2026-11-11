@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// ChangeHistoryEnable | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src e0857f88 | roc native-status --write
 #include "v8datamodel/ChangeHistoryService.h"
 #include "security/SecurityContext.h"
 

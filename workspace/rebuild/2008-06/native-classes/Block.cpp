@@ -2,6 +2,11 @@
 // Verified by tests/record_native_world_shapes.py. Unit 00647700..00649120: Block methods, the file-local
 // RBX::myLess / RBX::BlockTemplate (0x60 bytes: BlockTemplate::getVertices 00648f30 news 0x60) and the
 // std::map<Vector3, BlockTemplate*, myLess> members it instantiates.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// Block | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 92a13656 | roc native-status --write
 #include "v8world/Block2008.h"
 #include "util/Math.h"
 #include <G3D/AABox.h>
@@ -360,3 +365,9 @@ namespace RBX
 		}
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<G3D::Vector3 const ,RBX::BlockTemplate *> > >;
+template class std::_Tree<std::_Tmap_traits<G3D::Vector3,RBX::BlockTemplate *,RBX::myLess,std::allocator<std::pair<G3D::Vector3 const ,RBX::BlockTemplate *> >,0> >;
+template class std::allocator<std::_Tree_nod<std::_Tmap_traits<G3D::Vector3,RBX::BlockTemplate *,RBX::myLess,std::allocator<std::pair<G3D::Vector3 const ,RBX::BlockTemplate *> >,0> >::_Node *>;
+template class std::allocator<std::pair<G3D::Vector3 const ,RBX::BlockTemplate *> >;

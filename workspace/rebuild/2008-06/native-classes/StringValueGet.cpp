@@ -1,5 +1,5 @@
 // >>> native-status (generated) -- do not edit >>>
-// StringValueGet | 2008-06 | inactive
+// StringValueGet | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src 672433de | roc native-status --write
 #include "reflection/type.h"

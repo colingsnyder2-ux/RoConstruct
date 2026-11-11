@@ -1,0 +1,131 @@
+{
+ "registry": "work/2008-06/identity-registry.json",
+ "identity_bindings": [{"address":"008164e8","symbol":"?LIBID_RobloxLib@@3U_GUID@@B","kind":"data","evidence":{"owner":"ATL::IDispatchImpl<IWorkspace>::_tih","owner_address":"00928754","offset":4,"compiler_relocation":"?LIBID_RobloxLib@@3U_GUID@@B","original_pointer":"008164e8","typed_guid_bytes_exact":true,"source":"rebuild/2008-06/native-classes/WorkspaceGuids.cpp"}}],
+ "vendor_and_data_gate": {
+  "vendor_address": "00513240",
+  "vendor_symbol": "?getColumn@Matrix3@G3D@@QBE?AVVector3@2@H@Z",
+  "vendor_body_bytes": 30,
+  "registry_promotion": "placeholder to library-replay",
+  "data_compile_failure_test": "forced compile failure rejected caller and removed stale roc_data.obj",
+  "registry_proved_names": 24958,
+  "registry_placeholders": 29826
+ },
+ "ldraw_family_link": {
+  "provider_receipts": ["work/native-client/link/selected-engine-batch9.json", "work/native-client/link/selected-engine-batch10.json"],
+  "proved_symbols": 5,
+  "proved_code_bytes": 1428,
+  "unresolved_before": 150,
+  "unresolved_after": 149,
+  "duplicate_symbols": 0,
+  "successful_link": false,
+  "selected_in": "work/native-client/link/selected-engine-cumulative.json",
+  "selector_fix": "empty compile queue no longer launches inventory.py without source arguments"
+ },
+ "resume_tool_fixes": {
+  "scoped_history": "run_all repair, next, adaptive scans now read scope batches; lock scoped too",
+  "identity": "RTTI retains .?AV type marker after removing dot; imports use exact COFF import mapping",
+  "zero_gain": "auto_loop stops on two consecutive zero-gain batches",
+  "new_scoped_converter_objects": 56,
+  "new_scoped_converter_bytes": 8214,
+  "validation": "two distinct root batches; RTTI decoration assertions; import mapping assertion; py_compile"
+ },
+ "rows": 54784,
+ "proved": 25065,
+ "placeholder": 29719,
+ "validation": [
+  "python -m py_compile work/native-client/build_ogre_names_registry.py work/native-client/ogre/ogre_convert.py work/native-client/ogre/run_all.py work/native-client/ogre/auto_loop.py work/native-client/rename.py",
+  "schema keys exact for all rows",
+  "run_all --scope Ogre:: --summary",
+  "run_all --scope RBX::RenderNew --summary"
+ ],
+ "runtime_executed": false,
+ "p5_p6_executed": false,
+ "draft_server": {
+  "root_cause": "Funnel /native-drafts routed to unbound loopback port 8766",
+  "fix": "started native_drafts supervise; HTTPS health returned 200",
+  "receipt": "6e34b4be73ac2a5804acb1b753f1429bcf044e569bd03b0bc349708f1a442d0b"
+ },
+ "ogre_batches": {
+  "Ogre": {"round1_new_exact": 11, "round1_new_bytes": 1146, "round2_new_exact": 0},
+  "RBX::RenderNew": {"round1_new_exact": 18, "round1_new_bytes": 1762, "round2_new_exact": 0},
+  "RBX::ViewNew": {"round1_new_exact": 18, "round1_new_bytes": 1762, "round2_new_exact": 0}
+ },
+ "batch_receipts": {
+  "fix": "run_all now suffixes an occupied batch stem instead of overwriting metrics/roots receipts",
+  "verification": ["batch-00000-00001-r001", "batch-00000-00001-r002"],
+  "generic_rbx": {"new_exact": 59, "new_bytes": 18111, "following_zero_gain_batches": 2}
+ },
+ "rbx_20261110_2004": {
+  "auto_loop_new_exact": 124,
+  "auto_loop_new_code_bytes": 40236,
+  "repair_new_exact": 34,
+  "repair_new_code_bytes": 9386,
+  "converter_linked_code_bytes": 0,
+  "converter_linked_data_bytes": 0,
+  "unresolved_symbols": 210,
+  "duplicate_symbols": 0,
+  "data_blocker": "009738f0/009738fc/00973934 are dynamic List objects; element/count/layout not proved, so no data source emitted",
+  "library_blocker": "templates-boost-1_34_1 pull returned 0 server sources; missing generated unit remains parked",
+  "runtime_executed": false,
+  "p5_p6_executed": false
+ },
+ "converter_link_policy": {
+  "source_policy": "reject proxyField/raw char-pointer hexadecimal offset layout views before object emission",
+  "rejected_example": "00504290 NativeRenderScene proxyField body",
+  "allowed_example": "00642750 GuiDrawImage::setImage re-proved exact with declared fields",
+  "provider_audit": "reprove target body with EH extent, require one defined symbol, require source-policy pass",
+  "first_link_trial": {"objects": 20, "code_bytes": 1354, "unresolved_before": 149, "unresolved_after": 154, "duplicates": 0, "selected": false},
+  "current_unresolved_filter": {"selected_objects": 0, "linked_code_bytes": 0},
+  "runtime_executed": false,
+  "p5_p6_executed": false
+ },
+ "data_coverage": {
+  "typed_definition_addresses": 54,
+  "typed_definition_bytes": 237,
+  "data_bytes": 168,
+  "rdata_bytes": 69,
+  "data_section_virtual_bytes": 358160,
+  "rdata_section_virtual_bytes": 1201764,
+  "source": "identity-registry-data-metrics.json; only proof-checked typed definitions count"
+ },
+ "rbx_network_20261110_2035": {
+  "round1_exact_bodies": 131,
+  "round2_exact_bodies": 92,
+  "round3_exact_bodies": 211,
+  "new_code_bytes": 60484,
+  "root_status": {"renamed": 322, "blocked": 151, "compile_fail": 2},
+  "source_backed_roots": 898,
+  "unattempted_roots": 423,
+  "linked_code_bytes": 0,
+  "linked_data_bytes": 0,
+  "unresolved_symbols": 149,
+  "duplicate_symbols": 0,
+  "runtime_executed": false,
+  "p5_p6_executed": false
+ },
+ "automation_input_integrity": {
+  "cache": "vendor cache key includes expanded source; changed TU/header invalidates object/error cache",
+  "loop": "batch/retry error stops loop; registry placeholders included in rename retries",
+  "coverage": "exact scalar type parsing, section containment, union of covered byte intervals",
+  "verification": ["py_compile", "mock unchanged/changed vendor TU cache", "mock fatal batch versus empty queue", "registry placeholder state assertion"]
+ },
+ "phase_completion": {"A": "incomplete: data identities, owners/signatures and rename propagation remain", "B": "incomplete: scoped object counts only", "C": "237 typed definition bytes; link selection unproved", "D": "149 unresolved at last engine-ABI link; no phase percent inferred", "E": "not measured"},
+ "registry_kind_audit": {"code": 41197, "data": 4340, "vtable": 3145, "rtti": 6102, "code_missing_owner_or_signature": 30473, "classification": "PE executable section plus proved symbol category", "rename_guard": "decorated linker names rejected before all source writes; affected gates required"},
+ "network_round4": {"new_scoped_bodies": 241, "new_scoped_bytes": 54618, "cumulative_scoped_bodies": 690, "link_selected_bytes": 0},
+ "guid_link_batch": {"typed_proof": "authentic IID/CLSID declarations; 16 bytes exact; no original/object relocations", "selected_provider": "CContentGuids", "selected_symbols": ["?CLSID_Content@@3U_GUID@@B", "?IID_IContent@@3U_GUID@@B"], "proved_data_bytes": 32, "unresolved_before": 149, "unresolved_after": 147, "duplicate_symbols": 0, "workspace_guids": "parked: extra LIBID lacks address identity receipt", "selector": "checks every GUID definition in a provider; filters current unresolved symbols and excludes cumulative providers", "runtime_executed": false},
+ "workspace_guid_link_batch": {"identity":"LIBID 008164e8 from closure-bound ATL _tih 00928754 relocation +4; original pointer and typed GUID agree", "selected_provider":"WorkspaceGuids", "proved_data_bytes":32, "unresolved_before":147, "unresolved_after":145, "duplicates":0, "negative_test":"one-byte data corruption rejected", "runtime_executed":false},
+ "scalar_link_batch": {"symbols":6,"proved_data_bytes":15,"unresolved_before":145,"unresolved_after":139,"duplicates":0,"provider":"work/native-client/link/typed-scalars/scalars.obj","proof":"existing converter typed-data gate before and after symbol rename; corruption rejected","runtime_executed":false},
+ "sensapi_link": {"original_iat":"00802b38 SensApi.dll!IsNetworkAlive","period_sdk_symbol":"_IsNetworkAlive@4","library":"sensapi.lib","unresolved_before":139,"unresolved_after":138,"duplicates":0,"runtime_executed":false},
+ "provider_inventory_refresh": {"objects_scanned":1421,"unresolved":138,"native_provider_rows":54,"closure_exact_elsewhere":7,"fresh_selector_added_sources":0,"scope":"template/profile plus native and engine ABI caches; registry identity fallback"},
+ "leaf_cause_trace": {"command":"run_all.py --scope RBX::Network --leaf-causes","top_compile_blocker":"004b6ab0","trapped_root_bytes":6434,"source_review":"packet uses nested reinterpret_cast<char*>(this)+0x2cd4; now rejected by source policy","next_missing_unit":"00595840 roc_boost_resume_c61d1bd756da77ae.cpp","missing_unit_trapped_bytes":3195,"verification":"shared-leaf fan-in and cycle tests passed; declared-field policy control passed","metric":"overlapping converter-root impacts; not linked bytes"},
+ "automatic_link_trials": {"command":"native_link_select.py --engine-abi --include-multi --trial-link --output RECEIPT","behavior":"baseline plus candidate probes; resolved/introduced symbols, net gain, duplicates, fatal linker error guard; never executes client", "verification":"mock baseline/candidate gain comparison passed; current queue selected zero candidates", "missing_boost_units":"both source files absent on disk and generated-unit registry; recipe skip hypothesis not current root cause"},
+ "duplicate_analog_pruning": {"algorithm":"skip renamed analog object when every external definition already owned and no CRT/TLS initializer section; retain existing provider", "objects_removed":4,"unresolved_before":138,"unresolved_after":137,"duplicates":0,"native_reproof":["00465ae0 CSecureHtmlView::PreCreateWindow","00465a90 CSecureHtmlView::OnAmbientProperty"],"duplicate_detection":"all LNK2005 messages including C/stdcall/C++; synthetic samples passed","runtime_executed":false},
+ "converter_data_pruning": {"algorithm":"COFF section reachability through relocations and associative COMDAT edges; ordinary data and initializer/TLS roots preserved; remove only unreachable COMDAT data", "example":"00642750 GuiDrawImage::setImage", "external_definitions_before":445,"external_definitions_after":6,"validation":["function bytes and relocation offsets unchanged","referenced-data list unchanged","fresh converter compile/data/reproof passed"],"new_linked_bytes":0,"runtime_executed":false},
+ "network_pruned_batch": {"batch_roots":64,"new_bodies":184,"new_code_bytes":27265,"cumulative_scoped_bodies":874,"still_blocked_roots":174,"placeholder_roots":172,"new_link_selected_bytes":0,"scope":"converter evidence"},
+ "cross_subsystem_provider_audit": {"bodies_checked":1205,"current_unresolved":137,"providers_selected":0,"command":"converter_link_select.py --scope all"},
+ "native_provider_retry_inputs": {"fingerprint":"source plus native header tree and inventory scripts", "behavior":"changed inputs re-enter queue; unchanged failed inputs skipped; object hash required; failed compile cannot select old cached object", "first_batch":{"compiled":1,"attempted":16,"selected":0},"repeated_errors":{"template_parameter_order":3,"private_VerbContainer_verbs":2},"unresolved":137,"runtime_executed":false},
+ "provider_queue_stop": {"reason":"two consecutive zero-gain batches with repeated header/ABI errors","batch1_selected":0,"batch2_selected":0,"batch2_compiled":1,"batch2_attempted":16,"note":"widening fingerprint header suffix scope invalidated first batch hashes, so second batch revalidated same sources","unresolved":137,"next_required_work":"repair original-supported native/engine header compatibility before more unchanged provider trials"},
+ "partchunk_include_repair": {"fix":"add authentic OgreMain include directory to native inventory flags","compile":"ViewNewPartChunk succeeds","proved_methods":2,"trial":{"before":137,"after":139,"net_gain":-2,"introduced":"Decal/Texture getMaterial/updateMesh providers absent"},"selected":false,"baseline_restored":true,"automation":"--provider family filter; rejected link trials restore baseline probe"},
+ "insertmodel_source_batch": {"source":"rebuild/2008-06/native-classes/InsertModelFromRobloxVerb.cpp","change":"include authentic MFC header before transitive windows.h","compile":"passed","mapped_constructor_byte_proof":"passed","address":"00458ec0","link_before":137,"link_after":136,"introduced":[],"duplicates":0,"selected":true,"runtime_executed":false,"native_draft_session":"11ca0edd08b44e90b4ca6fe37c9bb6ce"},
+ "next": "repair independently supported compiler/header boundaries; unchanged ABI-failure queue parked"
+}

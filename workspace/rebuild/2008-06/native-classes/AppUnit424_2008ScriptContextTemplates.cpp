@@ -19,6 +19,10 @@
 // Object.h only declare the ServiceProvider index / find / create templates and Creator::create, so their template
 // definitions are given below (the same definitions as ServiceProvider.cpp, AppUnit480_2008PlayerTemplates.cpp and
 // AppUnit634_2008Value.cpp).
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit424_2008ScriptContextTemplates | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src efe7be4d | roc native-status --write
 #include "script/ScriptContext.h"
 #include "v8tree/Service.h"
 #include "util/Object.h"
@@ -95,3 +99,6 @@ namespace RBX
 	template ScriptContext* ServiceProvider::create<ScriptContext>() const;
 	template boost::shared_ptr<Object> FactoryProduct<ScriptContext, Instance, sScriptContext>::Creator::create() const;
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<RBX::ScriptContext>;

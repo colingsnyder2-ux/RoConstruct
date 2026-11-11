@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// TextureIdType2008 | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src dccb0930 | roc native-status --write
 // 2008-06: the reflection Type of RBX::TextureId is the ContentId type (inactive; app unit 00594000, Decal unit).
 // Evidence: TypedPropertyDescriptor<TextureId>::TypedPropertyDescriptor 005978a0 (vtable 00832494
 // .?AV?$TypedPropertyDescriptor@VTextureId@RBX@@@Reflection@RBX@@) calls Type::singleton<ContentId> 0056cd80

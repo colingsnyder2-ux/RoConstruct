@@ -1,4 +1,8 @@
 // Inactive native 2008-06 Marshaller (native-headers/AppLeaves2008/Marshaller2008.h).
+// >>> native-status (generated) -- do not edit >>>
+// AppLeaves2008Marshaller | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 30374109 | roc native-status --write
 #include "AppLeaves2008/Marshaller2008.h"
 #include "util/standardout.h"
 
@@ -44,3 +48,8 @@ void Marshaller::OnFinalMessage(HWND)
 {
     delete this;
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Container_base_aux_alloc_real<std::allocator<boost::function0<void,std::allocator<boost::function_base> > > >;
+template class std::_Deque_const_iterator<boost::function0<void,std::allocator<boost::function_base> >,std::allocator<boost::function0<void,std::allocator<boost::function_base> > >,1>;
+template class std::_Deque_iterator<boost::function0<void,std::allocator<boost::function_base> >,std::allocator<boost::function0<void,std::allocator<boost::function_base> > >,1>;

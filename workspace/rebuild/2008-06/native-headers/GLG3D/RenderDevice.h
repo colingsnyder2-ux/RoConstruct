@@ -1,5 +1,5 @@
 // >>> native-status (generated) -- do not edit >>>
-// RenderDevice | 2008-06 | inactive
+// RenderDevice | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src b9d70761 | roc native-status --write
 /**

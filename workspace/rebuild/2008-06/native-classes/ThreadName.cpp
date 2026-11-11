@@ -1,7 +1,7 @@
 // >>> native-status (generated) -- do not edit >>>
-// ThreadName | 2008-06 | inactive
+// ThreadName | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
-// <<< native-status | src 2ce26cd8 | roc native-status --write
+// <<< native-status | src 0a1f8666 | roc native-status --write
 #include <string>
 #include <boost/thread/once.hpp>
 #include <boost/thread/tss.hpp>
@@ -20,3 +20,6 @@ const char* currentThreadName()
     std::string* name = RBX::boost_detail::foo->get();
     return name ? name->c_str() : defaultThreadName;
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::thread_specific_ptr<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >;

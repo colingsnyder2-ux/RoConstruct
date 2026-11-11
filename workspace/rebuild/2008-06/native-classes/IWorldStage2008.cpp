@@ -3,6 +3,10 @@
 // call of the downstream stage's slot 6. The donor v8world/IWorldStage.h declares getMetric without a body; this unit
 // supplies it (in 2008 the body sits among the CleanStage COMDATs, so it is header-inline there: see PROPOSALS in
 // tests/record_native_kernel_stages.py). Verified by that recorder.
+// >>> native-status (generated) -- do not edit >>>
+// IWorldStage2008 | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 7f066b32 | roc native-status --write
 #include "v8world/IWorldStage.h"
 
 namespace RBX

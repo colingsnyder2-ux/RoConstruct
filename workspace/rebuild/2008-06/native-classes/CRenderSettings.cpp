@@ -1,3 +1,8 @@
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// CRenderSettings | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 7126ec99 | roc native-status --write
 #include "CRenderSettings.h"
 #include "reflection/enumconverter.h"
 #include <GLG3D/DXCaps.h>
@@ -215,3 +220,69 @@ void CRenderSettings::setMaxMeshDetail(float value)
 
 const float CRenderSettings::defaultShadingQuality = 20.0f;
 const float CRenderSettings::defaultMeshDetail = 50.0f;
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class RBX::Reflection::EnumDesc<enum CRenderSettings::AASamples>;
+template class RBX::Reflection::EnumDesc<enum CRenderSettings::AntialiasingMode>;
+template class RBX::Reflection::EnumDesc<enum CRenderSettings::BevelMode>;
+template class RBX::Reflection::EnumDesc<enum CRenderSettings::FrameRateManagerMode>;
+template class RBX::Reflection::EnumDesc<enum CRenderSettings::GraphicsMode>;
+template class RBX::Reflection::EnumDesc<enum CRenderSettings::ShadowMode>;
+template class RBX::Reflection::TypedPropertyDescriptor<enum CRenderSettings::AASamples>;
+template class RBX::Reflection::TypedPropertyDescriptor<enum CRenderSettings::AntialiasingMode>;
+template class RBX::Reflection::TypedPropertyDescriptor<enum CRenderSettings::BevelMode>;
+template class RBX::Reflection::TypedPropertyDescriptor<enum CRenderSettings::FrameRateManagerMode>;
+template class RBX::Reflection::TypedPropertyDescriptor<enum CRenderSettings::GraphicsMode>;
+template class RBX::Reflection::TypedPropertyDescriptor<enum CRenderSettings::ShadowMode>;
+template class std::_Container_base_aux_alloc_real<std::allocator<enum CRenderSettings::AASamples> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<enum CRenderSettings::AntialiasingMode> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<enum CRenderSettings::BevelMode> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<enum CRenderSettings::FrameRateManagerMode> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<enum CRenderSettings::GraphicsMode> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<enum CRenderSettings::ShadowMode> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<RBX::Name const * const,enum CRenderSettings::AASamples> > >;
+template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<RBX::Name const * const,enum CRenderSettings::AntialiasingMode> > >;
+template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<RBX::Name const * const,enum CRenderSettings::BevelMode> > >;
+template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<RBX::Name const * const,enum CRenderSettings::FrameRateManagerMode> > >;
+template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<RBX::Name const * const,enum CRenderSettings::GraphicsMode> > >;
+template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<RBX::Name const * const,enum CRenderSettings::ShadowMode> > >;
+template class std::_Tmap_traits<RBX::Name const *,enum CRenderSettings::AASamples,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum CRenderSettings::AASamples> >,0>;
+template class std::_Tmap_traits<RBX::Name const *,enum CRenderSettings::AntialiasingMode,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum CRenderSettings::AntialiasingMode> >,0>;
+template class std::_Tmap_traits<RBX::Name const *,enum CRenderSettings::BevelMode,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum CRenderSettings::BevelMode> >,0>;
+template class std::_Tmap_traits<RBX::Name const *,enum CRenderSettings::FrameRateManagerMode,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum CRenderSettings::FrameRateManagerMode> >,0>;
+template class std::_Tmap_traits<RBX::Name const *,enum CRenderSettings::GraphicsMode,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum CRenderSettings::GraphicsMode> >,0>;
+template class std::_Tmap_traits<RBX::Name const *,enum CRenderSettings::ShadowMode,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum CRenderSettings::ShadowMode> >,0>;
+template class std::_Tree<std::_Tmap_traits<RBX::Name const *,enum CRenderSettings::AASamples,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum CRenderSettings::AASamples> >,0> >;
+template class std::_Tree<std::_Tmap_traits<RBX::Name const *,enum CRenderSettings::AntialiasingMode,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum CRenderSettings::AntialiasingMode> >,0> >;
+template class std::_Tree<std::_Tmap_traits<RBX::Name const *,enum CRenderSettings::BevelMode,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum CRenderSettings::BevelMode> >,0> >;
+template class std::_Tree<std::_Tmap_traits<RBX::Name const *,enum CRenderSettings::FrameRateManagerMode,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum CRenderSettings::FrameRateManagerMode> >,0> >;
+template class std::_Tree<std::_Tmap_traits<RBX::Name const *,enum CRenderSettings::GraphicsMode,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum CRenderSettings::GraphicsMode> >,0> >;
+template class std::_Tree<std::_Tmap_traits<RBX::Name const *,enum CRenderSettings::ShadowMode,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum CRenderSettings::ShadowMode> >,0> >;
+template class std::_Vector_val<RBX::Name const *,std::allocator<RBX::Name const *> >;
+template class std::_Vector_val<RBX::Reflection::EnumDescriptor::Item const *,std::allocator<RBX::Reflection::EnumDescriptor::Item const *> >;
+template class std::_Vector_val<enum CRenderSettings::AASamples,std::allocator<enum CRenderSettings::AASamples> >;
+template class std::_Vector_val<enum CRenderSettings::AntialiasingMode,std::allocator<enum CRenderSettings::AntialiasingMode> >;
+template class std::_Vector_val<enum CRenderSettings::BevelMode,std::allocator<enum CRenderSettings::BevelMode> >;
+template class std::_Vector_val<enum CRenderSettings::FrameRateManagerMode,std::allocator<enum CRenderSettings::FrameRateManagerMode> >;
+template class std::_Vector_val<enum CRenderSettings::GraphicsMode,std::allocator<enum CRenderSettings::GraphicsMode> >;
+template class std::_Vector_val<enum CRenderSettings::ShadowMode,std::allocator<enum CRenderSettings::ShadowMode> >;
+template class std::_Vector_val<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >;
+template class std::_Vector_val<unsigned int,std::allocator<unsigned int> >;
+template class std::allocator<std::_Tree_nod<std::_Tmap_traits<RBX::Name const *,enum CRenderSettings::AASamples,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum CRenderSettings::AASamples> >,0> >::_Node *>;
+template class std::allocator<std::_Tree_nod<std::_Tmap_traits<RBX::Name const *,enum CRenderSettings::AntialiasingMode,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum CRenderSettings::AntialiasingMode> >,0> >::_Node *>;
+template class std::allocator<std::_Tree_nod<std::_Tmap_traits<RBX::Name const *,enum CRenderSettings::BevelMode,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum CRenderSettings::BevelMode> >,0> >::_Node *>;
+template class std::allocator<std::_Tree_nod<std::_Tmap_traits<RBX::Name const *,enum CRenderSettings::FrameRateManagerMode,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum CRenderSettings::FrameRateManagerMode> >,0> >::_Node *>;
+template class std::allocator<std::_Tree_nod<std::_Tmap_traits<RBX::Name const *,enum CRenderSettings::GraphicsMode,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum CRenderSettings::GraphicsMode> >,0> >::_Node *>;
+template class std::allocator<std::_Tree_nod<std::_Tmap_traits<RBX::Name const *,enum CRenderSettings::ShadowMode,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum CRenderSettings::ShadowMode> >,0> >::_Node *>;
+template class std::map<RBX::Name const *,enum CRenderSettings::AASamples,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum CRenderSettings::AASamples> > >;
+template class std::map<RBX::Name const *,enum CRenderSettings::AntialiasingMode,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum CRenderSettings::AntialiasingMode> > >;
+template class std::map<RBX::Name const *,enum CRenderSettings::BevelMode,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum CRenderSettings::BevelMode> > >;
+template class std::map<RBX::Name const *,enum CRenderSettings::FrameRateManagerMode,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum CRenderSettings::FrameRateManagerMode> > >;
+template class std::map<RBX::Name const *,enum CRenderSettings::GraphicsMode,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum CRenderSettings::GraphicsMode> > >;
+template class std::map<RBX::Name const *,enum CRenderSettings::ShadowMode,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum CRenderSettings::ShadowMode> > >;
+template class std::vector<enum CRenderSettings::AASamples,std::allocator<enum CRenderSettings::AASamples> >;
+template class std::vector<enum CRenderSettings::AntialiasingMode,std::allocator<enum CRenderSettings::AntialiasingMode> >;
+template class std::vector<enum CRenderSettings::BevelMode,std::allocator<enum CRenderSettings::BevelMode> >;
+template class std::vector<enum CRenderSettings::FrameRateManagerMode,std::allocator<enum CRenderSettings::FrameRateManagerMode> >;
+template class std::vector<enum CRenderSettings::GraphicsMode,std::allocator<enum CRenderSettings::GraphicsMode> >;
+template class std::vector<enum CRenderSettings::ShadowMode,std::allocator<enum CRenderSettings::ShadowMode> >;

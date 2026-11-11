@@ -14,6 +14,10 @@
 //     shared_ptr<StatsService>(StatsService*, Creatable<Instance>::Deleter) 00456f10 (171 B).
 // v8tree/Service.h and util/Object.h declare these templates without bodies; the definitions below are the ones
 // AppUnit48C_2008Services.cpp uses.
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit454_2008ReportStats | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 583c7fe6 | roc native-status --write
 #include <boost/thread/once.hpp>
 #include "v8tree/Service.h"
 #include "stats/Stats.h"
@@ -79,3 +83,7 @@ namespace RBX
 // 00456ee0 are the report view's ChildAdded / ChildRemoved handlers 004582f0 / 004581a0 in this unit.
 template boost::shared_ptr<RBX::Stats::Item> boost::shared_dynamic_cast<RBX::Stats::Item, RBX::Instance>(
 	const boost::shared_ptr<RBX::Instance>&);
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<RBX::Stats::Item>;
+template class boost::shared_ptr<RBX::Stats::StatsService>;

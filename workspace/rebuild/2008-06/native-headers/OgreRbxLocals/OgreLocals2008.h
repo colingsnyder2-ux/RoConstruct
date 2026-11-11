@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// OgreLocals2008 | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src f57b2e90 | roc native-status --write
 // Ogre 1.4.5 classes the June 2008 client constructs from rgmain.dll (inactive native recovery; 2008-06).
 //
 // Non-colliding name: no donor or other native header has this path. Needs the Ogre 1.4.5 client headers on the include

@@ -1,4 +1,8 @@
 // native-flags: /O2 /Ob2 /Oi /Ot /Oy /GF /GS- /EHsc /MD /D_AFXDLL /D_DLL /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string
+// >>> native-status (generated) -- do not edit >>>
+// CRobloxApp | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 38a4cce1 | roc native-status --write
 #include "CRobloxApp.h"
 #include <atlbase.h>
 #include "util/standardout.h"
@@ -46,7 +50,7 @@ public:
     CIDEDocManager(bool);              // 00449910 (sizeof 48)
 };
 class NativeAtlModule { public: HRESULT RegisterServer(BOOL, const CLSID*); }; // 0044bea0
-class LogManager { public: static void ReportException(const std::exception&); }; // 00428850
+// LogManager::ReportException (00428850) comes from LogManager.h via CRobloxApp.h
 class NativeClassRegistration { public: NativeClassRegistration(); };             // 005c3ca0
 
 extern CString nativeCrashReportText;                 // 0096dcf0

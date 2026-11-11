@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// ResizeToolDrag | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 5cdaa282 | roc native-status --write
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Workspace.h"
 #include "tool/ResizeTool.h"
@@ -14,3 +18,7 @@ void ResizeTool::capturedDrag(int axisDelta) {
     }
 }
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<RBX::PVInstance>;
+template class boost::weak_ptr<RBX::PVInstance>;

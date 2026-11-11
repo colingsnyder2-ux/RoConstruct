@@ -1,5 +1,9 @@
 // 2008-06 native RBX::Sparkles (inactive); evidence in native-headers/v8datamodel/Sparkles.h.
 // Verified by tests/record_native_effects.py.
+// >>> native-status (generated) -- do not edit >>>
+// Sparkles | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src fb5c48a0 | roc native-status --write
 #include "v8datamodel/Sparkles.h"
 #include "v8datamodel/PartInstance.h"
 
@@ -53,3 +57,6 @@ namespace RBX
 	}
 #endif
 }
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sSparkles>();

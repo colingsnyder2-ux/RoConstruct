@@ -3,6 +3,10 @@
 // SimpleSceneManager 004d7320 / 00458e90 (setSleeping, prerender). The chunk-array bodies (addToScene / addModel
 // 004d7db0, removeFromScene 004d8320, removeModel 004d8380, clear 004d8310) use the RenderSceneBase chunkArray +0x8
 // (RenderLib/RenderScene2008.h).
+// >>> native-status (generated) -- do not edit >>>
+// SceneManager2008 | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 76ae9185 | roc native-status --write
 #include "RenderLib/SceneManager2008.h"
 #include "RenderLib/RenderScene2008.h"
 

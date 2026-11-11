@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// JointsService | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 74c25c69 | roc native-status --write
 // 2008-06 native RBX::JointsService (inactive). Shape after the donor tools/rbxgs JointsService.h; every base, field
 // and virtual below is read from the 2008-06 binary:
 //   RTTI       vtable 00824acc .?AVJointsService@RBX@@ -> NonFactoryProduct<Instance, 0> (no class descriptor, no

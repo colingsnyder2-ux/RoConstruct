@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CPatchedControlComboBox | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src b9bd1d97 | roc native-status --write
 #include <XTToolkitPro.h>
 
 // Inactive layout recovery. CRuntimeClass 0092ecc8 (writable: IMPLEMENT_SERIAL) gives size 0x1e0,

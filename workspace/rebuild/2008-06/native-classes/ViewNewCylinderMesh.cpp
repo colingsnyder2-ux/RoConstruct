@@ -1,4 +1,9 @@
 // 2008-06 native RBX::ViewNew::CylinderBuilder / CylinderAlongXMesh (inactive): the unit 004fd430..004fdaef.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// ViewNewCylinderMesh | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src baaea6e5 | roc native-status --write
 #include "ViewNew/CylinderMesh.h"
 #include "ViewNew/QuadVolumeFace.h"
 #include <algorithm>

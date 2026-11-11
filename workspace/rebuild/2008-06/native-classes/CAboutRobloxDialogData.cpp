@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CAboutRobloxDialogData | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src ce144ce4 | roc native-status --write
 #include "CAboutRobloxDialog.h"
 #include "CFileVersionInfo.h"
 #include <afxpriv.h>

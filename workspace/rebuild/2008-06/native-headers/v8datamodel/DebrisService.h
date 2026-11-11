@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// DebrisService | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src e0585a12 | roc native-status --write
 // 2008-06 native RBX::DebrisService (inactive). Shape after the donor tools/rbxgs DebrisService.h; every base, field
 // and virtual below is read from the 2008-06 binary:
 //   RTTI       vtable 00849aec .?AVDebrisService@RBX@@ -> DescribedCreatable<DebrisService, Instance, sDebrisService>

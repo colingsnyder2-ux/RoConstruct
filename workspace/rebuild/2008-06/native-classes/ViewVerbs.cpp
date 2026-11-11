@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// ViewVerbs | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 5c93d29a | roc native-status --write
 #include "../native-headers/CMainFrame.h"
 #include "../native-headers/ViewVerbs.h"
 #include "../native-headers/CRobloxView.h"

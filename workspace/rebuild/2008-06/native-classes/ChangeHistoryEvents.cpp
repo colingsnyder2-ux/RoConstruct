@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// ChangeHistoryEvents | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 3bdf952f | roc native-status --write
 #include "v8datamodel/ChangeHistoryService.h"
 #include "v8datamodel/HistoryRecord.h"
 

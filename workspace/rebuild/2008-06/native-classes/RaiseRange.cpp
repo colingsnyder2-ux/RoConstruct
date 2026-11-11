@@ -1,5 +1,5 @@
 // >>> native-status (generated) -- do not edit >>>
-// RaiseRange | 2008-06 | inactive
+// RaiseRange | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src bf15fcf3 | roc native-status --write
 #include "util/Events.h"

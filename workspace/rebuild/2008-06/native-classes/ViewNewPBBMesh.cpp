@@ -3,6 +3,11 @@
 // are class-inline (the original inlines them into the strips 004f2110 / 004f2490 and 004f2810..004f3260: inset by
 // BrickMesh::bevel 00826e38, then the bulge loop over normal.x / normal.y, kept as a loop with an if / else body). The
 // surface ctor 004f4cb0 is not recovered here.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// ViewNewPBBMesh | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src f41b32cf | roc native-status --write
 #include "ViewNew/PBBMesh.h"
 #include "ViewNew/QuadVolumeFace.h"
 #include "ViewNew/BrickMesh.h"

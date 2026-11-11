@@ -18,6 +18,10 @@
 //     of v8tree/Instance.h, first emitted here: callers 0045c600 / 0045e3f0 in this unit, 0048c3e0 / 004add50 later).
 // v8tree/Service.h and util/Object.h declare these templates without bodies; the definitions below are the ones
 // AppUnit48C_2008Services.cpp and AppUnit400_2008Creators.cpp use.
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit454_2008WndServices | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 12dd0f5c | roc native-status --write
 #include <boost/thread/once.hpp>
 #include "v8tree/Service.h"
 #include "v8datamodel/UserController.h"
@@ -90,3 +94,7 @@ namespace RBX
 
 	template void Instance::for_eachChild<void (*)(Instance*)>(void (*)(Instance*)) const;
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<RBX::Camera>;
+template class boost::shared_ptr<RBX::ControllerService>;

@@ -4,6 +4,10 @@
 // computeIsColliding 00607c20 test the primitives' fuzzy extents at Primitive +0x80 (Extents::overlapsOrTouches
 // 00606b60), which needs a 2008 Primitive declaration that can share a unit with Contact2008.h; they are not
 // defined here (see the recorder's blocked list).
+// >>> native-status (generated) -- do not edit >>>
+// Leaves2008BlockBlockContact | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 8e8639c6 | roc native-status --write
 #include "leaves2008/BlockBlockContact2008.h"
 #include "v8kernel/Kernel.h"
 

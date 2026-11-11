@@ -72,6 +72,9 @@ pending = OUT / 'services-pending'
 text = (ROOT / 'tools/rbxgs/Client/App/include/v8world/World.h').read_text()
 assert text.count(PROPOSAL_WORLD_ANCHOR) == 1
 (pending / 'v8world/World.h').write_text(text.replace(PROPOSAL_WORLD_ANCHOR, PROPOSAL_WORLD_ANCHOR + PROPOSAL_WORLD))
+world_overlay = OUT / 'services-world-overlay'
+(world_overlay / 'v8world').mkdir(parents=True, exist_ok=True)
+(world_overlay / 'v8world/World.h').write_text('#include "engine-world/v8world/World.h"\n')
 
 
 def build(name, src, extra=()):
@@ -86,9 +89,9 @@ def build(name, src, extra=()):
 
 layout_obj, layout_flags = build('NativeServicesLayout', LAYOUT)
 joints_obj, joints_flags = build('NativeJointsService', JOINTS_SRC)
-physics_obj, physics_flags = build('NativePhysicsService', PHYSICS_SRC)
+physics_obj, physics_flags = build('NativePhysicsService', PHYSICS_SRC, ['/I' + str(world_overlay)])
 physp_obj, physp_flags = build('NativePhysicsServicePending', PHYSICS_SRC,
-                               ['/I' + str(pending), '/DNATIVE_PHYSICSSERVICE_PENDING'])
+                               ['/I' + str(world_overlay), '/I' + str(pending), '/DNATIVE_PHYSICSSERVICE_PENDING'])
 HAVE_NETWORK = NETWORK_SRC.exists()
 if HAVE_NETWORK:
     network_obj, network_flags = build('NativeNetworkSettings', NETWORK_SRC)

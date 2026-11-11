@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// ClientProxy2008 | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src a031e779 | roc native-status --write
 // 2008-06 native RBX::Network::Server::ClientProxy (inactive). A new, non-colliding header (no donor ClientProxy.h).
 // Shape after the donor tools/rbxgs Client/Network/Server.cpp; base and evidence below are read from the 2008-06
 // binary (tests/record_native_client_proxy.py and tests/record_native_network_replicator2008.py).

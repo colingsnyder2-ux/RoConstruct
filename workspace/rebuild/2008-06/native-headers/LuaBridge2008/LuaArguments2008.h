@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// LuaArguments2008 | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 2fa3e38e | roc native-status --write
 // 2008-06 Lua function-call arguments (RBX::Lua::LuaArguments), inactive. The read-only donor script/LuaArguments.h
 // needs RBX::Instances (missing from native v8tree/Instance.h) and has a different static get, so this recovery declares
 // the 2008 shape under the non-colliding name LuaArguments2008 (a codegen analog of RBX::Lua::LuaArguments; nothing is

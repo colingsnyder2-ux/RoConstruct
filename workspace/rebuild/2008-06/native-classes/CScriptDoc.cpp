@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CScriptDoc | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src fc22c44d | roc native-status --write
 #include "CScriptDoc.h"
 
 // CNullDoc::CNullDoc is inline in the original: CNullDoc::CreateObject 00433310 and CScriptDoc::CreateObject

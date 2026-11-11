@@ -14,6 +14,10 @@
 /// Software Foundation; either version 2 of the License, or (at your
 /// option) any later version.
 
+// >>> native-status (generated) -- do not edit >>>
+// RakPeerUpdate | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src e1690b5e | roc native-status --write
 #include "RakNetDefines.h"
 #include "RakPeer.h"
 #include "RakNetTypes.h"
@@ -768,3 +772,9 @@ bool RakPeer::RunUpdateCycle( void )
 
 	return true;
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class DataStructures::List<PluginInterface *>;
+template class DataStructures::SingleProducerConsumer<RakPeer::BufferedCommandStruct>;
+template class DataStructures::SingleProducerConsumer<RakPeer::RequestedConnectionStruct>;
+template class big::RSACrypt<unsigned int [8]>;

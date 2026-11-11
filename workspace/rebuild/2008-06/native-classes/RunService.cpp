@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// RunService | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 8dc59377 | roc native-status --write
 #include "util/RunStateOwner.h"
 #include "util/StandardOut.h"
 #include <exception>
@@ -75,3 +79,6 @@ void RBX::RunService::invalidateRunViews() {
         runViewsDoneCondition.notify_all();
     }
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::map<RBX::IRunView *,bool,std::less<RBX::IRunView *>,std::allocator<std::pair<RBX::IRunView * const,bool> > >;

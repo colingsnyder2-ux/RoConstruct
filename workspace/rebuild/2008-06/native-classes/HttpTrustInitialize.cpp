@@ -1,5 +1,5 @@
 // >>> native-status (generated) -- do not edit >>>
-// HttpTrustInitialize | 2008-06 | inactive
+// HttpTrustInitialize | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src 0310874d | roc native-status --write
 #include <windows.h>

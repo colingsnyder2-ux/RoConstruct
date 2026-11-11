@@ -6,6 +6,11 @@
 // util/Math.h function-local static (guard 0097b894, value 0097b890, initialized from the imported
 // std::numeric_limits<float> infinity at 0080250c), read by express / toWorldSpace.
 // Codegen analog: bodies follow the donor util/Extents.cpp shape; the recorder proves each against the bytes.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit609_2008Extents | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 74409360 | roc native-status --write
 #include "util/Extents.h"
 #include "util/Math.h"
 

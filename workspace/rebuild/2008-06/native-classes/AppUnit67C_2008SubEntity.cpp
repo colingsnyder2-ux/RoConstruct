@@ -1,16 +1,23 @@
 // Ogre::RbxSubEntity and RbxSubEntity::RbxSubEntityShadowRenderable method bodies (inactive native recovery, June 2008
 // client; the Ogre::RbxSubEntity block 00684fa0..00685a40 of the application range 0067c000..00688000). Declarations:
 // native-headers/AppUnit67C_2008/RbxSubEntity2008.h. Built with the Ogre 1.4.5 client headers (/fp:fast);
-// tests/record_native_app_unit67c_2008.py verifies them. getWorldBoundingBox 00685490 and
-// getShadowVolumeRenderableIterator 00685a40 are not built (exe-local SubMesh subclass members, see the header).
+// tests/record_native_app_unit67c_2008.py verifies them. getWorldBoundingBox 00685490 remains parked for a
+// codegen-shape mismatch (see the header); getShadowVolumeRenderableIterator 00685a40 is recovered.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit67C_2008SubEntity | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src b79f0a96 | roc native-status --write
 #include "AppUnit67C_2008/RbxSubEntity2008.h"
 #include "OgreRbxNode/RbxSceneNode2008.h"
+#include "OgreRbx/RbxSubMesh2008.h"
 #include <OgreEntity.h>
 #include <OgreSubMesh.h>
 #include <OgreCamera.h>
 #include <OgreLight.h>
 #include <OgreLogManager.h>
 #include <OgreHardwareBufferManager.h>
+#include <OgreEdgeListBuilder.h>
 #include <exception>
 
 namespace Ogre
@@ -258,4 +265,69 @@ namespace Ogre
 		}
 		return subMesh ? subMesh : mSubMesh;
 	}
+
+	// 00685a40
+	ShadowCaster::ShadowRenderableListIterator RbxSubEntity::getShadowVolumeRenderableIterator(
+		ShadowTechnique shadowTechnique, const Light* light, HardwareIndexBufferSharedPtr* indexBuffer,
+		bool extrude, Real extrusionDistance, unsigned long flags)
+	{
+		RbxSubMesh* mesh = static_cast<RbxSubMesh*>(mShadowSubMesh ? mShadowSubMesh : getCurrentSubMesh());
+		mesh->prepareEdges();
+
+		Vector4 lightPos = light->getAs4DVector();
+		Matrix4 world2Obj = mTransform.inverseAffine();
+		lightPos = world2Obj.transformAffine(lightPos);
+
+		EdgeData* edgeList = mesh->edgeData;
+		if (!edgeList)
+			return ShadowRenderableListIterator(mShadowRenderables.begin(), mShadowRenderables.end());
+
+		bool init = mShadowRenderables.empty();
+		EdgeData::EdgeGroupList::iterator egi;
+		ShadowRenderableList::iterator si, siend;
+		RbxSubEntityShadowRenderable* esr = 0;
+		if (init)
+			mShadowRenderables.resize(edgeList->edgeGroups.size());
+
+		siend = mShadowRenderables.end();
+		egi = edgeList->edgeGroups.begin();
+		for (si = mShadowRenderables.begin(); si != siend; ++si, ++egi)
+		{
+			const VertexData* vertexData = egi->vertexData;
+			if (init)
+				*si = new RbxSubEntityShadowRenderable(0, indexBuffer, vertexData, !extrude, this);
+
+			esr = static_cast<RbxSubEntityShadowRenderable*>(*si);
+			HardwareVertexBufferSharedPtr positionBuffer = esr->getPositionBuffer();
+			if (extrude)
+			{
+				ShadowCaster::extrudeVertices(positionBuffer, egi->vertexData->vertexCount, lightPos, extrusionDistance);
+			}
+			positionBuffer->suppressHardwareUpdate(false);
+		}
+
+		updateEdgeListLightFacing(edgeList, lightPos);
+		generateShadowVolume(edgeList, *indexBuffer, light, mShadowRenderables, flags);
+		return ShadowRenderableListIterator(mShadowRenderables.begin(), mShadowRenderables.end());
+	}
+
+	SubMesh* RbxSubEntity::getCurrentSubMesh(void) const
+	{
+		SubMesh* subMesh = 0;
+		for (int lod = 0; lod >= 0; --lod)
+		{
+			if (mLodSubMeshes[lod])
+			{
+				subMesh = mLodSubMeshes[lod];
+				break;
+			}
+		}
+		if (!subMesh)
+			subMesh = mSubMesh;
+		return subMesh;
+	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Container_base_aux_alloc_real<std::allocator<Ogre::ShadowRenderable *> >;
+template class std::vector<Ogre::ShadowRenderable *,std::allocator<Ogre::ShadowRenderable *> >;

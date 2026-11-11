@@ -1,6 +1,6 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// Joint | 2008-06 | inactive
+// Joint | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src 058c0271 | roc native-status --write
 #include <G3D/CoordinateFrame.h>

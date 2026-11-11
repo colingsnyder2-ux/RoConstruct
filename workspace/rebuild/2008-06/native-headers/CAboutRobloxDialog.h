@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CAboutRobloxDialog | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 0c5f5179 | roc native-status --write
 #include "CRobloxDHtmlDialog.h"
 
 class CAboutRobloxDialog : public CRobloxDHtmlDialog {

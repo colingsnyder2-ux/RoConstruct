@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// TextureProxyBase2008 | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src d2bbd67d | roc native-status --write
 // RBX::TextureProxyBase as compiled into the June 2008 client (inactive native recovery).
 //
 // Non-colliding name: many units include the donor RbxGraphics/TextureProxyBase.h at its original path (a later, smaller

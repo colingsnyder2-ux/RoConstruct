@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// AxisMoveTool | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 1ae357f2 | roc native-status --write
 
 #include <memory>
 #include <G3D/Ray.h>

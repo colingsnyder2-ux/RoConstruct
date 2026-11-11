@@ -3221,7 +3221,7 @@ def main(argv=None):
         (["--lease"], {"type": int, "default": 900, "help": "seconds before an abandoned job frees up"}),
         (["--tunnel"], {"action": "store_true", "help": "public HTTPS address via Cloudflare (no router setup)"}),
         (["--publish"], {"action": "store_true", "help": "publish new sources, partials, mined findings and website changes"}),
-        (["--publish-every"], {"type": int, "default": 3600, "help": "seconds between findings/site checks; unchanged output makes no commit"}),
+        (["--publish-every"], {"type": int, "default": 21600, "help": "seconds between publishes (default 6 h): work auto-commit, findings, site; unchanged output makes no commit"}),
         (["--public-server"], {"help": "address shown on the site (if not using --tunnel)"}),
         (["--startup"], {"action": "store_true", "help": "start `roc host` automatically when you log in"}))
     cmd("host", cmd_host, "run the group server with tunnel + publishing, restarting it if it stops")

@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// ScriptContext | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 84a272b0 | roc native-status --write
 #include "script/Script.h"
 #include "script/ScriptEvent.h"
 #include "script/LuaMemory.h"

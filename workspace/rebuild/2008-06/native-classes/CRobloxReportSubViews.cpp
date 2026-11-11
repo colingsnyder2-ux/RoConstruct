@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CRobloxReportSubViews | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 43cb05b9 | roc native-status --write
 #include "CRobloxReportSubViews.h"
 #include "CRobloxDoc.h"
 
@@ -45,3 +49,7 @@ void CRobloxReportPaneView::update(boost::shared_ptr<RBX::DataModel> current, bo
 {
     setDataModel(current);
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class RBX::Listener<RBX::Instance,RBX::ChildAdded>;
+template class RBX::Listener<RBX::Instance,RBX::ChildRemoved>;

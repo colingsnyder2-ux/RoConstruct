@@ -1,4 +1,8 @@
 // Inactive native 2008-06 RobloxCrashReporter (native-headers/AppLeaves2008/RobloxCrashReporter2008.h).
+// >>> native-status (generated) -- do not edit >>>
+// AppLeaves2008CrashReporter | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src bc1af4a1 | roc native-status --write
 #include <afxwin.h>
 #include <string.h>
 #include <atlbase.h>

@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CRobloxTreeCtrl | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 44f7d365 | roc native-status --write
 #include "CRobloxTreeCtrl.h"
 #include "CRobloxReportView.h"
 #include "v8tree/Instance.h"

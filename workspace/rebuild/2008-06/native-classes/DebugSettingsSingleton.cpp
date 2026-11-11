@@ -1,5 +1,5 @@
 // >>> native-status (generated) -- do not edit >>>
-// DebugSettingsSingleton | 2008-06 | inactive
+// DebugSettingsSingleton | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src 0f789944 | roc native-status --write
 #include "v8datamodel/DebugSettings.h"

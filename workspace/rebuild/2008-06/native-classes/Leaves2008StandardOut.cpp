@@ -7,6 +7,10 @@
 // NATIVE_STANDARDOUT_PENDING (generated donor util/standardout.h copy under out/, see the recorder): the 2008
 // StandardOut has no user-declared destructor (00569590 stores no StandardOut vtable). print 005693a0 needs
 // Notifier::hasListeners as `size() > 0` (`sar eax, 2; test eax, eax; jbe`), now in native-headers/util/Events.h.
+// >>> native-status (generated) -- do not edit >>>
+// Leaves2008StandardOut | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src a6ac1fe2 | roc native-status --write
 #include "leaves2008/StandardOut2008.h"
 #include "leaves2008/Log2008.h"
 #include <G3D/format.h>
@@ -75,3 +79,7 @@ namespace RBX
 	}
 #endif
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::enable_shared_from_this<RBX::StandardOut>;
+template class std::_Container_base_aux_alloc_real<std::allocator<RBX::Listener<RBX::StandardOut,RBX::StandardOutMessage> *> >;

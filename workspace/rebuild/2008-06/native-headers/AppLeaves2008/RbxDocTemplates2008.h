@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// RbxDocTemplates2008 | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 2fa2c9ca | roc native-status --write
 // Inactive native 2008-06 recovery: the IDE document templates owned by CIDEDocManager (CRobloxApp.cpp).
 #include <afxwin.h>
 #include <exception>

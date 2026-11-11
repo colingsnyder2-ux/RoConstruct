@@ -1,6 +1,6 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// Log | 2008-06 | inactive
+// Log | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src 768e3747 | roc native-status --write
 #include "util/Debug.h"

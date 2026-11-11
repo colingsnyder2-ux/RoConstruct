@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// BrickMesh | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 70f85671 | roc native-status --write
 // 2008-06 native RBX::ViewNew::BrickMesh (inactive; only what the ViewNew units here use).
 //   vtable 00826e7c .?AVBrickMesh@ViewNew@RBX@@ -> RenderBase::Mesh -> ReferenceCountedObject (mdisp 0; no MeshFactory
 //   base); one slot (??_G 004e54c0). ctor 004e53c0 (meshKind 1; ret 0x1c) and the cache in 004e54e0 / 004e5300 are not

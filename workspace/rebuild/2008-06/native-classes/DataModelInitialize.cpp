@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// DataModelInitialize | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src ffa526b5 | roc native-status --write
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Workspace.h"
 namespace RBX { typedef DescendantAdded DescendentAdded; typedef DescendantRemoving DescendentRemoving; }
@@ -28,3 +32,8 @@ void DataModel::initializeContents(bool start) {
     ServiceProvider::create<PhysicsService>();
 }
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<RBX::LocalBackpack>;
+template class std::_Vector_const_iterator<RBX::Listener<RBX::RunService,RBX::RunTransition> *,std::allocator<RBX::Listener<RBX::RunService,RBX::RunTransition> *> >;
+template class std::_Vector_iterator<RBX::Listener<RBX::RunService,RBX::RunTransition> *,std::allocator<RBX::Listener<RBX::RunService,RBX::RunTransition> *> >;

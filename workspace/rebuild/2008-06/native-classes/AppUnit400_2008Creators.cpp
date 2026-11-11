@@ -11,6 +11,10 @@
 // Classes in link order: RunService (00405e60..), DebugSettings (00406ed0, 00407450, 00407820, 00408ce0),
 // CRenderSettings (00408d90..00408f50), Team (00409000..), Network::Player (00409270..), Selection (004094e0..).
 // sizeof(C) comes from the native headers and is checked by the malloc size each create<C> passes.
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit400_2008Creators | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 31c02b56 | roc native-status --write
 #include "util/RunStateOwner.h"
 #include "v8datamodel/DebugSettings.h"
 #include "CRenderSettings.h"
@@ -52,3 +56,8 @@ template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::Network::Player
 #ifdef NATIVE_APPUNIT400_PENDING
 template boost::shared_ptr<RBX::Object> RBX::FactoryProduct<RBX::Selection, RBX::Instance, RBX::sSelection>::Creator::create() const;
 #endif
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<CRenderSettings>;
+template class boost::shared_ptr<RBX::DebugSettings>;
+template class boost::shared_ptr<RBX::Network::Player>;

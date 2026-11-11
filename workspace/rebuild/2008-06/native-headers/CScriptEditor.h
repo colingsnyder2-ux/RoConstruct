@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CScriptEditor | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 15706d41 | roc native-status --write
 #include <afxwin.h>
 #include <afxext.h>
 #include <afxdlgs.h>

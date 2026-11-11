@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// FileMesh | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 1cce79ff | roc native-status --write
 // 2008-06 native RBX::ViewNew::FileMesh (inactive): the unit 00500780..00500c98.
 //   vtable 008271cc .?AVFileMesh@ViewNew@RBX@@ -> RenderBase::Mesh -> G3D::ReferenceCountedObject (all mdisp 0; no
 //            MeshFactory base); one slot (??_G 004e54c0, the scalar deleting dtor shared by every ViewNew mesh).

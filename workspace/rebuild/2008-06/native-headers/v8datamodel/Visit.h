@@ -1,6 +1,10 @@
 // 2008-06 override of tools/rbxgs/Client/App/include/v8datamodel/Visit.h: class names are .data
 // char arrays passed directly as template arguments (see native-headers/util/Name.h).
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Visit | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 2afa7d9c | roc native-status --write
 #include "v8tree/Instance.h"
 #include "v8tree/Service.h"
 

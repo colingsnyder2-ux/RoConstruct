@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CChatPrompt | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 59c7aee8 | roc native-status --write
 #include "../native-headers/CChatPrompt.h"
 #include "../native-headers/ChatEnter.h"
 #include "../native-headers/v8datamodel/DataModel.h"
@@ -21,3 +25,6 @@ void CChatPrompt::bind(RBX::DataModel* model, CWnd* host) {
     }
     if (m_hWnd) EnableWindow(players != 0);
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<RBX::GuiRoot>;

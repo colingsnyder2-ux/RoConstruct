@@ -1,5 +1,5 @@
 // >>> native-status (generated) -- do not edit >>>
-// HttpTrustState | 2008-06 | inactive
+// HttpTrustState | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src 66412684 | roc native-status --write
 #include <boost/thread/once.hpp>

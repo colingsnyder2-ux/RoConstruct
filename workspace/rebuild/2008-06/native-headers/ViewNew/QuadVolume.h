@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// QuadVolume | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 7d94e660 | roc native-status --write
 // 2008-06 native RBX::ViewNew::LevelBuilder / RenderSurfaceTypes (inactive).
 //   LevelBuilder  vtable 008270c8 .?AVLevelBuilder@ViewNew@RBX@@ (no bases); 7 slots: 0 build 00500d30, 1..6 the
 //                 pure buildTop / buildBottom / buildLeft / buildRight / buildFront / buildBack (_purecall).

@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Adorn2008 | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src be3147e3 | roc native-status --write
 // RBX::Adorn as compiled into the June 2008 client (inactive native recovery).
 //
 // Non-colliding name: many units include the donor RbxGraphics/Adorn.h at its original path, so the 2008 interface is

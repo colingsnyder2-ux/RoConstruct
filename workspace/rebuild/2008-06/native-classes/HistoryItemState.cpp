@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// HistoryItemState | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 37280e97 | roc native-status --write
 #include "v8datamodel/HistoryRecord.h"
 #include "v8tree/Instance.h"
 #include <algorithm>
@@ -40,3 +44,6 @@ void RBX::HistoryItem::capture(const Reflection::Property& property)
     const Reflection::PropertyDescriptor* descriptor = &property.getDescriptor();
     if (descriptor != &Instance::propParent) captureProperty(descriptor);
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::_mfi::mf1<void,RBX::HistoryItem,RBX::Reflection::Property const &>;

@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// ICharacterSubject | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src c8b185e0 | roc native-status --write
 #include <G3D/Vector3.h>
 #include <G3D/CoordinateFrame.h>
 #include <vector>

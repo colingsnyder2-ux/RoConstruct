@@ -1,6 +1,6 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// CRbxDocTemplate | 2008-06 | inactive
+// CRbxDocTemplate | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src d415dd43 | roc native-status --write
 #include <afxwin.h>

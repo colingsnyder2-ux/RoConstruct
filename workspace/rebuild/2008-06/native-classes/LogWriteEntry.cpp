@@ -1,5 +1,5 @@
 // >>> native-status (generated) -- do not edit >>>
-// LogWriteEntry | 2008-06 | inactive
+// LogWriteEntry | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src 3b3b745a | roc native-status --write
 #include "util/Log.h"

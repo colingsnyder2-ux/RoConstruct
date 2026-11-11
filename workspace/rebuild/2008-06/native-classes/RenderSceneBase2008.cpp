@@ -6,6 +6,11 @@
 //   Render::RenderScene: ctor 00505040, dtor 00503a60, ??_G 00503fc0, setThrottle 00502d30, setLighting 00502e70,
 //   presetLighting 00503cc0, the RenderSurface sort procs 005051e0 / 00505220 / 00505240 and sortBy* 00505860 /
 //   00505890 / 005058c0 with their std::sort helpers. render 00504bf0 is not built (declared only).
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// RenderSceneBase2008 | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 7224c665 | roc native-status --write
 #include "RenderLib/RenderSceneRender2008.h"
 #include <exception>
 
@@ -114,3 +119,7 @@ namespace RBX
 		}
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class G3D::ReferenceCountedPointer<G3D::Lighting>;
+template class std::pair<RBX::Render::RenderSurface * *,RBX::Render::RenderSurface * *>;

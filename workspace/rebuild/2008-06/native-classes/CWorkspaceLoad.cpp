@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CWorkspaceLoad | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 5ed58aae | roc native-status --write
 #include "CWorkspace.h"
 #include "v8datamodel/DataModel.h"
 #include "v8datamodel/Workspace.h"

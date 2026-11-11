@@ -1,5 +1,9 @@
 // 2008-06 native RBX::JointsService (inactive); evidence in native-headers/v8datamodel/JointsService.h.
 // Verified by tests/record_native_services.py.
+// >>> native-status (generated) -- do not edit >>>
+// JointsService | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 2a8df79d | roc native-status --write
 #include "v8datamodel/JointsService.h"
 #include "v8tree/Service.h"
 #include <boost/thread/once.hpp>
@@ -90,3 +94,6 @@ namespace RBX
 		return static_cast<JointsService*>(item.get());
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<RBX::JointInstance>;

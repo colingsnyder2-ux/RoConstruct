@@ -1,5 +1,5 @@
 // >>> native-status (generated) -- do not edit >>>
-// HttpResultCheck | 2008-06 | inactive
+// HttpResultCheck | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src c5db584c | roc native-status --write
 #include <windows.h>

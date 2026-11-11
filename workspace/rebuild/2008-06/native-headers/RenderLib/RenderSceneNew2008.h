@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// RenderSceneNew2008 | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src bfb670e2 | roc native-status --write
 // 2008-06 native RBX::RenderNew::EffectSettings / RenderScene (the Ogre render scene; inactive). Named *2008.h: no donor
 // header has this path (the donor base has only the G3D Render::RenderScene).
 //   EffectSettings 0x14 bytes (RenderScene +0x2f4 .. +0x308). update 007afce0 (this = +0x2f4, ret 0x20, same arguments
@@ -67,6 +71,8 @@ namespace RBX
 			float _groundLOD;                                                         // +0xc
 			float _LODShift;                                                          // +0x10
 		public:
+			// Direct calls in update 007afce0 target local static initializer 007afc60.
+			static G3D::ToneMap* getToneMap();
 			G3D::ReferenceCountedPointer<G3D::Lighting> update(float, float, bool, float,
 			                                                   const G3D::ReferenceCountedPointer<G3D::Lighting>&,
 			                                                   const G3D::LightingParameters&,

@@ -1,5 +1,5 @@
 // >>> native-status (generated) -- do not edit >>>
-// CMainFramePropertyGrid | 2008-06 | inactive
+// CMainFramePropertyGrid | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src 6e5c572c | roc native-status --write
 #include "CMainFrame.h"

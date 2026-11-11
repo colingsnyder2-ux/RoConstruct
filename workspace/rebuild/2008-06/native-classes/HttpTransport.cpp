@@ -1,6 +1,6 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS
 // >>> native-status (generated) -- do not edit >>>
-// HttpTransport | 2008-06 | inactive
+// HttpTransport | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src 652e57a7 | roc native-status --write
 #include "util/Http.h"

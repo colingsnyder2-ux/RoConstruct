@@ -11,6 +11,10 @@
 //     (the void() pair 004b1c60 / 004b1d50 is counted by humanoid2008);
 //   * SignalDescImpl<0, void()>::fire 004b5f40, SignalDescImpl<2, void(std::string, bool)>::fire 004b6040 and the
 //     signal2 slot_call_iterator caller 004b4fb0.
+// >>> native-status (generated) -- do not edit >>>
+// AppUnit4B0_2008Signals | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src fca1edf3 | roc native-status --write
 #include "reflection/signal.h"
 #include <boost/any.hpp>
 #include <boost/function.hpp>
@@ -22,3 +26,9 @@ template class RBX::Reflection::TSignalDesc<void()>;
 template class RBX::Reflection::TSignalDesc<void(std::string, bool)>;
 template class RBX::Reflection::SignalDescImpl<0, void()>;
 template class RBX::Reflection::SignalDescImpl<2, void(std::string, bool)>;
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::function2<void,std::basic_string<char,std::char_traits<char>,std::allocator<char> >,bool,std::allocator<void> >;
+template class boost::function<void __cdecl(std::basic_string<char,std::char_traits<char>,std::allocator<char> >,bool),std::allocator<void> >;
+template class boost::signal0<void,boost::last_value<void>,int,std::less<int>,boost::function<void __cdecl(void),std::allocator<void> > >;
+template class boost::signal2<void,std::basic_string<char,std::char_traits<char>,std::allocator<char> >,bool,boost::last_value<void>,int,std::less<int>,boost::function<void __cdecl(std::basic_string<char,std::char_traits<char>,std::allocator<char> >,bool),std::allocator<void> > >;

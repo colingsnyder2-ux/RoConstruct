@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// NativeExitCommand | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 7c8cb85b | roc native-status --write
 class ExitCommand : public RBX::Verb {
     CRobloxDoc* doc;
 public:

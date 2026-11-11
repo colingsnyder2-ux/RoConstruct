@@ -4,14 +4,28 @@
 // shapes), so every body is guarded by NATIVE_BODYPRIM_PENDING and built only against the generated Contact2008.h copy
 // of tests/record_native_contact_unit2008.py (pending-build-only rows, not counted; proposal in its receipt).
 // Contact2008.h reaches the donor v8world/Edge.h -> IPipelined.h, so Primitive2008.h takes the donor IPipelined.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// ContactUnit2008Contact | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 7368f1e4 | roc native-status --write
 #define NATIVE_IPIPELINED2008_DONOR
 #include "v8world/Contact2008.h"
 #include "v8world/Primitive2008.h"
 #include "v8kernel/Constants.h"
+#include <G3D/Vector3int16.h>
 #include <algorithm>
 
 namespace RBX
 {
+	bool BallBlockContact::computeIsColliding(float overlapIgnored)
+	{
+		short onBorder = 0;
+		G3D::Vector3int16 clip;
+		G3D::Vector3 projectionInBlock;
+		return computeIsColliding(onBorder, clip, projectionInBlock, overlapIgnored);
+	}
+
 	// 00607ad0 (declared in Contact2008.h): friction +0xb0, elasticity +0xb4 and the JointK ComputeProp +0xec of both
 	// primitives (Primitive2008.h); Constants::getElasticMultiplier 00649320.
 	void Contact::onPrimitiveContactParametersChanged()
@@ -79,3 +93,7 @@ namespace RBX
 	}
 #endif
 }
+
+// Methods recovered from exact mined packets: field offsets mapped to this header by compiler layout.
+void RBX::Primitive::setCanSleep(bool v) { if (v != canSleep) canSleep = v; }
+void RBX::Primitive::setSurfaceType(RBX::NormalId index, RBX::SurfaceType value) { if (surfaceType[index] != value) surfaceType[index] = value; }

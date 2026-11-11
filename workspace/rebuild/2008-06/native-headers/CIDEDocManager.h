@@ -1,6 +1,6 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// CIDEDocManager | 2008-06 | inactive
+// CIDEDocManager | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src ad7f376c | roc native-status --write
 #include <afxwin.h>

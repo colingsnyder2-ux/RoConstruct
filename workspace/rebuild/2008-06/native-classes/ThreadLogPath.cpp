@@ -1,6 +1,6 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/mfc-noinline-pcxstr /I{headers}/std-noinline-string
 // >>> native-status (generated) -- do not edit >>>
-// ThreadLogPath | 2008-06 | inactive
+// ThreadLogPath | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src 8213d38c | roc native-status --write
 #include "CRobloxApp.h"

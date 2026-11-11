@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// InstanceAncestorChangedNative | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src d19f3f59 | roc native-status --write
 #include "v8tree/Instance.h"
 
 namespace RBX {

@@ -5,6 +5,10 @@
 // instance copied first (+0x0/+0x4, add-ref of the source count), then shared_from(instance->parent) (+0x8/+0xc), and
 // passed by value (0x10 bytes) to Notifier<Instance, DescendantRemoving>::raise 00558660.
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// InstanceDescendantRemoving2008 | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 130472c5 | roc native-status --write
 #include "v8tree/InstanceEvents.h"
 
 namespace RBX {

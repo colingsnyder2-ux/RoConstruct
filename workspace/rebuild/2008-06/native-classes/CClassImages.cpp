@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CClassImages | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src d699077e | roc native-status --write
 #include "CClassImages.h"
 #include <XTToolkitPro.h>
 #include <stdexcept>

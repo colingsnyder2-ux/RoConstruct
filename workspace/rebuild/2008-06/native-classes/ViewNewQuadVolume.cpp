@@ -1,4 +1,9 @@
 // 2008-06 native RBX::ViewNew::LevelBuilder (inactive): the QuadVolume unit 00500ca0..0050103f (+ Array<unsigned>::append 00500690).
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// ViewNewQuadVolume | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src bb6961a0 | roc native-status --write
 #include "ViewNew/QuadVolume.h"
 
 namespace RBX
@@ -103,3 +108,6 @@ namespace RBX
 		}
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class G3D::ReferenceCountedPointer<RBX::RenderBase::Mesh::Level>;

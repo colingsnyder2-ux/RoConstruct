@@ -1,7 +1,7 @@
 // >>> native-status (generated) -- do not edit >>>
-// BrowserViewExternalFactory | 2008-06 | inactive
+// BrowserViewExternalFactory | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
-// <<< native-status | src 4524d0a7 | roc native-status --write
+// <<< native-status | src 1772334e | roc native-status --write
 #include <afxwin.h>
 #include "CBrowserViewExternal.h"
 
@@ -22,3 +22,7 @@ HRESULT __cdecl createBrowserViewExternal(ATL::CComObjectNoLock<CBrowserViewExte
     *result = object;
     return status;
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class ATL::CComPtrBase<ITypeInfo2>;
+template class ATL::CComPtrBase<IUnknown>;

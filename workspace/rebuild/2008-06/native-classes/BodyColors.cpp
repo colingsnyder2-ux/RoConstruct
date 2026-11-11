@@ -2,6 +2,10 @@
 // Layout and evidence: native-headers/v8datamodel/BodyColors.h. Verified by tests/record_native_appearance.py.
 // In the original, BodyColors shares the CharacterAppearance unit with Clothing/Shirt/Pants/ShirtGraphic/Skin
 // (native-classes/Clothing.cpp, another owner); CharacterAppearance::dataChanged 005d3b50 is defined there.
+// >>> native-status (generated) -- do not edit >>>
+// BodyColors | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src a6da4090 | roc native-status --write
 #include "v8datamodel/BodyColors.h"
 #include "v8datamodel/PartInstance.h"
 #include "humanoid/Humanoid.h"
@@ -75,3 +79,6 @@ namespace RBX
 	}
 #endif
 }
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sBodyColors>();

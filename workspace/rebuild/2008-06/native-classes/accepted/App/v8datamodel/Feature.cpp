@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// Feature | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src a022f53b | roc native-status --write
 #include "v8datamodel/Feature.h"
 #include "v8datamodel/Workspace.h"
 #include "v8world/MotorJoint.h"

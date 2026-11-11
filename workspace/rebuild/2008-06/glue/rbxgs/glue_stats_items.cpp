@@ -11,53 +11,8 @@ namespace RBX
 {
 	namespace Stats
 	{
-		Item::Item()
-			: val(0)
-		{
-		}
 
-		Item::Item(const char* name)
-			: val(0)
-		{
-			setName(name);
-		}
 
-		bool Item::askAddChild(const Instance* instance) const
-		{
-			return dynamic_cast<const Item*>(instance) != NULL;
-		}
-
-		void Item::formatMem(size_t bytes)
-		{
-			char text[64];
-			if (bytes < 1000)
-				_snprintf(text, sizeof(text), "%u B", (unsigned)bytes);
-			else if (bytes < 1000000)
-				_snprintf(text, sizeof(text), "%u KB", (unsigned)(bytes / 1000));
-			else if (bytes < 1000000000)
-				_snprintf(text, sizeof(text), "%u MB", (unsigned)(bytes / 1000000));
-			else
-				_snprintf(text, sizeof(text), "%u GB", (unsigned)(bytes / 1000000000));
-			setValue((double)bytes, text);
-		}
-
-		void Item::formatValue(double value, const char* format, ...)
-		{
-			char text[256];
-			va_list args;
-			va_start(args, format);
-			_vsnprintf(text, sizeof(text), format, args);
-			va_end(args);
-			text[sizeof(text) - 1] = 0;
-			setValue(value, text);
-		}
-
-		Item* Item::createChildItem(const char* name)
-		{
-			Item* item = Creatable<Instance>::create<Item>(name).get();
-			item->setParent(this);
-			return item;
-		}
 
 		namespace
 		{
@@ -82,11 +37,5 @@ namespace RBX
 			};
 		}
 
-		Item* Item::createBoundChildItem(const Profiling::Profiler& profiler)
-		{
-			Item* item = Creatable<Instance>::create<ProfilerItem>(boost::cref(profiler)).get();
-			item->setParent(this);
-			return item;
-		}
 	}
 }

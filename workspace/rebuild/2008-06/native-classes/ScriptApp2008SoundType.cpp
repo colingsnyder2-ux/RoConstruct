@@ -4,6 +4,10 @@
 // Name "SoundType" 00845858, type descriptor 0095b3a4, EnumDesc<SoundType> vtable 00837a40, fifteen addPair calls
 // (ICF-shared addPair 0064d530). Enum values from the native util/Sound.h (read-only).
 // Verified by tests/record_native_script_app2008.py.
+// >>> native-status (generated) -- do not edit >>>
+// ScriptApp2008SoundType | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 5acdc6f7 | roc native-status --write
 #include "util/Sound.h"
 #include "reflection/enumconverter.h"
 
@@ -29,3 +33,15 @@ namespace RBX
 		addPair(VICTORY_SOUND, "Victory");
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class RBX::Reflection::EnumDesc<enum RBX::SoundType>;
+template class std::_Container_base_aux_alloc_real<std::allocator<enum RBX::SoundType> >;
+template class std::_Container_base_aux_alloc_real<std::allocator<std::pair<RBX::Name const * const,enum RBX::SoundType> > >;
+template class std::_Tmap_traits<RBX::Name const *,enum RBX::SoundType,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::SoundType> >,0>;
+template class std::_Tree<std::_Tmap_traits<RBX::Name const *,enum RBX::SoundType,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::SoundType> >,0> >;
+template class std::_Vector_const_iterator<enum RBX::SoundType,std::allocator<enum RBX::SoundType> >;
+template class std::_Vector_iterator<enum RBX::SoundType,std::allocator<enum RBX::SoundType> >;
+template class std::allocator<std::_Tree_nod<std::_Tmap_traits<RBX::Name const *,enum RBX::SoundType,std::less<RBX::Name const *>,std::allocator<std::pair<RBX::Name const * const,enum RBX::SoundType> >,0> >::_Node *>;
+template class std::allocator<std::pair<RBX::Name const * const,enum RBX::SoundType> >;
+template class std::vector<enum RBX::SoundType,std::allocator<enum RBX::SoundType> >;

@@ -446,7 +446,7 @@ def main(argv=None):
     review.add_argument('--detail', required=True)
     host = sub.add_parser('host')
     host.add_argument('--port', type=int, default=8766)
-    host.add_argument('--publish-every', type=int, default=3600)
+    host.add_argument('--publish-every', type=int, default=21600)   # owner: one publish cycle every 6 h
     sub.add_parser('supervise')
     guard = sub.add_parser('integration-lock')
     guard.add_argument('operation', choices=['start','release','hold'])

@@ -2,6 +2,10 @@
 // Profile (tests/record_native_luahtml_binder2008.py): document-swap flags with native-headers/mfc-noinline-pcxstr,
 // std-noinline-string and boost-function-pod-vtable put first. The NATIVE_LUAHTMLBINDER2008_PENDING connect in the
 // PropBinding constructor needs Instance::event_propertyChanged (proposal in the receipt).
+// >>> native-status (generated) -- do not edit >>>
+// LuaHtmlBinder2008 | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 595abd96 | roc native-status --write
 #include "LuaHtmlBinder2008/LuaHtmlBinder2008.h"
 #include "AppLeaves2008/DHTMLWindowService2008.h"
 #include "security/SecurityContext.h"

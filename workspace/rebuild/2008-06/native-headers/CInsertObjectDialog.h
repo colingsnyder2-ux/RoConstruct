@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// CInsertObjectDialog | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 86e32f0c | roc native-status --write
 #include <afxwin.h>
 #include <afxcmn.h>
 #include <boost/shared_ptr.hpp>

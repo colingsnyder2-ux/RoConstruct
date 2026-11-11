@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// RobloxCrashReporter2008 | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 61d3a82a | roc native-status --write
 // Inactive native 2008-06 RobloxCrashReporter (RTTI of vtable 00810320: RobloxCrashReporter : CrashReporter).
 // CrashReporter is the donor Network/CrashReporter.h class: vptr +0, CrashReportControls controls +4
 // (actionToTake +4, appName +8, appVersion +0x88, pathToMinidump +0x108, minidumpType +0x7cc), sizeof 0x7d0.

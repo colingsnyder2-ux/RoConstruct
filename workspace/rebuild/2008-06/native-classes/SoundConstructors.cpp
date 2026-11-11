@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// SoundConstructors | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 2fdea2ee | roc native-status --write
 #include "util/Sound.h"
 
 namespace RBX {

@@ -1,0 +1,13 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/Hopper.cpp",
+      "checks": [
+        {
+          "addr": "005d1370",
+          "symbol": "?onLocalOtherClicked@HopperBin@RBX@@UAEXXZ"
+        }
+      ]
+    }
+  ]
+}

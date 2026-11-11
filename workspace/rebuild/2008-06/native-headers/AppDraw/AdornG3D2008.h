@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// AdornG3D2008 | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 66a9a7ee | roc native-status --write
 // RBX::AdornG3D as compiled into the June 2008 client (inactive native recovery; non-colliding name, see
 // RbxGraphics/Adorn2008.h).
 //

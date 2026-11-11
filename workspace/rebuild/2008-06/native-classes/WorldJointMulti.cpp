@@ -3,6 +3,10 @@
 // constructors, the destructor, putInKernel, addToMultiJoint, getPoint, removeFromKernel, isBroken and the scalar
 // deleting destructor. getJointK 00646af0 reads the native Primitive's computed joint-K property and is not part of
 // this unit yet.
+// >>> native-status (generated) -- do not edit >>>
+// WorldJointMulti | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 7501bcc1 | roc native-status --write
 #include "v8world/Joints2008.h"
 #include "v8kernel/Kernel.h"
 #include "v8kernel/Connector.h"

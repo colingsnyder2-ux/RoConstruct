@@ -1,5 +1,9 @@
 // 2008-06 native RBX::TimerService (inactive); evidence in native-headers/v8datamodel/TimerService.h.
 // Verified by tests/record_native_spawn.py.
+// >>> native-status (generated) -- do not edit >>>
+// TimerService | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 0337da3b | roc native-status --write
 #include "v8datamodel/TimerService.h"
 #include "util/standardout.h"
 #include <G3D/System.h>
@@ -82,3 +86,11 @@ namespace RBX
 		Notifier<RunService, Heartbeat>::connect(runService, this);
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Container_base_aux_alloc_real<std::allocator<RBX::TimerService::Item> >;
+template class std::allocator<RBX::TimerService::Item>;
+template class std::allocator<std::_List_nod<RBX::TimerService::Item,std::allocator<RBX::TimerService::Item> >::_Node *>;
+
+// Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
+template void RBX::Name::callDoDeclare<RBX::sTimerService>();

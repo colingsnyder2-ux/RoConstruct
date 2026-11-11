@@ -1,7 +1,7 @@
 // >>> native-status (generated) -- do not edit >>>
-// TreeNodeAddChildren | 2008-06 | inactive
+// TreeNodeAddChildren | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
-// <<< native-status | src 989379ea | roc native-status --write
+// <<< native-status | src bac97f51 | roc native-status --write
 #include "CRobloxTreeCtrl.h"
 
 void CRobloxTreeCtrlNode::addChildren()
@@ -16,3 +16,6 @@ void CRobloxTreeCtrlNode::addChildren()
         addChild(child);
     }
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Tree<std::_Tset_traits<boost::shared_ptr<RBX::Instance>,std::less<boost::shared_ptr<RBX::Instance> >,std::allocator<boost::shared_ptr<RBX::Instance> >,0> >;

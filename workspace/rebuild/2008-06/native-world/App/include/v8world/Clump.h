@@ -1,7 +1,7 @@
 // Source-derived world pipeline port from openrbx include/v8world/Clump2.h.
 // June anchor swap is evidenced at 0064cc40/0064ccf0; full ABI/physics parity remains unproven.
 // >>> native-status (generated) -- do not edit >>>
-// Clump | 2008-06 | inactive
+// Clump | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src d61ee90d | roc native-status --write
 #ifndef V8WORLD_CLUMP2_H

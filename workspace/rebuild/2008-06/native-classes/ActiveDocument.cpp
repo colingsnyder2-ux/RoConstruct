@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// ActiveDocument | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 51234cfe | roc native-status --write
 #include "ActiveDocView.h"
 #include "CRobloxDoc.h"
 
@@ -18,3 +22,6 @@ void setActiveDocument(bool active, CRobloxDoc* document)
             (*it)->update(activeDocDataModel, previous);
     }
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class std::_Tree<std::_Tset_traits<ActiveDocView *,std::less<ActiveDocView *>,std::allocator<ActiveDocView *>,0> >;

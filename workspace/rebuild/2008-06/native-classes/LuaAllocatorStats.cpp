@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// LuaAllocatorStats | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src a174770c | roc native-status --write
 #include <cstddef>
 #include "script/LuaMemory.h"
 

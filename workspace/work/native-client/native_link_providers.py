@@ -1,0 +1,68 @@
+"""Which unresolved link symbols a compiled native source already defines.
+
+Reads `link/probe.json` (unresolved list) and every native-source object the
+template/profile tools compiled.  Per unresolved symbol:
+
+  native-source-defines   a native-classes object defines it: add that source to the link
+  closure-exact-elsewhere a non-native object has the exact body (library / donor tree)
+  closure-named           original address known, no exact body yet
+  unknown                 no identity evidence
+
+Output: claude-link-unresolved-providers.json.  Selection evidence only.
+"""
+import argparse
+import json
+import sys
+from collections import Counter, defaultdict
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE.parents[1]))
+from roc import match  # noqa: E402
+
+
+def provider_source(stem):
+    native = HERE.parents[1] / 'rebuild/2008-06/native-classes' / (stem + '.cpp')
+    local = HERE / (stem + '.cpp')
+    return native if native.is_file() else local if local.is_file() else None
+
+ap = argparse.ArgumentParser(description=__doc__)
+ap.add_argument('--closure-from', type=Path, help='include introduced dependencies from a rejected family trial')
+ap.add_argument('--output', type=Path, default=HERE / 'claude-link-unresolved-providers.json')
+args = ap.parse_args()
+unresolved = json.loads((HERE / 'link/probe.json').read_text())['unresolved']
+if args.closure_from:
+    trial = json.loads(args.closure_from.read_text())
+    unresolved = sorted(set(unresolved) | set(trial.get('link_trial', {}).get('introduced', [])))
+closure = {r['symbol']: r for r in json.loads((HERE / 'claude-identity-closure.json').read_text())['bindings']}
+registry = json.loads((HERE.parents[1] / 'work/2008-06/identity-registry.json').read_text())
+identities = {r['name']: addr for addr, r in registry.items() if not r.get('placeholder')}
+defines = defaultdict(set)
+objects = (list(HERE.glob('claude-template-applied/*/after/candidate.obj')) +
+           list(HERE.glob('claude-template-promote/*/baseline/candidate.obj')) +
+           list(HERE.glob('claude-profile-applied/*/after/candidate.obj')) +
+           list(HERE.glob('obj-engine-abi/*.obj')) + list(HERE.glob('obj/*.obj')))
+for obj in objects:
+    try:
+        _, _, definitions, _ = match._coff_data_index(obj.read_bytes())
+    except (ValueError, IndexError, KeyError):
+        continue
+    for symbol in definitions:
+        stem = obj.stem if obj.parent.name in ('obj-engine-abi', 'obj') else obj.parents[1].name
+        if provider_source(stem):
+            defines[symbol].add(stem)
+rows, count = [], Counter()
+for symbol in unresolved:
+    providers = sorted(defines.get(symbol, ()))
+    bound = closure.get(symbol)
+    kind = ('native-source-defines' if providers else 'closure-exact-elsewhere' if bound and bound['body_exact']
+            else 'closure-named' if bound or symbol in identities else 'unknown')
+    count[kind] += 1
+    rows.append({'symbol': symbol, 'kind': kind, 'providers': providers[:6],
+                 'address': bound['addr'] if bound else identities.get(symbol)})
+args.output.write_text(json.dumps(rows, indent=1) + '\n')
+print(len(unresolved), dict(count), 'objects scanned', len(objects))
+for kind in ('native-source-defines', 'unknown'):
+    print('--', kind)
+    for r in [r for r in rows if r['kind'] == kind][:12]:
+        print(r['address'], r['providers'][:2], r['symbol'][:90])

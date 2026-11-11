@@ -1,6 +1,6 @@
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
-// ToolsPart | 2008-06 | inactive
+// ToolsPart | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src 7146536f | roc native-status --write
 // Inactive TU profile: original setter signature, inline value snapshot.

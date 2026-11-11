@@ -1,8 +1,8 @@
 // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/engine-world
 // >>> native-status (generated) -- do not edit >>>
-// PhysicsServiceProvider | 2008-06 | inactive
+// PhysicsServiceProvider | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
-// <<< native-status | src 2a5e073d | roc native-status --write
+// <<< native-status | src fe772980 | roc native-status --write
 #include "v8world/World.h"
 #include "v8datamodel/PhysicsService.h"
 #include "v8datamodel/Workspace.h"
@@ -24,3 +24,13 @@ void PhysicsService::onServiceProvider(const ServiceProvider* oldProvider, const
     }
 }
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class RBX::Notifier<RBX::World,RBX::AssemblyPhysicsOff>;
+template class RBX::Notifier<RBX::World,RBX::AssemblyPhysicsOn>;
+template class std::_Vector_const_iterator<RBX::Listener<RBX::World,RBX::AssemblyPhysicsOff> *,std::allocator<RBX::Listener<RBX::World,RBX::AssemblyPhysicsOff> *> >;
+template class std::_Vector_const_iterator<RBX::Listener<RBX::World,RBX::AssemblyPhysicsOn> *,std::allocator<RBX::Listener<RBX::World,RBX::AssemblyPhysicsOn> *> >;
+template class std::_Vector_iterator<RBX::Listener<RBX::World,RBX::AssemblyPhysicsOff> *,std::allocator<RBX::Listener<RBX::World,RBX::AssemblyPhysicsOff> *> >;
+template class std::_Vector_iterator<RBX::Listener<RBX::World,RBX::AssemblyPhysicsOn> *,std::allocator<RBX::Listener<RBX::World,RBX::AssemblyPhysicsOn> *> >;
+template class std::vector<RBX::Listener<RBX::World,RBX::AssemblyPhysicsOff> *,std::allocator<RBX::Listener<RBX::World,RBX::AssemblyPhysicsOff> *> >;
+template class std::vector<RBX::Listener<RBX::World,RBX::AssemblyPhysicsOn> *,std::allocator<RBX::Listener<RBX::World,RBX::AssemblyPhysicsOn> *> >;

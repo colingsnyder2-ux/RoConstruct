@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// AuthoringSettings | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 64e4ec9a | roc native-status --write
 #include "v8datamodel/GlobalSettings.h"
 
 // Inactive layout recovery. RTTI .?AVAuthoringSettings@@ (global namespace) via

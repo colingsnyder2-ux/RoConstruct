@@ -1,5 +1,5 @@
 // >>> native-status (generated) -- do not edit >>>
-// HttpRobloxSite | 2008-06 | inactive
+// HttpRobloxSite | 2008-06 | selection unverified
 // unmapped (no binary link) | by -
 // <<< native-status | src 4b7cee21 | roc native-status --write
 #include <shlwapi.h>

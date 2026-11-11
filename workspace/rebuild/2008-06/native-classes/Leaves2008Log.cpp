@@ -1,6 +1,10 @@
 // 2008-06 native RBX::Log (inactive), declared in native-headers/leaves2008/Log2008.h. Original unit 005a6bb0..005a6fa2
 // (setLogProvider, formatMem, formatTime, the file-local timeStamp, Log(), ~Log(), writeEntry) and the scalar
 // deleting destructor 005a6fb0. Verified by tests/record_native_leaves2008.py.
+// >>> native-status (generated) -- do not edit >>>
+// Leaves2008Log | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 18e41097 | roc native-status --write
 #define _CRT_SECURE_NO_DEPRECATE
 #include "leaves2008/Log2008.h"
 #include <windows.h>

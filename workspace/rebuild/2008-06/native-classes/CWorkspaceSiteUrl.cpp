@@ -1,3 +1,7 @@
+// >>> native-status (generated) -- do not edit >>>
+// CWorkspaceSiteUrl | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 626fb507 | roc native-status --write
 #include "CWorkspace.h"
 #include <servprov.h>
 #include <exdisp.h>
@@ -24,3 +28,8 @@ HRESULT IObjectSafetyRobloxImpl<T, Supported>::getSiteUrl(ATL::CComBSTR& url, DW
 }
 
 template HRESULT IObjectSafetyRobloxImpl<CWorkspace, 1>::getSiteUrl(ATL::CComBSTR&, DWORD&);
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class ATL::CComPtrBase<IInternetSecurityManager>;
+template class ATL::CComPtrBase<IServiceProvider>;
+template class ATL::CComPtrBase<IWebBrowser2>;

@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// DHTMLWindow2008 | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 78de3abd | roc native-status --write
 // Inactive native 2008-06 recovery: DHTMLWindow, the scriptable HTML window of the DHTMLWindowService translation
 // unit (00416e60..0041d300, dynamic initializers 007eed70..007eef20, atexit 007fa620..007fa760).
 // Non-colliding name: no donor header declares this class.

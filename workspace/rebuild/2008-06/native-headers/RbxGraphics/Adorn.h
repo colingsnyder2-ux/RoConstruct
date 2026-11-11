@@ -1,4 +1,8 @@
 #pragma once
+// >>> native-status (generated) -- do not edit >>>
+// Adorn | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src f2b0d550 | roc native-status --write
 #include <string>
 #include <G3D/Vector2.h>
 #include <G3D/Rect2D.h>

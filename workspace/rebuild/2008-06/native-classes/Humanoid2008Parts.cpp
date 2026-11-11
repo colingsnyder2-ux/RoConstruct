@@ -7,7 +7,13 @@
 // virtual bodies here (getContactManager, getLocation) do not depend on Connector slot order. The recorder builds this unit
 // with native-headers/engine-world ahead of the donor dirs (the 2008 World: contactManager at +0x84).
 // Verified by tests/record_native_humanoid2008.py.
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast
+// >>> native-status (generated) -- do not edit >>>
+// Humanoid2008Parts | 2008-06 | selection unverified
+// unmapped (no binary link) | by -
+// <<< native-status | src 02c79c42 | roc native-status --write
 #define NATIVE_HUMANOID2008_DONOR_CONNECTOR
+#include "util/NativeContentProvider.h"
 #include "v8datamodel/PartInstance.h"
 #include "v8datamodel/ForceField.h"
 #include "humanoid/Humanoid2008.h"
@@ -209,3 +215,6 @@ namespace RBX
 		}
 	}
 }
+
+// Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
+template class boost::shared_ptr<RBX::AutoJoint>;
