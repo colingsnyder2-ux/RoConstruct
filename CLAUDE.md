@@ -139,6 +139,12 @@ Native: use the verified Worker bootstrap and missing-input setup in
 `docs/NATIVE_AGENT.md`; preserve edits and start automatic draft uploads.
 Mining: use `docs/MINING_WORKFLOW.md`. Do not switch workflows during setup.
 
+## Hourly self-audit (native work)
+
+Once per session start an hourly job in your own agent (Claude Code: `/loop 60m`; Codex: a recurring automation)
+that runs `work/native-client/AUDIT_PROMPT.md`: `audit_digest.py --write` gives bytes/hour, time per tool and repeated
+command shapes; automate repeats into one `.py`, speed up the slowest step, try evidence-backed `// INFERRED:` fixes.
+
 ## Where the knowledge is
 
 - `docs/GHIDRA_REFERENCE.md` - optional symbolized iOS 2013 pseudo-C donor and
