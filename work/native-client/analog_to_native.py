@@ -226,6 +226,13 @@ def transplant(a, owner, leaf, method, dest):
     d = defs[-1]
     body = block(text, d.start())
     body = body[:d.start(2) - d.start()] + body[d.start(3) - d.start():]       # drop namespace qualifiers
+    # Analog/fork receiver views name members by offset (field279); the native header comments them "// +0x279".
+    import ogre_llm_lane as ol
+    header = ol.class_header(leaf, method)
+    if header:
+        offsets = {int(o, 16): n for n, o in re.findall(r'(\w+)(?:\[[^\]]*\])?;\s*//\s*\+0x([0-9a-fA-F]+)',
+                                                         (ROOT / header).read_text(errors='replace'))}
+        body = re.sub(r'\bfield([0-9a-f]+)\b', lambda m: offsets.get(int(m.group(1), 16), m.group(0)), body)
     spaces = owner.split('::')[:-1]
     code = ''.join('namespace %s {\n' % n for n in spaces) + body + '\n' + '}\n' * len(spaces)
     path = ROOT / dest
