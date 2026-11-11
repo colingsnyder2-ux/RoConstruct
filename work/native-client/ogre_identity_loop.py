@@ -33,13 +33,14 @@ def size(addrs):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument('--rounds', type=int, default=6)
+    ap.add_argument("--rounds", type=int, default=6)
+    ap.add_argument("--start", type=int, default=1, help="first round number (manifest/receipt names)")
     args = ap.parse_args()
     roots = set(run_all.roots(SCOPE))
     inventory = json.loads(INVENTORY.read_text())
     evidence = inventory['families'][0]['evidence']
     known = [ROOT / e for e in evidence if 'reference-bindings' in e]
-    for rnd in range(1, args.rounds + 1):
+    for rnd in range(args.start, args.start + args.rounds):
         started = time.time()
         INVENTORY.write_text(json.dumps(inventory, indent=1))
         out = HERE / ('ogre-native-full-census-loop%d' % rnd)

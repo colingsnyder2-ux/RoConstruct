@@ -95,7 +95,14 @@ def typed_data(symbols, output, mode):
         # typed scalars, printable const strings, and null pointers/zero-fill data.
         if not addr or (mode == 'scalars' and not conv.re.search(r'@@[23](?:C|D|E|F|G|H|I|J|K|M|N|_N|_J|_K)[AB]$', symbol)):
             continue
+        # QBDB encodes a const pointer to const char, not inline char storage.
+        if conv.re.search(r'@@[23]QBDB$', symbol):
+            continue
         definition = conv.data_def(int(addr, 16), symbol)
+        # A same-sized void pointer is not the declared object/function pointer
+        # type.  Byte equality does not prove a typed definition.
+        if definition and conv.re.search(r'\bvoid\s*\*', definition):
+            continue
         if definition:
             definitions.append(definition)
             bindings.append({'symbol': symbol, 'address': addr, 'kind': 'data',
@@ -216,6 +223,7 @@ def main():
         used_symbols.add(symbol)
         selected.append({'source': 'converter:' + addr,
                          'object': str(obj.relative_to(ROOT)).replace('\\', '/'),
+                         'object_sha256': hashlib.sha256(obj.read_bytes()).hexdigest(),
                          'symbols': [{'symbol': symbol, 'address': addr}],
                          'code_bytes': funcs[addr]['size']})
     args.output.parent.mkdir(parents=True, exist_ok=True)

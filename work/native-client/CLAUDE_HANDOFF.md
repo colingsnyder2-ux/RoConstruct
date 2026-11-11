@@ -2,6 +2,29 @@
 
 ## Update log
 
+### 2026-11-11 00:20 (Claude) - Ogre native: 24.5% -> 42.3% of Ogre-scope root bytes, tools, next lane
+- Metric: Ogre-scope roots = run_all.roots(('Ogre::','RBX::RenderNew','RBX::ViewNew')), 987 fns / 298,912 B. Byte-proved native
+  (inactive_exact, evidence-backed): 442 / 73,367 B (Codex census) -> **609 / 126,516 B (42.3%)**. All proved native addresses
+  incl. emitted helpers: 687 / 106,441 B -> 1,762 / 195,730 B. Latest manifest: ogre-native-full-census-loop7/manifest.json.
+- What moved it (no LLM, no new bodies): (1) import_thunk_identities.py: binds C++ imports and msvcr90/msvcp90 C imports to their
+  FF 25 thunks, plus ??_7type_info@@6B@ = 00850180 (all 2,949 RTTI descriptors agree); (2) batch_reference_bind.py: runs
+  native_reference_alias_bind.py in-process (one shared Targets index: 206 owners in 13 s) over every draft whose only blocker
+  is reference identity, keeps identities consistent across owners; (3) ogre_identity_loop.py: census<->binder fixpoint
+  (converged round 7); (4) 8 Ogre files never compiled (no Ogre include in native-flags; some only had roc-flags): fixed,
+  committed 6546f03d4a; (5) census inventory widened by class leaf names and template instantiations (40 sources:
+  ogre-native-full-inventory-all.json; the 25-file narrow one is .narrow.json); (6) ogre-registry-identities.json: proved
+  registry names as evidence, resolves byte-identical copies (e.g. SphereBuilder::build*).
+- Exhausted lanes: template per-line promotion (ogre_template_promote.py, 166 strict line TUs, 0 new beyond census);
+  LLM lane (ogre_llm_lane.py, combined closure ogre-combined-closure.json): 0/11, every failure a missing header declaration
+  (RbxSky 3-arg ctor, incomplete PartInstance, undeclared Lighting). Only 22 of 578 placeholders sit in a vtable
+  (vtable_owner_scan.py).
+- Remaining 378 roots / ~172 KB: 113 mined-analog placeholders (51 KB), 76 donor-named without native body (41 KB: 36
+  template owners, 27 no native header declaring class+method), 48 upstream-named (23 KB, mostly no header), ~100
+  native bodies with ambiguous/unproved identity (17 KB). Next lane = header recovery: give classes like
+  RBX::View::PartChunk2, RBX::ViewNew::PartView, RBX::View::MeshFactory a native header from donor/registry evidence,
+  accepted only through native_class_layout.py + native_layout_gate.py; then reuse ogre_llm_lane.py.
+- Codex thread A (Ogre) is paused; this lane is Claude's now.
+
 ### 2026-11-10 22:55 (Claude) - publish/auto-commit, banners, restarts, fan-out note
 - Pushed fd3dff7487 + 2ab5c298f1 to origin/codex/native-partial-search-20261029: all rebuild/2008-06 native sources, roc/, tests,
   and tool scripts force-added from work/native-client (work/ is otherwise ignored).
@@ -551,6 +574,15 @@ roc.cmd native-bulk work/native-client/identity-bulk-shard00.json --out work/nat
 
 - Planned `converter_link_select.py --trial-link`: append `link_trial` to its selection receipt with baseline/trial unresolved sets, duplicate check, net gain, and per-provider introduced undefined dependencies; always restore baseline probe after a rejected trial. Receipt extension only; registry and `ogre_convert.py` formats unchanged.
 - Closure trial batch7: 20 candidate bodies / 1,922 B, link 172 -> 217 unresolved, 65 introduced; rejected and baseline restored. Batch6 also lost 25 unresolved. Park closure selection until compiler-emitted vtables/data or missing provider evidence changes; two consecutive zero-gain trials.
+- Typed-data correction: selected batch1 emitted `void*` for 0096c238 and 0096dd00; latter is a function pointer in the registry, former lacks a proved type. Byte equality alone does not prove typed source. Removed that 8 B provider from cumulative link selection pending exact declarations; coverage metrics containing these generic-pointer rows are provisional and must not be presented as fully typed.
+- Registry metric excludes generic `void*` stand-ins; latest corrected coverage 10,243 B (.data 1,045, .rdata 9,198). Selector now rejects those definitions; converter itself remains unchanged and its generated pointer data must not be selected as typed source.
+- Replaced both withdrawn globals with real pointer declarations: `nativeRegistrationCallback` is a `long (__stdcall*)()` and `activeRobloxDoc` is `CRobloxDoc*`, each 4 B BSS byte/symbol proved, object-hash pinned. Link trials 174 -> 173 -> 172 unresolved, zero duplicates; selected receipts `selected-typed-callback.json` and `selected-typed-document-pointer.json`.
+- Registry metric and selector now exclude converter arrays standing in for `@@3QBDB` const pointers pending pointer/target relocation proof. Compiler-generated native string receipts remain separate. Corrected coverage: 8,565 B (.data 1,075, .rdata 7,490). No registry schema or converter format change.
+- Registry typed-data receipt rows now count only while source and object SHA-256 match their proof receipt. Latest coverage 8,566 B (.data 1,075, .rdata 7,491); converter-batch metrics still need their own source/object freshness audit. No registry schema or converter format change.
+- Registry metric change parked: converter-batch data receipts lack source/object SHA-256. Patch to exclude them failed with `Failed to write file`; source remains syntactically valid. Existing coverage remains provisional until freshness proof. Existing legacy receipts intact; no converter or registry schema change.
+- Closure batch7 vtable cross-check: existing 751-source layout sweep mentions 9 of its 30 unresolved vtable symbols (159 receipt rows). These are slot-name/layout observations, not current compiler-object byte/relocation proofs; tables remain unselected pending object and provider proof.
+- Vtable object-proof pilot: `claude-fresh-all/AppUnit400_2008Names/candidate.obj` emits no `AuthoringSettings` vtable definitions despite the layout sweep listing them; layout dump alone cannot supply link providers. Park this source for vtable emission, seek actual emitting object.
+- Cached-object search found four emitters of batch7 vtables: `AuthoringSettings` (9), `MetadataClassesRegister` (10), `AppUnit588_2008ChangeHistory` and `ChangeHistoryLifetime` (9 each). Recursive data proof pilot for AuthoringSettings Debugable table 0080bbb8 failed at FactoryProduct RTTI descriptor (`reachable data differs`). No table selected; RTTI definition must be reconciled before class promotion.
 
 ### 2026-11-10 - Codex pause: Ogre native template strict-promotion pilot
 

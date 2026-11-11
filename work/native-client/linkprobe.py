@@ -1,7 +1,7 @@
 """Link probe for the native 2008 client: native shell objects (work/native-client/obj) + the rbxgs-app engine
 objects + its dependency libs + XTP/Scintilla + MFC 9.0 (mfc90 import lib, mfcs90 helper) as a Windows exe.
 Prints unresolved externals grouped by name prefix and duplicate definitions. No P6 / RobloxShell / Player."""
-import re, sys, collections, json, struct
+import re, sys, collections, json, struct, hashlib
 from pathlib import Path
 sys.path.insert(0, '.')
 from roc import rebuild
@@ -24,7 +24,12 @@ extra = []
 if extra_receipt:
     for receipt in extra_receipt.split(os.pathsep):
         rows = json.loads(Path(receipt).read_text())
-        extra += [Path(row['object']).resolve() for row in rows.get('selected', [])]
+        for row in rows.get('selected', []):
+            path = Path(row['object']).resolve()
+            digest = row.get('object_sha256')
+            if digest and (not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != digest):
+                raise ValueError('selected object hash mismatch: ' + str(path))
+            extra.append(path)
     if not all(path.is_file() for path in extra):
         raise ValueError('missing selected native provider object')
     shell += extra

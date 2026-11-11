@@ -27,7 +27,7 @@ import native_llm as nl  # noqa: E402
 import native_transplant_probe as tp  # noqa: E402
 import run_all  # noqa: E402
 
-CENSUS = HERE / 'ogre-native-full-census-loop2/manifest.json'
+CENSUS = HERE / 'ogre-native-full-census-loop6/manifest.json'
 HEADERS = ROOT / 'rebuild/2008-06/native-headers'
 SCOPE = ('Ogre::', 'RBX::RenderNew', 'RBX::ViewNew')
 LOG = HERE / 'ogre-llm-lane.jsonl'
