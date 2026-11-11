@@ -28,7 +28,7 @@ ROOT = HERE.parents[1]
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(HERE / 'ogre'))
 
-CORPUS_DIRS = [p for p in (ROOT / 'tools/libs').iterdir() if p.is_dir() and p.name != '_dl'] + [HERE / 'fingerprint-corpus']
+CORPUS_DIRS = [p for p in ((ROOT / 'tools/libs').iterdir() if (ROOT / 'tools/libs').is_dir() else []) if p.is_dir() and p.name != '_dl'] + [HERE / 'fingerprint-corpus']
 INDEX = HERE / 'fingerprint-corpus-index.pickle'
 OUT = HERE / 'fingerprint-matches.json'
 EXTS = {'.c', '.cpp', '.cc', '.cxx', '.inl'}
