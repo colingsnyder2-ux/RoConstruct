@@ -1,3 +1,4 @@
+#include <afxwin.h>
 #include "../native-headers/InsertModelFromRobloxVerb.h"
 #include "../native-headers/CRobloxView.h"
 #include "../native-headers/v8datamodel/DataModel.h"
