@@ -160,12 +160,15 @@ def main():
     ap.add_argument('--rounds', type=int, default=4)
     ap.add_argument('--infer-names', action='store_true')
     ap.add_argument('--quiet', action='store_true')
+    ap.add_argument('--no-register', action='store_true', help='do not add trial sources or evidence to the shared inventory')
     ap.add_argument('--why', metavar='FILTER', help='after the proof, list non-exact symbols whose name contains FILTER ("" = all named)')
     ap.add_argument('--diff', metavar='ADDR', help='after the proof, assembly diff of ADDR against the file newest object')
     ap.add_argument('--objdiff-symbol', metavar='SYMBOL', help='also generate an objdiff report for this decorated symbol; requires --diff and one source')
     args = ap.parse_args()
     if not args.files and not args.all:
         ap.error('give FILE(s) or --all')
+    if args.no_register and (args.all or args.infer_names):
+        ap.error('--no-register cannot be combined with --all or --infer-names')
     if args.objdiff_symbol and (not args.diff or args.all or len(args.files) != 1):
         ap.error('--objdiff-symbol requires --diff and exactly one source')
     import run_all
@@ -225,11 +228,12 @@ def main():
     if args.why is not None or args.diff:
         report(out, args)
     # Persist new sources/evidence; merge with the file as it is now (another prove run may have added its own).
-    current = load(INVENTORY, inventory)
-    disk = current['families'][0]
-    for key in ('sources', 'evidence'):
-        disk[key] += [x for x in master[key] if x not in disk[key]]
-    INVENTORY.write_text(json.dumps(current, indent=1))
+    if not args.no_register:
+        current = load(INVENTORY, inventory)
+        disk = current['families'][0]
+        for key in ('sources', 'evidence'):
+            disk[key] += [x for x in master[key] if x not in disk[key]]
+        INVENTORY.write_text(json.dumps(current, indent=1))
     if not args.quiet:
         for src, (n, b, why) in sorted(by_file.items()):
             if args.all and not why:

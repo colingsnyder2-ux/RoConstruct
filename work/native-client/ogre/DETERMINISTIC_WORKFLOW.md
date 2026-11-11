@@ -110,3 +110,20 @@ unbounded proof subprocess. The final full census has its own potentially longer
 All successes are **inactive_exact** only. Field/layout inference still needs a separate
 audit; the scope report leaves that count unset instead of inventing a number.
 There is no linked, runnable, server, or P5/P6 claim.
+
+## Scratch header variants
+
+`python work/native-client/header_variant_search.py recipe.json --seconds 600`
+checks a baseline and up to 12 evidence-backed literal replacement sets. Recipe keys:
+`header`, `include`, `sources`, and `variants`; each variant has `name` and
+`replacements` (`old` and `new`). Each old string must occur exactly once. The tool
+copies sources and headers into scratch, runs normal proof without registering trial
+sources, and records gained/lost exact addresses per source and input hashes. A changed shared
+proof input invalidates comparison; scratch include context must also be checked
+against the real source before considering a candidate. See
+`work/native-client/ogre/wedge-header-variants.json` for an example.
+
+Results are drafts: list all relevant dependent sources and independently verify them
+before any promotion. Source plausibility and inferred identities still require review.
+The tool never changes native files or automatically promotes a candidate. Maximum
+runtime is 25 minutes; a failed proof or deadline stops the run.
