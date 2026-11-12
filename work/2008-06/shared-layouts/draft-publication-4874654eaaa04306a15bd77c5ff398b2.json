@@ -1,0 +1,288 @@
+{
+  "scope": "Inactive source publication; no runtime selection or server credit",
+  "base": "1fac2c4d894c0e96874d39aa27dfe79518cb85b8",
+  "verification": {
+    "native_input_key": "c4a0c7af1498564865879024c0b41e3dd443766d681f7b677163aa3e2ffae8b5",
+    "verifier_hashes": {
+      "C:\\Users\\colin\\RoConstruct\\roc\\draft_publish.py": "c8aad2a072aeca8e920d61aa604c57e8edb63624b1d3ca6422a3b252ac5941bb",
+      "C:\\Users\\colin\\RoConstruct\\roc\\draft_native.py": "3c090b213cb79ceb9390277200bf503d3687b9c01d46de07ca2cc39d7f55d6e0",
+      "C:\\Users\\colin\\RoConstruct\\roc\\draft_proof.py": "6efe4157886b36e6246628a22ea0c6115d33859db7e0689ccb1be056b00733b0",
+      "C:\\Users\\colin\\RoConstruct\\work\\native-client\\claude-identity-closure.json": "e0b08ce72e7d001dfdabed99cfe38d8dbe8a269a68a6bf3ffe9ca3b878952dfa"
+    },
+    "sources": {
+      "rebuild/2008-06/native-classes/TextDisplay.cpp": {
+        "source_sha256": "2a498ac038ab5adfdb0fa0bf1464eea8960d5e762c49602fd0c843e1db440c7b",
+        "object_sha256": "7af8ccfa30995021d3f2a8a2ad13355475db984aad80cf31b4833d023aab92cc",
+        "methods": [
+          {
+            "address": "005744a0",
+            "symbol": "??0TextDisplay@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z",
+            "size": 203,
+            "exact": true,
+            "verified_targets": {
+              "??0GuiItem@RBX@@QAE@XZ": "0x5739d0",
+              "??_7TextDisplay@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x82fce4 (RTTI .?AVTextDisplay@RBX@@, offset 0x0)",
+              "??_7TextDisplay@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x82fcd4 (RTTI .?AVTextDisplay@RBX@@, offset 0x10)",
+              "??_7TextDisplay@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x82fccc (RTTI .?AVTextDisplay@RBX@@, offset 0x14)",
+              "??_7TextDisplay@RBX@@6BDebugable@1@@": "0x82fcc4 (RTTI .?AVTextDisplay@RBX@@, offset 0x20)",
+              "??_7TextDisplay@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x82fcb4 (RTTI .?AVTextDisplay@RBX@@, offset 0x24)",
+              "??_7TextDisplay@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x82fca4 (RTTI .?AVTextDisplay@RBX@@, offset 0x44)",
+              "??_7TextDisplay@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x82fc94 (RTTI .?AVTextDisplay@RBX@@, offset 0x64)",
+              "??_7TextDisplay@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x82fc84 (RTTI .?AVTextDisplay@RBX@@, offset 0x84)",
+              "??_7TextDisplay@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x82fc74 (RTTI .?AVTextDisplay@RBX@@, offset 0xa4)",
+              "??_7TextDisplay@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x82fc64 (RTTI .?AVTextDisplay@RBX@@, offset 0xc4)",
+              "??_7TextDisplay@RBX@@6B@": "0x82fc5c (RTTI .?AVTextDisplay@RBX@@, offset 0x130)",
+              "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "?init@TextDisplay@RBX@@AAEXXZ": "0x5735e0",
+              "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x55af90",
+              "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z": "msvcp90.dll!??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z"
+            },
+            "local_eh": [
+              "__ehhandler$??0TextDisplay@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z"
+            ]
+          }
+        ],
+        "inferred_calls": [
+          {
+            "symbol": "??0GuiItem@RBX@@QAE@XZ",
+            "address": "005739d0",
+            "evidence": "unique-body",
+            "votes": 8,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?init@TextDisplay@RBX@@AAEXXZ",
+            "address": "005735e0",
+            "evidence": "reference-vote",
+            "votes": 1,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+            "address": "0055af90",
+            "evidence": "exact-caller-relocation",
+            "votes": 0,
+            "inferred": true,
+            "imported_alias": null
+          }
+        ],
+        "compiler": 21022,
+        "flags": [
+          "/nologo",
+          "/c",
+          "/O2",
+          "/Ob2",
+          "/Oy",
+          "/GF",
+          "/GS-",
+          "/EHsc",
+          "/MD",
+          "/D_AFXDLL",
+          "/DNDEBUG",
+          "/D_MBCS",
+          "/DNOMINMAX",
+          "/DBOOST_ALL_NO_LIB",
+          "/DWIN32",
+          "/DNDEBUG",
+          "/D_LIB",
+          "/D_RELEASE",
+          "/D_RELEASEASSERT",
+          "/D_VC80_UPGRADE=0x0710",
+          "/IC:\\Users\\colin\\RoConstruct\\work\\draft-merger\\publications\\4874654eaaa04306a15bd77c5ff398b2\\verification\\exact-tree\\rebuild\\2008-06\\native-headers",
+          "/IC:\\Users\\colin\\RoConstruct\\work\\draft-merger\\publications\\4874654eaaa04306a15bd77c5ff398b2\\verification\\exact-tree\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+          "/D_XTP_STATICLINK",
+          "/D_XTPLIB_NOAUTOLINK",
+          "/IC:\\Users\\colin\\RoConstruct\\work\\draft-merger\\publications\\4874654eaaa04306a15bd77c5ff398b2\\verification\\exact-tree\\tools\\libs\\xtp-11.2.2\\Source",
+          "/fp:fast"
+        ]
+      }
+    }
+  },
+  "acceptance_receipts": {
+    "rebuild/2008-06/native-classes/TextDisplay.cpp": [
+      {
+        "schema": 1,
+        "kind": "reviewed-source-improvement",
+        "inactive": true,
+        "path": "rebuild/2008-06/native-classes/TextDisplay.cpp",
+        "candidate_sha256": "0fbf010b064785699f5f011adcc19585adf3f20c1817ef44cffc83bf6dce3606",
+        "before_sha256": "233d1ec418b5b2dfbdf64b43498b6323a0429aa09fc154117f153879f40766c5",
+        "input_key": "9335c1d1fe250e718c748aac5ffc4d0efaa1a89dda732f930c600dcf8e0a9f8b",
+        "client": "2008-06",
+        "verifier_sha256": "5fbde6f7c72b0d5bc5c9c385a6691bffbf6950715087831b9ca2607044ef9628",
+        "before_methods": [
+          "??0Color4@G3D@@QAE@ABVColor3@1@M@Z",
+          "??0Vector2@G3D@@QAE@MM@Z",
+          "??4Color4@G3D@@QAEAAV01@ABV01@@Z",
+          "??4Vector2@G3D@@QAEAAV01@ABV01@@Z",
+          "??__E?id@?$date_facet@Vdate@gregorian@boost@@DV?$ostreambuf_iterator@DU?$char_traits@D@std@@@std@@@date_time@boost@@2V0locale@std@@A@@YAXXZ",
+          "?getFontSize@TextDisplay@RBX@@MBEHXZ",
+          "?getLabel@TextDisplay@RBX@@MBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+          "?init@TextDisplay@RBX@@AAEXXZ",
+          "?render2d@TextDisplay@RBX@@UAEXPAVAdorn@2@@Z",
+          "?setGuiSize@GuiItem@RBX@@QAEXABVVector2@G3D@@@Z",
+          "__ehhandler$?render2d@TextDisplay@RBX@@UAEXPAVAdorn@2@@Z",
+          "__unwindfunclet$?render2d@TextDisplay@RBX@@UAEXPAVAdorn@2@@Z$0"
+        ],
+        "after_methods": [
+          "??0Color4@G3D@@QAE@ABVColor3@1@M@Z",
+          "??0TextDisplay@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z@005744a0",
+          "??0Vector2@G3D@@QAE@MM@Z",
+          "??4Color4@G3D@@QAEAAV01@ABV01@@Z",
+          "??4Vector2@G3D@@QAEAAV01@ABV01@@Z",
+          "??__E?id@?$date_facet@Vdate@gregorian@boost@@DV?$ostreambuf_iterator@DU?$char_traits@D@std@@@std@@@date_time@boost@@2V0locale@std@@A@@YAXXZ",
+          "?getFontSize@TextDisplay@RBX@@MBEHXZ",
+          "?getLabel@TextDisplay@RBX@@MBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+          "?init@TextDisplay@RBX@@AAEXXZ",
+          "?render2d@TextDisplay@RBX@@UAEXPAVAdorn@2@@Z",
+          "?setGuiSize@GuiItem@RBX@@QAEXABVVector2@G3D@@@Z",
+          "__ehhandler$?render2d@TextDisplay@RBX@@UAEXPAVAdorn@2@@Z",
+          "__unwindfunclet$?render2d@TextDisplay@RBX@@UAEXPAVAdorn@2@@Z$0"
+        ],
+        "checks": {
+          "compile": true,
+          "existing_code_preserved": true,
+          "existing_data_preserved": true,
+          "layout_preserved": true,
+          "provider_review": true,
+          "new_method_bodies": true,
+          "source_review": true,
+          "no_activation": true
+        },
+        "reviewer": "deterministic missing-method/original-instruction source review",
+        "rationale": "Adds absent method bodies measured against original instructions; final acceptance recompiles and checks relevant preservation, data and provider evidence.",
+        "inferences": [
+          "Names may be inferred. Family measurements are proposal evidence; fresh source acceptance checks are required.",
+          "Some direct function names use local corroborated identity evidence; see inferred_calls. No runtime proof claimed."
+        ],
+        "inferred_calls": [
+          {
+            "symbol": "??0GuiItem@RBX@@QAE@XZ",
+            "address": "005739d0",
+            "evidence": "unique-body",
+            "votes": 8,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?init@TextDisplay@RBX@@AAEXXZ",
+            "address": "005735e0",
+            "evidence": "reference-vote",
+            "votes": 1,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+            "address": "0055af90",
+            "evidence": "exact-caller-relocation",
+            "votes": 0,
+            "inferred": true,
+            "imported_alias": null
+          }
+        ],
+        "open_questions": [
+          "Class may remain partial. Unselected methods, complete original ABI and executable promotion remain separate.",
+          "Original exception metadata remains a runtime-promotion gate"
+        ],
+        "scope": "Reviewed inactive source methods; Partial class/inferred names allowed. No complete original ABI or executable promotion claim.",
+        "compiler_profile": "fast-fp",
+        "reference_evidence": [
+          {
+            "address": "005744a0",
+            "symbol": "??0TextDisplay@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z",
+            "size": 203,
+            "exact": true,
+            "verified_targets": {
+              "??0GuiItem@RBX@@QAE@XZ": "0x5739d0",
+              "??_7TextDisplay@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x82fce4 (RTTI .?AVTextDisplay@RBX@@, offset 0x0)",
+              "??_7TextDisplay@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x82fcd4 (RTTI .?AVTextDisplay@RBX@@, offset 0x10)",
+              "??_7TextDisplay@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x82fccc (RTTI .?AVTextDisplay@RBX@@, offset 0x14)",
+              "??_7TextDisplay@RBX@@6BDebugable@1@@": "0x82fcc4 (RTTI .?AVTextDisplay@RBX@@, offset 0x20)",
+              "??_7TextDisplay@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x82fcb4 (RTTI .?AVTextDisplay@RBX@@, offset 0x24)",
+              "??_7TextDisplay@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x82fca4 (RTTI .?AVTextDisplay@RBX@@, offset 0x44)",
+              "??_7TextDisplay@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x82fc94 (RTTI .?AVTextDisplay@RBX@@, offset 0x64)",
+              "??_7TextDisplay@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x82fc84 (RTTI .?AVTextDisplay@RBX@@, offset 0x84)",
+              "??_7TextDisplay@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x82fc74 (RTTI .?AVTextDisplay@RBX@@, offset 0xa4)",
+              "??_7TextDisplay@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x82fc64 (RTTI .?AVTextDisplay@RBX@@, offset 0xc4)",
+              "??_7TextDisplay@RBX@@6B@": "0x82fc5c (RTTI .?AVTextDisplay@RBX@@, offset 0x130)",
+              "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "?init@TextDisplay@RBX@@AAEXXZ": "0x5735e0",
+              "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x55af90",
+              "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z": "msvcp90.dll!??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z"
+            },
+            "local_eh": [
+              "__ehhandler$??0TextDisplay@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z"
+            ]
+          }
+        ],
+        "numeric_literals": [],
+        "layout_preservation": {
+          "state": "preserved-before-layout",
+          "classes": {
+            "added": [],
+            "removed": [],
+            "changed": []
+          },
+          "virtual_tables": {
+            "added": [],
+            "removed": [],
+            "changed": []
+          },
+          "builds": {
+            "baseline": {
+              "exit": 0,
+              "log": "C:\\Users\\colin\\RoConstruct\\work\\draft-merger\\source-improvements\\24e7f73b17f2421d98b4c80b796ed302\\layout-baseline\\compiler.log"
+            },
+            "candidate": {
+              "exit": 0,
+              "log": "C:\\Users\\colin\\RoConstruct\\work\\draft-merger\\source-improvements\\24e7f73b17f2421d98b4c80b796ed302\\layout-candidate\\compiler.log"
+            }
+          },
+          "classes_before": 3381,
+          "classes_after": 3381,
+          "original_abi_proven": false,
+          "scope": "Compiler layout/virtual declaration preservation only; original offsets, slot identities and dependency ABI remain separate"
+        },
+        "related_providers": [
+          "rebuild/2008-06/native-classes/CreatableSharedCount2008.cpp",
+          "rebuild/2008-06/native-classes/EquationDisplay.cpp",
+          "rebuild/2008-06/native-classes/GuiHudBuilder2008.cpp"
+        ],
+        "native_input_key": "a380fc7de12878b9e47e489c7ba516df833a92ca4f7badd4d89055ddd215a6f5",
+        "gate_hashes": {
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_source.py": "5fbde6f7c72b0d5bc5c9c385a6691bffbf6950715087831b9ca2607044ef9628",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_native.py": "3c090b213cb79ceb9390277200bf503d3687b9c01d46de07ca2cc39d7f55d6e0",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_family.py": "6c7b46b37ab65770417bae220c1fc8e3cda5f023d4f35d0e4852d58fc9f97286",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_methods.py": "8c9d5a5f8d1f4d8f730d097d784a5fb2ff06102cda4dfc5cf2bb5df6fd527000",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_proof.py": "6efe4157886b36e6246628a22ea0c6115d33859db7e0689ccb1be056b00733b0",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_append.py": "6b395a5509044f28668c4ac06e3cc2eeb545e1a5e85ce0bd02ed4ca6ecc81f0d",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_merger.py": "0185dc516ba980205c69915dd7e3a524863a31622e2200960a12e5e08aa36bee",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_files.py": "e42fa4ac81e73a189caca707cb022fc41bab09f339adb5232070abab99decd7c",
+          "C:\\Users\\colin\\RoConstruct\\roc\\match.py": "7d584aa2f7467785188e056a5a058b4631a497b73c2d119d63d9688d41dbb317",
+          "C:\\Users\\colin\\RoConstruct\\roc\\rebuild.py": "55d5463911eb6e02401d0b129e0e9e504fafc467e84a490e5196424e595711ea",
+          "C:\\Users\\colin\\RoConstruct\\roc\\libs.py": "6d7e03cd8e1df96b50c45ac9670174c0870e7045ba84ec0fd1b1c7db8492c766",
+          "C:\\Users\\colin\\RoConstruct\\roc\\clients.py": "d412b4a8964910ede225013ae694d5b1478c46f3001ae018a4da947a213c03d0",
+          "C:\\Users\\colin\\RoConstruct\\roc\\integration_verify.py": "26bb4c627fda0e1cf3cc571a9e9a84b760e0f8a085dc30d4487d921038f51265",
+          "C:\\Users\\colin\\RoConstruct\\work\\native-client\\native_class_layout.py": "26592adcfca0975974b7565c6a0a23303d233f26126563520d33806df3150845",
+          "C:\\Users\\colin\\RoConstruct\\work\\native-client\\native_vftable_check.py": "d0c98faf83e785cad15139fe2f09b70c6699ab36a2bd2ed179c6727a2bcaeee2",
+          "C:\\Users\\colin\\RoConstruct\\work\\native-client\\native_conversion_queue.py": "eeee7a929454cd95faf77a06f5fe968b33826b57a1ecf2945107ea988b672b46"
+        }
+      }
+    ]
+  }
+}
