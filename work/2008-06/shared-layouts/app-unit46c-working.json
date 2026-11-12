@@ -1,0 +1,2018 @@
+{
+  "class": "RBX::LDraw2Lua rows of the application range 0046c000..00474000 (2008-06), inactive",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM), document-swap flags plus each committed source's own native-flags include directories (no /fp:fast)",
+  "flags": {
+    "MapOperations": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/AppUnit46C_MapOperations.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/LDrawMapOperations.cpp"
+    ],
+    "MapRootConstructor": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/AppUnit46C_MapRootConstructor.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/LDrawMapRootConstructor.cpp"
+    ],
+    "MapRootLifetime": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/AppUnit46C_MapRootLifetime.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/LDrawMapRootLifetime.cpp"
+    ],
+    "EntityLifetime": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/AppUnit46C_EntityLifetime.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/LDrawEntityLifetime.cpp"
+    ],
+    "ModelWrite": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/std-noinline-string",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/AppUnit46C_ModelWrite.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/LDrawModelWrite.cpp"
+    ],
+    "Parser": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/AppUnit46C_Parser.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/LDrawParser.cpp"
+    ],
+    "ParserParse": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/std-noinline-ldraw-parse",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/AppUnit46C_ParserParse.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/LDrawParserParse.cpp"
+    ],
+    "PartColor": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/AppUnit46C_PartColor.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/LDrawPartColor.cpp"
+    ],
+    "PartParent": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/std-noinline-string",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/AppUnit46C_PartParent.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/LDrawPartParent.cpp"
+    ],
+    "PartShape": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/std-noinline-ldraw-shape",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/AppUnit46C_PartShape.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/LDrawPartShape.cpp"
+    ],
+    "PartTransform": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/std-noinline-string",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/AppUnit46C_PartTransform.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/LDrawPartTransform.cpp"
+    ],
+    "PartWrite": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/AppUnit46C_PartWrite.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/LDrawPartWrite.cpp"
+    ],
+    "StringCompare": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/std-noinline-string-iterators",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/AppUnit46C_StringCompare.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/LDrawStringCompare.cpp"
+    ],
+    "StringIterators": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/std-noinline-string-iterators",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/O1",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/AppUnit46C_StringIterators.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit46CStringIterators.cpp"
+    ],
+    "AssetState": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/AppUnit46C_AssetState.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/LDrawAssetState.cpp"
+    ],
+    "Path": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/AppUnit46C_Path.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/LDrawPath.cpp"
+    ],
+    "EntityLifetime_pending": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/pending",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/AppUnit46C_EntityLifetime_pending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit46c/pending/LDrawEntityLifetime.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit46c.py": "4c55e41462a7b053ac538687edcd4d6278a4ab3e28f50103b19d89bb12ec998c",
+    "rebuild/2008-06/native-classes/LDrawMapOperations.cpp": "9a7ac7931052164c53ccdbfe9ccb9b44fa2bd91bafe77095900533b10517a6c3",
+    "rebuild/2008-06/native-classes/LDrawMapRootConstructor.cpp": "f19416d777df8e07ed5ebde057ea168aa36d9b2668442b7710f64d2668382c82",
+    "rebuild/2008-06/native-classes/LDrawMapRootLifetime.cpp": "b05fde405026579a9458be3171efcbe0610aef033d455f50b3433f08fe2fbea5",
+    "rebuild/2008-06/native-classes/LDrawEntityLifetime.cpp": "dcba1e1f1b520b3ebca7a88477026edbd447d7fdf2236614618dfff18adcaece",
+    "rebuild/2008-06/native-classes/LDrawModelWrite.cpp": "9a7e64ae5de1275e8616062ee9374fd0f809bb8b9155a2d535f4d7ce0ad5bfbe",
+    "rebuild/2008-06/native-classes/LDrawParser.cpp": "9f5c84952dfb5eebc817e76b563f7fb2a1b61476eb911cdf82032a6c69ce04b3",
+    "rebuild/2008-06/native-classes/LDrawParserParse.cpp": "3703c272c5158c791f7140c33819b0ccbc6b8ed44b26842aeb5f47d424ce6ed0",
+    "rebuild/2008-06/native-classes/LDrawPartColor.cpp": "c1caa67706d178850be74b2ab59ad1c056db40f092f2e87038593a1bea324e77",
+    "rebuild/2008-06/native-classes/LDrawPartParent.cpp": "8e3caf0490dcfdc05fa243e68fd71c23fbe037ed7e9c39b654a1a5e4fd368ea3",
+    "rebuild/2008-06/native-classes/LDrawPartShape.cpp": "ddbdce15575beee550bab9a986997904b4cc44b5aced5041a365a7b8a6302686",
+    "rebuild/2008-06/native-classes/LDrawPartTransform.cpp": "2214431c7384b22c81c9e1ee685de44c16fb04f297b0b3c877e0feb41ff447d8",
+    "rebuild/2008-06/native-classes/LDrawPartWrite.cpp": "5afe52e278d7f74c6120b27d61537dfcda2c9dbff342af7d097d3ae2b29b95d5",
+    "rebuild/2008-06/native-classes/LDrawStringCompare.cpp": "66082edccacb259c449751a5f80fe0c85af8dff56d8cb915ac6784e216b0029c",
+    "rebuild/2008-06/native-classes/AppUnit46CStringIterators.cpp": "31e4bd483a64d7ce3bc44650e32dd9ef4db03ea93b4d2a6b48e92b8a9fbef149",
+    "rebuild/2008-06/native-headers/util/LDrawMapRoot.h": "c09845f10c344affd63ef5bbf163d9e6f8194751dc8bf62e3b73a2669712b8d9",
+    "rebuild/2008-06/native-headers/util/LDrawEntities.h": "3ab091e2d8ad0f74e353894e368f51dd203df76da9ec1b004e554ca8c950a183",
+    "rebuild/2008-06/native-headers/util/LDrawParser.h": "ecd10d77ada42990df761e486652274e6e82f5b64eae425c59d3041687553951"
+  },
+  "sources_note": "committed LDraw*.cpp of another owner compiled read-only and unchanged; one new source of this lease (AppUnit46CStringIterators.cpp, an explicit member instantiation); no new header",
+  "objects": {
+    "MapOperations": "91bd98c7e84c1464aee05d017ada1eabc2ac6066db89c8f5421ea2314673c3e2",
+    "MapRootConstructor": "ae67efd3e6fa4b762b4deb520365630bb22d88e74a8aaafe066e4b62de33e58b",
+    "MapRootLifetime": "bfe1b879d3618ba45f4f69f8df83bc3d2ca17690108111a2bc3988b5242b5f5e",
+    "EntityLifetime": "547dba0cbf1fe757afc1342023beabf401e580adba184d5d51ab836221d69be4",
+    "ModelWrite": "4d966095e9bb4d5dcfc727a7a5e08c4757fa475966b98ea4454d4924fec8e4ad",
+    "Parser": "72893f3d6c775d3c01254996aab1c2ebd990a2baaedab46ab1a5d1f0855f87f6",
+    "ParserParse": "04f4b59a8b2f2ab291a703cca6ff69526c011766672e9f859edb61ccfe840ea7",
+    "PartColor": "e409fa62b7dd6c391ea7ef738384e37871d0ea37ed95a9b45d1340346d2ffc1e",
+    "PartParent": "53a296257f5ca49536c99b9a36846e28c45cd63c94d9144694369b56d5ad5414",
+    "PartShape": "7f7855f6be721a22f6785468e842ec637a1bcccaec3f6e1ddfda6f4a0b3993ef",
+    "PartTransform": "932cc9068604a2838063c80baf969f14280340132f7698ba4aba6be981e4baf7",
+    "PartWrite": "dbd6cddac91aa2b5e912cb25c1b154443b22abf62fca305d07f97cdc6a4a281a",
+    "StringCompare": "5ed70c984d4e504a40f3ee36f216ee770560b25887ce6884c86e8e3cac76ed8e",
+    "StringIterators": "9e716cd21b45bdef3544fcbd46597b664c60525fc0132b42f0f8f5a2872359dc",
+    "AssetState": "8683351b6e08b6370a9d1b5c065e19417d6cf70fe95c344845bbd3e235f6677c",
+    "Path": "e1fdfa8b6cbd4e638228bc636705b14a5be9780d9e6c2cfea9c79187af112de9",
+    "EntityLifetime_pending": "a2e83184062c0a34174d9bb19d5e7b5816ec8a54063cdcacb83179f7b81113ec"
+  },
+  "unit_map": {
+    "workspace 0x46c000..0x46cabf": "Workspace.cpp (ATL CComObject<CWorkspace> scripting object; CWorkspace.h / CRobloxDoc.h owners and the workspace-*-trial receipts): execScript 0x46c230 (workspace-execscript-port-mismatch), execUrl 0x46c430 (\"Failed to get URL, %s\"; workspace-execurl-trial), 0x46c780 with its funclet row 0x46c8cb, the site-trust check 0x46c920 (\"Untrusted Url: %s\"). Other owners' area: not rebuilt here.",
+    "ldraw 0x46cac0..0x46fc0f": "RBX::LDraw2Lua, one unit in link order: LDraw2RobloxColorMap ctor 0x46cac0 / ??_G 0x46cae0 (vtable 0x81c8b8), PartMap::getFilename 0x46cb00, ~NativeRobloxPart 0x46cb30, readFidelity / readShape / readFormFactor 0x46cb80 / 0x46cc80 / 0x46cde0 (\"exact\" / \"cylinder\" / \"symmetric\"), the map<int, ColorMap*> and std::transform instances, findColor / mapColor / findPart / findPartCaseInsensitive / addPartMap, ~LDraw2RobloxMapRoot 0x46d590 / ??_G 0x46d6f0 / ctor 0x46d710 (vtable 0x81c904, TextXmlParser), the vector<NativeRobloxPart> instances 0x46deb0..0x46e3c0 / 0x46e800 / 0x46e8e0, LDraw2RobloxPartMap ctor / dtor / ??_G 0x46e6b0 / 0x46e790 / 0x46e8c0 (vtable 0x81c9f8), LuaObjectWriter 0x46ea00 / 0x46ea10 (vtable 0x81ca00), LDrawCommand 0x46ea30..0x46f000 (vtable 0x81ca0c: ctor, ??_G, writeShape / writeColor / writeTransform / writeParent / writeLua), LDrawParser 0x46f100..0x46f200 (vtable 0x81cb74, \"fonts\\\\LDraw2RobloxMap.xml\", parse), LuaWriter 0x46f5a0..0x46f920 (vtable 0x81cbd4) and stringCompareNoCase 0x46f9f0 with its std::string const_iterator instances 0x46f940..0x46f9c0. The tag_* Name references are initialised at 0x7efb60..0x7efd40; initializeAssetFolder is 0x55c3e0 (outside).",
+    "g3d-glcaps 0x46fc10..0x4729cf": "G3D 6.09 GLG3Dcpp/GLCaps.cpp (library): G3D inlines iClamp / iMin / iMax 0x46fc10..0x46fc40, the supports_* inlines, init / loadExtensions 0x4716f0, Table / Set instances and ReferenceCountedObject (0x4729b0 counted by user-controller-working.json). Not recovered.",
+    "g3d-texture 0x4729d0..0x473fff": "G3D 6.09 GLG3Dcpp/Texture.cpp (library; continues in app-unit474). Not recovered."
+  },
+  "unit_blocks": {
+    "Workspace.cpp tail: ATL CWorkspace (other owners; continues from 0x46a940)": {
+      "rows": 5,
+      "bytes": 2171,
+      "counted_here": 0,
+      "counted_elsewhere": [
+        "0x46c430 counted by workspace-execurl-trial.json",
+        "0x46c780 counted by workspace-save-trial.json",
+        "0x46c920 counted by workspace-insert-url-trial.json"
+      ],
+      "first": "0x46c230",
+      "last": "0x46c920"
+    },
+    "RBX::LDraw2Lua (rbx; native LDraw*.cpp)": {
+      "rows": 70,
+      "bytes": 12145,
+      "counted_here": 56,
+      "counted_elsewhere": [
+        "0x46f200 counted by ldraw-parse-trial.json"
+      ],
+      "first": "0x46cac0",
+      "last": "0x46f9f0"
+    },
+    "G3D 6.09 GLG3Dcpp/GLCaps.cpp (library)": {
+      "rows": 37,
+      "bytes": 11447,
+      "counted_here": 0,
+      "counted_elsewhere": [
+        "0x4729b0 counted by user-controller-working.json"
+      ],
+      "first": "0x46fc10",
+      "last": "0x4729b0"
+    },
+    "G3D 6.09 GLG3Dcpp/Texture.cpp (library; continues past 0x474000)": {
+      "rows": 26,
+      "bytes": 6308,
+      "counted_here": 0,
+      "counted_elsewhere": [],
+      "first": "0x4729d0",
+      "last": "0x473fc0"
+    }
+  },
+  "range_functions": 138,
+  "range_bytes": 32071,
+  "range_rows_counted_by_other_receipts": [
+    "0x46c430 counted by workspace-execurl-trial.json",
+    "0x46c780 counted by workspace-save-trial.json",
+    "0x46c920 counted by workspace-insert-url-trial.json",
+    "0x46f200 counted by ldraw-parse-trial.json",
+    "0x4729b0 counted by user-controller-working.json"
+  ],
+  "ldraw_rows_open": [
+    "0x46cf40",
+    "0x46e0a0",
+    "0x46e180",
+    "0x46e1d9",
+    "0x46e430",
+    "0x46e574",
+    "0x46e612",
+    "0x46ea00",
+    "0x46ea10",
+    "0x46ea30",
+    "0x46eae0",
+    "0x46f630",
+    "0x46f820"
+  ],
+  "open": {
+    "0x46ea00 / 0x46ea10 / 0x46ea30 / 0x46eae0 / 0x46f630 / 0x46f820": "LuaObjectWriter / LDrawCommand / LuaWriter dtor, ??_G, ctors: byte-exact from LDrawEntityLifetime.cpp, but their vtable relocations name ??_7LDrawItem / LDrawPart / LDrawModel while the RTTI of 0x81ca00 / 0x81ca0c / 0x81cbd4 names LuaObjectWriter / LDrawCommand / LuaWriter: not counted (exact in the pending build).",
+    "0x46cf40 ??Y (operator+=) of std::_String_const_iterator<char>": "std header COMDAT (callers 0x46cfc7 in _Transform 0x46cfa0, 0x48b866, 0x5f5e52, 0x64faf7). Same size (82 B) but not exact with the std-noinline-string-iterators xstring under /O2 or /O1: the original recomputes _Ptr + _Off for the second bound check (edx) and schedules push edi after the _invalid_parameter_noinfo load; the build reuses ecx. Plain xstring and std-noinline-string: 91 B (/O2, /O1, /Os; 21022 and 50727). Open.",
+    "0x46e0a0, 0x46e180 + 0x46e1d9, 0x46e430 + 0x46e574 + 0x46e612": "vector<NativeRobloxPart> helpers whose analysed extents are wrong (bounds_evidence): exact when joined / as prefix, not counted."
+  },
+  "rows": [
+    {
+      "address": "0046cac0",
+      "symbol": "??0LDraw2RobloxColorMap@LDraw2Lua@RBX@@QAE@HH@Z",
+      "build": "MapOperations",
+      "size": 25,
+      "target_size": 25,
+      "exact": true,
+      "verified_targets": {
+        "??_7LDraw2RobloxColorMap@LDraw2Lua@RBX@@6B@": "0x81c8b8 (vtable RTTI .?AVLDraw2RobloxColorMap@LDraw2Lua@RBX@@ offset 0x0)"
+      }
+    },
+    {
+      "address": "0046cae0",
+      "symbol": "??_GLDraw2RobloxColorMap@LDraw2Lua@RBX@@UAEPAXI@Z",
+      "build": "MapOperations",
+      "size": 31,
+      "target_size": 31,
+      "exact": true,
+      "verified_targets": {
+        "??_7LDraw2RobloxColorMap@LDraw2Lua@RBX@@6B@": "0x81c8b8 (vtable RTTI .?AVLDraw2RobloxColorMap@LDraw2Lua@RBX@@ offset 0x0)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      }
+    },
+    {
+      "address": "0046cb00",
+      "symbol": "?getFilename@LDraw2RobloxPartMap@LDraw2Lua@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+      "build": "MapOperations",
+      "size": 33,
+      "target_size": 33,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)"
+      }
+    },
+    {
+      "address": "0046cb30",
+      "symbol": "??1NativeRobloxPart@LDraw2Lua@RBX@@QAE@XZ",
+      "build": "MapOperations",
+      "size": 79,
+      "target_size": 79,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      }
+    },
+    {
+      "address": "0046cb80",
+      "symbol": "?readFidelity@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "build": "MapOperations",
+      "size": 241,
+      "target_size": 241,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_05FNPODCFG@exact?$AA@": "0x81c8d0 (string 'exact')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "?stringCompareNoCase@@YAHABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z": "0x46f9f0 (own row)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??_C@_05LBOHBHFK@close?$AA@": "0x81c8c8 (string 'close')"
+      }
+    },
+    {
+      "address": "0046cc80",
+      "symbol": "?readShape@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "build": "MapOperations",
+      "size": 344,
+      "target_size": 344,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_04NBDAKKEG@ball?$AA@": "0x81c8e4 (string 'ball')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "?stringCompareNoCase@@YAHABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z": "0x46f9f0 (own row)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??_C@_05PIBOEKAB@block?$AA@": "0x812bb8 (string 'block')",
+        "??_C@_08GNLJBPEP@cylinder?$AA@": "0x81c8d8 (string 'cylinder')"
+      }
+    },
+    {
+      "address": "0046cde0",
+      "symbol": "?readFormFactor@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "build": "MapOperations",
+      "size": 241,
+      "target_size": 241,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_09GAAPDMOJ@symmetric?$AA@": "0x81c8f4 (string 'symmetric')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "?stringCompareNoCase@@YAHABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z": "0x46f9f0 (own row)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??_C@_05CKFDMDO@brick?$AA@": "0x81c8ec (string 'brick')"
+      }
+    },
+    {
+      "address": "0046cee0",
+      "symbol": "?_Min@?$_Tree@V?$_Tmap_traits@HPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@5@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@5@$0A@@std@@@2@PAU342@@Z",
+      "build": "MapRootConstructor",
+      "size": 27,
+      "target_size": 27,
+      "exact": true,
+      "verified_targets": {}
+    },
+    {
+      "address": "0046cf00",
+      "symbol": "??$_Transform@PADPADP6AHH@ZUforward_iterator_tag@std@@@std@@YAPADPAD00P6AHH@ZUforward_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+      "build": "MapOperations",
+      "size": 55,
+      "target_size": 55,
+      "exact": true,
+      "verified_targets": {}
+    },
+    {
+      "address": "0046cfa0",
+      "symbol": "??$_Transform@PADV?$_String_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@P6AHH@Z@std@@YA?AV?$_String_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PAD0V10@P6AHH@ZUrandom_access_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+      "build": "MapOperations",
+      "size": 105,
+      "target_size": 105,
+      "exact": true,
+      "verified_targets": {
+        "??Y?$_String_const_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@H@Z": "0x46cf40 (external (evidence name))",
+        "??$_Transform@PADPADP6AHH@ZUforward_iterator_tag@std@@@std@@YAPADPAD00P6AHH@ZUforward_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x46cf00 (own row)"
+      }
+    },
+    {
+      "address": "0046d010",
+      "symbol": "?findColor@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEPAVLDraw2RobloxColorMap@23@H@Z",
+      "build": "MapOperations",
+      "size": 102,
+      "target_size": 102,
+      "exact": true,
+      "verified_targets": {
+        "?find@?$_Tree@V?$_Tmap_traits@HPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@ABH@Z": "0x5b3990 (helper body exact at the bound address (not counted here))",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+      }
+    },
+    {
+      "address": "0046d080",
+      "symbol": "?mapColor@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEHH@Z",
+      "build": "MapOperations",
+      "size": 28,
+      "target_size": 28,
+      "exact": true,
+      "verified_targets": {
+        "?findColor@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEPAVLDraw2RobloxColorMap@23@H@Z": "0x46d010 (own row)"
+      }
+    },
+    {
+      "address": "0046d0a0",
+      "symbol": "?findPart@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEPAVLDraw2RobloxPartMap@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "build": "MapOperations",
+      "size": 102,
+      "target_size": 102,
+      "exact": true,
+      "verified_targets": {
+        "?find@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@@std@@@2@$0A@@std@@@std@@QAE?AViterator@12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z": "0x696f30 (helper body exact at the bound address (not counted here))",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+      }
+    },
+    {
+      "address": "0046d110",
+      "symbol": "?findPartCaseInsensitive@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEPAVLDraw2RobloxPartMap@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "build": "MapOperations",
+      "size": 215,
+      "target_size": 215,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "__imp_?begin@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE?AV?$_String_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@2@XZ": "0x80246c (msvcp90.dll!?begin@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE?AV?$_String_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@2@XZ)",
+        "__imp_?end@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE?AV?$_String_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@2@XZ": "0x802354 (msvcp90.dll!?end@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE?AV?$_String_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@2@XZ)",
+        "__imp__tolower": "0x802800 (msvcr90.dll!tolower)",
+        "??$_Transform@PADV?$_String_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@P6AHH@Z@std@@YA?AV?$_String_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PAD0V10@P6AHH@ZUrandom_access_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x46cfa0 (own row)",
+        "?findPart@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEPAVLDraw2RobloxPartMap@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x46d0a0 (own row)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      }
+    },
+    {
+      "address": "0046d1f0",
+      "symbol": "?insert@?$_Tree@V?$_Tmap_traits@HPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@ABU?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@2@@Z",
+      "build": "MapRootConstructor",
+      "size": 470,
+      "target_size": 470,
+      "exact": true,
+      "verified_targets": {
+        "?_Insert@?$_Tree@V?$_Tmap_traits@HPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@5@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@5@$0A@@std@@@2@ABU?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@2@@Z": "0x668010 (helper body exact at the bound address (not counted here))",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@HPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@5@$0A@@std@@@std@@QAEXXZ": "0x609bd0 (helper body exact at the bound address (not counted here))",
+        "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@HPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@5@$0A@@std@@@std@@QAEXXZ": "0x68dfa0 (helper body exact at the bound address (not counted here))",
+        "??8const_iterator@?$_Tree@V?$_Tmap_traits@HPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@5@$0A@@std@@@std@@QBE_NABV012@@Z": "0x5ecca0 (helper body exact at the bound address (not counted here))",
+        "?insert@?$_Tree@V?$_Tmap_traits@HPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@5@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@HPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@5@$0A@@std@@@std@@_N@2@ABU?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@2@@Z": "0x5b38a0 (helper body exact at the bound address (not counted here))"
+      }
+    },
+    {
+      "address": "0046d3d0",
+      "symbol": "??A?$map@HPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@5@@std@@QAEAAPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@ABH@Z",
+      "build": "MapRootConstructor",
+      "size": 169,
+      "target_size": 169,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?insert@?$_Tree@V?$_Tmap_traits@HPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@ABU?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@2@@Z": "0x46d1f0 (own row)"
+      }
+    },
+    {
+      "address": "0046d480",
+      "symbol": "?addPartMap@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEXPAVLDraw2RobloxPartMap@23@@Z",
+      "build": "MapOperations",
+      "size": 243,
+      "target_size": 243,
+      "exact": true,
+      "verified_targets": {
+        "?getFilename@LDraw2RobloxPartMap@LDraw2Lua@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ": "0x46cb00 (own row)",
+        "__imp_?begin@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE?AV?$_String_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@2@XZ": "0x80246c (msvcp90.dll!?begin@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE?AV?$_String_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@2@XZ)",
+        "__imp_?end@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE?AV?$_String_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@2@XZ": "0x802354 (msvcp90.dll!?end@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE?AV?$_String_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@2@XZ)",
+        "__imp__tolower": "0x802800 (msvcr90.dll!tolower)",
+        "??$_Transform@PADV?$_String_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@P6AHH@Z@std@@YA?AV?$_String_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PAD0V10@P6AHH@ZUrandom_access_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x46cfa0 (own row)",
+        "?findPart@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEPAVLDraw2RobloxPartMap@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x46d0a0 (own row)",
+        "??A?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@@std@@@2@@std@@QAEAAPAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x671910 (helper body exact at the bound address (not counted here))",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      }
+    },
+    {
+      "address": "0046d580",
+      "symbol": "??1?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@@std@@@2@@std@@QAE@XZ",
+      "build": "MapRootLifetime",
+      "size": 5,
+      "target_size": 5,
+      "exact": true,
+      "verified_targets": {
+        "??1?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@@std@@@2@$0A@@std@@@std@@QAE@XZ": "0x46b070 (helper body exact at the bound address (not counted here))"
+      }
+    },
+    {
+      "address": "0046d590",
+      "symbol": "??1LDraw2RobloxMapRoot@LDraw2Lua@RBX@@UAE@XZ",
+      "build": "MapRootLifetime",
+      "size": 349,
+      "target_size": 349,
+      "exact": true,
+      "verified_targets": {
+        "??_7LDraw2RobloxMapRoot@LDraw2Lua@RBX@@6B@": "0x81c904 (vtable RTTI .?AVLDraw2RobloxMapRoot@LDraw2Lua@RBX@@ offset 0x0)",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@HPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@5@$0A@@std@@@std@@QAEXXZ": "0x68dfa0 (helper body exact at the bound address (not counted here))",
+        "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@@std@@@2@$0A@@std@@@std@@QAEXXZ": "0x68d1a0 (helper body exact at the bound address (not counted here))",
+        "??1?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@@std@@@2@$0A@@std@@@std@@QAE@XZ": "0x46b070 (helper body exact at the bound address (not counted here))",
+        "??1?$_Tree@V?$_Tmap_traits@HPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@5@$0A@@std@@@std@@QAE@XZ": "0x553d80 (helper body exact at the bound address (not counted here))",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      }
+    },
+    {
+      "address": "0046d6f0",
+      "symbol": "??_GLDraw2RobloxMapRoot@LDraw2Lua@RBX@@UAEPAXI@Z",
+      "build": "MapRootLifetime",
+      "size": 30,
+      "target_size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??1LDraw2RobloxMapRoot@LDraw2Lua@RBX@@UAE@XZ": "0x46d590 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      }
+    },
+    {
+      "address": "0046d710",
+      "symbol": "??0LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "build": "MapRootConstructor",
+      "size": 1950,
+      "target_size": 1950,
+      "exact": true,
+      "verified_targets": {
+        "??_7LDraw2RobloxMapRoot@LDraw2Lua@RBX@@6B@": "0x81c904 (vtable RTTI .?AVLDraw2RobloxMapRoot@LDraw2Lua@RBX@@ offset 0x0)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802460 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??0?$_Tree@V?$_Tmap_traits@HPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@5@$0A@@std@@@std@@QAE@ABU?$less@H@1@ABV?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@1@@Z": "0x446110 (helper body exact at the bound address (not counted here))",
+        "??0?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@@std@@@2@$0A@@std@@@std@@QAE@ABU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@1@ABV?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@@std@@@1@@Z": "0x699b30 (helper body exact at the bound address (not counted here))",
+        "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": "0x802464 (msvcp90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ)",
+        "__imp_??0?$basic_ifstream@DU?$char_traits@D@std@@@std@@QAE@PBDHH@Z": "0x802404 (msvcp90.dll!??0?$basic_ifstream@DU?$char_traits@D@std@@@std@@QAE@PBDHH@Z)",
+        "??0TextXmlParser@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@std@@@Z": "0x415350 (helper body exact at the bound address (not counted here))",
+        "?parse@TextXmlParser@@UAE?AV?$auto_ptr@VXmlElement@@@std@@XZ": "0x58f6c0 (external (evidence name))",
+        "??1XmlElement@@QAE@XZ": "0x413a70 (helper body exact at the bound address (not counted here))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "?tag_schema_version@@3ABVName@RBX@@B": "0x96ee1c (Name reference written by its static initializer 0x7efb60 (Name::declare('schema_version')))",
+        "?findFirstChildByTag@XmlElement@@QBEPBV1@ABVName@RBX@@@Z": "0x57c230 (external (evidence name))",
+        "?getValue@XmlNameValuePair@@QBE_NAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x57c210 (external (evidence name))",
+        "?tag_color_map@@3ABVName@RBX@@B": "0x96ee20 (Name reference written by its static initializer 0x7efb80 (Name::declare('color_map')))",
+        "?tag_color@@3ABVName@RBX@@B": "0x96ee24 (Name reference written by its static initializer 0x7efba0 (Name::declare('color')))",
+        "?tag_name@@3ABVName@RBX@@B": "0x96ee38 (Name reference written by its static initializer 0x7efc40 (Name::declare('name')))",
+        "?tag_ldraw_code@@3ABVName@RBX@@B": "0x96ee28 (Name reference written by its static initializer 0x7efbc0 (Name::declare('ldraw_code')))",
+        "__imp__atoi": "0x802868 (msvcr90.dll!atoi)",
+        "?tag_roblox_code@@3ABVName@RBX@@B": "0x96ee2c (Name reference written by its static initializer 0x7efbe0 (Name::declare('roblox_code')))",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0LDraw2RobloxColorMap@LDraw2Lua@RBX@@QAE@HH@Z": "0x46cac0 (own row)",
+        "?findColor@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEPAVLDraw2RobloxColorMap@23@H@Z": "0x46d010 (own row)",
+        "??A?$map@HPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@5@@std@@QAEAAPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@ABH@Z": "0x46d3d0 (own row)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "?tag_part_map@@3ABVName@RBX@@B": "0x96ee30 (Name reference written by its static initializer 0x7efc00 (Name::declare('part_map')))",
+        "?tag_part@@3ABVName@RBX@@B": "0x96ee34 (Name reference written by its static initializer 0x7efc20 (Name::declare('part')))",
+        "??_C@_00CNPNBAHC@?$AA@": "0x80b716 (string '')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "?tag_description@@3ABVName@RBX@@B": "0x96ee3c (Name reference written by its static initializer 0x7efc60 (Name::declare('description')))",
+        "?tag_ldraw_filename@@3ABVName@RBX@@B": "0x96ee40 (Name reference written by its static initializer 0x7efc80 (Name::declare('ldraw_filename')))",
+        "?tag_mapping_fidelity@@3ABVName@RBX@@B": "0x96ee44 (Name reference written by its static initializer 0x7efca0 (Name::declare('mapping_fidelity')))",
+        "?readFidelity@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x46cb80 (own row)",
+        "??0LDraw2RobloxPartMap@LDraw2Lua@RBX@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@00H@Z": "0x46e6b0 (own row)",
+        "?tag_roblox_part@@3ABVName@RBX@@B": "0x96ee48 (Name reference written by its static initializer 0x7efcc0 (Name::declare('roblox_part')))",
+        "?tag_shape@@3ABVName@RBX@@B": "0x96ee4c (Name reference written by its static initializer 0x7efce0 (Name::declare('shape')))",
+        "?readShape@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x46cc80 (own row)",
+        "?tag_form_factor@@3ABVName@RBX@@B": "0x96ee50 (Name reference written by its static initializer 0x7efd00 (Name::declare('form_factor')))",
+        "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z": "0x80244c (msvcp90.dll!??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z)",
+        "?readFormFactor@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x46cde0 (own row)",
+        "?tag_size_vect3@@3ABVName@RBX@@B": "0x96ee54 (Name reference written by its static initializer 0x7efd20 (Name::declare('size_vect3')))",
+        "?tag_y_offset@@3ABVName@RBX@@B": "0x96ee58 (Name reference written by its static initializer 0x7efd40 (Name::declare('y_offset')))",
+        "??0NativeRobloxPart@LDraw2Lua@RBX@@QAE@HHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z": "0x46e970 (own row)",
+        "?addPart@LDraw2RobloxPartMap@LDraw2Lua@RBX@@QAEXABUNativeRobloxPart@23@@Z": "0x46e960 (own row)",
+        "?addPartMap@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEXPAVLDraw2RobloxPartMap@23@@Z": "0x46d480 (own row)",
+        "??1TextXmlParser@@QAE@XZ": "0x4147c0 (helper body exact at the bound address (not counted here))",
+        "__imp_??_D?$basic_ifstream@DU?$char_traits@D@std@@@std@@QAEXXZ": "0x802408 (msvcp90.dll!??_D?$basic_ifstream@DU?$char_traits@D@std@@@std@@QAEXXZ)"
+      }
+    },
+    {
+      "address": "0046deb0",
+      "symbol": "??0NativeRobloxPart@LDraw2Lua@RBX@@QAE@ABU012@@Z",
+      "build": "MapOperations",
+      "size": 99,
+      "target_size": 99,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)"
+      }
+    },
+    {
+      "address": "0046df20",
+      "symbol": "??$_Fill@PAUNativeRobloxPart@LDraw2Lua@RBX@@U123@@std@@YAXPAUNativeRobloxPart@LDraw2Lua@RBX@@0ABU123@@Z",
+      "build": "MapOperations",
+      "size": 68,
+      "target_size": 68,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z": "0x80240c (msvcp90.dll!??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z)"
+      }
+    },
+    {
+      "address": "0046df70",
+      "symbol": "??$_Copy_backward_opt@PAUNativeRobloxPart@LDraw2Lua@RBX@@PAU123@Uforward_iterator_tag@std@@@std@@YAPAUNativeRobloxPart@LDraw2Lua@RBX@@PAU123@00Uforward_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+      "build": "MapOperations",
+      "size": 79,
+      "target_size": 79,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z": "0x80240c (msvcp90.dll!??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z)"
+      }
+    },
+    {
+      "address": "0046dfc0",
+      "symbol": "?_Xran@?$vector@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@KAXXZ",
+      "build": "MapOperations",
+      "size": 112,
+      "target_size": 112,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_0BM@NMJKDPPO@invalid?5vector?$DMT?$DO?5subscript?$AA@": "0x81c9d8 (string 'invalid vector<T> subscript')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "__imp_??0exception@std@@QAE@XZ": "0x802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+        "??_7logic_error@std@@6B@": "0x80b110 (vtable RTTI .?AVlogic_error@std@@ offset 0x0)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "__TI3?AVout_of_range@std@@": "0x8d0c3c (ThrowInfo of .?AVout_of_range@std@@ (3 catchable types))",
+        "??_7out_of_range@std@@6B@": "0x80b128 (vtable RTTI .?AVout_of_range@std@@ offset 0x0)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      }
+    },
+    {
+      "address": "0046e040",
+      "symbol": "??$_Allocate@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@YAPAUNativeRobloxPart@LDraw2Lua@RBX@@IPAU123@@Z",
+      "build": "MapOperations",
+      "size": 87,
+      "target_size": 87,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "__imp_??0exception@std@@QAE@ABQBD@Z": "0x8028a4 (msvcr90.dll!??0exception@std@@QAE@ABQBD@Z)",
+        "__TI2?AVbad_alloc@std@@": "0x8d07d8 (ThrowInfo of .?AVbad_alloc@std@@ (2 catchable types))",
+        "??_7bad_alloc@std@@6B@": "0x80b104 (vtable RTTI .?AVbad_alloc@std@@ offset 0x0)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      }
+    },
+    {
+      "address": "0046e210",
+      "symbol": "??$_Destroy_range@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@YAXPAUNativeRobloxPart@LDraw2Lua@RBX@@0AAV?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z",
+      "build": "MapOperations",
+      "size": 97,
+      "target_size": 97,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      }
+    },
+    {
+      "address": "0046e280",
+      "symbol": "?at@?$vector@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@QAEAAUNativeRobloxPart@LDraw2Lua@RBX@@I@Z",
+      "build": "MapOperations",
+      "size": 142,
+      "target_size": 142,
+      "exact": true,
+      "verified_targets": {
+        "?_Xran@?$vector@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@KAXXZ": "0x46dfc0 (own row)",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+      }
+    },
+    {
+      "address": "0046e310",
+      "symbol": "?_Ufill@?$vector@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@IAEPAUNativeRobloxPart@LDraw2Lua@RBX@@PAU345@IABU345@@Z",
+      "build": "MapOperations",
+      "size": 58,
+      "target_size": 58,
+      "exact": true,
+      "verified_targets": {
+        "??$_Uninit_fill_n@PAUNativeRobloxPart@LDraw2Lua@RBX@@IU123@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@YAXPAUNativeRobloxPart@LDraw2Lua@RBX@@IABU123@AAV?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x46e180 (split row: compiled body exact against the joined extent (bounds_evidence, not counted))"
+      }
+    },
+    {
+      "address": "0046e350",
+      "symbol": "?_Destroy@?$vector@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@IAEXPAUNativeRobloxPart@LDraw2Lua@RBX@@0@Z",
+      "build": "MapOperations",
+      "size": 30,
+      "target_size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??$_Destroy_range@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@YAXPAUNativeRobloxPart@LDraw2Lua@RBX@@0AAV?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z": "0x46e210 (own row)"
+      }
+    },
+    {
+      "address": "0046e370",
+      "symbol": "?getPart@LDraw2RobloxPartMap@LDraw2Lua@RBX@@QAEPAUNativeRobloxPart@23@XZ",
+      "build": "MapOperations",
+      "size": 27,
+      "target_size": 27,
+      "exact": true,
+      "verified_targets": {
+        "?at@?$vector@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@QAEAAUNativeRobloxPart@LDraw2Lua@RBX@@I@Z": "0x46e280 (own row)"
+      }
+    },
+    {
+      "address": "0046e390",
+      "symbol": "??$_Umove@PAUNativeRobloxPart@LDraw2Lua@RBX@@@?$vector@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@IAEPAUNativeRobloxPart@LDraw2Lua@RBX@@PAU234@00@Z",
+      "build": "MapOperations",
+      "size": 44,
+      "target_size": 44,
+      "exact": true,
+      "verified_targets": {
+        "??$_Uninit_copy@PAUNativeRobloxPart@LDraw2Lua@RBX@@PAU123@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@YAPAUNativeRobloxPart@LDraw2Lua@RBX@@PAU123@00AAV?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x46e0a0 (merged row: compiled body exact as the row prefix (bounds_evidence, not counted))"
+      }
+    },
+    {
+      "address": "0046e3c0",
+      "symbol": "??1?$vector@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@QAE@XZ",
+      "build": "MapOperations",
+      "size": 111,
+      "target_size": 111,
+      "exact": true,
+      "verified_targets": {
+        "??$_Destroy_range@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@YAXPAUNativeRobloxPart@LDraw2Lua@RBX@@0AAV?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@@Z": "0x46e210 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      }
+    },
+    {
+      "address": "0046e6b0",
+      "symbol": "??0LDraw2RobloxPartMap@LDraw2Lua@RBX@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@00H@Z",
+      "build": "MapOperations",
+      "size": 216,
+      "target_size": 216,
+      "exact": true,
+      "verified_targets": {
+        "??_7LDraw2RobloxPartMap@LDraw2Lua@RBX@@6B@": "0x81c9f8 (vtable RTTI .?AVLDraw2RobloxPartMap@LDraw2Lua@RBX@@ offset 0x0)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      }
+    },
+    {
+      "address": "0046e790",
+      "symbol": "??1LDraw2RobloxPartMap@LDraw2Lua@RBX@@UAE@XZ",
+      "build": "MapOperations",
+      "size": 112,
+      "target_size": 112,
+      "exact": true,
+      "verified_targets": {
+        "??_7LDraw2RobloxPartMap@LDraw2Lua@RBX@@6B@": "0x81c9f8 (vtable RTTI .?AVLDraw2RobloxPartMap@LDraw2Lua@RBX@@ offset 0x0)",
+        "??1?$vector@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@QAE@XZ": "0x46e3c0 (own row)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      }
+    },
+    {
+      "address": "0046e800",
+      "symbol": "?insert@?$vector@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@2@V?$_Vector_const_iterator@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@2@ABUNativeRobloxPart@LDraw2Lua@RBX@@@Z",
+      "build": "MapOperations",
+      "size": 182,
+      "target_size": 182,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?_Insert_n@?$vector@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@IAEXV?$_Vector_const_iterator@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@2@IABUNativeRobloxPart@LDraw2Lua@RBX@@@Z": "0x46e430 (split row: compiled body exact against the joined extent (bounds_evidence, not counted))"
+      }
+    },
+    {
+      "address": "0046e8c0",
+      "symbol": "??_GLDraw2RobloxPartMap@LDraw2Lua@RBX@@UAEPAXI@Z",
+      "build": "MapOperations",
+      "size": 30,
+      "target_size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??1LDraw2RobloxPartMap@LDraw2Lua@RBX@@UAE@XZ": "0x46e790 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      }
+    },
+    {
+      "address": "0046e8e0",
+      "symbol": "?push_back@?$vector@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@QAEXABUNativeRobloxPart@LDraw2Lua@RBX@@@Z",
+      "build": "MapOperations",
+      "size": 128,
+      "target_size": 128,
+      "exact": true,
+      "verified_targets": {
+        "??$_Uninit_fill_n@PAUNativeRobloxPart@LDraw2Lua@RBX@@IU123@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@YAXPAUNativeRobloxPart@LDraw2Lua@RBX@@IABU123@AAV?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": "0x46e180 (split row: compiled body exact against the joined extent (bounds_evidence, not counted))",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?insert@?$vector@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@2@V?$_Vector_const_iterator@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@2@ABUNativeRobloxPart@LDraw2Lua@RBX@@@Z": "0x46e800 (own row)"
+      }
+    },
+    {
+      "address": "0046e960",
+      "symbol": "?addPart@LDraw2RobloxPartMap@LDraw2Lua@RBX@@QAEXABUNativeRobloxPart@23@@Z",
+      "build": "MapOperations",
+      "size": 8,
+      "target_size": 8,
+      "exact": true,
+      "verified_targets": {
+        "?push_back@?$vector@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@QAEXABUNativeRobloxPart@LDraw2Lua@RBX@@@Z": "0x46e8e0 (own row)"
+      }
+    },
+    {
+      "address": "0046e970",
+      "symbol": "??0NativeRobloxPart@LDraw2Lua@RBX@@QAE@HHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z",
+      "build": "MapOperations",
+      "size": 136,
+      "target_size": 136,
+      "exact": true,
+      "verified_targets": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      }
+    },
+    {
+      "address": "0046eb40",
+      "symbol": "?writeShape@LDrawPart@LDraw2Lua@RBX@@QBE_NAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@PBUNativeRobloxPart@23@@Z",
+      "build": "PartShape",
+      "size": 421,
+      "target_size": 421,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_01EEMJAFIK@?6?$AA@": "0x81cbcc (string '\\n')",
+        "??_C@_0DH@OODFGMDP@Part?5Description?5?9?9?9?9?9?9?9?9?9?9?9?9?9?9?9@": "0x81caac (string 'Part Description -------------------------------------')",
+        "??_C@_03CJPCKGBB@?9?9?5?$AA@": "0x81cbc8 (string '-- ')",
+        "??$?6U?$char_traits@D@std@@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@PBD@Z": "0x44a450 (external (evidence name))",
+        "??_C@_0BM@ONNKFOPN@part?5?$DN?5Instance?4new?$CI?$CCPart?$CC?$CJ?$AA@": "0x81ca90 (string 'part = Instance.new(\"Part\")')",
+        "??_C@_01LFCBOECM@?4?$AA@": "0x81ca8c (string '.')",
+        "__imp_?find_first_of@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEIPBDI@Z": "0x802474 (msvcp90.dll!?find_first_of@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEIPBDI@Z)",
+        "__imp_?substr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z": "0x8023e0 (msvcp90.dll!?substr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z)",
+        "??_C@_01BJJEKLCA@?$CC?$AA@": "0x81ca88 (string '\"')",
+        "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": "0x802464 (msvcp90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ)",
+        "??_C@_0O@CEGGPPBL@part?4Name?5?$DN?5?$CC?$AA@": "0x81ca78 (string 'part.Name = \"')",
+        "??_C@_0O@OGLFLCJA@part?4Shape?5?$DN?5?$AA@": "0x81ca68 (string 'part.Shape = ')",
+        "__imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@H@Z": "0x802470 (msvcp90.dll!??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@H@Z)",
+        "??_C@_0BD@LFEKFLLB@part?4FormFactor?5?$DN?5?$AA@": "0x81ca54 (string 'part.FormFactor = ')",
+        "??_C@_0CC@EOEHFAE@part?4FormFactor?5?$DN?50?5?5?9?9?5symmetri@": "0x81ca30 (string 'part.FormFactor = 0  -- symmetric')",
+        "??_C@_01PKGAHCOL@?$CJ?$AA@": "0x812e5c (string ')')",
+        "??_C@_0BJ@LNNNCDMK@part?4Size?5?$DN?5Vector3?4new?$CI?$AA@": "0x81ca14 (string 'part.Size = Vector3.new(')",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      }
+    },
+    {
+      "address": "0046ecf0",
+      "symbol": "?writeColor@LDrawPart@LDraw2Lua@RBX@@QBE_NAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+      "build": "PartColor",
+      "size": 71,
+      "target_size": 71,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_02HMLFPPOG@?5?$CJ?$AA@": "0x81cb08 (string ' )')",
+        "?mapColor@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEHH@Z": "0x46d080 (own row)",
+        "??_C@_0CD@HOLPPDO@part?4BrickColor?5?$DN?5BrickColor?4new@": "0x81cae4 (string 'part.BrickColor = BrickColor.new( ')",
+        "??$?6U?$char_traits@D@std@@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@PBD@Z": "0x44a450 (external (evidence name))",
+        "__imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@H@Z": "0x802470 (msvcp90.dll!??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@H@Z)",
+        "??_C@_01EEMJAFIK@?6?$AA@": "0x81cbcc (string '\\n')"
+      }
+    },
+    {
+      "address": "0046ed40",
+      "symbol": "?writeTransform@LDrawPart@LDraw2Lua@RBX@@QBE_NAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@5@@Z",
+      "build": "PartTransform",
+      "size": 546,
+      "target_size": 546,
+      "exact": true,
+      "verified_targets": {
+        "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": "0x802464 (msvcp90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ)",
+        "__imp__atof": "0x8027fc (msvcr90.dll!atof)",
+        "__real@3fa999999999999a": "0x81cb38 (constant 3fa999999999999a)",
+        "??_C@_01PKGAHCOL@?$CJ?$AA@": "0x812e5c (string ')')",
+        "__real@bfa999999999999a": "0x81cb30 (constant bfa999999999999a)",
+        "??_C@_01IHBHIGKO@?0?$AA@": "0x81cb28 (string ',')",
+        "??_C@_0BK@FCNIPHIJ@part?4CFrame?5?$DN?5CFrame?4new?$CI?$AA@": "0x81cb0c (string 'part.CFrame = CFrame.new(')",
+        "??$?6U?$char_traits@D@std@@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@PBD@Z": "0x44a450 (external (evidence name))",
+        "__imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@N@Z": "0x802478 (msvcp90.dll!??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV01@N@Z)",
+        "??_C@_01EEMJAFIK@?6?$AA@": "0x81cbcc (string '\\n')",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      }
+    },
+    {
+      "address": "0046ef70",
+      "symbol": "?writeParent@LDrawPart@LDraw2Lua@RBX@@QBE_NAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@5@@Z",
+      "build": "PartParent",
+      "size": 139,
+      "target_size": 139,
+      "exact": true,
+      "verified_targets": {
+        "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": "0x802464 (msvcp90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ)",
+        "??_C@_0P@PEPCKMAE@part?4Parent?5?$DN?5?$AA@": "0x81cb54 (string 'part.Parent = ')",
+        "??$?6U?$char_traits@D@std@@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@PBD@Z": "0x44a450 (external (evidence name))",
+        "??_C@_01EEMJAFIK@?6?$AA@": "0x81cbcc (string '\\n')",
+        "??_C@_0BC@GMMCBNIL@part?3MakeJoints?$CI?$CJ?$AA@": "0x81cb40 (string 'part:MakeJoints()')",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      }
+    },
+    {
+      "address": "0046f000",
+      "symbol": "?writeLua@LDrawPart@LDraw2Lua@RBX@@UBE_NAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@5@@Z",
+      "build": "PartWrite",
+      "size": 251,
+      "target_size": 251,
+      "exact": true,
+      "verified_targets": {
+        "?findPartCaseInsensitive@LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAEPAVLDraw2RobloxPartMap@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x46d110 (own row)",
+        "?getPart@LDraw2RobloxPartMap@LDraw2Lua@RBX@@QAEPAUNativeRobloxPart@23@XZ": "0x46e370 (own row)",
+        "?writeShape@LDrawPart@LDraw2Lua@RBX@@QBE_NAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@PBUNativeRobloxPart@23@@Z": "0x46eb40 (own row)",
+        "?writeColor@LDrawPart@LDraw2Lua@RBX@@QBE_NAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z": "0x46ecf0 (own row)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+        "?writeTransform@LDrawPart@LDraw2Lua@RBX@@QBE_NAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@5@@Z": "0x46ed40 (own row)",
+        "?writeParent@LDrawPart@LDraw2Lua@RBX@@QBE_NAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@5@@Z": "0x46ef70 (own row)",
+        "??_C@_01EEMJAFIK@?6?$AA@": "0x81cbcc (string '\\n')",
+        "??$?6U?$char_traits@D@std@@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@PBD@Z": "0x44a450 (external (evidence name))",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      }
+    },
+    {
+      "address": "0046f100",
+      "symbol": "??1LDrawParser@LDraw2Lua@RBX@@UAE@XZ",
+      "build": "Parser",
+      "size": 15,
+      "target_size": 15,
+      "exact": true,
+      "verified_targets": {
+        "??_7LDrawParser@LDraw2Lua@RBX@@6B@": "0x81cb74 (vtable RTTI .?AVLDrawParser@LDraw2Lua@RBX@@ offset 0x0)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      }
+    },
+    {
+      "address": "0046f110",
+      "symbol": "??0LDrawParser@LDraw2Lua@RBX@@QAE@PBD@Z",
+      "build": "Parser",
+      "size": 184,
+      "target_size": 184,
+      "exact": true,
+      "verified_targets": {
+        "??_7LDrawParser@LDraw2Lua@RBX@@6B@": "0x81cb74 (vtable RTTI .?AVLDrawParser@LDraw2Lua@RBX@@ offset 0x0)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "?currentMap@LDraw2Lua@RBX@@3V?$auto_ptr@VLDraw2RobloxMapRoot@LDraw2Lua@RBX@@@std@@A": "0x96ee60 (global read and deleted by its atexit destructor 0x7faff0 (exact there))",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_C@_0BK@MAIONJKL@fonts?2LDraw2RobloxMap?4xml?$AA@": "0x81cb78 (string 'fonts\\\\LDraw2RobloxMap.xml')",
+        "?resolveMapPath@LDraw2Lua@RBX@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBD@Z": "0x55d0b0 (helper body exact at the bound address (not counted; resolveMapPath (caller 0x46f110 among others)))",
+        "??0LDraw2RobloxMapRoot@LDraw2Lua@RBX@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x46d710 (own row)"
+      }
+    },
+    {
+      "address": "0046f1d0",
+      "symbol": "??_GLDrawParser@LDraw2Lua@RBX@@UAEPAXI@Z",
+      "build": "Parser",
+      "size": 40,
+      "target_size": 40,
+      "exact": true,
+      "verified_targets": {
+        "??_7LDrawParser@LDraw2Lua@RBX@@6B@": "0x81cb74 (vtable RTTI .?AVLDrawParser@LDraw2Lua@RBX@@ offset 0x0)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      }
+    },
+    {
+      "address": "0x46f200 counted by ldraw-parse-trial.json",
+      "symbol": "?parse@LDrawParser@LDraw2Lua@RBX@@QAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+      "build": "ParserParse",
+      "size": 922,
+      "target_size": 922,
+      "exact": false,
+      "verified_targets": {
+        "??_C@_01EEMJAFIK@?6?$AA@": "0x81cbcc (string '\\n')",
+        "??_C@_0BM@NJEMEGKL@Roblox?5LDraw2Lua?5Conversion?$AA@": "0x81cbac (string 'Roblox LDraw2Lua Conversion')",
+        "??_C@_03CJPCKGBB@?9?9?5?$AA@": "0x81cbc8 (string '-- ')",
+        "??$?6U?$char_traits@D@std@@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@PBD@Z": "0x44a450 (external (evidence name))",
+        "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": "0x802464 (msvcp90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ)",
+        "??_C@_0L@KDJFEMJI@FileName?3?5?$AA@": "0x81cba0 (string 'FileName: ')",
+        "??_C@_0L@KPBEHDCI@LDrawModel?$AA@": "0x81cb94 (string 'LDrawModel')",
+        "??0LDrawModel@LDraw2Lua@RBX@@QAE@PBD@Z": "0x46f630 (row of this range, byte-exact here (not counted: rtti-name-mismatch))",
+        "__imp_??0?$basic_ifstream@DU?$char_traits@D@std@@@std@@QAE@PBDHH@Z": "0x802404 (msvcp90.dll!??0?$basic_ifstream@DU?$char_traits@D@std@@@std@@QAE@PBDHH@Z)",
+        "__imp_?eof@ios_base@std@@QBE_NXZ": "0x80248c (msvcp90.dll!?eof@ios_base@std@@QBE_NXZ)",
+        "__imp_??5?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV01@AAH@Z": "0x802488 (msvcp90.dll!??5?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV01@AAH@Z)",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "?currentMap@LDraw2Lua@RBX@@3V?$auto_ptr@VLDraw2RobloxMapRoot@LDraw2Lua@RBX@@@std@@A": "0x96ee60 (global read and deleted by its atexit destructor 0x7faff0 (exact there))",
+        "??0LDrawPart@LDraw2Lua@RBX@@QAE@PAVLDraw2RobloxMapRoot@12@@Z": "0x46ea30 (row of this range, byte-exact here (not counted: rtti-name-mismatch))",
+        "__imp_??5?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV01@AAN@Z": "0x802484 (msvcp90.dll!??5?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV01@AAN@Z)",
+        "__imp_?getline@?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV12@PADH@Z": "0x802480 (msvcp90.dll!?getline@?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV12@PADH@Z)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "??_C@_01CLKCMJKC@?5?$AA@": "0x812e58 (string ' ')",
+        "__imp_?find_first_not_of@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEIPBDI@Z": "0x80247c (msvcp90.dll!?find_first_not_of@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEIPBDI@Z)",
+        "__imp_?substr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z": "0x8023e0 (msvcp90.dll!?substr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z)",
+        "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z": "0x80240c (msvcp90.dll!??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "?add@LDrawModel@LDraw2Lua@RBX@@QAEXPAVLDrawItem@23@@Z": "0x46f920 (own row)",
+        "__imp_??_D?$basic_ifstream@DU?$char_traits@D@std@@@std@@QAEXXZ": "0x802408 (msvcp90.dll!??_D?$basic_ifstream@DU?$char_traits@D@std@@@std@@QAEXXZ)",
+        "?writeLua@LDrawModel@LDraw2Lua@RBX@@QBEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z": "0x46f6b0 (own row)",
+        "??1LDrawModel@LDraw2Lua@RBX@@UAE@XZ": "0x46f820 (row of this range, byte-exact here (not counted: rtti-name-mismatch))"
+      },
+      "counted_elsewhere": true
+    },
+    {
+      "address": "0046f5a0",
+      "symbol": "?at@?$vector@PAVLDrawItem@LDraw2Lua@RBX@@V?$allocator@PAVLDrawItem@LDraw2Lua@RBX@@@std@@@std@@QAEAAPAVLDrawItem@LDraw2Lua@RBX@@I@Z",
+      "build": "EntityLifetime",
+      "size": 140,
+      "target_size": 140,
+      "exact": true,
+      "verified_targets": {
+        "?_Xran@?$vector@PAVLDrawItem@LDraw2Lua@RBX@@V?$allocator@PAVLDrawItem@LDraw2Lua@RBX@@@std@@@std@@KAXXZ": "0x46dfc0 (helper body exact at the bound address (not counted here))",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+      }
+    },
+    {
+      "address": "0046f6b0",
+      "symbol": "?writeLua@LDrawModel@LDraw2Lua@RBX@@QBEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z",
+      "build": "ModelWrite",
+      "size": 362,
+      "target_size": 362,
+      "exact": true,
+      "verified_targets": {
+        "??_C@_01EEMJAFIK@?6?$AA@": "0x81cbcc (string '\\n')",
+        "??_C@_0BK@GFHFJHGG@Get?5the?5current?5workspace?$AA@": "0x81cc4c (string 'Get the current workspace')",
+        "??_C@_03CJPCKGBB@?9?9?5?$AA@": "0x81cbc8 (string '-- ')",
+        "??$?6U?$char_traits@D@std@@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@PBD@Z": "0x44a450 (external (evidence name))",
+        "??_C@_0CE@OBPJIINL@local?5w?5?$DN?5game?3service?$CI?$CCWorkspac@": "0x81cc28 (string 'local w = game:service(\"Workspace\")')",
+        "??_C@_0BD@DJNGFOJB@Create?5a?5new?5model?$AA@": "0x81cc14 (string 'Create a new model')",
+        "??_C@_0BK@JCKDHGKD@m?5?$DN?5Instance?4new?$CI?$CCModel?$CC?$CJ?$AA@": "0x81cbf8 (string 'm = Instance.new(\"Model\")')",
+        "??_C@_01BJJEKLCA@?$CC?$AA@": "0x81ca88 (string '\"')",
+        "__imp_?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ": "0x802464 (msvcp90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ)",
+        "??_C@_0L@LKJKGCIL@m?4Name?5?$DN?5?$CC?$AA@": "0x81cbec (string 'm.Name = \"')",
+        "??_C@_0N@JIBICCJL@m?4Parent?5?$DN?5w?$AA@": "0x81cbdc (string 'm.Parent = w')",
+        "?at@?$vector@PAVLDrawItem@LDraw2Lua@RBX@@V?$allocator@PAVLDrawItem@LDraw2Lua@RBX@@@std@@@std@@QBEABQAVLDrawItem@LDraw2Lua@RBX@@I@Z": "0x46f5a0 (helper body exact at the bound address (not counted here))",
+        "??_C@_01GOHFPIOK@m?$AA@": "0x81cbd8 (string 'm')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)"
+      }
+    },
+    {
+      "address": "0046f900",
+      "symbol": "??_GLDrawModel@LDraw2Lua@RBX@@UAEPAXI@Z",
+      "build": "EntityLifetime",
+      "size": 30,
+      "target_size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??1LDrawModel@LDraw2Lua@RBX@@UAE@XZ": "0x46f820 (row of this range, byte-exact here (not counted: rtti-name-mismatch))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      }
+    },
+    {
+      "address": "0046f920",
+      "symbol": "?add@LDrawModel@LDraw2Lua@RBX@@QAEXPAVLDrawItem@23@@Z",
+      "build": "EntityLifetime",
+      "size": 24,
+      "target_size": 24,
+      "exact": true,
+      "verified_targets": {
+        "?push_back@?$vector@PAVLDrawItem@LDraw2Lua@RBX@@V?$allocator@PAVLDrawItem@LDraw2Lua@RBX@@@std@@@std@@QAEXABQAVLDrawItem@LDraw2Lua@RBX@@@Z": "0x4213a0 (helper body exact at the bound address (not counted here))"
+      }
+    },
+    {
+      "address": "0046f940",
+      "symbol": "??D?$_String_const_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEABDXZ",
+      "build": "StringIterators",
+      "size": 49,
+      "target_size": 49,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "__imp_?_Myptr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@IAEPADXZ": "0x802358 (msvcp90.dll!?_Myptr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@IAEPADXZ)"
+      }
+    },
+    {
+      "address": "0046f980",
+      "symbol": "??E?$_String_const_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@XZ",
+      "build": "StringCompare",
+      "size": 51,
+      "target_size": 51,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "__imp_?_Myptr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@IAEPADXZ": "0x802358 (msvcp90.dll!?_Myptr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@IAEPADXZ)"
+      }
+    },
+    {
+      "address": "0046f9c0",
+      "symbol": "??8?$_String_const_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE_NABV01@@Z",
+      "build": "StringCompare",
+      "size": 47,
+      "target_size": 47,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+      }
+    },
+    {
+      "address": "0046f9f0",
+      "symbol": "?stringCompareNoCase@@YAHABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z",
+      "build": "StringCompare",
+      "size": 543,
+      "target_size": 543,
+      "exact": true,
+      "verified_targets": {
+        "__imp_?begin@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV?$_String_const_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@2@XZ": "0x802494 (msvcp90.dll!?begin@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV?$_String_const_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@2@XZ)",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "__imp_?end@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV?$_String_const_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@2@XZ": "0x802490 (msvcp90.dll!?end@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV?$_String_const_iterator@DU?$char_traits@D@std@@V?$allocator@D@2@@2@XZ)",
+        "__imp_?_Myptr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@IAEPADXZ": "0x802358 (msvcp90.dll!?_Myptr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@IAEPADXZ)",
+        "__imp__toupper": "0x8027f8 (msvcr90.dll!toupper)",
+        "__imp_?size@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEIXZ": "0x8023f4 (msvcp90.dll!?size@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEIXZ)"
+      }
+    }
+  ],
+  "rtti_name_mismatch_rows": [
+    {
+      "address": "0x46ea00 (not counted)",
+      "symbol": "??1LDrawItem@LDraw2Lua@RBX@@UAE@XZ",
+      "build": "EntityLifetime",
+      "size": 7,
+      "target_size": 7,
+      "exact": false,
+      "verified_targets": {},
+      "rtti_name_mismatch": [
+        "??_7LDrawItem@LDraw2Lua@RBX@@6B@ -> 0x81ca00 (RTTI .?AVLuaObjectWriter@LDraw2Lua@RBX@@)"
+      ],
+      "note": "rtti-name-mismatch: not counted from the current header"
+    },
+    {
+      "address": "0x46ea10 (not counted)",
+      "symbol": "??_GLDrawItem@LDraw2Lua@RBX@@UAEPAXI@Z",
+      "build": "EntityLifetime",
+      "size": 31,
+      "target_size": 31,
+      "exact": false,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "rtti_name_mismatch": [
+        "??_7LDrawItem@LDraw2Lua@RBX@@6B@ -> 0x81ca00 (RTTI .?AVLuaObjectWriter@LDraw2Lua@RBX@@)"
+      ],
+      "note": "rtti-name-mismatch: not counted from the current header"
+    },
+    {
+      "address": "0x46ea30 (not counted)",
+      "symbol": "??0LDrawPart@LDraw2Lua@RBX@@QAE@PAVLDraw2RobloxMapRoot@12@@Z",
+      "build": "EntityLifetime",
+      "size": 163,
+      "target_size": 163,
+      "exact": false,
+      "verified_targets": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802460 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??_C@_00CNPNBAHC@?$AA@": "0x80b716 (string '')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "rtti_name_mismatch": [
+        "??_7LDrawPart@LDraw2Lua@RBX@@6B@ -> 0x81ca0c (RTTI .?AVLDrawCommand@LDraw2Lua@RBX@@)"
+      ],
+      "note": "rtti-name-mismatch: not counted from the current header"
+    },
+    {
+      "address": "0x46eae0 (not counted)",
+      "symbol": "??_GLDrawPart@LDraw2Lua@RBX@@UAEPAXI@Z",
+      "build": "EntityLifetime",
+      "size": 94,
+      "target_size": 94,
+      "exact": false,
+      "verified_targets": {
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "rtti_name_mismatch": [
+        "??_7LDrawPart@LDraw2Lua@RBX@@6B@ -> 0x81ca0c (RTTI .?AVLDrawCommand@LDraw2Lua@RBX@@)",
+        "??_7LDrawItem@LDraw2Lua@RBX@@6B@ -> 0x81ca00 (RTTI .?AVLuaObjectWriter@LDraw2Lua@RBX@@)"
+      ],
+      "note": "rtti-name-mismatch: not counted from the current header"
+    },
+    {
+      "address": "0x46f630 (not counted)",
+      "symbol": "??0LDrawModel@LDraw2Lua@RBX@@QAE@PBD@Z",
+      "build": "EntityLifetime",
+      "size": 115,
+      "target_size": 115,
+      "exact": false,
+      "verified_targets": {
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
+      },
+      "rtti_name_mismatch": [
+        "??_7LDrawModel@LDraw2Lua@RBX@@6B@ -> 0x81cbd4 (RTTI .?AVLuaWriter@LDraw2Lua@RBX@@)"
+      ],
+      "note": "rtti-name-mismatch: not counted from the current header"
+    },
+    {
+      "address": "0x46f820 (not counted)",
+      "symbol": "??1LDrawModel@LDraw2Lua@RBX@@UAE@XZ",
+      "build": "EntityLifetime",
+      "size": 217,
+      "target_size": 217,
+      "exact": false,
+      "verified_targets": {
+        "?at@?$vector@PAVLDrawItem@LDraw2Lua@RBX@@V?$allocator@PAVLDrawItem@LDraw2Lua@RBX@@@std@@@std@@QAEAAPAVLDrawItem@LDraw2Lua@RBX@@I@Z": "0x46f5a0 (own row)",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?erase@?$vector@PAVLDrawItem@LDraw2Lua@RBX@@V?$allocator@PAVLDrawItem@LDraw2Lua@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PAVLDrawItem@LDraw2Lua@RBX@@V?$allocator@PAVLDrawItem@LDraw2Lua@RBX@@@std@@@2@V?$_Vector_const_iterator@PAVLDrawItem@LDraw2Lua@RBX@@V?$allocator@PAVLDrawItem@LDraw2Lua@RBX@@@std@@@2@0@Z": "0x445dc0 (helper body exact at the bound address (not counted here))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "rtti_name_mismatch": [
+        "??_7LDrawModel@LDraw2Lua@RBX@@6B@ -> 0x81cbd4 (RTTI .?AVLuaWriter@LDraw2Lua@RBX@@)"
+      ],
+      "note": "rtti-name-mismatch: not counted from the current header"
+    }
+  ],
+  "pending_build_only": [
+    {
+      "address": "0x46ea00 (pending-build-only, not counted)",
+      "symbol": "??1LuaObjectWriter@LDraw2Lua@RBX@@UAE@XZ",
+      "build": "EntityLifetime_pending",
+      "size": 7,
+      "target_size": 7,
+      "exact": false,
+      "verified_targets": {
+        "??_7LuaObjectWriter@LDraw2Lua@RBX@@6B@": "0x81ca00 (vtable RTTI .?AVLuaObjectWriter@LDraw2Lua@RBX@@ offset 0x0)"
+      },
+      "pending_build_only": true,
+      "exact_in_pending_build": true
+    },
+    {
+      "address": "0x46ea10 (pending-build-only, not counted)",
+      "symbol": "??_GLuaObjectWriter@LDraw2Lua@RBX@@UAEPAXI@Z",
+      "build": "EntityLifetime_pending",
+      "size": 31,
+      "target_size": 31,
+      "exact": false,
+      "verified_targets": {
+        "??_7LuaObjectWriter@LDraw2Lua@RBX@@6B@": "0x81ca00 (vtable RTTI .?AVLuaObjectWriter@LDraw2Lua@RBX@@ offset 0x0)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "pending_build_only": true,
+      "exact_in_pending_build": true
+    },
+    {
+      "address": "0x46ea30 (pending-build-only, not counted)",
+      "symbol": "??0LDrawCommand@LDraw2Lua@RBX@@QAE@PAVLDraw2RobloxMapRoot@12@@Z",
+      "build": "EntityLifetime_pending",
+      "size": 163,
+      "target_size": 163,
+      "exact": false,
+      "verified_targets": {
+        "??_7LDrawCommand@LDraw2Lua@RBX@@6B@": "0x81ca0c (vtable RTTI .?AVLDrawCommand@LDraw2Lua@RBX@@ offset 0x0)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802460 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??_C@_00CNPNBAHC@?$AA@": "0x80b716 (string '')",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "pending_build_only": true,
+      "exact_in_pending_build": true
+    },
+    {
+      "address": "0x46eae0 (pending-build-only, not counted)",
+      "symbol": "??_GLDrawCommand@LDraw2Lua@RBX@@UAEPAXI@Z",
+      "build": "EntityLifetime_pending",
+      "size": 94,
+      "target_size": 94,
+      "exact": false,
+      "verified_targets": {
+        "??_7LDrawCommand@LDraw2Lua@RBX@@6B@": "0x81ca0c (vtable RTTI .?AVLDrawCommand@LDraw2Lua@RBX@@ offset 0x0)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "??_7LuaObjectWriter@LDraw2Lua@RBX@@6B@": "0x81ca00 (vtable RTTI .?AVLuaObjectWriter@LDraw2Lua@RBX@@ offset 0x0)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "pending_build_only": true,
+      "exact_in_pending_build": true
+    },
+    {
+      "address": "0x46f630 (pending-build-only, not counted)",
+      "symbol": "??0LuaWriter@LDraw2Lua@RBX@@QAE@PBD@Z",
+      "build": "EntityLifetime_pending",
+      "size": 115,
+      "target_size": 115,
+      "exact": false,
+      "verified_targets": {
+        "??_7LuaWriter@LDraw2Lua@RBX@@6B@": "0x81cbd4 (vtable RTTI .?AVLuaWriter@LDraw2Lua@RBX@@ offset 0x0)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
+      },
+      "pending_build_only": true,
+      "exact_in_pending_build": true
+    },
+    {
+      "address": "0x46f820 (pending-build-only, not counted)",
+      "symbol": "??1LuaWriter@LDraw2Lua@RBX@@UAE@XZ",
+      "build": "EntityLifetime_pending",
+      "size": 217,
+      "target_size": 217,
+      "exact": false,
+      "verified_targets": {
+        "??_7LuaWriter@LDraw2Lua@RBX@@6B@": "0x81cbd4 (vtable RTTI .?AVLuaWriter@LDraw2Lua@RBX@@ offset 0x0)",
+        "?at@?$vector@PAVLuaObjectWriter@LDraw2Lua@RBX@@V?$allocator@PAVLuaObjectWriter@LDraw2Lua@RBX@@@std@@@std@@QAEAAPAVLuaObjectWriter@LDraw2Lua@RBX@@I@Z": "0x46f5a0 (helper body exact at the bound address (not counted here))",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?erase@?$vector@PAVLuaObjectWriter@LDraw2Lua@RBX@@V?$allocator@PAVLuaObjectWriter@LDraw2Lua@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PAVLuaObjectWriter@LDraw2Lua@RBX@@V?$allocator@PAVLuaObjectWriter@LDraw2Lua@RBX@@@std@@@2@V?$_Vector_const_iterator@PAVLuaObjectWriter@LDraw2Lua@RBX@@V?$allocator@PAVLuaObjectWriter@LDraw2Lua@RBX@@@std@@@2@0@Z": "0x445dc0 (helper body exact at the bound address (not counted here))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "pending_build_only": true,
+      "exact_in_pending_build": true
+    }
+  ],
+  "vtables": [
+    {
+      "vtable": "0x81c8b8",
+      "rtti": ".?AVLDraw2RobloxColorMap@LDraw2Lua@RBX@@",
+      "compiled": "??_7LDraw2RobloxColorMap@LDraw2Lua@RBX@@6B@",
+      "slots": [
+        "slot 0 ??_GLDraw2RobloxColorMap@LDraw2Lua@RBX@@ row"
+      ],
+      "header_name_matches_rtti": true
+    },
+    {
+      "vtable": "0x81c904",
+      "rtti": ".?AVLDraw2RobloxMapRoot@LDraw2Lua@RBX@@",
+      "compiled": "??_7LDraw2RobloxMapRoot@LDraw2Lua@RBX@@6B@",
+      "slots": [
+        "slot 0 ??_GLDraw2RobloxMapRoot@LDraw2Lua@RBX@@U row"
+      ],
+      "header_name_matches_rtti": true
+    },
+    {
+      "vtable": "0x81c9f8",
+      "rtti": ".?AVLDraw2RobloxPartMap@LDraw2Lua@RBX@@",
+      "compiled": "??_7LDraw2RobloxPartMap@LDraw2Lua@RBX@@6B@",
+      "slots": [
+        "slot 0 ??_GLDraw2RobloxPartMap@LDraw2Lua@RBX@@U row"
+      ],
+      "header_name_matches_rtti": true
+    },
+    {
+      "vtable": "0x81cb74",
+      "rtti": ".?AVLDrawParser@LDraw2Lua@RBX@@",
+      "compiled": "??_7LDrawParser@LDraw2Lua@RBX@@6B@",
+      "slots": [
+        "slot 0 ??_GLDrawParser@LDraw2Lua@RBX@@UAEPAXI@Z row"
+      ],
+      "header_name_matches_rtti": true
+    },
+    {
+      "vtable": "0x81ca00",
+      "rtti": ".?AVLuaObjectWriter@LDraw2Lua@RBX@@",
+      "compiled": "??_7LDrawItem@LDraw2Lua@RBX@@6B@",
+      "slots": [
+        "slot 0 ??_GLDrawItem@LDraw2Lua@RBX@@UAEPAXI@Z row",
+        "slot 1 _purecall (import)"
+      ],
+      "header_name_matches_rtti": false
+    },
+    {
+      "vtable": "0x81ca0c",
+      "rtti": ".?AVLDrawCommand@LDraw2Lua@RBX@@",
+      "compiled": "??_7LDrawPart@LDraw2Lua@RBX@@6B@",
+      "slots": [
+        "slot 0 ??_GLDrawPart@LDraw2Lua@RBX@@UAEPAXI@Z row",
+        "slot 1 ?writeLua@LDrawPart@LDraw2Lua@RBX@@UBE_N row"
+      ],
+      "header_name_matches_rtti": false
+    },
+    {
+      "vtable": "0x81cbd4",
+      "rtti": ".?AVLuaWriter@LDraw2Lua@RBX@@",
+      "compiled": "??_7LDrawModel@LDraw2Lua@RBX@@6B@",
+      "slots": [
+        "slot 0 ??_GLDrawModel@LDraw2Lua@RBX@@UAEPAXI@Z row"
+      ],
+      "header_name_matches_rtti": false
+    }
+  ],
+  "evidence_rows": [
+    {
+      "row": "0x7faff0 (outside the range, not counted)",
+      "symbol": "??__FcurrentMap@LDraw2Lua@RBX@@YAXXZ",
+      "exact": true,
+      "note": "atexit destructor of currentMap",
+      "targets": {
+        "?currentMap@LDraw2Lua@RBX@@3V?$auto_ptr@VLDraw2RobloxMapRoot@LDraw2Lua@RBX@@@std@@A": "0x96ee60"
+      }
+    },
+    {
+      "row": "0x55d0b0 (outside the range, not counted)",
+      "symbol": "?resolveMapPath@LDraw2Lua@RBX@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBD@Z",
+      "exact": true,
+      "note": "resolveMapPath (caller 0x46f110 among others)",
+      "targets": {
+        "?originalAssetFolder@LDraw2Lua@RBX@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ": "0x55c4c0",
+        "__imp_??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z": "0x8023e4",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468"
+      }
+    }
+  ],
+  "bounds_evidence": [
+    {
+      "rows": "0x46e180 + 0x46e1d9",
+      "symbol": "??$_Uninit_fill_n@PAUNativeRobloxPart@LDraw2Lua@RBX@@IU123@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@YAXPAUNativeRobloxPart@LDraw2Lua@RBX@@IABU123@AAV?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+      "compiled_size": 139,
+      "joined_size": 139,
+      "exact_when_joined": true,
+      "reason": "one function: the try body and its catch(...) funclet (destroy the constructed elements and rethrow, __CxxThrowException); the analysis splits it at the funclet. Relocation-masked exact against the joined extent. Not counted (extent fix needed; bounds.json is not changed here)."
+    },
+    {
+      "rows": "0x46e430 + 0x46e574 + 0x46e612",
+      "symbol": "?_Insert_n@?$vector@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@IAEXV?$_Vector_const_iterator@UNativeRobloxPart@LDraw2Lua@RBX@@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@2@IABUNativeRobloxPart@LDraw2Lua@RBX@@@Z",
+      "compiled_size": 635,
+      "joined_size": 635,
+      "exact_when_joined": true,
+      "reason": "one function: the try body and its catch(...) funclet (destroy the constructed elements and rethrow, __CxxThrowException); the analysis splits it at the funclet. Relocation-masked exact against the joined extent. Not counted (extent fix needed; bounds.json is not changed here)."
+    },
+    {
+      "rows": "0x46e0a0",
+      "symbol": "??$_Uninit_copy@PAUNativeRobloxPart@LDraw2Lua@RBX@@PAU123@V?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@std@@@std@@YAPAUNativeRobloxPart@LDraw2Lua@RBX@@PAU123@00AAV?$allocator@UNativeRobloxPart@LDraw2Lua@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+      "compiled_size": 141,
+      "row_size": 217,
+      "exact_prefix": true,
+      "reason": "the analysed row is two functions: _Uninit_copy<NativeRobloxPart*> (141 B, exact as the row prefix, its catch(...) funclet inside) then int3 padding and a second function at 0x46e130 (73 B, the copy-backward wrapper that calls 0x46df70). Not counted (extent fix needed)."
+    }
+  ],
+  "helper_bodies_not_counted": {
+    "?find@?$_Tree@V?$_Tmap_traits@HPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@ABH@Z": "0x5b3990",
+    "?find@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@@std@@@2@$0A@@std@@@std@@QAE?AViterator@12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z": "0x696f30",
+    "?_Insert@?$_Tree@V?$_Tmap_traits@HPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@5@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@HPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@5@$0A@@std@@@2@ABU?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@2@@Z": "0x668010",
+    "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@HPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@5@$0A@@std@@@std@@QAEXXZ": "0x609bd0",
+    "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@HPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@5@$0A@@std@@@std@@QAEXXZ": "0x68dfa0",
+    "??8const_iterator@?$_Tree@V?$_Tmap_traits@HPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@5@$0A@@std@@@std@@QBE_NABV012@@Z": "0x5ecca0",
+    "?insert@?$_Tree@V?$_Tmap_traits@HPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@5@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@HPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@5@$0A@@std@@@std@@_N@2@ABU?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@2@@Z": "0x5b38a0",
+    "??A?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@@std@@@2@@std@@QAEAAPAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x671910",
+    "??1?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@@std@@@2@$0A@@std@@@std@@QAE@XZ": "0x46b070",
+    "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@@std@@@2@$0A@@std@@@std@@QAEXXZ": "0x68d1a0",
+    "??1?$_Tree@V?$_Tmap_traits@HPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@5@$0A@@std@@@std@@QAE@XZ": "0x553d80",
+    "??0?$_Tree@V?$_Tmap_traits@HPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@5@$0A@@std@@@std@@QAE@ABU?$less@H@1@ABV?$allocator@U?$pair@$$CBHPAVLDraw2RobloxColorMap@LDraw2Lua@RBX@@@std@@@1@@Z": "0x446110",
+    "??0?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@@std@@@2@$0A@@std@@@std@@QAE@ABU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@1@ABV?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVLDraw2RobloxPartMap@LDraw2Lua@RBX@@@std@@@1@@Z": "0x699b30",
+    "??0TextXmlParser@@QAE@PAV?$basic_streambuf@DU?$char_traits@D@std@@@std@@@Z": "0x415350",
+    "??1XmlElement@@QAE@XZ": "0x413a70",
+    "??1TextXmlParser@@QAE@XZ": "0x4147c0",
+    "?_Xran@?$vector@PAVLDrawItem@LDraw2Lua@RBX@@V?$allocator@PAVLDrawItem@LDraw2Lua@RBX@@@std@@@std@@KAXXZ": "0x46dfc0",
+    "?at@?$vector@PAVLDrawItem@LDraw2Lua@RBX@@V?$allocator@PAVLDrawItem@LDraw2Lua@RBX@@@std@@@std@@QBEABQAVLDrawItem@LDraw2Lua@RBX@@I@Z": "0x46f5a0",
+    "?push_back@?$vector@PAVLDrawItem@LDraw2Lua@RBX@@V?$allocator@PAVLDrawItem@LDraw2Lua@RBX@@@std@@@std@@QAEXABQAVLDrawItem@LDraw2Lua@RBX@@@Z": "0x4213a0",
+    "?erase@?$vector@PAVLDrawItem@LDraw2Lua@RBX@@V?$allocator@PAVLDrawItem@LDraw2Lua@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PAVLDrawItem@LDraw2Lua@RBX@@V?$allocator@PAVLDrawItem@LDraw2Lua@RBX@@@std@@@2@V?$_Vector_const_iterator@PAVLDrawItem@LDraw2Lua@RBX@@V?$allocator@PAVLDrawItem@LDraw2Lua@RBX@@@std@@@2@0@Z": "0x445dc0",
+    "?at@?$vector@PAVLuaObjectWriter@LDraw2Lua@RBX@@V?$allocator@PAVLuaObjectWriter@LDraw2Lua@RBX@@@std@@@std@@QAEAAPAVLuaObjectWriter@LDraw2Lua@RBX@@I@Z": "0x46f5a0",
+    "?erase@?$vector@PAVLuaObjectWriter@LDraw2Lua@RBX@@V?$allocator@PAVLuaObjectWriter@LDraw2Lua@RBX@@@std@@@std@@QAE?AV?$_Vector_iterator@PAVLuaObjectWriter@LDraw2Lua@RBX@@V?$allocator@PAVLuaObjectWriter@LDraw2Lua@RBX@@@std@@@2@V?$_Vector_const_iterator@PAVLuaObjectWriter@LDraw2Lua@RBX@@V?$allocator@PAVLuaObjectWriter@LDraw2Lua@RBX@@@std@@@2@0@Z": "0x445dc0"
+  },
+  "proposals": {
+    "util/LDrawEntities.h (LDraw owner; not edited)": "Rename LDrawItem -> LuaObjectWriter, LDrawPart -> LDrawCommand, LDrawModel -> LuaWriter (and the definitions in native-classes/LDrawEntityLifetime.cpp, LDrawModelWrite.cpp, LDrawPart*.cpp, LDrawParserParse.cpp): the complete-object locators of vtables 0x81ca00 / 0x81ca0c / 0x81cbd4 name .?AVLuaObjectWriter@LDraw2Lua@RBX@@, .?AVLDrawCommand@LDraw2Lua@RBX@@ (bases LDrawCommand, LuaObjectWriter) and .?AVLuaWriter@LDraw2Lua@RBX@@. Verified here with generated copies of the header and of LDrawEntityLifetime.cpp with the RTTI names: 0x46ea00 / 0x46ea10 / 0x46ea30 / 0x46eae0 / 0x46f630 / 0x46f820 are exact with every target verified (pending-build-only, not counted).",
+    "work/2008-06/bounds.json (server host)": "BOUNDS: 0x46e180 + 0x46e1d9 is one function (_Uninit_fill_n<NativeRobloxPart*>, 139 B), 0x46e430 + 0x46e574 + 0x46e612 is one function (vector<NativeRobloxPart>::_Insert_n, 635 B), and 0x46e0a0 is two functions (_Uninit_copy<NativeRobloxPart*> 0x46e0a0, 141 B, and a 73-byte function at 0x46e130). Relocation-masked exact evidence in bounds_evidence."
+  },
+  "library": "G3D 6.09 GLCaps.cpp / Texture.cpp 0x46fc10..0x474000: library code, not recovered.",
+  "excluded": "No CRobloxApp / CMainFrame / CRobloxDoc / CRobloxView member lies in the range.",
+  "exact_function_rows": [
+    "0046cac0",
+    "0046cae0",
+    "0046cb00",
+    "0046cb30",
+    "0046cb80",
+    "0046cc80",
+    "0046cde0",
+    "0046cee0",
+    "0046cf00",
+    "0046cfa0",
+    "0046d010",
+    "0046d080",
+    "0046d0a0",
+    "0046d110",
+    "0046d1f0",
+    "0046d3d0",
+    "0046d480",
+    "0046d580",
+    "0046d590",
+    "0046d6f0",
+    "0046d710",
+    "0046deb0",
+    "0046df20",
+    "0046df70",
+    "0046dfc0",
+    "0046e040",
+    "0046e210",
+    "0046e280",
+    "0046e310",
+    "0046e350",
+    "0046e370",
+    "0046e390",
+    "0046e3c0",
+    "0046e6b0",
+    "0046e790",
+    "0046e800",
+    "0046e8c0",
+    "0046e8e0",
+    "0046e960",
+    "0046e970",
+    "0046eb40",
+    "0046ecf0",
+    "0046ed40",
+    "0046ef70",
+    "0046f000",
+    "0046f100",
+    "0046f110",
+    "0046f1d0",
+    "0046f5a0",
+    "0046f6b0",
+    "0046f900",
+    "0046f920",
+    "0046f940",
+    "0046f980",
+    "0046f9c0",
+    "0046f9f0"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}
