@@ -109,6 +109,10 @@ Do not ask the user to find a ZIP. Use these actual published resources:
 - Package: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/data/native-worker.zip
 - Guide: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/data/NATIVE_AGENT.md
 
+Always append a fresh `?t=<random>` to every one of these URLs (guide, manifest and zip) when fetching, on every platform: GitHub
+raw caches for minutes, and a cached manifest or zip is the usual cause of "unchanged" or missing-file reports. Compare the
+downloaded manifest's `sha256`/`source_revision` against the zip you actually received before trusting either.
+
 For an update, checkpoint/flush the old session first as described below. This
 Windows bootstrap reuses a verified cache or downloads once, checks SHA-256 and
 extracts into a fresh folder in the current authorized workspace:
@@ -148,7 +152,7 @@ if ($nativeCached) {
     Copy-Item -LiteralPath $nativeCached -Destination $nativeArchive
     Write-Output ('Reusing verified Worker ZIP: ' + $nativeCached)
 } else {
-    Invoke-WebRequest -UseBasicParsing -Uri ($nativeManifest.url + '?sha256=' + $nativeManifest.sha256) -OutFile $nativeArchive
+    Invoke-WebRequest -UseBasicParsing -Uri ($nativeManifest.url + '?sha256=' + $nativeManifest.sha256 + '&t=' + [guid]::NewGuid().ToString('N')) -OutFile $nativeArchive
 }
 if ((Get-FileHash -LiteralPath $nativeArchive -Algorithm SHA256).Hash -ne $nativeManifest.sha256) {
     throw 'Worker ZIP hash mismatch'
@@ -339,7 +343,10 @@ other provider is needed:
 Each run does `python work/native-client/audit_digest.py --write`, reads the digest (bytes/hour, time per tool, repeated
 command shapes, waste, tool health) and follows `work/native-client/AUDIT_PROMPT.md`: report the bytes/hour gain, turn
 repeated manual steps into one `.py` tool, speed up the slowest step, and try evidence-backed inferences
-(`// INFERRED: <evidence>`). It must not skip leases, commit cadence, or the no-`__emit`/no-byte-blob rules.
+(`// INFERRED: <evidence>`), and critique its own habits (polling, re-reads, throwaway scripts, scope drift, tool overlap) to
+cut waste and tooling. The digest's first line is `STATE: ACTIVE` or `STATE: IDLE`; when it is IDLE (no tool call for 45
+minutes, the task ended) the run must cancel its own schedule and stop. It must not skip leases, commit cadence, or the
+no-`__emit`/no-byte-blob rules.
 
 ## Scope: RbxApp only
 
