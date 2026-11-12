@@ -187,7 +187,10 @@ def audit_references(raw, symbol, body, target, target_relocs, va, targets, bind
         following = [v for _, v, n, _ in symbols.values() if n == number and v > value]
         end = min(following + [rawsize])
         begin = value + stored
-        if begin == end and stored > 0 and value < end and depth <= 6:
+        # begin == end: a pointer one past the array. begin < value: the compiler folded a loop index into the displacement
+        # (times[i - 1] is addressed as times - 8 + i * 8); begin past the end (up to 1 KB) is the same fold in the other direction.
+        # All three anchor at the symbol; the whole symbol is then verified.
+        if ((begin == end and stored > 0) or (stored < 0 and begin < value) or (stored > 0 and end < begin <= end + 1024)) and value < end and depth <= 6:
             reference(index, 0, base, depth + 1)
             return
         if depth > 6 or not value <= begin < end:
