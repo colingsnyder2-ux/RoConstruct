@@ -222,6 +222,16 @@ struct RankedSubIndex {
     bool operator<(const RankedSubIndex& rhs) const {return priority<rhs.priority;}
 };
 
+// 0067c570 (slot 24): the per-frame camera notification runs the camera work once until something clears the flag.
+void RbxEntity::_notifyCurrentCamera(Camera* camera)
+{
+	if (!mCameraNotified)
+	{
+		func_0067daf0(camera);
+		mCameraNotified = true;
+	}
+}
+
 void RbxEntity::func_0067daf0(Camera* camera) {
     RbxSceneNode* node=dynamic_cast<RbxSceneNode*>(getParentNode());
     std::vector<RankedSubIndex> order;

@@ -491,9 +491,16 @@ VENDOR_AUTOLINK = ("zlib.lib", "G3D.lib", "GLG3D.lib", "sdl.lib", "sdlmain.lib",
                    "ToolkitPro1122vc90S.lib", "ToolkitPro1122vc90LDS.lib")
 
 
+def client_dll(client, dll):
+    """Path of a DLL the original client ships (rgmain.dll...), or None. Looked up in clients/<client>/ and then in the
+    folders listed in ROC_CLIENT_DLL_DIRS (os.pathsep separated), so an extracted client folder can supply it."""
+    folders = [ROOT / "clients" / client] + [Path(p) for p in os.environ.get("ROC_CLIENT_DLL_DIRS", "").split(os.pathsep) if p]
+    return next((f / dll for f in folders if (f / dll).is_file()), None)
+
+
 def link_test(client=None, test=None, libs=(), includes=(), defines="WIN32 NDEBUG _MBCS _CRT_SECURE_NO_WARNINGS", flags="/O2 /GS- /EHsc /MD",
               system_libs=("kernel32.lib", "user32.lib", "gdi32.lib", "advapi32.lib", "shell32.lib", "ole32.lib",
-                           "oleaut32.lib", "comdlg32.lib", "ws2_32.lib", "winmm.lib", "opengl32.lib", "glu32.lib"), cl=BUILD, run_args=()):
+                           "oleaut32.lib", "comdlg32.lib", "ws2_32.lib", "winmm.lib", "opengl32.lib", "glu32.lib"), cl=BUILD, run_args=(), run_dlls=()):
     """Compile tests/<test>.cpp, link it against rebuilt libs with the period linker, run it.
     Returns dict(compiled, linked, ran, exit, output, unresolved, map)."""
     tc = toolchain(cl)
@@ -527,6 +534,12 @@ def link_test(client=None, test=None, libs=(), includes=(), defines="WIN32 NDEBU
         strip = ws / 'out' / 'tests' / 'P2RecoveredPlayer' / 'Content' / 'textures' / 'SurfacesStrip.png'
         if strip.is_file():
             run_env['ROC_TEXTURE_STRIP'] = str(strip)
+    for dll in run_dlls:  # the test calls into the client's own DLLs (OgreMain is rgmain.dll): they must sit beside it
+        found = client_dll(client, dll)
+        if found:
+            shutil.copy2(found, out / dll)
+        else:
+            result["output"] += "\n[%s not found: copy it to clients/%s/ or set ROC_CLIENT_DLL_DIRS]" % (dll, client)
     exe = [str(out / (test + ".exe"))] if setup.WINDOWS else [setup.wine_exe(), str(out / (test + ".exe"))]  # Wine on Linux
     done = subprocess.run(exe + list(run_args), stdin=subprocess.DEVNULL, capture_output=True, text=True, timeout=300, env=run_env)
     result.update(ran=True, exit=done.returncode, output=(done.stdout + done.stderr).strip()[-1500:])
@@ -654,7 +667,7 @@ def verified_layer(client, spec, log=print, exclude=frozenset(), vdrop=frozenset
 
 
 def resolve_objects(client, test, layers, name, includes=(), max_rounds=20, log=print, extra_libs=(), defines=None,
-                    drop=frozenset()):
+                    drop=frozenset(), run_dlls=()):
     """layers: [dir, ...] most-preferred first (e.g. 2008-verified partial files, then complete upstream).
     Start from each file's most-preferred object; when the link reports an unresolved symbol, switch the
     file that defines it in a later layer to that layer. Returns the final link_test result plus choices."""
@@ -679,6 +692,8 @@ def resolve_objects(client, test, layers, name, includes=(), max_rounds=20, log=
         if choice:
             code, text = run(tc, "lib", ["/nologo", "/OUT:" + lib_name] + sorted(choice), out)
         kwargs = {"defines": defines} if defines else {}
+        if run_dlls:
+            kwargs["run_dlls"] = run_dlls
         link_libs = ([out / lib_name] if choice else []) + list(extra_libs)
         result = link_test(client, test, link_libs, includes=includes, **kwargs)
         result["choices"] = {f: layers[rank] and str(Path(layers[rank]).name) for f, (rank, _) in choice.items()}
@@ -1208,7 +1223,7 @@ def build_module(client, name, log=print):
         deps.append(dep_lib)
         pending += dep_spec.get("depends", [])
     deps += [dll_import_lib(client, dll) for dll in spec.get("import_dlls", [])]
-    deps += list(spec.get("extra_libs", []))  # e.g. msvcprt.lib when the objects carry no /DEFAULTLIB for it
+    deps += [ROOT / lib if "/" in lib else lib for lib in spec.get("extra_libs", [])]  # repo path or library name (msvcprt.lib)
     excluded_path = out / "verified" / "excluded.json"
     excluded = set(json.loads(excluded_path.read_text())) if excluded_path.exists() else set()
     excluded.update(spec.get("verified_exclude", []))
@@ -1237,7 +1252,8 @@ def build_module(client, name, log=print):
                 "".join('#pragma comment(linker, "/INCLUDE:%s")\n' % s for s in sorted(drop)))
         result = resolve_objects(client, spec["test"], ([verified] if verified else []) + layer_dirs, spec["name"] + "/linked",
                                  includes=_overlaid([_spec_path(client, i) for i in spec.get("test_includes", [])], [], ov)[0], log=log,
-                                 extra_libs=deps, defines=spec.get("test_defines"), drop=drop)
+                                 extra_libs=deps, defines=spec.get("test_defines"), drop=drop,
+                                 run_dlls=spec.get("import_dlls", []))
         if verified and not result["linked"] and result["unresolved"]:
             # a missing helper defined by one of the verified objects themselves: keep it there
             missing, added = set(result["unresolved"]) - set(helpers) - vdrop, 0

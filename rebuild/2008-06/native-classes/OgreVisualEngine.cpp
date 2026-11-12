@@ -173,6 +173,12 @@ FrameHistory::FrameHistory()
 {
 }
 
+// 0071f210 (ICF-folded getter, INFERRED name): returns the frame count at +0x0; RbxEntity 0067daf0 calls it.
+int FrameHistory::getCount() const
+{
+	return count;
+}
+
 // 006785f0 (RbxEntity 0067e26a)
 void FrameHistory::push(const Frame& frame)
 {
