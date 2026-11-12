@@ -13,7 +13,9 @@
  ],
  "test": "lua_script",
  "test_includes": [
+  "rebuild/2008-06/out/Lua/force",
   "tools/libs/lua-5.1.4/src"
  ],
- "verified": true
+ "verified": true,
+ "force_verified": true
 }
