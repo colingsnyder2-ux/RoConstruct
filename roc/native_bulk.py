@@ -195,6 +195,8 @@ def audit_references(raw, symbol, body, target, target_relocs, va, targets, bind
         imported = re.match(r'__imp__(\w+?)(@\d+)?$', name)
         if imported and import_slots().get(base) == imported.group(1):
             is_tu_guard = True      # the PE import table itself says this slot is that API: wins over a conflicting reference vote
+        if number > 0 and raw[struct.unpack_from('<I', raw, 8)[0] + 18 * index + 16] == 3:
+            is_tu_guard = True      # internal-linkage data defined here (header `static const`): one copy per TU; its bytes are still compared below
         if known is not None and int(known, 16) != base and not is_local_literal and not is_tu_guard:
             errors.append('reference identity differs: %s (bound %s, original reference %08x)' % (name, known, base))
             return
