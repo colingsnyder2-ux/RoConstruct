@@ -10,6 +10,22 @@ from roc.draft_merger import run_pipeline
 
 
 class DraftRunnerTests(unittest.TestCase):
+    def test_stale_intake_stops_before_proof_and_review_stages(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            intake = {'run': 'run-stale', 'stale': True}
+            with patch('roc.draft_merger.process', return_value=intake), \
+                    patch('roc.draft_merger.subprocess.run') as run, \
+                    patch('roc.draft_report.reconcile') as reconcile:
+                result = run_pipeline(root, record_reviews=True)
+
+            self.assertEqual(result, intake)
+            run.assert_not_called()
+            reconcile.assert_not_called()
+            status = json.loads((root / 'work/draft-merger/pipeline-status.json').read_text())
+            self.assertEqual(status['state'], 'stale-inputs')
+            self.assertEqual(status['stages'], [{'name': 'intake', 'state': 'stale'}])
+
     def test_publication_requires_apply_and_preserves_blocker(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)

@@ -403,7 +403,11 @@ def run_pipeline(root, report=None, record_reviews=False, review_limit=3, apply=
     try:
         intake = process(root, record_reviews=record_reviews, native_inputs=True)
         status['run'] = intake['run']
-        status['stages'].append(dict(name='intake', state='done'))
+        status['stages'].append(dict(name='intake', state='stale' if intake.get('stale') else 'done'))
+        if intake.get('stale'):
+            status.update(state='stale-inputs', summary=intake,
+                          pending='Retry after native inputs stop changing')
+            return intake
         native_drafts.atomic(status_file, status)
         for module, tail in (('roc.draft_methods', ['build']),
                              ('roc.draft_methods', ['inspect']),
