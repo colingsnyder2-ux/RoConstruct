@@ -4,7 +4,8 @@ ArrowPanel, ArrowButton.
 
 Builds (document-swap flags, VS2008 RTM 21022, native headers only):
   * tests/NativeWidgetLayout.cpp      layout probes (mov eax, imm32; ret) against allocation sizes and constructor stores;
-  * native-classes/Widget.cpp         the original gui/Widget.cpp unit 00641ff0..006426f0;
+  * native-classes/Widget.cpp         the original gui/Widget.cpp unit 00641ff0..006426f0, using the scoped
+                                       widget-rect-2008 header profile for out-of-line Rect::pointInRect;
   * native-classes/WidgetButtons.cpp  the Button unit 0064ef90..0064f6a0 (KeyButton, ImageWidget, ImageButton,
                                       ImageKeyButton);
   * native-classes/WidgetChat.cpp     ChatWidget 0064e8c0.., UnifiedImageWidget / ChatButton constructors 00601c50 / 00601d00;
@@ -13,9 +14,8 @@ Builds (document-swap flags, VS2008 RTM 21022, native headers only):
   * native-classes/EquationDisplay.cpp EquationDisplay 00656a50..00656bf0;
   * native-classes/ArrowPanel.cpp     ArrowPanel::getSize 00656bf0, ArrowButton 006570a0.
 Pending builds (NATIVE_WIDGET_PENDING; rows recorded exact=false, pending-build-only, never counted, vtables never
-walked) against out/native-layouts/widget-pending, generated copies of three headers owned by others, each with one
+walked) against out/native-layouts/widget-pending, generated copies of two headers owned by others, each with one
 declaration changed:
-  * util/Rect.h (donor): `bool pointInRect(G3D::Vector2int16 point);` out of line (00573130, called from 00642007);
   * v8tree/Verb.h (native): `const Name& getName() const { return name; }` inline (read at 0064f3c4);
   * gui/Gui.h (native): `MenuState getMenuState() const { return menuState; }` inline (read at 0064e851, 0064e8a0).
 
@@ -47,7 +47,8 @@ SOURCES = {name: R / 'native-classes' / (name + '.cpp') for name in ('Widget', '
                                                                     'HealthHud', 'EquationDisplay', 'ArrowPanel')}
 HEADERS = [R / 'native-headers/gui' / n for n in ('Widget.h', 'WidgetButtons.h', 'WidgetChat.h', 'WidgetMenuItem.h',
                                                   'HealthHud.h', 'EquationDisplay.h', 'ArrowPanel.h')]
-PENDING_UNITS = ('Widget', 'WidgetButtons', 'WidgetChat')
+PENDING_UNITS = ('WidgetButtons', 'WidgetChat')
+WIDGET_OVERLAY = R / 'native-headers/widget-rect-2008'
 LAYOUT = R / 'tests/NativeWidgetLayout.cpp'
 
 # ---- pending overlay ------------------------------------------------------------------------------------------
@@ -84,7 +85,7 @@ def build(name, src, extra=(), post=()):
 layout_obj, layout_flags = build('NativeWidgetLayout', LAYOUT)
 objs, all_flags = {}, {'layout': layout_flags}
 for name, src in SOURCES.items():
-    objs[name], all_flags[name] = build('NativeWidget_' + name, src)
+    objs[name], all_flags[name] = build('NativeWidget_' + name, src, ['/I' + str(WIDGET_OVERLAY)] if name == 'Widget' else ())
     if name in PENDING_UNITS:
         objs[name + '-pending'], all_flags[name + '-pending'] = build('NativeWidget_' + name + 'Pending', src,
                                                                       ['/I' + str(pending), '/DNATIVE_WIDGET_PENDING'])
@@ -188,6 +189,7 @@ EXTERNAL = {
     '??0GuiDrawImage@RBX@@QAE@PAVAdorn@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z': 0x6010e0,  # 0064f253
     '??1GuiDrawImage@RBX@@QAE@XZ': 0x5cf360,                                                 # ~ImageWidget 0064f31b
     '?getImageSize@GuiDrawImage@RBX@@QBE?AVVector2@G3D@@XZ': 0x642690,                       # getSize 0064f28c
+    '?setImageFromName@GuiDrawImage@RBX@@AAEXPAVAdorn@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z': 0x642b90,  # WidgetButtons 0064272f
     '?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z': 0x55af90,  # 0064f1a7
     '?setMenuState@UnifiedWidget@RBX@@QAEXW4MenuState@12@@Z': 0x5735c0,                      # 0064e8ab
     '?label2d@GuiItem@RBX@@IBEXPAVAdorn@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVColor4@G3D@@2W4XAlign@12@@Z': 0x573360,  # 0064265d
@@ -212,7 +214,6 @@ EXTERNAL = {
 EXTERNAL = {k: v for k, v in EXTERNAL.items() if v is not None}
 # Own functions that are not compiled in the main builds: bound by the original reference that uses them.
 UNPROVEN = {
-    '?processMouse@Widget@RBX@@AAE?AVGuiResponse@2@ABVGuiEvent@2@@Z': 0x641ff0,                 # call at 00642241 (pending)
     '?onMenuStateChanged@ChatWidget@RBX@@EAEXXZ': 0x64e8a0,                                      # vtable 0084b4e4 slot 25 (pending)
     '?render2dMe@UnifiedImageWidget@RBX@@UAEXPAVAdorn@2@@Z': 0x64e840,                           # vtable 0084222c slot 28 (pending)
     '?process@ChatWidget@RBX@@EAE?AVGuiResponse@2@ABVGuiEvent@2@@Z': 0x64ead0,                   # vtable 0084b45c slot 0
@@ -236,7 +237,8 @@ FOLDED = {}
 # leaves that no compiled row references (ImageButton's slots: its vtable is emitted only with the pending constructor)
 # are named by the original vtable slot that holds them (checked below).
 SEEDS = {
-    'Widget': [(0x6422b0, '??0Widget@RBX@@QAE@XZ'), (0x642370, '??0VerbWidget@RBX@@QAE@PAVVerb@1@@Z')],
+    'Widget': [(0x641ff0, '?processMouse@Widget@RBX@@AAE?AVGuiResponse@2@ABVGuiEvent@2@@Z'),
+               (0x6422b0, '??0Widget@RBX@@QAE@XZ'), (0x642370, '??0VerbWidget@RBX@@QAE@PAVVerb@1@@Z')],
     'WidgetButtons': [
         (0x64f110, '??0KeyButton@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4SDLKey@@@Z'),
         (0x64f1c0, '??0ImageWidget@RBX@@QAE@PAVAdorn@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z'),
@@ -255,7 +257,6 @@ SEEDS = {
                    (0x656bf0, '?getSize@ArrowPanel@RBX@@UBE?AVVector2@G3D@@XZ')],
 }
 PENDING_SEEDS = {
-    'Widget': [(0x641ff0, '?processMouse@Widget@RBX@@AAE?AVGuiResponse@2@ABVGuiEvent@2@@Z')],
     'WidgetButtons': [(0x64f340, '??0ImageButton@RBX@@QAE@PAVAdorn@1@PAVVerb@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z'),
                       (0x64f4b0, '??1ImageButton@RBX@@UAE@XZ'), (0x64f690, '??_GImageButton@RBX@@UAEPAXI@Z')],
     'WidgetChat': [(0x64e840, '?render2dMe@UnifiedImageWidget@RBX@@UAEXPAVAdorn@2@@Z'),
@@ -593,7 +594,7 @@ counted = sorted({r['address'] for r in main_rows if counts(r['address'])})
 support = sorted({r['address'] for r in main_rows if r['exact'] and not r.get('extent_split')} - set(counted))
 inexact = list({(r['address'], r['symbol']): r for r in main_rows if not r['exact']}.values())
 sha = nb.sha
-paths = [Path(__file__).resolve(), LAYOUT] + list(SOURCES.values()) + HEADERS
+paths = [Path(__file__).resolve(), LAYOUT, WIDGET_OVERLAY / 'util/Rect.h'] + list(SOURCES.values()) + HEADERS
 receipt = {
     'class': 'RBX::Widget, VerbWidget, KeyButton, ImageWidget, ImageButton, ImageKeyButton, MenuItem, ChatWidget, '
              'UnifiedImageWidget, ChatButton',
@@ -613,8 +614,8 @@ receipt = {
     'vtables': {k: v for b in main for k, v in b.vtables.items()},
     'external_slots': SLOT_CHECK,
     'shared_header_gaps': HEADER_GAPS,
-    'pending_note': 'pending_rows are exact only against out/native-layouts/widget-pending (util/Rect.h with '
-                    'pointInRect(Vector2int16) out of line; v8tree/Verb.h with getName inline; gui/Gui.h with '
+    'pending_note': 'pending_rows are exact only against out/native-layouts/widget-pending (v8tree/Verb.h with '
+                    'getName inline; gui/Gui.h with '
                     'UnifiedWidget::getMenuState inline). Not counted; their vtables are not walked.',
     'not_attempted': NOT_ATTEMPTED,
     'scope': 'Inactive. Exact bodies with verified call/data targets; no active build, swap or credit.',
