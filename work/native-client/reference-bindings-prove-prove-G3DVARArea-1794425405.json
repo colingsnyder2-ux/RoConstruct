@@ -1,0 +1,43 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?resize@?$Array@V?$ReferenceCountedPointer@VVARArea@G3D@@@G3D@@@G3D@@QAEXH_N@Z",
+    "address": "00475fb0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DVARArea\\objects\\62c2b4f398b02690\\candidate.obj": "1b9f84b1357a70f8ce3852f53cc2aa4a9eeeb781b66b4cf9f071be4de4f4ed17",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-4vo99egm\\owners.json": "f0cbb2a6a67bc93f33d71ebd7c47bffab6bb18c385dfb9eccc0de326a60a6ee1",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-4vo99egm\\import-thunk-identities-as-owner.json": "e167f88fb484913e68516aa295f9e6cd91a86c0810f6ee58cdc361b455caa477"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?append@?$Array@V?$ReferenceCountedPointer@VVARArea@G3D@@@G3D@@@G3D@@QAEXABV?$ReferenceCountedPointer@VVARArea@G3D@@@2@@Z",
+    "address": "00476150"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DVARArea\\objects\\62c2b4f398b02690\\candidate.obj": "1b9f84b1357a70f8ce3852f53cc2aa4a9eeeb781b66b4cf9f071be4de4f4ed17",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-4vo99egm\\owners.json": "f0cbb2a6a67bc93f33d71ebd7c47bffab6bb18c385dfb9eccc0de326a60a6ee1",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-4vo99egm\\import-thunk-identities-as-owner.json": "e167f88fb484913e68516aa295f9e6cd91a86c0810f6ee58cdc361b455caa477"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?realloc@?$Array@V?$ReferenceCountedPointer@VVARArea@G3D@@@G3D@@@G3D@@AAEXH@Z",
+   "address": "00475a40",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?append@?$Array@V?$ReferenceCountedPointer@VVARArea@G3D@@@G3D@@@G3D@@QAEXABV?$ReferenceCountedPointer@VVARArea@G3D@@@2@@Z",
+   "address": "007c48e4",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

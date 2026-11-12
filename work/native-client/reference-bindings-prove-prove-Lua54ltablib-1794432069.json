@@ -1,0 +1,72 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "_luaopen_table",
+    "address": "00625b10"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Lua54ltablib\\objects\\41469bd41086c1a0\\candidate.obj": "90acd4784695d8a6e8cf798a6efdcde23178baced9a6f54e408816627f638c33",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-tpedsw6o\\owners.json": "716d449da07234d69e4793e91f2bd036158ec4a7011d15140a05d33d2bc04cac",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-tpedsw6o\\import-thunk-identities-as-owner.json": "d8ced48b0d7f63641e9fd5b42fbe0d51d8c09ee129173e9ad5f6d6a7512ad1e2"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "_foreach",
+   "address": "00625300",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_foreachi",
+   "address": "00625270",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_getn",
+   "address": "00625430",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaL_register",
+   "address": "00611a70",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_maxn",
+   "address": "00625390",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_setn",
+   "address": "00625460",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_sort",
+   "address": "00625ab0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_tconcat",
+   "address": "006255c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_tinsert",
+   "address": "00625490",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_tremove",
+   "address": "00625540",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

@@ -1,0 +1,43 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?SetParent@CWnd@@QAEPAV1@PAV1@@Z",
+    "address": "006e1c10"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlCustom\\objects\\2a69b234ca637c97\\candidate.obj": "568f40eb1e8d87a5428345b13ac8c33431da37f7cc59892f9e8c48c8d8ccb476",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-d0spw8bo\\owners.json": "e534064473918ac822f525e63dd5e510dcae418eea88ba335272e387a6bcff03",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-d0spw8bo\\import-thunk-identities-as-owner.json": "5c9b8b43d61501fd7eb5241d3e56bb0586abdca2b0680b7ce862c3cf10060acf"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?ShowHideChildControl@CXTPControlCustom@@AAEXXZ",
+    "address": "00772b20"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlCustom\\objects\\2a69b234ca637c97\\candidate.obj": "568f40eb1e8d87a5428345b13ac8c33431da37f7cc59892f9e8c48c8d8ccb476",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-d0spw8bo\\owners.json": "e534064473918ac822f525e63dd5e510dcae418eea88ba335272e387a6bcff03",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-d0spw8bo\\import-thunk-identities-as-owner.json": "5c9b8b43d61501fd7eb5241d3e56bb0586abdca2b0680b7ce862c3cf10060acf"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "__imp__SetParent@8",
+   "address": "00802bb8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__SetWindowPos@28",
+   "address": "00802bb0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

@@ -174,7 +174,7 @@ def audit_references(raw, symbol, body, target, target_relocs, va, targets, bind
                                 raw[table[4]:table[4] + len(encoded)] == encoded and
                                 table[7] == 0)
         if known is not None and int(known, 16) != base and not is_local_literal:
-            errors.append('reference identity differs: ' + name)
+            errors.append('reference identity differs: %s (bound %s, original reference %08x)' % (name, known, base))
             return
         if number - 1 == section and known is None and base == (va + value - start) & 0xffffffff:
             return      # a label in the audited function's own section (switch table $LN): placed with the body

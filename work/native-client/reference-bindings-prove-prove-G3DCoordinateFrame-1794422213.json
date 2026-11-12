@@ -1,0 +1,43 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??1Plane@G3D@@UAE@XZ",
+    "address": "00510740"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DCoordinateFrame\\objects\\69ae2747955fc66f\\candidate.obj": "3c32d6c9d5ee506cc9f36aedcd1d529813dbab08796a19f3e9fb4c432ca87cd2",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5x4eh5ui\\owners.json": "e493109f481c2538ba8b77d698404fc58b86717e51b8fa71bf7ce27d88e23eab",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5x4eh5ui\\import-thunk-identities-as-owner.json": "bfffff494d2009aa806b5b056990b3c3f4bcc735651ee3b6252b8f308bebbd53"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?toObjectSpace@CoordinateFrame@G3D@@QBE?AVBox@2@ABV32@@Z",
+    "address": "0060e8f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DCoordinateFrame\\objects\\69ae2747955fc66f\\candidate.obj": "3c32d6c9d5ee506cc9f36aedcd1d529813dbab08796a19f3e9fb4c432ca87cd2",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5x4eh5ui\\owners.json": "e493109f481c2538ba8b77d698404fc58b86717e51b8fa71bf7ce27d88e23eab",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5x4eh5ui\\import-thunk-identities-as-owner.json": "bfffff494d2009aa806b5b056990b3c3f4bcc735651ee3b6252b8f308bebbd53"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??_EPlane@G3D@@UAEPAXI@Z",
+   "address": "00510750",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?toWorldSpace@CoordinateFrame@G3D@@QBE?AVBox@2@ABV32@@Z",
+   "address": "00476700",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

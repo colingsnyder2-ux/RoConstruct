@@ -1,0 +1,27 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?GetMessageMap@CXTPControlEditCtrl@@MBEPBUAFX_MSGMAP@@XZ",
+    "address": "00743dd0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlEdit\\objects\\2e6129280e9a2ca5\\candidate.obj": "948750f52c0f2ba179caf2282c1dd3a0bf6db635bb84a90a095c1cc34ccea764",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-o3y028rx\\owners.json": "3fc5726899608421bc21b8ea09344f6be389986f249af95ef496ac3e70c436f8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-o3y028rx\\import-thunk-identities-as-owner.json": "3250a5b75b8b8f45af1c95eacf259b99c53fc51d1e223d736463ff8637f23d54"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?GetThisMessageMap@CXTPControlEditCtrl@@KGPBUAFX_MSGMAP@@XZ",
+   "address": "00743cf0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

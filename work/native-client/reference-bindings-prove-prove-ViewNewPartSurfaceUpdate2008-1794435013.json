@@ -1,0 +1,128 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?updateMesh@Decal@ViewNew@RBX@@EAEXXZ",
+    "address": "004f0300"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-ViewNewPartSurfaceUpdate2008\\objects\\d3c92d528bf28392\\candidate.obj": "51f831b748282d0961fff9dfba79910e53692c5a2ea1e805ee7339b9ac6ee89d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-9l7jxdyz\\owners.json": "4ea912f74b7b8faa1c883bc0e04bffd2b03bb8d95820684b3923995448e3e293",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-9l7jxdyz\\import-thunk-identities-as-owner.json": "71bc273f7784f7b1b42b4c789d0d1dc1e0f01cf48fa7cbd0bd88a22c030921c9"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?updateMesh@Texture@ViewNew@RBX@@EAEXXZ",
+    "address": "004f0540"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-ViewNewPartSurfaceUpdate2008\\objects\\d3c92d528bf28392\\candidate.obj": "51f831b748282d0961fff9dfba79910e53692c5a2ea1e805ee7339b9ac6ee89d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-9l7jxdyz\\owners.json": "4ea912f74b7b8faa1c883bc0e04bffd2b03bb8d95820684b3923995448e3e293",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-9l7jxdyz\\import-thunk-identities-as-owner.json": "71bc273f7784f7b1b42b4c789d0d1dc1e0f01cf48fa7cbd0bd88a22c030921c9"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??4?$ReferenceCountedPointer@VMesh@RenderBase@RBX@@@G3D@@QAEAAV01@PAVMesh@RenderBase@RBX@@@Z",
+   "address": "004dc4e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?createDecal@?$MeshFactory@VCylinderAlongXMesh@ViewNew@RBX@@$00@ViewNew@RBX@@SAPAVCylinderAlongXMesh@23@ABVVector3@G3D@@W4NormalId@3@@Z",
+   "address": "004ef150",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?createDecal@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@SAPAVHeadMesh@23@ABVVector3@G3D@@W4NormalId@3@@Z",
+   "address": "004ef650",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?createDecal@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@SAPAVPBBMesh@23@ABVVector3@G3D@@W4NormalId@3@@Z",
+   "address": "004edd50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?createDecal@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@SAPAVSphereMesh@23@ABVVector3@G3D@@W4NormalId@3@@Z",
+   "address": "004eec50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?createDecal@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@SAPAVTorsoMesh@23@ABVVector3@G3D@@W4NormalId@3@@Z",
+   "address": "004ee750",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?createDecal@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@SAPAVWedgeMesh@23@ABVVector3@G3D@@W4NormalId@3@@Z",
+   "address": "004ee250",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?createTexture@?$MeshFactory@VCylinderAlongXMesh@ViewNew@RBX@@$00@ViewNew@RBX@@SAPAVCylinderAlongXMesh@23@ABVVector3@G3D@@W4NormalId@3@ABVVector2@6@@Z",
+   "address": "004ef2b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?createTexture@?$MeshFactory@VHeadMesh@ViewNew@RBX@@$00@ViewNew@RBX@@SAPAVHeadMesh@23@ABVVector3@G3D@@W4NormalId@3@ABVVector2@6@@Z",
+   "address": "004ef7b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?createTexture@?$MeshFactory@VPBBMesh@ViewNew@RBX@@$03@ViewNew@RBX@@SAPAVPBBMesh@23@ABVVector3@G3D@@W4NormalId@3@ABVVector2@6@@Z",
+   "address": "004edeb0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?createTexture@?$MeshFactory@VSphereMesh@ViewNew@RBX@@$00@ViewNew@RBX@@SAPAVSphereMesh@23@ABVVector3@G3D@@W4NormalId@3@ABVVector2@6@@Z",
+   "address": "004eedb0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?createTexture@?$MeshFactory@VTorsoMesh@ViewNew@RBX@@$00@ViewNew@RBX@@SAPAVTorsoMesh@23@ABVVector3@G3D@@W4NormalId@3@ABVVector2@6@@Z",
+   "address": "004ee8b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?createTexture@?$MeshFactory@VWedgeMesh@ViewNew@RBX@@$00@ViewNew@RBX@@SAPAVWedgeMesh@23@ABVVector3@G3D@@W4NormalId@3@ABVVector2@6@@Z",
+   "address": "004ee3b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?getPartSizeXml@PartInstance@RBX@@QBEABVVector3@G3D@@XZ",
+   "address": "00598cd0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {
+  "$LN2": [
+   "004f049c",
+   "004f06f0"
+  ],
+  "$LN3": [
+   "004f0483",
+   "004f06d1"
+  ],
+  "$LN4": [
+   "004f046a",
+   "004f06b2"
+  ],
+  "$LN5": [
+   "004f0451",
+   "004f0693"
+  ],
+  "$LN6": [
+   "004f0438",
+   "004f0671"
+  ],
+  "$LN7": [
+   "004f041f",
+   "004f073b"
+  ]
+ },
+ "owners_tried": 2,
+ "owners_bound": 2
+}

@@ -1,0 +1,83 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?findRayCapsuleIntersectionAux@G3D@@YAHABVVector3@1@0ABVCapsule@1@QAN@Z",
+    "address": "007bb090"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DCollisionDetection\\objects\\bd0bc79b6b90c224\\candidate.obj": "4c923f892f407ce2b96d8f5aaa9e5f433362fc94fd6f0dad91f414574263caaa",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-1_ml2nv4\\owners.json": "f94fa17fdf07223b90351d455d4133ab282c24349cdcc9eca62a0036bac0603f",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-1_ml2nv4\\import-thunk-identities-as-owner.json": "c22d6e77ab02139c2fac5a2308ecd01d0d6b74f17a3ef66487ba6ac323ab7469"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?collisionTimeForMovingPointFixedCapsule@CollisionDetection@G3D@@SAMABVVector3@2@0ABVCapsule@2@AAV32@2@Z",
+    "address": "007bba50"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DCollisionDetection\\objects\\bd0bc79b6b90c224\\candidate.obj": "4c923f892f407ce2b96d8f5aaa9e5f433362fc94fd6f0dad91f414574263caaa",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-1_ml2nv4\\owners.json": "f94fa17fdf07223b90351d455d4133ab282c24349cdcc9eca62a0036bac0603f",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-1_ml2nv4\\import-thunk-identities-as-owner.json": "c22d6e77ab02139c2fac5a2308ecd01d0d6b74f17a3ef66487ba6ac323ab7469"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??KVector3@G3D@@QBE?AV01@M@Z",
+   "address": "00518740",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?closestPoint@LineSegment@G3D@@QBE?AVVector3@2@ABV32@@Z",
+   "address": "00530590",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?findRayCapsuleIntersection@G3D@@YA_NABVRay@1@ABVCapsule@1@AAHQAVVector3@1@@Z",
+   "address": "007bb9c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?fromTwoPoints@LineSegment@G3D@@SA?AV12@ABVVector3@2@0@Z",
+   "address": "00525ed0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?generateOrthonormalBasis@Vector3@G3D@@SAXAAV12@00_N@Z",
+   "address": "005184c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?getPoint1@Capsule@G3D@@QBE?AVVector3@2@XZ",
+   "address": "00514890",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?getPoint2@Capsule@G3D@@QBE?AVVector3@2@XZ",
+   "address": "00526020",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?getRadius@Capsule@G3D@@QBEMXZ",
+   "address": "00526040",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?inf@Vector3@G3D@@SAABV12@XZ",
+   "address": "00510960",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?collisionTimeForMovingPointFixedCapsule@CollisionDetection@G3D@@SAMABVVector3@2@0ABVCapsule@2@AAV32@2@Z",
+   "address": "007ee710",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

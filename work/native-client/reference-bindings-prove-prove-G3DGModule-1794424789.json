@@ -1,0 +1,27 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?resize@?$Array@V?$ReferenceCountedPointer@VGModule@G3D@@@G3D@@@G3D@@QAEXH_N@Z",
+    "address": "00475fb0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DGModule\\objects\\b0893f16e162dd12\\candidate.obj": "eea88c097de59b8c1c3dd91f534a59ce10fe77989163e4c36918727c1918a8ba",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-n1s1cz0p\\owners.json": "88f14c612d621029466ee57412632a607be3464874c3c2bb3bd19e83bcf724b5",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-n1s1cz0p\\import-thunk-identities-as-owner.json": "ecb1da0f4023647cf25f2684f06627d2b24103f196b34205a86a51956479c0e2"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?realloc@?$Array@V?$ReferenceCountedPointer@VGModule@G3D@@@G3D@@@G3D@@AAEXH@Z",
+   "address": "00475a40",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

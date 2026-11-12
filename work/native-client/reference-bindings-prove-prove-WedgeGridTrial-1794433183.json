@@ -1,0 +1,43 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??$buildFace@$01VWedgeBuilder@ViewNew@RBX@@@LevelBuilder@ViewNew@RBX@@IAEXVWedgeBuilder@12@VRect2D@G3D@@MVVector2@5@2HVVector2int16@5@@Z",
+    "address": "004f66d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-WedgeGridTrial\\objects\\78fa1de0d0173e8a\\candidate.obj": "e6459cceccdbc949a6b6d2e3bc486338607e2bcbbf1780a4f40aacb35e0db4eb",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-crt651or\\owners.json": "dd13c622ac551199bf8f4f40a8339a13ed8229263bc946f32240f7b31a7a9a06",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-crt651or\\import-thunk-identities-as-owner.json": "7c1e94cd9ec20e0dd0ab6417c53cbc918581a1037ad0028de42e19bed7f19857"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$buildFace@$03VWedgeBuilder@ViewNew@RBX@@@LevelBuilder@ViewNew@RBX@@IAEXVWedgeBuilder@12@VRect2D@G3D@@MVVector2@5@2HVVector2int16@5@@Z",
+    "address": "004f6a80"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-WedgeGridTrial\\objects\\78fa1de0d0173e8a\\candidate.obj": "e6459cceccdbc949a6b6d2e3bc486338607e2bcbbf1780a4f40aacb35e0db4eb",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-crt651or\\owners.json": "dd13c622ac551199bf8f4f40a8339a13ed8229263bc946f32240f7b31a7a9a06",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-crt651or\\import-thunk-identities-as-owner.json": "7c1e94cd9ec20e0dd0ab6417c53cbc918581a1037ad0028de42e19bed7f19857"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "__ehhandler$??$buildFace@$01VWedgeBuilder@ViewNew@RBX@@@LevelBuilder@ViewNew@RBX@@IAEXVWedgeBuilder@12@VRect2D@G3D@@MVVector2@5@2HVVector2int16@5@@Z",
+   "address": "007cafe8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??$buildFace@$03VWedgeBuilder@ViewNew@RBX@@@LevelBuilder@ViewNew@RBX@@IAEXVWedgeBuilder@12@VRect2D@G3D@@MVVector2@5@2HVVector2int16@5@@Z",
+   "address": "007cafe8",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

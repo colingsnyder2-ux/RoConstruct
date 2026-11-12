@@ -1,0 +1,62 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??0DDSTexture@Texture@G3D@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+    "address": "00484ea0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DDDSTexture\\objects\\4c8cefc0d45b305c\\candidate.obj": "3ed5a23e6656a31fa453a49c7712a901d55fbbacf697355cfadfb2b9f7bb060a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-tty87kcd\\owners.json": "6ff1799199bbcb1b5491c49f02cc537cd6a45979ee06277ef3c9fd2824b80b7e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-tty87kcd\\import-thunk-identities-as-owner.json": "223ac1e3676143b4fda0fed4b05e4579caaea5c1749afaac7551602a2aacf479"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+   "address": "007a626a",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?AUTO@TextureFormat@G3D@@2PBV12@B",
+   "address": "0096fa38",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?RGBA_DXT1@TextureFormat@G3D@@2PBV12@B",
+   "address": "0096fa78",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?RGBA_DXT3@TextureFormat@G3D@@2PBV12@B",
+   "address": "0096fa60",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?RGBA_DXT5@TextureFormat@G3D@@2PBV12@B",
+   "address": "0096fabc",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?printf@Log@G3D@@QAAXPBDZZ",
+   "address": "0050a120",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?readBytes@BinaryInput@G3D@@QAEXHPAX@Z",
+   "address": "00515d10",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??0DDSTexture@Texture@G3D@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "007c5501",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

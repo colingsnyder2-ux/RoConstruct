@@ -1,0 +1,32 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "_auxresume",
+    "address": "00628b20"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Lua511lbaselib\\objects\\d93cde2082a7c499\\candidate.obj": "5bc889a683f0d902102b3d0152cc64b3366b974ccfad5e56be9d044b4cf0b573",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-nf7gcs2s\\owners.json": "9cdfe13ad403a625ebe58ca7db53ee868c56c2426c183f2d0764d043ff158e3e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-nf7gcs2s\\import-thunk-identities-as-owner.json": "4beefbc2c7b05532adc3fd5c6f0fb5e59eb1e92c5f2a0c8b859a179b491fe84e"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "_lua_resume",
+   "address": "00622400",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_lua_status",
+   "address": "00612a70",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

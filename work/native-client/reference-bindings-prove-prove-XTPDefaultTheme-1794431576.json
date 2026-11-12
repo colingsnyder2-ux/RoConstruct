@@ -1,0 +1,368 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??0CXTPDefaultTheme@XTPPaintThemes@@QAE@XZ",
+    "address": "00732cb0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDefaultTheme\\objects\\14173be1bda9bd94\\candidate.obj": "fff8e466546ab3f3c0b0e5af667554bfb5ba5e6e4e00834ae69f250207d91dc5",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-mp9rokl7\\owners.json": "16cc728fca8d0c53a1e875a074428c8d24fe2ab8f48cda272faca3c0fc7a147b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-mp9rokl7\\import-thunk-identities-as-owner.json": "9327f2b02295dfd3687f9e68d462fe04abc9685fe57afdbf8e457d150b470226"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?DrawImage@CXTPDefaultTheme@XTPPaintThemes@@MAEXPAVCDC@@VCPoint@@VCSize@@PAVCXTPImageManagerIcon@@HHHHHH@Z",
+    "address": "00732d70"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDefaultTheme\\objects\\14173be1bda9bd94\\candidate.obj": "fff8e466546ab3f3c0b0e5af667554bfb5ba5e6e4e00834ae69f250207d91dc5",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-mp9rokl7\\owners.json": "16cc728fca8d0c53a1e875a074428c8d24fe2ab8f48cda272faca3c0fc7a147b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-mp9rokl7\\import-thunk-identities-as-owner.json": "9327f2b02295dfd3687f9e68d462fe04abc9685fe57afdbf8e457d150b470226"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??0CXTPPaintManager@@IAE@XZ",
+   "address": "006aec90",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECXTPDefaultTheme@XTPPaintThemes@@UAEPAXI@Z",
+   "address": "006b4a50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?AdjustExcludeRect@CXTPDefaultTheme@XTPPaintThemes@@UAEXAAVCRect@@PAVCXTPControl@@H@Z",
+   "address": "00734c00",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Animate@CXTPPaintManager@@UAEXPAVCDC@@0VCRect@@W4XTPAnimationType@@@Z",
+   "address": "006b3a70",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?AnimateExpanding@CXTPPaintManager@@UAEXPAVCXTPCommandBar@@PAVCDC@@1H@Z",
+   "address": "006b3700",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?BaseTheme@CXTPDefaultTheme@XTPPaintThemes@@MAE?AW4XTPPaintTheme@@XZ",
+   "address": "00416690",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?CreateDisabledIcon@CXTPImageManagerIcon@@QAEXKK@Z",
+   "address": "006bef50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Draw@CXTPImageManagerIcon@@QAEXPAVCDC@@VCPoint@@AAVCXTPImageManagerIconHandle@@VCSize@@@Z",
+   "address": "006c1880",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawCheckMark@CXTPPaintManager@@UAEXPAVCDC@@VCRect@@K@Z",
+   "address": "006af3c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawComboExpandMark@CXTPPaintManager@@UAEXPAVCDC@@VCRect@@K@Z",
+   "address": "006af450",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawCommandBarGripper@CXTPDefaultTheme@XTPPaintThemes@@UAE?AVCSize@@PAVCDC@@PAVCXTPCommandBar@@H@Z",
+   "address": "007348b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawCommandBarSeparator@CXTPDefaultTheme@XTPPaintThemes@@UAE?AVCSize@@PAVCDC@@PAVCXTPCommandBar@@PAVCXTPControl@@H@Z",
+   "address": "00734a20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawControlCheckBoxMark@CXTPPaintManager@@UAE?AVCSize@@PAVCDC@@VCRect@@HHHHH@Z",
+   "address": "006b1c80",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawControlComboBox@CXTPDefaultTheme@XTPPaintThemes@@MAE?AVCSize@@PAVCDC@@PAVCXTPControlComboBox@@H@Z",
+   "address": "007336d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawControlComboBoxButton@CXTPDefaultTheme@XTPPaintThemes@@MAEXPAVCDC@@VCRect@@HHH@Z",
+   "address": "00733570",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawControlEdit@CXTPDefaultTheme@XTPPaintThemes@@MAE?AVCSize@@PAVCDC@@PAVCXTPControlEdit@@H@Z",
+   "address": "00733300",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawControlEditFrame@CXTPDefaultTheme@XTPPaintThemes@@MAEXPAVCDC@@VCRect@@HH@Z",
+   "address": "00733460",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawControlEditSpin@CXTPDefaultTheme@XTPPaintThemes@@MAEXPAVCDC@@PAVCXTPControlEdit@@@Z",
+   "address": "00733090",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawControlEntry@CXTPPaintManager@@UAEXPAVCDC@@PAVCXTPControl@@@Z",
+   "address": "006ae4a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawControlPopupParent@CXTPDefaultTheme@XTPPaintThemes@@MAE?AVCSize@@PAVCDC@@PAVCXTPControl@@H@Z",
+   "address": "00733a10",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawControlRadioButtonMark@CXTPPaintManager@@UAE?AVCSize@@PAVCDC@@VCRect@@HHHHH@Z",
+   "address": "006b1d70",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawControlToolBarParent@CXTPPaintManager@@UAE?AVCSize@@PAVCDC@@PAVCXTPControl@@H@Z",
+   "address": "006b2690",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawDialogBarGripper@CXTPDefaultTheme@XTPPaintThemes@@MAE?AVCSize@@PAVCDC@@PAVCXTPDialogBar@@H@Z",
+   "address": "00734840",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawDropDownGlyph@CXTPPaintManager@@UAEXPAVCDC@@PAVCXTPControl@@VCPoint@@HHHH@Z",
+   "address": "006afa50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawKeyboardTip@CXTPPaintManager@@UAEXPAVCDC@@PAVCXTPCommandBarKeyboardTip@@H@Z",
+   "address": "006b4620",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawListBoxControl@CXTPDefaultTheme@XTPPaintThemes@@UAE?AVCSize@@PAVCDC@@PAVCXTPControl@@VCRect@@HHPAVCXTPCommandBars@@@Z",
+   "address": "00734cb0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawMono@CXTPImageManagerIcon@@QAEXPAVCDC@@VCPoint@@AAVCXTPImageManagerIconHandle@@VCSize@@K@Z",
+   "address": "006c18f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawPopupBarGripper@CXTPPaintManager@@UAEXPAVCDC@@HHHHH@Z",
+   "address": "00762d50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawPopupBarText@CXTPPaintManager@@MAEXPAVCDC@@ABV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@AAVCRect@@IHHH@Z",
+   "address": "006b1eb0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawPopupResizeGripper@CXTPDefaultTheme@XTPPaintThemes@@UAEXPAVCDC@@VCRect@@H@Z",
+   "address": "00735390",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawRadioMark@CXTPPaintManager@@UAEXPAVCDC@@VCRect@@K@Z",
+   "address": "006b49f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawRectangle@CXTPDefaultTheme@XTPPaintThemes@@MAEXPAVCDC@@VCRect@@HHHHHW4XTPBarType@@W4XTPBarPosition@@@Z",
+   "address": "00735580",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawSpecialControl@CXTPDefaultTheme@XTPPaintThemes@@UAE?AVCSize@@PAVCDC@@W4XTPSpecialControl@@PAVCXTPControl@@PAVCXTPCommandBar@@HPAX@Z",
+   "address": "00733900",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawSplitButtonFrame@CXTPDefaultTheme@XTPPaintThemes@@MAEXPAVCDC@@PAVCXTPControl@@VCRect@@@Z",
+   "address": "007343f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawStatusBarButtonFace@CXTPPaintManager@@UAEXPAVCDC@@VCRect@@PAVCXTPStatusBarPane@@@Z",
+   "address": "006b3e90",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawStatusBarGripper@CXTPPaintManager@@UAEXPAVCDC@@VCRect@@@Z",
+   "address": "006b34f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawStatusBarPaneBorder@CXTPPaintManager@@UAEXPAVCDC@@VCRect@@PAVCXTPStatusBarPane@@H@Z",
+   "address": "006b3f50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawStatusBarPaneEntry@CXTPPaintManager@@UAEXPAVCDC@@VCRect@@PAVCXTPStatusBarPane@@@Z",
+   "address": "006b3fe0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawTearOffGripper@CXTPDefaultTheme@XTPPaintThemes@@UAE?AVCSize@@PAVCDC@@VCRect@@HH@Z",
+   "address": "00735320",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?FillCommandBarEntry@CXTPDefaultTheme@XTPPaintThemes@@UAEXPAVCDC@@PAVCXTPCommandBar@@@Z",
+   "address": "00734770",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?FillDockBar@CXTPPaintManager@@UAEXPAVCDC@@PAVCXTPDockBar@@@Z",
+   "address": "006b11d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?FillStatusBar@CXTPPaintManager@@UAEXPAVCDC@@PAVCXTPStatusBar@@@Z",
+   "address": "006b1210",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?FillWorkspace@CXTPPaintManager@@UAEXPAVCDC@@VCRect@@1@Z",
+   "address": "006b44d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetCheckedIcon@CXTPImageManagerIcon@@QAEAAVCXTPImageManagerIconHandle@@XZ",
+   "address": "006bb590",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetCommandBarBorders@CXTPDefaultTheme@XTPPaintThemes@@UAE?AVCRect@@PAVCXTPCommandBar@@@Z",
+   "address": "00734c70",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetCommandBarFont@CXTPPaintManager@@UAEPAVCFont@@PAVCXTPCommandBar@@H@Z",
+   "address": "006ae840",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetControlEditBackColor@CXTPPaintManager@@UAEKPAVCXTPControl@@@Z",
+   "address": "006ae760",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetControlTextColor@CXTPPaintManager@@UAEKPAVCXTPControl@@@Z",
+   "address": "006ae5a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetDisabledIcon@CXTPImageManagerIcon@@QAEAAVCXTPImageManagerIconHandle@@H@Z",
+   "address": "006c0b70",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetFadedIcon@CXTPImageManagerIcon@@QAEAAVCXTPImageManagerIconHandle@@XZ",
+   "address": "006c0b20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetHotIcon@CXTPImageManagerIcon@@QAEAAVCXTPImageManagerIconHandle@@XZ",
+   "address": "006bb570",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetIcon@CXTPImageManagerIcon@@QAEAAVCXTPImageManagerIconHandle@@XZ",
+   "address": "006b9a70",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetPopupBarGripperWidth@CXTPPaintManager@@UAEHPAVCXTPCommandBar@@@Z",
+   "address": "006ae6f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetPopupBarImageSize@CXTPDefaultTheme@XTPPaintThemes@@MAE?AVCSize@@PAVCXTPCommandBar@@@Z",
+   "address": "007339c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetPressedIcon@CXTPImageManagerIcon@@QAEAAVCXTPImageManagerIconHandle@@XZ",
+   "address": "006bb5b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetRectangleTextColor@CXTPDefaultTheme@XTPPaintThemes@@UAEKHHHHHW4XTPBarType@@W4XTPBarPosition@@@Z",
+   "address": "00732d10",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetShadowIcon@CXTPImageManagerIcon@@QAEAAVCXTPImageManagerIconHandle@@XZ",
+   "address": "006c0b50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetSplitButtonCommandRect@CXTPPaintManager@@UAE?AVCRect@@PAVCXTPControl@@@Z",
+   "address": "006b1b90",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetXtremeColor@CXTPPaintManager@@QAEKI@Z",
+   "address": "006ae070",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?HasDisabledIcon@CXTPImageManagerIcon@@QBEHXZ",
+   "address": "006bb5d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?IsAlpha@CXTPImageManagerIcon@@QBEHXZ",
+   "address": "006b9a50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?IsEmpty@CXTPImageManagerIconHandle@@QBEHXZ",
+   "address": "006bb2c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?IsKeyboardSelected@@YAHH@Z",
+   "address": "006aad60",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?RefreshMetrics@CXTPDefaultTheme@XTPPaintThemes@@UAEXXZ",
+   "address": "00732ce0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetCommandBarRegion@CXTPPaintManager@@UAEXPAVCXTPCommandBar@@@Z",
+   "address": "0070bdf0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?UpdateFonts@CXTPPaintManager@@UAEXXZ",
+   "address": "006b0670",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?UpdateRTLCaption@CXTPPaintManager@@UAEXAAV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+   "address": "0070bdf0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

@@ -1,0 +1,27 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?Serialize@?$CArray@PAVCXTPPropertyGridInplaceButton@@PAV1@@@UAEXAAVCArchive@@@Z",
+    "address": "006e34d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPropertyGridInplaceButton\\objects\\9e7c3422f98bf4aa\\candidate.obj": "782ba50133718aca4ee21878412d5aa59c7d270e4be095fa7adabd26965be1b1",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-do03me5w\\owners.json": "474cde7ec1843cf2c34c97de143bdf4942512887af2800dae6eb04e820801c67",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-do03me5w\\import-thunk-identities-as-owner.json": "af4e6f50d1b322b6d68db789c56620f86656c7fe9d477a55b3c5d403c25c1bc0"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??$SerializeElements@PAVCXTPPropertyGridInplaceButton@@@@YGXAAVCArchive@@PAPAVCXTPPropertyGridInplaceButton@@H@Z",
+   "address": "00787550",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

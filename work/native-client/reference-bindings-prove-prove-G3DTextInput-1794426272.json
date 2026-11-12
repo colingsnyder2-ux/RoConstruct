@@ -1,0 +1,27 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??0WrongSymbol@TextInput@G3D@@QAE@ABV012@@Z",
+    "address": "00518240"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DTextInput\\objects\\4000dfdcadde810d\\candidate.obj": "fc226adb40ab46e595d6d1d23286d6a0a97d5e02b2098b0efce8a504f5b91a04",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-n4f4irhy\\owners.json": "b122f6538496dcc4a395b47c4eb1a917bb55a3b40d4f6794b18d9cc06bf34dba",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-n4f4irhy\\import-thunk-identities-as-owner.json": "9c6f92c587ff6f62376bdbddf715af2f41972032c8ded0ce44b17481051f4569"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "__ehhandler$??0WrongSymbol@TextInput@G3D@@QAE@ABV012@@Z",
+   "address": "007cc874",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

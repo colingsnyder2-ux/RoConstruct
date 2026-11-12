@@ -1,0 +1,38 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "_luaT_gettm",
+    "address": "0065c5d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Lua54ltm\\objects\\52e7d17eec4f8406\\candidate.obj": "6d5651777a45587368fee78e80e1365a7aa68bd23d6d96e252faddc9f34ab158",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-c_e5967c\\owners.json": "5c343659fede4b86e5754a6a8aaf3487f786fbeb4b99fbba8e76099be54ce3c7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-c_e5967c\\import-thunk-identities-as-owner.json": "4af649b16c9bc5e075d7acfaa09d4c9ab4530f09026559bb259cb6c59fa58736"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_luaT_gettmbyobj",
+    "address": "0065c600"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Lua54ltm\\objects\\52e7d17eec4f8406\\candidate.obj": "6d5651777a45587368fee78e80e1365a7aa68bd23d6d96e252faddc9f34ab158",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-c_e5967c\\owners.json": "5c343659fede4b86e5754a6a8aaf3487f786fbeb4b99fbba8e76099be54ce3c7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-c_e5967c\\import-thunk-identities-as-owner.json": "4af649b16c9bc5e075d7acfaa09d4c9ab4530f09026559bb259cb6c59fa58736"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "_luaH_getstr",
+   "address": "0065ea60",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

@@ -1,0 +1,188 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?IsPaneClosed@CXTPDockingPaneManager@@QBEHPAVCXTPDockingPane@@@Z",
+    "address": "006e4f80"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockingPaneManager\\objects\\a5bcc4bc5514a1ac\\candidate.obj": "a17fedca3e36f7d2b5c605c8344aee165c0d60f9412278a4172e2cb96c0b30af",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-_uqagbds\\owners.json": "12f09be71295e1a5f97cb735ee80c88eb4cfadd76e48a58e1ceb13bb0f08e8ab",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-_uqagbds\\import-thunk-identities-as-owner.json": "23d4e6b59af8cad7cad21c400b6117bd6b898c93edcae6657264878406d8727a"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?SetLayout@CXTPDockingPaneManager@@QAEXPBVCXTPDockingPaneLayout@@@Z",
+    "address": "006e68b0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockingPaneManager\\objects\\a5bcc4bc5514a1ac\\candidate.obj": "a17fedca3e36f7d2b5c605c8344aee165c0d60f9412278a4172e2cb96c0b30af",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-_uqagbds\\owners.json": "12f09be71295e1a5f97cb735ee80c88eb4cfadd76e48a58e1ceb13bb0f08e8ab",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-_uqagbds\\import-thunk-identities-as-owner.json": "23d4e6b59af8cad7cad21c400b6117bd6b898c93edcae6657264878406d8727a"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?OnSetPreviewMode@CXTPDockingPaneManager@@QAEXH@Z",
+    "address": "006e68f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockingPaneManager\\objects\\a5bcc4bc5514a1ac\\candidate.obj": "a17fedca3e36f7d2b5c605c8344aee165c0d60f9412278a4172e2cb96c0b30af",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-_uqagbds\\owners.json": "12f09be71295e1a5f97cb735ee80c88eb4cfadd76e48a58e1ceb13bb0f08e8ab",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-_uqagbds\\import-thunk-identities-as-owner.json": "23d4e6b59af8cad7cad21c400b6117bd6b898c93edcae6657264878406d8727a"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?GetAccessibleChild@CXTPDockingPaneManager@@MAEJUtagVARIANT@@PAPAUIDispatch@@@Z",
+    "address": "006e5f90"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockingPaneManager\\objects\\a5bcc4bc5514a1ac\\candidate.obj": "a17fedca3e36f7d2b5c605c8344aee165c0d60f9412278a4172e2cb96c0b30af",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-_uqagbds\\owners.json": "12f09be71295e1a5f97cb735ee80c88eb4cfadd76e48a58e1ceb13bb0f08e8ab",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-_uqagbds\\import-thunk-identities-as-owner.json": "23d4e6b59af8cad7cad21c400b6117bd6b898c93edcae6657264878406d8727a"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?OnInitialUpdate@CXTPDockingPaneManager@@IAEXXZ",
+    "address": "006e60d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockingPaneManager\\objects\\a5bcc4bc5514a1ac\\candidate.obj": "a17fedca3e36f7d2b5c605c8344aee165c0d60f9412278a4172e2cb96c0b30af",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-_uqagbds\\owners.json": "12f09be71295e1a5f97cb735ee80c88eb4cfadd76e48a58e1ceb13bb0f08e8ab",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-_uqagbds\\import-thunk-identities-as-owner.json": "23d4e6b59af8cad7cad21c400b6117bd6b898c93edcae6657264878406d8727a"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?OnWndMsg@CXTPDockingPaneManager@@MAEHIIJPAJ@Z",
+    "address": "006e6a40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockingPaneManager\\objects\\a5bcc4bc5514a1ac\\candidate.obj": "a17fedca3e36f7d2b5c605c8344aee165c0d60f9412278a4172e2cb96c0b30af",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-_uqagbds\\owners.json": "12f09be71295e1a5f97cb735ee80c88eb4cfadd76e48a58e1ceb13bb0f08e8ab",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-_uqagbds\\import-thunk-identities-as-owner.json": "23d4e6b59af8cad7cad21c400b6117bd6b898c93edcae6657264878406d8727a"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?_ToggleDocking@CXTPDockingPaneManager@@AAEHPAVCXTPDockingPane@@PAVCXTPDockingPaneBase@@@Z",
+    "address": "006e7020"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockingPaneManager\\objects\\a5bcc4bc5514a1ac\\candidate.obj": "a17fedca3e36f7d2b5c605c8344aee165c0d60f9412278a4172e2cb96c0b30af",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-_uqagbds\\owners.json": "12f09be71295e1a5f97cb735ee80c88eb4cfadd76e48a58e1ceb13bb0f08e8ab",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-_uqagbds\\import-thunk-identities-as-owner.json": "23d4e6b59af8cad7cad21c400b6117bd6b898c93edcae6657264878406d8727a"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?ActivateNextPane@CXTPDockingPaneManager@@QAEHPAVCXTPDockingPane@@H@Z",
+   "address": "006e5e80",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?AttachPane@CXTPDockingPaneManager@@QAEXPAVCXTPDockingPaneBase@@0@Z",
+   "address": "006e7000",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?CloseAll@CXTPDockingPaneManager@@QAEXXZ",
+   "address": "006e5ad0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Copy@CXTPDockingPaneLayout@@QAEXPBV1@@Z",
+   "address": "007565e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?CreateObject@?$CThreadLocal@VCXTPDockingPaneKeyboardHook@@@@SGPAVCNoTrackObject@@XZ",
+   "address": "006e5200",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?FindIndex@?$CList@UXTP_DOCKINGPANE_INFO@@AAU1@@@QBEPAU__POSITION@@H@Z",
+   "address": "006e5270",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?FloatPane@CXTPDockingPaneManager@@QAEPAVCXTPDockingPaneMiniWnd@@PAVCXTPDockingPaneBase@@VCRect@@@Z",
+   "address": "006e53f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetLayout@CXTPDockingPaneManager@@QBEXPAVCXTPDockingPaneLayout@@@Z",
+   "address": "006e4fd0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetOptions@CXTPDockingPane@@QBEKXZ",
+   "address": "007075e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetPaneWindowRect@CXTPDockingPaneBase@@QBE?AVCRect@@XZ",
+   "address": "0075d400",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?IsClosed@CXTPDockingPane@@QBEHXZ",
+   "address": "00707460",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?IsValid@CXTPDockingPaneLayout@@QBEHXZ",
+   "address": "00754a30",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnIdleUpdateCmdUI@CXTPDockingPaneManager@@IAEJIJ@Z",
+   "address": "006e5320",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SendMessageToDescendants@CWnd@@SGXPAUHWND__@@IIJHH@Z",
+   "address": "007bc39a",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetupKeyboardHook@CXTPDockingPaneKeyboardHook@@QAEXPAVCXTPDockingPaneManager@@H@Z",
+   "address": "0075b050",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_DetachAll@CXTPDockingPaneManager@@AAEXXZ",
+   "address": "006e5aa0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_OnAction@CXTPDockingPaneManager@@AAEHW4XTPDockingPaneAction@@PAVCXTPDockingPane@@PAVCXTPDockingPaneBase@@W4XTPDockingPaneDirection@@@Z",
+   "address": "006e4ed0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_Redraw@CXTPDockingPaneManager@@AAEXXZ",
+   "address": "006e6570",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_TrackPopupContextMenu@CXTPDockingPaneManager@@AAEXPAVCXTPDockingPane@@@Z",
+   "address": "006e5d10",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_xtpKeyboardThreadState@CXTPDockingPaneKeyboardHook@@1V?$CThreadLocal@VCXTPDockingPaneKeyboardHook@@@@A",
+   "address": "0097edd0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 7,
+ "owners_bound": 7
+}

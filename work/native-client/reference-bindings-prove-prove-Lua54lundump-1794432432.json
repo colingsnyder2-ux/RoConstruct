@@ -1,0 +1,32 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "_luaU_undump",
+    "address": "00663fe0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Lua54lundump\\objects\\9371fe09241c843a\\candidate.obj": "b26f46431bdac89f5b994dc109f32123efdad7483dc4c849765600f5995ecfe9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-0n7w0jz1\\owners.json": "723369fbb1ba4241ee797693074e0ffbc64d86a518250e5589bb782ada287066",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-0n7w0jz1\\import-thunk-identities-as-owner.json": "ae04e96bc933d81ef8d0f19fc437e59a4a0fe96e2cd9baf885c5b7b0ad280641"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "_LoadFunction",
+   "address": "00663d20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_LoadHeader",
+   "address": "00663f20",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

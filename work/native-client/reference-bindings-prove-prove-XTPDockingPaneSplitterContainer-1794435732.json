@@ -1,0 +1,137 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??0CXTPDockingPaneSplitterWnd@@IAE@XZ",
+    "address": "00760610"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockingPaneSplitterContainer\\objects\\0f7f957c18ce74f0\\candidate.obj": "e12c9a5c3ee38672da339c0302db2520e582a60a13ad4078a9fb9d2ef34ebb56",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-a4pjf6xb\\owners.json": "e1ef9935dabd8d1acdad697cda71f75c5089aa2a2cd38388ddc3e843dc471d77",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-a4pjf6xb\\import-thunk-identities-as-owner.json": "dbf59317355cd8d81353a25bf3a7ae47aa7d974d55e3b755b48b967071dbf1ae"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?GetAvailableRect@CXTPDockingPaneSplitterWnd@@AAEHAAVCRect@@0@Z",
+    "address": "00760c20"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockingPaneSplitterContainer\\objects\\0f7f957c18ce74f0\\candidate.obj": "e12c9a5c3ee38672da339c0302db2520e582a60a13ad4078a9fb9d2ef34ebb56",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-a4pjf6xb\\owners.json": "e1ef9935dabd8d1acdad697cda71f75c5089aa2a2cd38388ddc3e843dc471d77",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-a4pjf6xb\\import-thunk-identities-as-owner.json": "dbf59317355cd8d81353a25bf3a7ae47aa7d974d55e3b755b48b967071dbf1ae"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?InsertBefore@?$CList@PAVCXTPDockingPaneBase@@PAV1@@@QAEPAU__POSITION@@PAU2@PAVCXTPDockingPaneBase@@@Z",
+    "address": "00761750"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockingPaneSplitterContainer\\objects\\0f7f957c18ce74f0\\candidate.obj": "e12c9a5c3ee38672da339c0302db2520e582a60a13ad4078a9fb9d2ef34ebb56",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-a4pjf6xb\\owners.json": "e1ef9935dabd8d1acdad697cda71f75c5089aa2a2cd38388ddc3e843dc471d77",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-a4pjf6xb\\import-thunk-identities-as-owner.json": "dbf59317355cd8d81353a25bf3a7ae47aa7d974d55e3b755b48b967071dbf1ae"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1?$CList@PAVCXTPDockingPaneSplitterWnd@@PAV1@@@UAE@XZ",
+    "address": "00761570"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockingPaneSplitterContainer\\objects\\0f7f957c18ce74f0\\candidate.obj": "e12c9a5c3ee38672da339c0302db2520e582a60a13ad4078a9fb9d2ef34ebb56",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-a4pjf6xb\\owners.json": "e1ef9935dabd8d1acdad697cda71f75c5089aa2a2cd38388ddc3e843dc471d77",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-a4pjf6xb\\import-thunk-identities-as-owner.json": "dbf59317355cd8d81353a25bf3a7ae47aa7d974d55e3b755b48b967071dbf1ae"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?OnSetCursor@CXTPDockingPaneSplitterWnd@@IAEHPAVCWnd@@II@Z",
+    "address": "007615a0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockingPaneSplitterContainer\\objects\\0f7f957c18ce74f0\\candidate.obj": "e12c9a5c3ee38672da339c0302db2520e582a60a13ad4078a9fb9d2ef34ebb56",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-a4pjf6xb\\owners.json": "e1ef9935dabd8d1acdad697cda71f75c5089aa2a2cd38388ddc3e843dc471d77",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-a4pjf6xb\\import-thunk-identities-as-owner.json": "dbf59317355cd8d81353a25bf3a7ae47aa7d974d55e3b755b48b967071dbf1ae"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?_UpdateSplitters@CXTPDockingPaneSplitterContainer@@AAEXXZ",
+    "address": "00761820"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockingPaneSplitterContainer\\objects\\0f7f957c18ce74f0\\candidate.obj": "e12c9a5c3ee38672da339c0302db2520e582a60a13ad4078a9fb9d2ef34ebb56",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-a4pjf6xb\\owners.json": "e1ef9935dabd8d1acdad697cda71f75c5089aa2a2cd38388ddc3e843dc471d77",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-a4pjf6xb\\import-thunk-identities-as-owner.json": "dbf59317355cd8d81353a25bf3a7ae47aa7d974d55e3b755b48b967071dbf1ae"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??_E?$CList@PAVCXTPDockingPaneSplitterWnd@@PAV1@@@UAEPAXI@Z",
+   "address": "00761580",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECXTPDockingPaneSplitterWnd@@MAEPAXI@Z",
+   "address": "00760990",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?AddHead@?$CList@PAVCXTPDockingPaneBase@@PAV1@@@QAEPAU__POSITION@@PAVCXTPDockingPaneBase@@@Z",
+   "address": "007554a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?AddTail@?$CList@PAVCXTPDockingPaneSplitterWnd@@PAV1@@@QAEPAU__POSITION@@PAVCXTPDockingPaneSplitterWnd@@@Z",
+   "address": "0076bac0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Create@CXTPDockingPaneSplitterWnd@@EAEHPBD0KABUtagRECT@@PAVCWnd@@IPAUCCreateContext@@@Z",
+   "address": "00760640",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Create@CXTPDockingPaneSplitterWnd@@QAEXPAVCXTPDockingPaneSplitterContainer@@PAVCXTPDockingPaneBase@@1@Z",
+   "address": "00760a00",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetDockingPaneManager@CXTPDockingPaneSplitterWnd@@ABEPAVCXTPDockingPaneManager@@XZ",
+   "address": "006d45e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetMessageMap@CXTPDockingPaneSplitterWnd@@MBEPBUAFX_MSGMAP@@XZ",
+   "address": "007622b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?RemoveAll@?$CList@PAVCXTPDockingPaneSplitterWnd@@PAV1@@@QAEXXZ",
+   "address": "00438030",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?RemoveTail@?$CList@PAVCXTPDockingPaneSplitterWnd@@PAV1@@@QAEPAVCXTPDockingPaneSplitterWnd@@XZ",
+   "address": "00754f60",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Serialize@?$CList@PAVCXTPDockingPaneSplitterWnd@@PAV1@@@UAEXAAVCArchive@@@Z",
+   "address": "0076d180",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__UnionRect@12",
+   "address": "00802bac",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 6,
+ "owners_bound": 6
+}

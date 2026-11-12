@@ -1,0 +1,47 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?GetThisMessageMap@CXTPPropertyGridToolBar@@KGPBUAFX_MSGMAP@@XZ",
+    "address": "006fbca0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPropertyGrid\\objects\\8f570fe9a39dd7b8\\candidate.obj": "1d34dcf91cd47a616405d4ad37bc905ccac19cec2a0e1e1beb5a4c5d3a9981f4",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-ujbcn75f\\owners.json": "10d2f82e76e2e17e1477472ff50e338d0b75728d29a7afaeca53e12d81842842",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-ujbcn75f\\import-thunk-identities-as-owner.json": "dbd81d3a1822a8333f62a37f698d23f6f7bf2142b49f1dc2b72784bbd3fea5e7"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?GetThisMessageMap@CToolBar@@KGPBUAFX_MSGMAP@@XZ",
+   "address": "007bc622",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnCustomDraw@CXTPPropertyGridToolBar@@IAEXPAUtagNMHDR@@PAJ@Z",
+   "address": "006fa5d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnEraseBkgnd@CXTPPropertyGridToolBar@@IAEHPAVCDC@@@Z",
+   "address": "006e8870",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnNcCalcSize@CXTPPropertyGridToolBar@@IAEXHPAUtagNCCALCSIZE_PARAMS@@@Z",
+   "address": "00458e90",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnPaint@CXTPPropertyGridToolBar@@IAEXXZ",
+   "address": "006fa650",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

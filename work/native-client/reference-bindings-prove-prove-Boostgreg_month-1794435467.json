@@ -1,0 +1,37 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?on_error@?$simple_exception_policy@G$00$0M@Ubad_month@gregorian@boost@@@CV@boost@@SAXGGW4violation_enum@23@@Z",
+    "address": "0055c060"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Boostgreg_month\\objects\\e7785e341ca1ce62\\candidate.obj": "b1a360c7329d712d92975e897e0a4306609dfa2468a11a87c9ea5f2aaef7dbad",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-80v_gbvi\\owners.json": "8ddb831dc3668086c4fa8e0501f3f3255359d9c3692a4af1f2c5ae9f2467ea8b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-80v_gbvi\\import-thunk-identities-as-owner.json": "f650431d1efc92390ab7d398726e20fe5dac5678f42779aac3981be2ee33d6a4"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??0bad_month@gregorian@boost@@QAE@ABU012@@Z",
+   "address": "0055cb00",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??0bad_month@gregorian@boost@@QAE@XZ",
+   "address": "0055bca0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??1bad_month@gregorian@boost@@UAE@XZ",
+   "address": "004024c0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

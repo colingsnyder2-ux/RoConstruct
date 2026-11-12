@@ -1,0 +1,54 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "_luaX_newstring",
+    "address": "00664230"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Lua54llex\\objects\\60b9e0f95c2e5715\\candidate.obj": "bd85b98bbab1d319974342830b43a3f146209969f6ecd90c736c7538578ad8bf",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-ecvd8uil\\owners.json": "4dccd42d9c82d6cdf2095cd75251945975b1b8cc1f569496c8b37d470cce28d0",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-ecvd8uil\\import-thunk-identities-as-owner.json": "555ebae0b7dd229ad36d2484c1a9813a33374f09517aeeb26fda34ba40f57cbd"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_luaX_next",
+    "address": "00665600"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Lua54llex\\objects\\60b9e0f95c2e5715\\candidate.obj": "bd85b98bbab1d319974342830b43a3f146209969f6ecd90c736c7538578ad8bf",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-ecvd8uil\\owners.json": "4dccd42d9c82d6cdf2095cd75251945975b1b8cc1f569496c8b37d470cce28d0",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-ecvd8uil\\import-thunk-identities-as-owner.json": "555ebae0b7dd229ad36d2484c1a9813a33374f09517aeeb26fda34ba40f57cbd"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_luaX_lookahead",
+    "address": "00665650"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Lua54llex\\objects\\60b9e0f95c2e5715\\candidate.obj": "bd85b98bbab1d319974342830b43a3f146209969f6ecd90c736c7538578ad8bf",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-ecvd8uil\\owners.json": "4dccd42d9c82d6cdf2095cd75251945975b1b8cc1f569496c8b37d470cce28d0",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-ecvd8uil\\import-thunk-identities-as-owner.json": "555ebae0b7dd229ad36d2484c1a9813a33374f09517aeeb26fda34ba40f57cbd"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "_llex",
+   "address": "00664f50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaH_setstr",
+   "address": "0065f150",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 3,
+ "owners_bound": 3
+}

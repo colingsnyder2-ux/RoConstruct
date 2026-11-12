@@ -1,0 +1,80 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?GetRuntimeClass@CXTTreeView@@UBEPAUCRuntimeClass@@XZ",
+    "address": "006dbaa0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTTreeCtrlView\\objects\\c9f4948666203a35\\candidate.obj": "d23de7017587e0f84b50dbaa5dbf7c23873da0e8af7f99704d80e47e3beec88d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-syb11qdd\\owners.json": "8cedaa3cda4eac5bf11c1edc87cf19fa067cd396e3b246f9389470d418063924",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-syb11qdd\\import-thunk-identities-as-owner.json": "e0c4ae26e5471534ecaf6cf797ce41dc4973b84470a351de721f83f784067926"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?GetRuntimeClass@CXTTreeCtrl@@UBEPAUCRuntimeClass@@XZ",
+    "address": "006dbaf0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTTreeCtrlView\\objects\\c9f4948666203a35\\candidate.obj": "d23de7017587e0f84b50dbaa5dbf7c23873da0e8af7f99704d80e47e3beec88d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-syb11qdd\\owners.json": "8cedaa3cda4eac5bf11c1edc87cf19fa067cd396e3b246f9389470d418063924",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-syb11qdd\\import-thunk-identities-as-owner.json": "e0c4ae26e5471534ecaf6cf797ce41dc4973b84470a351de721f83f784067926"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?GetMessageMap@CXTTreeView@@MBEPBUAFX_MSGMAP@@XZ",
+    "address": "006dbd90"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTTreeCtrlView\\objects\\c9f4948666203a35\\candidate.obj": "d23de7017587e0f84b50dbaa5dbf7c23873da0e8af7f99704d80e47e3beec88d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-syb11qdd\\owners.json": "8cedaa3cda4eac5bf11c1edc87cf19fa067cd396e3b246f9389470d418063924",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-syb11qdd\\import-thunk-identities-as-owner.json": "e0c4ae26e5471534ecaf6cf797ce41dc4973b84470a351de721f83f784067926"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?GetMessageMap@CXTTreeCtrl@@MBEPBUAFX_MSGMAP@@XZ",
+    "address": "006dbe50"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTTreeCtrlView\\objects\\c9f4948666203a35\\candidate.obj": "d23de7017587e0f84b50dbaa5dbf7c23873da0e8af7f99704d80e47e3beec88d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-syb11qdd\\owners.json": "8cedaa3cda4eac5bf11c1edc87cf19fa067cd396e3b246f9389470d418063924",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-syb11qdd\\import-thunk-identities-as-owner.json": "e0c4ae26e5471534ecaf6cf797ce41dc4973b84470a351de721f83f784067926"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?CreateObject@CXTTreeView@@SGPAVCObject@@XZ",
+   "address": "006dbd20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetThisMessageMap@CXTTreeCtrl@@KGPBUAFX_MSGMAP@@XZ",
+   "address": "006dbde0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetThisMessageMap@CXTTreeView@@KGPBUAFX_MSGMAP@@XZ",
+   "address": "006dbab0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_GetBaseClass@CXTTreeCtrl@@KGPAUCRuntimeClass@@XZ",
+   "address": "006dbae0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_GetBaseClass@CXTTreeView@@KGPAUCRuntimeClass@@XZ",
+   "address": "006dba90",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 4,
+ "owners_bound": 4
+}

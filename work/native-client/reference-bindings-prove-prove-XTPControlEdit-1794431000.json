@@ -1,0 +1,109 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?TrackSpinButton@CXTPControlEdit@@IAEXVCPoint@@@Z",
+    "address": "00743640"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlEdit\\objects\\9dbd91b3ecec9b28\\candidate.obj": "9f6451259bf5817554cc48656ba5dfa2d2503da94a616ce6dfc63be4dd571a6c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-p4m9csl8\\owners.json": "3f6373bbada6cece98a79b4b8ebd889a5975ad41764f85d340c9eb0b7e1b5952",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-p4m9csl8\\import-thunk-identities-as-owner.json": "f8b6a18c746b375a7aa4bee284e9cf29a5a097ada16d0c075f83624e8563c4a1"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0CXTPControlEditCtrl@@QAE@XZ",
+    "address": "00742bd0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlEdit\\objects\\9dbd91b3ecec9b28\\candidate.obj": "9f6451259bf5817554cc48656ba5dfa2d2503da94a616ce6dfc63be4dd571a6c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-p4m9csl8\\owners.json": "3f6373bbada6cece98a79b4b8ebd889a5975ad41764f85d340c9eb0b7e1b5952",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-p4m9csl8\\import-thunk-identities-as-owner.json": "f8b6a18c746b375a7aa4bee284e9cf29a5a097ada16d0c075f83624e8563c4a1"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?OnHookKeyDown@CXTPControlEdit@@MAEHIJ@Z",
+    "address": "00743050"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlEdit\\objects\\9dbd91b3ecec9b28\\candidate.obj": "9f6451259bf5817554cc48656ba5dfa2d2503da94a616ce6dfc63be4dd571a6c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-p4m9csl8\\owners.json": "3f6373bbada6cece98a79b4b8ebd889a5975ad41764f85d340c9eb0b7e1b5952",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-p4m9csl8\\import-thunk-identities-as-owner.json": "f8b6a18c746b375a7aa4bee284e9cf29a5a097ada16d0c075f83624e8563c4a1"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??0CXTPEdit@@QAE@XZ",
+   "address": "006a7510",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECXTPControlEditCtrl@@UAEPAXI@Z",
+   "address": "006a7380",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?CreateEdit@CXTPEdit@@UAEHKPAVCWnd@@@Z",
+   "address": "006a78a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetMessageMap@CXTPControlEditCtrl@@MBEPBUAFX_MSGMAP@@XZ",
+   "address": "00743dd0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetRuntimeClass@CXTPEdit@@UBEPAUCRuntimeClass@@XZ",
+   "address": "006a67c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetSpinButtonsRect@CXTPControlEdit@@QBE?AVCRect@@XZ",
+   "address": "00742430",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?IsDialogCode@CXTPControlComboBoxAutoCompleteWnd@@QAEHIJ@Z",
+   "address": "006a6990",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnCmdMsg@CXTPEdit@@UAEHIHPAXPAUAFX_CMDHANDLERINFO@@@Z",
+   "address": "006a75c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnCommand@CXTPEdit@@UAEHIJ@Z",
+   "address": "006a7610",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnWndMsg@CXTPControlEditCtrl@@MAEHIIJPAJ@Z",
+   "address": "00741f30",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetEditText@CXTPControlEdit@@QAEXABV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+   "address": "00742fc0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?ShowContextMenu@CXTPEdit@@UAEHPAVCXTPControl@@VCPoint@@@Z",
+   "address": "006a7680",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__GetTickCount@0",
+   "address": "008021e8",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 3,
+ "owners_bound": 3
+}

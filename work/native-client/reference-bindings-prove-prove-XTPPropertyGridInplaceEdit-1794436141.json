@@ -1,0 +1,59 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?GetRuntimeClass@CXTPPropertyGridInplaceEdit@@UBEPAUCRuntimeClass@@XZ",
+    "address": "00773700"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPropertyGridInplaceEdit\\objects\\4661db85741b9c78\\candidate.obj": "47f6e50185c9cd5e8b8057731a4e0cf15bf5db4e11cd3c4e10b82a611053cc86",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-4bp_ast8\\owners.json": "2b1ec1da59ffa4b6645f45c3a8a0345d8ed5149b6d58489b3da4586f8c8fbdfa",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-4bp_ast8\\import-thunk-identities-as-owner.json": "d420a608afca1e92379076fece3230c3d37502c4f53a6fca860ff249192ba6eb"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Serialize@?$CArray@PAVCXTPPropertyGridInplaceControl@@PAV1@@@UAEXAAVCArchive@@@Z",
+    "address": "006e34d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPropertyGridInplaceEdit\\objects\\4661db85741b9c78\\candidate.obj": "47f6e50185c9cd5e8b8057731a4e0cf15bf5db4e11cd3c4e10b82a611053cc86",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-4bp_ast8\\owners.json": "2b1ec1da59ffa4b6645f45c3a8a0345d8ed5149b6d58489b3da4586f8c8fbdfa",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-4bp_ast8\\import-thunk-identities-as-owner.json": "d420a608afca1e92379076fece3230c3d37502c4f53a6fca860ff249192ba6eb"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?GetMessageMap@CXTPPropertyGridInplaceEdit@@MBEPBUAFX_MSGMAP@@XZ",
+    "address": "007762c0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPropertyGridInplaceEdit\\objects\\4661db85741b9c78\\candidate.obj": "47f6e50185c9cd5e8b8057731a4e0cf15bf5db4e11cd3c4e10b82a611053cc86",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-4bp_ast8\\owners.json": "2b1ec1da59ffa4b6645f45c3a8a0345d8ed5149b6d58489b3da4586f8c8fbdfa",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-4bp_ast8\\import-thunk-identities-as-owner.json": "d420a608afca1e92379076fece3230c3d37502c4f53a6fca860ff249192ba6eb"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??$SerializeElements@PAVCXTPPropertyGridInplaceControl@@@@YGXAAVCArchive@@PAPAVCXTPPropertyGridInplaceControl@@H@Z",
+   "address": "00787550",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetThisMessageMap@CXTPPropertyGridInplaceEdit@@KGPBUAFX_MSGMAP@@XZ",
+   "address": "007762b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_GetBaseClass@CXTPPropertyGridInplaceEdit@@KGPAUCRuntimeClass@@XZ",
+   "address": "0074d250",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 3,
+ "owners_bound": 3
+}

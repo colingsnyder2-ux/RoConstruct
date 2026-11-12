@@ -1,0 +1,32 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "_jinit_d_main_controller",
+    "address": "00530ec0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Jpegjdmainct\\objects\\4899c49adc2b08bf\\candidate.obj": "d0cacddef21b839057422678bda2228a1072940768bdea06a9ce07f401be8de3",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-im7ovbw3\\owners.json": "8dc5fd41bf013bf9764ee7c69a64126d1877a5715f008c23752dbd5e73a9e79b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-im7ovbw3\\import-thunk-identities-as-owner.json": "ca72b2886caf5770db1c7f4ecb3323da6e6c3b30fa9c12981065a62083df00ff"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "_alloc_funny_pointers",
+   "address": "005308f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_start_pass_main",
+   "address": "00530e40",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

@@ -1,0 +1,27 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?AddTail@?$CList@PAVCShadowWnd@CXTPShadowsManager@@PAV12@@@QAEPAU__POSITION@@PAVCShadowWnd@CXTPShadowsManager@@@Z",
+    "address": "0076bac0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPShadowsManager\\objects\\b945023c05308296\\candidate.obj": "377fe557ccf2b010e233289fb0820f13f3062955a3990632a89bf1c81b82ba90",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-tp_v0sa_\\owners.json": "6aca81bdbaab1e0aa998f29e236c0775518e9ef1a68e4ed80625f6def4b33bcb",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-tp_v0sa_\\import-thunk-identities-as-owner.json": "9a16eed70e1f1db2784c68ea298f13283d36202f98ae9989c2b4b85d3378bd86"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?NewNode@?$CList@PAVCShadowWnd@CXTPShadowsManager@@PAV12@@@IAEPAUCNode@1@PAU21@0@Z",
+   "address": "0076a730",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

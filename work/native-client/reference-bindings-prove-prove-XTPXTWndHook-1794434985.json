@@ -1,0 +1,27 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?_GetBaseClass@CXTWindowMap@@KGPAUCRuntimeClass@@XZ",
+    "address": "007a1140"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTWndHook\\objects\\ccbad1b2bc50979e\\candidate.obj": "7e7324070648336be0014d689659b091dc39adb7cc5f98c5bd235453ad25cd79",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-a8qphlok\\owners.json": "ce6a816c46c01c0082a74fefb4420c94ab613060da20e25fa9cc083219a850b3",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-a8qphlok\\import-thunk-identities-as-owner.json": "46cf2dcaf11315fac0d49f9fd9668a858d4180d38c85dcc5def00e694d3db7de"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?GetThisClass@CMapPtrToPtr@@SGPAUCRuntimeClass@@XZ",
+   "address": "007bc9ee",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

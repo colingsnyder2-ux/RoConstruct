@@ -1,0 +1,48 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?checkBug_mipmapGeneration@GLCaps@G3D@@CAXXZ",
+    "address": "004711a0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DGLCaps\\objects\\8585db479f5ef65d\\candidate.obj": "5af2192f7eb794b4f789b664a1091ce70945b2c79d3ccbcfa498e1830d2534f8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5co4q541\\owners.json": "86cb6ddea59f4c37f4e1018b796df99691f4c29dc544ca41081cbfb3e53da2a3",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5co4q541\\import-thunk-identities-as-owner.json": "bb599ea3dab8118b6f6a119b6459c5f451e724577063c2a96ca5465d04f7275f"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??__F?extensionSet@GLCaps@G3D@@0V?$Set@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@A@@YAXXZ",
+    "address": "007fb080"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DGLCaps\\objects\\8585db479f5ef65d\\candidate.obj": "5af2192f7eb794b4f789b664a1091ce70945b2c79d3ccbcfa498e1830d2534f8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5co4q541\\owners.json": "86cb6ddea59f4c37f4e1018b796df99691f4c29dc544ca41081cbfb3e53da2a3",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5co4q541\\import-thunk-identities-as-owner.json": "bb599ea3dab8118b6f6a119b6459c5f451e724577063c2a96ca5465d04f7275f"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??_E?$Set@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@G3D@@UAEPAXI@Z",
+   "address": "00472880",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?freeMemory@?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@G3D@@AAEXXZ",
+   "address": "00471690",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?checkBug_mipmapGeneration@GLCaps@G3D@@CAXXZ",
+   "address": "007c42d3",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

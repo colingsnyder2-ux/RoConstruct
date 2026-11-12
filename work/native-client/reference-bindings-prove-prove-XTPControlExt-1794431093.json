@@ -1,0 +1,107 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?GetRuntimeClass@CXTPControlSelector@@UBEPAUCRuntimeClass@@XZ",
+    "address": "006f5050"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlExt\\objects\\5cffe7359b4a179a\\candidate.obj": "49cf694863804d868daa456cc468ab3e1d5b899ba3429210d42b303093347b3f",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-yi81dizr\\owners.json": "1be2d9a0c4581a90235867cb9df522368f897367e0ab78eb5ebbe586a19eb0db",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-yi81dizr\\import-thunk-identities-as-owner.json": "95b07388d00a4f419eb1b5a43785a9099a553abbb4401f497a67d3a7577f7f21"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?GetRuntimeClass@CXTPControlCheckBox@@UBEPAUCRuntimeClass@@XZ",
+    "address": "006f5180"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlExt\\objects\\5cffe7359b4a179a\\candidate.obj": "49cf694863804d868daa456cc468ab3e1d5b899ba3429210d42b303093347b3f",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-yi81dizr\\owners.json": "1be2d9a0c4581a90235867cb9df522368f897367e0ab78eb5ebbe586a19eb0db",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-yi81dizr\\import-thunk-identities-as-owner.json": "95b07388d00a4f419eb1b5a43785a9099a553abbb4401f497a67d3a7577f7f21"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?GetRuntimeClass@CXTPControlRadioButton@@UBEPAUCRuntimeClass@@XZ",
+    "address": "006f51c0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlExt\\objects\\5cffe7359b4a179a\\candidate.obj": "49cf694863804d868daa456cc468ab3e1d5b899ba3429210d42b303093347b3f",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-yi81dizr\\owners.json": "1be2d9a0c4581a90235867cb9df522368f897367e0ab78eb5ebbe586a19eb0db",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-yi81dizr\\import-thunk-identities-as-owner.json": "95b07388d00a4f419eb1b5a43785a9099a553abbb4401f497a67d3a7577f7f21"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Clone@CXTPControlSelector@@UAEPAVCXTPControl@@H@Z",
+    "address": "006f6830"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlExt\\objects\\5cffe7359b4a179a\\candidate.obj": "49cf694863804d868daa456cc468ab3e1d5b899ba3429210d42b303093347b3f",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-yi81dizr\\owners.json": "1be2d9a0c4581a90235867cb9df522368f897367e0ab78eb5ebbe586a19eb0db",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-yi81dizr\\import-thunk-identities-as-owner.json": "95b07388d00a4f419eb1b5a43785a9099a553abbb4401f497a67d3a7577f7f21"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Clone@CXTPControlCheckBox@@UAEPAVCXTPControl@@H@Z",
+    "address": "006f66f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlExt\\objects\\5cffe7359b4a179a\\candidate.obj": "49cf694863804d868daa456cc468ab3e1d5b899ba3429210d42b303093347b3f",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-yi81dizr\\owners.json": "1be2d9a0c4581a90235867cb9df522368f897367e0ab78eb5ebbe586a19eb0db",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-yi81dizr\\import-thunk-identities-as-owner.json": "95b07388d00a4f419eb1b5a43785a9099a553abbb4401f497a67d3a7577f7f21"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Clone@CXTPControlRadioButton@@UAEPAVCXTPControl@@H@Z",
+    "address": "006f6790"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlExt\\objects\\5cffe7359b4a179a\\candidate.obj": "49cf694863804d868daa456cc468ab3e1d5b899ba3429210d42b303093347b3f",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-yi81dizr\\owners.json": "1be2d9a0c4581a90235867cb9df522368f897367e0ab78eb5ebbe586a19eb0db",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-yi81dizr\\import-thunk-identities-as-owner.json": "95b07388d00a4f419eb1b5a43785a9099a553abbb4401f497a67d3a7577f7f21"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?CreateObject@CXTPControlCheckBox@@SGPAVCObject@@XZ",
+   "address": "006f6680",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?CreateObject@CXTPControlRadioButton@@SGPAVCObject@@XZ",
+   "address": "006f6720",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?CreateObject@CXTPControlSelector@@SGPAVCObject@@XZ",
+   "address": "006f67c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_GetBaseClass@CXTPControlCheckBox@@KGPAUCRuntimeClass@@XZ",
+   "address": "006e9260",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_GetBaseClass@CXTPControlRadioButton@@KGPAUCRuntimeClass@@XZ",
+   "address": "006e9260",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_GetBaseClass@CXTPControlSelector@@KGPAUCRuntimeClass@@XZ",
+   "address": "00745620",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 6,
+ "owners_bound": 6
+}

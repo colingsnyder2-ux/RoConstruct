@@ -1,0 +1,27 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?vformat@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDPAD@Z",
+    "address": "005099f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3Dformat\\objects\\00c4b5f8f4fc3ca3\\candidate.obj": "dfce2ebc12385d1b03c8e04c7d8894b025ee3cfba49ccee84853dafe4e70e047",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-7xmvc1r5\\owners.json": "2ecf182501d8fa5d2a11e84d2cd3cc841fb02d27c1bd0c8de25efbcb521801f0",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-7xmvc1r5\\import-thunk-identities-as-owner.json": "616106ca3e69d139f5cdbcf1f831175194091c1d2a89eed197df06b753e5f193"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "__ehhandler$?vformat@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDPAD@Z",
+   "address": "007cbd3c",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

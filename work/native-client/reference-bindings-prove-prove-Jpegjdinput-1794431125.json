@@ -1,0 +1,53 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "_consume_markers",
+    "address": "0052a9e0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Jpegjdinput\\objects\\999aa49beb1a0c41\\candidate.obj": "5e920c30b56be719d011a09aff80705c275b1a34da18c5d6c37c9bf039f03e79",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-fcp8r0cy\\owners.json": "1e7381743bb547d0894e20bf4ba307ca389026d2d0d37909264b8cffec5995fc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-fcp8r0cy\\import-thunk-identities-as-owner.json": "33539584c5cffd5039e36c68fcfc78a804aabb9e89315a677a69fbeaac41999e"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_jinit_input_controller",
+    "address": "0052ab00"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Jpegjdinput\\objects\\999aa49beb1a0c41\\candidate.obj": "5e920c30b56be719d011a09aff80705c275b1a34da18c5d6c37c9bf039f03e79",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-fcp8r0cy\\owners.json": "1e7381743bb547d0894e20bf4ba307ca389026d2d0d37909264b8cffec5995fc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-fcp8r0cy\\import-thunk-identities-as-owner.json": "33539584c5cffd5039e36c68fcfc78a804aabb9e89315a677a69fbeaac41999e"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "_finish_input_pass",
+   "address": "0052aae0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_initial_setup",
+   "address": "0052a560",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_reset_input_controller",
+   "address": "0052aaa0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_start_input_pass",
+   "address": "0052a9a0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

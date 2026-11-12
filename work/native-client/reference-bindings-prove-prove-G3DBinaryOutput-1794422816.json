@@ -1,0 +1,100 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??1BinaryOutput@G3D@@QAE@XZ",
+    "address": "005197b0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DBinaryOutput\\objects\\3ed8ec1296fa2f14\\candidate.obj": "a74b0c6b383fb8a8b5c2843da52bcde5c46d455d37b2de80646f7fecab1d2a50",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-mvshcc20\\owners.json": "c19eb0908940bbc425b6ebcd7ec647f17005f06bb1e1585a569262034734a976",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-mvshcc20\\import-thunk-identities-as-owner.json": "c0c63f3ae287256acc8470c8a4f60622dca13ccbe71bc8c5b9e04ce49fc743f4"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?reallocBuffer@BinaryOutput@G3D@@AAEXII@Z",
+    "address": "00519830"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DBinaryOutput\\objects\\3ed8ec1296fa2f14\\candidate.obj": "a74b0c6b383fb8a8b5c2843da52bcde5c46d455d37b2de80646f7fecab1d2a50",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-mvshcc20\\owners.json": "c19eb0908940bbc425b6ebcd7ec647f17005f06bb1e1585a569262034734a976",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-mvshcc20\\import-thunk-identities-as-owner.json": "c0c63f3ae287256acc8470c8a4f60622dca13ccbe71bc8c5b9e04ce49fc743f4"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0BinaryOutput@G3D@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4G3DEndian@1@@Z",
+    "address": "005198d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DBinaryOutput\\objects\\3ed8ec1296fa2f14\\candidate.obj": "a74b0c6b383fb8a8b5c2843da52bcde5c46d455d37b2de80646f7fecab1d2a50",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-mvshcc20\\owners.json": "c19eb0908940bbc425b6ebcd7ec647f17005f06bb1e1585a569262034734a976",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-mvshcc20\\import-thunk-identities-as-owner.json": "c0c63f3ae287256acc8470c8a4f60622dca13ccbe71bc8c5b9e04ce49fc743f4"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?commit@BinaryOutput@G3D@@QAEX_N@Z",
+    "address": "00519a90"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DBinaryOutput\\objects\\3ed8ec1296fa2f14\\candidate.obj": "a74b0c6b383fb8a8b5c2843da52bcde5c46d455d37b2de80646f7fecab1d2a50",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-mvshcc20\\owners.json": "c19eb0908940bbc425b6ebcd7ec647f17005f06bb1e1585a569262034734a976",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-mvshcc20\\import-thunk-identities-as-owner.json": "c0c63f3ae287256acc8470c8a4f60622dca13ccbe71bc8c5b9e04ce49fc743f4"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??1?$Array@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@G3D@@QAE@XZ",
+   "address": "005086d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?createDirectory@G3D@@YAXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "00515470",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?parseFilename@G3D@@YAXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAV23@AAV?$Array@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@1@11@Z",
+   "address": "00514f10",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?realloc@System@G3D@@SAPAXPAXI@Z",
+   "address": "00508bb0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?reserveBytesWhenOutOfMemory@BinaryOutput@G3D@@AAEXI@Z",
+   "address": "005196b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?stringJoin@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV?$Array@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@1@D@Z",
+   "address": "00512120",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??0BinaryOutput@G3D@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4G3DEndian@1@@Z",
+   "address": "007c6b49",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??1BinaryOutput@G3D@@QAE@XZ",
+   "address": "007c6b49",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?commit@BinaryOutput@G3D@@QAEX_N@Z",
+   "address": "007cc8c7",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 4,
+ "owners_bound": 4
+}

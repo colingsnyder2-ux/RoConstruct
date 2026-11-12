@@ -1,0 +1,301 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "rows": [
+  {
+   "symbol": "??0Cache@BrickMesh@ViewNew@RBX@@QAE@XZ",
+   "address": "004e5300",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??0TextureProxyBase@RBX@@QAE@XZ",
+   "address": "00551bf0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??1?$Described@VFaceInstance@RBX@@$1?sFaceInstance@2@3PADAVInstance@2@@Reflection@RBX@@UAE@XZ",
+   "address": "00455d30",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??1?$DescribedCreatable@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@UAE@XZ",
+   "address": "00597d20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??1?$DescribedCreatable@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@UAE@XZ",
+   "address": "00597fa0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??1?$FactoryProduct@VDecal@RBX@@VFaceInstance@2@$1?sDecal@2@3PADA@RBX@@MAE@XZ",
+   "address": "00597680",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??1?$FactoryProduct@VTexture@RBX@@VDecal@2@$1?sTexture@2@3PADA@RBX@@MAE@XZ",
+   "address": "00597da0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??1?$ReferenceCountedPointer@VTextureProxy@RenderNew@RBX@@@G3D@@QAE@XZ",
+   "address": "00540e20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??1?$_Tree_val@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VMeshPtr@Ogre@@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VMeshPtr@Ogre@@@std@@@2@$0A@@std@@@std@@QAE@XZ",
+   "address": "005b3d20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??1?$_Vector_val@PAVRbxSubEntity@Ogre@@V?$allocator@PAVRbxSubEntity@Ogre@@@std@@@std@@QAE@XZ",
+   "address": "005b3d20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??1?$_Vector_val@PAVSceneNode@Ogre@@V?$allocator@PAVSceneNode@Ogre@@@std@@@std@@QAE@XZ",
+   "address": "005b3d20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??1?$_Vector_val@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@V?$allocator@V?$ReferenceCountedPointer@VChunk@RenderBase@RBX@@@G3D@@@std@@@std@@QAE@XZ",
+   "address": "005b3d20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??1?$_Vector_val@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE@XZ",
+   "address": "005b3d20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??1?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@QAE@XZ",
+   "address": "00445280",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??1TextureId@RBX@@QAE@XZ",
+   "address": "0068b7e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??8const_iterator@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@QBE_NABV012@@Z",
+   "address": "005ecca0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??R?$less@ULookup@@@std@@QBE_NABULookup@@0@Z",
+   "address": "004dc430",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ETextureProxy@RenderNew@RBX@@UAEPAXI@Z",
+   "address": "00551f00",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@QAEXXZ",
+   "address": "0066ff20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_Insert@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@2@ABU?$pair@$$CBULookup@@UVariations@@@2@@Z",
+   "address": "004dcdd0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?getFloatProperty@TextureProxyBase@RBX@@UBEMXZ",
+   "address": "00551cd0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?getIntProperty@TextureProxyBase@RBX@@UBEHXZ",
+   "address": "00551c90",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?getSize@TextureProxy@RenderNew@RBX@@UAE?AVVector2@G3D@@XZ",
+   "address": "007adb70",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?insert@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@_N@2@ABU?$pair@$$CBULookup@@UVariations@@@2@@Z",
+   "address": "004dd610",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?resolve@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@PAVRenderDevice@5@@Z",
+   "address": "007aec70",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?setFloatProperty@TextureProxyBase@RBX@@UAEXM@Z",
+   "address": "00551cb0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?setIntProperty@TextureProxyBase@RBX@@UAEXH@Z",
+   "address": "00551c70",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?shade@TextureProxy@RenderNew@RBX@@UAE?AV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@ABVColor3@5@ABV45@@Z",
+   "address": "007aded0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??0TextureProxy@RenderNew@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "007dc7b5",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?initCache@BrickMesh@ViewNew@RBX@@CAXXZ",
+   "address": "007bf43b",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$??A?$map@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@@std@@QAEAAUVariations@@ABULookup@@@Z$0",
+   "address": "007ca2b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$??A?$map@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@@std@@QAEAAUVariations@@ABULookup@@@Z$1",
+   "address": "007ca2b8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?dumpResources@Ogre@@YAXAAVResourceManager@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$0",
+   "address": "007dd0f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?dumpResources@Ogre@@YAXAAVResourceManager@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$1",
+   "address": "007dd0fb",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?dumpResources@Ogre@@YAXAAVResourceManager@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$2",
+   "address": "007dd104",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?dumpResources@Ogre@@YAXAAVResourceManager@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$3",
+   "address": "007dd10d",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?dumpResources@Ogre@@YAXAAVResourceManager@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$4",
+   "address": "007dd119",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?dumpResources@Ogre@@YAXAAVResourceManager@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$5",
+   "address": "007dd125",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?dumpResources@Ogre@@YAXAAVResourceManager@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$6",
+   "address": "007dd131",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?dumpResources@Ogre@@YAXAAVResourceManager@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$7",
+   "address": "007dd13d",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?dumpResources@Ogre@@YAXAAVResourceManager@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$8",
+   "address": "007dd149",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?dumpResources@Ogre@@YAXAAVResourceManager@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$9",
+   "address": "007dd152",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?erase@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z$0",
+   "address": "007de830",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?erase@?$_Tree@V?$_Tmap_traits@ULookup@@UVariations@@U?$less@ULookup@@@std@@V?$allocator@U?$pair@$$CBULookup@@UVariations@@@std@@@4@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z$2",
+   "address": "007de839",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?flushCache@BrickMesh@ViewNew@RBX@@SAXXZ$0",
+   "address": "007ca100",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?prepareEdges@RbxSubMesh@Ogre@@QAEXXZ$0",
+   "address": "007ddbe0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?releaseUnused@BrickMesh@ViewNew@RBX@@CAXXZ$0",
+   "address": "007ca100",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resize@?$Array@VLevel@Material@Render@RBX@@@G3D@@QAEXH_N@Z$1",
+   "address": "007ee460",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?resize@?$Array@VLevel@Material@RenderNew@RBX@@@G3D@@QAEXH_N@Z$1",
+   "address": "007ed850",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {
+  "__imp_??4PlaneBoundedVolume@Ogre@@QAEAAV01@ABV01@@Z": [
+   "008023f0",
+   "0080240c"
+  ],
+  "$LN2": [
+   "004f200b",
+   "00500cec",
+   "0068f19e",
+   "0068f704"
+  ],
+  "$LN3": [
+   "004f2008",
+   "00500cdd",
+   "0068f161",
+   "0068f6c0"
+  ],
+  "$LN4": [
+   "004f2001",
+   "00500cce",
+   "0068f124",
+   "0068f67c"
+  ],
+  "$LN5": [
+   "00500cbf",
+   "00501484",
+   "0068f0ec",
+   "0068f640"
+  ],
+  "$LN6": [
+   "00500cb0",
+   "0050148a",
+   "0068f0ac",
+   "0068f5fc"
+  ],
+  "$LN7": [
+   "0068f074",
+   "0068f3fd"
+  ],
+  "?_Insert_n@?$vector@VPlaneBoundedVolume@Ogre@@V?$allocator@VPlaneBoundedVolume@Ogre@@@std@@@std@@IAEXV?$_Vector_const_iterator@VPlaneBoundedVolume@Ogre@@V?$allocator@VPlaneBoundedVolume@Ogre@@@std@@@2@IABVPlaneBoundedVolume@Ogre@@@Z": [
+   "00429480",
+   "006dbfa0"
+  ],
+  "$LN1": [
+   "004f2012",
+   "00500cfb"
+  ]
+ },
+ "owners_tried": 61,
+ "owners_bound": 61
+}

@@ -1,0 +1,88 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?getIndex@Welder@_internal@G3D@@QAEHABVVector3@3@@Z",
+    "address": "007ba900"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DMeshAlgWeld\\objects\\cb151388bd2439cd\\candidate.obj": "bf3cb0a13e0ec1ecbea8e143c3c526134479d456a26a182ed32ea9a1e03d0a7b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-o6ojk3wp\\owners.json": "0daa1ef02731b1e744f5728895ee543c87a7c1e70c221f5768afb8cc60ab773d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-o6ojk3wp\\import-thunk-identities-as-owner.json": "175009295f9dd4b7fd667ee59bc180b28043f0ea461db8869d85b2ffaf67b142"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?computeWeld@MeshAlg@G3D@@SAXABV?$Array@VVector3@G3D@@@2@AAV32@AAV?$Array@H@2@2N@Z",
+    "address": "007badc0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DMeshAlgWeld\\objects\\cb151388bd2439cd\\candidate.obj": "bf3cb0a13e0ec1ecbea8e143c3c526134479d456a26a182ed32ea9a1e03d0a7b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-o6ojk3wp\\owners.json": "0daa1ef02731b1e744f5728895ee543c87a7c1e70c221f5768afb8cc60ab773d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-o6ojk3wp\\import-thunk-identities-as-owner.json": "175009295f9dd4b7fd667ee59bc180b28043f0ea461db8869d85b2ffaf67b142"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??0Welder@_internal@G3D@@QAE@ABV?$Array@VVector3@G3D@@@2@AAV32@AAV?$Array@H@2@2N@Z",
+   "address": "007ba5e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??1?$Array@H@G3D@@QAE@XZ",
+   "address": "006433e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_E?$Set@PAV?$Array@H@G3D@@@G3D@@UAEPAXI@Z",
+   "address": "007bacc0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_E?$Table@PAV?$Array@H@G3D@@_N@G3D@@UAEPAXI@Z",
+   "address": "007ba590",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?append@?$Array@VVector3@G3D@@@G3D@@QAEXABVVector3@2@@Z",
+   "address": "00502f50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?freeMemory@?$Table@PAV?$Array@H@G3D@@_N@G3D@@AAEXXZ",
+   "address": "00480120",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?set@?$Table@PAV?$Array@H@G3D@@_N@G3D@@QAEXABQAV?$Array@H@2@AB_N@Z",
+   "address": "00480180",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?toGridCoords@Welder@_internal@G3D@@QBEXVVector3@3@AAH11@Z",
+   "address": "007ba480",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?weld@Welder@_internal@G3D@@QAEXXZ",
+   "address": "007bacf0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?computeWeld@MeshAlg@G3D@@SAXABV?$Array@VVector3@G3D@@@2@AAV32@AAV?$Array@H@2@2N@Z",
+   "address": "007ee6eb",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?getIndex@Welder@_internal@G3D@@QAEHABVVector3@3@@Z",
+   "address": "007ee6c8",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

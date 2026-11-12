@@ -1,0 +1,52 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?encode@GImage@G3D@@QBEXW4Format@12@AAVBinaryOutput@2@@Z",
+    "address": "0050f2e0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DGImage\\objects\\785f183e2545ffb8\\candidate.obj": "2bf18aa991cf6b86de99ff44c6b4e8b0839f75d93066bec6d9d0bbc26f4491c2",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-9zj2l965\\owners.json": "bcbb2f4f9452d070dd0c81f311fbd554df304779650c8c86acf06de302f5486c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-9zj2l965\\import-thunk-identities-as-owner.json": "d66b9a006258960e91129c3b5b3867c9d17f84cd4e23efdf16f0396baa2afae9"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?encodeBMP@GImage@G3D@@ABEXAAVBinaryOutput@2@@Z",
+   "address": "0050aef0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?encodeJPEG@GImage@G3D@@ABEXAAVBinaryOutput@2@@Z",
+   "address": "0050e8a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?encodePNG@GImage@G3D@@ABEXAAVBinaryOutput@2@@Z",
+   "address": "0050b700",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?encodePPM@GImage@G3D@@ABEXAAVBinaryOutput@2@@Z",
+   "address": "0050ba30",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?encodePPMASCII@GImage@G3D@@ABEXAAVBinaryOutput@2@@Z",
+   "address": "0050eaf0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?encodeTGA@GImage@G3D@@ABEXAAVBinaryOutput@2@@Z",
+   "address": "0050b1a0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

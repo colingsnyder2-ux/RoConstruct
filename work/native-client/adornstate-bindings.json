@@ -1,0 +1,89 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?cylinder@RbxAdornState@Ogre@@QAEPAVManualObject@2@PAVSceneManager@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAV32@MMMHH@Z",
+    "address": "00685ea0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\adornstate-proof\\objects\\30703d761c2048fa\\candidate.obj": "ffc924fc08db252328f2da387ab8c15f00c83c0003b5ec9a5c0485b2dc9ca009",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-99kfd9o6\\owners.json": "ed60d4799d8de86ba810d2a6baf4ffd0f9f7d55a7fc8ddca5be0afb29339aa47",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-99kfd9o6\\import-thunk-identities-as-owner.json": "50be92c8465d94912d8878c67daa6829809eea70bc223ece5643892963ffc87f"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?partialDisk@RbxAdornState@Ogre@@QAEPAVManualObject@2@PAVSceneManager@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAV32@MMHHMM@Z",
+    "address": "00687860"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\adornstate-proof\\objects\\30703d761c2048fa\\candidate.obj": "ffc924fc08db252328f2da387ab8c15f00c83c0003b5ec9a5c0485b2dc9ca009",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-99kfd9o6\\owners.json": "ed60d4799d8de86ba810d2a6baf4ffd0f9f7d55a7fc8ddca5be0afb29339aa47",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-99kfd9o6\\import-thunk-identities-as-owner.json": "50be92c8465d94912d8878c67daa6829809eea70bc223ece5643892963ffc87f"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?sphere@RbxAdornState@Ogre@@QAEPAVManualObject@2@PAVSceneManager@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAV32@MHH@Z",
+    "address": "006892d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\adornstate-proof\\objects\\30703d761c2048fa\\candidate.obj": "ffc924fc08db252328f2da387ab8c15f00c83c0003b5ec9a5c0485b2dc9ca009",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-99kfd9o6\\owners.json": "ed60d4799d8de86ba810d2a6baf4ffd0f9f7d55a7fc8ddca5be0afb29339aa47",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-99kfd9o6\\import-thunk-identities-as-owner.json": "50be92c8465d94912d8878c67daa6829809eea70bc223ece5643892963ffc87f"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??0?$vector@VVector3@Ogre@@V?$allocator@VVector3@Ogre@@@std@@@std@@QAE@XZ",
+   "address": "004293d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??2@YAPAXI@Z",
+   "address": "006a0920",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??3@YAXPAX@Z",
+   "address": "006a067a",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??A?$vector@VVector3@Ogre@@V?$allocator@VVector3@Ogre@@@std@@@std@@QAEAAVVector3@Ogre@@I@Z",
+   "address": "0068cf80",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?push_back@?$vector@VVector3@Ogre@@V?$allocator@VVector3@Ogre@@@std@@@std@@QAEXABVVector3@Ogre@@@Z",
+   "address": "004de250",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__chkstk",
+   "address": "006a1520",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?cylinder@RbxAdornState@Ogre@@QAEPAVManualObject@2@PAVSceneManager@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAV32@MMMHH@Z",
+   "address": "007ddf82",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?partialDisk@RbxAdornState@Ogre@@QAEPAVManualObject@2@PAVSceneManager@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAV32@MMHHMM@Z",
+   "address": "007ddffb",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?sphere@RbxAdornState@Ogre@@QAEPAVManualObject@2@PAVSceneManager@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAV32@MHH@Z",
+   "address": "007de084",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 3,
+ "owners_bound": 3
+}

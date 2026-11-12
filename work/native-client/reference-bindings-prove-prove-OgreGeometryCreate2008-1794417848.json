@@ -1,0 +1,47 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?create@GeometryBuilder@Ogre@@QAE?AVMeshPtr@2@PBD0PBMI111PBVVector3@2@2@Z",
+    "address": "0067bcc0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-OgreGeometryCreate2008\\objects\\48e325187515376d\\candidate.obj": "233aa86ec1c38d3461ce13ebc606c16a9b29c4a59292cd58be3a31eec6835b68",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-tz2c60vv\\owners.json": "ffb103ca1de168c76815e507a1342eeb8481457ab248ad5a40e874005544eb6b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-tz2c60vv\\import-thunk-identities-as-owner.json": "3b9a3bc7bfb1f1de2737624d8aa1b602a26134c5c3f261f9ce04aa95b382f049"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?geometryContext@Ogre@@3PAUGeometryContext@1@A",
+   "address": "0097db44",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?geometryOnce@Ogre@@3JA",
+   "address": "00973984",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?initializeGeometryContext@Ogre@@YAXXZ",
+   "address": "0054ab60",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?update@GeometryBuilder@Ogre@@QAEXAAVMeshPtr@2@PBMI111PBVVector3@2@2@Z",
+   "address": "00679e70",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?create@GeometryBuilder@Ogre@@QAE?AVMeshPtr@2@PBD0PBMI111PBVVector3@2@2@Z",
+   "address": "007dd6f6",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}
