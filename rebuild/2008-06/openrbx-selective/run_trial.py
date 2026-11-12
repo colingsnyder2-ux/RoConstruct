@@ -56,6 +56,18 @@ sources = {
     "v8kernel/KernelSelected.cpp": {
         "?deletePoint@Kernel@RBX@@QAEXPAVPoint@2@@Z": "005fb3c0",
     },
+    "util/GuidSelected.cpp": {
+        "??MData@Guid@RBX@@QBE_NABU012@@Z": "005a8210",
+    },
+    "util/NormalIdExtra.cpp": {
+        "?normalIdToMatrix3Internal@RBX@@YA?AVMatrix3@G3D@@W4NormalId@1@@Z": "005ec6e0",
+    },
+    "gui/ChatOutputSelected.cpp": {
+        "??0ChatLine@RBX@@QAE@PAVPlayer@Network@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@M@Z": "00650560",
+    },
+    "v8datamodel/BrickColorSelected.cpp": {
+        "?insert@BrickMap@BrickColor@RBX@@AAEXW4Number@23@EEEV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "005b4410",
+    },
 }
 source_root = ROOT / "rebuild/2008-06/openrbx-selective"
 result = rebuild.compile_direct(client, [source_root / f for f in sources], out / "selective-source",

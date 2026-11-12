@@ -15,7 +15,7 @@ MODULE = "rbxgs-app-openrbx-selective"
 OUT = ROOT / "rebuild/2008-06/out/RbxgsAppOpenRBXSelective"
 RUNTIME = ROOT / "work/openrbx-selective-codex"
 # The donor file uses a shorter name than the existing 2008 object.
-OWNER_NAMES = {"SerializerSelected": "SerializerV2"}
+OWNER_NAMES = {"SerializerSelected": "SerializerV2", "NormalIdExtra": "NormalId"}
 
 def groups_from_swaps():
     groups = {}
@@ -51,7 +51,13 @@ def verify(baseline):
         raise RuntimeError("Report ownership count disagrees with its addresses")
     lost = old - new
     groups = {}
-    for original, names in groups_from_swaps().items():
+    object_groups = groups_from_swaps()
+    for entries in old_symbols.values():
+        for entry in entries:
+            name = entry["object"]
+            if not name.lower().startswith("verified_"):
+                object_groups.setdefault(Path(name).stem, set()).add(name.lower())
+    for original, names in object_groups.items():
         prior, current = owned_by(old_symbols, names), owned_by(symbols, names)
         if prior or current:
             groups[original] = {"gained": sorted(current - prior), "lost": sorted(prior - current)}

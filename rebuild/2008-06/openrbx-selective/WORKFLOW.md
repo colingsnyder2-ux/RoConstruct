@@ -2,6 +2,8 @@
 
 This is an isolated trial, not a canonical engine swap. Keep source, layout, call-binding and provider review separate from byte-match and runtime results.
 
+The trial-only glue override removes two empty settings stubs so the real selected GlobalSettings methods remain the providers. All other glue bodies remain unchanged.
+
 Freeze the last successfully verified trial into a new directory:
 
 ```powershell

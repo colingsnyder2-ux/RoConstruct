@@ -156,6 +156,23 @@
    "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /TP"
   },
   {
+   "name": "glue-overrides",
+   "mode": "direct",
+   "dir": "rebuild/2008-06/openrbx-selective/glue",
+   "files": "glue_shell_needs.cpp",
+   "includes_from_recipe": "rbxgs-net",
+   "defines_from_recipe": "rbxgs",
+   "extra_defines": "BOOST_ALL_NO_LIB",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD",
+   "extra_includes": [
+    "tools/rbxgs/Client/Network",
+    "tools/rbxgs/Client/RbxView/include",
+    "tools/rbxgs/Client/App/include",
+    "tools/rbxgs/Client/RbxViewBase",
+    "tools/rbxgs/Client/RbxView"
+   ]
+  },
+  {
    "name": "glue",
    "mode": "direct",
    "dir": "rebuild/2008-06/glue/rbxgs",
