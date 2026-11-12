@@ -545,8 +545,11 @@ def coff_externals(data):
     while i < nsym:
         raw, _, secnum, _, cls, naux = struct.unpack_from("<8sIhHBB", data, symptr + 18 * i)
         if cls == 2:
-            name = data[strtab + struct.unpack_from("<I", raw, 4)[0]:].split(b"\0", 1)[0] if raw[:4] == b"\0\0\0\0" \
-                else raw.rstrip(b"\0")
+            if raw[:4] == b"\0\0\0\0":  # find the terminator in place: slicing to the end copied the rest per name
+                at = strtab + struct.unpack_from("<I", raw, 4)[0]
+                name = data[at:data.index(b"\0", at)]
+            else:
+                name = raw.rstrip(b"\0")
             name = name.decode("latin-1")
             out[name] = out.get(name, False) or secnum > 0
         i += 1 + naux
@@ -975,6 +978,20 @@ def _spec_path(client, value):
     return (ROOT / value).resolve()
 
 
+def is_trial_module(spec):
+    """Trial specs (native_layer_trial.py, OpenRBX trials) share modules/ but never count as linked rebuild."""
+    return bool(spec.get("trial")) or spec.get("name", "").endswith(("Trial", "Ports"))
+
+
+def live_module_specs(client):
+    """[(path, spec)] of the real module specs: trial specs are skipped."""
+    out = []
+    for spec_path, spec in live_module_specs(client):
+        if not is_trial_module(spec):
+            out.append((spec_path, spec))
+    return out
+
+
 def load_module(client, name):
     return json.loads((ROOT / "rebuild" / client / "modules" / (name + ".json")).read_text(encoding="utf-8"))
 
@@ -1008,8 +1025,8 @@ def dll_exports(path):
         raise ValueError("rva %x outside sections" % rva)
     export_rva = struct.unpack_from("<I", data, pe + 24 + 96)[0]
     count, _, names = struct.unpack_from("<III", data, at(export_rva) + 24)
-    return [data[at(struct.unpack_from("<I", data, at(names) + 4 * i)[0]):].split(b"\0", 1)[0].decode("latin-1")
-            for i in range(count)]
+    starts = [at(struct.unpack_from("<I", data, at(names) + 4 * i)[0]) for i in range(count)]
+    return [data[start:data.index(b"\0", start)].decode("latin-1") for start in starts]
 
 
 def dll_import_lib(client, dll):
@@ -1020,8 +1037,12 @@ def dll_import_lib(client, dll):
     if not lib.exists():
         out.mkdir(parents=True, exist_ok=True)
         path = ROOT / "clients" / client / dll
-        (out / (Path(dll).stem + ".def")).write_text(
-            "LIBRARY %s\nEXPORTS\n" % Path(dll).name + "".join("  %s\n" % n for n in dll_exports(path)))
+        definition = out / (Path(dll).stem + ".def")
+        if path.exists():
+            definition.write_text(
+                "LIBRARY %s\nEXPORTS\n" % Path(dll).name + "".join("  %s\n" % n for n in dll_exports(path)))
+        elif not definition.exists():  # an earlier .def from the same DLL is enough to rebuild the import library
+            raise FileNotFoundError("%s: copy the client's %s into %s" % (lib.name, Path(dll).name, path.parent))
         code, text = run(toolchain(), "lib", ["/nologo", "/MACHINE:X86", "/DEF:" + Path(dll).stem + ".def",
                                               "/NAME:" + Path(dll).name, "/OUT:" + lib.name], out)
         if code:
@@ -1041,10 +1062,43 @@ def source_errors(out, spec=None, report=None):
     return errors
 
 
+def preflight_module(client, spec, log=print):
+    """Seconds-cheap checks before a long build: every input the final link needs must already exist, so a
+    missing import library or unbuilt dependency fails now instead of after the whole build."""
+    problems = []
+    for dll in spec.get("import_dlls", []):
+        try:
+            dll_import_lib(client, dll)
+        except (OSError, RuntimeError) as error:
+            problems.append("import library for %s: %s" % (dll, error))
+    pending, seen = list(spec.get("depends", [])), set()
+    while pending:
+        dependency = pending.pop()
+        if dependency in seen or dependency in spec.get("refresh_dependencies", []):
+            continue
+        seen.add(dependency)
+        try:
+            dep_spec = load_module(client, dependency)
+        except OSError:
+            problems.append("dependency module spec missing: " + dependency)
+            continue
+        report = workspace(client) / "out" / dep_spec["name"] / "report.json"
+        if not report.exists() or not json.loads(report.read_text()).get("linked"):
+            problems.append("dependency %s has no linked build: run `roc rebuild %s module %s`" % (dependency, client, dependency))
+        pending += dep_spec.get("depends", [])
+    for layer in spec["layers"]:
+        if layer["mode"] != "recipe" and not (ROOT / layer["dir"]).exists():
+            problems.append("layer %s: missing source folder %s" % (layer["name"], layer["dir"]))
+    if problems:
+        raise RuntimeError("preflight failed for %s:\n  " % spec["name"] + "\n  ".join(problems))
+    log("preflight ok: %s" % spec["name"])
+
+
 def build_module(client, name, log=print):
     """Build every layer of modules/<name>.json, resolve the link, run its test, write a report."""
     from roc import libs
     spec = load_module(client, name)
+    preflight_module(client, spec, log=log)
     # Some runnable modules require fresh, locally maintained dependency code.
     # Build in declared order; do not silently link an older successful library
     # after a failed refresh.
@@ -1326,8 +1380,7 @@ def placed(client="2008-06", log=print):
     import hashlib
     base, image = match._image(client)
     found = {}
-    for spec_path in sorted((ROOT / "rebuild" / client / "modules").glob("*.json")):
-        spec = json.loads(spec_path.read_text(encoding="utf-8"))
+    for spec_path, spec in live_module_specs(client):
         out = workspace(client) / "out" / spec["name"]
         report = out / "report.json"
         if not report.exists() or not json.loads(report.read_text()).get("linked"):
@@ -1370,8 +1423,7 @@ def status(client="2008-06", log=print):
     """One line per built module from out/<module>/report.json, plus totals (no double counting of addresses)."""
     owned_all, shared_all, compiled_all = set(), set(), set()
     rows = []
-    for spec_path in sorted((ROOT / "rebuild" / client / "modules").glob("*.json")):
-        spec = json.loads(spec_path.read_text(encoding="utf-8"))
+    for spec_path, spec in live_module_specs(client):
         report_path = workspace(client) / "out" / spec["name"] / "report.json"
         if not report_path.exists():
             rows.append((spec_path.stem, "not built", "", "", ""))

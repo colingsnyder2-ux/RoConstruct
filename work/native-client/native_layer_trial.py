@@ -144,7 +144,7 @@ def main():
                      [upstream_dir(sources[i], stem) for stem, _ in items] + includes_for(layer, recipe_name)))}
         trial_layers.append(trial)
     name = spec['name'] + 'NativeTrial'
-    trial_spec = dict(spec, name=name, layers=trial_layers + spec['layers'],
+    trial_spec = dict(spec, name=name, trial=True, layers=trial_layers + spec['layers'],
                       description='TRIAL: %s with recovered native sources layered before upstream (not a gate candidate).' % spec['name'])
     spec_path = ROOT / 'rebuild' / CLIENT / 'modules' / (args.module + '-native-trial.json')
     spec_path.write_text(json.dumps(trial_spec, indent=1))
