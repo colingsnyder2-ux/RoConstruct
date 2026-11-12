@@ -164,7 +164,8 @@ def prove(root, review_file, apply=False):
             bindings = json.loads(closure_raw)['bindings']
             external = draft_native.closed_function_targets(bindings)
             numeric = draft_native.numeric_literal_targets(original, objects[1], witnesses)
-            calls = draft_native.reviewed_call_targets(original, binder, objects[1], witnesses, bindings)
+            calls = draft_native.reviewed_call_targets(
+                original, binder, objects[1], witnesses, bindings, allow_exact_inferred=True)
             reviewed_original = draft_native.ReviewedOriginal(original, calls['import_aliases'])
             reference = binder.verify(reviewed_original, objects[1], witnesses,
                 dict(calls['targets'], **external, **numeric['targets']), dict(witnesses))

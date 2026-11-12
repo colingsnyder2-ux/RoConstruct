@@ -166,6 +166,26 @@ class NumericLiteralTargetTests(unittest.TestCase):
                 original.pe.sections[0].Characteristics = 0
                 self.assertEqual(reviewed_call_targets(original, binder, obj, [('?method', 0x401000)], bindings)['targets'], {})
 
+    def test_source_review_can_infer_unique_exact_direct_call(self):
+        with TemporaryDirectory() as temp:
+            obj = Path(temp) / 'unit.obj'
+            raw = bytearray(100)
+            raw[20:26] = b'\xe8\x00\x00\x00\x00\xc3'
+            struct.pack_into('<IIH', raw, 60, 1, 0, 20)
+            obj.write_bytes(raw)
+            sections = [None, (0, 0, 0, 6, 20, 60, 0, 1)]
+            target = b'\xe8' + struct.pack('<i', 0x402000 - (0x401000 + 5)) + b'\xc3'
+            original = SimpleNamespace(image=0x400000, imported=lambda value: None,
+                pe=SimpleNamespace(sections=[SimpleNamespace(Characteristics=0x20000000, VirtualAddress=0x1000, Misc_VirtualSize=0x3000)]))
+            binder = SimpleNamespace(plain=lambda name: name)
+            with patch('roc.match._coff_data_index', return_value=(sections, [('?callee@@YAXXZ',)], {'?method': (0, 1)}, None)), \
+                    patch('roc.match.coff_functions', return_value=[('?method', bytes(raw[20:26]), {})]), \
+                    patch('roc.match.target', return_value=(target, {}, None)), \
+                    patch('roc.match.exact_match', return_value=True):
+                result = reviewed_call_targets(original, binder, obj, [('?method', 0x401000)], [], allow_exact_inferred=True)
+                self.assertEqual(result['targets'], {'?callee@@YAXXZ': 0x402000})
+                self.assertEqual(result['notes'][0]['evidence'], 'exact-caller-relocation')
+
     def test_original_and_emitted_numeric_bytes_must_both_match(self):
         with TemporaryDirectory() as temp:
             obj = Path(temp) / 'unit.obj'

@@ -74,7 +74,7 @@ def numeric_literal_targets(original, obj, methods):
                 literals=evidence)
 
 
-def reviewed_call_targets(original, binder, obj, methods, bindings):
+def reviewed_call_targets(original, binder, obj, methods, bindings, allow_exact_inferred=False):
     """Source-only name inference from local identity evidence, never uploaded call claims."""
     known = defaultdict(list)
     for row in bindings:
@@ -99,7 +99,7 @@ def reviewed_call_targets(original, binder, obj, methods, bindings):
             symbol = symbols[symbol_index][0]
             value = (address + offset + 4 + struct.unpack_from('<i', target, offset)[0]) & 0xffffffff
             candidates = known.get((symbol, value), [])
-            if not candidates or symbol.startswith('__imp_'):
+            if symbol.startswith('__imp_'):
                 continue
             executable = any(section.Characteristics & 0x20000000
                              and original.image + section.VirtualAddress <= value <
@@ -110,10 +110,14 @@ def reviewed_call_targets(original, binder, obj, methods, bindings):
             imported = original.imported(value)
             if imported and imported[1] == binder.plain(symbol):
                 continue  # The ordinary import verifier already provides stronger evidence.
+            if not candidates and (not allow_exact_inferred or imported or not symbol.startswith('?')):
+                continue
             targets[symbol].add(value)
-            note = max(candidates, key=lambda row: row['votes'])
-            notes.append(dict(symbol=symbol, address='%08x' % value, evidence=note.get('evidence'),
-                              votes=note['votes'], inferred=True, imported_alias=list(imported) if imported else None))
+            note = max(candidates, key=lambda row: row['votes']) if candidates else None
+            notes.append(dict(symbol=symbol, address='%08x' % value,
+                              evidence=note.get('evidence') if note else 'exact-caller-relocation',
+                              votes=note['votes'] if note else 0, inferred=True,
+                              imported_alias=list(imported) if imported else None))
             if imported:
                 aliases.add(value)
     if any(len(values) != 1 for values in targets.values()):
