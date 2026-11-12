@@ -84,3 +84,19 @@ def test_ogre_install_rejects_incompatible_new_layer(tmp_path):
     with pytest.raises(ValueError, match="incompatible recipe"):
         swap_build.install(live, built, allowed_prefix="ogre-1.4.5")
     assert swap_build.kept_addresses(live) == {"a"}
+
+
+def test_ogre_install_cleans_incompatible_layer_without_address_gain(tmp_path):
+    live, built = tmp_path / "verified", tmp_path / "verified.building"
+    live.mkdir()
+    built.mkdir()
+    (live / "swaps.json").write_text(json.dumps({"swaps": [
+        {"obj": "old.obj", "recipe": "ogre-1.4.5-dll", "keep": {"old": "a"}},
+        {"obj": "bad.obj", "recipe": "ogre-1.6.4", "keep": {"bad": "b"}},
+    ]}))
+    (built / "swaps.json").write_text(json.dumps({"swaps": [
+        {"obj": "new.obj", "recipe": "ogre-1.4.5-dll", "keep": {"new": "a"}},
+    ]}))
+    (built / "new.obj").write_bytes(b"new")
+    assert "installed" in swap_build.install(live, built, allowed_prefix="ogre-1.4.5")
+    assert swap_build.kept_addresses(live) == {"a"}
