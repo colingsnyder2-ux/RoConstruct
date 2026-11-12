@@ -1,0 +1,1814 @@
+{
+  "class": "unit map of the application range 0065c000..00660000 (2008-06): Lua 5.1 library + Cofm.cpp head, inactive",
+  "result": "No RBX translation unit to recover: 77 rows are Lua 5.1 library code (lgc.c tail, ltm.c, lvm.c, ltable.c, lstring.c, lfunc.c, lzio.c, ldump.c) and the 3 Cofm.cpp rows are already counted by body-primitive2008-working.json. Nothing is recovered or counted here.",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit65c.py": "ed7fbf91a3fa1adc11bd9f62920020a2ffb4828b0498254c8ac6c1d5476259d0"
+  },
+  "unit_map": {
+    "lua-lgc 0x0065c020..0x0065c56d": {
+      "rows": 11,
+      "unit": "Lua 5.1 lgc.c (Roblox lua-5.1.1 tree, built as C++); starts below the range at reallymarkobject 0x0065b5d0 (mapped by app-unit658-working.json)",
+      "first": "0x0065c020 markmt",
+      "last": "0x0065c510 luaC_linkupval",
+      "library": true,
+      "recovered": false
+    },
+    "lua-ltm 0x0065c570..0x0065c654": {
+      "rows": 3,
+      "unit": "Lua 5.1 ltm.c (Roblox lua-5.1.1 tree, built as C++)",
+      "first": "0x0065c570 luaT_init",
+      "last": "0x0065c600 luaT_gettmbyobj",
+      "library": true,
+      "recovered": false
+    },
+    "lua-lvm 0x0065c660..0x0065e3d7": {
+      "rows": 16,
+      "unit": "Lua 5.1 lvm.c (Roblox lua-5.1.1 tree, built as C++)",
+      "first": "0x0065c660 luaV_tonumber",
+      "last": "0x0065d2c0 luaV_execute",
+      "library": true,
+      "recovered": false
+    },
+    "lua-ltable 0x0065e3e0..0x0065f192": {
+      "rows": 23,
+      "unit": "Lua 5.1 ltable.c (Roblox lua-5.1.1 tree, built as C++)",
+      "first": "0x0065e3e0 hashnum",
+      "last": "0x0065f150 luaH_setstr",
+      "library": true,
+      "recovered": false
+    },
+    "lua-lstring 0x0065f1a0..0x0065f44e": {
+      "rows": 4,
+      "unit": "Lua 5.1 lstring.c (Roblox lua-5.1.1 tree, built as C++)",
+      "first": "0x0065f1a0 luaS_resize",
+      "last": "0x0065f3f0 luaS_newudata",
+      "library": true,
+      "recovered": false
+    },
+    "lua-lfunc 0x0065f450..0x0065f828": {
+      "rows": 10,
+      "unit": "Lua 5.1 lfunc.c (Roblox lua-5.1.1 tree, built as C++)",
+      "first": "0x0065f450 luaF_newCclosure",
+      "last": "0x0065f7e0 luaF_getlocalname",
+      "library": true,
+      "recovered": false
+    },
+    "lua-lzio 0x0065f830..0x0065f9e6": {
+      "rows": 5,
+      "unit": "Lua 5.1 lzio.c (Roblox lua-5.1.1 tree, built as C++)",
+      "first": "0x0065f830 luaZ_fill",
+      "last": "0x0065f990 luaZ_openspace",
+      "library": true,
+      "recovered": false
+    },
+    "lua-ldump 0x0065f9f0..0x0065fee2": {
+      "rows": 5,
+      "unit": "Lua 5.1 ldump.c (Roblox lua-5.1.1 tree, built as C++)",
+      "first": "0x0065f9f0 DumpString",
+      "last": "0x0065fe70 luaU_dump",
+      "library": true,
+      "recovered": false
+    },
+    "cofm 0x0065fef0..": {
+      "rows": 3,
+      "unit": "RBX v8kernel/Cofm.cpp (runs past 0x00660000: getCofmInBody 0x00660160 ...)",
+      "library": false,
+      "recovered": false,
+      "counted_elsewhere": [
+        "0065fef0 counted by body-primitive2008-working.json",
+        "0065ff10 counted by body-primitive2008-working.json",
+        "0065ff20 counted by body-primitive2008-working.json"
+      ]
+    }
+  },
+  "row_map": [
+    {
+      "row": "0x0065c020",
+      "size": 52,
+      "unit": "Lua 5.1 lgc.c (library)",
+      "name": "markmt",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?markmt@@YAXPAUglobal_State@@@Z",
+          "defined_in": "lua-5.1.1/src/lgc.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x0065b5d0 reallymarkobject"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065c060",
+      "size": 105,
+      "unit": "Lua 5.1 lgc.c (library)",
+      "name": "markroot",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?markroot@@YAXPAUlua_State@@@Z",
+          "defined_in": "lua-5.1.1/src/lgc.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x0065b5d0 reallymarkobject",
+            "0x0065c020 markmt"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065c0d0",
+      "size": 59,
+      "unit": "Lua 5.1 lgc.c (library)",
+      "name": "remarkupvals",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?remarkupvals@@YAXPAUglobal_State@@@Z",
+          "defined_in": "lua-5.1.1/src/lgc.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x0065b5d0 reallymarkobject"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065c110",
+      "size": 378,
+      "unit": "Lua 5.1 lgc.c (library)",
+      "name": "atomic",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?atomic@@YAXPAUlua_State@@@Z",
+          "defined_in": "lua-5.1.1/src/lgc.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x0065b5d0 reallymarkobject",
+            "0x0065bb60 propagatemark",
+            "0x0065bc60 cleartable",
+            "0x0065c020 markmt",
+            "0x0065c0d0 remarkupvals",
+            "0x0065c5d0 luaT_gettm"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065c290",
+      "size": 252,
+      "unit": "Lua 5.1 lgc.c (library)",
+      "name": "singlestep",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?singlestep@@YAHPAUlua_State@@@Z",
+          "defined_in": "lua-5.1.1/src/lgc.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x0065bb60 propagatemark",
+            "0x0065be00 sweeplist",
+            "0x0065be90 checkSizes",
+            "0x0065bf00 GCTM",
+            "0x0065c060 markroot",
+            "0x0065c110 atomic"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065c390",
+      "size": 125,
+      "unit": "Lua 5.1 lgc.c (library)",
+      "name": "luaC_step",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaC_step@@YAXPAUlua_State@@@Z",
+          "defined_in": "lua-5.1.1/src/lgc.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x0065c290 singlestep"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065c410",
+      "size": 106,
+      "unit": "Lua 5.1 lgc.c (library)",
+      "name": "luaC_fullgc",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaC_fullgc@@YAXPAUlua_State@@@Z",
+          "defined_in": "lua-5.1.1/src/lgc.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x0065c060 markroot",
+            "0x0065c290 singlestep"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065c480",
+      "size": 49,
+      "unit": "Lua 5.1 lgc.c (library)",
+      "name": "luaC_barrierf",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaC_barrierf@@YAXPAUlua_State@@PATGCObject@@1@Z",
+          "defined_in": "lua-5.1.1/src/lgc.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x0065b5d0 reallymarkobject"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065c4c0",
+      "size": 25,
+      "unit": "Lua 5.1 lgc.c (library)",
+      "name": "luaC_barrierback",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaC_barrierback@@YAXPAUlua_State@@PAUTable@@@Z",
+          "defined_in": "lua-5.1.1/src/lgc.c"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065c4e0",
+      "size": 35,
+      "unit": "Lua 5.1 lgc.c (library)",
+      "name": "luaC_link",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaC_link@@YAXPAUlua_State@@PATGCObject@@E@Z",
+          "defined_in": "lua-5.1.1/src/lgc.c"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065c510",
+      "size": 94,
+      "unit": "Lua 5.1 lgc.c (library)",
+      "name": "luaC_linkupval",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaC_linkupval@@YAXPAUlua_State@@PAUUpVal@@@Z",
+          "defined_in": "lua-5.1.1/src/lgc.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x0065c480 luaC_barrierf"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065c570",
+      "size": 84,
+      "unit": "Lua 5.1 ltm.c (library)",
+      "name": "luaT_init",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaT_init@@YAXPAUlua_State@@@Z",
+          "defined_in": "lua-5.1.1/src/ltm.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x0065f300 luaS_newlstr"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065c5d0",
+      "size": 40,
+      "unit": "Lua 5.1 ltm.c (library)",
+      "name": "luaT_gettm",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaT_gettm@@YAPBUlua_TValue@@PAUTable@@W4TMS@@PATTString@@@Z",
+          "defined_in": "lua-5.1.1/src/ltm.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x0065ea60 luaH_getstr"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065c600",
+      "size": 85,
+      "unit": "Lua 5.1 ltm.c (library)",
+      "name": "luaT_gettmbyobj",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaT_gettmbyobj@@YAPBUlua_TValue@@PAUlua_State@@PBU1@W4TMS@@@Z",
+          "defined_in": "lua-5.1.1/src/ltm.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x0065ea60 luaH_getstr"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065c660",
+      "size": 68,
+      "unit": "Lua 5.1 lvm.c (library)",
+      "name": "luaV_tonumber",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaV_tonumber@@YAPBUlua_TValue@@PBU1@PAU1@@Z",
+          "defined_in": "lua-5.1.1/src/lvm.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x006226d0 luaO_str2d"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065c6b0",
+      "size": 102,
+      "unit": "Lua 5.1 lvm.c (library)",
+      "name": "luaV_tostring",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaV_tostring@@YAHPAUlua_State@@PAUlua_TValue@@@Z",
+          "defined_in": "lua-5.1.1/src/lvm.c"
+        },
+        {
+          "kind": "lua-string",
+          "strings": [
+            "%.14g"
+          ],
+          "found_in": [
+            "luaconf.h"
+          ]
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x0065f300 luaS_newlstr"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065c720",
+      "size": 132,
+      "unit": "Lua 5.1 lvm.c (library)",
+      "name": "traceexec",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?traceexec@@YAXPAUlua_State@@PBI@Z",
+          "defined_in": "lua-5.1.1/src/lvm.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x00621b80 luaD_callhook"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065c7b0",
+      "size": 158,
+      "unit": "Lua 5.1 lvm.c (library)",
+      "name": "callTMres",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?callTMres@@YAXPAUlua_State@@PAUlua_TValue@@PBU2@22@Z",
+          "defined_in": "lua-5.1.1/src/lvm.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x00621b50 luaD_growstack",
+            "0x00622300 luaD_call"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065c850",
+      "size": 144,
+      "unit": "Lua 5.1 lvm.c (library)",
+      "name": "callTM",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?callTM@@YAXPAUlua_State@@PBUlua_TValue@@111@Z",
+          "defined_in": "lua-5.1.1/src/lvm.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x00621b50 luaD_growstack",
+            "0x00622300 luaD_call"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065c8e0",
+      "size": 225,
+      "unit": "Lua 5.1 lvm.c (library)",
+      "name": "luaV_gettable",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaV_gettable@@YAXPAUlua_State@@PBUlua_TValue@@PAU2@2@Z",
+          "defined_in": "lua-5.1.1/src/lvm.c"
+        },
+        {
+          "kind": "lua-string",
+          "strings": [
+            "index",
+            "loop in gettable"
+          ],
+          "found_in": [
+            "lvm.c"
+          ]
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x006237d0 luaG_runerror",
+            "0x00623a00 luaG_typeerror",
+            "0x0065c5d0 luaT_gettm",
+            "0x0065c600 luaT_gettmbyobj",
+            "0x0065c7b0 callTMres",
+            "0x0065eaa0 luaH_get"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065c9d0",
+      "size": 287,
+      "unit": "Lua 5.1 lvm.c (library)",
+      "name": "luaV_settable",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaV_settable@@YAXPAUlua_State@@PBUlua_TValue@@PAU2@2@Z",
+          "defined_in": "lua-5.1.1/src/lvm.c"
+        },
+        {
+          "kind": "lua-string",
+          "strings": [
+            "index",
+            "loop in settable"
+          ],
+          "found_in": [
+            "lvm.c"
+          ]
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x006237d0 luaG_runerror",
+            "0x00623a00 luaG_typeerror",
+            "0x0065c4c0 luaC_barrierback",
+            "0x0065c5d0 luaT_gettm",
+            "0x0065c600 luaT_gettmbyobj",
+            "0x0065c850 callTM"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065caf0",
+      "size": 125,
+      "unit": "Lua 5.1 lvm.c (library)",
+      "name": "get_compTM",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?get_compTM@@YAPBUlua_TValue@@PAUlua_State@@PAUTable@@1W4TMS@@@Z",
+          "defined_in": "lua-5.1.1/src/lvm.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x00622670 luaO_rawequalObj",
+            "0x0065c5d0 luaT_gettm"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065cb70",
+      "size": 115,
+      "unit": "Lua 5.1 lvm.c (library)",
+      "name": "call_orderTM",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?call_orderTM@@YAHPAUlua_State@@PBUlua_TValue@@1W4TMS@@@Z",
+          "defined_in": "lua-5.1.1/src/lvm.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x00622670 luaO_rawequalObj",
+            "0x0065c600 luaT_gettmbyobj",
+            "0x0065c7b0 callTMres"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065cbf0",
+      "size": 105,
+      "unit": "Lua 5.1 lvm.c (library)",
+      "name": "l_strcmp",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?l_strcmp@@YAHPBTTString@@0@Z",
+          "defined_in": "lua-5.1.1/src/lvm.c"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065cc60",
+      "size": 129,
+      "unit": "Lua 5.1 lvm.c (library)",
+      "name": "luaV_lessthan",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaV_lessthan@@YAHPAUlua_State@@PBUlua_TValue@@1@Z",
+          "defined_in": "lua-5.1.1/src/lvm.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x00623af0 luaG_ordererror",
+            "0x0065cb70 call_orderTM",
+            "0x0065cbf0 l_strcmp"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065ccf0",
+      "size": 145,
+      "unit": "Lua 5.1 lvm.c (library)",
+      "name": "lessequal",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?lessequal@@YAHPAUlua_State@@PBUlua_TValue@@1@Z",
+          "defined_in": "lua-5.1.1/src/lvm.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x00623af0 luaG_ordererror",
+            "0x0065cb70 call_orderTM",
+            "0x0065cbf0 l_strcmp"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065cd90",
+      "size": 216,
+      "unit": "Lua 5.1 lvm.c (library)",
+      "name": "luaV_equalval",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaV_equalval@@YAHPAUlua_State@@PBUlua_TValue@@1@Z",
+          "defined_in": "lua-5.1.1/src/lvm.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x0065c7b0 callTMres",
+            "0x0065caf0 get_compTM"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065ce70",
+      "size": 649,
+      "unit": "Lua 5.1 lvm.c (library)",
+      "name": "luaV_concat",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaV_concat@@YAXPAUlua_State@@HH@Z",
+          "defined_in": "lua-5.1.1/src/lvm.c"
+        },
+        {
+          "kind": "lua-string",
+          "strings": [
+            "%.14g",
+            "string length overflow"
+          ],
+          "found_in": [
+            "luaconf.h",
+            "lvm.c"
+          ]
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x006237d0 luaG_runerror",
+            "0x00623a90 luaG_concaterror",
+            "0x0065c600 luaT_gettmbyobj",
+            "0x0065c7b0 callTMres",
+            "0x0065f300 luaS_newlstr",
+            "0x0065f990 luaZ_openspace"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065d100",
+      "size": 448,
+      "unit": "Lua 5.1 lvm.c (library)",
+      "name": "Arith",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?Arith@@YAXPAUlua_State@@PAUlua_TValue@@PBU2@2W4TMS@@@Z",
+          "defined_in": "lua-5.1.1/src/lvm.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x006226d0 luaO_str2d",
+            "0x00623ab0 luaG_aritherror",
+            "0x0065c600 luaT_gettmbyobj",
+            "0x0065c7b0 callTMres"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065d2c0",
+      "size": 4376,
+      "unit": "Lua 5.1 lvm.c (library)",
+      "name": "luaV_execute",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaV_execute@@YAXPAUlua_State@@H@Z",
+          "defined_in": "lua-5.1.1/src/lvm.c"
+        },
+        {
+          "kind": "lua-string",
+          "strings": [
+            "'for' initial value must be a number",
+            "'for' limit must be a number",
+            "'for' step must be a number",
+            "get length of"
+          ],
+          "found_in": [
+            "lvm.c"
+          ]
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x00621b50 luaD_growstack",
+            "0x00621db0 luaD_poscall",
+            "0x00622140 luaD_precall",
+            "0x00622300 luaD_call",
+            "0x00622620 luaO_fb2int",
+            "0x006226d0 luaO_str2d"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065e3e0",
+      "size": 51,
+      "unit": "Lua 5.1 ltable.c (library)",
+      "name": "hashnum",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?hashnum@@YAPAUNode@@PBUTable@@N@Z",
+          "defined_in": "lua-5.1.1/src/ltable.c"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065e420",
+      "size": 136,
+      "unit": "Lua 5.1 ltable.c (library)",
+      "name": "mainposition",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?mainposition@@YAPAUNode@@PBUTable@@PBUlua_TValue@@@Z",
+          "defined_in": "lua-5.1.1/src/ltable.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x0065e3e0 hashnum"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065e4b0",
+      "size": 183,
+      "unit": "Lua 5.1 ltable.c (library)",
+      "name": "findindex",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?findindex@@YAHPAUlua_State@@PAUTable@@PAUlua_TValue@@@Z",
+          "defined_in": "lua-5.1.1/src/ltable.c"
+        },
+        {
+          "kind": "lua-string",
+          "strings": [
+            "invalid key to 'next'"
+          ],
+          "found_in": [
+            "ltable.c"
+          ]
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x00622670 luaO_rawequalObj",
+            "0x006237d0 luaG_runerror",
+            "0x0065e420 mainposition"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065e570",
+      "size": 222,
+      "unit": "Lua 5.1 ltable.c (library)",
+      "name": "luaH_next",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaH_next@@YAHPAUlua_State@@PAUTable@@PAUlua_TValue@@@Z",
+          "defined_in": "lua-5.1.1/src/ltable.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x0065e4b0 findindex"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065e650",
+      "size": 93,
+      "unit": "Lua 5.1 ltable.c (library)",
+      "name": "computesizes",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?computesizes@@YAHQAHPAH@Z",
+          "defined_in": "lua-5.1.1/src/ltable.c"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065e6b0",
+      "size": 113,
+      "unit": "Lua 5.1 ltable.c (library)",
+      "name": "numusearray",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?numusearray@@YAHPBUTable@@PAH@Z",
+          "defined_in": "lua-5.1.1/src/ltable.c"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065e730",
+      "size": 192,
+      "unit": "Lua 5.1 ltable.c (library)",
+      "name": "numusehash",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?numusehash@@YAHPBUTable@@PAH1@Z",
+          "defined_in": "lua-5.1.1/src/ltable.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x00622640 luaO_log2"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065e7f0",
+      "size": 90,
+      "unit": "Lua 5.1 ltable.c (library)",
+      "name": "setarrayvector",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?setarrayvector@@YAXPAUlua_State@@PAUTable@@H@Z",
+          "defined_in": "lua-5.1.1/src/ltable.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x006606d0 luaM_toobig",
+            "0x006606f0 luaM_realloc_"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065e850",
+      "size": 182,
+      "unit": "Lua 5.1 ltable.c (library)",
+      "name": "setnodevector",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?setnodevector@@YAXPAUlua_State@@PAUTable@@H@Z",
+          "defined_in": "lua-5.1.1/src/ltable.c"
+        },
+        {
+          "kind": "lua-string",
+          "strings": [
+            "table overflow"
+          ],
+          "found_in": [
+            "ltable.c"
+          ]
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x00622640 luaO_log2",
+            "0x006237d0 luaG_runerror",
+            "0x006606d0 luaM_toobig",
+            "0x006606f0 luaM_realloc_"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065e910",
+      "size": 87,
+      "unit": "Lua 5.1 ltable.c (library)",
+      "name": "luaH_new",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaH_new@@YAPAUTable@@PAUlua_State@@HH@Z",
+          "defined_in": "lua-5.1.1/src/ltable.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x0065c4e0 luaC_link",
+            "0x0065e7f0 setarrayvector",
+            "0x0065e850 setnodevector",
+            "0x006606f0 luaM_realloc_"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065e970",
+      "size": 82,
+      "unit": "Lua 5.1 ltable.c (library)",
+      "name": "luaH_free",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaH_free@@YAXPAUlua_State@@PAUTable@@@Z",
+          "defined_in": "lua-5.1.1/src/ltable.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x006606f0 luaM_realloc_"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065e9d0",
+      "size": 133,
+      "unit": "Lua 5.1 ltable.c (library)",
+      "name": "luaH_getnum",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaH_getnum@@YAPBUlua_TValue@@PAUTable@@H@Z",
+          "defined_in": "lua-5.1.1/src/ltable.c"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065ea60",
+      "size": 56,
+      "unit": "Lua 5.1 ltable.c (library)",
+      "name": "luaH_getstr",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaH_getstr@@YAPBUlua_TValue@@PAUTable@@PATTString@@@Z",
+          "defined_in": "lua-5.1.1/src/ltable.c"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065eaa0",
+      "size": 165,
+      "unit": "Lua 5.1 ltable.c (library)",
+      "name": "luaH_get",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaH_get@@YAPBUlua_TValue@@PAUTable@@PBU1@@Z",
+          "defined_in": "lua-5.1.1/src/ltable.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x00622670 luaO_rawequalObj",
+            "0x0065e420 mainposition",
+            "0x0065e9d0 luaH_getnum",
+            "0x0065ea60 luaH_getstr"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065eb50",
+      "size": 97,
+      "unit": "Lua 5.1 ltable.c (library)",
+      "name": "luaH_set",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaH_set@@YAPAUlua_TValue@@PAUlua_State@@PAUTable@@PBU1@@Z",
+          "defined_in": "lua-5.1.1/src/ltable.c"
+        },
+        {
+          "kind": "lua-string",
+          "strings": [
+            "table index is NaN",
+            "table index is nil"
+          ],
+          "found_in": [
+            "ltable.c"
+          ]
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x006237d0 luaG_runerror",
+            "0x0065eaa0 luaH_get",
+            "0x0065f060 newkey"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065ebc0",
+      "size": 69,
+      "unit": "Lua 5.1 ltable.c (library)",
+      "name": "luaH_setnum",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaH_setnum@@YAPAUlua_TValue@@PAUlua_State@@PAUTable@@H@Z",
+          "defined_in": "lua-5.1.1/src/ltable.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x0065e9d0 luaH_getnum",
+            "0x0065f060 newkey"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065ec10",
+      "size": 158,
+      "unit": "Lua 5.1 ltable.c (library)",
+      "name": "unbound_search",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?unbound_search@@YAHPAUTable@@I@Z",
+          "defined_in": "lua-5.1.1/src/ltable.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x0065e9d0 luaH_getnum"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065ecb0",
+      "size": 91,
+      "unit": "Lua 5.1 ltable.c (library)",
+      "name": "luaH_getn",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaH_getn@@YAHPAUTable@@@Z",
+          "defined_in": "lua-5.1.1/src/ltable.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x0065ec10 unbound_search"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065ed10",
+      "size": 471,
+      "unit": "Lua 5.1 ltable.c (library)",
+      "name": "resize",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?resize@@YAXPAUlua_State@@PAUTable@@HH@Z",
+          "defined_in": "lua-5.1.1/src/ltable.c"
+        },
+        {
+          "kind": "lua-string",
+          "strings": [
+            "table index is NaN",
+            "table index is nil"
+          ],
+          "found_in": [
+            "ltable.c"
+          ]
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x006237d0 luaG_runerror",
+            "0x0065e7f0 setarrayvector",
+            "0x0065e850 setnodevector",
+            "0x0065e9d0 luaH_getnum",
+            "0x0065eaa0 luaH_get",
+            "0x0065f060 newkey"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065eef0",
+      "size": 65,
+      "unit": "Lua 5.1 ltable.c (library)",
+      "name": "luaH_resizearray",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaH_resizearray@@YAXPAUlua_State@@PAUTable@@H@Z",
+          "defined_in": "lua-5.1.1/src/ltable.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x0065ed10 resize"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065ef40",
+      "size": 280,
+      "unit": "Lua 5.1 ltable.c (library)",
+      "name": "rehash",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?rehash@@YAXPAUlua_State@@PAUTable@@PBUlua_TValue@@@Z",
+          "defined_in": "lua-5.1.1/src/ltable.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x00622640 luaO_log2",
+            "0x0065e650 computesizes",
+            "0x0065e6b0 numusearray",
+            "0x0065e730 numusehash",
+            "0x0065ed10 resize"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065f060",
+      "size": 237,
+      "unit": "Lua 5.1 ltable.c (library)",
+      "name": "newkey",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?newkey@@YAPAUlua_TValue@@PAUlua_State@@PAUTable@@PBU1@@Z",
+          "defined_in": "lua-5.1.1/src/ltable.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x0065c4c0 luaC_barrierback",
+            "0x0065e420 mainposition",
+            "0x0065eb50 luaH_set",
+            "0x0065ef40 rehash"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065f150",
+      "size": 67,
+      "unit": "Lua 5.1 ltable.c (library)",
+      "name": "luaH_setstr",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaH_setstr@@YAPAUlua_TValue@@PAUlua_State@@PAUTable@@PATTString@@@Z",
+          "defined_in": "lua-5.1.1/src/ltable.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x0065ea60 luaH_getstr",
+            "0x0065f060 newkey"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065f1a0",
+      "size": 189,
+      "unit": "Lua 5.1 lstring.c (library)",
+      "name": "luaS_resize",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaS_resize@@YAXPAUlua_State@@H@Z",
+          "defined_in": "lua-5.1.1/src/lstring.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x006606d0 luaM_toobig",
+            "0x006606f0 luaM_realloc_"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065f260",
+      "size": 145,
+      "unit": "Lua 5.1 lstring.c (library)",
+      "name": "newlstr",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?newlstr@@YAPATTString@@PAUlua_State@@PBDII@Z",
+          "defined_in": "lua-5.1.1/src/lstring.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x0065f1a0 luaS_resize",
+            "0x006606d0 luaM_toobig",
+            "0x006606f0 luaM_realloc_"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065f300",
+      "size": 228,
+      "unit": "Lua 5.1 lstring.c (library)",
+      "name": "luaS_newlstr",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaS_newlstr@@YAPATTString@@PAUlua_State@@PBDI@Z",
+          "defined_in": "lua-5.1.1/src/lstring.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x0065f260 newlstr"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065f3f0",
+      "size": 95,
+      "unit": "Lua 5.1 lstring.c (library)",
+      "name": "luaS_newudata",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaS_newudata@@YAPATUdata@@PAUlua_State@@IPAUTable@@@Z",
+          "defined_in": "lua-5.1.1/src/lstring.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x006606d0 luaM_toobig",
+            "0x006606f0 luaM_realloc_"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065f450",
+      "size": 64,
+      "unit": "Lua 5.1 lfunc.c (library)",
+      "name": "luaF_newCclosure",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaF_newCclosure@@YAPATClosure@@PAUlua_State@@HPAUTable@@@Z",
+          "defined_in": "lua-5.1.1/src/lfunc.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x0065c4e0 luaC_link",
+            "0x006606f0 luaM_realloc_"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065f490",
+      "size": 86,
+      "unit": "Lua 5.1 lfunc.c (library)",
+      "name": "luaF_newLclosure",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaF_newLclosure@@YAPATClosure@@PAUlua_State@@HPAUTable@@@Z",
+          "defined_in": "lua-5.1.1/src/lfunc.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x0065c4e0 luaC_link",
+            "0x006606f0 luaM_realloc_"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065f4f0",
+      "size": 50,
+      "unit": "Lua 5.1 lfunc.c (library)",
+      "name": "luaF_newupval",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaF_newupval@@YAPAUUpVal@@PAUlua_State@@@Z",
+          "defined_in": "lua-5.1.1/src/lfunc.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x0065c4e0 luaC_link",
+            "0x006606f0 luaM_realloc_"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065f530",
+      "size": 135,
+      "unit": "Lua 5.1 lfunc.c (library)",
+      "name": "luaF_findupval",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaF_findupval@@YAPAUUpVal@@PAUlua_State@@PAUlua_TValue@@@Z",
+          "defined_in": "lua-5.1.1/src/lfunc.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x006606f0 luaM_realloc_"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065f5c0",
+      "size": 49,
+      "unit": "Lua 5.1 lfunc.c (library)",
+      "name": "luaF_freeupval",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaF_freeupval@@YAXPAUlua_State@@PAUUpVal@@@Z",
+          "defined_in": "lua-5.1.1/src/lfunc.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x006606f0 luaM_realloc_"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065f600",
+      "size": 159,
+      "unit": "Lua 5.1 lfunc.c (library)",
+      "name": "luaF_close",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaF_close@@YAXPAUlua_State@@PAUlua_TValue@@@Z",
+          "defined_in": "lua-5.1.1/src/lfunc.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x0065c510 luaC_linkupval",
+            "0x006606f0 luaM_realloc_"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065f6a0",
+      "size": 96,
+      "unit": "Lua 5.1 lfunc.c (library)",
+      "name": "luaF_newproto",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaF_newproto@@YAPAUProto@@PAUlua_State@@@Z",
+          "defined_in": "lua-5.1.1/src/lfunc.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x0065c4e0 luaC_link",
+            "0x006606f0 luaM_realloc_"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065f700",
+      "size": 152,
+      "unit": "Lua 5.1 lfunc.c (library)",
+      "name": "luaF_freeproto",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaF_freeproto@@YAXPAUlua_State@@PAUProto@@@Z",
+          "defined_in": "lua-5.1.1/src/lfunc.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x006606f0 luaM_realloc_"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065f7a0",
+      "size": 63,
+      "unit": "Lua 5.1 lfunc.c (library)",
+      "name": "luaF_freeclosure",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaF_freeclosure@@YAXPAUlua_State@@PATClosure@@@Z",
+          "defined_in": "lua-5.1.1/src/lfunc.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x006606f0 luaM_realloc_"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065f7e0",
+      "size": 73,
+      "unit": "Lua 5.1 lfunc.c (library)",
+      "name": "luaF_getlocalname",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaF_getlocalname@@YAPBDPBUProto@@HH@Z",
+          "defined_in": "lua-5.1.1/src/lfunc.c"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065f830",
+      "size": 60,
+      "unit": "Lua 5.1 lzio.c (library)",
+      "name": "luaZ_fill",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaZ_fill@@YAHPAUZio@@@Z",
+          "defined_in": "lua-5.1.1/src/lzio.c"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065f870",
+      "size": 81,
+      "unit": "Lua 5.1 lzio.c (library)",
+      "name": "luaZ_lookahead",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaZ_lookahead@@YAHPAUZio@@@Z",
+          "defined_in": "lua-5.1.1/src/lzio.c"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065f8d0",
+      "size": 39,
+      "unit": "Lua 5.1 lzio.c (library)",
+      "name": "luaZ_init",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaZ_init@@YAXPAUlua_State@@PAUZio@@P6APBD0PAXPAI@Z2@Z",
+          "defined_in": "lua-5.1.1/src/lzio.c"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065f900",
+      "size": 138,
+      "unit": "Lua 5.1 lzio.c (library)",
+      "name": "luaZ_read",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaZ_read@@YAIPAUZio@@PAXI@Z",
+          "defined_in": "lua-5.1.1/src/lzio.c"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065f990",
+      "size": 87,
+      "unit": "Lua 5.1 lzio.c (library)",
+      "name": "luaZ_openspace",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaZ_openspace@@YAPADPAUlua_State@@PAUMbuffer@@I@Z",
+          "defined_in": "lua-5.1.1/src/lzio.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x006606d0 luaM_toobig",
+            "0x006606f0 luaM_realloc_"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065f9f0",
+      "size": 127,
+      "unit": "Lua 5.1 ldump.c (library)",
+      "name": "DumpString",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?DumpString@@YAXPBTTString@@PAUDumpState@@@Z",
+          "defined_in": "lua-5.1.1/src/ldump.c"
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065fa70",
+      "size": 309,
+      "unit": "Lua 5.1 ldump.c (library)",
+      "name": "DumpConstants",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?DumpConstants@@YAXPBUProto@@PAUDumpState@@@Z",
+          "defined_in": "lua-5.1.1/src/ldump.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x0065f9f0 DumpString",
+            "0x0065fd00 DumpFunction"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065fbb0",
+      "size": 326,
+      "unit": "Lua 5.1 ldump.c (library)",
+      "name": "DumpDebug",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?DumpDebug@@YAXPBUProto@@PAUDumpState@@@Z",
+          "defined_in": "lua-5.1.1/src/ldump.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x0065f9f0 DumpString"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065fd00",
+      "size": 358,
+      "unit": "Lua 5.1 ldump.c (library)",
+      "name": "DumpFunction",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?DumpFunction@@YAXPBUProto@@PBTTString@@PAUDumpState@@@Z",
+          "defined_in": "lua-5.1.1/src/ldump.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x0065f9f0 DumpString",
+            "0x0065fa70 DumpConstants",
+            "0x0065fbb0 DumpDebug"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065fe70",
+      "size": 115,
+      "unit": "Lua 5.1 ldump.c (library)",
+      "name": "luaU_dump",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?luaU_dump@@YAHPAUlua_State@@PBUProto@@P6AH0PBXIPAX@Z3H@Z",
+          "defined_in": "lua-5.1.1/src/ldump.c"
+        },
+        {
+          "kind": "lua-callees",
+          "callees": [
+            "0x0065fd00 DumpFunction",
+            "0x00663ee0 luaU_header"
+          ]
+        }
+      ],
+      "counted_by": []
+    },
+    {
+      "row": "0x0065fef0",
+      "size": 26,
+      "unit": "RBX Cofm.cpp",
+      "name": "??0Cofm@RBX@@QAE@PAVBody@1@@Z",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "??0Cofm@RBX@@QAE@PAVBody@1@@Z",
+          "unit": "RBX v8kernel/Cofm.cpp"
+        }
+      ],
+      "counted_by": [
+        "body-primitive2008-working.json"
+      ]
+    },
+    {
+      "row": "0x0065ff10",
+      "size": 13,
+      "unit": "RBX Cofm.cpp",
+      "name": "?getMass@Cofm@RBX@@QBE?BMXZ",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?getMass@Cofm@RBX@@QBE?BMXZ",
+          "unit": "RBX v8kernel/Cofm.cpp"
+        }
+      ],
+      "counted_by": [
+        "body-primitive2008-working.json"
+      ]
+    },
+    {
+      "row": "0x0065ff20",
+      "size": 575,
+      "unit": "RBX Cofm.cpp",
+      "name": "?updateIfDirty@Cofm@RBX@@ABEXXZ",
+      "evidence": [
+        {
+          "kind": "evidence-name",
+          "symbol": "?updateIfDirty@Cofm@RBX@@ABEXXZ",
+          "unit": "RBX v8kernel/Cofm.cpp"
+        }
+      ],
+      "counted_by": [
+        "body-primitive2008-working.json"
+      ]
+    }
+  ],
+  "notes": {
+    "analog-labels": "The analog labels RBX::BallBallContact (0x0065c020..0x0065d100) and seg_00650000 are not units: every row up to 0x0065fee2 is Lua library code by evidence name, string and call graph.",
+    "no-rbx-unit": "No RBX class, Reflection descriptor, static initializer or Roblox-only template instantiation lies in the range besides the counted Cofm.cpp head. The Lua rows call only Lua internals (in range and ldo/lobject/ldebug/lmem/lundump outside it) and MSVCR90 thunks.",
+    "lua-callees-outside-range": [
+      "GCTM lgc",
+      "checkSizes lgc",
+      "cleartable lgc",
+      "luaD_call ldo",
+      "luaD_callhook ldo",
+      "luaD_growstack ldo",
+      "luaD_poscall ldo",
+      "luaD_precall ldo",
+      "luaG_aritherror ldebug",
+      "luaG_concaterror ldebug",
+      "luaG_ordererror ldebug",
+      "luaG_runerror ldebug",
+      "luaG_typeerror ldebug",
+      "luaM_realloc_ lmem",
+      "luaM_toobig lmem",
+      "luaO_fb2int lobject",
+      "luaO_log2 lobject",
+      "luaO_rawequalObj lobject",
+      "luaO_str2d lobject",
+      "luaU_header lundump",
+      "propagatemark lgc",
+      "reallymarkobject lgc",
+      "sweeplist lgc"
+    ],
+    "crt-thunks": {
+      "_CIpow": 2,
+      "floor": 2,
+      "memcpy": 3
+    },
+    "rows-without-lua-call-edge": []
+  },
+  "range_functions": 80,
+  "range_bytes": 16071,
+  "range_rows_counted_by_other_receipts": [
+    "0065fef0 counted by body-primitive2008-working.json",
+    "0065ff10 counted by body-primitive2008-working.json",
+    "0065ff20 counted by body-primitive2008-working.json"
+  ],
+  "exact_function_rows": [],
+  "library_recipes": [
+    "lua-5.1 .. lua-5.1.4, lua-5.1.2-rbx (roc/libs.py)"
+  ],
+  "scope": "Inactive map receipt. No native source, no counted row, no active build, swap or credit."
+}
