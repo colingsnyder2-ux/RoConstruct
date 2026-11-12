@@ -23,7 +23,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -37,8 +37,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\effects\\NativeEffectsLayout.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\tests\\NativeEffectsLayout.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeEffectsLayout.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeEffectsLayout.cpp"
     ],
     "message": [
       "/nologo",
@@ -62,7 +62,7 @@
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
       "/fp:fast",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -76,8 +76,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\effects\\NativeEffectsMessage.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\Message.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeEffectsMessage.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Message.cpp"
     ],
     "sky": [
       "/nologo",
@@ -100,7 +100,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -114,8 +114,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\effects\\NativeEffectsSky.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\Sky.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeEffectsSky.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Sky.cpp"
     ],
     "sky_pending": [
       "/nologo",
@@ -138,9 +138,9 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\effects\\native-effects-pending",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\native-effects-pending",
       "/DNATIVE_SKY_PENDING",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -154,8 +154,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\effects\\NativeEffectsSkyPending.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\Sky.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeEffectsSkyPending.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Sky.cpp"
     ],
     "sparkles": [
       "/nologo",
@@ -178,7 +178,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -192,48 +192,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\effects\\NativeEffectsSparkles.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\Sparkles.cpp"
-    ],
-    "sparkles_pending": [
-      "/nologo",
-      "/c",
-      "/O2",
-      "/Ob2",
-      "/Oy",
-      "/GF",
-      "/GS-",
-      "/EHsc",
-      "/MD",
-      "/D_AFXDLL",
-      "/DNDEBUG",
-      "/D_MBCS",
-      "/DNOMINMAX",
-      "/DBOOST_ALL_NO_LIB",
-      "/DWIN32",
-      "/DNDEBUG",
-      "/D_LIB",
-      "/D_RELEASE",
-      "/D_RELEASEASSERT",
-      "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\effects\\native-effects-pending",
-      "/DNATIVE_SPARKLES_PENDING",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
-      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\effects\\NativeEffectsSparklesPending.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\Sparkles.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeEffectsSparkles.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\Sparkles.cpp"
     ],
     "effect": [
       "/nologo",
@@ -256,7 +216,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -270,30 +230,29 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\effects\\NativeEffectsEffect.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\SparklesEffect.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeEffectsEffect.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\SparklesEffect.cpp"
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_effects.py": "b3d05ca66d0198f6a0b2b88109cf5105274cdf99bd488501f088d08bb5e2b0ce",
-    "rebuild/2008-06/native-headers/v8datamodel/Message.h": "d1295bb05b6ea8da65e281e6ae31155fe92a50117e0004a65e0e30543578c4b6",
-    "rebuild/2008-06/native-headers/Network/Player.h": "91a4a333ac984e0cb2a222624e357ce569ac0126657bf600dec1f003cbf06760",
-    "rebuild/2008-06/native-headers/v8datamodel/Sky.h": "1cd475462070a5b3571a25f060f0a0ecd562f893c5152ab0ef1b5fdbab2f6ef5",
-    "rebuild/2008-06/native-headers/v8datamodel/Sparkles.h": "c5d84a0d956b6973ea955e7db7b145d844fc6b0d7a10f0f7b9819aec7ddc734c",
-    "rebuild/2008-06/native-classes/Message.cpp": "842be823c8d7015c3a7377287b01c53f23755bb814a01a419a0c10fbcf7b5d6b",
-    "rebuild/2008-06/native-classes/Sky.cpp": "7b0da9eaba56012c41127ef03db4b4c1a83e984b0773ba90044e608fa97fe59f",
-    "rebuild/2008-06/native-classes/Sparkles.cpp": "a29abb1ec9aea0a568b0cc891eb6405ed02373ef106722570fe41190f9fdfe69",
-    "rebuild/2008-06/native-classes/SparklesEffect.cpp": "5bf440f7eb8b3b376c61547b3e905f1896d6a42420ca11f10898e1d720ace4a1",
+    "rebuild/2008-06/tests/record_native_effects.py": "0f4fb97cb49c405134d7e9a76039a8178cf5b752a4f619341ea3eacafc252b79",
+    "rebuild/2008-06/native-headers/v8datamodel/Message.h": "b108a5c41cbfdb6b6b6889d534a20f5a6d9d5bdec31e66cbfc260bec4d23de7b",
+    "rebuild/2008-06/native-headers/Network/Player.h": "1608936100cfbf9dc031124b34cb361d180a3f4929781f01b8f650b98e541dc7",
+    "rebuild/2008-06/native-headers/v8datamodel/Sky.h": "38571013ce32d7278a72b4b49051407c5711178adb45a940e382f4575de552e7",
+    "rebuild/2008-06/native-headers/v8datamodel/Sparkles.h": "cfbbab6126917a944cf2d9970f6f2e851bf5a68af7c414bb88f22e82dbb53551",
+    "rebuild/2008-06/native-classes/Message.cpp": "802c78a5386cbbe1cd9ae87d2999a89e72b3d16b6bf30365e8cc3f5ae8e95289",
+    "rebuild/2008-06/native-classes/Sky.cpp": "cffac80309c4e91ec4632c24d41e4dd69e91e717d7c3104a0d187294f18eee2d",
+    "rebuild/2008-06/native-classes/Sparkles.cpp": "0fa500872c09549579e69bda5fba0110dbbc849ff79fbf6bb5f6f11c9081f5c1",
+    "rebuild/2008-06/native-classes/SparklesEffect.cpp": "fdce5223ffecee785bcc4414cbf3d1eb859efa562b55d5c64e35dc41f2dc1b24",
     "rebuild/2008-06/tests/NativeEffectsLayout.cpp": "876f9269df614720bf9e322ea7a5d0e36c42361538af2148dd6749911d8f0e38"
   },
   "objects": {
-    "NativeEffectsLayout.obj": "421487945112a30623a3f6099cce69d94376874fc8ad2a68690686d1c678c476",
-    "NativeEffectsMessage.obj": "328ef31b8f94cf380c7201450962f2d7be49881a881c2cdc5c7dc47208d6851a",
-    "NativeEffectsSky.obj": "25bd63fd40cbff1e463535d6b9206207fe40482854df9e6e00707213c026a2c6",
-    "NativeEffectsSkyPending.obj": "c0ac769d5438446e571fef80ed48e43fb6566a9f8214de22329f3c21453f1b45",
-    "NativeEffectsSparkles.obj": "e01508350c970fe5a414d924893578a603c16751715b9c62aabe8cf0ab748f18",
-    "NativeEffectsSparklesPending.obj": "78e351956b987cb99d98b26d502054d8a229c18a0befe94ab83dbd0ff209dd59",
-    "NativeEffectsEffect.obj": "fce150ff40b309f82ea893783bf62210b3f9d0511075b87a2c0584435ed3cae8"
+    "NativeEffectsLayout.obj": "632c3b799634c3b650b65e823d6ddb4d85dd8a5b98f187b4340ef19b707e5d3e",
+    "NativeEffectsMessage.obj": "4c3b8b021baa708a43c1ff89717ef654af614d7980a40520566fe1d5fc99b742",
+    "NativeEffectsSky.obj": "295dd6b088d8b13b0b24e9c7b8608cd5b7f3f33eb287b58ff0d50a6232343964",
+    "NativeEffectsSkyPending.obj": "807f0f5ba9253f7cbe4b5672c7c161dc0eecbd64d054a6f0e34dab61ac0a25f7",
+    "NativeEffectsSparkles.obj": "c1f354de8436655459e1e45e23aeb45ed9de66edbed409bf75845e2401d5e8fb",
+    "NativeEffectsEffect.obj": "fd7384d10cace925c880fe756603247b43e49aab2b382a4923a26edfc89e2dd8"
   },
   "layout": {
     "Message": "0x15c (004a3850); IRenderable +0x130, std::string text +0x140",
@@ -2212,14 +2171,12 @@
           "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))"
         },
         "local_eh": []
-      }
-    ],
-    "sparkles_pending": [
+      },
       {
         "address": "0063d710",
         "symbol": "?render3dAdorn@Sparkles@RBX@@UAEXPAVAdorn@2@@Z",
         "size": 123,
-        "exact": false,
+        "exact": true,
         "verified_targets": {
           "??_R0?AVPartInstance@RBX@@@8": "0x92dd50 (RTTI .?AVPartInstance@RBX@@)",
           "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
@@ -2228,8 +2185,7 @@
           "?identity@Matrix3@G3D@@SAABV12@XZ": "0x513e20 (external)",
           "??0Matrix3@G3D@@QAE@ABV01@@Z": "0x513220 (external)"
         },
-        "local_eh": [],
-        "status": "exact-pending-header"
+        "local_eh": []
       }
     ],
     "effect": [
@@ -2484,9 +2440,8 @@
       }
     ]
   },
-  "pending_note": "Rows with status exact-pending-header (Sky::Sky 005eb640, Sparkles::render3dAdorn 0063d710) are NATIVE_*_PENDING bodies and are not counted as exact; rows tagged pending_build are unguarded code emitted only in the pending Sky build. sky_pending rows need ContentId::fromAssets(const char*) (generated util/ContentProvider.h copy); sparkles_pending needs the 2008 Adorn slot 19 (generated RbxGraphics/Adorn.h copy, placeholder name sparkles()).",
+  "pending_note": "Rows with status exact-pending-header (Sky::Sky 005eb640) are NATIVE_SKY_PENDING bodies and are not counted as exact; rows tagged pending_build are unguarded code emitted only in the pending Sky build. sky_pending rows need ContentId::fromAssets(const char*) (generated util/ContentProvider.h copy).",
   "proposal_content_provider_h": "\t\tstatic ContentId fromAssets(const char* filePath); // 0055bd80: \"rbxasset://\" + filePath via operator+(const string&, const char*)\n",
-  "proposal_adorn_h": "\t\tvirtual void sparkles() = 0; // 2008 slot 19 (+0x4c), no arguments (AdornRbxGfx 00674790 draws \"rbxsparkle\"); name is a placeholder\n",
   "not_attempted": "Sky::getG3DSky 005ebbb0 and its helpers (testImage 005eaef0, vector<string> helpers 005eb180/005eb210): need the 2008 ContentProvider/GImage/G3D::Sky APIs.",
   "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
 }

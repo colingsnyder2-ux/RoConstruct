@@ -43,19 +43,16 @@ namespace RBX
 		return dynamic_cast<const PartInstance*>(instance) != 0;
 	}
 
-#ifdef NATIVE_SPARKLES_PENDING
-	// Needs the 2008 Adorn slot 19 (+0x4c, no arguments; AdornRbxGfx 00674790 draws the "rbxsparkle" particle
-	// system) that the donor RbxGraphics/Adorn.h lacks. The recorder verifies it against a generated Adorn.h copy.
+	// 0063d710 (123 bytes): Adorn slot 19 (+0x4c) is sparkle().
 	void Sparkles::render3dAdorn(Adorn* adorn)
 	{
 		PartInstance* part = dynamic_cast<PartInstance*>(getParent());
 		if (part && enabled)
 		{
 			adorn->setObjectToWorldMatrix(G3D::CoordinateFrame(part->getCoordinateFrame().translation));
-			adorn->sparkles();
+			adorn->sparkle();
 		}
 	}
-#endif
 }
 
 // Name registrations emitted by this unit (bytes and sX relocation identity proven against the 2008-06 client).
