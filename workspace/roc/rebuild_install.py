@@ -11,7 +11,7 @@ def ensure_abi(root, client='2008-06'):
     """Use published binary evidence, never candidate-derived expected layouts."""
     path = Path(root) / 'rebuild' / client / 'manifests/abi-evidence.json'
     if not path.exists():
-        base = 'https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct-findings/main/' + client + '/'
+        base = 'https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/' + client + '/'
         with urllib.request.urlopen(base + 'package.json', timeout=60) as response:
             expected = json.load(response)['files']['verification/manifests/abi-evidence.json']
         with urllib.request.urlopen(base + 'verification/manifests/abi-evidence.json', timeout=60) as response:
@@ -43,7 +43,7 @@ def _restore_missing_inputs(package, destination):
         if not source_root.is_dir():
             continue
         for path in source_root.rglob('*'):
-            if not path.is_file() or path.name == 'compile_test.py':
+            if not path.is_file() or (path.name == 'compile_test.py' and not (source == 'scripts' and path.relative_to(package / source).as_posix() == 'build/compile_test.py')):
                 continue
             copies.append((path, destination / target / path.relative_to(source_root)))
     if not any(target == destination / 'modules' / 'rbxgs-app.json' for _, target in copies):
@@ -70,20 +70,25 @@ def install(root, client='2008-06', package=None):
     if not (package / 'config/rbxgs-app.json').exists():
         cache = root / 'local/rebuild-inputs'
         cache.parent.mkdir(parents=True, exist_ok=True)
-        if not (cache / '.git').exists():
+        cached_package = cache / client
+        if (cached_package / 'config/rbxgs-app.json').exists():
+            package = cached_package
+        elif (cache / '.git').exists():
+            raise ValueError('Existing rebuild-inputs checkout lacks required inputs; preserved: ' + str(cache))
+        else:
             subprocess.run(['git', 'clone', '--filter=blob:none', '--no-checkout', '--depth=1',
-                            '--branch', 'main', 'https://github.com/colingsnyder2-ux/RoConstruct-findings.git',
+                            '--branch', 'work', 'https://github.com/colingsnyder2-ux/RoConstruct.git',
                             str(cache)], check=True, stdin=subprocess.DEVNULL)
-        subprocess.run(['git', '-C', str(cache), 'sparse-checkout', 'set', '--cone',
-                        *[client + '/' + folder for folder in
-                          ('config', 'patches', 'tests', 'scripts', 'src/glue', 'verification/manifests')]], check=True, stdin=subprocess.DEVNULL)
-        subprocess.run(['git', '-C', str(cache), 'checkout', 'main'], check=True, stdin=subprocess.DEVNULL)
-        package = cache / client
+            subprocess.run(['git', '-C', str(cache), 'sparse-checkout', 'set', '--cone',
+                            *[client + '/' + folder for folder in
+                              ('config', 'patches', 'tests', 'scripts', 'src/glue', 'verification/manifests')]], check=True, stdin=subprocess.DEVNULL)
+            subprocess.run(['git', '-C', str(cache), 'checkout', 'work'], check=True, stdin=subprocess.DEVNULL)
+            package = cached_package
     copies = []
     for source, target in [('config', 'modules'), ('patches', 'patches'), ('tests', 'tests'),
                            ('src/glue', 'glue'), ('verification/manifests', 'manifests'), ('scripts', '')]:
         for path in (package / source).rglob('*'):
-            if not path.is_file() or path.name == 'compile_test.py':
+            if not path.is_file() or (path.name == 'compile_test.py' and not (source == 'scripts' and path.relative_to(package / source).as_posix() == 'build/compile_test.py')):
                 continue
             copies.append((path, destination / target / path.relative_to(package / source)))
     if not any(target == destination / 'modules/rbxgs-app.json' for _, target in copies):

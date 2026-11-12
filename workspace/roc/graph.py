@@ -284,11 +284,14 @@ def build(client, root=ROOT):
         if n.get('module_blockers') and not n['states'].get('LINKED'):
             n['states']['BLOCKED'] = True
             n['blockers'] = ['Module link unresolved: '+s for s in n['module_blockers']]
-    snapshot = read(root/'docs/integration.json', {})
+    snapshot_path = root/'site/integration.json'
+    if not snapshot_path.exists():
+        snapshot_path = root/'docs/integration.json'
+    snapshot = read(snapshot_path, {})
     if snapshot.get('client') == client:
         linked = snapshot.get('native', [])
         native_sources = snapshot.get('sources', {})
-        provenance = 'docs/integration.json:native'
+        provenance = snapshot_path.relative_to(root).as_posix() + ':native'
     else:
         linked, native_sources, provenance = [], {}, None
     from roc import integration
@@ -371,7 +374,7 @@ def fingerprint(client, root=ROOT):
     files += list((root/'rebuild'/client/'manifests').glob('*.json'))
     files += list((root/'rebuild'/client/'out').glob('*/report.json'))
     files += list((root/'rebuild'/client/'out').glob('*/owned-symbols.json'))
-    files += [root/'docs/integration.json', root/'work/integration/progress-native.json', root/'local/findings'/client/'verification/native-source-links.json', root/'work/agent-memory/attempts.jsonl', root/'rebuild'/client/'out/native-names.json', root/'research/graph'/(client+'.json')]
+    files += [root/'site/integration.json', root/'docs/integration.json', root/'work/integration/progress-native.json', root/'local/findings'/client/'verification/native-source-links.json', root/'work/agent-memory/attempts.jsonl', root/'rebuild'/client/'out/native-names.json', root/'research/graph'/(client+'.json')]
     entries = []
     for p in sorted(set(files)):
         if p.exists():
@@ -463,9 +466,9 @@ def command(args):
     if args.target == 'build':
         dump(ROOT/'work'/client/'graph.json', graph.data)
     if args.web:
-        export(graph, ROOT/'docs/graph-data'/client)
-        clients = sorted(p.parent.name for p in (ROOT/'docs/graph-data').glob('*/index.json.gz'))
-        dump(ROOT/'docs/graph-data/clients.json', clients)
+        export(graph, ROOT/'site/graph-data'/client)
+        clients = sorted(p.parent.name for p in (ROOT/'site/graph-data').glob('*/index.json.gz'))
+        dump(ROOT/'site/graph-data/clients.json', clients)
     if args.server:
         from roc import worker
         api = worker.Api(args.server, args.token or worker.load_settings().get('token'))

@@ -3,7 +3,8 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DStopwatch | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src e207908d | roc native-status --write
+// <<< native-status | src 0e2f5294 | roc native-status --write
+#line 1 ".\\g3dcpp\\Stopwatch.cpp"
 /**
  @file Stopwatch.cpp
  

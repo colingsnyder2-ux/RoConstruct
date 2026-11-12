@@ -18,7 +18,7 @@ from roc import match, setup
 
 ROOT = Path(__file__).resolve().parent.parent
 TOOLS = ROOT / "tools"
-DOCS = ROOT / "docs"
+DOCS = ROOT / "site"
 BUILD = 21022  # the 2008-06 client's compiler (VS2008 RTM)
 
 
@@ -577,12 +577,8 @@ def strip_symbols(data, keep=None, drop=()):
                 if selection != 1 and not struct.unpack_from("<I", data, sec_at(secnum - 1) + 36)[0] & 0x20:
                     shared.add(secnum)  # shared data (e.g. string literals), never unrequested inline code
         elif cls == 2 and secnum > 0:
-            if raw[:4] == b"\0\0\0\0":  # slice up to the NUL: slicing the whole tail copies MBs per symbol
-                start = strtab + struct.unpack_from("<I", raw, 4)[0]
-                end = data.find(b"\0", start)
-                name = bytes(data[start:end if end >= 0 else len(data)])
-            else:
-                name = raw.rstrip(b"\0")
+            name = bytes(data[strtab + struct.unpack_from("<I", raw, 4)[0]:].split(b"\0", 1)[0]) \
+                if raw[:4] == b"\0\0\0\0" else raw.rstrip(b"\0")
             name = name.decode("latin-1")
             if secnum in comdat_key and comdat_key[secnum] is None:
                 comdat_key[secnum] = name
@@ -709,10 +705,25 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
                    overlay=None):
     """Plain whole-file cl /c build (no mining wrapper): header search order is the ABI choice.
     append: a header included after each source, e.g. template bodies a tree declares but never defines."""
+    sources = list(sources)
+    includes, compiled = _overlaid(includes, sources, overlay)
+    selected = {os.path.normcase(str(Path(path).resolve())) for path in compiled}
+    marker = b'// Compatibility translation unit; compile this file or the organized source, not both.'
+    for path in map(Path, compiled):
+        if not path.is_file():
+            continue
+        content = path.read_bytes()
+        if marker not in content:
+            continue
+        targets = re.findall(rb'(?m)^\s*#\s*include\s+"([^"\r\n]+\.cpp)"', content)
+        if len(targets) != 1:
+            raise ValueError('Invalid native compatibility source: ' + str(path))
+        original = os.path.normcase(str((path.parent / os.fsdecode(targets[0])).resolve()))
+        if original in selected:
+            raise ValueError('Duplicate native source and compatibility unit: ' + str(path))
     tc = toolchain(cl)
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
-    includes, compiled = _overlaid(includes, sources, overlay)
     cache_root = os.path.normcase(os.path.abspath(ROOT))
     cache_prefix = cache_root.rstrip(os.sep) + os.sep
     @functools.lru_cache(maxsize=None)
@@ -852,9 +863,7 @@ def compile_direct(client, sources, out_dir, includes, defines, flags="/O2 /GS- 
 
     import concurrent.futures
     # Objects/dependency files use source stems; colliding stems must stay serial.
-    # ROC_JOBS overrides; default leaves two cores free (was a fixed 4).
-    jobs = int(os.environ.get("ROC_JOBS") or min(16, max(4, (os.cpu_count() or 4) - 2)))
-    jobs = jobs if len({Path(s).stem.casefold() for s in compiled}) == len(compiled) else 1
+    jobs = 4 if len({Path(s).stem.casefold() for s in compiled}) == len(compiled) else 1
     with concurrent.futures.ThreadPoolExecutor(max_workers=jobs) as pool:
         return dict(pool.map(compile_one, zip(sources, compiled)))
 
@@ -1212,9 +1221,7 @@ def build_module(client, name, log=print):
     linked = out / "linked"
     funcs, owned_addrs, owned16_addrs = 0, set(), set()
     owned_symbols = {}
-    # ROC_FAST=1: development loop; skip the byte-identity scoring (reporting only, ~75% of a cached build)
-    fast = os.environ.get("ROC_FAST") == "1"
-    for obj in ([] if fast else sorted(linked.glob("*.obj"))):
+    for obj in sorted(linked.glob("*.obj")):
         rows = pair_object(client, obj.read_bytes())
         funcs += len(rows)
         for symbol, _, addresses in rows:
@@ -1228,11 +1235,6 @@ def build_module(client, name, log=print):
               "choices": result.get("choices"), "owned_addrs": sorted(owned_addrs), "owned_symbols_file": "owned-symbols.json",
               "ownership_policy": "code-and-data-v1",
               "compile_errors": {}, "source_layers": source_layers}
-    if fast:  # keep the last scored ownership data instead of overwriting it with zeros
-        log("%s: linked=%s test_exit=%s (ROC_FAST: scoring skipped)" % (spec["name"], result["linked"], result["exit"]))
-        report.update(owned_2008=None, owned_2008_16b=None, owned_addrs=[], object_functions=None)
-        _dump(out / "report.json", report)
-        return report
     _dump(out / "owned-symbols.json", owned_symbols)
     _dump(out / "report.json", report)
     if report['linked'] and report['test_exit'] == 0:
@@ -1247,7 +1249,7 @@ def build_module(client, name, log=print):
 
 
 # Phase 8 runtime milestones: each is a real test exe linked with a rebuilt module (and its deps)
-MILESTONES = {"M2": ("m2_window", "rbxgs-app"), "M4a": ("m4_datamodel", "rbxgs-app"), "M5": ("m5_place", "rbxgs-app")}  # M4b (m4_render) archived: it only checked "not magenta" against stubbed rendering
+MILESTONES = {"M2": ("m2_window", "rbxgs-app"), "M4a": ("m4_datamodel", "rbxgs-app"), "M5": ("m5_place", "rbxgs-app"), "M4b": ("m4_render", "rbxgs-app")}
 
 
 def milestones(client, log=print):
@@ -1419,7 +1421,7 @@ import hashlib
 import time
 
 def progress(client="2008-06", log=print, notify=True):
-    """Summarize rebuild module reports into docs/rebuild-progress.json."""
+    """Summarize rebuild module reports into site/rebuild-progress.json."""
     if os.environ.get('ROC_INTEGRATOR_PRIVATE') == '1':
         return None  # private builds retain module receipts, not public site aggregates
     module_dir = ROOT / "rebuild" / client / "modules"

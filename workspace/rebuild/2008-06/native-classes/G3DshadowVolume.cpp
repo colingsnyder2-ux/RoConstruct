@@ -3,7 +3,8 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DshadowVolume | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 16ce4f19 | roc native-status --write
+// <<< native-status | src 6e60c940 | roc native-status --write
+#line 1 ".\\glg3dcpp\\shadowVolume.cpp"
 /**
  @file shadowVolume.cpp
  

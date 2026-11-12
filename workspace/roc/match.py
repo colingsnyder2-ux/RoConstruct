@@ -795,9 +795,6 @@ def compile_text(client, text, flags=None, build=None):
             metadata_only = all(not line.strip() or (line.strip().startswith("//") and
                                 not line.rstrip().endswith("\\")) for line in text.splitlines())
             text = body if metadata_only else "%s\n%s" % (text, body)
-            # Preserve recipe provenance through the compiler stage.  The
-            # marker is a comment, so it cannot affect the produced object.
-            text = "// roc-expanded-lib\n" + text
         except SystemExit as error:  # local-only tree (e.g. rbxgs) not on this PC
             raise CompileError(str(error))
     flags = flags or d.get("flags") or entry.get("flags") or DEFAULT_FLAGS
@@ -888,10 +885,7 @@ def _compile_uncached(text, flags, build, c_lang):
     if not cl:
         raise SystemExit("Missing compiler build %s. Run: roc install" % build)
     env = setup.cl_env(cl)
-    # roc-lib units have already been preprocessed with their recipe's include
-    # tree.  Do not replace that tree with the client 1.4.5 fallback merely
-    # because an expanded unit retains an Ogre include directive.
-    if not text.startswith("// roc-expanded-lib\n") and re.search(r"(?m)^\s*#\s*include\s*<Ogre[A-Za-z0-9_]*\.h>", text):
+    if re.search(r"(?m)^\s*#\s*include\s*<Ogre[A-Za-z0-9_]*\.h>", text):
         ogre = setup.TOOLS / "libs" / "ogre-1.4.5" / "ogrenew" / "OgreMain" / "include"
         if not (ogre / "Ogre.h").is_file():
             raise CompileError("Missing Ogre 1.4.5 headers: %s" % ogre)

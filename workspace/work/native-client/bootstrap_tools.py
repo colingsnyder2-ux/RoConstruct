@@ -60,6 +60,11 @@ def main():
     for module in ('roc.native_bulk', 'roc.native_promotion', 'roc.autocommit', 'roc.integration_site', 'roc.match', 'roc.rebuild', 'roc.libs'):
         run = subprocess.run([sys.executable, '-c', 'import ' + module], capture_output=True, text=True, cwd=ROOT)
         need(run.returncode == 0, 'import ' + module, (run.stderr.strip().splitlines() or ['import fails'])[-1][:110] + ' (package incomplete: ask the owner to republish)')
+    for label, argv in (('native_drafts stop --wait', ['-m', 'roc.native_drafts', 'stop', '--help']),
+                        ('native_check_runner --require-proof', ['rebuild/2008-06/tests/native_check_runner.py', 'analyze', '--help'])):
+        run = subprocess.run([sys.executable, *argv], capture_output=True, text=True, cwd=ROOT)
+        flag = '--wait' if 'drafts' in label else '--require-proof'
+        need(flag in (run.stdout + run.stderr), 'capability: ' + label, 'package too old: ask the owner to republish the Worker')
     for tool in ('prove.py', 'native_commit.py', 'upstream_lane.py', 'fingerprint.py', 'scope.py', 'audit_digest.py'):
         run = subprocess.run([sys.executable, str(HERE / tool), '--help'], capture_output=True, text=True, cwd=ROOT)
         need(run.returncode == 0, tool + ' --help', (run.stderr or run.stdout).strip().splitlines()[-1:] and (run.stderr or run.stdout).strip().splitlines()[-1][:100] or 'fails')

@@ -3,7 +3,8 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DdebugAssert | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 0e271d20 | roc native-status --write
+// <<< native-status | src a6d1af32 | roc native-status --write
+#line 1 ".\\G3Dcpp\\debugAssert.cpp"
 /**
  @file debugAssert.cpp
 

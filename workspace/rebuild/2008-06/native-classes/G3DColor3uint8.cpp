@@ -3,7 +3,8 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DColor3uint8 | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src b0cebdf0 | roc native-status --write
+// <<< native-status | src 969f40a4 | roc native-status --write
+#line 1 ".\\G3Dcpp\\Color3uint8.cpp"
 /**
  @file Color3uint8.cpp
  

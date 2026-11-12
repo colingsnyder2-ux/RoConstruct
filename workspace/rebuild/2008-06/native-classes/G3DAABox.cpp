@@ -3,7 +3,8 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DAABox | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 8b61769b | roc native-status --write
+// <<< native-status | src 0bf06cb4 | roc native-status --write
+#line 1 ".\\G3Dcpp\\AABox.cpp"
 /**
   @file AABox.cpp
 

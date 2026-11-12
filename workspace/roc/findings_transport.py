@@ -28,8 +28,8 @@ def _publish_downloads(root, git_exe, log=print, guide_base=None):
             raise RuntimeError('Download publication failed: ' + result.stderr.strip()[-300:])
         return result.stdout.strip()
     try:
-        git('fetch', '--no-write-fetch-head', 'findings', 'refs/heads/main:refs/remotes/findings/main')
-        parent = git('rev-parse', 'refs/remotes/findings/main')
+        git('fetch', '--no-write-fetch-head', 'findings', 'refs/heads/work:refs/remotes/findings/work')
+        parent = git('rev-parse', 'refs/remotes/findings/work')
         if guide_base:
             for name in ('NATIVE_AGENT.md', 'MATCHING_AGENT.md'):
                 path = ':data/' + name
@@ -43,7 +43,7 @@ def _publish_downloads(root, git_exe, log=print, guide_base=None):
         if tree == git('rev-parse', parent + '^{tree}'):
             return log('Native Worker download already current.')
         commit = git('commit-tree', tree, '-p', parent, '-m', 'Publish native Worker download')
-        git('push', 'findings', commit + ':refs/heads/main')
+        git('push', 'findings', commit + ':refs/heads/work')
         log('Native Worker download published: ' + commit)
     finally:
         index.unlink(missing_ok=True)
@@ -52,6 +52,8 @@ def _publish_downloads(root, git_exe, log=print, guide_base=None):
 def _publish_package(root, git_exe, log=print):
     """Update the native package using existing blobs for unchanged or renamed files."""
     root = Path(root)
+    if (root / 'work/draft-workflow-enabled.json').exists():
+        raise ValueError('Committed workspace owns native sources; legacy package publication is disabled')
     folder = root / 'local/findings/2008-06'
     manifest = json.loads((folder / 'package.json').read_text(encoding='utf-8'))
     index = root / 'work' / ('package-index-' + uuid.uuid4().hex)
@@ -64,8 +66,8 @@ def _publish_package(root, git_exe, log=print):
             raise RuntimeError('Package publication failed: ' + result.stderr.strip()[-300:])
         return result.stdout.strip()
     try:
-        git('fetch', '--no-write-fetch-head', 'findings', 'refs/heads/main:refs/remotes/findings/main')
-        parent = git('rev-parse', 'refs/remotes/findings/main')
+        git('fetch', '--no-write-fetch-head', 'findings', 'refs/heads/work:refs/remotes/findings/work')
+        parent = git('rev-parse', 'refs/remotes/findings/work')
         previous = json.loads(git('show', parent + ':2008-06/package.json'))
         git('read-tree', parent)
         blobs = {}
@@ -96,7 +98,7 @@ def _publish_package(root, git_exe, log=print):
         if tree == git('rev-parse', parent + '^{tree}'):
             return log('Native package already current.')
         commit = git('commit-tree', tree, '-p', parent, '-m', 'Update native source package')
-        git('push', 'findings', commit + ':refs/heads/main')
+        git('push', 'findings', commit + ':refs/heads/work')
         log('Native package published: ' + commit)
     finally:
         index.unlink(missing_ok=True)
@@ -114,10 +116,10 @@ def _publish(root, git_exe, log=print):
     env["GIT_INDEX_FILE"] = str(index)
     git = lambda *a: subprocess.run([git_exe, *a], cwd=root, env=env, capture_output=True, text=True)
     try:
-        fetched = git("fetch", "--no-write-fetch-head", "findings", "refs/heads/main:refs/remotes/findings/main")
+        fetched = git("fetch", "--no-write-fetch-head", "findings", "refs/heads/work:refs/remotes/findings/work")
         if fetched.returncode:
             return log("Findings fetch failed: %s" % fetched.stderr.strip()[-300:])
-        parent = git("rev-parse", "refs/remotes/findings/main")
+        parent = git("rev-parse", "refs/remotes/findings/work")
         if parent.returncode:
             return log("Findings revision unavailable: %s" % parent.stderr.strip()[-300:])
         parent = parent.stdout.strip()
@@ -228,7 +230,7 @@ def _publish(root, git_exe, log=print):
         commit = git("commit-tree", tree, "-p", parent, "-m", "Publish recovered findings")
         if commit.returncode:
             return log("Findings commit failed: %s" % commit.stderr.strip()[-300:])
-        pushed = git("push", "findings", commit.stdout.strip() + ":refs/heads/main")
+        pushed = git("push", "findings", commit.stdout.strip() + ":refs/heads/work")
         log("Findings published." if not pushed.returncode else "Findings push failed: %s" % pushed.stderr.strip()[-300:])
     finally:
         if index.exists():
@@ -265,7 +267,7 @@ def publish(root, git_exe, log=print):
     return serialized(_publish, root, git_exe, log)
 
 
-def publish_files(root, files, message, remote='findings', guard=None):
+def publish_files(root, files, message, remote='findings', guard=None, verify=None):
     """Patch exact owned paths, retry remote advances, preserve all unrelated remote entries."""
     from roc.native_drafts import lock
     root = Path(root)
@@ -279,8 +281,8 @@ def publish_files(root, files, message, remote='findings', guard=None):
                     raise RuntimeError(p.stderr.decode(errors='replace')[-1000:])
                 return p.stdout.decode().strip()
             for attempt in range(3):
-                ref = 'refs/remotes/' + remote + '/main'
-                git('fetch', '--no-write-fetch-head', remote, 'refs/heads/main:' + ref)
+                ref = 'refs/remotes/' + remote + '/work'
+                git('fetch', '--no-write-fetch-head', remote, 'refs/heads/work:' + ref)
                 parent = git('rev-parse', ref)
                 git('read-tree', parent)
                 removals = guard(parent) or [] if guard else []
@@ -307,9 +309,13 @@ def publish_files(root, files, message, remote='findings', guard=None):
                 tree = git('write-tree')
                 if tree == git('rev-parse', parent + '^{tree}'):
                     return dict(commit=parent, changed=False)
+                if verify:
+                    verify(parent, tree)
                 commit = git('commit-tree', tree, '-p', parent, '-m', message)
+                if verify:
+                    verify(parent, commit)
                 try:
-                    git('push', remote, commit + ':refs/heads/main')
+                    git('push', remote, commit + ':refs/heads/work')
                     return dict(commit=commit, changed=True)
                 except RuntimeError as error:
                     if attempt == 2 or not any(s in str(error).lower() for s in ('rejected','fetch first','non-fast-forward')):

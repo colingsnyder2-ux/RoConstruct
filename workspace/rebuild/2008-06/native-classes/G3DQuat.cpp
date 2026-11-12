@@ -3,7 +3,8 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DQuat | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 786efc63 | roc native-status --write
+// <<< native-status | src 261a33eb | roc native-status --write
+#line 1 ".\\G3Dcpp\\Quat.cpp"
 /**
   @file Quat.cpp
  

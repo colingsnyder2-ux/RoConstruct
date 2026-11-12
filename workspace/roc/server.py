@@ -475,7 +475,7 @@ class Store:
             row["points"] += count
             row["last"] = max(row["last"] or 0, stamp or 0)
         return sorted((row for user, row in ranking.items() if user not in hidden),
-                      key=lambda row: (-row["matched"], -row["points"], row["user"]))
+                      key=lambda row: (-row["points"], -row["matched"], row["user"]))
 
     def native_totals(self, client=None, user=None):
         """One point per distinct accepted native address; mining-only stores have no native table."""
@@ -722,7 +722,7 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
         with leases_lock:
             if not hasattr(store, 'file_leases'):
                 from roc.leases import Leases
-                store.file_leases = Leases(store.db)
+                store.file_leases = Leases(store.db, store.lock)
             return store.file_leases
 
     lease_slots = threading.BoundedSemaphore(8)
@@ -770,7 +770,10 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
                     return self.send(404,{'error':'Unknown native recovery action'})
                 except (ValueError,TypeError,OSError) as error:return self.send(503 if str(error).startswith('Native inputs changed') else 400,{'error':str(error)})
             if url.path == '/v1/leases':
-                return self.send(200, {'leases': file_leases().active()})
+                try:
+                    return self.send(200, {'leases': file_leases().active()})
+                except sqlite3.Error:
+                    return self.send(503, {'error': 'Lease database unavailable; retry'})
             if url.path in ("/v1/integration", "/v1/integration/base", "/v1/integration/evidence", "/v1/integration/context", "/v1/integration/metrics"):
                 if integration is None:
                     return self.send(503, {"error": "Native integration unavailable"})
@@ -800,7 +803,7 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
                 status = store.status()
                 progress = integration.root / "work/integration/progress-native.json" if integration else None
                 linked = set(json.loads(progress.read_text())["addresses"]) if progress and progress.exists() else None
-                for client in status.get("clients", []):
+                for client in status["clients"]:
                     supported = integration is not None and client["client"] == integration_protocol.CLIENT
                     count = len(linked) if supported and linked is not None else None
                     client.update(native_supported=supported, integrated=count,
@@ -901,6 +904,8 @@ def make_handler(store, token, can_verify, mine_log=None, server_mine_log=None, 
                     return self.send(409, {"error": str(error)})
                 except (ValueError, TypeError, LookupError) as error:
                     return self.send(400, {"error": str(error)})
+                except sqlite3.Error:
+                    return self.send(503, {"error": "Lease database unavailable; retry"})
                 return self.send(200, result)
             if path.startswith("/v1/integration/"):
                 if integration is None:
@@ -1295,7 +1300,7 @@ def start_tunnel(port, log=print):
 
 
 def publish_once(store, public_url, log=print, findings_only=False):
-    """Rebuild docs/ from the live database and push it, if anything changed."""
+    """Rebuild site/ from the live database and push it, if anything changed."""
     lock = ROOT / "work" / "publish.lock"
     lock.parent.mkdir(parents=True, exist_ok=True)
     handle = lock.open("a+b")
@@ -1333,30 +1338,15 @@ def _publish_once(store, public_url, log=print):
     if not git_exe:
         sync_findings(store)
         progress.build(public_server=public_url, remote=export(store))
-        return log("git not found, so site and findings were not published. docs/ is updated locally.")
-    git = lambda *a: subprocess.run([git_exe, *a], cwd=ROOT, capture_output=True, text=True)
+        return log("git not found, so site and findings were not published. site/ is updated locally.")
     # Workers need the new address before the potentially slow findings export.
-    address_file = ROOT / "docs" / "progress.json"
+    address_file = ROOT / "site" / "progress.json"
     if address_file.exists():
         snapshot = json.loads(address_file.read_text())
         if snapshot.get("server") != public_url:
             snapshot["server"] = public_url
             address_file.write_text(json.dumps(snapshot, indent=1) + "\n")
-            # Pathspec commits: never sweep a maintainer's other staged changes into a push.
-            for args in (("add", "docs/progress.json"),
-                         ("commit", "-m", "Update server address", "--", "docs/progress.json")):
-                result = git(*args)
-                if result.returncode:
-                    raise RuntimeError("Address publish failed: " + result.stderr.strip()[-300:])
-    # Same cycle commits all source work (rebuild/, roc/, tools under work/native-client, ...): one auto-committer.
-    try:
-        from roc import autocommit
-        autocommit.run_once()
-    except Exception as error:  # never block findings/site publishing
-        log("Work auto-commit failed: %s" % error)
-    pushed = git("push", "origin", "HEAD")
-    if pushed.returncode:
-        log("Source push deferred; publishing findings and website independently: " + pushed.stderr.strip()[-300:])
+    # Source commits belong to the reviewed work integration, never the host's current branch.
     sync_findings(store)
     publish_findings(git_exe, log)
     progress.build(public_server=public_url, remote=export(store))
@@ -1368,33 +1358,22 @@ def _publish_once(store, public_url, log=print):
         log("Rebuild progress update failed: %s" % error)
     try:
         from roc import integration_site
-        integration_site.build(log=log)  # docs/integration.json: gh-pages only, like per-function data
+        integration_site.build(log=log)  # site/integration.json: gh-pages only, like per-function data
     except Exception as error:  # reporting only; never fail a publish
         log("Integration site update failed: %s" % error)
     publish_pages(git_exe, log)
-    # main keeps only the small progress files, so its history still shows progress over
-    # time; per-function data lives only in the history-free gh-pages commit.
-    site = ("docs/progress.json", "docs/history.json", "docs/source-links.json",
-            "docs/rebuild-progress.json")
-    site = tuple(path for path in site if (ROOT / path).exists())
-    if not site:
-        return log("No progress files to publish.")
-    git("add", *site)
-    if git("diff", "--cached", "--quiet", "--", *site).returncode == 0:
-        return log("Progress unchanged.")
-    git("commit", "-m", "Update progress", "--", *site)
-    push = git("push", "origin", "HEAD")
-    log("Progress published." if push.returncode == 0 else "Progress push failed: %s" % push.stderr.strip()[-300:])
 
 
 
 def publish_pages(git_exe, log=print):
-    """Overwrite the gh-pages branch with the whole website (docs/ minus guides) as one
+    """Overwrite the gh-pages branch with the whole website (site/ minus guides) as one
     parentless commit: the hourly 20+ MB of function data never accumulates in any history."""
     index = ROOT / "work" / ("pages-index-" + uuid.uuid4().hex)
     env = dict(os.environ, GIT_INDEX_FILE=str(index))
     git = lambda *a, **kw: subprocess.run([git_exe, *a], cwd=ROOT, env=env, capture_output=True, text=True, **kw)
-    docs = ROOT / "docs"
+    docs = ROOT / "site"
+    if not (docs / "index.html").is_file():
+        return log("Website publishing skipped: site/index.html missing.")
     try:
         if git("read-tree", "--empty").returncode:
             return log("Pages staging failed.")
@@ -1606,7 +1585,7 @@ def run_publisher(every=3600, parent_pid=None, log=print):
                 atomic_json(state_path, state)
                 try:
                     _publish_findings_only(store, log)
-                    existing = ROOT / 'docs/progress.json'
+                    existing = ROOT / 'site/progress.json'
                     public = json.loads(existing.read_text()).get('server') if existing.exists() else None
                     progress.build(public_server=public, remote=export(store))
                     integration_site.build(root=ROOT, log=log)
@@ -1616,7 +1595,7 @@ def run_publisher(every=3600, parent_pid=None, log=print):
                         log(message)
                         if 'failed' in message.lower():
                             raise RuntimeError(message)
-                    revision = subprocess.run(['git', 'ls-remote', 'findings', 'refs/heads/main'],
+                    revision = subprocess.run(['git', 'ls-remote', 'findings', 'refs/heads/work'],
                         cwd=ROOT, capture_output=True, text=True, timeout=60, check=True).stdout.split()[0]
                     state.update(state='idle', last_published=time.time(), findings_revision=revision)
                     next_publish = time.monotonic() + every

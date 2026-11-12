@@ -3,7 +3,8 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3Dfileutils | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src c0952824 | roc native-status --write
+// <<< native-status | src 16c271f7 | roc native-status --write
+#line 1 ".\\G3Dcpp\\fileutils.cpp"
 /**
  @file fileutils.cpp
  

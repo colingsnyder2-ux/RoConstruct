@@ -31,6 +31,8 @@ def files(root):
 
 def mapped(relative):
     first, *rest = relative.parts
+    if first == 'build':
+        return Path('scripts', 'build', *rest)
     if first == 'out' and relative.suffix.lower() in {'.log', '.err'}:
         return Path('work/logs', *rest)
     prefix = {'modules': ('config',), 'out': ('work', 'build'),

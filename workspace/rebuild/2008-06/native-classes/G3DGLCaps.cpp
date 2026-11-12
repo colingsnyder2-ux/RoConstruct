@@ -3,7 +3,8 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DGLCaps | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src f74f91ec | roc native-status --write
+// <<< native-status | src eb0abd25 | roc native-status --write
+#line 1 ".\\glg3dcpp\\GLCaps.cpp"
 /**
   @file GLCaps.cpp
 
@@ -226,7 +227,7 @@ void GLCaps::loadExtensions(Log* debugLog) {
     alwaysAssertM(! _initialized, "Internal error.");
 
     // Require an OpenGL context to continue
-    alwaysAssertM(glGetCurrentContext(), "Unable to load OpenGL extensions without a current context.");
+    // RBX edit (client 2008-06): the current-context assertion is not present in the shipped build.
 
     // Initialize statically cached strings
 	vendor();
@@ -424,7 +425,7 @@ void GLCaps::loadExtensions(Log* debugLog) {
     LOAD_EXTENSION(glIsQueryARB);
 
     // Depth bounds
-    LOAD_EXTENSION(glDepthBoundsEXT);
+    // RBX edit (client 2008-06): glDepthBoundsEXT is not loaded.
 
     #undef LOAD_EXTENSION
 

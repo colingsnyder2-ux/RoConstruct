@@ -37,6 +37,18 @@ LOCK = HERE / 'prove-out/CENSUS.lock'
 SCOPE = ('Ogre::', 'RBX::RenderNew', 'RBX::ViewNew')
 
 
+def portable(x):
+    """An absolute path inside another machine's checkout becomes project-relative (evidence must stay inside the project)."""
+    if isinstance(x, dict):
+        return {k: portable(v) for k, v in x.items()}
+    if isinstance(x, list):
+        return [portable(v) for v in x]
+    if isinstance(x, str) and len(x) > 3 and x[1] == ':' and x[2] in '\\/' and 'RoConstruct' in x:
+        tail = x.replace('\\', '/').split('RoConstruct/', 1)
+        return tail[1] if len(tail) == 2 else x
+    return x
+
+
 def rel(path):
     return Path(path).resolve().relative_to(ROOT).as_posix()
 
@@ -174,7 +186,7 @@ def main():
         ap.error('--objdiff-symbol requires --diff and exactly one source')
     import run_all
     roots = set(run_all.roots(SCOPE))
-    inventory = load(INVENTORY, None)
+    inventory = portable(load(INVENTORY, None))
     master = inventory['families'][0]
     if args.all:
         family, sources = master['name'] if 'name' in master else 'ogre', master['sources']

@@ -1,13 +1,105 @@
-"""docs/integration.json: native integration progress for the website (2008-06 rbxgs rebuild).
+"""site/integration.json: native integration progress for the website (2008-06 rbxgs rebuild).
 Same four groups as the Discord digest: integrated (linked rebuild reproduces it), exact waiting (mined 100%,
 not yet integrated), partial, unmined. Per-function data is published on gh-pages only (see server.publish_pages)."""
 import json
 import re
 import sqlite3
+import hashlib
+import io
+import subprocess
+import posixpath
 from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
 
 from roc.integration import CLIENT, ROOT, atomic_json
+
+def progress_description(data):
+    """Shared byte coverage; exact inactive work never grants runtime credit."""
+    groups = data['groups']
+    native = data.get('native_code', {})
+    integrated = groups['integrated']
+    inactive = native.get('inactive', {'functions': 0, 'bytes': 0})
+    draft = native.get('draft', {'functions': 0, 'bytes': 0})
+    total = sum(g['bytes'] for g in groups.values())
+    covered = integrated['bytes'] + inactive['bytes']
+    sizes = [integrated['bytes'], inactive['bytes'], draft['bytes'], total - covered - draft['bytes']]
+    cells = [value * 23 // total if total else 0 for value in sizes]
+    if total:
+        order = sorted(range(4), key=lambda i: sizes[i] * 23 % total, reverse=True)
+        for i in order[:23 - sum(cells)]:
+            cells[i] += 1
+    if not total:
+        cells[-1] = 23
+    bar = ''.join(color * n for color, n in zip(('🟪', '🟧', '🩷', '⬜'), cells))
+    functions = sum(g['functions'] for g in groups.values())
+    return ('**2008-06 Client**\n%s / %s integrated · %s remaining\n'
+            '%s inactive exact · %s draft functions · %s exact waiting\n\n'
+            '%s **%.2f%% native code**\n\n'
+            '🟪 integrated · 🟧 inactive exact · 🩷 draft · ⬜ remaining') % (
+                format(integrated['functions'], ','), format(functions, ','),
+                format(functions - integrated['functions'], ','), format(inactive['functions'], ','),
+                format(draft['functions'], ','), format(groups.get('exact_waiting', {}).get('functions', 0), ','),
+                bar, 100 * covered / total if total else 0)
+
+
+def live_progress(root=ROOT):
+    """Read current proof, receipts and scores; never reuse the hourly site snapshot."""
+    native = set(json.loads((root / 'work/integration/progress-native.json').read_text())['addresses'])
+    db = sqlite3.connect((root / 'work/server.db').as_uri() + '?mode=ro', uri=True, timeout=30)
+    try:
+        scores = dict(db.execute('SELECT addr,score FROM funcs WHERE client=?', (CLIENT,)))
+    finally:
+        db.close()
+    inactive = inactive_code(root)
+    groups, functions = coverage(root, scores, native, set(inactive))
+    stats = {key: {'functions': 0, 'bytes': 0} for key in ('inactive', 'draft')}
+    for addr, row in inactive.items():
+        if addr not in native and addr in functions:
+            bucket = stats['inactive' if row[1] else 'draft']
+            bucket['functions'] += 1
+            bucket['bytes'] += functions[addr]['size']
+    return dict(groups=groups, native_code=stats,
+                updated=datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC'))
+
+
+def integration_rate(data, root=ROOT, now=None):
+    """Integration-only deltas from distinct timestamped progress observations."""
+    from roc.reports import fmt_duration
+    now = datetime.now(timezone.utc).timestamp() if now is None else now
+    try:
+        stamp = datetime.strptime(data['updated'], '%Y-%m-%d %H:%M UTC').replace(tzinfo=timezone.utc).timestamp()
+    except (KeyError, ValueError):
+        return 'Building rate · waiting for timestamped progress'
+    if now - stamp > 6 * 3600 or stamp > now:
+        return 'Building rate · waiting for fresh progress'
+    path = root / 'work/native-integration-rate.json'
+    try:
+        samples = json.loads(path.read_text(encoding='utf-8'))['samples']
+    except (OSError, ValueError, KeyError):
+        samples = []
+    group = data['groups']['integrated']
+    total = sum(g['bytes'] for g in data['groups'].values())
+    current = dict(time=stamp, functions=group['functions'], bytes=group['bytes'], total=total)
+    if samples and stamp < samples[-1]['time']:
+        return 'Building rate · waiting for current progress'
+    if samples and (current['functions'] < samples[-1]['functions'] or
+                    current['bytes'] < samples[-1]['bytes'] or total != samples[-1]['total']):
+        samples = []  # A corrected baseline is not a negative integration gain.
+    samples = [s for s in samples if now - 6 * 3600 <= s['time'] < stamp]
+    samples.append(current)
+    atomic_json(path, dict(schema=1, samples=samples))
+    elapsed = stamp - samples[0]['time']
+    if not elapsed:
+        return 'Building rate · waiting for a second progress sample'
+    functions = (current['functions'] - samples[0]['functions']) * 3600 / elapsed
+    byte_rate = (current['bytes'] - samples[0]['bytes']) * 3600 / elapsed
+    remaining = max(0, total - current['bytes'])
+    eta = fmt_duration(remaining * 3600 / byte_rate) if byte_rate > 0 else 'building rate'
+    if not remaining:
+        eta = '0s'
+    return '**%g functions/hr** · **%s B/hr** *(observed %d min; 6h window)* · byte ETA %s' % (
+        round(functions, 1), format(round(byte_rate), ','), elapsed // 60, eta)
+
 
 def readable(symbol):
     """MSVC decorated name -> Namespace::Class::method (enough for labels; full name stays in 'symbol')."""
@@ -70,6 +162,13 @@ def inactive_code(root):
             addr = node.get("address") or node.get("original_address")
             symbol = node.get("symbol") or node.get("source_symbol")
             exact = node.get("relocation_normalized_exact", node.get("exact"))
+            # Native runner checks use addr/status, not address/exact. Byte-only
+            # equality is insufficient when the same check reports data errors.
+            if 'addr' in node and 'status' in node and 'target_size' in node:
+                addr = node['addr']
+                exact = (node['status'] == 'exact' and node.get('score') == 100
+                         and 'data_errors' in node and not node['data_errors']
+                         and node.get('object_size') == node['target_size'])
             if isinstance(addr, str) and isinstance(symbol, str) and isinstance(exact, bool):
                 addr = addr.lower().removeprefix("0x").zfill(8)
                 old = found.get(addr)
@@ -92,30 +191,156 @@ def inactive_code(root):
                                  [path.stem, False, path.name, 0])
         except (ValueError, OSError):
             continue
-    # native_bulk proofs (work/native-client/prove.py: full census + per-file runs). Byte-exact rows are inactive
-    # (exact); a byte-matched body at one candidate still waiting for identity/reference proof is draft.
-    for path in sorted((root / "work/native-client/prove-out").glob("*/manifest.json"), key=lambda p: p.stat().st_mtime):
-        try:
-            data = json.loads(path.read_text(encoding="utf-8"))
-        except (ValueError, OSError):
-            continue
-        stamp = path.stat().st_mtime
-        for family in data.get("families", []):
-            for row in family.get("symbols", []):
-                exact = row.get("status") == "inactive_exact"
-                candidates = row.get("candidates") or []
-                if not candidates or row["symbol"].startswith(("__", "$")) or (not exact and len(candidates) != 1):
-                    continue
-                for addr in candidates:
-                    old = found.get(addr)
-                    if not old or (exact, stamp) > (old[1], old[3]):
-                        found[addr] = [row["symbol"], exact, "native-bulk:" + path.parent.name, stamp]
+    # Owner integrations land in work/workspace without touching this checkout.
+    # Read immutable committed receipts too; never extract over workers' files.
+    ref = None
+    for candidate in ('refs/remotes/findings/work', 'refs/forks/origin/work'):
+        result = subprocess.run(['git', 'rev-parse', '--verify', candidate + '^{commit}'],
+                                cwd=root, capture_output=True)
+        if result.returncode == 0:
+            tip = result.stdout.decode().strip()
+            if ref is None or subprocess.run(['git', 'merge-base', '--is-ancestor', ref, tip],
+                                            cwd=root, capture_output=True).returncode == 0:
+                ref = tip
+    if ref:
+        prefix = 'workspace/work/' + CLIENT + '/shared-layouts/'
+        rows = subprocess.check_output(['git', 'ls-tree', '-r', '-z', ref, '--', prefix], cwd=root).split(b'\0')
+        entries = []
+        for row in rows:
+            if row:
+                meta, path = row.split(b'\t')
+                mode, kind, blob = meta.split()
+                if mode in (b'100644', b'100755') and kind == b'blob' and path.endswith(b'.json'):
+                    entries.append((path.decode()[len(prefix):], blob))
+        result = subprocess.run(['git', 'cat-file', '--batch'], cwd=root,
+                                input=b'\n'.join(blob for _, blob in entries) + b'\n',
+                                capture_output=True, check=True)
+        stream = io.BytesIO(result.stdout)
+        stamp = int(subprocess.check_output(['git', 'show', '-s', '--format=%ct', ref], cwd=root))
+        for name, blob in entries:
+            header = stream.readline().split()
+            if len(header) != 3 or header[0] != blob or header[1] != b'blob':
+                raise ValueError('Committed native receipt identity mismatch')
+            content = stream.read(int(header[2])); stream.read(1)
+            try:
+                walk(json.loads(content), name, stamp)
+            except (ValueError, UnicodeError):
+                continue
     # native source with an address-named method but no receipt yet (e.g. CRobloxDoc::handle_453c30)
     for path in sorted((root / "rebuild" / CLIENT).glob("*/*.cpp")):
         text = path.read_text(encoding="utf-8", errors="replace")
         for cls, addr in re.findall(r"\b(\w+)::handle_([0-9a-f]{6,8})\b", text):
             found.setdefault(addr.zfill(8), ["%s::handle_%s" % (cls, addr), False, path.relative_to(root).as_posix(), 0])
     return {a: [readable(v[0]) if v[0].startswith("?") else v[0]] + v[1:3] for a, v in sorted(found.items())}
+
+
+def inactive_sources(root, inactive, published=None):
+    """Link only source files whose bytes are present in the maintained work tree."""
+    if published is None:
+        result = subprocess.run(['git', 'ls-tree', '-r', '-z', 'refs/remotes/findings/work',
+                                 '--', 'workspace/rebuild/2008-06'], cwd=root, capture_output=True)
+        published = {}
+        if result.returncode == 0:
+            for row in result.stdout.split(b'\0'):
+                if row:
+                    meta, path = row.split(b'\t', 1)
+                    published[path.decode().removeprefix('workspace/')] = meta.split()[2].decode()
+    links, receipts, texts, origins = {}, {}, {}, {}
+    for addr, row in inactive.items():
+        receipt = row[2]
+        if receipt not in receipts:
+            path = root / 'work' / CLIENT / 'shared-layouts' / receipt
+            try:
+                receipts[receipt] = path.read_text(encoding='utf-8')
+            except OSError:
+                receipts[receipt] = ''
+        candidates = set()
+        # Receipt JSON uses both Windows and POSIX paths. Never invent a URL from a basename.
+        for value in re.findall(r'"([^"\n]*\.cpp)"', receipts[receipt]) + [receipt]:
+            path = value.replace('\\\\', '/').replace('\\', '/')
+            prefix = root.as_posix().rstrip('/') + '/'
+            if path.casefold().startswith(prefix.casefold()):
+                path = path[len(prefix):]
+            if path in published:
+                candidates.add(path)
+        usable = []
+        method = '::'.join(row[0].split('::')[-2:])
+        for path in sorted(candidates):
+            # Read the exact published blob when the shared checkout is dirty.
+            # Follow compatibility wrappers, so links identify the real source.
+            seen = set()
+            original_path = path
+            used_published = False
+            while path in published and path not in seen:
+                seen.add(path)
+                if path not in texts:
+                    body = b''
+                    try:
+                        local = (root / path).read_bytes()
+                        blob = hashlib.sha1(b'blob ' + str(len(local)).encode() + b'\0' + local).hexdigest()
+                        normalized = local.replace(b'\r\n', b'\n')
+                        normalized_blob = hashlib.sha1(b'blob ' + str(len(normalized)).encode() + b'\0' + normalized).hexdigest()
+                        if published[path] in (blob, normalized_blob):
+                            body = local
+                    except OSError:
+                        pass
+                    if not body and re.fullmatch(r'[0-9a-f]{40}', published[path]):
+                        result = subprocess.run(['git', 'cat-file', 'blob', published[path]], cwd=root, capture_output=True)
+                        if result.returncode == 0:
+                            candidate = result.stdout
+                            blob = hashlib.sha1(b'blob ' + str(len(candidate)).encode() + b'\0' + candidate).hexdigest()
+                            if blob == published[path]:
+                                body = candidate
+                                used_published = True
+                    texts[path] = body.decode('utf-8', errors='replace')
+                    origins[path] = (hashlib.sha256(body).hexdigest(), used_published)
+                text = texts[path]
+                used_published = used_published or origins[path][1]
+                if not text:
+                    break
+                meaningful = [line.strip() for line in text.splitlines()
+                              if line.strip() and not line.strip().startswith('//') and line.strip() != '#pragma once']
+                wrapper = re.fullmatch(r'#\s*include\s*"([^"\n]+)"', meaningful[0]) if len(meaningful) == 1 else None
+                if not wrapper:
+                    break
+                target = posixpath.normpath(posixpath.join(posixpath.dirname(path), wrapper[1]))
+                if not target.startswith('rebuild/2008-06/') or target not in published or target in seen:
+                    text = ''
+                    break
+                path = target
+                used_published = True
+            if not text:
+                continue
+            if used_published or row[1]:
+                # A path alone does not prove the receipt describes this blob.
+                try:
+                    proof = json.loads(receipts[receipt])
+                except (ValueError, TypeError):
+                    continue
+                expected_hash = origins[path][0]
+                paths = (original_path, path)
+                def recorded(value):
+                    if isinstance(value, dict):
+                        for key, item in value.items():
+                            normalized = key.replace('\\', '/') if isinstance(key, str) else ''
+                            if any(normalized == p or normalized.endswith('/' + p) for p in paths) and item == expected_hash:
+                                return True
+                        source = str(value.get('source', '')).replace('\\', '/')
+                        if any(source == p or source.endswith('/' + p) for p in paths) and value.get('source_sha256') == expected_hash:
+                            return True
+                        return any(recorded(item) for item in value.values())
+                    return isinstance(value, list) and any(recorded(item) for item in value)
+                if not recorded(proof):
+                    continue
+            lines = [n for n, line in enumerate(text.splitlines(), 1)
+                     if method + '(' in line or method + ' (' in line or 'handle_' + addr.lstrip('0') in line]
+            if lines or len(candidates) == 1:
+                link = {'path': 'workspace/' + path, 'line': lines[0] if lines else 1}
+                if link not in usable:
+                    usable.append(link)
+        if len(usable) == 1:
+            links[addr] = usable[0]
+    return links
 
 
 def link_errors(root):
@@ -236,17 +461,23 @@ def build(root=ROOT, log=print, output=None, extra_reports=()):
             "daily": [daily[day] for day in sorted(daily)],
             "jobs": receipts[:100],
             "leaderboard": [{"user": u, "model": m, "native_credits": n} for u, m, n in leaders]}
+    data['inactive_sources'] = inactive_sources(root, data['inactive'])
     for key, exact in (("native_inactive", True), ("native_draft", False)):
         hits = [functions[a] for a, v in data["inactive"].items() if v[1] == exact and a in functions]
         # separate from "groups": groups partition the code and are summed by the site
         data.setdefault("native_code", {})[key[7:]] = {"functions": len(hits), "bytes": sum(f["size"] for f in hits)}
-    path = output or root / "docs/integration.json"
-    previous = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+    path = output or root / "site/integration.json"
+    previous_path = path
+    if output is None and not path.exists() and (root / "docs/integration.json").exists():
+        previous_path = root / "docs/integration.json"
+    previous = json.loads(previous_path.read_text(encoding="utf-8")) if previous_path.exists() else {}
     history = {row["day"]: row for row in previous.get("history", [])} if previous.get("client") == CLIENT else {}
     day = datetime.now(ZoneInfo("America/New_York")).strftime("%Y-%m-%d")
     history[day] = {"day": day, "groups": data["groups"], "native_code": data.get("native_code", {})}
     data["history"] = [history[day] for day in sorted(history)]
     atomic_json(path, data)
+    if output is None:
+        atomic_json(root / "site/native-source-links.json", {"client": CLIENT, "sources": data["inactive_sources"]})
     if output is None and "inactive" in previous:  # first build has no baseline: don't announce everything
         announce_inactive(previous["inactive"], data["inactive"], log)
     log("Integration site data: %d integrated, %d named" % (len(native), len(data["names"])))
