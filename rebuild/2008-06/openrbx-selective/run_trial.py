@@ -23,25 +23,39 @@ for path in verified.glob("selective_*.obj"):
     path.unlink()
 overlay = rebuild.build_overlay(client, spec["name"], spec.get("overlay"))
 recipe = libs.RECIPES["rbxgs"]
-source = ROOT / "rebuild/2008-06/openrbx-selective/gui/ScoreHud.cpp"
-result = rebuild.compile_direct(client, [source], out / "selective-source",
+sources = {
+    "gui/ScoreHud.cpp": {
+        "??0ScoreHud@RBX@@QAE@PBVServiceProvider@1@@Z": "00652510",
+        "?render2d@ScoreHud@RBX@@MAEXPAVAdorn@2@@Z": "00656430",
+    },
+    "v8xml/SerializerSelected.cpp": {
+        "?resolveIDREF@ArchiveBinder@@QAE_NUIDREFBinding@1@@Z": "00592180",
+        "?processID@ArchiveBinder@@UAE_NPBVXmlNameValuePair@@PAVInstance@RBX@@@Z": "005930c0",
+    },
+    "v8datamodel/PVInstanceSelected.cpp": {
+        "?computeTopPVController@PVInstance@RBX@@ABE?AV?$ReferenceCountedPointer@VController@RBX@@@G3D@@XZ": "00609690",
+    },
+    "script/ScriptContextSelected.cpp": {
+        "?addScript@ScriptContext@RBX@@QAEXPAVScript@2@@Z": "005b06c0",
+    },
+}
+source_root = ROOT / "rebuild/2008-06/openrbx-selective"
+result = rebuild.compile_direct(client, [source_root / f for f in sources], out / "selective-source",
     [(libs.LIBS / i).resolve() for i in recipe["include"] if i != "WINSDK"],
     recipe["defines"] + " BOOST_ALL_NO_LIB", "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD", overlay=overlay)
 if not all(ok for ok, _ in result.values()):
     raise RuntimeError(str(result))
-obj = out / "selective-source/ScoreHud.obj"
-targets = {
-    "??0ScoreHud@RBX@@QAE@PBVServiceProvider@1@@Z": "00652510",
-    "?render2d@ScoreHud@RBX@@MAEXPAVAdorn@2@@Z": "00656430",
-}
-rows = rebuild.pair_object(client, obj.read_bytes(), set(targets))
-keep = {s: a[0] for s, _, a in rows if len(a) == 1 and targets.get(s) == a[0]}
-if keep != targets:
-    raise RuntimeError("Selected ScoreHud functions no longer match their targets")
-shutil.copy2(obj, verified / "selective_ScoreHud.obj")
 path = verified / "swaps.json"
 swaps = json.loads(path.read_text())
-swaps["swaps"].append({"obj": "selective_ScoreHud.obj", "recipe": "rbxgs", "file": "gui/ScoreHud.cpp", "keep": keep})
+for file, targets in sources.items():
+    obj = out / "selective-source" / (Path(file).stem + ".obj")
+    rows = rebuild.pair_object(client, obj.read_bytes(), set(targets))
+    keep = {s: a[0] for s, _, a in rows if len(a) == 1 and targets.get(s) == a[0]}
+    if keep != targets:
+        raise RuntimeError("Selected functions no longer match their targets: " + file)
+    obj_name = "selective_" + obj.name
+    shutil.copy2(obj, verified / obj_name)
+    swaps["swaps"].append({"obj": obj_name, "recipe": "rbxgs", "file": file, "keep": keep})
 path.write_text(json.dumps(swaps, indent=1) + "\n")
 # Module scoring must not trigger unrelated global progress reporting.
 rebuild.progress = lambda *args, **kwargs: None
