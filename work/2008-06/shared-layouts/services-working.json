@@ -23,7 +23,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -37,8 +37,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\services\\NativeServicesLayout.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\tests\\NativeServicesLayout.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeServicesLayout.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\tests\\NativeServicesLayout.cpp"
     ],
     "joints": [
       "/nologo",
@@ -61,7 +61,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -75,8 +75,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\services\\NativeJointsService.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\JointsService.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeJointsService.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\JointsService.cpp"
     ],
     "physics": [
       "/nologo",
@@ -99,7 +99,8 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\services-world-overlay",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -113,8 +114,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\services\\NativePhysicsService.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\PhysicsService.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativePhysicsService.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\PhysicsService.cpp"
     ],
     "physics_pending": [
       "/nologo",
@@ -137,9 +138,10 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\services\\services-pending",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\services-world-overlay",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\services-pending",
       "/DNATIVE_PHYSICSSERVICE_PENDING",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -153,8 +155,8 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\services\\NativePhysicsServicePending.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\PhysicsService.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativePhysicsServicePending.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\PhysicsService.cpp"
     ],
     "network": [
       "/nologo",
@@ -177,7 +179,7 @@
       "/D_RELEASE",
       "/D_RELEASEASSERT",
       "/D_VC80_UPGRADE=0x0710",
-      "/IC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
@@ -191,27 +193,27 @@
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
       "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
-      "/FoC:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\gate-output\\services\\NativeNetworkSettings.obj",
-      "C:\\Users\\colin\\RoConstruct\\work\\fork-integration\\mew-deps-e8b248bf\\rebuild\\2008-06\\native-classes\\NetworkSettings.cpp"
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\NativeNetworkSettings.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\NetworkSettings.cpp"
     ]
   },
   "sources": {
-    "rebuild/2008-06/tests/record_native_services.py": "8ce883223f673d100345cb7b095b472fe3e50345fe5f164d86ffbe7eca106629",
-    "rebuild/2008-06/tests/record_native_services_maps.py": "eb61cfe756ac9e186e3a38abc412b37cdf16a444bb6696b4d93f163181093649",
-    "rebuild/2008-06/tests/NativeServicesLayout.cpp": "aeef684c8f1a44a48adf98415c13793bfd7d012ae2e7550598e37186f6fba40b",
-    "rebuild/2008-06/native-headers/v8datamodel/JointsService.h": "74c25c69035581e0a1351f7b84e7dc64b87e9516c1fee53e65df961a99d7e7ef",
-    "rebuild/2008-06/native-headers/v8datamodel/PhysicsService.h": "7b207a5817fec10a98cb22ca9e5f024031a783330b32cc1a2db01440e62a7c4e",
-    "rebuild/2008-06/native-classes/JointsService.cpp": "9119c1e2603e73abf57cbf777dfe9f6de87caf652c64649d326d9230f05f85c3",
-    "rebuild/2008-06/native-classes/PhysicsService.cpp": "bf960d4a761e9a5f06cc01d2eb4311a7c07c970e744b442bf00f3e95420ffdfd",
-    "rebuild/2008-06/native-headers/Network/NetworkSettings.h": "7d80957736876055febe021293c793afeb779947a1b21e778bdf55082e323ab5",
-    "rebuild/2008-06/native-classes/NetworkSettings.cpp": "2ae8bcd6d7b6b8a37ccf0723c9938da1a8f8e14953776606ed928a76594dc622"
+    "rebuild/2008-06/tests/record_native_services.py": "bf2c65844e1bc9637d8a47c7444e2641201be334b3ec13a397a7af484337c58b",
+    "rebuild/2008-06/tests/record_native_services_maps.py": "6c4ecad63edb2aa867e5ee79d789e4be083614bd509584ce31a35379b308f2e3",
+    "rebuild/2008-06/tests/NativeServicesLayout.cpp": "57119655b6266e867029be9621668632876a8b549be158b6edf3305237b14869",
+    "rebuild/2008-06/native-headers/v8datamodel/JointsService.h": "19178fd930022d5ae02a1f911e53fce27928fa75fb98cc1ee75c24af7fccf477",
+    "rebuild/2008-06/native-headers/v8datamodel/PhysicsService.h": "5a8ee44b5aa33c1311d1a57779631b727bc0a863ce85cffa9d53b840fde6e423",
+    "rebuild/2008-06/native-classes/JointsService.cpp": "703a00cd9c3700dd46bb5f1de6acd4e5aa2099b7e24e32f1815b4b70c200ebd1",
+    "rebuild/2008-06/native-classes/PhysicsService.cpp": "67af3328c9a2cde3bc3cd392e0561945c4e93a7aa414fa49de770bb5fe2e8f66",
+    "rebuild/2008-06/native-headers/Network/NetworkSettings.h": "41cbc1fffa4f964a3a50648a8ed8c5fe284686198adb2b101e79ef742cde988f",
+    "rebuild/2008-06/native-classes/NetworkSettings.cpp": "4ee9b4d9a94d8f7772be04f9d4befea67ee0b56a5f96b22601826204238d5182"
   },
   "objects": {
-    "NativeServicesLayout.obj": "f12d2b35f7401777f9c5088097f6785d22ff837eac861cc2d1d2187c9ad04d01",
-    "NativeJointsService.obj": "f7256ab1ef76891e88204c2e4c96bbb1744bde0d71712c1a995389366fb8e2bf",
-    "NativePhysicsService.obj": "0ae3b2ae5645856a4fedf81180206e92c13a24116d3be6f7e65490403f3a2489",
-    "NativePhysicsServicePending.obj": "192398ddc087df156914c7df0ca97371d757279f0e603ceb940778736687d818",
-    "NativeNetworkSettings.obj": "7eb98845a6622ca61ae5ac742a302cf16d7bad6f30f11a938b0589dbe33859b2"
+    "NativeServicesLayout.obj": "11407e17e45adc551326b18ac0f381030161f00ea0c4efe05b054cf01e792e4c",
+    "NativeJointsService.obj": "a12fc27e229f39271e050d75847a59da38d03dc3e4ac376dd75d425f12806dcf",
+    "NativePhysicsService.obj": "d6b86672ac7d264e3069d17944dd2f50d717796d4140a3aba4388faf623c6ce8",
+    "NativePhysicsServicePending.obj": "492a54e623d83d66ea45a77e15420102b6db73a8b2a001f2ca24507a9eb047c6",
+    "NativeNetworkSettings.obj": "193d70d2570211e27b7d7740000ceb9d5b17b95697121ede1900823d188db3de"
   },
   "layout": {
     "JointsService": "0x154 (004b0df0); Listener<World,AutoJoin> +0x130, Listener<World,AutoDestroy> +0x134, Service and IRenderableBucket +0x138, world +0x150",
@@ -855,6 +857,31 @@
           "$LN7",
           "__ehhandler$?onEvent@JointsService@RBX@@EAEXPBVWorld@2@UAutoJoin@2@@Z"
         ]
+      }
+    ],
+    "joints_near": [
+      {
+        "address": "005e5b50",
+        "symbol": "?onServiceProvider@JointsService@RBX@@EAEXPBVServiceProvider@2@0@Z",
+        "size": 156,
+        "target_size": 156,
+        "exact": false,
+        "semantic_refs": [
+          "?removeListener@?$Notifier@VWorld@RBX@@UAutoJoin@2@@RBX@@QBEXPAV?$Listener@VWorld@RBX@@UAutoJoin@2@@2@@Z",
+          "?removeListener@?$Notifier@VWorld@RBX@@UAutoDestroy@2@@RBX@@QBEXPAV?$Listener@VWorld@RBX@@UAutoDestroy@2@@2@@Z",
+          "??$create@VWorkspace@RBX@@@ServiceProvider@RBX@@QBEPAVWorkspace@1@XZ",
+          "?addListener@?$Notifier@VWorld@RBX@@UAutoJoin@2@@RBX@@QBEXPAV?$Listener@VWorld@RBX@@UAutoJoin@2@@2@@Z",
+          "?addListener@?$Notifier@VWorld@RBX@@UAutoDestroy@2@@RBX@@QBEXPAV?$Listener@VWorld@RBX@@UAutoDestroy@2@@2@@Z",
+          "?addListener@?$Notifier@VWorld@RBX@@UAutoDestroy@2@@RBX@@QBEXPAV?$Listener@VWorld@RBX@@UAutoDestroy@2@@2@@Z"
+        ],
+        "original_call_targets": [
+          "005e5a80",
+          "005e5a80",
+          "00490af0",
+          "004218a0",
+          "004218a0"
+        ],
+        "near_match_reason": "same-size semantic recovery; compiler evaluation order differs"
       }
     ],
     "physics": [
@@ -3297,7 +3324,6 @@
   },
   "pending_note": "pending rows are exact only with a generated copy of the donor v8world/World.h that defines AssemblyPhysicsOn/AssemblyPhysicsOff (PROPOSAL_WORLD) under out/native-layouts/services-pending.",
   "not_attempted": {
-    "005e5b50": "JointsService::onServiceProvider: ServiceProvider::find<Workspace> 00490af0 and Workspace world +0x2e4 (no native Workspace.h); disconnect/connect Notifier<World,AutoJoin> (World +0) / <World,AutoDestroy> (+0x20)",
     "005e8ec0": "PhysicsService::onServiceProvider: same Workspace dependency; Notifier<World,AssemblyPhysicsOn/Off> at World +0x40/+0x60 (the donor World.h has neither notifier base)",
     "004ca3c0": "boost::detail::shared_count(PhysicsService*, Creatable<Instance>::Deleter) (110 bytes): the 2008 boost form (try/catch, no bad_alloc check) differs from the donor boost 1.34.1 header (131 bytes)",
     "004aa9a0/004aaae0": "EnumPropDescriptor<NetworkSettings, PhysicsSendMethod/PhysicsReceiveMethod> constructors: the 2008 reflection.h constructor (call_once singleton twice, EnumDesc reference at +0x20) differs from the shared native header (same finding as Feature 0060bd80)",
