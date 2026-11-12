@@ -45,8 +45,8 @@ namespace RBX
 	public:
 		Connector() {}
 		// KernelData indexes Connector through the proven KernelIndex +0x4
-		// field.  Inline only: no object layout or vtable effect.
-		int& getKernelIndex() { return kernelIndex; }
+		// field. The donor declaration is noinline; no layout or vtable effect.
+		__declspec(noinline) int& getKernelIndex() { return kernelIndex; }
 		virtual ~Connector() {}                                         // slot 0 (??_G 006062c0)
 		virtual void computeForce(const float dt, bool throttling) = 0; // slot 1
 		virtual bool canThrottle() const                                // slot 2 (00565950)
