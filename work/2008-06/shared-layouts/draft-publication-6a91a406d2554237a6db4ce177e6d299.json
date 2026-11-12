@@ -1,0 +1,131 @@
+{
+  "scope": "Inactive source publication; no runtime selection or server credit",
+  "base": "64bf629c391ad93b20fbfc0f3e5fda27fb5aec76",
+  "verification": {
+    "native_input_key": "c5df227710d2945012d970305e90cc2855af5945e316e17c67ab71bcc0010b69",
+    "sources": {
+      "rebuild/2008-06/native-classes/TextDisplay.cpp": {
+        "source_sha256": "82d8d5b68ba62e58b42ee3e79a1997945282f40353f520d27e545b10d7a29adf",
+        "object_sha256": "ad26a9737063f3e1ac98291b98dc59a55278739bc1c11209f97b1c3a63ac2171",
+        "methods": [
+          {
+            "address": "00574580",
+            "symbol": "?getLabel@TextDisplay@RBX@@MBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+            "size": 36,
+            "exact": true,
+            "verified_targets": {
+              "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z"
+            },
+            "local_eh": []
+          }
+        ],
+        "compiler": 21022,
+        "flags": [
+          "/nologo",
+          "/c",
+          "/O2",
+          "/Ob2",
+          "/Oy",
+          "/GF",
+          "/GS-",
+          "/EHsc",
+          "/MD",
+          "/D_AFXDLL",
+          "/DNDEBUG",
+          "/D_MBCS",
+          "/DNOMINMAX",
+          "/DBOOST_ALL_NO_LIB",
+          "/DWIN32",
+          "/DNDEBUG",
+          "/D_LIB",
+          "/D_RELEASE",
+          "/D_RELEASEASSERT",
+          "/D_VC80_UPGRADE=0x0710",
+          "/IC:\\Users\\colin\\RoConstruct\\work\\draft-merger\\publications\\6a91a406d2554237a6db4ce177e6d299\\verification\\exact-tree\\rebuild\\2008-06\\native-headers",
+          "/IC:\\Users\\colin\\RoConstruct\\work\\draft-merger\\publications\\6a91a406d2554237a6db4ce177e6d299\\verification\\exact-tree\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+          "/D_XTP_STATICLINK",
+          "/D_XTPLIB_NOAUTOLINK",
+          "/IC:\\Users\\colin\\RoConstruct\\work\\draft-merger\\publications\\6a91a406d2554237a6db4ce177e6d299\\verification\\exact-tree\\tools\\libs\\xtp-11.2.2\\Source"
+        ]
+      }
+    }
+  },
+  "acceptance_receipts": {
+    "rebuild/2008-06/native-classes/TextDisplay.cpp": [
+      {
+        "schema": 1,
+        "kind": "independent-draft-proof",
+        "client": "2008-06",
+        "path": "rebuild/2008-06/native-classes/TextDisplay.cpp",
+        "candidate_sha256": "0e5f8110721b888f0accccf19db634e5a4ce179f4806b9b7c9e205ee880ff183",
+        "before_sha256": "2fe86a66aef8ed5445d2b0773c6f93757125a840409bc942c04d9511417d5b0e",
+        "input_key": "651ccf4dc7da01d4f8b218b79f6942c0dcb9bae47f9106e779a58a6dc3f87eed",
+        "verifier_sha256": "2059cd6a00af81fb5ef231ca842e94f3f1366658036daa51b4c5aa66dd31bd12",
+        "before_methods": [
+          "?getFontSize@TextDisplay@RBX@@MBEHXZ"
+        ],
+        "after_methods": [
+          "?getFontSize@TextDisplay@RBX@@MBEHXZ",
+          "?getLabel@TextDisplay@RBX@@MBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ@00574580"
+        ],
+        "checks": {
+          "compile": true,
+          "code": true,
+          "relocations": true,
+          "data": true,
+          "strings": true,
+          "abi": true,
+          "dependencies": true,
+          "preservation": true,
+          "batch_symbols": true,
+          "regressions": true
+        },
+        "reference_evidence": [
+          {
+            "address": "00574580",
+            "symbol": "?getLabel@TextDisplay@RBX@@MBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+            "size": 36,
+            "exact": true,
+            "verified_targets": {
+              "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z"
+            },
+            "local_eh": []
+          }
+        ],
+        "touched_member": {
+          "offset": 324,
+          "name": "?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@ label",
+          "depth": 0
+        },
+        "original_instructions": [
+          "push ecx",
+          "push esi",
+          "mov esi, dword ptr [esp + 0xc]",
+          "add ecx, 0x144",
+          "push ecx",
+          "mov ecx, esi",
+          "mov dword ptr [esp + 8], 0",
+          "call dword ptr [sym]",
+          "mov eax, esi",
+          "pop esi",
+          "pop ecx",
+          "ret 4"
+        ],
+        "closure_sha256": "e0b08ce72e7d001dfdabed99cfe38d8dbe8a269a68a6bf3ffe9ca3b878952dfa",
+        "scope": "Inactive getter body only: unchanged header/virtual declarations; touched member/return ABI and before-method preservation. No whole-class swap or runtime claim."
+      }
+    ]
+  }
+}
