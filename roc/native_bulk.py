@@ -173,7 +173,8 @@ def audit_references(raw, symbol, body, target, target_relocs, va, targets, bind
                                 table[3] == len(encoded) and table[4] and
                                 raw[table[4]:table[4] + len(encoded)] == encoded and
                                 table[7] == 0)
-        if known is not None and int(known, 16) != base and not is_local_literal:
+        is_tu_guard = name.startswith('??_B?') or bool(re.match(r'\?[\w$]+@\?\d+\?\?', name))   # function-local static guard: one per translation unit, its address differs per TU
+        if known is not None and int(known, 16) != base and not is_local_literal and not is_tu_guard:
             errors.append('reference identity differs: %s (bound %s, original reference %08x)' % (name, known, base))
             return
         if number - 1 == section and known is None and base == (va + value - start) & 0xffffffff:
