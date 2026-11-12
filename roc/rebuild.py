@@ -643,9 +643,11 @@ def verified_layer(client, spec, log=print, exclude=frozenset(), vdrop=frozenset
         # force them from an archive, nor can another object resolve them.
         keep = {k for k in item["keep"] if externals.get(k)
                 and not k.startswith(("??__E", "??__F"))} - taken - exclude - vdrop
-        if keep:
+        # helpers this object supplies to other swaps: keep writing it even after its own swaps are all swapped out,
+        # or every function that relies on those helpers collapses in the next round
+        extra = {h for h, o in (helpers or {}).items() if o == item["obj"]} - vdrop
+        if keep or extra:
             taken |= keep
-            extra = {h for h, o in (helpers or {}).items() if o == item["obj"]} - vdrop
             (layer / ("verified_" + item["obj"])).write_bytes(strip_symbols(data, keep=keep | extra, drop=vdrop | exclude))
     log("verified layer: %d exact symbols swapped in" % len(taken))
     return layer, taken
@@ -1206,6 +1208,7 @@ def build_module(client, name, log=print):
         deps.append(dep_lib)
         pending += dep_spec.get("depends", [])
     deps += [dll_import_lib(client, dll) for dll in spec.get("import_dlls", [])]
+    deps += list(spec.get("extra_libs", []))  # e.g. msvcprt.lib when the objects carry no /DEFAULTLIB for it
     excluded_path = out / "verified" / "excluded.json"
     excluded = set(json.loads(excluded_path.read_text())) if excluded_path.exists() else set()
     excluded.update(spec.get("verified_exclude", []))

@@ -10,5 +10,9 @@
  "import_dlls": [
   "rgmain.dll"
  ],
- "force_verified": true
+ "force_verified": true,
+ "extra_libs": [
+  "msvcprt.lib"
+ ],
+ "extra_libs_note": "The exe imports the std::string operator templates from msvcp90.dll; the 1.4.5 OgreMain objects carry /DEFAULTLIB only for MSVCRT and OLDNAMES."
 }
