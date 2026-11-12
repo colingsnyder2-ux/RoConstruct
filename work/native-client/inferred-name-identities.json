@@ -14694,6 +14694,18 @@
    "address": "0068de80",
    "inferred_name": false,
    "evidence": "body byte-exact at 0068de80 and its twin; only 0068de80 stores vtable 0084ec4c, which the registry names ??_7?$SharedPtr@VShadowCameraSetup@Ogre@@@Ogre@@6B@"
+  },
+  {
+   "symbol": "??_G?$SharedPtr@VRbxSky@Ogre@@@Ogre@@UAEPAXI@Z",
+   "address": "0068dec0",
+   "inferred_name": false,
+   "evidence": "body byte-exact; only 0068dec0 stores vtable 0084ec3c, which the registry names ??_7?$SharedPtr@VRbxSky@Ogre@@@Ogre@@6B@"
+  },
+  {
+   "symbol": "??_G?$SharedPtr@VRbxFont@Ogre@@@Ogre@@UAEPAXI@Z",
+   "address": "0066fe90",
+   "inferred_name": false,
+   "evidence": "body byte-exact; only 0066fe90 stores vtable 0084d1d4, which the registry names ??_7?$SharedPtr@VRbxFont@Ogre@@@Ogre@@6B@"
   }
  ]
 }

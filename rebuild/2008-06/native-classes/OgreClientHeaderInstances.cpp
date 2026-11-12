@@ -21,11 +21,13 @@
 #include "OgreAnimation.h"
 #include "OgreStaticGeometry.h"
 #include "OgreInstancedGeometry.h"
+#include "OgreRbx/RbxSky2008.h"
 
 template class Ogre::SharedPtr<Ogre::Resource>;
 template class Ogre::SharedPtr<Ogre::DataStream>;
 template class Ogre::SharedPtr<Ogre::GpuProgramParameters>;
 template class Ogre::SharedPtr<Ogre::ShadowCameraSetup>;
+template class Ogre::SharedPtr<Ogre::RbxSky>;     // 0068dec0 stores vtable 0084ec3c
 
 // INFERRED: the exe's callers construct and delete these imported classes locally; deleting through the exact
 // static type makes the compiler emit the local scalar deleting destructor the binary has.
