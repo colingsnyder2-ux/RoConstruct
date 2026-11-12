@@ -1,95 +1,84 @@
+// from server: 100% by EspClaude
 // from server: 40% by colin
-struct CComVariant {
-    void Clear();
-    void* p;
+// roc 2007-08 00437f80  unit: CStandardOutputView  size: 355 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 00437f80
+//
+// Shape: CComQIPtr ctor, CComPtr dtors, CComVariant(short) passed by value as VARIANT,
+// member queue at +0xf4 (push_back 0x437a40, front 0x499f10, pop_front 0x437570, size at +0x104).
+struct GUID_ { unsigned long d1; unsigned short d2, d3; unsigned char d4[8]; };
+extern const GUID_ IID_target;   // 0x78cd80
+
+struct VARIANT_ {
+    unsigned short vt;
+    unsigned short r1, r2, r3;
+    union { short iVal; long lVal; };
+    long r4;
+};
+extern "C" __declspec(dllimport) long __stdcall VariantClear(VARIANT_* pvarg);
+
+struct IUnk {
+    virtual long __stdcall QueryInterface(const GUID_& iid, void** ppv) = 0;
+    virtual unsigned long __stdcall AddRef() = 0;
+    virtual unsigned long __stdcall Release() = 0;
+};
+
+#define D(n) virtual void __stdcall d##n() = 0;
+struct IElem : IUnk {
+    D(3) D(4) D(5) D(6) D(7) D(8) D(9) D(10) D(11) D(12) D(13) D(14) D(15) D(16) D(17) D(18) D(19)
+    D(20) D(21) D(22) D(23) D(24) D(25) D(26) D(27) D(28) D(29) D(30) D(31) D(32) D(33) D(34) D(35)
+    D(36) D(37) D(38) D(39) D(40) D(41) D(42) D(43) D(44) D(45)
+    virtual long __stdcall m46(VARIANT_ v) = 0;   // vtbl +0xb8
+};
+struct IDoc : IUnk {
+    D(3) D(4) D(5) D(6) D(7) D(8) D(9) D(10) D(11) D(12)
+    virtual long __stdcall m13(IUnk* a, IUnk** out) = 0;  // +0x34
+    D(14) D(15) D(16) D(17) D(18)
+    virtual long __stdcall m19(IUnk* a, IUnk** out) = 0;  // +0x4c
+};
+
+template <class T> struct CComPtr {
+    T* p;
+    CComPtr() throw() : p(0) {}
+    ~CComPtr() throw() { if (p) p->Release(); }
+};
+template <class T> struct CComQIPtr : CComPtr<T> {
+    CComQIPtr(IUnk* lp) throw() { if (lp != 0) lp->QueryInterface(IID_target, (void**)&this->p); }
+};
+
+struct CComVariant : VARIANT_ {
+    CComVariant(short n) { vt = 2; iVal = n; }
+    ~CComVariant() { VariantClear(this); }
+};
+
+struct Queue {
+    char pad[0x10];
+    unsigned int size;           // this+0x104
+    void push_back(const CComQIPtr<IUnk>& v);
+    CComPtr<IUnk>& front();
+    void pop_front();
 };
 
 struct CStandardOutputView {
-    char pad[0x0c];
-    void* field_0c;
-    char pad2[0xf4 - 0x10];
-    void* field_f4;
-    char pad3[0x104 - 0xf8];
-    unsigned int field_104;
-    char pad4[0x10c - 0x108];
-    void* field_10c;
-    void func_00437f80(CComVariant* var);
+    char pad[0xf4];
+    Queue queue;                 // +0xf4
+    char pad2[0x10c - 0x108];
+    IDoc* doc;                   // +0x10c
+    void func_00437f80(IElem* elem);
 };
 
-extern "C" void __stdcall VariantClear(void* pvarg);
-
-void CStandardOutputView::func_00437f80(CComVariant* var)
+void CStandardOutputView::func_00437f80(IElem* elem)
 {
-    CComVariant local10;
-    CComVariant local14;
-    CComVariant local18;
-    CComVariant local1c;
-    CComVariant local20;
-    CComVariant local24;
-    CComVariant local28;
-    CComVariant local2c;
-    CComVariant local30;
-    CComVariant local34;
-    CComVariant local38;
-    CComVariant local3c;
-
-    local10.p = 0;
-    if (var != 0) {
-        void** vtbl = *(void***)var;
-        void (*fn)(void*, void*, void*) = (void (*)(void*, void*, void*))vtbl[0];
-        fn(var, (void*)0x78cd80, &local10);
-    }
-
-    local30.p = 0;
-    local14.p = 0;
-
-    void* p = field_10c;
-    void** vtbl2 = *(void***)p;
-    void (*fn2)(void*, void*, void*) = (void (*)(void*, void*, void*))vtbl2[0x4c / 4];
-    fn2(p, local14.p, &local14);
-
-    if (fn2 != 0) {
-        goto cleanup;
-    }
-
-    *(unsigned short*)&local18 = 2;
-    *(unsigned short*)&local20 = 0;
-
-    void* p2 = field_10c;
-    void** vtbl3 = *(void***)p2;
-    void (*fn3)(void*, void*, void*, void*, void*) = (void (*)(void*, void*, void*, void*, void*))vtbl3[0xb8 / 4];
-    fn3(p2, var, local18.p, local1c.p, local20.p);
-
-    VariantClear(&local18);
-
-    void* p3 = field_10c;
-    void** vtbl4 = *(void***)p3;
-    void (*fn4)(void*, void*, void*) = (void (*)(void*, void*, void*))vtbl4[0x34 / 4];
-    fn4(p3, local10.p, &local38);
-
-    if (field_104 > 0x190) {
-        local38.p = 0;
-        void* p4 = field_10c;
-        void** vtbl5 = *(void***)p4;
-        void (*fn5)(void*, void*, void*) = (void (*)(void*, void*, void*))vtbl5[0x34 / 4];
-        fn5(p4, local10.p, &local38);
-
-        if (local38.p != 0) {
-            void** vtbl6 = *(void***)local38.p;
-            void (*fn6)(void*) = (void (*)(void*))vtbl6[2];
-            fn6(local38.p);
+    CComQIPtr<IUnk> sp(elem);
+    CComPtr<IUnk> out;
+    if (doc->m19(sp.p, &out.p) == 0) {
+        elem->m46(CComVariant(0));
+        queue.push_back(sp);
+        if (queue.size > 400) {
+            CComPtr<IUnk> old;
+            IDoc* d = doc;
+            IUnk* f = queue.front().p;
+            d->m13(f, &old.p);
+            queue.pop_front();
         }
-    }
-
-cleanup:
-    if (local14.p != 0) {
-        void** vtbl7 = *(void***)local14.p;
-        void (*fn7)(void*) = (void (*)(void*))vtbl7[2];
-        fn7(local14.p);
-    }
-    if (local10.p != 0) {
-        void** vtbl8 = *(void***)local10.p;
-        void (*fn8)(void*) = (void (*)(void*))vtbl8[2];
-        fn8(local10.p);
     }
 }

@@ -1,26 +1,24 @@
-// from server: 49% by Intel
-struct CChildFrame {
-    int field_0;
+// from server: 100% by EspClaude
+// DECLARE_DYNCREATE-style CreateObject analog: new of 0xdc bytes (target push 0xdc),
+// base ctor called thiscall (mov ecx,esi; call 0x6303ca), then derived vtable stored.
+
+class CFrameBase
+{
+public:
+    CFrameBase();
+    virtual ~CFrameBase();
+    char base_[0xdc - 4];
 };
 
-extern "C" void* __cdecl operator_new(unsigned int size);
-extern "C" int __stdcall sub_6303ca(CChildFrame*);
-
-int __cdecl sub_40eec0(CChildFrame* self)
+class CChildFrame : public CFrameBase
 {
-    __try {
-        void* mem = operator_new(0xdc);
-        CChildFrame* obj = static_cast<CChildFrame*>(mem);
-        int result = 0;
-        if (obj == 0) {
-            obj->field_0 = 0;
-            sub_6303ca(obj);
-            *reinterpret_cast<int*>(obj) = 0x786b1c;
-            result = reinterpret_cast<int>(obj);
-        }
-        return result;
-    }
-    __except(1) {
-        return 0;
-    }
+public:
+    CChildFrame() {}
+    virtual ~CChildFrame() {}
+    static CFrameBase* __stdcall CreateObject();
+};
+
+CFrameBase* __stdcall CChildFrame::CreateObject()
+{
+    return new CChildFrame;
 }

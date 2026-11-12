@@ -1,0 +1,97 @@
+#pragma once
+#include <G3D/Vector2.h>
+#include <G3D/Vector2int16.h>
+#include <G3D/Rect2D.h>
+
+namespace RBX
+{
+	class Rect
+	{
+	public:
+		enum Location
+		{
+			TOP,
+			BOTTOM,
+			LEFT,
+			RIGHT,
+			CENTER,
+			NONE
+		};
+
+	public:
+		G3D::Vector2 low;
+		G3D::Vector2 high;
+
+	public:
+		static const float BORDER_RATIO;
+		static const float BORDER_RATIO_DRAG;
+		static const float BORDER_RATIO_THIN;
+
+	public:
+		Rect(const G3D::Vector2& low, const G3D::Vector2& high)
+			: low(low),
+			  high(high)
+		{
+		}
+		Rect::Rect(const G3D::Vector2& size)
+			: low(G3D::Vector2::zero()),
+			  high(size)
+		{
+		}
+		Rect(float lowX, float lowY, float highX, float highY)
+			: low(lowX, lowY),
+			  high(highX, highY)
+		{
+		}
+		Rect(G3D::Rect2D rect)
+			: low(rect.x0y0()),
+			  high(rect.x1y1())
+		{
+		}
+		Rect();
+	public:
+		G3D::Rect2D toRect2D() const
+		{
+			return G3D::Rect2D::xyxy(low, high);
+		}
+		void unionWith(const G3D::Vector2&);
+		void unionWith(const Rect&);
+		bool operator==(const Rect&) const;
+		// Inferred from original 00573130 and its direct call at Widget::processMouse 00642007.
+		bool pointInRect(G3D::Vector2int16 point);
+		bool pointInRect(int x, int y)
+		{
+			return (low.x <= x) && (high.x >= x) && (low.y <= y) && (high.y >= y);
+		}
+		G3D::Vector2 size() const
+		{
+			return high - low;
+		}
+		G3D::Vector2 center() const
+		{
+			return (low + high) * 0.5f;
+		}
+		Location pointInBorder(const G3D::Vector2&, float);
+		G3D::Vector2 positionPoint(const G3D::Vector2& point, Location xLocation, Location yLocation) const;
+		G3D::Vector2 positionPoint(Location xLocation, Location yLocation) const;
+		Rect positionChild(const RBX::Rect& child, Location xLocation, Location yLocation) const;
+		Rect inset(const G3D::Vector2int16& offset)
+		{
+			return Rect(low.x + offset.x, low.y + offset.y, high.x - offset.x, high.y - offset.y);
+		}
+		Rect inset(int offset)
+		{
+			return Rect(low.x + offset, low.y + offset, high.x - offset, high.y - offset);
+		}
+		G3D::Vector2 clamp(const G3D::Vector2&);
+
+	public:
+		static bool legalX(Location);
+		static bool legalY(Location);
+		static Rect fromLowSize(const G3D::Vector2& low, const G3D::Vector2& size)
+		{
+			return Rect(low, low + size);
+		}
+		static Rect fromCenterSize(const G3D::Vector2&, float);
+	};
+}

@@ -1,89 +1,98 @@
-// from server: 43% by colin
-struct VCApp {
-    int CComObject(int a, int b);
+// from server: 100% by EspClaude
+// roc 2007-08 004087b0  unit: VCApp::?$CComObject  size: 445 bytes
+// Rewritten from target disassembly (objdump of clients/2007-08/Roblox.exe):
+//   AFX_MANAGE_STATE(AfxGetStaticModuleState()) [0x62ff44, ctor 0x62ff3e, inlined dtor -> 0x62ff38]
+//   0x41bd80(url) cdecl -> HRESULT; on failure CString msg (MFC80 #310) .Format("Untrusted Url: %s" @0x7851b8,
+//   CString(url) [#300]) [#2322], ~CString [#578], operator PCXSTR [#876], 0x429220(&0x790290, msg, hr) cdecl.
+//   Else: msi #168 MsiEnableLogA(0x1000, (LPCSTR)0x408460() [returns CString by value], 0),
+//   msi #141 MsiSetInternalUI(2, 0), msi #87 MsiInstallProductA(CString(url), "REINSTALL=ALL REINSTALLMODE=vamus" @0x785194);
+//   r != 0 && r != 0x669 -> 0x429220(&0x790290, "MsiInstallProduct failed" @0x785178, r).
+typedef wchar_t OLECHAR;
+typedef OLECHAR* BSTR;
+typedef long HRESULT;
+struct _GUID;
+
+class CString;
+// MFC80 #578 (CStringT destructor) reached through its IAT slot as a pointer variable, as in the
+// accepted sibling 00409310 (same unit); the target never caches this import address in a register.
+extern void (__thiscall *CString_Destroy)(CString*);
+
+class CString
+{
+public:
+    __declspec(dllimport) CString();
+    __declspec(dllimport) CString(const wchar_t* psz);
+    ~CString() throw() { CString_Destroy(this); }
+    __declspec(dllimport) void __cdecl Format(const char* pszFormat, ...);
+    __declspec(dllimport) operator const char*() const throw();
+private:
+    char* m_pszData;
 };
 
-extern "C" int __stdcall sub_408460(int);
-extern "C" int __stdcall sub_41bd80(int);
-extern "C" int __stdcall sub_429220(int, int, int);
-extern "C" int __stdcall sub_62ff38(int, int);
-extern "C" int __stdcall sub_62ff3e(int);
-extern "C" int __stdcall sub_62ff44(int);
-extern "C" int __stdcall sub_72a5a2(int);
-extern "C" int __stdcall sub_72a5a8(int, int);
-extern "C" int __stdcall sub_72a5ae(int, int);
+// The formatted message: same MFC80 imports (#310 ctor, #2322 Format, #876, #578 dtor), but its
+// destructor is a plain dllimport throw() call (no EH state reset before it in the target).
+class CMessage
+{
+public:
+    __declspec(dllimport) CMessage();
+    __declspec(dllimport) ~CMessage() throw();
+    __declspec(dllimport) void __cdecl Format(const char* pszFormat, ...);
+    __declspec(dllimport) operator const char*() const throw();
+private:
+    char* m_pszData;
+};
 
-extern "C" int __stdcall imp_77dd90(int);
-extern "C" int __stdcall imp_77dd94(int, int, int);
-extern "C" int __stdcall imp_77dd98(int);
-extern "C" int __stdcall imp_77ddac(int);
-extern "C" int __stdcall imp_77ddbc(int);
+struct AFX_MODULE_STATE;
+struct _AFX_THREAD_STATE { void* vtbl; AFX_MODULE_STATE* m_pModuleState; };
+AFX_MODULE_STATE* __stdcall AfxGetStaticModuleState();
+int __stdcall AfxDeactivateActCtx(unsigned long dwFlags, unsigned long ulCookie);
 
-int VCApp::CComObject(int a, int b) {
-    int result;
-    int local10;
-    int local14;
-    int local18;
-    int local1c;
-    int local20;
-    int local24;
-    int local28;
-    int local2c;
-    int local30;
-    int local34;
-    int local38;
-
-    local10 = 0;
-    local14 = 0;
-    local18 = 0;
-    local1c = 0;
-    local20 = 0;
-    local24 = 0;
-    local28 = 0;
-    local2c = 0;
-    local30 = 0;
-    local34 = 0;
-    local38 = 0;
-
-    sub_62ff44(0);
-    sub_62ff3e((int)&local10);
-
-    int edi = sub_41bd80(a);
-    if (edi == 0) {
-        imp_77ddac(0);
-        imp_77dd90(a);
-        int t = *(int*)local10;
-        imp_77dd94((int)&local38, 0x7851b8, t);
-        imp_77ddbc((int)&local10);
-        imp_77dd98((int)&local38);
-        result = sub_429220(0x790290, 0, edi);
-        imp_77ddbc((int)&local38);
-        if (local14 != 0) {
-            *(int*)(local14 + 4) = local10;
-        }
-        if (local1c != 0) {
-            sub_62ff38(0, local18);
-        }
-        return result;
+class AFX_MAINTAIN_STATE2
+{
+public:
+    explicit AFX_MAINTAIN_STATE2(AFX_MODULE_STATE* pModuleState) throw();
+    ~AFX_MAINTAIN_STATE2()
+    {
+        if (m_pThreadState != 0)
+            m_pThreadState->m_pModuleState = m_pPrevModuleState;
+        if (m_bValidActCtxCookie)
+            AfxDeactivateActCtx(0, m_ulActCtxCookie);
     }
+protected:
+    AFX_MODULE_STATE* m_pPrevModuleState;
+    _AFX_THREAD_STATE* m_pThreadState;
+    unsigned long m_ulActCtxCookie;
+    int m_bValidActCtxCookie;
+};
 
-    sub_408460(0);
-    imp_77dd98(0);
-    sub_72a5ae(0x1000, 0);
-    imp_77ddbc((int)&local38);
-    sub_72a5a8(2, 0);
-    imp_77dd90(a);
-    imp_77dd98(0x785194);
-    result = sub_72a5a2(0);
-    imp_77ddbc((int)&local10);
-    if (result != 0 && result != 0x669) {
-        result = sub_429220(0x790290, 0x785178, result);
+extern "C" unsigned int __stdcall MsiEnableLogA(unsigned long dwLogMode, const char* szLogFile, unsigned long dwLogAttributes);
+extern "C" int __stdcall MsiSetInternalUI(int dwUILevel, void** phWnd);
+extern "C" unsigned int __stdcall MsiInstallProductA(const char* szPackagePath, const char* szCommandLine);
+
+HRESULT CheckUrl(BSTR url);                                       // 0x41bd80
+CMessage GetMsiLogFile();                                         // 0x408460 (returns the string by value)
+HRESULT ReportError(const _GUID& iid, const char* desc, HRESULT hr); // 0x429220
+extern const _GUID g_installerIID;                                // 0x790290
+
+struct VCApp_Installer
+{
+    HRESULT __stdcall Install(BSTR url);
+};
+
+HRESULT __stdcall VCApp_Installer::Install(BSTR url)
+{
+    AFX_MAINTAIN_STATE2 _ctlState(AfxGetStaticModuleState());
+    HRESULT hr = CheckUrl(url);
+    if (hr != 0)
+    {
+        CMessage msg;
+        msg.Format("Untrusted Url: %s", CString(url));
+        return ReportError(g_installerIID, msg, hr);
     }
-    if (local14 != 0) {
-        *(int*)(local14 + 4) = local10;
-    }
-    if (local1c != 0) {
-        sub_62ff38(0, local18);
-    }
-    return result;
+    MsiEnableLogA(0x1000, GetMsiLogFile(), 0);
+    MsiSetInternalUI(2, 0);
+    unsigned int r = MsiInstallProductA(CString(url), "REINSTALL=ALL REINSTALLMODE=vamus");
+    if (r != 0 && r != 0x669)
+        return ReportError(g_installerIID, "MsiInstallProduct failed", r);
+    return 0;
 }

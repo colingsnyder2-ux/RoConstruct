@@ -1,76 +1,76 @@
-// from server: 48% by colin
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 100% by EspClaude
+// roc 2007-08 00423f10  unit: CSelectionTreeCtrl  size: 257 bytes
+// roc-flags: /O2 /GS /EHsc /MD
+// Rewritten from target: this->refresh() (0x4201a0); if shared_ptr at +0xe4 and hwnd (+0x20):
+// root = new Node(shared_ptr<Base>(model), this) (operator new 0x50, ctor 0x423e70 with a
+// converted shared_ptr temporary destroyed by 0x492360), root->vfunc slot 0xc, root->expand
+// (0x423b70), SendMessage(hwnd, TVM_SELECTITEM 0x1102, TVGN_CARET 2, root->hItem (+0x44)).
+#include <intrin.h>
 
-extern "C" void* __cdecl malloc(unsigned int);
-extern "C" void __cdecl free(void*);
+typedef struct HWND__* HWND;
+extern "C" __declspec(dllimport) long __stdcall SendMessageA(HWND, unsigned int, unsigned int, long);
 
-extern "C" long __stdcall SendMessageA(void*, unsigned int, unsigned int, long);
-
-struct CSelectionTreeCtrl;
-
-struct CRefCounted {
-    long ref;
+class sp_counted_base {
+public:
+    virtual ~sp_counted_base();
+    virtual void dispose() = 0;
+    virtual void destroy();
+    void add_ref_copy() { _InterlockedIncrement(&use_count_); }
+    long use_count_;
+    long weak_count_;
 };
 
-struct CSelectionTreeCtrl {
-    char pad[0x20];
-    void* hwnd;
-    char pad2[0x94 - 0x24];
-    void* field_94;
-    char pad3[0xe4 - 0x98];
-    CRefCounted* field_e4;
-    CRefCounted* field_e8;
-
-    void Update();
+class shared_count {
+public:
+    sp_counted_base* pi_;
+    shared_count(const shared_count& r) : pi_(r.pi_) { if (pi_ != 0) pi_->add_ref_copy(); }
 };
 
-struct CTreeItem {
-    void* vptr;
-    char pad[0x44 - 4];
-    long field_44;
+template<class T> class shared_ptr {
+public:
+    T* px;
+    shared_count pn;
+    template<class Y> shared_ptr(const shared_ptr<Y>& r) : px(r.px), pn(r.pn) {}
+    ~shared_ptr();                  // 0x492360
+    T* get() const { return px; }
 };
 
-void __fastcall sub_4201A0(CSelectionTreeCtrl* self);
-void __fastcall sub_423B70(void* p);
-void __fastcall sub_423E70(void* p, void* a, void* b);
-void __fastcall sub_492360(void* p);
+class Instance { public: virtual ~Instance(); };
+class Model : public Instance { };
+class CSelectionTreeCtrl;
 
-void CSelectionTreeCtrl::Update()
+class TreeNode {
+public:
+    TreeNode(const shared_ptr<Instance>& inst, CSelectionTreeCtrl* tree);   // 0x423e70
+    virtual void v0();
+    virtual void v1();
+    virtual void v2();
+    virtual void build();           // vtbl+0xc
+    void expand();                  // 0x423b70
+    char pad4[0x44 - 4];
+    long hItem;                     // +0x44
+    char pad48[0x50 - 0x48];
+};
+
+class CSelectionTreeCtrl {
+public:
+    char pad0[0x20];
+    HWND m_hWnd;                    // +0x20
+    char pad24[0x94 - 0x24];
+    TreeNode* root;                 // +0x94
+    char pad98[0xe4 - 0x98];
+    shared_ptr<Model> model;        // +0xe4
+    void clear();                   // 0x4201a0
+    void rebuild();
+};
+
+void CSelectionTreeCtrl::rebuild()
 {
-    sub_4201A0(this);
-
-    if (this->field_e4 == 0)
-        return;
-    if (this->hwnd == 0)
-        return;
-
-    void* mem = malloc(0x50);
-    void* result = 0;
-
-    if (mem != 0)
-    {
-        CRefCounted* a = this->field_e4;
-        CRefCounted* b = this->field_e8;
-        if (b != 0)
-        {
-            _InterlockedExchangeAdd(&b->ref, 1);
-        }
-        sub_423E70(mem, &a, this);
-        result = mem;
-    }
-
-    this->field_94 = result;
-
-    if (result != 0)
-    {
-        void** vt = *(void***)result;
-        void (__stdcall *fn)(void*) = (void (__stdcall *)(void*))vt[3];
-        fn(result);
-
-        sub_423B70(this->field_94);
-
-        CTreeItem* item = (CTreeItem*)this->field_94;
-        SendMessageA(this->hwnd, 0x1102, 2, item->field_44);
+    clear();
+    if (model.get() && m_hWnd) {
+        root = new TreeNode(model, this);
+        root->build();
+        root->expand();
+        SendMessageA(m_hWnd, 0x1102, 2, root->hItem);
     }
 }

@@ -5,8 +5,8 @@ Builds (document-swap flags, VS2008 RTM 21022), all from the current native head
                                        Creatable<Instance>::create<...> instantiations, which emit the inline
                                        constructors, destructors, ??_E thunks and shared_ptr helpers the original keeps
                                        in the units that first create each service;
-  * native-classes/JointsService.cpp   the JointsService unit 005e54c0..005e5860 (onServiceProvider 005e5b50 not
-                                       attempted: needs a native Workspace);
+  * native-classes/JointsService.cpp   the JointsService unit 005e54c0..005e5be0; onServiceProvider 005e5b50 is
+                                       retained as a same-size semantic near-match and never counted unless exact;
   * native-classes/PhysicsService.cpp  the PhysicsService unit (destructor, AssemblyAdded/AssemblyRemoved signals,
                                        onAdded/onRemoved, class descriptor and name);
   * PhysicsService.cpp with NATIVE_PHYSICSSERVICE_PENDING against a generated copy of the donor v8world/World.h
@@ -167,6 +167,9 @@ JOINTS_ROWS = [
     (0x5e57e0, '??$create@VRotateV@RBX@@PAVJoint@2@@?$Creatable@VInstance@RBX@@@RBX@@'),
     (0x5e5860, '?onEvent@JointsService@RBX@@EAEXPBVWorld@2@UAutoJoin@2@@Z'),
 ]
+JOINTS_NEAR_ROWS = [
+    (0x5e5b50, '?onServiceProvider@JointsService@RBX@@EAEXPBVServiceProvider@2@0@Z'),
+]
 PHYSICS_ROWS = [
     (0x5e8d30, '??1PhysicsService@RBX@@UAE@XZ'),
     (0x5e8df0, '??0' + SIG + 'QAE@PBD0@Z'),
@@ -292,15 +295,37 @@ def verify(obj, rows, own, strict=True):
 
 layout_rows = resolve(layout_obj, LAYOUT_ROWS)
 joints_rows = resolve(joints_obj, JOINTS_ROWS)
+joints_near_rows = resolve(joints_obj, JOINTS_NEAR_ROWS)
 physics_rows = resolve(physics_obj, PHYSICS_ROWS)
 physp_rows = resolve(physp_obj, PHYSICS_PENDING_ROWS)
 network_rows = resolve(network_obj, NETWORK_ROWS) if HAVE_NETWORK else []
 own = {}
-for address, name in layout_rows + joints_rows + physics_rows + network_rows:
+for address, name in layout_rows + joints_rows + joints_near_rows + physics_rows + network_rows:
     own.setdefault(name, address)
 strict = not DISCOVER
 layout_out = verify(layout_obj, layout_rows, own, strict)
 joints_out = verify(joints_obj, joints_rows, own, strict)
+joints_near_out = verify(joints_obj, joints_near_rows, own, False)
+assert len(joints_near_out) == 1 and joints_near_out[0]['size'] == joints_near_out[0]['target_size'] == 156
+raw = joints_obj.read_bytes()
+sections, symbols, definitions, _ = match._coff_data_index(raw)
+start, section = definitions[joints_near_rows[0][1]]
+table = sections[section]
+near_refs = [symbols[index][0] for i in range(table[7])
+             for offset, index, kind in [struct.unpack_from('<IIH', raw, table[5] + 10 * i)]
+             if start <= offset < start + joints_near_out[0]['size']]
+assert any(x.startswith('?removeListener@?$Notifier@VWorld@RBX@@UAutoJoin') for x in near_refs)
+assert any(x.startswith('?removeListener@?$Notifier@VWorld@RBX@@UAutoDestroy') for x in near_refs)
+assert '??$create@VWorkspace@RBX@@@ServiceProvider@RBX@@QBEPAVWorkspace@1@XZ' in near_refs
+assert any(x.startswith('?addListener@?$Notifier@VWorld@RBX@@UAutoJoin') for x in near_refs)
+assert any(x.startswith('?addListener@?$Notifier@VWorld@RBX@@UAutoDestroy') for x in near_refs)
+target = match.target('2008-06', '005e5b50')[0]
+original_calls = [(0x5e5b50 + i + 5 + struct.unpack_from('<i', target, i + 1)[0]) & 0xffffffff
+                  for i, byte in enumerate(target[:-4]) if byte == 0xe8]
+assert original_calls == [0x5e5a80, 0x5e5a80, 0x490af0, 0x4218a0, 0x4218a0]
+joints_near_out[0].update({'semantic_refs': near_refs,
+                           'original_call_targets': ['%08x' % x for x in original_calls],
+                           'near_match_reason': 'same-size semantic recovery; compiler evaluation order differs'})
 physics_out = verify(physics_obj, physics_rows, own, strict)
 network_out = verify(network_obj, network_rows, own, strict) if HAVE_NETWORK else []
 physp_out = verify(physp_obj, physp_rows, own, strict)
@@ -416,8 +441,10 @@ if HAVE_NETWORK:
     paths += [NETWORK_H, NETWORK_SRC]
     objects.append(network_obj)
     flags['network'] = network_flags
-groups = {'layout': layout_out, 'joints': joints_out, 'physics': physics_out, 'network': network_out, 'pending': physp_out}
-exact_rows = sorted({r['address'] for g in (layout_out, joints_out, physics_out, network_out) for r in g if r['exact']})
+groups = {'layout': layout_out, 'joints': joints_out, 'joints_near': joints_near_out,
+          'physics': physics_out, 'network': network_out, 'pending': physp_out}
+exact_rows = sorted({r['address'] for g in (layout_out, joints_out, joints_near_out, physics_out, network_out)
+                     for r in g if r['exact']})
 receipt = {
     'class': 'RBX::JointsService, RBX::PhysicsService, RBX::NetworkSettings', 'compiler': 'MSVC 15.00.21022 (VS2008 RTM)',
     'flags': flags,

@@ -1,17 +1,21 @@
-// from server: 45% by colin
-struct S_func_00459ce0 {
-    void* m_vtable;
-    int m_arg;
-    char pad8[4];
-    void m_sub(int);
-    S_func_00459ce0(int);
+// from server: 100% by EspClaude
+// roc 2007-08 00459ce0  (trial)
+struct Member {
+    Member(int n);
+    ~Member();
 };
 
-extern "C" void __stdcall sub_0047ad80(void*, int);
+struct Base {
+    virtual ~Base();
+};
 
-S_func_00459ce0::S_func_00459ce0(int arg)
+struct Derived : public Base {
+    int m_arg;
+    Member m_member;
+    Derived(int a);
+    virtual ~Derived();
+};
+
+Derived::Derived(int a) : m_arg(a), m_member(0xa00000)
 {
-    m_vtable = (void*)0x79362c;
-    m_arg = arg;
-    sub_0047ad80(&pad8[0], 0xa00000);
 }

@@ -1,56 +1,100 @@
+// from server: 100% by EspClaude
 // from server: 45% by colin
-struct CDataModelPropGrid {
-    char pad0[0xdc];
-    void* m_ptr_dc;
-    char pad1[8];
-    void* m_ptr_e8;
-    char pad2[0x100];
-    char m_sub_f0[0x30];
-    char m_sub_120[0x14c];
-    char m_sub_26c[0x12c];
-    void* m_ptr_398;
-    void* m_ptr_394;
-    void* m_ptr_390;
-    char m_sub_39c[0x2c];
-    char m_sub_3c8[0x8];
+// roc 2007-08 00432610  unit: CDataModelPropGrid  size: 298 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 00432610
+//
+// 00432610  6aff                 push -1
+// 00432612  6872dd7300           push 0x73dd72
+// 00432617  64a100000000         mov eax, dword ptr fs:[0]
+// 0043261d  50                   push eax
+// Destructor of a class with two bases: primary at +0 (dtor 0x430c40 called directly),
+// secondary at +0xdc (vtable only, inline dtor). Members at 0xe8, 0xf0 (dllimport dtor via
+// IAT 0x77ddbc), 0x120, 0x26c, 0x390/0x394/0x398 (owning pointers deleted through vtable slot 1),
+// 0x39c, 0x3c8 -- offsets all from the target bytes; EH states 9..2 from the target stores.
 
-    void destroy();
+class CPropBase
+{
+public:
+    virtual ~CPropBase();
+    char pad_[0xdc - 4];
 };
 
-extern "C" {
-    void __stdcall sub_6301e4(void*);
-    void __stdcall sub_432530(void*, void*);
-    void __stdcall sub_693b60(void*);
-    void __stdcall sub_691c60(void*);
-    void __stdcall sub_68d3b0(void*);
-    void __stdcall sub_66ded0(void*);
-    void __stdcall sub_430c40(void*);
-    void __stdcall sub_77ddbc(void*);
-}
+class CPropMid : public CPropBase
+{
+public:
+    virtual ~CPropMid() {}
+};
 
-void CDataModelPropGrid::destroy() {
-    m_ptr_dc = (void*)0x78b4fc;
-    *(void**)((char*)this + 0xdc) = (void*)0x78b4f0;
-    if (m_ptr_e8) {
-        sub_6301e4(m_ptr_e8);
-        m_ptr_e8 = 0;
+class IPropListener
+{
+public:
+    virtual ~IPropListener() {}
+    virtual void OnChanged() = 0;
+};
+
+class CPropWnd
+{
+public:
+    int Destroy();
+};
+
+class CRegistry
+{
+public:
+    void Remove(IPropListener* l);
+};
+extern CRegistry g_registry;
+
+class __declspec(dllimport) CImported
+{
+public:
+    ~CImported() throw();
+    char pad_[0x30];
+};
+
+class CMember120 { public: ~CMember120(); char pad_[0x14c]; };
+class CMember26c { public: ~CMember26c(); char pad_[0x124]; };
+class CMember39c { public: ~CMember39c(); char pad_[0x2c]; };
+class CMember3c8 { public: ~CMember3c8(); };
+
+class COwned
+{
+public:
+    virtual void f0();
+    virtual ~COwned();
+};
+
+template<class T> class owner_ptr
+{
+    T* p_;
+public:
+    ~owner_ptr() { delete p_; }
+};
+
+class CDataModelPropGrid : public CPropMid, public IPropListener
+{
+public:
+    virtual ~CDataModelPropGrid();
+    virtual void OnChanged();
+    int pad_e0[2];
+    CPropWnd* m_wnd;
+    int pad_ec;
+    CImported m_f0;
+    CMember120 m_120;
+    CMember26c m_26c;
+    owner_ptr<COwned> m_390;
+    owner_ptr<COwned> m_394;
+    owner_ptr<COwned> m_398;
+    CMember39c m_39c;
+    CMember3c8 m_3c8;
+};
+
+CDataModelPropGrid::~CDataModelPropGrid()
+{
+    if (m_wnd)
+    {
+        m_wnd->Destroy();
+        m_wnd = 0;
     }
-    sub_432530((void*)0x8a2820, (char*)this + 0xdc);
-    sub_693b60((char*)this + 0x3c8);
-    sub_691c60((char*)this + 0x39c);
-    if (m_ptr_398) {
-        (*(void(__thiscall**)(void*, int))m_ptr_398)(m_ptr_398, 1);
-    }
-    if (m_ptr_394) {
-        (*(void(__thiscall**)(void*, int))m_ptr_394)(m_ptr_394, 1);
-    }
-    if (m_ptr_390) {
-        (*(void(__thiscall**)(void*, int))m_ptr_390)(m_ptr_390, 1);
-    }
-    sub_68d3b0((char*)this + 0x26c);
-    sub_66ded0((char*)this + 0x120);
-    sub_77ddbc((char*)this + 0xf0);
-    *(void**)((char*)this + 0xdc) = (void*)0x78a710;
-    *(void**)this = (void*)0x78b174;
-    sub_430c40(this);
+    g_registry.Remove(this);
 }

@@ -18,7 +18,7 @@
 //              return-NULL body 00416690).
 //   world      onServiceProvider 005e5b50 disconnects Notifier<World, AutoJoin> (World +0) and
 //              Notifier<World, AutoDestroy> (World +0x20) from world (+0x150), then sets world from
-//              ServiceProvider::find<Workspace>(newProvider) (Workspace +0x2e4); it does not call
+//              ServiceProvider::create<Workspace>(newProvider) (00490af0; Workspace +0x2e4); it does not call
 //              Instance::onServiceProvider in 2008.
 #include "v8tree/Instance.h"
 #include "v8tree/Service.h"

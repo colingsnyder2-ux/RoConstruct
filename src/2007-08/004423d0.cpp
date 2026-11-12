@@ -1,81 +1,57 @@
+// from server: 100% by EspClaude
 // from server: 48% by colin
-struct CDataModelPropGrid {
-    void dtor();
+// roc 2007-08 004423d0  unit: CDataModelPropGrid  size: 374 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 004423d0
+//
+// 004423d0  6aff                 push -1
+// 004423d2  68d7f27300           push 0x73f2d7
+// 004423d7  64a100000000         mov eax, dword ptr fs:[0]
+// 004423dd  50                   push eax
+// Destructor: primary base at +0 (dtor 0x682930 out of line), secondary base at +0x17c
+// (vtable only, inline dtor restoring 0x788344). Members: 0x180 (dtor 0x725720), a VS2005
+// vector at 0x18c (_Myfirst/_Mylast/_Myend at 0x190/0x194/0x198), std::set/map trees at 0x19c,
+// 0x1a8 (same erase 0x44efc0), 0x1b8 (erase 0x439dc0), 0x1c4 (erase 0x441c70): _Myhead at +4,
+// _Mysize at +8, freed with operator delete 0x62fc62. All offsets from the target bytes.
+#include <set>
+#include <vector>
+
+class CGridBase
+{
+public:
+    virtual ~CGridBase();
+    char pad_[0x17c - 4];
 };
 
-extern "C" void __cdecl sub_62FC62(void*);
-extern "C" void __cdecl sub_725720(void*);
-extern "C" void __cdecl sub_682930(void*);
-extern "C" void __cdecl sub_441C70(void*, void*, void*, void*, void*);
-extern "C" void __cdecl sub_439DC0(void*, void*, void*, void*, void*);
-extern "C" void __cdecl sub_44EFC0(void*, void*, void*, void*, void*);
-
-void CDataModelPropGrid::dtor()
+class IGridListener
 {
-    char* self = (char*)this;
-    *(void**)(self + 0) = (void*)0x78f41c;
-    *(void**)(self + 0x17c) = (void*)0x78f40c;
+public:
+    virtual ~IGridListener() {}
+    virtual void OnEvent() = 0;
+};
 
-    {
-        char* p = self + 0x1c4;
-        void* a = *(void**)(self + 0x1c8);
-        void* b = *(void**)a;
-        int flag = 6;
-        sub_441C70(p, &flag, b, p, a);
-        sub_62FC62(*(void**)(p + 4));
-        *(void**)(p + 4) = 0;
-        *(void**)(p + 8) = 0;
-    }
+class CMember180
+{
+public:
+    ~CMember180();
+    int pad_[3];
+};
 
-    {
-        char* p = self + 0x1b8;
-        void* a = *(void**)(self + 0x1bc);
-        void* b = *(void**)a;
-        char flag = 5;
-        sub_439DC0(p, &flag, b, p, a);
-        sub_62FC62(*(void**)(p + 4));
-        *(void**)(p + 4) = 0;
-        *(void**)(p + 8) = 0;
-    }
+struct ItemA; struct ItemB; struct ItemC; struct ItemD;
 
-    {
-        char* p = self + 0x1a8;
-        void* a = *(void**)(self + 0x1ac);
-        void* b = *(void**)a;
-        char flag = 4;
-        sub_44EFC0(p, &flag, b, p, a);
-        sub_62FC62(*(void**)(p + 4));
-        *(void**)(p + 4) = 0;
-        *(void**)(p + 8) = 0;
-    }
+class CDataModelPropGrid : public CGridBase, public IGridListener
+{
+public:
+    virtual ~CDataModelPropGrid();
+    virtual void OnEvent();
+    CMember180 m_180;
+    std::vector<ItemD*> m_18c;
+    std::set<ItemC*> m_19c;
+    std::set<ItemC*> m_1a8;
+    int m_1b4;
+    std::set<ItemB*> m_1b8;
+    std::set<ItemA*> m_1c4;
+};
 
-    {
-        char* p = self + 0x19c;
-        void* a = *(void**)(self + 0x1a0);
-        void* b = *(void**)a;
-        char flag = 3;
-        sub_44EFC0(p, &flag, b, p, a);
-        sub_62FC62(*(void**)(p + 4));
-        *(void**)(p + 4) = 0;
-        *(void**)(p + 8) = 0;
-    }
-
-    {
-        void* p = *(void**)(self + 0x190);
-        if (p != 0) {
-            sub_62FC62(p);
-        }
-        *(void**)(self + 0x190) = 0;
-        *(void**)(self + 0x194) = 0;
-        *(void**)(self + 0x198) = 0;
-    }
-
-    {
-        char* p = self + 0x180;
-        char flag = 1;
-        sub_725720(&flag);
-    }
-
-    *(void**)(self + 0x17c) = (void*)0x788344;
-    sub_682930(self);
+CDataModelPropGrid::~CDataModelPropGrid()
+{
 }

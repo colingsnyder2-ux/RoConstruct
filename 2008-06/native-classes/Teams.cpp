@@ -130,6 +130,7 @@ namespace RBX
 		return getTeamFromTeamColor(player->getTeamColor());
 	}
 
+	// 005d6180: byte-exact (199 bytes; all call/data references independently bound).
 	G3D::Color3 Teams::getTeamColorForHumanoid(Humanoid* humanoid)
 	{
 		Network::Players* players = ServiceProvider::find<Network::Players>(this);

@@ -1,20 +1,26 @@
+// from server: 100% by EspClaude
 // from server: 45% by colin
-struct CWebToolbox {
-    char pad[0xf8];
-    void* field_f8;
-    CWebToolbox();
+// roc 2007-08 004669b0  unit: CWebToolbox  size: 126 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 004669b0
+//
+// Shape: MFC DECLARE_DYNCREATE CreateObject: return new CWebToolbox; base ctor at 0x461c60,
+// object size 0xfc, member at +0xf8 zeroed.
+struct CObject;
+
+struct CWebToolboxBase {
+    CWebToolboxBase();
+    virtual ~CWebToolboxBase();
+    char pad[0xf8 - 4];
 };
 
-extern "C" void* __cdecl sub_62FEF6(unsigned int size);
-extern "C" void __fastcall sub_461C60(CWebToolbox* self);
+struct CWebToolbox : CWebToolboxBase {
+    void* field_f8;
+    CWebToolbox() : field_f8(0) {}
+    virtual ~CWebToolbox();
+    static CObject* __stdcall CreateObject();
+};
 
-CWebToolbox* __cdecl create_web_toolbox()
+CObject* __stdcall CWebToolbox::CreateObject()
 {
-    CWebToolbox* p = (CWebToolbox*)sub_62FEF6(0xfc);
-    if (p != 0) {
-        sub_461C60(p);
-        *(void**)p = (void*)0x795cbc;
-        p->field_f8 = 0;
-    }
-    return p;
+    return (CObject*)new CWebToolbox;
 }

@@ -1,62 +1,101 @@
-// from server: 48% by colin
+// from server: 91% by EspClaude
 // roc 2007-08 004125c0  unit: VCContent::?$CComObject  size: 213 bytes
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-flags: /O2 /GS /MD
+// roc-flags: /O2 /GS /EHsc /MD
+//
+// ATL CComCreator<CComObject<T>>::CreateInstance shape: ATLTRY(new) with an MFC
+// catch(CException*) funclet (0x412695, call 0x62ff2c = CException::Delete),
+// new size 0x94, std::stringstream member at +0xc (msvcp80 ctor(3, 1)),
+// two interface vptrs at +0/+4, m_dwRef at +8, _pAtlModule->Lock() (vslot 1),
+// QueryInterface (vslot 0, stdcall), virtual scalar deleting dtor at vslot 4.
 
-extern "C" void* __cdecl sub_62FEF6(unsigned int size);
-extern "C" void __stdcall sub_77E674(void* p, int a, int b);
+#include <sstream>
 
-extern unsigned int dword_8B5188;
-extern unsigned int dword_8BAE44;
-extern unsigned int dword_786EB0;
-extern unsigned int dword_786E8C;
+struct GUID { unsigned long d1; unsigned short d2, d3; unsigned char d4[8]; };
 
-struct VCContentCComObject {
-    int __stdcall CreateInstance(int a, int b, int* c);
+struct CException {
+    void Delete();
 };
 
-int __stdcall VCContentCComObject::CreateInstance(int a, int b, int* c)
-{
-    int hr;
-    void* p;
+struct AtlModule {
+    virtual void v0();
+    virtual long Lock();
+};
+extern AtlModule* _pAtlModule;   // 0x8bae44
 
-    if (c == 0)
-        return (int)0x80004003;
+struct __declspec(novtable) IContent {
+    virtual long __stdcall QueryInterface(const GUID& riid, void** ppv) = 0;
+    virtual unsigned long __stdcall AddRef() = 0;
+    virtual unsigned long __stdcall Release() = 0;
+    virtual long __stdcall Method3() = 0;
+};
 
-    *c = 0;
-    hr = (int)0x8007000E;
+struct __declspec(novtable) IOther {
+    virtual long __stdcall QueryInterface(const GUID& riid, void** ppv) = 0;
+    virtual unsigned long __stdcall AddRef() = 0;
+    virtual unsigned long __stdcall Release() = 0;
+};
 
-    p = sub_62FEF6(0x94);
-    if (p != 0) {
-        *(int*)((char*)p + 8) = 0;
-        sub_77E674((char*)p + 0xc, 3, 1);
-        *(unsigned int*)p = dword_786EB0;
-        *(unsigned int*)((char*)p + 4) = dword_786E8C;
-        {
-            unsigned int* v = (unsigned int*)dword_8BAE44;
-            unsigned int* vt = (unsigned int*)*v;
-            typedef void (__stdcall *Fn)(void*);
-            ((Fn)vt[1])(v);
+struct RootBase {
+    long m_dwRef;
+    RootBase() : m_dwRef(0) {}
+    long InternalAddRef() { return ++m_dwRef; }
+    long InternalRelease() { return --m_dwRef; }
+    void SetVoid(void*) {}
+    void InternalFinalConstructAddRef() { InternalAddRef(); }
+    void InternalFinalConstructRelease() { InternalRelease(); }
+    long _AtlInitialConstruct() { return 0; }
+    long FinalConstruct() { return 0; }
+    long _AtlFinalConstruct() { return 0; }
+};
+
+class __declspec(novtable) Content : public IContent, public IOther, public RootBase {
+public:
+    std::stringstream m_stream;
+};
+
+template <class Base>
+class ComObject : public Base {
+public:
+    __forceinline ComObject(void* = 0) throw() { _pAtlModule->Lock(); }
+    virtual ~ComObject();
+    long __stdcall QueryInterface(const GUID& riid, void** ppv);
+    unsigned long __stdcall AddRef();
+    unsigned long __stdcall Release();
+    long __stdcall Method3();
+};
+
+template <class T1>
+struct ComCreator {
+    static long __stdcall CreateInstance(void* pv, const GUID& riid, void** ppv)
+    {
+        if (ppv == 0)
+            return 0x80004003L;
+        *ppv = 0;
+        long hRes = 0x8007000EL;
+        T1* p = 0;
+        try {
+            p = new T1(pv);
+        } catch (CException* e) {
+            e->Delete();
         }
-    } else {
-        p = 0;
+        if (p != 0) {
+            p->SetVoid(pv);
+            p->InternalFinalConstructAddRef();
+            hRes = p->_AtlInitialConstruct();
+            if (hRes >= 0)
+                hRes = p->FinalConstruct();
+            if (hRes >= 0)
+                hRes = p->_AtlFinalConstruct();
+            p->InternalFinalConstructRelease();
+            if (hRes == 0)
+                hRes = p->QueryInterface(riid, ppv);
+            if (hRes != 0)
+                delete p;
+        }
+        return hRes;
     }
+};
 
-    if (p != 0) {
-        *(int*)((char*)p + 8) += 1;
-        *(int*)((char*)p + 8) += -1;
-        {
-            unsigned int* vt = (unsigned int*)*(unsigned int*)p;
-            typedef int (__stdcall *Fn2)(void*, int, int*);
-            hr = ((Fn2)vt[0])(p, a, c);
-        }
-        if (hr != 0) {
-            unsigned int* vt2 = (unsigned int*)*(unsigned int*)p;
-            typedef void (__stdcall *Fn3)(void*, int);
-            ((Fn3)vt2[4])(p, 1);
-        }
-    }
-
-    return hr;
-}
+template struct ComCreator<ComObject<Content> >;

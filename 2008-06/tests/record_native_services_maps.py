@@ -131,8 +131,6 @@ NOT_ATTEMPTED_NETWORK = {
     '004aaa80': 'EnumPropDescriptor virtual (getset getValue, then the EnumDesc item vector +0xdc/+0xe0): 2008 layout',
 }
 NOT_ATTEMPTED = {
-    '005e5b50': 'JointsService::onServiceProvider: ServiceProvider::find<Workspace> 00490af0 and Workspace world +0x2e4 '
-                '(no native Workspace.h); disconnect/connect Notifier<World,AutoJoin> (World +0) / <World,AutoDestroy> (+0x20)',
     '005e8ec0': 'PhysicsService::onServiceProvider: same Workspace dependency; Notifier<World,AssemblyPhysicsOn/Off> at '
                 'World +0x40/+0x60 (the donor World.h has neither notifier base)',
     '004ca3c0': 'boost::detail::shared_count(PhysicsService*, Creatable<Instance>::Deleter) (110 bytes): the 2008 boost '

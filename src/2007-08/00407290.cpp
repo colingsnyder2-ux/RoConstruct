@@ -1,75 +1,101 @@
-// from server: 44% by tester
-extern "C" int __stdcall sub_4022A0(int, int, int, int);
-extern "C" int __stdcall sub_404400(int, int, int, int, int);
-extern "C" int __stdcall sub_406120(int, int);
+// from server: 90% by EspClaude
+// roc 2007-08 00407290  unit: UIEnumConnections::V?$CComEnum::?$CComObject  size: 257 bytes
+// ATL 8.0 CComEnumImpl<IEnumConnections, &IID_IEnumConnections, CONNECTDATA, _Copy<CONNECTDATA> >::Clone,
+// rewritten from the target bytes: layout vtbl+0, m_spUnk +4, m_begin +8, m_end +0xc, m_iter +0x10,
+// m_dwFlags +0x14 (BitOwn = 2); CComObject<CComEnum>::CreateInstance 0x406120 (stdcall),
+// Init 0x404400 (thiscall, flags 0), AtlInternalQueryInterface 0x4022a0 (entries 0x784e28, iid 0x784e40),
+// delete p = scalar deleting dtor at vtbl +0x1c.
+typedef long HRESULT;
+typedef unsigned long DWORD;
+struct _GUID;
+typedef const _GUID& REFIID;
 
-struct S {
-    int f(int, int);
+struct IUnknown
+{
+    virtual HRESULT __stdcall QueryInterface(REFIID riid, void** ppv) = 0;
+    virtual unsigned long __stdcall AddRef() = 0;
+    virtual unsigned long __stdcall Release() = 0;
 };
 
-int S::f(int a, int b) {
-    int result = -2147467261;
-    int sp18 = 0;
-    int sp14 = 0;
-    int sp2c = 0;
-    int sp24 = 0;
-    int sp30 = 0;
-    int flag = 0;
-    int* p = (int*)a;
-    if (p == 0) {
-        return result;
+struct CONNECTDATA { IUnknown* pUnk; DWORD dwCookie; };
+
+struct IEnumConnections : public IUnknown
+{
+    virtual HRESULT __stdcall Next(unsigned long cConnections, CONNECTDATA* rgcd, unsigned long* pcFetched) = 0;
+    virtual HRESULT __stdcall Skip(unsigned long cConnections) = 0;
+    virtual HRESULT __stdcall Reset() = 0;
+    virtual HRESULT __stdcall Clone(IEnumConnections** ppEnum) = 0;
+};
+
+template <class T>
+class CComPtr
+{
+public:
+    CComPtr() throw() { p = 0; }
+    CComPtr(T* lp) throw() { p = lp; if (p != 0) p->AddRef(); }
+    ~CComPtr() throw() { if (p) p->Release(); }
+    operator T*() const throw() { return p; }
+    T* p;
+};
+
+struct _ATL_INTMAP_ENTRY;
+extern "C" HRESULT __stdcall AtlInternalQueryInterface(void* pThis, const _ATL_INTMAP_ENTRY* pEntries, REFIID iid, void** ppvObject);
+extern const _GUID IID_IEnumConnections;
+
+enum CComEnumFlags { AtlFlagNoCopy = 0, AtlFlagTakeOwnership = 2, AtlFlagCopy = 3 };
+
+class CComEnumConnectionsImpl : public IEnumConnections
+{
+public:
+    HRESULT __stdcall Next(unsigned long celt, CONNECTDATA* rgelt, unsigned long* pceltFetched);
+    HRESULT __stdcall Skip(unsigned long celt);
+    HRESULT __stdcall Reset() { m_iter = m_begin; return 0; }
+    HRESULT __stdcall Clone(IEnumConnections** ppEnum);
+    HRESULT Init(CONNECTDATA* begin, CONNECTDATA* end, IUnknown* pUnk, CComEnumFlags flags = AtlFlagNoCopy);
+    enum FlagBits { BitCopy = 1, BitOwn = 2 };
+
+    CComPtr<IUnknown> m_spUnk;
+    CONNECTDATA* m_begin;
+    CONNECTDATA* m_end;
+    CONNECTDATA* m_iter;
+    DWORD m_dwFlags;
+};
+
+class CComObject_CComEnumConnections : public CComEnumConnectionsImpl
+{
+public:
+    virtual ~CComObject_CComEnumConnections();
+    static const _ATL_INTMAP_ENTRY* __stdcall _GetEntries() throw() { return _entries; }
+    HRESULT _InternalQueryInterface(REFIID iid, void** ppvObject) throw()
+    {
+        return AtlInternalQueryInterface(this, _GetEntries(), iid, ppvObject);
     }
-    *p = 0;
-    result = sub_406120((int)&sp18, (int)p);
-    if (result < 0) {
-        return result;
-    }
-    int* obj = (int*)b;
-    if ((*(unsigned char*)((char*)obj + 0x14) & 2) != 0) {
-        int* vtbl = (int*)*obj;
-        int (*fn)(int) = (int (*)(int))vtbl[1];
-        sp30 = b;
-        fn(b);
-        sp24 = 0;
-        flag = 1;
-        sp2c = (int)&sp30;
-        sp14 = flag;
-    } else {
-        sp2c = (int)((char*)obj + 4);
-    }
-    int v1 = *(int*)sp2c;
-    int v2 = *(int*)((char*)obj + 8);
-    int v3 = sp18;
-    int v4 = *(int*)((char*)obj + 0xc);
-    result = sub_404400(v3, v2, v4, v1, 0);
-    int ret = result;
-    sp24 = -1;
-    if ((flag & 1) != 0) {
-        int* q = (int*)sp30;
-        if (q != 0) {
-            int* vtbl2 = (int*)*q;
-            int (*fn2)(int) = (int (*)(int))vtbl2[2];
-            fn2((int)q);
+    static HRESULT __stdcall CreateInstance(CComObject_CComEnumConnections** pp);
+    static const _ATL_INTMAP_ENTRY _entries[];
+};
+
+HRESULT __stdcall CComEnumConnectionsImpl::Clone(IEnumConnections** ppEnum)
+{
+    typedef CComObject_CComEnumConnections _class;
+    HRESULT hRes = (HRESULT)0x80004003;
+    if (ppEnum != 0)
+    {
+        *ppEnum = 0;
+        _class* p;
+        hRes = _class::CreateInstance(&p);
+        if (hRes >= 0)
+        {
+            // If this object has ownership of the data then we need to keep it around
+            _class* pObj = p;
+            hRes = pObj->Init(m_begin, m_end, (m_dwFlags & BitOwn) ? this : m_spUnk);
+            if (hRes >= 0)
+            {
+                pObj->m_iter = m_iter;
+                hRes = pObj->_InternalQueryInterface(IID_IEnumConnections, (void**)ppEnum);
+            }
+            if (hRes < 0)
+                delete pObj;
         }
     }
-    if (ret < 0) {
-        if (v3 != 0) {
-            int* vtbl3 = (int*)*(int*)v3;
-            int (*fn3)(int, int) = (int (*)(int, int))vtbl3[7];
-            fn3(v3, 1);
-        }
-        return ret;
-    }
-    int v5 = sp30;
-    int v6 = *(int*)((char*)obj + 0x10);
-    *(int*)(v3 + 0x10) = v6;
-    ret = sub_4022A0(v3, 0x784e28, 0x784e40, v5);
-    if (ret < 0) {
-        if (v3 != 0) {
-            int* vtbl4 = (int*)*(int*)v3;
-            int (*fn4)(int, int) = (int (*)(int, int))vtbl4[7];
-            fn4(v3, 1);
-        }
-    }
-    return ret;
+    return hRes;
 }

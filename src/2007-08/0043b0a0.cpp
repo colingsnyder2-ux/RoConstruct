@@ -1,73 +1,63 @@
-// from server: 43% by colin
+// from server: 91% by EspClaude
 // roc 2007-08 0043b0a0  unit: CSelectionPropGrid  size: 316 bytes
-
-extern "C" {
-    int __stdcall sub_699000(int);
-    int __stdcall sub_699320(int, int, int);
+// roc-flags: /O2 /GS /EHsc /MD
+// Rewritten from target disassembly: item list loop comparing CString names (MFC IAT),
+// insert at index, then two map updates (this+0x19c, this+0x18c).
+namespace ATL {
+template<typename T, bool B> class CSimpleStringT {
+public:
+    __declspec(dllimport) operator const T*() const;
+    T* m_pszData;
+};
+template<typename T, class Traits> class CStringT : public CSimpleStringT<T, true> {
+public:
+    __declspec(dllimport) ~CStringT() throw();
+    __declspec(dllimport) int Compare(const T* psz) const;
+};
 }
+template<typename T> class StrTraitMFC_DLL {};
+typedef ATL::CStringT<char, StrTraitMFC_DLL<char> > CString;
 
-struct Inner {
+class Item;
+struct Items {                      // count at +0x28 (target: cmp [ecx+0x28])
     char pad0[0x28];
     int count;
+    Item* GetAt(int i);             // 0x699000 thiscall
+    int GetCount() { return count; }
 };
-
-struct Obj {
+struct Key { char pad0[8]; int id; }; // a->[0x118]->[8]
+class Item {
+public:
     char pad0[0xb8];
-    Inner* inner;
-};
-
-struct CSelectionPropGrid {
-    char pad0[0x18c];
-    char field18c[0x10];
-    char field19c[0x10];
-    void method(int);
-};
-
-struct Arg {
-    char pad0[0x100];
+    Items* childs;                  // +0xb8
+    char padbc[0x100 - 0xbc];
     char field100[0x18];
-    char pad118[0x4];
-    Obj* obj118;
+    Key* key;                       // +0x118
+    CString GetName() const;        // 0x438e10
+    void InsertChild(int i, Item* item); // 0x699320
+};
+struct MapA { char pad[0x10]; Item*& operator[](void* const& k); };  // 0x4339d0
+struct MapB { char pad[0x10]; int erase(void* const& k); };          // 0x464ec0
+
+class CSelectionPropGrid {
+public:
+    char pad0[0x18c];
+    MapB map18c;
+    MapA map19c;
+    Item* FindParent(int id);       // 0x4397d0
+    void AddItem(Item* item);
 };
 
-extern "C" int __stdcall sub_438e10(int, void*);
-extern "C" int __stdcall sub_4397d0(int, int);
-extern "C" int __stdcall sub_4339d0(int, void*);
-extern "C" int __stdcall sub_464ec0(int, void*);
-
-extern "C" {
-    typedef int (__stdcall *Fn0)();
-    extern Fn0 imp_77dd98;
-    extern int (__stdcall *imp_77dcb8)(int);
-    extern int (__stdcall *imp_77ddbc)(int);
-}
-
-void CSelectionPropGrid::method(int arg)
+void CSelectionPropGrid::AddItem(Item* item)
 {
-    Arg* a = (Arg*)arg;
-    Obj* o = a->obj118;
-    int v = sub_4397d0((int)this, o->inner->count);
-    Obj* o2 = (Obj*)v;
-    int i = 0;
-    if (o2->inner->count > 0) {
-        do {
-            int x = sub_699000(i);
-            int r1;
-            sub_438e10(x, &r1);
-            int r2;
-            sub_438e10((int)a, &r2);
-            int t = imp_77dd98();
-            int cmp = imp_77dcb8(t);
-            bool less = cmp < 0;
-            imp_77ddbc(r1);
-            imp_77ddbc(r2);
-            if (less) break;
-            i++;
-        } while (i < o2->inner->count);
+    Item* parent = FindParent(item->key->id);
+    int i;
+    for (i = 0; i < parent->childs->GetCount(); i++) {
+        Item* child = parent->childs->GetAt(i);
+        if (item->GetName().Compare(child->GetName()) < 0)
+            break;
     }
-    sub_699320((int)o2, i, (int)a);
-    int* p = &a->obj118->inner->count;
-    sub_4339d0((int)(this->field19c), &p);
-    *(int*)&this->field18c = (int)&a->field100;
-    sub_464ec0((int)(this->field18c), &p);
+    parent->InsertChild(i, item);
+    map19c[item->key] = (Item*)item->field100;
+    map18c.erase(item->field100);
 }

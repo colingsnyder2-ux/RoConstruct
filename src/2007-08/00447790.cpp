@@ -1,61 +1,81 @@
+// from server: 100% by EspClaude
 // from server: 45% by colin
-struct CRenderSettings {
-    char pad[0x118];
-    int widthHeight;
-    char pad2[4];
-    int field11c;
+// roc 2007-08 00447790  unit: VCRenderSettings::?$FactoryProduct  size: 215 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 00447790
+
+struct PropertyDescriptor {
+    int data;
 };
 
-extern int g_888554;
-extern int g_888558;
-extern int g_897a60;
-
-struct Vtable {
-    char pad[8];
-    void (__stdcall *fn8)(void*, char*);
+class DescribedBase {
+public:
+    virtual ~DescribedBase();
 };
 
-struct Obj8bbd30 {
-    Vtable* vt;
+struct BoolProperty {
+    virtual void v0();
+    virtual void v1();
+    virtual void setValue(DescribedBase* instance, const bool& value) const;   // vtable +8
 };
 
-extern Obj8bbd30* g_obj8bbd30;
+struct Vector2int16 {
+    short x;
+    short y;
+    Vector2int16() {}
+    Vector2int16(short x_, short y_) : x(x_), y(y_) {}
+    bool operator!=(const Vector2int16& o) const { return ((int*)this)[0] != ((int*)&o)[0]; }   // as G3D 6.x Vector2int16::operator!=
+};
 
-void __stdcall sub_447650(int);
-void __stdcall sub_444710(void*, const char*);
-int __stdcall sub_472f80();
+class Node {
+public:
+    virtual ~Node();
+};
 
-void sub_447790(CRenderSettings* self) {
-    char local;
-    int w, h;
-    sub_447650(1);
-    local = 1;
-    void* p = self ? (void*)((char*)self + 4) : 0;
-    Obj8bbd30* o = g_obj8bbd30;
-    o->vt->fn8(o, &local);
-    if (g_888554 != 1) {
-        g_888554 = 1;
-        sub_444710(self, (const char*)0x8bbcf8);
+unsigned int __cdecl getVideoMemory();   // 0x472f80
+
+class CRenderSettings : public Node, public DescribedBase {
+public:
+    void setFlag(bool value);                                 // 0x447650
+    void raisePropertyChanged(const PropertyDescriptor& d);   // 0x444710
+    void reset();
+
+    static const BoolProperty* prop_flag2;     // 0x8bbd30
+    static PropertyDescriptor desc_mode;       // 0x8bbcf8
+    static PropertyDescriptor desc_quality;    // 0x8bbc18
+    static PropertyDescriptor desc_resolution; // 0x8bbc34
+    static PropertyDescriptor desc_mode2;      // 0x8bbcc0
+    static int mode;                           // 0x888554
+    static int defaultQuality;                 // 0x888558
+    static int mode2;                          // 0x897a60
+
+    char pad[0x118 - 8];
+    Vector2int16 resolution;   // +0x118
+    int quality;             // +0x11c
+};
+
+void CRenderSettings::reset()
+{
+    setFlag(true);
+    prop_flag2->setValue(this, true);
+    if (mode != 1) {
+        mode = 1;
+        raisePropertyChanged(desc_mode);
     }
-    int v = g_888558;
-    if (v != self->field11c) {
-        self->field11c = v;
-        sub_444710(self, (const char*)0x8bbc18);
+    if (defaultQuality != quality) {
+        quality = defaultQuality;
+        raisePropertyChanged(desc_quality);
     }
-    int r = sub_472f80();
-    if ((unsigned)r >= 0xf42400) {
-        w = 0x400;
-        h = 0x300;
-    } else {
-        w = 0x320;
-        h = 0x258;
+    Vector2int16 r;
+    if (getVideoMemory() >= 16000000)
+        r = Vector2int16(1024, 768);
+    else
+        r = Vector2int16(800, 600);
+    if (r != resolution) {
+        resolution = r;
+        raisePropertyChanged(desc_resolution);
     }
-    if (w != self->widthHeight) {
-        self->widthHeight = w;
-        sub_444710(self, (const char*)0x8bbc34);
-    }
-    if (g_897a60 != 1) {
-        g_897a60 = 1;
-        sub_444710(self, (const char*)0x8bbcc0);
+    if (mode2 != 1) {
+        mode2 = 1;
+        raisePropertyChanged(desc_mode2);
     }
 }

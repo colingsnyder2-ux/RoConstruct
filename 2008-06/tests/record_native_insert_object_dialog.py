@@ -37,11 +37,15 @@ authoring_source = root / 'rebuild/2008-06/native-classes/AuthoringSettings.cpp'
 authoring_obj = out / 'NativeAuthoringSettings.obj'
 # CClassImages calls the statically linked XTP 11.2.2 bitmap loader: XTP headers need min/max.
 xtp_flags = ['/UNOMINMAX', '/I' + str(root / 'tools/libs/xtp-11.2.2/Source'), '/D_XTP_STATICLINK']
-for path, target, extra in [(source, obj, []), (fixture, out / 'NativeInsertObjectDialogLayout.obj', []),
+dialog_flags = ['/I' + str(root / 'rebuild/2008-06/native-headers' / name) for name in
+                ('boost-inline-nothrow', 'mfc-noinline-pcxstr', 'std-noinline-dialog')]
+header_i = next(i for i, flag in enumerate(flags) if flag.replace('\\', '/').endswith('rebuild/2008-06/native-headers'))
+for path, target, extra in [(source, obj, dialog_flags), (fixture, out / 'NativeInsertObjectDialogLayout.obj', []),
                             (images_source, images_obj, xtp_flags),
                             (metadata_source, metadata_obj, []), (authoring_source, authoring_obj, []),
                             (root / 'rebuild/2008-06/tests/NativeMetadataLayout.cpp', out / 'NativeMetadataLayout.obj', [])]:
-    code, log = rebuild.run(rebuild.toolchain(21022), 'cl', flags + extra + ['/Fo' + str(target), str(path)], out)
+    compile_flags = flags[:header_i] + extra + flags[header_i:] if path == source else flags + extra
+    code, log = rebuild.run(rebuild.toolchain(21022), 'cl', compile_flags + ['/Fo' + str(target), str(path)], out)
     assert code == 0, log
 
 pe = pefile.PE(str(root / 'work/2008-06/original-p4-reference/Roblox.exe'))
@@ -85,9 +89,17 @@ INTERNAL = {
     '??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z': 0x618a40,
     '??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z': 0x4025b0,
     '?rootDescriptor@ClassDescriptor@Reflection@RBX@@SAAAV123@XZ': 0x40ad20,
-    '?addClasses@CInsertObjectDialog@@QAEXABVClassDescriptor@Reflection@RBX@@@Z': 0x4202b0,
+    '?addClasses@CInsertObjectDialog@@QAEXPBVClassDescriptor@Reflection@RBX@@@Z': 0x4202b0,
     '?compareItems@CInsertObjectDialog@@SGHJJJ@Z': 0x41fbb0,
     '?compare@Name@RBX@@SAHAAV12@0@Z': 0x41faa0,
+    '?declare@Name@RBX@@SAABV12@PBDH@Z': 0x553f90,
+    '?call_once@boost@@YAXP6AXXZAAJ@Z': 0x557330,
+    '?singleton@Reflection@Metadata@RBX@@SA?AV?$shared_ptr@VReflection@Metadata@RBX@@@boost@@XZ': 0x445020,
+    '?lookup@Reflection@Metadata@RBX@@QBEPAVClass@213@ABVClassDescriptor@13@_N@Z': 0x443210,
+    '?singleton@?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PADA@RBX@@SAAAVAuthoringSettings@@XZ': 0x41fcf0,
+    '?create@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@Z': 0x420190,
+    '?canSetParent@Instance@RBX@@QBE_NPBV12@@Z': 0x41f390,
+    '?push_back@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z': 0x420110,
     '??1CInsertObjectDialog@@UAE@XZ': 0x41ff40,
     '?classCInsertObjectDialog@CInsertObjectDialog@@2UCRuntimeClass@@B': 0x80f2e0,
     '?LoadBitmapFromResource@CXTPImageManagerIcon@@SAPAUHBITMAP__@@PBDPAH@Z': 0x6bc520,
@@ -111,6 +123,7 @@ INTERNAL = {
     '?messageMap@?1??GetThisMessageMap@CInsertObjectDialog@@KGPBUAFX_MSGMAP@@XZ@4U3@B': 0x80f44c,
 }
 OWN = {}  # exact bodies proven by this probe, filled as rows pass
+STATICS = {}
 
 def vtable_identity(symbol, value):
     """A ??_7 table binds to an original vtable whose RTTI complete-object locator names the same class.
@@ -119,7 +132,7 @@ def vtable_identity(symbol, value):
     locator = struct.unpack('<I', data(value - 4, 4))[0]
     descriptor = struct.unpack('<I', data(locator + 12, 4))[0]
     rtti = pe.get_string_at_rva(descriptor + 8 - image).decode()
-    assert rtti.replace('3QBDB', '3PBDB') == '.?AV' + cls, (symbol, hex(value), rtti)
+    assert rtti.replace('3QBDB', '3PBDB') == ('.?AV' + cls).replace('3PADA', '3PBDB'), (symbol, hex(value), rtti)
     return '%s (RTTI %s, offset %#x)' % (hex(value), rtti, struct.unpack('<I', data(locator + 4, 4))[0])
 
 LOCAL_EH = re.compile(r'^(__ehhandler\$|__unwindfunclet\$|__catch\$|__tryblocktable\$|__unwindtable\$|__ehfuncinfo\$|\$LN\d)')
@@ -168,8 +181,15 @@ def bind(name, address):
             verified[symbol] = '%s (%s)' % (hex(value), rtti)
         elif symbol.startswith('??_7') and symbol not in INTERNAL:
             verified[symbol] = vtable_identity(symbol, value)
+        elif symbol.startswith(('?flag@?1', '?n@?1', '??_B?1')):
+            assert STATICS.setdefault(symbol, value) == value, (name, symbol, hex(value))
+            verified[symbol] = '%s (local static)' % hex(value)
+        elif symbol == '?sDataModel@RBX@@3PADA':
+            assert pe.get_string_at_rva(value - image).decode() == 'DataModel', (name, symbol, hex(value))
+            verified[symbol] = '%s (DataModel string)' % hex(value)
         else:
-            assert INTERNAL.get(symbol, OWN.get(symbol)) == value, (name, symbol, hex(value), symbol_section)
+            expected = INTERNAL.get(symbol, INTERNAL.get(symbol.replace('3PADA', '3PBDB'), OWN.get(symbol)))
+            assert expected == value, (name, symbol, hex(value), symbol_section)
             verified[symbol] = hex(value)
     return verified, sorted(local)
 
@@ -184,6 +204,9 @@ METHODS = [
     ('?OnNMDblclk@CInsertObjectDialog@@QAEXPAUtagNMHDR@@PAJ@Z', 0x41f9f0),
     ('?DoDataExchange@CInsertObjectDialog@@UAEXPAVCDataExchange@@@Z', 0x420580),
     ('?compareItems@CInsertObjectDialog@@SGHJJJ@Z', 0x41fbb0),
+    ('??$doDeclare@$1?sDataModel@RBX@@3PADA@Name@RBX@@CAABV01@XZ', 0x41fa30),
+    ('??$callDoDeclare@$1?sDataModel@RBX@@3PADA@Name@RBX@@CAXXZ', 0x41fca0),
+    ('?addClasses@CInsertObjectDialog@@QAEXPBVClassDescriptor@Reflection@RBX@@@Z', 0x4202b0),
     ('??_GCListCtrl@@UAEPAXI@Z', 0x41fa10),
 ]
 bodies = {n: (b, r) for n, b, r in match.coff_functions(raw)}
@@ -192,6 +215,7 @@ for name, address in METHODS:
     body, refs = bodies[name]
     target, target_refs, _ = match.target('2008-06', '%08x' % address)
     assert match.exact_match(target, target_refs, body, refs), (name, hex(address), len(body), len(target))
+    OWN[name] = address
     verified, local = bind(name, address)
     rows.append({'address': '%08x' % address, 'symbol': name, 'size': len(body), 'exact': True,
                  'verified_targets': verified, 'local_eh': local})
@@ -214,13 +238,13 @@ for name, address in IMAGES:
 DEPENDENCIES = [
     (metadata_obj, [('?getImageIndex@Class@Metadata@Reflection@RBX@@QBEHXZ', 0x41fb30)]),
     (authoring_obj, [
-        ('?singleton@?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PBDB@RBX@@SAAAVAuthoringSettings@@XZ', 0x41fcf0),
+        ('?singleton@?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PADA@RBX@@SAAAVAuthoringSettings@@XZ', 0x41fcf0),
         ('??0AuthoringSettings@@QAE@XZ', 0x40d140),
         ('??1AuthoringSettings@@UAE@XZ', 0x40a990),
         ('??_GAuthoringSettings@@UAEPAXI@Z', 0x40ab90),
-        ('??1?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PBDB@RBX@@MAE@XZ', 0x40a6c0),
-        ('??_G?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PBDB@RBX@@MAEPAXI@Z', 0x40a7c0),
-        ('??1?$FactoryProduct@VAuthoringSettings@@VItem@GlobalSettings@RBX@@$1?sAuthoringSettings@@3PBDB@RBX@@MAE@XZ', 0x40a0e0),
+        ('??1?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PADA@RBX@@MAE@XZ', 0x40a6c0),
+        ('??_G?$GlobalSettingsItem@VAuthoringSettings@@$1?sAuthoringSettings@@3PADA@RBX@@MAEPAXI@Z', 0x40a7c0),
+        ('??1?$FactoryProduct@VAuthoringSettings@@VItem@GlobalSettings@RBX@@$1?sAuthoringSettings@@3PADA@RBX@@MAE@XZ', 0x40a0e0),
         ('??$create@VAuthoringSettings@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VAuthoringSettings@@@boost@@XZ', 0x40d410),
         ('??$?0VAuthoringSettings@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@?$shared_ptr@VAuthoringSettings@@@boost@@QAE@PAVAuthoringSettings@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@Z', 0x40c6b0)]),
 ]
@@ -291,11 +315,10 @@ receipt = {
     'vtable': {'address': '0080f48c', 'slots': 91, 'verified_slots': len(vtable), 'unverified_slots': unverified_slots},
     'runtime_class': {'address': '0080f2e0', 'size': '0xfc', 'base_getter': '0041f9b0'},
     'message_map': {'address': '0080f44c', 'entries': [{'message': 'WM_NOTIFY', 'code': 'NM_DBLCLK', 'id': 1000, 'handler': '0041f9f0'}]},
-    'open': ['addClasses 004202b0: 711 of 713 bytes under the c_str/PCXSTR/compare noinline profile; every call target lines up, the remaining difference is register allocation (descriptor/metadata in esi/edi swapped, getImageIndex/c_str order). Layouts and callees are recovered; parked after the source-shape grid in work/2008-06/shared-layouts/insert-object-dialog-working.json notes',
-             'GlobalSettingsItem<AuthoringSettings> constructor 0040ccc0 (258 vs 255): the original folds *ClassName to the literal "Authoring", which needs const char* const template parameters in the shared reflection templates',
+    'open': ['GlobalSettingsItem<AuthoringSettings> constructor 0040ccc0 (258 vs 255): the original folds *ClassName to the literal "Authoring", which needs const char* const template parameters in the shared reflection templates',
              'Bodies of call targets owned by other units (CComCtlWrapper COMDATs 00412fc0/004130d0, CGdiObject destructor 004111a0, XTP LoadBitmapFromResource 006bc520): bound by call site and name only',
              'Name::compare 0041faa0 body (shared util/Name.h)'],
-    'scope': 'Inactive. Exact bodies with verified call/data targets for CInsertObjectDialog, CClassImages, Metadata::Class::getImageIndex and the AuthoringSettings singleton/lifetime; addClasses remains open. No active build, swap or credit.',
+    'scope': 'Inactive. All CInsertObjectDialog methods are exact with verified call/data targets; dependency rows cover CClassImages, Metadata::Class::getImageIndex and the AuthoringSettings singleton/lifetime. No active build, swap or credit.',
 }
 (root / 'work/2008-06/shared-layouts/insert-object-dialog-working.json').write_text(json.dumps(receipt, indent=2) + '\n')
 print('PASS native CInsertObjectDialog: %d exact methods, targets verified; %d vtable slots verified' % (len(rows), len(vtable)))

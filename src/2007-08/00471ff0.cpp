@@ -1,78 +1,80 @@
-// from server: 45% by colin
-// Minimal declarations for the target function.
-// The function is a member of a class (ecx = this), but the body does not
-// actually use `this`; it constructs a temporary std::string and calls a
-// helper.  We model the std::string as an opaque 0x1c-byte object.
+// from server: 100% by EspClaude
+// roc 2007-08 00471ff0  (trial): G3D 6.09 Texture::fromFile(const std::string&, ...)
+// wrapper that builds std::string f[6] and forwards to the 6-name overload
+// (0x471880). Argument order/sizes from the target's stack offsets:
+// retptr, filename, desiredFormat, wrap, interpolate, dimension,
+// double brighten, depthRead, float maxAnisotropy, float scale.
+#include <string>
 
-typedef unsigned int DWORD;
+namespace G3D {
 
-// std::string layout: 0x1c bytes (VS2005 basic_string with allocator).
-struct StdString {
-    char data[0x1c];
-    StdString();
-    ~StdString();
-    StdString& operator=(const StdString&);
-    StdString& operator=(const char*);
+class ReferenceCountedObject {
+public:
+    virtual ~ReferenceCountedObject() {}
 };
 
-// The helper at 0x471880 takes a std::string* (returned in eax) plus
-// several arguments.  We declare it as a free function returning StdString*.
-extern "C" StdString* __cdecl sub_471880(
-    StdString* out,
-    void* a2,
-    void* a3,
-    void* a4,
-    void* a5,
-    void* a6,
-    void* a7,
-    void* a8,
-    void* a9,
-    void* a10,
-    void* a11);
-
-// CRT helpers used by the compiler-generated code.
-extern "C" void* __cdecl sub_630bdc(void*, int, int, int, int, int);
-extern "C" void* __cdecl sub_630af7(void*, int, int, int, int);
-extern "C" void __cdecl sub_630a1e(void);
-
-// Imported functions from MSVCP80.dll (std::string ctor/dtor/assign).
-extern "C" void __stdcall string_ctor(StdString*);
-extern "C" void __stdcall string_dtor(StdString*);
-extern "C" void __stdcall string_assign_str(StdString*, const StdString*);
-extern "C" void __stdcall string_assign_cstr(StdString*, const char*);
-
-// The class whose member function this is.  We only need the member
-// function signature; the body does not touch any fields.
-struct G3DTexture {
-    void* method(void* a1, void* a2, void* a3, void* a4, void* a5,
-                 void* a6, void* a7, void* a8, void* a9, void* a10);
+template <class T>
+class ReferenceCountedPointer {
+    T* m_pointer;
+public:
+    ReferenceCountedPointer(const ReferenceCountedPointer<T>& p);
+    ~ReferenceCountedPointer();
 };
 
-void* G3DTexture::method(void* a1, void* a2, void* a3, void* a4, void* a5,
-                         void* a6, void* a7, void* a8, void* a9, void* a10)
-{
-    // Local std::string temporaries (five of them, each 0x1c bytes).
-    StdString s0, s1, s2, s3, s4;
-    StdString result;
+class TextureFormat;
 
-    // The compiler-generated code initializes the strings and calls the
-    // helper.  We reproduce the observable behavior: construct strings,
-    // call the helper, then destroy them.
-    string_ctor(&s0);
-    string_ctor(&s1);
-    string_ctor(&s2);
-    string_ctor(&s3);
-    string_ctor(&s4);
+class Texture : public ReferenceCountedObject {
+public:
+    enum WrapMode { TILE, CLAMP, TRANSPARENT_BORDER };
+    enum InterpolateMode { TRILINEAR_MIPMAP, BILINEAR_NO_MIPMAP, NO_INTERPOLATION };
+    enum Dimension { DIM_2D, DIM_2D_RECT, DIM_CUBE_MAP, DIM_2D_NPOT, DIM_CUBE_MAP_NPOT };
+    enum DepthReadMode { DEPTH_NORMAL, DEPTH_LEQUAL, DEPTH_GEQUAL };
 
-    // The helper at 0x471880 is called with the address of a local string
-    // and several arguments.  We pass the first local string.
-    sub_471880(&result, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10);
+    static ReferenceCountedPointer<Texture> fromFile(
+        const std::string&      filename,
+        const TextureFormat*    desiredFormat,
+        WrapMode                wrap,
+        InterpolateMode         interpolate,
+        Dimension               dimension,
+        double                  brighten,
+        DepthReadMode           depthRead,
+        float                   maxAnisotropy,
+        float                   scale);
 
-    string_dtor(&s4);
-    string_dtor(&s3);
-    string_dtor(&s2);
-    string_dtor(&s1);
-    string_dtor(&s0);
+    static ReferenceCountedPointer<Texture> fromFile(
+        const std::string       filename[6],
+        const TextureFormat*    desiredFormat,
+        WrapMode                wrap,
+        InterpolateMode         interpolate,
+        Dimension               dimension,
+        double                  brighten,
+        DepthReadMode           depthRead,
+        float                   maxAnisotropy,
+        float                   sizeFactor);
+};
 
-    return &result;
+typedef ReferenceCountedPointer<Texture> TextureRef;
+
+TextureRef Texture::fromFile(
+    const std::string&      filename,
+    const TextureFormat*    desiredFormat,
+    WrapMode                wrap,
+    InterpolateMode         interpolate,
+    Dimension               dimension,
+    double                  brighten,
+    DepthReadMode           depthRead,
+    float                   maxAnisotropy,
+    float                   scale) {
+
+    std::string f[6];
+    f[0] = filename;
+    f[1] = "";
+    f[2] = "";
+    f[3] = "";
+    f[4] = "";
+    f[5] = "";
+
+    return fromFile(f, desiredFormat, wrap, interpolate, dimension, brighten, depthRead, maxAnisotropy, scale);
+}
+
 }

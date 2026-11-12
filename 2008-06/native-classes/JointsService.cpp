@@ -5,6 +5,7 @@
 // 0/4 mapped addresses byte-exact | 4 unproved | no mapped strings | by colin (+2) (mixed 4)
 // <<< native-status | src 2a8df79d | roc native-status --write
 #include "v8datamodel/JointsService.h"
+#include "v8datamodel/Workspace.h"
 #include "v8tree/Service.h"
 #include <boost/thread/once.hpp>
 
@@ -49,6 +50,32 @@ namespace RBX
 		}
 
 		ji->setParent(this);
+	}
+
+	// 005e5b50: semantic match; 156 bytes like the original. Evaluation order still differs.
+	void JointsService::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
+	{
+		if (world)
+		{
+			Listener<World, AutoJoin>* joinListener = dynamic_cast<Listener<World, AutoJoin>*>(this);
+			static_cast<Notifier<World, AutoJoin>*>(world)->removeListener(joinListener);
+			Listener<World, AutoDestroy>* destroyListener = dynamic_cast<Listener<World, AutoDestroy>*>(this);
+			static_cast<Notifier<World, AutoDestroy>*>(world)->removeListener(destroyListener);
+		}
+		world = NULL;
+		if (newProvider)
+		{
+			Workspace* workspace = ServiceProvider::create<Workspace>(newProvider);
+			if (workspace)
+				world = workspace->getWorld();
+		}
+		if (world)
+		{
+			Listener<World, AutoJoin>* joinListener = dynamic_cast<Listener<World, AutoJoin>*>(this);
+			static_cast<Notifier<World, AutoJoin>*>(world)->addListener(joinListener);
+			Listener<World, AutoDestroy>* destroyListener = dynamic_cast<Listener<World, AutoDestroy>*>(this);
+			static_cast<Notifier<World, AutoDestroy>*>(world)->addListener(destroyListener);
+		}
 	}
 
 	void JointsService::onDescendentAdded(Instance* instance)
