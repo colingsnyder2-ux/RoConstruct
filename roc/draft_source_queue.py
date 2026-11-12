@@ -64,7 +64,9 @@ def discover(root, users=()):
                 owner, method_name = parts[-2:]
                 namespace = '::'.join(parts[:-2])
                 prefix = '??0' + owner + '@' if method_name == owner else '??1' + owner + '@' if method_name == '~' + owner else '?' + method_name + '@' + owner + '@'
-                hits = [hit for hit in unit.get('original_methods', []) if hit['exact_code'] and hit['symbol'].startswith(prefix)]
+                hits = [hit for hit in unit.get('original_methods', [])
+                        if hit['exact_code'] and hit.get('baseline_exact_code') is not True
+                        and hit['symbol'].startswith(prefix)]
                 hits = {(hit['symbol'], hit['address']): hit for hit in hits}
                 if len(hits) != 1:
                     continue

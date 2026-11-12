@@ -48,6 +48,17 @@ class SourceQueueTests(unittest.TestCase):
         self.save_measurement()
         self.assertEqual(queue.discover(self.root)['count'], 0)
 
+    def test_existing_overload_cannot_witness_new_method(self):
+        self.unit['original_methods'].insert(0, dict(
+            symbol='?added@Foo@RBX@@QAEHH@Z', address='00400000', exact_code=True,
+            baseline_exact_code=True, references_verified=True))
+        self.unit['original_methods'][1]['baseline_exact_code'] = False
+        self.save_measurement()
+        self.assertEqual(queue.discover(self.root)['count'], 1)
+        payload = json.loads((self.folder / 'source-queue.json').read_text())
+        review = json.loads(Path(payload['proposals'][0]).read_text())
+        self.assertEqual(review['methods'][0]['symbol'], '?added@Foo@RBX@@QAEHXZ')
+
     def test_new_file_proposes_only_exact_methods(self):
         self.target.unlink()
         result = queue.discover(self.root)
