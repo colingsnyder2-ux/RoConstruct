@@ -3,7 +3,8 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DVector3int16 | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src bd935d91 | roc native-status --write
+// <<< native-status | src 4b1b9c3f | roc native-status --write
+#line 1 ".\\G3Dcpp\\Vector3int16.cpp"
 /**
  @file Vector3int16.cpp
  

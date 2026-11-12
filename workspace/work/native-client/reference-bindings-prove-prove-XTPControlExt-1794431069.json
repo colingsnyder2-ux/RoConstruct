@@ -1,0 +1,524 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??0CXTPControlSelector@@QAE@XZ",
+    "address": "006f6000"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlExt\\objects\\a00483fa0fbcffbd\\candidate.obj": "62ea22fbf7b681f2aa603ec438c766c56e310bbe5acadcc97888c7328ec59844",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-ud6rfe1s\\owners.json": "98a53237c848053db7e1b6ad754de90473165c8f962d2946320dfdc24a91f969",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-ud6rfe1s\\import-thunk-identities-as-owner.json": "33539584c5cffd5039e36c68fcfc78a804aabb9e89315a677a69fbeaac41999e"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0CXTPControlCheckBox@@QAE@XZ",
+    "address": "006f5190"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlExt\\objects\\a00483fa0fbcffbd\\candidate.obj": "62ea22fbf7b681f2aa603ec438c766c56e310bbe5acadcc97888c7328ec59844",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-ud6rfe1s\\owners.json": "98a53237c848053db7e1b6ad754de90473165c8f962d2946320dfdc24a91f969",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-ud6rfe1s\\import-thunk-identities-as-owner.json": "33539584c5cffd5039e36c68fcfc78a804aabb9e89315a677a69fbeaac41999e"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0CXTPControlRadioButton@@QAE@XZ",
+    "address": "006f51d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlExt\\objects\\a00483fa0fbcffbd\\candidate.obj": "62ea22fbf7b681f2aa603ec438c766c56e310bbe5acadcc97888c7328ec59844",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-ud6rfe1s\\owners.json": "98a53237c848053db7e1b6ad754de90473165c8f962d2946320dfdc24a91f969",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-ud6rfe1s\\import-thunk-identities-as-owner.json": "33539584c5cffd5039e36c68fcfc78a804aabb9e89315a677a69fbeaac41999e"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??0CXTPControl@@IAE@XZ",
+   "address": "006adad0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??0CXTPControlButton@@QAE@XZ",
+   "address": "00745640",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECXTPControlCheckBox@@UAEPAXI@Z",
+   "address": "007457e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECXTPControlCheckBox@@WCA@AEPAXI@Z",
+   "address": "00745730",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECXTPControlRadioButton@@UAEPAXI@Z",
+   "address": "007457e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECXTPControlRadioButton@@WCA@AEPAXI@Z",
+   "address": "00745730",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECXTPControlSelector@@UAEPAXI@Z",
+   "address": "0044edd0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECXTPControlSelector@@WCA@AEPAXI@Z",
+   "address": "0079a970",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?AccessibleDoDefaultAction@CXTPControl@@MAEJUtagVARIANT@@@Z",
+   "address": "006ac7d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?AccessibleHitTest@CXTPControl@@MAEJJJPAUtagVARIANT@@@Z",
+   "address": "006ac9a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?AccessibleLocation@CXTPControl@@MAEJPAJ000UtagVARIANT@@@Z",
+   "address": "006ac8c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?AccessibleSelect@CXTPControl@@MAEJJUtagVARIANT@@@Z",
+   "address": "006ac6c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Clone@CXTPControlCheckBox@@UAEPAVCXTPControl@@H@Z",
+   "address": "006f66f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Clone@CXTPControlRadioButton@@UAEPAVCXTPControl@@H@Z",
+   "address": "006f6790",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Clone@CXTPControlSelector@@UAEPAVCXTPControl@@H@Z",
+   "address": "006f6830",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Compare@CXTPControl@@UAEHPAV1@@Z",
+   "address": "006abb50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Copy@CXTPControlButton@@MAEXPAVCXTPControl@@H@Z",
+   "address": "00745720",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Copy@CXTPControlSelector@@MAEXPAVCXTPControl@@H@Z",
+   "address": "006f5060",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?CustomizeStartDrag@CXTPControl@@MAEXVCPoint@@@Z",
+   "address": "006ac1c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?CustomizeStartResize@CXTPControl@@MAEHVCPoint@@@Z",
+   "address": "006abde0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DoPropExchange@CXTPControlButton@@UAEXPAVCXTPPropExchange@@@Z",
+   "address": "006e31d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DoPropExchange@CXTPControlSelector@@MAEXPAVCXTPPropExchange@@@Z",
+   "address": "006f6360",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Draw@CXTPControl@@UAEXPAVCDC@@@Z",
+   "address": "006ab8a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Draw@CXTPControlSelector@@MAEXPAVCDC@@@Z",
+   "address": "006f6060",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GenerateCommandBarList@CXTPControl@@MAEXAAKPAVCXTPCommandBarList@@PAUXTP_COMMANDBARS_PROPEXCHANGE_PARAM@@@Z",
+   "address": "006e1ae0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetAccessible@CXTPControl@@MAEPAVCCmdTarget@@XZ",
+   "address": "00711260",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetAccessibleChild@CXTPControl@@MAEJUtagVARIANT@@PAPAUIDispatch@@@Z",
+   "address": "006ac420",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetAccessibleChildCount@CXTPControl@@MAEJPAJ@Z",
+   "address": "006ab530",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetAccessibleDefaultAction@CXTPControl@@MAEJUtagVARIANT@@PAPA_W@Z",
+   "address": "006ab670",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetAccessibleDescription@CXTPControl@@MAEJUtagVARIANT@@PAPA_W@Z",
+   "address": "006ab560",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetAccessibleName@CXTPControl@@MAEJUtagVARIANT@@PAPA_W@Z",
+   "address": "006ac4e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetAccessibleParent@CXTPControl@@MAEJPAPAUIDispatch@@@Z",
+   "address": "006ac340",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetAccessibleRole@CXTPControl@@MAEJUtagVARIANT@@PAU2@@Z",
+   "address": "006ab5f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetAccessibleState@CXTPControl@@MAEJUtagVARIANT@@PAU2@@Z",
+   "address": "006ad950",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetButtonSize@CXTPControl@@UBE?AVCSize@@XZ",
+   "address": "006ab450",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetCaption@CXTPControl@@UBE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ",
+   "address": "0042e8f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetCommandBar@CXTPControl@@UBEPAVCXTPCommandBar@@XZ",
+   "address": "00416690",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetCustomizeMinHeight@CXTPControl@@MBEHXZ",
+   "address": "00416690",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetCustomizeMinWidth@CXTPControl@@MBEHXZ",
+   "address": "00416690",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetDescription@CXTPControl@@UBE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ",
+   "address": "0042e770",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetIconSize@CXTPControl@@UBE?AVCSize@@XZ",
+   "address": "006ac2f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetImage@CXTPControl@@UBEPAVCXTPImageManagerIcon@@H@Z",
+   "address": "006ab290",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetInterfaceMap@CXTPControl@@MBEPBUAFX_INTERFACEMAP@@XZ",
+   "address": "007115f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetPopuped@CXTPControl@@UBEHXZ",
+   "address": "00416690",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetPressed@CXTPControl@@UBEHXZ",
+   "address": "0042e9f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetRuntimeClass@CXTPControlCheckBox@@UBEPAUCRuntimeClass@@XZ",
+   "address": "006f5180",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetRuntimeClass@CXTPControlRadioButton@@UBEPAUCRuntimeClass@@XZ",
+   "address": "006f51c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetRuntimeClass@CXTPControlSelector@@UBEPAUCRuntimeClass@@XZ",
+   "address": "006f5050",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetSelected@CXTPControl@@UBEHXZ",
+   "address": "006a2f90",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetSize@CXTPControl@@UAE?AVCSize@@PAVCDC@@@Z",
+   "address": "006ab880",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetSize@CXTPControlSelector@@MAE?AVCSize@@PAVCDC@@@Z",
+   "address": "006f6200",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetTooltip@CXTPControl@@UBE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ",
+   "address": "0042e830",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?IsCaptionVisible@CXTPControl@@UBEHXZ",
+   "address": "006ab480",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?IsCustomizeDragOverAvail@CXTPControl@@MAEHPAVCXTPCommandBar@@VCPoint@@AAK@Z",
+   "address": "00709ec0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?IsCustomizeMovable@CXTPControl@@MBEHXZ",
+   "address": "006ab380",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?IsCustomizeResizeAllow@CXTPControl@@MBEHXZ",
+   "address": "00416690",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?IsFocusable@CXTPControl@@MBEHXZ",
+   "address": "00416690",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?IsFocused@CXTPControl@@UBEHXZ",
+   "address": "00416690",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?IsTransparent@CXTPControl@@UBEHXZ",
+   "address": "00416690",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?IsVisible@CXTPControl@@UBEHK@Z",
+   "address": "0042ea00",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnActionChanged@CXTPControl@@MAEXH@Z",
+   "address": "0070bdf0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnActionChanging@CXTPControl@@MAEXH@Z",
+   "address": "0070bdf0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnCalcDynamicSize@CXTPControl@@UAEXK@Z",
+   "address": "0070bdf0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnCalcDynamicSize@CXTPControlSelector@@MAEXK@Z",
+   "address": "006f69c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnClick@CXTPControl@@MAEXHVCPoint@@@Z",
+   "address": "006ad2a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnClick@CXTPControlButton@@MAEXHVCPoint@@@Z",
+   "address": "00745800",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnCustomizeDragOver@CXTPControl@@MAEXPAV1@VCPoint@@AAK@Z",
+   "address": "006ab1e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnDrawItem@CXTPControlSelector@@MAEXPAVCDC@@VCRect@@K@Z",
+   "address": "00762d50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnHookKeyDown@CXTPControl@@MAEHIJ@Z",
+   "address": "0078c540",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnHookMouseWheel@CXTPControl@@MAEHIFVCPoint@@@Z",
+   "address": "0044edc0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnIdleUpdate@CXTPControl@@MAEXXZ",
+   "address": "0047d410",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnLButtonDblClk@CXTPControl@@MAEHVCPoint@@@Z",
+   "address": "006ab3d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnLButtonUp@CXTPControlButton@@MAEXVCPoint@@@Z",
+   "address": "007456d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnLButtonUp@CXTPControlSelector@@MAEXVCPoint@@@Z",
+   "address": "006f6230",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnMouseHover@CXTPControl@@MAEXXZ",
+   "address": "006aafe0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnMouseMove@CXTPControl@@MAEXVCPoint@@@Z",
+   "address": "00458e90",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnMouseMove@CXTPControlSelector@@MAEXVCPoint@@@Z",
+   "address": "006f62c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnRButtonDown@CXTPControl@@MAEHVCPoint@@@Z",
+   "address": "0078c540",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnRButtonUp@CXTPControl@@MAEHVCPoint@@@Z",
+   "address": "0078c540",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnRemoved@CXTPControl@@MAEXXZ",
+   "address": "006aaf80",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnSetPopup@CXTPControl@@MAEHH@Z",
+   "address": "005f2310",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnSetSelected@CXTPControl@@MAEHH@Z",
+   "address": "006ad2f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnSetSelected@CXTPControlSelector@@MAEHH@Z",
+   "address": "006f6860",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnThemeChanged@CXTPControl@@UAEXXZ",
+   "address": "0047d410",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnToolHitTest@CXTPControl@@MBEHVCPoint@@PAUtagTOOLINFOA@@@Z",
+   "address": "0042ea70",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnUnderlineActivate@CXTPControl@@UAEXXZ",
+   "address": "006ab470",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?RestoreCommandBarList@CXTPControl@@MAEXPAVCXTPCommandBarList@@@Z",
+   "address": "0070bdf0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetAction@CXTPControl@@UAEXPAVCXTPControlAction@@@Z",
+   "address": "006ad2b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetBeginGroup@CXTPControl@@UAEXH@Z",
+   "address": "0042e9d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetEnabled@CXTPControl@@UAEXH@Z",
+   "address": "0044ed50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetFocused@CXTPControl@@UAEXH@Z",
+   "address": "0070bdf0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetHeight@CXTPControl@@UAEXH@Z",
+   "address": "0042ea50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetHideFlags@CXTPControl@@UAEXK@Z",
+   "address": "0044edb0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetParent@CXTPControl@@MAEXPAVCXTPCommandBar@@@Z",
+   "address": "0044ed40",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetRect@CXTPControl@@UAEXVCRect@@@Z",
+   "address": "0044ed80",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetWidth@CXTPControl@@UAEXH@Z",
+   "address": "0042ea30",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 3,
+ "owners_bound": 3
+}

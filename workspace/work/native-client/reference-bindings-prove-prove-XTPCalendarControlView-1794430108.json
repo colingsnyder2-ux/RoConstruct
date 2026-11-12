@@ -1,0 +1,70 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??9CRect@@QBEHABUtagRECT@@@Z",
+    "address": "00701c20"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPCalendarControlView\\objects\\05fb587f07f355fc\\candidate.obj": "8162dfbfa8f9c117b15c8c9b3a5d3cac0a588146ab0d8a6376696615cc22a957",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-g2alawmx\\owners.json": "9e8409ba608c232ed6fcceda87ee2305004e03b0150e8b616fcfe83e2b835945",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-g2alawmx\\import-thunk-identities-as-owner.json": "7a54d9f1c797daab1124d86c9ed5b8c1f9a70e92769bf9928207639590f461d3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?GetBitmapDimension@CBitmap@@QBE?AVCSize@@XZ",
+    "address": "006c4ff0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPCalendarControlView\\objects\\05fb587f07f355fc\\candidate.obj": "8162dfbfa8f9c117b15c8c9b3a5d3cac0a588146ab0d8a6376696615cc22a957",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-g2alawmx\\owners.json": "9e8409ba608c232ed6fcceda87ee2305004e03b0150e8b616fcfe83e2b835945",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-g2alawmx\\import-thunk-identities-as-owner.json": "7a54d9f1c797daab1124d86c9ed5b8c1f9a70e92769bf9928207639590f461d3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?GetTextExtent@CDC@@QBE?AVCSize@@PBDH@Z",
+    "address": "006aec40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPCalendarControlView\\objects\\05fb587f07f355fc\\candidate.obj": "8162dfbfa8f9c117b15c8c9b3a5d3cac0a588146ab0d8a6376696615cc22a957",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-g2alawmx\\owners.json": "9e8409ba608c232ed6fcceda87ee2305004e03b0150e8b616fcfe83e2b835945",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-g2alawmx\\import-thunk-identities-as-owner.json": "7a54d9f1c797daab1124d86c9ed5b8c1f9a70e92769bf9928207639590f461d3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?GetTextExtent@CDC@@QBE?AVCSize@@ABV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+    "address": "00461b90"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPCalendarControlView\\objects\\05fb587f07f355fc\\candidate.obj": "8162dfbfa8f9c117b15c8c9b3a5d3cac0a588146ab0d8a6376696615cc22a957",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-g2alawmx\\owners.json": "9e8409ba608c232ed6fcceda87ee2305004e03b0150e8b616fcfe83e2b835945",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-g2alawmx\\import-thunk-identities-as-owner.json": "7a54d9f1c797daab1124d86c9ed5b8c1f9a70e92769bf9928207639590f461d3"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "__imp__EqualRect@8",
+   "address": "00802c68",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__GetBitmapDimensionEx@8",
+   "address": "0080215c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__GetTextExtentPoint32A@16",
+   "address": "00802140",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 4,
+ "owners_bound": 4
+}

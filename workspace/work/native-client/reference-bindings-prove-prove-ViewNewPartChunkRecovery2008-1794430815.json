@@ -1,0 +1,37 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?connect@?$signal1@XPBVPropertyDescriptor@Reflection@RBX@@U?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@5@@boost@@QAE?AVconnection@signals@2@ABHABV?$slot@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@2@W4connect_position@42@@Z",
+    "address": "0042b400"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-ViewNewPartChunkRecovery2008\\objects\\3f96656cb49a826c\\candidate.obj": "25bb930680cd168e7e8905253f2114c069086faaa9f68670a05aa50a01a36dc6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-mjv59pnj\\owners.json": "1d8f2c587fb39f350d3a60269f443b634aa3f1edd6e6bc6dc16b0727752a7342",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-mjv59pnj\\import-thunk-identities-as-owner.json": "44ecda536177aedc467bf875592d73d0fd65695c5c929721e44ff575af8b8f31"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??$?0H@shared_count@detail@boost@@QAE@PAH@Z",
+   "address": "0042a800",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$?0V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@1@@Z",
+   "address": "0042b220",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?connect@?$signal1@XPBVPropertyDescriptor@Reflection@RBX@@U?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@5@@boost@@QAE?AVconnection@signals@2@ABHABV?$slot@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@2@W4connect_position@42@@Z",
+   "address": "007c7c99",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

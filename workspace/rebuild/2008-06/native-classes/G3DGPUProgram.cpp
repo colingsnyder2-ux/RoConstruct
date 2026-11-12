@@ -3,7 +3,8 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DGPUProgram | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 496fd99a | roc native-status --write
+// <<< native-status | src 9322b895 | roc native-status --write
+#line 1 ".\\glg3dcpp\\GPUProgram.cpp"
 /**
   @file GPUProgram.cpp
 

@@ -1,0 +1,152 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??0GCamera@G3D@@QAE@XZ",
+    "address": "00510ac0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DGCamera\\objects\\069cc5d7cf968dbf\\candidate.obj": "d78963776f4a66b1178f8ddb099be745586b3140a64b9d9215df8d616935b186",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-accpntp_\\owners.json": "e72a451e88d269ef41d301696d7b1c9a51ece2272f4ef341e129f3b7d4cf67c2",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-accpntp_\\import-thunk-identities-as-owner.json": "fa955fc46527e4a4eec02c7686234ea9c3d46246c24e29b6bd71d11756d05741"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?worldRay@GCamera@G3D@@QBE?AVRay@2@MMABVRect2D@2@@Z",
+    "address": "00510b80"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DGCamera\\objects\\069cc5d7cf968dbf\\candidate.obj": "d78963776f4a66b1178f8ddb099be745586b3140a64b9d9215df8d616935b186",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-accpntp_\\owners.json": "e72a451e88d269ef41d301696d7b1c9a51ece2272f4ef341e129f3b7d4cf67c2",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-accpntp_\\import-thunk-identities-as-owner.json": "fa955fc46527e4a4eec02c7686234ea9c3d46246c24e29b6bd71d11756d05741"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1Frustum@GCamera@G3D@@QAE@XZ",
+    "address": "00511000"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DGCamera\\objects\\069cc5d7cf968dbf\\candidate.obj": "d78963776f4a66b1178f8ddb099be745586b3140a64b9d9215df8d616935b186",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-accpntp_\\owners.json": "e72a451e88d269ef41d301696d7b1c9a51ece2272f4ef341e129f3b7d4cf67c2",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-accpntp_\\import-thunk-identities-as-owner.json": "fa955fc46527e4a4eec02c7686234ea9c3d46246c24e29b6bd71d11756d05741"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?append@?$Array@VFace@Frustum@GCamera@G3D@@@G3D@@QAEXABVFace@Frustum@GCamera@2@@Z",
+    "address": "005113c0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DGCamera\\objects\\069cc5d7cf968dbf\\candidate.obj": "d78963776f4a66b1178f8ddb099be745586b3140a64b9d9215df8d616935b186",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-accpntp_\\owners.json": "e72a451e88d269ef41d301696d7b1c9a51ece2272f4ef341e129f3b7d4cf67c2",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-accpntp_\\import-thunk-identities-as-owner.json": "fa955fc46527e4a4eec02c7686234ea9c3d46246c24e29b6bd71d11756d05741"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?getFrustum@GCamera@G3D@@QBEXABVRect2D@2@AAVFrustum@12@@Z",
+    "address": "00511510"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DGCamera\\objects\\069cc5d7cf968dbf\\candidate.obj": "d78963776f4a66b1178f8ddb099be745586b3140a64b9d9215df8d616935b186",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-accpntp_\\owners.json": "e72a451e88d269ef41d301696d7b1c9a51ece2272f4ef341e129f3b7d4cf67c2",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-accpntp_\\import-thunk-identities-as-owner.json": "fa955fc46527e4a4eec02c7686234ea9c3d46246c24e29b6bd71d11756d05741"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?frustum@GCamera@G3D@@QBE?AVFrustum@12@ABVRect2D@2@@Z",
+    "address": "00511c80"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DGCamera\\objects\\069cc5d7cf968dbf\\candidate.obj": "d78963776f4a66b1178f8ddb099be745586b3140a64b9d9215df8d616935b186",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-accpntp_\\owners.json": "e72a451e88d269ef41d301696d7b1c9a51ece2272f4ef341e129f3b7d4cf67c2",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-accpntp_\\import-thunk-identities-as-owner.json": "fa955fc46527e4a4eec02c7686234ea9c3d46246c24e29b6bd71d11756d05741"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??0Plane@G3D@@QAE@ABVVector3@1@0@Z",
+   "address": "005259e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??0Plane@G3D@@QAE@XZ",
+   "address": "005109e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??1?$Array@VFace@Frustum@GCamera@G3D@@@G3D@@QAE@XZ",
+   "address": "00510e00",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_EGCamera@G3D@@UAEPAXI@Z",
+   "address": "00510b30",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?append@?$Array@VVector4@G3D@@@G3D@@QAEXABVVector4@2@000@Z",
+   "address": "00511070",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?fromEquation@Plane@G3D@@SA?AV12@MMMM@Z",
+   "address": "00525a50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?getEquation@Plane@G3D@@QBEXAAVVector3@2@AAM@Z",
+   "address": "00525ad0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?isFinite@G3D@@YA_NN@Z",
+   "address": "004a5940",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?resize@?$Array@VFace@Frustum@GCamera@G3D@@@G3D@@QAEXH_N@Z",
+   "address": "00511240",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?toWorldSpace@CoordinateFrame@G3D@@QBE?AVRay@2@ABV32@@Z",
+   "address": "00518890",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??1Frustum@GCamera@G3D@@QAE@XZ",
+   "address": "007d6148",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?append@?$Array@VFace@Frustum@GCamera@G3D@@@G3D@@QAEXABVFace@Frustum@GCamera@2@@Z",
+   "address": "007cc3c8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?frustum@GCamera@G3D@@QBE?AVFrustum@12@ABVRect2D@2@@Z",
+   "address": "007cc421",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?getFrustum@GCamera@G3D@@QBEXABVRect2D@2@AAVFrustum@12@@Z",
+   "address": "007cc3eb",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?worldRay@GCamera@G3D@@QBE?AVRay@2@MMABVRect2D@2@@Z",
+   "address": "007cc3a9",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 6,
+ "owners_bound": 6
+}

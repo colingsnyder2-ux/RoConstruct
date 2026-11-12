@@ -1,0 +1,21 @@
+{
+  "class": "CSelectionTreeCtrl",
+  "date": "2026-11-11",
+  "owner": "colin (opencode/glm-5.3-flash-free)",
+  "lease": "CSelectionTreeCtrl-processSelectionQueue-glm53",
+  "workflow": 53,
+  "package_revision": "dbc7834ec337292dcac56703a552785969037b7120478bab289ed3fd24074b6b",
+  "workspace_manifest_source_revision": "dbc7834ec337292dcac56703a552785969037b7120478bab289ed3fd24074b6b",
+  "baseline_commit": null,
+  "draft_session": "36833b026a6c4372a8a5e98655d32e21",
+  "sources": {
+    "rebuild/2008-06/WindowsClient/src/CSelectionTreeCtrl.cpp": "9a004da852955e5431e95bd2765176dbfb217d00d9d03d04b7e45f6fa56a65f8",
+    "rebuild/2008-06/native-classes/CSelectionTreeCtrl.cpp": "b9dd2242c0077a4175bff6d3e3acac3229cf64056cc7cf3c331529854ce9783b",
+    "rebuild/2008-06/WindowsClient/include/CSelectionTreeCtrl.h": "6c7f57ab5f48e25f8f2a6f6ddcdac26d2b0f5fd4b2d8c4dc6768158440ce6ce6",
+    "rebuild/2008-06/native-headers/CSelectionTreeCtrl.h": "5d83a8d7354f32f81ddbd56f2d450b65e3c25b33bcde31dba5a4e1fc20f4683a"
+  },
+  "open": {
+    "00426900": "CSelectionTreeCtrl::processSelectionQueue parked (1 compile-fail hypothesis attempted, reverted). Original 371B: low-level manual mutex lock/unlock (this+0xc4), checked-iterator set ops on selectionQueue (+0xe4), manual shared_ptr copy/refcount, erase helper 0x424130, findNode 0x426780, 10-step loop. Current high-level RAII draft is 503B (cache 0ce41023de62cb7823d9, obj 5672843a730630b6 baseline). Needs matching MSVC9 debug-iterator/explicit-lock pattern."
+  },
+  "notes": "No exact progress; source restored to baseline draft."
+}

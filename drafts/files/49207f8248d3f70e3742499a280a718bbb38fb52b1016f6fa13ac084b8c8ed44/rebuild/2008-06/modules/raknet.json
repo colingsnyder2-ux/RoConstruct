@@ -1,0 +1,32 @@
+{
+ "name": "RakNet",
+ "description": "RakNet 3.0 as linked into the 2008-06 client. Layer 1: the 2008-verified OpenRBX files (partial: only the functions OpenRBX matched). Layer 2: complete upstream RakNet30 files compiled against the OpenRBX headers so both layers share one ABI.",
+ "force_owned": true,
+ "layers": [
+  {
+   "name": "openrbx",
+   "mode": "recipe",
+   "recipe": "openrbx-raknet",
+   "files": "*.cpp",
+   "flags": "/O2 /GS- /EHsc /MD"
+  },
+  {
+   "name": "upstream",
+   "mode": "direct",
+   "dir": "tools/rbxgs/Client/Network/RakNet30/Source",
+   "files": "*.cpp",
+   "includes_from_recipe": "openrbx-raknet",
+   "extra_includes": [
+    "tools/rbxgs/Client/Network/RakNet30/Source"
+   ],
+   "defines_from_recipe": "openrbx-raknet",
+   "flags": "/O2 /GS- /EHsc /MD /FImalloc.h"
+  }
+ ],
+ "test": "raknet_loopback",
+ "test_includes": [
+  "rebuild/2008-06/out/RakNet/force",
+  "tools/openrbx/3rdparty/RakNet30/Source",
+  "tools/rbxgs/Client/Network/RakNet30/Source"
+ ]
+}

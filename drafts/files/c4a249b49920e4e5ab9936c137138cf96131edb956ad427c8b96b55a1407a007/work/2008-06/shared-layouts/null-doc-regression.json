@@ -1,0 +1,89 @@
+{
+  "class": "CNullDoc",
+  "status": "inactive source/object proof only; no selection, submission or runtime gate",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IG:\\Projects\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IG:\\Projects\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+  ],
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_null_doc.py": "8b50a49e66f59fb63922ac7381597d2d54f26dc0fa8f9bb988d7c59d6455489f",
+    "rebuild/2008-06/native-classes/CNullDoc.cpp": "b5978ac56295c646b3a9cbe61c433bb535898aab9a92f2b00e993a95ed4cbba1",
+    "rebuild/2008-06/native-headers/CBrowserDoc.h": "20edc757aa696f357f7c3bf3a9974e59ca92c144f05cd9ec65e466ab4c3969d2",
+    "rebuild/2008-06/tests/NativeNullDocLayout.cpp": "160562cdf83a68fe9626c94f42782d8d76766802e9c74c9102755b830c8784c9",
+    "rebuild/2008-06/tests/native_bind.py": "628d095adf7a81a6c7bb82d302eae3e4e2b4f8d0c1b96736d12929ac7a17dff9"
+  },
+  "rows": 10,
+  "unique_addresses": 8,
+  "vtable_slots": 46,
+  "dependent_proofs": {
+    "script-doc": {
+      "receipt": "work/2008-06/shared-layouts/script-doc-working.json",
+      "receipt_sha256": "2e3146a48e8020f3a9b9385c29e024012c267cd999e53d92a5386906a85b6070",
+      "rows": 4,
+      "unique_addresses": 4,
+      "lost_pairs": [],
+      "added_pairs": [],
+      "driver": {
+        "path": "work/cnulldoc-guided-20261104/run_script_doc_regression.py",
+        "sha256": "f535cbd6f7b87644393567f6caee3b5f42ae032c152ed562f3b4c2d51e38d25d",
+        "adaptations": [
+          "Local include-root remap and hash-checked registered-client initialization.",
+          "Build outputs and initial receipt redirected to scratch."
+        ]
+      }
+    },
+    "browser-view": {
+      "receipt": "work/2008-06/shared-layouts/browser-view-working.json",
+      "receipt_sha256": "5a348245e9e0c4a2d30aa038dd08fcf72da33d7643cd4fde9d5d243deda1ad8a",
+      "rows": 49,
+      "unique_addresses": 47,
+      "lost_pairs": [],
+      "added_pairs": [],
+      "driver": {
+        "path": "work/cnulldoc-guided-20261104/run_view_regression.py",
+        "sha256": "d3ba479218009fb83cc05310e390b756d7df51098d257ec3be071ca09e59a2d9",
+        "adaptations": [
+          "Local include-root remap and hash-checked registered-client initialization.",
+          "Build outputs and initial receipt redirected to scratch.",
+          "Obsolete 124-byte Buynode prefix assertion replaced with the complete analysed 145-byte owner, including catch handler at 0040f25c; all relocation targets independently verified. No bounds changed."
+        ]
+      }
+    }
+  },
+  "proof_receipt": "work/2008-06/shared-layouts/null-doc-working.json",
+  "proof_receipt_sha256": "d4340650ce20abbd80476cdee809eaf14cb53f1ba591d8019b06d0879163590b"
+}

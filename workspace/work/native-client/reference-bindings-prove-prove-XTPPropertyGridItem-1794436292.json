@@ -1,0 +1,43 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?Serialize@?$CArray@PAVCXTPPropertyGridItem@@PAV1@@@UAEXAAVCArchive@@@Z",
+    "address": "006e34d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPropertyGridItem\\objects\\408d2885e40ca65c\\candidate.obj": "b55d2a99944df0de3dedccb9074e629a219901a0b1403679adb50862bedfd216",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-ru726eqi\\owners.json": "b51f67cd23d5fa15ada5c766028711eccd31fa7b7e38a83551f07f9992699ad4",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-ru726eqi\\import-thunk-identities-as-owner.json": "916102d2ae56b7616e613e36dd180df3658cb322dad1807d925c9fad0419a2e5"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Serialize@?$CArray@PAVCXTPPropertyGridItemConstraint@@PAV1@@@UAEXAAVCArchive@@@Z",
+    "address": "006e34d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPropertyGridItem\\objects\\408d2885e40ca65c\\candidate.obj": "b55d2a99944df0de3dedccb9074e629a219901a0b1403679adb50862bedfd216",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-ru726eqi\\owners.json": "b51f67cd23d5fa15ada5c766028711eccd31fa7b7e38a83551f07f9992699ad4",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-ru726eqi\\import-thunk-identities-as-owner.json": "916102d2ae56b7616e613e36dd180df3658cb322dad1807d925c9fad0419a2e5"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??$SerializeElements@PAVCXTPPropertyGridItem@@@@YGXAAVCArchive@@PAPAVCXTPPropertyGridItem@@H@Z",
+   "address": "00787550",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$SerializeElements@PAVCXTPPropertyGridItemConstraint@@@@YGXAAVCArchive@@PAPAVCXTPPropertyGridItemConstraint@@H@Z",
+   "address": "00787550",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

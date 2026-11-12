@@ -1,0 +1,32 @@
+{
+  "class": "CInsertObjectDialog",
+  "date": "2026-11-11",
+  "owner": "colin (opencode/glm-5.3-flash-free)",
+  "lease": "CInsertObjectDialog-addClasses-glm53",
+  "workflow": 53,
+  "package_revision": "dbc7834ec337292dcac56703a552785969037b7120478bab289ed3fd24074b6b",
+  "workspace_manifest_source_revision": "dbc7834ec337292dcac56703a552785969037b7120478bab289ed3fd24074b6b",
+  "baseline_commit": null,
+  "draft_session": "cc08626729304c8ebe42c52567a75dad",
+  "sources": {
+    "rebuild/2008-06/WindowsClient/src/CInsertObjectDialog.cpp": "ff530a4ff258fc2eb830f67644dd9e683dd949fee52a95741d3446f4cdc28e98",
+    "rebuild/2008-06/native-classes/CInsertObjectDialog.cpp": "fffc78a8e652e3ee2e7b891d23fe61115f43745058d6d75e103237f042643202",
+    "rebuild/2008-06/WindowsClient/src/CInsertObjectDialogAction.cpp": "8475954f9667961546979ad92d83a82a440e88b81ea25aa1b3cad1660a3838ac",
+    "rebuild/2008-06/native-classes/CInsertObjectDialogAction.cpp": "5254f04a464bf3cc07862cdc25ec7ebccd0c215cd35ace142a25e4c472030118",
+    "rebuild/2008-06/WindowsClient/src/CInsertObjectDialogCore.cpp": "99a5d374214a1d668a688cad9e20c128aefb81f7f1ed279c2a84783881eb6c66",
+    "rebuild/2008-06/native-classes/CInsertObjectDialogCore.cpp": "f7e0e96e20ad6f58d698c8f4d9b8f7e32c42d1e76b995ef9e191ececc1b3166c",
+    "rebuild/2008-06/WindowsClient/include/CInsertObjectDialog.h": "86e32f0c66d899ec4ccfbd1921d786f749c28bef405056fc5549d821156a10af",
+    "rebuild/2008-06/native-headers/CInsertObjectDialog.h": "3c52d62783b3f27c4269ab725500f7776ac48c1e9ebe34ff63797ff69d38c262"
+  },
+  "methods": [
+    {
+      "address": "004202b0",
+      "symbol": "?addClasses@CInsertObjectDialog@@QAEXPBVClassDescriptor@Reflection@RBX@@@Z",
+      "size": 713,
+      "exact": true,
+      "status": "verified existing work (inactive_exact)",
+      "evidence": "prove caches work/native-client/prove-cache/13ae69d8e3f2eabd041b.json, 54e5d60bf5c7b4a8173c.json, 9a59673bc9288c2082eb.json: candidate 004202b0 size 713 inactive_exact (no rejections) from CInsertObjectDialog/CInsertObjectDialogAction TUs with this package revision."
+    }
+  ],
+  "notes": "Inactive exact is not an integrated swap or server credit. No source changes; proof evidence recorded."
+}

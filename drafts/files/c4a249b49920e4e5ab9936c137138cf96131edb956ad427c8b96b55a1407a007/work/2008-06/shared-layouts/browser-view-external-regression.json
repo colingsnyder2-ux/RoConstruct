@@ -1,0 +1,1319 @@
+{
+  "class": "CBrowserViewExternal",
+  "status": "PARTIAL inactive source/object evidence only; no selection, link acceptance, server credit or runtime gate",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IG:\\Projects\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IG:\\Projects\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+  ],
+  "profile": "class unit: document-swap flags + /D_ATL_APARTMENT_THREADED (ATL object model CComSingleThreadModel, globals Multi; original spelling not proven) /P, CString operator PCXSTR marked noinline (original imports mfc90 #910; header unchanged), recompiled with /nologo /c /O2 /Ob2 /Oy /GF /GS- /EHsc /MD; layout, GUID and helper units: plain document-swap flags",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_browser_view_external.py": "3d5c0818f643ed2c09d1157121b2ba068f33968b6403cf0da8c2be405f5a4707",
+    "rebuild/2008-06/native-classes/CBrowserViewExternal.cpp": "5e16cb7f18e6eba8d0419578a3c0e8e96b8b31eaf9d424b0d155573ae1ae5785",
+    "rebuild/2008-06/native-classes/CBrowserViewExternalGuids.cpp": "480f82db9a83e310c37fba6666815b7cd209569574ac3ae01bd336d3553b6ef1",
+    "rebuild/2008-06/native-classes/WorkspaceSiteError.cpp": "3576e9c32fb8dc284eb190cf9a3e1b348af8d68c5d30e58c8b0b512b68e010b3",
+    "rebuild/2008-06/native-headers/CBrowserViewExternal.h": "da68da0f0cf6d78d149af33ee11afdb1d5c8562d26fb832b6cd3150f45244b8f",
+    "rebuild/2008-06/tests/NativeBrowserViewExternalLayout.cpp": "b1228f98190562d539b9e7e43296e86e47716239eda1f3c3be61e8af43e7232d",
+    "rebuild/2008-06/tests/native_bind.py": "628d095adf7a81a6c7bb82d302eae3e4e2b4f8d0c1b96736d12929ac7a17dff9",
+    "tools/libs/mfc-9.0-rtm/atlmfc/include/atlexcept.h": "5c986f954361ad977fe10de9276b46f00ee823daf2f8beb8868d6c07c69b555b"
+  },
+  "methods": {
+    "masked_exact_rows": 65,
+    "unique_addresses": 65,
+    "baseline_rows_preserved": 32,
+    "lost_pairs": [],
+    "new_pairs": [
+      [
+        "??1?$CAtlSafeAllocBufferManager@VCCRTAllocator@ATL@@@_ATL_SAFE_ALLOCA_IMPL@ATL@@QAE@XZ",
+        "00401150"
+      ],
+      [
+        "?EnumConnectionPoints@?$IConnectionPointContainerImpl@VCBrowserViewExternal@@@ATL@@UAGJPAPAUIEnumConnectionPoints@@@Z",
+        "004100a0"
+      ],
+      [
+        "?EnumConnections@?$IConnectionPointImpl@VCBrowserViewExternal@@$1?_GUID_dd754d30_321a_45a2_a40c_75783afabfab@@3U__s_GUID@@BVCComDynamicUnkArray@ATL@@@ATL@@UAGJPAPAUIEnumConnections@@@Z",
+        "004104b0"
+      ],
+      [
+        "?GetCookie@CComDynamicUnkArray@ATL@@QAGKPAPAUIUnknown@@@Z",
+        "0040ed10"
+      ],
+      [
+        "?Init@?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@QAEJPAPAUIConnectionPoint@@0PAUIUnknown@@W4CComEnumFlags@2@@Z",
+        "0040f570"
+      ],
+      [
+        "?Init@?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@QAEJPAUtagCONNECTDATA@@0PAUIUnknown@@W4CComEnumFlags@2@@Z",
+        "0040ef00"
+      ]
+    ],
+    "declared_COM_methods_tested": {
+      "total": 2,
+      "tested": [
+        "get_IsIDE 00410f90",
+        "GetApp 00410fe0"
+      ],
+      "open": []
+    },
+    "library_followup_baseline_preserved": 38,
+    "library_followup_new_pairs": [
+      [
+        "?AtlThrowImpl@ATL@@YGXJ@Z",
+        "00401000"
+      ]
+    ],
+    "enum_slot_baseline_preserved": 39,
+    "enum_slot_new_pairs": [
+      [
+        "??1?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@UAE@XZ",
+        "0040f440"
+      ],
+      [
+        "??1?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@UAE@XZ",
+        "0040ec90"
+      ],
+      [
+        "??_G?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAEPAXI@Z",
+        "0040f960"
+      ],
+      [
+        "??_G?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAEPAXI@Z",
+        "0040fe10"
+      ],
+      [
+        "?Clone@?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@UAGJPAPAUIEnumConnectionPoints@@@Z",
+        "00410670"
+      ],
+      [
+        "?Clone@?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@UAGJPAPAUIEnumConnections@@@Z",
+        "00410740"
+      ],
+      [
+        "?CreateInstance@?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@SGJPAPAV12@@Z",
+        "0040fe50"
+      ],
+      [
+        "?CreateInstance@?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@SGJPAPAV12@@Z",
+        "0040ff20"
+      ],
+      [
+        "?Next@?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@UAGJKPAPAUIConnectionPoint@@PAK@Z",
+        "0040f870"
+      ],
+      [
+        "?Next@?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@UAGJKPAUtagCONNECTDATA@@PAK@Z",
+        "0040fd10"
+      ],
+      [
+        "?QueryInterface@?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAGJABU_GUID@@PAPAX@Z",
+        "0040f940"
+      ],
+      [
+        "?QueryInterface@?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAGJABU_GUID@@PAPAX@Z",
+        "0040fdf0"
+      ],
+      [
+        "?Release@?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAGKXZ",
+        "0040fce0"
+      ],
+      [
+        "?Reset@?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@UAGJXZ",
+        "0040f820"
+      ],
+      [
+        "?Skip@?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@UAGJK@Z",
+        "0040f830"
+      ],
+      [
+        "?Skip@?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@UAGJK@Z",
+        "0040fca0"
+      ]
+    ],
+    "stack_followup_baseline_preserved": 55,
+    "stack_followup_new_pairs": [
+      [
+        "??$AtlAdd@K@ATL@@YAJPAKKK@Z",
+        "00402520"
+      ]
+    ],
+    "typeinfo_baseline_preserved": 56,
+    "typeinfo_new_pairs": [
+      [
+        "??1stringdispid@CComTypeInfoHolder@ATL@@QAE@XZ",
+        "00401020"
+      ],
+      [
+        "?AtlA2WHelper@@YGPA_WPA_WPBDHI@Z",
+        "00401760"
+      ],
+      [
+        "??0stringdispid@CComTypeInfoHolder@ATL@@QAE@XZ",
+        "00402370"
+      ],
+      [
+        "?LoadNameCache@CComTypeInfoHolder@ATL@@QAEJPAUITypeInfo@@@Z",
+        "00402d30"
+      ],
+      [
+        "?Cleanup@CComTypeInfoHolder@ATL@@SGXK@Z",
+        "00402f00"
+      ],
+      [
+        "?IsEqualObject@?$CComPtrBase@UITypeInfo@@@ATL@@QAE_NPAUIUnknown@@@Z",
+        "00402fb0"
+      ],
+      [
+        "??$?4UITypeInfo2@@@?$CComPtr@UITypeInfo@@@ATL@@QAEPAUITypeInfo@@ABV?$CComPtr@UITypeInfo2@@@1@@Z",
+        "00403af0"
+      ],
+      [
+        "?AddTermFunc@CAtlModule@ATL@@QAEJP6GXK@ZK@Z",
+        "00403da0"
+      ],
+      [
+        "??1?$CComCritSecLock@VCComCriticalSection@ATL@@@ATL@@QAE@XZ",
+        "00420bb0"
+      ]
+    ]
+  },
+  "direct_target_gaps": [
+    {
+      "address": "004100a0",
+      "symbol": "?EnumConnectionPoints@?$IConnectionPointContainerImpl@VCBrowserViewExternal@@@ATL@@UAGJPAPAUIEnumConnectionPoints@@@Z",
+      "unproven_targets": {
+        "?_pAtlModule@ATL@@3PAVCAtlModule@1@A": "0x96c268"
+      }
+    },
+    {
+      "address": "004104b0",
+      "symbol": "?EnumConnections@?$IConnectionPointImpl@VCBrowserViewExternal@@$1?_GUID_dd754d30_321a_45a2_a40c_75783afabfab@@3U__s_GUID@@BVCComDynamicUnkArray@ATL@@@ATL@@UAGJPAPAUIEnumConnections@@@Z",
+      "unproven_targets": {
+        "?_pAtlModule@ATL@@3PAVCAtlModule@1@A": "0x96c268"
+      }
+    },
+    {
+      "address": "00404a80",
+      "symbol": "?GetTI@CComTypeInfoHolder@ATL@@QAEJK@Z",
+      "unproven_targets": {
+        "?_pAtlModule@ATL@@3PAVCAtlModule@1@A": "0x96c268",
+        "?m_libid@CAtlModule@ATL@@2U_GUID@@A": "0x96c26c",
+        "?_AtlBaseModule@ATL@@3VCAtlBaseModule@1@A": "0x97f2a8"
+      }
+    },
+    {
+      "address": "0040f960",
+      "symbol": "??_G?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAEPAXI@Z",
+      "unproven_targets": {
+        "?_pAtlModule@ATL@@3PAVCAtlModule@1@A": "0x96c268"
+      }
+    },
+    {
+      "address": "0040fe10",
+      "symbol": "??_G?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAEPAXI@Z",
+      "unproven_targets": {
+        "?_pAtlModule@ATL@@3PAVCAtlModule@1@A": "0x96c268"
+      }
+    },
+    {
+      "address": "0040fe50",
+      "symbol": "?CreateInstance@?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@SGJPAPAV12@@Z",
+      "unproven_targets": {
+        "?_pAtlModule@ATL@@3PAVCAtlModule@1@A": "0x96c268"
+      }
+    },
+    {
+      "address": "0040ff20",
+      "symbol": "?CreateInstance@?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@SGJPAPAV12@@Z",
+      "unproven_targets": {
+        "?_pAtlModule@ATL@@3PAVCAtlModule@1@A": "0x96c268"
+      }
+    }
+  ],
+  "helper_rows": [
+    {
+      "address": "00429330",
+      "symbol": "?reportWorkspaceSiteError@@YAJABU_GUID@@PBDJ@Z",
+      "size": 43,
+      "exact": true,
+      "verified_targets": {
+        "_GUID_NULL": "0x8501ec"
+      },
+      "local_eh": [],
+      "unproven_targets": {
+        "?reportWorkspaceStatus@@YAXGPBD@Z": "0x427c20",
+        "?AtlReportError@ATL@@YGJABU_GUID@@PBDK10J@Z": "0x4290b0"
+      },
+      "unproven_note": "callee bodies (workspace status reporter 00427c20, ATL AtlReportError 004290b0) remain relocation operands only; GUID_NULL data is verified, which does not prove those callees",
+      "data_target_evidence": {
+        "_GUID_NULL": "typeinfo_guid_proof.guid_null: typed SDK declaration; original 16 zero bytes in a read-only section"
+      }
+    }
+  ],
+  "canonical_proof": "work/2008-06/shared-layouts/browser-view-external-working.json",
+  "canonical_proof_sha256": "a75ebaf57d35b069697019646b06b9c05a4105f15bd368ea6e64bca5167cabaa",
+  "dependent_proof": {
+    "receipt": "work/2008-06/shared-layouts/browser-view-working.json",
+    "sha256": "effda41441de71ccdc909f345f8b902577551928e05282de627ee072e88cf930",
+    "rows": 49,
+    "unique_addresses": 47,
+    "lost_pairs": []
+  },
+  "thread_model": {
+    "macro": "/D_ATL_APARTMENT_THREADED",
+    "atlbase_h": "_ATL_APARTMENT_THREADED: CComObjectThreadModel=CComSingleThreadModel, CComGlobalsThreadModel=CComMultiThreadModel",
+    "original_proof": "enumerator vtables 0080d790/0080d7f0 RTTI name CComSingleThreadModel; allocation 0x1c (default multi model emitted 0x38)",
+    "original_macro_spelling": "not proven",
+    "applies_to": "class unit preprocess only; header and sources unchanged"
+  },
+  "layout_status": "Original RTTI and exact creator/destructor plus compile-time size/offset checks; enum allocations use original 0x1c single-thread template model in their exact bodies.",
+  "linkage_proposal": "LIBID_RobloxLib sole new definition uses C linkage from CBrowserViewExternal.h; CContent.h/CWorkspace.h declare C++ linkage. Those header owners must reconcile declarations and rerun their proofs before any selection; no duplicate provider added.",
+  "library_query_interface_proof": {
+    "status": "PASS",
+    "kind": "authentic vendor library replay, not a new application provider",
+    "recipe": "mfc-9.0",
+    "unit": "atlmfc/src/mfc/wincore.cpp",
+    "specification": "// roc-lang: cpp\n// roc-cl: 21022\n// roc-flags: /O2 /GS- /MD\n// roc-lib: mfc-9.0 atlmfc/src/mfc/wincore.cpp\n",
+    "compiler_build": 21022,
+    "compiler_path": "G:\\Projects\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\bin\\cl.exe",
+    "compiler_sha256": "a8fb826379837492f19b249a3553acc3f904afe4c93e643054d0e48340ae717a",
+    "coff_compiler_id": 8671774,
+    "compiler_flags": [
+      "/nologo",
+      "/c",
+      "/Gy",
+      "/O2",
+      "/GS-",
+      "/MD"
+    ],
+    "expanded_cpp_sha256": "77cae28c3acc846c8d5614b13c431029d282bcef1bdfa09a51af8786cab7ebd8",
+    "input_hashes": {
+      "tools/libs/mfc-9.0/atlmfc/src/mfc/wincore.cpp": "653a3dd60d6488738fa65445913915b3e3162c1be0e5c0ccbca05809cb180116",
+      "tools/libs/mfc-9.0/atlmfc/include/atlbase.h": "ccd677464e4a09ca7fa19fa3c47dd9a0ac500399a68ce2ff5edced5ca4c1f5bb"
+    },
+    "object_sha256": "53f21b4644476e6969ec9b4244a20cb676605d37ff4d76d4a98abd7ff55babee",
+    "rows": [
+      {
+        "address": "00402280",
+        "symbol": "?AtlInternalQueryInterface@ATL@@YGJPAXPBU_ATL_INTMAP_ENTRY@1@ABU_GUID@@PAPAX@Z",
+        "size": 233,
+        "exact": true,
+        "verified_targets": {
+          "?InlineIsEqualUnknown@ATL@@YGHABU_GUID@@@Z": "0x401b60"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00401b60",
+        "symbol": "?InlineIsEqualUnknown@ATL@@YGHABU_GUID@@@Z",
+        "size": 46,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      }
+    ],
+    "data_checks": {
+      "00402280": {
+        "exact_symbol_and_defined_data": true,
+        "referenced_data_spans": []
+      },
+      "00401b60": {
+        "exact_symbol_and_defined_data": true,
+        "referenced_data_spans": []
+      }
+    }
+  },
+  "enum_template_proof": {
+    "status": "PASS",
+    "kind": "authentic ATL9 CComObject<CComEnum<..., CComSingleThreadModel>> template instantiations (no wrapper fields, no vendor header edit)",
+    "tables": {
+      "0080d790": {
+        "interface": "IEnumConnectionPoints",
+        "coff_vtable_symbol": "??_7?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@6B@",
+        "rtti": ".?AV?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@",
+        "subobject_offset": 0,
+        "locator": "0x87b904",
+        "chain": [
+          ".?AV?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@ mdisp=0 pdisp=-1 vdisp=0",
+          ".?AV?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@ mdisp=0 pdisp=-1 vdisp=0",
+          ".?AV?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@ mdisp=0 pdisp=-1 vdisp=0",
+          ".?AUIEnumConnectionPoints@@ mdisp=0 pdisp=-1 vdisp=0",
+          ".?AUIUnknown@@ mdisp=0 pdisp=-1 vdisp=0",
+          ".?AV?$CComObjectRootEx@VCComSingleThreadModel@ATL@@@ATL@@ mdisp=24 pdisp=-1 vdisp=0",
+          ".?AVCComObjectRootBase@ATL@@ mdisp=24 pdisp=-1 vdisp=0"
+        ],
+        "slots": 8,
+        "slot_words_all_in_text": true,
+        "word_after_table": "0080d7c8",
+        "word_after_table_is_com_map": true,
+        "com_map": {
+          "address": "0080d7b0",
+          "emitted_symbol": "?_entries@?1??_GetEntries@?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@SGPBU_ATL_INTMAP_ENTRY@3@XZ@4QBU43@B",
+          "iid_symbol": "__GUID_b196b285_bab4_101a_b69c_00aa00341d07",
+          "iid_address": "0080d7c8",
+          "result": "emitted {piid(relocated), 0, simple} + terminator equal the original records; IID bytes equal the GUID in the symbol name"
+        },
+        "slot_list": [
+          {
+            "slot": 0,
+            "original": "0040f940",
+            "emitted_symbol": "?QueryInterface@?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAGJABU_GUID@@PAPAX@Z"
+          },
+          {
+            "slot": 1,
+            "original": "0040f720",
+            "emitted_symbol": "?AddRef@?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAGKXZ"
+          },
+          {
+            "slot": 2,
+            "original": "0040fce0",
+            "emitted_symbol": "?Release@?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAGKXZ"
+          },
+          {
+            "slot": 3,
+            "original": "0040f870",
+            "emitted_symbol": "?Next@?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@UAGJKPAPAUIConnectionPoint@@PAK@Z"
+          },
+          {
+            "slot": 4,
+            "original": "0040f830",
+            "emitted_symbol": "?Skip@?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@UAGJK@Z"
+          },
+          {
+            "slot": 5,
+            "original": "0040f820",
+            "emitted_symbol": "?Reset@?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@UAGJXZ"
+          },
+          {
+            "slot": 6,
+            "original": "00410670",
+            "emitted_symbol": "?Clone@?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@UAGJPAPAUIEnumConnectionPoints@@@Z"
+          },
+          {
+            "slot": 7,
+            "original": "0040f960",
+            "emitted_symbol": "??_E?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAEPAXI@Z"
+          }
+        ]
+      },
+      "0080d7f0": {
+        "interface": "IEnumConnections",
+        "coff_vtable_symbol": "??_7?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@6B@",
+        "rtti": ".?AV?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@",
+        "subobject_offset": 0,
+        "locator": "0x87ba74",
+        "chain": [
+          ".?AV?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@ mdisp=0 pdisp=-1 vdisp=0",
+          ".?AV?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@ mdisp=0 pdisp=-1 vdisp=0",
+          ".?AV?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@ mdisp=0 pdisp=-1 vdisp=0",
+          ".?AUIEnumConnections@@ mdisp=0 pdisp=-1 vdisp=0",
+          ".?AUIUnknown@@ mdisp=0 pdisp=-1 vdisp=0",
+          ".?AV?$CComObjectRootEx@VCComSingleThreadModel@ATL@@@ATL@@ mdisp=24 pdisp=-1 vdisp=0",
+          ".?AVCComObjectRootBase@ATL@@ mdisp=24 pdisp=-1 vdisp=0"
+        ],
+        "slots": 8,
+        "slot_words_all_in_text": true,
+        "word_after_table": "0087bb90",
+        "word_after_table_is_com_map": false,
+        "com_map": {
+          "address": "0080d3c8",
+          "emitted_symbol": "?_entries@?1??_GetEntries@?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@SGPBU_ATL_INTMAP_ENTRY@3@XZ@4QBU43@B",
+          "iid_symbol": "__GUID_b196b287_bab4_101a_b69c_00aa00341d07",
+          "iid_address": "0080d3e0",
+          "result": "emitted {piid(relocated), 0, simple} + terminator equal the original records; IID bytes equal the GUID in the symbol name"
+        },
+        "slot_list": [
+          {
+            "slot": 0,
+            "original": "0040fdf0",
+            "emitted_symbol": "?QueryInterface@?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAGJABU_GUID@@PAPAX@Z"
+          },
+          {
+            "slot": 1,
+            "original": "0040f720",
+            "emitted_symbol": "?AddRef@?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAGKXZ"
+          },
+          {
+            "slot": 2,
+            "original": "0040fce0",
+            "emitted_symbol": "?Release@?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAGKXZ"
+          },
+          {
+            "slot": 3,
+            "original": "0040fd10",
+            "emitted_symbol": "?Next@?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@UAGJKPAUtagCONNECTDATA@@PAK@Z"
+          },
+          {
+            "slot": 4,
+            "original": "0040fca0",
+            "emitted_symbol": "?Skip@?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@UAGJK@Z"
+          },
+          {
+            "slot": 5,
+            "original": "0040f820",
+            "emitted_symbol": "?Reset@?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@UAGJXZ"
+          },
+          {
+            "slot": 6,
+            "original": "00410740",
+            "emitted_symbol": "?Clone@?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@UAGJPAPAUIEnumConnections@@@Z"
+          },
+          {
+            "slot": 7,
+            "original": "0040fe10",
+            "emitted_symbol": "??_E?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAEPAXI@Z"
+          }
+        ]
+      }
+    },
+    "new_unique_address_rows": [
+      {
+        "symbol": "?QueryInterface@?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAGJABU_GUID@@PAPAX@Z",
+        "address": "0040f940"
+      },
+      {
+        "symbol": "?Release@?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAGKXZ",
+        "address": "0040fce0"
+      },
+      {
+        "symbol": "?Next@?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@UAGJKPAPAUIConnectionPoint@@PAK@Z",
+        "address": "0040f870"
+      },
+      {
+        "symbol": "?Skip@?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@UAGJK@Z",
+        "address": "0040f830"
+      },
+      {
+        "symbol": "?Reset@?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@UAGJXZ",
+        "address": "0040f820"
+      },
+      {
+        "symbol": "?Clone@?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@UAGJPAPAUIEnumConnectionPoints@@@Z",
+        "address": "00410670"
+      },
+      {
+        "symbol": "??_G?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAEPAXI@Z",
+        "address": "0040f960"
+      },
+      {
+        "symbol": "?QueryInterface@?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAGJABU_GUID@@PAPAX@Z",
+        "address": "0040fdf0"
+      },
+      {
+        "symbol": "?Next@?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@UAGJKPAUtagCONNECTDATA@@PAK@Z",
+        "address": "0040fd10"
+      },
+      {
+        "symbol": "?Skip@?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@UAGJK@Z",
+        "address": "0040fca0"
+      },
+      {
+        "symbol": "?Clone@?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@UAGJPAPAUIEnumConnections@@@Z",
+        "address": "00410740"
+      },
+      {
+        "symbol": "??_G?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAEPAXI@Z",
+        "address": "0040fe10"
+      }
+    ],
+    "new_support_rows": [
+      {
+        "symbol": "?CreateInstance@?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@SGJPAPAV12@@Z",
+        "address": "0040fe50"
+      },
+      {
+        "symbol": "?CreateInstance@?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@SGJPAPAV12@@Z",
+        "address": "0040ff20"
+      },
+      {
+        "symbol": "??1?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@UAE@XZ",
+        "address": "0040f440"
+      },
+      {
+        "symbol": "??1?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@UAE@XZ",
+        "address": "0040ec90"
+      }
+    ],
+    "alias_rows_reused_address": [
+      {
+        "symbol": "?AddRef@?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAGKXZ",
+        "address": "0040f720",
+        "size": 13,
+        "exact": true,
+        "reused_address_of": "?AddRef@?$CComObjectNoLock@VCBrowserViewExternal@@@ATL@@UAGKXZ",
+        "verified_targets": {},
+        "unproven_targets": {}
+      },
+      {
+        "symbol": "?AddRef@?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAGKXZ",
+        "address": "0040f720",
+        "size": 13,
+        "exact": true,
+        "reused_address_of": "?AddRef@?$CComObjectNoLock@VCBrowserViewExternal@@@ATL@@UAGKXZ",
+        "verified_targets": {},
+        "unproven_targets": {}
+      },
+      {
+        "symbol": "?Release@?$CComObject@V?$CComEnum@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAGKXZ",
+        "address": "0040fce0",
+        "size": 33,
+        "exact": true,
+        "reused_address_of": "?Release@?$CComObject@V?$CComEnum@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@VCComSingleThreadModel@6@@ATL@@@ATL@@UAGKXZ",
+        "verified_targets": {},
+        "unproven_targets": {}
+      },
+      {
+        "symbol": "?Reset@?$CComEnumImpl@UIEnumConnections@@$1?_GUID_b196b287_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BUtagCONNECTDATA@@V?$_Copy@UtagCONNECTDATA@@@ATL@@@ATL@@UAGJXZ",
+        "address": "0040f820",
+        "size": 15,
+        "exact": true,
+        "reused_address_of": "?Reset@?$CComEnumImpl@UIEnumConnectionPoints@@$1?_GUID_b196b285_bab4_101a_b69c_00aa00341d07@@3U__s_GUID@@BPAUIConnectionPoint@@V?$_CopyInterface@UIConnectionPoint@@@ATL@@@ATL@@UAGJXZ",
+        "verified_targets": {},
+        "unproven_targets": {}
+      }
+    ],
+    "counts": {
+      "slots_total": 16,
+      "new_unique_slot_addresses": 12,
+      "alias_slots_at_reused_addresses": 4,
+      "new_support_addresses": 4,
+      "new_unique_addresses_total": 16
+    },
+    "reuse_hash_pins": {
+      "AtlInternalQueryInterface 00402280": "library_query_interface_proof (MFC wincore RTM 21022)",
+      "AtlThrowImpl 00401000": "atlexcept.h row in methods"
+    },
+    "unproven_targets": "ATL::_pAtlModule 0096c268 (CComObject deleting destructors and CreateInstance); no stack-verify or alloca target in these bodies; ATL module state, CRT and operator-delete bodies are import identities only",
+    "not_claimed": "class remains PARTIAL and inactive; library/static/linkage gaps retained; a byte-exact row with unproven targets is not full acceptance"
+  },
+  "full_stack_owner_pending_extent": {
+    "status": "FULL-SPAN MASKED MATCH, EXTENT NOT APPLIED",
+    "accepted_exact_function": false,
+    "counted_in_methods": false,
+    "bound_in_verified_targets": false,
+    "bounds_status": "pending server extent acceptance: the inventory/server extent is still 93; this receipt records proof only",
+    "server_extent_status": "not applied",
+    "server_credit_asserted": false,
+    "symbol": "?_AtlVerifyStackAvailable@_ATL_SAFE_ALLOCA_IMPL@ATL@@YA_NK@Z",
+    "address": "00402610",
+    "recorded_size": 93,
+    "proposed_size": 156,
+    "proposed_end": "004026ac",
+    "inventory_rows_absorbed": [
+      {
+        "address": "0040266d",
+        "size": 20,
+        "role": "SEH filter ($LN7, object offset 0x5d)"
+      },
+      {
+        "address": "00402681",
+        "size": 43,
+        "role": "SEH handler ($LN8, object offset 0x71); also contains the normal-exit label 0040268f"
+      }
+    ],
+    "adjacent": {
+      "previous": "004025b0 (89 bytes, ends 00402609, 0xcc padding to 00402610)",
+      "next": "004026b0 after 0xcc padding"
+    },
+    "original_156_sha256": "66c7d78f7864a7e212705d63744cec4877eb2164d6116575eefa59f2c2543db8",
+    "original_93_prefix_sha256": "fc3f360d2ed4338718a22c79c693c69deb6745420c0b3c965f036d5865f8aaa8",
+    "object": {
+      "comdat_text_size": 156,
+      "comdat_text_sha256": "dfaacf88ea9a597c19642624f84eec7d5ddd49e611cfaa5994c4f76dccf26900",
+      "object_sha256": "617a449b2ae61460e5a821e9dff8ff90284c5a1b310f660b58aa7f5baa244a75",
+      "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+      "coff_compiler_id": 8671774,
+      "flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD",
+        "/D_AFXDLL",
+        "/DNDEBUG",
+        "/D_MBCS",
+        "/DNOMINMAX",
+        "/DBOOST_ALL_NO_LIB",
+        "/DWIN32",
+        "/DNDEBUG",
+        "/D_LIB",
+        "/D_RELEASE",
+        "/D_RELEASEASSERT",
+        "/D_VC80_UPGRADE=0x0710",
+        "/IG:\\Projects\\RoConstruct\\rebuild\\2008-06\\native-headers",
+        "/IG:\\Projects\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+        "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+        "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+        "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+        "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+        "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+        "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+        "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+        "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+        "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+        "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+        "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+        "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+      ],
+      "profile_flags": [
+        "/nologo",
+        "/c",
+        "/O2",
+        "/Ob2",
+        "/Oy",
+        "/GF",
+        "/GS-",
+        "/EHsc",
+        "/MD"
+      ],
+      "source": "ATL9 atlalloc.h _AtlVerifyStackAvailable (header-instantiated, no application source)",
+      "source_header": "tools/libs/mfc-9.0-rtm/atlmfc/include/atlalloc.h",
+      "source_header_sha256": "eef97dbf1ab2379218c4b2017e9c7ade97335fbb6d73d7e0fdb671784e0b77b4"
+    },
+    "masked_differences": [],
+    "raw_difference_offsets": [
+      6,
+      7,
+      8,
+      11,
+      12,
+      13,
+      62,
+      63,
+      64,
+      65,
+      84,
+      85,
+      86,
+      123,
+      124,
+      125
+    ],
+    "raw_difference_note": "all raw differences lie inside the 5 relocation windows (first at +6 = __sehtable$ operand); the 93-byte body is not wrong",
+    "relocations": {
+      "6": {
+        "symbol": "__sehtable$?_AtlVerifyStackAvailable@_ATL_SAFE_ALLOCA_IMPL@ATL@@YA_NK@Z",
+        "form": "dir32",
+        "original_value": "008d0748"
+      },
+      "11": {
+        "symbol": "__except_handler3",
+        "form": "dir32",
+        "original_value": "006a1512"
+      },
+      "62": {
+        "symbol": "??$AtlAdd@K@ATL@@YAJPAKKK@Z",
+        "form": "rel32",
+        "original_value": "00402520"
+      },
+      "84": {
+        "symbol": "__alloca_probe_16",
+        "form": "rel32",
+        "original_value": "006a1560"
+      },
+      "123": {
+        "symbol": "__imp___resetstkoflw",
+        "form": "dir32",
+        "original_value": "00802894"
+      }
+    },
+    "relocation_identities": {
+      "+6": "__sehtable$ scope table at 008d0748",
+      "+11": "__except_handler3 operand 006a1512 = jmp [008028a8] = msvcr90.dll!_except_handler3",
+      "+62": "AtlAdd<unsigned long> row 00402520 (exact masked row in methods)",
+      "+84": "__alloca_probe_16 at 006a1560 (CRT archive member proof: crt_stack_probe_proof)",
+      "+123": "__imp___resetstkoflw = IAT 00802894 = msvcr90.dll!_resetstkoflw"
+    },
+    "seh_scope_table": {
+      "address": "008d0748",
+      "original_words": [
+        "ffffffff",
+        "0040266d",
+        "00402681"
+      ],
+      "emitted_words_after_label_resolution": [
+        "ffffffff",
+        "0040266d",
+        "00402681"
+      ],
+      "object_labels": {
+        "$LN7": "0x5d",
+        "$LN8": "0x71"
+      },
+      "filter": "0040266d: [ebp-0x14] -> EXCEPTION_POINTERS, compares ExceptionCode with 0xc00000fd (STATUS_STACK_OVERFLOW)",
+      "handler": "00402681: restores esp from [ebp-0x18], clears result, calls _resetstkoflw, falls into the normal-exit label"
+    },
+    "control_flow": {
+      "normal_exit_label": "0040268f (inside the handler row 00402681)",
+      "jumps_to_normal_exit": [
+        "0x40265e",
+        "0x40266b"
+      ],
+      "alloca_site": "00402663 call 006a1560 with eax = [ebp-0x20] (probe size), esp saved to [ebp-0x18] afterwards"
+    },
+    "calling_convention": {
+      "return": "bare c3 (cdecl, caller cleans) - NOT ret 4",
+      "decoration": "YA_NK (cdecl)",
+      "caller_cleanup": "18/18 call sites followed by add esp,4 across 15 caller functions"
+    },
+    "data_checks": {
+      "scope_table": "compared word by word with the original after resolving object labels",
+      "iat": "00802894 import by name",
+      "except_handler3_thunk": "006a1512 jmp [IAT] import by name"
+    },
+    "bounds_proof": {
+      "old": 93,
+      "new": 156,
+      "absorbs": [
+        "0040266d",
+        "00402681"
+      ],
+      "clean": true,
+      "proof": "tail"
+    },
+    "bounds_proof_note": "bounds_proof.tail_proof called directly: nothing recorded, bounds.json/functions.jsonl untouched, roc extents --apply not run",
+    "caller_status": "pending-boundary: callers see the recorded 93-byte extent. This is an extent gap, not a wrong-codegen finding."
+  },
+  "crt_stack_probe_proof": {
+    "status": "PASS",
+    "kind": "genuine compiler runtime archive members (recipe msvc-crt); no source, no assembler, no byte blob provider",
+    "compiler": "G:\\Projects\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\bin\\cl.exe",
+    "compiler_build": 21022,
+    "compiler_sha256": "a8fb826379837492f19b249a3553acc3f904afe4c93e643054d0e48340ae717a",
+    "archives": {
+      "libcmt.lib": {
+        "path": "G:\\Projects\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\lib\\libcmt.lib",
+        "sha256": "bd8fe9fa475deb84014af41870182b447bb969c91661d7012ae8d1b26bb6a86c"
+      },
+      "libcpmt.lib": {
+        "path": "G:\\Projects\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\lib\\libcpmt.lib",
+        "sha256": "e310db1d24bbec63f3ff2c64408f425afc30acc506eb032672d54656e210f02a"
+      },
+      "msvcrt.lib": {
+        "path": "G:\\Projects\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\lib\\msvcrt.lib",
+        "sha256": "96602e3dd433237d178bd64d02de4efb8981e3c66a24535278b3897a2ac4f9e8"
+      }
+    },
+    "members": {
+      "libcmt.lib!alloca16.obj": {
+        "original": "006a1560 (22) + 006a1576 (22), masked equal; both rel32 jumps resolve to 006a1520 = __chkstk",
+        "symbols": {
+          "__alloca_probe_16": "006a1560",
+          "__alloca_probe_8": "006a1576"
+        },
+        "relocations": "2 x rel32 __chkstk at +18, +40",
+        "member": "f:\\dd\\vctools\\crt_bld\\SELF_X86\\crt\\src\\build\\INTEL\\mt_obj\\alloca16.obj",
+        "member_sha256": "c89032c5cdb8787372d4a9ce40c763add796df898fbf4f5aa69c9e8e0224018f",
+        "text_size": 44,
+        "text_sha256": "e65cc318753fcf0886a28d10db3294eb09c6be98b57865a6b061e125a8366b92",
+        "archive_sha256": "bd8fe9fa475deb84014af41870182b447bb969c91661d7012ae8d1b26bb6a86c"
+      },
+      "libcmt.lib!chkstk.obj": {
+        "original": "006a1520, 43 bytes (byte equal; no relocations)",
+        "symbols": {
+          "__alloca_probe": "006a1520",
+          "__chkstk": "006a1520 (alias, same member offset 0)"
+        },
+        "member": "f:\\dd\\vctools\\crt_bld\\SELF_X86\\crt\\src\\build\\INTEL\\mt_obj\\chkstk.obj",
+        "member_sha256": "1100a55337b2f7966d95fdf61789c2fb4d1dd7650eb0a6b613a08db6304e5bfb",
+        "text_size": 43,
+        "text_sha256": "f8675b4976f7b8efc0bd917aebab734d11ca90222d20bcd2a166ce9914ed2b6e",
+        "archive_sha256": "bd8fe9fa475deb84014af41870182b447bb969c91661d7012ae8d1b26bb6a86c"
+      },
+      "msvcrt.lib!alloca16.obj": {
+        "original": "006a1560 (22) + 006a1576 (22), masked equal; both rel32 jumps resolve to 006a1520 = __chkstk",
+        "symbols": {
+          "__alloca_probe_16": "006a1560",
+          "__alloca_probe_8": "006a1576"
+        },
+        "relocations": "2 x rel32 __chkstk at +18, +40",
+        "member": "f:\\dd\\vctools\\crt_bld\\SELF_X86\\crt\\src\\build\\INTEL\\dll_obj\\alloca16.obj",
+        "member_sha256": "851e03b55412fea641b39dcb24455aa6a9348943ea0be1c667ec630da56b2422",
+        "text_size": 44,
+        "text_sha256": "e65cc318753fcf0886a28d10db3294eb09c6be98b57865a6b061e125a8366b92",
+        "archive_sha256": "96602e3dd433237d178bd64d02de4efb8981e3c66a24535278b3897a2ac4f9e8"
+      },
+      "msvcrt.lib!chkstk.obj": {
+        "original": "006a1520, 43 bytes (byte equal; no relocations)",
+        "symbols": {
+          "__alloca_probe": "006a1520",
+          "__chkstk": "006a1520 (alias, same member offset 0)"
+        },
+        "member": "f:\\dd\\vctools\\crt_bld\\SELF_X86\\crt\\src\\build\\INTEL\\dll_obj\\chkstk.obj",
+        "member_sha256": "03bbfd9b67e5e286fb177514dcd6caf41ede46ffc74e22f62b2ad351ff65c774",
+        "text_size": 43,
+        "text_sha256": "f8675b4976f7b8efc0bd917aebab734d11ca90222d20bcd2a166ce9914ed2b6e",
+        "archive_sha256": "96602e3dd433237d178bd64d02de4efb8981e3c66a24535278b3897a2ac4f9e8"
+      }
+    },
+    "archive_choice_note": "libcmt.lib (mt_obj) and msvcrt.lib (dll_obj) .text bytes are identical, so the bytes do not choose between them; the client imports msvcr90.dll (/MD), whose import library is msvcrt.lib",
+    "original_layout": {
+      "006a1520": "__alloca_probe/__chkstk (43 bytes)",
+      "006a154c, 006a1552": "msvcr90 import thunks (unrelated), 0xcc padding to 006a1560",
+      "006a1560": "__alloca_probe_16 (22)",
+      "006a1576": "__alloca_probe_8 (22)"
+    },
+    "abi": {
+      "convention": "special register intrinsic, not a C++ function: size in EAX on entry; the helper subtracts it from ESP (probing pages) and returns with ESP lowered",
+      "call_sites": {
+        "00402663": "mov eax,[ebp-0x20]; call 006a1560; mov [ebp-0x18],esp (owner 00402610)",
+        "00410168": "mov eax,4; call 006a1520 (EnumConnectionPoints 004100a0)"
+      }
+    },
+    "caller_note": "00404a80 (GetTI) calls 006a1560, not 006a1520; 006a1520 is called by 004100a0",
+    "scope": "runtime/library byte identity only; not a native C++ body row and not counted in methods"
+  },
+  "pending_extent_callers": [
+    {
+      "address": "004100a0",
+      "pending_extent_targets": {
+        "?_AtlVerifyStackAvailable@_ATL_SAFE_ALLOCA_IMPL@ATL@@YA_NK@Z": {
+          "address": "0x402610",
+          "recorded_size": 93,
+          "proposed_size": 156,
+          "status": "FULL-SPAN MASKED MATCH, EXTENT NOT APPLIED",
+          "proof": "full_stack_owner_pending_extent",
+          "accepted_exact_function": false
+        }
+      }
+    },
+    {
+      "address": "00404a80",
+      "pending_extent_targets": {
+        "?_AtlVerifyStackAvailable@_ATL_SAFE_ALLOCA_IMPL@ATL@@YA_NK@Z": {
+          "address": "0x402610",
+          "recorded_size": 93,
+          "proposed_size": 156,
+          "status": "FULL-SPAN MASKED MATCH, EXTENT NOT APPLIED",
+          "proof": "full_stack_owner_pending_extent",
+          "accepted_exact_function": false
+        }
+      }
+    }
+  ],
+  "stack_extent_proposal": {
+    "path": "work/2008-06/shared-layouts/browser-view-external-stack-extent.json",
+    "server_extent_status": "not applied",
+    "proposal": "local"
+  },
+  "pending_runtime_callers": [
+    {
+      "address": "00402f00",
+      "pending_runtime_targets": {
+        "??_M@YGXPAXIHP6EX0@Z@Z": {
+          "address": "0x6a165b",
+          "entry_symbol_identity_proven": true,
+          "recorded_size": 75,
+          "archive_masked_span_size": 99,
+          "proof": "crt_eh_vector_proof",
+          "accepted_exact_function": false,
+          "remaining": "full extent, SEH scope tables and __SEH_prolog4/__SEH_epilog4/__ArrayUnwind targets"
+        }
+      }
+    },
+    {
+      "address": "00402d30",
+      "pending_runtime_targets": {
+        "??_L@YGXPAXIHP6EX0@Z1@Z": {
+          "address": "0x6a1598",
+          "entry_symbol_identity_proven": true,
+          "recorded_size": 77,
+          "archive_masked_span_size": 101,
+          "proof": "crt_eh_vector_proof",
+          "accepted_exact_function": false,
+          "remaining": "full extent, SEH scope tables and __SEH_prolog4/__SEH_epilog4/__ArrayUnwind targets"
+        }
+      }
+    }
+  ],
+  "typeinfo_helper_proof": {
+    "status": "PASS",
+    "kind": "bodies emitted unchanged by the authentic ATL9 RTM headers of the existing class object; no new provider, source, flag or compile trial",
+    "new_exact_rows": [
+      {
+        "symbol": "?AtlA2WHelper@@YGPA_WPA_WPBDHI@Z",
+        "address": "00401760"
+      },
+      {
+        "symbol": "??1?$CComCritSecLock@VCComCriticalSection@ATL@@@ATL@@QAE@XZ",
+        "address": "00420bb0"
+      },
+      {
+        "symbol": "??$?4UITypeInfo2@@@?$CComPtr@UITypeInfo@@@ATL@@QAEPAUITypeInfo@@ABV?$CComPtr@UITypeInfo2@@@1@@Z",
+        "address": "00403af0"
+      },
+      {
+        "symbol": "?Cleanup@CComTypeInfoHolder@ATL@@SGXK@Z",
+        "address": "00402f00"
+      },
+      {
+        "symbol": "?AddTermFunc@CAtlModule@ATL@@QAEJP6GXK@ZK@Z",
+        "address": "00403da0"
+      },
+      {
+        "symbol": "?LoadNameCache@CComTypeInfoHolder@ATL@@QAEJPAUITypeInfo@@@Z",
+        "address": "00402d30"
+      },
+      {
+        "symbol": "??1stringdispid@CComTypeInfoHolder@ATL@@QAE@XZ",
+        "address": "00401020"
+      },
+      {
+        "symbol": "??0stringdispid@CComTypeInfoHolder@ATL@@QAE@XZ",
+        "address": "00402370"
+      },
+      {
+        "symbol": "?IsEqualObject@?$CComPtrBase@UITypeInfo@@@ATL@@QAE_NPAUIUnknown@@@Z",
+        "address": "00402fb0"
+      }
+    ],
+    "getti_direct_helpers": [
+      "00401760",
+      "00420bb0",
+      "00403af0",
+      "00402f00",
+      "00403da0",
+      "00402d30"
+    ],
+    "helper_of_helper_rows": [
+      "00401020",
+      "00402370",
+      "00402fb0"
+    ],
+    "aliases_or_library_reused_rows": [],
+    "reuse_note": "nine additional helper rows for this class; all 56 prior pairs are preserved separately in the regression receipt; no server gain claimed",
+    "atl_module_add_term_func": {
+      "address": "004038f0",
+      "symbol": "?AtlModuleAddTermFunc@ATL@@YGJPAU_ATL_MODULE70@1@P6GXK@ZK@Z",
+      "exact": false,
+      "emitted_size": 191,
+      "original_size": 191,
+      "emitted_relocation_offsets": [
+        6,
+        74,
+        115,
+        120,
+        142,
+        165
+      ],
+      "original_relocation_offsets": [
+        6,
+        120,
+        142,
+        165
+      ],
+      "non_relocation_difference_count": 10,
+      "first_non_relocation_difference": 26,
+      "emitted_window": "10538b5d08565789",
+      "original_window": "08538b5d08565789",
+      "emitted_text_sha256": "0ab4c5425eda379cf6d4a0e33c8776b74e59f11f90cfc14c4840be72fb4a91f8",
+      "original_sha256": "0bbf2c6b5d0bfbfde22562696c9000531e55cab27b786f815c5f151da4a32f72",
+      "status": "NOT EXACT: authentic atlbase.inl body (CComCritSecLock local) differs from the original; open, not a row, no server credit",
+      "stored_analog": "src/2008-06/004038f0.cpp (server cache 100%, library roc_unit_38a66487c88049f6.cpp, hand-written explicit Lock/Unlock, no CComCritSecLock): an analog of unverified freshness, NOT adopted, NOT recompiled here, not authentic header text"
+    },
+    "remaining_unproven_getti_targets": [
+      "?_pAtlModule@ATL@@3PAVCAtlModule@1@A 0096c268",
+      "?m_libid@CAtlModule@ATL@@2U_GUID@@A 0096c26c",
+      "?_AtlBaseModule@ATL@@3VCAtlBaseModule@1@A 0097f2a8"
+    ],
+    "remaining_unproven_helper_targets": [
+      "CRT __SEH_prolog4 006a1fbc, __SEH_epilog4 006a2001, __ArrayUnwind 006a15fd, and the member __sehtable$ scope tables"
+    ],
+    "provenance": {
+      "class_object": "RTM header tree (tools/libs/mfc-9.0-rtm) with compiler 21022",
+      "query_interface_library_replay": "recipe mfc-9.0 source/header tree (tools/libs/mfc-9.0, hashes recorded as SP1-era input) with explicit RTM compiler 21022",
+      "note": "compiler build and vendor header revision are separate provenance facts; the library input hashes are the vendor-unit hashes and are never replaced by class RTM header hashes"
+    },
+    "sdk_guid_proof": {
+      "status": "PASS",
+      "guids": {
+        "__GUID_00020412_0000_0000_c000_000000000046": {
+          "interface": "ITypeInfo2",
+          "sdk_declaration": "__declspec(uuid(\"00020412-0000-0000-C000-000000000046\")) ITypeInfo2",
+          "sdk_header": "g:\\projects\\roconstruct\\tools\\vc2008sp1\\microsoft\\visual c++ for python\\9.0\\winsdk\\include\\oaidl.h",
+          "sdk_header_sha256": "95e2d2c3eaea98325e09a65f32819728fe0a750a3f17c8d54061146ef304ce41",
+          "original_address": "0080b130",
+          "emitted_coff_section": ".rdata",
+          "result": "SDK __uuidof value, emitted 16 bytes and the original 16 bytes are equal"
+        },
+        "__GUID_00020401_0000_0000_c000_000000000046": {
+          "interface": "ITypeInfo",
+          "sdk_declaration": "__declspec(uuid(\"00020401-0000-0000-C000-000000000046\")) ITypeInfo",
+          "sdk_header": "g:\\projects\\roconstruct\\tools\\vc2008sp1\\microsoft\\visual c++ for python\\9.0\\winsdk\\include\\oaidl.h",
+          "sdk_header_sha256": "95e2d2c3eaea98325e09a65f32819728fe0a750a3f17c8d54061146ef304ce41",
+          "original_address": "0080b1f0",
+          "emitted_coff_section": ".rdata",
+          "result": "SDK __uuidof value, emitted 16 bytes and the original 16 bytes are equal"
+        },
+        "__GUID_00000000_0000_0000_c000_000000000046": {
+          "interface": "IUnknown",
+          "sdk_declaration": "__declspec(uuid(\"00000000-0000-0000-C000-000000000046\")) IUnknown",
+          "sdk_header": "G:\\Projects\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\unknwn.h",
+          "sdk_header_sha256": "ac8e4dab839feea8c93f26c7a38188b3cd28aec824bc0a423af20c89f9c5a32e",
+          "original_address": "0080b154",
+          "emitted_coff_section": ".rdata",
+          "result": "SDK __uuidof value, emitted 16 bytes and the original 16 bytes are equal"
+        }
+      },
+      "guid_null": {
+        "symbol": "_GUID_NULL",
+        "original_address": "008501ec",
+        "sdk_declaration": "extern const IID GUID_NULL;",
+        "sdk_header": "G:\\Projects\\RoConstruct\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Include\\cguid.h",
+        "sdk_header_sha256": "7cc51e0b337fb3c0a899ca4443cc87766c268a251a8df873af8cef185f429c2d",
+        "original_bytes": "16 x 00",
+        "original_section": ".rdata",
+        "original_section_readonly": true,
+        "result": "typed SDK GUID_NULL declaration, original storage is 16 zero bytes in a read-only section",
+        "not_claimed": "no runtime claim about zero-valued globals; helper callees 00427c20 and 004290b0 are NOT proven by this data check",
+        "unit_note": "declaration read from the class unit preprocess; WorkspaceSiteError.cpp includes windows.h (cguid.h via ole2.h) from the same SDK tree"
+      }
+    },
+    "not_claimed": "unproven ATL module globals stay open; no always-zero/always-LoadRegTypeLib claim; status stays PARTIAL"
+  },
+  "crt_eh_vector_proof": {
+    "status": "PASS",
+    "kind": "genuine compiler runtime archive members (recipe msvc-crt); no source, no assembler, no byte blob provider",
+    "compiler": "G:\\Projects\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\bin\\cl.exe",
+    "compiler_sha256": "a8fb826379837492f19b249a3553acc3f904afe4c93e643054d0e48340ae717a",
+    "archives": {
+      "libcmt.lib": {
+        "path": "G:\\Projects\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\lib\\libcmt.lib",
+        "sha256": "bd8fe9fa475deb84014af41870182b447bb969c91661d7012ae8d1b26bb6a86c"
+      },
+      "libcpmt.lib": {
+        "path": "G:\\Projects\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\lib\\libcpmt.lib",
+        "sha256": "e310db1d24bbec63f3ff2c64408f425afc30acc506eb032672d54656e210f02a"
+      },
+      "msvcrt.lib": {
+        "path": "G:\\Projects\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\lib\\msvcrt.lib",
+        "sha256": "96602e3dd433237d178bd64d02de4efb8981e3c66a24535278b3897a2ac4f9e8"
+      }
+    },
+    "members": {
+      "libcmt.lib!ehvecctr.obj": {
+        "symbol": "??_L@YGXPAXIHP6EX0@Z1@Z",
+        "original": "006a1598",
+        "member_text_size": 101,
+        "inventory_extent": 77,
+        "inventory_extent_stale": true,
+        "masked_equal_over_full_member": true,
+        "relocation_operands_in_original": {
+          "__sehtable$??_L@YGXPAXIHP6EX0@Z1@Z": "00900ac0 (relocation operand, not verified here)",
+          "__SEH_prolog4": "006a1fbc",
+          "__SEH_epilog4": "006a2001",
+          "?__ArrayUnwind@@YGXPAXIHP6EX0@Z@Z": "006a15fd"
+        },
+        "member": "f:\\dd\\vctools\\crt_bld\\SELF_X86\\crt\\prebuild\\build\\INTEL\\mt_obj\\ehvecctr.obj",
+        "member_sha256": "7ab6fd2a04bf7580f09c8583f8326a720873fa9808bd3b19abcd6c4977ccedbd",
+        "text_sha256": "f05b41477d5ce8be981afaeb16e2a615f7f6b2ef4702db20c0974c8fc0b2c729",
+        "archive_sha256": "bd8fe9fa475deb84014af41870182b447bb969c91661d7012ae8d1b26bb6a86c"
+      },
+      "libcmt.lib!ehvecdtr.obj": {
+        "symbol": "??_M@YGXPAXIHP6EX0@Z@Z",
+        "original": "006a165b",
+        "member_text_size": 99,
+        "inventory_extent": 75,
+        "inventory_extent_stale": true,
+        "masked_equal_over_full_member": true,
+        "relocation_operands_in_original": {
+          "__sehtable$??_M@YGXPAXIHP6EX0@Z@Z": "00900b00 (relocation operand, not verified here)",
+          "__SEH_prolog4": "006a1fbc",
+          "__SEH_epilog4": "006a2001",
+          "?__ArrayUnwind@@YGXPAXIHP6EX0@Z@Z": "006a15fd"
+        },
+        "member": "f:\\dd\\vctools\\crt_bld\\SELF_X86\\crt\\prebuild\\build\\INTEL\\mt_obj\\ehvecdtr.obj",
+        "member_sha256": "0f084449fbf5b5337d22ab55f27dcfc71c365f9303295211e2b9e88b181c1ea4",
+        "text_sha256": "37d5686904d28c51e55d61d0bb1e148e7a0a24e30721c92716a1de2f48a79705",
+        "archive_sha256": "bd8fe9fa475deb84014af41870182b447bb969c91661d7012ae8d1b26bb6a86c"
+      },
+      "msvcrt.lib!ehvecdtr.obj": {
+        "symbol": "??_M@YGXPAXIHP6EX0@Z@Z",
+        "original": "006a165b",
+        "member_text_size": 99,
+        "inventory_extent": 75,
+        "inventory_extent_stale": true,
+        "masked_equal_over_full_member": true,
+        "relocation_operands_in_original": {
+          "__sehtable$??_M@YGXPAXIHP6EX0@Z@Z": "00900b00 (relocation operand, not verified here)",
+          "__SEH_prolog4": "006a1fbc",
+          "__SEH_epilog4": "006a2001",
+          "?__ArrayUnwind@@YGXPAXIHP6EX0@Z@Z": "006a15fd"
+        },
+        "member": "f:\\dd\\vctools\\crt_bld\\SELF_X86\\crt\\src\\INTEL\\dll_lib\\ehvecdtr.obj",
+        "member_sha256": "62517f035709376bf63eef099033f2b7a144e8329022cd2dcf72d5fe2931be1f",
+        "text_sha256": "37d5686904d28c51e55d61d0bb1e148e7a0a24e30721c92716a1de2f48a79705",
+        "archive_sha256": "96602e3dd433237d178bd64d02de4efb8981e3c66a24535278b3897a2ac4f9e8"
+      },
+      "msvcrt.lib!ehvecctr.obj": {
+        "symbol": "??_L@YGXPAXIHP6EX0@Z1@Z",
+        "original": "006a1598",
+        "member_text_size": 101,
+        "inventory_extent": 77,
+        "inventory_extent_stale": true,
+        "masked_equal_over_full_member": true,
+        "relocation_operands_in_original": {
+          "__sehtable$??_L@YGXPAXIHP6EX0@Z1@Z": "00900ac0 (relocation operand, not verified here)",
+          "__SEH_prolog4": "006a1fbc",
+          "__SEH_epilog4": "006a2001",
+          "?__ArrayUnwind@@YGXPAXIHP6EX0@Z@Z": "006a15fd"
+        },
+        "member": "f:\\dd\\vctools\\crt_bld\\SELF_X86\\crt\\src\\INTEL\\dll_lib\\ehvecctr.obj",
+        "member_sha256": "e76484980673e9cd650bbb11b200bbd0fd9446a51535c59f95c9b9699f36e0c5",
+        "text_sha256": "f05b41477d5ce8be981afaeb16e2a615f7f6b2ef4702db20c0974c8fc0b2c729",
+        "archive_sha256": "96602e3dd433237d178bd64d02de4efb8981e3c66a24535278b3897a2ac4f9e8"
+      }
+    },
+    "scope": "runtime/library byte identity only; not a native C++ row and not counted in methods. __SEH_prolog4 006a1fbc, __SEH_epilog4 006a2001 and __ArrayUnwind 006a15fd (jump targets of these members) and the members' __sehtable$ scope tables are relocation operands here and are NOT proven",
+    "extent_note": "inventory extents (77 / 75 bytes) are stale prefixes of the 101 / 99 byte members; metadata not changed"
+  },
+  "termination_helper_analog_proof": {
+    "status": "PASS",
+    "kind": "typed explicit Lock/Unlock codegen analog replay (source function addTermDirect); NOT authentic upstream AtlModuleAddTermFunc text, NOT the original declaration",
+    "provider_or_link_acceptance": false,
+    "native_row": false,
+    "counts_toward_methods": false,
+    "wrapper": "src/2008-06/004038f0.cpp (existing stored wrapper, recipe mfc-9.0-shared-rtm, roc-cl 21022, /O2 /GS- /EHsc /MD)",
+    "compiler_build": 21022,
+    "compiler_path": "G:\\Projects\\RoConstruct\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\bin\\cl.exe",
+    "compiler_sha256": "a8fb826379837492f19b249a3553acc3f904afe4c93e643054d0e48340ae717a",
+    "coff_compiler_id": "0x84521e",
+    "symbol": "?addTermDirect@@YGJPAU_ATL_MODULE70@ATL@@P6GXK@ZK@Z",
+    "address": "004038f0",
+    "size": 191,
+    "stdcall_ret": 12,
+    "non_relocation_differences": 0,
+    "emitted_text_sha256": "a388902d76def3fc11a176dd707b2db1efd5231c2e3072eb52a8a4c0338592df",
+    "original_sha256": "0bbf2c6b5d0bfbfde22562696c9000531e55cab27b786f815c5f151da4a32f72",
+    "relocation_operands": {
+      "+6": {
+        "symbol": "__ehhandler$?addTermDirect@@YGJPAU_ATL_MODULE70@ATL@@P6GXK@ZK@Z",
+        "original_operand": "0x7bcc50"
+      },
+      "+74": {
+        "symbol": "??2@YAPAXI@Z",
+        "original_operand": "0x6a0920"
+      },
+      "+115": {
+        "symbol": "?Delete@CException@@QAEXXZ",
+        "original_operand": "0x6a0950"
+      },
+      "+120": {
+        "symbol": "$LN18",
+        "original_operand": "0x403947"
+      },
+      "+142": {
+        "symbol": "__imp__EnterCriticalSection@4",
+        "original_operand": "0x8022d4"
+      },
+      "+165": {
+        "symbol": "__imp__LeaveCriticalSection@4",
+        "original_operand": "0x8021f4"
+      }
+    },
+    "operand_identity": {
+      "+6": "local EH handler stub 0x7bcc50 (identified, not a native row)",
+      "+74": "mfc90.dll !??2@YAPAXI@Z import thunk 0x6a0920 (import identity only)",
+      "+115": "mfc90.dll !CException::Delete import thunk 0x6a0950 (import identity only)",
+      "+120": "local continuation $LN offset 87 = 0x403947",
+      "+142": "kernel32!EnterCriticalSection IAT 0x8022d4",
+      "+165": "kernel32!LeaveCriticalSection IAT 0x8021f4"
+    },
+    "inventory_relocation_offsets_omit": [
+      74,
+      115
+    ],
+    "native_bind_rows": [
+      {
+        "address": "004038f0",
+        "symbol": "?addTermDirect@@YGJPAU_ATL_MODULE70@ATL@@P6GXK@ZK@Z",
+        "size": 191,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+          "?Delete@CException@@QAEXXZ": "mfc90.dll!?Delete@CException@@QAEXXZ",
+          "__imp__EnterCriticalSection@4": "kernel32.dll!EnterCriticalSection",
+          "__imp__LeaveCriticalSection@4": "kernel32.dll!LeaveCriticalSection"
+        },
+        "local_eh": [
+          "$LN18",
+          "__ehhandler$?addTermDirect@@YGJPAU_ATL_MODULE70@ATL@@P6GXK@ZK@Z"
+        ]
+      }
+    ],
+    "eh": {
+      "xdata_masked_equal_except_5_reloc_slots": true,
+      "all_five_xdata_relocations_resolved": true,
+      "handler_stub_masked_match_and_both_relocations_resolved": true,
+      "xdata_original_start": "0x8d0988",
+      "funcinfo": "0x8d09bc magic 19930522 max_state 2 try_blocks 1",
+      "tables": "catch 0x8d0988 unwind 0x8d0998 try 0x8d09a8",
+      "catch_type": "0x928604 .PAVCException@@",
+      "catch_funclet": "0x40395f = start+111",
+      "handler_stub": "0x7bcc50 b8 funcinfo e9 -> 0x6a14c0 jmp [0x8028bc] msvcr90!__CxxFrameHandler3 (identified by import identity only; stub and runtime implementation are not native rows)",
+      "emitted_stub_relocations": [
+        1,
+        6
+      ]
+    },
+    "abi": "genuine RTM atlbase.h _ATL_MODULE70 (m_pTermFuncs +8, m_csStaticDataInitAndTypeInfo +0xC) and 12-byte _ATL_TERMFUNC_ELEM; stdcall ret 0xc",
+    "distinct_evidence": "the authentic CComCritSecLock body (add_term_func above) emits 191 bytes with ten non-relocation differences starting at 26 and stays unmatched; an addTermScoped variant (183 bytes) is also not exact",
+    "object": {
+      "path": "rebuild/2008-06/out/native-layouts/browser-view-external/AtlTermAnalog21022.obj",
+      "sha256": "bc70c9b9524b65e6abb8ccada2e30c857d89566641f5bbab4dd41172d2a4e5ed"
+    },
+    "input_hashes": {
+      "src/2008-06/004038f0.cpp": "1b5d7359e1cb68878aea90ee0c26e74705c7fb5597b4a3a4614d129772a4709f",
+      "tools/libs/mfc-9.0-rtm/roc_unit_38a66487c88049f6.cpp": "bb15ea4f3388ebcbc4527884c1a269d62e7b1b15dc2d20fba4900c0b35d7439a",
+      "tools/libs/mfc-9.0-rtm/atlmfc/include/atlbase.h": "dd7ad831c81fbce7bd4e7e6965a0512075d9be30cc27a1ccd2d620723229c8c5",
+      "tools/libs/mfc-9.0-rtm/atlmfc/include/atlbase.inl": "ff1a32e026bcfdf265a3d77c84b47047edf83e56191f4d6beb718df811d649ac",
+      "tools/libs/mfc-9.0-rtm/atlmfc/include/afxwin.h": "afb3f83fcfbb4d4a1f0ca7ff3c9a4b4a2d5f89f0c781da83ff33b4dd0ecbd909"
+    }
+  },
+  "termination_helper_followup": {
+    "baseline_pairs_and_sizes_preserved": 65,
+    "new_main_rows": 0,
+    "binding_upgraded": {
+      "caller": "00403da0",
+      "callee": "004038f0",
+      "evidence": "termination_helper_analog_proof"
+    },
+    "provider_or_link_acceptance": false
+  }
+}

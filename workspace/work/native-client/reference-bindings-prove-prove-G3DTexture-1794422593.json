@@ -1,0 +1,153 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?setTexParameters@G3D@@YAXIABVSettings@Texture@1@@Z",
+    "address": "00472f10"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DTexture\\objects\\7e299767777bc812\\candidate.obj": "72902734ef5d59982f212275382e63fd7be8ca325d60422db8ab18d589050342",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-j87u2ft5\\owners.json": "60f58c55c2c8ad929ca97d3f189157c9f90ab7db8c630c4fc13695039aa8a9db",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-j87u2ft5\\import-thunk-identities-as-owner.json": "41d9ae216a4a1a2513c689fb7b0d95b7f4175d546e78cb3a9cc8d15c013f2a68"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0Texture@G3D@@AAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@IW4Dimension@01@PBVTextureFormat@1@W4InterpolateMode@01@W4WrapMode@01@_NW4DepthReadMode@01@M@Z",
+    "address": "004737b0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DTexture\\objects\\7e299767777bc812\\candidate.obj": "72902734ef5d59982f212275382e63fd7be8ca325d60422db8ab18d589050342",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-j87u2ft5\\owners.json": "60f58c55c2c8ad929ca97d3f189157c9f90ab7db8c630c4fc13695039aa8a9db",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-j87u2ft5\\import-thunk-identities-as-owner.json": "41d9ae216a4a1a2513c689fb7b0d95b7f4175d546e78cb3a9cc8d15c013f2a68"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?resize@?$Array@E@G3D@@QAEXH_N@Z",
+    "address": "00473dd0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DTexture\\objects\\7e299767777bc812\\candidate.obj": "72902734ef5d59982f212275382e63fd7be8ca325d60422db8ab18d589050342",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-j87u2ft5\\owners.json": "60f58c55c2c8ad929ca97d3f189157c9f90ab7db8c630c4fc13695039aa8a9db",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-j87u2ft5\\import-thunk-identities-as-owner.json": "41d9ae216a4a1a2513c689fb7b0d95b7f4175d546e78cb3a9cc8d15c013f2a68"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?resize@?$Array@PBX@G3D@@QAEXH@Z",
+    "address": "00503100"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DTexture\\objects\\7e299767777bc812\\candidate.obj": "72902734ef5d59982f212275382e63fd7be8ca325d60422db8ab18d589050342",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-j87u2ft5\\owners.json": "60f58c55c2c8ad929ca97d3f189157c9f90ab7db8c630c4fc13695039aa8a9db",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-j87u2ft5\\import-thunk-identities-as-owner.json": "41d9ae216a4a1a2513c689fb7b0d95b7f4175d546e78cb3a9cc8d15c013f2a68"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?append@?$Array@PBX@G3D@@QAEXABQBX@Z",
+    "address": "00474370"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DTexture\\objects\\7e299767777bc812\\candidate.obj": "72902734ef5d59982f212275382e63fd7be8ca325d60422db8ab18d589050342",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-j87u2ft5\\owners.json": "60f58c55c2c8ad929ca97d3f189157c9f90ab7db8c630c4fc13695039aa8a9db",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-j87u2ft5\\import-thunk-identities-as-owner.json": "41d9ae216a4a1a2513c689fb7b0d95b7f4175d546e78cb3a9cc8d15c013f2a68"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?_copy@?$Array@PBX@G3D@@AAEXABV12@@Z",
+    "address": "004743e0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DTexture\\objects\\7e299767777bc812\\candidate.obj": "72902734ef5d59982f212275382e63fd7be8ca325d60422db8ab18d589050342",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-j87u2ft5\\owners.json": "60f58c55c2c8ad929ca97d3f189157c9f90ab7db8c630c4fc13695039aa8a9db",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-j87u2ft5\\import-thunk-identities-as-owner.json": "41d9ae216a4a1a2513c689fb7b0d95b7f4175d546e78cb3a9cc8d15c013f2a68"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?fromMemory@Texture@G3D@@SA?AV?$ReferenceCountedPointer@VTexture@G3D@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAPBEPBVTextureFormat@2@HHH2W4WrapMode@12@W4InterpolateMode@12@W4Dimension@12@W4DepthReadMode@12@MM@Z",
+    "address": "00474690"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DTexture\\objects\\7e299767777bc812\\candidate.obj": "72902734ef5d59982f212275382e63fd7be8ca325d60422db8ab18d589050342",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-j87u2ft5\\owners.json": "60f58c55c2c8ad929ca97d3f189157c9f90ab7db8c630c4fc13695039aa8a9db",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-j87u2ft5\\import-thunk-identities-as-owner.json": "41d9ae216a4a1a2513c689fb7b0d95b7f4175d546e78cb3a9cc8d15c013f2a68"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?_supports_GL_ARB_shadow@GLCaps@G3D@@0_NA",
+   "address": "0096ee87",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_supports_GL_ARB_texture_border_clamp@GLCaps@G3D@@0_NA",
+   "address": "0096ee80",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_supports_GL_EXT_texture_3D@GLCaps@G3D@@0_NA",
+   "address": "0096ee81",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?hasAutoMipMap@G3D@@YA_NXZ",
+   "address": "004729d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?realloc@?$Array@E@G3D@@AAEXH@Z",
+   "address": "00473740",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?resize@?$Array@V?$Array@PBX@G3D@@@G3D@@QAEXH_N@Z",
+   "address": "00474520",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?sizeInMemory@Texture@G3D@@QBEIXZ",
+   "address": "00473670",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??0Texture@G3D@@AAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@IW4Dimension@01@PBVTextureFormat@1@W4InterpolateMode@01@W4WrapMode@01@_NW4DepthReadMode@01@M@Z",
+   "address": "007c45b4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?setTexParameters@G3D@@YAXIABVSettings@Texture@1@@Z",
+   "address": "007c4520",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__glGetTexLevelParameteriv@16",
+   "address": "00802aa0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__glTexParameterf@12",
+   "address": "00802ac0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__glTexParameterfv@12",
+   "address": "00802ac4",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {
+  "?resize@?$Array@PBX@G3D@@QAEXH_N@Z": [
+   "00473cd0",
+   "005025c0"
+  ]
+ },
+ "owners_tried": 7,
+ "owners_bound": 7
+}

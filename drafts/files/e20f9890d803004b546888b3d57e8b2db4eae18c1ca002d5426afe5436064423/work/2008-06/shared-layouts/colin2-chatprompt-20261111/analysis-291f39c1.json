@@ -1,0 +1,571 @@
+[
+  {
+    "source": "C:\\Users\\colin\\Documents\\Codex\\2026-11-11\\files-pasted-by-the-user-native\\RoConstruct-Native-cc18af53f49346ad832b0f3ad0407d60\\rebuild\\2008-06\\native-classes\\CChatPrompt.cpp",
+    "object": "C:\\Users\\colin\\Documents\\Codex\\2026-11-11\\files-pasted-by-the-user-native\\RoConstruct-Native-cc18af53f49346ad832b0f3ad0407d60\\work\\2008-06\\native-check-runs\\20261111-191606-1af4ae32\\unit-000\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "00411be0",
+        "requested_symbol": "??0CChatPrompt@@QAE@XZ",
+        "status": "exact",
+        "symbol": "??0CChatPrompt@@QAE@XZ",
+        "score": 100,
+        "target_size": 72,
+        "object_size": 72,
+        "target_sha256": "15b99e2af17a7c9fcc2aa4fe5ff446604c201ec5dde2e7ce571a97874931c95c",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8446380,
+            424
+          ],
+          [
+            8446056,
+            20
+          ]
+        ],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [
+            {
+              "offset": 3,
+              "target": "006a0c86",
+              "symbol": "??0CEditView@@QAE@XZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "import_evidence_inputs": {},
+          "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 3.562
+      },
+      {
+        "addr": "00412800",
+        "requested_symbol": "?bind@CChatPrompt@@QAEXPAVDataModel@RBX@@PAVCWnd@@@Z",
+        "status": "exact",
+        "symbol": "?bind@CChatPrompt@@QAEXPAVDataModel@RBX@@PAVCWnd@@@Z",
+        "score": 100,
+        "target_size": 446,
+        "object_size": 446,
+        "target_sha256": "33ccc1dab6aa865d986a770dd719c9607123d7c1dde555c28e1989451b50379a",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": false,
+          "calls": [
+            {
+              "offset": 40,
+              "target": "00618a40",
+              "symbol": "??$shared_from@VDataModel@RBX@@@RBX@@YA?AV?$shared_ptr@VDataModel@RBX@@@boost@@PAVDataModel@0@@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 74,
+              "target": "004025b0",
+              "symbol": "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 116,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 137,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 187,
+              "target": "00411b40",
+              "symbol": "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 226,
+              "target": "0055a8f0",
+              "symbol": "?setParent@Instance@RBX@@QAEXPAV12@@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 233,
+              "target": "00456e80",
+              "symbol": "?reset@?$shared_ptr@VChatEnter@@@boost@@QAEXXZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 254,
+              "target": "00412710",
+              "symbol": "??$create@VPlayers@Network@RBX@@@ServiceProvider@RBX@@QBEPAVPlayers@Network@1@XZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 278,
+              "target": "00411f50",
+              "symbol": "??$create@VChatEnter@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VChatEnter@@@boost@@XZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 302,
+              "target": "004025b0",
+              "symbol": "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 338,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 359,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 378,
+              "target": "0055a8f0",
+              "symbol": "?setParent@Instance@RBX@@QAEXPAV12@@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 403,
+              "target": "006a0d16",
+              "symbol": "?EnableWindow@CWnd@@QAEHH@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 420,
+              "target": "005773c0",
+              "symbol": "??1Lock@DataModel@RBX@@QAE@XZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "import_evidence_inputs": {},
+          "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.0
+      },
+      {
+        "addr": "004129c0",
+        "requested_symbol": "??1CChatPrompt@@UAE@XZ",
+        "status": "exact",
+        "symbol": "??1CChatPrompt@@UAE@XZ",
+        "score": 100,
+        "target_size": 221,
+        "object_size": 221,
+        "target_sha256": "ee6b97f2408e7ba28f5fa1698e299627511c3f7cd2a85d81676a104b5b582fbb",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8446380,
+            424
+          ],
+          [
+            8446056,
+            20
+          ]
+        ],
+        "data_errors": [],
+        "call_identity": {
+          "passed": false,
+          "calls": [
+            {
+              "offset": 48,
+              "target": "00412800",
+              "symbol": "?bind@CChatPrompt@@QAEXPAVDataModel@RBX@@PAVCWnd@@@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 87,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 108,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 127,
+              "target": "004111a0",
+              "symbol": "??1CGdiObject@@UAE@XZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 166,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 187,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 199,
+              "target": "006a0d1c",
+              "symbol": "??1CEditView@@UAE@XZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "import_evidence_inputs": {},
+          "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.016
+      },
+      {
+        "addr": "00412aa0",
+        "requested_symbol": "??_GCChatPrompt@@UAEPAXI@Z",
+        "status": "exact",
+        "symbol": "??_GCChatPrompt@@UAEPAXI@Z",
+        "score": 100,
+        "target_size": 30,
+        "object_size": 30,
+        "target_sha256": "0079fa3022342dc56000baf6cef968a4c4d336c2ac266c16b4496fa191593a2a",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [
+            {
+              "offset": 3,
+              "target": "004129c0",
+              "symbol": "??1CChatPrompt@@UAE@XZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 16,
+              "target": "006a067a",
+              "symbol": "??3@YAXPAX@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "import_evidence_inputs": {},
+          "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.0
+      },
+      {
+        "addr": "00411ef0",
+        "requested_symbol": "?CreateObject@CChatPrompt@@SGPAVCObject@@XZ",
+        "status": "exact",
+        "symbol": "?CreateObject@CChatPrompt@@SGPAVCObject@@XZ",
+        "score": 100,
+        "target_size": 89,
+        "object_size": 89,
+        "target_sha256": "f9eb6872de8c7ba056c8b20aa104f4e2d48a35593b3f7f1335ac651ae2e5aad4",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [
+            {
+              "offset": 27,
+              "target": "006a0920",
+              "symbol": "??2@YAPAXI@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 52,
+              "target": "00411be0",
+              "symbol": "??0CChatPrompt@@QAE@XZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "import_evidence_inputs": {},
+          "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.0
+      },
+      {
+        "addr": "00411360",
+        "requested_symbol": "?GetRuntimeClass@CChatPrompt@@UBEPAUCRuntimeClass@@XZ",
+        "status": "exact",
+        "symbol": "?GetRuntimeClass@CChatPrompt@@UBEPAUCRuntimeClass@@XZ",
+        "score": 100,
+        "target_size": 6,
+        "object_size": 6,
+        "target_sha256": "21c8cd44e0e898c829d87e01b982dcd2a2e65f776ccbba74bd13719221ce9839",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8445832,
+            28
+          ]
+        ],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [],
+          "unused_expectations": [],
+          "import_evidence_inputs": {},
+          "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.0
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  },
+  {
+    "source": "C:\\Users\\colin\\Documents\\Codex\\2026-11-11\\files-pasted-by-the-user-native\\RoConstruct-Native-cc18af53f49346ad832b0f3ad0407d60\\rebuild\\2008-06\\native-classes\\CChatPromptWindow.cpp",
+    "object": "C:\\Users\\colin\\Documents\\Codex\\2026-11-11\\files-pasted-by-the-user-native\\RoConstruct-Native-cc18af53f49346ad832b0f3ad0407d60\\work\\2008-06\\native-check-runs\\20261111-191606-1af4ae32\\unit-001\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "00411370",
+        "requested_symbol": "?PreCreateWindow@CChatPrompt@@MAEHAAUtagCREATESTRUCTA@@@Z",
+        "status": "exact",
+        "symbol": "?PreCreateWindow@CChatPrompt@@MAEHAAUtagCREATESTRUCTA@@@Z",
+        "score": 100,
+        "target_size": 44,
+        "object_size": 44,
+        "target_sha256": "555db89fbb7d5ee7938b378d6964acdbe020d1e7b5c583b3dac60fb792686d97",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [
+            {
+              "offset": 6,
+              "target": "006a0c74",
+              "symbol": "?PreCreateWindow@CEditView@@MAEHAAUtagCREATESTRUCTA@@@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "import_evidence_inputs": {},
+          "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.0
+      },
+      {
+        "addr": "004113a0",
+        "requested_symbol": "?CtlColor@CChatPrompt@@IAEPAUHBRUSH__@@PAVCDC@@I@Z",
+        "status": "exact",
+        "symbol": "?CtlColor@CChatPrompt@@IAEPAUHBRUSH__@@PAVCDC@@I@Z",
+        "score": 100,
+        "target_size": 84,
+        "object_size": 84,
+        "target_sha256": "0e2877b04125cf4aa459b066466408d9ac336a9853927f0b0cb2a3a0091da5c3",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "check_seconds": 0.0
+      },
+      {
+        "addr": "004115c0",
+        "requested_symbol": "?OnSetFocusReflect@CChatPrompt@@IAEXXZ",
+        "status": "exact",
+        "symbol": "?OnSetFocusReflect@CChatPrompt@@IAEXXZ",
+        "score": 100,
+        "target_size": 114,
+        "object_size": 114,
+        "target_sha256": "cf36eeb34ab53461f24d196185566efbc162bd13010d7775a5d69e5e1d003c03",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            9615232,
+            4
+          ],
+          [
+            8435478,
+            1
+          ]
+        ],
+        "data_errors": [],
+        "check_seconds": 0.0
+      },
+      {
+        "addr": "00411640",
+        "requested_symbol": "?OnCreate@CChatPrompt@@IAEHPAUtagCREATESTRUCTA@@@Z",
+        "status": "different",
+        "symbol": "?OnCreate@CChatPrompt@@IAEHPAUtagCREATESTRUCTA@@@Z",
+        "score": 76,
+        "target_size": 118,
+        "object_size": 139,
+        "target_sha256": "590a499e2d1f2f5719cfdf18785a2d388360e8a0ca0aa8a7de1efa1912b69b31",
+        "first_byte_difference": 49,
+        "check_seconds": 0.0
+      },
+      {
+        "addr": "00411c30",
+        "requested_symbol": "?OnChar@CChatPrompt@@IAEXIII@Z",
+        "status": "exact",
+        "symbol": "?OnChar@CChatPrompt@@IAEXIII@Z",
+        "score": 100,
+        "target_size": 348,
+        "object_size": 348,
+        "target_sha256": "2d38c02c4371d4b9b9b186e09d11aa2b2bb545304f885582e8e798d4cbcbcb6f",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            9615232,
+            4
+          ],
+          [
+            9615232,
+            4
+          ]
+        ],
+        "data_errors": [],
+        "check_seconds": 0.0
+      },
+      {
+        "addr": "0045aeb0",
+        "requested_symbol": "?OnFocusMessage@CChatPrompt@@IAEJIJ@Z",
+        "status": "exact",
+        "symbol": "?OnFocusMessage@CChatPrompt@@IAEJIJ@Z",
+        "score": 100,
+        "target_size": 10,
+        "object_size": 10,
+        "target_sha256": "82d82c16e38bf9ce5f57a01d893b06b302e37c6bb2c0dd9e99078057ab1827ca",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [
+            {
+              "offset": 0,
+              "target": "006a0a28",
+              "symbol": "?SetFocus@CWnd@@QAEPAV1@XZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "import_evidence_inputs": {},
+          "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.0
+      },
+      {
+        "addr": "00702d70",
+        "requested_symbol": "?OnSysChar@CChatPrompt@@IAEXIII@Z",
+        "status": "exact",
+        "symbol": "?OnSysChar@CChatPrompt@@IAEXIII@Z",
+        "score": 100,
+        "target_size": 8,
+        "object_size": 8,
+        "target_sha256": "46cafabe939a3c7897e0ecdbd186b78062c712e76e474fc67dc29165e0855469",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [
+            {
+              "offset": 0,
+              "target": "006a0c68",
+              "symbol": "?Default@CWnd@@IAEJXZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "import_evidence_inputs": {},
+          "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.0
+      },
+      {
+        "addr": "004120a0",
+        "requested_symbol": "?GetMessageMap@CChatPrompt@@MBEPBUAFX_MSGMAP@@XZ",
+        "status": "exact",
+        "symbol": "?GetMessageMap@CChatPrompt@@MBEPBUAFX_MSGMAP@@XZ",
+        "score": 100,
+        "target_size": 6,
+        "object_size": 6,
+        "target_sha256": "9776d9a41d3454aaad0c20c41f8f507ae2deeeece7e7b887755e34c98fc0d9c8",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8446804,
+            8
+          ]
+        ],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [],
+          "unused_expectations": [],
+          "import_evidence_inputs": {},
+          "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.0
+      },
+      {
+        "addr": "0047d410",
+        "requested_symbol": "?OnChange@CChatPrompt@@IAEXXZ",
+        "status": "exact",
+        "symbol": "?OnChange@CChatPrompt@@IAEXXZ",
+        "score": 100,
+        "target_size": 1,
+        "object_size": 1,
+        "target_sha256": "ae3f4619b0413d70d3004b9131c3752153074e45725be13b9a148978895e359e",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [],
+          "unused_expectations": [],
+          "import_evidence_inputs": {},
+          "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.0
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  }
+]

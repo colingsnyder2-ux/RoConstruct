@@ -3,7 +3,8 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DBox | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src f0519e02 | roc native-status --write
+// <<< native-status | src c36087a7 | roc native-status --write
+#line 1 ".\\G3Dcpp\\Box.cpp"
 /**
   @file Box.cpp
   Box class

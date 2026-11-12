@@ -1,0 +1,37 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "__ehhandler$?computeAdjacency@MeshAlg@G3D@@SAXABV?$Array@VVector3@G3D@@@2@ABV?$Array@H@2@AAV?$Array@VFace@MeshAlg@G3D@@@2@AAV?$Array@VEdge@MeshAlg@G3D@@@2@AAV?$Array@VVertex@MeshAlg@G3D@@@2@@Z",
+    "address": "007ee6a8"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DMeshAlgAdjacency\\objects\\640a850de16fa99e\\candidate.obj": "0b6fb771e84b49d1298ba2ee89ee0565bc5246749b8750ae5b0d719f4c3eb86c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-06a9i5nw\\owners.json": "b6af15961c6382ace66ecaaa45e7c27ccf82eed0c1c3e411473db0a4e25e0cc8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-06a9i5nw\\import-thunk-identities-as-owner.json": "886a9ef80f296c0da55272c380b20d287e346a785da27b1803a15bd13c1042cb"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "__unwindfunclet$?computeAdjacency@MeshAlg@G3D@@SAXABV?$Array@VVector3@G3D@@@2@ABV?$Array@H@2@AAV?$Array@VFace@MeshAlg@G3D@@@2@AAV?$Array@VEdge@MeshAlg@G3D@@@2@AAV?$Array@VVertex@MeshAlg@G3D@@@2@@Z$0",
+   "address": "007ee690",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?computeAdjacency@MeshAlg@G3D@@SAXABV?$Array@VVector3@G3D@@@2@ABV?$Array@H@2@AAV?$Array@VFace@MeshAlg@G3D@@@2@AAV?$Array@VEdge@MeshAlg@G3D@@@2@AAV?$Array@VVertex@MeshAlg@G3D@@@2@@Z$1",
+   "address": "007ee698",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?computeAdjacency@MeshAlg@G3D@@SAXABV?$Array@VVector3@G3D@@@2@ABV?$Array@H@2@AAV?$Array@VFace@MeshAlg@G3D@@@2@AAV?$Array@VEdge@MeshAlg@G3D@@@2@AAV?$Array@VVertex@MeshAlg@G3D@@@2@@Z$2",
+   "address": "007ee6a0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

@@ -1,0 +1,78 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/TextDisplay.cpp",
+      "checks": [
+        {
+          "addr": "005735e0",
+          "symbol": "?init@TextDisplay@RBX@@AAEXXZ",
+          "calls": [
+            {
+              "offset": 37,
+              "target": "00514940",
+              "symbol": "?purple@Color3@G3D@@SAABV12@XZ"
+            },
+            {
+              "offset": 78,
+              "target": "007baf10",
+              "symbol": "?zero@Color4@G3D@@SAABV12@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "00574580",
+          "symbol": "?getLabel@TextDisplay@RBX@@MBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+          "calls": [
+            {
+              "offset": 23,
+              "target": "0080245c",
+              "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+              "kind": "import",
+              "import": "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z"
+            }
+          ]
+        },
+        {
+          "addr": "00574570",
+          "symbol": "?getFontSize@TextDisplay@RBX@@MBEHXZ",
+          "calls": []
+        },
+        {
+          "addr": "005744a0",
+          "symbol": "??0TextDisplay@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z",
+          "calls": [
+            {
+              "offset": 30,
+              "target": "005739d0",
+              "symbol": "??0GuiItem@RBX@@QAE@XZ"
+            },
+            {
+              "offset": 139,
+              "target": "00802460",
+              "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "kind": "import",
+              "import": "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+            },
+            {
+              "offset": 152,
+              "target": "005735e0",
+              "symbol": "?init@TextDisplay@RBX@@AAEXXZ"
+            },
+            {
+              "offset": 176,
+              "target": "0080240c",
+              "symbol": "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z",
+              "kind": "import",
+              "import": "MSVCP90.dll!??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z"
+            },
+            {
+              "offset": 164,
+              "target": "0055af90",
+              "symbol": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

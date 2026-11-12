@@ -1,0 +1,77 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?_Insert_n@?$vector@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@V?$allocator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@2@@std@@IAEXV?$_Vector_const_iterator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@V?$allocator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@2@@2@IABV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@2@@Z",
+    "address": "00429480"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Boostvalue_semantic\\objects\\019e4969c3ed160f\\candidate.obj": "8d67930f6cbbb3a091bf45f521e27b7911f376bbd9dd3aa41dd51a03124abab7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-gdbr8vo_\\owners.json": "8a59d28d24c06eba1ef1e429046860a5cc799c3434d3580cfb500bd51a2c0726",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-gdbr8vo_\\import-thunk-identities-as-owner.json": "ef45fd871cf854ba896f90a6dd64eb8f0cc0df3da90d1dc5a1b7351981abf6c0"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??$_Allocate@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@std@@YAPAV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@0@IPAV10@@Z",
+   "address": "0041d500",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$_Umove@PAV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@?$vector@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@V?$allocator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@2@@std@@IAEPAV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@1@PAV21@00@Z",
+   "address": "004293a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$_Unchecked_move_backward@PAV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@PAV12@@stdext@@YAPAV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@PAV12@00@Z",
+   "address": "00428f10",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$_Uninit_move@PAV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@PAV12@V?$allocator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@2@@std@@YAPAV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@0@PAV10@00AAV?$allocator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@0@U_Swap_move_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "00428a20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$fill@PAV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@V12@@std@@YAXPAV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@0@0ABV10@@Z",
+   "address": "00428990",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_Destroy@?$vector@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@V?$allocator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@2@@std@@IAEXPAV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@2@0@Z",
+   "address": "004077a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_Ufill@?$vector@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@V?$allocator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@2@@std@@IAEPAV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@2@PAV32@IABV32@@Z",
+   "address": "00429440",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_Xlen@?$vector@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@V?$allocator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@2@@std@@KAXXZ",
+   "address": "004c6d40",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?_Insert_n@?$vector@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@V?$allocator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@2@@std@@IAEXV?$_Vector_const_iterator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@V?$allocator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@2@@2@IABV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@2@@Z",
+   "address": "007bf2d2",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp_??0?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QAE@ABV01@@Z",
+   "address": "0080245c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp_??1?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QAE@XZ",
+   "address": "00802468",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

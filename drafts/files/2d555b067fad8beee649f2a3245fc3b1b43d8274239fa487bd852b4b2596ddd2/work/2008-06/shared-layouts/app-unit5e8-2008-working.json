@@ -1,0 +1,815 @@
+{
+  "scope": "Inactive 2008-06 native recovery of the application range 005e8000..005f4000: unit map of every row, World.cpp rows against the native engine-world World.h and FaceInstance.cpp rows against the native FaceInstance.h. No runtime, link or class-swap claim.",
+  "exact_function_rows": [
+    "005e9150",
+    "005e9160",
+    "005e9190",
+    "005e91c0",
+    "005e9230",
+    "005e98c0",
+    "005e9940",
+    "005e99d0",
+    "005e9a60",
+    "005e9af0",
+    "005ea4c0",
+    "005ea5d0",
+    "005ea880",
+    "005ead30",
+    "005eae10",
+    "005ef5f0",
+    "005ef600",
+    "005ef610",
+    "005ef620",
+    "005ef630",
+    "005ef640",
+    "005ef650",
+    "005ef660",
+    "005ef670",
+    "005ef770"
+  ],
+  "exact_function_row_count": 25,
+  "range_rows": 390,
+  "rows": {
+    "world": [
+      {
+        "address": "005e9150",
+        "symbol": "?getKernel@World@RBX@@QAEAAVKernel@2@XZ",
+        "size": 13,
+        "target_size": 13,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005e9160",
+        "symbol": "?getMetric@World@RBX@@QBEHW4MetricType@IWorldStage@2@@Z",
+        "size": 13,
+        "target_size": 13,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005e9190",
+        "symbol": "?onPrimitiveContactParametersChanged@World@RBX@@QAEXPAVPrimitive@2@@Z",
+        "size": 45,
+        "target_size": 45,
+        "exact": true,
+        "verified_targets": {
+          "?getFirstContact@Primitive@RBX@@QAEPAVContact@2@XZ": "0x5e7bd0 (external (evidence name))",
+          "?onPrimitiveContactParametersChanged@Contact@RBX@@QAEXXZ": "0x607ad0 (external (evidence name))",
+          "?getNextContact@Primitive@RBX@@QAEPAVContact@2@PAV32@@Z": "0x5e7be0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005e91c0",
+        "symbol": "?onPrimitiveExtentsChanged@World@RBX@@QAEXPAVPrimitive@2@@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "?onPrimitiveExtentsChanged@ContactManager@RBX@@QAEXPAVPrimitive@2@@Z": "0x60cc50 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005e9230",
+        "symbol": "?onPrimitiveGeometryTypeChanged@World@RBX@@QAEXPAVPrimitive@2@@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "?onPrimitiveGeometryTypeChanged@ContactManager@RBX@@QAEXPAVPrimitive@2@@Z": "0x60d8e0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005e98c0",
+        "symbol": "?onPrimitiveTouched@World@RBX@@QAEXPAVPrimitive@2@0@Z",
+        "size": 39,
+        "target_size": 39,
+        "exact": true,
+        "verified_targets": {
+          "?append@?$Array@PAVPrimitive@RBX@@@G3D@@QAEXABQAVPrimitive@RBX@@@Z": "0x59a190 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005e9940",
+        "symbol": "?raise@?$Notifier@VWorld@RBX@@UAutoJoin@2@@RBX@@IBEXUAutoJoin@2@@Z",
+        "size": 129,
+        "target_size": 129,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?raise@?$Notifier@VWorld@RBX@@UAutoJoin@2@@RBX@@IBEXUAutoJoin@2@PAV?$Listener@VWorld@RBX@@UAutoJoin@2@@2@@Z": "0x5e95c0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005e99d0",
+        "symbol": "?raise@?$Notifier@VWorld@RBX@@UAutoDestroy@2@@RBX@@IBEXUAutoDestroy@2@@Z",
+        "size": 129,
+        "target_size": 129,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?raise@?$Notifier@VWorld@RBX@@UAutoDestroy@2@@RBX@@IBEXUAutoDestroy@2@PAV?$Listener@VWorld@RBX@@UAutoDestroy@2@@2@@Z": "0x5e9680 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005e9a60",
+        "symbol": "?raise@?$Notifier@VWorld@RBX@@UAssemblyPhysicsOn@2@@RBX@@IBEXUAssemblyPhysicsOn@2@@Z",
+        "size": 129,
+        "target_size": 129,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?raise@?$Notifier@VWorld@RBX@@UAssemblyPhysicsOn@2@@RBX@@IBEXUAssemblyPhysicsOn@2@PAV?$Listener@VWorld@RBX@@UAssemblyPhysicsOn@2@@2@@Z": "0x5e9740 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005e9af0",
+        "symbol": "?raise@?$Notifier@VWorld@RBX@@UAssemblyPhysicsOff@2@@RBX@@IBEXUAssemblyPhysicsOff@2@@Z",
+        "size": 129,
+        "target_size": 129,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?raise@?$Notifier@VWorld@RBX@@UAssemblyPhysicsOff@2@@RBX@@IBEXUAssemblyPhysicsOff@2@PAV?$Listener@VWorld@RBX@@UAssemblyPhysicsOff@2@@2@@Z": "0x5e9800 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ea4c0",
+        "symbol": "?destroyJoints@World@RBX@@QAEXPAVPrimitive@2@@Z",
+        "size": 15,
+        "target_size": 15,
+        "exact": true,
+        "verified_targets": {
+          "?destroyJoints@World@RBX@@AAEXPAVPrimitive@2@PAV?$set@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@@std@@@Z": "0x5ea3f0 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ea5d0",
+        "symbol": "?createJoints@World@RBX@@QAEXPAVPrimitive@2@@Z",
+        "size": 15,
+        "target_size": 15,
+        "exact": true,
+        "verified_targets": {
+          "?createJoints@World@RBX@@AAEXPAVPrimitive@2@PAV?$set@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@@std@@@Z": "0x5ea4d0 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ea880",
+        "symbol": "?joinAll@World@RBX@@QAEXXZ",
+        "size": 47,
+        "target_size": 47,
+        "exact": true,
+        "verified_targets": {
+          "?createJoints@World@RBX@@AAEXPAVPrimitive@2@PAV?$set@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@@std@@@Z": "0x5ea4d0 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ead30",
+        "symbol": "?destroyJointsToWorld@World@RBX@@QAEXABV?$Array@PAVPrimitive@RBX@@@G3D@@@Z",
+        "size": 221,
+        "target_size": 221,
+        "exact": true,
+        "verified_targets": {
+          "??0?$_Tree@V?$_Tset_traits@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@$0A@@std@@@std@@QAE@ABU?$less@PAVPrimitive@RBX@@@1@ABV?$allocator@PAVPrimitive@RBX@@@1@@Z": "0x64b2a0 (support body exact at the bound address)",
+          "?insert@?$_Tree@V?$_Tset_traits@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tset_traits@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@$0A@@std@@@std@@_N@2@ABQAVPrimitive@RBX@@@Z": "0x5e8c40 (external (evidence name))",
+          "?destroyJoints@World@RBX@@AAEXPAVPrimitive@2@PAV?$set@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@@std@@@Z": "0x5ea3f0 (external)",
+          "?erase@?$_Tree@V?$_Tset_traits@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@0@Z": "0x64ad30 (support body exact at the bound address)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": [
+          "__ehhandler$?destroyJointsToWorld@World@RBX@@QAEXABV?$Array@PAVPrimitive@RBX@@@G3D@@@Z"
+        ]
+      },
+      {
+        "address": "005eae10",
+        "symbol": "?createJointsToWorld@World@RBX@@QAEXABV?$Array@PAVPrimitive@RBX@@@G3D@@@Z",
+        "size": 221,
+        "target_size": 221,
+        "exact": true,
+        "verified_targets": {
+          "??0?$_Tree@V?$_Tset_traits@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@$0A@@std@@@std@@QAE@ABU?$less@PAVPrimitive@RBX@@@1@ABV?$allocator@PAVPrimitive@RBX@@@1@@Z": "0x64b2a0 (support body exact at the bound address)",
+          "?insert@?$_Tree@V?$_Tset_traits@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tset_traits@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@$0A@@std@@@std@@_N@2@ABQAVPrimitive@RBX@@@Z": "0x5e8c40 (external (evidence name))",
+          "?createJoints@World@RBX@@AAEXPAVPrimitive@2@PAV?$set@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@@std@@@Z": "0x5ea4d0 (external)",
+          "?erase@?$_Tree@V?$_Tset_traits@PAVPrimitive@RBX@@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@PAVPrimitive@RBX@@@4@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@0@Z": "0x64ad30 (support body exact at the bound address)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": [
+          "__ehhandler$?createJointsToWorld@World@RBX@@QAEXABV?$Array@PAVPrimitive@RBX@@@G3D@@@Z"
+        ]
+      }
+    ],
+    "face": [
+      {
+        "address": "005ef5f0",
+        "symbol": "??_EFaceInstance@RBX@@WCE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_EFaceInstance@RBX@@UAEPAXI@Z": "0x5ef670 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ef600",
+        "symbol": "??_EFaceInstance@RBX@@WEE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_EFaceInstance@RBX@@UAEPAXI@Z": "0x5ef670 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ef610",
+        "symbol": "??_EFaceInstance@RBX@@WGE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_EFaceInstance@RBX@@UAEPAXI@Z": "0x5ef670 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ef620",
+        "symbol": "??_EFaceInstance@RBX@@WIE@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_EFaceInstance@RBX@@UAEPAXI@Z": "0x5ef670 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ef630",
+        "symbol": "??_EFaceInstance@RBX@@WKE@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_EFaceInstance@RBX@@UAEPAXI@Z": "0x5ef670 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ef640",
+        "symbol": "??_EFaceInstance@RBX@@WME@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "??_EFaceInstance@RBX@@UAEPAXI@Z": "0x5ef670 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ef650",
+        "symbol": "??_EFaceInstance@RBX@@WBA@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_EFaceInstance@RBX@@UAEPAXI@Z": "0x5ef670 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ef660",
+        "symbol": "??_EFaceInstance@RBX@@WBE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_EFaceInstance@RBX@@UAEPAXI@Z": "0x5ef670 (ICF-folded body (alias of a row proven here))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ef670",
+        "symbol": "??_GFaceInstance@RBX@@UAEPAXI@Z",
+        "size": 31,
+        "target_size": 31,
+        "exact": true,
+        "verified_targets": {
+          "??1FaceInstance@RBX@@UAE@XZ": "0x597500 (external (evidence name))",
+          "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005ef770",
+        "symbol": "?setFace@FaceInstance@RBX@@QAEXW4NormalId@2@@Z",
+        "size": 34,
+        "target_size": 34,
+        "exact": true,
+        "verified_targets": {
+          "?prop_Face@FaceInstance@RBX@@2V?$EnumPropDescriptor@VFaceInstance@RBX@@W4NormalId@2@@Reflection@2@B": "0x97b57c (static descriptor (one address per symbol))",
+          "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))"
+        },
+        "local_eh": []
+      }
+    ]
+  },
+  "support_rows": [
+    {
+      "row": "005ef530 counted by face-instance-lifetime.json",
+      "symbol": "??0FaceInstance@RBX@@QAE@XZ",
+      "exact": true,
+      "verified_targets": {
+        "??0Instance@RBX@@QAE@XZ": "0x55b7e0 (external)",
+        "?classDescriptor@?$Described@VFaceInstance@RBX@@$1?sFaceInstance@2@3PADAVInstance@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x597fb0 (external)",
+        "??_7FaceInstance@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x84072c (vtable (RTTI .?AVFaceInstance@RBX@@, offset 0x0))",
+        "??_7FaceInstance@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x840720 (vtable (RTTI .?AVFaceInstance@RBX@@, offset 0x10))",
+        "??_7FaceInstance@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x840718 (vtable (RTTI .?AVFaceInstance@RBX@@, offset 0x14))",
+        "??_7FaceInstance@RBX@@6BDebugable@1@@": "0x840710 (vtable (RTTI .?AVFaceInstance@RBX@@, offset 0x20))",
+        "??_7FaceInstance@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x840700 (vtable (RTTI .?AVFaceInstance@RBX@@, offset 0x24))",
+        "??_7FaceInstance@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x8406f0 (vtable (RTTI .?AVFaceInstance@RBX@@, offset 0x44))",
+        "??_7FaceInstance@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x8406e0 (vtable (RTTI .?AVFaceInstance@RBX@@, offset 0x64))",
+        "??_7FaceInstance@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x8406d0 (vtable (RTTI .?AVFaceInstance@RBX@@, offset 0x84))",
+        "??_7FaceInstance@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x8406c0 (vtable (RTTI .?AVFaceInstance@RBX@@, offset 0xa4))",
+        "??_7FaceInstance@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x8406b0 (vtable (RTTI .?AVFaceInstance@RBX@@, offset 0xc4))",
+        "??_7FaceInstance@RBX@@6B@": "0x840698 (vtable (RTTI .?AVFaceInstance@RBX@@, offset 0x130))"
+      }
+    }
+  ],
+  "not_exact_rows": [
+    {
+      "row": "005e9170 (not counted)",
+      "symbol": "?getNumHashNodes@World@RBX@@QBEHXZ",
+      "size": 12,
+      "target_size": 12,
+      "exact": false,
+      "reason": "the 2008 SpatialHash count is at +0x78 of the object ContactManager +0x0 points to; the donor SpatialHash.h puts nodesOut elsewhere (needs a 2008 SpatialHash declaration)"
+    },
+    {
+      "row": "005e9180 (not counted)",
+      "symbol": "?getMaxBucketSize@World@RBX@@QBEHXZ",
+      "size": 12,
+      "target_size": 12,
+      "exact": false,
+      "reason": "as getNumHashNodes: maxBucket at SpatialHash +0x7c in 2008"
+    },
+    {
+      "row": "005e91d0 (not counted)",
+      "symbol": "?onAssemblyExtentsChanged@World@RBX@@QAEXPAVAssembly@2@@Z",
+      "size": 140,
+      "target_size": 87,
+      "exact": false,
+      "reason": "140/87 B: the 2008 Assembly::PrimIterator is out of line (005e5fc0 / 005e5fa0 / ++ 00647640); the donor Assembly.h inlines it"
+    }
+  ],
+  "pending_rows": [
+    {
+      "row": "005e9240 (pending-build-only)",
+      "symbol": "?onJointPrimitiveNulling@World@RBX@@QAEXPAVJoint@2@PAVPrimitive@2@@Z",
+      "size": 11,
+      "exact": false,
+      "exact_pending_build_only": true,
+      "verified_targets": {
+        "?onJointPrimitiveNulling@CleanStage@RBX@@QAEXPAVJoint@2@PAVPrimitive@2@@Z": "0x64a420 (external)"
+      }
+    },
+    {
+      "row": "005e9250 (pending-build-only)",
+      "symbol": "?onJointPrimitiveSet@World@RBX@@QAEXPAVJoint@2@PAVPrimitive@2@@Z",
+      "size": 11,
+      "exact": false,
+      "exact_pending_build_only": true,
+      "verified_targets": {
+        "?onJointPrimitiveSet@CleanStage@RBX@@QAEXPAVJoint@2@PAVPrimitive@2@@Z": "0x64a460 (external)"
+      }
+    },
+    {
+      "row": "005e93b0 (pending-build-only)",
+      "symbol": "?getSimJobStage@World@RBX@@QAEAAVSimJobStage@2@XZ",
+      "size": 42,
+      "exact": false,
+      "exact_pending_build_only": true,
+      "verified_targets": {}
+    },
+    {
+      "row": "005e93e0 (pending-build-only)",
+      "symbol": "?getSleepStage@World@RBX@@QAEPAVSleepStage@2@XZ",
+      "size": 42,
+      "exact": false,
+      "exact_pending_build_only": true,
+      "verified_targets": {}
+    }
+  ],
+  "vtables": {
+    "??_7FaceInstance@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "vtable": "0x840720",
+      "slots": 2,
+      "checked": [
+        "0 ??_EFaceInstance@RBX@@WBA@AEPAXI@Z = 0x5ef650"
+      ],
+      "not_bound_here": 1
+    },
+    "??_7FaceInstance@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "vtable": "0x840718",
+      "slots": 1,
+      "checked": [
+        "0 ??_EFaceInstance@RBX@@WBE@AEPAXI@Z = 0x5ef660"
+      ],
+      "not_bound_here": 0
+    },
+    "??_7FaceInstance@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "vtable": "0x84072c",
+      "slots": 16,
+      "checked": [
+        "1 ?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator = 0x55af90 (evidence name)",
+        "3 ?askSetParent@FaceInstance@RBX@@MBE_NPBVInstance@2@@Z = 0x62e190",
+        "13 ?createChild@Instance@RBX@@UAE?AV?$shared_ptr@VInstance@RBX@@@boost@@ABVName@2@@ = 0x55a470 (evidence name)",
+        "14 ?write@Instance@RBX@@UAEPAVXmlElement@@XZ = 0x558c50 (evidence name)"
+      ],
+      "not_bound_here": 12
+    },
+    "??_7FaceInstance@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "vtable": "0x8406c0",
+      "slots": 3,
+      "checked": [
+        "0 ??_EFaceInstance@RBX@@WKE@AEPAXI@Z = 0x5ef630"
+      ],
+      "not_bound_here": 2
+    },
+    "??_7FaceInstance@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "vtable": "0x840700",
+      "slots": 3,
+      "checked": [
+        "0 ??_EFaceInstance@RBX@@WCE@AEPAXI@Z = 0x5ef5f0"
+      ],
+      "not_bound_here": 2
+    },
+    "??_7FaceInstance@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "vtable": "0x8406f0",
+      "slots": 3,
+      "checked": [
+        "0 ??_EFaceInstance@RBX@@WEE@AEPAXI@Z = 0x5ef600"
+      ],
+      "not_bound_here": 2
+    },
+    "??_7FaceInstance@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "vtable": "0x8406e0",
+      "slots": 3,
+      "checked": [
+        "0 ??_EFaceInstance@RBX@@WGE@AEPAXI@Z = 0x5ef610"
+      ],
+      "not_bound_here": 2
+    },
+    "??_7FaceInstance@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "vtable": "0x8406d0",
+      "slots": 3,
+      "checked": [
+        "0 ??_EFaceInstance@RBX@@WIE@AEPAXI@Z = 0x5ef620"
+      ],
+      "not_bound_here": 2
+    },
+    "??_7FaceInstance@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "vtable": "0x8406b0",
+      "slots": 3,
+      "checked": [
+        "0 ??_EFaceInstance@RBX@@WME@AEPAXI@Z = 0x5ef640"
+      ],
+      "not_bound_here": 2
+    },
+    "??_7FaceInstance@RBX@@6B@": {
+      "vtable": "0x840698",
+      "slots": 5,
+      "checked": [
+        "4 ?render3dSelect@IRenderable@RBX@@UAEXPAVAdorn@2@W4SelectState@2@@Z = 0x5ef400 (evidence name)"
+      ],
+      "not_bound_here": 4
+    },
+    "??_7FaceInstance@RBX@@6BDebugable@1@@": {
+      "vtable": "0x840710",
+      "slots": 1,
+      "checked": [
+        "0 ?dump@Debugable@RBX@@UAEXAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z = 0x56a560 (evidence name)"
+      ],
+      "not_bound_here": 0
+    }
+  },
+  "bounds_evidence": [
+    {
+      "rows": "005e95c0 + 005e95f8 + 005e960b (one function, not counted)",
+      "symbol": "?raise@?$Notifier@VWorld@RBX@@UAutoJoin@2@@RBX@@IBEXUAutoJoin@2@PAV?$Listener@VWorld@RBX@@UAutoJoin@2@@2@@Z",
+      "compiled_size": 179,
+      "joined_size": 179,
+      "exact_when_joined": true,
+      "reason": "Notifier<World, AutoJoin>::raise(AutoJoin, Listener*): the three analysed rows are the try body, the continuation after the call and the catch funclet (\"Exception caught in onEvent. %s\"). The compiled body is relocation-masked exact against the joined rows. An extent fix is needed before it can be counted."
+    },
+    {
+      "rows": "005e9680 + 005e96bb + 005e96ce (one function, not counted)",
+      "symbol": "?raise@?$Notifier@VWorld@RBX@@UAutoDestroy@2@@RBX@@IBEXUAutoDestroy@2@PAV?$Listener@VWorld@RBX@@UAutoDestroy@2@@2@@Z",
+      "compiled_size": 182,
+      "joined_size": 182,
+      "exact_when_joined": true,
+      "reason": "Notifier<World, AutoDestroy>::raise(AutoDestroy, Listener*): the three analysed rows are the try body, the continuation after the call and the catch funclet (\"Exception caught in onEvent. %s\"). The compiled body is relocation-masked exact against the joined rows. An extent fix is needed before it can be counted."
+    },
+    {
+      "rows": "005e9740 + 005e977b + 005e978e (one function, not counted)",
+      "symbol": "?raise@?$Notifier@VWorld@RBX@@UAssemblyPhysicsOn@2@@RBX@@IBEXUAssemblyPhysicsOn@2@PAV?$Listener@VWorld@RBX@@UAssemblyPhysicsOn@2@@2@@Z",
+      "compiled_size": 182,
+      "joined_size": 182,
+      "exact_when_joined": true,
+      "reason": "Notifier<World, AssemblyPhysicsOn>::raise(AssemblyPhysicsOn, Listener*): the three analysed rows are the try body, the continuation after the call and the catch funclet (\"Exception caught in onEvent. %s\"). The compiled body is relocation-masked exact against the joined rows. An extent fix is needed before it can be counted."
+    },
+    {
+      "rows": "005e9800 + 005e983b + 005e984e (one function, not counted)",
+      "symbol": "?raise@?$Notifier@VWorld@RBX@@UAssemblyPhysicsOff@2@@RBX@@IBEXUAssemblyPhysicsOff@2@PAV?$Listener@VWorld@RBX@@UAssemblyPhysicsOff@2@@2@@Z",
+      "compiled_size": 182,
+      "joined_size": 182,
+      "exact_when_joined": true,
+      "reason": "Notifier<World, AssemblyPhysicsOff>::raise(AssemblyPhysicsOff, Listener*): the three analysed rows are the try body, the continuation after the call and the catch funclet (\"Exception caught in onEvent. %s\"). The compiled body is relocation-masked exact against the joined rows. An extent fix is needed before it can be counted."
+    }
+  ],
+  "unit_map": [
+    {
+      "unit": "Primitive.cpp tail ..005e8ebf",
+      "rows": 24,
+      "bytes": 3600,
+      "counted_elsewhere": [
+        "005e8c40 counted by physics-array-lifetime-trial.json, world-service-actions-trial.json",
+        "005e8d30 counted by physics-array-lifetime-trial.json, services-working.json, world-service-all-trial.json, world-service-complete-trial.json, world-service-full-trial.json, world-service-lifetime-trial.json",
+        "005e8df0 counted by physics-array-lifetime-trial.json, services-working.json"
+      ],
+      "counted_here": 0,
+      "evidence": "v8world/Primitive.cpp (Body/Primitive owner, native v8world/Primitive2008.h): evidence names setDragging 005e8050, getFaceInWorld 005e81b0, getCoordinateFrame 005e82c0, setController 005e85e0, EdgeList::removeEdge 005e8610 / insertEdge 005e8990, setPrimitiveType 005e86f0, Body allocation new 0xdc at 005e8770, and the set<Primitive*> _Tree instantiations _Insert 005e8a40 / insert 005e8c40 (also used by World and Workspace). Not built here."
+    },
+    {
+      "unit": "PhysicsService.cpp 005e8ec0..005e914f",
+      "rows": 5,
+      "bytes": 626,
+      "counted_elsewhere": [
+        "005e8f70 counted by physics-array-lifetime-trial.json, services-working.json",
+        "005e9040 counted by physics-array-lifetime-trial.json, services-working.json, world-service-actions-secure-trial.json, world-service-actions-trial.json, world-service-complete-trial.json",
+        "005e9110 counted by physics-array-lifetime-trial.json, world-service-all-trial.json, world-service-complete-trial.json",
+        "005e9130 counted by physics-array-lifetime-trial.json, world-service-all-trial.json, world-service-complete-trial.json"
+      ],
+      "counted_here": 0,
+      "evidence": "v8datamodel/PhysicsService.cpp (services owner, native v8datamodel/PhysicsService.h): onServiceProvider 005e8ec0 (Workspace find 00490af0, World at Workspace +0x2e4), the AssemblyPhysicsOn/Off listener onEvent bodies 005e9110 / 005e9130. Not built here (005e8ec0 needs the native Workspace getWorld proposal already filed by the services / geometry receipts)."
+    },
+    {
+      "unit": "World.cpp 005e9150..005eaeef",
+      "rows": 65,
+      "bytes": 7143,
+      "counted_elsewhere": [
+        "005e9ec0 counted by leaves2008-working.json"
+      ],
+      "counted_here": 15,
+      "evidence": "v8world/World.cpp. Evidence: World() 005ea920 (four Notifier vtables 0083f8d8 / 0083f8c8 / 0083f8b8 / 0083f8a8, new 0x14 ContactManager 0060d260, new 0x10 CleanStage 0064a310, six new 0xc048 CodeProfiler 005c43a0 at +0xfc..+0x110, i.e. the 0x114 size RootInstance() passes to new at 00591739), ~World 005ea5e0 and its ??_G 005ead10 with the three ??_E adjustor thunks 005ea850 / 005ea860 / 005ea870, the evidence names onPrimitiveContactParametersChanged 005e9190, insertContact 005e9260, destroyContact 005e9280, destroyJointsToWorld 005ead30, createJointsToWorld 005eae10 and the 2-argument raise 005e95c0 / 005e9680, the AssemblyPhysicsOn/Off raises 005e9740 / 005e9800 and 1-argument raises 005e9940..005e9af0, the stage finders (StageType 6 / 5 / 2 loops 005e93b0..005e9520), step 005e9fd0 (CodeProfiler marks, floor), insertJoint 005ea320 / removeJoint 005ea3a0, createJoints / destroyJoints 005ea3f0..005ea5d0, joinAll 005ea880, removePrimitive 005ea8b0, and the set<Joint*> / set<Script*> iterator helpers 005e92b0 / 005e9340 / 005e9f60. 005e9ec0 (a Notifier constructor folded with Notifier<StandardOut, ...>) is counted by leaves2008-working.json; 005e9f20 is a G3D::Array-like destructor helper. Built here: 15 counted rows."
+    },
+    {
+      "unit": "Sky.cpp 005eaef0..005ec17f",
+      "rows": 35,
+      "bytes": 4507,
+      "counted_elsewhere": [
+        "005eb020 counted by effects-working.json",
+        "005eb080 counted by effects-working.json",
+        "005eb0e0 counted by effects-working.json",
+        "005eb0f0 counted by effects-working.json",
+        "005eb110 counted by effects-working.json",
+        "005eb120 counted by effects-working.json",
+        "005eb130 counted by effects-working.json",
+        "005eb140 counted by effects-working.json",
+        "005eb150 counted by effects-working.json",
+        "005eb160 counted by effects-working.json",
+        "005eb290 counted by effects-working.json",
+        "005eb300 counted by effects-working.json",
+        "005eb3d0 counted by effects-working.json",
+        "005eb4a0 counted by effects-working.json",
+        "005eb570 counted by effects-working.json",
+        "005eb610 counted by effects-working.json",
+        "005eb620 counted by effects-working.json",
+        "005eb630 counted by effects-working.json",
+        "005eba60 counted by effects-working.json",
+        "005eba70 counted by effects-working.json",
+        "005eba80 counted by effects-working.json",
+        "005eba90 counted by effects-working.json",
+        "005ebaa0 counted by effects-working.json",
+        "005ebab0 counted by effects-working.json",
+        "005ebac0 counted by effects-working.json",
+        "005ebad0 counted by effects-working.json",
+        "005ebae0 counted by effects-working.json",
+        "005ebb90 counted by effects-working.json",
+        "005ec170 counted by stats-service-working.json"
+      ],
+      "counted_here": 0,
+      "evidence": "v8datamodel/Sky.cpp (effects owner, native v8datamodel/Sky.h): testImage 005eaef0 (called by getG3DSky 005ebbb0 for each face), FactoryProduct<Sky> rows 005eb020.., the Player classDescriptor / BoundProp instantiations 005eb290 / 005eb300 (ICF), Sky() 005eb640, the ??_E thunks 005eba60..005ebad0, ~Sky 005ebae0. Most rows are counted by effects-working.json; 005ec170 is counted by stats-service-working.json. Not built here."
+    },
+    {
+      "unit": "NormalId.cpp 005ec180..005ecbaf",
+      "rows": 20,
+      "bytes": 2448,
+      "counted_elsewhere": [],
+      "counted_here": 0,
+      "evidence": "util/NormalId.cpp: evidence names normalIdOpposite 005ec180, Vector3ToNormalId 005ec290, Matrix3ToNormalId 005ec310, uvwToObject 005ec330, objectToUvw 005ec450, normalIdToVector3 005ec570, normalIdToMatrix3 005ec800, mapToUvw_Legacy 005ec9d0, and the per-face uvwToObject<id> bodies 005ec1a0..005ec220 (ViewNew owner FYI). Not built here."
+    },
+    {
+      "unit": "Surfaces + surface reflection templates 005ecbb0..005ef3ff",
+      "rows": 98,
+      "bytes": 9482,
+      "counted_elsewhere": [
+        "005ecc00 counted by surfaces-lookup-trial.json"
+      ],
+      "counted_here": 0,
+      "evidence": "v8datamodel/Surfaces: Surfaces(PartInstance*) 005ecbb0, operator[] 005ecc00, the map<Vector3, BlockTemplate*> iterator == 005ecca0 (ICF), then the surface reflection instantiations: EnumDesc / holder for SurfaceType and Controller::InputType (005eccd0..005ed800), SurfaceGetSet<face> get/set pairs (005ecd60..005ed0e0), SurfaceEnumPropDescriptor<face, SurfaceType / InputType> (005ed830..005ef3d0) and SurfaceDescriptor<face> (005eecc0..005ef180). 005ecc00 is counted by surfaces-lookup-trial.json. Owners: native v8datamodel/Surface.h / Surfaces.h (read-only); the descriptors need the reflection core EnumPropDescriptor proposal (TANDEM 2026-11-05). Not built here."
+    },
+    {
+      "unit": "FaceInstance.cpp 005ef400..005ef79f",
+      "rows": 16,
+      "bytes": 823,
+      "counted_elsewhere": [
+        "005ef530 counted by face-instance-lifetime.json"
+      ],
+      "counted_here": 10,
+      "evidence": "v8datamodel/FaceInstance.cpp: render3dSelect 005ef400 (dynamic_cast<PartInstance*>(getParent()) from the IRenderable base at +0x130, face +0x140; evidence name is the IRenderable slot), the boost::function functor allocation 005ef470 (new 0x18, vtable 00840684) and EnumDesc<NormalId> singleton 005ef4c0 / call_once thunk 005ef520 used by EnumPropDescriptor<FaceInstance, NormalId>() 005ef690, FaceInstance() 005ef530 (counted by face-instance-lifetime.json), the eight ??_E adjustor thunks 005ef5f0..005ef660 and ??_G 005ef670 (calls ~FaceInstance 00597500), setFace 005ef770 (prop_Face 0097b57c). Built here: 10 counted rows."
+    },
+    {
+      "unit": "unattributed G3D TextInput user 005ef7a0..005f126f",
+      "rows": 2,
+      "bytes": 6844,
+      "counted_elsewhere": [],
+      "counted_here": 0,
+      "evidence": "005ef7a0 compares two files with _stat64i32 and _unlink()s the stale one; 005ef840 (6698 B) is its only caller and is called from 004eb56c / 004eb71e; it drives G3D TextInput token reads (0050eef0 / 0050d530, token types 0x80..0x8c). No RTTI, string or evidence name ties it to an RBX class. Not recovered."
+    },
+    {
+      "unit": "Surface.cpp 005f1270..005f202f",
+      "rows": 21,
+      "bytes": 3362,
+      "counted_elsewhere": [],
+      "counted_here": 0,
+      "evidence": "v8datamodel/Surface.cpp: evidence names Surface(PartInstance*, NormalId) 005f1270, getSurfaceType 005f1290, getInput 005f12a0, isControllable 005f13c0; the property registration 005f17a0 (\"SurfaceInput\" 00840814, \"ParamA\" 0084080c, \"ParamB\" 00840804, \"Constraint\" 008407f8) and its helpers up to 005f2000. Owner: native v8datamodel/Surface.h. Not built here."
+    },
+    {
+      "unit": "boost.iostreams instantiations (library) 005f2030..",
+      "rows": 104,
+      "bytes": 7618,
+      "counted_elsewhere": [],
+      "counted_here": 0,
+      "evidence": "boost 1.34.1 iostreams code (evidence names gzip_params 005f2030 / 005f2160 / 005f20f0, basic_gzip_compressor::normalize_params 005f21f0, zlib_compressor_impl / zlib_decompressor_impl, indirect_streambuf / stream_buffer / chain / filtering_stream_base, cant_read / cant_seek / cant_write) instantiated for basic_null_device and for the Http unit's String_sink / HttpRequest_source; continues past 005f4000. Library templates (boost), not recovered."
+    }
+  ],
+  "proposals": [
+    "Owner of native-headers/engine-world/v8world/World.h (colingsnyder2-ux): the 2008 World has an owned G3D::Array<Primitive*> at +0xb8 between primitives (+0xac) and breakableJoints, so breakableJoints is at +0xc4, numJoints +0xe4, numContacts +0xe8, numLinkCalls +0xec, tempPrimitives +0xf0 and the six CodeProfiler pointers +0xfc..+0x110 (size 0x114). Evidence: World() 005ea920 zeroes +0xb8 / +0xbc / +0xc0 after primitives and builds the set at +0xc4 (0064b2a0); 005e9bb0 clears +0xb8 (00599a70) and appends primitives to it (0059a190); insertContact 005e9260 / destroyContact 005e9280 use +0xe8, insertJoint 005ea320 / removeJoint 005ea3a0 use +0xe4 and +0xc4, createJoints 005ea4d0 uses +0xec and +0xf0. The member name is not in the evidence. With it, insertContact / destroyContact / insertJoint / removeJoint / doBreakJoints 005e9e00 become candidates.",
+    "Same owner: World +0x88 is the first 2008 stage, a CleanStage (World() news 0x10 and calls CleanStage(NULL, this) 0064a310; native v8world/CleanStage2008.h), not a JointStage. onJointPrimitiveNulling 005e9240 / onJointPrimitiveSet 005e9250 tail-call CleanStage 0064a420 / 0064a460, insertPrimitive 005e98f0 calls CleanStage::onPrimitiveAdded 0064a3e0 and removePrimitive 005ea8b0 calls onPrimitiveRemoving 0064a400. With `CleanStage* jointStage;` (generated copy out/native-layouts/app-unit5e8-2008/pending/v8world/World.h) 005e9240 and 005e9250 are exact with every target verified.",
+    "Owner of the donor-shadowing v8kernel/IStage.h StageType (kernel-stages owner; proposal already in record_native_kernel_stages.py): with the 2008 values (CLEAN 0 .. KERNEL 7) World::getSimJobStage 005e93b0 (type 6) and getSleepStage 005e93e0 (type 5) are exact in this pending build; the ClumpStage (type 2) callers 005e9460 / 005e94a0 / 005e94e0 / 005e9520 and ticklePrimitive 005e9410 (2008: two arguments, ret 8, SleepStage 0064b890) also need a 2008 ClumpStage / SleepStage declaration.",
+    "Same World.h owner, FYI: the 2008 SpatialHash keeps the getNumHashNodes / getMaxBucketSize counters at +0x78 / +0x7c (005e9170 / 005e9180 read [[contactManager +0]+0x78 / +0x7c]); Assembly::PrimIterator is out of line (begin / end 005e5fc0 / 005e5fa0, ++ 00647640, used by onAssemblyExtentsChanged 005e91d0 and computeFallen 005e9c40).",
+    "BOUNDS for the server host (no bounds.json change): 005e95c0 + 005e95f8 + 005e960b, 005e9680 + 005e96bb + 005e96ce, 005e9740 + 005e977b + 005e978e and 005e9800 + 005e983b + 005e984e are each one function, Notifier<World, AutoJoin / AutoDestroy / AssemblyPhysicsOn / AssemblyPhysicsOff>::raise(E, Listener*) with its catch funclet (receipt bounds_evidence: compiled 179 B bodies exact against the joined rows)."
+  ],
+  "rejected": {
+    "getNumHashNodes / getMaxBucketSize with the donor SpatialHash.h": "12/12 B, different displacement (+0x78 / +0x7c needed)",
+    "onAssemblyExtentsChanged with the donor Assembly::PrimIterator": "140/87 B (iterator inlined; 2008 calls it out of line)",
+    "insertPrimitive / removePrimitive (pending build, donor Primitive.h)": "69/69 and 99/99 B but not exact: the 2008 Primitive keeps worldIndex at +0x50 and world at +0x58 (005e990d / 005e9915 / 005ea901 / 005ea908); needs v8world/Primitive2008.h, which cannot be combined with the donor Primitive.h that engine-world World.h includes. Removed from the source."
+  },
+  "flags": {
+    "world": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/engine-world",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit5e8-2008/NativeAppUnit5E8_2008_world.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit5E8_2008World.cpp"
+    ],
+    "world_pending": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit5e8-2008/pending",
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/engine-world",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/DNATIVE_APPUNIT5E8_PENDING",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit5e8-2008/NativeAppUnit5E8_2008_world_pending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit5E8_2008World.cpp"
+    ],
+    "face": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit5e8-2008/NativeAppUnit5E8_2008_face.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit5E8_2008FaceInstance.cpp"
+    ]
+  },
+  "sources": {
+    "world": "df14a0e52b1b498b00fe3dea8205f19f7de653fe3a0123f59a1e9beac83f10d3",
+    "face": "89856234d84f54b2cc2eb53739d23838f3b7a552c3714b95f7387c733f6c6689"
+  },
+  "headers_read_only": [
+    "native-headers/engine-world/v8world/World.h",
+    "native-headers/engine-world/v8world/ContactManager.h",
+    "native-headers/v8world/JointStage2008.h",
+    "native-headers/v8world/CleanStage2008.h",
+    "native-headers/v8world/SimJobStage2008.h",
+    "native-headers/v8datamodel/FaceInstance.h"
+  ]
+}

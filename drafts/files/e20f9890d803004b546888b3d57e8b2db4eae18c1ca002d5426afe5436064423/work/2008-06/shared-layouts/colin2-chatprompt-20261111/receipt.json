@@ -1,0 +1,75 @@
+{
+  "family": "CChatPrompt",
+  "user": "colin2",
+  "package_revision": "dbc7834ec337292dcac56703a552785969037b7120478bab289ed3fd24074b6b",
+  "source_revision": "dbc7834ec337292dcac56703a552785969037b7120478bab289ed3fd24074b6b",
+  "baseline_commit": null,
+  "draft_session": "e8df96f55ab442c29ce27df21d97a987",
+  "window_session": "8aed75dd154a40f88a95b69057256c74",
+  "source_hashes": {
+    "rebuild/2008-06/WindowsClient/src/CChatPrompt.cpp": "886d17adb1f0de8a1789d830bbaa85055b783eab1748d30872e2ca1f0aa4620c",
+    "rebuild/2008-06/WindowsClient/include/CChatPrompt.h": "2d543a7d4b70882137864c7dc72d1b495fbde633db16b563ae4e6323fefc184e"
+  },
+  "new_source": [
+    "Destructor detaches widget with bind(NULL,NULL) before member destruction",
+    "IMPLEMENT_DYNCREATE provides real allocation/runtime-class support"
+  ],
+  "header_restoration": [
+    "CWnd* receiver at +0x88 corroborated by original SetFocus calls",
+    "Message map and seven handler declarations for retained CChatPromptWindow.cpp"
+  ],
+  "new_inactive_exact_addresses": [
+    "004129c0",
+    "00412aa0",
+    "00411ef0",
+    "00411360"
+  ],
+  "new_inactive_exact_bytes": 346,
+  "verified_existing_exact_addresses": [
+    "00411be0",
+    "00412800",
+    "00411370",
+    "004113a0",
+    "004115c0",
+    "00411c30",
+    "0045aeb0",
+    "00702d70",
+    "004120a0",
+    "0047d410"
+  ],
+  "source_bodies_new": 1,
+  "new_compiler_runtime_support": true,
+  "inferred_names": [
+    "CChatPrompt handler names from message table signatures",
+    "GetRuntimeClass alias at original folded GetThisClass address"
+  ],
+  "checks": {
+    "compiled_sources": 2,
+    "exact_bytes_and_data": "14/15",
+    "require_proof_subset": "9/9 passed with unchanged inputs, no recompilation",
+    "full_class_proof": false
+  },
+  "parked": [
+    {
+      "address": "00411640",
+      "reason": "Existing OnCreate: XTP GetRegularFont null-fallback differs;118 original vs139 candidate; first divergence49. Preserve source; shared vendor/header version issue."
+    }
+  ],
+  "gates_open": [
+    "Destructor and bind indirect shared-count calls",
+    "Exception graph and dependent ABI",
+    "GuiItem/ChatEnter lifetime ABI",
+    "Final linked provider selection",
+    "No-loss integration and P5/P6/runtime"
+  ],
+  "runtime_selection_delta": null,
+  "fully_gated_swaps": null,
+  "independent_server_credit": null,
+  "missing_input_note": "roc source cannot resolve unpulled src wrapper; native-asm, original PE, original AFX tables and existing reviewed receipt used instead.",
+  "next_family_queue": [
+    "HistoryRecord/HistoryItem: inspect source gaps and original symbols",
+    "ContentId: inspect missing methods",
+    "GuiDrawImage: inspect partial class"
+  ],
+  "original_exe_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764"
+}

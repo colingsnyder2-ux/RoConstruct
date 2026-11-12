@@ -1,0 +1,37 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?Resize@CXTPDockContext@@IAEXVCPoint@@@Z",
+    "address": "00745bd0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockContext\\objects\\30faa8536ae91c30\\candidate.obj": "6da2adf8e2b3ec5722f926ade2c53fa29a008d4eab181e463ab076ae3217f692",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2vzpi4pm\\owners.json": "e56cfb10cf2cdc3a302c6307da05fb57798c2b3d66d4c9f9c1d3a7537e9aa2b6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2vzpi4pm\\import-thunk-identities-as-owner.json": "c59d724dd8be7d0ff7b368b68bc8c8a49af80487d370a20d1e1486f058bec0b5"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?GetWorkArea@CXTPMultiMonitor@@QAE?AVCRect@@PBVCWnd@@@Z",
+   "address": "006e8c20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnResize@CXTPDialogBar@@IAEXVCRect@@H@Z",
+   "address": "0079f7b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?XTPMultiMonitor@@YAPAVCXTPMultiMonitor@@XZ",
+   "address": "006e9080",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

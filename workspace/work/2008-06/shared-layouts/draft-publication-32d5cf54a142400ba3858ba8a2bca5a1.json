@@ -1,0 +1,225 @@
+{
+  "scope": "Inactive source publication; no runtime selection or server credit",
+  "base": "b2673e79d54ad55b53a26c46bc9ac96cc88adf82",
+  "verification": {
+    "native_input_key": "1ba8663a7bef1b5e240f46480b318d6b1b14aa5782591551a52ea0f832504f21",
+    "verifier_hashes": {
+      "C:\\Users\\colin\\RoConstruct\\roc\\draft_publish.py": "88603753898f3b0673d768ebef256644b84c5a52d50f034874afbcf4f6c0c1a3",
+      "C:\\Users\\colin\\RoConstruct\\roc\\draft_native.py": "2df30a1fa4c378617c753c92e024bb8a57c841a3ac332500dcc56772202b633d",
+      "C:\\Users\\colin\\RoConstruct\\roc\\draft_proof.py": "358f9bf1a10a5bbeb8b015339a9fa0bf6f33ce85bd3e368fbf03e982d29c46e7",
+      "C:\\Users\\colin\\RoConstruct\\work\\native-client\\claude-identity-closure.json": "e0b08ce72e7d001dfdabed99cfe38d8dbe8a269a68a6bf3ffe9ca3b878952dfa"
+    },
+    "sources": {
+      "rebuild/2008-06/native-classes/TopMenuBar.cpp": {
+        "source_sha256": "abdef1ba4dc54717630f296b601cc671fa79d376318e2609d46d885daa5355bd",
+        "object_sha256": "c4fe13fb4c1cb764e055cacecde683e6e7400c9d9f5b90eb224ad6777c0d8e55",
+        "methods": [
+          {
+            "address": "00573f30",
+            "symbol": "?getChildPosition@TopMenuBar@RBX@@MBE?AVVector2@G3D@@PBVGuiItem@2@@Z",
+            "size": 273,
+            "exact": true,
+            "verified_targets": {
+              "?numChildren@Instance@RBX@@QBEIXZ": "0x48ae20",
+              "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+              "??_R0?AVGuiItem@RBX@@@8": "0x92b8d8 (.?AVGuiItem@RBX@@)",
+              "??_R0?AVInstance@RBX@@@8": "0x92907c (.?AVInstance@RBX@@)",
+              "___RTDynamicCast": "msvcr90.dll!__RTDynamicCast",
+              "__real@3f000000": "0x819bac"
+            },
+            "local_eh": []
+          },
+          {
+            "address": "00573e30",
+            "symbol": "?getSize@TopMenuBar@RBX@@UBE?AVVector2@G3D@@XZ",
+            "size": 242,
+            "exact": true,
+            "verified_targets": {
+              "?numChildren@Instance@RBX@@QBEIXZ": "0x48ae20",
+              "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+              "??_R0?AVGuiItem@RBX@@@8": "0x92b8d8 (.?AVGuiItem@RBX@@)",
+              "??_R0?AVInstance@RBX@@@8": "0x92907c (.?AVInstance@RBX@@)",
+              "___RTDynamicCast": "msvcr90.dll!__RTDynamicCast"
+            },
+            "local_eh": []
+          }
+        ],
+        "compiler": 21022,
+        "flags": [
+          "/nologo",
+          "/c",
+          "/O2",
+          "/Ob2",
+          "/Oy",
+          "/GF",
+          "/GS-",
+          "/EHsc",
+          "/MD",
+          "/D_AFXDLL",
+          "/DNDEBUG",
+          "/D_MBCS",
+          "/DNOMINMAX",
+          "/DBOOST_ALL_NO_LIB",
+          "/DWIN32",
+          "/DNDEBUG",
+          "/D_LIB",
+          "/D_RELEASE",
+          "/D_RELEASEASSERT",
+          "/D_VC80_UPGRADE=0x0710",
+          "/IC:\\Users\\colin\\RoConstruct\\work\\draft-merger\\publications\\32d5cf54a142400ba3858ba8a2bca5a1\\verification\\exact-tree\\rebuild\\2008-06\\native-headers",
+          "/IC:\\Users\\colin\\RoConstruct\\work\\draft-merger\\publications\\32d5cf54a142400ba3858ba8a2bca5a1\\verification\\exact-tree\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+          "/D_XTP_STATICLINK",
+          "/D_XTPLIB_NOAUTOLINK",
+          "/IC:\\Users\\colin\\RoConstruct\\work\\draft-merger\\publications\\32d5cf54a142400ba3858ba8a2bca5a1\\verification\\exact-tree\\tools\\libs\\xtp-11.2.2\\Source",
+          "/fp:fast"
+        ]
+      }
+    }
+  },
+  "acceptance_receipts": {
+    "rebuild/2008-06/native-classes/TopMenuBar.cpp": [
+      {
+        "schema": 1,
+        "kind": "reviewed-source-improvement",
+        "inactive": true,
+        "path": "rebuild/2008-06/native-classes/TopMenuBar.cpp",
+        "candidate_sha256": "ba9c59fcc3fa1848e95c356baca049408cd238783153b46b647b7339bf201beb",
+        "before_sha256": "8c7d932bc7f7f4031ba82a45b60cb64760eea4c71c385549f90b54208bacca03",
+        "input_key": "66e940796a4956c81f3e3860965b7573ddca2b0d080c5dbfbeadc1d5255a9af0",
+        "client": "2008-06",
+        "verifier_sha256": "4ac058617d7e0c33b59d4b0227df91dbc8058972f37ab111eb7c2fb25585611b",
+        "before_methods": [
+          "??4Color4@G3D@@QAEAAV01@ABV01@@Z",
+          "??__E?id@?$date_facet@Vdate@gregorian@boost@@DV?$ostreambuf_iterator@DU?$char_traits@D@std@@@std@@@date_time@boost@@2V0locale@std@@A@@YAXXZ",
+          "?init@TopMenuBar@RBX@@AAEXXZ"
+        ],
+        "after_methods": [
+          "??4Color4@G3D@@QAEAAV01@ABV01@@Z",
+          "??__E?id@?$date_facet@Vdate@gregorian@boost@@DV?$ostreambuf_iterator@DU?$char_traits@D@std@@@std@@@date_time@boost@@2V0locale@std@@A@@YAXXZ",
+          "?getChildPosition@TopMenuBar@RBX@@MBE?AVVector2@G3D@@PBVGuiItem@2@@Z@00573f30",
+          "?getSize@TopMenuBar@RBX@@UBE?AVVector2@G3D@@XZ@00573e30",
+          "?init@TopMenuBar@RBX@@AAEXXZ"
+        ],
+        "checks": {
+          "compile": true,
+          "existing_code_preserved": true,
+          "existing_data_preserved": true,
+          "layout_preserved": true,
+          "provider_review": true,
+          "new_method_bodies": true,
+          "source_review": true,
+          "no_activation": true
+        },
+        "reviewer": "coordinator: method-level original-code/reference and source review",
+        "rationale": "Adds missing child-size aggregation and centered child positioning; existing native source only defines init. Preserve all existing code and declarations.",
+        "inferences": [
+          "Names reconstructed from native declarations and original method evidence; inferred names permitted by owner."
+        ],
+        "open_questions": [
+          "Class remains partial; unrelated original virtual identities and runtime selection remain separate."
+        ],
+        "scope": "Reviewed inactive source methods; partial class/inferred names allowed. No complete original ABI or executable promotion claim.",
+        "compiler_profile": "fast-fp",
+        "reference_evidence": [
+          {
+            "address": "00573e30",
+            "symbol": "?getSize@TopMenuBar@RBX@@UBE?AVVector2@G3D@@XZ",
+            "size": 242,
+            "exact": true,
+            "verified_targets": {
+              "?numChildren@Instance@RBX@@QBEIXZ": "0x48ae20",
+              "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+              "??_R0?AVGuiItem@RBX@@@8": "0x92b8d8 (.?AVGuiItem@RBX@@)",
+              "??_R0?AVInstance@RBX@@@8": "0x92907c (.?AVInstance@RBX@@)",
+              "___RTDynamicCast": "msvcr90.dll!__RTDynamicCast"
+            },
+            "local_eh": []
+          },
+          {
+            "address": "00573f30",
+            "symbol": "?getChildPosition@TopMenuBar@RBX@@MBE?AVVector2@G3D@@PBVGuiItem@2@@Z",
+            "size": 273,
+            "exact": true,
+            "verified_targets": {
+              "?numChildren@Instance@RBX@@QBEIXZ": "0x48ae20",
+              "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+              "??_R0?AVGuiItem@RBX@@@8": "0x92b8d8 (.?AVGuiItem@RBX@@)",
+              "??_R0?AVInstance@RBX@@@8": "0x92907c (.?AVInstance@RBX@@)",
+              "___RTDynamicCast": "msvcr90.dll!__RTDynamicCast",
+              "__real@3f000000": "0x819bac"
+            },
+            "local_eh": []
+          }
+        ],
+        "numeric_literals": [
+          {
+            "symbol": "__real@3f000000",
+            "address": "00819bac",
+            "bytes": "0000003f"
+          }
+        ],
+        "layout_preservation": {
+          "state": "preserved-before-layout",
+          "classes": {
+            "added": [],
+            "removed": [],
+            "changed": []
+          },
+          "virtual_tables": {
+            "added": [],
+            "removed": [],
+            "changed": []
+          },
+          "builds": {
+            "baseline": {
+              "exit": 0,
+              "log": "C:\\Users\\colin\\RoConstruct\\work\\draft-merger\\source-improvements\\44490ae18f7840a9ab0dcf0d8de94d2c\\layout-baseline\\compiler.log"
+            },
+            "candidate": {
+              "exit": 0,
+              "log": "C:\\Users\\colin\\RoConstruct\\work\\draft-merger\\source-improvements\\44490ae18f7840a9ab0dcf0d8de94d2c\\layout-candidate\\compiler.log"
+            }
+          },
+          "classes_before": 3199,
+          "classes_after": 3199,
+          "original_abi_proven": false,
+          "scope": "Compiler layout/virtual declaration preservation only; original offsets, slot identities and dependency ABI remain separate"
+        },
+        "related_providers": [
+          "rebuild/2008-06/glue/rbxgs/glue_gui.cpp",
+          "rebuild/2008-06/native-classes/ArrowPanel.cpp",
+          "rebuild/2008-06/native-classes/CreatableSharedCount2008.cpp",
+          "rebuild/2008-06/native-classes/GuiHudBuilder2008.cpp",
+          "rebuild/2008-06/native-classes/GuiWidgets2008Arrow.cpp",
+          "rebuild/2008-06/native-classes/StatsCommands.cpp"
+        ],
+        "native_input_key": "6797e8359fdeedf8bc3d50b5c6f1657f72179be81cf6afca73593cf72c2300f0",
+        "gate_hashes": {
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_source.py": "4ac058617d7e0c33b59d4b0227df91dbc8058972f37ab111eb7c2fb25585611b",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_native.py": "2df30a1fa4c378617c753c92e024bb8a57c841a3ac332500dcc56772202b633d",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_family.py": "b7e0fc2f82f6ca0e8f9c66fdabdf6f9aea96b73c611360d991d599b6a4507e87",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_methods.py": "5b25592e6a84bfc68b7d73c87e545c31ca8e38836cb9d843bf4416d158d42dcb",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_proof.py": "358f9bf1a10a5bbeb8b015339a9fa0bf6f33ce85bd3e368fbf03e982d29c46e7",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_append.py": "6b395a5509044f28668c4ac06e3cc2eeb545e1a5e85ce0bd02ed4ca6ecc81f0d",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_merger.py": "cf18d6757ed23c386e0c2ef72ec9fae29a46ae1fd365e3d76a5015d1c4d7a0ff",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_files.py": "e42fa4ac81e73a189caca707cb022fc41bab09f339adb5232070abab99decd7c",
+          "C:\\Users\\colin\\RoConstruct\\work\\native-client\\native_class_layout.py": "26592adcfca0975974b7565c6a0a23303d233f26126563520d33806df3150845",
+          "C:\\Users\\colin\\RoConstruct\\work\\native-client\\native_vftable_check.py": "d0c98faf83e785cad15139fe2f09b70c6699ab36a2bd2ed179c6727a2bcaeee2",
+          "C:\\Users\\colin\\RoConstruct\\work\\native-client\\native_conversion_queue.py": "eeee7a929454cd95faf77a06f5fe968b33826b57a1ecf2945107ea988b672b46"
+        }
+      }
+    ]
+  }
+}

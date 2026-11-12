@@ -1,0 +1,59 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?_GetBaseClass@CXTPPopupBar@@KGPAUCRuntimeClass@@XZ",
+    "address": "006c1b00"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPopupBar\\objects\\c2a12eaa4e9e4ff7\\candidate.obj": "ae4ea9f0926cc85c724750b6837989010d43c1ba53e0ca4b31915d7568dc9239",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-gw0c432u\\owners.json": "f784861bb305b73e9eaedee3cd49049f619c35b6c16933c18d004ebd29dcb0f0",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-gw0c432u\\import-thunk-identities-as-owner.json": "bbcff50502ea42410a1620076db86dd2e7f554222f811759985d6b756b6ce388"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?GetRuntimeClass@CXTPPopupToolBar@@UBEPAUCRuntimeClass@@XZ",
+    "address": "006ee710"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPopupBar\\objects\\c2a12eaa4e9e4ff7\\candidate.obj": "ae4ea9f0926cc85c724750b6837989010d43c1ba53e0ca4b31915d7568dc9239",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-gw0c432u\\owners.json": "f784861bb305b73e9eaedee3cd49049f619c35b6c16933c18d004ebd29dcb0f0",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-gw0c432u\\import-thunk-identities-as-owner.json": "bbcff50502ea42410a1620076db86dd2e7f554222f811759985d6b756b6ce388"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Clone@CXTPPopupToolBar@@UAEPAVCXTPCommandBar@@H@Z",
+    "address": "006f1980"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPopupBar\\objects\\c2a12eaa4e9e4ff7\\candidate.obj": "ae4ea9f0926cc85c724750b6837989010d43c1ba53e0ca4b31915d7568dc9239",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-gw0c432u\\owners.json": "f784861bb305b73e9eaedee3cd49049f619c35b6c16933c18d004ebd29dcb0f0",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-gw0c432u\\import-thunk-identities-as-owner.json": "bbcff50502ea42410a1620076db86dd2e7f554222f811759985d6b756b6ce388"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?CreateObject@CXTPPopupToolBar@@SGPAVCObject@@XZ",
+   "address": "006f1910",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetThisClass@CXTPCommandBar@@SGPAUCRuntimeClass@@XZ",
+   "address": "006b4ad0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_GetBaseClass@CXTPPopupToolBar@@KGPAUCRuntimeClass@@XZ",
+   "address": "006ee700",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 3,
+ "owners_bound": 3
+}

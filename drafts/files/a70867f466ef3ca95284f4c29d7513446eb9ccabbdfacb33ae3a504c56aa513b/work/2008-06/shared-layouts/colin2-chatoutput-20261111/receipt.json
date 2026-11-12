@@ -1,0 +1,39 @@
+{
+  "family": "ChatLine/ChatOutput",
+  "package_revision": "dbc7834ec337292dcac56703a552785969037b7120478bab289ed3fd24074b6b",
+  "source_revision": "dbc7834ec337292dcac56703a552785969037b7120478bab289ed3fd24074b6b",
+  "baseline_commit": null,
+  "new_methods": [
+    "ChatLine(Player*,string const&,float)",
+    "ChatOutput::onEvent(Players const*,ChatMessage)"
+  ],
+  "new_inactive_exact_addresses": [
+    "00650560",
+    "00650cc0"
+  ],
+  "new_inactive_exact_bytes": 582,
+  "verified_existing": "Heartbeat handler0064fe10 unchanged and exact",
+  "proof": "ChatLine constructor strict direct/import check passed on same object",
+  "header_repair": "Native Player getSuperSafeChat inline accessor: donor declaration plus original00650d65 read at+0x1b1; no layout change. Separately leased and uploaded.",
+  "prior_evidence_freshness": "Earlier objects that included the changed Player header are historical until rechecked; no prior-method recompilation or new credit claimed in this batch.",
+  "gates_open": [
+    "Incoming handler named-call closure",
+    "Dependency and base/receiver ABI",
+    "EH and owner linkage/runtime/no-loss gates"
+  ],
+  "unimplemented": [
+    "ChatOutput::ParseCommand",
+    "ChatOutput::render2d"
+  ],
+  "sessions": [
+    "5f65ad78cf5c40238e2997771aec7bef",
+    "aae6c5fd998e433f8b86d0ae193fd235"
+  ],
+  "source_hashes": {
+    "rebuild/2008-06/App/src/gui/ChatOutput.cpp": "8062081132dcdd652278c3f267d7e32d886c1d40ad617d20b2662e28135cad45",
+    "rebuild/2008-06/native-classes/ChatOutput.cpp": "d1045527f93f3a74a82f07abb5a53493997a3020a27f14771e1ec42833703e13",
+    "rebuild/2008-06/Network/include/Network/Player.h": "2a4ef121f4f5efbbabb9673b3e57c4fdbac4a6c8648e6aca28dae15b877be141"
+  },
+  "fresh_run_after_gui_header_change": "work\\2008-06\\native-check-runs\\20261111-195529-7dd80b25",
+  "header_dependency_sha256": "3b16cf3c370dd74977e3ba81517e7bb7ffa8108db42d1f3abb3e08b67c8f8d16"
+}

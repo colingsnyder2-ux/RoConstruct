@@ -1,4 +1,4 @@
-"""Identity receipt from the full 2008-06 identity registry: every non-placeholder decorated name -> its address.
+"""Identity receipt from the full 2008-06 identity registry: every non-placeholder name (C++ decorated and C cdecl) -> its address.
 
 ogre-registry-identities.json only covers the Ogre names registry; this covers work/2008-06/identity-registry.json
 (e.g. G3D::Sky::render, proven by byte-data-relocation proofs). A symbol named at more than one address is dropped.
@@ -20,7 +20,8 @@ def main():
     reg = json.loads(SOURCE.read_text())
     where = collections.defaultdict(set)
     for addr, row in reg.items():
-        if isinstance(row, dict) and not row.get('placeholder') and str(row.get('name', '')).startswith('?'):
+        if (isinstance(row, dict) and not row.get('placeholder') and row.get('name')
+                and not str(row['name']).startswith(('func_', 'sub_', 'roc_'))):
             where[row['name']].add(addr)
     rows = [{'symbol': s, 'address': next(iter(a)), 'evidence': 'identity-registry non-placeholder decorated name'}
             for s, a in sorted(where.items()) if len(a) == 1]

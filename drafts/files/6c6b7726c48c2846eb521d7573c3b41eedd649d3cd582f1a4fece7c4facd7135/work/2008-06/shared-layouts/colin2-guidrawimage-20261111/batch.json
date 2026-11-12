@@ -1,0 +1,344 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/GuiDrawImage.cpp",
+      "checks": [
+        {
+          "addr": "00642690",
+          "symbol": "?getImageSize@GuiDrawImage@RBX@@QBE?AVVector2@G3D@@XZ",
+          "calls": []
+        },
+        {
+          "addr": "00642750",
+          "symbol": "?setImage@GuiDrawImage@RBX@@QAE_NPAVAdorn@2@ABVTextureId@2@@Z",
+          "calls": [
+            {
+              "offset": 44,
+              "target": "0055bd60",
+              "symbol": "??9RBX@@YA_NABVContentId@0@0@Z"
+            },
+            {
+              "offset": 65,
+              "target": "0080240c",
+              "symbol": "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z",
+              "kind": "import",
+              "import": "MSVCP90.dll!??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z"
+            },
+            {
+              "offset": 104,
+              "target": "0045ad90",
+              "symbol": "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ"
+            },
+            {
+              "offset": 149,
+              "target": "0045ad90",
+              "symbol": "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ"
+            },
+            {
+              "offset": 196,
+              "target": "0045ad90",
+              "symbol": "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ"
+            },
+            {
+              "offset": 243,
+              "target": "0045ad90",
+              "symbol": "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ"
+            },
+            {
+              "offset": 315,
+              "target": "00598fa0",
+              "symbol": "?setPointer@?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@AAEXPAVTexture@2@@Z"
+            },
+            {
+              "offset": 357,
+              "target": "0045ad90",
+              "symbol": "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ"
+            },
+            {
+              "offset": 392,
+              "target": "0080245c",
+              "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+              "kind": "import",
+              "import": "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z"
+            },
+            {
+              "offset": 428,
+              "target": "008023e0",
+              "symbol": "__imp_?substr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z",
+              "kind": "import",
+              "import": "MSVCP90.dll!?substr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z"
+            },
+            {
+              "offset": 481,
+              "target": "00615440",
+              "symbol": "??0ContentId@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+            },
+            {
+              "offset": 529,
+              "target": "00598fa0",
+              "symbol": "?setPointer@?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@AAEXPAVTexture@2@@Z"
+            },
+            {
+              "offset": 567,
+              "target": "0045ad90",
+              "symbol": "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ"
+            },
+            {
+              "offset": 608,
+              "target": "00802468",
+              "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "kind": "import",
+              "import": "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+            },
+            {
+              "offset": 626,
+              "target": "00802468",
+              "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "kind": "import",
+              "import": "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+            },
+            {
+              "offset": 665,
+              "target": "00615440",
+              "symbol": "??0ContentId@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+            },
+            {
+              "offset": 713,
+              "target": "00598fa0",
+              "symbol": "?setPointer@?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@AAEXPAVTexture@2@@Z"
+            },
+            {
+              "offset": 751,
+              "target": "0045ad90",
+              "symbol": "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ"
+            },
+            {
+              "offset": 792,
+              "target": "00802468",
+              "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "kind": "import",
+              "import": "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+            },
+            {
+              "offset": 810,
+              "target": "00802468",
+              "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "kind": "import",
+              "import": "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+            },
+            {
+              "offset": 849,
+              "target": "00615440",
+              "symbol": "??0ContentId@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+            },
+            {
+              "offset": 897,
+              "target": "00598fa0",
+              "symbol": "?setPointer@?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@AAEXPAVTexture@2@@Z"
+            },
+            {
+              "offset": 935,
+              "target": "0045ad90",
+              "symbol": "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ"
+            },
+            {
+              "offset": 976,
+              "target": "00802468",
+              "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "kind": "import",
+              "import": "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+            },
+            {
+              "offset": 994,
+              "target": "00802468",
+              "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "kind": "import",
+              "import": "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+            },
+            {
+              "offset": 1012,
+              "target": "00802468",
+              "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "kind": "import",
+              "import": "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+            },
+            {
+              "offset": 1033,
+              "target": "00802468",
+              "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "kind": "import",
+              "import": "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "00642b90",
+          "symbol": "?setImageFromName@GuiDrawImage@RBX@@AAEXPAVAdorn@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+          "calls": [
+            {
+              "offset": 45,
+              "target": "00802368",
+              "symbol": "__imp_??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBDABV10@@Z",
+              "kind": "import",
+              "import": "MSVCP90.dll!??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBDABV10@@Z"
+            },
+            {
+              "offset": 73,
+              "target": "008023e4",
+              "symbol": "__imp_??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z",
+              "kind": "import",
+              "import": "MSVCP90.dll!??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z"
+            },
+            {
+              "offset": 93,
+              "target": "0055c500",
+              "symbol": "?fromAssets@ContentId@RBX@@SA?AV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+            },
+            {
+              "offset": 113,
+              "target": "00802468",
+              "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "kind": "import",
+              "import": "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+            },
+            {
+              "offset": 131,
+              "target": "00802468",
+              "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "kind": "import",
+              "import": "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+            },
+            {
+              "offset": 146,
+              "target": "0080245c",
+              "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+              "kind": "import",
+              "import": "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z"
+            },
+            {
+              "offset": 183,
+              "target": "00642750",
+              "symbol": "?setImage@GuiDrawImage@RBX@@QAE_NPAVAdorn@2@ABVTextureId@2@@Z"
+            },
+            {
+              "offset": 200,
+              "target": "00802468",
+              "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "kind": "import",
+              "import": "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+            },
+            {
+              "offset": 221,
+              "target": "00802468",
+              "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "kind": "import",
+              "import": "MSVCP90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "00642c90",
+          "symbol": "?draw@GuiDrawImage@RBX@@AAEXPAVAdorn@2@V?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@ABVRect@2@ABVColor4@5@3@Z",
+          "calls": [
+            {
+              "offset": 51,
+              "target": "004f35d0",
+              "symbol": "?xyxy@Rect2D@G3D@@SA?AV12@ABVVector2@2@0@Z"
+            },
+            {
+              "offset": 84,
+              "target": "00598fa0",
+              "symbol": "?setPointer@?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@AAEXPAVTexture@2@@Z"
+            },
+            {
+              "offset": 196,
+              "target": "007baf10",
+              "symbol": "?zero@Color4@G3D@@SAABV12@XZ"
+            },
+            {
+              "offset": 202,
+              "target": "007baf10",
+              "symbol": "?zero@Color4@G3D@@SAABV12@XZ"
+            },
+            {
+              "offset": 226,
+              "target": "00598fa0",
+              "symbol": "?setPointer@?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@AAEXPAVTexture@2@@Z"
+            },
+            {
+              "offset": 234,
+              "target": "00642c90",
+              "symbol": "?draw@GuiDrawImage@RBX@@AAEXPAVAdorn@2@V?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@ABVRect@2@ABVColor4@5@3@Z"
+            },
+            {
+              "offset": 292,
+              "target": "0045ad90",
+              "symbol": "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ"
+            }
+          ]
+        },
+        {
+          "addr": "00642de0",
+          "symbol": "?render2d@GuiDrawImage@RBX@@QAEXPAVAdorn@2@_NAAVRect@2@W4WidgetState@Widget@2@@Z",
+          "calls": [
+            {
+              "offset": 42,
+              "target": "007baf10",
+              "symbol": "?zero@Color4@G3D@@SAABV12@XZ"
+            },
+            {
+              "offset": 78,
+              "target": "007baf10",
+              "symbol": "?zero@Color4@G3D@@SAABV12@XZ"
+            },
+            {
+              "offset": 84,
+              "target": "007baf10",
+              "symbol": "?zero@Color4@G3D@@SAABV12@XZ"
+            },
+            {
+              "offset": 122,
+              "target": "00514910",
+              "symbol": "?blue@Color3@G3D@@SAABV12@XZ"
+            },
+            {
+              "offset": 153,
+              "target": "007baf10",
+              "symbol": "?zero@Color4@G3D@@SAABV12@XZ"
+            },
+            {
+              "offset": 180,
+              "target": "004f0820",
+              "symbol": "??0?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@QAE@ABV01@@Z"
+            },
+            {
+              "offset": 192,
+              "target": "00642c90",
+              "symbol": "?draw@GuiDrawImage@RBX@@AAEXPAVAdorn@2@V?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@ABVRect@2@ABVColor4@5@3@Z"
+            },
+            {
+              "offset": 204,
+              "target": "00514980",
+              "symbol": "?yellow@Color3@G3D@@SAABV12@XZ"
+            },
+            {
+              "offset": 235,
+              "target": "007baf10",
+              "symbol": "?zero@Color4@G3D@@SAABV12@XZ"
+            },
+            {
+              "offset": 268,
+              "target": "00598fa0",
+              "symbol": "?setPointer@?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@AAEXPAVTexture@2@@Z"
+            },
+            {
+              "offset": 280,
+              "target": "00642c90",
+              "symbol": "?draw@GuiDrawImage@RBX@@AAEXPAVAdorn@2@V?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@ABVRect@2@ABVColor4@5@3@Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

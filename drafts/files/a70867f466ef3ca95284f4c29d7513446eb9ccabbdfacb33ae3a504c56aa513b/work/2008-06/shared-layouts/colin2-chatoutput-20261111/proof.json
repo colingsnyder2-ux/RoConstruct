@@ -1,0 +1,81 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/ChatOutput.cpp",
+      "checks": [
+        {
+          "addr": "00650560",
+          "symbol": "??0ChatLine@RBX@@QAE@PAVPlayer@Network@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@M@Z",
+          "calls": [
+            {
+              "offset": 39,
+              "target": "00802460",
+              "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "kind": "import",
+              "import": "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ"
+            },
+            {
+              "offset": 61,
+              "target": "0080245c",
+              "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+              "kind": "import",
+              "import": "MSVCP90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z"
+            },
+            {
+              "offset": 96,
+              "target": "0080240c",
+              "symbol": "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z",
+              "kind": "import",
+              "import": "MSVCP90.dll!??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z"
+            },
+            {
+              "offset": 103,
+              "target": "0049ab50",
+              "symbol": "??$find@VTeams@RBX@@@ServiceProvider@RBX@@SAPAVTeams@1@PBVInstance@1@@Z"
+            },
+            {
+              "offset": 119,
+              "target": "005d6070",
+              "symbol": "?isTeamGame@Teams@RBX@@QAE_NXZ"
+            },
+            {
+              "offset": 140,
+              "target": "005d5ea0",
+              "symbol": "?getTeamFromPlayer@Teams@RBX@@QAEPAVTeam@2@PAVPlayer@Network@2@@Z"
+            },
+            {
+              "offset": 161,
+              "target": "00565e40",
+              "symbol": "?getTeamColor@Team@RBX@@QBE?AVBrickColor@2@XZ"
+            },
+            {
+              "offset": 168,
+              "target": "005b6270",
+              "symbol": "?color3@BrickColor@RBX@@QBE?AVColor3@G3D@@XZ"
+            },
+            {
+              "offset": 175,
+              "target": "005149f0",
+              "symbol": "?black@Color3@G3D@@SAABV12@XZ"
+            },
+            {
+              "offset": 182,
+              "target": "00514a60",
+              "symbol": "?white@Color3@G3D@@SAABV12@XZ"
+            },
+            {
+              "offset": 190,
+              "target": "00669f60",
+              "symbol": "?stringHash@RBX@@YAIABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+            },
+            {
+              "offset": 199,
+              "target": "0064f830",
+              "symbol": "?colorFromIndex8@Color@RBX@@SAABVColor3@G3D@@H@Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

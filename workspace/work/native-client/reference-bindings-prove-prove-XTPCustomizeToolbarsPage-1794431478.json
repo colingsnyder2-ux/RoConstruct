@@ -1,0 +1,32 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?OnChildNotify@CXTPCustomizeToolbarsPageCheckListBox@@MAEHIIJPAJ@Z",
+    "address": "00771c10"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPCustomizeToolbarsPage\\objects\\49e67beae37fb458\\candidate.obj": "e8c1a03cc407c88e02fccd3eaf8b51f403ace9fdd6f91930967874e3f844e971",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-r5id1h34\\owners.json": "6880fed69a5590523abd2ed8c11dbc8dd61038e09526a9631aa3e1e1860588c3",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-r5id1h34\\import-thunk-identities-as-owner.json": "0c42c6d08742fef024d6e57cd7ef117517749317230d5710f5dfa831e13f61e7"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?OnChildNotify@CCheckListBox@@MAEHIIJPAJ@Z",
+   "address": "007bc946",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?PreDrawItem@CXTPCustomizeToolbarsPageCheckListBox@@IAEXPAUtagDRAWITEMSTRUCT@@@Z",
+   "address": "00771a80",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

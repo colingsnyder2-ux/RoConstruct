@@ -1,0 +1,279 @@
+{
+  "class": "CNullDoc",
+  "status": "PASS",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IG:\\Projects\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IG:\\Projects\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+  ],
+  "original": "clients/2008-06/Roblox.exe",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "object_sha256": "b0e6c7ccda46052846d65cf54779a5041c2f8d28e0312361c744746281997ee0",
+  "layout_object_sha256": "f8ec6908cd59c7e3d8134e334fd4afe93008e0a57dd36050613cccd5ae7a131a",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_null_doc.py": "8b50a49e66f59fb63922ac7381597d2d54f26dc0fa8f9bb988d7c59d6455489f",
+    "rebuild/2008-06/native-classes/CNullDoc.cpp": "b5978ac56295c646b3a9cbe61c433bb535898aab9a92f2b00e993a95ed4cbba1",
+    "rebuild/2008-06/native-headers/CBrowserDoc.h": "20edc757aa696f357f7c3bf3a9974e59ca92c144f05cd9ec65e466ab4c3969d2",
+    "rebuild/2008-06/tests/NativeNullDocLayout.cpp": "160562cdf83a68fe9626c94f42782d8d76766802e9c74c9102755b830c8784c9",
+    "rebuild/2008-06/tests/native_bind.py": "628d095adf7a81a6c7bb82d302eae3e4e2b4f8d0c1b96736d12929ac7a17dff9"
+  },
+  "layout": {
+    "sizeof": "0x54 == sizeof(CDocument): CRuntimeClass 00812410 objectSize 0x54, operator new(0x54) in CreateObject 00433310 followed by the vptr store only; no body reads or writes an own field",
+    "cbrowserdoc_view_offset": "0x54 (CBrowserDoc.h, offsetof assert)",
+    "layout_test": "tests/NativeNullDocLayout.cpp compiled into NativeNullDocLayout.obj"
+  },
+  "methods": [
+    {
+      "address": "004332e0",
+      "symbol": "?GetRuntimeClass@CNullDoc@@UBEPAUCRuntimeClass@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?classCNullDoc@CNullDoc@@2UCRuntimeClass@@B": "0x812410"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004332e0",
+      "symbol": "?GetThisClass@CNullDoc@@SGPAUCRuntimeClass@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?classCNullDoc@CNullDoc@@2UCRuntimeClass@@B": "0x812410"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004332f0",
+      "symbol": "?OnUpdateDisabledCommand@CNullDoc@@IAEXPAVCCmdUI@@@Z",
+      "size": 18,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00433310",
+      "symbol": "?CreateObject@CNullDoc@@SGPAVCObject@@XZ",
+      "size": 80,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??0CDocument@@QAE@XZ": "mfc90.dll!??0CDocument@@QAE@XZ",
+        "??_7CNullDoc@@6B@": "0x80cfcc"
+      },
+      "local_eh": [
+        "__ehhandler$?CreateObject@CNullDoc@@SGPAVCObject@@XZ"
+      ]
+    },
+    {
+      "address": "00433360",
+      "symbol": "?GetMessageMap@CNullDoc@@MBEPBUAFX_MSGMAP@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?messageMap@?1??GetThisMessageMap@CNullDoc@@KGPBUAFX_MSGMAP@@XZ@4U3@B": "0x81242c"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00433360",
+      "symbol": "?GetThisMessageMap@CNullDoc@@KGPBUAFX_MSGMAP@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?messageMap@?1??GetThisMessageMap@CNullDoc@@KGPBUAFX_MSGMAP@@XZ@4U3@B": "0x81242c"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0040e4d0",
+      "symbol": "??_GCNullDoc@@UAEPAXI@Z",
+      "size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??1CDocument@@UAE@XZ": "mfc90.dll!??1CDocument@@UAE@XZ",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00416690",
+      "symbol": "?IsModified@CNullDoc@@UAEHXZ",
+      "size": 3,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "007286a0",
+      "symbol": "?SaveModified@CNullDoc@@UAEHXZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "0044f1f0",
+      "symbol": "?_GetBaseClass@CNullDoc@@KGPAUCRuntimeClass@@XZ",
+      "size": 5,
+      "exact": true,
+      "verified_targets": {
+        "?GetThisClass@CDocument@@SGPAUCRuntimeClass@@XZ": "mfc90.dll!?GetThisClass@CDocument@@SGPAUCRuntimeClass@@XZ"
+      },
+      "local_eh": []
+    }
+  ],
+  "get_base_class_00_44f1f0": {
+    "address": "0044f1f0",
+    "symbol": "?_GetBaseClass@CNullDoc@@KGPAUCRuntimeClass@@XZ",
+    "size": 5,
+    "exact": true,
+    "verified_targets": {
+      "?GetThisClass@CDocument@@SGPAUCRuntimeClass@@XZ": "mfc90.dll!?GetThisClass@CDocument@@SGPAUCRuntimeClass@@XZ"
+    },
+    "local_eh": []
+  },
+  "vtable_00_80cfcc": {
+    "0": "004332e0 ?GetRuntimeClass@CNullDoc@@UBEPAUCRuntimeClass@@XZ: exact here",
+    "1": "0040e4d0 ??_ECNullDoc@@UAEPAXI@Z: exact here (weak external of ??_GCNullDoc@@UAEPAXI@Z)",
+    "2": "0070bdf0 ?Serialize@CObject@@UAEXAAVCArchive@@@Z: inherited inline COMDAT, body exact",
+    "3": "0047d410 ?AssertValid@CObject@@UBEXXZ: inherited inline COMDAT, body exact",
+    "4": "0070bdf0 ?Dump@CObject@@UBEXAAVCDumpContext@@@Z: inherited inline COMDAT, body exact",
+    "5": "006a0986 ?OnCmdMsg@CDocument@@UAEHIHPAXPAUAFX_CMDHANDLERINFO@@@Z: mfc90.dll!?OnCmdMsg@CDocument@@UAEHIHPAXPAUAFX_CMDHANDLERINFO@@@Z",
+    "6": "006a098c ?OnFinalRelease@CDocument@@UAEXXZ: mfc90.dll!?OnFinalRelease@CDocument@@UAEXXZ",
+    "7": "006a069e ?IsInvokeAllowed@CCmdTarget@@UAEHJ@Z: mfc90.dll!?IsInvokeAllowed@CCmdTarget@@UAEHJ@Z",
+    "8": "006a06a4 ?GetDispatchIID@CCmdTarget@@UAEHPAU_GUID@@@Z: mfc90.dll!?GetDispatchIID@CCmdTarget@@UAEHPAU_GUID@@@Z",
+    "9": "006a06aa ?GetTypeInfoCount@CCmdTarget@@UAEIXZ: mfc90.dll!?GetTypeInfoCount@CCmdTarget@@UAEIXZ",
+    "10": "006a06b0 ?GetTypeLibCache@CCmdTarget@@UAEPAVCTypeLibCache@@XZ: mfc90.dll!?GetTypeLibCache@CCmdTarget@@UAEPAVCTypeLibCache@@XZ",
+    "11": "006a06b6 ?GetTypeLib@CCmdTarget@@UAEJKPAPAUITypeLib@@@Z: mfc90.dll!?GetTypeLib@CCmdTarget@@UAEJKPAPAUITypeLib@@@Z",
+    "12": "00433360 ?GetMessageMap@CNullDoc@@MBEPBUAFX_MSGMAP@@XZ: exact here",
+    "13": "006a06bc ?GetCommandMap@CCmdTarget@@MBEPBUAFX_OLECMDMAP@@XZ: mfc90.dll!?GetCommandMap@CCmdTarget@@MBEPBUAFX_OLECMDMAP@@XZ",
+    "14": "006a06c2 ?GetDispatchMap@CCmdTarget@@MBEPBUAFX_DISPMAP@@XZ: mfc90.dll!?GetDispatchMap@CCmdTarget@@MBEPBUAFX_DISPMAP@@XZ",
+    "15": "006a06c8 ?GetConnectionMap@CCmdTarget@@MBEPBUAFX_CONNECTIONMAP@@XZ: mfc90.dll!?GetConnectionMap@CCmdTarget@@MBEPBUAFX_CONNECTIONMAP@@XZ",
+    "16": "006a0992 ?GetInterfaceMap@CCmdTarget@@MBEPBUAFX_INTERFACEMAP@@XZ: mfc90.dll!?GetInterfaceMap@CCmdTarget@@MBEPBUAFX_INTERFACEMAP@@XZ",
+    "17": "006a0998 ?GetEventSinkMap@CCmdTarget@@MBEPBUAFX_EVENTSINKMAP@@XZ: mfc90.dll!?GetEventSinkMap@CCmdTarget@@MBEPBUAFX_EVENTSINKMAP@@XZ",
+    "18": "006a06d4 ?OnCreateAggregates@CCmdTarget@@UAEHXZ: mfc90.dll!?OnCreateAggregates@CCmdTarget@@UAEHXZ",
+    "19": "006a06da ?GetInterfaceHook@CCmdTarget@@UAEPAUIUnknown@@PBX@Z: mfc90.dll!?GetInterfaceHook@CCmdTarget@@UAEPAUIUnknown@@PBX@Z",
+    "20": "006a06e0 ?GetExtraConnectionPoints@CCmdTarget@@MAEHPAVCPtrArray@@@Z: mfc90.dll!?GetExtraConnectionPoints@CCmdTarget@@MAEHPAVCPtrArray@@@Z",
+    "21": "006a06e6 ?GetConnectionHook@CCmdTarget@@MAEPAUIConnectionPoint@@ABU_GUID@@@Z: mfc90.dll!?GetConnectionHook@CCmdTarget@@MAEPAUIConnectionPoint@@ABU_GUID@@@Z",
+    "22": "006a099e ?SetTitle@CDocument@@UAEXPBD@Z: mfc90.dll!?SetTitle@CDocument@@UAEXPBD@Z",
+    "23": "006a09a4 ?SetPathName@CDocument@@UAEXPBDH@Z: mfc90.dll!?SetPathName@CDocument@@UAEXPBDH@Z",
+    "24": "00416690 ?IsModified@CNullDoc@@UAEHXZ: exact here",
+    "25": "005f29d0 ?SetModifiedFlag@CDocument@@UAEXH@Z: inherited inline COMDAT, body exact",
+    "26": "006a09aa ?GetFirstViewPosition@CDocument@@UBEPAU__POSITION@@XZ: mfc90.dll!?GetFirstViewPosition@CDocument@@UBEPAU__POSITION@@XZ",
+    "27": "006a09b0 ?GetNextView@CDocument@@UBEPAVCView@@AAPAU__POSITION@@@Z: mfc90.dll!?GetNextView@CDocument@@UBEPAVCView@@AAPAU__POSITION@@@Z",
+    "28": "006a09b6 ?OnChangedViewList@CDocument@@UAEXXZ: mfc90.dll!?OnChangedViewList@CDocument@@UAEXXZ",
+    "29": "006a09bc ?DeleteContents@CDocument@@UAEXXZ: mfc90.dll!?DeleteContents@CDocument@@UAEXXZ",
+    "30": "006a09c2 ?OnNewDocument@CDocument@@UAEHXZ: mfc90.dll!?OnNewDocument@CDocument@@UAEHXZ",
+    "31": "006a09c8 ?OnOpenDocument@CDocument@@UAEHPBD@Z: mfc90.dll!?OnOpenDocument@CDocument@@UAEHPBD@Z",
+    "32": "006a09ce ?OnSaveDocument@CDocument@@UAEHPBD@Z: mfc90.dll!?OnSaveDocument@CDocument@@UAEHPBD@Z",
+    "33": "006a09d4 ?OnCloseDocument@CDocument@@UAEXXZ: mfc90.dll!?OnCloseDocument@CDocument@@UAEXXZ",
+    "34": "006a09da ?ReportSaveLoadException@CDocument@@UAEXPBDPAVCException@@HI@Z: mfc90.dll!?ReportSaveLoadException@CDocument@@UAEXPBDPAVCException@@HI@Z",
+    "35": "006a09e0 ?GetFile@CDocument@@UAEPAVCFile@@PBDIPAVCFileException@@@Z: mfc90.dll!?GetFile@CDocument@@UAEPAVCFile@@PBDIPAVCFileException@@@Z",
+    "36": "006a09e6 ?ReleaseFile@CDocument@@UAEXPAVCFile@@H@Z: mfc90.dll!?ReleaseFile@CDocument@@UAEXPAVCFile@@H@Z",
+    "37": "006a09ec ?CanCloseFrame@CDocument@@UAEHPAVCFrameWnd@@@Z: mfc90.dll!?CanCloseFrame@CDocument@@UAEHPAVCFrameWnd@@@Z",
+    "38": "007286a0 ?SaveModified@CNullDoc@@UAEHXZ: exact here",
+    "39": "006a09f2 ?PreCloseFrame@CDocument@@UAEXPAVCFrameWnd@@@Z: mfc90.dll!?PreCloseFrame@CDocument@@UAEXPAVCFrameWnd@@@Z",
+    "40": "006a09f8 ?DoSave@CDocument@@UAEHPBDH@Z: mfc90.dll!?DoSave@CDocument@@UAEHPBDH@Z",
+    "41": "006a09fe ?DoFileSave@CDocument@@UAEHXZ: mfc90.dll!?DoFileSave@CDocument@@UAEHXZ",
+    "42": "006a0a04 ?UpdateFrameCounts@CDocument@@UAEXXZ: mfc90.dll!?UpdateFrameCounts@CDocument@@UAEXXZ",
+    "43": "006a0a0a ?GetDefaultMenu@CDocument@@UAEPAUHMENU__@@XZ: mfc90.dll!?GetDefaultMenu@CDocument@@UAEPAUHMENU__@@XZ",
+    "44": "006a0a10 ?GetDefaultAccelerator@CDocument@@UAEPAUHACCEL__@@XZ: mfc90.dll!?GetDefaultAccelerator@CDocument@@UAEPAUHACCEL__@@XZ",
+    "45": "006a0a16 ?OnIdle@CDocument@@UAEXXZ: mfc90.dll!?OnIdle@CDocument@@UAEXXZ"
+  },
+  "runtime_class_00_812410": {
+    "address": "00812410",
+    "size": 28,
+    "masked_bytes_equal": true,
+    "relocations": {
+      "+0x0": "??_C@_08EGHHNFLO@CNullDoc?$AA@ -> string 'CNullDoc' at 0x8123f8",
+      "+0xc": "?CreateObject@CNullDoc@@SGPAVCObject@@XZ -> 0x433310",
+      "+0x10": "?_GetBaseClass@CNullDoc@@KGPAUCRuntimeClass@@XZ -> 0x44f1f0"
+    }
+  },
+  "message_map_00_81242c": {
+    "address": "0081242c",
+    "size": 8,
+    "masked_bytes_equal": true,
+    "relocations": {
+      "+0x0": "?GetThisMessageMap@CDocument@@KGPBUAFX_MSGMAP@@XZ -> mfc90.dll!?GetThisMessageMap@CDocument@@KGPBUAFX_MSGMAP@@XZ",
+      "+0x4": "?_messageEntries@?1??GetThisMessageMap@CNullDoc@@KGPBUAFX_MSGMAP@@XZ@4QBUAFX_MSGMAP_ENTRY@@B -> 0x812438"
+    }
+  },
+  "message_entries_00_812438": {
+    "address": "00812438",
+    "size": 96,
+    "masked_bytes_equal": true,
+    "relocations": {
+      "+0x14": "?OnUpdateDisabledCommand@CNullDoc@@IAEXPAVCCmdUI@@@Z -> 0x4332f0",
+      "+0x2c": "?OnUpdateDisabledCommand@CNullDoc@@IAEXPAVCCmdUI@@@Z -> 0x4332f0",
+      "+0x44": "?OnUpdateDisabledCommand@CNullDoc@@IAEXPAVCCmdUI@@@Z -> 0x4332f0"
+    }
+  },
+  "original_metadata": "name CNullDoc, size 0x54, schema 0xffff, create 00433310, base getter 0044f1f0 (CDocument::GetThisClass import thunk); map base CDocument::GetThisMessageMap thunk; 3 CN_UPDATE_COMMAND_UI entries (ID 0xE103, 0xE104, 0x80B6; sig 0x41; handler 004332f0) + zero terminator",
+  "rtti": {
+    "locator": "0x87b080",
+    "chain": [
+      ".?AVCNullDoc@@ mdisp=0 pdisp=-1 vdisp=0",
+      ".?AVCDocument@@ mdisp=0 pdisp=-1 vdisp=0",
+      ".?AVCCmdTarget@@ mdisp=0 pdisp=-1 vdisp=0",
+      ".?AVCObject@@ mdisp=0 pdisp=-1 vdisp=0"
+    ]
+  },
+  "failures": [],
+  "emitted_function_symbols": [
+    "??0CNullDoc@@QAE@XZ",
+    "??1CNullDoc@@UAE@XZ",
+    "??_GCNullDoc@@UAEPAXI@Z",
+    "?CreateObject@CNullDoc@@SGPAVCObject@@XZ",
+    "?GetMessageMap@CNullDoc@@MBEPBUAFX_MSGMAP@@XZ",
+    "?GetRuntimeClass@CNullDoc@@UBEPAUCRuntimeClass@@XZ",
+    "?GetThisClass@CNullDoc@@SGPAUCRuntimeClass@@XZ",
+    "?GetThisMessageMap@CNullDoc@@KGPBUAFX_MSGMAP@@XZ",
+    "?IsModified@CNullDoc@@UAEHXZ",
+    "?OnUpdateDisabledCommand@CNullDoc@@IAEXPAVCCmdUI@@@Z",
+    "?SaveModified@CNullDoc@@UAEHXZ",
+    "?SetModifiedFlag@CDocument@@UAEXH@Z",
+    "?_GetBaseClass@CNullDoc@@KGPAUCRuntimeClass@@XZ",
+    "__ehhandler$?CreateObject@CNullDoc@@SGPAVCObject@@XZ",
+    "__unwindfunclet$?CreateObject@CNullDoc@@SGPAVCObject@@XZ$0"
+  ],
+  "open": {
+    "handler_name": "original name of 004332f0 unknown; OnUpdateDisabledCommand is a neutral codegen analog",
+    "command_0x80B6": "observed resource command ID, symbolic name unknown",
+    "folded_destructor_0040e4d0": "identical scalar deleting destructor also used by the CBrowserDoc vtable; the translation unit that originally emitted it is unproven",
+    "scope": "source/object proof only; no server credit, no selection, no build/runtime claim"
+  }
+}

@@ -3,7 +3,8 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DRegistryUtil | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src c737d3eb | roc native-status --write
+// <<< native-status | src 04ebd8de | roc native-status --write
+#line 1 ".\\G3Dcpp\\RegistryUtil.cpp"
 /**
  @file RegistryUtil.cpp
 

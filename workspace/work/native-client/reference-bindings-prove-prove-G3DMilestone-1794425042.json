@@ -1,0 +1,105 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?set@Milestone@G3D@@AAEXXZ",
+    "address": "00485190"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DMilestone\\objects\\7b43c2600b7424da\\candidate.obj": "88c55c9ffc13a015b8fa11f07c28ae4b5a88df8c4a904a5431fb552803efbf91",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-06ps0yb1\\owners.json": "eee58f7e38141d610d6ad3818c305fe3a10bebce4c4a28f106d2205ac6cda4e5",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-06ps0yb1\\import-thunk-identities-as-owner.json": "4c1fcb8fccea9938cf9158b789c39446f186848e900ba5f1ed09c3a47c04a046"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?wait@Milestone@G3D@@AAEXXZ",
+    "address": "004851b0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DMilestone\\objects\\7b43c2600b7424da\\candidate.obj": "88c55c9ffc13a015b8fa11f07c28ae4b5a88df8c4a904a5431fb552803efbf91",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-06ps0yb1\\owners.json": "eee58f7e38141d610d6ad3818c305fe3a10bebce4c4a28f106d2205ac6cda4e5",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-06ps0yb1\\import-thunk-identities-as-owner.json": "4c1fcb8fccea9938cf9158b789c39446f186848e900ba5f1ed09c3a47c04a046"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0Milestone@G3D@@AAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+    "address": "004851e0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DMilestone\\objects\\7b43c2600b7424da\\candidate.obj": "88c55c9ffc13a015b8fa11f07c28ae4b5a88df8c4a904a5431fb552803efbf91",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-06ps0yb1\\owners.json": "eee58f7e38141d610d6ad3818c305fe3a10bebce4c4a28f106d2205ac6cda4e5",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-06ps0yb1\\import-thunk-identities-as-owner.json": "4c1fcb8fccea9938cf9158b789c39446f186848e900ba5f1ed09c3a47c04a046"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1Milestone@G3D@@UAE@XZ",
+    "address": "00485290"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DMilestone\\objects\\7b43c2600b7424da\\candidate.obj": "88c55c9ffc13a015b8fa11f07c28ae4b5a88df8c4a904a5431fb552803efbf91",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-06ps0yb1\\owners.json": "eee58f7e38141d610d6ad3818c305fe3a10bebce4c4a28f106d2205ac6cda4e5",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-06ps0yb1\\import-thunk-identities-as-owner.json": "4c1fcb8fccea9938cf9158b789c39446f186848e900ba5f1ed09c3a47c04a046"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??_EMilestone@G3D@@UAEPAXI@Z",
+   "address": "00485340",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?append@?$Array@I@G3D@@QAEXABI@Z",
+   "address": "00480af0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glDeleteFencesNV@@3P6GXHPBI@ZA",
+   "address": "0096f838",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glFinishFenceNV@@3P6GXI@ZA",
+   "address": "0096f840",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glGenFencesNV@@3P6GXHPAI@ZA",
+   "address": "0096f834",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glSetFenceNV@@3P6GXII@ZA",
+   "address": "0096f83c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?resize@?$Array@I@G3D@@QAEXH_N@Z",
+   "address": "004805b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??0Milestone@G3D@@AAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "007c5524",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??1Milestone@G3D@@UAE@XZ",
+   "address": "007c5524",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__glFinish@0",
+   "address": "00802a20",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 4,
+ "owners_bound": 4
+}

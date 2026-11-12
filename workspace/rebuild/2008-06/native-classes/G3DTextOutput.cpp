@@ -3,7 +3,8 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DTextOutput | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 0da8067a | roc native-status --write
+// <<< native-status | src c8ca01c7 | roc native-status --write
+#line 1 ".\\G3Dcpp\\TextOutput.cpp"
 /**
   @file TextOutput.cpp
 

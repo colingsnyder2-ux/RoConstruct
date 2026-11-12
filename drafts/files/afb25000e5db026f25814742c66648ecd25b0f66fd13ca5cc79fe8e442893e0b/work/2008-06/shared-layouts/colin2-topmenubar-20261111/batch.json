@@ -1,0 +1,25 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/TopMenuBar.cpp",
+      "checks": [
+        {
+          "addr": "00573e30",
+          "symbol": "?getSize@TopMenuBar@RBX@@UBE?AVVector2@G3D@@XZ"
+        },
+        {
+          "addr": "00574050",
+          "symbol": "?render2d@TopMenuBar@RBX@@UAEXPAVAdorn@2@@Z"
+        },
+        {
+          "addr": "00574bf0",
+          "symbol": "?process@TopMenuBar@RBX@@UAE?AVGuiResponse@2@ABVGuiEvent@2@@Z"
+        },
+        {
+          "addr": "00573f30",
+          "symbol": "?getChildPosition@TopMenuBar@RBX@@MBE?AVVector2@G3D@@PBVGuiItem@2@@Z"
+        }
+      ]
+    }
+  ]
+}

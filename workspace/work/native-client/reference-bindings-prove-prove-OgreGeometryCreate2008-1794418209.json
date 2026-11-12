@@ -1,0 +1,42 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?createIndexed@GeometryBuilder@Ogre@@QAEPAVRbxSubMesh@2@PBMI000PBGPBIIPAVVector3@2@3@Z",
+    "address": "0067c130"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-OgreGeometryCreate2008\\objects\\f1b63379e541463f\\candidate.obj": "4461938d043d056e11dc8d2a94182365bb5be933cb67cd29fea4412aa26bf00a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-53fx2ibg\\owners.json": "cf7e6cf4f707fa8e19258bbd50b43813a1f47d1e1ce74c19162d3613f4fe0e4b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-53fx2ibg\\import-thunk-identities-as-owner.json": "286822f2822014734134b749c7c262f72c327096f37adb70e8d06a2de60aa5ee"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??0RbxSubMesh@Ogre@@QAE@XZ",
+   "address": "00678470",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??A?$map@PAVRbxSubMesh@Ogre@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@PAVRbxSubMesh@Ogre@@@4@V?$allocator@U?$pair@QAVRbxSubMesh@Ogre@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@@4@@std@@QAEAAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@ABQAVRbxSubMesh@Ogre@@@Z",
+   "address": "0054b3a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?createVertexData@GeometryBuilder@Ogre@@QAEPAVVertexData@2@PBMI000@Z",
+   "address": "00679ae0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?createIndexed@GeometryBuilder@Ogre@@QAEPAVRbxSubMesh@2@PBMI000PBGPBIIPAVVector3@2@3@Z",
+   "address": "007dd766",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

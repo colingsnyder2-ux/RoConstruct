@@ -1,0 +1,30 @@
+{
+  "class": "CDeclarationView",
+  "date": "2026-11-11",
+  "owner": "colin (opencode/glm-5.3-flash-free)",
+  "lease": "CDeclarationView-showDescriptor-glm53",
+  "workflow": 53,
+  "package_revision": "dbc7834ec337292dcac56703a552785969037b7120478bab289ed3fd24074b6b",
+  "workspace_manifest_source_revision": "dbc7834ec337292dcac56703a552785969037b7120478bab289ed3fd24074b6b",
+  "baseline_commit": null,
+  "draft_session": "1de551f7aee5420683de16d66b8f26be",
+  "draft_packet": "e4423297356ee525cc77515eef21c7a75603cf308a2c755d76926b78e1463693",
+  "sources": {
+    "rebuild/2008-06/WindowsClient/src/CDeclarationView.cpp": "e2ec9a27353a9f8d036011c802beeafd505ca709d9243ab20c8e059c4131a37c",
+    "rebuild/2008-06/native-classes/CDeclarationView.cpp": "c8d355418d4180576231704d0115a78ea52ba66b06e41d6b1eb494e6fe189f0e",
+    "rebuild/2008-06/WindowsClient/include/CDeclarationView.h": "cc5f53a2f303dc617a0da220cf62250d76b0fe2e41d9d17a697f0bac351743d8",
+    "rebuild/2008-06/native-headers/CDeclarationView.h": "aa1da882eb5b6fec6418fcbfc8a7188405de9b26bec10e21fb8848d41c1a88e3",
+    "rebuild/2008-06/App/include/reflection/signal.h": "ace66213b1ddd1d385c51c951c4827a1ccc5f756fb0d706c9e165337fe03f13b"
+  },
+  "methods": [
+    {
+      "address": "00435860",
+      "symbol": "?showDescriptor@CDeclarationView@@QAEXPBVDescriptor@Reflection@RBX@@@Z",
+      "size": 1048,
+      "exact": true,
+      "status": "byte-exact body (relocation-normalized diff 1048/1048) in prove obj 7a314f165021d846; prove harvest status draft with unproven helper/reference identities (appendArgument, lookup overloads, shared_ptr dtor, ehhandler)",
+      "evidence": "prove cache work/native-client/prove-cache/ae84fafdff3c72ed3986.json (draft_session durable packet e4423297...). Key fixes: wrapper native-flags /I{headers}/std-noinline-string to force imported c_str (was inlined), SignalDescriptor::getSignature inlined in App/include/reflection/signal.h to avoid out-of-line accessor calls in signal branch, enum branch prints enumItem->value (donor reads +0xc)."
+    }
+  ],
+  "notes": "Draft/upload only; not an integrated swap. Baseline commit unknown in this bootstrap checkout."
+}

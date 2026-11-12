@@ -1,0 +1,754 @@
+[
+  {
+    "source": "C:\\Users\\colin\\Documents\\Codex\\2026-11-11\\files-pasted-by-the-user-native\\RoConstruct-Native-cc18af53f49346ad832b0f3ad0407d60\\rebuild\\2008-06\\native-classes\\GuiDrawImage.cpp",
+    "object": "C:\\Users\\colin\\Documents\\Codex\\2026-11-11\\files-pasted-by-the-user-native\\RoConstruct-Native-cc18af53f49346ad832b0f3ad0407d60\\work\\2008-06\\native-check-runs\\20261111-192212-80bfc1c2\\unit-000\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "00642690",
+        "requested_symbol": "?getImageSize@GuiDrawImage@RBX@@QBE?AVVector2@G3D@@XZ",
+        "status": "exact",
+        "symbol": "?getImageSize@GuiDrawImage@RBX@@QBE?AVVector2@G3D@@XZ",
+        "score": 100,
+        "target_size": 87,
+        "object_size": 87,
+        "target_sha256": "fc790ce4dcec85323ed524645cc9af3975c0bfd84f0f321c9dfb0fb77eb7cfd3",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": false,
+          "calls": [
+            {
+              "offset": 45,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "import_evidence_inputs": {},
+          "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 2.578
+      },
+      {
+        "addr": "00642750",
+        "requested_symbol": "?setImage@GuiDrawImage@RBX@@QAE_NPAVAdorn@2@ABVTextureId@2@@Z",
+        "status": "exact",
+        "symbol": "?setImage@GuiDrawImage@RBX@@QAE_NPAVAdorn@2@ABVTextureId@2@@Z",
+        "score": 100,
+        "target_size": 1078,
+        "object_size": 1078,
+        "target_sha256": "b76797d16396991b2179ed8f5814bffc9a5150040d81dd7c1d5d891f40946b10",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8693824,
+            9
+          ],
+          [
+            8693816,
+            8
+          ],
+          [
+            8693808,
+            8
+          ]
+        ],
+        "data_errors": [],
+        "call_identity": {
+          "passed": false,
+          "calls": [
+            {
+              "offset": 44,
+              "target": "0055bd60",
+              "symbol": "??9RBX@@YA_NABVContentId@0@0@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 65,
+              "target": "0080240c",
+              "symbol": "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z",
+              "kind": "import",
+              "status": "verified_import"
+            },
+            {
+              "offset": 96,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 104,
+              "target": "0045ad90",
+              "symbol": "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 121,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 140,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 149,
+              "target": "0045ad90",
+              "symbol": "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 167,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 187,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 196,
+              "target": "0045ad90",
+              "symbol": "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 214,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 234,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 243,
+              "target": "0045ad90",
+              "symbol": "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 261,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 291,
+              "target": "006426f0",
+              "symbol": "?silentGetTextureProxyBase@RBX@@YA?AV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@PAVAdorn@1@ABVContentId@1@@Z",
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 315,
+              "target": "00598fa0",
+              "symbol": "?setPointer@?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@AAEXPAVTextureProxyBase@RBX@@@Z",
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 343,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 357,
+              "target": "0045ad90",
+              "symbol": "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 376,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 392,
+              "target": "0080245c",
+              "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+              "kind": "import",
+              "status": "verified_import"
+            },
+            {
+              "offset": 428,
+              "target": "008023e0",
+              "symbol": "__imp_?substr@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBE?AV12@II@Z",
+              "kind": "import",
+              "status": "verified_import"
+            },
+            {
+              "offset": 463,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 481,
+              "target": "00615440",
+              "symbol": "??0ContentId@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 503,
+              "target": "006426f0",
+              "symbol": "?silentGetTextureProxyBase@RBX@@YA?AV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@PAVAdorn@1@ABVContentId@1@@Z",
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 529,
+              "target": "00598fa0",
+              "symbol": "?setPointer@?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@AAEXPAVTextureProxyBase@RBX@@@Z",
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 553,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 567,
+              "target": "0045ad90",
+              "symbol": "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 586,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 608,
+              "target": "00802468",
+              "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "kind": "import",
+              "status": "verified_import"
+            },
+            {
+              "offset": 626,
+              "target": "00802468",
+              "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "kind": "import",
+              "status": "verified_import"
+            },
+            {
+              "offset": 647,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 665,
+              "target": "00615440",
+              "symbol": "??0ContentId@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 687,
+              "target": "006426f0",
+              "symbol": "?silentGetTextureProxyBase@RBX@@YA?AV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@PAVAdorn@1@ABVContentId@1@@Z",
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 713,
+              "target": "00598fa0",
+              "symbol": "?setPointer@?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@AAEXPAVTextureProxyBase@RBX@@@Z",
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 737,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 751,
+              "target": "0045ad90",
+              "symbol": "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 770,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 792,
+              "target": "00802468",
+              "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "kind": "import",
+              "status": "verified_import"
+            },
+            {
+              "offset": 810,
+              "target": "00802468",
+              "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "kind": "import",
+              "status": "verified_import"
+            },
+            {
+              "offset": 831,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 849,
+              "target": "00615440",
+              "symbol": "??0ContentId@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 871,
+              "target": "006426f0",
+              "symbol": "?silentGetTextureProxyBase@RBX@@YA?AV?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@PAVAdorn@1@ABVContentId@1@@Z",
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 897,
+              "target": "00598fa0",
+              "symbol": "?setPointer@?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@AAEXPAVTextureProxyBase@RBX@@@Z",
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 921,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 935,
+              "target": "0045ad90",
+              "symbol": "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 954,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 976,
+              "target": "00802468",
+              "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "kind": "import",
+              "status": "verified_import"
+            },
+            {
+              "offset": 994,
+              "target": "00802468",
+              "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "kind": "import",
+              "status": "verified_import"
+            },
+            {
+              "offset": 1012,
+              "target": "00802468",
+              "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "kind": "import",
+              "status": "verified_import"
+            },
+            {
+              "offset": 1033,
+              "target": "00802468",
+              "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "kind": "import",
+              "status": "verified_import"
+            }
+          ],
+          "unused_expectations": [],
+          "import_evidence_inputs": {
+            "C:\\Users\\colin\\Documents\\Codex\\2026-11-11\\files-pasted-by-the-user-native\\RoConstruct-Native-cc18af53f49346ad832b0f3ad0407d60\\clients\\2008-06\\Roblox.exe": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+            "C:\\Users\\colin\\Documents\\Codex\\2026-11-11\\files-pasted-by-the-user-native\\RoConstruct-Native-cc18af53f49346ad832b0f3ad0407d60\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\lib\\msvcrt.lib": "96602e3dd433237d178bd64d02de4efb8981e3c66a24535278b3897a2ac4f9e8",
+            "C:\\Users\\colin\\Documents\\Codex\\2026-11-11\\files-pasted-by-the-user-native\\RoConstruct-Native-cc18af53f49346ad832b0f3ad0407d60\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\lib\\msvcprt.lib": "6bedbd9c1bddf28a984a58e4548ffa9286f172e55fb5dd2af0b1a1a34d81b020",
+            "C:\\Users\\colin\\Documents\\Codex\\2026-11-11\\files-pasted-by-the-user-native\\RoConstruct-Native-cc18af53f49346ad832b0f3ad0407d60\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Lib\\Kernel32.Lib": "5c76cde0da4a277962316070b966e0829d35df93d5b54d79d81f964e56cd4819"
+          },
+          "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.422
+      },
+      {
+        "addr": "00642b90",
+        "requested_symbol": "?setImageFromName@GuiDrawImage@RBX@@AAEXPAVAdorn@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "status": "exact",
+        "symbol": "?setImageFromName@GuiDrawImage@RBX@@AAEXPAVAdorn@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+        "score": 100,
+        "target_size": 248,
+        "object_size": 248,
+        "target_sha256": "b535c92493369f4600dedf304432e7bbb75660f6d4c325f95e580a19e2b67754",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8631488,
+            10
+          ],
+          [
+            8631480,
+            5
+          ]
+        ],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [
+            {
+              "offset": 45,
+              "target": "00802368",
+              "symbol": "__imp_??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBDABV10@@Z",
+              "kind": "import",
+              "status": "verified_import"
+            },
+            {
+              "offset": 73,
+              "target": "008023e4",
+              "symbol": "__imp_??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z",
+              "kind": "import",
+              "status": "verified_import"
+            },
+            {
+              "offset": 93,
+              "target": "0055c500",
+              "symbol": "?fromAssets@ContentId@RBX@@SA?AV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 113,
+              "target": "00802468",
+              "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "kind": "import",
+              "status": "verified_import"
+            },
+            {
+              "offset": 131,
+              "target": "00802468",
+              "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "kind": "import",
+              "status": "verified_import"
+            },
+            {
+              "offset": 146,
+              "target": "0080245c",
+              "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+              "kind": "import",
+              "status": "verified_import"
+            },
+            {
+              "offset": 183,
+              "target": "00642750",
+              "symbol": "?setImage@GuiDrawImage@RBX@@QAE_NPAVAdorn@2@ABVTextureId@2@@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 200,
+              "target": "00802468",
+              "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "kind": "import",
+              "status": "verified_import"
+            },
+            {
+              "offset": 221,
+              "target": "00802468",
+              "symbol": "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "kind": "import",
+              "status": "verified_import"
+            }
+          ],
+          "unused_expectations": [],
+          "import_evidence_inputs": {
+            "C:\\Users\\colin\\Documents\\Codex\\2026-11-11\\files-pasted-by-the-user-native\\RoConstruct-Native-cc18af53f49346ad832b0f3ad0407d60\\clients\\2008-06\\Roblox.exe": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+            "C:\\Users\\colin\\Documents\\Codex\\2026-11-11\\files-pasted-by-the-user-native\\RoConstruct-Native-cc18af53f49346ad832b0f3ad0407d60\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\lib\\msvcrt.lib": "96602e3dd433237d178bd64d02de4efb8981e3c66a24535278b3897a2ac4f9e8",
+            "C:\\Users\\colin\\Documents\\Codex\\2026-11-11\\files-pasted-by-the-user-native\\RoConstruct-Native-cc18af53f49346ad832b0f3ad0407d60\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\lib\\msvcprt.lib": "6bedbd9c1bddf28a984a58e4548ffa9286f172e55fb5dd2af0b1a1a34d81b020",
+            "C:\\Users\\colin\\Documents\\Codex\\2026-11-11\\files-pasted-by-the-user-native\\RoConstruct-Native-cc18af53f49346ad832b0f3ad0407d60\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Lib\\Kernel32.Lib": "5c76cde0da4a277962316070b966e0829d35df93d5b54d79d81f964e56cd4819"
+          },
+          "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.219
+      },
+      {
+        "addr": "00642c90",
+        "requested_symbol": "?draw@GuiDrawImage@RBX@@AAEXPAVAdorn@2@V?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@ABVRect@2@ABVColor4@5@3@Z",
+        "status": "exact",
+        "symbol": "?draw@GuiDrawImage@RBX@@AAEXPAVAdorn@2@V?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@ABVRect@2@ABVColor4@5@3@Z",
+        "score": 100,
+        "target_size": 333,
+        "object_size": 333,
+        "target_sha256": "35b1dee003ec8e49b65b2db7ee82499b19ef4379daa618f379488c75048b587d",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": false,
+          "calls": [
+            {
+              "offset": 51,
+              "target": "004f35d0",
+              "symbol": "?xyxy@Rect2D@G3D@@SA?AV12@ABVVector2@2@0@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 84,
+              "target": "00598fa0",
+              "symbol": "?setPointer@?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@AAEXPAVTextureProxyBase@RBX@@@Z",
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 102,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 139,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 163,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 194,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 196,
+              "target": "007baf10",
+              "symbol": "?clear@Color4@G3D@@SAABV12@XZ",
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 202,
+              "target": "007baf10",
+              "symbol": "?clear@Color4@G3D@@SAABV12@XZ",
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 226,
+              "target": "00598fa0",
+              "symbol": "?setPointer@?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@AAEXPAVTextureProxyBase@RBX@@@Z",
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 234,
+              "target": "00642c90",
+              "symbol": "?draw@GuiDrawImage@RBX@@AAEXPAVAdorn@2@V?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@ABVRect@2@ABVColor4@5@3@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 256,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 278,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 292,
+              "target": "0045ad90",
+              "symbol": "?ReferenceCountedObject_zeroWeakPointers@ReferenceCountedObject@G3D@@QAEXXZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 311,
+              "target": null,
+              "symbol": null,
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "import_evidence_inputs": {},
+          "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.0
+      },
+      {
+        "addr": "00642de0",
+        "requested_symbol": "?render2d@GuiDrawImage@RBX@@QAEXPAVAdorn@2@_NAAVRect@2@W4WidgetState@Widget@2@@Z",
+        "status": "exact",
+        "symbol": "?render2d@GuiDrawImage@RBX@@QAEXPAVAdorn@2@_NAAVRect@2@W4WidgetState@Widget@2@@Z",
+        "score": 100,
+        "target_size": 292,
+        "object_size": 292,
+        "target_sha256": "55f924d1fb58fdc9791b3b406428edb4a83d34d0191c282c8bb6f288a4d6171f",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8493996,
+            4
+          ]
+        ],
+        "data_errors": [],
+        "call_identity": {
+          "passed": false,
+          "calls": [
+            {
+              "offset": 42,
+              "target": "007baf10",
+              "symbol": "?clear@Color4@G3D@@SAABV12@XZ",
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 78,
+              "target": "007baf10",
+              "symbol": "?clear@Color4@G3D@@SAABV12@XZ",
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 84,
+              "target": "007baf10",
+              "symbol": "?clear@Color4@G3D@@SAABV12@XZ",
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 122,
+              "target": "00514910",
+              "symbol": "?blue@Color3@G3D@@SAABV12@XZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 153,
+              "target": "007baf10",
+              "symbol": "?clear@Color4@G3D@@SAABV12@XZ",
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 180,
+              "target": "004f0820",
+              "symbol": "??0?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@QAE@ABV01@@Z",
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 192,
+              "target": "00642c90",
+              "symbol": "?draw@GuiDrawImage@RBX@@AAEXPAVAdorn@2@V?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@ABVRect@2@ABVColor4@5@3@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 204,
+              "target": "00514980",
+              "symbol": "?yellow@Color3@G3D@@SAABV12@XZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 235,
+              "target": "007baf10",
+              "symbol": "?clear@Color4@G3D@@SAABV12@XZ",
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 268,
+              "target": "00598fa0",
+              "symbol": "?setPointer@?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@AAEXPAVTextureProxyBase@RBX@@@Z",
+              "kind": "direct",
+              "status": "unresolved_or_wrong_binding"
+            },
+            {
+              "offset": 280,
+              "target": "00642c90",
+              "symbol": "?draw@GuiDrawImage@RBX@@AAEXPAVAdorn@2@V?$ReferenceCountedPointer@VTextureProxyBase@RBX@@@G3D@@ABVRect@2@ABVColor4@5@3@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "import_evidence_inputs": {},
+          "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.0
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  }
+]

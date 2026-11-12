@@ -1,0 +1,91 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?OnHookKeyDown@CXTPControlColorSelector@@EAEHIJ@Z",
+    "address": "006e93d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlPopupColor\\objects\\249c37bafa79c555\\candidate.obj": "9af50b39bb2041e11acc7ecda18325be6512b53d381a4ce2c588e1aeab70bfd1",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-0909sui5\\owners.json": "bc91bcbf29e937f02b03ff0cdc7fc36fedaa354156febf5146e968112e0133d3",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-0909sui5\\import-thunk-identities-as-owner.json": "ca72b2886caf5770db1c7f4ecb3323da6e6c3b30fa9c12981065a62083df00ff"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?HitTest@CXTPControlColorSelector@@ABEHVCPoint@@@Z",
+    "address": "006e9cf0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlPopupColor\\objects\\249c37bafa79c555\\candidate.obj": "9af50b39bb2041e11acc7ecda18325be6512b53d381a4ce2c588e1aeab70bfd1",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-0909sui5\\owners.json": "bc91bcbf29e937f02b03ff0cdc7fc36fedaa354156febf5146e968112e0133d3",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-0909sui5\\import-thunk-identities-as-owner.json": "ca72b2886caf5770db1c7f4ecb3323da6e6c3b30fa9c12981065a62083df00ff"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Draw@CXTPControlColorSelector@@MAEXPAVCDC@@@Z",
+    "address": "006e9d70"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlPopupColor\\objects\\249c37bafa79c555\\candidate.obj": "9af50b39bb2041e11acc7ecda18325be6512b53d381a4ce2c588e1aeab70bfd1",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-0909sui5\\owners.json": "bc91bcbf29e937f02b03ff0cdc7fc36fedaa354156febf5146e968112e0133d3",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-0909sui5\\import-thunk-identities-as-owner.json": "ca72b2886caf5770db1c7f4ecb3323da6e6c3b30fa9c12981065a62083df00ff"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?OnSetSelected@CXTPControlColorSelector@@MAEHH@Z",
+    "address": "006e9f20"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlPopupColor\\objects\\249c37bafa79c555\\candidate.obj": "9af50b39bb2041e11acc7ecda18325be6512b53d381a4ce2c588e1aeab70bfd1",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-0909sui5\\owners.json": "bc91bcbf29e937f02b03ff0cdc7fc36fedaa354156febf5146e968112e0133d3",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-0909sui5\\import-thunk-identities-as-owner.json": "ca72b2886caf5770db1c7f4ecb3323da6e6c3b30fa9c12981065a62083df00ff"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??__FextendedColors@@YAXXZ",
+    "address": "00801810"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlPopupColor\\objects\\249c37bafa79c555\\candidate.obj": "9af50b39bb2041e11acc7ecda18325be6512b53d381a4ce2c588e1aeab70bfd1",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-0909sui5\\owners.json": "bc91bcbf29e937f02b03ff0cdc7fc36fedaa354156febf5146e968112e0133d3",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-0909sui5\\import-thunk-identities-as-owner.json": "ca72b2886caf5770db1c7f4ecb3323da6e6c3b30fa9c12981065a62083df00ff"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??1CColorInfo@CXTPControlColorSelector@@QAE@XZ",
+   "address": "006e9360",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetItemCount@CXTPControlColorSelector@@ABEHXZ",
+   "address": "006e93c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetRect@CXTPControlColorSelector@@ABE?AVCRect@@H@Z",
+   "address": "006e9ca0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?KeyToLayout@CXTPDrawHelpers@@SAXPAVCWnd@@AAI@Z",
+   "address": "006f89c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetSelectedItem@CXTPControlColorSelector@@AAEXH@Z",
+   "address": "006e9380",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 5,
+ "owners_bound": 5
+}

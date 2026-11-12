@@ -1,0 +1,43 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?RefreshMetrics@CXTSplitterWndTheme@@UAEXXZ",
+    "address": "0078c2b0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTSplitterWndTheme\\objects\\bb952176003012a4\\candidate.obj": "d18bf3838e4e20d593ede54ac3cf7af8a57e636354b2e6ed94f81167606257c4",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-hr9gnica\\owners.json": "ee98f2b33226fc20422ef86a92b3c87c79d70a1945820b4053850723f1dee673",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-hr9gnica\\import-thunk-identities-as-owner.json": "cd85e672e0cd53afa3c8bb16e2446e421d31769474eb4a0905c6a250ac7fe519"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?RefreshMetrics@CXTSplitterWndThemeOffice2003@@UAEXXZ",
+    "address": "0078c2e0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTSplitterWndTheme\\objects\\bb952176003012a4\\candidate.obj": "d18bf3838e4e20d593ede54ac3cf7af8a57e636354b2e6ed94f81167606257c4",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-hr9gnica\\owners.json": "ee98f2b33226fc20422ef86a92b3c87c79d70a1945820b4053850723f1dee673",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-hr9gnica\\import-thunk-identities-as-owner.json": "cd85e672e0cd53afa3c8bb16e2446e421d31769474eb4a0905c6a250ac7fe519"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?RefreshMetrics@CXTSplitterWndThemeOfficeXP@@UAEXXZ",
+   "address": "0078c2d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?RefreshMetrics@CXTThemeManagerStyle@@UAEXXZ",
+   "address": "0047d410",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

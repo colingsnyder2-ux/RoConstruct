@@ -1,0 +1,109 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?_Insert_n@?$vector@GV?$allocator@G@std@@@std@@IAEXV?$_Vector_const_iterator@GV?$allocator@G@std@@@2@IABG@Z",
+    "address": "004dd480"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DBinaryInput\\objects\\f9af4e402d5e394e\\candidate.obj": "5d33ed3dcc915080ac137d1cd819ec4941fc93a0bb430fe9fe2bbb90c8fcfc21",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-jds92q19\\owners.json": "e6be819d55faba08109cc0520bd3b51e0f1d3701c052f517b6ab7f4543ebb27e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-jds92q19\\import-thunk-identities-as-owner.json": "d39dc39df1f9f247a93d06924cae6529247bf576c9e2efb7cf57380978582c0b"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?_Insert_n@?$vector@FV?$allocator@F@std@@@std@@IAEXV?$_Vector_const_iterator@FV?$allocator@F@std@@@2@IABF@Z",
+    "address": "004dd480"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DBinaryInput\\objects\\f9af4e402d5e394e\\candidate.obj": "5d33ed3dcc915080ac137d1cd819ec4941fc93a0bb430fe9fe2bbb90c8fcfc21",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-jds92q19\\owners.json": "e6be819d55faba08109cc0520bd3b51e0f1d3701c052f517b6ab7f4543ebb27e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-jds92q19\\import-thunk-identities-as-owner.json": "d39dc39df1f9f247a93d06924cae6529247bf576c9e2efb7cf57380978582c0b"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?resize@?$vector@NV?$allocator@N@std@@@std@@QAEXI@Z",
+    "address": "006217d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DBinaryInput\\objects\\f9af4e402d5e394e\\candidate.obj": "5d33ed3dcc915080ac137d1cd819ec4941fc93a0bb430fe9fe2bbb90c8fcfc21",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-jds92q19\\owners.json": "e6be819d55faba08109cc0520bd3b51e0f1d3701c052f517b6ab7f4543ebb27e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-jds92q19\\import-thunk-identities-as-owner.json": "d39dc39df1f9f247a93d06924cae6529247bf576c9e2efb7cf57380978582c0b"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??$_Allocate@F@std@@YAPAFIPAF@Z",
+   "address": "004dc480",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$_Allocate@G@std@@YAPAGIPAG@Z",
+   "address": "004dc480",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$_Umove@PAF@?$vector@FV?$allocator@F@std@@@std@@IAEPAFPAF00@Z",
+   "address": "004dd2b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$_Umove@PAG@?$vector@GV?$allocator@G@std@@@std@@IAEPAGPAG00@Z",
+   "address": "004dd2b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$_Unchecked_move_backward@PAFPAF@stdext@@YAPAFPAF00@Z",
+   "address": "004dca40",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$_Unchecked_move_backward@PAGPAG@stdext@@YAPAGPAG00@Z",
+   "address": "004dca40",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$fill@PAFF@std@@YAXPAF0ABF@Z",
+   "address": "004dca20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$fill@PAGG@std@@YAXPAG0ABG@Z",
+   "address": "004dca20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_Ufill@?$vector@FV?$allocator@F@std@@@std@@IAEPAFPAFIABF@Z",
+   "address": "004dd400",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_Ufill@?$vector@GV?$allocator@G@std@@@std@@IAEPAGPAGIABG@Z",
+   "address": "004dd400",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_Xlen@?$vector@FV?$allocator@F@std@@@std@@KAXXZ",
+   "address": "004c6d40",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_Xlen@?$vector@GV?$allocator@G@std@@@std@@KAXXZ",
+   "address": "004c6d40",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?resize@?$vector@NV?$allocator@N@std@@@std@@QAEXIN@Z",
+   "address": "006214e0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 3,
+ "owners_bound": 3
+}

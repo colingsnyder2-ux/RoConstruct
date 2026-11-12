@@ -1,0 +1,32 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??1RbxSky@Ogre@@UAE@XZ",
+    "address": "0067fb50"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-OgreRbxSky\\objects\\88c8af4859b0d528\\candidate.obj": "12503fd266359ec6b18967fff2c11d87d572019ed8a27ad0289c1372d780e97e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-upgjwvtx\\owners.json": "850f0a9e2c2c14b76db21d3a9062ab7a8b75fe8193e4a59d2fe31da3bf0970dd",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-upgjwvtx\\import-thunk-identities-as-owner.json": "06abd9575ef4720a92d9c68ada3e5a21430f9db80694532f7caa0b4fd538feff"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??_ERbxSky@Ogre@@UAEPAXI@Z",
+   "address": "0067fd40",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??1RbxSky@Ogre@@UAE@XZ",
+   "address": "007dd934",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

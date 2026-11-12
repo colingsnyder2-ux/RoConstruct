@@ -3,7 +3,8 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DCrypto | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src e57c19db | roc native-status --write
+// <<< native-status | src d77aa067 | roc native-status --write
+#line 1 ".\\G3Dcpp\\Crypto.cpp"
 /**
  @file Crypto.cpp
 

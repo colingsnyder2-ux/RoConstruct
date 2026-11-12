@@ -1,0 +1,123 @@
+[
+  {
+    "source": "C:\\Users\\colin\\Documents\\Codex\\2026-11-11\\files-pasted-by-the-user-native\\RoConstruct-Native-cc18af53f49346ad832b0f3ad0407d60\\rebuild\\2008-06\\native-classes\\ChatOutput.cpp",
+    "object": "C:\\Users\\colin\\Documents\\Codex\\2026-11-11\\files-pasted-by-the-user-native\\RoConstruct-Native-cc18af53f49346ad832b0f3ad0407d60\\work\\2008-06\\native-check-runs\\20261111-195039-ec95f978\\unit-000\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "00650560",
+        "requested_symbol": "??0ChatLine@RBX@@QAE@PAVPlayer@Network@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@M@Z",
+        "status": "exact",
+        "symbol": "??0ChatLine@RBX@@QAE@PAVPlayer@Network@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@M@Z",
+        "score": 100,
+        "target_size": 246,
+        "object_size": 246,
+        "target_sha256": "3d698c41e988159524130000204f9ef172e4cd9e180b68cefe0b29856cbb7090",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [
+            {
+              "offset": 39,
+              "target": "00802460",
+              "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "kind": "import",
+              "status": "verified_import"
+            },
+            {
+              "offset": 61,
+              "target": "0080245c",
+              "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+              "kind": "import",
+              "status": "verified_import"
+            },
+            {
+              "offset": 96,
+              "target": "0080240c",
+              "symbol": "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z",
+              "kind": "import",
+              "status": "verified_import"
+            },
+            {
+              "offset": 103,
+              "target": "0049ab50",
+              "symbol": "??$find@VTeams@RBX@@@ServiceProvider@RBX@@SAPAVTeams@1@PBVInstance@1@@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 119,
+              "target": "005d6070",
+              "symbol": "?isTeamGame@Teams@RBX@@QAE_NXZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 140,
+              "target": "005d5ea0",
+              "symbol": "?getTeamFromPlayer@Teams@RBX@@QAEPAVTeam@2@PAVPlayer@Network@2@@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 161,
+              "target": "00565e40",
+              "symbol": "?getTeamColor@Team@RBX@@QBE?AVBrickColor@2@XZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 168,
+              "target": "005b6270",
+              "symbol": "?color3@BrickColor@RBX@@QBE?AVColor3@G3D@@XZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 175,
+              "target": "005149f0",
+              "symbol": "?black@Color3@G3D@@SAABV12@XZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 182,
+              "target": "00514a60",
+              "symbol": "?white@Color3@G3D@@SAABV12@XZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 190,
+              "target": "00669f60",
+              "symbol": "?stringHash@RBX@@YAIABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 199,
+              "target": "0064f830",
+              "symbol": "?colorFromIndex8@Color@RBX@@SAABVColor3@G3D@@H@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "import_evidence_inputs": {
+            "C:\\Users\\colin\\Documents\\Codex\\2026-11-11\\files-pasted-by-the-user-native\\RoConstruct-Native-cc18af53f49346ad832b0f3ad0407d60\\clients\\2008-06\\Roblox.exe": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+            "C:\\Users\\colin\\Documents\\Codex\\2026-11-11\\files-pasted-by-the-user-native\\RoConstruct-Native-cc18af53f49346ad832b0f3ad0407d60\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\lib\\msvcrt.lib": "96602e3dd433237d178bd64d02de4efb8981e3c66a24535278b3897a2ac4f9e8",
+            "C:\\Users\\colin\\Documents\\Codex\\2026-11-11\\files-pasted-by-the-user-native\\RoConstruct-Native-cc18af53f49346ad832b0f3ad0407d60\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\lib\\msvcprt.lib": "6bedbd9c1bddf28a984a58e4548ffa9286f172e55fb5dd2af0b1a1a34d81b020",
+            "C:\\Users\\colin\\Documents\\Codex\\2026-11-11\\files-pasted-by-the-user-native\\RoConstruct-Native-cc18af53f49346ad832b0f3ad0407d60\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Lib\\Kernel32.Lib": "5c76cde0da4a277962316070b966e0829d35df93d5b54d79d81f964e56cd4819"
+          },
+          "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 3.016
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  }
+]

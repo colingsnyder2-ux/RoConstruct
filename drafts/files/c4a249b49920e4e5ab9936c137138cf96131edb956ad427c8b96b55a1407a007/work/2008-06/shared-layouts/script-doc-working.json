@@ -1,0 +1,119 @@
+{
+  "class": "CScriptDoc",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IG:\\Projects\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IG:\\Projects\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IG:\\Projects\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+  ],
+  "profile": "document-swap flags, no noinline edits",
+  "original_sha256": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_script_doc.py": "0f991e378b111451955d639cd30666ab5fbfbd9888466de0172593a6c3c810be",
+    "rebuild/2008-06/tests/native_bind.py": "628d095adf7a81a6c7bb82d302eae3e4e2b4f8d0c1b96736d12929ac7a17dff9",
+    "rebuild/2008-06/native-classes/CScriptDoc.cpp": "9d6fe02975abb2e7339ce86651287a698e142af6719a15d8f6244ffef30b6e41",
+    "rebuild/2008-06/tests/NativeScriptDocLayout.cpp": "ecf8393a4f6f893e03868e3a9fb4b3ed7d7aae56a575299d935e91fe72d79160",
+    "rebuild/2008-06/native-headers/CScriptDoc.h": "be7872663ecfa91666d4192fd15d1cf00d4eae1dbd161b284ab78bc8274cee34",
+    "rebuild/2008-06/native-headers/CBrowserDoc.h": "20edc757aa696f357f7c3bf3a9974e59ca92c144f05cd9ec65e466ab4c3969d2"
+  },
+  "object_sha256": "9905a94ee11864b0aa87763a2e1e2649a88a50f38eede4b49494becf96da0a43",
+  "layout": {
+    "size": "0x5c",
+    "bases": "CNullDoc +0 (0x54 == CDocument)",
+    "members": "boost::shared_ptr<RBX::Script> script +0x54",
+    "evidence": "RTTI of vtable 0081b2ac; CRuntimeClass 0081b1ec and CreateObject operator new(0x5c); CreateObject 004647b0 stores +0x54/+0x58; destructor 00464670 releases +0x58; compile-time sizeof/offsetof test"
+  },
+  "methods": [
+    {
+      "address": "004638a0",
+      "symbol": "?GetRuntimeClass@CScriptDoc@@UBEPAUCRuntimeClass@@XZ",
+      "size": 6,
+      "exact": true,
+      "verified_targets": {
+        "?classCScriptDoc@CScriptDoc@@2UCRuntimeClass@@B": "0x81b1ec"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004646f0",
+      "symbol": "??_GCScriptDoc@@UAEPAXI@Z",
+      "size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??1CScriptDoc@@UAE@XZ": "0x464670",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00464670",
+      "symbol": "??1CScriptDoc@@UAE@XZ",
+      "size": 119,
+      "exact": true,
+      "verified_targets": {
+        "??1CDocument@@UAE@XZ": "mfc90.dll!??1CDocument@@UAE@XZ"
+      },
+      "local_eh": [
+        "__ehhandler$??1CScriptDoc@@UAE@XZ"
+      ]
+    },
+    {
+      "address": "004647b0",
+      "symbol": "?CreateObject@CScriptDoc@@SGPAVCObject@@XZ",
+      "size": 114,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "mfc90.dll!??2@YAPAXI@Z",
+        "??0CDocument@@QAE@XZ": "mfc90.dll!??0CDocument@@QAE@XZ",
+        "??_7CScriptDoc@@6B@": "0x81b2ac (RTTI .?AVCScriptDoc@@, offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$?CreateObject@CScriptDoc@@SGPAVCObject@@XZ"
+      ]
+    }
+  ],
+  "notes": [
+    "CNullDoc constructor is now inline in shared CBrowserDoc.h; the duplicate local definition was removed from CScriptDoc.cpp. Original factories call CDocument::CDocument directly.",
+    "_GetBaseClass is the shared jump thunk 0040df90 (also used by CBrowserDoc), not a compiled body"
+  ],
+  "scope": "Inactive. 4 exact bodies with verified targets; all CScriptDoc-owned functions. No active build, swap or credit.",
+  "verification_driver": {
+    "path": "work/cnulldoc-guided-20261104/run_script_doc_regression.py",
+    "sha256": "f535cbd6f7b87644393567f6caee3b5f42ae032c152ed562f3b4c2d51e38d25d",
+    "adaptations": [
+      "Local include-root remap and hash-checked registered-client initialization.",
+      "Build outputs and initial receipt redirected to scratch."
+    ]
+  }
+}

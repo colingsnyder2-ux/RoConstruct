@@ -1,0 +1,85 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??1?$holder@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@any@boost@@UAE@XZ",
+    "address": "0041a8f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-ViewNewPartChunkRecovery2008\\objects\\7f863547741afe33\\candidate.obj": "72e74c07f355ab1aa309617c1e70b8382d80a1dcb9d8ff33953de998fabc5bef",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-why9cj_t\\owners.json": "296303a5f246d4f19b347c545851cc148f72f9224f3808722bf66f5c8b0ded90",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-why9cj_t\\import-thunk-identities-as-owner.json": "ac6f173bc363e32f7dbb44b357b1c35fa03eb3c624e47b8276b4a514a778b2fd"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1?$slot@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@XZ",
+    "address": "0049f710"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-ViewNewPartChunkRecovery2008\\objects\\7f863547741afe33\\candidate.obj": "72e74c07f355ab1aa309617c1e70b8382d80a1dcb9d8ff33953de998fabc5bef",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-why9cj_t\\owners.json": "296303a5f246d4f19b347c545851cc148f72f9224f3808722bf66f5c8b0ded90",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-why9cj_t\\import-thunk-identities-as-owner.json": "ac6f173bc363e32f7dbb44b357b1c35fa03eb3c624e47b8276b4a514a778b2fd"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$shared_from@VTexture@RBX@@@RBX@@YA?AV?$shared_ptr@VTexture@RBX@@@boost@@PAVTexture@0@@Z",
+    "address": "00618a40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-ViewNewPartChunkRecovery2008\\objects\\7f863547741afe33\\candidate.obj": "72e74c07f355ab1aa309617c1e70b8382d80a1dcb9d8ff33953de998fabc5bef",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-why9cj_t\\owners.json": "296303a5f246d4f19b347c545851cc148f72f9224f3808722bf66f5c8b0ded90",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-why9cj_t\\import-thunk-identities-as-owner.json": "ac6f173bc363e32f7dbb44b357b1c35fa03eb3c624e47b8276b4a514a778b2fd"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?connect@?$TSignalDesc@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@Z@Reflection@RBX@@QAE?AVconnection@signals@boost@@PAVSignalSource@23@ABV?$slot@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@6@H@Z",
+    "address": "0042b680"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-ViewNewPartChunkRecovery2008\\objects\\7f863547741afe33\\candidate.obj": "72e74c07f355ab1aa309617c1e70b8382d80a1dcb9d8ff33953de998fabc5bef",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-why9cj_t\\owners.json": "296303a5f246d4f19b347c545851cc148f72f9224f3808722bf66f5c8b0ded90",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-why9cj_t\\import-thunk-identities-as-owner.json": "ac6f173bc363e32f7dbb44b357b1c35fa03eb3c624e47b8276b4a514a778b2fd"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??$shared_static_cast@VTexture@RBX@@VInstance@2@@boost@@YA?AV?$shared_ptr@VTexture@RBX@@@0@ABV?$shared_ptr@VInstance@RBX@@@0@@Z",
+   "address": "004a2070",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?connect@?$signal1@XPBVPropertyDescriptor@Reflection@RBX@@U?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@5@@boost@@QAE?AVconnection@signals@2@ABHABV?$slot@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@2@W4connect_position@42@@Z",
+   "address": "0042b400",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?sig@?$TSignalDesc@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@Z@Reflection@RBX@@IBEAAVTSignalInstance@123@AAVSignalSource@23@@Z",
+   "address": "005875e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??$shared_from@VTexture@RBX@@@RBX@@YA?AV?$shared_ptr@VTexture@RBX@@@boost@@PAVTexture@0@@Z",
+   "address": "007c7bfb",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??1?$holder@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@any@boost@@UAE@XZ",
+   "address": "007d9898",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??1?$slot@V?$function@$$A6AXPBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@XZ",
+   "address": "007d0738",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 4,
+ "owners_bound": 4
+}

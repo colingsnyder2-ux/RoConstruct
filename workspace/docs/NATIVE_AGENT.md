@@ -109,6 +109,10 @@ Do not ask the user to find a ZIP. Use these actual published resources:
 - Package: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/data/native-worker.zip
 - Guide: https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/data/NATIVE_AGENT.md
 
+Always append a fresh `?t=<random>` to every one of these URLs (guide, manifest and zip) when fetching, on every platform: GitHub
+raw caches for minutes, and a cached manifest or zip is the usual cause of "unchanged" or missing-file reports. Compare the
+downloaded manifest's `sha256`/`source_revision` against the zip you actually received before trusting either.
+
 For an update, checkpoint/flush the old session first as described below. This
 Windows bootstrap reuses a verified cache or downloads once, checks SHA-256 and
 extracts into a fresh folder in the current authorized workspace:
@@ -148,7 +152,7 @@ if ($nativeCached) {
     Copy-Item -LiteralPath $nativeCached -Destination $nativeArchive
     Write-Output ('Reusing verified Worker ZIP: ' + $nativeCached)
 } else {
-    Invoke-WebRequest -UseBasicParsing -Uri ($nativeManifest.url + '?sha256=' + $nativeManifest.sha256) -OutFile $nativeArchive
+    Invoke-WebRequest -UseBasicParsing -Uri ($nativeManifest.url + '?sha256=' + $nativeManifest.sha256 + '&t=' + [guid]::NewGuid().ToString('N')) -OutFile $nativeArchive
 }
 if ((Get-FileHash -LiteralPath $nativeArchive -Algorithm SHA256).Hash -ne $nativeManifest.sha256) {
     throw 'Worker ZIP hash mismatch'
@@ -165,7 +169,7 @@ if ($nativeMarker.authority -ne 'RoConstruct/work/workspace' -or
     $nativeInventory.authority -ne $nativeMarker.authority -or
     $nativeMarker.revision -ne $nativeManifest.source_revision -or
     $nativeInventory.source_revision -ne $nativeMarker.revision) { throw 'Extracted Worker metadata mismatch' }
-foreach ($nativeRequired in @('roc/native_drafts.py', 'research/native-units.json', 'research/native-source-lock.json', 'rebuild/2008-06/tests/native_check_runner.py', 'work/native-client/prove.py', 'work/native-client/bootstrap_tools.py', 'work/native-client/data/identity-registry.json.gz')) {
+foreach ($nativeRequired in @('roc/native_drafts.py', 'research/native-units.json', 'research/native-source-lock.json', 'rebuild/2008-06/tests/native_check_runner.py', 'work/native-client/prove.py', 'work/native-client/bootstrap_tools.py', 'work/native-client/data/identity-registry.json.gz', 'work/native-client/audit_digest.py')) {
     if (-not (Test-Path -LiteralPath $nativeRequired -PathType Leaf)) { throw ('Missing Worker capability file: ' + $nativeRequired) }
 }
 Write-Output ('Package/source revision: ' + $nativeMarker.revision)
@@ -319,8 +323,35 @@ Use these instead of compiling by hand (each prints `--help`; run from the check
 - `python work/native-client/native_commit.py --path GLOB ...` takes the lease, writes the status banners and commits.
   Commit one finished family, or at most hourly; never per function. The tool refuses within 45 minutes of the last
   commit (`--force` overrides) and while a `prove.py --all` census runs (edits would void the census).
+- `python work/native-client/stop_stale_watchers.py` stops draft watchers idle for 2+ hours (each stop does a final checkpoint and
+  flush). Run it when the machine feels slow: dozens of old watchers each rescan the tree every 5 minutes.
+- Census speed: objects are reused per source. Adding a new `.cpp` no longer invalidates the cache (only includable header names
+  count); editing a shared header still recompiles every source that includes it, so batch header edits.
+- **Ignore the generated comments at the top of native files** (`// native-flags:`, `// 2008-06 native ...`, the
+  `// >>> native-status ... <<<` block, a leading `#line`). They are tool metadata, not code, and no step needs you to read,
+  write or fix them: banners are optional and never block a commit or a proof. Read code with
+  `python work/native-client/show_source.py FILE [--function NAME | --from N --to M]`, which hides them. Edit only below them,
+  and never delete the `// native-flags:` line (it selects the compiler flags).
 - Inferred fields, layouts and inline asm are allowed when the original source plausibly had them. Mark each
   `// INFERRED: <evidence>`; the proof reports inferred names separately from proven ones.
+
+## Hourly self-audit
+
+Set this up once per session, before recovery work. Use your own agent's scheduler on its own login; no CLI, API key or
+other provider is needed:
+
+- Claude Code: `/loop 60m Run work/native-client/AUDIT_PROMPT.md` (or the schedule tool with an hourly task).
+- Codex: create a recurring automation/task that runs every 60 minutes with the same prompt.
+- No scheduler available: at the start of each work step, run it if the newest file in `work/native-client/audit/` is
+  older than 60 minutes.
+
+Each run does `python work/native-client/audit_digest.py --write`, reads the digest (bytes/hour, time per tool, repeated
+command shapes, waste, tool health) and follows `work/native-client/AUDIT_PROMPT.md`: report the bytes/hour gain, turn
+repeated manual steps into one `.py` tool, speed up the slowest step, and try evidence-backed inferences
+(`// INFERRED: <evidence>`), and critique its own habits (polling, re-reads, throwaway scripts, scope drift, tool overlap) to
+cut waste and tooling. The digest's first line is `STATE: ACTIVE` or `STATE: IDLE`; when it is IDLE (no tool call for 45
+minutes, the task ended) the run must cancel its own schedule and stop. It must not skip leases, commit cadence, or the
+no-`__emit`/no-byte-blob rules.
 
 ## Scope: RbxApp only
 

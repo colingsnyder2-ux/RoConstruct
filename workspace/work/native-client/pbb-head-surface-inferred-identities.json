@@ -1,0 +1,23 @@
+{
+ "scope": "INFERRED PBB and HeadMesh identities",
+ "rows": [
+  {
+   "symbol": "??0PBBMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@VRenderSurfaceTypes@12@@Z",
+   "address": "004f4cb0",
+   "inferred_name": true,
+   "evidence": "INFERRED: byte-exact constructor and independently matched PBB factory caller / RTTI"
+  },
+  {
+   "symbol": "?shadowsEnabled@RBX@@3_NA",
+   "address": "0096de64",
+   "inferred_name": true,
+   "evidence": "INFERRED: original 004f4cb0 directly tests this flag; descriptive name follows donor ViewBase accessor"
+  },
+  {
+   "symbol": "??0HeadMesh@ViewNew@RBX@@QAE@ABVVector3@G3D@@W4NormalId@2@@Z",
+   "address": "00500350",
+   "inferred_name": true,
+   "evidence": "INFERRED constructor identity: unique byte-exact candidate; HeadMesh createDecal at 004ef71a calls it and RTTI confirms class."
+  }
+ ]
+}

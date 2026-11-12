@@ -1,0 +1,11 @@
+{
+ "scope": "Inferred image-loader helper spelling, not original symbol proof",
+ "rows": [
+  {
+   "symbol": "?loadTexture@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAVImage@Ogre@@@Z",
+   "address": "007adfb0",
+   "inferred_name": true,
+   "evidence": "INFERRED spelling from exact1016B image loader donor; native TextureProxy caller and unique body establish address; real Ogre/G3D/StandardOut headers."
+  }
+ ]
+}

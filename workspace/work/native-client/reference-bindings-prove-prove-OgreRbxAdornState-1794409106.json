@@ -1,0 +1,27 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??0?$vector@VVector3@Ogre@@V?$allocator@VVector3@Ogre@@@std@@@std@@QAE@XZ",
+    "address": "004293d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-OgreRbxAdornState\\objects\\2ecd03fe005a50bb\\candidate.obj": "4bc62efb360f90f78b85e51e06db5d95f0106b76081af397027469ce545e64f2",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u7zoke3a\\owners.json": "25483dd85bd6a439873954c7f36c552645ac85a41646d1b4c5d4cf81af7510a7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u7zoke3a\\import-thunk-identities-as-owner.json": "9c8301b5f183465841b8ee7c1d5183aea3ba53efda704ade0c44c399261d9375"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "__ehhandler$??0?$vector@VVector3@Ogre@@V?$allocator@VVector3@Ogre@@@std@@@std@@QAE@XZ",
+   "address": "007d72e8",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

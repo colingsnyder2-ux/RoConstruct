@@ -1,0 +1,64 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?GetThisClass@CXTPControlPopup@@SGPAUCRuntimeClass@@XZ",
+    "address": "006e73d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlPopup\\objects\\28788241fcfe909c\\candidate.obj": "231f0748a4b98689bb07f3fac82ba3a26bbbf1ed2b01eaa9ba16b6ec382ebe41",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-qfptwos2\\owners.json": "62ab75e627177eaddf865b1f0dd3707df4916942050d4ad832001d1223302763",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-qfptwos2\\import-thunk-identities-as-owner.json": "9f0f0c1d70300035e121abb6c5d8caa560637c13c557b407adf5702836f1fcf3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?UpdateShadow@CXTPControlPopup@@MAEXXZ",
+    "address": "006e76b0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlPopup\\objects\\28788241fcfe909c\\candidate.obj": "231f0748a4b98689bb07f3fac82ba3a26bbbf1ed2b01eaa9ba16b6ec382ebe41",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-qfptwos2\\owners.json": "62ab75e627177eaddf865b1f0dd3707df4916942050d4ad832001d1223302763",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-qfptwos2\\import-thunk-identities-as-owner.json": "9f0f0c1d70300035e121abb6c5d8caa560637c13c557b407adf5702836f1fcf3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?CreateControlPopup@CXTPControlPopup@@SAPAV1@W4XTPControlType@@@Z",
+    "address": "006e7b40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlPopup\\objects\\28788241fcfe909c\\candidate.obj": "231f0748a4b98689bb07f3fac82ba3a26bbbf1ed2b01eaa9ba16b6ec382ebe41",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-qfptwos2\\owners.json": "62ab75e627177eaddf865b1f0dd3707df4916942050d4ad832001d1223302763",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-qfptwos2\\import-thunk-identities-as-owner.json": "9f0f0c1d70300035e121abb6c5d8caa560637c13c557b407adf5702836f1fcf3"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?CreateObject@CXTPControlPopup@@SGPAVCObject@@XZ",
+   "address": "006e7aa0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetShadow@CXTPShadowsManager@@QAEXPAVCXTPControlPopup@@@Z",
+   "address": "0076ddf0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?XTPShadowsManager@@YAPAVCXTPShadowsManager@@XZ",
+   "address": "0076d2e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_GetBaseClass@CXTPControlPopup@@KGPAUCRuntimeClass@@XZ",
+   "address": "006e9260",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 3,
+ "owners_bound": 3
+}

@@ -1,0 +1,32 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?Serialize@?$CArray@PAUHKL__@@AAPAU1@@@UAEXAAVCArchive@@@Z",
+    "address": "006e34d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPShortcutManager\\objects\\16232eea714575aa\\candidate.obj": "2f95fc06e2e60518085ff58c8a43b36f6f4979523c21b6b7d3618062c9222568",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-h5oumhsy\\owners.json": "f78784e4e066fff1426fb9ab91d85a49e9a6df290749c1828fb2798aff42e47a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-h5oumhsy\\import-thunk-identities-as-owner.json": "bea639f121c4757170e2090fd2f84c99f57c43c59e289cf892ade1abdfa4910a"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??$SerializeElements@PAUHKL__@@@@YGXAAVCArchive@@PAPAUHKL__@@H@Z",
+   "address": "00787550",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetSize@?$CArray@PAUHKL__@@AAPAU1@@@QAEXHH@Z",
+   "address": "0070e1d0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

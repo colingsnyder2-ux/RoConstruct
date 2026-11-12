@@ -1,0 +1,1115 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?GetThisClass@CXTPEdit@@SGPAUCRuntimeClass@@XZ",
+    "address": "006a67c0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\owners.json": "cc9774068f135a0905f225ada600d21cb69b801a1b5c82ec3515a912d90ce829",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\import-thunk-identities-as-owner.json": "93af59732c088ddda0299c7687bb6ed38fa2876fe10ca9cb7f9546eb2a1d79e7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0CXTPControlComboBoxAutoCompleteWnd@@QAE@XZ",
+    "address": "006a6970"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\owners.json": "cc9774068f135a0905f225ada600d21cb69b801a1b5c82ec3515a912d90ce829",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\import-thunk-identities-as-owner.json": "93af59732c088ddda0299c7687bb6ed38fa2876fe10ca9cb7f9546eb2a1d79e7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?IsDialogCode@CXTPControlComboBoxAutoCompleteWnd@@QAEHIJ@Z",
+    "address": "006a6990"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\owners.json": "cc9774068f135a0905f225ada600d21cb69b801a1b5c82ec3515a912d90ce829",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\import-thunk-identities-as-owner.json": "93af59732c088ddda0299c7687bb6ed38fa2876fe10ca9cb7f9546eb2a1d79e7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?CloseWindow@CXTPControlComboBoxAutoCompleteWnd@@QAEXXZ",
+    "address": "006a6a70"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\owners.json": "cc9774068f135a0905f225ada600d21cb69b801a1b5c82ec3515a912d90ce829",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\import-thunk-identities-as-owner.json": "93af59732c088ddda0299c7687bb6ed38fa2876fe10ca9cb7f9546eb2a1d79e7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?_GetEditText@CXTPControlComboBox@@IBE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ",
+    "address": "006a7ae0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\owners.json": "cc9774068f135a0905f225ada600d21cb69b801a1b5c82ec3515a912d90ce829",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\import-thunk-identities-as-owner.json": "93af59732c088ddda0299c7687bb6ed38fa2876fe10ca9cb7f9546eb2a1d79e7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Compare@CXTPControlComboBox@@UAEHPAVCXTPControl@@@Z",
+    "address": "006a6e40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\owners.json": "cc9774068f135a0905f225ada600d21cb69b801a1b5c82ec3515a912d90ce829",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\import-thunk-identities-as-owner.json": "93af59732c088ddda0299c7687bb6ed38fa2876fe10ca9cb7f9546eb2a1d79e7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0CXTPControlComboBoxPopupBar@@QAE@XZ",
+    "address": "006a6ea0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\owners.json": "cc9774068f135a0905f225ada600d21cb69b801a1b5c82ec3515a912d90ce829",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\import-thunk-identities-as-owner.json": "93af59732c088ddda0299c7687bb6ed38fa2876fe10ca9cb7f9546eb2a1d79e7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0CXTPControlComboBoxList@@QAE@XZ",
+    "address": "006a6fb0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\owners.json": "cc9774068f135a0905f225ada600d21cb69b801a1b5c82ec3515a912d90ce829",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\import-thunk-identities-as-owner.json": "93af59732c088ddda0299c7687bb6ed38fa2876fe10ca9cb7f9546eb2a1d79e7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?CreateListBox@CXTPControlComboBoxList@@MAEXXZ",
+    "address": "006a8730"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\owners.json": "cc9774068f135a0905f225ada600d21cb69b801a1b5c82ec3515a912d90ce829",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\import-thunk-identities-as-owner.json": "93af59732c088ddda0299c7687bb6ed38fa2876fe10ca9cb7f9546eb2a1d79e7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?ProcessHookKeyDown@CXTPControlComboBoxList@@MAEHPAVCXTPControlComboBox@@IJ@Z",
+    "address": "006a8950"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\owners.json": "cc9774068f135a0905f225ada600d21cb69b801a1b5c82ec3515a912d90ce829",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\import-thunk-identities-as-owner.json": "93af59732c088ddda0299c7687bb6ed38fa2876fe10ca9cb7f9546eb2a1d79e7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?OnMouseMove@CXTPControlComboBoxList@@IAEXIVCPoint@@@Z",
+    "address": "006a7150"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\owners.json": "cc9774068f135a0905f225ada600d21cb69b801a1b5c82ec3515a912d90ce829",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\import-thunk-identities-as-owner.json": "93af59732c088ddda0299c7687bb6ed38fa2876fe10ca9cb7f9546eb2a1d79e7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Popup@CXTPControlComboBoxList@@MAEHPAVCXTPControlPopup@@H@Z",
+    "address": "006a8a80"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\owners.json": "cc9774068f135a0905f225ada600d21cb69b801a1b5c82ec3515a912d90ce829",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\import-thunk-identities-as-owner.json": "93af59732c088ddda0299c7687bb6ed38fa2876fe10ca9cb7f9546eb2a1d79e7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?OnDestroy@CXTPControlComboBoxEditCtrl@@IAEXXZ",
+    "address": "006a7230"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\owners.json": "cc9774068f135a0905f225ada600d21cb69b801a1b5c82ec3515a912d90ce829",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\import-thunk-identities-as-owner.json": "93af59732c088ddda0299c7687bb6ed38fa2876fe10ca9cb7f9546eb2a1d79e7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?OnMouseMove@CXTPControlComboBoxEditCtrl@@IAEXIVCPoint@@@Z",
+    "address": "006a8dc0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\owners.json": "cc9774068f135a0905f225ada600d21cb69b801a1b5c82ec3515a912d90ce829",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\import-thunk-identities-as-owner.json": "93af59732c088ddda0299c7687bb6ed38fa2876fe10ca9cb7f9546eb2a1d79e7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?DeflateEditRect@CXTPControlComboBox@@MAEXAAVCRect@@@Z",
+    "address": "006a7270"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\owners.json": "cc9774068f135a0905f225ada600d21cb69b801a1b5c82ec3515a912d90ce829",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\import-thunk-identities-as-owner.json": "93af59732c088ddda0299c7687bb6ed38fa2876fe10ca9cb7f9546eb2a1d79e7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?GetCurSel@CXTPControlComboBoxList@@MBEHXZ",
+    "address": "006a73c0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\owners.json": "cc9774068f135a0905f225ada600d21cb69b801a1b5c82ec3515a912d90ce829",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\import-thunk-identities-as-owner.json": "93af59732c088ddda0299c7687bb6ed38fa2876fe10ca9cb7f9546eb2a1d79e7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?FindString@CXTPControlComboBoxList@@MBEHHPBD@Z",
+    "address": "006a73e0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\owners.json": "cc9774068f135a0905f225ada600d21cb69b801a1b5c82ec3515a912d90ce829",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\import-thunk-identities-as-owner.json": "93af59732c088ddda0299c7687bb6ed38fa2876fe10ca9cb7f9546eb2a1d79e7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?FindStringExact@CXTPControlComboBoxList@@MBEHHPBD@Z",
+    "address": "006a7410"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\owners.json": "cc9774068f135a0905f225ada600d21cb69b801a1b5c82ec3515a912d90ce829",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\import-thunk-identities-as-owner.json": "93af59732c088ddda0299c7687bb6ed38fa2876fe10ca9cb7f9546eb2a1d79e7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?SetCurSel@CXTPControlComboBoxList@@MAEXH@Z",
+    "address": "006a7460"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\owners.json": "cc9774068f135a0905f225ada600d21cb69b801a1b5c82ec3515a912d90ce829",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\import-thunk-identities-as-owner.json": "93af59732c088ddda0299c7687bb6ed38fa2876fe10ca9cb7f9546eb2a1d79e7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?CreateEdit@CXTPEdit@@UAEHKPAVCWnd@@@Z",
+    "address": "006a78a0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\owners.json": "cc9774068f135a0905f225ada600d21cb69b801a1b5c82ec3515a912d90ce829",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\import-thunk-identities-as-owner.json": "93af59732c088ddda0299c7687bb6ed38fa2876fe10ca9cb7f9546eb2a1d79e7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?GetComboBoxPopupBar@CXTPControlComboBox@@QBEPAVCXTPControlComboBoxPopupBar@@XZ",
+    "address": "006a81e0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\owners.json": "cc9774068f135a0905f225ada600d21cb69b801a1b5c82ec3515a912d90ce829",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\import-thunk-identities-as-owner.json": "93af59732c088ddda0299c7687bb6ed38fa2876fe10ca9cb7f9546eb2a1d79e7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?OnSetPopup@CXTPControlComboBox@@MAEHH@Z",
+    "address": "006a8280"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\owners.json": "cc9774068f135a0905f225ada600d21cb69b801a1b5c82ec3515a912d90ce829",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\import-thunk-identities-as-owner.json": "93af59732c088ddda0299c7687bb6ed38fa2876fe10ca9cb7f9546eb2a1d79e7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?OnExecute@CXTPControlComboBox@@UAEXXZ",
+    "address": "006a8320"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\owners.json": "cc9774068f135a0905f225ada600d21cb69b801a1b5c82ec3515a912d90ce829",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\import-thunk-identities-as-owner.json": "93af59732c088ddda0299c7687bb6ed38fa2876fe10ca9cb7f9546eb2a1d79e7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?SetAutoCompeteHandle@CXTPControlComboBoxAutoCompleteWnd@@AAEXPAUHWND__@@@Z",
+    "address": "006a9460"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\owners.json": "cc9774068f135a0905f225ada600d21cb69b801a1b5c82ec3515a912d90ce829",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\import-thunk-identities-as-owner.json": "93af59732c088ddda0299c7687bb6ed38fa2876fe10ca9cb7f9546eb2a1d79e7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?SetFocused@CXTPControlComboBox@@UAEXH@Z",
+    "address": "006aa150"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\owners.json": "cc9774068f135a0905f225ada600d21cb69b801a1b5c82ec3515a912d90ce829",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\import-thunk-identities-as-owner.json": "93af59732c088ddda0299c7687bb6ed38fa2876fe10ca9cb7f9546eb2a1d79e7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?GetListIconId@CXTPControlComboBox@@QBEHXZ",
+    "address": "006aa3e0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\owners.json": "cc9774068f135a0905f225ada600d21cb69b801a1b5c82ec3515a912d90ce829",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\import-thunk-identities-as-owner.json": "93af59732c088ddda0299c7687bb6ed38fa2876fe10ca9cb7f9546eb2a1d79e7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?SetupMessageHook@CXTPControlComboBoxAutoCompleteWnd@@QAEXH@Z",
+    "address": "006aa660"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\owners.json": "cc9774068f135a0905f225ada600d21cb69b801a1b5c82ec3515a912d90ce829",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\import-thunk-identities-as-owner.json": "93af59732c088ddda0299c7687bb6ed38fa2876fe10ca9cb7f9546eb2a1d79e7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?OnHookMouseWheel@CXTPControlComboBox@@MAEHIFVCPoint@@@Z",
+    "address": "006aa730"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\owners.json": "cc9774068f135a0905f225ada600d21cb69b801a1b5c82ec3515a912d90ce829",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\import-thunk-identities-as-owner.json": "93af59732c088ddda0299c7687bb6ed38fa2876fe10ca9cb7f9546eb2a1d79e7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?OnHookKeyDown@CXTPControlComboBox@@MAEHIJ@Z",
+    "address": "006aa790"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\owners.json": "cc9774068f135a0905f225ada600d21cb69b801a1b5c82ec3515a912d90ce829",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x0qwpcdk\\import-thunk-identities-as-owner.json": "93af59732c088ddda0299c7687bb6ed38fa2876fe10ca9cb7f9546eb2a1d79e7"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??0CXTPHookManagerHookAble@@QAE@XZ",
+   "address": "0071c2a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??0CXTPPopupBar@@IAE@XZ",
+   "address": "006f16c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECXTPControlComboBoxAutoCompleteWnd@@UAEPAXI@Z",
+   "address": "006aad40",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECXTPControlComboBoxList@@UAEPAXI@Z",
+   "address": "0079b7d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECXTPControlComboBoxList@@WFE@AEPAXI@Z",
+   "address": "0079ee40",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECXTPControlComboBoxList@@WFM@AEPAXI@Z",
+   "address": "0079a960",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECXTPControlComboBoxPopupBar@@UAEPAXI@Z",
+   "address": "0079b7d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECXTPControlComboBoxPopupBar@@WFE@AEPAXI@Z",
+   "address": "0079ee40",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECXTPControlComboBoxPopupBar@@WFM@AEPAXI@Z",
+   "address": "0079a960",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?AccessibleDoDefaultAction@CXTPAccessible@@UAEJUtagVARIANT@@@Z",
+   "address": "00709ee0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?AccessibleHitTest@CXTPCommandBar@@MAEJJJPAUtagVARIANT@@@Z",
+   "address": "006b6b10",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?AccessibleLocation@CXTPCommandBar@@MAEJPAJ000UtagVARIANT@@@Z",
+   "address": "006b6a30",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?AccessibleNavigate@CXTPAccessible@@UAEJJUtagVARIANT@@PAU2@@Z",
+   "address": "006e8890",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?AccessibleSelect@CXTPAccessible@@UAEJJUtagVARIANT@@@Z",
+   "address": "006e88a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?AddTrustedWindow@CXTPMouseManager@@QAEXPAUHWND__@@@Z",
+   "address": "0071d770",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?AdjustExcludeRect@CXTPPopupBar@@MAEXAAVCRect@@H@Z",
+   "address": "006ee400",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?CalcDynamicLayout@CXTPPopupBar@@MAE?AVCSize@@HK@Z",
+   "address": "006eef20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?CalculatePopupRect@CXTPPopupBar@@MAE?AVCRect@@VCSize@@@Z",
+   "address": "006f0e80",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?CallWndProc@CXTPControlComboBoxAutoCompleteWnd@@CGJHIJ@Z",
+   "address": "006a94c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Clone@CXTPControlComboBoxList@@UAEPAVCXTPCommandBar@@H@Z",
+   "address": "006a8700",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Clone@CXTPControlComboBoxPopupBar@@UAEPAVCXTPCommandBar@@H@Z",
+   "address": "006a8570",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Compare@CXTPControlPopup@@MAEHPAVCXTPControl@@@Z",
+   "address": "006e7990",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Copy@CXTPControlComboBoxList@@MAEXPAVCXTPCommandBar@@H@Z",
+   "address": "006a8e10",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Copy@CXTPPopupBar@@MAEXPAVCXTPCommandBar@@H@Z",
+   "address": "006ee660",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Create@CEdit@@QAEHKABUtagRECT@@PAVCWnd@@I@Z",
+   "address": "007bc010",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Create@CWnd@@UAEHPBD0KABUtagRECT@@PAV1@IPAUCCreateContext@@@Z",
+   "address": "006a06f2",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Create@CXTPPopupBar@@EAEHPBD0KABUtagRECT@@PAVCWnd@@IPAUCCreateContext@@@Z",
+   "address": "00760640",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?CreateKeyboardTips@CXTPCommandBar@@UAEXXZ",
+   "address": "006a41e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?CreateObject@CXTPEdit@@SGPAVCObject@@XZ",
+   "address": "006a93e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DelayRedraw@CXTPPopupBar@@MAEXXZ",
+   "address": "006a6ef0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DestroyWindow@CXTPPopupBar@@UAEHXZ",
+   "address": "006f0600",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DoPropExchange@CXTPControlComboBoxList@@MAEXPAVCXTPPropExchange@@@Z",
+   "address": "006a8f00",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DoPropExchange@CXTPPopupBar@@MAEXPAVCXTPPropExchange@@@Z",
+   "address": "006e2b00",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawCommandBar@CXTPControlComboBoxList@@MAEXPAVCDC@@VCRect@@@Z",
+   "address": "006a71c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawCommandBar@CXTPPopupBar@@MAEXPAVCDC@@VCRect@@@Z",
+   "address": "006f0960",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawItem@CXTPControlComboBoxList@@MAEXPAUtagDRAWITEMSTRUCT@@@Z",
+   "address": "006a7010",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?EnableWindow@CWnd@@QAEHH@Z",
+   "address": "006a0d16",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?EnsureVisible@CXTPCommandBar@@UAEXPAVCXTPControl@@@Z",
+   "address": "0070bdf0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?FillCommandBarEntry@CXTPCommandBar@@UAEXPAVCDC@@@Z",
+   "address": "006b5d30",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?FindString@CXTPControlComboBoxPopupBar@@UBEHHPBD@Z",
+   "address": "006a6f20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?FindStringExact@CXTPControlComboBoxPopupBar@@UBEHHPBD@Z",
+   "address": "006a6f20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GenerateCommandBarList@CXTPCommandBar@@MAEXAAKPAVCXTPCommandBarList@@PAUXTP_COMMANDBARS_PROPEXCHANGE_PARAM@@@Z",
+   "address": "006e3ce0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetAccessible@CXTPCommandBar@@MAEPAVCCmdTarget@@XZ",
+   "address": "006b50f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetAccessibleChild@CXTPCommandBar@@MAEJUtagVARIANT@@PAPAUIDispatch@@@Z",
+   "address": "006b67d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetAccessibleChildCount@CXTPCommandBar@@MAEJPAJ@Z",
+   "address": "006b67b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetAccessibleDefaultAction@CXTPAccessible@@UAEJUtagVARIANT@@PAPA_W@Z",
+   "address": "006e88a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetAccessibleDescription@CXTPAccessible@@UAEJUtagVARIANT@@PAPA_W@Z",
+   "address": "006e88a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetAccessibleFocus@CXTPAccessible@@UAEJPAUtagVARIANT@@@Z",
+   "address": "006e8870",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetAccessibleHelp@CXTPAccessible@@UAEJUtagVARIANT@@PAPA_W@Z",
+   "address": "006e88a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetAccessibleHelpTopic@CXTPAccessible@@UAEJPAPA_WUtagVARIANT@@PAJ@Z",
+   "address": "006e8890",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetAccessibleKeyboardShortcut@CXTPAccessible@@UAEJUtagVARIANT@@PAPA_W@Z",
+   "address": "006e88a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetAccessibleName@CXTPCommandBar@@MAEJUtagVARIANT@@PAPA_W@Z",
+   "address": "006b6820",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetAccessibleParent@CXTPCommandBar@@MAEJPAPAUIDispatch@@@Z",
+   "address": "006b6730",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetAccessibleRole@CXTPCommandBar@@MAEJUtagVARIANT@@PAU2@@Z",
+   "address": "006b5100",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetAccessibleSelection@CXTPAccessible@@UAEJPAUtagVARIANT@@@Z",
+   "address": "006e8870",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetAccessibleState@CXTPCommandBar@@MAEJUtagVARIANT@@PAU2@@Z",
+   "address": "006b69b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetAccessibleValue@CXTPAccessible@@UAEJUtagVARIANT@@PAPA_W@Z",
+   "address": "006e88a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetBorders@CXTPPopupBar@@MAE?AVCRect@@XZ",
+   "address": "006ee290",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetButtonSize@CXTPCommandBar@@UBE?AVCSize@@XZ",
+   "address": "006c3d50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetCurSel@CXTPControlComboBox@@QBEHXZ",
+   "address": "006a8200",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetCurSel@CXTPControlComboBoxPopupBar@@UBEHXZ",
+   "address": "006a6f10",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetDroppedState@CXTPControlComboBox@@QBEHXZ",
+   "address": "006a6e80",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetHeight@CXTPImageManagerIcon@@QBEHXZ",
+   "address": "006b9a60",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetIconSize@CXTPCommandBar@@UBE?AVCSize@@XZ",
+   "address": "006c3b20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetImage@CXTPImageManager@@QBEPAVCXTPImageManagerIcon@@IH@Z",
+   "address": "006c0550",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetImageManager@CXTPCommandBar@@QBEPAVCXTPImageManager@@XZ",
+   "address": "006b4f50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetInterfaceMap@CXTPCommandBar@@MBEPBUAFX_INTERFACEMAP@@XZ",
+   "address": "006b5280",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetListBoxCtrl@CXTPControlComboBoxList@@IBEPAVCListBox@@XZ",
+   "address": "007188c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetMessageMap@CXTPControlComboBoxList@@MBEPBUAFX_MSGMAP@@XZ",
+   "address": "006aaca0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetMessageMap@CXTPPopupBar@@MBEPBUAFX_MSGMAP@@XZ",
+   "address": "006f1900",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetPaintManager@CXTPCommandBar@@QBEPAVCXTPPaintManager@@XZ",
+   "address": "006b4ed0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetParentCommandBar@CXTPPopupBar@@MBEPAVCXTPCommandBar@@XZ",
+   "address": "006ee590",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetRichEditContext@CXTPEdit@@IAEAAVCRichEditContext@1@XZ",
+   "address": "006a74a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetRuntimeClass@CXTPControlComboBoxList@@UBEPAUCRuntimeClass@@XZ",
+   "address": "006a7000",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetRuntimeClass@CXTPControlComboBoxPopupBar@@UBEPAUCRuntimeClass@@XZ",
+   "address": "006a6e90",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetSite@CXTPCommandBar@@QBEPAVCWnd@@XZ",
+   "address": "006b79c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetText@CXTPControlComboBoxList@@MBEXHAAV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+   "address": "006a7480",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetText@CXTPControlComboBoxPopupBar@@UBEXHAAV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+   "address": "00458e90",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetThisClass@CXTPControlComboBox@@SGPAUCRuntimeClass@@XZ",
+   "address": "006a6ab0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetThisClass@CXTPControlComboBoxPopupBar@@SGPAUCRuntimeClass@@XZ",
+   "address": "006a6e90",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetWidth@CXTPImageManagerIcon@@QBEHXZ",
+   "address": "006fa5a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetWindowTextEx@CXTPEdit@@QAEXAAV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+   "address": "006a6880",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?IsCustomizable@CXTPCommandBar@@UBEHXZ",
+   "address": "006a6ee0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?IsCustomizable@CXTPControlComboBoxList@@MBEHXZ",
+   "address": "00416690",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?IsDialogBar@CXTPCommandBar@@UBEHXZ",
+   "address": "00416690",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?IsDialogCode@CXTPEdit@@QAEHIJ@Z",
+   "address": "006a67d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?IsKeyboardCuesVisible@CXTPCommandBar@@UBEHXZ",
+   "address": "006a2b00",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?IsLayoutRTL@CXTPCommandBars@@QBEHXZ",
+   "address": "006a2c10",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?IsPopupBar@CXTPPopupBar@@UBEHXZ",
+   "address": "007286a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?IsResizable@CXTPPopupBar@@UBEHXZ",
+   "address": "006a6f00",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?IsRibbonBar@CXTPCommandBar@@UBEHXZ",
+   "address": "00416690",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?IsValidList@CXTPControlComboBox@@IBEHXZ",
+   "address": "006aa140",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?IsVisible@CXTPPopupBar@@UBEHXZ",
+   "address": "006ee7d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?ItemFromPoint@CListBox@@QBEIVCPoint@@AAH@Z",
+   "address": "007bbff8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?LoadMenuA@CXTPCommandBar@@UAEHPAVCMenu@@H@Z",
+   "address": "006b5ac0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?LoadToolBar@CXTPCommandBar@@UAEHIH@Z",
+   "address": "006c26f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?MeasureItem@CXTPControlComboBoxList@@MAEXPAUtagMEASUREITEMSTRUCT@@@Z",
+   "address": "006a7030",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?ModifyStyleEx@CWnd@@QAEHKKI@Z",
+   "address": "006a0c38",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?NotifySite@CXTPControl@@QAEJI@Z",
+   "address": "006ad740",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnControlSelected@CXTPCommandBar@@UAEXHPAVCXTPControl@@@Z",
+   "address": "006b8530",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnControlsChanged@CXTPPopupBar@@MAEXXZ",
+   "address": "006ee270",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnCustomizeDragEnter@CXTPCommandBar@@UAEKPAVCXTPControl@@VCPoint@@@Z",
+   "address": "006b6170",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnCustomizeDragLeave@CXTPCommandBar@@UAEXXZ",
+   "address": "006b61a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnCustomizeDragOver@CXTPCommandBar@@UAEKPAVCXTPControl@@VCPoint@@@Z",
+   "address": "006b7a70",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnCustomizeDrop@CXTPCommandBar@@UAEXPAVCXTPControl@@AAKVCPoint@@2@Z",
+   "address": "006b7ba0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnDestroy@CWnd@@IAEXXZ",
+   "address": "006a107c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnExecute@CXTPControl@@UAEXXZ",
+   "address": "006ad7b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnFinalRelease@CXTPCommandBar@@UAEXXZ",
+   "address": "00756960",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnHookKeyDown@CXTPControlComboBoxList@@MAEHIJ@Z",
+   "address": "006a70c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnHookKeyDown@CXTPControlComboBoxPopupBar@@UAEHIJ@Z",
+   "address": "006a6f40",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnHookMessage@CXTPCommandBar@@UAEHPAUHWND__@@IAAIAAJ2@Z",
+   "address": "006b76d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnHookMessage@CXTPControlComboBoxAutoCompleteWnd@@EAEHPAUHWND__@@IAAIAAJ2@Z",
+   "address": "006a6a90",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnHookMessage@CXTPControlComboBoxList@@MAEHPAUHWND__@@IAAIAAJ2@Z",
+   "address": "006a7050",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnIdleUpdateCmdUI@CXTPCommandBar@@UAEJIJ@Z",
+   "address": "006b8930",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnKeyboardTip@CXTPCommandBar@@UAEXPAVCXTPCommandBarKeyboardTip@@@Z",
+   "address": "006b5b40",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnMouseHitTest@CXTPCommandBar@@MAEHVCPoint@@@Z",
+   "address": "006b6600",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnMouseMove@CXTPCommandBar@@QAEXIVCPoint@@@Z",
+   "address": "006b5720",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnMouseMove@CXTPPopupBar@@IAEXIVCPoint@@@Z",
+   "address": "006f0770",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnPopupRButtonUp@CXTPCommandBar@@UAEXPAV1@VCPoint@@@Z",
+   "address": "006ad2a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnRecalcLayout@CXTPPopupBar@@MAEXXZ",
+   "address": "006eeaf0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnRemoved@CXTPCommandBar@@MAEXXZ",
+   "address": "006b6d30",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnSetPopup@CXTPControlPopup@@MAEHH@Z",
+   "address": "006e7e60",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnToolHitTest@CXTPCommandBar@@UBEHVCPoint@@PAUtagTOOLINFOA@@@Z",
+   "address": "006c2980",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnTrackEnter@CXTPCommandBar@@UAEXXZ",
+   "address": "006b4b20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnTrackLost@CXTPCommandBar@@UAEXXZ",
+   "address": "006b4be0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnWndMsg@CXTPCommandBar@@UAEHIIJPAJ@Z",
+   "address": "006b5250",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Popup@CXTPPopupBar@@UAEHPAVCXTPControlPopup@@H@Z",
+   "address": "006f1340",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?PreviewAccel@CXTPCommandBar@@UAEHI@Z",
+   "address": "005f2310",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?ProcessHookKeyDown@CXTPControlComboBoxPopupBar@@UAEHPAVCXTPControlComboBox@@IJ@Z",
+   "address": "006a85a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?ProcessSpecialKey@CXTPCommandBar@@MAEHW4XTPSpecialKey@@@Z",
+   "address": "006b6fd0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?PutAccessibleName@CXTPAccessible@@UAEJUtagVARIANT@@PA_W@Z",
+   "address": "006e88a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?PutAccessibleValue@CXTPAccessible@@UAEJUtagVARIANT@@PA_W@Z",
+   "address": "006e88a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Redraw@CXTPCommandBar@@UAEXPBUtagRECT@@H@Z",
+   "address": "006b4c20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?RemoveTrustedWindow@CXTPMouseManager@@QAEXPAUHWND__@@@Z",
+   "address": "0071d1f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?RestoreCommandBarList@CXTPCommandBar@@MAEXPAVCXTPCommandBarList@@@Z",
+   "address": "006e3f90",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetCurSel@CXTPControlComboBox@@QAEXH@Z",
+   "address": "006a8230",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetCurSel@CXTPControlComboBoxPopupBar@@UAEXH@Z",
+   "address": "0070bdf0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetEditText@CXTPControlComboBox@@QAEXABV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+   "address": "006a96f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetPosition@CXTPCommandBar@@UAEHW4XTPBarPosition@@@Z",
+   "address": "005f2310",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetSelected@CXTPPopupBar@@MAEHHH@Z",
+   "address": "006f0b20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetTopIndex@CXTPControlComboBoxList@@MAEHH@Z",
+   "address": "006a7440",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetTopIndex@CXTPControlComboBoxPopupBar@@UAEHH@Z",
+   "address": "006a6f30",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetTrackingMode@CXTPControlComboBoxList@@MAEHHHH@Z",
+   "address": "006aa2c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetTrackingMode@CXTPPopupBar@@MAEHHHH@Z",
+   "address": "006f06a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetVisible@CXTPCommandBar@@UAEXH@Z",
+   "address": "0070bdf0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?UpdateFlags@CXTPPopupBar@@MAEXXZ",
+   "address": "006ef9a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?UpdateLocation@CXTPPopupBar@@IAEXVCSize@@@Z",
+   "address": "006ef320",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?UpdateShortcuts@CXTPCommandBar@@MAEXXZ",
+   "address": "006ee2f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_GetBaseClass@CXTPEdit@@KGPAUCRuntimeClass@@XZ",
+   "address": "0074d250",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__GetCurrentThreadId@0",
+   "address": "00802198",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__GetWindow@8",
+   "address": "00802dfc",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__IsDialogMessageA@8",
+   "address": "00802c6c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__MapWindowPoints@16",
+   "address": "00802c64",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__SetWindowLongA@12",
+   "address": "00802dd8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__SetWindowsHookExA@16",
+   "address": "00802bd8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__ShowWindow@8",
+   "address": "00802cbc",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__UnhookWindowsHookEx@4",
+   "address": "00802c58",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 29,
+ "owners_bound": 29
+}

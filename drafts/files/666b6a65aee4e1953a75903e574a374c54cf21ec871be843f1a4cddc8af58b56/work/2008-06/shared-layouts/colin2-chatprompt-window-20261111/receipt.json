@@ -1,0 +1,11 @@
+{
+  "scope": "Preexisting window methods verified after authentic header restoration",
+  "primary_receipt": "work\\2008-06\\shared-layouts\\colin2-chatprompt-20261111\\receipt.json",
+  "source_unchanged": true,
+  "parked": [
+    {
+      "address": "00411640",
+      "reason": "Existing OnCreate: XTP GetRegularFont null-fallback differs;118 original vs139 candidate; first divergence49. Preserve source; shared vendor/header version issue."
+    }
+  ]
+}

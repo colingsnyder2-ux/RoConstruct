@@ -1,0 +1,2093 @@
+{
+  "class": "RBX ChangeHistoryService and RootInstance units of the application range 00588000..00594000 (2008-06), inactive",
+  "compiler": "VS2008 RTM 21022",
+  "flags": {
+    "root": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit588-2008/NativeAppUnit588_2008_root.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit588_2008RootInstance.cpp"
+    ],
+    "history": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit588-2008/NativeAppUnit588_2008_history.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit588_2008ChangeHistory.cpp"
+    ]
+  },
+  "pending_flags": {
+    "root": [
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/part-embedded",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/DNATIVE_APPUNIT588_PENDING",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit588-2008/NativeAppUnit588_2008_root_pending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit588_2008RootInstance.cpp"
+    ],
+    "history": [
+      "/I/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit588-2008/pending-history",
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/U_RELEASEASSERT",
+      "/DNATIVE_APPUNIT588_PENDING",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit588-2008/NativeAppUnit588_2008_history_pending.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit588_2008ChangeHistory.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/native-classes/AppUnit588_2008RootInstance.cpp": "6e083c425f6fd756cdf75288e5ca127d95984d4d87938e32726da4c1f42d2da7",
+    "rebuild/2008-06/native-classes/AppUnit588_2008ChangeHistory.cpp": "4c0c550e7ee5c735a36aa11d6a7a6968b45671cbec54c53eeaab7ec9df71adf8",
+    "rebuild/2008-06/tests/record_native_app_unit588_2008.py": "609f05726055b014f6a736286723da280674aa024e27b3e020804f6a0dac1bf5",
+    "rebuild/2008-06/native-headers/v8datamodel/RootInstance.h": "c11395d8b365e9b05e12e3e8da34e9633c5a73e3cb08eeb52848285819ac4693",
+    "rebuild/2008-06/native-headers/v8datamodel/ModelInstance.h": "26d0b60ee3ed3b13750c4770f8219eec819b2efb922ec6a18345a5ab3e22ed21",
+    "rebuild/2008-06/native-headers/v8datamodel/ChangeHistoryService.h": "3896e01f4b96244f244820f2cf2a81986fc200e7c868c197fc344f63946b2322",
+    "rebuild/2008-06/native-headers/v8datamodel/HistoryRecord.h": "f36d0b4e4fc4dd69fc27275d9ea6874e98d5d3649180204f60f24571eea24b1d",
+    "rebuild/2008-06/tests/NativeChangeHistoryLayout.cpp": "a2a33d8545ae463b186587fbdf6a42028a6b12e4ddcb0a01c0dfcb52107bfb28"
+  },
+  "objects": {
+    "root": "f88996bc25e9c739fd01ad95f77aaea192793821b718adb1c8702eed8eaeaf8a",
+    "history": "853b90c50bedfd21e599d0121347df9fc91ceb2a3e0802202b44051781b603df"
+  },
+  "unit_map": {
+    "change-history ..0058c91f (pass 2, built here)": "AppUnit588_2008ChangeHistory.cpp (/fp:fast /U_RELEASEASSERT) against the read-only native v8datamodel/ChangeHistoryService.h / HistoryRecord.h: 54 counted rows (HistoryItem / HistoryRecord / ChangeHistoryService members, their map / list / deque / signal / bind instantiations, the Described classDescriptor 0058a2a0 and DescribedCreatable ctor 0058a8d0). Not counted: 00588240 for_each and its callers HistoryItem::play 00588440, HistoryRecord::unplay 0058a040, merge 0058bcb0 (pending-build-only, HistoryRecord.h proposal); start 0058c620 (bytes exact, slot ctors 0058aa30 / 0058aae0 not reproduced); support rows 00588190 / 00589210 / 0058a310 / 0058be50 (exact against the image bytes, BOUNDS: analysis extent includes or omits a catch funclet / jmp thunk); 00588f00 boost::function ctor; 005893b0, 005897e0, 00589c40 (vector<Value> helpers), 00589d60 / 00589ed0 and 0058ad20..0058b220, 0058b630, 0058bb40, 0058c540 (the 2008 BoundFuncDesc / Tuple reflection functions, static initializer 007f3fxx); 0058b1b0 (holder<Tuple>::type); 0058c5e0. Earlier notes: ChangeHistoryService.cpp: the unit starts before 00588000 (00587eb0, 730 B, ends 00588192). Strings \"ChangeHistoryService is currently ...\" 00588780 / 0058a130, create<ChangeHistoryService> 0058a2a0 and FactoryProduct ctor 0058a8d0 (change-history-factory-working.json), ChangeHistoryService() 0058ab90, leaf virtuals 0058aca0..0058ad10, BoundFuncDesc / UTuple holder instantiations 0058adc0..0058c3c0, members 0058c4f0..0058c620 and the static initializer 0058c8b0 (\"ChangeHistoryService.enabled\"). Matched bodies for many rows exist in change-history-layout-working.json and the history-* trials (method lists without exact flags, so not counted); their sources belong to the ChangeHistory* native-class owners and are not rebuilt here. Counted by camera-history-trial.json: 0058a9e0, 0058c5c0.",
+    "xml-serializer 0058c920..0059001f (42 rows from 0058c990)": "XmlSerializer.cpp (native v8xml/XmlSerializer.h owner): 0058c920 (string-holding name/value ctor, callers TextXmlWriterWithEmbeddedContent::serializeNode 0058f270 and 00591970), isCloseTag 0058c990, endsWithClose, TextXmlParser skipWhitespace / readTag / removeTag / findNextToken / parse 0058f6c0 (\"TextXmlParser::parse empty file\"), base64 / istreambuf_iterator helpers 0058d4b0..0058d900, TextXmlWriter serialize 0058e810 / writeOpenTag 0058eb10 / serializeNode 0058ecb0 / encodedWrite 0058e4a0, XmlParser() 0058f230, TextXmlWriterWithEmbeddedContent::serializeNode 0058f270, XmlWriter() 0058fff0. Not built here.",
+    "root-instance 00590020..005917bb (39 rows from 00590030)": "RootInstance.cpp: 00590020 (5 B jmp ~ModelInstance 00584790, called only from the RootInstance unwind funclets 007d1b83 / 007d1c7b) .. RootInstance() 00591580 (572 B, ends 005917bb); vtables 00831c64..00831d4c (RTTI .?AVRootInstance@RBX@@, 34 bases, ICameraOwner at +0x288), ~RootInstance 00590630, deleting dtor 005a0910 (placed in the Workspace range, only reached through the vtable thunks). Built here: 30 counted rows, including ServiceProvider::create<StarterPackService / Teams / Lighting>(const Instance*) 00590d80 / 00590dd0 / 00590e20 (create<T>(const Instance*) defined in the unit, Service.h proposal). Shared STL COMDATs emitted here (00590390 _Destroy_range, 005903d0 _Destroy, 005903f0 for_each, 00590500 _Tidy, 00590550 ~vector<weak_ptr<PartInstance>>) are library templates called from other units: 005903f0 / 00590550 are support rows, the others are not counted. Not counted: vtordisp thunk 005907e0 (jmp 00584b10, an adjustor in the ModelInstance unit: which getPrimaryPart thunk it is cannot be told apart), insertSpawnLocation 005910a0 (pending-build-only), insertInstances 005911d0 (2008 shape), RootInstance() 00591580 (World size).",
+    "serializer-v2 005917c0..00593baf (40 rows)": "SerializerV2.cpp (metadata-load/v8xml/SerializerV2.h owner): map<string, InstanceHandle> tree helpers 005917c0..00591930 (first caller 00591e60), IDREFBinding list helpers 005919f0 / 00591e00, the xmlns writer 00591a30 (\"xmlns:xmime\"), replaceHandles 00591c60 / isolate 00591d30, ArchiveBinder resolveRefs 00592720 / ArchiveBinder() 00592940 / processID 005930c0 / processIDREF 00593170 / ~ArchiveBinder 005931e0, buildIsolationMap 00592780, 00593250 (\"Unknown object class\"), isolateHandles 00593480, load 00593500, loadXML 00593570, load(istream) 00593730 (\"SerializerV2::load can't read\"). Not built here.",
+    "lua-thread-ref 00593bb0.. (11 rows below 00594000)": "Lua ThreadRef / FunctionRef unit (LuaBridge2008 owner): ThreadRef::removeRef 00593bb0, FunctionRef::removeRef 00593c60, lua_pushfunction 00593c40, ThreadRef::Node::get 00593cb0, shared_count<mutex> 00593d90, ThreadRef ctors 00593e40 / 00593f70; continues past 00594000 (reset 00594060, ~ThreadRef 00594380). Not built here.",
+    "library code": "No standalone library unit lies in 00588000..00594000. The STL / boost template instantiations listed above (map/set trees, list, vector helpers, istreambuf_iterator, base64, sp_counted_impl_p) are instantiated by the RBX units they sit in; only those the built RootInstance unit references are bound, as support rows."
+  },
+  "range_rows_counted_by_other_receipts": {
+    "0058a9e0": [
+      "camera-history-trial.json"
+    ],
+    "0058c5c0": [
+      "camera-history-trial.json"
+    ]
+  },
+  "rows": {
+    "root": [
+      {
+        "address": "00590030",
+        "symbol": "?setInsertPoint@RootInstance@RBX@@QAEXABVVector3@G3D@@@Z",
+        "size": 57,
+        "target_size": 57,
+        "exact": true,
+        "verified_targets": {
+          "?toGrid@Dragger@RBX@@SA?AVVector3@G3D@@ABV34@@Z": "0x60fea0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00590070",
+        "symbol": "?moveSafe@RootInstance@RBX@@AAEXAAVMegaDragger@2@VVector3@G3D@@W4MoveType@12@@Z",
+        "size": 91,
+        "target_size": 91,
+        "exact": true,
+        "verified_targets": {
+          "?startDragging@MegaDragger@RBX@@QAEXXZ": "0x60de00 (external (evidence name))",
+          "?alignAndCleanParts@MegaDragger@RBX@@QAEXXZ": "0x60df80 (external (evidence name))",
+          "?safeMoveYDrop@MegaDragger@RBX@@QAE?AVVector3@G3D@@ABV34@@Z": "0x60e100 (external (evidence name))",
+          "?finishDragging@MegaDragger@RBX@@QAEXXZ": "0x60e780 (external (evidence name))",
+          "?safeMoveNoDrop@MegaDragger@RBX@@QAE?AVVector3@G3D@@ABV34@@Z": "0x60e180 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005900d0",
+        "symbol": "?moveSafe@RootInstance@RBX@@AAEXAAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@VVector3@G3D@@W4MoveType@12@@Z",
+        "size": 133,
+        "target_size": 133,
+        "exact": true,
+        "verified_targets": {
+          "??0MegaDragger@RBX@@QAE@PAVPartInstance@1@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@PAVRootInstance@1@@Z": "0x60e630 (external (evidence name))",
+          "?moveSafe@RootInstance@RBX@@AAEXAAVMegaDragger@2@VVector3@G3D@@W4MoveType@12@@Z": "0x590070 (own row)",
+          "??1MegaDragger@RBX@@QAE@XZ": "0x60e700 (external (evidence name))"
+        },
+        "local_eh": [
+          "__ehhandler$?moveSafe@RootInstance@RBX@@AAEXAAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@VVector3@G3D@@W4MoveType@12@@Z"
+        ]
+      },
+      {
+        "address": "00590160",
+        "symbol": "?onDescendentAdded@RootInstance@RBX@@MAEXPAVInstance@2@@Z",
+        "size": 24,
+        "target_size": 24,
+        "exact": true,
+        "verified_targets": {
+          "?onDescendentAdded@ModelInstance@RBX@@MAEXPAVInstance@2@@Z": "0x584620 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00590180",
+        "symbol": "?onDescendentRemoving@RootInstance@RBX@@MAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+        "size": 12,
+        "target_size": 12,
+        "exact": true,
+        "verified_targets": {
+          "?onDescendentRemoving@ModelInstance@RBX@@MAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x584670 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00590190",
+        "symbol": "?computeIdeInsertPoint@RootInstance@RBX@@ABE?AVVector3@G3D@@XZ",
+        "size": 167,
+        "target_size": 167,
+        "exact": true,
+        "verified_targets": {
+          "?clamp@Vector3@G3D@@QBE?AV12@ABV12@0@Z": "0x4a6100 (external (evidence name))",
+          "?toGrid@Dragger@RBX@@SA?AVVector3@G3D@@ABV34@@Z": "0x60fea0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00590240",
+        "symbol": "?moveToIdeInsertPoint@RootInstance@RBX@@AAEXAAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z",
+        "size": 177,
+        "target_size": 177,
+        "exact": true,
+        "verified_targets": {
+          "?computeExtents@DragUtilities@RBX@@SA?AVExtents@2@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z": "0x60f2d0 (external (evidence name))",
+          "?computeIdeInsertPoint@RootInstance@RBX@@ABE?AVVector3@G3D@@XZ": "0x590190 (own row)",
+          "__real@3f000000": "0x819bac (constant 3f000000)",
+          "?toGrid@Dragger@RBX@@SA?AVVector3@G3D@@ABV34@@Z": "0x60fea0 (external (evidence name))",
+          "?moveSafe@RootInstance@RBX@@AAEXAAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@VVector3@G3D@@W4MoveType@12@@Z": "0x5900d0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00590300",
+        "symbol": "?computeControllersUsed@RootInstance@RBX@@ABE?AVControllerTypeArray@2@XZ",
+        "size": 144,
+        "target_size": 144,
+        "exact": true,
+        "verified_targets": {
+          "?numChildren@Instance@RBX@@QBEIXZ": "0x48ae20 (external (evidence name))",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??_R0?AVPVInstance@RBX@@@8": "0x947f1c (RTTI type .?AVPVInstance@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI type .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00590440",
+        "symbol": "?insertRaw@RootInstance@RBX@@AAEXABV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@PAVInstance@2@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@4@@Z",
+        "size": 185,
+        "target_size": 185,
+        "exact": true,
+        "verified_targets": {
+          "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0 (external (evidence name))",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??$for_each@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@V?$bind_t@XV?$mf1@XVInstance@RBX@@PAV12@@_mfi@boost@@V?$list2@V?$arg@$00@boost@@V?$value@PAVInstance@RBX@@@_bi@2@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XVInstance@RBX@@PAV12@@_mfi@boost@@V?$list2@V?$arg@$00@boost@@V?$value@PAVInstance@RBX@@@_bi@2@@_bi@3@@_bi@boost@@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@0@0V123@@Z": "0x5903f0 (support body exact at the bound address)",
+          "?findParts@PartInstance@RBX@@SAXPAVInstance@2@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z": "0x59c640 (external (evidence name))",
+          "?join@DragUtilities@RBX@@SAXABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z": "0x60ed40 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005905c0",
+        "symbol": "??0ICameraOwner@RBX@@QAE@XZ",
+        "size": 81,
+        "target_size": 81,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
+        },
+        "local_eh": [
+          "__ehhandler$??0ICameraOwner@RBX@@QAE@XZ"
+        ]
+      },
+      {
+        "address": "00590620",
+        "symbol": "??1ICameraOwner@RBX@@UAE@XZ",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??1?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": "0x590550 (support body exact at the bound address)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00590630",
+        "symbol": "??1RootInstance@RBX@@MAE@XZ",
+        "size": 336,
+        "target_size": 336,
+        "exact": true,
+        "verified_targets": {
+          "??_7RootInstance@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x831d4c (vtable (RTTI .?AVRootInstance@RBX@@, offset 0x0))",
+          "??_7RootInstance@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x831d40 (vtable (RTTI .?AVRootInstance@RBX@@, offset 0x10))",
+          "??_7RootInstance@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x831d38 (vtable (RTTI .?AVRootInstance@RBX@@, offset 0x14))",
+          "??_7RootInstance@RBX@@6BDebugable@1@@": "0x831d30 (vtable (RTTI .?AVRootInstance@RBX@@, offset 0x20))",
+          "??_7RootInstance@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x831d20 (vtable (RTTI .?AVRootInstance@RBX@@, offset 0x24))",
+          "??_7RootInstance@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x831d10 (vtable (RTTI .?AVRootInstance@RBX@@, offset 0x44))",
+          "??_7RootInstance@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x831d00 (vtable (RTTI .?AVRootInstance@RBX@@, offset 0x64))",
+          "??_7RootInstance@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x831cf0 (vtable (RTTI .?AVRootInstance@RBX@@, offset 0x84))",
+          "??_7RootInstance@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x831ce0 (vtable (RTTI .?AVRootInstance@RBX@@, offset 0xa4))",
+          "??_7RootInstance@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x831cd0 (vtable (RTTI .?AVRootInstance@RBX@@, offset 0xc4))",
+          "??_7RootInstance@RBX@@6BIControllable@1@@": "0x831cc4 (vtable (RTTI .?AVRootInstance@RBX@@, offset 0x130))",
+          "??_7RootInstance@RBX@@6B?$Described@VRootInstance@RBX@@$1?sRootInstance@2@3PADAVModelInstance@2@@Reflection@1@@": "0x831cac (vtable (RTTI .?AVRootInstance@RBX@@, offset 0x1a0))",
+          "??_7RootInstance@RBX@@6BICameraOwner@1@@": "0x831c94 (vtable (RTTI .?AVRootInstance@RBX@@, offset 0x288))",
+          "??_7RootInstance@RBX@@6BIPrimaryPart@1@@": "0x831c88 (vtable (RTTI .?AVRootInstance@RBX@@, offset 0x2ec))",
+          "??_7RootInstance@RBX@@6BILocation@1@@": "0x831c80 (vtable (RTTI .?AVRootInstance@RBX@@, offset 0x2f4))",
+          "??_7RootInstance@RBX@@6BICameraSubject@1@@": "0x831c64 (vtable (RTTI .?AVRootInstance@RBX@@, offset 0x2fc))",
+          "??1?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": "0x590550 (support body exact at the bound address)",
+          "??1ModelInstance@RBX@@UAE@XZ": "0x584790 (external (evidence name))"
+        },
+        "local_eh": [
+          "__ehhandler$??1RootInstance@RBX@@MAE@XZ"
+        ]
+      },
+      {
+        "address": "00590780",
+        "symbol": "??_ERootInstance@RBX@@OBE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_ERootInstance@RBX@@MAEPAXI@Z": "0x5a0910 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00590790",
+        "symbol": "?getCameraIgnorePrimitives@ModelInstance@RBX@@$4PPPPPPPM@GA@AEXAAV?$vector@PBVPrimitive@RBX@@V?$allocator@PBVPrimitive@RBX@@@std@@@std@@@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "?getCameraIgnorePrimitives@ModelInstance@RBX@@UAEXAAV?$vector@PBVPrimitive@RBX@@V?$allocator@PBVPrimitive@RBX@@@std@@@std@@@Z": "0x583570 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005907a0",
+        "symbol": "??_ERootInstance@RBX@@OCE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_ERootInstance@RBX@@MAEPAXI@Z": "0x5a0910 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005907b0",
+        "symbol": "??_ERootInstance@RBX@@OEE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {
+          "??_ERootInstance@RBX@@MAEPAXI@Z": "0x5a0910 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005907c0",
+        "symbol": "?onCameraNear@ModelInstance@RBX@@$4PPPPPPPM@GA@AEXM@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "?onCameraNear@ModelInstance@RBX@@UAEXM@Z": "0x5843c0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005907d0",
+        "symbol": "?getLocation@ModelInstance@RBX@@$4PPPPPPPM@GA@BE?BVCoordinateFrame@G3D@@XZ",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "verified_targets": {
+          "?getLocation@ModelInstance@RBX@@UBE?BVCoordinateFrame@G3D@@XZ": "0x583cf0 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005907f0",
+        "symbol": "?onChildControllerChanged@RootInstance@RBX@@MAEXXZ",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00590800",
+        "symbol": "?computeCharacterInsertPoint@RootInstance@RBX@@ABE?AVVector3@G3D@@ABVExtents@2@@Z",
+        "size": 478,
+        "target_size": 478,
+        "exact": true,
+        "verified_targets": {
+          "?findLocalCharacter@Players@Network@RBX@@SAPAVModelInstance@3@PBVInstance@3@@Z": "0x49aca0 (external (evidence name))",
+          "?getCoordinateFrame@GCamera@G3D@@QBE?AVCoordinateFrame@2@XZ": "0x5107b0 (external)",
+          "?zLookDirection@CoordinateFrame@G3D@@2MB": "0x828b60 (data bytes 000080bf)",
+          "?getColumn@Matrix3@G3D@@QBE?AVVector3@2@H@Z": "0x513240 (external)",
+          "__real@358637bd": "0x826e70 (constant 358637bd)",
+          "?unitize@Vector3@G3D@@QAEMM@Z": "0x518470 (external)",
+          "__real@3f000000": "0x819bac (constant 3f000000)",
+          "??0?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": "0x4293d0 (external)",
+          "?findParts@PartInstance@RBX@@SAXPAVInstance@2@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z": "0x59c640 (external (evidence name))",
+          "?computeExtents@DragUtilities@RBX@@SA?AVExtents@2@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z": "0x60f2d0 (external (evidence name))",
+          "__real@00000000": "0x8135c4 (constant 00000000)",
+          "__real@40e00000": "0x831db4 (constant 40e00000)",
+          "?toGrid@Dragger@RBX@@SA?AVVector3@G3D@@ABV34@@Z": "0x60fea0 (external (evidence name))",
+          "??1?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": "0x590550 (support body exact at the bound address)",
+          "?computeIdeInsertPoint@RootInstance@RBX@@ABE?AVVector3@G3D@@XZ": "0x590190 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$?computeCharacterInsertPoint@RootInstance@RBX@@ABE?AVVector3@G3D@@ABVExtents@2@@Z"
+        ]
+      },
+      {
+        "address": "005909e0",
+        "symbol": "?moveToPoint@RootInstance@RBX@@QAEXPAVPVInstance@2@VVector3@G3D@@@Z",
+        "size": 363,
+        "target_size": 363,
+        "exact": true,
+        "verified_targets": {
+          "?contains@Instance@RBX@@QBE_NPBV12@@Z": "0x5574b0 (external (evidence name))",
+          "??0?$vector@PAVPVInstance@RBX@@V?$allocator@PAVPVInstance@RBX@@@std@@@std@@QAE@XZ": "0x4293d0 (external)",
+          "?push_back@?$vector@PAVPVInstance@RBX@@V?$allocator@PAVPVInstance@RBX@@@std@@@std@@QAEXABQAVPVInstance@RBX@@@Z": "0x4213a0 (external)",
+          "?toGrid@Dragger@RBX@@SA?AVVector3@G3D@@ABV34@@Z": "0x60fea0 (external (evidence name))",
+          "??0MegaDragger@RBX@@QAE@PAVPartInstance@1@ABV?$vector@PAVPVInstance@RBX@@V?$allocator@PAVPVInstance@RBX@@@std@@@std@@PAVRootInstance@1@@Z": "0x60e540 (external)",
+          "?moveSafe@RootInstance@RBX@@AAEXAAVMegaDragger@2@VVector3@G3D@@W4MoveType@12@@Z": "0x590070 (own row)",
+          "??1MegaDragger@RBX@@QAE@XZ": "0x60e700 (external (evidence name))",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": [
+          "__ehhandler$?moveToPoint@RootInstance@RBX@@QAEXPAVPVInstance@2@VVector3@G3D@@@Z"
+        ]
+      },
+      {
+        "address": "00590b50",
+        "symbol": "?moveToCharacterInsertPoint@RootInstance@RBX@@AAEXAAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z",
+        "size": 182,
+        "target_size": 182,
+        "exact": true,
+        "verified_targets": {
+          "?computeExtents@DragUtilities@RBX@@SA?AVExtents@2@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z": "0x60f2d0 (external (evidence name))",
+          "?computeCharacterInsertPoint@RootInstance@RBX@@ABE?AVVector3@G3D@@ABVExtents@2@@Z": "0x590800 (own row)",
+          "__real@3f000000": "0x819bac (constant 3f000000)",
+          "?toGrid@Dragger@RBX@@SA?AVVector3@G3D@@ABV34@@Z": "0x60fea0 (external (evidence name))",
+          "?moveSafe@RootInstance@RBX@@AAEXAAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@VVector3@G3D@@W4MoveType@12@@Z": "0x5900d0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00590c10",
+        "symbol": "?insertToTree@RootInstance@RBX@@AAEXABV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@PAVInstance@2@@Z",
+        "size": 234,
+        "target_size": 234,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "?insertRaw@RootInstance@RBX@@AAEXABV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@PAVInstance@2@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@4@@Z": "0x590440 (own row)",
+          "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51": "0x96f050 (static data (one address per symbol))",
+          "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A": "0x96f044 (static data (one address per symbol))",
+          "?moveSafe@RootInstance@RBX@@AAEXAAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@VVector3@G3D@@W4MoveType@12@@Z": "0x5900d0 (own row)",
+          "??1?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": "0x590550 (support body exact at the bound address)"
+        },
+        "local_eh": [
+          "__ehhandler$?insertToTree@RootInstance@RBX@@AAEXABV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@PAVInstance@2@@Z"
+        ]
+      },
+      {
+        "address": "00590d00",
+        "symbol": "?insertCharacterView@RootInstance@RBX@@AAEXABV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@4@@Z",
+        "size": 116,
+        "target_size": 116,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVHopperBin@RBX@@@8": "0x9496a0 (RTTI type .?AVHopperBin@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI type .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "?findLocalPlayer@Players@Network@RBX@@SAPAVPlayer@23@PBVInstance@3@@Z": "0x49ac80 (external)",
+          "?getPlayerBackpack@Player@Network@RBX@@QBEPAVBackpack@3@XZ": "0x48c470 (external (evidence name))",
+          "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0 (external (evidence name))",
+          "?insertRaw@RootInstance@RBX@@AAEXABV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@PAVInstance@2@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@4@@Z": "0x590440 (own row)",
+          "?moveToCharacterInsertPoint@RootInstance@RBX@@AAEXAAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z": "0x590b50 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00590d80",
+        "symbol": "??$create@VStarterPackService@RBX@@@ServiceProvider@RBX@@SAPAVStarterPackService@1@PBVInstance@1@@Z",
+        "size": 65,
+        "target_size": 65,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVServiceProvider@RBX@@@8": "0x92e15c (RTTI type .?AVServiceProvider@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI type .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "??$create@VStarterPackService@RBX@@@ServiceProvider@RBX@@QBEPAVStarterPackService@1@XZ": "0x4b3960 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00590dd0",
+        "symbol": "??$create@VTeams@RBX@@@ServiceProvider@RBX@@SAPAVTeams@1@PBVInstance@1@@Z",
+        "size": 65,
+        "target_size": 65,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVServiceProvider@RBX@@@8": "0x92e15c (RTTI type .?AVServiceProvider@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI type .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "??$create@VTeams@RBX@@@ServiceProvider@RBX@@QBEPAVTeams@1@XZ": "0x4b3b40 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00590e20",
+        "symbol": "??$create@VLighting@RBX@@@ServiceProvider@RBX@@SAPAVLighting@1@PBVInstance@1@@Z",
+        "size": 65,
+        "target_size": 65,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVServiceProvider@RBX@@@8": "0x92e15c (RTTI type .?AVServiceProvider@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI type .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "??$create@VLighting@RBX@@@ServiceProvider@RBX@@QBEPAVLighting@1@XZ": "0x4b3870 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00590e70",
+        "symbol": "?insertIdeView@RootInstance@RBX@@AAEXABV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@4@W4PromptMode@2@@Z",
+        "size": 282,
+        "target_size": 282,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVHopperBin@RBX@@@8": "0x9496a0 (RTTI type .?AVHopperBin@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI type .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "??$create@VStarterPackService@RBX@@@ServiceProvider@RBX@@SAPAVStarterPackService@1@PBVInstance@1@@Z": "0x590d80 (own row)",
+          "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0 (external (evidence name))",
+          "??_R0?AVTool@RBX@@@8": "0x9496bc (RTTI type .?AVTool@RBX@@)",
+          "??_C@_0P@GFMJFLOC@Inserting?5Tool?$AA@": "0x831e00 (string 'Inserting Tool')",
+          "??_C@_0EH@NCMABJD@Put?5this?5tool?5into?5the?5starter?5p@": "0x831db8 (string 'Put this tool into the starter pack (oth')",
+          "__imp__MessageBoxA@16": "0x802d78 (user32.dll!MessageBoxA)",
+          "?insertRaw@RootInstance@RBX@@AAEXABV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@PAVInstance@2@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@4@@Z": "0x590440 (own row)",
+          "?moveToIdeInsertPoint@RootInstance@RBX@@AAEXAAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z": "0x590240 (own row)",
+          "?computeExtents@DragUtilities@RBX@@SA?AVExtents@2@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z": "0x60f2d0 (external (evidence name))",
+          "__real@3f000000": "0x819bac (constant 3f000000)",
+          "?lookAt@Camera@RBX@@QAEXABVVector3@G3D@@@Z": "0x5cc010 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00590f90",
+        "symbol": "?insert3dView@RootInstance@RBX@@AAEXABV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@W4PromptMode@2@@Z",
+        "size": 270,
+        "target_size": 270,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "?findLocalCharacter@Players@Network@RBX@@SAPAVModelInstance@3@PBVInstance@3@@Z": "0x49aca0 (external (evidence name))",
+          "?insertCharacterView@RootInstance@RBX@@AAEXABV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@4@@Z": "0x590d00 (own row)",
+          "?insertIdeView@RootInstance@RBX@@AAEXABV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@AAV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@4@W4PromptMode@2@@Z": "0x590e70 (own row)",
+          "?computeExtents@DragUtilities@RBX@@SA?AVExtents@2@ABV?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@@Z": "0x60f2d0 (external (evidence name))",
+          "?zoomExtents@Camera@RBX@@QAEXVExtents@2@ABVRect2D@G3D@@W4ZoomType@12@@Z": "0x5ce0d0 (external (evidence name))",
+          "??1?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": "0x590550 (support body exact at the bound address)"
+        },
+        "local_eh": [
+          "__ehhandler$?insert3dView@RootInstance@RBX@@AAEXABV?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@W4PromptMode@2@@Z"
+        ]
+      },
+      {
+        "address": "00591510",
+        "symbol": "?classDescriptor@?$Described@VRootInstance@RBX@@$1?sRootInstance@2@3PADAVModelInstance@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+        "size": 101,
+        "target_size": 101,
+        "exact": true,
+        "verified_targets": {
+          "??_B?1??classDescriptor@?$Described@VRootInstance@RBX@@$1?sRootInstance@2@3PADAVModelInstance@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x975c48 (static data (one address per symbol))",
+          "?sRootInstance@RBX@@3PADA": "0x9495e4 (data bytes 526f6f74496e7374616e636500)",
+          "?classDescriptor@?$Described@VModelInstance@RBX@@$1?sModel@2@3PADAV?$FactoryProduct@VModelInstance@RBX@@VPVInstance@2@$1?sModel@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x585100 (external)",
+          "?foo@?1??classDescriptor@?$Described@VRootInstance@RBX@@$1?sRootInstance@2@3PADAVModelInstance@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x975b88 (static data (one address per symbol))",
+          "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
+          "??__Ffoo@?1??classDescriptor@?$Described@VRootInstance@RBX@@$1?sRootInstance@2@3PADAVModelInstance@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fda60 (support body exact at the bound address)",
+          "_atexit": "0x6a17af (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?classDescriptor@?$Described@VRootInstance@RBX@@$1?sRootInstance@2@3PADAVModelInstance@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
+        ]
+      }
+    ],
+    "history": [
+      {
+        "address": "005882f0",
+        "symbol": "??$for_each@VIterator@?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@V?$bind_t@XV?$mf1@XUHistoryItem@RBX@@ABVProperty@Reflection@2@@_mfi@boost@@V?$list2@V?$value@PAUHistoryItem@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XUHistoryItem@RBX@@ABVProperty@Reflection@2@@_mfi@boost@@V?$list2@V?$value@PAUHistoryItem@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@VIterator@?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@0V123@@Z",
+        "size": 158,
+        "target_size": 158,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00588390",
+        "symbol": "?invoke@?$void_function_obj_invoker2@V?$bind_t@XV?$mf2@XVChangeHistoryService@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@2@@_mfi@boost@@V?$list3@V?$value@PAVChangeHistoryService@RBX@@@_bi@boost@@V?$arg@$00@3@V?$arg@$01@3@@_bi@3@@_bi@boost@@XV?$shared_ptr@VInstance@RBX@@@3@PBVPropertyDescriptor@Reflection@RBX@@@function@detail@boost@@SAXAATfunction_buffer@234@V?$shared_ptr@VInstance@RBX@@@4@PBVPropertyDescriptor@Reflection@RBX@@@Z",
+        "size": 165,
+        "target_size": 165,
+        "exact": true,
+        "verified_targets": {
+          "??R?$mf2@XVChangeHistoryService@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@2@@_mfi@boost@@QBEXPAVChangeHistoryService@RBX@@V?$shared_ptr@VInstance@RBX@@@2@PBVPropertyDescriptor@Reflection@4@@Z": "0x496910 (support body exact at the bound address)"
+        },
+        "local_eh": [
+          "__ehhandler$?invoke@?$void_function_obj_invoker2@V?$bind_t@XV?$mf2@XVChangeHistoryService@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@2@@_mfi@boost@@V?$list3@V?$value@PAVChangeHistoryService@RBX@@@_bi@boost@@V?$arg@$00@3@V?$arg@$01@3@@_bi@3@@_bi@boost@@XV?$shared_ptr@VInstance@RBX@@@3@PBVPropertyDescriptor@Reflection@RBX@@@function@detail@boost@@SAXAATfunction_buffer@234@V?$shared_ptr@VInstance@RBX@@@4@PBVPropertyDescriptor@Reflection@RBX@@@Z"
+        ]
+      },
+      {
+        "address": "005884d0",
+        "symbol": "?unplayProperty@HistoryItem@RBX@@QAEXABU?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@Z",
+        "size": 563,
+        "target_size": 563,
+        "exact": true,
+        "verified_targets": {
+          "?propParent@Instance@RBX@@2V?$RefPropDescriptor@VInstance@RBX@@V12@@Reflection@2@B": "0x973d34 (external)",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?find@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@ABQAVInstance@RBX@@@Z": "0x587ce0 (support body exact at the bound address)",
+          "?find@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@QAE?AViterator@12@ABQBVPropertyDescriptor@Reflection@RBX@@@Z": "0x591bd0 (support body exact at the bound address)",
+          "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0 (external (evidence name))"
+        },
+        "local_eh": [
+          "__ehhandler$?unplayProperty@HistoryItem@RBX@@QAEXABU?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@Z"
+        ]
+      },
+      {
+        "address": "00588710",
+        "symbol": "?play@HistoryRecord@RBX@@QAEXXZ",
+        "size": 107,
+        "target_size": 107,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?play@HistoryItem@RBX@@QAEXXZ": "0x588440 (uncounted row of this unit, body exact at the bound address)",
+          "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAEXXZ": "0x6510f0 (support body exact at the bound address)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00588780",
+        "symbol": "?play@ChangeHistoryService@RBX@@QAEXXZ",
+        "size": 357,
+        "target_size": 357,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_0CK@DOBIDNMP@ChangeHistoryService?5is?5currentl@": "0x831718 (string 'ChangeHistoryService is currently playin')",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (support body exact at the bound address)",
+          "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info .?AVruntime_error@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "??_C@_0CB@EIFEHOHL@ChangeHistoryService?5is?5disabled@": "0x8316f4 (string 'ChangeHistoryService is disabled')",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??_C@_0CG@FLFKPOCM@Attempt?5to?5play?5beyond?5change?5hi@": "0x8316cc (string 'Attempt to play beyond change history')",
+          "??D?$_Iterator@$00@?$list@PAVHistoryRecord@RBX@@V?$allocator@PAVHistoryRecord@RBX@@@std@@@std@@QBEAAPAUHistoryRecord@RBX@@XZ": "0x42a8f0 (support body exact at the bound address)",
+          "?play@HistoryRecord@RBX@@QAEXXZ": "0x588710 (own row)",
+          "??E?$_Iterator@$00@?$list@PAVHistoryRecord@RBX@@V?$allocator@PAVHistoryRecord@RBX@@@std@@@std@@QAEAAV012@XZ": "0x5872d0 (support body exact at the bound address)"
+        },
+        "local_eh": [
+          "__ehhandler$?play@ChangeHistoryService@RBX@@QAEXXZ"
+        ]
+      },
+      {
+        "address": "005888f0",
+        "symbol": "?erase@?$list@PAVHistoryRecord@RBX@@V?$allocator@PAVHistoryRecord@RBX@@@std@@@std@@QAE?AV?$_Iterator@$00@12@V?$_Const_iterator@$00@12@@Z",
+        "size": 123,
+        "target_size": 123,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00588970",
+        "symbol": "?erase@?$list@PAVHistoryRecord@RBX@@V?$allocator@PAVHistoryRecord@RBX@@@std@@@std@@QAE?AV?$_Iterator@$00@12@V?$_Const_iterator@$00@12@0@Z",
+        "size": 189,
+        "target_size": 189,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?clear@?$list@PAVHistoryRecord@RBX@@V?$allocator@PAVHistoryRecord@RBX@@@std@@@std@@QAEXXZ": "0x5875a0 (support body exact at the bound address)",
+          "?erase@?$list@PAVHistoryRecord@RBX@@V?$allocator@PAVHistoryRecord@RBX@@@std@@@std@@QAE?AV?$_Iterator@$00@12@V?$_Const_iterator@$00@12@@Z": "0x5888f0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00588a30",
+        "symbol": "?insert@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@ABU?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@2@@Z",
+        "size": 470,
+        "target_size": 470,
+        "exact": true,
+        "verified_targets": {
+          "?_Insert@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@2@ABU?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@2@@Z": "0x587820 (support body exact at the bound address)",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@QAEXXZ": "0x4abf40 (support body exact at the bound address)",
+          "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@QAEXXZ": "0x5b7250 (support body exact at the bound address)",
+          "??8const_iterator@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@QBE_NABV012@@Z": "0x5ecca0 (support body exact at the bound address)",
+          "?insert@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@_N@2@ABU?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@2@@Z": "0x587dc0 (support body exact at the bound address)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00588c10",
+        "symbol": "?erase@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@0@Z",
+        "size": 220,
+        "target_size": 220,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?_Erase@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@2@@Z": "0x587d70 (support body exact at the bound address)",
+          "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@QAEXXZ": "0x5b7250 (support body exact at the bound address)",
+          "?erase@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z": "0x587eb0 (support body exact at the bound address)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00588cf0",
+        "symbol": "?_Copy@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@IAEXABV12@@Z",
+        "size": 117,
+        "target_size": 117,
+        "exact": true,
+        "verified_targets": {
+          "?_Copy@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@2@PAU342@0@Z": "0x588190 (support body exact against the image bytes at the bound address (BOUNDS))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00588d70",
+        "symbol": "?_Tidy@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@IAEXXZ",
+        "size": 54,
+        "target_size": 54,
+        "exact": true,
+        "verified_targets": {
+          "?erase@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@0@Z": "0x588c10 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00588db0",
+        "symbol": "?connect@?$signal2@XV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@RBX@@U?$last_value@X@2@HU?$less@H@std@@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@2@@boost@@QAE?AVconnection@signals@2@ABHABV?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@2@W4connect_position@42@@Z",
+        "size": 325,
+        "target_size": 325,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??$?0H@shared_count@detail@boost@@QAE@PAH@Z": "0x42a800 (external (evidence name))",
+          "?sp_enable_shared_from_this@detail@boost@@YAXABVshared_count@12@ZZ": "0x47d410 (support body exact at the bound address)",
+          "??$?0V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@1@@Z": "0x577d00 (support body exact at the bound address)",
+          "?get_data@slot_base@detail@signals@boost@@QBE?AV?$shared_ptr@Udata_t@slot_base@detail@signals@boost@@@4@XZ": "0x4915b0 (support body exact at the bound address)",
+          "?connect_slot@signal_base_impl@detail@signals@boost@@QAE?AVconnection@34@ABVany@4@ABVstored_group@234@V?$shared_ptr@Udata_t@slot_base@detail@signals@boost@@@4@W4connect_position@34@@Z": "0x56a900 (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?connect@?$signal2@XV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@RBX@@U?$last_value@X@2@HU?$less@H@std@@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@2@@boost@@QAE?AVconnection@signals@2@ABHABV?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@2@W4connect_position@42@@Z"
+        ]
+      },
+      {
+        "address": "00588f60",
+        "symbol": "?reset@HistoryItem@RBX@@QAEXXZ",
+        "size": 70,
+        "target_size": 70,
+        "exact": true,
+        "verified_targets": {
+          "?reset@?$shared_ptr@VInstance@RBX@@@boost@@QAEXXZ": "0x456e80 (support body exact at the bound address)",
+          "?_Erase@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@2@@Z": "0x587d70 (support body exact at the bound address)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00588fb0",
+        "symbol": "?connect@?$TSignalDesc@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@RBX@@@Z@Reflection@RBX@@QAE?AVconnection@signals@boost@@PAVSignalSource@23@ABV?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@6@H@Z",
+        "size": 71,
+        "target_size": 71,
+        "exact": true,
+        "verified_targets": {
+          "?sig@?$TSignalDesc@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@RBX@@@Z@Reflection@RBX@@IBEAAVTSignalInstance@123@AAVSignalSource@23@@Z": "0x5875e0 (support body exact at the bound address)",
+          "?connect@?$signal2@XV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@RBX@@U?$last_value@X@2@HU?$less@H@std@@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@2@@boost@@QAE?AVconnection@signals@2@ABHABV?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@2@W4connect_position@42@@Z": "0x588db0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00589000",
+        "symbol": "??A?$map@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@@std@@QAEAAVValue@Reflection@RBX@@ABQBVPropertyDescriptor@34@@Z",
+        "size": 282,
+        "target_size": 282,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??0Value@Reflection@RBX@@QAE@XZ": "0x594ac0 (external (evidence name))",
+          "?insert@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@ABU?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@2@@Z": "0x588a30 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$??A?$map@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@@std@@QAEAAVValue@Reflection@RBX@@ABQBVPropertyDescriptor@34@@Z"
+        ]
+      },
+      {
+        "address": "00589120",
+        "symbol": "??1?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@QAE@XZ",
+        "size": 112,
+        "target_size": 112,
+        "exact": true,
+        "verified_targets": {
+          "?erase@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@0@Z": "0x588c10 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": [
+          "__ehhandler$??1?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@QAE@XZ"
+        ]
+      },
+      {
+        "address": "00589190",
+        "symbol": "??0?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@QAE@ABU?$less@PBVPropertyDescriptor@Reflection@RBX@@@1@ABV?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@1@@Z",
+        "size": 117,
+        "target_size": 117,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "?_Buynode@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@2@XZ": "0x591930 (support body exact at the bound address)"
+        },
+        "local_eh": [
+          "__ehhandler$??0?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@QAE@ABU?$less@PBVPropertyDescriptor@Reflection@RBX@@@1@ABV?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@1@@Z"
+        ]
+      },
+      {
+        "address": "005892b0",
+        "symbol": "??0?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAE@ABU?$less@PAVInstance@RBX@@@1@ABV?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@1@@Z",
+        "size": 117,
+        "target_size": 117,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "?_Buynode@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@2@XZ": "0x5876d0 (support body exact at the bound address)"
+        },
+        "local_eh": [
+          "__ehhandler$??0?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAE@ABU?$less@PAVInstance@RBX@@@1@ABV?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@1@@Z"
+        ]
+      },
+      {
+        "address": "00589330",
+        "symbol": "?push_back@?$deque@PAUHistoryItem@RBX@@V?$allocator@PAUHistoryItem@RBX@@@std@@@std@@QAEXABQAUHistoryItem@RBX@@@Z",
+        "size": 116,
+        "target_size": 116,
+        "exact": true,
+        "verified_targets": {
+          "?_Growmap@?$deque@PAUHistoryItem@RBX@@V?$allocator@PAUHistoryItem@RBX@@@std@@@std@@IAEXI@Z": "0x436800 (support body exact at the bound address)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00589410",
+        "symbol": "?captureProperty@HistoryItem@RBX@@QAEXPBVPropertyDescriptor@Reflection@2@@Z",
+        "size": 176,
+        "target_size": 176,
+        "exact": true,
+        "verified_targets": {
+          "??0Value@Reflection@RBX@@QAE@XZ": "0x594ac0 (external (evidence name))",
+          "??A?$map@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@@std@@QAEAAVValue@Reflection@RBX@@ABQBVPropertyDescriptor@34@@Z": "0x589000 (own row)",
+          "??4Value@Reflection@RBX@@QAEAAV012@ABV012@@Z": "0x42d0a0 (support body exact at the bound address)"
+        },
+        "local_eh": [
+          "__ehhandler$?captureProperty@HistoryItem@RBX@@QAEXPBVPropertyDescriptor@Reflection@2@@Z"
+        ]
+      },
+      {
+        "address": "005894c0",
+        "symbol": "?capture@HistoryItem@RBX@@QAEXABVProperty@Reflection@2@@Z",
+        "size": 25,
+        "target_size": 25,
+        "exact": true,
+        "verified_targets": {
+          "?propParent@Instance@RBX@@2V?$RefPropDescriptor@VInstance@RBX@@V12@@Reflection@2@B": "0x973d34 (external)",
+          "?captureProperty@HistoryItem@RBX@@QAEXPBVPropertyDescriptor@Reflection@2@@Z": "0x589410 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005894e0",
+        "symbol": "?mergeProperty@HistoryItem@RBX@@QAEXABU?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@Z",
+        "size": 80,
+        "target_size": 80,
+        "exact": true,
+        "verified_targets": {
+          "??A?$map@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@@std@@QAEAAVValue@Reflection@RBX@@ABQBVPropertyDescriptor@34@@Z": "0x589000 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00589530",
+        "symbol": "?captureAll@HistoryItem@RBX@@QAEXXZ",
+        "size": 283,
+        "target_size": 283,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?capture@HistoryItem@RBX@@QAEXABVProperty@Reflection@2@@Z": "0x5894c0 (own row)",
+          "??$for_each@VIterator@?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@V?$bind_t@XV?$mf1@XUHistoryItem@RBX@@ABVProperty@Reflection@2@@_mfi@boost@@V?$list2@V?$value@PAUHistoryItem@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XUHistoryItem@RBX@@ABVProperty@Reflection@2@@_mfi@boost@@V?$list2@V?$value@PAUHistoryItem@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@VIterator@?$MemberDescriptorContainer@VPropertyDescriptor@Reflection@RBX@@@Reflection@RBX@@0V123@@Z": "0x5882f0 (own row)",
+          "??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z": "0x618a40 (support body exact at the bound address)",
+          "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0 (support body exact at the bound address)"
+        },
+        "local_eh": [
+          "__ehhandler$?captureAll@HistoryItem@RBX@@QAEXXZ"
+        ]
+      },
+      {
+        "address": "00589650",
+        "symbol": "?update@HistoryItem@RBX@@QAEXPBVPropertyDescriptor@Reflection@2@@Z",
+        "size": 205,
+        "target_size": 205,
+        "exact": true,
+        "verified_targets": {
+          "?captureProperty@HistoryItem@RBX@@QAEXPBVPropertyDescriptor@Reflection@2@@Z": "0x589410 (own row)",
+          "?propParent@Instance@RBX@@2V?$RefPropDescriptor@VInstance@RBX@@V12@@Reflection@2@B": "0x973d34 (external)",
+          "??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z": "0x618a40 (support body exact at the bound address)",
+          "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0 (support body exact at the bound address)"
+        },
+        "local_eh": [
+          "__ehhandler$?update@HistoryItem@RBX@@QAEXPBVPropertyDescriptor@Reflection@2@@Z"
+        ]
+      },
+      {
+        "address": "00589720",
+        "symbol": "??1HistoryItem@RBX@@QAE@XZ",
+        "size": 174,
+        "target_size": 174,
+        "exact": true,
+        "verified_targets": {
+          "??1?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@QAE@XZ": "0x589120 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$??1HistoryItem@RBX@@QAE@XZ"
+        ]
+      },
+      {
+        "address": "00589890",
+        "symbol": "??0HistoryItem@RBX@@QAE@PAVChangeHistoryService@1@V?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+        "size": 185,
+        "target_size": 185,
+        "exact": true,
+        "verified_targets": {
+          "??0?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@QAE@ABU?$less@PBVPropertyDescriptor@Reflection@RBX@@@1@ABV?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@1@@Z": "0x589190 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$??0HistoryItem@RBX@@QAE@PAVChangeHistoryService@1@V?$shared_ptr@VInstance@RBX@@@boost@@@Z"
+        ]
+      },
+      {
+        "address": "00589950",
+        "symbol": "??0HistoryItem@RBX@@QAE@XZ",
+        "size": 93,
+        "target_size": 93,
+        "exact": true,
+        "verified_targets": {
+          "??0?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@QAE@ABU?$less@PBVPropertyDescriptor@Reflection@RBX@@@1@ABV?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@1@@Z": "0x589190 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$??0HistoryItem@RBX@@QAE@XZ"
+        ]
+      },
+      {
+        "address": "005899b0",
+        "symbol": "??4HistoryItem@RBX@@QAEAAU01@ABU01@@Z",
+        "size": 110,
+        "target_size": 110,
+        "exact": true,
+        "verified_targets": {
+          "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0 (support body exact at the bound address)",
+          "?erase@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@0@Z": "0x588c10 (own row)",
+          "?_Copy@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@IAEXABV12@@Z": "0x588cf0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00589cd0",
+        "symbol": "??0HistoryItem@RBX@@QAE@ABU01@@Z",
+        "size": 144,
+        "target_size": 144,
+        "exact": true,
+        "verified_targets": {
+          "??0?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@QAE@ABV01@@Z": "0x589210 (support body exact against the image bytes at the bound address (BOUNDS))"
+        },
+        "local_eh": [
+          "__ehhandler$??0HistoryItem@RBX@@QAE@ABU01@@Z"
+        ]
+      },
+      {
+        "address": "00589a20",
+        "symbol": "?unplay@HistoryItem@RBX@@QAEXXZ",
+        "size": 541,
+        "target_size": 541,
+        "exact": true,
+        "verified_targets": {
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?find@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@ABQAVInstance@RBX@@@Z": "0x587ce0 (support body exact at the bound address)",
+          "?push_back@?$deque@PAUHistoryItem@RBX@@V?$allocator@PAUHistoryItem@RBX@@@std@@@std@@QAEXABQAUHistoryItem@RBX@@@Z": "0x589330 (own row)",
+          "?play@HistoryItem@RBX@@QAEXXZ": "0x588440 (uncounted row of this unit, body exact at the bound address)",
+          "??D?$_Deque_const_iterator@PAUHistoryItem@RBX@@V?$allocator@PAUHistoryItem@RBX@@@std@@$00@std@@QBEABQAUHistoryItem@RBX@@XZ": "0x436420 (support body exact at the bound address)",
+          "?_Tidy@?$deque@PAUHistoryItem@RBX@@V?$allocator@PAUHistoryItem@RBX@@@std@@@std@@IAEXXZ": "0x64fa10 (support body exact at the bound address)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": [
+          "__ehhandler$?unplay@HistoryItem@RBX@@QAEXXZ"
+        ]
+      },
+      {
+        "address": "0058a130",
+        "symbol": "?unplay@ChangeHistoryService@RBX@@QAEXXZ",
+        "size": 359,
+        "target_size": 359,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_0CK@DOBIDNMP@ChangeHistoryService?5is?5currentl@": "0x831718 (string 'ChangeHistoryService is currently playin')",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "0x409d50 (support body exact at the bound address)",
+          "__TI2?AVruntime_error@std@@": "0x8d1bc8 (throw info .?AVruntime_error@std@@ (2 catchable types))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "??_C@_0CB@EIFEHOHL@ChangeHistoryService?5is?5disabled@": "0x8316f4 (string 'ChangeHistoryService is disabled')",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??_C@_0CM@EIFAAIGM@Attempt?5to?5unplay?5before?5the?5cha@": "0x83174c (string 'Attempt to unplay before the change hist')",
+          "??D?$_Iterator@$00@?$list@PAVHistoryRecord@RBX@@V?$allocator@PAVHistoryRecord@RBX@@@std@@@std@@QBEAAPAUHistoryRecord@RBX@@XZ": "0x42a8f0 (support body exact at the bound address)",
+          "?unplay@HistoryRecord@RBX@@QAEXXZ": "0x58a040 (uncounted row of this unit, body exact at the bound address)",
+          "??F?$_Iterator@$00@?$list@PAVHistoryRecord@RBX@@V?$allocator@PAVHistoryRecord@RBX@@@std@@@std@@QAEAAV012@XZ": "0x4962b0 (support body exact at the bound address)"
+        },
+        "local_eh": [
+          "__ehhandler$?unplay@ChangeHistoryService@RBX@@QAEXXZ"
+        ]
+      },
+      {
+        "address": "0058a2a0",
+        "symbol": "?classDescriptor@?$Described@VChangeHistoryService@RBX@@$1?sChangeHistoryService@2@3PADAV?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+        "size": 101,
+        "target_size": 101,
+        "exact": true,
+        "verified_targets": {
+          "??_B?1??classDescriptor@?$Described@VChangeHistoryService@RBX@@$1?sChangeHistoryService@2@3PADAV?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x9759e8 (static data (one address per symbol))",
+          "??_C@_0BF@JNENDLPH@ChangeHistoryService?$AA@": "0x948df8 (string 'ChangeHistoryService')",
+          "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80 (support body exact at the bound address)",
+          "?descriptor@?1??classDescriptor@?$Described@VChangeHistoryService@RBX@@$1?sChangeHistoryService@2@3PADAV?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x975928 (static data (one address per symbol))",
+          "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
+          "??__Fdescriptor@?1??classDescriptor@?$Described@VChangeHistoryService@RBX@@$1?sChangeHistoryService@2@3PADAV?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fd930 (support body exact at the bound address)",
+          "_atexit": "0x6a17af (external)"
+        },
+        "local_eh": [
+          "__ehhandler$?classDescriptor@?$Described@VChangeHistoryService@RBX@@$1?sChangeHistoryService@2@3PADAV?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
+        ]
+      },
+      {
+        "address": "0058a3b0",
+        "symbol": "?_Erase@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@2@@Z",
+        "size": 61,
+        "target_size": 61,
+        "exact": true,
+        "verified_targets": {
+          "?_Erase@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@2@@Z": "0x58a3b0 (own row)",
+          "??1HistoryItem@RBX@@QAE@XZ": "0x589720 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0058a3f0",
+        "symbol": "?erase@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z",
+        "size": 724,
+        "target_size": 724,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_0BM@PAPJHAGI@invalid?5map?1set?$DMT?$DO?5iterator?$AA@": "0x80b270 (string 'invalid map/set<T> iterator')",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "__imp_??0exception@std@@QAE@XZ": "0x802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+          "??_7logic_error@std@@6B@": "0x80b110 (vtable (RTTI .?AVlogic_error@std@@, offset 0x0))",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+          "__TI3?AVout_of_range@std@@": "0x8d0c3c (throw info .?AVout_of_range@std@@ (3 catchable types))",
+          "??_7out_of_range@std@@6B@": "0x80b128 (vtable (RTTI .?AVout_of_range@std@@, offset 0x0))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAEXXZ": "0x6510f0 (support body exact at the bound address)",
+          "?_Min@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@2@PAU342@@Z": "0x5870c0 (support body exact at the bound address)",
+          "?_Max@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@2@PAU342@@Z": "0x650e70 (support body exact at the bound address)",
+          "?_Lrotate@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@2@@Z": "0x587310 (support body exact at the bound address)",
+          "?_Rrotate@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@2@@Z": "0x5870e0 (support body exact at the bound address)",
+          "??1HistoryItem@RBX@@QAE@XZ": "0x589720 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": [
+          "__ehhandler$?erase@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z"
+        ]
+      },
+      {
+        "address": "0058a6d0",
+        "symbol": "?_Insert@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@2@ABU?$pair@QAVInstance@RBX@@UHistoryItem@2@@2@@Z",
+        "size": 510,
+        "target_size": 510,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_0BE@JONHPENG@map?1set?$DMT?$DO?5too?5long?$AA@": "0x80b28c (string 'map/set<T> too long')",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "__imp_??0exception@std@@QAE@XZ": "0x802898 (msvcr90.dll!??0exception@std@@QAE@XZ)",
+          "??_7logic_error@std@@6B@": "0x80b110 (vtable (RTTI .?AVlogic_error@std@@, offset 0x0))",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)",
+          "__TI3?AVlength_error@std@@": "0x8d0cc0 (throw info .?AVlength_error@std@@ (3 catchable types))",
+          "??_7length_error@std@@6B@": "0x80b11c (vtable (RTTI .?AVlength_error@std@@, offset 0x0))",
+          "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)",
+          "?_Buynode@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@2@PAU342@00ABU?$pair@QAVInstance@RBX@@UHistoryItem@2@@2@D@Z": "0x58a310 (support body exact against the image bytes at the bound address (BOUNDS))",
+          "?_Lrotate@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@2@@Z": "0x587310 (support body exact at the bound address)",
+          "?_Rrotate@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@2@@Z": "0x5870e0 (support body exact at the bound address)"
+        },
+        "local_eh": [
+          "__ehhandler$?_Insert@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@2@ABU?$pair@QAVInstance@RBX@@UHistoryItem@2@@2@@Z"
+        ]
+      },
+      {
+        "address": "0058a8d0",
+        "symbol": "??$?0PBD@?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@IAE@PBD@Z",
+        "size": 153,
+        "target_size": 153,
+        "exact": true,
+        "verified_targets": {
+          "??$?0PBD@?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@IAE@PBD@Z": "0x5871d0 (support body exact at the bound address)",
+          "?classDescriptor@?$Described@VChangeHistoryService@RBX@@$1?sChangeHistoryService@2@3PADAV?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x58a2a0 (own row)",
+          "??_7?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x8317fc (vtable (RTTI .?AV?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@, offset 0x0))",
+          "??_7?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x8317ec (vtable (RTTI .?AV?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@, offset 0x10))",
+          "??_7?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x8317e4 (vtable (RTTI .?AV?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@, offset 0x14))",
+          "??_7?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@6BDebugable@1@@": "0x8317dc (vtable (RTTI .?AV?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@, offset 0x20))",
+          "??_7?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x8317cc (vtable (RTTI .?AV?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@, offset 0x24))",
+          "??_7?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x8317bc (vtable (RTTI .?AV?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@, offset 0x44))",
+          "??_7?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x8317ac (vtable (RTTI .?AV?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@, offset 0x64))",
+          "??_7?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x83179c (vtable (RTTI .?AV?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@, offset 0x84))",
+          "??_7?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x83178c (vtable (RTTI .?AV?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@, offset 0xa4))",
+          "??_7?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x83177c (vtable (RTTI .?AV?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@, offset 0xc4))"
+        },
+        "local_eh": [
+          "__ehhandler$??$?0PBD@?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@IAE@PBD@Z"
+        ]
+      },
+      {
+        "address": "0058ab90",
+        "symbol": "??0ChangeHistoryService@RBX@@QAE@XZ",
+        "size": 268,
+        "target_size": 268,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_0BF@JNENDLPH@ChangeHistoryService?$AA@": "0x948df8 (string 'ChangeHistoryService')",
+          "??$?0PBD@?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@IAE@PBD@Z": "0x58a8d0 (own row)",
+          "??_7ChangeHistoryService@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x8318bc (vtable (RTTI .?AVChangeHistoryService@RBX@@, offset 0x0))",
+          "??_7ChangeHistoryService@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x8318b0 (vtable (RTTI .?AVChangeHistoryService@RBX@@, offset 0x10))",
+          "??_7ChangeHistoryService@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x8318a8 (vtable (RTTI .?AVChangeHistoryService@RBX@@, offset 0x14))",
+          "??_7ChangeHistoryService@RBX@@6BDebugable@1@@": "0x8318a0 (vtable (RTTI .?AVChangeHistoryService@RBX@@, offset 0x20))",
+          "??_7ChangeHistoryService@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x831890 (vtable (RTTI .?AVChangeHistoryService@RBX@@, offset 0x24))",
+          "??_7ChangeHistoryService@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x831880 (vtable (RTTI .?AVChangeHistoryService@RBX@@, offset 0x44))",
+          "??_7ChangeHistoryService@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x831870 (vtable (RTTI .?AVChangeHistoryService@RBX@@, offset 0x64))",
+          "??_7ChangeHistoryService@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x831860 (vtable (RTTI .?AVChangeHistoryService@RBX@@, offset 0x84))",
+          "??_7ChangeHistoryService@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x831850 (vtable (RTTI .?AVChangeHistoryService@RBX@@, offset 0xa4))",
+          "??_7ChangeHistoryService@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x831840 (vtable (RTTI .?AVChangeHistoryService@RBX@@, offset 0xc4))",
+          "??0?$list@PAVHistoryRecord@RBX@@V?$allocator@PAVHistoryRecord@RBX@@@std@@@std@@QAE@XZ": "0x61a200 (support body exact at the bound address)"
+        },
+        "local_eh": [
+          "__ehhandler$??0ChangeHistoryService@RBX@@QAE@XZ"
+        ]
+      },
+      {
+        "address": "0058b280",
+        "symbol": "?insert@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@_N@2@ABU?$pair@QAVInstance@RBX@@UHistoryItem@2@@2@@Z",
+        "size": 239,
+        "target_size": 239,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?_Insert@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@2@ABU?$pair@QAVInstance@RBX@@UHistoryItem@2@@2@@Z": "0x58a6d0 (own row)",
+          "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAEXXZ": "0x587140 (support body exact at the bound address)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0058b370",
+        "symbol": "?insert@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@ABU?$pair@QAVInstance@RBX@@UHistoryItem@2@@2@@Z",
+        "size": 470,
+        "target_size": 470,
+        "exact": true,
+        "verified_targets": {
+          "?_Insert@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@2@ABU?$pair@QAVInstance@RBX@@UHistoryItem@2@@2@@Z": "0x58a6d0 (own row)",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAEXXZ": "0x587140 (support body exact at the bound address)",
+          "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAEXXZ": "0x6510f0 (support body exact at the bound address)",
+          "??8const_iterator@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QBE_NABV012@@Z": "0x5ecca0 (support body exact at the bound address)",
+          "?insert@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@_N@2@ABU?$pair@QAVInstance@RBX@@UHistoryItem@2@@2@@Z": "0x58b280 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0058b550",
+        "symbol": "?erase@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@0@Z",
+        "size": 220,
+        "target_size": 220,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?_Erase@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@2@@Z": "0x58a3b0 (own row)",
+          "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAEXXZ": "0x6510f0 (support body exact at the bound address)",
+          "?erase@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z": "0x58a3f0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0058b6c0",
+        "symbol": "?get@HistoryRecord@RBX@@QAEPAUHistoryItem@2@V?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+        "size": 431,
+        "target_size": 431,
+        "exact": true,
+        "verified_targets": {
+          "?find@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@ABQAVInstance@RBX@@@Z": "0x587ce0 (support body exact at the bound address)",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??0HistoryItem@RBX@@QAE@PAVChangeHistoryService@1@V?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x589890 (own row)",
+          "??0HistoryItem@RBX@@QAE@ABU01@@Z": "0x589cd0 (own row)",
+          "?insert@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@_N@2@ABU?$pair@QAVInstance@RBX@@UHistoryItem@2@@2@@Z": "0x58b280 (own row)",
+          "??1HistoryItem@RBX@@QAE@XZ": "0x589720 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$?get@HistoryRecord@RBX@@QAEPAUHistoryItem@2@V?$shared_ptr@VInstance@RBX@@@boost@@@Z"
+        ]
+      },
+      {
+        "address": "0058b870",
+        "symbol": "?onHistoryAdded@ChangeHistoryService@RBX@@UAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+        "size": 241,
+        "target_size": 241,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVService@RBX@@@8": "0x929844 (RTTI type .?AVService@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI type .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "??0?$shared_ptr@VInstance@RBX@@@boost@@QAE@ABV01@@Z": "0x4116f0 (support body exact at the bound address)",
+          "?get@HistoryRecord@RBX@@QAEPAUHistoryItem@2@V?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x58b6c0 (own row)",
+          "?captureAll@HistoryItem@RBX@@QAEXXZ": "0x589530 (own row)",
+          "??1?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ": "0x600660 (support body exact at the bound address)"
+        },
+        "local_eh": [
+          "__ehhandler$?onHistoryAdded@ChangeHistoryService@RBX@@UAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z"
+        ]
+      },
+      {
+        "address": "0058b970",
+        "symbol": "?onHistoryRemoving@ChangeHistoryService@RBX@@UAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+        "size": 241,
+        "target_size": 241,
+        "exact": true,
+        "verified_targets": {
+          "??_R0?AVService@RBX@@@8": "0x929844 (RTTI type .?AVService@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI type .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "??0?$shared_ptr@VInstance@RBX@@@boost@@QAE@ABV01@@Z": "0x4116f0 (support body exact at the bound address)",
+          "?get@HistoryRecord@RBX@@QAEPAUHistoryItem@2@V?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x58b6c0 (own row)",
+          "?reset@HistoryItem@RBX@@QAEXXZ": "0x588f60 (own row)",
+          "??1?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ": "0x600660 (support body exact at the bound address)"
+        },
+        "local_eh": [
+          "__ehhandler$?onHistoryRemoving@ChangeHistoryService@RBX@@UAEXV?$shared_ptr@VInstance@RBX@@@boost@@@Z"
+        ]
+      },
+      {
+        "address": "0058ba70",
+        "symbol": "?onHistoryChanged@ChangeHistoryService@RBX@@UAEXV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@2@@Z",
+        "size": 193,
+        "target_size": 193,
+        "exact": true,
+        "verified_targets": {
+          "?get@HistoryRecord@RBX@@QAEPAUHistoryItem@2@V?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x58b6c0 (own row)",
+          "?update@HistoryItem@RBX@@QAEXPBVPropertyDescriptor@Reflection@2@@Z": "0x589650 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$?onHistoryChanged@ChangeHistoryService@RBX@@UAEXV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@2@@Z"
+        ]
+      },
+      {
+        "address": "0058bba0",
+        "symbol": "??A?$map@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@@std@@QAEAAUHistoryItem@RBX@@ABQAVInstance@3@@Z",
+        "size": 269,
+        "target_size": 269,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??0HistoryItem@RBX@@QAE@XZ": "0x589950 (own row)",
+          "??0HistoryItem@RBX@@QAE@ABU01@@Z": "0x589cd0 (own row)",
+          "?insert@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@ABU?$pair@QAVInstance@RBX@@UHistoryItem@2@@2@@Z": "0x58b370 (own row)",
+          "??1HistoryItem@RBX@@QAE@XZ": "0x589720 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$??A?$map@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@@std@@QAEAAUHistoryItem@RBX@@ABQAVInstance@3@@Z"
+        ]
+      },
+      {
+        "address": "0058bed0",
+        "symbol": "??1HistoryRecord@RBX@@QAE@XZ",
+        "size": 77,
+        "target_size": 77,
+        "exact": true,
+        "verified_targets": {
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+          "??1?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAE@XZ": "0x58be50 (support body exact against the image bytes at the bound address (BOUNDS))"
+        },
+        "local_eh": [
+          "__ehhandler$??1HistoryRecord@RBX@@QAE@XZ"
+        ]
+      },
+      {
+        "address": "0058bf20",
+        "symbol": "??0HistoryRecord@RBX@@QAE@PAVChangeHistoryService@1@@Z",
+        "size": 90,
+        "target_size": 90,
+        "exact": true,
+        "verified_targets": {
+          "??0?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAE@ABU?$less@PAVInstance@RBX@@@1@ABV?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@1@@Z": "0x5892b0 (own row)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802460 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+        },
+        "local_eh": [
+          "__ehhandler$??0HistoryRecord@RBX@@QAE@PAVChangeHistoryService@1@@Z"
+        ]
+      },
+      {
+        "address": "0058bf80",
+        "symbol": "?mergeFirst@ChangeHistoryService@RBX@@QAEXXZ",
+        "size": 363,
+        "target_size": 363,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?merge@HistoryRecord@RBX@@QAEXPAU12@@Z": "0x58bcb0 (uncounted row of this unit, body exact at the bound address)",
+          "??1HistoryRecord@RBX@@QAE@XZ": "0x58bed0 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "?erase@?$list@PAVHistoryRecord@RBX@@V?$allocator@PAVHistoryRecord@RBX@@@std@@@std@@QAE?AV?$_Iterator@$00@12@V?$_Const_iterator@$00@12@@Z": "0x5888f0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0058c0f0",
+        "symbol": "?prepare@ChangeHistoryService@RBX@@QAEXXZ",
+        "size": 199,
+        "target_size": 199,
+        "exact": true,
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?erase@?$list@PAVHistoryRecord@RBX@@V?$allocator@PAVHistoryRecord@RBX@@@std@@@std@@QAE?AV?$_Iterator@$00@12@V?$_Const_iterator@$00@12@0@Z": "0x588970 (own row)",
+          "?mergeFirst@ChangeHistoryService@RBX@@QAEXXZ": "0x58bf80 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0058c1c0",
+        "symbol": "??1ChangeHistoryService@RBX@@UAE@XZ",
+        "size": 246,
+        "target_size": 246,
+        "exact": true,
+        "verified_targets": {
+          "??_7ChangeHistoryService@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x8318bc (vtable (RTTI .?AVChangeHistoryService@RBX@@, offset 0x0))",
+          "??_7ChangeHistoryService@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x8318b0 (vtable (RTTI .?AVChangeHistoryService@RBX@@, offset 0x10))",
+          "??_7ChangeHistoryService@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x8318a8 (vtable (RTTI .?AVChangeHistoryService@RBX@@, offset 0x14))",
+          "??_7ChangeHistoryService@RBX@@6BDebugable@1@@": "0x8318a0 (vtable (RTTI .?AVChangeHistoryService@RBX@@, offset 0x20))",
+          "??_7ChangeHistoryService@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x831890 (vtable (RTTI .?AVChangeHistoryService@RBX@@, offset 0x24))",
+          "??_7ChangeHistoryService@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x831880 (vtable (RTTI .?AVChangeHistoryService@RBX@@, offset 0x44))",
+          "??_7ChangeHistoryService@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x831870 (vtable (RTTI .?AVChangeHistoryService@RBX@@, offset 0x64))",
+          "??_7ChangeHistoryService@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x831860 (vtable (RTTI .?AVChangeHistoryService@RBX@@, offset 0x84))",
+          "??_7ChangeHistoryService@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x831850 (vtable (RTTI .?AVChangeHistoryService@RBX@@, offset 0xa4))",
+          "??_7ChangeHistoryService@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x831840 (vtable (RTTI .?AVChangeHistoryService@RBX@@, offset 0xc4))",
+          "??1HistoryRecord@RBX@@QAE@XZ": "0x58bed0 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "??1scoped_connection@signals@boost@@QAE@XZ": "0x5954b0 (external)",
+          "?_Tidy@?$list@PAVHistoryRecord@RBX@@V?$allocator@PAVHistoryRecord@RBX@@@std@@@std@@IAEXXZ": "0x682b40 (support body exact at the bound address)",
+          "??1?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@MAE@XZ": "0x587060 (support body exact at the bound address)"
+        },
+        "local_eh": [
+          "__ehhandler$??1ChangeHistoryService@RBX@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "0058c2c0",
+        "symbol": "?commit@ChangeHistoryService@RBX@@QAEXPBD@Z",
+        "size": 245,
+        "target_size": 245,
+        "exact": true,
+        "verified_targets": {
+          "?prepare@ChangeHistoryService@RBX@@QAEXXZ": "0x58c0f0 (own row)",
+          "?empty@HistoryRecord@RBX@@QAE_NXZ": "0x587a20 (support body exact at the bound address)",
+          "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z": "0x80244c (msvcp90.dll!??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z)",
+          "?push_back@?$list@PAVHistoryRecord@RBX@@V?$allocator@PAVHistoryRecord@RBX@@@std@@@std@@QAEXABQAUHistoryRecord@RBX@@@Z": "0x587ca0 (support body exact at the bound address)",
+          "??F?$_Iterator@$00@?$list@PAVHistoryRecord@RBX@@V?$allocator@PAVHistoryRecord@RBX@@@std@@@std@@QAEAAV012@XZ": "0x4962b0 (support body exact at the bound address)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0HistoryRecord@RBX@@QAE@PAVChangeHistoryService@1@@Z": "0x58bf20 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$?commit@ChangeHistoryService@RBX@@QAEXPBD@Z"
+        ]
+      },
+      {
+        "address": "0058c3c0",
+        "symbol": "?reset@ChangeHistoryService@RBX@@QAEXXZ",
+        "size": 300,
+        "target_size": 300,
+        "exact": true,
+        "verified_targets": {
+          "??1HistoryRecord@RBX@@QAE@XZ": "0x58bed0 (own row)",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "??0HistoryRecord@RBX@@QAE@PAVChangeHistoryService@1@@Z": "0x58bf20 (own row)",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+          "??1?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAE@XZ": "0x58be50 (support body exact against the image bytes at the bound address (BOUNDS))"
+        },
+        "local_eh": [
+          "__ehhandler$?reset@ChangeHistoryService@RBX@@QAEXXZ"
+        ]
+      },
+      {
+        "address": "0058c4f0",
+        "symbol": "?onServiceProvider@ChangeHistoryService@RBX@@UAEXPBVServiceProvider@2@0@Z",
+        "size": 76,
+        "target_size": 76,
+        "exact": true,
+        "verified_targets": {
+          "?reset@ChangeHistoryService@RBX@@QAEXXZ": "0x58c3c0 (own row)",
+          "?disconnect@connection@signals@boost@@QBEXXZ": "0x595230 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0058c8b0",
+        "symbol": "?setEnabled@ChangeHistoryService@RBX@@QAEX_N@Z",
+        "size": 97,
+        "target_size": 97,
+        "exact": true,
+        "verified_targets": {
+          "??_C@_0BN@NCAMMBLP@ChangeHistoryService?4enabled?$AA@": "0x831950 (string 'ChangeHistoryService.enabled')",
+          "?current@Context@Security@RBX@@SAAAV123@XZ": "0x493760 (support body exact at the bound address)",
+          "?requirePermission@Context@Security@RBX@@QBEXW4Permissions@23@PBD@Z": "0x489810 (support body exact at the bound address)",
+          "?start@ChangeHistoryService@RBX@@QAEXXZ": "0x58c620 (uncounted row of this unit, body exact at the bound address)",
+          "?reset@ChangeHistoryService@RBX@@QAEXXZ": "0x58c3c0 (own row)",
+          "?disconnect@connection@signals@boost@@QBEXXZ": "0x595230 (external)"
+        },
+        "local_eh": []
+      }
+    ]
+  },
+  "support_rows": {
+    "??$for_each@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@V?$bind_t@XV?$mf1@XVInstance@RBX@@PAV12@@_mfi@boost@@V?$list2@V?$arg@$00@boost@@V?$value@PAVInstance@RBX@@@_bi@2@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XVInstance@RBX@@PAV12@@_mfi@boost@@V?$list2@V?$arg@$00@boost@@V?$value@PAVInstance@RBX@@@_bi@2@@_bi@3@@_bi@boost@@V?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@0@0V123@@Z": "005903f0",
+    "??1?$vector@V?$weak_ptr@VPartInstance@RBX@@@boost@@V?$allocator@V?$weak_ptr@VPartInstance@RBX@@@boost@@@std@@@std@@QAE@XZ": "00590550",
+    "??__Ffoo@?1??classDescriptor@?$Described@VRootInstance@RBX@@$1?sRootInstance@2@3PADAVModelInstance@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "007fda60",
+    "??R?$mf2@XVChangeHistoryService@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@2@@_mfi@boost@@QBEXPAVChangeHistoryService@RBX@@V?$shared_ptr@VInstance@RBX@@@2@PBVPropertyDescriptor@Reflection@4@@Z": "00496910",
+    "?find@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@ABQAVInstance@RBX@@@Z": "00587ce0",
+    "?find@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@QAE?AViterator@12@ABQBVPropertyDescriptor@Reflection@RBX@@@Z": "00591bd0",
+    "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAEXXZ": "006510f0",
+    "??0runtime_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z": "00409d50",
+    "??D?$_Iterator@$00@?$list@PAVHistoryRecord@RBX@@V?$allocator@PAVHistoryRecord@RBX@@@std@@@std@@QBEAAPAUHistoryRecord@RBX@@XZ": "0042a8f0",
+    "??E?$_Iterator@$00@?$list@PAVHistoryRecord@RBX@@V?$allocator@PAVHistoryRecord@RBX@@@std@@@std@@QAEAAV012@XZ": "005872d0",
+    "?clear@?$list@PAVHistoryRecord@RBX@@V?$allocator@PAVHistoryRecord@RBX@@@std@@@std@@QAEXXZ": "005875a0",
+    "?_Insert@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@IAE?AViterator@12@_NPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@2@ABU?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@2@@Z": "00587820",
+    "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@QAEXXZ": "004abf40",
+    "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@QAEXXZ": "005b7250",
+    "??8const_iterator@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@QBE_NABV012@@Z": "005ecca0",
+    "?insert@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@QAE?AU?$pair@Viterator@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@_N@2@ABU?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@2@@Z": "00587dc0",
+    "?_Erase@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@2@@Z": "00587d70",
+    "?erase@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z": "00587eb0",
+    "?_Copy@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@2@PAU342@0@Z": "00588190 (image bytes, 167 B vs analysis extent 146 B: BOUNDS)",
+    "?sp_enable_shared_from_this@detail@boost@@YAXABVshared_count@12@ZZ": "0047d410",
+    "??$?0V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@any@boost@@QAE@ABV?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@1@@Z": "00577d00",
+    "?get_data@slot_base@detail@signals@boost@@QBE?AV?$shared_ptr@Udata_t@slot_base@detail@signals@boost@@@4@XZ": "004915b0",
+    "?reset@?$shared_ptr@VInstance@RBX@@@boost@@QAEXXZ": "00456e80",
+    "?sig@?$TSignalDesc@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@RBX@@@Z@Reflection@RBX@@IBEAAVTSignalInstance@123@AAVSignalSource@23@@Z": "005875e0",
+    "?_Buynode@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@2@XZ": "00591930",
+    "?_Buynode@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@2@XZ": "005876d0",
+    "?_Growmap@?$deque@PAUHistoryItem@RBX@@V?$allocator@PAUHistoryItem@RBX@@@std@@@std@@IAEXI@Z": "00436800",
+    "??4Value@Reflection@RBX@@QAEAAV012@ABV012@@Z": "0042d0a0",
+    "??$shared_from@VInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VInstance@RBX@@@boost@@PAVInstance@0@@Z": "00618a40",
+    "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "004025b0",
+    "??0?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@QAE@ABV01@@Z": "00589210 (image bytes, 158 B vs analysis extent 141 B: BOUNDS)",
+    "??D?$_Deque_const_iterator@PAUHistoryItem@RBX@@V?$allocator@PAUHistoryItem@RBX@@@std@@$00@std@@QBEABQAUHistoryItem@RBX@@XZ": "00436420",
+    "?_Tidy@?$deque@PAUHistoryItem@RBX@@V?$allocator@PAUHistoryItem@RBX@@@std@@@std@@IAEXXZ": "0064fa10",
+    "??F?$_Iterator@$00@?$list@PAVHistoryRecord@RBX@@V?$allocator@PAVHistoryRecord@RBX@@@std@@@std@@QAEAAV012@XZ": "004962b0",
+    "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0040ad80",
+    "??__Fdescriptor@?1??classDescriptor@?$Described@VChangeHistoryService@RBX@@$1?sChangeHistoryService@2@3PADAV?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "007fd930",
+    "?_Min@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@2@PAU342@@Z": "005870c0",
+    "?_Max@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@KAPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@2@PAU342@@Z": "00650e70",
+    "?_Lrotate@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@2@@Z": "00587310",
+    "?_Rrotate@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@IAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@2@@Z": "005870e0",
+    "?_Buynode@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@2@PAU342@00ABU?$pair@QAVInstance@RBX@@UHistoryItem@2@@2@D@Z": "0058a310 (image bytes, 155 B vs analysis extent 134 B: BOUNDS)",
+    "??$?0PBD@?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@IAE@PBD@Z": "005871d0",
+    "??0?$list@PAVHistoryRecord@RBX@@V?$allocator@PAVHistoryRecord@RBX@@@std@@@std@@QAE@XZ": "0061a200",
+    "?_Dec@const_iterator@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAEXXZ": "00587140",
+    "??8const_iterator@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QBE_NABV012@@Z": "005ecca0",
+    "??0?$shared_ptr@VInstance@RBX@@@boost@@QAE@ABV01@@Z": "004116f0",
+    "??1?$shared_ptr@VInstance@RBX@@@boost@@QAE@XZ": "00600660",
+    "??1?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAE@XZ": "0058be50 (image bytes, 112 B vs analysis extent 117 B: BOUNDS)",
+    "?_Tidy@?$list@PAVHistoryRecord@RBX@@V?$allocator@PAVHistoryRecord@RBX@@@std@@@std@@IAEXXZ": "00682b40",
+    "??1?$FactoryProduct@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@MAE@XZ": "00587060",
+    "?empty@HistoryRecord@RBX@@QAE_NXZ": "00587a20",
+    "?push_back@?$list@PAVHistoryRecord@RBX@@V?$allocator@PAVHistoryRecord@RBX@@@std@@@std@@QAEXABQAUHistoryRecord@RBX@@@Z": "00587ca0",
+    "?current@Context@Security@RBX@@SAAAV123@XZ": "00493760",
+    "?requirePermission@Context@Security@RBX@@QBEXW4Permissions@23@PBD@Z": "00489810",
+    "??_GRootInstance@RBX@@MAEPAXI@Z": {
+      "address": "005a0910",
+      "exact": true,
+      "verified_targets": {
+        "??1RootInstance@RBX@@MAE@XZ": "0x590630 (own row)",
+        "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+      }
+    },
+    "?applyProperty@HistoryItem@RBX@@QAEXABU?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@Z": "005872a0",
+    "??_9ChangeHistoryService@RBX@@$BEA@AE": "00587240",
+    "??$visitDescendents@V?$bind_t@XV?$mf1@XVChangeHistoryService@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVChangeHistoryService@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@Instance@RBX@@QBEXV?$bind_t@XV?$mf1@XVChangeHistoryService@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVChangeHistoryService@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@Z": "004a27e0",
+    "?connect@?$TSignalDesc@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@QAE?AVconnection@signals@boost@@PAVSignalSource@23@ABV?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@boost@@@6@H@Z": "004a3340",
+    "??1?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@XZ": "0049f710",
+    "??_9ChangeHistoryService@RBX@@$BEE@AE": "00587280",
+    "??_9ChangeHistoryService@RBX@@$BEI@AE": "00587290",
+    "??1?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@XZ": "0049f710"
+  },
+  "bounds_evidence": {
+    "?_Copy@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@2@PAU342@0@Z": "00588190: compiled 167 B, analysis extent 146 B",
+    "??0?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@QAE@ABV01@@Z": "00589210: compiled 158 B, analysis extent 141 B",
+    "?_Buynode@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@IAEPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@2@PAU342@00ABU?$pair@QAVInstance@RBX@@UHistoryItem@2@@2@D@Z": "0058a310: compiled 155 B, analysis extent 134 B",
+    "??1?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAE@XZ": "0058be50: compiled 112 B, analysis extent 117 B"
+  },
+  "unverified_callees": {
+    "00588240": "std::for_each(properties, bind(&HistoryItem::applyProperty / unplayProperty / mergeProperty, item, _1)) (ICF-folded, callers 00588486 / 005884b1 / 0058a0de / 0058bdf4): 164 B against 137 B. The original converts each map element into a temporary pair<const PropertyDescriptor*, Value> through 00587710 (key copy, Value clone through vtable slot 2, member call, destroy), so the bound members take pair<const PropertyDescriptor*, Value> (HistoryRecord.h declares pair<const PropertyDescriptor* const, Value>). Exact in the pending build.",
+    "0058aa30": "slot<function<void(shared_ptr<Instance>)>>(bind_t) (start 0058c71e / 0058c7a2): 170 B against 172 B. The original calls the boost::function(Functor, int) constructor 00588f00 out of line with the SFINAE int argument (push 0); the donor boost headers inline it.",
+    "0058aae0": "slot<function<void(shared_ptr<Instance>, const PropertyDescriptor*)>>(bind_t) (start 0058c82b): 170 B against 172 B, the same boost::function constructor difference as 0058aa30."
+  },
+  "vtables_current_headers": {
+    "??_7RootInstance@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "00831d40",
+      "slots": 2,
+      "checked": [],
+      "not_bound_here": 2
+    },
+    "??_7RootInstance@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "00831d38",
+      "slots": 1,
+      "checked": [
+        "0 ??_ERootInstance@RBX@@OBE@AEPAXI@Z = 0x590780"
+      ],
+      "not_bound_here": 0
+    },
+    "??_7RootInstance@RBX@@6B?$Described@VRootInstance@RBX@@$1?sRootInstance@2@3PADAVModelInstance@2@@Reflection@1@@": {
+      "address": "00831cac",
+      "slots": 5,
+      "checked": [],
+      "not_bound_here": 5
+    },
+    "??_7RootInstance@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "00831d4c",
+      "slots": 26,
+      "checked": [
+        "5 ?onDescendentAdded@RootInstance@RBX@@MAEXPAVInstance@2@@Z = 0x590160",
+        "6 ?onDescendentRemoving@RootInstance@RBX@@MAEXABV?$shared_ptr@VInstance@RBX@@@boos = 0x590180",
+        "18 ?onChildControllerChanged@RootInstance@RBX@@MAEXXZ = 0x5907f0"
+      ],
+      "not_bound_here": 23
+    },
+    "??_7RootInstance@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "00831ce0",
+      "slots": 3,
+      "checked": [],
+      "not_bound_here": 3
+    },
+    "??_7RootInstance@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "00831d20",
+      "slots": 3,
+      "checked": [
+        "0 ??_ERootInstance@RBX@@OCE@AEPAXI@Z = 0x5907a0"
+      ],
+      "not_bound_here": 2
+    },
+    "??_7RootInstance@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "00831d10",
+      "slots": 3,
+      "checked": [
+        "0 ??_ERootInstance@RBX@@OEE@AEPAXI@Z = 0x5907b0"
+      ],
+      "not_bound_here": 2
+    },
+    "??_7RootInstance@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "00831d00",
+      "slots": 3,
+      "checked": [],
+      "not_bound_here": 3
+    },
+    "??_7RootInstance@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "00831cf0",
+      "slots": 3,
+      "checked": [],
+      "not_bound_here": 3
+    },
+    "??_7RootInstance@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "00831cd0",
+      "slots": 3,
+      "checked": [],
+      "not_bound_here": 3
+    },
+    "??_7RootInstance@RBX@@6BDebugable@1@@": {
+      "address": "00831d30",
+      "slots": 1,
+      "checked": [],
+      "not_bound_here": 1
+    },
+    "??_7RootInstance@RBX@@6BICameraOwner@1@@": {
+      "address": "00831c94",
+      "slots": 5,
+      "checked": [],
+      "not_bound_here": 5
+    },
+    "??_7RootInstance@RBX@@6BICameraSubject@1@@": {
+      "address": "00831c64",
+      "slots": 6,
+      "checked": [
+        "1 ?onCameraNear@ModelInstance@RBX@@$4PPPPPPPM@GA@AEXM@Z = 0x5907c0",
+        "2 ?getCameraIgnorePrimitives@ModelInstance@RBX@@$4PPPPPPPM@GA@AEXAAV?$vector@PBVPr = 0x590790"
+      ],
+      "not_bound_here": 4
+    },
+    "??_7RootInstance@RBX@@6BIControllable@1@@": {
+      "address": "00831cc4",
+      "slots": 2,
+      "checked": [],
+      "not_bound_here": 2
+    },
+    "??_7RootInstance@RBX@@6BILocation@1@@": {
+      "address": "00831c80",
+      "slots": 1,
+      "checked": [
+        "0 ?getLocation@ModelInstance@RBX@@$4PPPPPPPM@GA@BE?BVCoordinateFrame@G3D@@XZ = 0x5907d0"
+      ],
+      "not_bound_here": 0
+    },
+    "??_7RootInstance@RBX@@6BIPrimaryPart@1@@": {
+      "address": "00831c88",
+      "slots": 2,
+      "checked": [],
+      "not_bound_here": 2
+    },
+    "??_7?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "008317ec",
+      "slots": 2,
+      "checked": [],
+      "not_bound_here": 2
+    },
+    "??_7?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "008317e4",
+      "slots": 1,
+      "checked": [],
+      "not_bound_here": 1
+    },
+    "??_7?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "008317fc",
+      "slots": 16,
+      "checked": [],
+      "not_bound_here": 16
+    },
+    "??_7?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "0083178c",
+      "slots": 3,
+      "checked": [],
+      "not_bound_here": 3
+    },
+    "??_7?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "008317cc",
+      "slots": 3,
+      "checked": [],
+      "not_bound_here": 3
+    },
+    "??_7?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "008317bc",
+      "slots": 3,
+      "checked": [],
+      "not_bound_here": 3
+    },
+    "??_7?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "008317ac",
+      "slots": 3,
+      "checked": [],
+      "not_bound_here": 3
+    },
+    "??_7?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "0083179c",
+      "slots": 3,
+      "checked": [],
+      "not_bound_here": 3
+    },
+    "??_7?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "0083177c",
+      "slots": 3,
+      "checked": [],
+      "not_bound_here": 3
+    },
+    "??_7?$DescribedCreatable@VChangeHistoryService@RBX@@VInstance@2@$1?sChangeHistoryService@2@3PADA@RBX@@6BDebugable@1@@": {
+      "address": "008317dc",
+      "slots": 1,
+      "checked": [],
+      "not_bound_here": 1
+    },
+    "??_7ChangeHistoryService@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "008318b0",
+      "slots": 2,
+      "checked": [],
+      "not_bound_here": 2
+    },
+    "??_7ChangeHistoryService@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "008318a8",
+      "slots": 1,
+      "checked": [],
+      "not_bound_here": 1
+    },
+    "??_7ChangeHistoryService@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "008318bc",
+      "slots": 19,
+      "checked": [
+        "12 ?onServiceProvider@ChangeHistoryService@RBX@@UAEXPBVServiceProvider@2@0@Z = 0x58c4f0",
+        "16 ?onHistoryAdded@ChangeHistoryService@RBX@@UAEXV?$shared_ptr@VInstance@RBX@@@boos = 0x58b870",
+        "17 ?onHistoryRemoving@ChangeHistoryService@RBX@@UAEXV?$shared_ptr@VInstance@RBX@@@b = 0x58b970",
+        "18 ?onHistoryChanged@ChangeHistoryService@RBX@@UAEXV?$shared_ptr@VInstance@RBX@@@bo = 0x58ba70"
+      ],
+      "not_bound_here": 15
+    },
+    "??_7ChangeHistoryService@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "00831850",
+      "slots": 3,
+      "checked": [],
+      "not_bound_here": 3
+    },
+    "??_7ChangeHistoryService@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "00831890",
+      "slots": 3,
+      "checked": [],
+      "not_bound_here": 3
+    },
+    "??_7ChangeHistoryService@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "00831880",
+      "slots": 3,
+      "checked": [],
+      "not_bound_here": 3
+    },
+    "??_7ChangeHistoryService@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "00831870",
+      "slots": 3,
+      "checked": [],
+      "not_bound_here": 3
+    },
+    "??_7ChangeHistoryService@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "00831860",
+      "slots": 3,
+      "checked": [],
+      "not_bound_here": 3
+    },
+    "??_7ChangeHistoryService@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "00831840",
+      "slots": 3,
+      "checked": [],
+      "not_bound_here": 3
+    },
+    "??_7ChangeHistoryService@RBX@@6BDebugable@1@@": {
+      "address": "008318a0",
+      "slots": 1,
+      "checked": [],
+      "not_bound_here": 1
+    }
+  },
+  "pending_build_only": [
+    {
+      "address": "005910a0",
+      "symbol": "?insertSpawnLocation@RootInstance@RBX@@AAEXPAVSpawnLocation@2@@Z",
+      "size": 293,
+      "target_size": 293,
+      "exact": false,
+      "verified_targets": {
+        "??$create@VTeams@RBX@@@ServiceProvider@RBX@@SAPAVTeams@1@PBVInstance@1@@Z": "0x590dd0 (own row)",
+        "?getTeamColor@SpawnLocation@RBX@@QBE?AVBrickColor@2@XZ": "0x5d1ba0 (external (evidence name))",
+        "?teamExists@Teams@RBX@@QAE_NVBrickColor@2@@Z": "0x5d5f20 (external)",
+        "??$create@VTeam@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VTeam@RBX@@@boost@@XZ": "0x409140 (pending-build body exact at the bound address)",
+        "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0 (external (evidence name))",
+        "?setTeamColor@Team@RBX@@QAEXVBrickColor@2@@Z": "0x566700 (external)",
+        "??_C@_05BBLMIBKN@?5Team?$AA@": "0x831e10 (string ' Team')",
+        "?name@BrickColor@RBX@@QBEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ": "0x5b61b0 (external (evidence name))",
+        "__imp_??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z": "0x8023e4 (msvcp90.dll!??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$?insertSpawnLocation@RootInstance@RBX@@AAEXPAVSpawnLocation@2@@Z"
+      ],
+      "pending_build_exact": true,
+      "main_build_size": 293,
+      "status": "pending-build-only",
+      "reason": "SpawnLocation::neutral is read at +0x400 (005910b5 cmp byte ptr [edi+0x400]); the committed v8datamodel/SpawnLocation.h states +0x400 but compiles to +0x2e8 over the donor PartInstance. Exact only with native-headers/part-embedded (2008 PartInstance, embedded Primitive at +0x228) ahead of the path."
+    },
+    {
+      "address": "00588240",
+      "symbol": "??$for_each@Viterator@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@V?$bind_t@XV?$mf1@XUHistoryItem@RBX@@ABU?$pair@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@_mfi@boost@@V?$list2@V?$value@PAUHistoryItem@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XUHistoryItem@RBX@@ABU?$pair@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@_mfi@boost@@V?$list2@V?$value@PAUHistoryItem@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@Viterator@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@0@0V123@@Z",
+      "size": 164,
+      "target_size": 164,
+      "exact": false,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "??$?RV?$mf1@XUHistoryItem@RBX@@ABU?$pair@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@_mfi@boost@@V?$list1@AAU?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@_bi@2@@?$list2@V?$value@PAUHistoryItem@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@boost@@QAEXV?$type@X@12@AAV?$mf1@XUHistoryItem@RBX@@ABU?$pair@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@_mfi@2@AAV?$list1@AAU?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@12@H@Z": "0x587710 (pending-build body exact at the bound address)",
+        "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@QAEXXZ": "0x5b7250 (pending-build body exact at the bound address)"
+      },
+      "local_eh": [],
+      "pending_build_exact": true,
+      "main_build_size": 137,
+      "status": "pending-build-only",
+      "reason": "std::for_each over the HistoryItem property map with bind(&HistoryItem::applyProperty, this, _1): exact only with the pending HistoryRecord.h (bound members take pair<const PropertyDescriptor*, Value>); 137 / 164 B in the main build."
+    },
+    {
+      "address": "00588440",
+      "symbol": "?play@HistoryItem@RBX@@QAEXXZ",
+      "size": 140,
+      "target_size": 140,
+      "exact": false,
+      "verified_targets": {
+        "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0 (external (evidence name))",
+        "?applyProperty@HistoryItem@RBX@@QAEXABU?$pair@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@Z": "0x5872a0 (pending-build body exact at the bound address)",
+        "??$for_each@Viterator@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@V?$bind_t@XV?$mf1@XUHistoryItem@RBX@@ABU?$pair@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@_mfi@boost@@V?$list2@V?$value@PAUHistoryItem@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XUHistoryItem@RBX@@ABU?$pair@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@_mfi@boost@@V?$list2@V?$value@PAUHistoryItem@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@Viterator@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@0@0V123@@Z": "0x588240 (pending-build body exact at the bound address)"
+      },
+      "local_eh": [],
+      "pending_build_exact": true,
+      "main_build_size": 140,
+      "status": "pending-build-only",
+      "reason": "HistoryItem::play: bytes exact in both builds; its for_each callee 00588240 is exact only in the pending build."
+    },
+    {
+      "address": "0058a040",
+      "symbol": "?unplay@HistoryRecord@RBX@@QAEXXZ",
+      "size": 228,
+      "target_size": 228,
+      "exact": false,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?unplay@HistoryItem@RBX@@QAEXXZ": "0x589a20 (own row)",
+        "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAEXXZ": "0x6510f0 (pending-build body exact at the bound address)",
+        "?unplayProperty@HistoryItem@RBX@@QAEXABU?$pair@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@Z": "0x5884d0 (pending-build body exact at the bound address)",
+        "??$for_each@Viterator@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@V?$bind_t@XV?$mf1@XUHistoryItem@RBX@@ABU?$pair@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@_mfi@boost@@V?$list2@V?$value@PAUHistoryItem@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XUHistoryItem@RBX@@ABU?$pair@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@_mfi@boost@@V?$list2@V?$value@PAUHistoryItem@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@Viterator@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@0@0V123@@Z": "0x588240 (pending-build body exact at the bound address)",
+        "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0 (external (evidence name))"
+      },
+      "local_eh": [],
+      "pending_build_exact": true,
+      "main_build_size": 228,
+      "status": "pending-build-only",
+      "reason": "HistoryRecord::unplay: bytes exact in both builds; its for_each callee 00588240 (unplayProperty) is exact only in the pending build."
+    },
+    {
+      "address": "0058bcb0",
+      "symbol": "?merge@HistoryRecord@RBX@@QAEXPAU12@@Z",
+      "size": 402,
+      "target_size": 402,
+      "exact": false,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "?find@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@ABQAVInstance@RBX@@@Z": "0x587ce0 (pending-build body exact at the bound address)",
+        "?erase@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAE?AViterator@12@Vconst_iterator@12@@Z": "0x58a3f0 (own row)",
+        "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0 (pending-build body exact at the bound address)",
+        "?mergeProperty@HistoryItem@RBX@@QAEXABU?$pair@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@Z": "0x5894e0 (pending-build body exact at the bound address)",
+        "??$for_each@Vconst_iterator@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@std@@V?$bind_t@XV?$mf1@XUHistoryItem@RBX@@ABU?$pair@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@_mfi@boost@@V?$list2@V?$value@PAUHistoryItem@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XUHistoryItem@RBX@@ABU?$pair@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@_mfi@boost@@V?$list2@V?$value@PAUHistoryItem@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@Vconst_iterator@?$_Tree@V?$_Tmap_traits@PBVPropertyDescriptor@Reflection@RBX@@VValue@23@U?$less@PBVPropertyDescriptor@Reflection@RBX@@@std@@V?$allocator@U?$pair@QBVPropertyDescriptor@Reflection@RBX@@VValue@23@@std@@@6@$0A@@std@@@0@0V123@@Z": "0x588240 (pending-build body exact at the bound address)",
+        "??A?$map@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@@std@@QAEAAUHistoryItem@RBX@@ABQAVInstance@3@@Z": "0x58bba0 (own row)",
+        "??4HistoryItem@RBX@@QAEAAU01@ABU01@@Z": "0x5899b0 (own row)",
+        "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@PAVInstance@RBX@@UHistoryItem@2@U?$less@PAVInstance@RBX@@@std@@V?$allocator@U?$pair@QAVInstance@RBX@@UHistoryItem@2@@std@@@5@$0A@@std@@@std@@QAEXXZ": "0x6510f0 (pending-build body exact at the bound address)"
+      },
+      "local_eh": [],
+      "pending_build_exact": true,
+      "main_build_size": 402,
+      "status": "pending-build-only",
+      "reason": "HistoryRecord::merge: bytes exact in both builds; its for_each callee 00588240 (mergeProperty) is exact only in the pending build."
+    }
+  ],
+  "not_exact": [
+    {
+      "address": "0058c620",
+      "symbol": "?start@ChangeHistoryService@RBX@@QAEXXZ",
+      "size": 656,
+      "target_size": 656,
+      "exact": false,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??0HistoryRecord@RBX@@QAE@PAVChangeHistoryService@1@@Z": "0x58bf20 (own row)",
+        "??_9ChangeHistoryService@RBX@@$BEA@AE": "0x587240 (support body exact at the bound address)",
+        "??$visitDescendents@V?$bind_t@XV?$mf1@XVChangeHistoryService@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVChangeHistoryService@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@Instance@RBX@@QBEXV?$bind_t@XV?$mf1@XVChangeHistoryService@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVChangeHistoryService@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@Z": "0x4a27e0 (support body exact at the bound address)",
+        "??_C@_04BHIIPFEC@base?$AA@": "0x831948 (string 'base')",
+        "?commit@ChangeHistoryService@RBX@@QAEXPBD@Z": "0x58c2c0 (own row)",
+        "?mergeFirst@ChangeHistoryService@RBX@@QAEXXZ": "0x58bf80 (own row)",
+        "?event_descendentAdded@Instance@RBX@@2V?$SignalDesc@VInstance@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@2@A": "0x973e40 (external)",
+        "?connect@?$TSignalDesc@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@QAE?AVconnection@signals@boost@@PAVSignalSource@23@ABV?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@boost@@@6@H@Z": "0x4a3340 (support body exact at the bound address)",
+        "??4scoped_connection@signals@boost@@QAEAAV012@ABVconnection@12@@Z": "0x595540 (external)",
+        "??1connection@signals@boost@@QAE@XZ": "0x595370 (external)",
+        "??1?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@XZ": "0x49f710 (support body exact at the bound address)",
+        "??_9ChangeHistoryService@RBX@@$BEE@AE": "0x587280 (support body exact at the bound address)",
+        "?event_descendentRemoving@Instance@RBX@@2V?$SignalDesc@VInstance@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@2@A": "0x973ca0 (external)",
+        "??_9ChangeHistoryService@RBX@@$BEI@AE": "0x587290 (support body exact at the bound address)",
+        "?event_itemChanged@Instance@RBX@@2V?$SignalDesc@VInstance@RBX@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@2@@Z@Reflection@2@A": "0x9751b0 (external)",
+        "?connect@?$TSignalDesc@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@RBX@@@Z@Reflection@RBX@@QAE?AVconnection@signals@boost@@PAVSignalSource@23@ABV?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@6@H@Z": "0x588fb0 (own row)",
+        "??1?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@XZ": "0x49f710 (support body exact at the bound address)"
+      },
+      "local_eh": [
+        "__ehhandler$?start@ChangeHistoryService@RBX@@QAEXXZ"
+      ],
+      "bytes_exact": true,
+      "unverified_callees": {
+        "0058aa30": "??$?0V?$bind_t@XV?$mf1@XVChangeHistoryService@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVChangeHistoryService@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@boost@@@?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABV?$bind_t@XV?$mf1@XVChangeHistoryService@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@@_mfi@boost@@V?$list2@V?$value@PAVChangeHistoryService@RBX@@@_bi@boost@@V?$arg@$00@3@@_bi@3@@_bi@1@@Z",
+        "0058aae0": "??$?0V?$bind_t@XV?$mf2@XVChangeHistoryService@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@2@@_mfi@boost@@V?$list3@V?$value@PAVChangeHistoryService@RBX@@@_bi@boost@@V?$arg@$00@3@V?$arg@$01@3@@_bi@3@@_bi@boost@@@?$slot@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@RBX@@@ZV?$allocator@X@std@@@boost@@@boost@@QAE@ABV?$bind_t@XV?$mf2@XVChangeHistoryService@RBX@@V?$shared_ptr@VInstance@RBX@@@boost@@PBVPropertyDescriptor@Reflection@2@@_mfi@boost@@V?$list3@V?$value@PAVChangeHistoryService@RBX@@@_bi@boost@@V?$arg@$00@3@V?$arg@$01@3@@_bi@3@@_bi@1@@Z"
+      },
+      "status": "bytes exact, call targets not all verified (not counted)",
+      "reason": "656 / 656 B bytes exact, not counted: its slot constructors 0058aa30 / 0058aae0 are not reproduced (boost::function constructor out of line with the SFINAE int argument in the original), so not every call target is verified."
+    },
+    {
+      "address": "00591580",
+      "symbol": "??0RootInstance@RBX@@IAE@XZ",
+      "size": 572,
+      "target_size": 572,
+      "exact": false,
+      "reason": "572 / 572 B: identical except the World allocation size: the original passes 0x114 to operator new at 00591739 before World::World 005ea920, the donor v8world/World.h gives sizeof(World) = 0xb8. Needs a 2008 World declaration (owner proposal in the receipt); the World layout itself is not derived here."
+    }
+  ],
+  "rejected": {
+    "AppUnit588_2008ChangeHistory.cpp without /U_RELEASEASSERT": "the RBXASSERT in MemberDescriptorContainer::Iterator stays in the captureAll for_each 005882f0 (182 / 158 B); every other row is unchanged. /fp:fast changes nothing in this unit (kept for one unit profile).",
+    "HistoryItem::unplay with the ternary findHistoryItem helper (as merge / unplayProperty use)": "00589a20 not exact; the `if (it == end()) return NULL; return &it->second;` helper of HistoryItemPlayback.cpp is needed there (the two helpers are both kept)",
+    "ChangeHistoryService::commit with `backward = ++history.end()` (ChangeHistoryCommit.cpp)": "bytes exact, but the call at 0058c2c0 goes to list iterator operator-- 004962b0 (the target unplay also calls for --backward), not operator++ 005872d0: `backward = --history.end()`",
+    "the ChangeHistory* owner trials compiled as separate units": "per-file objects only give 61 range rows with call targets unverified; one unit gives 62 relocation-masked rows and the consistent target bindings checked here",
+    "AppUnit588_2008RootInstance.cpp without /U_RELEASEASSERT": "RBXASSERT bodies stay in: insertRaw 217/185, insertCharacterView 143/116, insertIdeView 308/282, insert3dView 313/270, moveToPoint 402/363",
+    "AppUnit588_2008RootInstance.cpp without /fp:fast": "computeIdeInsertPoint 181/167, moveToIdeInsertPoint 225/177",
+    "moveToIdeInsertPoint / moveToCharacterInsertPoint / insert3dView with `!partArray.empty()`": "177/177 and 182/182 B, test eax,0xfffffff8 instead of sar eax,3 / test eax,eax",
+    "insertToTree / insertIdeView with `partArray.size() > 0`": "234/234 and 282/282 B, sar/test instead of test 0xfffffff8",
+    "computeCharacterInsertPoint with the donor getCamera()->getCameraCoordinateFrame() and `(halfSize * cameraLook) * Vector3(1,0,1)`": "539/478 (slot 1 getCamera instead of slot 2 getGCamera)",
+    "computeCharacterInsertPoint without the halfY / lookY reads (y zeroed directly)": "478/478 B: lookVector product scheduled fld [eax]; fld [esp+8]; fmul st(1) instead of fld [esp+8]; fld st(0); fmul [eax]. Variants tried: halfSize * cameraLook (480), cameraLook * halfSize (480), donor * Vector3(1,0,1) (478/496), Vector3 cameraLook(look.x, 0, look.z) (478), a CoordinateFrame local (480), lookY read only (478), halfY read only (478)"
+  },
+  "proposals": {
+    "v8datamodel/HistoryRecord.h (HistoryRecord owner)": "Declare HistoryItem::applyProperty / unplayProperty / mergeProperty as taking const std::pair<const Reflection::PropertyDescriptor*, Reflection::Value>& (no const on the key). Evidence: the std::for_each body 00588240 they are bound into (callers HistoryItem::play 00588486 / 005884b1, HistoryRecord::unplay 0058a0de, merge 0058bdf4) builds a temporary pair from each map element through 00587710 (key copy, Value clone through vtable slot 2, member call, destroy); with the declared pair<const PropertyDescriptor* const, Value> the call binds directly (137 / 164 B). With the change (generated copy, pending build) 00588240, 00588440, 0058a040 and 0058bcb0 are exact with every target verified.",
+    "native-classes/ChangeHistoryCommit.cpp (owner), FYI": "commit: `backward = --history.end()`, not `++history.end()`: the original call at 0058c2c0 goes to operator-- 004962b0 (relocation masking hides the difference).",
+    "v8world/World.h (World owner)": "The 2008 World is 0x114 bytes: RootInstance() 00591580 passes 0x114 to operator new (00591739) before World::World 005ea920; the donor World.h gives 0xb8. With a 2008 World declaration of that size the RootInstance constructor of this unit is exact (only the push immediate differs).",
+    "v8tree/Service.h (core owner)": "Define template<class Class> static Class* ServiceProvider::create(const Instance* context) in the header: walk context->getParent() (+0x104) with dynamic_cast<const ServiceProvider*> and tail-call provider->create<Class>(). Evidence: 00590d80 / 00590dd0 / 00590e20 (this unit, exact with that body), the same definition is repeated in LocalBackpack2008.cpp, SoundServiceProvider.cpp and AppUnit4C8_2008PhysicsServiceCreate.cpp.",
+    "v8datamodel/Workspace.h (Workspace owner)": "insertInstances 005911d0 needs a Workspace member taking a Decal*: 005a3d40 (ret 4, ecx = the result of the ServiceProvider::find helper 00491e50 whose tail call is 00490af0) builds a 0x50-byte MouseCommand (new 0x50 at 005a3d92) and calls Workspace::setMouseCommand 005a1fc0. insertInstances 005911d0 reaches it for a dynamic_cast<Decal*> (RTTI 00940dbc) instance only when insertMode == INSERT_TO_3D_VIEW (00591472), and then returns without inserting the rest. Its other 2008-only steps: an early for_each(setParent) return when requestedParent is not in this tree (005911fa..00591282), requestedParent defaulting to this (0059141e), and a final 0058c5c0(\"Insert\" 00831e18, this) (camera-history-trial names it recordCameraHistory).",
+    "v8datamodel/SpawnLocation.h (SpawnLocation owner), FYI": "insertSpawnLocation 005910a0 is exact once the 2008 PartInstance (native-headers/part-embedded) is used: neutral is read at +0x400 (005910b5), as the header comment says; over the default PartInstance it compiles to +0x2e8. No change to SpawnLocation.h is needed; the PartInstance owner proposal stands."
+  },
+  "exact_function_rows": [
+    "005882f0",
+    "00588390",
+    "005884d0",
+    "00588710",
+    "00588780",
+    "005888f0",
+    "00588970",
+    "00588a30",
+    "00588c10",
+    "00588cf0",
+    "00588d70",
+    "00588db0",
+    "00588f60",
+    "00588fb0",
+    "00589000",
+    "00589120",
+    "00589190",
+    "005892b0",
+    "00589330",
+    "00589410",
+    "005894c0",
+    "005894e0",
+    "00589530",
+    "00589650",
+    "00589720",
+    "00589890",
+    "00589950",
+    "005899b0",
+    "00589a20",
+    "00589cd0",
+    "0058a130",
+    "0058a2a0",
+    "0058a3b0",
+    "0058a3f0",
+    "0058a6d0",
+    "0058a8d0",
+    "0058ab90",
+    "0058b280",
+    "0058b370",
+    "0058b550",
+    "0058b6c0",
+    "0058b870",
+    "0058b970",
+    "0058ba70",
+    "0058bba0",
+    "0058bed0",
+    "0058bf20",
+    "0058bf80",
+    "0058c0f0",
+    "0058c1c0",
+    "0058c2c0",
+    "0058c3c0",
+    "0058c4f0",
+    "0058c8b0",
+    "00590030",
+    "00590070",
+    "005900d0",
+    "00590160",
+    "00590180",
+    "00590190",
+    "00590240",
+    "00590300",
+    "00590440",
+    "005905c0",
+    "00590620",
+    "00590630",
+    "00590780",
+    "00590790",
+    "005907a0",
+    "005907b0",
+    "005907c0",
+    "005907d0",
+    "005907f0",
+    "00590800",
+    "005909e0",
+    "00590b50",
+    "00590c10",
+    "00590d00",
+    "00590d80",
+    "00590dd0",
+    "00590e20",
+    "00590e70",
+    "00590f90",
+    "00591510"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

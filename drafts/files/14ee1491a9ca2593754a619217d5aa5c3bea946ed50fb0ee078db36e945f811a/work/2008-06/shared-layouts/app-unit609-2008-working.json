@@ -1,0 +1,791 @@
+{
+  "class": "RBX Extents and Dragger units of the application range 00609a30..00610bf0 (2008-06), inactive",
+  "compiler": "VS2008 RTM 21022",
+  "flags": {
+    "ext": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit609-2008/NativeAppUnit609_2008_ext.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit609_2008Extents.cpp"
+    ],
+    "drag": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit609-2008/NativeAppUnit609_2008_drag.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit609_2008Dragger.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/native-classes/AppUnit609_2008Extents.cpp": "cc58d7738b6c631292fed8b8a65a8bc3fcedafcafa1abd35580398092c15536e",
+    "rebuild/2008-06/native-classes/AppUnit609_2008Dragger.cpp": "666da8c6a7bbfd64ec91640ed5d37244c07617e656a4908de4d48eaaca6e1e29",
+    "rebuild/2008-06/tests/record_native_app_unit609_2008.py": "291773469a78e4945e9362eae9711e6142b9ee98275411d3f8a57864818cf58e",
+    "rebuild/2008-06/native-headers/util/Extents.h": "47349ce5409c13e02f8e1c1f2daaf620f35479f355d6cde5e1d59e0b66b70244"
+  },
+  "objects": {
+    "ext": "ac213c6a66fec09e7b01724f43009f38f37f6a71f358fe4b1d11eee9f94ba250",
+    "drag": "81c978ddc4341f0ca829a6fcca289d2862bba2fde88fb1e6790336f466c54e07"
+  },
+  "unit_map": {
+    "feature 00609a30..0060cad0": "Feature / Hole / MotorFeature / VelocityMotor (native-classes/Feature.cpp, feature-working.json): getFaceId 00609a30 .. MotorFeature::join 0060ca00 (209 B, ends 0060cad1). RTTI vtables Feature 00842be0, VelocityMotor 00842cbc, MotorFeature 008435bc, Hole 008434d4; static initializers 007f7bc0..007f7c80. Uncounted here: the VelocityMotor rows pending on the JointInstance askSetParent/onAncestorChanged, signal connect(group), MotorJoint and KERNEL_STAGE proposals, the EnumPropDescriptor call_once rows (reflection.h proposal), computeLocalCoordinateFrame 00609da0 (PartInstance embedded Primitive) and getRenderCoord 0060a490 (register allocation), STL helpers 00609bb0/00609bd0 (ICF-shared _Tree helpers named by other types).",
+    "contact-manager 0060cae0..0060dd5f": "BallBallContact() 0060cae0 (calls Contact() 00606c20) and the Ball/Block leaf virtuals 0060cb10..0060cc60 (world-shapes counts 0060cae0..0060cbc0), G3D::Array<Contact*> resize/append 0060cfd0/0060d0d0, BlockBlockContact() 0060d500 .. 0060d610 (leaves2008), ContactManager members intersectingOthers 0060d630 / 0060dc10 / 0060dcd0, getHit 0060d6e0 / 0060db10, createContact 0060d770 (news 0x7c and calls 0060d500), onNewPair 0060d8b0, onPrimitiveGeometryTypeChanged 0060d8e0. Needs the 2008 Primitive / Contact layouts (body-primitive-contact lease); not built here.",
+    "mega-dragger 0060dd60..0060e96f": "0060dd60 (tail call of DragUtilities::unJoinAndSetDragging 0060ee30), anyDragPartAlive 0060dd70, mousePartAlive 0060dde0 .. MegaDragger() 0060e630 / ~MegaDragger 0060e700 / finishDragging 0060e780, movePart 0060e840, CoordinateFrame::toObjectSpace 0060e8f0, 0060e920 (PartInstance::findParts 0059c640). axis-move-tool-lifetime-trial.json counts 0060dd70, 0060e200, 0060e840; tool/MegaDragger.h owner.",
+    "drag-utilities 0060e970..0060f3df": "DragUtilities::hitObjectOrPlane 0060e970 .. getPrimitives 0060f3d0 (trial counts 0060ead0, 0060f340, 0060f3d0).",
+    "extents 0060f3e0..0060fe95": "Extents::closestFace 0060f3e0 (only caller 0066c3ec) .. getPlane 0060fe40 (ends 0060fe95); all nine out-of-line Extents members of the unit share the Math::inf local static 0097b890/0097b894. Built here.",
+    "dragger 0060fea0..00610bee": "Dragger::toGrid 0060fea0 (dragSnap static 00976348/guard 00976354) .. safeRotate 00610a60 (ends 00610bee). Trial-counted: movePrimitives 0060fef0, computeExtents(vector) 0060ff80, movePrimitivesGoal 00610180, safePlaceAlongLine 00610580, safeMoveAlongLine 006106c0 (analog names applyMove / transformMove / subdivideMove). Built here: toGrid, intersectingWorldOrOthers, movePrimitivesDelta, the four searches, safeMoveYDrop, safeMoveNoDrop. Not built: computeExtents(Array) 00610070 and safeRotate 00610a60 (2008 Primitive geometry +0x9c / PartInstance coordinate frame).",
+    "lua 00610bf0..": "Lua 5.1.1 lauxlib (luaL_where 00610bf0, luaL_error 00610c60, ...): library, not recovered."
+  },
+  "range_rows_counted_by_other_receipts": {
+    "00609a30": [
+      "feature-working.json",
+      "render-settings-working.json"
+    ],
+    "00609a40": [
+      "feature-working.json"
+    ],
+    "00609a50": [
+      "body-movers-working.json",
+      "feature-working.json"
+    ],
+    "00609a60": [
+      "feature-working.json"
+    ],
+    "00609b50": [
+      "feature-working.json"
+    ],
+    "00609c60": [
+      "feature-working.json"
+    ],
+    "00609d40": [
+      "feature-working.json"
+    ],
+    "00609d50": [
+      "feature-working.json"
+    ],
+    "00609d70": [
+      "feature-working.json"
+    ],
+    "00609d80": [
+      "feature-working.json"
+    ],
+    "00609d90": [
+      "feature-working.json",
+      "stats-service-working.json"
+    ],
+    "0060a260": [
+      "feature-working.json"
+    ],
+    "0060a2e0": [
+      "feature-working.json"
+    ],
+    "0060a2f0": [
+      "body-movers-working.json",
+      "click-detector-working.json",
+      "feature-working.json",
+      "flag-family-working.json",
+      "humanoid2008-working.json",
+      "spawn-working.json",
+      "special-shape-working.json",
+      "user-controller-working.json"
+    ],
+    "0060a300": [
+      "feature-working.json"
+    ],
+    "0060a360": [
+      "feature-working.json"
+    ],
+    "0060a410": [
+      "feature-working.json"
+    ],
+    "0060a420": [
+      "feature-working.json"
+    ],
+    "0060a430": [
+      "feature-working.json"
+    ],
+    "0060a440": [
+      "feature-working.json"
+    ],
+    "0060a450": [
+      "feature-working.json"
+    ],
+    "0060a460": [
+      "feature-working.json"
+    ],
+    "0060a470": [
+      "feature-working.json"
+    ],
+    "0060a480": [
+      "feature-working.json"
+    ],
+    "0060a520": [
+      "feature-working.json"
+    ],
+    "0060a580": [
+      "feature-working.json"
+    ],
+    "0060a5e0": [
+      "feature-working.json"
+    ],
+    "0060a640": [
+      "feature-working.json"
+    ],
+    "0060a740": [
+      "feature-working.json"
+    ],
+    "0060a750": [
+      "feature-working.json"
+    ],
+    "0060a760": [
+      "feature-working.json"
+    ],
+    "0060a770": [
+      "feature-working.json"
+    ],
+    "0060a780": [
+      "feature-working.json"
+    ],
+    "0060a790": [
+      "feature-working.json"
+    ],
+    "0060a7a0": [
+      "feature-working.json"
+    ],
+    "0060a7b0": [
+      "feature-working.json"
+    ],
+    "0060a7c0": [
+      "feature-working.json"
+    ],
+    "0060a820": [
+      "feature-working.json"
+    ],
+    "0060a830": [
+      "feature-working.json"
+    ],
+    "0060a840": [
+      "feature-working.json"
+    ],
+    "0060a8a0": [
+      "feature-working.json"
+    ],
+    "0060a8b0": [
+      "feature-working.json"
+    ],
+    "0060a8c0": [
+      "feature-working.json"
+    ],
+    "0060a8d0": [
+      "feature-working.json"
+    ],
+    "0060a8e0": [
+      "feature-working.json"
+    ],
+    "0060a930": [
+      "feature-working.json"
+    ],
+    "0060a980": [
+      "feature-working.json"
+    ],
+    "0060a9d0": [
+      "feature-working.json"
+    ],
+    "0060aa20": [
+      "feature-working.json"
+    ],
+    "0060aa70": [
+      "feature-working.json"
+    ],
+    "0060aac0": [
+      "feature-working.json"
+    ],
+    "0060ab00": [
+      "feature-working.json"
+    ],
+    "0060ab20": [
+      "feature-working.json"
+    ],
+    "0060ab40": [
+      "feature-working.json"
+    ],
+    "0060ab50": [
+      "feature-working.json"
+    ],
+    "0060ab60": [
+      "feature-working.json"
+    ],
+    "0060ab80": [
+      "feature-working.json"
+    ],
+    "0060aba0": [
+      "feature-working.json"
+    ],
+    "0060abc0": [
+      "feature-working.json"
+    ],
+    "0060abe0": [
+      "feature-working.json"
+    ],
+    "0060acc0": [
+      "feature-working.json"
+    ],
+    "0060ae50": [
+      "feature-working.json"
+    ],
+    "0060afe0": [
+      "feature-working.json"
+    ],
+    "0060b170": [
+      "feature-working.json"
+    ],
+    "0060b190": [
+      "feature-working.json"
+    ],
+    "0060b1b0": [
+      "feature-working.json"
+    ],
+    "0060b1d0": [
+      "feature-working.json"
+    ],
+    "0060b350": [
+      "feature-working.json"
+    ],
+    "0060b4d0": [
+      "feature-working.json"
+    ],
+    "0060b700": [
+      "feature-working.json"
+    ],
+    "0060b770": [
+      "feature-working.json"
+    ],
+    "0060b7e0": [
+      "feature-working.json"
+    ],
+    "0060b850": [
+      "feature-working.json"
+    ],
+    "0060b8c0": [
+      "feature-working.json"
+    ],
+    "0060ba00": [
+      "feature-working.json"
+    ],
+    "0060bb60": [
+      "feature-working.json"
+    ],
+    "0060bb70": [
+      "feature-working.json"
+    ],
+    "0060bb80": [
+      "feature-working.json"
+    ],
+    "0060bb90": [
+      "feature-working.json"
+    ],
+    "0060bba0": [
+      "feature-working.json"
+    ],
+    "0060bce0": [
+      "feature-working.json"
+    ],
+    "0060be60": [
+      "feature-working.json"
+    ],
+    "0060bf60": [
+      "feature-working.json"
+    ],
+    "0060bfd0": [
+      "feature-working.json"
+    ],
+    "0060c340": [
+      "feature-working.json"
+    ],
+    "0060c370": [
+      "feature-working.json"
+    ],
+    "0060c3a0": [
+      "feature-working.json"
+    ],
+    "0060c3d0": [
+      "feature-working.json"
+    ],
+    "0060c640": [
+      "feature-working.json"
+    ],
+    "0060c6e0": [
+      "feature-working.json"
+    ],
+    "0060c6f0": [
+      "feature-working.json"
+    ],
+    "0060c700": [
+      "feature-working.json"
+    ],
+    "0060c710": [
+      "feature-working.json"
+    ],
+    "0060c720": [
+      "feature-working.json"
+    ],
+    "0060c740": [
+      "feature-working.json"
+    ],
+    "0060c7e0": [
+      "feature-working.json"
+    ],
+    "0060c7f0": [
+      "feature-working.json"
+    ],
+    "0060c800": [
+      "feature-working.json"
+    ],
+    "0060c810": [
+      "feature-working.json"
+    ],
+    "0060c820": [
+      "feature-working.json"
+    ],
+    "0060c840": [
+      "feature-working.json"
+    ],
+    "0060c910": [
+      "feature-working.json"
+    ],
+    "0060c9e0": [
+      "feature-working.json"
+    ],
+    "0060c9f0": [
+      "feature-working.json"
+    ],
+    "0060ca00": [
+      "feature-working.json"
+    ],
+    "0060cae0": [
+      "world-shapes-working.json"
+    ],
+    "0060cb10": [
+      "world-shapes-working.json"
+    ],
+    "0060cb30": [
+      "world-shapes-working.json"
+    ],
+    "0060cb50": [
+      "world-shapes-working.json"
+    ],
+    "0060cb60": [
+      "world-shapes-working.json"
+    ],
+    "0060cb90": [
+      "world-shapes-working.json"
+    ],
+    "0060cbc0": [
+      "world-shapes-working.json"
+    ],
+    "0060d500": [
+      "leaves2008-working.json"
+    ],
+    "0060d580": [
+      "leaves2008-working.json"
+    ],
+    "0060d590": [
+      "leaves2008-working.json"
+    ],
+    "0060d5a0": [
+      "leaves2008-working.json"
+    ],
+    "0060d610": [
+      "leaves2008-working.json"
+    ],
+    "0060dd70": [
+      "axis-move-tool-lifetime-trial.json"
+    ],
+    "0060e200": [
+      "axis-move-tool-lifetime-trial.json"
+    ],
+    "0060e840": [
+      "axis-move-tool-lifetime-trial.json"
+    ],
+    "0060ead0": [
+      "axis-move-tool-lifetime-trial.json"
+    ],
+    "0060f340": [
+      "axis-move-tool-lifetime-trial.json"
+    ],
+    "0060f3d0": [
+      "axis-move-tool-lifetime-trial.json"
+    ],
+    "0060fef0": [
+      "axis-move-tool-lifetime-trial.json"
+    ],
+    "0060ff80": [
+      "axis-move-tool-lifetime-trial.json"
+    ],
+    "00610180": [
+      "axis-move-tool-lifetime-trial.json"
+    ],
+    "00610580": [
+      "axis-move-tool-lifetime-trial.json"
+    ],
+    "006106c0": [
+      "axis-move-tool-lifetime-trial.json"
+    ]
+  },
+  "rows": {
+    "ext": [
+      {
+        "address": "0060f3e0",
+        "symbol": "?closestFace@Extents@RBX@@QAE?AW4NormalId@2@ABVVector3@G3D@@@Z",
+        "size": 154,
+        "target_size": 154,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "0060f480",
+        "symbol": "?getCorner@Extents@RBX@@QBE?AVVector3@G3D@@H@Z",
+        "size": 89,
+        "target_size": 89,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "0060f4e0",
+        "symbol": "?getFaceCorners@Extents@RBX@@QBEXW4NormalId@2@AAVVector3@G3D@@111@Z",
+        "size": 620,
+        "target_size": 620,
+        "exact": true,
+        "verified_targets": {
+          "?getCorner@Extents@RBX@@QBE?AVVector3@G3D@@H@Z": "0x60f480 (own row)"
+        },
+        "local_eh": [
+          "$LN1",
+          "$LN2",
+          "$LN3",
+          "$LN4",
+          "$LN5",
+          "$LN6",
+          "$LN61"
+        ]
+      },
+      {
+        "address": "0060f750",
+        "symbol": "?separatedByMoreThan@Extents@RBX@@QBE_NABV12@M@Z",
+        "size": 93,
+        "target_size": 93,
+        "exact": true,
+        "verified_targets": {
+          "?overlapsOrTouches@Extents@RBX@@QBE_NABV12@@Z": "0x606b60 (external)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0060f7b0",
+        "symbol": "?faceCenter@Extents@RBX@@QBE?AVVector3@G3D@@W4NormalId@2@@Z",
+        "size": 106,
+        "target_size": 106,
+        "exact": true,
+        "verified_targets": {
+          "__real@3f000000": "0x819bac (constant 3f000000)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0060f820",
+        "symbol": "?containedByFrustum@Extents@RBX@@QBE_NABVFrustum@GCamera@G3D@@@Z",
+        "size": 187,
+        "target_size": 187,
+        "exact": true,
+        "verified_targets": {
+          "?halfSpaceContains@Plane@G3D@@QBE_NVVector3@2@@Z": "0x518f20 (support body exact at the bound address)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0060f8e0",
+        "symbol": "?vv@Extents@RBX@@SA?AV12@ABVVector3@G3D@@0@Z",
+        "size": 203,
+        "target_size": 203,
+        "exact": true,
+        "verified_targets": {
+          "?inf@Vector3@G3D@@SAABV12@XZ": "0x510960 (support body exact at the bound address)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0060fc20",
+        "symbol": "?toWorldSpace@Extents@RBX@@QAE?AV12@ABVCoordinateFrame@G3D@@@Z",
+        "size": 534,
+        "target_size": 534,
+        "exact": true,
+        "verified_targets": {
+          "??_B?1??inf@Math@RBX@@SAABMXZ@51": "0x97b894 (local static)",
+          "__imp___FInf": "0x80250c (msvcp90.dll!_FInf)",
+          "?inf@?1??0Math@RBX@@SAABMXZ@4MA": "0x97b890 (local static)",
+          "?vv@Extents@RBX@@SA?AV12@ABVVector3@G3D@@0@Z": "0x60f8e0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "0060fe40",
+        "symbol": "?getPlane@Extents@RBX@@QBE?AVPlane@G3D@@W4NormalId@2@@Z",
+        "size": 86,
+        "target_size": 86,
+        "exact": true,
+        "verified_targets": {
+          "?faceCenter@Extents@RBX@@QBE?AVVector3@G3D@@W4NormalId@2@@Z": "0x60f7b0 (own row)",
+          "?normalIdToVector3@RBX@@YAABVVector3@G3D@@W4NormalId@1@@Z": "0x5ec570 (external (evidence name))",
+          "??0Plane@G3D@@QAE@ABVVector3@1@0@Z": "0x5259e0 (external)"
+        },
+        "local_eh": []
+      }
+    ],
+    "drag": [
+      {
+        "address": "0060fea0",
+        "symbol": "?toGrid@Dragger@RBX@@SA?AVVector3@G3D@@ABV34@@Z",
+        "size": 73,
+        "target_size": 73,
+        "exact": true,
+        "verified_targets": {
+          "??_B?1??dragSnap@Dragger@RBX@@SAABVVector3@G3D@@XZ@51": "0x976354 (local static)",
+          "?v@?1??dragSnap@Dragger@RBX@@SAABVVector3@G3D@@XZ@4V45@A": "0x976348 (local static)",
+          "__real@3dcccccd": "0x81e704 (constant 3dcccccd)",
+          "?toGrid@Math@RBX@@SA?AVVector3@G3D@@ABV34@0@Z": "0x5dee10 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00610130",
+        "symbol": "?intersectingWorldOrOthers@Dragger@RBX@@CA_NABV?$Array@PAVPrimitive@RBX@@@G3D@@AAVContactManager@2@@Z",
+        "size": 80,
+        "target_size": 80,
+        "exact": true,
+        "verified_targets": {
+          "?computeExtents@Dragger@RBX@@SA?AVExtents@2@ABV?$Array@PAVPrimitive@RBX@@@G3D@@@Z": "0x610070 (external (evidence name))",
+          "__real@bc23d70a": "0x843760 (constant bc23d70a)",
+          "__real@3c23d70a": "0x82748c (constant 3c23d70a)",
+          "?intersectingOthers@ContactManager@RBX@@QAE_NABV?$Array@PAVPrimitive@RBX@@@G3D@@M@Z": "0x60dc10 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00610270",
+        "symbol": "?movePrimitivesDelta@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@AAV54@@Z",
+        "size": 149,
+        "target_size": 149,
+        "exact": true,
+        "verified_targets": {
+          "?movePrimitives@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@@Z": "0x60fef0 (external)",
+          "??_B?1??dragSnap@Dragger@RBX@@SAABVVector3@G3D@@XZ@51": "0x976354 (local static)",
+          "?v@?1??dragSnap@Dragger@RBX@@SAABVVector3@G3D@@XZ@4V45@A": "0x976348 (local static)",
+          "__real@3dcccccd": "0x81e704 (constant 3dcccccd)",
+          "?toGrid@Math@RBX@@SA?AVVector3@G3D@@ABV34@0@Z": "0x5dee10 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00610310",
+        "symbol": "?searchUpFine@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@AAVVector3@4@AAVContactManager@2@@Z",
+        "size": 130,
+        "target_size": 130,
+        "exact": true,
+        "verified_targets": {
+          "__real@3dcccccd": "0x81e704 (constant 3dcccccd)",
+          "?movePrimitivesDelta@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@AAV54@@Z": "0x610270 (own row)",
+          "?isNanInfDenormVector3@Math@RBX@@SA_NABVVector3@G3D@@@Z": "0x5dd860 (external (evidence name))",
+          "?intersectingWorldOrOthers@Dragger@RBX@@CA_NABV?$Array@PAVPrimitive@RBX@@@G3D@@AAVContactManager@2@@Z": "0x610130 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "006103a0",
+        "symbol": "?searchDownFine@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@AAVVector3@4@AAVContactManager@2@@Z",
+        "size": 148,
+        "target_size": 148,
+        "exact": true,
+        "verified_targets": {
+          "__real@bdcccccd": "0x843764 (constant bdcccccd)",
+          "?movePrimitivesDelta@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@AAV54@@Z": "0x610270 (own row)",
+          "?isNanInfDenormVector3@Math@RBX@@SA_NABVVector3@G3D@@@Z": "0x5dd860 (external (evidence name))",
+          "?intersectingWorldOrOthers@Dragger@RBX@@CA_NABV?$Array@PAVPrimitive@RBX@@@G3D@@AAVContactManager@2@@Z": "0x610130 (own row)",
+          "?searchUpFine@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@AAVVector3@4@AAVContactManager@2@@Z": "0x610310 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00610440",
+        "symbol": "?searchUpGross@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@AAVVector3@4@AAVContactManager@2@@Z",
+        "size": 148,
+        "target_size": 148,
+        "exact": true,
+        "verified_targets": {
+          "__real@3f99999a": "0x827278 (constant 3f99999a)",
+          "?movePrimitivesDelta@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@AAV54@@Z": "0x610270 (own row)",
+          "?isNanInfDenormVector3@Math@RBX@@SA_NABVVector3@G3D@@@Z": "0x5dd860 (external (evidence name))",
+          "?intersectingWorldOrOthers@Dragger@RBX@@CA_NABV?$Array@PAVPrimitive@RBX@@@G3D@@AAVContactManager@2@@Z": "0x610130 (own row)",
+          "?searchDownFine@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@AAVVector3@4@AAVContactManager@2@@Z": "0x6103a0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "006104e0",
+        "symbol": "?searchDownGross@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@AAVVector3@4@AAVContactManager@2@@Z",
+        "size": 148,
+        "target_size": 148,
+        "exact": true,
+        "verified_targets": {
+          "__real@bf99999a": "0x830b6c (constant bf99999a)",
+          "?movePrimitivesDelta@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@AAV54@@Z": "0x610270 (own row)",
+          "?isNanInfDenormVector3@Math@RBX@@SA_NABVVector3@G3D@@@Z": "0x5dd860 (external (evidence name))",
+          "?intersectingWorldOrOthers@Dragger@RBX@@CA_NABV?$Array@PAVPrimitive@RBX@@@G3D@@AAVContactManager@2@@Z": "0x610130 (own row)",
+          "?searchUpFine@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@AAVVector3@4@AAVContactManager@2@@Z": "0x610310 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00610830",
+        "symbol": "?safeMoveYDrop@Dragger@RBX@@SA?AVVector3@G3D@@ABV?$Array@PAVPrimitive@RBX@@@4@ABV34@AAVContactManager@2@@Z",
+        "size": 251,
+        "target_size": 251,
+        "exact": true,
+        "verified_targets": {
+          "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51": "0x96f050 (local static)",
+          "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A": "0x96f044 (local static)",
+          "__real@3f99999a": "0x827278 (constant 3f99999a)",
+          "__real@3dcccccd": "0x81e704 (constant 3dcccccd)",
+          "?toGrid@Math@RBX@@SA?AVVector3@G3D@@ABV34@M@Z": "0x5dee90 (external (evidence name))",
+          "?movePrimitives@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@@Z": "0x60fef0 (external)",
+          "?intersectingWorldOrOthers@Dragger@RBX@@CA_NABV?$Array@PAVPrimitive@RBX@@@G3D@@AAVContactManager@2@@Z": "0x610130 (own row)",
+          "?searchUpGross@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@AAVVector3@4@AAVContactManager@2@@Z": "0x610440 (own row)",
+          "?searchDownGross@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@AAVVector3@4@AAVContactManager@2@@Z": "0x6104e0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00610930",
+        "symbol": "?safeMoveNoDrop@Dragger@RBX@@SA?AVVector3@G3D@@ABV?$Array@PAVPrimitive@RBX@@@4@ABV34@AAVContactManager@2@@Z",
+        "size": 297,
+        "target_size": 297,
+        "exact": true,
+        "verified_targets": {
+          "??_B?1??zero@Vector3@G3D@@SAABV12@XZ@51": "0x96f050 (local static)",
+          "?v@?1??zero@Vector3@G3D@@SAABV23@XZ@4V23@A": "0x96f044 (local static)",
+          "?movePrimitives@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@ABVVector3@4@@Z": "0x60fef0 (external)",
+          "?intersectingWorldOrOthers@Dragger@RBX@@CA_NABV?$Array@PAVPrimitive@RBX@@@G3D@@AAVContactManager@2@@Z": "0x610130 (own row)",
+          "?searchUpGross@Dragger@RBX@@CAXABV?$Array@PAVPrimitive@RBX@@@G3D@@AAVVector3@4@AAVContactManager@2@@Z": "0x610440 (own row)"
+        },
+        "local_eh": []
+      }
+    ]
+  },
+  "support_rows": {
+    "?halfSpaceContains@Plane@G3D@@QBE_NVVector3@2@@Z": "00518f20",
+    "?inf@Vector3@G3D@@SAABV12@XZ": "00510960"
+  },
+  "not_exact": [
+    {
+      "address": "0060f9b0",
+      "symbol": "?express@Extents@RBX@@QAE?AV12@ABVCoordinateFrame@G3D@@0@Z",
+      "size": 617,
+      "target_size": 617,
+      "exact": false,
+      "reason": "617 / 617 B: only the row-1 sum of the inlined G3D pointToWorldSpace is associated differently ((m10*x + m11*y) + m12*z in the original, (m11*y + m12*z) + m10*x here) under /fp:fast. Tried: pointToObjectSpace(pointToWorldSpace(getCorner(i))) (this source), a named world local (617, same pair), a named corner local (617), (world - translation) * rotation (635), rotation.transpose() * (...) (662), rotation * corner + translation (641). The matched server analog needs a private pointToWorldSpace with row-1 named locals; the shared G3D header is not changed."
+    }
+  ],
+  "rejected": {
+    "AppUnit609_2008Extents.cpp without /fp:fast": "separatedByMoreThan 138/93, faceCenter 135/106, vv 93/203, express 1046/617, toWorldSpace 868/534",
+    "containedByFrustum with `const G3D::Plane& plane = frustum.faceArray[i].plane` or a FrustumFace reference": "187 B, lea operands swapped ([eax+ecx+0x10]) or `add eax, [esp+0x18]`; the getCArray() + i spelling is exact",
+    "containedByFrustum passing getCorner(j) directly / with the outer `if (size() > 0)`": "sub esp,0xc frame / extra size compare (187 B, different code)",
+    "Dragger::intersectingWorldOrOthers without __declspec(noinline)": "it is inlined into the four search loops (169/130, 187/148 x3); the original keeps every call out of line. Defining computeExtents(Array) in the unit (donor Primitive.h, trial only) does not prevent the inlining.",
+    "AppUnit609_2008Dragger.cpp without /fp:fast": "safeMoveYDrop 257/251, safeMoveNoDrop 303/297"
+  },
+  "exact_function_rows": [
+    "0060f3e0",
+    "0060f480",
+    "0060f4e0",
+    "0060f750",
+    "0060f7b0",
+    "0060f820",
+    "0060f8e0",
+    "0060fc20",
+    "0060fe40",
+    "0060fea0",
+    "00610130",
+    "00610270",
+    "00610310",
+    "006103a0",
+    "00610440",
+    "006104e0",
+    "00610830",
+    "00610930"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

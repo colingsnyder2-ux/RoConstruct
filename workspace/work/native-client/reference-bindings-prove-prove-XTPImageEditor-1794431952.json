@@ -1,0 +1,255 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?DrawState@CDC@@QAEHVCPoint@@VCSize@@PAVCBitmap@@IPAVCBrush@@@Z",
+    "address": "0070a150"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPImageEditor\\objects\\11dad5a407995aee\\candidate.obj": "e1de352648b340af4b48b04e1cf7324e39ccf7c4dd7aff4bf24ea902d4f509c6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5xc1cedk\\owners.json": "2a181cc685b18f8ce7a39170a8f9946c234bc0862cf83034073a7c45e9d49140",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5xc1cedk\\import-thunk-identities-as-owner.json": "cb14befd978640d1951908f4951a29f1f5f9cb21192fa82559f168bfb5addd8f"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?DrawState@CDC@@QAEHVCPoint@@VCSize@@PAUHICON__@@IPAVCBrush@@@Z",
+    "address": "0076e2c0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPImageEditor\\objects\\11dad5a407995aee\\candidate.obj": "e1de352648b340af4b48b04e1cf7324e39ccf7c4dd7aff4bf24ea902d4f509c6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5xc1cedk\\owners.json": "2a181cc685b18f8ce7a39170a8f9946c234bc0862cf83034073a7c45e9d49140",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5xc1cedk\\import-thunk-identities-as-owner.json": "cb14befd978640d1951908f4951a29f1f5f9cb21192fa82559f168bfb5addd8f"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?CreateEditorBitmap@CAlphaBitmap@CXTPImageEditorPicture@@QAEXHH@Z",
+    "address": "0076df30"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPImageEditor\\objects\\11dad5a407995aee\\candidate.obj": "e1de352648b340af4b48b04e1cf7324e39ccf7c4dd7aff4bf24ea902d4f509c6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5xc1cedk\\owners.json": "2a181cc685b18f8ce7a39170a8f9946c234bc0862cf83034073a7c45e9d49140",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5xc1cedk\\import-thunk-identities-as-owner.json": "cb14befd978640d1951908f4951a29f1f5f9cb21192fa82559f168bfb5addd8f"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Init@CXTPImageEditorPicture@@QAEXIPAVCXTPImageEditorDlg@@@Z",
+    "address": "0076e370"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPImageEditor\\objects\\11dad5a407995aee\\candidate.obj": "e1de352648b340af4b48b04e1cf7324e39ccf7c4dd7aff4bf24ea902d4f509c6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5xc1cedk\\owners.json": "2a181cc685b18f8ce7a39170a8f9946c234bc0862cf83034073a7c45e9d49140",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5xc1cedk\\import-thunk-identities-as-owner.json": "cb14befd978640d1951908f4951a29f1f5f9cb21192fa82559f168bfb5addd8f"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?OnEraseClick@CXTPImageEditorDlg@@AAEXPAUtagNMHDR@@PAJ@Z",
+    "address": "0076f650"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPImageEditor\\objects\\11dad5a407995aee\\candidate.obj": "e1de352648b340af4b48b04e1cf7324e39ccf7c4dd7aff4bf24ea902d4f509c6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5xc1cedk\\owners.json": "2a181cc685b18f8ce7a39170a8f9946c234bc0862cf83034073a7c45e9d49140",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5xc1cedk\\import-thunk-identities-as-owner.json": "cb14befd978640d1951908f4951a29f1f5f9cb21192fa82559f168bfb5addd8f"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?OnSelectorClick@CXTPImageEditorDlg@@AAEXIPAUtagNMHDR@@PAJ@Z",
+    "address": "0076f680"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPImageEditor\\objects\\11dad5a407995aee\\candidate.obj": "e1de352648b340af4b48b04e1cf7324e39ccf7c4dd7aff4bf24ea902d4f509c6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5xc1cedk\\owners.json": "2a181cc685b18f8ce7a39170a8f9946c234bc0862cf83034073a7c45e9d49140",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5xc1cedk\\import-thunk-identities-as-owner.json": "cb14befd978640d1951908f4951a29f1f5f9cb21192fa82559f168bfb5addd8f"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?FreeNode@?$CList@PAVCAlphaBitmap@CXTPImageEditorPicture@@PAV12@@@IAEXPAUCNode@1@@Z",
+    "address": "00760970"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPImageEditor\\objects\\11dad5a407995aee\\candidate.obj": "e1de352648b340af4b48b04e1cf7324e39ccf7c4dd7aff4bf24ea902d4f509c6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5xc1cedk\\owners.json": "2a181cc685b18f8ce7a39170a8f9946c234bc0862cf83034073a7c45e9d49140",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5xc1cedk\\import-thunk-identities-as-owner.json": "cb14befd978640d1951908f4951a29f1f5f9cb21192fa82559f168bfb5addd8f"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?GetSelectedColor@CXTPImageEditorPicture@@QAEKXZ",
+    "address": "0076e420"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPImageEditor\\objects\\11dad5a407995aee\\candidate.obj": "e1de352648b340af4b48b04e1cf7324e39ccf7c4dd7aff4bf24ea902d4f509c6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5xc1cedk\\owners.json": "2a181cc685b18f8ce7a39170a8f9946c234bc0862cf83034073a7c45e9d49140",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5xc1cedk\\import-thunk-identities-as-owner.json": "cb14befd978640d1951908f4951a29f1f5f9cb21192fa82559f168bfb5addd8f"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1?$CList@PAVCAlphaBitmap@CXTPImageEditorPicture@@PAV12@@@UAE@XZ",
+    "address": "0076f8a0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPImageEditor\\objects\\11dad5a407995aee\\candidate.obj": "e1de352648b340af4b48b04e1cf7324e39ccf7c4dd7aff4bf24ea902d4f509c6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5xc1cedk\\owners.json": "2a181cc685b18f8ce7a39170a8f9946c234bc0862cf83034073a7c45e9d49140",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5xc1cedk\\import-thunk-identities-as-owner.json": "cb14befd978640d1951908f4951a29f1f5f9cb21192fa82559f168bfb5addd8f"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Serialize@?$CList@PAVCAlphaBitmap@CXTPImageEditorPicture@@PAV12@@@UAEXAAVCArchive@@@Z",
+    "address": "0076d180"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPImageEditor\\objects\\11dad5a407995aee\\candidate.obj": "e1de352648b340af4b48b04e1cf7324e39ccf7c4dd7aff4bf24ea902d4f509c6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5xc1cedk\\owners.json": "2a181cc685b18f8ce7a39170a8f9946c234bc0862cf83034073a7c45e9d49140",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5xc1cedk\\import-thunk-identities-as-owner.json": "cb14befd978640d1951908f4951a29f1f5f9cb21192fa82559f168bfb5addd8f"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Apply@CXTPImageEditorPicture@@QAEXXZ",
+    "address": "00770920"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPImageEditor\\objects\\11dad5a407995aee\\candidate.obj": "e1de352648b340af4b48b04e1cf7324e39ccf7c4dd7aff4bf24ea902d4f509c6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5xc1cedk\\owners.json": "2a181cc685b18f8ce7a39170a8f9946c234bc0862cf83034073a7c45e9d49140",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5xc1cedk\\import-thunk-identities-as-owner.json": "cb14befd978640d1951908f4951a29f1f5f9cb21192fa82559f168bfb5addd8f"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Undo@CXTPImageEditorPicture@@QAEXXZ",
+    "address": "00770c90"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPImageEditor\\objects\\11dad5a407995aee\\candidate.obj": "e1de352648b340af4b48b04e1cf7324e39ccf7c4dd7aff4bf24ea902d4f509c6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5xc1cedk\\owners.json": "2a181cc685b18f8ce7a39170a8f9946c234bc0862cf83034073a7c45e9d49140",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5xc1cedk\\import-thunk-identities-as-owner.json": "cb14befd978640d1951908f4951a29f1f5f9cb21192fa82559f168bfb5addd8f"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Redo@CXTPImageEditorPicture@@QAEXXZ",
+    "address": "00770cd0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPImageEditor\\objects\\11dad5a407995aee\\candidate.obj": "e1de352648b340af4b48b04e1cf7324e39ccf7c4dd7aff4bf24ea902d4f509c6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5xc1cedk\\owners.json": "2a181cc685b18f8ce7a39170a8f9946c234bc0862cf83034073a7c45e9d49140",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5xc1cedk\\import-thunk-identities-as-owner.json": "cb14befd978640d1951908f4951a29f1f5f9cb21192fa82559f168bfb5addd8f"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?MovePicture@CXTPImageEditorPicture@@QAEXVCPoint@@@Z",
+    "address": "00770d30"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPImageEditor\\objects\\11dad5a407995aee\\candidate.obj": "e1de352648b340af4b48b04e1cf7324e39ccf7c4dd7aff4bf24ea902d4f509c6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5xc1cedk\\owners.json": "2a181cc685b18f8ce7a39170a8f9946c234bc0862cf83034073a7c45e9d49140",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5xc1cedk\\import-thunk-identities-as-owner.json": "cb14befd978640d1951908f4951a29f1f5f9cb21192fa82559f168bfb5addd8f"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??$SerializeElements@PAVCAlphaBitmap@CXTPImageEditorPicture@@@@YGXAAVCArchive@@PAPAVCAlphaBitmap@CXTPImageEditorPicture@@H@Z",
+   "address": "00787550",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_E?$CList@PAVCAlphaBitmap@CXTPImageEditorPicture@@PAV12@@@UAEPAXI@Z",
+   "address": "0076f8b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECAlphaBitmap@CXTPImageEditorPicture@@UAEPAXI@Z",
+   "address": "00413430",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?AddTail@?$CList@PAVCAlphaBitmap@CXTPImageEditorPicture@@PAV12@@@QAEPAU__POSITION@@PAVCAlphaBitmap@CXTPImageEditorPicture@@@Z",
+   "address": "0076bac0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?CopyBitmap@CXTPImageEditorPicture@@SAXPAVCAlphaBitmap@1@0VCSize@@VCPoint@@KKPAVCDC@@@Z",
+   "address": "0076e8d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?FromHandlePermanent@CWnd@@SGPAV1@PAUHWND__@@@Z",
+   "address": "006a106a",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetColor@CXTPImageEditorPicker@@QAEKXZ",
+   "address": "004208e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetThisClass@CXTPImageEditorPicker@@SGPAUCRuntimeClass@@XZ",
+   "address": "0076e0c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnPictureChanged@CXTPImageEditorPicture@@QAEXXZ",
+   "address": "0076fad0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?RemoveAll@?$CList@PAVCAlphaBitmap@CXTPImageEditorPicture@@PAV12@@@QAEXXZ",
+   "address": "00438030",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?RemoveHead@?$CList@PAVCAlphaBitmap@CXTPImageEditorPicture@@PAV12@@@QAEPAVCAlphaBitmap@CXTPImageEditorPicture@@XZ",
+   "address": "00754f20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?RemoveTail@?$CList@PAVCAlphaBitmap@CXTPImageEditorPicture@@PAV12@@@QAEPAVCAlphaBitmap@CXTPImageEditorPicture@@XZ",
+   "address": "00754f60",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetSelected@CXTPImageEditorDlg@@AAEXPAVCXTPImageEditorPicker@@@Z",
+   "address": "0076f610",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetWindowPos@CWnd@@QAEHPBV1@HHHHI@Z",
+   "address": "006a0a46",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SubclassDlgItem@CWnd@@QAEHIPAV1@@Z",
+   "address": "007bc1c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp_?wndTop@CWnd@@2V1@B",
+   "address": "00803e44",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__CreateDIBSection@24",
+   "address": "0080214c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__DrawStateA@40",
+   "address": "00802b78",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 14,
+ "owners_bound": 14
+}

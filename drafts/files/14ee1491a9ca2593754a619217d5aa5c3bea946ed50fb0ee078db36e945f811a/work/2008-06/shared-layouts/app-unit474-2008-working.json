@@ -1,0 +1,696 @@
+{
+  "class": "unit map of the application range 00474000..00480000 (2008-06): G3D 6.09 GLG3D library, inactive",
+  "result": "No RBX translation unit and no Roblox-only template instantiation in the range: every row is G3D library code (Texture.cpp, VARArea.cpp, RenderDevice.cpp, TextureManager.cpp, Win32Window.cpp and their header inlines) or an ICF-shared body. Nothing is recovered or counted here.",
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit474_2008.py": "100c2475fba52042093261f3b52eef4c51ee235e6d9199538052468d793f5adb"
+  },
+  "unit_map": {
+    "g3d-texture 00474000..00475b4f": {
+      "rows": 14,
+      "bytes": 6086,
+      "first": "00474320",
+      "counted_elsewhere": [],
+      "last": "00475a40",
+      "unit": "G3D 6.09 GLG3Dcpp/Texture.cpp (starts before 00474000: G3D::Texture vtable 0081e36c slot 0 is 00473ed0)",
+      "library": true,
+      "recovered": false
+    },
+    "g3d-vararea 00475b50..0047651f": {
+      "rows": 11,
+      "bytes": 2440,
+      "first": "00475b50",
+      "counted_elsewhere": [
+        "00475f20"
+      ],
+      "last": "00476470",
+      "unit": "G3D 6.09 GLG3Dcpp/VARArea.cpp (VARArea ctor 00475d60 stores vtable 0081e43c; the deleting dtor 00476130 is its only slot)",
+      "library": true,
+      "recovered": false
+    },
+    "g3d-renderdevice 00476520..0047d40f": {
+      "rows": 137,
+      "bytes": 27381,
+      "first": "00476520",
+      "counted_elsewhere": [
+        "004782d0"
+      ],
+      "last": "0047d3a0",
+      "unit": "G3D 6.09 GLG3Dcpp/RenderDevice.cpp, with the G3D header inlines it emits out of line (inf, Color4, Matrix3 / CoordinateFrame operators, GLight, Array<uint16>) and the Table<const TextureFormat*, bool> instantiation",
+      "library": true,
+      "recovered": false
+    },
+    "icf-ret 0047d410..0047d41f": {
+      "rows": 1,
+      "bytes": 1,
+      "first": "0047d410",
+      "counted_elsewhere": [
+        "0047d410"
+      ],
+      "last": "0047d410",
+      "unit": "the 1-byte `ret` shared by identical-code folding (GWindow vtable 0081f104 slot 38 and >100 callers; counted by other receipts)",
+      "library": false,
+      "recovered": false
+    },
+    "g3d-texturemanager 0047d420..0047ea1f": {
+      "rows": 22,
+      "bytes": 5491,
+      "first": "0047d420",
+      "counted_elsewhere": [],
+      "last": "0047e6e0",
+      "unit": "G3D 6.09 GLG3Dcpp/TextureManager.cpp (TextureArgs, Table<TextureArgs, ReferenceCountedPointer<Texture> >)",
+      "library": true,
+      "recovered": false
+    },
+    "g3d-win32window 0047ea20..0047ffff": {
+      "rows": 45,
+      "bytes": 5279,
+      "first": "0047ea20",
+      "counted_elsewhere": [
+        "0047ff20"
+      ],
+      "last": "0047ff20",
+      "unit": "G3D 6.09 GLG3Dcpp/Win32Window.cpp with the GWindow.h inline defaults; runs past 00480000 (Table.h remove 004802a0)",
+      "library": true,
+      "recovered": false
+    }
+  },
+  "evidence_checks": [
+    {
+      "row": "004747f0",
+      "block": "g3d-texture",
+      "kind": "string",
+      "at": "0081e224",
+      "text": ".\\glg3dcpp\\Texture.cpp"
+    },
+    {
+      "row": "004747f0",
+      "block": "g3d-texture",
+      "kind": "string",
+      "at": "0081e384",
+      "text": "GImage has an unexpected number of channels (%d)"
+    },
+    {
+      "row": "004759ef",
+      "block": "g3d-texture",
+      "kind": "string",
+      "at": "0081e3c4",
+      "text": "\n**************************\n\nLoading \"%s\" failed. %s\n"
+    },
+    {
+      "row": "00475b50",
+      "block": "g3d-vararea",
+      "kind": "string",
+      "at": "0081e408",
+      "text": ".\\glg3dcpp\\VARArea.cpp"
+    },
+    {
+      "row": "00475d60",
+      "block": "g3d-vararea",
+      "kind": "string",
+      "at": "0081e408",
+      "text": ".\\glg3dcpp\\VARArea.cpp"
+    },
+    {
+      "row": "004774f0",
+      "block": "g3d-renderdevice",
+      "kind": "string",
+      "at": "0081e480",
+      "text": "GL_EXT_blend_minmax"
+    },
+    {
+      "row": "00477970",
+      "block": "g3d-renderdevice",
+      "kind": "string",
+      "at": "0081e4ac",
+      "text": "GL_ARB_texture_env_combine"
+    },
+    {
+      "row": "00478690",
+      "block": "g3d-renderdevice",
+      "kind": "string",
+      "at": "0081e5d8",
+      "text": ".\\glg3dcpp\\RenderDevice.cpp"
+    },
+    {
+      "row": "00478690",
+      "block": "g3d-renderdevice",
+      "kind": "string",
+      "at": "0081e5f8",
+      "text": "Drawing to a color buffer is only supported by application-created framebuffers!"
+    },
+    {
+      "row": "00478f80",
+      "block": "g3d-renderdevice",
+      "kind": "string",
+      "at": "0081e5d8",
+      "text": ".\\glg3dcpp\\RenderDevice.cpp"
+    },
+    {
+      "row": "00479700",
+      "block": "g3d-renderdevice",
+      "kind": "string",
+      "at": "0081e690",
+      "text": "All vertex arrays used within a single begin/endIndexedPrimitive block must share the same VARArea."
+    },
+    {
+      "row": "00479c30",
+      "block": "g3d-renderdevice",
+      "kind": "string",
+      "at": "0081e6f4",
+      "text": "VAR Milestone"
+    },
+    {
+      "row": "0047b5f0",
+      "block": "g3d-renderdevice",
+      "kind": "string",
+      "at": "0081e714",
+      "text": "Setting initial rendering state.\n"
+    },
+    {
+      "row": "0047c0c0",
+      "block": "g3d-renderdevice",
+      "kind": "string",
+      "at": "0081e878",
+      "text": "wglSwapIntervalEXT(0);\n"
+    },
+    {
+      "row": "0047c3e0",
+      "block": "g3d-renderdevice",
+      "kind": "string",
+      "at": "0081e8d0",
+      "text": "Shutting down RenderDevice."
+    },
+    {
+      "row": "0047c530",
+      "block": "g3d-renderdevice",
+      "kind": "string",
+      "at": "0081d114",
+      "text": "GL_NV_fragment_program"
+    },
+    {
+      "row": "0047e1d0",
+      "block": "g3d-texturemanager",
+      "kind": "string",
+      "at": "0081ef68",
+      "text": "Tried to remove a key that was not in the table."
+    },
+    {
+      "row": "0047e450",
+      "block": "g3d-texturemanager",
+      "kind": "string",
+      "at": "0081ef9c",
+      "text": " CheckCacheSize is removing %s   \n"
+    },
+    {
+      "row": "0047e6e0",
+      "block": "g3d-texturemanager",
+      "kind": "string",
+      "at": "0081eff0",
+      "text": "Texture not found "
+    },
+    {
+      "row": "0047e6e0",
+      "block": "g3d-texturemanager",
+      "kind": "string",
+      "at": "0081efd0",
+      "text": ".\\glg3dcpp\\TextureManager.cpp"
+    },
+    {
+      "row": "0047fa00",
+      "block": "g3d-win32window",
+      "kind": "string",
+      "at": "0081f210",
+      "text": "This GWindow implementation failed to overwrite runMainLoop even though it requires a main loop."
+    },
+    {
+      "row": "0047fbe0",
+      "block": "g3d-win32window",
+      "kind": "string",
+      "at": "0081f2dc",
+      "text": "Gamma ramp must have at least 256 entries"
+    },
+    {
+      "row": "0047fbe0",
+      "block": "g3d-win32window",
+      "kind": "string",
+      "at": "0081f2c0",
+      "text": ".\\glg3dcpp\\Win32Window.cpp"
+    },
+    {
+      "row": "00475d60",
+      "block": "g3d-vararea",
+      "kind": "rtti-ref",
+      "vtable": "0081e43c",
+      "rtti": ".?AVVARArea@G3D@@"
+    },
+    {
+      "row": "0047bec0",
+      "block": "g3d-renderdevice",
+      "kind": "rtti-ref",
+      "vtable": "0081ce24",
+      "rtti": ".?AV?$Table@PBVTextureFormat@G3D@@_N@G3D@@"
+    },
+    {
+      "row": "0047d0d0",
+      "block": "g3d-renderdevice",
+      "kind": "rtti-ref",
+      "vtable": "0081ce24",
+      "rtti": ".?AV?$Table@PBVTextureFormat@G3D@@_N@G3D@@"
+    },
+    {
+      "row": "0047d640",
+      "block": "g3d-texturemanager",
+      "kind": "rtti-ref",
+      "vtable": "00819770",
+      "rtti": ".?AVTextureArgs@TextureManager@G3D@@"
+    },
+    {
+      "row": "0047dcc0",
+      "block": "g3d-texturemanager",
+      "kind": "rtti-ref",
+      "vtable": "00819750",
+      "rtti": ".?AVHashable@G3D@@"
+    },
+    {
+      "row": "0047e400",
+      "block": "g3d-texturemanager",
+      "kind": "rtti-ref",
+      "vtable": "00819cd8",
+      "rtti": ".?AV?$Table@VTextureArgs@TextureManager@G3D@@V?$ReferenceCountedPointer@VTexture@G3D@@@3@@G3D@@"
+    },
+    {
+      "row": "0047f860",
+      "block": "g3d-win32window",
+      "kind": "rtti-ref",
+      "vtable": "0081f104",
+      "rtti": ".?AVGWindow@G3D@@"
+    },
+    {
+      "row": "0047faf0",
+      "block": "g3d-win32window",
+      "kind": "rtti-ref",
+      "vtable": "0081f104",
+      "rtti": ".?AVGWindow@G3D@@"
+    },
+    {
+      "row": "00476130",
+      "block": "g3d-vararea",
+      "kind": "vtable-slot",
+      "vtable": "0081e43c",
+      "rtti": ".?AVVARArea@G3D@@",
+      "slot": 0
+    },
+    {
+      "row": "0047d420",
+      "block": "g3d-texturemanager",
+      "kind": "vtable-slot",
+      "vtable": "00819770",
+      "rtti": ".?AVTextureArgs@TextureManager@G3D@@",
+      "slot": 0
+    },
+    {
+      "row": "0047f8a0",
+      "block": "g3d-win32window",
+      "kind": "vtable-slot",
+      "vtable": "0081f104",
+      "rtti": ".?AVGWindow@G3D@@",
+      "slot": 14
+    },
+    {
+      "row": "0047f900",
+      "block": "g3d-win32window",
+      "kind": "vtable-slot",
+      "vtable": "0081f104",
+      "rtti": ".?AVGWindow@G3D@@",
+      "slot": 26
+    },
+    {
+      "row": "0047f940",
+      "block": "g3d-win32window",
+      "kind": "vtable-slot",
+      "vtable": "0081f104",
+      "rtti": ".?AVGWindow@G3D@@",
+      "slot": 27
+    },
+    {
+      "row": "0047f980",
+      "block": "g3d-win32window",
+      "kind": "vtable-slot",
+      "vtable": "0081f104",
+      "rtti": ".?AVGWindow@G3D@@",
+      "slot": 31
+    },
+    {
+      "row": "0047f9c0",
+      "block": "g3d-win32window",
+      "kind": "vtable-slot",
+      "vtable": "0081f104",
+      "rtti": ".?AVGWindow@G3D@@",
+      "slot": 32
+    },
+    {
+      "row": "0047fa00",
+      "block": "g3d-win32window",
+      "kind": "vtable-slot",
+      "vtable": "0081f104",
+      "rtti": ".?AVGWindow@G3D@@",
+      "slot": 37
+    },
+    {
+      "row": "0047d410",
+      "block": "icf-ret",
+      "kind": "vtable-slot",
+      "vtable": "0081f104",
+      "rtti": ".?AVGWindow@G3D@@",
+      "slot": 38
+    },
+    {
+      "row": "0047faf0",
+      "block": "g3d-win32window",
+      "kind": "vtable-slot",
+      "vtable": "0081f104",
+      "rtti": ".?AVGWindow@G3D@@",
+      "slot": 39
+    },
+    {
+      "row": "0047ecc0",
+      "block": "g3d-win32window",
+      "kind": "vtable-slot",
+      "vtable": "0081f52c",
+      "rtti": ".?AVWin32Window@G3D@@",
+      "slot": 0
+    },
+    {
+      "row": "0047eb60",
+      "block": "g3d-win32window",
+      "kind": "vtable-slot",
+      "vtable": "0081f52c",
+      "rtti": ".?AVWin32Window@G3D@@",
+      "slot": 4
+    },
+    {
+      "row": "0047ec20",
+      "block": "g3d-win32window",
+      "kind": "vtable-slot",
+      "vtable": "0081f52c",
+      "rtti": ".?AVWin32Window@G3D@@",
+      "slot": 6
+    },
+    {
+      "row": "0047ec50",
+      "block": "g3d-win32window",
+      "kind": "vtable-slot",
+      "vtable": "0081f52c",
+      "rtti": ".?AVWin32Window@G3D@@",
+      "slot": 7
+    },
+    {
+      "row": "0047ec80",
+      "block": "g3d-win32window",
+      "kind": "vtable-slot",
+      "vtable": "0081f52c",
+      "rtti": ".?AVWin32Window@G3D@@",
+      "slot": 8
+    },
+    {
+      "row": "0047fbe0",
+      "block": "g3d-win32window",
+      "kind": "vtable-slot",
+      "vtable": "0081f52c",
+      "rtti": ".?AVWin32Window@G3D@@",
+      "slot": 9
+    },
+    {
+      "row": "0047ecd0",
+      "block": "g3d-win32window",
+      "kind": "vtable-slot",
+      "vtable": "0081f52c",
+      "rtti": ".?AVWin32Window@G3D@@",
+      "slot": 10
+    },
+    {
+      "row": "0047ed30",
+      "block": "g3d-win32window",
+      "kind": "vtable-slot",
+      "vtable": "0081f52c",
+      "rtti": ".?AVWin32Window@G3D@@",
+      "slot": 13
+    },
+    {
+      "row": "0047f8a0",
+      "block": "g3d-win32window",
+      "kind": "vtable-slot",
+      "vtable": "0081f52c",
+      "rtti": ".?AVWin32Window@G3D@@",
+      "slot": 14
+    },
+    {
+      "row": "0047ecb0",
+      "block": "g3d-win32window",
+      "kind": "vtable-slot",
+      "vtable": "0081f52c",
+      "rtti": ".?AVWin32Window@G3D@@",
+      "slot": 16
+    },
+    {
+      "row": "0047edd0",
+      "block": "g3d-win32window",
+      "kind": "vtable-slot",
+      "vtable": "0081f52c",
+      "rtti": ".?AVWin32Window@G3D@@",
+      "slot": 17
+    },
+    {
+      "row": "0047ee50",
+      "block": "g3d-win32window",
+      "kind": "vtable-slot",
+      "vtable": "0081f52c",
+      "rtti": ".?AVWin32Window@G3D@@",
+      "slot": 18
+    },
+    {
+      "row": "0047ee00",
+      "block": "g3d-win32window",
+      "kind": "vtable-slot",
+      "vtable": "0081f52c",
+      "rtti": ".?AVWin32Window@G3D@@",
+      "slot": 19
+    },
+    {
+      "row": "0047ef10",
+      "block": "g3d-win32window",
+      "kind": "vtable-slot",
+      "vtable": "0081f52c",
+      "rtti": ".?AVWin32Window@G3D@@",
+      "slot": 21
+    },
+    {
+      "row": "0047eea0",
+      "block": "g3d-win32window",
+      "kind": "vtable-slot",
+      "vtable": "0081f52c",
+      "rtti": ".?AVWin32Window@G3D@@",
+      "slot": 22
+    },
+    {
+      "row": "0047ee70",
+      "block": "g3d-win32window",
+      "kind": "vtable-slot",
+      "vtable": "0081f52c",
+      "rtti": ".?AVWin32Window@G3D@@",
+      "slot": 23
+    },
+    {
+      "row": "0047ef40",
+      "block": "g3d-win32window",
+      "kind": "vtable-slot",
+      "vtable": "0081f52c",
+      "rtti": ".?AVWin32Window@G3D@@",
+      "slot": 25
+    },
+    {
+      "row": "0047f900",
+      "block": "g3d-win32window",
+      "kind": "vtable-slot",
+      "vtable": "0081f52c",
+      "rtti": ".?AVWin32Window@G3D@@",
+      "slot": 26
+    },
+    {
+      "row": "0047f940",
+      "block": "g3d-win32window",
+      "kind": "vtable-slot",
+      "vtable": "0081f52c",
+      "rtti": ".?AVWin32Window@G3D@@",
+      "slot": 27
+    },
+    {
+      "row": "0047edf0",
+      "block": "g3d-win32window",
+      "kind": "vtable-slot",
+      "vtable": "0081f52c",
+      "rtti": ".?AVWin32Window@G3D@@",
+      "slot": 28
+    },
+    {
+      "row": "0047ed60",
+      "block": "g3d-win32window",
+      "kind": "vtable-slot",
+      "vtable": "0081f52c",
+      "rtti": ".?AVWin32Window@G3D@@",
+      "slot": 29
+    },
+    {
+      "row": "0047edc0",
+      "block": "g3d-win32window",
+      "kind": "vtable-slot",
+      "vtable": "0081f52c",
+      "rtti": ".?AVWin32Window@G3D@@",
+      "slot": 30
+    },
+    {
+      "row": "0047f980",
+      "block": "g3d-win32window",
+      "kind": "vtable-slot",
+      "vtable": "0081f52c",
+      "rtti": ".?AVWin32Window@G3D@@",
+      "slot": 31
+    },
+    {
+      "row": "0047f9c0",
+      "block": "g3d-win32window",
+      "kind": "vtable-slot",
+      "vtable": "0081f52c",
+      "rtti": ".?AVWin32Window@G3D@@",
+      "slot": 32
+    },
+    {
+      "row": "0047fa00",
+      "block": "g3d-win32window",
+      "kind": "vtable-slot",
+      "vtable": "0081f52c",
+      "rtti": ".?AVWin32Window@G3D@@",
+      "slot": 37
+    },
+    {
+      "row": "0047f010",
+      "block": "g3d-win32window",
+      "kind": "vtable-slot",
+      "vtable": "0081f52c",
+      "rtti": ".?AVWin32Window@G3D@@",
+      "slot": 38
+    },
+    {
+      "row": "00476520",
+      "block": "g3d-renderdevice",
+      "kind": "evidence-name",
+      "symbol": "?inf@G3D@@YAABNXZ"
+    },
+    {
+      "row": "00476580",
+      "block": "g3d-renderdevice",
+      "kind": "evidence-name",
+      "symbol": "??DMatrix3@G3D@@QBE?AVVector3@1@ABV21@@Z"
+    },
+    {
+      "row": "004765e0",
+      "block": "g3d-renderdevice",
+      "kind": "evidence-name",
+      "symbol": "??9CoordinateFrame@G3D@@QBE_NABV01@@Z"
+    },
+    {
+      "row": "00476640",
+      "block": "g3d-renderdevice",
+      "kind": "evidence-name",
+      "symbol": "??0CoordinateFrame@G3D@@QAE@ABVMatrix3@1@ABVVector3@1@@Z"
+    },
+    {
+      "row": "00476670",
+      "block": "g3d-renderdevice",
+      "kind": "evidence-name",
+      "symbol": "??0CoordinateFrame@G3D@@QAE@ABV01@@Z"
+    },
+    {
+      "row": "004766a0",
+      "block": "g3d-renderdevice",
+      "kind": "evidence-name",
+      "symbol": "?pointToWorldSpace@CoordinateFrame@G3D@@QBE?AVVector3@2@ABV32@@Z"
+    },
+    {
+      "row": "00476700",
+      "block": "g3d-renderdevice",
+      "kind": "evidence-name",
+      "symbol": "??DCoordinateFrame@G3D@@QBE?AV01@ABV01@@Z"
+    },
+    {
+      "row": "004769a0",
+      "block": "g3d-renderdevice",
+      "kind": "evidence-name",
+      "symbol": "??4GLight@G3D@@QAEAAV01@ABV01@@Z"
+    },
+    {
+      "row": "00477c50",
+      "block": "g3d-renderdevice",
+      "kind": "evidence-name",
+      "symbol": "??0GLight@G3D@@QAE@ABV01@@Z"
+    },
+    {
+      "row": "00478230",
+      "block": "g3d-renderdevice",
+      "kind": "evidence-name",
+      "symbol": "??A?$Array@G@G3D@@QAEAAGH@Z"
+    },
+    {
+      "row": "00478240",
+      "block": "g3d-renderdevice",
+      "kind": "evidence-name",
+      "symbol": "?realloc@?$Array@G@G3D@@AAEXH@Z"
+    },
+    {
+      "row": "004782d0",
+      "block": "g3d-renderdevice",
+      "kind": "evidence-name",
+      "symbol": "??0CoordinateFrame@G3D@@QAE@XZ"
+    },
+    {
+      "row": "00478330",
+      "block": "g3d-renderdevice",
+      "kind": "evidence-name",
+      "symbol": "?inverse@CoordinateFrame@G3D@@QBE?AV12@XZ"
+    }
+  ],
+  "notes": {
+    "0047edc0": "evidence name ?getCanCollide@Primitive@RBX@@QBE?B_NXZ is a shape coincidence: the only reference is Win32Window vtable 0081f52c slot 30 (G3D::Win32Window::mouseVisible, `mov al,[ecx+0xac]`); no call reaches it, so the 2008 Primitive::getCanCollide is never out of line. Library row.",
+    "0047edf0": "Win32Window vtable slot 28 (G3D::Win32Window::inputCapture, +0xad). Library row.",
+    "004781c0": "ICF-shared `mov eax,[ecx+0x70]; ret` (siblings 004781b0 / 004781d0 / 004781e0 read +0x7c / +0x74 / +0x78; callers 00504f50..00504faf and 00703a55..00705e0f) that is also slot 63 of the XTP report-record-item vtables (CInstanceRecord::CNameItem 0080f65c, CXTPReportRecordItem 008532e4), hence the analog CInstanceRecord::CNameItem labels of 004781b0..0047c0c0. Library row.",
+    "00475f20": "counted by render-scene-working.json as ~Array<ReferenceCountedPointer<RenderBase::Chunk>> (an ICF body with the G3D Array dtor of this block).",
+    "0047ff20": "counted by leaves2008-working.json as G3D::Array<bool>::resize.",
+    "004782d0": "counted by humanoid2008-working.json as G3D::CoordinateFrame().",
+    "0047d410": "ICF `ret`, counted by humanoid2008 / network-physics / stats receipts."
+  },
+  "range_functions": 230,
+  "range_bytes": 46678,
+  "range_rows_counted_by_other_receipts": {
+    "00475f20": [
+      "render-scene-working.json"
+    ],
+    "004782d0": [
+      "humanoid2008-working.json"
+    ],
+    "0047d410": [
+      "humanoid2008-working.json",
+      "network-physics-working.json",
+      "stats-service-working.json"
+    ],
+    "0047ff20": [
+      "leaves2008-working.json"
+    ]
+  },
+  "exact_function_rows": [],
+  "library_recipes": [
+    "g3d-6.09",
+    "g3d-6.09-rbx2008",
+    "rbxgs-g3d (roc/libs.py)"
+  ],
+  "scope": "Inactive map receipt. No native source, no counted row, no active build, swap or credit."
+}

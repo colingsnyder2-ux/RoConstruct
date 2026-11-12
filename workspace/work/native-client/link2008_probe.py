@@ -69,6 +69,10 @@ def main():
         rsp.write_text('\n'.join('"%s"' % p for p in kept + libs) + '\n')
         code, text = rebuild.run(rebuild.toolchain(), 'link', ['/nologo', '/SUBSYSTEM:WINDOWS', '/MACHINE:X86',
                                                                '/OUT:Roblox2008-pure.exe', '/MAP:Roblox2008-pure.map',
+                                                               # Objects carry /DEFAULTLIB directives from their original builds: LIBCMT collides with msvcrt (LNK2005);
+                                                               # the XTP autolink name has no file (the recipe-built XTP lib is passed explicitly).
+                                                               '/NODEFAULTLIB:libcmt.lib', '/NODEFAULTLIB:libcmtd.lib', '/NODEFAULTLIB:ToolkitPro1122vc90DS.lib',
+                                                               '/NODEFAULTLIB:ToolkitPro1122vc90D.lib', '/NODEFAULTLIB:ToolkitPro1122vc90S.lib', '/NODEFAULTLIB:ToolkitPro1122vc90.lib',
                                                                '@' + str(rsp)] + system, OUT)
         bad = re.search(r'^(\S+\.obj) : fatal error (LNK\d+): (.*)$', text, re.M)
         if not bad:

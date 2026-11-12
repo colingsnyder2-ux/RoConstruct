@@ -1,0 +1,136 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?drawCelestialSphere@G3D@@YAXPAVRenderDevice@1@ABVVector4@1@11NVColor4@1@@Z",
+    "address": "007b2c70"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DSky\\objects\\865fa3080185a58d\\candidate.obj": "7ad632fd77456ee93ae2d5de6a1311c31a703471f569d02a8ab87e7579349fc9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-o9p7l8qj\\owners.json": "816e3320a6997e7d9ba8d29c1d1f51fc7d13dda44d3454dafe4d30b0e69c55ff",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-o9p7l8qj\\import-thunk-identities-as-owner.json": "9620e0bfea0583471c197937b8966a6143e4b4fdc7e0cc1e71169b9d5fb6e9e8"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?vertex@Sky@G3D@@ABEXPAVRenderDevice@2@MMMMM@Z",
+    "address": "007b2e90"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DSky\\objects\\865fa3080185a58d\\candidate.obj": "7ad632fd77456ee93ae2d5de6a1311c31a703471f569d02a8ab87e7579349fc9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-o9p7l8qj\\owners.json": "816e3320a6997e7d9ba8d29c1d1f51fc7d13dda44d3454dafe4d30b0e69c55ff",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-o9p7l8qj\\import-thunk-identities-as-owner.json": "9620e0bfea0583471c197937b8966a6143e4b4fdc7e0cc1e71169b9d5fb6e9e8"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1Sky@G3D@@UAE@XZ",
+    "address": "007b2fa0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DSky\\objects\\865fa3080185a58d\\candidate.obj": "7ad632fd77456ee93ae2d5de6a1311c31a703471f569d02a8ab87e7579349fc9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-o9p7l8qj\\owners.json": "816e3320a6997e7d9ba8d29c1d1f51fc7d13dda44d3454dafe4d30b0e69c55ff",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-o9p7l8qj\\import-thunk-identities-as-owner.json": "9620e0bfea0583471c197937b8966a6143e4b4fdc7e0cc1e71169b9d5fb6e9e8"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?renderBox@Sky@G3D@@ABEXPAVRenderDevice@2@@Z",
+    "address": "007b3120"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DSky\\objects\\865fa3080185a58d\\candidate.obj": "7ad632fd77456ee93ae2d5de6a1311c31a703471f569d02a8ab87e7579349fc9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-o9p7l8qj\\owners.json": "816e3320a6997e7d9ba8d29c1d1f51fc7d13dda44d3454dafe4d30b0e69c55ff",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-o9p7l8qj\\import-thunk-identities-as-owner.json": "9620e0bfea0583471c197937b8966a6143e4b4fdc7e0cc1e71169b9d5fb6e9e8"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?drawMoonAndStars@Sky@G3D@@AAEXPAVRenderDevice@2@ABVLightingParameters@2@@Z",
+    "address": "007b37c0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DSky\\objects\\865fa3080185a58d\\candidate.obj": "7ad632fd77456ee93ae2d5de6a1311c31a703471f569d02a8ab87e7579349fc9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-o9p7l8qj\\owners.json": "816e3320a6997e7d9ba8d29c1d1f51fc7d13dda44d3454dafe4d30b0e69c55ff",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-o9p7l8qj\\import-thunk-identities-as-owner.json": "9620e0bfea0583471c197937b8966a6143e4b4fdc7e0cc1e71169b9d5fb6e9e8"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??_ESky@G3D@@UAEPAXI@Z",
+   "address": "007b45c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_supports_GL_EXT_texture_edge_clamp@GLCaps@G3D@@0_NA",
+   "address": "0096ee7f",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?alignedFree@System@G3D@@SAXPAX@Z",
+   "address": "00507d20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?fromAxisAngle@Matrix3@G3D@@SA?AV12@ABVVector3@2@M@Z",
+   "address": "00513680",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glActiveTextureARB@@3P6GXI@ZA",
+   "address": "0096f804",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?sendVertex@RenderDevice@G3D@@QAEXABVVector4@2@@Z",
+   "address": "00477ee0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?setTextureMatrix@RenderDevice@G3D@@QAEXIABVCoordinateFrame@2@@Z",
+   "address": "00479360",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??1Sky@G3D@@UAE@XZ",
+   "address": "007ee0f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__glBegin@4",
+   "address": "008029c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__glColor3f@12",
+   "address": "008029dc",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__glEnd@0",
+   "address": "008029bc",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__glPointSize@4",
+   "address": "00802a90",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__glTexGeni@12",
+   "address": "008029c4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__glVertex3fv@4",
+   "address": "00802a78",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 5,
+ "owners_bound": 5
+}

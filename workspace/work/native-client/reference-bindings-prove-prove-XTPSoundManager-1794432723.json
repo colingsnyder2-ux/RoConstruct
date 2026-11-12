@@ -1,0 +1,27 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??__Fs_managerInstance@?1??XTPSoundManager@@YAPAVCXTPSoundManager@@XZ@YAXXZ",
+    "address": "008018d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPSoundManager\\objects\\5f92ad40393735b7\\candidate.obj": "32bb78d7ed10128ab049d7a43bf2105611ace40fe5210a8b0eca39d069bfcd7e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-o4ttqh0e\\owners.json": "058814ad4de4073909ff314d15b65551ad94ded9576286d2c275b3e2f75f166b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-o4ttqh0e\\import-thunk-identities-as-owner.json": "cbcd0c2222da06d5570212cd34e2e030230cff33acc82e4ff5f138a1f2e33748"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??1CXTPSoundManager@@QAE@XZ",
+   "address": "007278c0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

@@ -4,14 +4,18 @@
 // near-miss: recorded, not counted). Bodies that read PartInstance fields (+0x1c8 / +0x1dc / +0x224) or the view's
 // scene manager are not built; see native-headers/ViewNew/PartChunk.h.
 // >>> native-status (generated) -- do not edit >>>
-// ViewNewPart | 2008-06 | 3 byte-exact, inactive (not link-selected)
-// 3/8 mapped addresses byte-exact | 5 unproved | no mapped strings | by king_originala (+3) (mixed 3)
-// <<< native-status | src e8aa6d57 | roc native-status --write
+// ViewNewPart | 2008-06 | 5 byte-exact, inactive (not link-selected)
+// 5/5 mapped addresses byte-exact | 0 unproved | no mapped strings | by king_originala (+1) (mixed 2)
+// <<< native-status | src ad3d68f9 | roc native-status --write
 #include "ViewNew/PartChunk.h"
 #include "RenderLib/ViewBase2008.h"
 #include "v8datamodel/PartInstance.h"
 // Native v8datamodel/Decal.h: the 2008 class names are char arrays (RTTI $1?sDecal@2@3PADA / $1?sTexture@2@3PADA).
 #include "v8datamodel/Decal.h"
+#include "v8datamodel/Clothing.h"
+#include "humanoid/Humanoid.h"
+#include "v8datamodel/ModelInstance.h"
+#include "v8datamodel/custommesh.h"
 
 namespace RBX
 {

@@ -1,0 +1,493 @@
+{
+  "class": "RBX rows of the application range 00448000..00454000 (2008-06), inactive",
+  "compiler": "VS2008 RTM 21022",
+  "flags": [
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+    "/Fo/home/user/roconstruct/rebuild/2008-06/out/app-unit448-2008/AppUnit448_2008Services.obj",
+    "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit448_2008Services.cpp"
+  ],
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit448_2008.py": "a0bf6f67de343a6f95113c4e8b9d87acde1905acbd677663818bf8dff13f288a",
+    "rebuild/2008-06/native-classes/AppUnit448_2008Services.cpp": "562bfaba71a8be6d6b7c1aca247227d8e13d4335bdd1c24fa95eebd23f7bfa57"
+  },
+  "headers_read_only": [
+    "v8tree/Service.h",
+    "util/Object.h",
+    "util/Name.h",
+    "v8datamodel/ChangeHistoryService.h",
+    "util/RunStateOwner.h",
+    "util/Sound.h",
+    "v8datamodel/Visit.h",
+    "v8datamodel/GameSettings.h"
+  ],
+  "objects": {
+    "AppUnit448_2008Services.obj": "2a4ca8ff3321d15e49adeaac25d797d17b8e28056441e0f5f6d045acc4208461"
+  },
+  "unit_map": {
+    "render-settings 00448000..0044945f": "CRenderSettings unit (RenderSettings.cpp): the GlobalSettingsItem<CRenderSettings> singleton (\"RenderSettings\", \"singleton %s already exists\"), the EnumPropDescriptor<CRenderSettings, GraphicsMode / FrameRateManagerMode / BevelMode / ShadowMode / AntialiasingMode / AASamples> virtuals (vtables 008160fc..0081628c), EnumDescriptor equalValue / isValue instances, the CRenderSettings thunks (vtables 008162e4..00816354) and the \"Rendering\" category descriptors; render-settings-working.json counts its rows (its recorder is a baseline failure: sRenderSettings 3PADA vs the RTTI 3QBDB). Other owner; not recovered here.",
+    "robloxapp 00449460..0044ddcf": "CRobloxApp unit (RobloxApp.cpp; strings \"ROBLOX-ATOM\", \"ROBLOX ExitInstance\", \"ROBLOX InitInstance\", \"/Game/MachineConfiguration.ashx\", \"AppSettings.xml\"; vtables CRobloxApp 00816a64, CRobloxModule 00816a28, CRobloxCommandLineInfo 00816a44, CRbxDocTemplate 00816684, CRbxPlayDocTemplate 0081671c, CIDEDocManager 0081685c, CBrowserDocManager 0081663c, sp_counted_impl_p<ErrorUploader::data> 00816900). CRobloxApp and its helpers are a maintainer exclusion (mapped, not recovered); the std::ostream inserters 0044a450 / 0044a640 are STL instances. Built here: the RBX template instances shared_count(GameSettings*, Deleter) and FactoryProduct<GameSettings>::Creator::create (Creator vtable 00816db4); the GameSettings doDeclare / callDoDeclare / create / shared_ptr / singleton rows are counted by settings-items-working.json.",
+    "color-selector 0044ddd0..0044ee7f": "CRobloxControlColorSelector unit (vtables 00816e74 / 00816e14), counted by roblox-control-color-selector-working.json; 0044ed40 / 0044ed50 / 0044ed80 / 0044edb0 / 0044edc0 are ICF-folded XTP CXTPControl inline virtuals shared by many XTP vtables (library header code, not recovered).",
+    "dhtml-dialog 0044ee80..0044f16f": "CRobloxDHtmlDialog unit (vtable 008170bc slots 0 / 1 / 17 / 86 shared by CPublishAsPlaceDialog / CUploadPlaceDialog / CSaveModelToRobloxDialog / CSaveToRobloxDialog, \"DialogResult\"); app class of another owner (native-headers/CRobloxDHtmlDialog.h), not recovered here.",
+    "initializer-helpers 0044f170..0044f19f": "three 8-byte `push k; call 00554da0; ret` helpers (k = 1, 2, 0) referenced only by the dynamic initializers at 007f285b / 007f288b / 007f28bb; the callee and the unit are not derived. Open.",
+    "robloxdoc 0044f1a0..00454000": "CRobloxDoc unit (RobloxDoc.cpp, continuing past 00454000): CRobloxDoc vtable 00817ce4, VerbBinder<CRobloxDoc, CDocument> 00817c24, ReportAbuseVerb 008172e0, ExitCommand 00817304, the camera command dtor 00451170 shared by the RBX camera command vtables, the upload / visit / play command bodies (\"/IDE/Upload.aspx\", \"/game/visit.ashx\", \"ReportAbuse\") and std::map / _Tree instances. CRobloxDoc is a maintainer exclusion. Built here: the RBX ServiceProvider instances for ChangeHistoryService / RunService / Soundscape::SoundService / Visit (doGetClassIndex, callDoGetClassIndex, find (open), create), Name::doDeclare / callDoDeclare<sVisit>, Creatable<Instance>::create<Visit>, shared_ptr<Visit>(Visit*, Deleter) and FactoryProduct<Visit>::Creator::create; 00452790 shared_count<Visit*> is counted by creatable-shared-count-working.json."
+  },
+  "range_rows": 269,
+  "range_rows_counted_by_other_receipts": [
+    "00448320 counted by render-settings-failed.json, render-settings-working.json",
+    "00448420 counted by render-settings-failed.json, render-settings-working.json",
+    "00448c60 counted by render-settings-failed.json, render-settings-working.json",
+    "00448e60 counted by render-settings-working.json",
+    "00448ed0 counted by render-settings-failed.json, render-settings-working.json",
+    "00448f00 counted by render-settings-failed.json, render-settings-working.json",
+    "00448f20 counted by render-settings-failed.json, render-settings-working.json",
+    "00448f40 counted by render-settings-failed.json, render-settings-working.json",
+    "00448fd0 counted by render-settings-failed.json, render-settings-working.json",
+    "00449060 counted by render-settings-failed.json, render-settings-working.json",
+    "004490c0 counted by render-settings-failed.json, render-settings-working.json",
+    "00449120 counted by render-settings-failed.json, render-settings-working.json",
+    "00449180 counted by render-settings-failed.json, render-settings-working.json",
+    "004491b0 counted by render-settings-failed.json, render-settings-working.json",
+    "004491e0 counted by render-settings-failed.json, render-settings-working.json",
+    "00449210 counted by render-settings-failed.json, render-settings-working.json",
+    "00449240 counted by render-settings-failed.json, render-settings-working.json",
+    "00449270 counted by render-settings-failed.json, render-settings-working.json",
+    "004496f0 counted by app-leaves2008-working.json",
+    "00449720 counted by app-leaves2008-working.json",
+    "00449910 counted by app-leaves2008-services-working.json",
+    "00449ae0 counted by app-leaves2008-services-working.json",
+    "0044a0e0 counted by settings-items-working.json",
+    "0044a1c0 counted by app-leaves2008-working.json",
+    "0044a8b0 counted by settings-items-working.json",
+    "0044aa70 counted by app-leaves2008-working.json",
+    "0044ab30 counted by app-leaves2008-working.json",
+    "0044abd0 counted by app-leaves2008-services-working.json",
+    "0044b850 counted by settings-items-working.json",
+    "0044b9a0 counted by app-leaves2008-working.json",
+    "0044bdc0 counted by settings-items-working.json",
+    "0044be40 counted by app-leaves2008-working.json",
+    "0044bee0 counted by settings-items-working.json",
+    "0044ddd0 counted by roblox-control-color-selector-working.json",
+    "0044dde0 counted by roblox-control-color-selector-working.json",
+    "0044de00 counted by roblox-control-color-selector-working.json",
+    "0044de10 counted by roblox-control-color-selector-working.json",
+    "0044deb0 counted by roblox-control-color-selector-working.json",
+    "0044dee0 counted by roblox-control-color-selector-working.json",
+    "0044df30 counted by roblox-control-color-selector-working.json",
+    "0044df60 counted by roblox-control-color-selector-working.json",
+    "0044df80 counted by roblox-control-color-selector-working.json",
+    "0044dfa0 counted by roblox-control-color-selector-working.json",
+    "0044dfc0 counted by roblox-control-color-selector-working.json",
+    "0044e090 counted by roblox-control-color-selector-working.json",
+    "0044e2e0 counted by roblox-control-color-selector-working.json",
+    "0044e310 counted by roblox-control-color-selector-working.json",
+    "0044e370 counted by roblox-control-color-selector-working.json",
+    "0044e410 counted by roblox-control-color-selector-working.json",
+    "0044e460 counted by roblox-control-color-selector-working.json",
+    "0044e4a0 counted by roblox-control-color-selector-working.json",
+    "0044e500 counted by roblox-control-color-selector-working.json",
+    "0044e5a0 counted by roblox-control-color-selector-working.json",
+    "0044e5d0 counted by roblox-control-color-selector-working.json",
+    "0044e670 counted by roblox-control-color-selector-working.json",
+    "0044e6b0 counted by roblox-control-color-selector-working.json",
+    "0044e6e0 counted by roblox-control-color-selector-working.json",
+    "0044e730 counted by roblox-control-color-selector-working.json",
+    "0044e760 counted by roblox-control-color-selector-working.json",
+    "0044ea20 counted by roblox-control-color-selector-working.json",
+    "0044eaf0 counted by roblox-control-color-selector-working.json",
+    "0044eb90 counted by roblox-control-color-selector-working.json",
+    "0044ec60 counted by roblox-control-color-selector-working.json",
+    "0044edf0 counted by roblox-control-color-selector-working.json",
+    "0044ee50 counted by roblox-control-color-selector-working.json",
+    "0044f5c0 counted by upload-place-dialog-working.json",
+    "0044f700 counted by document-initialize-trial.json",
+    "0044f730 counted by exit-command-trial.json",
+    "00450370 counted by workspace-com-map-trial.json",
+    "00452790 counted by creatable-shared-count-working.json",
+    "004532d0 counted by document-initialize-trial.json"
+  ],
+  "rows": [
+    {
+      "address": "0044f360",
+      "symbol": "??$doGetClassIndex@VChangeHistoryService@RBX@@@ServiceProvider@RBX@@SAIXZ",
+      "size": 91,
+      "target_size": 91,
+      "exact": true,
+      "verified_targets": {
+        "??_B?1???$doGetClassIndex@VChangeHistoryService@RBX@@@ServiceProvider@RBX@@SAIXZ@51": "0x96dd4c (own static (bound by consistency))",
+        "?newIndex@ServiceProvider@RBX@@SAIXZ": "0x572690 (external)",
+        "?index@?1???$doGetClassIndex@VChangeHistoryService@RBX@@@ServiceProvider@RBX@@SAIXZ@4IA": "0x96dd48 (own static (bound by consistency))"
+      },
+      "local_eh": [
+        "__ehhandler$??$doGetClassIndex@VChangeHistoryService@RBX@@@ServiceProvider@RBX@@SAIXZ"
+      ]
+    },
+    {
+      "address": "00450850",
+      "symbol": "??$callDoGetClassIndex@VChangeHistoryService@RBX@@@ServiceProvider@RBX@@SAXXZ",
+      "size": 5,
+      "target_size": 5,
+      "exact": true,
+      "verified_targets": {
+        "??$doGetClassIndex@VChangeHistoryService@RBX@@@ServiceProvider@RBX@@SAIXZ": "0x44f360 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00453000",
+      "symbol": "??$create@VChangeHistoryService@RBX@@@ServiceProvider@RBX@@QBEPAVChangeHistoryService@1@XZ",
+      "size": 228,
+      "target_size": 228,
+      "exact": true,
+      "verified_targets": {
+        "??$find@VChangeHistoryService@RBX@@@ServiceProvider@RBX@@QBEPAVChangeHistoryService@1@XZ": "0x452a00 (open row of this range (not counted), identified by its call_once push of the callDoGetClassIndex row 0x450850, its call to the doGetClassIndex row 0x44f360 and to the doDeclare 0x4137a0 of 'ChangeHistoryService')",
+        "??$create@VChangeHistoryService@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VChangeHistoryService@RBX@@@boost@@XZ": "0x4150d0 (row counted by app-unit40c-2008-working.json with this symbol (compiled body exact there))",
+        "?flag@?1???$getClassIndex@VChangeHistoryService@RBX@@@ServiceProvider@RBX@@SAIXZ@4JA": "0x96dd6c (own static (bound by consistency))",
+        "??$callDoGetClassIndex@VChangeHistoryService@RBX@@@ServiceProvider@RBX@@SAXXZ": "0x450850 (own row)",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
+        "??$doGetClassIndex@VChangeHistoryService@RBX@@@ServiceProvider@RBX@@SAIXZ": "0x44f360 (own row)",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0 (external (evidence name))",
+        "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$??$create@VChangeHistoryService@RBX@@@ServiceProvider@RBX@@QBEPAVChangeHistoryService@1@XZ"
+      ]
+    },
+    {
+      "address": "0044f3c0",
+      "symbol": "??$doGetClassIndex@VRunService@RBX@@@ServiceProvider@RBX@@SAIXZ",
+      "size": 91,
+      "target_size": 91,
+      "exact": true,
+      "verified_targets": {
+        "??_B?1???$doGetClassIndex@VRunService@RBX@@@ServiceProvider@RBX@@SAIXZ@51": "0x96dd54 (own static (bound by consistency))",
+        "?newIndex@ServiceProvider@RBX@@SAIXZ": "0x572690 (external)",
+        "?index@?1???$doGetClassIndex@VRunService@RBX@@@ServiceProvider@RBX@@SAIXZ@4IA": "0x96dd50 (own static (bound by consistency))"
+      },
+      "local_eh": [
+        "__ehhandler$??$doGetClassIndex@VRunService@RBX@@@ServiceProvider@RBX@@SAIXZ"
+      ]
+    },
+    {
+      "address": "00450860",
+      "symbol": "??$callDoGetClassIndex@VRunService@RBX@@@ServiceProvider@RBX@@SAXXZ",
+      "size": 5,
+      "target_size": 5,
+      "exact": true,
+      "verified_targets": {
+        "??$doGetClassIndex@VRunService@RBX@@@ServiceProvider@RBX@@SAIXZ": "0x44f3c0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004530f0",
+      "symbol": "??$create@VRunService@RBX@@@ServiceProvider@RBX@@QBEPAVRunService@1@XZ",
+      "size": 228,
+      "target_size": 228,
+      "exact": true,
+      "verified_targets": {
+        "??$find@VRunService@RBX@@@ServiceProvider@RBX@@QBEPAVRunService@1@XZ": "0x452c80 (open row of this range (not counted), identified by its call_once push of the callDoGetClassIndex row 0x450860, its call to the doGetClassIndex row 0x44f3c0 and to the doDeclare 0x401a00 of 'RunService')",
+        "??$create@VRunService@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VRunService@RBX@@@boost@@XZ": "0x405fa0 (row counted by app-unit400-2008-working.json with this symbol (compiled body exact there))",
+        "?flag@?1???$getClassIndex@VRunService@RBX@@@ServiceProvider@RBX@@SAIXZ@4JA": "0x96dd70 (own static (bound by consistency))",
+        "??$callDoGetClassIndex@VRunService@RBX@@@ServiceProvider@RBX@@SAXXZ": "0x450860 (own row)",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
+        "??$doGetClassIndex@VRunService@RBX@@@ServiceProvider@RBX@@SAIXZ": "0x44f3c0 (own row)",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0 (external (evidence name))",
+        "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$??$create@VRunService@RBX@@@ServiceProvider@RBX@@QBEPAVRunService@1@XZ"
+      ]
+    },
+    {
+      "address": "0044f420",
+      "symbol": "??$doGetClassIndex@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@SAIXZ",
+      "size": 91,
+      "target_size": 91,
+      "exact": true,
+      "verified_targets": {
+        "??_B?1???$doGetClassIndex@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@SAIXZ@51": "0x96dd5c (own static (bound by consistency))",
+        "?newIndex@ServiceProvider@RBX@@SAIXZ": "0x572690 (external)",
+        "?index@?1???$doGetClassIndex@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@SAIXZ@4IA": "0x96dd58 (own static (bound by consistency))"
+      },
+      "local_eh": [
+        "__ehhandler$??$doGetClassIndex@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@SAIXZ"
+      ]
+    },
+    {
+      "address": "00450870",
+      "symbol": "??$callDoGetClassIndex@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@SAXXZ",
+      "size": 5,
+      "target_size": 5,
+      "exact": true,
+      "verified_targets": {
+        "??$doGetClassIndex@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@SAIXZ": "0x44f420 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004531e0",
+      "symbol": "??$create@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@QBEPAVSoundService@Soundscape@1@XZ",
+      "size": 228,
+      "target_size": 228,
+      "exact": true,
+      "verified_targets": {
+        "??$find@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@QBEPAVSoundService@Soundscape@1@XZ": "0x452dc0 (open row of this range (not counted), identified by its call_once push of the callDoGetClassIndex row 0x450870, its call to the doGetClassIndex row 0x44f420 and to the doDeclare 0x437f20 of 'SoundService')",
+        "??$create@VSoundService@Soundscape@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VSoundService@Soundscape@RBX@@@boost@@XZ": "0x440980 (open row outside the range (not counted): the compiled body is exact at the bound address)",
+        "?flag@?1???$getClassIndex@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@SAIXZ@4JA": "0x96dd74 (own static (bound by consistency))",
+        "??$callDoGetClassIndex@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@SAXXZ": "0x450870 (own row)",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
+        "??$doGetClassIndex@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@SAIXZ": "0x44f420 (own row)",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0 (external (evidence name))",
+        "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0 (external (evidence name))"
+      },
+      "local_eh": [
+        "__ehhandler$??$create@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@QBEPAVSoundService@Soundscape@1@XZ"
+      ]
+    },
+    {
+      "address": "0044f4a0",
+      "symbol": "??$doGetClassIndex@VVisit@RBX@@@ServiceProvider@RBX@@SAIXZ",
+      "size": 91,
+      "target_size": 91,
+      "exact": true,
+      "verified_targets": {
+        "??_B?1???$doGetClassIndex@VVisit@RBX@@@ServiceProvider@RBX@@SAIXZ@51": "0x96dd64 (own static (bound by consistency))",
+        "?newIndex@ServiceProvider@RBX@@SAIXZ": "0x572690 (external)",
+        "?index@?1???$doGetClassIndex@VVisit@RBX@@@ServiceProvider@RBX@@SAIXZ@4IA": "0x96dd60 (own static (bound by consistency))"
+      },
+      "local_eh": [
+        "__ehhandler$??$doGetClassIndex@VVisit@RBX@@@ServiceProvider@RBX@@SAIXZ"
+      ]
+    },
+    {
+      "address": "00450880",
+      "symbol": "??$callDoGetClassIndex@VVisit@RBX@@@ServiceProvider@RBX@@SAXXZ",
+      "size": 5,
+      "target_size": 5,
+      "exact": true,
+      "verified_targets": {
+        "??$doGetClassIndex@VVisit@RBX@@@ServiceProvider@RBX@@SAIXZ": "0x44f4a0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0044f2f0",
+      "symbol": "??$doDeclare@$1?sVisit@RBX@@3PADA@Name@RBX@@CAABV01@XZ",
+      "size": 101,
+      "target_size": 101,
+      "exact": true,
+      "verified_targets": {
+        "??_B?1???$doDeclare@$1?sVisit@RBX@@3PADA@Name@RBX@@CAABV01@XZ@51": "0x96dd44 (own static (bound by consistency))",
+        "?sVisit@RBX@@3PADA": "0x94f6cc (class-name array 'Visit')",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external (evidence name))",
+        "?n@?1???$doDeclare@$1?sVisit@RBX@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "0x96dd40 (own static (bound by consistency))"
+      },
+      "local_eh": [
+        "__ehhandler$??$doDeclare@$1?sVisit@RBX@@3PADA@Name@RBX@@CAABV01@XZ"
+      ]
+    },
+    {
+      "address": "00450840",
+      "symbol": "??$callDoDeclare@$1?sVisit@RBX@@3PADA@Name@RBX@@CAXXZ",
+      "size": 5,
+      "target_size": 5,
+      "exact": true,
+      "verified_targets": {
+        "??$doDeclare@$1?sVisit@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x44f2f0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "004528d0",
+      "symbol": "??$create@VVisit@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VVisit@RBX@@@boost@@XZ",
+      "size": 120,
+      "target_size": 120,
+      "exact": true,
+      "verified_targets": {
+        "__imp__malloc": "0x8028b0 (msvcr90.dll!malloc)",
+        "??0Visit@RBX@@QAE@XZ": "0x5c5220 (row counted by app-unit5bc-2008-working.json with this symbol)",
+        "??$?0VVisit@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VVisit@RBX@@@boost@@QAE@PAVVisit@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z": "0x452820 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$??$create@VVisit@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VVisit@RBX@@@boost@@XZ"
+      ]
+    },
+    {
+      "address": "00452820",
+      "symbol": "??$?0VVisit@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VVisit@RBX@@@boost@@QAE@PAVVisit@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z",
+      "size": 171,
+      "target_size": 171,
+      "exact": true,
+      "verified_targets": {
+        "??$?0PAVVisit@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVVisit@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x452790 (row counted by creatable-shared-count-working.json with this symbol (compiled body exact there))"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VVisit@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VVisit@RBX@@@boost@@QAE@PAVVisit@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z"
+      ]
+    },
+    {
+      "address": "00452950",
+      "symbol": "?create@Creator@?$FactoryProduct@VVisit@RBX@@VInstance@2@$1?sVisit@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+      "size": 175,
+      "target_size": 175,
+      "exact": true,
+      "verified_targets": {
+        "??$create@VVisit@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VVisit@RBX@@@boost@@XZ": "0x4528d0 (own row)"
+      },
+      "local_eh": [
+        "__ehhandler$?create@Creator@?$FactoryProduct@VVisit@RBX@@VInstance@2@$1?sVisit@2@3PADA@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ"
+      ]
+    },
+    {
+      "address": "0044a8c0",
+      "symbol": "??$?0PAVGameSettings@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVGameSettings@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z",
+      "size": 131,
+      "target_size": 131,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$sp_counted_impl_pd@PAVGameSettings@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@6B@": "0x816914 (vtable RTTI .?AV?$sp_counted_impl_pd@PAVGameSettings@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@ offset 0x0)",
+        "??RDeleter@?$Creatable@VInstance@RBX@@@RBX@@QAEXPAVInstance@2@@Z": "0x405e30 (external)",
+        "__CxxThrowException@8": "0x6a158c (msvcr90.dll!_CxxThrowException)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0PAVGameSettings@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVGameSettings@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z"
+      ]
+    },
+    {
+      "address": "0044d560",
+      "symbol": "?create@Creator@?$FactoryProduct@VGameSettings@RBX@@VItem@GlobalSettings@2@$1?sGameSettings@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ",
+      "size": 175,
+      "target_size": 175,
+      "exact": true,
+      "verified_targets": {
+        "??$create@VGameSettings@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VGameSettings@RBX@@@boost@@XZ": "0x44bdc0 (row counted by settings-items-working.json with this symbol (compiled body exact there))"
+      },
+      "local_eh": [
+        "__ehhandler$?create@Creator@?$FactoryProduct@VGameSettings@RBX@@VItem@GlobalSettings@2@$1?sGameSettings@2@3QBDB@RBX@@UBE?AV?$shared_ptr@VObject@RBX@@@boost@@XZ"
+      ]
+    }
+  ],
+  "open_find_rows": [
+    {
+      "address": "00452a00 (open, not counted)",
+      "symbol": "??$find@VChangeHistoryService@RBX@@@ServiceProvider@RBX@@QBEPAVChangeHistoryService@1@XZ",
+      "size": 404,
+      "target_size": 320,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00452b40 (open, not counted)",
+      "symbol": "??$find@VVisit@RBX@@@ServiceProvider@RBX@@QBEPAVVisit@1@XZ",
+      "size": 404,
+      "target_size": 320,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00452c80 (open, not counted)",
+      "symbol": "??$find@VRunService@RBX@@@ServiceProvider@RBX@@QBEPAVRunService@1@XZ",
+      "size": 404,
+      "target_size": 320,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "00452dc0 (open, not counted)",
+      "symbol": "??$find@VSoundService@Soundscape@RBX@@@ServiceProvider@RBX@@QBEPAVSoundService@Soundscape@1@XZ",
+      "size": 404,
+      "target_size": 320,
+      "exact": false,
+      "verified_targets": {},
+      "local_eh": []
+    }
+  ],
+  "creator_vtables": [
+    {
+      "vtable": "vtable 0x817e5c",
+      "rtti": ".?AVCreator@?$FactoryProduct@VVisit@RBX@@VInstance@2@$1?sVisit@2@3PADA@RBX@@",
+      "original_slots": 1,
+      "slot0": "0x452950 (Creator::create row)"
+    },
+    {
+      "vtable": "vtable 0x816db4",
+      "rtti": ".?AVCreator@?$FactoryProduct@VGameSettings@RBX@@VItem@GlobalSettings@2@$1?sGameSettings@2@3QBDB@RBX@@",
+      "original_slots": 1,
+      "slot0": "0x44d560 (Creator::create row)"
+    }
+  ],
+  "sizes": {
+    "Visit": "sizeof 0x150 (malloc 0x150 in the exact create<Visit> 0x4528d0; native v8datamodel/Visit.h)",
+    "Soundscape::SoundService": "sizeof 0x1c8 (malloc 0x1c8 in create<SoundService> 0x440980, exact from the native util/Sound.h; open row outside the range)"
+  },
+  "not_exact": {
+    "0x452a00 / 0x452b40 / 0x452c80 / 0x452dc0 ServiceProvider::find<C>() const (320 B)": "the native boost shared_ptr<Instance> destructor is inlined there (404 B); the original calls it out of line at 0x600660 (same blocker as app-unit48c find<C>; only a generated noinline-destructor profile matched it). Open; the counted create<C>() const rows bind them by identity.",
+    "0x44f1b0 Visit::getUploadUrl()": "an inline Visit.h member emitted in this unit; nothing a native unit of this range may build references it (its callers are CRobloxDoc 0x455060 and the Visit.cpp descriptor initializer 0x7f5bd0 of app-unit5bc), and no helper may be added to force it. Candidate for the app-unit5bc owner (the GetUploadUrl BoundFuncDesc there takes its address).",
+    "0x44f170 / 0x44f180 / 0x44f190": "initializer helpers; callee 0x554da0 and owner not derived; open."
+  },
+  "rejected": {
+    "/fp:fast for AppUnit448_2008Services.cpp": "no effect: the same exact set and the same 404-byte find<C>; dropped."
+  },
+  "proposals": [],
+  "exact_function_rows": [
+    "0044a8c0",
+    "0044d560",
+    "0044f2f0",
+    "0044f360",
+    "0044f3c0",
+    "0044f420",
+    "0044f4a0",
+    "00450840",
+    "00450850",
+    "00450860",
+    "00450870",
+    "00450880",
+    "00452820",
+    "004528d0",
+    "00452950",
+    "00453000",
+    "004530f0",
+    "004531e0"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

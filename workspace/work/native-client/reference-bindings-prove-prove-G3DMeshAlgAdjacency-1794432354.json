@@ -1,0 +1,43 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$?computeAdjacency@MeshAlg@G3D@@SAXABV?$Array@VVector3@G3D@@@2@ABV?$Array@H@2@AAV?$Array@VFace@MeshAlg@G3D@@@2@AAV?$Array@VEdge@MeshAlg@G3D@@@2@AAV?$Array@VVertex@MeshAlg@G3D@@@2@@Z$1",
+    "address": "007ee698"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DMeshAlgAdjacency\\objects\\1c826a6fab5661ce\\candidate.obj": "a78192cd120e00ce2a1798cfa411a499584af25e9e604abf1a39f3994393210e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-mtvzcthx\\owners.json": "79f8e35b369a4f084d7bd9ddbd5c4079b530adc8381ec4cdfdc9c3fa0bd4ef5d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-mtvzcthx\\import-thunk-identities-as-owner.json": "d8376176aaf8faf4b9cf3f2da6f21623ce95973e5c99cfc989c17b3bc7e60e8a"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$?computeAdjacency@MeshAlg@G3D@@SAXABV?$Array@VVector3@G3D@@@2@ABV?$Array@H@2@AAV?$Array@VFace@MeshAlg@G3D@@@2@AAV?$Array@VEdge@MeshAlg@G3D@@@2@AAV?$Array@VVertex@MeshAlg@G3D@@@2@@Z$0",
+    "address": "007ee690"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DMeshAlgAdjacency\\objects\\1c826a6fab5661ce\\candidate.obj": "a78192cd120e00ce2a1798cfa411a499584af25e9e604abf1a39f3994393210e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-mtvzcthx\\owners.json": "79f8e35b369a4f084d7bd9ddbd5c4079b530adc8381ec4cdfdc9c3fa0bd4ef5d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-mtvzcthx\\import-thunk-identities-as-owner.json": "d8376176aaf8faf4b9cf3f2da6f21623ce95973e5c99cfc989c17b3bc7e60e8a"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??1?$Array@VEdge@MeshAlg@G3D@@@G3D@@QAE@XZ",
+   "address": "005516d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??1?$Array@VVector3@G3D@@@G3D@@QAE@XZ",
+   "address": "006433e0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

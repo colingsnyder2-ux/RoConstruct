@@ -1,0 +1,64 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "_lua_rawset",
+    "address": "00612710"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Lua54lapi\\objects\\d2d134add2013759\\candidate.obj": "9b1f673568e3a810f5781c844dd5d5927436055491c890d41852c6921724cbe0",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-vnhq1jb1\\owners.json": "59a93763f5941011be0499d8f34110881949e11348fcadcf08e3441f5eef5168",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-vnhq1jb1\\import-thunk-identities-as-owner.json": "1740b2955ec2aeb21e774410d043c4422459f80eb27ccb354a873b59767c5231"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_lua_pcall",
+    "address": "00612980"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Lua54lapi\\objects\\d2d134add2013759\\candidate.obj": "9b1f673568e3a810f5781c844dd5d5927436055491c890d41852c6921724cbe0",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-vnhq1jb1\\owners.json": "59a93763f5941011be0499d8f34110881949e11348fcadcf08e3441f5eef5168",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-vnhq1jb1\\import-thunk-identities-as-owner.json": "1740b2955ec2aeb21e774410d043c4422459f80eb27ccb354a873b59767c5231"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_lua_next",
+    "address": "00612b80"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Lua54lapi\\objects\\d2d134add2013759\\candidate.obj": "9b1f673568e3a810f5781c844dd5d5927436055491c890d41852c6921724cbe0",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-vnhq1jb1\\owners.json": "59a93763f5941011be0499d8f34110881949e11348fcadcf08e3441f5eef5168",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-vnhq1jb1\\import-thunk-identities-as-owner.json": "1740b2955ec2aeb21e774410d043c4422459f80eb27ccb354a873b59767c5231"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "_f_call",
+   "address": "00612960",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaD_pcall",
+   "address": "00622480",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaH_next",
+   "address": "0065e570",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaH_set",
+   "address": "0065eb50",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 3,
+ "owners_bound": 3
+}

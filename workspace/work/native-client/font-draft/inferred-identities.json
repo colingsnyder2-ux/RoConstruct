@@ -1,0 +1,11 @@
+{
+ "scope": "Inferred font port method spelling, not original symbol proof",
+ "rows": [
+  {
+   "symbol": "?get2DStringBounds@VRbxFont@Ogre@@QBE?AVVector2@G3D@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@NW4Spacing@12@@Z",
+   "address": "00684640",
+   "inferred_name": true,
+   "evidence": "INFERRED method spelling from G3D6.09 GFont port; unique238B body at00684640; native fields proven from constructor and renderer callers."
+  }
+ ]
+}

@@ -3,7 +3,8 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DNetAddress | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 23cb196a | roc native-status --write
+// <<< native-status | src 1d52b669 | roc native-status --write
+#line 1 ".\\G3Dcpp\\NetAddress.cpp"
 /**
  @file NetMessage.cpp
 

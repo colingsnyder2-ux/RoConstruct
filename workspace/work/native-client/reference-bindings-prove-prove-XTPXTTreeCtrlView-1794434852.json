@@ -1,0 +1,235 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?_GetBaseClass@CXTTreeView@@KGPAUCRuntimeClass@@XZ",
+    "address": "006dba90"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTTreeCtrlView\\objects\\a6b67ee60af65b7f\\candidate.obj": "95df76c5e75ce1cdd6808ae282985ef3f2f7b7d359468d93f4bce9d5f1c2ae22",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-1dxyqh7b\\owners.json": "8ed5c8f2c59385f6d11672ed2137d082d55dc65e267b9437209dc3e423198b77",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-1dxyqh7b\\import-thunk-identities-as-owner.json": "620bb3508df7f53a6ce6920e10bec9ee03d8554d989d5a69317aa6244970495a"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?GetThisMessageMap@CXTTreeView@@KGPBUAFX_MSGMAP@@XZ",
+    "address": "006dbab0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTTreeCtrlView\\objects\\a6b67ee60af65b7f\\candidate.obj": "95df76c5e75ce1cdd6808ae282985ef3f2f7b7d359468d93f4bce9d5f1c2ae22",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-1dxyqh7b\\owners.json": "8ed5c8f2c59385f6d11672ed2137d082d55dc65e267b9437209dc3e423198b77",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-1dxyqh7b\\import-thunk-identities-as-owner.json": "620bb3508df7f53a6ce6920e10bec9ee03d8554d989d5a69317aa6244970495a"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?_GetBaseClass@CXTTreeCtrl@@KGPAUCRuntimeClass@@XZ",
+    "address": "006dbae0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTTreeCtrlView\\objects\\a6b67ee60af65b7f\\candidate.obj": "95df76c5e75ce1cdd6808ae282985ef3f2f7b7d359468d93f4bce9d5f1c2ae22",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-1dxyqh7b\\owners.json": "8ed5c8f2c59385f6d11672ed2137d082d55dc65e267b9437209dc3e423198b77",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-1dxyqh7b\\import-thunk-identities-as-owner.json": "620bb3508df7f53a6ce6920e10bec9ee03d8554d989d5a69317aa6244970495a"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?GetThisMessageMap@CXTTreeCtrl@@KGPBUAFX_MSGMAP@@XZ",
+    "address": "006dbde0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTTreeCtrlView\\objects\\a6b67ee60af65b7f\\candidate.obj": "95df76c5e75ce1cdd6808ae282985ef3f2f7b7d359468d93f4bce9d5f1c2ae22",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-1dxyqh7b\\owners.json": "8ed5c8f2c59385f6d11672ed2137d082d55dc65e267b9437209dc3e423198b77",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-1dxyqh7b\\import-thunk-identities-as-owner.json": "620bb3508df7f53a6ce6920e10bec9ee03d8554d989d5a69317aa6244970495a"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?GetThisClass@CTreeCtrl@@SGPAUCRuntimeClass@@XZ",
+   "address": "007bc2ec",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetThisClass@CTreeView@@SGPAUCRuntimeClass@@XZ",
+   "address": "007bc2e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetThisMessageMap@CTreeCtrl@@KGPBUAFX_MSGMAP@@XZ",
+   "address": "007bc316",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetThisMessageMap@CTreeView@@KGPBUAFX_MSGMAP@@XZ",
+   "address": "007bc2e6",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnBeginLabelEdit@CXTTreeCtrlBase@@IAEHPAUtagNMHDR@@PAJ@Z",
+   "address": "006db9c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnBeginLabelEdit@CXTTreeViewBase@@IAEHPAUtagNMHDR@@PAJ@Z",
+   "address": "006db850",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnCreate@CXTTreeCtrlBase@@IAEHPAUtagCREATESTRUCTA@@@Z",
+   "address": "00422ab0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnCreate@CXTTreeViewBase@@IAEHPAUtagCREATESTRUCTA@@@Z",
+   "address": "00433810",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnDeleteItem@CXTTreeCtrlBase@@IAEHPAUtagNMHDR@@PAJ@Z",
+   "address": "006db9f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnDeleteItem@CXTTreeViewBase@@IAEHPAUtagNMHDR@@PAJ@Z",
+   "address": "006db880",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnEndLabelEdit@CXTTreeCtrlBase@@IAEHPAUtagNMHDR@@PAJ@Z",
+   "address": "006db9d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnEndLabelEdit@CXTTreeViewBase@@IAEHPAUtagNMHDR@@PAJ@Z",
+   "address": "006db860",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnEraseBkgnd@CXTTreeCtrlBase@@IAEHPAVCDC@@@Z",
+   "address": "006e8870",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnEraseBkgnd@CXTTreeViewBase@@IAEHPAVCDC@@@Z",
+   "address": "006e8870",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnItemExpanding@CXTTreeCtrlBase@@IAEHPAUtagNMHDR@@PAJ@Z",
+   "address": "006db9e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnItemExpanding@CXTTreeViewBase@@IAEHPAUtagNMHDR@@PAJ@Z",
+   "address": "006db870",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnKeyDown@CXTTreeCtrlBase@@IAEXIII@Z",
+   "address": "00422a10",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnKeyDown@CXTTreeViewBase@@IAEXIII@Z",
+   "address": "006db840",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnKillFocus@CXTTreeCtrlBase@@IAEXPAVCWnd@@@Z",
+   "address": "006db9b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnKillFocus@CXTTreeViewBase@@IAEXPAVCWnd@@@Z",
+   "address": "006db830",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnLButtonDown@CXTTreeCtrlBase@@IAEXIVCPoint@@@Z",
+   "address": "006db980",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnLButtonDown@CXTTreeViewBase@@IAEXIVCPoint@@@Z",
+   "address": "006db7e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnMouseMove@CXTTreeCtrlBase@@IAEXIVCPoint@@@Z",
+   "address": "00422a20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnMouseMove@CXTTreeViewBase@@IAEXIVCPoint@@@Z",
+   "address": "006db8a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnNcMouseMove@CXTTreeCtrlBase@@IAEXIVCPoint@@@Z",
+   "address": "006dba10",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnNcMouseMove@CXTTreeViewBase@@IAEXIVCPoint@@@Z",
+   "address": "006db8d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnPaint@CXTTreeCtrlBase@@IAEXXZ",
+   "address": "00422a50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnPaint@CXTTreeViewBase@@IAEXXZ",
+   "address": "006db8f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnRButtonDown@CXTTreeCtrlBase@@IAEXIVCPoint@@@Z",
+   "address": "004229f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnRButtonDown@CXTTreeViewBase@@IAEXIVCPoint@@@Z",
+   "address": "006db800",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnSetFocus@CXTTreeCtrlBase@@IAEXPAVCWnd@@@Z",
+   "address": "006db9a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnSetFocus@CXTTreeViewBase@@IAEXPAVCWnd@@@Z",
+   "address": "006db820",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnSize@CXTTreeCtrlBase@@IAEXIHH@Z",
+   "address": "006dba00",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnSize@CXTTreeViewBase@@IAEXIHH@Z",
+   "address": "006db890",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnTimer@CXTTreeCtrlBase@@IAEXI@Z",
+   "address": "00422a40",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnTimer@CXTTreeViewBase@@IAEXI@Z",
+   "address": "006db8c0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 4,
+ "owners_bound": 4
+}

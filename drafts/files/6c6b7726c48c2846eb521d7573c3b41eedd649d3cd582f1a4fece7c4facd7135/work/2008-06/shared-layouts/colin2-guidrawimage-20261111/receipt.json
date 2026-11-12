@@ -1,0 +1,47 @@
+{
+  "family": "RBX::GuiDrawImage",
+  "package_revision": "dbc7834ec337292dcac56703a552785969037b7120478bab289ed3fd24074b6b",
+  "source_revision": "dbc7834ec337292dcac56703a552785969037b7120478bab289ed3fd24074b6b",
+  "baseline_commit": null,
+  "session": "30eee671c03c408b8c1ca6a1c25d77f7",
+  "new_native_methods": 5,
+  "addresses": [
+    "00642690",
+    "00642750",
+    "00642b90",
+    "00642c90",
+    "00642de0"
+  ],
+  "new_inactive_exact_bytes": 2038,
+  "original_symbol_identity": "Non-placeholder decorated names in packaged identity registry, corroborated against original per-method assembly and donor declarations.",
+  "header": "Authentic TextureId, four texture references, mutable cached Vector2; offsets observed at 0,0x20,0x24,0x28,0x2c,0x30.",
+  "source_hashes": {
+    "rebuild/2008-06/native-classes/GuiDrawImage.cpp": "3f2c8ee6b726e3bd585cf42cf984f3899e27cea3b93c358128129d41c5a2a005",
+    "rebuild/2008-06/native-headers/gui/GuiDraw.h": "5b4f2668909a52de87bb35ca8538bcaa5996f9ff32ccb042bf1c61ade0abb8a6"
+  },
+  "scoped_include_profile": "Existing partchunk-profile maps the original TextureProxyBase2008 getSize slot5; no shared header edits. Canonical donor header uses slot1 and does not establish ABI.",
+  "inferences": [
+    "Mutable size from writes in original const method"
+  ],
+  "checks": {
+    "bytes_and_data": "5/5 exact",
+    "asset_name_direct_and_import_calls": "--require-proof passed for 00642b90 with same object and unchanged inputs",
+    "compile_configurations": 3
+  },
+  "gates_open": [
+    "Dynamic texture/refcount/Adorn receiver ABI",
+    "Other direct calls include folded template symbol aliases; not all call bindings proven",
+    "EH graph",
+    "Dependency compatibility and selected providers",
+    "Client integration/no-loss/P5/P6/runtime"
+  ],
+  "constructors": "Existing glue constructor retained, no duplicate definition added. Constructor and destructor not newly proven.",
+  "selected_delta": null,
+  "fully_gated_swaps": null,
+  "independent_server_credit": null,
+  "next_candidates": [
+    "EffectSettings",
+    "Cofm",
+    "CylinderBuilder"
+  ]
+}

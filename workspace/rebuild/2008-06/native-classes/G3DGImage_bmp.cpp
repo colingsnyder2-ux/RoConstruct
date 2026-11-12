@@ -3,7 +3,8 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DGImage_bmp | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 6a293e56 | roc native-status --write
+// <<< native-status | src c51bd2f3 | roc native-status --write
+#line 1 ".\\G3Dcpp\\GImage_bmp.cpp"
 /**
   @file GImage_bmp.cpp
   @author Morgan McGuire, morgan@graphics3d.com

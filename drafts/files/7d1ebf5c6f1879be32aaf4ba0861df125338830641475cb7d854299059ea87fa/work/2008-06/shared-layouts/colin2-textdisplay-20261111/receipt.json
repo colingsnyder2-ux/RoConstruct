@@ -1,0 +1,52 @@
+{
+  "family": "RBX::TextDisplay",
+  "package_revision": "dbc7834ec337292dcac56703a552785969037b7120478bab289ed3fd24074b6b",
+  "source_revision": "dbc7834ec337292dcac56703a552785969037b7120478bab289ed3fd24074b6b",
+  "baseline_commit": null,
+  "session": "bbded00cd3bc4ad4bd2392ab37abad61",
+  "source": "rebuild\\2008-06\\native-classes\\TextDisplay.cpp",
+  "source_sha256": "e104f3a5cc8659ec30f092e53138915fe8d741ab4fa1a0dfe003543fe1bdbde0",
+  "new_source_members": [
+    "init",
+    "getLabel",
+    "render2d",
+    "two-string constructor"
+  ],
+  "new_inactive_exact_addresses": [
+    "005735e0",
+    "00573670",
+    "00574580",
+    "005744a0"
+  ],
+  "new_inactive_exact_bytes": 488,
+  "verified_existing": [
+    "00574570 getFontSize,7 bytes"
+  ],
+  "checks": {
+    "bytes_and_referenced_data": "5/5 exact",
+    "strict_direct_and_import_proof": "4/4 passed, same final object",
+    "unresolved": "render2d virtual getLabel binding and label2d provider ABI remain separate",
+    "configurations": 4
+  },
+  "source_identity": [
+    "Original init130 bytes: guiSize180x30, font18, purple Color3, zero Color4, XALIGN_LEFT",
+    "Original constructor203 bytes: GuiItem ctor, default label, init, setName, assign label",
+    "Original non-placeholder decorated names for init/getLabel/render2d",
+    "Constructor identity inferred from TextDisplay RTTI vtable and authenticated header signature"
+  ],
+  "gates_open": [
+    "GuiItem base and inherited virtual ABI",
+    "Renderer indirect call receiver and provider ABI",
+    "EH graph",
+    "Default constructor not recovered; no invented body added",
+    "Selected linkage, no-loss integration and P5/P6/runtime"
+  ],
+  "selected_delta": null,
+  "fully_gated_swaps": null,
+  "independent_server_credit": null,
+  "next_family": {
+    "family": "RBX::ChatOutput",
+    "missing": "render2d 0064fe90, ParseCommand00650660, onEvent(ChatMessage)00650cc0",
+    "next_action": "Recheck leases and existing source; initialize untouched family paths before edit; grouped original assembly and native gui/ChatOutput.h establish fields. Do not repeat finished GuiDrawImage or TextDisplay compiles."
+  }
+}

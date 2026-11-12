@@ -1,0 +1,5 @@
+{
+  "parent": "work\\2008-06\\shared-layouts\\colin2-chatoutput-20261111\\receipt.json",
+  "scope": "Player getter declaration/body only, not a new class or standalone exact address",
+  "inferred_body": true
+}

@@ -1,0 +1,43 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??$_Adjust_heap@PAURankedShadow@Ogre@@HU12@@std@@YAXPAURankedShadow@Ogre@@HHU12@@Z",
+    "address": "0067c780"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-OgreRbxEntity\\objects\\d65b61d777d11737\\candidate.obj": "63881d89f1ed3938354f783302ff301f593060bf8f5a778cd03b09d169136dad",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-fvhd2akg\\owners.json": "247c9910d91fce505523b9fe4e2b2435c826ce920620e95dee5686823b6d330c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-fvhd2akg\\import-thunk-identities-as-owner.json": "46f20b700b12ce1a4f0c9f57ee7044e179f80faaec7447c98d3296cbc86f592a"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$_Median@PAURankedShadow@Ogre@@@std@@YAXPAURankedShadow@Ogre@@00@Z",
+    "address": "0067ca50"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-OgreRbxEntity\\objects\\d65b61d777d11737\\candidate.obj": "63881d89f1ed3938354f783302ff301f593060bf8f5a778cd03b09d169136dad",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-fvhd2akg\\owners.json": "247c9910d91fce505523b9fe4e2b2435c826ce920620e95dee5686823b6d330c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-fvhd2akg\\import-thunk-identities-as-owner.json": "46f20b700b12ce1a4f0c9f57ee7044e179f80faaec7447c98d3296cbc86f592a"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??$_Med3@PAURankedShadow@Ogre@@@std@@YAXPAURankedShadow@Ogre@@00@Z",
+   "address": "0067c800",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$_Push_heap@PAURankedShadow@Ogre@@HU12@@std@@YAXPAURankedShadow@Ogre@@HHU12@@Z",
+   "address": "0067c640",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

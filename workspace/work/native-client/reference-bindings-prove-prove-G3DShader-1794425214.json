@@ -1,0 +1,457 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?compile@GPUShader@VertexAndPixelShader@G3D@@IAEXXZ",
+    "address": "00485480"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DShader\\objects\\4c478151274282b7\\candidate.obj": "34a563cb77bca74c8ac2138d50a88e324f00436803c7f80cc609aee1db8a49c9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u98_ucx4\\owners.json": "a71e6d5befa5d8fb8154e6714f6c2f7e43012f79527aa77aec0dfd9857b809dc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u98_ucx4\\import-thunk-identities-as-owner.json": "9caa4501a1214cda43ce5bcdd5f5e1eedc950bf7564859d0d2b97fc03067a859"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1GPUShader@VertexAndPixelShader@G3D@@QAE@XZ",
+    "address": "004855c0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DShader\\objects\\4c478151274282b7\\candidate.obj": "34a563cb77bca74c8ac2138d50a88e324f00436803c7f80cc609aee1db8a49c9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u98_ucx4\\owners.json": "a71e6d5befa5d8fb8154e6714f6c2f7e43012f79527aa77aec0dfd9857b809dc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u98_ucx4\\import-thunk-identities-as-owner.json": "9caa4501a1214cda43ce5bcdd5f5e1eedc950bf7564859d0d2b97fc03067a859"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0GPUShader@VertexAndPixelShader@G3D@@QAE@XZ",
+    "address": "00485640"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DShader\\objects\\4c478151274282b7\\candidate.obj": "34a563cb77bca74c8ac2138d50a88e324f00436803c7f80cc609aee1db8a49c9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u98_ucx4\\owners.json": "a71e6d5befa5d8fb8154e6714f6c2f7e43012f79527aa77aec0dfd9857b809dc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u98_ucx4\\import-thunk-identities-as-owner.json": "9caa4501a1214cda43ce5bcdd5f5e1eedc950bf7564859d0d2b97fc03067a859"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?realloc@?$Array@VUniformDeclaration@VertexAndPixelShader@G3D@@@G3D@@AAEXH@Z",
+    "address": "00485b70"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DShader\\objects\\4c478151274282b7\\candidate.obj": "34a563cb77bca74c8ac2138d50a88e324f00436803c7f80cc609aee1db8a49c9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u98_ucx4\\owners.json": "a71e6d5befa5d8fb8154e6714f6c2f7e43012f79527aa77aec0dfd9857b809dc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u98_ucx4\\import-thunk-identities-as-owner.json": "9caa4501a1214cda43ce5bcdd5f5e1eedc950bf7564859d0d2b97fc03067a859"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?resize@?$Array@VUniformDeclaration@VertexAndPixelShader@G3D@@@G3D@@QAEXH_N@Z",
+    "address": "00485cf0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DShader\\objects\\4c478151274282b7\\candidate.obj": "34a563cb77bca74c8ac2138d50a88e324f00436803c7f80cc609aee1db8a49c9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u98_ucx4\\owners.json": "a71e6d5befa5d8fb8154e6714f6c2f7e43012f79527aa77aec0dfd9857b809dc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u98_ucx4\\import-thunk-identities-as-owner.json": "9caa4501a1214cda43ce5bcdd5f5e1eedc950bf7564859d0d2b97fc03067a859"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?validateArgList@VertexAndPixelShader@G3D@@QBEXABVArgList@12@@Z",
+    "address": "00485ef0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DShader\\objects\\4c478151274282b7\\candidate.obj": "34a563cb77bca74c8ac2138d50a88e324f00436803c7f80cc609aee1db8a49c9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u98_ucx4\\owners.json": "a71e6d5befa5d8fb8154e6714f6c2f7e43012f79527aa77aec0dfd9857b809dc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u98_ucx4\\import-thunk-identities-as-owner.json": "9caa4501a1214cda43ce5bcdd5f5e1eedc950bf7564859d0d2b97fc03067a859"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?set@?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VArg@ArgList@VertexAndPixelShader@G3D@@@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVArg@ArgList@VertexAndPixelShader@2@@Z",
+    "address": "00486990"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DShader\\objects\\4c478151274282b7\\candidate.obj": "34a563cb77bca74c8ac2138d50a88e324f00436803c7f80cc609aee1db8a49c9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u98_ucx4\\owners.json": "a71e6d5befa5d8fb8154e6714f6c2f7e43012f79527aa77aec0dfd9857b809dc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u98_ucx4\\import-thunk-identities-as-owner.json": "9caa4501a1214cda43ce5bcdd5f5e1eedc950bf7564859d0d2b97fc03067a859"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?computeUniformArray@VertexAndPixelShader@G3D@@IAEXXZ",
+    "address": "00486c00"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DShader\\objects\\4c478151274282b7\\candidate.obj": "34a563cb77bca74c8ac2138d50a88e324f00436803c7f80cc609aee1db8a49c9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u98_ucx4\\owners.json": "a71e6d5befa5d8fb8154e6714f6c2f7e43012f79527aa77aec0dfd9857b809dc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u98_ucx4\\import-thunk-identities-as-owner.json": "9caa4501a1214cda43ce5bcdd5f5e1eedc950bf7564859d0d2b97fc03067a859"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?set@ArgList@VertexAndPixelShader@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV?$ReferenceCountedPointer@VTexture@G3D@@@3@@Z",
+    "address": "00486eb0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DShader\\objects\\4c478151274282b7\\candidate.obj": "34a563cb77bca74c8ac2138d50a88e324f00436803c7f80cc609aee1db8a49c9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u98_ucx4\\owners.json": "a71e6d5befa5d8fb8154e6714f6c2f7e43012f79527aa77aec0dfd9857b809dc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u98_ucx4\\import-thunk-identities-as-owner.json": "9caa4501a1214cda43ce5bcdd5f5e1eedc950bf7564859d0d2b97fc03067a859"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?set@ArgList@VertexAndPixelShader@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVMatrix4@3@@Z",
+    "address": "00486fe0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DShader\\objects\\4c478151274282b7\\candidate.obj": "34a563cb77bca74c8ac2138d50a88e324f00436803c7f80cc609aee1db8a49c9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u98_ucx4\\owners.json": "a71e6d5befa5d8fb8154e6714f6c2f7e43012f79527aa77aec0dfd9857b809dc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u98_ucx4\\import-thunk-identities-as-owner.json": "9caa4501a1214cda43ce5bcdd5f5e1eedc950bf7564859d0d2b97fc03067a859"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?set@ArgList@VertexAndPixelShader@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVVector4@3@@Z",
+    "address": "00487110"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DShader\\objects\\4c478151274282b7\\candidate.obj": "34a563cb77bca74c8ac2138d50a88e324f00436803c7f80cc609aee1db8a49c9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u98_ucx4\\owners.json": "a71e6d5befa5d8fb8154e6714f6c2f7e43012f79527aa77aec0dfd9857b809dc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u98_ucx4\\import-thunk-identities-as-owner.json": "9caa4501a1214cda43ce5bcdd5f5e1eedc950bf7564859d0d2b97fc03067a859"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?set@ArgList@VertexAndPixelShader@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@M@Z",
+    "address": "004871f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DShader\\objects\\4c478151274282b7\\candidate.obj": "34a563cb77bca74c8ac2138d50a88e324f00436803c7f80cc609aee1db8a49c9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u98_ucx4\\owners.json": "a71e6d5befa5d8fb8154e6714f6c2f7e43012f79527aa77aec0dfd9857b809dc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u98_ucx4\\import-thunk-identities-as-owner.json": "9caa4501a1214cda43ce5bcdd5f5e1eedc950bf7564859d0d2b97fc03067a859"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1VertexAndPixelShader@G3D@@UAE@XZ",
+    "address": "00487b80"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DShader\\objects\\4c478151274282b7\\candidate.obj": "34a563cb77bca74c8ac2138d50a88e324f00436803c7f80cc609aee1db8a49c9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u98_ucx4\\owners.json": "a71e6d5befa5d8fb8154e6714f6c2f7e43012f79527aa77aec0dfd9857b809dc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u98_ucx4\\import-thunk-identities-as-owner.json": "9caa4501a1214cda43ce5bcdd5f5e1eedc950bf7564859d0d2b97fc03067a859"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?beforePrimitive@Shader@G3D@@UAEXPAVRenderDevice@2@@Z",
+    "address": "00487c60"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DShader\\objects\\4c478151274282b7\\candidate.obj": "34a563cb77bca74c8ac2138d50a88e324f00436803c7f80cc609aee1db8a49c9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u98_ucx4\\owners.json": "a71e6d5befa5d8fb8154e6714f6c2f7e43012f79527aa77aec0dfd9857b809dc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u98_ucx4\\import-thunk-identities-as-owner.json": "9caa4501a1214cda43ce5bcdd5f5e1eedc950bf7564859d0d2b97fc03067a859"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?addUniformsFromCode@VertexAndPixelShader@G3D@@IAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+    "address": "004881b0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DShader\\objects\\4c478151274282b7\\candidate.obj": "34a563cb77bca74c8ac2138d50a88e324f00436803c7f80cc609aee1db8a49c9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u98_ucx4\\owners.json": "a71e6d5befa5d8fb8154e6714f6c2f7e43012f79527aa77aec0dfd9857b809dc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u98_ucx4\\import-thunk-identities-as-owner.json": "9caa4501a1214cda43ce5bcdd5f5e1eedc950bf7564859d0d2b97fc03067a859"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?fromStrings@VertexAndPixelShader@G3D@@SA?AV?$ReferenceCountedPointer@VVertexAndPixelShader@G3D@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0W4UseG3DUniforms@2@_N@Z",
+    "address": "00488fe0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DShader\\objects\\4c478151274282b7\\candidate.obj": "34a563cb77bca74c8ac2138d50a88e324f00436803c7f80cc609aee1db8a49c9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u98_ucx4\\owners.json": "a71e6d5befa5d8fb8154e6714f6c2f7e43012f79527aa77aec0dfd9857b809dc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u98_ucx4\\import-thunk-identities-as-owner.json": "9caa4501a1214cda43ce5bcdd5f5e1eedc950bf7564859d0d2b97fc03067a859"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??0Arg@ArgList@VertexAndPixelShader@G3D@@QAE@ABV0123@@Z",
+   "address": "00485a40",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??0ArgumentError@VertexAndPixelShader@G3D@@QAE@ABV012@@Z",
+   "address": "00486350",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??0Matrix4@G3D@@QAE@ABVCoordinateFrame@1@@Z",
+   "address": "00514590",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??0Node@?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VArg@ArgList@VertexAndPixelShader@G3D@@@G3D@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VArg@ArgList@VertexAndPixelShader@2@IPAV012@@Z",
+   "address": "00486850",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??0TextInput@G3D@@QAE@W4FS@01@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVSettings@01@@Z",
+   "address": "00517c50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??0Vector4@G3D@@QAE@ABV01@@Z",
+   "address": "00476550",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??0VertexAndPixelShader@G3D@@IAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0_N0011W4UseG3DUniforms@1@@Z",
+   "address": "00488710",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??1?$Array@VUniformDeclaration@VertexAndPixelShader@G3D@@@G3D@@QAE@XZ",
+   "address": "00485ca0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??1ArgumentError@VertexAndPixelShader@G3D@@QAE@XZ",
+   "address": "0068b7e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??1TextInput@G3D@@QAE@XZ",
+   "address": "00487b00",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??4Arg@ArgList@VertexAndPixelShader@G3D@@QAEAAV0123@ABV0123@@Z",
+   "address": "00485a80",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_EVertexAndPixelShader@G3D@@UAEPAXI@Z",
+   "address": "00488190",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??__G@YGXPAX0IHP6EPAX00@Z@Z",
+   "address": "004781f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GLenumToString@G3D@@YAPBDI@Z",
+   "address": "00483a00",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?canonicalType@VertexAndPixelShader@G3D@@KAII@Z",
+   "address": "00485820",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?containsKey@?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VArg@ArgList@VertexAndPixelShader@G3D@@@G3D@@QBE_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "00485920",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?get@?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VArg@ArgList@VertexAndPixelShader@G3D@@@G3D@@QBEAAVArg@ArgList@VertexAndPixelShader@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "004858b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?getOpenGLTextureTarget@Texture@G3D@@QBEIXZ",
+   "address": "00473700",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?getRow@Matrix4@G3D@@QBE?AVVector4@2@H@Z",
+   "address": "00514630",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glCompileShaderARB@@3P6GXK@ZA",
+   "address": "0096f928",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glCreateShaderObjectARB@@3P6GKI@ZA",
+   "address": "0096f920",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glDeleteObjectARB@@3P6GXK@ZA",
+   "address": "0096f914",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glGetActiveUniformARB@@3P6GXKIHPAH0PAIPAD@ZA",
+   "address": "0096f97c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glGetHandleARB@@3P6GKI@ZA",
+   "address": "0096f918",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glGetInfoLogARB@@3P6GXKHPAHPAD@ZA",
+   "address": "0096f96c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glGetObjectParameterivARB@@3P6GXKIPAH@ZA",
+   "address": "0096f978",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glGetUniformLocationARB@@3P6GHKPBD@ZA",
+   "address": "0096f970",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glShaderSourceARB@@3P6GXKHPAPBDPBH@ZA",
+   "address": "0096f924",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glUseProgramObjectARB@@3P6GXK@ZA",
+   "address": "0096f938",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?hasMore@TextInput@G3D@@QAE_NXZ",
+   "address": "00518370",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?peek@TextInput@G3D@@QAE?AVToken@2@XZ",
+   "address": "005182b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?read@TextInput@G3D@@QAE?AVToken@2@XZ",
+   "address": "00517b30",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?readNumber@TextInput@G3D@@QAENXZ",
+   "address": "00517ed0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?readSymbol@TextInput@G3D@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+   "address": "00518110",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?readSymbol@TextInput@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "00518180",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?resize@?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VArg@ArgList@VertexAndPixelShader@G3D@@@G3D@@AAEXH@Z",
+   "address": "004859a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?setVertexAndPixelShader@RenderDevice@G3D@@QAEXABV?$ReferenceCountedPointer@VVertexAndPixelShader@G3D@@@2@ABVArgList@VertexAndPixelShader@2@@Z",
+   "address": "00479000",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?toGLType@G3D@@YAIABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "004856b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??0GPUShader@VertexAndPixelShader@G3D@@QAE@XZ",
+   "address": "007c5591",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??1GPUShader@VertexAndPixelShader@G3D@@QAE@XZ",
+   "address": "007c555d",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??1VertexAndPixelShader@G3D@@UAE@XZ",
+   "address": "007c5919",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?addUniformsFromCode@VertexAndPixelShader@G3D@@IAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "007c5b20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?beforePrimitive@Shader@G3D@@UAEXPAVRenderDevice@2@@Z",
+   "address": "007c59e1",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?computeUniformArray@VertexAndPixelShader@G3D@@IAEXXZ",
+   "address": "007c5744",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?fromStrings@VertexAndPixelShader@G3D@@SA?AV?$ReferenceCountedPointer@VVertexAndPixelShader@G3D@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0W4UseG3DUniforms@2@_N@Z",
+   "address": "007c5d78",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?realloc@?$Array@VUniformDeclaration@VertexAndPixelShader@G3D@@@G3D@@AAEXH@Z",
+   "address": "007d7581",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?resize@?$Array@VUniformDeclaration@VertexAndPixelShader@G3D@@@G3D@@QAEXH_N@Z",
+   "address": "007c55b9",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?set@?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VArg@ArgList@VertexAndPixelShader@G3D@@@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVArg@ArgList@VertexAndPixelShader@2@@Z",
+   "address": "007c5706",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?set@ArgList@VertexAndPixelShader@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV?$ReferenceCountedPointer@VTexture@G3D@@@3@@Z",
+   "address": "007c5758",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?set@ArgList@VertexAndPixelShader@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVMatrix4@3@@Z",
+   "address": "007c5758",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?set@ArgList@VertexAndPixelShader@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVVector4@3@@Z",
+   "address": "007c5758",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?set@ArgList@VertexAndPixelShader@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@M@Z",
+   "address": "007c5758",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?validateArgList@VertexAndPixelShader@G3D@@QBEXABVArgList@12@@Z",
+   "address": "007c5651",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__glGetLightfv@12",
+   "address": "00802a24",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 16,
+ "owners_bound": 16
+}

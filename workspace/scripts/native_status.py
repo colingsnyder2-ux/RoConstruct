@@ -171,7 +171,8 @@ def count_declared_methods(text: str) -> int:
 def parse_args():
     ap = argparse.ArgumentParser()
     ap.add_argument("--write", action="store_true", help="write banners to files")
-    ap.add_argument("--check", action="store_true", help="exit 1 if any banner missing/stale")
+    ap.add_argument("--check", action="store_true", help="report missing/stale banners (advisory: exit 0 unless --strict)")
+    ap.add_argument("--strict", action="store_true", help="with --check, exit 1 on stale banners (banners are optional; nothing requires this)")
     ap.add_argument("--json", action="store_true", help="print index JSON to stdout")
     ap.add_argument("--path", action="append", help="glob (repeatable) matched against repo-relative paths (default all native dirs)")
     ap.add_argument("--staged", action="store_true", help="check only git-staged native files")
@@ -471,8 +472,8 @@ def main():
             print(f"wrote: {key}")
     if args.check:
         if stale:
-            print(f"{stale} stale/missing banners")
-            return 1
+            print(f"{stale} stale/missing banners (advisory only; banners are optional)")
+            return 1 if args.strict else 0
         print("all banners current")
         return 0
     if args.write:

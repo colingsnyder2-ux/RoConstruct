@@ -1,0 +1,109 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??1CXTWindowMap@@UAE@XZ",
+    "address": "007a1100"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTWndHook\\objects\\a711c0800268c91c\\candidate.obj": "32ceb57e6563a7fbed12f7533984a93f798110c2b344530547988b7e59a88ab3",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-e0w2fy74\\owners.json": "cdf12edb5384d4cc13588a492868472b4d09c097b29e65831218af8763649aad",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-e0w2fy74\\import-thunk-identities-as-owner.json": "288be9d9b786eb54fc6c51173479e6ba25b2904a1502239f60603c4cc4ef79fe"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?HookWndProc@CXTWindowMap@@SGJPAUHWND__@@IIJ@Z",
+    "address": "007a1240"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTWndHook\\objects\\a711c0800268c91c\\candidate.obj": "32ceb57e6563a7fbed12f7533984a93f798110c2b344530547988b7e59a88ab3",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-e0w2fy74\\owners.json": "cdf12edb5384d4cc13588a492868472b4d09c097b29e65831218af8763649aad",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-e0w2fy74\\import-thunk-identities-as-owner.json": "288be9d9b786eb54fc6c51173479e6ba25b2904a1502239f60603c4cc4ef79fe"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1CXTWndHook@@UAE@XZ",
+    "address": "007a13a0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTWndHook\\objects\\a711c0800268c91c\\candidate.obj": "32ceb57e6563a7fbed12f7533984a93f798110c2b344530547988b7e59a88ab3",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-e0w2fy74\\owners.json": "cdf12edb5384d4cc13588a492868472b4d09c097b29e65831218af8763649aad",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-e0w2fy74\\import-thunk-identities-as-owner.json": "288be9d9b786eb54fc6c51173479e6ba25b2904a1502239f60603c4cc4ef79fe"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??1CMapPtrToPtr@@UAE@XZ",
+   "address": "007bc7fc",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECXTWindowMap@@UAEPAXI@Z",
+   "address": "007a1180",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECXTWndHook@@UAEPAXI@Z",
+   "address": "0078fe40",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?AfxGetThreadState@@YGPAV_AFX_THREAD_STATE@@XZ",
+   "address": "007bbfe0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetRuntimeClass@CXTWindowMap@@UBEPAUCRuntimeClass@@XZ",
+   "address": "007a1150",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetRuntimeClass@CXTWndHook@@UBEPAUCRuntimeClass@@XZ",
+   "address": "007a10a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?HookWindow@CXTWndHook@@UAEHPAUHWND__@@@Z",
+   "address": "007a1350",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?HookWindow@CXTWndHook@@UAEHPAVCWnd@@@Z",
+   "address": "0078fe20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?IsWindowHooked@CXTWndHook@@UAEHXZ",
+   "address": "0078fd50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Lookup@CXTWindowMap@@QAEPAVCXTWndHook@@PAUHWND__@@@Z",
+   "address": "007a1110",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?RemoveAll@CXTWindowMap@@QAEXPAUHWND__@@@Z",
+   "address": "007a1210",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?WindowProc@CXTWndHook@@UAEJIIJ@Z",
+   "address": "007a10b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__CallWindowProcA@20",
+   "address": "00802db8",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 3,
+ "owners_bound": 3
+}

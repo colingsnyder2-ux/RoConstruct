@@ -1,0 +1,85 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?RemoveHead@?$CList@PAVCXTPDockingPaneContextStickerWnd@@PAV1@@@QAEPAVCXTPDockingPaneContextStickerWnd@@XZ",
+    "address": "00754f20"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockingPaneContext\\objects\\7d6be89f323ef817\\candidate.obj": "f501268d21326e915674fa8d779d6fb68164dece0f9d212306f9a1c47ccd0a6d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-sjilx624\\owners.json": "0779e4d7f23b863525330ead7584fcc63a46cacc141e75856884fc3516dbf2f5",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-sjilx624\\import-thunk-identities-as-owner.json": "2f8310acf726f5c32802a9889547e814fa58c525f69da4d998874ebb6221d309"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Serialize@?$CList@PAVCXTPDockingPaneContextStickerWnd@@PAV1@@@UAEXAAVCArchive@@@Z",
+    "address": "0076d180"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockingPaneContext\\objects\\7d6be89f323ef817\\candidate.obj": "f501268d21326e915674fa8d779d6fb68164dece0f9d212306f9a1c47ccd0a6d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-sjilx624\\owners.json": "0779e4d7f23b863525330ead7584fcc63a46cacc141e75856884fc3516dbf2f5",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-sjilx624\\import-thunk-identities-as-owner.json": "2f8310acf726f5c32802a9889547e814fa58c525f69da4d998874ebb6221d309"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?GetMessageMap@CXTPDockingPaneContextStickerWnd@@MBEPBUAFX_MSGMAP@@XZ",
+    "address": "0076bb00"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockingPaneContext\\objects\\7d6be89f323ef817\\candidate.obj": "f501268d21326e915674fa8d779d6fb68164dece0f9d212306f9a1c47ccd0a6d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-sjilx624\\owners.json": "0779e4d7f23b863525330ead7584fcc63a46cacc141e75856884fc3516dbf2f5",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-sjilx624\\import-thunk-identities-as-owner.json": "2f8310acf726f5c32802a9889547e814fa58c525f69da4d998874ebb6221d309"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Serialize@?$CMap@IIPAVCRgn@@PAV1@@@UAEXAAVCArchive@@@Z",
+    "address": "006be360"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockingPaneContext\\objects\\7d6be89f323ef817\\candidate.obj": "f501268d21326e915674fa8d779d6fb68164dece0f9d212306f9a1c47ccd0a6d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-sjilx624\\owners.json": "0779e4d7f23b863525330ead7584fcc63a46cacc141e75856884fc3516dbf2f5",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-sjilx624\\import-thunk-identities-as-owner.json": "2f8310acf726f5c32802a9889547e814fa58c525f69da4d998874ebb6221d309"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??$SerializeElements@PAVCRgn@@@@YGXAAVCArchive@@PAPAVCRgn@@H@Z",
+   "address": "00787550",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$SerializeElements@PAVCXTPDockingPaneContextStickerWnd@@@@YGXAAVCArchive@@PAPAVCXTPDockingPaneContextStickerWnd@@H@Z",
+   "address": "00787550",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??A?$CMap@IIPAVCRgn@@PAV1@@@QAEAAPAVCRgn@@I@Z",
+   "address": "007215d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?AddTail@?$CList@PAVCXTPDockingPaneContextStickerWnd@@PAV1@@@QAEPAU__POSITION@@PAVCXTPDockingPaneContextStickerWnd@@@Z",
+   "address": "0076bac0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?FreeNode@?$CList@PAVCXTPDockingPaneContextStickerWnd@@PAV1@@@IAEXPAUCNode@1@@Z",
+   "address": "00760970",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetThisMessageMap@CXTPDockingPaneContextStickerWnd@@KGPBUAFX_MSGMAP@@XZ",
+   "address": "0076a7b0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 4,
+ "owners_bound": 4
+}

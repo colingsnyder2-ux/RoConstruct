@@ -1,0 +1,24 @@
+{
+  "status": "checkpoint before context limit",
+  "completed_new_exact_this_session": {
+    "ChatLine/ChatOutput": 582,
+    "TopMenuBar": 916
+  },
+  "next_source_batch": {
+    "family": "ChatOutput",
+    "missing": [
+      "render2d0064fe90",
+      "ParseCommand00650660"
+    ],
+    "next_action": "Leases first. Resume existing scoped ChatOutput draft session before new edits. Reuse native layout and known original client. Start fresh function clocks for these unattempted methods."
+  },
+  "parked": [
+    "TopMenuBar bool ctor provider inlining",
+    "CChatPromptWindow OnCreate XTP header-version fallback"
+  ],
+  "avoid": [
+    "Do not edit owner-leased TextDisplay.cpp",
+    "Do not count preexisting heartbeat or earlier matches as new recovery",
+    "Earlier Gui.h and Player.h dependent receipts are historical until relevant proof refresh"
+  ]
+}

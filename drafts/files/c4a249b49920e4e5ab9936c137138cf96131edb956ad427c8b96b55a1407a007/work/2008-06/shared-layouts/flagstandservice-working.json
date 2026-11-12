@@ -1,0 +1,77 @@
+{
+  "class_name": "RBX::FlagStandService",
+  "inactive": true,
+  "methods": [
+    {
+      "address": "0062c1c0",
+      "symbol": "??1FlagStandService@RBX@@UAE@XZ",
+      "size": 115,
+      "exact": true,
+      "verified_targets": {
+        "??_7FlagStandService@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x8461ec (RTTI .?AVFlagStandService@RBX@@, offset 0x0)",
+        "??_7FlagStandService@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x8461dc (RTTI .?AVFlagStandService@RBX@@, offset 0x10)",
+        "??_7FlagStandService@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x8461d4 (RTTI .?AVFlagStandService@RBX@@, offset 0x14)",
+        "??_7FlagStandService@RBX@@6BDebugable@1@@": "0x8461cc (RTTI .?AVFlagStandService@RBX@@, offset 0x20)",
+        "??_7FlagStandService@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x8461bc (RTTI .?AVFlagStandService@RBX@@, offset 0x24)",
+        "??_7FlagStandService@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x8461ac (RTTI .?AVFlagStandService@RBX@@, offset 0x44)",
+        "??_7FlagStandService@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x84619c (RTTI .?AVFlagStandService@RBX@@, offset 0x64)",
+        "??_7FlagStandService@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x84618c (RTTI .?AVFlagStandService@RBX@@, offset 0x84)",
+        "??_7FlagStandService@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x84617c (RTTI .?AVFlagStandService@RBX@@, offset 0xa4)",
+        "??_7FlagStandService@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x84616c (RTTI .?AVFlagStandService@RBX@@, offset 0xc4)",
+        "?_Tidy@?$list@PAVFlagStand@RBX@@V?$allocator@PAVFlagStand@RBX@@@std@@@std@@IAEXXZ": "0x682b40",
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z",
+        "??1?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@MAE@XZ": "0x62ba70"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0062bfc0",
+      "symbol": "?FindStandWithFlag@FlagStandService@RBX@@QAEPAVFlagStand@2@PAVFlag@2@@Z",
+      "size": 177,
+      "exact": true,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "msvcr90.dll!_invalid_parameter_noinfo",
+        "?GetFlag@FlagStand@RBX@@QAEPAVFlag@2@XZ": "0x62b900"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "0062ba70",
+      "symbol": "??1?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@MAE@XZ",
+      "size": 83,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x846104 (RTTI .?AV?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@, offset 0x0)",
+        "??_7?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x8460f8 (RTTI .?AV?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@, offset 0x10)",
+        "??_7?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3PADAVDescribedBase@Reflection@2@@Reflection@1@@": "0x8460f0 (RTTI .?AV?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@, offset 0x14)",
+        "??_7?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@6BDebugable@1@@": "0x8460e8 (RTTI .?AV?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@, offset 0x20)",
+        "??_7?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x8460d8 (RTTI .?AV?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@, offset 0x24)",
+        "??_7?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x8460c8 (RTTI .?AV?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@, offset 0x44)",
+        "??_7?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x8460b8 (RTTI .?AV?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@, offset 0x64)",
+        "??_7?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x8460a8 (RTTI .?AV?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@, offset 0x84)",
+        "??_7?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x846098 (RTTI .?AV?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@, offset 0xa4)",
+        "??_7?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x846088 (RTTI .?AV?$FactoryProduct@VFlagStandService@RBX@@VInstance@2@$1?sFlagStandService@2@3QBDB@RBX@@, offset 0xc4)",
+        "??1Instance@RBX@@UAE@XZ": "0x55a540"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00682b40",
+      "symbol": "?_Tidy@?$list@PAVFlagStand@RBX@@V?$allocator@PAVFlagStand@RBX@@@std@@@std@@IAEXXZ",
+      "size": 72,
+      "exact": true,
+      "verified_targets": {
+        "??3@YAXPAX@Z": "mfc90.dll!??3@YAXPAX@Z"
+      },
+      "local_eh": []
+    }
+  ],
+  "parked": {
+    "0062ccd0 ctor": "needs Instance::propArchivable + 4-slot GetSet; see work/flagstandservice-20261104/header-proposal.md",
+    "005c0390/0062c820/007fe730": "emitted only with ctor"
+  },
+  "findings": [
+    "name array is const char (RTTI 3QBDB) for this class, unlike DebrisService/ClickDetector (3PADA)",
+    "explicit empty virtual dtor (target stores vptrs)"
+  ]
+}

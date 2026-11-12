@@ -1,0 +1,15 @@
+{
+  "status": "checkpoint before context limit",
+  "completed": [
+    "CChatPrompt lifetime/runtime support and header restoration",
+    "GuiDrawImage five methods",
+    "TextDisplay four members"
+  ],
+  "next": {
+    "family": "RBX::ChatOutput",
+    "missing": "render2d 0064fe90, ParseCommand00650660, onEvent(ChatMessage)00650cc0",
+    "next_action": "Recheck leases and existing source; initialize untouched family paths before edit; grouped original assembly and native gui/ChatOutput.h establish fields. Do not repeat finished GuiDrawImage or TextDisplay compiles."
+  },
+  "parked": "CChatPromptWindow OnCreate XTP font fallback mismatch; revisit only with header/version evidence",
+  "unchanged_proofs": "Retain final objects and fingerprints. Reanalysis only for new obligations."
+}

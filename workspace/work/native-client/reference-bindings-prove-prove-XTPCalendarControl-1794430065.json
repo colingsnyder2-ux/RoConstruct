@@ -1,0 +1,37 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??A?$CMap@KKP8CXTPCalendarControl@@AEXKIJ@ZP81@AEXKIJ@Z@@QAEAAP8CXTPCalendarControl@@AEXKIJ@ZK@Z",
+    "address": "007215d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPCalendarControl\\objects\\a0e3304ee92a0d2f\\candidate.obj": "832cf5310b5f2123c35e013ac6680828ae607b77859cf6123c17718d06ab722f",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-wweeddgz\\owners.json": "97f9fa8076f714792f2e70cae0df9b0fe16ed49fdb7bdd6413b414f7e41ab485",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-wweeddgz\\import-thunk-identities-as-owner.json": "45411d45510e2cdce07b052a2c658954d20e6f965749c6984b4f2073015516c8"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?GetAssocAt@?$CMap@KKP8CXTPCalendarControl@@AEXKIJ@ZP81@AEXKIJ@Z@@IBEPAVCAssoc@1@KAAI0@Z",
+   "address": "00708080",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?InitHashTable@?$CMap@KKP8CXTPCalendarControl@@AEXKIJ@ZP81@AEXKIJ@Z@@QAEXIH@Z",
+   "address": "00438850",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?NewAssoc@?$CMap@KKP8CXTPCalendarControl@@AEXKIJ@ZP81@AEXKIJ@Z@@IAEPAVCAssoc@1@K@Z",
+   "address": "00721440",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

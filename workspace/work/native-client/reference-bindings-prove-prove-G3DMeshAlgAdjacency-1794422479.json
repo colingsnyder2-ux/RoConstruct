@@ -1,0 +1,105 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??0Node@?$Table@VMeshDirectedEdgeKey@G3D@@V?$Array@H@2@@G3D@@QAE@VMeshDirectedEdgeKey@2@V?$Array@H@2@IPAV012@@Z",
+    "address": "007b9630"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DMeshAlgAdjacency\\objects\\5238985601500cfb\\candidate.obj": "ffaa1425dbb1d1c65323e36e6d5ba5c808aaa3063758480cf7fad1e3a5260466",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-pzgrax30\\owners.json": "dfe215b7d915a9f4b14bd2e83405fcd71da5663851c20d03881a8359a11e1997",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-pzgrax30\\import-thunk-identities-as-owner.json": "5078d58babb1d19e96c03220e0578f02b4e118da4ff54909b44ac9ce60853d76"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?set@?$Table@VMeshDirectedEdgeKey@G3D@@V?$Array@H@2@@G3D@@QAEXABVMeshDirectedEdgeKey@2@ABV?$Array@H@2@@Z",
+    "address": "007b96e0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DMeshAlgAdjacency\\objects\\5238985601500cfb\\candidate.obj": "ffaa1425dbb1d1c65323e36e6d5ba5c808aaa3063758480cf7fad1e3a5260466",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-pzgrax30\\owners.json": "dfe215b7d915a9f4b14bd2e83405fcd71da5663851c20d03881a8359a11e1997",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-pzgrax30\\import-thunk-identities-as-owner.json": "5078d58babb1d19e96c03220e0578f02b4e118da4ff54909b44ac9ce60853d76"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?insert@MeshEdgeTable@G3D@@QAEXABVMeshDirectedEdgeKey@2@H@Z",
+    "address": "007b9890"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DMeshAlgAdjacency\\objects\\5238985601500cfb\\candidate.obj": "ffaa1425dbb1d1c65323e36e6d5ba5c808aaa3063758480cf7fad1e3a5260466",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-pzgrax30\\owners.json": "dfe215b7d915a9f4b14bd2e83405fcd71da5663851c20d03881a8359a11e1997",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-pzgrax30\\import-thunk-identities-as-owner.json": "5078d58babb1d19e96c03220e0578f02b4e118da4ff54909b44ac9ce60853d76"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??__EedgeTable@G3D@@YAXXZ",
+    "address": "007f9ff0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DMeshAlgAdjacency\\objects\\5238985601500cfb\\candidate.obj": "ffaa1425dbb1d1c65323e36e6d5ba5c808aaa3063758480cf7fad1e3a5260466",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-pzgrax30\\owners.json": "dfe215b7d915a9f4b14bd2e83405fcd71da5663851c20d03881a8359a11e1997",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-pzgrax30\\import-thunk-identities-as-owner.json": "5078d58babb1d19e96c03220e0578f02b4e118da4ff54909b44ac9ce60853d76"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??4?$Array@H@G3D@@QAEAAV01@ABV01@@Z",
+   "address": "007b95c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??__FedgeTable@G3D@@YAXXZ",
+   "address": "00801a90",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_copy@?$Array@H@G3D@@AAEXABV12@@Z",
+   "address": "00550fb0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?append@?$Array@H@G3D@@QAEXABH@Z",
+   "address": "0054ad70",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?containsKey@?$Table@VMeshDirectedEdgeKey@G3D@@V?$Array@H@2@@G3D@@QBE_NABVMeshDirectedEdgeKey@2@@Z",
+   "address": "007b9370",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?get@?$Table@VMeshDirectedEdgeKey@G3D@@V?$Array@H@2@@G3D@@QBEAAV?$Array@H@2@ABVMeshDirectedEdgeKey@2@@Z",
+   "address": "007b93d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?resize@?$Table@VMeshDirectedEdgeKey@G3D@@V?$Array@H@2@@G3D@@AAEXH@Z",
+   "address": "004e5e10",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??0Node@?$Table@VMeshDirectedEdgeKey@G3D@@V?$Array@H@2@@G3D@@QAE@VMeshDirectedEdgeKey@2@V?$Array@H@2@IPAV012@@Z",
+   "address": "007ee683",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?insert@MeshEdgeTable@G3D@@QAEXABVMeshDirectedEdgeKey@2@H@Z",
+   "address": "007d8da8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?set@?$Table@VMeshDirectedEdgeKey@G3D@@V?$Array@H@2@@G3D@@QAEXABVMeshDirectedEdgeKey@2@ABV?$Array@H@2@@Z",
+   "address": "007ca7b6",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 4,
+ "owners_bound": 4
+}

@@ -1,0 +1,87 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/TopMenuBar.cpp",
+      "checks": [
+        {
+          "addr": "00573e30",
+          "symbol": "?getSize@TopMenuBar@RBX@@UBE?AVVector2@G3D@@XZ",
+          "calls": [
+            {
+              "offset": 33,
+              "target": "0048ae20",
+              "symbol": "?numChildren@Instance@RBX@@QBEIXZ"
+            },
+            {
+              "offset": 217,
+              "target": "0048ae20",
+              "symbol": "?numChildren@Instance@RBX@@QBEIXZ"
+            }
+          ]
+        },
+        {
+          "addr": "00574050",
+          "symbol": "?render2d@TopMenuBar@RBX@@UAEXPAVAdorn@2@@Z",
+          "calls": [
+            {
+              "offset": 23,
+              "target": "007baf10",
+              "symbol": "?zero@Color4@G3D@@SAABV12@XZ"
+            },
+            {
+              "offset": 104,
+              "target": "00573960",
+              "symbol": "?getMyRect2D@GuiItem@RBX@@IBE?AVRect2D@G3D@@XZ"
+            },
+            {
+              "offset": 121,
+              "target": "0048ae20",
+              "symbol": "?numChildren@Instance@RBX@@QBEIXZ"
+            },
+            {
+              "offset": 201,
+              "target": "0048ae20",
+              "symbol": "?numChildren@Instance@RBX@@QBEIXZ"
+            }
+          ]
+        },
+        {
+          "addr": "00574bf0",
+          "symbol": "?process@TopMenuBar@RBX@@UAE?AVGuiResponse@2@ABVGuiEvent@2@@Z",
+          "calls": [
+            {
+              "offset": 43,
+              "target": "00574b10",
+              "symbol": "?process@GuiItem@RBX@@UAE?AVGuiResponse@2@ABVGuiEvent@2@@Z"
+            },
+            {
+              "offset": 113,
+              "target": "00573310",
+              "symbol": "?getMyRect@GuiItem@RBX@@IBE?AVRect@2@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "00573f30",
+          "symbol": "?getChildPosition@TopMenuBar@RBX@@MBE?AVVector2@G3D@@PBVGuiItem@2@@Z",
+          "calls": [
+            {
+              "offset": 49,
+              "target": "0048ae20",
+              "symbol": "?numChildren@Instance@RBX@@QBEIXZ"
+            },
+            {
+              "offset": 195,
+              "target": "0048ae20",
+              "symbol": "?numChildren@Instance@RBX@@QBEIXZ"
+            }
+          ]
+        },
+        {
+          "addr": "00573cb0",
+          "symbol": "??0TopMenuBar@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Style@Layout@1@_N@Z"
+        }
+      ]
+    }
+  ]
+}

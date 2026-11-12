@@ -1,0 +1,219 @@
+[
+  {
+    "source": "C:\\Users\\colin\\Documents\\Codex\\2026-11-11\\files-pasted-by-the-user-native\\RoConstruct-Native-cc18af53f49346ad832b0f3ad0407d60\\rebuild\\2008-06\\native-classes\\TextDisplay.cpp",
+    "object": "C:\\Users\\colin\\Documents\\Codex\\2026-11-11\\files-pasted-by-the-user-native\\RoConstruct-Native-cc18af53f49346ad832b0f3ad0407d60\\work\\2008-06\\native-check-runs\\20261111-192922-cf262d83\\unit-000\\candidate.obj",
+    "changed_inputs": [],
+    "scope": "recorded object analysis only; not a fresh build",
+    "checks": [
+      {
+        "addr": "005735e0",
+        "requested_symbol": "?init@TextDisplay@RBX@@AAEXXZ",
+        "status": "exact",
+        "symbol": "?init@TextDisplay@RBX@@AAEXXZ",
+        "score": 100,
+        "target_size": 130,
+        "object_size": 130,
+        "target_sha256": "0413b787838471e18b659dbf94041cde9e3bfbbe42964d58968c67bd8b7745d1",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8583272,
+            4
+          ],
+          [
+            8867208,
+            4
+          ]
+        ],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [
+            {
+              "offset": 37,
+              "target": "00514940",
+              "symbol": "?purple@Color3@G3D@@SAABV12@XZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 78,
+              "target": "007baf10",
+              "symbol": "?zero@Color4@G3D@@SAABV12@XZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            }
+          ],
+          "unused_expectations": [],
+          "import_evidence_inputs": {},
+          "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 2.844
+      },
+      {
+        "addr": "00574580",
+        "requested_symbol": "?getLabel@TextDisplay@RBX@@MBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+        "status": "exact",
+        "symbol": "?getLabel@TextDisplay@RBX@@MBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+        "score": 100,
+        "target_size": 36,
+        "object_size": 36,
+        "target_sha256": "56755382038d97a6f0e5df8e148b12cbc394d4530734baee0488a501a597213e",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [
+            {
+              "offset": 23,
+              "target": "0080245c",
+              "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+              "kind": "import",
+              "status": "verified_import"
+            }
+          ],
+          "unused_expectations": [],
+          "import_evidence_inputs": {
+            "C:\\Users\\colin\\Documents\\Codex\\2026-11-11\\files-pasted-by-the-user-native\\RoConstruct-Native-cc18af53f49346ad832b0f3ad0407d60\\clients\\2008-06\\Roblox.exe": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+            "C:\\Users\\colin\\Documents\\Codex\\2026-11-11\\files-pasted-by-the-user-native\\RoConstruct-Native-cc18af53f49346ad832b0f3ad0407d60\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\lib\\msvcrt.lib": "96602e3dd433237d178bd64d02de4efb8981e3c66a24535278b3897a2ac4f9e8",
+            "C:\\Users\\colin\\Documents\\Codex\\2026-11-11\\files-pasted-by-the-user-native\\RoConstruct-Native-cc18af53f49346ad832b0f3ad0407d60\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\lib\\msvcprt.lib": "6bedbd9c1bddf28a984a58e4548ffa9286f172e55fb5dd2af0b1a1a34d81b020",
+            "C:\\Users\\colin\\Documents\\Codex\\2026-11-11\\files-pasted-by-the-user-native\\RoConstruct-Native-cc18af53f49346ad832b0f3ad0407d60\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Lib\\Kernel32.Lib": "5c76cde0da4a277962316070b966e0829d35df93d5b54d79d81f964e56cd4819"
+          },
+          "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.437
+      },
+      {
+        "addr": "00574570",
+        "requested_symbol": "?getFontSize@TextDisplay@RBX@@MBEHXZ",
+        "status": "exact",
+        "symbol": "?getFontSize@TextDisplay@RBX@@MBEHXZ",
+        "score": 100,
+        "target_size": 7,
+        "object_size": 7,
+        "target_sha256": "bfd8f2154ad6f04a2cb86f7aafe4a71e3e7bd290576d267e04be09e2a07a4453",
+        "first_byte_difference": null,
+        "data_matches": [],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [],
+          "unused_expectations": [],
+          "import_evidence_inputs": {},
+          "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.0
+      },
+      {
+        "addr": "005744a0",
+        "requested_symbol": "??0TextDisplay@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z",
+        "status": "exact",
+        "symbol": "??0TextDisplay@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z",
+        "score": 100,
+        "target_size": 203,
+        "object_size": 203,
+        "target_sha256": "ac8d8991a1f9adbd5be93b57c079af65c38fce77bcc54042c18318c4e95d8945",
+        "first_byte_difference": null,
+        "data_matches": [
+          [
+            8584420,
+            104
+          ],
+          [
+            8584404,
+            8
+          ],
+          [
+            8584396,
+            4
+          ],
+          [
+            8584388,
+            4
+          ],
+          [
+            8584372,
+            12
+          ],
+          [
+            8584356,
+            12
+          ],
+          [
+            8584340,
+            12
+          ],
+          [
+            8584324,
+            12
+          ],
+          [
+            8584308,
+            12
+          ],
+          [
+            8584292,
+            12
+          ],
+          [
+            8584284,
+            4
+          ]
+        ],
+        "data_errors": [],
+        "call_identity": {
+          "passed": true,
+          "calls": [
+            {
+              "offset": 30,
+              "target": "005739d0",
+              "symbol": "??0GuiItem@RBX@@QAE@XZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 139,
+              "target": "00802460",
+              "symbol": "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "kind": "import",
+              "status": "verified_import"
+            },
+            {
+              "offset": 152,
+              "target": "005735e0",
+              "symbol": "?init@TextDisplay@RBX@@AAEXXZ",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 164,
+              "target": "0055af90",
+              "symbol": "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+              "kind": "direct",
+              "status": "verified_binding"
+            },
+            {
+              "offset": 176,
+              "target": "0080240c",
+              "symbol": "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z",
+              "kind": "import",
+              "status": "verified_import"
+            }
+          ],
+          "unused_expectations": [],
+          "import_evidence_inputs": {
+            "C:\\Users\\colin\\Documents\\Codex\\2026-11-11\\files-pasted-by-the-user-native\\RoConstruct-Native-cc18af53f49346ad832b0f3ad0407d60\\clients\\2008-06\\Roblox.exe": "2fbbfdf8577b5b28ea198c14747613ba8fd83d094363b2b23fe2f9e587343764",
+            "C:\\Users\\colin\\Documents\\Codex\\2026-11-11\\files-pasted-by-the-user-native\\RoConstruct-Native-cc18af53f49346ad832b0f3ad0407d60\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\lib\\msvcrt.lib": "96602e3dd433237d178bd64d02de4efb8981e3c66a24535278b3897a2ac4f9e8",
+            "C:\\Users\\colin\\Documents\\Codex\\2026-11-11\\files-pasted-by-the-user-native\\RoConstruct-Native-cc18af53f49346ad832b0f3ad0407d60\\tools\\vc2008rtm\\Program Files\\Microsoft Visual Studio 9.0\\VC\\lib\\msvcprt.lib": "6bedbd9c1bddf28a984a58e4548ffa9286f172e55fb5dd2af0b1a1a34d81b020",
+            "C:\\Users\\colin\\Documents\\Codex\\2026-11-11\\files-pasted-by-the-user-native\\RoConstruct-Native-cc18af53f49346ad832b0f3ad0407d60\\tools\\vc2008sp1\\Microsoft\\Visual C++ for Python\\9.0\\WinSDK\\Lib\\Kernel32.Lib": "5c76cde0da4a277962316070b966e0829d35df93d5b54d79d81f964e56cd4819"
+          },
+          "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+        },
+        "check_seconds": 0.25
+      }
+    ],
+    "coverage": [],
+    "layouts": []
+  }
+]

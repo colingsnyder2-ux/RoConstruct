@@ -1,0 +1,379 @@
+{
+  "scope": "Inactive 2008-06 native recovery of the application range 005f0000..005f8000: unit map of every row, Surface.cpp rows against the native v8datamodel/Surface.h and the part-embedded PartInstance / Primitive, and util/Timer.cpp getRealTime. No runtime, link or class-swap claim.",
+  "exact_function_rows": [
+    "005f1270",
+    "005f1290",
+    "005f12a0",
+    "005f1300",
+    "005f1360",
+    "005f13c0",
+    "005f13e0",
+    "005f1430",
+    "005f14f0",
+    "005f15c0",
+    "005f1690",
+    "005f2000"
+  ],
+  "exact_function_row_count": 12,
+  "range_rows": 267,
+  "rows": {
+    "surface": [
+      {
+        "address": "005f1270",
+        "symbol": "??0Surface@RBX@@QAE@PAVPartInstance@1@W4NormalId@1@@Z",
+        "size": 18,
+        "target_size": 18,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005f1290",
+        "symbol": "?getSurfaceType@Surface@RBX@@QBE?AW4SurfaceType@2@XZ",
+        "size": 13,
+        "target_size": 13,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005f12a0",
+        "symbol": "?getInput@Surface@RBX@@QBE?AW4InputType@Controller@2@XZ",
+        "size": 82,
+        "target_size": 82,
+        "exact": true,
+        "verified_targets": {
+          "??_B?1??empty@SurfaceData@RBX@@SAABV12@XZ@51": "0x97abd0 (static data (one address per symbol))",
+          "__real@bf000000": "0x8282dc (constant bf000000)",
+          "?s@?1??empty@SurfaceData@RBX@@SAABV23@XZ@4V23@A": "0x97abc4 (static data (one address per symbol))",
+          "__real@3f000000": "0x819bac (constant 3f000000)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005f1300",
+        "symbol": "?getParamA@Surface@RBX@@QBEMXZ",
+        "size": 83,
+        "target_size": 83,
+        "exact": true,
+        "verified_targets": {
+          "??_B?1??empty@SurfaceData@RBX@@SAABV12@XZ@51": "0x97abd0 (static data (one address per symbol))",
+          "__real@bf000000": "0x8282dc (constant bf000000)",
+          "?s@?1??empty@SurfaceData@RBX@@SAABV23@XZ@4V23@A": "0x97abc4 (static data (one address per symbol))",
+          "__real@3f000000": "0x819bac (constant 3f000000)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005f1360",
+        "symbol": "?getParamB@Surface@RBX@@QBEMXZ",
+        "size": 83,
+        "target_size": 83,
+        "exact": true,
+        "verified_targets": {
+          "??_B?1??empty@SurfaceData@RBX@@SAABV12@XZ@51": "0x97abd0 (static data (one address per symbol))",
+          "__real@bf000000": "0x8282dc (constant bf000000)",
+          "?s@?1??empty@SurfaceData@RBX@@SAABV23@XZ@4V23@A": "0x97abc4 (static data (one address per symbol))",
+          "__real@3f000000": "0x819bac (constant 3f000000)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005f13c0",
+        "symbol": "?isControllable@Surface@RBX@@QBE_NXZ",
+        "size": 28,
+        "target_size": 28,
+        "exact": true,
+        "verified_targets": {
+          "?getInput@Surface@RBX@@QBE?AW4InputType@Controller@2@XZ": "0x5f12a0 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005f13e0",
+        "symbol": "?setSurfaceType@Surface@RBX@@QAEXW4SurfaceType@2@@Z",
+        "size": 75,
+        "target_size": 75,
+        "exact": true,
+        "verified_targets": {
+          "?setSurfaceType@Primitive@RBX@@QAEXW4NormalId@2@W4SurfaceType@2@@Z": "0x5e7850 (external (evidence name))",
+          "?onSurfaceChanged@PartInstance@RBX@@AAEXW4NormalId@2@@Z": "0x5997c0 (external (evidence name))",
+          "?getSurfaces@PartInstance@RBX@@QAEAAVSurfaces@2@XZ": "0x598de0 (external (call-site identification))",
+          "?getSurfaceType@Surfaces@RBX@@QBEABVPropertyDescriptor@Reflection@2@W4NormalId@2@@Z": "0x5eca30 (external (call-site identification))",
+          "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005f1430",
+        "symbol": "?setSurfaceInput@Surface@RBX@@QAEXW4InputType@Controller@2@@Z",
+        "size": 183,
+        "target_size": 183,
+        "exact": true,
+        "verified_targets": {
+          "??_B?1??empty@SurfaceData@RBX@@SAABV12@XZ@51": "0x97abd0 (static data (one address per symbol))",
+          "__real@bf000000": "0x8282dc (constant bf000000)",
+          "?s@?1??empty@SurfaceData@RBX@@SAABV23@XZ@4V23@A": "0x97abc4 (static data (one address per symbol))",
+          "__real@3f000000": "0x819bac (constant 3f000000)",
+          "?setSurfaceData@Primitive@RBX@@QAEXW4NormalId@2@ABVSurfaceData@2@@Z": "0x5e7770 (external (call-site identification))",
+          "?onSurfaceChanged@PartInstance@RBX@@AAEXW4NormalId@2@@Z": "0x5997c0 (external (evidence name))",
+          "?getSurfaces@PartInstance@RBX@@QAEAAVSurfaces@2@XZ": "0x598de0 (external (call-site identification))",
+          "?getSurfaceInput@Surfaces@RBX@@QBEABVPropertyDescriptor@Reflection@2@W4NormalId@2@@Z": "0x5eca90 (external (call-site identification))",
+          "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005f14f0",
+        "symbol": "?setParamA@Surface@RBX@@QAEXM@Z",
+        "size": 199,
+        "target_size": 199,
+        "exact": true,
+        "verified_targets": {
+          "??_B?1??empty@SurfaceData@RBX@@SAABV12@XZ@51": "0x97abd0 (static data (one address per symbol))",
+          "__real@bf000000": "0x8282dc (constant bf000000)",
+          "?s@?1??empty@SurfaceData@RBX@@SAABV23@XZ@4V23@A": "0x97abc4 (static data (one address per symbol))",
+          "__real@3f000000": "0x819bac (constant 3f000000)",
+          "?setSurfaceData@Primitive@RBX@@QAEXW4NormalId@2@ABVSurfaceData@2@@Z": "0x5e7770 (external (call-site identification))",
+          "?onSurfaceChanged@PartInstance@RBX@@AAEXW4NormalId@2@@Z": "0x5997c0 (external (evidence name))",
+          "?getSurfaces@PartInstance@RBX@@QAEAAVSurfaces@2@XZ": "0x598de0 (external (call-site identification))",
+          "?getParamA@Surfaces@RBX@@QBEABVPropertyDescriptor@Reflection@2@W4NormalId@2@@Z": "0x5ecaf0 (external (call-site identification))",
+          "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005f15c0",
+        "symbol": "?setParamB@Surface@RBX@@QAEXM@Z",
+        "size": 199,
+        "target_size": 199,
+        "exact": true,
+        "verified_targets": {
+          "??_B?1??empty@SurfaceData@RBX@@SAABV12@XZ@51": "0x97abd0 (static data (one address per symbol))",
+          "__real@bf000000": "0x8282dc (constant bf000000)",
+          "?s@?1??empty@SurfaceData@RBX@@SAABV23@XZ@4V23@A": "0x97abc4 (static data (one address per symbol))",
+          "__real@3f000000": "0x819bac (constant 3f000000)",
+          "?setSurfaceData@Primitive@RBX@@QAEXW4NormalId@2@ABVSurfaceData@2@@Z": "0x5e7770 (external (call-site identification))",
+          "?onSurfaceChanged@PartInstance@RBX@@AAEXW4NormalId@2@@Z": "0x5997c0 (external (evidence name))",
+          "?getSurfaces@PartInstance@RBX@@QAEAAVSurfaces@2@XZ": "0x598de0 (external (call-site identification))",
+          "?getParamB@Surfaces@RBX@@QBEABVPropertyDescriptor@Reflection@2@W4NormalId@2@@Z": "0x5ecb50 (external (call-site identification))",
+          "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))"
+        },
+        "local_eh": []
+      }
+    ],
+    "flat": [
+      {
+        "address": "005f1690",
+        "symbol": "?flat@Surface@RBX@@QAEXXZ",
+        "size": 270,
+        "target_size": 270,
+        "exact": true,
+        "verified_targets": {
+          "?setSurfaceType@Primitive@RBX@@QAEXW4NormalId@2@W4SurfaceType@2@@Z": "0x5e7850 (external (evidence name))",
+          "?onSurfaceChanged@PartInstance@RBX@@AAEXW4NormalId@2@@Z": "0x5997c0 (external (evidence name))",
+          "?getSurfaces@PartInstance@RBX@@QAEAAVSurfaces@2@XZ": "0x598de0 (external (call-site identification))",
+          "?getSurfaceType@Surfaces@RBX@@QBEABVPropertyDescriptor@Reflection@2@W4NormalId@2@@Z": "0x5eca30 (external (call-site identification))",
+          "?raisePropertyChanged@Instance@RBX@@QAEXABVPropertyDescriptor@Reflection@2@@Z": "0x40db00 (external (evidence name))",
+          "??_B?1??empty@SurfaceData@RBX@@SAABV12@XZ@51": "0x97abd0 (static data (one address per symbol))",
+          "__real@bf000000": "0x8282dc (constant bf000000)",
+          "?s@?1??empty@SurfaceData@RBX@@SAABV23@XZ@4V23@A": "0x97abc4 (static data (one address per symbol))",
+          "__real@3f000000": "0x819bac (constant 3f000000)",
+          "?setSurfaceInput@Surface@RBX@@QAEXW4InputType@Controller@2@@Z": "0x5f1430 (own row)",
+          "?setParamA@Surface@RBX@@QAEXM@Z": "0x5f14f0 (own row)",
+          "?setParamB@Surface@RBX@@QAEXM@Z": "0x5f15c0 (own row)"
+        },
+        "local_eh": []
+      }
+    ],
+    "timer": [
+      {
+        "address": "005f2000",
+        "symbol": "?getRealTime@RBX@@YANXZ",
+        "size": 37,
+        "target_size": 37,
+        "exact": true,
+        "verified_targets": {
+          "__imp__QueryPerformanceCounter@4": "0x802250 (kernel32.dll!QueryPerformanceCounter)",
+          "__imp__QueryPerformanceFrequency@4": "0x80225c (kernel32.dll!QueryPerformanceFrequency)"
+        },
+        "local_eh": []
+      }
+    ]
+  },
+  "unit_map": [
+    {
+      "unit": "Surface.cpp 005f1270..005f1b2f",
+      "rows": 12,
+      "bytes": 2136,
+      "counted_elsewhere": [],
+      "counted_here": 11,
+      "evidence": "v8datamodel/Surface.cpp (native v8datamodel/Surface.h, read-only). Layout: Surface is {PartInstance* +0, NormalId +4}; the constructor 005f1270 (evidence name) stores both and returns 8; Surfaces(PartInstance*) 005ecbb0 holds six of them. The 2008 PartInstance embeds its Primitive at +0x228 (native-headers/part-embedded): surfaceType[6] at Primitive +0xb8 (setSurfaceType 005f13e0 compares [part + id*4 + 0x2e0]) and surfaceData[6] at +0xd0 (getInput 005f12a0, SurfaceData::empty() static 0097abc4 / guard 0097abd0). Evidence names getSurfaceType 005f1290, getInput 005f12a0, isControllable 005f13c0; getParamA 005f1300 / getParamB 005f1360 read +4 / +8 of the same SurfaceData; setSurfaceType 005f13e0, setSurfaceInput 005f1430, setParamA 005f14f0, setParamB 005f15c0 (each: Primitive::setSurfaceType 005e7850 or setSurfaceData 005e7770, onSurfaceChanged 005997c0, getSurfaces 00598de0, Surfaces::get* descriptor switch 005eca30 / 005eca90 / 005ecaf0 / 005ecb50, raisePropertyChanged 0040db00); flat 005f1690 (calls the three setters and the SurfaceData::empty() values; built from the committed SurfaceFlat.cpp, whose surface-flat-trial receipt counts no row); readValue(const XmlElement*, IReferenceBinder&) 005f17a0 (ret 8; called by the six SurfaceDescriptor<face> readValue rows 005eece0..005eef11): declares the Names \"Type\" 0080f7d4, \"SurfaceInput\" 00840814, \"ParamA\" 0084080c, \"ParamB\" 00840804, \"Constraint\" 008407f8 (Name::declare 00553f90, statics 0097b5a0..0097b5b0, guard 0097b5b4), walks the child elements (isXsiNil 0057c810, findAttribute 0057c2b0 with name_name 00975338, XmlNameValuePair getValue 0057c360 / 0057c210 / 0057c610) and converts with EnumDesc<SurfaceType> / EnumDesc<Controller::InputType>: boost::call_once(005ed620 / 005ed690, flags 0097b11c / 0097b120) then the out-of-line static-instance getters 005ed5c0 / 005ed630, Name::lookup 00554290 and convertToValue 005ed300; the Constraint branch calls the out-of-line singleton 005ed6a0 and convertToValue(const char*) 005ed800. Not recovered: the native reflection/enumconverter.h EnumDesc::singleton() is a plain function static (no call_once), so the 2008 call shape cannot be produced without the reflection-core proposal below. Built here: 11 counted rows."
+    },
+    {
+      "unit": "boost.thread condition.cpp (library) 005f1b30..005f1fff",
+      "rows": 8,
+      "bytes": 1189,
+      "counted_elsewhere": [],
+      "counted_here": 0,
+      "evidence": "boost 1.34.1 libs/thread/src/condition.cpp (Win32 condition_impl {m_gate, m_queue, m_mutex, m_gone, m_blocked, m_waiting}): to_duration (timeconv.inl, xtime_get 005a6b40, 1000000000 / 500000 rounding) 005f1b30, condition_impl() 005f1bd0 (CreateSemaphoreA x2, CreateMutexA, throws lock_error 00568430), ~condition_impl 005f1c70, notify_one 005f1c90, notify_all 005f1d30, enter_wait 005f1dd0, do_wait 005f1df0, do_timed_wait 005f1ea0. Library code (roc/libs.py boost thread sources); not recovered."
+    },
+    {
+      "unit": "util/Timer.cpp 005f2000..005f202f",
+      "rows": 1,
+      "bytes": 37,
+      "counted_elsewhere": [],
+      "counted_here": 1,
+      "evidence": "RBX::getRealTime 005f2000 (QueryPerformanceCounter / QueryPerformanceFrequency through the IAT, x87 divide; ten callers 005548a3..00575d66). The name is the later openrbx-client attribution of the matched analog; declared in the new native-headers/AppUnit5F0_2008/RealTime2008.h. Built here: 1 counted row."
+    },
+    {
+      "unit": "boost.iostreams instantiations (library) 005f2030..",
+      "rows": 246,
+      "bytes": 23079,
+      "counted_elsewhere": [],
+      "counted_here": 0,
+      "evidence": "boost 1.34.1 iostreams code continuing from the app-unit5e8 range: gzip_params ctor / dtor / copy 005f2030 / 005f20f0 / 005f2160, basic_gzip_compressor / basic_gzip_decompressor (normalize_params 005f21f0, make_params 005f2270, read_string / write_long / prepare_footer / read_header / read_footer, copy constructors 005f4350 / 005f43e0, ctors 005f6990 / 005f6bc0, gzip_error 005f5970 / 005f5a00 / 005f6420), zlib_compressor_impl / zlib_decompressor_impl and symmetric_filter, basic_buffer, indirect_streambuf / stream_buffer / chain_base / filtering_stream_base, cant_read / cant_seek / cant_write, std::list<linked_streambuf*> helpers, instantiated for basic_null_device, the gzip filters and the Http unit's String_sink / HttpRequest_source (indirect_streambuf<String_sink> open 005f2a50 / underflow 005f2ab0 / overflow 005f4080 / sync_impl 005f3700, indirect_streambuf<HttpRequest_source> open 005f2d20 / overflow 005f3580, device_wrapper_impl write 005f5b70). Continues past 005f8000 (005f802f..). Library templates (boost); the String_sink / HttpRequest_source instantiations would need native Http declarations and the boost.iostreams library profile. Not recovered."
+    }
+  ],
+  "proposals": [
+    "Owner of native-headers/reflection/enumconverter.h (reflection core; not edited): the 2008 EnumDesc<Enum>::singleton() is boost::call_once(&<thunk>, <static once_flag>) followed by an out-of-line function-static instance getter. SurfaceType: call_once(005ed620 `jmp 005ed5c0`, flag 0097b11c), getter 005ed5c0 (guard bit 0097b028, object 0097af40, ctor 0064d750, atexit); Controller::InputType: 005ed690 / 0097b120 / 005ed630. convertToValue(const char*, Enum&) is out of line at 005ed800 (Name::lookup 00554290, then convertToValue(const Name&) 005ed300). This is the same call_once shape as the open EnumPropDescriptor proposals (TANDEM 2026-11-04/06: 0060bd80.., 00609590, 005d0d80). With it, Surface::readValue 005f17a0 becomes a candidate.",
+    "FYI owner of native-classes/SurfaceFlat.cpp / surface-flat-trial: Surface::flat 005f1690 is now counted by app-unit5f0-2008-working.json (the file is compiled unchanged here); please do not count it again."
+  ],
+  "rejected": {
+    "setParamA / setParamB without /fp:fast": "205/199 B each (x87 compare order); /fp:fast gives 199/199 exact and leaves the other eight Surface rows exact"
+  },
+  "flags": {
+    "surface": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/part-embedded",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit5f0-2008/NativeAppUnit5F0_2008_surface.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit5F0_2008Surface.cpp"
+    ],
+    "flat": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/I/home/user/roconstruct/rebuild/2008-06/native-headers/part-embedded",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit5f0-2008/NativeAppUnit5F0_2008_flat.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/SurfaceFlat.cpp"
+    ],
+    "timer": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit5f0-2008/NativeAppUnit5F0_2008_timer.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit5F0_2008Timer.cpp"
+    ]
+  },
+  "sources": {
+    "surface": "c4de704db9fec6389d74411a2a011a1a990bbfb5500efd436a4de26d535fe836",
+    "flat": "e99dde964899826f89d7389377cdec53c70023b5a10f669800032268940d9531",
+    "timer": "0445abe19a2f0a6e61cded8a8eeb324063742755c22d475e3154bd0d74dd24ea",
+    "timer_header": "43c10b1bdeec5dadd2a7bc4b9223e74150ccf30b4746306db6cb6adc79ba8d74"
+  },
+  "headers_read_only": [
+    "native-headers/v8datamodel/Surface.h",
+    "native-headers/v8datamodel/Surfaces.h",
+    "native-headers/part-embedded/v8datamodel/PartInstance.h",
+    "native-headers/part-embedded/v8world/Primitive.h"
+  ],
+  "new_headers": [
+    "native-headers/AppUnit5F0_2008/RealTime2008.h (new path; shadows no donor header)"
+  ]
+}

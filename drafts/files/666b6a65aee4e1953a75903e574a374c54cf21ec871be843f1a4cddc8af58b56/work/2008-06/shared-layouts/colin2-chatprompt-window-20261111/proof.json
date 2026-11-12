@@ -1,0 +1,105 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/CChatPrompt.cpp",
+      "checks": [
+        {
+          "addr": "00411be0",
+          "symbol": "??0CChatPrompt@@QAE@XZ",
+          "calls": [
+            {
+              "offset": 3,
+              "target": "006a0c86",
+              "symbol": "??0CEditView@@QAE@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "00412aa0",
+          "symbol": "??_GCChatPrompt@@UAEPAXI@Z",
+          "calls": [
+            {
+              "offset": 3,
+              "target": "004129c0",
+              "symbol": "??1CChatPrompt@@UAE@XZ"
+            },
+            {
+              "offset": 16,
+              "target": "006a067a",
+              "symbol": "??3@YAXPAX@Z"
+            }
+          ]
+        },
+        {
+          "addr": "00411ef0",
+          "symbol": "?CreateObject@CChatPrompt@@SGPAVCObject@@XZ",
+          "calls": [
+            {
+              "offset": 27,
+              "target": "006a0920",
+              "symbol": "??2@YAPAXI@Z"
+            },
+            {
+              "offset": 52,
+              "target": "00411be0",
+              "symbol": "??0CChatPrompt@@QAE@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "00411360",
+          "symbol": "?GetRuntimeClass@CChatPrompt@@UBEPAUCRuntimeClass@@XZ",
+          "calls": []
+        }
+      ]
+    },
+    {
+      "source": "native-classes/CChatPromptWindow.cpp",
+      "checks": [
+        {
+          "addr": "00411370",
+          "symbol": "?PreCreateWindow@CChatPrompt@@MAEHAAUtagCREATESTRUCTA@@@Z",
+          "calls": [
+            {
+              "offset": 6,
+              "target": "006a0c74",
+              "symbol": "?PreCreateWindow@CEditView@@MAEHAAUtagCREATESTRUCTA@@@Z"
+            }
+          ]
+        },
+        {
+          "addr": "0045aeb0",
+          "symbol": "?OnFocusMessage@CChatPrompt@@IAEJIJ@Z",
+          "calls": [
+            {
+              "offset": 0,
+              "target": "006a0a28",
+              "symbol": "?SetFocus@CWnd@@QAEPAV1@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "00702d70",
+          "symbol": "?OnSysChar@CChatPrompt@@IAEXIII@Z",
+          "calls": [
+            {
+              "offset": 0,
+              "target": "006a0c68",
+              "symbol": "?Default@CWnd@@IAEJXZ"
+            }
+          ]
+        },
+        {
+          "addr": "004120a0",
+          "symbol": "?GetMessageMap@CChatPrompt@@MBEPBUAFX_MSGMAP@@XZ",
+          "calls": []
+        },
+        {
+          "addr": "0047d410",
+          "symbol": "?OnChange@CChatPrompt@@IAEXXZ",
+          "calls": []
+        }
+      ]
+    }
+  ]
+}

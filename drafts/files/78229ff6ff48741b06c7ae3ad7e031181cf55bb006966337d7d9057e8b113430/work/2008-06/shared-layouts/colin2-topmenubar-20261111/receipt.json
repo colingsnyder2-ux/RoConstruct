@@ -1,0 +1,36 @@
+{
+  "family": "RBX::TopMenuBar",
+  "package_revision": "dbc7834ec337292dcac56703a552785969037b7120478bab289ed3fd24074b6b",
+  "source_revision": "dbc7834ec337292dcac56703a552785969037b7120478bab289ed3fd24074b6b",
+  "baseline_commit": null,
+  "source": "rebuild/2008-06/native-classes/TopMenuBar.cpp",
+  "source_sha256": "ebe8c43397e1ea1fb2d198757c23a064f84a2f33fc6ae76f4ea1aaa4bde14ee9",
+  "new_native_exact_methods": [
+    "getSize00573e30",
+    "render2d00574050",
+    "process00574bf0",
+    "getChildPosition00573f30"
+  ],
+  "new_inactive_exact_bytes": 916,
+  "partial_constructor": {
+    "address": "00573cb0",
+    "original_size": 330,
+    "object_size": 226,
+    "first_divergence": 34,
+    "reason": "Original init and translucentBackdrop bodies inline; retained providers remain separate. No exact claim."
+  },
+  "existing_preserved": "init remains unchanged; behavioural glue source retained untouched. New native getChildPosition restores cross-axis centering absent in glue.",
+  "header_repair": "GuiItem::getMyRect2D noinline annotation follows original render2d direct call to00573960; original inline body unchanged, no layout edit.",
+  "gates_open": [
+    "Indirect child/visibility/Adorn calls and class/receiver ABI",
+    "Reviewed direct-call closure and IAT validation",
+    "Constructor provider-inline/EH boundary",
+    "Owner selection must avoid duplicate behavioural glue getChildPosition",
+    "No-loss/P5/P6/runtime"
+  ],
+  "source_members_added": 5,
+  "sessions": [
+    "151ea68112a6467aa6465ee676e3e1f5",
+    "068bfff3955b4422b1e5434fe5c9fe53"
+  ]
+}

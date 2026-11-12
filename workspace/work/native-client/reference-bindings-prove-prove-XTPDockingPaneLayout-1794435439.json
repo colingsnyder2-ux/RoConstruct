@@ -1,0 +1,37 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??A?$CMap@HHPAVCXTPDockingPaneBase@@PAV1@@@QAEAAPAVCXTPDockingPaneBase@@H@Z",
+    "address": "007215d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockingPaneLayout\\objects\\2ca5b92a11645735\\candidate.obj": "232d64ea51efed73440e744fdf813a342a840bf0d37274c78a3ddb08a8e3b573",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rzgov4oq\\owners.json": "8411b3652b4b2b47a3b75f746fa2938ca3de3eff1f5604bf54c9c36c70c6e247",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-rzgov4oq\\import-thunk-identities-as-owner.json": "b972ffd4f8994f664727f04d71e154acaec6f476bfd3482a4deb2935297a2cc2"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?GetAssocAt@?$CMap@HHPAVCXTPDockingPaneBase@@PAV1@@@IBEPAVCAssoc@1@HAAI0@Z",
+   "address": "00708080",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?InitHashTable@?$CMap@HHPAVCXTPDockingPaneBase@@PAV1@@@QAEXIH@Z",
+   "address": "00438850",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?NewAssoc@?$CMap@HHPAVCXTPDockingPaneBase@@PAV1@@@IAEPAVCAssoc@1@H@Z",
+   "address": "00721440",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

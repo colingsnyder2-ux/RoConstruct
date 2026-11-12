@@ -29,13 +29,19 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest() if path.is_file() else None
 
 
+# Only files an #include can resolve to may shadow a fallback include. New .cpp/.obj/.log files cannot, and counting them
+# made every native class stale whenever anyone added a source file (full-census recompiles).
+INCLUDABLE = ('.h', '.hpp', '.hxx', '.inl', '.inc', '.tlh', '.tli', '.rc', '.idl')
+
+
 def search_inventory(directories):
     # File creation can shadow an unchanged fallback include without changing it.
     result = {}
     for path in sorted(set(Path(d).resolve() for d in directories)):
         if path.is_dir():
             files = [os.path.relpath(os.path.join(folder, name), path)
-                     for folder, _, names in os.walk(path) for name in names]
+                     for folder, _, names in os.walk(path) for name in names
+                     if name.lower().endswith(INCLUDABLE) or '.' not in name]
             result[str(path)] = digest(sorted(files))
     return result
 
@@ -168,7 +174,7 @@ def audit_references(raw, symbol, body, target, target_relocs, va, targets, bind
                                 raw[table[4]:table[4] + len(encoded)] == encoded and
                                 table[7] == 0)
         if known is not None and int(known, 16) != base and not is_local_literal:
-            errors.append('reference identity differs: ' + name)
+            errors.append('reference identity differs: %s (bound %s, original reference %08x)' % (name, known, base))
             return
         if number - 1 == section and known is None and base == (va + value - start) & 0xffffffff:
             return      # a label in the audited function's own section (switch table $LN): placed with the body
@@ -181,7 +187,10 @@ def audit_references(raw, symbol, body, target, target_relocs, va, targets, bind
         following = [v for _, v, n, _ in symbols.values() if n == number and v > value]
         end = min(following + [rawsize])
         begin = value + stored
-        if begin == end and stored > 0 and value < end and depth <= 6:
+        # begin == end: a pointer one past the array. begin < value: the compiler folded a loop index into the displacement
+        # (times[i - 1] is addressed as times - 8 + i * 8); begin past the end (up to 1 KB) is the same fold in the other direction.
+        # All three anchor at the symbol; the whole symbol is then verified.
+        if ((begin == end and stored > 0) or (stored < 0 and begin < value) or (stored > 0 and end < begin <= end + 1024)) and value < end and depth <= 6:
             reference(index, 0, base, depth + 1)
             return
         if depth > 6 or not value <= begin < end:
@@ -330,6 +339,7 @@ def _run(config, output, root=ROOT):
         names, bindings, blockers, evidence_inputs = seed_evidence(root, spec.get('evidence', []), strict_conflicts=False)
         providers, requires, jobs = [], set(spec.get('requires', [])), []
         family_rows, family_inputs, family_exact = [], dict(evidence_inputs), set()
+        per_source_inputs = {}
         for source_name in spec['sources']:
             source = project_path(root, source_name)
             if source.suffix != '.cpp' or not source.is_file():
@@ -379,6 +389,7 @@ def _run(config, output, root=ROOT):
                 result.update(control=control, inputs=inputs, include_search=search)
                 ledger[key] = result
             family_inputs.update(result.get('inputs', {}))
+            per_source_inputs[str(source)] = dict(result.get('inputs', {}))
             if result.get('status') != 'complete':
                 blockers.append(result.get('error', 'compile failed'))
                 continue
@@ -421,7 +432,12 @@ def _run(config, output, root=ROOT):
         # An explicit ABI/layout blocker can park a source-exact family; it is never guessed away.
         blockers.extend(spec.get('blockers', []))
         changed = [p for p, expected in family_inputs.items() if sha(p) != expected]
-        if changed:
+        # A long batch (hundreds of sources) always overlaps somebody's edits. Void only the sources whose own inputs changed;
+        # append-only evidence (inferred names, new reference bindings) never invalidates a byte-exact body.
+        used = {p for inputs in per_source_inputs.values() for p in inputs}
+        append_only = [p for p in changed if p not in used and Path(p).name.startswith(('inferred-name-identities', 'reference-bindings-'))]
+        hard = [p for p in changed if p not in used and p not in append_only]
+        if changed and (hard or not per_source_inputs):
             blockers.append('inputs changed during batch: ' + ', '.join(changed))
             providers = []
             for row in family_rows:
@@ -430,6 +446,20 @@ def _run(config, output, root=ROOT):
             for job in jobs:
                 job['checks'] = []
         else:
+            touched = {p for p in changed if p in used}
+            stale_sources = {src for src, inputs in per_source_inputs.items() if touched & set(inputs)}
+            if stale_sources:
+                blockers.append('inputs changed during batch for %d source(s): %s' % (len(stale_sources), ', '.join(sorted(stale_sources)[:5])))
+                dropped = set()
+                for job in jobs:
+                    if job['source'] in stale_sources:
+                        dropped.update((c['addr'], c['symbol']) for c in job['checks'])
+                        job['checks'] = []
+                for row in family_rows:
+                    if (row.get('addr'), row['symbol']) in dropped and row['status'] == 'inactive_exact':
+                        row['status'] = 'stale'
+                family_exact = {a for a in family_exact if not any(d[0] == a for d in dropped)}
+                providers = [x for x in providers if (x['address'], x['symbol']) not in dropped]
             exact.update(family_exact)
         state = 'inactive_exact' if providers else 'compiled' if jobs else 'draft'
         families.append({'name': name, 'status': state, 'providers': providers,

@@ -1,0 +1,37 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?createVertexData@OgreUtil@RBX@@QAEPAVVertexData@Ogre@@PBVVector3@4@I0PBVColor4@G3D@@PBM@Z",
+    "address": "00679ae0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-OgreGeometryBuilder2008\\objects\\412d1c8009894b55\\candidate.obj": "6fcdfa26347a2d3c3e4c6026ba70c79cbf9ef9b4a2975a240b40a09d6e8f69c4",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-zhi05pyj\\owners.json": "9a0c21b00c05baf41a10dc58248e91e3476d7ed42f4bec1662cf268f03d6b658",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-zhi05pyj\\import-thunk-identities-as-owner.json": "7a2c134dfc35b4d581e9c2241d78ae7337aaa7cb0010fa835f995a1411b468c0"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??0?$vector@IV?$allocator@I@std@@@std@@QAE@XZ",
+   "address": "004293d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?resize@?$vector@IV?$allocator@I@std@@@std@@QAEXII@Z",
+   "address": "005e6de0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?createVertexData@OgreUtil@RBX@@QAEPAVVertexData@Ogre@@PBVVector3@4@I0PBVColor4@G3D@@PBM@Z",
+   "address": "007dd287",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

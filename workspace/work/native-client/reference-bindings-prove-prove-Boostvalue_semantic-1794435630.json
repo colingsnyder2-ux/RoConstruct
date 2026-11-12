@@ -1,0 +1,132 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?_Xlen@?$vector@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@V?$allocator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@2@@std@@KAXXZ",
+    "address": "004c6d40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Boostvalue_semantic\\objects\\019e4969c3ed160f\\candidate.obj": "8d67930f6cbbb3a091bf45f521e27b7911f376bbd9dd3aa41dd51a03124abab7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-b1c6uhau\\owners.json": "b83d102c3849c7ab1793d4d71b0ca85b217f43b0b80a794ce6ade5a3aebb8a14",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-b1c6uhau\\import-thunk-identities-as-owner.json": "284d95c1362ba9b90e7a00ad01a0b4fc2a15704d8d6a77a8d35aec63f60ac899"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$fill@PAV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@V12@@std@@YAXPAV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@0@0ABV10@@Z",
+    "address": "00428990"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Boostvalue_semantic\\objects\\019e4969c3ed160f\\candidate.obj": "8d67930f6cbbb3a091bf45f521e27b7911f376bbd9dd3aa41dd51a03124abab7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-b1c6uhau\\owners.json": "b83d102c3849c7ab1793d4d71b0ca85b217f43b0b80a794ce6ade5a3aebb8a14",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-b1c6uhau\\import-thunk-identities-as-owner.json": "284d95c1362ba9b90e7a00ad01a0b4fc2a15704d8d6a77a8d35aec63f60ac899"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$_Uninit_move@PAV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@PAV12@V?$allocator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@2@@std@@YAPAV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@0@PAV10@00AAV?$allocator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@0@U_Swap_move_tag@0@U_Range_checked_iterator_tag@0@@Z",
+    "address": "00428a20"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Boostvalue_semantic\\objects\\019e4969c3ed160f\\candidate.obj": "8d67930f6cbbb3a091bf45f521e27b7911f376bbd9dd3aa41dd51a03124abab7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-b1c6uhau\\owners.json": "b83d102c3849c7ab1793d4d71b0ca85b217f43b0b80a794ce6ade5a3aebb8a14",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-b1c6uhau\\import-thunk-identities-as-owner.json": "284d95c1362ba9b90e7a00ad01a0b4fc2a15704d8d6a77a8d35aec63f60ac899"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$_Unchecked_move_backward@PAV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@PAV12@@stdext@@YAPAV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@PAV12@00@Z",
+    "address": "00428f10"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Boostvalue_semantic\\objects\\019e4969c3ed160f\\candidate.obj": "8d67930f6cbbb3a091bf45f521e27b7911f376bbd9dd3aa41dd51a03124abab7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-b1c6uhau\\owners.json": "b83d102c3849c7ab1793d4d71b0ca85b217f43b0b80a794ce6ade5a3aebb8a14",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-b1c6uhau\\import-thunk-identities-as-owner.json": "284d95c1362ba9b90e7a00ad01a0b4fc2a15704d8d6a77a8d35aec63f60ac899"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?_Ufill@?$vector@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@V?$allocator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@2@@std@@IAEPAV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@2@PAV32@IABV32@@Z",
+    "address": "00429440"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Boostvalue_semantic\\objects\\019e4969c3ed160f\\candidate.obj": "8d67930f6cbbb3a091bf45f521e27b7911f376bbd9dd3aa41dd51a03124abab7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-b1c6uhau\\owners.json": "b83d102c3849c7ab1793d4d71b0ca85b217f43b0b80a794ce6ade5a3aebb8a14",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-b1c6uhau\\import-thunk-identities-as-owner.json": "284d95c1362ba9b90e7a00ad01a0b4fc2a15704d8d6a77a8d35aec63f60ac899"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__ehhandler$?_Insert_n@?$vector@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@V?$allocator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@2@@std@@IAEXV?$_Vector_const_iterator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@V?$allocator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@2@@2@IABV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@2@@Z",
+    "address": "007bf2d2"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Boostvalue_semantic\\objects\\019e4969c3ed160f\\candidate.obj": "8d67930f6cbbb3a091bf45f521e27b7911f376bbd9dd3aa41dd51a03124abab7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-b1c6uhau\\owners.json": "b83d102c3849c7ab1793d4d71b0ca85b217f43b0b80a794ce6ade5a3aebb8a14",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-b1c6uhau\\import-thunk-identities-as-owner.json": "284d95c1362ba9b90e7a00ad01a0b4fc2a15704d8d6a77a8d35aec63f60ac899"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??$_Move_backward_opt@PAV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@PAV12@@std@@YAPAV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@0@PAV10@00Urandom_access_iterator_tag@0@U_Swap_move_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "004289c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$_Uninit_fill_n@PAV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@IV12@V?$allocator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@2@@std@@YAXPAV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@0@IABV10@AAV?$allocator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "00428fb0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__catch$?_Insert_n@?$vector@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@V?$allocator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@2@@std@@IAEXV?$_Vector_const_iterator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@V?$allocator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@2@@2@IABV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@2@@Z$0",
+   "address": "00429607",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__catch$?_Insert_n@?$vector@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@V?$allocator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@2@@std@@IAEXV?$_Vector_const_iterator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@V?$allocator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@2@@2@IABV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@2@@Z$2",
+   "address": "004296d5",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??$_Uninit_move@PAV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@PAV12@V?$allocator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@2@@std@@YAPAV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@0@PAV10@00AAV?$allocator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@0@U_Swap_move_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "007bf20a",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?_Xlen@?$vector@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@V?$allocator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@2@@std@@KAXXZ",
+   "address": "007de842",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp_??0?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QAE@XZ",
+   "address": "00802460",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp_??4?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QAEAAV01@ABV01@@Z",
+   "address": "0080240c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp_?swap@?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@QAEXAAV12@@Z",
+   "address": "008023f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?_Insert_n@?$vector@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@V?$allocator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@2@@std@@IAEXV?$_Vector_const_iterator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@V?$allocator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@2@@2@IABV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@2@@Z$4",
+   "address": "007bf2c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__unwindfunclet$?_Insert_n@?$vector@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@V?$allocator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@2@@std@@IAEXV?$_Vector_const_iterator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@V?$allocator@V?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@@2@@2@IABV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@2@@Z$5",
+   "address": "007bf2c9",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 6,
+ "owners_bound": 6
+}

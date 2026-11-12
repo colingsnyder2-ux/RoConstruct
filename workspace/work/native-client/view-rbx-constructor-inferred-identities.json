@@ -1,0 +1,29 @@
+{
+ "scope": "INFERRED constructor and helper names",
+ "rows": [
+  {
+   "symbol": "??0ViewRbxGfx@ViewNew@RBX@@QAE@V?$shared_ptr@VDataModel@RBX@@@boost@@@Z",
+   "address": "004d9990",
+   "inferred_name": true,
+   "evidence": "INFERRED constructor identity: unique byte-exact candidate; original vtable 00826c70 and caller allocation establish class."
+  },
+  {
+   "symbol": "??0MaterialFactory@ViewNew@RBX@@QAE@PAVTextureManager@G3D@@@Z",
+   "address": "004f0920",
+   "inferred_name": true,
+   "evidence": "INFERRED: unique byte-exact candidate; original ViewRbxGfx constructor calls with TextureManager"
+  },
+  {
+   "symbol": "?createStripTexture@@YAPAVTextureProxyBase@RBX@@PAVTextureManager@G3D@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "00551a30",
+   "inferred_name": true,
+   "evidence": "INFERRED: original call relocation at 004f09e5; descriptive helper name"
+  },
+  {
+   "symbol": "?makeAssetPath@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBD@Z",
+   "address": "0055d0b0",
+   "inferred_name": true,
+   "evidence": "INFERRED: original call relocation at 004f0967; descriptive alias; another identity is RBX::LDraw2Lua::resolveMapPath"
+  }
+ ]
+}

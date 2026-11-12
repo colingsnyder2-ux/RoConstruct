@@ -1,0 +1,119 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??1GWindow@G3D@@UAE@XZ",
+    "address": "0047f860"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DSDLWindow\\objects\\250ee04b6e852c59\\candidate.obj": "aa43d1f99cb4667324bb53ac920c7cf53848ce304b1eeb0e045da29bc004d6f7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2jncsokt\\owners.json": "f32542eda8b2166b8bd0e8322a1d140745c903578d9ce02a2bf195fc7e56a74d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2jncsokt\\import-thunk-identities-as-owner.json": "354dab37d13c6e41f5049203b1efc3634dac11632203bf90de55aaf985262c77"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?setIcon@GWindow@G3D@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+    "address": "0047f8a0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DSDLWindow\\objects\\250ee04b6e852c59\\candidate.obj": "aa43d1f99cb4667324bb53ac920c7cf53848ce304b1eeb0e045da29bc004d6f7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2jncsokt\\owners.json": "f32542eda8b2166b8bd0e8322a1d140745c903578d9ce02a2bf195fc7e56a74d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2jncsokt\\import-thunk-identities-as-owner.json": "354dab37d13c6e41f5049203b1efc3634dac11632203bf90de55aaf985262c77"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??_GGWindow@G3D@@UAEPAXI@Z",
+    "address": "0047faf0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DSDLWindow\\objects\\250ee04b6e852c59\\candidate.obj": "aa43d1f99cb4667324bb53ac920c7cf53848ce304b1eeb0e045da29bc004d6f7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2jncsokt\\owners.json": "f32542eda8b2166b8bd0e8322a1d140745c903578d9ce02a2bf195fc7e56a74d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2jncsokt\\import-thunk-identities-as-owner.json": "354dab37d13c6e41f5049203b1efc3634dac11632203bf90de55aaf985262c77"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??_EGWindow@G3D@@UAEPAXI@Z",
+   "address": "0047faf0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?decInputCaptureCount@GWindow@G3D@@UAEXXZ",
+   "address": "0047f940",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?decMouseHideCount@GWindow@G3D@@UAEXXZ",
+   "address": "0047f9c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?incInputCaptureCount@GWindow@G3D@@UAEXXZ",
+   "address": "0047f900",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?incMouseHideCount@GWindow@G3D@@UAEXXZ",
+   "address": "0047f980",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?m_current@GWindow@G3D@@0PBV12@B",
+   "address": "0096eff4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?pollEvent@GWindow@G3D@@UAE_NAATSDL_Event@@@Z",
+   "address": "0068e880",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?popLoopBody@GWindow@G3D@@UAEXXZ",
+   "address": "00489760",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?pushLoopBody@GWindow@G3D@@UAEXP6AXPAX@Z0@Z",
+   "address": "00481570",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?pushLoopBody@GWindow@G3D@@UAEXPAVGApplet@2@@Z",
+   "address": "00489720",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?reallyMakeCurrent@GWindow@G3D@@MBEXXZ",
+   "address": "0047d410",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?requiresMainLoop@GWindow@G3D@@UBE_NXZ",
+   "address": "0060a2f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?runMainLoop@GWindow@G3D@@UAEXXZ",
+   "address": "0047fa00",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?setIcon@GWindow@G3D@@UAEXABVGImage@2@@Z",
+   "address": "0070bdf0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?setIcon@GWindow@G3D@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "007c5128",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 3,
+ "owners_bound": 3
+}

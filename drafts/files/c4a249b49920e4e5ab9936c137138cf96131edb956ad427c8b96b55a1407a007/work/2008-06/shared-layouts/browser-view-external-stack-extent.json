@@ -1,0 +1,41 @@
+{
+  "schema": "local-bounds-proposal-1",
+  "client": "2008-06",
+  "address": "00402610",
+  "symbol": "?_AtlVerifyStackAvailable@_ATL_SAFE_ALLOCA_IMPL@ATL@@YA_NK@Z",
+  "old_size": 93,
+  "proposed_size": 156,
+  "proposed_end": "004026ac",
+  "absorbs": [
+    "0040266d",
+    "00402681"
+  ],
+  "tail_proof": {
+    "old": 93,
+    "new": 156,
+    "absorbs": [
+      "0040266d",
+      "00402681"
+    ],
+    "clean": true,
+    "proof": "tail"
+  },
+  "original_156_sha256": "66c7d78f7864a7e212705d63744cec4877eb2164d6116575eefa59f2c2543db8",
+  "object_comdat_text_sha256": "dfaacf88ea9a597c19642624f84eec7d5ddd49e611cfaa5994c4f76dccf26900",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM)",
+  "relocation_count": 5,
+  "calling_convention": "bare c3 (cdecl, caller cleans) - NOT ret 4",
+  "server_extent_status": "not applied",
+  "proposal": "local",
+  "applied": false,
+  "not_done": [
+    "bounds.json",
+    "functions.jsonl",
+    "scores",
+    "client metadata",
+    "roc extents --apply",
+    "roc analyze",
+    "server restart"
+  ],
+  "receipt": "work/2008-06/shared-layouts/browser-view-external-working.json#full_stack_owner_pending_extent"
+}

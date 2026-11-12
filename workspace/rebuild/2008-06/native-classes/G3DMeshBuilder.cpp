@@ -3,7 +3,8 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DMeshBuilder | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 49296b00 | roc native-status --write
+// <<< native-status | src dc5aa64a | roc native-status --write
+#line 1 ".\\G3Dcpp\\MeshBuilder.cpp"
 /**
   @file MeshBuilder.cpp
 

@@ -1,0 +1,202 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?postToClipboard@_internal@G3D@@YAXPBD@Z",
+    "address": "0050a1c0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DdebugAssert\\objects\\5350f7dc32e01237\\candidate.obj": "403afca4582ecb44a8a58b973a2c90f1fe5f06fec64475da83c57f5de24b9874",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-e7s_9l3t\\owners.json": "4da52ff2ebe99fba3ee8df5304797b44cefb840a736a9b8947cc83e3ef31ff5b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-e7s_9l3t\\import-thunk-identities-as-owner.json": "cd37c718d5ccb6764e843b72ccdd4dbff18815981490878d0581928b00ad7c62"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?createErrorMessage@_internal@G3D@@YAXPBDABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0HAAV34@2@Z",
+    "address": "0050a230"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DdebugAssert\\objects\\5350f7dc32e01237\\candidate.obj": "403afca4582ecb44a8a58b973a2c90f1fe5f06fec64475da83c57f5de24b9874",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-e7s_9l3t\\owners.json": "4da52ff2ebe99fba3ee8df5304797b44cefb840a736a9b8947cc83e3ef31ff5b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-e7s_9l3t\\import-thunk-identities-as-owner.json": "cd37c718d5ccb6764e843b72ccdd4dbff18815981490878d0581928b00ad7c62"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?_handleDebugAssert_@_internal@G3D@@YA_NPBDABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0HAA_N_N@Z",
+    "address": "0050a490"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DdebugAssert\\objects\\5350f7dc32e01237\\candidate.obj": "403afca4582ecb44a8a58b973a2c90f1fe5f06fec64475da83c57f5de24b9874",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-e7s_9l3t\\owners.json": "4da52ff2ebe99fba3ee8df5304797b44cefb840a736a9b8947cc83e3ef31ff5b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-e7s_9l3t\\import-thunk-identities-as-owner.json": "cd37c718d5ccb6764e843b72ccdd4dbff18815981490878d0581928b00ad7c62"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?_handleErrorCheck_@_internal@G3D@@YA_NPBDABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0HAA_N_N@Z",
+    "address": "0050a6e0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DdebugAssert\\objects\\5350f7dc32e01237\\candidate.obj": "403afca4582ecb44a8a58b973a2c90f1fe5f06fec64475da83c57f5de24b9874",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-e7s_9l3t\\owners.json": "4da52ff2ebe99fba3ee8df5304797b44cefb840a736a9b8947cc83e3ef31ff5b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-e7s_9l3t\\import-thunk-identities-as-owner.json": "cd37c718d5ccb6764e843b72ccdd4dbff18815981490878d0581928b00ad7c62"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?_releaseInputGrab_@_internal@G3D@@YAXXZ",
+    "address": "0050a940"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DdebugAssert\\objects\\5350f7dc32e01237\\candidate.obj": "403afca4582ecb44a8a58b973a2c90f1fe5f06fec64475da83c57f5de24b9874",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-e7s_9l3t\\owners.json": "4da52ff2ebe99fba3ee8df5304797b44cefb840a736a9b8947cc83e3ef31ff5b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-e7s_9l3t\\import-thunk-identities-as-owner.json": "cd37c718d5ccb6764e843b72ccdd4dbff18815981490878d0581928b00ad7c62"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?_restoreInputGrab_@_internal@G3D@@YAXXZ",
+    "address": "0050a9b0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DdebugAssert\\objects\\5350f7dc32e01237\\candidate.obj": "403afca4582ecb44a8a58b973a2c90f1fe5f06fec64475da83c57f5de24b9874",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-e7s_9l3t\\owners.json": "4da52ff2ebe99fba3ee8df5304797b44cefb840a736a9b8947cc83e3ef31ff5b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-e7s_9l3t\\import-thunk-identities-as-owner.json": "cd37c718d5ccb6764e843b72ccdd4dbff18815981490878d0581928b00ad7c62"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?getCommonLogFilename@Log@G3D@@SA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+   "address": "00509e60",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?print@Log@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "0050a0c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?prompt@G3D@@YAHPBD0PAPBDH_N@Z",
+   "address": "00519680",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?_handleDebugAssert_@_internal@G3D@@YA_NPBDABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0HAA_N_N@Z",
+   "address": "007cbe2c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?_handleErrorCheck_@_internal@G3D@@YA_NPBDABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0HAA_N_N@Z",
+   "address": "007cbea3",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?createErrorMessage@_internal@G3D@@YAXPBDABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0HAAV34@2@Z",
+   "address": "007cbde4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__ClipCursor@4",
+   "address": "00802ce4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__CloseClipboard@0",
+   "address": "00802de8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__EmptyClipboard@0",
+   "address": "00802ddc",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__FormatMessageA@28",
+   "address": "00802278",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__GetClipCursor@4",
+   "address": "00802cb0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__GetCursor@0",
+   "address": "00802cac",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__GetCursorPos@4",
+   "address": "00802d9c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__GetModuleFileNameA@12",
+   "address": "008021a4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__GlobalAlloc@8",
+   "address": "008021dc",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__GlobalFree@4",
+   "address": "00802270",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__GlobalLock@4",
+   "address": "008021d8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__GlobalUnlock@4",
+   "address": "008021d4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__LoadCursorA@8",
+   "address": "00802dd0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__LocalFree@4",
+   "address": "00802274",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__OpenClipboard@4",
+   "address": "00802df4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__SetClipboardData@8",
+   "address": "00802de0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__SetCursor@4",
+   "address": "00802d04",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__SetCursorPos@8",
+   "address": "00802d00",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__ShowCursor@4",
+   "address": "00802ce8",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 6,
+ "owners_bound": 6
+}

@@ -1,0 +1,44 @@
+{
+  "class": "CBrowserView",
+  "subclasses": ["CIDEBrowserView", "CPlayBrowserView", "CBrowserViewExternal"],
+  "date": "2026-11-11",
+  "owner": "colin (opencode/glm-5.3-flash-free)",
+  "lease": "CBrowserView-family-glm53",
+  "workflow": 53,
+  "package_revision": "dbc7834ec337292dcac56703a552785969037b7120478bab289ed3fd24074b6b",
+  "workspace_manifest_source_revision": "dbc7834ec337292dcac56703a552785969037b7120478bab289ed3fd24074b6b",
+  "baseline_commit": null,
+  "draft_session": "1ddd98959a3d4191a54d5aabeab94c20",
+  "sources": {
+    "rebuild/2008-06/WindowsClient/src/CBrowserView.cpp": "d39eb600191add92b757db2eb1013422d5964b4c82478d0d24d81871911f4dd6",
+    "rebuild/2008-06/native-classes/CBrowserView.cpp": "d34eb950414e13aad35078d871d5bcd0eadc78ebdfc70f8eb961f73e6ffc0900",
+    "rebuild/2008-06/native-classes/BrowserViewExternalMethods.cpp": "d53c3012f79d8c05839a08e8af1a6d747f06ef7f69826b4f2672089aa19bd461",
+    "rebuild/2008-06/native-classes/BrowserViewExternalGetApp.cpp": "3b08c2003839b6167699dc37eb35a357ede537e0caa196323f3404395d2ba30a",
+    "rebuild/2008-06/native-classes/BrowserViewExternalFactory.cpp": "01882bd19fc4d41ad936ad8eb4ae1960dfd3162395d40a3fb73e6236558ec7a3",
+    "rebuild/2008-06/WindowsClient/include/CBrowserViewExternal.h": "d0dbfffca80d50d93d46cd64db57d7945e1b6d218996067eccf3c706a29e5c6e",
+    "rebuild/2008-06/native-headers/CBrowserViewExternal.h": "e598db752aa412dde24c73ca2ca520cb90894a047aaf690704a03e88bbd420da",
+    "rebuild/2008-06/WindowsClient/include/CBrowserView.h": "b4667890505c5527c68e1c47ef5d21c4a9314f329d7283e251a62cf3739264dd"
+  },
+  "methods": [
+    {
+      "address": "00410f90",
+      "symbol": "?get_IsIDE@CBrowserViewExternal@@UAGJPAF@Z",
+      "size": 74,
+      "exact": true,
+      "status": "verified existing work (inactive_exact)",
+      "evidence": "prove ledgers work/native-client/prove-cache/ab76aa89ca00831ac8eb.json (BrowserViewExternalMethods.cpp) with fresh inputs; byte-exact candidate 00410f90, relocation-normalized"
+    },
+    {
+      "address": "00410fe0",
+      "symbol": "?GetApp@CBrowserViewExternal@@UAGJPAPAUIDispatch@@@Z",
+      "size": 314,
+      "exact": true,
+      "status": "verified existing work (inactive_exact)",
+      "evidence": "prove ledgers work/native-client/prove-cache/d96b9f536b53187e7028.json (BrowserViewExternalGetApp.cpp) with fresh inputs; byte-exact candidate 00410fe0, relocation-normalized"
+    }
+  ],
+  "open": {
+    "0040fff0": "CBrowserView::OnGetExternal (original 171B; best candidate 173B): 2-instruction scheduling difference - original converts to IBrowserViewExternal (lea edi,[eax+0x14]) from the single object load BEFORE the isIDE store; candidate reloads the object (mov edi,[esp+8]; add edi,0x14) after the store. Three substantive hypotheses parked (named VARIANT_BOOL local -> 176B movzx; named CIDEBrowserView* local -> 173B same shape; named IDispatch* local -> 183B spilled). Prior note rebuild/2008-06/tests/record_native_browser_view.py open item. Revisit only on new evidence/inputs."
+  },
+  "notes": "get_IsIDE/GetApp byte-exact with this workflow-53 package revision and reused verified inputs (original client reused from RoConstruct-Native-4f7d46a..., functions.jsonl/vtables.json copied, toolchain junctions via input_reuse.attach). Inactive exacts are not integrated swaps; owner integration and runtime gates remain."
+}

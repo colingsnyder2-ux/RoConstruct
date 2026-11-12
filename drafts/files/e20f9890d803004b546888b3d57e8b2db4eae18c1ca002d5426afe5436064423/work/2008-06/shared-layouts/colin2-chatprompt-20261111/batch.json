@@ -1,0 +1,82 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/CChatPrompt.cpp",
+      "checks": [
+        {
+          "addr": "00411be0",
+          "symbol": "??0CChatPrompt@@QAE@XZ",
+          "calls": [
+            {
+              "offset": 3,
+              "target": "006a0c86",
+              "symbol": "??0CEditView@@QAE@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "00412800",
+          "symbol": "?bind@CChatPrompt@@QAEXPAVDataModel@RBX@@PAVCWnd@@@Z"
+        },
+        {
+          "addr": "004129c0",
+          "symbol": "??1CChatPrompt@@UAE@XZ",
+          "calls": [
+            {
+              "offset": 48,
+              "target": "00412800",
+              "symbol": "?bind@CChatPrompt@@QAEXPAVDataModel@RBX@@PAVCWnd@@@Z"
+            },
+            {
+              "offset": 127,
+              "target": "004111a0",
+              "symbol": "??1CGdiObject@@UAE@XZ"
+            },
+            {
+              "offset": 199,
+              "target": "006a0d1c",
+              "symbol": "??1CEditView@@UAE@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "00412aa0",
+          "symbol": "??_GCChatPrompt@@UAEPAXI@Z",
+          "calls": [
+            {
+              "offset": 3,
+              "target": "004129c0",
+              "symbol": "??1CChatPrompt@@UAE@XZ"
+            },
+            {
+              "offset": 16,
+              "target": "006a067a",
+              "symbol": "??3@YAXPAX@Z"
+            }
+          ]
+        },
+        {
+          "addr": "00411ef0",
+          "symbol": "?CreateObject@CChatPrompt@@SGPAVCObject@@XZ",
+          "calls": [
+            {
+              "offset": 27,
+              "target": "006a0920",
+              "symbol": "??2@YAPAXI@Z"
+            },
+            {
+              "offset": 52,
+              "target": "00411be0",
+              "symbol": "??0CChatPrompt@@QAE@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "00411360",
+          "symbol": "?GetRuntimeClass@CChatPrompt@@UBEPAUCRuntimeClass@@XZ",
+          "calls": []
+        }
+      ]
+    }
+  ]
+}

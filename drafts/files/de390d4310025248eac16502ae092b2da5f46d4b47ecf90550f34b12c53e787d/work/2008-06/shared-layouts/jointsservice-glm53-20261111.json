@@ -1,0 +1,19 @@
+{
+  "family": "JointsService",
+  "date": "2026-11-11",
+  "agent": "opencode/glm-5.3-flash-free",
+  "workspace": "RoConstruct-Native-2dd77eb2b64b4a699592ab7737329141",
+  "package_revision": "dbc7834ec337292dcac56703a552785969037b7120478bab289ed3fd24074b6b",
+  "source_revision": "dbc7834ec337292dcac56703a552785969037b7120478bab289ed3fd24074b6b",
+  "draft_session": "4414a39b722e46d9ab2b958812cb4cde",
+  "draft_watcher": "f2977103187b4f4a8c7a2dbbb0f1ce68",
+  "draft_receipt": null,
+  "targets": [
+    {
+      "symbol": "RBX::JointsService::onServiceProvider",
+      "address": "005e5b50",
+      "status": "parked",
+      "evidence": "Header/asm evidence: disconnect Notifier<World,AutoJoin>/AutoDestroy from world (+0x150), set world from ServiceProvider::find<Workspace>(newProvider)->getWorld() (Workspace +0x2e4), reconnect; no Instance::onServiceProvider call. Implemented candidate in App/src/v8datamodel/JointsService.cpp (disconnect/connect + world set) but prove in this environment produced compile failures/inconsistent harvest (kernel header Connector/getKernelIndex errors observed when rebuilding with Workspace include chain in wrapper context) and no byte-exact diff obtained; reverted to baseline compiling state. Needs owner/toolchain-compatible compile path and diff iteration (<=3 substantive hypotheses not yet exhausted against a stable compile)."
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?cleanCache@VARArea@G3D@@CAXXZ",
+    "address": "00476270"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DVARArea\\objects\\62c2b4f398b02690\\candidate.obj": "1b9f84b1357a70f8ce3852f53cc2aa4a9eeeb781b66b4cf9f071be4de4f4ed17",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-hpgv0_4r\\owners.json": "49b6ab72bd640233b00619ef45a46a978bb55d5e58a4442aac02f7f85e4467f8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-hpgv0_4r\\import-thunk-identities-as-owner.json": "e227d99d21f6e05763b69adc18584efd3fedf18cfc6e4e7eb4e27f2e54bd24b7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?cleanupAllVARAreas@VARArea@G3D@@SAXXZ",
+    "address": "00476340"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DVARArea\\objects\\62c2b4f398b02690\\candidate.obj": "1b9f84b1357a70f8ce3852f53cc2aa4a9eeeb781b66b4cf9f071be4de4f4ed17",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-hpgv0_4r\\owners.json": "49b6ab72bd640233b00619ef45a46a978bb55d5e58a4442aac02f7f85e4467f8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-hpgv0_4r\\import-thunk-identities-as-owner.json": "e227d99d21f6e05763b69adc18584efd3fedf18cfc6e4e7eb4e27f2e54bd24b7"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?create@VARArea@G3D@@SA?AV?$ReferenceCountedPointer@VVARArea@G3D@@@2@IW4UsageHint@12@@Z",
+    "address": "004763d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DVARArea\\objects\\62c2b4f398b02690\\candidate.obj": "1b9f84b1357a70f8ce3852f53cc2aa4a9eeeb781b66b4cf9f071be4de4f4ed17",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-hpgv0_4r\\owners.json": "49b6ab72bd640233b00619ef45a46a978bb55d5e58a4442aac02f7f85e4467f8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-hpgv0_4r\\import-thunk-identities-as-owner.json": "e227d99d21f6e05763b69adc18584efd3fedf18cfc6e4e7eb4e27f2e54bd24b7"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??0VARArea@G3D@@AAE@IW4UsageHint@01@@Z",
+   "address": "00475b50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?append@?$Array@V?$ReferenceCountedPointer@VVARArea@G3D@@@G3D@@@G3D@@QAEXABV?$ReferenceCountedPointer@VVARArea@G3D@@@2@@Z",
+   "address": "00476150",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?resize@?$Array@V?$ReferenceCountedPointer@VVARArea@G3D@@@G3D@@@G3D@@QAEXH_N@Z",
+   "address": "00475fb0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?waitForMilestone@RenderDevice@G3D@@QAEXABV?$ReferenceCountedPointer@VMilestone@G3D@@@2@@Z",
+   "address": "004789e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?create@VARArea@G3D@@SA?AV?$ReferenceCountedPointer@VVARArea@G3D@@@2@IW4UsageHint@12@@Z",
+   "address": "007c4914",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 3,
+ "owners_bound": 3
+}

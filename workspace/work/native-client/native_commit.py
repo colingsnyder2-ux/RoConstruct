@@ -2,7 +2,7 @@
 
   python work/native-client/native_commit.py -m "message" PATH [PATH ...] [--no-push]
 
-Native files (rebuild/<client>/native-*) get a lease and a path-scoped banner write; other paths are committed as
+Native files (rebuild/<client>/native-*) get a lease (no banner is written: the generated top-of-file banners are optional); other paths are committed as
 they are (tool .py files under work/ are force-added). The pre-commit hook still runs lease/banner checks.
 """
 import argparse
@@ -61,10 +61,11 @@ def main():
     name = 'commit-' + Path(paths[0]).stem
     py = sys.executable
     if native:
-        run(py, 'roc.py', 'lease', 'take', name, *native, '--hours', '1')
+        patterns = native
+        if len(native) > 150:      # the server accepts at most 200 globs: lease the parent directories instead
+            patterns = sorted({Path(p).parent.as_posix() + '/*' for p in native})
+        run(py, 'roc.py', 'lease', 'take', name, *patterns, '--hours', '1')
     try:
-        if native:        # one banner pass for every native path (each pass indexes the whole tree)
-            run(py, 'scripts/native_status.py', '--write', *sum((['--path', p] for p in native), []))
         run('git', 'add', '-f', *paths)
         run('git', 'commit', '-q', '-m', args.message.rstrip() + TRAILER)
         print(run('git', 'log', '--oneline', '-1').stdout.strip())

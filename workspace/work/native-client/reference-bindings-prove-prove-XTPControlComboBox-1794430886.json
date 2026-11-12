@@ -1,0 +1,139 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?_GetBaseClass@CXTPEdit@@KGPAUCRuntimeClass@@XZ",
+    "address": "0074d250"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-lcy58c1o\\owners.json": "06189a4cf0142f89168701985ee3d9cda6a82085e560dbcbf4b9929ee1960a05",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-lcy58c1o\\import-thunk-identities-as-owner.json": "48802a68b335f5635ab89a0439d0d08c05a2d37fcfc862d956bd8b5d35a68259"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?GetThisClass@CXTPControlComboBox@@SGPAUCRuntimeClass@@XZ",
+    "address": "006a6ab0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-lcy58c1o\\owners.json": "06189a4cf0142f89168701985ee3d9cda6a82085e560dbcbf4b9929ee1960a05",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-lcy58c1o\\import-thunk-identities-as-owner.json": "48802a68b335f5635ab89a0439d0d08c05a2d37fcfc862d956bd8b5d35a68259"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?GetThisClass@CXTPControlComboBoxPopupBar@@SGPAUCRuntimeClass@@XZ",
+    "address": "006a6e90"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-lcy58c1o\\owners.json": "06189a4cf0142f89168701985ee3d9cda6a82085e560dbcbf4b9929ee1960a05",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-lcy58c1o\\import-thunk-identities-as-owner.json": "48802a68b335f5635ab89a0439d0d08c05a2d37fcfc862d956bd8b5d35a68259"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?GetRuntimeClass@CXTPControlComboBoxPopupBar@@UBEPAUCRuntimeClass@@XZ",
+    "address": "006a6e90"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-lcy58c1o\\owners.json": "06189a4cf0142f89168701985ee3d9cda6a82085e560dbcbf4b9929ee1960a05",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-lcy58c1o\\import-thunk-identities-as-owner.json": "48802a68b335f5635ab89a0439d0d08c05a2d37fcfc862d956bd8b5d35a68259"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?GetRuntimeClass@CXTPControlComboBoxList@@UBEPAUCRuntimeClass@@XZ",
+    "address": "006a7000"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-lcy58c1o\\owners.json": "06189a4cf0142f89168701985ee3d9cda6a82085e560dbcbf4b9929ee1960a05",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-lcy58c1o\\import-thunk-identities-as-owner.json": "48802a68b335f5635ab89a0439d0d08c05a2d37fcfc862d956bd8b5d35a68259"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Clone@CXTPControlComboBoxList@@UAEPAVCXTPCommandBar@@H@Z",
+    "address": "006a8700"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-lcy58c1o\\owners.json": "06189a4cf0142f89168701985ee3d9cda6a82085e560dbcbf4b9929ee1960a05",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-lcy58c1o\\import-thunk-identities-as-owner.json": "48802a68b335f5635ab89a0439d0d08c05a2d37fcfc862d956bd8b5d35a68259"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Clone@CXTPControlComboBoxPopupBar@@UAEPAVCXTPCommandBar@@H@Z",
+    "address": "006a8570"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-lcy58c1o\\owners.json": "06189a4cf0142f89168701985ee3d9cda6a82085e560dbcbf4b9929ee1960a05",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-lcy58c1o\\import-thunk-identities-as-owner.json": "48802a68b335f5635ab89a0439d0d08c05a2d37fcfc862d956bd8b5d35a68259"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?GetMessageMap@CXTPControlComboBoxList@@MBEPBUAFX_MSGMAP@@XZ",
+    "address": "006aaca0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPControlComboBox\\objects\\7a54fbaf8463c14d\\candidate.obj": "473ea7e74f29c8f66f9eb82a6b0f23b6896b2b41bd3472488e21a1a5e6dab737",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-lcy58c1o\\owners.json": "06189a4cf0142f89168701985ee3d9cda6a82085e560dbcbf4b9929ee1960a05",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-lcy58c1o\\import-thunk-identities-as-owner.json": "48802a68b335f5635ab89a0439d0d08c05a2d37fcfc862d956bd8b5d35a68259"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?CreateObject@CXTPControlComboBox@@SGPAVCObject@@XZ",
+   "address": "006a95a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?CreateObject@CXTPControlComboBoxList@@SGPAVCObject@@XZ",
+   "address": "006a8690",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?CreateObject@CXTPControlComboBoxPopupBar@@SGPAVCObject@@XZ",
+   "address": "006a8500",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetThisClass@CEdit@@SGPAUCRuntimeClass@@XZ",
+   "address": "007bbfe6",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetThisMessageMap@CXTPControlComboBoxList@@KGPBUAFX_MSGMAP@@XZ",
+   "address": "006aa2b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_GetBaseClass@CXTPControlComboBox@@KGPAUCRuntimeClass@@XZ",
+   "address": "0079a610",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_GetBaseClass@CXTPControlComboBoxList@@KGPAUCRuntimeClass@@XZ",
+   "address": "0072e360",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_GetBaseClass@CXTPControlComboBoxPopupBar@@KGPAUCRuntimeClass@@XZ",
+   "address": "006ee700",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 8,
+ "owners_bound": 8
+}

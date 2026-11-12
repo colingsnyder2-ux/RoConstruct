@@ -1,0 +1,203 @@
+{
+  "jobs": [
+    {
+      "source": "native-classes/CChatPrompt.cpp",
+      "checks": [
+        {
+          "addr": "00411be0",
+          "symbol": "??0CChatPrompt@@QAE@XZ",
+          "calls": [
+            {
+              "offset": 3,
+              "target": "006a0c86",
+              "symbol": "??0CEditView@@QAE@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "00412800",
+          "symbol": "?bind@CChatPrompt@@QAEXPAVDataModel@RBX@@PAVCWnd@@@Z",
+          "calls": [
+            {
+              "offset": 40,
+              "target": "00618a40",
+              "symbol": "??$shared_from@VDataModel@RBX@@@RBX@@YA?AV?$shared_ptr@VDataModel@RBX@@@boost@@PAVDataModel@0@@Z"
+            },
+            {
+              "offset": 74,
+              "target": "004025b0",
+              "symbol": "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z"
+            },
+            {
+              "offset": 187,
+              "target": "00411b40",
+              "symbol": "??0Lock@DataModel@RBX@@QAE@V?$shared_ptr@$$CBVDataModel@RBX@@@boost@@@Z"
+            },
+            {
+              "offset": 226,
+              "target": "0055a8f0",
+              "symbol": "?setParent@Instance@RBX@@QAEXPAV12@@Z"
+            },
+            {
+              "offset": 233,
+              "target": "00456e80",
+              "symbol": "?reset@?$shared_ptr@VChatEnter@@@boost@@QAEXXZ"
+            },
+            {
+              "offset": 254,
+              "target": "00412710",
+              "symbol": "??$create@VPlayers@Network@RBX@@@ServiceProvider@RBX@@QBEPAVPlayers@Network@1@XZ"
+            },
+            {
+              "offset": 278,
+              "target": "00411f50",
+              "symbol": "??$create@VChatEnter@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VChatEnter@@@boost@@XZ"
+            },
+            {
+              "offset": 302,
+              "target": "004025b0",
+              "symbol": "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z"
+            },
+            {
+              "offset": 378,
+              "target": "0055a8f0",
+              "symbol": "?setParent@Instance@RBX@@QAEXPAV12@@Z"
+            },
+            {
+              "offset": 403,
+              "target": "006a0d16",
+              "symbol": "?EnableWindow@CWnd@@QAEHH@Z"
+            },
+            {
+              "offset": 420,
+              "target": "005773c0",
+              "symbol": "??1Lock@DataModel@RBX@@QAE@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "004129c0",
+          "symbol": "??1CChatPrompt@@UAE@XZ",
+          "calls": [
+            {
+              "offset": 48,
+              "target": "00412800",
+              "symbol": "?bind@CChatPrompt@@QAEXPAVDataModel@RBX@@PAVCWnd@@@Z"
+            },
+            {
+              "offset": 127,
+              "target": "004111a0",
+              "symbol": "??1CGdiObject@@UAE@XZ"
+            },
+            {
+              "offset": 199,
+              "target": "006a0d1c",
+              "symbol": "??1CEditView@@UAE@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "00412aa0",
+          "symbol": "??_GCChatPrompt@@UAEPAXI@Z",
+          "calls": [
+            {
+              "offset": 3,
+              "target": "004129c0",
+              "symbol": "??1CChatPrompt@@UAE@XZ"
+            },
+            {
+              "offset": 16,
+              "target": "006a067a",
+              "symbol": "??3@YAXPAX@Z"
+            }
+          ]
+        },
+        {
+          "addr": "00411ef0",
+          "symbol": "?CreateObject@CChatPrompt@@SGPAVCObject@@XZ",
+          "calls": [
+            {
+              "offset": 27,
+              "target": "006a0920",
+              "symbol": "??2@YAPAXI@Z"
+            },
+            {
+              "offset": 52,
+              "target": "00411be0",
+              "symbol": "??0CChatPrompt@@QAE@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "00411360",
+          "symbol": "?GetRuntimeClass@CChatPrompt@@UBEPAUCRuntimeClass@@XZ",
+          "calls": []
+        }
+      ]
+    },
+    {
+      "source": "native-classes/CChatPromptWindow.cpp",
+      "checks": [
+        {
+          "addr": "00411370",
+          "symbol": "?PreCreateWindow@CChatPrompt@@MAEHAAUtagCREATESTRUCTA@@@Z",
+          "calls": [
+            {
+              "offset": 6,
+              "target": "006a0c74",
+              "symbol": "?PreCreateWindow@CEditView@@MAEHAAUtagCREATESTRUCTA@@@Z"
+            }
+          ]
+        },
+        {
+          "addr": "004113a0",
+          "symbol": "?CtlColor@CChatPrompt@@IAEPAUHBRUSH__@@PAVCDC@@I@Z"
+        },
+        {
+          "addr": "004115c0",
+          "symbol": "?OnSetFocusReflect@CChatPrompt@@IAEXXZ"
+        },
+        {
+          "addr": "00411640",
+          "symbol": "?OnCreate@CChatPrompt@@IAEHPAUtagCREATESTRUCTA@@@Z"
+        },
+        {
+          "addr": "00411c30",
+          "symbol": "?OnChar@CChatPrompt@@IAEXIII@Z"
+        },
+        {
+          "addr": "0045aeb0",
+          "symbol": "?OnFocusMessage@CChatPrompt@@IAEJIJ@Z",
+          "calls": [
+            {
+              "offset": 0,
+              "target": "006a0a28",
+              "symbol": "?SetFocus@CWnd@@QAEPAV1@XZ"
+            }
+          ]
+        },
+        {
+          "addr": "00702d70",
+          "symbol": "?OnSysChar@CChatPrompt@@IAEXIII@Z",
+          "calls": [
+            {
+              "offset": 0,
+              "target": "006a0c68",
+              "symbol": "?Default@CWnd@@IAEJXZ"
+            }
+          ]
+        },
+        {
+          "addr": "004120a0",
+          "symbol": "?GetMessageMap@CChatPrompt@@MBEPBUAFX_MSGMAP@@XZ",
+          "calls": []
+        },
+        {
+          "addr": "0047d410",
+          "symbol": "?OnChange@CChatPrompt@@IAEXXZ",
+          "calls": []
+        }
+      ]
+    }
+  ]
+}

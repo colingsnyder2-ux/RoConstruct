@@ -1,0 +1,7 @@
+{
+  "parent": "work\\2008-06\\shared-layouts\\colin2-topmenubar-20261111\\receipt.json",
+  "change": "Only getMyRect2D noinline annotation; body and layout preserved",
+  "original_evidence": "005740b8 direct call00573960",
+  "inferred_attribute": true,
+  "prior_receipts": "Earlier Gui.h-dependent object fingerprints are historical; current ChatOutput batch rebuilt after this edit."
+}
