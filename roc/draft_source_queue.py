@@ -131,6 +131,7 @@ def discover(root, users=()):
 
 
 def work(root, limit=3, apply=False):
+    from roc.integration_verify import input_hash
     root = Path(root).resolve()
     if not 0 <= limit <= 100:
         raise ValueError('Source work limit must be between 0 and 100')
@@ -138,6 +139,7 @@ def work(root, limit=3, apply=False):
     queue = json.loads((folder / 'source-queue.json').read_text())
     context_file = folder / 'family-queue.json'
     context = json.loads(context_file.read_text()).get('input_key') if context_file.is_file() else None
+    native_context = input_hash(root)
     gates = {str(path): content_hash(path.read_bytes()) for path in
              draft_source.verification_files(root) + [root / 'roc/draft_source_queue.py']}
     results = []
@@ -149,7 +151,8 @@ def work(root, limit=3, apply=False):
         identifier = proof_key(review)
         path = folder / 'reviews' / ('source-work-' + identifier + '.json')
         native_drafts.atomic(path, review)
-        key = proof_key(dict(review=identifier, context=context, gates=gates, apply=apply))
+        key = proof_key(dict(review=identifier, context=context, native_context=native_context,
+                             gates=gates, apply=apply))
         artifact = folder / 'source-attempts' / (key + '.json')
         if context and artifact.is_file():
             return json.loads(artifact.read_text())

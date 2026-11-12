@@ -131,9 +131,13 @@ class SourceQueueTests(unittest.TestCase):
             self.assertEqual(first['models_used'], 0)
             self.assertEqual(first['attempted'], 1)
             self.assertEqual(queue.work(self.root, limit=1, apply=True)['attempted'], 0)
+            header = self.root / 'rebuild/2008-06/native-headers/Foo.h'
+            header.parent.mkdir(parents=True, exist_ok=True)
+            header.write_text('changed dependency')
+            self.assertEqual(queue.work(self.root, limit=1, apply=True)['attempted'], 1)
             native_drafts.atomic(self.folder / 'family-queue.json', dict(input_key='changed'))
             self.assertEqual(queue.work(self.root, limit=1, apply=True)['attempted'], 1)
-        self.assertEqual(prove.call_count, 2)
+        self.assertEqual(prove.call_count, 3)
         self.assertTrue(prove.call_args.args[2])
 
 
