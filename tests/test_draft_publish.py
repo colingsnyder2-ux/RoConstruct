@@ -5,11 +5,12 @@ import sys
 import tempfile
 import unittest
 from contextlib import closing
+from types import SimpleNamespace
 from unittest.mock import patch
 
 from roc import draft_proof
 from roc.draft_merger import SCHEMA, content_hash
-from roc.draft_publish import BRANCH, publish, native_input_snapshot
+from roc.draft_publish import BRANCH, publish, native_input_snapshot, verify_sources
 
 
 class NativeInputSnapshotTests(unittest.TestCase):
@@ -172,6 +173,33 @@ class DraftPublishTests(unittest.TestCase):
         self.assertTrue(result['pushed'])
         self.assertEqual(self.run_git(self.origin, 'rev-parse', 'refs/heads/' + BRANCH), result['commit'])
         self.assertEqual(self.run_git(self.root, 'rev-parse', 'HEAD'), result['commit'])
+
+    def test_publication_replays_source_only_exact_call_inference(self):
+        for name in ('draft_publish', 'draft_native', 'draft_proof'):
+            path = self.root / 'roc' / (name + '.py')
+            path.parent.mkdir(exist_ok=True)
+            path.write_text(name)
+        output = self.root / 'publication-test'
+        output.mkdir()
+        receipt = dict(self.expected_receipt, kind='reviewed-source-improvement')
+        binder = SimpleNamespace(verify=lambda *args: [])
+
+        def compile_source(toolchain, command, args, directory, timeout):
+            Path(next(arg[3:] for arg in args if arg.startswith('/Fo'))).write_bytes(b'object')
+            return 0, ''
+
+        calls = dict(targets={}, notes=[], import_aliases=set())
+        with patch('roc.draft_publish.native_input_snapshot', return_value=('inputs', {})), \
+                patch('roc.input_reuse.ensure_link'), \
+                patch('roc.draft_native.original_view', return_value=(object(), binder)), \
+                patch('roc.draft_native.flags', return_value=[]), \
+                patch('roc.draft_native.closed_function_targets', return_value={}), \
+                patch('roc.draft_native.numeric_literal_targets', return_value={'targets': {}, 'literals': []}), \
+                patch('roc.draft_native.reviewed_call_targets', return_value=calls) as infer, \
+                patch('roc.rebuild.toolchain', return_value=object()), \
+                patch('roc.rebuild.run', side_effect=compile_source):
+            verify_sources(self.root, {self.source_path: self.candidate}, {self.source_path: [receipt]}, output)
+        self.assertTrue(infer.call_args.kwargs['allow_exact_inferred'])
 
     def test_proven_new_source_file_can_be_published(self):
         new_path = 'rebuild/2008-06/native-classes/NewProofed.cpp'

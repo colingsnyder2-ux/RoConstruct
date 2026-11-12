@@ -119,7 +119,9 @@ def verify_sources(root, sources, receipts, output):
         external = closed_function_targets(bindings)
         numeric = numeric_literal_targets(original, obj, methods)
         reviewed_source = all(row.get('kind') == 'reviewed-source-improvement' for row in receipts[name])
-        calls = reviewed_call_targets(original, binder, obj, methods, bindings) if reviewed_source else dict(targets={}, notes=[], import_aliases=set())
+        calls = reviewed_call_targets(
+            original, binder, obj, methods, bindings, allow_exact_inferred=True
+        ) if reviewed_source else dict(targets={}, notes=[], import_aliases=set())
         view = ReviewedOriginal(original, calls['import_aliases']) if reviewed_source else original
         checked = binder.verify(view, obj, methods, dict(calls['targets'], **external, **numeric['targets']), dict(methods))
         if any(row['local_eh'] for row in checked) and not reviewed_source:
