@@ -24,12 +24,14 @@ int Contact::contactPairMatches;
 int Contact::contactPairMisses;
 
 // FUNCTION: WEBSERVICE 0x100d1fb0
+// FUNCTION: ROBLOX 0x00609fe0
 Contact::Contact(Primitive* p0, Primitive* p1)
 	: Edge(p0, p1), lastContactStep(-1), steppingIndex(-1), jointK(0), elasticJointK(0), kFriction(0)
 {
 }
 
 // FUNCTION: WEBSERVICE 0x100d1fe0
+// FUNCTION: ROBLOX 0x0060a010
 bool Contact::step(int uiStepId)
 {
 	bool touching = stepContact();
@@ -51,6 +53,7 @@ bool Contact::step(int uiStepId)
 }
 
 // FUNCTION: WEBSERVICE 0x100d2030
+// FUNCTION: ROBLOX 0x0060a060
 bool Contact::computeIsAdjacent(float spaceAllowed)
 {
 	if (computeIsColliding(spaceAllowed)) {
@@ -61,6 +64,7 @@ bool Contact::computeIsAdjacent(float spaceAllowed)
 }
 
 // FUNCTION: WEBSERVICE 0x100d2070
+// FUNCTION: ROBLOX 0x0060a0a0
 void Contact::deleteConnector(ContactConnector*& c)
 {
 	if (c != NULL) {
@@ -73,6 +77,7 @@ void Contact::deleteConnector(ContactConnector*& c)
 }
 
 // FUNCTION: WEBSERVICE 0x100d22b0
+// FUNCTION: ROBLOX 0x0060a260
 ContactConnector* Contact::createConnector()
 {
 	ContactConnector* connector = new ContactConnector(jointK, elasticJointK, kFriction);
@@ -83,6 +88,7 @@ ContactConnector* Contact::createConnector()
 }
 
 // FUNCTION: WEBSERVICE 0x100d2330
+// FUNCTION: ROBLOX 0x0060a2e0
 bool BallBallContact::computeIsColliding(float overlapIgnored)
 {
 	float r0 = getPrimitive(0)->getGeometry()->getRadius();
@@ -105,6 +111,7 @@ bool BallBallContact::computeIsColliding(float overlapIgnored)
 }
 
 // FUNCTION: WEBSERVICE 0x100d2430
+// FUNCTION: ROBLOX 0x0060a3e0
 bool BallBallContact::stepContact()
 {
 	if (BallBallContact::computeIsColliding(0.0f)) {
@@ -138,11 +145,9 @@ bool BallBallContact::stepContact()
 }
 
 // FUNCTION: WEBSERVICE 0x100d24c0
+// FUNCTION: ROBLOX 0x0060a470
 bool BallBlockContact::computeIsColliding(
-	int& onBorder,
-	G3D::Vector3int16& clip,
-	Vector3& projectionInBlock,
-	float overlapIgnored
+	int& onBorder, G3D::Vector3int16& clip, Vector3& projectionInBlock, float overlapIgnored
 )
 {
 	if (Primitive::aaBoxCollide(*getPrimitive(0), *getPrimitive(1))) {
@@ -169,6 +174,7 @@ bool BallBlockContact::computeIsColliding(
 }
 
 // FUNCTION: WEBSERVICE 0x100d25f0
+// FUNCTION: ROBLOX 0x0060a5a0
 bool BallBlockContact::stepContact()
 {
 	int onBorder;
@@ -201,6 +207,7 @@ bool BallBlockContact::stepContact()
 }
 
 // STUB: WEBSERVICE 0x100d2710
+// STUB: ROBLOX 0x0060a6c0
 bool BlockBlockContact::getBestPlaneEdge(bool& planeContact, float overlapIgnored)
 {
 	float bestPlaneLength = Math::inf();
@@ -325,6 +332,7 @@ bool BlockBlockContact::getBestPlaneEdge(bool& planeContact, float overlapIgnore
 }
 
 // FUNCTION: WEBSERVICE 0x100d2da0
+// FUNCTION: ROBLOX 0x0060ad50
 void Contact::onPrimitiveContactParametersChanged()
 {
 	Primitive* prim0 = getPrimitive(0);
@@ -340,6 +348,7 @@ void Contact::onPrimitiveContactParametersChanged()
 }
 
 // FUNCTION: WEBSERVICE 0x100d2ea0
+// FUNCTION: ROBLOX 0x0060ae50
 bool BallBlockContact::computeIsColliding(float overlapIgnored)
 {
 	int onBorder;
@@ -350,6 +359,7 @@ bool BallBlockContact::computeIsColliding(float overlapIgnored)
 }
 
 // FUNCTION: WEBSERVICE 0x100d2ef0
+// FUNCTION: ROBLOX 0x0060aea0
 bool BlockBlockContact::computeIsColliding(float overlapIgnored)
 {
 	if (Primitive::aaBoxCollide(*getPrimitive(0), *getPrimitive(1))) {
@@ -363,6 +373,7 @@ bool BlockBlockContact::computeIsColliding(float overlapIgnored)
 }
 
 // FUNCTION: WEBSERVICE 0x100d4150
+// FUNCTION: ROBLOX 0x0060b130
 void BlockBlockContact::deleteAllConnectors()
 {
 	for (unsigned int i = 0; i < connectors.size(); i++) {
@@ -374,6 +385,7 @@ void BlockBlockContact::deleteAllConnectors()
 }
 
 // FUNCTION: WEBSERVICE 0x100d41e0
+// FUNCTION: ROBLOX 0x0060b1c0
 void BlockBlockContact::deleteUnmatchedConnectors()
 {
 	for (int i = connectors.size() - 1; i >= 0; i--) {
@@ -391,12 +403,9 @@ void BlockBlockContact::deleteUnmatchedConnectors()
 }
 
 // FUNCTION: WEBSERVICE 0x100d42f0
+// FUNCTION: ROBLOX 0x0060b2d0
 ContactConnector* BlockBlockContact::matchContactConnector(
-	Body* b0,
-	Body* b1,
-	GeoPairType _pairType,
-	int param0,
-	int param1
+	Body* b0, Body* b1, GeoPairType _pairType, int param0, int param1
 )
 {
 	for (unsigned int i = 0; i < matched.size(); i++) {
@@ -425,6 +434,7 @@ ContactConnector* BlockBlockContact::matchContactConnector(
 }
 
 // FUNCTION: WEBSERVICE 0x100d44e0
+// FUNCTION: ROBLOX 0x0060b4c0
 void BlockBlockContact::loadGeoPairEdgeEdge(int b0, int b1, int edge0, int edge1)
 {
 	NormalId normalID0 = block(b0)->getEdgeNormal(edge0);
@@ -433,22 +443,14 @@ void BlockBlockContact::loadGeoPairEdgeEdge(int b0, int b1, int edge0, int edge1
 	ContactConnector* c = matchContactConnector(getBody(b0), getBody(b1), EDGE_EDGE_PAIR, normalID0, normalID1);
 
 	c->setEdgeEdge(
-		getBody(b0),
-		getBody(b1),
-		block(b0)->getEdgeVertex(edge0),
-		block(b1)->getEdgeVertex(edge1),
-		normalID0,
-		normalID1
+		getBody(b0), getBody(b1), block(b0)->getEdgeVertex(edge0), block(b1)->getEdgeVertex(edge1), normalID0, normalID1
 	);
 }
 
 // FUNCTION: WEBSERVICE 0x100d45e0
+// FUNCTION: ROBLOX 0x0060b5c0
 void BlockBlockContact::loadGeoPairPointPlane(
-	int pointBody,
-	int planeBody,
-	int pointID,
-	NormalId pointFaceID,
-	NormalId planeFaceID
+	int pointBody, int planeBody, int pointID, NormalId pointFaceID, NormalId planeFaceID
 )
 {
 	ContactConnector* c =
@@ -465,6 +467,7 @@ void BlockBlockContact::loadGeoPairPointPlane(
 }
 
 // FUNCTION: WEBSERVICE 0x100d4680
+// FUNCTION: ROBLOX 0x0060b660
 void BlockBlockContact::loadGeoPairEdgeEdgePlane(int edgeBody, int planeBody, int edge0, int edge1)
 {
 	NormalId normalID0 = block(edgeBody)->getEdgeNormal(edge0);
@@ -486,6 +489,7 @@ void BlockBlockContact::loadGeoPairEdgeEdgePlane(int edgeBody, int planeBody, in
 }
 
 // FUNCTION: WEBSERVICE 0x100d47b0
+// FUNCTION: ROBLOX 0x0060b790
 int BlockBlockContact::intersectRectQuad(Vector2& planeRect, Vector2 (&otherQuad)[4])
 {
 	bool rectCrossQuad[4][4];
@@ -609,6 +613,7 @@ int BlockBlockContact::intersectRectQuad(Vector2& planeRect, Vector2 (&otherQuad
 }
 
 // STUB: WEBSERVICE 0x100d4be0
+// STUB: ROBLOX 0x0060bbc0
 int BlockBlockContact::computePlaneContact()
 {
 	if (feature[0] >= 0) {
@@ -635,9 +640,7 @@ int BlockBlockContact::computePlaneContact()
 
 	otherPlaneID = Math::getClosestObjectNormalId(
 		-(Vector3(
-			  planeCoord.rotation[0][planeAxis],
-			  planeCoord.rotation[1][planeAxis],
-			  planeCoord.rotation[2][planeAxis]
+			  planeCoord.rotation[0][planeAxis], planeCoord.rotation[1][planeAxis], planeCoord.rotation[2][planeAxis]
 		  ) *
 		  (float) (1 - 2 * planeFlip)),
 		otherCoord.rotation
@@ -659,6 +662,7 @@ int BlockBlockContact::computePlaneContact()
 }
 
 // FUNCTION: WEBSERVICE 0x100d4df0
+// FUNCTION: ROBLOX 0x0060bdd0
 bool BlockBlockContact::stepContact()
 {
 	bool planeContact;

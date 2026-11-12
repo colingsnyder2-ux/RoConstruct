@@ -5,6 +5,8 @@
 // roc-lib: openrbx-client Rendering/RenderLib/Profiler.cpp
 
 // Candidate translation unit (score above; library headers required).
+#include "renderlib/Profiler.h"
+
 #include "decomp.h"
 
 #include <G3D/RegistryUtil.h>
@@ -25,28 +27,10 @@ static std::string getCPUMake();
 static std::string getMaxRes();
 static int getRam();
 
-// SIZE 0x80
-struct SpecData
-{
-	static bool glLoaded;
-
-	float shaderModel;      // 0x00
-	int videoMemory;        // 0x04
-	int CPUSpeed;           // 0x08
-	std::string glVendor;   // 0x0c
-	std::string gfxcard;    // 0x28
-	std::string cpu;        // 0x44
-	int ram;                // 0x60
-	std::string resolution; // 0x64
-
-	SpecData();
-};
-
-DECOMP_SIZE_ASSERT(SpecData, 0x80)
-
 bool SpecData::glLoaded;
 
 // FUNCTION: WEBSERVICE 0x10169a30
+// FUNCTION: ROBLOX 0x0049c8b0
 static float getShaderModel()
 {
 	if ((G3D::GLCaps::supports_GL_ARB_fragment_shader() && G3D::GLCaps::supports_GL_ARB_vertex_shader()) ||
@@ -70,6 +54,7 @@ static float getShaderModel()
 }
 
 // FUNCTION: WEBSERVICE 0x10169c60
+// FUNCTION: ROBLOX 0x0049cae0
 static __int64 GetCyclesDifference(DelayFunction DelayFunction, unsigned int uiParameter)
 {
 	unsigned int t0Lo, t0Hi;
@@ -101,6 +86,7 @@ static __int64 GetCyclesDifference(DelayFunction DelayFunction, unsigned int uiP
 }
 
 // FUNCTION: WEBSERVICE 0x10169d20
+// FUNCTION: ROBLOX 0x0049cba0
 static void Delay(unsigned int time)
 {
 	LARGE_INTEGER Frequency, StartCounter, EndCounter;
@@ -117,6 +103,7 @@ static void Delay(unsigned int time)
 }
 
 // FUNCTION: WEBSERVICE 0x10169d90
+// FUNCTION: ROBLOX 0x0049cc10
 static void DelayOverhead(unsigned int time)
 {
 	LARGE_INTEGER Frequency, StartCounter, EndCounter;
@@ -133,13 +120,13 @@ static void DelayOverhead(unsigned int time)
 }
 
 // FUNCTION: WEBSERVICE 0x10169e00
+// FUNCTION: ROBLOX 0x0049cc80
 static std::string getCPUMake()
 {
 	std::string cpu_name;
 
 	if (G3D::RegistryUtil::readString(
-			"HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\ProcessorNameString",
-			cpu_name
+			"HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\ProcessorNameString", cpu_name
 		)) {
 		return cpu_name;
 	}
@@ -148,13 +135,13 @@ static std::string getCPUMake()
 }
 
 // FUNCTION: WEBSERVICE 0x10169ee0
+// FUNCTION: ROBLOX 0x0049cd60
 static int getCPUSpeed()
 {
 	int speed;
 
 	if (G3D::RegistryUtil::read32bitNumber(
-			"HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\~MHz",
-			speed
+			"HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\~MHz", speed
 		)) {
 		if (speed > 300) {
 			return speed;
@@ -181,6 +168,7 @@ static int getCPUSpeed()
 }
 
 // FUNCTION: WEBSERVICE 0x10169ff0
+// FUNCTION: ROBLOX 0x0049d080
 static std::string getMaxRes()
 {
 	int width = GetSystemMetrics(SM_CXSCREEN);
@@ -202,6 +190,7 @@ static int getRam()
 }
 
 // FUNCTION: WEBSERVICE 0x1016a100
+// FUNCTION: ROBLOX 0x0049d190
 SpecData::SpecData()
 	: shaderModel(glLoaded ? getShaderModel() : 0.0f),
 	  videoMemory((int) (G3D::DXCaps::videoMemorySize() / (1024 * 1024))), CPUSpeed(getCPUSpeed()),

@@ -58,6 +58,7 @@ bool JointStage::edgeHasPrimitivesDownstream(Edge* e)
 }
 
 // FUNCTION: WEBSERVICE 0x10118350
+// FUNCTION: ROBLOX 0x006421e0
 void JointStage::removeFromMap(Joint* j, Primitive* p)
 {
 	do {
@@ -77,6 +78,7 @@ void JointStage::removeFromMap(Joint* j, Primitive* p)
 }
 
 // FUNCTION: WEBSERVICE 0x10118480
+// FUNCTION: ROBLOX 0x00642310
 void JointStage::onJointPrimitiveNulling(Joint* j, Primitive* nulling)
 {
 	if (j->downstreamOfStage(this)) {
@@ -92,6 +94,7 @@ void JointStage::onJointPrimitiveNulling(Joint* j, Primitive* nulling)
 }
 
 // FUNCTION: WEBSERVICE 0x10118510
+// FUNCTION: ROBLOX 0x006423a0
 void JointStage::onJointPrimitiveSet(Joint* j, Primitive* p)
 {
 	if (edgeHasPrimitivesDownstream(j)) {
@@ -107,6 +110,7 @@ void JointStage::onJointPrimitiveSet(Joint* j, Primitive* p)
 }
 
 // FUNCTION: WEBSERVICE 0x101185c0
+// FUNCTION: ROBLOX 0x00642450
 void JointStage::onEdgeAdded(Edge* e)
 {
 	e->putInPipeline(this);
@@ -124,6 +128,7 @@ void JointStage::onEdgeAdded(Edge* e)
 }
 
 // FUNCTION: WEBSERVICE 0x10118680
+// FUNCTION: ROBLOX 0x00642510
 void JointStage::onEdgeRemoving(Edge* e)
 {
 	if (e->downstreamOfStage(this)) {
@@ -141,11 +146,13 @@ void JointStage::onEdgeRemoving(Edge* e)
 }
 
 // FUNCTION: WEBSERVICE 0x10118700
+// FUNCTION: ROBLOX 0x00642590
 JointStage::JointStage(IStage* upstream, World* world) : IWorldStage(upstream, new ClumpStage(this, world), world)
 {
 }
 
 // STUB: WEBSERVICE 0x101188f0
+// STUB: ROBLOX 0x00642770
 void JointStage::onPrimitiveAdded(Primitive* p)
 {
 	p->putInPipeline(this);
@@ -174,6 +181,7 @@ void JointStage::onPrimitiveAdded(Primitive* p)
 }
 
 // FUNCTION: WEBSERVICE 0x10118b40
+// FUNCTION: ROBLOX 0x006429c0
 void JointStage::onPrimitiveRemoving(Primitive* p)
 {
 	std::vector<Joint*> jointsToPop;

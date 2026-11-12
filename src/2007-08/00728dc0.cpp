@@ -1,87 +1,81 @@
-// from server: 45% by colin
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 100% by EspClaude
+// roc 2007-08 00728dc0 303 bytes
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /GS /EHsc /MD
+// Shape (from target): boost 1.34 function2<bool, A, A>::operator()(A a0, A a1)
+// const. [this+0] manager (empty test), [this+4] functor passed by value,
+// [this+8] cdecl invoker. Empty -> throw_exception(bad_function_call())
+// via ctor 0x413c00 on a 0x28-byte frame temp and noreturn 0x414170.
+// A is 12 bytes (sub esp,0xc per copy): two words + shared_count whose
+// counted base has use_count at +4, weak_count at +8, dispose at vtable+4,
+// destroy at vtable+8.
+#include <intrin.h>
+#pragma intrinsic(_InterlockedIncrement, _InterlockedDecrement)
 
-struct RefCounted {
-    void* vptr;
-    volatile long refs;
-    volatile long weakRefs;
+struct sp_counted_base {
+    virtual ~sp_counted_base();
+    virtual void dispose() = 0;
     virtual void destroy();
-    virtual void destroyWeak();
-};
+    long use_count_;
+    long weak_count_;
 
-struct Conn {
-    void* vptr;
-    void* slot;
-    void* signal;
-};
-
-struct Slot {
-    void* vptr;
-    void* a;
-    void* b;
-};
-
-struct Impl {
-    void* vptr;
-    void* a;
-    void* b;
-};
-
-struct Holder {
-    char pad0[4];
-    void* ptr;
-    char pad1[4];
-};
-
-struct Arg {
-    void* a;
-    void* b;
-    void* c;
-};
-
-struct Fn {
-    void* a;
-    void* b;
-    void* c;
-};
-
-struct S {
-    char pad0[4];
-    void* f4;
-    void* f8;
-    bool method(void*, void*, void*, void*, void*, void*);
-};
-
-bool S::method(void* a, void* b, void* c, void* d, void* e, void* f) {
-    if (*(int*)this == 0) {
-        void* p = ((void* (*)())0x413c00)();
-        ((void (*)(void*))0x414170)(p);
-    }
-    RefCounted* r1 = (RefCounted*)d;
-    RefCounted* r2 = (RefCounted*)e;
-    if (r1) {
-        _InterlockedExchangeAdd(&r1->refs, 1);
-    }
-    if (r2) {
-        _InterlockedExchangeAdd(&r2->refs, 1);
-    }
-    bool result = ((bool (*)(void*, void*, void*, void*, void*, void*))this->f8)(this->f4, a, b, c, d, e);
-    if (r2) {
-        if (_InterlockedExchangeAdd(&r2->refs, -1) == 1) {
-            r2->destroy();
-            if (_InterlockedExchangeAdd(&r2->weakRefs, -1) == 1) {
-                r2->destroyWeak();
-            }
+    void add_ref_copy() { _InterlockedIncrement(&use_count_); }
+    void release()
+    {
+        if (_InterlockedDecrement(&use_count_) == 0) {
+            dispose();
+            weak_release();
         }
     }
-    if (r1) {
-        if (_InterlockedExchangeAdd(&r1->refs, -1) == 1) {
-            r1->destroy();
-            if (_InterlockedExchangeAdd(&r1->weakRefs, -1) == 1) {
-                r1->destroyWeak();
-            }
+    void weak_release()
+    {
+        if (_InterlockedDecrement(&weak_count_) == 0) {
+            destroy();
         }
     }
+};
+
+struct shared_count {
+    sp_counted_base* pi_;
+    shared_count(const shared_count& r) : pi_(r.pi_)
+    {
+        if (pi_ != 0) pi_->add_ref_copy();
+    }
+    ~shared_count()
+    {
+        if (pi_ != 0) pi_->release();
+    }
+};
+
+struct Arg12 {
+    void* a;
+    void* b;
+    shared_count pn;
+};
+
+struct bad_function_call {
+    bad_function_call();
+    ~bad_function_call();
+    int w[10];
+};
+
+__declspec(noreturn) void __cdecl throw_exception(const bad_function_call& e);
+
+typedef bool (__cdecl *invoker_type)(void* functor, Arg12 a0, Arg12 a1);
+
+struct function2 {
+    void* manager;
+    void* functor;
+    invoker_type invoker;
+
+    bool operator()(Arg12 a0, Arg12 a1) const;
+};
+
+bool function2::operator()(Arg12 a0, Arg12 a1) const
+{
+    if (manager == 0)
+        throw_exception(bad_function_call());
+    bool result = invoker(functor, a0, a1);
     return result;
 }

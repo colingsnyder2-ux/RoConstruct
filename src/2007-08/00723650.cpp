@@ -1,72 +1,49 @@
-// from server: 44% by colin
-struct DomResourceIcon {
-    unsigned short attributeTheme() const;
-};
+// from server: 72% by EspClaude
+// roc 2007-08 00723650  unit: CXTIconHandle  size: 226 bytes
+// zlib 1.2.3 trees.c scan_tree (bl_tree at deflate_state+0xa7c, REP_3_6/REPZ_3_10/REPZ_11_138 at +0xabc/+0xac0/+0xac4).
+typedef unsigned short ush;
+struct ct_data { union { ush freq; ush code; } fc; union { ush dad; ush len; } dl; };
+struct deflate_state { char pad[0xa7c]; ct_data bl_tree[2*19+1]; };
+#define Freq fc.freq
+#define Len dl.len
+#define REP_3_6 16
+#define REPZ_3_10 17
+#define REPZ_11_138 18
 
-struct IconHandle {
-    const DomResourceIcon* m_domIcon;
-    int compare(const IconHandle& rhs) const;
-};
-
-int IconHandle::compare(const IconHandle& rhs) const
+void scan_tree(deflate_state* s, ct_data* tree, int max_code)
 {
-    const DomResourceIcon* a = m_domIcon;
-    const DomResourceIcon* b = rhs.m_domIcon;
+    int n;
+    int prevlen = -1;
+    int curlen;
+    int nextlen = tree[0].Len;
+    int count = 0;
+    int max_count = 7;
+    int min_count = 4;
 
-    unsigned short prev = a->attributeTheme();
-    int last = -1;
-    int i = 0;
-    int limit = 7;
-    int limit2 = 4;
-    if (prev == 0) {
-        limit = 0x8a;
-        limit2 = 3;
+    if (nextlen == 0) max_count = 138, min_count = 3;
+    tree[max_code+1].Len = (ush)0xffff;
+
+    for (n = 0; n <= max_code; n++) {
+        curlen = nextlen; nextlen = tree[n+1].Len;
+        if (++count < max_count && curlen == nextlen) {
+            continue;
+        } else if (count < min_count) {
+            s->bl_tree[curlen].Freq += count;
+        } else if (curlen != 0) {
+            if (curlen != prevlen) s->bl_tree[curlen].Freq++;
+            s->bl_tree[REP_3_6].Freq++;
+        } else if (count <= 10) {
+            s->bl_tree[REPZ_3_10].Freq++;
+        } else {
+            s->bl_tree[REPZ_11_138].Freq++;
+        }
+        count = 0; prevlen = curlen;
+        if (nextlen == 0) {
+            max_count = 138, min_count = 3;
+        } else if (curlen == nextlen) {
+            max_count = 6, min_count = 3;
+        } else {
+            max_count = 7, min_count = 4;
+        }
     }
-
-    int count = (int)(unsigned int)this;
-    *(unsigned short*)((char*)a + count * 4 + 6) = 0xffff;
-
-    if (count < 0)
-        return 0;
-
-    const unsigned short* p = (const unsigned short*)((char*)a + 6);
-    int n = count + 1;
-    int step = 1;
-    do {
-        unsigned short cur = *p;
-        i += step;
-        if (i < limit && prev == cur) {
-            // equal case
-        } else if (i < limit2) {
-            *(unsigned short*)((char*)b + prev * 4 + 0xa7c) += (unsigned short)i;
-        } else if (prev != 0) {
-            if (prev != last)
-                *(unsigned short*)((char*)b + prev * 4 + 0xa7c) += (unsigned short)step;
-            *(unsigned short*)((char*)b + 0xabc) += (unsigned short)step;
-        } else {
-            if (i <= 0xa)
-                *(unsigned short*)((char*)b + 0xac0) += (unsigned short)step;
-            else
-                *(unsigned short*)((char*)b + 0xac4) += (unsigned short)step;
-        }
-
-        i = 0;
-        last = prev;
-        prev = cur;
-        if (cur == 0) {
-            limit = 0x8a;
-            limit2 = 3;
-        } else if (prev == cur) {
-            limit = 6;
-            limit2 = 3;
-        } else {
-            limit = 7;
-            limit2 = 4;
-        }
-
-        p++;
-        n -= step;
-    } while (n != 0);
-
-    return 0;
 }

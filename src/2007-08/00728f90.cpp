@@ -1,41 +1,32 @@
-// from server: 42% by colin
+// from server: 92% by EspClaude
 // roc 2007-08 00728f90 124 bytes
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /O2 /GS /EHsc /MD
+// Shape: VS2005 std::list<T>::_Buynode(_Next, _Prev, const T&) with
+// _TRY_BEGIN/_CATCH_ALL; node allocation 0x1c (target push 0x1c) => value
+// size 0x14 at node+8; value copy through non-inlined _Construct (0x728bb0).
+#include <new>
 
-extern "C" void* __cdecl sub_62fef6(unsigned int size);
-extern "C" void __cdecl sub_728bb0(void* dst, void* src);
+struct Val14 { int w[5]; };
+struct Node { Node* _Next; Node* _Prev; Val14 _Myval; };
 
-struct Inner {
-    int a;
-    int b;
-    int c;
+void __cdecl Construct_Val14(Val14* p, const Val14& v);
+
+struct ListVal14 {
+    Node* _Buynode(Node* _Next, Node* _Prev, const Val14& _Val);
 };
 
-struct Outer {
-    int x;
-    int y;
-    Inner inner;
-};
-
-struct Alloc {
-    int f0;
-    int f1;
-    Inner inner;
-};
-
-Outer* __stdcall make_outer(int a, int b, int c);
-
-Outer* __stdcall make_outer(int a, int b, int c)
+Node* ListVal14::_Buynode(Node* _Next, Node* _Prev, const Val14& _Val)
 {
-    Alloc* p = (Alloc*)sub_62fef6(0x1c);
-    if (p) {
-        p->f0 = a;
+    Node* _Pnode = (Node*)::operator new(sizeof(Node));
+    try {
+        new ((void*)&_Pnode->_Next) Node*(_Next);
+        new ((void*)&_Pnode->_Prev) Node*(_Prev);
+        Construct_Val14(&_Pnode->_Myval, _Val);
+    } catch (...) {
+        ::operator delete(_Pnode);
+        throw;
     }
-    if (&p->f1) {
-        p->f1 = b;
-    }
-    sub_728bb0(&p->inner, &c);
-    return (Outer*)p;
+    return _Pnode;
 }

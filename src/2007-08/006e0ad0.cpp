@@ -1,47 +1,38 @@
+// from server: 69% by EspClaude
 // from server: 48% by colin
 // roc 2007-08 006e0ad0  unit: CXTPDockingPaneAutoHidePanel  size: 181 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 006e0ad0
+//
+// Target (from roc check): ternary of two CString temporaries copied into the hidden return slot;
+// pane virtual at vtable +0x5c; literal at 0x785954 is "" (first byte 0).
 
-extern "C" {
-    void __stdcall sub_77ddb8(void*);
-    void __stdcall sub_77dd74(void*, void*);
-    void __stdcall sub_77ddbc(void*);
-}
-
-struct CXTPDockingPaneAutoHidePanel {
-    char pad[0x1a0];
-    void* field_0x1a0;
-    void* GetPaneHwnd(void* param);
+class CString {
+public:
+    __declspec(dllimport) CString(const char* psz);
+    __declspec(dllimport) CString(const CString& src);
+    __declspec(dllimport) ~CString();
+    void* m_pszData;
 };
 
-void* CXTPDockingPaneAutoHidePanel::GetPaneHwnd(void* param) {
-    void* local1 = 0;
-    void* local2 = 0;
-    int flag = 0;
-    void* result;
+class CXTPDockingPane {
+public:
+    virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c();
+    virtual void v10(); virtual void v14(); virtual void v18(); virtual void v1c();
+    virtual void v20(); virtual void v24(); virtual void v28(); virtual void v2c();
+    virtual void v30(); virtual void v34(); virtual void v38(); virtual void v3c();
+    virtual void v40(); virtual void v44(); virtual void v48(); virtual void v4c();
+    virtual void v50(); virtual void v54(); virtual void v58();
+    virtual CString GetTitle();           // +0x5c
+};
 
-    if (this->field_0x1a0 == 0) {
-        void* obj = this->field_0x1a0;
-        void** vtable = *(void***)obj;
-        void* fn = vtable[0x17];
-        ((void (__stdcall*)(void*, void*))fn)(obj, &local1);
-        flag = 1;
-    } else {
-        sub_77ddb8(&local2);
-        flag = 2;
-    }
+class CXTPDockingPaneAutoHidePanel {
+public:
+    CString GetTitle();
+    char pad[0x1a0];
+    CXTPDockingPane* m_pPane;             // +0x1a0
+};
 
-    result = param;
-    sub_77dd74(param, &local1);
-    flag |= 4;
-
-    if (flag & 2) {
-        flag &= ~2;
-        sub_77ddbc(&local1);
-    }
-    if (flag & 1) {
-        sub_77ddbc(&local2);
-    }
-
-    return result;
+CString CXTPDockingPaneAutoHidePanel::GetTitle()
+{
+    return m_pPane != 0 ? m_pPane->GetTitle() : CString("");
 }

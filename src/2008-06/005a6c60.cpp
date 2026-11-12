@@ -25,12 +25,14 @@ static const char* warning = " Warning: ";
 static const char* error = " Error:   ";
 
 // FUNCTION: WEBSERVICE 0x1003d880
+// FUNCTION: ROBLOX 0x005b9590
 void Log::setLogProvider(ILogProvider* provider)
 {
 	Log::provider = provider;
 }
 
 // FUNCTION: WEBSERVICE 0x1003d890
+// FUNCTION: ROBLOX 0x005b95a0
 std::string Log::formatMem(unsigned int bytes)
 {
 	char buffer[64];
@@ -52,6 +54,7 @@ std::string Log::formatMem(unsigned int bytes)
 }
 
 // FUNCTION: WEBSERVICE 0x1003d930
+// FUNCTION: ROBLOX 0x005b9640
 std::string Log::formatTime(double time)
 {
 	char buffer[64];
@@ -76,6 +79,7 @@ std::string Log::formatTime(double time)
 } // namespace RBX
 
 // FUNCTION: WEBSERVICE 0x1003de60
+// FUNCTION: ROBLOX 0x005b96f0
 static void timeStamp(std::ofstream& stream, bool includeDate)
 {
 	SYSTEMTIME systemTime;
@@ -96,6 +100,7 @@ static void timeStamp(std::ofstream& stream, bool includeDate)
 namespace RBX {
 
 // FUNCTION: WEBSERVICE 0x1003def0
+// FUNCTION: ROBLOX 0x005b9780
 Log::Log(const char* logFile, const char* name) : worstSeverity(Information), logFile(logFile), stream(logFile)
 {
 	::timeStamp(stream, true);
@@ -104,6 +109,7 @@ Log::Log(const char* logFile, const char* name) : worstSeverity(Information), lo
 }
 
 // FUNCTION: WEBSERVICE 0x1003dfa0
+// FUNCTION: ROBLOX 0x005b9830
 Log::~Log()
 {
 	::timeStamp(stream, true);
@@ -111,6 +117,7 @@ Log::~Log()
 }
 
 // FUNCTION: WEBSERVICE 0x1003e020
+// FUNCTION: ROBLOX 0x005b98b0
 void Log::writeEntry(Severity severity, const char* message)
 {
 	std::ofstream* out = currentStream();

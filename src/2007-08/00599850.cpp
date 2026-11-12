@@ -1,71 +1,56 @@
-// from server: 42% by colin
-struct VCamera {
-    char pad[0x150];
-    float f150;
-    float f154;
-    float f158;
-    char pad2[0x180 - 0x15C];
-    float f180;
-    float f184;
-    float f188;
+// from server: 97% by EspClaude
+// roc-flags: /O2 /GS /EHsc /MD /fp:fast
+// roc 2007-08 00599850  unit: RBX::VCamera::?$FactoryProduct  size: 310 bytes
+// Camera zoom: offsets 0x150/0x180 (Vector3 at cframe translation / focus translation),
+// limits 0.25f (0x787050) and 1000.0f (0x7b1548), out-of-line Vector3::operator/(float) at 0x50f630,
+// 0x599480 returns object whose vtable slot 0xc is called.
+#include <math.h>
+#include <algorithm>
 
-    bool sub_599480();
-    bool func(float arg);
+class Vector3 {
+public:
+    float x, y, z;
+    Vector3() {}
+    Vector3(float _x, float _y, float _z) : x(_x), y(_y), z(_z) {}
+    Vector3& operator=(const Vector3& o) { x = o.x; y = o.y; z = o.z; return *this; }
+    Vector3 operator-(const Vector3& o) const { return Vector3(x - o.x, y - o.y, z - o.z); }
+    Vector3 operator*(float s) const { return Vector3(x * s, y * s, z * s); }
+    Vector3 operator/(float s) const;
+    float length() const { return (float)::sqrt((double)(x * x + y * y + z * z)); }
 };
 
-extern float g_787050;
-extern float g_7b1548;
+struct Listener {
+    virtual void v0();
+    virtual void v1();
+    virtual void v2();
+    virtual void onChanged();
+};
 
-extern "C" void __stdcall sub_50f630(float* out, float* in, float v);
-extern "C" float __cdecl sqrtf(float);
+class Camera {
+public:
+    char pad0[0x150];
+    Vector3 translation;
+    char pad1[0x180 - 0x15c];
+    Vector3 focus;
 
-bool VCamera::func(float arg) {
-    float dx = f180 - f150;
-    float dy = f184 - f154;
-    float dz = f188 - f158;
+    Listener* getListener();
+    bool zoom(float distance);
+};
 
-    float len = dx * dx + dy * dy + dz * dz;
-    len = sqrtf(len);
-
-    float a = g_787050;
-    float b = g_7b1548;
-
-    if (arg == len && a == len) {
+bool Camera::zoom(float distance)
+{
+    Vector3 look = focus - translation;
+    float currentDistance = look.length();
+    float minDistance = 0.25f;
+    float maxDistance = 1000.0f;
+    if (distance < minDistance && currentDistance == minDistance)
         return false;
-    }
-
-    if (arg == a && b == len) {
+    if (distance > maxDistance && currentDistance == maxDistance)
         return false;
-    }
-
-    float t;
-    if (arg != len) {
-        t = arg;
-    } else {
-        t = a;
-    }
-
-    float s;
-    if (t != b) {
-        s = b;
-    } else {
-        s = a;
-    }
-
-    float v[3];
-    v[0] = dx * s;
-    v[1] = dy * s;
-    v[2] = dz * s;
-
-    float out[3];
-    sub_50f630(out, v, t);
-
-    f150 = f180 - out[0];
-    f154 = f184 - out[1];
-    f158 = f188 - out[2];
-
-    if (sub_599480()) {
-        return true;
-    }
+    distance = std::max(minDistance, distance);
+    distance = std::min(maxDistance, distance);
+    translation = focus - (look * distance) / currentDistance;
+    if (Listener* l = getListener())
+        l->onChanged();
     return true;
 }

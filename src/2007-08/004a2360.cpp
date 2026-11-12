@@ -1,144 +1,71 @@
-// from server: 47% by colin
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 73% by EspClaude
+// roc 2007-08 004a2360  unit: RBX::Network::VServer::?$BoundFuncDesc  size: 471 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 004a2360
+// 004a2360: std::vector<Elem>::_Insert_n (VS2005), Elem is 12 bytes (/12 magic 0x2aaaaaab),
+// copied as {word0, px, pn} with an interlocked increment of pn+4 (boost shared_count use_count).
+extern "C" long __cdecl _InterlockedIncrement(long volatile*);
+extern "C" long __cdecl _InterlockedDecrement(long volatile*);
+#pragma intrinsic(_InterlockedIncrement)
+#pragma intrinsic(_InterlockedDecrement)
+#include <typeinfo>
+#include <vector>
 
-struct ArgStorage {
-    void* ptr;
-    int   a;
-    int   b;
-};
-
-struct VecElem {
-    int a;
-    int b;
-    int c;
-};
-
-struct Container {
-    VecElem* begin;
-    VecElem* end;
-    VecElem* cap;
-};
-
-struct FuncDesc {
-    void* vptr;
-    Container items;
-    int     field10;
-};
-
-extern "C" void __cdecl sub_417800();
-extern "C" void* __cdecl sub_4A0440(int, int);
-extern "C" void* __cdecl sub_4A17F0(void*, void*, void*, void*, void*, int, int, int);
-extern "C" void* __cdecl sub_4A1BA0(void*, void*, void*, void*);
-extern "C" void* __cdecl sub_4A1EA0(void*, void*, int, void*);
-extern "C" void  __cdecl sub_62FC62(void*);
-extern "C" void* __cdecl sub_44BA40(void*);
-
-void FuncDesc_method(FuncDesc* self, int a2, int a3, ArgStorage* a4)
-{
-    ArgStorage local;
-    local.ptr = a4->ptr;
-    local.a   = a4->a;
-    local.b   = a4->b;
-
-    if (local.b != 0) {
-        _InterlockedExchangeAdd((volatile long*)((char*)local.ptr + 4), 1);
+namespace boost {
+    namespace detail {
+        class sp_counted_base {
+        public:
+            virtual ~sp_counted_base() {}
+            virtual void dispose() = 0;
+            virtual void destroy() { delete this; }
+            virtual void* get_deleter(const std::type_info& ti) = 0;
+            void add_ref_copy() { _InterlockedIncrement(&use_count_); }
+            void release()
+            {
+                if (_InterlockedDecrement(&use_count_) == 0) {
+                    dispose();
+                    weak_release();
+                }
+            }
+            void weak_release()
+            {
+                if (_InterlockedDecrement(&weak_count_) == 0)
+                    destroy();
+            }
+        private:
+            long use_count_;
+            long weak_count_;
+        };
+        class shared_count {
+        public:
+            shared_count() : pi_(0) {}
+            shared_count(const shared_count& r) : pi_(r.pi_) { if (pi_ != 0) pi_->add_ref_copy(); }
+            ~shared_count() { if (pi_ != 0) pi_->release(); }
+            shared_count& operator=(const shared_count& r)
+            {
+                sp_counted_base* tmp = r.pi_;
+                if (tmp != pi_) {
+                    if (tmp != 0) tmp->add_ref_copy();
+                    if (pi_ != 0) pi_->release();
+                    pi_ = tmp;
+                }
+                return *this;
+            }
+        private:
+            sp_counted_base* pi_;
+        };
     }
-
-    int count = 0;
-    if (self->items.begin != 0) {
-        count = (int)((char*)self->items.end - (char*)self->items.begin) / 12;
-    }
-
-    if (a3 != 0) {
-        int cur;
-        if (self->items.begin != 0) {
-            cur = 0;
-        } else {
-            cur = (int)((char*)self->items.end - (char*)self->items.begin) / 12;
-        }
-        if ((unsigned)(0x15555555 - cur) < (unsigned)a3) {
-            sub_417800();
-        }
-
-        int cur2;
-        if (self->items.begin == 0) {
-            cur2 = 0;
-        } else {
-            cur2 = (int)((char*)self->items.end - (char*)self->items.begin) / 12;
-        }
-        if ((unsigned)count >= (unsigned)(cur2 + a3)) {
-            goto after_grow;
-        }
-
-        int half = (unsigned)count >> 1;
-        if ((unsigned)(0x15555555 - half) < (unsigned)count) {
-            count = 0;
-        } else {
-            count = count + half;
-        }
-
-        int cur3;
-        if (self->items.begin == 0) {
-            cur3 = 0;
-        } else {
-            cur3 = (int)((char*)self->items.end - (char*)self->items.begin) / 12;
-        }
-        if ((unsigned)count < (unsigned)(cur3 + a3)) {
-            void* r = sub_44BA40(self);
-            count = (int)r + a3;
-        }
-
-        void* mem = sub_4A0440(count, 0);
-        void* p = sub_4A17F0(mem, self->items.begin, self->items.end, self, mem, a2, 0, 0);
-        void* q = sub_4A1EA0(self, p, a3, &local);
-        void* r2 = sub_4A17F0(self->items.end, self->items.begin, self->items.end, self, q, a2, 0, 0);
-
-        int cur4;
-        if (self->items.begin == 0) {
-            cur4 = 0;
-        } else {
-            cur4 = (int)((char*)self->items.end - (char*)self->items.begin) / 12;
-        }
-        a3 = a3 + cur4;
-
-        if (self->items.begin != 0) {
-            sub_4A1BA0(self->items.begin, self->items.end, self, r2);
-            sub_62FC62(self->items.begin);
-        }
-
-        self->items.cap   = (VecElem*)((char*)q + count * 12);
-        self->items.end   = (VecElem*)((char*)q + a3 * 12);
-        self->items.begin = (VecElem*)q;
-        goto done;
-    }
-
-after_grow:
-    {
-        void* p = sub_4A17F0(self->items.end, self->items.begin, self->items.end, self, self->items.end, a2, 0, 0);
-        void* q = sub_4A1EA0(self, p, a3, &local);
-        void* r2 = sub_4A17F0(self->items.end, self->items.begin, self->items.end, self, q, a2, 0, 0);
-
-        int cur4;
-        if (self->items.begin == 0) {
-            cur4 = 0;
-        } else {
-            cur4 = (int)((char*)self->items.end - (char*)self->items.begin) / 12;
-        }
-        a3 = a3 + cur4;
-
-        if (self->items.begin != 0) {
-            sub_4A1BA0(self->items.begin, self->items.end, self, r2);
-            sub_62FC62(self->items.begin);
-        }
-
-        self->items.cap   = (VecElem*)((char*)q + count * 12);
-        self->items.end   = (VecElem*)((char*)q + a3 * 12);
-        self->items.begin = (VecElem*)q;
-    }
-
-done:
-    if (local.b != 0) {
-        _InterlockedExchangeAdd((volatile long*)((char*)local.ptr + 4), -1);
-    }
+    template<class T> class shared_ptr {
+    public:
+        T* px;
+        detail::shared_count pn;
+    };
 }
+
+namespace RBX { class Instance; }
+
+struct Elem {
+    int key;
+    boost::shared_ptr<RBX::Instance> value;
+};
+
+template class std::vector<Elem>;

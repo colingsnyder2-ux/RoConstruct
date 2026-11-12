@@ -1,61 +1,51 @@
-// from server: 42% by tester
+// from server: 100% by EspClaude
+// roc-flags: /O2 /GS- /EHsc /MD
 // roc 2007-08 0055ae60  size: 309 bytes
-// Reconstructed from target assembly.
+// Reconstructed from target assembly (objdump of clients/2007-08/Roblox.exe 0x55ae60-0x55af95):
+//   std::stringstream (in|out, IAT 0x77e674 / vbase dtor 0x77e678) at frame+0x48,
+//   std::auto_ptr<Object> from 0x569800 (dtor 0x40f800 + delete 0x62fc62) at frame+8,
+//   this->fill(obj) 0x53e720, Writer(ostream&) 0x467cd0 at frame+0x28 (0x20 bytes), write(obj) 0x566670,
+//   ostream::flush 0x77e5fc, ~Writer 0x4675d0, std::string local frame+0xc,
+//   cdecl 0x553ea0(name, ss, 1, local), by-value std::string param + 4-byte param (ret 0x20).
 
-extern "C" {
-    void __stdcall msvcp80_string_ctor(void* self);
-    void __stdcall msvcp80_string_dtor(void* self);
-    void __stdcall msvcp80_stringstream_ctor(void* self, int mode);
-    void __stdcall msvcp80_stringstream_dtor(void* self);
-    void __stdcall msvcp80_ostream_flush(void* self);
+#include <string>
+#include <sstream>
+#include <memory>
 
-    void* __stdcall sub_569800();
-    void  __stdcall sub_53e720(void* self, void* arg);
-    void  __stdcall sub_467cd0(void* self, void* arg);
-    void  __stdcall sub_566670(void* self, void* arg);
-    void  __stdcall sub_4675d0(void* self);
-    void  __stdcall sub_40f800(void* self);
-    void  __stdcall sub_62fc62(void* p);
-    void  __stdcall sub_553ea0(void* a, void* b, int c, void* d);
-}
-
-struct Creator {
-    void ctor(int, int, int, int, int, int, int, int);
+class Object {
+public:
+    ~Object();                                   // 0x40f800
 };
 
-void Creator::ctor(int, int, int, int, int, int, int, int)
+Object* createObject();                          // 0x569800
+
+class Writer {
+public:
+    explicit Writer(std::ostream& stream);       // 0x467cd0
+    ~Writer();                                   // 0x4675d0
+    void write(Object* object);                  // 0x566670
+private:
+    int data[8];                                 // frame+0x28 .. +0x48
+};
+
+void store(const std::string& name, std::stringstream& data, bool flag, std::string& result);   // 0x553ea0
+
+class Tool {
+public:
+    void fill(Object* object);                   // 0x53e720
+    void save(std::string name, int unused);
+};
+
+void Tool::save(std::string name, int unused)
 {
-    char local_50[0x28];
-    char local_28[0x1c];
-    char local_0c[0x1c];
-
-    msvcp80_stringstream_ctor(local_50, 3);
-
-    void* obj = sub_569800();
-
-    sub_53e720(this, obj);
-
-    sub_467cd0(local_28, local_50);
-
-    sub_566670(local_28, obj);
-
-    msvcp80_ostream_flush(local_50);
-
-    sub_4675d0(local_28);
-
-    if (obj) {
-        sub_40f800(obj);
-        sub_62fc62(obj);
+    std::stringstream stream;
+    {
+        std::auto_ptr<Object> object(createObject());
+        fill(object.get());
+        Writer writer(stream);
+        writer.write(object.get());
+        stream.flush();
     }
-
-    msvcp80_string_ctor(local_0c);
-
-    char temp[0x20];
-    sub_553ea0(temp, local_50, 1, local_0c);
-
-    msvcp80_string_dtor(local_0c);
-
-    msvcp80_string_dtor(local_28);
-
-    msvcp80_stringstream_dtor(local_50);
+    std::string result;
+    store(name, stream, true, result);
 }

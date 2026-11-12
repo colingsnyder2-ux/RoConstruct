@@ -8,22 +8,28 @@
 #include "v8datamodel/FaceInstance.h"
 
 #include "reflection/property.h"
+#include "v8datamodel/PartInstance.h"
 
 namespace RBX {
 
 const char sFaceInstance[] = "FaceInstance";
 
 // FUNCTION: WEBSERVICE 0x101219f0
+// FUNCTION: ROBLOX 0x005dfe80
 FaceInstance::FaceInstance() : face(NORM_Z_NEG)
 {
 }
 
 const Reflection::EnumPropDescriptor<FaceInstance, NormalId> FaceInstance::prop_Face(
-	"Face",
-	"Data",
-	&RBX::FaceInstance::getFace,
-	&RBX::FaceInstance::setFace
+	"Face", "Data", &FaceInstance::getFace, &FaceInstance::setFace
 );
+
+// FUNCTION: WEBSERVICE 0x100ea070 FOLDED
+// FUNCTION: ROBLOX 0x005dfdf0 FOLDED
+bool FaceInstance::askSetParent(const Instance* instance) const
+{
+	return dynamic_cast<const PartInstance*>(instance) != NULL;
+}
 
 // FUNCTION: WEBSERVICE 0x10121d10
 void FaceInstance::setFace(NormalId value)

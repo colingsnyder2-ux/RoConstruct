@@ -1,65 +1,75 @@
-// from server: 46% by colin
+// from server: 82% by EspClaude
 // roc 2007-08 00726ed0  unit: boost::thread_resource_error  size: 222 bytes
+// Shape of boost 1.34 libs/thread/src/tss_hooks.cpp on_thread_exit(): call_once,
+// scoped_lock on threadmon mutex, TLS handler list, unlock, run+pop handlers, delete list.
+#include <list>
 
 extern "C" __declspec(dllimport) void* __stdcall TlsGetValue(unsigned long);
 extern "C" __declspec(dllimport) int __stdcall TlsSetValue(unsigned long, void*);
-extern "C" void __cdecl _invalid_parameter_noinfo();
 
-void __cdecl sub_725520(void*, void*);
-void __cdecl sub_725750(void*);
-void __cdecl sub_725770(void*);
-void __cdecl sub_408bc0(void*);
-void __cdecl sub_77e6d8();
-void __cdecl sub_726e20(void*, void*, void*);
-void __cdecl sub_726e80(void*);
-void __cdecl sub_62fc62(void*);
+namespace boost {
 
-struct S {
-    void f();
+typedef long once_flag;
+void call_once(void (*func)(), once_flag& flag);
+
+class mutex {
+public:
+    void do_lock();
+    void do_unlock();
 };
 
-void S::f() {
-    char buf[16];
-    void* tls;
-    void* p;
+class scoped_lock {
+public:
+    explicit scoped_lock(mutex& mx) : m_mutex(mx) { lock(); }
+    ~scoped_lock() { if (m_locked) m_mutex.do_unlock(); }
+    void lock();
+    void unlock();
+private:
+    mutex& m_mutex;
+    bool m_locked;
+};
 
-    sub_725520((void*)0x8c98fc, (void*)0x726c80);
-    tls = *(void**)0x8c98f8;
-    *(void**)(buf + 8) = tls;
-    sub_725750(tls);
-    if (*(int*)0x8bab84 == -1) {
-        sub_725770(tls);
+inline void scoped_lock::lock()
+{
+    m_mutex.do_lock();
+    m_locked = true;
+}
+
+}
+
+typedef void (__cdecl *thread_exit_handler)(void);
+typedef std::list<thread_exit_handler> thread_exit_handlers;
+
+extern boost::once_flag once_init_threadmon_mutex;
+extern boost::mutex* threadmon_mutex;
+extern unsigned long tss_data_cleanup_handlers_tls;
+extern long attached_thread_count;
+void init_threadmon_mutex(void);
+
+extern "C" void on_thread_exit(void)
+{
+    boost::call_once(init_threadmon_mutex, once_init_threadmon_mutex);
+    boost::scoped_lock lock(*threadmon_mutex);
+
+    if (tss_data_cleanup_handlers_tls == 0xFFFFFFFF)
         return;
-    }
-    p = TlsGetValue(*(unsigned long*)0x8bab84);
-    if (p == 0) {
-        sub_725770(tls);
+
+    thread_exit_handlers* exit_handlers =
+        static_cast<thread_exit_handlers*>(TlsGetValue(tss_data_cleanup_handlers_tls));
+    if (!exit_handlers)
         return;
-    }
-    if (TlsSetValue(*(unsigned long*)0x8bab84, 0) == 0) {
-        sub_725770(tls);
+
+    if (!TlsSetValue(tss_data_cleanup_handlers_tls, 0))
         return;
+
+    --attached_thread_count;
+
+    lock.unlock();
+
+    while (!exit_handlers->empty()) {
+        if (thread_exit_handler exit_handler = *exit_handlers->begin())
+            (*exit_handler)();
+        exit_handlers->pop_front();
     }
-    *(int*)0x8c9900 -= 1;
-    sub_408bc0(buf + 12);
-    while (*(int*)((char*)p + 8) != 0) {
-        void* v = *(void**)((char*)p + 4);
-        void* w = *(void**)v;
-        if (w == v) {
-            sub_77e6d8();
-        }
-        w = *(void**)((char*)w + 8);
-        if (w != 0) {
-            ((void (*)())w)();
-        }
-        void* x = *(void**)((char*)p + 4);
-        void* y = *(void**)x;
-        sub_726e20(p, y, buf + 12);
-    }
-    sub_726e80(p);
-    sub_62fc62(p);
-    if (*(char*)(buf + 12) != 0) {
-        sub_725770(*(void**)(buf + 8));
-        return;
-    }
+    delete exit_handlers;
 }

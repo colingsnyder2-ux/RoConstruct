@@ -1,86 +1,51 @@
-// from server: 44% by Intel
-struct std_string {
-    std_string();
-    std_string(const std_string&);
-    std_string(const char*);
-    ~std_string();
-};
+// from server: 100% by EspClaude
+// roc 2007-08 004f3770 455 bytes
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /GS /EHsc /MD
+// Shape (from target): cdecl (float*, float*, bool*). Constants read from the
+// exe: 0x79f738 = 50.0f, 0x79b500 = 20.0f, 0x797988 = 2.0f, 0x78fef0 = 100.0f;
+// strings 0x797f4c "ATI", 0x79f730 "NVIDIA", 0x79f728 "MESA", 0x79f720 "Intel".
+// msvcp80 basic_string copy/char* ctors and dtor through the IAT; 0x46d4d0
+// returns the string copied into a local; 0x5085b0 is cdecl (s, temp) -> bool;
+// 0x4f3110 returns float; 0x472f80 returns 64-bit (>> 20, unsigned);
+// 0x4f35c0 returns int compared against 0x708.
+#include <string>
 
-extern "C" {
-    int __cdecl func_0046d4d0();
-    void __cdecl func_00472f80();
-    float __cdecl func_004f3110();
-    int __cdecl func_004f35c0();
-    bool __cdecl func_005085b0(const std_string*, std_string*);
-    void __cdecl func_00630a1e();
-}
+const std::string& __cdecl getVendorString();
+bool __cdecl stringContains(const std::string& s, const std::string& sub);
+float __cdecl getFloatValue();
+unsigned __int64 __cdecl getMemoryBytes();
+int __cdecl getIntValue();
 
-extern float g_79f738;
-extern float g_79b500;
-extern float g_78fef0;
-extern float g_797988;
-extern const char g_797f4c[];
-extern const char g_79f730[];
-extern const char g_79f728[];
-extern const char g_79f720[];
-
-extern "C" {
-    void* __stdcall imp_77e69c(const char*);
-    void __stdcall imp_77e698(std_string*, const char*);
-    void __stdcall imp_77e6ac(std_string*);
-}
-
-struct S_func_004f3770 {
-    void __cdecl func(float* a, float* b, char* c);
-};
-
-void S_func_004f3770::func(float* a, float* b, char* c)
+void __cdecl getDefaults(float* a, float* b, bool* c)
 {
-    *a = g_79f738;
-    *b = g_79b500;
-    *c = 0;
+    *a = 50.0f;
+    *b = 20.0f;
+    *c = false;
 
-    std_string s1;
-    imp_77e69c(g_797f4c);
-    imp_77e698(&s1, g_797f4c);
-
-    std_string s2;
-    bool found = false;
-
-    imp_77e698(&s2, g_79f730);
-    if (func_005085b0(&s2, &s1)) {
-        found = true;
+    std::string vendor = getVendorString();
+    bool found;
+    {
+        std::string name("ATI");
+        found = stringContains(vendor, name);
     }
-    imp_77e6ac(&s2);
-
     if (!found) {
-        imp_77e698(&s2, g_79f728);
-        if (func_005085b0(&s2, &s1)) {
-            found = true;
-        }
-        imp_77e6ac(&s2);
+        std::string name("NVIDIA");
+        found = stringContains(vendor, name);
     }
-
     if (!found) {
-        imp_77e698(&s2, g_79f720);
-        if (func_005085b0(&s2, &s1)) {
-            found = true;
-        }
-        imp_77e6ac(&s2);
+        std::string name("MESA");
+        found = stringContains(vendor, name);
+    }
+    if (!found) {
+        std::string name("Intel");
+        found = stringContains(vendor, name);
     }
 
-    float f = func_004f3110();
-    func_00472f80();
-    int v = func_004f35c0();
-
-    if (v >= 0x708) {
-        if (!(g_797988 > f)) {
-            if (v > 0x80) {
-                *b = g_78fef0;
-                *a = g_78fef0;
-            }
-        }
+    float f = getFloatValue();
+    int mb = (int)(getMemoryBytes() >> 20);
+    if (getIntValue() >= 0x708 && f >= 2.0f && mb > 0x80) {
+        *a = *b = 100.0f;
     }
-
-    imp_77e6ac(&s1);
 }

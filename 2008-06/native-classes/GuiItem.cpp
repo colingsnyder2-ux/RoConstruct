@@ -59,3 +59,16 @@ RBX::GuiResponse RBX::GuiItem::processNonFocus(const GuiEvent& event)
     }
     return GuiResponse::notUsed();
 }
+namespace RBX {
+GuiItem* GuiItem::getGuiItem(int index)
+{
+    return dynamic_cast<GuiItem*>(getChild(index));
+}
+}
+
+namespace RBX {
+const GuiItem* GuiItem::getGuiParent() const
+{
+    return dynamic_cast<const GuiItem*>(getParent());
+}
+}

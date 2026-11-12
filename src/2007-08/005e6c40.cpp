@@ -1,92 +1,74 @@
-// from server: 40% by colin
-struct RBXName {
-    void* p;
+// from server: 100% by EspClaude
+// roc-flags: /O2 /GS- /EHsc /MD
+// roc 2007-08 005e6c40  unit: RBX::VFlag::?$FactoryProduct  size: 426 bytes
+// Per-index cached shared_ptr in a std::vector at this+0x130 (8-byte elements: sar 3);
+// call_once(fn 0x5e6370, flag 0x8c6f24) + index getter 0x5e62a0; resize 0x40e470 (by-value elem);
+// static bool from call_once(0x58dd90, 0x8c37c4)+0x58d830 == 0x52cb30; factory 0x554de0 returns
+// shared_ptr by hidden pointer; shared_count::operator= 0x402a60; ~shared_ptr 0x492360.
+#include <vector>
+
+namespace boost {
+typedef long once_flag;
+void call_once(void (*func)(), once_flag& flag);
+namespace detail {
+class shared_count {
+public:
+    void* pi_;
+    shared_count() : pi_(0) {}
+    shared_count(const shared_count& r);
+    ~shared_count();
+    shared_count& operator=(const shared_count& r);
+};
+}
+template<class T> class shared_ptr {
+public:
+    T* px;
+    detail::shared_count pn;
+    shared_ptr() : px(0), pn() {}
+    ~shared_ptr();
+    shared_ptr& operator=(const shared_ptr& r) { px = r.px; pn = r.pn; return *this; }
+    T* get() const { return px; }
+};
+}
+
+class Name;
+class Item;
+
+void initIndexFlag();
+extern boost::once_flag indexFlag;
+int itemIndex();
+
+void initNameFlag();
+extern boost::once_flag nameFlag;
+const Name* nameA();
+const Name* nameB();
+
+class Owner {
+public:
+    char pad0[0x130];
+    std::vector<boost::shared_ptr<Item> > items;
+
+    boost::shared_ptr<Item> create(const Name* name);
+    Item* getItem();
 };
 
-struct CreatorEntry {
-    RBXName* name;
-    void* creator;
-};
+Item* Owner::getItem()
+{
+    boost::call_once(&initIndexFlag, indexFlag);
+    int index = itemIndex();
+    if ((size_t)(index + 1) > items.size())
+        items.resize(index + 1, boost::shared_ptr<Item>());
+    else if (Item* existing = items[index].get())
+        return existing;
 
-struct CreatorVec {
-    CreatorEntry* begin;
-    CreatorEntry* end;
-    CreatorEntry* cap;
-};
-
-struct FactoryProduct {
-    char pad[0x130];
-    CreatorVec creators;
-    int field134;
-
-    void* getOrCreateCreator();
-};
-
-extern "C" void __stdcall sub_725520(void*, void*);
-extern "C" void* __stdcall sub_5e62a0();
-extern "C" void __stdcall sub_40e470(CreatorVec*, int, void*, void*);
-extern "C" void __stdcall sub_77e6d8();
-extern "C" void* __stdcall sub_58d830();
-extern "C" void* __stdcall sub_52cb30();
-extern "C" void __stdcall sub_554de0(void*, void*, void*);
-extern "C" void __stdcall sub_492360(void*);
-extern "C" void __stdcall sub_402a60(void*, void*);
-
-extern unsigned char byte_8c6f28;
-extern unsigned int dword_8c6f2c;
-
-void* FactoryProduct::getOrCreateCreator() {
-    sub_725520((void*)0x8c6f24, (void*)0x5e6370);
-    int idx = (int)sub_5e62a0();
-
-    CreatorVec* vec = &creators;
-    int count;
-    if (vec->begin == 0) {
-        count = 0;
-    } else {
-        count = (int)((char*)vec->cap - (char*)vec->begin) >> 3;
-    }
-
-    if ((unsigned)(idx + 1) > (unsigned)count) {
-        void* tmp1 = 0;
-        void* tmp2 = 0;
-        sub_40e470(vec, idx + 1, tmp1, tmp2);
-    } else {
-        if (vec->begin == 0 || (unsigned)idx >= (unsigned)(((char*)vec->cap - (char*)vec->begin) >> 3)) {
-            sub_77e6d8();
-        }
-        void* result = vec->begin[idx].creator;
-        if (result != 0) {
-            return result;
-        }
-    }
-
-    if ((dword_8c6f2c & 1) == 0) {
-        dword_8c6f2c |= 1;
-        sub_725520((void*)0x8c37c4, (void*)0x58dd90);
-        void* a = sub_58d830();
-        void* b = sub_52cb30();
-        byte_8c6f28 = (a == b) ? 1 : 0;
-    }
-
-    if (byte_8c6f28 == 0) {
-        sub_725520((void*)0x8c37c4, (void*)0x58dd90);
-        void* a = sub_58d830();
-        void* local = 0;
-        sub_554de0(this, &local, a);
-        if (local != 0) {
-            void* edx = vec->begin;
-            if (edx == 0 || (unsigned)idx >= (unsigned)(((char*)vec->cap - (char*)edx) >> 3)) {
-                sub_77e6d8();
-            }
-            CreatorEntry* entry = &vec->begin[idx];
-            entry->name = (RBXName*)local;
-            sub_402a60(&entry->creator, &local);
-            sub_492360(&local);
-            return (void*)local;
-        }
-        sub_492360(&local);
-    }
-
-    return 0;
+    static bool same = (boost::call_once(&initNameFlag, nameFlag), nameA() == nameB());
+    if (same)
+        return 0;
+    boost::call_once(&initNameFlag, nameFlag);
+    boost::shared_ptr<Item> item = create(nameA());
+    if (!item.get())
+        return 0;
+    Item* result = item.get();
+    items[index] = item;
+    return result;
 }

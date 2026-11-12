@@ -15,6 +15,7 @@
 namespace RBX {
 
 // FUNCTION: WEBSERVICE 0x101ec600
+// FUNCTION: ROBLOX 0x00670180
 void Draw::spokes(float radius, float axis, Adorn* adorn)
 {
 	float halfAxis = axis * 0.51f;
@@ -40,6 +41,7 @@ void Draw::spokes(float radius, float axis, Adorn* adorn)
 }
 
 // FUNCTION: WEBSERVICE 0x101ec780
+// FUNCTION: ROBLOX 0x00670300
 const G3D::Color3& Draw::selectColor()
 {
 	static const G3D::Color3 c(0.1f, 0.6f, 1);
@@ -48,6 +50,7 @@ const G3D::Color3& Draw::selectColor()
 }
 
 // STUB: WEBSERVICE 0x101ec7c0
+// STUB: ROBLOX 0x00670340
 void Draw::constraint(const Part& part, Adorn* adorn, int face, const G3D::Color3& controllerColor)
 {
 	SurfaceType surfaceType = part.surfaceType[face];
@@ -75,6 +78,7 @@ void Draw::constraint(const Part& part, Adorn* adorn, int face, const G3D::Color
 }
 
 // STUB: WEBSERVICE 0x101ec940
+// STUB: ROBLOX 0x006704c0
 void Draw::selectionBox(const Part& part, Adorn* adorn, const G3D::Color4& selectColor)
 {
 	adorn->setObjectToWorldMatrix(part.coordinateFrame);
@@ -105,16 +109,16 @@ void Draw::selectionBox(const Part& part, Adorn* adorn, const G3D::Color4& selec
 }
 
 // FUNCTION: WEBSERVICE 0x101ecb70
+// FUNCTION: ROBLOX 0x006706f0
 void Draw::selectionBox(const Part& part, Adorn* adorn, SelectState selectState)
 {
 	selectionBox(
-		part,
-		adorn,
-		G3D::Color4(selectState == SELECT_NORMAL ? selectColor() : G3D::Color3(0.2f, 0.7f, 1.0f), 1.0f)
+		part, adorn, G3D::Color4(selectState == SELECT_NORMAL ? selectColor() : G3D::Color3(0.2f, 0.7f, 1.0f), 1.0f)
 	);
 }
 
 // FUNCTION: WEBSERVICE 0x101ecc00
+// FUNCTION: ROBLOX 0x00670780
 void Draw::adornSurfaces(const Part& part, Adorn* adorn, const G3D::Color3& controllerColor)
 {
 	for (int f = 0; f < 6; f++) {
@@ -133,6 +137,7 @@ void Draw::adornSurfaces(const Part& part, Adorn* adorn, const G3D::Color3& cont
 }
 
 // FUNCTION: WEBSERVICE 0x101ecc40
+// FUNCTION: ROBLOX 0x006707c0
 void Draw::partAdorn(const Part& part, Adorn* adorn, const G3D::Color3& controllerColor)
 {
 	adornSurfaces(part, adorn, controllerColor);

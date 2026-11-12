@@ -17,12 +17,14 @@
 namespace RBX {
 
 // FUNCTION: WEBSERVICE 0x1005ecd0
+// FUNCTION: ROBLOX 0x00671ea0
 Mechanism* MechanismTracker::getMechanism()
 {
 	return mechanism;
 }
 
 // FUNCTION: WEBSERVICE 0x10127280
+// FUNCTION: ROBLOX 0x005f1540
 Mechanism* Mechanism::getMechanismFromPrimitive(const Primitive* primitive)
 {
 	if (primitive != NULL) {
@@ -37,12 +39,14 @@ Mechanism* Mechanism::getMechanismFromPrimitive(const Primitive* primitive)
 }
 
 // FUNCTION: WEBSERVICE 0x101272a0
+// FUNCTION: ROBLOX 0x005f1560
 bool MechanismTracker::tracking()
 {
 	return mechanism ? true : false;
 }
 
 // FUNCTION: WEBSERVICE 0x101272b0
+// FUNCTION: ROBLOX 0x005f1570
 void Mechanism::notifyMovingPrimitives()
 {
 	AssemblySet::iterator it;
@@ -53,6 +57,7 @@ void Mechanism::notifyMovingPrimitives()
 }
 
 // FUNCTION: WEBSERVICE 0x10127320
+// FUNCTION: ROBLOX 0x005f15e0
 void Mechanism::insertAssembly(Assembly* a)
 {
 	assemblies.insert(a);
@@ -61,6 +66,7 @@ void Mechanism::insertAssembly(Assembly* a)
 }
 
 // FUNCTION: WEBSERVICE 0x10127350
+// FUNCTION: ROBLOX 0x005f16d0
 void Mechanism::removeAssembly(Assembly* a)
 {
 	assemblies.erase(a);
@@ -69,6 +75,7 @@ void Mechanism::removeAssembly(Assembly* a)
 }
 
 // FUNCTION: WEBSERVICE 0x10127370
+// FUNCTION: ROBLOX 0x005f16f0
 void Mechanism::absorb(Mechanism* smaller)
 {
 	while (smaller->assemblies.size() != 0) {
@@ -81,6 +88,7 @@ void Mechanism::absorb(Mechanism* smaller)
 }
 
 // FUNCTION: WEBSERVICE 0x101274c0
+// FUNCTION: ROBLOX 0x005f17d0
 void MechanismTracker::stopTracking()
 {
 	if (mechanism != NULL) {
@@ -91,6 +99,7 @@ void MechanismTracker::stopTracking()
 }
 
 // FUNCTION: WEBSERVICE 0x101274f0
+// FUNCTION: ROBLOX 0x005f1800
 void MechanismTracker::setMechanism(Mechanism* m)
 {
 	stopTracking();
@@ -103,6 +112,7 @@ void MechanismTracker::setMechanism(Mechanism* m)
 }
 
 // FUNCTION: WEBSERVICE 0x10127540
+// FUNCTION: ROBLOX 0x005f1850
 void MechanismTracker::transferTrackers(Mechanism* from, Mechanism* to)
 {
 	while (from->trackers.size() != 0) {

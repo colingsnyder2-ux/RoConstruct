@@ -12,6 +12,7 @@
 namespace RBX {
 
 // FUNCTION: WEBSERVICE 0x10099040
+// FUNCTION: ROBLOX 0x005fa1e0
 double getRealTime()
 {
 	LARGE_INTEGER count;

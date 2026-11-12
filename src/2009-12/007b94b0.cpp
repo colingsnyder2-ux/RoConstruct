@@ -23,6 +23,7 @@
 namespace RBX {
 
 // FUNCTION: WEBSERVICE 0x1011b330
+// FUNCTION: ROBLOX 0x00644e20
 float getPrimitiveSize(const Primitive* p)
 {
 	const Vector3& size = p->getGeometry()->getGridSize();
@@ -52,6 +53,7 @@ haveArea:;
 }
 
 // FUNCTION: WEBSERVICE 0x1011b3d0
+// FUNCTION: ROBLOX 0x00644ec0
 int biggerJointGuid(const Joint* j0, const Joint* j1)
 {
 	const Guid* guid0 = &j0->getPrimitive(0)->getGuid();
@@ -63,6 +65,7 @@ int biggerJointGuid(const Joint* j0, const Joint* j1)
 }
 
 // FUNCTION: WEBSERVICE 0x1011b440
+// FUNCTION: ROBLOX 0x00644f30
 Joint* getJoint(Primitive* p, Joint::JointType jointType)
 {
 	Joint* joint = p->getFirstJoint();
@@ -79,6 +82,7 @@ Joint* getJoint(Primitive* p, Joint::JointType jointType)
 }
 
 // FUNCTION: WEBSERVICE 0x1011b5e0
+// FUNCTION: ROBLOX 0x00644fd0
 int biggerJointSize(const Joint* j0, const Joint* j1)
 {
 	float size0 = getPrimitiveSize(j0->getPrimitive(0));
@@ -105,6 +109,7 @@ int biggerJointSize(const Joint* j0, const Joint* j1)
 }
 
 // FUNCTION: WEBSERVICE 0x1011b690
+// FUNCTION: ROBLOX 0x00645080
 bool JointSort::lighterJoint(const Joint* j0, const Joint* j1)
 {
 	if (j0 == j1) {
@@ -142,6 +147,7 @@ bool JointSort::lighterJoint(const Joint* j0, const Joint* j1)
 }
 
 // FUNCTION: WEBSERVICE 0x1011b740
+// FUNCTION: ROBLOX 0x00645140
 void ClumpStage::onPrimitiveAdded(Primitive* p)
 {
 	p->putInPipeline(this);
@@ -164,6 +170,7 @@ void ClumpStage::onPrimitiveAdded(Primitive* p)
 }
 
 // FUNCTION: WEBSERVICE 0x1011b840
+// FUNCTION: ROBLOX 0x00645240
 void ClumpStage::onPrimitiveRemoving(Primitive* p)
 {
 	Joint* joint = p->getFirstJoint();
@@ -182,6 +189,7 @@ void ClumpStage::onPrimitiveRemoving(Primitive* p)
 }
 
 // FUNCTION: WEBSERVICE 0x1011b8a0
+// FUNCTION: ROBLOX 0x006452a0
 void ClumpStage::onPrimitiveAddedAnchor(Primitive* p)
 {
 	Joint* freeJoint = getJoint(p, Joint::FREE_JOINT);
@@ -196,6 +204,7 @@ void ClumpStage::onPrimitiveAddedAnchor(Primitive* p)
 }
 
 // FUNCTION: WEBSERVICE 0x1011b950
+// FUNCTION: ROBLOX 0x00645350
 void ClumpStage::onPrimitiveRemovedAnchor(Primitive* p)
 {
 	Joint* anchorJoint = getJoint(p, Joint::ANCHOR_JOINT);
@@ -238,6 +247,7 @@ void TreeStage::eraseEdge(Edge* e)
 }
 
 // FUNCTION: WEBSERVICE 0x1011ba00
+// FUNCTION: ROBLOX 0x00645400
 Primitive* TreeStage::heavyParent(int testSide, Primitive* p, Joint*& answer, int& heavySide)
 {
 	Joint* joint = p->getFirstJoint();
@@ -265,6 +275,7 @@ Primitive* TreeStage::heavyParent(int testSide, Primitive* p, Joint*& answer, in
 }
 
 // FUNCTION: WEBSERVICE 0x1011ba80
+// FUNCTION: ROBLOX 0x00645480
 void TreeStage::cleanAssembly(Assembly* a)
 {
 	if (!a->inPipeline()) {
@@ -288,6 +299,7 @@ void TreeStage::cleanAssembly(Assembly* a)
 }
 
 // FUNCTION: WEBSERVICE 0x1011bb00
+// FUNCTION: ROBLOX 0x00645500
 void TreeStage::cleanEdge(Edge* e)
 {
 	Assembly* assembly0 = e->getPrimitive(0)->getAssembly();
@@ -307,6 +319,7 @@ void TreeStage::cleanEdge(Edge* e)
 }
 
 // FUNCTION: WEBSERVICE 0x1011bb90
+// FUNCTION: ROBLOX 0x00645590
 int TreeStage::getMetric(MetricType metricType)
 {
 	switch (metricType) {
@@ -318,12 +331,14 @@ int TreeStage::getMetric(MetricType metricType)
 }
 
 // FUNCTION: WEBSERVICE 0x1011bbb0
+// FUNCTION: ROBLOX 0x006455b0
 void ClumpStage::stepUi(int uiStepId)
 {
 	static_cast<AssemblyStage*>(static_cast<TreeStage*>(getDownstream())->getDownstream())->stepUi(uiStepId);
 }
 
 // FUNCTION: WEBSERVICE 0x1011bbc0
+// FUNCTION: ROBLOX 0x006455c0
 void TreeStage::findHeaviestUpstream(Primitive* p0, Primitive* p1, Joint*& answer, int& heavySide)
 {
 	int depth0 = getClumpDepth(p0);
@@ -351,6 +366,7 @@ void TreeStage::findHeaviestUpstream(Primitive* p0, Primitive* p1, Joint*& answe
 }
 
 // FUNCTION: WEBSERVICE 0x1011bcc0
+// FUNCTION: ROBLOX 0x00645660
 void TreeStage::process()
 {
 	if (dirty) {
@@ -376,6 +392,7 @@ void TreeStage::process()
 }
 
 // FUNCTION: WEBSERVICE 0x1011bde0
+// FUNCTION: ROBLOX 0x00645780
 void TreeStage::buildDownstreamTree(Primitive* p, std::set<Primitive*>& tree)
 {
 	Joint* j = p->getFirstJoint();
@@ -395,22 +412,26 @@ void TreeStage::buildDownstreamTree(Primitive* p, std::set<Primitive*>& tree)
 }
 
 // FUNCTION: WEBSERVICE 0x1011be80
+// FUNCTION: ROBLOX 0x00645820
 void ClumpStage::process()
 {
 	static_cast<TreeStage*>(getDownstream())->process();
 }
 
 // FUNCTION: WEBSERVICE 0x100d15c0 FOLDED
+// FUNCTION: ROBLOX 0x0045e450 FOLDED
 void ClumpStage::onPrimitiveCanCollideChanged(Primitive* p)
 {
 }
 
 // FUNCTION: WEBSERVICE 0x100d15c0 FOLDED
+// FUNCTION: ROBLOX 0x0045e450 FOLDED
 void ClumpStage::onMotorAngleChanged(MotorJoint* motorJoint)
 {
 }
 
 // FUNCTION: WEBSERVICE 0x1011be90
+// FUNCTION: ROBLOX 0x00645830
 void ClumpStage::onPrimitiveCanSleepChanged(Primitive* p)
 {
 	static_cast<TreeStage*>(getDownstream())->process();
@@ -433,11 +454,13 @@ void ClumpStage::onPrimitiveCanSleepChanged(Primitive* p)
 }
 
 // FUNCTION: WEBSERVICE 0x1011bf30
+// FUNCTION: ROBLOX 0x006458d0
 TreeStage::~TreeStage()
 {
 }
 
 // FUNCTION: WEBSERVICE 0x1011bff0
+// FUNCTION: ROBLOX 0x006459a0
 void TreeStage::stepWorld(int worldStepId, int uiStepId, bool throttling)
 {
 	process();
@@ -446,6 +469,7 @@ void TreeStage::stepWorld(int worldStepId, int uiStepId, bool throttling)
 }
 
 // FUNCTION: WEBSERVICE 0x1011c010
+// FUNCTION: ROBLOX 0x006459c0
 void TreeStage::dirtyAssemblies(Joint* j)
 {
 	for (int i = 0; i < 2; i++) {
@@ -462,6 +486,7 @@ void TreeStage::dirtyAssemblies(Joint* j)
 }
 
 // FUNCTION: WEBSERVICE 0x1011c060
+// FUNCTION: ROBLOX 0x00645a10
 void TreeStage::undirtyAssembly(Assembly* a)
 {
 	assemblies.erase(a);
@@ -476,6 +501,7 @@ void TreeStage::undirtyAssembly(Assembly* a)
 }
 
 // FUNCTION: WEBSERVICE 0x1011c0b0
+// FUNCTION: ROBLOX 0x00645a60
 void TreeStage::destroyAssembly(Assembly* a)
 {
 	undirtyAssembly(a);
@@ -484,18 +510,21 @@ void TreeStage::destroyAssembly(Assembly* a)
 }
 
 // FUNCTION: WEBSERVICE 0x1011c110
+// FUNCTION: ROBLOX 0x00645ac0
 TreeStage::TreeStage(IStage* upstream, World* world)
 	: IWorldStage(upstream, new AssemblyStage(this, world), world), maxTreeDepth(0), dirty(false)
 {
 }
 
 // FUNCTION: WEBSERVICE 0x10108040 FOLDED
+// FUNCTION: ROBLOX 0x006a0740 FOLDED
 IStage::StageType ClumpStage::getStageType()
 {
 	return CLUMP_STAGE;
 }
 
 // FUNCTION: WEBSERVICE 0x1011c200
+// FUNCTION: ROBLOX 0x00645bb0
 void TreeStage::rebuildClump(Joint* joint, Primitive* parent)
 {
 	maxTreeDepth = std::max(maxTreeDepth, getClumpDepth(parent) + 1);
@@ -503,7 +532,7 @@ void TreeStage::rebuildClump(Joint* joint, Primitive* parent)
 	Primitive* child = joint->otherPrimitive(parent);
 
 	Clump* clump = child->getClump();
-	bool isRoot = clump != NULL && clump->getRootPrimitive() == child;
+	bool isRoot = clump != NULL && clump->getClumpPrimitive() == child;
 
 	if (RigidJoint::isRigidJoint(joint)) {
 		if (isRoot) {
@@ -536,11 +565,13 @@ void TreeStage::rebuildClump(Joint* joint, Primitive* parent)
 }
 
 // FUNCTION: WEBSERVICE 0x1011c3d0
+// FUNCTION: ROBLOX 0x00645d80
 ClumpStage::ClumpStage(IStage* upstream, World* world) : IWorldStage(upstream, new TreeStage(this, world), world)
 {
 }
 
 // FUNCTION: WEBSERVICE 0x1011c440
+// FUNCTION: ROBLOX 0x00645df0
 Joint* TreeStage::findLightestDownstream(Primitive* p, Primitive*& newParent)
 {
 	std::set<Primitive*> downstreamTree;
@@ -578,6 +609,7 @@ Joint* TreeStage::findLightestDownstream(Primitive* p, Primitive*& newParent)
 }
 
 // FUNCTION: WEBSERVICE 0x1011c630
+// FUNCTION: ROBLOX 0x00645fe0
 void TreeStage::traverse(Joint* joint, Primitive* parent)
 {
 	rebuildClump(joint, parent);
@@ -605,6 +637,7 @@ void TreeStage::traverse(Joint* joint, Primitive* parent)
 }
 
 // FUNCTION: WEBSERVICE 0x1011c6e0
+// FUNCTION: ROBLOX 0x00646090
 void TreeStage::swap(Joint* deactivate, Joint* activate, Primitive* newParent)
 {
 	if (deactivate != NULL) {
@@ -626,6 +659,7 @@ void TreeStage::swap(Joint* deactivate, Joint* activate, Primitive* newParent)
 }
 
 // FUNCTION: WEBSERVICE 0x1011c740
+// FUNCTION: ROBLOX 0x006460f0
 void TreeStage::insertJoint(Joint* j)
 {
 	int heavySide = 0;
@@ -640,6 +674,7 @@ void TreeStage::insertJoint(Joint* j)
 }
 
 // FUNCTION: WEBSERVICE 0x1011c7c0
+// FUNCTION: ROBLOX 0x00646170
 void TreeStage::onEdgeAdded(Edge* e)
 {
 	Primitive::insertEdge(e);
@@ -654,6 +689,7 @@ void TreeStage::onEdgeAdded(Edge* e)
 }
 
 // FUNCTION: WEBSERVICE 0x1011c840
+// FUNCTION: ROBLOX 0x006461f0
 void TreeStage::onEdgeRemoving(Edge* e)
 {
 	if (Joint::isJoint(e) && static_cast<Joint*>(e)->getJointType() >= Joint::ANCHOR_JOINT) {

@@ -12,6 +12,7 @@
 namespace RBX {
 
 // FUNCTION: WEBSERVICE 0x100a59a0
+// FUNCTION: ROBLOX 0x005f87e0
 NormalId Extents::closestFace(const Vector3& point)
 {
 	const float xHigh = fabsf(point.x - high.x);
@@ -49,12 +50,14 @@ NormalId Extents::closestFace(const Vector3& point)
 }
 
 // FUNCTION: WEBSERVICE 0x100a5a40
+// FUNCTION: ROBLOX 0x005f8880
 float Extents::areaXZ() const
 {
 	return (high.x - low.x) * (high.z - low.z);
 }
 
 // FUNCTION: WEBSERVICE 0x100a5a50
+// FUNCTION: ROBLOX 0x005f8890
 Vector3 Extents::getCorner(int i) const
 {
 	const Vector3* corners = &low;
@@ -63,6 +66,7 @@ Vector3 Extents::getCorner(int i) const
 }
 
 // FUNCTION: WEBSERVICE 0x100a5ab0
+// FUNCTION: ROBLOX 0x005f88f0
 void Extents::getFaceCorners(NormalId faceId, Vector3& v0, Vector3& v1, Vector3& v2, Vector3& v3) const
 {
 	switch (faceId) {
@@ -108,6 +112,7 @@ zNeg:
 }
 
 // FUNCTION: WEBSERVICE 0x100a5d20
+// FUNCTION: ROBLOX 0x005f8b60
 bool Extents::overlapsOrTouches(const Extents& other) const
 {
 	if (!(low.x > other.high.x) && !(low.y > other.high.y) && !(low.z > other.high.z) && !(high.y < other.low.y) &&
@@ -119,6 +124,7 @@ bool Extents::overlapsOrTouches(const Extents& other) const
 }
 
 // FUNCTION: WEBSERVICE 0x100a5d80
+// FUNCTION: ROBLOX 0x005f8bc0
 bool Extents::separatedByMoreThan(const Extents& other, float distance) const
 {
 	Extents thisExpanded(*this);
@@ -128,6 +134,7 @@ bool Extents::separatedByMoreThan(const Extents& other, float distance) const
 }
 
 // FUNCTION: WEBSERVICE 0x100a5de0
+// FUNCTION: ROBLOX 0x005f8c20
 bool Extents::contains(const Vector3& point) const
 {
 	return point.x >= low.x && point.y >= low.y && point.z >= low.z && point.x <= high.x && point.y <= high.y &&
@@ -135,6 +142,7 @@ bool Extents::contains(const Vector3& point) const
 }
 
 // FUNCTION: WEBSERVICE 0x100a5e40
+// FUNCTION: ROBLOX 0x005f8c80
 bool Extents::fuzzyContains(const Vector3& point, float slop) const
 {
 	return low.x - slop <= point.x && low.y - slop <= point.y && low.z - slop <= point.z && point.x <= high.x + slop &&
@@ -142,6 +150,7 @@ bool Extents::fuzzyContains(const Vector3& point, float slop) const
 }
 
 // FUNCTION: WEBSERVICE 0x100a5eb0
+// FUNCTION: ROBLOX 0x005f8cf0
 const Extents& Extents::zero()
 {
 	static const Extents e(Vector3::zero(), Vector3::zero());
@@ -150,6 +159,7 @@ const Extents& Extents::zero()
 }
 
 // FUNCTION: WEBSERVICE 0x100a5f70
+// FUNCTION: ROBLOX 0x005f8db0
 const Extents& Extents::negativeInfiniteExtents()
 {
 	static const Extents e;
@@ -158,6 +168,7 @@ const Extents& Extents::negativeInfiniteExtents()
 }
 
 // FUNCTION: WEBSERVICE 0x100a5fd0
+// FUNCTION: ROBLOX 0x005f8e10
 Vector3 Extents::faceCenter(NormalId faceId) const
 {
 	Vector3 answer = (high + low) * 0.5f;
@@ -169,6 +180,7 @@ Vector3 Extents::faceCenter(NormalId faceId) const
 }
 
 // FUNCTION: WEBSERVICE 0x100a6040
+// FUNCTION: ROBLOX 0x005f8e80
 bool Extents::containedByFrustum(const G3D::GCamera::Frustum& frustum) const
 {
 	for (int i = 0; i < frustum.faceArray.size(); ++i) {
@@ -187,6 +199,7 @@ bool Extents::containedByFrustum(const G3D::GCamera::Frustum& frustum) const
 }
 
 // FUNCTION: WEBSERVICE 0x100a6100
+// FUNCTION: ROBLOX 0x005f8f40
 Extents Extents::vv(const Vector3& v0, const Vector3& v1)
 {
 	Extents answer;
@@ -197,6 +210,7 @@ Extents Extents::vv(const Vector3& v0, const Vector3& v1)
 }
 
 // FUNCTION: WEBSERVICE 0x100a61d0
+// FUNCTION: ROBLOX 0x005f9010
 Extents Extents::express(const CoordinateFrame& myFrame, const CoordinateFrame& expressInFrame)
 {
 	Vector3 minC(Math::inf(), Math::inf(), Math::inf());
@@ -213,6 +227,7 @@ Extents Extents::express(const CoordinateFrame& myFrame, const CoordinateFrame& 
 }
 
 // FUNCTION: WEBSERVICE 0x100a6440
+// FUNCTION: ROBLOX 0x005f9280
 Extents Extents::toWorldSpace(const CoordinateFrame& localCoord)
 {
 	Vector3 minC(Math::inf(), Math::inf(), Math::inf());
@@ -229,6 +244,7 @@ Extents Extents::toWorldSpace(const CoordinateFrame& localCoord)
 }
 
 // FUNCTION: WEBSERVICE 0x100a6660
+// FUNCTION: ROBLOX 0x005f94a0
 Plane Extents::getPlane(NormalId normalId) const
 {
 	const Vector3 point = faceCenter(normalId);

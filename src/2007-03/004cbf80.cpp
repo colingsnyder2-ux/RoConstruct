@@ -18,28 +18,29 @@ namespace RBX {
 namespace Render {
 
 // STUB: WEBSERVICE 0x10168ea0
+// STUB: ROBLOX 0x004a0480
 void TextureProxy::shadePixel(const G3D::Color3uint8& base, G3D::Color3uint8& lighting)
 {
 	for (int i = 0; i < 3; i++) {
-		int light = lighting[i];
+		const int shade = lighting[i];
 		float color = base[i];
 
-		if (light > 130) {
-			float shade = (light - 128.0) / 128.0;
-			float a = std::min(shade, 1.0f);
+		if (shade > 130) {
+			float a = std::min(float((shade - 128.0) / 128.0), 1.0f);
 			color = (1.0 - a) * color + 255.0 * a;
 		}
-		else if (light < 126) {
-			float a = light / 128.0;
+		else if (shade < 126) {
+			float a = shade / 128.0;
 			a = 0.5 + a * 0.5;
 			color = color * a;
 		}
 
-		lighting[i] = std::min(std::max(0, G3D::iRound(255.0 * pow(color / 255.0, 1.0))), 255);
+		lighting[i] = std::min(255, std::max(0, G3D::iRound(255.0 * pow(color / 255.0, 1.0))));
 	}
 }
 
 // FUNCTION: WEBSERVICE 0x10169100
+// FUNCTION: ROBLOX 0x004a0670
 TextureProxyRef TextureProxy::shade(const G3D::Color3& baseColor, const TextureProxyRef& baseTex)
 {
 	TextureProxy* answer = new TextureProxy(baseTex);
@@ -53,12 +54,14 @@ TextureProxyRef TextureProxy::shade(const G3D::Color3& baseColor, const TextureP
 }
 
 // FUNCTION: WEBSERVICE 0x101691d0
+// FUNCTION: ROBLOX 0x00534670
 G3D::ReferenceCountedPointer<G3D::Texture> TextureProxy::getIfResolved() const
 {
 	return texture;
 }
 
-// STUB: WEBSERVICE 0x10169200
+// FUNCTION: WEBSERVICE 0x10169200
+// FUNCTION: ROBLOX 0x004a0740
 G3D::ReferenceCountedPointer<G3D::Texture> TextureProxy::resolve(G3D::RenderDevice* rd)
 {
 	if (!loaded) {
@@ -66,12 +69,7 @@ G3D::ReferenceCountedPointer<G3D::Texture> TextureProxy::resolve(G3D::RenderDevi
 			char encodedFileName[1024];
 
 			sprintf(
-				encodedFileName,
-				"%g%g%g%s",
-				shadeColor.r,
-				shadeColor.g,
-				shadeColor.b,
-				shadeTexture->filename.c_str()
+				encodedFileName, "%g%g%g%s", shadeColor.r, shadeColor.g, shadeColor.b, shadeTexture->filename.c_str()
 			);
 
 			texture = textureManager->findTexture(encodedFileName);
@@ -127,13 +125,15 @@ G3D::ReferenceCountedPointer<G3D::Texture> TextureProxy::resolve(G3D::RenderDevi
 				}
 			}
 			catch (std::exception& e) {
-				StandardOut::singleton()
-					->print(MESSAGE_ERROR, "Failed to load texture '%s', %s", filename.c_str(), e.what());
+				StandardOut::singleton()->print(
+					MESSAGE_ERROR, "Failed to load texture '%s', %s", filename.c_str(), e.what()
+				);
 				texture = NULL;
 			}
 			catch (...) {
-				StandardOut::singleton()
-					->print(MESSAGE_ERROR, "Failed to load texture '%s', unknown exception", filename.c_str());
+				StandardOut::singleton()->print(
+					MESSAGE_ERROR, "Failed to load texture '%s', unknown exception", filename.c_str()
+				);
 				texture = NULL;
 			}
 		}
@@ -154,12 +154,14 @@ G3D::ReferenceCountedPointer<G3D::Texture> TextureProxy::resolve(G3D::RenderDevi
 }
 
 // FUNCTION: WEBSERVICE 0x10169920
+// FUNCTION: ROBLOX 0x004a0e60
 TextureProxyRef TextureProxy::alphaOnlyVersion()
 {
 	return new TextureProxy(this);
 }
 
 // FUNCTION: WEBSERVICE 0x101699c0
+// FUNCTION: ROBLOX 0x004a0f00
 G3D::Vector2 TextureProxy::getSize()
 {
 	G3D::TextureRef t = getIfResolved();

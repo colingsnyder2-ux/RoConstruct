@@ -1,222 +1,127 @@
 // from server: 100% by auto
+// roc 2007-08 004cbdb0  unit: CSHA1  size: 350 bytes
+// Make this compile to the exact bytes below, then: roc check 2007-08 004cbdb0
+//
+// 004cbdb0  83ec14               sub esp, 0x14
+// 004cbdb3  53                   push ebx
+// 004cbdb4  55                   push ebp
+// 004cbdb5  56                   push esi
+// 004cbdb6  57                   push edi
+// 004cbdb7  894c2414             mov dword ptr [esp + 0x14], ecx
+// 004cbdbb  c744242000000000     mov dword ptr [esp + 0x20], 0
+// 004cbdc3  66c744241871d9       mov word ptr [esp + 0x18], 0xd971
+// 004cbdca  66c744241a6dce       mov word ptr [esp + 0x1a], 0xce6d
+// 004cbdd1  66c744241cbf58       mov word ptr [esp + 0x1c], 0x58bf
+// 004cbdd8  e863e5ffff           call 0x4ca340
+// 004cbddd  88442412             mov byte ptr [esp + 0x12], al
+// 004cbde1  8a44242c             mov al, byte ptr [esp + 0x2c]
+// 004cbde5  0405                 add al, 5
+// 004cbde7  240f                 and al, 0xf
+// 004cbde9  b30f                 mov bl, 0xf
+// 004cbdeb  2ad8                 sub bl, al
+// 004cbded  e84ee5ffff           call 0x4ca340
+// 004cbdf2  8b7c242c             mov edi, dword ptr [esp + 0x2c]
+// 004cbdf6  8b6c2430             mov ebp, dword ptr [esp + 0x30]
+// 004cbdfa  8b542434             mov edx, dword ptr [esp + 0x34]
+// 004cbdfe  c0e004               shl al, 4
+// 004cbe01  0ac3                 or al, bl
+// 004cbe03  0fb6f3               movzx esi, bl
+// 004cbe06  88442413             mov byte ptr [esp + 0x13], al
+// 004cbe0a  8b442428             mov eax, dword ptr [esp + 0x28]
+// 004cbe0e  3bc5                 cmp eax, ebp
+// 004cbe10  8d4c3e06             lea ecx, [esi + edi + 6]
+// 004cbe14  57                   push edi
+// 004cbe15  890a                 mov dword ptr [edx], ecx
+// 004cbe17  50                   push eax
+// 004cbe18  750d                 jne 0x4cbe27
+// 004cbe1a  8d442e06             lea eax, [esi + ebp + 6]
+// 004cbe1e  50                   push eax
+// 004cbe1f  ff150ce97700         call dword ptr [0x77e90c]
+// 004cbe25  eb0a                 jmp 0x4cbe31
+// 004cbe27  8d4c2e06             lea ecx, [esi + ebp + 6]
+// 004cbe2b  51                   push ecx
+// 004cbe2c  e81b4f1600           call 0x630d4c
+// 004cbe31  8a54241e             mov dl, byte ptr [esp + 0x1e]
+// 004cbe35  8a44241f             mov al, byte ptr [esp + 0x1f]
+// 004cbe39  83c40c               add esp, 0xc
+// 004cbe3c  33db                 xor ebx, ebx
+// 004cbe3e  85f6                 test esi, esi
+// 004cbe40  885504               mov byte ptr [ebp + 4], dl
+// 004cbe43  884505               mov byte ptr [ebp + 5], al
+// 004cbe46  7610                 jbe 0x4cbe58
+// 004cbe48  e8f3e4ffff           call 0x4ca340
+// 004cbe4d  88442b06             mov byte ptr [ebx + ebp + 6], al
+// 004cbe51  83c301               add ebx, 1
+// 004cbe54  3bde                 cmp ebx, esi
+// 004cbe56  72f0                 jb 0x4cbe48
+// 004cbe58  8d4c3e02             lea ecx, [esi + edi + 2]
+// 004cbe5c  51                   push ecx
+// 004cbe5d  8d4504               lea eax, [ebp + 4]
+// 004cbe60  50                   push eax
+// 004cbe61  8d4c2420             lea ecx, [esp + 0x20]
+// 004cbe65  e8f6140000           call 0x4cd360
+// 004cbe6a  8b4c2414             mov ecx, dword ptr [esp + 0x14]
+// 004cbe6e  8b542420             mov edx, dword ptr [esp + 0x20]
+// 004cbe72  55                   push ebp
+// 004cbe73  6a10                 push 0x10
+// 004cbe75  55                   push ebp
+// 004cbe76  8d8140020000         lea eax, [ecx + 0x240]
+// 004cbe7c  51                   push ecx
+// 004cbe7d  50                   push eax
+// 004cbe7e  895500               mov dword ptr [ebp], edx
+// 004cbe81  e80a0e0000           call 0x4ccc90
+// 004cbe86  8b442448             mov eax, dword ptr [esp + 0x48]
+// 004cbe8a  8b38                 mov edi, dword ptr [eax]
+// 004cbe8c  83ef10               sub edi, 0x10
+// 004cbe8f  83c414               add esp, 0x14
+// 004cbe92  33f6                 xor esi, esi
+// 004cbe94  83ff10               cmp edi, 0x10
+// 004cbe97  726b                 jb 0x4cbf04
+// 004cbe99  8d1c2f               lea ebx, [edi + ebp]
+// 004cbe9c  895c242c             mov dword ptr [esp + 0x2c], ebx
+// 004cbea0  8bd6                 mov edx, esi
+// 004cbea2  33c9                 xor ecx, ecx
+// 004cbea4  8bc3                 mov eax, ebx
+// 004cbea6  2bd7                 sub edx, edi
+// 004cbea8  8d742e02             lea esi, [esi + ebp + 2]
+// 004cbeac  8d642400             lea esp, [esp]
+// 004cbeb0  0fb61c02             movzx ebx, byte ptr [edx + eax]
+// 004cbeb4  3018                 xor byte ptr [eax], bl
+// 004cbeb6  0fb65c0eff           movzx ebx, byte ptr [esi + ecx - 1]
+// 004cbebb  305801               xor byte ptr [eax + 1], bl
+// 004cbebe  0fb61c0e             movzx ebx, byte ptr [esi + ecx]
+// 004cbec2  305802               xor byte ptr [eax + 2], bl
+// 004cbec5  0fb65c0e01           movzx ebx, byte ptr [esi + ecx + 1]
+// 004cbeca  305803               xor byte ptr [eax + 3], bl
+// 004cbecd  83c104               add ecx, 4
+// 004cbed0  83c004               add eax, 4
+// 004cbed3  83f910               cmp ecx, 0x10
+// 004cbed6  72d8                 jb 0x4cbeb0
+// 004cbed8  8b5c242c             mov ebx, dword ptr [esp + 0x2c]
+// 004cbedc  8b442414             mov eax, dword ptr [esp + 0x14]
+// 004cbee0  53                   push ebx
+// 004cbee1  6a10                 push 0x10
+// 004cbee3  53                   push ebx
+// 004cbee4  50                   push eax
+// 004cbee5  0540020000           add eax, 0x240
+// 004cbeea  50                   push eax
+// 004cbeeb  e8a00d0000           call 0x4ccc90
+// 004cbef0  8bf7                 mov esi, edi
+// 004cbef2  83ef10               sub edi, 0x10
+// 004cbef5  83eb10               sub ebx, 0x10
+// 004cbef8  83c414               add esp, 0x14
+// 004cbefb  83ff10               cmp edi, 0x10
+// 004cbefe  895c242c             mov dword ptr [esp + 0x2c], ebx
+// 004cbf02  739c                 jae 0x4cbea0
+// 004cbf04  5f                   pop edi
+// 004cbf05  5e                   pop esi
+// 004cbf06  5d                   pop ebp
+// 004cbf07  5b                   pop ebx
+// 004cbf08  83c414               add esp, 0x14
+// 004cbf0b  c21000               ret 0x10
+// library openrbx-raknet/DataBlockEncryptor.cpp (function ?Encrypt@DataBlockEncryptor@@QAEXPAEH0PAH@Z)
+
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /O2 /EHsc /MD
 // roc-lib: openrbx-raknet DataBlockEncryptor.cpp
-
-// Candidate translation unit (score above; library headers required).
-/// \file
-///
-/// This file is part of RakNet Copyright 2003 Kevin Jenkins.
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-/// Creative Commons Licensees are subject to the
-/// license found at
-/// http://creativecommons.org/licenses/by-nc/2.5/
-/// Single application licensees are subject to the license found at
-/// http://www.rakkarsoft.com/SingleApplicationLicense.html
-/// Custom license users are subject to the terms therein.
-/// GPL license users are subject to the GNU General Public
-/// License as published by the Free
-/// Software Foundation; either version 2 of the License, or (at your
-/// option) any later version.
-
-#include "DataBlockEncryptor.h"
-#include "CheckSum.h"
-#include "GetTime.h"
-#include "Rand.h"
-#include <assert.h>
-#include <string.h>
-#include "Rijndael.h"
-#include "Types.h"
-
-// FUNCTION: WEBSERVICE 0x101c38c0
-DataBlockEncryptor::DataBlockEncryptor()
-{
-	keySet = false;
-}
-
-// FUNCTION: WEBSERVICE 0x1015b610 FOLDED
-DataBlockEncryptor::~DataBlockEncryptor()
-{
-}
-
-// FUNCTION: WEBSERVICE 0x101c38d0
-bool DataBlockEncryptor::IsKeySet( void ) const
-{
-	return keySet;
-}
-
-// FUNCTION: WEBSERVICE 0x101c38e0
-void DataBlockEncryptor::SetKey( const unsigned char key[ 16 ] )
-{
-	keySet = true;
-	//secretKeyAES128.set_key( key );
-	makeKey(&keyEncrypt, DIR_ENCRYPT, 16, (char*)key);
-	makeKey(&keyDecrypt, DIR_DECRYPT, 16, (char*)key);
-	cipherInit(&cipherInst, MODE_ECB, 0); // ECB is not secure except that I chain manually farther down.
-}
-
-// FUNCTION: WEBSERVICE 0x101c3930
-void DataBlockEncryptor::UnsetKey( void )
-{
-	keySet = false;
-}
-
-// FUNCTION: WEBSERVICE 0x101c3940
-void DataBlockEncryptor::Encrypt( unsigned char *input, int inputLength, unsigned char *output, int *outputLength )
-{
-	unsigned index, byteIndex, lastBlock;
-	unsigned int checkSum;
-	unsigned char paddingBytes;
-	unsigned char encodedPad;
-	unsigned char randomChar;
-	CheckSum checkSumCalculator;
-
-#ifdef _DEBUG
-
-	assert( keySet );
-#endif
-
-	assert( input && inputLength );
-
-
-	// randomChar will randomize the data so the same data sent twice will not look the same
-	randomChar = (unsigned char) randomMT();
-
-	// 16-(((x-1) % 16)+1)
-
-	// # of padding bytes is 16 -(((input_length + extra_data -1) % 16)+1)
-	paddingBytes = (unsigned char) ( 16 - ( ( ( inputLength + sizeof( randomChar ) + sizeof( checkSum ) + sizeof( encodedPad ) - 1 ) % 16 ) + 1 ) );
-
-	// Randomize the pad size variable
-	encodedPad = (unsigned char) randomMT();
-	encodedPad <<= 4;
-	encodedPad |= paddingBytes;
-
-	*outputLength = inputLength + sizeof( randomChar ) + sizeof( checkSum ) + sizeof( encodedPad ) + paddingBytes;
-
-	// Write the data first, in case we are overwriting ourselves
-
-	if ( input == output )
-		memmove( output + sizeof( checkSum ) + sizeof( randomChar ) + sizeof( encodedPad ) + paddingBytes, input, inputLength );
-	else
-		memcpy( output + sizeof( checkSum ) + sizeof( randomChar ) + sizeof( encodedPad ) + paddingBytes, input, inputLength );
-
-	// Write the random char
-	memcpy( output + sizeof( checkSum ), ( char* ) & randomChar, sizeof( randomChar ) );
-
-	// Write the pad size variable
-	memcpy( output + sizeof( checkSum ) + sizeof( randomChar ), ( char* ) & encodedPad, sizeof( encodedPad ) );
-
-	// Write the padding
-	for ( index = 0; index < paddingBytes; index++ )
-		*( output + sizeof( checkSum ) + sizeof( randomChar ) + sizeof( encodedPad ) + index ) = (unsigned char) randomMT();
-
-	// Calculate the checksum on the data
-	checkSumCalculator.Add( output + sizeof( checkSum ), inputLength + sizeof( randomChar ) + sizeof( encodedPad ) + paddingBytes );
-
-	checkSum = checkSumCalculator.Get();
-
-	// Write checksum
-#ifdef HOST_ENDIAN_IS_BIG
-	output[0] = checkSum&0xFF;
-	output[1] = (checkSum>>8)&0xFF;
-	output[2] = (checkSum>>16)&0xFF;
-	output[3] = (checkSum>>24)&0xFF;
-#else
-	memcpy( output, ( char* ) & checkSum, sizeof( checkSum ) );
-#endif
-
-	// AES on the first block
-//	secretKeyAES128.encrypt16( output );
-	blockEncrypt(&cipherInst, &keyEncrypt, output, 16, output);
-
-	lastBlock = 0;
-
-	// Now do AES on every other block from back to front
-	for ( index = *outputLength - 16; index >= 16; index -= 16 )
-	{
-		for ( byteIndex = 0; byteIndex < 16; byteIndex++ )
-			output[ index + byteIndex ] ^= output[ lastBlock + byteIndex ];
-
-		//secretKeyAES128.encrypt16( output + index );
-		blockEncrypt(&cipherInst, &keyEncrypt, output+index, 16, output+index);
-
-		lastBlock = index;
-	}
-}
-
-// FUNCTION: WEBSERVICE 0x101c3aa0
-bool DataBlockEncryptor::Decrypt( unsigned char *input, int inputLength, unsigned char *output, int *outputLength )
-{
-	unsigned index, byteIndex, lastBlock;
-	unsigned int checkSum;
-	unsigned char paddingBytes;
-	unsigned char encodedPad;
-	unsigned char randomChar;
-	CheckSum checkSumCalculator;
-#ifdef _DEBUG
-
-	assert( keySet );
-#endif
-
-	if ( input == 0 || inputLength < 16 || ( inputLength % 16 ) != 0 )
-	{
-		return false;
-	}
-
-	// Unchain in reverse order
-	for ( index = 16; ( int ) index <= inputLength - 16;index += 16 )
-	{
-	//	secretKeyAES128.decrypt16( input + index );
-		blockDecrypt(&cipherInst, &keyDecrypt, input + index, 16, input + index);
-
-		for ( byteIndex = 0; byteIndex < 16; byteIndex++ )
-		{
-			if ( index + 16 == ( unsigned ) inputLength )
-				input[ index + byteIndex ] ^= input[ byteIndex ];
-			else
-				input[ index + byteIndex ] ^= input[ index + 16 + byteIndex ];
-		}
-
-		lastBlock = index;
-	};
-
-	// Decrypt the first block
-	//secretKeyAES128.decrypt16( input );
-	blockDecrypt(&cipherInst, &keyDecrypt, input, 16, input);
-
-	// Read checksum
-#ifdef HOST_ENDIAN_IS_BIG
-	checkSum = (unsigned int)input[0] | (unsigned int)(input[1]<<8) |
-		(unsigned int)(input[2]<<16)|(unsigned int)(input[3]<<24);
-#else
-	memcpy( ( char* ) & checkSum, input, sizeof( checkSum ) );
-#endif
-
-	// Read the pad size variable
-	memcpy( ( char* ) & encodedPad, input + sizeof( randomChar ) + sizeof( checkSum ), sizeof( encodedPad ) );
-
-	// Ignore the high 4 bytes
-	paddingBytes = encodedPad & 0x0F;
-
-
-	// Get the data length
-	*outputLength = inputLength - sizeof( randomChar ) - sizeof( checkSum ) - sizeof( encodedPad ) - paddingBytes;
-
-	// Calculate the checksum on the data.
-	checkSumCalculator.Add( input + sizeof( checkSum ), *outputLength + sizeof( randomChar ) + sizeof( encodedPad ) + paddingBytes );
-
-	if ( checkSum != checkSumCalculator.Get() )
-		return false;
-
-	// Read the data
-	if ( input == output )
-		memmove( output, input + sizeof( randomChar ) + sizeof( checkSum ) + sizeof( encodedPad ) + paddingBytes, *outputLength );
-	else
-		memcpy( output, input + sizeof( randomChar ) + sizeof( checkSum ) + sizeof( encodedPad ) + paddingBytes, *outputLength );
-
-
-	return true;
-}

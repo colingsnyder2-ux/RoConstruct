@@ -15,12 +15,14 @@
 namespace RBX {
 
 // FUNCTION: WEBSERVICE 0x10059d20 FOLDED
+// FUNCTION: ROBLOX 0x00407390 FOLDED
 Controller::ControllerType NullController::getControllerType() const
 {
 	return NO_CONTROLLER;
 }
 
 // FUNCTION: WEBSERVICE 0x10099070 FOLDED
+// FUNCTION: ROBLOX 0x005ad010 FOLDED
 float Controller::getValue(InputType inputType) const
 {
 	return 0;
@@ -38,6 +40,7 @@ bool NullController::isUserController() const
 }
 
 // FUNCTION: WEBSERVICE 0x101004d0
+// FUNCTION: ROBLOX 0x0061fbc0
 Color3 Controller::controllerTypeToColor(ControllerType controllerType)
 {
 	switch (controllerType) {
@@ -59,6 +62,7 @@ Color3 Controller::controllerTypeToColor(ControllerType controllerType)
 namespace Reflection {
 
 // FUNCTION: WEBSERVICE 0x10100680
+// FUNCTION: ROBLOX 0x0061ff30
 template <>
 EnumDesc<Controller::InputType>::EnumDesc() : EnumDescriptor("InputType", typeid(Controller::InputType))
 {
@@ -78,6 +82,7 @@ EnumDesc<Controller::InputType>::EnumDesc() : EnumDescriptor("InputType", typeid
 }
 
 // FUNCTION: WEBSERVICE 0x10100a30
+// FUNCTION: ROBLOX 0x00620110
 template <>
 EnumDesc<Controller::ControllerType>::EnumDesc() : EnumDescriptor("ControllerType", typeid(Controller::ControllerType))
 {

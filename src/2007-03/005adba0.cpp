@@ -31,49 +31,64 @@ namespace RBX {
 
 bool World::disableEnvironmentalThrottle;
 
-// FUNCTION: WEBSERVICE 0x100cef80
-Kernel* World::getKernel() const
+// FUNCTION: WEBSERVICE 0x100cef80 FOLDED
+// FUNCTION: ROBLOX 0x005ee010 FOLDED
+Kernel& World::getKernel()
 {
-	return jointStage->getKernel();
+	return *jointStage->getKernel();
+}
+
+// FUNCTION: WEBSERVICE 0x100cef80 FOLDED
+// FUNCTION: ROBLOX 0x005ee010 FOLDED
+const Kernel& World::getKernel() const
+{
+	return *jointStage->getKernel();
 }
 
 // FUNCTION: WEBSERVICE 0x100cef90
+// FUNCTION: ROBLOX 0x005ee020
 int World::getNumBodies() const
 {
-	return getKernel()->numBodies();
+	return getKernel().numBodies();
 }
 
 // FUNCTION: WEBSERVICE 0x100cefb0
+// FUNCTION: ROBLOX 0x005ee040
 int World::getNumPoints() const
 {
-	return getKernel()->numPoints();
+	return getKernel().numPoints();
 }
 
 // FUNCTION: WEBSERVICE 0x100cefd0
+// FUNCTION: ROBLOX 0x005ee060
 int World::getNumConstraints() const
 {
-	return getKernel()->numConnectors();
+	return getKernel().numConnectors();
 }
 
 // FUNCTION: WEBSERVICE 0x100ceff0
+// FUNCTION: ROBLOX 0x005ee080
 int World::getMetric(IWorldStage::MetricType metricType) const
 {
 	return jointStage->getMetric(metricType);
 }
 
 // FUNCTION: WEBSERVICE 0x100cf000
+// FUNCTION: ROBLOX 0x005ee090
 int World::getNumHashNodes() const
 {
-	return contactManager->getSpatialHash()->getNodesOut();
+	return contactManager->getSpatialHash().getNodesOut();
 }
 
 // FUNCTION: WEBSERVICE 0x100cf010
+// FUNCTION: ROBLOX 0x005ee0a0
 int World::getMaxBucketSize() const
 {
-	return contactManager->getSpatialHash()->getMaxBucket();
+	return contactManager->getSpatialHash().getMaxBucket();
 }
 
 // FUNCTION: WEBSERVICE 0x100cf020
+// FUNCTION: ROBLOX 0x005ee0b0
 void World::onPrimitiveContactParametersChanged(Primitive* p)
 {
 	Contact* c = p->getFirstContact();
@@ -85,12 +100,14 @@ void World::onPrimitiveContactParametersChanged(Primitive* p)
 }
 
 // FUNCTION: WEBSERVICE 0x100cf050
+// FUNCTION: ROBLOX 0x005ee0e0
 void World::onPrimitiveExtentsChanged(Primitive* p)
 {
 	contactManager->onPrimitiveExtentsChanged(p);
 }
 
 // FUNCTION: WEBSERVICE 0x100cf060
+// FUNCTION: ROBLOX 0x005ee0f0
 void World::onAssemblyExtentsChanged(Assembly* a)
 {
 	PrimIterator pEnd = a->assemblyPrimEnd();
@@ -101,24 +118,28 @@ void World::onAssemblyExtentsChanged(Assembly* a)
 }
 
 // FUNCTION: WEBSERVICE 0x100cf0c0
+// FUNCTION: ROBLOX 0x005ee150
 void World::onPrimitiveGeometryTypeChanged(Primitive* p)
 {
 	contactManager->onPrimitiveGeometryTypeChanged(p);
 }
 
 // FUNCTION: WEBSERVICE 0x100cf0d0
+// FUNCTION: ROBLOX 0x005ee160
 void World::onJointPrimitiveNulling(Joint* j, Primitive* p)
 {
 	jointStage->onJointPrimitiveNulling(j, p);
 }
 
 // FUNCTION: WEBSERVICE 0x100cf0e0
+// FUNCTION: ROBLOX 0x005ee170
 void World::onJointPrimitiveSet(Joint* j, Primitive* p)
 {
 	jointStage->onJointPrimitiveSet(j, p);
 }
 
 // FUNCTION: WEBSERVICE 0x100cf0f0
+// FUNCTION: ROBLOX 0x005ee180
 void World::insertContact(Contact* c)
 {
 	jointStage->onEdgeAdded(c);
@@ -126,6 +147,7 @@ void World::insertContact(Contact* c)
 }
 
 // FUNCTION: WEBSERVICE 0x100cf110
+// FUNCTION: ROBLOX 0x005ee1a0
 void World::destroyContact(Contact* c)
 {
 	jointStage->onEdgeRemoving(c);
@@ -144,18 +166,21 @@ SleepStage* World::getSleepStage()
 }
 
 // FUNCTION: WEBSERVICE 0x100cf140
+// FUNCTION: ROBLOX 0x005ee1f0
 SimJobStage& World::getSimJobStage()
 {
 	return *static_cast<SimJobStage*>(jointStage->findStage(IStage::SIMJOB_STAGE));
 }
 
 // FUNCTION: WEBSERVICE 0x100cf170
+// FUNCTION: ROBLOX 0x005ee220
 const SleepStage* World::getSleepStage() const
 {
 	return static_cast<const SleepStage*>(jointStage->findStage(IStage::SLEEP_STAGE));
 }
 
 // FUNCTION: WEBSERVICE 0x100cf1a0
+// FUNCTION: ROBLOX 0x005ee250
 void World::ticklePrimitive(Primitive* p, bool recursive)
 {
 	Assembly* assembly = p->getAssembly();
@@ -166,48 +191,56 @@ void World::ticklePrimitive(Primitive* p, bool recursive)
 }
 
 // FUNCTION: WEBSERVICE 0x100cf1f0
+// FUNCTION: ROBLOX 0x005ee2a0
 void World::onPrimitiveCanSleepChanged(Primitive* p)
 {
 	getClumpStage()->onPrimitiveCanSleepChanged(p);
 }
 
 // FUNCTION: WEBSERVICE 0x100cf230
+// FUNCTION: ROBLOX 0x005ee2e0
 void World::onPrimitiveAddedAnchor(Primitive* p)
 {
 	getClumpStage()->onPrimitiveAddedAnchor(p);
 }
 
 // FUNCTION: WEBSERVICE 0x100cf270
+// FUNCTION: ROBLOX 0x005ee320
 void World::onPrimitiveRemovedAnchor(Primitive* p)
 {
 	getClumpStage()->onPrimitiveRemovedAnchor(p);
 }
 
 // FUNCTION: WEBSERVICE 0x100cf2b0 FOLDED
+// FUNCTION: ROBLOX 0x005ee360 FOLDED
 void World::onPrimitiveCanCollideChanged(Primitive* p)
 {
 	getClumpStage()->onPrimitiveCanCollideChanged(p);
 }
 
 // FUNCTION: WEBSERVICE 0x100cf2b0 FOLDED
-void World::onMotorAngleChanged(MotorJoint* motorJoint)
+// FUNCTION: ROBLOX 0x005ee360 FOLDED
+void World::onMotorAngleChanged(MotorJoint* m)
 {
-	getClumpStage()->onMotorAngleChanged(motorJoint);
+	getClumpStage()->onMotorAngleChanged(m);
 }
 
 // FUNCTION: WEBSERVICE 0x100cf2f0
+// FUNCTION: ROBLOX 0x005ee3a0
 void World::update()
 {
 	getClumpStage()->process();
 }
 
 // FUNCTION: WEBSERVICE 0x100cf320
+// FUNCTION: ROBLOX 0x005ee460
 void World::addedBodyForce()
 {
 	getSleepStage()->addedBodyForce();
 }
 
 // FUNCTION: WEBSERVICE 0x100cf510
+// FUNCTION: ROBLOX 0x005ee650
 void World::onPrimitiveTouched(Primitive* touchP, Primitive* touchOtherP)
 {
 	touch.append(touchP);
@@ -215,6 +248,7 @@ void World::onPrimitiveTouched(Primitive* touchP, Primitive* touchOtherP)
 }
 
 // FUNCTION: WEBSERVICE 0x100cf540
+// FUNCTION: ROBLOX 0x005ee680
 void World::computeFallen(G3D::Array<Primitive*>& fallen) const
 {
 	const SleepStage::AssemblySet& awake = getSleepStage()->getAwakeAssemblies();
@@ -240,6 +274,7 @@ void World::computeFallen(G3D::Array<Primitive*>& fallen) const
 }
 
 // FUNCTION: WEBSERVICE 0x100cf6b0
+// FUNCTION: ROBLOX 0x005ee7f0
 void World::insertPrimitive(Primitive* p)
 {
 	primitives.fastAppend(p);
@@ -269,6 +304,7 @@ inline void World::removeFromBreakable(Joint* j)
 }
 
 // FUNCTION: WEBSERVICE 0x100cfaf0
+// FUNCTION: ROBLOX 0x005ee9d0
 void World::doBreakJoints()
 {
 	std::set<Joint*>::iterator it = breakableJoints.begin();
@@ -285,6 +321,7 @@ void World::doBreakJoints()
 }
 
 // FUNCTION: WEBSERVICE 0x100cfcd0
+// FUNCTION: ROBLOX 0x005eea70
 float World::step(float desiredInterval)
 {
 	Profiling::Mark mark(*profilingWorldStep, true);
@@ -345,6 +382,7 @@ float World::step(float desiredInterval)
 }
 
 // FUNCTION: WEBSERVICE 0x100d0020
+// FUNCTION: ROBLOX 0x005eedc0
 void World::insertJoint(Joint* j)
 {
 	Primitive* p0 = j->getPrimitive(0);
@@ -368,6 +406,7 @@ void World::insertJoint(Joint* j)
 }
 
 // FUNCTION: WEBSERVICE 0x100d0090
+// FUNCTION: ROBLOX 0x005eee30
 void World::destroyJoints(Primitive* p, std::set<Primitive*>* ignoreGroup)
 {
 	Joint* j = p->getFirstJoint();
@@ -387,12 +426,14 @@ void World::destroyJoints(Primitive* p, std::set<Primitive*>* ignoreGroup)
 }
 
 // FUNCTION: WEBSERVICE 0x100d0140
+// FUNCTION: ROBLOX 0x005eeee0
 void World::destroyJoints(Primitive* p)
 {
 	destroyJoints(p, NULL);
 }
 
 // FUNCTION: WEBSERVICE 0x100d0150
+// FUNCTION: ROBLOX 0x005eeef0
 void World::createJoints(Primitive* p, std::set<Primitive*>* ignoreGroup)
 {
 	numLinkCalls++;
@@ -422,12 +463,14 @@ void World::createJoints(Primitive* p, std::set<Primitive*>* ignoreGroup)
 }
 
 // FUNCTION: WEBSERVICE 0x100d0250
+// FUNCTION: ROBLOX 0x005eeff0
 void World::createJoints(Primitive* p)
 {
 	createJoints(p, NULL);
 }
 
 // FUNCTION: WEBSERVICE 0x100d0260
+// FUNCTION: ROBLOX 0x005ef0a0
 World::~World()
 {
 	delete jointStage;
@@ -436,6 +479,7 @@ World::~World()
 }
 
 // FUNCTION: WEBSERVICE 0x100d0420
+// FUNCTION: ROBLOX 0x005ef260
 void World::removeJoint(Joint* j)
 {
 	removeFromBreakable(j);
@@ -446,6 +490,7 @@ void World::removeJoint(Joint* j)
 }
 
 // FUNCTION: WEBSERVICE 0x100d0460
+// FUNCTION: ROBLOX 0x005ef2a0
 void World::joinAll()
 {
 	for (int i = 0; i < getNumPrimitives(); i++) {
@@ -454,6 +499,7 @@ void World::joinAll()
 }
 
 // FUNCTION: WEBSERVICE 0x100d0490
+// FUNCTION: ROBLOX 0x005ef2d0
 void World::removePrimitive(Primitive* p)
 {
 	destroyJoints(p);
@@ -468,6 +514,7 @@ void World::removePrimitive(Primitive* p)
 }
 
 // FUNCTION: WEBSERVICE 0x100d04f0
+// FUNCTION: ROBLOX 0x005ef330
 World::World()
 	: contactManager(new ContactManager(this)), jointStage(new JointStage(NULL, this)), canThrottle(true),
 	  inStepCode(false), inJointNotification(false), worldStepId(0), numJoints(0), numContacts(0), numLinkCalls(0),
@@ -482,10 +529,11 @@ World::World()
 	getSleepStage()->profilingWake->parent = profilingWorldStep.get();
 	getSleepStage()->profilingSleep->parent = profilingWorldStep.get();
 
-	getKernel()->profilingKernel->parent = profilingWorldStep.get();
+	getKernel().profilingKernel->parent = profilingWorldStep.get();
 }
 
 // FUNCTION: WEBSERVICE 0x100d07f0
+// FUNCTION: ROBLOX 0x005ef5f0
 void World::destroyJointsToWorld(const G3D::Array<Primitive*>& primitives)
 {
 	std::set<Primitive*> ignore;
@@ -500,6 +548,7 @@ void World::destroyJointsToWorld(const G3D::Array<Primitive*>& primitives)
 }
 
 // FUNCTION: WEBSERVICE 0x100d08d0
+// FUNCTION: ROBLOX 0x005ef6d0
 void World::createJointsToWorld(const G3D::Array<Primitive*>& primitives)
 {
 	std::set<Primitive*> ignore;

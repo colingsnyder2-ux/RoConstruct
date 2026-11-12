@@ -30,6 +30,7 @@ const int IndexBox::INDEXBOX_FACE_TO_VERTEX[6][4] = {
 // clang-format on
 
 // FUNCTION: WEBSERVICE 0x1008ea60
+// FUNCTION: ROBLOX 0x007aa250
 void IndexBox::getFaceCorners(int f, Vector3& v0, Vector3& v1, Vector3& v2, Vector3& v3) const
 {
 	v0 = corner[INDEXBOX_FACE_TO_VERTEX[f][0]];
@@ -39,6 +40,7 @@ void IndexBox::getFaceCorners(int f, Vector3& v0, Vector3& v1, Vector3& v2, Vect
 }
 
 // FUNCTION: WEBSERVICE 0x1008ec50
+// FUNCTION: ROBLOX 0x007aa2f0
 IndexBox::IndexBox(const Vector3& min, const Vector3& max)
 {
 	corner[0].x = corner[1].x = corner[2].x = corner[3].x = max.x;

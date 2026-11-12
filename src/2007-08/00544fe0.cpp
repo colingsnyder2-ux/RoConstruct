@@ -1,31 +1,22 @@
-// from server: 42% by colin
-struct S {
-    void f();
+// from server: 100% by EspClaude
+// roc-flags: /O2 /GS- /EHsc /MD
+// roc 2007-08 00544fe0  unit: RBX::VDebugSettings::?$GlobalSettingsItem  size: 204 bytes
+// Returns by hidden pointer an object built by the out-of-line ctor at 0x44cf10 (thiscall, one
+// const std::string& arg).  MSVCP80 imports: basic_string::find(const char*,uint,uint),
+// basic_string(const char*), operator+(const string&, const string&), ~basic_string.
+// "file://" literal at 0x7a6ef8.
+#include <string>
+
+class ContentUrl {
+public:
+    ContentUrl(const std::string& s);
+    ~ContentUrl();
 };
 
-extern "C" {
-    int __stdcall sub_77E57C(const char*, int, int);
-    void __stdcall sub_77E698(void*, const char*);
-    void __stdcall sub_77E568(void*, void*, void*);
-    void __stdcall sub_77E6AC(void*);
-}
-
-void __stdcall sub_44CF10(void*);
-
-void S::f() {
-    char buf1[16];
-    char buf2[16];
-    char buf3[16];
-    void* p;
-
-    if (sub_77E57C("file://", 0, 7) == 0) {
-        sub_44CF10(this);
-        return;
-    }
-
-    sub_77E698(buf1, "file://");
-    sub_77E568(buf3, buf1, this);
-    sub_44CF10(buf3);
-    sub_77E6AC(buf2);
-    sub_77E6AC(buf1);
+ContentUrl makeFileUrl(const std::string& path)
+{
+    if (path.find("file://") == 0)
+        return ContentUrl(path);
+    std::string prefix("file://");
+    return ContentUrl(prefix + path);
 }

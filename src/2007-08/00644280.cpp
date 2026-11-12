@@ -1,145 +1,112 @@
-// from server: 45% by colin
-struct CXTPCommandBar {
-    void* field0;
-    char pad[0x1c];
-    void* field20;
-    char pad2[0xac];
-    int fieldcc;
-    char pad3[0x10];
-    int fielddc;
-    char pad4[0x1c];
-    int fieldfc;
-    char pad5[0x2c];
-    int field12c;
-    char pad6[0x30];
-    int field160;
-    char pad7[0x8];
-    int fieldc8;
-    char pad8[0x2c];
-    int fieldf8;
-    void* field58;
-    int field5c;
+// from server: 97% by EspClaude
+// roc 2007-08 00644280  unit: CXTPCommandBar  size: 349 bytes
+// XTP CXTPCommandBar::OnMouseMove(UINT, CPoint). Offsets/vtable slots read off the target:
+// m_hWnd +0x20, m_nSelected +0xc8, m_nPopuped +0xcc, m_bTracking +0xdc, m_pControls +0xf8,
+// m_barPosition +0xfc (xtpBarPopup = 5), m_bKeyboardSelect +0x12c, m_bTrackOnHover +0x160;
+// CXTPCommandBars: m_pDragSelected +0x58, m_bCustomizeMode +0x5c; CXTPControl: m_nIndex +0x80,
+// OnMouseMove vtable +0xfc; CXTPCommandBar::SetSelected vtable +0x148.
+typedef int BOOL;
+typedef unsigned int UINT;
+struct HWND__; typedef HWND__* HWND;
+struct CPoint { long x; long y; };
 
-    int method_644280(int, int, int);
-    int method_644250();
-    int method_643980();
+#define V4(n) virtual void n##0(); virtual void n##1(); virtual void n##2(); virtual void n##3();
+#define V16(n) V4(n##a) V4(n##b) V4(n##c) V4(n##d)
+
+class CXTPControl {
+public:
+    V16(pa) V16(pb) V16(pc) V4(pd0) V4(pd1) V4(pd2) virtual void pe0(); virtual void pe1(); virtual void pe2();
+    virtual void OnMouseMove(CPoint point);              // +0xfc
+    void OnCustomizeMouseMove(CPoint point);
+    int GetIndex() const { return m_nIndex; }
+    char pad04[0x80 - 4];
+    int m_nIndex;                                        // +0x80
 };
 
-struct CXTPCommandBar2 {
-    char pad[0x80];
-    int field80;
+class CXTPControls {
+public:
+    CXTPControl* HitTest(CPoint point) const;
 };
 
-extern "C" int __stdcall sub_6a37b0(void*);
-extern "C" int __stdcall sub_6a3940(void*, void*);
-extern "C" int __stdcall sub_6a38f0(void*, void*);
-extern "C" int __stdcall sub_633900(void*);
-extern "C" int __stdcall sub_63ab20(void*, int, int);
-extern "C" int __stdcall sub_67a9a0(void*, int, int);
+class CXTPCommandBar;
 
-int CXTPCommandBar::method_644280(int a1, int a2, int a3)
+class CXTPMouseManager {
+public:
+    static BOOL __cdecl IsTopParentActive(HWND hWnd);
+    BOOL IsTrackedLock(const CXTPCommandBar* pItem);
+    void TrackMouseLeave(HWND hWnd);
+};
+
+class CXTPCommandBars {
+public:
+    CXTPMouseManager* GetMouseManager() const;
+    BOOL IsCustomizeMode() const { return m_bCustomizeMode; }
+    char pad00[0x58];
+    CXTPControl* m_pDragSelected;                        // +0x58
+    BOOL m_bCustomizeMode;                               // +0x5c
+};
+
+enum XTPBarPosition { xtpBarPopup = 5 };
+
+class CXTPCommandBar {
+public:
+    V16(qa) V16(qb) V16(qc) V16(qd) V16(qe) virtual void qf0(); virtual void qf1();
+    virtual void SetSelected(int nSelected, BOOL bKeyboard = 0);   // +0x148
+
+    CXTPCommandBars* GetCommandBars() const;
+    BOOL IsMouseLocked() const;
+    BOOL IsTrackingMode() const { return m_bTracking; }
+    XTPBarPosition GetPosition() const { return m_barPosition; }
+    void OnMouseMove(UINT nFlags, CPoint point);
+
+    char pad04[0x20 - 4];
+    HWND m_hWnd;                                         // +0x20
+    char pad24[0xc8 - 0x24];
+    int m_nSelected;                                     // +0xc8
+    int m_nPopuped;                                      // +0xcc
+    char padd0[0xdc - 0xd0];
+    BOOL m_bTracking;                                    // +0xdc
+    char pade0[0xf8 - 0xe0];
+    CXTPControls* m_pControls;                           // +0xf8
+    XTPBarPosition m_barPosition;                        // +0xfc
+    char pad100[0x12c - 0x100];
+    BOOL m_bKeyboardSelect;                              // +0x12c
+    char pad130[0x160 - 0x130];
+    BOOL m_bTrackOnHover;                                // +0x160
+};
+
+void CXTPCommandBar::OnMouseMove(UINT /*nFlags*/, CPoint point)
 {
-    int result;
-    int ebx;
-    int ebp;
-    int edi;
-    int local10;
-    int local14;
+    CXTPCommandBars* pCommandBars = GetCommandBars();
+    CXTPMouseManager* pMouseManager = pCommandBars->GetMouseManager();
 
-    edi = this->method_643980();
-    ebp = sub_633900((void*)edi);
-    local14 = ebp;
+    BOOL bActive = IsTrackingMode() || pMouseManager->IsTopParentActive(m_hWnd);
 
-    if (this->fielddc == 0) {
-        if (sub_6a37b0(this->field20) == 0) {
-            ebx = 0;
-        } else {
-            ebx = 1;
-        }
-    } else {
-        ebx = 1;
+    if (!m_hWnd || pMouseManager->IsTrackedLock(this) ||
+        (!bActive && GetPosition() != xtpBarPopup) || IsMouseLocked())
+        return;
+
+    if (pCommandBars && pCommandBars->IsCustomizeMode())
+    {
+        CXTPControl* pControl = pCommandBars->m_pDragSelected;
+        if (pControl)
+            pControl->OnCustomizeMouseMove(point);
+        return;
     }
 
-    if (this->field20 == 0) {
-        goto end;
+    if (m_nPopuped != -1 && !m_bTrackOnHover)
+        return;
+
+    BOOL bLockSelected = ((GetPosition() != xtpBarPopup) || m_nPopuped != -1) || m_bKeyboardSelect;
+    int nSelected = (IsTrackingMode() && bLockSelected) ? m_nSelected : -1;
+
+    CXTPControl* pControl = m_pControls->HitTest(point);
+    if (pControl)
+    {
+        nSelected = pControl->GetIndex();
+        pMouseManager->TrackMouseLeave(m_hWnd);
+        pControl->OnMouseMove(point);
     }
 
-    if (sub_6a3940((void*)ebp, this) != 0) {
-        goto end;
-    }
-
-    ebp = 5;
-
-    if (ebx == 0) {
-        if (this->fieldfc != ebp) {
-            goto end;
-        }
-    }
-
-    if (this->method_644250() != 0) {
-        goto end;
-    }
-
-    if (edi != 0) {
-        if (((CXTPCommandBar*)edi)->field5c != 0) {
-            goto skip1;
-        }
-    }
-
-    if (edi != 0) {
-        if (((CXTPCommandBar*)edi)->field58 != 0) {
-            result = sub_63ab20(((CXTPCommandBar*)edi)->field58, a1, a2);
-            return result;
-        }
-    }
-    goto end;
-
-skip1:
-    if (this->fieldcc != -1) {
-        if (this->field160 == 0) {
-            goto end;
-        }
-    }
-
-    if (this->fieldfc == ebp) {
-        if (this->fieldcc == -1) {
-            if (this->field12c == 0) {
-                result = 0;
-            } else {
-                result = 1;
-            }
-        } else {
-            result = 1;
-        }
-    } else {
-        result = 1;
-    }
-
-    if (this->fielddc != 0) {
-        if (result != 0) {
-            local10 = this->fieldc8;
-        } else {
-            local10 = -1;
-        }
-    } else {
-        local10 = -1;
-    }
-
-    edi = sub_67a9a0((void*)this->fieldf8, a1, a2);
-
-    if (edi != 0) {
-        int temp = ((CXTPCommandBar2*)edi)->field80;
-        sub_6a38f0((void*)local14, this->field20);
-        local10 = temp;
-        int* vtable = *(int**)edi;
-        int (*func)(void*, int, int) = (int (*)(void*, int, int))vtable[0xfc/4];
-        func((void*)edi, a1, a2);
-    }
-
-    int* vtable2 = *(int**)this;
-    int (*func2)(void*, int, int) = (int (*)(void*, int, int))vtable2[0x148/4];
-    func2(this, local10, 0);
-
-end:
-    return 0;
+    SetSelected(nSelected);
 }

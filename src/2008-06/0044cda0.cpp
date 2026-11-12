@@ -15,21 +15,51 @@ const char sTeam[] = "Team";
 
 using namespace Reflection;
 
-static PropDescriptor<Team, int> prop_Score("Score", "Data", &RBX::Team::getScore, &RBX::Team::setScore);
+static PropDescriptor<Team, int> prop_Score("Score", "Data", &Team::getScore, &Team::setScore);
 
-static PropDescriptor<Team, BrickColor> prop_Color(
-	"TeamColor",
-	"Data",
-	&RBX::Team::getTeamColor,
-	&RBX::Team::setTeamColor
-);
+static PropDescriptor<Team, BrickColor> prop_Color("TeamColor", "Data", &Team::getTeamColor, &Team::setTeamColor);
 
 static PropDescriptor<Team, bool> prop_AutoAssignable(
-	"AutoAssignable",
-	"Data",
-	&RBX::Team::getAutoAssignable,
-	&RBX::Team::setAutoAssignable
+	"AutoAssignable", "Data", &Team::getAutoAssignable, &Team::setAutoAssignable
 );
+
+Reflection::BoundProp<bool, 1> Team::prop_AutoColorCharacters(
+	"AutoColorCharacters", "Data", &Team::autoColorCharacters
+);
+
+// FUNCTION: WEBSERVICE 0x10068b70 FOLDED
+int Team::getScore() const
+{
+	return score;
+}
+
+// FUNCTION: WEBSERVICE 0x100bded0
+// FUNCTION: ROBLOX 0x0058b480
+BrickColor Team::getTeamColor() const
+{
+	return color;
+}
+
+// FUNCTION: WEBSERVICE 0x100bdee0
+// FUNCTION: ROBLOX 0x0058b490
+bool Team::getAutoAssignable() const
+{
+	return autoAssignable;
+}
+
+// FUNCTION: WEBSERVICE 0x100be010
+// FUNCTION: ROBLOX 0x0058b620
+Team::~Team()
+{
+}
+
+// FUNCTION: WEBSERVICE 0x100be630
+// FUNCTION: ROBLOX 0x0058bc20
+Team::Team() : score(0), autoAssignable(true), autoColorCharacters(true)
+{
+	setName(sTeam);
+	color = BrickColor::legoWhite();
+}
 
 // FUNCTION: WEBSERVICE 0x100be710
 void Team::setScore(int score)
@@ -39,6 +69,7 @@ void Team::setScore(int score)
 }
 
 // FUNCTION: WEBSERVICE 0x100be730
+// FUNCTION: ROBLOX 0x0058bd20
 void Team::setTeamColor(BrickColor color)
 {
 	this->color = color;

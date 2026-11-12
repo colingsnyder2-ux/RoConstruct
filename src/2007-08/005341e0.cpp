@@ -9,7 +9,7 @@
 
 #include "decomp.h"
 #include "lua/LuaBridge.h"
-#include "lua/lua.h"
+#include "lua/lua.hpp"
 #include "v8datamodel/BrickColor.h"
 
 #include <G3D/Color3.h>
@@ -28,9 +28,10 @@ namespace RBX {
 namespace Lua {
 
 // FUNCTION: WEBSERVICE 0x100ada30
-float lua_tofloat(lua_State* L, int index)
+// FUNCTION: ROBLOX 0x005fe480
+float lua_tofloat(lua_State* L, int idx)
 {
-	double value = lua_tonumber(L, index);
+	double value = lua_tonumber(L, idx);
 
 	if (value == std::numeric_limits<double>::infinity()) {
 		return std::numeric_limits<float>::infinity();
@@ -59,6 +60,7 @@ template <>
 const char* Bridge<G3D::Color3, 1>::className = "Color3";
 
 // FUNCTION: WEBSERVICE 0x100adac0
+// FUNCTION: ROBLOX 0x005fe510
 template <>
 int Bridge<G3D::Color3, 1>::on_index(const G3D::Color3& value, const char* name, lua_State* L)
 {
@@ -78,6 +80,14 @@ int Bridge<G3D::Color3, 1>::on_index(const G3D::Color3& value, const char* name,
 	}
 
 	throw std::runtime_error(G3D::format("%s is not a valid member", name));
+}
+
+// FUNCTION: WEBSERVICE 0x100adb90 FOLDED
+// FUNCTION: ROBLOX 0x005a4b00 FOLDED
+template <class T, int Tag>
+void Bridge<T, Tag>::on_newindex(T& value, const char* name, lua_State* L)
+{
+	throw std::runtime_error(G3D::format("%s cannot be assigned to", name));
 }
 
 // FUNCTION: WEBSERVICE 0x100adc80
@@ -100,6 +110,7 @@ int Color3Bridge::newColor3(lua_State* L)
 }
 
 // FUNCTION: WEBSERVICE 0x100add30
+// FUNCTION: ROBLOX 0x005fe720
 int Vector3Bridge::on_add(lua_State* L)
 {
 	pushNewObject(L, getObject(L, 2) + getObject(L, 1));
@@ -107,6 +118,7 @@ int Vector3Bridge::on_add(lua_State* L)
 }
 
 // FUNCTION: WEBSERVICE 0x100addc0
+// FUNCTION: ROBLOX 0x005fe7b0
 int Vector3Bridge::on_sub(lua_State* L)
 {
 	const G3D::Vector3& left = getObject(L, 1);
@@ -117,54 +129,57 @@ int Vector3Bridge::on_sub(lua_State* L)
 }
 
 // FUNCTION: WEBSERVICE 0x100ade50
+// FUNCTION: ROBLOX 0x005fe840
 int Vector3Bridge::on_mul(lua_State* L)
 {
-	G3D::Vector3 vector;
+	G3D::Vector3 a;
 
-	if (getValue(L, 1, vector)) {
-		G3D::Vector3 other;
+	if (getValue(L, 1, a)) {
+		G3D::Vector3 b;
 
-		if (getValue(L, 2, other)) {
-			pushVector3(L, vector * other);
+		if (getValue(L, 2, b)) {
+			pushVector3(L, a * b);
 			return 1;
 		}
 
-		pushVector3(L, vector * lua_tofloat(L, 2));
+		pushVector3(L, a * lua_tofloat(L, 2));
 		return 1;
 	}
 
-	vector = getObject(L, 2);
+	a = getObject(L, 2);
 
-	pushVector3(L, vector * lua_tofloat(L, 1));
+	pushVector3(L, a * lua_tofloat(L, 1));
 	return 1;
 }
 
 // FUNCTION: WEBSERVICE 0x100adf30
+// FUNCTION: ROBLOX 0x005fe920
 int Vector3Bridge::on_div(lua_State* L)
 {
-	G3D::Vector3 vector;
+	G3D::Vector3 a;
 
-	if (getValue(L, 1, vector)) {
-		G3D::Vector3 other;
+	if (getValue(L, 1, a)) {
+		G3D::Vector3 b;
 
-		if (getValue(L, 2, other)) {
-			pushVector3(L, vector / other);
+		if (getValue(L, 2, b)) {
+			pushVector3(L, a / b);
 			return 1;
 		}
 
-		pushVector3(L, vector / lua_tofloat(L, 2));
+		pushVector3(L, a / lua_tofloat(L, 2));
 		return 1;
 	}
 
-	vector = getObject(L, 2);
+	a = getObject(L, 2);
 
 	float scalar = lua_tofloat(L, 1);
 
-	pushVector3(L, G3D::Vector3(scalar, scalar, scalar) / vector);
+	pushVector3(L, G3D::Vector3(scalar, scalar, scalar) / a);
 	return 1;
 }
 
 // FUNCTION: WEBSERVICE 0x100ae030
+// FUNCTION: ROBLOX 0x005fea20
 int Vector3Bridge::on_unm(lua_State* L)
 {
 	pushNewObject(L, -getObject(L, 1));
@@ -191,6 +206,7 @@ int Vector3Bridge::newVector3(lua_State* L)
 }
 
 // FUNCTION: WEBSERVICE 0x100ae160
+// FUNCTION: ROBLOX 0x005feb50
 static int lerp(lua_State* L)
 {
 	const G3D::Vector3& value = Vector3Bridge::getObject(L, 1);
@@ -202,6 +218,7 @@ static int lerp(lua_State* L)
 }
 
 // FUNCTION: WEBSERVICE 0x100ae210
+// FUNCTION: ROBLOX 0x005fec00
 template <>
 int Bridge<G3D::Vector3, 1>::on_index(const G3D::Vector3& value, const char* name, lua_State* L)
 {
@@ -248,11 +265,81 @@ template G3D::Vector3* Bridge<G3D::Vector3, 1>::pushNewObject<G3D::Vector3>(lua_
 template G3D::Color3* Bridge<G3D::Color3, 1>::pushNewObject<G3D::Color3>(lua_State* L, G3D::Color3 value);
 
 template RBX::BrickColor* Bridge<RBX::BrickColor, 1>::pushNewObject<RBX::BrickColor>(
-	lua_State* L,
-	RBX::BrickColor value
+	lua_State* L, RBX::BrickColor value
 );
 
+} // namespace Lua
+} // namespace RBX
+
+// FUNCTION: WEBSERVICE 0x100ae380
+// FUNCTION: ROBLOX 0x005fed70
+static int pushRed(lua_State* L)
+{
+	RBX::Lua::BrickColorBridge::pushNewObject(L, RBX::BrickColor::legoRed());
+	return 1;
+}
+
+// FUNCTION: WEBSERVICE 0x100ae3c0
+// FUNCTION: ROBLOX 0x005fedb0
+static int pushWhite(lua_State* L)
+{
+	RBX::Lua::BrickColorBridge::pushNewObject(L, RBX::BrickColor::legoWhite());
+	return 1;
+}
+
+// FUNCTION: WEBSERVICE 0x100ae400
+// FUNCTION: ROBLOX 0x005fedf0
+static int pushGray(lua_State* L)
+{
+	RBX::Lua::BrickColorBridge::pushNewObject(L, RBX::BrickColor::legoGray());
+	return 1;
+}
+
+// FUNCTION: WEBSERVICE 0x100ae440
+// FUNCTION: ROBLOX 0x005fee30
+static int pushDarkGray(lua_State* L)
+{
+	RBX::Lua::BrickColorBridge::pushNewObject(L, RBX::BrickColor::legoDarkGray());
+	return 1;
+}
+
+// FUNCTION: WEBSERVICE 0x100ae480
+// FUNCTION: ROBLOX 0x005fee70
+static int pushBlack(lua_State* L)
+{
+	RBX::Lua::BrickColorBridge::pushNewObject(L, RBX::BrickColor::legoBlack());
+	return 1;
+}
+
+// FUNCTION: WEBSERVICE 0x100ae4c0
+// FUNCTION: ROBLOX 0x005feeb0
+static int pushYellow(lua_State* L)
+{
+	RBX::Lua::BrickColorBridge::pushNewObject(L, RBX::BrickColor::legoYellow());
+	return 1;
+}
+
+// FUNCTION: WEBSERVICE 0x100ae500
+// FUNCTION: ROBLOX 0x005feef0
+static int pushGreen(lua_State* L)
+{
+	RBX::Lua::BrickColorBridge::pushNewObject(L, RBX::BrickColor::legoGreen());
+	return 1;
+}
+
+// FUNCTION: WEBSERVICE 0x100ae540
+// FUNCTION: ROBLOX 0x005fef30
+static int pushBlue(lua_State* L)
+{
+	RBX::Lua::BrickColorBridge::pushNewObject(L, RBX::BrickColor::legoBlue());
+	return 1;
+}
+
+namespace RBX {
+namespace Lua {
+
 // FUNCTION: WEBSERVICE 0x100ae580
+// FUNCTION: ROBLOX 0x005fef70
 int BrickColorBridge::newBrickColor(lua_State* L)
 {
 	int count = std::min(4, lua_gettop(L));
@@ -293,6 +380,7 @@ int BrickColorBridge::randomBrickColor(lua_State* L)
 }
 
 // FUNCTION: WEBSERVICE 0x100ae790
+// FUNCTION: ROBLOX 0x005ff180
 template <>
 int Bridge<RBX::BrickColor, 1>::on_index(const RBX::BrickColor& value, const char* name, lua_State* L)
 {
@@ -343,9 +431,10 @@ template <>
 const char* Bridge<RBX::BrickColor, 1>::className = "BrickColor";
 
 // FUNCTION: WEBSERVICE 0x100ae950
+// FUNCTION: ROBLOX 0x005ff340
 int CoordinateFrameBridge::newCoordinateFrame(lua_State* L)
 {
-	G3D::CoordinateFrame result;
+	G3D::CoordinateFrame cf;
 
 	int count = lua_gettop(L);
 
@@ -354,46 +443,46 @@ int CoordinateFrameBridge::newCoordinateFrame(lua_State* L)
 		break;
 
 	case 1:
-		result.translation = Vector3Bridge::getObject(L, 1);
+		cf.translation = Vector3Bridge::getObject(L, 1);
 		break;
 
 	case 2:
-		result.translation = Vector3Bridge::getObject(L, 1);
-		result.lookAt(Vector3Bridge::getObject(L, 2));
+		cf.translation = Vector3Bridge::getObject(L, 1);
+		cf.lookAt(Vector3Bridge::getObject(L, 2));
 		break;
 
 	case 3:
 		for (int i = 0; i < 3; i++) {
-			result.translation[i] = lua_tofloat(L, i + 1);
+			cf.translation[i] = lua_tofloat(L, i + 1);
 		}
 		break;
 
 	case 7: {
 		for (int i = 0; i < 3; i++) {
-			result.translation[i] = lua_tofloat(L, i + 1);
+			cf.translation[i] = lua_tofloat(L, i + 1);
 		}
 
-		G3D::Quat quaternion;
+		G3D::Quat q;
 
-		quaternion.x = lua_tofloat(L, 4);
-		quaternion.y = lua_tofloat(L, 5);
-		quaternion.z = lua_tofloat(L, 6);
-		quaternion.w = lua_tofloat(L, 7);
+		q.x = lua_tofloat(L, 4);
+		q.y = lua_tofloat(L, 5);
+		q.z = lua_tofloat(L, 6);
+		q.w = lua_tofloat(L, 7);
 
-		G3D::Matrix3 rotation(quaternion);
+		G3D::Matrix3 rotation(q);
 
-		result.rotation = rotation;
+		cf.rotation = rotation;
 		break;
 	}
 
 	case 12: {
 		for (int i = 0; i < 3; i++) {
-			result.translation[i] = lua_tofloat(L, i + 1);
+			cf.translation[i] = lua_tofloat(L, i + 1);
 		}
 
 		int index = 4;
 
-		float* element = result.rotation[0];
+		float* element = cf.rotation[0];
 
 		while (index < 13) {
 			for (int c = 0; c < 3; c++) {
@@ -409,11 +498,12 @@ int CoordinateFrameBridge::newCoordinateFrame(lua_State* L)
 		throw std::runtime_error(G3D::format("Invalid number of arguments: %d", count));
 	}
 
-	pushNewObject(L, result);
+	pushNewObject(L, cf);
 	return 1;
 }
 
 // FUNCTION: WEBSERVICE 0x100aebc0
+// FUNCTION: ROBLOX 0x005ff5b0
 int CoordinateFrameBridge::on_add(lua_State* L)
 {
 	const G3D::CoordinateFrame& value = getObject(L, 1);
@@ -426,6 +516,7 @@ int CoordinateFrameBridge::on_add(lua_State* L)
 }
 
 // FUNCTION: WEBSERVICE 0x100aec40
+// FUNCTION: ROBLOX 0x005ff630
 int CoordinateFrameBridge::on_sub(lua_State* L)
 {
 	const G3D::CoordinateFrame& value = getObject(L, 1);
@@ -438,6 +529,7 @@ int CoordinateFrameBridge::on_sub(lua_State* L)
 }
 
 // FUNCTION: WEBSERVICE 0x100aecc0
+// FUNCTION: ROBLOX 0x005ff6b0
 int CoordinateFrameBridge::on_inverse(lua_State* L)
 {
 	const G3D::CoordinateFrame& value = getObject(L, 1);
@@ -449,6 +541,7 @@ int CoordinateFrameBridge::on_inverse(lua_State* L)
 }
 
 // FUNCTION: WEBSERVICE 0x100aed30
+// FUNCTION: ROBLOX 0x005ff720
 int CoordinateFrameBridge::on_toWorldSpace(lua_State* L)
 {
 	const G3D::CoordinateFrame& value = getObject(L, 1);
@@ -472,21 +565,22 @@ int CoordinateFrameBridge::on_toWorldSpace(lua_State* L)
 }
 
 // FUNCTION: WEBSERVICE 0x100aee30
+// FUNCTION: ROBLOX 0x005ff820
 int CoordinateFrameBridge::on_toObjectSpace(lua_State* L)
 {
-	const G3D::CoordinateFrame& value = getObject(L, 1);
+	const G3D::CoordinateFrame& a = getObject(L, 1);
 
 	int count = lua_gettop(L) - 1;
 
 	if (count == 0) {
-		G3D::CoordinateFrame result = value.inverse();
+		G3D::CoordinateFrame result = a.inverse();
 
 		pushNewObject(L, result);
 		return 1;
 	}
 
 	for (int i = 0; i < count; i++) {
-		G3D::CoordinateFrame result = value.toObjectSpace(getObject(L, i + 2));
+		G3D::CoordinateFrame result = a.toObjectSpace(getObject(L, i + 2));
 
 		pushNewObject(L, result);
 	}
@@ -495,6 +589,7 @@ int CoordinateFrameBridge::on_toObjectSpace(lua_State* L)
 }
 
 // FUNCTION: WEBSERVICE 0x100aef20
+// FUNCTION: ROBLOX 0x005ff910
 int CoordinateFrameBridge::on_pointToWorldSpace(lua_State* L)
 {
 	const G3D::CoordinateFrame& value = getObject(L, 1);
@@ -514,6 +609,7 @@ int CoordinateFrameBridge::on_pointToWorldSpace(lua_State* L)
 }
 
 // FUNCTION: WEBSERVICE 0x100af060
+// FUNCTION: ROBLOX 0x005ffa50
 int CoordinateFrameBridge::on_pointToObjectSpace(lua_State* L)
 {
 	const G3D::CoordinateFrame& value = getObject(L, 1);
@@ -533,6 +629,7 @@ int CoordinateFrameBridge::on_pointToObjectSpace(lua_State* L)
 }
 
 // STUB: WEBSERVICE 0x100af1a0
+// STUB: ROBLOX 0x005ffb90
 int CoordinateFrameBridge::on_vectorToWorldSpace(lua_State* L)
 {
 	const G3D::CoordinateFrame& value = getObject(L, 1);
@@ -552,6 +649,7 @@ int CoordinateFrameBridge::on_vectorToWorldSpace(lua_State* L)
 }
 
 // FUNCTION: WEBSERVICE 0x100af340
+// FUNCTION: ROBLOX 0x005ffd30
 int CoordinateFrameBridge::on_components(lua_State* L)
 {
 	const G3D::CoordinateFrame& value = getObject(L, 1);
@@ -570,6 +668,7 @@ int CoordinateFrameBridge::on_components(lua_State* L)
 }
 
 // FUNCTION: WEBSERVICE 0x100af3d0
+// FUNCTION: ROBLOX 0x005ffdc0
 int CoordinateFrameBridge::on_toEulerAnglesXYZ(lua_State* L)
 {
 	float x;
@@ -587,47 +686,50 @@ int CoordinateFrameBridge::on_toEulerAnglesXYZ(lua_State* L)
 }
 
 // FUNCTION: WEBSERVICE 0x100af440
+// FUNCTION: ROBLOX 0x005ffe30
 int CoordinateFrameBridge::on_vectorToObjectSpace(lua_State* L)
 {
-	const G3D::CoordinateFrame& value = getObject(L, 1);
+	const G3D::CoordinateFrame& a = getObject(L, 1);
 
 	int count = lua_gettop(L) - 1;
 
 	if (count == 0) {
-		Vector3Bridge::pushVector3(L, value.vectorToObjectSpace(G3D::Vector3::zero()));
+		Vector3Bridge::pushVector3(L, a.vectorToObjectSpace(G3D::Vector3::zero()));
 		return 1;
 	}
 
 	for (int i = 0; i < count; i++) {
-		Vector3Bridge::pushNewObject(L, value.vectorToObjectSpace(Vector3Bridge::getObject(L, i + 2)));
+		Vector3Bridge::pushNewObject(L, a.vectorToObjectSpace(Vector3Bridge::getObject(L, i + 2)));
 	}
 
 	return count;
 }
 
 // FUNCTION: WEBSERVICE 0x100af610
+// FUNCTION: ROBLOX 0x00600000
 int CoordinateFrameBridge::fromEulerAnglesXYZ(lua_State* L)
 {
-	G3D::CoordinateFrame result;
+	G3D::CoordinateFrame cf;
 
-	result.rotation =
+	cf.rotation =
 		G3D::Matrix3::fromEulerAnglesXYZ(luaL_checknumber(L, 1), luaL_checknumber(L, 2), luaL_checknumber(L, 3));
 
-	pushNewObject(L, result);
+	pushNewObject(L, cf);
 	return 1;
 }
 
 // FUNCTION: WEBSERVICE 0x100af6b0
+// FUNCTION: ROBLOX 0x006000a0
 int CoordinateFrameBridge::fromAxisAngle(lua_State* L)
 {
-	G3D::CoordinateFrame result;
+	G3D::CoordinateFrame cf;
 
 	const G3D::Vector3& axis = Vector3Bridge::getObject(L, 1);
 	float angle = luaL_checknumber(L, 2);
 
-	result.rotation = G3D::Matrix3::fromAxisAngle(axis, angle);
+	cf.rotation = G3D::Matrix3::fromAxisAngle(axis, angle);
 
-	pushNewObject(L, result);
+	pushNewObject(L, cf);
 	return 1;
 }
 
@@ -635,6 +737,7 @@ template <>
 const char* Bridge<G3D::CoordinateFrame, 1>::className = "CFrame";
 
 // FUNCTION: WEBSERVICE 0x100af750
+// FUNCTION: ROBLOX 0x00600140
 template <>
 int Bridge<G3D::CoordinateFrame, 1>::on_index(const G3D::CoordinateFrame& value, const char* name, lua_State* L)
 {
@@ -721,14 +824,15 @@ int Bridge<G3D::CoordinateFrame, 1>::on_index(const G3D::CoordinateFrame& value,
 }
 
 // FUNCTION: WEBSERVICE 0x100afaf0
+// FUNCTION: ROBLOX 0x006004e0
 int CoordinateFrameBridge::on_mul(lua_State* L)
 {
 	const G3D::CoordinateFrame& value = getObject(L, 1);
 
-	G3D::CoordinateFrame other;
+	G3D::CoordinateFrame b;
 
-	if (getValue(L, 2, other)) {
-		G3D::CoordinateFrame result = value * other;
+	if (getValue(L, 2, b)) {
+		G3D::CoordinateFrame result = value * b;
 
 		pushNewObject(L, result);
 		return 1;
@@ -739,12 +843,16 @@ int CoordinateFrameBridge::on_mul(lua_State* L)
 }
 
 template bool Bridge<G3D::CoordinateFrame, 1>::getValue<G3D::CoordinateFrame>(
-	lua_State* L,
-	unsigned int index,
-	G3D::CoordinateFrame& value
+	lua_State* L, unsigned int index, G3D::CoordinateFrame& value
 );
 
 template void Bridge<G3D::Color3, 1>::on_newindex(G3D::Color3& value, const char* name, lua_State* L);
+
+template void Bridge<G3D::Vector3, 1>::on_newindex(G3D::Vector3& value, const char* name, lua_State* L);
+
+template void Bridge<RBX::BrickColor, 1>::on_newindex(RBX::BrickColor& value, const char* name, lua_State* L);
+
+template void Bridge<G3D::CoordinateFrame, 1>::on_newindex(G3D::CoordinateFrame& value, const char* name, lua_State* L);
 
 template int Bridge<G3D::CoordinateFrame, 1>::on_gc(lua_State* L);
 
@@ -773,6 +881,39 @@ template int Bridge<RBX::BrickColor, 1>::on_eq(lua_State* L);
 template int Bridge<G3D::Vector3, 1>::on_tostring(const G3D::Vector3& value, lua_State* L);
 
 template int Bridge<G3D::Vector3, 1>::on_tostring(lua_State* L);
+
+const luaL_Reg Color3Bridge::classLibrary[] = {
+	{"new", newColor3},
+	{NULL, NULL},
+};
+
+const luaL_Reg Vector3Bridge::classLibrary[] = {
+	{"new", newVector3},
+	{NULL, NULL},
+};
+
+const luaL_Reg BrickColorBridge::classLibrary[] = {
+	{"new", newBrickColor},
+	{"random", randomBrickColor},
+	{"New", newBrickColor},
+	{"Random", randomBrickColor},
+	{"White", pushWhite},
+	{"Gray", pushGray},
+	{"DarkGray", pushDarkGray},
+	{"Black", pushBlack},
+	{"Red", pushRed},
+	{"Yellow", pushYellow},
+	{"Green", pushGreen},
+	{"Blue", pushBlue},
+	{NULL, NULL},
+};
+
+const luaL_Reg CoordinateFrameBridge::classLibrary[] = {
+	{"new", newCoordinateFrame},
+	{"fromEulerAnglesXYZ", fromEulerAnglesXYZ},
+	{"fromAxisAngle", fromAxisAngle},
+	{NULL, NULL},
+};
 
 } // namespace Lua
 } // namespace RBX

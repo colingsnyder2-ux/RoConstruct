@@ -1,812 +1,172 @@
 // from server: 100% by auto
+// roc 2008-06 004a5790  unit: RBX::VHint::?$FactoryProduct::Creator  size: 428 bytes
+// Make this compile to the exact bytes below, then: roc check 2008-06 004a5790
+//
+// 004a5790  53                   push ebx
+// 004a5791  8b5c240c             mov ebx, dword ptr [esp + 0xc]
+// 004a5795  c1fb03               sar ebx, 3
+// 004a5798  4b                   dec ebx
+// 004a5799  807c241000           cmp byte ptr [esp + 0x10], 0
+// 004a579e  55                   push ebp
+// 004a579f  0f95c0               setne al
+// 004a57a2  56                   push esi
+// 004a57a3  fec8                 dec al
+// 004a57a5  57                   push edi
+// 004a57a6  8bf1                 mov esi, ecx
+// 004a57a8  88442418             mov byte ptr [esp + 0x18], al
+// 004a57ac  85db                 test ebx, ebx
+// 004a57ae  7f44                 jg 0x4a57f4
+// 004a57b0  807c241c00           cmp byte ptr [esp + 0x1c], 0
+// 004a57b5  0f8403010000         je 0x4a58be
+// 004a57bb  8b4c2414             mov ecx, dword ptr [esp + 0x14]
+// 004a57bf  03d9                 add ebx, ecx
+// 004a57c1  f603f0               test byte ptr [ebx], 0xf0
+// 004a57c4  0f8407010000         je 0x4a58d1
+// 004a57ca  6a00                 push 0
+// 004a57cc  8bce                 mov ecx, esi
+// 004a57ce  e8cdfeffff           call 0x4a56a0
+// 004a57d3  6a01                 push 1
+// 004a57d5  6a08                 push 8
+// 004a57d7  53                   push ebx
+// 004a57d8  8bce                 mov ecx, esi
+// 004a57da  e821feffff           call 0x4a5600
+// 004a57df  5f                   pop edi
+// 004a57e0  5e                   pop esi
+// 004a57e1  5d                   pop ebp
+// 004a57e2  5b                   pop ebx
+// 004a57e3  c20c00               ret 0xc
+// 004a57e6  eb08                 jmp 0x4a57f0
+// 004a57e8  8da42400000000       lea esp, [esp]
+// 004a57ef  90                   nop 
+// 004a57f0  8a442418             mov al, byte ptr [esp + 0x18]
+// 004a57f4  8b7c2414             mov edi, dword ptr [esp + 0x14]
+// 004a57f8  38043b               cmp byte ptr [ebx + edi], al
+// 004a57fb  0f859b000000         jne 0x4a589c
+// 004a5801  8b06                 mov eax, dword ptr [esi]
+// 004a5803  8d7801               lea edi, [eax + 1]
+// 004a5806  85ff                 test edi, edi
+// 004a5808  7e5a                 jle 0x4a5864
+// 004a580a  8b4e04               mov ecx, dword ptr [esi + 4]
+// 004a580d  49                   dec ecx
+// 004a580e  8d57ff               lea edx, [edi - 1]
+// 004a5811  83e1f8               and ecx, 0xfffffff8
+// 004a5814  83e2f8               and edx, 0xfffffff8
+// 004a5817  3bca                 cmp ecx, edx
+// 004a5819  7d49                 jge 0x4a5864
+// 004a581b  8b4e0c               mov ecx, dword ptr [esi + 0xc]
+// 004a581e  8d7c0002             lea edi, [eax + eax + 2]
+// 004a5822  8d4707               lea eax, [edi + 7]
+// 004a5825  8d6e11               lea ebp, [esi + 0x11]
+// 004a5828  c1f803               sar eax, 3
+// 004a582b  3bcd                 cmp ecx, ebp
+// 004a582d  7527                 jne 0x4a5856
+// 004a582f  3d00010000           cmp eax, 0x100
+// 004a5834  7e2e                 jle 0x4a5864
+// 004a5836  50                   push eax
+// 004a5837  ff15b0288000         call dword ptr [0x8028b0]
+// 004a583d  8b4e04               mov ecx, dword ptr [esi + 4]
+// 004a5840  83c107               add ecx, 7
+// 004a5843  c1f903               sar ecx, 3
+// 004a5846  51                   push ecx
+// 004a5847  55                   push ebp
+// 004a5848  50                   push eax
+// 004a5849  89460c               mov dword ptr [esi + 0xc], eax
+// 004a584c  e88fbf1f00           call 0x6a17e0
+// 004a5851  83c410               add esp, 0x10
+// 004a5854  eb0e                 jmp 0x4a5864
+// 004a5856  50                   push eax
+// 004a5857  51                   push ecx
+// 004a5858  ff15e0278000         call dword ptr [0x8027e0]
+// 004a585e  83c408               add esp, 8
+// 004a5861  89460c               mov dword ptr [esi + 0xc], eax
+// 004a5864  3b7e04               cmp edi, dword ptr [esi + 4]
+// 004a5867  7e03                 jle 0x4a586c
+// 004a5869  897e04               mov dword ptr [esi + 4], edi
+// 004a586c  8b06                 mov eax, dword ptr [esi]
+// 004a586e  8b560c               mov edx, dword ptr [esi + 0xc]
+// 004a5871  8bc8                 mov ecx, eax
+// 004a5873  c1f803               sar eax, 3
+// 004a5876  83e107               and ecx, 7
+// 004a5879  7506                 jne 0x4a5881
+// 004a587b  c6041080             mov byte ptr [eax + edx], 0x80
+// 004a587f  eb0b                 jmp 0x4a588c
+// 004a5881  03c2                 add eax, edx
+// 004a5883  ba80000000           mov edx, 0x80
+// 004a5888  d3fa                 sar edx, cl
+// 004a588a  0810                 or byte ptr [eax], dl
+// 004a588c  ff06                 inc dword ptr [esi]
+// 004a588e  4b                   dec ebx
+// 004a588f  85db                 test ebx, ebx
+// 004a5891  0f8f59ffffff         jg 0x4a57f0
+// 004a5897  e914ffffff           jmp 0x4a57b0
+// 004a589c  6a00                 push 0
+// 004a589e  8bce                 mov ecx, esi
+// 004a58a0  e8fbfdffff           call 0x4a56a0
+// 004a58a5  6a01                 push 1
+// 004a58a7  8d04dd08000000       lea eax, [ebx*8 + 8]
+// 004a58ae  50                   push eax
+// 004a58af  57                   push edi
+// 004a58b0  8bce                 mov ecx, esi
+// 004a58b2  e849fdffff           call 0x4a5600
+// 004a58b7  5f                   pop edi
+// 004a58b8  5e                   pop esi
+// 004a58b9  5d                   pop ebp
+// 004a58ba  5b                   pop ebx
+// 004a58bb  c20c00               ret 0xc
+// 004a58be  8b542414             mov edx, dword ptr [esp + 0x14]
+// 004a58c2  8a0413               mov al, byte ptr [ebx + edx]
+// 004a58c5  03da                 add ebx, edx
+// 004a58c7  24f0                 and al, 0xf0
+// 004a58c9  3cf0                 cmp al, 0xf0
+// 004a58cb  0f85f9feffff         jne 0x4a57ca
+// 004a58d1  6a01                 push 1
+// 004a58d3  8bce                 mov ecx, esi
+// 004a58d5  e8c6fdffff           call 0x4a56a0
+// 004a58da  6a04                 push 4
+// 004a58dc  8bce                 mov ecx, esi
+// 004a58de  e8cdfaffff           call 0x4a53b0
+// 004a58e3  8b0e                 mov ecx, dword ptr [esi]
+// 004a58e5  8a13                 mov dl, byte ptr [ebx]
+// 004a58e7  8bc1                 mov eax, ecx
+// 004a58e9  83e007               and eax, 7
+// 004a58ec  c0e204               shl dl, 4
+// 004a58ef  c1f903               sar ecx, 3
+// 004a58f2  85c0                 test eax, eax
+// 004a58f4  7510                 jne 0x4a5906
+// 004a58f6  8b460c               mov eax, dword ptr [esi + 0xc]
+// 004a58f9  5f                   pop edi
+// 004a58fa  881401               mov byte ptr [ecx + eax], dl
+// 004a58fd  830604               add dword ptr [esi], 4
+// 004a5900  5e                   pop esi
+// 004a5901  5d                   pop ebp
+// 004a5902  5b                   pop ebx
+// 004a5903  c20c00               ret 0xc
+// 004a5906  8b7e0c               mov edi, dword ptr [esi + 0xc]
+// 004a5909  03f9                 add edi, ecx
+// 004a590b  8ac8                 mov cl, al
+// 004a590d  8ada                 mov bl, dl
+// 004a590f  d2eb                 shr bl, cl
+// 004a5911  b908000000           mov ecx, 8
+// 004a5916  2bc8                 sub ecx, eax
+// 004a5918  081f                 or byte ptr [edi], bl
+// 004a591a  83f908               cmp ecx, 8
+// 004a591d  7d13                 jge 0x4a5932
+// 004a591f  83f904               cmp ecx, 4
+// 004a5922  7d0e                 jge 0x4a5932
+// 004a5924  8b460c               mov eax, dword ptr [esi + 0xc]
+// 004a5927  d2e2                 shl dl, cl
+// 004a5929  8b0e                 mov ecx, dword ptr [esi]
+// 004a592b  c1f903               sar ecx, 3
+// 004a592e  88540101             mov byte ptr [ecx + eax + 1], dl
+// 004a5932  830604               add dword ptr [esi], 4
+// 004a5935  5f                   pop edi
+// 004a5936  5e                   pop esi
+// 004a5937  5d                   pop ebp
+// 004a5938  5b                   pop ebx
+// 004a5939  c20c00               ret 0xc
+// library openrbx-raknet/BitStream.cpp (function ?WriteCompressed@BitStream@RakNet@@AAEXPBEH_N@Z)
+
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /EHsc /MD
 // roc-lib: openrbx-raknet BitStream.cpp
-
-// Candidate translation unit (score above; library headers required).
-/// \file
-///
-/// This file is part of RakNet Copyright 2003 Kevin Jenkins.
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-/// Creative Commons Licensees are subject to the
-/// license found at
-/// http://creativecommons.org/licenses/by-nc/2.5/
-/// Single application licensees are subject to the license found at
-/// http://www.rakkarsoft.com/SingleApplicationLicense.html
-/// Custom license users are subject to the terms therein.
-/// GPL license users are subject to the GNU General Public
-/// License as published by the Free
-/// Software Foundation; either version 2 of the License, or (at your
-/// option) any later version.
-
-#if defined(_MSC_VER) && _MSC_VER < 1299 // VC6 doesn't support template specialization
-#include "BitStream_NoTemplate.cpp"
-#else
-
-#include "BitStream.h"
-#include <stdlib.h>
-#include <memory.h>
-#include <stdio.h>
-#include <string.h>
-#include <math.h>
-#include <float.h>
-#ifdef _COMPATIBILITY_1
-#include "Compatibility1Includes.h"
-#elif defined(_WIN32)
-#include <winsock2.h> // htonl
-#else
-#include <arpa/inet.h>
-#endif
-
-// Was included for memset which now comes from string.h instead
-/*
-#if defined ( __APPLE__ ) || defined ( __APPLE_CC__ )
-	#include <malloc/malloc.h>
-#elif !defined(_COMPATIBILITY_2)
-	#include <malloc.h>
-#endif
-
-	*/
-
-// MSWin uses _copysign, others use copysign...
-#ifndef _WIN32
-#define _copysign copysign
-#endif
-
-using namespace RakNet;
-
-#ifdef _MSC_VER
-#pragma warning( push )
-#endif
-
-// FUNCTION: WEBSERVICE 0x101aaad0
-BitStream::BitStream()
-{
-	numberOfBitsUsed = 0;
-	//numberOfBitsAllocated = 32 * 8;
-	numberOfBitsAllocated = BITSTREAM_STACK_ALLOCATION_SIZE * 8;
-	readOffset = 0;
-	//data = ( unsigned char* ) malloc( 32 );
-	data = ( unsigned char* ) stackData;
-	
-#ifdef _DEBUG	
-//	assert( data );
-#endif
-	//memset(data, 0, 32);
-	copyData = true;
-}
-
-// FUNCTION: WEBSERVICE 0x101aab00
-BitStream::BitStream( int initialBytesToAllocate )
-{
-	numberOfBitsUsed = 0;
-	readOffset = 0;
-	if (initialBytesToAllocate <= BITSTREAM_STACK_ALLOCATION_SIZE)
-	{
-		data = ( unsigned char* ) stackData;
-		numberOfBitsAllocated = BITSTREAM_STACK_ALLOCATION_SIZE * 8;
-	}
-	else
-	{
-		data = ( unsigned char* ) malloc( initialBytesToAllocate );
-		numberOfBitsAllocated = initialBytesToAllocate << 3;
-	}
-#ifdef _DEBUG
-	assert( data );
-#endif
-	// memset(data, 0, initialBytesToAllocate);
-	copyData = true;
-}
-
-// FUNCTION: WEBSERVICE 0x101aab60
-BitStream::BitStream( unsigned char* _data, unsigned int lengthInBytes, bool _copyData )
-{
-	numberOfBitsUsed = lengthInBytes << 3;
-	readOffset = 0;
-	copyData = _copyData;
-	numberOfBitsAllocated = lengthInBytes << 3;
-	
-	if ( copyData )
-	{
-		if ( lengthInBytes > 0 )
-		{
-			if (lengthInBytes < BITSTREAM_STACK_ALLOCATION_SIZE)
-			{
-				data = ( unsigned char* ) stackData;
-				numberOfBitsAllocated = BITSTREAM_STACK_ALLOCATION_SIZE << 3;
-			}
-			else
-			{
-				data = ( unsigned char* ) malloc( lengthInBytes );
-			}
-#ifdef _DEBUG
-			assert( data );
-#endif
-			memcpy( data, _data, lengthInBytes );
-		}
-		else
-			data = 0;
-	}
-	else
-		data = ( unsigned char* ) _data;
-}
-
-// Use this if you pass a pointer copy to the constructor (_copyData==false) and want to overallocate to prevent reallocation
-void BitStream::SetNumberOfBitsAllocated( const unsigned int lengthInBits )
-{
-#ifdef _DEBUG
-	assert( lengthInBits >= ( unsigned int ) numberOfBitsAllocated );
-#endif	
-	numberOfBitsAllocated = lengthInBits;
-}
-
-// FUNCTION: WEBSERVICE 0x101aabe0
-BitStream::~BitStream()
-{
-	if ( copyData && numberOfBitsAllocated > BITSTREAM_STACK_ALLOCATION_SIZE << 3)
-		free( data );  // Use realloc and free so we are more efficient than delete and new for resizing
-}
-
-// FUNCTION: WEBSERVICE 0x101aac00
-void BitStream::Reset( void )
-{
-	// Note:  Do NOT reallocate memory because BitStream is used
-	// in places to serialize/deserialize a buffer. Reallocation
-	// is a dangerous operation (may result in leaks).
-	
-	if ( numberOfBitsUsed > 0 )
-	{
-		//  memset(data, 0, BITS_TO_BYTES(numberOfBitsUsed));
-	}
-	
-	// Don't free memory here for speed efficiency
-	//free(data);  // Use realloc and free so we are more efficient than delete and new for resizing
-	numberOfBitsUsed = 0;
-	
-	//numberOfBitsAllocated=8;
-	readOffset = 0;
-	
-	//data=(unsigned char*)malloc(1);
-	// if (numberOfBitsAllocated>0)
-	//  memset(data, 0, BITS_TO_BYTES(numberOfBitsAllocated));
-}
-
-// Write an array or casted stream
-// FUNCTION: WEBSERVICE 0x101ab0e0
-void BitStream::Write( const char* input, const int numberOfBytes )
-{
-	if (numberOfBytes==0)
-		return;
-
-	// Optimization:
-	if ((numberOfBitsUsed & 7) == 0)
-	{
-		AddBitsAndReallocate( BYTES_TO_BITS(numberOfBytes) );
-		memcpy(data+BITS_TO_BYTES(numberOfBitsUsed), input, numberOfBytes);
-		numberOfBitsUsed+=BYTES_TO_BITS(numberOfBytes);
-	}
-	else
-	{
-		WriteBits( ( unsigned char* ) input, numberOfBytes * 8, true );
-	}
-	
-}
-void BitStream::Write( BitStream *bitStream)
-{
-	Write(bitStream, bitStream->GetNumberOfBitsUsed());
-}
-// FUNCTION: WEBSERVICE 0x101aaed0
-void BitStream::Write( BitStream *bitStream, int numberOfBits )
-{
-	AddBitsAndReallocate( numberOfBits );
-	int numberOfBitsMod8;
-
-	while (numberOfBits-->0 && bitStream->readOffset + 1 <= bitStream->numberOfBitsUsed)
-	{
-		numberOfBitsMod8 = numberOfBitsUsed & 7;
-		if ( numberOfBitsMod8 == 0 )
-		{
-			// New byte
-			if (bitStream->data[ bitStream->readOffset >> 3 ] & ( 0x80 >> ( bitStream->readOffset & 7 ) ) )
-			{
-				// Write 1
-				data[ numberOfBitsUsed >> 3 ] = 0x80;
-			}
-			else
-			{
-				// Write 0
-				data[ numberOfBitsUsed >> 3 ] = 0;
-			}
-		}
-		else
-		{
-			// Existing byte
-			if (bitStream->data[ bitStream->readOffset >> 3 ] & ( 0x80 >> ( bitStream->readOffset & 7 ) ) )
-				data[ numberOfBitsUsed >> 3 ] |= 0x80 >> ( numberOfBitsMod8 ); // Set the bit to 1
-			// else 0, do nothing
-		}
-
-		bitStream->readOffset++;
-		numberOfBitsUsed++;
-	}
-}
-
-// Read an array or casted stream
-bool BitStream::Read( char* output, const int numberOfBytes )
-{
-	// Optimization:
-	if ((readOffset & 7) == 0)
-	{
-		if ( readOffset + ( numberOfBytes << 3 ) > numberOfBitsUsed )
-			return false;
-
-		// Write the data
-		memcpy( output, data + ( readOffset >> 3 ), numberOfBytes );
-
-		readOffset += numberOfBytes << 3;
-		return true;
-	}
-	else
-	{
-		return ReadBits( ( unsigned char* ) output, numberOfBytes * 8 );
-	}
-}
-
-// Sets the read pointer back to the beginning of your data.
-void BitStream::ResetReadPointer( void )
-{
-	readOffset = 0;
-}
-
-// Sets the write pointer back to the beginning of your data.
-// FUNCTION: WEBSERVICE 0x101aac10
-void BitStream::ResetWritePointer( void )
-{
-	numberOfBitsUsed = 0;
-}
-
-// Write a 0
-// FUNCTION: WEBSERVICE 0x101aaf80
-void BitStream::Write0( void )
-{
-	AddBitsAndReallocate( 1 );
-	
-	// New bytes need to be zeroed
-	if ( ( numberOfBitsUsed & 7 ) == 0 )
-		data[ numberOfBitsUsed >> 3 ] = 0;
-		
-	numberOfBitsUsed++;
-}
-
-// Write a 1
-// FUNCTION: WEBSERVICE 0x101aafa0
-void BitStream::Write1( void )
-{
-	AddBitsAndReallocate( 1 );
-	
-	int numberOfBitsMod8 = numberOfBitsUsed & 7;
-	
-	if ( numberOfBitsMod8 == 0 )
-		data[ numberOfBitsUsed >> 3 ] = 0x80;
-	else
-		data[ numberOfBitsUsed >> 3 ] |= 0x80 >> ( numberOfBitsMod8 ); // Set the bit to 1
-		
-	numberOfBitsUsed++;
-}
-
-#ifdef _MSC_VER
-#pragma warning( disable : 4800 ) // warning C4100: <variable name> : unreferenced formal parameter
-#endif
-// Returns true if the next data read is a 1, false if it is a 0
-// FUNCTION: WEBSERVICE 0x101aac20
-bool BitStream::ReadBit( void )
-{
-	bool result = ( data[ readOffset >> 3 ] & ( 0x80 >> ( readOffset & 7 ) ) ) != 0;
-	readOffset++;
-	return result;
-}
-
-// Align the bitstream to the byte boundary and then write the specified number of bits.
-// This is faster than WriteBits but wastes the bits to do the alignment and requires you to call
-// SetReadToByteAlignment at the corresponding read position
-// FUNCTION: WEBSERVICE 0x101ab150
-void BitStream::WriteAlignedBytes( const unsigned char* input,
-	const int numberOfBytesToWrite )
-{
-#ifdef _DEBUG
-	assert( numberOfBytesToWrite > 0 );
-#endif
-	
-	AlignWriteToByteBoundary();
-	Write((const char*) input, numberOfBytesToWrite);
-}
-
-// Read bits, starting at the next aligned bits. Note that the modulus 8 starting offset of the
-// sequence must be the same as was used with WriteBits. This will be a problem with packet coalescence
-// unless you byte align the coalesced packets.
-// FUNCTION: WEBSERVICE 0x101aafe0
-bool BitStream::ReadAlignedBytes( unsigned char* output, const int numberOfBytesToRead )
-{
-#ifdef _DEBUG
-	assert( numberOfBytesToRead > 0 );
-#endif
-	
-	if ( numberOfBytesToRead <= 0 )
-		return false;
-		
-	// Byte align
-	AlignReadToByteBoundary();
-
-	if ( readOffset + ( numberOfBytesToRead << 3 ) > numberOfBitsUsed )
-		return false;
-
-	// Write the data
-	memcpy( output, data + ( readOffset >> 3 ), numberOfBytesToRead );
-	
-	readOffset += numberOfBytesToRead << 3;
-	
-	return true;
-}
-
-// Align the next write and/or read to a byte boundary.  This can be used to 'waste' bits to byte align for efficiency reasons
-void BitStream::AlignWriteToByteBoundary( void )
-{
-	if ( numberOfBitsUsed )
-		numberOfBitsUsed += 8 - ( (( numberOfBitsUsed - 1 ) & 7) + 1 );
-}
-
-// Align the next write and/or read to a byte boundary.  This can be used to 'waste' bits to byte align for efficiency reasons
-void BitStream::AlignReadToByteBoundary( void )
-{
-	if ( readOffset )
-		readOffset += 8 - ( (( readOffset - 1 ) & 7 ) + 1 );
-}
-
-// Write numberToWrite bits from the input source
-// FUNCTION: WEBSERVICE 0x101ab040
-void BitStream::WriteBits( const unsigned char *input, int numberOfBitsToWrite, const bool rightAlignedBits )
-{
-	if (numberOfBitsToWrite<=0)
-		return;
-	
-	AddBitsAndReallocate( numberOfBitsToWrite );
-	int offset = 0;
-	unsigned char dataByte;
-	int numberOfBitsUsedMod8;
-	
-	numberOfBitsUsedMod8 = numberOfBitsUsed & 7;
-	
-	// Faster to put the while at the top surprisingly enough
-	while ( numberOfBitsToWrite > 0 )
-		//do
-	{
-		dataByte = *( input + offset );
-		
-		if ( numberOfBitsToWrite < 8 && rightAlignedBits )   // rightAlignedBits means in the case of a partial byte, the bits are aligned from the right (bit 0) rather than the left (as in the normal internal representation)
-			dataByte <<= 8 - numberOfBitsToWrite;  // shift left to get the bits on the left, as in our internal representation
-			
-		// Writing to a new byte each time
-		if ( numberOfBitsUsedMod8 == 0 )
-			* ( data + ( numberOfBitsUsed >> 3 ) ) = dataByte;
-		else
-		{
-			// Copy over the new data.
-			*( data + ( numberOfBitsUsed >> 3 ) ) |= dataByte >> ( numberOfBitsUsedMod8 ); // First half
-			
-			if ( 8 - ( numberOfBitsUsedMod8 ) < 8 && 8 - ( numberOfBitsUsedMod8 ) < numberOfBitsToWrite )   // If we didn't write it all out in the first half (8 - (numberOfBitsUsed%8) is the number we wrote in the first half)
-			{
-				*( data + ( numberOfBitsUsed >> 3 ) + 1 ) = (unsigned char) ( dataByte << ( 8 - ( numberOfBitsUsedMod8 ) ) ); // Second half (overlaps byte boundary)
-			}
-		}
-		
-		if ( numberOfBitsToWrite >= 8 )
-			numberOfBitsUsed += 8;
-		else
-			numberOfBitsUsed += numberOfBitsToWrite;
-		
-		numberOfBitsToWrite -= 8;
-		
-		offset++;
-	}
-	// } while(numberOfBitsToWrite>0);
-}
-
-// Set the stream to some initial data.  For internal use
-void BitStream::SetData( unsigned char *input )
-{
-	data=input;
-	copyData=false;
-}
-
-// Assume the input source points to a native type, compress and write it
-// FUNCTION: WEBSERVICE 0x101ab170
-void BitStream::WriteCompressed( const unsigned char* input,
-	const int size, const bool unsignedData )
-{
-	int currentByte = ( size >> 3 ) - 1; // PCs
-	
-	unsigned char byteMatch;
-	
-	if ( unsignedData )
-	{
-		byteMatch = 0;
-	}
-	
-	else
-	{
-		byteMatch = 0xFF;
-	}
-	
-	// Write upper bytes with a single 1
-	// From high byte to low byte, if high byte is a byteMatch then write a 1 bit. Otherwise write a 0 bit and then write the remaining bytes
-	while ( currentByte > 0 )
-	{
-		if ( input[ currentByte ] == byteMatch )   // If high byte is byteMatch (0 of 0xff) then it would have the same value shifted
-		{
-			bool b = true;
-			Write( b );
-		}
-		else
-		{
-			// Write the remainder of the data after writing 0
-			bool b = false;
-			Write( b );
-			
-			WriteBits( input, ( currentByte + 1 ) << 3, true );
-			//  currentByte--;
-			
-			
-			return ;
-		}
-		
-		currentByte--;
-	}
-	
-	// If the upper half of the last byte is a 0 (positive) or 16 (negative) then write a 1 and the remaining 4 bits.  Otherwise write a 0 and the 8 bites.
-	if ( ( unsignedData && ( ( *( input + currentByte ) ) & 0xF0 ) == 0x00 ) ||
-		( unsignedData == false && ( ( *( input + currentByte ) ) & 0xF0 ) == 0xF0 ) )
-	{
-		bool b = true;
-		Write( b );
-		WriteBits( input + currentByte, 4, true );
-	}
-	
-	else
-	{
-		bool b = false;
-		Write( b );
-		WriteBits( input + currentByte, 8, true );
-	}
-}
-
-// Read numberOfBitsToRead bits to the output source
-// alignBitsToRight should be set to true to convert internal bitstream data to userdata
-// It should be false if you used WriteBits with rightAlignedBits false
-// FUNCTION: WEBSERVICE 0x101aac50
-bool BitStream::ReadBits( unsigned char* output, int numberOfBitsToRead, const bool alignBitsToRight )
-{
-#ifdef _DEBUG
-	assert( numberOfBitsToRead > 0 );
-#endif
-	if (numberOfBitsToRead<=0)
-	  return false;
-	
-	if ( readOffset + numberOfBitsToRead > numberOfBitsUsed )
-		return false;
-		
-	int readOffsetMod8;
-	
-	int offset = 0;
-	
-	memset( output, 0, BITS_TO_BYTES( numberOfBitsToRead ) );
-	
-	readOffsetMod8 = readOffset & 7;
-	
-	// do
-	// Faster to put the while at the top surprisingly enough
-	while ( numberOfBitsToRead > 0 )
-	{
-		*( output + offset ) |= *( data + ( readOffset >> 3 ) ) << ( readOffsetMod8 ); // First half
-		
-		if ( readOffsetMod8 > 0 && numberOfBitsToRead > 8 - ( readOffsetMod8 ) )   // If we have a second half, we didn't read enough bytes in the first half
-			*( output + offset ) |= *( data + ( readOffset >> 3 ) + 1 ) >> ( 8 - ( readOffsetMod8 ) ); // Second half (overlaps byte boundary)
-			
-		numberOfBitsToRead -= 8;
-		
-		if ( numberOfBitsToRead < 0 )   // Reading a partial byte for the last byte, shift right so the data is aligned on the right
-		{
-		
-			if ( alignBitsToRight )
-				* ( output + offset ) >>= -numberOfBitsToRead;
-				
-			readOffset += 8 + numberOfBitsToRead;
-		}
-		else
-			readOffset += 8;
-			
-		offset++;
-		
-	}
-	
-	//} while(numberOfBitsToRead>0);
-	
-	return true;
-}
-
-// Assume the input source points to a compressed native type. Decompress and read it
-// FUNCTION: WEBSERVICE 0x101aad00
-bool BitStream::ReadCompressed( unsigned char* output,
-	const int size, const bool unsignedData )
-{
-	int currentByte = ( size >> 3 ) - 1;
-	
-	
-	unsigned char byteMatch, halfByteMatch;
-	
-	if ( unsignedData )
-	{
-		byteMatch = 0;
-		halfByteMatch = 0;
-	}
-	
-	else
-	{
-		byteMatch = 0xFF;
-		halfByteMatch = 0xF0;
-	}
-	
-	// Upper bytes are specified with a single 1 if they match byteMatch
-	// From high byte to low byte, if high byte is a byteMatch then write a 1 bit. Otherwise write a 0 bit and then write the remaining bytes
-	while ( currentByte > 0 )
-	{
-		// If we read a 1 then the data is byteMatch.
-		
-		bool b;
-		
-		if ( Read( b ) == false )
-			return false;
-			
-		if ( b )   // Check that bit
-		{
-			output[ currentByte ] = byteMatch;
-			currentByte--;
-		}
-		else
-		{
-			// Read the rest of the bytes
-			
-			if ( ReadBits( output, ( currentByte + 1 ) << 3 ) == false )
-				return false;
-				
-			return true;
-		}
-	}
-	
-	// All but the first bytes are byteMatch.  If the upper half of the last byte is a 0 (positive) or 16 (negative) then what we read will be a 1 and the remaining 4 bits.
-	// Otherwise we read a 0 and the 8 bytes
-	//assert(readOffset+1 <=numberOfBitsUsed); // If this assert is hit the stream wasn't long enough to read from
-	if ( readOffset + 1 > numberOfBitsUsed )
-		return false;
-		
-	bool b;
-	
-	if ( Read( b ) == false )
-		return false;
-		
-	if ( b )   // Check that bit
-	{
-	
-		if ( ReadBits( output + currentByte, 4 ) == false )
-			return false;
-			
-		output[ currentByte ] |= halfByteMatch; // We have to set the high 4 bits since these are set to 0 by ReadBits
-	}
-	else
-	{
-		if ( ReadBits( output + currentByte, 8 ) == false )
-			return false;
-	}
-	
-	return true;
-}
-
-// Reallocates (if necessary) in preparation of writing numberOfBitsToWrite
-// FUNCTION: WEBSERVICE 0x101aadf0
-void BitStream::AddBitsAndReallocate( const int numberOfBitsToWrite )
-{
-	if (numberOfBitsToWrite <= 0)
-		return;
-
-	int newNumberOfBitsAllocated = numberOfBitsToWrite + numberOfBitsUsed;
-	
-	if ( numberOfBitsToWrite + numberOfBitsUsed > 0 && ( ( numberOfBitsAllocated - 1 ) >> 3 ) < ( ( newNumberOfBitsAllocated - 1 ) >> 3 ) )   // If we need to allocate 1 or more new bytes
-	{
-#ifdef _DEBUG
-		// If this assert hits then we need to specify true for the third parameter in the constructor
-		// It needs to reallocate to hold all the data and can't do it unless we allocated to begin with
-		assert( copyData == true );
-#endif
-
-		// Less memory efficient but saves on news and deletes
-		newNumberOfBitsAllocated = ( numberOfBitsToWrite + numberOfBitsUsed ) * 2;
-//		int newByteOffset = BITS_TO_BYTES( numberOfBitsAllocated );
-		// Use realloc and free so we are more efficient than delete and new for resizing
-		int amountToAllocate = BITS_TO_BYTES( newNumberOfBitsAllocated );
-		if (data==(unsigned char*)stackData)
-		{
-			 if (amountToAllocate > BITSTREAM_STACK_ALLOCATION_SIZE)
-			 {
-				 data = ( unsigned char* ) malloc( amountToAllocate );
-
-				 // need to copy the stack data over to our new memory area too
-				 memcpy ((void *)data, (void *)stackData, BITS_TO_BYTES( numberOfBitsAllocated )); 
-			 }
-		}
-		else
-		{
-			data = ( unsigned char* ) realloc( data, amountToAllocate );
-		}
-
-#ifdef _DEBUG
-		assert( data ); // Make sure realloc succeeded
-#endif
-		//  memset(data+newByteOffset, 0,  ((newNumberOfBitsAllocated-1)>>3) - ((numberOfBitsAllocated-1)>>3)); // Set the new data block to 0
-	}
-	
-	if ( newNumberOfBitsAllocated > numberOfBitsAllocated )
-		numberOfBitsAllocated = newNumberOfBitsAllocated;
-}
-
-// Should hit if reads didn't match writes
-void BitStream::AssertStreamEmpty( void )
-{
-	assert( readOffset == numberOfBitsUsed );
-}
-
-void BitStream::PrintBits( void ) const
-{
-	if ( numberOfBitsUsed <= 0 )
-	{
-		printf( "No bits\n" );
-		return ;
-	}
-	
-	for ( int counter = 0; counter < BITS_TO_BYTES( numberOfBitsUsed ); counter++ )
-	{
-		int stop;
-		
-		if ( counter == ( numberOfBitsUsed - 1 ) >> 3 )
-			stop = 8 - ( ( ( numberOfBitsUsed - 1 ) & 7 ) + 1 );
-		else
-			stop = 0;
-			
-		for ( int counter2 = 7; counter2 >= stop; counter2-- )
-		{
-			if ( ( data[ counter ] >> counter2 ) & 1 )
-				putchar( '1' );
-			else
-				putchar( '0' );
-		}
-		
-		putchar( ' ' );
-	}
-	
-	putchar( '\n' );
-}
-
-
-// Exposes the data for you to look at, like PrintBits does.
-// Data will point to the stream.  Returns the length in bits of the stream.
-// FUNCTION: WEBSERVICE 0x101aae70
-int BitStream::CopyData( unsigned char** _data ) const
-{
-#ifdef _DEBUG
-	assert( numberOfBitsUsed > 0 );
-#endif
-	
-	*_data = new unsigned char [ BITS_TO_BYTES( numberOfBitsUsed ) ];
-	memcpy( *_data, data, sizeof(unsigned char) * ( BITS_TO_BYTES( numberOfBitsUsed ) ) );
-	return numberOfBitsUsed;
-}
-
-// Ignore data we don't intend to read
-// FUNCTION: WEBSERVICE 0x101aaeb0
-void BitStream::IgnoreBits( const int numberOfBits )
-{
-	readOffset += numberOfBits;
-}
-
-// Move the write pointer to a position on the array.  Dangerous if you don't know what you are doing!
-void BitStream::SetWriteOffset( const int offset )
-{
-	numberOfBitsUsed = offset;
-}
-
-/*
-int BitStream::GetWriteOffset( void ) const
-{
-	return numberOfBitsUsed;
-}
-
-// Returns the length in bits of the stream
-int BitStream::GetNumberOfBitsUsed( void ) const
-{
-	return GetWriteOffset();
-}
-
-// Returns the length in bytes of the stream
-int BitStream::GetNumberOfBytesUsed( void ) const
-{
-	return BITS_TO_BYTES( numberOfBitsUsed );
-}
-
-// Returns the number of bits into the stream that we have read
-int BitStream::GetReadOffset( void ) const
-{
-	return readOffset;
-}
-
-
-// Sets the read bit index
-void BitStream::SetReadOffset( int newReadOffset )
-{
-	readOffset=newReadOffset;
-}
-
-// Returns the number of bits left in the stream that haven't been read
-int BitStream::GetNumberOfUnreadBits( void ) const
-{
-	return numberOfBitsUsed - readOffset;
-}
-// Exposes the internal data
-unsigned char* BitStream::GetData( void ) const
-{
-	return data;
-}
-
-*/
-// If we used the constructor version with copy data off, this makes sure it is set to on and the data pointed to is copied.
-void BitStream::AssertCopyData( void )
-{
-	if ( copyData == false )
-	{
-		copyData = true;
-		
-		if ( numberOfBitsAllocated > 0 )
-		{
-			unsigned char * newdata = ( unsigned char* ) malloc( BITS_TO_BYTES( numberOfBitsAllocated ) );
-#ifdef _DEBUG
-			
-			assert( data );
-#endif
-			
-			memcpy( newdata, data, BITS_TO_BYTES( numberOfBitsAllocated ) );
-			data = newdata;
-		}
-		
-		else
-			data = 0;
-	}
-}
-void BitStream::ReverseBytes(unsigned char *input, unsigned char *output, int length)
-{
-	for (int i=0; i < length; i++)
-		output[i]=input[length-i-1];
-}
-bool BitStream::DoEndianSwap(void) const
-{
-#ifndef __BITSTREAM_NATIVE_END
-	static bool swap=htonl(12345) == 12345;
-	return swap;
-#else
-	return false;
-#endif
-}
-
-#ifdef _MSC_VER
-#pragma warning( pop )
-#endif
-
-#endif // #if _MSC_VER < 1299 

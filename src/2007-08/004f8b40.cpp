@@ -11,12 +11,14 @@ namespace RBX {
 namespace Render {
 
 // FUNCTION: WEBSERVICE 0x101ef3f0
+// FUNCTION: ROBLOX 0x0049d490
 static float detailLevel(float x, float lo, float hi)
 {
 	return G3D::clamp(1.0f - (x - lo) / (hi - lo), 0.0f, 1.0f);
 }
 
 // FUNCTION: WEBSERVICE 0x101ef6c0
+// FUNCTION: ROBLOX 0x0049d840
 void RenderScene::turnOnLights(G3D::RenderDevice* rd, bool allLights) const
 {
 	rd->enableLighting();
@@ -54,6 +56,7 @@ void RenderScene::turnOnLights(G3D::RenderDevice* rd, bool allLights) const
 }
 
 // FUNCTION: WEBSERVICE 0x101ef990
+// FUNCTION: ROBLOX 0x0049db10
 void RenderScene::sendDiffuseProxyMeshGeometry(G3D::RenderDevice* rd) const
 {
 	for (int i = diffuseProxyArray.size() - 1; i >= 0; i--) {
@@ -67,30 +70,29 @@ void RenderScene::sendDiffuseProxyMeshGeometry(G3D::RenderDevice* rd) const
 }
 
 // FUNCTION: WEBSERVICE 0x101efa00
+// FUNCTION: ROBLOX 0x0049db80
 void RenderScene::transparentPass(G3D::RenderDevice* rd)
 {
 	rd->setDepthTest(G3D::RenderDevice::DEPTH_LEQUAL);
 	rd->setBlendFunc(G3D::RenderDevice::BLEND_SRC_ALPHA, G3D::RenderDevice::BLEND_ONE_MINUS_SRC_ALPHA);
 	rd->setDepthWrite(false);
 
-	for (int i = 0; i < transparentProxyArray.size(); i++) {
-		RenderSurface* p = transparentProxyArray[i];
-		const Material::Level* material = p->material;
+	for (int p = 0; p < transparentProxyArray.size(); p++) {
+		RenderSurface* proxy = transparentProxyArray[p];
+		const Material::Level* material = proxy->material;
 
-		rd->setObjectToWorldMatrix(p->cframe);
-		rd->setPolygonOffset(p->polygonOffset);
-		p->material->configureRenderDevice(rd);
+		rd->setObjectToWorldMatrix(proxy->cframe);
+		rd->setPolygonOffset(proxy->polygonOffset);
+		proxy->material->configureRenderDevice(rd);
 		rd->setColor(G3D::Color4(material->color(), 1.0f - material->transparent()));
-		Mesh::sendGeometry(p->mesh, rd);
+		Mesh::sendGeometry(proxy->mesh, rd);
 	}
 }
 
 // FUNCTION: WEBSERVICE 0x101eff30
+// FUNCTION: ROBLOX 0x0049e070
 void RenderScene::renderShadowVolumeGeometry(
-	G3D::RenderDevice* rd,
-	const G3D::GLight& light,
-	bool caps,
-	float shadowVertexDistance
+	G3D::RenderDevice* rd, const G3D::GLight& light, bool caps, float shadowVertexDistance
 )
 {
 	rd->beginIndexedPrimitives();
@@ -104,6 +106,7 @@ void RenderScene::renderShadowVolumeGeometry(
 }
 
 // FUNCTION: WEBSERVICE 0x101effc0
+// FUNCTION: ROBLOX 0x0049e100
 void RenderScene::reflectionPass(G3D::RenderDevice* rd)
 {
 	if (G3D::GLCaps::supports_GL_EXT_texture_cube_map() && !lighting->environmentMap.isNull() &&
@@ -117,15 +120,15 @@ void RenderScene::reflectionPass(G3D::RenderDevice* rd)
 		rd->configureReflectionMap(1, lighting->environmentMap);
 		rd->setDepthWrite(false);
 
-		for (int i = 0; i < reflectProxyArray.size(); i++) {
-			RenderSurface* p = reflectProxyArray[i];
-			const Material::Level* material = p->material;
+		for (int p = 0; p < reflectProxyArray.size(); p++) {
+			RenderSurface* proxy = reflectProxyArray[p];
+			const Material::Level* material = proxy->material;
 
-			rd->setPolygonOffset(p->polygonOffset);
-			rd->setObjectToWorldMatrix(p->cframe);
+			rd->setPolygonOffset(proxy->polygonOffset);
+			rd->setObjectToWorldMatrix(proxy->cframe);
 			rd->setTexture(0, material->matte(rd));
 			rd->setColor(material->reflect() * G3D::Color3::white());
-			Mesh::sendGeometry(p->mesh, rd);
+			Mesh::sendGeometry(proxy->mesh, rd);
 		}
 
 		rd->popState();
@@ -133,6 +136,7 @@ void RenderScene::reflectionPass(G3D::RenderDevice* rd)
 }
 
 // FUNCTION: WEBSERVICE 0x101f01b0
+// FUNCTION: ROBLOX 0x0049e2f0
 void RenderScene::setThrottle(float t, float m, bool s, float c)
 {
 	t = G3D::clamp(t, 0.0f, 100.0f);
@@ -144,33 +148,23 @@ void RenderScene::setThrottle(float t, float m, bool s, float c)
 		shadows = s;
 
 		lighting = effectSettings.update(
-			shadingQuality,
-			meshDetail,
-			shadows,
-			cameraDistance,
-			desiredLighting,
-			desiredSkyParameters,
-			skyParameters
+			shadingQuality, meshDetail, shadows, cameraDistance, desiredLighting, desiredSkyParameters, skyParameters
 		);
 	}
 }
 
 // FUNCTION: WEBSERVICE 0x101f0320
+// FUNCTION: ROBLOX 0x0049e460
 void RenderScene::setLighting(const G3D::ReferenceCountedPointer<G3D::Lighting>& L)
 {
 	desiredLighting = L;
 	lighting = effectSettings.update(
-		shadingQuality,
-		meshDetail,
-		shadows,
-		cameraDistance,
-		desiredLighting,
-		desiredSkyParameters,
-		skyParameters
+		shadingQuality, meshDetail, shadows, cameraDistance, desiredLighting, desiredSkyParameters, skyParameters
 	);
 }
 
 // FUNCTION: WEBSERVICE 0x101f06a0
+// FUNCTION: ROBLOX 0x0049e7e0
 void RenderScene::computeShadowVolumeGeometry(
 	G3D::Array<unsigned int>& indexArray,
 	G3D::Array<G3D::Vector3>& shadowVertex,
@@ -191,14 +185,16 @@ void RenderScene::computeShadowVolumeGeometry(
 	for (int i = 0; i < shadowProxyArray.size(); i++) {
 		const RenderSurface& proxy = shadowProxyArray[i];
 
-		proxy.fullMesh
-			->computeDirectionalShadowVolume(proxy.cframe, worldLight, indexArray, shadowVertex, generateLightCap);
+		proxy.fullMesh->computeDirectionalShadowVolume(
+			proxy.cframe, worldLight, indexArray, shadowVertex, generateLightCap
+		);
 	}
 
 	renderStats.cpuShadow.tock();
 }
 
 // FUNCTION: WEBSERVICE 0x101f07a0
+// FUNCTION: ROBLOX 0x0049e8e0
 void RenderScene::updateShadowVAR(const G3D::Array<G3D::Vector3>& shadowVertex)
 {
 	size_t size = shadowVertex.size() * sizeof(G3D::Vector3) + 16;
@@ -214,6 +210,7 @@ void RenderScene::updateShadowVAR(const G3D::Array<G3D::Vector3>& shadowVertex)
 }
 
 // FUNCTION: WEBSERVICE 0x101f0900
+// FUNCTION: ROBLOX 0x0049ea40
 void RenderScene::classifyProxies()
 {
 	for (int i = 0; i < proxyArray.size(); i++) {
@@ -235,11 +232,13 @@ void RenderScene::classifyProxies()
 }
 
 // FUNCTION: WEBSERVICE 0x101f0ff0
+// FUNCTION: ROBLOX 0x0049efa0
 RenderScene::~RenderScene()
 {
 }
 
 // FUNCTION: WEBSERVICE 0x101f1200
+// FUNCTION: ROBLOX 0x0049f1b0
 void RenderScene::presetLighting(
 	G3D::ReferenceCountedPointer<G3D::Sky> sky,
 	G3D::LightingParameters skyParameters,
@@ -254,8 +253,8 @@ void RenderScene::presetLighting(
 	lighting->ambientTop = ambientTop;
 	lighting->ambientBottom = ambientBottom;
 
-	G3D::GLight light = G3D::GLight::directional(skyParameters.lightDirection, skyParameters.lightColor * 0.9);
-	lighting->shadowedLightArray.append(light);
+	G3D::GLight sun = G3D::GLight::directional(skyParameters.lightDirection, skyParameters.lightColor * 0.9);
+	lighting->shadowedLightArray.append(sun);
 
 	if (!sky.isNull()) {
 		lighting->environmentMap = sky->getEnvironmentMap();
@@ -265,6 +264,7 @@ void RenderScene::presetLighting(
 }
 
 // FUNCTION: WEBSERVICE 0x101f1680
+// FUNCTION: ROBLOX 0x0049f4f0
 void RenderScene::markStencilShadows(G3D::RenderDevice* rd, const G3D::GCamera& camera, const G3D::GLight& light)
 {
 	static G3D::Array<G3D::Vector3> shadowVertex;
@@ -305,9 +305,7 @@ void RenderScene::markStencilShadows(G3D::RenderDevice* rd, const G3D::GCamera& 
 		else {
 			rd->setCullFace(G3D::RenderDevice::CULL_BACK);
 			rd->setStencilOp(
-				G3D::RenderDevice::STENCIL_KEEP,
-				G3D::RenderDevice::STENCIL_DECR_WRAP,
-				G3D::RenderDevice::STENCIL_KEEP
+				G3D::RenderDevice::STENCIL_KEEP, G3D::RenderDevice::STENCIL_DECR_WRAP, G3D::RenderDevice::STENCIL_KEEP
 			);
 		}
 
@@ -321,16 +319,12 @@ void RenderScene::markStencilShadows(G3D::RenderDevice* rd, const G3D::GCamera& 
 	if (!G3D::GLCaps::supports_two_sided_stencil() && !debugShadowVolumes) {
 		rd->setCullFace(G3D::RenderDevice::CULL_FRONT);
 		rd->setStencilOp(
-			G3D::RenderDevice::STENCIL_KEEP,
-			G3D::RenderDevice::STENCIL_INCR_WRAP,
-			G3D::RenderDevice::STENCIL_KEEP
+			G3D::RenderDevice::STENCIL_KEEP, G3D::RenderDevice::STENCIL_INCR_WRAP, G3D::RenderDevice::STENCIL_KEEP
 		);
 		renderShadowVolumeGeometry(rd, light, true, shadowVertexDistance);
 		rd->setCullFace(G3D::RenderDevice::CULL_BACK);
 		rd->setStencilOp(
-			G3D::RenderDevice::STENCIL_KEEP,
-			G3D::RenderDevice::STENCIL_DECR_WRAP,
-			G3D::RenderDevice::STENCIL_KEEP
+			G3D::RenderDevice::STENCIL_KEEP, G3D::RenderDevice::STENCIL_DECR_WRAP, G3D::RenderDevice::STENCIL_KEEP
 		);
 	}
 
@@ -338,6 +332,7 @@ void RenderScene::markStencilShadows(G3D::RenderDevice* rd, const G3D::GCamera& 
 }
 
 // STUB: WEBSERVICE 0x101f1960
+// STUB: ROBLOX 0x0049f7d0
 void RenderScene::allocateProxies(G3D::RenderDevice* rd, const G3D::GCamera& camera)
 {
 	G3D::CoordinateFrame cameraCFrame;
@@ -388,10 +383,10 @@ void RenderScene::allocateProxies(G3D::RenderDevice* rd, const G3D::GCamera& cam
 			proxy.z = cspace.z - chunk->polygonOffset;
 			proxy.fullMesh = chunk->getMesh();
 
-			float rawLvl = detailLevel(fabs(proxy.z), -nearZ, -farZ) + effectSettings.LODShift();
-			float lvl = G3D::clamp(rawLvl, 0.0f, 1.0f);
+			float rawLvl = detailLevel(fabs(proxy.z), -nearZ, -farZ);
+			float lvl = G3D::clamp(rawLvl + effectSettings.LODShift(), 0.0f, 1.0f);
 
-			proxy.material = chunk->getMaterial()->detailLevel(rawLvl);
+			proxy.material = chunk->getMaterial()->detailLevel(lvl);
 
 			if (proxy.material != NULL) {
 				proxy.material->baseTexture(rd);
@@ -403,6 +398,7 @@ void RenderScene::allocateProxies(G3D::RenderDevice* rd, const G3D::GCamera& cam
 }
 
 // FUNCTION: WEBSERVICE 0x101f1fd0
+// FUNCTION: ROBLOX 0x0049fe40
 void RenderScene::computeProxyArrays(G3D::RenderDevice* rd, const G3D::GCamera& camera)
 {
 	renderStats.computeProxyArrays.tick();
@@ -417,7 +413,143 @@ void RenderScene::computeProxyArrays(G3D::RenderDevice* rd, const G3D::GCamera& 
 	renderStats.diffuseProxyCount = diffuseProxyArray.size();
 }
 
+// FUNCTION: WEBSERVICE 0x101f2090
+// FUNCTION: ROBLOX 0x0049ff00
+void RenderScene::render(G3D::RenderDevice* rd, const G3D::GCamera& camera)
+{
+	int startTriCount = rd->getTriangleCount();
+	int markShadowsTriCount = 0;
+	int unshadowedTriCount = 0;
+	int shadowedTriCount = 0;
+
+	renderStats.cpuRenderTotal.tick();
+
+	rd->setStencilConstant(0);
+	rd->setStencilClearValue(0);
+
+	rd->setProjectionAndCameraMatrix(camera);
+	if (effectSettings.applyToneMap()) {
+		EffectSettings::getToneMap()->beginFrame(rd);
+	}
+
+	rd->setColorClearValue(colorClearValue);
+
+	rd->clear(sky.isNull() || !effectSettings.skyBox(), true, true);
+	if (sky.notNull() && effectSettings.skyBox()) {
+		sky->render(rd, skyParameters);
+	}
+
+	computeProxyArrays(rd, camera);
+
+	rd->setShadeMode(G3D::RenderDevice::SHADE_SMOOTH);
+	rd->setDepthTest(G3D::RenderDevice::DEPTH_LEQUAL);
+	rd->setAlphaTest(G3D::RenderDevice::ALPHA_GREATER, 0.1);
+
+	rd->pushState();
+
+	turnOnLights(rd, effectSettings.useAllLightsInUnshadowedPass());
+
+	Mesh::beginRender(rd, true, false);
+	if (!debugShadowVolumes) {
+		unshadowedTriCount = rd->getTriangleCount();
+		sendDiffuseProxyMeshGeometry(rd);
+		unshadowedTriCount = rd->getTriangleCount() - unshadowedTriCount;
+	}
+	Mesh::endRender(rd);
+
+	rd->popState();
+
+	if (effectSettings.stencilShadows()) {
+		rd->pushState();
+
+		rd->disableDepthWrite();
+		rd->setDepthTest(G3D::RenderDevice::DEPTH_LEQUAL);
+
+		for (int L = 0; L < lighting->shadowedLightArray.size(); ++L) {
+			if (L > 0) {
+				rd->clear(false, false, true);
+			}
+
+			const G3D::GLight& light = lighting->shadowedLightArray[L];
+
+			if (effectSettings.alphaBlendShadowLights()) {
+				rd->setBlendFunc(
+					G3D::RenderDevice::BLEND_ONE, G3D::RenderDevice::BLEND_ONE, G3D::RenderDevice::BLENDEQ_ADD
+				);
+				rd->enableLighting();
+				rd->setLight(0, light);
+			}
+			else {
+				turnOnLights(rd, true);
+			}
+
+			int triCount = rd->getTriangleCount();
+			markStencilShadows(rd, camera, light);
+			markShadowsTriCount += rd->getTriangleCount() - triCount;
+
+			if (!debugShadowVolumes) {
+				rd->setStencilConstant(0);
+				rd->setDepthTest(G3D::RenderDevice::DEPTH_LEQUAL);
+
+				int lightTriCount = rd->getTriangleCount();
+				rd->setPolygonOffset(0);
+				rd->setStencilTest(G3D::RenderDevice::STENCIL_EQUAL);
+
+				Mesh::beginRender(rd, true, false);
+				sendDiffuseProxyMeshGeometry(rd);
+				Mesh::endRender(rd);
+
+				shadowedTriCount += rd->getTriangleCount() - lightTriCount;
+			}
+		}
+
+		rd->popState();
+	}
+	else {
+		renderStats.cpuShadow.tick();
+		renderStats.cpuShadow.tock();
+	}
+
+	rd->pushState();
+	Mesh::beginRender(rd, true, false);
+	reflectionPass(rd);
+	Mesh::endRender(rd);
+	rd->popState();
+
+	rd->pushState();
+	turnOnLights(rd, true);
+	Mesh::beginRender(rd, true, false);
+	transparentPass(rd);
+	Mesh::endRender(rd);
+	rd->popState();
+
+	if (sky.notNull() && effectSettings.skyBox()) {
+		sky->renderLensFlare(rd, skyParameters);
+	}
+
+	if (effectSettings.applyDepthBlur()) {
+		EffectSettings::getDepthBlur()->apply(rd);
+	}
+
+	if (effectSettings.applyToneMap()) {
+		EffectSettings::getToneMap()->endFrame(rd);
+	}
+
+	renderStats.cpuRenderTotal.tock();
+
+	renderStats.pushPopCount = rd->debugNumPushStateCalls();
+	renderStats.totalTriangles = rd->getTriangleCount() - startTriCount;
+	renderStats.markShadowsTriangles = markShadowsTriCount;
+	renderStats.shadowedLightTriangles = shadowedTriCount;
+	renderStats.unshadowedTriangles = unshadowedTriCount;
+	renderStats.majorGLStateChanges = rd->debugNumMajorOpenGLStateChanges();
+	renderStats.minorGLStateChanges = rd->debugNumMinorOpenGLStateChanges();
+	renderStats.majorStateChanges = rd->debugNumMajorStateChanges();
+	renderStats.minorStateChanges = rd->debugNumMinorStateChanges();
+}
+
 // FUNCTION: WEBSERVICE 0x101f2450
+// FUNCTION: ROBLOX 0x004a02c0
 RenderScene::RenderScene()
 	: shadingQuality(-1.0f), meshDetail(-1.0f), shadows(false), cameraDistance((float) G3D::inf()),
 	  debugShadowVolumes(false), colorClearValue(0.5f, 0.5f, 1.0f, 1.0f)

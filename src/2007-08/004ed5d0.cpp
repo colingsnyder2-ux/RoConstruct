@@ -1,182 +1,97 @@
+// from server: 88% by EspClaude
 // from server: 42% by colin
 // roc 2007-08 004ed5d0  unit: CylinderBuilder  size: 799 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 004ed5d0
 
-extern "C" double __stdcall ceil(double);
-extern "C" double __cdecl fabs(double);
+// roc-flags: /O2 /GS /EHsc /MD /QIfist
+// Target bytes: disassemble clients/2007-08/Roblox.exe at 0x4ed5d0 (799 bytes).
+// Shape follows the 2008-06 sibling (rbxgs Builder::build, 2008 0x4ff790) adapted to the
+// 2007-08 bytes: double constants 0.5 (0x795b48), 0.25 (0x79f348), 4.0 (0x79f340);
+// float constants 0.25 (0x787050), 0.5 (0x797e9c); ceil via MSVCR80 IAT (0x77e930);
+// surfaceTypes at this+0x10, halfSize at this+4, textureScale at this+0x18.
+// The target rounds with fld/fistp (G3D lrintf); /QIfist reproduces that conversion.
 
-struct CylinderBuilder {
-    char pad0[0x10];
-    int field10;
-    void buildTop(int, float, float, float, int, int);
+#include <math.h>
+
+namespace G3D {
+inline int iRound(float f) { return (int)f; }
+struct Vector2 {
+    float x, y;
+    Vector2() : x(0), y(0) {}
+    Vector2(float x_, float y_) : x(x_), y(y_) {}
+    Vector2(const Vector2& v) : x(v.x), y(v.y) {}
+    Vector2& operator=(const Vector2& v) { x = v.x; y = v.y; return *this; }
+    float& operator[](int i) { return (&x)[i]; }
+    const float& operator[](int i) const { return (&x)[i]; }
+    Vector2 operator-() const { return Vector2(-x, -y); }
+};
+struct Vector3 {
+    float x, y, z;
+    Vector3(float x_, float y_, float z_) : x(x_), y(y_), z(z_) {}
+    float& operator[](int i) { return (&x)[i]; }
+    const float& operator[](int i) const { return (&x)[i]; }
+    Vector2 xy() const;                       // call 0x50b010
+};
+struct Rect2D {
+    Vector2 min, max;
+    static Rect2D xyxy(const Vector2& v0, const Vector2& v1);   // call 0x4e0180
+};
+}
+
+namespace MeshTypes {
+struct Vector2int16 {
+    short x, y;
+    Vector2int16() : x(0), y(0) {}
+    short& operator[](int i) { return (&x)[i]; }
+    const short& operator[](int i) const { return (&x)[i]; }
+};
+template<class T> const T& maximum(const T& a, const T& b) { return a < b ? b : a; }
+}
+
+namespace RBX { namespace View {
+using G3D::Vector2; using G3D::Vector3; using G3D::Rect2D; using MeshTypes::Vector2int16;
+struct Function { int opaque[2]; };   // no /GS cookie in target: no char arrays
+Vector3 __cdecl mapFace(const Vector3&);      // call 0x5b9970
+float __cdecl surfaceOffset(int);             // call 0x4de980
+static __forceinline bool useFirstAxis(int purpose, const Vector3& size) { if (purpose == 0 && size.x < size.y) return true; return false; }
+static __forceinline Vector3 absoluteSize(const Vector3& v) { Vector3 mapped = mapFace(v); return Vector3(fabs(mapped.x), fabs(mapped.y), fabs(mapped.z)); }
+struct Builder {
+    virtual void build(int);
+    const Vector3 halfSize;    // +4
+    unsigned surfaceTypes;     // +0x10
+    void* level;               // +0x14
+    Vector2 textureScale;      // +0x18
+    void build(Function, Vector2int16, int);
+    void emit(Function, Rect2D, float, Vector2, Vector2, int, Vector2int16);   // call 0x4ec270
 };
 
-extern "C" void __stdcall sub_5b9970(void*, void*);
-extern "C" void __stdcall sub_50b010(void*, void*);
-extern "C" float __stdcall sub_4de980(int);
-extern "C" void __stdcall sub_4e0180(void*, void*, void*, void*, int, int);
-extern "C" void __stdcall sub_4ec270(void*, int, int);
-
-extern float g_787050;
-extern float g_797e9c;
-extern double g_795b48;
-extern double g_79f340;
-extern double g_79f348;
-
-void CylinderBuilder::buildTop(int a1, float a2, float a3, float a4, int a5, int a6)
+void Builder::build(Function function, Vector2int16 grid, int purpose)
 {
-    int ebx = this->field10 & 7;
-    float v10;
-    float v18;
-    float v1c;
-    float v20;
-    float v24;
-    float v28;
-    float v2c;
-    float v30;
-    float v44;
-    float v48;
-    float v4c;
-    float v5c;
-    int ebp;
-    int esi;
-    int edi;
-    int eax;
-    int local10;
-    int local12;
-    int local14;
-    int local1c;
-    int local20;
-    int local24;
-    int local28;
-    int local2c;
-    int local30;
-    int local34;
-    int local38;
-    int local3c;
-    int local40;
-    int local44;
-    int local48;
-    int local4c;
-    int local50;
-    int local54;
-    int local58;
-    int local5c;
-    int local5e;
-    int local60;
-    int local64;
-
-    sub_5b9970(&this->field10 + 1, &local3c);
-
-    v18 = (float)fabs(a4);
-    ebp = a6;
-    edi = 0;
-    v1c = v18;
-    v10 = (float)fabs(local3c);
-    v18 = v10;
-    v10 = (float)fabs(local38);
-    v44 = v10;
-    v48 = v18;
-    v4c = v1c;
-
-    if (ebp == edi) {
-        if (v44 == v1c) {
-            esi = 1;
-        } else {
-            esi = 0;
-        }
-    } else {
-        esi = 0;
+    int surface = (surfaceTypes >> 0) & 7;
+    Vector3 size = absoluteSize(halfSize);
+    int axis = !useFirstAxis(purpose, size);
+    int steps = (purpose == 0 && surface) ? G3D::iRound((float)ceil((double)(float)(size[axis] * 0.5))) : 1;
+    Vector2int16 divisions;
+    short n = grid[1 - axis];
+    divisions[axis] = MeshTypes::maximum<short>(1, (short)(n / steps));
+    divisions[1 - axis] = n;
+    float depth = size.z;
+    Vector2 begin = -size.xy();
+    Vector2 end = size.xy();
+    Vector2 origin, extent;
+    switch (purpose) {
+    case 0:
+        if (!surface) { origin.x = 0.25f; origin.y = 0.5f; extent[1 - axis] = 0; extent[axis] = 0; }
+        else { origin[1 - axis] = 0; origin[axis] = surfaceOffset(surface); extent[1 - axis] = size[1 - axis] * 2.0f; extent[axis] = 0.5f; if (axis == 1) extent.x = -extent.x; }
+        break;
+    case 1: origin.x = 0; origin.y = textureScale.y; extent.x = textureScale.x; extent.y = -textureScale.y; break;
+    case 2: origin.x = 0; origin.y = 0; extent.x = 0; extent.y = 0; break;
     }
-
-    if (ebp == edi && ebx != edi) {
-        v24 = (float)((double)v44 * g_795b48);
-        v24 = (float)ceil((double)v24);
-        v1c = v24;
-        ebp = (int)v1c;
-    } else {
-        ebp = 1;
-    }
-
-    local10 = 0;
-    local12 = 0;
-    edi = *(unsigned short*)((char*)&local5e - esi * 2);
-    eax = (int)(short)edi;
-    eax = eax / ebp;
-    local1c = 1;
-    local5c = (unsigned short)eax;
-    if ((short)eax > 1) {
-        eax = (int)&local5c;
-    } else {
-        eax = (int)&local1c;
-    }
-    *(unsigned short*)((char*)&local10 + esi * 2) = *(unsigned short*)eax;
-    v18 = v4c;
-    *(unsigned short*)((char*)&local12 - esi * 2) = (unsigned short)edi;
-
-    sub_50b010(&local38, &local48);
-    v5c = -*(float*)&local38;
-    sub_50b010(&local30, &local48);
-    v20 = -*(float*)&local34;
-    *(float*)&local3c = *(float*)&local60;
-    *(float*)&local40 = v20;
-
-    if (local60 == 0) {
-        if (ebx == 0) {
-            *(float*)&local28 = g_787050;
-            *(float*)&local2c = g_797e9c;
-            *(float*)((char*)&local20 - esi * 4) = *(float*)&local28;
-            *(float*)((char*)&local1c + esi * 4) = *(float*)&local2c;
-        } else {
-            *(float*)((char*)&local2c - esi * 4) = 0.0f;
-            *(float*)&local2c = sub_4de980(ebx);
-            *(float*)((char*)&local2c + esi * 4) = *(float*)&local2c;
-            v5c = *(float*)((char*)&local4c - esi * 4);
-            v5c = v5c + v5c;
-            *(float*)((char*)&local24 - esi * 4) = v5c;
-            *(float*)((char*)&local1c + esi * 4) = g_797e9c;
-            if (esi == 1) {
-                v1c = -v1c;
-            }
-        }
-    } else if (local60 == 1) {
-        *(float*)&local28 = 0.0f;
-        *(float*)&local2c = *(float*)((char*)&local14 + 0x1c);
-        v1c = *(float*)((char*)&local14 + 0x18);
-        v20 = -*(float*)((char*)&local14 + 0x1c);
-    } else if (local60 == 2) {
-        *(float*)&local28 = 0.0f;
-        *(float*)&local2c = 0.0f;
-        v1c = 0.0f;
-        v20 = 0.0f;
-    } else {
-        *(float*)&local28 = 0.0f;
-        *(float*)&local2c = 0.0f;
-        v1c = 0.0f;
-        v20 = 0.0f;
-    }
-
-    edi = 0;
-    while (edi < ebp) {
-        if (edi == ebp - 1) {
-            v5c = *(float*)((char*)&local44 + esi * 4);
-            *(float*)((char*)&local30 + esi * 4) = v5c;
-            if (local60 != 0) {
-            } else if (local24 != 0) {
-                v5c = v5c - *(float*)((char*)&local38 + esi * 4);
-                v5c = v5c * (float)g_79f348;
-                v5c = v5c * *(float*)((char*)&local1c + esi * 4);
-                *(float*)((char*)&local1c + esi * 4) = v5c;
-            }
-        } else {
-            v30 = *(float*)((char*)&local38 + esi * 4);
-            v30 = v30 + (float)g_79f340;
-            *(float*)((char*)&local30 + esi * 4) = v30;
-        }
-
-        sub_4e0180(&local64, &local48, &local30, &local1c, esi, local10);
-        sub_4ec270((void*)local48, local10, ebx);
-        *(float*)((char*)&local38 + esi * 4) = *(float*)((char*)&local30 + esi * 4);
-        edi++;
+    for (int i = 0; i < steps; ++i) {
+        if (i == steps - 1) { end[axis] = size[axis]; if (purpose == 0 && surface) extent[axis] = (end[axis] - begin[axis]) * 0.25 * extent[axis]; }
+        else end[axis] = begin[axis] + 4.0;
+        emit(function, Rect2D::xyxy(begin, end), depth, origin, extent, axis, divisions);
+        begin[axis] = end[axis];
     }
 }
+}}

@@ -19,17 +19,20 @@
 namespace RBX {
 
 // FUNCTION: WEBSERVICE 0x1010a910 FOLDED
+// FUNCTION: ROBLOX 0x0060ca60 FOLDED
 Joint::JointType MotorJoint::getJointType() const
 {
 	return MOTOR_JOINT;
 }
 
 // FUNCTION: WEBSERVICE 0x1011fed0
+// FUNCTION: ROBLOX 0x005f5c40
 MotorJoint::MotorJoint() : link(new RevoluteLink()), currentAngle(0.0f), maxVelocity(0.0f), desiredAngle(0.0f)
 {
 }
 
 // FUNCTION: WEBSERVICE 0x1011ff70
+// FUNCTION: ROBLOX 0x005f5ce0
 RevoluteLink* MotorJoint::resetLink()
 {
 	int index = getPrimitive(1)->getBody()->getParent() != getPrimitive(0)->getBody();
@@ -42,6 +45,7 @@ RevoluteLink* MotorJoint::resetLink()
 }
 
 // FUNCTION: WEBSERVICE 0x1011ffd0
+// FUNCTION: ROBLOX 0x005f5d40
 bool MotorJoint::isAligned()
 {
 	CoordinateFrame baseWorld = getPrimitive(0)->getCoordinateFrame() * jointCoord0;
@@ -52,6 +56,7 @@ bool MotorJoint::isAligned()
 }
 
 // FUNCTION: WEBSERVICE 0x10120070
+// FUNCTION: ROBLOX 0x005f5de0
 void MotorJoint::setCurrentAngle(float value)
 {
 	if (currentAngle != value) {
@@ -67,12 +72,14 @@ void MotorJoint::setCurrentAngle(float value)
 }
 
 // FUNCTION: WEBSERVICE 0x101200d0
+// FUNCTION: ROBLOX 0x005f5e40
 MotorJoint::~MotorJoint()
 {
 	delete link;
 }
 
 // FUNCTION: WEBSERVICE 0x10120140
+// FUNCTION: ROBLOX 0x005f5eb0
 void MotorJoint::stepUi(int uiStepId)
 {
 	float maxStep = fabs(maxVelocity);

@@ -19,21 +19,22 @@ namespace RBX {
 bool ContactManager::ignoreBool;
 
 // FUNCTION: WEBSERVICE 0x101080d0
+// FUNCTION: ROBLOX 0x0063e350
 ContactManager::ContactManager(World* world) : spatialHash(new SpatialHash(world, this)), world(world)
 {
 }
 
 // FUNCTION: WEBSERVICE 0x10108130
+// FUNCTION: ROBLOX 0x0063e3b0
 void ContactManager::getPrimitivesTouchingExtents(
-	const Extents& extents,
-	const Primitive* ignore,
-	G3D::Array<Primitive*>& found
+	const Extents& extents, const Primitive* ignore, G3D::Array<Primitive*>& found
 )
 {
 	spatialHash->getPrimitivesTouchingExtents(extents, ignore, found);
 }
 
 // FUNCTION: WEBSERVICE 0x10108140
+// FUNCTION: ROBLOX 0x0063e3c0
 void ContactManager::onReleasePair(Primitive* p0, Primitive* p1)
 {
 	Contact* contact = Primitive::getContact(p0, p1);
@@ -42,61 +43,67 @@ void ContactManager::onReleasePair(Primitive* p0, Primitive* p1)
 }
 
 // FUNCTION: WEBSERVICE 0x10108170
+// FUNCTION: ROBLOX 0x0063e3f0
 void ContactManager::onPrimitiveAdded(Primitive* p)
 {
 	spatialHash->onPrimitiveAdded(p);
 }
 
 // FUNCTION: WEBSERVICE 0x10108180
+// FUNCTION: ROBLOX 0x0063e400
 void ContactManager::onPrimitiveRemoved(Primitive* p)
 {
 	spatialHash->onPrimitiveRemoved(p);
 }
 
 // FUNCTION: WEBSERVICE 0x10108190
+// FUNCTION: ROBLOX 0x0063e410
 void ContactManager::onPrimitiveExtentsChanged(Primitive* p)
 {
 	spatialHash->onPrimitiveExtentsChanged(p);
 }
 
 // FUNCTION: WEBSERVICE 0x101081a0
+// FUNCTION: ROBLOX 0x0063e420
 void ContactManager::stepWorld()
 {
 	spatialHash->onAllPrimitivesMoved();
 }
 
 // FUNCTION: WEBSERVICE 0x101081b0
+// FUNCTION: ROBLOX 0x0063e430 FOLDED
 ContactManager::~ContactManager()
 {
 	delete spatialHash;
 }
 
 // FUNCTION: WEBSERVICE 0x101081d0
+// FUNCTION: ROBLOX 0x0063e450
 Primitive* ContactManager::getSlowHit(
 	const G3D::Array<Primitive*>& primitives,
 	const G3D::Ray& unitRay,
-	const G3D::Array<const Primitive*>* ignore,
+	const G3D::Array<const Primitive*>* ignorePrim,
 	const HitTestFilter* filter,
 	Vector3& hitPoint,
 	float maxDistance,
-	bool& hitSurface,
-	bool& blocked
+	bool& inside,
+	bool& stopped
 ) const
 {
-	float closestHit = maxDistance;
-	float closestBlock = maxDistance;
-	Primitive* answer = NULL;
+	float bestOffset = maxDistance;
+	float stopOffset = maxDistance;
+	Primitive* bestPrimitive = NULL;
 
-	blocked = false;
-	hitSurface = false;
+	stopped = false;
+	inside = false;
 
 	for (int i = 0; i < primitives.size(); ++i) {
 		Primitive* primitive = primitives[i];
 
 		bool notIgnored;
 
-		if (ignore != NULL) {
-			notIgnored = ignore->find(primitive) == ignore->end();
+		if (ignorePrim != NULL) {
+			notIgnored = ignorePrim->find(primitive) == ignorePrim->end();
 		}
 		else {
 			notIgnored = true;
@@ -112,33 +119,33 @@ Primitive* ContactManager::getSlowHit(
 		}
 
 		if (notIgnored && result != HitTestFilter::IGNORE_PRIM) {
-			Vector3 center = primitive->getCoordinateFrame().translation;
+			Vector3 worldPos = primitive->getCoordinateFrame().translation;
 			float radius = primitive->getRadius();
 
-			float along = (center - unitRay.origin).dot(unitRay.direction);
+			float along = (worldPos - unitRay.origin).dot(unitRay.direction);
 
-			if ((center - (unitRay.origin + unitRay.direction * along)).magnitude() <= radius) {
-				Vector3 surface(0.0f, 0.0f, 0.0f);
-				bool inside;
+			if ((worldPos - (unitRay.origin + unitRay.direction * along)).magnitude() <= radius) {
+				Vector3 thisHitPoint(0.0f, 0.0f, 0.0f);
+				bool thisInside;
 
-				if (primitive->hitTest(unitRay, surface, inside)) {
-					float distance = (surface - unitRay.origin).dot(unitRay.direction);
+				if (primitive->hitTest(unitRay, thisHitPoint, thisInside)) {
+					float distance = (thisHitPoint - unitRay.origin).dot(unitRay.direction);
 
 					if (distance > 0.0f) {
 						switch (result) {
 						case HitTestFilter::STOP_TEST:
-							if (distance < closestBlock) {
-								blocked = true;
-								closestBlock = distance;
+							if (distance < stopOffset) {
+								stopped = true;
+								stopOffset = distance;
 							}
 							break;
 
 						case HitTestFilter::INCLUDE_PRIM:
-							if (distance < closestHit) {
-								hitSurface = inside;
-								closestHit = distance;
-								hitPoint = surface;
-								answer = primitive;
+							if (distance < bestOffset) {
+								inside = thisInside;
+								bestOffset = distance;
+								hitPoint = thisHitPoint;
+								bestPrimitive = primitive;
 							}
 							break;
 						}
@@ -148,14 +155,15 @@ Primitive* ContactManager::getSlowHit(
 		}
 	}
 
-	if (blocked && answer != NULL && closestHit < closestBlock) {
-		blocked = false;
+	if (stopped && bestPrimitive != NULL && bestOffset < stopOffset) {
+		stopped = false;
 	}
 
-	return answer;
+	return bestPrimitive;
 }
 
 // FUNCTION: WEBSERVICE 0x10108620
+// FUNCTION: ROBLOX 0x0063e910
 bool ContactManager::intersectingOthers(Primitive* check, const std::set<Primitive*>& checkSet, float overlapIgnored)
 {
 	Contact* c = check->getFirstContact();
@@ -174,35 +182,37 @@ bool ContactManager::intersectingOthers(Primitive* check, const std::set<Primiti
 }
 
 // FUNCTION: WEBSERVICE 0x101086c0
+// FUNCTION: ROBLOX 0x0063e9b0
 Primitive* ContactManager::getFastHit(
-	const G3D::Ray& ray,
-	const G3D::Array<const Primitive*>* ignore,
+	const G3D::Ray& worldRay,
+	const G3D::Array<const Primitive*>* ignorePrim,
 	const HitTestFilter* filter,
-	Vector3& hitPoint,
-	bool& hitSurface,
-	bool& blocked
+	Vector3& hitPointWorld,
+	bool& inside,
+	bool& stopped
 ) const
 {
-	G3D::Array<Primitive*> found;
+	G3D::Array<Primitive*> primitives;
 
-	Vector3int32 grid = SpatialHash::realToHashGrid(ray.origin);
+	Vector3int32 grid = SpatialHash::realToHashGrid(worldRay.origin);
 
-	float length = ray.direction.magnitude();
+	float length = worldRay.direction.magnitude();
 	float maxDistance = std::min(5000.0f, length);
 
-	G3D::Ray unitRay = ray.unit();
+	G3D::Ray unitRay = worldRay.unit();
 
 	do {
-		found.resize(0, false);
-		spatialHash->getPrimitivesInGrid(grid, found);
+		primitives.resize(0, false);
+		spatialHash->getPrimitivesInGrid(grid, primitives);
 
-		Primitive* hit = getSlowHit(found, unitRay, ignore, filter, hitPoint, maxDistance, hitSurface, blocked);
+		Primitive* hit =
+			getSlowHit(primitives, unitRay, ignorePrim, filter, hitPointWorld, maxDistance, inside, stopped);
 
 		if (hit != NULL) {
 			Vector3 gridCenter((float) grid.x, (float) grid.y, (float) grid.z);
-			Extents extents = SpatialHash::hashGridToRealExtents(gridCenter);
+			Extents hashGrid = SpatialHash::hashGridToRealExtents(gridCenter);
 
-			if (extents.fuzzyContains(hitPoint, 0.001f)) {
+			if (hashGrid.fuzzyContains(hitPointWorld, 0.001f)) {
 				return hit;
 			}
 		}
@@ -212,6 +222,7 @@ Primitive* ContactManager::getFastHit(
 }
 
 // FUNCTION: WEBSERVICE 0x10108890
+// FUNCTION: ROBLOX 0x0063eb80
 Primitive* ContactManager::getHit(
 	const G3D::Ray& ray,
 	const G3D::Array<const Primitive*>* ignore,
@@ -239,31 +250,34 @@ Primitive* ContactManager::getHit(
 }
 
 // FUNCTION: WEBSERVICE 0x10108920
+// FUNCTION: ROBLOX 0x0063ec10
 Primitive* ContactManager::getHitLegacy(
-	const G3D::Ray& ray,
-	const Primitive* ignore,
+	const G3D::Ray& originDirection,
+	const Primitive* ignorePrim,
 	const HitTestFilter* filter,
-	Vector3& hitPoint,
-	float& distance,
-	const float& maxDistance
+	Vector3& hitPointWorld,
+	float& distanceToHit,
+	const float& maxSearchDepth
 ) const
 {
-	G3D::Ray scaled = G3D::Ray::fromOriginAndDirection(ray.origin, ray.direction * maxDistance);
+	G3D::Ray worldRay =
+		G3D::Ray::fromOriginAndDirection(originDirection.origin, originDirection.direction * maxSearchDepth);
 
-	G3D::Array<const Primitive*> ignored;
+	G3D::Array<const Primitive*> ignorePrims;
 
-	if (ignore != NULL) {
-		ignored.append(ignore);
+	if (ignorePrim != NULL) {
+		ignorePrims.append(ignorePrim);
 	}
 
-	Primitive* hit = getHit(scaled, &ignored, filter, hitPoint, ignoreBool);
+	Primitive* hit = getHit(worldRay, &ignorePrims, filter, hitPointWorld, ignoreBool);
 
-	distance = hit != NULL ? (hitPoint - scaled.origin).magnitude() : 0.0f;
+	distanceToHit = hit != NULL ? (hitPointWorld - worldRay.origin).magnitude() : 0.0f;
 
 	return hit;
 }
 
 // FUNCTION: WEBSERVICE 0x10108aa0
+// FUNCTION: ROBLOX 0x0063ed90
 Primitive* ContactManager::getHit(
 	const G3D::Ray& ray,
 	const std::vector<const Primitive*>* ignore,
@@ -280,6 +294,7 @@ Primitive* ContactManager::getHit(
 }
 
 // FUNCTION: WEBSERVICE 0x10108b30
+// FUNCTION: ROBLOX 0x0063ee20
 Contact* ContactManager::createContact(Primitive* p0, Primitive* p1)
 {
 	if (p0->getPrimitiveType() > p1->getPrimitiveType()) {
@@ -310,6 +325,7 @@ Contact* ContactManager::createContact(Primitive* p0, Primitive* p1)
 }
 
 // FUNCTION: WEBSERVICE 0x10108c60
+// FUNCTION: ROBLOX 0x0063ef50
 void ContactManager::onNewPair(Primitive* p0, Primitive* p1)
 {
 	Contact* contact = createContact(p0, p1);
@@ -318,6 +334,7 @@ void ContactManager::onNewPair(Primitive* p0, Primitive* p1)
 }
 
 // FUNCTION: WEBSERVICE 0x10108c90
+// FUNCTION: ROBLOX 0x0063ef80
 void ContactManager::onPrimitiveGeometryTypeChanged(Primitive* p)
 {
 	G3D::Array<Contact*> newContacts;
@@ -336,6 +353,7 @@ void ContactManager::onPrimitiveGeometryTypeChanged(Primitive* p)
 }
 
 // FUNCTION: WEBSERVICE 0x10108ea0
+// FUNCTION: ROBLOX 0x0063f190
 bool ContactManager::intersectingOthers(const G3D::Array<Primitive*>& check, float overlapIgnored)
 {
 	std::set<Primitive*> checkSet(check.begin(), check.end());
@@ -350,6 +368,7 @@ bool ContactManager::intersectingOthers(const G3D::Array<Primitive*>& check, flo
 }
 
 // FUNCTION: WEBSERVICE 0x10108fa0
+// FUNCTION: ROBLOX 0x0063f290
 bool ContactManager::intersectingOthers(Primitive* check, float overlapIgnored)
 {
 	std::set<Primitive*> checkSet;

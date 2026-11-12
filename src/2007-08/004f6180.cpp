@@ -1,34 +1,50 @@
-// from server: 45% by colin
-struct bad_lexical_cast {
-    void* vfptr0;
-    int field4;
-    int field8;
-    int fieldC;
-    int field10;
-    int field14;
-    char field18[0x34];
-    float field4C;
-    bad_lexical_cast();
+// from server: 88% by EspClaude
+// roc 2007-08 004f6180 137 bytes
+// roc-lang: cpp
+// roc-cl: 50727
+// roc-flags: /O2 /GS /EHsc /MD
+// Layout from target: base class (vptr, +4, +8 zeroed; EH state 0 after it),
+// derived vptr; member at +0xc (zeroes +0x10,+0x14,+0xc; EH state 1);
+// member at +0x18 built by out-of-line thiscall ctor 0x4f5b90 (EH state 2);
+// one-time static init guarded by a byte flag (0x8bfbd0) calling 0x4f5b30;
+// float at +0x4c = 0.0f.
+
+struct BaseObj {
+    BaseObj() : f4(0), f8(0) {}
+    virtual ~BaseObj();
+    int f4;
+    int f8;
 };
 
-extern "C" void __stdcall sub_4F5B90(char*);
-extern "C" void __stdcall sub_4F5B30();
+struct Member0C {
+    Member0C() : y(0), z(0) { x = 0; }
+    ~Member0C();
+    int x;
+    int y;
+    int z;
+};
 
-extern unsigned char byte_8BFBD0;
+struct Member18 {
+    Member18();
+    ~Member18();
+    int w[13];
+};
 
-bad_lexical_cast::bad_lexical_cast()
+extern bool g_staticsInitialized;
+void __cdecl initStatics();
+
+struct Derived : BaseObj {
+    Derived();
+    Member0C m0c;
+    Member18 m18;
+    float f4c;
+};
+
+Derived::Derived()
 {
-    vfptr0 = (void*)0x797984;
-    field4 = 0;
-    field8 = 0;
-    vfptr0 = (void*)0x79F754;
-    field10 = 0;
-    field14 = 0;
-    fieldC = 0;
-    sub_4F5B90(field18);
-    if (byte_8BFBD0 == 0) {
-        sub_4F5B30();
-        byte_8BFBD0 = 1;
+    if (!g_staticsInitialized) {
+        initStatics();
+        g_staticsInitialized = true;
     }
-    field4C = 0.0f;
+    f4c = 0.0f;
 }

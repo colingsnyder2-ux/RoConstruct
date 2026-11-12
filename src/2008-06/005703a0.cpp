@@ -11,15 +11,23 @@ namespace RBX {
 namespace Reflection {
 
 // GLOBAL: WEBSERVICE 0x102f59a1
+// GLOBAL: ROBLOX 0x0095b001
 bool ClassDescriptor::lockedDown;
 
 // FUNCTION: WEBSERVICE 0x10047430
+// FUNCTION: ROBLOX 0x005a9370
 bool ClassDescriptor::operator==(const ClassDescriptor& other) const
 {
 	return this == &other;
 }
 
+bool ClassDescriptor::operator!=(const ClassDescriptor& other) const
+{
+	return this != &other;
+}
+
 // FUNCTION: WEBSERVICE 0x10047800
+// FUNCTION: ROBLOX 0x005a9ab0
 ClassDescriptor::ClassDescriptor()
 	: Descriptor("<<<ROOT>>>"), MemberDescriptorContainer<PropertyDescriptor>(NULL),
 	  MemberDescriptorContainer<SignalDescriptor>(NULL), MemberDescriptorContainer<FunctionDescriptor>(NULL), base(NULL)
@@ -27,6 +35,7 @@ ClassDescriptor::ClassDescriptor()
 }
 
 // FUNCTION: WEBSERVICE 0x100478c0
+// STUB: ROBLOX 0x005a9b70
 ClassDescriptor::ClassDescriptor(ClassDescriptor& base, const char* name)
 	: Descriptor(name), MemberDescriptorContainer<PropertyDescriptor>(&base),
 	  MemberDescriptorContainer<SignalDescriptor>(&base), MemberDescriptorContainer<FunctionDescriptor>(&base),
@@ -38,6 +47,7 @@ ClassDescriptor::ClassDescriptor(ClassDescriptor& base, const char* name)
 }
 
 // FUNCTION: WEBSERVICE 0x100479c0
+// FUNCTION: ROBLOX 0x005a9c70
 bool MemberDescriptor::isMemberOf(const ClassDescriptor& classDescriptor) const
 {
 	const ClassDescriptor* c = &classDescriptor;
@@ -52,6 +62,7 @@ bool MemberDescriptor::isMemberOf(const ClassDescriptor& classDescriptor) const
 }
 
 // FUNCTION: WEBSERVICE 0x10047a60
+// FUNCTION: ROBLOX 0x005a9d10
 bool MemberDescriptor::isMemberOf(const DescribedBase* instance) const
 {
 	return isMemberOf(instance->getDescriptor());

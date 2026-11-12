@@ -19,54 +19,63 @@ namespace RBX {
 static float MAX_LEGO_JOINT_FORCES_MEASURED[] = {0.0f, 1.098f, 2.134f, 2.427f, 3.191f, 4.571f, 4.681f};
 
 // FUNCTION: WEBSERVICE 0x1010a910 FOLDED
+// FUNCTION: ROBLOX 0x0060ca60 FOLDED
 const int Constants::worldStepsPerUiStep()
 {
 	return 8;
 }
 
 // FUNCTION: WEBSERVICE 0x1010a920
+// FUNCTION: ROBLOX 0x006462b0
 const int Constants::kernelStepsPerWorldStep()
 {
 	return 19;
 }
 
 // FUNCTION: WEBSERVICE 0x1010a930
+// FUNCTION: ROBLOX 0x006462c0
 const int Constants::worldStepsPerSec()
 {
 	return 240;
 }
 
 // FUNCTION: WEBSERVICE 0x1010a940
+// FUNCTION: ROBLOX 0x006462d0
 const int Constants::kernelStepsPerSec()
 {
 	return 4560;
 }
 
 // FUNCTION: WEBSERVICE 0x1010a950
+// FUNCTION: ROBLOX 0x006462e0
 const int Constants::kernelStepsPerUiStep()
 {
 	return 152;
 }
 
 // FUNCTION: WEBSERVICE 0x1010a960
+// FUNCTION: ROBLOX 0x006462f0
 const float Constants::uiDt()
 {
 	return 0.033333335f;
 }
 
 // FUNCTION: WEBSERVICE 0x1010a970
+// FUNCTION: ROBLOX 0x00646300
 const float Constants::worldDt()
 {
 	return 0.004166667f;
 }
 
 // FUNCTION: WEBSERVICE 0x1010a980
+// FUNCTION: ROBLOX 0x00646310
 const float Constants::kernelDt()
 {
 	return 0.00021929825f;
 }
 
 // FUNCTION: WEBSERVICE 0x1010a990
+// FUNCTION: ROBLOX 0x00646320
 const float Constants::getElasticMultiplier(float elasticity)
 {
 	if (elasticity < 0.05f) {
@@ -89,6 +98,7 @@ const float Constants::getElasticMultiplier(float elasticity)
 }
 
 // FUNCTION: WEBSERVICE 0x1010aa00
+// FUNCTION: ROBLOX 0x00646390
 const float Constants::getJointKMultiplier(const Vector3& clippedSortedSize, bool ball)
 {
 	G3D::Vector3int16 size(clippedSortedSize);
@@ -203,6 +213,7 @@ const float Constants::getJointKMultiplier(const Vector3& clippedSortedSize, boo
 }
 
 // FUNCTION: WEBSERVICE 0x1010acf0
+// FUNCTION: ROBLOX 0x00646680
 const float Constants::getKmsMaxJointForce(float grid1, float grid2)
 {
 	int grid1int = std::max(1, G3D::iRound(grid1));
@@ -226,6 +237,7 @@ const float Constants::getKmsMaxJointForce(float grid1, float grid2)
 }
 
 // FUNCTION: WEBSERVICE 0x1010adb0
+// FUNCTION: ROBLOX 0x00646740
 const float Constants::getJointK(const Vector3& gridSize, bool ball)
 {
 	Vector3 sortedSize = Math::sortVector3(gridSize);

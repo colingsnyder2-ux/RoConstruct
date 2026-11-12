@@ -12,6 +12,7 @@
 namespace RBX {
 
 // FUNCTION: WEBSERVICE 0x1010b9b0
+// FUNCTION: ROBLOX 0x006470b0
 IStage* IPipelined::getStage(IStage::StageType stageType) const
 {
 	IStage* stage = currentStage;
@@ -24,42 +25,49 @@ IStage* IPipelined::getStage(IStage::StageType stageType) const
 }
 
 // FUNCTION: WEBSERVICE 0x1010b9f0
+// FUNCTION: ROBLOX 0x006470f0
 void IPipelined::removeFromPipeline(IStage* stage)
 {
 	currentStage = 0;
 }
 
 // FUNCTION: WEBSERVICE 0x1010ba00
+// FUNCTION: ROBLOX 0x00647100
 void IPipelined::removeFromStage(IStage* stage)
 {
 	currentStage = currentStage->getUpstream();
 }
 
 // FUNCTION: WEBSERVICE 0x1010ba10
+// FUNCTION: ROBLOX 0x00647110
 Kernel* IPipelined::getKernel() const
 {
 	return static_cast<Kernel*>(getStage(IStage::KERNEL_STAGE));
 }
 
 // FUNCTION: WEBSERVICE 0x1010ba20
+// FUNCTION: ROBLOX 0x00647130
 void IPipelined::removeFromKernel()
 {
 	currentStage = currentStage->getUpstream();
 }
 
 // FUNCTION: WEBSERVICE 0x101ae590 FOLDED
+// FUNCTION: ROBLOX 0x00647120 FOLDED
 void IPipelined::putInPipeline(IStage* stage)
 {
 	currentStage = stage;
 }
 
 // FUNCTION: WEBSERVICE 0x101ae590 FOLDED
+// FUNCTION: ROBLOX 0x00647120 FOLDED
 void IPipelined::putInStage(IStage* stage)
 {
 	currentStage = stage;
 }
 
 // FUNCTION: WEBSERVICE 0x101ae590 FOLDED
+// FUNCTION: ROBLOX 0x00647120 FOLDED
 void IPipelined::putInKernel(Kernel* kernel)
 {
 	currentStage = kernel;

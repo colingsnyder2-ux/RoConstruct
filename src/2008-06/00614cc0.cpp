@@ -14,6 +14,7 @@
 namespace RBX {
 
 // FUNCTION: WEBSERVICE 0x100d0be0
+// FUNCTION: ROBLOX 0x0061f550
 IMoving::IMoving() : iMovingManager(NULL), stepsToSleep(0)
 {
 }
@@ -40,11 +41,13 @@ void IMoving::makeMoving()
 }
 
 // FUNCTION: WEBSERVICE 0x100d0c80
+// FUNCTION: ROBLOX 0x0061f820 FOLDED
 IMovingManager::~IMovingManager()
 {
 }
 
 // FUNCTION: WEBSERVICE 0x100d0cc0
+// FUNCTION: ROBLOX 0x0061f860
 void IMovingManager::remove(IMoving* iMoving)
 {
 	if (current != moving.end() && *current == iMoving) {
@@ -56,6 +59,7 @@ void IMovingManager::remove(IMoving* iMoving)
 }
 
 // FUNCTION: WEBSERVICE 0x100d0d50
+// FUNCTION: ROBLOX 0x0061f8f0
 void IMovingManager::onMovingHeartbeat()
 {
 	for (current = moving.begin(); current != moving.end();) {
@@ -71,6 +75,7 @@ void IMovingManager::onMovingHeartbeat()
 }
 
 // FUNCTION: WEBSERVICE 0x100d0de0
+// FUNCTION: ROBLOX 0x0061f980
 void IMoving::setMovingManager(IMovingManager* _iMovingManager)
 {
 	if (iMovingManager != NULL) {
@@ -86,6 +91,7 @@ void IMoving::setMovingManager(IMovingManager* _iMovingManager)
 }
 
 // FUNCTION: WEBSERVICE 0x100d0e40
+// FUNCTION: ROBLOX 0x0061f9e0
 void IMoving::notifyMoved()
 {
 	if (stepsToSleep == 0) {
@@ -96,6 +102,7 @@ void IMoving::notifyMoved()
 }
 
 // FUNCTION: WEBSERVICE 0x100d0e80
+// FUNCTION: ROBLOX 0x0061fa20
 IMovingManager::IMovingManager()
 {
 	current = moving.end();

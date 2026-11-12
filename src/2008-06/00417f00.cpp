@@ -12,6 +12,7 @@ namespace RBX {
 namespace Reflection {
 
 // FUNCTION: WEBSERVICE 0x100711b0
+// FUNCTION: ROBLOX 0x005a57f0
 template <>
 const Type& Type::singleton<void>()
 {
@@ -21,11 +22,13 @@ const Type& Type::singleton<void>()
 }
 
 // FUNCTION: WEBSERVICE 0x10071220
+// FUNCTION: ROBLOX 0x005a5860
 Value::Value() : _type(&Type::singleton<void>())
 {
 }
 
 // FUNCTION: WEBSERVICE 0x10071260
+// FUNCTION: ROBLOX 0x005a58a0
 void SignatureDescriptor::addArgument(const Name& name, const Type& type, const Value& defaultValue)
 {
 	Item i = {&name, &type, defaultValue};
@@ -34,6 +37,7 @@ void SignatureDescriptor::addArgument(const Name& name, const Type& type, const 
 }
 
 // FUNCTION: WEBSERVICE 0x10071310
+// FUNCTION: ROBLOX 0x005a5950
 SignatureDescriptor::SignatureDescriptor() : resultType(&Type::singleton<void>())
 {
 }

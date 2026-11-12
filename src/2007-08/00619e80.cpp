@@ -19,6 +19,7 @@
 namespace RBX {
 
 // FUNCTION: WEBSERVICE 0x100a0710 FOLDED
+// FUNCTION: ROBLOX 0x00640840 FOLDED
 float Connector::potentialEnergy()
 {
 	return 0.0f;
@@ -37,6 +38,7 @@ bool Connector::getBroken()
 }
 
 // FUNCTION: WEBSERVICE 0x1011de40
+// FUNCTION: ROBLOX 0x00655f20
 RotateConnector::RotateConnector(Point* base0, Point* ray0, Point* ref0, Point* ref1, float kValue, float armLength)
 	: k(kValue * armLength * armLength), base0(base0), ray0(ray0), ref0(ref0), ref1(ref1), lastRotation(0.0f),
 	  windings(0)
@@ -44,6 +46,7 @@ RotateConnector::RotateConnector(Point* base0, Point* ray0, Point* ref0, Point* 
 }
 
 // FUNCTION: WEBSERVICE 0x1011dea0
+// FUNCTION: ROBLOX 0x00655f80
 float PointToPointBreakConnector::potentialEnergy()
 {
 	Vector3 delta = point1->getWorldPos() - point0->getWorldPos();
@@ -54,12 +57,14 @@ float PointToPointBreakConnector::potentialEnergy()
 }
 
 // FUNCTION: WEBSERVICE 0x1011dee0
+// FUNCTION: ROBLOX 0x00655fc0
 bool ContactConnector::canThrottle() const
 {
 	return geoPair.getBody(0)->getCanThrottle() && geoPair.getBody(1)->getCanThrottle();
 }
 
 // FUNCTION: WEBSERVICE 0x1011df00
+// FUNCTION: ROBLOX 0x00656000
 void RotateConnector::computeParams(Vector3& normal, float& rotation, float& rotVel)
 {
 	normal = ray0->getWorldPos() - base0->getWorldPos();
@@ -96,6 +101,7 @@ void RotateConnector::computeParams(Vector3& normal, float& rotation, float& rot
 }
 
 // FUNCTION: WEBSERVICE 0x1011e0c0
+// FUNCTION: ROBLOX 0x006561c0
 void RotateConnector::computeForce(float dt, bool throttling)
 {
 	Vector3 normal(0.0f, 0.0f, 0.0f);
@@ -120,6 +126,7 @@ void RotateConnector::computeForce(float dt, bool throttling)
 }
 
 // FUNCTION: WEBSERVICE 0x1011e1f0
+// FUNCTION: ROBLOX 0x006562f0
 void PointToPointBreakConnector::computeForce(float dt, bool throttling)
 {
 	if (!broken) {
@@ -132,6 +139,7 @@ void PointToPointBreakConnector::computeForce(float dt, bool throttling)
 }
 
 // FUNCTION: WEBSERVICE 0x1011e290
+// FUNCTION: ROBLOX 0x00656390
 void NormalBreakConnector::computeForce(float dt, bool throttling)
 {
 	if (!broken) {
@@ -148,6 +156,7 @@ void NormalBreakConnector::computeForce(float dt, bool throttling)
 }
 
 // FUNCTION: WEBSERVICE 0x1011e390
+// FUNCTION: ROBLOX 0x00656490
 void ContactConnector::computeForce(const float dt, bool throttling)
 {
 	PairParams params;
@@ -191,6 +200,7 @@ void ContactConnector::computeForce(const float dt, bool throttling)
 }
 
 // FUNCTION: WEBSERVICE 0x1011edb0
+// FUNCTION: ROBLOX 0x00647330
 bool PointToPointBreakConnector::getBroken()
 {
 	return broken;

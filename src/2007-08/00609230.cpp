@@ -27,22 +27,26 @@
 namespace RBX {
 
 // FUNCTION: WEBSERVICE 0x1011edc0
+// FUNCTION: ROBLOX 0x00647340
 RotateJoint::RotateJoint() : MultiJoint(2), rotateConnector(NULL)
 {
 }
 
 // FUNCTION: WEBSERVICE 0x1011ede0
+// FUNCTION: ROBLOX 0x00647360
 RotateJoint::RotateJoint(Primitive* axlePrim, Primitive* holePrim, const CoordinateFrame& c0, const CoordinateFrame& c1)
 	: MultiJoint(axlePrim, holePrim, c0, c1, 2), rotateConnector(NULL)
 {
 }
 
 // FUNCTION: WEBSERVICE 0x1011ee20
+// FUNCTION: ROBLOX 0x006473a0
 RotateJoint::~RotateJoint()
 {
 }
 
 // FUNCTION: WEBSERVICE 0x1011ee30
+// FUNCTION: ROBLOX 0x006473b0
 void RotateJoint::removeFromKernel()
 {
 	rotateConnector = NULL;
@@ -51,6 +55,7 @@ void RotateJoint::removeFromKernel()
 }
 
 // FUNCTION: WEBSERVICE 0x1011ee40
+// FUNCTION: ROBLOX 0x006473c0
 float RotateJoint::getChannelValue(int uiStepId)
 {
 	const SurfaceData& surfaceData = getAxlePrim()->getSurfaceData(getAxleId());
@@ -97,28 +102,25 @@ float RotateJoint::getChannelValue(int uiStepId)
 }
 
 // FUNCTION: WEBSERVICE 0x1011f030
+// FUNCTION: ROBLOX 0x00647580
 RotatePJoint::RotatePJoint(
-	Primitive* axlePrim,
-	Primitive* holePrim,
-	const CoordinateFrame& c0,
-	const CoordinateFrame& c1
+	Primitive* axlePrim, Primitive* holePrim, const CoordinateFrame& c0, const CoordinateFrame& c1
 )
 	: RotateJoint(axlePrim, holePrim, c0, c1)
 {
 }
 
 // FUNCTION: WEBSERVICE 0x1011f070
+// FUNCTION: ROBLOX 0x006475c0
 RotateVJoint::RotateVJoint(
-	Primitive* axlePrim,
-	Primitive* holePrim,
-	const CoordinateFrame& c0,
-	const CoordinateFrame& c1
+	Primitive* axlePrim, Primitive* holePrim, const CoordinateFrame& c0, const CoordinateFrame& c1
 )
 	: RotateJoint(axlePrim, holePrim, c0, c1)
 {
 }
 
 // FUNCTION: WEBSERVICE 0x1011f0e0
+// FUNCTION: ROBLOX 0x00647630
 RotateJoint* RotateJoint::surfaceTypeToJoint(
 	SurfaceType surfaceType,
 	Primitive* axlePrim,
@@ -140,12 +142,13 @@ RotateJoint* RotateJoint::surfaceTypeToJoint(
 }
 
 // FUNCTION: WEBSERVICE 0x1011f200
+// FUNCTION: ROBLOX 0x00647750
 RotateJoint* RotateJoint::canBuildJoint(Primitive* p0, Primitive* p1, NormalId nId0, NormalId nId1)
 {
-	SurfaceType surfaceType0 = p0->getSurfaceType(nId0);
-	SurfaceType surfaceType1 = p1->getSurfaceType(nId1);
+	SurfaceType t0 = p0->getSurfaceType(nId0);
+	SurfaceType t1 = p1->getSurfaceType(nId1);
 
-	if (surfaceType0 < ROTATE && surfaceType1 < ROTATE) {
+	if (t0 < ROTATE && t1 < ROTATE) {
 		return NULL;
 	}
 
@@ -176,15 +179,15 @@ RotateJoint* RotateJoint::canBuildJoint(Primitive* p0, Primitive* p1, NormalId n
 	bool touchCenter0 = f1.fuzzyContainsInExtrusion(center0, 0.05f);
 	bool contains1 = f0.fuzzyContainsInExtrusion(center1, 0.05f);
 
-	bool axle0 = surfaceType0 >= ROTATE && touchCenter0;
-	bool axle1 = surfaceType1 >= ROTATE && contains1;
+	bool axle0 = t0 >= ROTATE && touchCenter0;
+	bool axle1 = t1 >= ROTATE && contains1;
 
 	if (!axle0 && !axle1) {
 		return NULL;
 	}
 
 	if (!axle0 || (axle1 && p1->getGeometry()->getGridSize().sum() > p0->getGeometry()->getGridSize().sum())) {
-		surfaceType0 = surfaceType1;
+		t0 = t1;
 		std::swap(p0, p1);
 		std::swap(nId0, nId1);
 		std::swap(center0, center1);
@@ -216,10 +219,11 @@ RotateJoint* RotateJoint::canBuildJoint(Primitive* p0, Primitive* p1, NormalId n
 		}
 	}
 
-	return surfaceTypeToJoint(surfaceType0, p0, p1, axleInP0, holeInP1);
+	return surfaceTypeToJoint(t0, p0, p1, axleInP0, holeInP1);
 }
 
 // FUNCTION: WEBSERVICE 0x1011f690
+// FUNCTION: ROBLOX 0x00647be0
 void RotatePJoint::stepUi(int uiStepId)
 {
 	float value = getChannelValue(uiStepId);
@@ -237,6 +241,7 @@ void RotatePJoint::stepUi(int uiStepId)
 }
 
 // FUNCTION: WEBSERVICE 0x1011f730
+// FUNCTION: ROBLOX 0x00647c80
 void RotateVJoint::stepUi(int uiStepId)
 {
 	float value = getChannelValue(uiStepId);
@@ -254,6 +259,7 @@ void RotateVJoint::stepUi(int uiStepId)
 }
 
 // FUNCTION: WEBSERVICE 0x1011f7d0
+// FUNCTION: ROBLOX 0x00647d20
 float RotateJoint::getTorqueArmLength()
 {
 	Vector3 ownerSize = getAxlePrim()->getGeometry()->getGridSize();
@@ -272,6 +278,7 @@ float RotateJoint::getTorqueArmLength()
 }
 
 // FUNCTION: WEBSERVICE 0x1011f8c0
+// FUNCTION: ROBLOX 0x00647e10
 void RotateJoint::putInKernel(Kernel* _kernel)
 {
 	MultiJoint::putInKernel(_kernel);

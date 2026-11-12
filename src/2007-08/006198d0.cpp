@@ -17,11 +17,13 @@
 namespace RBX {
 
 // FUNCTION: WEBSERVICE 0x1011cfc0
+// FUNCTION: ROBLOX 0x006550a0
 GeoPair::GeoPair() : body0(NULL), body1(NULL), offset0(NULL), offset1(NULL)
 {
 }
 
 // FUNCTION: WEBSERVICE 0x1011cfe0
+// FUNCTION: ROBLOX 0x006550c0
 void GeoPair::forceToBodies(const Vector3& _force, const Vector3& _position)
 {
 	body0->accumulateForce(-_force, _position);
@@ -29,6 +31,7 @@ void GeoPair::forceToBodies(const Vector3& _force, const Vector3& _position)
 }
 
 // FUNCTION: WEBSERVICE 0x1011d040
+// FUNCTION: ROBLOX 0x00655120
 void GeoPair::computeNormalPerpVel(float& normalVel, Vector3& perpVel, const PairParams& _params)
 {
 	Vector3 v0 = body0->getPV().linearVelocityAtPoint(_params.position);
@@ -42,6 +45,7 @@ void GeoPair::computeNormalPerpVel(float& normalVel, Vector3& perpVel, const Pai
 }
 
 // FUNCTION: WEBSERVICE 0x1011d1a0
+// FUNCTION: ROBLOX 0x00655280
 void GeoPair::computeBallBall(PairParams& _params)
 {
 	const Vector3& pos0 = body0->getPos();
@@ -53,6 +57,7 @@ void GeoPair::computeBallBall(PairParams& _params)
 }
 
 // FUNCTION: WEBSERVICE 0x1011d240
+// FUNCTION: ROBLOX 0x00655320
 void GeoPair::computeBallPoint(PairParams& _params)
 {
 	const Vector3& pos0 = body0->getPos();
@@ -64,6 +69,7 @@ void GeoPair::computeBallPoint(PairParams& _params)
 }
 
 // FUNCTION: WEBSERVICE 0x1011d320
+// FUNCTION: ROBLOX 0x00655400
 void GeoPair::computeBallEdge(PairParams& _params)
 {
 	const Vector3& pos0 = body0->getPos();
@@ -82,6 +88,7 @@ void GeoPair::computeBallEdge(PairParams& _params)
 }
 
 // FUNCTION: WEBSERVICE 0x1011d480
+// FUNCTION: ROBLOX 0x00655560
 void GeoPair::computeBallPlane(PairParams& _params)
 {
 	const Vector3& pos0 = body0->getPos();
@@ -99,6 +106,7 @@ void GeoPair::computeBallPlane(PairParams& _params)
 }
 
 // FUNCTION: WEBSERVICE 0x1011d5e0
+// FUNCTION: ROBLOX 0x006556c0
 void GeoPair::computePointPlane(PairParams& _params)
 {
 	_params.position = body0->getCoordinateFrame().pointToWorldSpace(*offset0);
@@ -113,78 +121,80 @@ void GeoPair::computePointPlane(PairParams& _params)
 }
 
 // FUNCTION: WEBSERVICE 0x1011d770
+// FUNCTION: ROBLOX 0x00655850
 void GeoPair::computeEdgeEdgePlane(PairParams& _params)
 {
 	const CoordinateFrame& coord0 = body0->getCoordinateFrame();
 	const CoordinateFrame& coord1 = body1->getCoordinateFrame();
 
-	Vector3 p0 = coord0.pointToWorldSpace(*offset0);
-	Vector3 p1 = coord1.pointToWorldSpace(*offset1);
+	Vector3 pa = coord0.pointToWorldSpace(*offset0);
+	Vector3 pPlane = coord1.pointToWorldSpace(*offset1);
 
 	Vector3 e0 = Math::getWorldNormal(pairData.normalID0, coord0);
-	Vector3 e1 = Math::getWorldNormal(pairData.normalID1, coord1);
+	Vector3 ub = Math::getWorldNormal(pairData.normalID1, coord1);
 
-	Vector3 delta = p1 - p0;
+	Vector3 p = pPlane - pa;
 
-	float dot = e1.dot(e0);
-	float denom = 1.0f - dot * dot;
+	float dot = ub.dot(e0);
+	float d = 1.0f - dot * dot;
 
 	_params.normal = -Math::getWorldNormal(pairData.planeID, coord1);
 
-	if (denom > 1e-05) {
-		float t0 = delta.dot(e0);
-		float t1 = -delta.dot(e1);
+	if (d > 1e-05) {
+		float t0 = p.dot(e0);
+		float t1 = -p.dot(ub);
 
-		float t = (t1 * dot + t0) / denom;
+		float t = (t1 * dot + t0) / d;
 
 		if (6.0f < fabs(t)) {
 			t = 6.0f * Math::sign(t);
 		}
 
-		_params.position = p0 + e0 * t;
-		_params.length = (p1 - _params.position).dot(_params.normal);
+		_params.position = pa + e0 * t;
+		_params.length = (pPlane - _params.position).dot(_params.normal);
 	}
 	else {
-		_params.position = p0;
+		_params.position = pa;
 		_params.length = 0.0f;
 	}
 }
 
 // FUNCTION: WEBSERVICE 0x1011daf0
+// FUNCTION: ROBLOX 0x00655bd0
 void GeoPair::computeEdgeEdge(PairParams& _params)
 {
 	const CoordinateFrame& coord0 = body0->getCoordinateFrame();
 	const CoordinateFrame& coord1 = body1->getCoordinateFrame();
 
-	Vector3 p0 = coord0.pointToWorldSpace(*offset0);
-	Vector3 p1 = coord1.pointToWorldSpace(*offset1);
+	Vector3 pa = coord0.pointToWorldSpace(*offset0);
+	Vector3 pb = coord1.pointToWorldSpace(*offset1);
 
 	Vector3 e0 = Math::getWorldNormal(pairData.normalID0, coord0);
-	Vector3 e1 = Math::getWorldNormal(pairData.normalID1, coord1);
+	Vector3 ub = Math::getWorldNormal(pairData.normalID1, coord1);
 
-	Vector3 delta = p1 - p0;
+	Vector3 p = pb - pa;
 
-	float dot = e1.dot(e0);
-	float t0 = delta.dot(e0);
-	float t1 = -e1.dot(delta);
+	float dot = ub.dot(e0);
+	float q1 = p.dot(e0);
+	float q2 = -ub.dot(p);
 
 	float denom = 1.0f - dot * dot;
 
 	if (denom > 1e-06f) {
 		float recip = 1.0f / denom;
 
-		float s0 = (t1 * dot + t0) * recip;
-		float s1 = (t0 * dot + t1) * recip;
+		float s0 = (q2 * dot + q1) * recip;
+		float s1 = (q1 * dot + q2) * recip;
 
-		Vector3 c0 = p0 + e0 * s0;
-		Vector3 c1 = p1 + e1 * s1;
+		Vector3 c0 = pa + e0 * s0;
+		Vector3 c1 = pb + ub * s1;
 
 		_params.position = (c1 + c0) * 0.5f;
 		_params.normal = c0 - c1;
 		_params.length = -_params.normal.unitize();
 	}
 	else {
-		_params.position = p0;
+		_params.position = pa;
 		_params.normal = e0;
 		_params.length = 0.0f;
 	}

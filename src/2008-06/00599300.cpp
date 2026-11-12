@@ -21,6 +21,7 @@
 namespace RBX {
 
 // FUNCTION: WEBSERVICE 0x10117da0
+// FUNCTION: ROBLOX 0x00641c20
 Edge* EdgeIterator::getNextExternalUtil(Primitive* p, Edge* e)
 {
 	while (e != NULL) {
@@ -41,6 +42,7 @@ Edge* EdgeIterator::getNextExternalUtil(Primitive* p, Edge* e)
 }
 
 // FUNCTION: WEBSERVICE 0x10117df0
+// FUNCTION: ROBLOX 0x00641c70
 bool PrimIterator::isParent(Primitive* parentCandidate, Primitive* child, Joint* joint, SearchType searchType)
 {
 	if (parentCandidate == NULL || child == NULL) {
@@ -69,6 +71,7 @@ bool PrimIterator::isParent(Primitive* parentCandidate, Primitive* child, Joint*
 }
 
 // FUNCTION: WEBSERVICE 0x10117ea0
+// FUNCTION: ROBLOX 0x00641d20
 Primitive* PrimIterator::findParent(Primitive* p, SearchType searchType)
 {
 	Joint* joint = p->getFirstJoint();
@@ -87,6 +90,7 @@ Primitive* PrimIterator::findParent(Primitive* p, SearchType searchType)
 }
 
 // FUNCTION: WEBSERVICE 0x10117f00
+// FUNCTION: ROBLOX 0x00641d80
 Primitive* PrimIterator::findFirstChild(Primitive* p, SearchType searchType)
 {
 	Joint* joint = p->getFirstJoint();
@@ -105,6 +109,7 @@ Primitive* PrimIterator::findFirstChild(Primitive* p, SearchType searchType)
 }
 
 // FUNCTION: WEBSERVICE 0x10117f60
+// FUNCTION: ROBLOX 0x00641de0
 Primitive* PrimIterator::findNextSibling(Primitive* parent, Primitive* sibling, SearchType searchType)
 {
 	bool found = false;
@@ -127,6 +132,7 @@ Primitive* PrimIterator::findNextSibling(Primitive* parent, Primitive* sibling, 
 }
 
 // FUNCTION: WEBSERVICE 0x10117fc0
+// FUNCTION: ROBLOX 0x00641e40
 Primitive* PrimIterator::findNextRelative(Primitive* parent, Primitive* p, SearchType searchType)
 {
 	if (parent == NULL) {
@@ -145,6 +151,7 @@ Primitive* PrimIterator::findNextRelative(Primitive* parent, Primitive* p, Searc
 }
 
 // FUNCTION: WEBSERVICE 0x10118000
+// FUNCTION: ROBLOX 0x00641e80
 PrimIterator& PrimIterator::operator++()
 {
 	SearchType type = searchType;
@@ -165,6 +172,7 @@ PrimIterator& PrimIterator::operator++()
 }
 
 // FUNCTION: WEBSERVICE 0x10118040
+// FUNCTION: ROBLOX 0x00641ec0
 void EdgeIterator::findEdgeOnNextPrimitive()
 {
 	while (edge == NULL) {
@@ -179,6 +187,7 @@ void EdgeIterator::findEdgeOnNextPrimitive()
 }
 
 // FUNCTION: WEBSERVICE 0x101180c0
+// FUNCTION: ROBLOX 0x00641f40
 EdgeIterator& EdgeIterator::operator++()
 {
 	Primitive* current = primitive;
@@ -193,6 +202,7 @@ EdgeIterator& EdgeIterator::operator++()
 }
 
 // FUNCTION: WEBSERVICE 0x101180f0
+// FUNCTION: ROBLOX 0x00641f70
 EdgeIterator EdgeIterator::begin(Primitive* p)
 {
 	EdgeIterator answer(p, getNextExternalUtil(p, p->getFirstEdge()));

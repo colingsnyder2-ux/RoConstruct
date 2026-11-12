@@ -13,6 +13,7 @@
 namespace RBX {
 
 // FUNCTION: WEBSERVICE 0x10126da0
+// FUNCTION: ROBLOX 0x00664600
 void IWorldStage::onEdgeAdded(Edge* e)
 {
 	e->putInPipeline(this);
@@ -21,6 +22,7 @@ void IWorldStage::onEdgeAdded(Edge* e)
 }
 
 // FUNCTION: WEBSERVICE 0x10126dc0
+// FUNCTION: ROBLOX 0x00664620
 void IWorldStage::onEdgeRemoving(Edge* e)
 {
 	static_cast<IWorldStage*>(getDownstream())->onEdgeRemoving(e);

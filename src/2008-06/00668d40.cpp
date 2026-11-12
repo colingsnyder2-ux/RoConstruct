@@ -113,6 +113,7 @@ bool SleepStage::computeCanSleep(Assembly* assembly)
 }
 
 // FUNCTION: WEBSERVICE 0x10118cd0
+// FUNCTION: ROBLOX 0x00642b50
 bool SleepStage::forceNeighborAwake(Assembly* a)
 {
 	CoordinateFrame cofm = a->getAssemblyPrimitiveConst()->getBody()->getBranchCofmCoordinateFrame();
@@ -124,6 +125,7 @@ bool SleepStage::forceNeighborAwake(Assembly* a)
 }
 
 // FUNCTION: WEBSERVICE 0x10118d40
+// FUNCTION: ROBLOX 0x00642bc0
 bool SleepStage::okNeighborSleep(Assembly* a)
 {
 	CoordinateFrame cofm = a->getAssemblyPrimitiveConst()->getBody()->getBranchCofmCoordinateFrame();
@@ -133,6 +135,7 @@ bool SleepStage::okNeighborSleep(Assembly* a)
 }
 
 // FUNCTION: WEBSERVICE 0x10118da0
+// FUNCTION: ROBLOX 0x00642c20
 bool SleepStage::computeShouldSleep(Assembly* a)
 {
 	CoordinateFrame cofm = a->getAssemblyPrimitiveConst()->getBody()->getBranchCofmCoordinateFrame();
@@ -145,6 +148,7 @@ bool SleepStage::computeShouldSleep(Assembly* a)
 }
 
 // FUNCTION: WEBSERVICE 0x10118e20
+// FUNCTION: ROBLOX 0x00642ca0
 bool SleepStage::preventNeighborSleep(Assembly* a)
 {
 	if (getState(a) == Sim::AWAKE) {
@@ -157,6 +161,7 @@ bool SleepStage::preventNeighborSleep(Assembly* a)
 }
 
 // FUNCTION: WEBSERVICE 0x10118e70
+// FUNCTION: ROBLOX 0x00642cf0
 Sim::AssemblyState SleepStage::computeAssemblyState(Assembly* assembly)
 {
 	if (!computeCanSleep(assembly)) {
@@ -187,6 +192,7 @@ Sim::AssemblyState SleepStage::computeAssemblyState(Assembly* assembly)
 }
 
 // FUNCTION: WEBSERVICE 0x10118f90
+// FUNCTION: ROBLOX 0x00642e10
 int SleepStage::getMetric(MetricType metricType)
 {
 	switch (metricType) {
@@ -205,6 +211,7 @@ int SleepStage::getMetric(MetricType metricType)
 }
 
 // FUNCTION: WEBSERVICE 0x10118fd0
+// FUNCTION: ROBLOX 0x00642e50
 bool SleepStage::shouldSleep(Assembly* assembly)
 {
 	if (!computeCanSleep(assembly)) {
@@ -231,21 +238,24 @@ bool SleepStage::shouldSleep(Assembly* assembly)
 }
 
 // FUNCTION: WEBSERVICE 0x101193f0
+// FUNCTION: ROBLOX 0x00642f50
 void SleepStage::onAssemblyAdded(Assembly* assembly)
 {
 	assembly->putInPipeline(this);
 	assembly->setSleepInfo(new SleepInfo());
-	assembly->getAssemblyPrimitiveConst()->getBody()->resetAccumulators();
+	assembly->getAssemblyPrimitive()->getBody()->resetAccumulators();
 
 	wakePending.insert(assembly);
 }
 
 // FUNCTION: WEBSERVICE 0x10119530
+// FUNCTION: ROBLOX 0x00643020
 SleepStage::~SleepStage()
 {
 }
 
 // FUNCTION: WEBSERVICE 0x10119740
+// FUNCTION: ROBLOX 0x00643230
 void SleepStage::changeJointState(Joint* j, Sim::EdgeState newState)
 {
 	bool wasStepping = j->getEdgeState() == Sim::STEPPING, isStepping = newState == Sim::STEPPING;
@@ -267,6 +277,7 @@ void SleepStage::changeJointState(Joint* j, Sim::EdgeState newState)
 }
 
 // FUNCTION: WEBSERVICE 0x101197c0
+// FUNCTION: ROBLOX 0x006432b0
 void SleepStage::changeAssemblyState(Assembly* a, Sim::AssemblyState newState)
 {
 	Sim::AssemblyState oldState = getState(a);
@@ -280,7 +291,7 @@ void SleepStage::changeAssemblyState(Assembly* a, Sim::AssemblyState newState)
 
 	if ((oldState == Sim::SLEEPING_CHECKING || oldState == Sim::SLEEPING_DEEPLY) &&
 		newState != Sim::SLEEPING_CHECKING && newState != Sim::SLEEPING_DEEPLY) {
-		a->getAssemblyPrimitiveConst()->getBody()->resetAccumulators();
+		a->getAssemblyPrimitive()->getBody()->resetAccumulators();
 	}
 
 	if (newState == Sim::AWAKE) {
@@ -293,7 +304,7 @@ void SleepStage::changeAssemblyState(Assembly* a, Sim::AssemblyState newState)
 		}
 	}
 	else if (newState == Sim::SLEEPING_CHECKING || newState == Sim::SLEEPING_DEEPLY) {
-		a->getAssemblyPrimitiveConst()->getBody()->setVelocity(Velocity::zero());
+		a->getAssemblyPrimitive()->getBody()->setVelocity(Velocity::zero());
 
 		if (a->downstreamOfStage(this)) {
 			static_cast<SimJobStage*>(getDownstream())->onAssemblyRemoving(a);
@@ -305,6 +316,7 @@ void SleepStage::changeAssemblyState(Assembly* a, Sim::AssemblyState newState)
 }
 
 // STUB: WEBSERVICE 0x10119970
+// STUB: ROBLOX 0x00643460
 void SleepStage::onAssemblyRemoving(Assembly* assembly)
 {
 	if (getState(assembly) != Sim::SLEEPING_DEEPLY) {
@@ -320,6 +332,7 @@ void SleepStage::onAssemblyRemoving(Assembly* assembly)
 }
 
 // FUNCTION: WEBSERVICE 0x10119ae0
+// FUNCTION: ROBLOX 0x006435d0
 void SleepStage::onEdgeAdded(Edge* e)
 {
 	Assembly* a0 = e->getPrimitive(0)->getAssembly();
@@ -339,6 +352,7 @@ void SleepStage::onEdgeAdded(Edge* e)
 }
 
 // FUNCTION: WEBSERVICE 0x10119ba0
+// FUNCTION: ROBLOX 0x00643690
 SleepStage::SleepStage(IStage* upstream, World* world)
 	: IWorldStage(upstream, new SimJobStage(this, world), world), externalBodyForceAdded(false), numContactsInStage(0),
 	  numContactsInKernel(0), throttling(false), uiStepId(-1),
@@ -348,6 +362,7 @@ SleepStage::SleepStage(IStage* upstream, World* world)
 }
 
 // STUB: WEBSERVICE 0x10119e00
+// STUB: ROBLOX 0x006438f0
 void SleepStage::wakeEvent(Assembly* a)
 {
 	Sim::AssemblyState state = getState(a);
@@ -358,6 +373,7 @@ void SleepStage::wakeEvent(Assembly* a)
 }
 
 // STUB: WEBSERVICE 0x10119e50
+// STUB: ROBLOX 0x00643940
 void SleepStage::recursiveWakeEvent(Assembly* a)
 {
 	Sim::AssemblyState state = getState(a);
@@ -368,6 +384,7 @@ void SleepStage::recursiveWakeEvent(Assembly* a)
 }
 
 // STUB: WEBSERVICE 0x10119ea0
+// STUB: ROBLOX 0x00643990
 void SleepStage::touchEvent(Contact* c)
 {
 	for (int i = 0; i < 2; i++) {
@@ -377,6 +394,7 @@ void SleepStage::touchEvent(Contact* c)
 }
 
 // FUNCTION: WEBSERVICE 0x10119f10
+// FUNCTION: ROBLOX 0x00643a00
 void SleepStage::changeJointState(const std::vector<Joint*>& joints, Sim::EdgeState newState)
 {
 	for (unsigned int i = 0; i < joints.size(); i++) {
@@ -385,6 +403,7 @@ void SleepStage::changeJointState(const std::vector<Joint*>& joints, Sim::EdgeSt
 }
 
 // FUNCTION: WEBSERVICE 0x10119f70
+// FUNCTION: ROBLOX 0x00643a60
 void SleepStage::changeAssemblyState(const std::vector<Assembly*>& assemblies, Sim::AssemblyState newState)
 {
 	for (unsigned int i = 0; i < assemblies.size(); i++) {
@@ -393,6 +412,7 @@ void SleepStage::changeAssemblyState(const std::vector<Assembly*>& assemblies, S
 }
 
 // FUNCTION: WEBSERVICE 0x10119fd0
+// FUNCTION: ROBLOX 0x00643ac0
 void SleepStage::onWakeUpRequest(Assembly* assembly, bool recursive)
 {
 	if (assembly->inPipeline() && assembly->inOrDownstreamOfStage(this)) {
@@ -406,6 +426,7 @@ void SleepStage::onWakeUpRequest(Assembly* assembly, bool recursive)
 }
 
 // FUNCTION: WEBSERVICE 0x1011a020
+// FUNCTION: ROBLOX 0x00643b10
 void SleepStage::stepJoints()
 {
 	static std::vector<Joint*> toSleeping;
@@ -431,6 +452,7 @@ void SleepStage::stepJoints()
 }
 
 // FUNCTION: WEBSERVICE 0x1011a1b0
+// FUNCTION: ROBLOX 0x00643ca0
 void SleepStage::stepAssembliesAwake()
 {
 	static std::vector<Assembly*> toSleepingChecking;
@@ -458,6 +480,7 @@ void SleepStage::stepAssembliesAwake()
 }
 
 // FUNCTION: WEBSERVICE 0x1011a310
+// FUNCTION: ROBLOX 0x00643e00
 void SleepStage::stepAssembliesSleepingChecking()
 {
 	static std::vector<Assembly*> toWake;
@@ -487,6 +510,7 @@ void SleepStage::stepAssembliesSleepingChecking()
 }
 
 // STUB: WEBSERVICE 0x1011a480
+// STUB: ROBLOX 0x00643f70
 void SleepStage::wakeEvent(Edge* e)
 {
 	for (int i = 0; i < 2; i++) {
@@ -495,6 +519,7 @@ void SleepStage::wakeEvent(Edge* e)
 }
 
 // STUB: WEBSERVICE 0x1011a500
+// STUB: ROBLOX 0x00643ff0
 void SleepStage::changeContactState(Contact* c, Sim::EdgeState newState)
 {
 	Sim::EdgeState currentState = c->getEdgeState();
@@ -550,6 +575,7 @@ void SleepStage::changeContactState(Contact* c, Sim::EdgeState newState)
 }
 
 // FUNCTION: WEBSERVICE 0x1011a680
+// FUNCTION: ROBLOX 0x00644170
 void SleepStage::onEdgeRemoving(Edge* e)
 {
 	if (e->getEdgeType() == Edge::CONTACT) {
@@ -575,6 +601,7 @@ void SleepStage::onEdgeRemoving(Edge* e)
 }
 
 // FUNCTION: WEBSERVICE 0x1011a720
+// FUNCTION: ROBLOX 0x00644210
 void SleepStage::wakeEdge(Edge* e)
 {
 	Sim::EdgeState state = e->getEdgeState();
@@ -593,6 +620,7 @@ void SleepStage::wakeEdge(Edge* e)
 }
 
 // FUNCTION: WEBSERVICE 0x1011a780
+// FUNCTION: ROBLOX 0x00644270
 void SleepStage::changeContactState(const std::vector<Contact*>& contacts, Sim::EdgeState newState)
 {
 	for (unsigned int i = 0; i < contacts.size(); i++) {
@@ -601,6 +629,7 @@ void SleepStage::changeContactState(const std::vector<Contact*>& contacts, Sim::
 }
 
 // FUNCTION: WEBSERVICE 0x1011a7e0
+// FUNCTION: ROBLOX 0x006442d0
 void SleepStage::stepContacts(ContactList& contacts)
 {
 	static std::vector<Contact*> toSleeping;
@@ -661,6 +690,7 @@ void SleepStage::stepContacts(ContactList& contacts)
 }
 
 // STUB: WEBSERVICE 0x1011ab10
+// STUB: ROBLOX 0x00644600
 void SleepStage::wakeAssemblyAndNeighbors(Assembly* assembly, int recurseDepth)
 {
 	Sim::AssemblyState state = getState(assembly);
@@ -694,6 +724,7 @@ void SleepStage::wakeAssemblyAndNeighbors(Assembly* assembly, int recurseDepth)
 }
 
 // STUB: WEBSERVICE 0x1011ac80
+// STUB: ROBLOX 0x00644770
 void SleepStage::stepAssembliesRecursiveWakePending()
 {
 	static std::vector<Assembly*> toWake;
@@ -716,6 +747,7 @@ void SleepStage::stepAssembliesRecursiveWakePending()
 }
 
 // FUNCTION: WEBSERVICE 0x1011afa0
+// FUNCTION: ROBLOX 0x00644a90
 void SleepStage::stepAssembliesWakePending()
 {
 	static std::vector<Assembly*> toWake;
@@ -732,6 +764,7 @@ void SleepStage::stepAssembliesWakePending()
 }
 
 // FUNCTION: WEBSERVICE 0x1011b110
+// FUNCTION: ROBLOX 0x00644c00
 void SleepStage::stepWorld(int worldStepId, int _uiStepId, bool _throttling)
 {
 	throttling = _throttling;

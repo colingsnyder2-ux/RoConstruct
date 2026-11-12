@@ -1,43 +1,101 @@
-// from server: 45% by colin
-struct Lighting {
-    char pad0[0xc];
-    char field0c[0x1c];
-    int field28;
-    char field2c;
-    char pad2d[3];
-    int field30;
-    int field34;
-    int field38;
-    int field3c;
-    Lighting(void*);
+// from server: 100% by EspClaude
+// roc 2007-08 004fa640  (trial): RBX::Render::TextureProxy(TextureProxyRef root)
+//   : loaded(false), textureManager(NULL), root(root) { filename = ""; }
+// Layout from target: texture +0x28, loaded +0x2c, textureManager +0x30,
+// root +0x38 (copy: m_pointer=0 then setPointer 0x474f70), shadeTexture +0x3c,
+// filename (std::string) +0xc assigned "" via msvcp80 operator=(const char*).
+// Base ctor TextureProxyBase() is the out-of-line 0x4cfd40.
+// The by-value root parameter is released at the end (G3D 6.09 zeroPointer:
+// InterlockedDecrement, zeroWeakPointers 0x457dd0, virtual scalar-deleting dtor).
+#include <string>
+
+extern "C" __declspec(dllimport) long __stdcall InterlockedIncrement(long volatile*);
+extern "C" __declspec(dllimport) long __stdcall InterlockedDecrement(long volatile*);
+
+namespace G3D {
+
+class AtomicInt32 {
+    volatile long m_value;
+public:
+    AtomicInt32(long x) : m_value(x) {}
+    void increment() { InterlockedIncrement(&m_value); }
+    long decrement() { return InterlockedDecrement(&m_value); }
 };
 
-extern "C" void __stdcall sub_4cfd40();
-extern "C" void __stdcall sub_474f70(int);
-extern "C" void __stdcall sub_457dd0();
-extern "C" int __stdcall sub_77d2e8(void*);
-extern "C" void __stdcall sub_77e62c(char*, const char*);
+class _WeakPtrLinkedList;
 
-void* __fastcall sub_4fa640(Lighting* self, void*, void* arg);
+class ReferenceCountedObject {
+public:
+    AtomicInt32 ReferenceCountedObject_refCount;
+    _WeakPtrLinkedList* ReferenceCountedObject_weakPointer;
+protected:
+    ReferenceCountedObject() : ReferenceCountedObject_refCount(0), ReferenceCountedObject_weakPointer(0) {}
+public:
+    void ReferenceCountedObject_zeroWeakPointers();
+    virtual ~ReferenceCountedObject() {}
+};
 
-void* __fastcall sub_4fa640(Lighting* self, void*, void* arg)
-{
-    sub_4cfd40();
-    *(void**)self = (void*)0x79f148;
-    self->field28 = 0;
-    self->field2c = 0;
-    self->field30 = 0;
-    *(int*)((char*)self + 0x38) = 0;
-    sub_474f70((int)arg);
-    self->field3c = 0;
-    sub_77e62c((char*)self + 0xc, (const char*)0x785954);
-    if (arg != 0) {
-        if (sub_77d2e8((char*)arg + 4) == 0) {
-            sub_457dd0();
-            void** vt = *(void***)arg;
-            void (*fn)(void*, int) = (void (*)(void*, int))vt[0];
-            fn(arg, 1);
+template <class T>
+class ReferenceCountedPointer {
+    T* m_pointer;
+
+    void zeroPointer() {
+        if (m_pointer != NULL) {
+            if (m_pointer->ReferenceCountedObject_refCount.decrement() == 0) {
+                m_pointer->ReferenceCountedObject_zeroWeakPointers();
+                delete m_pointer;
+            }
+            m_pointer = NULL;
         }
     }
-    return self;
+    void setPointer(T* x);
+public:
+    inline ReferenceCountedPointer() : m_pointer(NULL) {}
+    inline ReferenceCountedPointer(const ReferenceCountedPointer<T>& p) : m_pointer(NULL) {
+        setPointer(p.m_pointer);
+    }
+    inline ~ReferenceCountedPointer() { zeroPointer(); }
+};
+
+class Texture : public ReferenceCountedObject {
+public:
+    virtual ~Texture();
+};
+class TextureManager;
+
+}
+
+namespace RBX {
+
+class TextureProxyBase : public G3D::ReferenceCountedObject {
+public:
+    std::string filename; // 0x0c
+    TextureProxyBase();
+    virtual ~TextureProxyBase() {}
+};
+
+namespace Render {
+
+class TextureProxy;
+typedef G3D::ReferenceCountedPointer<TextureProxy> TextureProxyRef;
+
+class TextureProxy : public TextureProxyBase {
+protected:
+    G3D::ReferenceCountedPointer<G3D::Texture> texture; // 0x28
+    bool loaded;                                        // 0x2c
+    G3D::TextureManager* textureManager;                // 0x30
+    char pad34[4];                                      // 0x34 (unused here)
+    TextureProxyRef root;                               // 0x38
+    TextureProxyRef shadeTexture;                       // 0x3c
+public:
+    TextureProxy(TextureProxyRef root);
+};
+
+TextureProxy::TextureProxy(TextureProxyRef root)
+    : loaded(false), textureManager(NULL), root(root)
+{
+    filename = "";
+}
+
+}
 }

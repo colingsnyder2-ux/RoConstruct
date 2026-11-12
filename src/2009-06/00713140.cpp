@@ -12,6 +12,7 @@ namespace RBX {
 namespace Reflection {
 
 // FUNCTION: WEBSERVICE 0x10105f50
+// FUNCTION: ROBLOX 0x0061fa60
 template <>
 EnumDesc<Part::PartType>::EnumDesc() : EnumDescriptor("PartType", typeid(Part::PartType))
 {

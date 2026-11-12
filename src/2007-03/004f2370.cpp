@@ -14,14 +14,15 @@
 namespace RBX {
 namespace Render {
 
-// STUB: WEBSERVICE 0x101f7750
-static bool brighter(const G3D::GLight& A, const G3D::GLight& B)
+// FUNCTION: WEBSERVICE 0x101f7750
+// FUNCTION: ROBLOX 0x00536d60
+inline static bool brighter(const G3D::GLight& A, const G3D::GLight& B)
 {
-	return (A.color.r + A.color.g + A.color.b) / 3.0 * (1.2 - A.position.w) >
-		   (B.color.r + B.color.g + B.color.b) / 3.0 * (1.2 - B.position.w);
+	return A.color.average() * (1.2 - A.position.w) > B.color.average() * (1.2 - B.position.w);
 }
 
 // FUNCTION: WEBSERVICE 0x101f8950
+// FUNCTION: ROBLOX 0x004a3e80
 G3D::ToneMap* EffectSettings::getToneMap()
 {
 	static std::auto_ptr<G3D::ToneMap> toneMap(new G3D::ToneMap());
@@ -29,6 +30,7 @@ G3D::ToneMap* EffectSettings::getToneMap()
 }
 
 // FUNCTION: WEBSERVICE 0x101f89e0
+// FUNCTION: ROBLOX 0x004a3f10
 DepthBlur* EffectSettings::getDepthBlur()
 {
 	static std::auto_ptr<DepthBlur> depthBlur(new DepthBlur());
@@ -36,6 +38,7 @@ DepthBlur* EffectSettings::getDepthBlur()
 }
 
 // STUB: WEBSERVICE 0x101f8bc0
+// STUB: ROBLOX 0x004a40f0
 G3D::ReferenceCountedPointer<G3D::Lighting> EffectSettings::update(
 	float shadingDetail,
 	float meshDetail,
@@ -46,11 +49,10 @@ G3D::ReferenceCountedPointer<G3D::Lighting> EffectSettings::update(
 	G3D::LightingParameters& outSkyParameters
 )
 {
-	int numShadowLights =
-		desiredLighting->shadowedLightArray.size() >= 8 ? 8 : desiredLighting->shadowedLightArray.size();
+	int numLights = desiredLighting->lightArray.size();
+	int numShadowLights = G3D::iMin(desiredLighting->shadowedLightArray.size(), 8);
 	int maxLights = G3D::glGetInteger(GL_MAX_LIGHTS) - 3;
-	int numNonShadowLights =
-		desiredLighting->lightArray.size() >= maxLights ? maxLights : desiredLighting->lightArray.size();
+	int numNonShadowLights = numLights >= maxLights ? maxLights : numLights;
 	numNonShadowLights = numNonShadowLights > 0 ? numNonShadowLights : 0;
 
 	_groundLOD = 1.0f;
@@ -69,13 +71,14 @@ G3D::ReferenceCountedPointer<G3D::Lighting> EffectSettings::update(
 
 	G3D::glGetInteger(GL_STENCIL_BITS);
 
-	if (meshDetail >= 10) {
+	static const float SKY_BOX = 10.0f;
+	if (shadingDetail >= SKY_BOX) {
 		_skyBox = true;
 	}
 
 	_groundLOD = G3D::lerp(0.0f, 1.0f, (float) (meshDetail / 100.0));
 
-	if (meshDetail >= 30.0) {
+	if (shadingDetail >= 30.0) {
 		_hemisphereLighting = true;
 	}
 
@@ -113,6 +116,12 @@ G3D::ReferenceCountedPointer<G3D::Lighting> EffectSettings::update(
 	}
 
 	_useAllLightsInUnshadowedPass = _stencilShadows == false;
+
+	for (int i = 0; i < lighting->lightArray.size(); i++) {
+	}
+
+	for (int i = 0; i < lighting->shadowedLightArray.size(); i++) {
+	}
 
 	if (_toneMap) {
 		getToneMap()->setEnabled(true);

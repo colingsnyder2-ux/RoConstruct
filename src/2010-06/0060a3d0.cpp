@@ -24,6 +24,7 @@ static const Name* localScope;
 static long nextIndex;
 
 // FUNCTION: WEBSERVICE 0x1003d410
+// FUNCTION: ROBLOX 0x005ba270
 void Guid::generateGUID(std::string& result)
 {
 	GUID guid;
@@ -49,12 +50,14 @@ void Guid::generateGUID(std::string& result)
 }
 
 // FUNCTION: WEBSERVICE 0x1003d4e0
+// FUNCTION: ROBLOX 0x005ba340
 void Guid::assign(Data data)
 {
 	this->data = data;
 }
 
 // FUNCTION: WEBSERVICE 0x1003d4f0
+// FUNCTION: ROBLOX 0x005ba350
 bool Guid::Data::operator<(const Data& other) const
 {
 	const Name* otherScope = other.scope;
@@ -77,6 +80,7 @@ bool Guid::Data::operator<(const Data& other) const
 }
 
 // FUNCTION: WEBSERVICE 0x1003d540
+// FUNCTION: ROBLOX 0x005ba3a0
 int Guid::compare(const Guid* a, const Guid* b)
 {
 	const Name* scopeA = a != NULL ? a->data.scope : NULL;
@@ -119,6 +123,7 @@ int Guid::compare(const Guid* a, const Guid* b)
 }
 
 // FUNCTION: WEBSERVICE 0x1003d5d0
+// FUNCTION: ROBLOX 0x005ba430
 int Guid::compare(const Guid* a0, const Guid* a1, const Guid* b0, const Guid* b1)
 {
 	int a = compare(a0, a1);
@@ -140,6 +145,7 @@ int Guid::compare(const Guid* a0, const Guid* a1, const Guid* b0, const Guid* b1
 }
 
 // FUNCTION: WEBSERVICE 0x1003d660
+// FUNCTION: ROBLOX 0x005ba4c0
 static void initLocalScope()
 {
 	std::string guid;
@@ -149,6 +155,7 @@ static void initLocalScope()
 }
 
 // FUNCTION: WEBSERVICE 0x1003d6e0
+// FUNCTION: ROBLOX 0x005ba540
 const Name& Guid::getLocalScope()
 {
 	static boost::once_flag flag = BOOST_ONCE_INIT;
@@ -159,6 +166,7 @@ const Name& Guid::getLocalScope()
 }
 
 // FUNCTION: WEBSERVICE 0x1003d700
+// FUNCTION: ROBLOX 0x005ba560
 Guid::Guid()
 {
 	data.scope = &getLocalScope();
@@ -166,22 +174,23 @@ Guid::Guid()
 }
 
 // FUNCTION: WEBSERVICE 0x1003d730
+// FUNCTION: ROBLOX 0x005ba590
 std::string Guid::Data::readableString(int scopeLength) const
 {
-	char buffer[64];
+	char result[64];
 
 	if (scopeLength > 0) {
 		std::string s = scope->name;
 
 		s = s.substr(std::min<size_t>(3, s.size()), std::min(scopeLength, 32));
 
-		sprintf(buffer, "%s_%d", s.c_str(), index);
+		sprintf(result, "%s_%d", s.c_str(), index);
 	}
 	else {
-		sprintf(buffer, "%d", index);
+		sprintf(result, "%d", index);
 	}
 
-	return std::string(buffer);
+	return std::string(result);
 }
 
 } // namespace RBX

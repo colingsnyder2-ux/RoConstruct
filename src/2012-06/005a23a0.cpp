@@ -1,236 +1,63 @@
+// roc 2012-06 005a23a0  unit: RBX::Network::ClientReplicator  size: 110 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 005a23a0
+//
+// 005a23a0  56                   push esi
+// 005a23a1  8b742410             mov esi, dword ptr [esp + 0x10]
+// 005a23a5  8d46fe               lea eax, [esi - 2]
+// 005a23a8  83f80e               cmp eax, 0xe
+// 005a23ab  7758                 ja 0x5a2405
+// 005a23ad  55                   push ebp
+// 005a23ae  8b6c240c             mov ebp, dword ptr [esp + 0xc]
+// 005a23b2  57                   push edi
+// 005a23b3  8b7c2414             mov edi, dword ptr [esp + 0x14]
+// 005a23b7  8bcf                 mov ecx, edi
+// 005a23b9  8bc5                 mov eax, ebp
+// 005a23bb  eb03                 jmp 0x5a23c0
+// 005a23bd  8d4900               lea ecx, [ecx]
+// 005a23c0  99                   cdq 
+// 005a23c1  f7fe                 idiv esi
+// 005a23c3  85d2                 test edx, edx
+// 005a23c5  7d02                 jge 0x5a23c9
+// 005a23c7  f7da                 neg edx
+// 005a23c9  8a9244aeb700         mov dl, byte ptr [edx + 0xb7ae44]
+// 005a23cf  8811                 mov byte ptr [ecx], dl
+// 005a23d1  41                   inc ecx
+// 005a23d2  85c0                 test eax, eax
+// 005a23d4  75ea                 jne 0x5a23c0
+// 005a23d6  85ed                 test ebp, ebp
+// 005a23d8  7d09                 jge 0x5a23e3
+// 005a23da  83fe0a               cmp esi, 0xa
+// 005a23dd  7504                 jne 0x5a23e3
+// 005a23df  c6012d               mov byte ptr [ecx], 0x2d
+// 005a23e2  41                   inc ecx
+// 005a23e3  c60100               mov byte ptr [ecx], 0
+// 005a23e6  49                   dec ecx
+// 005a23e7  8bc7                 mov eax, edi
+// 005a23e9  3bf9                 cmp edi, ecx
+// 005a23eb  7312                 jae 0x5a23ff
+// 005a23ed  53                   push ebx
+// 005a23ee  8bff                 mov edi, edi
+// 005a23f0  8a19                 mov bl, byte ptr [ecx]
+// 005a23f2  8a10                 mov dl, byte ptr [eax]
+// 005a23f4  8818                 mov byte ptr [eax], bl
+// 005a23f6  8811                 mov byte ptr [ecx], dl
+// 005a23f8  40                   inc eax
+// 005a23f9  49                   dec ecx
+// 005a23fa  3bc1                 cmp eax, ecx
+// 005a23fc  72f2                 jb 0x5a23f0
+// 005a23fe  5b                   pop ebx
+// 005a23ff  8bc7                 mov eax, edi
+// 005a2401  5f                   pop edi
+// 005a2402  5d                   pop ebp
+// 005a2403  5e                   pop esi
+// 005a2404  c3                   ret 
+// 005a2405  8b44240c             mov eax, dword ptr [esp + 0xc]
+// 005a2409  c60000               mov byte ptr [eax], 0
+// 005a240c  5e                   pop esi
+// 005a240d  c3                   ret 
+// library openrbx-raknet/RakNetTypes.cpp (function ?my_itoa@@YAPADHPADH@Z)
+
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /EHsc /MD
 // roc-lib: openrbx-raknet RakNetTypes.cpp
-
-// Candidate translation unit (score above; library headers required).
-/// \file
-///
-/// This file is part of RakNet Copyright 2003 Kevin Jenkins.
-///
-/// Usage of RakNet is subject to the appropriate license agreement.
-/// Creative Commons Licensees are subject to the
-/// license found at
-/// http://creativecommons.org/licenses/by-nc/2.5/
-/// Single application licensees are subject to the license found at
-/// http://www.rakkarsoft.com/SingleApplicationLicense.html
-/// Custom license users are subject to the terms therein.
-/// GPL license users are subject to the GNU General Public
-/// License as published by the Free
-/// Software Foundation; either version 2 of the License, or (at your
-/// option) any later version.
-
-#include "RakNetTypes.h"
-#include <string.h>
-#include <stdio.h>
-
-#ifdef _COMPATIBILITY_1
-#include "Compatibility1Includes.h"
-#elif defined(_WIN32)
-// IP_DONTFRAGMENT is different between winsock 1 and winsock 2.  Therefore, Winsock2.h must be linked againt Ws2_32.lib
-// winsock.h must be linked against WSock32.lib.  If these two are mixed up the flag won't work correctly
-#include <winsock2.h>
-#include <stdlib.h> // itoa
-#else
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#endif
-
-// Fast itoa from http://www.jb.man.ac.uk/~slowe/cpp/itoa.html for Linux since it seems like Linux doesn't support this function.
-// I modified it to remove the std dependencies.
-char* my_itoa( int value, char* result, int base ) {
-	// check that the base if valid
-	if (base < 2 || base > 16) { *result = 0; return result; }
-	char* out = result;
-	int quotient = value;
-
-	int absQModB;
-
-	do {
-		// KevinJ - get rid of this dependency
-		//*out = "0123456789abcdef"[ std::abs( quotient % base ) ];
-		absQModB=quotient % base;
-		if (absQModB < 0)
-			absQModB=-absQModB;
-		*out = "0123456789abcdef"[ absQModB ];
-		++out;
-		quotient /= base;
-	} while ( quotient );
-
-	// Only apply negative sign for base 10
-	if ( value < 0 && base == 10) *out++ = '-';
-
-	// KevinJ - get rid of this dependency
-	// std::reverse( result, out );
-	*out = 0;
-
-	// KevinJ - My own reverse code
-    char *start = result;
-	char temp;
-	out--;
-	while (start < out)
-	{
-		temp=*start;
-		*start=*out;
-		*out=temp;
-		start++;
-		out--;
-	}
-
-	return result;
-}
-
-SocketDescriptor::SocketDescriptor() {port=0; hostAddress[0]=0;}
-// FUNCTION: WEBSERVICE 0x101ae2c0
-SocketDescriptor::SocketDescriptor(unsigned short _port, const char *_hostAddress)
-{
-	port=_port;
-	if (_hostAddress)
-		strcpy(hostAddress, _hostAddress);
-	else
-		hostAddress[0]=0;
-}
-
-// Defaults to not in peer to peer mode for NetworkIDs.  This only sends the localSystemAddress portion in the BitStream class
-// This is what you want for client/server, where the server assigns all NetworkIDs and it is unnecessary to transmit the full structure.
-// For peer to peer, this will transmit the systemAddress of the system that created the object in addition to localSystemAddress.  This allows
-// Any system to create unique ids locally.
-// All systems must use the same value for this variable.
-bool RAK_DLL_EXPORT NetworkID::peerToPeerMode=false;
-
-// FUNCTION: WEBSERVICE 0x101ae300
-bool SystemAddress::operator==( const SystemAddress& right ) const
-{
-	return binaryAddress == right.binaryAddress && port == right.port;
-}
-
-// FUNCTION: WEBSERVICE 0x101ae330
-bool SystemAddress::operator!=( const SystemAddress& right ) const
-{
-	return binaryAddress != right.binaryAddress || port != right.port;
-}
-
-bool SystemAddress::operator>( const SystemAddress& right ) const
-{
-	return ( ( binaryAddress > right.binaryAddress ) || ( ( binaryAddress == right.binaryAddress ) && ( port > right.port ) ) );
-}
-
-// FUNCTION: WEBSERVICE 0x101ae360
-bool SystemAddress::operator<( const SystemAddress& right ) const
-{
-	return ( ( binaryAddress < right.binaryAddress ) || ( ( binaryAddress == right.binaryAddress ) && ( port < right.port ) ) );
-}
-// FUNCTION: WEBSERVICE 0x101ae390
-char *SystemAddress::ToString(bool writePort) const
-{
-#ifdef _COMPATIBILITY_1
-	return "";
-#else
-	static char str[22];
-	in_addr in;
-	in.s_addr = binaryAddress;
-	strcpy(str, inet_ntoa( in ));
-	if (writePort)
-	{
-		strcat(str, ":");
-#if (defined(__GNUC__)  || defined(__GCCXML__))
-		my_itoa(port, str+strlen(str), 10);
-#else
-		_itoa(port, str+strlen(str), 10);
-#endif
-	}
-	
-	return (char*) str;
-#endif
-}
-// FUNCTION: WEBSERVICE 0x101ae410
-void SystemAddress::SetBinaryAddress(const char *str)
-{
-#ifdef _COMPATIBILITY_1
-	binaryAddress=UNASSIGNED_SYSTEM_ADDRESS.binaryAddress;
-#else
-	char ip[22+1];
-	char portPart[10+1];
-	int i=0;
-
-	while (str[i] && str[i]!=':' && i<22)
-	{
-		ip[i]=str[i];
-		i++;
-	}
-	ip[i]=0;
-	portPart[0]=0;
-
-	if (str[i] && str[i+1])
-	{
-		i++;
-		int j=0;
-		while (j<10 && str[i] && i<32)
-		{
-			portPart[j]=str[i];
-			j++;
-			i++;
-		}
-		portPart[j]=0;
-	}
-
-	if (_strnicmp(str, "localhost", 9)==0)
-		binaryAddress=inet_addr("127.0.0.1");
-	else if (ip[0])
-		binaryAddress=inet_addr(ip);
-
-	if (portPart[0])
-		port=(unsigned short) atoi(portPart);
-#endif
-}
-
-NetworkID& NetworkID::operator = ( const NetworkID& input )
-{
-	systemAddress = input.systemAddress;
-	localSystemAddress = input.localSystemAddress;
-	return *this;
-}
-
-// FUNCTION: WEBSERVICE 0x101ae4f0
-bool NetworkID::operator==( const NetworkID& right ) const
-{
-	if (NetworkID::peerToPeerMode)
-		return systemAddress == right.systemAddress && localSystemAddress == right.localSystemAddress;
-	else
-		return localSystemAddress==right.localSystemAddress;
-}
-
-bool NetworkID::operator!=( const NetworkID& right ) const
-{
-	if (NetworkID::peerToPeerMode)
-		return systemAddress != right.systemAddress || localSystemAddress != right.localSystemAddress;
-	else
-		return localSystemAddress!=right.localSystemAddress;
-}
-
-bool NetworkID::operator>( const NetworkID& right ) const
-{
-	if (NetworkID::peerToPeerMode)
-		return ( ( systemAddress > right.systemAddress ) || ( ( systemAddress == right.systemAddress ) && ( localSystemAddress > right.localSystemAddress ) ) );
-	else
-		return localSystemAddress>right.localSystemAddress;
-}
-
-bool NetworkID::operator<( const NetworkID& right ) const
-{
-	if (NetworkID::peerToPeerMode)
-		return ( ( systemAddress < right.systemAddress ) || ( ( systemAddress == right.systemAddress ) && ( localSystemAddress < right.localSystemAddress ) ) );
-	else
-		return localSystemAddress<right.localSystemAddress;
-}
-
-// FUNCTION: WEBSERVICE 0x101ae540
-bool NetworkID::IsPeerToPeerMode(void)
-{
-	return peerToPeerMode;
-}
-void NetworkID::SetPeerToPeerMode(bool isPeerToPeer)
-{
-	peerToPeerMode=isPeerToPeer;
-}

@@ -11,6 +11,7 @@ namespace RBX {
 namespace Reflection {
 
 // FUNCTION: WEBSERVICE 0x100713b0
+// FUNCTION: ROBLOX 0x005a9d20
 FunctionDescriptor::FunctionDescriptor(ClassDescriptor& classDescriptor, const char* name, Security security)
 	: MemberDescriptor(classDescriptor, name, "Function"), security(security)
 {

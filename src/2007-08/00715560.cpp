@@ -1,79 +1,59 @@
+// from server: 81% by EspClaude
 // from server: 43% by colin
 // roc 2007-08 00715560  unit: CXTCaptionButton  size: 339 bytes
 // Make this compile to the exact bytes below, then: roc check 2007-08 00715560
+// Shape (read off target): 16-byte value type (ctor 0x648580, copy 0x6485e0, dtor 0x6496a0,
+// assign 0x649680/0x649660, test 0x648600); 8-byte helper {vptr 0x788300, data} with
+// out-of-line base dtor 0x41f680; 4-byte temp (ctor 0x67f2c0, getter 0x6820a0); tail call 0x715440.
+struct Value16 {
+    int d[4];
+    Value16();
+    Value16(const Value16&);
+    ~Value16();
+    void Assign(const void* p);       // 0x649680
+    void AssignOther(const void* p);  // 0x649660
+    int Test();                       // 0x648600
+};
+
+struct HelperBase {
+    void* data;
+    HelperBase() : data(0) {}
+    virtual ~HelperBase();
+};
+struct Helper : HelperBase {
+    Helper() {}
+    virtual ~Helper() {}
+    void Load(const void* p);         // 0x630238
+};
+
+struct Temp4 {
+    void* p;
+    Temp4(void* d);                   // 0x67f2c0
+    const void* Get();                // 0x6820a0
+};
+
+extern "C" const void* __cdecl sub_64AFA0(unsigned short id, int* out);
 
 struct CXTCaptionButton {
-    int sub_715440(int, int);
-    int sub_715560(unsigned short, int, int, int);
+    int sub_715440(int a0, int a1, Value16 v, Value16 w, int a3);
+    int sub_715560(int a0, int a1, unsigned short id, int a3);
 };
 
-struct CXTString {
-    void* vtable;
-    void* data;
-    CXTString();
-    CXTString(const CXTString&);
-    ~CXTString();
-    int Compare(const CXTString&) const;
-};
-
-struct CXTStringHelper {
-    void* vtable;
-    void* data;
-    CXTStringHelper();
-    CXTStringHelper(const char*);
-    ~CXTStringHelper();
-};
-
-extern "C" {
-    void __stdcall sub_64AFA0(unsigned short, CXTString*);
-    void __stdcall sub_648580(CXTString*);
-    void __stdcall sub_6485E0(CXTString*, CXTString*);
-    int __stdcall sub_648600(CXTString*);
-    void __stdcall sub_649660(CXTString*, const CXTString*);
-    void __stdcall sub_649680(CXTString*, const CXTString*);
-    void __stdcall sub_6496A0(CXTString*);
-    void __stdcall sub_630238(CXTStringHelper*, const CXTString*);
-    void __stdcall sub_67F2C0(void*, const CXTStringHelper*);
-    void __stdcall sub_6820A0(void*);
-    void __stdcall sub_41F680(CXTStringHelper*);
-}
-
-int CXTCaptionButton::sub_715560(unsigned short a1, int a2, int a3, int a4)
+int CXTCaptionButton::sub_715560(int a0, int a1, unsigned short id, int a3)
 {
-    CXTString str1;
-    CXTString str2;
-    CXTStringHelper helper;
-    int result;
-
-    sub_648580(&str1);
-    sub_64AFA0(a1, &str2);
-    if (str2.data == 0) {
-        sub_6496A0(&str1);
+    Value16 str;
+    int out = 0;
+    const void* r = sub_64AFA0(id, &out);
+    if (r == 0)
         return 0;
-    }
-    if (str1.data != 0) {
-        sub_649680(&str1, &str2);
+    if (out != 0) {
+        str.Assign(r);
     } else {
-        helper.vtable = (void*)0x788300;
-        helper.data = 0;
-        sub_630238(&helper, &str2);
-        sub_67F2C0(&str1, &helper);
-        sub_6820A0(&str1);
-        sub_649660(&str1, &str2);
-        helper.vtable = (void*)0x788300;
-        sub_41F680(&helper);
+        Helper h;
+        h.Load(r);
+        str.AssignOther(Temp4(h.data).Get());
     }
-    if (sub_648600(&str1) != 0) {
-        sub_6496A0(&str1);
+    if (str.Test() != 0)
         return 0;
-    }
-    {
-        CXTString str3;
-        CXTString str4;
-        sub_648580(&str3);
-        sub_6485E0(&str4, &str1);
-        result = sub_715440(a4, a3);
-        sub_6496A0(&str1);
-    }
-    return result;
+    return sub_715440(a0, a1, str, Value16(), a3);
 }

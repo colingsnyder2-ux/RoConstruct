@@ -55,12 +55,14 @@ const RBX::Name& tag_mimeType = RBX::Name::declare("mimeType", 48);
 const RBX::Name& tag_xsinoNamespaceSchemaLocation = RBX::Name::declare("xsi:noNamespaceSchemaLocation", 49);
 
 // FUNCTION: WEBSERVICE 0x10084ac0
+// FUNCTION: ROBLOX 0x0059d170 FOLDED
 XmlNameValuePair::XmlNameValuePair(const RBX::Name& tag, const char* text) : tag(tag), valueType(STRING)
 {
 	stringValue = new std::string(text);
 }
 
 // FUNCTION: WEBSERVICE 0x1008efe0
+// FUNCTION: ROBLOX 0x005955f0
 bool XmlNameValuePair::isValueEqual(const RBX::Name* value) const
 {
 	switch (valueType) {
@@ -77,6 +79,7 @@ bool XmlNameValuePair::isValueEqual(const RBX::Name* value) const
 }
 
 // FUNCTION: WEBSERVICE 0x1008f020
+// FUNCTION: ROBLOX 0x00595630
 template <>
 bool XmlNameValuePair::isValueType<RBX::ContentId>() const
 {
@@ -84,6 +87,7 @@ bool XmlNameValuePair::isValueType<RBX::ContentId>() const
 }
 
 // FUNCTION: WEBSERVICE 0x1008f030
+// FUNCTION: ROBLOX 0x00595640
 template <>
 bool XmlNameValuePair::isValueType<std::string>() const
 {
@@ -91,6 +95,7 @@ bool XmlNameValuePair::isValueType<std::string>() const
 }
 
 // FUNCTION: WEBSERVICE 0x1008f040
+// FUNCTION: ROBLOX 0x00595650
 bool XmlNameValuePair::getValue(std::string& value) const
 {
 	if (valueType == STRING) {
@@ -102,6 +107,7 @@ bool XmlNameValuePair::getValue(std::string& value) const
 }
 
 // FUNCTION: WEBSERVICE 0x1008f060
+// FUNCTION: ROBLOX 0x00595670
 const XmlElement* XmlElement::findFirstChildByTag(const RBX::Name& _tag) const
 {
 	for (const XmlElement* child = firstChild(); child != NULL; child = child->nextSibling()) {
@@ -114,6 +120,7 @@ const XmlElement* XmlElement::findFirstChildByTag(const RBX::Name& _tag) const
 }
 
 // FUNCTION: WEBSERVICE 0x1008f080
+// FUNCTION: ROBLOX 0x00595690
 const XmlElement* XmlElement::findNextChildWithSameTag(const XmlElement* node) const
 {
 	for (const XmlElement* next = node->nextSibling(); next != NULL; next = next->nextSibling()) {
@@ -126,6 +133,7 @@ const XmlElement* XmlElement::findNextChildWithSameTag(const XmlElement* node) c
 }
 
 // FUNCTION: WEBSERVICE 0x1008f0e0
+// FUNCTION: ROBLOX 0x005956b0
 const XmlAttribute* XmlElement::findAttribute(const RBX::Name& name) const
 {
 	for (const XmlAttribute* attribute = attributes.firstChild(); attribute != NULL;
@@ -150,6 +158,7 @@ XmlAttribute* XmlElement::findAttribute(const RBX::Name& name)
 }
 
 // FUNCTION: WEBSERVICE 0x1008f100
+// FUNCTION: ROBLOX 0x00595710
 void XmlNameValuePair::clearValue() const
 {
 	switch (valueType) {
@@ -168,6 +177,7 @@ void XmlNameValuePair::clearValue() const
 }
 
 // FUNCTION: WEBSERVICE 0x1008f190
+// FUNCTION: ROBLOX 0x005957a0
 bool XmlNameValuePair::getValue(const RBX::Name*& value) const
 {
 	if (valueType == NAME) {
@@ -192,6 +202,7 @@ bool XmlNameValuePair::getValue(const RBX::Name*& value) const
 }
 
 // FUNCTION: WEBSERVICE 0x1008f200
+// FUNCTION: ROBLOX 0x00595810
 bool XmlNameValuePair::getValue(RBX::ContentId& value) const
 {
 	if (valueType == CONTENTID) {
@@ -216,6 +227,7 @@ bool XmlNameValuePair::getValue(RBX::ContentId& value) const
 }
 
 // FUNCTION: WEBSERVICE 0x1008f320
+// FUNCTION: ROBLOX 0x00595930
 bool XmlNameValuePair::getValue(int& value) const
 {
 	if (valueType == INT) {
@@ -238,6 +250,7 @@ bool XmlNameValuePair::getValue(int& value) const
 }
 
 // FUNCTION: WEBSERVICE 0x1008f380
+// FUNCTION: ROBLOX 0x00595990
 bool XmlNameValuePair::getValue(unsigned int& value) const
 {
 	if (valueType == UINT) {
@@ -260,6 +273,7 @@ bool XmlNameValuePair::getValue(unsigned int& value) const
 }
 
 // FUNCTION: WEBSERVICE 0x1008f3e0
+// FUNCTION: ROBLOX 0x005959f0
 bool XmlNameValuePair::getValue(bool& value) const
 {
 	if (valueType == BOOL) {
@@ -282,6 +296,7 @@ bool XmlNameValuePair::getValue(bool& value) const
 }
 
 // FUNCTION: WEBSERVICE 0x1008f440
+// FUNCTION: ROBLOX 0x00595a50
 bool XmlNameValuePair::getValue(float& value) const
 {
 	if (valueType == FLOAT) {
@@ -303,7 +318,8 @@ bool XmlNameValuePair::getValue(float& value) const
 	return false;
 }
 
-// STUB: WEBSERVICE 0x1008f4a0
+// FUNCTION: WEBSERVICE 0x1008f4a0
+// FUNCTION: ROBLOX 0x00595ab0
 bool XmlNameValuePair::getValue(double& value) const
 {
 	if (valueType == DOUBLE) {
@@ -311,24 +327,30 @@ bool XmlNameValuePair::getValue(double& value) const
 		return true;
 	}
 
-	if (valueType == FLOAT) {
-		value = floatValue;
-	}
-	else if (valueType != STRING || !RBX::StringConverter<double>::convertToValue(*stringValue, value)) {
-		return false;
-	}
-
 	XmlNameValuePair* self = const_cast<XmlNameValuePair*>(this);
 
-	self->clearValue();
+	if (valueType == FLOAT) {
+		value = floatValue;
+		self->clearValue();
+		self->doubleValue = value;
+		self->valueType = DOUBLE;
+		return true;
+	}
 
-	self->doubleValue = value;
-	self->valueType = DOUBLE;
+	if (valueType == STRING) {
+		if (RBX::StringConverter<double>::convertToValue(*stringValue, value)) {
+			self->clearValue();
+			self->doubleValue = value;
+			self->valueType = DOUBLE;
+			return true;
+		}
+	}
 
-	return true;
+	return false;
 }
 
 // STUB: WEBSERVICE 0x1008f510
+// STUB: ROBLOX 0x00595b20
 bool XmlNameValuePair::getValue(RBX::InstanceHandle& value) const
 {
 	XmlNameValuePair* self = const_cast<XmlNameValuePair*>(this);
@@ -361,6 +383,7 @@ bool XmlNameValuePair::getValue(RBX::InstanceHandle& value) const
 }
 
 // FUNCTION: WEBSERVICE 0x1008f640
+// FUNCTION: ROBLOX 0x00595c50
 bool XmlElement::isXsiNil() const
 {
 	const XmlAttribute* attribute = findAttribute(name_xsinil);
@@ -370,7 +393,8 @@ bool XmlElement::isXsiNil() const
 	return attribute != NULL && attribute->getValue(isNil) && isNil;
 }
 
-// STUB: WEBSERVICE 0x1008fe70
+// FUNCTION: WEBSERVICE 0x1008fe70
+// FUNCTION: ROBLOX 0x00596480
 std::string XmlNameValuePair::toString(XmlWriter* writer) const
 {
 	switch (valueType) {

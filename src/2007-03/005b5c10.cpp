@@ -9,51 +9,58 @@
 
 #include "rbxgraphics/Adorn.h"
 #include "reflection/property.h"
+#include "v8datamodel/UserController.h"
+#include "v8datamodel/Workspace.h"
 #include "v8xml/XmlElement.h"
 
 namespace RBX {
 
+static const Reflection::PropDescriptor<PVInstance, CoordinateFrame> desc_CoordFrame(
+	"CoordinateFrame", "Data", NULL, &PVInstance::setPVGridOffsetLegacy, Reflection::PropertyDescriptor::LEGACY
+);
+
 static Reflection::PropDescriptor<PVInstance, bool> prop_ControllerFlagShown(
-	"ControllerFlagShown",
-	"Appearance",
-	&RBX::PVInstance::getShowControllerFlag,
-	&RBX::PVInstance::setShowControllerFlag
+	"ControllerFlagShown", "Appearance", &PVInstance::getShowControllerFlag, &PVInstance::setShowControllerFlag
 );
 
 const char sPVInstance[] = "PVInstance";
 
 const Reflection::EnumPropDescriptor<PVInstance, Controller::ControllerType> PVInstance::prop_ControllerType(
-	"Controller",
-	"Behavior",
-	&RBX::PVInstance::getControllerType,
-	&RBX::PVInstance::setControllerType
+	"Controller", "Behavior", &PVInstance::getControllerType, &PVInstance::setControllerType
 );
 
+// FUNCTION: WEBSERVICE 0x10059d20 FOLDED
+// FUNCTION: ROBLOX 0x00407390 FOLDED
 unsigned int PVInstance::topHashCode() const
 {
-	STUB(0x10059d20);
 	return 0;
 }
 
+// FUNCTION: WEBSERVICE 0x10059d20 FOLDED
+// FUNCTION: ROBLOX 0x00407390 FOLDED
 unsigned int PVInstance::childHashCode() const
 {
-	STUB(0x10059d21);
 	return 0;
 }
 
 // FUNCTION: WEBSERVICE 0x1005a7f0
+// FUNCTION: ROBLOX 0x00565560
 bool PVInstance::isControllable() const
 {
 	return IsControllable;
 }
 
-// FUNCTION: WEBSERVICE 0x1005a830
-bool PVInstance::isTopLevelPVInstance() const
+// FUNCTION: WEBSERVICE 0x100990c0
+// FUNCTION: ROBLOX 0x005f7390
+void PVInstance::moveToPoint(G3D::Vector3 point)
 {
-	return dynamic_cast<const PVInstance*>(getParent()) == NULL || getTypedRoot<PVInstance>() == getParent();
+	if (Workspace* workspace = Workspace::findWorkspace(this)) {
+		workspace->moveToPoint(this, point);
+	}
 }
 
 // FUNCTION: WEBSERVICE 0x10099100
+// FUNCTION: ROBLOX 0x005f73d0
 void PVInstance::readProperty(const XmlElement* propertyElement, IReferenceBinder& binder)
 {
 	if (propertyElement->getTag().name.compare("Feature") == 0) {
@@ -79,7 +86,8 @@ void PVInstance::readProperty(const XmlElement* propertyElement, IReferenceBinde
 	Instance::readProperty(propertyElement, binder);
 }
 
-// FUNCTION: WEBSERVICE 0x100991c0
+// FUNCTION: WEBSERVICE 0x100991c0 FOLDED
+// FUNCTION: ROBLOX 0x005f7490 FOLDED
 void PVInstance::onChildAdded(Instance* instance)
 {
 	PVInstance* pvInstance = dynamic_cast<PVInstance*>(instance);
@@ -90,12 +98,20 @@ void PVInstance::onChildAdded(Instance* instance)
 	}
 }
 
-void PVInstance::onChildRemoving(Instance* child)
+// FUNCTION: WEBSERVICE 0x100991c0 FOLDED
+// FUNCTION: ROBLOX 0x005f7490 FOLDED
+void PVInstance::onChildRemoving(Instance* instance)
 {
-	STUB(0x100991c1);
+	PVInstance* pvInstance = dynamic_cast<PVInstance*>(instance);
+
+	if (pvInstance != NULL) {
+		pvInstance->onChildControllerChanged();
+		pvInstance->onParentControllerChanged();
+	}
 }
 
 // FUNCTION: WEBSERVICE 0x10099200
+// FUNCTION: ROBLOX 0x005f74d0
 void PVInstance::renderCoordinateFrame(Adorn* adorn)
 {
 	adorn->setObjectToWorldMatrix(getLocation());
@@ -109,6 +125,7 @@ void PVInstance::renderCoordinateFrame(Adorn* adorn)
 }
 
 // FUNCTION: WEBSERVICE 0x100992c0
+// FUNCTION: ROBLOX 0x005f7590
 void PVInstance::onChildControllerChanged()
 {
 	TopPVController.setDirty();
@@ -123,6 +140,7 @@ void PVInstance::onChildControllerChanged()
 }
 
 // FUNCTION: WEBSERVICE 0x10099300
+// FUNCTION: ROBLOX 0x005f75d0
 void PVInstance::onDescendentAdded(Instance* instance)
 {
 	Instance::onDescendentAdded(instance);
@@ -133,6 +151,7 @@ void PVInstance::onDescendentAdded(Instance* instance)
 }
 
 // FUNCTION: WEBSERVICE 0x10099330
+// FUNCTION: ROBLOX 0x005f7600
 void PVInstance::onDescendentRemoving(const shared_ptr<Instance>& instance)
 {
 	TopPVController.setDirty();
@@ -143,6 +162,7 @@ void PVInstance::onDescendentRemoving(const shared_ptr<Instance>& instance)
 }
 
 // FUNCTION: WEBSERVICE 0x10099350
+// FUNCTION: ROBLOX 0x005f7620
 void PVInstance::onExtentsChanged() const
 {
 	const PVInstance* pvInstance = dynamic_cast<const PVInstance*>(getParent());
@@ -153,6 +173,7 @@ void PVInstance::onExtentsChanged() const
 }
 
 // FUNCTION: WEBSERVICE 0x10099450
+// FUNCTION: ROBLOX 0x005f7700
 void PVInstance::onParentControllerChanged()
 {
 	TopPVController.setDirty();
@@ -170,6 +191,7 @@ void PVInstance::onParentControllerChanged()
 }
 
 // FUNCTION: WEBSERVICE 0x100994d0
+// FUNCTION: ROBLOX 0x005f7780
 bool PVInstance::computeIsControllable() const
 {
 	for (unsigned int i = 0; i < numChildren(); ++i) {
@@ -185,6 +207,7 @@ bool PVInstance::computeIsControllable() const
 }
 
 // FUNCTION: WEBSERVICE 0x10099780
+// FUNCTION: ROBLOX 0x005af010
 Controller* PVInstance::getTopPVController() const
 {
 	Controller* controller = TopPVController.getValue().getPointer();
@@ -196,12 +219,37 @@ Controller* PVInstance::getTopPVController() const
 	return NullController::getStaticNullController();
 }
 
+// FUNCTION: ROBLOX 0x005f7810
+PVInstance* PVInstance::getTopLevelPVParent()
+{
+	if (isTopLevelPVInstance()) {
+		return this;
+	}
+
+	return static_cast<PVInstance*>(getParent())->getTopLevelPVParent();
+}
+
+// FUNCTION: WEBSERVICE 0x100997e0
+// FUNCTION: ROBLOX 0x005f79c0
+void PVInstance::clearLegacyOffset()
+{
+	legacyOffset.reset();
+
+	for (unsigned int i = 0; i < numChildren(); i++) {
+		if (PVInstance* pv = dynamic_cast<PVInstance*>(getChild(i))) {
+			pv->clearLegacyOffset();
+		}
+	}
+}
+
 // FUNCTION: WEBSERVICE 0x10099870
+// FUNCTION: ROBLOX 0x005f7a50
 PVInstance::~PVInstance()
 {
 }
 
 // FUNCTION: WEBSERVICE 0x10099910
+// FUNCTION: ROBLOX 0x005f7af0
 bool PVInstance::computeIsTopFlag() const
 {
 	if (IsControllable && controllerType != Controller::NO_CONTROLLER) {
@@ -217,14 +265,37 @@ bool PVInstance::computeIsTopFlag() const
 	return false;
 }
 
-// STUB: WEBSERVICE 0x10099ea0
+// FUNCTION: WEBSERVICE 0x100999a0
+// FUNCTION: ROBLOX 0x005f7b80
+void PVInstance::setPVGridOffsetLegacy(const CoordinateFrame& _offset)
+{
+	if (!legacyOffset) {
+		legacyOffset.reset(new CoordinateFrame());
+		*legacyOffset = _offset;
+	}
+}
+
+// FUNCTION: WEBSERVICE 0x10099ea0
+// FUNCTION: ROBLOX 0x005f8170
 G3D::ReferenceCountedPointer<Controller> PVInstance::computeTopPVController() const
 {
-	STUB(0x10099ea0);
-	return G3D::ReferenceCountedPointer<Controller>();
+	if (!isTopLevelPVInstance()) {
+		G3D::ReferenceCountedPointer<Controller> parentController =
+			static_cast<const PVInstance*>(getParent())->TopPVController;
+
+		if (parentController.notNull() && parentController->getControllerType() != Controller::NO_CONTROLLER) {
+			if (!parentController->isUserController()) {
+				return parentController.getPointer();
+			}
+		}
+	}
+
+	ControllerService* service = ServiceProvider::create<ControllerService>(this);
+	return service ? service->getController(getControllerType(), this) : G3D::ReferenceCountedPointer<Controller>();
 }
 
 // FUNCTION: WEBSERVICE 0x1009a3b0
+// FUNCTION: ROBLOX 0x005f8680
 PVInstance::PVInstance(const char* name)
 	: Reflection::Described<PVInstance, sPVInstance, Instance>(name),
 	  IsControllable(this, &PVInstance::computeIsControllable), IsTopFlag(this, &PVInstance::computeIsTopFlag),
@@ -234,6 +305,7 @@ PVInstance::PVInstance(const char* name)
 }
 
 // FUNCTION: WEBSERVICE 0x1009a4a0
+// FUNCTION: ROBLOX 0x005f8770
 void PVInstance::setControllerType(Controller::ControllerType _control)
 {
 	if (controllerType != _control) {
@@ -247,6 +319,7 @@ void PVInstance::setControllerType(Controller::ControllerType _control)
 }
 
 // FUNCTION: WEBSERVICE 0x1009a4e0
+// FUNCTION: ROBLOX 0x005f87b0
 void PVInstance::setShowControllerFlag(bool _showControllerFlag)
 {
 	if (showControllerFlag != _showControllerFlag) {

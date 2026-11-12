@@ -7,9 +7,100 @@
 // Candidate translation unit (score above; library headers required).
 #include "PBBMesh.h"
 
+#include "BrickMesh.h"
 #include "QuadVolume.h"
+#include "ViewBase.h"
 
+#include <G3D/Vector2int16.h>
 #include <G3D/Vector3int16.h>
+#include <G3D/g3dmath.h>
+#include <algorithm>
+
+// SIZE 0xc
+class Face
+{
+private:
+	G3D::Vector2 perturbation; // 0x00
+	bool bulge[2];             // 0x08
+
+public:
+	Face();
+
+	void operator()(
+		G3D::Vector3& vertex,
+		G3D::Vector3& normal,
+		G3D::Vector2& tex,
+		const G3D::Vector3& radius,
+		const G3D::Vector2int16& ivertex
+	)
+	{
+		for (int i = 0; i < 2; ++i) {
+			if (bulge[i]) {
+				normal[i] = vertex[i] * perturbation[i] / radius[i];
+			}
+			else {
+				normal[i] = perturbation[i];
+			}
+		}
+	}
+};
+
+DECOMP_SIZE_ASSERT(Face, 0xc)
+
+// SIZE 0xc
+class TopBottom : public Face
+{
+public:
+	void operator()(
+		G3D::Vector3& vertex,
+		G3D::Vector3& normal,
+		G3D::Vector2& tex,
+		const G3D::Vector3& radius,
+		const G3D::Vector2int16& ivertex
+	)
+	{
+		if (vertex.x > 0) {
+			vertex.x -= RBX::View::BrickMesh::widthInset;
+		}
+		else {
+			vertex.x += RBX::View::BrickMesh::widthInset;
+		}
+		if (vertex.y > 0) {
+			vertex.y -= RBX::View::BrickMesh::widthInset;
+		}
+		else {
+			vertex.y += RBX::View::BrickMesh::widthInset;
+		}
+		Face::operator()(vertex, normal, tex, radius, ivertex);
+	}
+};
+
+DECOMP_SIZE_ASSERT(TopBottom, 0xc)
+
+// SIZE 0xc
+class Side : public Face
+{
+public:
+	void operator()(
+		G3D::Vector3& vertex,
+		G3D::Vector3& normal,
+		G3D::Vector2& tex,
+		const G3D::Vector3& radius,
+		const G3D::Vector2int16& ivertex
+	)
+	{
+		if (vertex.x > 0) {
+			vertex.x -= RBX::View::BrickMesh::widthInset;
+		}
+		else {
+			vertex.x += RBX::View::BrickMesh::widthInset;
+		}
+		vertex.z -= RBX::View::BrickMesh::widthInset;
+		Face::operator()(vertex, normal, tex, radius, ivertex);
+	}
+};
+
+DECOMP_SIZE_ASSERT(Side, 0xc)
 
 // SIZE 0x28
 class PBBBuilder : public RBX::View::LevelBuilder
@@ -35,7 +126,8 @@ protected:
 
 DECOMP_SIZE_ASSERT(PBBBuilder, 0x28)
 
-// STUB: WEBSERVICE 0x1017abc0
+// FUNCTION: WEBSERVICE 0x1017abc0
+// FUNCTION: ROBLOX 0x00484f50
 PBBBuilder::PBBBuilder(
 	G3D::ReferenceCountedPointer<RBX::Render::Mesh::Level>& level,
 	G3D::Vector3 size,
@@ -43,55 +135,74 @@ PBBBuilder::PBBBuilder(
 )
 	: RBX::View::LevelBuilder(level, size, surfaceTypes), strips(0, 0, 0)
 {
-	strips.x = G3D::max(1, (int) (size.x / 6.0));
-	strips.y = G3D::max(1, (int) (size.y / 6.0));
-	strips.z = G3D::max(1, (int) (size.z / 6.0));
+	strips.x = std::max(1, (int) (size.x / 6.0));
+	strips.y = std::max(1, (int) (size.y / 6.0));
+	strips.z = std::max(1, (int) (size.z / 6.0));
 
-	strips.x = G3D::min(4, (int) strips.x);
-	strips.y = G3D::min(4, (int) strips.y);
-	strips.z = G3D::min(4, (int) strips.z);
+	strips.x = std::min(4, (int) strips.x);
+	strips.y = std::min(4, (int) strips.y);
+	strips.z = std::min(4, (int) strips.z);
 }
 
-// STUB: WEBSERVICE 0x1017d7c0
-void PBBBuilder::buildTop(Purpose)
+// FUNCTION: WEBSERVICE 0x1017ad40
+// FUNCTION: ROBLOX 0x004850d0
+Face::Face()
 {
-	STUB(0x1017d7c0);
+	perturbation.x =
+		G3D::uniformRandom(-RBX::View::BrickMesh::normalPerturbation, RBX::View::BrickMesh::normalPerturbation);
+	perturbation.y =
+		G3D::uniformRandom(-RBX::View::BrickMesh::normalPerturbation, RBX::View::BrickMesh::normalPerturbation);
+	bulge[0] = G3D::uniformRandom() > 0.5f;
+	bulge[1] = G3D::uniformRandom() > 0.5f;
 }
 
-// STUB: WEBSERVICE 0x1017d820
-void PBBBuilder::buildBottom(Purpose)
+// FUNCTION: WEBSERVICE 0x1017d7c0
+// FUNCTION: ROBLOX 0x00487bf0
+void PBBBuilder::buildTop(Purpose purpose)
 {
-	STUB(0x1017d820);
+	buildFace<RBX::NORM_Y>(TopBottom(), 1, 1, purpose);
 }
 
-// STUB: WEBSERVICE 0x1017d880
-void PBBBuilder::buildLeft(Purpose)
+// FUNCTION: WEBSERVICE 0x1017d820
+// FUNCTION: ROBLOX 0x00487c50
+void PBBBuilder::buildBottom(Purpose purpose)
 {
-	STUB(0x1017d880);
+	buildFace<RBX::NORM_Y_NEG>(TopBottom(), 1, 1, purpose);
 }
 
-// STUB: WEBSERVICE 0x1017d8e0
-void PBBBuilder::buildRight(Purpose)
+// FUNCTION: WEBSERVICE 0x1017d880
+// FUNCTION: ROBLOX 0x00487cb0
+void PBBBuilder::buildLeft(Purpose purpose)
 {
-	STUB(0x1017d8e0);
+	buildFace<RBX::NORM_X_NEG>(Side(), 1, 1, purpose);
 }
 
-// STUB: WEBSERVICE 0x1017d940
-void PBBBuilder::buildFront(Purpose)
+// FUNCTION: WEBSERVICE 0x1017d8e0
+// FUNCTION: ROBLOX 0x00487d10
+void PBBBuilder::buildRight(Purpose purpose)
 {
-	STUB(0x1017d940);
+	buildFace<RBX::NORM_X>(Side(), 1, 1, purpose);
 }
 
-// STUB: WEBSERVICE 0x1017d9a0
-void PBBBuilder::buildBack(Purpose)
+// FUNCTION: WEBSERVICE 0x1017d940
+// FUNCTION: ROBLOX 0x00487d70
+void PBBBuilder::buildFront(Purpose purpose)
 {
-	STUB(0x1017d9a0);
+	buildFace<RBX::NORM_Z_NEG>(Side(), 1, 1, purpose);
+}
+
+// FUNCTION: WEBSERVICE 0x1017d9a0
+// FUNCTION: ROBLOX 0x00487dd0
+void PBBBuilder::buildBack(Purpose purpose)
+{
+	buildFace<RBX::NORM_Z>(Side(), 1, 1, purpose);
 }
 
 namespace RBX {
 namespace View {
 
-// STUB: WEBSERVICE 0x1017da00
+// FUNCTION: WEBSERVICE 0x1017da00
+// FUNCTION: ROBLOX 0x00487e30
 PBBMesh::PBBMesh(const G3D::Vector3& size, NormalId decalFace)
 {
 	Render::Mesh::LevelRef level = new Render::Mesh::Level(G3D::RenderDevice::QUADS);
@@ -103,15 +214,43 @@ PBBMesh::PBBMesh(const G3D::Vector3& size, NormalId decalFace)
 	builder.buildFace(decalFace, LevelBuilder::Decal);
 }
 
-// STUB: WEBSERVICE 0x1017db60
-PBBMesh::PBBMesh(const G3D::Vector3& size, NormalId, const G3D::Vector2&)
+// FUNCTION: WEBSERVICE 0x1017db60
+// FUNCTION: ROBLOX 0x00487f90
+PBBMesh::PBBMesh(const G3D::Vector3& size, NormalId textureFace, const G3D::Vector2& studsPerTile)
 {
 	Render::Mesh::LevelRef level = new Render::Mesh::Level(G3D::RenderDevice::QUADS);
 
 	levels.append(level);
 
 	PBBBuilder builder(level, size, RenderSurfaceTypes());
+
+	builder.textureScale = mapToUvw_Legacy(size, textureFace).xy() * 2.0 / studsPerTile;
+
+	builder.buildFace(textureFace, LevelBuilder::Decal);
 }
+
+// FUNCTION: WEBSERVICE 0x1017dd20
+// FUNCTION: ROBLOX 0x00488150
+PBBMesh::PBBMesh(const G3D::Vector3& size, RenderSurfaceTypes surfaceTypes)
+{
+	{
+		Render::Mesh::LevelRef level = new Render::Mesh::Level(G3D::RenderDevice::QUADS);
+		levels.append(level);
+		PBBBuilder builder(level, size, surfaceTypes);
+		builder.build(LevelBuilder::Surface);
+	}
+
+	if (ViewBase::getShadowsEnabled()) {
+		Render::Mesh::LevelRef tempShadowLevel = new Render::Mesh::Level(G3D::RenderDevice::TRIANGLES);
+		PBBBuilder builder(tempShadowLevel, size, surfaceTypes);
+		builder.build(LevelBuilder::Shadow);
+		computeShadowSurface(tempShadowLevel);
+	}
+}
+
+template void MeshFactory<PBBMesh, 4>::flushCache();
+
+template PBBMesh* MeshFactory<PBBMesh, 4>::create(const G3D::Vector3&, RenderSurfaceTypes);
 
 template PBBMesh* MeshFactory<PBBMesh, 4>::createDecal(const G3D::Vector3&, NormalId);
 

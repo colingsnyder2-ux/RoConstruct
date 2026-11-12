@@ -1,166 +1,33 @@
+// roc 2012-06 0059a050  unit: RBX::Network::Marker  size: 59 bytes
+// Make this compile to the exact bytes below, then: roc check 2012-06 0059a050
+//
+// 0059a050  8b4c2404             mov ecx, dword ptr [esp + 4]
+// 0059a054  85c9                 test ecx, ecx
+// 0059a056  7432                 je 0x59a08a
+// 0059a058  803900               cmp byte ptr [ecx], 0
+// 0059a05b  742d                 je 0x59a08a
+// 0059a05d  8bc1                 mov eax, ecx
+// 0059a05f  56                   push esi
+// 0059a060  8d7001               lea esi, [eax + 1]
+// 0059a063  8a10                 mov dl, byte ptr [eax]
+// 0059a065  40                   inc eax
+// 0059a066  84d2                 test dl, dl
+// 0059a068  75f9                 jne 0x59a063
+// 0059a06a  2bc6                 sub eax, esi
+// 0059a06c  8a5408ff             mov dl, byte ptr [eax + ecx - 1]
+// 0059a070  5e                   pop esi
+// 0059a071  80fa5c               cmp dl, 0x5c
+// 0059a074  7506                 jne 0x59a07c
+// 0059a076  c64408ff2f           mov byte ptr [eax + ecx - 1], 0x2f
+// 0059a07b  c3                   ret 
+// 0059a07c  80fa2f               cmp dl, 0x2f
+// 0059a07f  7409                 je 0x59a08a
+// 0059a081  c604082f             mov byte ptr [eax + ecx], 0x2f
+// 0059a085  c644080100           mov byte ptr [eax + ecx + 1], 0
+// 0059a08a  c3                   ret 
+// library openrbx-raknet/FileOperations.cpp (function ?AddSlash@@YAXPAD@Z)
+
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /EHsc /MD
 // roc-lib: openrbx-raknet FileOperations.cpp
-
-// Candidate translation unit (score above; library headers required).
-#include "_FindFirst.h" // For linux
-#include "FileOperations.h"
-#include <stdio.h>
-#include <string.h>
-#ifdef _WIN32 
-// For mkdir
-#include <direct.h>
-#include <io.h>
-#else
-#include <sys/stat.h>
-#include <unistd.h>
-#include "LinuxStrings.h"
-#include "_FindFirst.h"
-#endif
-
-#ifdef _MSC_VER
-#pragma warning( push )
-#endif
-
-#ifdef _MSC_VER
-#pragma warning( disable : 4966 ) // mkdir declared depreciated by Microsoft in order to make it harder to be cross platform.  I don't agree it's depreciated.
-#endif
-// FUNCTION: WEBSERVICE 0x10196580
-bool WriteFileWithDirectories( const char *path, char *data, unsigned dataLength )
-{
-	int index;
-	FILE *fp;
-	char *pathCopy;
-#ifndef _WIN32
-
-	char *systemCommand;
-#endif
-
-	if ( path == 0 || path[ 0 ] == 0 )
-		return false;
-
-#ifndef _WIN32
-
-	systemCommand = new char [ strlen( path ) + 1 + 6 ];
-
-#endif
-
-	pathCopy = new char [ strlen( path ) + 1 ];
-
-	strcpy( pathCopy, path );
-
-	index = 0;
-
-	while ( pathCopy[ index ] )
-	{
-		if ( pathCopy[ index ] == '/' || pathCopy[ index ] == '\\')
-		{
-			pathCopy[ index ] = 0;
-#ifdef _WIN32
-			mkdir( pathCopy );
-#else
-
-			mkdir( pathCopy, 0744 );
-#endif
-
-			pathCopy[ index ] = '/';
-		}
-
-		index++;
-	}
-
-	if (data && dataLength)
-	{
-		fp = fopen( path, "wb" );
-
-		if ( fp == 0 )
-		{
-			delete [] pathCopy;
-#ifndef _WIN32
-			delete [] systemCommand;
-#endif
-			return false;
-		}
-
-		fwrite( data, 1, dataLength, fp );
-
-		fclose( fp );
-	}
-	else
-	{
-#ifdef _WIN32
-		mkdir( pathCopy );
-#else
-		mkdir( pathCopy, 0744 );
-#endif
-	}
-
-	delete [] pathCopy;
-#ifndef _WIN32
-	delete [] systemCommand;
-#endif
-
-
-	return true;
-}
-bool IsSlash(unsigned char c)
-{
-	return c=='/' || c=='\\';
-}
-
-// FUNCTION: WEBSERVICE 0x10196680
-void AddSlash( char *input )
-{
-	if (input==0 || input[0]==0)
-		return;
-
-	int lastCharIndex=(int) strlen(input)-1;
-	if (input[lastCharIndex]=='\\')
-		input[lastCharIndex]='/';
-	else if (input[lastCharIndex]!='/')
-	{
-		input[lastCharIndex+1]='/';
-		input[lastCharIndex+2]=0;
-	}
-}
-bool DirectoryExists(const char *directory)
-{
-	_finddata_t fileInfo;
-	intptr_t dir;
-	char baseDirWithStars[560];
-	strcpy(baseDirWithStars, directory);
-	AddSlash(baseDirWithStars);
-	strcat(baseDirWithStars, "*.*");
-	dir=_findfirst(baseDirWithStars, &fileInfo );
-	if (dir==-1)
-		return false;
-	_findclose(dir);
-	return true;
-}
-void QuoteIfSpaces(char *str)
-{
-	unsigned i;
-	bool hasSpace=false;
-	for (i=0; str[i]; i++)
-	{
-		if (str[i]==' ')
-		{
-			hasSpace=true;
-			break;
-		}
-	}
-	if (hasSpace)
-	{
-		int len=(int)strlen(str);
-		memmove(str+1, str, len);
-		str[0]='\"';
-		str[len]='\"';
-		str[len+1]=0;
-	}
-}
-
-#ifdef _MSC_VER
-#pragma warning( pop )
-#endif
-

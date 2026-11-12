@@ -14,6 +14,7 @@
 namespace RBX {
 
 // FUNCTION: WEBSERVICE 0x101eccb0
+// FUNCTION: ROBLOX 0x006714f0
 G3D::ReferenceCountedPointer<TextureProxyBase> Textures::getTextureProxy(Adorn* adorn, const ContentId& id)
 {
 	try {

@@ -22,12 +22,14 @@ namespace RBX {
 int Kernel::numKernels = 0;
 
 // FUNCTION: WEBSERVICE 0x100d4f20
+// FUNCTION: ROBLOX 0x0060beb0
 int Kernel::numConnectors() const
 {
 	return kernelData->connectors.size();
 }
 
 // FUNCTION: WEBSERVICE 0x100d4f30
+// FUNCTION: ROBLOX 0x0060bec0
 float Kernel::connectorSpringEnergy() const
 {
 	float springPotential = 0.0f;
@@ -40,42 +42,48 @@ float Kernel::connectorSpringEnergy() const
 }
 
 // FUNCTION: WEBSERVICE 0x100d5310
+// FUNCTION: ROBLOX 0x0060c2a0
 int Kernel::numBodies() const
 {
 	return kernelData->bodies.size();
 }
 
 // FUNCTION: WEBSERVICE 0x100d5320
+// FUNCTION: ROBLOX 0x0060c2b0
 int Kernel::numPoints() const
 {
 	return kernelData->points.size();
 }
 
 // FUNCTION: WEBSERVICE 0x100d5330
+// FUNCTION: ROBLOX 0x0060c2c0
 float Kernel::bodyKineticEnergy() const
 {
-	float answer = 0.0f;
+	float kineticEnergy = 0.0f;
 
 	for (int i = 0; i < kernelData->bodies.size(); ++i) {
-		answer += kernelData->bodies[i]->kineticEnergy();
+		kineticEnergy += kernelData->bodies[i]->kineticEnergy();
 	}
 
-	return answer;
+	return kineticEnergy;
 }
 
 // FUNCTION: WEBSERVICE 0x100d54c0
+// FUNCTION: ROBLOX 0x0060c450
 void Kernel::insertConnector(Connector* c)
 {
 	kernelData->connectors.fastAppend(c);
 }
 
 // FUNCTION: WEBSERVICE 0x100d54f0
+// FUNCTION: ROBLOX 0x0060c480
 void Kernel::insertConnector2ndPass(Connector* c)
 {
 	kernelData->connectors2ndPass.fastAppend(c);
 }
 
 // FUNCTION: WEBSERVICE 0x100d5520
+// FUNCTION: ROBLOX 0x0060c4b0
 void Kernel::removeConnector(Connector* c)
 {
 	realTimeConnectors.resize(0, false);
@@ -84,12 +92,14 @@ void Kernel::removeConnector(Connector* c)
 }
 
 // FUNCTION: WEBSERVICE 0x100d5580
+// FUNCTION: ROBLOX 0x0060c510
 void Kernel::removeConnector2ndPass(Connector* c)
 {
 	kernelData->connectors2ndPass.fastRemove(c);
 }
 
 // FUNCTION: WEBSERVICE 0x100d55d0
+// FUNCTION: ROBLOX 0x0060c560
 void Kernel::stepWorld(int worldStepId, int uiStepId, bool throttling)
 {
 	KernelData* data = kernelData;
@@ -144,24 +154,28 @@ void Kernel::stepWorld(int worldStepId, int uiStepId, bool throttling)
 }
 
 // FUNCTION: WEBSERVICE 0x100d57e0
+// FUNCTION: ROBLOX 0x0060c770
 void Kernel::insertBody(Body* b)
 {
 	kernelData->bodies.fastAppend(b);
 }
 
 // FUNCTION: WEBSERVICE 0x100d5800
+// FUNCTION: ROBLOX 0x0060c790
 void Kernel::removeBody(Body* b)
 {
 	kernelData->bodies.fastRemove(b);
 }
 
 // FUNCTION: WEBSERVICE 0x100d5840
+// FUNCTION: ROBLOX 0x0060c7d0
 void Kernel::removePoint(Point* p)
 {
 	kernelData->points.fastRemove(p);
 }
 
 // FUNCTION: WEBSERVICE 0x100d5890
+// FUNCTION: ROBLOX 0x0060c820
 Point* Kernel::newPoint(Body* _body, const Vector3& worldPos)
 {
 	Point* point = new Point(_body);
@@ -185,6 +199,7 @@ Point* Kernel::newPoint(Body* _body, const Vector3& worldPos)
 }
 
 // FUNCTION: WEBSERVICE 0x100d59f0
+// FUNCTION: ROBLOX 0x0060c980
 void Kernel::deletePoint(Point* _point)
 {
 	if (_point != NULL) {
@@ -197,6 +212,7 @@ void Kernel::deletePoint(Point* _point)
 }
 
 // FUNCTION: WEBSERVICE 0x100d5a20
+// FUNCTION: ROBLOX 0x0060c9b0
 Kernel::~Kernel()
 {
 	numKernels--;
@@ -205,12 +221,14 @@ Kernel::~Kernel()
 }
 
 // FUNCTION: WEBSERVICE 0x100d5ad0 FOLDED
+// FUNCTION: ROBLOX 0x0060ca70 FOLDED
 Kernel* Kernel::getKernel()
 {
 	return this;
 }
 
 // FUNCTION: WEBSERVICE 0x100d5ae0
+// FUNCTION: ROBLOX 0x0060ca80
 Kernel::Kernel(IStage* upstream)
 	: IStage(upstream, NULL), inStepCode(false), kernelData(new KernelData()), maxBodies(0), maxPoints(0),
 	  maxConnectors(0), profilingKernel(new Profiling::CodeProfiler("Kernel"))

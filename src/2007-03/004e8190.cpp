@@ -15,24 +15,26 @@ namespace Render {
 G3D::MeshAlg::Geometry Mesh::visibleGeometry;
 G3D::Array<G3D::Vector2> Mesh::texCoordArray;
 G3D::Array<G3D::Vector3> Mesh::tangentArray;
-Mesh::VertexList Mesh::vertexRefCounts;
-Mesh::VertexList Mesh::freeList;
 G3D::VAR Mesh::vertexVAR;
 G3D::VAR Mesh::normalVAR;
 G3D::VAR Mesh::texCoordVAR;
 G3D::VAR Mesh::tangentVAR;
+Mesh::VertexList Mesh::vertexRefCounts;
+Mesh::VertexList Mesh::freeList;
 bool Mesh::varDirty;
 
 static int vertexRefCount;
 static bool init;
 
 // FUNCTION: WEBSERVICE 0x101655f0
+// FUNCTION: ROBLOX 0x00498f20
 void Mesh::endRender(G3D::RenderDevice* rd)
 {
 	rd->endIndexedPrimitives();
 }
 
 // FUNCTION: WEBSERVICE 0x10165830
+// FUNCTION: ROBLOX 0x004993b0
 unsigned int Mesh::allocVertex(unsigned int i, unsigned int count)
 {
 	vertexRefCounts[i] += count;
@@ -42,12 +44,14 @@ unsigned int Mesh::allocVertex(unsigned int i, unsigned int count)
 }
 
 // FUNCTION: WEBSERVICE 0x10165fc0
+// FUNCTION: ROBLOX 0x00499d10
 const Mesh::LevelRef Mesh::detailLevel(float meshLOD) const
 {
 	return levels[detailIndex(levels.size() * meshLOD)].getPointer();
 }
 
 // FUNCTION: WEBSERVICE 0x10166020
+// FUNCTION: ROBLOX 0x00499d70
 void Mesh::sendGeometry(const Level* lvl, G3D::RenderDevice* rd)
 {
 	if (lvl != NULL && lvl->indexArray.size() > 0) {
@@ -55,12 +59,45 @@ void Mesh::sendGeometry(const Level* lvl, G3D::RenderDevice* rd)
 	}
 }
 
+// FUNCTION: WEBSERVICE 0x10166980
+// FUNCTION: ROBLOX 0x0049a500
+void Mesh::computeAABounds(
+	const std::vector<G3D::ReferenceCountedPointer<Chunk> >& chunkArray, G3D::Vector3& lo, G3D::Vector3& hi
+)
+{
+	lo = G3D::Vector3::inf();
+	hi = -G3D::Vector3::inf();
+
+	std::vector<G3D::ReferenceCountedPointer<Chunk> >::const_iterator end = chunkArray.end();
+
+	for (std::vector<G3D::ReferenceCountedPointer<Chunk> >::const_iterator iter = chunkArray.begin(); iter != end;
+		 ++iter) {
+		const G3D::ReferenceCountedPointer<Chunk>& chunk = *iter;
+		const G3D::ReferenceCountedPointer<Mesh>& srcMesh = chunk->getMesh();
+
+		if (srcMesh.isNull()) {
+			continue;
+		}
+
+		const G3D::CoordinateFrame& cframe = chunk->cframe();
+		LevelRef srcLevel = srcMesh->detailLevel(0.0f);
+		const G3D::Array<IndexType>& indexArray = srcLevel->indexArray;
+
+		for (int i = 0; i < indexArray.size(); i++) {
+			IndexType index = indexArray[i];
+
+			G3D::Vector3 v = cframe.pointToWorldSpace(visibleGeometry.vertexArray[index]);
+
+			hi = hi.max(v);
+			lo = lo.min(v);
+		}
+	}
+}
+
 // FUNCTION: WEBSERVICE 0x10166cc0
+// FUNCTION: ROBLOX 0x0049a840
 unsigned int Mesh::allocVertex(
-	const G3D::Vector3& vertex,
-	const G3D::Vector3& normal,
-	const G3D::Vector2& tex,
-	bool share
+	const G3D::Vector3& vertex, const G3D::Vector3& normal, const G3D::Vector2& tex, bool share
 )
 {
 	if (!varDirty) {
@@ -93,25 +130,26 @@ unsigned int Mesh::allocVertex(
 	return index;
 }
 
-// STUB: WEBSERVICE 0x10166e40
-void Mesh::freeVertex(unsigned int i)
+// FUNCTION: WEBSERVICE 0x10166e40
+// FUNCTION: ROBLOX 0x0049a9c0
+void Mesh::freeVertex(unsigned int index)
 {
-	int* refCounts = vertexRefCounts.getCArray();
-
-	if (refCounts != NULL) {
+	if (vertexRefCounts.getCArray() != NULL) {
+		int refCount = vertexRefCounts[index];
 		vertexRefCount--;
 
-		if (refCounts[i] == 1) {
-			refCounts[i] = 0;
-			freeList.append(i);
-			return;
+		if (refCount == 1) {
+			vertexRefCounts[index] = 0;
+			freeList.append(index);
 		}
-
-		refCounts[i]--;
+		else {
+			vertexRefCounts[index] = refCount - 1;
+		}
 	}
 }
 
 // FUNCTION: WEBSERVICE 0x10166e80
+// FUNCTION: ROBLOX 0x0049aa00
 Mesh::Level::~Level()
 {
 	for (int i = 0; i < indexArray.size(); i++) {
@@ -120,11 +158,13 @@ Mesh::Level::~Level()
 }
 
 // FUNCTION: WEBSERVICE 0x10166f50
+// FUNCTION: ROBLOX 0x0049aad0
 Mesh::~Mesh()
 {
 }
 
 // FUNCTION: WEBSERVICE 0x10166fc0
+// FUNCTION: ROBLOX 0x0049ab40
 void Mesh::makeVAR()
 {
 	if (varDirty) {
@@ -141,6 +181,7 @@ void Mesh::makeVAR()
 }
 
 // FUNCTION: WEBSERVICE 0x10167400
+// FUNCTION: ROBLOX 0x0049af80
 void Mesh::beginRender(G3D::RenderDevice* rd, bool usetexCoords, bool useTangent)
 {
 	makeVAR();
@@ -168,6 +209,7 @@ void Mesh::beginRender(G3D::RenderDevice* rd, bool usetexCoords, bool useTangent
 }
 
 // FUNCTION: WEBSERVICE 0x10167600
+// FUNCTION: ROBLOX 0x0049b020
 void Mesh::initStatics()
 {
 	visibleGeometry.vertexArray.resize(1);
@@ -180,6 +222,7 @@ void Mesh::initStatics()
 }
 
 // STUB: WEBSERVICE 0x101676c0
+// STUB: ROBLOX 0x0049b0e0
 void Mesh::computeDirectionalShadowVolume(
 	const G3D::CoordinateFrame& cframe,
 	const G3D::Vector3& wsLightVector,
@@ -209,8 +252,9 @@ void Mesh::computeDirectionalShadowVolume(
 				const G3D::Vector3& v1 = geometry[face.vertexIndex[1]];
 				const G3D::Vector3& v2 = geometry[face.vertexIndex[2]];
 
-				shadowVertex
-					.append(cframe.pointToWorldSpace(v0), cframe.pointToWorldSpace(v1), cframe.pointToWorldSpace(v2));
+				shadowVertex.append(
+					cframe.pointToWorldSpace(v0), cframe.pointToWorldSpace(v1), cframe.pointToWorldSpace(v2)
+				);
 			}
 		}
 	}
@@ -220,31 +264,33 @@ void Mesh::computeDirectionalShadowVolume(
 		bool b0 = backface[edge.faceIndex[0]];
 
 		if (b0 != backface[edge.faceIndex[1]]) {
-			int n = shadowVertex.size();
 			const G3D::Vector3& v0 = geometry[edge.vertexIndex[0]];
 			const G3D::Vector3& v1 = geometry[edge.vertexIndex[1]];
 
-			G3D::Vector3 p0 = cframe.pointToWorldSpace(v0);
-			G3D::Vector3 p1 = cframe.pointToWorldSpace(v1);
+			G3D::Vector3 wvertex0 = cframe.pointToWorldSpace(v0), wvertex1 = cframe.pointToWorldSpace(v1);
 
-			shadowVertex.append(p0, p1);
+			int n = shadowVertex.size();
+			shadowVertex.append(wvertex0, wvertex1);
+
+			unsigned int A;
+			unsigned int B;
 
 			if (b0) {
-				indexArray.append(n, n + 1, 0);
+				A = n;
+				B = n + 1;
 			}
 			else {
-				indexArray.append(n + 1, n, 0);
+				A = n + 1;
+				B = n;
 			}
+
+			indexArray.append(A, B, 0);
 		}
 	}
 }
 
-// FUNCTION: WEBSERVICE 0x10167b50
-Mesh::Level::Level(G3D::RenderDevice::Primitive primitive) : primitive(primitive)
-{
-}
-
 // FUNCTION: WEBSERVICE 0x10167bb0
+// FUNCTION: ROBLOX 0x0049b570
 Mesh::Mesh()
 {
 	if (!init) {
@@ -256,17 +302,123 @@ Mesh::Mesh()
 }
 
 // STUB: WEBSERVICE 0x10167d70
+// STUB: ROBLOX 0x0049b730
 G3D::ReferenceCountedPointer<Mesh> Mesh::aggregate(
 	const std::vector<G3D::ReferenceCountedPointer<Chunk> >& chunkArray,
 	G3D::CoordinateFrame& outCFrame,
 	float& outBoundingRadius
 )
 {
-	STUB(0x10167d70);
-	return NULL;
+	G3D::ReferenceCountedPointer<Mesh> mesh = new Mesh();
+
+	std::vector<G3D::ReferenceCountedPointer<Chunk> >::const_iterator end = chunkArray.end();
+
+	{
+		G3D::Vector3 lo, hi;
+		computeAABounds(chunkArray, lo, hi);
+
+		outCFrame.translation = (hi + lo) / 2.0f;
+		outCFrame.rotation = G3D::Matrix3::identity();
+		outBoundingRadius = (hi - lo).magnitude() * 0.5;
+	}
+
+	mesh->levels.append(new Level(G3D::RenderDevice::QUADS));
+
+	{
+		LevelRef dstLevel = mesh->levels.last();
+
+		for (std::vector<G3D::ReferenceCountedPointer<Chunk> >::const_iterator iter = chunkArray.begin(); iter != end;
+			 ++iter) {
+			const G3D::ReferenceCountedPointer<Chunk>& chunk = *iter;
+			const G3D::ReferenceCountedPointer<Mesh>& srcMesh = chunk->getMesh();
+
+			if (srcMesh.isNull()) {
+				continue;
+			}
+
+			const G3D::CoordinateFrame& cframe = chunk->cframe();
+			LevelRef srcLevel = srcMesh->detailLevel(0.3f);
+			const G3D::Array<IndexType>& indexArray = srcLevel->indexArray;
+
+			G3D::CoordinateFrame netTransform = outCFrame.inverse() * cframe;
+
+			for (int i = 0; i < indexArray.size(); i++) {
+				IndexType index = indexArray[i];
+				G3D::Vector3 v = netTransform.pointToWorldSpace(visibleGeometry.vertexArray[index]);
+				G3D::Vector3 n = netTransform.vectorToWorldSpace(visibleGeometry.normalArray[index]);
+				G3D::Vector2 t = texCoordArray[index];
+
+				dstLevel->indexArray.append(allocVertex(v, n, t, false));
+			}
+		}
+	}
+
+	ShadowSurface& shadow = mesh->shadowSurface;
+	shadow.dropShadowGeometry = mesh->levels[0];
+
+	int faceOffset = 0;
+	int edgeOffset = 0;
+	int vertexOffset = 0;
+
+	for (std::vector<G3D::ReferenceCountedPointer<Chunk> >::const_iterator iter = chunkArray.begin(); iter != end;
+		 ++iter) {
+		const G3D::ReferenceCountedPointer<Chunk>& chunk = *iter;
+		const G3D::ReferenceCountedPointer<Mesh>& srcMesh = chunk->getMesh();
+
+		if (srcMesh.isNull()) {
+			continue;
+		}
+
+		const ShadowSurface& src = srcMesh->shadowSurface;
+		const G3D::CoordinateFrame& cframe = chunk->cframe();
+
+		G3D::CoordinateFrame netTransform = outCFrame.inverse() * cframe;
+
+		for (int i = 0; i < src.faceNormalArray.size(); i++) {
+			shadow.faceNormalArray.append(netTransform.vectorToWorldSpace(src.faceNormalArray[i]));
+		}
+
+		for (int i = 0; i < src.geometry.size(); i++) {
+			shadow.geometry.append(netTransform.pointToWorldSpace(src.geometry[i]));
+		}
+
+		for (int i = 0; i < src.edgeArray.size(); i++) {
+			const G3D::MeshAlg::Edge& srcEdge = src.edgeArray[i];
+			shadow.edgeArray.resize(shadow.edgeArray.size() + 1, false);
+			G3D::MeshAlg::Edge& e = shadow.edgeArray.last();
+
+			for (int j = 0; j < 2; j++) {
+				e.vertexIndex[j] = srcEdge.vertexIndex[j] + vertexOffset;
+				e.faceIndex[j] = srcEdge.faceIndex[j] + faceOffset;
+			}
+		}
+
+		for (int i = 0; i < src.faceArray.size(); i++) {
+			const G3D::MeshAlg::Face& srcFace = src.faceArray[i];
+			shadow.faceArray.resize(shadow.faceArray.size() + 1, false);
+			G3D::MeshAlg::Face& f = shadow.faceArray.last();
+
+			for (int j = 0; j < 2; j++) {
+				f.edgeIndex[j] = srcFace.edgeIndex[j] + edgeOffset;
+			}
+
+			for (int j = 0; j < 3; j++) {
+				f.vertexIndex[j] = srcFace.vertexIndex[j] + vertexOffset;
+			}
+		}
+
+		faceOffset += src.faceArray.size();
+		edgeOffset += src.edgeArray.size();
+		vertexOffset += src.geometry.size();
+	}
+
+	mesh->debugBoundingRadius = outBoundingRadius;
+
+	return mesh;
 }
 
 // FUNCTION: WEBSERVICE 0x101689d0
+// FUNCTION: ROBLOX 0x0049c390
 void Mesh::computeShadowSurface(const LevelRef& level)
 {
 	shadowSurface.dropShadowGeometry = level;
@@ -293,7 +445,7 @@ void Mesh::computeShadowSurface(const LevelRef& level)
 	G3D::Array<G3D::Vector3> newVertexPositions;
 	G3D::Array<int> toNew;
 	G3D::Array<int> toOld;
-	G3D::MeshAlg::computeWeld(rawGeometry, shadowSurface.geometry, toNew, toOld, 1e-05);
+	G3D::MeshAlg::computeWeld(rawGeometry, shadowSurface.geometry, toNew, toOld);
 
 	for (int i = 0; i < indexArray.size(); i++) {
 		indexArray[i] = toNew[indexArray[i]];
@@ -301,11 +453,7 @@ void Mesh::computeShadowSurface(const LevelRef& level)
 
 	G3D::Array<G3D::MeshAlg::Vertex> vertexArray;
 	G3D::MeshAlg::computeAdjacency(
-		shadowSurface.geometry,
-		indexArray,
-		shadowSurface.faceArray,
-		shadowSurface.edgeArray,
-		vertexArray
+		shadowSurface.geometry, indexArray, shadowSurface.faceArray, shadowSurface.edgeArray, vertexArray
 	);
 
 	for (int i = 0; i < shadowSurface.edgeArray.size(); i++) {

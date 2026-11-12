@@ -30,9 +30,11 @@
 namespace RBX {
 
 // GLOBAL: WEBSERVICE 0x102f9959
+// GLOBAL: ROBLOX 0x0095f4e5
 bool Primitive::disableSleep = false;
 
 // FUNCTION: WEBSERVICE 0x100a77d0
+// FUNCTION: ROBLOX 0x005f6090
 void Primitive::setSizeMultiplier(unsigned int value)
 {
 	if (value != sizeMultiplier && world == NULL) {
@@ -41,19 +43,22 @@ void Primitive::setSizeMultiplier(unsigned int value)
 }
 
 // FUNCTION: WEBSERVICE 0x100a77f0
+// FUNCTION: ROBLOX 0x006bb570
 const Guid& Primitive::getGuid() const
 {
 	return guid;
 }
 
 // FUNCTION: WEBSERVICE 0x100a7800
+// FUNCTION: ROBLOX 0x005f60b0
 void Primitive::setGuid(const Guid& value)
 {
-	guid.assign(value.data);
+	guid.copyDataFrom(value);
 	guidSetExternally = true;
 }
 
 // FUNCTION: WEBSERVICE 0x100a7820
+// FUNCTION: ROBLOX 0x005f60d0
 Primitive* Primitive::downstreamPrimitive(Joint* j)
 {
 	Primitive* answer = j->getPrimitive(0);
@@ -76,6 +81,7 @@ void EdgeList::insertEdge(Primitive* primitive, Edge* edge, EdgeList& list)
 }
 
 // FUNCTION: WEBSERVICE 0x100a7840
+// FUNCTION: ROBLOX 0x005f60f0
 void EdgeList::removeEdge(Primitive* p, Edge* e, EdgeList& list)
 {
 	Edge* previous = list.first;
@@ -95,6 +101,7 @@ void EdgeList::removeEdge(Primitive* p, Edge* e, EdgeList& list)
 }
 
 // FUNCTION: WEBSERVICE 0x100a78c0
+// FUNCTION: ROBLOX 0x005f6170
 void Primitive::insertEdge(Edge* e)
 {
 	Primitive* prim0 = e->getPrimitive(0);
@@ -114,6 +121,7 @@ void Primitive::insertEdge(Edge* e)
 }
 
 // FUNCTION: WEBSERVICE 0x100a7960
+// FUNCTION: ROBLOX 0x005f6210
 void Primitive::removeEdge(Edge* e)
 {
 	Primitive* prim0 = e->getPrimitive(0);
@@ -133,6 +141,7 @@ void Primitive::removeEdge(Edge* e)
 }
 
 // FUNCTION: WEBSERVICE 0x100a79d0
+// FUNCTION: ROBLOX 0x005f6280
 Edge* Primitive::getFirstEdge() const
 {
 	Edge* edge = joints.first;
@@ -145,6 +154,7 @@ Edge* Primitive::getFirstEdge() const
 }
 
 // FUNCTION: WEBSERVICE 0x100a79e0
+// FUNCTION: ROBLOX 0x005f6290
 Edge* Primitive::getNextEdge(Edge* e) const
 {
 	Edge* next = e->getNext(this);
@@ -161,6 +171,7 @@ Edge* Primitive::getNextEdge(Edge* e) const
 }
 
 // FUNCTION: WEBSERVICE 0x100a7a10
+// FUNCTION: ROBLOX 0x005f62c0
 void Primitive::onNewTouch(Primitive* p0, Primitive* p1)
 {
 	Clump* clump0 = p0->clump;
@@ -183,6 +194,7 @@ void Primitive::onNewTouch(Primitive* p0, Primitive* p1)
 }
 
 // FUNCTION: WEBSERVICE 0x100a7a90
+// FUNCTION: ROBLOX 0x005f6340
 void Primitive::setClump(Clump* set)
 {
 	if (set != clump) {
@@ -191,6 +203,7 @@ void Primitive::setClump(Clump* set)
 }
 
 // FUNCTION: WEBSERVICE 0x100a7aa0
+// FUNCTION: ROBLOX 0x005f6350
 Assembly* Primitive::getAssembly() const
 {
 	if (clump != NULL) {
@@ -201,12 +214,14 @@ Assembly* Primitive::getAssembly() const
 }
 
 // FUNCTION: WEBSERVICE 0x100a7ab0
+// FUNCTION: ROBLOX 0x005f6360
 float Primitive::computeJointK() const
 {
 	return Constants::getJointK(getGridSize(), getPrimitiveType() == Geometry::GEOMETRY_BALL);
 }
 
 // FUNCTION: WEBSERVICE 0x100a7ae0
+// FUNCTION: ROBLOX 0x005f6390
 void Primitive::setCanSleep(bool _canSleep)
 {
 	if (_canSleep != canSleep) {
@@ -219,6 +234,7 @@ void Primitive::setCanSleep(bool _canSleep)
 }
 
 // FUNCTION: WEBSERVICE 0x100a7b10
+// FUNCTION: ROBLOX 0x005f63c0
 void Primitive::setCanCollide(bool _canCollide)
 {
 	bool wasCollideable = !dragging && canCollide;
@@ -237,6 +253,7 @@ void Primitive::setCanCollide(bool _canCollide)
 }
 
 // FUNCTION: WEBSERVICE 0x100a7b70
+// FUNCTION: ROBLOX 0x005f6420
 void Primitive::setFriction(float _friction)
 {
 	if (_friction != friction) {
@@ -249,6 +266,7 @@ void Primitive::setFriction(float _friction)
 }
 
 // FUNCTION: WEBSERVICE 0x100a7bb0
+// FUNCTION: ROBLOX 0x005f6460
 void Primitive::setElasticity(float _elasticity)
 {
 	if (_elasticity != elasticity) {
@@ -261,12 +279,14 @@ void Primitive::setElasticity(float _elasticity)
 }
 
 // FUNCTION: WEBSERVICE 0x100a7bf0
+// FUNCTION: ROBLOX 0x005f64a0
 CoordinateFrame Primitive::getFaceCoordInObject(NormalId objectFace)
 {
 	return CoordinateFrame(normalIdToMatrix3(objectFace), normalIdToVector3(objectFace) * geometry->getGridSize());
 }
 
 // FUNCTION: WEBSERVICE 0x100a7c60
+// FUNCTION: ROBLOX 0x005f6510
 Face Primitive::getFaceInObject(NormalId objectFace)
 {
 	Vector3 half = geometry->getGridSize() * 0.5f;
@@ -275,12 +295,14 @@ Face Primitive::getFaceInObject(NormalId objectFace)
 }
 
 // FUNCTION: WEBSERVICE 0x100a7cd0
+// FUNCTION: ROBLOX 0x005f6580
 void Primitive::setVelocity(const Velocity& vel)
 {
 	body->setVelocity(vel);
 }
 
 // FUNCTION: WEBSERVICE 0x100a7ce0
+// FUNCTION: ROBLOX 0x005f6590
 void Primitive::setSurfaceData(NormalId id, const SurfaceData& newSurfaceData)
 {
 	if (surfaceData[id] == NULL && newSurfaceData.isEmpty()) {
@@ -305,6 +327,7 @@ void Primitive::setSurfaceData(NormalId id, const SurfaceData& newSurfaceData)
 }
 
 // FUNCTION: WEBSERVICE 0x100a7dc0
+// FUNCTION: ROBLOX 0x005f6670
 void Primitive::setSurfaceType(NormalId id, SurfaceType newSurfaceType)
 {
 	if (this->surfaceType[id] != newSurfaceType) {
@@ -313,6 +336,7 @@ void Primitive::setSurfaceType(NormalId id, SurfaceType newSurfaceType)
 }
 
 // FUNCTION: WEBSERVICE 0x100a7e80
+// FUNCTION: ROBLOX 0x005f6730
 Extents Primitive::computeFuzzyExtents() const
 {
 	const Matrix3& rotation = body->getCoordinateFrame().rotation;
@@ -325,6 +349,7 @@ Extents Primitive::computeFuzzyExtents() const
 }
 
 // FUNCTION: WEBSERVICE 0x100a7f40
+// FUNCTION: ROBLOX 0x005f67f0
 const Extents& Primitive::getFastFuzzyExtents() const
 {
 	if (fuzzyExtentsStateId != body->getStateIndex()) {
@@ -336,30 +361,35 @@ const Extents& Primitive::getFastFuzzyExtents() const
 }
 
 // FUNCTION: WEBSERVICE 0x100a7fb0 FOLDED
+// FUNCTION: ROBLOX 0x005f6860 FOLDED
 Joint* Primitive::getFirstJoint() const
 {
 	return static_cast<Joint*>(joints.first);
 }
 
 // FUNCTION: WEBSERVICE 0x100a7fc0
+// FUNCTION: ROBLOX 0x005f6870
 Contact* Primitive::getFirstContact()
 {
 	return static_cast<Contact*>(contacts.first);
 }
 
 // FUNCTION: WEBSERVICE 0x100a7fd0 FOLDED
+// FUNCTION: ROBLOX 0x005f6880 FOLDED
 Contact* Primitive::getNextContact(Contact* prev)
 {
 	return static_cast<Contact*>(prev->getNext(this));
 }
 
 // FUNCTION: WEBSERVICE 0x100a7fd0 FOLDED
+// FUNCTION: ROBLOX 0x005f6880 FOLDED
 Joint* Primitive::getNextJoint(Joint* prev) const
 {
 	return static_cast<Joint*>(prev->getNext(this));
 }
 
 // FUNCTION: WEBSERVICE 0x100a7ff0
+// FUNCTION: ROBLOX 0x005f68a0
 RigidJoint* Primitive::getFirstRigidAt(Edge* start)
 {
 	while (start != NULL) {
@@ -374,18 +404,21 @@ RigidJoint* Primitive::getFirstRigidAt(Edge* start)
 }
 
 // FUNCTION: WEBSERVICE 0x100a8060
+// FUNCTION: ROBLOX 0x005f6910
 RigidJoint* Primitive::getFirstRigid()
 {
 	return getFirstRigidAt(getFirstEdge());
 }
 
 // FUNCTION: WEBSERVICE 0x100a8080
+// FUNCTION: ROBLOX 0x005f6930
 RigidJoint* Primitive::getNextRigid(RigidJoint* prev)
 {
 	return getFirstRigidAt(getNextEdge(prev));
 }
 
 // FUNCTION: WEBSERVICE 0x100a80c0
+// FUNCTION: ROBLOX 0x005f6970
 Joint* Primitive::getJoint(Primitive* p0, Primitive* p1)
 {
 	Primitive* shortest = p0->joints.num < p1->joints.num ? p0 : p1;
@@ -401,6 +434,7 @@ Joint* Primitive::getJoint(Primitive* p0, Primitive* p1)
 }
 
 // FUNCTION: WEBSERVICE 0x100a8110
+// FUNCTION: ROBLOX 0x005f69c0
 Contact* Primitive::getContact(Primitive* p0, Primitive* p1)
 {
 	Primitive* shortest = p0->contacts.num < p1->contacts.num ? p0 : p1;
@@ -416,6 +450,7 @@ Contact* Primitive::getContact(Primitive* p0, Primitive* p1)
 }
 
 // FUNCTION: WEBSERVICE 0x100a8160
+// FUNCTION: ROBLOX 0x005f6a10
 Geometry* Primitive::newGeometry(Geometry::GeometryType geometryType)
 {
 	switch (geometryType) {
@@ -429,6 +464,7 @@ Geometry* Primitive::newGeometry(Geometry::GeometryType geometryType)
 }
 
 // FUNCTION: WEBSERVICE 0x100a81d0
+// FUNCTION: ROBLOX 0x005f6a80
 Primitive::~Primitive()
 {
 	if (geometry->getGeometryType() != Geometry::GEOMETRY_NONE) {
@@ -442,6 +478,7 @@ Primitive::~Primitive()
 }
 
 // FUNCTION: WEBSERVICE 0x100a8250
+// FUNCTION: ROBLOX 0x005f6b00
 bool Primitive::hitTest(const Ray& worldRay, Vector3& worldHitPoint, bool& inside)
 {
 	Ray localRay = body->getCoordinateFrame().toObjectSpace(worldRay);
@@ -456,6 +493,7 @@ bool Primitive::hitTest(const Ray& worldRay, Vector3& worldHitPoint, bool& insid
 }
 
 // FUNCTION: WEBSERVICE 0x100a8320
+// FUNCTION: ROBLOX 0x005f6bd0
 void Primitive::setAnchor(bool _anchored)
 {
 	bool have = anchorObject != NULL;
@@ -484,12 +522,14 @@ void Primitive::setAnchor(bool _anchored)
 }
 
 // FUNCTION: WEBSERVICE 0x100a83b0
+// FUNCTION: ROBLOX 0x005f6c60
 Face Primitive::getFaceInWorld(NormalId objectFace)
 {
 	return getFaceInObject(objectFace).toWorldSpace(body->getCoordinateFrame());
 }
 
 // FUNCTION: WEBSERVICE 0x100a83f0
+// FUNCTION: ROBLOX 0x005f6ca0
 void Primitive::setCoordinateFrame(const CoordinateFrame& cFrame)
 {
 	if (cFrame != body->getCoordinateFrame()) {
@@ -516,12 +556,14 @@ void Primitive::setCoordinateFrame(const CoordinateFrame& cFrame)
 }
 
 // FUNCTION: WEBSERVICE 0x100a8490
+// FUNCTION: ROBLOX 0x005f6d40
 const CoordinateFrame& Primitive::getCoordinateFrame() const
 {
 	return body->getCoordinateFrame();
 }
 
 // FUNCTION: WEBSERVICE 0x100a84b0
+// FUNCTION: ROBLOX 0x005f6d60
 CoordinateFrame Primitive::getGridCorner() const
 {
 	const CoordinateFrame& gridCorner = body->getCoordinateFrame();
@@ -530,6 +572,7 @@ CoordinateFrame Primitive::getGridCorner() const
 }
 
 // FUNCTION: WEBSERVICE 0x100a8570
+// FUNCTION: ROBLOX 0x005f6e20
 Primitive::Primitive(Geometry::GeometryType geometryType)
 	: guidSetExternally(false), sizeMultiplier(1), worldIndex(-1), world(NULL), clump(NULL), clumpDepth(-1),
 	  traverseId(-1), spatialNodes(NULL), oldSpatialMin(), oldSpatialMax(), fuzzyExtents(), fuzzyExtentsStateId(-2),
@@ -544,6 +587,7 @@ Primitive::Primitive(Geometry::GeometryType geometryType)
 }
 
 // FUNCTION: WEBSERVICE 0x100a8760
+// FUNCTION: ROBLOX 0x005f7010
 Vector3 Primitive::clipToSafeSize(const Vector3& newSize)
 {
 	Vector3 answer = newSize.min(Vector3(512.0f, 512.0f, 512.0f));
@@ -556,6 +600,7 @@ Vector3 Primitive::clipToSafeSize(const Vector3& newSize)
 }
 
 // FUNCTION: WEBSERVICE 0x100a8810
+// FUNCTION: ROBLOX 0x005f70c0
 void Primitive::setGridSize(const Vector3& gridSize)
 {
 	Vector3 protectedSize = clipToSafeSize(gridSize);
@@ -579,6 +624,7 @@ void Primitive::setGridSize(const Vector3& gridSize)
 }
 
 // FUNCTION: WEBSERVICE 0x100a88d0
+// FUNCTION: ROBLOX 0x005f7180
 void Primitive::setDragging(bool _dragging)
 {
 	if (dragging != _dragging) {
@@ -598,6 +644,7 @@ void Primitive::setDragging(bool _dragging)
 }
 
 // FUNCTION: WEBSERVICE 0x100a8940
+// FUNCTION: ROBLOX 0x005f71f0
 void Primitive::setGridCorner(const CoordinateFrame& gridCorner)
 {
 	Vector3 gridCenter = geometry->getGridSize() * 0.5f;
@@ -605,7 +652,15 @@ void Primitive::setGridCorner(const CoordinateFrame& gridCorner)
 	setCoordinateFrame(CoordinateFrame(gridCorner.rotation, gridCorner.pointToWorldSpace(gridCenter)));
 }
 
+// FUNCTION: ROBLOX 0x005f72a0
+void Primitive::setPV(const PV& pv)
+{
+	body->setVelocity(pv.velocity);
+	setCoordinateFrame(pv.position);
+}
+
 // FUNCTION: WEBSERVICE 0x100a89f0
+// FUNCTION: ROBLOX 0x005f72d0
 void Primitive::setController(Controller* _controller)
 {
 	if (_controller == NULL) {
@@ -618,6 +673,7 @@ void Primitive::setController(Controller* _controller)
 }
 
 // FUNCTION: WEBSERVICE 0x100a8a20
+// FUNCTION: ROBLOX 0x005f7300
 void Primitive::setPrimitiveType(Geometry::GeometryType geometryType)
 {
 	if (geometry->getGeometryType() != geometryType) {

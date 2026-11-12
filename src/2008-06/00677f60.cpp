@@ -19,6 +19,7 @@
 namespace RBX {
 
 // FUNCTION: WEBSERVICE 0x10031510
+// FUNCTION: ROBLOX 0x006715b0
 void DrawPrimitives::rawSphere(float radius, G3D::RenderDevice* rd)
 {
 	glPushMatrix();
@@ -32,6 +33,7 @@ void DrawPrimitives::rawSphere(float radius, G3D::RenderDevice* rd)
 }
 
 // FUNCTION: WEBSERVICE 0x10031550
+// FUNCTION: ROBLOX 0x006715f0
 void DrawPrimitives::rawCylinderAlongX(float radius, float axis, G3D::RenderDevice* rd)
 {
 	glPushMatrix();
@@ -61,6 +63,7 @@ void DrawPrimitives::rawCylinderAlongX(float radius, float axis, G3D::RenderDevi
 }
 
 // FUNCTION: WEBSERVICE 0x100316a0
+// FUNCTION: ROBLOX 0x00671740
 void DrawPrimitives::rawBox(const G3D::AABox& box, G3D::RenderDevice* rd)
 {
 	IndexBox indexBox(box.low(), box.high());
@@ -81,6 +84,7 @@ void DrawPrimitives::rawBox(const G3D::AABox& box, G3D::RenderDevice* rd)
 }
 
 // FUNCTION: WEBSERVICE 0x100317c0
+// FUNCTION: ROBLOX 0x00671860
 void DrawPrimitives::outlineRect2d(const Rect& rect, float thick, G3D::RenderDevice* rd, const G3D::Color4& color)
 {
 	float l = rect.low.x, t = rect.low.y, r = rect.high.x, b = rect.high.y;
@@ -104,11 +108,9 @@ void DrawPrimitives::outlineRect2d(const Rect& rect, float thick, G3D::RenderDev
 }
 
 // FUNCTION: WEBSERVICE 0x10031930
+// FUNCTION: ROBLOX 0x006719d0
 void DrawPrimitives::line2d(
-	const G3D::Vector2& p0,
-	const G3D::Vector2& p1,
-	G3D::RenderDevice* rd,
-	const G3D::Color4& color
+	const G3D::Vector2& p0, const G3D::Vector2& p1, G3D::RenderDevice* rd, const G3D::Color4& color
 )
 {
 	rd->setColor(color);
@@ -124,6 +126,7 @@ void DrawPrimitives::line2d(
 }
 
 // FUNCTION: WEBSERVICE 0x10031a60
+// FUNCTION: ROBLOX 0x00671a60
 void DrawPrimitives::rect2d(const Rect& rect, G3D::RenderDevice* rd, const G3D::Color4& color)
 {
 	rd->setBlendFunc(G3D::RenderDevice::BLEND_SRC_ALPHA, G3D::RenderDevice::BLEND_ONE_MINUS_SRC_ALPHA);

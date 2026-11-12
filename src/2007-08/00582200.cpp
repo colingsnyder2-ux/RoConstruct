@@ -1,134 +1,145 @@
-// from server: 45% by colin
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 71% by EspClaude
+// roc-flags: /O2 /GS /EHsc /MD /fp:fast
+// roc 2007-08 00582200  unit: RBX::VHat::?$FactoryProduct  size: 392 bytes
+// Evidence (target bytes): shared_ptr at this+0x130/0x134 reset (lock xadd, sp_counted_base slots +4/+8);
+// 0x6ffa50 thiscall getter; dynamic_cast<RBX::ModelInstance*>(Instance* at +0xbc) via __RTDynamicCast;
+// 0x5a56b0 cdecl predicate; ModelInstance vbptr at +0xec, 2nd virtual base slot 0 returns CoordinateFrame
+// (translation at +0x24); Matrix3::getColumn 0x509640 (ret 8); constants 4.0 (0x79f2fc), -1.0 (0x7a32e8),
+// 8.0 (0x7a34b8); this->0x5d1ae0, obj->0x5bae60(Vector3 by value), obj->0x578000(const Vector3&),
+// tail call this->0x581fd0.
+#include <intrin.h>
+#pragma intrinsic(_InterlockedDecrement)
 
-struct RBXName {
-    void* dummy;
-};
-
-struct RefCounted {
-    void* vptr;
-    volatile long refCount;
-    volatile long weakCount;
-};
-
-struct Instance {
-    void* vptr;
-    char pad[0x12c];
-    void* field130;
-    RefCounted* field134;
-
-    void method_582200();
-};
-
-struct Vector3 {
+class Vector3 {
+public:
     float x, y, z;
+    Vector3() {}
+    Vector3(float _x, float _y, float _z) : x(_x), y(_y), z(_z) {}
+    Vector3(const Vector3& v) : x(v.x), y(v.y), z(v.z) {}
+    Vector3 operator+(const Vector3& o) const { return Vector3(x + o.x, y + o.y, z + o.z); }
+    Vector3 operator*(float s) const { return Vector3(x * s, y * s, z * s); }
+    Vector3& operator+=(const Vector3& o) { x += o.x; y += o.y; z += o.z; return *this; }
 };
 
-struct CFrame {
-    float data[12];
+class Matrix3 {
+public:
+    float elt[3][3];
+    Vector3 getColumn(int i) const;
 };
 
-extern "C" {
-    void* __cdecl sub_6FFA50(void*);
-    void* __cdecl sub_630D36(void*, void*, void*, void*, void*);
-    void __cdecl sub_541630(void*, int);
-    void* __cdecl sub_5A56B0(void*);
-    void __cdecl sub_509640(void*, void*, int);
-    void* __cdecl sub_5D1AE0(void);
-    void __cdecl sub_5BAE60(void*, float, float, float);
-    void __cdecl sub_578000(void*, float*);
-    void __cdecl sub_581FD0(void*);
+class CoordinateFrame {
+public:
+    Matrix3 rotation;
+    Vector3 translation;
+};
+
+namespace boost {
+namespace detail {
+class sp_counted_base {
+public:
+    virtual ~sp_counted_base();
+    virtual void dispose() = 0;
+    virtual void destroy();
+    long use_count_;
+    long weak_count_;
+    void release() {
+        if (_InterlockedDecrement(&use_count_) == 0) {
+            dispose();
+            weak_release();
+        }
+    }
+    void weak_release() {
+        if (_InterlockedDecrement(&weak_count_) == 0)
+            destroy();
+    }
+};
+class shared_count {
+public:
+    sp_counted_base* pi_;
+    shared_count() : pi_(0) {}
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
+    void swap(shared_count& r) { sp_counted_base* tmp = r.pi_; r.pi_ = pi_; pi_ = tmp; }
+};
+}
+template<class T> class shared_ptr {
+public:
+    T* px;
+    detail::shared_count pn;
+    shared_ptr() : px(0), pn() {}
+    void swap(shared_ptr& other) { T* tmp = px; px = other.px; other.px = tmp; pn.swap(other.pn); }
+    void reset() { shared_ptr().swap(*this); }
+    T* get() const { return px; }
+    T* operator->() const { return px; }
+};
 }
 
-extern float g_79f2fc;
-extern float g_7a32e8;
-extern float g_7a34b8;
-extern char g_881f4c[];
-extern char g_88c6b8[];
+namespace RBX {
+class Instance {
+public:
+    virtual ~Instance();
+    char pad[0xe8];
+};
+class IHasLocation {
+public:
+    virtual void v0();
+};
+class ILocation {
+public:
+    virtual CoordinateFrame getLocation() = 0;
+};
+class ModelInstance : public Instance, public virtual IHasLocation, public virtual ILocation {
+public:
+    static void* findPrimaryPart(ModelInstance* model);
+};
 
-void Instance::method_582200()
+class Container {
+public:
+    char pad[0xbc];
+    Instance* parent;
+};
+
+class Attachment {
+public:
+    Container* getContainer();
+    void setActive(int);
+};
+
+class Target {
+public:
+    void setPosition(Vector3 pos);
+    void setSize(const Vector3& size);
+};
+
+class Hat {
+public:
+    char pad[0x130];
+    boost::shared_ptr<Attachment> attachment;
+
+    Target* getTarget();
+    void update();
+    void dropped();
+};
+
+void Hat::dropped()
 {
-    void* local_28;
-    Vector3 v1;
-    Vector3 v2;
-    float f1, f2, f3;
-    void* result;
-    RefCounted* rc;
-    void* obj;
-    void* p;
-
-    if (this->field130) {
-        p = sub_6FFA50(this->field130);
-        if (p) {
-            void* q = *(void**)((char*)p + 0xbc);
-            result = sub_630D36(q, 0, g_881f4c, g_88c6b8, 0);
-        } else {
-            result = 0;
-        }
-        sub_541630(this->field130, 0);
-        this->field130 = 0;
-        rc = this->field134;
-        this->field134 = 0;
-        if (rc) {
-            if (_InterlockedExchangeAdd(&rc->refCount, -1) == 1) {
-                void** vt = (void**)rc->vptr;
-                void (*fn)(void*) = (void (*)(void*))vt[1];
-                fn(rc);
-                if (_InterlockedExchangeAdd(&rc->weakCount, -1) == 1) {
-                    void** vt2 = (void**)rc->vptr;
-                    void (*fn2)(void*) = (void (*)(void*))vt2[2];
-                    fn2(rc);
-                }
-            }
-        }
-    } else {
-        result = 0;
+    ModelInstance* model = 0;
+    if (attachment.get()) {
+        if (Container* c = attachment->getContainer())
+            model = dynamic_cast<ModelInstance*>(c->parent);
+        attachment->setActive(0);
+        attachment.reset();
     }
-
-    obj = sub_5A56B0(result);
-    if (obj) {
-        void* a = *(void**)((char*)obj + 0xec);
-        void* b = *(void**)((char*)a + 8);
-        void* c = *(void**)((char*)b + (int)obj + 0xec);
-        void* d = *(void**)c;
-        void* e = (void*)((char*)b + (int)obj + 0xec);
-        void (*fn)(void*, void*) = (void (*)(void*, void*))d;
-        fn(e, &local_28);
-
-        f1 = *(float*)((char*)&local_28 + 0x24);
-        f2 = *(float*)((char*)&local_28 + 0x30);
-        f3 = *(float*)((char*)&local_28 + 0x30) + g_79f2fc;
-
-        Vector3 vv;
-        vv.x = f1;
-        vv.y = f2;
-        vv.z = f3;
-
-        float w = g_7a32e8;
-
-        sub_509640(&vv, &vv, 2);
-
-        float m = g_7a34b8;
-        v1.x = vv.x * m;
-        v1.y = vv.y * m;
-        v1.z = vv.z * m;
-
-        v2.x = v1.x + f1;
-        v2.y = v1.y + f2;
-        v2.z = v1.z + f3;
-
-        void* inst = sub_5D1AE0();
-        if (inst) {
-            sub_5BAE60(inst, v2.x, v2.y, v2.z);
-            float one = 1.0f;
-            float arr[3];
-            arr[0] = one;
-            arr[1] = one;
-            arr[2] = one;
-            sub_578000(inst, arr);
+    if (ModelInstance::findPrimaryPart(model)) {
+        CoordinateFrame cf = model->getLocation();
+        Vector3 pos(cf.translation.x, cf.translation.y + 4.0f, cf.translation.z);
+        float s = -1.0f;
+        Vector3 look = cf.rotation.getColumn(2);
+        pos += look * s * 8.0f;
+        if (Target* t = getTarget()) {
+            t->setPosition(Vector3(pos.x, pos.y, pos.z));
+            t->setSize(Vector3(1.0f, 1.0f, 1.0f));
         }
     }
-
-    sub_581FD0(this);
+    update();
+}
 }

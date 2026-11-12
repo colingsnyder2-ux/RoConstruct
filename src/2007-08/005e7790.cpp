@@ -13,6 +13,7 @@ namespace RBX {
 namespace Reflection {
 
 // FUNCTION: WEBSERVICE 0x100e0220
+// FUNCTION: ROBLOX 0x00624ac0
 template <>
 EnumDesc<SoundType>::EnumDesc() : EnumDescriptor("SoundType", typeid(SoundType))
 {

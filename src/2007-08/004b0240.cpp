@@ -1,22 +1,22 @@
-// from server: 47% by colin
-struct SignalDesc
+// from server: 100% by EspClaude
+// roc 2007-08 004b0240  unit: RBX::Network::VReplicator::?$SignalDesc  size: 114 bytes
+// Storage size not visible in these bytes; left undeclared.
+// Rewritten: function-local static ClassDescriptor(base classDescriptor(), "NetworkReplicator").
+// ctor 0x570c00 = ClassDescriptor::ClassDescriptor(ClassDescriptor&, const char*) (ret 8)
+// base getter 0x418690 = Described<Instance,...>::classDescriptor() (no args, ret)
+namespace RBX { namespace Reflection {
+class ClassDescriptor
 {
-    void init();
+public:
+    ClassDescriptor(ClassDescriptor& base, const char* name);
+    ~ClassDescriptor();
+
 };
+ClassDescriptor& baseClassDescriptor();
+} }
 
-static int g_initFlag;
-static char g_signalStorage[1];
-
-extern "C" void* __cdecl sub_418690(const char*);
-extern "C" void __cdecl sub_570c00(void*, void*);
-extern "C" void __cdecl sub_630d23(void*);
-
-void SignalDesc::init()
+RBX::Reflection::ClassDescriptor& replicatorClassDescriptor()
 {
-    if (!(g_initFlag & 1))
-    {
-        g_initFlag |= 1;
-        sub_570c00(g_signalStorage, sub_418690("NetworkReplicator"));
-        sub_630d23((void*)0x778940);
-    }
+    static RBX::Reflection::ClassDescriptor desc(RBX::Reflection::baseClassDescriptor(), "NetworkReplicator");
+    return desc;
 }

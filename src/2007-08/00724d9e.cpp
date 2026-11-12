@@ -1,32 +1,22 @@
-// from server: 43% by colin
-struct S_func_00724d9e {
-    int f();
-};
+// from server: 100% by EspClaude
+// roc 2007-08 00724d9e  unit: CXTIconHandle  size: 101 bytes
+// roc-flags: /O1 /GS /EHsc /MD
+// Free helper: default ANSI code page of the thread locale (LOCALE_IDEFAULTANSICODEPAGE = 0x1004, 7 chars).
+extern "C" __declspec(dllimport) unsigned int __stdcall GetACP();
+extern "C" __declspec(dllimport) int __stdcall GetLocaleInfoA(unsigned long Locale, unsigned long LCType, char* lpLCData, int cchData);
+extern "C" __declspec(dllimport) unsigned long __stdcall GetThreadLocale();
 
-extern "C" unsigned long __stdcall GetACP();
-extern "C" int __stdcall GetLocaleInfoA(unsigned long Locale, unsigned long LCType, char* lpLCData, int cchData);
-extern "C" unsigned long __stdcall GetThreadLocale();
-
-int S_func_00724d9e::f()
+unsigned int GetLocaleCodePage()
 {
-    char buf[8];
-    int result = 0;
-    unsigned long acp = GetACP();
-    if (GetLocaleInfoA(GetThreadLocale(), 0x1004, buf, 7) != 0)
+    char buf[7];
+    unsigned int cp = 0;
+    unsigned long lcid = GetThreadLocale();
+    if (GetLocaleInfoA(lcid, 0x1004, buf, 7))
     {
-        char* p = buf;
-        char c = *p;
-        if (c != 0)
-        {
-            do
-            {
-                result = result * 10 + (int)c - 0x30;
-                p++;
-                c = *p;
-            } while (c != 0);
-            if (result != 0)
-                return result;
-        }
+        for (char* p = buf; *p; p++)
+            cp = cp * 10 + *p - '0';
     }
-    return (int)GetACP();
+    if (cp == 0)
+        cp = GetACP();
+    return cp;
 }

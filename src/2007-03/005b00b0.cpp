@@ -17,6 +17,7 @@
 namespace RBX {
 
 // FUNCTION: WEBSERVICE 0x1009ad20
+// FUNCTION: ROBLOX 0x005ad760
 void Body::updatePV() const
 {
 	if (parent != NULL && stateIndex != root->getStateIndex()) {
@@ -29,6 +30,7 @@ void Body::updatePV() const
 }
 
 // FUNCTION: WEBSERVICE 0x101049f0
+// FUNCTION: ROBLOX 0x0061e950
 int Body::getNextStateIndex()
 {
 	static int p = 1;
@@ -43,12 +45,14 @@ int Body::getNextStateIndex()
 }
 
 // FUNCTION: WEBSERVICE 0x10104a10
+// FUNCTION: ROBLOX 0x0061e970
 void Body::advanceStateIndex()
 {
 	stateIndex = getNextStateIndex();
 }
 
 // FUNCTION: WEBSERVICE 0x10104a40
+// FUNCTION: ROBLOX 0x0061e9a0
 void Body::makeCofmDirty()
 {
 	if (cofm == NULL || !cofm->getIsDirty()) {
@@ -71,6 +75,7 @@ void Body::makeCofmDirty()
 }
 
 // FUNCTION: WEBSERVICE 0x10104a80
+// FUNCTION: ROBLOX 0x0061e9e0
 void Body::step(float dt, bool throttling)
 {
 	if (throttling && canThrottle) {
@@ -86,6 +91,7 @@ void Body::step(float dt, bool throttling)
 }
 
 // FUNCTION: WEBSERVICE 0x10104b50
+// FUNCTION: ROBLOX 0x0061eab0
 void Body::setPv(const PV& _pv)
 {
 	if (parent == NULL) {
@@ -101,6 +107,7 @@ void Body::setPv(const PV& _pv)
 }
 
 // FUNCTION: WEBSERVICE 0x10104be0
+// FUNCTION: ROBLOX 0x0061eb40
 void Body::setVelocity(const Velocity& worldVelocity)
 {
 	if (parent == NULL) {
@@ -114,6 +121,7 @@ void Body::setVelocity(const Velocity& worldVelocity)
 }
 
 // FUNCTION: WEBSERVICE 0x10104c60
+// FUNCTION: ROBLOX 0x0061ebc0
 void Body::setMass(float _mass)
 {
 	if (mass != _mass) {
@@ -124,6 +132,7 @@ void Body::setMass(float _mass)
 }
 
 // FUNCTION: WEBSERVICE 0x10104cc0
+// FUNCTION: ROBLOX 0x0061ec20
 void Body::setMoment(const Matrix3& _momentInBody)
 {
 	if (moment != _momentInBody) {
@@ -134,6 +143,7 @@ void Body::setMoment(const Matrix3& _momentInBody)
 }
 
 // FUNCTION: WEBSERVICE 0x10104db0
+// FUNCTION: ROBLOX 0x0061ec80
 void Body::setMeInParent(const CoordinateFrame& _meInParent)
 {
 	if (link != NULL) {
@@ -150,6 +160,7 @@ void Body::setMeInParent(const CoordinateFrame& _meInParent)
 }
 
 // FUNCTION: WEBSERVICE 0x10104e60
+// FUNCTION: ROBLOX 0x0061ed30
 void Body::setMeInParent(Link* _link)
 {
 	if (link != NULL && link != _link) {
@@ -165,24 +176,28 @@ void Body::setMeInParent(Link* _link)
 }
 
 // FUNCTION: WEBSERVICE 0x10104ee0
+// FUNCTION: ROBLOX 0x0061edb0
 void Body::setCoordinateFrame(const CoordinateFrame& worldCoord)
 {
 	setPv(PV(worldCoord, getPV().velocity));
 }
 
 // FUNCTION: WEBSERVICE 0x10104f60
+// FUNCTION: ROBLOX 0x0061ee30
 Vector3 Body::getBranchCofmPos() const
 {
 	return cofm != NULL ? getPV().position.pointToWorldSpace(cofm->getCofmInBody()) : getPV().position.translation;
 }
 
 // FUNCTION: WEBSERVICE 0x10104fc0
+// FUNCTION: ROBLOX 0x0061ee90
 CoordinateFrame Body::getBranchCofmCoordinateFrame() const
 {
 	return CoordinateFrame(getCoordinateFrame().rotation, getBranchCofmPos());
 }
 
 // FUNCTION: WEBSERVICE 0x10105010
+// FUNCTION: ROBLOX 0x0061eee0
 void Body::resetRoot(Body* newRoot)
 {
 	root = newRoot;
@@ -193,18 +208,21 @@ void Body::resetRoot(Body* newRoot)
 }
 
 // FUNCTION: WEBSERVICE 0x10105040
+// FUNCTION: ROBLOX 0x0061ef10
 Matrix3 Body::getIWorldAtPoint(const Vector3& point) const
 {
 	return Math::getIWorldAtPoint(getPV().position.translation, point, getIWorld(), getMass());
 }
 
 // FUNCTION: WEBSERVICE 0x101050c0
+// FUNCTION: ROBLOX 0x0061ef90
 Matrix3 Body::getBranchIWorldAtPoint(const Vector3& point) const
 {
 	return Math::getIWorldAtPoint(getBranchCofmPos(), point, getBranchIWorld(), getBranchMass());
 }
 
 // FUNCTION: WEBSERVICE 0x10105150
+// FUNCTION: ROBLOX 0x0061f020
 float Body::kineticEnergy() const
 {
 	return ((getIWorld() * pv.velocity.rotational).dot(pv.velocity.rotational) +
@@ -213,6 +231,7 @@ float Body::kineticEnergy() const
 }
 
 // FUNCTION: WEBSERVICE 0x10105240
+// FUNCTION: ROBLOX 0x0061f110
 void Body::onChildRemoved(Body* child)
 {
 	children.fastRemove(child);
@@ -226,6 +245,7 @@ void Body::onChildRemoved(Body* child)
 }
 
 // FUNCTION: WEBSERVICE 0x101052d0
+// FUNCTION: ROBLOX 0x0061f1a0
 void Body::onChildAdded(Body* child)
 {
 	makeCofmDirty();
@@ -238,6 +258,7 @@ void Body::onChildAdded(Body* child)
 }
 
 // FUNCTION: WEBSERVICE 0x10105390
+// FUNCTION: ROBLOX 0x0061f260
 void Body::setParent(Body* newParent)
 {
 	if (parent != newParent) {
@@ -273,6 +294,7 @@ void Body::setParent(Body* newParent)
 }
 
 // FUNCTION: WEBSERVICE 0x101054a0
+// FUNCTION: ROBLOX 0x0061f370
 Body::Body()
 	: root(NULL), parent(NULL), index(-1), cofm(NULL), simBody(NULL), canThrottle(true), link(NULL),
 	  moment(Matrix3::identity()), mass(0.0f), stateIndex(getNextStateIndex())
@@ -282,6 +304,7 @@ Body::Body()
 }
 
 // FUNCTION: WEBSERVICE 0x101055a0
+// FUNCTION: ROBLOX 0x0061f470
 Body::~Body()
 {
 	if (parent != NULL) {
@@ -293,6 +316,7 @@ Body::~Body()
 }
 
 // FUNCTION: WEBSERVICE 0x10105620
+// FUNCTION: ROBLOX 0x0061f4f0
 Body* Body::getWorldBody()
 {
 	static Body b;

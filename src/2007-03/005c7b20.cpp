@@ -15,17 +15,20 @@
 namespace RBX {
 
 // FUNCTION: WEBSERVICE 0x1011e660
+// FUNCTION: ROBLOX 0x00656760
 Point::Point(Body* _body) : numOwners(1), body(_body != NULL ? _body : Body::getWorldBody())
 {
 }
 
 // FUNCTION: WEBSERVICE 0x1011e6d0
+// FUNCTION: ROBLOX 0x006567d0
 void Point::forceToBody()
 {
 	body->accumulateForce(force, worldPos);
 }
 
 // FUNCTION: WEBSERVICE 0x1011e6f0
+// FUNCTION: ROBLOX 0x006567f0
 void Point::step()
 {
 	worldPos = body->getPV().position.pointToWorldSpace(localPos);
@@ -33,6 +36,7 @@ void Point::step()
 }
 
 // FUNCTION: WEBSERVICE 0x1011e7c0
+// FUNCTION: ROBLOX 0x006568c0
 void Point::setWorldPos(const Vector3& _worldPos)
 {
 	worldPos = _worldPos;

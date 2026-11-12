@@ -19,6 +19,7 @@
 namespace RBX {
 
 // FUNCTION: WEBSERVICE 0x10120e00
+// FUNCTION: ROBLOX 0x00661570
 inline void mulMatrixMatrixTranspose(const Matrix3& _mat0, const Matrix3& _mat1, Matrix3& _answer)
 {
 	const Matrix3& mat0 = _mat0;
@@ -33,6 +34,7 @@ inline void mulMatrixMatrixTranspose(const Matrix3& _mat0, const Matrix3& _mat1,
 }
 
 // FUNCTION: WEBSERVICE 0x10120e80
+// FUNCTION: ROBLOX 0x006615f0
 inline Vector3 computeRotVel(const Matrix3& rot, const Vector3& momentRecip, const Vector3& angMomentum)
 {
 	Matrix3 iWorldInv;
@@ -62,6 +64,7 @@ inline Vector3 computeRotVel(const Matrix3& rot, const Vector3& momentRecip, con
 }
 
 // FUNCTION: WEBSERVICE 0x101210b0
+// FUNCTION: ROBLOX 0x006617d0
 SimBody::SimBody(Body* body)
 	: body(body), dirty(true), qOrientation(0.0f, 0.0f, 0.0f, 1.0f), angMomentum(0.0f, 0.0f, 0.0f),
 	  momentRecip(0.0f, 0.0f, 0.0f), constantForceY(0.0f), force(Vector3::zero()), torque(Vector3::zero())
@@ -69,6 +72,7 @@ SimBody::SimBody(Body* body)
 }
 
 // FUNCTION: WEBSERVICE 0x10121190
+// FUNCTION: ROBLOX 0x006618b0
 PV SimBody::getOwnerPV()
 {
 	Vector3 cofmInBody = body->getCofmOffset();
@@ -77,6 +81,7 @@ PV SimBody::getOwnerPV()
 }
 
 // FUNCTION: WEBSERVICE 0x10121210
+// FUNCTION: ROBLOX 0x00661930
 void SimBody::update()
 {
 	Vector3 cofmInBody = body->getCofmOffset();
@@ -95,6 +100,7 @@ void SimBody::update()
 }
 
 // FUNCTION: WEBSERVICE 0x10121490
+// FUNCTION: ROBLOX 0x00661bb0
 void SimBody::step(float dt)
 {
 	static Vector3 denormFix(1e-20f, 1e-20f, 1e-20f);
@@ -120,6 +126,7 @@ void SimBody::step(float dt)
 }
 
 // FUNCTION: WEBSERVICE 0x1015b610 FOLDED
+// FUNCTION: ROBLOX 0x00751160 FOLDED
 SimBody::~SimBody()
 {
 }

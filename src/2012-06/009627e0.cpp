@@ -18,6 +18,7 @@
 namespace RBX {
 
 // FUNCTION: WEBSERVICE 0x1011c900
+// FUNCTION: ROBLOX 0x006467f0
 void SimJobStage::onEdgeRemoving(Edge* e)
 {
 	e->removeFromKernel();
@@ -26,17 +27,20 @@ void SimJobStage::onEdgeRemoving(Edge* e)
 }
 
 // FUNCTION: WEBSERVICE 0x1011c990
+// FUNCTION: ROBLOX 0x00646820
 SimJobStage::SimJobStage(IStage* upstream, World* world) : IWorldStage(upstream, new Kernel(this), world)
 {
 }
 
 // FUNCTION: WEBSERVICE 0x1011ca60
+// FUNCTION: ROBLOX 0x006468f0
 void SimJobStage::notifyMovingPrimitives()
 {
 	std::for_each(mechanisms.begin(), mechanisms.end(), std::mem_fun(&Mechanism::notifyMovingPrimitives));
 }
 
 // FUNCTION: WEBSERVICE 0x1011cb40
+// FUNCTION: ROBLOX 0x006469d0
 void SimJobStage::destroyMechanism(Mechanism* m)
 {
 	Mechanism* next = mechanisms.size() > 1 ? nextMechanism(mechanisms, m) : NULL;
@@ -56,6 +60,7 @@ void SimJobStage::insertMechanism(Mechanism* mechanism)
 }
 
 // FUNCTION: WEBSERVICE 0x1011cba0
+// FUNCTION: ROBLOX 0x00646a30
 void SimJobStage::onAssemblyAdded(Assembly* a)
 {
 	a->putInPipeline(this);
@@ -69,6 +74,7 @@ void SimJobStage::onAssemblyAdded(Assembly* a)
 }
 
 // FUNCTION: WEBSERVICE 0x1011cc80
+// FUNCTION: ROBLOX 0x00646b10
 void SimJobStage::onAssemblyRemoving(Assembly* a)
 {
 	a->removeFromKernel();
@@ -85,6 +91,7 @@ void SimJobStage::onAssemblyRemoving(Assembly* a)
 }
 
 // FUNCTION: WEBSERVICE 0x1011ccc0
+// FUNCTION: ROBLOX 0x00646b50
 void SimJobStage::combineMechanisms(Edge* e)
 {
 	Assembly* a0 = e->getPrimitive(0)->getAssembly();
@@ -104,6 +111,7 @@ void SimJobStage::combineMechanisms(Edge* e)
 }
 
 // FUNCTION: WEBSERVICE 0x1011cd20
+// FUNCTION: ROBLOX 0x00646bb0
 void SimJobStage::onEdgeAdded(Edge* e)
 {
 	e->putInPipeline(this);
