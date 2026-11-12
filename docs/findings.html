@@ -41,17 +41,19 @@ footer { border-top:1px solid var(--line); margin-top:64px; padding:28px 0; } fo
   <main>
     <section class="hero">
       <h1>Findings</h1>
-      <p class="lede">All available recovered source from old Roblox clients, including partial and unfinished functions. Browse individual sources on the Clients page or download the full collection below.</p>
+      <p class="lede">Mined function sources and native class integration, together on the RoConstruct work branch. Download recovered work, inspect evidence, or start a native worker.</p>
     </section>
 
     <section class="card download">
-      <div><strong>Download all available sources</strong><br><span class="muted">Includes exact matches and partial sources. Updated with each findings publication.</span></div>
-      <a class="btn" href="https://github.com/colingsnyder2-ux/RoConstruct-findings/releases/download/findings-latest/roconstruct-findings-src.zip">Download findings ZIP</a>
+      <div><strong>Mined + native integrated work</strong><br><span class="muted">Full work branch: mined sources, native C++ classes and headers, tests, tools, evidence and inactive drafts.</span></div>
+      <a class="btn" href="https://github.com/colingsnyder2-ux/RoConstruct/archive/refs/heads/work.zip">Download mined + native ZIP</a>
     </section>
 
+    <section class="card download"><div><strong>Ready-to-use native Worker</strong><br><span class="muted">Packaged tools and native sources, with a SHA-256 manifest. Extract and follow the native prompt.</span></div><a class="btn" href="https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/data/native-worker.zip">Download Worker ZIP</a><p><a href="https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/data/native-worker.json">Verify download manifest</a> · <a href="https://raw.githubusercontent.com/colingsnyder2-ux/RoConstruct/work/data/NATIVE_AGENT.md">Native agent prompt</a></p></section>
+    <h2>Native integration now</h2><div class="card"><p>Recovered bodies become real native classes, headers and providers under <code>workspace/rebuild/2008-06/</code>. Workers lease files, batch original-MSVC comparisons, validate call identities and preserve evidence. Incomplete work uploads automatically for review.</p><p>Integrated coverage combines published integration and inactive receipt-exact native bodies once per address. Draft native code is separate and excluded from that percentage. Exact bytes alone do not prove ABI, link closure or runtime safety; executable selection requires affected P5/P6 gates. Only independent server verification grants credit.</p><p>Native MD5 has a tested runnable P6 integration; the four main class swaps remain incomplete. Downloads include inactive and unfinished work, not a fully reconstructed client.</p><p><a href="index.html#2008-06">See current native progress →</a> · <a href="https://github.com/colingsnyder2-ux/RoConstruct/tree/work/workspace/rebuild/2008-06">Browse native source →</a></p></div>
     <h2>What these files are</h2>
     <div class="card">
-      <p>Each <code>.cpp</code> file is a recovered function or work-in-progress candidate. A 100% score means a byte-identical match; partial sources still differ from the original binary and may be incomplete or incorrect. Available sources are published regardless of score.</p>
+      <p>Mined address files contain recovered functions; native C++ units restore classes, relationships and reusable providers. A 100% score means a byte-identical match; partial sources still differ from the original binary and may be incomplete or incorrect. Available sources are published regardless of score.</p>
       <p>Files live under a client folder such as <code>src/2008-06/</code>. Comments at the top preserve compiler version, flags, library, and match provenance so results can be checked later.</p>
       <p>Files containing <code>// roc-lib:</code> are reproducible build pointers, not the implementation body. Run <code>roc source 2008-06 ADDRESS</code> to read the actual implementation unit; <code>--output PATH</code> saves a separate readable copy. The original pointer stays intact for matching and verification.</p>
       <p>Source-linked functions on the Clients page also link to their original source file or release archive when provenance is available. Match harnesses remain available beside those links; archive links show the original file path to find inside the download.</p>
@@ -78,10 +80,10 @@ footer { border-top:1px solid var(--line); margin-top:64px; padding:28px 0; } fo
       <p class="muted">Until that work is complete, findings ZIP is a forensic corpus: useful for research, comparison, and continued decompilation.</p>
     </div>
 
-    <h2>Keep findings separate</h2>
+    <h2>One maintained work branch</h2>
     <div class="card">
-      <p>The findings repository is intentionally separate from RoConstruct. Main project downloads stay lightweight; researchers can download the large ZIP only when they need recovered source.</p>
-      <p><a href="https://github.com/colingsnyder2-ux/RoConstruct-findings">Browse findings repository →</a> · <a href="sources.html">See source provenance →</a></p>
+      <p>RoConstruct’s work branch is the maintained source authority. Native code and tools live under workspace/; mined findings, draft archives and download bundles live alongside it. Main remains the lightweight bootstrap.</p>
+      <p><a href="https://github.com/colingsnyder2-ux/RoConstruct/tree/work">Browse work branch →</a> · <a href="sources.html">See source provenance →</a></p>
     </div>
   </main>
 </div>
