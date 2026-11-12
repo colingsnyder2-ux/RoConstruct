@@ -2,6 +2,7 @@
 // RunService | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
 // <<< native-status | src 8dc59377 | roc native-status --write
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/std-noinline-string /I{headers}/runservice-events
 #include "util/RunStateOwner.h"
 #include "util/StandardOut.h"
 #include <exception>
@@ -65,6 +66,12 @@ void RunService::setRunState(RunState next) {
         Notifier<RunService, RunTransition>::raise(RunTransition(old, next));
     }
 }
+}
+
+// 005557c0: attach a view and mark it valid for pending-invalidation accounting.
+void RBX::RunService::addRunView(IRunView* view) {
+    boost::mutex::scoped_lock lock(viewMutex);
+    views[view] = true;
 }
 
 void RBX::RunService::invalidateRunViews() {

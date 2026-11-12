@@ -42,6 +42,37 @@ for address, prefix in (("00556b00", "??0RunService@RBX@@"),
                                    if name.startswith(prefix))
     assert match.exact_match(target, target_relocations, body, relocations), name
     results.append(dict(address=address, symbol=name, size=len(body), relocation_normalized_exact=True))
+
+add_flags = flags[:-2]
+header_i = next(i for i, flag in enumerate(add_flags) if flag.replace('\\', '/').endswith('rebuild/2008-06/native-headers'))
+add_flags[header_i:header_i] = ["/I" + str(ROOT / "rebuild/2008-06/native-headers/std-noinline-string"),
+                                "/I" + str(ROOT / "rebuild/2008-06/native-headers/runservice-events")]
+add_flags += ["/FoNativeRunServiceAddRunView.obj", str(source)]
+add_code, add_log = rebuild.run(rebuild.toolchain(21022), "cl", add_flags, out)
+assert add_code == 0, add_log
+add_obj = (out / "NativeRunServiceAddRunView.obj").read_bytes()
+name, body, relocations = next(row for row in match.coff_functions(add_obj) if row[0].startswith("?addRunView@RunService@RBX@@"))
+target, target_relocations, _ = match.target("2008-06", "005557c0")
+assert match.exact_match(target, target_relocations, body, relocations), name
+add_sections, add_symbols, add_definitions, _ = match._coff_data_index(add_obj)
+start, section = add_definitions[name]
+table = add_sections[section]
+relocs = {}
+for index in range(table[7]):
+    offset, symbol_index, kind = struct.unpack_from("<IIH", add_obj, table[5] + 10 * index)
+    if start <= offset < start + len(body):
+        relocs[offset - start] = add_symbols[symbol_index][0]
+calls = {instruction.address - 0x5557c0 + 1: int(instruction.op_str, 16)
+         for instruction in Cs(CS_ARCH_X86, CS_MODE_32).disasm(target, 0x5557c0)
+         if instruction.mnemonic == "call" and instruction.op_str.startswith("0x")}
+verified = []
+for prefix, address in (("?do_lock@mutex@boost@@", 0x594ce0), ("??A?$map@PAVIRunView@RBX@@", 0x5556d0),
+                        ("?do_unlock@mutex@boost@@", 0x594d00)):
+    offset, symbol = next((offset, symbol) for offset, symbol in relocs.items() if symbol.startswith(prefix))
+    assert calls[offset] == address, (name, symbol, calls.get(offset), address)
+    verified.append(dict(offset=offset, symbol=symbol, target=hex(address)))
+results.append(dict(address="005557c0", symbol=name, size=len(body), relocation_normalized_exact=True,
+                    verified_direct_calls=verified, profile="std-noinline-string + runservice-events"))
 sections, symbols, definitions, _ = match._coff_data_index(obj)
 for method, expected in (("00554440", [("?notify_all@condition_impl@detail@boost@@", 0x5f1d30)]),
                          ("005559a0", [("?do_lock@mutex@boost@@", 0x594ce0),
@@ -186,7 +217,9 @@ assert any(i.mnemonic == 'call' and i.op_str == '0x555c00' for i in Cs(CS_ARCH_X
 paths = [source, ROOT / "rebuild/2008-06/native-headers/util/RunStateOwner.h", ROOT / "rebuild/2008-06/native-headers/util/Events.h", ROOT / "rebuild/2008-06/native-headers/util/GuidItem.h", ROOT / "rebuild/2008-06/native-headers/v8tree/Instance.h", ROOT / "rebuild/2008-06/tests/NativeRunServiceLayout.cpp", Path(__file__)]
 receipt = dict(revision=subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
                sources={str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest() for p in paths},
-               compiler_build=21022, flags=flags, compile_exit=code, object_sha256=hashlib.sha256(obj).hexdigest(), size=0x2d8, offsets=list(offsets), primary_vtable=primary_vtable, notifier_bases=dict(notifiers), deleting_destructor_thunks=deleting_thunks, original_sha256=hashlib.sha256(original.read_bytes()).hexdigest(), methods=results,
+               compiler_build=21022, flags=flags, add_run_view_flags=add_flags, compile_exit=code,
+               object_sha256=hashlib.sha256(obj).hexdigest(), add_run_view_object_sha256=hashlib.sha256(add_obj).hexdigest(),
+               size=0x2d8, offsets=list(offsets), primary_vtable=primary_vtable, notifier_bases=dict(notifiers), deleting_destructor_thunks=deleting_thunks, original_sha256=hashlib.sha256(original.read_bytes()).hexdigest(), methods=results,
                scope="Inactive compiler proof; constructor/destructor and selected calls match; callable return type inferred, remaining virtual slots, runDisabled field, call/data relocations and runtime linking remain unverified.")
 output = ROOT / "work/2008-06" / sys.argv[1]
 output.parent.mkdir(parents=True, exist_ok=True)
