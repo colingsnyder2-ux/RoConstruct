@@ -4,7 +4,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // ChatOutput | 2008-06 | 5 byte-exact, inactive (not link-selected)
 // 5/6 mapped addresses byte-exact | 1 unproved | no mapped strings | by king_originala (+3) (mixed 4)
-// <<< native-status | src a96ac092 | roc native-status --write
+// <<< native-status | src 5d193952 | roc native-status --write
 #include "gui/ChatOutput.h"
 
 namespace RBX
@@ -89,5 +89,24 @@ ChatLine::ChatLine(Network::Player* player, const std::string& text, float expir
 				userColor = G3D::Color3::white();
 		} else
 			userColor = Color::colorFromIndex8(stringHash(user) % 8);
+	}
+}
+
+namespace RBX {
+void ChatOutput::onEvent(const Network::Players*, Network::ChatMessage event)
+	{
+		while (fifo.size() > GameSettings::singleton().chatScrollLength)
+			removeOldest();
+		if (event.message.size() > 0 && event.message[0] == '/' && ParseCommand(event) == true)
+			return;
+		Network::Player* localPlayer = players->getLocalPlayer();
+		if (localPlayer && localPlayer->getSuperSafeChat())
+			return;
+		bool profane = filter.ContainsProfanity(event.message);
+		if (localPlayer && event.source.get() != localPlayer && profane)
+			return;
+		ChatLine* line = new ChatLine(event.source.get(), event.message, time + 60.0f);
+		line->profane = false;
+		fifo.push_back(line);
 	}
 }
