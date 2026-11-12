@@ -313,8 +313,9 @@ Use these instead of compiling by hand (each prints `--help`; run from the check
 - `python work/native-client/prove.py FILE.cpp --rounds 3 --infer-names --quiet` compiles a native class with the flags in
   its first-line `// native-flags:` comment and reports byte-exact functions. `--why FILTER` lists the non-exact symbols and
   why; `--diff ADDR` prints the assembly diff. Do not edit shared inventory sources or headers while someone runs `--all`.
-- `python work/native-client/scope.py rbxapp --queue 15` is the contributor work queue: unfinished Roblox classes ranked
-  (extend partial native files first, then small classes; leased and huge classes last or skipped). Without `--queue` it
+- `python work/native-client/scope.py rbxapp --queue 15` is the contributor work queue: a random pick of workable Roblox
+  classes (no native file yet, under half exact, 3-40 functions left; leased skipped). It deliberately avoids almost-finished
+  partial files: those are the hard leftovers everyone is stuck on. Without `--queue` it
   lists every class with its exact/total count. Results are cached; `--refresh` rebuilds them.
 - `python work/native-client/upstream_lane.py --root TREE --prefix P --all-in DIR` copies verbatim upstream library
   source and keeps only files with an exact function (G3D, XTP, libpng, libjpeg, zlib, Lua, MFC).
