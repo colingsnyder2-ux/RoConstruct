@@ -327,6 +327,11 @@ Use these instead of compiling by hand (each prints `--help`; run from the check
   flush). Run it when the machine feels slow: dozens of old watchers each rescan the tree every 5 minutes.
 - Census speed: objects are reused per source. Adding a new `.cpp` no longer invalidates the cache (only includable header names
   count); editing a shared header still recompiles every source that includes it, so batch header edits.
+- **Ignore the generated comments at the top of native files** (`// native-flags:`, `// 2008-06 native ...`, the
+  `// >>> native-status ... <<<` block, a leading `#line`). They are tool metadata, not code, and no step needs you to read,
+  write or fix them: banners are optional and never block a commit or a proof. Read code with
+  `python work/native-client/show_source.py FILE [--function NAME | --from N --to M]`, which hides them. Edit only below them,
+  and never delete the `// native-flags:` line (it selects the compiler flags).
 - Inferred fields, layouts and inline asm are allowed when the original source plausibly had them. Mark each
   `// INFERRED: <evidence>`; the proof reports inferred names separately from proven ones.
 
