@@ -336,6 +336,7 @@ def _run(config, output, root=ROOT):
         names, bindings, blockers, evidence_inputs = seed_evidence(root, spec.get('evidence', []), strict_conflicts=False)
         providers, requires, jobs = [], set(spec.get('requires', [])), []
         family_rows, family_inputs, family_exact = [], dict(evidence_inputs), set()
+        per_source_inputs = {}
         for source_name in spec['sources']:
             source = project_path(root, source_name)
             if source.suffix != '.cpp' or not source.is_file():
@@ -385,6 +386,7 @@ def _run(config, output, root=ROOT):
                 result.update(control=control, inputs=inputs, include_search=search)
                 ledger[key] = result
             family_inputs.update(result.get('inputs', {}))
+            per_source_inputs[str(source)] = dict(result.get('inputs', {}))
             if result.get('status') != 'complete':
                 blockers.append(result.get('error', 'compile failed'))
                 continue
@@ -427,7 +429,12 @@ def _run(config, output, root=ROOT):
         # An explicit ABI/layout blocker can park a source-exact family; it is never guessed away.
         blockers.extend(spec.get('blockers', []))
         changed = [p for p, expected in family_inputs.items() if sha(p) != expected]
-        if changed:
+        # A long batch (hundreds of sources) always overlaps somebody's edits. Void only the sources whose own inputs changed;
+        # append-only evidence (inferred names, new reference bindings) never invalidates a byte-exact body.
+        used = {p for inputs in per_source_inputs.values() for p in inputs}
+        append_only = [p for p in changed if p not in used and Path(p).name.startswith(('inferred-name-identities', 'reference-bindings-'))]
+        hard = [p for p in changed if p not in used and p not in append_only]
+        if changed and (hard or not per_source_inputs):
             blockers.append('inputs changed during batch: ' + ', '.join(changed))
             providers = []
             for row in family_rows:
@@ -436,6 +443,20 @@ def _run(config, output, root=ROOT):
             for job in jobs:
                 job['checks'] = []
         else:
+            touched = {p for p in changed if p in used}
+            stale_sources = {src for src, inputs in per_source_inputs.items() if touched & set(inputs)}
+            if stale_sources:
+                blockers.append('inputs changed during batch for %d source(s): %s' % (len(stale_sources), ', '.join(sorted(stale_sources)[:5])))
+                dropped = set()
+                for job in jobs:
+                    if job['source'] in stale_sources:
+                        dropped.update((c['addr'], c['symbol']) for c in job['checks'])
+                        job['checks'] = []
+                for row in family_rows:
+                    if (row.get('addr'), row['symbol']) in dropped and row['status'] == 'inactive_exact':
+                        row['status'] = 'stale'
+                family_exact = {a for a in family_exact if not any(d[0] == a for d in dropped)}
+                providers = [x for x in providers if (x['address'], x['symbol']) not in dropped]
             exact.update(family_exact)
         state = 'inactive_exact' if providers else 'compiled' if jobs else 'draft'
         families.append({'name': name, 'status': state, 'providers': providers,

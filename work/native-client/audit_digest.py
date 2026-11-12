@@ -92,6 +92,35 @@ def section_time(rows, since):
     return spent, shapes, errors, len(recent)
 
 
+def idle_state(rows, transcript, idle_minutes):
+    """ACTIVE while the agent made a tool call within idle_minutes; IDLE otherwise (task ended or the user stopped working)."""
+    last = max([r[0] for r in rows], default=0)
+    try:
+        last = max(last, os.path.getmtime(transcript))
+    except OSError:
+        pass
+    minutes = (time.time() - last) / 60 if last else 1e9
+    return ('ACTIVE' if minutes < idle_minutes else 'IDLE'), minutes
+
+
+def critique(rows, since):
+    """Evidence for the self-critique: slow single calls, re-read files, poll loops, error retries, scope drift."""
+    recent = [r for r in rows if r[0] >= since]
+    slow, reads, polls, retried = [], collections.Counter(), 0, 0
+    for (t, tool, cmd), nxt in zip(recent, recent[1:] + [(recent[-1][0] if recent else 0, '', '')]):
+        gap = max(0, min(nxt[0] - t, 1800))
+        if tool != '!error':
+            slow.append((gap, tool, shape(cmd)[:60]))
+        if tool.lower() in ('read', 'read_file') and cmd:
+            reads[cmd] += 1
+        if 'sleep' in cmd or tool == 'Monitor':
+            polls += 1
+    for a, b in zip(recent, recent[1:]):
+        if b[1] == '!error' and a[1] != '!error':
+            retried += 1
+    return sorted(slow, reverse=True)[:5], [(n, Path(c).name) for c, n in reads.most_common(4) if n >= 3], polls, retried
+
+
 def section_bytes(hours):
     """Exact bytes per hour from prove-log.jsonl (latest exact_bytes per family at each end of the window)."""
     if not LOG.exists():
@@ -133,6 +162,7 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--hours', type=float, default=1.0)
     ap.add_argument('--transcript')
+    ap.add_argument('--idle-minutes', type=float, default=45.0, help='no tool call for this long = IDLE (task ended): the audit must stop itself')
     ap.add_argument('--write', action='store_true', help='also save to work/native-client/audit/YYYYMMDD-HH.md and snapshot the byte total')
     args = ap.parse_args()
     now = time.time()
@@ -158,7 +188,12 @@ def main():
     if transcript:
         rows = events(transcript)
         spent, shapes, errors, count = section_time(rows, now - args.hours * 3600)
+        state, quiet = idle_state(rows, transcript, args.idle_minutes)
+        lines.insert(1, 'STATE: %s (last tool call %.0f min ago)%s' % (state, quiet, '  -> STOP: cancel the hourly audit schedule, do not audit' if state == 'IDLE' else ''))
+        slow, rereads, polls, retried = critique(rows, now - args.hours * 3600)
         lines.append('tool calls: %d; errored results: %d' % (count, errors))
+        lines.append('critique evidence: slowest calls %s; files re-read 3+ times %s; poll/monitor calls %d; calls right before an error %d'
+                     % ([('%.0fmin' % (g / 60), t, sh) for g, t, sh in slow[:3]], rereads or 'none', polls, retried))
         lines.append('time per tool (min): ' + ', '.join('%s %.1f' % (k, v / 60) for k, v in spent.most_common(6)))
         repeated = [(n, s) for s, n in shapes.most_common() if n >= 3][:8]
         lines.append('repeated command shapes (3+ runs = automation candidates):')
