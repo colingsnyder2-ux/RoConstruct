@@ -1,11 +1,13 @@
+// from server: 84% by EspClaude
 // from server: 79% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll roc_espeon_colorbrickvaluereturn76293c44c2fbbd0d.cpp
+// roc-lib: rbxgs-dll roc_claude_6a6bb4f4380e23ce.cpp
 
 // Candidate translation unit (score above; library headers required).
+#pragma float_control(precise, on)
 static const float colorScale=1.0f/255.0f;
 
 struct Color3 {
@@ -17,10 +19,9 @@ struct Color3 {
 
 inline Color3::Color3(unsigned int color)
 {
-    const float scale = colorScale;
-    r = float((unsigned char)color) * scale;
-    g = float((unsigned char)(color >> 8)) * scale;
-    b = float((unsigned char)(color >> 16)) * scale;
+    r = (unsigned char)color / 255.0;
+    g = ((color & 0xFF00) >> 8) / 255.0;
+    b = (unsigned char)(color >> 16) / 255.0;
 }
 
 struct String;

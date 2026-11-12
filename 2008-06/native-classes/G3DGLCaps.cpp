@@ -3,7 +3,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DGLCaps | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src f74f91ec | roc native-status --write
+// <<< native-status | src eb0abd25 | roc native-status --write
 #line 1 ".\\glg3dcpp\\GLCaps.cpp"
 /**
   @file GLCaps.cpp

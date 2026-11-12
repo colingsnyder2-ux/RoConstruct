@@ -1,8 +1,9 @@
+// from server: 100% by EspClaude
 // from server: 70% by EspClaude
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-lib: g3d-6.09 roc_system_dfabc2c48b48d3fb.cpp
+// roc-lib: g3d-6.09 roc_claude_020e7c6789e03bb8.cpp
 
 // Candidate translation unit (score above; library headers required).
 /** 
@@ -177,7 +178,7 @@ static int            maxSupportedExtendedLevel = 0;
 #define checkBit(var, bit)   ((var & (1 << bit)) ? true : false)
 
 /** Checks if the CPUID command is available on the processor (called from init) */
-static void checkForCPUID();
+static __declspec(noinline) void checkForCPUID();
 
 /** ReadRead the standard processor extensions.  Called from init(). */
 static void getStandardProcessorExtensions();

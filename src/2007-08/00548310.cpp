@@ -1,17 +1,22 @@
+// from server: 100% by EspClaude
 // from server: 51% by colin
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/TimerService.cpp
+// roc-lib: rbxgs roc_claude_3e35018f5802168d.cpp
 
 // Candidate translation unit (score above; library headers required).
+#ifndef _MT
+#define _MT
+#endif
+#ifndef _DLL
+#define _DLL
+#endif
 #include "v8datamodel/TimerService.h"
 #include "util/standardout.h"
 
 namespace RBX
 {
-	char* sTimerService = "Timer";
-
 	TimerService::TimerService() {}
 
 	void TimerService::delay(boost::function0<void> func, double seconds)
@@ -74,3 +79,21 @@ namespace RBX
 		Notifier<RunService,Heartbeat>::connect(runService, this);
 	}
 }
+
+#include <map>
+#include <string>
+#include <utility>
+#include <boost/shared_ptr.hpp>
+
+namespace RBX
+{
+	// key layout read off the pair copy at 0x545cc0: std::string at +0, 4-byte field at +0x1c;
+	// operator[] compares only the string (single MSVCP80 operator< call)
+	struct MapKey0548310 : public std::string
+	{
+		int n;
+	};
+	// mapped type: 16 bytes, zeroed, two shared_ptrs released at +0xc then +4 (0x52ce80)
+	typedef std::pair<boost::shared_ptr<int>, boost::shared_ptr<int> > MapVal0548310;
+}
+template class std::map<RBX::MapKey0548310, RBX::MapVal0548310>;

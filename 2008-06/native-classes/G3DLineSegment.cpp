@@ -3,7 +3,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DLineSegment | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 8b5b2e6b | roc native-status --write
+// <<< native-status | src 36407006 | roc native-status --write
 #line 1 ".\\G3Dcpp\\LineSegment.cpp"
 /**
  @file LineSegment.cpp

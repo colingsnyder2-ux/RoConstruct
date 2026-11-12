@@ -3,7 +3,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DMD2Model_load | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src c5f66003 | roc native-status --write
+// <<< native-status | src c98f2ff3 | roc native-status --write
 #line 1 ".\\glg3dcpp\\MD2Model_load.cpp"
 /**
  @file MD2Model_load.cpp

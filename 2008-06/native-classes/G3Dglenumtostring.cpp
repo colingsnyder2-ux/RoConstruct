@@ -3,7 +3,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3Dglenumtostring | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 61acbd88 | roc native-status --write
+// <<< native-status | src f80e0119 | roc native-status --write
 #line 1 ".\\glg3dcpp\\glenumtostring.cpp"
 /**
   @file glenumtostring.cpp

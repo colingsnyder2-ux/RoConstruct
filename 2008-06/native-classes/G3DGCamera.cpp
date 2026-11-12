@@ -3,7 +3,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DGCamera | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 1d935368 | roc native-status --write
+// <<< native-status | src 88100404 | roc native-status --write
 #line 1 ".\\G3Dcpp\\GCamera.cpp"
 /**
   @file GCamera.cpp

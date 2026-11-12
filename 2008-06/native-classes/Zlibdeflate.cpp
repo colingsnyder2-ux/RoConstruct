@@ -1,5 +1,9 @@
 // native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/zlib-1.2.3 /TC
 // 2008-06 native Zlibdeflate (inactive): upstream tools/libs/zlib-1.2.3/deflate.c, verbatim.
+// >>> native-status (generated) -- do not edit >>>
+// Zlibdeflate | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 0c3a0cf5 | roc native-status --write
 /* deflate.c -- compress data using the deflation algorithm
  * Copyright (C) 1995-2005 Jean-loup Gailly.
  * For conditions of distribution and use, see copyright notice in zlib.h

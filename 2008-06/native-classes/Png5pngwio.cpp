@@ -1,6 +1,10 @@
 // native-flags: /O2 /GS- /MD /I{headers}/../../../tools/libs/zlib-1.2.3 /I{headers}/../../../tools/libs/libpng-1.2.5 /TC
 // 2008-06 native Png5pngwio (inactive): upstream tools/libs/libpng-1.2.5/pngwio.c, verbatim.
 
+// >>> native-status (generated) -- do not edit >>>
+// Png5pngwio | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src e5c85926 | roc native-status --write
 /* pngwio.c - functions for data output
  *
  * libpng 1.2.5 - October 3, 2002

@@ -1,8 +1,9 @@
+// from server: 90% by EspClaude
 // from server: 89% by EspClaude
 // from server: 100% by king_originala_sol_native
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-lib: rbxgs-dll roc_sol_native_builder_004ff1e0_4aa9273edbde056b.cpp
+// roc-lib: rbxgs-dll roc_claude_1adad8738b0d3018.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <G3D/Vector2.h>
@@ -17,6 +18,7 @@ typedef G3D::Vector2 Vector2;
 typedef G3D::Vector3 Vector3;
 struct Vector2int16 {short x,y;Vector2int16():x(0),y(0){}short&operator[](int i){return (&x)[i];}const short&operator[](int i)const{return (&x)[i];}};
 typedef G3D::Rect2D Rect2D;
+inline float ceilf_(float x){return (float)ceil((double)x);}
 template<class T>const T& maximum(const T&a,const T&b){return a<b?b:a;}
 }
 namespace RBX {namespace View {
@@ -37,7 +39,7 @@ void Builder::build(Function function,Vector2int16 grid,int purpose){
  int surface=(surfaceTypes>>12)&7;
  Vector3 size=absoluteSize(halfSize);
  int axis=!useFirstAxis(purpose,size);
- int steps=(purpose==0 && surface)?G3D::iRound((float)MeshTypes::ceil((double)(size[axis]*0.5f))):1;
+ int steps=(purpose==0 && surface)?G3D::iRound(MeshTypes::ceilf_(size[axis]*0.5f)):1;
  Vector2int16 divisions;
  short n=grid[1-axis];
  divisions[axis]=MeshTypes::maximum<short>(1,(short)(n/steps));
@@ -55,7 +57,7 @@ void Builder::build(Function function,Vector2int16 grid,int purpose){
   case 2:origin=Vector2(0,0);extent=Vector2(0,0);break;
  }
  for(int i=0;i<steps;++i){
-  if(i==steps-1){end[axis]=size[axis];if(purpose==0 && surface)extent[axis]=(end[axis]-begin[axis])*extent[axis]*0.25f;}
+  if(i==steps-1){end[axis]=size[axis];if(purpose==0 && surface)extent[axis]=(end[axis]-begin[axis])*0.25f*extent[axis];}
   else end[axis]=begin[axis]+4.0f;
   emit(function,Rect2D::xyxy(begin,end),depth,origin,extent,axis,divisions);
   begin[axis]=end[axis];

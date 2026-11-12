@@ -1,5 +1,9 @@
 // native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/lua-5.1.4/src /TC
 // 2008-06 native Lua54lauxlib (inactive): upstream tools/libs/lua-5.1.4/src/lauxlib.c, verbatim.
+// >>> native-status (generated) -- do not edit >>>
+// Lua54lauxlib | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 5eeab6d7 | roc native-status --write
 /*
 ** $Id: lauxlib.c,v 1.159.1.3 2008/01/21 13:20:51 roberto Exp $
 ** Auxiliary functions for building Lua libraries

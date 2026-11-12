@@ -1,9 +1,10 @@
+// from server: 100% by EspClaude
 // from server: 76% by EspClaude
 // from server: 100% by EspClaude
 // from server: 95% by Espeon
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-lib: openrbx-client-dll roc_espclaude_75b06e686af54303.cpp
+// roc-lib: openrbx-client-dll roc_claude_0f7ad75c6ee27270.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <intrin.h>
@@ -47,9 +48,9 @@ struct Registry {
 extern Registry registry;
 
 struct S {
-    char padding[0x2cdc];
+    char padding[0x1dd8];
     std::deque<boost::shared_ptr<Item> > queue;
-    char gap[0x58];
+    char gap[0x2c];
     Address address;
     void f(void*);
 };
@@ -59,8 +60,7 @@ void S::f(void* argument)
     int marker;
     readMarker(argument, &marker);
 
-    if (settings()->logging)
-        logger()->report(1, markerFormat, marker, address.text(1));
+    logger()->report(1, markerFormat, marker, address.text(1));
 
     Entry* entry = registry.find(queue.front().get());
     if (entry)

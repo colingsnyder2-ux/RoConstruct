@@ -20,6 +20,10 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 
+// >>> native-status (generated) -- do not edit >>>
+// XTPPopupBar | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src d9f1a8c0 | roc native-status --write
 #include "stdafx.h"
 #include "Resource.h"
 

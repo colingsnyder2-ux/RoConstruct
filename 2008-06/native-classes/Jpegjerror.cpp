@@ -1,5 +1,9 @@
 // native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/jpeg-6b /TC
 // 2008-06 native Jpegjerror (inactive): upstream tools/libs/jpeg-6b/jerror.c, verbatim.
+// >>> native-status (generated) -- do not edit >>>
+// Jpegjerror | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 3d812ee6 | roc native-status --write
 /*
  * jerror.c
  *

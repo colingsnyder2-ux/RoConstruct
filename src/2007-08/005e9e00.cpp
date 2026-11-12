@@ -1,53 +1,33 @@
-// from server: 58% by colin
+// from server: 100% by EspClaude
 // roc 2007-08 005e9e00  unit: RBX::VFlagStand::?$FactoryProduct  size: 127 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 005e9e00
+// Shape: vector of 8-byte {px,pn} handles held by pointer at this+0xc0 (VS2005
+// vector: _Myfirst +4, _Mylast +8); return the first child that dynamic_casts
+// from RBX::Instance to RBX::Flag (RTTI names read from the exe type descriptors).
+#include <vector>
 
-extern "C" void __stdcall _invalid_parameter_noinfo();
+namespace RBX {
+class Instance { public: virtual ~Instance(); };
+class Flag : public Instance { };
+}
 
-struct Name;
-
-struct CreatorMap {
-    void* pad0;
-    void* begin;
-    void* end;
+struct Handle {
+    RBX::Instance* px;
+    void* pn;
 };
 
 struct FactoryProduct {
     char pad[0xc0];
-    CreatorMap* creators;
-    void* find(Name* name);
+    std::vector<Handle>* children;
+    RBX::Flag* findFlag();
 };
 
-void* FactoryProduct::find(Name* name) {
-    CreatorMap* m = creators;
-    if (m) {
-        void* first = m->begin;
-        void* last = m->end;
-        if (m->begin > m->end) {
-            _invalid_parameter_noinfo();
-        }
-        CreatorMap* m2 = creators;
-        void* it = m2->begin;
-        if (it > m2->end) {
-            _invalid_parameter_noinfo();
-        }
-        if (m2 != m) {
-            _invalid_parameter_noinfo();
-        }
-        while (it != last) {
-            if (it >= m2->end) {
-                _invalid_parameter_noinfo();
-            }
-            void* v = *(void**)it;
-            void* r = ((void* (__cdecl*)(void*, void*, void*, void*, void*))0x630d36)(
-                v, 0, (void*)0x881f4c, (void*)0x8a1bd0, 0);
-            if (r != 0) {
-                return r;
-            }
-            if (it >= m2->end) {
-                _invalid_parameter_noinfo();
-            }
-            it = (char*)it + 8;
+RBX::Flag* FactoryProduct::findFlag()
+{
+    if (children) {
+        std::vector<Handle>::iterator end = children->end();
+        for (std::vector<Handle>::iterator it = children->begin(); it != end; ++it) {
+            if (RBX::Flag* f = dynamic_cast<RBX::Flag*>(it->px))
+                return f;
         }
     }
     return 0;

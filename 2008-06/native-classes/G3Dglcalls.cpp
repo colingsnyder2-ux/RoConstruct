@@ -3,7 +3,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3Dglcalls | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 0e551324 | roc native-status --write
+// <<< native-status | src 9253a291 | roc native-status --write
 #line 1 ".\\glg3dcpp\\glcalls.cpp"
 /**
   @file glcalls.cpp

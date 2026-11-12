@@ -20,6 +20,10 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 
+// >>> native-status (generated) -- do not edit >>>
+// XTPSoundManager | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 1687877a | roc native-status --write
 #include "stdafx.h"
 
 #include "XTPSoundManager.h"

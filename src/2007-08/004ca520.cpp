@@ -1,35 +1,35 @@
-// from server: 65% by Intel
-struct VTable {
-    void* v0;
-    void* v1;
-    void* v2;
-    void* v3;
-    void* v4;
-    void* v5;
-    int (__thiscall* v6)(void*);
+// from server: 84% by EspClaude
+// roc 2007-08 004ca520 (see base for target disassembly)
+// Target copies a 12-byte argument by value (sub esp,0xc; mov eax,esp; 3 dword stores),
+// then calls vtable slot +0x18 (index 6) twice via ecx=this.
+
+struct Arg12 {
+    float a;
+    float b;
+    float c;
+    Arg12(const Arg12& o) : a(o.a), b(o.b), c(o.c) {}
 };
 
-struct Object {
-    VTable* vptr;
+class Object {
+public:
+    virtual void v0();
+    virtual void v1();
+    virtual void v2();
+    virtual void v3();
+    virtual void v4();
+    virtual void v5();
+    virtual Object* v6();
 };
 
-extern "C" Object* __stdcall sub_4CA490(Object* a1, int a2, int a3);
+Object* __stdcall sub_4CA490(Arg12 a);
 
-int __stdcall sub_4CA520(int a1, int a2, int a3)
+Object* __stdcall sub_4CA520(Arg12 a)
 {
-    Object* obj;
-    int result;
-
-    obj = sub_4CA490((Object*)a1, a2, a3);
-    if (!obj)
-        return 0;
-
-    result = obj->vptr->v6(obj);
-    if (result)
-    {
-        result = obj->vptr->v6(obj);
-        return result;
+    Object* obj = sub_4CA490(a);
+    if (obj) {
+        if (obj->v6())
+            return obj->v6();
+        return obj;
     }
-
-    return (int)obj;
+    return 0;
 }

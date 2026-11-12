@@ -1,5 +1,9 @@
 // native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/lua-5.1.4/src /TC
 // 2008-06 native Lua54lfunc (inactive): upstream tools/libs/lua-5.1.4/src/lfunc.c, verbatim.
+// >>> native-status (generated) -- do not edit >>>
+// Lua54lfunc | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 23321b5e | roc native-status --write
 /*
 ** $Id: lfunc.c,v 2.12.1.2 2007/12/28 14:58:43 roberto Exp $
 ** Auxiliary functions to manipulate prototypes and closures

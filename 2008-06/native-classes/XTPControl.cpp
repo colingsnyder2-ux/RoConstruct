@@ -20,6 +20,10 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 
+// >>> native-status (generated) -- do not edit >>>
+// XTPControl | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src bf135d34 | roc native-status --write
 #include "stdafx.h"
 #include "Resource.h"
 #include "Common/Resource.h"

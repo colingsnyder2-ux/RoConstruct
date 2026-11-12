@@ -1,7 +1,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // CChatPrompt | 2008-06 | 2 byte-exact, inactive (not link-selected)
 // 2/2 mapped addresses byte-exact | 0 unproved | no mapped strings | by king_originala (+1) (mixed 2)
-// <<< native-status | src 59c7aee8 | roc native-status --write
+// <<< native-status | src d9f3c2f2 | roc native-status --write
 #include "../native-headers/CChatPrompt.h"
 #include "../native-headers/ChatEnter.h"
 #include "../native-headers/v8datamodel/DataModel.h"
@@ -28,3 +28,10 @@ void CChatPrompt::bind(RBX::DataModel* model, CWnd* host) {
 
 // Template members emitted by this unit (bodies byte-identical to the 2008-06 client).
 template class boost::shared_ptr<RBX::GuiRoot>;
+
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast /D_AFXDLL /DNDEBUG /D_MBCS
+
+CChatPrompt::~CChatPrompt()
+{
+    bind(NULL, NULL);
+}

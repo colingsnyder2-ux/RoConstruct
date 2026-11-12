@@ -1,9 +1,10 @@
+// from server: 100% by EspClaude
 // from server: 81% by EspClaude
 // from server: 100% by EspClaude
 // from server: 91% by king_originala_sol_resume_root
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-lib: openrbx-client-dll roc_espclaude_72d0f35278ad032c.cpp
+// roc-lib: openrbx-client-dll roc_claude_789394e3b5bdd964.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <algorithm>
@@ -18,13 +19,17 @@ extern "C" __declspec(dllimport) long __stdcall SendMessageA(void*, unsigned int
 struct Object;
 typedef boost::shared_ptr<Object> Shared;
 
-struct Event {
+struct Member {
+    virtual void slot0();
     virtual void invoke(int);
+    int value;
+    void update(int);
+    void set(int v) { update(v); value = v; }
 };
 
 struct Object {
-    char padding[0x1f0];
-    Event event;
+    char padding[0x160];
+    Member member;
 };
 
 struct DragSelection {
@@ -61,6 +66,20 @@ struct Selection {
 typedef char iterator_size_check[sizeof(Selection::const_iterator)==8?1:-1];
 typedef char shared_size_check[sizeof(Shared)==8?1:-1];
 
+typedef void (__cdecl *BindFn)(Object*, Shared);
+struct List2 {
+    Object* a1_;
+    boost::arg<1> a2_;
+    List2(Object* a1, boost::arg<1> a2) : a1_(a1), a2_(a2) {}
+};
+struct Binder {
+    BindFn f_;
+    List2 l_;
+    Binder(BindFn f, const List2& l) : f_(f), l_(l) {}
+    void operator()(Shared s) const { f_(l_.a1_, s); }
+};
+inline Binder bind2(BindFn f, Object* a1, boost::arg<1> a2) { return Binder(f, List2(a1, a2)); }
+
 template<class T> inline void SafeDelete(T*& p) { delete p; p = 0; }
 struct Guard {
     unsigned int storage[3];
@@ -86,12 +105,12 @@ struct S {
     V10(5)
     V10(6)
     V10(7)
-    V(80) V(81) V(82) V(83)
+    V(80) V(81)
     virtual Selection* range();
 
     char padding0[0x1c];
     void* window;
-    char padding1[0x100];
+    char padding1[0xc0];
     Shared owner;
     DragSelection* selection;
 
@@ -126,11 +145,11 @@ void S::finish(unsigned int, unsigned int, long) {
                 Guard guard(owner);
 
                 if (object) {
-                    std::for_each(range()->begin(), range()->end(), boost::bind(callback, object, _1));
+                    std::for_each(range()->begin(), range()->end(), bind2(callback, object, _1));
                 }
 
-                notify(drop, owner.get());
-                owner.get()->event.invoke(1);
+                owner.get()->member.set(-1);
+                owner.get()->member.invoke(1);
             }
         }
 

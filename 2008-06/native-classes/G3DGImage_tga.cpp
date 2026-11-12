@@ -3,7 +3,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DGImage_tga | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 4ad20626 | roc native-status --write
+// <<< native-status | src b4c28ecf | roc native-status --write
 #line 1 ".\\G3Dcpp\\GImage_tga.cpp"
 /**
   @file GImage_tga.cpp

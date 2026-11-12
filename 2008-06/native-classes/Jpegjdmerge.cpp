@@ -1,5 +1,9 @@
 // native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/jpeg-6b /TC
 // 2008-06 native Jpegjdmerge (inactive): upstream tools/libs/jpeg-6b/jdmerge.c, verbatim.
+// >>> native-status (generated) -- do not edit >>>
+// Jpegjdmerge | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src db2bd708 | roc native-status --write
 /*
  * jdmerge.c
  *

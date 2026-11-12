@@ -1,10 +1,12 @@
+// from server: 100% by EspClaude
 // from server: 52% by colin
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/MouseCommand.cpp
+// roc-lib: rbxgs roc_claude_bc64131b126f201e.cpp
 
 // Candidate translation unit (score above; library headers required).
+#pragma float_control(precise, off)
 #include "v8datamodel/MouseCommand.h"
 #include "v8datamodel/PartInstance.h"
 #include "v8datamodel/Workspace.h"
@@ -15,7 +17,13 @@
 
 namespace RBX
 {
-	G3D::Vector3 MouseCommand::ignoreVector3;
+	// 2007-08 Workspace layout: target getPart, setThrottleEnabled-style 0057b4a0 and 0057b4b0
+	// all read the World pointer at Workspace+0x27c (this tree's header puts it at +0x284).
+	struct Aug2007WorkspaceWorld
+	{
+		char pad[0x27c];
+		World* world;
+	};
 
 	MouseCommand::MouseCommand(Workspace* workspace)
 		: workspace(workspace),
@@ -95,20 +103,7 @@ namespace RBX
 	PartInstance* MouseCommand::getPart(const UIEvent& uiEvent, const HitTestFilter* filter, G3D::Vector3& hitWorld)
 	{
 		G3D::Ray unitRay = getUnitMouseRay(uiEvent);
-		ContactManager& contactManager = workspace->getWorld()->getContactManager();
-
-		std::vector<const Primitive*> ignorePrims;
-		static_cast<ICameraOwner*>(workspace)->getCameraIgnorePrimitives(ignorePrims);
-
-		if (Camera* camera = workspace->getCamera())
-		{
-			if (ICharacterSubject* subject = dynamic_cast<ICharacterSubject*>(camera->getCameraSubject()))
-			{
-				subject->getCameraIgnorePrimitives(ignorePrims);
-			}
-		}
-
-		PartInstance* part = getMousePart(unitRay, contactManager, ignorePrims, filter, hitWorld, 2048.0f);
+		PartInstance* part = getMousePart(unitRay, reinterpret_cast<Aug2007WorkspaceWorld*>(workspace)->world->getContactManager(), (const Primitive*)NULL, filter, hitWorld, 2048.0f);
 
 		if (!part)
 			hitWorld = unitRay.origin + unitRay.direction * 10000.0f;

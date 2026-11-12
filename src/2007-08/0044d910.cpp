@@ -1,8 +1,9 @@
+// from server: 88% by EspClaude
 // from server: 85% by EspClaude
 // from server: 100% by coldek
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-lib: rbxgs roc_codex_com_pointercatch_25136762e631126d.cpp
+// roc-lib: rbxgs roc_claude_25518261daf7bcd4.cpp
 
 // Candidate translation unit (score above; library headers required).
 
@@ -25,7 +26,7 @@ struct Interface
 
 struct Object
 {
-    unsigned char padding0[16];
+    unsigned char padding0[32];
     Interface interfacePart;
     unsigned char padding1[12];
     long references;

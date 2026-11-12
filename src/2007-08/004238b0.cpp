@@ -1,9 +1,10 @@
+// from server: 100% by EspClaude
 // from server: 81% by EspClaude
 // from server: 100% by EspClaude
 // from server: 97% by Espeon
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-lib: openrbx-client-dll roc_espclaude_10c375aa95bbfab1.cpp
+// roc-lib: openrbx-client-dll roc_claude_a1a3312a82f58f9c.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <boost/shared_ptr.hpp>
@@ -93,13 +94,11 @@ struct Owner {
     virtual void slot80();
     virtual void slot81();
     virtual void slot82();
-    virtual void slot83();
-    virtual void slot84();
     virtual Handle acquire();
 };
 
 struct Guard {
-    char storage[12];
+    int storage[3];
     Guard(Handle);
     ~Guard();
 };
@@ -109,12 +108,12 @@ struct FirstLink : Link {};
 struct SecondLink : Link {};
 
 struct Listener {
-    char storage[0x20];
+    char storage[0x18];
     void remove(Link*);
 };
 
 struct Parent {
-    char padding[0x24];
+    char padding[0x14];
     Listener first;
     Listener second;
 };
@@ -129,9 +128,9 @@ struct S : FirstLink, SecondLink {
     virtual int query();
 
     Parent* parent;
-    char padding10[0x48];
+    char padding10[0x20];
     Owner* owner;
-    char padding5C[0x24];
+    char padding34[0x10];
     int value;
 
     Parent* getParent() const { return parent; }

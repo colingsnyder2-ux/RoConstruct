@@ -20,6 +20,10 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 
+// >>> native-status (generated) -- do not edit >>>
+// XTPXTButton | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src a659b7a9 | roc native-status --write
 #include "stdafx.h"
 
 #include "Common/XTPWinThemeWrapper.h"

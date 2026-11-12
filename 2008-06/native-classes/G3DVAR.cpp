@@ -3,7 +3,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DVAR | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 622f2b43 | roc native-status --write
+// <<< native-status | src 8d98c71f | roc native-status --write
 #line 1 ".\\glg3dcpp\\VAR.cpp"
 /**
  @file VAR.cpp

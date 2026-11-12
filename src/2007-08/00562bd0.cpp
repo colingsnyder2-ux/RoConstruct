@@ -1,68 +1,75 @@
-// from server: 52% by colin
-struct AttachCameraCommand {
-    char pad[0x0c];
-    void* field0c;
-    char pad2[0x10];
-    void* field20;
-    void execute(void* arg);
+// from server: 100% by EspClaude
+// roc 2007-08 00562bd0  unit: RBX::AttachCameraCommand  size: 178 bytes
+#include <vector>
+
+namespace RBX {
+
+class Instance;
+
+class Camera
+{
+public:
+    void setCameraType(int type);          // 0x59b6c0, thiscall, ret 4
+    void setCameraSubject(Instance* s);    // 0x59b700, thiscall, ret 4
 };
 
-extern "C" void* __stdcall sub_5618E0();
-extern "C" void __stdcall sub_59B6C0();
-extern "C" void __stdcall sub_59B700();
-extern "C" void __stdcall sub_4108B0();
-extern "C" void __stdcall sub_77E6D8();
-
-void AttachCameraCommand::execute(void* arg)
+class CameraOwner                          // subobject at +0x228, getCamera is vtable slot 1
 {
-    void* esi;
-    if (field20) {
-        esi = sub_5618E0();
-    } else {
-        esi = 0;
-    }
+public:
+    virtual void slot0();
+    virtual Camera* getCamera();
+};
 
-    void* result;
-    if (esi) {
-        char* p = (char*)esi;
-        void** begin = *(void***)(p + 0xf8);
-        void** end = *(void***)(p + 0xfc);
-        if (begin && ((char*)end - (char*)begin) >> 2) {
-            void** it = begin;
-            if (it > end) {
-                sub_77E6D8();
-            }
-            if (it < end) {
-                result = *it;
-            } else {
-                sub_77E6D8();
-                result = 0;
-            }
-        } else {
-            result = 0;
-        }
-    } else {
-        result = 0;
-    }
+class Workspace
+{
+    char pad00[0x228];
+public:
+    CameraOwner cameraOwner;               // +0x228
+};
 
-    char* p0c = (char*)field0c;
-    void** vtbl = *(void***)(p0c + 0x228);
-    void* obj = (void*)(p0c + 0x228);
-    void* fn = vtbl[1];
-    void* r = ((void* (__thiscall*)(void*, int))fn)(obj, 1);
-    sub_59B6C0();
+class Selection
+{
+    char pad00[0xf4];
+public:
+    std::vector<Instance*> items;          // _Myfirst +0xf8, _Mylast +0xfc
+};
 
-    p0c = (char*)field0c;
-    vtbl = *(void***)(p0c + 0x228);
-    obj = (void*)(p0c + 0x228);
-    fn = vtbl[1];
-    r = ((void* (__thiscall*)(void*, void*))fn)(obj, result);
-    sub_59B700();
+class Tool
+{
+public:
+    Selection* getSelection();             // 0x5618e0, thiscall, no args
+};
 
-    void* a = arg;
-    sub_4108B0();
-    void** vtbl2 = *(void***)a;
-    void* fn2 = vtbl2[1];
-    *(int*)((char*)a + 4) = -1;
-    ((void (__thiscall*)(void*, int))fn2)(a, 1);
+class Verb                                 // arg: thiscall 0x4108b0(int), field +4, vtable slot 1(int)
+{
+public:
+    virtual void slot0();
+    virtual void release(int flags);
+    int state;                             // +4
+    void update(int v);                    // 0x4108b0
+};
+
+class AttachCameraCommand
+{
+    char pad00[0xc];
+    Workspace* workspace;                  // +0xc
+    char pad10[0x10];
+    Tool* tool;                            // +0x20
+public:
+    void execute(Verb* verb);
+};
+
+void AttachCameraCommand::execute(Verb* verb)
+{
+    Selection* sel = tool ? tool->getSelection() : 0;
+    Instance* subject = sel->items.size() != 0 ? sel->items.front() : 0;
+
+    workspace->cameraOwner.getCamera()->setCameraType(1);
+    workspace->cameraOwner.getCamera()->setCameraSubject(subject);
+
+    verb->update(-1);
+    verb->state = -1;
+    verb->release(1);
+}
+
 }

@@ -1,8 +1,9 @@
+// from server: 100% by EspClaude
 // from server: 75% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-lib: openrbx-client-dll roc_espeon_jumpcomparison_6b4b2fffa050f82d.cpp
+// roc-lib: openrbx-client-dll roc_claude_4ce3c4987ac7c84c.cpp
 
 // Candidate translation unit (score above; library headers required).
 #pragma float_control(precise, off, push)
@@ -21,7 +22,7 @@ struct ForceReceiver {
 };
 
 struct BodyLink {
-    char reserved[0x2c];
+    char reserved[0x20];
     ForceReceiver* receiver;
 };
 
@@ -30,11 +31,11 @@ struct MassSource {
 };
 
 struct Body {
-    char reserved0[0x10];
+    char reserved0[4];
     BodyLink* link;
     char reserved1[0x14];
     MassSource* massSource;
-    char reserved2[0x60];
+    char reserved2[0x5c];
     float mass;
     char reserved3[0x38];
     float height;
@@ -49,37 +50,46 @@ struct Owner {
 };
 
 struct BodyHolder {
-    char reserved[0x10];
+    char reserved[4];
     Body* body;
 };
 
-struct Character {
-    char reserved[0xa0];
+struct HolderLink {
+    char reserved[0x64];
     BodyHolder* holder;
+};
+
+struct Character {
+    char reserved[0x1d8];
+    HolderLink* link;
 };
 
 extern const float jumpScale;
 extern const float jumpHeight;
 
 struct Jumping {
-    char reserved0[0x11];
-    unsigned char finished;
-    char reserved1[0x1a];
+    char reserved0[4];
+    Owner* owner;
+    char reserved1[0xc];
+    Character* character;
+    char reserved2[4];
     Vector3 position;
+    char reserved3[4];
+    unsigned char finished;
+    float timer;
 
     void baseUpdate(float);
-    Owner* getOwner();
-    Character* getCharacter();
     void update(float);
 };
 
 void Jumping::update(float dt)
 {
     baseUpdate(dt);
+    timer -= dt;
     if (finished)
         return;
 
-    Body* body = getOwner()->getBody();
+    Body* body = owner->getBody();
     float amount;
     if (!body)
         goto finish;
@@ -92,10 +102,10 @@ finish:
         return;
     }
 
-    if (!getCharacter())
+    if (!character)
         return;
 
-    Body* other = getCharacter()->holder->body;
+    Body* other = character->link->holder->body;
     dt = other->massSource
         ? other->massSource->getMass()
         : other->mass;

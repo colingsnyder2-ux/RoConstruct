@@ -1,63 +1,53 @@
-// from server: 51% by colin
-extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
-#pragma intrinsic(_InterlockedExchangeAdd)
+// from server: 98% by EspClaude
+// boost 1.34 shared_ptr (w32 sp_counted_base); virtual Creator::create returns
+// shared_ptr<Base> converted from the static creator's shared_ptr<Derived>.
+extern "C" long __cdecl _InterlockedIncrement(long volatile*);
+extern "C" long __cdecl _InterlockedDecrement(long volatile*);
+#pragma intrinsic(_InterlockedIncrement)
+#pragma intrinsic(_InterlockedDecrement)
 
-struct RBXNameRef {
-    void* ptr;
-};
-
-struct RefCounted {
-    void* vfptr;
-    volatile long refCount;
-    volatile long weakRefCount;
-};
-
-struct CreatorBase {
-    void* vfptr;
-};
-
-struct FactoryProductCreator {
-    void* vfptr;
-};
-
-struct CreatorHolder {
-    void* ptr;
-    RefCounted* ref;
-};
-
-extern "C" void __cdecl sub_40EFD0(CreatorHolder* out, void* name);
-extern "C" void __cdecl sub_55D3D0();
-
-struct VCRenderSettings_FactoryProduct_Creator {
-    void* vfptr;
-    void* field4;
-    CreatorHolder* getCreators();
-    void destroy();
-    void* construct(CreatorHolder* out);
-};
-
-void* VCRenderSettings_FactoryProduct_Creator::construct(CreatorHolder* out) {
-    CreatorHolder local;
-    local.ptr = 0;
-    local.ref = 0;
-    sub_40EFD0(&local, this);
-    out->ptr = local.ptr;
-    RefCounted* r = local.ref;
-    out->ref = r;
-    if (r) {
-        _InterlockedExchangeAdd(&r->refCount, 1);
+class sp_counted_base {
+    long use_count_;
+    long weak_count_;
+public:
+    virtual ~sp_counted_base();
+    virtual void dispose() = 0;
+    virtual void destroy();
+    void add_ref_copy() { _InterlockedIncrement(&use_count_); }
+    void release() {
+        if (_InterlockedDecrement(&use_count_) == 0) { dispose(); weak_release(); }
     }
-    RefCounted* old = local.ref;
-    if (old) {
-        if (_InterlockedExchangeAdd(&old->refCount, -1) == 1) {
-            void** vt = *(void***)old;
-            typedef void (__thiscall *Fn)(RefCounted*);
-            ((Fn)vt[1])(old);
-            if (_InterlockedExchangeAdd(&old->weakRefCount, -1) == 1) {
-                void** vt2 = *(void***)old;
-                ((Fn)vt2[2])(old);
-            }
-        }
+    void weak_release() {
+        if (_InterlockedDecrement(&weak_count_) == 0) destroy();
     }
-    return out;
-}
+};
+
+class shared_count {
+    sp_counted_base* pi_;
+public:
+    shared_count() : pi_(0) {}
+    shared_count(shared_count const& r) : pi_(r.pi_) { if (pi_ != 0) pi_->add_ref_copy(); }
+    ~shared_count() { if (pi_ != 0) pi_->release(); }
+};
+
+template<class T> class shared_ptr {
+public:
+    T* px;
+    shared_count pn;
+    shared_ptr() : px(0) {}
+    template<class Y> shared_ptr(shared_ptr<Y> const& r) : px(r.px), pn(r.pn) {}
+};
+
+class Instance {};
+class RenderSettings : public Instance {};
+
+struct ICreator {
+    virtual shared_ptr<Instance> create() const = 0;
+};
+
+template<class T> struct Creator : ICreator {
+    static shared_ptr<T> createStatic();
+    virtual shared_ptr<Instance> create() const { return createStatic(); }
+};
+
+template struct Creator<RenderSettings>;

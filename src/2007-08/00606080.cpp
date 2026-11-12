@@ -1,10 +1,13 @@
+// from server: 90% by EspClaude
 // from server: 63% by colin
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8world/ClumpStage.cpp
+// roc-lib: rbxgs roc_claude_cd22fdade1406326.cpp
 
 // Candidate translation unit (score above; library headers required).
+// /MD build: target calls _invalid_parameter_noinfo through the IAT (call dword ptr [__imp_]); same as recipe rbxgs-dll
+#define _DLL
 #include "v8world/ClumpStage.h"
 #include "v8world/Clump.h"
 #include "v8world/Primitive.h"
@@ -241,8 +244,7 @@ namespace RBX
 
 	void ClumpStage::rigidZerosErase(RigidJoint* r)
 	{
-		size_t removed = rigidZeros.erase(r);
-		RBXASSERT(removed == 1);
+		rigidZeros.erase(r);	// 2007-08: no removed==1 check (target has no count/assert after the inlined erase)
 	}
 
 	void ClumpStage::primitivesErase(Primitive* p)
@@ -607,7 +609,6 @@ namespace RBX
 			Primitive* p = (*it).primitive;
 			primitivesErase(p);
 
-			RBXASSERT(!p->getClump());
 			Clump* c = new Clump(p);
 			freeClumps.insert(c);
 
@@ -629,7 +630,6 @@ namespace RBX
 			}
 		}
 
-		RBXASSERT(rigidZeros.empty());
 		return true;
 	}
 

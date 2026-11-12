@@ -20,6 +20,10 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 
+// >>> native-status (generated) -- do not edit >>>
+// XTPControlPopupColor | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 4c40d0d6 | roc native-status --write
 #include "stdafx.h"
 #include "Resource.h"
 #include "Common/Resource.h"

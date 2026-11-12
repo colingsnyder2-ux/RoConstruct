@@ -1,9 +1,10 @@
+// from server: 92% by EspClaude
 // from server: 81% by EspClaude
 // from server: 100% by tester
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /MD /GS /EHsc
-// roc-lib: xtp-11.2.2-shared-mfc Source/CommandBars/XTPPaintManager.cpp
+// roc-lib: xtp-11.2.2-shared-mfc roc_claude_9fd6fa03eeeeba31.cpp
 
 // Candidate translation unit (score above; library headers required).
 // XTPPaintManager.cpp : implementation of the CXTPPaintManager class.
@@ -35,20 +36,20 @@
 #include "Common/XTPDrawHelpers.h"
 #include "Common/XTPResourceManager.h"
 
-#include "XTPPaintManager.h"
-#include "XTPControlButton.h"
-#include "XTPControlPopup.h"
-#include "XTPControlGallery.h"
-#include "XTPToolBar.h"
-#include "XTPCommandBars.h"
-#include "XTPPopupBar.h"
-#include "XTPControlComboBox.h"
-#include "XTPControlEdit.h"
-#include "XTPControls.h"
-#include "XTPStatusBar.h"
+#include "CommandBars/XTPPaintManager.h"
+#include "CommandBars/XTPControlButton.h"
+#include "CommandBars/XTPControlPopup.h"
+#include "CommandBars/XTPControlGallery.h"
+#include "CommandBars/XTPToolBar.h"
+#include "CommandBars/XTPCommandBars.h"
+#include "CommandBars/XTPPopupBar.h"
+#include "CommandBars/XTPControlComboBox.h"
+#include "CommandBars/XTPControlEdit.h"
+#include "CommandBars/XTPControls.h"
+#include "CommandBars/XTPStatusBar.h"
 
 #ifdef _XTP_INCLUDE_RIBBON
-#include "XTPOffice2007Theme.h"
+#include "CommandBars/XTPOffice2007Theme.h"
 #include "Ribbon/XTPRibbonTheme.h"
 #endif
 
@@ -2036,7 +2037,8 @@ void CXTPPaintManager::FillWorkspace(CDC* pDC, CRect rc, CRect /*rcExclude*/)
 
 void AFX_CDECL CXTPPaintManager::FillCompositeAlpha(CDC* pDC, CRect rc)
 {
-	CSize sz(rc.Width(), rc.Height());
+	int nTop = rc.top;
+	CSize sz(rc.Width(), rc.bottom - nTop);
 	CBitmap bmp;
 	LPDWORD lpBits;
 	bmp.Attach(CXTPImageManager::Create32BPPDIBSection(pDC->GetSafeHdc(), sz.cx, sz.cy, (LPBYTE*)&lpBits));
@@ -2045,7 +2047,7 @@ void AFX_CDECL CXTPPaintManager::FillCompositeAlpha(CDC* pDC, CRect rc)
 
 	CRect rcDestOrig(0, 0, sz.cx, sz.cy);
 
-	dc.BitBlt(0, 0, sz.cx, sz.cy, pDC, rc.left, rc.top, SRCCOPY);
+	dc.BitBlt(0, 0, sz.cx, sz.cy, pDC, rc.left, nTop, SRCCOPY);
 
 	for (int i = 0; i < sz.cx * sz.cy; i++)
 	{
@@ -2053,7 +2055,7 @@ void AFX_CDECL CXTPPaintManager::FillCompositeAlpha(CDC* pDC, CRect rc)
 		lpBits++;
 	}
 
-	pDC->BitBlt(rc.left, rc.top, sz.cx, sz.cy, &dc, 0, 0, SRCCOPY);
+	pDC->BitBlt(rc.left, nTop, sz.cx, sz.cy, &dc, 0, 0, SRCCOPY);
 }
 
 void CXTPPaintManager::DrawKeyboardTip(CDC* pDC, CXTPCommandBarKeyboardTip* pWnd, BOOL bSetRegion)

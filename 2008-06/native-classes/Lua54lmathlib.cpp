@@ -1,5 +1,9 @@
 // native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/lua-5.1.4/src /TC
 // 2008-06 native Lua54lmathlib (inactive): upstream tools/libs/lua-5.1.4/src/lmathlib.c, verbatim.
+// >>> native-status (generated) -- do not edit >>>
+// Lua54lmathlib | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 4a700c1f | roc native-status --write
 /*
 ** $Id: lmathlib.c,v 1.67.1.1 2007/12/27 13:02:25 roberto Exp $
 ** Standard mathematical library

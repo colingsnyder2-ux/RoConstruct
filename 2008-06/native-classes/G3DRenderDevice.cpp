@@ -3,7 +3,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DRenderDevice | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src dfa847d4 | roc native-status --write
+// <<< native-status | src 8682a41d | roc native-status --write
 #line 1 ".\\glg3dcpp\\RenderDevice.cpp"
 /**
  @file RenderDevice.cpp

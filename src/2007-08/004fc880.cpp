@@ -1,14 +1,16 @@
+// from server: 100% by EspClaude
 // from server: 59% by colin
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client Rendering/RenderLib/Clusterer.cpp
+// roc-lib: openrbx-client roc_claude_c796925de4b6ab7c.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "Clusterer.h"
+#include "Rendering/RenderLib/Clusterer.h"
 
 #include <algorithm>
 #include <cstdlib>
+#include <functional>
 
 namespace RBX {
 namespace Render {
@@ -102,27 +104,25 @@ unsigned int Clusterer::moveSamples()
 // STUB: WEBSERVICE 0x101fa520
 Clusterer::Clusters* Clusterer::go(unsigned int maxSteps)
 {
-	if (clusterCount <= 1) {
-		return &clusters;
-	}
+	if (clusterCount > 1) {
+		Clusters::iterator it = clusters.begin();
+		Clusters::iterator end = clusters.end();
 
-	Clusters::iterator end = clusters.end();
-
-	for (Clusters::iterator it = clusters.begin(); it != end; ++it) {
-		if (it->samples.size() != 0) {
-			it->centroid = it->samples[rand() % it->samples.size()]->cframe().translation;
-		}
-	}
-
-	unsigned int threshold = std::max(sampleSize / 20, 1u);
-	unsigned int step = 1;
-
-	while (moveSamples() > threshold && step != maxSteps) {
-		for (Clusters::iterator it = clusters.begin(); it != clusters.end(); ++it) {
-			it->computeCentroid();
+		for (; it != end; ++it) {
+			if (it->samples.size() != 0) {
+				unsigned int index = rand() % it->samples.size();
+				it->centroid = it->samples[index]->cframe().translation;
+			}
 		}
 
-		step++;
+		unsigned int threshold = std::max(1u, sampleSize / 20);
+		unsigned int step = 1;
+
+		while (moveSamples() > threshold && step != maxSteps) {
+			std::for_each(clusters.begin(), clusters.end(), std::mem_fun_ref(&Cluster::computeCentroid));
+
+			step++;
+		}
 	}
 
 	return &clusters;

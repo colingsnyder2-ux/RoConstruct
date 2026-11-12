@@ -1,6 +1,10 @@
 // native-flags: /O2 /GS- /MD /I{headers}/../../../tools/libs/zlib-1.2.3 /I{headers}/../../../tools/libs/libpng-1.2.5 /TC
 // 2008-06 native Png5pngtrans (inactive): upstream tools/libs/libpng-1.2.5/pngtrans.c, verbatim.
 
+// >>> native-status (generated) -- do not edit >>>
+// Png5pngtrans | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 91752feb | roc native-status --write
 /* pngtrans.c - transforms the data in a row (used by both readers and writers)
  *
  * libpng 1.2.5 - October 3, 2002

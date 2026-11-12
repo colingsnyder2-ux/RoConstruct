@@ -1,8 +1,9 @@
+// from server: 100% by EspClaude
 // from server: 78% by EspClaude
 // from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-lib: openrbx-client-dll roc_espclaude_5079f0fd77da17bd.cpp
+// roc-lib: openrbx-client-dll roc_claude_2d98e6e4e1cc2117.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <boost/shared_ptr.hpp>
@@ -45,11 +46,24 @@ struct Owner
 extern bool __cdecl checkFirst(Object*, int);
 extern bool __cdecl checkSecond(Object*, int);
 
+extern wchar_t* __cdecl A2WBSTR(const char*, int);
+__declspec(noreturn) void __stdcall AtlThrowImpl(long);
+
 struct String
 {
     wchar_t* value;
 
-    String(const wchar_t*);
+    String(const char* p)
+    {
+        if (p != 0)
+        {
+            value = A2WBSTR(p, -1);
+            if (value == 0)
+                AtlThrowImpl(0x8007000e);
+        }
+        else
+            value = 0;
+    }
     ~String();
 };
 
@@ -82,13 +96,13 @@ struct DocumentTable
 struct CRobloxDoc
 {
     DocumentTable* table;
-    char padding[0x90];
+    char padding[0x74];
     Owner* owner;
 
-    int func_0044f9b0(const wchar_t*);
+    int func_0044f9b0(const char*);
 };
 
-int CRobloxDoc::func_0044f9b0(const wchar_t* text)
+int CRobloxDoc::func_0044f9b0(const char* text)
 {
     if (!allowed(owner->get()))
         return 0;

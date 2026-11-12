@@ -1,5 +1,9 @@
 // native-flags: /O2 /GS- /MD /I{headers}/../../../tools/libs/zlib-1.2.3 /I{headers}/../../../tools/libs/libpng-1.2.6 /TC
 // 2008-06 native Png6pngrutil (inactive): upstream tools/libs/libpng-1.2.6/pngrutil.c, verbatim.
+// >>> native-status (generated) -- do not edit >>>
+// Png6pngrutil | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src c7880a5a | roc native-status --write
 /* pngrutil.c - utilities to read a PNG file
  *
  * libpng version 1.2.6 - August 15, 2004

@@ -3,7 +3,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DGImage_ppm | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 29252bb8 | roc native-status --write
+// <<< native-status | src 3645091f | roc native-status --write
 #line 1 ".\\G3Dcpp\\GImage_ppm.cpp"
 /**
   @file GImage_ppm.cpp

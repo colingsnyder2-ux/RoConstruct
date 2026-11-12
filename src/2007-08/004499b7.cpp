@@ -1,10 +1,11 @@
+// from server: 94% by EspClaude
 // from server: 71% by EspClaude
 // from server: 100% by EspClaude
 // from server: 90% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: atl-9.0-dll-rtm roc_espclaude_43b5b584c2f00b13.cpp
+// roc-lib: atl-9.0-dll-rtm roc_claude_6ed6ad38d2f76b80.cpp
 
 // Candidate translation unit (score above; library headers required).
 #ifndef _CPPUNWIND
@@ -52,13 +53,14 @@ public:
     virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
     virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27();
     virtual void v28(); virtual void v29(); virtual void v30(); virtual void v31();
-    virtual void v32(); virtual void v33(); virtual void v34();
+    virtual void v32(); virtual void v33();
+    virtual CDocument* open(LPCTSTR lpszFileName, BOOL bMakeVisible);
     virtual void attachDocument(CDocument*);
-    char pad[0x8c];
+    char pad[0x88];
+    int field_8c;
     CDocument* document;
     ExeCString errorText;
 
-    CDocument* open(LPCTSTR lpszFileName, BOOL bMakeVisible);
     CDocument* getDocument();
 };
 
@@ -67,6 +69,7 @@ CDocument* CRobloxModule::getDocument()
     if (document == NULL)
     {
         pendingObject.reset();
+        int saved = field_8c;
         CDocument* doc = open(NULL, TRUE);
         try
         {
@@ -81,11 +84,10 @@ CDocument* CRobloxModule::getDocument()
         }
         if (doc == NULL)
         {
-            if (!errorText.IsEmpty())
-                throw std::runtime_error((const char*)errorText);
-            throw std::runtime_error("OpenDocumentFile returned NULL");
+            if (saved != field_8c)
+                throw std::runtime_error("OpenDocumentFile returned NULL - b");
+            throw std::runtime_error("OpenDocumentFile returned NULL - a");
         }
-        document = doc;
         return doc;
     }
     else

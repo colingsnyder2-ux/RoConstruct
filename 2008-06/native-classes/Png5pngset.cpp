@@ -1,6 +1,10 @@
 // native-flags: /O2 /GS- /MD /I{headers}/../../../tools/libs/zlib-1.2.3 /I{headers}/../../../tools/libs/libpng-1.2.5 /TC
 // 2008-06 native Png5pngset (inactive): upstream tools/libs/libpng-1.2.5/pngset.c, verbatim.
 
+// >>> native-status (generated) -- do not edit >>>
+// Png5pngset | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 96d575d6 | roc native-status --write
 /* pngset.c - storage of image information into info struct
  *
  * libpng 1.2.5 - October 3, 2002

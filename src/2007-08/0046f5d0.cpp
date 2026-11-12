@@ -1,54 +1,32 @@
-// from server: 64% by colin
+// from server: 100% by EspClaude
 // roc 2007-08 0046f5d0  unit: std::D::DU?$char_traits::V?$basic_string::?$Set  size: 203 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 0046f5d0
+#include <string>
 
-extern "C" {
-    unsigned int __stdcall glGetString(unsigned int name);
-}
+extern "C" __declspec(dllimport) const unsigned char* __stdcall glGetString(unsigned int name);
 
-namespace std {
-    class string {
-    public:
-        string(const char*);
-        ~string();
-        unsigned int find(const char*, unsigned int, unsigned int) const;
-        static const unsigned int npos;
-    };
-}
+bool sub_46C9B0();
+bool sub_46C8C0();
 
-extern "C" unsigned int __stdcall sub_46C9B0();
-extern "C" unsigned int __stdcall sub_46C8C0();
-
-extern unsigned char byte_8BD02D;
-extern unsigned char byte_8BD02C;
+static bool s_checked;
+static bool s_supported;
 
 bool CheckGenerateMipmap()
 {
-    if (byte_8BD02D == 0)
+    if (!s_checked)
     {
-        byte_8BD02D = 1;
-        const char* ext = (const char*)glGetString(0x1F03);
-        std::string s(ext);
-        unsigned int pos = s.find("GL_SGIS_generate_mipmap", 0, 0x17);
-        if (pos != std::string::npos)
+        s_checked = true;
+        std::string s((const char*)glGetString(0x1F03));
+        if (s.find("GL_SGIS_generate_mipmap") == std::string::npos || sub_46C9B0())
         {
-            byte_8BD02C = 0;
+            s_supported = false;
         }
         else
         {
-            if (sub_46C9B0() & 0xFF)
-            {
-                byte_8BD02C = 0;
-            }
-            else
-            {
-                byte_8BD02C = 1;
-                if (!(sub_46C8C0() & 0xFF))
-                {
-                    byte_8BD02C = 1;
-                }
-            }
+            bool broken = sub_46C8C0();
+            s_supported = true;
+            if (broken)
+                s_supported = false;
         }
     }
-    return byte_8BD02C != 0;
+    return s_supported;
 }

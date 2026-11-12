@@ -1,5 +1,9 @@
 // native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/jpeg-6b /TC
 // 2008-06 native Jpegjdmaster (inactive): upstream tools/libs/jpeg-6b/jdmaster.c, verbatim.
+// >>> native-status (generated) -- do not edit >>>
+// Jpegjdmaster | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 597c5c4e | roc native-status --write
 /*
  * jdmaster.c
  *

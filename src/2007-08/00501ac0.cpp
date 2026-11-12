@@ -1,8 +1,10 @@
+// from server: 100% by EspClaude
 // from server: 64% by Intel
 // from server: 55% by colin
 // roc-lang: cpp
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: g3d-6.09 G3Dcpp/Log.cpp
+// roc-cl: 50727
+// roc-flags: /O2 /GS /EHsc /MD
+// roc-lib: g3d-6.09 roc_claude_55a167387812cd39.cpp
 
 // Candidate translation unit (score above; library headers required).
 /**
@@ -59,6 +61,7 @@ Log::Log(const std::string& filename, int stripFromStackBottom) :
         logFile = fopen(logName.c_str(), "w");
     }
 
+    if (logFile != NULL) {
     // Turn off buffering.
     setvbuf(logFile, NULL, _IONBF, 0);
 
@@ -67,6 +70,7 @@ Log::Log(const std::string& filename, int stripFromStackBottom) :
     time(&t);
     fprintf(logFile, "Start: %s\n", ctime(&t));
     fflush(logFile);
+    }
 
     if (commonLog == NULL) {
         commonLog = this;

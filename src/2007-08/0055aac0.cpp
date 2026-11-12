@@ -1,9 +1,10 @@
+// from server: 92% by EspClaude
 // from server: 84% by EspClaude
 // from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs-dll roc_espclaude_37e59a7671edc08f.cpp
+// roc-lib: rbxgs-dll roc_claude_7c4847a58f65dc16.cpp
 
 // Candidate translation unit (score above; library headers required).
 #define _DLL
@@ -15,13 +16,11 @@
 #include "util/Events.h"
 #undef hasListeners
 namespace RBX { template<class T> class GuidItem { public: virtual ~GuidItem() {} char guidPad[0xc]; }; }
-#define AbstractFactoryProduct GuidItem<Instance>, public AbstractFactoryProduct
 #include "util/Guid.h"
 namespace RBX { class GuidStub { public: typedef Guid::Data Data; void assign(const Data&) {} operator const Guid&() const { return *(const Guid*)0; } }; }
 #define Guid GuidStub
 #include "v8tree/Instance.h"
 #undef Guid
-#undef AbstractFactoryProduct
 #define private public
 #include "util/RunStateOwner.h"
 #undef private
@@ -39,9 +38,7 @@ namespace RBX { class TimeState; }
 namespace boost { template<> class scoped_ptr<RBX::TimeState> { public: RBX::TimeState* operator->() const; RBX::TimeState* get() const; }; }
 #define tempMetric tempMetric; bool exeFlag
 #include "v8datamodel/Lighting.h"
-#define initializeContents() initializeContents(bool start)
 #include "v8datamodel/DataModel.h"
-#undef initializeContents
 #undef tempMetric
 #include "v8datamodel/TimeState.h"
 #include "v8datamodel/Workspace.h"
@@ -63,7 +60,7 @@ namespace RBX
 	class PhysicsService;
 	template<> PhysicsService* ServiceProvider::create<PhysicsService>() const;
 
-	void DataModel::initializeContents(bool start)
+	void DataModel::initializeContents()
 	{
 		workspace->setParent(this);
 		guiRoot->setParent(this);
@@ -77,11 +74,9 @@ namespace RBX
 		workspace->setDefaultMouseCommand();
 		workspace->setVerbParent(this);
 
-		if (start)
-			runService->start();
+		runService->start();
 		Notifier<RunService, RunTransition>::connect(runService, this);
 
 		ServiceProvider::create<JointsService>();
-		ServiceProvider::create<PhysicsService>();
 	}
 }

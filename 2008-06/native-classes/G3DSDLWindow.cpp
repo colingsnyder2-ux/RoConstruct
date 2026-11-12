@@ -3,7 +3,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DSDLWindow | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 005a0cfa | roc native-status --write
+// <<< native-status | src 278a7409 | roc native-status --write
 #line 1 ".\\glg3dcpp\\SDLWindow.cpp"
 /**
   @file SDLWindow.cpp

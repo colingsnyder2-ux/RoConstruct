@@ -1,60 +1,64 @@
-// from server: 52% by colin
-struct TextureId {
-    int id;
-};
+// from server: 100% by EspClaude
+// roc 2007-08 00733cb0  unit: G3D::Sky  size: 227 bytes
+// Resize Array<Vector4> star (+0x38, num +0x3c) and Array<float> starIntensity
+// (+0x44), then refill both from the top index down (G3D Sky star init shape).
+#include <stdlib.h>
 
-struct Sky {
-    char pad0[0x38];
-    TextureId* skyUp;      // 0x38
-    int numStars;          // 0x3c
-    TextureId* skyLf;      // 0x40
-    float* starAngles;     // 0x44
-    void setNumStars(int value);
-};
+namespace G3D {
 
-extern "C" int __stdcall rand(void);
-
-extern double g_78fee0;
-extern double g_79f2c8;
-extern double g_79f400;
-
-extern void __stdcall sub_507190(TextureId* arr, int value, int flag);
-extern void __stdcall sub_47c7d0(float* arr, int value, int flag);
-extern float* __stdcall sub_50f560(float* out);
-
-void Sky::setNumStars(int value)
+template<class T> class Array
 {
-    if (value == this->numStars)
+public:
+    T*  data;          // +0
+    int num;           // +4
+    int numAllocated;  // +8
+    void resize(int n, bool shrinkIfNecessary = true);   // 0x507190 / 0x47c7d0
+    int size() const { return num; }
+    T& operator[](int n) { return data[n]; }
+};
+
+class Vector3
+{
+public:
+    float x, y, z;
+    static Vector3 random();       // 0x50f560, cdecl, hidden return pointer
+};
+
+class Vector4
+{
+public:
+    float x, y, z, w;
+    Vector4() {}
+    Vector4(const Vector3& v, float _w) : x(v.x), y(v.y), z(v.z), w(_w) {}
+    Vector4& operator=(const Vector4& o) { x = o.x; y = o.y; z = o.z; w = o.w; return *this; }
+};
+
+inline float uniformRandom(float low = 0.0f, float hi = 1.0f)
+{
+    return (hi - low) * float(::rand()) / float(RAND_MAX) + low;
+}
+
+inline double square(double x) { return x * x; }
+
+class Sky
+{
+    char pad00[0x38];
+    Array<Vector4> star;           // +0x38
+    Array<float>   starIntensity;  // +0x44
+public:
+    void setNumStars(int n);
+};
+
+void Sky::setNumStars(int n)
+{
+    if (n == star.size())
         return;
-
-    sub_507190(this->skyUp, value, 1);
-    sub_47c7d0(this->starAngles, this->numStars, 1);
-
-    int i = this->numStars - 1;
-    if (i >= 0)
-    {
-        double base = 1.0 - g_78fee0;
-        int offset = i << 4;
-        do
-        {
-            float tmp[3];
-            float* p = sub_50f560(tmp);
-            TextureId* dst = (TextureId*)((char*)this->skyUp + offset);
-            dst->id = *(int*)&p[0];
-            *(float*)((char*)dst + 4) = p[1];
-            *(float*)((char*)dst + 8) = p[2];
-            *(float*)((char*)dst + 12) = 0.0f;
-
-            int r = rand();
-            float f = (float)r;
-            f = (float)(f * base / g_79f2c8 + g_78fee0);
-            f = f * f + (float)g_79f400;
-            this->starAngles[i] = f;
-
-            i--;
-            offset -= 16;
-        } while (i >= 0);
+    star.resize(n);
+    starIntensity.resize(star.size());
+    for (int i = star.size() - 1; i >= 0; --i) {
+        star[i] = Vector4(Vector3::random(), 0);
+        starIntensity[i] = square(uniformRandom()) + .3f;
     }
+}
 
-    this->numStars = value;
 }

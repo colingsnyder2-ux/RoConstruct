@@ -1,10 +1,258 @@
+// from server: 99% by EspClaude
 // from server: 80% by colin
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: openrbx-client App/v8world/World.cpp
+// roc-lib: openrbx-client roc_claude_9e8b2a557237d330.cpp
 
 // Candidate translation unit (score above; library headers required).
+#ifndef UTIL_EVENTS_H
+#define UTIL_EVENTS_H
+
+#include <algorithm>
+#include <vector>
+
+namespace RBX {
+
+class StandardOut;
+
+template <class Source, class Event>
+class Notifier;
+
+// SIZE 0x0c
+struct RaiseRange
+{
+	unsigned int index;   // 0x00
+	unsigned int upper;   // 0x04
+	RaiseRange* previous; // 0x08
+
+	// FUNCTION: WEBSERVICE 0x1000cd10
+	void removeIndex(unsigned int index)
+	{
+		RaiseRange* range = this;
+
+		do {
+			if (range->upper > index) {
+				range->upper--;
+			}
+
+			if (range->index >= index) {
+				range->index--;
+			}
+
+			range = range->previous;
+		} while (range != NULL);
+	}
+};
+
+// SIZE 0x04
+template <class Source, class Event>
+class __declspec(novtable) Listener
+{
+protected:
+	friend class Notifier<Source, Event>;
+
+	virtual void onEvent(const Source* source, Event event) = 0; // vtable+0x00
+	virtual ~Listener() {}                                       // vtable+0x04
+};
+
+// SIZE 0x18
+// 2007-08: World::World stores the Notifier<World,AutoDestroy> base vtable (target 005aa43f) before the final one.
+template <class Source, class Event>
+class Notifier
+{
+public:
+	void addListener(Listener<Source, Event>* listener) const;
+	void removeListener(Listener<Source, Event>* listener) const;
+
+protected:
+	Notifier() : raiseRange(NULL) {}
+
+	virtual ~Notifier() {}                                                    // vtable+0x00
+	virtual void onAddListener(Listener<Source, Event>* listener) const {}    // vtable+0x04
+	virtual void onRemoveListener(Listener<Source, Event>* listener) const {} // vtable+0x08
+
+	bool hasListeners() const { return !listeners.empty(); }
+
+	void raise(Event event, Listener<Source, Event>* listener) const;
+
+	void raise(Event event) const throw();
+
+private:
+	mutable std::vector<Listener<Source, Event>*> listeners; // 0x04
+	mutable RaiseRange* raiseRange;                          // 0x14
+};
+
+// STUB: WEBSERVICE 0x1001acb0
+// RBX::Notifier<RBX::StandardOut,RBX::StandardOutMessage>::addListener
+template <class Source, class Event>
+void Notifier<Source, Event>::addListener(Listener<Source, Event>* listener) const
+{
+	if (std::find(listeners.begin(), listeners.end(), listener) == listeners.end()) {
+		listeners.push_back(listener);
+		onAddListener(listener);
+	}
+}
+
+// FUNCTION: WEBSERVICE 0x1001ad50
+// RBX::Notifier<RBX::StandardOut,RBX::StandardOutMessage>::removeListener
+template <class Source, class Event>
+void Notifier<Source, Event>::removeListener(Listener<Source, Event>* listener) const
+{
+	typename std::vector<Listener<Source, Event>*>::iterator found =
+		std::find(listeners.begin(), listeners.end(), listener);
+
+	if (found != listeners.end()) {
+		onRemoveListener(listener);
+
+		if (raiseRange != NULL) {
+			raiseRange->removeIndex(found - listeners.begin());
+		}
+
+		listeners.erase(found);
+	}
+}
+
+// clang-format off
+// FUNCTION: WEBSERVICE 0x10032240
+// RBX::Notifier<RBX::StandardOut,RBX::StandardOutMessage>::raise
+// FUNCTION: WEBSERVICE 0x100cf390
+// RBX::Notifier<RBX::World,RBX::AutoJoin>::raise
+// FUNCTION: WEBSERVICE 0x100cf450
+// RBX::Notifier<RBX::World,RBX::AutoDestroy>::raise
+// clang-format on
+template <class Source, class Event>
+void Notifier<Source, Event>::raise(Event event, Listener<Source, Event>* listener) const
+{
+	try {
+		listener->onEvent(static_cast<const Source*>(this), event);
+	}
+	catch (std::exception& error) {
+		std::string what(error.what());
+
+		StandardOut::singleton()->print(MESSAGE_WARNING, "Exception caught in onEvent. %s", what.c_str());
+	}
+}
+
+// clang-format off
+// FUNCTION: WEBSERVICE 0x100cf6f0
+// RBX::Notifier<RBX::World,RBX::AutoJoin>::raise
+// FUNCTION: WEBSERVICE 0x100cf790
+// RBX::Notifier<RBX::World,RBX::AutoDestroy>::raise
+// TEMPLATE: WEBSERVICE 0x100485a0
+// RBX::Notifier<RBX::Instance,RBX::ChildAdded>::raise
+// TEMPLATE: WEBSERVICE 0x100486c0
+// RBX::Notifier<RBX::Instance,RBX::ChildRemoved>::raise
+// TEMPLATE: WEBSERVICE 0x10049220
+// RBX::Notifier<RBX::Instance,RBX::ChildAdded>::raise
+// TEMPLATE: WEBSERVICE 0x10049300
+// RBX::Notifier<RBX::Instance,RBX::ChildRemoved>::raise
+// TEMPLATE: WEBSERVICE 0x1006b500
+// RBX::Notifier<RBX::Workspace,RBX::DrawChanged>::raise
+// TEMPLATE: WEBSERVICE 0x1006bc40
+// RBX::Notifier<RBX::Workspace,RBX::DrawChanged>::raise
+// clang-format on
+template <class Source, class Event>
+void Notifier<Source, Event>::raise(Event event) const throw()
+{
+	RaiseRange range;
+
+	range.index = 0;
+	range.upper = listeners.size();
+	range.previous = raiseRange;
+	raiseRange = &range;
+
+	while (range.index < range.upper) {
+		raise(event, listeners[range.index++]);
+	}
+
+	raiseRange = range.previous;
+}
+
+} // namespace RBX
+
+#endif // UTIL_EVENTS_H
+
+#ifndef V8KERNEL_KERNEL_H
+#define V8KERNEL_KERNEL_H
+
+#include "decomp.h"
+#include "util/Profiling.h"
+#include "v8kernel/IStage.h"
+
+#include <G3D/Array.h>
+#include <G3D/Vector3.h>
+#include <boost/scoped_ptr.hpp>
+
+namespace RBX {
+
+class Body;
+class Connector;
+class KernelData;
+class Point;
+
+using G3D::Vector3;
+
+// VTABLE: WEBSERVICE 0x1023c81c
+// SIZE 0x30
+class Kernel : public IStage
+{
+public:
+	Kernel(IStage* upstream);
+
+	// SYNTHETIC: WEBSERVICE 0x100d5bc0
+	// RBX::Kernel::`scalar deleting destructor'
+
+	virtual ~Kernel(); // vtable+0x00
+
+	virtual StageType getStageType() { return KERNEL_STAGE; }
+
+	virtual void stepWorld(int worldStepId, int uiStepId, bool throttling);
+
+	int numBodies() const;
+	int numPoints() const;
+	int numConnectors() const;
+
+	float connectorSpringEnergy() const;
+	float bodyKineticEnergy() const;
+
+	void insertConnector(Connector* connector);
+	void insertConnector2ndPass(Connector* connector);
+	void removeConnector(Connector* connector);
+	void removeConnector2ndPass(Connector* connector);
+
+	Kernel* getKernel();
+
+	Point* newPoint(Body* body, const Vector3& worldPos);
+	void deletePoint(Point* point);
+
+	void insertBody(Body* body);
+	void removeBody(Body* body);
+
+public:
+	void removePoint(Point* point);
+
+private:
+	static int numKernels;
+
+	bool inStepCode;                           // 0x0c
+	KernelData* kernelData;                    // 0x10
+	G3D::Array<Connector*> realTimeConnectors; // 0x14
+	int maxBodies;                             // 0x20
+	int maxPoints;                             // 0x24
+	int maxConnectors;                         // 0x28
+
+	// 2007-08: World::World loads Kernel::profilingKernel from kernel+0x58 (target 005aa65b mov ecx,[eax+0x58]).
+	char pad_2c[0x2c];
+
+public:
+	boost::scoped_ptr<Profiling::CodeProfiler> profilingKernel; // 0x58
+};
+
+} // namespace RBX
+
+#endif // V8KERNEL_KERNEL_H
+
 #include "v8world/World.h"
 
 #include "decomp.h"
@@ -21,6 +269,17 @@
 #include "v8world/SimJobStage.h"
 #include "v8world/SleepStage2.h"
 #include "v8world/SpatialHash.h"
+
+namespace RBX {
+// 2007-08: World::World reaches stage type 4 (COLLISION_STAGE) and loads its profiler from
+// stage+0x20 (target 005aa611 mov ecx,[edi+0x20]); only that member's offset is proven.
+class CollisionStage : public IWorldStage
+{
+public:
+	char pad_10[0x10];
+	boost::scoped_ptr<Profiling::CodeProfiler> profilingCollision; // 0x20
+};
+} // namespace RBX
 
 #include <G3D/System.h>
 #include <G3D/g3dmath.h>
@@ -478,9 +737,8 @@ World::World()
 	profilingBroadphase->parent = profilingWorldStep.get();
 	profilingUiStep->parent = profilingWorldStep.get();
 
+	static_cast<CollisionStage*>(jointStage->findStage(IStage::COLLISION_STAGE))->profilingCollision->parent = profilingWorldStep.get();
 	getSleepStage()->profilingCollision->parent = profilingWorldStep.get();
-	getSleepStage()->profilingWake->parent = profilingWorldStep.get();
-	getSleepStage()->profilingSleep->parent = profilingWorldStep.get();
 
 	getKernel()->profilingKernel->parent = profilingWorldStep.get();
 }

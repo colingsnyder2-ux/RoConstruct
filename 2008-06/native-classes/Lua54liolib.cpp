@@ -1,5 +1,9 @@
 // native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/lua-5.1.4/src /TC
 // 2008-06 native Lua54liolib (inactive): upstream tools/libs/lua-5.1.4/src/liolib.c, verbatim.
+// >>> native-status (generated) -- do not edit >>>
+// Lua54liolib | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 75485ede | roc native-status --write
 /*
 ** $Id: liolib.c,v 2.73.1.3 2008/01/18 17:47:43 roberto Exp $
 ** Standard I/O (and system) library

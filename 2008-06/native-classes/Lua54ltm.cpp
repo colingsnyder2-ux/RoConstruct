@@ -1,5 +1,9 @@
 // native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/lua-5.1.4/src /TC
 // 2008-06 native Lua54ltm (inactive): upstream tools/libs/lua-5.1.4/src/ltm.c, verbatim.
+// >>> native-status (generated) -- do not edit >>>
+// Lua54ltm | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 9778f1a2 | roc native-status --write
 /*
 ** $Id: ltm.c,v 2.8.1.1 2007/12/27 13:02:25 roberto Exp $
 ** Tag methods

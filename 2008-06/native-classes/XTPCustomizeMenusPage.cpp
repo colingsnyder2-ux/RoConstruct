@@ -21,6 +21,10 @@
 /////////////////////////////////////////////////////////////////////////////
 
 
+// >>> native-status (generated) -- do not edit >>>
+// XTPCustomizeMenusPage | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src ab0e3a9c | roc native-status --write
 #include "stdafx.h"
 #include "Resource.h"
 

@@ -3,7 +3,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DVertexProgram | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 878d217d | roc native-status --write
+// <<< native-status | src f1b73698 | roc native-status --write
 #line 1 ".\\glg3dcpp\\VertexProgram.cpp"
 /**
   @file VertexProgram.cpp

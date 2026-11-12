@@ -3,7 +3,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DBinaryOutput | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src b27e0cf5 | roc native-status --write
+// <<< native-status | src dd49123c | roc native-status --write
 #line 1 ".\\G3Dcpp\\BinaryOutput.cpp"
 /**
  @file BinaryOutput.cpp

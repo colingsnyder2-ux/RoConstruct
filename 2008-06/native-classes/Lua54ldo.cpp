@@ -1,5 +1,9 @@
 // native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/lua-5.1.4/src /TC
 // 2008-06 native Lua54ldo (inactive): upstream tools/libs/lua-5.1.4/src/ldo.c, verbatim.
+// >>> native-status (generated) -- do not edit >>>
+// Lua54ldo | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 144a5dbe | roc native-status --write
 /*
 ** $Id: ldo.c,v 2.38.1.3 2008/01/18 22:31:22 roberto Exp $
 ** Stack and Call structure of Lua

@@ -1,8 +1,9 @@
+// from server: 100% by EspClaude
 // from server: 76% by EspClaude
 // from server: 100% by tester
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-lib: rbxgs-net-dll CrashReporter.cpp
+// roc-lib: rbxgs-net-dll roc_claude_0c11fec63a012d18.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "CrashReporter.h"
@@ -98,13 +99,11 @@ LONG CrashReporter::ProcessException(EXCEPTION_POINTERS* ExceptionInfo)
 		eInfo.ExceptionPointers = ExceptionInfo;
 		eInfo.ClientPointers = FALSE;
 
-		LONG result = EXCEPTION_EXECUTE_HANDLER;
-
 		if (!MiniDumpWriteDump(GetCurrentProcess(), GetCurrentProcessId(), file, controls.minidumpType, (ExceptionInfo != NULL ? &eInfo : NULL), NULL, NULL))
-			result = EXCEPTION_CONTINUE_SEARCH;
+			return EXCEPTION_CONTINUE_SEARCH;
 
 		CloseHandle(file);
-		return result;
+		return EXCEPTION_EXECUTE_HANDLER;
 	}
 
 	return EXCEPTION_EXECUTE_HANDLER;

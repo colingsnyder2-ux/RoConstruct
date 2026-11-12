@@ -1,5 +1,9 @@
 // native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/lua-5.1.4/src /TC
 // 2008-06 native Lua54lstate (inactive): upstream tools/libs/lua-5.1.4/src/lstate.c, verbatim.
+// >>> native-status (generated) -- do not edit >>>
+// Lua54lstate | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src a0121170 | roc native-status --write
 /*
 ** $Id: lstate.c,v 2.36.1.2 2008/01/03 15:20:39 roberto Exp $
 ** Global State

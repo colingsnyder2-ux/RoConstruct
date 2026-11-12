@@ -1,10 +1,14 @@
+// from server: 100% by EspClaude
 // from server: 61% by Intel
 // from server: 60% by TrollStein
 // roc-lang: cpp
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: g3d-6.09 GLG3Dcpp/Texture.cpp
+// roc-cl: 50727
+// roc-flags: /O2 /Ob1 /GS /EHsc /MD
+// roc-lib: g3d-6.09 roc_claude_25f9b5df1b0931a9.cpp
 
 // Candidate translation unit (score above; library headers required).
+#define _DLL
+#define _MT
 /**
  @file Texture.cpp
 

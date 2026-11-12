@@ -1,5 +1,9 @@
 // native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/jpeg-6b /TC
 // 2008-06 native Jpegjcmarker (inactive): upstream tools/libs/jpeg-6b/jcmarker.c, verbatim.
+// >>> native-status (generated) -- do not edit >>>
+// Jpegjcmarker | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 73aa52c3 | roc native-status --write
 /*
  * jcmarker.c
  *

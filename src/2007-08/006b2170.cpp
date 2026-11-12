@@ -1,9 +1,10 @@
+// from server: 100% by EspClaude
 // from server: 83% by EspClaude
 // from server: 100% by tester
 // roc-lang: cpp
 // roc-cl: 30729
 // roc-flags: /O2 /MD /GS /EHsc
-// roc-lib: xtp-11.2.2-shared-mfc Source/Ribbon/XTPRibbonTheme.cpp
+// roc-lib: xtp-11.2.2-shared-mfc roc_claude_b652bf863aac1254.cpp
 
 // Candidate translation unit (score above; library headers required).
 // XTPRibbonTheme.cpp: implementation of the CXTPRibbonTheme class.
@@ -47,10 +48,10 @@
 #include "CommandBars/XTPStatusBar.h"
 #include "CommandBars/XTPCommandBars.h"
 
-#include "XTPRibbonGroup.h"
-#include "XTPRibbonBar.h"
-#include "XTPRibbonTheme.h"
-#include "XTPRibbonTab.h"
+#include "Ribbon/XTPRibbonGroup.h"
+#include "Ribbon/XTPRibbonBar.h"
+#include "Ribbon/XTPRibbonTheme.h"
+#include "Ribbon/XTPRibbonTab.h"
 
 
 #ifdef _DEBUG
@@ -1791,8 +1792,6 @@ void CXTPRibbonTheme::SetRoundRectRegion(CWnd* pWnd)
 	int nSizeData = sizeof(RGNDATAHEADER) + sizeof(rgn);
 
 	RGNDATA* pRgnData = (RGNDATA*)malloc(nSizeData);
-	if (!pRgnData)
-		return;
 	MEMCPY_S(&pRgnData->Buffer, (void*)&rgn, sizeof(rgn));
 
 	pRgnData->rdh.dwSize = sizeof(RGNDATAHEADER);

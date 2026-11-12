@@ -1,39 +1,23 @@
+// from server: 70% by EspClaude
 // from server: 56% by colin
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: boost-1.34.1 libs/regex/src/instances.cpp
+// roc-lib: boost-1.34.1 roc_claude_02ac2c519b299c11.cpp
 
 // Candidate translation unit (score above; library headers required).
-/*
- *
- * Copyright (c) 1998-2002
- * John Maddock
- *
- * Use, modification and distribution are subject to the 
- * Boost Software License, Version 1.0. (See accompanying file 
- * LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
- *
- */
-
- /*
-  *   LOCATION:    see http://www.boost.org for most recent version.
-  *   FILE:        instances.cpp
-  *   VERSION:     see <boost/version.hpp>
-  *   DESCRIPTION: regex narrow character template instances.
-  */
-
-#define BOOST_REGEX_SOURCE
-
-#include <boost/regex/config.hpp>
-
-#if !defined(BOOST_REGEX_NO_EXTERNAL_TEMPLATES)
-#define BOOST_REGEX_NARROW_INSTANTIATE
-
-#ifdef __BORLANDC__
-#pragma hrdstop
-#endif
-
-#include <boost/regex.hpp>
-
-#endif
+// Codegen analog of an IMPLEMENT_DYNCREATE CreateObject: `return new CPatchedControlComboBox;`
+// Object size 0x148 is the size the target passes to operator new.
+class CObject;
+class CPatchedControlComboBox
+{
+public:
+    CPatchedControlComboBox();
+    static CObject* __stdcall CreateObject();
+private:
+    char storage_[0x148];
+};
+CObject* __stdcall CPatchedControlComboBox::CreateObject()
+{
+    return (CObject*)new CPatchedControlComboBox;
+}

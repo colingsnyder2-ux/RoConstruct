@@ -1,25 +1,41 @@
-// from server: 51% by colin
-struct ICreator {
-    virtual void dummy0();
-    virtual void dummy1();
+// from server: 92% by EspClaude
+// boost 1.34 shared_count(P p, D d) with an empty deleter: new sp_counted_impl_pd (0x14 bytes)
+namespace RBX { class ScriptContext; }
+
+class sp_counted_base {
+    long use_count_;
+    long weak_count_;
+public:
+    sp_counted_base() : use_count_(1), weak_count_(1) {}
+    virtual ~sp_counted_base() {}
+    virtual void dispose() = 0;
+    virtual void destroy() { delete this; }
+    virtual void* get_deleter(int const& ti) = 0;
 };
 
-struct Creator : ICreator {
-    int field0;
-    Creator(int arg0, int arg1);
+struct null_deleter { void operator()(void const*) const; };
+
+template<class P, class D> class sp_counted_impl_pd : public sp_counted_base {
+    P ptr;
+    D del;
+public:
+    sp_counted_impl_pd(P p, D d) : ptr(p), del(d) {}
+    virtual void dispose() { del(ptr); }
+    virtual void* get_deleter(int const& ti) { return 0; }
 };
 
-extern "C" void* __cdecl sub_62FEF6(unsigned int size);
-
-Creator::Creator(int arg0, int arg1)
-{
-    field0 = 0;
-    void* p = sub_62FEF6(0x14);
-    if (p) {
-        *(int*)((char*)p + 4) = 1;
-        *(int*)((char*)p + 8) = 1;
-        *(int*)p = 0x7850e8;
-        *(int*)((char*)p + 0xc) = arg0;
+class shared_count {
+    sp_counted_base* pi_;
+public:
+    template<class P, class D> shared_count(P p, D d) : pi_(0)
+    {
+        try {
+            pi_ = new sp_counted_impl_pd<P, D>(p, d);
+        } catch (...) {
+            d(p);
+            throw;
+        }
     }
-    field0 = (int)p;
-}
+};
+
+template shared_count::shared_count(RBX::ScriptContext*, null_deleter);

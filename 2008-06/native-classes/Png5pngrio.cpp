@@ -1,6 +1,10 @@
 // native-flags: /O2 /GS- /MD /I{headers}/../../../tools/libs/zlib-1.2.3 /I{headers}/../../../tools/libs/libpng-1.2.5 /TC
 // 2008-06 native Png5pngrio (inactive): upstream tools/libs/libpng-1.2.5/pngrio.c, verbatim.
 
+// >>> native-status (generated) -- do not edit >>>
+// Png5pngrio | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 1bc1aa3b | roc native-status --write
 /* pngrio.c - functions for data input
  *
  * libpng 1.2.5 - October 3, 2002

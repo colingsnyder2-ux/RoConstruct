@@ -3,7 +3,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DGImage_bayer | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 813759d2 | roc native-status --write
+// <<< native-status | src 345aa0c5 | roc native-status --write
 #line 1 ".\\G3Dcpp\\GImage_bayer.cpp"
 /**
   @file GImage_bayer.cpp

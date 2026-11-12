@@ -1,8 +1,9 @@
+// from server: 100% by EspClaude
 // from server: 76% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-lib: openrbx-client-dll roc_espeon_selectioncount_27ab5239b9e30f66.cpp
+// roc-lib: openrbx-client-dll roc_claude_5289dad562d585da.cpp
 
 // Candidate translation unit (score above; library headers required).
 
@@ -38,13 +39,13 @@ struct Base {
 };
 
 struct BaseTable {
-    unsigned char padding[0x150];
+    unsigned char padding[0x148];
     Selection* (__thiscall* selection)(Base*);
     Shared (Base::*shared)();
 };
 
 struct Transaction {
-    unsigned char storage[12];
+    void* storage[3];
     Transaction(Shared);
     ~Transaction();
 };
@@ -66,7 +67,7 @@ inline FlagGuard::~FlagGuard() {
 }
 
 struct CSelectionTreeCtrl {
-    unsigned char padding[0x8d];
+    unsigned char padding[0x75];
     unsigned char updating;
     unsigned char selecting;
     void forward(int, void*);

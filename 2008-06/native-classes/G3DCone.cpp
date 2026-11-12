@@ -3,7 +3,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DCone | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 7a8aaa71 | roc native-status --write
+// <<< native-status | src 97d52b98 | roc native-status --write
 #line 1 ".\\G3Dcpp\\Cone.cpp"
 /**
  @file Cone.cpp

@@ -21,6 +21,10 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 
+// >>> native-status (generated) -- do not edit >>>
+// XTPCalendarEventLabel | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 12c37bbc | roc native-status --write
 #include "stdafx.h"
 #include "resource.h"
 

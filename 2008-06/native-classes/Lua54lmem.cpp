@@ -1,5 +1,9 @@
 // native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/lua-5.1.4/src /TC
 // 2008-06 native Lua54lmem (inactive): upstream tools/libs/lua-5.1.4/src/lmem.c, verbatim.
+// >>> native-status (generated) -- do not edit >>>
+// Lua54lmem | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 462cbccc | roc native-status --write
 /*
 ** $Id: lmem.c,v 1.70.1.1 2007/12/27 13:02:25 roberto Exp $
 ** Interface to Memory Manager

@@ -1,15 +1,16 @@
+// from server: 100% by EspClaude
 // from server: 80% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-lib: openrbx-client-dll roc_espeon_treevirtual_09a06d43df0bafe5.cpp
+// roc-lib: openrbx-client-dll roc_claude_98c245c4d1e46754.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <boost/shared_ptr.hpp>
 typedef boost::shared_ptr<void> Owner;
 struct Pair : Owner {};
 struct Lock {
-    unsigned char storage[12];
+    void* storage[3];
 
     Lock(Owner value);
     ~Lock();
@@ -134,11 +135,9 @@ struct Tree {
     virtual void slot79();
     virtual void slot80();
     virtual void slot81();
-    virtual void slot82();
-    virtual void slot83();
     virtual Selection* selection();
     virtual Pair context();
-    unsigned char padding[222];
+    unsigned char padding[0xc6];
     unsigned char changing;
 
     void f(Notification* notification, unsigned char select);

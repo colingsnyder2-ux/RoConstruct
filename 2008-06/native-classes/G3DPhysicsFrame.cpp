@@ -3,7 +3,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DPhysicsFrame | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 3e8a5fd2 | roc native-status --write
+// <<< native-status | src 59e6d2c8 | roc native-status --write
 #line 1 ".\\G3Dcpp\\PhysicsFrame.cpp"
 /**
  @file PhysicsFrame.cpp

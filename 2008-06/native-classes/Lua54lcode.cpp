@@ -1,5 +1,9 @@
 // native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/lua-5.1.4/src /TC
 // 2008-06 native Lua54lcode (inactive): upstream tools/libs/lua-5.1.4/src/lcode.c, verbatim.
+// >>> native-status (generated) -- do not edit >>>
+// Lua54lcode | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 7782e2cf | roc native-status --write
 /*
 ** $Id: lcode.c,v 2.25.1.3 2007/12/28 15:32:23 roberto Exp $
 ** Code generator for Lua

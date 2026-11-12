@@ -1,167 +1,132 @@
+// from server: 100% by EspClaude
 // from server: 53% by colin
 // roc 2007-08 0044bcb0  unit: CRobloxControlColorSelector  size: 623 bytes
 
-extern "C" __declspec(dllimport) void __stdcall InflateRect(void*, int, int);
-extern "C" __declspec(dllimport) void __cdecl _invalid_parameter_noinfo();
+// CRobloxControlColorSelector::Draw(CDC*) (2008-06 native analog: CRobloxControlColorSelector.cpp).
+// 2007-08 offsets from target bytes: m_bEnabled +0x9c, m_pAction +0x158, m_rcControl.left/top
+// +0xc0/+0xc4, m_nSelected +0x168, m_clr +0x174; GetPressed vtable +0x78; paint-manager
+// DrawRectangle vtable +0x84; palette element 12 bytes (size() divides by 12).
+#include <vector>
 
-struct CRobloxControlColorSelector {
-    void method(int);
+typedef unsigned long COLORREF;
+typedef int BOOL;
+
+struct RECT { long left, top, right, bottom; };
+struct POINT { long x, y; };
+struct SIZE { long cx, cy; };
+struct CPoint : POINT { CPoint(int initX, int initY) { x = initX; y = initY; } };
+struct CSize : SIZE { CSize(int initCX, int initCY) { cx = initCX; cy = initCY; } };
+extern "C" __declspec(dllimport) int __stdcall InflateRect(RECT*, int, int);
+
+struct CRect : RECT {
+    CRect(int l, int t, int r, int b) { left = l; top = t; right = r; bottom = b; }
+    void DeflateRect(int x, int y) { ::InflateRect(this, -x, -y); }
+    CRect(POINT point, SIZE size)
+    {
+        right = (left = point.x) + size.cx;
+        bottom = (top = point.y) + size.cy;
+    }
+    operator RECT*() { return this; }
 };
 
-extern int* g_8bbebc;
-extern int* g_8bbec0;
+class CDC {
+public:
+    void FillSolidRect(const RECT* lpRect, COLORREF clr);
+    void Draw3dRect(const RECT* lpRect, COLORREF clrTopLeft, COLORREF clrBottomRight);
+};
 
-int __stdcall sub_63a000();
-int __stdcall sub_63a580();
-int __stdcall sub_6308b0(int*, int);
-int __stdcall sub_668f70();
-int __stdcall sub_668770(int, int);
-int __stdcall sub_6308aa(int*, int, int);
+class CXTPColorManager {
+public:
+    COLORREF GetColor(int nIndex);
+};
+CXTPColorManager* XTPColorManager();
+inline COLORREF GetXtremeColor(int nIndex) { CXTPColorManager* pManager = XTPColorManager(); return pManager->GetColor(nIndex); }
 
-void CRobloxControlColorSelector::method(int a2)
+class CXTPPaintManager {
+public:
+    virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c();
+    virtual void v10(); virtual void v14(); virtual void v18(); virtual void v1c();
+    virtual void v20(); virtual void v24(); virtual void v28(); virtual void v2c();
+    virtual void v30(); virtual void v34(); virtual void v38(); virtual void v3c();
+    virtual void v40(); virtual void v44(); virtual void v48(); virtual void v4c();
+    virtual void v50(); virtual void v54(); virtual void v58(); virtual void v5c();
+    virtual void v60(); virtual void v64(); virtual void v68(); virtual void v6c();
+    virtual void v70(); virtual void v74(); virtual void v78(); virtual void v7c();
+    virtual void v80();
+    virtual void DrawRectangle(CDC* pDC, CRect rc, BOOL bSelected, BOOL bPressed, BOOL bEnabled,
+                               BOOL bChecked, BOOL bPopuped, int barType, int barPosition); // +0x84
+};
+
+class CXTPControlAction {
+public:
+    BOOL GetEnabled() const;
+};
+
+class CXTPControl {
+public:
+    virtual void v00(); virtual void v04(); virtual void v08(); virtual void v0c();
+    virtual void v10(); virtual void v14(); virtual void v18(); virtual void v1c();
+    virtual void v20(); virtual void v24(); virtual void v28(); virtual void v2c();
+    virtual void v30(); virtual void v34(); virtual void v38(); virtual void v3c();
+    virtual void v40(); virtual void v44(); virtual void v48(); virtual void v4c();
+    virtual void v50(); virtual void v54(); virtual void v58(); virtual void v5c();
+    virtual void v60(); virtual void v64(); virtual void v68(); virtual void v6c();
+    virtual void v70(); virtual void v74();
+    virtual BOOL GetPressed() const;                                   // +0x78
+
+    CXTPPaintManager* GetPaintManager() const;
+    BOOL GetEnabled() const
+    {
+        if (m_bEnabled == -1 && m_pAction)
+            return m_pAction->GetEnabled();
+        return m_bEnabled;
+    }
+
+    char pad04[0x9c - 4];
+    BOOL m_bEnabled;                                                   // +0x9c
+    char padA0[0xc0 - 0xa0];
+    RECT m_rcControl;                                                  // +0xc0
+    char padD0[0x158 - 0xd0];
+    CXTPControlAction* m_pAction;                                      // +0x158
+    char pad15c[0x168 - 0x15c];
+};
+
+class CRobloxControlColorSelector : public CXTPControl {
+public:
+    struct CColorInfo {
+        COLORREF clrButton;                                            // +0
+        char rest[12 - 4];
+    };
+
+    void Draw(CDC* pDC);
+    CRect GetRect(int nIndex) const
+    {
+        unsigned int nColumns = 8;
+        int x = m_rcControl.left + ((unsigned)nIndex % nColumns) * 32 + 2;
+        int y = m_rcControl.top + ((unsigned)nIndex / nColumns) * 32 + 2;
+        return CRect(CPoint(x, y), CSize(32, 32));
+    }
+
+    static std::vector<CColorInfo> colors;
+
+    int m_nSelected;                                                   // +0x168
+    char pad16c[0x174 - 0x16c];
+    COLORREF m_clr;                                                    // +0x174
+};
+
+void CRobloxControlColorSelector::Draw(CDC* pDC)
 {
-    int count;
-    int i;
-    int idx;
-    int* base;
-    int* end;
-    int* p;
-    int v;
-    int flag;
-    int r;
-    int t1, t2, t3, t4;
-    int rect[4];
-
-    base = g_8bbebc;
-    end = g_8bbec0;
-    i = 0;
-    if (base == 0) {
-        count = 0;
-    } else {
-        count = (int)((char*)end - (char*)base) / 12;
+    int nCount = (int)colors.size();
+    for (int i = 0; i < nCount; i++) {
+        CRect rcButton = GetRect(i);
+        if (i == m_nSelected || colors[i].clrButton == m_clr) {
+            BOOL bPressed = GetPressed() && i == m_nSelected;
+            GetPaintManager()->DrawRectangle(pDC, rcButton, i == m_nSelected, bPressed, GetEnabled(),
+                                             colors[i].clrButton == m_clr, 0, 1, 5);
+        }
+        rcButton.DeflateRect(3, 3);
+        if (GetEnabled())
+            pDC->FillSolidRect(rcButton, colors[i].clrButton);
+        pDC->Draw3dRect(rcButton, GetXtremeColor(16), GetXtremeColor(16));
     }
-    if (count <= 0) goto done;
-
-    idx = 0;
-    for (;;) {
-        base = g_8bbebc;
-        end = g_8bbec0;
-
-        {
-            int q = i / 8;
-            int rem = i % 8;
-            int x = *(int*)((char*)this + 0xc0) + (rem << 5) + 2;
-            int y = *(int*)((char*)this + 0xc4) + (q << 5) + 2;
-            t1 = x;
-            t2 = y;
-            t3 = x + 0x20;
-            t4 = y + 0x20;
-        }
-
-        if (i == *(int*)((char*)this + 0x168)) goto skip_check;
-
-        if (base == 0) {
-            _invalid_parameter_noinfo();
-            base = g_8bbebc;
-        } else {
-            int n = (int)((char*)end - (char*)base) / 12;
-            if ((unsigned)i >= (unsigned)n) {
-                _invalid_parameter_noinfo();
-                base = g_8bbebc;
-            }
-        }
-        if (*(int*)((char*)base + idx) != *(int*)((char*)this + 0x174)) goto next;
-
-    skip_check:
-        {
-            int (*fn)(void*) = *(int(**)(void*))this;
-            fn = (int(*)(void*))*(int*)((char*)fn + 0x78);
-            r = fn(this);
-            if (r != 0) {
-                if (i == *(int*)((char*)this + 0x168))
-                    flag = 1;
-                else
-                    flag = 0;
-            } else {
-                flag = 0;
-            }
-        }
-
-        p = (int*)sub_63a000();
-
-        {
-            int* b2 = g_8bbebc;
-            if (b2 == 0) {
-                _invalid_parameter_noinfo();
-                b2 = g_8bbebc;
-            } else {
-                int n = (int)((char*)g_8bbec0 - (char*)b2) / 12;
-                if ((unsigned)i >= (unsigned)n) {
-                    _invalid_parameter_noinfo();
-                    b2 = g_8bbebc;
-                }
-            }
-            b2 = (int*)((char*)b2 + idx);
-            v = *(int*)((char*)this + 0x9c);
-            if (v == -1) {
-                int* q = *(int**)((char*)this + 0x158);
-                if (q != 0) {
-                    sub_63a580();
-                }
-            }
-            {
-                int c = *b2;
-                int eq = (c == *(int*)((char*)this + 0x174)) ? 1 : 0;
-                int eq2 = (i == *(int*)((char*)this + 0x168)) ? 1 : 0;
-                int (*fn2)(void*, int, int, int, int, int, int, int, int, int, int, int, int, int) =
-                    (int(*)(void*, int, int, int, int, int, int, int, int, int, int, int, int, int))
-                    *(int*)((char*)*(int**)p + 0x84);
-                fn2(p, eq2, v, eq, 0, 1, 5, t1, t2, t3, t4, a2, 0, 0);
-            }
-        }
-
-    next:
-        InflateRect(rect, -3, -3);
-        {
-            int v2 = *(int*)((char*)this + 0x9c);
-            if (v2 == -1) {
-                int* q = *(int**)((char*)this + 0x158);
-                if (q != 0) {
-                    sub_63a580();
-                }
-            }
-            if (v2 != 0) {
-                int* b3 = g_8bbebc;
-                if (b3 == 0) {
-                    _invalid_parameter_noinfo();
-                    b3 = g_8bbebc;
-                } else {
-                    int n = (int)((char*)g_8bbec0 - (char*)b3) / 12;
-                    if ((unsigned)i >= (unsigned)n) {
-                        _invalid_parameter_noinfo();
-                        b3 = g_8bbebc;
-                    }
-                }
-                {
-                    int val = *(int*)((char*)b3 + idx);
-                    sub_6308b0(rect, val);
-                }
-            }
-        }
-        {
-            int a = sub_668f70();
-            int b = sub_668770(a, 0x10);
-            int c = sub_668f70();
-            int d = sub_668770(c, 0x10);
-            sub_6308aa(rect, d, b);
-        }
-
-        idx += 0xc;
-        i++;
-        if (i < count) continue;
-        break;
-    }
-
-done:
-    return;
 }

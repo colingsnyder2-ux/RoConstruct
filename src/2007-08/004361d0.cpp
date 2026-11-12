@@ -1,8 +1,9 @@
+// from server: 86% by EspClaude
 // from server: 75% by EspClaude
 // from server: 100% by user
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-lib: openrbx-client-dll roc_espeon_declarationaccess_98f9113324c95267.cpp
+// roc-lib: openrbx-client-dll roc_claude_0097c2c173ad5e6a.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <string>
@@ -21,7 +22,7 @@ struct Name {
 struct Node {
     int unused;
     Name* name;
-    char padding[0x9c];
+    char padding[0x6c];
     std::vector<Node*> children;
 };
 
@@ -40,7 +41,7 @@ typedef boost::shared_ptr<Manager> Shared;
 Shared __cdecl getManager();
 
 struct Declaration {
-    char padding[0x130];
+    char padding[0xe8];
     unsigned char visible;
     unsigned char restricted;
     unsigned char special;
@@ -72,15 +73,8 @@ void CDeclarationView::func(Node* node) {
     }
 
     bool show = true;
-    if (declaration) {
-        Settings* settings = getSettings();
-        if (declaration->restricted && !settings->allowRestricted)
-            show = false;
-        else if (declaration->special && !settings->allowSpecial)
-            show = false;
-        else if (!declaration->visible)
-            show = false;
-    }
+    if (declaration && !declaration->visible)
+        show = false;
 
     if (show) {
         Name* n = node->name;

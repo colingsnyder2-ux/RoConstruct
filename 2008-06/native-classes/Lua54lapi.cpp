@@ -1,5 +1,9 @@
 // native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/lua-5.1.4/src /TC
 // 2008-06 native Lua54lapi (inactive): upstream tools/libs/lua-5.1.4/src/lapi.c, verbatim.
+// >>> native-status (generated) -- do not edit >>>
+// Lua54lapi | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src cb740c14 | roc native-status --write
 /*
 ** $Id: lapi.c,v 2.55.1.5 2008/07/04 18:41:18 roberto Exp $
 ** Lua API

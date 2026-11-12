@@ -1,5 +1,9 @@
 // native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/jpeg-6b /TC
 // 2008-06 native Jpegjmemmgr (inactive): upstream tools/libs/jpeg-6b/jmemmgr.c, verbatim.
+// >>> native-status (generated) -- do not edit >>>
+// Jpegjmemmgr | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 9de3b487 | roc native-status --write
 /*
  * jmemmgr.c
  *

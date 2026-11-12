@@ -1,9 +1,10 @@
+// from server: 97% by EspClaude
 // from server: 88% by EspClaude
 // from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll roc_espclaude_ad6e4c73030fd9ac.cpp
+// roc-lib: rbxgs-dll roc_claude_74fee805c6981dfe.cpp
 
 // Candidate translation unit (score above; library headers required).
 // from server: 73% by king_originala
@@ -33,9 +34,10 @@ enum NormalId{NORM_X,NORM_Y,NORM_Z,NORM_X_NEG,NORM_Y_NEG,NORM_Z_NEG,NORM_UNDEFIN
 struct Extents {G3D::Vector3 low,high;Extents(const G3D::Vector3&a,const G3D::Vector3&b):low(a),high(b){}const G3D::Vector3&min()const{return low;}const G3D::Vector3&max()const{return high;}G3D::Plane getPlane(NormalId)const;};
 class Face {G3D::Vector3 c0,c1,c2,c3;public:Face():c0(),c1(),c2(),c3(){}const G3D::Vector3&operator[](int i)const;G3D::Vector3&operator[](int i);};
 struct Geometry {virtual ~Geometry();G3D::Vector3 gridSize;};
+struct Body {char unobserved[0x84];G3D::CoordinateFrame position;void updatePV()const;const G3D::CoordinateFrame&getCoordinateFrame()const{updatePV();return position;}};
 struct Primitive {
- char unobserved[0x9c];Geometry*geometry;
- const G3D::CoordinateFrame&getCoordinateFrame()const;Face getFaceInWorld(NormalId);void setCoordinateFrame(const G3D::CoordinateFrame&);
+ char unobserved[0x64];Body*body;char unobserved2[0x9c-0x68];Geometry*geometry;
+ const G3D::CoordinateFrame&getCoordinateFrame()const{return body->getCoordinateFrame();}Face getFaceInWorld(NormalId);void setCoordinateFrame(const G3D::CoordinateFrame&);
  const G3D::Vector3&getGridSize()const{return geometry->gridSize;}
  Extents getExtentsLocal()const{G3D::Vector3 half=getGridSize()*.5f;return Extents(-half,half);}
 };

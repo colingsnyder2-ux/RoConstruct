@@ -1,37 +1,17 @@
-// from server: 58% by tajop
-// roc 2007-08 004f34e0  unit: boost::bad_lexical_cast  size: 215 bytes
-// Make this compile to the exact bytes below, then: roc check 2007-08 004f34e0
+// from server: 59% by EspClaude
+// roc 2007-08 004f34e0  size: 215 bytes
+// target (abridged): SEH + /GS frame; std::string name (dllimport ctor 0x77e6a4);
+// temp std::string(0x79f680 "HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\"); bool 0x50a7f0(temp, name) cdecl; ~temp;
+// ok ? copy(name) : string(0x79f660 "Could not determine CPU name"); ~name; return by value.
+#include <string>
 
-extern "C" {
-    void __stdcall sub_77e6a4(void*);
-    void __stdcall sub_77e698(void*, const char*);
-    void __stdcall sub_77e69c(void*, void*);
-    void __stdcall sub_77e6ac(void*);
-    int __cdecl sub_50a7f0(void*, void*);
-    void __cdecl sub_630a1e(void);
-}
+bool readCpuName(const std::string& key, std::string& value);
 
-struct String {
-    void* data[8];
-    String();
-    String(const String&);
-    String(const char*);
-    ~String();
-};
-
-struct CpuName {
-    String name;
-    String* __cdecl get(String* result);
-};
-
-String* CpuName::get(String* result) {
-    String key;
-    String temp;
-    int ok = sub_50a7f0(&key, &temp);
-    if (ok) {
-        sub_77e69c(result, &temp);
-    } else {
-        sub_77e698(result, "Could not determine CPU name");
-    }
-    return result;
+std::string getCpuName()
+{
+    std::string name;
+    bool ok = readCpuName(std::string("HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\"), name);
+    if (ok)
+        return name;
+    return "Could not determine CPU name";
 }

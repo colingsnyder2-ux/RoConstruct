@@ -1,110 +1,94 @@
+// from server: 100% by EspClaude
 // from server: 59% by colin
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/Seat.cpp
+// roc-lib: rbxgs roc_claude_b4a10b5192c82067.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "v8datamodel/Seat.h"
-#include "v8datamodel/PartInstance.h"
-#include "v8datamodel/JointInstance.h"
-#include "v8datamodel/Workspace.h"
-#include "humanoid/Humanoid.h"
-#include "Network/Players.h"
-
+// 2007-08 0x58bad0 Stats::TypedStatsItem<unsigned int>::TypedStatsItem(const unsigned int*):
+// self-contained codegen analog. Target-proven layout: the derived vptrs are written at
+// +0x00,+0x04,+0x10,+0x14,+0x2c,+0x44,+0x5c,+0x74,+0x8c (subobject sizes follow from them),
+// Item() is called out of line, the function member starts at +0x110 and is three zeroed
+// words (boost 1.33 function: manager, functor, invoker) followed by an out-of-line
+// assign_to(bind_t) taking the 8-byte functor {&deref, v}; deref (0x5b9940) returns its argument.
+#include <boost/bind.hpp>
 namespace RBX
 {
-	char* sSeat = "Seat";
-
-	Seat::Seat()
-		: sleepTime(0.0f)
+	namespace Stats
 	{
-		setName("Seat");
-	}
+		struct Sub00 { virtual void s00(); };
+		struct Sub04 { virtual void s04(); int pad[2]; };
+		struct Sub10 { virtual void s10(); };
+		struct Sub14 { virtual void s14(); int pad[5]; };
+		struct Sub2c { virtual void s2c(); int pad[5]; };
+		struct Sub44 { virtual void s44(); int pad[5]; };
+		struct Sub5c { virtual void s5c(); int pad[5]; };
+		struct Sub74 { virtual void s74(); int pad[5]; };
+		struct Sub8c { virtual void s8c(); int pad[(0x110 - 0x8c - 4) / 4]; };
 
-	void Seat::seatCharacter(Humanoid* h)
-	{
-		weld = Creatable::create<Weld>();
-
-		PartInstance* torso = h->getTorso();
-		RBXASSERT(torso);
-
-		const G3D::CoordinateFrame& unused = torso->getCoordinateFrame();
-
-		weld->setName("SeatWeld");
-		weld->setPart0(this);
-		weld->setPart1(torso);
-
-		G3D::CoordinateFrame C0;
-		C0.lookAt(G3D::Vector3(0.0f, -1.0f, 0.0f), G3D::Vector3(0.0f, 0.0f, -1.0f));
-
-		C0.translation = G3D::Vector3(0.0f, 3.0f, 0.0f);
-
-		G3D::CoordinateFrame C1;
-		C1.lookAt(G3D::Vector3(0.0f, -1.0f, 0.0f), G3D::Vector3(0.0f, 0.0f, -1.0f));
-
-		C1.translation = G3D::Vector3(0.0f, 0.6f, 0.0f);
-
-		weld->setC0(C0);
-		weld->setC1(C1);
-		weld->setParent(this);
-	}
-
-	void Seat::unseatCharacter()
-	{
-		sleepTime = G3D::System::getLocalTime();
-
-		if (weld)
+		class Item : public Sub00, public Sub04, public Sub10, public Sub14, public Sub2c,
+					 public Sub44, public Sub5c, public Sub74, public Sub8c
 		{
-			weld->setParent(NULL);
-			weld.reset();
-		}
-	}
+		protected:
+			virtual void update();
+		public:
+			Item();
+			virtual ~Item();
+		};
 
-	void Seat::onEvent_humanoidJumped(bool active)
-	{
-		unseatCharacter();
-		humanoidJumped.disconnect();
-	}
-
-	void Seat::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
-	{
-		Instance::onServiceProvider(oldProvider, newProvider);
-
-		if (!oldProvider)
+		class function_base
 		{
-			seatTouched = PartInstance::event_Touched.connect(this, boost::bind(&Seat::onEvent_seatTouched, this, _1));
-		}
-
-		if (!newProvider)
-		{
-			seatTouched.disconnect();
-		}
-	}
-
-	bool Seat::charSeated() // this is a guess
-	{
-		return weld && weld->getPart0() && weld->getPart1() && Workspace::getWorkspaceIfInWorkspace(weld.get());
-	}
-
-	void Seat::onEvent_seatTouched(boost::shared_ptr<Instance> other)
-	{
-		if (charSeated() || G3D::System::getLocalTime() - sleepTime < 3.0f)
-			return;
-
-		RBXASSERT(Network::Players::backendProcessing(this, true));
-
-		if (Instance* otherParent = other->getParent())
-		{
-			if (Humanoid* humanoid = otherParent->findFirstChildOfType<Humanoid>())
+		public:
+			function_base() : manager(0)
 			{
-				if (humanoid->getTorso() && humanoid->canSit())
-				{
-					humanoid->setSit(true);
-					seatCharacter(humanoid);
-					humanoidJumped = Humanoid::event_Jumping.connect(humanoid, boost::bind(&Seat::onEvent_humanoidJumped, this, _1));
-				}
+				functor = 0;
 			}
+			void* manager;
+			void* functor;
+		};
+
+		template<typename R>
+		class function0 : public function_base
+		{
+			void* invoker;
+		public:
+			template<typename Functor>
+			function0(Functor f)
+				: function_base(), invoker(0)
+			{
+				this->assign_to(f);
+			}
+			~function0();
+			template<typename Functor>
+			void assign_to(Functor f);
+		};
+
+		template<typename T>
+		class TypedStatsItem : public Item
+		{
+		protected:
+			const function0<T> func;
+		public:
+			TypedStatsItem(const T*);
+			virtual void update();
+		private:
+			static const T& deref(const T*);
+		};
+
+		template<typename T>
+		const T& TypedStatsItem<T>::deref(const T* v)
+		{
+			return *v;
 		}
+
+		template<typename T>
+		TypedStatsItem<T>::TypedStatsItem(const T* v)
+			: Item(),
+			  func(boost::bind(&TypedStatsItem<T>::deref, v))
+		{
+		}
+
+		template TypedStatsItem<unsigned int>::TypedStatsItem(const unsigned int*);
 	}
 }

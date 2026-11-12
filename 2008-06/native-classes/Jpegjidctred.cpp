@@ -1,5 +1,9 @@
 // native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/jpeg-6b /TC
 // 2008-06 native Jpegjidctred (inactive): upstream tools/libs/jpeg-6b/jidctred.c, verbatim.
+// >>> native-status (generated) -- do not edit >>>
+// Jpegjidctred | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src f6b8ca94 | roc native-status --write
 /*
  * jidctred.c
  *

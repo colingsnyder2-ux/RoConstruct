@@ -1,11 +1,13 @@
+// from server: 77% by EspClaude
 // from server: 74% by EspClaude
 // from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: xtp-11.2.2-shared-mfc roc_espclaude_8bcf05f5c10b4acd.cpp
+// roc-lib: xtp-11.2.2-shared-mfc roc_claude_ff8f47b75098c9f3.cpp
 
 // Candidate translation unit (score above; library headers required).
+#define _SECURE_SCL 0
 #ifndef _CPPUNWIND
 #define _CPPUNWIND 1
 #endif
@@ -16,7 +18,10 @@
 #include <XTToolkitPro.h>
 #include <map>
 #include <set>
-#include <intrin.h>
+extern "C" long __cdecl _InterlockedIncrement(long volatile*);
+extern "C" long __cdecl _InterlockedDecrement(long volatile*);
+#pragma intrinsic(_InterlockedIncrement)
+#pragma intrinsic(_InterlockedDecrement)
 #include <typeinfo>
 #include <stdexcept>
 namespace boost {namespace detail {
@@ -196,7 +201,7 @@ public:
 
 #include <string>
 extern int __cdecl nativeTreeImage(const RBX::Reflection::ClassDescriptor*);
-inline const std::string& nativeName(RBX::Instance* i) { return *reinterpret_cast<const std::string*>(reinterpret_cast<char*>(i)+0x110); }
+inline const std::string& nativeName(RBX::Instance* i) { return *reinterpret_cast<const std::string*>(reinterpret_cast<char*>(i)+0xc8); }
 HTREEITEM CRobloxTreeCtrlNode::insertItem()
 {
  TVINSERTSTRUCT tvis;

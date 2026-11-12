@@ -1,10 +1,12 @@
+// from server: 100% by EspClaude
 // from server: 80% by EspClaude
 // from server: 100% by tester
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-lib: g3d-6.09 GLG3Dcpp/Shader.cpp
+// roc-lib: g3d-6.09 roc_claude_a07ab72f7fb48ef4.cpp
 
 // Candidate translation unit (score above; library headers required).
+#line 1 ".\\glg3dcpp\\Shader.cpp"
 /**
  @file Shader.cpp
  
@@ -33,7 +35,7 @@ bool Shader::ok() const {
 }
 
 
-bool Shader::supportsPixelShaders() {
+__declspec(noinline) bool Shader::supportsPixelShaders() {
     return
         GLCaps::supports_GL_ARB_shader_objects() && 
         GLCaps::supports_GL_ARB_shading_language_100() &&
@@ -41,7 +43,7 @@ bool Shader::supportsPixelShaders() {
 }
 
 
-bool Shader::supportsVertexShaders() {
+__declspec(noinline) bool Shader::supportsVertexShaders() {
     return
         GLCaps::supports_GL_ARB_shader_objects() && 
         GLCaps::supports_GL_ARB_shading_language_100() &&

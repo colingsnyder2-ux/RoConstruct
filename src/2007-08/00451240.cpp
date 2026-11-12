@@ -1,8 +1,9 @@
+// from server: 92% by EspClaude
 // from server: 75% by EspClaude
 // from server: 100% by nuck16
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-lib: atl-9.0-dll-rtm roc_unit_10b9dcc0d5db3c98.cpp
+// roc-lib: atl-9.0-dll-rtm roc_claude_d6eb584679b196c1.cpp
 
 // Candidate translation unit (score above; library headers required).
 #ifndef _CPPUNWIND
@@ -74,6 +75,7 @@ private:
 class ContentProvider {
 public:
     static bool __cdecl isUrl(const std::string& s);
+    static ContentProvider* __cdecl singleton();
     std::auto_ptr<std::istream> getContent(ContentId ticket);
 };
 class DataModel { public: ContentProvider* contentProvider(); };
@@ -96,10 +98,10 @@ struct SearchObject { FindEntry* table; };
 typedef void (__thiscall *EnableEntry)(void*, int);
 struct ComboControl {
     EnableEntry* table;
-    char pad[0xfc - 4];
+    char pad[0xf8 - 4];
     int type;
     int getType() const { return type; }
-    char pad2[0x178 - 0x100];
+    char pad2[0x16c - 0xfc];
     Window* list;
     char gap[8];
     Window* edit;
@@ -112,7 +114,7 @@ struct ControlNotify { char hdr[0xc]; ComboControl* control; };
 struct DataModelRef : shared_ptr<RBX::DataModel> {};
 class CRobloxDoc {
 public:
-    char pad[0x94];
+    char pad[0x78];
     RBX::ScriptSource* scripts;
     DataModelRef getDataModel();
     void OnExecute(ControlNotify* notify, LRESULT* result);
@@ -128,7 +130,7 @@ void CRobloxDoc::OnExecute(ControlNotify* notify, LRESULT* result)
 
     const char* text = static_cast<const ImpStr<char>&>(script).c_str();
     SearchObject* object = combo->getList();
-    if (object->table[133](object, -1, text) == -1) {
+    if (object->table[127](object, -1, text) == -1) {
         combo->list->InsertString(0, static_cast<const ImpStr<char>&>(script).c_str());
         if (combo->list->GetCount() > 10)
             combo->removeItem(combo->list->GetCount() - 1);
@@ -140,7 +142,7 @@ void CRobloxDoc::OnExecute(ControlNotify* notify, LRESULT* result)
 
     try {
         if (RBX::ContentProvider::isUrl(script)) {
-            std::auto_ptr<std::istream> stream(RBX::contentProvider(getDataModel().get())->getContent(RBX::ContentId(script)));
+            std::auto_ptr<std::istream> stream(RBX::ContentProvider::singleton()->getContent(RBX::ContentId(script)));
             std::ostringstream buffer;
             RBX::copyStream(*stream, buffer, 4096);
             static_cast<ImpStr<char>&>(script) = buffer.str();

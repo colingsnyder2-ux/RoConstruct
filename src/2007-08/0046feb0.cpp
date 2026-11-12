@@ -1,58 +1,74 @@
-// from server: 53% by colin
+// from server: 100% by EspClaude
 // roc 2007-08 0046feb0  size: 268 bytes
 // library glg3dcpp\Texture.cpp
+// switch on interpolate mode (jump table at 0x46ffa4: modes 3,4,5 -> true; 1,2,6 -> false;
+// default -> alwaysAssertM(false, "Illegal interpolate mode") at line 0x3cb, return false)
 
-extern "C" {
-    int __stdcall MessageBoxA_impl(void*, const char*, const char*, unsigned int);
-}
+struct String {
+    unsigned int allocator;
+    union {
+        char buffer[16];
+        char* pointer;
+    } storage;
+    unsigned int length;
+    unsigned int capacity;
 
-struct std_string {
-    char pad[0x1c];
-    std_string();
-    std_string(const char*);
-    ~std_string();
+    String(const char*);
+    ~String();
 };
 
-extern "C" void __cdecl _exit_impl(int);
+extern void (__thiscall* constructString)(String*, const char*);
+extern void (__thiscall* destroyString)(String*);
 
-struct Texture {
-    bool checkSet(int mode);
-};
-
-extern "C" {
-    void __cdecl sub_502880();
-    void __cdecl sub_5028F0();
-    int (__stdcall *off_8980FC)(void*, const char*, const char*, unsigned int, void*, int);
-    void (__stdcall *off_77E698)(void*, const char*);
-    void (__stdcall *off_77E6AC)(void*);
-    void (__stdcall *off_77E938)(int);
-}
-
-extern char byte_8BD07C;
-extern char byte_8B5188;
-
-bool Texture::checkSet(int mode)
+__forceinline String::String(const char* text)
 {
-    int m = mode - 1;
-    if ((unsigned)m > 5) {
-        if (byte_8BD07C == 0) {
-            sub_502880();
-            if (off_8980FC != 0) {
-                std_string s;
-                off_77E698(&s, "Illegal interpolate mode");
-                char flag = 0;
-                int r = off_8980FC(&s, ".\\glg3dcpp\\Texture.cpp", "Illegal interpolate mode", 0x3cb, &byte_8BD07C, 1);
-                if (r) {
-                    flag = 1;
-                }
-                if (flag) {
-                    off_77E938(-1);
-                }
-                off_77E6AC(&s);
+    constructString(this, text);
+}
+
+__forceinline String::~String()
+{
+    destroyString(this);
+}
+
+extern bool ignoreAssertion;
+extern const char assertionExpression[];
+extern const char assertionMessage[];
+extern const char assertionFile[];
+
+extern bool (__cdecl* assertionHandler)(
+    const char*, const String&, const char*, int, bool*, bool);
+
+extern void (__stdcall* terminateProcess)(int);
+extern void __cdecl lockAssertions();
+extern void __cdecl unlockAssertions();
+
+bool __cdecl isMipMapped(int mode)
+{
+    switch (mode) {
+    case 3:
+    case 4:
+    case 5:
+        return true;
+    case 1:
+    case 2:
+    case 6:
+        return false;
+    default:
+        if (!ignoreAssertion) {
+            lockAssertions();
+            bool terminate = assertionHandler &&
+                assertionHandler(
+                    assertionExpression,
+                    String(assertionMessage),
+                    assertionFile,
+                    0x3cb,
+                    &ignoreAssertion,
+                    true);
+            if (terminate) {
+                terminateProcess(-1);
             }
-            sub_5028F0();
+            unlockAssertions();
         }
         return false;
     }
-    return true;
 }

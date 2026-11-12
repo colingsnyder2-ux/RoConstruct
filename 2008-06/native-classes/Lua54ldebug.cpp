@@ -1,5 +1,9 @@
 // native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/lua-5.1.4/src /TC
 // 2008-06 native Lua54ldebug (inactive): upstream tools/libs/lua-5.1.4/src/ldebug.c, verbatim.
+// >>> native-status (generated) -- do not edit >>>
+// Lua54ldebug | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 9977f37d | roc native-status --write
 /*
 ** $Id: ldebug.c,v 2.29.1.6 2008/05/08 16:56:26 roberto Exp $
 ** Debug Interface

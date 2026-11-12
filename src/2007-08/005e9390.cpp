@@ -1,9 +1,10 @@
+// from server: 97% by EspClaude
 // from server: 88% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: openrbx-client-dll roc_espeon_explosionsteppedevent_63ada37d19f46ecd.cpp
+// roc-lib: openrbx-client-dll roc_claude_a53294a8f455e87d.cpp
 
 // Candidate translation unit (score above; library headers required).
 #pragma float_control(precise,off)
@@ -44,7 +45,7 @@ struct Object {
 };
 
 struct World {
-    char padding[0x84];
+    char padding[0x30];
     Query *query;
 };
 
@@ -66,7 +67,7 @@ void Explosion::update(void*, Stepped event)
         if (radius > 0.0f) {
             Array results;
             Object *object = reinterpret_cast<Object *>(
-                reinterpret_cast<char *>(this) - 0x130);
+                reinterpret_cast<char *>(this) - 0xe8);
             World *world = getWorld(object);
             const float r = radius;
             Box box(G3D::Vector3(x-r,y-r,z-r),G3D::Vector3(x+r,y+r,z+r));
@@ -76,6 +77,6 @@ void Explosion::update(void*, Stepped event)
             object->second(results);
         }
         reinterpret_cast<Object *>(
-            reinterpret_cast<char *>(this) - 0x130)->detach(0);
+            reinterpret_cast<char *>(this) - 0xe8)->detach(0);
     }
 }

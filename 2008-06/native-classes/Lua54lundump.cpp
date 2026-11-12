@@ -1,5 +1,9 @@
 // native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/lua-5.1.4/src /TC
 // 2008-06 native Lua54lundump (inactive): upstream tools/libs/lua-5.1.4/src/lundump.c, verbatim.
+// >>> native-status (generated) -- do not edit >>>
+// Lua54lundump | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src c8f3ecf8 | roc native-status --write
 /*
 ** $Id: lundump.c,v 2.7.1.4 2008/04/04 19:51:41 roberto Exp $
 ** load precompiled Lua chunks

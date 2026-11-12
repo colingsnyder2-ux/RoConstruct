@@ -20,6 +20,10 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 
+// >>> native-status (generated) -- do not edit >>>
+// XTPScrollBar | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 50ab12f0 | roc native-status --write
 #include "stdafx.h"
 
 #include "Common/XTPDrawHelpers.h"

@@ -1,41 +1,29 @@
-// from server: 52% by colin
-struct Assembly
+// from server: 100% by EspClaude
+// roc 2007-08 005b39f0  unit: RBX::Assembly  size: 109 bytes
+// Iterate a checked std::set of pointers at this+0xc (_Myhead at +0x10, node value
+// at +0xc, out-of-line ++ at 0x627240) and call a no-arg thiscall method on each.
+#include <set>
+
+namespace RBX {
+
+class Primitive
 {
-    char pad0[0xc];
-    int field_c;
-    int field_10;
-    void func();
+public:
+    void onAssemblyChanged();   // 0x60ba10, thiscall, no stack args
 };
 
-extern "C" void __stdcall _invalid_parameter_noinfo();
-
-void Assembly::func()
+class Assembly
 {
-    int* p = *(int**)&field_10;
-    int* end = (int*)&field_c;
-    int* it = p;
-    int* local1 = end;
-    int* local2 = it;
-    while (true)
-    {
-        int* cur = local1;
-        int* next = *(int**)((char*)&field_c + 4);
-        if (cur != 0 && cur == &field_c)
-        {
-        }
-        else
-        {
-            _invalid_parameter_noinfo();
-        }
-        if (local2 == next)
-            break;
-        if (local2 == 0)
-            _invalid_parameter_noinfo();
-        if (local2 == *(int**)((char*)local2 + 4))
-            _invalid_parameter_noinfo();
-        ((void (__thiscall*)(void*, int))0x60ba10)((void*)local2[3], 0);
-        ((void (__thiscall*)(void*))0x627240)(&local1);
-        local2 = *(int**)((char*)&local1 + 4);
-        local1 = *(int**)&local1;
-    }
+    char pad00[0xc];
+    std::set<Primitive*> primitives;   // +0xc
+public:
+    void notifyPrimitives();
+};
+
+void Assembly::notifyPrimitives()
+{
+    for (std::set<Primitive*>::const_iterator it = primitives.begin(); it != primitives.end(); ++it)
+        (*it)->onAssemblyChanged();
+}
+
 }

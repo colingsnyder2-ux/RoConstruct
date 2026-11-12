@@ -3,7 +3,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DMeshAlg | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 8421b63f | roc native-status --write
+// <<< native-status | src df261b33 | roc native-status --write
 #line 1 ".\\G3Dcpp\\MeshAlg.cpp"
 /**
   @file MeshAlg.cpp

@@ -1,5 +1,9 @@
 // native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/jpeg-6b /TC
 // 2008-06 native Jpegjquant2 (inactive): upstream tools/libs/jpeg-6b/jquant2.c, verbatim.
+// >>> native-status (generated) -- do not edit >>>
+// Jpegjquant2 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 95e54117 | roc native-status --write
 /*
  * jquant2.c
  *

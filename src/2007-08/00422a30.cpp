@@ -1,9 +1,10 @@
+// from server: 94% by EspClaude
 // from server: 78% by EspClaude
 // from server: 100% by EspClaude
 // from server: 98% by Espeon
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-lib: rbxgs-dll roc_espclaude_e11cb716355e9b7a.cpp
+// roc-lib: rbxgs-dll roc_claude_3ec71f03642ac281.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <boost/shared_ptr.hpp>
@@ -93,13 +94,11 @@ virtual void slot79();
 virtual void slot80();
 virtual void slot81();
 virtual void slot82();
-virtual void slot83();
-virtual void slot84();
 virtual boost::shared_ptr<Model> get();};
-struct Guard {char storage[12];Guard(boost::shared_ptr<const Model>);~Guard();};
+struct Guard {int storage[3];Guard(boost::shared_ptr<const Model>);~Guard();};
 struct ImportedString:std::string {__declspec(dllimport) const char* c_str()const;};
-struct Owner {char prefix[0x110];ImportedString text;};
+struct Owner {char prefix[0xc8];ImportedString text;};
 struct Request {char header[12];unsigned int flags;char rest[12];char* destination;unsigned int capacity;char more[8];int result;};
-struct Node {char prefix[12];Owner* owner;char gap[0x48];Provider* provider;bool query();void update(Request*);};
+struct Node {char prefix[12];Owner* owner;char gap[0x20];Provider* provider;bool query();void update(Request*);};
 void Node::update(Request* request){try{if(request->flags&1){Guard guard(provider->get());Owner* o=owner;strncpy(request->destination,o->text.c_str(),request->capacity);}if(request->flags&0x40)request->result=query()?1:0;}catch(...){strncpy(request->destination,"",request->capacity);}}
 

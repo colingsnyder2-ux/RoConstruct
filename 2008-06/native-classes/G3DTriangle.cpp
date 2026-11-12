@@ -3,7 +3,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DTriangle | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 9aac93ce | roc native-status --write
+// <<< native-status | src 89ff96ee | roc native-status --write
 #line 1 ".\\G3Dcpp\\Triangle.cpp"
 /**
  @file Triangle.cpp

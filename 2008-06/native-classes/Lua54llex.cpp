@@ -1,5 +1,9 @@
 // native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/lua-5.1.4/src /TC
 // 2008-06 native Lua54llex (inactive): upstream tools/libs/lua-5.1.4/src/llex.c, verbatim.
+// >>> native-status (generated) -- do not edit >>>
+// Lua54llex | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 1477560f | roc native-status --write
 /*
 ** $Id: llex.c,v 2.20.1.1 2007/12/27 13:02:25 roberto Exp $
 ** Lexical Analyzer

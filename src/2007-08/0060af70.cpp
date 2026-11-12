@@ -1,9 +1,10 @@
+// from server: 99% by EspClaude
 // from server: 82% by EspClaude
 // from server: 100% by king_originala_sol_native
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll roc_sol_gluetransform_ed1d80f4471ae699.cpp
+// roc-lib: rbxgs-dll roc_claude_2ab5e0dcba98b54a.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "util/PV.h"
@@ -190,9 +191,9 @@ namespace RBX
 		};
 
 	private:
-		Sim::EdgeState edgeState;
 		Primitive* prim0;
 		Primitive* prim1;
+		Sim::EdgeState edgeState;
 		Edge* next0;
 		Edge* next1;
 		bool inEdgeList;
@@ -426,10 +427,10 @@ namespace RBX
 	};
 }
 namespace RBX {
-// Borrowed native views: observed primitive body pointer at a0 and Body PV at 94.
-struct NativePrimitiveBodyView { char prefix[0xa0]; Body* body; };
+// Borrowed native views: observed primitive body pointer at 0x64 and Body PV at 0x84.
+struct NativePrimitiveBodyView { char prefix[0x64]; Body* body; };
 struct NativeBodyPVView {
- char prefix[0x94]; PV pv;
+ char prefix[0x84]; PV pv;
  void updatePV() const;
  const PV& getPV() const { updatePV(); return pv; }
 };

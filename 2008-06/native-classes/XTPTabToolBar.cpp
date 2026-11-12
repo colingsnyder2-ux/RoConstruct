@@ -20,6 +20,10 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 
+// >>> native-status (generated) -- do not edit >>>
+// XTPTabToolBar | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 9358c11d | roc native-status --write
 #include "stdafx.h"
 
 #include "Common/XTPImageManager.h"

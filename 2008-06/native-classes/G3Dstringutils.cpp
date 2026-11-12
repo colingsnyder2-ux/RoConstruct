@@ -3,7 +3,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3Dstringutils | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 2127b7a7 | roc native-status --write
+// <<< native-status | src 44343f86 | roc native-status --write
 #line 1 ".\\G3Dcpp\\stringutils.cpp"
 /**
  @file stringutils.cpp

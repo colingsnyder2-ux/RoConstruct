@@ -1,9 +1,10 @@
+// from server: 95% by EspClaude
 // from server: 72% by EspClaude
 // from server: 100% by nuck16
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast
-// roc-lib: rbxgs-dll roc_unit_b7e4c02ad8531df9.cpp
+// roc-lib: rbxgs-dll roc_claude_f28b7399f5468859.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "util/Rect.h"
@@ -25,8 +26,11 @@ struct Vector3 {float x,y,z;};
 struct CoordinateFrame;struct AABox;struct Sphere;struct Ray;struct LineSegment;
 template<class T>struct ReferenceCountedPointer {T*pointer;};
 }
+extern "C" __declspec(dllimport) void __cdecl _invalid_parameter_noinfo(void);
 namespace RBX {
 struct TextureProxyBase;struct Adorn;struct Name;struct XmlElement;struct IReferenceBinder;struct ServiceProvider;struct AncestorChanged;struct PropertyChanged;struct GuiEvent;
+struct Instance;
+struct ChildVector {char alval[4];boost::shared_ptr<Instance>*first,*last,*end;size_t size()const{return first==0?0:(size_t)(last-first);}const boost::shared_ptr<Instance>&operator[](size_t i)const{if(!(i<size()))_invalid_parameter_noinfo();return first[i];}};
 template<class T>struct CopyOnWrite {boost::shared_ptr<T>object;const T*operator->()const{return object.get();}};
 class Instance {public:
  virtual ~Instance();virtual void setName(const std::string&);
@@ -34,14 +38,14 @@ class Instance {public:
  virtual void onAncestorChanged(const AncestorChanged&);virtual void onDescendentAdded(Instance*);virtual void onDescendentRemoving(const boost::shared_ptr<Instance>&);
  virtual void onChildAdded(Instance*);virtual void onChildRemoving(Instance*);virtual void onChildRemoved(Instance*);virtual void onLastChildRemoved();
  virtual void readProperty(const XmlElement*,IReferenceBinder&);virtual void onServiceProvider(const ServiceProvider*,const ServiceProvider*);virtual boost::shared_ptr<Instance>createChild(const Name&);virtual XmlElement*write();virtual void onChildChanged(Instance*,const PropertyChanged&);
- char opaque[0x108-4];CopyOnWrite<std::vector<boost::shared_ptr<Instance> > >children;std::string name;bool archivable;
+ char opaque[0xc0-4];CopyOnWrite<ChildVector>children;std::string name;bool archivable;
  unsigned numChildren()const;
 };
 struct Adorn {
  enum Spacing{PROPORTIONAL_SPACING,FIXED_SPACING};enum XAlign{XALIGN_RIGHT,XALIGN_LEFT,XALIGN_CENTER};enum YAlign{YALIGN_TOP,YALIGN_BASELINE,YALIGN_CENTER,YALIGN_BOTTOM};
  virtual ~Adorn();
  virtual G3D::ReferenceCountedPointer<TextureProxyBase>createTextureProxy(const std::string&)=0;
- virtual void prepareRenderPass()=0;virtual void finishRenderPass()=0;virtual G3D::Rect2D getViewport()const=0;virtual int getWidth()const=0;virtual int getHeight()const=0;
+ virtual void prepareRenderPass()=0;virtual G3D::Rect2D getViewport()const=0;virtual int getWidth()const=0;virtual int getHeight()const=0;
  virtual void setTexture(int,G3D::ReferenceCountedPointer<TextureProxyBase>)=0;virtual G3D::Rect2D getTextureSize(G3D::ReferenceCountedPointer<TextureProxyBase>)const=0;
  virtual void line2d(const G3D::Vector2&,const G3D::Vector2&,const G3D::Color4&)const=0;
  virtual void outlineRect2d(const G3D::Rect2D&,float,const G3D::Color4&)const=0;virtual void rect2d(const G3D::Rect2D&,const G3D::Color4&)const=0;
@@ -56,41 +60,38 @@ class IRenderable {public:int index2d,index3d;void*bucket;virtual bool shouldRen
 struct GuiTarget;struct GuiResponse {int response;GuiTarget*target;};
 struct GuiTarget {virtual GuiResponse process(const GuiEvent&)=0;};
 struct GuiItem:Instance,GuiTarget {
- virtual void onLoseFocus();virtual bool canLoseFocus();virtual G3D::Vector2 getPosition()const;virtual G3D::Vector2 getChildPosition(const GuiItem*)const;virtual int getFontSize()const;virtual bool isVisible()const;virtual std::string getTitle();virtual G3D::Vector2 getSize()const;virtual void render2d(Adorn*);
+ virtual void onLoseFocus();virtual bool canLoseFocus();virtual G3D::Vector2 getPosition()const;virtual G3D::Vector2 getChildPosition(const GuiItem*)const;virtual int getFontSize()const;virtual bool isVisible()const;virtual std::string getTitle();virtual G3D::Vector2 getSize()const;virtual void slot24_();virtual void render2d(Adorn*);
 };
 struct GuiRoot:GuiItem {virtual void render2d(Adorn*);static void render2dItem(Adorn*,GuiItem*);};
 struct Evaluator {virtual std::string evaluate(const std::string&)const=0;};
 struct IMetric {virtual ~IMetric();virtual std::string getMetric(const std::string&)const=0;};
 struct RunService;struct RunTransition {int oldState,newState;};
 template<class C,class E>struct Listener {virtual void onEvent(const C*,E)=0;virtual ~Listener();};
-struct ContentId {std::string id;const Name*mimeTypePtr;static ContentId fromAssets(const char*);};
+struct ContentId {std::string id;const Name*mimeTypePtr;static ContentId fromAssets(const std::string&);};
 struct TextureId:ContentId {TextureId(const ContentId&c):ContentId(c){}};
 struct UserInputBase {
  enum WrapMode{WRAP_AUTO,WRAP_CENTER};
  virtual G3D::Vector2 getCursorPosition()=0;virtual G3D::ReferenceCountedPointer<TextureProxyBase>getGameCursor(Adorn*);
- virtual void setWrapMode(WrapMode)=0;virtual WrapMode getWrapMode()const=0;virtual void centerCursor()=0;virtual bool keyDown(int)const=0;virtual void setKeyState(int,bool)=0;virtual void setCursorId(Adorn*,const TextureId&);
+ virtual void setWrapMode(WrapMode)=0;virtual WrapMode getWrapMode()const=0;virtual void centerCursor()=0;virtual bool keyDown(int)const=0;virtual void setCursorId(Adorn*,const TextureId&);
  void renderGameCursor(Adorn*);
 };
-struct ControllerService {char opaque[0x130];UserInputBase*hardwareDevice;};
-struct WorkspacePrefix:Instance {char opaqueWorkspace[0x1a0-sizeof(Instance)];};
+struct ControllerService {char opaque[0xe8];UserInputBase*hardwareDevice;};
+struct WorkspacePrefix:Instance {char opaqueWorkspace[0x158-sizeof(Instance)];};
 struct Workspace:WorkspacePrefix,IRenderable {void setCursor(Adorn*);};
 namespace Network {
 struct Player:Instance {};
-struct Players {char opaque[0x1a0];boost::shared_ptr<Player>localPlayer;static Player*findLocalPlayer(const Instance*);};
+struct Players {char opaque[0x138];boost::shared_ptr<Player>localPlayer;static Player*findLocalPlayer(const Instance*);};
 }
-struct DataModelPrefix:Instance {char opaqueDataModel[0x1f4-sizeof(Instance)];};
+struct DataModelPrefix:Instance {char opaqueDataModel[0x178-sizeof(Instance)];};
 struct DataModel:DataModelPrefix,Evaluator,Listener<RunService,RunTransition> {
  boost::shared_ptr<Instance>localBackpack;boost::shared_ptr<Workspace>workspace;boost::shared_ptr<RunService>runService;boost::shared_ptr<Instance>starterPack;boost::shared_ptr<GuiRoot>guiRoot,guiHooks;
- GuiTarget*guiTarget;bool forceArrowCursor;std::string uiMessage;int drawId;IMetric*tempMetric;bool dirty;bool renderEnabled;
+ GuiTarget*guiTarget;bool forceArrowCursor;std::string uiMessage;
  Network::Players*getPlayers();ControllerService*getControllerService();
- void renderPass2d(Adorn*,IMetric*);
+ void renderPass2d(Adorn*);
  static const G3D::Color4&messageBackground();
 };
-void DataModel::renderPass2d(Adorn*adorn,IMetric*metric){
- if(!renderEnabled)return;
+void DataModel::renderPass2d(Adorn*adorn){
  if(!adorn)return;
- if(!metric)return;
- tempMetric=metric;
  workspace->render2d(adorn);
  if(Network::Players::findLocalPlayer(this))GuiRoot::render2dItem(adorn,static_cast<GuiItem*>(localBackpack.get()));
  else GuiRoot::render2dItem(adorn,static_cast<GuiItem*>(starterPack.get()));
@@ -99,9 +100,7 @@ void DataModel::renderPass2d(Adorn*adorn,IMetric*metric){
  Network::Player*player=players->localPlayer.get();
  if(player){
   for(unsigned i=0;i<player->numChildren();++i){
-   Instance*child=player->children->operator[](i).get();
-   IRenderable*renderable=dynamic_cast<IRenderable*>(child);
-   if(renderable)renderable->render2d(adorn);
+   if(IRenderable*renderable=dynamic_cast<IRenderable*>(player->children->operator[](i).get()))renderable->render2d(adorn);
   }
  }
  std::string message;
@@ -128,22 +127,14 @@ void DataModel::renderPass2d(Adorn*adorn,IMetric*metric){
   else workspace->setCursor(adorn);
   input->renderGameCursor(adorn);
  }
- tempMetric=0;
 }
 }
-typedef char instance_size[sizeof(RBX::Instance)==0x130?1:-1];
-typedef char children_offset[offsetof(RBX::Instance,children)==0x108?1:-1];
-typedef char model_workspace_offset[offsetof(RBX::DataModel,workspace)==0x204?1:-1];
-typedef char model_message_offset[offsetof(RBX::DataModel,uiMessage)==0x234?1:-1];
-typedef char model_metric_offset[offsetof(RBX::DataModel,tempMetric)==0x254?1:-1];
-typedef char model_enabled_offset[offsetof(RBX::DataModel,renderEnabled)==0x259?1:-1];
-typedef char texture_size[sizeof(RBX::TextureId)==32?1:-1];
-
-typedef char input_offset[offsetof(RBX::ControllerService,hardwareDevice)==0x130?1:-1];
-typedef char local_player_offset[offsetof(RBX::Network::Players,localPlayer)==0x1a0?1:-1];
-typedef char root_offset[offsetof(RBX::DataModel,guiRoot)==0x21c?1:-1];
-typedef char cursor_offset[offsetof(RBX::DataModel,forceArrowCursor)==0x230?1:-1];
-typedef char renderable_offset[offsetof(RBX::Workspace,index2d)==0x1a4?1:-1];
-typedef char vector_extent[sizeof(G3D::Vector2)==8?1:-1];
-typedef char rectangle_extent[sizeof(G3D::Rect2D)==16?1:-1];
-typedef char color_extent[sizeof(G3D::Color4)==16?1:-1];
+typedef char children_offset[offsetof(RBX::Instance,children)==0xc0?1:-1];
+typedef char model_eval_offset[offsetof(RBX::DataModel,localBackpack)==0x180?1:-1];
+typedef char model_workspace_offset[offsetof(RBX::DataModel,workspace)==0x188?1:-1];
+typedef char root_offset[offsetof(RBX::DataModel,guiRoot)==0x1a0?1:-1];
+typedef char cursor_offset[offsetof(RBX::DataModel,forceArrowCursor)==0x1b4?1:-1];
+typedef char model_message_offset[offsetof(RBX::DataModel,uiMessage)==0x1b8?1:-1];
+typedef char input_offset[offsetof(RBX::ControllerService,hardwareDevice)==0xe8?1:-1];
+typedef char local_player_offset[offsetof(RBX::Network::Players,localPlayer)==0x138?1:-1];
+typedef char renderable_offset[offsetof(RBX::Workspace,index2d)==0x15c?1:-1];

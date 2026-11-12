@@ -1,6 +1,10 @@
 // native-flags: /O2 /GS- /MD /I{headers}/../../../tools/libs/zlib-1.2.3 /I{headers}/../../../tools/libs/libpng-1.2.6 /TC
 // 2008-06 native Png6pngerror (inactive): upstream tools/libs/libpng-1.2.6/pngerror.c, verbatim.
 
+// >>> native-status (generated) -- do not edit >>>
+// Png6pngerror | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 19093fd2 | roc native-status --write
 /* pngerror.c - stub functions for i/o and memory allocation
  *
  * libpng version 1.2.6 - August 15, 2004

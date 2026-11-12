@@ -1,10 +1,12 @@
+// from server: 94% by EspClaude
 // from server: 64% by Intel
 // from server: 57% by colin
 // roc-lang: cpp
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: boost-1.34.1 libs/thread/src/tss.cpp
+// roc-flags: /O2 /GS /EHsc /MD
+// roc-lib: boost-1.34.1 roc_claude_7a1d91d788137100.cpp
 
 // Candidate translation unit (score above; library headers required).
+#define _DLL
 // Copyright (C) 2001-2003 William E. Kempf
 // Copyright (C) 2006 Roland Schwarz
 //
@@ -32,102 +34,57 @@
 namespace {
 
 typedef std::vector<void*> tss_slots;
-typedef std::vector<boost::function1<void, void*>*> tss_data_cleanup_handlers_type;
 
+struct tss_data_t
+{
+    boost::mutex mutex;
+    std::vector<boost::function1<void, void*>*> cleanup_handlers;
+#if defined(BOOST_HAS_WINTHREADS)
+    DWORD native_key;
+#elif defined(BOOST_HAS_PTHREADS)
+    pthread_key_t native_key;
+#elif defined(BOOST_HAS_MPTASKS)
+    TaskStorageIndex native_key;
+#endif
+};
+
+tss_data_t* tss_data = 0;
 boost::once_flag tss_data_once = BOOST_ONCE_INIT;
-boost::mutex* tss_data_mutex = 0;
-tss_data_cleanup_handlers_type* tss_data_cleanup_handlers = 0;
-#if defined(BOOST_HAS_WINTHREADS)
-    DWORD tss_data_native_key=TLS_OUT_OF_INDEXES;
-#elif defined(BOOST_HAS_PTHREADS)
-    pthread_key_t tss_data_native_key;
-#elif defined(BOOST_HAS_MPTASKS)
-    TaskStorageIndex tss_data_native_key;
-#endif
-int tss_data_use = 0;
-
-void tss_data_inc_use(boost::mutex::scoped_lock& lk)
-{
-    ++tss_data_use;
-}
-
-void tss_data_dec_use(boost::mutex::scoped_lock& lk)
-{
-    if (0 == --tss_data_use)
-    {
-        tss_data_cleanup_handlers_type::size_type i;
-        for (i = 0; i < tss_data_cleanup_handlers->size(); ++i)
-        {
-            delete (*tss_data_cleanup_handlers)[i];
-        }
-        delete tss_data_cleanup_handlers;
-        tss_data_cleanup_handlers = 0;
-        lk.unlock();
-        delete tss_data_mutex;
-        tss_data_mutex = 0;
-#if defined(BOOST_HAS_WINTHREADS)
-        TlsFree(tss_data_native_key);
-        tss_data_native_key=TLS_OUT_OF_INDEXES;
-#elif defined(BOOST_HAS_PTHREADS)
-        pthread_key_delete(tss_data_native_key);
-#elif defined(BOOST_HAS_MPTASKS)
-        // Don't know what to put here.
-        // But MPTASKS isn't currently maintained anyways...
-#endif
-    }
-}
 
 extern "C" void cleanup_slots(void* p)
 {
     tss_slots* slots = static_cast<tss_slots*>(p);
-    boost::mutex::scoped_lock lock(*tss_data_mutex);
     for (tss_slots::size_type i = 0; i < slots->size(); ++i)
     {
-        (*(*tss_data_cleanup_handlers)[i])((*slots)[i]);
+        boost::mutex::scoped_lock lock(tss_data->mutex);
+        (*tss_data->cleanup_handlers[i])((*slots)[i]);
         (*slots)[i] = 0;
     }
-#if defined(BOOST_HAS_WINTHREADS)
-    TlsSetValue(tss_data_native_key,0);
-#endif
-    tss_data_dec_use(lock);
-    delete slots;
 }
 
 void init_tss_data()
 {
-    std::auto_ptr<tss_data_cleanup_handlers_type> 
-        temp(new tss_data_cleanup_handlers_type);
-
-    std::auto_ptr<boost::mutex> temp_mutex(new boost::mutex);
-    if (temp_mutex.get() == 0)
-        throw boost::thread_resource_error();
+    std::auto_ptr<tss_data_t> temp(new tss_data_t);
 
 #if defined(BOOST_HAS_WINTHREADS)
     //Force the cleanup implementation library to be linked in
     tss_cleanup_implemented();
 
     //Allocate tls slot
-    tss_data_native_key = TlsAlloc();
-    if (tss_data_native_key == TLS_OUT_OF_INDEXES)
+    temp->native_key = TlsAlloc();
+    if (temp->native_key == 0xFFFFFFFF)
         return;
 #elif defined(BOOST_HAS_PTHREADS)
-    int res = pthread_key_create(&tss_data_native_key, &cleanup_slots);
+    int res = pthread_key_create(&temp->native_key, &cleanup_slots);
     if (res != 0)
         return;
 #elif defined(BOOST_HAS_MPTASKS)
-    OSStatus status = MPAllocateTaskStorageIndex(&tss_data_native_key);
+    OSStatus status = MPAllocateTaskStorageIndex(&temp->native_key);
     if (status != noErr)
         return;
 #endif
 
-    // The life time of cleanup handlers and mutex is beeing
-    // managed by a reference counting technique.
-    // This avoids a memory leak by releasing the global data
-    // after last use only, since the execution order of cleanup
-    // handlers is unspecified on any platform with regards to
-    // C++ destructor ordering rules.
-    tss_data_cleanup_handlers = temp.release();
-    tss_data_mutex = temp_mutex.release();
+    tss_data = temp.release();
 }
 
 #if defined(BOOST_HAS_WINTHREADS)
@@ -147,7 +104,7 @@ tss_slots* get_slots(bool alloc)
 
 #if defined(BOOST_HAS_WINTHREADS)
     slots = static_cast<tss_slots*>(
-        TlsGetValue(tss_data_native_key));
+        TlsGetValue(tss_data->native_key));
 #elif defined(BOOST_HAS_PTHREADS)
     slots = static_cast<tss_slots*>(
         pthread_getspecific(tss_data_native_key));
@@ -163,7 +120,7 @@ tss_slots* get_slots(bool alloc)
 #if defined(BOOST_HAS_WINTHREADS)
         if (at_thread_exit(&tss_thread_exit) == -1)
             return 0;
-        if (!TlsSetValue(tss_data_native_key, temp.get()))
+        if (!TlsSetValue(tss_data->native_key, temp.get()))
             return 0;
 #elif defined(BOOST_HAS_PTHREADS)
         if (pthread_setspecific(tss_data_native_key, temp.get()) != 0)
@@ -172,10 +129,6 @@ tss_slots* get_slots(bool alloc)
         if (MPSetTaskStorageValue(tss_data_native_key, temp.get()) != noErr)
             return 0;
 #endif
-        {
-            boost::mutex::scoped_lock lock(*tss_data_mutex);
-            tss_data_inc_use(lock);
-        }
         slots = temp.release();
     }
 
@@ -190,25 +143,18 @@ namespace detail {
 void tss::init(boost::function1<void, void*>* pcleanup)
 {
     boost::call_once(&init_tss_data, tss_data_once);
-    if (tss_data_cleanup_handlers == 0)
+    if (tss_data == 0)
         throw thread_resource_error();
-    boost::mutex::scoped_lock lock(*tss_data_mutex);
+    boost::mutex::scoped_lock lock(tss_data->mutex);
     try
     {
-        tss_data_cleanup_handlers->push_back(pcleanup);
-        m_slot = tss_data_cleanup_handlers->size() - 1;
-        tss_data_inc_use(lock);
+        tss_data->cleanup_handlers.push_back(pcleanup);
+        m_slot = tss_data->cleanup_handlers.size() - 1;
     }
     catch (...)
     {
         throw thread_resource_error();
     }
-}
-
-tss::~tss()
-{
-    boost::mutex::scoped_lock lock(*tss_data_mutex);
-    tss_data_dec_use(lock);
 }
 
 void* tss::get() const
@@ -248,8 +194,8 @@ void tss::set(void* value)
 
 void tss::cleanup(void* value)
 {
-    boost::mutex::scoped_lock lock(*tss_data_mutex);
-    (*(*tss_data_cleanup_handlers)[m_slot])(value);
+    boost::mutex::scoped_lock lock(tss_data->mutex);
+    (*tss_data->cleanup_handlers[m_slot])(value);
 }
 
 } // namespace detail

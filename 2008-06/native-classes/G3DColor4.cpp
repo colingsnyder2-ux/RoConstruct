@@ -3,7 +3,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DColor4 | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src f4aebb8d | roc native-status --write
+// <<< native-status | src 50cf4e86 | roc native-status --write
 #line 1 ".\\G3Dcpp\\Color4.cpp"
 /**
  @file Color4.cpp

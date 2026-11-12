@@ -3,7 +3,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DTextInput | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 91b3a3d4 | roc native-status --write
+// <<< native-status | src 01c74526 | roc native-status --write
 #line 1 ".\\G3Dcpp\\TextInput.cpp"
 /**
  @file TextInput.cpp

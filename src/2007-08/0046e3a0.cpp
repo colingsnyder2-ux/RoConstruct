@@ -1,10 +1,12 @@
+// from server: 100% by EspClaude
 // from server: 76% by EspClaude
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-lib: g3d-6.09-dll roc_large_glcaps_11e595a340f00f1c.cpp
+// roc-lib: g3d-6.09-dll roc_claude_fa324a75e12d0cdb.cpp
 
 // Candidate translation unit (score above; library headers required).
+#pragma auto_inline(off)
 #line 1 ".\\glg3dcpp\\GLCaps.cpp"
 /**
   @file GLCaps.cpp

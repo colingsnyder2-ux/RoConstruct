@@ -1,9 +1,10 @@
+// from server: 73% by EspClaude
 // from server: 72% by EspClaude
 // from server: 100% by coldek
 // roc-lang: cpp
 // roc-cl: 21022
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: xtp-11.2.2-shared-mfc roc_codex_vischildren_snapshot_alias_82e230881187a9c2.cpp
+// roc-lib: xtp-11.2.2-shared-mfc roc_claude_0afc775aa5133f8f.cpp
 
 // Candidate translation unit (score above; library headers required).
 #ifndef _CPPUNWIND
@@ -173,8 +174,7 @@ class CRobloxTreeCtrlNode:
  public RBX::Listener<RBX::Instance,RBX::ChildRemoved> {
 public:
  boost::shared_ptr<RBX::Instance>instance;
- std::map<RBX::Instance*,CRobloxTreeCtrlNode*>children;
- std::set<CRobloxTreeCtrlNode*>removedChildren;
+ char m_roc2007ChildContainers[0x18]; // 2007-08: target reads tree at +0x30, instance at +0xc
  bool expanded:1;
  bool expandedOnce:1;
  bool changing;
@@ -206,12 +206,12 @@ typedef std::vector<boost::shared_ptr<RBX::Instance> > NativeChildren;
 struct NativeChildSnapshot {__declspec(noalias) boost::shared_ptr<const NativeChildren>snapshot()const;};
 bool CRobloxTreeCtrlNode::hasVisibleChildren(){
  NativeTreeWriteGuard guard(tree->getDataModel());
- boost::shared_ptr<const NativeChildren>children=reinterpret_cast<NativeChildSnapshot*>(reinterpret_cast<char*>(instance.get())+0x108)->snapshot();
+ boost::shared_ptr<const NativeChildren>children=reinterpret_cast<NativeChildSnapshot*>(reinterpret_cast<char*>(instance.get())+0xc0)->snapshot();
  if(!children)return false;
  NativeChildren::const_iterator end=children->end();
  for(NativeChildren::const_iterator it=children->begin();it!=end;++it){
   boost::shared_ptr<NativeTreeRegistry>info=nativeTreeRegistry();
-  const RBX::Reflection::ClassDescriptor*descriptor=*reinterpret_cast<const RBX::Reflection::ClassDescriptor**>(reinterpret_cast<char*>(it->get())+0x1c);
+  const RBX::Reflection::ClassDescriptor*descriptor=*reinterpret_cast<const RBX::Reflection::ClassDescriptor**>(reinterpret_cast<char*>(it->get())+0xc);
   NativeTreeMetadata*metadata=info->lookup(descriptor,true);
   if(metadata&&metadata->priority()>=0)return true;
  }

@@ -1,23 +1,24 @@
-// from server: 50% by Intel
-struct CChildFrame {
-    int field_0;
+// from server: 100% by EspClaude
+// MFC DECLARE_DYNCREATE CreateObject: return new CChildFrame (0xdc bytes from the target's
+// new argument); base constructor 006303ca is called, then the derived vtable stored.
+class CObject;
+
+class CMDIChildWndBase {
+public:
+    CMDIChildWndBase();
+    virtual ~CMDIChildWndBase();
+private:
+    int m_data[0x36];  // object is 0xdc bytes: vptr + 0xd8
 };
 
-extern "C" void* __cdecl operator_new(unsigned int size);
-extern "C" int __stdcall sub_6303ca(void* thisptr);
+class CChildFrame : public CMDIChildWndBase {
+public:
+    CChildFrame() {}
+    virtual ~CChildFrame();
+    static CObject* __stdcall CreateObject();
+};
 
-int __cdecl sub_40ee60(CChildFrame* thisptr)
+CObject* __stdcall CChildFrame::CreateObject()
 {
-    __try {
-        void* esi = operator_new(0xdc);
-        if (esi != 0)
-            return 0;
-
-        sub_6303ca(esi);
-        *(int*)esi = 0x786944;
-        return (int)esi;
-    }
-    __except (1) {
-        return 0;
-    }
+    return (CObject*)new CChildFrame;
 }

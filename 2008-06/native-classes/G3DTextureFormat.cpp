@@ -3,7 +3,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DTextureFormat | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src bc8cae34 | roc native-status --write
+// <<< native-status | src 6a58e5a7 | roc native-status --write
 #line 1 ".\\glg3dcpp\\TextureFormat.cpp"
 /**
  @file TextureFormat.cpp

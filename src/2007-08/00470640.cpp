@@ -1,8 +1,9 @@
+// from server: 100% by EspClaude
 // from server: 72% by EspClaude
 // from server: 100% by colin
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-lib: rbxgs-g3d-dll roc_texture_native_build_path_ee24dd4928e63081.cpp
+// roc-lib: rbxgs-g3d-dll roc_claude_3392da85c50f97a8.cpp
 
 // Candidate translation unit (score above; library headers required).
 #line 1 ".\\glg3dcpp\\Texture.cpp"
@@ -147,7 +148,7 @@ uint32 Texture::Settings::hashCode() const {
  */
 // TODO: this is slow; push only absolutely necessary state
 // or back up state that will be corrupted.
-static void glStatePush() {
+static __declspec(noinline) void glStatePush() {
     glPushAttrib(GL_ALL_ATTRIB_BITS);
     glPushClientAttrib(GL_ALL_CLIENT_ATTRIB_BITS);
 
@@ -159,13 +160,13 @@ static void glStatePush() {
 /**
  Pops all OpenGL texture state.
  */
-static void glStatePop() {
+static __declspec(noinline) void glStatePop() {
     glPopClientAttrib();
     glPopAttrib();
 }
 
 
-static GLenum dimensionToTarget(Texture::Dimension d) {
+static __declspec(noinline) GLenum dimensionToTarget(Texture::Dimension d) {
     switch (d) {
     case Texture::DIM_CUBE_MAP_NPOT:
     case Texture::DIM_CUBE_MAP:

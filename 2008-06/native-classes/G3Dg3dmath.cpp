@@ -3,7 +3,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3Dg3dmath | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 07c3eec6 | roc native-status --write
+// <<< native-status | src 81a430b1 | roc native-status --write
 #line 1 ".\\G3Dcpp\\g3dmath.cpp"
 /**
  @file g3dmath.cpp

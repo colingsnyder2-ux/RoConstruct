@@ -1,27 +1,23 @@
+// from server: 100% by EspClaude
 // from server: 84% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-lib: openrbx-client-dll roc_espeon_insertget_0d7f4b9e0fa30ebc.cpp
+// roc-lib: openrbx-client-dll roc_claude_bbe8b55c4372bac9.cpp
 
 // Candidate translation unit (score above; library headers required).
+#include <vector>
 #include <boost/shared_ptr.hpp>
 typedef boost::shared_ptr<void> Shared;
 
-struct Entries {
-    char padding[12];
-    Shared* begin;
-    Shared* end;
-};
-
 struct Context {
-    char padding[0x154];
-    Entries* entries;
+    char padding[0x104];
+    std::vector<Shared>* entries;
     Shared get();
 };
 
 struct Parent {
-    char padding[0x204];
+    char padding[0x188];
     void* fallback;
     Context* getContext();
 };
@@ -35,7 +31,7 @@ struct InsertService {
 void* InsertService::get()
 {
     Context* context = parent ? parent->getContext() : 0;
-    int count = context->entries->end - context->entries->begin;
+    int count = context->entries->size();
 
     if (count == 1) {
         void* result = context->get().get();

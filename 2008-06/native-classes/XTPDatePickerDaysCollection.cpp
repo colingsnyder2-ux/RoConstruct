@@ -20,6 +20,10 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 
+// >>> native-status (generated) -- do not edit >>>
+// XTPDatePickerDaysCollection | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 9ad453fd | roc native-status --write
 #include "stdafx.h"
 #include "XTPDatePickerDaysCollection.h"
 #include "XTPDatePickerItemDay.h"

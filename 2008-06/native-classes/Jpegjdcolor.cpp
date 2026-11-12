@@ -1,5 +1,9 @@
 // native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/jpeg-6b /TC
 // 2008-06 native Jpegjdcolor (inactive): upstream tools/libs/jpeg-6b/jdcolor.c, verbatim.
+// >>> native-status (generated) -- do not edit >>>
+// Jpegjdcolor | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src d9427784 | roc native-status --write
 /*
  * jdcolor.c
  *

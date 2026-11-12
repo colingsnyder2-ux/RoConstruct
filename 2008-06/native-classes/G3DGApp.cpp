@@ -3,7 +3,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DGApp | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 9c7f2722 | roc native-status --write
+// <<< native-status | src b08a780f | roc native-status --write
 #line 1 ".\\glg3dcpp\\GApp.cpp"
 /**
  @file GApp.cpp

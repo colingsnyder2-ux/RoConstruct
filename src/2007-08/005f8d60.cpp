@@ -1,162 +1,82 @@
+// from server: 71% by EspClaude
 // from server: 50% by colin
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs util/RunStateOwner.cpp
+// roc-lib: rbxgs roc_claude_10737228a4c9e469.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "util/RunStateOwner.h"
-#include "util/Timer.h"
+#include "v8datamodel/DebrisService.h"
+#include "v8datamodel/TimerService.h"
 #include "util/standardout.h"
-#include "v8datamodel/DataModel.h"
-#include <boost/thread/xtime.hpp>
+
+static RBX::Reflection::BoundFuncDesc<RBX::DebrisService, void(boost::shared_ptr<RBX::Instance>, double), 2> func_AddItem(&RBX::DebrisService::addItem, "AddItem", "item", "lifetime", RBX::Reflection::FunctionDescriptor::AnyCaller);
+static RBX::Reflection::PropDescriptor<RBX::DebrisService, int> prop_MaxItems("MaxItems", "Data", &RBX::DebrisService::getMaxItems, &RBX::DebrisService::setMaxItems, RBX::Reflection::PropertyDescriptor::STANDARD);
+
+static void cleanup(boost::weak_ptr<RBX::Instance> item)
+{
+	try
+	{
+		boost::shared_ptr<RBX::Instance> i = item.lock();
+		if (i)
+			i->setParent(NULL);
+	}
+	catch (std::exception& e)
+	{
+		RBX::StandardOut::singleton()->print(RBX::MESSAGE_WARNING, e);
+	}
+}
 
 namespace RBX
 {
-	const char* const sRunService = "RunService";
-
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> runFunction(&RunService::run, "Run", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> pauseFunction(&RunService::pause, "Pause", Reflection::FunctionDescriptor::NeedTrustedCaller);
-	static Reflection::BoundFuncDesc<RunService, void(void), 0> resetFunction(&RunService::reset, "Reset", Reflection::FunctionDescriptor::NeedTrustedCaller);
-
-	static Reflection::SignalDesc<RunService, void(float)> event_Heartbeat("Heartbeat", "interval");
-	Reflection::SignalDesc<RunService, void(float, float)> RunService::event_Stepped("Stepped", "time", "step");
-
-	RunService::RunService()
-		: framePeriod(1.0f/30.0f),
-		  runState(RS_NORMAL),
-		  invalidRunViewCount(0),
-		  stopRequested(false),
-		  runDisabled(false)
+	DebrisService::DebrisService()
+		: Base("Debris"),
+		  maxItems(300),
+		  timer(NULL)
 	{
-		setName("Run Service");
 	}
 
-	RunService::~RunService()
+	void DebrisService::setMaxItems(int value)
 	{
-		RBXASSERT(views.empty());
-	}
-
-	void RunService::endRunThread(bool join)
-	{
-		stopRequested = true;
-		stateChangedCondition.notify_all();
-
-		if (join)
-			runThread->join();
-	}
-
-	void RunService::onAncestorChanged(const AncestorChanged& event)
-	{
-		if (!getParent())
+		if (value != maxItems)
 		{
-			stopRequested = true;
-			stateChangedCondition.notify_all();
+			if (value < 0)
+				throw std::runtime_error("DebrisService MaxItems must be greater than 0");
+
+			maxItems = value;
+			raisePropertyChanged(prop_MaxItems);
+			DebrisService::cleanup();
 		}
 	}
 
-	void RunService::setRunState(RunState newState)
+	void DebrisService::addItem(boost::shared_ptr<Instance> item, double lifetime)
 	{
-		RunTransition transition(runState, newState);
-		runState = newState;
+		if (timer)
+			timer->delay(boost::bind(&::cleanup, item), lifetime);
 
-		Notifier<RunService, RunState>::raise(newState);
-		Notifier<RunService, RunTransition>::raise(transition);
+		queue.push(item);
+		DebrisService::cleanup();
 	}
 
-	void RunService::raiseStepped(float time, float step)
+	void DebrisService::cleanup()
 	{
-		Notifier<RunService, Stepped>::raise(Stepped(time, step));
-		event_Stepped.fire(this, time, step);
-	}
-
-	void RunService::raiseHeartbeat(float time, float step)
-	{
-		Notifier<RunService, Heartbeat>::raise(Heartbeat(time, step));
-		event_Heartbeat.fire(this, step);
-	}
-
-	void RunService::invalidateRunViews()
-	{
-		boost::mutex::scoped_lock lock(viewMutex);
-
-		if (invalidRunViewCount == 0)
+		while ((int)queue.size() > maxItems)
 		{
-			invalidRunViewCount = (int)views.size();
-			if (invalidRunViewCount > 0)
-			{
-				for (std::map<IRunView*, bool>::iterator iter = views.begin(); iter != views.end(); iter++)
-				{
-					iter->first->InvalidateRunView();
-					iter->second = false;
-				}
-				runViewsDoneCondition.notify_all();
-			}
+			::cleanup(queue.front());
+			queue.pop();
 		}
 	}
 
-	void RunService::start()
+	void DebrisService::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider)
 	{
-		RBXASSERT(!runThread);
-
-		boost::shared_ptr<DataModel> dataModel = shared_from(dynamic_cast<DataModel*>(getParent()));
-		runThread.reset(new boost::thread(background_function(boost::bind(&RunService::runProc, shared_from(this), dataModel), "rbx_runProc")));
-	}
-
-	void RunService::runProc(boost::shared_ptr<DataModel> dataModel)
-	{
-		double lastTime = getRealTime();
-		while (true)
+		while ((int)queue.size() > 0)
 		{
-			double deltaTime = lastTime - getRealTime();
-
-			{
-				boost::mutex::scoped_lock lock(viewMutex);
-				for (std::map<IRunView*, bool>::iterator it = views.begin(); it != views.end(); it++)
-					it->first->AdjustThrottle(deltaTime);
-			}
-
-			double clampedDeltaTime = G3D::max(0.0, deltaTime);
-			boost::xtime stateChangedTimeout;
-			boost::xtime_get(&stateChangedTimeout, boost::TIME_UTC);
-			stateChangedTimeout.nsec += (boost::xtime::xtime_nsec_t)(clampedDeltaTime * 1e9);
-
-			bool stateChanged;
-			{
-				boost::mutex::scoped_lock lock(runMutex);
-				stateChanged = stateChangedCondition.timed_wait(lock, stateChangedTimeout);
-			}
-
-			if (!stateChanged)
-			{
-				boost::xtime runViewsDoneTimeout;
-				boost::xtime_get(&runViewsDoneTimeout, boost::TIME_UTC);
-				runViewsDoneTimeout.sec += 1;
-
-				boost::mutex::scoped_lock lock(runMutex);
-				if (invalidRunViewCount != 0)
-					runViewsDoneCondition.timed_wait(lock, runViewsDoneTimeout);
-			}
-
-			if (deltaTime <= 0.0)
-				lastTime = getRealTime();
-
-			{
-				DataModel::Lock lock(dataModel);
-
-				if (!stopRequested)
-				{
-					RBXASSERT(getParent() == dataModel.get());
-					dataModel->step(framePeriod);
-				}
-				else
-				{
-					StandardOut::singleton()->print(MESSAGE_INFO, "runProc ending");
-					return;
-				}
-			}
-
-			lastTime += framePeriod;
+			::cleanup(queue.front());
+			queue.pop();
 		}
+
+		Instance::onServiceProvider(oldProvider, newProvider);
+
+		timer = ServiceProvider::create<TimerService>(newProvider);
 	}
 }

@@ -1,8 +1,9 @@
+// from server: 100% by EspClaude
 // from server: 86% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-lib: openrbx-client-dll roc_espeon_marker_97e43f62bf26f91e.cpp
+// roc-lib: openrbx-client-dll roc_claude_b06307daefdc6614.cpp
 
 // Candidate translation unit (score above; library headers required).
 extern "C" long __cdecl _InterlockedExchangeAdd(volatile long*, long);
@@ -44,7 +45,7 @@ struct Owner {
     virtual void v18();
     virtual void sent(int);
 
-    char padding[0x2d50];
+    char padding[0x1e14];
     Endpoint endpoint;
 };
 
@@ -66,10 +67,8 @@ void MarkerItem::send(void* stream)
     writeKind(stream, 4);
     writeMarker(stream, marker);
 
-    if (settings()->logging) {
-        logMessage(acquireLogger().get(), 1, "Replication: Sending marker %d to %s",
-                   marker, owner->endpoint.text(1));
-    }
+    logMessage(acquireLogger().get(), 1, "Replication: Sending marker %d to %s",
+               marker, owner->endpoint.text(1));
 
     owner->sent(marker);
 }

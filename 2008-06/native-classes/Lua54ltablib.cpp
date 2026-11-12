@@ -1,5 +1,9 @@
 // native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/lua-5.1.4/src /TC
 // 2008-06 native Lua54ltablib (inactive): upstream tools/libs/lua-5.1.4/src/ltablib.c, verbatim.
+// >>> native-status (generated) -- do not edit >>>
+// Lua54ltablib | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src e8ed73fa | roc native-status --write
 /*
 ** $Id: ltablib.c,v 1.38.1.3 2008/02/14 16:46:58 roberto Exp $
 ** Library for Table Manipulation

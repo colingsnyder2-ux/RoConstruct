@@ -1,5 +1,9 @@
 // native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/lua-5.1.1/src /TC
 // 2008-06 native Lua511lbaselib (inactive): upstream tools/libs/lua-5.1.1/src/lbaselib.c, verbatim.
+// >>> native-status (generated) -- do not edit >>>
+// Lua511lbaselib | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 3d320095 | roc native-status --write
 /*
 ** $Id: lbaselib.c,v 1.191 2006/06/02 15:34:00 roberto Exp $
 ** Basic library

@@ -3,7 +3,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DLog | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 9686236d | roc native-status --write
+// <<< native-status | src d0dec04e | roc native-status --write
 #line 1 ".\\G3Dcpp\\Log.cpp"
 /**
   @file Log.cpp

@@ -3,7 +3,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DShader | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src fbcaffad | roc native-status --write
+// <<< native-status | src 9a100586 | roc native-status --write
 #line 1 ".\\glg3dcpp\\Shader.cpp"
 /**
  @file Shader.cpp

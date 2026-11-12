@@ -1,18 +1,19 @@
+// from server: 100% by EspClaude
 // from server: 86% by EspClaude
 // from server: 100% by EspClaude
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-lib: rbxgs-dll roc_espclaude_aa1722ad196cb510.cpp
+// roc-lib: rbxgs-dll roc_claude_43d332cda48f1f58.cpp
 
 // Candidate translation unit (score above; library headers required).
 #define _DLL
 #include <boost/shared_ptr.hpp>
 
-struct Listener1 { char storage[36]; };
-struct Listener2 { char storage[36]; };
-struct Signal { char storage[32]; void disconnect(Listener1*); void connect(Listener1&); };
+struct Listener1 { char storage[28]; };
+struct Listener2 { char storage[28]; };
+struct Signal { char storage[24]; void disconnect(Listener1*); void connect(Listener1&); };
 struct Signal2 { char storage[32]; void disconnect(Listener2*); void connect(Listener2&); };
-struct Instance { char padding[100]; Signal first; Signal2 second; };
+struct Instance { char padding[68]; Signal first; Signal2 second; };
 
 boost::shared_ptr<Instance> __cdecl acquire(void*);
 
@@ -26,9 +27,8 @@ struct Window {
     virtual void s50();virtual void s51();virtual void s52();virtual void s53();virtual void s54();virtual void s55();virtual void s56();virtual void s57();virtual void s58();virtual void s59();
     virtual void s60();virtual void s61();virtual void s62();virtual void s63();virtual void s64();virtual void s65();virtual void s66();virtual void s67();virtual void s68();virtual void s69();
     virtual void s70();virtual void s71();virtual void s72();virtual void s73();virtual void s74();virtual void s75();virtual void s76();virtual void s77();virtual void s78();virtual void s79();
-    virtual void s80();virtual void s81();virtual void s82();virtual void s83();virtual void s84();virtual void s85();virtual void s86();virtual void s87();
-    virtual void refresh();
-    char padding[228];
+    virtual void s80();virtual void s81();virtual void s82();virtual void s83();    virtual void refresh();
+    char padding[164];
     Service* service;
 };
 
@@ -38,8 +38,8 @@ struct FlagGuard {
     ~FlagGuard() { *flag = previous; }
 };
 
-struct ExplorerTable { void* slots[101]; Window* (__thiscall* getWindow)(void*); };
-struct ExplorerBase { ExplorerTable* table; char padding[884]; };
+struct ExplorerTable { void* slots[99]; Window* (__thiscall* getWindow)(void*); };
+struct ExplorerBase { ExplorerTable* table; char padding[712]; };
 
 struct Explorer : ExplorerBase, Listener1, Listener2
 {

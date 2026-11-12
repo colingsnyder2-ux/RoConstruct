@@ -1,143 +1,87 @@
+// from server: 88% by EspClaude
 // from server: 67% by colin
 // roc-lang: cpp
 // roc-cl: 50727
 // roc-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD
-// roc-lib: rbxgs v8datamodel/PVInstance.cpp
+// roc-lib: rbxgs roc_claude_db6cfcd3c8abd78b.cpp
 
 // Candidate translation unit (score above; library headers required).
-#include "v8datamodel/PVInstance.h"
-#include "v8datamodel/UserController.h"
-#include "v8datamodel/Workspace.h"
+// 2007-08 0x5bbde0 PVInstance::computeTopPVController: self-contained codegen analog.
+// Target-proven: no RBXASSERT code (asserts off), Instance::parent at +0xbc, the
+// TopPVController ComputeProp at +0x128 (getValue out of line), controllerType at +0x14c,
+// getTypedRoot<PVInstance>() out of line, ServiceProvider::create<ControllerService>
+// cdecl, ControllerService::getController(type, this) returning by hidden pointer.
+#undef _RELEASEASSERT
+#include "v8world/Controller.h"
+#include "util/ComputeProp.h"
 
 namespace RBX
 {
-	const char* const sPVInstance = "PVInstance";
-
-	static Reflection::PropDescriptor<PVInstance, G3D::CoordinateFrame> desc_CoordFrame("CoordinateFrame", "Data", NULL, &PVInstance::setPVGridOffsetLegacy, Reflection::PropertyDescriptor::LEGACY); // L23
-	static Reflection::PropDescriptor<PVInstance, bool> prop_ControllerFlagShown("ControllerFlagShown", "Appearance", &PVInstance::getShowControllerFlag, &PVInstance::setShowControllerFlag, Reflection::PropertyDescriptor::STANDARD); // L32
-	const Reflection::EnumPropDescriptor<PVInstance, Controller::ControllerType> PVInstance::prop_ControllerType("Controller", "Behavior", &PVInstance::getControllerType, &PVInstance::setControllerType, Reflection::PropertyDescriptor::STANDARD); // L34
-
-#pragma warning (push)
-#pragma warning (disable : 4355) // warning C4355: 'this' : used in base member initializer list
-	PVInstance::PVInstance(const char* name)
-		: Base(name),
-		  IsControllable(this, &PVInstance::computeIsControllable),
-		  IsTopFlag(this, &PVInstance::computeIsTopFlag),
-		  TopPVController(this, &PVInstance::computeTopPVController),
-		  controllerType(Controller::NO_CONTROLLER),
-		  showControllerFlag(true),
-		  legacyOffset(NULL)
+	class Instance
 	{
-	}
-#pragma warning (pop)
+	protected:
+		char pad04[0xbc - 4];
+		Instance* parent;
+	public:
+		virtual ~Instance();
 
-	void PVInstance::moveToPoint(G3D::Vector3 point)
-	{
-		Workspace* workspace = Workspace::findWorkspace(this);
-		if (workspace)
-			workspace->moveToPoint(this, point);
-	}
-
-	void PVInstance::clearLegacyOffset()
-	{
-		legacyOffset.reset();
-
-		for (size_t i = 0; i < numChildren(); ++i)
+		template<typename Type>
+		const Type* getTypedParent() const
 		{
-			PVInstance* pvChild = queryTypedChild<PVInstance>((int)i);
-			if (pvChild)
-				pvChild->clearLegacyOffset();
-		}
-	}
-
-	void PVInstance::readProperty(const XmlElement* propertyElement, IReferenceBinder& binder)
-	{
-		if (propertyElement->getTag() == "Feature")
-		{
-			const Name* name = NULL;
-
-			bool foundNameAttribute = propertyElement->findAttributeValue(name_name, name);
-			RBXASSERT(foundNameAttribute);
-
-			if (*name == "Part")
-			{
-				readProperties(propertyElement, binder);
-				return;
-			}
-			if (*name == "Item")
-			{
-				readProperties(propertyElement, binder);
-				return;
-			}
+			return static_cast<const Type*>(parent);
 		}
 
-		return Instance::readProperty(propertyElement, binder);
-	}
-
-	PVInstance::~PVInstance()
-	{
-	}
-
-	void PVInstance::onChildControllerChanged()
-	{
-		dirtyAll();
-
-		PVInstance* pvParent = queryTypedParent<PVInstance>();
-		if (pvParent)
-			pvParent->onChildControllerChanged();
-	}
-
-	void PVInstance::onParentControllerChanged()
-	{
-		dirtyAll();
-
-		for (size_t i = 0; i < numChildren(); ++i)
+		template<typename Type>
+		const Type* getTypedRoot() const
 		{
-			PVInstance* pvChild = queryTypedChild<PVInstance>((int)i);
-			if (pvChild)
-				pvChild->onParentControllerChanged();
-		}
-	}
-
-	void PVInstance::dirtyAll()
-	{
-		TopPVController.setDirty();
-		IsControllable.setDirty();
-		IsTopFlag.setDirty();
-	}
-
-	void PVInstance::onDescendentAdded(Instance* instance)
-	{
-		Instance::onDescendentAdded(instance);
-
-		dirtyAll();
-	}
-
-	void PVInstance::onDescendentRemoving(const boost::shared_ptr<Instance>& instance)
-	{
-		dirtyAll();
-
-		Instance::onDescendentRemoving(instance);
-	}
-
-	bool PVInstance::computeIsControllable() const
-	{
-		for (size_t i = 0; i < numChildren(); ++i)
-		{
-			const IControllable* controllableChild = queryTypedChild<IControllable>((int)i);
-			if (controllableChild)
-			{
-				if (controllableChild->isControllable())
-					return true;
-			}
+			const Type* typedParent = dynamic_cast<const Type*>(parent);
+			if (typedParent)
+				return typedParent->getTypedRoot<Type>();
+			else
+				return static_cast<const Type*>(this);
 		}
 
-		return false;
-	}
+		template<typename Type>
+		const Type* queryTypedParent() const
+		{
+			return dynamic_cast<const Type*>(parent);
+		}
+	};
+
+	class ServiceProvider
+	{
+	public:
+		template<typename Class>
+		static Class* create(const Instance* context);
+	};
+
+	class PVInstance;
+	class ControllerService
+	{
+	public:
+		G3D::ReferenceCountedPointer<Controller> getController(Controller::ControllerType type, const PVInstance* controlledInstance);
+	};
+
+	class PVInstance : public Instance
+	{
+	protected:
+		char pad0c0[0x128 - 0xc0];
+		ComputeProp<G3D::ReferenceCountedPointer<Controller>, PVInstance> TopPVController;
+	private:
+		char pad_ctl[0x14c - 0x128 - sizeof(ComputeProp<G3D::ReferenceCountedPointer<Controller>, PVInstance>)];	// controllerType at +0x14c (target)
+		Controller::ControllerType controllerType;
+
+		G3D::ReferenceCountedPointer<Controller> computeTopPVController() const;
+	public:
+		bool isTopLevelPVInstance() const
+		{
+			return !queryTypedParent<PVInstance>() || getTypedRoot<PVInstance>() == getTypedParent<PVInstance>();
+		}
+	};
 
 	G3D::ReferenceCountedPointer<Controller> PVInstance::computeTopPVController() const
 	{
-		if (!isTopLevelPVInstance())
+		if (queryTypedParent<PVInstance>() && getTypedRoot<PVInstance>() != getTypedParent<PVInstance>())
 		{
 			G3D::ReferenceCountedPointer<RBX::Controller> controller = getTypedParent<PVInstance>()->TopPVController;
 
@@ -150,80 +94,5 @@ namespace RBX
 
 		ControllerService* controllerService = ServiceProvider::create<ControllerService>(this);
 		return controllerService ? controllerService->getController(controllerType, this) : NULL;
-	}
-
-	void PVInstance::onChildAdded(Instance* instance)
-	{
-		PVInstance* pvInstance = dynamic_cast<PVInstance*>(instance);
-		if (pvInstance)
-		{
-			pvInstance->onChildControllerChanged();
-			pvInstance->onParentControllerChanged();
-		}
-	}
-
-	void PVInstance::onChildRemoving(Instance* instance)
-	{
-		PVInstance* pvInstance = dynamic_cast<PVInstance*>(instance);
-		if (pvInstance)
-		{
-			pvInstance->onChildControllerChanged();
-			pvInstance->onParentControllerChanged();
-		}
-	}
-
-	void PVInstance::renderCoordinateFrame(Adorn* adorn)
-	{
-		adorn->setObjectToWorldMatrix(getLocation());
-		adorn->axes(G3D::Color3::red(), G3D::Color3::green(), G3D::Color3::blue(), 10.0f);
-	}
-
-	bool PVInstance::computeIsTopFlag() const
-	{
-		if (!IsControllable.getValue() || controllerType == Controller::NO_CONTROLLER)
-			return false;
-
-		if (isTopLevelPVInstance())
-			return true;
-
-		return getTypedParent<PVInstance>()->getTopPVController()->getControllerType() == Controller::NO_CONTROLLER;
-	}
-
-	void PVInstance::setPVGridOffsetLegacy(const G3D::CoordinateFrame& _offset)
-	{
-		RBXASSERT(this->isTopLevelPVInstance());
-
-		if (!legacyOffset)
-		{
-			legacyOffset.reset(new G3D::CoordinateFrame());
-			*legacyOffset = _offset;
-		}
-	}
-
-	void PVInstance::onExtentsChanged() const
-	{
-		const PVInstance* pvParent = queryTypedParent<PVInstance>();
-		if (pvParent)
-			pvParent->onExtentsChanged();
-	}
-
-	void PVInstance::setControllerType(Controller::ControllerType _control)
-	{
-		if (controllerType != _control)
-		{
-			controllerType = _control;
-			onChildControllerChanged();
-			onParentControllerChanged();
-			raisePropertyChanged(prop_ControllerType);
-		}
-	}
-
-	void PVInstance::setShowControllerFlag(bool _showControllerFlag)
-	{
-		if (showControllerFlag != _showControllerFlag)
-		{
-			showControllerFlag = _showControllerFlag;
-			raisePropertyChanged(prop_ControllerFlagShown);
-		}
 	}
 }

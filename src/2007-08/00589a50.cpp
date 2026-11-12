@@ -1,68 +1,42 @@
-// from server: 51% by colin
-struct VStockSound_FactoryProduct {
-    void f();
+// from server: 100% by EspClaude
+// roc-flags: /O2 /GS /EHsc /MD /fp:fast
+// VS2005 checked std::map iteration with erase: purge unreferenced FMOD sounds at random.
+// Node value at +0xc (VS2005 _Tree_nod); the target reads the mapped pointer at node+0x2c,
+// i.e. value+0x20; the pointed record holds the FMOD::Sound* at +0 and a count at +8.
+#include <map>
+#include <stdlib.h>
+
+namespace FMOD {
+enum FMOD_RESULT { FMOD_OK };
+class Sound { public: FMOD_RESULT __stdcall release(); };
+}
+
+struct SoundKey {
+    int pad[8];  // value+0x00..0x1f (mapped pointer proven at value+0x20)
+    bool operator<(const SoundKey& o) const { return pad[0] < o.pad[0]; }
 };
 
-extern "C" int __stdcall rand();
-extern "C" void __stdcall _invalid_parameter_noinfo();
+struct SoundData {
+    FMOD::Sound* sound;  // +0
+    int pad4;            // +4
+    int refs;            // +8
+};
 
-void VStockSound_FactoryProduct::f() {
-    int local10;
-    int local14;
-    int local18;
-    int local1c;
-    int local20;
-    int local24;
-    int local28;
-    int local2c;
+typedef std::map<SoundKey, SoundData*> SoundMap;
 
-    int* ebp = (int*)&local1c;
-    int* edi = ebp;
-    int* esi = (int*)*(int*)((char*)ebp + 4);
-    local10 = (int)edi;
-    local14 = (int)esi;
-
-    while (1) {
-        int* ebx;
-        if (edi != 0 && edi != ebp) {
-            _invalid_parameter_noinfo();
-        }
-        ebx = (int*)*(int*)((char*)ebp + 4);
-        if (esi == ebx) {
-            break;
-        }
-        if (edi == 0) {
-            rand();
-        }
-        if (esi == (int*)*(int*)((char*)edi + 4)) {
-            rand();
-        }
-        int* ecx = (int*)*(int*)((char*)esi + 0x2c);
-        if (*(int*)((char*)ecx + 8) == 0) {
-            int r = rand();
-            local24 = r;
-            float fv = (float)local24;
-            fv = fv * *(float*)0x7acfc4;
-            if (!(fv < *(float*)0x7acfc0)) {
-                if (esi == (int*)*(int*)((char*)edi + 4)) {
-                    rand();
-                }
-                int* ebx2 = (int*)*(int*)((char*)esi + 0x2c);
-                int* eax = (int*)*ebx2;
-                if (eax != 0) {
-                    void* p = eax;
-                    ((void (__cdecl*)(void*))0x62fc08)(p);
-                    *ebx2 = 0;
-                }
-                int* edx = &local20;
-                ((void (__thiscall*)(void*, int*, int*, int*))0x5895c0)(ebp, edx, esi, edi);
-                edi = (int*)*(int*)eax;
-                esi = (int*)*(int*)((char*)eax + 4);
-                continue;
+void purgeSounds(SoundMap& m)
+{
+    SoundMap::iterator it = m.begin();
+    while (it != m.end()) {
+        if (it->second->refs == 0 && (float)rand() * (1.0f / RAND_MAX) >= 0.7f) {
+            SoundData* d = it->second;
+            if (d->sound) {
+                d->sound->release();
+                d->sound = 0;
             }
+            it = m.erase(it);
+        } else {
+            ++it;
         }
-        ((void (__thiscall*)(void*, int*))0x587ae0)(&local10, &local10);
-        esi = (int*)local14;
-        edi = (int*)local10;
     }
 }

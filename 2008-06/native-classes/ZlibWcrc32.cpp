@@ -1,5 +1,9 @@
 // native-flags: /O2 /GS- /MD /DZLIB_WINAPI /I{headers}/../../../tools/libs/zlib-1.2.3 /TC
 // 2008-06 native ZlibWcrc32 (inactive): upstream tools/libs/zlib-1.2.3/crc32.c, verbatim.
+// >>> native-status (generated) -- do not edit >>>
+// ZlibWcrc32 | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 3b931f1d | roc native-status --write
 /* crc32.c -- compute the CRC-32 of a data stream
  * Copyright (C) 1995-2005 Mark Adler
  * For conditions of distribution and use, see copyright notice in zlib.h

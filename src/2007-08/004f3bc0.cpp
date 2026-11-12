@@ -1,8 +1,9 @@
+// from server: 76% by EspClaude
 // from server: 72% by EspClaude
 // from server: 100% by Espeon
 // roc-lang: cpp
 // roc-cl: 50727
-// roc-lib: rbxgs-dll roc_espeon_specdatastringreturns7002de86d90e7d94.cpp
+// roc-lib: rbxgs-dll roc_claude_ff44f3c6b3413f03.cpp
 
 // Candidate translation unit (score above; library headers required).
 // from server: 98% by colin
@@ -13,7 +14,7 @@
 extern bool enabled;
 extern const char emptyText[];
 
-extern double __cdecl queryFloat();
+extern float __cdecl queryFloat();
 extern unsigned __int64 __cdecl queryCounter();
 extern unsigned __cdecl queryFirst();
 extern unsigned __cdecl querySecond();
@@ -47,7 +48,6 @@ struct S {
     float value;
     unsigned counter;
     unsigned first;
-    unsigned second;
     std::string firstString;
     std::string secondString;
     std::string block;
@@ -58,10 +58,9 @@ struct S {
 };
 
 S::S()
-    : value(enabled ? queryFloat() : 0.0),
+    : value(enabled ? queryFloat() : 0.0f),
       counter(static_cast<unsigned>(queryCounter() >> 20)),
       first(queryFirst()),
-      second(querySecond()),
       firstString(enabled ? queryFirstString() : std::string(emptyText)),
       secondString(enabled ? querySecondString() : std::string(emptyText)),
       block(queryBlock()),

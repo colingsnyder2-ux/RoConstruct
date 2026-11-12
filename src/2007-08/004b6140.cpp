@@ -1,8 +1,9 @@
+// from server: 100% by EspClaude
 // from server: 75% by EspClaude
 // from server: 100% by colin
 // roc-cl: 50727
 // roc-lang: cpp
-// roc-lib: rbxgs-net-dll roc_unit_cc32e74e273c8479.cpp
+// roc-lib: rbxgs-net-dll roc_claude_fdcbd9bfdaeed71a.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include <queue>
@@ -57,16 +58,15 @@ boost::shared_ptr<Reflection::DescribedBase> Replicator::sendMarker()
 			boost::shared_ptr<Marker> marker = Marker::newMarker();
 
 			RakNet::BitStream bitStream;
-			bitStream << (unsigned char)0x4f /* target marker packet ID */;
+			bitStream << (unsigned char)0x4a /* target marker packet ID (2007-08) */;
 			bitStream << (int)marker->id();
 
-			if (*reinterpret_cast<const bool*>(reinterpret_cast<const char*>(&NetworkSettings::singleton()) + 0x131))
 			{
-				StandardOut::singleton()->print(MESSAGE_INFO, "Replicator: Requesting Marker %d of %s", (int)marker->id(), (*reinterpret_cast<SystemAddress*>(reinterpret_cast<char*>(this) + 0x2d54)).ToString());
+				StandardOut::singleton()->print(MESSAGE_INFO, "Replicator: Requesting Marker %d of %s", (int)marker->id(), (*reinterpret_cast<SystemAddress*>(reinterpret_cast<char*>(this) + 0x1e18)).ToString());
 			}
 
-			(*reinterpret_cast<std::queue<boost::shared_ptr<Marker>>*>(reinterpret_cast<char*>(this) + 0x2cdc)).push(marker);
-			(*reinterpret_cast<RakPeerInterface**>(reinterpret_cast<char*>(this) + 0x2d50))->Send(&bitStream, HIGH_PRIORITY, RELIABLE, 0, (*reinterpret_cast<SystemAddress*>(reinterpret_cast<char*>(this) + 0x2d54)), false);
+			(*reinterpret_cast<std::queue<boost::shared_ptr<Marker>>*>(reinterpret_cast<char*>(this) + 0x1dd8)).push(marker);
+			(*reinterpret_cast<RakPeerInterface**>(reinterpret_cast<char*>(this) + 0x1e14))->Send(&bitStream, HIGH_PRIORITY, RELIABLE, 0, (*reinterpret_cast<SystemAddress*>(reinterpret_cast<char*>(this) + 0x1e18)), false);
 
 			return marker;
 		}

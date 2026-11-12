@@ -1,5 +1,9 @@
 // native-flags: /O2 /GS- /MD /DZLIB_WINAPI /I{headers}/../../../tools/libs/zlib-1.2.3 /TC
 // 2008-06 native ZlibWuncompr (inactive): upstream tools/libs/zlib-1.2.3/uncompr.c, verbatim.
+// >>> native-status (generated) -- do not edit >>>
+// ZlibWuncompr | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src e21951ea | roc native-status --write
 /* uncompr.c -- decompress a memory buffer
  * Copyright (C) 1995-2003 Jean-loup Gailly.
  * For conditions of distribution and use, see copyright notice in zlib.h

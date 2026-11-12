@@ -1,7 +1,8 @@
+// from server: 100% by EspClaude
 // from server: 82% by EspClaude
 // from server: 100% by colin
 // roc-cl: 50727
-// roc-lib: rbxgs-render roc_manual_aggregate_6f70ce73a8fc22b3.cpp
+// roc-lib: rbxgs-render roc_claude_0b9bc23859888f17.cpp
 
 // Candidate translation unit (score above; library headers required).
 #include "RenderLib/TextureProxy.h"
@@ -16,19 +17,16 @@
 namespace RBX { namespace Render {
 class AggregateChunk;
 class Mesh : public G3D::ReferenceCountedObject {};
+// 2007-08: concrete Material, new(0x18) + out-of-line ctor 0x4fb9c0, non-virtual appendLevel (ret 0x20)
 class Material : public G3D::ReferenceCountedObject {
+    char levels[12]; // 0xc..0x18: ctor 0x4fb9c0 zeroes +0xc/+0x10/+0x14
 public:
     class Level {};
-    virtual ~Material();
-    virtual void oldMethod();
-    virtual const Level& appendEmptyLevel();
-    virtual const Level& appendLevel(G3D::Color3, float, float, float, float);
-    virtual const Level& appendLevel(G3D::ReferenceCountedPointer<TextureProxy>, G3D::Color3, float, float, float, float);
+    Material();
+    const Level& appendLevel(G3D::ReferenceCountedPointer<TextureProxy>, G3D::Color3, float, float, float, float);
 };
-Material* createMaterial();
 
 class __declspec(novtable) Chunk : public G3D::ReferenceCountedObject {
-    char oldBaseMembers[12];
 public:
     const float polygonOffset;
     float radius;
@@ -50,7 +48,6 @@ class AggregateChunk : public Chunk {
     G3D::CoordinateFrame _cframe;
     bool _castsShadows;
     bool _cullable;
-    char oldMembers[4];
     G3D::GLight shadowSource;
     G3D::VAR shadowVAR;
     G3D::Array<unsigned int> shadowIndexArray;
@@ -79,7 +76,7 @@ AggregateChunk::AggregateChunk(const G3D::ReferenceCountedPointer<Chunk>& firstC
     RenderStats::aggregateChunkCount++;
     RenderStats::chunkCount--;
     if (randomColors) {
-        material = createMaterial();
+        material = new Material();
         material->appendLevel(NULL, (G3D::Color3::wheelRandom() + G3D::Color3::white()) / 2.0f, 0.0f, 50.0f, 0.0f, 0.0f);
     }
 }

@@ -1,5 +1,9 @@
 // native-flags: /O2 /GS- /MD /DZLIB_WINAPI /I{headers}/../../../tools/libs/zlib-1.2.3 /TC
 // 2008-06 native ZlibWtrees (inactive): upstream tools/libs/zlib-1.2.3/trees.c, verbatim.
+// >>> native-status (generated) -- do not edit >>>
+// ZlibWtrees | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src fb7d311d | roc native-status --write
 /* trees.c -- output deflated data using Huffman coding
  * Copyright (C) 1995-2005 Jean-loup Gailly
  * For conditions of distribution and use, see copyright notice in zlib.h

@@ -1,5 +1,9 @@
 // native-flags: /O2 /GS- /MD  /I{headers}/../../../tools/libs/lua-5.1.4/src /TC
 // 2008-06 native Lua54lstrlib (inactive): upstream tools/libs/lua-5.1.4/src/lstrlib.c, verbatim.
+// >>> native-status (generated) -- do not edit >>>
+// Lua54lstrlib | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src 29847e29 | roc native-status --write
 /*
 ** $Id: lstrlib.c,v 1.132.1.4 2008/07/11 17:27:21 roberto Exp $
 ** Standard library for string operations and pattern-matching

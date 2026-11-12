@@ -20,6 +20,10 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 
+// >>> native-status (generated) -- do not edit >>>
+// XTPCalendarEvent | 2008-06 | draft (no current byte proof)
+// no original address mapped to this file yet | by -
+// <<< native-status | src b6f0a2fa | roc native-status --write
 #include "stdafx.h"
 
 #include "Common/XTPPropExchange.h"

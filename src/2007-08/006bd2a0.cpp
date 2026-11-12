@@ -1,7 +1,8 @@
+// from server: 69% by EspClaude
 // from server: 50% by colin
 // roc-lang: cpp
 // roc-cl: 30729
-// roc-flags: /O2 /GS- /MD
+// roc-flags: /O2 /Ob1 /GS /MD /EHsc
 // roc-lib: xtp-11.2.2 Source/CommandBars/XTPOffice2007Theme.cpp
 
 // Candidate translation unit (score above; library headers required).

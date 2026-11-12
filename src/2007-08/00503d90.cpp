@@ -1,8 +1,9 @@
+// from server: 100% by EspClaude
 // from server: 59% by colin
 // roc-lang: cpp
-// roc-cl: 21022
-// roc-flags: /O2 /GS- /EHsc /MD
-// roc-lib: g3d-6.09 G3Dcpp/GImage_jpeg.cpp
+// roc-cl: 50727
+// roc-flags: /O2 /GS /EHsc /MD
+// roc-lib: g3d-6.09 roc_claude_7b45bfdabb332fb9.cpp
 
 // Candidate translation unit (score above; library headers required).
 /**
@@ -15,14 +16,15 @@
 #include "G3D/GImage.h"
 #include "G3D/BinaryInput.h"
 #include "G3D/BinaryOutput.h"
+#include <stdexcept>
  
  /**
  Pick up libjpeg headers locally on Windows, but from the system on all other platforms.
 */
 extern "C" {
 #ifdef G3D_WIN32
-	#include "../IJG/jconfig.h"
-	#include "../IJG/cdjpeg.h"
+	#include "IJG/jconfig.h"
+	#include "IJG/cdjpeg.h"
 #else
 	#include <jconfig.h>
 	#include <jpeglib.h>
@@ -334,6 +336,15 @@ void GImage::encodeJPEG(
 
 
 
+/* 2007-08: jerr.error_exit is set to a throwing handler (store of 0x502b80 after jpeg_std_error). */
+static void jpegErrorExit(j_common_ptr cinfo) {
+    (*cinfo->err->output_message)(cinfo);
+    jpeg_destroy(cinfo);
+    char buffer[JMSG_LENGTH_MAX];
+    (*cinfo->err->format_message)(cinfo, buffer);
+    throw std::runtime_error(buffer);
+}
+
 void GImage::decodeJPEG(
     BinaryInput&                input) {
 
@@ -344,6 +355,7 @@ void GImage::decodeJPEG(
     channels = 3;
     // We have to set up the error handler, in case initialization fails.
 	cinfo.err = jpeg_std_error(&jerr);
+	jerr.error_exit = jpegErrorExit;
 
     // Initialize the JPEG decompression object.
 	jpeg_create_decompress(&cinfo);

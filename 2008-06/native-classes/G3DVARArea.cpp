@@ -3,7 +3,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // G3DVARArea | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src 19313d99 | roc native-status --write
+// <<< native-status | src 9d8a0c06 | roc native-status --write
 #line 1 ".\\glg3dcpp\\VARArea.cpp"
 /**
  @file VARArea.cpp
