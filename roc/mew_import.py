@@ -68,6 +68,12 @@ def blobs(root, identities):
 def receipt_groups(receipt):
     """Find original-address leads and the source each receipt group compiled."""
     rows, flags = receipt.get('rows'), receipt.get('flags')
+    if isinstance(rows, list):
+        grouped = {}
+        for row in rows:
+            if isinstance(row, dict) and isinstance(row.get('unit'), str):
+                grouped.setdefault(row['unit'], []).append(row)
+        rows = grouped
     if not isinstance(rows, dict) or not isinstance(flags, dict):
         return []
     result = []
@@ -84,7 +90,8 @@ def receipt_groups(receipt):
             if not isinstance(row, dict) or row.get('exact') is not True:
                 continue
             address, symbol = str(row.get('address', '')).lower().removeprefix('0x'), row.get('symbol')
-            if re.fullmatch(r'[0-9a-f]{8}', address) and isinstance(symbol, str) and symbol:
+            if (re.fullmatch(r'[0-9a-f]{8}', address) and isinstance(symbol, str) and symbol
+                    and not symbol.startswith(('__catch$', '__ehhandler$', '__unwindfunclet$'))):
                 checks.append({'addr': address, 'symbol': symbol})
         if checks:
             ogre = any(str(value).replace('\\', '/').lower().endswith(

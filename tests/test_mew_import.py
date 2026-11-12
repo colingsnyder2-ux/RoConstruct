@@ -47,6 +47,21 @@ class MewImportTests(unittest.TestCase):
         self.assertEqual(mew_import.receipt_groups(receipt),
                          [('foo.cpp', 'good', [{'addr': '005a01e0', 'symbol': '?a'}], True, False, False)])
 
+    def test_receipt_groups_support_flat_rows_with_unit(self):
+        receipt = {
+            'flags': {'templates': ['/tmp/AppUnit404Templates.cpp']},
+            'rows': [
+                {'unit': 'templates', 'exact': True, 'address': '00405da0', 'symbol': '?getCreators'},
+                {'unit': 'templates', 'exact': True, 'address': '00405dbe',
+                 'symbol': '__catch$?getCreators$0'},
+                {'unit': 'templates', 'exact': False, 'address': '00405e30', 'symbol': '?partial'},
+            ],
+        }
+        self.assertEqual(mew_import.receipt_groups(receipt), [
+            ('appunit404templates.cpp', 'templates',
+             [{'addr': '00405da0', 'symbol': '?getCreators'}], False, False, False)
+        ])
+
     def test_pinned_ogre_profile_detected_without_trusting_external_path(self):
         receipt = {'flags': {'g': ['/I/home/user/roconstruct/tools/libs/ogre-1.4.5/ogrenew/OgreMain/include',
                                    '/tmp/Foo.cpp']},
