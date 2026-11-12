@@ -1,0 +1,209 @@
+{
+  "class": "RBX template instances of the ATL COM unit of CApp in the application range 00404000..00408000 (2008-06), inactive",
+  "compiler": "VS2008 RTM 21022",
+  "flags": {
+    "templates": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/app-unit404/NativeAppUnit404_templates.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit404Templates.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit404.py": "fe27bd6a2de654f4342cc9d97c905293b40ae0467f5a63eefdf3f2bc7958916b",
+    "rebuild/2008-06/native-classes/AppUnit404Templates.cpp": "e615e616e5e932e5c8002ab8e07f82274e1835642468e0e8f12250e20753e4da",
+    "rebuild/2008-06/native-headers/util/Object.h": "f90232922bf225642ca990ec8c8484e62f50caa0fe0448228b6bc33af43742b2",
+    "rebuild/2008-06/native-headers/v8tree/Instance.h": "49ce2d0144378fead1015fd0fce074b67cacc352a15bda5c814913a119fd9114",
+    "rebuild/2008-06/native-headers/v8datamodel/GlobalSettings.h": "a51f9ca2338f74fdc354488e7e436cfe75941045415eb3d3a5e3a5f0c9bf6d16",
+    "rebuild/2008-06/native-headers/v8datamodel/DebugSettings.h": "8a71a6f8defc32833c4a5ba367367b6f89d46701fa9eb7fc92165a9f8fe45917"
+  },
+  "objects": {
+    "templates": "aab1e5b3a10040ecd634b3467963feeb7cdb84f180073e7c679176730fe82c04"
+  },
+  "range_rows": 121,
+  "unit_blocks": [
+    "0x404000..0x405aa0 ATL COM unit of CWorkspace (from 0x401910)",
+    "0x405aa0..0x405da0 active-document unit",
+    "0x405da0..0x408000 ATL COM unit of CApp (continues to 0x409960)"
+  ],
+  "unit_map": {
+    "atl com unit of CWorkspace ..00405a9f": "Starts at 00401910 (app-unit400-2008 map). In this range: the ATL registrar CRegParser body 00404040 / 004043f0 (\"Delete\" / \"ForceRemove\" / \"NoRemove\") with its EH funclets, CComTypeInfoHolder::GetTI 00404a80 (app-unit414 binds it under that name), IObjectSafetyRobloxImpl<CWorkspace>::GetInterfaceSafetyOptions / SetInterfaceSafetyOptions 00404d20 / 00404db0 (slots 3/4 of vtable 0081c80c; listed by the CWorkspace owner workspace-safety receipt), and the CComObject / CComAggObject / CComClassFactory QueryInterface / Release / CreateInstance thunks 00404e30..00405a80 (workspace-factory-vtables trial). Not recovered here: CWorkspace is another owner (CWorkspace.h, CWorkspace*.cpp / Workspace*.cpp); the ATL rows are library header code.",
+    "active-document unit 00405aa0..00405d9f": "setActiveDocument 00405aa0 and its helpers 00405ce0 / 00405d50 / 00405d80 (callers in the doc / view units). Not recovered here: ActiveDocView owner, and the body dispatches into CRobloxDoc (maintainer exclusion).",
+    "atl com unit of CApp 00405da0..": "Continues to 0040995f. AbstractFactoryProduct<Instance>::getCreators 00405da0 (built and counted here), boost::detail::sp_counted_base::destroy 00405e10 (boost header, ICF-shared by every sp_counted_impl vtable; library), Creatable<Instance>::operator delete 00405e20 (built and counted here), Creatable<Instance>::Deleter::operator() 00405e30 (needs Instance::predelete, see not_exact), the Creatable block of RunService 00405e60..0040602f and DebugSettings 00406ed0 / 00407450 / 00407820 (counted elsewhere), the CApp COM methods 004060d0..00406260 / 004069d0..00406be0 / 00406da0..00407180 / 004078a0 (AFX_MANAGE_STATE bodies; \"requested WindowType is invalid\"), the ATL CUrl / AtlUnescapeUrl / CSimpleStringT / CComBSTR inline COMDATs 004062a0..00406650, 00406930, 00406c00..00406d60, 00407380..00407400, the CRT vector iterator 004066c0, the Name::doDeclare / callDoDeclare instances 00406700..004068c0 / 00406e80..00406ec0, IObjectSafetyRobloxImpl<CApp> 00407500 / 00407690 / 00407720 (\"Untrusted Site: %s\"), the std::vector<string> _Destroy / _Tidy instances 004077a0 / 004077d0 (STL), the boost recursive_mutex scoped_lock ctor / dtor 00407130 / 00407160 (boost), GlobalSettingsItem<DebugSettings>::singleton 00407be0 (built and counted here), and the CComObject<CApp> constructor 00407cf0 / IsEqualGUID 00407d40 / Release 00407d90 with the adjustor thunks 00407dc0..00407ff0 (vtables 0080b50c..0080b58c). CApp has no native header or donor source: not recovered."
+  },
+  "library": "ATL (atlbase.h registrar / class factory / CComObject / CComBSTR, atlutil.h CUrl, atlsimpstr.h CSimpleStringT), boost (sp_counted_base::destroy 00405e10, thread_exception 00406b80, recursive_mutex scoped_lock 00407130 / 00407160), STL (vector<string> 004077a0 / 004077d0) and the CRT 004066c0 are header instances inside the units above. No separately compiled library unit starts in this range. Never recovered here.",
+  "excluded": "No CRobloxApp / CMainFrame / CRobloxDoc / CRobloxView member lies in the range. setActiveDocument 00405aa0 dispatches into CRobloxDoc (left to its owner); the CApp methods 00406110 / 00406180 / 004061e0 call members of the running CRobloxApp / log manager and are not recovered (no CApp header).",
+  "unit_map_checks": [
+    "strings referenced by row 004043f0: Delete / ForceRemove / NoRemove",
+    "strings referenced by row 00407500: Failed to get SiteUrl / Untrusted Site: %s",
+    "strings referenced by row 004078a0: requested WindowType is invalid / Couldn't create workspace / iworkspace.CopyTo failed",
+    "vtable 0x81c80c RTTI .?AV?$IObjectSafetyRobloxImpl@VCWorkspace@@$00@@",
+    "vtable 0x80b40c RTTI .?AV?$IObjectSafetyRobloxImpl@VCApp@@$00@@",
+    "vtable 0x80b58c RTTI .?AV?$CComObject@VCApp@@@ATL@@",
+    "vtable 0x80b50c RTTI .?AV?$CComObject@VCApp@@@ATL@@",
+    "vtable 0x80b2f0 RTTI .?AVsp_counted_base@detail@boost@@",
+    "vtable 0x80b3f8 RTTI .?AV?$sp_counted_impl_pd@PAVDebugSettings@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@detail@boost@@",
+    "vtable 0x81c80c slot 3 = 0x404d20",
+    "vtable 0x81c80c slot 4 = 0x404db0",
+    "vtable 0x80b2f0 slot 2 = 0x405e10",
+    "evidence name 0x405e10 ?destroy@sp_counted_base@detail@boost@@UAEXXZ",
+    "evidence name 0x4062a0 ?AtlGetDefaultUrlPort@ATL@@YAGW4ATL_URL_SCHEME@1@@Z",
+    "evidence name 0x407380 ??0CUrl@ATL@@QAE@XZ",
+    "evidence name 0x4066c0 ??_H@YGXPAXIHP6EPAX0@Z@Z",
+    "evidence name 0x406b80 ??0thread_exception@boost@@QAE@ABV01@@Z",
+    "unwind funclet call 0x7c8bcc -> 0x405e20 (Creatable<Instance>::operator delete)",
+    "unwind funclet call 0x7d82f4 -> 0x405e20 (Creatable<Instance>::operator delete)"
+  ],
+  "range_rows_counted_by_other_receipts": [
+    "00405e60 counted by creatable-shared-count-working.json",
+    "00405ef0 counted by app-unit400-2008-working.json",
+    "00405fa0 counted by app-unit400-2008-working.json",
+    "00406020 counted by app-unit400-2008-working.json",
+    "004066b0 counted by misc-leaves-working.json",
+    "00406700 counted by settings-items-working.json",
+    "00406770 counted by app-unit400-2008-working.json",
+    "004067e0 counted by team-working.json",
+    "00406850 counted by app-unit400-2008-working.json",
+    "004068c0 counted by app-unit400-2008-working.json",
+    "00406ce0 counted by misc-leaves-working.json",
+    "00406d60 counted by misc-leaves-working.json",
+    "00406e80 counted by settings-items-working.json",
+    "00406e90 counted by app-unit400-2008-working.json",
+    "00406ea0 counted by team-working.json",
+    "00406eb0 counted by app-unit400-2008-working.json",
+    "00406ec0 counted by app-unit400-2008-working.json",
+    "00406ed0 counted by app-unit400-2008-working.json",
+    "00407400 counted by misc-leaves-working.json",
+    "00407450 counted by settings-items-working.json",
+    "00407820 counted by settings-items-working.json"
+  ],
+  "range_rows_not_counted": "00404040 0040412e 004042fd 0040433a 004043f0 00404a80 00404d20 00404db0 00404e30 00404efe 00404f30 00404f90 00404fb0 00405040 00405060 00405190 004052b0 00405310 00405340 004053a0 00405538 004055f0 004056f0 004057f0 00405a80 00405aa0 00405ce0 00405d50 00405d80 00405e10 00405e30 004060d0 004060f0 00406110 00406180 004061e0 00406260 004062a0 00406300 00406450 004064b0 00406510 00406590 004065f0 00406650 004066c0 00406930 004069d0 00406a80 00406b10 00406b80 00406bb0 00406be0 00406c00 00406da0 00406e50 00406f60 004070e0 00407130 00407160 00407180 00407380 004073d0 004073e0 00407500 00407690 00407720 004077a0 004077d0 004078a0 00407b90 00407cf0 00407d40 00407d90 00407dc0 00407dd0 00407de0 00407df0 00407e00 00407e10 00407e20 00407e60 00407e80 00407e90 00407ea0 00407eb0 00407ef0 00407f50 00407f70 00407f80 00407f90 00407fa0 00407fb0 00407fc0 00407fd0 00407fe0 00407ff0",
+  "rows": [
+    {
+      "address": "00405da0",
+      "symbol": "?getCreators@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@KAAAV?$map@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@@std@@XZ",
+      "size": 102,
+      "target_size": 102,
+      "exact": true,
+      "unit": "templates",
+      "verified_targets": {
+        "??_B?1??getCreators@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@KAAAV?$map@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@@std@@XZ@51": "0x96c2d4 (data (address the original uses))",
+        "?creators@?1??getCreators@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@KAAAV?$map@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@@std@@XZ@4V45@A": "0x96c2b4 (data (address the original uses))",
+        "??0?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE@ABU?$less@PBVName@RBX@@@1@ABV?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@1@@Z": "0x446110 (support body exact at the bound address)",
+        "??__Fcreators@?1??getCreators@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@KAAAV?$map@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@@std@@XZ@YAXXZ": "0x7fa0a0 (support body exact at the bound address)",
+        "_atexit": "0x6a17af (external (call site in the original))"
+      },
+      "local_eh": [
+        "__ehhandler$?getCreators@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@KAAAV?$map@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@@std@@XZ"
+      ]
+    },
+    {
+      "address": "00405e20",
+      "symbol": "??3?$Creatable@VInstance@RBX@@@RBX@@CAXPAX@Z",
+      "size": 6,
+      "target_size": 6,
+      "exact": true,
+      "unit": "templates",
+      "verified_targets": {
+        "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "00407be0",
+      "symbol": "?singleton@?$GlobalSettingsItem@VDebugSettings@RBX@@$1?sDebugSettings@2@3QBDB@RBX@@SAAAVDebugSettings@2@XZ",
+      "size": 266,
+      "target_size": 266,
+      "exact": true,
+      "unit": "templates",
+      "verified_targets": {
+        "?mutex@GlobalSettings@RBX@@2Vrecursive_mutex@boost@@A": "0x974aa0 (data (address the original uses))",
+        "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090 (external (call site in the original))",
+        "?sing@?$GlobalSettingsItem@VDebugSettings@RBX@@$1?sDebugSettings@2@3QBDB@RBX@@0PAV12@A": "0x96c318 (data (address the original uses))",
+        "??$create@VDebugSettings@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VDebugSettings@RBX@@@boost@@XZ": "0x407820 (row counted by settings-items-working.json (this build exact there))",
+        "?singleton@GlobalSettings@RBX@@SA?AV?$shared_ptr@VGlobalSettings@RBX@@@boost@@XZ": "0x5690f0 (external (call site in the original))",
+        "?setParent@Instance@RBX@@QAEXPAV12@@Z": "0x55a8f0 (external (call site in the original))",
+        "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x5630e0 (external (call site in the original))"
+      },
+      "local_eh": [
+        "__ehhandler$?singleton@?$GlobalSettingsItem@VDebugSettings@RBX@@$1?sDebugSettings@2@3QBDB@RBX@@SAAAVDebugSettings@2@XZ"
+      ]
+    }
+  ],
+  "support_rows": {
+    "??0?$_Tree@V?$_Tmap_traits@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@$0A@@std@@@std@@QAE@ABU?$less@PBVName@RBX@@@1@ABV?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@1@@Z": {
+      "address": "0x446110",
+      "reached_from": "?getCreators@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@KAAAV?$map@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@@std@@XZ",
+      "note": "body this build emits, exact at the bound address (outside this range, counted by no receipt); support evidence, not counted"
+    },
+    "??__Fcreators@?1??getCreators@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@KAAAV?$map@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@@std@@XZ@YAXXZ": {
+      "address": "0x7fa0a0",
+      "reached_from": "?getCreators@?$AbstractFactoryProduct@VInstance@RBX@@@RBX@@KAAAV?$map@PBVName@RBX@@PBVICreator@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@PBVICreator@2@@std@@@5@@std@@XZ",
+      "note": "body this build emits, exact at the bound address (outside this range, counted by no receipt); support evidence, not counted"
+    }
+  },
+  "targets_counted_elsewhere": {
+    "??$create@VDebugSettings@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VDebugSettings@RBX@@@boost@@XZ": "0x407820 counted by settings-items-working.json (this build exact there)"
+  },
+  "pending_rows": [],
+  "not_exact": [
+    {
+      "address": "Creatable<Instance>::Deleter::operator() 00405e30",
+      "reason": "Blocked, not attempted: the body is Instance::predelete(p) (0055b770, cdecl static) followed by the virtual delete through the Creatable base at +0x10; v8tree/Instance.h does not declare predelete and util/Object.h only declares operator(). Existing proposal (TANDEM 2026-11-04/06, util/Object.h owner): define it inline; it also needs `static void predelete(Instance*);` in Instance.h (core, owner only)."
+    },
+    {
+      "address": "CApp COM rows (004060d0..004078a0, 00407cf0..00407ff0)",
+      "reason": "Not attempted: CApp has no native header and no donor source; its layout and interface set (IApp dispinterface, IObjectSafetyRobloxImpl<CApp>, CComObject<CApp> at +0/+4/+0xc/+0x14) would have to be derived first. Several bodies also call CRobloxApp members (maintainer exclusion)."
+    },
+    {
+      "address": "CWorkspace COM unit rows 00404040..00405a80",
+      "reason": "Other owner (CWorkspace family, workspace-* receipts and trials); ATL library header code otherwise."
+    },
+    {
+      "address": "setActiveDocument 00405aa0 and helpers 00405ce0 / 00405d50 / 00405d80",
+      "reason": "ActiveDocView owner (native-classes/ActiveDocument.cpp); dispatches into CRobloxDoc."
+    }
+  ],
+  "rejected": {},
+  "proposals": [
+    "util/Object.h (core owner) + v8tree/Instance.h (core owner), re-confirming the 2026-11-04 proposal: define Creatable<T>::Deleter::operator()(T* obj) { T::predelete(obj); delete obj; } inline and declare `static void predelete(Instance*);` (0055b770) accessible to it. Evidence: 00405e30 = push p; call 0055b770; add esp,4; then delete through [p+0x10] slot 0 with 1; the dispose body 0048ee50 inlines the same sequence."
+  ],
+  "exact_function_rows": [
+    "00405da0",
+    "00405e20",
+    "00407be0"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}
