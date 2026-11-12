@@ -1,0 +1,206 @@
+{
+ "name": "RbxgsAppOpenRBXPorts",
+ "description": "TRIAL: declaration-only OpenRBX App ports to 2008 rbxgs headers; inactive until no-loss and milestones pass.",
+ "depends": [
+  "g3d",
+  "g3d-gl",
+  "libpng",
+  "boost",
+  "raknet"
+ ],
+ "layers": [
+  {
+   "name": "openrbx",
+   "mode": "direct",
+   "dir": "rebuild/2008-06/openrbx-ports",
+   "files": "v8datamodel/RootInstance.cpp gui/ChatWidget.cpp v8datamodel/Surfaces.cpp v8datamodel/LocakBackpack.cpp util/Name.cpp tool/DragUtilities.cpp v8datamodel/Accoutrement.cpp v8datamodel/Teams.cpp",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD",
+   "includes_from_recipe": "rbxgs",
+   "defines_from_recipe": "rbxgs",
+   "extra_defines": "BOOST_ALL_NO_LIB"
+  },
+  {
+   "name": "rbxgs",
+   "mode": "recipe",
+   "recipe": "rbxgs",
+   "direct": true,
+   "files": "util/*.cpp v8kernel/*.cpp reflection/*.cpp v8tree/*.cpp v8world/*.cpp v8datamodel/*.cpp script/*.cpp humanoid/*.cpp tool/*.cpp v8xml/*.cpp gui/*.cpp security/*.cpp",
+   "extra_defines": "BOOST_ALL_NO_LIB",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD",
+   "exclude": [
+    "util/Utilities.cpp",
+    "v8tree/Property.cpp",
+    "v8world/CollisionStage.cpp",
+    "v8world/SeparateStage.cpp"
+   ]
+  },
+  {
+   "name": "net",
+   "mode": "recipe",
+   "recipe": "rbxgs-net",
+   "direct": true,
+   "files": "recipe",
+   "extra_defines": "BOOST_ALL_NO_LIB",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
+  },
+  {
+   "name": "appdraw",
+   "mode": "recipe",
+   "recipe": "rbxgs-appdraw",
+   "direct": true,
+   "files": "recipe",
+   "extra_defines": "BOOST_ALL_NO_LIB",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD"
+  },
+  {
+   "name": "renderlib",
+   "mode": "direct",
+   "dir": "work/upstream/OpenRBX/Client/Rendering/RenderLib",
+   "files": "*.cpp",
+   "defines_from_recipe": "rbxgs-render",
+   "extra_defines": "BOOST_ALL_NO_LIB",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD",
+   "note": "complete 2007 renderer from OpenRBX (GPLv3 donor, Dec 2007 0.3.676); rbxgs ships it partially; OpenRBX renderlib/rbxview headers first (renderer-internal ABI), engine App headers from rbxgs",
+   "extra_includes": [
+    "work/upstream/OpenRBX/Client/Rendering/RenderLib/include",
+    "work/upstream/OpenRBX/Client/RbxView/include",
+    "work/upstream/OpenRBX/Client/RbxView",
+    "rebuild/2008-06/native-donor-2007",
+    "tools/rbxgs/Client/RbxView/include",
+    "tools/rbxgs/Client/RbxViewBase",
+    "tools/rbxgs/Client/App/include",
+    "tools/rbxgs/Client/RbxGraphics/include",
+    "tools/rbxgs/Client/Network/include",
+    "tools/rbxgs/Client/Rendering/RenderLib/include",
+    "tools/rbxgs/Client/Rendering/AppDraw/include",
+    "tools/rbxgs/Client/Rendering/g3d/include",
+    "tools/rbxgs/Client/Rendering/g3d/zlib",
+    "tools/rbxgs/Client/Rendering/png",
+    "tools/rbxgs/Client/boost_1_34_1/src",
+    "tools/rbxgs/Client/App/lua-5.1.1/src",
+    "tools/rbxgs/Client/Rendering/SDL-1.2.6/include"
+   ],
+   "winsdk": true,
+   "exclude": [
+    "Profiler.cpp"
+   ]
+  },
+  {
+   "name": "renderlib-rbxgs",
+   "mode": "direct",
+   "dir": "tools/rbxgs/Client/Rendering/RenderLib",
+   "files": "Profiler.cpp",
+   "includes_from_recipe": "rbxgs-render",
+   "defines_from_recipe": "rbxgs-render",
+   "extra_defines": "BOOST_ALL_NO_LIB",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD",
+   "note": "OpenRBX Profiler.cpp needs a newer G3D RegistryUtil; keep the rbxgs one"
+  },
+  {
+   "name": "view",
+   "mode": "direct",
+   "dir": "work/upstream/OpenRBX/Client/RbxView",
+   "files": "*.cpp",
+   "defines_from_recipe": "rbxgs-view",
+   "extra_defines": "BOOST_ALL_NO_LIB",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /FIv8datamodel/PartInstance.h",
+   "note": "complete 2007 renderer from OpenRBX (GPLv3 donor, Dec 2007 0.3.676); rbxgs ships it partially; OpenRBX renderlib/rbxview headers first (renderer-internal ABI), engine App headers from rbxgs",
+   "extra_includes": [
+    "work/upstream/OpenRBX/Client/Rendering/RenderLib/include",
+    "work/upstream/OpenRBX/Client/RbxView/include",
+    "work/upstream/OpenRBX/Client/RbxView",
+    "rebuild/2008-06/native-donor-2007",
+    "tools/rbxgs/Client/RbxView/include",
+    "tools/rbxgs/Client/RbxViewBase",
+    "tools/rbxgs/Client/App/include",
+    "tools/rbxgs/Client/RbxGraphics/include",
+    "tools/rbxgs/Client/Network/include",
+    "tools/rbxgs/Client/Rendering/RenderLib/include",
+    "tools/rbxgs/Client/Rendering/AppDraw/include",
+    "tools/rbxgs/Client/Rendering/g3d/include",
+    "tools/rbxgs/Client/Rendering/g3d/zlib",
+    "tools/rbxgs/Client/Rendering/png",
+    "tools/rbxgs/Client/boost_1_34_1/src",
+    "tools/rbxgs/Client/App/lua-5.1.1/src",
+    "tools/rbxgs/Client/Rendering/SDL-1.2.6/include"
+   ],
+   "winsdk": true
+  },
+  {
+   "name": "lua",
+   "mode": "direct",
+   "dir": "tools/rbxgs/Client/App/lua-5.1.1/src",
+   "files": "*.c",
+   "exclude": [
+    "lua.c",
+    "luac.c",
+    "print.c"
+   ],
+   "includes_from_recipe": "rbxgs",
+   "defines_from_recipe": "rbxgs",
+   "extra_includes": [
+    "tools/rbxgs/Client/App/lua-5.1.1/src"
+   ],
+   "extra_defines": "BOOST_ALL_NO_LIB",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /TP"
+  },
+  {
+   "name": "glue",
+   "mode": "direct",
+   "dir": "rebuild/2008-06/glue/rbxgs",
+   "files": "*.cpp",
+   "includes_from_recipe": "rbxgs-net",
+   "defines_from_recipe": "rbxgs",
+   "extra_defines": "BOOST_ALL_NO_LIB",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD",
+   "extra_includes": [
+    "tools/rbxgs/Client/Network",
+    "tools/rbxgs/Client/RbxView/include",
+    "tools/rbxgs/Client/App/include",
+    "tools/rbxgs/Client/RbxViewBase",
+    "tools/rbxgs/Client/RbxView"
+   ],
+   "exclude": [
+    "glue_anchor_registry.cpp"
+   ]
+  }
+ ],
+ "test": "rbxgs_app",
+ "test_includes": [
+  "tools/rbxgs/Client/App/include",
+  "tools/rbxgs/Client/RbxGraphics/include",
+  "tools/rbxgs/Client/Network/include",
+  "tools/rbxgs/Client/RbxView/include",
+  "tools/rbxgs/Client/Rendering/png",
+  "tools/rbxgs/Client/Rendering/g3d/include",
+  "tools/rbxgs/Client/Rendering/g3d/zlib",
+  "tools/rbxgs/Client/Rendering/RenderLib/include",
+  "tools/rbxgs/Client/Rendering/AppDraw/include",
+  "tools/rbxgs/Client/boost_1_34_1/src",
+  "tools/rbxgs/Client/App/lua-5.1.1/src",
+  "tools/rbxgs/Client/Rendering/SDL-1.2.6/include",
+  "tools/rbxgs/Client/RbxViewBase",
+  "tools/rbxgs/Client/RbxView",
+  "rebuild/2008-06/out/RbxgsApp/force"
+ ],
+ "test_defines": "WIN32 NDEBUG _LIB _RELEASE _RELEASEASSERT BOOST_ALL_NO_LIB",
+ "overlay": {
+  "root": "tools/rbxgs/Client",
+  "patches": "rebuild/2008-06/patches/rbxgs-client.json"
+ },
+ "verified_exclude": [
+  "??1Humanoid@RBX@@UAE@XZ",
+  "?cleanEdge@TreeStage@RBX@@AAEXPAVEdge@2@@Z",
+  "?forceNeighborAwake@SleepStage@RBX@@AAE_NPAVAssembly@2@@Z",
+  "?okNeighborSleep@SleepStage@RBX@@AAE_NPAVAssembly@2@@Z",
+  "?onEdgeAdded@SleepStage@RBX@@UAEXPAVEdge@2@@Z",
+  "?recursiveWakeEvent@SleepStage@RBX@@AAEXPAVAssembly@2@@Z",
+  "?stepAssembliesAwake@SleepStage@RBX@@AAEXXZ",
+  "?stepAssembliesSleepingChecking@SleepStage@RBX@@AAEXXZ",
+  "?stepContacts@SleepStage@RBX@@AAEXAAV?$IndexArray@VContact@RBX@@$1?steppingIndexFunc@12@QAEAAHXZ@2@@Z",
+  "?stepJoints@SleepStage@RBX@@AAEXXZ",
+  "?wakeEvent@SleepStage@RBX@@AAEXPAVAssembly@2@@Z"
+ ],
+ "verified": true,
+ "force_verified": true
+}

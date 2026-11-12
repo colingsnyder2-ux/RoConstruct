@@ -1,0 +1,14 @@
+{
+ "files": [
+  "v8datamodel/RootInstance.cpp",
+  "gui/ChatWidget.cpp",
+  "v8datamodel/Surfaces.cpp",
+  "v8datamodel/LocakBackpack.cpp",
+  "gui/ChatOutput.cpp",
+  "util/Name.cpp",
+  "tool/DragUtilities.cpp",
+  "v8datamodel/Accoutrement.cpp",
+  "v8datamodel/Teams.cpp",
+  "v8datamodel/Sky.cpp"
+ ]
+}

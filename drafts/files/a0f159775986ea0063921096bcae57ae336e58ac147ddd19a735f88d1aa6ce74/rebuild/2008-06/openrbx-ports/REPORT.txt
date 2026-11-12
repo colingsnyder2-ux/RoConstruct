@@ -1,0 +1,46 @@
+OpenRBX 2007 -> 2008 rbxgs App ports
+
+Proven retained ports
+ArrowPanel.cpp: +3/-0 per-object owned addresses; +2 new unique module addresses.
+Teams.cpp: +1/-0 per-object owned addresses; +1 new unique module address.
+Unique owned total: 4419 -> 4422 (+3/-0). Module link and smoke passed.
+M2 PASS (exit 0); M4a PASS (exit 0); M5 PASS (exit 0, failures=0).
+
+Initial baseline was 4409. Owner independently integrated five existing OpenRBX files (+10); final trial preserves these and compares against frozen 4419 baseline.
+
+Ten files successfully ported/compiled; twelve attempted. Stop threshold reached.
+Full first-batch per-object gain/loss (owned-symbols.json):
+RootInstance: +0/-9, rejected.
+ChatWidget: +0/-0, rbxgs fallback; rejected.
+Surfaces: +1/-2, rejected.
+LocakBackpack: +0/-0, rbxgs fallback; rejected.
+Name: +0/-3, rejected.
+DragUtilities: +0/-12, rejected.
+Accoutrement: +5/-11, rejected.
+Teams: +1/-0, retained.
+Additional object probes:
+ArrowPanel: +2 new module addresses/-0 baseline object addresses; final selection +3/-0 per object, retained.
+CharacterAppearance: +9 new module addresses/-8 baseline object addresses, rejected before full selection.
+Parked: ChatOutput (undeclared destructor/void frontIsOld API); Sky (no 2008 G3D::Sky::setNumStars). No unsupported body changes made.
+
+Retained edits: reflection name pointer declaration/template args, redundant header class declaration removed, Teams::getTeams removed only because 2008 header defines it inline (C2084). All other donor function bodies unchanged. No tools/, canonical module or shared headers edited by this task. No push.
+
+Remaining ranking (140 files): remaining-ranking.tsv. Original ranking: ranking.tsv.
+Numerator = known 2008 decorated identities defined in corresponding rbxgs object minus baseline owned addresses, including inline/templates. Denominator = observed errors.json diagnostics (retained output may truncate). Scores estimate opportunity, not promised byte-exact yield. Missing-header failures hide further errors.
+Top remaining rows:
+file	missing_known_2008_functions	observed_errors	estimated_value_per_error	status
+util/Sound.cpp	457	1	457.000	untried
+humanoid/Humanoid.cpp	449	1	449.000	untried
+v8datamodel/factoryregistration.cpp	436	1	436.000	untried
+v8datamodel/DataModel.cpp	411	1	411.000	untried
+v8datamodel/Workspace.cpp	399	1	399.000	untried
+v8datamodel/Hopper.cpp	377	1	377.000	untried
+v8datamodel/PartInstance.cpp	369	1	369.000	untried
+v8datamodel/Explosion.cpp	329	1	329.000	untried
+v8datamodel/RootInstance.cpp	317	1	317.000	rejected-no-gain-or-loss
+v8datamodel/Seat.cpp	312	1	312.000	untried
+
+Evidence: final-results.json contains source/object/report hashes and milestone receipt; batch-1-results.json records first full batch. Rejected sources and binary evidence remain local under rebuild/2008-06/out/RbxgsAppOpenRBXPorts. Initial diagnostics were overwritten by subsequent builds; per-file counts remain in ranking.tsv. Initial enumeration included Utilities.cpp in addition to all 142 targets; it was excluded immediately from saved spec/ranking.
+
+Build note: normal CLI completed full first trial. Its post-build global reporting rescore was stopped after trial report was saved. Final build used same module CLI with only progress reporting disabled in-process, preserving --no-notify and leaving shared tooling unchanged.
+Milestone note: stock tests linked against trial in isolated output at standard directory depth. Existing stock DLLs copied unchanged; linked test exes rerun after missing FMOD runtime was supplied.

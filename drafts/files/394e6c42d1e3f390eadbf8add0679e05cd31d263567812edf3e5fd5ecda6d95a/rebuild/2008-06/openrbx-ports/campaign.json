@@ -1,0 +1,11 @@
+{
+ "baseline_commit": "16a6b3987b6af72137ebf16faf545f7bfb2ba2a6",
+ "draft_session": "60a038b01a5848fcb6315287df04be09",
+ "baseline_owned": 4409,
+ "phase": "initial-error-build",
+ "excluded_prior_file": "util/Utilities.cpp",
+ "initial_run_extra_file": "util/Utilities.cpp",
+ "note": "Initial process loaded 143 files before Utilities exclusion was identified; requested 142 all included. Saved spec has exactly 142. Numerator: known original decorated code identities defined in corresponding baseline rbxgs object, minus baseline owned addresses; includes inline/template definitions.",
+ "report.json_sha256": "52c65acf79681c0dff715a8825b375f5b11c748c81343b0dc8b9f6cb02144b02",
+ "owned-symbols.json_sha256": "7d4a2993cf591bcfdece9502f25adda41889cd99b59a8dbd42c1121563fce94a"
+}

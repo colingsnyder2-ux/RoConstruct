@@ -1,0 +1,29 @@
+{
+ "baseline_commit": "16a6b3987b6af72137ebf16faf545f7bfb2ba2a6",
+ "draft_session": "60a038b01a5848fcb6315287df04be09",
+ "baseline_owned": 4419,
+ "phase": "final-no-loss-trial",
+ "excluded_prior_file": "util/Utilities.cpp",
+ "initial_run_extra_file": "util/Utilities.cpp",
+ "note": "Initial process loaded 143 files before Utilities exclusion was identified; requested 142 all included. Saved spec has exactly 142. Numerator: known original decorated code identities defined in corresponding baseline rbxgs object, minus baseline owned addresses; includes inline/template definitions.",
+ "report.json_sha256": "52c65acf79681c0dff715a8825b375f5b11c748c81343b0dc8b9f6cb02144b02",
+ "owned-symbols.json_sha256": "7d4a2993cf591bcfdece9502f25adda41889cd99b59a8dbd42c1121563fce94a",
+ "initial_errors_file": "rebuild\\2008-06\\out\\RbxgsAppOpenRBXPorts\\layer-openrbx\\errors.json",
+ "scope_result": {
+  "attempted": 10,
+  "compilable": 8,
+  "parked": 2
+ },
+ "concurrent_baseline_update": {
+  "owned_before": 4409,
+  "owned_now": 4419,
+  "cause": "Owner integrated five unchanged OpenRBX files during this task; final trial must carry them as separate baseline layer and recopy verified inputs."
+ },
+ "retained": [
+  "gui/ArrowPanel.cpp",
+  "v8datamodel/Teams.cpp"
+ ],
+ "initial_baseline_owned": 4409,
+ "compilable_ports": 10,
+ "total_attempted_files": 12
+}

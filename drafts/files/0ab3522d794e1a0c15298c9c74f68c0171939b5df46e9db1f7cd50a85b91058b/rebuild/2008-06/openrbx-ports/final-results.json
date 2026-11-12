@@ -1,0 +1,46 @@
+{
+ "files": [
+  {
+   "file": "gui/ArrowPanel.cpp",
+   "gain": [
+    "004899a0",
+    "00657780",
+    "00657be0"
+   ],
+   "loss": [],
+   "before": 93,
+   "after": 96,
+   "new_module_addresses": [
+    "00657780",
+    "00657be0"
+   ],
+   "upstream_sha256": "6ea45ab6188d6249990a50d70c6c174a0e9d27f94029c250df4dab47e40b64d2",
+   "ported_sha256": "83ab6fc9ab2c9d65237b680ee92abe285fce6df167946a328169f84e21f1eade"
+  },
+  {
+   "file": "v8datamodel/Teams.cpp",
+   "gain": [
+    "005d6070"
+   ],
+   "loss": [],
+   "before": 118,
+   "after": 119,
+   "new_module_addresses": [
+    "005d6070"
+   ],
+   "upstream_sha256": "6d04b75bef0e0fd0c132bc4ae68772517d4e83c0828b2194b0db5373188b1c90",
+   "ported_sha256": "138d82fdc4df267b484e47d282106bde19ec64e55c5abb2b38f83242b5ead65b"
+  }
+ ],
+ "global_gain": [
+  "005d6070",
+  "00657780",
+  "00657be0"
+ ],
+ "global_loss": [],
+ "owned_before": 4419,
+ "owned_after": 4422,
+ "upstream_revision": "4083cfd3761f7d88938700abaa8bf31598b3576b",
+ "status": "byte-exact/no-loss proven; milestones pending",
+ "ranking_note": "Numerator counts known original decorated identities defined in matching rbxgs object, including inline/template definitions; denominator is observed diagnostics retained by errors.json (compiler output truncates). Scores estimate opportunity, not guaranteed exact gains."
+}
