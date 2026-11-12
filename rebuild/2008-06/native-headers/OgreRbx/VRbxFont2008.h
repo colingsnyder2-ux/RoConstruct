@@ -1,4 +1,4 @@
-// 2008-06 native Ogre::VRbxFont: Roblox's port of G3D 6.09 GFont onto Ogre (Roblox Ogre fork, inactive recovery).
+// 2008-06 native Ogre::RbxFont: Roblox's port of G3D 6.09 GFont onto Ogre (Roblox Ogre fork, inactive recovery).
 //
 // Layout is binary-derived and fully explained (no padding guessed):
 //   fromFile 00684eb0 allocates new(0x218), then calls the ctor 00684b10;
@@ -6,7 +6,7 @@
 //   constructs Ogre::TexturePtr at this+0x20c (12 bytes: SharedPtr vptr, pRep, pUseCount) -> ends at 0x218.
 // Member names, order and the XAlign/YAlign/Spacing enums are G3D 6.09 GFont's (GLG3D/GFont.h): same fields at the
 // same offsets; G3D's RenderDevice* member is absent here (texture is an Ogre::TexturePtr instead of TextureRef).
-// Non-polymorphic: the exe has no RTTI/vftable for VRbxFont itself, only for SharedPtr<VRbxFont>.
+// Non-polymorphic: the exe has no RTTI/vftable for RbxFont itself, only for SharedPtr<RbxFont>.
 #pragma once
 // >>> native-status (generated) -- do not edit >>>
 // VRbxFont2008 | 2008-06 | draft (no current byte proof)
@@ -28,7 +28,7 @@ namespace Ogre
 {
 	class VisualEngine;     // exe-local, size 0x808: OgreRbx/VisualEngine2008.h
 
-	class VRbxFont
+	class RbxFont
 	{
 	public:
 		enum XAlign {XALIGN_RIGHT, XALIGN_LEFT, XALIGN_CENTER};
@@ -46,8 +46,8 @@ namespace Ogre
 		                                Spacing spacing, G3D::Vector2* array) const;               // 006843f0
 
 	public:
-		VRbxFont(const std::string& filename, G3D::BinaryInput& b);                                // 00684b10
-		static SharedPtr<VRbxFont> fromFile(const std::string& filename);                           // 00684eb0
+		RbxFont(const std::string& filename, G3D::BinaryInput& b);                                // 00684b10
+		static SharedPtr<RbxFont> fromFile(const std::string& filename);                           // 00684eb0
 
 		// Named from G3D 6.09 GFont: same body shape (size*1.5, charWidth/charHeight scale, subWidth sum or 'M'*0.85)
 		// and called from draw2D's XALIGN_RIGHT / XALIGN_CENTER cases exactly as GFont::draw2D calls it.
