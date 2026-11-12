@@ -374,6 +374,24 @@ def watch(root, session, every=300):
             atomic(folder / 'health.json', dict(stopped=True, error=str(error)))
 
 
+def stop(root, session, wait=False, timeout=60):
+    folder = session_path(root, session)
+    (folder / 'stop').touch()
+    if not wait:
+        return dict(stopping=True)
+    deadline = time.monotonic() + timeout
+    while True:
+        try:
+            with lock(folder / 'watch.lock'):
+                checkpoint(root, session)
+                flush(root, session)
+                return dict(stopping=False, stopped=True)
+        except RuntimeError as error:
+            if not str(error).startswith('Already running:') or time.monotonic() >= deadline:
+                raise
+            time.sleep(.1)
+
+
 def start(root, session, every=300):
     folder = session_path(root, session)
     with lock(folder / 'watch.lock'):
