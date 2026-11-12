@@ -1,0 +1,129 @@
+{
+ "files": [
+  {
+   "file": "script/ScriptEvent.cpp",
+   "gain": [],
+   "loss": [
+    "00621590"
+   ],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8datamodel/Flag.cpp",
+   "gain": [
+    "006195b0"
+   ],
+   "loss": [],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8datamodel/Tool.cpp",
+   "gain": [
+    "005fd3e0",
+    "005fdfa0",
+    "005fe4b0",
+    "005ffa10"
+   ],
+   "loss": [
+    "0043afb0",
+    "004765e0",
+    "00485360",
+    "004fab70",
+    "00513120",
+    "005846d0",
+    "0059b2a0",
+    "005fa610",
+    "005fd530",
+    "005ffc50",
+    "005ffdd0",
+    "005fff40"
+   ],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8datamodel/Feature.cpp",
+   "gain": [
+    "00609a60",
+    "0060a0f0",
+    "0060c400",
+    "0060ca00"
+   ],
+   "loss": [],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8datamodel/FaceInstance.cpp",
+   "gain": [],
+   "loss": [],
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "v8datamodel/DebugSettings.cpp",
+   "gain": [],
+   "loss": [
+    "004066c0",
+    "005634b0"
+   ],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "script/Script.cpp",
+   "gain": [
+    "004093b0",
+    "00414960",
+    "0045db40",
+    "00490770",
+    "00585e40"
+   ],
+   "loss": [
+    "00586bf0"
+   ],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "tool/RunDragger.cpp",
+   "gain": [
+    "00501c70",
+    "00518830",
+    "0066d430",
+    "0066dc80"
+   ],
+   "loss": [
+    "0045b310",
+    "004766a0",
+    "00485360",
+    "004a6100",
+    "00501ca0",
+    "00510720",
+    "00510960",
+    "00598990",
+    "0066c330",
+    "0066c510",
+    "0066c810",
+    "0066c970",
+    "0066ccc0",
+    "0066ced0",
+    "0066d260",
+    "0066d710",
+    "0066d9f0",
+    "0066daf0",
+    "0066e1a0"
+   ],
+   "selected_layer": "layer-openrbx-ports"
+  }
+ ],
+ "parked": {
+  "script/ScriptContext.cpp": "2008 overlay LuaArguments::get requires extra nilIsMissing argument; no declaration-only compatible call established.",
+  "v8datamodel/Gyro.cpp": "2008 Rocket stores target as weak_ptr rather than donor raw pointer; methods require lifetime/body changes."
+ },
+ "linked": false,
+ "unresolved": [
+  "?colliding@RunDragger@RBX@@AAE_NXZ",
+  "?fallOffEdge@RunDragger@RBX@@AAE_NXZ"
+ ],
+ "candidate_keep": [
+  "v8datamodel/Flag.cpp",
+  "v8datamodel/Feature.cpp"
+ ],
+ "status": "subset validation pending"
+}

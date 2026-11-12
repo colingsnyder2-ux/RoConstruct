@@ -1,0 +1,29 @@
+{
+ "files": [
+  "v8tree/Verb.cpp",
+  "v8kernel/Link.cpp",
+  "util/ExponentialRunningAverage.cpp",
+  "util/Face.cpp",
+  "util/Quaternion.cpp",
+  "util/Rect.cpp",
+  "util/RunningAverage.cpp",
+  "v8kernel/Cofm.cpp",
+  "v8kernel/Pair.cpp",
+  "v8world/IWorldStage.cpp"
+ ],
+ "status": "porting",
+ "parked": {
+  "v8tree/Verb.cpp": "2008 XmlState lacks donor addProperty; undo/redo state declarations and VerbContainer private access also differ."
+ },
+ "compile_files": [
+  "v8kernel/Link.cpp",
+  "util/ExponentialRunningAverage.cpp",
+  "util/Face.cpp",
+  "util/Quaternion.cpp",
+  "util/Rect.cpp",
+  "util/RunningAverage.cpp",
+  "v8kernel/Cofm.cpp",
+  "v8kernel/Pair.cpp",
+  "v8world/IWorldStage.cpp"
+ ]
+}

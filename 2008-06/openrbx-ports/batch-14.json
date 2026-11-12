@@ -1,0 +1,29 @@
+{
+ "files": [
+  "v8world/JointBuilder.cpp",
+  "v8world/RigidJoint.cpp",
+  "v8world/SnapJoint.cpp",
+  "v8world/WeldJoint.cpp",
+  "util/FileSystem.cpp",
+  "reflection/signal.cpp",
+  "util/Extents.cpp",
+  "v8world/Edge.cpp",
+  "tool/DragTool.cpp",
+  "util/IndexBox.cpp"
+ ],
+ "status": "porting",
+ "compile_files": [
+  "v8world/JointBuilder.cpp",
+  "v8world/RigidJoint.cpp",
+  "v8world/SnapJoint.cpp",
+  "v8world/WeldJoint.cpp",
+  "util/FileSystem.cpp",
+  "reflection/signal.cpp",
+  "util/Extents.cpp",
+  "tool/DragTool.cpp",
+  "util/IndexBox.cpp"
+ ],
+ "parked": {
+  "v8world/Edge.cpp": "2008 overlay replaces linked-list next pointers with index fields; donor zero-pointer initialization no longer expresses index semantics."
+ }
+}

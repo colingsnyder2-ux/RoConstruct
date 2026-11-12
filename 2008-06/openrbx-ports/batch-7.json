@@ -1,0 +1,29 @@
+{
+ "files": [
+  "v8datamodel/Filters.cpp",
+  "gui/HealthHud.cpp",
+  "v8datamodel/ICharacterSubject.cpp",
+  "v8world/World.cpp",
+  "script/LuaAtomicClasses.cpp",
+  "v8world/Contact.cpp",
+  "v8world/Controller.cpp",
+  "script/ThreadRef.cpp",
+  "util/RunStateOwner.cpp",
+  "tool/ToolsArrow.cpp"
+ ],
+ "status": "porting",
+ "parked": {
+  "gui/HealthHud.cpp": "2008 Humanoid exposes relativeHealth/reflection descriptors rather than donor getHealth/getMaxHealth; body rewrite required.",
+  "v8world/Contact.cpp": "2008 overlay replaces vector connector/matched arrays with G3D::Array; donor fastRemoveIndex requires vector.",
+  "util/RunStateOwner.cpp": "Donor defines FUN_00569480 state wrapper absent from 2008 class; renaming to setRunState would recurse.",
+  "v8world/World.cpp": "2008 ticklePrimitive has one argument; donor two-argument body depends on recursive wake flag absent from API."
+ },
+ "compile_files": [
+  "v8datamodel/Filters.cpp",
+  "v8datamodel/ICharacterSubject.cpp",
+  "script/LuaAtomicClasses.cpp",
+  "v8world/Controller.cpp",
+  "script/ThreadRef.cpp",
+  "tool/ToolsArrow.cpp"
+ ]
+}

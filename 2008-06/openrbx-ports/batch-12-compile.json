@@ -1,0 +1,10 @@
+{
+ "files": [
+  "humanoid/FallingDown.cpp",
+  "humanoid/Freefall.cpp",
+  "humanoid/GettingUp.cpp",
+  "humanoid/Seated.cpp",
+  "v8world/GlueJoint.cpp",
+  "v8world/Joint.cpp"
+ ]
+}

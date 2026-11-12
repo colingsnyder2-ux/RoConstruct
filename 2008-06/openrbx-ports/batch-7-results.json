@@ -1,0 +1,146 @@
+{
+ "files": [
+  {
+   "file": "v8datamodel/Filters.cpp",
+   "gain": [
+    "006604a0"
+   ],
+   "loss": [],
+   "new_module_addresses": [
+    "006604a0"
+   ],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8datamodel/ICharacterSubject.cpp",
+   "gain": [
+    "00411790",
+    "0043d880",
+    "00476570",
+    "00530730",
+    "0057d210"
+   ],
+   "loss": [
+    "004452f0",
+    "0045b310",
+    "00476640",
+    "00485360",
+    "004fab70",
+    "00641280",
+    "00641390"
+   ],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "script/LuaAtomicClasses.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "v8world/Controller.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "script/ThreadRef.cpp",
+   "gain": [
+    "00594310",
+    "00594680",
+    "005947f0",
+    "006b8f40"
+   ],
+   "loss": [
+    "004019e0",
+    "00402390",
+    "004023f0",
+    "00402400",
+    "00404fb0",
+    "00405fa0",
+    "00420b50",
+    "00432a30",
+    "00442cd0",
+    "004452a0",
+    "00445b90",
+    "00446110",
+    "0044f2b0",
+    "00451600",
+    "0046cee0",
+    "004969c0",
+    "004d71d0",
+    "004dc3e0",
+    "005187a0",
+    "005539d0",
+    "005642c0",
+    "005644a0",
+    "0056d3d0",
+    "005a0460",
+    "005b6c40",
+    "005c72e0",
+    "005ec170",
+    "005ecca0",
+    "00609bb0",
+    "00609bd0",
+    "00614ff0",
+    "00620910",
+    "00667fd0",
+    "006787f0",
+    "00681a50",
+    "0068dfa0",
+    "006f6a20",
+    "0070bdf0"
+   ],
+   "new_module_addresses": [
+    "00594310",
+    "005947f0"
+   ],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "tool/ToolsArrow.cpp",
+   "gain": [
+    "0045aec0"
+   ],
+   "loss": [
+    "004452f0",
+    "0045b950",
+    "00616f60",
+    "00617c10"
+   ],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  }
+ ],
+ "parked": {
+  "gui/HealthHud.cpp": "2008 Humanoid exposes relativeHealth/reflection descriptors rather than donor getHealth/getMaxHealth; body rewrite required.",
+  "v8world/Contact.cpp": "2008 overlay replaces vector connector/matched arrays with G3D::Array; donor fastRemoveIndex requires vector.",
+  "util/RunStateOwner.cpp": "Donor defines FUN_00569480 state wrapper absent from 2008 class; renaming to setRunState would recurse.",
+  "v8world/World.cpp": "2008 ticklePrimitive has one argument; donor two-argument body depends on recursive wake flag absent from API."
+ },
+ "linked": false,
+ "unresolved": [
+  "??0FunctionRef@Lua@RBX@@QAE@XZ",
+  "?shiftKeyDown@UserInputBase@RBX@@QBE_NXZ"
+ ],
+ "global_gain": [
+  "00594310",
+  "005947f0",
+  "006604a0"
+ ],
+ "global_loss": [
+  "00616f60",
+  "00617c10",
+  "00641280",
+  "00641390"
+ ],
+ "owned_before": 4427,
+ "owned_after": 4426,
+ "candidate_keep": [
+  "v8datamodel/Filters.cpp"
+ ],
+ "status": "selection recorded; subset/gates required for any candidates"
+}

@@ -1,0 +1,127 @@
+{
+ "files": [
+  {
+   "file": "v8world/JointBuilder.cpp",
+   "gain": [],
+   "loss": [
+    "004377b0"
+   ],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8world/RigidJoint.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8world/SnapJoint.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8world/WeldJoint.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "util/FileSystem.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "reflection/signal.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "util/Extents.cpp",
+   "gain": [
+    "0060f4e0"
+   ],
+   "loss": [
+    "004377b0",
+    "004452f0",
+    "0045ac40",
+    "004766a0",
+    "00485360",
+    "004a6100",
+    "00510720",
+    "00510960",
+    "00518f20",
+    "00525e00",
+    "00525e60",
+    "00583860",
+    "00583920",
+    "0060f3e0",
+    "0060fc20"
+   ],
+   "new_module_addresses": [
+    "0060f4e0"
+   ],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "tool/DragTool.cpp",
+   "gain": [
+    "004377b0",
+    "0043d880",
+    "0045ac40",
+    "00476520",
+    "00476570",
+    "00501c70",
+    "00501d10",
+    "00514be0",
+    "00530730",
+    "0057d210"
+   ],
+   "loss": [
+    "00411120",
+    "00411ad0",
+    "00442cd0",
+    "0071f210"
+   ],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "util/IndexBox.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  }
+ ],
+ "parked": {
+  "v8world/Edge.cpp": "2008 overlay replaces linked-list next pointers with index fields; donor zero-pointer initialization no longer expresses index semantics."
+ },
+ "linked": false,
+ "unresolved": [
+  "?distanceToHandleRadius@HitTest@RBX@@SAMABVVector3@G3D@@0@Z",
+  "?handleOffset@HitTest@RBX@@SA?BMXZ"
+ ],
+ "global_gain": [
+  "0060f4e0",
+  "006454a0"
+ ],
+ "global_loss": [
+  "00583860",
+  "00583920",
+  "0060f3e0",
+  "0060fc20"
+ ],
+ "owned_before": 4435,
+ "owned_after": 4433,
+ "candidate_keep": [],
+ "status": "selection recorded; subset/gates required for any candidates"
+}

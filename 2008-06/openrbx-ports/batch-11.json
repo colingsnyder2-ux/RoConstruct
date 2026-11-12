@@ -1,0 +1,29 @@
+{
+ "files": [
+  "util/Log.cpp",
+  "util/NormalId.cpp",
+  "v8world/IMoving.cpp",
+  "v8world/RotateJoint.cpp",
+  "v8datamodel/ScriptMouseCommand.cpp",
+  "v8world/MacroTypes.cpp",
+  "v8kernel/SimBody.cpp",
+  "v8world/MotorJoint.cpp",
+  "v8world/SpatialHash.cpp",
+  "v8xml/XmlSerializer.cpp"
+ ],
+ "status": "porting",
+ "parked": {
+  "util/Log.cpp": "2008 stream is value/reference rather than donor pointer; timeStamp return/signature changes, cannot preserve body.",
+  "v8world/RotateJoint.cpp": "2008 World ticklePrimitive drops donor recursive argument; KernelInput goal API also differs.",
+  "v8xml/XmlSerializer.cpp": "Legacy hash conversion/helper cache state absent from 2008 declarations.",
+  "v8world/SpatialHash.cpp": "2008 Vector3int32 lacks donor ordering operator required by ordered grid containers; comparator helper body addition would exceed declaration-only port scope."
+ },
+ "compile_files": [
+  "util/NormalId.cpp",
+  "v8world/IMoving.cpp",
+  "v8datamodel/ScriptMouseCommand.cpp",
+  "v8world/MacroTypes.cpp",
+  "v8kernel/SimBody.cpp",
+  "v8world/MotorJoint.cpp"
+ ]
+}

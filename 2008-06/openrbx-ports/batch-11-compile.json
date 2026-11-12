@@ -1,0 +1,10 @@
+{
+ "files": [
+  "util/NormalId.cpp",
+  "v8world/IMoving.cpp",
+  "v8datamodel/ScriptMouseCommand.cpp",
+  "v8world/MacroTypes.cpp",
+  "v8kernel/SimBody.cpp",
+  "v8world/MotorJoint.cpp"
+ ]
+}

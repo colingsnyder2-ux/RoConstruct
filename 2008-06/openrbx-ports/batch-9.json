@@ -1,0 +1,28 @@
+{
+ "files": [
+  "util/standardout.cpp",
+  "v8world/Block.cpp",
+  "v8world/ContactManager.cpp",
+  "v8datamodel/Lighting.cpp",
+  "util/Math.cpp",
+  "humanoid/Balancing.cpp",
+  "reflection/reflection_property.cpp",
+  "v8datamodel/SafeChat.cpp",
+  "v8kernel/Body.cpp",
+  "v8datamodel/custommesh.cpp"
+ ],
+ "status": "porting",
+ "compile_files": [
+  "util/standardout.cpp",
+  "v8world/Block.cpp",
+  "v8world/ContactManager.cpp",
+  "v8datamodel/Lighting.cpp",
+  "util/Math.cpp",
+  "humanoid/Balancing.cpp",
+  "reflection/reflection_property.cpp",
+  "v8datamodel/SafeChat.cpp",
+  "v8kernel/Body.cpp",
+  "v8datamodel/custommesh.cpp"
+ ],
+ "parked": {}
+}

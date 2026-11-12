@@ -1,0 +1,29 @@
+{
+ "files": [
+  "humanoid/FallingDown.cpp",
+  "humanoid/Freefall.cpp",
+  "humanoid/GettingUp.cpp",
+  "humanoid/Seated.cpp",
+  "humanoid/Jumping.cpp",
+  "v8kernel/Kernel.cpp",
+  "v8world/GlueJoint.cpp",
+  "v8world/Joint.cpp",
+  "v8world/Mechanism.cpp",
+  "tool/MegaDragger.cpp"
+ ],
+ "status": "porting",
+ "parked": {
+  "humanoid/Jumping.cpp": "Donor World::ticklePrimitive recursive argument absent from 2008 API.",
+  "tool/MegaDragger.cpp": "2008 member storage changes from dereferenced containers/pointers to direct values/references; source bodies need changes.",
+  "v8kernel/Kernel.cpp": "2008 Point::sameBodyAndOffset takes const reference, while donor body passes pointer; adapting call expression exceeds declaration-only scope.",
+  "v8world/Mechanism.cpp": "2008 overlay tracker stores SimJob* while donor methods return/use Mechanism*, and tracker method declarations differ."
+ },
+ "compile_files": [
+  "humanoid/FallingDown.cpp",
+  "humanoid/Freefall.cpp",
+  "humanoid/GettingUp.cpp",
+  "humanoid/Seated.cpp",
+  "v8world/GlueJoint.cpp",
+  "v8world/Joint.cpp"
+ ]
+}

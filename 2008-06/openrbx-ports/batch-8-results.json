@@ -1,0 +1,126 @@
+{
+ "files": [
+  {
+   "file": "v8datamodel/TimerService.cpp",
+   "gain": [],
+   "loss": [
+    "005d73a0",
+    "005f1270"
+   ],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8datamodel/Stats.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8datamodel/Decal.cpp",
+   "gain": [],
+   "loss": [
+    "00445b10",
+    "00598690",
+    "005986d0",
+    "00598710",
+    "00598750"
+   ],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8datamodel/Visit.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8datamodel/Selection.cpp",
+   "gain": [
+    "00566f00",
+    "0077d6c0"
+   ],
+   "loss": [],
+   "new_module_addresses": [
+    "00566f00"
+   ],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8datamodel/DebrisService.cpp",
+   "gain": [
+    "00563ce0",
+    "00591bd0",
+    "0063c070",
+    "007f8ba0"
+   ],
+   "loss": [
+    "0063be90",
+    "0063c280"
+   ],
+   "new_module_addresses": [
+    "0063c070",
+    "007f8ba0"
+   ],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "tool/Dragger.cpp",
+   "gain": [
+    "00445290",
+    "004c6ce0"
+   ],
+   "loss": [
+    "00476580",
+    "004766a0",
+    "00476700",
+    "00478330",
+    "00485360",
+    "00598990",
+    "0060fef0",
+    "00610070",
+    "00610830",
+    "00610930",
+    "00610a60"
+   ],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  }
+ ],
+ "parked": {
+  "util/boost.cpp": "2008 background_function adds thread-priority parameter; donor fixed-priority body cannot implement full new contract without body change.",
+  "tool/PartDragTool.cpp": "2008 overlay adds selectIfNoDrag constructor argument and stored state; donor constructor/onMouseUp lack required selection behavior.",
+  "v8world/Primitive.cpp": "2008 Primitive lacks sizeMultiplier/setSizeMultiplier and changes EdgeList API; no declaration-only mapping."
+ },
+ "linked": true,
+ "unresolved": [],
+ "global_gain": [
+  "00566f00",
+  "0063c070",
+  "006604a0",
+  "007f8ba0"
+ ],
+ "global_loss": [
+  "00598690",
+  "005986d0",
+  "00598710",
+  "00598750",
+  "005d73a0",
+  "0060fef0",
+  "00610070",
+  "00610830",
+  "00610930",
+  "00610a60",
+  "0063be90",
+  "0063c280"
+ ],
+ "owned_before": 4427,
+ "owned_after": 4419,
+ "candidate_keep": [
+  "v8datamodel/Selection.cpp"
+ ],
+ "status": "selection recorded; subset/gates required for any candidates"
+}

@@ -1,0 +1,29 @@
+{
+ "files": [
+  "v8datamodel/ModelInstance.cpp",
+  "v8tree/Service.cpp",
+  "v8datamodel/Mouse.cpp",
+  "v8world/JointStage.cpp",
+  "v8datamodel/Team.cpp",
+  "v8datamodel/GameSettings.cpp",
+  "v8world/SimJobStage.cpp",
+  "util/Profiling.cpp",
+  "v8kernel/Connector.cpp",
+  "v8datamodel/GlobalSettings.cpp"
+ ],
+ "status": "porting",
+ "parked": {
+  "v8datamodel/ModelInstance.cpp": "Donor defines FUN_00565040 orientation setter absent from 2008 class; no evidenced named-member mapping.",
+  "v8datamodel/Mouse.cpp": "Donor one-argument MouseCommand::getPart call depends on default filter omitted by 2008 declaration; no class/header edit authorized.",
+  "v8world/SimJobStage.cpp": "2008 overlay replaces mechanisms list with different stage state; donor destroy/insertMechanism definitions no longer declared.",
+  "v8kernel/Connector.cpp": "2008 KernelInput storage/access changes: pointer return, private latch/currentGoal, different get signature; body changes required."
+ },
+ "compile_files": [
+  "v8tree/Service.cpp",
+  "v8world/JointStage.cpp",
+  "v8datamodel/Team.cpp",
+  "v8datamodel/GameSettings.cpp",
+  "util/Profiling.cpp",
+  "v8datamodel/GlobalSettings.cpp"
+ ]
+}

@@ -1,0 +1,108 @@
+{
+ "files": [
+  {
+   "file": "humanoid/Flying.cpp",
+   "gain": [
+    "004377b0"
+   ],
+   "loss": [
+    "00514be0"
+   ],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8kernel/Point.cpp",
+   "gain": [
+    "004377b0"
+   ],
+   "loss": [
+    "004766a0",
+    "00501ca0",
+    "00513120",
+    "00612fb0",
+    "0064dd40"
+   ],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8xml/XmlElement.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "gui/GUI.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "v8datamodel/BrickColor.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "tool/GroupDragTool.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "util/Debug.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "util/Guid.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "v8kernel/Constants.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "v8world/Ball.cpp",
+   "gain": [],
+   "loss": [
+    "00649130",
+    "00649170",
+    "00649190"
+   ],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  }
+ ],
+ "parked": {},
+ "linked": false,
+ "unresolved": [
+  "?fallCutoff@Balancing@RBX@@KA?BMXZ"
+ ],
+ "global_gain": [
+  "006454a0"
+ ],
+ "global_loss": [
+  "00649130",
+  "00649170",
+  "00649190",
+  "0064dd40"
+ ],
+ "owned_before": 4435,
+ "owned_after": 4432,
+ "candidate_keep": [],
+ "status": "selection recorded; subset/gates required for any candidates"
+}

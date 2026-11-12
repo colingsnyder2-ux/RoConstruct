@@ -1,0 +1,29 @@
+{
+ "files": [
+  "tool/PartDragTool.cpp",
+  "v8datamodel/TimerService.cpp",
+  "v8datamodel/Stats.cpp",
+  "v8world/Primitive.cpp",
+  "v8datamodel/Decal.cpp",
+  "v8datamodel/Visit.cpp",
+  "util/boost.cpp",
+  "v8datamodel/Selection.cpp",
+  "v8datamodel/DebrisService.cpp",
+  "tool/Dragger.cpp"
+ ],
+ "status": "porting",
+ "parked": {
+  "util/boost.cpp": "2008 background_function adds thread-priority parameter; donor fixed-priority body cannot implement full new contract without body change.",
+  "tool/PartDragTool.cpp": "2008 overlay adds selectIfNoDrag constructor argument and stored state; donor constructor/onMouseUp lack required selection behavior.",
+  "v8world/Primitive.cpp": "2008 Primitive lacks sizeMultiplier/setSizeMultiplier and changes EdgeList API; no declaration-only mapping."
+ },
+ "compile_files": [
+  "v8datamodel/TimerService.cpp",
+  "v8datamodel/Stats.cpp",
+  "v8datamodel/Decal.cpp",
+  "v8datamodel/Visit.cpp",
+  "v8datamodel/Selection.cpp",
+  "v8datamodel/DebrisService.cpp",
+  "tool/Dragger.cpp"
+ ]
+}

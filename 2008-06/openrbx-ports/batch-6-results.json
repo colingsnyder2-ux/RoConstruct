@@ -1,0 +1,158 @@
+{
+ "files": [
+  {
+   "file": "v8datamodel/FlagStand.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "gui/ProfanityFilter.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "gui/ScoreHud.cpp",
+   "gain": [
+    "00591bd0",
+    "00652510",
+    "00656430"
+   ],
+   "loss": [
+    "0046dfc0",
+    "00651250",
+    "006512e0"
+   ],
+   "new_module_addresses": [
+    "00652510",
+    "00656430"
+   ],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8datamodel/ToolMouseCommand.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "v8datamodel/PVInstance.cpp",
+   "gain": [
+    "00608e20",
+    "00609690"
+   ],
+   "loss": [
+    "00608b60",
+    "00608bf0"
+   ],
+   "new_module_addresses": [
+    "00608e20",
+    "00609690"
+   ],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8datamodel/Message.cpp",
+   "gain": [],
+   "loss": [
+    "004452f0",
+    "004f35d0",
+    "005dcb50",
+    "005dcc60",
+    "005dcde0"
+   ],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8datamodel/Value.cpp",
+   "gain": [
+    "00563ce0",
+    "00563f10",
+    "00563ff0",
+    "00633490",
+    "00633c70",
+    "00633e80",
+    "00636430",
+    "00637a10",
+    "00638380",
+    "00638b10",
+    "006391d0",
+    "0063ab70",
+    "0063b260"
+   ],
+   "loss": [
+    "0042cf50",
+    "004377b0",
+    "004459a0",
+    "0048e080",
+    "0048e290",
+    "004911b0",
+    "00492280",
+    "004937f0",
+    "004940e0",
+    "0062a130"
+   ],
+   "new_module_addresses": [
+    "00563ff0",
+    "00633490",
+    "00633c70",
+    "00633e80",
+    "00636430",
+    "00637a10",
+    "00638380",
+    "00638b10",
+    "006391d0",
+    "0063ab70",
+    "0063b260"
+   ],
+   "selected_layer": "layer-openrbx-ports"
+  }
+ ],
+ "parked": {
+  "humanoid/Running.cpp": "GeometryService API absent in 2008 headers.",
+  "v8datamodel/JointInstance.cpp": "2008 overlay merges AutoJoint into JointInstance with weak_ptr storage; donor AutoJoint member bodies have no matching class.",
+  "script/LuaInstanceBridge.cpp": "Donor lua_tofloat helper absent from 2008 headers; no evidenced equivalent without adding/changing body logic."
+ },
+ "linked": false,
+ "unresolved": [
+  "?getStringValue@?$TypedPropertyDescriptor@N@Reflection@RBX@@UBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBVDescribedBase@23@@Z",
+  "?hasStringValue@?$TypedPropertyDescriptor@N@Reflection@RBX@@UBE_NXZ",
+  "?readValue@?$TypedPropertyDescriptor@N@Reflection@RBX@@EBEXPAVDescribedBase@23@PBVXmlElement@@AAVIReferenceBinder@3@@Z",
+  "?setStringValue@?$TypedPropertyDescriptor@N@Reflection@RBX@@UBE_NPAVDescribedBase@23@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+  "?writeValue@?$TypedPropertyDescriptor@N@Reflection@RBX@@EBEXPBVDescribedBase@23@PAVXmlElement@@@Z"
+ ],
+ "global_gain": [
+  "00563ff0",
+  "00608e20",
+  "00609690",
+  "00633490",
+  "00633c70",
+  "00633e80",
+  "00636430",
+  "00637a10",
+  "00638380",
+  "00638b10",
+  "006391d0",
+  "0063ab70",
+  "0063b260",
+  "00652510",
+  "00656430"
+ ],
+ "global_loss": [
+  "005dcb50",
+  "005dcc60",
+  "005dcde0",
+  "00608b60",
+  "00608bf0",
+  "006512e0"
+ ],
+ "owned_before": 4427,
+ "owned_after": 4436,
+ "candidate_keep": [],
+ "status": "selection recorded; subset/gates required for any candidates"
+}

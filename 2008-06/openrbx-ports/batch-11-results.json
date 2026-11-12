@@ -1,0 +1,78 @@
+{
+ "files": [
+  {
+   "file": "util/NormalId.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "v8world/IMoving.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "v8datamodel/ScriptMouseCommand.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8world/MacroTypes.cpp",
+   "gain": [],
+   "loss": [
+    "00448360",
+    "005ed800"
+   ],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  },
+  {
+   "file": "v8kernel/SimBody.cpp",
+   "gain": [],
+   "loss": [],
+   "new_module_addresses": [],
+   "selected_layer": "layer-rbxgs"
+  },
+  {
+   "file": "v8world/MotorJoint.cpp",
+   "gain": [
+    "005e5c90",
+    "007a1400"
+   ],
+   "loss": [
+    "004377b0",
+    "00476580",
+    "00476670",
+    "004766a0",
+    "00476700",
+    "00478330",
+    "00513220",
+    "005e5e70",
+    "0060e8f0"
+   ],
+   "new_module_addresses": [],
+   "selected_layer": "layer-openrbx-ports"
+  }
+ ],
+ "parked": {
+  "util/Log.cpp": "2008 stream is value/reference rather than donor pointer; timeStamp return/signature changes, cannot preserve body.",
+  "v8world/RotateJoint.cpp": "2008 World ticklePrimitive drops donor recursive argument; KernelInput goal API also differs.",
+  "v8xml/XmlSerializer.cpp": "Legacy hash conversion/helper cache state absent from 2008 declarations.",
+  "v8world/SpatialHash.cpp": "2008 Vector3int32 lacks donor ordering operator required by ordered grid containers; comparator helper body addition would exceed declaration-only port scope."
+ },
+ "linked": false,
+ "unresolved": [],
+ "global_gain": [],
+ "global_loss": [
+  "005e5e70"
+ ],
+ "owned_before": 4435,
+ "owned_after": 4434,
+ "candidate_keep": [],
+ "status": "selection recorded; subset/gates required for any candidates"
+}

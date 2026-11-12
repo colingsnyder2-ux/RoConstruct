@@ -1,0 +1,11 @@
+{
+ "files": [
+  "v8datamodel/FlagStand.cpp",
+  "gui/ProfanityFilter.cpp",
+  "gui/ScoreHud.cpp",
+  "v8datamodel/ToolMouseCommand.cpp",
+  "v8datamodel/PVInstance.cpp",
+  "v8datamodel/Message.cpp",
+  "v8datamodel/Value.cpp"
+ ]
+}

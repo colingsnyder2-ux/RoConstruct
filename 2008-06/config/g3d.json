@@ -6,6 +6,48 @@
  ],
  "layers": [
   {
+   "name": "native0",
+   "mode": "direct",
+   "dir": "rebuild/2008-06/native-layers/g3d-0",
+   "files": "*.cpp *.c",
+   "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD /fp:fast",
+   "defines": "",
+   "extra_includes": [
+    "tree:g3d-6.09-rbx2008",
+    "tree:g3d-6.09-rbx2008/include",
+    "tree:g3d-6.09-rbx2008/boost/include",
+    "tools/libs/SDL-1.2.11/include"
+   ]
+  },
+  {
+   "name": "native1",
+   "mode": "direct",
+   "dir": "rebuild/2008-06/native-layers/g3d-1",
+   "files": "*.cpp *.c",
+   "flags": "/O2 /GS- /EHsc /MD",
+   "defines": "",
+   "extra_includes": [
+    "tree:g3d-6.09-rbx2008",
+    "tree:g3d-6.09-rbx2008/include",
+    "tree:g3d-6.09-rbx2008/boost/include",
+    "tools/libs/SDL-1.2.11/include"
+   ]
+  },
+  {
+   "name": "native2",
+   "mode": "direct",
+   "dir": "rebuild/2008-06/native-layers/g3d-2",
+   "files": "*.cpp *.c",
+   "flags": "/O2 /GS- /EHsc /MD /fp:fast",
+   "defines": "",
+   "extra_includes": [
+    "tree:g3d-6.09-rbx2008",
+    "tree:g3d-6.09-rbx2008/include",
+    "tree:g3d-6.09-rbx2008/boost/include",
+    "tools/libs/SDL-1.2.11/include"
+   ]
+  },
+  {
    "name": "upstream",
    "mode": "recipe",
    "recipe": "g3d-6.09-rbx2008",
