@@ -14724,6 +14724,114 @@
    "address": "007dd779",
    "inferred_name": false,
    "evidence": "Original setMesh 0067c520 relocation points to this handler; handler body and FuncInfo references match in work/native-candidates/ogre-entity-setmesh-1112/native-proof/manifest.json."
+  },
+  {
+   "symbol": "??_GMemoryDataStream@Ogre@@UAEPAXI@Z",
+   "address": "004dab30",
+   "inferred_name": true,
+   "evidence": "Original registry names vector deleting thunk; MSVC scalar form matches same original destructor target and delete references."
+  },
+  {
+   "symbol": "??_GFileStreamDataStream@Ogre@@UAEPAXI@Z",
+   "address": "006700c0",
+   "inferred_name": true,
+   "evidence": "Original registry names vector deleting thunk; MSVC scalar form matches same original destructor target and delete references."
+  },
+  {
+   "symbol": "??_GCamera@Ogre@@UAEPAXI@Z",
+   "address": "0069a220",
+   "inferred_name": true,
+   "evidence": "Original registry names vector deleting thunk; MSVC scalar form matches same original destructor target and delete references."
+  },
+  {
+   "symbol": "??_GSceneNode@Ogre@@UAEPAXI@Z",
+   "address": "0069a2e0",
+   "inferred_name": true,
+   "evidence": "Original registry names vector deleting thunk; MSVC scalar form matches same original destructor target and delete references."
+  },
+  {
+   "symbol": "??_GManualObject@Ogre@@UAEPAXI@Z",
+   "address": "00681160",
+   "inferred_name": true,
+   "evidence": "Original registry names vector deleting thunk; MSVC scalar form matches same original destructor target and delete references."
+  },
+  {
+   "symbol": "??_GRenderQueue@Ogre@@UAEPAXI@Z",
+   "address": "0068b780",
+   "inferred_name": true,
+   "evidence": "Original registry names vector deleting thunk; MSVC scalar form matches same original destructor target and delete references."
+  },
+  {
+   "symbol": "??_GRectangle2D@Ogre@@UAEPAXI@Z",
+   "address": "006918c0",
+   "inferred_name": true,
+   "evidence": "Original registry names vector deleting thunk; MSVC scalar form matches same original destructor target and delete references."
+  },
+  {
+   "symbol": "??_GStaticGeometry@Ogre@@UAEPAXI@Z",
+   "address": "0069adb0",
+   "inferred_name": true,
+   "evidence": "Original registry names vector deleting thunk; MSVC scalar form matches same original destructor target and delete references."
+  },
+  {
+   "symbol": "??_GInstancedGeometry@Ogre@@UAEPAXI@Z",
+   "address": "0069af30",
+   "inferred_name": true,
+   "evidence": "Original registry names vector deleting thunk; MSVC scalar form matches same original destructor target and delete references."
+  },
+  {
+   "symbol": "??_GDefaultRaySceneQuery@Ogre@@UAEPAXI@Z",
+   "address": "0068cd70",
+   "inferred_name": true,
+   "evidence": "Original registry names vector deleting thunk; MSVC scalar form matches same original destructor target and delete references."
+  },
+  {
+   "symbol": "??_GDefaultAxisAlignedBoxSceneQuery@Ogre@@UAEPAXI@Z",
+   "address": "0068cb60",
+   "inferred_name": true,
+   "evidence": "Original registry names vector deleting thunk; MSVC scalar form matches same original destructor target and delete references."
+  },
+  {
+   "symbol": "??_GDefaultSphereSceneQuery@Ogre@@UAEPAXI@Z",
+   "address": "0068cc10",
+   "inferred_name": true,
+   "evidence": "Original registry names vector deleting thunk; MSVC scalar form matches same original destructor target and delete references."
+  },
+  {
+   "symbol": "??_GDefaultPlaneBoundedVolumeListSceneQuery@Ogre@@UAEPAXI@Z",
+   "address": "0068ccc0",
+   "inferred_name": true,
+   "evidence": "Original registry names vector deleting thunk; MSVC scalar form matches same original destructor target and delete references."
+  },
+  {
+   "symbol": "??_GDefaultIntersectionSceneQuery@Ogre@@UAEPAXI@Z",
+   "address": "0068ce10",
+   "inferred_name": true,
+   "evidence": "Original registry names vector deleting thunk; MSVC scalar form matches same original destructor target and delete references."
+  },
+  {
+   "symbol": "??_GRbxSceneNode@Ogre@@UAEPAXI@Z",
+   "address": "006741d0",
+   "inferred_name": true,
+   "evidence": "MSVC scalar deleting thunk for registry class; original destructor and operator delete calls independently checked."
+  },
+  {
+   "symbol": "??_GRbxEntity@Ogre@@UAEPAXI@Z",
+   "address": "0067d5e0",
+   "inferred_name": true,
+   "evidence": "MSVC scalar deleting thunk for registry class; original destructor and operator delete calls independently checked."
+  },
+  {
+   "symbol": "??_GRbxSubEntity@Ogre@@UAEPAXI@Z",
+   "address": "00685a20",
+   "inferred_name": true,
+   "evidence": "MSVC scalar deleting thunk for registry class; original destructor and operator delete calls independently checked."
+  },
+  {
+   "symbol": "??_GRbxSubEntityShadowRenderable@RbxSubEntity@Ogre@@UAEPAXI@Z",
+   "address": "00685640",
+   "inferred_name": true,
+   "evidence": "MSVC scalar deleting thunk for registry class; original destructor and operator delete calls independently checked."
   }
  ]
 }
