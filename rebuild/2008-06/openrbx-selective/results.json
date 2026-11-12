@@ -1,0 +1,24 @@
+{
+ "baseline_owned": 4436,
+ "trial_owned": 4438,
+ "gains": {
+  "00652510": "ScoreHud::ScoreHud",
+  "00656430": "ScoreHud::render2d"
+ },
+ "losses": [],
+ "source_sha256": "ac82f6590527b09bedc88c22df170616f3e0188984ac024a4407cda86a8ed1ed",
+ "linked": true,
+ "smoke_exit": 0,
+ "milestones": {
+  "M2": true,
+  "M4a": true,
+  "M5": true
+ },
+ "layout_evidence": "Constructor masked code and 13 resolvable referenced data regions match. Full class layout, all call bindings and jump-table relocations are not independently proven.",
+ "other_attempts": {
+  "HealthHud": "2007 health/maxHealth expression changed to 2008 relativeHealth; compiled; no new unique address.",
+  "Mouse": "2007 default null hit-test filter made explicit for 2008; compiled; no new unique address.",
+  "SerializerV2": "Five matching addresses across first combined trial, but link failed after extra merge provider; rejected."
+ },
+ "status": "trial only; not canonical integration"
+}
