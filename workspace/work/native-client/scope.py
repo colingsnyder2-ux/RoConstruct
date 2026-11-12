@@ -2,7 +2,7 @@
 
   python work/native-client/scope.py rbxapp            -> summary + work/native-client/scope-rbxapp.json
   python work/native-client/scope.py rbxapp --todo     -> only classes with functions not yet byte-exact
-  python work/native-client/scope.py rbxapp --queue 15 -> ranked next classes (partial files first, leased skipped)
+  python work/native-client/scope.py rbxapp --queue 15 -> random workable new classes (no almost-done files, leased skipped)
 
 rbxapp = all Roblox code: the MFC/COM app classes (CRobloxView, CMainFrame ...) and the RBX:: engine classes. Everything
 that is not a library (XTP, ATL, stock MFC, G3D, Ogre, boost, std, Lua, RakNet ...). Template instantiations are skipped. Names come from work/2008-06/identity-registry.json (decorated, non-placeholder);
@@ -102,15 +102,17 @@ def queue(classes, limit):
         busy = any(s in leased or 'commit-' + s in leased for s in stems) or cls in leased
         partial = bool(stems) and done > 0
         rows.append((busy, not partial, left > 60, left, cls, total, done, stems))
-    rows.sort()
+    import random
+    # Random, workable: classes with no native file yet and 3-40 functions left. Partial/almost-done files are where everyone
+    # is stuck, so they are only used as a fallback.
+    fresh = [r for r in rows if not r[0] and not r[7] and r[5 + 1] * 2 <= r[5] and 3 <= r[3] <= 40]
+    fallback = [r for r in rows if not r[0] and r not in fresh and r[3] <= 60]
+    random.shuffle(fresh)
+    random.shuffle(fallback)
     print('%-4s %-34s %9s  %s' % ('#', 'class', 'exact', 'note'))
     shown = 0
-    for busy, not_partial, huge, left, cls, total, done, stems in rows:
-        if busy:
-            continue
-        note = ('extend ' + stems[0] + '.cpp') if stems and done else ('has file, none exact' if stems else 'new class')
-        if huge:
-            note += ' (large: park if blocked)'
+    for busy, not_partial, huge, left, cls, total, done, stems in fresh + fallback:
+        note = ('has file, still partial: hard' if stems else 'new class, random pick')
         shown += 1
         print('%-4d %-34s %4d/%-4d  %s' % (shown, cls, done, total, note))
         if shown >= limit:
