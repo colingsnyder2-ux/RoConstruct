@@ -150,6 +150,24 @@ class Targets:
         return {r - va for r in self.sorted_relocs[a:b]}
 
 
+_IMPORT_SLOTS = None
+
+
+def import_slots():
+    """{address: 'Name'} for IAT slots the PE import table names (registry kind import-table): authoritative, unlike reference votes."""
+    global _IMPORT_SLOTS
+    if _IMPORT_SLOTS is None:
+        _IMPORT_SLOTS = {}
+        path = Path(__file__).resolve().parents[1] / 'work/2008-06/identity-registry.json'
+        try:
+            for addr, row in json.loads(path.read_text()).items():
+                if any(e.get('kind') == 'import-table' for e in row.get('evidence', [])) and '!' in row.get('name', ''):
+                    _IMPORT_SLOTS[int(addr, 16)] = row['name'].split('!', 1)[1]
+        except (OSError, ValueError):
+            pass
+    return _IMPORT_SLOTS
+
+
 def audit_references(raw, symbol, body, target, target_relocs, va, targets, bindings):
     """Check every relocation and initialized-data edge; unknown is a blocker."""
     sections, symbols, definitions, _ = match._coff_data_index(raw)
@@ -174,6 +192,9 @@ def audit_references(raw, symbol, body, target, target_relocs, va, targets, bind
                                 raw[table[4]:table[4] + len(encoded)] == encoded and
                                 table[7] == 0)
         is_tu_guard = name.startswith('??_B?') or bool(re.match(r'\?[\w$]+@\?\d+\?\?', name))   # function-local static guard: one per translation unit, its address differs per TU
+        imported = re.match(r'__imp__(\w+?)(@\d+)?$', name)
+        if imported and import_slots().get(base) == imported.group(1):
+            is_tu_guard = True      # the PE import table itself says this slot is that API: wins over a conflicting reference vote
         if known is not None and int(known, 16) != base and not is_local_literal and not is_tu_guard:
             errors.append('reference identity differs: %s (bound %s, original reference %08x)' % (name, known, base))
             return
