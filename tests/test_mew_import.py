@@ -11,6 +11,22 @@ from roc import mew_import
 
 
 class MewImportTests(unittest.TestCase):
+    def test_fetch_donor_defaults_to_active_native_branch_and_pins_selected_ref(self):
+        self.assertEqual(mew_import.DEFAULT_BRANCH, 'claude/optimistic-shannon-0xccuy')
+        with patch('roc.mew_import.subprocess.run', return_value=SimpleNamespace(returncode=0)), \
+                patch('roc.mew_import.git') as git:
+            mew_import.fetch_donor(Path('repo'), 'main')
+        git.assert_called_once_with(
+            Path('repo'), 'fetch', 'https://github.com/mewpokemons/RoConstruct.git',
+            '+refs/heads/main:refs/remotes/mew-review/selected')
+
+    def test_fetch_donor_rejects_invalid_branch_before_fetch(self):
+        with patch('roc.mew_import.subprocess.run', return_value=SimpleNamespace(returncode=1)), \
+                patch('roc.mew_import.git') as git:
+            with self.assertRaisesRegex(ValueError, 'Invalid Mew branch'):
+                mew_import.fetch_donor(Path('repo'), '../main:evil')
+        git.assert_not_called()
+
     def test_failed_batch_does_not_stop_next_batch(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)

@@ -15,7 +15,8 @@ SOURCE_ROOT = Path(__file__).resolve().parents[1]
 _repo = subprocess.run(['git', '-C', str(SOURCE_ROOT), 'rev-parse', '--show-toplevel'],
                        capture_output=True, text=True)
 ROOT = Path(_repo.stdout.strip()) if _repo.returncode == 0 else SOURCE_ROOT
-DONOR = 'refs/remotes/mew-review/optimistic'
+DONOR = 'refs/remotes/mew-review/selected'
+DEFAULT_BRANCH = 'claude/optimistic-shannon-0xccuy'
 WORK = 'refs/remotes/findings/work'
 NATIVE = ('rebuild/2008-06/native-classes/', 'rebuild/2008-06/native-headers/',
           'rebuild/2008-06/native-world/')
@@ -23,6 +24,15 @@ NATIVE = ('rebuild/2008-06/native-classes/', 'rebuild/2008-06/native-headers/',
 
 def git(root, *args, data=None):
     return subprocess.check_output(['git', *args], cwd=root, input=data)
+
+
+def fetch_donor(root, branch=DEFAULT_BRANCH):
+    valid = subprocess.run(['git', 'check-ref-format', '--branch', branch], cwd=root,
+                           capture_output=True)
+    if valid.returncode:
+        raise ValueError('Invalid Mew branch: ' + branch)
+    git(root, 'fetch', 'https://github.com/mewpokemons/RoConstruct.git',
+        '+refs/heads/' + branch + ':' + DONOR)
 
 
 def tree(root, ref, prefix):
@@ -208,13 +218,13 @@ def main(argv=None):
     parser.add_argument('--output', type=Path, required=True, help='new scratch directory')
     parser.add_argument('--workers', type=int, choices=range(1, 9), default=3)
     parser.add_argument('--batch-size', type=int, default=40)
+    parser.add_argument('--branch', default=DEFAULT_BRANCH, help='Mew branch to pin')
     parser.add_argument('--offline', action='store_true', help='use already fetched refs')
     parser.add_argument('--check', action='store_true', help='compile proposed candidates in isolated objects')
     args = parser.parse_args(argv)
     if not args.offline:
         git(ROOT, 'fetch', 'findings', 'work')
-        git(ROOT, 'fetch', 'https://github.com/mewpokemons/RoConstruct.git',
-            'refs/heads/claude/optimistic-shannon-0xccuy:' + DONOR)
+        fetch_donor(ROOT, args.branch)
     report = prepare(ROOT, args.output, batch_size=args.batch_size)
     print('Indexed %d fork files; prepared %d batches. No files merged.' %
           (len(report['files']), len(report['manifests'])), flush=True)
