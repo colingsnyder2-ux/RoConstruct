@@ -184,51 +184,6 @@ td.user { font: 600 15px Inter, sans-serif; color: var(--cyan); }
 .medal.m2 { background: radial-gradient(circle at 35% 30%, #f2f4f7, #9aa5b4); color: #1d2430; }
 .medal.m3 { background: radial-gradient(circle at 35% 30%, #f3b37c, #b5652a); color: #2e1606; }
 
-/* class tree */
-.tree-legend { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 12px; }
-.tree-legend button { display: inline-flex; align-items: center; gap: 6px; background: var(--panel); color: var(--text); border: 1px solid var(--line2); border-radius: 999px; padding: 4px 10px; font: 12px var(--mono); cursor: pointer; }
-.tree-legend button[aria-pressed="true"] { border-color: var(--text); }
-.tree-legend button b { font-weight: 600; }
-.tree-legend .hint { flex-basis: 100%; color: var(--dim); font-size: 12px; }
-.dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; background: var(--c); flex: none; }
-.tree { display: grid; gap: 8px; }
-.tree-ns { background: var(--panel); border: 1px solid var(--line2); border-radius: 10px; overflow: hidden; }
-.tree-ns > summary, .tree-cls > summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: minmax(0, 1fr) 140px minmax(0, auto); gap: 12px; align-items: center; padding: 10px 14px; }
-.tree-ns > summary::-webkit-details-marker, .tree-cls > summary::-webkit-details-marker { display: none; }
-.tree-ns > summary { font-weight: 600; }
-.tree-cls { border-top: 1px solid var(--line2); }
-.tree-cls > summary { padding: 8px 14px 8px 30px; font: 13px var(--mono); }
-.tree-ns > summary:hover, .tree-cls > summary:hover { background: rgba(255,255,255,.03); }
-.tree .name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.tree .name::before { content: "▸"; color: var(--dim); display: inline-block; width: 16px; }
-.tree details[open] > summary .name::before { content: "▾"; }
-.tree .name small { color: var(--dim); font-weight: 400; margin-left: 6px; }
-.sbar { display: flex; height: 6px; border-radius: 3px; overflow: hidden; background: var(--grey); }
-.sbar i { background: var(--c); }
-.chips { display: flex; flex-wrap: wrap; gap: 4px 10px; justify-content: flex-end; font: 12px var(--mono); color: var(--dim); }
-.chips span { display: inline-flex; align-items: center; gap: 4px; }
-.chip-err { color: #f85149; } .chip-live { color: #3fb950; }
-.tree-body { padding: 4px 14px 14px 46px; }
-.tree-group { margin-top: 10px; }
-.tree-group h4 { display: flex; align-items: center; gap: 6px; margin: 0 0 4px; font: 600 11px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--dim); }
-.tree-fn { display: grid; grid-template-columns: 76px minmax(0, 1fr) 64px minmax(0, 220px); gap: 12px; font: 12px/1.9 var(--mono); border-bottom: 1px solid rgba(255,255,255,.04); }
-.tree-fn > * { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.tree-fn .addr, .tree-fn .size, .tree-fn .src { color: var(--dim); } .tree-fn .size { text-align: right; }
-.tree-fn .anon { color: var(--dim); font-style: italic; }
-.tree-more { display: block; width: calc(100% - 28px); margin: 8px 14px 12px 30px; padding: 6px; background: none; border: 1px dashed var(--line2); border-radius: 8px; color: var(--dim); font: 12px var(--mono); cursor: pointer; }
-.tree-more:hover { color: var(--text); }
-.tree-note { color: var(--dim); font-size: 12px; margin: 8px 0 0; }
-.tree-err { border: 1px solid rgba(248,81,73,.35); background: rgba(248,81,73,.06); border-radius: 8px; padding: 8px 12px; margin-top: 8px; font: 12px var(--mono); }
-.tree-err summary { cursor: pointer; color: #f85149; }
-.tree-err .tree-err { background: none; }
-.tree-err ul { margin: 6px 0 0; padding-left: 18px; color: var(--dim); }
-.tree-agent { margin-top: 8px; font: 12px var(--mono); color: var(--dim); }
-@media (max-width: 640px) {
-  .tree-ns > summary, .tree-cls > summary { grid-template-columns: minmax(0, 1fr) 80px; }
-  .tree .chips { grid-column: 1 / -1; justify-content: flex-start; }
-  .tree-body { padding-left: 14px; }
-  .tree-fn { grid-template-columns: 70px minmax(0, 1fr) 56px; } .tree-fn .src { display: none; }
-}
 /* client page bits */
 .back { font: 14px var(--mono); display: inline-block; margin-top: 28px; }
 .sub { font: 14px var(--mono); color: var(--dim); text-align: center; margin: 6px 0 16px; }
@@ -320,7 +275,6 @@ footer img { height: 30px; }
       <a href="#contributors" data-nav="contributors">Contributors</a>
       <a href="sources.html" data-nav="sources">Sources</a>
       <a href="findings.html" data-nav="findings">Findings</a>
-      <a href="graph.html">Dependency Graph</a>
     </nav>
     <a class="btn discord" href="https://discord.gg/Tayg763nrG"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.32 4.37A19.8 19.8 0 0015.4 2.85a.07.07 0 00-.08.04c-.21.38-.45.87-.61 1.26a18.3 18.3 0 00-5.48 0 12.6 12.6 0 00-.62-1.26.08.08 0 00-.08-.04 19.7 19.7 0 00-4.92 1.52.07.07 0 00-.03.03C.53 9.05-.32 13.58.1 18.06a.08.08 0 00.03.06 19.9 19.9 0 005.99 3.03.08.08 0 00.08-.03c.46-.63.87-1.29 1.23-1.99a.08.08 0 00-.04-.11 13.1 13.1 0 01-1.87-.89.08.08 0 01-.01-.13l.37-.29a.07.07 0 01.08-.01c3.93 1.79 8.18 1.79 12.06 0a.07.07 0 01.08.01l.37.29a.08.08 0 01-.01.13c-.6.35-1.22.65-1.87.89a.08.08 0 00-.04.11c.36.7.77 1.36 1.22 1.99a.08.08 0 00.08.03 19.8 19.8 0 006-3.03.08.08 0 00.03-.05c.5-5.18-.84-9.67-3.55-13.66a.06.06 0 00-.03-.03zM8.02 15.33c-1.18 0-2.16-1.09-2.16-2.42 0-1.33.96-2.42 2.16-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.33-.96 2.42-2.16 2.42zm7.97 0c-1.18 0-2.15-1.09-2.15-2.42 0-1.33.95-2.42 2.15-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.33-.95 2.42-2.16 2.42z"/></svg>
       Discord</a>
@@ -343,6 +297,7 @@ footer img { height: 30px; }
 <script>
 const REPO = "https://github.com/colingsnyder2-ux/RoConstruct";
 const FINDINGS = "https://github.com/colingsnyder2-ux/RoConstruct-findings";
+const NATIVE_WORK = "https://github.com/colingsnyder2-ux/RoConstruct/blob/work/workspace";   // Worker publish branch: inactive/draft native sources
 const app = document.getElementById("app");
 const fmt = n => n.toLocaleString("en-US");
 const pct = (a, b) => b ? (100 * a / b).toFixed(2) + "%" : "0.00%";
@@ -359,6 +314,8 @@ const libraryUrl = meta => {
 const sourceLinks = (client, f, short = false) => {
   const indexed = integrationData?.client === client && integrationData.sources?.[hex(f[0])];
   const links = [];
+  const draft = integrationData?.client === client && !indexed && integrationData.inactive?.[hex(f[0])];
+  if (draft?.[3]) links.push(`<a href="${NATIVE_WORK}/${draft[3][0].split('/').map(encodeURIComponent).join('/')}#L${draft[3][1]}" target="_blank" rel="noopener">${draft[1] ? (short ? "Inactive native" : "Inactive native source") : (short ? "Draft native" : "Draft native source")} ↗</a>`);
   if (indexed) links.push(`<a href="${FINDINGS}/blob/main/${indexed.path.split('/').map(encodeURIComponent).join('/')}#L${indexed.line}" target="_blank" rel="noopener">${short ? "Integrated" : "Integrated source"} ↗</a>`);
   if (f[4]) links.push(`<a href="${sourceUrl(client, f[0])}" target="_blank" rel="noopener">${f[2] === 100 ? "Mined" : "Candidate"}${short ? "" : " source"} ↗</a>`);
   else {
@@ -930,111 +887,6 @@ function wireLibraries(onMap) {
   for (const b of document.querySelectorAll("#libs .mapbtn")) b.onclick = () => onMap(b.dataset.g);
 }
 
-// Class tree: namespace > unit > function, grouped by status. Methods render lazily on open.
-const TREE_STATES = [
-  ["integrated", "Integrated", "#a855f7", "in the linked rebuild"],
-  ["working", "Working", "#3fb950", "an agent (Codex, Claude, …) holds a live claim"],
-  ["inactive", "Inactive", "#f0883e", "native code exists, receipt-proven exact, not integrated"],
-  ["draft", "Draft", "#db61a2", "native code exists, not yet proven exact"],
-  ["exact", "Exact", "#58a6ff", "mined exact only, no native code"],
-  ["partial", "Partial", "#d29922", "mined, not exact"],
-  ["unmined", "Unmined", "#3a3d45", "no source yet"]];
-const TREE_COLOR = Object.fromEntries(TREE_STATES.map(([k, , c]) => [k, c]));
-function treeStatus(f, nativeSet, inactive, working) {
-  const a = hex(f[0]);
-  return nativeSet.has(a) ? "integrated" : working[a] ? "working" : inactive[a] ? (inactive[a][1] ? "inactive" : "draft")
-    : f[2] === 100 ? "exact" : f[2] ? "partial" : "unmined";
-}
-function renderTree(data, byUnit, nativeSet, native) {
-  const box = document.getElementById("tree"), input = document.getElementById("tree-filter"), legend = document.getElementById("tree-legend");
-  const names = native?.names || {}, inactive = native?.inactive || {}, working = native?.working || {}, activity = native?.activity || {};
-  const fname = f => names[hex(f[0])]?.[0] || inactive[hex(f[0])]?.[0] || f[5]?.[2] || "";
-  const status = f => treeStatus(f, nativeSet, inactive, working);
-  const linkFam = native?.link_errors?.families || {};
-  // family "RBX::Foo" or "TToolVerb::isChecked" -> unit whose name matches its class part
-  const linkFor = unit => Object.entries(linkFam).filter(([fam]) => { const cls = fam.split("::").slice(0, fam.startsWith("RBX::") ? 2 : 1).join("::"); return cls === unit || unit.endsWith("::" + cls) || unit.startsWith(cls + "<"); });
-  const linkHtml = rows => rows.map(([fam, e]) => `<details class="tree-err"><summary>${e.symbols.length} unresolved · ${esc(fam)} <span style="color:var(--dim)">· ${esc(e.objects.join(", "))}</span></summary><ul>${e.symbols.map(x => `<li>${esc(x)}</li>`).join("")}</ul></details>`).join("");
-  const dot = k => `<i class="dot" style="--c:${TREE_COLOR[k]}"></i>`;
-  // RTTI unit names keep mangling residue (VCRobloxDoc, RBX::VHat::?$FactoryProduct, PAVCXTPToolBar, W4Enum):
-  // strip it, merge units that clean to the same class, and group by library.
-  const cleanSeg = s => s.replace(/^\?\$/, "").replace(/^(?:P8|PAV|PAU|PBV|PAX|W4|V|U)(?=[A-Z_])/, "");
-  const junk = s => !s || s.length < 3 || /^[$?@]|^_N$|^H_N$|^\d/.test(s);
-  // MSVC RTTI lists template args before the template: "VCRobloxDoc::?$VerbBinder" is VerbBinder<CRobloxDoc>.
-  const TEMPLATES = /^(CComObject|CComAggObject|CComContainedObject|CComEnum|CXTMaskEditT|CXTPArrayT|CXTPSmartPtrInternalT|CProxy_\w+)$/;
-  const cleanUnit = unit => {
-    let parts = [], tmpl = null;
-    for (const raw of unit.split("::")) {
-      const seg = cleanSeg(raw);
-      if (junk(seg)) continue;
-      if (raw.startsWith("?$") || TEMPLATES.test(seg)) { tmpl = seg; continue; }
-      if (tmpl) { parts = [`${tmpl}<${parts.join("::")}>`]; tmpl = null; }
-      parts.push(seg);
-    }
-    if (tmpl) parts = parts.length ? [`${tmpl}<${parts.join("::")}>`] : [tmpl];
-    return parts.join("::") || "(unnamed)";
-  };
-  // library and sort key come from the innermost argument: FactoryProduct<RBX::Hat> sits with RBX::Hat
-  const argOf = name => { const m = name.match(/^[\w$]+<(.+)>/); return m ? argOf(m[1]) : name; };
-  const libOf = name => { const top = name.split("::")[0];
-    return /^(RBX|G3D|boost|std|Ogre|ATL|Scintilla)$/.test(top) ? top : /^C?XTP|^XT/.test(top) ? "XTP (Codejock)" : /^(seg_|\(unnamed\))/.test(top) ? "Unattributed" : "App"; };
-  const classes = new Map(), statusOf = new Map();
-  for (const [u, fs] of byUnit) {
-    const name = cleanUnit(data.units[u]);
-    if (!classes.has(name)) classes.set(name, {name, key: argOf(name) + (name === argOf(name) ? "" : " " + name), lib: libOf(argOf(name)), units: [], fs: []});
-    const c = classes.get(name);
-    c.units.push(data.units[u]); c.fs.push(...fs);
-    for (const f of fs) statusOf.set(f, status(f));
-  }
-  const classList = [...classes.values()];
-  const ns = new Map();
-  for (const c of classList) { if (!ns.has(c.lib)) ns.set(c.lib, []); ns.get(c.lib).push(c); }
-  const active = c => c.fs.some(f => ["integrated", "working", "inactive", "draft"].includes(statusOf.get(f)));
-  const expanded = new Set();
-  const counts = fs => { const c = Object.fromEntries(TREE_STATES.map(([k]) => [k, 0])); for (const f of fs) c[statusOf.get(f)]++; return c; };
-  const sbar = c => { const n = Object.values(c).reduce((a, b) => a + b, 0) || 1; return `<div class="sbar" title="${TREE_STATES.filter(([k]) => c[k]).map(([k, l]) => `${c[k]} ${l.toLowerCase()}`).join(", ")}">${TREE_STATES.filter(([k]) => c[k]).map(([k]) => `<i style="--c:${TREE_COLOR[k]};width:${100 * c[k] / n}%"></i>`).join("")}</div>`; };
-  // chips show native progress only; the bar already shows mining states
-  const chips = (c, extra = "") => `<div class="chips">${["integrated", "working", "inactive", "draft"].filter(k => c[k]).map(k => `<span>${dot(k)}${fmt(c[k])}</span>`).join("")}${extra}</div>`;
-  const total = counts(data.funcs);
-  let only = "";
-  const drawLegend = () => legend.innerHTML = TREE_STATES.map(([k, l, , d]) => `<button type="button" data-state="${k}" aria-pressed="${only === k}" title="${esc(d)}">${dot(k)}${l} <b>${fmt(total[k])}</b></button>`).join("") +
-    `<span class="hint">Hover a status for its meaning; click to show only classes that have it.${native?.commit ? ` Data from commit <code>${esc(native.commit)}</code> · ${esc(native.updated)}.` : ""}</span>`;
-  legend.onclick = e => { const b = e.target.closest("button[data-state]"); if (!b) return; only = only === b.dataset.state ? "" : b.dataset.state; drawLegend(); draw(); };
-  const libOrder = ["App", "RBX", "G3D", "Ogre", "XTP (Codejock)", "boost", "std", "ATL", "Scintilla", "Unattributed"];
-  const classRow = c => {
-    const cc = counts(c.fs), errs = c.units.reduce((n, u) => n + linkFor(u).reduce((m, [, e]) => m + e.symbols.length, 0), 0), a = c.units.map(u => activity[u]).find(Boolean);
-    const extra = (errs ? `<span class="chip-err">${errs} link err</span>` : "") + (a?.[0] === "working" ? `<span class="chip-live">● ${esc(a[1])}</span>` : "");
-    const short = c.name.split(c.lib + "::").join("");
-    return `<details class="tree-cls" data-cls="${classList.indexOf(c)}"><summary><span class="name" title="${esc(c.units.join(", "))}">${esc(short)}<small>${c.fs.length}</small></span>${sbar(cc)}${chips(cc, extra)}</summary></details>`;
-  };
-  const draw = () => {
-    const q = input.value.trim().toLowerCase();
-    box.innerHTML = [...ns.keys()].sort((a, b) => (libOrder.indexOf(a) + 1 || 99) - (libOrder.indexOf(b) + 1 || 99) || a.localeCompare(b)).map(key => {
-      const list = ns.get(key).filter(c => (!q || c.name.toLowerCase().includes(q) || c.units.some(u => u.toLowerCase().includes(q))) && (!only || c.fs.some(f => statusOf.get(f) === only)))
-        .sort((a, b) => active(b) - active(a) || a.key.localeCompare(b.key));
-      if (!list.length) return "";
-      const c = counts(list.flatMap(x => x.fs)), all = q || only || expanded.has(key), shown = all ? list : list.filter(active).slice(0, 25), rest = list.length - shown.length;
-      return `<details class="tree-ns" data-lib="${esc(key)}" ${q || only || expanded.has(key) ? "open" : ""}><summary><span class="name">${esc(key)}<small>${fmt(list.length)} ${list.length === 1 ? "class" : "classes"}</small></span>${sbar(c)}${chips(c)}</summary>${shown.map(classRow).join("")}${rest ? `<button type="button" class="tree-more" data-more="${esc(key)}">Show all ${fmt(list.length)} classes</button>` : ""}</details>`;
-    }).join("") || `<p class="tree-note">No classes match.</p>`;
-  };
-  box.addEventListener("click", e => { const b = e.target.closest("[data-more]"); if (!b) return; expanded.add(b.dataset.more); draw(); });
-  box.addEventListener("toggle", e => {
-    const d = e.target;
-    if (!d.open || !d.dataset.cls || d.dataset.drawn) return;
-    d.dataset.drawn = 1;
-    const cls = classList[+d.dataset.cls], fs = [...cls.fs].sort((a, b) => a[0] - b[0]), a = cls.units.map(u => activity[u]).find(Boolean);
-    const groups = TREE_STATES.map(([k, l]) => [k, l, fs.filter(f => statusOf.get(f) === k)]).filter(g => g[2].length);
-    d.insertAdjacentHTML("beforeend", `<div class="tree-body">${linkHtml(cls.units.flatMap(linkFor))}${cls.units.length > 1 || cls.units[0] !== cls.name ? `<div class="tree-agent">RTTI units: ${cls.units.map(esc).join(" · ")}</div>` : ""}${a ? `<div class="tree-agent">Latest agent claim: ${esc(a[1])} · ${esc(a[0])}</div>` : ""}${groups.map(([k, l, g]) => `<div class="tree-group"><h4>${dot(k)}${l} · ${g.length}</h4>${g.map(f => {
-      const w = working[hex(f[0])], src = w ? w[0] + " · " + w[1] : inactive[hex(f[0])]?.[2] || "", n = fname(f);
-      return `<div class="tree-fn"><span class="addr">${hex(f[0])}</span><span title="${esc(n)}"${n ? "" : ' class="anon"'}>${n ? esc(n) : "unnamed"}</span><span class="size">${fmt(f[1])} B</span><span class="src" title="${esc(src)}">${esc(src.split("/").pop())}</span></div>`;
-    }).join("")}</div>`).join("")}</div>`);
-  }, true);
-  const trials = native?.link_errors?.trials || [], loose = Object.entries(linkFam).filter(([fam]) => !data.units.some(u => linkFor(u).some(([f]) => f === fam)));
-  document.getElementById("link-summary").innerHTML = trials.length ? `<details class="tree-err"><summary>Link trial: ${trials.map(t => `exit ${esc(t.link_exit)} · ${esc(t.error_lines)} error lines${t.revision ? " · rev " + esc(t.revision) : ""}`).join("; ")} · ${loose.length} families not tied to a class</summary>${linkHtml(loose)}</details>` : "";
-  input.oninput = draw;
-  drawLegend();
-  draw();
-}
-
 async function client(name) {
   await refreshLiveProgress(false, name);
   const latest = progress.clients.find(c => c.name === name);
@@ -1117,11 +969,6 @@ async function client(name) {
     <div id="live-mining">${native && views.daily==="integration" ? integrationDaily(native, true) : miningGraph({...latest,
       source_matched: latest.source_matched ?? data.funcs.filter(f => f[2] === 100 && f[5]).length,
       mined_matched: latest.mined_matched ?? data.funcs.filter(f => f[2] === 100 && !f[5]).length}, !!native)}</div>
-    <div class="head"><h2><small>Tree</small>Classes</h2><p>Every class and function in this client, by native rebuild status.</p></div>
-    <div class="controls"><input id="tree-filter" placeholder="Filter classes, e.g. CRobloxDoc"></div>
-    <div class="tree-legend" id="tree-legend"></div>
-    <div id="link-summary"></div>
-    <div class="tree" id="tree"></div>
     ${leaderboard(latest.leaderboard, "", name)}
     <div class="head"><h2 id="remaining-title">${native && views.remaining==="integration" ? "Functions not integrated" : "Functions Remaining"}</h2><p>Click a column to sort · 25 per page.</p></div>
     ${native ? sectionMode("remaining", "Remaining functions view") : ""}<div class="remaining-card">
@@ -1143,7 +990,6 @@ async function client(name) {
     </div></div>
     <p class="note">Last updated: ${esc(progress.updated)}</p>`;
   wireNav();
-  renderTree(data, byUnit, nativeSet, native);
   const onLibraryMap = key => {
     const [title, fs] = data.groups.get(key);
     group = fs; unitSel.value = "";

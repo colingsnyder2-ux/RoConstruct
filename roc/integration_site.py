@@ -2,6 +2,7 @@
 Same four groups as the Discord digest: integrated (linked rebuild reproduces it), exact waiting (mined 100%,
 not yet integrated), partial, unmined. Per-function data is published on gh-pages only (see server.publish_pages)."""
 import json
+from pathlib import Path
 import re
 import sqlite3
 from datetime import datetime, timezone
@@ -101,6 +102,7 @@ def inactive_code(root):
             continue
         stamp = path.stat().st_mtime
         for family in data.get("families", []):
+            source_of = {(c["addr"], c["symbol"]): job["source"] for job in family.get("jobs", []) for c in job.get("checks", [])}
             for row in family.get("symbols", []):
                 exact = row.get("status") == "inactive_exact"
                 candidates = row.get("candidates") or []
@@ -109,13 +111,33 @@ def inactive_code(root):
                 for addr in candidates:
                     old = found.get(addr)
                     if not old or (exact, stamp) > (old[1], old[3]):
-                        found[addr] = [row["symbol"], exact, "native-bulk:" + path.parent.name, stamp]
+                        found[addr] = [row["symbol"], exact, "native-bulk:" + path.parent.name, stamp,
+                                       source_of.get((addr, row["symbol"]))]
     # native source with an address-named method but no receipt yet (e.g. CRobloxDoc::handle_453c30)
     for path in sorted((root / "rebuild" / CLIENT).glob("*/*.cpp")):
         text = path.read_text(encoding="utf-8", errors="replace")
         for cls, addr in re.findall(r"\b(\w+)::handle_([0-9a-f]{6,8})\b", text):
-            found.setdefault(addr.zfill(8), ["%s::handle_%s" % (cls, addr), False, path.relative_to(root).as_posix(), 0])
-    return {a: [readable(v[0]) if v[0].startswith("?") else v[0]] + v[1:3] for a, v in sorted(found.items())}
+            found.setdefault(addr.zfill(8), ["%s::handle_%s" % (cls, addr), False, path.relative_to(root).as_posix(), 0, str(path)])
+    texts = {}
+
+    def located(symbol, source):
+        """[repo-relative path, line of the definition (1 if not found)] of the native source, or None."""
+        if not source:
+            return None
+        path = Path(source)
+        try:
+            rel = path.resolve().relative_to(root.resolve()).as_posix()
+        except ValueError:
+            return None
+        if path not in texts:
+            texts[path] = path.read_text(encoding="utf-8", errors="replace").splitlines() if path.is_file() else []
+        parts = readable(symbol).split("(")[0].split("::")
+        needle = "::".join(parts[-2:]) + "("
+        line = next((i + 1 for i, text in enumerate(texts[path]) if needle in text.replace(" (", "(")), 1)
+        return [rel, line]
+    # addr -> [readable symbol, exact, receipt, [native source path, line] or None]
+    return {a: [readable(v[0]) if v[0].startswith("?") else v[0]] + v[1:3] + [located(v[0], v[4] if len(v) > 4 else None)]
+            for a, v in sorted(found.items())}
 
 
 def link_errors(root):
