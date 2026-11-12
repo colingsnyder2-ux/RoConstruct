@@ -13,6 +13,8 @@
   },
   {
    "name": "internals",
+   "note": "extra_defines: XP target for files the recipe build fails on. The 2008 build used a pre-Vista SDK; this SDK hides TMT_STOCKIMAGEFILE (XTPSkinObjectTab.cpp) when NTDDI_VERSION defaults to Vista.",
+   "extra_defines": "_WIN32_WINNT=0x0501 WINVER=0x0501",
    "mode": "recipe",
    "recipe": "xtp-11.2.2-shared-mfc-internals-rtm",
    "files": "Source/Controls/XTComboBoxEx.cpp Source/Controls/XTDateTimeCtrl.cpp Source/Controls/XTExcelTabCtrl.cpp Source/CommandBars/XTPCommandBar.cpp Source/CommandBars/XTPCustomizeSheet.cpp Source/Common/XTPDrawHelpers.cpp Source/PropertyGrid/XTPPropertyGridInplaceEdit.cpp Source/PropertyGrid/XTPPropertyGridItemExt.cpp Source/Controls/XTPPropertyPage.cpp Source/SkinFramework/XTPSkinObjectTab.cpp Source/CommandBars/XTPStatusBar.cpp Source/Controls/XTSplitterWnd.cpp",

@@ -1102,7 +1102,7 @@ def build_module(client, name, log=print):
         else:
             recipe = libs.RECIPES[layer["includes_from_recipe"]] if layer.get("includes_from_recipe") else {"include": []}
             includes = [(libs.LIBS / i).resolve() for i in recipe["include"] if i != "WINSDK"]
-            includes += [(ROOT / i).resolve() for i in layer.get("extra_includes", [])]
+            includes += [_spec_path(client, i) for i in layer.get("extra_includes", [])]  # tree:RECIPE/sub or repo-relative
             defines = libs.RECIPES[layer["defines_from_recipe"]]["defines"] if layer.get("defines_from_recipe") else layer.get("defines", "")
             defines = (defines + " " + layer.get("extra_defines", "")).strip()
             sources = [p for g in layer["files"].split() for p in sorted((ROOT / layer["dir"]).glob(g))
@@ -1161,9 +1161,12 @@ def build_module(client, name, log=print):
     # an inline or template body that several of the module's own objects define is shared code: swapping the 2008 copy
     # in replaces it for every caller, including ones compiled in other contexts (seen crashing M4a/M5), so only
     # file-owned functions swap in
-    counts = {}
+    counts, linked_names = {}, set()
     for layer_dir in layer_dirs:
         for obj in Path(layer_dir).glob("*.obj"):
+            if obj.name in linked_names:
+                continue  # shadowed by an earlier layer's object of the same name: never linked, so not a second definer
+            linked_names.add(obj.name)
             for sym, defined in coff_externals(obj.read_bytes()).items():
                 if defined:
                     counts[sym] = counts.get(sym, 0) + 1
