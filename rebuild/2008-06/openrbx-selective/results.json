@@ -1,20 +1,33 @@
 {
  "baseline_owned": 4436,
- "trial_owned": 4442,
+ "trial_owned": 4450,
  "gains": {
   "00652510": "ScoreHud::ScoreHud",
   "00656430": "ScoreHud::render2d",
   "00592180": "ArchiveBinder::resolveIDREF",
   "005930c0": "ArchiveBinder::processID",
   "00609690": "PVInstance::computeTopPVController",
-  "005b06c0": "ScriptContext::addScript"
+  "005b06c0": "ScriptContext::addScript",
+  "005ec240": "normalIdToVector3Internal",
+  "005ec290": "Vector3ToNormalId",
+  "005ec570": "normalIdToVector3",
+  "005ec800": "normalIdToMatrix3",
+  "005b0840": "Accoutrement::readProperty",
+  "005fd3e0": "Tool::readProperty",
+  "005fbc80": "LocalBackpack::removeBackpackItem",
+  "005fb3c0": "Kernel::deletePoint"
  },
  "losses": [],
  "source_sha256": {
-  "gui\\ScoreHud.cpp": "ac82f6590527b09bedc88c22df170616f3e0188984ac024a4407cda86a8ed1ed",
-  "v8xml\\SerializerSelected.cpp": "5b6ae83710472650a544383fe279b04a9d3f4a3969be696643cf20ff7eb36804",
-  "v8datamodel\\PVInstanceSelected.cpp": "2c731ad3081a5f38befe7df4562ef59869c0bcea7a075d919502860eafeb1a05",
-  "script\\ScriptContextSelected.cpp": "ce11d5a6e809bd158334c02753727aed99d15b2c8a7b689873887e5693bd2cce"
+  "script/ScriptContextSelected.cpp": "ce11d5a6e809bd158334c02753727aed99d15b2c8a7b689873887e5693bd2cce",
+  "util/NormalIdSelected.cpp": "e5ba3ee38ecfd331993d50c89cdc0cebcfe7c0205fe0f265b62a8728ba679746",
+  "v8datamodel/AccoutrementSelected.cpp": "17824022eb4ba42ad6183cb3eb74dd4cbb17cf50cd20907036229a7982880f38",
+  "v8datamodel/LocakBackpackSelected.cpp": "c505b5c512e7d3546b8c79a366118a32cc6e612931b5b099a41a7f645f40f187",
+  "v8datamodel/PVInstanceSelected.cpp": "2c731ad3081a5f38befe7df4562ef59869c0bcea7a075d919502860eafeb1a05",
+  "v8datamodel/ToolSelected.cpp": "93cd12ae15bbf873ca8b673cee9b4de1c3260842703784254d94fbca218a5e44",
+  "v8kernel/KernelSelected.cpp": "98b6ff2e48d59181142874596f59f57f4728c47542dd5bf9f6258e308b67a5ea",
+  "v8xml/SerializerSelected.cpp": "5b6ae83710472650a544383fe279b04a9d3f4a3969be696643cf20ff7eb36804",
+  "gui/ScoreHud.cpp": "ac82f6590527b09bedc88c22df170616f3e0188984ac024a4407cda86a8ed1ed"
  },
  "linked": true,
  "smoke_exit": 0,
@@ -23,28 +36,39 @@
   "M4a": true,
   "M5": true
  },
- "layout_evidence": "ScoreHud constructor and PVInstance candidate code and resolved data agree with target. Full class layouts, all call bindings and jump-table relocations are not independently proven.",
+ "layout_evidence": "Resolved code/data checks and runtime milestones passed; full class layouts, direct-call bindings, lazy-static ownership and jump-table relocations remain unproven.",
  "other_attempts": {
   "HealthHud": "2008 relativeHealth adaptation compiled; no new unique address.",
   "Mouse": "Explicit 2007 null filter default compiled; no new unique address.",
   "LuaInstanceBridge": "2007 helper declaration and 2008 inline/template adaptations compiled; no new unique address.",
   "ScriptContext": "2008 nil handling adaptation compiled; selected addScript is unchanged 2007 body.",
-  "SerializerV2": "Full donor object pulled incompatible extra provider; two isolated method bodies link and pass runtime gates."
+  "SerializerV2": "Full donor object pulled incompatible extra provider; two isolated method bodies link and pass runtime gates.",
+  "Kernel": "2008 Point reference API adapted and compiled; unchanged deletePoint selected.",
+  "NormalId": "Three selected conversions and their original helper; all four are exact candidates in the trial."
  },
  "status": "trial only; not canonical integration",
- "batch_baseline_owned": 4438,
+ "batch_baseline_owned": 4442,
  "batch_gains_by_file": {
-  "v8xml/SerializerSelected.cpp": {
-   "gain": 2,
+  "NormalId": {
+   "gain": 4,
    "loss": 0
   },
-  "v8datamodel/PVInstanceSelected.cpp": {
+  "Tool": {
    "gain": 1,
    "loss": 0
   },
-  "script/ScriptContextSelected.cpp": {
+  "Accoutrement": {
+   "gain": 1,
+   "loss": 0
+  },
+  "LocakBackpack": {
+   "gain": 1,
+   "loss": 0
+  },
+  "Kernel": {
    "gain": 1,
    "loss": 0
   }
- }
+ },
+ "automation": "compile and scan candidates, refresh ranking, run batch with global/per-object loss checks and isolated milestones, freeze hash-verified baseline; fast mode diagnostic only"
 }

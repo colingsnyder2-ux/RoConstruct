@@ -38,6 +38,24 @@ sources = {
     "script/ScriptContextSelected.cpp": {
         "?addScript@ScriptContext@RBX@@QAEXPAVScript@2@@Z": "005b06c0",
     },
+    "util/NormalIdSelected.cpp": {
+        "?normalIdToVector3Internal@RBX@@YA?AVVector3@G3D@@W4NormalId@1@@Z": "005ec240",
+        "?Vector3ToNormalId@RBX@@YA?AW4NormalId@1@ABVVector3@G3D@@@Z": "005ec290",
+        "?normalIdToVector3@RBX@@YAABVVector3@G3D@@W4NormalId@1@@Z": "005ec570",
+        "?normalIdToMatrix3@RBX@@YAABVMatrix3@G3D@@W4NormalId@1@@Z": "005ec800",
+    },
+    "v8datamodel/ToolSelected.cpp": {
+        "?readProperty@Tool@RBX@@EAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z": "005fd3e0",
+    },
+    "v8datamodel/AccoutrementSelected.cpp": {
+        "?readProperty@Accoutrement@RBX@@MAEXPBVXmlElement@@AAVIReferenceBinder@2@@Z": "005b0840",
+    },
+    "v8datamodel/LocakBackpackSelected.cpp": {
+        "?removeBackpackItem@LocalBackpack@RBX@@AAEXPAVBackpackItem@2@@Z": "005fbc80",
+    },
+    "v8kernel/KernelSelected.cpp": {
+        "?deletePoint@Kernel@RBX@@QAEXPAVPoint@2@@Z": "005fb3c0",
+    },
 }
 source_root = ROOT / "rebuild/2008-06/openrbx-selective"
 result = rebuild.compile_direct(client, [source_root / f for f in sources], out / "selective-source",
