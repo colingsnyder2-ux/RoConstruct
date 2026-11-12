@@ -11,5 +11,4 @@ void TwoDManager::createVertexBuffer(unsigned int) {}
 std::map<SubMesh*, std::string>* subMeshNames = 0;
 long subMeshNamesOnce = 0;
 void initializeSubMeshNames() {}
-void cleanupRoot() {}
 }
