@@ -435,6 +435,9 @@ def main(argv=None):
     for action in ('checkpoint', 'flush', 'start', 'watch', 'stop', 'status'):
         p = sub.add_parser(action)
         p.add_argument('session')
+        if action == 'stop':
+            p.add_argument('--wait', action='store_true')
+            p.add_argument('--timeout', type=float, default=60)
         if action in ('watch', 'start'):
             p.add_argument('--every', type=int, default=300)
     sub.add_parser('pending')
@@ -464,8 +467,7 @@ def main(argv=None):
     elif args.action == 'watch':
         return watch(root, args.session, max(10, args.every))
     elif args.action == 'stop':
-        (session_path(root, args.session) / 'stop').touch()
-        result = dict(stopping=True)
+        result = stop(root, args.session, args.wait, max(0, args.timeout))
     elif args.action == 'status':
         folder = session_path(root, args.session)
         health = folder / 'health.json'
