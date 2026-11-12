@@ -1,6 +1,7 @@
 """Check a selective module against a frozen baseline and run isolated milestones."""
 import hashlib
 import json
+import re
 import shutil
 import sys
 from pathlib import Path
@@ -64,6 +65,31 @@ def verify(baseline):
     object_losses = {name: value["lost"] for name, value in groups.items() if value["lost"]}
     if lost or object_losses:
         raise RuntimeError("Ownership loss: " + json.dumps({"global": sorted(lost), "objects": object_losses}))
+    swaps = read(OUT / "verified/swaps.json")["swaps"]
+    selected = [(entry["obj"], symbol) for entry in swaps if entry["obj"].startswith("selective_")
+                for symbol in entry["keep"]]
+    header = (OUT / "force/force_verified.h").read_text()
+    forced = set(re.findall(r'/INCLUDE:([^\"]+)', header))
+    missing = [symbol for _, symbol in selected if symbol not in forced]
+    if missing:
+        raise RuntimeError("Selected functions missing from force header: " + json.dumps(missing))
+    def check_map(test):
+        path = RUNTIME / "out/tests" / test / (test + ".map")
+        symbols, all_symbols = {}, set()
+        for line in path.read_text(errors="replace").splitlines():
+            parts = line.split()
+            if len(parts) >= 4:
+                all_symbols.add(parts[1])
+            if len(parts) >= 5 and parts[3] == "f":
+                symbols.setdefault(parts[1], set()).add(parts[-1].lower())
+        missing = forced - all_symbols
+        if missing:
+            raise RuntimeError(test + " map missing forced symbols: " + json.dumps(sorted(missing)))
+        wrong = [symbol for obj, symbol in selected
+                 if "linked:verified_" + obj.lower() not in symbols.get(symbol, set())]
+        if wrong:
+            raise RuntimeError(test + " map missing selected providers: " + json.dumps(wrong))
+    check_map("rbxgs_app")
     result = {"before": len(old), "after": len(new), "gained": sorted(new - old),
               "lost": sorted(lost), "objects": groups, "milestones": {}}
     if not result["gained"]:
@@ -79,6 +105,7 @@ def verify(baseline):
         target.mkdir(parents=True, exist_ok=True)
         for dll in dlls.glob("*.dll"):
             shutil.copy2(dll, target / dll.name)
+        kwargs["flags"] = kwargs.get("flags", "/O2 /GS- /EHsc /MD") + " /FIforce_verified.h"
         with patch.object(rebuild, "workspace", lambda _: RUNTIME):
             return original_link(client, test, *args, **kwargs)
     def isolated_dump(path, data):
@@ -87,6 +114,11 @@ def verify(baseline):
     with patch.object(rebuild, "MILESTONES", milestones), patch.object(rebuild, "link_test", isolated_link), patch.object(rebuild, "_dump", isolated_dump):
         results = rebuild.milestones(CLIENT, log=lambda message: print(message, flush=True))
     result["milestones"] = {name: row["passed"] for name, row in results.items()}
+    for name, row in results.items():
+        if row["passed"]:
+            check_map(row["test"])
+    result["forced_symbols"] = len(forced)
+    result["forced_selected_symbols"] = len(selected)
     result["sha256"] = {name: hashlib.sha256((OUT / name).read_bytes()).hexdigest()
                         for name in ("report.json", "owned-symbols.json", "milestones.json")}
     (OUT / "batch-verification.json").write_text(json.dumps(result, indent=2) + "\n")

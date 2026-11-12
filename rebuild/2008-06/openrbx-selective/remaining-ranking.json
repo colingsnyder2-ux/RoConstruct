@@ -1,7 +1,7 @@
 {
   "scope": "historical 142 files; shared templates and object membership inflate estimates; not guaranteed gains",
-  "baseline_owned": 4454,
-  "distinct_unowned_candidates": 3587,
+  "baseline_owned": 4457,
+  "distinct_unowned_candidates": 3584,
   "files": [
     {
       "file": "util/Sound.cpp",
@@ -119,9 +119,9 @@
     },
     {
       "file": "util/Http.cpp",
-      "unowned_candidates": 143,
+      "unowned_candidates": 142,
       "original_errors": 1,
-      "estimated_value_per_error": 143.0
+      "estimated_value_per_error": 142.0
     },
     {
       "file": "v8datamodel/UserController.cpp",
@@ -137,9 +137,9 @@
     },
     {
       "file": "v8datamodel/MouseCommand.cpp",
-      "unowned_candidates": 226,
+      "unowned_candidates": 225,
       "original_errors": 3,
-      "estimated_value_per_error": 75.333
+      "estimated_value_per_error": 75.0
     },
     {
       "file": "v8datamodel/Surfaces.cpp",
@@ -503,9 +503,9 @@
     },
     {
       "file": "v8tree/Service.cpp",
-      "unowned_candidates": 78,
+      "unowned_candidates": 77,
       "original_errors": 8,
-      "estimated_value_per_error": 9.75
+      "estimated_value_per_error": 9.625
     },
     {
       "file": "v8datamodel/Mouse.cpp",

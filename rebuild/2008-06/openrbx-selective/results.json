@@ -1,6 +1,6 @@
 {
  "baseline_owned": 4436,
- "trial_owned": 4454,
+ "trial_owned": 4457,
  "gains": {
   "00652510": "ScoreHud::ScoreHud",
   "00656430": "ScoreHud::render2d",
@@ -19,20 +19,26 @@
   "005a8210": "Guid::Data::operator<",
   "005b4410": "BrickColor::BrickMap::insert",
   "005ec6e0": "normalIdToMatrix3Internal",
-  "00650560": "ChatLine::ChatLine"
+  "00650560": "ChatLine::ChatLine",
+  "0056a160": "Http::isRobloxSite",
+  "00572db0": "ServiceProvider::clearServices",
+  "00615820": "MouseCommand::capture"
  },
  "losses": [],
  "source_sha256": {
   "gui/ChatOutputSelected.cpp": "be10963a2f0c5fd7153f3710668d8be957b2668ca6fd3fb3824ec0844645b9f9",
   "script/ScriptContextSelected.cpp": "ce11d5a6e809bd158334c02753727aed99d15b2c8a7b689873887e5693bd2cce",
   "util/GuidSelected.cpp": "1e443b668e79b91c3077b6037bbe5dc5e234020bf53ac5d7ea0c04ef09feabe9",
+  "util/HttpSelected.cpp": "0b11debad6926ba965c5aa36b565d60a24967e16c4a2d53b6fff32249c101828",
   "util/NormalIdSelected.cpp": "e5ba3ee38ecfd331993d50c89cdc0cebcfe7c0205fe0f265b62a8728ba679746",
   "v8datamodel/AccoutrementSelected.cpp": "17824022eb4ba42ad6183cb3eb74dd4cbb17cf50cd20907036229a7982880f38",
   "v8datamodel/BrickColorSelected.cpp": "5127b3fc40a3d58df83674a6b223db57e2cacf1924687a365b48142effb5390f",
   "v8datamodel/LocakBackpackSelected.cpp": "c505b5c512e7d3546b8c79a366118a32cc6e612931b5b099a41a7f645f40f187",
+  "v8datamodel/MouseCommandSelected.cpp": "7a025270700c0bb93e303dbfecbeb9ac4e271c940fb9130502d8a5f9272eb249",
   "v8datamodel/PVInstanceSelected.cpp": "2c731ad3081a5f38befe7df4562ef59869c0bcea7a075d919502860eafeb1a05",
   "v8datamodel/ToolSelected.cpp": "93cd12ae15bbf873ca8b673cee9b4de1c3260842703784254d94fbca218a5e44",
   "v8kernel/KernelSelected.cpp": "98b6ff2e48d59181142874596f59f57f4728c47542dd5bf9f6258e308b67a5ea",
+  "v8tree/ServiceSelected.cpp": "9cadb94bfb88152daecf734715137bc326e39190c2a6c456d9c8e7b5558bb120",
   "v8xml/SerializerSelected.cpp": "5b6ae83710472650a544383fe279b04a9d3f4a3969be696643cf20ff7eb36804",
   "gui/ScoreHud.cpp": "ac82f6590527b09bedc88c22df170616f3e0188984ac024a4407cda86a8ed1ed",
   "util/NormalIdExtra.cpp": "456eb430ad0a598b166d75f60d36004ad31b3e378d9621b7fc6edbae64e1af52",
@@ -55,27 +61,30 @@
   "Kernel": "2008 Point reference API adapted and compiled; unchanged deletePoint selected.",
   "NormalId": "Three selected conversions and their original helper; all four are exact candidates in the trial.",
   "ChatOutput": "2008 declaration adaptations compiled; isolated ChatLine constructor selected.",
-  "glue override": "Trial fallback copy omits two empty settings stubs; real GlobalSettings bodies remain selected, and all object ownership sets retain their baseline addresses."
+  "glue override": "Trial fallback copy omits two empty settings stubs; real GlobalSettings bodies remain selected, and all object ownership sets retain their baseline addresses.",
+  "ContactManager": "getHit candidate fell back because getPrimitiveType provider was unavailable",
+  "Gyro": "weak-pointer API mismatch; unaffected methods compiled but yielded no new selectable address",
+  "LuaSignalBridge": "2008 slot APIs differ; isolated disconnect compiled but yielded no new selectable address"
  },
  "status": "trial only; not canonical integration",
- "batch_baseline_owned": 4450,
+ "batch_baseline_owned": 4454,
  "batch_gains_by_file": {
-  "NormalId": {
+  "Http": {
    "gain": 1,
    "loss": 0
   },
-  "Guid": {
+  "Service": {
    "gain": 1,
    "loss": 0
   },
-  "ChatOutput": {
-   "gain": 1,
-   "loss": 0
-  },
-  "BrickColor": {
+  "MouseCommand": {
    "gain": 1,
    "loss": 0
   }
  },
- "automation": "compile and scan candidates, refresh ranking, run batch with global/per-object loss checks and isolated milestones, freeze hash-verified baseline; fast mode diagnostic only"
+ "automation": "compile and scan candidates, refresh ranking, run batch with global/per-object loss checks and isolated milestones, freeze hash-verified baseline; fast mode diagnostic only",
+ "ownership_scope": "archive object matches; not all addresses are linked",
+ "force_audit": "4457 archive addresses versus 4419 canonical: 38 new archive matches; 27 have matching providers in the selective smoke map, 11 do not. All 21 individually selected methods appeared in the smoke and forced M2/M4a/M5 maps before the dependency change.",
+ "latest_rebuild": "blocked: G3D verified_0078.obj and LibPng pngread.obj provide duplicate PNG symbols after the shared rebuild change",
+ "identity_caveat": "Http::isRobloxSite target has a conflicting folded isRobloxUrl identity; exact naming remains uncertain."
 }

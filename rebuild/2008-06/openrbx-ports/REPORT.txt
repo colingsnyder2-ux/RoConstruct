@@ -5,6 +5,8 @@ Canonical owned baseline: 4419. Final trial: 4436. Unique gain: +17/-0.
 This continuation: 4422 -> 4436 (+14/-0). Prior session contributed +3. Owner independently added +10 before canonical baseline 4419; excluded from our gain.
 M2 PASS; M4a PASS; M5 PASS (all exit 0).
 
+Force-link audit: the original ports spec used out/RbxgsApp/force, not its own force header. A corrected isolated rebuild forced its own 82 verified symbols and reproduced the +17/-0 archive-owned address result. Archive ownership is not executable ownership: only 5 of those 17 new addresses had a matching selected-object symbol in that build's smoke executable map; 12 were absent from that map. The earlier milestone runs did not force every selected symbol, so they do not establish that all 17 bodies entered those executables. Forcing those 12 together failed to link: the final report showed an unresolved GlobalSettings helper and duplicate GlobalSettings definitions, after additional provider dependencies were encountered. One of the 12 is a local-only helper and cannot be forced by external symbol name. Forcing the remaining 11 in the selective trial linked the smoke executable, but all three milestone executables failed to link on duplicate PNG symbols; that experiment was rejected. Further selective forcing and provider/layout checks are required before claiming those 12 are linked. Subsequent shared G3D rebuilding introduced duplicate PNG providers between G3D verified_0078.obj and LibPng pngread.obj; a fresh selective trial currently fails to link against those dependencies.
+
 Retained file | per-object gain/loss | unique new module addresses
 gui/ArrowPanel.cpp | +3/-0 | +2
 v8datamodel/Teams.cpp | +1/-0 | +1

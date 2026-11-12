@@ -4,6 +4,7 @@ import runpy
 import shutil
 import sys
 from pathlib import Path
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT))
@@ -68,6 +69,15 @@ sources = {
     "v8datamodel/BrickColorSelected.cpp": {
         "?insert@BrickMap@BrickColor@RBX@@AAEXW4Number@23@EEEV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "005b4410",
     },
+    "v8tree/ServiceSelected.cpp": {
+        "?clearServices@ServiceProvider@RBX@@IAEXXZ": "00572db0",
+    },
+    "v8datamodel/MouseCommandSelected.cpp": {
+        "?capture@MouseCommand@RBX@@MAEXXZ": "00615820",
+    },
+    "util/HttpSelected.cpp": {
+        "?isRobloxSite@Http@RBX@@SA_NPBD@Z": "0056a160",
+    },
 }
 source_root = ROOT / "rebuild/2008-06/openrbx-selective"
 result = rebuild.compile_direct(client, [source_root / f for f in sources], out / "selective-source",
@@ -87,6 +97,25 @@ for file, targets in sources.items():
     shutil.copy2(obj, verified / obj_name)
     swaps["swaps"].append({"obj": obj_name, "recipe": "rbxgs", "file": file, "keep": keep})
 path.write_text(json.dumps(swaps, indent=1) + "\n")
+# Isolate the smoke executable and map from concurrent module builds.
+original_workspace, original_link = rebuild.workspace, rebuild.link_test
+runtime = ROOT / "work/openrbx-selective-codex"
+def isolated_link(client, test, *args, **kwargs):
+    if test != spec["test"]:
+        return original_link(client, test, *args, **kwargs)
+    source = original_workspace(client) / "tests" / (test + ".cpp")
+    destination = runtime / "tests" / (test + ".cpp")
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(source, destination)
+    dll_source = original_workspace(client) / "out/tests" / test
+    dll_target = runtime / "out/tests" / test
+    dll_target.mkdir(parents=True, exist_ok=True)
+    for dll in dll_source.glob("*.dll"):
+        shutil.copy2(dll, dll_target / dll.name)
+    with patch.object(rebuild, "workspace", lambda _: runtime):
+        return original_link(client, test, *args, **kwargs)
+rebuild.link_test = isolated_link
+
 # Module scoring must not trigger unrelated global progress reporting.
 rebuild.progress = lambda *args, **kwargs: None
 sys.argv = ["roc.py", "rebuild", client, "module", module, "--no-notify"]
