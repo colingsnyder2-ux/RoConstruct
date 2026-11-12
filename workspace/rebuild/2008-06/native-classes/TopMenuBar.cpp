@@ -1,7 +1,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // TopMenuBar | 2008-06 | draft (no current byte proof)
 // 0/2 mapped addresses byte-exact | 2 unproved | no mapped strings | by auto
-// <<< native-status | src 683fea18 | roc native-status --write
+// <<< native-status | src ba43063a | roc native-status --write
 #include "gui/Gui.h"
 #include "gui/GUI.h"
 #include "util/object.h"
@@ -63,5 +63,22 @@ G3D::Vector2 TopMenuBar::getChildPosition(const GuiItem* child) const
         }
     }
     return position;
+}
+}
+
+namespace RBX {
+GuiResponse TopMenuBar::process(const GuiEvent& event)
+{
+    if (isVisible()) {
+        {
+            GuiResponse response = GuiItem::process(event);
+            if (response.wasUsed())
+                return response;
+        }
+        if (backdropColor.a > 0.0f && event.eventType >= UIEvent::MOUSE_RIGHT_BUTTON_DOWN
+            && event.eventType <= UIEvent::MOUSE_IDLE && getMyRect().pointInRect(event.mousePosition))
+            return GuiResponse::used();
+    }
+    return GuiResponse::notUsed();
 }
 }

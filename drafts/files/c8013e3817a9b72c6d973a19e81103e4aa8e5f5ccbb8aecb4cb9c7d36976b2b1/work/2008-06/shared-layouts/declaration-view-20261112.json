@@ -1,0 +1,40 @@
+{
+  "scope": "CDeclarationView family recovery trial; the remaining class functions are blocked by the workspace toolchain's std::string::c_str inlining.",
+  "baseline_commit": "unknown",
+  "package_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "source_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "native_workflow_version": 53,
+  "lease": "CDeclarationView-family (colin)",
+  "draft_session": "f6c5fdc237424981a6733ec9728044c7",
+  "targets": [
+    {
+      "addr": "00434020",
+      "symbol": "?setContent@CDeclarationView@@QAEXPBVItem@Metadata@Reflection@RBX@@PBD1@Z",
+      "size": 1092,
+      "ours": 1087,
+      "deltas": [
+        "TOOLCHAIN: item->unknown_134.c_str() - the original imports MSVCP90!c_str (lea ecx,[edi+0x134]; call [IAT]) while ours inlines _Myptr (cmp [str+0x18],0x10 ...)",
+        "STRUCTURAL: the original performs a COM/virtual method call and tests al (test al,al; jne) where ours tests a cached pointer field (mov eax,[ecx-0xc]; test eax,eax; je) in the get_style/put_display region - needs re-verification of the CComBSTR/CComPtr usage",
+        "register allocation: ownerDiv null test as cmp [ebp+0x104],0 (original) vs mov+test (ours)"
+      ]
+    },
+    {
+      "addr": "00435860",
+      "symbol": "?showDescriptor@CDeclarationView@@QAEXPBVDescriptor@Reflection@RBX@@@Z",
+      "size": 1048,
+      "ours": 1059,
+      "deltas": [
+        "TOOLCHAIN: repeated string c_str sites (name.c_str() in the G3D::format path and the final ownerClass->name.c_str()) - original imports via IAT, ours inlines _Myptr",
+        "frame/displacement encoding shifts (add ecx,4 vs add ecx,<r>) caused by the size delta"
+      ]
+    }
+  ],
+  "exact_in_family": ["OnInitialUpdate 00434550", "ctor 00434500", "dtor 00434570 (scalar deleting 00434620)", "OnDocumentComplete 004346b0"],
+  "systemic_blocker": {
+    "summary": "The vendored vc2008rtm cl 15.00.21022 inlines std::string::c_str (VS9 _String_val::_Myptr) even with /MD + _DLL_CPPLIB, and never emits __imp_?c_str@...; the original exe calls the imported form from 110 functions. Other string members (operator+=, ctor, operator<) still import correctly.",
+    "impact": "CRobloxTreeCtrlNode::onGetDispInfo (00425320), CMemberTreeView::addFunction (00435680), CDeclarationView::setContent (00434020) and showDescriptor (00435860) are all blocked by this single delta; it is not source-fixable in this workspace.",
+    "recommendation": "Owner/toolchain: determine how the original build resolved the _DLL_CPPLIB dllimport instantiation for inline members (real RTM behavior or a different header flavor) - this single fix unblocks every c_str-using candidate."
+  },
+  "status": "parked (toolchain-blocked, systemic)",
+  "next": "No further source hypotheses for these two functions. The family is otherwise exact; revisit when the c_str import form can be produced."
+}

@@ -1,0 +1,25 @@
+{
+  "scope": "Widget family (RBX::Widget / RBX::VerbWidget): compile blocker repair via a scoped Rect.h profile overlay, enabling NATIVE_WIDGET_PENDING; processMouse and process verified byte-identical modulo object-level artifacts.",
+  "baseline_commit": "unknown",
+  "package_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "source_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "native_workflow_version": 53,
+  "lease": "Widget-family (colin)",
+  "draft_session": "564c5279153141dfa4fff040449b2dca",
+  "blocker": {
+    "symptom": "Widget::processMouse was not compiled: the source guards it with NATIVE_WIDGET_PENDING because the donor util/Rect.h defines bool pointInRect(G3D::Vector2int16) inline, while the 2008-06 build calls it out of line.",
+    "original_evidence": "00573130 (84 bytes, RBX::Rect::pointInRect(G3D::Vector2int16)): push ecx / Vector2int16 unpack / four float compares against low/high / bool in eax / ret 4; called directly from 00642007 inside the original Widget::processMouse (00641ff0).",
+    "fix": [
+      "rebuild/2008-06/native-headers/widget-rect-2008/util/Rect.h: task-owned scoped copy of the donor util/Rect.h with the 1-arg pointInRect declared (no inline body), marked // INFERRED with the donor path and the original address.",
+      "rebuild/2008-06/native-classes/Widget.cpp line 1: // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /DNATIVE_WIDGET_PENDING /I{headers}/widget-rect-2008 (file native-flags /I entries land before the donor include dirs, so the overlay shadows only this compile)."
+    ]
+  },
+  "verification": {
+    "processMouse 00641ff0": "byte-identical 544/544 B. The only diff output is the switch jump-table addressing (jmp [ecx*4 + table] vs jmp [ecx*4]) and the alignment pad bytes (original multi-byte nops before the function; ours single-byte add byte ptr [eax],al after the ret) - object-level placement artifacts, not code. Our object references the external ?pointInRect@Rect@RBX@@QAE_NVVector2int16@G3D@@@Z exactly as the overlay declares, matching the original's direct call.",
+    "process 00642210": "82/82 B with a single instruction-order swap in the notUsed tail (original stores [ret+4] then [ret]; ours [ret] then [ret+4], both zero). Scheduling noise: the original itself varies the order across its own construction sites (0064206e stores +0 then +4; 006420a9 stores +4 then +0; 00642251 stores +4 then +0), so no source form reproduces the per-site order deterministically. One source variant (negated-if early return) was tested and did not flip it.",
+    "family": "prove.py Widget.cpp: 58 exact / 2074 B with the overlay enabled (44 exact / 1475 B before); processMouse is now compiled and the family's remaining functions (render2d, ctors, onClick, isEnabled, ~Widget, ~VerbWidget) are unchanged."
+  },
+  "canonical_header_note": "The overlay stays a scoped, task-owned experiment: the canonical util/Rect.h decision (declare pointInRect(Vector2int16) out of line) belongs to the owner, since every engine unit including the donor Rect.h would otherwise be shadowed.",
+  "status": "blocker-repaired; processMouse verified byte-identical; process near-miss on one scheduling artifact",
+  "next": "Owner: promote the widget-rect-2008 overlay decision into the canonical header (or keep the profile). For process, the residual delta is a per-site store-order artifact; treat as an inactive 82/82 semantic match until a scheduling lever is found."
+}

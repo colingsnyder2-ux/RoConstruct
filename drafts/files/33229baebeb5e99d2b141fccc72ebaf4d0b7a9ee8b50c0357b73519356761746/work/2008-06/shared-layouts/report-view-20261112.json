@@ -1,0 +1,37 @@
+{
+  "scope": "CRobloxReportView family: onMarshaledEvent(ChildAdded) 004582f0 made byte-exact by completing the CStatsItemRecord layout (sizeof 0xb0); setDataModel parked with its documented hypothesis.",
+  "baseline_commit": "unknown",
+  "package_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "source_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "native_workflow_version": 53,
+  "lease": "CRobloxReportView-family (colin)",
+  "draft_session": "a5674fd458f94ecfb2d083202aceaaa7",
+  "recovery": {
+    "target": {
+      "addr": "004582f0",
+      "symbol": "?onMarshaledEvent@CRobloxReportView@@UAEXPBVInstance@RBX@@UChildAdded@3@@Z",
+      "size": 391
+    },
+    "change": "rebuild/2008-06/WindowsClient/include/CRobloxReportView.h: CStatsItemRecord now derives from CXTPReportRecord + MarshaledListener<Instance,ChildAdded> + MarshaledListener<Instance,ChildRemoved>, overrides both onMarshaledEvent hooks (00457f30 / 004581a0, declared only), and declares the private members: an 8-byte MutexRef placeholder at +0x9c (INFERRED), 4 untouched bytes at +0xa4 (INFERRED), and the item shared_ptr at +0xa8. sizeof is now 0xb0, the size 004582f0 passes to operator new.",
+    "evidence": [
+      "header layout note: RTTI 00818a74 (CXTPReportRecord +0, MarshaledListener<Instance,ChildAdded> +0x54, MarshaledListener<Instance,ChildRemoved> +0x78, private non-polymorphic MutexRef +0x9c; allocation 0xb0 in 004582f0; ctor 00457ca0 stores the item shared_ptr at +0xa8)",
+      "CNameItem 004564a0 cross-check for the 8-byte MutexRef size (MutexRef +0x7c, Stats::Item* +0x84, size 0x88)",
+      "the pre-existing source comment documented the +0xa4 4-byte gap that ctor 00457ca0, dtor 00457ff0 and listeners 00457f30/004581a0 never touch",
+      "iterative compile proof: with CXTPReportRecord alone operator new got 0x98; adding the two listener bases and an 8-byte placeholder gave 0xac; adding the documented 4 untouched bytes gave 0xb0 = the original's push"
+    ],
+    "result": "diff_native_body: 391/391 B, no differences. Family went from 108 exact / 7846 B to 110 exact / 8274 B (the completed record layout also let the binder bind two more reference symbols)."
+  },
+  "parked": [
+    {
+      "function": "setDataModel 00458700 (700 vs 669 B)",
+      "delta": "The original's early-return path (00458731-0x45874f) sets the EH state to -1, then does its own inlined lock xadd decrement of the argument's refcount and jumps to the shared dispose/destroy part (0x458988). This build jumps to the common whole-release block, tail-merging the decrement too.",
+      "note": "Tail-merge point selection by the optimizer, not reproducible through the source (the source statements already align, per the pre-existing comment). Hypothesis remains parked."
+    },
+    {
+      "function": "onMarshaledEvent(ChildRemoved) 00456250",
+      "delta": "Not implemented in the source; the original compares the event's first word with each record's item pointer at +0xa8 (RemoveRecord). Needs the XTP record-removal declaration; separate recovery."
+    }
+  ],
+  "status": "onMarshaledEvent byte-exact; the layout completion is a durable improvement to the shared header (session a5674fd4)",
+  "next": "Owner: the record's real MutexRef type and the +0xa4 member identity (only their sizes are currently evidenced) plus the record bodies 00457ca0/00457f30/004581a0/00457ff0 are the record family's own recovery."
+}

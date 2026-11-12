@@ -1,0 +1,37 @@
+{
+  "task": "RBX::PhysicsService::onServiceProvider recovery (native source batch)",
+  "class": "RBX::PhysicsService",
+  "session": "b87fd08e7e70492199453f547a1183a5",
+  "lease": "RBX::PhysicsService-family-glm53b",
+  "package_marker": {"revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6", "source_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6"},
+  "baseline_commit": "unknown",
+  "source": "rebuild/2008-06/App/src/v8datamodel/PhysicsService.cpp (compat TU native-classes/PhysicsService.cpp with the engine-world overlay include: /I{headers}/../experiments/overlays/engine-world)",
+  "runner_run": "work/2008-06/native-check-runs/20261112-013445-da209745",
+  "checks": [
+    {
+      "addr": "005e8ec0",
+      "status": "exact",
+      "score": 100,
+      "symbol": "?onServiceProvider@PhysicsService@RBX@@MAEXPBVServiceProvider@2@0@Z",
+      "target_size": 163,
+      "object_size": 163,
+      "data_errors": [],
+      "call_identity": {
+        "passed": true,
+        "calls": [
+          {"offset": 12, "target": "00490af0", "kind": "direct", "status": "verified_binding", "symbol": "??$create@VWorkspace@RBX@@@ServiceProvider@RBX@@QBEPAVWorkspace@1@XZ"},
+          {"offset": 49, "target": "005e5a80", "kind": "direct", "status": "verified_binding", "symbol": "?removeListener@?$Notifier@VWorld@RBX@@UAssemblyPhysicsOn@2@@RBX@@QBEXPAV?$Listener@VWorld@RBX@@UAssemblyPhysicsOn@2@@2@@Z"},
+          {"offset": 76, "target": "005e5a80", "kind": "direct", "status": "verified_binding", "symbol": "?removeListener@?$Notifier@VWorld@RBX@@UAssemblyPhysicsOff@2@@RBX@@QBEXPAV?$Listener@VWorld@RBX@@UAssemblyPhysicsOff@2@@2@@Z"},
+          {"offset": 89, "target": "00490af0", "kind": "direct", "status": "verified_binding", "symbol": "??$create@VWorkspace@RBX@@@ServiceProvider@RBX@@QBEPAVWorkspace@1@XZ"},
+          {"offset": 126, "target": "004218a0", "kind": "direct", "status": "verified_binding", "symbol": "?addListener@?$Notifier@VWorld@RBX@@UAssemblyPhysicsOn@2@@RBX@@QBEXPAV?$Listener@VWorld@RBX@@UAssemblyPhysicsOn@2@@2@@Z"},
+          {"offset": 153, "target": "004218a0", "kind": "direct", "status": "verified_binding", "symbol": "?addListener@?$Notifier@VWorld@RBX@@UAssemblyPhysicsOff@2@@RBX@@QBEXPAV?$Listener@VWorld@RBX@@UAssemblyPhysicsOff@2@@2@@Z"}
+        ],
+        "scope": "Notifier<World,AssemblyPhysicsOn/Off> addListener/removeListener COMDATs and ServiceProvider::create<Workspace> x2; dynamic_cast upcast arguments carry the original null guards"
+      }
+    }
+  ],
+  "method_recovered": "void PhysicsService::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider) - Notifier<World,AssemblyPhysicsOn/Off>::disconnect/connect wrappers against ServiceProvider::create<Workspace>(provider)->getWorld(); declaration already at App/include/v8datamodel/PhysicsService.h line 51; no header edit needed. The class moves 4/5 to 5/5 (onAdded/onRemoved/onEvent x2 remain exact in the same object).",
+  "header_experiment_note": "The compat TU compiles against the experiments/overlays/engine-world World.h (four notifier bases: AutoJoin +0, AutoDestroy +0x20, AssemblyPhysicsOn +0x40, AssemblyPhysicsOff +0x60) because the rbxgs tools World.h carries only the two Auto* bases. This scoped header overlay stays inactive until the owner proves canonical-header compatibility; no shared header was edited.",
+  "obligations_remaining": ["linked provider selection, no-loss and P5/P6/runtime gates at owner integration"],
+  "notes": "Same connect/disconnect wrapper pattern as the sibling JointsService::onServiceProvider."
+}

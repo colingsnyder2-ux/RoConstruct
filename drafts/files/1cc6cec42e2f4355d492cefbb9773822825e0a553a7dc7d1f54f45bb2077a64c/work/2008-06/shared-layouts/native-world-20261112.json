@@ -1,0 +1,36 @@
+{
+  "scope": "native-world include repair and porting-gap assessment: the openrbx-derived port now resolves its own headers and the SimJob type, and its two remaining semantic gaps are precisely identified with 2008-06 evidence.",
+  "baseline_commit": "unknown",
+  "package_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "source_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "native_workflow_version": 53,
+  "lease": "native-world-include (colin)",
+  "draft_sessions": ["fecdc5122b204887b9dcbc4a75d52f65 (the six ported .cpp files)", "988d977f820e406d88c42f05f467d7c9 (the include tree + receipt)"],
+  "repairs_applied": [
+    {
+      "file": "rebuild/2008-06/native-world/App/v8world/{Assembly,AssemblyStage,Clump,ClumpStage,SleepStage,WorldHelpers}.cpp line 1",
+      "change": "added // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../native-world/App/include",
+      "evidence": "the port's sources #include \"v8world/Assembly.h\" etc. and its own include tree (native-world/App/include/v8world) is on no default /I path; before the line the donor tools/rbxgs/.../v8world/Assembly.h was resolved instead (error C2653 'SleepInfo' is not a class). The /I{headers} placeholder expansion was verified in the compile receipt (an initial three-dot variant was corrected to one dot)."
+    },
+    {
+      "file": "rebuild/2008-06/native-world/App/include/v8world/Assembly.h",
+      "change": "added #include \"v8world/SimJob2008.h\" after the Mechanism.h include",
+      "evidence": "the port references RBX::SimJob (getJob/setJob/job) without any declaration - the port's own tree has no SimJob.h and tools/openrbx has only SimJobStage.h. The 2008-06 binary does have RBX::SimJob (functions at 005e5190/005e51e0/005e5200) and the recovered header App/include/v8world/SimJob2008.h declares the real class (RTTI 0083f72c, ctor 005e50f0) under the engine headers' \"2008\" filename suffix. After the include the SimJob errors are gone."
+    }
+  ],
+  "remaining_porting_gaps": [
+    {
+      "gap": "Assembly.h(110): void setMechanism(Mechanism* value) { job = value; } and setJob(SimJob*) share one SimJob* job member",
+      "evidence": "2008-06: Mechanism stores its job at Mechanism+0x0 ('Mechanism (005e5350 ...) pushes `this` into simJob+0x4 and stores the job at its +0x0' per the SimJob2008.h header) and SimJob holds std::vector<Mechanism*> mechanisms at +0x4 - i.e. Mechanism does NOT derive from SimJob in 2008-06. The port's implicit Mechanism->SimJob conversion is the later-source inheritance.",
+      "owner_decision": "either adapt the port to the 2008 relationship (a Mechanism accessor that reads Mechanism+0x0), or map the port's job member to the 2008 Mechanism-owns-SimJob shape."
+    },
+    {
+      "gap": "ClumpStage.cpp(46): RBX::Primitive::getSizeMultiplier is not a member",
+      "evidence": "the port calls a later-version Primitive member; the 2008-06 Primitive layout (recovered Primitive2008.h chain) has no such member.",
+      "owner_decision": "implement against the 2008 Primitive fields or park the call site."
+    }
+  ],
+  "verification": "All six units now fail with exactly these two gaps (they previously failed on the unresolved SimJob/headers); no further distinct missing identifiers were found in the compile logs.",
+  "status": "include repairs applied and captured in draft sessions; the port remains blocked on two owner-level semantic decisions",
+  "next": "Owner: resolve the Mechanism/SimJob relationship question (the 2008-06 RTTI/vtable evidence is already recorded in SimJob2008.h), then the Primitive::getSizeMultiplier mapping; after those two decisions the port should compile and its functions can be diffed against 2008-06 for the first real parity batch."
+}

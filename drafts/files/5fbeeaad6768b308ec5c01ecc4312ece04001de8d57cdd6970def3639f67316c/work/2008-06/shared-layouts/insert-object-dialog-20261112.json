@@ -1,0 +1,24 @@
+{
+  "scope": "CInsertObjectDialog family verification: all class functions are byte-exact; the packaged 6/7 census was stale.",
+  "baseline_commit": "unknown",
+  "package_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "source_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "native_workflow_version": 53,
+  "lease": "CInsertObjectDialog-family (colin)",
+  "draft_session": "caadc96bfd914952b28294ce0ca5699a",
+  "verification": {
+    "command": "python work/native-client/prove.py rebuild/2008-06/native-classes/CInsertObjectDialog.cpp --rounds 2 --infer-names",
+    "result": "146 exact / 8718 B (ledger); family compiles clean.",
+    "class_functions": {
+      "addClasses 004202b0": "byte-exact 713/713 B (diff_native_body: no differences). The header comment 'Body pending Metadata/settings layouts' is resolved: the packaged body matches; the packaged census row 6/7 for this class is stale (addClasses was the missing one and it now matches).",
+      "OnInitDialog": "exact",
+      "OnNMDblclk": "exact",
+      "compareItems": "exact",
+      "DoDataExchange": "exact",
+      "ctor 0041fe00 / dtor 0041ff40": "exact"
+    },
+    "non_class_residue": "boost bind/list/for_each comdats and the DECLARE_DYNAMIC helpers remain 'no candidate' or 'identity not established' (internal template helpers, not class functions)."
+  },
+  "status": "verified-complete (no source change needed)",
+  "note": "No edits were made to this family's files; this receipt records the verification so the census can be refreshed (scope.py --refresh) and the stale 6/7 row corrected to 7/7."
+}

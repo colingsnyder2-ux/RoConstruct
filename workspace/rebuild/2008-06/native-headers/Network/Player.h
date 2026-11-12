@@ -141,6 +141,8 @@ namespace RBX
 			{
 				prop_Under13.setValue(this, value);
 			}
+			// Inferred inline body: 00650d65 reads existing field +0x1b1.
+			bool getSuperSafeChat() const { return superSafeChat; }
 			void setSuperSafeChat(bool value)                         // 0048b940
 			{
 				prop_SuperSafeChat.setValue(this, value);

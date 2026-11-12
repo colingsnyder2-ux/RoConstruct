@@ -1,0 +1,32 @@
+{
+  "task": "CWorkspace::getWorkspace recovery (native source batch)",
+  "class": "CWorkspace",
+  "session": "fd274d0867cd4d7f91a1fa896af3011f",
+  "lease": "CWorkspace-family-glm53b",
+  "package_marker": {"revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6", "source_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6"},
+  "baseline_commit": "unknown",
+  "source": "rebuild/2008-06/WindowsClient/src/CWorkspace.cpp",
+  "runner_run": "work/2008-06/native-check-runs/20261112-044259-9371d97e",
+  "checks": [
+    {
+      "addr": "0046a970",
+      "status": "exact",
+      "score": 100,
+      "symbol": "?getWorkspace@CWorkspace@@QAEPAVWorkspace@RBX@@XZ",
+      "target_size": 17,
+      "object_size": 17,
+      "data_errors": [],
+      "call_identity": {
+        "passed": true,
+        "calls": [],
+        "scope": "leaf: reads the dataModel shared_ptr's px (member +0x24), then DataModel::workspace (+0x204) with the null guard"
+      }
+    }
+  ],
+  "method_recovered": "RBX::Workspace* CWorkspace::getWorkspace() - `return dataModel ? dataModel->getWorkspace() : NULL;` recovered on the first hypothesis. Declaration already at WindowsClient/include/CWorkspace.h line 74; no header edit needed. CWorkspace moves 12/15 to 13/15.",
+  "obligations_remaining": [
+    "CWorkspace::FinalConstruct 0046b5c0 (373 B) and ExecScript 0046c230 (511 B)",
+    "linked provider selection, no-loss and P5/P6/runtime gates at owner integration"
+  ],
+  "notes": "The sibling cleanup 0046b0e0 was already receipted earlier this session."
+}

@@ -1,0 +1,331 @@
+{
+  "class": "RBX Edge and SafeChat rows of the application range 00658000..00660000 (2008-06), inactive",
+  "compiler": "VS2008 RTM 21022",
+  "flags": {
+    "edge": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\app-unit658\\NativeAppUnit658_edge.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit658Edge.cpp"
+    ],
+    "safechat": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\app-unit658\\NativeAppUnit658_safechat.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit658SafeChat.cpp"
+    ],
+    "layout": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\app-unit658\\NativeAppUnit658_layout.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\app-unit658\\NativeAppUnit658Layout.cpp"
+    ],
+    "safechat_pending": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\app-unit658\\pending",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/DNATIVE_APPUNIT658_PENDING",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\native-layouts\\app-unit658\\NativeAppUnit658_safechat_pending.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit658SafeChat.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild\\2008-06\\native-classes\\AppUnit658Edge.cpp": "96d2c3db9fcf4455604e61294bc30dba5fb7ebbcec9dcd29bc7465291180a24e",
+    "rebuild\\2008-06\\native-classes\\AppUnit658SafeChat.cpp": "3789d07a199f96c184f0f53284719859a2232911ac52a983860885851bca99c9",
+    "rebuild\\2008-06\\tests\\record_native_app_unit658.py": "5b757ea08f208c87acf43c79f820bf17cdb48989ef6e9fb25a2c60e5475432df",
+    "rebuild\\2008-06\\native-headers\\AppUnit658\\Edge.h": "5499acd9b88589cea0b54a6931de989a605548fbe23cd3e79d666b67e3ebfebb",
+    "rebuild\\2008-06\\native-headers\\GuiHud2008\\GuiBuilder2008.h": "097989edf710d459ca75f796ac681b82fadb5914720e2d93cfb8d36010be7ab9"
+  },
+  "objects": {
+    "edge": "132905a5f3a7fa019d3410d06493671f64f1009509083dd66070eaad57ffab53",
+    "safechat": "2d378fb44b1ae17db12587f2f28a33c6118d12d51507624dee4b2e1eab0073af",
+    "layout": "75f3c19d161245ff69a9c0d6b5a5d943d03508de20df95e72b7f0e36460db41b",
+    "safechat_pending": "d0a835a6e96cabeba30d4de8a53c52be980d4fdf50f4e79592ff0a12243c5d22"
+  },
+  "range_total_rows": 154,
+  "unit_map": {
+    "safechat 00657c40..00658897 (tail in range)": "SafeChat.cpp (unit starts at 00657c40 getChatTreeFile, before this range). In range: boost::algorithm trim helpers 00658020 (called only by 006582f6) and trim(std::string&, locale) 006582b0 (called by loadChildren 006583f6 and 0066a276); ChatOption() 00658100 and ChatOption(std::string) 00658170 (ret 0x1c, string by value; both after new(0x34): vector 0x18 + string 0x1c), ~ChatOption 00658200 (evidence name, for_each delete of children), loadChildren 00658360 (findFirstChildByTag / getValue / findNextChildWithSameTag evidence names, utterance Name), getMessage 006584e0 (boost::lexical_cast<int> 005be120, ret 0x1c), loadChatTree 00658660 (TextXmlParser::parse 0058f6c0, new(0x34), \"ROOT\"), SafeChat_singleton 006587e0 (new(4); scoped_ptr reset of the file static 0097d944) and SafeChat::singleton 00658880 (call_once with the once_flag 0097d940; GuiBuilder::buildChatMenu calls it at 00603803). Built here: singleton (counted); ChatOption ctors / dtor and SafeChat_singleton are pending-build-only. Not attempted: the trim helpers (boost templates), loadChildren, getMessage, loadChatTree (they also need the XmlElement API and the utterance Name static).",
+    "simbody 006588a0..0065925e": "SimBody.cpp (Body/Primitive owner, Body2008.h): mulMatrixMatrixTranspose helper 006588a0 (only caller 0065898a), computeRotVel 00658920 (only caller step 00659062), PV::pvAtLocalCoord 00658a00 and PV::pvAtLocalOffset 00658c50 (evidence names; out-of-line copies emitted in this unit), the Quaternion product 00658a30 (only caller step 006590b7), SimBody() 00658ae0 and getOwnerPV 00658ca0 (counted by body-primitive2008-working.json), update 00658d20 (near miss there) and step 00658fb0 (not attempted there). Not built here: the SimBody layout belongs to the body-primitive2008 owner.",
+    "edge 00659260..006592aa": "Edge.cpp: Edge(Primitive*, Primitive*) 00659260 (evidence name; called by Contact() 00606c20) and Edge::setPrimitive 00659290 (slot 4 of the BallBallContact vtable 008436bc). Built here, both counted.",
+    "spatial-hash 006592b0..0065b5c4": "SpatialHash.cpp (2008, not a template): floor-to-int Vector3 helper 006592b0 (calls floor 006a1bb0; callers 006594a1 / 00659554 / 006595aa), box helpers 00659330 / 00659370 / 006593d0 / 00659460 / 006594b0 / 00659510 / 006595d0, hash-node find / remove / create 00659670..00659f90 (SpatialHash::collide 00659a10, the contact-candidate scan 00659c20 called by ContactManager 0060d4b9), erase / addNode / onPrimitiveAdded 0065a080..0065a4e0 (onPrimitiveAdded called by ContactManager 0060cc32), changeMinMax 0065a5d0, primitiveExtentsChanged 0065a950, the Roblox-instantiated std::vector helpers 00659f60 / 0065a830 / 0065ac20 / 0065aee0 / 0065af80 / 0065b430 (resize with 8-byte elements; only this unit calls them), ~SpatialHash 0065b1b0 (called by ~ContactManager 0060cd1d) and SpatialHash(ContactManager*, ...) 0065b4e0 (called at 0060d29e; levels: vector constructor iterator over 4 x 0x18 at +0xc, counters +0x6c..+0x88, level count static 009625a8). No committed native header declares SpatialHash (ContactManager2008.h forward-declares it); not attempted in this pass: needs the allocation size at 0060d29x, the node / bucket element types and the 2008 Primitive spatial fields (Primitive2008.h +0x60..+0x80).",
+    "lua 0065b5d0..0065fee2": "Lua 5.1 library (evidence names): lgc.c reallymarkobject 0065b5d0 .. luaC_linkupval 0065c510, ltm.c luaT_init 0065c570 .. luaT_gettmbyobj 0065c600, lvm.c luaV_tonumber 0065c660 .. luaV_execute 0065d2c0, ltable.c hashnum 0065e3e0 .. luaH_setstr 0065f150, lstring.c 0065f1a0..0065f3f0, lfunc.c 0065f450..0065f7e0, lzio.c 0065f830..0065f990, ldump.c 0065f9f0..0065fe70: library code, not recovered.",
+    "cofm 0065fef0..": "Cofm.cpp: Cofm(Body*) 0065fef0, getMass 0065ff10, updateIfDirty 0065ff20 (evidence names), counted by body-primitive2008-working.json; continues past 00660000."
+  },
+  "range_rows_counted_by_other_receipts": [],
+  "layout": {
+    "Edge.h": "checked by the generated probe: edgeState +0x8, prim0 +0xc, prim1 +0x10, index0 +0x14, index1 +0x18, inEdgeList +0x1c, sizeof 0x20; novtable"
+  },
+  "vtables": {
+    "probe_vtable_slots_current_headers": {
+      "0": "??_ENativeAppUnit658ProbeEdge@@UAEPAXI@Z",
+      "1": "?putInKernel@IPipelined@RBX@@UAEXPAVKernel@2@@Z",
+      "2": "?removeFromKernel@IPipelined@RBX@@UAEXXZ",
+      "3": "?getEdgeType@NativeAppUnit658ProbeEdge@@UBE?AW4EdgeType@Edge@RBX@@XZ",
+      "4": "?setPrimitive@Edge@RBX@@UAEXHPAVPrimitive@2@@Z"
+    },
+    "BallBallContact_vtable": "RTTI .?AVBallBallContact@RBX@@ at offset 0; slot 4 is Edge::setPrimitive (proven here); slots 1 / 2 / 3 are Contact / BallBallContact overrides (world-shapes owner)",
+    "edge_novtable": "no ??_7Edge@RBX@@6B@ in the Edge object"
+  },
+  "rows": {
+    "edge": [
+      {
+        "address": "00659260",
+        "symbol": "??0Edge@RBX@@QAE@PAVPrimitive@1@0@Z",
+        "size": 39,
+        "target_size": 39,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "00659290",
+        "symbol": "?setPrimitive@Edge@RBX@@UAEXHPAVPrimitive@2@@Z",
+        "size": 27,
+        "target_size": 27,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      }
+    ],
+    "safechat": [
+      {
+        "address": "00658880",
+        "symbol": "?singleton@SafeChat@RBX@@SAAAV12@XZ",
+        "size": 24,
+        "target_size": 24,
+        "exact": true,
+        "verified_targets": {
+          "_once_SafeChat_singleton": "0x97d940 (unit static / own uncounted function (one address per symbol))",
+          "?SafeChat_singleton@@YAXXZ": "0x6587e0 (unit static / own uncounted function (one address per symbol))",
+          "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external (call-site identification))",
+          "_sing": "0x97d944 (unit static / own uncounted function (one address per symbol))"
+        },
+        "local_eh": []
+      }
+    ]
+  },
+  "not_exact": [
+    {
+      "address": "006587e0 (not counted)",
+      "symbol": "?SafeChat_singleton@@YAXXZ",
+      "size": 75,
+      "target_size": 146,
+      "exact": false,
+      "reason": "current headers: GuiBuilder2008.h declares no SafeChat constructor (the original inlines SafeChat() { loadChatTree(); }, a call to 00658660) and no ~ChatOption (the original calls 00658200); the implicit members make this body differ. See the pending row and the proposal."
+    }
+  ],
+  "pending_rows": [
+    {
+      "address": "00658100 (pending-build-only, not counted)",
+      "symbol": "??0ChatOption@RBX@@QAE@XZ",
+      "size": 97,
+      "target_size": 97,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802460 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$??0ChatOption@RBX@@QAE@XZ"
+      ],
+      "pending_build_exact": true,
+      "exact": false,
+      "reason": "pending-build-only: needs the GuiBuilder2008.h ChatOption / SafeChat proposal"
+    },
+    {
+      "address": "00658170 (pending-build-only, not counted)",
+      "symbol": "??0ChatOption@RBX@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "size": 140,
+      "target_size": 140,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802460 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+        "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z": "0x80240c (msvcp90.dll!??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$??0ChatOption@RBX@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+      ],
+      "pending_build_exact": true,
+      "exact": false,
+      "reason": "pending-build-only: needs the GuiBuilder2008.h ChatOption / SafeChat proposal"
+    },
+    {
+      "address": "00658200 (pending-build-only, not counted)",
+      "symbol": "??1ChatOption@RBX@@QAE@XZ",
+      "size": 171,
+      "target_size": 171,
+      "verified_targets": {
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "??1ChatOption@RBX@@QAE@XZ": "0x658200 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+      },
+      "local_eh": [
+        "__ehhandler$??1ChatOption@RBX@@QAE@XZ"
+      ],
+      "pending_build_exact": true,
+      "exact": false,
+      "reason": "pending-build-only: needs the GuiBuilder2008.h ChatOption / SafeChat proposal"
+    },
+    {
+      "address": "006587e0 (pending-build-only, not counted)",
+      "symbol": "?SafeChat_singleton@@YAXXZ",
+      "size": 146,
+      "target_size": 146,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "?loadChatTree@SafeChat@RBX@@AAEXXZ": "0x658660 (external (call-site identification))",
+        "_sing": "0x97d944 (unit static / own uncounted function (one address per symbol))",
+        "??1ChatOption@RBX@@QAE@XZ": "0x658200 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$?SafeChat_singleton@@YAXXZ"
+      ],
+      "pending_build_exact": true,
+      "exact": false,
+      "reason": "pending-build-only: needs the GuiBuilder2008.h ChatOption / SafeChat proposal"
+    }
+  ],
+  "rejected": {
+    "ChatOption(std::string text) : text(text) (pending build)": "125 / 140 B: the original default-constructs text (006581bd) and then assigns it (006581cf); the body assignment `this->text = text;` is used instead"
+  },
+  "bounds": "0065833f is the end of trim(std::string&, locale) 006582b0; 00658340..00658358 (25 B, `if (p) { p->~ChatOption(); operator delete(p); }`, the out-of-line ~scoped_ptr<ChatOption> / ~SafeChat) is a separate function whose only reference is the EH unwind funclet at 007dbf1e; the analysed extent of 006582b0 (169 B) includes it. No bounds.json change made.",
+  "proposals": {
+    "native-headers/GuiHud2008/GuiBuilder2008.h (gui hud owner)": "declare in ChatOption `ChatOption(std::string text);` 00658170, `ChatOption();` 00658100 and `~ChatOption();` 00658200 (evidence name ??1ChatOption@RBX@@QAE@XZ; both ctors follow new(0x34) = sizeof(ChatOption)), and in SafeChat an inline `SafeChat() { loadChatTree(); }` (SafeChat_singleton 006587e0 zeroes chatRoot and calls 00658660 inline), `std::string getMessage(std::vector<std::string>);` 006584e0, private `void loadChatTree();` 00658660 and `void loadChildren(ChatOption*, const XmlElement*);` 00658360 (plus `class XmlElement;` at global scope). The recorder generates this copy under rebuild/2008-06/out/native-layouts/app-unit658/pending/; with it ChatOption(), ChatOption(std::string), ~ChatOption and SafeChat_singleton build as recorded in pending_rows."
+  },
+  "exact_function_rows": [
+    "00658880",
+    "00659260",
+    "00659290"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

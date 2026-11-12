@@ -1,0 +1,38 @@
+{
+  "task": "RBX::Script::onServiceProvider recovery (native source batch)",
+  "class": "RBX::Script",
+  "session": "70cb0ef3b8da4c18840c98f46ab0cde5",
+  "lease": "RBX::Script-family-glm53b",
+  "package_marker": {"revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6", "source_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6"},
+  "baseline_commit": "unknown",
+  "source": "rebuild/2008-06/native-classes/AppUnit57C_2008Script.cpp",
+  "runner_run": "work/2008-06/native-check-runs/20261112-020934-53a7b78b",
+  "checks": [
+    {
+      "addr": "00586bf0",
+      "status": "exact",
+      "score": 100,
+      "symbol": "?onServiceProvider@Script@RBX@@MAEXPBVServiceProvider@2@0@Z",
+      "target_size": 107,
+      "object_size": 107,
+      "data_errors": [],
+      "call_identity": {
+        "passed": false,
+        "calls": [
+          {"offset": 14, "target": "0042de90", "kind": "direct", "status": "verified_binding", "symbol": "??$find@VScriptContext@RBX@@@ServiceProvider@RBX@@QBEPAVScriptContext@1@XZ"},
+          {"offset": 26, "target": "005ad030", "kind": "direct", "status": "verified_binding", "symbol": "?removeScript@ScriptContext@RBX@@QAEXPAVScript@2@@Z"},
+          {"offset": 45, "target": "00586b10", "kind": "direct", "status": "verified_binding", "symbol": "?requestCode@Script@RBX@@QAE?AV?$shared_ptr@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@boost@@XZ"},
+          {"offset": 77, "target": null, "kind": "indirect", "status": "obligation_open", "note": "call edx: boost shared_ptr dispose virtual through the control-block vtable of the discarded requestCode() temporary"},
+          {"offset": 98, "target": null, "kind": "indirect", "status": "obligation_open", "note": "call eax: boost shared_ptr destroy virtual through the control-block vtable of the discarded requestCode() temporary"}
+        ],
+        "scope": "All three direct bindings verified on the same object; the two indirect vtable calls of the discarded shared_ptr need separate callee-identity evidence (not covered by this flag). Bytes are exact, so the temporary's lifetime/refcount sequence matches the original."
+      }
+    }
+  ],
+  "method_recovered": "void Script::onServiceProvider(const ServiceProvider*, const ServiceProvider*) - replaced the previous Instance::onServiceProvider call with the original's behavior: after detaching from the old ScriptContext, a new provider warms the source via the discarded requestCode() by-value shared_ptr temporary (8-byte frame slot, released at scope exit with the original refcount sequence). Recovered on the first hypothesis; the previous body was a documented NOT-exact near-miss with a stale receipt reference.",
+  "obligations_remaining": [
+    "the two indirect control-block vtable calls (dispose/destroy) of the discarded requestCode temporary",
+    "linked provider selection, no-loss and P5/P6/runtime gates at owner integration"
+  ],
+  "notes": "requestCode() itself (00586b10) remains a NOT-exact near-miss in the same unit and is out of this batch's scope."
+}

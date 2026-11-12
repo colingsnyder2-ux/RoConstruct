@@ -1,0 +1,35 @@
+{
+  "scope": "CScriptEditor family: compile blocker repair (missing native-flags include) plus verification/park records for the remaining near-misses.",
+  "baseline_commit": "unknown",
+  "package_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "source_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "native_workflow_version": 53,
+  "lease": "CScriptEditor-family (colin)",
+  "draft_session": "8116b72cddbd4ff49e949d4019c48611",
+  "repair": {
+    "blocker": "rebuild/2008-06/native-classes/CScriptEditor.cpp compiled with cl exit 2: CScriptEditor.h(6) fatal C1083 Cannot open include file 'Platform.h' - the compat TU had no // native-flags: line, so the compile fell back to the generic profile without the scintilla include.",
+    "fix": "Added to rebuild/2008-06/native-classes/CScriptEditor.cpp line 1: // native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/libs/scintilla-mfc-1.20",
+    "evidence": "The sibling compat TU rebuild/2008-06/native-classes/CIDEDocManager.cpp carries exactly this profile for the same scintilla-dependent header set (afxwin/Scintilla/Platform.h/SciLexer all resolve under tools/libs/scintilla-mfc-1.20, which exists in the shared tools install); ScintillaCtrl.cpp confirms the same include pattern.",
+    "result": "prove.py CScriptEditor went from 0 exact / cl exit 2 to 285 exact / 20840 B (ledger) with the family compiling clean."
+  },
+  "verification": {
+    "setScript 00465260": "byte-exact 659/659 B (diff_native_body: no differences). The binder's 'reference identity differs' for ??$create@VRunService@RBX@@@ServiceProvider@RBX@@SAPAVRunService@1@PBVInstance@1@@Z is an exe-level ambiguity: the original has two identical-symbol copies (004651c0 and 00492e00) and the byte/relocation comparison passes; the address-level call identity is not decidable from the object alone."
+  },
+  "remaining_near_misses": [
+    {
+      "function": "reload 00465550 (668 vs 659 B)",
+      "delta": "two c_str sites (getScriptId().toString() null test and SetText(...c_str())) where the original imports MSVCP90!c_str via IAT and ours inlines _Myptr (same systemic toolchain delta as CRobloxTreeCtrlNode::onGetDispInfo, CMemberTreeView::addFunction, CDeclarationView::setContent/showDescriptor); the source comment already records the truncated inventory extent (catch funclet 0046573d, return 004657eb)."
+    },
+    {
+      "function": "marshal 00465110 (77 vs 47 B)",
+      "delta": "the source comment already records the hypothesis: the target keeps two separate base-marshal call paths (each branch rebuilds the by-value PropertyChanged and calls the MarshaledListener marshal 00464ea0 separately); our compile tail-merges the two identical call tails into one. A source form that keeps the two calls non-mergeable (distinct argument expressions per branch) is the next hypothesis; not attempted this batch."
+    },
+    {
+      "function": "OnUpdateFold 00464300 (165 vs 155 B), OnReload 004659a0 (69 vs 21 B)",
+      "delta": "unbound drafts (this file has no research/native-units.json entry, so the binder cannot propose candidates); sizes indicate near-misses - needs a unit mapping before hypotheses are useful."
+    }
+  ],
+  "census_note": "The packaged CScriptEditor census row (35/37) predates the flags repair; with the include fixed the family binds broadly and setScript is exact. A scope.py --refresh would recompute the row once the binder/native-units mapping for this file is extended.",
+  "status": "repair-applied + verified + parked near-misses",
+  "next": "Owner/toolchain: (1) the c_str import form (systemic), (2) a native-units.json mapping entry for CScriptEditor.cpp so the remaining drafts get candidates, (3) then re-test marshal's two-path hypothesis and the OnUpdateFold/OnReload deltas."
+}

@@ -1,0 +1,44 @@
+{
+  "task": "CChatPrompt DYNCREATE plumbing recovery (native source batch)",
+  "class": "CChatPrompt",
+  "session": "a212875568a34221ba072c945a34b1bd",
+  "lease": "CChatPrompt-family-glm53b",
+  "package_marker": {"revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6", "source_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6"},
+  "baseline_commit": "unknown",
+  "source": "rebuild/2008-06/WindowsClient/src/CChatPrompt.cpp (compat TU native-classes/CChatPrompt.cpp)",
+  "runner_run": "work/2008-06/native-check-runs/20261112-003319-389fd350",
+  "checks": [
+    {
+      "addr": "00411360",
+      "status": "exact",
+      "score": 100,
+      "symbol": "?GetThisClass@CChatPrompt@@SGPAUCRuntimeClass@@XZ",
+      "target_size": 6,
+      "object_size": 6,
+      "data_errors": [],
+      "call_identity": {"passed": true, "calls": [], "scope": "leaf getter: mov eax, classCChatPrompt (0x80df88); ret; referenced data auto-checked by the runner"}
+    },
+    {
+      "addr": "00411ef0",
+      "status": "exact",
+      "score": 100,
+      "symbol": "?CreateObject@CChatPrompt@@SGPAVCObject@@XZ",
+      "target_size": 89,
+      "object_size": 89,
+      "data_errors": [],
+      "call_identity": {
+        "passed": true,
+        "calls": [
+          {"offset": 27, "target": "006a0920", "kind": "direct", "status": "verified_binding", "symbol": "??2@YAPAXI@Z"},
+          {"offset": 52, "target": "00411be0", "kind": "direct", "status": "verified_binding", "symbol": "??0CChatPrompt@@QAE@XZ"}
+        ],
+        "scope": "operator new import thunk and the CChatPrompt constructor; EH unwind funclet 007bfa1a also covered by the family census"
+      }
+    }
+  ],
+  "method_recovered": "IMPLEMENT_DYNCREATE(CChatPrompt, CEditView) added to the .cpp; the macros generate the static GetThisClass (6 B), CreateObject (89 B: EH-guarded operator new(0xa8) + ctor 00411be0) and the classCChatPrompt CRuntimeClass struct at 0x80df88. The bind body (00412800, 446 B), constructor (00411be0) and scalar deleting destructor (00412aa0) remain byte-exact in the same object.",
+  "obligations_remaining": [
+    "CRuntimeClass struct contents (schema/name/base getter at 0x80df88) and the vtable GetRuntimeClass slot binding are data-level checks the runner performs automatically here; linked provider selection, no-loss and P5/P6/runtime gates remain owner integration obligations"
+  ],
+  "notes": "The class census was 1/3 (bind only) before this batch; GetThisClass and CreateObject are now byte-exact. The '1 reference identity differs' census note is a missing shared reference receipt (ogre-registry-identities.json), unrelated to this family."
+}

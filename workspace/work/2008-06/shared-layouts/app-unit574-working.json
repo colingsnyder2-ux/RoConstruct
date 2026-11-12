@@ -1,0 +1,1199 @@
+{
+  "class": "RBX gui/GUI.cpp tail and v8datamodel/DataModel.cpp rows of the application range 00574000..00578000 (2008-06), inactive",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM), document-swap flags, /fp:fast",
+  "flags": {
+    "creators": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\app-unit574\\AppUnit574creators.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit574Creators.cpp"
+    ],
+    "notifiers": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\app-unit574\\AppUnit574notifiers.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit574Notifiers.cpp"
+    ],
+    "lock": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\app-unit574\\AppUnit574lock.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\DataModelLock.cpp"
+    ],
+    "textdisplay": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\app-unit574\\AppUnit574textdisplay.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\AppUnit574TextDisplay.cpp"
+    ],
+    "guiitem": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\app-unit574\\AppUnit574guiitem.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\GuiItem.cpp"
+    ],
+    "timing": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\app-unit574\\AppUnit574timing.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\DataModelTiming.cpp"
+    ],
+    "duty": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/FoC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\out\\app-unit574\\AppUnit574duty.obj",
+      "C:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-classes\\DataModelDutyCycle.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit574.py": "4674acc1f03641ba234bfb2cb867044b0dbc1f5c4620ca6ee9e3403bac47b90b",
+    "rebuild/2008-06/native-classes/AppUnit574Creators.cpp": "78da10471303fcd40c15574c765076df95a346daf79ace7f12983f9a299664f7",
+    "rebuild/2008-06/native-classes/AppUnit574Notifiers.cpp": "1a9172ca9ee7a559806b5bfb1028cfb5c1275bc47fcdba5358f7bc63b867c612",
+    "rebuild/2008-06/native-classes/DataModelLock.cpp": "ca99707455510aebc7843be91870beeea325b188c3726f32b305fa04c5fe5b00",
+    "rebuild/2008-06/native-classes/AppUnit574TextDisplay.cpp": "c2b4e0ca677e43ee9f50c58f49275e8a000db887b8ce99c60a68c8f696488276",
+    "rebuild/2008-06/native-classes/GuiItem.cpp": "b2096283a63ec4ae4e9da32b0ed2d83777a08de6ec9caa9f658de3ef7458d5ed",
+    "rebuild/2008-06/native-classes/DataModelTiming.cpp": "4e109bfb16e04191462fc0a6e159bbe7d2b67ba2dd5eefdd44c9cb4034c86b9c",
+    "rebuild/2008-06/native-classes/DataModelDutyCycle.cpp": "d31fd9993fa6cf9d9ac8846c42c8fd50db73e966b192ae7c07d259e664ef19cb",
+    "rebuild/2008-06/native-headers/util/Object.h": "798c5489d36aacc90d8b95fcd3c3f8a42d30034f4ae1239a7f535176e12274a3",
+    "rebuild/2008-06/native-headers/util/Events.h": "1d598e69002f04a8e58e8f688f4f6efbc4fa6e73500fb6f83dc004fda32ee5d7",
+    "rebuild/2008-06/native-headers/v8tree/Service.h": "0d0af7b4fcfa53af0684c84ac380d6114bbd8c6f1567064b6075a5b21277ae4c",
+    "rebuild/2008-06/native-headers/LocalBackpack2008/LocalBackpack2008.h": "a42f61b99227f6c45410c643fa053d3cf39f67748d71726cebc9cc796e7a10dd",
+    "rebuild/2008-06/native-headers/v8datamodel/Workspace.h": "8b6a5268449fe8c387a39ee60a637b19270748369dde3f7934b919cc07b0e690",
+    "rebuild/2008-06/native-headers/v8datamodel/DataModel.h": "eec0bae063ddad862595ffd03dd5db58c5793e73381e882f11c9f212fd4e8f11",
+    "rebuild/2008-06/native-headers/gui/Gui.h": "754a8312e436223f51f36c2a120557df21a5c0e5631fcff8393aa77f6d381d62",
+    "rebuild/2008-06/native-headers/util/RunStateOwner.h": "5d96810ac26dd996a9e2ddaf7dabeafcbf38afdb0406c47331a70663bfc89d08"
+  },
+  "objects": {
+    "creators": "4f21ad13cfcda475275ab2c5308cba18b9516b4d6cc0f87ecc4395008dbb4510",
+    "notifiers": "263e57fef8d54ebac83c889b1cabb1eebb2059f8b77898f042f3dd361743037d",
+    "lock": "54b473b6fd2a1ce2b3ededc62196230003f3cd80660e5b8b676a0a65749e73c0",
+    "textdisplay": "22d60ba312c1999c64d74f0f9c03e517b721d0ab7957af8d0f1ce16a9c8f0cc0",
+    "guiitem": "85183786e33a7a30cd599be72603e96d59bb77e203d2660b4b731090ddf80821",
+    "timing": "c834e8615ea9c25b7ae51c2773dea4437b01faec0d85e9356a24da0e5daa574e",
+    "duty": "d0559890f7cf779bd0c6ef93ddf17fad6747bd1caa91e6f29de8b3aec919f320"
+  },
+  "layout": {
+    "Workspace": "sizeof 0x45c (malloc in create<Workspace> 0x576ff0; the compiled push is exact against the native header layout)",
+    "GuiRoot": "sizeof 0x144 (malloc in create<GuiRoot> 0x577090; the compiled push is exact against the native header layout)",
+    "LocalBackpack": "sizeof 0x1ac (malloc in create<LocalBackpack> 0x5771b0; the compiled push is exact against the native header layout)"
+  },
+  "unit_map": {
+    "rbx gui/GUI.cpp tail 0x574000..0x574f0c (unit 0x573130..0x574f0c)": "Continues the GUI unit app-unit570 maps from 0x573130 (Rect::pointInRect, GuiItem colour statics, GuiItem / RelativePanel / TopMenuBar / GuiRoot members). In range: TopMenuBar::render2d 0x574050 and process 0x574bf0 (evidence names), the ICF-shared Widget ??_E / ??_G thunks 0x574130..0x574150 (widget-family support rows), UnifiedWidget members 0x574170..0x574400 and its process chain 0x5746e0..0x574e70, the TextDisplay block (constructor 0x5744a0 storing the .?AVTextDisplay@RBX@@ vtables, getFontSize 0x574570, getLabel 0x574580, eight ??_E thunks 0x5745b0..0x574620 jumping to ??_G 0x574680, ~TextDisplay 0x574630 and ??_G), and GuiItem::onDescendentRemoving / processNonFocus / process 0x5746a0 / 0x574980 / 0x574b10 (evidence names; committed native-classes/GuiItem.cpp). Built here: the TextDisplay rows (own source) and the three GuiItem rows (owner source, compiled unchanged).",
+    "rbx v8datamodel/DataModel.cpp 0x574f10..0x578000 (unit 0x574f10..0x57c1af)": "DataModel::setUiMessage 0x574f10 opens the unit (app-unit570 map), followed by DataModel members (doHttpGet / doHttpPost, close \"Couldn't find Exit Verb\", stats text \"%i %%  %s (%.3gfps)\", onChildAdded \"NetworkClient\", onEvent, key handling \"CameraPanLeft\", evaluate \"SimCpu\" / \"GfxCpu\", getGameTime / getFrameRate / getDutyCycle), then the template COMDAT run: Notifier raise instances (ServiceProvider/Closing 0x5768b0 / 0x576390, Workspace/DrawChanged 0x576940 / 0x576450), Name::declare thunks (local-backpack / hopper-family count 0x5754e0 / 0x575550 / 0x5755c0 / 0x576600..0x576620), the shared_count (creatable-shared-count) / shared_ptr / create instances of DataModel, Workspace, GuiRoot and LocalBackpack, doGetClassIndex / callDoGetClassIndex<LocalBackpack>, DataModel::Lock::doLock / ~Lock, shared_count<recursive_mutex>, and the boost bind / function instances of rbx_httpGet / rbx_httpPost / the message binds. Built here: the Creatable / ServiceProvider / Notifier instances (own sources), ~Lock and the timing members (owner sources, compiled unchanged). DataModel's other members need declarations the core v8datamodel/DataModel.h lacks.",
+    "library code": "No separately compiled library unit starts in the range. boost::_bi / function / checked_delete / shared_count<recursive_mutex> rows are boost header instances inside the DataModel unit; not recovered.",
+    "excluded": "No CRobloxApp / CMainFrame / CRobloxDoc / CRobloxView member lies in the range."
+  },
+  "unit_blocks": [
+    "0x574000..0x574f10 rbx gui/GUI.cpp tail (unit begins at 0x573130, ends at 0x574f0c)",
+    "0x574f10..0x578000 rbx v8datamodel/DataModel.cpp (begins at 0x574f10, continues past 0x578000 to 0x57c1af)"
+  ],
+  "range_functions": 127,
+  "range_rows_counted_by_other_receipts": [
+    "005744a0 counted by draft-publication-4874654eaaa04306a15bd77c5ff398b2.json",
+    "00574570 counted by draft-text-display-font-independent.json",
+    "00574580 counted by draft-publication-6a91a406d2554237a6db4ce177e6d299.json",
+    "00574bf0 counted by draft-publication-a8f44b27265d440580fcd9067eacc7c2.json",
+    "005755c0 counted by hopper-family-working.json",
+    "00576620 counted by hopper-family-working.json"
+  ],
+  "range_rows_open": [
+    "0x574050 (open)",
+    "0x574130 (open)",
+    "0x574140 (open)",
+    "0x574150 (open)",
+    "0x574170 (open)",
+    "0x574280 (open)",
+    "0x574300 (open)",
+    "0x574330 (open)",
+    "0x574400 (open)",
+    "0x5746e0 (open)",
+    "0x574760 (open)",
+    "0x574860 (open)",
+    "0x574cb0 (open)",
+    "0x574de0 (open)",
+    "0x574e70 (open)",
+    "0x574f10 (open)",
+    "0x574f60 (open)",
+    "0x574f80 (open)",
+    "0x574fa0 (open)",
+    "0x574fb0 (open)",
+    "0x574fc0 (open)",
+    "0x574fd0 (open)",
+    "0x574fe0 (open)",
+    "0x575040 (open)",
+    "0x575060 (open)",
+    "0x575120 (open)",
+    "0x575240 (open)",
+    "0x575270 (open)",
+    "0x575300 (open)",
+    "0x575400 (open)",
+    "0x575460 (open)",
+    "0x5754e0 (open)",
+    "0x575550 (open)",
+    "0x575690 (open)",
+    "0x5756e0 (open)",
+    "0x575700 (open)",
+    "0x575750 (open)",
+    "0x575820 (open)",
+    "0x575840 (open)",
+    "0x575890 (open)",
+    "0x575ba0 (open)",
+    "0x575d90 (open)",
+    "0x576390 (open)",
+    "0x576510 (open)",
+    "0x576570 (open)",
+    "0x576600 (open)",
+    "0x576610 (open)",
+    "0x576630 (open)",
+    "0x5766c0 (open)",
+    "0x576750 (open)",
+    "0x5767e0 (open)",
+    "0x576810 (open)",
+    "0x5768a0 (open)",
+    "0x5768b0 (open)",
+    "0x5769d0 (open)",
+    "0x576a70 (open)",
+    "0x576c80 (open)",
+    "0x576dc0 (open)",
+    "0x576e50 (open)",
+    "0x576f80 (open)",
+    "0x576f90 (open)",
+    "0x577110 (open)",
+    "0x577230 (open)",
+    "0x5772b0 (open)",
+    "0x5772e0 (open)",
+    "0x577310 (open)",
+    "0x577370 (open)",
+    "0x577460 (open)",
+    "0x5774b0 (open)",
+    "0x577590 (open)",
+    "0x577630 (open)",
+    "0x577650 (open)",
+    "0x577670 (open)",
+    "0x577690 (open)",
+    "0x577700 (open)",
+    "0x5777a0 (open)",
+    "0x577840 (open)",
+    "0x5778c0 (open)",
+    "0x577940 (open)",
+    "0x577970 (open)",
+    "0x577aa0 (open)",
+    "0x577ae0 (open)",
+    "0x577b20 (open)",
+    "0x577ba0 (open)",
+    "0x577c00 (open)",
+    "0x577c10 (open)",
+    "0x577c70 (open)",
+    "0x577d00 (open)",
+    "0x577d60 (open)",
+    "0x577e80 (open)",
+    "0x577ec0 (open)",
+    "0x577f30 (open)",
+    "0x577fa0 (open)"
+  ],
+  "range_rows_open_by_category": {
+    "TopMenuBar::render2d (evidence name): calls the out-of-line GuiItem::getMyRect2D 0x573960 that gui/Gui.h declares inline (widget-family proposal)": [
+      "0x574050"
+    ],
+    "ICF-shared Widget / KeyButton ??_E / ??_G thunks (support rows of widget-family-working, compiled exact there)": [
+      "0x574130",
+      "0x574140",
+      "0x574150"
+    ],
+    "UnifiedWidget members (render / child layout; matched-analog unit RBX::UnifiedWidget; gui/Gui.h UnifiedWidget, widget-family pending getMenuState inline)": [
+      "0x574170",
+      "0x574280",
+      "0x574300",
+      "0x574330",
+      "0x574400"
+    ],
+    "UnifiedWidget process helpers (callers 0x574de0 / 0x574e70; Rect::pointInRect 0x573130)": [
+      "0x5746e0",
+      "0x574760",
+      "0x574860"
+    ],
+    "UnifiedWidget process chain (0x574e70 called by 0x64ead0)": [
+      "0x574cb0",
+      "0x574de0",
+      "0x574e70"
+    ],
+    "DataModel::setUiMessage and the uiMessage (+0x234) string assigns (\"[[[progress]]]\"); not declared in v8datamodel/DataModel.h": [
+      "0x574f10",
+      "0x574f60",
+      "0x574f80"
+    ],
+    "ICF-folded field getters (0x574fb0 evidence name Primitive::getController; callers in other units)": [
+      "0x574fa0",
+      "0x574fb0",
+      "0x574fc0",
+      "0x574fd0"
+    ],
+    "DataModel members / helpers not declared in DataModel.h (doHttpGet / doHttpPost 0x575060 / 0x575120, close 0x575270, stats text 0x575300, BoundFuncDesc execute helpers 0x575400 / 0x575460, render-time 0x575690, 0x575040 / 0x575240 / 0x5756e0)": [
+      "0x574fe0",
+      "0x575040",
+      "0x575060",
+      "0x575120",
+      "0x575240",
+      "0x575270",
+      "0x575300",
+      "0x575400",
+      "0x575460",
+      "0x5754e0",
+      "0x575550",
+      "0x575690",
+      "0x5756e0"
+    ],
+    "boost::_bi::storage2<value<string>, value<string>> destructor (evidence name)": [
+      "0x575700"
+    ],
+    "DataModel::onChildAdded / onEvent / key handling (\"CameraPanLeft\") / evaluate (evidence names; not declared in DataModel.h)": [
+      "0x575750",
+      "0x575820",
+      "0x575840",
+      "0x575890",
+      "0x575ba0",
+      "0x575d90"
+    ],
+    "Notifier raise(event, listener) bodies: ServiceProvider/Closing 0x576390 and Workspace/DrawChanged 0x576450 (built exact with the repaired complete extent)": [
+      "0x576390"
+    ],
+    "boost::_bi::storage2 copy / value constructors (evidence names)": [
+      "0x576510",
+      "0x576570"
+    ],
+    "Name::declare thunks (local-backpack / hopper-family; counted by owner receipts when present)": [
+      "0x576600",
+      "0x576610"
+    ],
+    "boost::detail::shared_count constructors for DataModel / Workspace / GuiRoot": [
+      "0x576630",
+      "0x5766c0",
+      "0x576750"
+    ],
+    "boost::checked_delete<recursive_mutex> and small thunks": [
+      "0x5767e0"
+    ],
+    "boost::detail::shared_count constructor for LocalBackpack": [
+      "0x576810"
+    ],
+    "ICF jmp to the storage2 destructor 0x575700": [
+      "0x5768a0"
+    ],
+    "Notifier<ServiceProvider, Closing>::raise(Closing) (needs a complete Closing: v8tree/Service.h proposal)": [
+      "0x5768b0"
+    ],
+    "boost::_bi::list2<value<string>, value<string>> constructor (evidence name)": [
+      "0x5769d0"
+    ],
+    "shared_ptr<DataModel>(DataModel*, Deleter) (needs create<DataModel>, i.e. a declared DataModel(); the explicit constructor-template instantiation does not compile under VS2008 with boost 1.34.1 sp_enable_if_auto_ptr)": [
+      "0x576a70"
+    ],
+    "shared_count(recursive_mutex*) and its catch piece (boost header instance, sp_counted_impl_p<recursive_mutex> vtable 0x82fdac)": [
+      "0x576c80"
+    ],
+    "boost::_bi list1 / list2 operator() of the rbx_httpGet / rbx_httpPost binds": [
+      "0x576dc0",
+      "0x576e50"
+    ],
+    "DataModel::Lock::doLock and following thunk (repaired separate extents; doLock built exact)": [
+      "0x576f80"
+    ],
+    "DataModel helper (caller 0x578c20, RunService transition path)": [
+      "0x576f90"
+    ],
+    "boost::bind<string, string, string> (evidence name)": [
+      "0x577110"
+    ],
+    "boost::function / bind storage, list, functor_manager and invoker instances of the DataModel http / message binds (evidence names)": [
+      "0x577230",
+      "0x5772b0",
+      "0x5772e0",
+      "0x577310",
+      "0x577370",
+      "0x577460",
+      "0x5774b0",
+      "0x577590",
+      "0x577630",
+      "0x577650",
+      "0x577670",
+      "0x577690",
+      "0x577700",
+      "0x5777a0",
+      "0x577840",
+      "0x5778c0",
+      "0x577940",
+      "0x577970",
+      "0x577aa0",
+      "0x577ae0",
+      "0x577b20",
+      "0x577ba0",
+      "0x577c00",
+      "0x577c10",
+      "0x577c70"
+    ],
+    "boost::function / bind helpers of the same binds (callers 0x57b680 / 0x588db0)": [
+      "0x577d00",
+      "0x577d60",
+      "0x577e80",
+      "0x577ec0",
+      "0x577f30"
+    ],
+    "shared_count(LocalBackpackItem*, Deleter) (compiled exact by app-unit578 as a helper)": [
+      "0x577fa0"
+    ]
+  },
+  "rows": {
+    "creators": [
+      {
+        "address": "00575630",
+        "symbol": "??$doGetClassIndex@VLocalBackpack@RBX@@@ServiceProvider@RBX@@SAIXZ",
+        "size": 91,
+        "target_size": 91,
+        "exact": true,
+        "build": "creators",
+        "verified_targets": {
+          "??_B?1???$doGetClassIndex@VLocalBackpack@RBX@@@ServiceProvider@RBX@@SAIXZ@51": "0x975200 (own static (bound by consistency))",
+          "?newIndex@ServiceProvider@RBX@@SAIXZ": "0x572690 (external (identity: 0x572690: InterlockedIncrement on the index counter (app-unit570 map: ServiceProvider::newIndex shape); the only call of every doGetClassIndex<C> (e.g. 0x575630 here)))",
+          "?index@?1???$doGetClassIndex@VLocalBackpack@RBX@@@ServiceProvider@RBX@@SAIXZ@4IA": "0x9751fc (own static (bound by consistency))"
+        },
+        "local_eh": [
+          "__ehhandler$??$doGetClassIndex@VLocalBackpack@RBX@@@ServiceProvider@RBX@@SAIXZ"
+        ]
+      },
+      {
+        "address": "00576800",
+        "symbol": "??$callDoGetClassIndex@VLocalBackpack@RBX@@@ServiceProvider@RBX@@SAXXZ",
+        "size": 5,
+        "target_size": 5,
+        "exact": true,
+        "build": "creators",
+        "verified_targets": {
+          "??$doGetClassIndex@VLocalBackpack@RBX@@@ServiceProvider@RBX@@SAIXZ": "0x575630 (own row)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00576b20",
+        "symbol": "??$?0VWorkspace@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VWorkspace@RBX@@@boost@@QAE@PAVWorkspace@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z",
+        "size": 171,
+        "target_size": 171,
+        "exact": true,
+        "build": "creators",
+        "verified_targets": {
+          "??$?0PAVWorkspace@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVWorkspace@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x5766c0 (helper body exact at the bound address (not counted))"
+        },
+        "local_eh": [
+          "__ehhandler$??$?0VWorkspace@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VWorkspace@RBX@@@boost@@QAE@PAVWorkspace@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z"
+        ]
+      },
+      {
+        "address": "00576bd0",
+        "symbol": "??$?0VGuiRoot@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VGuiRoot@RBX@@@boost@@QAE@PAVGuiRoot@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z",
+        "size": 171,
+        "target_size": 171,
+        "exact": true,
+        "build": "creators",
+        "verified_targets": {
+          "??$?0PAVGuiRoot@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVGuiRoot@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x576750 (helper body exact at the bound address (not counted))"
+        },
+        "local_eh": [
+          "__ehhandler$??$?0VGuiRoot@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VGuiRoot@RBX@@@boost@@QAE@PAVGuiRoot@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z"
+        ]
+      },
+      {
+        "address": "00576d10",
+        "symbol": "??$?0VLocalBackpack@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VLocalBackpack@RBX@@@boost@@QAE@PAVLocalBackpack@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z",
+        "size": 171,
+        "target_size": 171,
+        "exact": true,
+        "build": "creators",
+        "verified_targets": {
+          "??$?0PAVLocalBackpack@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVLocalBackpack@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x576810 (helper body exact at the bound address (not counted))"
+        },
+        "local_eh": [
+          "__ehhandler$??$?0VLocalBackpack@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VLocalBackpack@RBX@@@boost@@QAE@PAVLocalBackpack@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z"
+        ]
+      },
+      {
+        "address": "00576ff0",
+        "symbol": "??$create@VWorkspace@RBX@@PAVDataModel@2@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VWorkspace@RBX@@@boost@@PAVDataModel@1@@Z",
+        "size": 151,
+        "target_size": 151,
+        "exact": true,
+        "build": "creators",
+        "verified_targets": {
+          "__imp__malloc": "0x8028b0 (msvcr90.dll!malloc)",
+          "??0Workspace@RBX@@QAE@PAVIDataState@1@@Z": "0x5a4d90 (external (evidence name))",
+          "??$?0VWorkspace@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VWorkspace@RBX@@@boost@@QAE@PAVWorkspace@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z": "0x576b20 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$??$create@VWorkspace@RBX@@PAVDataModel@2@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VWorkspace@RBX@@@boost@@PAVDataModel@1@@Z"
+        ]
+      },
+      {
+        "address": "00577090",
+        "symbol": "??$create@VGuiRoot@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VGuiRoot@RBX@@@boost@@XZ",
+        "size": 120,
+        "target_size": 120,
+        "exact": true,
+        "build": "creators",
+        "verified_targets": {
+          "__imp__malloc": "0x8028b0 (msvcr90.dll!malloc)",
+          "??0GuiRoot@RBX@@QAE@XZ": "0x573b10 (external (identity: 0x573b10: vptr stores of .?AVGuiRoot@RBX@@ vtables; called by create<GuiRoot> 0x577090 (malloc 0x144)))",
+          "??$?0VGuiRoot@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VGuiRoot@RBX@@@boost@@QAE@PAVGuiRoot@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z": "0x576bd0 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$??$create@VGuiRoot@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VGuiRoot@RBX@@@boost@@XZ"
+        ]
+      },
+      {
+        "address": "005771b0",
+        "symbol": "??$create@VLocalBackpack@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VLocalBackpack@RBX@@@boost@@XZ",
+        "size": 120,
+        "target_size": 120,
+        "exact": true,
+        "build": "creators",
+        "verified_targets": {
+          "__imp__malloc": "0x8028b0 (msvcr90.dll!malloc)",
+          "??0LocalBackpack@RBX@@QAE@XZ": "0x5fceb0 (external (evidence name))",
+          "??$?0VLocalBackpack@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@?$shared_ptr@VLocalBackpack@RBX@@@boost@@QAE@PAVLocalBackpack@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@3@@Z": "0x576d10 (own row)"
+        },
+        "local_eh": [
+          "__ehhandler$??$create@VLocalBackpack@RBX@@@?$Creatable@VInstance@RBX@@@RBX@@SA?AV?$shared_ptr@VLocalBackpack@RBX@@@boost@@XZ"
+        ]
+      }
+    ],
+    "notifiers": [
+      {
+        "address": "00576450",
+        "symbol": "?raise@?$Notifier@VWorkspace@RBX@@VDrawChanged@2@@RBX@@IBEXVDrawChanged@2@PAV?$Listener@VWorkspace@RBX@@VDrawChanged@2@@2@@Z",
+        "size": 185,
+        "target_size": 185,
+        "exact": true,
+        "build": "notifiers",
+        "verified_targets": {
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "0x802458 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z)",
+          "?singleton@StandardOut@RBX@@SA?AV?$shared_ptr@VStandardOut@RBX@@@boost@@XZ": "0x569620 (external (evidence name))",
+          "??_C@_0CA@IECMHPBD@Exception?5caught?5in?5onEvent?4?5?$CFs?$AA@": "0x80b9c4 (own static (bound by consistency))",
+          "?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ": "0x5693a0 (external (evidence name))",
+          "??1?$shared_ptr@VStandardOut@RBX@@@boost@@QAE@XZ": "0x600660 (row counted by physics-find-trial.json (compiled body exact at the bound address))",
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)"
+        },
+        "local_eh": [
+          "__ehhandler$?raise@?$Notifier@VWorkspace@RBX@@VDrawChanged@2@@RBX@@IBEXVDrawChanged@2@PAV?$Listener@VWorkspace@RBX@@VDrawChanged@2@@2@@Z",
+          "$LN11"
+        ]
+      },
+      {
+        "address": "00576940",
+        "symbol": "?raise@?$Notifier@VWorkspace@RBX@@VDrawChanged@2@@RBX@@IBEXVDrawChanged@2@@Z",
+        "size": 129,
+        "target_size": 129,
+        "exact": true,
+        "build": "notifiers",
+        "verified_targets": {
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "?raise@?$Notifier@VWorkspace@RBX@@VDrawChanged@2@@RBX@@IBEXVDrawChanged@2@PAV?$Listener@VWorkspace@RBX@@VDrawChanged@2@@2@@Z": "0x576450 (own row)"
+        },
+        "local_eh": []
+      }
+    ],
+    "lock": [
+      {
+        "address": "00576f00",
+        "symbol": "?doLock@Lock@DataModel@RBX@@AAEXPBV23@@Z",
+        "size": 128,
+        "target_size": 128,
+        "exact": true,
+        "build": "lock",
+        "verified_targets": {
+          "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0 (row counted by roblox-report-view-working.json (compiled body exact at the bound address))",
+          "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+          "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090 (external (identity: 0x563090: boost 1.34.1 recursive_mutex::do_lock; calls EnterCriticalSection / WaitForSingleObject and releases recursive acquisitions through LeaveCriticalSection / ReleaseMutex))"
+        },
+        "local_eh": [
+          "__ehhandler$?doLock@Lock@DataModel@RBX@@AAEXPBV23@@Z"
+        ]
+      },
+      {
+        "address": "005773c0",
+        "symbol": "??1Lock@DataModel@RBX@@QAE@XZ",
+        "size": 145,
+        "target_size": 145,
+        "exact": true,
+        "build": "lock",
+        "verified_targets": {
+          "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x5630e0 (external (identity: 0x5630e0: boost 1.34.1 recursive_mutex::do_unlock (LeaveCriticalSection / ReleaseMutex through the IAT); record_native_app_leaves2008_dhtml.py and record_native_app_leaves2008_services.py bind the same address))",
+          "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+        },
+        "local_eh": [
+          "__ehhandler$??1Lock@DataModel@RBX@@QAE@XZ"
+        ]
+      }
+    ],
+    "textdisplay": [
+      {
+        "address": "0x5744a0 counted by draft-publication-4874654eaaa04306a15bd77c5ff398b2.json",
+        "symbol": "??0TextDisplay@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z",
+        "size": 203,
+        "target_size": 203,
+        "exact": false,
+        "build": "textdisplay",
+        "verified_targets": {
+          "??0GuiItem@RBX@@QAE@XZ": "0x5739d0 (external (evidence name))",
+          "??_7TextDisplay@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x82fce4 (vtable RTTI .?AVTextDisplay@RBX@@ offset 0x0)",
+          "??_7TextDisplay@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x82fcd4 (vtable RTTI .?AVTextDisplay@RBX@@ offset 0x10)",
+          "??_7TextDisplay@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x82fccc (vtable RTTI .?AVTextDisplay@RBX@@ offset 0x14)",
+          "??_7TextDisplay@RBX@@6BDebugable@1@@": "0x82fcc4 (vtable RTTI .?AVTextDisplay@RBX@@ offset 0x20)",
+          "??_7TextDisplay@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x82fcb4 (vtable RTTI .?AVTextDisplay@RBX@@ offset 0x24)",
+          "??_7TextDisplay@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x82fca4 (vtable RTTI .?AVTextDisplay@RBX@@ offset 0x44)",
+          "??_7TextDisplay@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x82fc94 (vtable RTTI .?AVTextDisplay@RBX@@ offset 0x64)",
+          "??_7TextDisplay@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x82fc84 (vtable RTTI .?AVTextDisplay@RBX@@ offset 0x84)",
+          "??_7TextDisplay@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x82fc74 (vtable RTTI .?AVTextDisplay@RBX@@ offset 0xa4)",
+          "??_7TextDisplay@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x82fc64 (vtable RTTI .?AVTextDisplay@RBX@@ offset 0xc4)",
+          "??_7TextDisplay@RBX@@6B@": "0x82fc5c (vtable RTTI .?AVTextDisplay@RBX@@ offset 0x130)",
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802460 (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+          "?init@TextDisplay@RBX@@AAEXXZ": "0x5735e0 (external (identity: 0x5735e0: only caller the TextDisplay constructor 0x5744a0 (after the vptr stores); stores fontSize +0x160 = 18, the colours +0x164 / +0x174 and align +0x184))",
+          "?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z": "0x55af90 (external (evidence name))",
+          "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z": "0x80240c (msvcp90.dll!??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@ABV01@@Z)"
+        },
+        "local_eh": [
+          "__ehhandler$??0TextDisplay@RBX@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z"
+        ],
+        "counted_elsewhere": true
+      },
+      {
+        "address": "0x574570 counted by draft-text-display-font-independent.json",
+        "symbol": "?getFontSize@TextDisplay@RBX@@MBEHXZ",
+        "size": 7,
+        "target_size": 7,
+        "exact": false,
+        "build": "textdisplay",
+        "verified_targets": {},
+        "local_eh": [],
+        "counted_elsewhere": true
+      },
+      {
+        "address": "0x574580 counted by draft-publication-6a91a406d2554237a6db4ce177e6d299.json",
+        "symbol": "?getLabel@TextDisplay@RBX@@MBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+        "size": 36,
+        "target_size": 36,
+        "exact": false,
+        "build": "textdisplay",
+        "verified_targets": {
+          "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)"
+        },
+        "local_eh": [],
+        "counted_elsewhere": true
+      },
+      {
+        "address": "005745b0",
+        "symbol": "??_ETextDisplay@RBX@@WIE@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "build": "textdisplay",
+        "verified_targets": {
+          "??_ETextDisplay@RBX@@UAEPAXI@Z": "0x574680 (alias of own row ??_GTextDisplay@RBX@@UAEPAXI@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005745c0",
+        "symbol": "??_ETextDisplay@RBX@@WKE@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "build": "textdisplay",
+        "verified_targets": {
+          "??_ETextDisplay@RBX@@UAEPAXI@Z": "0x574680 (alias of own row ??_GTextDisplay@RBX@@UAEPAXI@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005745d0",
+        "symbol": "??_ETextDisplay@RBX@@WME@AEPAXI@Z",
+        "size": 11,
+        "target_size": 11,
+        "exact": true,
+        "build": "textdisplay",
+        "verified_targets": {
+          "??_ETextDisplay@RBX@@UAEPAXI@Z": "0x574680 (alias of own row ??_GTextDisplay@RBX@@UAEPAXI@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005745e0",
+        "symbol": "??_ETextDisplay@RBX@@WBA@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "build": "textdisplay",
+        "verified_targets": {
+          "??_ETextDisplay@RBX@@UAEPAXI@Z": "0x574680 (alias of own row ??_GTextDisplay@RBX@@UAEPAXI@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "005745f0",
+        "symbol": "??_ETextDisplay@RBX@@WBE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "build": "textdisplay",
+        "verified_targets": {
+          "??_ETextDisplay@RBX@@UAEPAXI@Z": "0x574680 (alias of own row ??_GTextDisplay@RBX@@UAEPAXI@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00574600",
+        "symbol": "??_ETextDisplay@RBX@@WCE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "build": "textdisplay",
+        "verified_targets": {
+          "??_ETextDisplay@RBX@@UAEPAXI@Z": "0x574680 (alias of own row ??_GTextDisplay@RBX@@UAEPAXI@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00574610",
+        "symbol": "??_ETextDisplay@RBX@@WEE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "build": "textdisplay",
+        "verified_targets": {
+          "??_ETextDisplay@RBX@@UAEPAXI@Z": "0x574680 (alias of own row ??_GTextDisplay@RBX@@UAEPAXI@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00574620",
+        "symbol": "??_ETextDisplay@RBX@@WGE@AEPAXI@Z",
+        "size": 8,
+        "target_size": 8,
+        "exact": true,
+        "build": "textdisplay",
+        "verified_targets": {
+          "??_ETextDisplay@RBX@@UAEPAXI@Z": "0x574680 (alias of own row ??_GTextDisplay@RBX@@UAEPAXI@Z)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00574630",
+        "symbol": "??1TextDisplay@RBX@@UAE@XZ",
+        "size": 80,
+        "target_size": 80,
+        "exact": true,
+        "build": "textdisplay",
+        "verified_targets": {
+          "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "0x802468 (msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ)",
+          "??1GuiItem@RBX@@UAE@XZ": "0x411540 (helper body exact at the bound address (not counted))"
+        },
+        "local_eh": [
+          "__ehhandler$??1TextDisplay@RBX@@UAE@XZ"
+        ]
+      },
+      {
+        "address": "00574680",
+        "symbol": "??_GTextDisplay@RBX@@UAEPAXI@Z",
+        "size": 31,
+        "target_size": 31,
+        "exact": true,
+        "build": "textdisplay",
+        "verified_targets": {
+          "??1TextDisplay@RBX@@UAE@XZ": "0x574630 (own row)",
+          "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+        },
+        "local_eh": []
+      }
+    ],
+    "guiitem": [
+      {
+        "address": "005746a0",
+        "symbol": "?onDescendentRemoving@GuiItem@RBX@@EAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+        "size": 57,
+        "target_size": 57,
+        "exact": true,
+        "build": "guiitem",
+        "verified_targets": {
+          "?reset@?$shared_ptr@VGuiItem@RBX@@@boost@@QAEXXZ": "0x456e80 (helper body exact at the bound address (not counted))",
+          "?onDescendentRemoving@Instance@RBX@@UAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z": "0x55ae90 (external (evidence name ?onDescendentRemoving@Instance@RBX@@MAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z; access letter differs))"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "00574980",
+        "symbol": "?processNonFocus@GuiItem@RBX@@AAE?AVGuiResponse@2@ABVGuiEvent@2@@Z",
+        "size": 393,
+        "target_size": 393,
+        "exact": true,
+        "build": "guiitem",
+        "verified_targets": {
+          "?numChildren@Instance@RBX@@QBEIXZ": "0x48ae20 (helper body exact at the bound address (not counted))",
+          "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+          "??_R0?AVGuiItem@RBX@@@8": "0x92b8d8 (RTTI .?AVGuiItem@RBX@@)",
+          "??_R0?AVInstance@RBX@@@8": "0x92907c (RTTI .?AVInstance@RBX@@)",
+          "___RTDynamicCast": "0x6a17c6 (msvcr90.dll!__RTDynamicCast)",
+          "?reset@?$shared_ptr@VGuiItem@RBX@@@boost@@QAEXXZ": "0x456e80 (helper body exact at the bound address (not counted))",
+          "??$shared_from@VGuiItem@RBX@@@RBX@@YA?AV?$shared_ptr@VGuiItem@RBX@@@boost@@PAVGuiItem@0@@Z": "0x618a40 (row counted by misc-leaves-working.json (compiled body exact at the bound address))",
+          "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z": "0x4025b0 (row counted by roblox-report-view-working.json (compiled body exact at the bound address))"
+        },
+        "local_eh": [
+          "__ehhandler$?processNonFocus@GuiItem@RBX@@AAE?AVGuiResponse@2@ABVGuiEvent@2@@Z"
+        ]
+      },
+      {
+        "address": "00574b10",
+        "symbol": "?process@GuiItem@RBX@@UAE?AVGuiResponse@2@ABVGuiEvent@2@@Z",
+        "size": 223,
+        "target_size": 223,
+        "exact": true,
+        "build": "guiitem",
+        "verified_targets": {
+          "?processNonFocus@GuiItem@RBX@@AAE?AVGuiResponse@2@ABVGuiEvent@2@@Z": "0x574980 (own row)",
+          "?reset@?$shared_ptr@VGuiItem@RBX@@@boost@@QAEXXZ": "0x456e80 (helper body exact at the bound address (not counted))"
+        },
+        "local_eh": []
+      }
+    ],
+    "timing": [
+      {
+        "address": "005757d0",
+        "symbol": "?getGameTime@DataModel@RBX@@QBENXZ",
+        "size": 13,
+        "target_size": 13,
+        "exact": true,
+        "build": "timing",
+        "verified_targets": {},
+        "local_eh": []
+      },
+      {
+        "address": "005757e0",
+        "symbol": "?getFrameRate@DataModel@RBX@@QBENXZ",
+        "size": 13,
+        "target_size": 13,
+        "exact": true,
+        "build": "timing",
+        "verified_targets": {},
+        "local_eh": []
+      }
+    ],
+    "duty": [
+      {
+        "address": "005757f0",
+        "symbol": "?getDutyCycle@DataModel@RBX@@QBENXZ",
+        "size": 35,
+        "target_size": 35,
+        "exact": true,
+        "build": "duty",
+        "verified_targets": {},
+        "local_eh": []
+      }
+    ]
+  },
+  "identity_bindings": {
+    "??0GuiRoot@RBX@@QAE@XZ": "0x573b10: vptr stores of .?AVGuiRoot@RBX@@ vtables; called by create<GuiRoot> 0x577090 (malloc 0x144)",
+    "GuiRoot rows 0x576bd0 / 0x577090": "create<GuiRoot> 0x577090 calls GuiRoot() 0x573b10 and shared_ptr<GuiRoot> 0x576bd0; 0x576bd0 calls shared_count 0x576750 (creatable-shared-count: sp_counted_impl_pd<GuiRoot*> vtable 0x82fde8)",
+    "doGetClassIndex / callDoGetClassIndex<LocalBackpack> 0x575630 / 0x576800": "find<LocalBackpack> 0x578530 pushes 0x576800 (call_once) and calls 0x575630; 0x576800 is jmp 0x575630",
+    "?newIndex@ServiceProvider@RBX@@SAIXZ": "0x572690: InterlockedIncrement on the index counter (app-unit570 map: ServiceProvider::newIndex shape); the only call of every doGetClassIndex<C> (e.g. 0x575630 here)",
+    "?init@TextDisplay@RBX@@AAEXXZ": "0x5735e0: only caller the TextDisplay constructor 0x5744a0 (after the vptr stores); stores fontSize +0x160 = 18, the colours +0x164 / +0x174 and align +0x184",
+    "?do_unlock@recursive_mutex@boost@@AAEXXZ": "0x5630e0: boost 1.34.1 recursive_mutex::do_unlock (LeaveCriticalSection / ReleaseMutex through the IAT); record_native_app_leaves2008_dhtml.py and record_native_app_leaves2008_services.py bind the same address",
+    "?do_lock@recursive_mutex@boost@@AAEXXZ": "0x563090: boost 1.34.1 recursive_mutex::do_lock; calls EnterCriticalSection / WaitForSingleObject and releases recursive acquisitions through LeaveCriticalSection / ReleaseMutex",
+    "DataModel timing rows": "datamodel-timing-working.json records getGameTime / getFrameRate / getDutyCycle at 0x5757d0 / 0x5757e0 / 0x5757f0 (methods list, no exact flag)"
+  },
+  "textdisplay_vtables_current_headers": {
+    "??_7TextDisplay@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "0x82fcd4",
+      "subobject_offset": "0x10",
+      "slots": 2,
+      "checked_bound_slots": [
+        "0 ??_ETextDisplay@RBX@@WBA@AEPAXI@Z = 0x5745e0",
+        "1 ?getClassName@GuiItem@RBX@@EBEABVName@2@XZ = 0x409df0 (exact helper body)"
+      ]
+    },
+    "??_7TextDisplay@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "0x82fccc",
+      "subobject_offset": "0x14",
+      "slots": 1,
+      "checked_bound_slots": [
+        "0 ??_ETextDisplay@RBX@@WBE@AEPAXI@Z = 0x5745f0"
+      ]
+    },
+    "??_7TextDisplay@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "0x82fce4",
+      "subobject_offset": "0x0",
+      "slots": 26,
+      "checked_bound_slots": [
+        "0 ?onGuidChanged@?$GuidItem@VInstance@RBX@@@RBX@@MAEXXZ = 0x47d410 (exact helper body)",
+        "1 ?setName@Instance@RBX@@UAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator = 0x55af90",
+        "2 ?askAddChild@GuiItem@RBX@@EBE_NPBVInstance@2@@Z = 0x4117c0 (exact helper body)",
+        "6 ?onDescendentRemoving@GuiItem@RBX@@EAEXABV?$shared_ptr@VInstance@RBX@@@boost@@@Z = 0x5746a0",
+        "16 ?onLoseFocus@GuiItem@RBX@@MAEXXZ = 0x47d410 (exact helper body)",
+        "17 ?canLoseFocus@GuiItem@RBX@@MAE_NXZ = 0x60a2f0 (exact helper body)",
+        "18 ?getPosition@GuiItem@RBX@@MBE?AVVector2@G3D@@XZ = 0x4117f0 (exact helper body)",
+        "19 ?getChildPosition@GuiItem@RBX@@MBE?AVVector2@G3D@@PBV12@@Z = 0x411810 (exact helper body)",
+        "20 ?getFontSize@TextDisplay@RBX@@MBEHXZ = 0x574570",
+        "21 ?isVisible@GuiItem@RBX@@MBE_NXZ = 0x565950 (exact helper body)",
+        "22 ?getTitle@GuiItem@RBX@@MAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@ = 0x411840 (exact helper body)",
+        "23 ?getSize@GuiItem@RBX@@UBE?AVVector2@G3D@@XZ = 0x411870 (exact helper body)",
+        "25 ?getLabel@TextDisplay@RBX@@MBE?AV?$basic_string@DU?$char_traits@D@std@@V?$alloca = 0x574580"
+      ]
+    },
+    "??_7TextDisplay@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "0x82fc74",
+      "subobject_offset": "0xa4",
+      "slots": 3,
+      "checked_bound_slots": [
+        "0 ??_ETextDisplay@RBX@@WKE@AEPAXI@Z = 0x5745c0",
+        "1 ?onAddListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Liste = 0x70bdf0 (exact helper body)",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@UAncestorChanged@2@@RBX@@MBEXPAV?$Li = 0x70bdf0 (exact helper body)"
+      ]
+    },
+    "??_7TextDisplay@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "0x82fcb4",
+      "subobject_offset": "0x24",
+      "slots": 3,
+      "checked_bound_slots": [
+        "0 ??_ETextDisplay@RBX@@WCE@AEPAXI@Z = 0x574600",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@UChildAdded@2@@RBX@@MBEXPAV?$Listene = 0x70bdf0 (exact helper body)"
+      ]
+    },
+    "??_7TextDisplay@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "0x82fca4",
+      "subobject_offset": "0x44",
+      "slots": 3,
+      "checked_bound_slots": [
+        "0 ??_ETextDisplay@RBX@@WEE@AEPAXI@Z = 0x574610",
+        "1 ?onAddListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Listener = 0x70bdf0 (exact helper body)",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@UChildRemoved@2@@RBX@@MBEXPAV?$Liste = 0x70bdf0 (exact helper body)"
+      ]
+    },
+    "??_7TextDisplay@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "0x82fc94",
+      "subobject_offset": "0x64",
+      "slots": 3,
+      "checked_bound_slots": [
+        "0 ??_ETextDisplay@RBX@@WGE@AEPAXI@Z = 0x574620",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantAdded@2@@RBX@@MBEXPAV?$Li = 0x70bdf0 (exact helper body)"
+      ]
+    },
+    "??_7TextDisplay@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "0x82fc84",
+      "subobject_offset": "0x84",
+      "slots": 3,
+      "checked_bound_slots": [
+        "0 ??_ETextDisplay@RBX@@WIE@AEPAXI@Z = 0x5745b0",
+        "1 ?onAddListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV?$Li = 0x70bdf0 (exact helper body)",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@RBX@@MBEXPAV? = 0x70bdf0 (exact helper body)"
+      ]
+    },
+    "??_7TextDisplay@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "0x82fc64",
+      "subobject_offset": "0xc4",
+      "slots": 3,
+      "checked_bound_slots": [
+        "0 ??_ETextDisplay@RBX@@WME@AEPAXI@Z = 0x5745d0",
+        "1 ?onAddListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Liste = 0x70bdf0 (exact helper body)",
+        "2 ?onRemoveListener@?$Notifier@VInstance@RBX@@VPropertyChanged@2@@RBX@@MBEXPAV?$Li = 0x70bdf0 (exact helper body)"
+      ]
+    },
+    "??_7TextDisplay@RBX@@6B@": {
+      "address": "0x82fc5c",
+      "subobject_offset": "0x130",
+      "slots": 1,
+      "checked_bound_slots": [
+        "0 ?process@GuiItem@RBX@@UAE?AVGuiResponse@2@ABVGuiEvent@2@@Z = 0x574b10"
+      ]
+    },
+    "??_7TextDisplay@RBX@@6BDebugable@1@@": {
+      "address": "0x82fcc4",
+      "subobject_offset": "0x20",
+      "slots": 1,
+      "checked_bound_slots": []
+    }
+  },
+  "split_extent_bodies": {},
+  "helper_bodies_not_counted": {
+    "??$?0PAVWorkspace@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVWorkspace@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x5766c0",
+    "??$?0PAVGuiRoot@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVGuiRoot@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x576750",
+    "??$?0PAVLocalBackpack@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@1@@shared_count@detail@boost@@QAE@PAVLocalBackpack@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z": "0x576810",
+    "??1GuiItem@RBX@@UAE@XZ": "0x411540",
+    "?reset@?$shared_ptr@VGuiItem@RBX@@@boost@@QAEXXZ": "0x456e80",
+    "?numChildren@Instance@RBX@@QBEIXZ": "0x48ae20"
+  },
+  "not_exact_bounds": {},
+  "rejected": {
+    "shared_ptr<DataModel>(DataModel*, Deleter) 0x576a70 by explicit constructor instantiation": "`template shared_ptr<DataModel>::shared_ptr(DataModel*, Deleter);` and the `<DataModel, Deleter>` / `<>` spellings do not compile (C2794 sp_enable_if_auto_ptr / C2977 / C2976 with boost 1.34.1 under VS2008)."
+  },
+  "proposals": {
+    "v8tree/Service.h (owner of the native ServiceProvider declaration; not edited)": "define `class Closing {};` (currently only forward-declared): Notifier<ServiceProvider, Closing>::raise(Closing) 0x5768b0 passes it by value as one byte (0x57b906 mov byte ptr [esp+0x38], bl; push) and the listener raise 0x576390 is the same 62 B + funclet shape as 0x576450. With it, 0x5768b0 becomes a candidate (not built here).",
+    "v8datamodel/DataModel.h (core owner; not edited)": "declare `DataModel();` (0x57b9f0, evidence name ??0DataModel@RBX@@QAE@XZ; app-unit578 proposal) so create<DataModel> 0x57c080 instantiates shared_ptr<DataModel> 0x576a70; declare `void setUiMessage(std::string);` (0x574f10, evidence name ?setUiMessage@DataModel@RBX@@QAEXV?$basic_string...@@Z, assigns uiMessage +0x234), `void close();` (0x575270), `virtual std::string evaluate(const std::string&) const;` (0x575d90, Evaluator override), `virtual void onChildAdded(Instance*);` (0x575750, MAE) and `virtual void onEvent(const RunService*, RunTransition);` (0x575840, MAE), all evidence names.",
+    "gui/Gui.h (gui owner; not edited), FYI": "as widget-family records: GuiItem::getMyRect2D 0x573960 is out of line (blocks TopMenuBar::render2d 0x574050), and util/Rect.h pointInRect(Vector2int16) 0x573130 is out of line (blocks TopMenuBar::process 0x574bf0)."
+  },
+  "exact_function_rows": [
+    "005745b0",
+    "005745c0",
+    "005745d0",
+    "005745e0",
+    "005745f0",
+    "00574600",
+    "00574610",
+    "00574620",
+    "00574630",
+    "00574680",
+    "005746a0",
+    "00574980",
+    "00574b10",
+    "00575630",
+    "005757d0",
+    "005757e0",
+    "005757f0",
+    "00576450",
+    "00576800",
+    "00576940",
+    "00576b20",
+    "00576bd0",
+    "00576d10",
+    "00576f00",
+    "00576ff0",
+    "00577090",
+    "005771b0",
+    "005773c0"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}

@@ -1,0 +1,67 @@
+{
+  "scope": "CSelectionTreeCtrl::processSelectionQueue 00426900 (371 B original) recovery trial; class family CSelectionTreeCtrl; 2008-06 native recovery.",
+  "baseline_commit": "unknown",
+  "package_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "source_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "native_workflow_version": 53,
+  "lease": "CSelectionTreeCtrl-family (colin)",
+  "draft_session": "3711c4d9b9f44792890df395b5b73e46",
+  "target": {
+    "addr": "00426900",
+    "symbol": "?processSelectionQueue@CSelectionTreeCtrl@@QAEXXZ",
+    "size": 371,
+    "unit": "CSelectionTreeCtrl",
+    "callers": ["00426a80"],
+    "calls": ["00424130", "00426780", "00563090", "005630e0"],
+    "import": "MSVCR90.dll!_invalid_parameter_noinfo",
+    "this_reads": [228],
+    "shape": "lock member +0xc4 (boost recursive_mutex scoped_lock 00563090/005630e0); selectionQueue set at +0xe4 (VS9 _Tree: head +0x18, size +0x1c); up to 10 iterations (`cmp eax, 0xa; jl`); copy the first element (node +0xc/+0x10) into a boost::shared_ptr; std::set::erase(iterator) 00424130 (3 stack dwords: 8-byte iterator by value {_Mycont=[set+0], _Ptr=leftmost} + sret); unlock; findNode(this, const shared_ptr&) 00426780; release the shared_ptr at iteration end; early return on empty set."
+  },
+  "candidates": [
+    {
+      "name": "v1-packaged",
+      "form": "for (int i=0;i<10;++i) { shared_ptr instance; { scoped_lock; iterator it = begin(); if (it==end()) return; instance = *it; erase(it); } findNode(instance); }",
+      "size": 503,
+      "verdict": "not byte-exact: MSVC emits the compare-form shared_count::operator= (tmp != pi_) plus the old-value release path, and the empty-path destructor; original has the folded pure copy (test/addref/pn-store) and no empty-path destructor."
+    },
+    {
+      "name": "explicit-unlock",
+      "form": "v1 + lock.unlock() before the block end",
+      "size": 503,
+      "verdict": "identical codegen to v1; explicit unlock is canonicalized away."
+    },
+    {
+      "name": "lock-first",
+      "form": "scoped_lock declared before the iterator/instance",
+      "size": 516,
+      "verdict": "worse: loop rotation padding and different try-level order."
+    },
+    {
+      "name": "iterator-loop-top + copy-ctor + explicit unlock",
+      "form": "for (...) { std::set<...>::iterator it; { scoped_lock; it = begin(); if (it==end()) return; shared_ptr instance(*it); erase(it); lock.unlock(); findNode(instance); } }",
+      "size": 380,
+      "verdict": "best candidate: pure copy (px/test/addref/pn), no empty-path destructor, findNode after the explicit unlock, release after findNode. Residual deltas vs 00426900: original zeroes 8 bytes at loop top (xor ebp,ebp; mov [esp+0x18],ebp; mov [esp+0x1c],ebp) which MSVC SROA'd away here; original keeps &mutex spilled at [esp+0x20] (ours caches it in ebx); original stores the try-level byte 1 after begin() (ours stores 0); loop-entry jump alignment differs."
+    },
+    {
+      "name": "assign-after-begin",
+      "form": "scoped_lock + begin() + empty check first, then shared_ptr instance; instance = *it; erase; unlock; findNode",
+      "size": 461,
+      "verdict": "compare still emitted: MSVC reloads the old shared_count from the stack slot across the _invalid_parameter_noinfo call sites and does not value-number it as 0."
+    },
+    {
+      "name": "iterator-hoisted",
+      "form": "iterator declared at function scope; v1 body otherwise",
+      "size": 503,
+      "verdict": "no allocation change."
+    }
+  ],
+  "best_candidate_size": 380,
+  "status": "parked-semantic-near-miss",
+  "missing_proof": "byte-exact object for 00426900. The remaining delta is MSVC 2008 register allocation/scheduling (loop-top zero of the shared_ptr/iterator slots, the spilled &mutex, the try-level byte, jump alignment). Evidence needed: the original source's exact brace/declaration structure, or an allocation-changing lever that restores the ebp=0 invariant and the [esp+0x18]/[esp+0x1c] loop-top zeroing while keeping the pure copy.",
+  "evidence_files": [
+    "work/2008-06/functions.jsonl (00426900, 00424130, 00426780, 00563090, 005630e0, 00426bf0)",
+    "tools/rbxgs/Client/boost_1_34_1 (shared_ptr/shared_count/scoped_lock semantics used in the analysis)",
+    "tools/vc2008rtm VC/include/set (VS9 set::erase(const _Iterator) by value; checked-iterator _invalid_parameter_noinfo dance)"
+  ],
+  "next": "Revisit with a source form that keeps the old shared_count null-known across the lock call (register-level), or accept the 380 B candidate as an inactive semantic match. Other CSelectionTreeCtrl functions remain byte-exact (26/27 class census unchanged; showContextMenu 00422720 has a separate EnableMenuItem IAT-slot binding blocker 0080208c vs 00802d98)."
+}

@@ -1,0 +1,30 @@
+{
+  "scope": "v8kernel RBX::Connector shared-header repair: add the KernelIndex accessor getKernelIndex() so engine units that include the donor v8kernel/KernelData.h (IndexArray<Connector, &Connector::getKernelIndex>) compile again.",
+  "baseline_commit": "unknown",
+  "package_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "source_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "native_workflow_version": 53,
+  "lease": "v8kernel-Connector-getKernelIndex (colin)",
+  "draft_session": "2c11bacb68ce418c94eade2b82b282ff",
+  "blocker": {
+    "symptom": "rebuild/2008-06/native-classes/PhysicsService.cpp failed to compile (cl exit 2): v8kernel/KernelData.h(20-21) error C2039/C2065 'getKernelIndex' is not a member of 'RBX::Connector', then C2662 on IndexArray::size (consequence of the failed template argument).",
+    "cause": "The workflow-53 package added the recovered native-headers/v8kernel/Connector.h (delegating to App/include/v8kernel/Connector2008.h). That /I entry shadows the donor v8kernel/Connector.h for every engine unit that reaches the donor KernelData.h through the Kernel.h <- IPipelined.h chain, and the recovered class omitted the non-virtual kernelIndex accessor that the donor KernelData.h uses as a template argument.",
+    "units_affected": "Every engine unit including the donor KernelData.h chain (PhysicsService verified; Joint/World/Primitive/Contact-style recorders expected to share the failure)."
+  },
+  "fix": {
+    "file": "rebuild/2008-06/App/include/v8kernel/Connector2008.h",
+    "change": "Add to class RBX::Connector: __declspec(noinline) int& getKernelIndex() {return kernelIndex;} marked // INFERRED: donor declaration.",
+    "evidence": [
+      "donor tools/rbxgs/Client/App/include/v8kernel/Connector.h declares exactly this member (public but commented 'this is meant to be private', noinline)",
+      "donor tools/rbxgs/Client/App/include/v8kernel/KernelData.h forms IndexArray<Connector, &Connector::getKernelIndex> for connectors and connectors2ndPass",
+      "the recovered header comment records KernelIndex with kernelIndex = -1 at +0x4 (ctor evidence 00606170/00606d40), which is the field the accessor returns",
+      "non-virtual accessor: no vtable/ABI change, so previously exact engine units keep their codegen"
+    ]
+  },
+  "verification": {
+    "after": "prove.py rebuild/2008-06/native-classes/PhysicsService.cpp compiles (exit 0) and binds 205 exact functions / 12916 B in the ledger (family prove-PhysicsService); before the fix the same command compiled with cl exit 2 and bound 0.",
+    "remaining_physics_service": "The two PhysicsService::onEvent(const World*, AssemblyPhysicsOn/Off) bodies stay behind NATIVE_PHYSICSSERVICE_PENDING and the pending World.h proposal (AssemblyPhysicsOn/Off struct definitions, PartInstance::fromPrimitive); that is owner integration work. onAdded/onRemoved/~PhysicsService and the template className members compile and match."
+  },
+  "status": "applied; watcher uploading via draft session",
+  "next": "Watch engine recorder families (JointsService, World, Primitive) for previously hidden regressions or new bindings after the shadow resolves; the owner should merge the accessor into the canonical header before promoting engine batches."
+}

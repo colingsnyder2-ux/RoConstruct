@@ -1,7 +1,7 @@
 // >>> native-status (generated) -- do not edit >>>
 // TextDisplay | 2008-06 | draft (no current byte proof)
 // no original address mapped to this file yet | by -
-// <<< native-status | src ff2c85cc | roc native-status --write
+// <<< native-status | src 338e0edf | roc native-status --write
 #include "gui/Gui.h"
 
 namespace RBX
@@ -36,5 +36,14 @@ __declspec(noinline) void TextDisplay::init()
 		fontColor = G3D::Color3::purple();
 		borderColor = G3D::Color4::zero();
 		align = Adorn::XALIGN_LEFT;
+	}
+}
+
+namespace RBX {
+TextDisplay::TextDisplay(const std::string& name, const std::string& text)
+	{
+		init();
+		setName(name);
+		label = text;
 	}
 }

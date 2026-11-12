@@ -1,0 +1,30 @@
+{
+  "scope": "CRobloxTreeCtrlNode::onGetDispInfo 00425320 (292 B original) recovery trial; class family CRobloxTreeCtrl; 2008-06 native recovery.",
+  "baseline_commit": "unknown",
+  "package_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "source_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "native_workflow_version": 53,
+  "lease": "CRobloxTreeCtrl-family (colin)",
+  "draft_session": "e2bd1112bf844bfe8ebefcd97113dd2b",
+  "target": {
+    "addr": "00425320",
+    "symbol": "?onGetDispInfo@CRobloxTreeCtrlNode@@UAEXPAUtagTVDISPINFOA@@@Z",
+    "size": 292,
+    "unit": "CRobloxTreeCtrlNode",
+    "slot": 5,
+    "calls": ["00411b40 (RBX::DataModel::Lock ctor, by-value shared_ptr)", "00425050 (hasChildren)", "005773c0 (RBX::DataModel::Lock dtor)", "IAT 0x802464 (MSVCP90.dll!c_str)", "IAT 0x802848 (MSVCR90.dll!strncpy)"],
+    "shape": "if (info->item.mask & TVIF_TEXT) { RBX::DataModel::Lock lock(tree->getDataModel()); strncpy(info->item.pszText, instance->getName().c_str(), info->item.cchTextMax); } if (info->item.mask & TVIF_CHILDREN) info->item.cChildren = hasChildren(); with an EH catch that strncpy's an empty string from 0x80b716."
+  },
+  "candidate": {
+    "source": "rebuild/2008-06/WindowsClient/src/CRobloxTreeCtrl.cpp (pre-existing draft, unchanged this session)",
+    "form": "try { if (info->item.mask & TVIF_TEXT) { RBX::DataModel::Lock lock(tree->getDataModel()); strncpy(info->item.pszText, instance->getName().c_str(), info->item.cchTextMax); } if (info->item.mask & TVIF_CHILDREN) info->item.cChildren = hasChildren() ? 1 : 0; } catch (...) { strncpy(info->item.pszText, \"\", info->item.cchTextMax); }",
+    "size": 302,
+    "verdict": "semantically correct near-miss. Every instruction matches 00425320 except the string pointer obtain: the original calls MSVCP90.dll!?c_str@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QBEPBDXZ through the IAT (lea ecx,[eax+0x110]; call [IAT]); our compile inlines VS9 _String_val::_Myptr() (cmp [str+0x18],0x10; jb; mov eax,[str+4]; add eax,0x114)."
+  },
+  "analysis": {
+    "dllimport_mechanism": "The exe imports many std::basic_string members from MSVCP90.dll (ctor PBD/copy/default, dtor, c_str at IAT 0x802464, compare, operators), i.e. the original build resolved the _DLL_CPPLIB explicit-instantiation dllimport form in <xstring>. The vendored vc2008rtm cl 15.00.21022 in this workspace inlines _Myptr() for c_str even with /MD (isolated probes: single-function TU /O2 /MD /EHsc and a two-function TU both inline; _DLL_CPPLIB is defined per #pragma message). Free std::string operators (e.g. std::operator< used by exact insertItem 00424c00, IAT 0x8023fc) DO link as imports in our compiles, so the difference is limited to inline members such as c_str.",
+    "other_deltas": "empty-path jump target and stack offsets shift only because of the c_str instruction-size difference (6 vs 11 bytes)."
+  },
+  "missing_proof": "byte-exact object for 00425320. The vendor toolchain in this workspace does not emit the dllimport-class member call for std::string::c_str, so no source form of *.c_str() produces the original IAT call. Options: an overlay that declares the member import (header experiment, must stay inactive until canonical-header compatibility is proven), or accepting the near-miss.",
+  "next": "Keep the packaged draft as the candidate. Continue with other CRobloxTreeCtrlNode methods; revisit only with new evidence about the imported-string flavor or a new toolchain capability."
+}

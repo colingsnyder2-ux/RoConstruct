@@ -1,0 +1,34 @@
+{
+  "task": "RBX::ForceField::askSetParent recovery (native source batch)",
+  "class": "RBX::ForceField",
+  "session": "b67f24f5e99b4006934a62276cfeae63",
+  "lease": "RBX::ForceField-family-glm53b",
+  "package_marker": {"revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6", "source_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6"},
+  "baseline_commit": "unknown",
+  "source": "rebuild/2008-06/App/src/v8datamodel/ForceField.cpp",
+  "runner_run": "work/2008-06/native-check-runs/20261112-031305-21cb33f1",
+  "checks": [
+    {
+      "addr": "0062d090",
+      "status": "exact",
+      "score": 100,
+      "symbol": "?askSetParent@ForceField@RBX@@MBE_NPBVInstance@2@@Z",
+      "target_size": 35,
+      "object_size": 35,
+      "data_errors": [],
+      "call_identity": {
+        "passed": true,
+        "calls": [
+          {"offset": 19, "target": "006a17c6", "kind": "direct", "status": "verified_binding", "symbol": "___RTDynamicCast"}
+        ],
+        "scope": "the dynamic_cast<const Workspace*> import thunk (Workspace RTTI 0x9481b8); == NULL folds to neg/sbb/inc"
+      }
+    }
+  ],
+  "method_recovered": "bool ForceField::askSetParent(const Instance*) const - `return dynamic_cast<const Workspace*>(instance) == NULL;` enabled from the NATIVE_FORCEFIELD_PENDING draft (the v8datamodel/Workspace.h include is now unconditional); isProtected and render3dAdorn remain gated in that unit. Declaration already at App/include/v8datamodel/ForceField.h line 50; no header edit needed. Class moves 1/4 to 2/4.",
+  "obligations_remaining": [
+    "isProtected 0062d3d0 (5-B jmp wrapper to isProtectedRecursive 0062d380) and render3dAdorn 0062d570 remain under NATIVE_FORCEFIELD_PENDING",
+    "linked provider selection, no-loss and P5/P6/runtime gates at owner integration"
+  ],
+  "notes": "Recovered on the first hypothesis; the Workspace RTTI/COMDAT folds with the original 0x9481b8 reference."
+}

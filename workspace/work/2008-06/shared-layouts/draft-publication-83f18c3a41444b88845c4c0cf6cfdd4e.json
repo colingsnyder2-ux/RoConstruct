@@ -1,0 +1,243 @@
+{
+  "scope": "Inactive source publication; no runtime selection or server credit",
+  "base": "a0a2034c45bd2a6b3ac94567dfd5c12889e8625e",
+  "verification": {
+    "native_input_key": "50f03d1907a25791531222458d097e06dd67d38376d0ce72ccab04479ef2b787",
+    "verifier_hashes": {
+      "C:\\Users\\colin\\RoConstruct\\roc\\draft_publish.py": "c8aad2a072aeca8e920d61aa604c57e8edb63624b1d3ca6422a3b252ac5941bb",
+      "C:\\Users\\colin\\RoConstruct\\roc\\draft_native.py": "3c090b213cb79ceb9390277200bf503d3687b9c01d46de07ca2cc39d7f55d6e0",
+      "C:\\Users\\colin\\RoConstruct\\roc\\draft_proof.py": "6efe4157886b36e6246628a22ea0c6115d33859db7e0689ccb1be056b00733b0",
+      "C:\\Users\\colin\\RoConstruct\\work\\native-client\\claude-identity-closure.json": "e0b08ce72e7d001dfdabed99cfe38d8dbe8a269a68a6bf3ffe9ca3b878952dfa"
+    },
+    "sources": {
+      "rebuild/2008-06/native-classes/AppUnit5F0_2008Surface.cpp": {
+        "source_sha256": "6067e7caa8d90a0ca2e472eaa3a15770b0caa8bd98f48e92e3aad3001caefd65",
+        "object_sha256": "c0870bc0103f669d830d3948d19ee2e047275a28bfc7c876d3536ae056002030",
+        "methods": [
+          {
+            "address": "005f13c0",
+            "symbol": "?isControllable@Surface@RBX@@QBE_NXZ",
+            "size": 28,
+            "exact": true,
+            "verified_targets": {
+              "?getInput@Surface@RBX@@QBE?AW4InputType@Controller@2@XZ": "0x5f12a0"
+            },
+            "local_eh": []
+          }
+        ],
+        "inferred_calls": [
+          {
+            "symbol": "?getInput@Surface@RBX@@QBE?AW4InputType@Controller@2@XZ",
+            "address": "005f12a0",
+            "evidence": "exact-caller-relocation",
+            "votes": 0,
+            "inferred": true,
+            "imported_alias": null
+          }
+        ],
+        "compiler": 21022,
+        "flags": [
+          "/nologo",
+          "/c",
+          "/O2",
+          "/Ob2",
+          "/Oy",
+          "/GF",
+          "/GS-",
+          "/EHsc",
+          "/MD",
+          "/D_AFXDLL",
+          "/DNDEBUG",
+          "/D_MBCS",
+          "/DNOMINMAX",
+          "/DBOOST_ALL_NO_LIB",
+          "/DWIN32",
+          "/DNDEBUG",
+          "/D_LIB",
+          "/D_RELEASE",
+          "/D_RELEASEASSERT",
+          "/D_VC80_UPGRADE=0x0710",
+          "/IC:\\Users\\colin\\RoConstruct\\work\\draft-merger\\publications\\83f18c3a41444b88845c4c0cf6cfdd4e\\verification\\exact-tree\\rebuild\\2008-06\\native-headers",
+          "/IC:\\Users\\colin\\RoConstruct\\work\\draft-merger\\publications\\83f18c3a41444b88845c4c0cf6cfdd4e\\verification\\exact-tree\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+          "/D_XTP_STATICLINK",
+          "/D_XTPLIB_NOAUTOLINK",
+          "/IC:\\Users\\colin\\RoConstruct\\work\\draft-merger\\publications\\83f18c3a41444b88845c4c0cf6cfdd4e\\verification\\exact-tree\\tools\\libs\\xtp-11.2.2\\Source"
+        ]
+      }
+    }
+  },
+  "acceptance_receipts": {
+    "rebuild/2008-06/native-classes/AppUnit5F0_2008Surface.cpp": [
+      {
+        "schema": 1,
+        "kind": "reviewed-source-improvement",
+        "inactive": true,
+        "path": "rebuild/2008-06/native-classes/AppUnit5F0_2008Surface.cpp",
+        "candidate_sha256": "0f7774a812ec22318bd2521fb7aa86a93682f56e68c974e5ea80809abf4a4b45",
+        "before_sha256": "e68a2a979718576c6405f17ce6b3e8787180a90827e9c17f11ee5480653c9fd7",
+        "input_key": "3522220d1eb6d6a6223dc674f7ba0404efe5c89afde1ba8a3f8ab3bd7192d373",
+        "client": "2008-06",
+        "verifier_sha256": "5fbde6f7c72b0d5bc5c9c385a6691bffbf6950715087831b9ca2607044ef9628",
+        "before_methods": [
+          "??0Surface@RBX@@QAE@PAVPartInstance@1@W4NormalId@1@@Z"
+        ],
+        "after_methods": [
+          "??0Surface@RBX@@QAE@PAVPartInstance@1@W4NormalId@1@@Z",
+          "?isControllable@Surface@RBX@@QBE_NXZ@005f13c0"
+        ],
+        "checks": {
+          "compile": true,
+          "existing_code_preserved": true,
+          "existing_data_preserved": true,
+          "layout_preserved": true,
+          "provider_review": true,
+          "new_method_bodies": true,
+          "source_review": true,
+          "no_activation": true
+        },
+        "reviewer": "deterministic missing-method/original-instruction source review",
+        "rationale": "Adds absent method bodies measured against original instructions; final acceptance recompiles and checks relevant preservation, data and provider evidence.",
+        "inferences": [
+          "Names may be inferred. Family measurements are proposal evidence; fresh source acceptance checks are required.",
+          "Some direct function names use local corroborated identity evidence; see inferred_calls. No runtime proof claimed."
+        ],
+        "inferred_calls": [
+          {
+            "symbol": "?getInput@Surface@RBX@@QBE?AW4InputType@Controller@2@XZ",
+            "address": "005f12a0",
+            "evidence": "exact-caller-relocation",
+            "votes": 0,
+            "inferred": true,
+            "imported_alias": null
+          }
+        ],
+        "open_questions": [
+          "Class may remain partial. Unselected methods, complete original ABI and executable promotion remain separate.",
+          "Existing related source compile needs separate review: rebuild/2008-06/glue/rbxgs/glue_runtime.cpp",
+          "Existing related source compile needs separate review: rebuild/2008-06/glue/rbxgs/glue_surfaces.cpp",
+          "Existing related source compile needs separate review: rebuild/2008-06/glue/rbxgs/glue_upstream_sync.cpp",
+          "Existing related source compile needs separate review: rebuild/2008-06/native-classes/OgreRbxSceneManager.cpp",
+          "Existing related source compile needs separate review: rebuild/2008-06/native-classes/OgreVisualEngine.cpp",
+          "Existing related source compile needs separate review: rebuild/2008-06/native-classes/PartInstanceGetSurface.cpp",
+          "Existing related source compile needs separate review: rebuild/2008-06/native-classes/PartInstanceLifetime.cpp",
+          "Existing related source compile needs separate review: rebuild/2008-06/native-classes/RenderSceneBase2008.cpp",
+          "Existing related source compile needs separate review: rebuild/2008-06/native-classes/SurfaceFlat.cpp",
+          "Existing related source compile needs separate review: rebuild/2008-06/native-classes/SurfaceVisitors.cpp",
+          "Existing related source compile needs separate review: rebuild/2008-06/native-classes/ViewNewBrickCacheRecovery2008.cpp",
+          "Existing related source compile needs separate review: rebuild/2008-06/native-classes/ViewNewPartChunkRecovery2008.cpp",
+          "Existing related source compile needs separate review: rebuild/2008-06/native-classes/ViewNewPartMesh2008PBB.cpp",
+          "Existing related source compile needs separate review: rebuild/2008-06/native-classes/ViewNewPartSurfaceUpdate2008.cpp",
+          "Existing related source compile needs separate review: rebuild/2008-06/native-classes/ViewNewSurfaceMaterial2008.cpp",
+          "Existing related source compile needs separate review: rebuild/2008-06/native-classes/ViewRbxGfxConstructor2008.cpp"
+        ],
+        "scope": "Reviewed inactive source methods; Partial class/inferred names allowed. No complete original ABI or executable promotion claim.",
+        "compiler_profile": "default",
+        "reference_evidence": [
+          {
+            "address": "005f13c0",
+            "symbol": "?isControllable@Surface@RBX@@QBE_NXZ",
+            "size": 28,
+            "exact": true,
+            "verified_targets": {
+              "?getInput@Surface@RBX@@QBE?AW4InputType@Controller@2@XZ": "0x5f12a0"
+            },
+            "local_eh": []
+          }
+        ],
+        "numeric_literals": [],
+        "layout_preservation": {
+          "state": "preserved-before-layout",
+          "classes": {
+            "added": [],
+            "removed": [],
+            "changed": []
+          },
+          "virtual_tables": {
+            "added": [],
+            "removed": [],
+            "changed": []
+          },
+          "builds": {
+            "baseline": {
+              "exit": 0,
+              "log": "C:\\Users\\colin\\RoConstruct\\work\\draft-merger\\source-improvements\\5916b741915f4b72ae968afc2bcc2773\\layout-baseline\\compiler.log"
+            },
+            "candidate": {
+              "exit": 0,
+              "log": "C:\\Users\\colin\\RoConstruct\\work\\draft-merger\\source-improvements\\5916b741915f4b72ae968afc2bcc2773\\layout-candidate\\compiler.log"
+            }
+          },
+          "classes_before": 3798,
+          "classes_after": 3798,
+          "original_abi_proven": false,
+          "scope": "Compiler layout/virtual declaration preservation only; original offsets, slot identities and dependency ABI remain separate"
+        },
+        "related_providers": [
+          "rebuild/2008-06/native-classes/AppUnit57C_2008ModelInstance.cpp",
+          "rebuild/2008-06/native-classes/ContactUnit2008Contact.cpp",
+          "rebuild/2008-06/native-classes/FlatTool.cpp",
+          "rebuild/2008-06/native-classes/G3DAABox.cpp",
+          "rebuild/2008-06/native-classes/G3DBox.cpp",
+          "rebuild/2008-06/native-classes/G3DCapsule.cpp",
+          "rebuild/2008-06/native-classes/G3DCylinder.cpp",
+          "rebuild/2008-06/native-classes/G3DDDSTexture.cpp",
+          "rebuild/2008-06/native-classes/G3DDXCaps.cpp",
+          "rebuild/2008-06/native-classes/G3DSDLWindow.cpp",
+          "rebuild/2008-06/native-classes/G3DShape.cpp",
+          "rebuild/2008-06/native-classes/G3DSphere.cpp",
+          "rebuild/2008-06/native-classes/ModelSetFrontTool.cpp",
+          "rebuild/2008-06/native-classes/MouseGetDecal.cpp",
+          "rebuild/2008-06/native-classes/MouseGetSurface.cpp",
+          "rebuild/2008-06/native-classes/SurfaceTool.cpp",
+          "rebuild/2008-06/native-classes/SurfaceToolFactories.cpp",
+          "rebuild/2008-06/native-classes/SurfaceToolHoverRender.cpp",
+          "rebuild/2008-06/native-classes/SurfaceToolInteractions.cpp",
+          "rebuild/2008-06/native-classes/SurfaceToolMouseDown.cpp",
+          "rebuild/2008-06/native-classes/SurfaceToolSiblings.cpp",
+          "rebuild/2008-06/native-classes/ToolVerbChecked.cpp",
+          "rebuild/2008-06/native-classes/ToolVerbCheckedSurface.cpp",
+          "rebuild/2008-06/native-classes/ToolVerbFactories.cpp",
+          "rebuild/2008-06/native-classes/ViewNewCylinderMesh.cpp",
+          "rebuild/2008-06/native-classes/ViewNewHeadMesh.cpp",
+          "rebuild/2008-06/native-classes/ViewNewPBBMesh.cpp",
+          "rebuild/2008-06/native-classes/ViewNewQuadVolume.cpp",
+          "rebuild/2008-06/native-classes/ViewNewSphereMesh.cpp",
+          "rebuild/2008-06/native-classes/ViewNewTorsoMesh.cpp",
+          "rebuild/2008-06/native-classes/ViewNewWedgeMesh.cpp",
+          "rebuild/2008-06/native-classes/WorldJointRotate.cpp"
+        ],
+        "native_input_key": "960b099b1ef7495423299d4e44b6514fb5bdefff957f609e4ce8674e6eab169d",
+        "gate_hashes": {
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_source.py": "5fbde6f7c72b0d5bc5c9c385a6691bffbf6950715087831b9ca2607044ef9628",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_native.py": "3c090b213cb79ceb9390277200bf503d3687b9c01d46de07ca2cc39d7f55d6e0",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_family.py": "6c7b46b37ab65770417bae220c1fc8e3cda5f023d4f35d0e4852d58fc9f97286",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_methods.py": "8c9d5a5f8d1f4d8f730d097d784a5fb2ff06102cda4dfc5cf2bb5df6fd527000",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_proof.py": "6efe4157886b36e6246628a22ea0c6115d33859db7e0689ccb1be056b00733b0",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_append.py": "6b395a5509044f28668c4ac06e3cc2eeb545e1a5e85ce0bd02ed4ca6ecc81f0d",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_merger.py": "0185dc516ba980205c69915dd7e3a524863a31622e2200960a12e5e08aa36bee",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_files.py": "e42fa4ac81e73a189caca707cb022fc41bab09f339adb5232070abab99decd7c",
+          "C:\\Users\\colin\\RoConstruct\\roc\\match.py": "7d584aa2f7467785188e056a5a058b4631a497b73c2d119d63d9688d41dbb317",
+          "C:\\Users\\colin\\RoConstruct\\roc\\rebuild.py": "55d5463911eb6e02401d0b129e0e9e504fafc467e84a490e5196424e595711ea",
+          "C:\\Users\\colin\\RoConstruct\\roc\\libs.py": "6d7e03cd8e1df96b50c45ac9670174c0870e7045ba84ec0fd1b1c7db8492c766",
+          "C:\\Users\\colin\\RoConstruct\\roc\\clients.py": "d412b4a8964910ede225013ae694d5b1478c46f3001ae018a4da947a213c03d0",
+          "C:\\Users\\colin\\RoConstruct\\roc\\integration_verify.py": "26bb4c627fda0e1cf3cc571a9e9a84b760e0f8a085dc30d4487d921038f51265",
+          "C:\\Users\\colin\\RoConstruct\\work\\native-client\\native_class_layout.py": "26592adcfca0975974b7565c6a0a23303d233f26126563520d33806df3150845",
+          "C:\\Users\\colin\\RoConstruct\\work\\native-client\\native_vftable_check.py": "d0c98faf83e785cad15139fe2f09b70c6699ab36a2bd2ed179c6727a2bcaeee2",
+          "C:\\Users\\colin\\RoConstruct\\work\\native-client\\native_conversion_queue.py": "eeee7a929454cd95faf77a06f5fe968b33826b57a1ecf2945107ea988b672b46"
+        }
+      }
+    ]
+  }
+}

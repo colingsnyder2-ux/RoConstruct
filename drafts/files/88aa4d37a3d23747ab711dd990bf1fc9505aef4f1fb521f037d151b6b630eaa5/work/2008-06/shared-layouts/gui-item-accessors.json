@@ -1,0 +1,52 @@
+{
+  "task": "RBX::GuiItem accessor batch (native source batch)",
+  "class": "RBX::GuiItem",
+  "session": "0eabd21230ba42c0bdf6e755c77ccdf2",
+  "lease": "RBX::GuiItem-family-glm53b",
+  "package_marker": {"revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6", "source_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6"},
+  "baseline_commit": "unknown",
+  "source": "rebuild/2008-06/App/src/gui/GuiItem.cpp",
+  "runner_run": "work/2008-06/native-check-runs/20261112-042401-d3a19b66",
+  "checks": [
+    {
+      "addr": "005732f0",
+      "status": "exact",
+      "score": 100,
+      "symbol": "?getGuiParent@GuiItem@RBX@@QBEPBV12@XZ",
+      "target_size": 30,
+      "object_size": 30,
+      "data_errors": [],
+      "call_identity": {
+        "passed": true,
+        "calls": [
+          {"offset": 21, "target": "006a17c6", "kind": "direct", "status": "verified_binding", "symbol": "___RTDynamicCast"}
+        ],
+        "scope": "dynamic_cast<const GuiItem*>(getParent()) - Instance::parent at +0x104"
+      }
+    },
+    {
+      "addr": "00573ac0",
+      "status": "exact",
+      "score": 100,
+      "symbol": "?getGuiItem@GuiItem@RBX@@QAEPAV12@H@Z",
+      "target_size": 65,
+      "object_size": 65,
+      "data_errors": [],
+      "call_identity": {
+        "passed": true,
+        "calls": [
+          {"offset": 25, "target": "00802890", "kind": "import", "status": "verified_import", "import": "msvcr90.dll!_invalid_parameter_noinfo"},
+          {"offset": 52, "target": "006a17c6", "kind": "direct", "status": "verified_binding", "symbol": "___RTDynamicCast"}
+        ],
+        "scope": "the _invalid_parameter_noinfo vector security check (children at +0x108, same idiom as Teams getChild) and the dynamic_cast<GuiItem*> thunk"
+      }
+    }
+  ],
+  "methods_recovered": "const GuiItem* GuiItem::getGuiParent() const = dynamic_cast<const GuiItem*>(getParent()); GuiItem* GuiItem::getGuiItem(int index) = dynamic_cast<GuiItem*>(getChild(index)); Both recovered on the first hypothesis with --require-proof passing. Declarations already at App/include/gui/Gui.h lines 105-108; no header edit needed.",
+  "parked": [
+    {"addr": "00573310", "symbol": "?getMyRect@GuiItem@RBX@@IBE?AVRect@2@XZ", "note": "79 vs 100 bytes: the Vector2-sum codegen shape (the original fused getPosition() + getSize() into the Rect ctor with getPosition evaluated first; current headers materialize an extra temp). Two hypotheses spent (fromLowSize; explicit locals). The near-miss body is preserved with a status comment."},
+    {"addr": "00573960", "symbol": "?getMyRect2D@GuiItem@RBX@@IBE?AVRect2D@G3D@@XZ", "note": "owner header question: the original emits getMyRect2D out of line (105 B); the canonical Gui.h declares it inline (return getMyRect().toRect2D()), so no standalone body is produced. Changing the shared header is an owner decision."}
+  ],
+  "obligations_remaining": ["byte exactness of getMyRect once the Rect/Vector2 sum codegen shape is resolved", "getMyRect2D inline-vs-outline canonical-header decision", "linked provider selection, no-loss and P5/P6/runtime gates at owner integration"],
+  "notes": "GuiItem moves from 8/12 toward completion; processNonFocus and the already-exact accessors are unaffected by the added bodies (family census re-verified)."
+}

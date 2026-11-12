@@ -1,0 +1,34 @@
+{
+  "task": "RBX::Explosion::onServiceProvider recovery (native source batch)",
+  "class": "RBX::Explosion",
+  "session": "1103bea9794941a78c4f80efe233e453",
+  "lease": "RBX::Explosion-family-glm53b",
+  "package_marker": {"revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6", "source_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6"},
+  "baseline_commit": "unknown",
+  "source": "rebuild/2008-06/App/src/v8datamodel/Explosion.cpp",
+  "runner_run": "work/2008-06/native-check-runs/20261112-022138-03e93441",
+  "checks": [
+    {
+      "addr": "0062b030",
+      "status": "exact",
+      "score": 100,
+      "symbol": "?onServiceProvider@Explosion@RBX@@EAEXPBVServiceProvider@2@0@Z",
+      "target_size": 95,
+      "object_size": 95,
+      "data_errors": [],
+      "call_identity": {
+        "passed": true,
+        "calls": [
+          {"offset": 26, "target": "00452c80", "kind": "direct", "status": "verified_binding", "symbol": "??$find@VRunService@RBX@@@ServiceProvider@RBX@@QBEPAVRunService@1@XZ"},
+          {"offset": 42, "target": "005e5a80", "kind": "direct", "status": "verified_binding", "symbol": "?removeListener@?$Notifier@VRunService@RBX@@VStepped@2@@RBX@@QBEXPAV?$Listener@VRunService@RBX@@VStepped@2@@2@@Z"},
+          {"offset": 69, "target": "00452c80", "kind": "direct", "status": "verified_binding", "symbol": "??$find@VRunService@RBX@@@ServiceProvider@RBX@@QBEPAVRunService@1@XZ"},
+          {"offset": 85, "target": "004218a0", "kind": "direct", "status": "verified_binding", "symbol": "?addListener@?$Notifier@VRunService@RBX@@VStepped@2@@RBX@@QBEXPAV?$Listener@VRunService@RBX@@VStepped@2@@2@@Z"}
+        ],
+        "scope": "ServiceProvider::find<RunService> and the Notifier<RunService,Stepped> add/removeListener COMDATs (RunService notifier at +0x150); the null-guarded dynamic_cast arguments match the original guards"
+      }
+    }
+  ],
+  "method_recovered": "void Explosion::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider) - Notifier<RunService,Stepped>::disconnect/connect wrappers over ServiceProvider::find<RunService>(provider). Declaration already at App/include/v8datamodel/Explosion.h line 35; no header edit needed. Recovered on the first hypothesis with the wrapper pattern proven on JointsService/PhysicsService.",
+  "obligations_remaining": ["linked provider selection, no-loss and P5/P6/runtime gates at owner integration"],
+  "notes": "render3dAdorn and the private helpers of this class remain unaddressed; the class is not complete (only the constructor and this method are proven)."
+}

@@ -1,0 +1,36 @@
+{
+  "task": "RBX::JointsService::onServiceProvider recovery (native source batch)",
+  "class": "RBX::JointsService",
+  "session": "a576d75e235d45878b81f607484154b5",
+  "lease": "RBX::JointsService-family-glm53b",
+  "package_marker": {"revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6", "source_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6"},
+  "baseline_commit": "unknown",
+  "source": "rebuild/2008-06/App/src/v8datamodel/JointsService.cpp",
+  "runner_run": "work/2008-06/native-check-runs/20261112-014151-c4bc5da1",
+  "checks": [
+    {
+      "addr": "005e5b50",
+      "status": "exact",
+      "score": 100,
+      "symbol": "?onServiceProvider@JointsService@RBX@@EAEXPBVServiceProvider@2@0@Z",
+      "target_size": 156,
+      "object_size": 156,
+      "data_errors": [],
+      "call_identity": {
+        "passed": true,
+        "calls": [
+          {"offset": 28, "target": "005e5a80", "kind": "direct", "status": "verified_binding", "symbol": "?removeListener@?$Notifier@VWorld@RBX@@UAutoJoin@2@@RBX@@QBEXPAV?$Listener@VWorld@RBX@@UAutoJoin@2@@2@@Z"},
+          {"offset": 61, "target": "005e5a80", "kind": "direct", "status": "verified_binding", "symbol": "?removeListener@?$Notifier@VWorld@RBX@@UAutoDestroy@2@@RBX@@QBEXPAV?$Listener@VWorld@RBX@@UAutoDestroy@2@@2@@Z"},
+          {"offset": 84, "target": "00490af0", "kind": "direct", "status": "verified_binding", "symbol": "??$create@VWorkspace@RBX@@@ServiceProvider@RBX@@QBEPAVWorkspace@1@XZ"},
+          {"offset": 122, "target": "004218a0", "kind": "direct", "status": "verified_binding", "symbol": "?addListener@?$Notifier@VWorld@RBX@@UAutoJoin@2@@RBX@@QBEXPAV?$Listener@VWorld@RBX@@UAutoJoin@2@@2@@Z"},
+          {"offset": 147, "target": "004218a0", "kind": "direct", "status": "verified_binding", "symbol": "?addListener@?$Notifier@VWorld@RBX@@UAutoDestroy@2@@RBX@@QBEXPAV?$Listener@VWorld@RBX@@UAutoDestroy@2@@2@@Z"}
+        ],
+        "scope": "Notifier<World,AutoJoin>/Notifier<World,AutoDestroy> addListener/removeListener COMDATs and ServiceProvider::create<Workspace>; dynamic_cast upcast arguments carry the original null guards"
+      }
+    }
+  ],
+  "method_recovered": "void JointsService::onServiceProvider(const ServiceProvider* oldProvider, const ServiceProvider* newProvider) - the two disconnects at the top and the two connects at the end use the Notifier<Class,Event>::connect/disconnect static wrappers (their internal if(notifier) tests supply the per-call null checks); world is then set from ServiceProvider::create<Workspace>(newProvider)->getWorld() ([ws+0x2e4]); oldProvider is unused. Declaration already at App/include/v8datamodel/JointsService.h line 54; no header edit needed.",
+  "history": "Parked 2026-11-12 after two evaluation-order hypotheses; revisited when the Notifier::connect/disconnect wrapper API (util/Events.h lines 125-137, also used by the exact CScriptEditor source) explained both the per-call null tests and the null-guarded dynamic_cast arguments. Class moves 4/5 to 5/5.",
+  "obligations_remaining": ["linked provider selection, no-loss and P5/P6/runtime gates at owner integration"],
+  "notes": "The registry's fold-alias names for 005e5a80/004218a0 (Notifier<ServiceProvider,ServiceAdded>::removeListener / Notifier<Players,SuperSafeChanged>::addListener) are superseded by the proven World notifier instantiations."
+}

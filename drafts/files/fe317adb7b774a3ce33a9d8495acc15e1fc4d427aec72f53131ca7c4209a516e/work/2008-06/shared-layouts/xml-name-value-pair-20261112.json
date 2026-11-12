@@ -1,0 +1,31 @@
+{
+  "scope": "XmlNameValuePair family batch recovery: eleven previously missing methods implemented from the authentic donor reference and verified by the byte-proof binder (family 3 exact/186 B -> 29 exact/2013 B).",
+  "baseline_commit": "unknown",
+  "package_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "source_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "native_workflow_version": 53,
+  "lease": "XmlNameValuePair-family (colin)",
+  "draft_session": "602f7bf0485743569add8167ba5c5c6f",
+  "change": "rebuild/2008-06/native-classes/XmlNameValuePair.cpp: appended the four out-of-line constructors (float, bool, unsigned, ContentId - following the header's inline pattern and the earlier roc_cframe experiment), getValue(RBX::ContentId&), getValue(int&), getValue(unsigned&), getValue(bool&), getValue(float&), getValue(RBX::InstanceHandle&), the isValueType<RBX::ContentId>() and isValueType<std::string>() specializations, toString(XmlWriter*) and replaceHandles(...). Bodies are the tools/rbxgs/Client/App/v8xml/XmlElement.cpp donor reference (marked as such in the file); clearValue already existed in App/src/v8xml/XmlNameValuePairClear.cpp.",
+  "verification": {
+    "before": "3 exact / 186 B (only getValue(std::string&) and the two getValue/isValueEqual candidates in the pre-existing part).",
+    "after": "29 exact / 2013 B.",
+    "now_byte_bound": [
+      "getValue(RBX::ContentId&) - 0057c4f0/0057c550/0057c5b0/0057c610 cluster (86 B group)",
+      "getValue(int&), getValue(unsigned&), getValue(bool&), getValue(float&)",
+      "getValue(RBX::InstanceHandle&) - 0057c6e0 (289 B, per the misc-leaves receipt)",
+      "isValueType<RBX::ContentId>() - 0057c1f0 (10 B) and isValueType<std::string>() - 0057c200 (10 B)",
+      "replaceHandles(...)",
+      "isValueEqual(const RBX::Name*) - 0057c1b0 (58 B, per the misc-leaves receipt)",
+      "clearValue - 0057c2d0 (143 B, misc-leaves/serializer receipts)"
+    ],
+    "unbound": [
+      "the three 25 B constructors (float, bool, unsigned) - cand=[]; their originals are not in the binder's reference set yet",
+      "XmlNameValuePair(const RBX::Name&, RBX::ContentId) - 137 B, cand=[]",
+      "toString(XmlWriter*) - 420 B, cand=[] (the 510 B function 0057c930 in the same cluster is a candidate but sized differently; sprintf-based formatting is the likely difference)"
+    ]
+  },
+  "address_cluster": "The XmlNameValuePair original block is 0057c080..0057c2d0+ (loosely attributed to RBX::VInstance::?$SignalDesc in functions.jsonl): 0057c1b0 isValueEqual(Name*), 0057c1f0/0057c200 isValueType<ContentId>/<string>, 0057c210 isValueEqual(std::string), 0057c2d0 clearValue, 0057c360 getValue(std::string&) (per instance-read-property-trial.json), 0057c6e0 getValue(InstanceHandle&). The four constructors and toString were not located in this cluster and need a caller-side reference (the TypedPropertyDescriptor writeValue bodies) to bind.",
+  "status": "batch recovered and proven; the four ctors and toString implemented but unverified (unbound)",
+  "next": "Bind the constructors/toString by proving one exact caller that references them (a TypedPropertyDescriptor<T>::writeValue body - the earlier roc_* experiments under tools/rbxgs show the float ctor is called from the CoordinateFrame/Float property writers), then diff them against their located originals."
+}

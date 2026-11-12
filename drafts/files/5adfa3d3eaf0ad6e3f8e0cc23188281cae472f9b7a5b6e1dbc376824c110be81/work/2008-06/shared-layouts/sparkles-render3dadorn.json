@@ -1,0 +1,38 @@
+{
+  "task": "RBX::Sparkles::render3dAdorn recovery (native source batch)",
+  "class": "RBX::Sparkles",
+  "session": "3f9aacd8bb5645168c5de205d44d74fd",
+  "lease": "RBX::Sparkles-family-glm53b",
+  "package_marker": {"revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6", "source_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6"},
+  "baseline_commit": "unknown",
+  "source": "rebuild/2008-06/App/src/v8datamodel/Sparkles.cpp (compat TU native-classes/Sparkles.cpp)",
+  "runner_run": "work/2008-06/native-check-runs/20261112-000936-7759d539",
+  "checks": [
+    {
+      "addr": "0063d710",
+      "status": "exact",
+      "score": 100,
+      "symbol": "?render3dAdorn@Sparkles@RBX@@UAEXPAVAdorn@2@@Z",
+      "target_size": 123,
+      "object_size": 123,
+      "data_errors": [],
+      "call_identity": {
+        "passed": false,
+        "calls": [
+          {"offset": 24, "target": "006a17c6", "kind": "direct", "status": "verified_binding", "symbol": "___RTDynamicCast"},
+          {"offset": 44, "target": "00598cb0", "kind": "direct", "status": "verified_binding", "symbol": "?getCoordinateFrame@PartInstance@RBX@@QBEABVCoordinateFrame@G3D@@XZ"},
+          {"offset": 54, "target": "00513e20", "kind": "direct", "status": "verified_binding", "symbol": "?identity@Matrix3@G3D@@SAABV12@XZ"},
+          {"offset": 64, "target": "00513220", "kind": "direct", "status": "verified_binding", "symbol": "??0Matrix3@G3D@@QAE@ABV01@@Z"},
+          {"offset": 105, "target": null, "kind": "indirect", "status": "obligation_open", "note": "virtual call edx on the Adorn* argument; slot +0x38 = setObjectToWorldMatrix (Adorn virtual #14 in the organized RbxGraphics/Adorn.h)"},
+          {"offset": 114, "target": null, "kind": "indirect", "status": "obligation_open", "note": "virtual call edx on the Adorn* argument; slot +0x4c = sparkle (Adorn virtual #19)"}
+        ],
+        "scope": "Direct CALL and import bindings verified on the same object; the two indirect virtual calls on the Adorn* argument need separate vtable-slot/callee-identity evidence (not covered by this flag)."
+      }
+    }
+  ],
+  "method_recovered": "void Sparkles::render3dAdorn(Adorn*) - body enabled from the NATIVE_SPARKLES_PENDING draft (gate removed, sparkles() -> sparkle()); the organized RbxGraphics/Adorn.h already declares slot 19 sparkle() at line 62, so the pending comment was stale. Header already declares the method (App/include/v8datamodel/Sparkles.h line 55); no header edit needed. Byte-exact 123/123; askSetParent and the IRenderable inline slots remain exact in the same object.",
+  "obligations_remaining": [
+    "indirect virtual calls at +105 (+0x38 setObjectToWorldMatrix) and +114 (+0x4c sparkle) on the Adorn* argument: vtable-slot identity and callee ABI evidence, then provider selection, no-loss and P5/P6/runtime gates at owner integration"
+  ],
+  "notes": "Reads [this+0x104] Instance::parent via the IRenderable subobject (this+0x130) as [esi-0x2c] and +0x144 enabled as [esi+0x14]; both offsets match the recovery header evidence."
+}

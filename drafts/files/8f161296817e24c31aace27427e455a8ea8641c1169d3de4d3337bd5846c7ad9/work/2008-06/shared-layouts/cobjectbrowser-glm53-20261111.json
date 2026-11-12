@@ -1,0 +1,31 @@
+{
+  "family": "CObjectBrowser",
+  "date": "2026-11-11",
+  "agent": "opencode/glm-5.3-flash-free",
+  "workspace": "RoConstruct-Native-2dd77eb2b64b4a699592ab7737329141",
+  "package_revision": "dbc7834ec337292dcac56703a552785969037b7120478bab289ed3fd24074b6b",
+  "source_revision": "dbc7834ec337292dcac56703a552785969037b7120478bab289ed3fd24074b6b",
+  "draft_session": "a32a1313adea4f0b91d5edd550f1f6b3",
+  "draft_receipt": null,
+  "targets": [
+    {
+      "symbol": "CObjectBrowser::OnInitialUpdate",
+      "address": "004334f0",
+      "status": "inactive_exact",
+      "evidence": "diff_native_body.py: 5/5 bytes exact vs ?OnInitialUpdate@CObjectBrowser@@UAEXXZ (jmp to MFC CView::OnInitialUpdate). No source changes; binding/ref identity not established in prove harvest."
+    },
+    {
+      "symbol": "CObjectBrowser::OnDraw",
+      "address": "0070bdf0",
+      "status": "inactive_exact",
+      "evidence": "diff_native_body.py: 3/3 bytes exact vs ?OnDraw@CObjectBrowser@@UAEXPAVCDC@@@Z (ret 4). ICF-shared body; no source changes."
+    },
+    {
+      "symbol": "CObjectBrowser::PreCreateWindow",
+      "address": "00463910",
+      "status": "inactive_exact",
+      "evidence": "diff_native_body.py: 19/19 bytes exact vs ?PreCreateWindow@CObjectBrowser@@UAEHAAUtagCREATESTRUCTA@@@Z (calls CView::PreCreateWindow, normalizes BOOL). No source changes."
+    }
+  ],
+  "notes": "OnSize 004339d0 remains parked (210 vs 212B). OnCreate/CreateObject inactive_exact previously recorded in cobjectbrowser-oncreate-glm53-20261111.json."
+}

@@ -1,0 +1,36 @@
+{
+  "task": "RBX::RunService::addRunView recovery (native source batch)",
+  "class": "RBX::RunService",
+  "session": "107e815e40ea4337b128e831d1e3454c",
+  "lease": "RBX::RunService-family-glm53b",
+  "package_marker": {"revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6", "source_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6"},
+  "baseline_commit": "unknown",
+  "source": "rebuild/2008-06/App/src/v8datamodel/RunService.cpp (compat TU native-classes/RunService.cpp, native-flags include the std-noinline-string overlay)",
+  "runner_run": "work/2008-06/native-check-runs/20261112-004540-ce858ba7",
+  "checks": [
+    {
+      "addr": "005557c0",
+      "status": "exact",
+      "score": 100,
+      "symbol": "?addRunView@RunService@RBX@@QAEXPAVIRunView@2@@Z",
+      "target_size": 111,
+      "object_size": 111,
+      "data_errors": [],
+      "call_identity": {
+        "passed": true,
+        "calls": [
+          {"offset": 40, "target": "00594ce0", "kind": "direct", "status": "verified_binding", "symbol": "?do_lock@mutex@boost@@AAEXXZ"},
+          {"offset": 69, "target": "005556d0", "kind": "direct", "status": "verified_binding", "symbol": "??A?$map@PAVIRunView@RBX@@_NU?$less@PAVIRunView@RBX@@@std@@V?$allocator@U?$pair@QAVIRunView@RBX@@_N@std@@@4@@std@@QAEAA_NABQAVIRunView@RBX@@@Z"},
+          {"offset": 87, "target": "00594d00", "kind": "direct", "status": "verified_binding", "symbol": "?do_unlock@mutex@boost@@AAEXXZ"}
+        ],
+        "scope": "boost::mutex scoped_lock pair and the std::map<IRunView*,bool>::operator[] COMDAT (placed at its matched original address); shared EH funclet 007cddd8 with removeRunView"
+      }
+    }
+  ],
+  "method_recovered": "void RBX::RunService::addRunView(IRunView*) - boost::mutex::scoped_lock lock(viewMutex); views[view] = true; Declaration existed at Base/include/util/RunStateOwner.h line 144; no header edit needed. The class moves from 6/8 to 7/8 (start 00556520 remains).",
+  "obligations_remaining": [
+    "RunService::start 00556520 (505 B): boost bind/function + refcounted shared_ptr plumbing with EH states; not attempted in this batch",
+    "linked provider selection, no-loss and P5/P6/runtime gates remain owner integration obligations"
+  ],
+  "notes": "First hypothesis matched byte-exact. The registry's placeholder name for 005556d0 (map<void*,bool> fold) is superseded by the proven IRunView* instantiation binding."
+}
