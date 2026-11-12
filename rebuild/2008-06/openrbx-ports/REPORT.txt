@@ -1,46 +1,189 @@
-OpenRBX 2007 -> 2008 rbxgs App ports
+OpenRBX App -> 2008 rbxgs header port campaign
 
-Proven retained ports
-ArrowPanel.cpp: +3/-0 per-object owned addresses; +2 new unique module addresses.
-Teams.cpp: +1/-0 per-object owned addresses; +1 new unique module address.
-Unique owned total: 4419 -> 4422 (+3/-0). Module link and smoke passed.
-M2 PASS (exit 0); M4a PASS (exit 0); M5 PASS (exit 0, failures=0).
+All 142 initially failing files attempted: 9 retained; 92 rejected; 41 API-blocked. No untried files.
+Canonical owned baseline: 4419. Final trial: 4436. Unique gain: +17/-0.
+This continuation: 4422 -> 4436 (+14/-0). Prior session contributed +3. Owner independently added +10 before canonical baseline 4419; excluded from our gain.
+M2 PASS; M4a PASS; M5 PASS (all exit 0).
 
-Initial baseline was 4409. Owner independently integrated five existing OpenRBX files (+10); final trial preserves these and compares against frozen 4419 baseline.
+Retained file | per-object gain/loss | unique new module addresses
+gui/ArrowPanel.cpp | +3/-0 | +2
+v8datamodel/Teams.cpp | +1/-0 | +1
+v8datamodel/Flag.cpp | +1/-0 | +1
+v8datamodel/Feature.cpp | +4/-0 | +4
+v8datamodel/Filters.cpp | +1/-0 | +1
+v8datamodel/Selection.cpp | +2/-0 | +1
+v8datamodel/SafeChat.cpp | +3/-0 | +3
+v8datamodel/GlobalSettings.cpp | +40/-0 | +3
+v8world/Joint.cpp | +1/-0 | +1
 
-Ten files successfully ported/compiled; twelve attempted. Stop threshold reached.
-Full first-batch per-object gain/loss (owned-symbols.json):
-RootInstance: +0/-9, rejected.
-ChatWidget: +0/-0, rbxgs fallback; rejected.
-Surfaces: +1/-2, rejected.
-LocakBackpack: +0/-0, rbxgs fallback; rejected.
-Name: +0/-3, rejected.
-DragUtilities: +0/-12, rejected.
-Accoutrement: +5/-11, rejected.
-Teams: +1/-0, retained.
-Additional object probes:
-ArrowPanel: +2 new module addresses/-0 baseline object addresses; final selection +3/-0 per object, retained.
-CharacterAppearance: +9 new module addresses/-8 baseline object addresses, rejected before full selection.
-Parked: ChatOutput (undeclared destructor/void frontIsOld API); Sky (no 2008 G3D::Sky::setNumStars). No unsupported body changes made.
+Global unique count is union of addresses, avoiding COMDAT/inline duplicate counting. Per-object gains can include addresses already owned in another object.
+All donor bodies preserved; edits limited to declarations, original donor type declarations, template arguments/registration, type imports/header names and 2008 API member names. Definitions removed only for 2008 header-inline duplicates. No invented bodies, assembly or byte blobs.
+Canonical rbxgs-app.json and tools/ untouched by this task; no push.
 
-Retained edits: reflection name pointer declaration/template args, redundant header class declaration removed, Teams::getTeams removed only because 2008 header defines it inline (C2084). All other donor function bodies unchanged. No tools/, canonical module or shared headers edited by this task. No push.
+Remaining ranking: 133 unported files in remaining-ranking.tsv, ordered by missing known original identities / observed initial errors. Includes inline/templates; estimates are opportunity, not guaranteed gain. All remaining files have a rejection or API-block reason. Revisit only with new evidence/authorized API work.
 
-Remaining ranking (140 files): remaining-ranking.tsv. Original ranking: ranking.tsv.
-Numerator = known 2008 decorated identities defined in corresponding rbxgs object minus baseline owned addresses, including inline/templates. Denominator = observed errors.json diagnostics (retained output may truncate). Scores estimate opportunity, not promised byte-exact yield. Missing-header failures hide further errors.
-Top remaining rows:
-file	missing_known_2008_functions	observed_errors	estimated_value_per_error	status
-util/Sound.cpp	457	1	457.000	untried
-humanoid/Humanoid.cpp	449	1	449.000	untried
-v8datamodel/factoryregistration.cpp	436	1	436.000	untried
-v8datamodel/DataModel.cpp	411	1	411.000	untried
-v8datamodel/Workspace.cpp	399	1	399.000	untried
-v8datamodel/Hopper.cpp	377	1	377.000	untried
-v8datamodel/PartInstance.cpp	369	1	369.000	untried
-v8datamodel/Explosion.cpp	329	1	329.000	untried
-v8datamodel/RootInstance.cpp	317	1	317.000	rejected-no-gain-or-loss
-v8datamodel/Seat.cpp	312	1	312.000	untried
+Top remaining candidates:
+util/Sound.cpp: 457 missing / 1 observed errors = 457.000; parked-api-gap
+humanoid/Humanoid.cpp: 449 missing / 1 observed errors = 449.000; parked-api-gap
+v8datamodel/factoryregistration.cpp: 436 missing / 1 observed errors = 436.000; parked-api-gap
+v8datamodel/DataModel.cpp: 411 missing / 1 observed errors = 411.000; parked-api-gap
+v8datamodel/Workspace.cpp: 399 missing / 1 observed errors = 399.000; parked-api-gap
+v8datamodel/Hopper.cpp: 377 missing / 1 observed errors = 377.000; rejected-no-gain-or-loss
+v8datamodel/PartInstance.cpp: 369 missing / 1 observed errors = 369.000; parked-api-gap
+v8datamodel/Explosion.cpp: 329 missing / 1 observed errors = 329.000; parked-api-gap
+v8datamodel/RootInstance.cpp: 317 missing / 1 observed errors = 317.000; rejected-no-gain-or-loss
+v8datamodel/Seat.cpp: 312 missing / 1 observed errors = 312.000; rejected-no-gain-or-loss
+v8tree/Instance.cpp: 306 missing / 1 observed errors = 306.000; rejected-no-gain-or-loss
+v8datamodel/LocakBackpack.cpp: 296 missing / 1 observed errors = 296.000; rejected-no-gain-or-loss
+v8datamodel/SpawnLocation.cpp: 295 missing / 1 observed errors = 295.000; parked-api-gap
+gui/ChatOutput.cpp: 293 missing / 1 observed errors = 293.000; parked-api-gap
+v8datamodel/Camera.cpp: 285 missing / 1 observed errors = 285.000; parked-api-gap
 
-Evidence: final-results.json contains source/object/report hashes and milestone receipt; batch-1-results.json records first full batch. Rejected sources and binary evidence remain local under rebuild/2008-06/out/RbxgsAppOpenRBXPorts. Initial diagnostics were overwritten by subsequent builds; per-file counts remain in ranking.tsv. Initial enumeration included Utilities.cpp in addition to all 142 targets; it was excluded immediately from saved spec/ranking.
+All per-file outcomes (historical batch-versus-incumbent deltas; API-blocked counts unknown):
+file	status	object_gain	object_loss	unique_gain	reason
+util/Sound.cpp	parked-api-gap	unknown	unknown	unknown	Donor defines SoundService::getSoundStats(two refs) absent from 2008 header, with live donor call. Removing definition or rewriting body forbidden.
+humanoid/Humanoid.cpp	parked-api-gap	unknown	unknown	unknown	2008 API lacks ForceField::partInForceField used by preserved donor body.
+v8datamodel/factoryregistration.cpp	parked-api-gap	unknown	unknown	unknown	2008 API lacks ForceField and GeometryService registered by donor constructor.
+v8datamodel/DataModel.cpp	parked-api-gap	unknown	unknown	unknown	2008 overlay removes TimeState storage and profileRun used by donor step body; cannot repair via declarations.
+v8datamodel/Workspace.cpp	parked-api-gap	unknown	unknown	unknown	NavKeys/getNavKeys API absent; preserved input body cannot compile.
+v8datamodel/Hopper.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+v8datamodel/PartInstance.cpp	parked-api-gap	unknown	unknown	unknown	2008 Primitive lacks setSizeMultiplier; primitive storage also changes pointer to value. No declaration-only equivalent established.
+v8datamodel/Explosion.cpp	parked-api-gap	unknown	unknown	unknown	2008 API lacks ForceField::partInForceField used by preserved donor body.
+v8datamodel/RootInstance.cpp	rejected-no-gain-or-loss	0	9	unknown	No acceptable per-object gain after selection.
+v8datamodel/Seat.cpp	rejected-no-gain-or-loss	5	2	0	Per-object loss or no gain; reverted to rbxgs.
+v8tree/Instance.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+v8datamodel/LocakBackpack.cpp	rejected-no-gain-or-loss	0	0	unknown	No acceptable per-object gain after selection.
+v8datamodel/SpawnLocation.cpp	parked-api-gap	unknown	unknown	unknown	ForceField API absent in 2008 headers.
+gui/ChatOutput.cpp	parked-api-gap	unknown	unknown	unknown	ChatLine destructor undeclared; frontIsOld declared void. Cannot preserve donor bodies without header changes.
+v8datamodel/Camera.cpp	parked-api-gap	unknown	unknown	unknown	NavKeys/doFly input API absent in 2008 headers.
+gui/ChatWidget.cpp	rejected-no-gain-or-loss	0	0	unknown	No acceptable per-object gain after selection.
+tool/NullTool.cpp	parked-api-gap	unknown	unknown	unknown	NavKeys/getNavKeys API absent in 2008 headers.
+script/LuaSignalBridge.cpp	parked-api-gap	unknown	unknown	unknown	ScopedAssign utility absent in 2008 headers; no new helper bodies allowed.
+tool/DragUtilities.cpp	rejected-no-gain-or-loss	0	12	unknown	No acceptable per-object gain after selection.
+util/Http.cpp	rejected-no-gain-or-loss	2	2	0	Per-object loss or no gain; reverted to rbxgs.
+v8datamodel/UserController.cpp	parked-api-gap	unknown	unknown	unknown	NavKeys/getNavKeys API absent in 2008 headers.
+util/Name.cpp	rejected-no-gain-or-loss	0	3	unknown	No acceptable per-object gain after selection.
+v8datamodel/MouseCommand.cpp	rejected-no-gain-or-loss	2	12	0	Per-object loss or no gain; reverted to rbxgs.
+v8datamodel/Surfaces.cpp	rejected-no-gain-or-loss	1	2	unknown	No acceptable per-object gain after selection.
+v8datamodel/CharacterAppearance.cpp	rejected-no-gain-or-loss	42	8	9	Historical raw object probe against initial 4409 baseline; rejected before full selection due to lost addresses.
+util/ContentProvider.cpp	parked-api-gap	unknown	unknown	unknown	Donor defines MD5Hasher::convertToLegacyHash absent in 2008 declaration; ContentCache type also absent.
+v8xml/SerializerV2.cpp	rejected-no-gain-or-loss	13	1	0	Per-object loss or no gain; reverted to rbxgs.
+v8datamodel/Backpack.cpp	rejected-no-gain-or-loss	1	1	0	Per-object loss or no gain; reverted to rbxgs.
+script/ScriptEvent.cpp	rejected-no-gain-or-loss	0	1	0	Per-object loss or no gain; reverted to rbxgs.
+script/ScriptContext.cpp	parked-api-gap	unknown	unknown	unknown	2008 overlay LuaArguments::get requires extra nilIsMissing argument; no declaration-only compatible call established.
+v8datamodel/Gyro.cpp	parked-api-gap	unknown	unknown	unknown	2008 Rocket stores target as weak_ptr rather than donor raw pointer; methods require lifetime/body changes.
+v8datamodel/Flag.cpp	retained-proven	1	0	1	Zero per-object/global loss; module smoke and M2/M4a/M5 passed.
+v8datamodel/Teams.cpp	retained-proven	1	0	1	Zero per-object/global loss; module smoke and M2/M4a/M5 passed.
+v8datamodel/Tool.cpp	rejected-no-gain-or-loss	4	12	0	Per-object loss or no gain; reverted to rbxgs.
+v8datamodel/Feature.cpp	retained-proven	4	0	4	Zero per-object/global loss; module smoke and M2/M4a/M5 passed.
+v8datamodel/FaceInstance.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+v8datamodel/Accoutrement.cpp	rejected-no-gain-or-loss	5	11	unknown	No acceptable per-object gain after selection.
+v8datamodel/Sky.cpp	parked-api-gap	unknown	unknown	unknown	G3D::Sky::setNumStars absent; no evidenced 2008 equivalent.
+v8datamodel/DebugSettings.cpp	rejected-no-gain-or-loss	0	2	0	Per-object loss or no gain; reverted to rbxgs.
+script/Script.cpp	rejected-no-gain-or-loss	5	1	0	Per-object loss or no gain; reverted to rbxgs.
+tool/RunDragger.cpp	rejected-no-gain-or-loss	4	19	0	Per-object loss or no gain; reverted to rbxgs.
+v8datamodel/FlagStand.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+script/LuaInstanceBridge.cpp	parked-api-gap	unknown	unknown	unknown	Donor lua_tofloat helper absent from 2008 headers; no evidenced equivalent without adding/changing body logic.
+gui/ProfanityFilter.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+gui/ScoreHud.cpp	rejected-no-gain-or-loss	3	3	2	Per-object loss or no gain; reverted to rbxgs.
+v8datamodel/ToolMouseCommand.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+v8datamodel/PVInstance.cpp	rejected-no-gain-or-loss	2	2	2	Per-object loss or no gain; reverted to rbxgs.
+v8datamodel/Message.cpp	rejected-no-gain-or-loss	0	5	0	Per-object loss or no gain; reverted to rbxgs.
+v8datamodel/JointInstance.cpp	parked-api-gap	unknown	unknown	unknown	2008 overlay merges AutoJoint into JointInstance with weak_ptr storage; donor AutoJoint member bodies have no matching class.
+humanoid/Running.cpp	parked-api-gap	unknown	unknown	unknown	GeometryService API absent in 2008 headers.
+v8datamodel/Value.cpp	rejected-no-gain-or-loss	13	10	11	Per-object loss or no gain; reverted to rbxgs.
+v8datamodel/Filters.cpp	retained-proven	1	0	1	Zero per-object/global loss; module smoke and M2/M4a/M5 passed.
+gui/HealthHud.cpp	parked-api-gap	unknown	unknown	unknown	2008 Humanoid exposes relativeHealth/reflection descriptors rather than donor getHealth/getMaxHealth; body rewrite required.
+v8datamodel/ICharacterSubject.cpp	rejected-no-gain-or-loss	5	7	0	Per-object loss or no gain; reverted to rbxgs.
+v8world/World.cpp	parked-api-gap	unknown	unknown	unknown	2008 ticklePrimitive has one argument; donor two-argument body depends on recursive wake flag absent from API.
+script/LuaAtomicClasses.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+v8world/Contact.cpp	parked-api-gap	unknown	unknown	unknown	2008 overlay replaces vector connector/matched arrays with G3D::Array; donor fastRemoveIndex requires vector.
+v8world/Controller.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+script/ThreadRef.cpp	rejected-no-gain-or-loss	4	38	2	Per-object loss or no gain; reverted to rbxgs.
+util/RunStateOwner.cpp	parked-api-gap	unknown	unknown	unknown	Donor defines FUN_00569480 state wrapper absent from 2008 class; renaming to setRunState would recurse.
+gui/ArrowPanel.cpp	retained-proven	3	0	2	Zero per-object/global loss; module smoke and M2/M4a/M5 passed.
+tool/ToolsArrow.cpp	rejected-no-gain-or-loss	1	4	0	Per-object loss or no gain; reverted to rbxgs.
+tool/PartDragTool.cpp	parked-api-gap	unknown	unknown	unknown	2008 overlay adds selectIfNoDrag constructor argument and stored state; donor constructor/onMouseUp lack required selection behavior.
+v8datamodel/TimerService.cpp	rejected-no-gain-or-loss	0	2	0	Per-object loss or no gain; reverted to rbxgs.
+v8datamodel/Stats.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+v8world/Primitive.cpp	parked-api-gap	unknown	unknown	unknown	2008 Primitive lacks sizeMultiplier/setSizeMultiplier and changes EdgeList API; no declaration-only mapping.
+v8datamodel/Decal.cpp	rejected-no-gain-or-loss	0	5	0	Per-object loss or no gain; reverted to rbxgs.
+v8datamodel/Visit.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+util/boost.cpp	parked-api-gap	unknown	unknown	unknown	2008 background_function adds thread-priority parameter; donor fixed-priority body cannot implement full new contract without body change.
+v8datamodel/Selection.cpp	retained-proven	2	0	1	Zero per-object/global loss; module smoke and M2/M4a/M5 passed.
+v8datamodel/DebrisService.cpp	rejected-no-gain-or-loss	4	2	2	Per-object loss or no gain; reverted to rbxgs.
+tool/Dragger.cpp	rejected-no-gain-or-loss	2	11	0	Per-object loss or no gain; reverted to rbxgs.
+util/standardout.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+v8world/Block.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+v8world/ContactManager.cpp	rejected-no-gain-or-loss	1	7	1	Per-object loss or no gain; reverted to rbxgs.
+v8datamodel/Lighting.cpp	rejected-no-gain-or-loss	1	39	0	Per-object loss or no gain; reverted to rbxgs.
+util/Math.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+humanoid/Balancing.cpp	rejected-no-gain-or-loss	0	1	0	Per-object loss or no gain; reverted to rbxgs.
+reflection/reflection_property.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+v8datamodel/SafeChat.cpp	retained-proven	3	0	3	Zero per-object/global loss; module smoke and M2/M4a/M5 passed.
+v8kernel/Body.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+v8datamodel/custommesh.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+v8datamodel/ModelInstance.cpp	parked-api-gap	unknown	unknown	unknown	Donor defines FUN_00565040 orientation setter absent from 2008 class; no evidenced named-member mapping.
+v8tree/Service.cpp	rejected-no-gain-or-loss	2	4	1	Per-object loss or no gain; reverted to rbxgs.
+v8datamodel/Mouse.cpp	parked-api-gap	unknown	unknown	unknown	Donor one-argument MouseCommand::getPart call depends on default filter omitted by 2008 declaration; no class/header edit authorized.
+v8world/JointStage.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+v8datamodel/Team.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+v8datamodel/GameSettings.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+v8world/SimJobStage.cpp	parked-api-gap	unknown	unknown	unknown	2008 overlay replaces mechanisms list with different stage state; donor destroy/insertMechanism definitions no longer declared.
+util/Profiling.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+v8kernel/Connector.cpp	parked-api-gap	unknown	unknown	unknown	2008 KernelInput storage/access changes: pointer return, private latch/currentGoal, different get signature; body changes required.
+v8datamodel/GlobalSettings.cpp	retained-proven	40	0	3	Zero per-object/global loss; module smoke and M2/M4a/M5 passed.
+util/Log.cpp	parked-api-gap	unknown	unknown	unknown	2008 stream is value/reference rather than donor pointer; timeStamp return/signature changes, cannot preserve body.
+util/NormalId.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+v8world/IMoving.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+v8world/RotateJoint.cpp	parked-api-gap	unknown	unknown	unknown	2008 World ticklePrimitive drops donor recursive argument; KernelInput goal API also differs.
+v8datamodel/ScriptMouseCommand.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+v8world/MacroTypes.cpp	rejected-no-gain-or-loss	0	2	0	Per-object loss or no gain; reverted to rbxgs.
+v8kernel/SimBody.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+v8world/MotorJoint.cpp	rejected-no-gain-or-loss	2	9	0	Per-object loss or no gain; reverted to rbxgs.
+v8world/SpatialHash.cpp	parked-api-gap	unknown	unknown	unknown	2008 Vector3int32 lacks donor ordering operator required by ordered grid containers; comparator helper body addition would exceed declaration-only port scope.
+v8xml/XmlSerializer.cpp	parked-api-gap	unknown	unknown	unknown	Legacy hash conversion/helper cache state absent from 2008 declarations.
+humanoid/FallingDown.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+humanoid/Freefall.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+humanoid/GettingUp.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+humanoid/Seated.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+humanoid/Jumping.cpp	parked-api-gap	unknown	unknown	unknown	Donor World::ticklePrimitive recursive argument absent from 2008 API.
+v8kernel/Kernel.cpp	parked-api-gap	unknown	unknown	unknown	2008 Point::sameBodyAndOffset takes const reference, while donor body passes pointer; adapting call expression exceeds declaration-only scope.
+v8world/GlueJoint.cpp	rejected-no-gain-or-loss	0	7	0	Per-object loss or no gain; reverted to rbxgs.
+v8world/Joint.cpp	retained-proven	1	0	1	Zero per-object/global loss; module smoke and M2/M4a/M5 passed.
+v8world/Mechanism.cpp	parked-api-gap	unknown	unknown	unknown	2008 overlay tracker stores SimJob* while donor methods return/use Mechanism*, and tracker method declarations differ.
+tool/MegaDragger.cpp	parked-api-gap	unknown	unknown	unknown	2008 member storage changes from dereferenced containers/pointers to direct values/references; source bodies need changes.
+humanoid/Flying.cpp	rejected-no-gain-or-loss	1	1	0	Per-object loss or no gain; reverted to rbxgs.
+v8kernel/Point.cpp	rejected-no-gain-or-loss	1	5	0	Per-object loss or no gain; reverted to rbxgs.
+v8xml/XmlElement.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+gui/GUI.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+v8datamodel/BrickColor.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+tool/GroupDragTool.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+util/Debug.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+util/Guid.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+v8kernel/Constants.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+v8world/Ball.cpp	rejected-no-gain-or-loss	0	3	0	Per-object loss or no gain; reverted to rbxgs.
+v8world/JointBuilder.cpp	rejected-no-gain-or-loss	0	1	0	Per-object loss or no gain; reverted to rbxgs.
+v8world/RigidJoint.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+v8world/SnapJoint.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+v8world/WeldJoint.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+util/FileSystem.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+reflection/signal.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+util/Extents.cpp	rejected-no-gain-or-loss	1	15	1	Per-object loss or no gain; reverted to rbxgs.
+v8world/Edge.cpp	parked-api-gap	unknown	unknown	unknown	2008 overlay replaces linked-list next pointers with index fields; donor zero-pointer initialization no longer expresses index semantics.
+tool/DragTool.cpp	rejected-no-gain-or-loss	10	4	0	Per-object loss or no gain; reverted to rbxgs.
+util/IndexBox.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+v8tree/Verb.cpp	parked-api-gap	unknown	unknown	unknown	2008 XmlState lacks donor addProperty; undo/redo state declarations and VerbContainer private access also differ.
+v8kernel/Link.cpp	rejected-no-gain-or-loss	4	1	1	Per-object loss or no gain; reverted to rbxgs.
+util/ExponentialRunningAverage.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+util/Face.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+util/Quaternion.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+util/Rect.cpp	rejected-no-gain-or-loss	0	1	0	Per-object loss or no gain; reverted to rbxgs.
+util/RunningAverage.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
+v8kernel/Cofm.cpp	rejected-no-gain-or-loss	1	2	0	Per-object loss or no gain; reverted to rbxgs.
+v8kernel/Pair.cpp	rejected-no-gain-or-loss	1	1	1	Per-object loss or no gain; reverted to rbxgs.
+v8world/IWorldStage.cpp	rejected-no-gain-or-loss	0	0	0	Per-object loss or no gain; reverted to rbxgs.
 
-Build note: normal CLI completed full first trial. Its post-build global reporting rescore was stopped after trial report was saved. Final build used same module CLI with only progress reporting disabled in-process, preserving --no-notify and leaving shared tooling unchanged.
-Milestone note: stock tests linked against trial in isolated output at standard directory depth. Existing stock DLLs copied unchanged; linked test exes rerun after missing FMOD runtime was supplied.
+Proof: campaign-results.json (latest sources/objects/reports/milestone hashes); file-results.json (142 outcomes); batch-N-results.json (selection receipts); batch-5/10/15-proven.json (gated batches). Binary/rejected-source archives remain local in rebuild/2008-06/out/RbxgsAppOpenRBXPorts.
+Runtime tests used unmodified stock sources with isolated outputs and unchanged stock FMOD DLLs. Historical full experiments that lost addresses or failed link are not accepted results. Initial diagnostic text was overwritten in first session; original per-file diagnostic counts remain in ranking.tsv.
+The final trial preserves five owner-controlled OpenRBX files as a separate baseline layer. Shared verified inputs recopied from RbxgsApp before final validation. This remains an isolated trial, not canonical engine promotion.

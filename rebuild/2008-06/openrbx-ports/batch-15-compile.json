@@ -1,0 +1,13 @@
+{
+ "files": [
+  "v8kernel/Link.cpp",
+  "util/ExponentialRunningAverage.cpp",
+  "util/Face.cpp",
+  "util/Quaternion.cpp",
+  "util/Rect.cpp",
+  "util/RunningAverage.cpp",
+  "v8kernel/Cofm.cpp",
+  "v8kernel/Pair.cpp",
+  "v8world/IWorldStage.cpp"
+ ]
+}

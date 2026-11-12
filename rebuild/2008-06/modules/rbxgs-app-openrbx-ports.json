@@ -13,7 +13,7 @@
    "name": "openrbx-ports",
    "mode": "direct",
    "dir": "rebuild/2008-06/openrbx-ports",
-   "files": "gui/ArrowPanel.cpp v8datamodel/Teams.cpp v8datamodel/Flag.cpp v8datamodel/Feature.cpp v8datamodel/Filters.cpp v8datamodel/Selection.cpp v8datamodel/SafeChat.cpp v8datamodel/GlobalSettings.cpp",
+   "files": "gui/ArrowPanel.cpp v8datamodel/Teams.cpp v8datamodel/Flag.cpp v8datamodel/Feature.cpp v8datamodel/Filters.cpp v8datamodel/Selection.cpp v8datamodel/SafeChat.cpp v8datamodel/GlobalSettings.cpp v8world/Joint.cpp",
    "flags": "/O2 /Ob2 /Oy /GF /GS- /EHsc /MD",
    "includes_from_recipe": "rbxgs",
    "defines_from_recipe": "rbxgs",
