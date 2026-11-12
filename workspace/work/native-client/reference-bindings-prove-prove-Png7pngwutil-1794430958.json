@@ -1,0 +1,32 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "_png_write_sCAL",
+    "address": "005270a0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Png7pngwutil\\objects\\b340e4073bf36c48\\candidate.obj": "8e5990a26f5daf2ce2d1f9801d1f23c2e3b8a9e53a244f4dfeefe45efb123530",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-mbe42ve4\\owners.json": "6ff97d7e4290c1e747f1ea83c033e1cf897e845c1eba51bad825c8febc40fb0f",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-mbe42ve4\\import-thunk-identities-as-owner.json": "5c9b8b43d61501fd7eb5241d3e56bb0586abdca2b0680b7ce862c3cf10060acf"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "_png_sCAL",
+   "address": "008294a4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_write_chunk_start",
+   "address": "00526420",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

@@ -1,0 +1,32 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?makeShadersPS20@ToneMap@G3D@@CAXXZ",
+    "address": "007b2690"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DToneMap\\objects\\fddba6ed083b5528\\candidate.obj": "4b6e8e8326c9e607a376f43079652149c14cd6816abfb03b5f2d7fed7c92f920",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-snwni2p3\\owners.json": "ec0cf7a83f75de0160eb242b3e59c1781b32cc7d862a44e2de3b0551123810ce",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-snwni2p3\\import-thunk-identities-as-owner.json": "9ea6e694ca28fe8d779faf3cf8a15fa65da2347a84e3acb916eda7a2043e57a8"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?fromStrings@Shader@G3D@@SA?AV?$ReferenceCountedPointer@VShader@G3D@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0W4UseG3DUniforms@2@@Z",
+   "address": "00507680",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?makeShadersPS20@ToneMap@G3D@@CAXXZ",
+   "address": "007edf9f",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

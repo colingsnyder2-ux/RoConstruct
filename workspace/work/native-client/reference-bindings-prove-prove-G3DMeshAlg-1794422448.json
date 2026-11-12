@@ -1,0 +1,74 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??$_Median@PAN@std@@YAXPAN00@Z",
+    "address": "0067ca50"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DMeshAlg\\objects\\07021d4628045aad\\candidate.obj": "be360b0f482563e45ffc161747c1edeabb401d26520261943e4d36eea94aaac4",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-xvq9hnlp\\owners.json": "6bfca6def3ac07445968b0e8f15effadc0bc753d0fca534e6c1c8a10e00cc925",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-xvq9hnlp\\import-thunk-identities-as-owner.json": "85aec894c057d68a9c3c92fa07422788331cd196c250013dd3a905067c98aac5"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?createIndexArray@MeshAlg@G3D@@SAXHAAV?$Array@H@2@HHH@Z",
+    "address": "007baea0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DMeshAlg\\objects\\07021d4628045aad\\candidate.obj": "be360b0f482563e45ffc161747c1edeabb401d26520261943e4d36eea94aaac4",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-xvq9hnlp\\owners.json": "6bfca6def3ac07445968b0e8f15effadc0bc753d0fca534e6c1c8a10e00cc925",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-xvq9hnlp\\import-thunk-identities-as-owner.json": "85aec894c057d68a9c3c92fa07422788331cd196c250013dd3a905067c98aac5"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$_Sort@PANH@std@@YAXPAN0H@Z",
+    "address": "0067d820"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DMeshAlg\\objects\\07021d4628045aad\\candidate.obj": "be360b0f482563e45ffc161747c1edeabb401d26520261943e4d36eea94aaac4",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-xvq9hnlp\\owners.json": "6bfca6def3ac07445968b0e8f15effadc0bc753d0fca534e6c1c8a10e00cc925",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-xvq9hnlp\\import-thunk-identities-as-owner.json": "85aec894c057d68a9c3c92fa07422788331cd196c250013dd3a905067c98aac5"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??$_Insertion_sort1@PANN@std@@YAXPAN00@Z",
+   "address": "0067cb30",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$_Make_heap@PANHN@std@@YAXPAN0PAH0@Z",
+   "address": "0067cae0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$_Med3@PAN@std@@YAXPAN00@Z",
+   "address": "0067c800",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$_Sort_heap@PAN@std@@YAXPAN0@Z",
+   "address": "0067d1a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$_Unguarded_partition@PAN@std@@YA?AU?$pair@PANPAN@0@PAN0@Z",
+   "address": "0067cc00",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?resize@?$Array@H@G3D@@QAEXH_N@Z",
+   "address": "00480020",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 3,
+ "owners_bound": 3
+}

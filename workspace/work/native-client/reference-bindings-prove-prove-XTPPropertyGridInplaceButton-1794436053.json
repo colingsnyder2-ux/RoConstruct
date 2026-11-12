@@ -1,0 +1,117 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?GetImage@CXTPPropertyGridInplaceButton@@UBEPAVCXTPImageManagerIcon@@XZ",
+    "address": "00772fa0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPropertyGridInplaceButton\\objects\\6c6fa3fefb0dd3fb\\candidate.obj": "fcfa8512c63d5a90f2017904e196af7a41e7039a83c2e0a885d7b1c2d5043176",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-w61j3t9r\\owners.json": "4a6b2a88d1fa1718077f6584cb6668f8541010fabf9bc690f760b1e95a5d66ba",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-w61j3t9r\\import-thunk-identities-as-owner.json": "d3e7aa128b2a1860586eae8cb17838e82894050f82c48c6a3bb548d608c068a1"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?OnDraw@CXTPPropertyGridInplaceButton@@UAEXPAVCDC@@VCRect@@@Z",
+    "address": "00773010"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPropertyGridInplaceButton\\objects\\6c6fa3fefb0dd3fb\\candidate.obj": "fcfa8512c63d5a90f2017904e196af7a41e7039a83c2e0a885d7b1c2d5043176",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-w61j3t9r\\owners.json": "4a6b2a88d1fa1718077f6584cb6668f8541010fabf9bc690f760b1e95a5d66ba",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-w61j3t9r\\import-thunk-identities-as-owner.json": "d3e7aa128b2a1860586eae8cb17838e82894050f82c48c6a3bb548d608c068a1"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1?$CArray@PAVCXTPPropertyGridInplaceButton@@PAV1@@@UAE@XZ",
+    "address": "00773360"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPropertyGridInplaceButton\\objects\\6c6fa3fefb0dd3fb\\candidate.obj": "fcfa8512c63d5a90f2017904e196af7a41e7039a83c2e0a885d7b1c2d5043176",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-w61j3t9r\\owners.json": "4a6b2a88d1fa1718077f6584cb6668f8541010fabf9bc690f760b1e95a5d66ba",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-w61j3t9r\\import-thunk-identities-as-owner.json": "d3e7aa128b2a1860586eae8cb17838e82894050f82c48c6a3bb548d608c068a1"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?RemoveAll@CXTPPropertyGridInplaceButtons@@QAEXXZ",
+    "address": "007733d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPropertyGridInplaceButton\\objects\\6c6fa3fefb0dd3fb\\candidate.obj": "fcfa8512c63d5a90f2017904e196af7a41e7039a83c2e0a885d7b1c2d5043176",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-w61j3t9r\\owners.json": "4a6b2a88d1fa1718077f6584cb6668f8541010fabf9bc690f760b1e95a5d66ba",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-w61j3t9r\\import-thunk-identities-as-owner.json": "d3e7aa128b2a1860586eae8cb17838e82894050f82c48c6a3bb548d608c068a1"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?RemoveAt@CXTPPropertyGridInplaceButtons@@QAEXJ@Z",
+    "address": "00773440"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPropertyGridInplaceButton\\objects\\6c6fa3fefb0dd3fb\\candidate.obj": "fcfa8512c63d5a90f2017904e196af7a41e7039a83c2e0a885d7b1c2d5043176",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-w61j3t9r\\owners.json": "4a6b2a88d1fa1718077f6584cb6668f8541010fabf9bc690f760b1e95a5d66ba",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-w61j3t9r\\import-thunk-identities-as-owner.json": "d3e7aa128b2a1860586eae8cb17838e82894050f82c48c6a3bb548d608c068a1"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?AddButton@CXTPPropertyGridInplaceButtons@@QAEPAVCXTPPropertyGridInplaceButton@@PAV2@@Z",
+    "address": "00773480"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPPropertyGridInplaceButton\\objects\\6c6fa3fefb0dd3fb\\candidate.obj": "fcfa8512c63d5a90f2017904e196af7a41e7039a83c2e0a885d7b1c2d5043176",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-w61j3t9r\\owners.json": "4a6b2a88d1fa1718077f6584cb6668f8541010fabf9bc690f760b1e95a5d66ba",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-w61j3t9r\\import-thunk-identities-as-owner.json": "d3e7aa128b2a1860586eae8cb17838e82894050f82c48c6a3bb548d608c068a1"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??_E?$CArray@PAVCXTPPropertyGridInplaceButton@@PAV1@@@UAEPAXI@Z",
+   "address": "00773380",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetImageManager@CXTPPropertyGridView@@QBEPAVCXTPImageManager@@XZ",
+   "address": "00714150",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetPaintManager@CXTPPropertyGridView@@QBEPAVCXTPPropertyGridPaintManager@@XZ",
+   "address": "00714140",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?RemoveAt@?$CArray@PAVCXTPPropertyGridInplaceButton@@PAV1@@@QAEXHH@Z",
+   "address": "0071d070",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Serialize@?$CArray@PAVCXTPPropertyGridInplaceButton@@PAV1@@@UAEXAAVCArchive@@@Z",
+   "address": "006e34d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetAtGrow@?$CArray@PAVCXTPPropertyGridInplaceButton@@PAV1@@@QAEXHPAVCXTPPropertyGridInplaceButton@@@Z",
+   "address": "0070e320",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetSize@?$CArray@PAVCXTPPropertyGridInplaceButton@@PAV1@@@QAEXHH@Z",
+   "address": "0070e1d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?UpdateIndexes@CXTPPropertyGridInplaceButtons@@AAEXXZ",
+   "address": "00773410",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 6,
+ "owners_bound": 6
+}

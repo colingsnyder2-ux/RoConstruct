@@ -1,0 +1,211 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??0CXTThemeManagerStyle@@QAE@XZ",
+    "address": "0070d670"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTThemeManager\\objects\\b45122e8c31c216f\\candidate.obj": "53ce9ba997a08d4fbd1d56be4a3e5d5757e16a00e56d2e80ecd9326d2454055d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-t94_asw9\\owners.json": "ed41eca936c16f1803b013029da71ba75e1e0c544d36b2d7c8a70b9a462985bb",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-t94_asw9\\import-thunk-identities-as-owner.json": "5996e2b08e72cc462558d33b85cdb61021cbb7b5a264f7919a4ad23714e1a43b"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1CXTThemeManagerStyle@@UAE@XZ",
+    "address": "0070d690"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTThemeManager\\objects\\b45122e8c31c216f\\candidate.obj": "53ce9ba997a08d4fbd1d56be4a3e5d5757e16a00e56d2e80ecd9326d2454055d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-t94_asw9\\owners.json": "ed41eca936c16f1803b013029da71ba75e1e0c544d36b2d7c8a70b9a462985bb",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-t94_asw9\\import-thunk-identities-as-owner.json": "5996e2b08e72cc462558d33b85cdb61021cbb7b5a264f7919a4ad23714e1a43b"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1CXTThemeManagerStyleHost@@MAE@XZ",
+    "address": "0070d940"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTThemeManager\\objects\\b45122e8c31c216f\\candidate.obj": "53ce9ba997a08d4fbd1d56be4a3e5d5757e16a00e56d2e80ecd9326d2454055d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-t94_asw9\\owners.json": "ed41eca936c16f1803b013029da71ba75e1e0c544d36b2d7c8a70b9a462985bb",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-t94_asw9\\import-thunk-identities-as-owner.json": "5996e2b08e72cc462558d33b85cdb61021cbb7b5a264f7919a4ad23714e1a43b"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0CXTThemeManager@@QAE@XZ",
+    "address": "0070dbb0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTThemeManager\\objects\\b45122e8c31c216f\\candidate.obj": "53ce9ba997a08d4fbd1d56be4a3e5d5757e16a00e56d2e80ecd9326d2454055d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-t94_asw9\\owners.json": "ed41eca936c16f1803b013029da71ba75e1e0c544d36b2d7c8a70b9a462985bb",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-t94_asw9\\import-thunk-identities-as-owner.json": "5996e2b08e72cc462558d33b85cdb61021cbb7b5a264f7919a4ad23714e1a43b"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?SetTheme@CXTThemeManager@@QAEXW4XTThemeStyle@@@Z",
+    "address": "0070dc00"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTThemeManager\\objects\\b45122e8c31c216f\\candidate.obj": "53ce9ba997a08d4fbd1d56be4a3e5d5757e16a00e56d2e80ecd9326d2454055d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-t94_asw9\\owners.json": "ed41eca936c16f1803b013029da71ba75e1e0c544d36b2d7c8a70b9a462985bb",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-t94_asw9\\import-thunk-identities-as-owner.json": "5996e2b08e72cc462558d33b85cdb61021cbb7b5a264f7919a4ad23714e1a43b"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0CXTThemeManagerStyleFactory@@QAE@XZ",
+    "address": "0070dcf0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTThemeManager\\objects\\b45122e8c31c216f\\candidate.obj": "53ce9ba997a08d4fbd1d56be4a3e5d5757e16a00e56d2e80ecd9326d2454055d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-t94_asw9\\owners.json": "ed41eca936c16f1803b013029da71ba75e1e0c544d36b2d7c8a70b9a462985bb",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-t94_asw9\\import-thunk-identities-as-owner.json": "5996e2b08e72cc462558d33b85cdb61021cbb7b5a264f7919a4ad23714e1a43b"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1CXTThemeManagerStyleFactory@@UAE@XZ",
+    "address": "0070dd30"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTThemeManager\\objects\\b45122e8c31c216f\\candidate.obj": "53ce9ba997a08d4fbd1d56be4a3e5d5757e16a00e56d2e80ecd9326d2454055d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-t94_asw9\\owners.json": "ed41eca936c16f1803b013029da71ba75e1e0c544d36b2d7c8a70b9a462985bb",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-t94_asw9\\import-thunk-identities-as-owner.json": "5996e2b08e72cc462558d33b85cdb61021cbb7b5a264f7919a4ad23714e1a43b"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?GetSafeTheme@CXTThemeManagerStyleFactory@@QAEPAVCXTThemeManagerStyle@@XZ",
+    "address": "0070dd70"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTThemeManager\\objects\\b45122e8c31c216f\\candidate.obj": "53ce9ba997a08d4fbd1d56be4a3e5d5757e16a00e56d2e80ecd9326d2454055d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-t94_asw9\\owners.json": "ed41eca936c16f1803b013029da71ba75e1e0c544d36b2d7c8a70b9a462985bb",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-t94_asw9\\import-thunk-identities-as-owner.json": "5996e2b08e72cc462558d33b85cdb61021cbb7b5a264f7919a4ad23714e1a43b"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?InitStyleHost@CXTThemeManagerStyleHost@@IAEXPAUCRuntimeClass@@@Z",
+    "address": "0070ddb0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTThemeManager\\objects\\b45122e8c31c216f\\candidate.obj": "53ce9ba997a08d4fbd1d56be4a3e5d5757e16a00e56d2e80ecd9326d2454055d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-t94_asw9\\owners.json": "ed41eca936c16f1803b013029da71ba75e1e0c544d36b2d7c8a70b9a462985bb",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-t94_asw9\\import-thunk-identities-as-owner.json": "5996e2b08e72cc462558d33b85cdb61021cbb7b5a264f7919a4ad23714e1a43b"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0CXTThemeManagerStyleHost@@IAE@PAUCRuntimeClass@@@Z",
+    "address": "0070de80"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTThemeManager\\objects\\b45122e8c31c216f\\candidate.obj": "53ce9ba997a08d4fbd1d56be4a3e5d5757e16a00e56d2e80ecd9326d2454055d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-t94_asw9\\owners.json": "ed41eca936c16f1803b013029da71ba75e1e0c544d36b2d7c8a70b9a462985bb",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-t94_asw9\\import-thunk-identities-as-owner.json": "5996e2b08e72cc462558d33b85cdb61021cbb7b5a264f7919a4ad23714e1a43b"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??0CMapPtrToPtr@@QAE@H@Z",
+   "address": "007bc80e",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??1CGdiObject@@UAE@XZ",
+   "address": "004111a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECXTThemeManager@@UAEPAXI@Z",
+   "address": "0070dbe0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECXTThemeManagerStyle@@UAEPAXI@Z",
+   "address": "007a1070",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECXTThemeManagerStyleFactory@@UAEPAXI@Z",
+   "address": "007a1f20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECXTThemeManagerStyleHost@@MAEPAXI@Z",
+   "address": "0070db00",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?AddHead@CSimpleList@@QAEXPAX@Z",
+   "address": "007bc7f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?CreateTheme@CXTThemeManagerStyleFactory@@UAEPAVCXTThemeManagerStyle@@W4XTThemeStyle@@@Z",
+   "address": "005f2310",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DrawTransparentBack@CXTThemeManagerStyle@@UAEHPAVCDC@@PAVCWnd@@@Z",
+   "address": "0070d820",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetDefaultThemeFactory@CXTThemeManager@@QAEPAVCXTThemeManagerStyleFactory@@PAUCRuntimeClass@@@Z",
+   "address": "0070da30",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetNextAssoc@CMapPtrToPtr@@QBEXAAPAU__POSITION@@AAPAX1@Z",
+   "address": "007bc802",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetRuntimeClass@CXTThemeManagerStyleFactory@@UBEPAUCRuntimeClass@@XZ",
+   "address": "0070d620",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetSafeThemeFactory@CXTThemeManagerStyleHost@@IBEPAVCXTThemeManagerStyleFactory@@XZ",
+   "address": "0070d660",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?RefreshMetrics@CXTThemeManagerStyleFactory@@UAEXXZ",
+   "address": "0070d630",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Remove@CSimpleList@@QAEHPAX@Z",
+   "address": "007bc7f6",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetTheme@CXTThemeManagerStyleFactory@@QAEXW4XTThemeStyle@@@Z",
+   "address": "0070dae0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?TakeSnapShot@CXTThemeManagerStyle@@UAEHPAVCWnd@@@Z",
+   "address": "0070d6b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?XTThemeManager@@YAPAVCXTThemeManager@@XZ",
+   "address": "0070dcd0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 10,
+ "owners_bound": 10
+}

@@ -1,0 +1,58 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?GetThisClass@CXTPToolBar@@SGPAUCRuntimeClass@@XZ",
+    "address": "006c1b10"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPToolBar\\objects\\2c424e4bda94ebdf\\candidate.obj": "4e754bdbbdeb7cf11efdb5864203059a93e81a237aa98cb8a38cab2d3b82cb70",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-zm9xqkcy\\owners.json": "809c6380b56951bb739c24bf17a65890a50bbde6cc045a5421d98affa61e2acc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-zm9xqkcy\\import-thunk-identities-as-owner.json": "fca9b5c5f7fa3b15a7823e15fb6d0e8e573a6335e5ee7a715ba82c331cd6011b"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0CControlButtonCustomize@CXTPToolBar@@QAE@XZ",
+    "address": "006c1b60"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPToolBar\\objects\\2c424e4bda94ebdf\\candidate.obj": "4e754bdbbdeb7cf11efdb5864203059a93e81a237aa98cb8a38cab2d3b82cb70",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-zm9xqkcy\\owners.json": "809c6380b56951bb739c24bf17a65890a50bbde6cc045a5421d98affa61e2acc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-zm9xqkcy\\import-thunk-identities-as-owner.json": "fca9b5c5f7fa3b15a7823e15fb6d0e8e573a6335e5ee7a715ba82c331cd6011b"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??_ECControlButtonCustomize@CXTPToolBar@@UAEPAXI@Z",
+   "address": "007457e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECControlButtonCustomize@CXTPToolBar@@WCA@AEPAXI@Z",
+   "address": "00745730",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?CreateObject@CXTPToolBar@@SGPAVCObject@@XZ",
+   "address": "006c2150",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnExecute@CControlButtonCustomize@CXTPToolBar@@UAEXXZ",
+   "address": "006c1b90",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_GetBaseClass@CXTPToolBar@@KGPAUCRuntimeClass@@XZ",
+   "address": "006c1b00",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

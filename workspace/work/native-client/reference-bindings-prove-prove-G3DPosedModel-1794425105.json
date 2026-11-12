@@ -1,0 +1,27 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??$_Median@PAV?$ReferenceCountedPointer@VPosedModel2D@G3D@@@G3D@@P6A_NABV12@0@Z@std@@YAXPAV?$ReferenceCountedPointer@VPosedModel2D@G3D@@@G3D@@00P6A_NABV12@1@Z@Z",
+    "address": "005e6830"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DPosedModel\\objects\\9c473aec2c50365e\\candidate.obj": "3e51b9e0c9d85a7d817001423c82b249962ccf6809c2b42584adfc4aa010c42d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-y96uk7rw\\owners.json": "d735641721ccf996940d157f3c8d4078a17fdee3d9c06197a006d98dce42f919",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-y96uk7rw\\import-thunk-identities-as-owner.json": "fe0f2e091bb826527a3d39b8fabd285ad7713c83dfdfeef36fbf2233d8e543bd"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??$_Med3@PAV?$ReferenceCountedPointer@VPosedModel2D@G3D@@@G3D@@P6A_NABV12@0@Z@std@@YAXPAV?$ReferenceCountedPointer@VPosedModel2D@G3D@@@G3D@@00P6A_NABV12@1@Z@Z",
+   "address": "005e66b0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

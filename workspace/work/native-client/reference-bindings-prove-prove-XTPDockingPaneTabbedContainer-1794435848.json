@@ -1,0 +1,99 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?OnSizeParent@CXTPDockingPaneTabbedContainer@@MAEXPAVCWnd@@VCRect@@PAX@Z",
+    "address": "0075e140"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockingPaneTabbedContainer\\objects\\053bc013ca1192bb\\candidate.obj": "14c293214016a2404f971bd8ad89183ae5589e42e997cb511ace510c34d57d45",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-c8dkwlas\\owners.json": "4d15e4d72f8a732c8bf812905008bf0597566eaad1c9c913accb39c88d4a11d2",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-c8dkwlas\\import-thunk-identities-as-owner.json": "932c178aec9425a8cbba1fd9c993a90abd57bdb476bf471c96ff57c59780ecbd"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?IsTabsVisible@CXTPDockingPaneTabbedContainer@@UBEHXZ",
+    "address": "0075dfc0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockingPaneTabbedContainer\\objects\\053bc013ca1192bb\\candidate.obj": "14c293214016a2404f971bd8ad89183ae5589e42e997cb511ace510c34d57d45",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-c8dkwlas\\owners.json": "4d15e4d72f8a732c8bf812905008bf0597566eaad1c9c913accb39c88d4a11d2",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-c8dkwlas\\import-thunk-identities-as-owner.json": "932c178aec9425a8cbba1fd9c993a90abd57bdb476bf471c96ff57c59780ecbd"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?OnLButtonDown@CXTPDockingPaneTabbedContainer@@IAEXIVCPoint@@@Z",
+    "address": "00760110"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockingPaneTabbedContainer\\objects\\053bc013ca1192bb\\candidate.obj": "14c293214016a2404f971bd8ad89183ae5589e42e997cb511ace510c34d57d45",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-c8dkwlas\\owners.json": "4d15e4d72f8a732c8bf812905008bf0597566eaad1c9c913accb39c88d4a11d2",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-c8dkwlas\\import-thunk-identities-as-owner.json": "932c178aec9425a8cbba1fd9c993a90abd57bdb476bf471c96ff57c59780ecbd"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?Click@CXTPDockingPaneCaptionButton@@QAEKPAVCWnd@@VCPoint@@H@Z",
+   "address": "00768c10",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetItemPane@CXTPDockingPaneTabbedContainer@@QBEPAVCXTPDockingPane@@H@Z",
+   "address": "0075f090",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetPinButton@CXTPDockingPaneTabbedContainer@@QBEPAVCXTPDockingPaneCaptionButton@@XZ",
+   "address": "0075d8a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetThisClass@CXTPDockingPaneAutoHideWnd@@SGPAUCRuntimeClass@@XZ",
+   "address": "007567d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?HitTest@CXTPDockingPaneTabbedContainer@@IBEHVCPoint@@@Z",
+   "address": "0075e580",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?HitTestCaptionButton@CXTPDockingPaneTabbedContainer@@IBEPAVCXTPDockingPaneCaptionButton@@VCPoint@@@Z",
+   "address": "0075e8b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnCaptionButtonDown@CXTPDockingPaneTabbedContainer@@IAEHPAVCXTPDockingPaneCaptionButton@@@Z",
+   "address": "0075ef80",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetAtGrow@?$CArray@VCRect@@AAV1@@@QAEXHAAVCRect@@@Z",
+   "address": "00743fc0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?ShowWindow@CXTPDockingPane@@IAEXH@Z",
+   "address": "00707230",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_RestoreFocus@CXTPDockingPaneTabbedContainer@@IAEXXZ",
+   "address": "0075db80",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp_?wndBottom@CWnd@@2V1@B",
+   "address": "00803fc0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 3,
+ "owners_bound": 3
+}

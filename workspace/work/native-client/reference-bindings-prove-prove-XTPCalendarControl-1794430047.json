@@ -1,0 +1,190 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?OffsetRect@CRect@@QAEXHH@Z",
+    "address": "0044df60"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPCalendarControl\\objects\\a0e3304ee92a0d2f\\candidate.obj": "832cf5310b5f2123c35e013ac6680828ae607b77859cf6123c17718d06ab722f",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8g95n_l6\\owners.json": "912aa342db5d7eabdb75e7c940a49e0f9ad31a8f4956d65090708d56250919bc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8g95n_l6\\import-thunk-identities-as-owner.json": "41b98cf7b2bd6b48257ff0f8c379021eb46160503096c35ae158a1d6b1fc0d0b"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?CreateCompatibleBitmap@CBitmap@@QAEHPAVCDC@@HH@Z",
+    "address": "006ba660"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPCalendarControl\\objects\\a0e3304ee92a0d2f\\candidate.obj": "832cf5310b5f2123c35e013ac6680828ae607b77859cf6123c17718d06ab722f",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8g95n_l6\\owners.json": "912aa342db5d7eabdb75e7c940a49e0f9ad31a8f4956d65090708d56250919bc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8g95n_l6\\import-thunk-identities-as-owner.json": "41b98cf7b2bd6b48257ff0f8c379021eb46160503096c35ae158a1d6b1fc0d0b"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?CreateCompatibleDC@CDC@@QAEHPAV1@@Z",
+    "address": "006aeb50"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPCalendarControl\\objects\\a0e3304ee92a0d2f\\candidate.obj": "832cf5310b5f2123c35e013ac6680828ae607b77859cf6123c17718d06ab722f",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8g95n_l6\\owners.json": "912aa342db5d7eabdb75e7c940a49e0f9ad31a8f4956d65090708d56250919bc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8g95n_l6\\import-thunk-identities-as-owner.json": "41b98cf7b2bd6b48257ff0f8c379021eb46160503096c35ae158a1d6b1fc0d0b"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?BitBlt@CDC@@QAEHHHHHPAV1@HHK@Z",
+    "address": "006aeb90"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPCalendarControl\\objects\\a0e3304ee92a0d2f\\candidate.obj": "832cf5310b5f2123c35e013ac6680828ae607b77859cf6123c17718d06ab722f",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8g95n_l6\\owners.json": "912aa342db5d7eabdb75e7c940a49e0f9ad31a8f4956d65090708d56250919bc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8g95n_l6\\import-thunk-identities-as-owner.json": "41b98cf7b2bd6b48257ff0f8c379021eb46160503096c35ae158a1d6b1fc0d0b"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1?$CXTPSmartPtrInternalT@VCXTPCalendarRecurrencePattern@@@@UAE@XZ",
+    "address": "006cf030"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPCalendarControl\\objects\\a0e3304ee92a0d2f\\candidate.obj": "832cf5310b5f2123c35e013ac6680828ae607b77859cf6123c17718d06ab722f",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8g95n_l6\\owners.json": "912aa342db5d7eabdb75e7c940a49e0f9ad31a8f4956d65090708d56250919bc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8g95n_l6\\import-thunk-identities-as-owner.json": "41b98cf7b2bd6b48257ff0f8c379021eb46160503096c35ae158a1d6b1fc0d0b"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??_G?$CXTPSmartPtrInternalT@VCXTPCalendarRecurrencePattern@@@@UAEPAXI@Z",
+    "address": "006cf050"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPCalendarControl\\objects\\a0e3304ee92a0d2f\\candidate.obj": "832cf5310b5f2123c35e013ac6680828ae607b77859cf6123c17718d06ab722f",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8g95n_l6\\owners.json": "912aa342db5d7eabdb75e7c940a49e0f9ad31a8f4956d65090708d56250919bc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8g95n_l6\\import-thunk-identities-as-owner.json": "41b98cf7b2bd6b48257ff0f8c379021eb46160503096c35ae158a1d6b1fc0d0b"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?GetAssocAt@?$CMap@KKP8CXTPCalendarControl@@AEXKIJ@ZP81@AEXKIJ@Z@@IBEPAVCAssoc@1@KAAI0@Z",
+    "address": "00708080"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPCalendarControl\\objects\\a0e3304ee92a0d2f\\candidate.obj": "832cf5310b5f2123c35e013ac6680828ae607b77859cf6123c17718d06ab722f",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8g95n_l6\\owners.json": "912aa342db5d7eabdb75e7c940a49e0f9ad31a8f4956d65090708d56250919bc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8g95n_l6\\import-thunk-identities-as-owner.json": "41b98cf7b2bd6b48257ff0f8c379021eb46160503096c35ae158a1d6b1fc0d0b"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?SetSize@?$CArray@V?$CXTPSmartPtrInternalT@VCXTPCalendarResource@@@@AAV1@@@QAEXHH@Z",
+    "address": "006cf5e0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPCalendarControl\\objects\\a0e3304ee92a0d2f\\candidate.obj": "832cf5310b5f2123c35e013ac6680828ae607b77859cf6123c17718d06ab722f",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8g95n_l6\\owners.json": "912aa342db5d7eabdb75e7c940a49e0f9ad31a8f4956d65090708d56250919bc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8g95n_l6\\import-thunk-identities-as-owner.json": "41b98cf7b2bd6b48257ff0f8c379021eb46160503096c35ae158a1d6b1fc0d0b"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Serialize@?$CMap@KKP8CXTPCalendarControl@@AEXKIJ@ZP81@AEXKIJ@Z@@UAEXAAVCArchive@@@Z",
+    "address": "006be360"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPCalendarControl\\objects\\a0e3304ee92a0d2f\\candidate.obj": "832cf5310b5f2123c35e013ac6680828ae607b77859cf6123c17718d06ab722f",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8g95n_l6\\owners.json": "912aa342db5d7eabdb75e7c940a49e0f9ad31a8f4956d65090708d56250919bc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-8g95n_l6\\import-thunk-identities-as-owner.json": "41b98cf7b2bd6b48257ff0f8c379021eb46160503096c35ae158a1d6b1fc0d0b"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??$CompareElements@KK@@YGHPBK0@Z",
+   "address": "0071c2e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$SerializeElements@K@@YGXAAVCArchive@@PAKH@Z",
+   "address": "00787550",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$SerializeElements@P8CXTPCalendarControl@@AEXKIJ@Z@@YGXAAVCArchive@@PAP8CXTPCalendarControl@@AEXKIJ@ZH@Z",
+   "address": "00787550",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??A?$CMap@KKP8CXTPCalendarControl@@AEXKIJ@ZP81@AEXKIJ@Z@@QAEAAP8CXTPCalendarControl@@AEXKIJ@ZK@Z",
+   "address": "007215d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_E?$CXTPSmartPtrInternalT@VCXTPCalendarRecurrencePattern@@@@UAEPAXI@Z",
+   "address": "006cf050",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_E?$CXTPSmartPtrInternalT@VCXTPCalendarResource@@@@UAEPAXI@Z",
+   "address": "006cf050",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Attach@CDC@@QAEHPAUHDC__@@@Z",
+   "address": "007bc046",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Attach@CGdiObject@@QAEHPAX@Z",
+   "address": "006a0c62",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?InternalRelease@CCmdTarget@@QAEKXZ",
+   "address": "006a0be4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?ReadCount@CArchive@@QAEKXZ",
+   "address": "006a1142",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?WriteCount@CArchive@@QAEXK@Z",
+   "address": "006a1148",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?memcpy_s@Checked@ATL@@YAXPAXIPBXI@Z",
+   "address": "00401810",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__BitBlt@36",
+   "address": "008020c4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__CreateCompatibleBitmap@12",
+   "address": "0080209c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__CreateCompatibleDC@4",
+   "address": "008020d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__OffsetRect@12",
+   "address": "00802d2c",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 9,
+ "owners_bound": 9
+}

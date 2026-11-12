@@ -1,0 +1,120 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??_GDialogTemplate@_internal@G3D@@UAEPAXI@Z",
+    "address": "00519020"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3Dprompt\\objects\\ad1ff2d6a02f592f\\candidate.obj": "d7cba39ba2a40046c1d77cd353f2fbbf1c88e84b11db6f3e1e607b1161eb30a6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-hcany0lr\\owners.json": "f8e1f49fb6f4648314cd2d95e01c26bbc12d0a284d7b445ec45f0ed5477947b9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-hcany0lr\\import-thunk-identities-as-owner.json": "bcac3d0f17237db1a34d6d5a4a7e85854fe2f6a06be320043865f12933f8992e"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?PromptDlgProc@_internal@G3D@@YGHPAUHWND__@@IIJ@Z",
+    "address": "00519050"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3Dprompt\\objects\\ad1ff2d6a02f592f\\candidate.obj": "d7cba39ba2a40046c1d77cd353f2fbbf1c88e84b11db6f3e1e607b1161eb30a6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-hcany0lr\\owners.json": "f8e1f49fb6f4648314cd2d95e01c26bbc12d0a284d7b445ec45f0ed5477947b9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-hcany0lr\\import-thunk-identities-as-owner.json": "bcac3d0f17237db1a34d6d5a4a7e85854fe2f6a06be320043865f12933f8992e"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0DialogTemplate@_internal@G3D@@QAE@PBDKHHHH0G@Z",
+    "address": "005192d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3Dprompt\\objects\\ad1ff2d6a02f592f\\candidate.obj": "d7cba39ba2a40046c1d77cd353f2fbbf1c88e84b11db6f3e1e607b1161eb30a6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-hcany0lr\\owners.json": "f8e1f49fb6f4648314cd2d95e01c26bbc12d0a284d7b445ec45f0ed5477947b9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-hcany0lr\\import-thunk-identities-as-owner.json": "bcac3d0f17237db1a34d6d5a4a7e85854fe2f6a06be320043865f12933f8992e"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?guiPrompt@G3D@@YAHPBD0PAPBDH@Z",
+    "address": "00519530"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3Dprompt\\objects\\ad1ff2d6a02f592f\\candidate.obj": "d7cba39ba2a40046c1d77cd353f2fbbf1c88e84b11db6f3e1e607b1161eb30a6",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-hcany0lr\\owners.json": "f8e1f49fb6f4648314cd2d95e01c26bbc12d0a284d7b445ec45f0ed5477947b9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-hcany0lr\\import-thunk-identities-as-owner.json": "bcac3d0f17237db1a34d6d5a4a7e85854fe2f6a06be320043865f12933f8992e"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??_EDialogTemplate@_internal@G3D@@UAEPAXI@Z",
+   "address": "00519020",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?AddButton@DialogTemplate@_internal@G3D@@QAEXPBDKKHHHHG@Z",
+   "address": "00519390",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?AddEditBox@DialogTemplate@_internal@G3D@@QAEXPBDKKHHHHG@Z",
+   "address": "00519460",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?AppendData@DialogTemplate@_internal@G3D@@IAEXPBXH@Z",
+   "address": "00519210",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?AppendString@DialogTemplate@_internal@G3D@@IAEXPBD@Z",
+   "address": "00519270",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__CreateFontA@56",
+   "address": "00802120",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__DialogBoxIndirectParamA@20",
+   "address": "00802c9c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__EndDialog@8",
+   "address": "00802ca0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__GetDlgItem@8",
+   "address": "00802ca4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__GetModuleHandleA@4",
+   "address": "008021bc",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__SendDlgItemMessageA@20",
+   "address": "00802ca8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__SetFocus@4",
+   "address": "00802e24",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__SetWindowTextA@8",
+   "address": "00802cec",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 4,
+ "owners_bound": 4
+}

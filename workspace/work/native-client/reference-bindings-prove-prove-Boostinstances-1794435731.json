@@ -1,0 +1,48 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?_Xlen@?$vector@U?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@V?$allocator@U?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@@2@@std@@KAXXZ",
+    "address": "004c6d40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Boostinstances\\objects\\89225adc303578d6\\candidate.obj": "cc164c4bee271ba0c4a3538ffd9665f3249a3f1778302a03ada2989256438536",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6oubm79c\\owners.json": "d337d19efe006b73215d00d4b5d7aacaca686f16cd8e71d5d440d09629b13dc1",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6oubm79c\\import-thunk-identities-as-owner.json": "562c64107395c19a5f5c984e9127909835ad717f190ed4fc28446b37b68196fc"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__ehhandler$?_Insert_n@?$vector@U?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@V?$allocator@U?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@@2@@std@@IAEXV?$_Vector_const_iterator@U?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@V?$allocator@U?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@@2@@2@IABU?$pair@_NPAUre_syntax_base@re_detail@boost@@@2@@Z",
+    "address": "007dbf50"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Boostinstances\\objects\\89225adc303578d6\\candidate.obj": "cc164c4bee271ba0c4a3538ffd9665f3249a3f1778302a03ada2989256438536",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6oubm79c\\owners.json": "d337d19efe006b73215d00d4b5d7aacaca686f16cd8e71d5d440d09629b13dc1",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6oubm79c\\import-thunk-identities-as-owner.json": "562c64107395c19a5f5c984e9127909835ad717f190ed4fc28446b37b68196fc"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "__catch$?_Insert_n@?$vector@U?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@V?$allocator@U?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@@2@@std@@IAEXV?$_Vector_const_iterator@U?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@V?$allocator@U?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@@2@@2@IABU?$pair@_NPAUre_syntax_base@re_detail@boost@@@2@@Z$0",
+   "address": "0065b0b1",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__catch$?_Insert_n@?$vector@U?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@V?$allocator@U?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@@2@@std@@IAEXV?$_Vector_const_iterator@U?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@V?$allocator@U?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@@2@@2@IABU?$pair@_NPAUre_syntax_base@re_detail@boost@@@2@@Z$2",
+   "address": "0065b0bd",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?_Xlen@?$vector@U?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@V?$allocator@U?$pair@_NPAUre_syntax_base@re_detail@boost@@@std@@@2@@std@@KAXXZ",
+   "address": "007de842",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

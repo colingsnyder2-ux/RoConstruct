@@ -1,0 +1,32 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "_start_input_pass",
+    "address": "0052a9a0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Jpegjdinput\\objects\\231fd56f136ee6a9\\candidate.obj": "3df90017198d192d4e6de96e96a5f024dde63022c256352b11c9b332b792b1d9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-c4isw8qn\\owners.json": "3493e001a8011b7b02598ddc325f8bf6848a8dfb391024f49dc8db8fc1ec1ee4",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-c4isw8qn\\import-thunk-identities-as-owner.json": "96732d01246180f700c53e8cee24ba92356bdfeab70ec0b99f9be608ee75139a"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "_latch_quant_tables",
+   "address": "0052a900",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_per_scan_setup",
+   "address": "0052a760",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

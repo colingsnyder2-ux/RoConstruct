@@ -1,0 +1,42 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "_start_pass_main",
+    "address": "00530e40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Jpegjdmainct\\objects\\4899c49adc2b08bf\\candidate.obj": "d0cacddef21b839057422678bda2228a1072940768bdea06a9ce07f401be8de3",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-np9opiia\\owners.json": "b51b7a78ab14ff39773610bc38fb86c577bab3d0c4aadfed3b7dad162661cd7f",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-np9opiia\\import-thunk-identities-as-owner.json": "6e0d1df5b60d060cd11f05d5fd060d6269cbd5d6427651712192a67a6ee5f2aa"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "_make_funny_pointers",
+   "address": "005309a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_process_data_context_main",
+   "address": "00530cd0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_process_data_crank_post",
+   "address": "00530e10",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_process_data_simple_main",
+   "address": "00530c60",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

@@ -25,6 +25,8 @@ OUT = ROOT / 'work/native-client/rtti-dtor-identities.json'
 def main():
     base, image = match._image('2008-06')
     funcs = {int(a, 16) for a in match._functions('2008-06')}
+    starts = sorted(funcs)
+    from bisect import bisect_right
     types = rtti.descriptors('2008-06')
     u32 = lambda va: struct.unpack_from('<I', image, va - base)[0]
     cols = defaultdict(list)                          # class -> [(col va, offset)]
@@ -56,7 +58,8 @@ def main():
             ev = f'slot {slot} of {name} vftable {vft:08x}: exact MSVC scalar deleting dtor body'
             rows += [{'symbol': f'??_G{cls}UAEPAXI@Z', 'address': f'{fn:08x}', 'evidence': ev},
                      {'symbol': f'??_E{cls}UAEPAXI@Z', 'address': f'{fn:08x}', 'evidence': ev}]
-            d = image[dtor - base:dtor - base + 0x400]
+            nxt = starts[bisect_right(starts, dtor)] if bisect_right(starts, dtor) < len(starts) else dtor + 0x400
+            d = image[dtor - base:dtor - base + min(0x400, nxt - dtor)]      # the dtor's own bytes only: a neighbour's constructor also stores the vftable
             if dtor in funcs and struct.pack('<I', vft) in d:
                 rows.append({'symbol': f'??1{cls}UAE@XZ', 'address': f'{dtor:08x}',
                              'evidence': f'called by deleting dtor {fn:08x}; stores vftable {vft:08x}'})

@@ -1,0 +1,139 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?_Reverse@?$vector@VPlaneBoundedVolume@Ogre@@V?$allocator@VPlaneBoundedVolume@Ogre@@@std@@@std@@QAEXPAVPlaneBoundedVolume@Ogre@@0@Z",
+    "address": "0048a580"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-OgreRbxSceneManager\\objects\\7e04eaf42a7a4aa5\\candidate.obj": "449e526cae9317aeac0e6032eacacf6333ad0fa6d82e07f0ae7a5cc87e5982d9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-p4f5keon\\owners.json": "e452723e9338a034654e884078394a9a56badbd65850ac6b4c1bb8c47cff7ffd",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-p4f5keon\\import-thunk-identities-as-owner.json": "7c1e18363bbd5ff091af6a040c368dfe460b7be1cf47da32519c5f75f1314275"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$_Fill@PAVPlaneBoundedVolume@Ogre@@V12@@std@@YAXPAVPlaneBoundedVolume@Ogre@@0ABV12@@Z",
+    "address": "00428990"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-OgreRbxSceneManager\\objects\\7e04eaf42a7a4aa5\\candidate.obj": "449e526cae9317aeac0e6032eacacf6333ad0fa6d82e07f0ae7a5cc87e5982d9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-p4f5keon\\owners.json": "e452723e9338a034654e884078394a9a56badbd65850ac6b4c1bb8c47cff7ffd",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-p4f5keon\\import-thunk-identities-as-owner.json": "7c1e18363bbd5ff091af6a040c368dfe460b7be1cf47da32519c5f75f1314275"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$_Copy_opt@PAVPlaneBoundedVolume@Ogre@@PAV12@@std@@YAPAVPlaneBoundedVolume@Ogre@@PAV12@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+    "address": "00445310"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-OgreRbxSceneManager\\objects\\7e04eaf42a7a4aa5\\candidate.obj": "449e526cae9317aeac0e6032eacacf6333ad0fa6d82e07f0ae7a5cc87e5982d9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-p4f5keon\\owners.json": "e452723e9338a034654e884078394a9a56badbd65850ac6b4c1bb8c47cff7ffd",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-p4f5keon\\import-thunk-identities-as-owner.json": "7c1e18363bbd5ff091af6a040c368dfe460b7be1cf47da32519c5f75f1314275"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$_Copy_backward_opt@PAVPlaneBoundedVolume@Ogre@@PAV12@@std@@YAPAVPlaneBoundedVolume@Ogre@@PAV12@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+    "address": "004289c0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-OgreRbxSceneManager\\objects\\7e04eaf42a7a4aa5\\candidate.obj": "449e526cae9317aeac0e6032eacacf6333ad0fa6d82e07f0ae7a5cc87e5982d9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-p4f5keon\\owners.json": "e452723e9338a034654e884078394a9a56badbd65850ac6b4c1bb8c47cff7ffd",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-p4f5keon\\import-thunk-identities-as-owner.json": "7c1e18363bbd5ff091af6a040c368dfe460b7be1cf47da32519c5f75f1314275"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??4?$SharedPtr@VShadowCameraSetup@Ogre@@@Ogre@@QAEAAV01@ABV01@@Z",
+    "address": "0068ff50"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-OgreRbxSceneManager\\objects\\7e04eaf42a7a4aa5\\candidate.obj": "449e526cae9317aeac0e6032eacacf6333ad0fa6d82e07f0ae7a5cc87e5982d9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-p4f5keon\\owners.json": "e452723e9338a034654e884078394a9a56badbd65850ac6b4c1bb8c47cff7ffd",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-p4f5keon\\import-thunk-identities-as-owner.json": "7c1e18363bbd5ff091af6a040c368dfe460b7be1cf47da32519c5f75f1314275"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$fill@PAVPlaneBoundedVolume@Ogre@@V12@@std@@YAXPAVPlaneBoundedVolume@Ogre@@0ABV12@@Z",
+    "address": "00428990"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-OgreRbxSceneManager\\objects\\7e04eaf42a7a4aa5\\candidate.obj": "449e526cae9317aeac0e6032eacacf6333ad0fa6d82e07f0ae7a5cc87e5982d9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-p4f5keon\\owners.json": "e452723e9338a034654e884078394a9a56badbd65850ac6b4c1bb8c47cff7ffd",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-p4f5keon\\import-thunk-identities-as-owner.json": "7c1e18363bbd5ff091af6a040c368dfe460b7be1cf47da32519c5f75f1314275"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?push_back@?$vector@VPlane@Ogre@@V?$allocator@VPlane@Ogre@@@std@@@std@@QAEXABVPlane@Ogre@@@Z",
+    "address": "0067da70"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-OgreRbxSceneManager\\objects\\7e04eaf42a7a4aa5\\candidate.obj": "449e526cae9317aeac0e6032eacacf6333ad0fa6d82e07f0ae7a5cc87e5982d9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-p4f5keon\\owners.json": "e452723e9338a034654e884078394a9a56badbd65850ac6b4c1bb8c47cff7ffd",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-p4f5keon\\import-thunk-identities-as-owner.json": "7c1e18363bbd5ff091af6a040c368dfe460b7be1cf47da32519c5f75f1314275"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?_Xran@?$vector@MV?$allocator@M@std@@@std@@KAXXZ",
+    "address": "0046dfc0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-OgreRbxSceneManager\\objects\\4fb5b1390ebb2348\\candidate.obj": "a6dab71315ae7a7a52f1c883c65d364682b679a89e3af4910b8db8090d848dbc",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-p4f5keon\\owners.json": "e452723e9338a034654e884078394a9a56badbd65850ac6b4c1bb8c47cff7ffd",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-p4f5keon\\import-thunk-identities-as-owner.json": "7c1e18363bbd5ff091af6a040c368dfe460b7be1cf47da32519c5f75f1314275"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??$_Uninit_fill_n@PAVPlane@Ogre@@IV12@V?$allocator@VPlane@Ogre@@@std@@@std@@YAXPAVPlane@Ogre@@IABV12@AAV?$allocator@VPlane@Ogre@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "0067c9a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_E?$SharedPtr@VShadowCameraSetup@Ogre@@@Ogre@@UAEPAXI@Z",
+   "address": "0068de80",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?destroy@?$SharedPtr@VShadowCameraSetup@Ogre@@@Ogre@@MAEXXZ",
+   "address": "0068d030",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?insert@?$vector@VPlane@Ogre@@V?$allocator@VPlane@Ogre@@@std@@@std@@QAE?AV?$_Vector_iterator@VPlane@Ogre@@V?$allocator@VPlane@Ogre@@@std@@@2@V?$_Vector_const_iterator@VPlane@Ogre@@V?$allocator@VPlane@Ogre@@@std@@@2@ABVPlane@Ogre@@@Z",
+   "address": "0067d8f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?swap@?$SharedPtr@VShadowCameraSetup@Ogre@@@Ogre@@MAEXAAV12@@Z",
+   "address": "0068ddc0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??4?$SharedPtr@VShadowCameraSetup@Ogre@@@Ogre@@QAEAAV01@ABV01@@Z",
+   "address": "007de2c8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?_Xran@?$vector@MV?$allocator@M@std@@@std@@KAXXZ",
+   "address": "007de842",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {
+  "__imp_??4PlaneBoundedVolume@Ogre@@QAEAAV01@ABV01@@Z": [
+   "008023f0",
+   "0080240c"
+  ]
+ },
+ "owners_tried": 8,
+ "owners_bound": 8
+}

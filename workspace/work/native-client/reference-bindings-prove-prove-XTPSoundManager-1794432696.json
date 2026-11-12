@@ -1,0 +1,105 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?StopThread@CXTPSoundManager@@QAEXXZ",
+    "address": "00727840"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPSoundManager\\objects\\5f92ad40393735b7\\candidate.obj": "32bb78d7ed10128ab049d7a43bf2105611ace40fe5210a8b0eca39d069bfcd7e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-e1uaosyp\\owners.json": "655eb3b6b87353704aae14dd107ebe23cdbc395fa86ddf588563028ca3ddcef7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-e1uaosyp\\import-thunk-identities-as-owner.json": "d25396d887591cbcceda4bbdea11d2f3625881445e352fa56d3f4b32c86abfd5"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?XTPSoundManager@@YAPAVCXTPSoundManager@@XZ",
+    "address": "007278d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPSoundManager\\objects\\5f92ad40393735b7\\candidate.obj": "32bb78d7ed10128ab049d7a43bf2105611ace40fe5210a8b0eca39d069bfcd7e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-e1uaosyp\\owners.json": "655eb3b6b87353704aae14dd107ebe23cdbc395fa86ddf588563028ca3ddcef7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-e1uaosyp\\import-thunk-identities-as-owner.json": "d25396d887591cbcceda4bbdea11d2f3625881445e352fa56d3f4b32c86abfd5"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?SoundThreadProc@CXTPSoundManager@@CGKPAX@Z",
+    "address": "00727900"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPSoundManager\\objects\\5f92ad40393735b7\\candidate.obj": "32bb78d7ed10128ab049d7a43bf2105611ace40fe5210a8b0eca39d069bfcd7e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-e1uaosyp\\owners.json": "655eb3b6b87353704aae14dd107ebe23cdbc395fa86ddf588563028ca3ddcef7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-e1uaosyp\\import-thunk-identities-as-owner.json": "d25396d887591cbcceda4bbdea11d2f3625881445e352fa56d3f4b32c86abfd5"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?StartThread@CXTPSoundManager@@AAEXXZ",
+    "address": "00727970"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPSoundManager\\objects\\5f92ad40393735b7\\candidate.obj": "32bb78d7ed10128ab049d7a43bf2105611ace40fe5210a8b0eca39d069bfcd7e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-e1uaosyp\\owners.json": "655eb3b6b87353704aae14dd107ebe23cdbc395fa86ddf588563028ca3ddcef7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-e1uaosyp\\import-thunk-identities-as-owner.json": "d25396d887591cbcceda4bbdea11d2f3625881445e352fa56d3f4b32c86abfd5"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??0CXTPSoundManager@@AAE@XZ",
+   "address": "00727820",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??__Fs_managerInstance@?1??XTPSoundManager@@YAPAVCXTPSoundManager@@XZ@YAXXZ",
+   "address": "008018d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__CloseHandle@4",
+   "address": "00802234",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__CreateThread@24",
+   "address": "00802330",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__GetExitCodeThread@8",
+   "address": "00802328",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__PlaySoundA@12",
+   "address": "00802eac",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__ResumeThread@4",
+   "address": "0080232c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__SetThreadPriority@8",
+   "address": "00802294",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__TerminateThread@8",
+   "address": "00802324",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__WaitForSingleObject@8",
+   "address": "00802288",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 4,
+ "owners_bound": 4
+}

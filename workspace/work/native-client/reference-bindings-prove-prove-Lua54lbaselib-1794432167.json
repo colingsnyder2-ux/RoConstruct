@@ -1,0 +1,231 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "_luaB_gcinfo",
+    "address": "00628380"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Lua54lbaselib\\objects\\72205336791f8b87\\candidate.obj": "04dbb7fbe95236dad740ce831521da18ad9e58317e70744e6c07232bdcb079eb",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-phwjah9c\\owners.json": "fae7cdfac6c454b663381e7c3e4d91da7bc9167bdab718cd69a28c987c059e81",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-phwjah9c\\import-thunk-identities-as-owner.json": "7f4fd05f763e8ef3b0d704dc18aa0043df0d55929224fb0cf69678e534a7a567"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_luaB_cocreate",
+    "address": "00628cb0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Lua54lbaselib\\objects\\72205336791f8b87\\candidate.obj": "04dbb7fbe95236dad740ce831521da18ad9e58317e70744e6c07232bdcb079eb",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-phwjah9c\\owners.json": "fae7cdfac6c454b663381e7c3e4d91da7bc9167bdab718cd69a28c987c059e81",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-phwjah9c\\import-thunk-identities-as-owner.json": "7f4fd05f763e8ef3b0d704dc18aa0043df0d55929224fb0cf69678e534a7a567"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_luaB_cowrap",
+    "address": "00628d10"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Lua54lbaselib\\objects\\72205336791f8b87\\candidate.obj": "04dbb7fbe95236dad740ce831521da18ad9e58317e70744e6c07232bdcb079eb",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-phwjah9c\\owners.json": "fae7cdfac6c454b663381e7c3e4d91da7bc9167bdab718cd69a28c987c059e81",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-phwjah9c\\import-thunk-identities-as-owner.json": "7f4fd05f763e8ef3b0d704dc18aa0043df0d55929224fb0cf69678e534a7a567"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_luaB_yield",
+    "address": "00628d40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Lua54lbaselib\\objects\\72205336791f8b87\\candidate.obj": "04dbb7fbe95236dad740ce831521da18ad9e58317e70744e6c07232bdcb079eb",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-phwjah9c\\owners.json": "fae7cdfac6c454b663381e7c3e4d91da7bc9167bdab718cd69a28c987c059e81",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-phwjah9c\\import-thunk-identities-as-owner.json": "7f4fd05f763e8ef3b0d704dc18aa0043df0d55929224fb0cf69678e534a7a567"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_base_open",
+    "address": "00628e50"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Lua54lbaselib\\objects\\72205336791f8b87\\candidate.obj": "04dbb7fbe95236dad740ce831521da18ad9e58317e70744e6c07232bdcb079eb",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-phwjah9c\\owners.json": "fae7cdfac6c454b663381e7c3e4d91da7bc9167bdab718cd69a28c987c059e81",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-phwjah9c\\import-thunk-identities-as-owner.json": "7f4fd05f763e8ef3b0d704dc18aa0043df0d55929224fb0cf69678e534a7a567"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "_ipairsaux",
+   "address": "00628500",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaB_assert",
+   "address": "00628750",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaB_auxwrap",
+   "address": "00628c50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaB_collectgarbage",
+   "address": "006283a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaB_dofile",
+   "address": "00628700",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaB_error",
+   "address": "00628020",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaB_getfenv",
+   "address": "006281f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaB_getmetatable",
+   "address": "00628080",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaB_ipairs",
+   "address": "00628540",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaB_load",
+   "address": "006286a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaB_loadfile",
+   "address": "006285e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaB_loadstring",
+   "address": "00628580",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaB_newproxy",
+   "address": "00628a40",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaB_next",
+   "address": "00628480",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaB_pairs",
+   "address": "006284c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaB_pcall",
+   "address": "006288a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaB_print",
+   "address": "00627e30",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaB_rawequal",
+   "address": "006282d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaB_rawget",
+   "address": "00628300",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaB_rawset",
+   "address": "00628340",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaB_select",
+   "address": "00628820",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaB_setfenv",
+   "address": "00628230",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaB_setmetatable",
+   "address": "006280d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaB_tonumber",
+   "address": "00627f00",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaB_tostring",
+   "address": "00628940",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaB_type",
+   "address": "00628450",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaB_unpack",
+   "address": "006287a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaB_xpcall",
+   "address": "006288f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_lua_gc",
+   "address": "00612a80",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_lua_iscfunction",
+   "address": "00611e40",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_lua_newthread",
+   "address": "00612f60",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_lua_xmove",
+   "address": "00611ba0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_lua_yield",
+   "address": "00621ec0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 5,
+ "owners_bound": 5
+}

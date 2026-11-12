@@ -1,0 +1,150 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?freeMemory@?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VArg@ArgList@VertexAndPixelShader@G3D@@@G3D@@AAEXXZ",
+    "address": "00486ba0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\f773db3f7baefd55\\candidate.obj": "f445b0d9ec047f24ab8201cd4442945982cc32521cf64154cf2fa2010508a403",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2h5ktcmv\\owners.json": "4406426748b95f58e7b87b6bada66471575fb77813cb40a9b98f353cfbdd69d9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2h5ktcmv\\import-thunk-identities-as-owner.json": "b738840b9e1c35ec5c251a48d3ba5c8b1352b16d714cb3251291bbd557b7fb0a"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0Shader@G3D@@IAE@V?$ReferenceCountedPointer@VVertexAndPixelShader@G3D@@@1@W4UseG3DUniforms@1@@Z",
+    "address": "005074f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\f773db3f7baefd55\\candidate.obj": "f445b0d9ec047f24ab8201cd4442945982cc32521cf64154cf2fa2010508a403",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2h5ktcmv\\owners.json": "4406426748b95f58e7b87b6bada66471575fb77813cb40a9b98f353cfbdd69d9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2h5ktcmv\\import-thunk-identities-as-owner.json": "b738840b9e1c35ec5c251a48d3ba5c8b1352b16d714cb3251291bbd557b7fb0a"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?fromStrings@Shader@G3D@@SA?AV?$ReferenceCountedPointer@VShader@G3D@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0W4UseG3DUniforms@2@@Z",
+    "address": "00507680"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\f773db3f7baefd55\\candidate.obj": "f445b0d9ec047f24ab8201cd4442945982cc32521cf64154cf2fa2010508a403",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2h5ktcmv\\owners.json": "4406426748b95f58e7b87b6bada66471575fb77813cb40a9b98f353cfbdd69d9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2h5ktcmv\\import-thunk-identities-as-owner.json": "b738840b9e1c35ec5c251a48d3ba5c8b1352b16d714cb3251291bbd557b7fb0a"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??__E?bloomShader@ToneMap@G3D@@0PAV?$ReferenceCountedPointer@VShader@G3D@@@2@A@@YAXXZ",
+    "address": "007f9fa0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\f773db3f7baefd55\\candidate.obj": "f445b0d9ec047f24ab8201cd4442945982cc32521cf64154cf2fa2010508a403",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2h5ktcmv\\owners.json": "4406426748b95f58e7b87b6bada66471575fb77813cb40a9b98f353cfbdd69d9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-2h5ktcmv\\import-thunk-identities-as-owner.json": "b738840b9e1c35ec5c251a48d3ba5c8b1352b16d714cb3251291bbd557b7fb0a"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??0?$ReferenceCountedPointer@VShader@G3D@@@G3D@@QAE@XZ",
+   "address": "004f0810",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??1?$ReferenceCountedPointer@VShader@G3D@@@G3D@@QAE@XZ",
+   "address": "00502a70",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??1Entry@?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VArg@ArgList@VertexAndPixelShader@G3D@@@G3D@@QAE@XZ",
+   "address": "00485e70",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_EShader@G3D@@UAEPAXI@Z",
+   "address": "00507720",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??__F?bloomShader@ToneMap@G3D@@0PAV?$ReferenceCountedPointer@VShader@G3D@@@2@A@@YAXXZ",
+   "address": "008019d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?afterPrimitive@Shader@G3D@@UAEXPAVRenderDevice@2@@Z",
+   "address": "00485460",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?alignedMalloc@System@G3D@@SAPAXII@Z",
+   "address": "00508580",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?beforePrimitive@Shader@G3D@@UAEXPAVRenderDevice@2@@Z",
+   "address": "00487c60",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?free@System@G3D@@SAXPAX@Z",
+   "address": "00507d00",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?fromStrings@VertexAndPixelShader@G3D@@SA?AV?$ReferenceCountedPointer@VVertexAndPixelShader@G3D@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0W4UseG3DUniforms@2@_N@Z",
+   "address": "00488fe0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?memset@System@G3D@@SAXPAXEI@Z",
+   "address": "00508a30",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?messages@Shader@G3D@@UBEABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+   "address": "00485a30",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?ok@Shader@G3D@@UBE_NXZ",
+   "address": "00485a20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?preserveState@Shader@G3D@@UBE_NXZ",
+   "address": "005075e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?setPointer@?$ReferenceCountedPointer@VShader@G3D@@@G3D@@AAEXPAVShader@2@@Z",
+   "address": "00598fa0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?setPointer@?$ReferenceCountedPointer@VVertexAndPixelShader@G3D@@@G3D@@AAEXPAVVertexAndPixelShader@2@@Z",
+   "address": "00598fa0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?setPreserveState@Shader@G3D@@UAEX_N@Z",
+   "address": "005075d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??0Shader@G3D@@IAE@V?$ReferenceCountedPointer@VVertexAndPixelShader@G3D@@@1@W4UseG3DUniforms@1@@Z",
+   "address": "007cb92b",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?fromStrings@Shader@G3D@@SA?AV?$ReferenceCountedPointer@VShader@G3D@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0W4UseG3DUniforms@2@@Z",
+   "address": "007bf52b",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 4,
+ "owners_bound": 4
+}

@@ -1,0 +1,27 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?setSpecularCoefficient@RenderDevice@G3D@@QAEXABVColor3@2@@Z",
+    "address": "00476a70"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DRenderDevice\\objects\\5dfe1bb19012e902\\candidate.obj": "bf1a1fffaf47340ffe399d785fb72907b6fed33eee9b111b7beba641e6983aac",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-gxyjjoug\\owners.json": "1b9277b8659057f0ae1f81a521036b8915aabea7f36621512ed8779449529319",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-gxyjjoug\\import-thunk-identities-as-owner.json": "4ba6f13d2cca0a68aec46cba88b4706367658f644bab0b0ed4813deb02e1edf5"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "__imp__glMaterialfv@12",
+   "address": "00802970",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

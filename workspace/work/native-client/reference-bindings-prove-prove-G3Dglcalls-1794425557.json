@@ -1,0 +1,48 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?glDisableAllTextures@G3D@@YAXXZ",
+    "address": "00483500"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3Dglcalls\\objects\\e215e3ae71831bb3\\candidate.obj": "95196281c5c6d8e0ae0e6fa1040ecd16f66a3853e1d0af4b12661f8e1347ca51",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-qiuwm9yy\\owners.json": "ae3b079ba0e1a337c4374198bad622058dff2a3dd4cf4be66b4fe2e33f165186",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-qiuwm9yy\\import-thunk-identities-as-owner.json": "298b3c5b8e2e70dca423de1906668883f6cbad2be6d8a8b0e9161b22df83d846"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?glToScreen@G3D@@YA?AVVector4@1@ABV21@@Z",
+    "address": "00483550"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3Dglcalls\\objects\\e215e3ae71831bb3\\candidate.obj": "95196281c5c6d8e0ae0e6fa1040ecd16f66a3853e1d0af4b12661f8e1347ca51",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-qiuwm9yy\\owners.json": "ae3b079ba0e1a337c4374198bad622058dff2a3dd4cf4be66b4fe2e33f165186",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-qiuwm9yy\\import-thunk-identities-as-owner.json": "298b3c5b8e2e70dca423de1906668883f6cbad2be6d8a8b0e9161b22df83d846"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?_supports_GL_EXT_texture_cube_map@GLCaps@G3D@@0_NA",
+   "address": "0096ee86",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_supports_GL_EXT_texture_rectangle@GLCaps@G3D@@0_NA",
+   "address": "0096ee79",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__glGetDoublev@8",
+   "address": "00802acc",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

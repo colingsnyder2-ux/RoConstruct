@@ -1,0 +1,32 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?IsLowResolution@CXTPColorManager@@QAEHPAUHDC__@@@Z",
+    "address": "006df6e0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPColorManager\\objects\\96cea46258be7227\\candidate.obj": "acd55c617b2c6d4920632681449a191593ccefc2a2aedb6c6b7ce0abefc7f846",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-p6aa0grx\\owners.json": "cbe8c76cad87672a4f5fb55c57bfec37ce851028dad41cc91e6cf07d2dab74a3",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-p6aa0grx\\import-thunk-identities-as-owner.json": "f661402316781e3f0a0eb368c489be48add760d2dc19f04a1c13394fe1bf1212"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "__imp__GetDC@4",
+   "address": "00802ccc",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__GetDeviceCaps@8",
+   "address": "00802148",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

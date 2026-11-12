@@ -1,0 +1,180 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?_Buy@?$vector@UEdge@EdgeData@Ogre@@V?$allocator@UEdge@EdgeData@Ogre@@@std@@@std@@IAE_NI@Z",
+    "address": "00428e50"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\0896ec9b0b78e2f5\\candidate.obj": "06efd5f09a3c4a805e48bae8631808b75a25ff062d823fe6d99efcba9eb51d2e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-zp7bvtaw\\owners.json": "40f1d2d54f032b95fc8c9151a8fa608054832992dc5b94d77ac17e6b1ad7303c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-zp7bvtaw\\import-thunk-identities-as-owner.json": "006e766a38f1f330be34ab05c9eed9ed17390f5b1d7d286b704f347461b25625"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?at@?$vector@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@std@@QBEABQAVShadowRenderable@Ogre@@I@Z",
+    "address": "0046f5a0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\0896ec9b0b78e2f5\\candidate.obj": "06efd5f09a3c4a805e48bae8631808b75a25ff062d823fe6d99efcba9eb51d2e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-zp7bvtaw\\owners.json": "40f1d2d54f032b95fc8c9151a8fa608054832992dc5b94d77ac17e6b1ad7303c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-zp7bvtaw\\import-thunk-identities-as-owner.json": "006e766a38f1f330be34ab05c9eed9ed17390f5b1d7d286b704f347461b25625"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0?$vector@UEdgeGroup@EdgeData@Ogre@@V?$allocator@UEdgeGroup@EdgeData@Ogre@@@std@@@std@@QAE@XZ",
+    "address": "004293d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\0896ec9b0b78e2f5\\candidate.obj": "06efd5f09a3c4a805e48bae8631808b75a25ff062d823fe6d99efcba9eb51d2e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-zp7bvtaw\\owners.json": "40f1d2d54f032b95fc8c9151a8fa608054832992dc5b94d77ac17e6b1ad7303c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-zp7bvtaw\\import-thunk-identities-as-owner.json": "006e766a38f1f330be34ab05c9eed9ed17390f5b1d7d286b704f347461b25625"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0?$vector@UEdge@EdgeData@Ogre@@V?$allocator@UEdge@EdgeData@Ogre@@@std@@@std@@QAE@XZ",
+    "address": "004293d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\0896ec9b0b78e2f5\\candidate.obj": "06efd5f09a3c4a805e48bae8631808b75a25ff062d823fe6d99efcba9eb51d2e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-zp7bvtaw\\owners.json": "40f1d2d54f032b95fc8c9151a8fa608054832992dc5b94d77ac17e6b1ad7303c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-zp7bvtaw\\import-thunk-identities-as-owner.json": "006e766a38f1f330be34ab05c9eed9ed17390f5b1d7d286b704f347461b25625"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0?$vector@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@std@@QAE@ABV01@@Z",
+    "address": "004c77b0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\0896ec9b0b78e2f5\\candidate.obj": "06efd5f09a3c4a805e48bae8631808b75a25ff062d823fe6d99efcba9eb51d2e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-zp7bvtaw\\owners.json": "40f1d2d54f032b95fc8c9151a8fa608054832992dc5b94d77ac17e6b1ad7303c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-zp7bvtaw\\import-thunk-identities-as-owner.json": "006e766a38f1f330be34ab05c9eed9ed17390f5b1d7d286b704f347461b25625"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?at@?$vector@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@std@@QAEAAPAVShadowRenderable@Ogre@@I@Z",
+    "address": "0046f5a0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\0896ec9b0b78e2f5\\candidate.obj": "06efd5f09a3c4a805e48bae8631808b75a25ff062d823fe6d99efcba9eb51d2e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-zp7bvtaw\\owners.json": "40f1d2d54f032b95fc8c9151a8fa608054832992dc5b94d77ac17e6b1ad7303c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-zp7bvtaw\\import-thunk-identities-as-owner.json": "006e766a38f1f330be34ab05c9eed9ed17390f5b1d7d286b704f347461b25625"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??4?$vector@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@std@@QAEAAV01@ABV01@@Z",
+    "address": "00439510"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\0896ec9b0b78e2f5\\candidate.obj": "06efd5f09a3c4a805e48bae8631808b75a25ff062d823fe6d99efcba9eb51d2e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-zp7bvtaw\\owners.json": "40f1d2d54f032b95fc8c9151a8fa608054832992dc5b94d77ac17e6b1ad7303c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-zp7bvtaw\\import-thunk-identities-as-owner.json": "006e766a38f1f330be34ab05c9eed9ed17390f5b1d7d286b704f347461b25625"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?push_back@?$vector@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@std@@QAEXABQAVShadowRenderable@Ogre@@@Z",
+    "address": "004213a0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\0896ec9b0b78e2f5\\candidate.obj": "06efd5f09a3c4a805e48bae8631808b75a25ff062d823fe6d99efcba9eb51d2e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-zp7bvtaw\\owners.json": "40f1d2d54f032b95fc8c9151a8fa608054832992dc5b94d77ac17e6b1ad7303c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-zp7bvtaw\\import-thunk-identities-as-owner.json": "006e766a38f1f330be34ab05c9eed9ed17390f5b1d7d286b704f347461b25625"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?insert@?$vector@UEdgeGroup@EdgeData@Ogre@@V?$allocator@UEdgeGroup@EdgeData@Ogre@@@std@@@std@@QAEXV?$_Vector_const_iterator@UEdgeGroup@EdgeData@Ogre@@V?$allocator@UEdgeGroup@EdgeData@Ogre@@@std@@@2@IABUEdgeGroup@EdgeData@Ogre@@@Z",
+    "address": "004228d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\0896ec9b0b78e2f5\\candidate.obj": "06efd5f09a3c4a805e48bae8631808b75a25ff062d823fe6d99efcba9eb51d2e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-zp7bvtaw\\owners.json": "40f1d2d54f032b95fc8c9151a8fa608054832992dc5b94d77ac17e6b1ad7303c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-zp7bvtaw\\import-thunk-identities-as-owner.json": "006e766a38f1f330be34ab05c9eed9ed17390f5b1d7d286b704f347461b25625"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??$_Allocate@PAVShadowRenderable@Ogre@@@std@@YAPAPAVShadowRenderable@Ogre@@IPAPAV12@@Z",
+   "address": "00420b50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$_Allocate@UEdge@EdgeData@Ogre@@@std@@YAPAUEdge@EdgeData@Ogre@@IPAU123@@Z",
+   "address": "0041d500",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$_Ucopy@PAPAVShadowRenderable@Ogre@@@?$vector@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@std@@IAEPAPAVShadowRenderable@Ogre@@PAPAV23@00@Z",
+   "address": "00423c00",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$unchecked_copy@PAPAVShadowRenderable@Ogre@@PAPAV12@@stdext@@YAPAPAVShadowRenderable@Ogre@@PAPAV12@00@Z",
+   "address": "004389f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_Buy@?$vector@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@std@@IAE_NI@Z",
+   "address": "00438ae0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_Insert_n@?$vector@UEdgeGroup@EdgeData@Ogre@@V?$allocator@UEdgeGroup@EdgeData@Ogre@@@std@@@std@@IAEXV?$_Vector_const_iterator@UEdgeGroup@EdgeData@Ogre@@V?$allocator@UEdgeGroup@EdgeData@Ogre@@@std@@@2@IABUEdgeGroup@EdgeData@Ogre@@@Z",
+   "address": "006dbfa0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_Xlen@?$vector@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@std@@KAXXZ",
+   "address": "004c6d40",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_Xlen@?$vector@UEdge@EdgeData@Ogre@@V?$allocator@UEdge@EdgeData@Ogre@@@std@@@std@@KAXXZ",
+   "address": "004c6d40",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_Xran@?$vector@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@std@@KAXXZ",
+   "address": "0046dfc0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?clear@?$vector@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@std@@QAEXXZ",
+   "address": "00439320",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?insert@?$vector@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@std@@QAE?AV?$_Vector_iterator@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@2@V?$_Vector_const_iterator@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@2@ABQAVShadowRenderable@Ogre@@@Z",
+   "address": "004c7c60",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??0?$vector@PAVShadowRenderable@Ogre@@V?$allocator@PAVShadowRenderable@Ogre@@@std@@@std@@QAE@ABV01@@Z",
+   "address": "007c95a8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??0?$vector@UEdge@EdgeData@Ogre@@V?$allocator@UEdge@EdgeData@Ogre@@@std@@@std@@QAE@XZ",
+   "address": "007d72e8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??0?$vector@UEdgeGroup@EdgeData@Ogre@@V?$allocator@UEdgeGroup@EdgeData@Ogre@@@std@@@std@@QAE@XZ",
+   "address": "007d72e8",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 9,
+ "owners_bound": 9
+}

@@ -1,0 +1,37 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?png_warning@G3D@@YAXPAUpng_struct_def@@PBD@Z",
+    "address": "0050b6a0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DGImage_png\\objects\\1b49112d1e4f48a1\\candidate.obj": "e38d3b21ae783fbac093659533c902c890a4f17c58c677ad6e4645946050dc6d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-nf2n_xwm\\owners.json": "95f746fd471c137978cd2f87ab7391a07aabd85ca22b349ab0592cf7931f3ae0",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-nf2n_xwm\\import-thunk-identities-as-owner.json": "70807f0d1255ce9ad0c7143f660fee91d61271fd3227152006161cde83d84a1d"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?common@Log@G3D@@SAPAV12@XZ",
+   "address": "00509db0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?println@Log@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "00509ef0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?png_warning@G3D@@YAXPAUpng_struct_def@@PBD@Z",
+   "address": "007ce709",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

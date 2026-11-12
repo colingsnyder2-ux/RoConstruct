@@ -1,0 +1,47 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?jpeg_memory_src@G3D@@YAXPAUjpeg_decompress_struct@@PAEH@Z",
+    "address": "0050ad20"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DGImage_jpeg\\objects\\1183565d831f6802\\candidate.obj": "b7f9295370abcf17414815fd76d353ab85f1a67ca3cdc926de45545b77f49db3",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-it8nzumt\\owners.json": "e9378ce817ba8e5b08149c0322ef76303909cdb4a5f9122312b2eb9cdd4e33a2",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-it8nzumt\\import-thunk-identities-as-owner.json": "7407b35b74a9265fe3c87b3bf764bd56deba250d555b94361cd707bf1b32ee4c"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?fill_input_buffer@G3D@@YAEPAUjpeg_decompress_struct@@@Z",
+   "address": "0050ac60",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?init_source@G3D@@YAXPAUjpeg_decompress_struct@@@Z",
+   "address": "0050ac50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?skip_input_data@G3D@@YAXPAUjpeg_decompress_struct@@J@Z",
+   "address": "0050acb0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?term_source@G3D@@YAXPAUjpeg_decompress_struct@@@Z",
+   "address": "0047d410",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_jpeg_resync_to_restart",
+   "address": "0051b4a0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

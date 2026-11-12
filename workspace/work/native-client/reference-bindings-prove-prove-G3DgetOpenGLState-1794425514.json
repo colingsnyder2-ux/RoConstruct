@@ -1,0 +1,27 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?glGetBoolean@G3D@@YAEI@Z",
+    "address": "00483800"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DgetOpenGLState\\objects\\3ac889166f5b141c\\candidate.obj": "ccfdc62fa223ae9461b2c49866d6d165e9b7957cc0c4025d5ed46de97a4ed137",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-d_z5oy_q\\owners.json": "600fbabe17cdc58a4b00e43dda5e475650db410fd3e17746b021c5cd1f7bb134",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-d_z5oy_q\\import-thunk-identities-as-owner.json": "0f349a91987dd7ef6eed54ecfc23faeb4ed45760c0a99e12ad5fdc7c7a3276ff"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "__imp__glGetBooleanv@8",
+   "address": "00802a28",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

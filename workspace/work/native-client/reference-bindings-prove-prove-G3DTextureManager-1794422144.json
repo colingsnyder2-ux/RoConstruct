@@ -1,0 +1,42 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?resize@?$Array@VTextureArgs@TextureManager@G3D@@@G3D@@QAEXH_N@Z",
+    "address": "0047db20"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DTextureManager\\objects\\f7e0281b2968f4cb\\candidate.obj": "3124ced49e0481c96d3f495798e038353049ae3197c64245c27762d3f350a9a4",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-bzmp998b\\owners.json": "637847420b2ac9b4e5ac0be71ca040d7f34db9e02033d714f8eec12acc6b0edb",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-bzmp998b\\import-thunk-identities-as-owner.json": "863f662e15f115c4a41aa9018f9040a8bc34f2e055c3ee64d04410e5d1e94c89"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??_ETextureArgs@TextureManager@G3D@@UAEPAXI@Z",
+   "address": "0045ae10",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?hashCode@TextureArgs@TextureManager@G3D@@UBEIXZ",
+   "address": "0047d420",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?realloc@?$Array@VTextureArgs@TextureManager@G3D@@@G3D@@AAEXH@Z",
+   "address": "0047d7e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?resize@?$Array@VTextureArgs@TextureManager@G3D@@@G3D@@QAEXH_N@Z",
+   "address": "007c4f11",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

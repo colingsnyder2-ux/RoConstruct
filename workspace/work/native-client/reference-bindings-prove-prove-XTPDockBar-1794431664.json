@@ -1,0 +1,74 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??1?$CArray@UDOCK_INFO@CXTPDockBar@@AAU12@@@UAE@XZ",
+    "address": "0071aa70"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockBar\\objects\\f05ba1d5ecc4723e\\candidate.obj": "11f1fbb0381d4eebcbd591130ce58a9fed6c485915616b1a33287443ff64b224",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-tw4mnuof\\owners.json": "f2034c1086de2e44038e8c049f496dfb4d76b61218481ef6c48bbbf700e5edd1",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-tw4mnuof\\import-thunk-identities-as-owner.json": "dbecd905b70458e7b470399122b1916950e87e68388305e9d91675c7bd2f4c08"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Insert@CXTPDockBar@@IAEHPAVCXTPToolBar@@VCRect@@VCPoint@@@Z",
+    "address": "0071af80"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockBar\\objects\\f05ba1d5ecc4723e\\candidate.obj": "11f1fbb0381d4eebcbd591130ce58a9fed6c485915616b1a33287443ff64b224",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-tw4mnuof\\owners.json": "f2034c1086de2e44038e8c049f496dfb4d76b61218481ef6c48bbbf700e5edd1",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-tw4mnuof\\import-thunk-identities-as-owner.json": "dbecd905b70458e7b470399122b1916950e87e68388305e9d91675c7bd2f4c08"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?AdjustStretchBars@CXTPDockBar@@IAEXXZ",
+    "address": "0071be40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockBar\\objects\\f05ba1d5ecc4723e\\candidate.obj": "11f1fbb0381d4eebcbd591130ce58a9fed6c485915616b1a33287443ff64b224",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-tw4mnuof\\owners.json": "f2034c1086de2e44038e8c049f496dfb4d76b61218481ef6c48bbbf700e5edd1",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-tw4mnuof\\import-thunk-identities-as-owner.json": "dbecd905b70458e7b470399122b1916950e87e68388305e9d91675c7bd2f4c08"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??_E?$CArray@UDOCK_INFO@CXTPDockBar@@AAU12@@@UAEPAXI@Z",
+   "address": "0071af00",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?FindBar@CXTPDockBar@@IAEHPAVCXTPToolBar@@H@Z",
+   "address": "0071af40",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetDockedCommandBar@CXTPDockBar@@IBEPAVCXTPToolBar@@H@Z",
+   "address": "0071af20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?InsertAt@?$CArray@PAVCXTPToolBar@@PAV1@@@QAEXHPAVCXTPToolBar@@H@Z",
+   "address": "0077bc00",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?ScreenToClient@CWnd@@QBEXPAUtagRECT@@@Z",
+   "address": "006a149c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Serialize@?$CArray@UDOCK_INFO@CXTPDockBar@@AAU12@@@UAEXAAVCArchive@@@Z",
+   "address": "0071b110",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 3,
+ "owners_bound": 3
+}

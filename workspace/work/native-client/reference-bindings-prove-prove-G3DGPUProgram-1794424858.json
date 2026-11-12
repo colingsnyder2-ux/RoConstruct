@@ -1,0 +1,43 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?nvBind@BindingTable@GPUProgram@G3D@@QBEXI@Z",
+    "address": "00489100"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DGPUProgram\\objects\\23838daf804302b7\\candidate.obj": "27bced10af4fbe9eb14595e4e69df4a4d859606a0d321ae4fe61295481203360",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-warok4f_\\owners.json": "0d12e0fdb963ced8f01f5addbfbd70ab09bad8e47a4ebc13bdde3361b9558d1b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-warok4f_\\import-thunk-identities-as-owner.json": "981396e828d62c70f4ba5380f6d6122b4cb4792cf5643d2137e7fb0911e6ca60"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?arbBind@BindingTable@GPUProgram@G3D@@QBEXI@Z",
+    "address": "00489150"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DGPUProgram\\objects\\23838daf804302b7\\candidate.obj": "27bced10af4fbe9eb14595e4e69df4a4d859606a0d321ae4fe61295481203360",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-warok4f_\\owners.json": "0d12e0fdb963ced8f01f5addbfbd70ab09bad8e47a4ebc13bdde3361b9558d1b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-warok4f_\\import-thunk-identities-as-owner.json": "981396e828d62c70f4ba5380f6d6122b4cb4792cf5643d2137e7fb0911e6ca60"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?glProgramLocalParameter4fvARB@@3P6GXIIPBM@ZA",
+   "address": "0096f85c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glProgramParameter4fvNV@@3P6GXIIPBM@ZA",
+   "address": "0096f87c",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

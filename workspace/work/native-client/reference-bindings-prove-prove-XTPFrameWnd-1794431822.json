@@ -1,0 +1,323 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??0CXTPFrameWnd@@QAE@XZ",
+    "address": "006e1960"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPFrameWnd\\objects\\94e47a6e2dd1556d\\candidate.obj": "fde7621d40380dc0524c13fc5379a7661a9828ad174106abec295aebb45f80ec",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u7u8tmkb\\owners.json": "f434face9ba2b513939ace1bf8d0d7a963e0c70872e9cd2f0342075f39b660e8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u7u8tmkb\\import-thunk-identities-as-owner.json": "c032889b5d8f3437b5a171746c77e461281f3bea57631b1b1f993a4dafe9c06a"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0CXTPMDIFrameWnd@@QAE@XZ",
+    "address": "006e1980"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPFrameWnd\\objects\\94e47a6e2dd1556d\\candidate.obj": "fde7621d40380dc0524c13fc5379a7661a9828ad174106abec295aebb45f80ec",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u7u8tmkb\\owners.json": "f434face9ba2b513939ace1bf8d0d7a963e0c70872e9cd2f0342075f39b660e8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-u7u8tmkb\\import-thunk-identities-as-owner.json": "c032889b5d8f3437b5a171746c77e461281f3bea57631b1b1f993a4dafe9c06a"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??0CFrameWnd@@QAE@XZ",
+   "address": "006a0c3e",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??0CMDIFrameWnd@@QAE@XZ",
+   "address": "007bc364",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECXTPFrameWnd@@UAEPAXI@Z",
+   "address": "00433240",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_ECXTPMDIFrameWnd@@UAEPAXI@Z",
+   "address": "006e19a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?ActivateFrame@CFrameWnd@@UAEXH@Z",
+   "address": "006a0fbc",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?BeginModalState@CFrameWnd@@UAEXXZ",
+   "address": "006a0d58",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Create@CFrameWnd@@UAEHPBD0KABUtagRECT@@PAVCWnd@@0KPAUCCreateContext@@@Z",
+   "address": "006a0d7c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?CreateClient@CMDIFrameWnd@@UAEHPAUtagCREATESTRUCTA@@PAVCMenu@@@Z",
+   "address": "006a1022",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DefWindowProcA@CMDIFrameWnd@@MAEJIIJ@Z",
+   "address": "006a0fe6",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DelayUpdateFrameMenu@CFrameWnd@@UAEXPAUHMENU__@@@Z",
+   "address": "006a0de2",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?DelayUpdateFrameMenu@CMDIFrameWnd@@UAEXPAUHMENU__@@@Z",
+   "address": "006a101c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?EndModalState@CFrameWnd@@UAEXXZ",
+   "address": "006a0d5e",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?ExitHelpMode@CFrameWnd@@UAEXXZ",
+   "address": "006a0de8",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetActiveDocument@CFrameWnd@@UAEPAVCDocument@@XZ",
+   "address": "006a0d88",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetActiveFrame@CFrameWnd@@UAEPAV1@XZ",
+   "address": "006a0d8e",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetActiveFrame@CMDIFrameWnd@@UAEPAVCFrameWnd@@XZ",
+   "address": "006a0ff2",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetDefaultAccelerator@CFrameWnd@@UAEPAUHACCEL__@@XZ",
+   "address": "006a0ddc",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetMenu@CFrameWnd@@UBEPAVCMenu@@XZ",
+   "address": "006a0d46",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetMenuBarState@CFrameWnd@@UBEKXZ",
+   "address": "006a0db2",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetMenuBarVisibility@CFrameWnd@@UBEKXZ",
+   "address": "006a0da6",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetMessageBar@CFrameWnd@@UAEPAVCWnd@@XZ",
+   "address": "006a1004",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetMessageMap@CFrameWnd@@MBEPBUAFX_MSGMAP@@XZ",
+   "address": "006a108e",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetMessageMap@CMDIFrameWnd@@MBEPBUAFX_MSGMAP@@XZ",
+   "address": "006a0fda",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetMessageString@CFrameWnd@@UBEXIAAV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@@Z",
+   "address": "006a0d94",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetRuntimeClass@CXTPFrameWnd@@UBEPAUCRuntimeClass@@XZ",
+   "address": "006e1930",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetRuntimeClass@CXTPMDIFrameWnd@@UBEPAUCRuntimeClass@@XZ",
+   "address": "006e1950",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetWindowMenuPopup@CMDIFrameWnd@@UAEPAUHMENU__@@PAU2@@Z",
+   "address": "006a1028",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?IsFrameWnd@CFrameWnd@@UBEHXZ",
+   "address": "006a0d76",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?LoadFrame@?$CXTPFrameWndBase@VCFrameWnd@@@@UAEHIKPAVCWnd@@PAUCCreateContext@@@Z",
+   "address": "004331c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?LoadFrame@?$CXTPFrameWndBase@VCMDIFrameWnd@@@@UAEHIKPAVCWnd@@PAUCCreateContext@@@Z",
+   "address": "00430ef0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?NegotiateBorderSpace@CFrameWnd@@UAEHIPAUtagRECT@@@Z",
+   "address": "006a0dc4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnCmdMsg@CFrameWnd@@UAEHIHPAXPAUAFX_CMDHANDLERINFO@@@Z",
+   "address": "006a0d3a",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnCmdMsg@CXTPMDIFrameWnd@@UAEHIHPAXPAUAFX_CMDHANDLERINFO@@@Z",
+   "address": "00432140",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnCommand@CFrameWnd@@MAEHIJ@Z",
+   "address": "006a0d52",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnCommand@CMDIFrameWnd@@MAEHIJ@Z",
+   "address": "006a0fe0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnCreateClient@CFrameWnd@@MAEHPAUtagCREATESTRUCTA@@PAUCCreateContext@@@Z",
+   "address": "006a0dca",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnCreateClient@CMDIFrameWnd@@UAEHPAUtagCREATESTRUCTA@@PAUCCreateContext@@@Z",
+   "address": "006a100a",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnHideMenuBar@CFrameWnd@@MAEXXZ",
+   "address": "006a0df4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnSetPreviewMode@?$CXTPFrameWndBase@VCFrameWnd@@@@UAEXHPAUCPrintPreviewState@@@Z",
+   "address": "00433210",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnSetPreviewMode@?$CXTPFrameWndBase@VCMDIFrameWnd@@@@UAEXHPAUCPrintPreviewState@@@Z",
+   "address": "00430460",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnShowMenuBar@CFrameWnd@@MAEXXZ",
+   "address": "006a0dee",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnUpdateFrameMenu@CFrameWnd@@UAEXPAUHMENU__@@@Z",
+   "address": "006a0dd6",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnUpdateFrameMenu@CMDIFrameWnd@@UAEXPAUHMENU__@@@Z",
+   "address": "006a1016",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnUpdateFrameTitle@CFrameWnd@@UAEXH@Z",
+   "address": "006a10a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnUpdateFrameTitle@CMDIFrameWnd@@UAEXH@Z",
+   "address": "006a1010",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnWndMsg@?$CXTPCommandBarsSiteBase@VCFrameWnd@@@@MAEHIIJPAJ@Z",
+   "address": "004330c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnWndMsg@?$CXTPCommandBarsSiteBase@VCMDIFrameWnd@@@@MAEHIIJPAJ@Z",
+   "address": "00430580",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?PostNcDestroy@CFrameWnd@@MAEXXZ",
+   "address": "006a0d70",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?PreCreateWindow@CFrameWnd@@MAEHAAUtagCREATESTRUCTA@@@Z",
+   "address": "006a1094",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?PreCreateWindow@CMDIFrameWnd@@UAEHAAUtagCREATESTRUCTA@@@Z",
+   "address": "006a0f92",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?PreTranslateMessage@?$CXTPCommandBarsSiteBase@VCFrameWnd@@@@MAEHPAUtagMSG@@@Z",
+   "address": "00433030",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?PreTranslateMessage@?$CXTPCommandBarsSiteBase@VCMDIFrameWnd@@@@MAEHPAUtagMSG@@@Z",
+   "address": "004304f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?RecalcLayout@CFrameWnd@@UAEXH@Z",
+   "address": "006a0d9a",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetMenu@CFrameWnd@@UAEHPAVCMenu@@@Z",
+   "address": "006a0d4c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetMenuBarState@CFrameWnd@@UAEHK@Z",
+   "address": "006a0dac",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetMenuBarState@CMDIFrameWnd@@UAEHK@Z",
+   "address": "006a0ffe",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetMenuBarVisibility@CFrameWnd@@UAEXK@Z",
+   "address": "006a0da0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetMenuBarVisibility@CMDIFrameWnd@@UAEXK@Z",
+   "address": "006a0ff8",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

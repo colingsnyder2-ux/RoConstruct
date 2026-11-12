@@ -1,0 +1,303 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?makeShadersPS14ATI@ToneMap@G3D@@CAXXZ",
+    "address": "007b14d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DToneMap\\objects\\9b359154345e96e4\\candidate.obj": "ac769e57c1b69b50a1010c60e79950244f8cca8a9eeb13268fd95a65484aef0e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6tzr13so\\owners.json": "a048a41fd02569abcaa85031abfca1e618916f32854f81287361bb2631e238d8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6tzr13so\\import-thunk-identities-as-owner.json": "f9911bc5422848ff90cda2687d9d702ef4a4a5785921a8a334cec4d106443491"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?makeGammaCorrectionTextures@ToneMap@G3D@@CAXXZ",
+    "address": "007b16c0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DToneMap\\objects\\9b359154345e96e4\\candidate.obj": "ac769e57c1b69b50a1010c60e79950244f8cca8a9eeb13268fd95a65484aef0e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6tzr13so\\owners.json": "a048a41fd02569abcaa85031abfca1e618916f32854f81287361bb2631e238d8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6tzr13so\\import-thunk-identities-as-owner.json": "f9911bc5422848ff90cda2687d9d702ef4a4a5785921a8a334cec4d106443491"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?resizeBloomMap@ToneMap@G3D@@AAEXHH@Z",
+    "address": "007b1b40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DToneMap\\objects\\9b359154345e96e4\\candidate.obj": "ac769e57c1b69b50a1010c60e79950244f8cca8a9eeb13268fd95a65484aef0e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6tzr13so\\owners.json": "a048a41fd02569abcaa85031abfca1e618916f32854f81287361bb2631e238d8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6tzr13so\\import-thunk-identities-as-owner.json": "f9911bc5422848ff90cda2687d9d702ef4a4a5785921a8a334cec4d106443491"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?resizeImages@ToneMap@G3D@@AAEXPAVRenderDevice@2@@Z",
+    "address": "007b1ce0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DToneMap\\objects\\9b359154345e96e4\\candidate.obj": "ac769e57c1b69b50a1010c60e79950244f8cca8a9eeb13268fd95a65484aef0e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6tzr13so\\owners.json": "a048a41fd02569abcaa85031abfca1e618916f32854f81287361bb2631e238d8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6tzr13so\\import-thunk-identities-as-owner.json": "f9911bc5422848ff90cda2687d9d702ef4a4a5785921a8a334cec4d106443491"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?applyPS14ATI@ToneMap@G3D@@AAEXPAVRenderDevice@2@@Z",
+    "address": "007b1f10"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DToneMap\\objects\\9b359154345e96e4\\candidate.obj": "ac769e57c1b69b50a1010c60e79950244f8cca8a9eeb13268fd95a65484aef0e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6tzr13so\\owners.json": "a048a41fd02569abcaa85031abfca1e618916f32854f81287361bb2631e238d8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6tzr13so\\import-thunk-identities-as-owner.json": "f9911bc5422848ff90cda2687d9d702ef4a4a5785921a8a334cec4d106443491"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?applyPS20@ToneMap@G3D@@AAEXPAVRenderDevice@2@@Z",
+    "address": "007b2140"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DToneMap\\objects\\9b359154345e96e4\\candidate.obj": "ac769e57c1b69b50a1010c60e79950244f8cca8a9eeb13268fd95a65484aef0e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6tzr13so\\owners.json": "a048a41fd02569abcaa85031abfca1e618916f32854f81287361bb2631e238d8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6tzr13so\\import-thunk-identities-as-owner.json": "f9911bc5422848ff90cda2687d9d702ef4a4a5785921a8a334cec4d106443491"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??_GShader@G3D@@UAEPAXI@Z",
+    "address": "00507720"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DToneMap\\objects\\9b359154345e96e4\\candidate.obj": "ac769e57c1b69b50a1010c60e79950244f8cca8a9eeb13268fd95a65484aef0e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6tzr13so\\owners.json": "a048a41fd02569abcaa85031abfca1e618916f32854f81287361bb2631e238d8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-6tzr13so\\import-thunk-identities-as-owner.json": "f9911bc5422848ff90cda2687d9d702ef4a4a5785921a8a334cec4d106443491"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??0GImage@G3D@@QAE@HHH@Z",
+   "address": "0050eea0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??1GImage@G3D@@UAE@XZ",
+   "address": "0050e230",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??1Shader@G3D@@UAE@XZ",
+   "address": "005075f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?RGB8@TextureFormat@G3D@@2PBV12@B",
+   "address": "0096fab0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?copyFromScreen@Texture@G3D@@QAEXABVRect2D@2@_N@Z",
+   "address": "004739f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?createEmpty@Texture@G3D@@SA?AV?$ReferenceCountedPointer@VTexture@G3D@@@2@HHABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBVTextureFormat@2@W4WrapMode@12@W4InterpolateMode@12@W4Dimension@12@W4DepthReadMode@12@M@Z",
+   "address": "00474950",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?disableLighting@RenderDevice@G3D@@QAEXXZ",
+   "address": "004777b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?fastRect2D@Draw@G3D@@SAXABVRect2D@2@PAVRenderDevice@2@ABVColor4@2@@Z",
+   "address": "007b0170",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?fromGImage@Texture@G3D@@SA?AV?$ReferenceCountedPointer@VTexture@G3D@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVGImage@2@PBVTextureFormat@2@W4WrapMode@12@W4InterpolateMode@12@W4Dimension@12@W4DepthReadMode@12@M@Z",
+   "address": "004747f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?getBloomMap@ToneMap@G3D@@ABE?AV?$ReferenceCountedPointer@VTexture@G3D@@@2@PAVRenderDevice@2@@Z",
+   "address": "007b1660",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?getViewport@RenderDevice@G3D@@QBE?AVRect2D@2@XZ",
+   "address": "00476d60",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glBeginFragmentShaderATI@@3P6GXXZA",
+   "address": "0096f98c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glBindFragmentShaderATI@@3P6GXI@ZA",
+   "address": "0096f988",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glColorFragmentOp1ATI@@3P6GXIIIIIII@ZA",
+   "address": "0096f9a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glColorFragmentOp2ATI@@3P6GXIIIIIIIIII@ZA",
+   "address": "0096f9a4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glEndFragmentShaderATI@@3P6GXXZA",
+   "address": "0096f990",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glGenFragmentShadersATI@@3P6GII@ZA",
+   "address": "0096f980",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glGetBoolean@G3D@@YAEI@Z",
+   "address": "00483800",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?glSampleMapATI@@3P6GXIII@ZA",
+   "address": "0096f998",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?height@RenderDevice@G3D@@QBEHXZ",
+   "address": "00478cd0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?pop2D@RenderDevice@G3D@@QAEXXZ",
+   "address": "0047d360",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?push2D@RenderDevice@G3D@@QAEXXZ",
+   "address": "0047d3a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?rect2D@Draw@G3D@@SAXABVRect2D@2@PAVRenderDevice@2@ABVColor4@2@ABVVector2@2@333@Z",
+   "address": "007b04e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?rect2DBounds@Texture@G3D@@QBE?AVRect2D@2@XZ",
+   "address": "00473f90",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?resize@GImage@G3D@@QAEXHHH@Z",
+   "address": "0050e160",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?set@ArgList@VertexAndPixelShader@G3D@@QAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV?$ReferenceCountedPointer@VTexture@G3D@@@3@@Z",
+   "address": "00486eb0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?setAlphaTest@RenderDevice@G3D@@QAEXW4AlphaTest@12@N@Z",
+   "address": "00477090",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?setCameraToWorldMatrix@RenderDevice@G3D@@QAEXABVCoordinateFrame@2@@Z",
+   "address": "00479030",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?setObjectToWorldMatrix@RenderDevice@G3D@@QAEXABVCoordinateFrame@2@@Z",
+   "address": "004777e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?setPointer@?$ReferenceCountedPointer@VTexture@G3D@@@G3D@@AAEXPAVTexture@2@@Z",
+   "address": "00598fa0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?setShader@RenderDevice@G3D@@QAEXABV?$ReferenceCountedPointer@VShader@G3D@@@2@@Z",
+   "address": "00478f20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?white@Color3@G3D@@SAABV12@XZ",
+   "address": "00514a60",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?width@RenderDevice@G3D@@QBEHXZ",
+   "address": "00478450",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?xyxy@Rect2D@G3D@@SA?AV12@MMMM@Z",
+   "address": "0045b950",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?applyPS14ATI@ToneMap@G3D@@AAEXPAVRenderDevice@2@@Z",
+   "address": "007ede98",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?applyPS20@ToneMap@G3D@@AAEXPAVRenderDevice@2@@Z",
+   "address": "007edeee",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?makeGammaCorrectionTextures@ToneMap@G3D@@CAXXZ",
+   "address": "007ede29",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?resizeBloomMap@ToneMap@G3D@@AAEXHH@Z",
+   "address": "007ede51",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$?resizeImages@ToneMap@G3D@@AAEXPAVRenderDevice@2@@Z",
+   "address": "007ede82",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__glDisable@4",
+   "address": "00802958",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__glEnable@4",
+   "address": "00802950",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__glPopAttrib@0",
+   "address": "008029b4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__glPushAttrib@4",
+   "address": "00802964",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 7,
+ "owners_bound": 7
+}

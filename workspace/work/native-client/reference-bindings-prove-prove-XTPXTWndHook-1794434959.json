@@ -1,0 +1,43 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?GetRuntimeClass@CXTWndHook@@UBEPAUCRuntimeClass@@XZ",
+    "address": "007a10a0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTWndHook\\objects\\ca9b7124a17b74ce\\candidate.obj": "02a5e3c379b6ec2ba693a427bb93406e1e95fa3caae2964d7678796a5d513e0f",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-_4gripok\\owners.json": "5a3af69d237ad7cd5ab44028aef869a19de19b798dcfed684c1245ec2f3d6d45",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-_4gripok\\import-thunk-identities-as-owner.json": "6120e756717bb4c40fc0025e79584f137ddcaa36960100c22732b49eecdfec88"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?GetRuntimeClass@CXTWindowMap@@UBEPAUCRuntimeClass@@XZ",
+    "address": "007a1150"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTWndHook\\objects\\ca9b7124a17b74ce\\candidate.obj": "02a5e3c379b6ec2ba693a427bb93406e1e95fa3caae2964d7678796a5d513e0f",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-_4gripok\\owners.json": "5a3af69d237ad7cd5ab44028aef869a19de19b798dcfed684c1245ec2f3d6d45",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-_4gripok\\import-thunk-identities-as-owner.json": "6120e756717bb4c40fc0025e79584f137ddcaa36960100c22732b49eecdfec88"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?_GetBaseClass@CXTWindowMap@@KGPAUCRuntimeClass@@XZ",
+   "address": "007a1140",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_GetBaseClass@CXTWndHook@@KGPAUCRuntimeClass@@XZ",
+   "address": "007a1090",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

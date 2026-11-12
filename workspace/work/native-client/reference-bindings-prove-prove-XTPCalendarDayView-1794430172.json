@@ -1,0 +1,69 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?SetRect@CRect@@QAEXHHHH@Z",
+    "address": "00461b70"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPCalendarDayView\\objects\\e881b0994389d56f\\candidate.obj": "add2c4f23520ca64761bbd3351579d1b2b86db3e9a252d3ba41a2f93f93524ff",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-928o70fu\\owners.json": "e4875ff8141749c5666070f8215a8a7556addb53fc270c0c08c70688d632753e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-928o70fu\\import-thunk-identities-as-owner.json": "90c0faa37ad86f9fed2a41407afd56a1e43c973e5edf44f36d2c51fb79602fdc"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1?$CArray@V?$CXTPSmartPtrInternalT@VCXTPCalendarDayViewDay@@@@AAV1@@@UAE@XZ",
+    "address": "006cb700"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPCalendarDayView\\objects\\e881b0994389d56f\\candidate.obj": "add2c4f23520ca64761bbd3351579d1b2b86db3e9a252d3ba41a2f93f93524ff",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-928o70fu\\owners.json": "e4875ff8141749c5666070f8215a8a7556addb53fc270c0c08c70688d632753e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-928o70fu\\import-thunk-identities-as-owner.json": "90c0faa37ad86f9fed2a41407afd56a1e43c973e5edf44f36d2c51fb79602fdc"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?RemoveAll@?$CXTPCalendarPtrCollectionT@VCXTPCalendarDayViewDay@@@@UAEXXZ",
+    "address": "0074ef30"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPCalendarDayView\\objects\\e881b0994389d56f\\candidate.obj": "add2c4f23520ca64761bbd3351579d1b2b86db3e9a252d3ba41a2f93f93524ff",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-928o70fu\\owners.json": "e4875ff8141749c5666070f8215a8a7556addb53fc270c0c08c70688d632753e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-928o70fu\\import-thunk-identities-as-owner.json": "90c0faa37ad86f9fed2a41407afd56a1e43c973e5edf44f36d2c51fb79602fdc"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??_E?$CArray@V?$CXTPSmartPtrInternalT@VCXTPCalendarDayViewDay@@@@AAV1@@@UAEPAXI@Z",
+   "address": "006cb760",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetRuntimeClass@CObject@@UBEPAUCRuntimeClass@@XZ",
+   "address": "006a111e",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Serialize@?$CArray@V?$CXTPSmartPtrInternalT@VCXTPCalendarDayViewDay@@@@AAV1@@@UAEXAAVCArchive@@@Z",
+   "address": "006d05d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetSize@?$CArray@V?$CXTPSmartPtrInternalT@VCXTPCalendarDayViewDay@@@@AAV1@@@QAEXHH@Z",
+   "address": "0070e1d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__SetRect@20",
+   "address": "00802d10",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 3,
+ "owners_bound": 3
+}

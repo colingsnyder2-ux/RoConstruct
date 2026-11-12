@@ -1,0 +1,101 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?AddTail@?$CList@PAVCXTShadowWnd@@PAV1@@@QAEPAU__POSITION@@PAVCXTShadowWnd@@@Z",
+    "address": "0076bac0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTWndShadow\\objects\\c36e2ac108828b70\\candidate.obj": "614e8a0481f1cb6608e3057f9b3194d8651eb2ed7b9aaf10f79729d7cf904e85",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5a_vxolb\\owners.json": "a7a1503db6f41bf81fee99b213b29e530ed72e4204fd3de341caac1746d0e533",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5a_vxolb\\import-thunk-identities-as-owner.json": "2b3cd08812e1554a2ae62593e1ed9d717c9e0c2bd5251a83336061471528e3f2"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Serialize@?$CList@PAVCXTShadowWnd@@PAV1@@@UAEXAAVCArchive@@@Z",
+    "address": "0076d180"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTWndShadow\\objects\\c36e2ac108828b70\\candidate.obj": "614e8a0481f1cb6608e3057f9b3194d8651eb2ed7b9aaf10f79729d7cf904e85",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5a_vxolb\\owners.json": "a7a1503db6f41bf81fee99b213b29e530ed72e4204fd3de341caac1746d0e533",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5a_vxolb\\import-thunk-identities-as-owner.json": "2b3cd08812e1554a2ae62593e1ed9d717c9e0c2bd5251a83336061471528e3f2"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?RemoveShadow@CShadowList@CXTShadowsManager@@QAEXPAVCXTShadowWnd@@@Z",
+    "address": "00790460"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTWndShadow\\objects\\c36e2ac108828b70\\candidate.obj": "614e8a0481f1cb6608e3057f9b3194d8651eb2ed7b9aaf10f79729d7cf904e85",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5a_vxolb\\owners.json": "a7a1503db6f41bf81fee99b213b29e530ed72e4204fd3de341caac1746d0e533",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5a_vxolb\\import-thunk-identities-as-owner.json": "2b3cd08812e1554a2ae62593e1ed9d717c9e0c2bd5251a83336061471528e3f2"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?XTShadowsManager@@YAPAVCXTShadowsManager@@XZ",
+    "address": "00790770"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTWndShadow\\objects\\c36e2ac108828b70\\candidate.obj": "614e8a0481f1cb6608e3057f9b3194d8651eb2ed7b9aaf10f79729d7cf904e85",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5a_vxolb\\owners.json": "a7a1503db6f41bf81fee99b213b29e530ed72e4204fd3de341caac1746d0e533",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5a_vxolb\\import-thunk-identities-as-owner.json": "2b3cd08812e1554a2ae62593e1ed9d717c9e0c2bd5251a83336061471528e3f2"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?GetMessageMap@CXTShadowWnd@@MBEPBUAFX_MSGMAP@@XZ",
+    "address": "00791310"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPXTWndShadow\\objects\\c36e2ac108828b70\\candidate.obj": "614e8a0481f1cb6608e3057f9b3194d8651eb2ed7b9aaf10f79729d7cf904e85",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5a_vxolb\\owners.json": "a7a1503db6f41bf81fee99b213b29e530ed72e4204fd3de341caac1746d0e533",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5a_vxolb\\import-thunk-identities-as-owner.json": "2b3cd08812e1554a2ae62593e1ed9d717c9e0c2bd5251a83336061471528e3f2"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??$SerializeElements@PAVCXTShadowWnd@@@@YGXAAVCArchive@@PAPAVCXTShadowWnd@@H@Z",
+   "address": "00787550",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??0CXTShadowsManager@@AAE@XZ",
+   "address": "007905f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??__Finstance@?1??XTShadowsManager@@YAPAVCXTShadowsManager@@XZ@YAXXZ",
+   "address": "00801930",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Find@?$CList@PAVCXTShadowWnd@@PAV1@@@QBEPAU__POSITION@@PAVCXTShadowWnd@@PAU2@@Z",
+   "address": "00757e80",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetThisMessageMap@CXTShadowWnd@@KGPBUAFX_MSGMAP@@XZ",
+   "address": "007912a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?NewNode@?$CList@PAVCXTShadowWnd@@PAV1@@@IAEPAUCNode@1@PAU21@0@Z",
+   "address": "0076a730",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?RemoveAt@?$CList@PAVCXTShadowWnd@@PAV1@@@QAEXPAU__POSITION@@@Z",
+   "address": "00790410",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 5,
+ "owners_bound": 5
+}

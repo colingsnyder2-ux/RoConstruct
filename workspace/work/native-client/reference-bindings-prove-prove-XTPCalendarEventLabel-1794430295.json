@@ -1,0 +1,64 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?Add@?$CXTPArrayT@IIJ@@UAEHI@Z",
+    "address": "0074eef0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPCalendarEventLabel\\objects\\f8d3716888ab737e\\candidate.obj": "118df4b9a18ca9f0247d3854f4e6c76285b46707eed7f6a1df8d19c39918fa8f",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-nqx92ukq\\owners.json": "880ea99c32f0fb345fc02dfb5bfb7b6e49ed97045b49bb24e6954d337db00cad",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-nqx92ukq\\import-thunk-identities-as-owner.json": "8bc767bb70302f5bf816a9687ba016273ef7374d88ab5bd03936430c684836cc"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Append@?$CArray@II@@QAEHABV1@@Z",
+    "address": "0078ee70"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPCalendarEventLabel\\objects\\f8d3716888ab737e\\candidate.obj": "118df4b9a18ca9f0247d3854f4e6c76285b46707eed7f6a1df8d19c39918fa8f",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-nqx92ukq\\owners.json": "880ea99c32f0fb345fc02dfb5bfb7b6e49ed97045b49bb24e6954d337db00cad",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-nqx92ukq\\import-thunk-identities-as-owner.json": "8bc767bb70302f5bf816a9687ba016273ef7374d88ab5bd03936430c684836cc"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?InsertAt@?$CArray@II@@QAEXHPAV1@@Z",
+    "address": "0074efd0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPCalendarEventLabel\\objects\\f8d3716888ab737e\\candidate.obj": "118df4b9a18ca9f0247d3854f4e6c76285b46707eed7f6a1df8d19c39918fa8f",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-nqx92ukq\\owners.json": "880ea99c32f0fb345fc02dfb5bfb7b6e49ed97045b49bb24e6954d337db00cad",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-nqx92ukq\\import-thunk-identities-as-owner.json": "8bc767bb70302f5bf816a9687ba016273ef7374d88ab5bd03936430c684836cc"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??$CopyElements@I@@YGXPAIPBIH@Z",
+   "address": "0074ee40",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?InsertAt@?$CArray@II@@QAEXHIH@Z",
+   "address": "0077bc00",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetAtGrow@?$CArray@II@@QAEXHI@Z",
+   "address": "0070e320",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetSize@?$CArray@II@@QAEXHH@Z",
+   "address": "0070e1d0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 3,
+ "owners_bound": 3
+}

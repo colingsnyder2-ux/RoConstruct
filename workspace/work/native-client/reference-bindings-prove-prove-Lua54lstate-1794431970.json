@@ -1,0 +1,42 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "_f_luaopen",
+    "address": "00623bd0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Lua54lstate\\objects\\d1e52392b9d5916a\\candidate.obj": "7b232cc61c35fa50daa64370ba63d56516417f84c47f6ff873bfc60a31f720c0",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-iorzmq3i\\owners.json": "cc3956268994724e2499dbf6a656a0fdb300fca8d6176c0cfead7fb911a1766f",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-iorzmq3i\\import-thunk-identities-as-owner.json": "4ad3bcfd438a1e61526cccc7dc25877c2df53da5ba4df270ccf9cd86b2a473c6"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "_luaS_resize",
+   "address": "0065f1a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaT_init",
+   "address": "0065c570",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_luaX_init",
+   "address": "006640c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_stack_init",
+   "address": "00623b50",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

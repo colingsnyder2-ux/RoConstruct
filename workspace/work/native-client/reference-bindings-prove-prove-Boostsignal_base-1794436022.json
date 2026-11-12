@@ -1,0 +1,27 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??$reset@Vsignal_base_impl@detail@signals@boost@@@?$shared_ptr@Vsignal_base_impl@detail@signals@boost@@@boost@@QAEXPAVsignal_base_impl@detail@signals@1@@Z",
+    "address": "0056b370"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Boostsignal_base\\objects\\b7208872b03ed305\\candidate.obj": "f05a994ed2dc7de55d12b84c5b31fc6b455d65ac3801ac2b1aa2f73228be9629",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-swsfhyrq\\owners.json": "87ef58a5de6a13523372c3b17d43a895fe6bf3d248eacc3555ca3ba8b48e818d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-swsfhyrq\\import-thunk-identities-as-owner.json": "e323af4ac6b8535e6d37506335570851271bba7c5aa7ad465afd79258881a76c"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??$?0Vsignal_base_impl@detail@signals@boost@@@shared_count@detail@boost@@QAE@PAVsignal_base_impl@1signals@2@@Z",
+   "address": "0056b2c0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

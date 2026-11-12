@@ -1,0 +1,97 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??1VisualEngine@Ogre@@UAE@XZ",
+    "address": "0067a130"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\visualengine-proof\\objects\\79dd20c7b9fd6c1f\\candidate.obj": "687ea4f35bdf477dba0dfdb2e4b71497457944d453a7e48a61e7ff4498a68e96",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-a9mdq3z3\\owners.json": "c9eff0527dda4b8041f56c9224ae883f7afd9d1e3e7c402b1f6da981d783f503",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-a9mdq3z3\\import-thunk-identities-as-owner.json": "50be92c8465d94912d8878c67daa6829809eea70bc223ece5643892963ffc87f"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??0?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE@XZ",
+   "address": "004293d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??3@YAXPAX@Z",
+   "address": "006a067a",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_E?$SharedPtr@VResource@Ogre@@@Ogre@@UAEPAXI@Z",
+   "address": "004d73e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_EVisualEngine@Ogre@@UAEPAXI@Z",
+   "address": "0067c4b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?_Inc@const_iterator@?$_Tree@V?$_Tmap_traits@PAVSubMesh@Ogre@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@PAVSubMesh@Ogre@@@4@V?$allocator@U?$pair@QAVSubMesh@Ogre@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@@4@$0A@@std@@@std@@QAEXXZ",
+   "address": "0054f060",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?call_once@boost@@YAXP6AXXZAAJ@Z",
+   "address": "00557330",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?destroy@?$SharedPtr@VResource@Ogre@@@Ogre@@MAEXXZ",
+   "address": "004d73a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?dumpResources@Ogre@@YAXAAVResourceManager@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "00678e20",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?initializeSubMeshNames@Ogre@@YAXXZ",
+   "address": "0054ab60",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?releaseUnusedResources@Ogre@@YAXAAVResourceManager@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@4@@Z",
+   "address": "006792b0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?spheres@RbxSceneNode@Ogre@@1PAV?$map@PBXVSphere@Ogre@@U?$less@PBX@std@@V?$allocator@U?$pair@QBXVSphere@Ogre@@@std@@@4@@std@@A",
+   "address": "0097dbc4",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?subMeshNames@Ogre@@3PAV?$map@PAVSubMesh@Ogre@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$less@PAVSubMesh@Ogre@@@4@V?$allocator@U?$pair@QAVSubMesh@Ogre@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@@4@@std@@A",
+   "address": "0097db44",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?subMeshNamesOnce@Ogre@@3JA",
+   "address": "00973984",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?swap@?$SharedPtr@VResource@Ogre@@@Ogre@@MAEXAAV12@@Z",
+   "address": "0068ddc0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__ehhandler$??1VisualEngine@Ogre@@UAE@XZ",
+   "address": "007dd3b5",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

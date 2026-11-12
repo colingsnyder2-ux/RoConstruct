@@ -1,0 +1,58 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?normalPointer@VAR@G3D@@ABEXXZ",
+    "address": "00489230"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DVAR\\objects\\d0e66c48f26a6ddb\\candidate.obj": "bc9b13bc407614d9d4a5aaa9e98769e4fb35cb2668d164ab6066f502762c3de7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-jgdrpmce\\owners.json": "f8b981aad783937fd283f0d4e4bd05896609eb8180654929760c7766b53c7b82",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-jgdrpmce\\import-thunk-identities-as-owner.json": "4b9e3da44b45d874906612abd52cc323f5fba6b50e9a172f14c54215ef56c58b"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?texCoordPointer@VAR@G3D@@ABEXI@Z",
+    "address": "00489260"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DVAR\\objects\\d0e66c48f26a6ddb\\candidate.obj": "bc9b13bc407614d9d4a5aaa9e98769e4fb35cb2668d164ab6066f502762c3de7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-jgdrpmce\\owners.json": "f8b981aad783937fd283f0d4e4bd05896609eb8180654929760c7766b53c7b82",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-jgdrpmce\\import-thunk-identities-as-owner.json": "4b9e3da44b45d874906612abd52cc323f5fba6b50e9a172f14c54215ef56c58b"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "?glClientActiveTextureARB@@3P6GXI@ZA",
+   "address": "0096f808",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?sizeOfGLFormat@G3D@@YAII@Z",
+   "address": "00483710",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__glEnableClientState@4",
+   "address": "00802a18",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__glNormalPointer@12",
+   "address": "00802a14",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "__imp__glTexCoordPointer@16",
+   "address": "00802a10",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 2,
+ "owners_bound": 2
+}

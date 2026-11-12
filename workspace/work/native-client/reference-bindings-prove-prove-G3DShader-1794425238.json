@@ -1,0 +1,27 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??0Node@?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VArg@ArgList@VertexAndPixelShader@G3D@@@G3D@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VArg@ArgList@VertexAndPixelShader@2@IPAV012@@Z",
+    "address": "00486850"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-G3DShader\\objects\\4c478151274282b7\\candidate.obj": "34a563cb77bca74c8ac2138d50a88e324f00436803c7f80cc609aee1db8a49c9",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5rjwp8gj\\owners.json": "21fe2d3abb332927e457089a0dc7b798ee272c79ff483d282e7c9fb585d26efa",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-5rjwp8gj\\import-thunk-identities-as-owner.json": "2a8e6a99a9e232ab87b3e9d467a26e90ca329c5f65809f60a812a44d7d33bc68"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "__ehhandler$??0Node@?$Table@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VArg@ArgList@VertexAndPixelShader@G3D@@@G3D@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VArg@ArgList@VertexAndPixelShader@2@IPAV012@@Z",
+   "address": "007c56cc",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

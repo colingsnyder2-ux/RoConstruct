@@ -1,0 +1,57 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "_jinit_color_deconverter",
+    "address": "005348c0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Jpegjdcolor\\objects\\7f57fea7a1e1a4d3\\candidate.obj": "251b114980fc526d37ba608fae7d043b3f0750095f7068ca922c5c589c073f73",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-dkqmmt1d\\owners.json": "a3f820debb8fe406e35bcf65aaa46e7a717055cfb8c1cd3be69196bfeee05c4a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-dkqmmt1d\\import-thunk-identities-as-owner.json": "da4765d3a4b8e74a33325545e29c3b54c4501afc5d4cab80c60e436e16a2459d"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "_build_ycc_rgb_table",
+   "address": "00534460",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_gray_rgb_convert",
+   "address": "00534710",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_grayscale_convert",
+   "address": "005346e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_null_convert",
+   "address": "00534650",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_start_pass_dcolor",
+   "address": "0047d410",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_ycc_rgb_convert",
+   "address": "00534530",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_ycck_cmyk_convert",
+   "address": "00534770",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

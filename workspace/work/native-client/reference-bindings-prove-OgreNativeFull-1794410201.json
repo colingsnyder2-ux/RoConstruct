@@ -1,0 +1,2146 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?upVector@CoordinateFrame@G3D@@QBE?AVVector3@2@XZ",
+    "address": "005d9c10"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\953bd3e45385b3f3\\candidate.obj": "3ff2ec5d97d95d5430a4939d70d4a9dca761f9b85cb9df68999e706eaa75ff3e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?getAttachmentForward@Accoutrement@RBX@@QBE?BVVector3@G3D@@XZ",
+    "address": "005b0970"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\953bd3e45385b3f3\\candidate.obj": "3ff2ec5d97d95d5430a4939d70d4a9dca761f9b85cb9df68999e706eaa75ff3e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?getAttachmentUp@Accoutrement@RBX@@QBE?BVVector3@G3D@@XZ",
+    "address": "005b09c0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\953bd3e45385b3f3\\candidate.obj": "3ff2ec5d97d95d5430a4939d70d4a9dca761f9b85cb9df68999e706eaa75ff3e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?getAttachmentRight@Accoutrement@RBX@@QBE?BVVector3@G3D@@XZ",
+    "address": "005b09e0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\953bd3e45385b3f3\\candidate.obj": "3ff2ec5d97d95d5430a4939d70d4a9dca761f9b85cb9df68999e706eaa75ff3e",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1?$signal1@XV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$last_value@X@boost@@HU?$less@H@2@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZV?$allocator@X@2@@4@@boost@@QAE@XZ",
+    "address": "005a67f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\493547bc55180343\\candidate.obj": "ce0d4e8c28986c7b7fcb6c6633ad6c04f918cb6219b283c6e2491c050d3432a0",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1?$signal1@XV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$last_value@X@boost@@HU?$less@H@2@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZV?$allocator@X@2@@4@@boost@@QAE@XZ$0",
+    "address": "007d2f40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\493547bc55180343\\candidate.obj": "ce0d4e8c28986c7b7fcb6c6633ad6c04f918cb6219b283c6e2491c050d3432a0",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1?$signal@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZU?$last_value@X@boost@@HU?$less@H@2@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZV?$allocator@X@2@@4@@boost@@QAE@XZ",
+    "address": "005a67f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\493547bc55180343\\candidate.obj": "ce0d4e8c28986c7b7fcb6c6633ad6c04f918cb6219b283c6e2491c050d3432a0",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1?$signal@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZU?$last_value@X@boost@@HU?$less@H@2@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@ZV?$allocator@X@2@@4@@boost@@QAE@XZ$1",
+    "address": "007d2f40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\493547bc55180343\\candidate.obj": "ce0d4e8c28986c7b7fcb6c6633ad6c04f918cb6219b283c6e2491c050d3432a0",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1?$BoundFuncDesc@VDHTMLWindow@@$$A6AXVFunctionRef@Lua@RBX@@@Z$00@Reflection@RBX@@UAE@XZ$0",
+    "address": "007d2b70"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\493547bc55180343\\candidate.obj": "ce0d4e8c28986c7b7fcb6c6633ad6c04f918cb6219b283c6e2491c050d3432a0",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1?$BoundFuncDesc@VDHTMLWindow@@$$A6AXHH@Z$01@Reflection@RBX@@UAE@XZ$0",
+    "address": "007c7d40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\493547bc55180343\\candidate.obj": "ce0d4e8c28986c7b7fcb6c6633ad6c04f918cb6219b283c6e2491c050d3432a0",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z$02@Reflection@RBX@@UAE@XZ$0",
+    "address": "007bdff0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\493547bc55180343\\candidate.obj": "ce0d4e8c28986c7b7fcb6c6633ad6c04f918cb6219b283c6e2491c050d3432a0",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1?$BoundFuncDesc@VDHTMLWindow@@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z$00@Reflection@RBX@@UAE@XZ$0",
+    "address": "007d2b70"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\493547bc55180343\\candidate.obj": "ce0d4e8c28986c7b7fcb6c6633ad6c04f918cb6219b283c6e2491c050d3432a0",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1TSignalInstance@?$TSignalDesc@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@UAE@XZ",
+    "address": "00634730"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\493547bc55180343\\candidate.obj": "ce0d4e8c28986c7b7fcb6c6633ad6c04f918cb6219b283c6e2491c050d3432a0",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1TSignalInstance@?$TSignalDesc@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@Reflection@RBX@@UAE@XZ$3",
+    "address": "007da008"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\493547bc55180343\\candidate.obj": "ce0d4e8c28986c7b7fcb6c6633ad6c04f918cb6219b283c6e2491c050d3432a0",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1?$signal1@XV?$shared_ptr@VInstance@RBX@@@boost@@U?$last_value@X@2@HU?$less@H@std@@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@2@@boost@@QAE@XZ",
+    "address": "005a67f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\5ab5147c3a698d67\\candidate.obj": "b40c1b94cba9bd92e9fc5fd68855bf5a3b8267ed82e241c15bbf6705fcd1e499",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1?$signal1@XV?$shared_ptr@VInstance@RBX@@@boost@@U?$last_value@X@2@HU?$less@H@std@@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@2@@boost@@QAE@XZ$0",
+    "address": "007d2f40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\5ab5147c3a698d67\\candidate.obj": "b40c1b94cba9bd92e9fc5fd68855bf5a3b8267ed82e241c15bbf6705fcd1e499",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1?$signal@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZU?$last_value@X@2@HU?$less@H@std@@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@2@@boost@@QAE@XZ",
+    "address": "005a67f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\5ab5147c3a698d67\\candidate.obj": "b40c1b94cba9bd92e9fc5fd68855bf5a3b8267ed82e241c15bbf6705fcd1e499",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1?$signal@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZU?$last_value@X@2@HU?$less@H@std@@V?$function@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@std@@@2@@boost@@QAE@XZ$1",
+    "address": "007d2f40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\5ab5147c3a698d67\\candidate.obj": "b40c1b94cba9bd92e9fc5fd68855bf5a3b8267ed82e241c15bbf6705fcd1e499",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1TSignalInstance@?$TSignalDesc@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@UAE@XZ",
+    "address": "00634730"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\5ab5147c3a698d67\\candidate.obj": "b40c1b94cba9bd92e9fc5fd68855bf5a3b8267ed82e241c15bbf6705fcd1e499",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1TSignalInstance@?$TSignalDesc@$$A6AXV?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@UAE@XZ$3",
+    "address": "007da008"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\5ab5147c3a698d67\\candidate.obj": "b40c1b94cba9bd92e9fc5fd68855bf5a3b8267ed82e241c15bbf6705fcd1e499",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?_Ufill@?$vector@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@IAEPAVany@boost@@PAV34@IABV34@@Z",
+    "address": "0056f880"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\5ab5147c3a698d67\\candidate.obj": "b40c1b94cba9bd92e9fc5fd68855bf5a3b8267ed82e241c15bbf6705fcd1e499",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?_Construct_n@?$vector@Vany@boost@@V?$allocator@Vany@boost@@@std@@@std@@QAEXIABVany@boost@@@Z",
+    "address": "0041af90"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\5ab5147c3a698d67\\candidate.obj": "b40c1b94cba9bd92e9fc5fd68855bf5a3b8267ed82e241c15bbf6705fcd1e499",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?resize@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAEXIV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+    "address": "004124c0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\5ab5147c3a698d67\\candidate.obj": "b40c1b94cba9bd92e9fc5fd68855bf5a3b8267ed82e241c15bbf6705fcd1e499",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?insert@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@QAEXV?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@2@IABV?$shared_ptr@VInstance@RBX@@@boost@@@Z",
+    "address": "004228d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\5ab5147c3a698d67\\candidate.obj": "b40c1b94cba9bd92e9fc5fd68855bf5a3b8267ed82e241c15bbf6705fcd1e499",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$shared_from@VPartInstance@RBX@@@RBX@@YA?AV?$shared_ptr@VPartInstance@RBX@@@boost@@PAVPartInstance@0@@Z",
+    "address": "00618a40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\b2a9c14bcb39afbe\\candidate.obj": "dd85c11e529182b6ebb821579b1e655d5b1c29930ef10fff6a155828a0619f66",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?setAttachmentForward@Accoutrement@RBX@@QAEXABVVector3@G3D@@@Z",
+    "address": "005b2750"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\97b6269531dbffa0\\candidate.obj": "cb5b6ef48600177ab4bd8d8c803db090795daf2439a83306d0fe4284131c1ae8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?setAttachmentUp@Accoutrement@RBX@@QAEXABVVector3@G3D@@@Z",
+    "address": "005b28d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\97b6269531dbffa0\\candidate.obj": "cb5b6ef48600177ab4bd8d8c803db090795daf2439a83306d0fe4284131c1ae8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?setAttachmentRight@Accoutrement@RBX@@QAEXABVVector3@G3D@@@Z",
+    "address": "005b2a40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\97b6269531dbffa0\\candidate.obj": "cb5b6ef48600177ab4bd8d8c803db090795daf2439a83306d0fe4284131c1ae8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?getOrientId@Math@RBX@@SAHABVMatrix3@G3D@@@Z",
+    "address": "005ddc90"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\82ad3ade4fc24cea\\candidate.obj": "3a89c6c98f7bb97a340a911de45ede797936051307a916693d5dd676b5769137",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?snapToAxes@Math@RBX@@SA?AVMatrix3@G3D@@ABV34@@Z",
+    "address": "005dde50"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\82ad3ade4fc24cea\\candidate.obj": "3a89c6c98f7bb97a340a911de45ede797936051307a916693d5dd676b5769137",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?alignAxesClosest@Math@RBX@@SA?AVMatrix3@G3D@@ABV34@0@Z",
+    "address": "005de2f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\82ad3ade4fc24cea\\candidate.obj": "3a89c6c98f7bb97a340a911de45ede797936051307a916693d5dd676b5769137",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?getHeadingElevation@Math@RBX@@SAXABVCoordinateFrame@G3D@@AAM1@Z",
+    "address": "005de660"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\82ad3ade4fc24cea\\candidate.obj": "3a89c6c98f7bb97a340a911de45ede797936051307a916693d5dd676b5769137",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?toYAxisQuadrant@Math@RBX@@SAHABVCoordinateFrame@G3D@@@Z",
+    "address": "005dea60"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\82ad3ade4fc24cea\\candidate.obj": "3a89c6c98f7bb97a340a911de45ede797936051307a916693d5dd676b5769137",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?getFocusSpace@Math@RBX@@SA?AVCoordinateFrame@G3D@@ABV34@@Z",
+    "address": "005dec60"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\82ad3ade4fc24cea\\candidate.obj": "3a89c6c98f7bb97a340a911de45ede797936051307a916693d5dd676b5769137",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?fuzzyAxisAligned@Math@RBX@@SA_NABVMatrix3@G3D@@0M@Z",
+    "address": "005defa0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\82ad3ade4fc24cea\\candidate.obj": "3a89c6c98f7bb97a340a911de45ede797936051307a916693d5dd676b5769137",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1?$signal1@XVColor3@G3D@@U?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXVColor3@G3D@@@ZV?$allocator@X@std@@@4@@boost@@QAE@XZ",
+    "address": "005a67f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1?$signal1@XVColor3@G3D@@U?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXVColor3@G3D@@@ZV?$allocator@X@std@@@4@@boost@@QAE@XZ$0",
+    "address": "007d2f40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1?$signal1@XVCoordinateFrame@G3D@@U?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXVCoordinateFrame@G3D@@@ZV?$allocator@X@std@@@4@@boost@@QAE@XZ",
+    "address": "005a67f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1?$signal1@XVCoordinateFrame@G3D@@U?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXVCoordinateFrame@G3D@@@ZV?$allocator@X@std@@@4@@boost@@QAE@XZ$0",
+    "address": "007d2f40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1?$signal1@XVVector3@G3D@@U?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXVVector3@G3D@@@ZV?$allocator@X@std@@@4@@boost@@QAE@XZ",
+    "address": "005a67f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1?$signal1@XVVector3@G3D@@U?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXVVector3@G3D@@@ZV?$allocator@X@std@@@4@@boost@@QAE@XZ$0",
+    "address": "007d2f40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1?$signal1@XVBrickColor@RBX@@U?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXVBrickColor@RBX@@@ZV?$allocator@X@std@@@4@@boost@@QAE@XZ",
+    "address": "005a67f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1?$signal1@XVBrickColor@RBX@@U?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXVBrickColor@RBX@@@ZV?$allocator@X@std@@@4@@boost@@QAE@XZ$0",
+    "address": "007d2f40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1?$signal1@X_NU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AX_N@ZV?$allocator@X@std@@@2@@boost@@QAE@XZ",
+    "address": "005a67f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1?$signal1@X_NU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AX_N@ZV?$allocator@X@std@@@2@@boost@@QAE@XZ$0",
+    "address": "007d2f40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1?$signal1@XHU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXH@ZV?$allocator@X@std@@@2@@boost@@QAE@XZ",
+    "address": "005a67f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1?$signal1@XHU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXH@ZV?$allocator@X@std@@@2@@boost@@QAE@XZ$0",
+    "address": "007d2f40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1?$signal@$$A6AXVColor3@G3D@@@ZU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXVColor3@G3D@@@ZV?$allocator@X@std@@@4@@boost@@QAE@XZ",
+    "address": "005a67f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1?$signal@$$A6AXVColor3@G3D@@@ZU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXVColor3@G3D@@@ZV?$allocator@X@std@@@4@@boost@@QAE@XZ$1",
+    "address": "007d2f40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1?$signal@$$A6AXVCoordinateFrame@G3D@@@ZU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXVCoordinateFrame@G3D@@@ZV?$allocator@X@std@@@4@@boost@@QAE@XZ",
+    "address": "005a67f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1?$signal@$$A6AXVCoordinateFrame@G3D@@@ZU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXVCoordinateFrame@G3D@@@ZV?$allocator@X@std@@@4@@boost@@QAE@XZ$1",
+    "address": "007d2f40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1?$signal@$$A6AXVVector3@G3D@@@ZU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXVVector3@G3D@@@ZV?$allocator@X@std@@@4@@boost@@QAE@XZ",
+    "address": "005a67f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1?$signal@$$A6AXVVector3@G3D@@@ZU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXVVector3@G3D@@@ZV?$allocator@X@std@@@4@@boost@@QAE@XZ$1",
+    "address": "007d2f40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1?$signal@$$A6AXVBrickColor@RBX@@@ZU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXVBrickColor@RBX@@@ZV?$allocator@X@std@@@4@@boost@@QAE@XZ",
+    "address": "005a67f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1?$signal@$$A6AXVBrickColor@RBX@@@ZU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXVBrickColor@RBX@@@ZV?$allocator@X@std@@@4@@boost@@QAE@XZ$1",
+    "address": "007d2f40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1?$signal@$$A6AX_N@ZU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AX_N@ZV?$allocator@X@std@@@2@@boost@@QAE@XZ",
+    "address": "005a67f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1?$signal@$$A6AX_N@ZU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AX_N@ZV?$allocator@X@std@@@2@@boost@@QAE@XZ$1",
+    "address": "007d2f40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1?$signal@$$A6AXH@ZU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXH@ZV?$allocator@X@std@@@2@@boost@@QAE@XZ",
+    "address": "005a67f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1?$signal@$$A6AXH@ZU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXH@ZV?$allocator@X@std@@@2@@boost@@QAE@XZ$1",
+    "address": "007d2f40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1TSignalInstance@?$TSignalDesc@$$A6AXVColor3@G3D@@@Z@Reflection@RBX@@UAE@XZ",
+    "address": "00634730"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1TSignalInstance@?$TSignalDesc@$$A6AXVColor3@G3D@@@Z@Reflection@RBX@@UAE@XZ$3",
+    "address": "007da008"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1TSignalInstance@?$TSignalDesc@$$A6AXVCoordinateFrame@G3D@@@Z@Reflection@RBX@@UAE@XZ",
+    "address": "00634730"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1TSignalInstance@?$TSignalDesc@$$A6AXVCoordinateFrame@G3D@@@Z@Reflection@RBX@@UAE@XZ$3",
+    "address": "007da008"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1TSignalInstance@?$TSignalDesc@$$A6AXVVector3@G3D@@@Z@Reflection@RBX@@UAE@XZ",
+    "address": "00634730"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1TSignalInstance@?$TSignalDesc@$$A6AXVVector3@G3D@@@Z@Reflection@RBX@@UAE@XZ$3",
+    "address": "007da008"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1TSignalInstance@?$TSignalDesc@$$A6AXVBrickColor@RBX@@@Z@Reflection@RBX@@UAE@XZ",
+    "address": "00634730"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1TSignalInstance@?$TSignalDesc@$$A6AXVBrickColor@RBX@@@Z@Reflection@RBX@@UAE@XZ$3",
+    "address": "007da008"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1TSignalInstance@?$TSignalDesc@$$A6AX_N@Z@Reflection@RBX@@UAE@XZ",
+    "address": "00634730"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1TSignalInstance@?$TSignalDesc@$$A6AX_N@Z@Reflection@RBX@@UAE@XZ$3",
+    "address": "007da008"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1TSignalInstance@?$TSignalDesc@$$A6AXH@Z@Reflection@RBX@@UAE@XZ",
+    "address": "00634730"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1TSignalInstance@?$TSignalDesc@$$A6AXH@Z@Reflection@RBX@@UAE@XZ$3",
+    "address": "007da008"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\418a9ef104f05d4b\\candidate.obj": "67d4dc020a5a305fce7949ec50bc5a42cce760732eeda1b7ebfb9997f77f20be",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?_Ufill@?$vector@VBrickColor@RBX@@V?$allocator@VBrickColor@RBX@@@std@@@std@@IAEPAVBrickColor@RBX@@PAV34@IABV34@@Z",
+    "address": "0056f880"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\a1a7b217817b68cf\\candidate.obj": "c354d8b6250356988a0788f5411886675e26d43f60885fe890a7c917d5979266",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?push_back@?$vector@VBrickColor@RBX@@V?$allocator@VBrickColor@RBX@@@std@@@std@@QAEXABVBrickColor@RBX@@@Z",
+    "address": "00446f20"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\a1a7b217817b68cf\\candidate.obj": "c354d8b6250356988a0788f5411886675e26d43f60885fe890a7c917d5979266",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?_Construct_n@?$vector@VBrickColor@RBX@@V?$allocator@VBrickColor@RBX@@@std@@@std@@QAEXIABVBrickColor@RBX@@@Z",
+    "address": "0041af90"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\fb5210639f554831\\candidate.obj": "820f6afb5f0a717f7e052bbf0aecbf8de2d7c9645e475613d4784bd09f6bd707",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0CChatPrompt@@QAE@XZ",
+    "address": "00411be0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\5d443b73d8285f0e\\candidate.obj": "4324b5e9a7b24a89165106f9599ab0895d6cc8ffd1f5f230d3822b411d34ab65",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0CInsertObjectDialog@@QAE@V?$shared_ptr@VInstance@RBX@@@boost@@PAVCWnd@@@Z",
+    "address": "0041fe00"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\13178238b2fe2e0f\\candidate.obj": "5c194e24e0b8abc1c816356a53f5fdad8c9f26be2c20826070c52f961e7b49ed",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1CInsertObjectDialog@@UAE@XZ",
+    "address": "0041ff40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\13178238b2fe2e0f\\candidate.obj": "5c194e24e0b8abc1c816356a53f5fdad8c9f26be2c20826070c52f961e7b49ed",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?DoDataExchange@CInsertObjectDialog@@UAEXPAVCDataExchange@@@Z",
+    "address": "00420580"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\13178238b2fe2e0f\\candidate.obj": "5c194e24e0b8abc1c816356a53f5fdad8c9f26be2c20826070c52f961e7b49ed",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0CInstanceExplorer@@QAE@XZ",
+    "address": "00421940"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\236979534a6787f6\\candidate.obj": "581ac134edbb215d91aeb4612f147ca3cef05c589fc06dbafd285d2db95622a7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1CInstanceExplorer@@UAE@XZ",
+    "address": "00421bc0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\236979534a6787f6\\candidate.obj": "581ac134edbb215d91aeb4612f147ca3cef05c589fc06dbafd285d2db95622a7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?CreateObject@CSettingsExplorer@@SGPAVCObject@@XZ",
+    "address": "00466b90"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\236979534a6787f6\\candidate.obj": "581ac134edbb215d91aeb4612f147ca3cef05c589fc06dbafd285d2db95622a7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?GetXtremeColor@@YAKI@Z",
+    "address": "006f72f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\9198afb0b637a684\\candidate.obj": "4b127bf7e7ee6f5ccb240de082641a62d2ac12a51a47502994f5498ced262c06",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??4CColorInfo@CRobloxControlColorSelector@@QAEAAU01@ABU01@@Z",
+    "address": "0044deb0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\9198afb0b637a684\\candidate.obj": "4b127bf7e7ee6f5ccb240de082641a62d2ac12a51a47502994f5498ced262c06",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$_Copy_backward_opt@PAUCColorInfo@CRobloxControlColorSelector@@PAU12@Uforward_iterator_tag@std@@@std@@YAPAUCColorInfo@CRobloxControlColorSelector@@PAU12@00Uforward_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+    "address": "0044dee0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\9198afb0b637a684\\candidate.obj": "4b127bf7e7ee6f5ccb240de082641a62d2ac12a51a47502994f5498ced262c06",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Draw@CRobloxControlColorSelector@@MAEXPAVCDC@@@Z",
+    "address": "0044e090"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\9198afb0b637a684\\candidate.obj": "4b127bf7e7ee6f5ccb240de082641a62d2ac12a51a47502994f5498ced262c06",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$_Fill@PAUCColorInfo@CRobloxControlColorSelector@@U12@@std@@YAXPAUCColorInfo@CRobloxControlColorSelector@@0ABU12@@Z",
+    "address": "0044e460"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\9198afb0b637a684\\candidate.obj": "4b127bf7e7ee6f5ccb240de082641a62d2ac12a51a47502994f5498ced262c06",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?handle_453750@CRobloxDoc@@QAEXPAVCCmdUI@@@Z",
+    "address": "00453750"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\204fd98dc3fb215d\\candidate.obj": "4890595e039a80fa1758fbf47ab0ba25ea93cbbf545c1219575f85899f2eeb70",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?handle_453990@CRobloxDoc@@QAEXPAVCCmdUI@@@Z",
+    "address": "00453990"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\204fd98dc3fb215d\\candidate.obj": "4890595e039a80fa1758fbf47ab0ba25ea93cbbf545c1219575f85899f2eeb70",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?handle_454490@CRobloxDoc@@QAEXPAVCCmdUI@@@Z",
+    "address": "00454490"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\204fd98dc3fb215d\\candidate.obj": "4890595e039a80fa1758fbf47ab0ba25ea93cbbf545c1219575f85899f2eeb70",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?handle_4547b0@CRobloxDoc@@QAEXPAVCCmdUI@@@Z",
+    "address": "004547b0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\204fd98dc3fb215d\\candidate.obj": "4890595e039a80fa1758fbf47ab0ba25ea93cbbf545c1219575f85899f2eeb70",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?handle_454920@CRobloxDoc@@QAEXPAVCCmdUI@@@Z",
+    "address": "00454920"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\204fd98dc3fb215d\\candidate.obj": "4890595e039a80fa1758fbf47ab0ba25ea93cbbf545c1219575f85899f2eeb70",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?handle_4545d0@CRobloxDoc@@QAEXXZ",
+    "address": "004545d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\204fd98dc3fb215d\\candidate.obj": "4890595e039a80fa1758fbf47ab0ba25ea93cbbf545c1219575f85899f2eeb70",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?OnOpenDocument@CRobloxDoc@@UAEHPBD@Z",
+    "address": "004533f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\204fd98dc3fb215d\\candidate.obj": "4890595e039a80fa1758fbf47ab0ba25ea93cbbf545c1219575f85899f2eeb70",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?DeleteContents@CRobloxDoc@@UAEXXZ",
+    "address": "004513c0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\204fd98dc3fb215d\\candidate.obj": "4890595e039a80fa1758fbf47ab0ba25ea93cbbf545c1219575f85899f2eeb70",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1CRobloxDoc@@UAE@XZ",
+    "address": "00451940"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\204fd98dc3fb215d\\candidate.obj": "4890595e039a80fa1758fbf47ab0ba25ea93cbbf545c1219575f85899f2eeb70",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1CRobloxView@@UAE@XZ",
+    "address": "00459ba0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\91367b42a46df4aa\\candidate.obj": "adcd31f908b23a193c7513c68b0a9954eed0b9d132259c4445a8f5cf3a1c88af",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0?$VerbBinder@VCRobloxView@@VCView@@@@QAE@XZ",
+    "address": "00459890"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\91367b42a46df4aa\\candidate.obj": "adcd31f908b23a193c7513c68b0a9954eed0b9d132259c4445a8f5cf3a1c88af",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0CRobloxView@@QAE@XZ",
+    "address": "00459eb0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\91367b42a46df4aa\\candidate.obj": "adcd31f908b23a193c7513c68b0a9954eed0b9d132259c4445a8f5cf3a1c88af",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?OnInitialUpdate@CRobloxView@@UAEXXZ",
+    "address": "0045a4a0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\26110238b44d531f\\candidate.obj": "364c4b845942b22c9ef3df4b27c90b741e5be3f9bf445d798a225fc100ecf13f",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Create@CXTCaption@@EAEHPBD0KABUtagRECT@@PAVCWnd@@IPAUCCreateContext@@@Z",
+    "address": "00760640"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\eaea154e05ef39d3\\candidate.obj": "b6eb93595a85993d166d889779c5cab17306480f2933893d2f6f1390b7611fb7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?EnableMenuItem@CMenu@@QAEIII@Z",
+    "address": "006ba690"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\c7fd7eb9f7d273ff\\candidate.obj": "d552c5245dd38246b79cbe9938c6273e5860392a639e851bb914de4bb56032a5",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?GetMenuItemID@CMenu@@QBEIH@Z",
+    "address": "006ba6b0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\c7fd7eb9f7d273ff\\candidate.obj": "d552c5245dd38246b79cbe9938c6273e5860392a639e851bb914de4bb56032a5",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?showContextMenu@CSelectionTreeCtrl@@QAEXVCPoint@@@Z",
+    "address": "00422720"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\c7fd7eb9f7d273ff\\candidate.obj": "d552c5245dd38246b79cbe9938c6273e5860392a639e851bb914de4bb56032a5",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0CSelectionTreeCtrl@@QAE@XZ",
+    "address": "00425c90"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\c7fd7eb9f7d273ff\\candidate.obj": "d552c5245dd38246b79cbe9938c6273e5860392a639e851bb914de4bb56032a5",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?setDataModel@CSelectionTreeCtrl@@QAEXV?$shared_ptr@VDataModel@RBX@@@boost@@@Z",
+    "address": "00426bf0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\c7fd7eb9f7d273ff\\candidate.obj": "d552c5245dd38246b79cbe9938c6273e5860392a639e851bb914de4bb56032a5",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?execScript@CWorkspace@@QAEJPBDUtagVARIANT@@111PAPAUtagSAFEARRAY@@@Z",
+    "address": "0046b230"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\cc54bfecfb4475e8\\candidate.obj": "c12dd4f1ad173fdfa19fcd398215fecffc537c2fad70f278d2dd0e1187e2d181",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?panUnits@Camera@RBX@@QAEXH@Z",
+    "address": "005cc930"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\c5e4a2bf5013cdf1\\candidate.obj": "9b6f49e607a466855c94546d58fe570ec6b04329ca47150899283d16a71762a5",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?tiltUnits@Camera@RBX@@QAE_NH@Z",
+    "address": "005cc890"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\c5e4a2bf5013cdf1\\candidate.obj": "9b6f49e607a466855c94546d58fe570ec6b04329ca47150899283d16a71762a5",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1?$signal0@XU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXXZV?$allocator@X@std@@@2@@boost@@QAE@XZ",
+    "address": "005a67f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\662485bd0bd0016e\\candidate.obj": "155a118fc9d5237c365b463d8ee22b5b3bd9565e6e1fa5a6628b4412d39d091b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1?$signal0@XU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXXZV?$allocator@X@std@@@2@@boost@@QAE@XZ$0",
+    "address": "007d2f40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\662485bd0bd0016e\\candidate.obj": "155a118fc9d5237c365b463d8ee22b5b3bd9565e6e1fa5a6628b4412d39d091b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1?$signal@$$A6AXXZU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXXZV?$allocator@X@std@@@2@@boost@@QAE@XZ",
+    "address": "005a67f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\662485bd0bd0016e\\candidate.obj": "155a118fc9d5237c365b463d8ee22b5b3bd9565e6e1fa5a6628b4412d39d091b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1?$signal@$$A6AXXZU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXXZV?$allocator@X@std@@@2@@boost@@QAE@XZ$1",
+    "address": "007d2f40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\662485bd0bd0016e\\candidate.obj": "155a118fc9d5237c365b463d8ee22b5b3bd9565e6e1fa5a6628b4412d39d091b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1TSignalInstance@?$TSignalDesc@$$A6AXXZ@Reflection@RBX@@UAE@XZ",
+    "address": "00634730"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\662485bd0bd0016e\\candidate.obj": "155a118fc9d5237c365b463d8ee22b5b3bd9565e6e1fa5a6628b4412d39d091b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1TSignalInstance@?$TSignalDesc@$$A6AXXZ@Reflection@RBX@@UAE@XZ$3",
+    "address": "007da008"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\662485bd0bd0016e\\candidate.obj": "155a118fc9d5237c365b463d8ee22b5b3bd9565e6e1fa5a6628b4412d39d091b",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0?$scoped_lock@Vmutex@boost@@@thread@detail@boost@@QAE@AAVmutex@3@_N@Z",
+    "address": "00407130"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\0f789ba89c1a39c5\\candidate.obj": "2be6bb8fb81137466068a6f9d00c7d1d3b2634f4b05fbe1968b3e08bd78bfe94",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?registerFile@ContentProvider@RBX@@AAE_NPAUCachedContent@12@@Z",
+    "address": "00560200"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\0f789ba89c1a39c5\\candidate.obj": "2be6bb8fb81137466068a6f9d00c7d1d3b2634f4b05fbe1968b3e08bd78bfe94",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?handle_453c30@CRobloxDoc@@QAEXPAUtagNMHDR@@PAJ@Z",
+    "address": "00453c30"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\6cce9921c0ca893a\\candidate.obj": "b9c1d6cdb89db5f19dcf419238b1a0fa8d33ac56fd0d87711ebe7631695d04a4",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?reset@?$scoped_ptr@UStandardVerbs@RBX@@@boost@@QAEXPAUStandardVerbs@RBX@@@Z",
+    "address": "00430ec0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\2b2251c17bf5eb74\\candidate.obj": "8411ef3781a4788ce6524bc2b72d8417c4492c418fe659565493095a9fa7d321",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?initializeCommands@CRobloxDoc@@QAEXXZ",
+    "address": "00451b60"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\2b2251c17bf5eb74\\candidate.obj": "8411ef3781a4788ce6524bc2b72d8417c4492c418fe659565493095a9fa7d321",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??4?$CSimpleStringT@D$0A@@ATL@@QAEAAV01@PBD@Z",
+    "address": "005a7a80"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\87f073ba30adcfb8\\candidate.obj": "8b633dddcb8f9a8d32b750da3b1366b027a15b7cecf82f5cdbdba41d484842d4",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??4?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAEAAV01@PBD@Z",
+    "address": "005a7a80"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\87f073ba30adcfb8\\candidate.obj": "8b633dddcb8f9a8d32b750da3b1366b027a15b7cecf82f5cdbdba41d484842d4",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$write@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@23@@?$write_filter_impl@Umultichar_tag@iostreams@boost@@@detail@iostreams@boost@@SAHAAV?$basic_gzip_compressor@V?$allocator@D@std@@@23@AAV?$linked_streambuf@DU?$char_traits@D@std@@@123@PBDH@Z",
+    "address": "005c8e30"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\87f073ba30adcfb8\\candidate.obj": "8b633dddcb8f9a8d32b750da3b1366b027a15b7cecf82f5cdbdba41d484842d4",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$write@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@23@@iostreams@boost@@YAHAAV?$basic_gzip_compressor@V?$allocator@D@std@@@01@AAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@01@PBDH@Z",
+    "address": "005c8e30"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\87f073ba30adcfb8\\candidate.obj": "8b633dddcb8f9a8d32b750da3b1366b027a15b7cecf82f5cdbdba41d484842d4",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAE@PBD@Z",
+    "address": "0055ee20"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\87f073ba30adcfb8\\candidate.obj": "8b633dddcb8f9a8d32b750da3b1366b027a15b7cecf82f5cdbdba41d484842d4",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$write@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@23@@?$flt_wrapper_impl@Uoutput@iostreams@boost@@@detail@iostreams@boost@@SAHAAV?$basic_gzip_compressor@V?$allocator@D@std@@@23@PAV?$linked_streambuf@DU?$char_traits@D@std@@@123@PBDH@Z",
+    "address": "005c8e30"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\87f073ba30adcfb8\\candidate.obj": "8b633dddcb8f9a8d32b750da3b1366b027a15b7cecf82f5cdbdba41d484842d4",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$read@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@23@@?$read_filter_impl@Umultichar_tag@iostreams@boost@@@detail@iostreams@boost@@SAHAAV?$basic_gzip_compressor@V?$allocator@D@std@@@23@AAV?$linked_streambuf@DU?$char_traits@D@std@@@123@PADH@Z",
+    "address": "005c8e30"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\87f073ba30adcfb8\\candidate.obj": "8b633dddcb8f9a8d32b750da3b1366b027a15b7cecf82f5cdbdba41d484842d4",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?sync_impl@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@AAEXXZ",
+    "address": "005f7d80"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\87f073ba30adcfb8\\candidate.obj": "8b633dddcb8f9a8d32b750da3b1366b027a15b7cecf82f5cdbdba41d484842d4",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$read@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@23@@iostreams@boost@@YAHAAV?$basic_gzip_compressor@V?$allocator@D@std@@@01@AAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@01@PADH@Z",
+    "address": "005c8e30"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\87f073ba30adcfb8\\candidate.obj": "8b633dddcb8f9a8d32b750da3b1366b027a15b7cecf82f5cdbdba41d484842d4",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?overflow@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@MAEHH@Z",
+    "address": "005f80c0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\87f073ba30adcfb8\\candidate.obj": "8b633dddcb8f9a8d32b750da3b1366b027a15b7cecf82f5cdbdba41d484842d4",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$read@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@23@@?$flt_wrapper_impl@Uinput@iostreams@boost@@@detail@iostreams@boost@@SAHAAV?$basic_gzip_compressor@V?$allocator@D@std@@@23@PAV?$linked_streambuf@DU?$char_traits@D@std@@@123@PADH@Z",
+    "address": "005c8e30"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\87f073ba30adcfb8\\candidate.obj": "8b633dddcb8f9a8d32b750da3b1366b027a15b7cecf82f5cdbdba41d484842d4",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$read@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@23@@?$read_filter_impl@Umultichar_tag@iostreams@boost@@@detail@iostreams@boost@@SAHAAV?$basic_gzip_decompressor@V?$allocator@D@std@@@23@AAV?$linked_streambuf@DU?$char_traits@D@std@@@123@PADH@Z",
+    "address": "005c8e30"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\87f073ba30adcfb8\\candidate.obj": "8b633dddcb8f9a8d32b750da3b1366b027a15b7cecf82f5cdbdba41d484842d4",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?underflow@?$indirect_streambuf@V?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uoutput@23@@detail@iostreams@boost@@MAEHXZ",
+    "address": "005f8400"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\87f073ba30adcfb8\\candidate.obj": "8b633dddcb8f9a8d32b750da3b1366b027a15b7cecf82f5cdbdba41d484842d4",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$read@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@23@@iostreams@boost@@YAHAAV?$basic_gzip_decompressor@V?$allocator@D@std@@@01@AAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@01@PADH@Z",
+    "address": "005c8e30"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\87f073ba30adcfb8\\candidate.obj": "8b633dddcb8f9a8d32b750da3b1366b027a15b7cecf82f5cdbdba41d484842d4",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$read@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@23@@?$flt_wrapper_impl@Uinput@iostreams@boost@@@detail@iostreams@boost@@SAHAAV?$basic_gzip_decompressor@V?$allocator@D@std@@@23@PAV?$linked_streambuf@DU?$char_traits@D@std@@@123@PADH@Z",
+    "address": "005c8e30"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\87f073ba30adcfb8\\candidate.obj": "8b633dddcb8f9a8d32b750da3b1366b027a15b7cecf82f5cdbdba41d484842d4",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?underflow@?$indirect_streambuf@V?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@U?$char_traits@D@std@@V?$allocator@D@5@Uinput@23@@detail@iostreams@boost@@MAEHXZ",
+    "address": "005f8770"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\87f073ba30adcfb8\\candidate.obj": "8b633dddcb8f9a8d32b750da3b1366b027a15b7cecf82f5cdbdba41d484842d4",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1?$signal1@XMU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXM@ZV?$allocator@X@std@@@2@@boost@@QAE@XZ",
+    "address": "005a67f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\f4ab6a6404541b01\\candidate.obj": "8736387df530e9b301c86bfa9954e47f3a0bc57e1d27954f3f2cfcc5d9c3ffd8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1?$signal1@XMU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXM@ZV?$allocator@X@std@@@2@@boost@@QAE@XZ$0",
+    "address": "007d2f40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\f4ab6a6404541b01\\candidate.obj": "8736387df530e9b301c86bfa9954e47f3a0bc57e1d27954f3f2cfcc5d9c3ffd8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1?$signal@$$A6AXM@ZU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXM@ZV?$allocator@X@std@@@2@@boost@@QAE@XZ",
+    "address": "005a67f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\f4ab6a6404541b01\\candidate.obj": "8736387df530e9b301c86bfa9954e47f3a0bc57e1d27954f3f2cfcc5d9c3ffd8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1?$signal@$$A6AXM@ZU?$last_value@X@boost@@HU?$less@H@std@@V?$function@$$A6AXM@ZV?$allocator@X@std@@@2@@boost@@QAE@XZ$1",
+    "address": "007d2f40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\f4ab6a6404541b01\\candidate.obj": "8736387df530e9b301c86bfa9954e47f3a0bc57e1d27954f3f2cfcc5d9c3ffd8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1TSignalInstance@?$TSignalDesc@$$A6AXM@Z@Reflection@RBX@@UAE@XZ",
+    "address": "00634730"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\f4ab6a6404541b01\\candidate.obj": "8736387df530e9b301c86bfa9954e47f3a0bc57e1d27954f3f2cfcc5d9c3ffd8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1TSignalInstance@?$TSignalDesc@$$A6AXM@Z@Reflection@RBX@@UAE@XZ$3",
+    "address": "007da008"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\f4ab6a6404541b01\\candidate.obj": "8736387df530e9b301c86bfa9954e47f3a0bc57e1d27954f3f2cfcc5d9c3ffd8",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0InsertModelFromRobloxVerb@@QAE@PAVCRobloxView@@PAVDataModel@RBX@@@Z",
+    "address": "00458ec0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\0ba3687da978fcaa\\candidate.obj": "929fd55ed0fb0ff27d5ca145826a4fdb3e1f04698b300386119b7d334786d4cd",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?isEnabled@InsertModelFromRobloxVerb@@UBE_NXZ",
+    "address": "00458f50"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\0ba3687da978fcaa\\candidate.obj": "929fd55ed0fb0ff27d5ca145826a4fdb3e1f04698b300386119b7d334786d4cd",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?print@StandardOut@RBX@@QAAXW4MessageType@2@PBDZZ",
+    "address": "005693a0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\7677423bc29df600\\candidate.obj": "432f3e6b8b2793a8036e9f723125b4ad76d1afdd7a8c951e1aa5642b6288dc2f",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1?$signal2@XV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VInstance@RBX@@@boost@@U?$last_value@X@4@HU?$less@H@2@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@2@@4@@boost@@QAE@XZ",
+    "address": "005a67f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\f23dadd49e659c2e\\candidate.obj": "aaf6385a7a15fbfc9823cd02e022a58dcae131a4073481a3d1c3ef8fdc427625",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1?$signal2@XV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VInstance@RBX@@@boost@@U?$last_value@X@4@HU?$less@H@2@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@2@@4@@boost@@QAE@XZ$0",
+    "address": "007d2f40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\f23dadd49e659c2e\\candidate.obj": "aaf6385a7a15fbfc9823cd02e022a58dcae131a4073481a3d1c3ef8fdc427625",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1?$signal@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VInstance@RBX@@@boost@@@ZU?$last_value@X@4@HU?$less@H@2@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@2@@4@@boost@@QAE@XZ",
+    "address": "005a67f0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\f23dadd49e659c2e\\candidate.obj": "aaf6385a7a15fbfc9823cd02e022a58dcae131a4073481a3d1c3ef8fdc427625",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1?$signal@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VInstance@RBX@@@boost@@@ZU?$last_value@X@4@HU?$less@H@2@V?$function@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VInstance@RBX@@@boost@@@ZV?$allocator@X@2@@4@@boost@@QAE@XZ$1",
+    "address": "007d2f40"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\f23dadd49e659c2e\\candidate.obj": "aaf6385a7a15fbfc9823cd02e022a58dcae131a4073481a3d1c3ef8fdc427625",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??1TSignalInstance@?$TSignalDesc@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@UAE@XZ",
+    "address": "00634730"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\f23dadd49e659c2e\\candidate.obj": "aaf6385a7a15fbfc9823cd02e022a58dcae131a4073481a3d1c3ef8fdc427625",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "__unwindfunclet$??1TSignalInstance@?$TSignalDesc@$$A6AXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VInstance@RBX@@@boost@@@Z@Reflection@RBX@@UAE@XZ$3",
+    "address": "007da008"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\f23dadd49e659c2e\\candidate.obj": "aaf6385a7a15fbfc9823cd02e022a58dcae131a4073481a3d1c3ef8fdc427625",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?onServiceProvider@Player@Network@RBX@@EAEXPBVServiceProvider@3@0@Z",
+    "address": "00494740"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\f23dadd49e659c2e\\candidate.obj": "aaf6385a7a15fbfc9823cd02e022a58dcae131a4073481a3d1c3ef8fdc427625",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?_Ufill@?$vector@W4PhysicsSendMethod@NetworkSettings@RBX@@V?$allocator@W4PhysicsSendMethod@NetworkSettings@RBX@@@std@@@std@@IAEPAW4PhysicsSendMethod@NetworkSettings@RBX@@PAW4345@IABW4345@@Z",
+    "address": "0056f880"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\abef73c167863c70\\candidate.obj": "c9a7c861220bb37933cca2f29fc4d06d73b563fa40f148e4d6eec0a6a3c83717",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?_Ufill@?$vector@W4PhysicsReceiveMethod@NetworkSettings@RBX@@V?$allocator@W4PhysicsReceiveMethod@NetworkSettings@RBX@@@std@@@std@@IAEPAW4PhysicsReceiveMethod@NetworkSettings@RBX@@PAW4345@IABW4345@@Z",
+    "address": "0056f880"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\abef73c167863c70\\candidate.obj": "c9a7c861220bb37933cca2f29fc4d06d73b563fa40f148e4d6eec0a6a3c83717",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?_Construct_n@?$vector@W4PhysicsSendMethod@NetworkSettings@RBX@@V?$allocator@W4PhysicsSendMethod@NetworkSettings@RBX@@@std@@@std@@QAEXIABW4PhysicsSendMethod@NetworkSettings@RBX@@@Z",
+    "address": "0041af90"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\abef73c167863c70\\candidate.obj": "c9a7c861220bb37933cca2f29fc4d06d73b563fa40f148e4d6eec0a6a3c83717",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?_Construct_n@?$vector@W4PhysicsReceiveMethod@NetworkSettings@RBX@@V?$allocator@W4PhysicsReceiveMethod@NetworkSettings@RBX@@@std@@@std@@QAEXIABW4PhysicsReceiveMethod@NetworkSettings@RBX@@@Z",
+    "address": "0041af90"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\abef73c167863c70\\candidate.obj": "c9a7c861220bb37933cca2f29fc4d06d73b563fa40f148e4d6eec0a6a3c83717",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?push_back@?$vector@W4PhysicsSendMethod@NetworkSettings@RBX@@V?$allocator@W4PhysicsSendMethod@NetworkSettings@RBX@@@std@@@std@@QAEXABW4PhysicsSendMethod@NetworkSettings@RBX@@@Z",
+    "address": "00446f20"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\abef73c167863c70\\candidate.obj": "c9a7c861220bb37933cca2f29fc4d06d73b563fa40f148e4d6eec0a6a3c83717",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?push_back@?$vector@W4PhysicsReceiveMethod@NetworkSettings@RBX@@V?$allocator@W4PhysicsReceiveMethod@NetworkSettings@RBX@@@std@@@std@@QAEXABW4PhysicsReceiveMethod@NetworkSettings@RBX@@@Z",
+    "address": "00446f20"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\abef73c167863c70\\candidate.obj": "c9a7c861220bb37933cca2f29fc4d06d73b563fa40f148e4d6eec0a6a3c83717",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?_Reverse@?$vector@VPlaneBoundedVolume@Ogre@@V?$allocator@VPlaneBoundedVolume@Ogre@@@std@@@std@@QAEXPAVPlaneBoundedVolume@Ogre@@0@Z",
+    "address": "0048a580"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\691d7c70442f2d76\\candidate.obj": "9e225d1e445f0d7042c022c3605eb1e2a22b2d86f2fbe1914a8b5d9b2f9b6894",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$_Fill@PAVPlaneBoundedVolume@Ogre@@V12@@std@@YAXPAVPlaneBoundedVolume@Ogre@@0ABV12@@Z",
+    "address": "00428990"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\691d7c70442f2d76\\candidate.obj": "9e225d1e445f0d7042c022c3605eb1e2a22b2d86f2fbe1914a8b5d9b2f9b6894",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$_Copy_opt@PAVPlaneBoundedVolume@Ogre@@PAV12@@std@@YAPAVPlaneBoundedVolume@Ogre@@PAV12@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+    "address": "00445310"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\691d7c70442f2d76\\candidate.obj": "9e225d1e445f0d7042c022c3605eb1e2a22b2d86f2fbe1914a8b5d9b2f9b6894",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$_Copy_backward_opt@PAVPlaneBoundedVolume@Ogre@@PAV12@@std@@YAPAVPlaneBoundedVolume@Ogre@@PAV12@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+    "address": "004289c0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\691d7c70442f2d76\\candidate.obj": "9e225d1e445f0d7042c022c3605eb1e2a22b2d86f2fbe1914a8b5d9b2f9b6894",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$fill@PAVPlaneBoundedVolume@Ogre@@V12@@std@@YAXPAVPlaneBoundedVolume@Ogre@@0ABV12@@Z",
+    "address": "00428990"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\691d7c70442f2d76\\candidate.obj": "9e225d1e445f0d7042c022c3605eb1e2a22b2d86f2fbe1914a8b5d9b2f9b6894",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?resize@?$vector@VPlaneBoundedVolume@Ogre@@V?$allocator@VPlaneBoundedVolume@Ogre@@@std@@@std@@QAEXIVPlaneBoundedVolume@Ogre@@@Z",
+    "address": "00446190"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\691d7c70442f2d76\\candidate.obj": "9e225d1e445f0d7042c022c3605eb1e2a22b2d86f2fbe1914a8b5d9b2f9b6894",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?insert@?$vector@VPlaneBoundedVolume@Ogre@@V?$allocator@VPlaneBoundedVolume@Ogre@@@std@@@std@@QAE?AV?$_Vector_iterator@VPlaneBoundedVolume@Ogre@@V?$allocator@VPlaneBoundedVolume@Ogre@@@std@@@2@V?$_Vector_const_iterator@VPlaneBoundedVolume@Ogre@@V?$allocator@VPlaneBoundedVolume@Ogre@@@std@@@2@ABVPlaneBoundedVolume@Ogre@@@Z",
+    "address": "00429870"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\691d7c70442f2d76\\candidate.obj": "9e225d1e445f0d7042c022c3605eb1e2a22b2d86f2fbe1914a8b5d9b2f9b6894",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?insert@?$vector@VPlaneBoundedVolume@Ogre@@V?$allocator@VPlaneBoundedVolume@Ogre@@@std@@@std@@QAEXV?$_Vector_const_iterator@VPlaneBoundedVolume@Ogre@@V?$allocator@VPlaneBoundedVolume@Ogre@@@std@@@2@IABVPlaneBoundedVolume@Ogre@@@Z",
+    "address": "004228d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\691d7c70442f2d76\\candidate.obj": "9e225d1e445f0d7042c022c3605eb1e2a22b2d86f2fbe1914a8b5d9b2f9b6894",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0?$pair@QAVTeam@RBX@@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@@std@@QAE@ABU01@@Z",
+    "address": "0055cc20"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\e94b30fc8a678a06\\candidate.obj": "fd6dbdf5312f3de97191a8110772ae3d220ad439f555f17ab4057b3db12805b7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@std@@@2@@2@@std@@QAE@ABU01@@Z",
+    "address": "006517d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\e94b30fc8a678a06\\candidate.obj": "fd6dbdf5312f3de97191a8110772ae3d220ad439f555f17ab4057b3db12805b7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0?$pair@QAVTeam@RBX@@V?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@std@@@2@@std@@@std@@QAE@ABU01@@Z",
+    "address": "0055cc20"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\e94b30fc8a678a06\\candidate.obj": "fd6dbdf5312f3de97191a8110772ae3d220ad439f555f17ab4057b3db12805b7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@std@@@2@@2@@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@ABV?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@std@@@2@@1@@Z",
+    "address": "00651ae0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\e94b30fc8a678a06\\candidate.obj": "fd6dbdf5312f3de97191a8110772ae3d220ad439f555f17ab4057b3db12805b7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$_Uninit_move@PAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@PAV12@V?$allocator@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@@2@@std@@YAPAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@0@PAV10@00AAV?$allocator@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@@0@U_Swap_move_tag@0@U_Range_checked_iterator_tag@0@@Z",
+    "address": "006518b0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\e94b30fc8a678a06\\candidate.obj": "fd6dbdf5312f3de97191a8110772ae3d220ad439f555f17ab4057b3db12805b7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??$_Uninit_fill_n@PAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@IV12@V?$allocator@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@@2@@std@@YAXPAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@0@IABV10@AAV?$allocator@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+    "address": "00651dd0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\e94b30fc8a678a06\\candidate.obj": "fd6dbdf5312f3de97191a8110772ae3d220ad439f555f17ab4057b3db12805b7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??A?$map@PAVTeam@RBX@@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@U?$less@PAVTeam@RBX@@@4@V?$allocator@U?$pair@QAVTeam@RBX@@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@@std@@@4@@std@@QAEAAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@1@ABQAVTeam@RBX@@@Z",
+    "address": "00652c80"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\e94b30fc8a678a06\\candidate.obj": "fd6dbdf5312f3de97191a8110772ae3d220ad439f555f17ab4057b3db12805b7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??A?$map@PAVTeam@RBX@@V?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@std@@@2@@std@@U?$less@PAVTeam@RBX@@@4@V?$allocator@U?$pair@QAVTeam@RBX@@V?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@std@@@2@@std@@@std@@@4@@std@@QAEAAV?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@std@@@2@@1@ABQAVTeam@RBX@@@Z",
+    "address": "00654360"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\e94b30fc8a678a06\\candidate.obj": "fd6dbdf5312f3de97191a8110772ae3d220ad439f555f17ab4057b3db12805b7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?_Insert_n@?$vector@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@V?$allocator@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@@2@@std@@IAEXV?$_Vector_const_iterator@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@V?$allocator@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@@2@@2@IABV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@2@@Z",
+    "address": "00652e90"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\e94b30fc8a678a06\\candidate.obj": "fd6dbdf5312f3de97191a8110772ae3d220ad439f555f17ab4057b3db12805b7",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?shoot@ShootTool@RBX@@AAEXABVUIEvent@2@@Z",
+    "address": "0063e890"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\cf7b33bf7655a497\\candidate.obj": "d772fbd9f1f3f688eea16c3a547b262b38678ada52a399a4803e3a908fd28f99",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?delay@TimerService@RBX@@QAEXV?$function0@XV?$allocator@Vfunction_base@boost@@@std@@@boost@@N@Z",
+    "address": "005d6e10"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\91e16d866bcc8a05\\candidate.obj": "502cbba292bfd6a5400c12e23f089dce0790e8b2765502e822148258c3692db0",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?onEvent@TimerService@RBX@@MAEXPBVRunService@2@VHeartbeat@2@@Z",
+    "address": "005d6f70"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\91e16d866bcc8a05\\candidate.obj": "502cbba292bfd6a5400c12e23f089dce0790e8b2765502e822148258c3692db0",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?getGripUp@Tool@RBX@@QBE?BVVector3@G3D@@XZ",
+    "address": "005fd580"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\451ad62e29469c32\\candidate.obj": "f9e324fb0d25b547f4997bf870494e12fa69f211158fce27fe564b1cc206e842",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?getGripRight@Tool@RBX@@QBE?BVVector3@G3D@@XZ",
+    "address": "005fd5a0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\451ad62e29469c32\\candidate.obj": "f9e324fb0d25b547f4997bf870494e12fa69f211158fce27fe564b1cc206e842",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0ToggleIDEModeVerb@@QAE@PAVVerbContainer@RBX@@@Z",
+    "address": "00458fd0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\d2369835da2cec1a\\candidate.obj": "a97c3f98256f670792304b0d241c568df5654a97ede30ac43a6d0f7c61947eff",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?isEnabled@ToggleIDEModeVerb@@UBE_NXZ",
+    "address": "00459040"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\d2369835da2cec1a\\candidate.obj": "a97c3f98256f670792304b0d241c568df5654a97ede30ac43a6d0f7c61947eff",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?FinalConstruct@CWorkspace@@QAEJXZ",
+    "address": "0046b5c0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\OgreNativeFull\\objects\\6671b4e9fdc2ec37\\candidate.obj": "21a0de0cfa6c9eb96adb1705dcebfc0e8b6a45a9ef4be35d59081a479e5c468c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\owners.json": "2f35709fda8d01e209cc52a097474b4e43a2ccf81d5a95559ca9a3ba257add5a",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-s58h_6hb\\import-thunk-identities-as-owner.json": "dbe45101cc2d94f6070da9b9d27b7b0e1cc26341281fc755e19c14431cca6d23"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??1?$FuncDesc@VDHTMLWindow@@@Reflection@RBX@@UAE@XZ",
+   "address": "00633750",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnCmdMsg@?$VerbBinder@VCRobloxDoc@@VCDocument@@@@UAEHIHPAXPAUAFX_CMDHANDLERINFO@@@Z",
+   "address": "00451690",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?OnNewDocument@CRobloxDoc@@UAEHXZ",
+   "address": "00452f60",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?addClasses@CInsertObjectDialog@@QAEXPBVClassDescriptor@Reflection@RBX@@@Z",
+   "address": "004202b0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {
+  "?getColumn@Matrix3@G3D@@QBE?AVVector3@2@H@Z": [
+   "00513240",
+   "005d9a50"
+  ],
+  "??1signal_base@detail@signals@boost@@QAE@XZ": [
+   "00594cb0",
+   "00600660"
+  ],
+  "??1trackable@signals@boost@@IAE@XZ": [
+   "005950e0",
+   "005f1c70"
+  ],
+  "??$_Uninit_fill_n@PAVany@boost@@IV12@V?$allocator@Vany@boost@@@std@@@std@@YAXPAVany@boost@@IABV12@AAV?$allocator@Vany@boost@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": [
+   "0041aa50",
+   "005cd0d0"
+  ],
+  "?_Insert_n@?$vector@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@std@@IAEXV?$_Vector_const_iterator@V?$shared_ptr@VInstance@RBX@@@boost@@V?$allocator@V?$shared_ptr@VInstance@RBX@@@boost@@@std@@@2@IABV?$shared_ptr@VInstance@RBX@@@boost@@@Z": [
+   "00412240",
+   "006dbfa0"
+  ],
+  "??$shared_static_cast@VPartInstance@RBX@@VInstance@2@@boost@@YA?AV?$shared_ptr@VPartInstance@RBX@@@0@ABV?$shared_ptr@VInstance@RBX@@@0@@Z": [
+   "004a2070",
+   "005a1680"
+  ],
+  "??$_Uninit_fill_n@PAVBrickColor@RBX@@IV12@V?$allocator@VBrickColor@RBX@@@std@@@std@@YAXPAVBrickColor@RBX@@IABV12@AAV?$allocator@VBrickColor@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": [
+   "0041aa50",
+   "005cd0d0"
+  ],
+  "?Create@CWnd@@UAEHPBD0KABUtagRECT@@PAV1@IPAUCCreateContext@@@Z": [
+   "006a06f2",
+   "00760640"
+  ],
+  "__imp_??4?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@QAEAAV01@ABV01@@Z": [
+   "00803144",
+   "00803ed4"
+  ],
+  "?GetColor@CXTPColorManager@@QBEKH@Z": [
+   "006df520",
+   "006df6e0"
+  ],
+  "??$create@VChangeHistoryService@RBX@@@ServiceProvider@RBX@@QBEPAVChangeHistoryService@1@XZ": [
+   "00452a00",
+   "00453000"
+  ],
+  "??$create@VScriptContext@RBX@@@ServiceProvider@RBX@@QBEPAVScriptContext@1@XZ": [
+   "0042de90",
+   "0042dfd0"
+  ],
+  "??1StandardVerbs@RBX@@QAE@XZ": [
+   "004273a0",
+   "00450450"
+  ],
+  "__imp__EnableMenuItem@12": [
+   "0080208c",
+   "00802d98"
+  ],
+  "__imp__GetMenuItemID@8": [
+   "00802088",
+   "00802d90"
+  ],
+  "??$find@VSelection@RBX@@@ServiceProvider@RBX@@QBEPAVSelection@1@XZ": [
+   "00415200",
+   "004153b0"
+  ],
+  "?do_lock@mutex@boost@@AAEXXZ": [
+   "00563090",
+   "00594ce0"
+  ],
+  "?SetString@?$CSimpleStringT@D$0A@@ATL@@QAEXPBDH@Z": [
+   "0055d950",
+   "005a7920"
+  ],
+  "??$write@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@QAEHAAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@12@PBDH@Z": [
+   "005c8dd0",
+   "005f5650"
+  ],
+  "??$read@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@?$basic_gzip_compressor@V?$allocator@D@std@@@iostreams@boost@@QAEHAAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@12@PADH@Z": [
+   "005c8dd0",
+   "005f6fd0"
+  ],
+  "??$read@V?$linked_streambuf@DU?$char_traits@D@std@@@detail@iostreams@boost@@@?$basic_gzip_decompressor@V?$allocator@D@std@@@iostreams@boost@@QAEHAAV?$linked_streambuf@DU?$char_traits@D@std@@@detail@12@PADH@Z": [
+   "005c8dd0",
+   "005f8200"
+  ],
+  "?getLocalTime@System@G3D@@SANXZ": [
+   "005083d0",
+   "00508410"
+  ],
+  "??$_Uninit_fill_n@PAW4PhysicsSendMethod@NetworkSettings@RBX@@IW4123@V?$allocator@W4PhysicsSendMethod@NetworkSettings@RBX@@@std@@@std@@YAXPAW4PhysicsSendMethod@NetworkSettings@RBX@@IABW4123@AAV?$allocator@W4PhysicsSendMethod@NetworkSettings@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": [
+   "0041aa50",
+   "005cd0d0"
+  ],
+  "??$_Uninit_fill_n@PAW4PhysicsReceiveMethod@NetworkSettings@RBX@@IW4123@V?$allocator@W4PhysicsReceiveMethod@NetworkSettings@RBX@@@std@@@std@@YAXPAW4PhysicsReceiveMethod@NetworkSettings@RBX@@IABW4123@AAV?$allocator@W4PhysicsReceiveMethod@NetworkSettings@RBX@@@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z": [
+   "0041aa50",
+   "005cd0d0"
+  ],
+  "__imp_??4PlaneBoundedVolume@Ogre@@QAEAAV01@ABV01@@Z": [
+   "008023f0",
+   "0080240c"
+  ],
+  "?_Insert_n@?$vector@VPlaneBoundedVolume@Ogre@@V?$allocator@VPlaneBoundedVolume@Ogre@@@std@@@std@@IAEXV?$_Vector_const_iterator@VPlaneBoundedVolume@Ogre@@V?$allocator@VPlaneBoundedVolume@Ogre@@@std@@@2@IABVPlaneBoundedVolume@Ogre@@@Z": [
+   "00429480",
+   "006dbfa0"
+  ],
+  "??0?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE@ABV01@@Z": [
+   "004025b0",
+   "004299c0"
+  ],
+  "??0?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@std@@@2@$0A@@std@@@std@@QAE@ABV01@@Z": [
+   "004025b0",
+   "006515e0"
+  ]
+ },
+ "owners_tried": 182,
+ "owners_bound": 182
+}

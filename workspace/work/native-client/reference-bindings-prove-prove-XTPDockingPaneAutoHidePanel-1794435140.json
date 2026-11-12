@@ -1,0 +1,59 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?FreeNode@?$CList@PAVCXTPDockingPaneBase@@PAV1@@@IAEXPAUCNode@1@@Z",
+    "address": "00760970"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockingPaneAutoHidePanel\\objects\\168db4548f14bc1e\\candidate.obj": "ebd842f4fcf42551ad9c6c8bdfe81c96784bb6e19f87006937ecc47c91c8d8c0",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x88ae0bp\\owners.json": "8407b62754c54c789f2b28b33c6e8f13b14b3d0fe1443e894e364fba33e9884f",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x88ae0bp\\import-thunk-identities-as-owner.json": "eaea7ddf3ebcaffcc2db689b7c7fbe2603355b0c26bdd826df391e6a8d1ab960"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?AddTail@?$CList@PAVCXTPDockingPaneBase@@PAV1@@@QAEPAU__POSITION@@PAVCXTPDockingPaneBase@@@Z",
+    "address": "0076bac0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockingPaneAutoHidePanel\\objects\\168db4548f14bc1e\\candidate.obj": "ebd842f4fcf42551ad9c6c8bdfe81c96784bb6e19f87006937ecc47c91c8d8c0",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x88ae0bp\\owners.json": "8407b62754c54c789f2b28b33c6e8f13b14b3d0fe1443e894e364fba33e9884f",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x88ae0bp\\import-thunk-identities-as-owner.json": "eaea7ddf3ebcaffcc2db689b7c7fbe2603355b0c26bdd826df391e6a8d1ab960"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Serialize@?$CArray@PAVCAutoHidePanelTabManager@CXTPDockingPaneAutoHidePanel@@PAV12@@@UAEXAAVCArchive@@@Z",
+    "address": "006e34d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockingPaneAutoHidePanel\\objects\\168db4548f14bc1e\\candidate.obj": "ebd842f4fcf42551ad9c6c8bdfe81c96784bb6e19f87006937ecc47c91c8d8c0",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x88ae0bp\\owners.json": "8407b62754c54c789f2b28b33c6e8f13b14b3d0fe1443e894e364fba33e9884f",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-x88ae0bp\\import-thunk-identities-as-owner.json": "eaea7ddf3ebcaffcc2db689b7c7fbe2603355b0c26bdd826df391e6a8d1ab960"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??$SerializeElements@PAVCAutoHidePanelTabManager@CXTPDockingPaneAutoHidePanel@@@@YGXAAVCArchive@@PAPAVCAutoHidePanelTabManager@CXTPDockingPaneAutoHidePanel@@H@Z",
+   "address": "00787550",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?NewNode@?$CList@PAVCXTPDockingPaneBase@@PAV1@@@IAEPAUCNode@1@PAU21@0@Z",
+   "address": "0076a730",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?RemoveAll@?$CList@PAVCXTPDockingPaneBase@@PAV1@@@QAEXXZ",
+   "address": "00438030",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 3,
+ "owners_bound": 3
+}

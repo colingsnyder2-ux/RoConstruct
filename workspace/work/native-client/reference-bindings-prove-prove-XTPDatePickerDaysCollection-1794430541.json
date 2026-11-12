@@ -1,0 +1,27 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?Serialize@?$CArray@USELECTED_BLOCK@CXTPDatePickerDaysCollection@@AAU12@@@UAEXAAVCArchive@@@Z",
+    "address": "006e34d0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDatePickerDaysCollection\\objects\\89897937cd96356c\\candidate.obj": "24134ee760007c3104145959b172c8c21d87196ed2f0b26af5130ede3f7a9efd",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-fbv0fuyt\\owners.json": "cb12fe690329f8ad8329e2e2e566f2afeee39fd546d7fefd0cba3e0aca6c2472",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-fbv0fuyt\\import-thunk-identities-as-owner.json": "df693d47bba0e8f6d4b2cc49f7f2bd2d54b3f745a17201ea2aed21caa9921db2"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??$SerializeElements@USELECTED_BLOCK@CXTPDatePickerDaysCollection@@@@YGXAAVCArchive@@PAUSELECTED_BLOCK@CXTPDatePickerDaysCollection@@H@Z",
+   "address": "00787550",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

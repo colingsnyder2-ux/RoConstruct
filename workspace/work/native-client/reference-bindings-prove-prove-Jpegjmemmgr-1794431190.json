@@ -1,0 +1,147 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "_alloc_small",
+    "address": "0052ab50"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Jpegjmemmgr\\objects\\39ff538fabab7862\\candidate.obj": "a077fad064958710dc3ace79338334a482a6cb288927f5bd82da20aa29e611e2",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-3uez42oh\\owners.json": "6bc54fe61d8d9931e907f3580d35af0622c73f5648505530e8de65ce6de1e761",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-3uez42oh\\import-thunk-identities-as-owner.json": "9f0f0c1d70300035e121abb6c5d8caa560637c13c557b407adf5702836f1fcf3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_alloc_large",
+    "address": "0052aca0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Jpegjmemmgr\\objects\\39ff538fabab7862\\candidate.obj": "a077fad064958710dc3ace79338334a482a6cb288927f5bd82da20aa29e611e2",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-3uez42oh\\owners.json": "6bc54fe61d8d9931e907f3580d35af0622c73f5648505530e8de65ce6de1e761",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-3uez42oh\\import-thunk-identities-as-owner.json": "9f0f0c1d70300035e121abb6c5d8caa560637c13c557b407adf5702836f1fcf3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_realize_virt_arrays",
+    "address": "0052afa0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Jpegjmemmgr\\objects\\39ff538fabab7862\\candidate.obj": "a077fad064958710dc3ace79338334a482a6cb288927f5bd82da20aa29e611e2",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-3uez42oh\\owners.json": "6bc54fe61d8d9931e907f3580d35af0622c73f5648505530e8de65ce6de1e761",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-3uez42oh\\import-thunk-identities-as-owner.json": "9f0f0c1d70300035e121abb6c5d8caa560637c13c557b407adf5702836f1fcf3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_free_pool",
+    "address": "0052b510"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Jpegjmemmgr\\objects\\39ff538fabab7862\\candidate.obj": "a077fad064958710dc3ace79338334a482a6cb288927f5bd82da20aa29e611e2",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-3uez42oh\\owners.json": "6bc54fe61d8d9931e907f3580d35af0622c73f5648505530e8de65ce6de1e761",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-3uez42oh\\import-thunk-identities-as-owner.json": "9f0f0c1d70300035e121abb6c5d8caa560637c13c557b407adf5702836f1fcf3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_self_destruct",
+    "address": "0052b620"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Jpegjmemmgr\\objects\\39ff538fabab7862\\candidate.obj": "a077fad064958710dc3ace79338334a482a6cb288927f5bd82da20aa29e611e2",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-3uez42oh\\owners.json": "6bc54fe61d8d9931e907f3580d35af0622c73f5648505530e8de65ce6de1e761",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-3uez42oh\\import-thunk-identities-as-owner.json": "9f0f0c1d70300035e121abb6c5d8caa560637c13c557b407adf5702836f1fcf3"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "_jinit_memory_mgr",
+    "address": "0052b660"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Jpegjmemmgr\\objects\\39ff538fabab7862\\candidate.obj": "a077fad064958710dc3ace79338334a482a6cb288927f5bd82da20aa29e611e2",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-3uez42oh\\owners.json": "6bc54fe61d8d9931e907f3580d35af0622c73f5648505530e8de65ce6de1e761",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-3uez42oh\\import-thunk-identities-as-owner.json": "9f0f0c1d70300035e121abb6c5d8caa560637c13c557b407adf5702836f1fcf3"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "_access_virt_barray",
+   "address": "0052b3c0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_access_virt_sarray",
+   "address": "0052b280",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_alloc_barray",
+   "address": "0052ae10",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_alloc_sarray",
+   "address": "0052ad60",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_jpeg_free_large",
+   "address": "00530770",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_jpeg_free_small",
+   "address": "00530770",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_jpeg_get_large",
+   "address": "00530760",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_jpeg_get_small",
+   "address": "00530760",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_jpeg_mem_available",
+   "address": "00530780",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_jpeg_mem_init",
+   "address": "005308e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_jpeg_mem_term",
+   "address": "0047d410",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_jpeg_open_backing_store",
+   "address": "00530880",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_request_virt_barray",
+   "address": "0052af30",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_request_virt_sarray",
+   "address": "0052aec0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 6,
+ "owners_bound": 6
+}

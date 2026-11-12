@@ -1,0 +1,64 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "?RemoveAt@?$CList@PAVCShadowWnd@CXTPShadowsManager@@PAV12@@@QAEXPAU__POSITION@@@Z",
+    "address": "00790410"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPShadowsManager\\objects\\b945023c05308296\\candidate.obj": "377fe557ccf2b010e233289fb0820f13f3062955a3990632a89bf1c81b82ba90",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-vdxia7n3\\owners.json": "ee201b9ba7f12e1ff073a0e8f19cfccf986e72eb31875abe26c9da056f285aef",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-vdxia7n3\\import-thunk-identities-as-owner.json": "c291164588c50f3e26d4a95d5901272d4d6221b088c47db5f04338117e7d867d"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Find@?$CList@PAVCShadowWnd@CXTPShadowsManager@@PAV12@@@QBEPAU__POSITION@@PAVCShadowWnd@CXTPShadowsManager@@PAU2@@Z",
+    "address": "00757e80"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPShadowsManager\\objects\\b945023c05308296\\candidate.obj": "377fe557ccf2b010e233289fb0820f13f3062955a3990632a89bf1c81b82ba90",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-vdxia7n3\\owners.json": "ee201b9ba7f12e1ff073a0e8f19cfccf986e72eb31875abe26c9da056f285aef",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-vdxia7n3\\import-thunk-identities-as-owner.json": "c291164588c50f3e26d4a95d5901272d4d6221b088c47db5f04338117e7d867d"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Serialize@?$CList@PAVCShadowWnd@CXTPShadowsManager@@PAV12@@@UAEXAAVCArchive@@@Z",
+    "address": "0076d180"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPShadowsManager\\objects\\b945023c05308296\\candidate.obj": "377fe557ccf2b010e233289fb0820f13f3062955a3990632a89bf1c81b82ba90",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-vdxia7n3\\owners.json": "ee201b9ba7f12e1ff073a0e8f19cfccf986e72eb31875abe26c9da056f285aef",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-vdxia7n3\\import-thunk-identities-as-owner.json": "c291164588c50f3e26d4a95d5901272d4d6221b088c47db5f04338117e7d867d"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??$CompareElements@PAVCShadowWnd@CXTPShadowsManager@@PAV12@@@YGHPBQAVCShadowWnd@CXTPShadowsManager@@0@Z",
+   "address": "0071c2e0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??$SerializeElements@PAVCShadowWnd@CXTPShadowsManager@@@@YGXAAVCArchive@@PAPAVCShadowWnd@CXTPShadowsManager@@H@Z",
+   "address": "00787550",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?AddTail@?$CList@PAVCShadowWnd@CXTPShadowsManager@@PAV12@@@QAEPAU__POSITION@@PAVCShadowWnd@CXTPShadowsManager@@@Z",
+   "address": "0076bac0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?FreeNode@?$CList@PAVCShadowWnd@CXTPShadowsManager@@PAV12@@@IAEXPAUCNode@1@@Z",
+   "address": "00760970",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 3,
+ "owners_bound": 3
+}

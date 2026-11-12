@@ -1,0 +1,57 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "_png_handle_unknown",
+    "address": "0052f1e0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-Png5pngrutil\\objects\\631310331d6b4d35\\candidate.obj": "609375085fb40427f60edd5a4741d9b3486a828d5614c472c90c7d4441d75f99",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-ndnaw22h\\owners.json": "3629d4e2fbac44252014a84467f9ae297d03414c2fd7801ab7eb138e2077b12c",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-ndnaw22h\\import-thunk-identities-as-owner.json": "1a275dd022396c378bae48ccca1766e41884049ea3b0ed9a8153fcc99a62f080"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "_png_IDAT",
+   "address": "0082944c",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_check_chunk_name",
+   "address": "0052c2a0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_chunk_error",
+   "address": "00529aa0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_crc_finish",
+   "address": "0052cee0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_handle_as_unknown",
+   "address": "0051e1d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_read_data",
+   "address": "00524ab0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "_png_set_unknown_chunks",
+   "address": "0051d970",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

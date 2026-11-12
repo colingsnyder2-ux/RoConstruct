@@ -1,0 +1,32 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??0?$CArray@USELECTED_BLOCK@CXTPDatePickerDaysCollection@@AAU12@@@QAE@XZ",
+    "address": "0074fbb0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDatePickerDaysCollection\\objects\\89897937cd96356c\\candidate.obj": "24134ee760007c3104145959b172c8c21d87196ed2f0b26af5130ede3f7a9efd",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-d4ws4_9p\\owners.json": "f92da58e56c26886e13018f1fb2fcf802f9eb22dba60ab98a89d44fa9380fd7d",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-d4ws4_9p\\import-thunk-identities-as-owner.json": "5ee894bf21588c5db1c7abece5fe9fa12b72ae19b47be33ed848265fad36c112"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??_E?$CArray@USELECTED_BLOCK@CXTPDatePickerDaysCollection@@AAU12@@@UAEPAXI@Z",
+   "address": "0074fbf0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Serialize@?$CArray@USELECTED_BLOCK@CXTPDatePickerDaysCollection@@AAU12@@@UAEXAAVCArchive@@@Z",
+   "address": "006e34d0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 1,
+ "owners_bound": 1
+}

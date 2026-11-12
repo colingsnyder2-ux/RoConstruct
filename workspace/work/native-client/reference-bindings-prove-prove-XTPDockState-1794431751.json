@@ -1,0 +1,137 @@
+{
+ "scope": "merged exact-owner reference identities",
+ "sources": {},
+ "owner_proofs": [
+  {
+   "owner": {
+    "symbol": "??1?$CArray@PAVCToolBarInfo@CXTPToolBar@@PAV12@@@UAE@XZ",
+    "address": "006e34b0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockState\\objects\\326ccdc466440268\\candidate.obj": "fb9c836d2bf6653275b270b2e3693ed2bcedbe5609d9a7fd65ccd038757d09cb",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-pqpctqra\\owners.json": "5c8dc36cd0f14c5678be00bacbd2992bc4aa965aca0523993d9d8d7d955d0a77",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-pqpctqra\\import-thunk-identities-as-owner.json": "3d9c4c0d28db3bc741b7288e9ea49c367d4d91f911195c21957c2e55e2831005"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "??0CXTPDockState@@QAE@XZ",
+    "address": "006e3550"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockState\\objects\\326ccdc466440268\\candidate.obj": "fb9c836d2bf6653275b270b2e3693ed2bcedbe5609d9a7fd65ccd038757d09cb",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-pqpctqra\\owners.json": "5c8dc36cd0f14c5678be00bacbd2992bc4aa965aca0523993d9d8d7d955d0a77",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-pqpctqra\\import-thunk-identities-as-owner.json": "3d9c4c0d28db3bc741b7288e9ea49c367d4d91f911195c21957c2e55e2831005"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?Clear@CXTPDockState@@AAEXXZ",
+    "address": "006e3590"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockState\\objects\\326ccdc466440268\\candidate.obj": "fb9c836d2bf6653275b270b2e3693ed2bcedbe5609d9a7fd65ccd038757d09cb",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-pqpctqra\\owners.json": "5c8dc36cd0f14c5678be00bacbd2992bc4aa965aca0523993d9d8d7d955d0a77",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-pqpctqra\\import-thunk-identities-as-owner.json": "3d9c4c0d28db3bc741b7288e9ea49c367d4d91f911195c21957c2e55e2831005"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?GetDockState@CXTPCommandBars@@IAEXAAVCXTPDockState@@@Z",
+    "address": "006e3be0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockState\\objects\\326ccdc466440268\\candidate.obj": "fb9c836d2bf6653275b270b2e3693ed2bcedbe5609d9a7fd65ccd038757d09cb",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-pqpctqra\\owners.json": "5c8dc36cd0f14c5678be00bacbd2992bc4aa965aca0523993d9d8d7d955d0a77",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-pqpctqra\\import-thunk-identities-as-owner.json": "3d9c4c0d28db3bc741b7288e9ea49c367d4d91f911195c21957c2e55e2831005"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?GenerateCommandBarList@CXTPMenuBar@@MAEXAAKPAVCXTPCommandBarList@@PAUXTP_COMMANDBARS_PROPEXCHANGE_PARAM@@@Z",
+    "address": "006e3d50"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockState\\objects\\326ccdc466440268\\candidate.obj": "fb9c836d2bf6653275b270b2e3693ed2bcedbe5609d9a7fd65ccd038757d09cb",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-pqpctqra\\owners.json": "5c8dc36cd0f14c5678be00bacbd2992bc4aa965aca0523993d9d8d7d955d0a77",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-pqpctqra\\import-thunk-identities-as-owner.json": "3d9c4c0d28db3bc741b7288e9ea49c367d4d91f911195c21957c2e55e2831005"
+   }
+  },
+  {
+   "owner": {
+    "symbol": "?RestoreCommandBarList@CXTPMenuBar@@MAEXPAVCXTPCommandBarList@@@Z",
+    "address": "006e3fa0"
+   },
+   "input_sha256": {
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\prove-out\\prove-XTPDockState\\objects\\326ccdc466440268\\candidate.obj": "fb9c836d2bf6653275b270b2e3693ed2bcedbe5609d9a7fd65ccd038757d09cb",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-pqpctqra\\owners.json": "5c8dc36cd0f14c5678be00bacbd2992bc4aa965aca0523993d9d8d7d955d0a77",
+    "C:\\Users\\colin\\RoConstruct\\work\\native-client\\refbind-pqpctqra\\import-thunk-identities-as-owner.json": "3d9c4c0d28db3bc741b7288e9ea49c367d4d91f911195c21957c2e55e2831005"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "symbol": "??0?$CArray@PAVCToolBarInfo@CXTPToolBar@@PAV12@@@QAE@XZ",
+   "address": "006e3490",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??0CToolBarInfo@CXTPToolBar@@QAE@XZ",
+   "address": "006e1c50",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "??_E?$CArray@PAVCToolBarInfo@CXTPToolBar@@PAV12@@@UAEPAXI@Z",
+   "address": "006e3530",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GenerateCommandBarList@CXTPControls@@IAEXAAKPAVCXTPCommandBarList@@PAUXTP_COMMANDBARS_PROPEXCHANGE_PARAM@@@Z",
+   "address": "006e1ff0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetBarInfo@CXTPToolBar@@QAEXPAVCToolBarInfo@1@@Z",
+   "address": "006e1e10",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetNextMenu@CXTPMenuBarMDIMenus@@QBEXAAPAU__POSITION@@AAPAVCXTPMenuBarMDIMenuInfo@@@Z",
+   "address": "00720250",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?GetStartPosition@CXTPMenuBarMDIMenus@@QBEPAU__POSITION@@XZ",
+   "address": "00720240",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Lookup@CXTPCommandBarList@@QBEHPAVCXTPCommandBar@@@Z",
+   "address": "006b5340",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?RestoreCommandBarList@CXTPControls@@IAEXPAVCXTPCommandBarList@@@Z",
+   "address": "006e24f0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?Serialize@?$CArray@PAVCToolBarInfo@CXTPToolBar@@PAV12@@@UAEXAAVCArchive@@@Z",
+   "address": "006e34d0",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetAtGrow@?$CArray@PAVCToolBarInfo@CXTPToolBar@@PAV12@@@QAEXHPAVCToolBarInfo@CXTPToolBar@@@Z",
+   "address": "0070e320",
+   "evidence": "original relocation target at an exact owner"
+  },
+  {
+   "symbol": "?SetSize@?$CArray@PAVCToolBarInfo@CXTPToolBar@@PAV12@@@QAEXHH@Z",
+   "address": "0070e1d0",
+   "evidence": "original relocation target at an exact owner"
+  }
+ ],
+ "conflicts": {},
+ "owners_tried": 6,
+ "owners_bound": 6
+}
