@@ -1,0 +1,1420 @@
+{
+  "class": "RBX Sound unit (util/Sound.cpp template instances and getters) of the application range 005b4000..005bc000 (2008-06), inactive",
+  "compiler": "VS2008 RTM 21022",
+  "flags": [
+    "/I/home/user/roconstruct/tools/openrbx/3rdparty/fmod/api/inc",
+    "/nologo",
+    "/c",
+    "/O2",
+    "/Ob2",
+    "/Oy",
+    "/GF",
+    "/GS-",
+    "/EHsc",
+    "/MD",
+    "/D_AFXDLL",
+    "/DNDEBUG",
+    "/D_MBCS",
+    "/DNOMINMAX",
+    "/DBOOST_ALL_NO_LIB",
+    "/DWIN32",
+    "/DNDEBUG",
+    "/D_LIB",
+    "/D_RELEASE",
+    "/D_RELEASEASSERT",
+    "/D_VC80_UPGRADE=0x0710",
+    "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+    "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include"
+  ],
+  "sources": {
+    "rebuild/2008-06/native-classes/AppUnit5B4SoundReflection.cpp": "f26c1caf349103b90c94dd2f15deb6d0c5ef96e7db25286587b82c2385475df8",
+    "rebuild/2008-06/tests/record_native_app_unit5b4.py": "84ebf81a44dfd4e7ed007b001e4aabc6a1598018d08ee8d155b0c1a6e4144152",
+    "rebuild/2008-06/native-headers/util/Sound.h": "92a51f4d3e3e4a935d172f311c5e3adc018350ff12210df4bf33dc87f1faf7a7"
+  },
+  "objects": {
+    "sound": "3aabca17cb0e82cfb90c0f078d433a02ce36d5a8145d8edc9fc45a38f2f41372"
+  },
+  "unit_map": {
+    "brick-color tail 005b4000..005b658f": "util/BrickColor.cpp, continued from 005b2ec0 (app-unit5b0 unit map): the std::map<BrickColor::Number, std::string> erase / _Tree destructor 005b4050 / 005b43a0, BrickMap::generatePaletteMap 005b4130 / 005b42f0, BrickMap::insert 005b4410, ~BrickMap 005b4570, BrickMap() 005b4630 (5601 B: \"White\", \"Grey\", \"Light yellow\" ...), BrickMap::singleton 005b5c20, BrickColor colorPalette 005b5c80 / getClosestPaletteIndex 005b5c90 / parse 005b5cb0 / random 005b5ee0 / closest(Color4) 005b5f30 / BrickColor(int) 005b6090 / name 005b61b0 / color4 005b6200 / color3 005b6270 / closest(Color3) 005b62e0 (evidence names) and unnamed helpers to 005b658f (vector<BrickColor> / map node helpers). The map instantiations are Roblox-instantiated STL templates of this unit. No committed native BrickColor header (the donor util/BrickColor.h is the only declaration; CPropertyGridItemBrickColor uses it through the donor path); not built here.",
+    "player inline 005b6590": "Player::getCharacter (Network/Player.h header inline emitted in this unit), counted by network-player-working.json.",
+    "sound 005b65a0..005bbfff (continues past 005bc000)": "util/Sound.cpp. Evidence: RTTI .?AV?$DescribedCreatable@VSoundService@Soundscape@RBX@@...3PADA (vtable 00837d84) and ...SoundChannel... (00837e44), .?AV?$FactoryProduct@VStockSound@@VSoundChannel@... , the PropDescriptor<SoundChannel, SoundId / float / int / bool> vtables 00837c34 / 00837c68 / 00837c9c / 00837cd0, GetSetImpl / GetImpl / BoundPropGetSet vtables 00837570..0083765c, EnumDesc<ReverbType> 005bb330 (\"ReverbType\", \"NoReverb\" .. \"UnderWater\"), the FMOD import calls (getPaused / isPlaying 005b6960 / 005b6990, \"FMOD %d: %s\" checks 005b6fe0 / 005b87a0, FMOD_ErrorString table 005b65b0, the system init 005ba060 \"Incorrect FMODEX DLL version\"), classDescriptors 005bb7f0 / 005bb860 / 005bb8d0 (\"SoundService\", \"Sound\", \"StockSound\"). Contents in address order: SoundChannel::getPlayCount 005b65a0, FMOD_ErrorString 005b65b0, StringConverter<ContentId>::convertToString 005b6940 (open), the getters 005b6960..005b69d0, ~FactoryProduct<SoundService / SoundChannel> 005b69e0 / 005b6a40, std::_Tree helpers (_Min / _Max of several maps, 005b6aa0..005b6c40; 005b6c40 _Rrotate is ICF-shared with other units 00423e30, 005539d0, 00668010 callers), FactoryProduct<SoundService / SoundChannel>() 005b6b60 / 005b6bc0, boost::any_cast<SoundId> / holder<SoundId> members 005b6ca0..005b6e1f (built here, clone see bounds_evidence), the deleting-destructor adjustor thunks 005b6e40..005b6ec0 / 005b7770..005b7890 / 005bb230..005bb2b0 / 005bbf60..005bbf80, sanitize / FMOD vector helpers 005b6ed0..005b7370, getset factories 005b7320 / 005b7370 / 005b7db0..005b7ea0, GetSetImpl::setValue / getValue rows 005b73c0..005b7450, the Creatable shared_count rows 005b7480..005b75a0 (creatable-shared-count), ~SoundChannel 005b7680, TypedPropertyDescriptor<SoundId> 005b7be0, shared_ptr constructors 005b7c50 / 005b7d00 / 005b7f50, SoundId value conversion rows 005b7a80 / 005b8090 / 005b86b0 (sound-value-* receipts), Name::declare 005b8450..005b8490, the SoundService members (loadSound / stock sounds / garbage collection / openFmod 005b84b0..005ba660, std::map<SoundId, shared_ptr<Sound>> instances), EnumDesc<ReverbType / SoundType> destructors and map helpers 005ba890..005bb110, ~SoundService 005bb120, EnumDesc<SoundType>::singleton 005bb2c0, EnumDesc<ReverbType>() 005bb330, the SoundService / SoundChannel scalar deleting destructors 005bb5d0 / 005b8220, the classDescriptors, the BoundProp / PropDescriptor constructors 005bb940..005bbd70, EnumDesc<ReverbType>::singleton 005bbe40, DescribedCreatable<SoundService / SoundChannel>() 005bbec0 / 005bbfb0 and ??_G FactoryProduct<SoundService> 005bbf90. FMOD itself is a DLL import (no library code here). Built here from AppUnit5B4SoundReflection.cpp against the committed native util/Sound.h."
+  },
+  "unit_rows": {
+    "brick-color tail": {
+      "rows": 31,
+      "span": "0x5b4050..0x5b6530"
+    },
+    "player inline": {
+      "rows": 1,
+      "span": "0x5b6590..0x5b6590"
+    },
+    "sound": {
+      "rows": 166,
+      "span": "0x5b65a0..0x5bbfb0"
+    }
+  },
+  "range_rows_total": 198,
+  "range_rows_counted_by_other_receipts": [
+    "005b6590 counted by network-player-working.json",
+    "005b6ae0 counted by viewnew-brick-build-working.json",
+    "005b73c0 counted by effects-working.json, special-shape-working.json",
+    "005b7400 counted by clothing-working.json",
+    "005b7480 counted by creatable-shared-count-working.json",
+    "005b7510 counted by creatable-shared-count-working.json",
+    "005b75a0 counted by creatable-shared-count-working.json",
+    "005b78a0 counted by viewnew-brick-build-working.json",
+    "005b7a80 counted by sound-value-generic-id-integrated.json",
+    "005b8090 counted by sound-value-convert-id-integrated.json",
+    "005b86b0 counted by sound-value-get-integrated.json"
+  ],
+  "rows": [
+    {
+      "address": "005b65a0",
+      "symbol": "?getPlayCount@SoundChannel@Soundscape@RBX@@QBEHXZ",
+      "size": 7,
+      "target_size": 7,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "005b6960",
+      "symbol": "?isPaused@SoundChannel@Soundscape@RBX@@QBE_NXZ",
+      "size": 39,
+      "target_size": 39,
+      "exact": true,
+      "verified_targets": {
+        "?getPaused@Channel@FMOD@@QAG?AW4FMOD_RESULT@@PA_N@Z": "0x69fbdc (fmodex.dll!?getPaused@Channel@FMOD@@QAG?AW4FMOD_RESULT@@PA_N@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005b6990",
+      "symbol": "?isPlaying@SoundChannel@Soundscape@RBX@@QBE_NXZ",
+      "size": 39,
+      "target_size": 39,
+      "exact": true,
+      "verified_targets": {
+        "?isPlaying@Channel@FMOD@@QAG?AW4FMOD_RESULT@@PA_N@Z": "0x69fbe2 (fmodex.dll!?isPlaying@Channel@FMOD@@QAG?AW4FMOD_RESULT@@PA_N@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005b69c0",
+      "symbol": "?getVolume@SoundChannel@Soundscape@RBX@@QBEMXZ",
+      "size": 7,
+      "target_size": 7,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "005b69d0",
+      "symbol": "?getLooped@SoundChannel@Soundscape@RBX@@QBE_NXZ",
+      "size": 11,
+      "target_size": 11,
+      "exact": true,
+      "verified_targets": {},
+      "local_eh": []
+    },
+    {
+      "address": "005b69e0",
+      "symbol": "??1?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@MAE@XZ",
+      "size": 83,
+      "target_size": 83,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83745c (vtable RTTI .?AV?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@ offset 0x0)",
+        "??_7?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x837450 (vtable RTTI .?AV?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@ offset 0x10)",
+        "??_7?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x837448 (vtable RTTI .?AV?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@ offset 0x14)",
+        "??_7?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6BDebugable@1@@": "0x837440 (vtable RTTI .?AV?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@ offset 0x20)",
+        "??_7?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x837430 (vtable RTTI .?AV?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@ offset 0x24)",
+        "??_7?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x837420 (vtable RTTI .?AV?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@ offset 0x44)",
+        "??_7?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x837410 (vtable RTTI .?AV?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@ offset 0x64)",
+        "??_7?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x837400 (vtable RTTI .?AV?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@ offset 0x84)",
+        "??_7?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x8373f0 (vtable RTTI .?AV?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@ offset 0xa4)",
+        "??_7?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x8373e0 (vtable RTTI .?AV?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@ offset 0xc4)",
+        "??1Instance@RBX@@UAE@XZ": "0x55a540 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005b6a40",
+      "symbol": "??1?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@MAE@XZ",
+      "size": 83,
+      "target_size": 83,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83751c (vtable RTTI .?AV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@ offset 0x0)",
+        "??_7?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x837510 (vtable RTTI .?AV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@ offset 0x10)",
+        "??_7?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x837508 (vtable RTTI .?AV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@ offset 0x14)",
+        "??_7?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6BDebugable@1@@": "0x837500 (vtable RTTI .?AV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@ offset 0x20)",
+        "??_7?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x8374f0 (vtable RTTI .?AV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@ offset 0x24)",
+        "??_7?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x8374e0 (vtable RTTI .?AV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@ offset 0x44)",
+        "??_7?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x8374d0 (vtable RTTI .?AV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@ offset 0x64)",
+        "??_7?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x8374c0 (vtable RTTI .?AV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@ offset 0x84)",
+        "??_7?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x8374b0 (vtable RTTI .?AV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@ offset 0xa4)",
+        "??_7?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x8374a0 (vtable RTTI .?AV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@ offset 0xc4)",
+        "??1Instance@RBX@@UAE@XZ": "0x55a540 (external)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005b6b60",
+      "symbol": "??0?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@IAE@XZ",
+      "size": 90,
+      "target_size": 90,
+      "exact": true,
+      "verified_targets": {
+        "??0Instance@RBX@@QAE@XZ": "0x55b7e0 (external)",
+        "??_7?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83745c (vtable RTTI .?AV?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@ offset 0x0)",
+        "??_7?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x837450 (vtable RTTI .?AV?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@ offset 0x10)",
+        "??_7?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x837448 (vtable RTTI .?AV?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@ offset 0x14)",
+        "??_7?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6BDebugable@1@@": "0x837440 (vtable RTTI .?AV?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@ offset 0x20)",
+        "??_7?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x837430 (vtable RTTI .?AV?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@ offset 0x24)",
+        "??_7?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x837420 (vtable RTTI .?AV?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@ offset 0x44)",
+        "??_7?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x837410 (vtable RTTI .?AV?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@ offset 0x64)",
+        "??_7?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x837400 (vtable RTTI .?AV?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@ offset 0x84)",
+        "??_7?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x8373f0 (vtable RTTI .?AV?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@ offset 0xa4)",
+        "??_7?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x8373e0 (vtable RTTI .?AV?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@ offset 0xc4)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005b6bc0",
+      "symbol": "??0?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@IAE@XZ",
+      "size": 90,
+      "target_size": 90,
+      "exact": true,
+      "verified_targets": {
+        "??0Instance@RBX@@QAE@XZ": "0x55b7e0 (external)",
+        "??_7?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x83751c (vtable RTTI .?AV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@ offset 0x0)",
+        "??_7?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x837510 (vtable RTTI .?AV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@ offset 0x10)",
+        "??_7?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x837508 (vtable RTTI .?AV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@ offset 0x14)",
+        "??_7?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6BDebugable@1@@": "0x837500 (vtable RTTI .?AV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@ offset 0x20)",
+        "??_7?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x8374f0 (vtable RTTI .?AV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@ offset 0x24)",
+        "??_7?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x8374e0 (vtable RTTI .?AV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@ offset 0x44)",
+        "??_7?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x8374d0 (vtable RTTI .?AV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@ offset 0x64)",
+        "??_7?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x8374c0 (vtable RTTI .?AV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@ offset 0x84)",
+        "??_7?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x8374b0 (vtable RTTI .?AV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@ offset 0xa4)",
+        "??_7?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x8374a0 (vtable RTTI .?AV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@ offset 0xc4)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005b6ca0",
+      "symbol": "??$any_cast@VSoundId@Soundscape@RBX@@@boost@@YAPAVSoundId@Soundscape@RBX@@PAVany@0@@Z",
+      "size": 57,
+      "target_size": 57,
+      "exact": true,
+      "verified_targets": {
+        "??_R0X@8": "0x929614 (RTTI .X)",
+        "??_R0?AVSoundId@Soundscape@RBX@@@8": "0x94d3e8 (RTTI .?AVSoundId@Soundscape@RBX@@)",
+        "__imp_??8type_info@@QBE_NABV0@@Z": "0x802878 (msvcr90.dll!??8type_info@@QBE_NABV0@@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005b6ce0",
+      "symbol": "??$doDeclare@$1?sStockSound@@3PADA@Name@RBX@@CAABV01@XZ",
+      "size": 101,
+      "target_size": 101,
+      "exact": true,
+      "verified_targets": {
+        "??_B?1???$doDeclare@$1?sStockSound@@3PADA@Name@RBX@@CAABV01@XZ@51": "0x9771d8 (static (one address per symbol))",
+        "?sStockSound@@3PADA": "0x94d304 (class-name array 'StockSound' (string at the pushed address))",
+        "?declare@Name@RBX@@SAABV12@PBDH@Z": "0x553f90 (external (evidence name))",
+        "?n@?1???$doDeclare@$1?sStockSound@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "0x9771d4 (static (one address per symbol))"
+      },
+      "local_eh": [
+        "__ehhandler$??$doDeclare@$1?sStockSound@@3PADA@Name@RBX@@CAABV01@XZ"
+      ]
+    },
+    {
+      "address": "005b6d50",
+      "symbol": "??0?$holder@VSoundId@Soundscape@RBX@@@any@boost@@QAE@ABVSoundId@Soundscape@RBX@@@Z",
+      "size": 89,
+      "target_size": 89,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$holder@VSoundId@Soundscape@RBX@@@any@boost@@6B@": "0x837560 (vtable RTTI .?AV?$holder@VSoundId@Soundscape@RBX@@@any@boost@@ offset 0x0)",
+        "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "0x80245c (msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$holder@VSoundId@Soundscape@RBX@@@any@boost@@QAE@ABVSoundId@Soundscape@RBX@@@Z"
+      ]
+    },
+    {
+      "address": "005b6db0",
+      "symbol": "?type@?$holder@VSoundId@Soundscape@RBX@@@any@boost@@UBEABVtype_info@@XZ",
+      "size": 6,
+      "target_size": 6,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AVSoundId@Soundscape@RBX@@@8": "0x94d3e8 (RTTI .?AVSoundId@Soundscape@RBX@@)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005b6e50",
+      "symbol": "??_E?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@OBE@AEPAXI@Z",
+      "size": 8,
+      "target_size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@MAEPAXI@Z": "0x5bbf90 (own row ??_G?$FactoryProduct@VSoundSer (scalar deleting destructor; no array delete in the original))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005b6e90",
+      "symbol": "??_E?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@OCE@AEPAXI@Z",
+      "size": 8,
+      "target_size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@MAEPAXI@Z": "0x5bbf90 (own row ??_G?$FactoryProduct@VSoundSer (scalar deleting destructor; no array delete in the original))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005b6ea0",
+      "symbol": "??_E?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@OEE@AEPAXI@Z",
+      "size": 8,
+      "target_size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@MAEPAXI@Z": "0x5bbf90 (own row ??_G?$FactoryProduct@VSoundSer (scalar deleting destructor; no array delete in the original))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005b6eb0",
+      "symbol": "??_E?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@OKE@AEPAXI@Z",
+      "size": 11,
+      "target_size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@MAEPAXI@Z": "0x5bbf90 (own row ??_G?$FactoryProduct@VSoundSer (scalar deleting destructor; no array delete in the original))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005b6ec0",
+      "symbol": "??_E?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@OME@AEPAXI@Z",
+      "size": 11,
+      "target_size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@MAEPAXI@Z": "0x5bbf90 (own row ??_G?$FactoryProduct@VSoundSer (scalar deleting destructor; no array delete in the original))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005b7320",
+      "symbol": "??$getset@P8SoundChannel@Soundscape@RBX@@BEMXZP8123@AEXM@Z@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@M@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@P8SoundChannel@Soundscape@2@BEMXZP8562@AEXM@Z@Z",
+      "size": 77,
+      "target_size": 77,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$GetSetImpl@P8SoundChannel@Soundscape@RBX@@BEMXZP8123@AEXM@Z@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@M@Reflection@RBX@@6B@": "0x837570 (vtable RTTI .?AV?$GetSetImpl@P8SoundChannel@Soundscape@RBX@@BEMXZP8123@AEXM@Z@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@M@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005b7370",
+      "symbol": "??$getset@P8SoundChannel@Soundscape@RBX@@BE_NXZ@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@_N@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@_N@Reflection@RBX@@@std@@P8SoundChannel@Soundscape@2@BE_NXZH@Z",
+      "size": 63,
+      "target_size": 63,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$GetImpl@P8SoundChannel@Soundscape@RBX@@BE_NXZ@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@_N@Reflection@RBX@@6B@": "0x837598 (vtable RTTI .?AV?$GetImpl@P8SoundChannel@Soundscape@RBX@@BE_NXZ@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@_N@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005b73b0",
+      "symbol": "??$callDoDeclare@$1?sStockSound@@3PADA@Name@RBX@@CAXXZ",
+      "size": 5,
+      "target_size": 5,
+      "exact": true,
+      "verified_targets": {
+        "??$doDeclare@$1?sStockSound@@3PADA@Name@RBX@@CAABV01@XZ": "0x5b6ce0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005b7660",
+      "symbol": "??1?$DescribedCreatable@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@UAE@XZ",
+      "size": 5,
+      "target_size": 5,
+      "exact": true,
+      "verified_targets": {
+        "??1?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@MAE@XZ": "0x5b69e0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005b7670",
+      "symbol": "??1?$DescribedCreatable@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@UAE@XZ",
+      "size": 5,
+      "target_size": 5,
+      "exact": true,
+      "verified_targets": {
+        "??1?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@MAE@XZ": "0x5b6a40 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005b7800",
+      "symbol": "??1?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@MAE@XZ",
+      "size": 93,
+      "target_size": 93,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x8377cc (vtable RTTI .?AV?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@ offset 0x0)",
+        "??_7?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x8377bc (vtable RTTI .?AV?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@ offset 0x10)",
+        "??_7?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x8377b4 (vtable RTTI .?AV?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@ offset 0x14)",
+        "??_7?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@6BDebugable@1@@": "0x8377ac (vtable RTTI .?AV?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@ offset 0x20)",
+        "??_7?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x83779c (vtable RTTI .?AV?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@ offset 0x24)",
+        "??_7?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x83778c (vtable RTTI .?AV?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@ offset 0x44)",
+        "??_7?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x83777c (vtable RTTI .?AV?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@ offset 0x64)",
+        "??_7?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x83776c (vtable RTTI .?AV?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@ offset 0x84)",
+        "??_7?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x83775c (vtable RTTI .?AV?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@ offset 0xa4)",
+        "??_7?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x83774c (vtable RTTI .?AV?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@ offset 0xc4)",
+        "??_7?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@6B@": "0x837740 (vtable RTTI .?AV?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@ offset 0x130)",
+        "??1SoundChannel@Soundscape@RBX@@UAE@XZ": "0x5b7680 (open row (not counted), identified by the .?AVSoundChannel@Soundscape@RBX@@ complete-object vtable 0x8376fc it stores)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005b7c50",
+      "symbol": "??$?0VStockSound@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@?$shared_ptr@VStockSound@@@boost@@QAE@PAVStockSound@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@Z",
+      "size": 171,
+      "target_size": 171,
+      "exact": true,
+      "verified_targets": {
+        "??$?0PAVStockSound@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@shared_count@detail@boost@@QAE@PAVStockSound@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@Z": "0x5b7480 (row counted by creatable-shared-count-working.json (same symbol; body exact at the bound address))"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VStockSound@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@?$shared_ptr@VStockSound@@@boost@@QAE@PAVStockSound@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@Z"
+      ]
+    },
+    {
+      "address": "005b7d00",
+      "symbol": "??$?0VSoundServiceStatsItem@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@?$shared_ptr@VSoundServiceStatsItem@@@boost@@QAE@PAVSoundServiceStatsItem@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@Z",
+      "size": 171,
+      "target_size": 171,
+      "exact": true,
+      "verified_targets": {
+        "??$?0PAVSoundServiceStatsItem@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@shared_count@detail@boost@@QAE@PAVSoundServiceStatsItem@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@Z": "0x5b7510 (row counted by creatable-shared-count-working.json (same symbol; body exact at the bound address))"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VSoundServiceStatsItem@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@?$shared_ptr@VSoundServiceStatsItem@@@boost@@QAE@PAVSoundServiceStatsItem@@VDeleter@?$Creatable@VInstance@RBX@@@RBX@@@Z"
+      ]
+    },
+    {
+      "address": "005b7db0",
+      "symbol": "??$getset@P8SoundService@Soundscape@RBX@@BE?AW4ReverbType@23@XZP8123@AEXABW4423@@Z@?$PropDescriptor@VSoundService@Soundscape@RBX@@W4ReverbType@23@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@W4ReverbType@Soundscape@RBX@@@Reflection@RBX@@@std@@P8SoundService@Soundscape@2@BE?AW4ReverbType@62@XZP8562@AEXABW4762@@Z@Z",
+      "size": 77,
+      "target_size": 77,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$GetSetImpl@P8SoundService@Soundscape@RBX@@BE?AW4ReverbType@23@XZP8123@AEXABW4423@@Z@?$PropDescriptor@VSoundService@Soundscape@RBX@@W4ReverbType@23@@Reflection@RBX@@6B@": "0x837634 (vtable RTTI .?AV?$GetSetImpl@P8SoundService@Soundscape@RBX@@BE?AW4ReverbType@23@XZP8123@AEXABW4423@@Z@?$PropDescriptor@VSoundService@Soundscape@RBX@@W4ReverbType@23@@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005b7e00",
+      "symbol": "??$getset@P8SoundChannel@Soundscape@RBX@@BE?AVSoundId@23@XZP8123@AEXV423@@Z@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@VSoundId@23@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@RBX@@@std@@P8SoundChannel@Soundscape@2@BE?AVSoundId@62@XZP8562@AEXV762@@Z@Z",
+      "size": 77,
+      "target_size": 77,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$GetSetImpl@P8SoundChannel@Soundscape@RBX@@BE?AVSoundId@23@XZP8123@AEXV423@@Z@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@VSoundId@23@@Reflection@RBX@@6B@": "0x837648 (vtable RTTI .?AV?$GetSetImpl@P8SoundChannel@Soundscape@RBX@@BE?AVSoundId@23@XZP8123@AEXV423@@Z@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@VSoundId@23@@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005b7e50",
+      "symbol": "??$getset@P8SoundChannel@Soundscape@RBX@@BEHXZP8123@AEXH@Z@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@H@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@H@Reflection@RBX@@@std@@P8SoundChannel@Soundscape@2@BEHXZP8562@AEXH@Z@Z",
+      "size": 77,
+      "target_size": 77,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$GetSetImpl@P8SoundChannel@Soundscape@RBX@@BEHXZP8123@AEXH@Z@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@H@Reflection@RBX@@6B@": "0x83765c (vtable RTTI .?AV?$GetSetImpl@P8SoundChannel@Soundscape@RBX@@BEHXZP8123@AEXH@Z@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@H@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005b7ea0",
+      "symbol": "??$getset@P8SoundChannel@Soundscape@RBX@@BE_NXZP8123@AEX_N@Z@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@_N@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@_N@Reflection@RBX@@@std@@P8SoundChannel@Soundscape@2@BE_NXZP8562@AEX_N@Z@Z",
+      "size": 77,
+      "target_size": 77,
+      "exact": true,
+      "verified_targets": {
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$GetSetImpl@P8SoundChannel@Soundscape@RBX@@BE_NXZP8123@AEX_N@Z@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@_N@Reflection@RBX@@6B@": "0x837584 (vtable RTTI .?AV?$GetSetImpl@P8SoundChannel@Soundscape@RBX@@BE_NXZP8123@AEX_N@Z@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@_N@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005b7f50",
+      "symbol": "??$?0V?$TypedStatsItem@I@Stats@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@?$shared_ptr@V?$TypedStatsItem@I@Stats@RBX@@@boost@@QAE@PAV?$TypedStatsItem@I@Stats@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z",
+      "size": 171,
+      "target_size": 171,
+      "exact": true,
+      "verified_targets": {
+        "??$?0PAV?$TypedStatsItem@I@Stats@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@shared_count@detail@boost@@QAE@PAV?$TypedStatsItem@I@Stats@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@5@@Z": "0x5b75a0 (support body exact at the bound address (not counted here))"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0V?$TypedStatsItem@I@Stats@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@?$shared_ptr@V?$TypedStatsItem@I@Stats@RBX@@@boost@@QAE@PAV?$TypedStatsItem@I@Stats@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@4@@Z"
+      ]
+    },
+    {
+      "address": "005b8450",
+      "symbol": "??$declare@$1?sSoundService@Soundscape@RBX@@3PADA@Name@RBX@@SAABV01@XZ",
+      "size": 23,
+      "target_size": 23,
+      "exact": true,
+      "verified_targets": {
+        "?flag@?1???$declare@$1?sSoundService@Soundscape@RBX@@3PADA@Name@RBX@@SAABV12@XZ@4JA": "0x96d1c4 (static (one address per symbol))",
+        "??$callDoDeclare@$1?sSoundService@Soundscape@RBX@@3PADA@Name@RBX@@CAXXZ": "0x438830 (callDoDeclare of another unit: tail jump to the doDeclare 0x437f20)",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
+        "??$doDeclare@$1?sSoundService@Soundscape@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x437f20 (Name::doDeclare of another unit: declares exactly 'SoundService' (body exact at the bound address))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005b8470",
+      "symbol": "??$declare@$1?sSoundChannel@Soundscape@RBX@@3PADA@Name@RBX@@SAABV01@XZ",
+      "size": 23,
+      "target_size": 23,
+      "exact": true,
+      "verified_targets": {
+        "?flag@?1???$declare@$1?sSoundChannel@Soundscape@RBX@@3PADA@Name@RBX@@SAABV12@XZ@4JA": "0x96d1c8 (static (one address per symbol))",
+        "??$callDoDeclare@$1?sSoundChannel@Soundscape@RBX@@3PADA@Name@RBX@@CAXXZ": "0x438840 (callDoDeclare of another unit: tail jump to the doDeclare 0x437f90)",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
+        "??$doDeclare@$1?sSoundChannel@Soundscape@RBX@@3PADA@Name@RBX@@CAABV01@XZ": "0x437f90 (Name::doDeclare of another unit: declares exactly 'Sound' (body exact at the bound address))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005b8490",
+      "symbol": "??$declare@$1?sStockSound@@3PADA@Name@RBX@@SAABV01@XZ",
+      "size": 23,
+      "target_size": 23,
+      "exact": true,
+      "verified_targets": {
+        "?flag@?1???$declare@$1?sStockSound@@3PADA@Name@RBX@@SAABV12@XZ@4JA": "0x9771dc (static (one address per symbol))",
+        "??$callDoDeclare@$1?sStockSound@@3PADA@Name@RBX@@CAXXZ": "0x5b73b0 (own row)",
+        "?call_once@boost@@YAXP6AXXZAAJ@Z": "0x557330 (external)",
+        "??$doDeclare@$1?sStockSound@@3PADA@Name@RBX@@CAABV01@XZ": "0x5b6ce0 (own row)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005bac70",
+      "symbol": "??1?$EnumDesc@W4ReverbType@Soundscape@RBX@@@Reflection@RBX@@EAE@XZ",
+      "size": 392,
+      "target_size": 392,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$EnumDesc@W4ReverbType@Soundscape@RBX@@@Reflection@RBX@@6B@": "0x837a34 (vtable RTTI .?AV?$EnumDesc@W4ReverbType@Soundscape@RBX@@@Reflection@RBX@@ offset 0x0)",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "?_Tidy@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@IAEXXZ": "0x4077d0 (support body exact at the bound address (not counted here))",
+        "??1?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4ReverbType@Soundscape@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4ReverbType@Soundscape@2@@std@@@6@$0A@@std@@@std@@QAE@XZ": "0x553d80 (support body exact at the bound address (not counted here))",
+        "??1EnumDescriptor@Reflection@RBX@@MAE@XZ": "0x56c080 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$EnumDesc@W4ReverbType@Soundscape@RBX@@@Reflection@RBX@@EAE@XZ"
+      ]
+    },
+    {
+      "address": "005bae20",
+      "symbol": "??_G?$EnumDesc@W4ReverbType@Soundscape@RBX@@@Reflection@RBX@@EAEPAXI@Z",
+      "size": 30,
+      "target_size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??1?$EnumDesc@W4ReverbType@Soundscape@RBX@@@Reflection@RBX@@EAE@XZ": "0x5bac70 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005baeb0",
+      "symbol": "??1?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@EAE@XZ",
+      "size": 392,
+      "target_size": 392,
+      "exact": true,
+      "verified_targets": {
+        "??_7?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@6B@": "0x837a40 (vtable RTTI .?AV?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@ offset 0x0)",
+        "__imp___invalid_parameter_noinfo": "0x802890 (msvcr90.dll!_invalid_parameter_noinfo)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "?_Tidy@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@IAEXXZ": "0x4077d0 (support body exact at the bound address (not counted here))",
+        "??1?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4SoundType@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4SoundType@2@@std@@@5@$0A@@std@@@std@@QAE@XZ": "0x553d80 (support body exact at the bound address (not counted here))",
+        "??1EnumDescriptor@Reflection@RBX@@MAE@XZ": "0x56c080 (external)"
+      },
+      "local_eh": [
+        "__ehhandler$??1?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@EAE@XZ"
+      ]
+    },
+    {
+      "address": "005bb040",
+      "symbol": "??_G?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@EAEPAXI@Z",
+      "size": 30,
+      "target_size": 30,
+      "exact": true,
+      "verified_targets": {
+        "??1?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@EAE@XZ": "0x5baeb0 (own row)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005bb2c0",
+      "symbol": "?singleton@?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@SAABV123@XZ",
+      "size": 90,
+      "target_size": 90,
+      "exact": true,
+      "verified_targets": {
+        "??_B?1??singleton@?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@SAABV123@XZ@51": "0x9772c8 (static (one address per symbol))",
+        "?s@?1??singleton@?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@SAABV234@XZ@4V234@A": "0x9771e0 (static (one address per symbol))",
+        "??0?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@AAE@XZ": "0x629120 (external)",
+        "??__Fs@?1??singleton@?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@SAABV123@XZ@YAXXZ": "0x7fe4b0 (support body exact at the bound address (not counted here))",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?singleton@?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@SAABV123@XZ"
+      ]
+    },
+    {
+      "address": "005bb330",
+      "symbol": "??0?$EnumDesc@W4ReverbType@Soundscape@RBX@@@Reflection@RBX@@AAE@XZ",
+      "size": 668,
+      "target_size": 668,
+      "exact": true,
+      "verified_targets": {
+        "??_R0?AW4ReverbType@Soundscape@RBX@@@8": "0x94df74 (RTTI .?AW4ReverbType@Soundscape@RBX@@)",
+        "??_C@_0L@DBMCOPLO@ReverbType?$AA@": "0x837c24 (literal 'ReverbType')",
+        "??0EnumDescriptor@Reflection@RBX@@IAE@PBDABVtype_info@@@Z": "0x56c590 (external (evidence name))",
+        "??_7?$EnumDesc@W4ReverbType@Soundscape@RBX@@@Reflection@RBX@@6B@": "0x837a34 (vtable RTTI .?AV?$EnumDesc@W4ReverbType@Soundscape@RBX@@@Reflection@RBX@@ offset 0x0)",
+        "??0?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4ReverbType@Soundscape@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4ReverbType@Soundscape@2@@std@@@6@$0A@@std@@@std@@QAE@ABU?$less@PBVName@RBX@@@1@ABV?$allocator@U?$pair@QBVName@RBX@@W4ReverbType@Soundscape@2@@std@@@1@@Z": "0x446110 (support body exact at the bound address (not counted here))",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_C@_08JAMKEAOB@NoReverb?$AA@": "0x837c18 (literal 'NoReverb')",
+        "?addPair@?$EnumDesc@W4ReverbType@Soundscape@RBX@@@Reflection@RBX@@AAEXW4ReverbType@Soundscape@3@PBD@Z": "0x64d530 (support body exact at the bound address (not counted here))",
+        "??_C@_0O@DDLDDDBI@GenericReverb?$AA@": "0x837c08 (literal 'GenericReverb')",
+        "??_C@_0L@FGAIJPNJ@PaddedCell?$AA@": "0x837bfc (literal 'PaddedCell')",
+        "??_C@_04ILJDOKOL@Room?$AA@": "0x837bf4 (literal 'Room')",
+        "??_C@_08HKNMNEPH@Bathroom?$AA@": "0x837be8 (literal 'Bathroom')",
+        "??_C@_0L@FFPDABBN@LivingRoom?$AA@": "0x837bdc (literal 'LivingRoom')",
+        "??_C@_09NLCMMBFE@StoneRoom?$AA@": "0x837bd0 (literal 'StoneRoom')",
+        "??_C@_0L@PLCFFABI@Auditorium?$AA@": "0x837bc4 (literal 'Auditorium')",
+        "??_C@_0M@LKOIACMH@ConcertHall?$AA@": "0x837bb8 (literal 'ConcertHall')",
+        "??_C@_04ONOCDBBN@Cave?$AA@": "0x837bb0 (literal 'Cave')",
+        "??_C@_05DLHMIPMH@Arena?$AA@": "0x837ba8 (literal 'Arena')",
+        "??_C@_06CDAHLJF@Hangar?$AA@": "0x837ba0 (literal 'Hangar')",
+        "??_C@_0BB@BCDHCJJO@CarpettedHallway?$AA@": "0x837b8c (literal 'CarpettedHallway')",
+        "??_C@_07CPJABAHP@Hallway?$AA@": "0x837b84 (literal 'Hallway')",
+        "??_C@_0O@MNOEPNAD@StoneCorridor?$AA@": "0x837b74 (literal 'StoneCorridor')",
+        "??_C@_05BHOKJOBG@Alley?$AA@": "0x837b6c (literal 'Alley')",
+        "??_C@_06COOEADCI@Forest?$AA@": "0x837b64 (literal 'Forest')",
+        "??_C@_04MNKFJAMB@City?$AA@": "0x837b5c (literal 'City')",
+        "??_C@_09PPEGJIBM@Mountains?$AA@": "0x837b50 (literal 'Mountains')",
+        "??_C@_06HADCBGJL@Quarry?$AA@": "0x837b48 (literal 'Quarry')",
+        "??_C@_05CBJDOKAH@Plain?$AA@": "0x837b40 (literal 'Plain')",
+        "??_C@_0L@FPOPLAOM@ParkingLot?$AA@": "0x837b34 (literal 'ParkingLot')",
+        "??_C@_09FDBFLJNI@SewerPipe?$AA@": "0x837b28 (literal 'SewerPipe')",
+        "??_C@_0L@LCFNPHAF@UnderWater?$AA@": "0x837b1c (literal 'UnderWater')"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$EnumDesc@W4ReverbType@Soundscape@RBX@@@Reflection@RBX@@AAE@XZ"
+      ]
+    },
+    {
+      "address": "005bb7f0",
+      "symbol": "?classDescriptor@?$Described@VSoundService@Soundscape@RBX@@$1?sSoundService@23@3PADAV?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+      "size": 101,
+      "target_size": 101,
+      "exact": true,
+      "verified_targets": {
+        "??_B?1??classDescriptor@?$Described@VSoundService@Soundscape@RBX@@$1?sSoundService@23@3PADAV?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x977390 (static (one address per symbol))",
+        "?sSoundService@Soundscape@RBX@@3PADA": "0x94d2f4 (class-name array 'SoundService' (string at the pushed address))",
+        "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80 (external (evidence name))",
+        "?foo@?1??classDescriptor@?$Described@VSoundService@Soundscape@RBX@@$1?sSoundService@23@3PADAV?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x9772d0 (static (one address per symbol))",
+        "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
+        "??__Ffoo@?1??classDescriptor@?$Described@VSoundService@Soundscape@RBX@@$1?sSoundService@23@3PADAV?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fe490 (support body exact at the bound address (not counted here))",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?classDescriptor@?$Described@VSoundService@Soundscape@RBX@@$1?sSoundService@23@3PADAV?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
+      ]
+    },
+    {
+      "address": "005bb860",
+      "symbol": "?classDescriptor@?$Described@VSoundChannel@Soundscape@RBX@@$1?sSoundChannel@23@3PADAV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+      "size": 101,
+      "target_size": 101,
+      "exact": true,
+      "verified_targets": {
+        "??_B?1??classDescriptor@?$Described@VSoundChannel@Soundscape@RBX@@$1?sSoundChannel@23@3PADAV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x977458 (static (one address per symbol))",
+        "?sSoundChannel@Soundscape@RBX@@3PADA": "0x94d310 (class-name array 'Sound' (string at the pushed address))",
+        "?classDescriptor@?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x40ad80 (external (evidence name))",
+        "?foo@?1??classDescriptor@?$Described@VSoundChannel@Soundscape@RBX@@$1?sSoundChannel@23@3PADAV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x977398 (static (one address per symbol))",
+        "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
+        "??__Ffoo@?1??classDescriptor@?$Described@VSoundChannel@Soundscape@RBX@@$1?sSoundChannel@23@3PADAV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fe480 (support body exact at the bound address (not counted here))",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?classDescriptor@?$Described@VSoundChannel@Soundscape@RBX@@$1?sSoundChannel@23@3PADAV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
+      ]
+    },
+    {
+      "address": "005bb8d0",
+      "symbol": "?classDescriptor@?$Described@VStockSound@@$1?sStockSound@@3PADAV?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ",
+      "size": 101,
+      "target_size": 101,
+      "exact": true,
+      "verified_targets": {
+        "??_B?1??classDescriptor@?$Described@VStockSound@@$1?sStockSound@@3PADAV?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x977520 (static (one address per symbol))",
+        "?sStockSound@@3PADA": "0x94d304 (class-name array 'StockSound' (string at the pushed address))",
+        "?classDescriptor@?$Described@VSoundChannel@Soundscape@RBX@@$1?sSoundChannel@23@3PADAV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5bb860 (own row)",
+        "?foo@?1??classDescriptor@?$Described@VStockSound@@$1?sStockSound@@3PADAV?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x977460 (static (one address per symbol))",
+        "??0ClassDescriptor@Reflection@RBX@@QAE@AAV012@PBD@Z": "0x5708f0 (external)",
+        "??__Ffoo@?1??classDescriptor@?$Described@VStockSound@@$1?sStockSound@@3PADAV?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fe470 (support body exact at the bound address (not counted here))",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?classDescriptor@?$Described@VStockSound@@$1?sStockSound@@3PADAV?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ"
+      ]
+    },
+    {
+      "address": "005bb940",
+      "symbol": "??$?0VSoundService@Soundscape@RBX@@@?$BoundProp@M$00@Reflection@RBX@@QAE@PBD0PQSoundService@Soundscape@2@MP8342@AEXABVPropertyDescriptor@12@@ZW4Functionality@512@@Z",
+      "size": 204,
+      "target_size": 204,
+      "exact": true,
+      "verified_targets": {
+        "?classDescriptor@?$Described@VSoundService@Soundscape@RBX@@$1?sSoundService@23@3PADAV?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5bb7f0 (own row)",
+        "??0?$TypedPropertyDescriptor@M@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x445610 (external (evidence name))",
+        "??_7?$BoundProp@M$00@Reflection@RBX@@6B@": "0x824134 (vtable RTTI .?AV?$BoundProp@M$00@Reflection@RBX@@ offset 0x0)",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$BoundPropGetSet@VSoundService@Soundscape@RBX@@@?$BoundProp@M$00@Reflection@RBX@@6B@": "0x83760c (vtable RTTI .?AV?$BoundPropGetSet@VSoundService@Soundscape@RBX@@@?$BoundProp@M$00@Reflection@RBX@@ offset 0x0)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VSoundService@Soundscape@RBX@@@?$BoundProp@M$00@Reflection@RBX@@QAE@PBD0PQSoundService@Soundscape@2@MP8342@AEXABVPropertyDescriptor@12@@ZW4Functionality@512@@Z"
+      ]
+    },
+    {
+      "address": "005bba10",
+      "symbol": "??$?0P8SoundChannel@Soundscape@RBX@@BE?AVSoundId@12@XZP8012@AEXV312@@Z@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@VSoundId@23@@Reflection@RBX@@QAE@PBD0P8SoundChannel@Soundscape@2@BE?AVSoundId@42@XZP8342@AEXV542@@ZW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 163,
+      "target_size": 163,
+      "exact": true,
+      "verified_targets": {
+        "??$getset@P8SoundChannel@Soundscape@RBX@@BE?AVSoundId@23@XZP8123@AEXV423@@Z@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@VSoundId@23@@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@RBX@@@std@@P8SoundChannel@Soundscape@2@BE?AVSoundId@62@XZP8562@AEXV762@@Z@Z": "0x5b7e00 (own row)",
+        "?classDescriptor@?$Described@VSoundChannel@Soundscape@RBX@@$1?sSoundChannel@23@3PADAV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5bb860 (own row)",
+        "??0?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x5b7be0 (open row (not counted), identified by the .?AV?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Reflection@RBX@@ complete-object vtable 0x837810 it stores)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7?$PropDescriptor@VSoundChannel@Soundscape@RBX@@VSoundId@23@@Reflection@RBX@@6B@": "0x837c34 (vtable RTTI .?AV?$PropDescriptor@VSoundChannel@Soundscape@RBX@@VSoundId@23@@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0P8SoundChannel@Soundscape@RBX@@BE?AVSoundId@12@XZP8012@AEXV312@@Z@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@VSoundId@23@@Reflection@RBX@@QAE@PBD0P8SoundChannel@Soundscape@2@BE?AVSoundId@42@XZP8342@AEXV542@@ZW4Functionality@PropertyDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "005bbac0",
+      "symbol": "??$?0P8SoundChannel@Soundscape@RBX@@BEMXZP8012@AEXM@Z@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@M@Reflection@RBX@@QAE@PBD0P8SoundChannel@Soundscape@2@BEMXZP8342@AEXM@ZW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 163,
+      "target_size": 163,
+      "exact": true,
+      "verified_targets": {
+        "??$getset@P8SoundChannel@Soundscape@RBX@@BEMXZP8123@AEXM@Z@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@M@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@P8SoundChannel@Soundscape@2@BEMXZP8562@AEXM@Z@Z": "0x5b7320 (own row)",
+        "?classDescriptor@?$Described@VSoundChannel@Soundscape@RBX@@$1?sSoundChannel@23@3PADAV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5bb860 (own row)",
+        "??0?$TypedPropertyDescriptor@M@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@M@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x445610 (external (evidence name))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7?$PropDescriptor@VSoundChannel@Soundscape@RBX@@M@Reflection@RBX@@6B@": "0x837c68 (vtable RTTI .?AV?$PropDescriptor@VSoundChannel@Soundscape@RBX@@M@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0P8SoundChannel@Soundscape@RBX@@BEMXZP8012@AEXM@Z@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@M@Reflection@RBX@@QAE@PBD0P8SoundChannel@Soundscape@2@BEMXZP8342@AEXM@ZW4Functionality@PropertyDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "005bbb70",
+      "symbol": "??$?0P8SoundChannel@Soundscape@RBX@@BEHXZP8012@AEXH@Z@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@H@Reflection@RBX@@QAE@PBD0P8SoundChannel@Soundscape@2@BEHXZP8342@AEXH@ZW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 163,
+      "target_size": 163,
+      "exact": true,
+      "verified_targets": {
+        "??$getset@P8SoundChannel@Soundscape@RBX@@BEHXZP8123@AEXH@Z@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@H@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@H@Reflection@RBX@@@std@@P8SoundChannel@Soundscape@2@BEHXZP8562@AEXH@Z@Z": "0x5b7e50 (own row)",
+        "?classDescriptor@?$Described@VSoundChannel@Soundscape@RBX@@$1?sSoundChannel@23@3PADAV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5bb860 (own row)",
+        "??0?$TypedPropertyDescriptor@H@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@H@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x4432a0 (external)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7?$PropDescriptor@VSoundChannel@Soundscape@RBX@@H@Reflection@RBX@@6B@": "0x837c9c (vtable RTTI .?AV?$PropDescriptor@VSoundChannel@Soundscape@RBX@@H@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0P8SoundChannel@Soundscape@RBX@@BEHXZP8012@AEXH@Z@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@H@Reflection@RBX@@QAE@PBD0P8SoundChannel@Soundscape@2@BEHXZP8342@AEXH@ZW4Functionality@PropertyDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "005bbc20",
+      "symbol": "??$?0P8SoundChannel@Soundscape@RBX@@BE_NXZP8012@AEX_N@Z@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@_N@Reflection@RBX@@QAE@PBD0P8SoundChannel@Soundscape@2@BE_NXZP8342@AEX_N@ZW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 163,
+      "target_size": 163,
+      "exact": true,
+      "verified_targets": {
+        "??$getset@P8SoundChannel@Soundscape@RBX@@BE_NXZP8123@AEX_N@Z@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@_N@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@_N@Reflection@RBX@@@std@@P8SoundChannel@Soundscape@2@BE_NXZP8562@AEX_N@Z@Z": "0x5b7ea0 (own row)",
+        "?classDescriptor@?$Described@VSoundChannel@Soundscape@RBX@@$1?sSoundChannel@23@3PADAV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5bb860 (own row)",
+        "??0?$TypedPropertyDescriptor@_N@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@_N@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x40a290 (external (evidence name))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7?$PropDescriptor@VSoundChannel@Soundscape@RBX@@_N@Reflection@RBX@@6B@": "0x837cd0 (vtable RTTI .?AV?$PropDescriptor@VSoundChannel@Soundscape@RBX@@_N@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0P8SoundChannel@Soundscape@RBX@@BE_NXZP8012@AEX_N@Z@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@_N@Reflection@RBX@@QAE@PBD0P8SoundChannel@Soundscape@2@BE_NXZP8342@AEX_N@ZW4Functionality@PropertyDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "005bbcd0",
+      "symbol": "??$?0P8SoundChannel@Soundscape@RBX@@BE_NXZH@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@_N@Reflection@RBX@@QAE@PBD0P8SoundChannel@Soundscape@2@BE_NXZHW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 157,
+      "target_size": 157,
+      "exact": true,
+      "verified_targets": {
+        "??$getset@P8SoundChannel@Soundscape@RBX@@BE_NXZ@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@_N@Reflection@RBX@@SA?AV?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@_N@Reflection@RBX@@@std@@P8SoundChannel@Soundscape@2@BE_NXZH@Z": "0x5b7370 (own row)",
+        "?classDescriptor@?$Described@VSoundChannel@Soundscape@RBX@@$1?sSoundChannel@23@3PADAV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5bb860 (own row)",
+        "??0?$TypedPropertyDescriptor@_N@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@_N@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x40a290 (external (evidence name))",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)",
+        "??_7?$PropDescriptor@VSoundChannel@Soundscape@RBX@@_N@Reflection@RBX@@6B@": "0x837cd0 (vtable RTTI .?AV?$PropDescriptor@VSoundChannel@Soundscape@RBX@@_N@Reflection@RBX@@ offset 0x0)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0P8SoundChannel@Soundscape@RBX@@BE_NXZH@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@_N@Reflection@RBX@@QAE@PBD0P8SoundChannel@Soundscape@2@BE_NXZHW4Functionality@PropertyDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "005bbd70",
+      "symbol": "??$?0VSoundChannel@Soundscape@RBX@@@?$BoundProp@_N$00@Reflection@RBX@@QAE@PBD0PQSoundChannel@Soundscape@2@_NW4Functionality@PropertyDescriptor@12@@Z",
+      "size": 200,
+      "target_size": 200,
+      "exact": true,
+      "verified_targets": {
+        "?classDescriptor@?$Described@VSoundChannel@Soundscape@RBX@@$1?sSoundChannel@23@3PADAV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5bb860 (own row)",
+        "??0?$TypedPropertyDescriptor@_N@Reflection@RBX@@IAE@AAVClassDescriptor@12@PBD1V?$auto_ptr@VGetSet@?$TypedPropertyDescriptor@_N@Reflection@RBX@@@std@@W4Functionality@PropertyDescriptor@12@@Z": "0x40a290 (external (evidence name))",
+        "??_7?$BoundProp@_N$00@Reflection@RBX@@6B@": "0x80bc18 (vtable RTTI .?AV?$BoundProp@_N$00@Reflection@RBX@@ offset 0x0)",
+        "??2@YAPAXI@Z": "0x6a0920 (mfc90.dll!??2@YAPAXI@Z)",
+        "??_7?$BoundPropGetSet@VSoundChannel@Soundscape@RBX@@@?$BoundProp@_N$00@Reflection@RBX@@6B@": "0x837620 (vtable RTTI .?AV?$BoundPropGetSet@VSoundChannel@Soundscape@RBX@@@?$BoundProp@_N$00@Reflection@RBX@@ offset 0x0)",
+        "??3@YAXPAX@Z": "0x6a067a (mfc90.dll!??3@YAXPAX@Z)"
+      },
+      "local_eh": [
+        "__ehhandler$??$?0VSoundChannel@Soundscape@RBX@@@?$BoundProp@_N$00@Reflection@RBX@@QAE@PBD0PQSoundChannel@Soundscape@2@_NW4Functionality@PropertyDescriptor@12@@Z"
+      ]
+    },
+    {
+      "address": "005bbe40",
+      "symbol": "?singleton@?$EnumDesc@W4ReverbType@Soundscape@RBX@@@Reflection@RBX@@SAABV123@XZ",
+      "size": 90,
+      "target_size": 90,
+      "exact": true,
+      "verified_targets": {
+        "??_B?1??singleton@?$EnumDesc@W4ReverbType@Soundscape@RBX@@@Reflection@RBX@@SAABV123@XZ@51": "0x977610 (static (one address per symbol))",
+        "?s@?1??singleton@?$EnumDesc@W4ReverbType@Soundscape@RBX@@@Reflection@RBX@@SAABV234@XZ@4V234@A": "0x977528 (static (one address per symbol))",
+        "??0?$EnumDesc@W4ReverbType@Soundscape@RBX@@@Reflection@RBX@@AAE@XZ": "0x5bb330 (own row)",
+        "??__Fs@?1??singleton@?$EnumDesc@W4ReverbType@Soundscape@RBX@@@Reflection@RBX@@SAABV123@XZ@YAXXZ": "0x7fe4a0 (support body exact at the bound address (not counted here))",
+        "_atexit": "0x6a17af (external)"
+      },
+      "local_eh": [
+        "__ehhandler$?singleton@?$EnumDesc@W4ReverbType@Soundscape@RBX@@@Reflection@RBX@@SAABV123@XZ"
+      ]
+    },
+    {
+      "address": "005bbec0",
+      "symbol": "??0?$DescribedCreatable@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@IAE@XZ",
+      "size": 146,
+      "target_size": 146,
+      "exact": true,
+      "verified_targets": {
+        "??0?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@IAE@XZ": "0x5b6b60 (own row)",
+        "?classDescriptor@?$Described@VSoundService@Soundscape@RBX@@$1?sSoundService@23@3PADAV?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5bb7f0 (own row)",
+        "??_7?$DescribedCreatable@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x837d84 (vtable RTTI .?AV?$DescribedCreatable@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@ offset 0x0)",
+        "??_7?$DescribedCreatable@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x837d74 (vtable RTTI .?AV?$DescribedCreatable@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@ offset 0x10)",
+        "??_7?$DescribedCreatable@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x837d6c (vtable RTTI .?AV?$DescribedCreatable@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@ offset 0x14)",
+        "??_7?$DescribedCreatable@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6BDebugable@1@@": "0x837d64 (vtable RTTI .?AV?$DescribedCreatable@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@ offset 0x20)",
+        "??_7?$DescribedCreatable@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x837d54 (vtable RTTI .?AV?$DescribedCreatable@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@ offset 0x24)",
+        "??_7?$DescribedCreatable@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x837d44 (vtable RTTI .?AV?$DescribedCreatable@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@ offset 0x44)",
+        "??_7?$DescribedCreatable@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x837d34 (vtable RTTI .?AV?$DescribedCreatable@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@ offset 0x64)",
+        "??_7?$DescribedCreatable@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x837d24 (vtable RTTI .?AV?$DescribedCreatable@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@ offset 0x84)",
+        "??_7?$DescribedCreatable@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x837d14 (vtable RTTI .?AV?$DescribedCreatable@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@ offset 0xa4)",
+        "??_7?$DescribedCreatable@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x837d04 (vtable RTTI .?AV?$DescribedCreatable@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@ offset 0xc4)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$DescribedCreatable@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@IAE@XZ"
+      ]
+    },
+    {
+      "address": "005bbf60",
+      "symbol": "??_E?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@OBA@AEPAXI@Z",
+      "size": 8,
+      "target_size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@MAEPAXI@Z": "0x5bbf90 (own row ??_G?$FactoryProduct@VSoundSer (scalar deleting destructor; no array delete in the original))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005bbf70",
+      "symbol": "??_E?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@OGE@AEPAXI@Z",
+      "size": 8,
+      "target_size": 8,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@MAEPAXI@Z": "0x5bbf90 (own row ??_G?$FactoryProduct@VSoundSer (scalar deleting destructor; no array delete in the original))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005bbf80",
+      "symbol": "??_E?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@OIE@AEPAXI@Z",
+      "size": 11,
+      "target_size": 11,
+      "exact": true,
+      "verified_targets": {
+        "??_E?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@MAEPAXI@Z": "0x5bbf90 (own row ??_G?$FactoryProduct@VSoundSer (scalar deleting destructor; no array delete in the original))"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005bbf90",
+      "symbol": "??_G?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@MAEPAXI@Z",
+      "size": 31,
+      "target_size": 31,
+      "exact": true,
+      "verified_targets": {
+        "??1?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@MAE@XZ": "0x5b69e0 (own row)",
+        "__imp__free": "0x8028c0 (msvcr90.dll!free)"
+      },
+      "local_eh": []
+    },
+    {
+      "address": "005bbfb0",
+      "symbol": "??0?$DescribedCreatable@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@IAE@XZ",
+      "size": 146,
+      "target_size": 146,
+      "exact": true,
+      "verified_targets": {
+        "??0?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@IAE@XZ": "0x5b6bc0 (own row)",
+        "?classDescriptor@?$Described@VSoundChannel@Soundscape@RBX@@$1?sSoundChannel@23@3PADAV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ": "0x5bb860 (own row)",
+        "??_7?$DescribedCreatable@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": "0x837e44 (vtable RTTI .?AV?$DescribedCreatable@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@ offset 0x0)",
+        "??_7?$DescribedCreatable@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": "0x837e38 (vtable RTTI .?AV?$DescribedCreatable@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@ offset 0x10)",
+        "??_7?$DescribedCreatable@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": "0x837e30 (vtable RTTI .?AV?$DescribedCreatable@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@ offset 0x14)",
+        "??_7?$DescribedCreatable@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6BDebugable@1@@": "0x837e28 (vtable RTTI .?AV?$DescribedCreatable@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@ offset 0x20)",
+        "??_7?$DescribedCreatable@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": "0x837e18 (vtable RTTI .?AV?$DescribedCreatable@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@ offset 0x24)",
+        "??_7?$DescribedCreatable@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": "0x837e08 (vtable RTTI .?AV?$DescribedCreatable@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@ offset 0x44)",
+        "??_7?$DescribedCreatable@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": "0x837df8 (vtable RTTI .?AV?$DescribedCreatable@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@ offset 0x64)",
+        "??_7?$DescribedCreatable@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": "0x837de8 (vtable RTTI .?AV?$DescribedCreatable@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@ offset 0x84)",
+        "??_7?$DescribedCreatable@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": "0x837dd8 (vtable RTTI .?AV?$DescribedCreatable@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@ offset 0xa4)",
+        "??_7?$DescribedCreatable@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": "0x837dc8 (vtable RTTI .?AV?$DescribedCreatable@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@ offset 0xc4)"
+      },
+      "local_eh": [
+        "__ehhandler$??0?$DescribedCreatable@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@IAE@XZ"
+      ]
+    }
+  ],
+  "support_bodies": {
+    "??$?0PAV?$TypedStatsItem@I@Stats@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@2@@shared_count@detail@boost@@QAE@PAV?$TypedStatsItem@I@Stats@RBX@@VDeleter@?$Creatable@VInstance@RBX@@@5@@Z": "0x5b75a0",
+    "?_Tidy@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@IAEXXZ": "0x4077d0",
+    "??1?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4ReverbType@Soundscape@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4ReverbType@Soundscape@2@@std@@@6@$0A@@std@@@std@@QAE@XZ": "0x553d80",
+    "??1?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4SoundType@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4SoundType@2@@std@@@5@$0A@@std@@@std@@QAE@XZ": "0x553d80",
+    "??__Fs@?1??singleton@?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@SAABV123@XZ@YAXXZ": "0x7fe4b0",
+    "??0?$_Tree@V?$_Tmap_traits@PBVName@RBX@@W4ReverbType@Soundscape@2@U?$less@PBVName@RBX@@@std@@V?$allocator@U?$pair@QBVName@RBX@@W4ReverbType@Soundscape@2@@std@@@6@$0A@@std@@@std@@QAE@ABU?$less@PBVName@RBX@@@1@ABV?$allocator@U?$pair@QBVName@RBX@@W4ReverbType@Soundscape@2@@std@@@1@@Z": "0x446110",
+    "?addPair@?$EnumDesc@W4ReverbType@Soundscape@RBX@@@Reflection@RBX@@AAEXW4ReverbType@Soundscape@3@PBD@Z": "0x64d530",
+    "??__Ffoo@?1??classDescriptor@?$Described@VSoundService@Soundscape@RBX@@$1?sSoundService@23@3PADAV?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fe490",
+    "??__Ffoo@?1??classDescriptor@?$Described@VSoundChannel@Soundscape@RBX@@$1?sSoundChannel@23@3PADAV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fe480",
+    "??__Ffoo@?1??classDescriptor@?$Described@VStockSound@@$1?sStockSound@@3PADAV?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@YAXXZ": "0x7fe470",
+    "??__Fs@?1??singleton@?$EnumDesc@W4ReverbType@Soundscape@RBX@@@Reflection@RBX@@SAABV123@XZ@YAXXZ": "0x7fe4a0"
+  },
+  "local_statics": {
+    "??_B?1???$doDeclare@$1?sStockSound@@3PADA@Name@RBX@@CAABV01@XZ@51": "0x9771d8",
+    "??_B?1??classDescriptor@?$Described@VSoundChannel@Soundscape@RBX@@$1?sSoundChannel@23@3PADAV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x977458",
+    "??_B?1??classDescriptor@?$Described@VSoundService@Soundscape@RBX@@$1?sSoundService@23@3PADAV?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x977390",
+    "??_B?1??classDescriptor@?$Described@VStockSound@@$1?sStockSound@@3PADAV?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@23@XZ@51": "0x977520",
+    "??_B?1??singleton@?$EnumDesc@W4ReverbType@Soundscape@RBX@@@Reflection@RBX@@SAABV123@XZ@51": "0x977610",
+    "??_B?1??singleton@?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@SAABV123@XZ@51": "0x9772c8",
+    "?flag@?1???$declare@$1?sSoundChannel@Soundscape@RBX@@3PADA@Name@RBX@@SAABV12@XZ@4JA": "0x96d1c8",
+    "?flag@?1???$declare@$1?sSoundService@Soundscape@RBX@@3PADA@Name@RBX@@SAABV12@XZ@4JA": "0x96d1c4",
+    "?flag@?1???$declare@$1?sStockSound@@3PADA@Name@RBX@@SAABV12@XZ@4JA": "0x9771dc",
+    "?foo@?1??classDescriptor@?$Described@VSoundChannel@Soundscape@RBX@@$1?sSoundChannel@23@3PADAV?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x977398",
+    "?foo@?1??classDescriptor@?$Described@VSoundService@Soundscape@RBX@@$1?sSoundService@23@3PADAV?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@3@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x9772d0",
+    "?foo@?1??classDescriptor@?$Described@VStockSound@@$1?sStockSound@@3PADAV?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@@Reflection@RBX@@SAAAVClassDescriptor@34@XZ@4V534@A": "0x977460",
+    "?n@?1???$doDeclare@$1?sStockSound@@3PADA@Name@RBX@@CAABV12@XZ@4ABV12@B": "0x9771d4",
+    "?s@?1??singleton@?$EnumDesc@W4ReverbType@Soundscape@RBX@@@Reflection@RBX@@SAABV234@XZ@4V234@A": "0x977528",
+    "?s@?1??singleton@?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@SAABV234@XZ@4V234@A": "0x9771e0"
+  },
+  "vtables_current_headers": {
+    "??_7?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "0x83745c",
+      "compiled_slots": 16,
+      "checked_own_slots": []
+    },
+    "??_7?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "0x837450",
+      "compiled_slots": 2,
+      "checked_own_slots": [
+        "0 ??_E?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance = 0x5bbf60 (own row)"
+      ]
+    },
+    "??_7?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "0x837448",
+      "compiled_slots": 1,
+      "checked_own_slots": [
+        "0 ??_E?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance = 0x5b6e50 (own row)"
+      ]
+    },
+    "??_7?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6BDebugable@1@@": {
+      "address": "0x837440",
+      "compiled_slots": 1,
+      "checked_own_slots": []
+    },
+    "??_7?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "0x837430",
+      "compiled_slots": 3,
+      "checked_own_slots": [
+        "0 ??_E?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance = 0x5b6e90 (own row)"
+      ]
+    },
+    "??_7?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "0x837420",
+      "compiled_slots": 3,
+      "checked_own_slots": [
+        "0 ??_E?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance = 0x5b6ea0 (own row)"
+      ]
+    },
+    "??_7?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "0x837410",
+      "compiled_slots": 3,
+      "checked_own_slots": [
+        "0 ??_E?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance = 0x5bbf70 (own row)"
+      ]
+    },
+    "??_7?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "0x837400",
+      "compiled_slots": 3,
+      "checked_own_slots": [
+        "0 ??_E?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance = 0x5bbf80 (own row)"
+      ]
+    },
+    "??_7?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "0x8373f0",
+      "compiled_slots": 3,
+      "checked_own_slots": [
+        "0 ??_E?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance = 0x5b6eb0 (own row)"
+      ]
+    },
+    "??_7?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "0x8373e0",
+      "compiled_slots": 3,
+      "checked_own_slots": [
+        "0 ??_E?$FactoryProduct@VSoundService@Soundscape@RBX@@VInstance = 0x5b6ec0 (own row)"
+      ]
+    },
+    "??_7?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "0x83751c",
+      "compiled_slots": 16,
+      "checked_own_slots": []
+    },
+    "??_7?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "0x837510",
+      "compiled_slots": 2,
+      "checked_own_slots": []
+    },
+    "??_7?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "0x837508",
+      "compiled_slots": 1,
+      "checked_own_slots": []
+    },
+    "??_7?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6BDebugable@1@@": {
+      "address": "0x837500",
+      "compiled_slots": 1,
+      "checked_own_slots": []
+    },
+    "??_7?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "0x8374f0",
+      "compiled_slots": 3,
+      "checked_own_slots": []
+    },
+    "??_7?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "0x8374e0",
+      "compiled_slots": 3,
+      "checked_own_slots": []
+    },
+    "??_7?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "0x8374d0",
+      "compiled_slots": 3,
+      "checked_own_slots": []
+    },
+    "??_7?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "0x8374c0",
+      "compiled_slots": 3,
+      "checked_own_slots": []
+    },
+    "??_7?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "0x8374b0",
+      "compiled_slots": 3,
+      "checked_own_slots": []
+    },
+    "??_7?$FactoryProduct@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "0x8374a0",
+      "compiled_slots": 3,
+      "checked_own_slots": []
+    },
+    "??_7?$holder@VSoundId@Soundscape@RBX@@@any@boost@@6B@": {
+      "address": "0x837560",
+      "compiled_slots": 3,
+      "checked_own_slots": [
+        "1 ?type@?$holder@VSoundId@Soundscape@RBX@@@any@boost@@UBEABVty = 0x5b6db0 (own row)"
+      ]
+    },
+    "??_7?$GetSetImpl@P8SoundChannel@Soundscape@RBX@@BEMXZP8123@AEXM@Z@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@M@Reflection@RBX@@6B@": {
+      "address": "0x837570",
+      "compiled_slots": 4,
+      "checked_own_slots": []
+    },
+    "??_7?$GetImpl@P8SoundChannel@Soundscape@RBX@@BE_NXZ@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@_N@Reflection@RBX@@6B@": {
+      "address": "0x837598",
+      "compiled_slots": 4,
+      "checked_own_slots": []
+    },
+    "??_7?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "0x8377cc",
+      "compiled_slots": 16,
+      "checked_own_slots": []
+    },
+    "??_7?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "0x8377bc",
+      "compiled_slots": 2,
+      "checked_own_slots": []
+    },
+    "??_7?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "0x8377b4",
+      "compiled_slots": 1,
+      "checked_own_slots": []
+    },
+    "??_7?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@6BDebugable@1@@": {
+      "address": "0x8377ac",
+      "compiled_slots": 1,
+      "checked_own_slots": []
+    },
+    "??_7?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "0x83779c",
+      "compiled_slots": 3,
+      "checked_own_slots": []
+    },
+    "??_7?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "0x83778c",
+      "compiled_slots": 3,
+      "checked_own_slots": []
+    },
+    "??_7?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "0x83777c",
+      "compiled_slots": 3,
+      "checked_own_slots": []
+    },
+    "??_7?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "0x83776c",
+      "compiled_slots": 3,
+      "checked_own_slots": []
+    },
+    "??_7?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "0x83775c",
+      "compiled_slots": 3,
+      "checked_own_slots": []
+    },
+    "??_7?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "0x83774c",
+      "compiled_slots": 3,
+      "checked_own_slots": []
+    },
+    "??_7?$FactoryProduct@VStockSound@@VSoundChannel@Soundscape@RBX@@$1?sStockSound@@3PADA@RBX@@6B@": {
+      "address": "0x837740",
+      "compiled_slots": 2,
+      "checked_own_slots": []
+    },
+    "??_7?$GetSetImpl@P8SoundService@Soundscape@RBX@@BE?AW4ReverbType@23@XZP8123@AEXABW4423@@Z@?$PropDescriptor@VSoundService@Soundscape@RBX@@W4ReverbType@23@@Reflection@RBX@@6B@": {
+      "address": "0x837634",
+      "compiled_slots": 4,
+      "checked_own_slots": []
+    },
+    "??_7?$GetSetImpl@P8SoundChannel@Soundscape@RBX@@BE?AVSoundId@23@XZP8123@AEXV423@@Z@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@VSoundId@23@@Reflection@RBX@@6B@": {
+      "address": "0x837648",
+      "compiled_slots": 4,
+      "checked_own_slots": []
+    },
+    "??_7?$GetSetImpl@P8SoundChannel@Soundscape@RBX@@BEHXZP8123@AEXH@Z@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@H@Reflection@RBX@@6B@": {
+      "address": "0x83765c",
+      "compiled_slots": 4,
+      "checked_own_slots": []
+    },
+    "??_7?$GetSetImpl@P8SoundChannel@Soundscape@RBX@@BE_NXZP8123@AEX_N@Z@?$PropDescriptor@VSoundChannel@Soundscape@RBX@@_N@Reflection@RBX@@6B@": {
+      "address": "0x837584",
+      "compiled_slots": 4,
+      "checked_own_slots": []
+    },
+    "??_7?$EnumDesc@W4ReverbType@Soundscape@RBX@@@Reflection@RBX@@6B@": {
+      "address": "0x837a34",
+      "compiled_slots": 2,
+      "checked_own_slots": []
+    },
+    "??_7?$EnumDesc@W4SoundType@RBX@@@Reflection@RBX@@6B@": {
+      "address": "0x837a40",
+      "compiled_slots": 2,
+      "checked_own_slots": []
+    },
+    "??_7?$BoundProp@M$00@Reflection@RBX@@6B@": {
+      "address": "0x824134",
+      "compiled_slots": 12,
+      "checked_own_slots": []
+    },
+    "??_7?$BoundPropGetSet@VSoundService@Soundscape@RBX@@@?$BoundProp@M$00@Reflection@RBX@@6B@": {
+      "address": "0x83760c",
+      "compiled_slots": 4,
+      "checked_own_slots": []
+    },
+    "??_7?$PropDescriptor@VSoundChannel@Soundscape@RBX@@VSoundId@23@@Reflection@RBX@@6B@": {
+      "address": "0x837c34",
+      "compiled_slots": 12,
+      "checked_own_slots": []
+    },
+    "??_7?$PropDescriptor@VSoundChannel@Soundscape@RBX@@M@Reflection@RBX@@6B@": {
+      "address": "0x837c68",
+      "compiled_slots": 12,
+      "checked_own_slots": []
+    },
+    "??_7?$PropDescriptor@VSoundChannel@Soundscape@RBX@@H@Reflection@RBX@@6B@": {
+      "address": "0x837c9c",
+      "compiled_slots": 12,
+      "checked_own_slots": []
+    },
+    "??_7?$PropDescriptor@VSoundChannel@Soundscape@RBX@@_N@Reflection@RBX@@6B@": {
+      "address": "0x837cd0",
+      "compiled_slots": 12,
+      "checked_own_slots": []
+    },
+    "??_7?$BoundProp@_N$00@Reflection@RBX@@6B@": {
+      "address": "0x80bc18",
+      "compiled_slots": 12,
+      "checked_own_slots": []
+    },
+    "??_7?$BoundPropGetSet@VSoundChannel@Soundscape@RBX@@@?$BoundProp@_N$00@Reflection@RBX@@6B@": {
+      "address": "0x837620",
+      "compiled_slots": 4,
+      "checked_own_slots": []
+    },
+    "??_7?$DescribedCreatable@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "0x837d84",
+      "compiled_slots": 16,
+      "checked_own_slots": []
+    },
+    "??_7?$DescribedCreatable@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "0x837d74",
+      "compiled_slots": 2,
+      "checked_own_slots": []
+    },
+    "??_7?$DescribedCreatable@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "0x837d6c",
+      "compiled_slots": 1,
+      "checked_own_slots": []
+    },
+    "??_7?$DescribedCreatable@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6BDebugable@1@@": {
+      "address": "0x837d64",
+      "compiled_slots": 1,
+      "checked_own_slots": []
+    },
+    "??_7?$DescribedCreatable@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "0x837d54",
+      "compiled_slots": 3,
+      "checked_own_slots": []
+    },
+    "??_7?$DescribedCreatable@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "0x837d44",
+      "compiled_slots": 3,
+      "checked_own_slots": []
+    },
+    "??_7?$DescribedCreatable@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "0x837d34",
+      "compiled_slots": 3,
+      "checked_own_slots": []
+    },
+    "??_7?$DescribedCreatable@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "0x837d24",
+      "compiled_slots": 3,
+      "checked_own_slots": []
+    },
+    "??_7?$DescribedCreatable@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "0x837d14",
+      "compiled_slots": 3,
+      "checked_own_slots": []
+    },
+    "??_7?$DescribedCreatable@VSoundService@Soundscape@RBX@@VInstance@3@$1?sSoundService@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "0x837d04",
+      "compiled_slots": 3,
+      "checked_own_slots": []
+    },
+    "??_7?$DescribedCreatable@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$GuidItem@VInstance@RBX@@@1@@": {
+      "address": "0x837e44",
+      "compiled_slots": 16,
+      "checked_own_slots": []
+    },
+    "??_7?$DescribedCreatable@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$AbstractFactoryProduct@VInstance@RBX@@@1@@": {
+      "address": "0x837e38",
+      "compiled_slots": 2,
+      "checked_own_slots": []
+    },
+    "??_7?$DescribedCreatable@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$Described@VInstance@RBX@@$1?sInstance@2@3QBDBVDescribedBase@Reflection@2@@Reflection@1@@": {
+      "address": "0x837e30",
+      "compiled_slots": 1,
+      "checked_own_slots": []
+    },
+    "??_7?$DescribedCreatable@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6BDebugable@1@@": {
+      "address": "0x837e28",
+      "compiled_slots": 1,
+      "checked_own_slots": []
+    },
+    "??_7?$DescribedCreatable@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildAdded@2@@1@@": {
+      "address": "0x837e18",
+      "compiled_slots": 3,
+      "checked_own_slots": []
+    },
+    "??_7?$DescribedCreatable@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UChildRemoved@2@@1@@": {
+      "address": "0x837e08",
+      "compiled_slots": 3,
+      "checked_own_slots": []
+    },
+    "??_7?$DescribedCreatable@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantAdded@2@@1@@": {
+      "address": "0x837df8",
+      "compiled_slots": 3,
+      "checked_own_slots": []
+    },
+    "??_7?$DescribedCreatable@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UDescendantRemoving@2@@1@@": {
+      "address": "0x837de8",
+      "compiled_slots": 3,
+      "checked_own_slots": []
+    },
+    "??_7?$DescribedCreatable@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@UAncestorChanged@2@@1@@": {
+      "address": "0x837dd8",
+      "compiled_slots": 3,
+      "checked_own_slots": []
+    },
+    "??_7?$DescribedCreatable@VSoundChannel@Soundscape@RBX@@VInstance@3@$1?sSoundChannel@23@3PADA@RBX@@6B?$Notifier@VInstance@RBX@@VPropertyChanged@2@@1@@": {
+      "address": "0x837dc8",
+      "compiled_slots": 3,
+      "checked_own_slots": []
+    }
+  },
+  "getter_identity": {
+    "005b65a0": "address held at 0x7f5380 by the static initializer 0x7f5370, which calls the PropDescriptor constructor row 0x5bbb70",
+    "005b6960": "address held at 0x7f5427 by the static initializer 0x7f5420, which calls the PropDescriptor constructor row 0x5bbcd0",
+    "005b6990": "address held at 0x7f53f7 by the static initializer 0x7f53f0, which calls the PropDescriptor constructor row 0x5bbcd0",
+    "005b69c0": "address held at 0x7f5340 by the static initializer 0x7f5330, which calls the PropDescriptor constructor row 0x5bbac0",
+    "005b69d0": "address held at 0x7f53c0 by the static initializer 0x7f53b0, which calls the PropDescriptor constructor row 0x5bbc20"
+  },
+  "bounds_evidence": {
+    "row 005b6dc0 (not counted)": "the analysed row (127 B) is two functions: boost::any::holder<SoundId>::clone 005b6dc0..005b6e1f (ret at 005b6e1f; the compiled clone, 96 B, is exact against the first 96 bytes of the row) and ??_G FactoryProduct<SoundChannel> 005b6e20..005b6e3e (push esi; call ~FactoryProduct<SoundChannel> 005b6a40; free); the adjustor thunks 005b6e40 / 005b6e60 / 005b6e70 / 005b6e80 jump to 005b6e20. bounds.json is not changed here."
+  },
+  "not_exact": [
+    "005b7be0 ??0?$TypedPropertyDescriptor@VSoundId@Soundscape@RBX@@@Refle: 98/98 B, not counted",
+    "005b7be0: the inline TypedPropertyDescriptor(ClassDescriptor&, ...) constructor of the native reflection/property.h (core header, read-only) loads its arguments before calling Type::singleton<SoundId>() 0056cd80; the original calls the singleton first (same 98 B, instruction order only)"
+  ],
+  "pending_build_only": [],
+  "not_attempted": {
+    "BrickColor unit tail": "no committed native BrickColor header (would need a new layout header; not this pass)",
+    "SoundService / SoundChannel bodies (constructors, destructors 005bb120 / 005b7680, loadSound, openFmod 005ba060, garbage collection, setters, update3D)": "larger members of the Sound owners; their scalar deleting destructors 005bb5d0 / 005b8220 and the adjustor thunks jumping to them (005b7770..005b77e0, 005bb230..005bb2b0) wait for ~SoundService / ~SoundChannel",
+    "thunks to ??_G FactoryProduct<SoundChannel> 005b6e20 (005b6e40, 005b6e60, 005b6e70, 005b6e80)": "their target is not a row: the analysed row 005b6dc0 (127 B) covers holder<SoundId>::clone 005b6dc0..005b6e1f and ??_G FactoryProduct<SoundChannel> 005b6e20..005b6e3e (BOUNDS evidence, see bounds_evidence)",
+    "thunks to the StockSound ??_G 005bd1b0 (005b7860, 005b7870, 005b7880) and ??_E FactoryProduct<StockSound> 0x130 thunks (005b77f0, 005b7890, 005bb250)": "their targets are ~StockSound / ~SoundChannel / ~SoundService rows (not built)",
+    "005bb320 / 005bbea0 (5-byte tail jumps to the two EnumDesc singletons)": "identity not proven (no caller or name evidence; any `return singleton()` forwarder compiles the same)",
+    "005b6c40 _Rrotate": "ICF-shared std::_Tree helper also called from 00423e30 / 005539d0 / 00668010 (not this unit only)"
+  },
+  "rejected": {
+    "005ba890 / 005bae40 / 005bb110 as std::map<const Name*, ReverbType / SoundType> erase / ~_Tree / ~map": "relocation-masked matches only: ~EnumDesc<ReverbType / SoundType> call their ~_Tree at 00553d80 (support body above), and 005bae40 is called only from ~SoundService 005bb120, so these are a SoundService map; not counted",
+    "005b7630 _Uninit_copy / 005b7450 GetSetImpl<float>::setValue": "ICF-shared with other units (005b7630 called from 004460e0 / 00446290; 005b7450 in 8 vtables of other classes); identity not unit-specific, not counted"
+  },
+  "proposals": {},
+  "exact_function_rows": [
+    "005b65a0",
+    "005b6960",
+    "005b6990",
+    "005b69c0",
+    "005b69d0",
+    "005b69e0",
+    "005b6a40",
+    "005b6b60",
+    "005b6bc0",
+    "005b6ca0",
+    "005b6ce0",
+    "005b6d50",
+    "005b6db0",
+    "005b6e50",
+    "005b6e90",
+    "005b6ea0",
+    "005b6eb0",
+    "005b6ec0",
+    "005b7320",
+    "005b7370",
+    "005b73b0",
+    "005b7660",
+    "005b7670",
+    "005b7800",
+    "005b7c50",
+    "005b7d00",
+    "005b7db0",
+    "005b7e00",
+    "005b7e50",
+    "005b7ea0",
+    "005b7f50",
+    "005b8450",
+    "005b8470",
+    "005b8490",
+    "005bac70",
+    "005bae20",
+    "005baeb0",
+    "005bb040",
+    "005bb2c0",
+    "005bb330",
+    "005bb7f0",
+    "005bb860",
+    "005bb8d0",
+    "005bb940",
+    "005bba10",
+    "005bbac0",
+    "005bbb70",
+    "005bbc20",
+    "005bbcd0",
+    "005bbd70",
+    "005bbe40",
+    "005bbec0",
+    "005bbf60",
+    "005bbf70",
+    "005bbf80",
+    "005bbf90",
+    "005bbfb0"
+  ],
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}
