@@ -1,11 +1,10 @@
-// Link-closure glue for the Ogre module trial (not recovered 2008 source).
-// RbxEntity (native-classes/OgreRbxEntity.cpp) reads these Roblox render settings through extern declarations whose
-// names are INFERRED; the 2008 exe keeps them as globals defined in engine code this module does not link. Zero
-// defaults keep shadow throttling and adaptive LOD off. Replace with the engine's definitions when that unit is native.
-bool nativeShadowThrottle = false;
-int nativeShadowMode = 0;
-float nativeLodLowMs = 0.0f;
-float nativeLodHighMs = 0.0f;
+// INFERRED names: 0067daf0 reads image globals 00962f64/68/6c/70. The original image
+// initializes them to true, 2, 50 and 100; CRobloxWnd 0045cbf0 also writes 00962f68.
+// Provider ownership and sharing with the client remain to be integrated.
+bool nativeShadowThrottle = true;
+int nativeShadowMode = 2;
+float nativeLodLowMs = 50.0f;
+float nativeLodHighMs = 100.0f;
 
 // Name aliases for the link trial: older mined analogs reference these 2008 functions with public / free-function
 // manglings; the registry names them with the native files' protected / static-member manglings (same address,
