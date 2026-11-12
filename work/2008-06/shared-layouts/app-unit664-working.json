@@ -1,0 +1,1100 @@
+{
+  "class": "Humanoid state force limits, the JointStage multimap lower_bound and the unit map of the application range 00664000..00668000 (2008-06), inactive",
+  "compiler": "MSVC 15.00.21022 (VS2008 RTM), /fp:fast",
+  "flags": {
+    "limits": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit664/NativeAppUnit664_limits.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit664ForceLimits.cpp"
+    ],
+    "jointmap": [
+      "/nologo",
+      "/c",
+      "/O2",
+      "/Ob2",
+      "/Oy",
+      "/GF",
+      "/GS-",
+      "/EHsc",
+      "/MD",
+      "/D_AFXDLL",
+      "/DNDEBUG",
+      "/D_MBCS",
+      "/DNOMINMAX",
+      "/DBOOST_ALL_NO_LIB",
+      "/DWIN32",
+      "/DNDEBUG",
+      "/D_LIB",
+      "/D_RELEASE",
+      "/D_RELEASEASSERT",
+      "/D_VC80_UPGRADE=0x0710",
+      "/IC:\\Users\\colin\\RoConstruct\\rebuild\\2008-06\\native-headers",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+      "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+      "/fp:fast",
+      "/Fo/home/user/roconstruct/rebuild/2008-06/out/native-layouts/app-unit664/NativeAppUnit664_jointmap.obj",
+      "/home/user/roconstruct/rebuild/2008-06/native-classes/AppUnit664JointMapTemplates.cpp"
+    ]
+  },
+  "sources": {
+    "rebuild/2008-06/tests/record_native_app_unit664.py": "6daeb180aae63eaacf1100c2820cf964ad755a1b47269cb5bc7207bbc9c853f4",
+    "rebuild/2008-06/native-classes/AppUnit664ForceLimits.cpp": "a00c3fe89d8d573e2b7475bea0ea9eecfabc1fec67459c6d94c932639fc52d10",
+    "rebuild/2008-06/native-classes/AppUnit664JointMapTemplates.cpp": "ba326de12cb5434838c6331e9506671ce9a3e250aed98f71a086ccc51f8a8d3c",
+    "rebuild/2008-06/native-headers/AppUnit664/HumanoidForceLimits.h": "cd09b4283103f355c96632efdcaf3f5efe7d2f57218c88c273876a5b2e140062"
+  },
+  "objects": {
+    "limits": "f04fb60ed3405779774afba6b81d3d52cfc09c0f9aa919b16698afeb84fb2d86",
+    "jointmap": "370911a50bc4c948e84a4d4cedb7e20e47f4b34e8648c16c41311de7b5560473"
+  },
+  "local_statics": {
+    "?force@?1??maxMoveForce@HUMAN@RBX@@YA?AVVector3@G3D@@XZ@4V45@A": "0x0097d968: .data, 6 DIR32 operand(s), all inside row 0x00666350",
+    "?$S1@?1??maxMoveForce@HUMAN@RBX@@YA?AVVector3@G3D@@XZ@4IA": "0x0097d974: .data, 2 DIR32 operand(s), all inside row 0x00666350",
+    "?force@?1??minMoveForce@HUMAN@RBX@@YA?AVVector3@G3D@@XZ@4V45@A": "0x0097d978: .data, 6 DIR32 operand(s), all inside row 0x006663a0",
+    "?$S2@?1??minMoveForce@HUMAN@RBX@@YA?AVVector3@G3D@@XZ@4IA": "0x0097d984: .data, 2 DIR32 operand(s), all inside row 0x006663a0"
+  },
+  "unit_map": {
+    "lua-llex 0x00664000..0x0066566f": {
+      "rows": 17,
+      "unit": "Lua 5.1.1 llex.c (save 0x00664050 .. luaX_lookahead 0x00665650; Lua evidence names): library code, not recovered. luaX_init 0x006640c0 is a support row of script-app2008-working.json.",
+      "library": true,
+      "counted_here": [],
+      "counted_elsewhere": []
+    },
+    "effect 0x00665670..0x006656af": {
+      "rows": 3,
+      "unit": "RBX::Effect leaf rows 0x00665670 / 0x00665680 / 0x00665690 (RTTI .?AVEffect@RBX@@, vtable 0x0084cb84 stored / read by each): verified by effects-working.json (Sparkles owner); not rebuilt here.",
+      "library": false,
+      "counted_here": [],
+      "counted_elsewhere": []
+    },
+    "tool-trials 0x006656b0..0x0066599f": {
+      "rows": 2,
+      "unit": "resize / axis-move tool helpers 0x006656b0 and 0x00665880: counted by the resize-tool-methods-trial / axis-move-tool-lifetime-trial receipts.",
+      "library": false,
+      "counted_here": [],
+      "counted_elsewhere": [
+        "006656b0 counted by resize-tool-methods-trial.json",
+        "00665880 counted by axis-move-tool-lifetime-trial.json"
+      ]
+    },
+    "part-drag-tool 0x006659a0..0x0066623f": {
+      "rows": 16,
+      "unit": "RBX::PartDragTool unit (NativeToolName<PartDragTool> statics, auto_ptr<RunDragger>, getName): counted by app-unit660-2008-working.json; MegaDragger::getMousePart 0x00665aa0 and PartDragTool onMouseDelta 0x00665b00 / onKeyDown 0x00665ce0 / render3dAdorn 0x00665e20 are pending-build-only there (MegaDragger.h proposal of that receipt). Not rebuilt here.",
+      "library": false,
+      "counted_here": [],
+      "counted_elsewhere": [
+        "006659a0 counted by app-unit660-2008-working.json",
+        "006659e0 counted by app-unit660-2008-working.json",
+        "00665a30 counted by app-unit660-2008-working.json",
+        "00665ad0 counted by app-unit660-2008-working.json",
+        "00665af0 counted by app-unit660-2008-working.json",
+        "00665b60 counted by app-unit660-2008-working.json",
+        "00665bd0 counted by app-unit660-2008-working.json",
+        "00665c90 counted by app-unit660-2008-working.json",
+        "00665cc0 counted by app-unit660-2008-working.json",
+        "00665f00 counted by app-unit660-2008-working.json",
+        "00665f20 counted by app-unit660-2008-working.json",
+        "00666100 counted by app-unit660-2008-working.json"
+      ]
+    },
+    "era 0x00666240..0x006662ef": {
+      "rows": 6,
+      "unit": "floatERA / Vector3ERA reset / pushAndGetAverage / getAverage: counted by app-unit660-2008-working.json.",
+      "library": false,
+      "counted_here": [],
+      "counted_elsewhere": [
+        "00666240 counted by app-unit660-2008-working.json",
+        "00666250 counted by app-unit660-2008-working.json",
+        "00666270 counted by app-unit660-2008-working.json",
+        "00666280 counted by app-unit660-2008-working.json",
+        "00666290 counted by app-unit660-2008-working.json",
+        "006662d0 counted by app-unit660-2008-working.json"
+      ]
+    },
+    "g3d-vector3-iszero 0x006662f0..0x0066634f": {
+      "rows": 1,
+      "unit": "G3D::Vector3::isZero 0x006662f0, the out-of-line COMDAT of the G3D 6.09 inline (`fuzzyEq(squaredMagnitude(), 0.0f)`, G3D::eps 0x00513080): G3D library code, not recovered.",
+      "library": true,
+      "counted_here": [],
+      "counted_elsewhere": []
+    },
+    "humanoid-force-limits 0x00666350..0x006663ef": {
+      "rows": 2,
+      "unit": "the two humanoid force-limit accessors 0x00666350 (1000, 10000, 1000) and 0x006663a0 (-1000, 0, -1000), each returning a copy of a function-local static Vector3 (callers RunningBase::onComputeForce 0x00666550 and Freefall::onComputeForce 0x006675d0). Built and counted here.",
+      "library": false,
+      "counted_here": [
+        "00666350",
+        "006663a0"
+      ],
+      "counted_elsewhere": []
+    },
+    "humanoid-states 0x006663f0..0x00667f6f": {
+      "rows": 68,
+      "unit": "HUMAN::RunningBase / Running / Dead / FallingDown / Seated / StrafingNoPhysics / RunningNoPhysics / Flying / Freefall / Jumping / GettingUp rows (RTTI of the vtables the constructors store), listed as verified methods by humanoid-states1/2/3-working.json without an exact flag (not counted by the rule); HumanoidState family sources, not rebuilt here. Pending there: RunningBase::onStep 0x00666410, RunningBase::onComputeForce 0x00666550, Freefall::onComputeForce 0x006675d0, Jumping::onComputeForce 0x00667a40. 0x006672a0 (`jmp ~MovingNoPhysicsBase`, the implicit ~Named<MovingNoPhysicsBase, sStrafingNoPhysics / sRunningNoPhysics> reached from the unwind funclet 0x007dc230) is not listed by any receipt; the HumanoidStates3 unit emits it only with NATIVE_SIMJOB_PENDING.",
+      "library": false,
+      "counted_here": [],
+      "counted_elsewhere": []
+    },
+    "joint-stage-head 0x00667f70..0x00667fff": {
+      "rows": 2,
+      "unit": "JointStage.cpp head: edgeHasPrimitivesDownstream 0x00667f70 (counted by kernel-stages-working.json) and std::multimap<Primitive*, Joint*>::lower_bound 0x00667fd0 (only caller removeFromMap 0x00668280): built and counted here by explicit member instantiation.",
+      "library": false,
+      "counted_here": [
+        "00667fd0"
+      ],
+      "counted_elsewhere": [
+        "00667f70 counted by kernel-stages-working.json"
+      ]
+    }
+  },
+  "row_map": [
+    {
+      "row": "0x00664050",
+      "size": 107,
+      "block": "lua-llex",
+      "evidence_name": "?save@@YAXPAULexState@@H@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x006640c0",
+      "size": 73,
+      "block": "lua-llex",
+      "evidence_name": "?luaX_init@@YAXPAUlua_State@@@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x00664110",
+      "size": 83,
+      "block": "lua-llex",
+      "evidence_name": "?luaX_token2str@@YAPBDPAULexState@@H@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x00664170",
+      "size": 152,
+      "block": "lua-llex",
+      "evidence_name": "?luaX_lexerror@@YAXPAULexState@@PBDH@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x00664210",
+      "size": 23,
+      "block": "lua-llex",
+      "evidence_name": "?luaX_syntaxerror@@YAXPAULexState@@PBD@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x00664230",
+      "size": 70,
+      "block": "lua-llex",
+      "evidence_name": "?luaX_newstring@@YAPATTString@@PAULexState@@PBDI@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x00664280",
+      "size": 135,
+      "block": "lua-llex",
+      "evidence_name": "?inclinenumber@@YAXPAULexState@@@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x00664310",
+      "size": 135,
+      "block": "lua-llex",
+      "evidence_name": "?luaX_setinput@@YAXPAUlua_State@@PAULexState@@PAUZio@@PATTString@@@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x006643a0",
+      "size": 90,
+      "block": "lua-llex",
+      "evidence_name": "?check_next@@YAHPAULexState@@PBD@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x00664400",
+      "size": 214,
+      "block": "lua-llex",
+      "evidence_name": "?trydecpoint@@YAXPAULexState@@PATSemInfo@@@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x006644e0",
+      "size": 567,
+      "block": "lua-llex",
+      "evidence_name": "?read_numeral@@YAXPAULexState@@PATSemInfo@@@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x00664720",
+      "size": 327,
+      "block": "lua-llex",
+      "evidence_name": "?skip_sep@@YAHPAULexState@@@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x00664870",
+      "size": 579,
+      "block": "lua-llex",
+      "evidence_name": "?read_long_string@@YAXPAULexState@@PATSemInfo@@H@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x00664ac0",
+      "size": 1156,
+      "block": "lua-llex",
+      "evidence_name": "?read_string@@YAXPAULexState@@HPATSemInfo@@@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x00664f50",
+      "size": 1700,
+      "block": "lua-llex",
+      "evidence_name": "?llex@@YAHPAULexState@@PATSemInfo@@@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x00665600",
+      "size": 69,
+      "block": "lua-llex",
+      "evidence_name": "?luaX_next@@YAXPAULexState@@@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x00665650",
+      "size": 24,
+      "block": "lua-llex",
+      "evidence_name": "?luaX_lookahead@@YAXPAULexState@@@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x00665670",
+      "size": 9,
+      "block": "effect",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00665680",
+      "size": 7,
+      "block": "effect",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00665690",
+      "size": 31,
+      "block": "effect",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x006656b0",
+      "size": 462,
+      "block": "tool-trials",
+      "evidence_name": null,
+      "counted": "elsewhere: resize-tool-methods-trial.json"
+    },
+    {
+      "row": "0x00665880",
+      "size": 281,
+      "block": "tool-trials",
+      "evidence_name": null,
+      "counted": "elsewhere: axis-move-tool-lifetime-trial.json"
+    },
+    {
+      "row": "0x006659a0",
+      "size": 54,
+      "block": "part-drag-tool",
+      "evidence_name": "?onMouseDown@PartDragTool@RBX@@UAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+      "counted": "elsewhere: app-unit660-2008-working.json"
+    },
+    {
+      "row": "0x006659e0",
+      "size": 77,
+      "block": "part-drag-tool",
+      "evidence_name": "?onMouseMove@PartDragTool@RBX@@UAEXABVUIEvent@2@@Z",
+      "counted": "elsewhere: app-unit660-2008-working.json"
+    },
+    {
+      "row": "0x00665a30",
+      "size": 101,
+      "block": "part-drag-tool",
+      "evidence_name": null,
+      "counted": "elsewhere: app-unit660-2008-working.json"
+    },
+    {
+      "row": "0x00665aa0",
+      "size": 42,
+      "block": "part-drag-tool",
+      "evidence_name": "?getMousePart@MegaDragger@RBX@@QAE?AV?$weak_ptr@VPartInstance@RBX@@@boost@@XZ",
+      "counted": "no"
+    },
+    {
+      "row": "0x00665ad0",
+      "size": 25,
+      "block": "part-drag-tool",
+      "evidence_name": null,
+      "counted": "elsewhere: app-unit660-2008-working.json"
+    },
+    {
+      "row": "0x00665af0",
+      "size": 5,
+      "block": "part-drag-tool",
+      "evidence_name": null,
+      "counted": "elsewhere: app-unit660-2008-working.json"
+    },
+    {
+      "row": "0x00665b00",
+      "size": 87,
+      "block": "part-drag-tool",
+      "evidence_name": "?onMouseDelta@PartDragTool@RBX@@UAEXABVUIEvent@2@@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x00665b60",
+      "size": 112,
+      "block": "part-drag-tool",
+      "evidence_name": "?onMouseIdle@PartDragTool@RBX@@UAEXABVUIEvent@2@@Z",
+      "counted": "elsewhere: app-unit660-2008-working.json"
+    },
+    {
+      "row": "0x00665bd0",
+      "size": 188,
+      "block": "part-drag-tool",
+      "evidence_name": null,
+      "counted": "elsewhere: app-unit660-2008-working.json"
+    },
+    {
+      "row": "0x00665c90",
+      "size": 45,
+      "block": "part-drag-tool",
+      "evidence_name": "?getCursorName@PartDragTool@RBX@@UBE?BV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+      "counted": "elsewhere: app-unit660-2008-working.json"
+    },
+    {
+      "row": "0x00665cc0",
+      "size": 30,
+      "block": "part-drag-tool",
+      "evidence_name": null,
+      "counted": "elsewhere: app-unit660-2008-working.json"
+    },
+    {
+      "row": "0x00665ce0",
+      "size": 314,
+      "block": "part-drag-tool",
+      "evidence_name": "?onKeyDown@PartDragTool@RBX@@UAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x00665e20",
+      "size": 219,
+      "block": "part-drag-tool",
+      "evidence_name": "?render3dAdorn@PartDragTool@RBX@@UAEXPAVAdorn@2@@Z",
+      "counted": "no"
+    },
+    {
+      "row": "0x00665f00",
+      "size": 23,
+      "block": "part-drag-tool",
+      "evidence_name": "?getName@?$Named@VMouseCommand@RBX@@$1?sPartDragTool@2@3PBDB@RBX@@UBEABVName@2@XZ",
+      "counted": "elsewhere: app-unit660-2008-working.json"
+    },
+    {
+      "row": "0x00665f20",
+      "size": 479,
+      "block": "part-drag-tool",
+      "evidence_name": null,
+      "counted": "elsewhere: app-unit660-2008-working.json"
+    },
+    {
+      "row": "0x00666100",
+      "size": 313,
+      "block": "part-drag-tool",
+      "evidence_name": "?onMouseUp@PartDragTool@RBX@@UAEPAVMouseCommand@2@ABVUIEvent@2@@Z",
+      "counted": "elsewhere: app-unit660-2008-working.json"
+    },
+    {
+      "row": "0x00666240",
+      "size": 6,
+      "block": "era",
+      "evidence_name": "?reset@floatERA@RBX@@QAEXXZ",
+      "counted": "elsewhere: app-unit660-2008-working.json"
+    },
+    {
+      "row": "0x00666250",
+      "size": 18,
+      "block": "era",
+      "evidence_name": null,
+      "counted": "elsewhere: app-unit660-2008-working.json"
+    },
+    {
+      "row": "0x00666270",
+      "size": 4,
+      "block": "era",
+      "evidence_name": null,
+      "counted": "elsewhere: app-unit660-2008-working.json"
+    },
+    {
+      "row": "0x00666280",
+      "size": 12,
+      "block": "era",
+      "evidence_name": "?reset@Vector3ERA@RBX@@QAEXXZ",
+      "counted": "elsewhere: app-unit660-2008-working.json"
+    },
+    {
+      "row": "0x00666290",
+      "size": 62,
+      "block": "era",
+      "evidence_name": null,
+      "counted": "elsewhere: app-unit660-2008-working.json"
+    },
+    {
+      "row": "0x006662d0",
+      "size": 24,
+      "block": "era",
+      "evidence_name": "?getAverage@Vector3ERA@RBX@@QAE?AVVector3@G3D@@XZ",
+      "counted": "elsewhere: app-unit660-2008-working.json"
+    },
+    {
+      "row": "0x006662f0",
+      "size": 94,
+      "block": "g3d-vector3-iszero",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00666350",
+      "size": 80,
+      "block": "humanoid-force-limits",
+      "evidence_name": null,
+      "counted": "here"
+    },
+    {
+      "row": "0x006663a0",
+      "size": 76,
+      "block": "humanoid-force-limits",
+      "evidence_name": null,
+      "counted": "here"
+    },
+    {
+      "row": "0x006663f0",
+      "size": 18,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00666410",
+      "size": 264,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00666520",
+      "size": 43,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00666550",
+      "size": 1061,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00666980",
+      "size": 205,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00666a50",
+      "size": 101,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00666ac0",
+      "size": 41,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00666af0",
+      "size": 5,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00666b00",
+      "size": 23,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00666b20",
+      "size": 148,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00666bc0",
+      "size": 128,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00666c40",
+      "size": 6,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00666c50",
+      "size": 101,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00666cc0",
+      "size": 101,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00666d30",
+      "size": 102,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00666da0",
+      "size": 43,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00666dd0",
+      "size": 5,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00666de0",
+      "size": 5,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00666df0",
+      "size": 23,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00666e10",
+      "size": 23,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00666e30",
+      "size": 137,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00666ec0",
+      "size": 129,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00666f50",
+      "size": 30,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00666f70",
+      "size": 101,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00666fe0",
+      "size": 5,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00666ff0",
+      "size": 23,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00667010",
+      "size": 132,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x006670a0",
+      "size": 6,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x006670b0",
+      "size": 129,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00667140",
+      "size": 30,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00667160",
+      "size": 11,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00667170",
+      "size": 101,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x006671e0",
+      "size": 5,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x006671f0",
+      "size": 23,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00667210",
+      "size": 133,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x006672a0",
+      "size": 5,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x006672b0",
+      "size": 21,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x006672d0",
+      "size": 101,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00667340",
+      "size": 5,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00667350",
+      "size": 23,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00667370",
+      "size": 137,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00667400",
+      "size": 11,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00667410",
+      "size": 30,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00667430",
+      "size": 101,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x006674a0",
+      "size": 5,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x006674b0",
+      "size": 54,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x006674f0",
+      "size": 23,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00667510",
+      "size": 76,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00667560",
+      "size": 101,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x006675d0",
+      "size": 514,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x006677e0",
+      "size": 5,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x006677f0",
+      "size": 23,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00667810",
+      "size": 279,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00667930",
+      "size": 227,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00667a20",
+      "size": 30,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00667a40",
+      "size": 337,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00667ba0",
+      "size": 101,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00667c10",
+      "size": 5,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00667c20",
+      "size": 23,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00667c40",
+      "size": 132,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00667cd0",
+      "size": 129,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00667d60",
+      "size": 30,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00667d80",
+      "size": 101,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00667df0",
+      "size": 5,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00667e00",
+      "size": 23,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00667e20",
+      "size": 150,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00667ec0",
+      "size": 129,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00667f50",
+      "size": 30,
+      "block": "humanoid-states",
+      "evidence_name": null,
+      "counted": "no"
+    },
+    {
+      "row": "0x00667f70",
+      "size": 94,
+      "block": "joint-stage-head",
+      "evidence_name": null,
+      "counted": "elsewhere: kernel-stages-working.json"
+    },
+    {
+      "row": "0x00667fd0",
+      "size": 54,
+      "block": "joint-stage-head",
+      "evidence_name": null,
+      "counted": "here"
+    }
+  ],
+  "range_functions": 117,
+  "range_lua_library_rows": 17,
+  "range_rows_counted_by_other_receipts": [
+    "006656b0 counted by resize-tool-methods-trial.json",
+    "00665880 counted by axis-move-tool-lifetime-trial.json",
+    "006659a0 counted by app-unit660-2008-working.json",
+    "006659e0 counted by app-unit660-2008-working.json",
+    "00665a30 counted by app-unit660-2008-working.json",
+    "00665ad0 counted by app-unit660-2008-working.json",
+    "00665af0 counted by app-unit660-2008-working.json",
+    "00665b60 counted by app-unit660-2008-working.json",
+    "00665bd0 counted by app-unit660-2008-working.json",
+    "00665c90 counted by app-unit660-2008-working.json",
+    "00665cc0 counted by app-unit660-2008-working.json",
+    "00665f00 counted by app-unit660-2008-working.json",
+    "00665f20 counted by app-unit660-2008-working.json",
+    "00666100 counted by app-unit660-2008-working.json",
+    "00666240 counted by app-unit660-2008-working.json",
+    "00666250 counted by app-unit660-2008-working.json",
+    "00666270 counted by app-unit660-2008-working.json",
+    "00666280 counted by app-unit660-2008-working.json",
+    "00666290 counted by app-unit660-2008-working.json",
+    "006662d0 counted by app-unit660-2008-working.json",
+    "00667f70 counted by kernel-stages-working.json"
+  ],
+  "rows": {
+    "limits": [
+      {
+        "address": "00666350",
+        "symbol": "?maxMoveForce@HUMAN@RBX@@YA?AVVector3@G3D@@XZ",
+        "size": 80,
+        "target_size": 80,
+        "exact": true,
+        "verified_targets": {
+          "?$S1@?1??maxMoveForce@HUMAN@RBX@@YA?AVVector3@G3D@@XZ@4IA": "0x97d974 (function-local static)",
+          "__real@447a0000": "0x819dcc (constant 447a0000)",
+          "?force@?1??maxMoveForce@HUMAN@RBX@@YA?AVVector3@G3D@@XZ@4V45@A": "0x97d968 (function-local static)",
+          "__real@461c4000": "0x82746c (constant 461c4000)"
+        },
+        "local_eh": []
+      },
+      {
+        "address": "006663a0",
+        "symbol": "?minMoveForce@HUMAN@RBX@@YA?AVVector3@G3D@@XZ",
+        "size": 76,
+        "target_size": 76,
+        "exact": true,
+        "verified_targets": {
+          "?$S2@?1??minMoveForce@HUMAN@RBX@@YA?AVVector3@G3D@@XZ@4IA": "0x97d984 (function-local static)",
+          "__real@c47a0000": "0x84cc24 (constant c47a0000)",
+          "?force@?1??minMoveForce@HUMAN@RBX@@YA?AVVector3@G3D@@XZ@4V45@A": "0x97d978 (function-local static)"
+        },
+        "local_eh": []
+      }
+    ],
+    "jointmap": [
+      {
+        "address": "00667fd0",
+        "symbol": "?lower_bound@?$_Tree@V?$_Tmap_traits@PAVPrimitive@RBX@@PAVJoint@2@U?$less@PAVPrimitive@RBX@@@std@@V?$allocator@U?$pair@QAVPrimitive@RBX@@PAVJoint@2@@std@@@5@$00@std@@@std@@QAE?AViterator@12@ABQAVPrimitive@RBX@@@Z",
+        "size": 54,
+        "target_size": 54,
+        "exact": true,
+        "verified_targets": {},
+        "local_eh": []
+      }
+    ]
+  },
+  "not_built": {
+    "RunningBase::onStep 0x00666410, RunningBase::onComputeForce 0x00666550, Freefall::onComputeForce 0x006675d0, Jumping::onComputeForce 0x00667a40": "HumanoidState family members (humanoid-states1/2 pending lists): they need the 2008 Body / Cofm / SimBody declarations (native v8kernel/Body2008.h) together with the HumanoidStates headers, which compile only with the recorder overlays tests/NativeHumanoidStates1Calls.h / NativeHumanoidStates2Calls.h (Humanoid declarations); a native unit here cannot include those.",
+    "0x006672a0 ~Named<MovingNoPhysicsBase, ...>": "emitted only by native-classes/HumanoidStates3.cpp with NATIVE_SIMJOB_PENDING (MovingNoPhysicsBase constructor pending there); would be pending-build-only.",
+    "G3D::Vector3::isZero 0x006662f0": "G3D library inline, not recovered."
+  },
+  "exact_function_rows": [
+    "00666350",
+    "006663a0",
+    "00667fd0"
+  ],
+  "rejected": {},
+  "proposals": {
+    "HumanoidState family owner (native humanoid/HumanoidStates1.h / HumanoidStates2.h)": "RunningBase::onComputeForce 0x00666550 and Freefall::onComputeForce 0x006675d0 call the two force-limit accessors out of line (0x0066674a / 0x006668a0 / 0x006668ac and 0x0066776d / 0x00667779): when those bodies are written, declare the accessors from native AppUnit664/HumanoidForceLimits.h (or move the two declarations into the shared humanoid header) so the calls bind to 0x00666350 / 0x006663a0.",
+    "HumanoidState family owner, FYI": "0x006672a0 is the implicit ~Named<MovingNoPhysicsBase, sStrafingNoPhysics / sRunningNoPhysics> (ICF-folded `jmp ~MovingNoPhysicsBase`), reached from the shared constructor unwind funclet 0x007dc230; your HumanoidStates3 object built with NATIVE_SIMJOB_PENDING already emits it (e9 rel32). It becomes countable once the MovingNoPhysicsBase constructor leaves the pending build.",
+    "kernel-stages owner (native v8world/JointStage2008.h), FYI": "JointStage::removeFromMap 0x00668280 calls the multimap lower_bound 0x00667fd0 out of line; it is built and counted here by explicit member instantiation (AppUnit664JointMapTemplates.cpp), so it does not need to be counted again by the JointStage unit."
+  },
+  "scope": "Inactive. Exact bodies with verified call/data targets; no active build, swap or credit."
+}
