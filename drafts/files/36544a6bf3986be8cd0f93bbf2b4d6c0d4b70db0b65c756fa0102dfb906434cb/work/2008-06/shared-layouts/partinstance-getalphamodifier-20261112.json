@@ -1,0 +1,25 @@
+{
+  "scope": "AppUnit610_2008NullTool (RBX::NewNullTool rows 00629...): the recorded native promotion for PartInstance::getAlphaModifier was never applied to the organized header; applied it. The unit went from cl exit 2 (C2039) / 0 exact to 19 exact / 499 B.",
+  "baseline_commit": "unknown",
+  "package_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "source_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "native_workflow_version": 53,
+  "lease": "PartInstance-getAlphaModifier-promotion (colin)",
+  "draft_session": "349bfc00634a44b09770cdf84007a746",
+  "blocker": {
+    "symptom": "rebuild/2008-06/native-classes/AppUnit610_2008NullTool.cpp(65): error C2039: 'getAlphaModifier' : is not a member of 'RBX::PartInstance' (the isLocalHeadHidden body reads head->getAlphaModifier() == 0.0f)",
+    "cause": "the organized App/include/v8datamodel/PartInstance.h declares setAlphaModifier but no getter, so the unit that reads the alpha modifier could not compile. native-headers/v8datamodel/PartInstance.h is only a shim ('declarations live at the organized path'), so there is a single header to repair."
+  },
+  "fix": {
+    "file": "rebuild/2008-06/App/include/v8datamodel/PartInstance.h (in class PartInstance, next to setAlphaModifier)",
+    "change": "added the inline getter exactly as recorded in the pending promotion patches/native-promotions.json: float getAlphaModifier() const { return alphaModifier; }, with a comment citing the promotion and the donor NewNullTool body",
+    "evidence": "patches/native-promotions.json records the promotion pair for PartInstance.h: before '...void setTransparency(float value); void setAlphaModifier(float value); float getReflectance() const {' vs after '...void setTransparency(float value); float getAlphaModifier() const { return alphaModifier; } void setAlphaModifier(float value); float getReflectance() const {', and the donor NewNullTool.cpp body (same file) calls head->getAlphaModifier(); the 2008 unit this file recovers (NewNullTool::localHeadHidden / isLocalHeadHidden) reads it. No lease or owner covered the header at edit time."
+  },
+  "verification": {
+    "before": "cl exit 2, 0 exact",
+    "after": "19 exact / 499 B (prove --rounds 2 --infer-names)",
+    "residue": "the sibling native-classes/NewNullTool.cpp (the donor localHeadHidden) hits the same getter and will need this promotion too; its ClickDetector query row (00629b20 C++ symbol unproven) stays parked"
+  },
+  "status": "promotion applied; the unit is recovered and byte-bound",
+  "next": "Owner: mark this promotion as applied in patches/native-promotions.json so the queue does not re-propose it, and confirm no second copy of PartInstance.h shadows the organized path."
+}

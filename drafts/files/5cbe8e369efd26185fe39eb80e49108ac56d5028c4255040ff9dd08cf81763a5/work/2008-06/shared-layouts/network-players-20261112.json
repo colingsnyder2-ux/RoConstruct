@@ -1,0 +1,28 @@
+{
+  "scope": "NetworkPlayers (RBX::Network::Players): missing native-flags profile repaired (RakNet include + the recorder's Client/Server stand-in overlay); the unit went from cl exit 2 / 0 exact to 331 exact / 18038 B (still chaining).",
+  "baseline_commit": "unknown",
+  "package_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "source_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "native_workflow_version": 53,
+  "lease": "NetworkPlayers-raknet-include (colin)",
+  "draft_session": "447fe9f9024d47b8a016213d5a5c73c4",
+  "blocker": {
+    "symptom": "rebuild/2008-06/native-classes/NetworkPlayers.cpp had no native-flags line at all, so the compile used the generic profile and failed: first on ReliabilityLayer.h(22) C1083 'DS_LinkedList.h' (a RakNet header), then on 'Client.h' (the unit's recorder stand-ins).",
+    "cause": "the unit includes the RakNet 3.x headers (<RakPeer.h>, <PluginInterface.h> -> ReliabilityLayer.h -> DS_LinkedList.h) and the declaration-only Client/Server stand-ins; neither path was on the compile's include set."
+  },
+  "fix": {
+    "file": "rebuild/2008-06/native-classes/NetworkPlayers.cpp (added a native-flags line) + a task-owned overlay",
+    "change": [
+      "native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source /I{headers}/../../../work/2008-06/shared-layouts/network-players-overlay",
+      "created work/2008-06/shared-layouts/network-players-overlay/{Client.h,Server.h} as copies of tests/NativeNetworkPlayersPeers.h - the recorder's own stand-in ('copied to out/native-network-players/overlay/Client.h and Server.h by tests/record_native_network_players.py'), materialized here because the out/ overlay does not exist in this workspace"
+    ],
+    "evidence": "the file's header comment documents both the RakNet dependency and the stand-in mechanism; the RakNet headers exist in the shared tools install."
+  },
+  "verification": {
+    "before": "cl exit 2, 0 exact",
+    "after": "331 exact / 18038 B (prove --rounds 2 --infer-names: 150 in round 1 after +20 bindings, 185 then 331 in round 2 after +35 - the binder keeps chaining)",
+    "residue": "static initializer/finalizer thunks (??__E/??__F for func_GetPlayers and propLocalPlayer, 11-63 B, cand=[] or the duplicate-candidate ambiguity with 007eee50/007eee80, 007f1830/007f1cf0, 007fb110/007fb7b0, 007fa230/007fa250), the Described<Players> ctor (68 B, cand=[]) and 277 unbound template/library helpers."
+  },
+  "status": "profile blocker repaired; the Players unit is recovered and byte-bound",
+  "next": "Owner: add the RakNet include to the shared profile for Network units (or promote the flags line), and apply the address-identity rule for the static-initializer duplicate pairs."
+}

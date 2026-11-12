@@ -1,0 +1,25 @@
+{
+  "scope": "GuiWidgets2008Arrow: the organized gui/Gui.h had lost the 2008-06 default argument on TopMenuBar(const std::string&, Layout::Style, bool). Restored it from the pass-2 evidence; the unit went from cl exit 2 (C2661, TopMenuBar takes no 2 arguments) / 0 exact to 13 exact / 1110 B.",
+  "baseline_commit": "unknown",
+  "package_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "source_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "native_workflow_version": 53,
+  "lease": "Gui-TopMenuBar-ctor-default (colin)",
+  "draft_session": "48daac73562e412685e6de2487803e6e",
+  "blocker": {
+    "symptom": "rebuild/2008-06/native-headers/util/../../Base/include/util/Object.h(72): error C2661: 'RBX::TopMenuBar::TopMenuBar' : no overloaded function takes 2 arguments (from GuiWidgets2008Arrow.cpp line 40: boost::shared_ptr<TopMenuBar> leftPanel = Creatable<Instance>::create<TopMenuBar>(\"LeftPanel\", Layout::VERTICAL))",
+    "cause": "Creatable<T>::create<Class, P1, P2>(p1, p2) compiles to new Class(p1, p2), but the recovered App/include/gui/Gui.h declared the third TopMenuBar ctor argument without its 2008 default, leaving no 2-argument call form. The unit's own comment documents the original form: 'create<TopMenuBar>(std::string, Layout::Style)'."
+  },
+  "fix": {
+    "file": "rebuild/2008-06/App/include/gui/Gui.h (class TopMenuBar, line 203)",
+    "change": "TopMenuBar(const std::string&, Layout::Style, bool = false); - restored the default value only; the mangled name, signature and ABI are unchanged (default arguments are call-site-only)",
+    "evidence": "native-classes/GuiHudBuilder2008.cpp lines 9-10: 'native-headers/gui/Gui.h (pass 2) declares TopMenuBar(const std::string&, Layout::Style, bool = false) (00601fd0 pushes 0 at 00602027)'; the donor's roc_espeon_aug2007_arrow_panel_native_9874df1dcd6f58d3.cpp line 105 carries the identical 2-argument create<TopMenuBar>(\"LeftPanel\", Layout::VERTICAL) call"
+  },
+  "verification": {
+    "before": "cl exit 2, 0 exact",
+    "after": "13 exact / 1110 B (prove --rounds 2 --infer-names; 1 inferred name address)",
+    "regression_check": "TopMenuBar (6 exact / 650 B), TextDisplay (2 exact / 43 B) and CreatableSharedCount2008 (49 exact / 6084 B, unchanged) still prove clean after the header edit - a default argument has no ABI effect"
+  },
+  "status": "default-argument gap repaired; the unit is recovered and byte-bound",
+  "next": "Owner: sync Gui.h with the pass-2 native-headers/gui/Gui.h copy (which also records TextDisplay's setFontSize / setFontColor / setBorderColor inlines at 00604dd8 / 00604e16 / 00604e2e - GuiHudBuilder2008.cpp lines 9-10) so the hud-builder rows can prove too."
+}

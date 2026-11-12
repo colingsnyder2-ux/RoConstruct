@@ -1,0 +1,29 @@
+{
+  "scope": "AppUnit49C_2008Streaming: RakNet include path repair; the unit went from cl exit 2 / 0 exact to 43 exact / 4796 B (still growing as the binder chains).",
+  "baseline_commit": "unknown",
+  "package_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "source_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "native_workflow_version": 53,
+  "lease": "AppUnit49C-raknet-include (colin)",
+  "draft_session": "08f1ebdeef6e431684526ec1859b7b66",
+  "blocker": {
+    "symptom": "rebuild/2008-06/native-classes/AppUnit49C_2008Streaming.cpp(11): fatal error C1083: Cannot open include file: 'BitStream.h'.",
+    "cause": "the unit includes the RakNet 3.x library headers (<BitStream.h>, <StringCompressor.h>) but its native-flags line lacked the RakNet include path; the file's own comment documents it ('RakNet::BitStream and StringCompressor are the RakNet 3.x library headers (tools/rbxgs/Client/Network/raknet30/Source, read-only)')."
+  },
+  "fix": {
+    "file": "rebuild/2008-06/native-classes/AppUnit49C_2008Streaming.cpp line 1",
+    "change": "added /I{headers}/../../../tools/rbxgs/Client/Network/raknet30/Source to the native-flags line (same pattern as the CScriptEditor scintilla include).",
+    "verified": "the RakNet headers exist in the shared tools install (tools/rbxgs/Client/Network/raknet30/Source/BitStream.h); after the fix the compile exits 0 and the binder chains 4 then 22 more references."
+  },
+  "verification": {
+    "before": "cl exit 2, 0 exact",
+    "after": "43 exact / 4796 B (prove --rounds 2 --infer-names; 27 exact / 2341 B after round 1, still binding in later rounds)",
+    "residue": [
+      "RakNet BitStream template helpers: Write<bool>/Write<float>/Read<bool>/Read<float> (17 B, cand=[]) and ReadNormQuat (430 B, cand=[]) - the RakNet library instances exist in the exe but the binder has no name/reference evidence for them",
+      "Network::operator<<(BitStream&, int/uint/unsigned) (119 B) - 'symbol identity not established' with candidates 004a61d0/004a6250 (the duplicate-symbol ambiguity class)",
+      "serialize<BrickColor> (50 B, cand=[])"
+    ]
+  },
+  "status": "include blocker repaired; unit recovered and byte-bound",
+  "next": "Owner: the RakNet template instances need a name/reference mapping (an upstream_lane pass or an identity-registry entry) so the 17 B/430 B helpers bind; the 004a61d0/004a6250 pair is the address-identity ambiguity."
+}

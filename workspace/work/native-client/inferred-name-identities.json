@@ -3609,21 +3609,21 @@
   },
   {
    "symbol": "?hasBug_normalMapTexGen@GLCaps@G3D@@SA_NXZ",
-   "address": "0046fd30",
+   "address": "0046fc50",
    "inferred_name": true,
-   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+   "evidence": "INFERRED name: caller references (Texture::fromMemory -> 0046fd30, hasAutoMipMap -> 0046fe10) fix redBlueMipmapSwap/mipmapGeneration; normalMapTexGen is the preceding sibling"
   },
   {
    "symbol": "?hasBug_redBlueMipmapSwap@GLCaps@G3D@@SA_NXZ",
-   "address": "0046fe10",
+   "address": "0046fd30",
    "inferred_name": true,
-   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+   "evidence": "INFERRED name: caller references (Texture::fromMemory -> 0046fd30, hasAutoMipMap -> 0046fe10) fix redBlueMipmapSwap/mipmapGeneration; normalMapTexGen is the preceding sibling"
   },
   {
    "symbol": "?hasBug_mipmapGeneration@GLCaps@G3D@@SA_NXZ",
-   "address": "0046fef0",
+   "address": "0046fe10",
    "inferred_name": true,
-   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+   "evidence": "INFERRED name: caller references (Texture::fromMemory -> 0046fd30, hasAutoMipMap -> 0046fe10) fix redBlueMipmapSwap/mipmapGeneration; normalMapTexGen is the preceding sibling"
   },
   {
    "symbol": "?checkBug_mipmapGeneration@GLCaps@G3D@@CAXXZ",
@@ -10632,6 +10632,840 @@
    "address": "00500350",
    "inferred_name": true,
    "evidence": "INFERRED constructor identity: unique byte-exact candidate; HeadMesh createDecal at 004ef71a calls it and RTTI confirms class."
+  },
+  {
+   "symbol": "?getFace@FaceInstance@RBX@@QBE?AW4NormalId@2@XZ",
+   "address": "00609a30",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?SetRestoredFromRegistry@CBasePane@@UAEXH@Z",
+   "address": "00469070",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?SetPaneStyle@CBasePane@@UAEXK@Z",
+   "address": "00420970",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?EnableDocking@CBasePane@@UAEXK@Z",
+   "address": "00420940",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?IsDragMode@CPane@@UBEHXZ",
+   "address": "004a1560",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?GetExclusiveRowMode@CPane@@UBEHXZ",
+   "address": "00609a40",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?IsAccessibilitySupport@AFX_GLOBAL_DATA@@QBEHXZ",
+   "address": "0057d240",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?SetTextAlwaysOnRight@CMFCRibbonBaseElement@@UAEXH@Z",
+   "address": "004208f0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?SetParentMenu@CMFCRibbonBaseElement@@UAEXPAVCMFCRibbonPanelMenuBar@@@Z",
+   "address": "006c6e50",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?GetActiveTab@CMFCBaseTabCtrl@@UBEHXZ",
+   "address": "00711200",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?IsHideSingleTab@CMFCBaseTabCtrl@@UBEHXZ",
+   "address": "00574fa0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?ActivateOnBtnUp@CMFCBaseTabCtrl@@MBEHXZ",
+   "address": "00574fc0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?GetImageWell@CMFCToolBarImages@@QBEPAUHBITMAP__@@XZ",
+   "address": "00711200",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?GetColor@CMFCColorDialog@@QBEKXZ",
+   "address": "006d4780",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?SetType@CMFCColorPickerCtrl@@QAEXW4COLORTYPE@1@@Z",
+   "address": "004208f0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?SetPreMultiplyAutoCheck@CMFCToolBarImages@@QAEXH@Z",
+   "address": "006c6e50",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?SetMapTo3DColors@CMFCToolBarImages@@QAEXH@Z",
+   "address": "006c6e30",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?GetDockSiteFrameWnd@CDockingManager@@QBEPAVCFrameWnd@@XZ",
+   "address": "00574fc0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?SetMode@CMFCImagePaintArea@@QAEXW4IMAGE_EDIT_MODE@1@@Z",
+   "address": "006b50b0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?GetMode@CMFCImagePaintArea@@QBE?AW4IMAGE_EDIT_MODE@1@XZ",
+   "address": "006b50c0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?GetMode@CMFCImageEditorDialog@@IBE?AW4IMAGE_EDIT_MODE@CMFCImagePaintArea@@XZ",
+   "address": "00722250",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?IsTabSwapEnabled@CMFCBaseTabCtrl@@QBEHXZ",
+   "address": "00574fb0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?GetMenuBar@CFrameImpl@@QBEPBVCMFCMenuBar@@XZ",
+   "address": "006d4780",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?GetInvisibleButtons@CMFCCustomizeButton@@QBEABVCObList@@XZ",
+   "address": "004117b0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?LoadState@CMFCOutlookBarToolBar@@UAEHPBDHI@Z",
+   "address": "006e51f0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?SaveState@CMFCOutlookBarToolBar@@UAEHPBDHI@Z",
+   "address": "006e51f0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?SetParentPaneContainer@CPaneContainer@@QAEXPAV1@@Z",
+   "address": "005e5fe0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?SetRecentPercent@CPaneContainer@@QAEXH@Z",
+   "address": "006454a0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?GetWidth@CPaneDivider@@QBEHXZ",
+   "address": "00574fb0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?IsDefault@CPaneDivider@@QBEHXZ",
+   "address": "007110c0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?GetPaneDividerStyle@CPaneDivider@@QBEKXZ",
+   "address": "00574fc0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?GetCustomizeCmdId@CMFCCustomizeButton@@QBEHXZ",
+   "address": "00574fb0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?GetCaptionHeight@CPaneFrameWnd@@UBEHXZ",
+   "address": "00711200",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?SetTextMargin@CMFCPropertyGridToolTipCtrl@@QAEXH@Z",
+   "address": "00420920",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?GetColor@CMFCPropertyGridColorProperty@@QBEKXZ",
+   "address": "00574fc0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?GetFirstVisibleTabNum@CMFCTabCtrl@@UBEHXZ",
+   "address": "00722a70",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?AddToListBox@CMFCRibbonApplicationButton@@MAEHPAVCMFCRibbonCommandsListBox@@H@Z",
+   "address": "006a6f20",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?GetParentMenuBar@CMFCRibbonPanel@@QBEPAVCMFCRibbonPanelMenuBar@@XZ",
+   "address": "006d4780",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?AddToListBox@CMFCRibbonCaptionButton@@MAEHPAVCMFCRibbonCommandsListBox@@H@Z",
+   "address": "006a6f20",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?SetQuickAccessToolbarOnTop@CMFCRibbonBar@@QAEXH@Z",
+   "address": "006d0ea0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?GetTasksPaneHorzMargin@CMFCVisualManager@@QBEHXZ",
+   "address": "00792450",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?GetTasksPaneGroupCaptionVertOffset@CMFCVisualManager@@QBEHXZ",
+   "address": "006d4780",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?GetTasksPaneTaskHorzOffset@CMFCVisualManager@@QBEHXZ",
+   "address": "005a0490",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?IsHighlighted@CMFCButton@@QBEHXZ",
+   "address": "00793c60",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?IsDialogControl@CMFCHeaderCtrl@@QBEHXZ",
+   "address": "00711200",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?IsMenuOnBottom@CMFCRibbonButton@@QBEHXZ",
+   "address": "007082f0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?GetTabColor@CMFCRibbonCategory@@QBE?AW4AFX_RibbonCategoryColor@@XZ",
+   "address": "007110b0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?GetRibbonBar@CFrameImpl@@QAEPAVCMFCRibbonBar@@XZ",
+   "address": "007110c0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?GetRibbonBar@CFrameWndEx@@QAEPAVCMFCRibbonBar@@XZ",
+   "address": "0072dde0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?GetName@CMFCRibbonPanel@@QBEPBDXZ",
+   "address": "00792450",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?IsOfficeXPStyleMenus@CMFCVisualManager@@UBEHXZ",
+   "address": "00793c60",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?IsPushed@CMFCButton@@QBEHXZ",
+   "address": "00711200",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?IsShowGroupBorder@CMFCRibbonBaseElement@@QBEHXZ",
+   "address": "00793c60",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?GetCount@CMFCRibbonButtonsGroup@@QBEHXZ",
+   "address": "006d4780",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?GetToolbarHighlightColor@CMFCVisualManagerOfficeXP@@MAEKXZ",
+   "address": "007110b0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?IsModified@COlePropertyPage@@QAEHXZ",
+   "address": "00793c60",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?GetPageSite@COlePropertyPage@@QAEPAUIPropertyPageSite@@XZ",
+   "address": "006d4780",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?IsEOF@CRecordset@@QBEHXZ",
+   "address": "006b50c0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?EnableModeless@CDHtmlDialog@@UAGJH@Z",
+   "address": "0070c3e0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?OnDocWindowActivate@CDHtmlDialog@@UAGJH@Z",
+   "address": "0070c3e0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?OnFrameWindowActivate@CDHtmlDialog@@UAGJH@Z",
+   "address": "0070c3e0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?GetOptionKeyPath@CDHtmlDialog@@UAGJPAPA_WK@Z",
+   "address": "00709ed0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?Orphan@_AfxBindStatusCallback@@QAEXXZ",
+   "address": "007a13f0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?OnTranslateAccelerator@CHtmlView@@UAEJPAUtagMSG@@PBU_GUID@@K@Z",
+   "address": "006e51f0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?OnTranslateUrl@CHtmlView@@UAEJKPA_WPAPA_W@Z",
+   "address": "006e51f0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?SetSize@CStreamOnCString@@UAGJT_ULARGE_INTEGER@@@Z",
+   "address": "00709ed0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?Commit@CStreamOnCString@@UAGJK@Z",
+   "address": "0070c3e0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?Stat@CStreamOnCString@@UAGJPAUtagSTATSTG@@K@Z",
+   "address": "00709ed0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?Clone@CStreamOnCString@@UAGJPAPAUIStream@@@Z",
+   "address": "0070c3e0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?OnCancel@CPrintingDialog@@UAEXXZ",
+   "address": "006fa230",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?ContextSensitiveHelp@CAccessibleProxy@ATL@@UAGJH@Z",
+   "address": "0070c3e0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?SetCheckStyle@CCheckListBox@@QAEXI@Z",
+   "address": "006fd220",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "??_GCComClassFactory@ATL@@UAEPAXI@Z",
+   "address": "004039b0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "??1?$CWindowImplRoot@VCWindow@ATL@@@ATL@@UAE@XZ",
+   "address": "00417e10",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "_AtlComModuleRegisterServer@12",
+   "address": "0044b6b0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "??1?$CWindowImplBaseT@VCWindow@ATL@@V?$CWinTraits@$0FGAAAAAA@$0A@@2@@ATL@@UAE@XZ",
+   "address": "00417e10",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "??1?$CWindowImpl@VCAxHostWindow@ATL@@VCWindow@2@V?$CWinTraits@$0FGAAAAAA@$0A@@2@@ATL@@UAE@XZ",
+   "address": "00417e10",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "??_G?$CComObjectNoLock@VCComClassFactory@ATL@@@ATL@@UAEPAXI@Z",
+   "address": "00403d60",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?Append@CParseBuffer@CRegParser@ATL@@QAEHPBDH@Z",
+   "address": "00401de0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?AddChar@CParseBuffer@CRegParser@ATL@@QAEHPBD@Z",
+   "address": "00401e80",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?VTFromRegType@CRegParser@ATL@@KAHPBDAAG@Z",
+   "address": "00401ea0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?ChToByte@CRegParser@ATL@@KAED@Z",
+   "address": "00401f50",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?StrChrA@CRegParser@ATL@@KAPADPADD@Z",
+   "address": "00401fc0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?SkipWhiteSpace@CRegParser@ATL@@IAEXXZ",
+   "address": "00402000",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?NextToken@CRegParser@ATL@@IAEJPAD@Z",
+   "address": "00402060",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?CanForceRemoveKey@CRegParser@ATL@@IAEHPBD@Z",
+   "address": "00402190",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?HasSubKeys@CRegParser@ATL@@IAEHPAUHKEY__@@@Z",
+   "address": "004021d0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?SkipAssignment@CRegParser@ATL@@IAEJPAD@Z",
+   "address": "00402220",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?FreeHeap@?$CTempBuffer@D$0EAA@VCCRTAllocator@ATL@@@ATL@@AAEXXZ",
+   "address": "006fd900",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?FreeHeap@?$CTempBuffer@D$0BAA@VCCRTAllocator@ATL@@@ATL@@AAEXXZ",
+   "address": "006fd900",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?FreeHeap@?$CTempBuffer@E$0BAA@VCCRTAllocator@ATL@@@ATL@@AAEXXZ",
+   "address": "006fd900",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?Allocate@?$CTempBuffer@D$0EAA@VCCRTAllocator@ATL@@@ATL@@QAEPADI@Z",
+   "address": "00403a70",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?Allocate@?$CTempBuffer@D$0BAA@VCCRTAllocator@ATL@@@ATL@@QAEPADI@Z",
+   "address": "00403ab0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?Allocate@?$CTempBuffer@E$0BAA@VCCRTAllocator@ATL@@@ATL@@QAEPAEI@Z",
+   "address": "00403ab0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?RegisterBuffer@CRegParser@ATL@@QAEJPADH@Z",
+   "address": "00405060",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?OnShowWindow@CAxHostWindow@ATL@@UAGJH@Z",
+   "address": "0070c3e0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?ContextSensitiveHelp@CAxHostWindow@ATL@@UAGJH@Z",
+   "address": "0070c3e0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?Scroll@CAxHostWindow@ATL@@UAGJUtagSIZE@@@Z",
+   "address": "00709ed0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?TranslateAcceleratorA@CAxHostWindow@ATL@@UAGJPAUtagMSG@@K@Z",
+   "address": "006e51f0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "??1?$CWindowImpl@VCAxUIWindow@ATL@@VCWindow@2@V?$CWinTraits@$0FGAAAAAA@$0A@@2@@ATL@@UAE@XZ",
+   "address": "00417e10",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "??1?$CWindowImpl@VCAxFrameWindow@ATL@@VCWindow@2@V?$CWinTraits@$0FGAAAAAA@$0A@@2@@ATL@@UAE@XZ",
+   "address": "00417e10",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?TranslateAcceleratorA@CAxFrameWindow@ATL@@UAGJPAUtagMSG@@G@Z",
+   "address": "006e51f0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?Release@?$CComPolyObject@VCAxHostWindow@ATL@@@ATL@@UAGKXZ",
+   "address": "004028c0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?deallocate@?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@QAEXPAUWaitingThread@YieldingThreads2008@Lua@RBX@@I@Z",
+   "address": "004dc3e0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "??$_Copy_opt@PAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@Uforward_iterator_tag@std@@@std@@YAPAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@00Uforward_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "00620a80",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "??$_Copy_opt@PAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@@std@@YAPAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "00620d60",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "??$_Copy_backward_opt@PAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@@std@@YAPAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@00Urandom_access_iterator_tag@0@U_Nonscalar_ptr_iterator_tag@0@U_Range_checked_iterator_tag@0@@Z",
+   "address": "00620c20",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "??$unchecked_copy@PAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@@stdext@@YAPAUWaitingThread@YieldingThreads2008@Lua@RBX@@PAU1234@00@Z",
+   "address": "00620d60",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "??0?$vector@UWaitingThread@YieldingThreads2008@Lua@RBX@@V?$allocator@UWaitingThread@YieldingThreads2008@Lua@RBX@@@std@@@std@@QAE@ABV01@@Z",
+   "address": "00620f40",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?queueWaiter@YieldingThreads2008@Lua@RBX@@QAEXPAUlua_State@@N@Z",
+   "address": "006214e0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?resume@YieldingThreads2008@Lua@RBX@@QAEXVHeartbeat@3@@Z",
+   "address": "00621590",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?queueWaiter@YieldingThreads2008@Lua@RBX@@QAEXPAUlua_State@@@Z",
+   "address": "006217d0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?deallocate@?$allocator@U_Node@?$_List_nod@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@@std@@QAEXPAU_Node@?$_List_nod@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@2@I@Z",
+   "address": "004dc3e0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "??1PropBinding@Binder@CLuaHtmlView@@QAE@XZ",
+   "address": "0042a720",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?_Buynode@?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@IAEPAU_Node@?$_List_nod@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@2@XZ",
+   "address": "004acb10",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?_Incsize@?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@IAEXI@Z",
+   "address": "004acb50",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "??$bind@XVBinder@CLuaHtmlView@@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@boost@@YA?AV?$bind_t@XV?$mf0@XVBinder@CLuaHtmlView@@@_mfi@boost@@V?$list1@V?$value@V?$shared_ptr@VBinder@CLuaHtmlView@@@boost@@@_bi@boost@@@_bi@3@@_bi@0@P8Binder@CLuaHtmlView@@AEXXZV?$shared_ptr@VBinder@CLuaHtmlView@@@0@@Z",
+   "address": "0048c4d0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "??$for_each@V?$_Iterator@$00@?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@std@@V?$bind_t@XV?$mf1@XVPropBinding@Binder@CLuaHtmlView@@PBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$arg@$00@boost@@V?$value@PAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_bi@2@@_bi@3@@_bi@boost@@@std@@YA?AV?$bind_t@XV?$mf1@XVPropBinding@Binder@CLuaHtmlView@@PBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_mfi@boost@@V?$list2@V?$arg@$00@boost@@V?$value@PAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@_bi@2@@_bi@3@@_bi@boost@@V?$_Iterator@$00@?$list@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@V?$allocator@V?$shared_ptr@VPropBinding@Binder@CLuaHtmlView@@@boost@@@std@@@0@0V123@@Z",
+   "address": "0042b7c0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?getValue@PropBinding@Binder@CLuaHtmlView@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+   "address": "0042bd70",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?setValue@PropBinding@Binder@CLuaHtmlView@@QAEXPBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "0042bcd0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?bind@Binder@CLuaHtmlView@@QAEXV?$shared_ptr@VInstance@RBX@@@boost@@ABVPropertyDescriptor@Reflection@RBX@@@Z",
+   "address": "0042c760",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?requestUpdate@Binder@CLuaHtmlView@@AAEXXZ",
+   "address": "0042c500",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?onPropertyChanged@Binder@CLuaHtmlView@@CAXPBVPropertyDescriptor@Reflection@RBX@@ABV345@PAV12@@Z",
+   "address": "0042c570",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?SetSelectedColor@CXTColorHex@@QAEXH@Z",
+   "address": "00787a30",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?size@?$vector@PAV?$Listener@VRunService@RBX@@VRunTransition@2@@RBX@@V?$allocator@PAV?$Listener@VRunService@RBX@@VRunTransition@2@@RBX@@@std@@@std@@QBEIXZ",
+   "address": "00445290",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?size@?$vector@PAV?$Listener@VRunService@RBX@@W4RunState@2@@RBX@@V?$allocator@PAV?$Listener@VRunService@RBX@@W4RunState@2@@RBX@@@std@@@std@@QBEIXZ",
+   "address": "00445290",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?deallocate@?$allocator@U_Node@?$_Tree_nod@V?$_Tmap_traits@PAVIRunView@RBX@@_NU?$less@PAVIRunView@RBX@@@std@@V?$allocator@U?$pair@QAVIRunView@RBX@@_N@std@@@4@$0A@@std@@@std@@@std@@QAEXPAU_Node@?$_Tree_nod@V?$_Tmap_traits@PAVIRunView@RBX@@_NU?$less@PAVIRunView@RBX@@@std@@V?$allocator@U?$pair@QAVIRunView@RBX@@_N@std@@@4@$0A@@std@@@2@I@Z",
+   "address": "004dc3e0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?deallocate@?$allocator@V?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@std@@QAEXPAV?$function@$$A6AXXZV?$allocator@X@std@@@boost@@I@Z",
+   "address": "004dc3e0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?deallocate@?$allocator@PAV?$function@$$A6AXXZV?$allocator@X@std@@@boost@@@std@@QAEXPAPAV?$function@$$A6AXXZV?$allocator@X@std@@@boost@@I@Z",
+   "address": "004dc3e0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?deallocate@?$allocator@PAV?$Listener@VRunService@RBX@@VRunTransition@2@@RBX@@@std@@QAEXPAPAV?$Listener@VRunService@RBX@@VRunTransition@2@@RBX@@I@Z",
+   "address": "004dc3e0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?deallocate@?$allocator@PAV?$Listener@VRunService@RBX@@W4RunState@2@@RBX@@@std@@QAEXPAPAV?$Listener@VRunService@RBX@@W4RunState@2@@RBX@@I@Z",
+   "address": "004dc3e0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?pointInRect@Rect@RBX@@QAE_NVVector2int16@G3D@@@Z",
+   "address": "00573130",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?processMouse@Widget@RBX@@AAE?AVGuiResponse@2@ABVGuiEvent@2@@Z",
+   "address": "00641ff0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?size@?$vector@PAV?$Listener@VWorld@RBX@@UAutoJoin@2@@RBX@@V?$allocator@PAV?$Listener@VWorld@RBX@@UAutoJoin@2@@RBX@@@std@@@std@@QBEIXZ",
+   "address": "00445290",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?size@?$vector@PAV?$Listener@VWorld@RBX@@UAutoDestroy@2@@RBX@@V?$allocator@PAV?$Listener@VWorld@RBX@@UAutoDestroy@2@@RBX@@@std@@@std@@QBEIXZ",
+   "address": "00445290",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?deallocate@?$allocator@PAV?$Listener@VWorld@RBX@@UAutoJoin@2@@RBX@@@std@@QAEXPAPAV?$Listener@VWorld@RBX@@UAutoJoin@2@@RBX@@I@Z",
+   "address": "004dc3e0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?deallocate@?$allocator@PAV?$Listener@VWorld@RBX@@UAutoDestroy@2@@RBX@@@std@@QAEXPAPAV?$Listener@VWorld@RBX@@UAutoDestroy@2@@RBX@@I@Z",
+   "address": "004dc3e0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?resize@?$Array@PBX@G3D@@QAEXH_N@Z",
+   "address": "00473cd0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: Texture::fromFile/fromMemory (TU-local, byte-identical) call this address; the twin candidate lies in another translation unit"
+  },
+  {
+   "symbol": "?append@?$Array@PBX@G3D@@QAEXABQBX@Z",
+   "address": "00474370",
+   "inferred_name": true,
+   "evidence": "INFERRED name: Texture::fromFile/fromMemory (TU-local, byte-identical) call this address; the twin candidate lies in another translation unit"
   }
  ]
 }

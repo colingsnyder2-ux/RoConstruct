@@ -3,8 +3,19 @@ import argparse
 from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
 import runpy
+import subprocess
 import sys
 import traceback
+
+if sys.platform == 'win32':
+    # pythonw has no console, so every console child (git, python, cl, link) would open its own window.
+    _popen_init = subprocess.Popen.__init__
+
+    def _quiet_init(self, *a, **kw):
+        kw['creationflags'] = kw.get('creationflags', 0) | subprocess.CREATE_NO_WINDOW
+        _popen_init(self, *a, **kw)
+
+    subprocess.Popen.__init__ = _quiet_init
 
 parser = argparse.ArgumentParser(add_help=False)
 parser.add_argument('--root', type=Path, default=Path(__file__).resolve().parents[1])

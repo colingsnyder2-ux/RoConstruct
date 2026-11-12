@@ -1,0 +1,25 @@
+{
+  "scope": "ContactUnit2008Contact: the BallBlockContact::computeIsColliding forwarder sat outside the unit's own NATIVE_BODYPRIM_PENDING guard although it needs the 4-argument overload that only the generated Contact2008.h copy declares. Moved it inside the guard: the unit went from cl exit 2 (C2660) / 0 exact to 4 exact / 316 B.",
+  "baseline_commit": "unknown",
+  "package_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "source_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "native_workflow_version": 53,
+  "lease": "ContactUnit-pending-split (colin)",
+  "draft_session": "1c37d5a28a584e2a91ca6d6fa29e4ede",
+  "blocker": {
+    "symptom": "rebuild/2008-06/native-classes/ContactUnit2008Contact.cpp(26): error C2660: 'RBX::BallBlockContact::computeIsColliding' : function does not take 4 arguments",
+    "cause": "the unit's 1-argument forwarder body calls computeIsColliding(onBorder, clip, projectionInBlock, overlapIgnored), an overload that exists only in the recorder's generated Contact2008.h copy; the shared App/include/v8world/Contact2008.h declares only the slot-7 one-argument form (lines 70/91/123). The file's own header says 'every body is guarded by NATIVE_BODYPRIM_PENDING', but this forwarder was compiled outside the guard."
+  },
+  "fix": {
+    "file": "rebuild/2008-06/native-classes/ContactUnit2008Contact.cpp",
+    "change": "moved the BallBlockContact::computeIsColliding(float) forwarder body into the NATIVE_BODYPRIM_PENDING branch and left a comment naming the missing overload; the non-pending branch keeps Contact::onPrimitiveContactParametersChanged (its 00607ad0 comment preserved)",
+    "evidence": "the file header comment ('Their declarations are not in the shared native-headers/v8world/Contact2008.h (owner: world shapes), so every body is guarded by NATIVE_BODYPRIM_PENDING and built only against the generated Contact2008.h copy of tests/record_native_contact_unit2008.py') plus the shared header's single one-argument declaration"
+  },
+  "verification": {
+    "before": "cl exit 2, 0 exact",
+    "after": "4 exact / 316 B (prove --rounds 2 --infer-names)",
+    "residue": "the pending-only rows (Contact::step 00606c50, computeIsAdjacent 00606ca0, the hit-ratio statics and the BallBlockContact 4-argument overload) remain owner-side proposals for the Contact2008.h owner, exactly as the file header documents"
+  },
+  "status": "guard placement repaired; the unit's non-pending rows are recovered and byte-bound",
+  "next": "Owner: add the 4-argument BallBlockContact::computeIsColliding overload (and the hit-ratio statics) to the shared Contact2008.h so the pending branch can build without the generated copy."
+}

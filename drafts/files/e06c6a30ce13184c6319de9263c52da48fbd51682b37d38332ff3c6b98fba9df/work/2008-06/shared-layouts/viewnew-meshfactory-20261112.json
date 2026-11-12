@@ -1,0 +1,34 @@
+{
+  "scope": "ViewNewPartMesh2008 (RBX::ViewNew::MeshFactory cache family): compile blocker repaired; the family went from a failing compile (0 exact) to 412 exact / 66218 B with the core functions byte-verified.",
+  "baseline_commit": "unknown",
+  "package_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "source_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "native_workflow_version": 53,
+  "lease": "ViewNew-MeshFactory-nested (colin)",
+  "draft_session": "5a58f56170e240cc84439e72b7c95e0e",
+  "blocker": {
+    "symptom": "rebuild/2008-06/native-classes/ViewNewPartMesh2008.cpp failed to compile (cl exit 2): MeshFactoryCache2008.h(60/81/103/190/207/224/235) - 'DecalKey'/'TextureKey'/'Variations'/'Cache'/'create'/'createDecal'/'createTexture'/'flushCache' is not a member of 'RBX::ViewNew::MeshFactory<Mesh,numMeshes>'.",
+    "cause": "the recovery header native-headers/ViewNewPartMesh2008/MeshFactoryCache2008.h defines these nested types and static members OUT OF LINE, but the organized class template rebuild/2008-06/WindowsClient/include/ViewNew/MeshFactory.h was an EMPTY template (its comment said the caches 'are not declared here')."
+  },
+  "fix": {
+    "file": "rebuild/2008-06/WindowsClient/include/ViewNew/MeshFactory.h",
+    "change": "added #include <boost/thread/once.hpp>; declared the four nested types (class DecalKey; class TextureKey; struct Variations; struct Cache;) and the static members the recovery header defines: cache (Cache*), cacheFlag (boost::once_flag), initCache(), releaseUnused(), create(const G3D::Vector3&, RenderSurfaceTypes), createDecal(const G3D::Vector3&, NormalId), createTexture(const G3D::Vector3&, NormalId, const G3D::Vector2&), flushCache() - each annotated with its original address range (004d9750 initCache / 004daf50 releaseUnused / 004ec220 create / 004edd50 createDecal / 004edeb0 createTexture / 004db400 flushCache).",
+    "safety": "declarations only - no data members, so every mesh (SphereMesh, CylinderAlongXMesh, HeadMesh, WedgeMesh, TorsoMesh with $00=1 and PBBMesh with $03=4) keeps MeshFactory as its empty base (RTTI .?AV?$MeshFactory@... mdisp 0x89, meshes stay 0x88 bytes)."
+  },
+  "verification": {
+    "before": "compiler_exit 2, 0 exact",
+    "after": "412 exact / 66218 B (prove --rounds 2 --infer-names; the binder also bound 32+12 more reference symbols across rounds).",
+    "byte_diff_checks": [
+      "Cache ctor 004d91f0: 169/169 identical (diff_native_body, no differences)",
+      "initCache 004d9750: 96/96 identical",
+      "flushCache@MeshFactory<SphereMesh> vs 004daf50: 232/232 identical"
+    ],
+    "bound": "all six create instances (create/createDecal/createTexture per mesh type) are byte-exact - they do not appear in the --why draft list."
+  },
+  "residue": [
+    "Table<RenderSurfaceTypes, Table<Vector3, Variations> >::clear (55 B, cand=[]) and the outer Table dtor / scalar deleting dtor (11 B / 36 B, 'symbol identity not established' with candidates 00411290/00412f30 - the duplicate-symbol ambiguity class)",
+    "flushCache's address identity: the exe keeps two identical 232 B copies (004daf50 and 004db040, both called by 004db4f0/004dc270); ours matches one byte-for-byte and the binder cannot decide which - the documented ILT/duplicate-symbol ambiguity"
+  ],
+  "status": "compile blocker repaired and the cache family recovered (byte-exact modulo the address-identity ambiguity on two copies)",
+  "next": "Owner: promote the MeshFactory declarations into the canonical header (they are the recovery header's prerequisite, not a local patch), and apply the address-identity rule for the 004daf50/004db040 and 00411290/00412f30 duplicate pairs."
+}

@@ -1,0 +1,25 @@
+{
+  "scope": "AdornG3D: the native-flags line omitted the Ogre 1.4.5 client include that the file's own comment requires; the unit went from cl exit 2 (C1083 'OgreTexture.h') / 0 exact to 28 exact / 1824 B.",
+  "baseline_commit": "unknown",
+  "package_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "source_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "native_workflow_version": 53,
+  "lease": "AdornG3D-ogre-include (colin)",
+  "draft_session": "c15183a472c54d5089bb03fdd81ccb00",
+  "blocker": {
+    "symptom": "rebuild/2008-06/native-headers/renderlib/../../Rendering/include/RenderLib/TextureProxy2008.h(38): fatal error C1083: Cannot open include file: 'OgreTexture.h': No such file or directory",
+    "cause": "the unit includes RenderLib/TextureProxy2008.h (line 19) but its native-flags line had no Ogre include path, even though line 8 of the file states 'TextureProxy2008.h needs the Ogre 1.4.5 client headers on the include path'."
+  },
+  "fix": {
+    "file": "rebuild/2008-06/native-classes/AdornG3D.cpp line 9",
+    "change": "appended /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include to the native-flags line (the path string is the one pinned by the RenderBase siblings AggregateChunk2008.cpp / RenderSceneNew2008.cpp; the requirement is stated by this file's own comment)",
+    "evidence": "tools/libs/ogre-1.4.5/ogrenew/OgreMain/include/OgreTexture.h exists in the workspace"
+  },
+  "verification": {
+    "before": "cl exit 2, 0 exact",
+    "after": "28 exact / 1824 B (prove --rounds 2 --infer-names)",
+    "residue": "the TextureProxy(TextureManager&, const std::string&, bool) constructor 00551b30 is out of line (documented in the file header); the remaining rows are the unbound library/reference rows"
+  },
+  "status": "include blocker repaired per the file's own documentation; unit recovered and byte-bound",
+  "next": "None for this unit. Its sibling AdornRbxGfx.cpp stays parked on a separate, real question: AdornRbxGfx.cpp(94) C2664 passes a const std::string where the recovered TextureProxy ctor takes ReferenceCountedPointer<T> - a signature/semantics decision for the owner, not an include repair."
+}

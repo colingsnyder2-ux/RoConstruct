@@ -1,0 +1,25 @@
+{
+  "scope": "AppUnit5E8_2008World (RBX::World rows of the World.cpp unit 005e9150..005eaeef): the unit documents building against Colin's native-headers/engine-world overlay but had no native-flags line to place it on the include path. The unit went from cl exit 2 (C2065/C2955 'AssemblyPhysicsOn' undeclared) / 0 exact to 53 exact / 3996 B.",
+  "baseline_commit": "unknown",
+  "package_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "source_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "native_workflow_version": 53,
+  "lease": "AppUnit5E8-engine-world-include (colin)",
+  "draft_session": "424fa3dfbe584023a972c131f7da7a5c",
+  "blocker": {
+    "symptom": "rebuild/2008-06/native-classes/AppUnit5E8_2008World.cpp(124): error C2065: 'AssemblyPhysicsOn' : undeclared identifier / error C2955: 'RBX::Notifier' : use of class template requires template argument list (the explicit instantiations template void Notifier<World, AssemblyPhysicsOn>::raise(AssemblyPhysicsOn) const)",
+    "cause": "the file's header comment says it is 'Built against Colin's native-headers/engine-world/v8world/World.h and ContactManager.h (read-only; the recorder puts native-headers/engine-world first, as record_native_geometry_service.py does)', but the file carried no native-flags line, so the compile never put native-headers/engine-world on the include path. v8world/World.h then resolved to the organized App/include copy, which does not declare the AssemblyPhysicsOn / AssemblyPhysicsOff event structs (they exist only in the engine-world overlay and are documented by the already-recovered App/include/v8datamodel/PhysicsService.h: 'AssemblyPhysicsOn/Off are structs in RBX ... Notifier<World, AssemblyPhysicsOn> at World +0x40')."
+  },
+  "fix": {
+    "file": "rebuild/2008-06/native-classes/AppUnit5E8_2008World.cpp (added a native-flags line above the banner)",
+    "change": "native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /fp:fast /I{headers}/engine-world - the engine-world overlay comes before the runner's own /I{headers}, so overlay/v8world/World.h wins the quoted include, exactly the recorder's documented order",
+    "evidence": "the file's own header comment (lines 2-3); rebuild/2008-06/native-headers/engine-world/v8world/World.h exists and declares struct AssemblyPhysicsOn { Primitive* primitive; } / AssemblyPhysicsOff plus the Notifier bases; PhysicsService.h's recovered comment corroborates the offsets (+0x40 / +0x60)"
+  },
+  "verification": {
+    "before": "cl exit 2, 0 exact",
+    "after": "53 exact / 3996 B (prove --rounds 2 --infer-names)",
+    "residue": "the NATIVE_APPUNIT5E8_PENDING bodies (onJointPrimitiveNulling etc.) still need the 2008 first-stage type at World +0x88 (CleanStage) and the StageType values - documented in the file as proposals in tests/record_native_app_unit5e8_2028.py (correct name 5e8_2008); those stay parked"
+  },
+  "status": "include-order blocker repaired; the unit's non-pending rows are recovered and byte-bound",
+  "next": "Owner: the engine-world overlay (AssemblyPhysicsOn/Off + the four Notifier bases) is the native-world port's pending promotion - either promote it into App/include/v8world/World.h or keep /I{headers}/engine-world on the recorder's profile so future checkouts reproduce it."
+}

@@ -1,0 +1,401 @@
+{
+ "task": "RBX::Humanoid batch proof receipt (native source batch)",
+ "class": "RBX::Humanoid",
+ "lease": "RBX::Humanoid-family-glm53b2",
+ "package_marker": {
+  "revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "source_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6"
+ },
+ "baseline_commit": "unknown",
+ "runner_run": "work/2008-06/native-check-runs/20261112-065048-de07823e",
+ "method_recovered": "None - proof receipts for pre-existing recovered bodies (verified existing work, not newly recovered methods); each row is an independent byte-exact + referenced-data proof on this checkout's fresh compile. Six limb getters recovered on the first hypothesis (246 B each, byte-exact relocs-masked): getHead 005d8a10, getTorso 005d8b10, getLeftLeg 005d8c10, getRightLeg 005d8d10, getLeftArm 005d8e10, getRightArm 005d8f10.",
+ "checks": [
+  {
+   "addr": "005d8a10",
+   "status": "exact",
+   "score": 100,
+   "symbol": "?getHead@Humanoid@RBX@@QBEPAVPartInstance@2@XZ",
+   "target_size": 246,
+   "object_size": 246,
+   "data_errors": [],
+   "call_identity": {
+    "passed": false,
+    "calls": [
+     {
+      "offset": 62,
+      "target": null,
+      "symbol": null,
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     },
+     {
+      "offset": 87,
+      "target": "00557950",
+      "symbol": "?findFirstChildByName@Instance@RBX@@QBEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     },
+     {
+      "offset": 111,
+      "target": "005d42f0",
+      "symbol": "??$shared_from_dynamic_cast@VPartInstance@RBX@@VInstance@2@@RBX@@YA?AV?$shared_ptr@VPartInstance@RBX@@@boost@@PAV?$enable_shared_from_this@VInstance@RBX@@@2@@Z",
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     },
+     {
+      "offset": 142,
+      "target": "004025b0",
+      "symbol": "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z",
+      "kind": "direct",
+      "status": "verified_binding"
+     },
+     {
+      "offset": 182,
+      "target": null,
+      "symbol": null,
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     },
+     {
+      "offset": 203,
+      "target": null,
+      "symbol": null,
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     },
+     {
+      "offset": 218,
+      "target": null,
+      "symbol": null,
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     }
+    ],
+    "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+   }
+  },
+  {
+   "addr": "005d8b10",
+   "status": "exact",
+   "score": 100,
+   "symbol": "?getTorso@Humanoid@RBX@@QBEPAVPartInstance@2@XZ",
+   "target_size": 246,
+   "object_size": 246,
+   "data_errors": [],
+   "call_identity": {
+    "passed": false,
+    "calls": [
+     {
+      "offset": 62,
+      "target": null,
+      "symbol": null,
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     },
+     {
+      "offset": 87,
+      "target": "00557950",
+      "symbol": "?findFirstChildByName@Instance@RBX@@QBEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     },
+     {
+      "offset": 111,
+      "target": "005d42f0",
+      "symbol": "??$shared_from_dynamic_cast@VPartInstance@RBX@@VInstance@2@@RBX@@YA?AV?$shared_ptr@VPartInstance@RBX@@@boost@@PAV?$enable_shared_from_this@VInstance@RBX@@@2@@Z",
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     },
+     {
+      "offset": 142,
+      "target": "004025b0",
+      "symbol": "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z",
+      "kind": "direct",
+      "status": "verified_binding"
+     },
+     {
+      "offset": 182,
+      "target": null,
+      "symbol": null,
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     },
+     {
+      "offset": 203,
+      "target": null,
+      "symbol": null,
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     },
+     {
+      "offset": 218,
+      "target": null,
+      "symbol": null,
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     }
+    ],
+    "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+   }
+  },
+  {
+   "addr": "005d8c10",
+   "status": "exact",
+   "score": 100,
+   "symbol": "?getLeftLeg@Humanoid@RBX@@QBEPAVPartInstance@2@XZ",
+   "target_size": 246,
+   "object_size": 246,
+   "data_errors": [],
+   "call_identity": {
+    "passed": false,
+    "calls": [
+     {
+      "offset": 62,
+      "target": null,
+      "symbol": null,
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     },
+     {
+      "offset": 87,
+      "target": "00557950",
+      "symbol": "?findFirstChildByName@Instance@RBX@@QBEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     },
+     {
+      "offset": 111,
+      "target": "005d42f0",
+      "symbol": "??$shared_from_dynamic_cast@VPartInstance@RBX@@VInstance@2@@RBX@@YA?AV?$shared_ptr@VPartInstance@RBX@@@boost@@PAV?$enable_shared_from_this@VInstance@RBX@@@2@@Z",
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     },
+     {
+      "offset": 142,
+      "target": "004025b0",
+      "symbol": "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z",
+      "kind": "direct",
+      "status": "verified_binding"
+     },
+     {
+      "offset": 182,
+      "target": null,
+      "symbol": null,
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     },
+     {
+      "offset": 203,
+      "target": null,
+      "symbol": null,
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     },
+     {
+      "offset": 218,
+      "target": null,
+      "symbol": null,
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     }
+    ],
+    "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+   }
+  },
+  {
+   "addr": "005d8d10",
+   "status": "exact",
+   "score": 100,
+   "symbol": "?getRightLeg@Humanoid@RBX@@QBEPAVPartInstance@2@XZ",
+   "target_size": 246,
+   "object_size": 246,
+   "data_errors": [],
+   "call_identity": {
+    "passed": false,
+    "calls": [
+     {
+      "offset": 62,
+      "target": null,
+      "symbol": null,
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     },
+     {
+      "offset": 87,
+      "target": "00557950",
+      "symbol": "?findFirstChildByName@Instance@RBX@@QBEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     },
+     {
+      "offset": 111,
+      "target": "005d42f0",
+      "symbol": "??$shared_from_dynamic_cast@VPartInstance@RBX@@VInstance@2@@RBX@@YA?AV?$shared_ptr@VPartInstance@RBX@@@boost@@PAV?$enable_shared_from_this@VInstance@RBX@@@2@@Z",
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     },
+     {
+      "offset": 142,
+      "target": "004025b0",
+      "symbol": "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z",
+      "kind": "direct",
+      "status": "verified_binding"
+     },
+     {
+      "offset": 182,
+      "target": null,
+      "symbol": null,
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     },
+     {
+      "offset": 203,
+      "target": null,
+      "symbol": null,
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     },
+     {
+      "offset": 218,
+      "target": null,
+      "symbol": null,
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     }
+    ],
+    "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+   }
+  },
+  {
+   "addr": "005d8e10",
+   "status": "exact",
+   "score": 100,
+   "symbol": "?getLeftArm@Humanoid@RBX@@QBEPAVPartInstance@2@XZ",
+   "target_size": 246,
+   "object_size": 246,
+   "data_errors": [],
+   "call_identity": {
+    "passed": false,
+    "calls": [
+     {
+      "offset": 62,
+      "target": null,
+      "symbol": null,
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     },
+     {
+      "offset": 87,
+      "target": "00557950",
+      "symbol": "?findFirstChildByName@Instance@RBX@@QBEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     },
+     {
+      "offset": 111,
+      "target": "005d42f0",
+      "symbol": "??$shared_from_dynamic_cast@VPartInstance@RBX@@VInstance@2@@RBX@@YA?AV?$shared_ptr@VPartInstance@RBX@@@boost@@PAV?$enable_shared_from_this@VInstance@RBX@@@2@@Z",
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     },
+     {
+      "offset": 142,
+      "target": "004025b0",
+      "symbol": "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z",
+      "kind": "direct",
+      "status": "verified_binding"
+     },
+     {
+      "offset": 182,
+      "target": null,
+      "symbol": null,
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     },
+     {
+      "offset": 203,
+      "target": null,
+      "symbol": null,
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     },
+     {
+      "offset": 218,
+      "target": null,
+      "symbol": null,
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     }
+    ],
+    "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+   }
+  },
+  {
+   "addr": "005d8f10",
+   "status": "exact",
+   "score": 100,
+   "symbol": "?getRightArm@Humanoid@RBX@@QBEPAVPartInstance@2@XZ",
+   "target_size": 246,
+   "object_size": 246,
+   "data_errors": [],
+   "call_identity": {
+    "passed": false,
+    "calls": [
+     {
+      "offset": 62,
+      "target": null,
+      "symbol": null,
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     },
+     {
+      "offset": 87,
+      "target": "00557950",
+      "symbol": "?findFirstChildByName@Instance@RBX@@QBEPAV12@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     },
+     {
+      "offset": 111,
+      "target": "005d42f0",
+      "symbol": "??$shared_from_dynamic_cast@VPartInstance@RBX@@VInstance@2@@RBX@@YA?AV?$shared_ptr@VPartInstance@RBX@@@boost@@PAV?$enable_shared_from_this@VInstance@RBX@@@2@@Z",
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     },
+     {
+      "offset": 142,
+      "target": "004025b0",
+      "symbol": "??4shared_count@detail@boost@@QAEAAV012@ABV012@@Z",
+      "kind": "direct",
+      "status": "verified_binding"
+     },
+     {
+      "offset": 182,
+      "target": null,
+      "symbol": null,
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     },
+     {
+      "offset": 203,
+      "target": null,
+      "symbol": null,
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     },
+     {
+      "offset": 218,
+      "target": null,
+      "symbol": null,
+      "kind": "direct",
+      "status": "unresolved_or_wrong_binding"
+     }
+    ],
+    "scope": "Reviewed direct calls and explicit CRT IAT bindings only; dynamic calls, provider selection and callee ABI require separate proof."
+   }
+  }
+ ],
+ "obligations_remaining": [
+  "linked provider selection, no-loss and P5/P6/runtime gates at owner integration"
+ ]
+}

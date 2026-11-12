@@ -1,0 +1,29 @@
+{
+  "scope": "RenderStatsItem2008: the non-pending branch carried createBoundChildItem<T> explicit instantiations that need the stats/Stats.h owner's member-template proposal; moved them into the NATIVE_RENDERSTATSITEM_PENDING branch. The unit went from cl exit 2 (C2143 x2) / 0 exact to 62 exact / 2692 B.",
+  "baseline_commit": "unknown",
+  "package_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "source_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "native_workflow_version": 53,
+  "lease": "RenderStatsItem-pending-split (colin)",
+  "draft_session": "20f0f5654e5e49d885c72bd3b7cef9aa",
+  "blocker": {
+    "symptom": "rebuild/2008-06/native-classes/RenderStatsItem2008.cpp(24)/(25): error C2143: syntax error : missing ';' before '<'",
+    "cause": "the #ifndef NATIVE_RENDERSTATSITEM_PENDING branch requested explicit instantiations of Item::createBoundChildItem<G3D::Stopwatch> / <int>, but the organized App/include/stats/Stats.h has no such member template (only createChildItem(const char*), createBoundChildItem(const Profiling::Profiler&) and createBoundMemChildItem(const char*, const size_t&)), so the compiler parsed the '<' after a non-template name as less-than. The file's own header (native-headers/RenderStatsItem2008/RenderStatsItem2008.h lines 30-34) states the design: 'Item::createBoundChildItem<T> (proposal for the stats/Stats.h owner). Until both exist, the class is compiled only with NATIVE_RENDERSTATSITEM_PENDING against generated copies of those headers; without it the unit only instantiates the TypedStatsItem<G3D::Stopwatch> / <int> members the ctor binds.' The cpp's non-pending branch contradicted its own header."
+  },
+  "fix": {
+    "file": "rebuild/2008-06/native-classes/RenderStatsItem2008.cpp",
+    "change": [
+      "removed the two createBoundChildItem<T> explicit-instantiation lines from the non-pending branch (leaving the two TypedStatsItem instantiations and the Creatable<Instance>::create<TypedStatsItem<...>, const ...*> instantiations, which do compile against stats/Stats.h + Base/include/util/Object.h::Creatable::create)",
+      "added the same two instantiations inside the NATIVE_RENDERSTATSITEM_PENDING branch (qualified RBX::Stats::Item:: - that branch compiles at global scope, per the header's 'class CRobloxWnd::RenderStatsItem : public RBX::Stats::Item' at global scope), where the recorder's generated stats/Stats.h declares the member template",
+      "added a comment in the non-pending branch pointing at the owner's pending proposal"
+    ],
+    "evidence": "the header comment quoted above; stats/Stats.h's Item member list; Object.h lines 64-68 (template<typename Class, typename Parameter1> static boost::shared_ptr<Class> create(Parameter1))"
+  },
+  "verification": {
+    "before": "cl exit 2, 0 exact",
+    "after": "62 exact / 2692 B (prove --rounds 2 --infer-names)",
+    "residue": "the full CRobloxWnd::RenderStatsItem ctor/update bodies still need the pending build (CRobloxView.h's nested-class declaration and the stats/Stats.h member-template proposal) - both are owner-side items recorded here, not attempted"
+  },
+  "status": "branch-split blocker repaired; the unit's non-pending rows are recovered and byte-bound",
+  "next": "Owner: (1) add Item::createBoundChildItem<T> (template<typename T> Item* createBoundChildItem(const char* name, const T& value)) to App/include/stats/Stats.h - the 2008 binary has it (0045f120 / 0045f230) and the rebuild overlay already carries a donor body; (2) declare class RenderStatsItem inside CRobloxWnd in CRobloxView.h; then the pending branch can prove the ctor/update rows too."
+}

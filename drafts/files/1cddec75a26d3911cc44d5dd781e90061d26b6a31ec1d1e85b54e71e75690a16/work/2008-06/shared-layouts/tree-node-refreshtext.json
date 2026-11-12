@@ -1,0 +1,36 @@
+{
+  "task": "CRobloxTreeCtrlNode::refreshText recovery (native source batch)",
+  "class": "CRobloxTreeCtrlNode",
+  "session": "969a9bbc12c64e74b1969a5c898a2b1d",
+  "lease": "RBX::CRobloxTreeCtrl-family-glm53b",
+  "package_marker": {"revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6", "source_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6"},
+  "baseline_commit": "unknown",
+  "source": "rebuild/2008-06/WindowsClient/src/CRobloxTreeCtrl.cpp",
+  "runner_run": "work/2008-06/native-check-runs/20261112-052407-5e605da0",
+  "checks": [
+    {
+      "addr": "00422650",
+      "status": "exact",
+      "score": 100,
+      "symbol": "?refreshText@CRobloxTreeCtrlNode@@QAEXXZ",
+      "target_size": 78,
+      "object_size": 78,
+      "data_errors": [],
+      "call_identity": {
+        "passed": false,
+        "calls": [
+          {"offset": 40, "target": "006a0f32", "kind": "direct", "status": "verified_binding", "symbol": "?GetItemRect@CTreeCtrl@@QBEHPAU_TREEITEM@@PAUtagRECT@@H@Z"},
+          {"offset": 63, "target": "00802e18", "kind": "import", "status": "obligation_open", "symbol": "__imp__InvalidateRect@12", "note": "USER32 IAT call; the runner's import-row aliasing covers only msvcrt/msvcprt/Kernel32 libs, so this site cannot be asserted in this check mode (byte-exact relocs-masked match plus the runner's own call listing establish the call shape and target)"}
+        ],
+        "scope": "CTreeCtrl::GetItemRect thunk verified; the InvalidateRect USER32 import is documented as an open import-evidence obligation"
+      }
+    }
+  ],
+  "method_recovered": "void CRobloxTreeCtrlNode::refreshText() - `if (textDirty) { if (item != NULL && item != TVI_ROOT) { CRect rect; if (tree->GetItemRect(item, &rect, FALSE)) ::InvalidateRect(tree->m_hWnd, &rect, TRUE); } textDirty = false; }` - recovered on the second hypothesis (the original compares against TVI_ROOT 0xFFFF0000, not TVI_FIRST). Declaration already at WindowsClient/include/CRobloxTreeCtrl.h line 122; no header edit needed. CRobloxTreeCtrlNode moves 10/13 to 11/13.",
+  "obligations_remaining": [
+    "the InvalidateRect USER32 import evidence at +63",
+    "CRobloxTreeCtrlNode::removeChildren 00425520 (409 B) and addChildren 00426450 (parked near-miss after three variants)",
+    "linked provider selection, no-loss and P5/P6/runtime gates at owner integration"
+  ],
+  "notes": "textDirty is the +0x54 bit 0 and item the +0x80 member per the class header layout comment."
+}

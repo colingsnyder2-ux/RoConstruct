@@ -1,0 +1,25 @@
+{
+  "scope": "ViewNewTorsoMesh chain, part 2: the organized ViewNew/RenderBaseMesh.h had lost Mesh's 4-argument allocVertex and freeVertex declarations, which native-headers/ViewNew/QuadVolumeFace.h calls (the last blocker in the chain). ViewNewTorsoMesh went from cl exit 2 to 55 exact / 11687 B.",
+  "baseline_commit": "unknown",
+  "package_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "source_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "native_workflow_version": 53,
+  "lease": "ViewNew-RenderBaseMesh-mesh-decls (colin)",
+  "draft_session": "55e9cbe4b4a3493eb616a0dcdd23d769",
+  "blocker": {
+    "symptom": "rebuild/2008-06/native-headers/ViewNew/QuadVolumeFace.h(75): error C2660: 'RBX::RenderBase::Mesh::allocVertex' : function does not take 4 arguments; QuadVolumeFace.h(95): error C2039: 'freeVertex' : is not a member of 'RBX::RenderBase::Mesh' (the grid body does vertices[...] = Mesh::allocVertex(objectPosition, objectNormal, tex, true) then Mesh::freeVertex(vertices[i]))",
+    "cause": "the organized WindowsClient/include/ViewNew/RenderBaseMesh.h declares only allocVertex(unsigned, unsigned) (00547fc0); the per-vertex allocator/free pair that QuadVolumeFace.h uses was missing, even though the recorder's own profile copy native-headers/partsurface-profile/ViewNew/RenderBaseMesh.h declares all three with identical addresses."
+  },
+  "fix": {
+    "file": "rebuild/2008-06/WindowsClient/include/ViewNew/RenderBaseMesh.h (in class Mesh, public section, after the existing allocVertex)",
+    "change": "declared the two missing statics: static unsigned int allocVertex(const G3D::Vector3& vertex, const G3D::Vector3& normal, const G3D::Vector2& tex, bool share); // 00548000 and static void freeVertex(unsigned int index); // 00548640 (declaration-only: the bodies live in the RenderBase library unit /Od, not recovered)",
+    "evidence": "native-headers/partsurface-profile/ViewNew/RenderBaseMesh.h lines 104-105 (same 2008-06 addresses 00548000 / 00548640, whose header comment already describes the RenderBase library as compiled /Od and not recovered); donor tools/rbxgs/Client/Rendering/RenderLib/include/RenderLib/Mesh.h lines 100/110 with identical spellings"
+  },
+  "verification": {
+    "before": "cl exit 2, 0 exact",
+    "after": "55 exact / 11687 B (prove --rounds 2 --infer-names; 1 inferred name address)",
+    "regression_check": "ViewNewPBBMesh 56 exact / 13638 B and ViewNewWedgeMesh 53 exact / 9927 B still prove clean; the additions are declarations only, no ABI/layout change"
+  },
+  "status": "declarations restored; the TorsoMesh chain is fully recovered and byte-bound",
+  "next": "Owner: keep the organized RenderBaseMesh.h aligned with the partsurface-profile native copy (they are the same header with different comment depth); the RenderBase /Od unit will supply the bodies."
+}

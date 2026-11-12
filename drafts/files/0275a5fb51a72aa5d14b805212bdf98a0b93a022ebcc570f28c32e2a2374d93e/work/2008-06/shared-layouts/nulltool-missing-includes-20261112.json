@@ -1,0 +1,25 @@
+{
+  "scope": "NewNullTool (the older inactive sibling of the 2008-06 unit): its include set lacked v8datamodel/Workspace.h and v8datamodel/ModelInstance.h, leaving the Workspace* base and the ModelInstance* arguments incomplete types. Added both: the unit went from cl exit 2 / 0 exact to 19 exact / 555 B.",
+  "baseline_commit": "unknown",
+  "package_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "source_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "native_workflow_version": 53,
+  "lease": "NewNullTool-missing-includes (colin)",
+  "draft_session": "c8e507ab6b9a4ead99db6bfae0428ec1",
+  "blocker": {
+    "symptom": "rebuild/2008-06/native-classes/NewNullTool.cpp(21) / (69): error C2664: 'RBX::Network::Players::findLocalCharacter' : cannot convert parameter 1 from 'RBX::Workspace *const ' to 'const RBX::Instance *'; (23): same for 'RBX::Humanoid::modelIsCharacter' from 'RBX::ModelInstance *'; (70): error C2027: use of undefined type 'RBX::ModelInstance'",
+    "cause": "the file includes tool/NullTool.h, v8datamodel/UserController.h, Network/Players.h, humanoid/Humanoid.h and v8datamodel/PartInstance.h, but never the headers that define Workspace or ModelInstance, so both pointer types stayed incomplete and no base-class conversion could be checked."
+  },
+  "fix": {
+    "file": "rebuild/2008-06/native-classes/NewNullTool.cpp (include block)",
+    "change": "added #include \"v8datamodel/Workspace.h\" and #include \"v8datamodel/ModelInstance.h\" with a comment",
+    "evidence": "the 2008-06 recovery of the same unit, native-classes/AppUnit610_2008NullTool.cpp lines 16-22, includes exactly these two headers alongside the same set; the file's own isLocalHeadHidden body already calls head->getAlphaModifier(), which the PartInstance promotion (receipt partinstance-getalphamodifier-20261112.json) restored"
+  },
+  "verification": {
+    "before": "cl exit 2, 0 exact",
+    "after": "19 exact / 555 B (prove --rounds 2 --infer-names)",
+    "residue": "the file's own banner: 'Render predicate ABI and ClickDetector query remain unproven' - the ClickDetector query row 00629b20's C++ symbol is still unproven (the AppUnit610 unit's comment says the same)"
+  },
+  "status": "include gap repaired; the unit is recovered and byte-bound",
+  "next": "Owner: decide whether this older sibling stays beside AppUnit610_2008NullTool or is folded into it, and settle the ClickDetector query symbol identity (00629b20)."
+}

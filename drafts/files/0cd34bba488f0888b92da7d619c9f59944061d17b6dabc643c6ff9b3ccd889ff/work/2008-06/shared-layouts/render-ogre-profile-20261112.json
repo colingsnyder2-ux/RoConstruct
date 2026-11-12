@@ -1,0 +1,32 @@
+{
+  "scope": "Two parked RenderBase units (AppUnit540_2008AggregatingSceneManager and its sibling SceneManagerAggregating2008, both rows of the original unit 0053f0d0..005473ff): the missing RenderBase library profile (the Ogre 1.4.5 client include) took them from parked compile failures to byte proofs that keep chaining (17->54 and 18->40 exact across rounds).",
+  "baseline_commit": "unknown",
+  "package_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "source_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "native_workflow_version": 53,
+  "lease": "AppUnit540-ogre-profile (colin)",
+  "draft_session": "9407fe2909554039b2f4d82f4f6ad86b",
+  "blocker": {
+    "symptom": "both files proved with exact: 0, compiles: 0, reused: 0; native_bulk line 364-368 parks a prior failed compile whose inputs are unchanged, so nothing ran and the family looked empty",
+    "cause": "the parked failure was prove-AppUnit540... compile.log: rebuild/2008-06/native-headers/renderlib/../../Rendering/include/RenderLib/Material2008.h(40): fatal error C1083: Cannot open include file: 'OgreMaterial.h'. Neither file had a native-flags line (the recorders never attached one; both banners read 'no original address mapped to this file yet | by -'), so the generic profile ran with no Ogre include."
+  },
+  "fix": {
+    "files": [
+      "rebuild/2008-06/native-classes/AppUnit540_2008AggregatingSceneManager.cpp",
+      "rebuild/2008-06/native-classes/SceneManagerAggregating2008.cpp"
+    ],
+    "change": "added the documented RenderBase library profile to each native-flags line: /Od /Ob0 /GS /GF /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /I{headers}/../../../tools/libs/ogre-1.4.5/ogrenew/OgreMain/include (the include is the one its sibling AggregateChunk2008.cpp pins; the /Od /Ob0 /GS part is each file's own comment: AppUnit540 'Built by tests/record_native_app_unit540_2008.py with the RenderBase library profile of tests/record_native_render_scene.py (/Od /Ob0 /GS plus the Ogre 1.4.5 client headers)', SceneManagerAggregating2008 '/Od profile of tests/record_native_render_scene.py')",
+    "evidence": "tools/libs/ogre-1.4.5/ogrenew/OgreMain/include/OgreMaterial.h and OgreSceneManager.h exist in the workspace; the Ogre include path string is copied verbatim from the pinned lines of AggregateChunk2008.cpp / RenderSceneNew2008.cpp"
+  },
+  "verification": {
+    "before": "parked failed compile, 0 exact / 0 B on both files",
+    "after": "AppUnit540_2008AggregatingSceneManager: 17 exact / 639 B after round 2 (+49 bindings), 54 exact / 2819 B by the later round; SceneManagerAggregating2008: 18 exact / 485 B after round 2 (+30 bindings), 40 exact / 2120 B later. Both still chaining.",
+    "residue": {
+      "AppUnit540": "186 symbol-identity ambiguities, 107 no-candidate rows, 16 reference-identity differs",
+      "SceneManagerAggregating2008": "206 symbol-identity ambiguities, 79 no-candidate rows, 17 conflicting symbol identity"
+    },
+    "open_flag_question": "the pinned line omits /fp:fast (the documented profile does not mention it) while the O2-profile render peers pin it; if the further rounds stop proving byte-exact bodies, /fp:fast is the first hypothesis to try"
+  },
+  "status": "profile blocker repaired on both files; both units recovered and byte-bound",
+  "next": "Owner: attach the RenderBase /Od profile to the recorder outputs (or to the shared profile for the RenderLib family) so future checkouts do not re-hit the park; retry /fp:fast if binding stalls."
+}

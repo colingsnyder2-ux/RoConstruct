@@ -1,0 +1,25 @@
+{
+  "scope": "AppUnit5BC_2008Creators (the Creatable / FactoryProduct block 005c0a20..005c33ff and 005c3da0..005c3ecf): the parked C2259 'cannot instantiate abstract class' failure is repaired by declaring BodyMover's Connector slot-4 override; the unit went from 0 exact to 47 exact / 2886 B (still chaining).",
+  "baseline_commit": "unknown",
+  "package_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "source_revision": "29cb68db4baa548b2efb87c937f9b1545e4d0ad8abf417529d3426fed13023b6",
+  "native_workflow_version": 53,
+  "lease": "AppUnit5BC-bodymover-getbody (colin)",
+  "draft_session": "ccc6c9ef170647c59a288e8a0dd4364a",
+  "blocker": {
+    "symptom": "parked failed compile (exact: 0, compiles: 0); the recorded compile.log read: rebuild/2008-06/native-headers/util/../../Base/include/util/Object.h(62): error C2259: 'RBX::BodyGyro' : cannot instantiate abstract class - due to following members: 'RBX::Body *RBX::Connector::getBody(int)' : is abstract (same for BodyForce, BodyThrust, BodyPosition, BodyVelocity, BodyAngularVelocity)",
+    "cause": "v8kernel/Connector2008.h declares slot 4 virtual Body* getBody(int i) = 0 (pure; 'analog name', no donor declaration) and BodyMover - the common base of all six Body* classes (BodyMovers.h: class BodyMover : public Instance, public Connector, public Listener<RunService, Stepped>) - had no slot-4 override, so every Object<BodyX> instantiation in the Creators block was abstract."
+  },
+  "fix": {
+    "file": "rebuild/2008-06/App/include/v8datamodel/BodyMovers.h (inside class BodyMover)",
+    "change": "declared virtual Body* getBody(int i); // slot 4 (0062fa10), marked INFERRED with the vtable citation",
+    "evidence": "BodyMovers.h's own header comment (read from the binary): 'Connector slot 4 0062fa10' and 'Connector vtable 00846b54 = {destructor thunk, computeForce, 00565950, 0060a2f0, 0062fa10, 005e72c0} (the 2008 Connector has six slots, the donor v8kernel/Connector.h five)'. The fifth entry of that vtable IS BodyMover's slot-4 body at 0062fa10, so the original BodyMover overrides getBody(int). The name 'getBody(int)' is the analog used by Connector2008.h's slot 4; the donor declares none."
+  },
+  "verification": {
+    "before": "parked failed compile, 0 exact / 0 B",
+    "after": "47 exact / 2886 B (prove --rounds 2 --infer-names; 14 exact / 1425 B after round 2 - the binder keeps chaining as more bindings land)",
+    "residue": "98 no-candidate rows and 75 symbol-identity ambiguities (the duplicate-address class); the Described<X> ctors/dtors thunks"
+  },
+  "status": "declaration blocker repaired; the Creators unit is recovered and byte-bound",
+  "next": "Owner: recover the out-of-line body of BodyMover::getBody at 0062fa10 (it is declared-only here; the vtable needs its definition at link time) and confirm the getBody(int) member is public or protected in the original (placed in the protected block with the other Connector/Instance overrides; marked INFERRED)."
+}
