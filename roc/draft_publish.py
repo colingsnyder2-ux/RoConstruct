@@ -175,10 +175,12 @@ def publish(root, push=False):
                 selected_index = git(root, 'ls-files', '--stage', '--', path).decode().split()
                 base = subprocess.run(['git', 'cat-file', '-e', head + ':' + path], cwd=root,
                                       capture_output=True).returncode == 0
-                if before_sha is None:
-                    if base or selected_index:
-                        raise ValueError('Proven new source now exists in base/index: ' + path)
+                if not base:
+                    if selected_index:
+                        raise ValueError('Proven new source now exists in index: ' + path)
                     new_sources.add(path)
+                elif before_sha is None:
+                    raise ValueError('Proven new source now exists in base: ' + path)
                 else:
                     base_blob = git(root, 'rev-parse', head + ':' + path).decode().strip()
                     if not selected_index or selected_index[1] != base_blob:

@@ -220,6 +220,26 @@ class DraftPublishTests(unittest.TestCase):
         self.assertEqual(result['state'], 'committed-local', result)
         self.assertIn(new_path, self.run_git(self.root, 'diff-tree', '--no-commit-id', '--name-only', '-r', result['commit']).splitlines())
 
+    def test_incrementally_proven_new_source_file_can_be_published(self):
+        new_path = 'rebuild/2008-06/native-classes/NewIncremental.cpp'
+        prior = b'int firstMethod() { return 1; }\n'
+        raw = prior + b'int secondMethod() { return 2; }\n'
+        self.source.write_bytes(self.baseline)
+        (self.root / new_path).write_bytes(raw)
+        receipt = dict(self.expected_receipt, candidate_sha256=content_hash(raw),
+                       before_methods=['firstMethod'], after_methods=['firstMethod', 'secondMethod'])
+        with closing(__import__('sqlite3').connect(self.root / 'work/draft-merger/state.sqlite3')) as db, db:
+            db.execute('DELETE FROM actions')
+            db.execute('INSERT OR REPLACE INTO proofs VALUES(?,?,?,?,?,?)',
+                       ('proof-new-incremental', receipt['input_key'], 'original-msvc-method-v1',
+                        receipt['candidate_sha256'], json.dumps(receipt), 1))
+            db.execute('INSERT INTO actions VALUES(?,?,?,?,?,?,?,?)',
+                       ('action-new-incremental', 'run-1', 'bundle-new', new_path, content_hash(prior), content_hash(raw),
+                        'applied-inactive', json.dumps({'proof': 'proof-new-incremental'})))
+        result, _ = self.run_publish()
+        self.assertEqual(result['state'], 'committed-local', result)
+        self.assertIn(new_path, self.run_git(self.root, 'diff-tree', '--no-commit-id', '--name-only', '-r', result['commit']).splitlines())
+
     def test_selected_staged_change_is_rejected_without_commit(self):
         self.run_git(self.root, 'add', self.source_path)
         result, _ = self.run_publish()
