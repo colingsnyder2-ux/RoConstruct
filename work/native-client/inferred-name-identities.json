@@ -14706,6 +14706,24 @@
    "address": "0066fe90",
    "inferred_name": false,
    "evidence": "body byte-exact; only 0066fe90 stores vtable 0084d1d4, which the registry names ??_7?$SharedPtr@VRbxFont@Ogre@@@Ogre@@6B@"
+  },
+  {
+   "symbol": "?func_0067d3d0@RbxEntity@Ogre@@QAEXXZ",
+   "address": "0067d3d0",
+   "inferred_name": true,
+   "evidence": "Original 00671fc0 calls the entity at AdornRbxGfx +0x98; Entity subentity vector at +0xd8, byte match and erase references verified. Function spelling is an address placeholder."
+  },
+  {
+   "symbol": "?setMesh@RbxEntity@Ogre@@QAEXVMeshPtr@2@@Z",
+   "address": "0067c520",
+   "inferred_name": true,
+   "evidence": "007ab589 and 007acb8c pass MeshPtr by value to RenderSceneNew entity; original assigns inherited Entity::mMesh. Private byte and original-reference proof: work/native-candidates/ogre-entity-setmesh-1112/native-proof/manifest.json."
+  },
+  {
+   "symbol": "__ehhandler$?setMesh@RbxEntity@Ogre@@QAEXVMeshPtr@2@@Z",
+   "address": "007dd779",
+   "inferred_name": false,
+   "evidence": "Original setMesh 0067c520 relocation points to this handler; handler body and FuncInfo references match in work/native-candidates/ogre-entity-setmesh-1112/native-proof/manifest.json."
   }
  ]
 }
