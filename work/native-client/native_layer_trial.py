@@ -144,6 +144,10 @@ def main():
                      [upstream_dir(sources[i], stem) for stem, _ in items] + includes_for(layer, recipe_name)))}
         trial_layers.append(trial)
     name = spec['name'] + 'NativeTrial'
+    # paths into the live module's own output (out/<Name>/force) must point at the trial's, or the trial link test
+    # reads the live force-link header and never forces its own swaps
+    retarget = lambda value: value.replace('/out/%s/' % spec['name'], '/out/%s/' % name) if isinstance(value, str) else value
+    spec = dict(spec, test_includes=[retarget(v) for v in spec.get('test_includes', [])])
     trial_spec = dict(spec, name=name, trial=True, layers=trial_layers + spec['layers'],
                       description='TRIAL: %s with recovered native sources layered before upstream (not a gate candidate).' % spec['name'])
     spec_path = ROOT / 'rebuild' / CLIENT / 'modules' / (args.module + '-native-trial.json')
