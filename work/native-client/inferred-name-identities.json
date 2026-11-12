@@ -14832,6 +14832,48 @@
    "address": "00685640",
    "inferred_name": true,
    "evidence": "MSVC scalar deleting thunk for registry class; original destructor and operator delete calls independently checked."
+  },
+  {
+   "symbol": "?computePackedArray@RbxFont@Ogre@@ABE?AVVector2@G3D@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@NNNNW4Spacing@12@PAV34@@Z",
+   "address": "006843f0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?get2DStringBounds@RbxFont@Ogre@@QBE?AVVector2@G3D@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@NW4Spacing@12@@Z",
+   "address": "00684640",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "??0RbxFont@Ogre@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAVBinaryInput@G3D@@@Z",
+   "address": "00684b10",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?fromFile@RbxFont@Ogre@@SA?AV?$SharedPtr@VRbxFont@Ogre@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "00684eb0",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "?destroy@?$SharedPtr@VRbxFont@Ogre@@@Ogre@@MAEXXZ",
+   "address": "00670710",
+   "inferred_name": true,
+   "evidence": "INFERRED name: body byte-exact at its single candidate; registry has no proven name"
+  },
+  {
+   "symbol": "__ehhandler$??0RbxFont@Ogre@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAVBinaryInput@G3D@@@Z",
+   "address": "007ddd6c",
+   "inferred_name": false,
+   "evidence": "Original RbxFont constructor or fromFile relocation names this handler; handler bytes and FuncInfo references match."
+  },
+  {
+   "symbol": "__ehhandler$?fromFile@RbxFont@Ogre@@SA?AV?$SharedPtr@VRbxFont@Ogre@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z",
+   "address": "007dddac",
+   "inferred_name": false,
+   "evidence": "Original RbxFont constructor or fromFile relocation names this handler; handler bytes and FuncInfo references match."
   }
  ]
 }
