@@ -30,6 +30,7 @@ namespace Ogre
 
 	public:
 		void removeSubEntity(RbxSubEntity* subEntity); // 0067d2d0; existing Chunk destructor call proves declaration.
+		void setMesh(MeshPtr mesh); // INFERRED: 0067c520 assigns inherited Entity::mMesh.
 		RbxEntity();                            // 0067d1f0
 		virtual ~RbxEntity();                   // 0067d420
 		virtual void _notifyCurrentCamera(Camera* camera); // slot 24, 0067c570
