@@ -986,7 +986,8 @@ def is_trial_module(spec):
 def live_module_specs(client):
     """[(path, spec)] of the real module specs: trial specs are skipped."""
     out = []
-    for spec_path, spec in live_module_specs(client):
+    for spec_path in sorted((ROOT / "rebuild" / client / "modules").glob("*.json")):
+        spec = json.loads(spec_path.read_text(encoding="utf-8"))
         if not is_trial_module(spec):
             out.append((spec_path, spec))
     return out
