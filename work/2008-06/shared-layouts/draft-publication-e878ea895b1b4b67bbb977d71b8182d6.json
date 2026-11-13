@@ -1,0 +1,376 @@
+{
+  "scope": "Inactive source publication; no runtime selection or server credit",
+  "base": "a497eca043601a67ae76411d82e21ad94fe3b74a",
+  "verification": {
+    "native_input_key": "52daa7cbc048e51f9c7d7cf7608c1a953e68611538b7f003e88316211a9ea493",
+    "verifier_hashes": {
+      "C:\\Users\\colin\\RoConstruct\\roc\\draft_publish.py": "e0466c3d7c38022e28247f5df2c0fc5381e1bab0d3e4125b1bf7281675bb33f2",
+      "C:\\Users\\colin\\RoConstruct\\roc\\draft_native.py": "e6e28f165caab118f0227414b455a410f13735b852d3014116025809c763c8c5",
+      "C:\\Users\\colin\\RoConstruct\\roc\\draft_proof.py": "6efe4157886b36e6246628a22ea0c6115d33859db7e0689ccb1be056b00733b0",
+      "C:\\Users\\colin\\RoConstruct\\work\\native-client\\claude-identity-closure.json": "e0b08ce72e7d001dfdabed99cfe38d8dbe8a269a68a6bf3ffe9ca3b878952dfa"
+    },
+    "sources": {
+      "rebuild/2008-06/native-classes/AppUnit560DebugProfile.cpp": {
+        "source_sha256": "9dcee59de6a19ddd87144229b1e5faa2cf01dd6aeba517314bcec9fbd98fdd10",
+        "object_sha256": "84ff3aee9f10a30f06729f96d8bdf1e2f2a8b0fda508c33e9cc15b7e75cd542e",
+        "methods": [
+          {
+            "address": "005634b0",
+            "symbol": "?gfxcard@DebugSettings@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+            "size": 1032,
+            "exact": true,
+            "verified_targets": {
+              "_memset": "msvcr90.dll!memset",
+              "__imp__EnumDisplayDevicesA@16": "user32.dll!EnumDisplayDevicesA",
+              "__imp__SetupDiDestroyClassImageList@4": "setupapi.dll!SetupDiDestroyClassImageList",
+              "__imp__SetupDiGetClassImageList@4": "setupapi.dll!SetupDiGetClassImageList",
+              "__imp__SetupDiGetClassDevsA@16": "setupapi.dll!SetupDiGetClassDevsA",
+              "??_C@_00CNPNBAHC@?$AA@": "0x80b716",
+              "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+              "__imp__SetupDiEnumDeviceInfo@12": "setupapi.dll!SetupDiEnumDeviceInfo",
+              "__imp__SetupDiGetDeviceRegistryPropertyA@28": "setupapi.dll!SetupDiGetDeviceRegistryPropertyA",
+              "__imp__SetupDiGetClassImageIndex@12": "setupapi.dll!SetupDiGetClassImageIndex",
+              "__imp__SetupDiGetClassDescriptionA@16": "setupapi.dll!SetupDiGetClassDescriptionA",
+              "??_C@_07CIFAGBMG@unknown?$AA@": "0x82e064",
+              "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z": "msvcp90.dll!??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z",
+              "??_C@_01OGPIMHDM@?$DP?$AA@": "0x819e10",
+              "??_C@_0DL@FHMNMHOD@HKEY_LOCAL_MACHINE?2SYSTEM?2Curren@": "0x82e028",
+              "__imp_??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBDABV10@@Z": "msvcp90.dll!??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBDABV10@@Z",
+              "__imp_??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z": "msvcp90.dll!??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z",
+              "??_C@_0P@GHIODHMO@?2DriverVersion?$AA@": "0x82e018",
+              "?readString@RegistryUtil@G3D@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAV34@@Z": "0x514190",
+              "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "??_C@_05NOIBLOKM@?5drv?$DN?$AA@": "0x82e010",
+              "__imp_??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@0@Z": "msvcp90.dll!??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@0@Z"
+            },
+            "local_eh": [
+              "__ehhandler$?gfxcard@DebugSettings@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+            ]
+          },
+          {
+            "address": "00563330",
+            "symbol": "?osPlatformId@DebugSettings@RBX@@QBEHXZ",
+            "size": 55,
+            "exact": true,
+            "verified_targets": {
+              "_memset": "msvcr90.dll!memset",
+              "__imp__GetVersionExA@4": "kernel32.dll!GetVersionExA"
+            },
+            "local_eh": []
+          },
+          {
+            "address": "005632c0",
+            "symbol": "?osVer@DebugSettings@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+            "size": 107,
+            "exact": true,
+            "verified_targets": {
+              "_memset": "msvcr90.dll!memset",
+              "__imp__GetVersionExA@4": "kernel32.dll!GetVersionExA",
+              "??_C@_0M@PCENNPGA@?$CFd?4?$CFd?4?$CFd?4?$CFd?$AA@": "0x81cf30",
+              "?format@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDZZ": "0x509b10"
+            },
+            "local_eh": []
+          },
+          {
+            "address": "00563370",
+            "symbol": "?systemProductName@DebugSettings@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+            "size": 185,
+            "exact": true,
+            "verified_targets": {
+              "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "??_C@_0EG@HIADJJMN@HKEY_LOCAL_MACHINE?2HARDWARE?2DESC@": "0x82dfc8",
+              "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+              "?readString@RegistryUtil@G3D@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAV34@@Z": "0x514190",
+              "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+              "??_C@_01OGPIMHDM@?$DP?$AA@": "0x819e10"
+            },
+            "local_eh": [
+              "__ehhandler$?systemProductName@DebugSettings@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+            ]
+          }
+        ],
+        "inferred_calls": [
+          {
+            "symbol": "?readString@RegistryUtil@G3D@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAV34@@Z",
+            "address": "00514190",
+            "evidence": "reference-vote",
+            "votes": 1,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?format@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDZZ",
+            "address": "00509b10",
+            "evidence": "reference-vote",
+            "votes": 49,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?readString@RegistryUtil@G3D@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAV34@@Z",
+            "address": "00514190",
+            "evidence": "reference-vote",
+            "votes": 1,
+            "inferred": true,
+            "imported_alias": null
+          }
+        ],
+        "compiler": 21022,
+        "flags": [
+          "/nologo",
+          "/c",
+          "/O2",
+          "/Ob2",
+          "/Oy",
+          "/GF",
+          "/GS-",
+          "/EHsc",
+          "/MD",
+          "/D_AFXDLL",
+          "/DNDEBUG",
+          "/D_MBCS",
+          "/DNOMINMAX",
+          "/DBOOST_ALL_NO_LIB",
+          "/DWIN32",
+          "/DNDEBUG",
+          "/D_LIB",
+          "/D_RELEASE",
+          "/D_RELEASEASSERT",
+          "/D_VC80_UPGRADE=0x0710",
+          "/IC:\\Users\\colin\\RoConstruct\\work\\draft-merger\\publications\\e878ea895b1b4b67bbb977d71b8182d6\\verification\\exact-tree\\rebuild\\2008-06\\native-headers",
+          "/IC:\\Users\\colin\\RoConstruct\\work\\draft-merger\\publications\\e878ea895b1b4b67bbb977d71b8182d6\\verification\\exact-tree\\tools\\libs\\mfc-9.0-rtm\\atlmfc\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxGraphics\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Network\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\RbxView\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\png",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\g3d\\zlib",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\RenderLib\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\AppDraw\\include",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\boost_1_34_1\\src",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\App\\lua-5.1.1\\src",
+          "/IC:\\Users\\colin\\RoConstruct\\tools\\rbxgs\\Client\\Rendering\\SDL-1.2.6\\include",
+          "/D_XTP_STATICLINK",
+          "/D_XTPLIB_NOAUTOLINK",
+          "/IC:\\Users\\colin\\RoConstruct\\work\\draft-merger\\publications\\e878ea895b1b4b67bbb977d71b8182d6\\verification\\exact-tree\\tools\\libs\\xtp-11.2.2\\Source",
+          "/fp:fast"
+        ]
+      }
+    }
+  },
+  "acceptance_receipts": {
+    "rebuild/2008-06/native-classes/AppUnit560DebugProfile.cpp": [
+      {
+        "schema": 1,
+        "kind": "reviewed-source-improvement",
+        "inactive": true,
+        "path": "rebuild/2008-06/native-classes/AppUnit560DebugProfile.cpp",
+        "candidate_sha256": "475546b2d0980acc19a7eb1220f015a4ccef53898138f3e0879de0aa089d47e5",
+        "before_sha256": null,
+        "input_key": "d0c714e55138ef65dd48da5432c243d7a660872c8db5a23e63e3a4eb6c7f98ce",
+        "client": "2008-06",
+        "verifier_sha256": "5fbde6f7c72b0d5bc5c9c385a6691bffbf6950715087831b9ca2607044ef9628",
+        "before_methods": [],
+        "after_methods": [
+          "?gfxcard@DebugSettings@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ@005634b0",
+          "?osPlatformId@DebugSettings@RBX@@QBEHXZ@00563330",
+          "?osVer@DebugSettings@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ@005632c0",
+          "?systemProductName@DebugSettings@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ@00563370"
+        ],
+        "checks": {
+          "compile": true,
+          "existing_code_preserved": true,
+          "existing_data_preserved": true,
+          "layout_preserved": true,
+          "provider_review": true,
+          "new_method_bodies": true,
+          "source_review": true,
+          "no_activation": true
+        },
+        "reviewer": "deterministic missing-method/original-instruction source review",
+        "rationale": "Adds absent method bodies measured against original instructions; final acceptance recompiles and checks relevant preservation, data and provider evidence.",
+        "inferences": [
+          "Names may be inferred. Family measurements are proposal evidence; fresh source acceptance checks are required.",
+          "Some direct function names use local corroborated identity evidence; see inferred_calls. No runtime proof claimed."
+        ],
+        "inferred_calls": [
+          {
+            "symbol": "?readString@RegistryUtil@G3D@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAV34@@Z",
+            "address": "00514190",
+            "evidence": "reference-vote",
+            "votes": 1,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?readString@RegistryUtil@G3D@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAV34@@Z",
+            "address": "00514190",
+            "evidence": "reference-vote",
+            "votes": 1,
+            "inferred": true,
+            "imported_alias": null
+          },
+          {
+            "symbol": "?format@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDZZ",
+            "address": "00509b10",
+            "evidence": "reference-vote",
+            "votes": 49,
+            "inferred": true,
+            "imported_alias": null
+          }
+        ],
+        "open_questions": [
+          "Class may remain partial. Unselected methods, complete original ABI and executable promotion remain separate.",
+          "Existing related source compile needs separate review: rebuild/2008-06/glue/rbxgs/glue_link_stubs.cpp",
+          "Existing related source compile needs separate review: rebuild/2008-06/glue/rbxgs/glue_runtime.cpp",
+          "Existing related source compile needs separate review: rebuild/2008-06/native-classes/accepted/App/script/ScriptContext.cpp",
+          "Existing related source compile needs separate review: rebuild/2008-06/openrbx-selective/script/ScriptContextSelected.cpp",
+          "Original exception metadata remains a runtime-promotion gate"
+        ],
+        "scope": "Reviewed new inactive source unit containing only proven methods and reviewed prelude. Partial class/inferred names allowed. No complete original ABI or executable promotion claim.",
+        "compiler_profile": "fast-fp",
+        "reference_evidence": [
+          {
+            "address": "005634b0",
+            "symbol": "?gfxcard@DebugSettings@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+            "size": 1032,
+            "exact": true,
+            "verified_targets": {
+              "_memset": "msvcr90.dll!memset",
+              "__imp__EnumDisplayDevicesA@16": "user32.dll!EnumDisplayDevicesA",
+              "__imp__SetupDiDestroyClassImageList@4": "setupapi.dll!SetupDiDestroyClassImageList",
+              "__imp__SetupDiGetClassImageList@4": "setupapi.dll!SetupDiGetClassImageList",
+              "__imp__SetupDiGetClassDevsA@16": "setupapi.dll!SetupDiGetClassDevsA",
+              "??_C@_00CNPNBAHC@?$AA@": "0x80b716",
+              "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+              "__imp__SetupDiEnumDeviceInfo@12": "setupapi.dll!SetupDiEnumDeviceInfo",
+              "__imp__SetupDiGetDeviceRegistryPropertyA@28": "setupapi.dll!SetupDiGetDeviceRegistryPropertyA",
+              "__imp__SetupDiGetClassImageIndex@12": "setupapi.dll!SetupDiGetClassImageIndex",
+              "__imp__SetupDiGetClassDescriptionA@16": "setupapi.dll!SetupDiGetClassDescriptionA",
+              "??_C@_07CIFAGBMG@unknown?$AA@": "0x82e064",
+              "__imp_??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z": "msvcp90.dll!??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z",
+              "??_C@_01OGPIMHDM@?$DP?$AA@": "0x819e10",
+              "??_C@_0DL@FHMNMHOD@HKEY_LOCAL_MACHINE?2SYSTEM?2Curren@": "0x82e028",
+              "__imp_??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBDABV10@@Z": "msvcp90.dll!??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBDABV10@@Z",
+              "__imp_??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z": "msvcp90.dll!??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@PBD@Z",
+              "??_C@_0P@GHIODHMO@?2DriverVersion?$AA@": "0x82e018",
+              "?readString@RegistryUtil@G3D@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAV34@@Z": "0x514190",
+              "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "??_C@_05NOIBLOKM@?5drv?$DN?$AA@": "0x82e010",
+              "__imp_??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@0@Z": "msvcp90.dll!??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@ABV10@0@Z"
+            },
+            "local_eh": [
+              "__ehhandler$?gfxcard@DebugSettings@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+            ]
+          },
+          {
+            "address": "00563370",
+            "symbol": "?systemProductName@DebugSettings@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+            "size": 185,
+            "exact": true,
+            "verified_targets": {
+              "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "??_C@_0EG@HIADJJMN@HKEY_LOCAL_MACHINE?2HARDWARE?2DESC@": "0x82dfc8",
+              "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z",
+              "?readString@RegistryUtil@G3D@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAV34@@Z": "0x514190",
+              "__imp_??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ": "msvcp90.dll!??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ",
+              "__imp_??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z": "msvcp90.dll!??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z",
+              "??_C@_01OGPIMHDM@?$DP?$AA@": "0x819e10"
+            },
+            "local_eh": [
+              "__ehhandler$?systemProductName@DebugSettings@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+            ]
+          },
+          {
+            "address": "00563330",
+            "symbol": "?osPlatformId@DebugSettings@RBX@@QBEHXZ",
+            "size": 55,
+            "exact": true,
+            "verified_targets": {
+              "_memset": "msvcr90.dll!memset",
+              "__imp__GetVersionExA@4": "kernel32.dll!GetVersionExA"
+            },
+            "local_eh": []
+          },
+          {
+            "address": "005632c0",
+            "symbol": "?osVer@DebugSettings@RBX@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ",
+            "size": 107,
+            "exact": true,
+            "verified_targets": {
+              "_memset": "msvcr90.dll!memset",
+              "__imp__GetVersionExA@4": "kernel32.dll!GetVersionExA",
+              "??_C@_0M@PCENNPGA@?$CFd?4?$CFd?4?$CFd?4?$CFd?$AA@": "0x81cf30",
+              "?format@G3D@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PBDZZ": "0x509b10"
+            },
+            "local_eh": []
+          }
+        ],
+        "numeric_literals": [],
+        "layout_preservation": {
+          "state": "preserved-before-layout",
+          "classes": {
+            "added": [],
+            "removed": [],
+            "changed": []
+          },
+          "virtual_tables": {
+            "added": [],
+            "removed": [],
+            "changed": []
+          },
+          "builds": {
+            "baseline": {
+              "exit": 0,
+              "log": "C:\\Users\\colin\\RoConstruct\\work\\draft-merger\\source-improvements\\75d7c86f6c9343f8a20de6d7a06ab4ab\\layout-baseline\\compiler.log"
+            },
+            "candidate": {
+              "exit": 0,
+              "log": "C:\\Users\\colin\\RoConstruct\\work\\draft-merger\\source-improvements\\75d7c86f6c9343f8a20de6d7a06ab4ab\\layout-candidate\\compiler.log"
+            }
+          },
+          "classes_before": 4939,
+          "classes_after": 4939,
+          "original_abi_proven": false,
+          "scope": "Compiler layout/virtual declaration preservation only; original offsets, slot identities and dependency ABI remain separate"
+        },
+        "related_providers": [
+          "rebuild/2008-06/glue/rbxgs/glue_class_names.cpp",
+          "rebuild/2008-06/glue/rbxgs/glue_property_strings.cpp",
+          "rebuild/2008-06/glue/rbxgs/glue_reflection_types.cpp",
+          "rebuild/2008-06/native-classes/AppUnit400_2008Creators.cpp",
+          "rebuild/2008-06/native-classes/AppUnit404Templates.cpp",
+          "rebuild/2008-06/native-classes/AppUnit5A8_2008ScriptContext.cpp",
+          "rebuild/2008-06/native-classes/DebugSettings.cpp",
+          "rebuild/2008-06/native-classes/DebugSettingsCoordinateGetters.cpp",
+          "rebuild/2008-06/native-classes/DebugSettingsSingleton.cpp",
+          "rebuild/2008-06/native-classes/DebugSettingsSpecData.cpp"
+        ],
+        "native_input_key": "963391e2a84b689da6dde326edc7916fe494bdfae1f34d63da62e06e696d5407",
+        "gate_hashes": {
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_source.py": "5fbde6f7c72b0d5bc5c9c385a6691bffbf6950715087831b9ca2607044ef9628",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_native.py": "e6e28f165caab118f0227414b455a410f13735b852d3014116025809c763c8c5",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_family.py": "6c7b46b37ab65770417bae220c1fc8e3cda5f023d4f35d0e4852d58fc9f97286",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_methods.py": "8c9d5a5f8d1f4d8f730d097d784a5fb2ff06102cda4dfc5cf2bb5df6fd527000",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_proof.py": "6efe4157886b36e6246628a22ea0c6115d33859db7e0689ccb1be056b00733b0",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_append.py": "6b395a5509044f28668c4ac06e3cc2eeb545e1a5e85ce0bd02ed4ca6ecc81f0d",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_merger.py": "509cf0071a2e312301d74a9b9437718f9cda7c047fd6ed6fb472898fab03c3d4",
+          "C:\\Users\\colin\\RoConstruct\\roc\\draft_files.py": "e42fa4ac81e73a189caca707cb022fc41bab09f339adb5232070abab99decd7c",
+          "C:\\Users\\colin\\RoConstruct\\roc\\match.py": "7d584aa2f7467785188e056a5a058b4631a497b73c2d119d63d9688d41dbb317",
+          "C:\\Users\\colin\\RoConstruct\\roc\\rebuild.py": "c7403b49a578c595c5e99addadf39c31a0fa6602ed387c1bc2df8d558d30db7b",
+          "C:\\Users\\colin\\RoConstruct\\roc\\libs.py": "6d7e03cd8e1df96b50c45ac9670174c0870e7045ba84ec0fd1b1c7db8492c766",
+          "C:\\Users\\colin\\RoConstruct\\roc\\clients.py": "d412b4a8964910ede225013ae694d5b1478c46f3001ae018a4da947a213c03d0",
+          "C:\\Users\\colin\\RoConstruct\\roc\\integration_verify.py": "878f5714c98828c757dd5bf8782972693993138eb95552c2bb82e33abef5e45b",
+          "C:\\Users\\colin\\RoConstruct\\work\\native-client\\native_class_layout.py": "26592adcfca0975974b7565c6a0a23303d233f26126563520d33806df3150845",
+          "C:\\Users\\colin\\RoConstruct\\work\\native-client\\native_vftable_check.py": "d0c98faf83e785cad15139fe2f09b70c6699ab36a2bd2ed179c6727a2bcaeee2",
+          "C:\\Users\\colin\\RoConstruct\\work\\native-client\\native_conversion_queue.py": "eeee7a929454cd95faf77a06f5fe968b33826b57a1ecf2945107ea988b672b46"
+        }
+      }
+    ]
+  },
+  "companion_headers": {
+    "rebuild/2008-06/native-headers/AppUnit500/RenderSpecData.h": "aa6d428f33a649390388bc1c5718400b0f212906df361a1a69035b48fa67ed6c"
+  }
+}
