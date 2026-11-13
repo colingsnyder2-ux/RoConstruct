@@ -23,6 +23,13 @@ from roc.draft_merger import content_hash, proof_key
 VERIFIER_SHA256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
 
 
+def original_function(address):
+    try:
+        return match.target('2008-06', '%08x' % address), None
+    except SystemExit as error:
+        return None, str(error)
+
+
 def closed_function_targets(bindings):
     """Only unique original-body identities may close external function calls."""
     found = defaultdict(set)
@@ -344,7 +351,14 @@ def measure(root, limit=None, workers=3, reviews_only=False):
                 exact = []
                 for symbol, (body, refs) in bodies.items():
                     for address in sorted(claims.get(symbol, ())):
-                        target, target_refs, _ = match.target('2008-06', '%08x' % address)
+                        original_target, target_error = original_function(address)
+                        if target_error:
+                            row['methods'].append(dict(
+                                symbol=symbol, address='%08x' % address, exact_code=False, score=0,
+                                has_relocations=bool(refs), references_verified=False,
+                                target_blocker='Claimed address is not an original function start: ' + target_error))
+                            continue
+                        target, target_refs, _ = original_target
                         hit = dict(symbol=symbol, address='%08x' % address,
                                    exact_code=match.exact_match(target, target_refs, body, refs),
                                    score=match.score(target, target_refs, body, refs),
