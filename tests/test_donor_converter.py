@@ -179,6 +179,17 @@ class DonorConverterTests(unittest.TestCase):
         self.assertEqual([row["integration"] for row in rows], ["integrated", "waiting", "missing"])
         self.assertEqual(summary, {"integrated": 1, "waiting": 1, "missing": 1})
 
+    def test_label_module_candidates_uses_linked_module_ownership(self):
+        rows = [{"addr": "00401000"}, {"addr": "00402000"}]
+
+        summary = donor_converter.label_module_candidates(rows, {
+            "linked": True,
+            "owned_addrs": ["00401000"],
+        })
+
+        self.assertEqual([row["integration"] for row in rows], ["integrated", "missing"])
+        self.assertEqual(summary, {"integrated": 1, "waiting": 0, "missing": 1})
+
     def test_rank_partials_uses_named_target_but_never_calls_it_exact(self):
         class Targets:
             def body(self, address):

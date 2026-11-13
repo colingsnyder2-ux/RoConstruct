@@ -208,6 +208,18 @@ def label_candidates(rows, integration):
     return counts
 
 
+def label_module_candidates(rows, report):
+    owned = {native_bulk.address(address) for address in report.get("owned_addrs", ())}
+    linked = report.get("linked") is True
+    counts = {"integrated": 0, "waiting": 0, "missing": 0}
+    for row in rows:
+        state = ("integrated" if linked and row["addr"] in owned else
+                 "waiting" if row["addr"] in owned else "missing")
+        row["integration"] = state
+        counts[state] += 1
+    return counts
+
+
 def donor_includes(root, recipe):
     return ([(libs.LIBS / folder).resolve() for folder in recipe["include"] if folder != "WINSDK"]
             + [(Path(root) / "rebuild/2008-06/native-donor-2007").resolve()])
@@ -314,8 +326,6 @@ def convert_module(root, module, output):
     module_report = json.loads(report_path.read_text(encoding="utf-8"))
     owned = json.loads(owned_path.read_text(encoding="utf-8"))
     names, bindings, object_names = module_hypotheses(owned)
-    integration_path = root / "docs/integration.json"
-    integration = json.loads(integration_path.read_text(encoding="utf-8"))
     targets, units = native_bulk.Targets("2008-06"), []
     for object_name in sorted(object_names):
         layer = module_report.get("choices", {}).get(object_name)
@@ -327,11 +337,11 @@ def convert_module(root, module, output):
             continue
         unit = {"object": str(obj), "compiled": True}
         unit.update(classify_object(obj.read_bytes(), targets, names, bindings))
-        unit["summary"].update(label_candidates(unit["exact_candidates"], integration))
+        unit["summary"].update(label_module_candidates(unit["exact_candidates"], module_report))
         units.append(unit)
     summary = summarize_module_units(units)
     result = {"version": 1, "mode": "module-object-candidates", "module": module_report.get("module", module),
-              "integration": str(integration_path), "summary": summary, "units": units}
+              "module_report": str(report_path), "summary": summary, "units": units}
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(result, indent=2), encoding="utf-8")
     return result
