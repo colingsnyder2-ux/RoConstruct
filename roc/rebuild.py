@@ -664,7 +664,7 @@ def verified_layer(client, spec, log=print, exclude=frozenset(), vdrop=frozenset
         # redefine symbols a regular library object also defines (png_read_init_2 ...) and the link fails with LNK2005.
         if keep or (helper_objects and extra):
             taken |= keep
-            (layer / ("verified_" + item["obj"])).write_bytes(strip_symbols(data, keep=keep | extra, drop=vdrop | exclude))
+            (layer / ("verified_" + item["obj"])).write_bytes(strip_symbols(data, keep=keep | extra, drop=(vdrop | exclude) - extra))
     log("verified layer: %d exact symbols swapped in" % len(taken))
     return layer, taken
 
