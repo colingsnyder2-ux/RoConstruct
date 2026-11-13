@@ -20,6 +20,8 @@
 #include "util/NormalId.h"
 #include <G3D/Vector2.h>
 #include <G3D/Vector3int16.h>
+#include <functional>
+#include <map>
 
 namespace RBX
 {

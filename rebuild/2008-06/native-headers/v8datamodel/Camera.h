@@ -17,7 +17,7 @@ namespace RBX
 	class ICameraSubject;
 	class ICameraOwner;
 
-	extern char sCamera[];
+	extern const char sCamera[];
 	class Camera : public DescribedCreatable<Camera, Instance, sCamera>
 	{
 	private:
