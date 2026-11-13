@@ -2,6 +2,9 @@
 // CMemberTreeView | 2008-06 | 6 byte-exact, inactive (not link-selected)
 // 6/8 mapped addresses byte-exact | 2 unproved | no mapped strings | by king_originala (+3) (mixed 4)
 // <<< native-status | src f17710cf | roc native-status --write
+// native-flags: /O2 /Ob2 /Oy /GF /GS- /EHsc /MD /D_AFXDLL /DNDEBUG /D_MBCS /D_XTP_STATICLINK /D_XTPLIB_NOAUTOLINK /I{headers}/std-noinline-string
+// The original calls basic_string::c_str through msvcp90 (addEnumItem 00433eae, addSignal 004354b3, addProperty,
+// addFunction): same out-of-line std::string overlay as the CRobloxApp / CMainFrame units.
 #include "CClassTreeView.h"
 #include "reflection/object.h"
 #include "reflection/enumconverter.h"
@@ -79,6 +82,9 @@ void CMemberTreeView::showEnum(const RBX::Reflection::EnumDescriptor* descriptor
     GetTreeCtrl().SortChildrenCB(&sort);
 }
 
+// 004352a0. Parked (header): the original tests the bIsPublic bit inline (test byte ptr [ebp + 0x10], 1 at
+// 0043536d); reflection/property.h declares PropertyDescriptor::isPublic out of line, so this body calls it.
+// Everything else matches once std::string::c_str is imported (std-noinline-string flags above).
 void CMemberTreeView::addProperty(const RBX::Reflection::PropertyDescriptor* descriptor)
 {
     if (!showInherited && &descriptor->owner != current)
@@ -128,6 +134,7 @@ static void appendArgument(int& count, std::string& text, const RBX::Reflection:
     ++count;
 }
 
+// 00435680: exact with the imported std::string::c_str (std-noinline-string flags).
 void CMemberTreeView::addFunction(const RBX::Reflection::FunctionDescriptor* descriptor)
 {
     if (!showInherited && &descriptor->owner != current)
