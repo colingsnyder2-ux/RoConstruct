@@ -35,11 +35,12 @@ def resolve_sources(root, values):
     return sources
 
 
-def source_batches(sources):
+def source_batches(sources, limit=128):
     batches, names = [], []
     for source in sources:
         stem = source.stem.casefold()
-        slot = next((index for index, used in enumerate(names) if stem not in used), None)
+        slot = next((index for index, used in enumerate(names)
+                     if len(batches[index]) < limit and stem not in used), None)
         if slot is None:
             slot = len(batches)
             batches.append([])

@@ -73,6 +73,13 @@ class DonorConverterTests(unittest.TestCase):
 
         self.assertEqual(batches, [[sources[0], sources[2]], [sources[1]]])
 
+    def test_source_batches_bound_large_unique_sets(self):
+        sources = [Path("A/File%04d.cpp" % index) for index in range(257)]
+
+        batches = donor_converter.source_batches(sources, limit=128)
+
+        self.assertEqual([len(batch) for batch in batches], [128, 128, 1])
+
     def test_discover_lane_limits_rbx_engine_to_upstream_engine_trees(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
