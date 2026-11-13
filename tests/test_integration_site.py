@@ -19,6 +19,8 @@ def test_linked_native_inventory_uses_passing_linked_modules(tmp_path):
 
 
 def test_site_groups_and_merged_receipts(tmp_path):
+    (tmp_path / "research").mkdir()
+    (tmp_path / "research/native-source-lock.json").write_text("{}")
     work = tmp_path / 'work'
     (work / 'integration').mkdir(parents=True)
     (work / '2008-06').mkdir()
@@ -73,6 +75,8 @@ def test_readable_native_method():
 
 
 def test_daily_history_exceeds_recent_jobs(tmp_path):
+    (tmp_path / "research").mkdir()
+    (tmp_path / "research/native-source-lock.json").write_text("{}")
     work = tmp_path / 'work/2008-06'
     work.mkdir(parents=True)
     (work / 'functions.jsonl').write_text('')
@@ -92,3 +96,19 @@ def test_daily_history_exceeds_recent_jobs(tmp_path):
     data = integration_site.build(tmp_path, log=lambda _: None)
     assert len(data['jobs']) == 100
     assert data['daily'] == [{'day': '2026-10-27', 'gains': 105, 'jobs': 105, 'models': {'model': {'gains': 105, 'jobs': 105}}}]
+
+
+def test_build_reads_inactive_receipts_once(tmp_path, monkeypatch):
+    test_daily_history_exceeds_recent_jobs(tmp_path)
+    (tmp_path / 'work/2008-06/functions.jsonl').write_text(json.dumps({'addr': '00400000', 'size': 10}))
+    snapshots = iter([{'00400000': ['First', True]}, {'00400001': ['Later', True]}])
+    calls = []
+
+    def changing_receipts(root):
+        calls.append(root)
+        return next(snapshots)
+
+    monkeypatch.setattr(integration_site, 'inactive_code', changing_receipts)
+    data = integration_site.build(tmp_path, log=lambda _: None)
+    assert len(calls) == 1
+    assert set(data['inactive']) == set(data['owned']) == {'00400000'}

@@ -253,7 +253,8 @@ def build(root=ROOT, log=print, output=None, extra_reports=()):
     finally:
         db.close()
     # site's middle bucket: inactive (receipt-exact) or draft native code, not yet integrated
-    owned = set(inactive_code(root))
+    inactive = inactive_code(root)
+    owned = set(inactive)
     groups, functions = coverage(root, scores, native, owned)
     units = {job: unit for job, _, _, unit, _, _ in jobs}
     receipts = []
@@ -294,7 +295,7 @@ def build(root=ROOT, log=print, output=None, extra_reports=()):
             "owned_waiting": sorted((set(owned) & functions.keys()) - native),
             "ownership_note": "Inactive / draft: native code exists (receipt-exact or draft) but is not integrated; link, runtime and server acceptance still pending.",
             # inactive native code: addr -> [decorated symbol, receipt-proven exact, receipt file]
-            "inactive": {a: v for a, v in inactive_code(root).items() if a not in native},
+            "inactive": {a: v for a, v in inactive.items() if a not in native},
             "sources": {a: value for a, value in sources.items() if a in native},
             # addr -> [readable name, decorated symbol, rebuilt score (100 = integrated)]
             "names": {a: [readable(v["symbol"]), v["symbol"], 100 if a in native else v.get("score")] for a, v in sorted(shown.items())},

@@ -563,11 +563,12 @@ function integrationSummary(i, name, compact = false) {
   if (!i || i.client !== name) return "";
   const total = Object.values(i.groups).reduce((sum, g) => sum + g.bytes, 0);
   const selected = total ? 100 * i.groups.integrated.bytes / total : 0;
-  const percent = selected + (total ? 100 * (i.native_code?.inactive?.bytes || 0) / total : 0);
+  const inactive = Math.min(i.groups.owned_waiting?.bytes || 0, i.native_code?.inactive?.bytes || 0);
+  const percent = total ? 100 * (i.groups.integrated.bytes + inactive) / total : 0;
   const waiting = total ? 100 * (i.groups.exact_waiting?.bytes || 0) / total : 0;
   const nearly = total ? 100 * (i.groups.owned_waiting?.bytes || 0) / total : 0;
   return `<div class="integration-summary">${compact ? "" : `<div class="label">Native coverage · ${percent.toFixed(2)}%</div>`}
-    <div class="bar native" role="progressbar" aria-label="Native code coverage bytes" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percent.toFixed(2)}"><i class="n" style="width:${selected}%"></i><i class="y" style="width:${nearly}%"></i><i class="e" style="width:${waiting}%"></i></div></div>`;
+    <div class="bar native" role="progressbar" aria-label="Native code coverage bytes" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percent.toFixed(2)}"><i class="n" style="width:${selected}%"></i><i style="background:#f0883e;width:${total ? 100 * inactive / total : 0}%"></i><i style="background:#db61a2;width:${nearly - (total ? 100 * inactive / total : 0)}%"></i><i class="e" style="width:${waiting}%"></i></div></div>`;
 }
 
 function integrationDays(i) {
