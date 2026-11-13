@@ -137,7 +137,7 @@ class DraftPublishTests(unittest.TestCase):
                 Path(argv[argv.index('--output') + 1]).write_text(json.dumps(receipt))
             return subprocess.CompletedProcess(argv, 0, b'', b'')
 
-        def verify(root, sources, receipts, output):
+        def verify(root, sources, receipts, output, dependencies=None):
             if verify_side_effect:
                 verify_side_effect()
             return {'sources': {name: {'source_sha256': content_hash(raw), 'methods': []}
@@ -219,6 +219,32 @@ class DraftPublishTests(unittest.TestCase):
         result, _ = self.run_publish()
         self.assertEqual(result['state'], 'committed-local', result)
         self.assertIn(new_path, self.run_git(self.root, 'diff-tree', '--no-commit-id', '--name-only', '-r', result['commit']).splitlines())
+
+    def test_new_source_publishes_literal_new_companion_header(self):
+        new_path = 'rebuild/2008-06/native-classes/NewProofed.cpp'
+        header_path = 'rebuild/2008-06/native-headers/NewProofed.h'
+        raw = b'#include "NewProofed.h"\nint newProofedMethod() { return value; }\n'
+        header = b'#pragma once\nextern int value;\n'
+        self.source.write_bytes(self.baseline)
+        (self.root / new_path).write_bytes(raw)
+        companion = self.root / header_path
+        companion.parent.mkdir(parents=True, exist_ok=True)
+        companion.write_bytes(header)
+        receipt = dict(self.expected_receipt, candidate_sha256=content_hash(raw),
+                       before_methods=[], after_methods=['newProofedMethod'])
+        with closing(__import__('sqlite3').connect(self.root / 'work/draft-merger/state.sqlite3')) as db, db:
+            db.execute('DELETE FROM actions')
+            db.execute('INSERT OR REPLACE INTO proofs VALUES(?,?,?,?,?,?)',
+                       ('proof-header', receipt['input_key'], 'original-msvc-method-v1',
+                        receipt['candidate_sha256'], json.dumps(receipt), 1))
+            db.execute('INSERT INTO actions VALUES(?,?,?,?,?,?,?,?)',
+                       ('action-header', 'run-1', 'bundle-new', new_path, None, content_hash(raw),
+                        'applied-inactive', json.dumps({'proof': 'proof-header'})))
+        result, _ = self.run_publish()
+        self.assertEqual(result['state'], 'committed-local', result)
+        committed = self.run_git(self.root, 'diff-tree', '--no-commit-id', '--name-only', '-r', result['commit']).splitlines()
+        self.assertIn(new_path, committed)
+        self.assertIn(header_path, committed)
 
     def test_incrementally_proven_new_source_file_can_be_published(self):
         new_path = 'rebuild/2008-06/native-classes/NewIncremental.cpp'
