@@ -66,7 +66,21 @@ def arm_bps():
 armed = False
 cxx_seen = 0
 ev = EV(); deadline = time.time() + float(sys.argv[3] if len(sys.argv) > 3 else 20); first = True; ids = {}
+posted = False; t_start = time.time()
+u32 = ctypes.WinDLL('user32')
+def post_cmd():
+    cmd = int(os.environ['POSTCMD']); found = []
+    CB = ctypes.WINFUNCTYPE(w.BOOL, w.HWND, w.LPARAM)
+    def cb(h, l):
+        pid = w.DWORD(); u32.GetWindowThreadProcessId(h, ctypes.byref(pid))
+        if pid.value == pi.pid and u32.IsWindowVisible(h): found.append(h)
+        return True
+    u32.EnumWindows(CB(cb), 0)
+    print('POSTCMD to', [hex(x) for x in found], flush=True)
+    for h in found: u32.PostMessageW(h, 0x111, cmd, 0)
 while time.time() < deadline:
+    if os.environ.get('POSTCMD') and not posted and armed and time.time() - t_start > 8:
+        posted = True; post_cmd()
     if not k.WaitForDebugEvent(ctypes.byref(ev), 500):
         continue
     status = 0x10002

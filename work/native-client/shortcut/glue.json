@@ -1,1 +1,1 @@
-["NativeGlobals.obj","obj/FrameworkGlue.obj","obj/CMainFrameShow.obj","obj/ApplicationExceptionLog.obj","obj/TreeNodeRefresh.obj","obj/TreeNodeRemoveChildren.obj","obj/LockFix.obj"]
+["NativeGlobals.obj", "obj/FrameworkGlue.obj", "obj/CMainFrameShow.obj", "obj/ApplicationExceptionLog.obj", "obj/TreeNodeRefresh.obj", "obj/TreeNodeRemoveChildren.obj", "obj/LockFix.obj", "obj/ViewGlue.obj"]
