@@ -11,7 +11,7 @@
   "v8kernel/Connector.cpp",
   "v8datamodel/GlobalSettings.cpp"
  ],
- "status": "porting",
+ "status": "complete: retained ports proven by final campaign gates",
  "parked": {
   "v8datamodel/ModelInstance.cpp": "Donor defines FUN_00565040 orientation setter absent from 2008 class; no evidenced named-member mapping.",
   "v8datamodel/Mouse.cpp": "Donor one-argument MouseCommand::getPart call depends on default filter omitted by 2008 declaration; no class/header edit authorized.",
@@ -24,6 +24,9 @@
   "v8datamodel/Team.cpp",
   "v8datamodel/GameSettings.cpp",
   "util/Profiling.cpp",
+  "v8datamodel/GlobalSettings.cpp"
+ ],
+ "retained_after_final_gates": [
   "v8datamodel/GlobalSettings.cpp"
  ]
 }

@@ -11,7 +11,7 @@
   "v8kernel/Constants.cpp",
   "v8world/Ball.cpp"
  ],
- "status": "porting",
+ "status": "complete: no acceptable gain",
  "compile_files": [
   "humanoid/Flying.cpp",
   "v8kernel/Point.cpp",
@@ -24,5 +24,6 @@
   "v8kernel/Constants.cpp",
   "v8world/Ball.cpp"
  ],
- "parked": {}
+ "parked": {},
+ "retained_after_final_gates": []
 }

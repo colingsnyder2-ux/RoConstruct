@@ -40,6 +40,7 @@ namespace Ogre
 		ColourValue colour;                                                           // +0x10 (-1: unset)
 		Vector3 offset;                                                               // +0x20
 
+		void setOffset(const Vector3& value); // 00685e10, INFERRED name.
 		RbxAdornState();                                                              // 00685e30
 
 		ManualObject* cylinder(SceneManager* manager, const String& name, ManualObject* object, float baseRadius,

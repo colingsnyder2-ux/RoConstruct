@@ -11,7 +11,7 @@
   "v8xml/SerializerV2.cpp",
   "v8datamodel/Backpack.cpp"
  ],
- "status": "porting",
+ "status": "complete: no acceptable gain",
  "compile_files": [
   "util/Http.cpp",
   "v8datamodel/MouseCommand.cpp",
@@ -25,5 +25,6 @@
   "v8datamodel/UserController.cpp": "NavKeys/getNavKeys API absent in 2008 headers.",
   "script/LuaSignalBridge.cpp": "ScopedAssign utility absent in 2008 headers; no new helper bodies allowed.",
   "util/ContentProvider.cpp": "Donor defines MD5Hasher::convertToLegacyHash absent in 2008 declaration; ContentCache type also absent."
- }
+ },
+ "retained_after_final_gates": []
 }

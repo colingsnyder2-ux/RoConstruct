@@ -11,7 +11,7 @@
   "v8kernel/Body.cpp",
   "v8datamodel/custommesh.cpp"
  ],
- "status": "porting",
+ "status": "complete: retained ports proven by final campaign gates",
  "compile_files": [
   "util/standardout.cpp",
   "v8world/Block.cpp",
@@ -24,5 +24,8 @@
   "v8kernel/Body.cpp",
   "v8datamodel/custommesh.cpp"
  ],
- "parked": {}
+ "parked": {},
+ "retained_after_final_gates": [
+  "v8datamodel/SafeChat.cpp"
+ ]
 }

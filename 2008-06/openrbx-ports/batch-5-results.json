@@ -125,5 +125,9 @@
   "v8datamodel/Flag.cpp",
   "v8datamodel/Feature.cpp"
  ],
- "status": "subset validation pending"
+ "status": "historical selection receipt; accepted files also passed final campaign gates",
+ "accepted_files": [
+  "v8datamodel/Flag.cpp",
+  "v8datamodel/Feature.cpp"
+ ]
 }

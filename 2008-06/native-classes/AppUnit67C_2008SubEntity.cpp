@@ -340,3 +340,14 @@ template class std::_Vector_iterator<Ogre::ShadowRenderable *,std::allocator<Ogr
 template class std::reverse_iterator<std::_Vector_const_iterator<Ogre::ShadowRenderable *,std::allocator<Ogre::ShadowRenderable *> > >;
 template class std::reverse_iterator<std::_Vector_iterator<Ogre::ShadowRenderable *,std::allocator<Ogre::ShadowRenderable *> > >;
 template class std::vector<Ogre::EdgeData::EdgeGroup,std::allocator<Ogre::EdgeData::EdgeGroup> >;
+
+namespace Ogre {
+const AxisAlignedBox& RbxSubEntity::getWorldBoundingBox(bool derive) const {
+    static AxisAlignedBox box;
+    RbxSubMesh* mesh = static_cast<RbxSubMesh*>(mShadowSubMesh ? mShadowSubMesh : getCurrentSubMesh());
+    Vector3 position = mTransform.getTrans();
+    Real radius = mesh->radius * 1.7f;
+    box.setExtents(position + Vector3(-radius, -radius, -radius), position + Vector3(radius, radius, radius));
+    return box;
+}
+}

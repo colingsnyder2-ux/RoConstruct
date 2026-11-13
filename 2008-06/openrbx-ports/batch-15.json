@@ -11,7 +11,7 @@
   "v8kernel/Pair.cpp",
   "v8world/IWorldStage.cpp"
  ],
- "status": "porting",
+ "status": "complete: no acceptable gain",
  "parked": {
   "v8tree/Verb.cpp": "2008 XmlState lacks donor addProperty; undo/redo state declarations and VerbContainer private access also differ."
  },
@@ -25,5 +25,6 @@
   "v8kernel/Cofm.cpp",
   "v8kernel/Pair.cpp",
   "v8world/IWorldStage.cpp"
- ]
+ ],
+ "retained_after_final_gates": []
 }

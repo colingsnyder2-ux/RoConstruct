@@ -11,7 +11,7 @@
   "humanoid/Running.cpp",
   "v8datamodel/Value.cpp"
  ],
- "status": "porting",
+ "status": "complete: no acceptable gain",
  "parked": {
   "humanoid/Running.cpp": "GeometryService API absent in 2008 headers.",
   "v8datamodel/JointInstance.cpp": "2008 overlay merges AutoJoint into JointInstance with weak_ptr storage; donor AutoJoint member bodies have no matching class.",
@@ -25,5 +25,6 @@
   "v8datamodel/PVInstance.cpp",
   "v8datamodel/Message.cpp",
   "v8datamodel/Value.cpp"
- ]
+ ],
+ "retained_after_final_gates": []
 }

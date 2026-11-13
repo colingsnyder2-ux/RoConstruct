@@ -11,7 +11,7 @@
   "util/RunStateOwner.cpp",
   "tool/ToolsArrow.cpp"
  ],
- "status": "porting",
+ "status": "complete: retained ports proven by final campaign gates",
  "parked": {
   "gui/HealthHud.cpp": "2008 Humanoid exposes relativeHealth/reflection descriptors rather than donor getHealth/getMaxHealth; body rewrite required.",
   "v8world/Contact.cpp": "2008 overlay replaces vector connector/matched arrays with G3D::Array; donor fastRemoveIndex requires vector.",
@@ -25,5 +25,8 @@
   "v8world/Controller.cpp",
   "script/ThreadRef.cpp",
   "tool/ToolsArrow.cpp"
+ ],
+ "retained_after_final_gates": [
+  "v8datamodel/Filters.cpp"
  ]
 }

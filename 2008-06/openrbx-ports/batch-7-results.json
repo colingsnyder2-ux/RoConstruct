@@ -142,5 +142,8 @@
  "candidate_keep": [
   "v8datamodel/Filters.cpp"
  ],
- "status": "selection recorded; subset/gates required for any candidates"
+ "status": "historical selection receipt; accepted files also passed final campaign gates",
+ "accepted_files": [
+  "v8datamodel/Filters.cpp"
+ ]
 }

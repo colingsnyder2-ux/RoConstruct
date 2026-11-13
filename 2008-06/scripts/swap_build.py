@@ -19,7 +19,7 @@ from roc import match  # noqa: E402
 CLIENT = "2008-06"
 RECIPES = {"RbxgsApp": {"rbxgs", "rbxgs-dll"}, "RbxApp": {"openrbx-client", "openrbx-client-dll"}}
 RECIPE_PREFIXES = {"XTP": ("xtp-11.2.2",), "G3D": ("g3d-6.09",), "Boost": ("boost-1.34.1",), "libpng": ("libpng-1.2",),
-                   "Lua": ("lua-5.1",), "Ogre": ("ogre-",),
+                   "Lua": ("lua-5.1",), "Ogre": ("ogre-1.4.5",),  # rgmain.dll is 1.4.5: newer OgreMain bodies import symbols it lacks
                    "MfcAtl": ("mfc-9.0", "atl-"), "BoostExtra": ("boost-1.35", "boost-1.36", "boost-1.40"),
                    "CodegenAnalogs": ("wildmagic-2-core", "templates-")}
 
@@ -190,21 +190,34 @@ def main(module, limit=None):
                                                               "failed": failed}, indent=1))
     print("%s: %d groups, %d/%d addresses found exact, %d groups failed to compile"
           % (module, len(groups), found, wanted, len(failed)))
-    print(install(live, folder))
+    print(install(live, folder, allowed_prefix="ogre-1.4.5" if module == "Ogre" else None))
 
 
-def kept_addresses(folder):
+def kept_addresses(folder, allowed_prefix=None):
     path = folder / "swaps.json"
-    return {a for s in json.loads(path.read_text())["swaps"] for a in s["keep"].values()} if path.exists() else set()
+    return {a for s in json.loads(path.read_text())["swaps"]
+            if allowed_prefix is None or s.get("recipe", "").startswith(allowed_prefix)
+            for a in s["keep"].values()} if path.exists() else set()
 
 
-def install(live, built):
+def install(live, built, allowed_prefix=None):
     """Replace the live layer only when the new one loses no exact address and gains at least one. Addresses the new
     plan no longer lists (now owned elsewhere, or a regrouped compile) keep their verified objects from the live layer."""
-    before, after = kept_addresses(live), kept_addresses(built)
-    if before - after and after - before:
+    before, after = kept_addresses(live, allowed_prefix), kept_addresses(built, allowed_prefix)
+    def incompatible(folder):
+        path = folder / "swaps.json"
+        return allowed_prefix is not None and path.exists() and any(
+            not item.get("recipe", "").startswith(allowed_prefix)
+            for item in json.loads(path.read_text())["swaps"])
+
+    if incompatible(built):
+        raise ValueError("new verified layer contains an incompatible recipe")
+    has_incompatible = incompatible(live)
+    if before - after and (after - before or has_incompatible):
         lost, data = before - after, json.loads((built / "swaps.json").read_text())
         for item in json.loads((live / "swaps.json").read_text())["swaps"]:
+            if allowed_prefix and not item.get("recipe", "").startswith(allowed_prefix):
+                continue
             keep = {s: a for s, a in item["keep"].items() if a in lost}
             if keep:
                 name = "live-" + item["obj"]
@@ -212,8 +225,8 @@ def install(live, built):
                 data["swaps"].append(dict(item, obj=name, keep=keep))
                 lost -= set(keep.values())
         (built / "swaps.json").write_text(json.dumps(data, indent=1))
-        after = kept_addresses(built)
-    if before - after or not after - before:
+        after = kept_addresses(built, allowed_prefix)
+    if before - after or (not after - before and not has_incompatible):
         shutil.rmtree(built)
         return "kept existing layer (%d addresses; new layer lost %d, gained %d)" % (
             len(before), len(before - after), len(after - before))

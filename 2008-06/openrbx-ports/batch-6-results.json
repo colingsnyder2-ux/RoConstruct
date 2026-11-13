@@ -154,5 +154,6 @@
  "owned_before": 4427,
  "owned_after": 4436,
  "candidate_keep": [],
- "status": "selection recorded; subset/gates required for any candidates"
+ "status": "historical selection receipt; accepted files also passed final campaign gates",
+ "accepted_files": []
 }
