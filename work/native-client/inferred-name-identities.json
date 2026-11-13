@@ -14892,6 +14892,12 @@
    "address": "0067da50",
    "inferred_name": true,
    "evidence": "Original 00671f69 calls RbxEntity with a RbxSubEntity; body and vector push_back reference 004213a0 match."
+  },
+  {
+   "symbol": "?setOffset@RbxAdornState@Ogre@@QAEXABVVector3@2@@Z",
+   "address": "00685e10",
+   "inferred_name": true,
+   "evidence": "Original quadric setter writes Vector3 at +0x20; caller and 2007 Ogre quadric donor establish the class and field. Name inferred."
   }
  ]
 }
