@@ -80,6 +80,17 @@ def identity_hypotheses(closure):
     return names, bindings
 
 
+def module_hypotheses(owned):
+    names, objects = defaultdict(set), set()
+    for address, rows in owned.items():
+        for row in rows:
+            names[row["symbol"]].add(native_bulk.address(address))
+            objects.add(row["object"])
+    bindings = {symbol: next(iter(addresses)) if len(addresses) == 1 else None
+                for symbol, addresses in names.items()}
+    return {symbol: addresses for symbol, addresses in names.items() if bindings[symbol] is not None}, bindings, objects
+
+
 def learn_reference_identities(rows, bindings):
     observed = defaultdict(list)
     prefix = "unproven reference identity: "
@@ -274,6 +285,53 @@ def convert_mass(root, lane, output, limit=None):
     }
     result = {"version": 1, "mode": "mass-read-only-candidates", "lane": lane, "summary": summary,
               "reports": [{"path": str(path), "summary": report["summary"]} for path, report in reports]}
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(json.dumps(result, indent=2), encoding="utf-8")
+    return result
+
+
+def summarize_module_units(units):
+    exact = {row["addr"]: row for unit in units for row in unit.get("exact_candidates", ())}
+    summary = {"objects": len(units), "scanned": sum(unit["compiled"] for unit in units),
+               "exact": len(exact)}
+    summary.update({state: sum(row["integration"] == state for row in exact.values())
+                    for state in ("integrated", "waiting", "missing")})
+    summary["repair_candidates"] = sum(unit.get("summary", {}).get("repair_candidates", 0) for unit in units)
+    summary["proof_candidates"] = sum(unit.get("summary", {}).get("proof_candidates", 0) for unit in units)
+    return summary
+
+
+def convert_module(root, module, output):
+    root, output = Path(root).resolve(), Path(output).resolve()
+    out_root = root / "rebuild/2008-06/out"
+    module_dir = next((path for path in out_root.iterdir()
+                       if path.is_dir() and path.name.casefold() == module.casefold()), None)
+    if module_dir is None:
+        raise ValueError("unknown built module: " + module)
+    report_path, owned_path = module_dir / "report.json", module_dir / "owned-symbols.json"
+    if not report_path.is_file() or not owned_path.is_file():
+        raise ValueError("module lacks report/owned symbols: " + module)
+    module_report = json.loads(report_path.read_text(encoding="utf-8"))
+    owned = json.loads(owned_path.read_text(encoding="utf-8"))
+    names, bindings, object_names = module_hypotheses(owned)
+    integration_path = root / "docs/integration.json"
+    integration = json.loads(integration_path.read_text(encoding="utf-8"))
+    targets, units = native_bulk.Targets("2008-06"), []
+    for object_name in sorted(object_names):
+        layer = module_report.get("choices", {}).get(object_name)
+        candidates = ([module_dir / layer / object_name] if layer else [])
+        candidates += list(module_dir.rglob(object_name))
+        obj = next((path for path in candidates if path.is_file()), None)
+        if obj is None:
+            units.append({"object": object_name, "compiled": False, "compiler": "selected object missing"})
+            continue
+        unit = {"object": str(obj), "compiled": True}
+        unit.update(classify_object(obj.read_bytes(), targets, names, bindings))
+        unit["summary"].update(label_candidates(unit["exact_candidates"], integration))
+        units.append(unit)
+    summary = summarize_module_units(units)
+    result = {"version": 1, "mode": "module-object-candidates", "module": module_report.get("module", module),
+              "integration": str(integration_path), "summary": summary, "units": units}
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(result, indent=2), encoding="utf-8")
     return result

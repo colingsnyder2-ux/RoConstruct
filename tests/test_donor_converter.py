@@ -39,6 +39,19 @@ class DonorConverterTests(unittest.TestCase):
 
         convert.assert_called_once_with(cli.ROOT, "rbx-engine", Path("mass.json"), 5)
 
+    def test_roc_command_routes_built_module(self):
+        script = Path(__file__).resolve().parents[1] / "roc.py"
+        spec = importlib.util.spec_from_file_location("roc_donor_module_cli_test", script)
+        cli = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(cli)
+        report = {"summary": {"objects": 2, "scanned": 2, "exact": 128,
+                              "integrated": 127, "waiting": 0, "missing": 1}}
+
+        with patch("roc.donor_converter.convert_module", return_value=report) as convert:
+            cli.main(["donor-convert", "--module", "Scintilla", "--output", "module.json"])
+
+        convert.assert_called_once_with(cli.ROOT, "Scintilla", Path("module.json"))
+
     def test_resolve_sources_only_accepts_cpp_inside_donor_roots(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
@@ -109,6 +122,32 @@ class DonorConverterTests(unittest.TestCase):
         self.assertNotIn("?conflict@@YAXXZ", names)
         self.assertIsNone(bindings["?conflict@@YAXXZ"])
         self.assertNotIn("?data@@3HA", bindings)
+
+    def test_module_hypotheses_rejects_symbols_owned_at_multiple_addresses(self):
+        owned = {
+            "00401000": [{"object": "A.obj", "symbol": "?same@@YAXXZ"}],
+            "00402000": [{"object": "B.obj", "symbol": "?same@@YAXXZ"}],
+            "00403000": [{"object": "B.obj", "symbol": "?unique@@YAXXZ"}],
+        }
+
+        names, bindings, objects = donor_converter.module_hypotheses(owned)
+
+        self.assertNotIn("?same@@YAXXZ", names)
+        self.assertIsNone(bindings["?same@@YAXXZ"])
+        self.assertEqual(names["?unique@@YAXXZ"], {"00403000"})
+        self.assertEqual(objects, {"A.obj", "B.obj"})
+
+    def test_summarize_module_units_counts_aliases_once_per_address(self):
+        units = [{"compiled": True, "summary": {"repair_candidates": 2, "proof_candidates": 1},
+                  "exact_candidates": [
+                      {"addr": "00401000", "symbol": "?a@@", "integration": "integrated"},
+                      {"addr": "00401000", "symbol": "?alias@@", "integration": "integrated"},
+                  ]}]
+
+        self.assertEqual(donor_converter.summarize_module_units(units), {
+            "objects": 1, "scanned": 1, "exact": 1, "integrated": 1,
+            "waiting": 0, "missing": 0, "repair_candidates": 2, "proof_candidates": 1,
+        })
 
     def test_classify_object_reports_only_proven_rows_as_exact(self):
         rows = [
