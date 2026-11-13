@@ -31,6 +31,7 @@ public:
 // scoped_ptr<ErrorUploader> at +0x10c; vptr 00816a64.
 class CRobloxApp : public CWinApp {
     DECLARE_DYNAMIC(CRobloxApp)
+    DECLARE_MESSAGE_MAP()  // INFERRED: openrbx Client/win/Roblox.cpp BEGIN_MESSAGE_MAP(CRobloxApp, CWinApp)
 public:
     CRobloxApp();
     virtual ~CRobloxApp();                         // 0044c440
