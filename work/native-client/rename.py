@@ -16,7 +16,7 @@ ROOT = rebuild.ROOT
 CLIENT = '2008-06'
 NC = ROOT / 'work/native-client'
 WORK = NC / 'rename'
-OUT = NC / 'link/renamed'
+OUT = Path(os.environ['ROC_RENAME_OUT']) if os.environ.get('ROC_RENAME_OUT') else NC / 'link/renamed'
 WORK.mkdir(exist_ok=True)
 OUT.mkdir(parents=True, exist_ok=True)
 REL32, DIR32 = 0x14, 0x06
@@ -164,6 +164,8 @@ def convert(addr, symbol, target):
             continue                      # already the real name of something the link defines
         real = CHAIN.get('%08x' % va) or real_name(va)
         refs[name] = '%08x' % va
+        if real is None and os.environ.get('ROC_RENAME_PLACEHOLDER'):  # shortcut closure pass: unnamed callee/data keep a placeholder name
+            real = ('func_%08x' if va < 0x7c0000 else 'dat_%08x') % va
         if real is None:
             blockers.append('%s -> %08x (no real name known)' % (name, va))
         elif real and real != name:
@@ -173,7 +175,8 @@ def convert(addr, symbol, target):
     fidx = next(i for i, (n, s) in syms.items() if n == fsym)
     mapping[fidx] = symbol
     data = rename(data, mapping)
-    data = rebuild.strip_symbols(data, keep={symbol})
+    if not os.environ.get('ROC_RENAME_KEEP_HELPERS'):  # shortcut closure pass keeps the analog's comdat helpers (std/boost templates)
+        data = rebuild.strip_symbols(data, keep={symbol})
     (OUT / (addr + '.obj')).write_bytes(data)
     return dict(status='renamed', analog=fsym, renamed={syms[i][0]: n for i, n in mapping.items()})
 
@@ -230,9 +233,10 @@ def main():
         REGISTRY = load_registry()
         apply_registry(paths, gates)
         return
-    amap = json.load(open(NC / 'link/addrmap.json'))
+    amap = json.load(open(os.environ.get('ROC_ADDRMAP') or NC / 'link/addrmap.json'))
     jobs = {v['exact'][0]: s for s, v in amap.items() if v['exact']}
-    res = json.load(open(NC / 'link/rename.json')) if (NC / 'link/rename.json').exists() else {}
+    RJ = Path(os.environ['ROC_RENAME_JSON']) if os.environ.get('ROC_RENAME_JSON') else NC / 'link/rename.json'
+    res = json.load(open(RJ)) if RJ.exists() else {}
     for obj in OUT.glob('*.obj'):                 # earlier conversions stay recorded
         if res.get(obj.stem, {}).get('status') != 'renamed':
             defs = [n for n, k in _SC['symbols'](obj.read_bytes()).items() if k == 'strong']
@@ -252,7 +256,7 @@ def main():
         except Exception as e:      # one bad analog must not stop the batch
             res[addr] = dict(symbol=jobs[addr], status='error', why=repr(e)[:200])
         print(addr, res[addr]['status'], res[addr].get('why', '') if res[addr]['status'] != 'renamed' else '', flush=True)
-    json.dump(res, open(NC / 'link/rename.json', 'w'), indent=1)
+    json.dump(res, open(RJ, 'w'), indent=1)
     from collections import Counter
     print(Counter(r['status'] for r in res.values()))
 
